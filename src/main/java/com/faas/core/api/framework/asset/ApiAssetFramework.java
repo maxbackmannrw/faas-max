@@ -22,7 +22,6 @@ public class ApiAssetFramework {
         return null;
     }
 
-
     public ApiAssetWSDTO apiGetAgentAssetService(long agentId) {
 
         return null;
@@ -34,7 +33,6 @@ public class ApiAssetFramework {
 
         return null;
     }
-
 
     public ApiAssetWSDTO apiGetCampaignAssetService(long agentId) {
 
