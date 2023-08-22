@@ -58,7 +58,6 @@ public class ApiAssetController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = ApiRoute.API_GET_CAMPAIGN_ASSET, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetCampaignAsset(@RequestParam long agentId) {
 
