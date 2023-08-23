@@ -142,7 +142,6 @@ public class OperationHelper {
     AppUtils appUtils;
 
 
-
     public ApiSipAccountWSDTO createApiSipCallAccountWSDTO(long agentId, long sessionId, long clientId, String campaignId, String processId){
 
         ApiSipAccountWSDTO sipCallAccountWSDTO = new ApiSipAccountWSDTO();
@@ -179,8 +178,6 @@ public class OperationHelper {
 
 
     public ApiEmailAccountWSDTO createApiEmailAccountWSDTO(long agentId, long sessionId, long clientId, String campaignId, String processId){
-
-
         return null;
     }
 
@@ -221,12 +218,10 @@ public class OperationHelper {
     }
 
 
-
     public ApiPushAccountWSDTO createApiPushAccountWSDTO(long agentId, long sessionId, long clientId, String campaignId, String processId){
 
         return null;
     }
-
 
 
     public OperationDBModel mapOperationDBModel(SessionDBModel sessionDBModel) {
@@ -375,6 +370,7 @@ public class OperationHelper {
         List<ClientPhoneDBModel> clientPhoneDBModels = clientPhoneRepository.findByClientId(clientDBModel.getId());
 
         ApiOperationChannelWSDTO operationChannelWSDTO = new ApiOperationChannelWSDTO();
+
         operationChannelWSDTO.setOperationSipCall(channelHelper.mapApiOperationSipCallWSDTO(sessionDBModel,clientPhoneDBModels));
         operationChannelWSDTO.setOperationWappCall(channelHelper.mapApiOperationWappCallWSDTO(sessionDBModel,clientPhoneDBModels));
         operationChannelWSDTO.setOperationSmsMessage(channelHelper.mapApiOperationSmsMessageWSDTO(sessionDBModel,clientPhoneDBModels));
