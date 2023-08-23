@@ -121,10 +121,17 @@ public class ApiSipCallFramework {
 
         List<SipCallDBModel> sipCallDBModels = sipCallRepository.findByIdAndSessionIdAndAgentIdAndClientId(callId,sessionId,agentId,clientId);
         if (!sipCallDBModels.isEmpty()) {
+            if (sipCallDBModels.get(0).getCallState().equalsIgnoreCase(AppConstant.READY_CALL)){
+                sipCallRepository.delete(sipCallDBModels.get(0));
+                return new ApiSipCallWSDTO(sipCallDBModels.get(0));
+            }
+            if (sipCallDBModels.get(0).getCallState().equalsIgnoreCase(AppConstant.ACTIVE_CALL)){
+                sipCallDBModels.get(0).setCallState(AppConstant.FINISHED_CALL);
+                sipCallDBModels.get(0).setfDate(appUtils.getCurrentTimeStamp());
+                sipCallDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
 
-            sipCallDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
-
-            return new ApiSipCallWSDTO(sipCallRepository.save(sipCallDBModels.get(0)));
+                return new ApiSipCallWSDTO(sipCallRepository.save(sipCallDBModels.get(0)));
+            }
         }
         return null;
     }
