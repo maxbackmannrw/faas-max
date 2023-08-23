@@ -105,6 +105,50 @@ public class ApiSipCallMiddleware {
     }
 
 
+    public ApiSipCallWSModel apiStartSipCall(long agentId,long sessionId,long clientId,long callId) {
+
+        ApiSipCallWSModel response = new ApiSipCallWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+        List<ApiSipCallWSDTO>sipCallWSDTOS = new ArrayList<>();
+
+        ApiSipCallWSDTO sipCallWSDTO = apiSipCallFramework.apiStartSipCallService(agentId,sessionId,clientId,callId);
+        if (sipCallWSDTO != null){
+            sipCallWSDTOS.add(sipCallWSDTO);
+        }
+
+        response.setSipCalls(sipCallWSDTOS);
+        general.setOperation("apiFinishSipCall");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
+    public ApiSipCallWSModel apiFinishSipCall(long agentId,long sessionId,long clientId,long callId) {
+
+        ApiSipCallWSModel response = new ApiSipCallWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+        List<ApiSipCallWSDTO>sipCallWSDTOS = new ArrayList<>();
+
+        ApiSipCallWSDTO sipCallWSDTO = apiSipCallFramework.apiFinishSipCallService(agentId,sessionId,clientId,callId);
+        if (sipCallWSDTO != null){
+            sipCallWSDTOS.add(sipCallWSDTO);
+        }
+
+        response.setSipCalls(sipCallWSDTOS);
+        general.setOperation("apiFinishSipCall");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
     public ApiSipCallWSModel apiUpdateSipCall(long agentId,long sessionId,long clientId,long callId,String callState) {
 
         ApiSipCallWSModel response = new ApiSipCallWSModel();
