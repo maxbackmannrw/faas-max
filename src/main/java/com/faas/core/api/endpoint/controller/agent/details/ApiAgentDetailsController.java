@@ -60,6 +60,4 @@ public class ApiAgentDetailsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
-
 }
