@@ -48,6 +48,7 @@ public class ApiOperationDetailsMiddleware {
         //    response.setOperationDetails(operationDetailsWSDTO);
         }
 
+
         general.setOperation("apiOperationValidate");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
