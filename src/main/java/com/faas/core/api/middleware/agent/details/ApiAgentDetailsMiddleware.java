@@ -43,19 +43,17 @@ public class ApiAgentDetailsMiddleware {
     }
 
 
-    public ApiAgentInfoWSModel apiGetAgentInfos(long agentId) {
+    public ApiAgentSipAccountWSModel apiGetAgentSipAccount(long agentId, String processId) {
 
-        ApiAgentInfoWSModel response = new ApiAgentInfoWSModel();
+        ApiAgentSipAccountWSModel response = new ApiAgentSipAccountWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ApiAgentInfoWSDTO>apiAgentInfoWSDTOS = new ArrayList<>();
 
-        ApiAgentInfoWSDTO agentInfoWSDTO = apiAgentDetailsFramework.apiGetAgentInfosService(agentId);
-        if (agentInfoWSDTO != null) {
-            apiAgentInfoWSDTOS.add(agentInfoWSDTO);
+        ApiAgentSipAccountWSDTO agentSipAccountWSDTO = apiAgentDetailsFramework.apiGetAgentSipAccountService(agentId,processId);
+        if (agentSipAccountWSDTO != null){
+            response.setSipAccount(agentSipAccountWSDTO);
         }
 
-        response.setAgentInfos(apiAgentInfoWSDTOS);
-        general.setOperation("apiGetAgentInfos");
+        general.setOperation("apiGetAgentSipAccount");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -65,17 +63,20 @@ public class ApiAgentDetailsMiddleware {
     }
 
 
-    public ApiAgentSipAccountWSModel apiGetAgentSipAccount(long agentId, String processId) {
 
-        ApiAgentSipAccountWSModel response = new ApiAgentSipAccountWSModel();
+    public ApiAgentInfoWSModel apiGetAgentInfo(long agentId) {
+
+        ApiAgentInfoWSModel response = new ApiAgentInfoWSModel();
         GeneralWSModel general = new GeneralWSModel();
+        List<ApiAgentInfoWSDTO>apiAgentInfoWSDTOS = new ArrayList<>();
 
-        ApiAgentSipAccountWSDTO agentSipAccountWSDTO = apiAgentDetailsFramework.apiGetAgentSipAccountService(agentId,processId);
-        if (agentSipAccountWSDTO != null){
-            response.setAgentSipAccount(agentSipAccountWSDTO);
+        ApiAgentInfoWSDTO agentInfoWSDTO = apiAgentDetailsFramework.apiGetAgentInfoService(agentId);
+        if (agentInfoWSDTO != null) {
+            apiAgentInfoWSDTOS.add(agentInfoWSDTO);
         }
 
-        general.setOperation("apiGetAgentSipAccount");
+        response.setAgentInfos(apiAgentInfoWSDTOS);
+        general.setOperation("apiGetAgentInfo");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

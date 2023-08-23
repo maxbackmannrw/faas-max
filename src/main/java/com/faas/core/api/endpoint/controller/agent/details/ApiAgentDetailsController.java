@@ -36,18 +36,6 @@ public class ApiAgentDetailsController {
     }
 
 
-    @RequestMapping(value = ApiRoute.API_GET_AGENT_INFOS, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetAgentInfos(@RequestParam long agentId) {
-
-        ApiAgentInfoWSModel response = apiAgentDetailsMiddleware.apiGetAgentInfos(agentId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-
     @RequestMapping(value = ApiRoute.API_GET_AGENT_SIP_ACCOUNT, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetAgentSipAccount(@RequestParam long agentId,
                                                    @RequestParam String processId) {
@@ -59,6 +47,19 @@ public class ApiAgentDetailsController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
+
+
+    @RequestMapping(value = ApiRoute.API_GET_AGENT_INFO, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetAgentInfo(@RequestParam long agentId) {
+
+        ApiAgentInfoWSModel response = apiAgentDetailsMiddleware.apiGetAgentInfo(agentId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
 
 
 }

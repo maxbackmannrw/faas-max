@@ -6,15 +6,14 @@ import com.faas.core.base.model.ws.general.GeneralWSModel;
 public class ApiAgentSipAccountWSModel {
 
     private GeneralWSModel general;
-    private ApiAgentSipAccountWSDTO agentSipAccount;
-
+    private ApiAgentSipAccountWSDTO sipAccount;
 
     public ApiAgentSipAccountWSModel() {
     }
 
-    public ApiAgentSipAccountWSModel(GeneralWSModel general, ApiAgentSipAccountWSDTO agentSipAccount) {
+    public ApiAgentSipAccountWSModel(GeneralWSModel general, ApiAgentSipAccountWSDTO sipAccount) {
         this.general = general;
-        this.agentSipAccount = agentSipAccount;
+        this.sipAccount = sipAccount;
     }
 
     public GeneralWSModel getGeneral() {
@@ -25,11 +24,11 @@ public class ApiAgentSipAccountWSModel {
         this.general = general;
     }
 
-    public ApiAgentSipAccountWSDTO getAgentSipAccount() {
-        return agentSipAccount;
+    public ApiAgentSipAccountWSDTO getSipAccount() {
+        return sipAccount;
     }
 
-    public void setAgentSipAccount(ApiAgentSipAccountWSDTO agentSipAccount) {
-        this.agentSipAccount = agentSipAccount;
+    public void setSipAccount(ApiAgentSipAccountWSDTO sipAccount) {
+        this.sipAccount = sipAccount;
     }
 }
