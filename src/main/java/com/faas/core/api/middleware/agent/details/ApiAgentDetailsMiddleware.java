@@ -50,7 +50,7 @@ public class ApiAgentDetailsMiddleware {
 
         ApiAgentSipAccountWSDTO agentSipAccountWSDTO = apiAgentDetailsFramework.apiGetAgentSipAccountService(agentId,processId);
         if (agentSipAccountWSDTO != null){
-            response.setSipAccount(agentSipAccountWSDTO);
+            response.setAgentSipAccount(agentSipAccountWSDTO);
         }
 
         general.setOperation("apiGetAgentSipAccount");
