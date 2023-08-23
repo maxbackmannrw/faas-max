@@ -45,7 +45,7 @@ public class ApiOperationDetailsMiddleware {
 
         ApiOperationDetailsWSDTO operationDetailsWSDTO = apiOperationDetailsFramework.apiOperationValidateService(agentId,sessionId);
         if (operationDetailsWSDTO != null){
-            response.setOperationDetails(operationDetailsWSDTO);
+        //    response.setOperationDetails(operationDetailsWSDTO);
         }
 
         general.setOperation("apiOperationValidate");
