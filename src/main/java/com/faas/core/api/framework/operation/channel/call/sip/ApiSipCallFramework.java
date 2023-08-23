@@ -91,7 +91,7 @@ public class ApiSipCallFramework {
             sipCallDBModel.setProvider(sipAccountWSDTO.getProvider());
             sipCallDBModel.setConnectionId("");
             sipCallDBModel.setCallState(AppConstant.READY_CALL);
-            sipCallDBModel.setsDate(appUtils.getCurrentTimeStamp());
+            sipCallDBModel.setsDate(0);
             sipCallDBModel.setfDate(0);
             sipCallDBModel.setuDate(appUtils.getCurrentTimeStamp());
             sipCallDBModel.setcDate(appUtils.getCurrentTimeStamp());
@@ -106,7 +106,10 @@ public class ApiSipCallFramework {
     public ApiSipCallWSDTO apiStartSipCallService(long agentId,long sessionId,long clientId,long callId) {
 
         List<SipCallDBModel> sipCallDBModels = sipCallRepository.findByIdAndSessionIdAndAgentIdAndClientId(callId,sessionId,agentId,clientId);
-        if (!sipCallDBModels.isEmpty()) {
+        if (!sipCallDBModels.isEmpty() && sipCallDBModels.get(0).getCallState().equalsIgnoreCase(AppConstant.READY_CALL)) {
+            sipCallDBModels.get(0).setCallState(AppConstant.ACTIVE_CALL);
+            sipCallDBModels.get(0).setsDate(appUtils.getCurrentTimeStamp());
+            sipCallDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
 
             return new ApiSipCallWSDTO(sipCallRepository.save(sipCallDBModels.get(0)));
         }

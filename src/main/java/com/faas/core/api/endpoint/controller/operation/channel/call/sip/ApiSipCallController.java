@@ -83,9 +83,9 @@ public class ApiSipCallController {
 
     @RequestMapping(value = ApiRoute.API_START_SIP_CALL, method = RequestMethod.POST)
     public ResponseEntity<?> apiStartSipCall(@RequestParam long agentId,
-                                              @RequestParam long sessionId,
-                                              @RequestParam long clientId,
-                                              @RequestParam long callId) {
+                                             @RequestParam long sessionId,
+                                             @RequestParam long clientId,
+                                             @RequestParam long callId) {
 
         ApiSipCallWSModel response = apiSipCallMiddleware.apiStartSipCall(agentId,sessionId,clientId,callId);
 
