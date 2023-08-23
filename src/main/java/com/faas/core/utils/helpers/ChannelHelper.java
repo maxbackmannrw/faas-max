@@ -9,7 +9,6 @@ import com.faas.core.api.model.ws.operation.channel.message.email.dto.ApiOperati
 import com.faas.core.api.model.ws.operation.channel.message.sms.dto.ApiOperationSmsMessageWSDTO;
 import com.faas.core.api.model.ws.operation.channel.message.sms.dto.ApiSmsAccountWSDTO;
 import com.faas.core.api.model.ws.operation.channel.message.wapp.dto.ApiOperationWappMessageWSDTO;
-import com.faas.core.api.model.ws.operation.channel.messenger.dto.ApiOperationMessengerWSDTO;
 import com.faas.core.api.model.ws.operation.channel.push.dto.ApiOperationPushMessageWSDTO;
 import com.faas.core.api.model.ws.operation.channel.push.dto.ApiPushAccountWSDTO;
 import com.faas.core.base.model.db.channel.account.EmailAccountDBModel;
@@ -102,7 +101,6 @@ public class ChannelHelper {
 
     @Autowired
     ProcessSmsChannelRepository processSmsChannelRepository;
-
 
 
     @Autowired
@@ -404,11 +402,6 @@ public class ChannelHelper {
         return operationEmailWSDTO;
     }
 
-
-    public ApiOperationMessengerWSDTO mapApiOperationMessengerWSDTO() {
-
-        return null;
-    }
 
 
     public ApiOperationPushMessageWSDTO mapApiOperationPushMessageWSDTO(SessionDBModel sessionDBModel) {

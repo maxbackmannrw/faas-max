@@ -5,7 +5,6 @@ import com.faas.core.api.model.ws.operation.channel.call.wapp.dto.ApiOperationWa
 import com.faas.core.api.model.ws.operation.channel.message.email.dto.ApiOperationEmailWSDTO;
 import com.faas.core.api.model.ws.operation.channel.message.sms.dto.ApiOperationSmsMessageWSDTO;
 import com.faas.core.api.model.ws.operation.channel.message.wapp.dto.ApiOperationWappMessageWSDTO;
-import com.faas.core.api.model.ws.operation.channel.messenger.dto.ApiOperationMessengerWSDTO;
 import com.faas.core.api.model.ws.operation.channel.push.dto.ApiOperationPushMessageWSDTO;
 
 public class ApiOperationChannelWSDTO {
@@ -15,20 +14,17 @@ public class ApiOperationChannelWSDTO {
     private ApiOperationSmsMessageWSDTO operationSmsMessage;
     private ApiOperationWappMessageWSDTO operationWappMessage;
     private ApiOperationEmailWSDTO operationEmail;
-    private ApiOperationMessengerWSDTO operationMessenger;
     private ApiOperationPushMessageWSDTO operationPushMessage;
-
 
     public ApiOperationChannelWSDTO() {
     }
 
-    public ApiOperationChannelWSDTO(ApiOperationSipCallWSDTO operationSipCall, ApiOperationWappCallWSDTO operationWappCall, ApiOperationSmsMessageWSDTO operationSmsMessage, ApiOperationWappMessageWSDTO operationWappMessage, ApiOperationEmailWSDTO operationEmail, ApiOperationMessengerWSDTO operationMessenger, ApiOperationPushMessageWSDTO operationPushMessage) {
+    public ApiOperationChannelWSDTO(ApiOperationSipCallWSDTO operationSipCall, ApiOperationWappCallWSDTO operationWappCall, ApiOperationSmsMessageWSDTO operationSmsMessage, ApiOperationWappMessageWSDTO operationWappMessage, ApiOperationEmailWSDTO operationEmail, ApiOperationPushMessageWSDTO operationPushMessage) {
         this.operationSipCall = operationSipCall;
         this.operationWappCall = operationWappCall;
         this.operationSmsMessage = operationSmsMessage;
         this.operationWappMessage = operationWappMessage;
         this.operationEmail = operationEmail;
-        this.operationMessenger = operationMessenger;
         this.operationPushMessage = operationPushMessage;
     }
 
@@ -70,14 +66,6 @@ public class ApiOperationChannelWSDTO {
 
     public void setOperationEmail(ApiOperationEmailWSDTO operationEmail) {
         this.operationEmail = operationEmail;
-    }
-
-    public ApiOperationMessengerWSDTO getOperationMessenger() {
-        return operationMessenger;
-    }
-
-    public void setOperationMessenger(ApiOperationMessengerWSDTO operationMessenger) {
-        this.operationMessenger = operationMessenger;
     }
 
     public ApiOperationPushMessageWSDTO getOperationPushMessage() {

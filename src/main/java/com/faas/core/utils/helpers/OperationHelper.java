@@ -1,17 +1,10 @@
 package com.faas.core.utils.helpers;
 
 import com.faas.core.api.model.ws.operation.channel.call.sip.dto.ApiSipAccountWSDTO;
-import com.faas.core.api.model.ws.operation.channel.call.wapp.dto.ApiOperationWappCallWSDTO;
 import com.faas.core.api.model.ws.operation.channel.call.wapp.dto.ApiWappAccountWSDTO;
 import com.faas.core.api.model.ws.operation.channel.content.dto.ApiOperationChannelWSDTO;
 import com.faas.core.api.model.ws.operation.channel.message.email.dto.ApiEmailAccountWSDTO;
-import com.faas.core.api.model.ws.operation.channel.message.email.dto.ApiOperationEmailWSDTO;
-import com.faas.core.api.model.ws.operation.channel.message.sms.dto.ApiOperationSmsMessageWSDTO;
 import com.faas.core.api.model.ws.operation.channel.message.sms.dto.ApiSmsAccountWSDTO;
-import com.faas.core.api.model.ws.operation.channel.message.wapp.dto.ApiOperationWappMessageWSDTO;
-import com.faas.core.api.model.ws.operation.channel.messenger.dto.ApiMessengerAccountWSDTO;
-import com.faas.core.api.model.ws.operation.channel.messenger.dto.ApiOperationMessengerWSDTO;
-import com.faas.core.api.model.ws.operation.channel.push.dto.ApiOperationPushMessageWSDTO;
 import com.faas.core.api.model.ws.operation.channel.push.dto.ApiPushAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.activity.dto.ApiOperationActivityWSDTO;
 import com.faas.core.api.model.ws.operation.details.client.content.dto.ApiOperationClientWSDTO;
@@ -28,12 +21,9 @@ import com.faas.core.base.model.db.client.details.ClientNoteDBModel;
 import com.faas.core.base.model.db.client.details.ClientPhoneDBModel;
 import com.faas.core.base.model.db.flow.FlowDBModel;
 import com.faas.core.base.model.db.inquiry.InquiryDBModel;
-import com.faas.core.base.model.db.operation.channel.WappCallDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.operation.scenario.ScenarioExecutionDBModel;
 import com.faas.core.base.model.db.process.content.ProcessDBModel;
-import com.faas.core.base.model.db.process.details.channel.content.ProcessEmailChannelDBModel;
-import com.faas.core.base.model.db.process.details.channel.content.ProcessPushChannelDBModel;
 import com.faas.core.base.model.db.process.details.channel.content.ProcessSmsChannelDBModel;
 import com.faas.core.base.model.db.process.details.channel.content.ProcessWappChannelDBModel;
 import com.faas.core.base.model.db.process.details.scenario.ProcessScenarioDBModel;
@@ -210,10 +200,10 @@ public class OperationHelper {
 
         ApiWappAccountWSDTO wappAccountWSDTO = new ApiWappAccountWSDTO();
         List<ProcessWappChannelDBModel> processWappChannels = processWappChannelRepository.findByProcessId(processId);
-        if (processWappChannels.size()>0){
+        if (!processWappChannels.isEmpty()){
         }
         List<UserDetailsDBModel> userDetails = userDetailsRepository.findByUserId(agentId);
-        if (userDetails.size()>0 && userDetails.get(0).getWappChannel() != null){
+        if (!userDetails.isEmpty() && userDetails.get(0).getWappChannel() != null){
             wappAccountWSDTO.setAccountId(userDetails.get(0).getWappChannel().getAccountId());
             wappAccountWSDTO.setInstanceKey(userDetails.get(0).getWappChannel().getInstanceKey());
             wappAccountWSDTO.setPhoneNumber(userDetails.get(0).getWappChannel().getPhoneNumber());
@@ -230,11 +220,6 @@ public class OperationHelper {
         return wappAccountWSDTO;
     }
 
-
-    public ApiMessengerAccountWSDTO createApiMessengerAccountWSDTO(long agentId, long sessionId, long clientId, String campaignId, String processId){
-
-        return null;
-    }
 
 
     public ApiPushAccountWSDTO createApiPushAccountWSDTO(long agentId, long sessionId, long clientId, String campaignId, String processId){
@@ -271,7 +256,6 @@ public class OperationHelper {
     public ApiOperationDetailsWSDTO mapApiOperationDetailsWSDTO(SessionDBModel sessionDBModel, ClientDBModel clientDBModel, OperationDBModel operationDBModel, CampaignDBModel campaignDBModel, ProcessDBModel processDBModel) {
 
         ApiOperationDetailsWSDTO operationDetailsWSDTO = new ApiOperationDetailsWSDTO();
-
         operationDetailsWSDTO.setOperation(operationDBModel);
         operationDetailsWSDTO.setOperationSession(sessionDBModel);
         if (sessionDBModel.getSessionType().equalsIgnoreCase(AppConstant.INQUIRY_CAMPAIGN)){
@@ -317,6 +301,7 @@ public class OperationHelper {
         return clientOsIntWSDTOS;
     }
 
+
     public List<ApiClientNoteWSDTO> mapApiOperationNoteWSDTO(ClientDBModel clientDBModel) {
 
         List<ApiClientNoteWSDTO> clientNoteWSDTOS = new ArrayList<>();
@@ -335,6 +320,7 @@ public class OperationHelper {
         operationCampaignWSDTO.setOperationProcess(processDBModel);
         return operationCampaignWSDTO;
     }
+
 
     public List<ApiOperationActivityWSDTO> mapApiOperationActivities(OperationDBModel operationDBModel) {
 
@@ -389,26 +375,15 @@ public class OperationHelper {
         List<ClientPhoneDBModel> clientPhoneDBModels = clientPhoneRepository.findByClientId(clientDBModel.getId());
 
         ApiOperationChannelWSDTO operationChannelWSDTO = new ApiOperationChannelWSDTO();
-
         operationChannelWSDTO.setOperationSipCall(channelHelper.mapApiOperationSipCallWSDTO(sessionDBModel,clientPhoneDBModels));
         operationChannelWSDTO.setOperationWappCall(channelHelper.mapApiOperationWappCallWSDTO(sessionDBModel,clientPhoneDBModels));
         operationChannelWSDTO.setOperationSmsMessage(channelHelper.mapApiOperationSmsMessageWSDTO(sessionDBModel,clientPhoneDBModels));
         operationChannelWSDTO.setOperationWappMessage(channelHelper.mapApiOperationWappMessageWSDTO(sessionDBModel,clientPhoneDBModels));
         operationChannelWSDTO.setOperationEmail(channelHelper.mapApiOperationEmailWSDTO(sessionDBModel));
-        operationChannelWSDTO.setOperationMessenger(channelHelper.mapApiOperationMessengerWSDTO());
         operationChannelWSDTO.setOperationPushMessage(channelHelper.mapApiOperationPushMessageWSDTO(sessionDBModel));
 
         return operationChannelWSDTO;
     }
-
-
-
-
-
-
-
-
-
 
 
 }
