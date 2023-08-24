@@ -105,19 +105,19 @@ public class ApiSipCallMiddleware {
     }
 
 
-    public ApiSipCallWSModel apiStartSipCall(long agentId,long sessionId,long clientId,long callId) {
+    public ApiSipCallWSModel apiMakeSipCall(long agentId,long sessionId,long clientId,long callId) {
 
         ApiSipCallWSModel response = new ApiSipCallWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ApiSipCallWSDTO>sipCallWSDTOS = new ArrayList<>();
 
-        ApiSipCallWSDTO sipCallWSDTO = apiSipCallFramework.apiStartSipCallService(agentId,sessionId,clientId,callId);
+        ApiSipCallWSDTO sipCallWSDTO = apiSipCallFramework.apiMakeSipCallService(agentId,sessionId,clientId,callId);
         if (sipCallWSDTO != null){
             sipCallWSDTOS.add(sipCallWSDTO);
         }
 
         response.setSipCalls(sipCallWSDTOS);
-        general.setOperation("apiFinishSipCall");
+        general.setOperation("apiMakeSipCall");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -125,6 +125,29 @@ public class ApiSipCallMiddleware {
 
         return response;
     }
+
+
+    public ApiSipCallWSModel apiEndSipCall(long agentId,long sessionId,long clientId,long callId) {
+
+        ApiSipCallWSModel response = new ApiSipCallWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+        List<ApiSipCallWSDTO>sipCallWSDTOS = new ArrayList<>();
+
+        ApiSipCallWSDTO sipCallWSDTO = apiSipCallFramework.apiEndSipCallService(agentId,sessionId,clientId,callId);
+        if (sipCallWSDTO != null){
+            sipCallWSDTOS.add(sipCallWSDTO);
+        }
+
+        response.setSipCalls(sipCallWSDTOS);
+        general.setOperation("apiEndSipCall");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
 
 
     public ApiSipCallWSModel apiFinishSipCall(long agentId,long sessionId,long clientId,long callId) {

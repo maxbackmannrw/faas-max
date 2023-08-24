@@ -81,13 +81,28 @@ public class ApiSipCallController {
     }
 
 
-    @RequestMapping(value = ApiRoute.API_START_SIP_CALL, method = RequestMethod.POST)
-    public ResponseEntity<?> apiStartSipCall(@RequestParam long agentId,
-                                             @RequestParam long sessionId,
-                                             @RequestParam long clientId,
-                                             @RequestParam long callId) {
+    @RequestMapping(value = ApiRoute.API_MAKE_SIP_CALL, method = RequestMethod.POST)
+    public ResponseEntity<?> apiMakeSipCall(@RequestParam long agentId,
+                                            @RequestParam long sessionId,
+                                            @RequestParam long clientId,
+                                            @RequestParam long callId) {
 
-        ApiSipCallWSModel response = apiSipCallMiddleware.apiStartSipCall(agentId,sessionId,clientId,callId);
+        ApiSipCallWSModel response = apiSipCallMiddleware.apiMakeSipCall(agentId,sessionId,clientId,callId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = ApiRoute.API_END_SIP_CALL, method = RequestMethod.POST)
+    public ResponseEntity<?> apiEndSipCall(@RequestParam long agentId,
+                                           @RequestParam long sessionId,
+                                           @RequestParam long clientId,
+                                           @RequestParam long callId) {
+
+        ApiSipCallWSModel response = apiSipCallMiddleware.apiEndSipCall(agentId,sessionId,clientId,callId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

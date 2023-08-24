@@ -130,7 +130,8 @@ public class ApiRoute {
     public static final String API_GET_SIP_CALLS = "apigetsipcalls";
     public static final String API_GET_SIP_CALL = "apigetsipcall";
     public static final String API_CREATE_SIP_CALL = "apicreatesipcall";
-    public static final String API_START_SIP_CALL = "apistartsipcall";
+    public static final String API_MAKE_SIP_CALL = "apimakesipcall";
+    public static final String API_END_SIP_CALL = "apiendsipcall";
     public static final String API_FINISH_SIP_CALL = "apifinishsipcall";
     public static final String API_UPDATE_SIP_CALL = "apiupdatesipcall";
     public static final String API_REMOVE_SIP_CALL = "apiremovesipcall";

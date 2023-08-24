@@ -23,7 +23,6 @@ public class ApiAgentDetailsController {
     @Autowired
     ApiAgentDetailsMiddleware apiAgentDetailsMiddleware;
 
-
     @RequestMapping(value = ApiRoute.API_GET_AGENT_DETAILS, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetAgentDetails(@RequestParam long agentId) {
 
@@ -59,5 +58,6 @@ public class ApiAgentDetailsController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
+
 
 }
