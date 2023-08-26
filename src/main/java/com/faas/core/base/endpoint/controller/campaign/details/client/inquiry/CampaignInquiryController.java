@@ -4,7 +4,6 @@ import com.faas.core.base.middleware.campaign.details.client.inquiry.CampaignInq
 import com.faas.core.base.model.ws.campaign.details.client.inquiry.CampaignInquiryWSModel;
 import com.faas.core.base.model.ws.inquiry.InquiryRequest;
 import com.faas.core.base.model.ws.inquiry.InquiryWSModel;
-import com.faas.core.base.model.ws.session.content.SessionRequest;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;

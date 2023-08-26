@@ -4,7 +4,6 @@ import com.faas.core.base.middleware.campaign.details.client.flow.CampaignFlowMi
 import com.faas.core.base.model.ws.campaign.details.client.flow.CampaignFlowWSModel;
 import com.faas.core.base.model.ws.flow.FlowRequest;
 import com.faas.core.base.model.ws.flow.FlowWSModel;
-import com.faas.core.base.model.ws.inquiry.InquiryRequest;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;
