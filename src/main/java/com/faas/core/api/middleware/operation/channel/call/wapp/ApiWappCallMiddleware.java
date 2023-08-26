@@ -87,6 +87,57 @@ public class ApiWappCallMiddleware {
     }
 
 
+    public ApiWappCallWSModel apiMakeWappCall(long agentId,long sessionId,long clientId,String processId,long numberId) {
+
+        ApiWappCallWSModel response = new ApiWappCallWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+
+
+        general.setOperation("apiCreateWappCall");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
+    public ApiWappCallWSModel apiEndWappCall(long agentId,long sessionId,long clientId,String processId,long numberId) {
+
+        ApiWappCallWSModel response = new ApiWappCallWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+
+
+        general.setOperation("apiCreateWappCall");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
+    public ApiWappCallWSModel apiFinishWappCall(long agentId,long sessionId,long clientId,String processId,long numberId) {
+
+        ApiWappCallWSModel response = new ApiWappCallWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+
+
+        general.setOperation("apiCreateWappCall");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
     public ApiWappCallWSModel apiUpdateWappCall(long agentId,long sessionId,long clientId,long callId) {
 
         ApiWappCallWSModel response = new ApiWappCallWSModel();
