@@ -93,7 +93,7 @@ public class ApiRoute {
 
     public static final String API_GET_CLIENT_OS_INTS = "apigetclientosints";
 
-    public static final String API_GET_CLIENT_HOOKS = "apigetclienthooks";
+    public static final String API_GET_OPERATION_PEER = "apigetoperationpeer";
 
 
     public static final String API_GET_CLIENT_NOTES = "apigetclientnotes";
