@@ -100,7 +100,6 @@ public class ApiSmsMessageFramework {
         if (!sessionDBModels.isEmpty() && !smsMessageTempDBModels.isEmpty() && clientPhoneDBModel.isPresent() && !processSmsChannelDBModels.isEmpty()){
 
             SmsMessageDBModel smsMessageDBModel = new SmsMessageDBModel();
-
             smsMessageDBModel.setSessionId(sessionId);
             smsMessageDBModel.setClientId(sessionDBModels.get(0).getClientId());
             smsMessageDBModel.setNumberId(numberId);
@@ -115,7 +114,10 @@ public class ApiSmsMessageFramework {
             smsMessageDBModel.setcDate(appUtils.getCurrentTimeStamp());
             smsMessageDBModel.setStatus(1);
 
-            return new ApiSmsMessageWSDTO(smsMessageRepository.save(smsMessageDBModel));
+            SmsMessageDBModel createdSms = smsMessageRepository.save(smsMessageDBModel);
+
+
+            return new ApiSmsMessageWSDTO();
         }
         return null;
     }
