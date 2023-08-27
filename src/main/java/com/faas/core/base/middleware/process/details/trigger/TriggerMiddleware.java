@@ -82,7 +82,7 @@ public class TriggerMiddleware {
     }
 
 
-    public TriggerWSModel createAITrigger(long userId, String processId, String accountId,String trigger, long typeId) {
+    public TriggerWSModel createAITrigger(long userId,String processId,String accountId,String trigger,long typeId) {
 
         TriggerWSModel response = new TriggerWSModel();
         GeneralWSModel general = new GeneralWSModel();
@@ -171,7 +171,6 @@ public class TriggerMiddleware {
     }
 
 
-
     public TriggerWSModel createSipTrigger(long userId,String processId,String accountId,String trigger,String callerId,long typeId) {
 
         TriggerWSModel response = new TriggerWSModel();
@@ -181,6 +180,7 @@ public class TriggerMiddleware {
         TriggerWSDTO triggerWSDTO = triggerFramework.createSipTriggerService(userId,processId,accountId,trigger,callerId,typeId);
         if (triggerWSDTO != null){
             triggerWSDTOS.add(triggerWSDTO);
+
         }
 
         response.setTriggers(triggerWSDTOS);
@@ -216,7 +216,6 @@ public class TriggerMiddleware {
     }
 
 
-
     public TriggerWSModel createSmsTrigger(long userId, String processId,String accountId,String trigger,String smsTitle, String smsBody, String senderId, long typeId) {
 
         TriggerWSModel response = new TriggerWSModel();
@@ -237,6 +236,7 @@ public class TriggerMiddleware {
 
         return response;
     }
+
 
     public TriggerWSModel updateSmsTrigger(long userId,String triggerId,String accountId,String trigger,String smsTitle,String smsBody,String senderId) {
 
