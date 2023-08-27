@@ -270,7 +270,6 @@ public class TriggerController {
     }
 
 
-
     @RequestMapping(value = BaseRoute.REMOVE_TRIGGER, method = RequestMethod.POST)
     public ResponseEntity<?> removeTrigger(@RequestParam long userId,
                                            @RequestParam String triggerId) {
