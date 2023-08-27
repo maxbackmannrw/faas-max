@@ -108,10 +108,9 @@ public class TriggerFramework {
     public TriggerDetails createAITrigger(String accountId) {
 
         TriggerDetails triggerDetails = new TriggerDetails();
-
         AiTriggerDAO aiTriggerDAO = new AiTriggerDAO();
         aiTriggerDAO.setAccountId(accountId);
-        aiTriggerDAO.setAccount("");
+        aiTriggerDAO.setAccount("account");
         aiTriggerDAO.setTriggerDatas(new ArrayList<>());
         aiTriggerDAO.setcDate(appUtils.getCurrentTimeStamp());
         aiTriggerDAO.setStatus(1);
@@ -152,7 +151,6 @@ public class TriggerFramework {
     public TriggerDetails createEmailTrigger(String accountId,String emailSubject,String emailTitle,String emailBody,String emailSender) {
 
         TriggerDetails triggerDetails = new TriggerDetails();
-
         EmailTriggerDAO emailTriggerDAO = new EmailTriggerDAO();
         Optional<EmailAccountDBModel> emailAccountDBModel = emailAccountRepository.findById(accountId);
         if (emailAccountDBModel.isPresent()){
@@ -203,7 +201,6 @@ public class TriggerFramework {
     public TriggerDetails createSipTrigger(String accountId,String callerId) {
 
         TriggerDetails triggerDetails = new TriggerDetails();
-
         SipTriggerDAO sipTriggerDAO = new SipTriggerDAO();
         Optional<SipAccountDBModel> sipAccountDBModel = sipAccountRepository.findById(accountId);
         if (sipAccountDBModel.isPresent()){
@@ -249,7 +246,6 @@ public class TriggerFramework {
     public TriggerDetails createSmsTrigger(String accountId,String smsTitle,String smsBody,String senderId) {
 
         TriggerDetails triggerDetails = new TriggerDetails();
-
         SmsTriggerDAO smsTriggerDAO = new SmsTriggerDAO();
         Optional<SmsAccountDBModel> smsAccountDBModel = smsAccountRepository.findById(accountId);
         if (smsAccountDBModel.isPresent()){
@@ -299,7 +295,6 @@ public class TriggerFramework {
     public TriggerDetails createWappCallTrigger(String accountId) {
 
         TriggerDetails triggerDetails = new TriggerDetails();
-
         WappCallTriggerDAO wappCallTriggerDAO = new WappCallTriggerDAO();
         Optional<WappAccountDBModel> wappAccountDBModel = wappAccountRepository.findById(accountId);
         if (wappAccountDBModel.isPresent()){
@@ -367,6 +362,7 @@ public class TriggerFramework {
 
         return null;
     }
+
 
 
     public TriggerWSDTO removeTriggerService(long userId, String triggerId) {
