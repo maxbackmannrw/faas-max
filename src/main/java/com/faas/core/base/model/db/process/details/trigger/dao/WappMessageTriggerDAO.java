@@ -2,39 +2,27 @@ package com.faas.core.base.model.db.process.details.trigger.dao;
 
 import java.util.List;
 
-public class WappTrigger {
+public class WappMessageTriggerDAO {
 
-    private String id;
     private String accountId;
-    private String wappAccount;
+    private String account;
     private String wappTitle;
     private String wappBody;
-    private List<TriggerData> datas;
-    private long uDate;
+    private List<TriggerDataDAO> triggerDatas;
     private long cDate;
     private int status;
 
-    public WappTrigger() {
+    public WappMessageTriggerDAO() {
     }
 
-    public WappTrigger(String id, String accountId, String wappAccount, String wappTitle, String wappBody, List<TriggerData> datas, long uDate, long cDate, int status) {
-        this.id = id;
+    public WappMessageTriggerDAO(String accountId, String account, String wappTitle, String wappBody, List<TriggerDataDAO> triggerDatas, long cDate, int status) {
         this.accountId = accountId;
-        this.wappAccount = wappAccount;
+        this.account = account;
         this.wappTitle = wappTitle;
         this.wappBody = wappBody;
-        this.datas = datas;
-        this.uDate = uDate;
+        this.triggerDatas = triggerDatas;
         this.cDate = cDate;
         this.status = status;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getAccountId() {
@@ -45,12 +33,12 @@ public class WappTrigger {
         this.accountId = accountId;
     }
 
-    public String getWappAccount() {
-        return wappAccount;
+    public String getAccount() {
+        return account;
     }
 
-    public void setWappAccount(String wappAccount) {
-        this.wappAccount = wappAccount;
+    public void setAccount(String account) {
+        this.account = account;
     }
 
     public String getWappTitle() {
@@ -69,20 +57,12 @@ public class WappTrigger {
         this.wappBody = wappBody;
     }
 
-    public List<TriggerData> getDatas() {
-        return datas;
+    public List<TriggerDataDAO> getTriggerDatas() {
+        return triggerDatas;
     }
 
-    public void setDatas(List<TriggerData> datas) {
-        this.datas = datas;
-    }
-
-    public long getuDate() {
-        return uDate;
-    }
-
-    public void setuDate(long uDate) {
-        this.uDate = uDate;
+    public void setTriggerDatas(List<TriggerDataDAO> triggerDatas) {
+        this.triggerDatas = triggerDatas;
     }
 
     public long getcDate() {

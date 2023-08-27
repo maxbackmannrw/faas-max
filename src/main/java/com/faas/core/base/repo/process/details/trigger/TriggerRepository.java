@@ -11,8 +11,7 @@ public interface TriggerRepository extends MongoRepository<TriggerDBModel, Strin
 
     List<TriggerDBModel>findByStatus(int status);
     List<TriggerDBModel>findByProcessId(String processId);
-    List<TriggerDBModel>findByIdAndProcessId(String triggerId,String processId);
+    List<TriggerDBModel>findByIdAndProcessId(String triggerId, String processId);
     List<TriggerDBModel>findByProcessIdAndBaseType(String processId,String baseType);
-
 }
 

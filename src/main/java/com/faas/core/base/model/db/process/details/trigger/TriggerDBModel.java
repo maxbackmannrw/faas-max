@@ -1,6 +1,6 @@
 package com.faas.core.base.model.db.process.details.trigger;
 
-import com.faas.core.base.model.db.process.details.trigger.dao.TriggerDAO;
+import com.faas.core.base.model.db.process.details.trigger.dao.TriggerDetails;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -10,7 +10,8 @@ public class TriggerDBModel {
     @Id
     private String id;
     private String processId;
-    private TriggerDAO trigger;
+    private String trigger;
+    private TriggerDetails triggerDetails;
     private long typeId;
     private String type;
     private String baseType;
@@ -21,10 +22,11 @@ public class TriggerDBModel {
     public TriggerDBModel() {
     }
 
-    public TriggerDBModel(String id, String processId, TriggerDAO trigger, long typeId, String type, String baseType, long uDate, long cDate, int status) {
+    public TriggerDBModel(String id, String processId, String trigger, TriggerDetails triggerDetails, long typeId, String type, String baseType, long uDate, long cDate, int status) {
         this.id = id;
         this.processId = processId;
         this.trigger = trigger;
+        this.triggerDetails = triggerDetails;
         this.typeId = typeId;
         this.type = type;
         this.baseType = baseType;
@@ -49,12 +51,20 @@ public class TriggerDBModel {
         this.processId = processId;
     }
 
-    public TriggerDAO getTrigger() {
+    public String getTrigger() {
         return trigger;
     }
 
-    public void setTrigger(TriggerDAO trigger) {
+    public void setTrigger(String trigger) {
         this.trigger = trigger;
+    }
+
+    public TriggerDetails getTriggerDetails() {
+        return triggerDetails;
+    }
+
+    public void setTriggerDetails(TriggerDetails triggerDetails) {
+        this.triggerDetails = triggerDetails;
     }
 
     public long getTypeId() {

@@ -92,7 +92,8 @@ public class ProcessHelper {
 
     public List<TriggerWSDTO> createProcessTriggersWSDTOS(ProcessDBModel processDBModel){
 
-        List<TriggerWSDTO>triggerWSDTOS = new ArrayList<>();
+        List<TriggerWSDTO> triggerWSDTOS = new ArrayList<>();
+
         List<TriggerDBModel> triggerDBModels = triggerRepository.findByProcessId(processDBModel.getId());
         for (TriggerDBModel triggerDBModel : triggerDBModels) {
             triggerWSDTOS.add(new TriggerWSDTO(triggerDBModel));

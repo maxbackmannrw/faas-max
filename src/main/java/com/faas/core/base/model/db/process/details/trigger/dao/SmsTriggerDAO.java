@@ -2,41 +2,29 @@ package com.faas.core.base.model.db.process.details.trigger.dao;
 
 import java.util.List;
 
-public class SmsTrigger {
+public class SmsTriggerDAO {
 
-    private String id;
     private String accountId;
-    private String smsAccount;
+    private String account;
     private String smsTitle;
     private String smsBody;
     private String senderId;
-    private List<TriggerData> datas;
-    private long uDate;
+    private List<TriggerDataDAO> triggerDatas;
     private long cDate;
     private int status;
 
-    public SmsTrigger() {
+    public SmsTriggerDAO() {
     }
 
-    public SmsTrigger(String id, String accountId, String smsAccount, String smsTitle, String smsBody, String senderId, List<TriggerData> datas, long uDate, long cDate, int status) {
-        this.id = id;
+    public SmsTriggerDAO(String accountId, String account, String smsTitle, String smsBody, String senderId, List<TriggerDataDAO> triggerDatas, long cDate, int status) {
         this.accountId = accountId;
-        this.smsAccount = smsAccount;
+        this.account = account;
         this.smsTitle = smsTitle;
         this.smsBody = smsBody;
         this.senderId = senderId;
-        this.datas = datas;
-        this.uDate = uDate;
+        this.triggerDatas = triggerDatas;
         this.cDate = cDate;
         this.status = status;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getAccountId() {
@@ -47,12 +35,12 @@ public class SmsTrigger {
         this.accountId = accountId;
     }
 
-    public String getSmsAccount() {
-        return smsAccount;
+    public String getAccount() {
+        return account;
     }
 
-    public void setSmsAccount(String smsAccount) {
-        this.smsAccount = smsAccount;
+    public void setAccount(String account) {
+        this.account = account;
     }
 
     public String getSmsTitle() {
@@ -79,20 +67,12 @@ public class SmsTrigger {
         this.senderId = senderId;
     }
 
-    public List<TriggerData> getDatas() {
-        return datas;
+    public List<TriggerDataDAO> getTriggerDatas() {
+        return triggerDatas;
     }
 
-    public void setDatas(List<TriggerData> datas) {
-        this.datas = datas;
-    }
-
-    public long getuDate() {
-        return uDate;
-    }
-
-    public void setuDate(long uDate) {
-        this.uDate = uDate;
+    public void setTriggerDatas(List<TriggerDataDAO> triggerDatas) {
+        this.triggerDatas = triggerDatas;
     }
 
     public long getcDate() {

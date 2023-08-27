@@ -2,43 +2,31 @@ package com.faas.core.base.model.db.process.details.trigger.dao;
 
 import java.util.List;
 
-public class EmailTrigger {
+public class EmailTriggerDAO {
 
-    private String id;
     private String accountId;
-    private String emailAccount;
+    private String account;
     private String emailSubject;
     private String emailTitle;
     private String emailBody;
     private String emailSender;
-    private List<TriggerData>datas;
-    private long uDate;
+    private List<TriggerDataDAO> triggerDatas;
     private long cDate;
     private int status;
 
-    public EmailTrigger() {
+    public EmailTriggerDAO() {
     }
 
-    public EmailTrigger(String id, String accountId, String emailAccount, String emailSubject, String emailTitle, String emailBody, String emailSender, List<TriggerData> datas, long uDate, long cDate, int status) {
-        this.id = id;
+    public EmailTriggerDAO(String accountId, String account, String emailSubject, String emailTitle, String emailBody, String emailSender, List<TriggerDataDAO> triggerDatas, long cDate, int status) {
         this.accountId = accountId;
-        this.emailAccount = emailAccount;
+        this.account = account;
         this.emailSubject = emailSubject;
         this.emailTitle = emailTitle;
         this.emailBody = emailBody;
         this.emailSender = emailSender;
-        this.datas = datas;
-        this.uDate = uDate;
+        this.triggerDatas = triggerDatas;
         this.cDate = cDate;
         this.status = status;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getAccountId() {
@@ -49,12 +37,12 @@ public class EmailTrigger {
         this.accountId = accountId;
     }
 
-    public String getEmailAccount() {
-        return emailAccount;
+    public String getAccount() {
+        return account;
     }
 
-    public void setEmailAccount(String emailAccount) {
-        this.emailAccount = emailAccount;
+    public void setAccount(String account) {
+        this.account = account;
     }
 
     public String getEmailSubject() {
@@ -89,20 +77,12 @@ public class EmailTrigger {
         this.emailSender = emailSender;
     }
 
-    public List<TriggerData> getDatas() {
-        return datas;
+    public List<TriggerDataDAO> getTriggerDatas() {
+        return triggerDatas;
     }
 
-    public void setDatas(List<TriggerData> datas) {
-        this.datas = datas;
-    }
-
-    public long getuDate() {
-        return uDate;
-    }
-
-    public void setuDate(long uDate) {
-        this.uDate = uDate;
+    public void setTriggerDatas(List<TriggerDataDAO> triggerDatas) {
+        this.triggerDatas = triggerDatas;
     }
 
     public long getcDate() {

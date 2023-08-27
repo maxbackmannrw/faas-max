@@ -355,7 +355,7 @@ public class BaseRoute {
 
     public static final String GET_PROCESS_TRIGGERS = "getprocesstriggers";
     public static final String GET_PROCESS_TRIGGERS_BY_TYPE = "getprocesstriggersbytype";
-    public static final String GET_PROCESS_TRIGGER = "getprocesstrigger";
+    public static final String GET_TRIGGER = "gettrigger";
 
     public static final String CREATE_AI_TRIGGER = "createaitrigger";
     public static final String UPDATE_AI_TRIGGER = "updateaitrigger";
@@ -369,8 +369,11 @@ public class BaseRoute {
     public static final String CREATE_SMS_TRIGGER = "createsmstrigger";
     public static final String UPDATE_SMS_TRIGGER = "updatesmstrigger";
 
-    public static final String CREATE_WAPP_TRIGGER = "createwapptrigger";
-    public static final String UPDATE_WAPP_TRIGGER = "updatewapptrigger";
+    public static final String CREATE_WAPP_CALL_TRIGGER = "createwappcalltrigger";
+    public static final String UPDATE_WAPP_CALL_TRIGGER = "updatewappcalltrigger";
+
+    public static final String CREATE_WAPP_MESSAGE_TRIGGER = "createwappmessagetrigger";
+    public static final String UPDATE_WAPP_MESSAGE_TRIGGER = "updatewappmessagetrigger";
 
     public static final String REMOVE_TRIGGER = "removetrigger";
 
