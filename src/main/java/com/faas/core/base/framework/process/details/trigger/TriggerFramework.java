@@ -341,7 +341,6 @@ public class TriggerFramework {
     public TriggerDetails createWappMessageTrigger(String accountId, String wappTitle, String wappBody) {
 
         TriggerDetails triggerDetails = new TriggerDetails();
-
         WappMessageTriggerDAO wappMessageTriggerDAO = new WappMessageTriggerDAO();
         Optional<WappAccountDBModel> wappAccountDBModel = wappAccountRepository.findById(accountId);
         if (wappAccountDBModel.isPresent()){
