@@ -94,6 +94,11 @@ public class ApiRoute {
     public static final String API_GET_CLIENT_OS_INTS = "apigetclientosints";
 
     public static final String API_GET_OPERATION_PEER = "apigetoperationpeer";
+    public static final String API_GET_CLIENT_PEERS = "apigetclientpeers";
+    public static final String API_GET_CLIENT_PEER = "apigetclientpeer";
+    public static final String API_CREATE_CLIENT_PEER = "apicreateclientpeer";
+    public static final String API_UPDATE_CLIENT_PEER = "apiupdateclientpeer";
+    public static final String API_REMOVE_CLIENT_PEER = "apiremoveclientpeer";
 
 
     public static final String API_GET_CLIENT_NOTES = "apigetclientnotes";
