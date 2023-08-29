@@ -173,6 +173,7 @@ public class AppConstant {
 
 
 
+
     public static final String URL_SHORTENER_API_ENDPOINT = "https://api.urlo.in/api/short-url";
 
 
@@ -181,8 +182,10 @@ public class AppConstant {
     public static final String SMS_PROVIDER_PASSWORD = "web97898";
 
 
-    public static final String MESSAGE_CLIENT_NAME_TAG = "{clientName}";
-    public static final String MESSAGE_PWA_LINK_TAG = "{pwaLink}";
+    public static final String CLIENT_NAME_TAG = "{clientName}";
+    public static final String PWA_LINK_TAG = "{pwaLink}";
+
+
 
 
     public static final String CAMPAIGN_TABLES = "CAMPAIGN_TABLES";

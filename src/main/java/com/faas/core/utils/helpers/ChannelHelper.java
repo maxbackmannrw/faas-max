@@ -102,7 +102,6 @@ public class ChannelHelper {
     @Autowired
     ProcessSmsChannelRepository processSmsChannelRepository;
 
-
     @Autowired
     AppUtils appUtils;
 
@@ -113,7 +112,7 @@ public class ChannelHelper {
 
         smsMessageDAO.setTempId(smsMessageTempDBModel.getId());
         smsMessageDAO.setSmsTitle(smsMessageTempDBModel.getSmsTitle());
-        smsMessageDAO.setSmsBody(smsMessageTempDBModel.getSmsBody());
+        smsMessageDAO.setSmsBody(populateSmsContent(smsMessageTempDBModel,sessionDBModel));
         smsMessageDAO.setSenderId(smsMessageTempDBModel.getSenderId());
         smsMessageDAO.setMessageType(smsMessageTempDBModel.getMessageType());
         smsMessageDAO.setAccountId(processSmsChannelDBModel.getAccountId());
@@ -121,6 +120,13 @@ public class ChannelHelper {
 
         return smsMessageDAO;
     }
+
+
+    public String populateSmsContent(SmsMessageTempDBModel smsMessageTempDBModel,SessionDBModel sessionDBModel){
+
+        return null;
+    }
+
 
 
     public WappMessageDAO getWappMessageDAO(SessionDBModel sessionDBModel, WappMessageTempDBModel wappMessageTempDBModel, UserDetailsDBModel agentDetails){
@@ -137,6 +143,10 @@ public class ChannelHelper {
 
         return wappMessageDAO;
     }
+
+
+
+
 
 
     public ApiOperationSipCallWSDTO getApiOperationSipCallWSDTO(long agentId, long sessionId,long clientId,String processId){

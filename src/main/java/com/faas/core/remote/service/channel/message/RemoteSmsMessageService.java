@@ -1,11 +1,11 @@
-package com.faas.core.utils.service.sms;
+package com.faas.core.remote.service.channel.message;
 
 import com.faas.core.base.model.db.channel.account.SmsAccountDBModel;
-import com.faas.core.base.model.db.process.content.ProcessDBModel;
 import com.faas.core.base.model.db.operation.channel.SmsMessageDBModel;
+import com.faas.core.base.model.db.process.content.ProcessDBModel;
 import com.faas.core.base.repo.channel.account.SmsAccountRepository;
-import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.operation.channel.SmsMessageRepository;
+import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.service.link.LinkManagerService;
@@ -18,7 +18,7 @@ import java.util.Optional;
 
 
 @Component
-public class SmsManagerService {
+public class RemoteSmsMessageService {
 
     private final OkHttpClient client = new OkHttpClient();
 
