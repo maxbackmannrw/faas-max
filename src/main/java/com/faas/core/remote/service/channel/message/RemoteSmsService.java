@@ -18,7 +18,7 @@ import java.util.Optional;
 
 
 @Component
-public class RemoteSmsMessageService {
+public class RemoteSmsService {
 
     private final OkHttpClient client = new OkHttpClient();
 

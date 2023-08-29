@@ -4,6 +4,7 @@ import com.faas.core.api.middleware.operation.channel.message.sms.ApiSmsMessageM
 import com.faas.core.api.model.ws.operation.channel.message.sms.ApiOperationSmsMessageWSModel;
 import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;
+import com.faas.core.utils.config.RemoteRoute;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +23,7 @@ public class RemoteMessageController {
     ApiSmsMessageMiddleware apiSmsMessageMiddleware;
 
 
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION_SMS_MESSAGE, method = RequestMethod.POST)
+    @RequestMapping(value = RemoteRoute.API_GET_AGENT_SIP_ACCOUNT, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationSmsMessage(@RequestParam long agentId,
                                                        @RequestParam long sessionId) {
 

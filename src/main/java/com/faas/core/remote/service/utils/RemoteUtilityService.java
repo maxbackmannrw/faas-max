@@ -15,7 +15,7 @@ import java.util.Map;
 
 
 @Component
-public class RemoteLinkingService {
+public class RemoteUtilityService {
 
 
     @Autowired

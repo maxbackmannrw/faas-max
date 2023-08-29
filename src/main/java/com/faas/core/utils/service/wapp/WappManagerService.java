@@ -85,7 +85,6 @@ public class WappManagerService {
     public String wappPWAShortLinkCreate(WappMessageDBModel wappMessageDBModel) throws IOException {
 
         Optional<ProcessDBModel> processDBModel = processRepository.findById(wappMessageDBModel.getProcessId());
-
         return null;
     }
 
