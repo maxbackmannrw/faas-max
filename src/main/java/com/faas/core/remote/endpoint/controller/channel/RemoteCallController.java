@@ -2,7 +2,6 @@ package com.faas.core.remote.endpoint.controller.channel;
 
 import com.faas.core.api.middleware.operation.channel.message.sms.ApiSmsMessageMiddleware;
 import com.faas.core.api.model.ws.operation.channel.message.sms.ApiOperationSmsMessageWSModel;
-import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.RemoteRoute;
 import org.springframework.beans.factory.annotation.Autowired;

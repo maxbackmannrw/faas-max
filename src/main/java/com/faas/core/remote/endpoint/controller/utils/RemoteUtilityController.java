@@ -1,4 +1,4 @@
-package com.faas.core.remote.endpoint.controller.peer;
+package com.faas.core.remote.endpoint.controller.utils;
 
 import com.faas.core.api.middleware.operation.channel.message.sms.ApiSmsMessageMiddleware;
 import com.faas.core.api.model.ws.operation.channel.message.sms.ApiOperationSmsMessageWSModel;
@@ -14,12 +14,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-@RequestMapping(value = AppConstant.API_VERSION + "/remote/peer/native/")
-public class RemoteNativePeerController {
+@RequestMapping(value = AppConstant.API_VERSION + "/remote/utility/")
+public class RemoteUtilityController {
 
 
     @Autowired
     ApiSmsMessageMiddleware apiSmsMessageMiddleware;
+
 
     @RequestMapping(value = RemoteRoute.API_GET_AGENT_SIP_ACCOUNT, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationSmsMessage(@RequestParam long agentId,
