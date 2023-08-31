@@ -9,8 +9,8 @@ import com.faas.core.api.model.ws.operation.channel.message.email.dto.ApiOperati
 import com.faas.core.api.model.ws.operation.channel.message.sms.dto.ApiOperationSmsMessageWSDTO;
 import com.faas.core.api.model.ws.operation.channel.message.sms.dto.ApiSmsAccountWSDTO;
 import com.faas.core.api.model.ws.operation.channel.message.wapp.dto.ApiOperationWappMessageWSDTO;
-import com.faas.core.api.model.ws.operation.channel.push.dto.ApiOperationPushMessageWSDTO;
-import com.faas.core.api.model.ws.operation.channel.push.dto.ApiPushAccountWSDTO;
+import com.faas.core.api.model.ws.operation.channel.message.push.dto.ApiOperationPushMessageWSDTO;
+import com.faas.core.api.model.ws.operation.channel.message.push.dto.ApiPushAccountWSDTO;
 import com.faas.core.base.model.db.channel.account.EmailAccountDBModel;
 import com.faas.core.base.model.db.channel.account.PushAccountDBModel;
 import com.faas.core.base.model.db.channel.account.SmsAccountDBModel;
@@ -36,6 +36,7 @@ import com.faas.core.base.repo.process.details.channel.temp.PushTempRepository;
 import com.faas.core.base.repo.process.details.channel.temp.SmsMessageTempRepository;
 import com.faas.core.base.repo.process.details.channel.temp.WappMessageTempRepository;
 import com.faas.core.base.repo.user.details.UserDetailsRepository;
+import com.faas.core.external.service.channel.message.ExtSmsMessageService;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -103,16 +104,18 @@ public class ChannelHelper {
     ProcessSmsChannelRepository processSmsChannelRepository;
 
     @Autowired
+    ExtSmsMessageService extSmsMessageService;
+
+    @Autowired
     AppUtils appUtils;
 
 
-    public SmsMessageDAO getSmsMessageDAO(SessionDBModel sessionDBModel, SmsMessageTempDBModel smsMessageTempDBModel, ProcessSmsChannelDBModel processSmsChannelDBModel){
+    public SmsMessageDAO getSmsMessageDAO( SmsMessageTempDBModel smsMessageTempDBModel, ProcessSmsChannelDBModel processSmsChannelDBModel){
 
         SmsMessageDAO smsMessageDAO = new SmsMessageDAO();
-
         smsMessageDAO.setTempId(smsMessageTempDBModel.getId());
         smsMessageDAO.setSmsTitle(smsMessageTempDBModel.getSmsTitle());
-        smsMessageDAO.setSmsBody(populateSmsContent(smsMessageTempDBModel,sessionDBModel));
+        smsMessageDAO.setSmsBody(smsMessageTempDBModel.getSmsBody());
         smsMessageDAO.setSenderId(smsMessageTempDBModel.getSenderId());
         smsMessageDAO.setMessageType(smsMessageTempDBModel.getMessageType());
         smsMessageDAO.setAccountId(processSmsChannelDBModel.getAccountId());
@@ -122,14 +125,8 @@ public class ChannelHelper {
     }
 
 
-    public String populateSmsContent(SmsMessageTempDBModel smsMessageTempDBModel,SessionDBModel sessionDBModel){
 
-        return null;
-    }
-
-
-
-    public WappMessageDAO getWappMessageDAO(SessionDBModel sessionDBModel, WappMessageTempDBModel wappMessageTempDBModel, UserDetailsDBModel agentDetails){
+    public WappMessageDAO getWappMessageDAO(WappMessageTempDBModel wappMessageTempDBModel, UserDetailsDBModel agentDetails){
 
         WappMessageDAO wappMessageDAO = new WappMessageDAO();
 
@@ -145,7 +142,10 @@ public class ChannelHelper {
     }
 
 
+    public String generateWappMessageContent(WappMessageTempDBModel wappMessageTemp,SessionDBModel session){
 
+        return null;
+    }
 
 
 

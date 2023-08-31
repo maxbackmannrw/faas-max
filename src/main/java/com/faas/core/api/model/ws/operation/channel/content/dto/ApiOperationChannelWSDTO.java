@@ -5,7 +5,7 @@ import com.faas.core.api.model.ws.operation.channel.call.wapp.dto.ApiOperationWa
 import com.faas.core.api.model.ws.operation.channel.message.email.dto.ApiOperationEmailWSDTO;
 import com.faas.core.api.model.ws.operation.channel.message.sms.dto.ApiOperationSmsMessageWSDTO;
 import com.faas.core.api.model.ws.operation.channel.message.wapp.dto.ApiOperationWappMessageWSDTO;
-import com.faas.core.api.model.ws.operation.channel.push.dto.ApiOperationPushMessageWSDTO;
+import com.faas.core.api.model.ws.operation.channel.message.push.dto.ApiOperationPushMessageWSDTO;
 
 public class ApiOperationChannelWSDTO {
 

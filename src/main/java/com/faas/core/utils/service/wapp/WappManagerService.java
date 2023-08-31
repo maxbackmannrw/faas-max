@@ -8,7 +8,6 @@ import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.operation.channel.WappMessageRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
-import com.faas.core.utils.service.link.LinkManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -31,8 +30,6 @@ public class WappManagerService {
     @Autowired
     WappManagerRESTCall wappManagerRESTCall;
 
-    @Autowired
-    LinkManagerService linkManagerService;
 
     @Autowired
     AppUtils appUtils;
@@ -70,13 +67,6 @@ public class WappManagerService {
         String wappMessageBody = wappMessageDBModel.getWappMessage().getWappBody();
         if (wappMessageBody.contains(AppConstant.CLIENT_NAME_TAG)) {
         //    wappMessageBody = wappMessageBody.replace(AppConstant.MESSAGE_CLIENT_NAME_TAG, wappMessageDBModel.getClientName());
-        }
-        if (wappMessageBody.contains(AppConstant.PWA_LINK_TAG)) {
-            String pwaShortLink = wappPWAShortLinkCreate(wappMessageDBModel);
-            if (pwaShortLink == null) {
-                return null;
-            }
-            wappMessageBody = wappMessageBody.replace(AppConstant.PWA_LINK_TAG, pwaShortLink);
         }
         return wappMessageBody;
     }

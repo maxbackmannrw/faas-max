@@ -51,10 +51,10 @@ public class AppUtils {
 
     public String convertSmsType(String smsType){
 
-        if (smsType.equalsIgnoreCase(AppConstant.FLASH_SMS)){
+        if (smsType.equalsIgnoreCase(AppConstant.FLASH_MESSAGE)){
             return "1";
         }
-        if (smsType.equalsIgnoreCase(AppConstant.STANDARD_SMS)){
+        if (smsType.equalsIgnoreCase(AppConstant.TEXT_MESSAGE)){
             return "0";
         }
         return "";

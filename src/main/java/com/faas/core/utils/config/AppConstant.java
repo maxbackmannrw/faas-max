@@ -30,6 +30,7 @@ public class AppConstant {
 
     public static final String SOURCE_URL = "SOURCE_URL";
     public static final String PWA_URL = "PWA_URL";
+    public static final String NATIVE_URL = "NATIVE_URL";
 
 
     public static final String ACTIVE_CAMPAIGN = "ACTIVE_CAMPAIGN";
@@ -100,8 +101,8 @@ public class AppConstant {
 
 
 
-    public static final String FLASH_SMS = "FLASH_SMS";
-    public static final String STANDARD_SMS = "STANDARD_SMS";
+    public static final String FLASH_MESSAGE = "FLASH_MESSAGE";
+    public static final String TEXT_MESSAGE = "TEXT_MESSAGE";
 
     public static final String TEXT_WAPP = "TEXT_WAPP";
     public static final String IMAGE_WAPP = "IMAGE_WAPP";
@@ -183,7 +184,8 @@ public class AppConstant {
 
 
     public static final String CLIENT_NAME_TAG = "{clientName}";
-    public static final String PWA_LINK_TAG = "{pwaLink}";
+    public static final String PWA_URL_TAG = "{pwaUrl}";
+    public static final String NATIVE_URL_TAG = "{nativeUrl}";
 
 
 

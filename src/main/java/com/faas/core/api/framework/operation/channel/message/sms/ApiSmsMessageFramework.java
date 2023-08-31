@@ -15,6 +15,7 @@ import com.faas.core.base.repo.operation.channel.SmsMessageRepository;
 import com.faas.core.base.repo.process.details.channel.content.ProcessSmsChannelRepository;
 import com.faas.core.base.repo.process.details.channel.temp.SmsMessageTempRepository;
 import com.faas.core.base.repo.session.SessionRepository;
+import com.faas.core.external.service.channel.message.ExtSmsMessageService;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.ChannelHelper;
@@ -22,6 +23,7 @@ import com.faas.core.utils.helpers.OperationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -36,6 +38,9 @@ public class ApiSmsMessageFramework {
 
     @Autowired
     ChannelHelper channelHelper;
+
+    @Autowired
+    ExtSmsMessageService extSmsMessageService;
 
     @Autowired
     SessionRepository sessionRepository;
@@ -90,7 +95,7 @@ public class ApiSmsMessageFramework {
     }
 
 
-    public ApiSmsMessageWSDTO apiSendSmsMessageService(long agentId,long sessionId,String campaignId,String processId,String tempId,long numberId){
+    public ApiSmsMessageWSDTO apiSendSmsMessageService(long agentId,long sessionId,String campaignId,String processId,String tempId,long numberId) throws IOException {
 
         List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndAgentId(sessionId,agentId);
         List<SmsMessageTempDBModel>smsMessageTempDBModels = smsMessageTempRepository.findByIdAndProcessId(tempId,processId);
@@ -107,17 +112,17 @@ public class ApiSmsMessageFramework {
             smsMessageDBModel.setAgentId(agentId);
             smsMessageDBModel.setCampaignId(campaignId);
             smsMessageDBModel.setProcessId(processId);
-            smsMessageDBModel.setSmsMessage(channelHelper.getSmsMessageDAO(sessionDBModels.get(0),smsMessageTempDBModels.get(0),processSmsChannelDBModels.get(0)));
+            smsMessageDBModel.setSmsMessage(channelHelper.getSmsMessageDAO(smsMessageTempDBModels.get(0),processSmsChannelDBModels.get(0)));
             smsMessageDBModel.setMessageSentId("");
-            smsMessageDBModel.setMessageState(AppConstant.SENT_MESSAGE);
+            smsMessageDBModel.setMessageState(AppConstant.READY_MESSAGE);
             smsMessageDBModel.setuDate(appUtils.getCurrentTimeStamp());
             smsMessageDBModel.setcDate(appUtils.getCurrentTimeStamp());
             smsMessageDBModel.setStatus(1);
 
             SmsMessageDBModel createdSms = smsMessageRepository.save(smsMessageDBModel);
+            extSmsMessageService.extSendSmsMessageService(sessionDBModels.get(0),createdSms);
 
-
-            return new ApiSmsMessageWSDTO();
+            return new ApiSmsMessageWSDTO(createdSms);
         }
         return null;
     }

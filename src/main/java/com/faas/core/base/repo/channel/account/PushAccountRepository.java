@@ -11,5 +11,4 @@ public interface PushAccountRepository extends MongoRepository<PushAccountDBMode
 
     List<PushAccountDBModel> findByStatus(int status);
 
-
 }
