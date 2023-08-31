@@ -5,7 +5,6 @@ import com.faas.core.base.model.ws.general.GeneralWSModel;
 
 import java.util.List;
 
-
 public class ApiSmsMessageWSModel {
 
     private GeneralWSModel general;
