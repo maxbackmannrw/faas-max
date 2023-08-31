@@ -1,5 +1,8 @@
 package com.faas.core.utils.config;
 
+import com.faas.core.base.model.db.process.content.ProcessDBModel;
+import com.faas.core.base.model.db.session.SessionDBModel;
+import okhttp3.HttpUrl;
 import org.springframework.stereotype.Component;
 
 import java.io.UnsupportedEncodingException;
@@ -59,5 +62,30 @@ public class AppUtils {
         }
         return "";
     }
+
+
+
+    public String createOperationUrls(SessionDBModel sessionDBModel, ProcessDBModel processDBModel, String urlType){
+
+        if (processDBModel.getProcessUrls() != null && !processDBModel.getProcessUrls().isEmpty()){
+            for (int i=0;i<processDBModel.getProcessUrls().size();i++){
+                if (processDBModel.getProcessUrls().get(i).getUrlType().equalsIgnoreCase(urlType)){
+                    return processDBModel.getProcessUrls().get(i).getUrl()+"?uuid="+sessionDBModel.getSessionUUID();
+                }
+            }
+        }
+        return null;
+    }
+
+
+    public String createRestCallUrl(String baseUrl,String requestUrl){
+
+        HttpUrl.Builder urlBuilder = HttpUrl.parse(baseUrl + requestUrl).newBuilder();
+        String url = urlBuilder.build().toString();
+        return null;
+    }
+
+
+
 
 }

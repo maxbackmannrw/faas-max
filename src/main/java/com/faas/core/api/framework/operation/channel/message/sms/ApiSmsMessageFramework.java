@@ -15,7 +15,7 @@ import com.faas.core.base.repo.operation.channel.SmsMessageRepository;
 import com.faas.core.base.repo.process.details.channel.content.ProcessSmsChannelRepository;
 import com.faas.core.base.repo.process.details.channel.temp.SmsMessageTempRepository;
 import com.faas.core.base.repo.session.SessionRepository;
-import com.faas.core.external.service.channel.message.ExtSmsMessageService;
+import com.faas.core.api.service.channel.sms.ApiSmsService;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.ChannelHelper;
@@ -40,7 +40,7 @@ public class ApiSmsMessageFramework {
     ChannelHelper channelHelper;
 
     @Autowired
-    ExtSmsMessageService extSmsMessageService;
+    ApiSmsService apiSmsService;
 
     @Autowired
     SessionRepository sessionRepository;
@@ -119,10 +119,10 @@ public class ApiSmsMessageFramework {
             smsMessageDBModel.setcDate(appUtils.getCurrentTimeStamp());
             smsMessageDBModel.setStatus(1);
 
-            SmsMessageDBModel createdSms = smsMessageRepository.save(smsMessageDBModel);
-            extSmsMessageService.extSendSmsMessageService(sessionDBModels.get(0),createdSms);
+            SmsMessageDBModel operationSmsMessage = smsMessageRepository.save(smsMessageDBModel);
+            apiSmsService.outSendSmsMessage(sessionDBModels.get(0),operationSmsMessage);
 
-            return new ApiSmsMessageWSDTO(createdSms);
+            return new ApiSmsMessageWSDTO(operationSmsMessage);
         }
         return null;
     }

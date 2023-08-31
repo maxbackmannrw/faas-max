@@ -17,6 +17,7 @@ import com.faas.core.base.repo.process.details.channel.content.ProcessWappChanne
 import com.faas.core.base.repo.process.details.channel.temp.WappMessageTempRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.base.repo.user.details.UserDetailsRepository;
+import com.faas.core.api.service.channel.wapp.ApiWappService;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.ChannelHelper;
@@ -24,6 +25,7 @@ import com.faas.core.utils.helpers.OperationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -37,6 +39,9 @@ public class ApiWappMessageFramework {
 
     @Autowired
     ChannelHelper channelHelper;
+
+    @Autowired
+    ApiWappService apiWappService;
 
     @Autowired
     SessionRepository sessionRepository;
@@ -94,7 +99,7 @@ public class ApiWappMessageFramework {
     }
 
 
-    public ApiWappMessageWSDTO apiSendWappMessageService(long agentId,long sessionId,String campaignId,String processId,String tempId,long numberId) {
+    public ApiWappMessageWSDTO apiSendWappMessageService(long agentId,long sessionId,String campaignId,String processId,String tempId,long numberId) throws IOException {
 
         List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndAgentId(sessionId,agentId);
         List<UserDetailsDBModel> agentDetails = userDetailsRepository.findByUserId(agentId);
@@ -116,12 +121,15 @@ public class ApiWappMessageFramework {
             wappMessageDBModel.setProcessId(processId);
             wappMessageDBModel.setWappMessage(channelHelper.getWappMessageDAO(wappMessageTempDBModels.get(0),agentDetails.get(0)));
             wappMessageDBModel.setMessageSentId("");
-            wappMessageDBModel.setMessageState(AppConstant.SENT_MESSAGE);
+            wappMessageDBModel.setMessageState(AppConstant.READY_MESSAGE);
             wappMessageDBModel.setuDate(appUtils.getCurrentTimeStamp());
             wappMessageDBModel.setcDate(appUtils.getCurrentTimeStamp());
             wappMessageDBModel.setStatus(1);
 
-            return new ApiWappMessageWSDTO(wappMessageRepository.save(wappMessageDBModel));
+            WappMessageDBModel operationWappMessage = wappMessageRepository.save(wappMessageDBModel);
+            apiWappService.outSendWappMessage(sessionDBModels.get(0),operationWappMessage);
+
+            return new ApiWappMessageWSDTO();
         }
         return null;
     }

@@ -1,6 +1,5 @@
 package com.faas.core.base.model.db.operation.channel.dao;
 
-
 import java.util.List;
 
 public class WappMessageDAO {

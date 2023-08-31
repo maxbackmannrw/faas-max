@@ -1,4 +1,4 @@
-package com.faas.core.utils.service.wapp;
+package com.faas.core.api.endpoint.restclient.channel.wapp;
 
 import com.faas.core.utils.config.AppUtils;
 import com.google.gson.JsonObject;
@@ -12,7 +12,7 @@ import java.io.IOException;
 
 
 @Component
-public class WappManagerRESTCall {
+public class ApiWappRestClient {
 
     private final OkHttpClient client = new OkHttpClient();
 
@@ -59,6 +59,7 @@ public class WappManagerRESTCall {
         }
     }
 
+
     public String getWappQRCodeInBase64(String serverUrl, String instanceKey) throws IOException {
 
         HttpUrl.Builder urlBuilder = HttpUrl.parse(serverUrl + "/instance/qrbase64").newBuilder();
@@ -84,7 +85,7 @@ public class WappManagerRESTCall {
     }
 
 
-    public String wappInstanceInfo(String serverUrl, String instanceKey) throws IOException {
+    public String getWappInstanceInfo(String serverUrl, String instanceKey) throws IOException {
 
         HttpUrl.Builder urlBuilder = HttpUrl.parse(serverUrl + "/instance/info").newBuilder();
         urlBuilder.addQueryParameter("key", instanceKey);
@@ -386,7 +387,6 @@ public class WappManagerRESTCall {
     public String updateWappProfilePicture() throws IOException {
         return null;
     }
-
 
 
 

@@ -36,7 +36,7 @@ import com.faas.core.base.repo.process.details.channel.temp.PushTempRepository;
 import com.faas.core.base.repo.process.details.channel.temp.SmsMessageTempRepository;
 import com.faas.core.base.repo.process.details.channel.temp.WappMessageTempRepository;
 import com.faas.core.base.repo.user.details.UserDetailsRepository;
-import com.faas.core.external.service.channel.message.ExtSmsMessageService;
+import com.faas.core.api.service.channel.sms.ApiSmsService;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -104,7 +104,7 @@ public class ChannelHelper {
     ProcessSmsChannelRepository processSmsChannelRepository;
 
     @Autowired
-    ExtSmsMessageService extSmsMessageService;
+    ApiSmsService apiSmsService;
 
     @Autowired
     AppUtils appUtils;
