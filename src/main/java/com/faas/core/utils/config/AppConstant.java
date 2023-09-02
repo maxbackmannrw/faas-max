@@ -103,15 +103,14 @@ public class AppConstant {
 
     public static final String FLASH_MESSAGE = "FLASH_MESSAGE";
     public static final String TEXT_MESSAGE = "TEXT_MESSAGE";
-
-    public static final String TEXT_WAPP = "TEXT_WAPP";
-    public static final String IMAGE_WAPP = "IMAGE_WAPP";
-    public static final String VOICE_WAPP = "VOICE_WAPP";
-    public static final String FILE_WAPP = "FILE_WAPP";
-    public static final String VIDEO_WAPP = "VIDEO_WAPP";
+    public static final String IMAGE_MESSAGE = "IMAGE_MESSAGE";
+    public static final String VOICE_MESSAGE = "VOICE_MESSAGE";
+    public static final String VIDEO_MESSAGE = "VIDEO_MESSAGE";
+    public static final String FILE_MESSAGE = "FILE_MESSAGE";
 
 
     public static final String STANDARD_EMAIL = "STANDARD_EMAIL";
+
 
     public static final String TEXT_PUSH = "TEXT_PUSH";
 

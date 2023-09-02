@@ -48,7 +48,7 @@ public class WappManagerService {
 
         Optional<WappAccountDBModel> wappAccountDBModel = wappAccountRepository.findById(wappMessageDBModel.getWappMessage().getAccountId());
         if (wappAccountDBModel.isPresent()) {
-            if (wappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.TEXT_WAPP)) {
+            if (wappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.TEXT_MESSAGE)) {
 
                 String messageBody = wappMessageBodyPopulate(wappMessageDBModel);
                 if (messageBody != null && wappManagerRESTCall.sendWappTextMessage(wappAccountDBModel.get().getServerUrl(), wappAccountDBModel.get().getInstanceKey(), wappMessageDBModel.getPhoneNumber(), messageBody)) {

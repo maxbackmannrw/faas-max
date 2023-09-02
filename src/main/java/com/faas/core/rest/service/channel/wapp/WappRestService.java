@@ -58,19 +58,19 @@ public class WappRestService {
         Optional<ProcessDBModel> processDBModel = processRepository.findById(sessionDBModel.getProcessId());
         if (wappAccountDBModel.isPresent() && processDBModel.isPresent()) {
             wappMessageDBModel = populateWappMessage(sessionDBModel,wappMessageDBModel,wappAccountDBModel.get(),processDBModel.get());
-            if (wappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.TEXT_WAPP)){
+            if (wappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.TEXT_MESSAGE)){
                 wappRestClient.sendWappTextMessage(wappMessageDBModel,wappAccountDBModel.get());
             }
-            if (wappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.IMAGE_WAPP)){
+            if (wappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.IMAGE_MESSAGE)){
                 wappRestClient.sendWappTextMessage(wappMessageDBModel,wappAccountDBModel.get());
             }
-            if (wappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.VOICE_WAPP)){
+            if (wappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.VIDEO_MESSAGE)){
                 wappRestClient.sendWappTextMessage(wappMessageDBModel,wappAccountDBModel.get());
             }
-            if (wappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.VIDEO_WAPP)){
+            if (wappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.VIDEO_MESSAGE)){
                 wappRestClient.sendWappTextMessage(wappMessageDBModel,wappAccountDBModel.get());
             }
-            if (wappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.FILE_WAPP)){
+            if (wappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.FILE_MESSAGE)){
                 wappRestClient.sendWappTextMessage(wappMessageDBModel,wappAccountDBModel.get());
             }
         }
@@ -111,7 +111,7 @@ public class WappRestService {
 
         Optional<WappAccountDBModel> wappAccountDBModel = wappAccountRepository.findById(wappMessageDBModel.getWappMessage().getAccountId());
         if (wappAccountDBModel.isPresent()) {
-            if (wappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.TEXT_WAPP)) {
+            if (wappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.TEXT_MESSAGE)) {
 
 
 
