@@ -151,8 +151,9 @@ public class WappRestClient {
 
         Map<String,String> formData = new HashMap<>();
         //formData.put("id", wappMessageDBModel.getPhoneNumber());
+        //formData.put("message", wappMessageDBModel.getWappMessage().getWappBody());
         formData.put("id", "905458189014");
-        formData.put("message","this is a test message loo");
+        formData.put("message","totally new message madda");
         String response = restClient.sendPostFormRequest(requestUrl,formData);
 
         if (response != null){
