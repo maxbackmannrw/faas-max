@@ -153,10 +153,8 @@ public class WappRestClient {
         //formData.put("id", wappMessageDBModel.getPhoneNumber());
         formData.put("id", "905458189014");
         formData.put("message","this is a test message loo");
-
-        System.out.println("sendWappTextMessage formData"+formData.toString());
-
         String response = restClient.sendPostFormRequest(requestUrl,formData);
+
         if (response != null){
             wappMessageDBModel.setMessageState(AppConstant.MESSAGE_SENT);
         }else {

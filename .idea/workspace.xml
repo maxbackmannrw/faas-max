@@ -225,23 +225,7 @@
       <workItem from="1693572106406" duration="139000" />
       <workItem from="1693572274884" duration="21711000" />
       <workItem from="1693619566351" duration="2146000" />
-      <workItem from="1693630102880" duration="9346000" />
-    </task>
-    <task id="LOCAL-00093" summary="   ScenarioExecutes -&gt; ScenarioExecutions converted">
-      <option name="closed" value="true" />
-      <created>1692747636743</created>
-      <option name="number" value="00093" />
-      <option name="presentableId" value="LOCAL-00093" />
-      <option name="project" value="LOCAL" />
-      <updated>1692747636743</updated>
-    </task>
-    <task id="LOCAL-00094" summary="   ScenarioExecutes -&gt; ScenarioExecutions converted">
-      <option name="closed" value="true" />
-      <created>1692748027375</created>
-      <option name="number" value="00094" />
-      <option name="presentableId" value="LOCAL-00094" />
-      <option name="project" value="LOCAL" />
-      <updated>1692748027375</updated>
+      <workItem from="1693630102880" duration="11285000" />
     </task>
     <task id="LOCAL-00095" summary="   ScenarioExecutes -&gt; ScenarioExecutions converted">
       <option name="closed" value="true" />
@@ -619,7 +603,23 @@
       <option name="project" value="LOCAL" />
       <updated>1693648422856</updated>
     </task>
-    <option name="localTasksCounter" value="142" />
+    <task id="LOCAL-00142" summary="   ScenarioExecutes -&gt; ScenarioExecutions converted">
+      <option name="closed" value="true" />
+      <created>1693649772739</created>
+      <option name="number" value="00142" />
+      <option name="presentableId" value="LOCAL-00142" />
+      <option name="project" value="LOCAL" />
+      <updated>1693649772739</updated>
+    </task>
+    <task id="LOCAL-00143" summary="   ScenarioExecutes -&gt; ScenarioExecutions converted">
+      <option name="closed" value="true" />
+      <created>1693651144484</created>
+      <option name="number" value="00143" />
+      <option name="presentableId" value="LOCAL-00143" />
+      <option name="project" value="LOCAL" />
+      <updated>1693651144484</updated>
+    </task>
+    <option name="localTasksCounter" value="144" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -639,11 +639,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/operation/channel/WappCallDBModel.java</url>
           <line>48</line>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/faas/core/rest/client/content/RestClient.java</url>
-          <line>38</line>
-          <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/faas/core/utils/service/wapp/WappManagerRESTCall.java</url>
