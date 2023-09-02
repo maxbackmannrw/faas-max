@@ -36,9 +36,9 @@ public class RestClient {
 
     public String sendPostFormRequest(String requestUrl,Map<String,String>formData) throws IOException {
 
-        MultipartBody.Builder builder = new MultipartBody.Builder().setType(MultipartBody.FORM);
+        FormBody.Builder builder = new FormBody.Builder();
         for (Map.Entry<String, String> entry : formData.entrySet()) {
-            builder.addFormDataPart(entry.getKey(), entry.getValue());
+            builder.add(entry.getKey(), entry.getValue());
         }
         RequestBody requestBody = builder.build();
 
@@ -52,8 +52,10 @@ public class RestClient {
             if (response.isSuccessful() && response.body() != null) {
                 System.out.println("sendPostFormRequest response"+response.body().string());
                 try (ResponseBody responseBody = response.body()) {
+
                     String responseString = responseBody.string();
                     System.out.println("sendPostFormRequest responseString: " + responseString);
+
                     return responseString;
                 }
             } else {
