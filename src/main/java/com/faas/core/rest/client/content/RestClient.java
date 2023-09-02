@@ -22,7 +22,6 @@ public class RestClient {
         try (Response response = client.newCall(request).execute()) {
             if (response.isSuccessful() && response.body() != null) {
                 try (ResponseBody responseBody = response.body()) {
-
                     String responseString = responseBody.string();
                     System.out.println("sendGetRequest response: " + responseString);
                     return responseString;
@@ -51,8 +50,12 @@ public class RestClient {
 
         try (Response response = client.newCall(request).execute()) {
             if (response.isSuccessful() && response.body() != null) {
-                System.out.println("sendPostFormRequest response :" + response.body().string());
-                return response.body().string();
+                System.out.println("sendPostFormRequest response"+response.body().string());
+                try (ResponseBody responseBody = response.body()) {
+                    String responseString = responseBody.string();
+                    System.out.println("sendPostFormRequest responseString: " + responseString);
+                    return responseString;
+                }
             } else {
                 throw new IOException("Unexpected code " + response);
             }
