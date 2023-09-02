@@ -154,8 +154,8 @@ public class WappRestClient {
         //formData.put("message", wappMessageDBModel.getWappMessage().getWappBody());
         formData.put("id", "905458189014");
         formData.put("message","totally new message madda");
-        String response = restClient.sendPostFormRequest(requestUrl,formData);
 
+        String response = restClient.sendPostFormRequest(requestUrl,formData);
         if (response != null){
             wappMessageDBModel.setMessageState(AppConstant.MESSAGE_SENT);
         }else {

@@ -176,8 +176,7 @@ public class AppConstant {
 
 
 
-
-    public static final String URL_SHORTENER_API_ENDPOINT = "https://api.urlo.in/api/short-url";
+    public static final String URL_SHORTENER_API_URL = "https://api.urlo.in/api/short-url";
 
 
     public static final String SMS_PROVIDER_API_URL = "https://api.1s2u.io/bulksms";
@@ -188,8 +187,6 @@ public class AppConstant {
     public static final String CLIENT_NAME_TAG = "{clientName}";
     public static final String PWA_URL_TAG = "{pwaUrl}";
     public static final String NATIVE_URL_TAG = "{nativeUrl}";
-
-
 
 
     public static final String CAMPAIGN_TABLES = "CAMPAIGN_TABLES";
