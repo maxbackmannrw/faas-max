@@ -156,8 +156,6 @@ public class ApiWappMessageFramework {
     }
 
 
-
-
     public ApiWappMessageTempWSDTO apiGetWappMessageTempsService(long agentId,long sessionId,String campaignId,String processId){
 
         List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndAgentId(sessionId,agentId);
@@ -175,6 +173,7 @@ public class ApiWappMessageFramework {
         return null;
     }
 
+
     public ApiWappMessageTempWSDTO apiGetWappMessageTempService(long agentId,long sessionId,String campaignId,String processId,String tempId){
 
         List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndAgentId(sessionId,agentId);
@@ -191,7 +190,6 @@ public class ApiWappMessageFramework {
         }
         return null;
     }
-
 
 
 }
