@@ -15,7 +15,7 @@ import com.faas.core.base.repo.operation.channel.SmsMessageRepository;
 import com.faas.core.base.repo.process.details.channel.content.ProcessSmsChannelRepository;
 import com.faas.core.base.repo.process.details.channel.temp.SmsMessageTempRepository;
 import com.faas.core.base.repo.session.SessionRepository;
-import com.faas.core.api.service.channel.sms.ApiSmsService;
+import com.faas.core.rest.service.channel.sms.SmsMessageRestService;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.ChannelHelper;
@@ -40,7 +40,7 @@ public class ApiSmsMessageFramework {
     ChannelHelper channelHelper;
 
     @Autowired
-    ApiSmsService apiSmsService;
+    SmsMessageRestService smsMessageRestService;
 
     @Autowired
     SessionRepository sessionRepository;
@@ -114,13 +114,13 @@ public class ApiSmsMessageFramework {
             smsMessageDBModel.setProcessId(processId);
             smsMessageDBModel.setSmsMessage(channelHelper.getSmsMessageDAO(smsMessageTempDBModels.get(0),processSmsChannelDBModels.get(0)));
             smsMessageDBModel.setMessageSentId("");
-            smsMessageDBModel.setMessageState(AppConstant.READY_MESSAGE);
+            smsMessageDBModel.setMessageState(AppConstant.MESSAGE_READY);
             smsMessageDBModel.setuDate(appUtils.getCurrentTimeStamp());
             smsMessageDBModel.setcDate(appUtils.getCurrentTimeStamp());
             smsMessageDBModel.setStatus(1);
 
             SmsMessageDBModel operationSmsMessage = smsMessageRepository.save(smsMessageDBModel);
-            apiSmsService.outSendSmsMessage(sessionDBModels.get(0),operationSmsMessage);
+            smsMessageRestService.sendSmsMessageService(sessionDBModels.get(0),operationSmsMessage);
 
             return new ApiSmsMessageWSDTO(operationSmsMessage);
         }

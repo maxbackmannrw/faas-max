@@ -5,9 +5,6 @@ import com.faas.core.base.model.db.session.SessionDBModel;
 import okhttp3.HttpUrl;
 import org.springframework.stereotype.Component;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.Date;
 import java.util.UUID;
@@ -37,13 +34,6 @@ public class AppUtils {
         return date.getTime();
     }
 
-    public String urlEncodeValue(String value) {
-        try {
-            return URLEncoder.encode(value, StandardCharsets.UTF_8.toString());
-        } catch (UnsupportedEncodingException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     public String generateUUID(){
         UUID uuid = UUID.randomUUID();
@@ -53,7 +43,6 @@ public class AppUtils {
 
 
     public String convertSmsType(String smsType){
-
         if (smsType.equalsIgnoreCase(AppConstant.FLASH_MESSAGE)){
             return "1";
         }
@@ -64,8 +53,7 @@ public class AppUtils {
     }
 
 
-
-    public String createOperationUrls(SessionDBModel sessionDBModel, ProcessDBModel processDBModel, String urlType){
+    public String generateOperationUrls(SessionDBModel sessionDBModel, ProcessDBModel processDBModel, String urlType){
 
         if (processDBModel.getProcessUrls() != null && !processDBModel.getProcessUrls().isEmpty()){
             for (int i=0;i<processDBModel.getProcessUrls().size();i++){
@@ -76,15 +64,6 @@ public class AppUtils {
         }
         return null;
     }
-
-
-    public String createRestCallUrl(String baseUrl,String requestUrl){
-
-        HttpUrl.Builder urlBuilder = HttpUrl.parse(baseUrl + requestUrl).newBuilder();
-        String url = urlBuilder.build().toString();
-        return null;
-    }
-
 
 
 

@@ -30,7 +30,6 @@ public class WappManagerService {
     @Autowired
     WappManagerRESTCall wappManagerRESTCall;
 
-
     @Autowired
     AppUtils appUtils;
 
@@ -44,6 +43,7 @@ public class WappManagerService {
         return wappManagerRESTCall.getWappQRCodeInBase64(serverUrl,instanceKey);
     }
 
+
     public void sendWappMessageService(WappMessageDBModel wappMessageDBModel) throws IOException {
 
         Optional<WappAccountDBModel> wappAccountDBModel = wappAccountRepository.findById(wappMessageDBModel.getWappMessage().getAccountId());
@@ -52,7 +52,7 @@ public class WappManagerService {
 
                 String messageBody = wappMessageBodyPopulate(wappMessageDBModel);
                 if (messageBody != null && wappManagerRESTCall.sendWappTextMessage(wappAccountDBModel.get().getServerUrl(), wappAccountDBModel.get().getInstanceKey(), wappMessageDBModel.getPhoneNumber(), messageBody)) {
-                    wappMessageDBModel.setMessageState(AppConstant.SENT_MESSAGE);
+                    wappMessageDBModel.setMessageState(AppConstant.MESSAGE_SENT);
                     wappMessageDBModel.setuDate(appUtils.getCurrentTimeStamp());
                     wappMessageRepository.save(wappMessageDBModel);
                 }

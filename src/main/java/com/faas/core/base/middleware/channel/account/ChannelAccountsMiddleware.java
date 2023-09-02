@@ -350,6 +350,7 @@ public class ChannelAccountsMiddleware {
         return response;
     }
 
+
     public WappAccountWSModel createWappAccount(long userId,String account, String phoneNumber, String serverUrl) throws IOException {
 
         WappAccountWSModel response = new WappAccountWSModel();

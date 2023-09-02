@@ -17,7 +17,7 @@ import com.faas.core.base.repo.process.details.channel.content.ProcessWappChanne
 import com.faas.core.base.repo.process.details.channel.temp.WappMessageTempRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.base.repo.user.details.UserDetailsRepository;
-import com.faas.core.api.service.channel.wapp.ApiWappService;
+import com.faas.core.rest.service.channel.wapp.WappRestService;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.ChannelHelper;
@@ -41,7 +41,7 @@ public class ApiWappMessageFramework {
     ChannelHelper channelHelper;
 
     @Autowired
-    ApiWappService apiWappService;
+    WappRestService wappRestService;
 
     @Autowired
     SessionRepository sessionRepository;
@@ -121,19 +121,18 @@ public class ApiWappMessageFramework {
             wappMessageDBModel.setProcessId(processId);
             wappMessageDBModel.setWappMessage(channelHelper.getWappMessageDAO(wappMessageTempDBModels.get(0),agentDetails.get(0)));
             wappMessageDBModel.setMessageSentId("");
-            wappMessageDBModel.setMessageState(AppConstant.READY_MESSAGE);
+            wappMessageDBModel.setMessageState(AppConstant.MESSAGE_READY);
             wappMessageDBModel.setuDate(appUtils.getCurrentTimeStamp());
             wappMessageDBModel.setcDate(appUtils.getCurrentTimeStamp());
             wappMessageDBModel.setStatus(1);
 
             WappMessageDBModel operationWappMessage = wappMessageRepository.save(wappMessageDBModel);
-            apiWappService.outSendWappMessage(sessionDBModels.get(0),operationWappMessage);
+            wappRestService.sendWappMessageService(sessionDBModels.get(0),operationWappMessage);
 
-            return new ApiWappMessageWSDTO();
+            return new ApiWappMessageWSDTO(operationWappMessage);
         }
         return null;
     }
-
 
 
     public ApiWappMessageWSDTO apiUpdateWappMessageService(long agentId,long sessionId,String campaignId,String processId,String messageId){

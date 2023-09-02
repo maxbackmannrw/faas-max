@@ -114,9 +114,10 @@ public class AppConstant {
     public static final String TEXT_PUSH = "TEXT_PUSH";
 
 
-    public static final String READY_MESSAGE = "READY_MESSAGE";
-    public static final String SENT_MESSAGE = "SENT_MESSAGE";
-    public static final String FAILED_MESSAGE = "FAILED_MESSAGE";
+    public static final String MESSAGE_READY = "MESSAGE_READY";
+    public static final String MESSAGE_SENDING = "MESSAGE_SENDING";
+    public static final String MESSAGE_SENT = "MESSAGE_SENT";
+    public static final String MESSAGE_FAILED = "MESSAGE_FAILED";
 
 
     public static final String READY_CALL = "READY_CALL";
