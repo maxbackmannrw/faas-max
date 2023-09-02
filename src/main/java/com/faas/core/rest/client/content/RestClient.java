@@ -17,7 +17,6 @@ public class RestClient {
 
         Request request = new Request.Builder().url(requestUrl)
                 .header("Content-Type", "application/x-www-form-urlencoded")
-                .header("Accept", "text/plain")
                 .build();
 
         try (Response response = client.newCall(request).execute()) {

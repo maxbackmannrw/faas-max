@@ -64,13 +64,13 @@ public class WappRestService {
             if (wappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.IMAGE_MESSAGE)){
                 wappRestClient.sendWappTextMessage(wappMessageDBModel,wappAccountDBModel.get());
             }
-            if (wappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.VIDEO_MESSAGE)){
+            if (wappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.VOICE_MESSAGE)){
                 wappRestClient.sendWappTextMessage(wappMessageDBModel,wappAccountDBModel.get());
             }
             if (wappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.VIDEO_MESSAGE)){
                 wappRestClient.sendWappTextMessage(wappMessageDBModel,wappAccountDBModel.get());
             }
-            if (wappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.FILE_MESSAGE)){
+            if (wappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.DOC_MESSAGE)){
                 wappRestClient.sendWappTextMessage(wappMessageDBModel,wappAccountDBModel.get());
             }
         }

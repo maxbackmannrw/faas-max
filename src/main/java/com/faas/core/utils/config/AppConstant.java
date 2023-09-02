@@ -106,7 +106,7 @@ public class AppConstant {
     public static final String IMAGE_MESSAGE = "IMAGE_MESSAGE";
     public static final String VOICE_MESSAGE = "VOICE_MESSAGE";
     public static final String VIDEO_MESSAGE = "VIDEO_MESSAGE";
-    public static final String FILE_MESSAGE = "FILE_MESSAGE";
+    public static final String DOC_MESSAGE = "DOC_MESSAGE";
 
 
     public static final String STANDARD_EMAIL = "STANDARD_EMAIL";
