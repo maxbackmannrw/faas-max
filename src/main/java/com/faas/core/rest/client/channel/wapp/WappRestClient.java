@@ -35,11 +35,17 @@ public class WappRestClient {
     public String initWappInstance(String serverUrl) throws IOException {
 
         String requestUrl = restClient.urlBuilder(serverUrl,"/instance/init",null);
-
         String response = restClient.sendGetRequest(requestUrl);
         if (response != null){
+
+            System.out.println("initWappInstance response :" + response);
+
             JsonObject resObject = JsonParser.parseString(response).getAsJsonObject();
-            return resObject.getAsJsonPrimitive("key").getAsString();
+            String value = resObject.getAsJsonPrimitive("key").getAsString();
+
+            System.out.println("initWappInstance value :" + value);
+
+            return value;
         }
         return null;
     }
