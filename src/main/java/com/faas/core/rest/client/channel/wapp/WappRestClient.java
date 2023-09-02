@@ -1,6 +1,10 @@
 package com.faas.core.rest.client.channel.wapp;
 
+import com.faas.core.base.model.db.channel.account.WappAccountDBModel;
+import com.faas.core.base.model.db.operation.channel.WappMessageDBModel;
+import com.faas.core.base.repo.operation.channel.WappMessageRepository;
 import com.faas.core.rest.client.content.RestClient;
+import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -22,6 +26,9 @@ public class WappRestClient {
     RestClient restClient;
 
     @Autowired
+    WappMessageRepository wappMessageRepository;
+
+    @Autowired
     AppUtils appUtils;
 
 
@@ -40,9 +47,9 @@ public class WappRestClient {
 
     public String scanWappQRCode(String serverUrl, String instanceKey) throws IOException {
 
-        Map<String, String> jsonObj = new HashMap<>();
-        jsonObj.put("key", instanceKey);
-        String requestUrl = restClient.urlBuilder(serverUrl,"/instance",jsonObj);
+        Map<String, String> paramObjs = new HashMap<>();
+        paramObjs.put("key", instanceKey);
+        String requestUrl = restClient.urlBuilder(serverUrl,"/instance",paramObjs);
 
         String response = restClient.sendGetRequest(requestUrl);
         if (response != null){
@@ -55,13 +62,13 @@ public class WappRestClient {
 
     public String getWappQRCodeInBase64(String serverUrl, String instanceKey) throws IOException {
 
-        Map<String, String> jsonObj = new HashMap<>();
-        jsonObj.put("key", instanceKey);
-        String requestUrl = restClient.urlBuilder(serverUrl,"/instance/qrbase64",jsonObj);
+        Map<String, String> paramObjs = new HashMap<>();
+        paramObjs.put("key", instanceKey);
+        String requestUrl = restClient.urlBuilder(serverUrl,"/instance/qrbase64",paramObjs);
 
         String response = restClient.sendGetRequest(requestUrl);
         if (response != null){
-            JsonObject jsonObject = JsonParser.parseString(response).getAsJsonObject();
+            JsonObject resObject = JsonParser.parseString(response).getAsJsonObject();
             return resObject.getAsJsonObject("qrcode").getAsString();
         }
         return null;
@@ -70,9 +77,9 @@ public class WappRestClient {
 
     public String getWappInstanceInfo(String serverUrl, String instanceKey) throws IOException {
 
-        Map<String, String> jsonObj = new HashMap<>();
-        jsonObj.put("key", instanceKey);
-        String requestUrl = restClient.urlBuilder(serverUrl,"/instance/info",jsonObj);
+        Map<String, String> paramObjs = new HashMap<>();
+        paramObjs.put("key", instanceKey);
+        String requestUrl = restClient.urlBuilder(serverUrl,"/instance/info",paramObjs);
 
         String response = restClient.sendGetRequest(requestUrl);
         if (response != null){
@@ -85,9 +92,9 @@ public class WappRestClient {
 
     public String restoreAllWappInstances(String serverUrl, String instanceKey) throws IOException {
 
-        Map<String, String> jsonObj = new HashMap<>();
-        jsonObj.put("key", instanceKey);
-        String requestUrl = restClient.urlBuilder(serverUrl,"/instance/info",jsonObj);
+        Map<String, String> paramObjs = new HashMap<>();
+        paramObjs.put("key", instanceKey);
+        String requestUrl = restClient.urlBuilder(serverUrl,"/instance/info",paramObjs);
 
         String response = restClient.sendGetRequest(requestUrl);
         if (response != null){
@@ -99,9 +106,9 @@ public class WappRestClient {
 
     public String deleteWappInstanceRest(String serverUrl, String instanceKey) throws IOException {
 
-        Map<String, String> jsonObj = new HashMap<>();
-        jsonObj.put("key", instanceKey);
-        String requestUrl = restClient.urlBuilder(serverUrl,"/instance/info",jsonObj);
+        Map<String, String> paramObjs = new HashMap<>();
+        paramObjs.put("key", instanceKey);
+        String requestUrl = restClient.urlBuilder(serverUrl,"/instance/info",paramObjs);
 
         String response = restClient.sendGetRequest(requestUrl);
         if (response != null){
@@ -114,9 +121,9 @@ public class WappRestClient {
 
     public String logOutWappInstance(String serverUrl, String instanceKey) throws IOException {
 
-        Map<String, String> jsonObj = new HashMap<>();
-        jsonObj.put("key", instanceKey);
-        String requestUrl = restClient.urlBuilder(serverUrl,"/instance/info",jsonObj);
+        Map<String, String> paramObjs = new HashMap<>();
+        paramObjs.put("key", instanceKey);
+        String requestUrl = restClient.urlBuilder(serverUrl,"/instance/info",paramObjs);
 
         String response = restClient.sendGetRequest(requestUrl);
         if (response != null){
@@ -139,36 +146,24 @@ public class WappRestClient {
     }
 
 
+    public void sendWappTextMessage(WappMessageDBModel wappMessageDBModel, WappAccountDBModel wappAccountDBModel) throws IOException {
 
-    public boolean sendWappTextMessage(String serverUrl, String instanceKey, String phoneNumber, String messageBody) throws IOException {
+        Map<String, String> paramObjs = new HashMap<>();
+        paramObjs.put("key", wappAccountDBModel.getInstanceKey());
+        String requestUrl = restClient.urlBuilder(wappAccountDBModel.getServerUrl(),"/message/text",paramObjs);
 
-        Map<String, String> jsonObj = new HashMap<>();
-        jsonObj.put("key", instanceKey);
-        String requestUrl = restClient.urlBuilder(serverUrl,"/instance/info",jsonObj);
+        Map<String,String> formData = new HashMap<>();
+        formData.put("id", wappMessageDBModel.getPhoneNumber());
+        formData.put("message",wappMessageDBModel.getWappMessage().getWappBody());
 
-// from here
-
-        HttpUrl.Builder urlBuilder = HttpUrl.parse(serverUrl + "/message/text").newBuilder();
-        urlBuilder.addQueryParameter("key", instanceKey);
-        String url = urlBuilder.build().toString();
-
-        RequestBody requestBody = new FormBody.Builder()
-                .add("id", phoneNumber)
-                .add("message", messageBody)
-                .build();
-
-        Request request = new Request.Builder()
-                .url(url)
-                .post(requestBody)
-                .build();
-
-        try (Response response = client.newCall(request).execute()) {
-            System.out.println("response" + response);
-            if (!response.isSuccessful()) {
-                throw new IOException("Unexpected code " + response);
-            }
-            return true;
+        String response = restClient.sendPostFormRequest(requestUrl,formData);
+        if (response != null){
+            wappMessageDBModel.setMessageState(AppConstant.MESSAGE_SENT);
+        }else {
+            wappMessageDBModel.setMessageState(AppConstant.MESSAGE_FAILED);
         }
+        wappMessageDBModel.setuDate(appUtils.getCurrentTimeStamp());
+        wappMessageRepository.save(wappMessageDBModel);
     }
 
 
@@ -192,12 +187,7 @@ public class WappRestClient {
                 .post(requestBody)
                 .build();
 
-        try (Response response = client.newCall(request).execute()) {
-            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
-
-            System.out.println(response.body().string());
-            return null;
-        }
+        return null;
     }
 
 
@@ -221,12 +211,7 @@ public class WappRestClient {
                 .post(requestBody)
                 .build();
 
-        try (Response response = client.newCall(request).execute()) {
-            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
-
-            System.out.println(response.body().string());
-            return null;
-        }
+        return null;
     }
 
     public String sendWappAudioMessage(String serverUrl, String instanceKey, String phoneNumber, String fileCaption, String fileName, String fileUrl) throws IOException {
@@ -249,12 +234,8 @@ public class WappRestClient {
                 .post(requestBody)
                 .build();
 
-        try (Response response = client.newCall(request).execute()) {
-            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+        return null;
 
-            System.out.println(response.body().string());
-            return null;
-        }
     }
 
     public String sendWappDocumentMessage(String serverUrl, String instanceKey, String phoneNumber, String fileCaption, String fileName, String fileUrl) throws IOException {
@@ -277,12 +258,8 @@ public class WappRestClient {
                 .post(requestBody)
                 .build();
 
-        try (Response response = client.newCall(request).execute()) {
-            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+        return null;
 
-            System.out.println(response.body().string());
-            return null;
-        }
     }
 
     public String sendWappFileUrlMessage(String serverUrl, String instanceKey, String phoneNumber, String fileUrl, String fileType, String mimeType, String fileCaption) throws IOException {
@@ -306,12 +283,8 @@ public class WappRestClient {
                 .post(requestBody)
                 .build();
 
-        try (Response response = client.newCall(request).execute()) {
-            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+        return null;
 
-            System.out.println(response.body().string());
-            return null;
-        }
     }
 
 
@@ -338,12 +311,7 @@ public class WappRestClient {
                 .header("Accept", "text/plain")
                 .build();
 
-        try (Response response = client.newCall(request).execute()) {
-            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
-
-            System.out.println(response.body().string());
-            return null;
-        }
+        return null;
     }
 
 
@@ -359,12 +327,7 @@ public class WappRestClient {
                 .header("Accept", "text/plain")
                 .build();
 
-        try (Response response = client.newCall(request).execute()) {
-            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
-
-            System.out.println(response.body().string());
-            return null;
-        }
+        return null;
     }
 
     public String getWappUserStatus(String serverUrl, String instanceKey, String phoneNumber) throws IOException {
@@ -379,12 +342,7 @@ public class WappRestClient {
                 .header("Accept", "text/plain")
                 .build();
 
-        try (Response response = client.newCall(request).execute()) {
-            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
-
-            System.out.println(response.body().string());
-            return null;
-        }
+        return null;
     }
 
 
@@ -392,7 +350,7 @@ public class WappRestClient {
         return null;
     }
 
-    public String updateWappProfilePicture(Rest) throws IOException {
+    public String updateWappProfilePicture() throws IOException {
         return null;
     }
 

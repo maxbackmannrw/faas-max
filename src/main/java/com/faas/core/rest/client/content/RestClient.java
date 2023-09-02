@@ -1,10 +1,6 @@
 package com.faas.core.rest.client.content;
 
-import com.faas.core.utils.config.AppUtils;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import okhttp3.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -13,10 +9,6 @@ import java.util.Map;
 
 @Component
 public class RestClient {
-
-
-    @Autowired
-    AppUtils appUtils;
 
     private final OkHttpClient client = new OkHttpClient();
 
@@ -67,10 +59,7 @@ public class RestClient {
     public String sendPostJsonRequest(String requestUrl,String requestJson) throws IOException {
 
         RequestBody requestBody = RequestBody.create(requestJson,MediaType.parse("application/json; charset=utf-8"));
-        Request request = new Request.Builder()
-                .url(requestUrl)
-                .post(requestBody)
-                .build();
+        Request request = new Request.Builder().url(requestUrl).post(requestBody).build();
 
         try (Response response = client.newCall(request).execute()) {
             if (response.isSuccessful() && response.body() != null) {
@@ -83,11 +72,11 @@ public class RestClient {
     }
 
 
-    public String urlBuilder(String baseUrl,String subUrl,Map<String,String> keyValues){
+    public String urlBuilder(String baseUrl,String subUrl,Map<String,String> paramObjs){
 
         HttpUrl.Builder urlBuilder = HttpUrl.parse(baseUrl+subUrl).newBuilder();
-        if (keyValues != null) {
-            for (Map.Entry<String, String> entry : keyValues.entrySet()) {
+        if (paramObjs != null) {
+            for (Map.Entry<String, String> entry : paramObjs.entrySet()) {
                 urlBuilder.addQueryParameter(entry.getKey(), entry.getValue());
             }
         }

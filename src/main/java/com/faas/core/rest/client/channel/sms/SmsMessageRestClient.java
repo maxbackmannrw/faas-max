@@ -37,8 +37,9 @@ public class SmsMessageRestClient {
         formData.put("Sid", smsMessageDBModel.getSmsMessage().getSenderId());
         formData.put("mno", smsMessageDBModel.getPhoneNumber());
         formData.put("msg", smsMessageDBModel.getSmsMessage().getSmsBody());
+        String requestUrl = restClient.urlBuilder(smsAccountDBModel.getApiUrl(),"",null);
 
-        String response = restClient.sendPostFormRequest(restClient.urlBuilder(smsAccountDBModel.getApiUrl(),"",null),formData);
+        String response = restClient.sendPostFormRequest(requestUrl,formData);
         if (response != null){
             smsMessageDBModel.setMessageState(AppConstant.MESSAGE_SENT);
         }else {

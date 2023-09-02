@@ -26,12 +26,13 @@ public class UtilityRestClient {
 
     public String urlShortener(String httpUrl) throws IOException {
 
-        Gson gson = new Gson();
-        Map<String, String> jsonObj = new HashMap<>();
-        jsonObj.put("originalUrl", httpUrl);
         String requestUrl = restClient.urlBuilder(AppConstant.URL_SHORTENER_API_ENDPOINT,"",null);
 
-        String response = restClient.sendPostJsonRequest(requestUrl,gson.toJson(jsonObj));
+        Gson gson = new Gson();
+        Map<String, String> bodyObjs = new HashMap<>();
+        bodyObjs.put("originalUrl", httpUrl);
+
+        String response = restClient.sendPostJsonRequest(requestUrl,gson.toJson(bodyObjs));
         if (response != null){
             JsonObject resObject = JsonParser.parseString(response).getAsJsonObject();
             return resObject.getAsJsonObject("data").get("shortUrl").getAsString();

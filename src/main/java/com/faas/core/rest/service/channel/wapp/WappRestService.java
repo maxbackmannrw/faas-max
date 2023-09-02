@@ -58,16 +58,21 @@ public class WappRestService {
         Optional<ProcessDBModel> processDBModel = processRepository.findById(sessionDBModel.getProcessId());
         if (wappAccountDBModel.isPresent() && processDBModel.isPresent()) {
             wappMessageDBModel = populateWappMessage(sessionDBModel,wappMessageDBModel,wappAccountDBModel.get(),processDBModel.get());
-            /*
-            if (wappMessageDBModel != null) {
-              String sentResult = outWappMessageRest.sendSmsMessageRestCall(smsMessageDBModel,smsAccountDBModel.get());
-                if (sentResult != null){
-                    smsMessageDBModel.setMessageState(AppConstant.SENT_MESSAGE);
-                    smsMessageDBModel.setuDate(appUtils.getCurrentTimeStamp());
-                    smsMessageRepository.save(smsMessageDBModel);
-                }
+            if (wappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.TEXT_WAPP)){
+                wappRestClient.sendWappTextMessage(wappMessageDBModel,wappAccountDBModel.get());
             }
-             */
+            if (wappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.IMAGE_WAPP)){
+                wappRestClient.sendWappTextMessage(wappMessageDBModel,wappAccountDBModel.get());
+            }
+            if (wappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.VOICE_WAPP)){
+                wappRestClient.sendWappTextMessage(wappMessageDBModel,wappAccountDBModel.get());
+            }
+            if (wappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.VIDEO_WAPP)){
+                wappRestClient.sendWappTextMessage(wappMessageDBModel,wappAccountDBModel.get());
+            }
+            if (wappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.FILE_WAPP)){
+                wappRestClient.sendWappTextMessage(wappMessageDBModel,wappAccountDBModel.get());
+            }
         }
     }
 
@@ -81,7 +86,7 @@ public class WappRestService {
         if (wappMessageBody.contains(AppConstant.PWA_URL_TAG)) {
             String pwaUrl = appUtils.generateOperationUrls(sessionDBModel,processDBModel,AppConstant.PWA_URL);
             if (pwaUrl != null){
-                String pwaUrlShort = utilityRestClient.urlShortenerRest(pwaUrl);
+                String pwaUrlShort = utilityRestClient.urlShortener(pwaUrl);
                 if (pwaUrlShort != null){
                     wappMessageBody = wappMessageBody.replace(AppConstant.PWA_URL_TAG, pwaUrlShort);
                 }
@@ -90,7 +95,7 @@ public class WappRestService {
         if (wappMessageBody.contains(AppConstant.NATIVE_URL_TAG)) {
             String nativeUrl = appUtils.generateOperationUrls(sessionDBModel,processDBModel,AppConstant.NATIVE_URL);
             if (nativeUrl != null){
-                String nativeUrlShort = utilityRestClient.urlShortenerRest(nativeUrl);
+                String nativeUrlShort = utilityRestClient.urlShortener(nativeUrl);
                 if (nativeUrlShort != null){
                     wappMessageBody = wappMessageBody.replace(AppConstant.NATIVE_URL_TAG, nativeUrlShort);
                 }
