@@ -37,15 +37,8 @@ public class WappRestClient {
         String requestUrl = restClient.urlBuilder(serverUrl,"/instance/init",null);
         String response = restClient.sendGetRequest(requestUrl);
         if (response != null){
-
-            System.out.println("initWappInstance response :" + response);
-
             JsonObject resObject = JsonParser.parseString(response).getAsJsonObject();
-            String value = resObject.getAsJsonPrimitive("key").getAsString();
-
-            System.out.println("initWappInstance value :" + value);
-
-            return value;
+            return resObject.getAsJsonPrimitive("key").getAsString();
         }
         return null;
     }
@@ -56,7 +49,6 @@ public class WappRestClient {
         Map<String, String> paramObjs = new HashMap<>();
         paramObjs.put("key", instanceKey);
         String requestUrl = restClient.urlBuilder(serverUrl,"/instance",paramObjs);
-
         String response = restClient.sendGetRequest(requestUrl);
         if (response != null){
             JsonObject resObject = JsonParser.parseString(response).getAsJsonObject();
@@ -71,11 +63,10 @@ public class WappRestClient {
         Map<String, String> paramObjs = new HashMap<>();
         paramObjs.put("key", instanceKey);
         String requestUrl = restClient.urlBuilder(serverUrl,"/instance/qrbase64",paramObjs);
-
         String response = restClient.sendGetRequest(requestUrl);
         if (response != null){
             JsonObject resObject = JsonParser.parseString(response).getAsJsonObject();
-            return resObject.getAsJsonObject("qrcode").getAsString();
+            return resObject.getAsJsonPrimitive("qrcode").getAsString();
         }
         return null;
     }
