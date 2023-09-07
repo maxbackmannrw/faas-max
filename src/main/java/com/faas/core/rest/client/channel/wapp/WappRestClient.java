@@ -166,7 +166,7 @@ public class WappRestClient {
     }
 
 
-    public String sendWappImageMessage(String serverUrl, String instanceKey, String phoneNumber, String fileCaption, String fileName, String fileUrl) throws IOException {
+    public String sendWappImageMessageRest(String serverUrl, String instanceKey, String phoneNumber, String fileCaption, String fileName, String fileUrl) throws IOException {
 
         RequestBody requestBody = new MultipartBody.Builder().setType(MultipartBody.FORM)
                 .addFormDataPart("file", fileName,
@@ -190,7 +190,7 @@ public class WappRestClient {
     }
 
 
-    public String sendWappVideoMessage(String serverUrl, String instanceKey, String phoneNumber, String fileCaption, String fileName, String fileUrl) throws IOException {
+    public String sendWappVideoMessageRest(String serverUrl, String instanceKey, String phoneNumber, String fileCaption, String fileName, String fileUrl) throws IOException {
 
         RequestBody requestBody = new MultipartBody.Builder().setType(MultipartBody.FORM)
                 .addFormDataPart("file", fileName,
@@ -213,7 +213,7 @@ public class WappRestClient {
         return null;
     }
 
-    public String sendWappAudioMessage(String serverUrl, String instanceKey, String phoneNumber, String fileCaption, String fileName, String fileUrl) throws IOException {
+    public String sendWappAudioMessageRest(String serverUrl, String instanceKey, String phoneNumber, String fileCaption, String fileName, String fileUrl) throws IOException {
 
         RequestBody requestBody = new MultipartBody.Builder().setType(MultipartBody.FORM)
                 .addFormDataPart("file", fileName,
@@ -237,7 +237,7 @@ public class WappRestClient {
 
     }
 
-    public String sendWappDocumentMessage(String serverUrl, String instanceKey, String phoneNumber, String fileCaption, String fileName, String fileUrl) throws IOException {
+    public String sendWappDocumentMessageRest(String serverUrl, String instanceKey, String phoneNumber, String fileCaption, String fileName, String fileUrl) throws IOException {
 
         RequestBody requestBody = new MultipartBody.Builder().setType(MultipartBody.FORM)
                 .addFormDataPart("file", fileName,
@@ -261,7 +261,7 @@ public class WappRestClient {
 
     }
 
-    public String sendWappFileUrlMessage(String serverUrl, String instanceKey, String phoneNumber, String fileUrl, String fileType, String mimeType, String fileCaption) throws IOException {
+    public String sendWappFileUrlMessageRest(String serverUrl, String instanceKey, String phoneNumber, String fileUrl, String fileType, String mimeType, String fileCaption) throws IOException {
 
         RequestBody requestBody = new FormBody.Builder()
                 .add("id", phoneNumber)
@@ -287,18 +287,18 @@ public class WappRestClient {
     }
 
 
-    public String sendWappListMessage() throws IOException {
+    public String sendWappListMessageRest() throws IOException {
 
         return null;
     }
 
-    public String setWappStatus() throws IOException {
+    public String setWappStatusRest() throws IOException {
         return null;
     }
 
 
 
-    public String isUserOnWapp(String serverUrl, String instanceKey, String phoneNumber) throws IOException {
+    public String isUserOnWappRest(String serverUrl, String instanceKey, String phoneNumber) throws IOException {
 
         HttpUrl.Builder urlBuilder = HttpUrl.parse(serverUrl + "/misc/onwhatsapp").newBuilder();
         urlBuilder.addQueryParameter("key", instanceKey);
@@ -314,7 +314,7 @@ public class WappRestClient {
     }
 
 
-    public String downloadWappProfilePic(String serverUrl, String instanceKey, String phoneNumber) throws IOException {
+    public String downloadWappProfilePicRest(String serverUrl, String instanceKey, String phoneNumber) throws IOException {
 
         HttpUrl.Builder urlBuilder = HttpUrl.parse(serverUrl + "/misc/downProfile").newBuilder();
         urlBuilder.addQueryParameter("key", instanceKey);
@@ -329,7 +329,8 @@ public class WappRestClient {
         return null;
     }
 
-    public String getWappUserStatus(String serverUrl, String instanceKey, String phoneNumber) throws IOException {
+
+    public String getWappUserStatusRest(String serverUrl, String instanceKey, String phoneNumber) throws IOException {
 
         HttpUrl.Builder urlBuilder = HttpUrl.parse(serverUrl + "/misc/getStatus").newBuilder();
         urlBuilder.addQueryParameter("key", instanceKey);
@@ -345,14 +346,14 @@ public class WappRestClient {
     }
 
 
-    public String blockUnblockWappUser() throws IOException {
+    public String blockUnblockWappUserRest() throws IOException {
         return null;
     }
 
-    public String updateWappProfilePicture() throws IOException {
+
+    public String updateWappProfilePictureRest() throws IOException {
         return null;
     }
-
 
 
 }
