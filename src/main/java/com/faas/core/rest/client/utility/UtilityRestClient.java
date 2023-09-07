@@ -39,12 +39,16 @@ public class UtilityRestClient {
         if (response != null){
             JsonObject resObject = JsonParser.parseString(response).getAsJsonObject();
             if (resObject.get("success").getAsBoolean()){
-
                 Map<String,String> urlShortMap = new HashMap<>();
-                urlShortMap.put("linkId", resObject.get("linkId").getAsString());
-                urlShortMap.put("statsUrl", resObject.get("statsUrl").getAsString());
-                urlShortMap.put("shortUrl", resObject.get("shortnedUrl").getAsString());
-
+                if (resObject.get("linkId") != null){
+                    urlShortMap.put("linkId", resObject.get("linkId").getAsString());
+                }
+                if (resObject.get("statsUrl") != null){
+                    urlShortMap.put("statsUrl", resObject.get("statsUrl").getAsString());
+                }
+                if (resObject.get("shortnedUrl") != null){
+                    urlShortMap.put("shortnedUrl", resObject.get("shortnedUrl").getAsString());
+                }
                 return urlShortMap;
             }
         }
