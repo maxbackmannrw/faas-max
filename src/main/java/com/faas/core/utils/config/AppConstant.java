@@ -176,7 +176,8 @@ public class AppConstant {
 
 
 
-    public static final String URL_SHORTENER_API_URL = "https://api.urlo.in/api/short-url";
+    public static final String URL_SHORTENER_API_URL = "https://tyny.to/linkApi";
+    public static final String URL_SHORTENER_API_KEY = "b94afb4c-549d-4e40-9891-9aceb6155b31";
 
 
     public static final String SMS_PROVIDER_API_URL = "https://api.1s2u.io/bulksms";

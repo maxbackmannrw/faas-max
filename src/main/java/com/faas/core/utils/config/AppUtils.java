@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Base64;
 import java.util.Date;
+import java.util.Map;
 import java.util.UUID;
 
 @Component
@@ -66,5 +67,12 @@ public class AppUtils {
     }
 
 
+    public String getValueFromMap(Map<String,String> stringMap,String key){
+
+        if (stringMap != null && stringMap.get(key) != null){
+            return stringMap.get(key);
+        }
+        return null;
+    }
 
 }

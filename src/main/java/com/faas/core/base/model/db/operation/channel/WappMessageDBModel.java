@@ -1,11 +1,8 @@
 package com.faas.core.base.model.db.operation.channel;
 
 import com.faas.core.base.model.db.operation.channel.dao.WappMessageDAO;
-import com.faas.core.base.model.db.operation.channel.dao.WappMessageDataDAO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.util.List;
 
 @Document(collection = "wapp_message_table")
 public class WappMessageDBModel {

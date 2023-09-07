@@ -1,30 +1,29 @@
 package com.faas.core.base.model.db.operation.channel.dao;
 
-import java.util.List;
+import java.util.Map;
 
 public class WappMessageDAO {
 
     private String tempId;
+    private String accountId;
     private String wappTitle;
     private String wappBody;
-    private List<MessageDataDAO> messageDatas;
+    private Map<String,String> messageMaps;
     private String messageType;
-    private String accountId;
     private long cDate;
 
     public WappMessageDAO() {
     }
 
-    public WappMessageDAO(String tempId, String wappTitle, String wappBody, List<MessageDataDAO> messageDatas, String messageType, String accountId, long cDate) {
+    public WappMessageDAO(String tempId, String accountId, String wappTitle, String wappBody, Map<String, String> messageMaps, String messageType, long cDate) {
         this.tempId = tempId;
+        this.accountId = accountId;
         this.wappTitle = wappTitle;
         this.wappBody = wappBody;
-        this.messageDatas = messageDatas;
+        this.messageMaps = messageMaps;
         this.messageType = messageType;
-        this.accountId = accountId;
         this.cDate = cDate;
     }
-
 
     public String getTempId() {
         return tempId;
@@ -32,6 +31,14 @@ public class WappMessageDAO {
 
     public void setTempId(String tempId) {
         this.tempId = tempId;
+    }
+
+    public String getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(String accountId) {
+        this.accountId = accountId;
     }
 
     public String getWappTitle() {
@@ -50,12 +57,12 @@ public class WappMessageDAO {
         this.wappBody = wappBody;
     }
 
-    public List<MessageDataDAO> getMessageDatas() {
-        return messageDatas;
+    public Map<String, String> getMessageMaps() {
+        return messageMaps;
     }
 
-    public void setMessageDatas(List<MessageDataDAO> messageDatas) {
-        this.messageDatas = messageDatas;
+    public void setMessageMaps(Map<String, String> messageMaps) {
+        this.messageMaps = messageMaps;
     }
 
     public String getMessageType() {
@@ -64,14 +71,6 @@ public class WappMessageDAO {
 
     public void setMessageType(String messageType) {
         this.messageType = messageType;
-    }
-
-    public String getAccountId() {
-        return accountId;
-    }
-
-    public void setAccountId(String accountId) {
-        this.accountId = accountId;
     }
 
     public long getcDate() {

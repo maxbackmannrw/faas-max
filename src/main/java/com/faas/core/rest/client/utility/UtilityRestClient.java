@@ -1,5 +1,6 @@
 package com.faas.core.rest.client.utility;
 
+import com.faas.core.base.model.db.operation.channel.dao.MessageDataDAO;
 import com.faas.core.rest.client.content.RestClient;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -24,18 +26,27 @@ public class UtilityRestClient {
     AppUtils appUtils;
 
 
-    public String urlShortenerRest(String httpUrl) throws IOException {
+    public Map<String,String> urlShortenerRest(String httpUrl) throws IOException {
 
-        String requestUrl = restClient.urlBuilder(AppConstant.URL_SHORTENER_API_URL,"",null);
+        String requestUrl = restClient.urlBuilder(AppConstant.URL_SHORTENER_API_KEY,"/create",null);
 
         Gson gson = new Gson();
         Map<String, String> bodyObjs = new HashMap<>();
-        bodyObjs.put("originalUrl", httpUrl);
+        bodyObjs.put("apiKey", AppConstant.URL_SHORTENER_API_KEY);
+        bodyObjs.put("url", httpUrl);
 
         String response = restClient.sendPostJsonRequest(requestUrl,gson.toJson(bodyObjs));
         if (response != null){
             JsonObject resObject = JsonParser.parseString(response).getAsJsonObject();
-            return resObject.getAsJsonObject("data").get("shortUrl").getAsString();
+            if (resObject.get("success").getAsBoolean()){
+
+                Map<String,String> urlShortMap = new HashMap<>();
+                urlShortMap.put("linkId", resObject.get("linkId").getAsString());
+                urlShortMap.put("statsUrl", resObject.get("statsUrl").getAsString());
+                urlShortMap.put("shortUrl", resObject.get("shortnedUrl").getAsString());
+
+                return urlShortMap;
+            }
         }
         return null;
     }

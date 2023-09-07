@@ -1,26 +1,29 @@
 package com.faas.core.base.model.db.operation.channel.dao;
 
+import java.util.Map;
 
 public class SmsMessageDAO {
 
     private String tempId;
+    private String accountId;
     private String smsTitle;
     private String smsBody;
     private String senderId;
+    private Map<String,String> messageMaps;
     private String messageType;
-    private String accountId;
     private long cDate;
 
     public SmsMessageDAO() {
     }
 
-    public SmsMessageDAO(String tempId, String smsTitle, String smsBody, String senderId, String messageType, String accountId, long cDate) {
+    public SmsMessageDAO(String tempId, String accountId, String smsTitle, String smsBody, String senderId, Map<String, String> messageMaps, String messageType, long cDate) {
         this.tempId = tempId;
+        this.accountId = accountId;
         this.smsTitle = smsTitle;
         this.smsBody = smsBody;
         this.senderId = senderId;
+        this.messageMaps = messageMaps;
         this.messageType = messageType;
-        this.accountId = accountId;
         this.cDate = cDate;
     }
 
@@ -30,6 +33,14 @@ public class SmsMessageDAO {
 
     public void setTempId(String tempId) {
         this.tempId = tempId;
+    }
+
+    public String getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(String accountId) {
+        this.accountId = accountId;
     }
 
     public String getSmsTitle() {
@@ -56,20 +67,20 @@ public class SmsMessageDAO {
         this.senderId = senderId;
     }
 
+    public Map<String, String> getMessageMaps() {
+        return messageMaps;
+    }
+
+    public void setMessageMaps(Map<String, String> messageMaps) {
+        this.messageMaps = messageMaps;
+    }
+
     public String getMessageType() {
         return messageType;
     }
 
     public void setMessageType(String messageType) {
         this.messageType = messageType;
-    }
-
-    public String getAccountId() {
-        return accountId;
-    }
-
-    public void setAccountId(String accountId) {
-        this.accountId = accountId;
     }
 
     public long getcDate() {

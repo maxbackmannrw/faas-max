@@ -15,7 +15,7 @@ import com.faas.core.base.repo.operation.channel.SmsMessageRepository;
 import com.faas.core.base.repo.process.details.channel.content.ProcessSmsChannelRepository;
 import com.faas.core.base.repo.process.details.channel.temp.SmsMessageTempRepository;
 import com.faas.core.base.repo.session.SessionRepository;
-import com.faas.core.rest.service.channel.sms.SmsMessageRestService;
+import com.faas.core.rest.service.channel.sms.SmsRestService;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.ChannelHelper;
@@ -40,7 +40,7 @@ public class ApiSmsMessageFramework {
     ChannelHelper channelHelper;
 
     @Autowired
-    SmsMessageRestService smsMessageRestService;
+    SmsRestService smsRestService;
 
     @Autowired
     SessionRepository sessionRepository;
@@ -112,7 +112,7 @@ public class ApiSmsMessageFramework {
             smsMessageDBModel.setAgentId(agentId);
             smsMessageDBModel.setCampaignId(campaignId);
             smsMessageDBModel.setProcessId(processId);
-            smsMessageDBModel.setSmsMessage(channelHelper.getSmsMessageDAO(smsMessageTempDBModels.get(0),processSmsChannelDBModels.get(0)));
+            smsMessageDBModel.setSmsMessage(channelHelper.createSmsMessageDAO(smsMessageTempDBModels.get(0),processSmsChannelDBModels.get(0)));
             smsMessageDBModel.setMessageSentId("");
             smsMessageDBModel.setMessageState(AppConstant.MESSAGE_READY);
             smsMessageDBModel.setuDate(appUtils.getCurrentTimeStamp());
@@ -120,7 +120,7 @@ public class ApiSmsMessageFramework {
             smsMessageDBModel.setStatus(1);
 
             SmsMessageDBModel operationSmsMessage = smsMessageRepository.save(smsMessageDBModel);
-            smsMessageRestService.sendSmsMessageService(sessionDBModels.get(0),operationSmsMessage);
+            smsRestService.sendSmsMessageService(sessionDBModels.get(0),operationSmsMessage);
 
             return new ApiSmsMessageWSDTO(operationSmsMessage);
         }

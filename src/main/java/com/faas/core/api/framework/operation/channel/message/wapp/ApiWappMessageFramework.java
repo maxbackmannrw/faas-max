@@ -119,7 +119,7 @@ public class ApiWappMessageFramework {
             wappMessageDBModel.setAgentId(agentId);
             wappMessageDBModel.setCampaignId(campaignId);
             wappMessageDBModel.setProcessId(processId);
-            wappMessageDBModel.setWappMessage(channelHelper.getWappMessageDAO(wappMessageTempDBModels.get(0),agentDetails.get(0)));
+            wappMessageDBModel.setWappMessage(channelHelper.createWappMessageDAO(wappMessageTempDBModels.get(0),agentDetails.get(0)));
             wappMessageDBModel.setMessageSentId("");
             wappMessageDBModel.setMessageState(AppConstant.MESSAGE_READY);
             wappMessageDBModel.setuDate(appUtils.getCurrentTimeStamp());

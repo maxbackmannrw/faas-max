@@ -16,6 +16,7 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.util.Map;
 import java.util.Optional;
 
 
@@ -57,7 +58,7 @@ public class WappRestService {
         Optional<WappAccountDBModel> wappAccountDBModel = wappAccountRepository.findById(wappMessageDBModel.getWappMessage().getAccountId());
         Optional<ProcessDBModel> processDBModel = processRepository.findById(sessionDBModel.getProcessId());
         if (wappAccountDBModel.isPresent() && processDBModel.isPresent()) {
-            wappMessageDBModel = populateWappMessage(sessionDBModel,wappMessageDBModel,wappAccountDBModel.get(),processDBModel.get());
+            wappMessageDBModel = generateWappMessageBodyService(sessionDBModel,wappMessageDBModel,wappAccountDBModel.get(),processDBModel.get());
             if (wappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.TEXT_MESSAGE)){
                 wappRestClient.sendWappTextMessageRest(wappMessageDBModel,wappAccountDBModel.get());
             }
@@ -73,7 +74,7 @@ public class WappRestService {
     }
 
 
-    public WappMessageDBModel populateWappMessage(SessionDBModel sessionDBModel,WappMessageDBModel wappMessageDBModel,WappAccountDBModel wappAccountDBModel,ProcessDBModel processDBModel) throws IOException {
+    public WappMessageDBModel generateWappMessageBodyService(SessionDBModel sessionDBModel,WappMessageDBModel wappMessageDBModel,WappAccountDBModel wappAccountDBModel,ProcessDBModel processDBModel) throws IOException {
 
         String wappMessageBody = wappMessageDBModel.getWappMessage().getWappBody();
         if (wappMessageBody.contains(AppConstant.CLIENT_NAME_TAG)) {
@@ -82,18 +83,20 @@ public class WappRestService {
         if (wappMessageBody.contains(AppConstant.PWA_URL_TAG)) {
             String pwaUrl = appUtils.generateOperationUrls(sessionDBModel,processDBModel,AppConstant.PWA_URL);
             if (pwaUrl != null){
-                String pwaUrlShort = utilityRestClient.urlShortenerRest(pwaUrl);
-                if (pwaUrlShort != null){
-                    wappMessageBody = wappMessageBody.replace(AppConstant.PWA_URL_TAG, pwaUrlShort);
+                Map<String,String> pwaUrlMap = utilityRestClient.urlShortenerRest(pwaUrl);
+                if (pwaUrlMap != null){
+                    wappMessageBody = wappMessageBody.replace(AppConstant.PWA_URL_TAG, appUtils.getValueFromMap(pwaUrlMap,"shortUrl"));
+                    wappMessageDBModel.getWappMessage().getMessageMaps().putAll(pwaUrlMap);
                 }
             }
         }
         if (wappMessageBody.contains(AppConstant.NATIVE_URL_TAG)) {
             String nativeUrl = appUtils.generateOperationUrls(sessionDBModel,processDBModel,AppConstant.NATIVE_URL);
             if (nativeUrl != null){
-                String nativeUrlShort = utilityRestClient.urlShortenerRest(nativeUrl);
-                if (nativeUrlShort != null){
-                    wappMessageBody = wappMessageBody.replace(AppConstant.NATIVE_URL_TAG, nativeUrlShort);
+                Map<String,String> nativeUrlMap = utilityRestClient.urlShortenerRest(nativeUrl);
+                if (nativeUrlMap != null){
+                    wappMessageBody = wappMessageBody.replace(AppConstant.NATIVE_URL_TAG, appUtils.getValueFromMap(nativeUrlMap,"shortUrl"));
+                    wappMessageDBModel.getWappMessage().getMessageMaps().putAll(nativeUrlMap);
                 }
             }
         }
