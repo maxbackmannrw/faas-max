@@ -65,7 +65,7 @@ public class SmsRestService {
             if (pwaUrl != null){
                 Map<String,String> pwaUrlMap = utilityRestClient.urlShortenerRest(pwaUrl);
                 if (pwaUrlMap != null){
-                    smsMessageBody = smsMessageBody.replace(AppConstant.PWA_URL_TAG, appUtils.getValueFromMap(pwaUrlMap,"shortUrl"));
+                    smsMessageBody = smsMessageBody.replace(AppConstant.PWA_URL_TAG, appUtils.getValueFromMap(pwaUrlMap,"shortnedUrl"));
                     smsMessageDBModel.getSmsMessage().getMessageMaps().putAll(pwaUrlMap);
                 }
             }
@@ -75,7 +75,7 @@ public class SmsRestService {
             if (nativeUrl != null){
                 Map<String,String> nativeUrlMap = utilityRestClient.urlShortenerRest(nativeUrl);
                 if (nativeUrlMap != null){
-                    smsMessageBody = smsMessageBody.replace(AppConstant.NATIVE_URL_TAG, appUtils.getValueFromMap(nativeUrlMap,"shortUrl"));
+                    smsMessageBody = smsMessageBody.replace(AppConstant.NATIVE_URL_TAG, appUtils.getValueFromMap(nativeUrlMap,"shortnedUrl"));
                     smsMessageDBModel.getSmsMessage().getMessageMaps().putAll(nativeUrlMap);
                 }
             }
