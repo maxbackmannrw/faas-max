@@ -128,7 +128,6 @@ public class ChannelHelper {
     }
 
 
-
     public WappMessageDAO createWappMessageDAO(WappMessageTempDBModel wappMessageTempDBModel, UserDetailsDBModel agentDetails){
 
 
@@ -143,7 +142,6 @@ public class ChannelHelper {
 
         return wappMessageDAO;
     }
-
 
 
     public ApiOperationSipCallWSDTO getApiOperationSipCallWSDTO(long agentId, long sessionId,long clientId,String processId){
