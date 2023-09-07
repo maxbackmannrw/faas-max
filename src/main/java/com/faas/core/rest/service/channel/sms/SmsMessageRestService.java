@@ -48,7 +48,7 @@ public class SmsMessageRestService {
         Optional<ProcessDBModel> processDBModel = processRepository.findById(sessionDBModel.getProcessId());
         if (smsAccountDBModel.isPresent() && processDBModel.isPresent()) {
             smsMessageDBModel = populateSmsBodyService(sessionDBModel,smsMessageDBModel,smsAccountDBModel.get(),processDBModel.get());
-            smsMessageRestClient.sendSmsMessage(smsMessageDBModel,smsAccountDBModel.get());
+            smsMessageRestClient.sendSmsMessageRest(smsMessageDBModel,smsAccountDBModel.get());
         }
     }
 
@@ -62,7 +62,7 @@ public class SmsMessageRestService {
         if (smsMessageBody.contains(AppConstant.PWA_URL_TAG)) {
             String pwaUrl = appUtils.generateOperationUrls(sessionDBModel,processDBModel,AppConstant.PWA_URL);
             if (pwaUrl != null){
-                String pwaUrlShort = utilityRestClient.urlShortener(pwaUrl);
+                String pwaUrlShort = utilityRestClient.urlShortenerRest(pwaUrl);
                 if (pwaUrlShort != null){
                     smsMessageBody = smsMessageBody.replace(AppConstant.PWA_URL_TAG, pwaUrlShort);
                 }
@@ -71,7 +71,7 @@ public class SmsMessageRestService {
         if (smsMessageBody.contains(AppConstant.NATIVE_URL_TAG)) {
             String nativeUrl = appUtils.generateOperationUrls(sessionDBModel,processDBModel,AppConstant.NATIVE_URL);
             if (nativeUrl != null){
-                String nativeUrlShort = utilityRestClient.urlShortener(nativeUrl);
+                String nativeUrlShort = utilityRestClient.urlShortenerRest(nativeUrl);
                 if (nativeUrlShort != null){
                     smsMessageBody = smsMessageBody.replace(AppConstant.NATIVE_URL_TAG, nativeUrlShort);
                 }

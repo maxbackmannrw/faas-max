@@ -32,7 +32,7 @@ public class WappRestClient {
     AppUtils appUtils;
 
 
-    public String initWappInstance(String serverUrl) throws IOException {
+    public String initWappInstanceRest(String serverUrl) throws IOException {
 
         String requestUrl = restClient.urlBuilder(serverUrl,"/instance/init",null);
         String response = restClient.sendGetRequest(requestUrl);
@@ -58,7 +58,7 @@ public class WappRestClient {
     }
 
 
-    public String getWappQRCodeInBase64(String serverUrl, String instanceKey) throws IOException {
+    public String getWappQRCodeInBase64Rest(String serverUrl, String instanceKey) throws IOException {
 
         Map<String, String> paramObjs = new HashMap<>();
         paramObjs.put("key", instanceKey);
@@ -72,7 +72,7 @@ public class WappRestClient {
     }
 
 
-    public String getWappInstanceInfo(String serverUrl, String instanceKey) throws IOException {
+    public String getWappInstanceInfoRest(String serverUrl, String instanceKey) throws IOException {
 
         Map<String, String> paramObjs = new HashMap<>();
         paramObjs.put("key", instanceKey);
@@ -87,7 +87,7 @@ public class WappRestClient {
     }
 
 
-    public String restoreAllWappInstances(String serverUrl, String instanceKey) throws IOException {
+    public String restoreAllWappInstancesRest(String serverUrl, String instanceKey) throws IOException {
 
         Map<String, String> paramObjs = new HashMap<>();
         paramObjs.put("key", instanceKey);
@@ -116,7 +116,7 @@ public class WappRestClient {
     }
 
 
-    public String logOutWappInstance(String serverUrl, String instanceKey) throws IOException {
+    public String logOutWappInstanceRest(String serverUrl, String instanceKey) throws IOException {
 
         Map<String, String> paramObjs = new HashMap<>();
         paramObjs.put("key", instanceKey);
@@ -131,7 +131,7 @@ public class WappRestClient {
     }
 
 
-    public String listAllWappInstances(String serverUrl) throws IOException {
+    public String listAllWappInstancesRest(String serverUrl) throws IOException {
 
         String requestUrl = restClient.urlBuilder(serverUrl,"/instance/list",null);
         String response = restClient.sendGetRequest(requestUrl);
@@ -143,7 +143,7 @@ public class WappRestClient {
     }
 
 
-    public void sendWappTextMessage(WappMessageDBModel wappMessageDBModel, WappAccountDBModel wappAccountDBModel) throws IOException {
+    public void sendWappTextMessageRest(WappMessageDBModel wappMessageDBModel, WappAccountDBModel wappAccountDBModel) throws IOException {
 
         Map<String, String> paramObjs = new HashMap<>();
         paramObjs.put("key", wappAccountDBModel.getInstanceKey());

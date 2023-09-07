@@ -27,7 +27,7 @@ public class SmsMessageRestClient {
     AppUtils appUtils;
 
 
-    public void sendSmsMessage(SmsMessageDBModel smsMessageDBModel, SmsAccountDBModel smsAccountDBModel) throws IOException {
+    public void sendSmsMessageRest(SmsMessageDBModel smsMessageDBModel, SmsAccountDBModel smsAccountDBModel) throws IOException {
 
         Map<String,String> formData = new HashMap<>();
         formData.put("username", smsAccountDBModel.getUserName());

@@ -24,7 +24,7 @@ public class UtilityRestClient {
     AppUtils appUtils;
 
 
-    public String urlShortener(String httpUrl) throws IOException {
+    public String urlShortenerRest(String httpUrl) throws IOException {
 
         String requestUrl = restClient.urlBuilder(AppConstant.URL_SHORTENER_API_URL,"",null);
 

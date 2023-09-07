@@ -42,12 +42,12 @@ public class WappRestService {
 
 
     public String initWappInstanceService(String serverUrl) throws IOException {
-        return wappRestClient.initWappInstance(serverUrl);
+        return wappRestClient.initWappInstanceRest(serverUrl);
     }
 
 
     public String getWappQRCodeInBase64Service(String serverUrl,String instanceKey) throws IOException {
-        return wappRestClient.getWappQRCodeInBase64(serverUrl,instanceKey);
+        return wappRestClient.getWappQRCodeInBase64Rest(serverUrl,instanceKey);
     }
 
 
@@ -59,7 +59,7 @@ public class WappRestService {
         if (wappAccountDBModel.isPresent() && processDBModel.isPresent()) {
             wappMessageDBModel = populateWappMessage(sessionDBModel,wappMessageDBModel,wappAccountDBModel.get(),processDBModel.get());
             if (wappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.TEXT_MESSAGE)){
-                wappRestClient.sendWappTextMessage(wappMessageDBModel,wappAccountDBModel.get());
+                wappRestClient.sendWappTextMessageRest(wappMessageDBModel,wappAccountDBModel.get());
             }
             if (wappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.IMAGE_MESSAGE)){
             }
@@ -82,7 +82,7 @@ public class WappRestService {
         if (wappMessageBody.contains(AppConstant.PWA_URL_TAG)) {
             String pwaUrl = appUtils.generateOperationUrls(sessionDBModel,processDBModel,AppConstant.PWA_URL);
             if (pwaUrl != null){
-                String pwaUrlShort = utilityRestClient.urlShortener(pwaUrl);
+                String pwaUrlShort = utilityRestClient.urlShortenerRest(pwaUrl);
                 if (pwaUrlShort != null){
                     wappMessageBody = wappMessageBody.replace(AppConstant.PWA_URL_TAG, pwaUrlShort);
                 }
@@ -91,7 +91,7 @@ public class WappRestService {
         if (wappMessageBody.contains(AppConstant.NATIVE_URL_TAG)) {
             String nativeUrl = appUtils.generateOperationUrls(sessionDBModel,processDBModel,AppConstant.NATIVE_URL);
             if (nativeUrl != null){
-                String nativeUrlShort = utilityRestClient.urlShortener(nativeUrl);
+                String nativeUrlShort = utilityRestClient.urlShortenerRest(nativeUrl);
                 if (nativeUrlShort != null){
                     wappMessageBody = wappMessageBody.replace(AppConstant.NATIVE_URL_TAG, nativeUrlShort);
                 }
@@ -100,19 +100,6 @@ public class WappRestService {
         wappMessageDBModel.getWappMessage().setWappBody(wappMessageBody);
 
         return wappMessageDBModel;
-    }
-
-
-    public void sendWappMessageService(WappMessageDBModel wappMessageDBModel) throws IOException {
-
-        Optional<WappAccountDBModel> wappAccountDBModel = wappAccountRepository.findById(wappMessageDBModel.getWappMessage().getAccountId());
-        if (wappAccountDBModel.isPresent()) {
-            if (wappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.TEXT_MESSAGE)) {
-
-
-
-            }
-        }
     }
 
 
