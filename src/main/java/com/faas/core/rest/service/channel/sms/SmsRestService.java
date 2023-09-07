@@ -61,7 +61,7 @@ public class SmsRestService {
             smsMessageBody = smsMessageBody.replace(AppConstant.CLIENT_NAME_TAG, sessionDBModel.getClientName());
         }
         if (smsMessageBody.contains(AppConstant.PWA_URL_TAG)) {
-            String pwaUrl = appUtils.generateOperationUrls(sessionDBModel,processDBModel,AppConstant.PWA_URL);
+            String pwaUrl = appUtils.getSelectedUrl(sessionDBModel,processDBModel,AppConstant.PWA_URL);
             if (pwaUrl != null){
                 Map<String,String> pwaUrlMap = utilityRestClient.urlShortenerRest(pwaUrl);
                 if (pwaUrlMap != null){
@@ -71,7 +71,7 @@ public class SmsRestService {
             }
         }
         if (smsMessageBody.contains(AppConstant.NATIVE_URL_TAG)) {
-            String nativeUrl = appUtils.generateOperationUrls(sessionDBModel,processDBModel,AppConstant.NATIVE_URL);
+            String nativeUrl = appUtils.getSelectedUrl(sessionDBModel,processDBModel,AppConstant.NATIVE_URL);
             if (nativeUrl != null){
                 Map<String,String> nativeUrlMap = utilityRestClient.urlShortenerRest(nativeUrl);
                 if (nativeUrlMap != null){

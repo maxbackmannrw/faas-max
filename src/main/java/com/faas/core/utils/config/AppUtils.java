@@ -54,7 +54,7 @@ public class AppUtils {
     }
 
 
-    public String generateOperationUrls(SessionDBModel sessionDBModel, ProcessDBModel processDBModel, String urlType){
+    public String getSelectedUrl(SessionDBModel sessionDBModel, ProcessDBModel processDBModel, String urlType){
 
         if (processDBModel.getProcessUrls() != null && !processDBModel.getProcessUrls().isEmpty()){
             for (int i=0;i<processDBModel.getProcessUrls().size();i++){

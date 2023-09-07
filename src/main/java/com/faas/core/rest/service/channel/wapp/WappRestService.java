@@ -57,6 +57,7 @@ public class WappRestService {
 
         Optional<WappAccountDBModel> wappAccountDBModel = wappAccountRepository.findById(wappMessageDBModel.getWappMessage().getAccountId());
         Optional<ProcessDBModel> processDBModel = processRepository.findById(sessionDBModel.getProcessId());
+
         if (wappAccountDBModel.isPresent() && processDBModel.isPresent()) {
             wappMessageDBModel = generateWappMessageBodyService(sessionDBModel,wappMessageDBModel,wappAccountDBModel.get(),processDBModel.get());
             if (wappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.TEXT_MESSAGE)){
@@ -81,7 +82,7 @@ public class WappRestService {
             wappMessageBody = wappMessageBody.replace(AppConstant.CLIENT_NAME_TAG, sessionDBModel.getClientName());
         }
         if (wappMessageBody.contains(AppConstant.PWA_URL_TAG)) {
-            String pwaUrl = appUtils.generateOperationUrls(sessionDBModel,processDBModel,AppConstant.PWA_URL);
+            String pwaUrl = appUtils.getSelectedUrl(sessionDBModel,processDBModel,AppConstant.PWA_URL);
             if (pwaUrl != null){
                 Map<String,String> pwaUrlMap = utilityRestClient.urlShortenerRest(pwaUrl);
                 if (pwaUrlMap != null){
@@ -91,7 +92,7 @@ public class WappRestService {
             }
         }
         if (wappMessageBody.contains(AppConstant.NATIVE_URL_TAG)) {
-            String nativeUrl = appUtils.generateOperationUrls(sessionDBModel,processDBModel,AppConstant.NATIVE_URL);
+            String nativeUrl = appUtils.getSelectedUrl(sessionDBModel,processDBModel,AppConstant.NATIVE_URL);
             if (nativeUrl != null){
                 Map<String,String> nativeUrlMap = utilityRestClient.urlShortenerRest(nativeUrl);
                 if (nativeUrlMap != null){

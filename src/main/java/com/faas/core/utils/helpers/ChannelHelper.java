@@ -165,7 +165,6 @@ public class ChannelHelper {
 
         List<ProcessSipChannelDBModel> sipChannelDBModels = processSipChannelRepository.findByProcessId(processId);
         List<UserDetailsDBModel> agentDetails = userDetailsRepository.findByUserId(agentId);
-
         if (!sipChannelDBModels.isEmpty() && !agentDetails.isEmpty() && agentDetails.get(0).getSipChannel() != null) {
 
             ApiSipAccountWSDTO sipAccountWSDTO = new ApiSipAccountWSDTO();
@@ -193,6 +192,7 @@ public class ChannelHelper {
 
         ApiSipAccountWSDTO sipAccountWSDTO = getApiSipAccountWSDTO(sessionDBModel.getAgentId(), sessionDBModel.getProcessId());
         if (sipAccountWSDTO != null) {
+
             ApiOperationSipCallWSDTO operationSipCall = new ApiOperationSipCallWSDTO();
             operationSipCall.setSipAccount(sipAccountWSDTO);
             operationSipCall.setClientPhones(clientPhones);
