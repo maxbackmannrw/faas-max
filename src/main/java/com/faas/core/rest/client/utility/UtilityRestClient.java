@@ -28,7 +28,7 @@ public class UtilityRestClient {
 
     public Map<String,String> urlShortenerRest(String httpUrl) throws IOException {
 
-        String requestUrl = restClient.urlBuilder(AppConstant.URL_SHORTENER_API_KEY,"/create",null);
+        String requestUrl = restClient.urlBuilder(AppConstant.URL_SHORTENER_API_URL,"/create",null);
 
         Gson gson = new Gson();
         Map<String, String> bodyObjs = new HashMap<>();
