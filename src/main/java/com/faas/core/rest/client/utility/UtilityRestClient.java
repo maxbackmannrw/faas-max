@@ -30,12 +30,11 @@ public class UtilityRestClient {
 
         String requestUrl = restClient.urlBuilder(AppConstant.URL_SHORTENER_API_URL,"/create",null);
 
-        Gson gson = new Gson();
-        Map<String, String> bodyObjs = new HashMap<>();
-        bodyObjs.put("apiKey", AppConstant.URL_SHORTENER_API_KEY);
-        bodyObjs.put("url", httpUrl);
+        Map<String, String> formData = new HashMap<>();
+        formData.put("apiKey", AppConstant.URL_SHORTENER_API_KEY);
+        formData.put("url", httpUrl);
 
-        String response = restClient.sendPostJsonRequest(requestUrl,gson.toJson(bodyObjs));
+        String response = restClient.sendPostFormRequest(requestUrl,formData);
         if (response != null){
             JsonObject resObject = JsonParser.parseString(response).getAsJsonObject();
             if (resObject.get("success").getAsBoolean()){
