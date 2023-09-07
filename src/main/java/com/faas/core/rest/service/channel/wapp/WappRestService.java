@@ -102,8 +102,10 @@ public class WappRestService {
             }
         }
         wappMessageDBModel.getWappMessage().setWappBody(wappMessageBody);
+        wappMessageDBModel.setMessageState(AppConstant.MESSAGE_SENDING);
+        wappMessageDBModel.setuDate(appUtils.getCurrentTimeStamp());
 
-        return wappMessageDBModel;
+        return wappMessageRepository.save(wappMessageDBModel);
     }
 
 
