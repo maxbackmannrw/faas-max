@@ -4,7 +4,7 @@ import com.faas.core.base.middleware.process.details.content.ProcessDetailsMiddl
 import com.faas.core.base.model.ws.process.details.content.ProcessDataWSModel;
 import com.faas.core.base.model.ws.process.details.content.ProcessDetailsWSModel;
 import com.faas.core.base.model.ws.process.details.content.ProcessUrlWSModel;
-import com.faas.core.base.model.ws.process.details.content.CallScriptWSModel;
+import com.faas.core.base.model.ws.process.details.content.ProcessScriptWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -187,25 +187,11 @@ public class ProcessDetailsController {
 
 
 
-    @RequestMapping(value = BaseRoute.GET_CALL_SCRIPTS, method = RequestMethod.POST)
-    public ResponseEntity<?> getCallScripts(@RequestParam long userId,
-                                            @RequestParam String processId) {
+    @RequestMapping(value = BaseRoute.GET_PROCESS_SCRIPTS, method = RequestMethod.POST)
+    public ResponseEntity<?> getProcessScripts(@RequestParam long userId,
+                                               @RequestParam String processId) {
 
-        CallScriptWSModel response = processDetailsMiddleware.getCallScripts(userId,processId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-
-    @RequestMapping(value = BaseRoute.GET_CALL_SCRIPT, method = RequestMethod.POST)
-    public ResponseEntity<?> getCallScript(@RequestParam long userId,
-                                           @RequestParam String processId,
-                                           @RequestParam String scriptId) {
-
-        CallScriptWSModel response = processDetailsMiddleware.getCallScript(userId,processId,scriptId);
+        ProcessScriptWSModel response = processDetailsMiddleware.getProcessScripts(userId,processId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -214,45 +200,59 @@ public class ProcessDetailsController {
     }
 
 
-    @RequestMapping(value = BaseRoute.CREATE_CALL_SCRIPT, method = RequestMethod.POST)
-    public ResponseEntity<?> createCallScript(@RequestParam long userId,
-                                              @RequestParam String processId,
-                                              @RequestParam int scriptOrder,
-                                              @RequestParam String scriptTitle,
-                                              @RequestParam String scriptBody) {
-
-        CallScriptWSModel response = processDetailsMiddleware.createCallScript(userId,processId,scriptOrder,scriptTitle,scriptBody);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-
-    @RequestMapping(value = BaseRoute.UPDATE_CALL_SCRIPT, method = RequestMethod.POST)
-    public ResponseEntity<?> updateCallScript(@RequestParam long userId,
-                                              @RequestParam String processId,
-                                              @RequestParam String scriptId,
-                                              @RequestParam int scriptOrder,
-                                              @RequestParam String scriptTitle,
-                                              @RequestParam String scriptBody) {
-
-        CallScriptWSModel response = processDetailsMiddleware.updateCallScript(userId,processId,scriptId,scriptOrder,scriptTitle,scriptBody);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-
-    @RequestMapping(value = BaseRoute.REMOVE_CALL_SCRIPT, method = RequestMethod.POST)
-    public ResponseEntity<?> removeCallScript(@RequestParam long userId,
+    @RequestMapping(value = BaseRoute.GET_PROCESS_SCRIPT, method = RequestMethod.POST)
+    public ResponseEntity<?> getProcessScript(@RequestParam long userId,
                                               @RequestParam String processId,
                                               @RequestParam String scriptId) {
 
-        CallScriptWSModel response = processDetailsMiddleware.removeCallScript(userId,processId,scriptId);
+        ProcessScriptWSModel response = processDetailsMiddleware.getProcessScript(userId,processId,scriptId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = BaseRoute.CREATE_PROCESS_SCRIPT, method = RequestMethod.POST)
+    public ResponseEntity<?> createProcessScript(@RequestParam long userId,
+                                                 @RequestParam String processId,
+                                                 @RequestParam int scriptOrder,
+                                                 @RequestParam String scriptTitle,
+                                                 @RequestParam String scriptBody) {
+
+        ProcessScriptWSModel response = processDetailsMiddleware.createProcessScript(userId,processId,scriptOrder,scriptTitle,scriptBody);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = BaseRoute.UPDATE_PROCESS_SCRIPT, method = RequestMethod.POST)
+    public ResponseEntity<?> updateProcessScript(@RequestParam long userId,
+                                                 @RequestParam String processId,
+                                                 @RequestParam String scriptId,
+                                                 @RequestParam int scriptOrder,
+                                                 @RequestParam String scriptTitle,
+                                                 @RequestParam String scriptBody) {
+
+        ProcessScriptWSModel response = processDetailsMiddleware.updateProcessScript(userId,processId,scriptId,scriptOrder,scriptTitle,scriptBody);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = BaseRoute.REMOVE_PROCESS_SCRIPT, method = RequestMethod.POST)
+    public ResponseEntity<?> removeProcessScript(@RequestParam long userId,
+                                                 @RequestParam String processId,
+                                                 @RequestParam String scriptId) {
+
+        ProcessScriptWSModel response = processDetailsMiddleware.removeProcessScript(userId,processId,scriptId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

@@ -351,12 +351,12 @@ public class BaseRoute {
     public static final String UPDATE_PROCESS_URL = "updateprocessurl";
     public static final String REMOVE_PROCESS_URL = "removeprocessurl";
 
+    public static final String GET_PROCESS_SCRIPTS = "getprocessscripts";
+    public static final String GET_PROCESS_SCRIPT = "getprocessscript";
+    public static final String CREATE_PROCESS_SCRIPT = "createprocessscript";
+    public static final String UPDATE_PROCESS_SCRIPT = "updateprocessscript";
+    public static final String REMOVE_PROCESS_SCRIPT = "removeprocessscript";
 
-    public static final String GET_CALL_SCRIPTS = "getcallscripts";
-    public static final String GET_CALL_SCRIPT = "getcallscript";
-    public static final String CREATE_CALL_SCRIPT = "createcallscript";
-    public static final String UPDATE_CALL_SCRIPT = "updatecallscript";
-    public static final String REMOVE_CALL_SCRIPT = "removecallscript";
 
 
     public static final String GET_PROCESS_TRIGGERS = "getprocesstriggers";

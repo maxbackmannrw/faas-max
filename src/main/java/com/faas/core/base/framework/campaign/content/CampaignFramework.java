@@ -57,7 +57,7 @@ public class CampaignFramework {
             campaignDBModel.setProcessId(processId);
             campaignDBModel.setProcess(processDBModel.get().getProcess());
             campaignDBModel.setProcessType(processDBModel.get().getProcessType());
-            campaignDBModel.setProcessCategory(processDBModel.get().getProcessCategory());
+            campaignDBModel.setProcessCategory(processDBModel.get().getCategory());
             campaignDBModel.setCampaignDatas(new ArrayList<>());
             campaignDBModel.setCampaignState(AppConstant.ACTIVE_CAMPAIGN);
             campaignDBModel.setuDate(appUtils.getCurrentTimeStamp());

@@ -1,6 +1,6 @@
 package com.faas.core.base.model.db.process.content.dao;
 
-public class CallScriptDAO {
+public class ProcessScriptDAO {
 
     private String scriptId;
     private int scriptOrder;
@@ -9,10 +9,10 @@ public class CallScriptDAO {
     private long cDate;
     private int status;
 
-    public CallScriptDAO() {
+    public ProcessScriptDAO() {
     }
 
-    public CallScriptDAO(String scriptId, int scriptOrder, String scriptTitle, String scriptBody, long cDate, int status) {
+    public ProcessScriptDAO(String scriptId, int scriptOrder, String scriptTitle, String scriptBody, long cDate, int status) {
         this.scriptId = scriptId;
         this.scriptOrder = scriptOrder;
         this.scriptTitle = scriptTitle;

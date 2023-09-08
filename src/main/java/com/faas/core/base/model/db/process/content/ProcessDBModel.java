@@ -16,11 +16,11 @@ public class ProcessDBModel {
     private long processTypeId;
     private String processType;
     private String baseType;
-    private String processCategory;
+    private String category;
     private List<ProcessUrlDAO>processUrls;
     private List<ProcessDataDAO>processDatas;
     private List<ProcessAssetDAO>processAssets;
-    private List<CallScriptDAO>callScripts;
+    private List<ProcessScriptDAO>processScripts;
     private String processState;
     private long uDate;
     private long cDate;
@@ -29,18 +29,18 @@ public class ProcessDBModel {
     public ProcessDBModel() {
     }
 
-    public ProcessDBModel(String id, String process, String processDesc, long processTypeId, String processType, String baseType, String processCategory, List<ProcessUrlDAO> processUrls, List<ProcessDataDAO> processDatas, List<ProcessAssetDAO> processAssets, List<CallScriptDAO> callScripts, String processState, long uDate, long cDate, int status) {
+    public ProcessDBModel(String id, String process, String processDesc, long processTypeId, String processType, String baseType, String category, List<ProcessUrlDAO> processUrls, List<ProcessDataDAO> processDatas, List<ProcessAssetDAO> processAssets, List<ProcessScriptDAO> processScripts, String processState, long uDate, long cDate, int status) {
         this.id = id;
         this.process = process;
         this.processDesc = processDesc;
         this.processTypeId = processTypeId;
         this.processType = processType;
         this.baseType = baseType;
-        this.processCategory = processCategory;
+        this.category = category;
         this.processUrls = processUrls;
         this.processDatas = processDatas;
         this.processAssets = processAssets;
-        this.callScripts = callScripts;
+        this.processScripts = processScripts;
         this.processState = processState;
         this.uDate = uDate;
         this.cDate = cDate;
@@ -95,12 +95,12 @@ public class ProcessDBModel {
         this.baseType = baseType;
     }
 
-    public String getProcessCategory() {
-        return processCategory;
+    public String getCategory() {
+        return category;
     }
 
-    public void setProcessCategory(String processCategory) {
-        this.processCategory = processCategory;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public List<ProcessUrlDAO> getProcessUrls() {
@@ -127,12 +127,12 @@ public class ProcessDBModel {
         this.processAssets = processAssets;
     }
 
-    public List<CallScriptDAO> getCallScripts() {
-        return callScripts;
+    public List<ProcessScriptDAO> getProcessScripts() {
+        return processScripts;
     }
 
-    public void setCallScripts(List<CallScriptDAO> callScripts) {
-        this.callScripts = callScripts;
+    public void setProcessScripts(List<ProcessScriptDAO> processScripts) {
+        this.processScripts = processScripts;
     }
 
     public String getProcessState() {

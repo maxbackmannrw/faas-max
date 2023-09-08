@@ -36,9 +36,9 @@ public class ProcessController {
 
     @RequestMapping(value = BaseRoute.GET_PROCESSES_BY_CATEGORY, method = RequestMethod.POST)
     public ResponseEntity<?> getProcessesByCategory(@RequestParam long userId,
-                                                    @RequestParam String processCategory) {
+                                                    @RequestParam String category) {
 
-        ProcessWSModel response = processMiddleware.getProcessesByCategory(userId,processCategory);
+        ProcessWSModel response = processMiddleware.getProcessesByCategory(userId,category);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -67,10 +67,10 @@ public class ProcessController {
                                            @RequestParam String processDesc,
                                            @RequestParam String pwaUrl,
                                            @RequestParam long processTypeId,
-                                           @RequestParam String processCategory,
+                                           @RequestParam String category,
                                            @RequestParam String processState) {
 
-        ProcessWSModel response = processMiddleware.createProcess(userId,process,processDesc,pwaUrl,processTypeId,processCategory,processState);
+        ProcessWSModel response = processMiddleware.createProcess(userId,process,processDesc,pwaUrl,processTypeId,category,processState);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

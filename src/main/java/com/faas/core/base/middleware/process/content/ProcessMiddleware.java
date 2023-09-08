@@ -50,13 +50,13 @@ public class ProcessMiddleware {
         return response;
     }
 
-    public ProcessWSModel getProcessesByCategory(long userId, String processCategory) {
+    public ProcessWSModel getProcessesByCategory(long userId, String category) {
 
         ProcessWSModel response = new ProcessWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessWSDTO> processWSDTOS = new ArrayList<>();
 
-        List<ProcessDBModel> processDBModels = processRepository.findByProcessCategory(processCategory);
+        List<ProcessDBModel> processDBModels = processRepository.findByCategory(category);
         for (ProcessDBModel processDBModel : processDBModels) {
             processWSDTOS.add(processFramework.fillProcessWSDTO(processDBModel));
         }
@@ -70,7 +70,6 @@ public class ProcessMiddleware {
 
         return response;
     }
-
 
 
 
@@ -96,13 +95,13 @@ public class ProcessMiddleware {
     }
 
 
-    public ProcessWSModel createProcess(long userId,String process,String processDesc,String pwaUrl,long processTypeId,String processCategory,String processState) {
+    public ProcessWSModel createProcess(long userId,String process,String processDesc,String pwaUrl,long processTypeId,String category,String processState) {
 
         ProcessWSModel response = new ProcessWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessWSDTO> processWSDTOS = new ArrayList<>();
 
-        ProcessDBModel processDBModel = processFramework.createProcessService(process,processDesc,pwaUrl,processTypeId,processCategory,processState);
+        ProcessDBModel processDBModel = processFramework.createProcessService(process,processDesc,pwaUrl,processTypeId,category,processState);
         if (processDBModel != null) {
             processWSDTOS.add(processFramework.fillProcessWSDTO(processDBModel));
         }
