@@ -4,8 +4,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 
-@Document(collection = "flow_table")
-public class FlowDBModel {
+@Document(collection = "client_flow_table")
+public class ClientFlowDBModel {
 
     @Id
     private String id;
@@ -16,10 +16,10 @@ public class FlowDBModel {
     private long cDate;
     private int status;
 
-    public FlowDBModel() {
+    public ClientFlowDBModel() {
     }
 
-    public FlowDBModel(String id, long sessionId, String flowState, long uDate, long cDate, int status) {
+    public ClientFlowDBModel(String id, long sessionId, String flowState, long uDate, long cDate, int status) {
         this.id = id;
         this.sessionId = sessionId;
         this.flowState = flowState;

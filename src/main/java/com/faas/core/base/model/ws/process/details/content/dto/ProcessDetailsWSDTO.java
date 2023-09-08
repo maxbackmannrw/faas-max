@@ -12,19 +12,19 @@ public class ProcessDetailsWSDTO {
 
     private ProcessDBModel process;
     private List<TriggerWSDTO> processTriggers;
-    private ProcessTempWSDTO processTemps;
     private ProcessChannelWSDTO processChannels;
+    private ProcessTempWSDTO processTemps;
     private List<ProcessScenarioWSDTO> processScenarios;
     private List<ProcessAssetWSDTO>processAssets;
 
     public ProcessDetailsWSDTO() {
     }
 
-    public ProcessDetailsWSDTO(ProcessDBModel process, List<TriggerWSDTO> processTriggers, ProcessTempWSDTO processTemps, ProcessChannelWSDTO processChannels, List<ProcessScenarioWSDTO> processScenarios, List<ProcessAssetWSDTO> processAssets) {
+    public ProcessDetailsWSDTO(ProcessDBModel process, List<TriggerWSDTO> processTriggers, ProcessChannelWSDTO processChannels, ProcessTempWSDTO processTemps, List<ProcessScenarioWSDTO> processScenarios, List<ProcessAssetWSDTO> processAssets) {
         this.process = process;
         this.processTriggers = processTriggers;
-        this.processTemps = processTemps;
         this.processChannels = processChannels;
+        this.processTemps = processTemps;
         this.processScenarios = processScenarios;
         this.processAssets = processAssets;
     }
@@ -45,20 +45,20 @@ public class ProcessDetailsWSDTO {
         this.processTriggers = processTriggers;
     }
 
-    public ProcessTempWSDTO getProcessTemps() {
-        return processTemps;
-    }
-
-    public void setProcessTemps(ProcessTempWSDTO processTemps) {
-        this.processTemps = processTemps;
-    }
-
     public ProcessChannelWSDTO getProcessChannels() {
         return processChannels;
     }
 
     public void setProcessChannels(ProcessChannelWSDTO processChannels) {
         this.processChannels = processChannels;
+    }
+
+    public ProcessTempWSDTO getProcessTemps() {
+        return processTemps;
+    }
+
+    public void setProcessTemps(ProcessTempWSDTO processTemps) {
+        this.processTemps = processTemps;
     }
 
     public List<ProcessScenarioWSDTO> getProcessScenarios() {

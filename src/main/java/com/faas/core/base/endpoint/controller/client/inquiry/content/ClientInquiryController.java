@@ -2,7 +2,7 @@ package com.faas.core.base.endpoint.controller.client.inquiry.content;
 
 import com.faas.core.base.middleware.client.inquiry.content.ClientInquiryMiddleware;
 import com.faas.core.base.model.ws.client.inquiry.InquiryCampaignWSModel;
-import com.faas.core.base.model.ws.client.inquiry.InquiryWSModel;
+import com.faas.core.base.model.ws.client.inquiry.ClientInquiryWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,7 +57,7 @@ public class ClientInquiryController {
                                                    @RequestParam int reqPage,
                                                    @RequestParam int reqSize) {
 
-        InquiryWSModel response = clientInquiryMiddleware.getAllInquiries(userId,reqPage,reqSize);
+        ClientInquiryWSModel response = clientInquiryMiddleware.getAllInquiries(userId,reqPage,reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -72,7 +72,7 @@ public class ClientInquiryController {
                                                  @RequestParam int reqPage,
                                                  @RequestParam int reqSize) {
 
-        InquiryWSModel response = clientInquiryMiddleware.getInquiriesByState(userId,inquiryState,reqPage,reqSize);
+        ClientInquiryWSModel response = clientInquiryMiddleware.getInquiriesByState(userId,inquiryState,reqPage,reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -86,7 +86,7 @@ public class ClientInquiryController {
                                         @RequestParam long inquiryId,
                                         @RequestParam long clientId) {
 
-        InquiryWSModel response = clientInquiryMiddleware.getInquiry(userId,inquiryId,clientId);
+        ClientInquiryWSModel response = clientInquiryMiddleware.getInquiry(userId,inquiryId,clientId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -101,7 +101,7 @@ public class ClientInquiryController {
                                            @RequestParam long agentId,
                                            @RequestParam String campaignId) {
 
-        InquiryWSModel response = clientInquiryMiddleware.createInquiry(userId,clientId,agentId,campaignId);
+        ClientInquiryWSModel response = clientInquiryMiddleware.createInquiry(userId,clientId,agentId,campaignId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -115,7 +115,7 @@ public class ClientInquiryController {
                                            @RequestParam long inquiryId,
                                            @RequestParam long clientId) {
 
-        InquiryWSModel response = clientInquiryMiddleware.updateInquiry(userId,inquiryId,clientId);
+        ClientInquiryWSModel response = clientInquiryMiddleware.updateInquiry(userId,inquiryId,clientId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -129,7 +129,7 @@ public class ClientInquiryController {
                                            @RequestParam long inquiryId,
                                            @RequestParam long clientId) {
 
-        InquiryWSModel response = clientInquiryMiddleware.removeInquiry(userId,inquiryId,clientId);
+        ClientInquiryWSModel response = clientInquiryMiddleware.removeInquiry(userId,inquiryId,clientId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

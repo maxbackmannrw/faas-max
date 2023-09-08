@@ -3,9 +3,9 @@ package com.faas.core.base.middleware.client.inquiry.content;
 import com.faas.core.base.framework.client.inquiry.content.ClientInquiryFramework;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.model.ws.client.inquiry.InquiryCampaignWSModel;
-import com.faas.core.base.model.ws.client.inquiry.InquiryWSModel;
+import com.faas.core.base.model.ws.client.inquiry.ClientInquiryWSModel;
 import com.faas.core.base.model.ws.client.inquiry.dto.InquiryCampaignWSDTO;
-import com.faas.core.base.model.ws.client.inquiry.dto.InquiryWSDTO;
+import com.faas.core.base.model.ws.client.inquiry.dto.ClientInquiryWSDTO;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -66,14 +66,14 @@ public class ClientInquiryMiddleware {
 
 
 
-    public InquiryWSModel getAllInquiries(long userId, int reqPage, int reqSize) {
+    public ClientInquiryWSModel getAllInquiries(long userId, int reqPage, int reqSize) {
 
-        InquiryWSModel response = new InquiryWSModel();
+        ClientInquiryWSModel response = new ClientInquiryWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<InquiryWSDTO> inquiryWSDTOS =  clientInquiryFramework.getAllInquiriesService(userId,reqPage,reqSize);
-        if (inquiryWSDTOS != null){
-            response.setInquiries(inquiryWSDTOS);
+        List<ClientInquiryWSDTO> clientInquiryWSDTOS =  clientInquiryFramework.getAllInquiriesService(userId,reqPage,reqSize);
+        if (clientInquiryWSDTOS != null){
+            response.setClientInquiries(clientInquiryWSDTOS);
         }
 
         general.setOperation("getAllInquiries");
@@ -86,14 +86,14 @@ public class ClientInquiryMiddleware {
     }
 
 
-    public InquiryWSModel getInquiriesByState(long userId, String inquiryState, int reqPage, int reqSize) {
+    public ClientInquiryWSModel getInquiriesByState(long userId, String inquiryState, int reqPage, int reqSize) {
 
-        InquiryWSModel response = new InquiryWSModel();
+        ClientInquiryWSModel response = new ClientInquiryWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<InquiryWSDTO> inquiryWSDTOS =  clientInquiryFramework.getInquiriesByStateService(userId,inquiryState,reqPage,reqSize);
-        if (inquiryWSDTOS != null){
-            response.setInquiries(inquiryWSDTOS);
+        List<ClientInquiryWSDTO> clientInquiryWSDTOS =  clientInquiryFramework.getInquiriesByStateService(userId,inquiryState,reqPage,reqSize);
+        if (clientInquiryWSDTOS != null){
+            response.setClientInquiries(clientInquiryWSDTOS);
         }
 
         general.setOperation("getInquiriesByState");
@@ -106,18 +106,18 @@ public class ClientInquiryMiddleware {
     }
 
 
-    public InquiryWSModel getInquiry(long userId, long inquiryId, long clientId) {
+    public ClientInquiryWSModel getInquiry(long userId, long inquiryId, long clientId) {
 
-        InquiryWSModel response = new InquiryWSModel();
+        ClientInquiryWSModel response = new ClientInquiryWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<InquiryWSDTO> inquiryWSDTOS = new ArrayList<>();
+        List<ClientInquiryWSDTO> clientInquiryWSDTOS = new ArrayList<>();
 
-        InquiryWSDTO inquiryWSDTO =  clientInquiryFramework.getInquiryService(userId,inquiryId,clientId);
-        if (inquiryWSDTO != null){
-            inquiryWSDTOS.add(inquiryWSDTO);
+        ClientInquiryWSDTO clientInquiryWSDTO =  clientInquiryFramework.getInquiryService(userId,inquiryId,clientId);
+        if (clientInquiryWSDTO != null){
+            clientInquiryWSDTOS.add(clientInquiryWSDTO);
         }
 
-        response.setInquiries(inquiryWSDTOS);
+        response.setClientInquiries(clientInquiryWSDTOS);
         general.setOperation("getInquiry");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -128,18 +128,18 @@ public class ClientInquiryMiddleware {
     }
 
 
-    public InquiryWSModel createInquiry(long userId,long clientId,long agentId, String campaignId) {
+    public ClientInquiryWSModel createInquiry(long userId, long clientId, long agentId, String campaignId) {
 
-        InquiryWSModel response = new InquiryWSModel();
+        ClientInquiryWSModel response = new ClientInquiryWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<InquiryWSDTO> inquiryWSDTOS = new ArrayList<>();
+        List<ClientInquiryWSDTO> clientInquiryWSDTOS = new ArrayList<>();
 
-        InquiryWSDTO inquiryWSDTO =  clientInquiryFramework.createInquiryService(userId,clientId,agentId,campaignId);
-        if (inquiryWSDTO != null){
-            inquiryWSDTOS.add(inquiryWSDTO);
+        ClientInquiryWSDTO clientInquiryWSDTO =  clientInquiryFramework.createInquiryService(userId,clientId,agentId,campaignId);
+        if (clientInquiryWSDTO != null){
+            clientInquiryWSDTOS.add(clientInquiryWSDTO);
         }
 
-        response.setInquiries(inquiryWSDTOS);
+        response.setClientInquiries(clientInquiryWSDTOS);
         general.setOperation("createInquiry");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -150,18 +150,18 @@ public class ClientInquiryMiddleware {
     }
 
 
-    public InquiryWSModel updateInquiry(long userId, long inquiryId, long clientId) {
+    public ClientInquiryWSModel updateInquiry(long userId, long inquiryId, long clientId) {
 
-        InquiryWSModel response = new InquiryWSModel();
+        ClientInquiryWSModel response = new ClientInquiryWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<InquiryWSDTO> inquiryWSDTOS = new ArrayList<>();
+        List<ClientInquiryWSDTO> clientInquiryWSDTOS = new ArrayList<>();
 
-        InquiryWSDTO inquiryWSDTO =  clientInquiryFramework.updateInquiryService(userId,inquiryId,clientId);
-        if (inquiryWSDTO != null){
-            inquiryWSDTOS.add(inquiryWSDTO);
+        ClientInquiryWSDTO clientInquiryWSDTO =  clientInquiryFramework.updateInquiryService(userId,inquiryId,clientId);
+        if (clientInquiryWSDTO != null){
+            clientInquiryWSDTOS.add(clientInquiryWSDTO);
         }
 
-        response.setInquiries(inquiryWSDTOS);
+        response.setClientInquiries(clientInquiryWSDTOS);
         general.setOperation("updateInquiry");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -172,18 +172,18 @@ public class ClientInquiryMiddleware {
     }
 
 
-    public InquiryWSModel removeInquiry(long userId, long inquiryId, long clientId) {
+    public ClientInquiryWSModel removeInquiry(long userId, long inquiryId, long clientId) {
 
-        InquiryWSModel response = new InquiryWSModel();
+        ClientInquiryWSModel response = new ClientInquiryWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<InquiryWSDTO> inquiryWSDTOS = new ArrayList<>();
+        List<ClientInquiryWSDTO> clientInquiryWSDTOS = new ArrayList<>();
 
-        InquiryWSDTO inquiryWSDTO =  clientInquiryFramework.removeInquiryService(userId,inquiryId,clientId);
-        if (inquiryWSDTO != null){
-            inquiryWSDTOS.add(inquiryWSDTO);
+        ClientInquiryWSDTO clientInquiryWSDTO =  clientInquiryFramework.removeInquiryService(userId,inquiryId,clientId);
+        if (clientInquiryWSDTO != null){
+            clientInquiryWSDTOS.add(clientInquiryWSDTO);
         }
 
-        response.setInquiries(inquiryWSDTOS);
+        response.setClientInquiries(clientInquiryWSDTOS);
         general.setOperation("removeInquiry");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -192,4 +192,7 @@ public class ClientInquiryMiddleware {
 
         return response;
     }
+
+
+
 }

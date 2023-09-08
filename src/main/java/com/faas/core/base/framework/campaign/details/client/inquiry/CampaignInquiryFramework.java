@@ -1,23 +1,16 @@
 package com.faas.core.base.framework.campaign.details.client.inquiry;
 
-import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
-import com.faas.core.base.model.db.client.content.ClientDBModel;
-import com.faas.core.base.model.db.client.inquiry.InquiryDBModel;
-import com.faas.core.base.model.db.operation.content.OperationDBModel;
-import com.faas.core.base.model.db.client.session.SessionDBModel;
-import com.faas.core.base.model.db.user.content.UserDBModel;
 import com.faas.core.base.model.ws.campaign.details.client.inquiry.dto.CampaignInquiryWSDTO;
-import com.faas.core.base.model.ws.client.inquiry.InquiryRequest;
-import com.faas.core.base.model.ws.client.inquiry.dto.InquiryRequestDTO;
-import com.faas.core.base.model.ws.client.inquiry.dto.InquiryWSDTO;
+import com.faas.core.base.model.ws.client.inquiry.ClientInquiryRequest;
+import com.faas.core.base.model.ws.client.inquiry.dto.ClientInquiryRequestDTO;
+import com.faas.core.base.model.ws.client.inquiry.dto.ClientInquiryWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;
-import com.faas.core.base.repo.client.inquiry.InquiryRepository;
+import com.faas.core.base.repo.client.inquiry.ClientInquiryRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.client.session.SessionRepository;
 import com.faas.core.base.repo.user.content.UserRepository;
-import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.ActivityHelper;
 
@@ -25,13 +18,10 @@ import com.faas.core.utils.helpers.InquiryHelper;
 import com.faas.core.utils.helpers.OperationHelper;
 import com.faas.core.utils.helpers.SessionHelper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 
 @Component
@@ -51,7 +41,7 @@ public class CampaignInquiryFramework {
     OperationHelper operationHelper;
 
     @Autowired
-    InquiryRepository inquiryRepository;
+    ClientInquiryRepository clientInquiryRepository;
 
     @Autowired
     SessionRepository sessionRepository;
@@ -107,7 +97,7 @@ public class CampaignInquiryFramework {
     }
 
 
-    public InquiryWSDTO getCampaignInquiryService(long userId, long inquiryId, long clientId) {
+    public ClientInquiryWSDTO getCampaignInquiryService(long userId, long inquiryId, long clientId) {
 
         /* List<InquiryDBModel> inquiryDBModels = inquiryRepository.findByIdAndClientId(inquiryId,clientId);
         if (!inquiryDBModels.isEmpty()){
@@ -119,20 +109,20 @@ public class CampaignInquiryFramework {
     }
 
 
-    public List<InquiryWSDTO> createCampaignInquiryService(InquiryRequest inquiryRequest) {
+    public List<ClientInquiryWSDTO> createCampaignInquiryService(ClientInquiryRequest clientInquiryRequest) {
 
-        List<InquiryWSDTO>inquiryWSDTOS = new ArrayList<>();
-        for (int i=0;i<inquiryRequest.getInquiryRequests().size();i++){
-            InquiryWSDTO inquiryWSDTO = createCampaignInquiry(inquiryRequest.getInquiryRequests().get(i));
-            if (inquiryWSDTO != null){
-                inquiryWSDTOS.add(inquiryWSDTO);
+        List<ClientInquiryWSDTO> clientInquiryWSDTOS = new ArrayList<>();
+        for (int i = 0; i< clientInquiryRequest.getInquiryRequests().size(); i++){
+            ClientInquiryWSDTO clientInquiryWSDTO = createCampaignInquiry(clientInquiryRequest.getInquiryRequests().get(i));
+            if (clientInquiryWSDTO != null){
+                clientInquiryWSDTOS.add(clientInquiryWSDTO);
             }
         }
-        return inquiryWSDTOS;
+        return clientInquiryWSDTOS;
     }
 
 
-    public InquiryWSDTO createCampaignInquiry(InquiryRequestDTO inquiryRequestDTO) {
+    public ClientInquiryWSDTO createCampaignInquiry(ClientInquiryRequestDTO clientInquiryRequestDTO) {
 
      /*   if (!inquiryRepository.existsByClientIdAndCampaignId(inquiryRequestDTO.getClientId(),inquiryRequestDTO.getCampaignId())){
             Optional<ClientDBModel> clientDBModel = clientRepository.findById(inquiryRequestDTO.getClientId());
@@ -160,7 +150,7 @@ public class CampaignInquiryFramework {
 
 
 
-    public InquiryWSDTO updateCampaignInquiryService(long userId, long inquiryId, long clientId, String inquiryState) {
+    public ClientInquiryWSDTO updateCampaignInquiryService(long userId, long inquiryId, long clientId, String inquiryState) {
 
       /*  List<InquiryDBModel> inquiryDBModels = inquiryRepository.findByIdAndClientId(inquiryId,clientId);
         if (!inquiryDBModels.isEmpty()){
@@ -174,7 +164,7 @@ public class CampaignInquiryFramework {
     }
 
 
-    public InquiryWSDTO removeCampaignInquiryService(long userId, long inquiryId, long clientId) {
+    public ClientInquiryWSDTO removeCampaignInquiryService(long userId, long inquiryId, long clientId) {
 
   /*      List<InquiryDBModel> inquiryDBModels = inquiryRepository.findByIdAndClientId(inquiryId,clientId);
         if (!inquiryDBModels.isEmpty()) {

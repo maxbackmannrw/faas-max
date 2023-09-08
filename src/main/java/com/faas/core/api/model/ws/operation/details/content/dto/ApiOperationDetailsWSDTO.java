@@ -6,8 +6,8 @@ import com.faas.core.api.model.ws.operation.details.client.content.dto.ApiOperat
 import com.faas.core.api.model.ws.operation.details.client.note.dto.ApiClientNoteWSDTO;
 import com.faas.core.api.model.ws.operation.details.client.osint.dto.ApiClientOsIntWSDTO;
 import com.faas.core.api.model.ws.operation.scenario.content.dto.ApiOperationScenarioWSDTO;
-import com.faas.core.base.model.db.client.flow.FlowDBModel;
-import com.faas.core.base.model.db.client.inquiry.InquiryDBModel;
+import com.faas.core.base.model.db.client.flow.ClientFlowDBModel;
+import com.faas.core.base.model.db.client.inquiry.ClientInquiryDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.client.session.SessionDBModel;
 
@@ -16,8 +16,8 @@ import java.util.List;
 public class ApiOperationDetailsWSDTO {
 
     private OperationDBModel operation;
-    private FlowDBModel operationFlow;
-    private InquiryDBModel operationInquiry;
+    private ClientFlowDBModel operationFlow;
+    private ClientInquiryDBModel operationInquiry;
     private SessionDBModel operationSession;
     private ApiOperationClientWSDTO operationClient;
     private List<ApiClientOsIntWSDTO> clientOsInts;
@@ -30,7 +30,7 @@ public class ApiOperationDetailsWSDTO {
     public ApiOperationDetailsWSDTO() {
     }
 
-    public ApiOperationDetailsWSDTO(OperationDBModel operation, SessionDBModel operationSession, FlowDBModel operationFlow, InquiryDBModel operationInquiry, ApiOperationClientWSDTO operationClient, List<ApiClientOsIntWSDTO> clientOsInts, List<ApiClientNoteWSDTO> clientNotes, List<ApiOperationActivityWSDTO> operationActivities, ApiOperationCampaignWSDTO operationCampaign, ApiOperationScenarioWSDTO operationScenario, ApiOperationChannelWSDTO operationChannel) {
+    public ApiOperationDetailsWSDTO(OperationDBModel operation, SessionDBModel operationSession, ClientFlowDBModel operationFlow, ClientInquiryDBModel operationInquiry, ApiOperationClientWSDTO operationClient, List<ApiClientOsIntWSDTO> clientOsInts, List<ApiClientNoteWSDTO> clientNotes, List<ApiOperationActivityWSDTO> operationActivities, ApiOperationCampaignWSDTO operationCampaign, ApiOperationScenarioWSDTO operationScenario, ApiOperationChannelWSDTO operationChannel) {
         this.operation = operation;
         this.operationSession = operationSession;
         this.operationFlow = operationFlow;
@@ -61,19 +61,19 @@ public class ApiOperationDetailsWSDTO {
         this.operationSession = operationSession;
     }
 
-    public FlowDBModel getOperationFlow() {
+    public ClientFlowDBModel getOperationFlow() {
         return operationFlow;
     }
 
-    public void setOperationFlow(FlowDBModel operationFlow) {
+    public void setOperationFlow(ClientFlowDBModel operationFlow) {
         this.operationFlow = operationFlow;
     }
 
-    public InquiryDBModel getOperationInquiry() {
+    public ClientInquiryDBModel getOperationInquiry() {
         return operationInquiry;
     }
 
-    public void setOperationInquiry(InquiryDBModel operationInquiry) {
+    public void setOperationInquiry(ClientInquiryDBModel operationInquiry) {
         this.operationInquiry = operationInquiry;
     }
 

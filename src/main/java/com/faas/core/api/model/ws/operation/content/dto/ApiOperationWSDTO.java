@@ -1,7 +1,7 @@
 package com.faas.core.api.model.ws.operation.content.dto;
 
-import com.faas.core.base.model.db.client.flow.FlowDBModel;
-import com.faas.core.base.model.db.client.inquiry.InquiryDBModel;
+import com.faas.core.base.model.db.client.flow.ClientFlowDBModel;
+import com.faas.core.base.model.db.client.inquiry.ClientInquiryDBModel;
 import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 
@@ -9,13 +9,13 @@ public class ApiOperationWSDTO {
 
     private OperationDBModel operation;
     private SessionDBModel operationSession;
-    private InquiryDBModel operationInquiry;
-    private FlowDBModel operationFlow;
+    private ClientInquiryDBModel operationInquiry;
+    private ClientFlowDBModel operationFlow;
 
     public ApiOperationWSDTO() {
     }
 
-    public ApiOperationWSDTO(OperationDBModel operation, SessionDBModel operationSession, InquiryDBModel operationInquiry, FlowDBModel operationFlow) {
+    public ApiOperationWSDTO(OperationDBModel operation, SessionDBModel operationSession, ClientInquiryDBModel operationInquiry, ClientFlowDBModel operationFlow) {
         this.operation = operation;
         this.operationSession = operationSession;
         this.operationInquiry = operationInquiry;
@@ -38,19 +38,19 @@ public class ApiOperationWSDTO {
         this.operationSession = operationSession;
     }
 
-    public InquiryDBModel getOperationInquiry() {
+    public ClientInquiryDBModel getOperationInquiry() {
         return operationInquiry;
     }
 
-    public void setOperationInquiry(InquiryDBModel operationInquiry) {
+    public void setOperationInquiry(ClientInquiryDBModel operationInquiry) {
         this.operationInquiry = operationInquiry;
     }
 
-    public FlowDBModel getOperationFlow() {
+    public ClientFlowDBModel getOperationFlow() {
         return operationFlow;
     }
 
-    public void setOperationFlow(FlowDBModel operationFlow) {
+    public void setOperationFlow(ClientFlowDBModel operationFlow) {
         this.operationFlow = operationFlow;
     }
 }

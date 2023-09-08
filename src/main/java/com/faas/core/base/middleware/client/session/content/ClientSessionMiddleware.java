@@ -20,8 +20,6 @@ public class ClientSessionMiddleware {
     ClientSessionFramework clientSessionFramework;
 
 
-
-
     public SessionWSModel getAllSessions(long userId, int reqPage, int reqSize) {
 
         SessionWSModel response = new SessionWSModel();

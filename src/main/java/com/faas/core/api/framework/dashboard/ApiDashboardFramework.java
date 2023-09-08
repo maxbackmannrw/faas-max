@@ -10,7 +10,7 @@ import com.faas.core.base.model.db.campaign.details.CampaignAgentDBModel;
 import com.faas.core.base.model.db.process.content.ProcessDBModel;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
-import com.faas.core.base.repo.client.inquiry.InquiryRepository;
+import com.faas.core.base.repo.client.inquiry.ClientInquiryRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.client.session.SessionRepository;
 import com.faas.core.utils.config.AppConstant;
@@ -43,7 +43,7 @@ public class ApiDashboardFramework {
     SessionRepository sessionRepository;
 
     @Autowired
-    InquiryRepository inquiryRepository;
+    ClientInquiryRepository clientInquiryRepository;
 
     @Autowired
     CampaignRepository campaignRepository;

@@ -2,14 +2,12 @@ package com.faas.core.api.framework.operation.content;
 
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
 import com.faas.core.base.model.db.client.content.ClientDBModel;
-import com.faas.core.base.model.db.client.flow.FlowDBModel;
-import com.faas.core.base.model.db.client.inquiry.InquiryDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;
-import com.faas.core.base.repo.client.flow.FlowRepository;
-import com.faas.core.base.repo.client.inquiry.InquiryRepository;
+import com.faas.core.base.repo.client.flow.ClientFlowRepository;
+import com.faas.core.base.repo.client.inquiry.ClientInquiryRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.client.session.SessionRepository;
@@ -46,10 +44,10 @@ public class ApiOperationFramework {
     ClientRepository clientRepository;
 
     @Autowired
-    InquiryRepository inquiryRepository;
+    ClientInquiryRepository clientInquiryRepository;
 
     @Autowired
-    FlowRepository flowRepository;
+    ClientFlowRepository clientFlowRepository;
 
     @Autowired
     AppUtils appUtils;

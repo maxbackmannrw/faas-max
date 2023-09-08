@@ -4,8 +4,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 
-@Document(collection = "inquiry_table")
-public class InquiryDBModel {
+@Document(collection = "client_inquiry_table")
+public class ClientInquiryDBModel {
 
     @Id
     private String id;
@@ -17,10 +17,10 @@ public class InquiryDBModel {
     private int status;
 
 
-    public InquiryDBModel() {
+    public ClientInquiryDBModel() {
     }
 
-    public InquiryDBModel(String id, long sessionId, String inquiryState, long uDate, long cDate, int status) {
+    public ClientInquiryDBModel(String id, long sessionId, String inquiryState, long uDate, long cDate, int status) {
         this.id = id;
         this.sessionId = sessionId;
         this.inquiryState = inquiryState;

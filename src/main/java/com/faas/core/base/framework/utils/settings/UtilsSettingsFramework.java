@@ -1,7 +1,5 @@
 package com.faas.core.base.framework.utils.settings;
 
-import com.faas.core.base.model.db.client.flow.FlowDBModel;
-import com.faas.core.base.model.db.client.inquiry.InquiryDBModel;
 import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.repo.action.ActionTempRepository;
 import com.faas.core.base.repo.assets.content.AssetRepository;
@@ -12,8 +10,8 @@ import com.faas.core.base.repo.client.details.ClientAddressRepository;
 import com.faas.core.base.repo.client.details.ClientDataRepository;
 import com.faas.core.base.repo.client.details.ClientEmailRepository;
 import com.faas.core.base.repo.client.details.ClientPhoneRepository;
-import com.faas.core.base.repo.client.flow.FlowRepository;
-import com.faas.core.base.repo.client.inquiry.InquiryRepository;
+import com.faas.core.base.repo.client.flow.ClientFlowRepository;
+import com.faas.core.base.repo.client.inquiry.ClientInquiryRepository;
 import com.faas.core.base.repo.notification.NotificationRepository;
 import com.faas.core.base.repo.operation.channel.*;
 import com.faas.core.base.repo.operation.content.OperationRepository;
@@ -32,7 +30,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Optional;
 
 
 @Component
@@ -78,10 +75,10 @@ public class UtilsSettingsFramework {
     WappMessageRepository wappMessageRepository;
 
     @Autowired
-    InquiryRepository inquiryRepository;
+    ClientInquiryRepository clientInquiryRepository;
 
     @Autowired
-    FlowRepository flowRepository;
+    ClientFlowRepository clientFlowRepository;
 
     @Autowired
     NotificationRepository notificationRepository;
@@ -242,7 +239,7 @@ public class UtilsSettingsFramework {
 
     public void cleanSystemTablesService() {
 
-        inquiryRepository.deleteAll();
+        clientInquiryRepository.deleteAll();
         notificationRepository.deleteAll();
         actionTempRepository.deleteAll();
         assetRepository.deleteAll();

@@ -1,16 +1,14 @@
 package com.faas.core.base.framework.client.flow.content;
 
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
-import com.faas.core.base.model.db.client.content.ClientDBModel;
-import com.faas.core.base.model.db.client.flow.FlowDBModel;
-import com.faas.core.base.model.db.user.content.UserDBModel;
+import com.faas.core.base.model.db.client.flow.ClientFlowDBModel;
 import com.faas.core.base.model.ws.campaign.content.dto.CampaignWSDTO;
 import com.faas.core.base.model.ws.client.flow.dto.FlowCampaignWSDTO;
-import com.faas.core.base.model.ws.client.flow.dto.FlowWSDTO;
+import com.faas.core.base.model.ws.client.flow.dto.ClientFlowWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;
-import com.faas.core.base.repo.client.flow.FlowRepository;
+import com.faas.core.base.repo.client.flow.ClientFlowRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.client.session.SessionRepository;
 import com.faas.core.base.repo.user.content.UserRepository;
@@ -52,7 +50,7 @@ public class ClientFlowFramework {
     UserRepository userRepository;
 
     @Autowired
-    FlowRepository flowRepository;
+    ClientFlowRepository clientFlowRepository;
 
     @Autowired
     AppUtils appUtils;
@@ -95,7 +93,7 @@ public class ClientFlowFramework {
 
 
 
-    public FlowWSDTO getFlowService(long userId, long flowId, long clientId) {
+    public ClientFlowWSDTO getFlowService(long userId, long flowId, long clientId) {
 
      //   List<FlowDBModel> flowDBModels = flowRepository.findByIdAndClientId(flowId,clientId);
   //      if (flowDBModels.size()>0){
@@ -105,35 +103,35 @@ public class ClientFlowFramework {
     }
 
 
-    public List<FlowWSDTO> getAllFlowsService(long userId, int reqPage, int reqSize) {
+    public List<ClientFlowWSDTO> getAllFlowsService(long userId, int reqPage, int reqSize) {
 
-        List<FlowWSDTO> flowWSDTOS = new ArrayList<>();
-        Page<FlowDBModel> flowModelPage = flowRepository.findAll(PageRequest.of(reqPage,reqSize));
+        List<ClientFlowWSDTO> clientFlowWSDTOS = new ArrayList<>();
+        Page<ClientFlowDBModel> flowModelPage = clientFlowRepository.findAll(PageRequest.of(reqPage,reqSize));
         for (int i=0;i<flowModelPage.getContent().size();i++){
-            flowWSDTOS.add(new FlowWSDTO(flowModelPage.getContent().get(i)));
+            clientFlowWSDTOS.add(new ClientFlowWSDTO(flowModelPage.getContent().get(i)));
         }
-        return flowWSDTOS;
+        return clientFlowWSDTOS;
     }
 
 
-    public List<FlowWSDTO> getFlowsByStateService(long userId, String flowState, int reqPage, int reqSize) {
+    public List<ClientFlowWSDTO> getFlowsByStateService(long userId, String flowState, int reqPage, int reqSize) {
 
-        List<FlowWSDTO> flowWSDTOS = new ArrayList<>();
+        List<ClientFlowWSDTO> clientFlowWSDTOS = new ArrayList<>();
     //    Page<FlowDBModel> flowModelPage = flowRepository.findAllByFlowState(flowState,PageRequest.of(reqPage,reqSize));
    //     for (int i=0;i<flowModelPage.getContent().size();i++){
 //            flowWSDTOS.add(new FlowWSDTO(flowModelPage.getContent().get(i)));
 //        }
-        return flowWSDTOS;
+        return clientFlowWSDTOS;
     }
 
 
-    public FlowWSDTO createFlowService(long userId,long clientId,long agentId, String campaignId) {
+    public ClientFlowWSDTO createFlowService(long userId, long clientId, long agentId, String campaignId) {
 
         return null;
     }
 
 
-    public FlowWSDTO updateFlowService(long userId, long flowId, long clientId) {
+    public ClientFlowWSDTO updateFlowService(long userId, long flowId, long clientId) {
 
      //   List<FlowDBModel> flowDBModels = flowRepository.findByIdAndClientId(flowId,clientId);
     //    if (flowDBModels.size()>0){
@@ -143,7 +141,7 @@ public class ClientFlowFramework {
     }
 
 
-    public FlowWSDTO removeFlowService(long userId, long flowId, long clientId) {
+    public ClientFlowWSDTO removeFlowService(long userId, long flowId, long clientId) {
 
   //      List<FlowDBModel> flowDBModels = flowRepository.findByIdAndClientId(flowId,clientId);
 //        if (flowDBModels.size()>0){

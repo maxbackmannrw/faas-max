@@ -1,14 +1,13 @@
 package com.faas.core.base.framework.client.inquiry.content;
 
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
-import com.faas.core.base.model.db.client.content.ClientDBModel;
-import com.faas.core.base.model.db.client.inquiry.InquiryDBModel;
+import com.faas.core.base.model.db.client.inquiry.ClientInquiryDBModel;
 import com.faas.core.base.model.ws.campaign.content.dto.CampaignWSDTO;
 import com.faas.core.base.model.ws.client.inquiry.dto.InquiryCampaignWSDTO;
-import com.faas.core.base.model.ws.client.inquiry.dto.InquiryWSDTO;
+import com.faas.core.base.model.ws.client.inquiry.dto.ClientInquiryWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;
-import com.faas.core.base.repo.client.inquiry.InquiryRepository;
+import com.faas.core.base.repo.client.inquiry.ClientInquiryRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.InquiryHelper;
@@ -36,7 +35,7 @@ public class ClientInquiryFramework {
     CampaignRepository campaignRepository;
 
     @Autowired
-    InquiryRepository inquiryRepository;
+    ClientInquiryRepository clientInquiryRepository;
 
     @Autowired
     AppUtils appUtils;
@@ -77,29 +76,29 @@ public class ClientInquiryFramework {
     }
 
 
-    public List<InquiryWSDTO> getAllInquiriesService(long userId, int reqPage, int reqSize) {
+    public List<ClientInquiryWSDTO> getAllInquiriesService(long userId, int reqPage, int reqSize) {
 
-        List<InquiryWSDTO> inquiryWSDTOS = new ArrayList<>();
-        Page<InquiryDBModel> inquiryModelPage = inquiryRepository.findAll(PageRequest.of(reqPage,reqSize));
+        List<ClientInquiryWSDTO> clientInquiryWSDTOS = new ArrayList<>();
+        Page<ClientInquiryDBModel> inquiryModelPage = clientInquiryRepository.findAll(PageRequest.of(reqPage,reqSize));
         for (int i=0;i<inquiryModelPage.getContent().size();i++){
-            inquiryWSDTOS.add(new InquiryWSDTO(inquiryModelPage.getContent().get(i)));
+            clientInquiryWSDTOS.add(new ClientInquiryWSDTO(inquiryModelPage.getContent().get(i)));
         }
-        return inquiryWSDTOS;
+        return clientInquiryWSDTOS;
     }
 
 
-    public List<InquiryWSDTO> getInquiriesByStateService(long userId, String inquiryState, int reqPage, int reqSize) {
+    public List<ClientInquiryWSDTO> getInquiriesByStateService(long userId, String inquiryState, int reqPage, int reqSize) {
 
-        List<InquiryWSDTO> inquiryWSDTOS = new ArrayList<>();
+        List<ClientInquiryWSDTO> clientInquiryWSDTOS = new ArrayList<>();
     //    Page<InquiryDBModel> inquiryModelPage = inquiryRepository.findAllByInquiryState(inquiryState,PageRequest.of(reqPage,reqSize));
    //     for (int i=0;i<inquiryModelPage.getContent().size();i++){
   //          inquiryWSDTOS.add(new InquiryWSDTO(inquiryModelPage.getContent().get(i)));
  //       }
-        return inquiryWSDTOS;
+        return clientInquiryWSDTOS;
     }
 
 
-    public InquiryWSDTO getInquiryService(long userId, long inquiryId, long clientId) {
+    public ClientInquiryWSDTO getInquiryService(long userId, long inquiryId, long clientId) {
 
   //      List<InquiryDBModel> inquiryDBModels = inquiryRepository.findByIdAndClientId(inquiryId,clientId);
   //      if (inquiryDBModels.size()>0){
@@ -109,7 +108,7 @@ public class ClientInquiryFramework {
     }
 
 
-    public InquiryWSDTO createInquiryService(long userId,long clientId,long agentId, String campaignId) {
+    public ClientInquiryWSDTO createInquiryService(long userId, long clientId, long agentId, String campaignId) {
 
    //     if (!(inquiryRepository.existsByClientIdAndCampaignId(clientId,campaignId))){
    //         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
@@ -125,7 +124,7 @@ public class ClientInquiryFramework {
     }
 
 
-    public InquiryWSDTO updateInquiryService(long userId, long inquiryId, long clientId) {
+    public ClientInquiryWSDTO updateInquiryService(long userId, long inquiryId, long clientId) {
 
    //     List<InquiryDBModel> inquiryDBModels = inquiryRepository.findByIdAndClientId(inquiryId,clientId);
   //      if (inquiryDBModels.size()>0){
@@ -135,7 +134,7 @@ public class ClientInquiryFramework {
     }
 
 
-    public InquiryWSDTO removeInquiryService(long userId, long inquiryId, long clientId) {
+    public ClientInquiryWSDTO removeInquiryService(long userId, long inquiryId, long clientId) {
 
     //    List<InquiryDBModel> inquiryDBModels = inquiryRepository.findByIdAndClientId(inquiryId,clientId);
  //       if (inquiryDBModels.size()>0){

@@ -9,12 +9,12 @@ public class FlowCampaignWSDTO {
 
     private CampaignWSDTO campaign;
     private PaginationWSDTO pagination;
-    private List<FlowWSDTO>flows;
+    private List<ClientFlowWSDTO>flows;
 
     public FlowCampaignWSDTO() {
     }
 
-    public FlowCampaignWSDTO(CampaignWSDTO campaign, PaginationWSDTO pagination, List<FlowWSDTO> flows) {
+    public FlowCampaignWSDTO(CampaignWSDTO campaign, PaginationWSDTO pagination, List<ClientFlowWSDTO> flows) {
         this.campaign = campaign;
         this.pagination = pagination;
         this.flows = flows;
@@ -36,11 +36,11 @@ public class FlowCampaignWSDTO {
         this.pagination = pagination;
     }
 
-    public List<FlowWSDTO> getFlows() {
+    public List<ClientFlowWSDTO> getFlows() {
         return flows;
     }
 
-    public void setFlows(List<FlowWSDTO> flows) {
+    public void setFlows(List<ClientFlowWSDTO> flows) {
         this.flows = flows;
     }
 }

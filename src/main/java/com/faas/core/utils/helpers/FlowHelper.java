@@ -2,11 +2,11 @@ package com.faas.core.utils.helpers;
 
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.client.content.ClientDBModel;
-import com.faas.core.base.model.db.client.flow.FlowDBModel;
+import com.faas.core.base.model.db.client.flow.ClientFlowDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.model.db.user.content.UserDBModel;
-import com.faas.core.base.model.ws.client.flow.dto.FlowWSDTO;
+import com.faas.core.base.model.ws.client.flow.dto.ClientFlowWSDTO;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
@@ -25,33 +25,33 @@ public class FlowHelper {
     AppUtils appUtils;
 
 
-    public FlowDBModel mapFlowDBModel(SessionDBModel sessionDBModel){
+    public ClientFlowDBModel mapFlowDBModel(SessionDBModel sessionDBModel){
 
-        FlowDBModel flowDBModel = new FlowDBModel();
-        flowDBModel.setSessionId(sessionDBModel.getId());
+        ClientFlowDBModel clientFlowDBModel = new ClientFlowDBModel();
+        clientFlowDBModel.setSessionId(sessionDBModel.getId());
 
-        flowDBModel.setFlowState(AppConstant.NEW_FLOW);
-        flowDBModel.setuDate(appUtils.getCurrentTimeStamp());
-        flowDBModel.setcDate(appUtils.getCurrentTimeStamp());
-        flowDBModel.setStatus(1);
+        clientFlowDBModel.setFlowState(AppConstant.NEW_FLOW);
+        clientFlowDBModel.setuDate(appUtils.getCurrentTimeStamp());
+        clientFlowDBModel.setcDate(appUtils.getCurrentTimeStamp());
+        clientFlowDBModel.setStatus(1);
 
-        return flowDBModel;
+        return clientFlowDBModel;
     }
 
 
-    public List<FlowWSDTO> createFlowWSDTOS(List<FlowDBModel> flowDBModels){
+    public List<ClientFlowWSDTO> createFlowWSDTOS(List<ClientFlowDBModel> clientFlowDBModels){
 
-        List<FlowWSDTO> flowWSDTOS = new ArrayList<>();
-        for (FlowDBModel flowDBModel : flowDBModels) {
-            FlowWSDTO flowWSDTO = new FlowWSDTO();
-            flowWSDTO.setFlow(flowDBModel);
-            flowWSDTOS.add(flowWSDTO);
+        List<ClientFlowWSDTO> clientFlowWSDTOS = new ArrayList<>();
+        for (ClientFlowDBModel clientFlowDBModel : clientFlowDBModels) {
+            ClientFlowWSDTO clientFlowWSDTO = new ClientFlowWSDTO();
+            clientFlowWSDTO.setClientFlow(clientFlowDBModel);
+            clientFlowWSDTOS.add(clientFlowWSDTO);
         }
-        return flowWSDTOS;
+        return clientFlowWSDTOS;
     }
 
 
-    public PaginationWSDTO createFlowPagination(Page<FlowDBModel> flowDBModelPage){
+    public PaginationWSDTO createFlowPagination(Page<ClientFlowDBModel> flowDBModelPage){
 
         PaginationWSDTO paginationWSDTO = new PaginationWSDTO();
         paginationWSDTO.setPageSize(flowDBModelPage.getPageable().getPageSize());

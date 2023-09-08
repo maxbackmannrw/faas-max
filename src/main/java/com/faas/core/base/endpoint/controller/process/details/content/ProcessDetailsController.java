@@ -38,6 +38,45 @@ public class ProcessDetailsController {
     }
 
 
+    @RequestMapping(value = BaseRoute.GET_MANUAL_PROCESS, method = RequestMethod.POST)
+    public ResponseEntity<?> getManualProcess(@RequestParam long userId,
+                                              @RequestParam String processId) {
+
+        ProcessDetailsWSModel response = processDetailsMiddleware.getManualProcess(userId,processId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = BaseRoute.GET_INQUIRY_PROCESS, method = RequestMethod.POST)
+    public ResponseEntity<?> getInquiryProcess(@RequestParam long userId,
+                                               @RequestParam String processId) {
+
+        ProcessDetailsWSModel response = processDetailsMiddleware.getInquiryProcess(userId,processId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = BaseRoute.GET_AUTOMATIC_PROCESS, method = RequestMethod.POST)
+    public ResponseEntity<?> getAutomaticProcess(@RequestParam long userId,
+                                                 @RequestParam String processId) {
+
+        ProcessDetailsWSModel response = processDetailsMiddleware.getAutomaticProcess(userId,processId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
     @RequestMapping(value = BaseRoute.GET_PROCESS_DATAS, method = RequestMethod.POST)
     public ResponseEntity<?> getProcessDatas(@RequestParam long userId,
                                              @RequestParam String processId) {

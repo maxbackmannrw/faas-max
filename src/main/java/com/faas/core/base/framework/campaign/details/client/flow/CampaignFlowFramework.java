@@ -1,36 +1,26 @@
 package com.faas.core.base.framework.campaign.details.client.flow;
 
-import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
-import com.faas.core.base.model.db.client.content.ClientDBModel;
-import com.faas.core.base.model.db.client.flow.FlowDBModel;
-import com.faas.core.base.model.db.operation.content.OperationDBModel;
-import com.faas.core.base.model.db.client.session.SessionDBModel;
-import com.faas.core.base.model.db.user.content.UserDBModel;
 import com.faas.core.base.model.ws.campaign.details.client.flow.dto.CampaignFlowWSDTO;
-import com.faas.core.base.model.ws.client.flow.FlowRequest;
-import com.faas.core.base.model.ws.client.flow.dto.FlowRequestDTO;
-import com.faas.core.base.model.ws.client.flow.dto.FlowWSDTO;
+import com.faas.core.base.model.ws.client.flow.ClientFlowRequest;
+import com.faas.core.base.model.ws.client.flow.dto.ClientFlowRequestDTO;
+import com.faas.core.base.model.ws.client.flow.dto.ClientFlowWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;
-import com.faas.core.base.repo.client.flow.FlowRepository;
+import com.faas.core.base.repo.client.flow.ClientFlowRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.client.session.SessionRepository;
 import com.faas.core.base.repo.user.content.UserRepository;
-import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.ActivityHelper;
 import com.faas.core.utils.helpers.FlowHelper;
 import com.faas.core.utils.helpers.SessionHelper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 
 @Component
@@ -47,7 +37,7 @@ public class CampaignFlowFramework {
     FlowHelper flowHelper;
 
     @Autowired
-    FlowRepository flowRepository;
+    ClientFlowRepository clientFlowRepository;
 
     @Autowired
     SessionRepository sessionRepository;
@@ -104,7 +94,7 @@ public class CampaignFlowFramework {
     }
 
 
-    public FlowWSDTO getCampaignFlowService(long userId, long flowId, long clientId) {
+    public ClientFlowWSDTO getCampaignFlowService(long userId, long flowId, long clientId) {
 
    /*     List<FlowDBModel> flowDBModels = flowRepository.findByIdAndClientId(flowId, clientId);
         if (!flowDBModels.isEmpty()) {
@@ -116,20 +106,20 @@ public class CampaignFlowFramework {
     }
 
 
-    public List<FlowWSDTO> createCampaignFlowService(FlowRequest flowRequest) {
+    public List<ClientFlowWSDTO> createCampaignFlowService(ClientFlowRequest clientFlowRequest) {
 
-        List<FlowWSDTO>flowWSDTOS = new ArrayList<>();
-        for (int i=0;i<flowRequest.getFlowRequests().size();i++){
-            FlowWSDTO flowWSDTO = createCampaignFlow(flowRequest.getFlowRequests().get(i));
-            if (flowWSDTO != null){
-                flowWSDTOS.add(flowWSDTO);
+        List<ClientFlowWSDTO> clientFlowWSDTOS = new ArrayList<>();
+        for (int i = 0; i< clientFlowRequest.getFlowRequests().size(); i++){
+            ClientFlowWSDTO clientFlowWSDTO = createCampaignFlow(clientFlowRequest.getFlowRequests().get(i));
+            if (clientFlowWSDTO != null){
+                clientFlowWSDTOS.add(clientFlowWSDTO);
             }
         }
-        return flowWSDTOS;
+        return clientFlowWSDTOS;
     }
 
 
-    public FlowWSDTO createCampaignFlow(FlowRequestDTO flowRequestDTO){
+    public ClientFlowWSDTO createCampaignFlow(ClientFlowRequestDTO clientFlowRequestDTO){
 
     /*    if (!flowRepository.existsByClientIdAndCampaignId(flowRequestDTO.getClientId(),flowRequestDTO.getCampaignId())){
             Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(flowRequestDTO.getCampaignId());
@@ -157,7 +147,7 @@ public class CampaignFlowFramework {
 
 
 
-    public FlowWSDTO updateCampaignFlowService(long userId, long flowId, long clientId, String flowState) {
+    public ClientFlowWSDTO updateCampaignFlowService(long userId, long flowId, long clientId, String flowState) {
 
     /*    List<FlowDBModel> flowDBModels = flowRepository.findByIdAndClientId(flowId, clientId);
         if (flowDBModels.size() > 0) {
@@ -171,7 +161,7 @@ public class CampaignFlowFramework {
     }
 
 
-    public FlowWSDTO removeCampaignFlowService(long userId, long flowId, long clientId) {
+    public ClientFlowWSDTO removeCampaignFlowService(long userId, long flowId, long clientId) {
 
    /*     List<FlowDBModel> flowDBModels = flowRepository.findByIdAndClientId(flowId, clientId);
         if (flowDBModels.size() > 0) {
