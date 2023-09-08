@@ -2,17 +2,17 @@ package com.faas.core.api.framework.operation.content;
 
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
 import com.faas.core.base.model.db.client.content.ClientDBModel;
-import com.faas.core.base.model.db.flow.FlowDBModel;
-import com.faas.core.base.model.db.inquiry.InquiryDBModel;
+import com.faas.core.base.model.db.client.flow.FlowDBModel;
+import com.faas.core.base.model.db.client.inquiry.InquiryDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
-import com.faas.core.base.model.db.session.SessionDBModel;
+import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;
-import com.faas.core.base.repo.flow.FlowRepository;
-import com.faas.core.base.repo.inquiry.InquiryRepository;
+import com.faas.core.base.repo.client.flow.FlowRepository;
+import com.faas.core.base.repo.client.inquiry.InquiryRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
-import com.faas.core.base.repo.session.SessionRepository;
+import com.faas.core.base.repo.client.session.SessionRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.ActivityHelper;
@@ -106,18 +106,18 @@ public class ApiOperationFramework {
 
             if (sessionDBModels.get(0).getSessionType().equalsIgnoreCase(AppConstant.INQUIRY_CAMPAIGN)){
 
-                List<InquiryDBModel> inquiryDBModels = inquiryRepository.findBySessionIdAndClientId(sessionId,clientId);
-                inquiryDBModels.get(0).setInquiryState(AppConstant.ACTIVE_INQUIRY);
-                inquiryDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
-                operationWSDTO.setOperationInquiry(inquiryRepository.save(inquiryDBModels.get(0)));
+                //List<InquiryDBModel> inquiryDBModels = inquiryRepository.findBySessionIdAndClientId(sessionId,clientId);
+                //inquiryDBModels.get(0).setInquiryState(AppConstant.ACTIVE_INQUIRY);
+                //inquiryDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
+                //operationWSDTO.setOperationInquiry(inquiryRepository.save(inquiryDBModels.get(0)));
             }
 
             if (sessionDBModels.get(0).getSessionType().equalsIgnoreCase(AppConstant.AUTOMATIC_CAMPAIGN)){
 
-                List<FlowDBModel> flowDBModels = flowRepository.findBySessionIdAndClientId(sessionId,clientId);
-                flowDBModels.get(0).setFlowState(AppConstant.ACTIVE_FLOW);
-                flowDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
-                operationWSDTO.setOperationFlow(flowRepository.save(flowDBModels.get(0)));
+                // List<FlowDBModel> flowDBModels = flowRepository.findBySessionIdAndClientId(sessionId,clientId);
+                // flowDBModels.get(0).setFlowState(AppConstant.ACTIVE_FLOW);
+                // flowDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
+                // operationWSDTO.setOperationFlow(flowRepository.save(flowDBModels.get(0)));
             }
 
             activityHelper.createOperationActivity(operation.getSessionId(), operation.getId(), AppConstant.LAUNCH_OPERATION_ACTIVITY,
@@ -154,18 +154,18 @@ public class ApiOperationFramework {
 
             if (sessionDBModels.get(0).getSessionType().equalsIgnoreCase(AppConstant.INQUIRY_CAMPAIGN)){
 
-                List<InquiryDBModel> inquiryDBModels = inquiryRepository.findBySessionIdAndClientId(sessionId,clientId);
-                inquiryDBModels.get(0).setInquiryState(AppConstant.FINISHED_INQUIRY);
-                inquiryDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
-                operationWSDTO.setOperationInquiry(inquiryRepository.save(inquiryDBModels.get(0)));
+                // List<InquiryDBModel> inquiryDBModels = inquiryRepository.findBySessionIdAndClientId(sessionId,clientId);
+                // inquiryDBModels.get(0).setInquiryState(AppConstant.FINISHED_INQUIRY);
+                // inquiryDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
+                // operationWSDTO.setOperationInquiry(inquiryRepository.save(inquiryDBModels.get(0)));
             }
 
             if (sessionDBModels.get(0).getSessionType().equalsIgnoreCase(AppConstant.AUTOMATIC_CAMPAIGN)){
 
-                List<FlowDBModel> flowDBModels = flowRepository.findBySessionIdAndClientId(sessionId,clientId);
-                flowDBModels.get(0).setFlowState(AppConstant.FINISHED_FLOW);
-                flowDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
-                operationWSDTO.setOperationFlow(flowRepository.save(flowDBModels.get(0)));
+                // List<FlowDBModel> flowDBModels = flowRepository.findBySessionIdAndClientId(sessionId,clientId);
+                // flowDBModels.get(0).setFlowState(AppConstant.FINISHED_FLOW);
+                // flowDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
+                // operationWSDTO.setOperationFlow(flowRepository.save(flowDBModels.get(0)));
             }
 
             return operationWSDTO;

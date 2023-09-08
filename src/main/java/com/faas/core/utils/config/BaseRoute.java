@@ -177,6 +177,22 @@ public class BaseRoute {
     public static final String REMOVE_CLIENT_TYPE = "removeclienttype";
 
 
+
+    public static final String GET_ALL_INQUIRY_TYPES = "getallinquirytypes";
+    public static final String GET_INQUIRY_TYPE = "getinquirytype";
+    public static final String CREATE_INQUIRY_TYPE = "createinquirytype";
+    public static final String UPDATE_INQUIRY_TYPE = "updateinquirytype";
+    public static final String REMOVE_INQUIRY_TYPE = "removeinquirytype";
+
+    public static final String GET_ALL_FLOW_TYPES = "getallflowtypes";
+    public static final String GET_FLOW_TYPE = "getflowtype";
+    public static final String CREATE_FLOW_TYPE = "createflowtype";
+    public static final String UPDATE_FLOW_TYPE = "updateflowtype";
+    public static final String REMOVE_FLOW_TYPE = "removeflowtype";
+
+
+
+
     public static final String GET_INQUIRY_CAMPAIGNS = "getinquirycampaigns";
     public static final String GET_INQUIRY_CAMPAIGN = "getinquirycampaign";
 
@@ -229,17 +245,7 @@ public class BaseRoute {
     public static final String REMOVE_CAMPAIGN_TYPE = "removecampaigntype";
 
 
-    public static final String GET_ALL_INQUIRY_TYPES = "getallinquirytypes";
-    public static final String GET_INQUIRY_TYPE = "getinquirytype";
-    public static final String CREATE_INQUIRY_TYPE = "createinquirytype";
-    public static final String UPDATE_INQUIRY_TYPE = "updateinquirytype";
-    public static final String REMOVE_INQUIRY_TYPE = "removeinquirytype";
 
-    public static final String GET_ALL_FLOW_TYPES = "getallflowtypes";
-    public static final String GET_FLOW_TYPE = "getflowtype";
-    public static final String CREATE_FLOW_TYPE = "createflowtype";
-    public static final String UPDATE_FLOW_TYPE = "updateflowtype";
-    public static final String REMOVE_FLOW_TYPE = "removeflowtype";
 
 
 

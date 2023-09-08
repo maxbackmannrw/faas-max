@@ -5,10 +5,10 @@ import com.faas.core.api.model.ws.operation.channel.call.sip.dto.ApiSipAccountWS
 import com.faas.core.api.model.ws.operation.channel.call.sip.dto.ApiSipCallWSDTO;
 import com.faas.core.base.model.db.client.details.ClientPhoneDBModel;
 import com.faas.core.base.model.db.operation.channel.SipCallDBModel;
-import com.faas.core.base.model.db.session.SessionDBModel;
+import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.repo.client.details.ClientPhoneRepository;
 import com.faas.core.base.repo.operation.channel.SipCallRepository;
-import com.faas.core.base.repo.session.SessionRepository;
+import com.faas.core.base.repo.client.session.SessionRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.ChannelHelper;

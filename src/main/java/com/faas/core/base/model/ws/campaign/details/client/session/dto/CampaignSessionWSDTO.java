@@ -1,7 +1,7 @@
 package com.faas.core.base.model.ws.campaign.details.client.session.dto;
 
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
-import com.faas.core.base.model.ws.session.content.dto.SessionWSDTO;
+import com.faas.core.base.model.ws.client.session.content.dto.SessionWSDTO;
 
 import java.util.List;
 

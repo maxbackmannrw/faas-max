@@ -1,7 +1,7 @@
 package com.faas.core.api.model.ws.flow.content.dto;
 
-import com.faas.core.base.model.db.flow.FlowDBModel;
-import com.faas.core.base.model.db.session.SessionDBModel;
+import com.faas.core.base.model.db.client.flow.FlowDBModel;
+import com.faas.core.base.model.db.client.session.SessionDBModel;
 
 public class ApiFlowDTO {
 

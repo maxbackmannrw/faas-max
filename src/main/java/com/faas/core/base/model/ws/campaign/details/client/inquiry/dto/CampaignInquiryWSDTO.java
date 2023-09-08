@@ -1,7 +1,7 @@
 package com.faas.core.base.model.ws.campaign.details.client.inquiry.dto;
 
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
-import com.faas.core.base.model.ws.inquiry.dto.InquiryWSDTO;
+import com.faas.core.base.model.ws.client.inquiry.dto.InquiryWSDTO;
 
 import java.util.List;
 

@@ -2,11 +2,11 @@ package com.faas.core.utils.helpers;
 
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.client.content.ClientDBModel;
-import com.faas.core.base.model.db.flow.FlowDBModel;
+import com.faas.core.base.model.db.client.flow.FlowDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
-import com.faas.core.base.model.db.session.SessionDBModel;
+import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.model.db.user.content.UserDBModel;
-import com.faas.core.base.model.ws.flow.dto.FlowWSDTO;
+import com.faas.core.base.model.ws.client.flow.dto.FlowWSDTO;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
@@ -29,18 +29,7 @@ public class FlowHelper {
 
         FlowDBModel flowDBModel = new FlowDBModel();
         flowDBModel.setSessionId(sessionDBModel.getId());
-        flowDBModel.setClientId(sessionDBModel.getClientId());
-        flowDBModel.setClientName(sessionDBModel.getClientName());
-        flowDBModel.setPhoneNumber(sessionDBModel.getPhoneNumber());
-        flowDBModel.setEmailAddress(sessionDBModel.getEmailAddress());
-        flowDBModel.setClientCity(sessionDBModel.getClientCity());
-        flowDBModel.setClientCountry(sessionDBModel.getClientCountry());
-        flowDBModel.setCampaignId(sessionDBModel.getCampaignId());
-        flowDBModel.setCampaign(sessionDBModel.getCampaign());
-        flowDBModel.setProcessId(sessionDBModel.getProcessId());
-        flowDBModel.setProcess(sessionDBModel.getProcess());
-        flowDBModel.setAgentId(sessionDBModel.getAgentId());
-        flowDBModel.setAgentName(sessionDBModel.getAgentName());
+
         flowDBModel.setFlowState(AppConstant.NEW_FLOW);
         flowDBModel.setuDate(appUtils.getCurrentTimeStamp());
         flowDBModel.setcDate(appUtils.getCurrentTimeStamp());

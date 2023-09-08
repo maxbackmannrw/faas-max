@@ -2,20 +2,20 @@ package com.faas.core.base.framework.campaign.details.client.inquiry;
 
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.client.content.ClientDBModel;
-import com.faas.core.base.model.db.inquiry.InquiryDBModel;
+import com.faas.core.base.model.db.client.inquiry.InquiryDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
-import com.faas.core.base.model.db.session.SessionDBModel;
+import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.model.db.user.content.UserDBModel;
 import com.faas.core.base.model.ws.campaign.details.client.inquiry.dto.CampaignInquiryWSDTO;
-import com.faas.core.base.model.ws.inquiry.InquiryRequest;
-import com.faas.core.base.model.ws.inquiry.dto.InquiryRequestDTO;
-import com.faas.core.base.model.ws.inquiry.dto.InquiryWSDTO;
+import com.faas.core.base.model.ws.client.inquiry.InquiryRequest;
+import com.faas.core.base.model.ws.client.inquiry.dto.InquiryRequestDTO;
+import com.faas.core.base.model.ws.client.inquiry.dto.InquiryWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;
-import com.faas.core.base.repo.inquiry.InquiryRepository;
+import com.faas.core.base.repo.client.inquiry.InquiryRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
-import com.faas.core.base.repo.session.SessionRepository;
+import com.faas.core.base.repo.client.session.SessionRepository;
 import com.faas.core.base.repo.user.content.UserRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
@@ -77,20 +77,22 @@ public class CampaignInquiryFramework {
 
     public CampaignInquiryWSDTO searchCampaignInquiriesService(long userId, String campaignId,String clientCity,String clientCountry,int reqPage,int reqSize) {
 
-        Page<InquiryDBModel> inquiryDBModelPage = inquiryRepository.findAllByCampaignIdAndClientCityAndClientCountry(campaignId,clientCity,clientCountry, PageRequest.of(reqPage,reqSize));
+     /*   Page<InquiryDBModel> inquiryDBModelPage = inquiryRepository.findAllByCampaignIdAndClientCityAndClientCountry(campaignId,clientCity,clientCountry, PageRequest.of(reqPage,reqSize));
         if (inquiryDBModelPage != null){
             CampaignInquiryWSDTO campaignInquiryWSDTO = new CampaignInquiryWSDTO();
             campaignInquiryWSDTO.setPagination(inquiryHelper.createInquiryPagination(inquiryDBModelPage));
             campaignInquiryWSDTO.setInquiries(inquiryHelper.createInquiryWSDTOS(inquiryDBModelPage.getContent()));
             return campaignInquiryWSDTO;
         }
+
+      */
         return null;
     }
 
 
     public CampaignInquiryWSDTO getCampaignInquiriesService(long userId,String campaignId,int reqPage,int reqSize) {
 
-        Page<InquiryDBModel> inquiryDBModelPage = inquiryRepository.findAllByCampaignId(campaignId, PageRequest.of(reqPage,reqSize));
+     /*   Page<InquiryDBModel> inquiryDBModelPage = inquiryRepository.findAllByCampaignId(campaignId, PageRequest.of(reqPage,reqSize));
         if (inquiryDBModelPage != null){
 
             CampaignInquiryWSDTO campaignInquiryWSDTO = new CampaignInquiryWSDTO();
@@ -99,16 +101,20 @@ public class CampaignInquiryFramework {
 
             return campaignInquiryWSDTO;
         }
+
+      */
         return null;
     }
 
 
     public InquiryWSDTO getCampaignInquiryService(long userId, long inquiryId, long clientId) {
 
-        List<InquiryDBModel> inquiryDBModels = inquiryRepository.findByIdAndClientId(inquiryId,clientId);
+        /* List<InquiryDBModel> inquiryDBModels = inquiryRepository.findByIdAndClientId(inquiryId,clientId);
         if (!inquiryDBModels.isEmpty()){
             return new InquiryWSDTO(inquiryDBModels.get(0));
         }
+
+         */
         return null;
     }
 
@@ -128,7 +134,7 @@ public class CampaignInquiryFramework {
 
     public InquiryWSDTO createCampaignInquiry(InquiryRequestDTO inquiryRequestDTO) {
 
-        if (!inquiryRepository.existsByClientIdAndCampaignId(inquiryRequestDTO.getClientId(),inquiryRequestDTO.getCampaignId())){
+     /*   if (!inquiryRepository.existsByClientIdAndCampaignId(inquiryRequestDTO.getClientId(),inquiryRequestDTO.getCampaignId())){
             Optional<ClientDBModel> clientDBModel = clientRepository.findById(inquiryRequestDTO.getClientId());
             Optional<UserDBModel> agentDBModel = userRepository.findById(inquiryRequestDTO.getAgentId());
             Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(inquiryRequestDTO.getCampaignId());
@@ -147,6 +153,8 @@ public class CampaignInquiryFramework {
                 return new InquiryWSDTO(inquiryRepository.save(inquiryHelper.mapInquiryDBModel(sessionDBModel)));
             }
         }
+
+      */
         return null;
     }
 
@@ -154,19 +162,21 @@ public class CampaignInquiryFramework {
 
     public InquiryWSDTO updateCampaignInquiryService(long userId, long inquiryId, long clientId, String inquiryState) {
 
-        List<InquiryDBModel> inquiryDBModels = inquiryRepository.findByIdAndClientId(inquiryId,clientId);
+      /*  List<InquiryDBModel> inquiryDBModels = inquiryRepository.findByIdAndClientId(inquiryId,clientId);
         if (!inquiryDBModels.isEmpty()){
             inquiryDBModels.get(0).setInquiryState(inquiryState);
             inquiryDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
             return new InquiryWSDTO(inquiryRepository.save(inquiryDBModels.get(0)));
         }
+
+       */
         return null;
     }
 
 
     public InquiryWSDTO removeCampaignInquiryService(long userId, long inquiryId, long clientId) {
 
-        List<InquiryDBModel> inquiryDBModels = inquiryRepository.findByIdAndClientId(inquiryId,clientId);
+  /*      List<InquiryDBModel> inquiryDBModels = inquiryRepository.findByIdAndClientId(inquiryId,clientId);
         if (!inquiryDBModels.isEmpty()) {
             inquiryRepository.delete(inquiryDBModels.get(0));
             Optional<SessionDBModel>sessionDBModel = sessionRepository.findById(inquiryDBModels.get(0).getSessionId());
@@ -182,6 +192,8 @@ public class CampaignInquiryFramework {
             }
             return new InquiryWSDTO(inquiryDBModels.get(0));
         }
+
+   */
         return null;
     }
 

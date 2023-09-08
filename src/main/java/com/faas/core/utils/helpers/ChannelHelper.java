@@ -25,7 +25,7 @@ import com.faas.core.base.model.db.process.details.channel.content.dao.PushAccou
 import com.faas.core.base.model.db.process.details.channel.content.dao.SmsAccountDAO;
 import com.faas.core.base.model.db.process.details.channel.temp.SmsMessageTempDBModel;
 import com.faas.core.base.model.db.process.details.channel.temp.WappMessageTempDBModel;
-import com.faas.core.base.model.db.session.SessionDBModel;
+import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.model.db.user.details.UserDetailsDBModel;
 import com.faas.core.base.repo.client.details.ClientEmailRepository;
 import com.faas.core.base.repo.client.details.ClientPhoneRepository;

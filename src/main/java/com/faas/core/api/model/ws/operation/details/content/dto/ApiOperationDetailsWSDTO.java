@@ -6,10 +6,10 @@ import com.faas.core.api.model.ws.operation.details.client.content.dto.ApiOperat
 import com.faas.core.api.model.ws.operation.details.client.note.dto.ApiClientNoteWSDTO;
 import com.faas.core.api.model.ws.operation.details.client.osint.dto.ApiClientOsIntWSDTO;
 import com.faas.core.api.model.ws.operation.scenario.content.dto.ApiOperationScenarioWSDTO;
-import com.faas.core.base.model.db.flow.FlowDBModel;
-import com.faas.core.base.model.db.inquiry.InquiryDBModel;
+import com.faas.core.base.model.db.client.flow.FlowDBModel;
+import com.faas.core.base.model.db.client.inquiry.InquiryDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
-import com.faas.core.base.model.db.session.SessionDBModel;
+import com.faas.core.base.model.db.client.session.SessionDBModel;
 
 import java.util.List;
 

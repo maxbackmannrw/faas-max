@@ -2,8 +2,8 @@ package com.faas.core.base.endpoint.controller.campaign.details.client.session;
 
 import com.faas.core.base.middleware.campaign.details.client.session.CampaignSessionMiddleware;
 import com.faas.core.base.model.ws.campaign.details.client.session.CampaignSessionWSModel;
-import com.faas.core.base.model.ws.session.content.SessionRequest;
-import com.faas.core.base.model.ws.session.content.SessionWSModel;
+import com.faas.core.base.model.ws.client.session.content.SessionRequest;
+import com.faas.core.base.model.ws.client.session.content.SessionWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;

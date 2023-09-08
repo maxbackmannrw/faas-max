@@ -1,8 +1,8 @@
 package com.faas.core.base.framework.utils.settings;
 
-import com.faas.core.base.model.db.flow.FlowDBModel;
-import com.faas.core.base.model.db.inquiry.InquiryDBModel;
-import com.faas.core.base.model.db.session.SessionDBModel;
+import com.faas.core.base.model.db.client.flow.FlowDBModel;
+import com.faas.core.base.model.db.client.inquiry.InquiryDBModel;
+import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.repo.action.ActionTempRepository;
 import com.faas.core.base.repo.assets.content.AssetRepository;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
@@ -12,8 +12,8 @@ import com.faas.core.base.repo.client.details.ClientAddressRepository;
 import com.faas.core.base.repo.client.details.ClientDataRepository;
 import com.faas.core.base.repo.client.details.ClientEmailRepository;
 import com.faas.core.base.repo.client.details.ClientPhoneRepository;
-import com.faas.core.base.repo.flow.FlowRepository;
-import com.faas.core.base.repo.inquiry.InquiryRepository;
+import com.faas.core.base.repo.client.flow.FlowRepository;
+import com.faas.core.base.repo.client.inquiry.InquiryRepository;
 import com.faas.core.base.repo.notification.NotificationRepository;
 import com.faas.core.base.repo.operation.channel.*;
 import com.faas.core.base.repo.operation.content.OperationRepository;
@@ -26,7 +26,7 @@ import com.faas.core.base.repo.process.details.channel.temp.SmsMessageTempReposi
 import com.faas.core.base.repo.process.details.channel.temp.WappMessageTempRepository;
 import com.faas.core.base.repo.process.details.scenario.ProcessScenarioRepository;
 import com.faas.core.base.repo.scenario.content.ScenarioRepository;
-import com.faas.core.base.repo.session.SessionRepository;
+import com.faas.core.base.repo.client.session.SessionRepository;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -169,8 +169,8 @@ public class UtilsSettingsFramework {
             wappCallRepository.deleteAll(wappCallRepository.findBySessionId(sessionDBModel.getId()));
             wappMessageRepository.deleteAll(wappMessageRepository.findBySessionId(sessionDBModel.getId()));
 
-            flowRepository.deleteAll(flowRepository.findBySessionId(sessionDBModel.getId()));
-            inquiryRepository.deleteAll(inquiryRepository.findBySessionId(sessionDBModel.getId()));
+       //     flowRepository.deleteAll(flowRepository.findBySessionId(sessionDBModel.getId()));
+       //     inquiryRepository.deleteAll(inquiryRepository.findBySessionId(sessionDBModel.getId()));
             sessionRepository.delete(sessionDBModel);
         }
     }
@@ -178,7 +178,7 @@ public class UtilsSettingsFramework {
 
     public void removeAllFlowsService() {
 
-        List<FlowDBModel> flowDBModels = flowRepository.findByStatus(1);
+      /*  List<FlowDBModel> flowDBModels = flowRepository.findByStatus(1);
         for (FlowDBModel flowDBModel : flowDBModels) {
 
             operationRepository.deleteAll(operationRepository.findBySessionId(flowDBModel.getId()));
@@ -194,11 +194,14 @@ public class UtilsSettingsFramework {
 
             flowRepository.delete(flowDBModel);
         }
+
+       */
     }
 
 
     public void removeAllInquiriesService() {
 
+        /*
         List<InquiryDBModel> inquiryDBModels = inquiryRepository.findByStatus(1);
         for (InquiryDBModel inquiryDBModel : inquiryDBModels) {
 
@@ -215,6 +218,8 @@ public class UtilsSettingsFramework {
 
             inquiryRepository.delete(inquiryDBModel);
         }
+
+         */
     }
 
 

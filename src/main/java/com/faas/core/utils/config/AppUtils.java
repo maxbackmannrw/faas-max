@@ -1,8 +1,7 @@
 package com.faas.core.utils.config;
 
 import com.faas.core.base.model.db.process.content.ProcessDBModel;
-import com.faas.core.base.model.db.session.SessionDBModel;
-import okhttp3.HttpUrl;
+import com.faas.core.base.model.db.client.session.SessionDBModel;
 import org.springframework.stereotype.Component;
 
 import java.util.Base64;

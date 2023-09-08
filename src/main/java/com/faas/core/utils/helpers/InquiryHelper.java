@@ -5,16 +5,16 @@ import com.faas.core.api.model.ws.inquiry.content.dto.ApiInquiryWSDTO;
 import com.faas.core.api.model.ws.inquiry.content.dto.ApiInquiryDTO;
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.client.content.ClientDBModel;
-import com.faas.core.base.model.db.inquiry.InquiryDBModel;
+import com.faas.core.base.model.db.client.inquiry.InquiryDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
-import com.faas.core.base.model.db.session.SessionDBModel;
+import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.model.db.user.content.UserDBModel;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
-import com.faas.core.base.model.ws.inquiry.dto.InquiryWSDTO;
+import com.faas.core.base.model.ws.client.inquiry.dto.InquiryWSDTO;
 import com.faas.core.base.repo.client.content.ClientRepository;
-import com.faas.core.base.repo.inquiry.InquiryRepository;
+import com.faas.core.base.repo.client.inquiry.InquiryRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
-import com.faas.core.base.repo.session.SessionRepository;
+import com.faas.core.base.repo.client.session.SessionRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,10 +62,10 @@ public class InquiryHelper {
 
         ApiInquiryDTO inquiryWrapper = new ApiInquiryDTO();
         inquiryWrapper.setInquiry(inquiryDBModel);
-        List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndClientId(inquiryDBModel.getSessionId(),inquiryDBModel.getClientId());
-        if (!sessionDBModels.isEmpty()){
-            inquiryWrapper.setInquirySession(sessionDBModels.get(0));
-        }
+        //List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndClientId(inquiryDBModel.getSessionId(),inquiryDBModel.getClientId());
+       // if (!sessionDBModels.isEmpty()){
+        //    inquiryWrapper.setInquirySession(sessionDBModels.get(0));
+        //}
         return inquiryWrapper;
     }
 
@@ -73,8 +73,8 @@ public class InquiryHelper {
     public List<ApiSummaryWSDTO> getApiInquirySummary(long agentId) {
 
         List<ApiSummaryWSDTO> apiSummaryWSDTOS = new ArrayList<>();
-        apiSummaryWSDTOS.add(new ApiSummaryWSDTO(AppConstant.READY_INQUIRY_SUMMARY, String.valueOf(inquiryRepository.countByAgentIdAndInquiryState(agentId,AppConstant.READY_INQUIRY))));
-        apiSummaryWSDTOS.add(new ApiSummaryWSDTO(AppConstant.ACTIVE_INQUIRY_SUMMARY, String.valueOf(inquiryRepository.countByAgentIdAndInquiryState(agentId,AppConstant.ACTIVE_INQUIRY))));
+        //apiSummaryWSDTOS.add(new ApiSummaryWSDTO(AppConstant.READY_INQUIRY_SUMMARY, String.valueOf(inquiryRepository.countByAgentIdAndInquiryState(agentId,AppConstant.READY_INQUIRY))));
+       // apiSummaryWSDTOS.add(new ApiSummaryWSDTO(AppConstant.ACTIVE_INQUIRY_SUMMARY, String.valueOf(inquiryRepository.countByAgentIdAndInquiryState(agentId,AppConstant.ACTIVE_INQUIRY))));
 
         return apiSummaryWSDTOS;
     }
@@ -85,18 +85,7 @@ public class InquiryHelper {
         InquiryDBModel inquiryDBModel = new InquiryDBModel();
 
         inquiryDBModel.setSessionId(sessionDBModel.getId());
-        inquiryDBModel.setClientId(sessionDBModel.getClientId());
-        inquiryDBModel.setClientName(sessionDBModel.getClientName());
-        inquiryDBModel.setPhoneNumber(sessionDBModel.getPhoneNumber());
-        inquiryDBModel.setEmailAddress(sessionDBModel.getEmailAddress());
-        inquiryDBModel.setClientCity(sessionDBModel.getClientCity());
-        inquiryDBModel.setClientCountry(sessionDBModel.getClientCountry());
-        inquiryDBModel.setCampaignId(sessionDBModel.getCampaignId());
-        inquiryDBModel.setCampaign(sessionDBModel.getCampaign());
-        inquiryDBModel.setProcessId(sessionDBModel.getProcessId());
-        inquiryDBModel.setProcess(sessionDBModel.getProcess());
-        inquiryDBModel.setAgentId(sessionDBModel.getAgentId());
-        inquiryDBModel.setAgentName(sessionDBModel.getAgentName());
+
         inquiryDBModel.setInquiryState(AppConstant.NEW_INQUIRY);
         inquiryDBModel.setuDate(appUtils.getCurrentTimeStamp());
         inquiryDBModel.setcDate(appUtils.getCurrentTimeStamp());
@@ -202,10 +191,10 @@ public class InquiryHelper {
 
         ApiInquiryDTO inquiryWrapper = new ApiInquiryDTO();
         inquiryWrapper.setInquiry(inquiryDBModel);
-        List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndClientId(inquiryDBModel.getSessionId(),inquiryDBModel.getClientId());
-        if (!sessionDBModels.isEmpty()){
-            inquiryWrapper.setInquirySession(sessionDBModels.get(0));
-        }
+        //List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndClientId(inquiryDBModel.getSessionId(),inquiryDBModel.getClientId());
+        //if (!sessionDBModels.isEmpty()){
+        //    inquiryWrapper.setInquirySession(sessionDBModels.get(0));
+        // }
         return inquiryWrapper;
     }
 

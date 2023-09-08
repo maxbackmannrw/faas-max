@@ -4,9 +4,9 @@ import com.faas.core.base.framework.campaign.details.client.session.CampaignSess
 import com.faas.core.base.model.ws.campaign.details.client.session.CampaignSessionWSModel;
 import com.faas.core.base.model.ws.campaign.details.client.session.dto.CampaignSessionWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.session.content.SessionRequest;
-import com.faas.core.base.model.ws.session.content.SessionWSModel;
-import com.faas.core.base.model.ws.session.content.dto.SessionWSDTO;
+import com.faas.core.base.model.ws.client.session.content.SessionRequest;
+import com.faas.core.base.model.ws.client.session.content.SessionWSModel;
+import com.faas.core.base.model.ws.client.session.content.dto.SessionWSDTO;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
