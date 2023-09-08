@@ -43,24 +43,6 @@ public class ProcessDetailsFramework {
     }
 
 
-    public ProcessDetailsWSDTO getManualProcessService(String processId) {
-
-        return null;
-    }
-
-
-    public ProcessDetailsWSDTO getInquiryProcessService(String processId) {
-
-        return null;
-    }
-
-
-    public ProcessDetailsWSDTO getAutomaticProcessService(String processId) {
-
-        return null;
-    }
-
-
     public ProcessDataWSDTO fillProcessDataWSDTO(ProcessDataDAO processDataDAO) {
 
         ProcessDataWSDTO processDataWSDTO = new ProcessDataWSDTO();

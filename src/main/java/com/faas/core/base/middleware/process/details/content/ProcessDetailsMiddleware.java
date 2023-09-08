@@ -57,66 +57,6 @@ public class ProcessDetailsMiddleware {
     }
 
 
-    public ProcessDetailsWSModel getManualProcess(long userId, String processId) {
-
-        ProcessDetailsWSModel response = new ProcessDetailsWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-        ProcessDetailsWSDTO processDetailsWSDTO = processDetailsFramework.getManualProcessService(processId);
-        if (processDetailsWSDTO != null){
-            response.setProcessDetails(processDetailsWSDTO);
-        }
-
-        general.setOperation("getManualProcess");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-
-    public ProcessDetailsWSModel getInquiryProcess(long userId, String processId) {
-
-        ProcessDetailsWSModel response = new ProcessDetailsWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-        ProcessDetailsWSDTO processDetailsWSDTO = processDetailsFramework.getInquiryProcessService(processId);
-        if (processDetailsWSDTO != null){
-            response.setProcessDetails(processDetailsWSDTO);
-        }
-
-        general.setOperation("getInquiryProcess");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-
-    public ProcessDetailsWSModel getAutomaticProcess(long userId, String processId) {
-
-        ProcessDetailsWSModel response = new ProcessDetailsWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-        ProcessDetailsWSDTO processDetailsWSDTO = processDetailsFramework.getAutomaticProcessService(processId);
-        if (processDetailsWSDTO != null){
-            response.setProcessDetails(processDetailsWSDTO);
-        }
-
-        general.setOperation("getAutomaticProcess");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-
 
     public ProcessDataWSModel getProcessDatas(long userId, String processId) {
 

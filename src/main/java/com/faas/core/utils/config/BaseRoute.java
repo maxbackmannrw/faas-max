@@ -338,9 +338,6 @@ public class BaseRoute {
 
 
     public static final String GET_PROCESS_DETAILS = "getprocessdetails";
-    public static final String GET_MANUAL_PROCESS = "getmanualprocess";
-    public static final String GET_INQUIRY_PROCESS = "getinquiryprocess";
-    public static final String GET_AUTOMATIC_PROCESS = "getautomaticprocess";
     public static final String GET_PROCESS_DATAS = "getprocessdatas";
     public static final String GET_PROCESS_DATA = "getprocessdata";
     public static final String CREATE_PROCESS_DATA = "createprocessdata";
