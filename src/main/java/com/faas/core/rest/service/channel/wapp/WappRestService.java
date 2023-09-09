@@ -7,8 +7,8 @@ import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.repo.channel.account.WappAccountRepository;
 import com.faas.core.base.repo.operation.channel.WappMessageRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
-import com.faas.core.rest.client.channel.wapp.WappRestClient;
-import com.faas.core.rest.client.utility.UtilityRestClient;
+import com.faas.core.rest.call.channel.wapp.WappRestCall;
+import com.faas.core.rest.call.utility.UtilityRestCall;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,10 +24,10 @@ import java.util.Optional;
 public class WappRestService {
 
     @Autowired
-    WappRestClient wappRestClient;
+    WappRestCall wappRestClient;
 
     @Autowired
-    UtilityRestClient utilityRestClient;
+    UtilityRestCall utilityRestCall;
 
     @Autowired
     ProcessRepository processRepository;
@@ -84,7 +84,7 @@ public class WappRestService {
         if (wappMessageBody.contains(AppConstant.PWA_URL_TAG)) {
             String pwaUrl = appUtils.getSelectedUrl(sessionDBModel,processDBModel,AppConstant.PWA_URL);
             if (pwaUrl != null){
-                Map<String,String> pwaUrlMap = utilityRestClient.urlShortenerRest(pwaUrl);
+                Map<String,String> pwaUrlMap = utilityRestCall.urlShortenerRest(pwaUrl);
                 if (pwaUrlMap != null){
                     wappMessageBody = wappMessageBody.replace(AppConstant.PWA_URL_TAG, appUtils.getValueFromMap(pwaUrlMap,"shortnedUrl"));
                     wappMessageDBModel.getWappMessage().getMessageMaps().putAll(pwaUrlMap);
@@ -94,7 +94,7 @@ public class WappRestService {
         if (wappMessageBody.contains(AppConstant.NATIVE_URL_TAG)) {
             String nativeUrl = appUtils.getSelectedUrl(sessionDBModel,processDBModel,AppConstant.NATIVE_URL);
             if (nativeUrl != null){
-                Map<String,String> nativeUrlMap = utilityRestClient.urlShortenerRest(nativeUrl);
+                Map<String,String> nativeUrlMap = utilityRestCall.urlShortenerRest(nativeUrl);
                 if (nativeUrlMap != null){
                     wappMessageBody = wappMessageBody.replace(AppConstant.NATIVE_URL_TAG, appUtils.getValueFromMap(nativeUrlMap,"shortnedUrl"));
                     wappMessageDBModel.getWappMessage().getMessageMaps().putAll(nativeUrlMap);

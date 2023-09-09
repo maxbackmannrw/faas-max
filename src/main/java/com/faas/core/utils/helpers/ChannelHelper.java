@@ -130,7 +130,6 @@ public class ChannelHelper {
 
     public WappMessageDAO createWappMessageDAO(WappMessageTempDBModel wappMessageTempDBModel, UserDetailsDBModel agentDetails){
 
-
         WappMessageDAO wappMessageDAO = new WappMessageDAO();
         wappMessageDAO.setTempId(wappMessageTempDBModel.getId());
         wappMessageDAO.setAccountId(agentDetails.getWappChannel().getAccountId());

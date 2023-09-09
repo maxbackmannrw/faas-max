@@ -7,8 +7,8 @@ import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.repo.channel.account.SmsAccountRepository;
 import com.faas.core.base.repo.operation.channel.SmsMessageRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
-import com.faas.core.rest.client.channel.sms.SmsMessageRestClient;
-import com.faas.core.rest.client.utility.UtilityRestClient;
+import com.faas.core.rest.call.channel.sms.SmsMessageRestCall;
+import com.faas.core.rest.call.utility.UtilityRestCall;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,10 +24,10 @@ import java.util.Optional;
 public class SmsRestService {
 
     @Autowired
-    UtilityRestClient utilityRestClient;
+    UtilityRestCall utilityRestCall;
 
     @Autowired
-    SmsMessageRestClient smsMessageRestClient;
+    SmsMessageRestCall smsMessageRestCall;
 
     @Autowired
     ProcessRepository processRepository;
@@ -49,7 +49,7 @@ public class SmsRestService {
         Optional<ProcessDBModel> processDBModel = processRepository.findById(sessionDBModel.getProcessId());
         if (smsAccountDBModel.isPresent() && processDBModel.isPresent()) {
             smsMessageDBModel = generateSmsBodyService(sessionDBModel,smsMessageDBModel,smsAccountDBModel.get(),processDBModel.get());
-            smsMessageRestClient.sendSmsMessageRest(smsMessageDBModel,smsAccountDBModel.get());
+            smsMessageRestCall.sendSmsMessageRest(smsMessageDBModel,smsAccountDBModel.get());
         }
     }
 
@@ -63,7 +63,7 @@ public class SmsRestService {
         if (smsMessageBody.contains(AppConstant.PWA_URL_TAG)) {
             String pwaUrl = appUtils.getSelectedUrl(sessionDBModel,processDBModel,AppConstant.PWA_URL);
             if (pwaUrl != null){
-                Map<String,String> pwaUrlMap = utilityRestClient.urlShortenerRest(pwaUrl);
+                Map<String,String> pwaUrlMap = utilityRestCall.urlShortenerRest(pwaUrl);
                 if (pwaUrlMap != null){
                     smsMessageBody = smsMessageBody.replace(AppConstant.PWA_URL_TAG, appUtils.getValueFromMap(pwaUrlMap,"shortnedUrl"));
                     smsMessageDBModel.getSmsMessage().getMessageMaps().putAll(pwaUrlMap);
@@ -73,7 +73,7 @@ public class SmsRestService {
         if (smsMessageBody.contains(AppConstant.NATIVE_URL_TAG)) {
             String nativeUrl = appUtils.getSelectedUrl(sessionDBModel,processDBModel,AppConstant.NATIVE_URL);
             if (nativeUrl != null){
-                Map<String,String> nativeUrlMap = utilityRestClient.urlShortenerRest(nativeUrl);
+                Map<String,String> nativeUrlMap = utilityRestCall.urlShortenerRest(nativeUrl);
                 if (nativeUrlMap != null){
                     smsMessageBody = smsMessageBody.replace(AppConstant.NATIVE_URL_TAG, appUtils.getValueFromMap(nativeUrlMap,"shortnedUrl"));
                     smsMessageDBModel.getSmsMessage().getMessageMaps().putAll(nativeUrlMap);

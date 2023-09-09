@@ -1,9 +1,9 @@
-package com.faas.core.rest.client.channel.sms;
+package com.faas.core.rest.call.channel.sms;
 
 import com.faas.core.base.model.db.channel.account.SmsAccountDBModel;
 import com.faas.core.base.model.db.operation.channel.SmsMessageDBModel;
 import com.faas.core.base.repo.operation.channel.SmsMessageRepository;
-import com.faas.core.rest.client.content.RestClient;
+import com.faas.core.rest.call.content.RestCall;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +15,10 @@ import java.util.Map;
 
 
 @Component
-public class SmsMessageRestClient {
+public class SmsMessageRestCall {
 
     @Autowired
-    RestClient restClient;
+    RestCall restCall;
 
     @Autowired
     SmsMessageRepository smsMessageRepository;
@@ -37,9 +37,9 @@ public class SmsMessageRestClient {
         formData.put("Sid", smsMessageDBModel.getSmsMessage().getSenderId());
         formData.put("mno", smsMessageDBModel.getPhoneNumber());
         formData.put("msg", smsMessageDBModel.getSmsMessage().getSmsBody());
-        String requestUrl = restClient.urlBuilder(smsAccountDBModel.getApiUrl(),"",null);
+        String requestUrl = restCall.urlBuilder(smsAccountDBModel.getApiUrl(),"",null);
 
-        String response = restClient.sendPostFormRequest(requestUrl,formData);
+        String response = restCall.sendPostFormRequest(requestUrl,formData);
         if (response != null){
             smsMessageDBModel.setMessageState(AppConstant.MESSAGE_SENT);
         }else {

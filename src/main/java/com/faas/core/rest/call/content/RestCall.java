@@ -1,4 +1,4 @@
-package com.faas.core.rest.client.content;
+package com.faas.core.rest.call.content;
 
 import okhttp3.*;
 import org.springframework.stereotype.Component;
@@ -8,7 +8,7 @@ import java.util.Map;
 
 
 @Component
-public class RestClient {
+public class RestCall {
 
     private final OkHttpClient client = new OkHttpClient();
 

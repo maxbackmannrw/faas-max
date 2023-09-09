@@ -1,14 +1,13 @@
-package com.faas.core.rest.client.channel.email;
+package com.faas.core.rest.call.channel.email;
 
 import com.faas.core.base.model.db.operation.channel.SipCallDBModel;
 import com.faas.core.utils.config.AppUtils;
-import okhttp3.OkHttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 
 @Component
-public class EmailMessageRestClient {
+public class EmailMessageRestCall {
 
     @Autowired
     AppUtils appUtils;
