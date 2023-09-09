@@ -15,7 +15,7 @@ public class ProcessDBModel {
     private String processDesc;
     private long processTypeId;
     private String processType;
-    private String processBaseType;
+    private String baseType;
     private String processCategory;
     private List<ProcessUrlDAO>processUrls;
     private List<ProcessDataDAO>processDatas;
@@ -29,13 +29,13 @@ public class ProcessDBModel {
     public ProcessDBModel() {
     }
 
-    public ProcessDBModel(String id, String process, String processDesc, long processTypeId, String processType, String processBaseType, String processCategory, List<ProcessUrlDAO> processUrls, List<ProcessDataDAO> processDatas, List<ProcessAssetDAO> processAssets, List<ProcessScriptDAO> processScripts, String processState, long uDate, long cDate, int status) {
+    public ProcessDBModel(String id, String process, String processDesc, long processTypeId, String processType, String baseType, String processCategory, List<ProcessUrlDAO> processUrls, List<ProcessDataDAO> processDatas, List<ProcessAssetDAO> processAssets, List<ProcessScriptDAO> processScripts, String processState, long uDate, long cDate, int status) {
         this.id = id;
         this.process = process;
         this.processDesc = processDesc;
         this.processTypeId = processTypeId;
         this.processType = processType;
-        this.processBaseType = processBaseType;
+        this.baseType = baseType;
         this.processCategory = processCategory;
         this.processUrls = processUrls;
         this.processDatas = processDatas;
@@ -87,12 +87,12 @@ public class ProcessDBModel {
         this.processType = processType;
     }
 
-    public String getProcessBaseType() {
-        return processBaseType;
+    public String getBaseType() {
+        return baseType;
     }
 
-    public void setProcessBaseType(String processBaseType) {
-        this.processBaseType = processBaseType;
+    public void setBaseType(String baseType) {
+        this.baseType = baseType;
     }
 
     public String getProcessCategory() {
