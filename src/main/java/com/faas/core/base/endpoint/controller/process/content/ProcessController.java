@@ -67,10 +67,10 @@ public class ProcessController {
                                            @RequestParam String processDesc,
                                            @RequestParam String pwaUrl,
                                            @RequestParam long processTypeId,
-                                           @RequestParam String category,
+                                           @RequestParam String processCategory,
                                            @RequestParam String processState) {
 
-        ProcessWSModel response = processMiddleware.createProcess(userId,process,processDesc,pwaUrl,processTypeId,category,processState);
+        ProcessWSModel response = processMiddleware.createProcess(userId,process,processDesc,pwaUrl,processTypeId,processCategory,processState);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
