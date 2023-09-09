@@ -77,6 +77,7 @@ public class ProcessFramework {
     public ProcessUrlDAO createProcessUrlDAO(String urlType,String processUrl){
 
         ProcessUrlDAO processUrlDAO = new ProcessUrlDAO();
+
         processUrlDAO.setUrlId(appUtils.generateUUID());
         processUrlDAO.setUrlType(urlType);
         processUrlDAO.setUrl(processUrl);
