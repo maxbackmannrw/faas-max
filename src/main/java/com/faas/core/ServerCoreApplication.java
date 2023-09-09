@@ -7,11 +7,11 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
-@SpringBootApplication
-@EnableMongoRepositories
-@EnableJpaRepositories
-@EnableScheduling
 @EnableAsync
+@EnableScheduling
+@EnableJpaRepositories
+@EnableMongoRepositories
+@SpringBootApplication
 public class ServerCoreApplication {
 
     public static void main(String[] args) {
