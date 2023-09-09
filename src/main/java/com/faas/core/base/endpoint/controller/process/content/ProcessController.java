@@ -36,9 +36,9 @@ public class ProcessController {
 
     @RequestMapping(value = BaseRoute.GET_PROCESSES_BY_CATEGORY, method = RequestMethod.POST)
     public ResponseEntity<?> getProcessesByCategory(@RequestParam long userId,
-                                                    @RequestParam String category) {
+                                                    @RequestParam String processCategory) {
 
-        ProcessWSModel response = processMiddleware.getProcessesByCategory(userId,category);
+        ProcessWSModel response = processMiddleware.getProcessesByCategory(userId,processCategory);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

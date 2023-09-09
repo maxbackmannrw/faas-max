@@ -15,8 +15,8 @@ public class ProcessDBModel {
     private String processDesc;
     private long processTypeId;
     private String processType;
-    private String baseType;
-    private String category;
+    private String processBaseType;
+    private String processCategory;
     private List<ProcessUrlDAO>processUrls;
     private List<ProcessDataDAO>processDatas;
     private List<ProcessAssetDAO>processAssets;
@@ -29,14 +29,14 @@ public class ProcessDBModel {
     public ProcessDBModel() {
     }
 
-    public ProcessDBModel(String id, String process, String processDesc, long processTypeId, String processType, String baseType, String category, List<ProcessUrlDAO> processUrls, List<ProcessDataDAO> processDatas, List<ProcessAssetDAO> processAssets, List<ProcessScriptDAO> processScripts, String processState, long uDate, long cDate, int status) {
+    public ProcessDBModel(String id, String process, String processDesc, long processTypeId, String processType, String processBaseType, String processCategory, List<ProcessUrlDAO> processUrls, List<ProcessDataDAO> processDatas, List<ProcessAssetDAO> processAssets, List<ProcessScriptDAO> processScripts, String processState, long uDate, long cDate, int status) {
         this.id = id;
         this.process = process;
         this.processDesc = processDesc;
         this.processTypeId = processTypeId;
         this.processType = processType;
-        this.baseType = baseType;
-        this.category = category;
+        this.processBaseType = processBaseType;
+        this.processCategory = processCategory;
         this.processUrls = processUrls;
         this.processDatas = processDatas;
         this.processAssets = processAssets;
@@ -87,20 +87,20 @@ public class ProcessDBModel {
         this.processType = processType;
     }
 
-    public String getBaseType() {
-        return baseType;
+    public String getProcessBaseType() {
+        return processBaseType;
     }
 
-    public void setBaseType(String baseType) {
-        this.baseType = baseType;
+    public void setProcessBaseType(String processBaseType) {
+        this.processBaseType = processBaseType;
     }
 
-    public String getCategory() {
-        return category;
+    public String getProcessCategory() {
+        return processCategory;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setProcessCategory(String processCategory) {
+        this.processCategory = processCategory;
     }
 
     public List<ProcessUrlDAO> getProcessUrls() {

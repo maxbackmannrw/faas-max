@@ -55,9 +55,9 @@ public class ProcessFramework {
         if (processTypeDBModel.isPresent()){
             processDBModel.setProcessTypeId(processTypeId);
             processDBModel.setProcessType(processTypeDBModel.get().getProcessType());
-            processDBModel.setBaseType(processTypeDBModel.get().getBaseType());
+            processDBModel.setProcessBaseType(processTypeDBModel.get().getBaseType());
         }
-        processDBModel.setCategory(processCategory);
+        processDBModel.setProcessCategory(processCategory);
         List<ProcessUrlDAO>processUrls = new ArrayList<>();
         if (pwaUrl != null){
             processUrls.add(createProcessUrlDAO(AppConstant.PWA_URL,pwaUrl));

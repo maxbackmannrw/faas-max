@@ -50,13 +50,13 @@ public class ProcessMiddleware {
         return response;
     }
 
-    public ProcessWSModel getProcessesByCategory(long userId, String category) {
+    public ProcessWSModel getProcessesByCategory(long userId, String processCategory) {
 
         ProcessWSModel response = new ProcessWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessWSDTO> processWSDTOS = new ArrayList<>();
 
-        List<ProcessDBModel> processDBModels = processRepository.findByCategory(category);
+        List<ProcessDBModel> processDBModels = processRepository.findByProcessCategory(processCategory);
         for (ProcessDBModel processDBModel : processDBModels) {
             processWSDTOS.add(processFramework.fillProcessWSDTO(processDBModel));
         }

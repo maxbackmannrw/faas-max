@@ -19,9 +19,9 @@ public interface ProcessRepository extends MongoRepository<ProcessDBModel, Strin
 
     List<ProcessDBModel> findByProcessType(String processType);
 
-    List<ProcessDBModel>findByBaseType(String baseType);
+    List<ProcessDBModel>findByProcessBaseType(String baseType);
 
-    List<ProcessDBModel>findByCategory(String category);
+    List<ProcessDBModel>findByProcessCategory(String processCategory);
 
 }
 
