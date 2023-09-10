@@ -4,7 +4,7 @@ import com.faas.core.base.model.db.process.details.trigger.dao.ProcessTriggerDet
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "trigger_table")
+@Document(collection = "process_trigger_table")
 public class ProcessTriggerDBModel {
 
     @Id

@@ -80,10 +80,10 @@ public class ProcessHelper {
         ProcessDetailsWSDTO processDetailsWSDTO = new ProcessDetailsWSDTO();
 
         processDetailsWSDTO.setProcess(processDBModel);
-        processDetailsWSDTO.setProcessScenarios(createProcessScenarioWSDTOS(processDBModel));
         processDetailsWSDTO.setProcessTemps(createProcessTempWSDTO(processDBModel.getId()));
         processDetailsWSDTO.setProcessChannels(createProcessChannelWSDTO(processDBModel.getId()));
         processDetailsWSDTO.setProcessTriggers(createProcessTriggersWSDTOS(processDBModel));
+        processDetailsWSDTO.setProcessScenarios(createProcessScenarioWSDTOS(processDBModel));
         processDetailsWSDTO.setProcessAssets(new ArrayList<>());
 
         return processDetailsWSDTO;

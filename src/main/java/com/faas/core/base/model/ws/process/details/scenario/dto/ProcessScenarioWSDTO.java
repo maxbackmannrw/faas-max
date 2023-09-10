@@ -6,7 +6,7 @@ import com.faas.core.base.model.db.scenario.content.ScenarioDBModel;
 public class ProcessScenarioWSDTO {
 
     private ProcessScenarioDBModel processScenario;
-    public ScenarioDBModel processScenarioDetails;
+    private ScenarioDBModel processScenarioDetails;
 
     public ProcessScenarioWSDTO() {
     }

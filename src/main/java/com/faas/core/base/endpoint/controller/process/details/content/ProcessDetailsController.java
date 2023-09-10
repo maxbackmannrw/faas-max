@@ -38,7 +38,6 @@ public class ProcessDetailsController {
     }
 
 
-
     @RequestMapping(value = BaseRoute.GET_PROCESS_DATAS, method = RequestMethod.POST)
     public ResponseEntity<?> getProcessDatas(@RequestParam long userId,
                                              @RequestParam String processId) {

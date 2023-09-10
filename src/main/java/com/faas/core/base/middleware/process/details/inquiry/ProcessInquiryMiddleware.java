@@ -1,8 +1,9 @@
-package com.faas.core.base.middleware.process.details.flow.content;
+package com.faas.core.base.middleware.process.details.inquiry;
 
-import com.faas.core.base.framework.process.details.flow.content.ProcessFlowFramework;
+import com.faas.core.base.framework.process.details.inquiry.ProcessInquiryFramework;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.process.details.trigger.ProcessTriggerWSModel;
+import com.faas.core.base.model.ws.process.details.flow.ProcessFlowWSModel;
+import com.faas.core.base.model.ws.process.details.inquiry.ProcessInquiryWSModel;
 import com.faas.core.base.model.ws.process.details.trigger.dto.ProcessTriggerWSDTO;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,24 +13,22 @@ import java.util.List;
 
 
 @Component
-public class ProcessFlowMiddleware {
-
+public class ProcessInquiryMiddleware {
 
     @Autowired
-    ProcessFlowFramework processFlowFramework;
+    ProcessInquiryFramework processInquiryFramework;
 
 
-    public ProcessTriggerWSModel getProcessTriggers(long userId, String processId) {
+    public ProcessInquiryWSModel getProcessInquiry(long userId, String processId) {
 
-        ProcessTriggerWSModel response = new ProcessTriggerWSModel();
+        ProcessInquiryWSModel response = new ProcessInquiryWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ProcessTriggerWSDTO> processTriggerWSDTOS = processFlowFramework.getProcessTriggersService(userId,processId);
+        List<ProcessTriggerWSDTO> processTriggerWSDTOS = processInquiryFramework.getProcessInquiryService(userId,processId);
         if (processTriggerWSDTOS != null){
-            response.setProcessTriggers(processTriggerWSDTOS);
         }
 
-        general.setOperation("getProcessTriggers");
+        general.setOperation("getProcessInquiry");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -37,6 +36,7 @@ public class ProcessFlowMiddleware {
 
         return response;
     }
+
 
 
 }
