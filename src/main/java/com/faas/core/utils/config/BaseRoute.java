@@ -358,7 +358,6 @@ public class BaseRoute {
     public static final String REMOVE_PROCESS_SCRIPT = "removeprocessscript";
 
 
-
     public static final String GET_PROCESS_TRIGGERS = "getprocesstriggers";
     public static final String GET_PROCESS_TRIGGERS_BY_TYPE = "getprocesstriggersbytype";
     public static final String GET_TRIGGER = "gettrigger";

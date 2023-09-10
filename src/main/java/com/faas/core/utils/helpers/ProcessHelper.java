@@ -115,7 +115,6 @@ public class ProcessHelper {
     }
 
 
-
     public ProcessScenarioWSDTO mapProcessScenarioWSDTO(ProcessScenarioDBModel processScenarioDBModel){
 
         ProcessScenarioWSDTO processScenarioWSDTO = new ProcessScenarioWSDTO();
@@ -125,7 +124,6 @@ public class ProcessHelper {
 
         return processScenarioWSDTO;
     }
-
 
 
     public ProcessTempWSDTO createProcessTempWSDTO(String processId){
@@ -164,7 +162,6 @@ public class ProcessHelper {
     }
 
 
-
     public ProcessChannelWSDTO createProcessChannelWSDTO(String processId){
 
         ProcessChannelWSDTO processChannelWSDTO = new ProcessChannelWSDTO();
@@ -190,7 +187,6 @@ public class ProcessHelper {
         }
         return processChannelWSDTO;
     }
-
 
 
 

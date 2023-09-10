@@ -46,8 +46,7 @@ public class ProcessController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
-
+    
     @RequestMapping(value = BaseRoute.GET_PROCESS, method = RequestMethod.POST)
     public ResponseEntity<?> getProcess(@RequestParam long userId,
                                         @RequestParam String processId) {
