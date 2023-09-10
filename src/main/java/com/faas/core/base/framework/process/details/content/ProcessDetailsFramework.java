@@ -37,7 +37,6 @@ public class ProcessDetailsFramework {
 
 
     public ProcessDetailsWSDTO getProcessDetailsService(String processId) {
-
         Optional<ProcessDBModel> processDBModel = processRepository.findById(processId);
         return processDBModel.map(dbModel -> processHelper.createProcessDetailsWSDTO(dbModel)).orElse(null);
     }
