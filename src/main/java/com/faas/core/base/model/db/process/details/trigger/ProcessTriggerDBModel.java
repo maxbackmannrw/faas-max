@@ -1,34 +1,34 @@
 package com.faas.core.base.model.db.process.details.trigger;
 
-import com.faas.core.base.model.db.process.details.trigger.dao.TriggerDetails;
+import com.faas.core.base.model.db.process.details.trigger.dao.ProcessTriggerDetails;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "trigger_table")
-public class TriggerDBModel {
+public class ProcessTriggerDBModel {
 
     @Id
     private String id;
     private String processId;
     private String trigger;
-    private TriggerDetails triggerDetails;
-    private long typeId;
-    private String type;
+    private ProcessTriggerDetails triggerDetails;
+    private long triggerTypeId;
+    private String triggerType;
     private String baseType;
     private long uDate;
     private long cDate;
     private int status;
 
-    public TriggerDBModel() {
+    public ProcessTriggerDBModel() {
     }
 
-    public TriggerDBModel(String id, String processId, String trigger, TriggerDetails triggerDetails, long typeId, String type, String baseType, long uDate, long cDate, int status) {
+    public ProcessTriggerDBModel(String id, String processId, String trigger, ProcessTriggerDetails triggerDetails, long triggerTypeId, String triggerType, String baseType, long uDate, long cDate, int status) {
         this.id = id;
         this.processId = processId;
         this.trigger = trigger;
         this.triggerDetails = triggerDetails;
-        this.typeId = typeId;
-        this.type = type;
+        this.triggerTypeId = triggerTypeId;
+        this.triggerType = triggerType;
         this.baseType = baseType;
         this.uDate = uDate;
         this.cDate = cDate;
@@ -59,28 +59,28 @@ public class TriggerDBModel {
         this.trigger = trigger;
     }
 
-    public TriggerDetails getTriggerDetails() {
+    public ProcessTriggerDetails getTriggerDetails() {
         return triggerDetails;
     }
 
-    public void setTriggerDetails(TriggerDetails triggerDetails) {
+    public void setTriggerDetails(ProcessTriggerDetails triggerDetails) {
         this.triggerDetails = triggerDetails;
     }
 
-    public long getTypeId() {
-        return typeId;
+    public long getTriggerTypeId() {
+        return triggerTypeId;
     }
 
-    public void setTypeId(long typeId) {
-        this.typeId = typeId;
+    public void setTriggerTypeId(long triggerTypeId) {
+        this.triggerTypeId = triggerTypeId;
     }
 
-    public String getType() {
-        return type;
+    public String getTriggerType() {
+        return triggerType;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setTriggerType(String triggerType) {
+        this.triggerType = triggerType;
     }
 
     public String getBaseType() {

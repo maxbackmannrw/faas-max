@@ -2,26 +2,20 @@ package com.faas.core.base.model.db.process.details.trigger.dao;
 
 import java.util.List;
 
-public class SmsTriggerDAO {
+public class ProcessAiTriggerDAO {
 
     private String accountId;
     private String account;
-    private String smsTitle;
-    private String smsBody;
-    private String senderId;
-    private List<TriggerDataDAO> triggerDatas;
+    private List<ProcessTriggerDataDAO> triggerDatas;
     private long cDate;
     private int status;
 
-    public SmsTriggerDAO() {
+    public ProcessAiTriggerDAO() {
     }
 
-    public SmsTriggerDAO(String accountId, String account, String smsTitle, String smsBody, String senderId, List<TriggerDataDAO> triggerDatas, long cDate, int status) {
+    public ProcessAiTriggerDAO(String accountId, String account, List<ProcessTriggerDataDAO> triggerDatas, long cDate, int status) {
         this.accountId = accountId;
         this.account = account;
-        this.smsTitle = smsTitle;
-        this.smsBody = smsBody;
-        this.senderId = senderId;
         this.triggerDatas = triggerDatas;
         this.cDate = cDate;
         this.status = status;
@@ -43,35 +37,11 @@ public class SmsTriggerDAO {
         this.account = account;
     }
 
-    public String getSmsTitle() {
-        return smsTitle;
-    }
-
-    public void setSmsTitle(String smsTitle) {
-        this.smsTitle = smsTitle;
-    }
-
-    public String getSmsBody() {
-        return smsBody;
-    }
-
-    public void setSmsBody(String smsBody) {
-        this.smsBody = smsBody;
-    }
-
-    public String getSenderId() {
-        return senderId;
-    }
-
-    public void setSenderId(String senderId) {
-        this.senderId = senderId;
-    }
-
-    public List<TriggerDataDAO> getTriggerDatas() {
+    public List<ProcessTriggerDataDAO> getTriggerDatas() {
         return triggerDatas;
     }
 
-    public void setTriggerDatas(List<TriggerDataDAO> triggerDatas) {
+    public void setTriggerDatas(List<ProcessTriggerDataDAO> triggerDatas) {
         this.triggerDatas = triggerDatas;
     }
 

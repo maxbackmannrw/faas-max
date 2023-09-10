@@ -2,18 +2,18 @@ package com.faas.core.base.model.db.process.details.trigger.dao;
 
 import java.util.List;
 
-public class AiTriggerDAO {
+public class ProcessWappCallTriggerDAO {
 
     private String accountId;
     private String account;
-    private List<TriggerDataDAO> triggerDatas;
+    private List<ProcessTriggerDataDAO> triggerDatas;
     private long cDate;
     private int status;
 
-    public AiTriggerDAO() {
+    public ProcessWappCallTriggerDAO() {
     }
 
-    public AiTriggerDAO(String accountId, String account, List<TriggerDataDAO> triggerDatas, long cDate, int status) {
+    public ProcessWappCallTriggerDAO(String accountId, String account, List<ProcessTriggerDataDAO> triggerDatas, long cDate, int status) {
         this.accountId = accountId;
         this.account = account;
         this.triggerDatas = triggerDatas;
@@ -37,11 +37,11 @@ public class AiTriggerDAO {
         this.account = account;
     }
 
-    public List<TriggerDataDAO> getTriggerDatas() {
+    public List<ProcessTriggerDataDAO> getTriggerDatas() {
         return triggerDatas;
     }
 
-    public void setTriggerDatas(List<TriggerDataDAO> triggerDatas) {
+    public void setTriggerDatas(List<ProcessTriggerDataDAO> triggerDatas) {
         this.triggerDatas = triggerDatas;
     }
 

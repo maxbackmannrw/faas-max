@@ -1,6 +1,6 @@
 package com.faas.core.base.framework.process.details.flow.content;
 
-import com.faas.core.base.model.ws.process.details.trigger.dto.TriggerWSDTO;
+import com.faas.core.base.model.ws.process.details.trigger.dto.ProcessTriggerWSDTO;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -15,7 +15,7 @@ public class ProcessFlowFramework {
     AppUtils appUtils;
 
 
-    public List<TriggerWSDTO> getProcessTriggersService(long userId, String processId) {
+    public List<ProcessTriggerWSDTO> getProcessTriggersService(long userId, String processId) {
 
         return null;
     }

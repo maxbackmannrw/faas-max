@@ -1,6 +1,6 @@
 package com.faas.core.base.model.db.process.details.trigger.dao;
 
-public class TriggerDataDAO {
+public class ProcessTriggerDataDAO {
 
     private String dataId;
     private String dataType;
@@ -8,10 +8,10 @@ public class TriggerDataDAO {
     private long cDate;
     private int status;
 
-    public TriggerDataDAO() {
+    public ProcessTriggerDataDAO() {
     }
 
-    public TriggerDataDAO(String dataId, String dataType, String value, long cDate, int status) {
+    public ProcessTriggerDataDAO(String dataId, String dataType, String value, long cDate, int status) {
         this.dataId = dataId;
         this.dataType = dataType;
         this.value = value;

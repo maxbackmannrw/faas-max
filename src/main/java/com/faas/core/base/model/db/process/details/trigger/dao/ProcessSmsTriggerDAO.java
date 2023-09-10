@@ -2,24 +2,26 @@ package com.faas.core.base.model.db.process.details.trigger.dao;
 
 import java.util.List;
 
-public class WappMessageTriggerDAO {
+public class ProcessSmsTriggerDAO {
 
     private String accountId;
     private String account;
-    private String wappTitle;
-    private String wappBody;
-    private List<TriggerDataDAO> triggerDatas;
+    private String smsTitle;
+    private String smsBody;
+    private String senderId;
+    private List<ProcessTriggerDataDAO> triggerDatas;
     private long cDate;
     private int status;
 
-    public WappMessageTriggerDAO() {
+    public ProcessSmsTriggerDAO() {
     }
 
-    public WappMessageTriggerDAO(String accountId, String account, String wappTitle, String wappBody, List<TriggerDataDAO> triggerDatas, long cDate, int status) {
+    public ProcessSmsTriggerDAO(String accountId, String account, String smsTitle, String smsBody, String senderId, List<ProcessTriggerDataDAO> triggerDatas, long cDate, int status) {
         this.accountId = accountId;
         this.account = account;
-        this.wappTitle = wappTitle;
-        this.wappBody = wappBody;
+        this.smsTitle = smsTitle;
+        this.smsBody = smsBody;
+        this.senderId = senderId;
         this.triggerDatas = triggerDatas;
         this.cDate = cDate;
         this.status = status;
@@ -41,27 +43,35 @@ public class WappMessageTriggerDAO {
         this.account = account;
     }
 
-    public String getWappTitle() {
-        return wappTitle;
+    public String getSmsTitle() {
+        return smsTitle;
     }
 
-    public void setWappTitle(String wappTitle) {
-        this.wappTitle = wappTitle;
+    public void setSmsTitle(String smsTitle) {
+        this.smsTitle = smsTitle;
     }
 
-    public String getWappBody() {
-        return wappBody;
+    public String getSmsBody() {
+        return smsBody;
     }
 
-    public void setWappBody(String wappBody) {
-        this.wappBody = wappBody;
+    public void setSmsBody(String smsBody) {
+        this.smsBody = smsBody;
     }
 
-    public List<TriggerDataDAO> getTriggerDatas() {
+    public String getSenderId() {
+        return senderId;
+    }
+
+    public void setSenderId(String senderId) {
+        this.senderId = senderId;
+    }
+
+    public List<ProcessTriggerDataDAO> getTriggerDatas() {
         return triggerDatas;
     }
 
-    public void setTriggerDatas(List<TriggerDataDAO> triggerDatas) {
+    public void setTriggerDatas(List<ProcessTriggerDataDAO> triggerDatas) {
         this.triggerDatas = triggerDatas;
     }
 

@@ -2,19 +2,19 @@ package com.faas.core.base.model.db.process.details.trigger.dao;
 
 import java.util.List;
 
-public class SipTriggerDAO {
+public class ProcessSipTriggerDAO {
 
     private String accountId;
     private String account;
     private String callerId;
-    private List<TriggerDataDAO> triggerDatas;
+    private List<ProcessTriggerDataDAO> triggerDatas;
     private long cDate;
     private int status;
 
-    public SipTriggerDAO() {
+    public ProcessSipTriggerDAO() {
     }
 
-    public SipTriggerDAO(String accountId, String account, String callerId, List<TriggerDataDAO> triggerDatas, long cDate, int status) {
+    public ProcessSipTriggerDAO(String accountId, String account, String callerId, List<ProcessTriggerDataDAO> triggerDatas, long cDate, int status) {
         this.accountId = accountId;
         this.account = account;
         this.callerId = callerId;
@@ -47,11 +47,11 @@ public class SipTriggerDAO {
         this.callerId = callerId;
     }
 
-    public List<TriggerDataDAO> getTriggerDatas() {
+    public List<ProcessTriggerDataDAO> getTriggerDatas() {
         return triggerDatas;
     }
 
-    public void setTriggerDatas(List<TriggerDataDAO> triggerDatas) {
+    public void setTriggerDatas(List<ProcessTriggerDataDAO> triggerDatas) {
         this.triggerDatas = triggerDatas;
     }
 

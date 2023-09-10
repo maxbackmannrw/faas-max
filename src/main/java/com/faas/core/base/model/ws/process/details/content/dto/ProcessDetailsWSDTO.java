@@ -4,27 +4,27 @@ import com.faas.core.base.model.db.process.content.ProcessDBModel;
 import com.faas.core.base.model.ws.process.details.channel.content.dto.ProcessChannelWSDTO;
 import com.faas.core.base.model.ws.process.details.channel.temp.dto.ProcessTempWSDTO;
 import com.faas.core.base.model.ws.process.details.scenario.dto.ProcessScenarioWSDTO;
-import com.faas.core.base.model.ws.process.details.trigger.dto.TriggerWSDTO;
+import com.faas.core.base.model.ws.process.details.trigger.dto.ProcessTriggerWSDTO;
 
 import java.util.List;
 
 public class ProcessDetailsWSDTO {
 
     private ProcessDBModel process;
-    private List<TriggerWSDTO> processTriggers;
-    private ProcessChannelWSDTO processChannels;
     private ProcessTempWSDTO processTemps;
+    private ProcessChannelWSDTO processChannels;
+    private List<ProcessTriggerWSDTO> processTriggers;
     private List<ProcessScenarioWSDTO> processScenarios;
     private List<ProcessAssetWSDTO>processAssets;
 
     public ProcessDetailsWSDTO() {
     }
 
-    public ProcessDetailsWSDTO(ProcessDBModel process, List<TriggerWSDTO> processTriggers, ProcessChannelWSDTO processChannels, ProcessTempWSDTO processTemps, List<ProcessScenarioWSDTO> processScenarios, List<ProcessAssetWSDTO> processAssets) {
+    public ProcessDetailsWSDTO(ProcessDBModel process, ProcessTempWSDTO processTemps, ProcessChannelWSDTO processChannels, List<ProcessTriggerWSDTO> processTriggers, List<ProcessScenarioWSDTO> processScenarios, List<ProcessAssetWSDTO> processAssets) {
         this.process = process;
-        this.processTriggers = processTriggers;
-        this.processChannels = processChannels;
         this.processTemps = processTemps;
+        this.processChannels = processChannels;
+        this.processTriggers = processTriggers;
         this.processScenarios = processScenarios;
         this.processAssets = processAssets;
     }
@@ -37,12 +37,12 @@ public class ProcessDetailsWSDTO {
         this.process = process;
     }
 
-    public List<TriggerWSDTO> getProcessTriggers() {
-        return processTriggers;
+    public ProcessTempWSDTO getProcessTemps() {
+        return processTemps;
     }
 
-    public void setProcessTriggers(List<TriggerWSDTO> processTriggers) {
-        this.processTriggers = processTriggers;
+    public void setProcessTemps(ProcessTempWSDTO processTemps) {
+        this.processTemps = processTemps;
     }
 
     public ProcessChannelWSDTO getProcessChannels() {
@@ -53,12 +53,12 @@ public class ProcessDetailsWSDTO {
         this.processChannels = processChannels;
     }
 
-    public ProcessTempWSDTO getProcessTemps() {
-        return processTemps;
+    public List<ProcessTriggerWSDTO> getProcessTriggers() {
+        return processTriggers;
     }
 
-    public void setProcessTemps(ProcessTempWSDTO processTemps) {
-        this.processTemps = processTemps;
+    public void setProcessTriggers(List<ProcessTriggerWSDTO> processTriggers) {
+        this.processTriggers = processTriggers;
     }
 
     public List<ProcessScenarioWSDTO> getProcessScenarios() {

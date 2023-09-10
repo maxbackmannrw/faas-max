@@ -2,7 +2,7 @@ package com.faas.core.base.model.db.process.details.trigger.dao;
 
 import java.util.List;
 
-public class EmailTriggerDAO {
+public class ProcessEmailTriggerDAO {
 
     private String accountId;
     private String account;
@@ -10,14 +10,14 @@ public class EmailTriggerDAO {
     private String emailTitle;
     private String emailBody;
     private String emailSender;
-    private List<TriggerDataDAO> triggerDatas;
+    private List<ProcessTriggerDataDAO> triggerDatas;
     private long cDate;
     private int status;
 
-    public EmailTriggerDAO() {
+    public ProcessEmailTriggerDAO() {
     }
 
-    public EmailTriggerDAO(String accountId, String account, String emailSubject, String emailTitle, String emailBody, String emailSender, List<TriggerDataDAO> triggerDatas, long cDate, int status) {
+    public ProcessEmailTriggerDAO(String accountId, String account, String emailSubject, String emailTitle, String emailBody, String emailSender, List<ProcessTriggerDataDAO> triggerDatas, long cDate, int status) {
         this.accountId = accountId;
         this.account = account;
         this.emailSubject = emailSubject;
@@ -77,11 +77,11 @@ public class EmailTriggerDAO {
         this.emailSender = emailSender;
     }
 
-    public List<TriggerDataDAO> getTriggerDatas() {
+    public List<ProcessTriggerDataDAO> getTriggerDatas() {
         return triggerDatas;
     }
 
-    public void setTriggerDatas(List<TriggerDataDAO> triggerDatas) {
+    public void setTriggerDatas(List<ProcessTriggerDataDAO> triggerDatas) {
         this.triggerDatas = triggerDatas;
     }
 
