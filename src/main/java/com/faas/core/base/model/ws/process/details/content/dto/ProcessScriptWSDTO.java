@@ -4,20 +4,20 @@ import com.faas.core.base.model.db.process.content.dao.ProcessScriptDAO;
 
 public class ProcessScriptWSDTO {
 
-    private ProcessScriptDAO callScript;
+    private ProcessScriptDAO processScript;
 
     public ProcessScriptWSDTO() {
     }
 
-    public ProcessScriptWSDTO(ProcessScriptDAO callScript) {
-        this.callScript = callScript;
+    public ProcessScriptWSDTO(ProcessScriptDAO processScript) {
+        this.processScript = processScript;
     }
 
-    public ProcessScriptDAO getCallScript() {
-        return callScript;
+    public ProcessScriptDAO getProcessScript() {
+        return processScript;
     }
 
-    public void setCallScript(ProcessScriptDAO callScript) {
-        this.callScript = callScript;
+    public void setProcessScript(ProcessScriptDAO processScript) {
+        this.processScript = processScript;
     }
 }
