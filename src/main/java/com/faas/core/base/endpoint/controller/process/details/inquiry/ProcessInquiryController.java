@@ -21,7 +21,6 @@ public class ProcessInquiryController {
     @Autowired
     ProcessInquiryMiddleware processInquiryMiddleware;
 
-
     @RequestMapping(value = BaseRoute.GET_PROCESS_INQUIRY, method = RequestMethod.POST)
     public ResponseEntity<?> getProcessInquiry(@RequestParam long userId,
                                                @RequestParam String processId) {
