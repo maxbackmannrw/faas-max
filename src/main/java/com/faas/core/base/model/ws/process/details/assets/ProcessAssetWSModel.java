@@ -1,7 +1,7 @@
-package com.faas.core.base.model.ws.process.details.content;
+package com.faas.core.base.model.ws.process.details.assets;
 
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.process.details.content.dto.ProcessAssetWSDTO;
+import com.faas.core.base.model.ws.process.details.assets.dto.ProcessAssetWSDTO;
 
 import java.util.List;
 

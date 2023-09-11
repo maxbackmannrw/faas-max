@@ -1,7 +1,6 @@
 package com.faas.core.base.middleware.process.details.content;
 
 import com.faas.core.base.framework.process.details.content.ProcessDetailsFramework;
-import com.faas.core.base.model.db.process.content.ProcessDBModel;
 import com.faas.core.base.model.db.process.content.dao.ProcessDataDAO;
 import com.faas.core.base.model.db.process.content.dao.ProcessUrlDAO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
@@ -11,30 +10,20 @@ import com.faas.core.base.model.ws.process.details.content.ProcessUrlWSModel;
 import com.faas.core.base.model.ws.process.details.content.dto.ProcessDataWSDTO;
 import com.faas.core.base.model.ws.process.details.content.dto.ProcessDetailsWSDTO;
 import com.faas.core.base.model.ws.process.details.content.dto.ProcessUrlWSDTO;
-import com.faas.core.base.model.ws.process.details.content.ProcessScriptWSModel;
-import com.faas.core.base.model.ws.process.details.content.dto.ProcessScriptWSDTO;
-import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.utils.config.AppConstant;
-import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 
 @Component
 public class ProcessDetailsMiddleware {
 
+
     @Autowired
     ProcessDetailsFramework processDetailsFramework;
-
-    @Autowired
-    ProcessRepository processRepository;
-
-    @Autowired
-    AppUtils appUtils;
 
 
     public ProcessDetailsWSModel getProcessDetails(long userId, String processId) {
@@ -57,14 +46,11 @@ public class ProcessDetailsMiddleware {
     }
 
 
-
     public ProcessDataWSModel getProcessDatas(long userId, String processId) {
 
         ProcessDataWSModel response = new ProcessDataWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessDataWSDTO> processDataWSDTOS = new ArrayList<>();
-
-        Optional<ProcessDBModel> processDBModel = processRepository.findById(processId);
 
 
         response.setProcessDatas(processDataWSDTOS);
@@ -84,7 +70,6 @@ public class ProcessDetailsMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessDataWSDTO> processDataWSDTOS = new ArrayList<>();
 
-        Optional<ProcessDBModel> processDBModel = processRepository.findById(processId);
 
 
         response.setProcessDatas(processDataWSDTOS);
@@ -141,6 +126,7 @@ public class ProcessDetailsMiddleware {
         return response;
     }
 
+
     public ProcessDataWSModel removeProcessData(long userId,String processId,String dataId) {
 
         ProcessDataWSModel response = new ProcessDataWSModel();
@@ -164,14 +150,12 @@ public class ProcessDetailsMiddleware {
 
 
 
-
     public ProcessUrlWSModel getProcessUrls(long userId,String processId) {
 
         ProcessUrlWSModel response = new ProcessUrlWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessUrlWSDTO>processUrlWSDTOS = new ArrayList<>();
 
-        Optional<ProcessDBModel> processDBModel = processRepository.findById(processId);
 
         response.setProcessUrls(processUrlWSDTOS);
         general.setOperation("getProcessUrls");
@@ -184,14 +168,12 @@ public class ProcessDetailsMiddleware {
     }
 
 
-
     public ProcessUrlWSModel getProcessUrl(long userId,String processId,String urlId) {
 
         ProcessUrlWSModel response = new ProcessUrlWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessUrlWSDTO>processUrlWSDTOS = new ArrayList<>();
 
-        Optional<ProcessDBModel> processDBModel = processRepository.findById(processId);
 
 
         response.setProcessUrls(processUrlWSDTOS);
@@ -203,7 +185,6 @@ public class ProcessDetailsMiddleware {
 
         return response;
     }
-
 
 
     public ProcessUrlWSModel createProcessUrl(long userId,String processId,String urlType,String url) {
@@ -228,7 +209,6 @@ public class ProcessDetailsMiddleware {
     }
 
 
-
     public ProcessUrlWSModel updateProcessUrl(long userId,String processId,String urlId,String urlType,String url) {
 
         ProcessUrlWSModel response = new ProcessUrlWSModel();
@@ -249,7 +229,6 @@ public class ProcessDetailsMiddleware {
 
         return response;
     }
-
 
 
     public ProcessUrlWSModel removeProcessUrl(long userId,String processId, String urlId) {
@@ -274,113 +253,5 @@ public class ProcessDetailsMiddleware {
     }
 
 
-
-    public ProcessScriptWSModel getProcessScripts(long userId, String processId) {
-
-        ProcessScriptWSModel response = new ProcessScriptWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-        List<ProcessScriptWSDTO> processScriptWSDTOS = processDetailsFramework.getProcessScriptsService(processId);
-        if (processScriptWSDTOS != null){
-            response.setProcessScripts(processScriptWSDTOS);
-        }
-
-        general.setOperation("getProcessScripts");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-
-    public ProcessScriptWSModel getProcessScript(long userId, String processId, String scriptId) {
-
-        ProcessScriptWSModel response = new ProcessScriptWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-        List<ProcessScriptWSDTO> processScriptWSDTOS = new ArrayList<>();
-
-        ProcessScriptWSDTO processScriptWSDTO = processDetailsFramework.getProcessScriptService(processId,scriptId);
-        if (processScriptWSDTO != null){
-            processScriptWSDTOS.add(processScriptWSDTO);
-        }
-
-        response.setProcessScripts(processScriptWSDTOS);
-        general.setOperation("getProcessScript");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-
-    public ProcessScriptWSModel createProcessScript(long userId,String processId,String scriptTitle,String scriptBody,int order) {
-
-        ProcessScriptWSModel response = new ProcessScriptWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-        List<ProcessScriptWSDTO> processScriptWSDTOS = new ArrayList<>();
-
-        ProcessScriptWSDTO processScriptWSDTO = processDetailsFramework.createProcessScriptService(processId,scriptTitle,scriptBody,order);
-        if (processScriptWSDTO != null){
-            processScriptWSDTOS.add(processScriptWSDTO);
-        }
-
-        response.setProcessScripts(processScriptWSDTOS);
-        general.setOperation("createProcessScript");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-
-
-    public ProcessScriptWSModel updateProcessScript(long userId,String processId, String scriptId, String scriptTitle, String scriptBody, int order) {
-
-        ProcessScriptWSModel response = new ProcessScriptWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-        List<ProcessScriptWSDTO> processScriptWSDTOS = new ArrayList<>();
-
-        ProcessScriptWSDTO processScriptWSDTO = processDetailsFramework.updateProcessScriptService(processId,scriptId,scriptTitle,scriptBody,order);
-        if (processScriptWSDTO != null){
-            processScriptWSDTOS.add(processScriptWSDTO);
-        }
-
-        response.setProcessScripts(processScriptWSDTOS);
-        general.setOperation("updateProcessScript");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-
-    public ProcessScriptWSModel removeProcessScript(long userId, String processId, String scriptId) {
-
-        ProcessScriptWSModel response = new ProcessScriptWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-        List<ProcessScriptWSDTO> processScriptWSDTOS = new ArrayList<>();
-
-        ProcessScriptWSDTO processScriptWSDTO = processDetailsFramework.removeProcessScriptService(processId,scriptId);
-        if (processScriptWSDTO != null){
-            processScriptWSDTOS.add(processScriptWSDTO);
-        }
-
-        response.setProcessScripts(processScriptWSDTOS);
-        general.setOperation("removeProcessScript");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
 
 }

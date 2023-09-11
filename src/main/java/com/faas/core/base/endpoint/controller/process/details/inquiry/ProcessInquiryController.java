@@ -1,7 +1,6 @@
 package com.faas.core.base.endpoint.controller.process.details.inquiry;
 
 import com.faas.core.base.middleware.process.details.inquiry.ProcessInquiryMiddleware;
-import com.faas.core.base.model.ws.process.details.flow.ProcessFlowWSModel;
 import com.faas.core.base.model.ws.process.details.inquiry.ProcessInquiryWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
@@ -21,6 +20,7 @@ public class ProcessInquiryController {
 
     @Autowired
     ProcessInquiryMiddleware processInquiryMiddleware;
+
 
     @RequestMapping(value = BaseRoute.GET_PROCESS_INQUIRY, method = RequestMethod.POST)
     public ResponseEntity<?> getProcessInquiry(@RequestParam long userId,
