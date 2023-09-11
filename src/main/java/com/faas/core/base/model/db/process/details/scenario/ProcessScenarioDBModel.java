@@ -16,6 +16,7 @@ public class ProcessScenarioDBModel {
     private String scenarioId;
     private List<ProcessScenarioDataDAO> scenarioDatas;
     private int order;
+    private String sort;
     private long uDate;
     private long cDate;
     private int status;
@@ -23,12 +24,13 @@ public class ProcessScenarioDBModel {
     public ProcessScenarioDBModel() {
     }
 
-    public ProcessScenarioDBModel(String id, String processId, String scenarioId, List<ProcessScenarioDataDAO> scenarioDatas, int order, long uDate, long cDate, int status) {
+    public ProcessScenarioDBModel(String id, String processId, String scenarioId, List<ProcessScenarioDataDAO> scenarioDatas, int order, String sort, long uDate, long cDate, int status) {
         this.id = id;
         this.processId = processId;
         this.scenarioId = scenarioId;
         this.scenarioDatas = scenarioDatas;
         this.order = order;
+        this.sort = sort;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
@@ -72,6 +74,14 @@ public class ProcessScenarioDBModel {
 
     public void setOrder(int order) {
         this.order = order;
+    }
+
+    public String getSort() {
+        return sort;
+    }
+
+    public void setSort(String sort) {
+        this.sort = sort;
     }
 
     public long getuDate() {
