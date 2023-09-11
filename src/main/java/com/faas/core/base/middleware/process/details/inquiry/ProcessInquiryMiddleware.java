@@ -2,7 +2,6 @@ package com.faas.core.base.middleware.process.details.inquiry;
 
 import com.faas.core.base.framework.process.details.inquiry.ProcessInquiryFramework;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.process.details.flow.ProcessFlowWSModel;
 import com.faas.core.base.model.ws.process.details.inquiry.ProcessInquiryWSModel;
 import com.faas.core.base.model.ws.process.details.trigger.dto.ProcessTriggerWSDTO;
 import com.faas.core.utils.config.AppConstant;
@@ -14,6 +13,7 @@ import java.util.List;
 
 @Component
 public class ProcessInquiryMiddleware {
+
 
     @Autowired
     ProcessInquiryFramework processInquiryFramework;
