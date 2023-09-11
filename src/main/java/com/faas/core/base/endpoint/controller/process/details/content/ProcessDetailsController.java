@@ -216,11 +216,11 @@ public class ProcessDetailsController {
     @RequestMapping(value = BaseRoute.CREATE_PROCESS_SCRIPT, method = RequestMethod.POST)
     public ResponseEntity<?> createProcessScript(@RequestParam long userId,
                                                  @RequestParam String processId,
-                                                 @RequestParam int scriptOrder,
                                                  @RequestParam String scriptTitle,
-                                                 @RequestParam String scriptBody) {
+                                                 @RequestParam String scriptBody,
+                                                 @RequestParam int order) {
 
-        ProcessScriptWSModel response = processDetailsMiddleware.createProcessScript(userId,processId,scriptOrder,scriptTitle,scriptBody);
+        ProcessScriptWSModel response = processDetailsMiddleware.createProcessScript(userId,processId,scriptTitle,scriptBody,order);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -233,11 +233,11 @@ public class ProcessDetailsController {
     public ResponseEntity<?> updateProcessScript(@RequestParam long userId,
                                                  @RequestParam String processId,
                                                  @RequestParam String scriptId,
-                                                 @RequestParam int scriptOrder,
                                                  @RequestParam String scriptTitle,
-                                                 @RequestParam String scriptBody) {
+                                                 @RequestParam String scriptBody,
+                                                 @RequestParam int order) {
 
-        ProcessScriptWSModel response = processDetailsMiddleware.updateProcessScript(userId,processId,scriptId,scriptOrder,scriptTitle,scriptBody);
+        ProcessScriptWSModel response = processDetailsMiddleware.updateProcessScript(userId,processId,scriptId,scriptTitle,scriptBody,order);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

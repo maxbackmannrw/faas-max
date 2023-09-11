@@ -211,16 +211,16 @@ public class ProcessDetailsFramework {
     }
 
 
-    public ProcessScriptWSDTO createProcessScriptService(String processId, int scriptOrder, String scriptTitle, String scriptBody) {
+    public ProcessScriptWSDTO createProcessScriptService(String processId,String scriptTitle,String scriptBody,int order) {
 
         Optional<ProcessDBModel> processDBModel = processRepository.findById(processId);
         if (processDBModel.isPresent()) {
 
             ProcessScriptDAO processScriptDAO = new ProcessScriptDAO();
             processScriptDAO.setScriptId(appUtils.generateUUID());
-            processScriptDAO.setScriptOrder(scriptOrder);
             processScriptDAO.setScriptTitle(scriptTitle);
             processScriptDAO.setScriptBody(scriptBody);
+            processScriptDAO.setOrder(order);
             processScriptDAO.setcDate(appUtils.getCurrentTimeStamp());
             processScriptDAO.setStatus(1);
 
@@ -240,16 +240,16 @@ public class ProcessDetailsFramework {
     }
 
 
-    public ProcessScriptWSDTO updateProcessScriptService(String processId, String scriptId, int scriptOrder, String scriptTitle, String scriptBody) {
+    public ProcessScriptWSDTO updateProcessScriptService(String processId, String scriptId, String scriptTitle, String scriptBody, int order) {
 
         Optional<ProcessDBModel> processDBModel = processRepository.findById(processId);
         if (processDBModel.isPresent() && processDBModel.get().getProcessScripts() != null) {
             for (int i=0;i<processDBModel.get().getProcessScripts().size();i++){
                 if (processDBModel.get().getProcessScripts().get(i).getScriptId().equalsIgnoreCase(scriptId)){
 
-                    processDBModel.get().getProcessScripts().get(i).setScriptOrder(scriptOrder);
                     processDBModel.get().getProcessScripts().get(i).setScriptTitle(scriptTitle);
                     processDBModel.get().getProcessScripts().get(i).setScriptBody(scriptBody);
+                    processDBModel.get().getProcessScripts().get(i).setOrder(order);
                     processDBModel.get().getProcessScripts().get(i).setcDate(appUtils.getCurrentTimeStamp());
 
                     processDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
@@ -281,6 +281,7 @@ public class ProcessDetailsFramework {
         }
         return null;
     }
+
 
 
 }
