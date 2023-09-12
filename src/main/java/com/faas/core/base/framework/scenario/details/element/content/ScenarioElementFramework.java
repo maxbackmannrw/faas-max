@@ -1,14 +1,14 @@
 package com.faas.core.base.framework.scenario.details.element.content;
 
-import com.faas.core.base.model.db.action.ActionTempDBModel;
-import com.faas.core.base.model.db.automation.content.AutomationTempDBModel;
+import com.faas.core.base.model.db.scenario.temp.ActionTempDBModel;
+import com.faas.core.base.model.db.scenario.temp.AutomationTempDBModel;
 import com.faas.core.base.model.db.scenario.content.ScenarioDBModel;
 import com.faas.core.base.model.db.scenario.content.dao.ActionDAO;
 import com.faas.core.base.model.db.scenario.content.dao.AutomationDAO;
 import com.faas.core.base.model.db.scenario.content.dao.ScenarioElement;
 import com.faas.core.base.model.ws.scenario.details.element.content.dto.ScenarioElementWSDTO;
-import com.faas.core.base.repo.action.ActionTempRepository;
-import com.faas.core.base.repo.automation.content.AutomationTempRepository;
+import com.faas.core.base.repo.scenario.temp.ActionTempRepository;
+import com.faas.core.base.repo.scenario.temp.AutomationTempRepository;
 import com.faas.core.base.repo.scenario.content.ScenarioRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;

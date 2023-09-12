@@ -1,6 +1,7 @@
 package com.faas.core.base.endpoint.controller.scenario.settings;
 
 import com.faas.core.base.middleware.scenario.settings.ScenarioSettingsMiddleware;
+import com.faas.core.base.model.ws.scenario.settings.AutomationTypeWSModel;
 import com.faas.core.base.model.ws.scenario.settings.ScenarioTypeWSModel;
 import com.faas.core.base.model.ws.scenario.settings.VariableTypeWSModel;
 import com.faas.core.utils.config.AppConstant;
@@ -82,6 +83,74 @@ public class ScenarioSettingsController {
                                                 @RequestParam long typeId) {
 
         ScenarioTypeWSModel response = scenarioSettingsMiddleware.removeScenarioType(userId, typeId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+
+    @RequestMapping(value = BaseRoute.GET_AUTOMATION_TYPES, method = RequestMethod.POST)
+    public ResponseEntity<?> getAutomationTypes(@RequestParam long userId) {
+
+        AutomationTypeWSModel response = scenarioSettingsMiddleware.getAutomationTypes(userId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = BaseRoute.GET_AUTOMATION_TYPE, method = RequestMethod.POST)
+    public ResponseEntity<?> getAutomationType(@RequestParam long userId,
+                                               @RequestParam long typeId) {
+
+        AutomationTypeWSModel response = scenarioSettingsMiddleware.getAutomationType(userId,typeId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = BaseRoute.CREATE_AUTOMATION_TYPE, method = RequestMethod.POST)
+    public ResponseEntity<?> createAutomationType(@RequestParam long userId,
+                                                  @RequestParam String automationType,
+                                                  @RequestParam String baseType) {
+
+        AutomationTypeWSModel response = scenarioSettingsMiddleware.createAutomationType(userId,automationType,baseType);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = BaseRoute.UPDATE_AUTOMATION_TYPE, method = RequestMethod.POST)
+    public ResponseEntity<?> updateAutomationType(@RequestParam long userId,
+                                                  @RequestParam long typeId,
+                                                  @RequestParam String automationType,
+                                                  @RequestParam String baseType) {
+
+        AutomationTypeWSModel response = scenarioSettingsMiddleware.updateAutomationType(userId,typeId,automationType,baseType);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = BaseRoute.REMOVE_AUTOMATION_TYPE, method = RequestMethod.POST)
+    public ResponseEntity<?> removeAutomationType(@RequestParam long userId,
+                                                  @RequestParam long typeId) {
+
+        AutomationTypeWSModel response = scenarioSettingsMiddleware.removeAutomationType(userId,typeId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

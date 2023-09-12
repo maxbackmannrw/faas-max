@@ -4,7 +4,7 @@ import com.faas.core.base.model.db.scenario.content.ScenarioDBModel;
 import com.faas.core.base.model.db.scenario.content.dao.ScenarioVariableDAO;
 import com.faas.core.base.model.db.scenario.settings.VariableTypeDBModel;
 import com.faas.core.base.model.ws.scenario.details.content.dto.ScenarioVariableWSDTO;
-import com.faas.core.base.repo.action.ActionTempRepository;
+import com.faas.core.base.repo.scenario.temp.ActionTempRepository;
 import com.faas.core.base.repo.scenario.content.ScenarioRepository;
 import com.faas.core.base.repo.scenario.settings.VariableTypeRepository;
 import com.faas.core.utils.config.AppUtils;

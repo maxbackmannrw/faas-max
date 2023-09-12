@@ -1,7 +1,7 @@
 package com.faas.core.base.framework.utils.settings;
 
 import com.faas.core.base.model.db.client.session.SessionDBModel;
-import com.faas.core.base.repo.action.ActionTempRepository;
+import com.faas.core.base.repo.scenario.temp.ActionTempRepository;
 import com.faas.core.base.repo.assets.content.AssetRepository;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
