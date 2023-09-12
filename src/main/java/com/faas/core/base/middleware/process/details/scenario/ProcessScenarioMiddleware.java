@@ -63,13 +63,13 @@ public class ProcessScenarioMiddleware {
     }
 
 
-    public ProcessScenarioWSModel createProcessScenario(long userId,String processId,String scenarioId,int order) {
+    public ProcessScenarioWSModel createProcessScenario(long userId,String processId,String scenarioId,String scenarioSort,int scenarioOrder) {
 
         ProcessScenarioWSModel response = new ProcessScenarioWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessScenarioWSDTO>processScenarioWSDTOS = new ArrayList<>();
 
-        ProcessScenarioWSDTO processScenarioWSDTO = processScenarioFramework.createProcessScenarioService(processId,scenarioId,order);
+        ProcessScenarioWSDTO processScenarioWSDTO = processScenarioFramework.createProcessScenarioService(processId,scenarioId,scenarioSort,scenarioOrder);
         if (processScenarioWSDTO != null){
             processScenarioWSDTOS.add(processScenarioWSDTO);
         }

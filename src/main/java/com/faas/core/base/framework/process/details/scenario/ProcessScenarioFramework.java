@@ -73,7 +73,7 @@ public class ProcessScenarioFramework {
     }
 
 
-    public ProcessScenarioWSDTO createProcessScenarioService(String processId, String scenarioId,int order) {
+    public ProcessScenarioWSDTO createProcessScenarioService(String processId,String scenarioId,String scenarioSort,int scenarioOrder) {
 
         Optional<ProcessDBModel> processDBModel = processRepository.findById(processId);
         Optional<ScenarioDBModel> scenarioDBModel = scenarioRepository.findById(scenarioId);
@@ -81,11 +81,11 @@ public class ProcessScenarioFramework {
         if (!processScenarioRepository.existsByProcessIdAndScenarioId(processId,scenarioId) && processDBModel.isPresent() && scenarioDBModel.isPresent()) {
 
             ProcessScenarioDBModel processScenarioDBModel = new ProcessScenarioDBModel();
-
             processScenarioDBModel.setProcessId(processId);
             processScenarioDBModel.setScenarioId(scenarioId);
             processScenarioDBModel.setScenarioDatas(new ArrayList<>());
-            processScenarioDBModel.setOrder(order);
+            processScenarioDBModel.setScenarioSort(scenarioSort);
+            processScenarioDBModel.setScenarioOrder(scenarioOrder);
             processScenarioDBModel.setuDate(appUtils.getCurrentTimeStamp());
             processScenarioDBModel.setcDate(appUtils.getCurrentTimeStamp());
             processScenarioDBModel.setStatus(1);
