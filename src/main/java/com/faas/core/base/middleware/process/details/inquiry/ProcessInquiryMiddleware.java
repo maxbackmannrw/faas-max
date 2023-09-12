@@ -38,5 +38,197 @@ public class ProcessInquiryMiddleware {
     }
 
 
+    public ProcessInquiryWSModel getProcessInquiryDatas(long userId, String processId) {
+
+        ProcessInquiryWSModel response = new ProcessInquiryWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        List<ProcessTriggerWSDTO> processTriggerWSDTOS = processInquiryFramework.getProcessInquiryService(userId,processId);
+        if (processTriggerWSDTOS != null){
+        }
+
+        general.setOperation("getProcessInquiryDatas");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
+    public ProcessInquiryWSModel getProcessInquiryData(long userId, String processId) {
+
+        ProcessInquiryWSModel response = new ProcessInquiryWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        List<ProcessTriggerWSDTO> processTriggerWSDTOS = processInquiryFramework.getProcessInquiryService(userId,processId);
+        if (processTriggerWSDTOS != null){
+        }
+
+        general.setOperation("getProcessInquiryData");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
+    public ProcessInquiryWSModel createProcessInquiryData(long userId, String processId) {
+
+        ProcessInquiryWSModel response = new ProcessInquiryWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        List<ProcessTriggerWSDTO> processTriggerWSDTOS = processInquiryFramework.getProcessInquiryService(userId,processId);
+        if (processTriggerWSDTOS != null){
+        }
+
+        general.setOperation("createProcessInquiryData");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
+    public ProcessInquiryWSModel updateProcessInquiryData(long userId, String processId) {
+
+        ProcessInquiryWSModel response = new ProcessInquiryWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        List<ProcessTriggerWSDTO> processTriggerWSDTOS = processInquiryFramework.getProcessInquiryService(userId,processId);
+        if (processTriggerWSDTOS != null){
+        }
+
+        general.setOperation("updateProcessInquiryData");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
+    public ProcessInquiryWSModel removeProcessInquiryData(long userId, String processId) {
+
+        ProcessInquiryWSModel response = new ProcessInquiryWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        List<ProcessTriggerWSDTO> processTriggerWSDTOS = processInquiryFramework.getProcessInquiryService(userId,processId);
+        if (processTriggerWSDTOS != null){
+        }
+
+        general.setOperation("removeProcessInquiryData");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
+
+
+    public ProcessInquiryWSModel getProcessInquiryUrls(long userId, String processId) {
+
+        ProcessInquiryWSModel response = new ProcessInquiryWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        List<ProcessTriggerWSDTO> processTriggerWSDTOS = processInquiryFramework.getProcessInquiryService(userId,processId);
+        if (processTriggerWSDTOS != null){
+        }
+
+        general.setOperation("getProcessInquiryUrls");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
+    public ProcessInquiryWSModel getProcessInquiryUrl(long userId, String processId) {
+
+        ProcessInquiryWSModel response = new ProcessInquiryWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        List<ProcessTriggerWSDTO> processTriggerWSDTOS = processInquiryFramework.getProcessInquiryService(userId,processId);
+        if (processTriggerWSDTOS != null){
+        }
+
+        general.setOperation("getProcessInquiryUrl");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
+    public ProcessInquiryWSModel createProcessInquiryUrl(long userId, String processId) {
+
+        ProcessInquiryWSModel response = new ProcessInquiryWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        List<ProcessTriggerWSDTO> processTriggerWSDTOS = processInquiryFramework.getProcessInquiryService(userId,processId);
+        if (processTriggerWSDTOS != null){
+        }
+
+        general.setOperation("createProcessInquiryUrl");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
+    public ProcessInquiryWSModel updateProcessInquiryUrl(long userId, String processId) {
+
+        ProcessInquiryWSModel response = new ProcessInquiryWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        List<ProcessTriggerWSDTO> processTriggerWSDTOS = processInquiryFramework.getProcessInquiryService(userId,processId);
+        if (processTriggerWSDTOS != null){
+        }
+
+        general.setOperation("updateProcessInquiryUrl");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
+    public ProcessInquiryWSModel removeProcessInquiryUrl(long userId, String processId) {
+
+        ProcessInquiryWSModel response = new ProcessInquiryWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        List<ProcessTriggerWSDTO> processTriggerWSDTOS = processInquiryFramework.getProcessInquiryService(userId,processId);
+        if (processTriggerWSDTOS != null){
+        }
+
+        general.setOperation("removeProcessInquiryUrl");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
 
 }

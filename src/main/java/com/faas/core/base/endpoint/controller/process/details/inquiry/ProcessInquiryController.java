@@ -21,11 +21,142 @@ public class ProcessInquiryController {
     @Autowired
     ProcessInquiryMiddleware processInquiryMiddleware;
 
+
     @RequestMapping(value = BaseRoute.GET_PROCESS_INQUIRY, method = RequestMethod.POST)
     public ResponseEntity<?> getProcessInquiry(@RequestParam long userId,
                                                @RequestParam String processId) {
 
         ProcessInquiryWSModel response = processInquiryMiddleware.getProcessInquiry(userId,processId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = BaseRoute.GET_PROCESS_INQUIRY_DATAS, method = RequestMethod.POST)
+    public ResponseEntity<?> getProcessInquiryDatas(@RequestParam long userId,
+                                                    @RequestParam String processId) {
+
+        ProcessInquiryWSModel response = processInquiryMiddleware.getProcessInquiryDatas(userId,processId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = BaseRoute.GET_PROCESS_INQUIRY_DATA, method = RequestMethod.POST)
+    public ResponseEntity<?> getProcessInquiryData(@RequestParam long userId,
+                                                   @RequestParam String processId) {
+
+        ProcessInquiryWSModel response = processInquiryMiddleware.getProcessInquiryData(userId,processId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = BaseRoute.CREATE_PROCESS_INQUIRY_DATA, method = RequestMethod.POST)
+    public ResponseEntity<?> createProcessInquiryData(@RequestParam long userId,
+                                                      @RequestParam String processId) {
+
+        ProcessInquiryWSModel response = processInquiryMiddleware.createProcessInquiryData(userId,processId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = BaseRoute.UPDATE_PROCESS_INQUIRY_DATA, method = RequestMethod.POST)
+    public ResponseEntity<?> updateProcessInquiryData(@RequestParam long userId,
+                                                      @RequestParam String processId) {
+
+        ProcessInquiryWSModel response = processInquiryMiddleware.updateProcessInquiryData(userId,processId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = BaseRoute.REMOVE_PROCESS_INQUIRY_DATA, method = RequestMethod.POST)
+    public ResponseEntity<?> removeProcessInquiryData(@RequestParam long userId,
+                                                      @RequestParam String processId) {
+
+        ProcessInquiryWSModel response = processInquiryMiddleware.removeProcessInquiryData(userId,processId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = BaseRoute.GET_PROCESS_INQUIRY_URLS, method = RequestMethod.POST)
+    public ResponseEntity<?> getProcessInquiryUrls(@RequestParam long userId,
+                                                   @RequestParam String processId) {
+
+        ProcessInquiryWSModel response = processInquiryMiddleware.getProcessInquiryUrls(userId,processId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = BaseRoute.GET_PROCESS_INQUIRY_URL, method = RequestMethod.POST)
+    public ResponseEntity<?> getProcessInquiryUrl(@RequestParam long userId,
+                                                  @RequestParam String processId) {
+
+        ProcessInquiryWSModel response = processInquiryMiddleware.getProcessInquiryUrl(userId,processId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = BaseRoute.CREATE_PROCESS_INQUIRY_URL, method = RequestMethod.POST)
+    public ResponseEntity<?> createProcessInquiryUrl(@RequestParam long userId,
+                                                     @RequestParam String processId) {
+
+        ProcessInquiryWSModel response = processInquiryMiddleware.createProcessInquiryUrl(userId,processId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = BaseRoute.UPDATE_PROCESS_INQUIRY_URL, method = RequestMethod.POST)
+    public ResponseEntity<?> updateProcessInquiryUrl(@RequestParam long userId,
+                                                     @RequestParam String processId) {
+
+        ProcessInquiryWSModel response = processInquiryMiddleware.updateProcessInquiryUrl(userId,processId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = BaseRoute.REMOVE_PROCESS_INQUIRY_URL, method = RequestMethod.POST)
+    public ResponseEntity<?> removeProcessInquiryUrl(@RequestParam long userId,
+                                                     @RequestParam String processId) {
+
+        ProcessInquiryWSModel response = processInquiryMiddleware.removeProcessInquiryUrl(userId,processId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

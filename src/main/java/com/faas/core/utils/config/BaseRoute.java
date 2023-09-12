@@ -361,8 +361,33 @@ public class BaseRoute {
 
     public static final String GET_PROCESS_INQUIRY = "getprocessinquiry";
 
+    public static final String GET_PROCESS_INQUIRY_DATAS = "getprocessinquirydatas";
+    public static final String GET_PROCESS_INQUIRY_DATA = "getprocessinquirydata";
+    public static final String CREATE_PROCESS_INQUIRY_DATA = "createprocessinquirydata";
+    public static final String UPDATE_PROCESS_INQUIRY_DATA = "updateprocessinquirydata";
+    public static final String REMOVE_PROCESS_INQUIRY_DATA = "removeprocessinquirydata";
+
+    public static final String GET_PROCESS_INQUIRY_URLS = "getprocessinquiryurls";
+    public static final String GET_PROCESS_INQUIRY_URL = "getprocessinquiryurl";
+    public static final String CREATE_PROCESS_INQUIRY_URL = "createprocessinquiryurl";
+    public static final String UPDATE_PROCESS_INQUIRY_URL = "updateprocessinquiryurl";
+    public static final String REMOVE_PROCESS_INQUIRY_URL = "removeprocessinquiryurl";
+
+
 
     public static final String GET_PROCESS_FLOW = "getprocessflow";
+
+    public static final String GET_PROCESS_FLOW_DATAS = "getprocessflowdatas";
+    public static final String GET_PROCESS_FLOW_DATA = "getprocessflowdata";
+    public static final String CREATE_PROCESS_FLOW_DATA = "createprocessflowdata";
+    public static final String UPDATE_PROCESS_FLOW_DATA = "updateprocessflowdata";
+    public static final String REMOVE_PROCESS_FLOW_DATA = "removeprocessflowdata";
+
+    public static final String GET_PROCESS_FLOW_URLS = "getprocessflowurls";
+    public static final String GET_PROCESS_FLOW_URL = "getprocessflowurl";
+    public static final String CREATE_PROCESS_FLOW_URL = "createprocessflowurl";
+    public static final String UPDATE_PROCESS_FLOW_URL = "updateprocessflowurl";
+    public static final String REMOVE_PROCESS_FLOW_URL = "removeprocessflowurl";
 
 
 
