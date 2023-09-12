@@ -80,7 +80,6 @@ public class ProcessScenarioController {
     }
 
 
-
     @RequestMapping(value = BaseRoute.GET_PROCESS_SCENARIO_DATAS, method = RequestMethod.POST)
     public ResponseEntity<?> getProcessScenarioDatas(@RequestParam long userId,
                                                      @RequestParam String processId,
