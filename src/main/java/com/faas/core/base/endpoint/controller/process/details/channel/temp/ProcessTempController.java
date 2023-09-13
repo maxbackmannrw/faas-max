@@ -35,7 +35,6 @@ public class ProcessTempController {
     }
 
 
-
     @RequestMapping(value = BaseRoute.GET_PROCESS_SMS_MESSAGE_TEMPS, method = RequestMethod.POST)
     public ResponseEntity<?> getProcessSmsMessageTemps(@RequestParam long userId,
                                                        @RequestParam String processId) {

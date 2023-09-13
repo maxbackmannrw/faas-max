@@ -73,11 +73,11 @@ public class ProcessTriggerFramework {
     }
 
 
-    public ProcessTriggerWSDTO getTriggerService(long userId, String triggerId) {
+    public ProcessTriggerWSDTO getProcessTriggerService(long userId, String triggerId) {
 
-        Optional<ProcessTriggerDBModel> triggerDBModel = processTriggerRepository.findById(triggerId);
-        if (triggerDBModel.isPresent()){
-            return new ProcessTriggerWSDTO(triggerDBModel.get());
+        Optional<ProcessTriggerDBModel> processTriggerDBModel = processTriggerRepository.findById(triggerId);
+        if (processTriggerDBModel.isPresent()){
+            return new ProcessTriggerWSDTO(processTriggerDBModel.get());
         }
         return null;
     }

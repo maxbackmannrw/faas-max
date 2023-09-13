@@ -38,6 +38,7 @@ public class ProcessFlowMiddleware {
     }
 
 
+
     public ProcessFlowWSModel getProcessFlowDatas(long userId, String processId) {
 
         ProcessFlowWSModel response = new ProcessFlowWSModel();
@@ -47,7 +48,7 @@ public class ProcessFlowMiddleware {
         if (processTriggerWSDTOS != null){
         }
 
-        general.setOperation("getProcessFlow");
+        general.setOperation("getProcessFlowDatas");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -66,7 +67,7 @@ public class ProcessFlowMiddleware {
         if (processTriggerWSDTOS != null){
         }
 
-        general.setOperation("getProcessFlow");
+        general.setOperation("getProcessFlowData");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -83,9 +84,10 @@ public class ProcessFlowMiddleware {
 
         List<ProcessTriggerWSDTO> processTriggerWSDTOS = processFlowFramework.getProcessFlowService(userId,processId);
         if (processTriggerWSDTOS != null){
+
         }
 
-        general.setOperation("getProcessFlow");
+        general.setOperation("createProcessFlowData");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -93,7 +95,6 @@ public class ProcessFlowMiddleware {
 
         return response;
     }
-
 
 
     public ProcessFlowWSModel updateProcessFlowData(long userId, String processId) {
@@ -105,7 +106,7 @@ public class ProcessFlowMiddleware {
         if (processTriggerWSDTOS != null){
         }
 
-        general.setOperation("getProcessFlow");
+        general.setOperation("updateProcessFlowData");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -124,7 +125,7 @@ public class ProcessFlowMiddleware {
         if (processTriggerWSDTOS != null){
         }
 
-        general.setOperation("getProcessFlow");
+        general.setOperation("removeProcessFlowData");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

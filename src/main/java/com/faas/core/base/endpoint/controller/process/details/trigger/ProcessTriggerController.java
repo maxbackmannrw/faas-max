@@ -49,11 +49,11 @@ public class ProcessTriggerController {
     }
 
 
-    @RequestMapping(value = BaseRoute.GET_TRIGGER, method = RequestMethod.POST)
-    public ResponseEntity<?> getTrigger(@RequestParam long userId,
-                                        @RequestParam String triggerId) {
+    @RequestMapping(value = BaseRoute.GET_PROCESS_TRIGGER, method = RequestMethod.POST)
+    public ResponseEntity<?> getProcessTrigger(@RequestParam long userId,
+                                               @RequestParam String triggerId) {
 
-        ProcessTriggerWSModel response = processTriggerMiddleware.getTrigger(userId,triggerId);
+        ProcessTriggerWSModel response = processTriggerMiddleware.getProcessTrigger(userId,triggerId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

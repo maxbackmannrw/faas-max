@@ -60,19 +60,19 @@ public class ProcessTriggerMiddleware {
     }
 
 
-    public ProcessTriggerWSModel getTrigger(long userId, String triggerId) {
+    public ProcessTriggerWSModel getProcessTrigger(long userId, String triggerId) {
 
         ProcessTriggerWSModel response = new ProcessTriggerWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessTriggerWSDTO> processTriggerWSDTOS = new ArrayList<>();
 
-        ProcessTriggerWSDTO processTriggerWSDTO = processTriggerFramework.getTriggerService(userId,triggerId);
+        ProcessTriggerWSDTO processTriggerWSDTO = processTriggerFramework.getProcessTriggerService(userId,triggerId);
         if (processTriggerWSDTO != null){
             processTriggerWSDTOS.add(processTriggerWSDTO);
         }
 
         response.setProcessTriggers(processTriggerWSDTOS);
-        general.setOperation("getTrigger");
+        general.setOperation("getProcessTrigger");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
