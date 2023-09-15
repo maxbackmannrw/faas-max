@@ -14,9 +14,12 @@ public class ProcessFlowDBModel {
     @Id
     private String id;
     private String processId;
+    private String processFlow;
     private List<ProcessFlowUrlDAO>flowUrls;
     private List<ProcessFlowDataDAO>flowDatas;
     private List<ProcessFlowAssetDAO>flowAssets;
+    private long flowTypeId;
+    private String flowType;
     private long uDate;
     private long cDate;
     private int status;
@@ -24,12 +27,15 @@ public class ProcessFlowDBModel {
     public ProcessFlowDBModel() {
     }
 
-    public ProcessFlowDBModel(String id, String processId, List<ProcessFlowUrlDAO> flowUrls, List<ProcessFlowDataDAO> flowDatas, List<ProcessFlowAssetDAO> flowAssets, long uDate, long cDate, int status) {
+    public ProcessFlowDBModel(String id, String processId, String processFlow, List<ProcessFlowUrlDAO> flowUrls, List<ProcessFlowDataDAO> flowDatas, List<ProcessFlowAssetDAO> flowAssets, long flowTypeId, String flowType, long uDate, long cDate, int status) {
         this.id = id;
         this.processId = processId;
+        this.processFlow = processFlow;
         this.flowUrls = flowUrls;
         this.flowDatas = flowDatas;
         this.flowAssets = flowAssets;
+        this.flowTypeId = flowTypeId;
+        this.flowType = flowType;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
@@ -49,6 +55,14 @@ public class ProcessFlowDBModel {
 
     public void setProcessId(String processId) {
         this.processId = processId;
+    }
+
+    public String getProcessFlow() {
+        return processFlow;
+    }
+
+    public void setProcessFlow(String processFlow) {
+        this.processFlow = processFlow;
     }
 
     public List<ProcessFlowUrlDAO> getFlowUrls() {
@@ -73,6 +87,22 @@ public class ProcessFlowDBModel {
 
     public void setFlowAssets(List<ProcessFlowAssetDAO> flowAssets) {
         this.flowAssets = flowAssets;
+    }
+
+    public long getFlowTypeId() {
+        return flowTypeId;
+    }
+
+    public void setFlowTypeId(long flowTypeId) {
+        this.flowTypeId = flowTypeId;
+    }
+
+    public String getFlowType() {
+        return flowType;
+    }
+
+    public void setFlowType(String flowType) {
+        this.flowType = flowType;
     }
 
     public long getuDate() {

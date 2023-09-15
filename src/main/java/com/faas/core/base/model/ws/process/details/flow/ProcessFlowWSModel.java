@@ -3,8 +3,6 @@ package com.faas.core.base.model.ws.process.details.flow;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.model.ws.process.details.flow.dto.ProcessFlowWSDTO;
 
-import java.util.List;
-
 public class ProcessFlowWSModel {
 
     private GeneralWSModel general;
