@@ -20,7 +20,6 @@ import java.util.Optional;
 @Component
 public class ProcessInquiryFramework {
 
-
     @Autowired
     ProcessInquiryRepository processInquiryRepository;
 

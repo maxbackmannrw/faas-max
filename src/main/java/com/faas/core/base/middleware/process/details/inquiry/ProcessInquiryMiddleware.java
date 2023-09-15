@@ -211,7 +211,6 @@ public class ProcessInquiryMiddleware {
 
 
 
-
     public InquiryUrlWSModel getProcessInquiryUrls(long userId, String processId) {
 
         InquiryUrlWSModel response = new InquiryUrlWSModel();

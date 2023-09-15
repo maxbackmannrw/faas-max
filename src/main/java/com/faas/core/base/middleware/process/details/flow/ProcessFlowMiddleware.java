@@ -210,7 +210,6 @@ public class ProcessFlowMiddleware {
 
 
 
-
     public FlowUrlWSModel getProcessFlowUrls(long userId, String processId) {
 
         FlowUrlWSModel response = new FlowUrlWSModel();
@@ -313,6 +312,7 @@ public class ProcessFlowMiddleware {
 
         return response;
     }
+
 
 
 }

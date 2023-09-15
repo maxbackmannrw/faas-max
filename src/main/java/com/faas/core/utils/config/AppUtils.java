@@ -2,6 +2,7 @@ package com.faas.core.utils.config;
 
 import com.faas.core.base.model.db.process.content.ProcessDBModel;
 import com.faas.core.base.model.db.client.session.SessionDBModel;
+import com.faas.core.base.model.ws.general.GeneralWSModel;
 import org.springframework.stereotype.Component;
 
 import java.util.Base64;
@@ -11,6 +12,7 @@ import java.util.UUID;
 
 @Component
 public class AppUtils {
+
 
     public String tokenGenerator() {
         return "token";

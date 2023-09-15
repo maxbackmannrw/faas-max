@@ -62,7 +62,6 @@ public class ProcessTriggerController {
     }
 
 
-
     @RequestMapping(value = BaseRoute.CREATE_AI_TRIGGER, method = RequestMethod.POST)
     public ResponseEntity<?> createAITrigger(@RequestParam long userId,
                                              @RequestParam String processId,
