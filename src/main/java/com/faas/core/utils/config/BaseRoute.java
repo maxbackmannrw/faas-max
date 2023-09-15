@@ -360,6 +360,9 @@ public class BaseRoute {
 
 
     public static final String GET_PROCESS_INQUIRY = "getprocessinquiry";
+    public static final String CREATE_PROCESS_INQUIRY = "createprocessinquiry";
+    public static final String UPDATE_PROCESS_INQUIRY = "updateprocessinquiry";
+    public static final String REMOVE_PROCESS_INQUIRY = "removeprocessinquiry";
 
     public static final String GET_PROCESS_INQUIRY_DATAS = "getprocessinquirydatas";
     public static final String GET_PROCESS_INQUIRY_DATA = "getprocessinquirydata";
@@ -375,6 +378,9 @@ public class BaseRoute {
 
 
     public static final String GET_PROCESS_FLOW = "getprocessflow";
+    public static final String CREATE_PROCESS_FLOW = "createprocessflow";
+    public static final String UPDATE_PROCESS_FLOW = "updateprocessflow";
+    public static final String REMOVE_PROCESS_FLOW = "removeprocessflow";
 
     public static final String GET_PROCESS_FLOW_DATAS = "getprocessflowdatas";
     public static final String GET_PROCESS_FLOW_DATA = "getprocessflowdata";

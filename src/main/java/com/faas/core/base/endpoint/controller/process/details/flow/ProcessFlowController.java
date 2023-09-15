@@ -1,6 +1,8 @@
 package com.faas.core.base.endpoint.controller.process.details.flow;
 
 import com.faas.core.base.middleware.process.details.flow.ProcessFlowMiddleware;
+import com.faas.core.base.model.ws.process.details.flow.FlowDataWSModel;
+import com.faas.core.base.model.ws.process.details.flow.FlowUrlWSModel;
 import com.faas.core.base.model.ws.process.details.flow.ProcessFlowWSModel;
 import com.faas.core.base.model.ws.process.details.inquiry.ProcessInquiryWSModel;
 import com.faas.core.utils.config.AppConstant;
@@ -35,12 +37,56 @@ public class ProcessFlowController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+    @RequestMapping(value = BaseRoute.CREATE_PROCESS_FLOW, method = RequestMethod.POST)
+    public ResponseEntity<?> createProcessFlow(@RequestParam long userId,
+                                               @RequestParam String processId,
+                                               @RequestParam String processFlow,
+                                               @RequestParam String flowType) {
+
+        ProcessFlowWSModel response = processFlowMiddleware.createProcessFlow(userId,processId,processFlow,flowType);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = BaseRoute.UPDATE_PROCESS_FLOW, method = RequestMethod.POST)
+    public ResponseEntity<?> updateProcessFlow(@RequestParam long userId,
+                                               @RequestParam String processId,
+                                               @RequestParam String processFlow,
+                                               @RequestParam String flowType) {
+
+        ProcessFlowWSModel response = processFlowMiddleware.updateProcessFlow(userId,processId,processFlow,flowType);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = BaseRoute.REMOVE_PROCESS_FLOW, method = RequestMethod.POST)
+    public ResponseEntity<?> removeProcessFlow(@RequestParam long userId,
+                                               @RequestParam String processId) {
+
+        ProcessFlowWSModel response = processFlowMiddleware.removeProcessFlow(userId,processId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+
 
     @RequestMapping(value = BaseRoute.GET_PROCESS_FLOW_DATAS, method = RequestMethod.POST)
     public ResponseEntity<?> getProcessFlowDatas(@RequestParam long userId,
                                                  @RequestParam String processId) {
 
-        ProcessFlowWSModel response = processFlowMiddleware.getProcessFlowDatas(userId,processId);
+        FlowDataWSModel response = processFlowMiddleware.getProcessFlowDatas(userId,processId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -51,9 +97,10 @@ public class ProcessFlowController {
 
     @RequestMapping(value = BaseRoute.GET_PROCESS_FLOW_DATA, method = RequestMethod.POST)
     public ResponseEntity<?> getProcessFlowData(@RequestParam long userId,
-                                                @RequestParam String processId) {
+                                                @RequestParam String processId,
+                                                @RequestParam String dataId) {
 
-        ProcessFlowWSModel response = processFlowMiddleware.getProcessFlowData(userId,processId);
+        FlowDataWSModel response = processFlowMiddleware.getProcessFlowData(userId,processId,dataId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -64,9 +111,11 @@ public class ProcessFlowController {
 
     @RequestMapping(value = BaseRoute.CREATE_PROCESS_FLOW_DATA, method = RequestMethod.POST)
     public ResponseEntity<?> createProcessFlowData(@RequestParam long userId,
-                                                   @RequestParam String processId) {
+                                                   @RequestParam String processId,
+                                                   @RequestParam long dataTypeId,
+                                                   @RequestParam String value) {
 
-        ProcessFlowWSModel response = processFlowMiddleware.createProcessFlowData(userId,processId);
+        FlowDataWSModel response = processFlowMiddleware.createProcessFlowData(userId,processId,dataTypeId,value);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -77,9 +126,12 @@ public class ProcessFlowController {
 
     @RequestMapping(value = BaseRoute.UPDATE_PROCESS_FLOW_DATA, method = RequestMethod.POST)
     public ResponseEntity<?> updateProcessFlowData(@RequestParam long userId,
-                                                   @RequestParam String processId) {
+                                                   @RequestParam String processId,
+                                                   @RequestParam String dataId,
+                                                   @RequestParam long dataTypeId,
+                                                   @RequestParam String value) {
 
-        ProcessFlowWSModel response = processFlowMiddleware.updateProcessFlowData(userId,processId);
+        FlowDataWSModel response = processFlowMiddleware.updateProcessFlowData(userId,processId,dataId,dataTypeId,value);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -90,9 +142,10 @@ public class ProcessFlowController {
 
     @RequestMapping(value = BaseRoute.REMOVE_PROCESS_FLOW_DATA, method = RequestMethod.POST)
     public ResponseEntity<?> removeProcessFlowData(@RequestParam long userId,
-                                                   @RequestParam String processId) {
+                                                   @RequestParam String processId,
+                                                   @RequestParam String dataId) {
 
-        ProcessFlowWSModel response = processFlowMiddleware.removeProcessFlowData(userId,processId);
+        FlowDataWSModel response = processFlowMiddleware.removeProcessFlowData(userId,processId,dataId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -106,7 +159,7 @@ public class ProcessFlowController {
     public ResponseEntity<?> getProcessFlowUrls(@RequestParam long userId,
                                                 @RequestParam String processId) {
 
-        ProcessFlowWSModel response = processFlowMiddleware.getProcessFlowUrls(userId,processId);
+        FlowUrlWSModel response = processFlowMiddleware.getProcessFlowUrls(userId,processId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -117,9 +170,10 @@ public class ProcessFlowController {
 
     @RequestMapping(value = BaseRoute.GET_PROCESS_FLOW_URL, method = RequestMethod.POST)
     public ResponseEntity<?> getProcessFlowUrl(@RequestParam long userId,
-                                               @RequestParam String processId) {
+                                               @RequestParam String processId,
+                                               @RequestParam String urlId) {
 
-        ProcessFlowWSModel response = processFlowMiddleware.getProcessFlowUrl(userId,processId);
+        FlowUrlWSModel response = processFlowMiddleware.getProcessFlowUrl(userId,processId,urlId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -130,9 +184,11 @@ public class ProcessFlowController {
 
     @RequestMapping(value = BaseRoute.CREATE_PROCESS_FLOW_URL, method = RequestMethod.POST)
     public ResponseEntity<?> createProcessFlowUrl(@RequestParam long userId,
-                                                  @RequestParam String processId) {
+                                                  @RequestParam String processId,
+                                                  @RequestParam String urlType,
+                                                  @RequestParam String url) {
 
-        ProcessFlowWSModel response = processFlowMiddleware.createProcessFlowUrl(userId,processId);
+        FlowUrlWSModel response = processFlowMiddleware.createProcessFlowUrl(userId,processId,urlType,url);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -143,9 +199,12 @@ public class ProcessFlowController {
 
     @RequestMapping(value = BaseRoute.UPDATE_PROCESS_FLOW_URL, method = RequestMethod.POST)
     public ResponseEntity<?> updateProcessFlowUrl(@RequestParam long userId,
-                                                  @RequestParam String processId) {
+                                                  @RequestParam String processId,
+                                                  @RequestParam String urlId,
+                                                  @RequestParam String urlType,
+                                                  @RequestParam String url) {
 
-        ProcessFlowWSModel response = processFlowMiddleware.updateProcessFlowUrl(userId,processId);
+        FlowUrlWSModel response = processFlowMiddleware.updateProcessFlowUrl(userId,processId,urlId,urlType,url);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -156,9 +215,10 @@ public class ProcessFlowController {
 
     @RequestMapping(value = BaseRoute.REMOVE_PROCESS_FLOW_URL, method = RequestMethod.POST)
     public ResponseEntity<?> removeProcessFlowUrl(@RequestParam long userId,
-                                                  @RequestParam String processId) {
+                                                  @RequestParam String processId,
+                                                  @RequestParam String urlId) {
 
-        ProcessFlowWSModel response = processFlowMiddleware.removeProcessFlowUrl(userId,processId);
+        FlowUrlWSModel response = processFlowMiddleware.removeProcessFlowUrl(userId,processId,urlId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

@@ -1,6 +1,6 @@
-package com.faas.core.base.model.db.process.details.inquiry.dao;
+package com.faas.core.base.model.db.process.details.flow.dao;
 
-public class ProcessInquiryUrlDAO {
+public class FlowUrlDAO {
 
     private String urlId;
     private String urlType;
@@ -8,10 +8,10 @@ public class ProcessInquiryUrlDAO {
     private long cDate;
     private int status;
 
-    public ProcessInquiryUrlDAO() {
+    public FlowUrlDAO() {
     }
 
-    public ProcessInquiryUrlDAO(String urlId, String urlType, String url, long cDate, int status) {
+    public FlowUrlDAO(String urlId, String urlType, String url, long cDate, int status) {
         this.urlId = urlId;
         this.urlType = urlType;
         this.url = url;

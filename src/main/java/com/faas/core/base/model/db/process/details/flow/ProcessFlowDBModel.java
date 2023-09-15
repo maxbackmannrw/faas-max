@@ -1,8 +1,7 @@
 package com.faas.core.base.model.db.process.details.flow;
 
-import com.faas.core.base.model.db.process.details.flow.dao.ProcessFlowAssetDAO;
-import com.faas.core.base.model.db.process.details.flow.dao.ProcessFlowDataDAO;
-import com.faas.core.base.model.db.process.details.flow.dao.ProcessFlowUrlDAO;
+import com.faas.core.base.model.db.process.details.flow.dao.FlowDataDAO;
+import com.faas.core.base.model.db.process.details.flow.dao.FlowUrlDAO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -15,10 +14,8 @@ public class ProcessFlowDBModel {
     private String id;
     private String processId;
     private String processFlow;
-    private List<ProcessFlowUrlDAO>flowUrls;
-    private List<ProcessFlowDataDAO>flowDatas;
-    private List<ProcessFlowAssetDAO>flowAssets;
-    private long flowTypeId;
+    private List<FlowUrlDAO>flowUrls;
+    private List<FlowDataDAO>flowDatas;
     private String flowType;
     private long uDate;
     private long cDate;
@@ -27,14 +24,12 @@ public class ProcessFlowDBModel {
     public ProcessFlowDBModel() {
     }
 
-    public ProcessFlowDBModel(String id, String processId, String processFlow, List<ProcessFlowUrlDAO> flowUrls, List<ProcessFlowDataDAO> flowDatas, List<ProcessFlowAssetDAO> flowAssets, long flowTypeId, String flowType, long uDate, long cDate, int status) {
+    public ProcessFlowDBModel(String id, String processId, String processFlow, List<FlowUrlDAO> flowUrls, List<FlowDataDAO> flowDatas, String flowType, long uDate, long cDate, int status) {
         this.id = id;
         this.processId = processId;
         this.processFlow = processFlow;
         this.flowUrls = flowUrls;
         this.flowDatas = flowDatas;
-        this.flowAssets = flowAssets;
-        this.flowTypeId = flowTypeId;
         this.flowType = flowType;
         this.uDate = uDate;
         this.cDate = cDate;
@@ -65,36 +60,20 @@ public class ProcessFlowDBModel {
         this.processFlow = processFlow;
     }
 
-    public List<ProcessFlowUrlDAO> getFlowUrls() {
+    public List<FlowUrlDAO> getFlowUrls() {
         return flowUrls;
     }
 
-    public void setFlowUrls(List<ProcessFlowUrlDAO> flowUrls) {
+    public void setFlowUrls(List<FlowUrlDAO> flowUrls) {
         this.flowUrls = flowUrls;
     }
 
-    public List<ProcessFlowDataDAO> getFlowDatas() {
+    public List<FlowDataDAO> getFlowDatas() {
         return flowDatas;
     }
 
-    public void setFlowDatas(List<ProcessFlowDataDAO> flowDatas) {
+    public void setFlowDatas(List<FlowDataDAO> flowDatas) {
         this.flowDatas = flowDatas;
-    }
-
-    public List<ProcessFlowAssetDAO> getFlowAssets() {
-        return flowAssets;
-    }
-
-    public void setFlowAssets(List<ProcessFlowAssetDAO> flowAssets) {
-        this.flowAssets = flowAssets;
-    }
-
-    public long getFlowTypeId() {
-        return flowTypeId;
-    }
-
-    public void setFlowTypeId(long flowTypeId) {
-        this.flowTypeId = flowTypeId;
     }
 
     public String getFlowType() {

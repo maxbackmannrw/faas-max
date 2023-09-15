@@ -1,6 +1,6 @@
-package com.faas.core.base.model.db.process.details.flow.dao;
+package com.faas.core.base.model.db.process.details.inquiry.dao;
 
-public class ProcessFlowDataDAO {
+public class InquiryDataDAO {
 
     private String dataId;
     private String dataType;
@@ -8,10 +8,10 @@ public class ProcessFlowDataDAO {
     private long cDate;
     private int status;
 
-    public ProcessFlowDataDAO() {
+    public InquiryDataDAO() {
     }
 
-    public ProcessFlowDataDAO(String dataId, String dataType, String value, long cDate, int status) {
+    public InquiryDataDAO(String dataId, String dataType, String value, long cDate, int status) {
         this.dataId = dataId;
         this.dataType = dataType;
         this.value = value;

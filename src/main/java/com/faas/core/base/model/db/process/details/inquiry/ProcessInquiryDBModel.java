@@ -1,8 +1,7 @@
 package com.faas.core.base.model.db.process.details.inquiry;
 
-import com.faas.core.base.model.db.process.details.inquiry.dao.ProcessInquiryAssetDAO;
-import com.faas.core.base.model.db.process.details.inquiry.dao.ProcessInquiryDataDAO;
-import com.faas.core.base.model.db.process.details.inquiry.dao.ProcessInquiryUrlDAO;
+import com.faas.core.base.model.db.process.details.inquiry.dao.InquiryDataDAO;
+import com.faas.core.base.model.db.process.details.inquiry.dao.InquiryUrlDAO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -15,10 +14,8 @@ public class ProcessInquiryDBModel {
     private String id;
     private String processId;
     private String processInquiry;
-    private List<ProcessInquiryUrlDAO>inquiryUrls;
-    private List<ProcessInquiryDataDAO>inquiryDatas;
-    private List<ProcessInquiryAssetDAO>inquiryAssets;
-    private long inquiryTypeId;
+    private List<InquiryUrlDAO>inquiryUrls;
+    private List<InquiryDataDAO>inquiryDatas;
     private String inquiryType;
     private long uDate;
     private long cDate;
@@ -27,14 +24,12 @@ public class ProcessInquiryDBModel {
     public ProcessInquiryDBModel() {
     }
 
-    public ProcessInquiryDBModel(String id, String processId, String processInquiry, List<ProcessInquiryUrlDAO> inquiryUrls, List<ProcessInquiryDataDAO> inquiryDatas, List<ProcessInquiryAssetDAO> inquiryAssets, long inquiryTypeId, String inquiryType, long uDate, long cDate, int status) {
+    public ProcessInquiryDBModel(String id, String processId, String processInquiry, List<InquiryUrlDAO> inquiryUrls, List<InquiryDataDAO> inquiryDatas, String inquiryType, long uDate, long cDate, int status) {
         this.id = id;
         this.processId = processId;
         this.processInquiry = processInquiry;
         this.inquiryUrls = inquiryUrls;
         this.inquiryDatas = inquiryDatas;
-        this.inquiryAssets = inquiryAssets;
-        this.inquiryTypeId = inquiryTypeId;
         this.inquiryType = inquiryType;
         this.uDate = uDate;
         this.cDate = cDate;
@@ -65,36 +60,20 @@ public class ProcessInquiryDBModel {
         this.processInquiry = processInquiry;
     }
 
-    public List<ProcessInquiryUrlDAO> getInquiryUrls() {
+    public List<InquiryUrlDAO> getInquiryUrls() {
         return inquiryUrls;
     }
 
-    public void setInquiryUrls(List<ProcessInquiryUrlDAO> inquiryUrls) {
+    public void setInquiryUrls(List<InquiryUrlDAO> inquiryUrls) {
         this.inquiryUrls = inquiryUrls;
     }
 
-    public List<ProcessInquiryDataDAO> getInquiryDatas() {
+    public List<InquiryDataDAO> getInquiryDatas() {
         return inquiryDatas;
     }
 
-    public void setInquiryDatas(List<ProcessInquiryDataDAO> inquiryDatas) {
+    public void setInquiryDatas(List<InquiryDataDAO> inquiryDatas) {
         this.inquiryDatas = inquiryDatas;
-    }
-
-    public List<ProcessInquiryAssetDAO> getInquiryAssets() {
-        return inquiryAssets;
-    }
-
-    public void setInquiryAssets(List<ProcessInquiryAssetDAO> inquiryAssets) {
-        this.inquiryAssets = inquiryAssets;
-    }
-
-    public long getInquiryTypeId() {
-        return inquiryTypeId;
-    }
-
-    public void setInquiryTypeId(long inquiryTypeId) {
-        this.inquiryTypeId = inquiryTypeId;
     }
 
     public String getInquiryType() {
