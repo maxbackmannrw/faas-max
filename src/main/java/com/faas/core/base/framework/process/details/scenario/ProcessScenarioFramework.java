@@ -45,9 +45,7 @@ public class ProcessScenarioFramework {
         ProcessScenarioWSDTO processScenarioWSDTO = new ProcessScenarioWSDTO();
         processScenarioWSDTO.setProcessScenario(processScenarioDBModel);
         Optional<ScenarioDBModel> scenarioDBModel = scenarioRepository.findById(processScenarioDBModel.getScenarioId());
-        if (scenarioDBModel.isPresent()) {
-            processScenarioWSDTO.setProcessScenarioDetails(scenarioDBModel.get());
-        }
+        scenarioDBModel.ifPresent(processScenarioWSDTO::setProcessScenarioDetails);
         return processScenarioWSDTO;
     }
 
@@ -81,7 +79,6 @@ public class ProcessScenarioFramework {
         if (!processScenarioRepository.existsByProcessIdAndScenarioId(processId,scenarioId) && processDBModel.isPresent() && scenarioDBModel.isPresent()) {
 
             ProcessScenarioDBModel processScenarioDBModel = new ProcessScenarioDBModel();
-
             processScenarioDBModel.setProcessId(processId);
             processScenarioDBModel.setScenarioId(scenarioId);
             processScenarioDBModel.setScenarioDatas(new ArrayList<>());
@@ -167,7 +164,7 @@ public class ProcessScenarioFramework {
 
         List<ProcessScenarioDBModel> scenarioDBModels = processScenarioRepository.findByProcessIdAndScenarioId(processId,scenarioId);
         Optional<DataTypeDBModel> dataTypeDBModel = dataTypeRepository.findById(typeId);
-        if (scenarioDBModels.size() > 0 && scenarioDBModels.get(0).getScenarioDatas() != null && dataTypeDBModel.isPresent()) {
+        if (!scenarioDBModels.isEmpty() && scenarioDBModels.get(0).getScenarioDatas() != null && dataTypeDBModel.isPresent()) {
             for (int i = 0; i < scenarioDBModels.get(0).getScenarioDatas().size(); i++) {
                 if (scenarioDBModels.get(0).getScenarioDatas().get(i).getDataId().equalsIgnoreCase(dataId)) {
 
@@ -188,7 +185,7 @@ public class ProcessScenarioFramework {
     public ProcessScenarioDataWSDTO removeProcessScenarioDataService(String processId, String scenarioId, String dataId) {
 
         List<ProcessScenarioDBModel> scenarioDBModels = processScenarioRepository.findByProcessIdAndScenarioId(processId,scenarioId);
-        if (scenarioDBModels.size() > 0 && scenarioDBModels.get(0).getScenarioDatas() != null) {
+        if (!scenarioDBModels.isEmpty() && scenarioDBModels.get(0).getScenarioDatas() != null) {
             for (int i = 0; i < scenarioDBModels.get(0).getScenarioDatas().size(); i++) {
                 if (scenarioDBModels.get(0).getScenarioDatas().get(i).getDataId().equalsIgnoreCase(dataId)) {
 
