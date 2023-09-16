@@ -62,24 +62,6 @@ public class ProcessInquiryMiddleware {
         return response;
     }
 
-    public ProcessInquiryWSModel updateProcessInquiry(long userId, String processId,String processInquiry,String inquiryType) {
-
-        ProcessInquiryWSModel response = new ProcessInquiryWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-        ProcessInquiryWSDTO processInquiryWSDTO = processInquiryFramework.updateProcessInquiryService(userId,processId,processInquiry,inquiryType);
-        if (processInquiryWSDTO != null){
-            response.setProcessInquiry(processInquiryWSDTO);
-        }
-
-        general.setOperation("updateProcessInquiry");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
 
     public ProcessInquiryWSModel removeProcessInquiry(long userId, String processId) {
 

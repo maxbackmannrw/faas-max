@@ -51,20 +51,6 @@ public class ProcessFlowController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-    @RequestMapping(value = BaseRoute.UPDATE_PROCESS_FLOW, method = RequestMethod.POST)
-    public ResponseEntity<?> updateProcessFlow(@RequestParam long userId,
-                                               @RequestParam String processId,
-                                               @RequestParam String processFlow,
-                                               @RequestParam String flowType) {
-
-        ProcessFlowWSModel response = processFlowMiddleware.updateProcessFlow(userId,processId,processFlow,flowType);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
     @RequestMapping(value = BaseRoute.REMOVE_PROCESS_FLOW, method = RequestMethod.POST)
     public ResponseEntity<?> removeProcessFlow(@RequestParam long userId,
                                                @RequestParam String processId) {
@@ -146,7 +132,6 @@ public class ProcessFlowController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
 
 

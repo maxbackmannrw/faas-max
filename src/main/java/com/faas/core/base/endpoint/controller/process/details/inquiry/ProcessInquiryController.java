@@ -52,21 +52,6 @@ public class ProcessInquiryController {
     }
 
 
-    @RequestMapping(value = BaseRoute.UPDATE_PROCESS_INQUIRY, method = RequestMethod.POST)
-    public ResponseEntity<?> updateProcessInquiry(@RequestParam long userId,
-                                                  @RequestParam String processId,
-                                                  @RequestParam String processInquiry,
-                                                  @RequestParam String inquiryType) {
-
-        ProcessInquiryWSModel response = processInquiryMiddleware.updateProcessInquiry(userId,processId,processInquiry,inquiryType);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-
     @RequestMapping(value = BaseRoute.REMOVE_PROCESS_INQUIRY, method = RequestMethod.POST)
     public ResponseEntity<?> removeProcessInquiry(@RequestParam long userId,
                                                   @RequestParam String processId) {

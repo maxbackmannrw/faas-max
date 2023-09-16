@@ -65,25 +65,6 @@ public class ProcessFlowMiddleware {
     }
 
 
-    public ProcessFlowWSModel updateProcessFlow(long userId,String processId,String processFlow,String flowType) {
-
-        ProcessFlowWSModel response = new ProcessFlowWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-        ProcessFlowWSDTO processFlowWSDTO = processFlowFramework.updateProcessFlowService(userId,processId,processFlow,flowType);
-        if (processFlowWSDTO != null){
-            response.setProcessFlow(processFlowWSDTO);
-        }
-
-        general.setOperation("getProcessFlow");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
     public ProcessFlowWSModel removeProcessFlow(long userId, String processId) {
 
         ProcessFlowWSModel response = new ProcessFlowWSModel();

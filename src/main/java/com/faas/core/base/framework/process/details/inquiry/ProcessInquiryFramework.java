@@ -55,25 +55,17 @@ public class ProcessInquiryFramework {
             processInquiryDBModel.setStatus(1);
 
             return new ProcessInquiryWSDTO(processInquiryRepository.save(processInquiryDBModel));
-        }
-        return null;
-    }
+        }else {
 
-    public ProcessInquiryWSDTO updateProcessInquiryService(long userId, String processId,String processInquiry,String inquiryType) {
-
-        List<ProcessInquiryDBModel> processInquiryDBModels = processInquiryRepository.findByProcessId(processId);
-        if (!processInquiryDBModels.isEmpty()){
-
-            processInquiryDBModels.get(0).setProcessId(processId);
             processInquiryDBModels.get(0).setProcessInquiry(processInquiry);
             processInquiryDBModels.get(0).setInquiryType(inquiryType);
             processInquiryDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
-            processInquiryDBModels.get(0).setStatus(1);
 
             return new ProcessInquiryWSDTO(processInquiryRepository.save(processInquiryDBModels.get(0)));
         }
-        return null;
     }
+
+
 
     public ProcessInquiryWSDTO removeProcessInquiryService(long userId, String processId) {
 
@@ -260,7 +252,6 @@ public class ProcessInquiryFramework {
         if (!processInquiryDBModels.isEmpty() && processInquiryDBModels.get(0).getInquiryUrls() != null){
             for (int i=0;i<processInquiryDBModels.get(0).getInquiryUrls().size();i++){
                 if (processInquiryDBModels.get(0).getInquiryUrls().get(i).getUrlId().equalsIgnoreCase(urlId)){
-
                     processInquiryDBModels.get(0).getInquiryUrls().remove(processInquiryDBModels.get(0).getInquiryUrls().get(i));
                     processInquiryDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
                     processInquiryRepository.save(processInquiryDBModels.get(0));

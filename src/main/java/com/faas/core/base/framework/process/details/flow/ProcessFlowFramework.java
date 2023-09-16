@@ -55,22 +55,15 @@ public class ProcessFlowFramework {
             processFlowDBModel.setStatus(1);
 
             return new ProcessFlowWSDTO(processFlowRepository.save(processFlowDBModel));
-        }
-        return null;
-    }
-
-    public ProcessFlowWSDTO updateProcessFlowService(long userId,String processId,String processFlow,String flowType) {
-
-        List<ProcessFlowDBModel> processFlowDBModels = processFlowRepository.findByProcessId(processId);
-        if (!processFlowDBModels.isEmpty()){
+        }else {
             processFlowDBModels.get(0).setProcessFlow(processFlow);
             processFlowDBModels.get(0).setFlowType(flowType);
             processFlowDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
 
             return new ProcessFlowWSDTO(processFlowRepository.save(processFlowDBModels.get(0)));
         }
-        return null;
     }
+
 
     public ProcessFlowWSDTO removeProcessFlowService(long userId, String processId) {
 
