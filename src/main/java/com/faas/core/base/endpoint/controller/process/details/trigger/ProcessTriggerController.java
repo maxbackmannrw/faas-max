@@ -51,9 +51,10 @@ public class ProcessTriggerController {
 
     @RequestMapping(value = BaseRoute.GET_PROCESS_TRIGGER, method = RequestMethod.POST)
     public ResponseEntity<?> getProcessTrigger(@RequestParam long userId,
+                                               @RequestParam String processId,
                                                @RequestParam String triggerId) {
 
-        ProcessTriggerWSModel response = processTriggerMiddleware.getProcessTrigger(userId,triggerId);
+        ProcessTriggerWSModel response = processTriggerMiddleware.getProcessTrigger(userId,processId,triggerId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

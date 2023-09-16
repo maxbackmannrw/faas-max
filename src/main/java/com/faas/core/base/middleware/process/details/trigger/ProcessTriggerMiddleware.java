@@ -60,13 +60,13 @@ public class ProcessTriggerMiddleware {
     }
 
 
-    public ProcessTriggerWSModel getProcessTrigger(long userId, String triggerId) {
+    public ProcessTriggerWSModel getProcessTrigger(long userId,String processId, String triggerId) {
 
         ProcessTriggerWSModel response = new ProcessTriggerWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessTriggerWSDTO> processTriggerWSDTOS = new ArrayList<>();
 
-        ProcessTriggerWSDTO processTriggerWSDTO = processTriggerFramework.getProcessTriggerService(userId,triggerId);
+        ProcessTriggerWSDTO processTriggerWSDTO = processTriggerFramework.getProcessTriggerService(userId,processId,triggerId);
         if (processTriggerWSDTO != null){
             processTriggerWSDTOS.add(processTriggerWSDTO);
         }
