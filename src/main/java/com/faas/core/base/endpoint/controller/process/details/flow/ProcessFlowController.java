@@ -51,7 +51,6 @@ public class ProcessFlowController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.UPDATE_PROCESS_FLOW, method = RequestMethod.POST)
     public ResponseEntity<?> updateProcessFlow(@RequestParam long userId,
                                                @RequestParam String processId,
@@ -65,7 +64,6 @@ public class ProcessFlowController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.REMOVE_PROCESS_FLOW, method = RequestMethod.POST)
     public ResponseEntity<?> removeProcessFlow(@RequestParam long userId,
@@ -94,7 +92,6 @@ public class ProcessFlowController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.GET_PROCESS_FLOW_DATA, method = RequestMethod.POST)
     public ResponseEntity<?> getProcessFlowData(@RequestParam long userId,
                                                 @RequestParam String processId,
@@ -107,7 +104,6 @@ public class ProcessFlowController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.CREATE_PROCESS_FLOW_DATA, method = RequestMethod.POST)
     public ResponseEntity<?> createProcessFlowData(@RequestParam long userId,
@@ -122,7 +118,6 @@ public class ProcessFlowController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.UPDATE_PROCESS_FLOW_DATA, method = RequestMethod.POST)
     public ResponseEntity<?> updateProcessFlowData(@RequestParam long userId,
@@ -139,7 +134,6 @@ public class ProcessFlowController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.REMOVE_PROCESS_FLOW_DATA, method = RequestMethod.POST)
     public ResponseEntity<?> removeProcessFlowData(@RequestParam long userId,
                                                    @RequestParam String processId,
@@ -155,6 +149,7 @@ public class ProcessFlowController {
 
 
 
+
     @RequestMapping(value = BaseRoute.GET_PROCESS_FLOW_URLS, method = RequestMethod.POST)
     public ResponseEntity<?> getProcessFlowUrls(@RequestParam long userId,
                                                 @RequestParam String processId) {
@@ -166,7 +161,6 @@ public class ProcessFlowController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.GET_PROCESS_FLOW_URL, method = RequestMethod.POST)
     public ResponseEntity<?> getProcessFlowUrl(@RequestParam long userId,
@@ -181,7 +175,6 @@ public class ProcessFlowController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.CREATE_PROCESS_FLOW_URL, method = RequestMethod.POST)
     public ResponseEntity<?> createProcessFlowUrl(@RequestParam long userId,
                                                   @RequestParam String processId,
@@ -195,7 +188,6 @@ public class ProcessFlowController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.UPDATE_PROCESS_FLOW_URL, method = RequestMethod.POST)
     public ResponseEntity<?> updateProcessFlowUrl(@RequestParam long userId,
@@ -212,7 +204,6 @@ public class ProcessFlowController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.REMOVE_PROCESS_FLOW_URL, method = RequestMethod.POST)
     public ResponseEntity<?> removeProcessFlowUrl(@RequestParam long userId,
                                                   @RequestParam String processId,
@@ -225,6 +216,7 @@ public class ProcessFlowController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
+
 
 
 }

@@ -136,7 +136,7 @@ public class ProcessScenarioFramework {
 
         List<ProcessScenarioDBModel> scenarioDBModels = processScenarioRepository.findByProcessIdAndScenarioId(processId,scenarioId);
         Optional<DataTypeDBModel> dataTypeDBModel = dataTypeRepository.findById(typeId);
-        if (scenarioDBModels.size() > 0 && dataTypeDBModel.isPresent()) {
+        if (!scenarioDBModels.isEmpty() && dataTypeDBModel.isPresent()) {
 
             ProcessScenarioDataDAO scenarioDataDAO = new ProcessScenarioDataDAO();
             scenarioDataDAO.setDataId(appUtils.generateUUID());

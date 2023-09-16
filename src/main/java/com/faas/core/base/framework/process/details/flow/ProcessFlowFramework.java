@@ -157,6 +157,7 @@ public class ProcessFlowFramework {
                 if (processFlowDBModels.get(0).getFlowDatas().get(i).getDataId().equalsIgnoreCase(dataId)){
                     processFlowDBModels.get(0).getFlowDatas().remove(i);
                     processFlowDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
+
                     return new FlowDataWSDTO(processFlowDBModels.get(0).getFlowDatas().get(i));
                 }
             }

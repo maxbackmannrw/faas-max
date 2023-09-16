@@ -61,7 +61,6 @@ public class ProcessTriggerFramework {
         return processTriggerWSDTOS;
     }
 
-
     public List<ProcessTriggerWSDTO> getProcessTriggersByTypeService(long userId, String processId, String baseType) {
 
         List<ProcessTriggerWSDTO> processTriggerWSDTOS = new ArrayList<>();
@@ -72,7 +71,6 @@ public class ProcessTriggerFramework {
         return processTriggerWSDTOS;
     }
 
-
     public ProcessTriggerWSDTO getProcessTriggerService(long userId, String triggerId) {
 
         Optional<ProcessTriggerDBModel> processTriggerDBModel = processTriggerRepository.findById(triggerId);
@@ -81,7 +79,6 @@ public class ProcessTriggerFramework {
         }
         return null;
     }
-
 
 
     public ProcessTriggerWSDTO createAITriggerService(long userId, String processId, String accountId, String trigger, long typeId) {
@@ -119,7 +116,6 @@ public class ProcessTriggerFramework {
         return processTriggerDetails;
     }
 
-
     public ProcessTriggerWSDTO updateAITriggerService(long userId, String triggerId, String accountId, String trigger) {
         return null;
     }
@@ -147,7 +143,6 @@ public class ProcessTriggerFramework {
         return null;
     }
 
-
     public ProcessTriggerDetails createEmailTrigger(String accountId, String emailSubject, String emailTitle, String emailBody, String emailSender) {
 
         ProcessTriggerDetails processTriggerDetails = new ProcessTriggerDetails();
@@ -168,7 +163,6 @@ public class ProcessTriggerFramework {
         processTriggerDetails.setProcessEmailTrigger(processEmailTriggerDAO);
         return processTriggerDetails;
     }
-
 
     public ProcessTriggerWSDTO updateEmailTriggerService(long userId, String triggerId, String accountId, String trigger, String emailSubject, String emailTitle, String emailBody, String emailSender) {
         return null;
@@ -196,7 +190,6 @@ public class ProcessTriggerFramework {
         }
         return null;
     }
-
 
     public ProcessTriggerDetails createSipTrigger(String accountId, String callerId) {
 
@@ -291,7 +284,6 @@ public class ProcessTriggerFramework {
         return null;
     }
 
-
     public ProcessTriggerDetails createWappCallTrigger(String accountId) {
 
         ProcessTriggerDetails processTriggerDetails = new ProcessTriggerDetails();
@@ -309,11 +301,9 @@ public class ProcessTriggerFramework {
         return processTriggerDetails;
     }
 
-
     public ProcessTriggerWSDTO updateWappCallTriggerService(long userId, String triggerId, String accountId, String trigger) {
         return null;
     }
-
 
 
 
@@ -358,13 +348,11 @@ public class ProcessTriggerFramework {
     }
 
     public ProcessTriggerWSDTO updateWappMessageTriggerService(long userId, String triggerId, String accountId, String trigger, String wappTitle, String wappBody) {
-
         return null;
     }
 
 
-
-    public ProcessTriggerWSDTO removeTriggerService(long userId, String triggerId) {
+    public ProcessTriggerWSDTO removeProcessTriggerService(long userId, String triggerId) {
 
         Optional<ProcessTriggerDBModel> triggerDBModel = processTriggerRepository.findById(triggerId);
         if (triggerDBModel.isPresent()){

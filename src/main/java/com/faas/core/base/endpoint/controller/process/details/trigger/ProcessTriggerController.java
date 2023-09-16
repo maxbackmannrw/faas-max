@@ -77,7 +77,6 @@ public class ProcessTriggerController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.UPDATE_AI_TRIGGER, method = RequestMethod.POST)
     public ResponseEntity<?> updateAITrigger(@RequestParam long userId,
                                              @RequestParam String triggerId,
@@ -111,7 +110,6 @@ public class ProcessTriggerController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.UPDATE_EMAIL_TRIGGER, method = RequestMethod.POST)
     public ResponseEntity<?> updateEmailTrigger(@RequestParam long userId,
@@ -148,7 +146,6 @@ public class ProcessTriggerController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.UPDATE_SIP_TRIGGER, method = RequestMethod.POST)
     public ResponseEntity<?> updateSipTrigger(@RequestParam long userId,
                                               @RequestParam String triggerId,
@@ -184,7 +181,6 @@ public class ProcessTriggerController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.UPDATE_SMS_TRIGGER, method = RequestMethod.POST)
     public ResponseEntity<?> updateSmsTrigger(@RequestParam long userId,
                                               @RequestParam String triggerId,
@@ -218,7 +214,6 @@ public class ProcessTriggerController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.UPDATE_WAPP_CALL_TRIGGER, method = RequestMethod.POST)
     public ResponseEntity<?> updateWappCallTrigger(@RequestParam long userId,
                                                    @RequestParam String triggerId,
@@ -251,7 +246,6 @@ public class ProcessTriggerController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.UPDATE_WAPP_MESSAGE_TRIGGER, method = RequestMethod.POST)
     public ResponseEntity<?> updateWappMessageTrigger(@RequestParam long userId,
                                                       @RequestParam String triggerId,
@@ -269,11 +263,11 @@ public class ProcessTriggerController {
     }
 
 
-    @RequestMapping(value = BaseRoute.REMOVE_TRIGGER, method = RequestMethod.POST)
-    public ResponseEntity<?> removeTrigger(@RequestParam long userId,
-                                           @RequestParam String triggerId) {
+    @RequestMapping(value = BaseRoute.REMOVE_PROCESS_TRIGGER, method = RequestMethod.POST)
+    public ResponseEntity<?> removeProcessTrigger(@RequestParam long userId,
+                                                  @RequestParam String triggerId) {
 
-        ProcessTriggerWSModel response = processTriggerMiddleware.removeTrigger(userId,triggerId);
+        ProcessTriggerWSModel response = processTriggerMiddleware.removeProcessTrigger(userId,triggerId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

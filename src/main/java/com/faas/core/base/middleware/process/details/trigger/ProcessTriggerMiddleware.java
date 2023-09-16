@@ -193,7 +193,6 @@ public class ProcessTriggerMiddleware {
         return response;
     }
 
-
     public ProcessTriggerWSModel updateSipTrigger(long userId, String triggerId, String accountId, String trigger, String callerId) {
 
         ProcessTriggerWSModel response = new ProcessTriggerWSModel();
@@ -236,7 +235,6 @@ public class ProcessTriggerMiddleware {
 
         return response;
     }
-
 
     public ProcessTriggerWSModel updateSmsTrigger(long userId, String triggerId, String accountId, String trigger, String smsTitle, String smsBody, String senderId) {
 
@@ -282,8 +280,6 @@ public class ProcessTriggerMiddleware {
         return response;
     }
 
-
-
     public ProcessTriggerWSModel updateWappCallTrigger(long userId, String triggerId, String accountId, String trigger) {
 
         ProcessTriggerWSModel response = new ProcessTriggerWSModel();
@@ -304,7 +300,6 @@ public class ProcessTriggerMiddleware {
 
         return response;
     }
-
 
 
     public ProcessTriggerWSModel createWappMessageTrigger(long userId, String processId, String accountId, String trigger, String wappTitle, String wappBody, long typeId) {
@@ -350,20 +345,19 @@ public class ProcessTriggerMiddleware {
         return response;
     }
 
-
-    public ProcessTriggerWSModel removeTrigger(long userId, String triggerId) {
+    public ProcessTriggerWSModel removeProcessTrigger(long userId, String triggerId) {
 
         ProcessTriggerWSModel response = new ProcessTriggerWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessTriggerWSDTO> processTriggerWSDTOS = new ArrayList<>();
 
-        ProcessTriggerWSDTO processTriggerWSDTO = processTriggerFramework.removeTriggerService(userId,triggerId);
+        ProcessTriggerWSDTO processTriggerWSDTO = processTriggerFramework.removeProcessTriggerService(userId,triggerId);
         if (processTriggerWSDTO != null){
             processTriggerWSDTOS.add(processTriggerWSDTO);
         }
 
         response.setProcessTriggers(processTriggerWSDTOS);
-        general.setOperation("removeTrigger");
+        general.setOperation("removeProcessTrigger");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

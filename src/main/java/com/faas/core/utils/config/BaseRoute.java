@@ -418,7 +418,7 @@ public class BaseRoute {
     public static final String CREATE_WAPP_MESSAGE_TRIGGER = "createwappmessagetrigger";
     public static final String UPDATE_WAPP_MESSAGE_TRIGGER = "updatewappmessagetrigger";
 
-    public static final String REMOVE_TRIGGER = "removetrigger";
+    public static final String REMOVE_PROCESS_TRIGGER = "removeprocesstrigger";
 
 
 
