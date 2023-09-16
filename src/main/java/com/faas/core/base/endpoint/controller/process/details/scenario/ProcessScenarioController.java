@@ -54,10 +54,9 @@ public class ProcessScenarioController {
     public ResponseEntity<?> createProcessScenario(@RequestParam long userId,
                                                    @RequestParam String processId,
                                                    @RequestParam String scenarioId,
-                                                   @RequestParam String scenarioSort,
                                                    @RequestParam int scenarioOrder) {
 
-        ProcessScenarioWSModel response = processScenarioMiddleware.createProcessScenario(userId,processId,scenarioId,scenarioSort,scenarioOrder);
+        ProcessScenarioWSModel response = processScenarioMiddleware.createProcessScenario(userId,processId,scenarioId,scenarioOrder);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

@@ -15,8 +15,8 @@ public class ProcessInquiryDBModel {
     private String processId;
     private String processInquiry;
     private String inquiryDesc;
-    private List<InquiryUrlDAO>inquiryUrls;
     private List<InquiryDataDAO>inquiryDatas;
+    private List<InquiryUrlDAO>inquiryUrls;
     private String inquiryType;
     private long uDate;
     private long cDate;
@@ -25,13 +25,13 @@ public class ProcessInquiryDBModel {
     public ProcessInquiryDBModel() {
     }
 
-    public ProcessInquiryDBModel(String id, String processId, String processInquiry, String inquiryDesc, List<InquiryUrlDAO> inquiryUrls, List<InquiryDataDAO> inquiryDatas, String inquiryType, long uDate, long cDate, int status) {
+    public ProcessInquiryDBModel(String id, String processId, String processInquiry, String inquiryDesc, List<InquiryDataDAO> inquiryDatas, List<InquiryUrlDAO> inquiryUrls, String inquiryType, long uDate, long cDate, int status) {
         this.id = id;
         this.processId = processId;
         this.processInquiry = processInquiry;
         this.inquiryDesc = inquiryDesc;
-        this.inquiryUrls = inquiryUrls;
         this.inquiryDatas = inquiryDatas;
+        this.inquiryUrls = inquiryUrls;
         this.inquiryType = inquiryType;
         this.uDate = uDate;
         this.cDate = cDate;
@@ -70,20 +70,20 @@ public class ProcessInquiryDBModel {
         this.inquiryDesc = inquiryDesc;
     }
 
-    public List<InquiryUrlDAO> getInquiryUrls() {
-        return inquiryUrls;
-    }
-
-    public void setInquiryUrls(List<InquiryUrlDAO> inquiryUrls) {
-        this.inquiryUrls = inquiryUrls;
-    }
-
     public List<InquiryDataDAO> getInquiryDatas() {
         return inquiryDatas;
     }
 
     public void setInquiryDatas(List<InquiryDataDAO> inquiryDatas) {
         this.inquiryDatas = inquiryDatas;
+    }
+
+    public List<InquiryUrlDAO> getInquiryUrls() {
+        return inquiryUrls;
+    }
+
+    public void setInquiryUrls(List<InquiryUrlDAO> inquiryUrls) {
+        this.inquiryUrls = inquiryUrls;
     }
 
     public String getInquiryType() {
