@@ -119,13 +119,7 @@ public class ProcessInquiryFramework {
             inquiryDataDAO.setcDate(appUtils.getCurrentTimeStamp());
             inquiryDataDAO.setStatus(1);
 
-            if (processInquiryDBModels.get(0).getInquiryDatas() != null){
-                processInquiryDBModels.get(0).getInquiryDatas().add(inquiryDataDAO);
-            }else {
-                List<InquiryDataDAO>inquiryDataDAOS = new ArrayList<>();
-                inquiryDataDAOS.add(inquiryDataDAO);
-                processInquiryDBModels.get(0).setInquiryDatas(inquiryDataDAOS);
-            }
+            processInquiryDBModels.get(0).getInquiryDatas().add(inquiryDataDAO);
             processInquiryDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
             processInquiryRepository.save(processInquiryDBModels.get(0));
 

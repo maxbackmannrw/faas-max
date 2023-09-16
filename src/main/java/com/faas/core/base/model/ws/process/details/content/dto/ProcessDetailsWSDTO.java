@@ -14,8 +14,8 @@ import java.util.List;
 public class ProcessDetailsWSDTO {
 
     private ProcessDBModel process;
-    private ProcessInquiryWSDTO processInquiry;
     private ProcessFlowWSDTO processFlow;
+    private ProcessInquiryWSDTO processInquiry;
     private ProcessTempWSDTO processTemps;
     private ProcessChannelWSDTO processChannels;
     private List<ProcessTriggerWSDTO> processTriggers;
