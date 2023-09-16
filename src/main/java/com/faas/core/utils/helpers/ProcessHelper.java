@@ -92,10 +92,10 @@ public class ProcessHelper {
 
         ProcessDetailsWSDTO processDetailsWSDTO = new ProcessDetailsWSDTO();
         processDetailsWSDTO.setProcess(processDBModel);
-        if (processDBModel.getProcessType().equalsIgnoreCase(AppConstant.INQUIRY_PROCESS)){
+        if (processDBModel.getProcessCategory().equalsIgnoreCase(AppConstant.INQUIRY_PROCESS)){
             processDetailsWSDTO.setProcessInquiry(createProcessInquiryWSDTO(processDBModel));
         }
-        if (processDBModel.getProcessType().equalsIgnoreCase(AppConstant.AUTOMATIC_PROCESS)){
+        if (processDBModel.getProcessCategory().equalsIgnoreCase(AppConstant.AUTOMATIC_PROCESS)){
             processDetailsWSDTO.setProcessFlow(createProcessFlowWSDTO(processDBModel));
         }
         processDetailsWSDTO.setProcessTemps(createProcessTempWSDTO(processDBModel.getId()));
