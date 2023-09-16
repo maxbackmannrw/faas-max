@@ -93,10 +93,10 @@ public class ProcessInquiryController {
     @RequestMapping(value = BaseRoute.CREATE_PROCESS_INQUIRY_DATA, method = RequestMethod.POST)
     public ResponseEntity<?> createProcessInquiryData(@RequestParam long userId,
                                                       @RequestParam String processId,
-                                                      @RequestParam long dateTypeId,
+                                                      @RequestParam long typeId,
                                                       @RequestParam String value) {
 
-        InquiryDataWSModel response = processInquiryMiddleware.createProcessInquiryData(userId,processId,dateTypeId,value);
+        InquiryDataWSModel response = processInquiryMiddleware.createProcessInquiryData(userId,processId,typeId,value);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -108,10 +108,10 @@ public class ProcessInquiryController {
     public ResponseEntity<?> updateProcessInquiryData(@RequestParam long userId,
                                                       @RequestParam String processId,
                                                       @RequestParam String dataId,
-                                                      @RequestParam long dateTypeId,
+                                                      @RequestParam long typeId,
                                                       @RequestParam String value) {
 
-        InquiryDataWSModel response = processInquiryMiddleware.updateProcessInquiryData(userId,processId,dataId,dateTypeId,value);
+        InquiryDataWSModel response = processInquiryMiddleware.updateProcessInquiryData(userId,processId,dataId,typeId,value);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

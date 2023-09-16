@@ -127,13 +127,13 @@ public class ProcessInquiryMiddleware {
     }
 
 
-    public InquiryDataWSModel createProcessInquiryData(long userId, String processId,long dateTypeId,String value) {
+    public InquiryDataWSModel createProcessInquiryData(long userId, String processId,long typeId,String value) {
 
         InquiryDataWSModel response = new InquiryDataWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<InquiryDataWSDTO>inquiryDataWSDTOS = new ArrayList<>();
 
-        InquiryDataWSDTO inquiryDataWSDTO = processInquiryFramework.createProcessInquiryDataService(userId,processId,dateTypeId,value);
+        InquiryDataWSDTO inquiryDataWSDTO = processInquiryFramework.createProcessInquiryDataService(userId,processId,typeId,value);
         if (inquiryDataWSDTO != null){
             inquiryDataWSDTOS.add(inquiryDataWSDTO);
         }
@@ -149,13 +149,13 @@ public class ProcessInquiryMiddleware {
     }
 
 
-    public InquiryDataWSModel updateProcessInquiryData(long userId,String processId,String dataId,long dateTypeId,String value) {
+    public InquiryDataWSModel updateProcessInquiryData(long userId,String processId,String dataId,long typeId,String value) {
 
         InquiryDataWSModel response = new InquiryDataWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<InquiryDataWSDTO>inquiryDataWSDTOS = new ArrayList<>();
 
-        InquiryDataWSDTO InquiryDataWSDTO = processInquiryFramework.updateProcessInquiryDataService(userId,processId,dataId,dateTypeId,value);
+        InquiryDataWSDTO InquiryDataWSDTO = processInquiryFramework.updateProcessInquiryDataService(userId,processId,dataId,typeId,value);
         if (InquiryDataWSDTO != null){
             inquiryDataWSDTOS.add(InquiryDataWSDTO);
         }

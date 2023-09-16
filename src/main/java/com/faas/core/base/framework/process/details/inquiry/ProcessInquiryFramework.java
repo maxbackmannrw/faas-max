@@ -106,10 +106,10 @@ public class ProcessInquiryFramework {
         return null;
     }
 
-    public InquiryDataWSDTO createProcessInquiryDataService(long userId, String processId,long dateTypeId,String value) {
+    public InquiryDataWSDTO createProcessInquiryDataService(long userId, String processId,long typeId,String value) {
 
         List<ProcessInquiryDBModel> processInquiryDBModels = processInquiryRepository.findByProcessId(processId);
-        Optional<DataTypeDBModel> dataTypeDBModel = dataTypeRepository.findById(dateTypeId);
+        Optional<DataTypeDBModel> dataTypeDBModel = dataTypeRepository.findById(typeId);
         if (!processInquiryDBModels.isEmpty() && dataTypeDBModel.isPresent()){
 
             InquiryDataDAO inquiryDataDAO = new InquiryDataDAO();
@@ -128,10 +128,11 @@ public class ProcessInquiryFramework {
         return null;
     }
 
-    public InquiryDataWSDTO updateProcessInquiryDataService(long userId,String processId,String dataId,long dateTypeId,String value) {
+
+    public InquiryDataWSDTO updateProcessInquiryDataService(long userId,String processId,String dataId,long typeId,String value) {
 
         List<ProcessInquiryDBModel> processInquiryDBModels = processInquiryRepository.findByProcessId(processId);
-        Optional<DataTypeDBModel> dataTypeDBModel = dataTypeRepository.findById(dateTypeId);
+        Optional<DataTypeDBModel> dataTypeDBModel = dataTypeRepository.findById(typeId);
         if (!processInquiryDBModels.isEmpty() && processInquiryDBModels.get(0).getInquiryDatas() != null && dataTypeDBModel.isPresent()){
             for (int i=0;i<processInquiryDBModels.get(0).getInquiryDatas().size();i++){
                 if (processInquiryDBModels.get(0).getInquiryDatas().get(i).getDataId().equalsIgnoreCase(dataId)){
