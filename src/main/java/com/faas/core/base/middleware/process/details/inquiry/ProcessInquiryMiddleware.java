@@ -44,12 +44,12 @@ public class ProcessInquiryMiddleware {
     }
 
 
-    public ProcessInquiryWSModel createProcessInquiry(long userId, String processId,String processInquiry,String inquiryDesc) {
+    public ProcessInquiryWSModel createProcessInquiry(long userId, String processId,String processInquiry,String inquiryDesc,String inquiryType) {
 
         ProcessInquiryWSModel response = new ProcessInquiryWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ProcessInquiryWSDTO processInquiryWSDTO = processInquiryFramework.createProcessInquiryService(userId,processId,processInquiry,inquiryDesc);
+        ProcessInquiryWSDTO processInquiryWSDTO = processInquiryFramework.createProcessInquiryService(userId,processId,processInquiry,inquiryDesc,inquiryType);
         if (processInquiryWSDTO != null){
             response.setProcessInquiry(processInquiryWSDTO);
         }

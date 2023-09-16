@@ -50,6 +50,8 @@ public class AppConstant {
     public static final String AUTOMATIC_PROCESS = "AUTOMATIC";
 
 
+
+
     public static final String ACTION_ELEMENT = "ACTION";
     public static final String AUTOMATION_ELEMENT = "AUTOMATION";
 
@@ -71,6 +73,10 @@ public class AppConstant {
     public static final String ACTIVE_INQUIRY = "ACTIVE_INQUIRY";
     public static final String FINISHED_INQUIRY = "FINISHED_INQUIRY";
     public static final String ALL_INQUIRIES = "ALL_INQUIRIES";
+
+    public static final String FORM_INQUIRY = "FORM_INQUIRY";
+
+
 
     public static final String NEW_FLOW = "NEW_FLOW";
     public static final String READY_FLOW = "READY_FLOW";

@@ -40,9 +40,10 @@ public class ProcessInquiryController {
     public ResponseEntity<?> createProcessInquiry(@RequestParam long userId,
                                                   @RequestParam String processId,
                                                   @RequestParam String processInquiry,
-                                                  @RequestParam String inquiryDesc) {
+                                                  @RequestParam String inquiryDesc,
+                                                  @RequestParam String inquiryType) {
 
-        ProcessInquiryWSModel response = processInquiryMiddleware.createProcessInquiry(userId,processId,processInquiry,inquiryDesc);
+        ProcessInquiryWSModel response = processInquiryMiddleware.createProcessInquiry(userId,processId,processInquiry,inquiryDesc,inquiryType);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
