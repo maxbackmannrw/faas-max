@@ -42,8 +42,12 @@ public class AppConstant {
     public static final String MANUAL_CAMPAIGN = "MANUAL";
     public static final String INQUIRY_CAMPAIGN = "INQUIRY";
     public static final String AUTOMATIC_CAMPAIGN = "AUTOMATIC";
-    public static final String AI_CAMPAIGN = "AI";
     public static final String ALL_CAMPAIGN = "ALL";
+
+
+    public static final String MANUAL_PROCESS = "MANUAL";
+    public static final String INQUIRY_PROCESS = "INQUIRY";
+    public static final String AUTOMATIC_PROCESS = "AUTOMATIC";
 
 
     public static final String ACTION_ELEMENT = "ACTION";

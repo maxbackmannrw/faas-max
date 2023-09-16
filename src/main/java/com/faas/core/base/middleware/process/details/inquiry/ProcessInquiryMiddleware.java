@@ -43,12 +43,13 @@ public class ProcessInquiryMiddleware {
         return response;
     }
 
-    public ProcessInquiryWSModel createProcessInquiry(long userId, String processId,String processInquiry,String inquiryType) {
+
+    public ProcessInquiryWSModel createProcessInquiry(long userId, String processId,String processInquiry,String inquiryDesc) {
 
         ProcessInquiryWSModel response = new ProcessInquiryWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ProcessInquiryWSDTO processInquiryWSDTO = processInquiryFramework.createProcessInquiryService(userId,processId,processInquiry,inquiryType);
+        ProcessInquiryWSDTO processInquiryWSDTO = processInquiryFramework.createProcessInquiryService(userId,processId,processInquiry,inquiryDesc);
         if (processInquiryWSDTO != null){
             response.setProcessInquiry(processInquiryWSDTO);
         }
@@ -256,6 +257,7 @@ public class ProcessInquiryMiddleware {
 
         return response;
     }
+
 
     public InquiryUrlWSModel updateProcessInquiryUrl(long userId, String processId,String urlId,String urlType,String url) {
 

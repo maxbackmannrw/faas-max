@@ -39,7 +39,7 @@ public class ProcessFlowFramework {
         return null;
     }
 
-    public ProcessFlowWSDTO createProcessFlowService(long userId,String processId,String processFlow,String flowType) {
+    public ProcessFlowWSDTO createProcessFlowService(long userId,String processId,String processFlow,String flowDesc) {
 
         List<ProcessFlowDBModel> processFlowDBModels = processFlowRepository.findByProcessId(processId);
         if (processFlowDBModels.isEmpty()){
@@ -47,9 +47,9 @@ public class ProcessFlowFramework {
             ProcessFlowDBModel processFlowDBModel = new ProcessFlowDBModel();
             processFlowDBModel.setProcessId(processId);
             processFlowDBModel.setProcessFlow(processFlow);
+            processFlowDBModel.setFlowDesc(flowDesc);
             processFlowDBModel.setFlowUrls(new ArrayList<>());
             processFlowDBModel.setFlowDatas(new ArrayList<>());
-            processFlowDBModel.setFlowType(flowType);
             processFlowDBModel.setuDate(appUtils.getCurrentTimeStamp());
             processFlowDBModel.setcDate(appUtils.getCurrentTimeStamp());
             processFlowDBModel.setStatus(1);
@@ -57,7 +57,7 @@ public class ProcessFlowFramework {
             return new ProcessFlowWSDTO(processFlowRepository.save(processFlowDBModel));
         }else {
             processFlowDBModels.get(0).setProcessFlow(processFlow);
-            processFlowDBModels.get(0).setFlowType(flowType);
+            processFlowDBModels.get(0).setFlowDesc(flowDesc);
             processFlowDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
 
             return new ProcessFlowWSDTO(processFlowRepository.save(processFlowDBModels.get(0)));

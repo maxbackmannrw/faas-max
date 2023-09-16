@@ -8,7 +8,6 @@ import com.faas.core.base.model.ws.process.details.flow.ProcessFlowWSModel;
 import com.faas.core.base.model.ws.process.details.flow.dto.FlowDataWSDTO;
 import com.faas.core.base.model.ws.process.details.flow.dto.FlowUrlWSDTO;
 import com.faas.core.base.model.ws.process.details.flow.dto.ProcessFlowWSDTO;
-import com.faas.core.base.model.ws.process.details.trigger.dto.ProcessTriggerWSDTO;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -44,13 +43,12 @@ public class ProcessFlowMiddleware {
         return response;
     }
 
-
-    public ProcessFlowWSModel createProcessFlow(long userId, String processId,String processFlow,String flowType) {
+    public ProcessFlowWSModel createProcessFlow(long userId, String processId,String processFlow,String flowDesc) {
 
         ProcessFlowWSModel response = new ProcessFlowWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ProcessFlowWSDTO processFlowWSDTO = processFlowFramework.createProcessFlowService(userId,processId,processFlow,flowType);
+        ProcessFlowWSDTO processFlowWSDTO = processFlowFramework.createProcessFlowService(userId,processId,processFlow,flowDesc);
         if (processFlowWSDTO != null){
             response.setProcessFlow(processFlowWSDTO);
         }
@@ -63,7 +61,6 @@ public class ProcessFlowMiddleware {
 
         return response;
     }
-
 
     public ProcessFlowWSModel removeProcessFlow(long userId, String processId) {
 

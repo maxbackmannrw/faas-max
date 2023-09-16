@@ -41,9 +41,9 @@ public class ProcessFlowController {
     public ResponseEntity<?> createProcessFlow(@RequestParam long userId,
                                                @RequestParam String processId,
                                                @RequestParam String processFlow,
-                                               @RequestParam String flowType) {
+                                               @RequestParam String flowDesc) {
 
-        ProcessFlowWSModel response = processFlowMiddleware.createProcessFlow(userId,processId,processFlow,flowType);
+        ProcessFlowWSModel response = processFlowMiddleware.createProcessFlow(userId,processId,processFlow,flowDesc);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -62,7 +62,6 @@ public class ProcessFlowController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
 
 

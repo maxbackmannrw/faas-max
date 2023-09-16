@@ -4,6 +4,8 @@ import com.faas.core.base.model.db.process.content.ProcessDBModel;
 import com.faas.core.base.model.ws.process.details.assets.dto.ProcessAssetWSDTO;
 import com.faas.core.base.model.ws.process.details.channel.content.dto.ProcessChannelWSDTO;
 import com.faas.core.base.model.ws.process.details.channel.temp.dto.ProcessTempWSDTO;
+import com.faas.core.base.model.ws.process.details.flow.dto.ProcessFlowWSDTO;
+import com.faas.core.base.model.ws.process.details.inquiry.dto.ProcessInquiryWSDTO;
 import com.faas.core.base.model.ws.process.details.scenario.dto.ProcessScenarioWSDTO;
 import com.faas.core.base.model.ws.process.details.trigger.dto.ProcessTriggerWSDTO;
 
@@ -12,6 +14,8 @@ import java.util.List;
 public class ProcessDetailsWSDTO {
 
     private ProcessDBModel process;
+    private ProcessInquiryWSDTO processInquiry;
+    private ProcessFlowWSDTO processFlow;
     private ProcessTempWSDTO processTemps;
     private ProcessChannelWSDTO processChannels;
     private List<ProcessTriggerWSDTO> processTriggers;
@@ -21,8 +25,10 @@ public class ProcessDetailsWSDTO {
     public ProcessDetailsWSDTO() {
     }
 
-    public ProcessDetailsWSDTO(ProcessDBModel process, ProcessTempWSDTO processTemps, ProcessChannelWSDTO processChannels, List<ProcessTriggerWSDTO> processTriggers, List<ProcessScenarioWSDTO> processScenarios, List<ProcessAssetWSDTO> processAssets) {
+    public ProcessDetailsWSDTO(ProcessDBModel process, ProcessInquiryWSDTO processInquiry, ProcessFlowWSDTO processFlow, ProcessTempWSDTO processTemps, ProcessChannelWSDTO processChannels, List<ProcessTriggerWSDTO> processTriggers, List<ProcessScenarioWSDTO> processScenarios, List<ProcessAssetWSDTO> processAssets) {
         this.process = process;
+        this.processInquiry = processInquiry;
+        this.processFlow = processFlow;
         this.processTemps = processTemps;
         this.processChannels = processChannels;
         this.processTriggers = processTriggers;
@@ -36,6 +42,22 @@ public class ProcessDetailsWSDTO {
 
     public void setProcess(ProcessDBModel process) {
         this.process = process;
+    }
+
+    public ProcessInquiryWSDTO getProcessInquiry() {
+        return processInquiry;
+    }
+
+    public void setProcessInquiry(ProcessInquiryWSDTO processInquiry) {
+        this.processInquiry = processInquiry;
+    }
+
+    public ProcessFlowWSDTO getProcessFlow() {
+        return processFlow;
+    }
+
+    public void setProcessFlow(ProcessFlowWSDTO processFlow) {
+        this.processFlow = processFlow;
     }
 
     public ProcessTempWSDTO getProcessTemps() {

@@ -36,21 +36,19 @@ public class ProcessInquiryController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.CREATE_PROCESS_INQUIRY, method = RequestMethod.POST)
     public ResponseEntity<?> createProcessInquiry(@RequestParam long userId,
                                                   @RequestParam String processId,
                                                   @RequestParam String processInquiry,
-                                                  @RequestParam String inquiryType) {
+                                                  @RequestParam String inquiryDesc) {
 
-        ProcessInquiryWSModel response = processInquiryMiddleware.createProcessInquiry(userId,processId,processInquiry,inquiryType);
+        ProcessInquiryWSModel response = processInquiryMiddleware.createProcessInquiry(userId,processId,processInquiry,inquiryDesc);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.REMOVE_PROCESS_INQUIRY, method = RequestMethod.POST)
     public ResponseEntity<?> removeProcessInquiry(@RequestParam long userId,
@@ -78,7 +76,6 @@ public class ProcessInquiryController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.GET_PROCESS_INQUIRY_DATA, method = RequestMethod.POST)
     public ResponseEntity<?> getProcessInquiryData(@RequestParam long userId,
                                                    @RequestParam String processId,
@@ -91,7 +88,6 @@ public class ProcessInquiryController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.CREATE_PROCESS_INQUIRY_DATA, method = RequestMethod.POST)
     public ResponseEntity<?> createProcessInquiryData(@RequestParam long userId,
@@ -106,7 +102,6 @@ public class ProcessInquiryController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.UPDATE_PROCESS_INQUIRY_DATA, method = RequestMethod.POST)
     public ResponseEntity<?> updateProcessInquiryData(@RequestParam long userId,
@@ -150,7 +145,6 @@ public class ProcessInquiryController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.GET_PROCESS_INQUIRY_URL, method = RequestMethod.POST)
     public ResponseEntity<?> getProcessInquiryUrl(@RequestParam long userId,
                                                   @RequestParam String processId,
@@ -163,7 +157,6 @@ public class ProcessInquiryController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.CREATE_PROCESS_INQUIRY_URL, method = RequestMethod.POST)
     public ResponseEntity<?> createProcessInquiryUrl(@RequestParam long userId,
@@ -178,7 +171,6 @@ public class ProcessInquiryController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.UPDATE_PROCESS_INQUIRY_URL, method = RequestMethod.POST)
     public ResponseEntity<?> updateProcessInquiryUrl(@RequestParam long userId,
@@ -195,7 +187,6 @@ public class ProcessInquiryController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.REMOVE_PROCESS_INQUIRY_URL, method = RequestMethod.POST)
     public ResponseEntity<?> removeProcessInquiryUrl(@RequestParam long userId,
                                                      @RequestParam String processId,
@@ -208,6 +199,7 @@ public class ProcessInquiryController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
+
 
 
 }

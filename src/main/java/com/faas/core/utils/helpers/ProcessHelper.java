@@ -6,12 +6,16 @@ import com.faas.core.base.model.db.process.details.channel.temp.EmailTempDBModel
 import com.faas.core.base.model.db.process.details.channel.temp.PushTempDBModel;
 import com.faas.core.base.model.db.process.details.channel.temp.SmsMessageTempDBModel;
 import com.faas.core.base.model.db.process.details.channel.temp.WappMessageTempDBModel;
+import com.faas.core.base.model.db.process.details.flow.ProcessFlowDBModel;
+import com.faas.core.base.model.db.process.details.inquiry.ProcessInquiryDBModel;
 import com.faas.core.base.model.db.process.details.scenario.ProcessScenarioDBModel;
 import com.faas.core.base.model.db.process.details.trigger.ProcessTriggerDBModel;
 import com.faas.core.base.model.db.scenario.content.ScenarioDBModel;
 import com.faas.core.base.model.ws.process.details.channel.content.dto.*;
 import com.faas.core.base.model.ws.process.details.channel.temp.dto.*;
 import com.faas.core.base.model.ws.process.details.content.dto.ProcessDetailsWSDTO;
+import com.faas.core.base.model.ws.process.details.flow.dto.ProcessFlowWSDTO;
+import com.faas.core.base.model.ws.process.details.inquiry.dto.ProcessInquiryWSDTO;
 import com.faas.core.base.model.ws.process.details.scenario.dto.ProcessScenarioWSDTO;
 import com.faas.core.base.model.ws.process.details.trigger.dto.ProcessTriggerWSDTO;
 import com.faas.core.base.repo.process.details.channel.content.*;
@@ -19,9 +23,12 @@ import com.faas.core.base.repo.process.details.channel.temp.EmailTempRepository;
 import com.faas.core.base.repo.process.details.channel.temp.PushTempRepository;
 import com.faas.core.base.repo.process.details.channel.temp.SmsMessageTempRepository;
 import com.faas.core.base.repo.process.details.channel.temp.WappMessageTempRepository;
+import com.faas.core.base.repo.process.details.flow.ProcessFlowRepository;
+import com.faas.core.base.repo.process.details.inquiry.ProcessInquiryRepository;
 import com.faas.core.base.repo.process.details.scenario.ProcessScenarioRepository;
 import com.faas.core.base.repo.process.details.trigger.ProcessTriggerRepository;
 import com.faas.core.base.repo.scenario.content.ScenarioRepository;
+import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -72,14 +79,25 @@ public class ProcessHelper {
     ProcessScenarioRepository processScenarioRepository;
 
     @Autowired
+    ProcessInquiryRepository processInquiryRepository;
+
+    @Autowired
+    ProcessFlowRepository processFlowRepository;
+
+    @Autowired
     AppUtils appUtils;
 
 
     public ProcessDetailsWSDTO createProcessDetailsWSDTO(ProcessDBModel processDBModel) {
 
         ProcessDetailsWSDTO processDetailsWSDTO = new ProcessDetailsWSDTO();
-
         processDetailsWSDTO.setProcess(processDBModel);
+        if (processDBModel.getProcessType().equalsIgnoreCase(AppConstant.INQUIRY_PROCESS)){
+            processDetailsWSDTO.setProcessInquiry(createProcessInquiryWSDTO(processDBModel));
+        }
+        if (processDBModel.getProcessType().equalsIgnoreCase(AppConstant.AUTOMATIC_PROCESS)){
+            processDetailsWSDTO.setProcessFlow(createProcessFlowWSDTO(processDBModel));
+        }
         processDetailsWSDTO.setProcessTemps(createProcessTempWSDTO(processDBModel.getId()));
         processDetailsWSDTO.setProcessChannels(createProcessChannelWSDTO(processDBModel.getId()));
         processDetailsWSDTO.setProcessTriggers(createProcessTriggersWSDTOS(processDBModel));
@@ -87,6 +105,26 @@ public class ProcessHelper {
         processDetailsWSDTO.setProcessAssets(new ArrayList<>());
 
         return processDetailsWSDTO;
+    }
+
+
+    public ProcessInquiryWSDTO createProcessInquiryWSDTO(ProcessDBModel processDBModel){
+
+        List<ProcessInquiryDBModel> processInquiryDBModels = processInquiryRepository.findByProcessId(processDBModel.getId());
+        if (!processInquiryDBModels.isEmpty()){
+            return new ProcessInquiryWSDTO(processInquiryDBModels.get(0));
+        }
+        return null;
+    }
+
+
+    public ProcessFlowWSDTO createProcessFlowWSDTO(ProcessDBModel processDBModel){
+
+        List<ProcessFlowDBModel> processFlowDBModels = processFlowRepository.findByProcessId(processDBModel.getId());
+        if (!processFlowDBModels.isEmpty()){
+            return new ProcessFlowWSDTO(processFlowDBModels.get(0));
+        }
+        return null;
     }
 
 

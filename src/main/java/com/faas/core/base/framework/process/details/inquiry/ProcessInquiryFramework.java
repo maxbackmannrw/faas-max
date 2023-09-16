@@ -39,7 +39,7 @@ public class ProcessInquiryFramework {
         return null;
     }
 
-    public ProcessInquiryWSDTO createProcessInquiryService(long userId, String processId,String processInquiry,String inquiryType) {
+    public ProcessInquiryWSDTO createProcessInquiryService(long userId, String processId,String processInquiry,String inquiryDesc) {
 
         List<ProcessInquiryDBModel> processInquiryDBModels = processInquiryRepository.findByProcessId(processId);
         if (processInquiryDBModels.isEmpty()){
@@ -47,9 +47,9 @@ public class ProcessInquiryFramework {
             ProcessInquiryDBModel processInquiryDBModel = new ProcessInquiryDBModel();
             processInquiryDBModel.setProcessId(processId);
             processInquiryDBModel.setProcessInquiry(processInquiry);
+            processInquiryDBModel.setInquiryDesc(inquiryDesc);
             processInquiryDBModel.setInquiryUrls(new ArrayList<>());
             processInquiryDBModel.setInquiryDatas(new ArrayList<>());
-            processInquiryDBModel.setInquiryType(inquiryType);
             processInquiryDBModel.setcDate(appUtils.getCurrentTimeStamp());
             processInquiryDBModel.setuDate(appUtils.getCurrentTimeStamp());
             processInquiryDBModel.setStatus(1);
@@ -58,13 +58,12 @@ public class ProcessInquiryFramework {
         }else {
 
             processInquiryDBModels.get(0).setProcessInquiry(processInquiry);
-            processInquiryDBModels.get(0).setInquiryType(inquiryType);
+            processInquiryDBModels.get(0).setInquiryDesc(inquiryDesc);
             processInquiryDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
 
             return new ProcessInquiryWSDTO(processInquiryRepository.save(processInquiryDBModels.get(0)));
         }
     }
-
 
 
     public ProcessInquiryWSDTO removeProcessInquiryService(long userId, String processId) {
