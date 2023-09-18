@@ -43,17 +43,17 @@ public class ProcessFlowMiddleware {
         return response;
     }
 
-    public ProcessFlowWSModel createProcessFlow(long userId, String processId,String processFlow,String flowDesc) {
+    public ProcessFlowWSModel createProcessFlow(long userId,String processId,String processFlow,String flowDesc,String flowType) {
 
         ProcessFlowWSModel response = new ProcessFlowWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ProcessFlowWSDTO processFlowWSDTO = processFlowFramework.createProcessFlowService(userId,processId,processFlow,flowDesc);
+        ProcessFlowWSDTO processFlowWSDTO = processFlowFramework.createProcessFlowService(userId,processId,processFlow,flowDesc,flowType);
         if (processFlowWSDTO != null){
             response.setProcessFlow(processFlowWSDTO);
         }
 
-        general.setOperation("getProcessFlow");
+        general.setOperation("createProcessFlow");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -72,7 +72,7 @@ public class ProcessFlowMiddleware {
             response.setProcessFlow(processFlowWSDTO);
         }
 
-        general.setOperation("getProcessFlow");
+        general.setOperation("removeProcessFlow");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -123,13 +123,13 @@ public class ProcessFlowMiddleware {
         return response;
     }
 
-    public FlowDataWSModel createProcessFlowData(long userId,String processId,long dataTypeId,String value) {
+    public FlowDataWSModel createProcessFlowData(long userId,String processId,long typeId,String value) {
 
         FlowDataWSModel response = new FlowDataWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<FlowDataWSDTO>flowDataWSDTOS = new ArrayList<>();
 
-        FlowDataWSDTO flowDataWSDTO = processFlowFramework.createProcessFlowDataService(userId,processId,dataTypeId,value);
+        FlowDataWSDTO flowDataWSDTO = processFlowFramework.createProcessFlowDataService(userId,processId,typeId,value);
         if (flowDataWSDTO != null){
             flowDataWSDTOS.add(flowDataWSDTO);
         }
@@ -144,13 +144,13 @@ public class ProcessFlowMiddleware {
         return response;
     }
 
-    public FlowDataWSModel updateProcessFlowData(long userId, String processId,String dataId,long dataTypeId,String value) {
+    public FlowDataWSModel updateProcessFlowData(long userId, String processId,String dataId,long typeId,String value) {
 
         FlowDataWSModel response = new FlowDataWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<FlowDataWSDTO>flowDataWSDTOS = new ArrayList<>();
 
-        FlowDataWSDTO flowDataWSDTO = processFlowFramework.updateProcessFlowDataService(userId,processId,dataId,dataTypeId,value);
+        FlowDataWSDTO flowDataWSDTO = processFlowFramework.updateProcessFlowDataService(userId,processId,dataId,typeId,value);
         if (flowDataWSDTO != null){
             flowDataWSDTOS.add(flowDataWSDTO);
         }

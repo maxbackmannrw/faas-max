@@ -17,6 +17,7 @@ public class ProcessFlowDBModel {
     private String flowDesc;
     private List<FlowUrlDAO>flowUrls;
     private List<FlowDataDAO>flowDatas;
+    private String flowType;
     private long uDate;
     private long cDate;
     private int status;
@@ -24,13 +25,14 @@ public class ProcessFlowDBModel {
     public ProcessFlowDBModel() {
     }
 
-    public ProcessFlowDBModel(String id, String processId, String processFlow, String flowDesc, List<FlowUrlDAO> flowUrls, List<FlowDataDAO> flowDatas, long uDate, long cDate, int status) {
+    public ProcessFlowDBModel(String id, String processId, String processFlow, String flowDesc, List<FlowUrlDAO> flowUrls, List<FlowDataDAO> flowDatas, String flowType, long uDate, long cDate, int status) {
         this.id = id;
         this.processId = processId;
         this.processFlow = processFlow;
         this.flowDesc = flowDesc;
         this.flowUrls = flowUrls;
         this.flowDatas = flowDatas;
+        this.flowType = flowType;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
@@ -82,6 +84,14 @@ public class ProcessFlowDBModel {
 
     public void setFlowDatas(List<FlowDataDAO> flowDatas) {
         this.flowDatas = flowDatas;
+    }
+
+    public String getFlowType() {
+        return flowType;
+    }
+
+    public void setFlowType(String flowType) {
+        this.flowType = flowType;
     }
 
     public long getuDate() {

@@ -4,7 +4,6 @@ import com.faas.core.base.middleware.process.details.flow.ProcessFlowMiddleware;
 import com.faas.core.base.model.ws.process.details.flow.FlowDataWSModel;
 import com.faas.core.base.model.ws.process.details.flow.FlowUrlWSModel;
 import com.faas.core.base.model.ws.process.details.flow.ProcessFlowWSModel;
-import com.faas.core.base.model.ws.process.details.inquiry.ProcessInquiryWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,9 +40,10 @@ public class ProcessFlowController {
     public ResponseEntity<?> createProcessFlow(@RequestParam long userId,
                                                @RequestParam String processId,
                                                @RequestParam String processFlow,
-                                               @RequestParam String flowDesc) {
+                                               @RequestParam String flowDesc,
+                                               @RequestParam String flowType) {
 
-        ProcessFlowWSModel response = processFlowMiddleware.createProcessFlow(userId,processId,processFlow,flowDesc);
+        ProcessFlowWSModel response = processFlowMiddleware.createProcessFlow(userId,processId,processFlow,flowDesc,flowType);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -93,10 +93,10 @@ public class ProcessFlowController {
     @RequestMapping(value = BaseRoute.CREATE_PROCESS_FLOW_DATA, method = RequestMethod.POST)
     public ResponseEntity<?> createProcessFlowData(@RequestParam long userId,
                                                    @RequestParam String processId,
-                                                   @RequestParam long dataTypeId,
+                                                   @RequestParam long typeId,
                                                    @RequestParam String value) {
 
-        FlowDataWSModel response = processFlowMiddleware.createProcessFlowData(userId,processId,dataTypeId,value);
+        FlowDataWSModel response = processFlowMiddleware.createProcessFlowData(userId,processId,typeId,value);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -108,10 +108,10 @@ public class ProcessFlowController {
     public ResponseEntity<?> updateProcessFlowData(@RequestParam long userId,
                                                    @RequestParam String processId,
                                                    @RequestParam String dataId,
-                                                   @RequestParam long dataTypeId,
+                                                   @RequestParam long typeId,
                                                    @RequestParam String value) {
 
-        FlowDataWSModel response = processFlowMiddleware.updateProcessFlowData(userId,processId,dataId,dataTypeId,value);
+        FlowDataWSModel response = processFlowMiddleware.updateProcessFlowData(userId,processId,dataId,typeId,value);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

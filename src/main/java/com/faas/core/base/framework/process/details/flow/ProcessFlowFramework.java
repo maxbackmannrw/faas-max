@@ -39,7 +39,7 @@ public class ProcessFlowFramework {
         return null;
     }
 
-    public ProcessFlowWSDTO createProcessFlowService(long userId,String processId,String processFlow,String flowDesc) {
+    public ProcessFlowWSDTO createProcessFlowService(long userId,String processId,String processFlow,String flowDesc,String flowType) {
 
         List<ProcessFlowDBModel> processFlowDBModels = processFlowRepository.findByProcessId(processId);
         if (processFlowDBModels.isEmpty()){
@@ -50,6 +50,7 @@ public class ProcessFlowFramework {
             processFlowDBModel.setFlowDesc(flowDesc);
             processFlowDBModel.setFlowUrls(new ArrayList<>());
             processFlowDBModel.setFlowDatas(new ArrayList<>());
+            processFlowDBModel.setFlowType(flowType);
             processFlowDBModel.setuDate(appUtils.getCurrentTimeStamp());
             processFlowDBModel.setcDate(appUtils.getCurrentTimeStamp());
             processFlowDBModel.setStatus(1);
@@ -63,7 +64,6 @@ public class ProcessFlowFramework {
             return new ProcessFlowWSDTO(processFlowRepository.save(processFlowDBModels.get(0)));
         }
     }
-
 
     public ProcessFlowWSDTO removeProcessFlowService(long userId, String processId) {
 
@@ -103,10 +103,10 @@ public class ProcessFlowFramework {
         return null;
     }
 
-    public FlowDataWSDTO createProcessFlowDataService(long userId,String processId,long dataTypeId,String value) {
+    public FlowDataWSDTO createProcessFlowDataService(long userId,String processId,long typeId,String value) {
 
         List<ProcessFlowDBModel> processFlowDBModels = processFlowRepository.findByProcessId(processId);
-        Optional<DataTypeDBModel> dataTypeDBModel = dataTypeRepository.findById(dataTypeId);
+        Optional<DataTypeDBModel> dataTypeDBModel = dataTypeRepository.findById(typeId);
         if (!processFlowDBModels.isEmpty() && dataTypeDBModel.isPresent()){
 
             FlowDataDAO flowDataDAO = new FlowDataDAO();
@@ -124,10 +124,11 @@ public class ProcessFlowFramework {
         return null;
     }
 
-    public FlowDataWSDTO updateProcessFlowDataService(long userId, String processId,String dataId,long dataTypeId,String value) {
+    public FlowDataWSDTO updateProcessFlowDataService(long userId, String processId,String dataId,long typeId,String value) {
 
         List<ProcessFlowDBModel> processFlowDBModels = processFlowRepository.findByProcessId(processId);
-        Optional<DataTypeDBModel> dataTypeDBModel = dataTypeRepository.findById(dataTypeId);
+        Optional<DataTypeDBModel> dataTypeDBModel = dataTypeRepository.findById(typeId);
+
         if (!processFlowDBModels.isEmpty() && processFlowDBModels.get(0).getFlowDatas() != null && dataTypeDBModel.isPresent()){
             for (int i=0;i<processFlowDBModels.get(0).getFlowDatas().size();i++){
                 if (processFlowDBModels.get(0).getFlowDatas().get(i).getDataId().equalsIgnoreCase(dataId)){
