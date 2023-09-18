@@ -59,6 +59,7 @@ public class ProcessFlowFramework {
         }else {
             processFlowDBModels.get(0).setProcessFlow(processFlow);
             processFlowDBModels.get(0).setFlowDesc(flowDesc);
+            processFlowDBModels.get(0).setFlowType(flowType);
             processFlowDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
 
             return new ProcessFlowWSDTO(processFlowRepository.save(processFlowDBModels.get(0)));
