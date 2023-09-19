@@ -1,4 +1,4 @@
-package com.faas.core.base.endpoint.controller.campaign.details.content.flow;
+package com.faas.core.base.endpoint.controller.campaign.details.client.flow;
 
 import com.faas.core.base.middleware.campaign.details.client.flow.CampaignFlowMiddleware;
 import com.faas.core.base.model.ws.campaign.details.client.flow.CampaignFlowWSModel;

@@ -1,4 +1,4 @@
-package com.faas.core.base.endpoint.controller.campaign.details.content.inquiry;
+package com.faas.core.base.endpoint.controller.campaign.details.client.inquiry;
 
 import com.faas.core.base.middleware.campaign.details.client.inquiry.CampaignInquiryMiddleware;
 import com.faas.core.base.model.ws.campaign.details.client.inquiry.CampaignInquiryWSModel;
