@@ -204,6 +204,7 @@ public class ProcessFlowFramework {
 
             processFlowDBModels.get(0).getFlowUrls().add(flowUrlDAO);
             processFlowDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
+            processFlowRepository.save(processFlowDBModels.get(0));
 
             return new FlowUrlWSDTO(flowUrlDAO);
         }
@@ -216,9 +217,11 @@ public class ProcessFlowFramework {
         if (!processFlowDBModels.isEmpty() && processFlowDBModels.get(0).getFlowUrls() != null){
             for (int i=0;i<processFlowDBModels.get(0).getFlowUrls().size();i++){
                 if (processFlowDBModels.get(0).getFlowUrls().get(i).getUrlId().equalsIgnoreCase(urlId)){
+
                     processFlowDBModels.get(0).getFlowUrls().get(i).setUrlType(urlType);
                     processFlowDBModels.get(0).getFlowUrls().get(i).setUrl(url);
                     processFlowDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
+                    processFlowRepository.save(processFlowDBModels.get(0));
 
                     return new FlowUrlWSDTO(processFlowDBModels.get(0).getFlowUrls().get(i));
                 }
@@ -233,8 +236,10 @@ public class ProcessFlowFramework {
         if (!processFlowDBModels.isEmpty() && processFlowDBModels.get(0).getFlowUrls() != null){
             for (int i=0;i<processFlowDBModels.get(0).getFlowUrls().size();i++){
                 if (processFlowDBModels.get(0).getFlowUrls().get(i).getUrlId().equalsIgnoreCase(urlId)){
+
                     processFlowDBModels.get(0).getFlowUrls().remove(i);
                     processFlowDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
+                    processFlowRepository.save(processFlowDBModels.get(0));
 
                     return new FlowUrlWSDTO(processFlowDBModels.get(0).getFlowUrls().get(i));
                 }
