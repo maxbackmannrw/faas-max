@@ -130,7 +130,6 @@ public class ProcessFlowFramework {
 
         List<ProcessFlowDBModel> processFlowDBModels = processFlowRepository.findByProcessId(processId);
         Optional<DataTypeDBModel> dataTypeDBModel = dataTypeRepository.findById(typeId);
-
         if (!processFlowDBModels.isEmpty() && processFlowDBModels.get(0).getFlowDatas() != null && dataTypeDBModel.isPresent()){
             for (int i=0;i<processFlowDBModels.get(0).getFlowDatas().size();i++){
                 if (processFlowDBModels.get(0).getFlowDatas().get(i).getDataId().equalsIgnoreCase(dataId)){
@@ -153,8 +152,10 @@ public class ProcessFlowFramework {
         if (!processFlowDBModels.isEmpty() && processFlowDBModels.get(0).getFlowDatas() != null){
             for (int i=0;i<processFlowDBModels.get(0).getFlowDatas().size();i++){
                 if (processFlowDBModels.get(0).getFlowDatas().get(i).getDataId().equalsIgnoreCase(dataId)){
+
                     processFlowDBModels.get(0).getFlowDatas().remove(i);
                     processFlowDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
+                    processFlowRepository.save(processFlowDBModels.get(0));
 
                     return new FlowDataWSDTO(processFlowDBModels.get(0).getFlowDatas().get(i));
                 }
