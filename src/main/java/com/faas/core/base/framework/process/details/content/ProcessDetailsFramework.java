@@ -47,10 +47,10 @@ public class ProcessDetailsFramework {
     }
 
 
-    public ProcessDataDAO createProcessDataService(String processId, long dataTypeId, String value) {
+    public ProcessDataDAO createProcessDataService(String processId, long typeId, String value) {
 
         Optional<ProcessDBModel> processDBModel = processRepository.findById(processId);
-        Optional<DataTypeDBModel> dataTypeDBModel = dataTypeRepository.findById(dataTypeId);
+        Optional<DataTypeDBModel> dataTypeDBModel = dataTypeRepository.findById(typeId);
         if (processDBModel.isPresent() && dataTypeDBModel.isPresent()) {
 
             ProcessDataDAO processDataDAO = new ProcessDataDAO();
@@ -70,10 +70,10 @@ public class ProcessDetailsFramework {
     }
 
 
-    public ProcessDataDAO updateProcessDataService(String processId, String dataId, long dataTypeId, String value) {
+    public ProcessDataDAO updateProcessDataService(String processId, String dataId, long typeId, String value) {
 
         Optional<ProcessDBModel> processDBModel = processRepository.findById(processId);
-        Optional<DataTypeDBModel> dataTypeDBModel = dataTypeRepository.findById(dataTypeId);
+        Optional<DataTypeDBModel> dataTypeDBModel = dataTypeRepository.findById(typeId);
         if (processDBModel.isPresent() && dataTypeDBModel.isPresent()) {
             for (int i = 0; i < processDBModel.get().getProcessDatas().size(); i++) {
                 if (processDBModel.get().getProcessDatas().get(i).getDataId().equalsIgnoreCase(dataId)) {

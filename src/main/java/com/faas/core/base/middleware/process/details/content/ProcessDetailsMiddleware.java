@@ -83,13 +83,13 @@ public class ProcessDetailsMiddleware {
     }
 
 
-    public ProcessDataWSModel createProcessData(long userId,String processId,long dataTypeId,String value) {
+    public ProcessDataWSModel createProcessData(long userId,String processId,long typeId,String value) {
 
         ProcessDataWSModel response = new ProcessDataWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessDataWSDTO> processDataWSDTOS = new ArrayList<>();
 
-        ProcessDataDAO processDataDAO = processDetailsFramework.createProcessDataService(processId,dataTypeId,value);
+        ProcessDataDAO processDataDAO = processDetailsFramework.createProcessDataService(processId,typeId,value);
         if (processDataDAO != null) {
             processDataWSDTOS.add(processDetailsFramework.fillProcessDataWSDTO(processDataDAO));
         }
@@ -105,13 +105,13 @@ public class ProcessDetailsMiddleware {
     }
 
 
-    public ProcessDataWSModel updateProcessData(long userId,String processId,String dataId,long dataTypeId,String value) {
+    public ProcessDataWSModel updateProcessData(long userId,String processId,String dataId,long typeId,String value) {
 
         ProcessDataWSModel response = new ProcessDataWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessDataWSDTO> processDataWSDTOS = new ArrayList<>();
 
-        ProcessDataDAO processDataDAO = processDetailsFramework.updateProcessDataService(processId,dataId,dataTypeId,value);
+        ProcessDataDAO processDataDAO = processDetailsFramework.updateProcessDataService(processId,dataId,typeId,value);
         if (processDataDAO != null) {
             processDataWSDTOS.add(processDetailsFramework.fillProcessDataWSDTO(processDataDAO));
         }

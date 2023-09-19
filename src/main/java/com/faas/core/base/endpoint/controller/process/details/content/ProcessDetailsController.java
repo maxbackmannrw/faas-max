@@ -67,10 +67,10 @@ public class ProcessDetailsController {
     @RequestMapping(value = BaseRoute.CREATE_PROCESS_DATA, method = RequestMethod.POST)
     public ResponseEntity<?> createProcessData(@RequestParam long userId,
                                                @RequestParam String processId,
-                                               @RequestParam long dataTypeId,
+                                               @RequestParam long typeId,
                                                @RequestParam String value) {
 
-        ProcessDataWSModel response = processDetailsMiddleware.createProcessData(userId,processId,dataTypeId,value);
+        ProcessDataWSModel response = processDetailsMiddleware.createProcessData(userId,processId,typeId,value);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -83,10 +83,10 @@ public class ProcessDetailsController {
     public ResponseEntity<?> updateProcessData(@RequestParam long userId,
                                                @RequestParam String processId,
                                                @RequestParam String dataId,
-                                               @RequestParam long dataTypeId,
+                                               @RequestParam long typeId,
                                                @RequestParam String value) {
 
-        ProcessDataWSModel response = processDetailsMiddleware.updateProcessData(userId,processId,dataId,dataTypeId,value);
+        ProcessDataWSModel response = processDetailsMiddleware.updateProcessData(userId,processId,dataId,typeId,value);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
