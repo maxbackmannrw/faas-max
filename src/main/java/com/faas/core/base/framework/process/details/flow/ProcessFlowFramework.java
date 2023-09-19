@@ -161,7 +161,6 @@ public class ProcessFlowFramework {
     }
 
 
-
     public List<FlowUrlWSDTO> getProcessFlowUrlsService(long userId, String processId) {
 
         List<ProcessFlowDBModel> processFlowDBModels = processFlowRepository.findByProcessId(processId);
