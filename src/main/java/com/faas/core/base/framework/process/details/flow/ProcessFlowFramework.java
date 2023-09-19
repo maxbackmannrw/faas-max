@@ -119,6 +119,7 @@ public class ProcessFlowFramework {
 
             processFlowDBModels.get(0).getFlowDatas().add(flowDataDAO);
             processFlowDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
+            processFlowRepository.save(processFlowDBModels.get(0));
 
             return new FlowDataWSDTO(flowDataDAO);
         }
