@@ -105,5 +105,4 @@ public class CampaignManualClientController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
 }
