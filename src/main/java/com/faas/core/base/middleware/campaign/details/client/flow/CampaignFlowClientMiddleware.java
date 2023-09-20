@@ -1,6 +1,6 @@
 package com.faas.core.base.middleware.campaign.details.client.flow;
 
-import com.faas.core.base.framework.campaign.details.client.flow.CampaignFlowFramework;
+import com.faas.core.base.framework.campaign.details.client.flow.CampaignFlowClientFramework;
 import com.faas.core.base.model.ws.campaign.details.client.flow.CampaignFlowWSModel;
 import com.faas.core.base.model.ws.campaign.details.client.flow.dto.CampaignFlowWSDTO;
 import com.faas.core.base.model.ws.client.flow.ClientFlowRequest;
@@ -15,24 +15,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class CampaignFlowMiddleware {
+public class CampaignFlowClientMiddleware {
 
 
     @Autowired
-    CampaignFlowFramework campaignFlowFramework;
+    CampaignFlowClientFramework campaignFlowClientFramework;
 
 
-    public CampaignFlowWSModel searchCampaignFlows(long userId,String campaignId,String clientCity,String clientCountry,int reqPage,int reqSize) {
+    public CampaignFlowWSModel searchCampaignFlowClients(long userId,String campaignId,String clientCity,String clientCountry,int reqPage,int reqSize) {
 
         CampaignFlowWSModel response = new CampaignFlowWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        CampaignFlowWSDTO campaignFlowWSDTO = campaignFlowFramework.searchCampaignFlowsService(userId,campaignId,clientCity,clientCountry,reqPage,reqSize);
+        CampaignFlowWSDTO campaignFlowWSDTO = campaignFlowClientFramework.searchCampaignFlowClientsService(userId,campaignId,clientCity,clientCountry,reqPage,reqSize);
         if (campaignFlowWSDTO != null){
             response.setCampaignFlow(campaignFlowWSDTO);
         }
 
-        general.setOperation("searchCampaignFlows");
+        general.setOperation("searchCampaignFlowClients");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -42,17 +42,17 @@ public class CampaignFlowMiddleware {
     }
 
 
-    public CampaignFlowWSModel getCampaignFlows(long userId, String campaignId, int reqPage, int reqSize) {
+    public CampaignFlowWSModel getCampaignFlowClients(long userId, String campaignId, int reqPage, int reqSize) {
 
         CampaignFlowWSModel response = new CampaignFlowWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        CampaignFlowWSDTO campaignFlowWSDTO = campaignFlowFramework.getCampaignFlowsService(userId,campaignId,reqPage,reqSize);
+        CampaignFlowWSDTO campaignFlowWSDTO = campaignFlowClientFramework.getCampaignFlowClientsService(userId,campaignId,reqPage,reqSize);
         if (campaignFlowWSDTO != null){
             response.setCampaignFlow(campaignFlowWSDTO);
         }
 
-        general.setOperation("getCampaignFlows");
+        general.setOperation("getCampaignFlowClients");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -62,19 +62,19 @@ public class CampaignFlowMiddleware {
     }
 
 
-    public ClientFlowWSModel getCampaignFlow(long userId, long flowId, long clientId) {
+    public ClientFlowWSModel getCampaignFlowClient(long userId, long flowId, long clientId) {
 
         ClientFlowWSModel response = new ClientFlowWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ClientFlowWSDTO> clientFlowWSDTOS = new ArrayList<>();
 
-        ClientFlowWSDTO clientFlowWSDTO = campaignFlowFramework.getCampaignFlowService(userId,flowId,clientId);
+        ClientFlowWSDTO clientFlowWSDTO = campaignFlowClientFramework.getCampaignFlowClientService(userId,flowId,clientId);
         if (clientFlowWSDTO != null){
             clientFlowWSDTOS.add(clientFlowWSDTO);
         }
 
         response.setClientFlows(clientFlowWSDTOS);
-        general.setOperation("getCampaignFlow");
+        general.setOperation("getCampaignFlowClient");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -84,17 +84,17 @@ public class CampaignFlowMiddleware {
     }
 
 
-    public ClientFlowWSModel createCampaignFlow(ClientFlowRequest clientFlowRequest) {
+    public ClientFlowWSModel createCampaignFlowClient(ClientFlowRequest clientFlowRequest) {
 
         ClientFlowWSModel response = new ClientFlowWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ClientFlowWSDTO> clientFlowWSDTOS = campaignFlowFramework.createCampaignFlowService(clientFlowRequest);
+        List<ClientFlowWSDTO> clientFlowWSDTOS = campaignFlowClientFramework.createCampaignFlowClientService(clientFlowRequest);
         if (clientFlowWSDTOS != null){
             response.setClientFlows(clientFlowWSDTOS);
         }
 
-        general.setOperation("createCampaignFlow");
+        general.setOperation("createCampaignFlowClient");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -104,19 +104,19 @@ public class CampaignFlowMiddleware {
     }
 
 
-    public ClientFlowWSModel updateCampaignFlow(long userId, long flowId, long clientId, String flowState) {
+    public ClientFlowWSModel updateCampaignFlowClient(long userId, long flowId, long clientId, String flowState) {
 
         ClientFlowWSModel response = new ClientFlowWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ClientFlowWSDTO> clientFlowWSDTOS = new ArrayList<>();
 
-        ClientFlowWSDTO clientFlowWSDTO = campaignFlowFramework.updateCampaignFlowService(userId,flowId,clientId,flowState);
+        ClientFlowWSDTO clientFlowWSDTO = campaignFlowClientFramework.updateCampaignFlowClientService(userId,flowId,clientId,flowState);
         if (clientFlowWSDTO != null){
             clientFlowWSDTOS.add(clientFlowWSDTO);
         }
 
         response.setClientFlows(clientFlowWSDTOS);
-        general.setOperation("updateCampaignFlow");
+        general.setOperation("updateCampaignFlowClient");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -126,19 +126,19 @@ public class CampaignFlowMiddleware {
     }
 
 
-    public ClientFlowWSModel removeCampaignFlow(long userId, long flowId, long clientId) {
+    public ClientFlowWSModel removeCampaignFlowClient(long userId, long flowId, long clientId) {
 
         ClientFlowWSModel response = new ClientFlowWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ClientFlowWSDTO> clientFlowWSDTOS = new ArrayList<>();
 
-        ClientFlowWSDTO clientFlowWSDTO = campaignFlowFramework.removeCampaignFlowService(userId,flowId,clientId);
+        ClientFlowWSDTO clientFlowWSDTO = campaignFlowClientFramework.removeCampaignFlowClientService(userId,flowId,clientId);
         if (clientFlowWSDTO != null){
             clientFlowWSDTOS.add(clientFlowWSDTO);
         }
 
         response.setClientFlows(clientFlowWSDTOS);
-        general.setOperation("removeCampaignFlow");
+        general.setOperation("removeCampaignFlowClient");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

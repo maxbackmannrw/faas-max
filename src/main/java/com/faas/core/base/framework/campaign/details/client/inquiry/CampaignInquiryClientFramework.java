@@ -25,7 +25,7 @@ import java.util.List;
 
 
 @Component
-public class CampaignInquiryFramework {
+public class CampaignInquiryClientFramework {
 
 
     @Autowired
@@ -65,7 +65,7 @@ public class CampaignInquiryFramework {
     AppUtils appUtils;
 
 
-    public CampaignInquiryWSDTO searchCampaignInquiriesService(long userId, String campaignId,String clientCity,String clientCountry,int reqPage,int reqSize) {
+    public CampaignInquiryWSDTO searchCampaignInquiryClientsService(long userId, String campaignId,String clientCity,String clientCountry,int reqPage,int reqSize) {
 
      /*   Page<InquiryDBModel> inquiryDBModelPage = inquiryRepository.findAllByCampaignIdAndClientCityAndClientCountry(campaignId,clientCity,clientCountry, PageRequest.of(reqPage,reqSize));
         if (inquiryDBModelPage != null){
@@ -79,8 +79,7 @@ public class CampaignInquiryFramework {
         return null;
     }
 
-
-    public CampaignInquiryWSDTO getCampaignInquiriesService(long userId,String campaignId,int reqPage,int reqSize) {
+    public CampaignInquiryWSDTO getCampaignInquiryClientsService(long userId,String campaignId,int reqPage,int reqSize) {
 
      /*   Page<InquiryDBModel> inquiryDBModelPage = inquiryRepository.findAllByCampaignId(campaignId, PageRequest.of(reqPage,reqSize));
         if (inquiryDBModelPage != null){
@@ -96,8 +95,7 @@ public class CampaignInquiryFramework {
         return null;
     }
 
-
-    public ClientInquiryWSDTO getCampaignInquiryService(long userId, long inquiryId, long clientId) {
+    public ClientInquiryWSDTO getCampaignInquiryClientService(long userId, long inquiryId, long clientId) {
 
         /* List<InquiryDBModel> inquiryDBModels = inquiryRepository.findByIdAndClientId(inquiryId,clientId);
         if (!inquiryDBModels.isEmpty()){
@@ -108,8 +106,7 @@ public class CampaignInquiryFramework {
         return null;
     }
 
-
-    public List<ClientInquiryWSDTO> createCampaignInquiryService(ClientInquiryRequest clientInquiryRequest) {
+    public List<ClientInquiryWSDTO> createCampaignInquiryClientService(ClientInquiryRequest clientInquiryRequest) {
 
         List<ClientInquiryWSDTO> clientInquiryWSDTOS = new ArrayList<>();
         for (int i = 0; i< clientInquiryRequest.getInquiryRequests().size(); i++){
@@ -120,7 +117,6 @@ public class CampaignInquiryFramework {
         }
         return clientInquiryWSDTOS;
     }
-
 
     public ClientInquiryWSDTO createCampaignInquiry(ClientInquiryRequestDTO clientInquiryRequestDTO) {
 
@@ -148,9 +144,7 @@ public class CampaignInquiryFramework {
         return null;
     }
 
-
-
-    public ClientInquiryWSDTO updateCampaignInquiryService(long userId, long inquiryId, long clientId, String inquiryState) {
+    public ClientInquiryWSDTO updateCampaignInquiryClientService(long userId, long inquiryId, long clientId, String inquiryState) {
 
       /*  List<InquiryDBModel> inquiryDBModels = inquiryRepository.findByIdAndClientId(inquiryId,clientId);
         if (!inquiryDBModels.isEmpty()){
@@ -163,8 +157,7 @@ public class CampaignInquiryFramework {
         return null;
     }
 
-
-    public ClientInquiryWSDTO removeCampaignInquiryService(long userId, long inquiryId, long clientId) {
+    public ClientInquiryWSDTO removeCampaignInquiryClientService(long userId, long inquiryId, long clientId) {
 
   /*      List<InquiryDBModel> inquiryDBModels = inquiryRepository.findByIdAndClientId(inquiryId,clientId);
         if (!inquiryDBModels.isEmpty()) {

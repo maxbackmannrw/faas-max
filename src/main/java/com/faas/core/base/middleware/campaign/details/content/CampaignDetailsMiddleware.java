@@ -53,7 +53,6 @@ public class CampaignDetailsMiddleware {
         return response;
     }
 
-
     public CampaignProcessWSModel getCampaignProcess(long userId, String campaignId) {
 
         CampaignProcessWSModel response = new CampaignProcessWSModel();
@@ -72,8 +71,6 @@ public class CampaignDetailsMiddleware {
 
         return response;
     }
-
-
 
     public CampaignDataWSModel getCampaignDatas(long userId, String campaignId) {
 
@@ -165,7 +162,6 @@ public class CampaignDetailsMiddleware {
         return response;
     }
 
-
     public CampaignDataWSModel removeCampaignData(long userId,String campaignId,String dataId) {
 
         CampaignDataWSModel response = new CampaignDataWSModel();
@@ -186,7 +182,6 @@ public class CampaignDetailsMiddleware {
 
         return response;
     }
-
 
 
 }

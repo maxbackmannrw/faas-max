@@ -10,7 +10,6 @@ public class CampaignFlowWSDTO {
     private List<ClientFlowWSDTO> flows;
     private PaginationWSDTO pagination;
 
-
     public CampaignFlowWSDTO() {
     }
 

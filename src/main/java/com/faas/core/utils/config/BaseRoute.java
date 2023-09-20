@@ -94,29 +94,28 @@ public class BaseRoute {
     public static final String SEARCH_CLIENTS = "searchclients";
     public static final String GET_CAMPAIGN_CLIENT = "getcampaignclient";
 
-
-    public static final String SEARCH_CAMPAIGN_SESSIONS = "searchcampaignsessions";
-    public static final String GET_CAMPAIGN_SESSIONS = "getcampaignsessions";
-    public static final String GET_CAMPAIGN_SESSION = "getcampaignsession";
-    public static final String CREATE_CAMPAIGN_SESSION = "createcampaignsession";
-    public static final String UPDATE_CAMPAIGN_SESSION = "updatecampaignsession";
-    public static final String REMOVE_CAMPAIGN_SESSION = "removecampaignsession";
-
-
-    public static final String SEARCH_CAMPAIGN_INQUIRIES = "searchcampaigninquiries";
-    public static final String GET_CAMPAIGN_INQUIRIES = "getcampaigninquiries";
-    public static final String GET_CAMPAIGN_INQUIRY = "getcampaigninquiry";
-    public static final String CREATE_CAMPAIGN_INQUIRY = "createcampaigninquiry";
-    public static final String UPDATE_CAMPAIGN_INQUIRY = "updatecampaigninquiry";
-    public static final String REMOVE_CAMPAIGN_INQUIRY = "removecampaigninquiry";
+    public static final String SEARCH_CAMPAIGN_MANUAL_CLIENTS = "searchcampaignmanualclients";
+    public static final String GET_CAMPAIGN_MANUAL_CLIENTS = "getcampaignmanualclients";
+    public static final String GET_CAMPAIGN_MANUAL_CLIENT = "getcampaignmanualclient";
+    public static final String CREATE_CAMPAIGN_MANUAL_CLIENT = "createcampaignmanualclient";
+    public static final String UPDATE_CAMPAIGN_MANUAL_CLIENT = "updatecampaignmanualclient";
+    public static final String REMOVE_CAMPAIGN_MANUAL_CLIENT = "removecampaignmanualclient";
 
 
-    public static final String SEARCH_CAMPAIGN_FLOWS = "searchcampaignflows";
-    public static final String GET_CAMPAIGN_FLOWS = "getcampaignflows";
-    public static final String GET_CAMPAIGN_FLOW = "getcampaignflow";
-    public static final String CREATE_CAMPAIGN_FLOW = "createcampaignflow";
-    public static final String UPDATE_CAMPAIGN_FLOW = "updatecampaignflow";
-    public static final String REMOVE_CAMPAIGN_FLOW = "removecampaignflow";
+    public static final String SEARCH_CAMPAIGN_INQUIRY_CLIENTS = "searchcampaigninquiryclients";
+    public static final String GET_CAMPAIGN_INQUIRY_CLIENTS = "getcampaigninquiryclients";
+    public static final String GET_CAMPAIGN_INQUIRY_CLIENT = "getcampaigninquiryclient";
+    public static final String CREATE_CAMPAIGN_INQUIRY_CLIENT = "createcampaigninquiryclient";
+    public static final String UPDATE_CAMPAIGN_INQUIRY_CLIENT = "updatecampaigninquiryclient";
+    public static final String REMOVE_CAMPAIGN_INQUIRY_CLIENT = "removecampaigninquiryclient";
+
+
+    public static final String SEARCH_CAMPAIGN_FLOW_CLIENTS = "searchcampaignflowclients";
+    public static final String GET_CAMPAIGN_FLOW_CLIENTS = "getcampaignflowclients";
+    public static final String GET_CAMPAIGN_FLOW_CLIENT = "getcampaignflowclient";
+    public static final String CREATE_CAMPAIGN_FLOW_CLIENT = "createcampaignflowclient";
+    public static final String UPDATE_CAMPAIGN_FLOW_CLIENT = "updatecampaignflowclient";
+    public static final String REMOVE_CAMPAIGN_FLOW_CLIENT = "removecampaignflowclient";
 
 
 

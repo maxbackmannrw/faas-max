@@ -24,7 +24,7 @@ import java.util.List;
 
 
 @Component
-public class CampaignFlowFramework {
+public class CampaignFlowClientFramework {
 
 
     @Autowired
@@ -64,7 +64,7 @@ public class CampaignFlowFramework {
     AppUtils appUtils;
 
 
-    public CampaignFlowWSDTO searchCampaignFlowsService(long userId, String campaignId, String clientCity, String clientCountry, int reqPage, int reqSize) {
+    public CampaignFlowWSDTO searchCampaignFlowClientsService(long userId, String campaignId, String clientCity, String clientCountry, int reqPage, int reqSize) {
 
        /* Page<FlowDBModel> flowDBModelPage = flowRepository.findAllByCampaignIdAndClientCityAndClientCountry(campaignId, clientCity, clientCountry, PageRequest.of(reqPage, reqSize));
         if (flowDBModelPage != null) {
@@ -78,8 +78,7 @@ public class CampaignFlowFramework {
         return null;
     }
 
-
-    public CampaignFlowWSDTO getCampaignFlowsService(long userId, String campaignId, int reqPage, int reqSize) {
+    public CampaignFlowWSDTO getCampaignFlowClientsService(long userId, String campaignId, int reqPage, int reqSize) {
 
         /*  Page<FlowDBModel> flowDBModelPage = flowRepository.findAllByCampaignId(campaignId, PageRequest.of(reqPage, reqSize));
         if (flowDBModelPage != null) {
@@ -93,8 +92,7 @@ public class CampaignFlowFramework {
         return null;
     }
 
-
-    public ClientFlowWSDTO getCampaignFlowService(long userId, long flowId, long clientId) {
+    public ClientFlowWSDTO getCampaignFlowClientService(long userId, long flowId, long clientId) {
 
    /*     List<FlowDBModel> flowDBModels = flowRepository.findByIdAndClientId(flowId, clientId);
         if (!flowDBModels.isEmpty()) {
@@ -105,8 +103,7 @@ public class CampaignFlowFramework {
         return null;
     }
 
-
-    public List<ClientFlowWSDTO> createCampaignFlowService(ClientFlowRequest clientFlowRequest) {
+    public List<ClientFlowWSDTO> createCampaignFlowClientService(ClientFlowRequest clientFlowRequest) {
 
         List<ClientFlowWSDTO> clientFlowWSDTOS = new ArrayList<>();
         for (int i = 0; i< clientFlowRequest.getFlowRequests().size(); i++){
@@ -117,7 +114,6 @@ public class CampaignFlowFramework {
         }
         return clientFlowWSDTOS;
     }
-
 
     public ClientFlowWSDTO createCampaignFlow(ClientFlowRequestDTO clientFlowRequestDTO){
 
@@ -145,9 +141,7 @@ public class CampaignFlowFramework {
         return null;
     }
 
-
-
-    public ClientFlowWSDTO updateCampaignFlowService(long userId, long flowId, long clientId, String flowState) {
+    public ClientFlowWSDTO updateCampaignFlowClientService(long userId, long flowId, long clientId, String flowState) {
 
     /*    List<FlowDBModel> flowDBModels = flowRepository.findByIdAndClientId(flowId, clientId);
         if (flowDBModels.size() > 0) {
@@ -160,8 +154,7 @@ public class CampaignFlowFramework {
         return null;
     }
 
-
-    public ClientFlowWSDTO removeCampaignFlowService(long userId, long flowId, long clientId) {
+    public ClientFlowWSDTO removeCampaignFlowClientService(long userId, long flowId, long clientId) {
 
    /*     List<FlowDBModel> flowDBModels = flowRepository.findByIdAndClientId(flowId, clientId);
         if (flowDBModels.size() > 0) {
@@ -179,7 +172,6 @@ public class CampaignFlowFramework {
             }
             return new FlowWSDTO(flowDBModels.get(0));
         }
-
     */
         return null;
     }

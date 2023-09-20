@@ -1,6 +1,6 @@
-package com.faas.core.base.middleware.campaign.details.client.session;
+package com.faas.core.base.middleware.campaign.details.client.manual;
 
-import com.faas.core.base.framework.campaign.details.client.session.CampaignSessionFramework;
+import com.faas.core.base.framework.campaign.details.client.manual.CampaignManualClientFramework;
 import com.faas.core.base.model.ws.campaign.details.client.session.CampaignSessionWSModel;
 import com.faas.core.base.model.ws.campaign.details.client.session.dto.CampaignSessionWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
@@ -15,24 +15,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class CampaignSessionMiddleware {
+public class CampaignManualClientMiddleware {
 
 
     @Autowired
-    CampaignSessionFramework campaignSessionFramework;
+    CampaignManualClientFramework campaignManualClientFramework;
 
 
-    public CampaignSessionWSModel searchCampaignSessions(long userId,String campaignId,String city,String country,int reqPage,int reqSize) {
+    public CampaignSessionWSModel searchCampaignManualClients(long userId,String campaignId,String city,String country,int reqPage,int reqSize) {
 
         CampaignSessionWSModel response = new CampaignSessionWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        CampaignSessionWSDTO campaignSession =  campaignSessionFramework.searchCampaignSessionsService(userId,campaignId,city,country,reqPage,reqSize);
+        CampaignSessionWSDTO campaignSession =  campaignManualClientFramework.searchCampaignManualClientsService(userId,campaignId,city,country,reqPage,reqSize);
         if (campaignSession != null){
             response.setCampaignSession(campaignSession);
         }
 
-        general.setOperation("searchCampaignSessions");
+        general.setOperation("searchCampaignManualClients");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -42,17 +42,17 @@ public class CampaignSessionMiddleware {
     }
 
 
-    public CampaignSessionWSModel getCampaignSessions(long userId,String campaignId,int reqPage,int reqSize) {
+    public CampaignSessionWSModel getCampaignManualClients(long userId,String campaignId,int reqPage,int reqSize) {
 
         CampaignSessionWSModel response = new CampaignSessionWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        CampaignSessionWSDTO campaignSession =  campaignSessionFramework.getCampaignSessionsService(userId,campaignId,reqPage,reqSize);
+        CampaignSessionWSDTO campaignSession =  campaignManualClientFramework.getCampaignManualClientsService(userId,campaignId,reqPage,reqSize);
         if (campaignSession != null){
             response.setCampaignSession(campaignSession);
         }
 
-        general.setOperation("getCampaignSessions");
+        general.setOperation("getCampaignManualClients");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -62,19 +62,19 @@ public class CampaignSessionMiddleware {
     }
 
 
-    public SessionWSModel getCampaignSession(long userId, long sessionId, long clientId) {
+    public SessionWSModel getCampaignManualClient(long userId, long sessionId) {
 
         SessionWSModel response = new SessionWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<SessionWSDTO>sessionWSDTOS = new ArrayList<>();
 
-        SessionWSDTO sessionWSDTO = campaignSessionFramework.getCampaignSessionService(userId,sessionId,clientId);
+        SessionWSDTO sessionWSDTO = campaignManualClientFramework.getCampaignManualClientService(userId,sessionId);
         if (sessionWSDTO != null){
             sessionWSDTOS.add(sessionWSDTO);
         }
 
         response.setSessions(sessionWSDTOS);
-        general.setOperation("getCampaignSession");
+        general.setOperation("getCampaignManualClient");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -84,17 +84,17 @@ public class CampaignSessionMiddleware {
     }
 
 
-    public SessionWSModel createCampaignSession(SessionRequest sessionRequest) {
+    public SessionWSModel createCampaignManualClient(SessionRequest sessionRequest) {
 
         SessionWSModel response = new SessionWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<SessionWSDTO> sessionWSDTOS = campaignSessionFramework.createCampaignSessionService(sessionRequest);
+        List<SessionWSDTO> sessionWSDTOS = campaignManualClientFramework.createCampaignManualClientService(sessionRequest);
         if (sessionWSDTOS != null){
             response.setSessions(sessionWSDTOS);
         }
 
-        general.setOperation("createCampaignSession");
+        general.setOperation("createCampaignManualClient");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -105,19 +105,19 @@ public class CampaignSessionMiddleware {
 
 
 
-    public SessionWSModel updateCampaignSession(long userId,long sessionId,long clientId,long agentId,String campaignId,String sessionState) {
+    public SessionWSModel updateCampaignManualClient(long userId,long sessionId,long agentId,String campaignId,String sessionState) {
 
         SessionWSModel response = new SessionWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<SessionWSDTO>sessionWSDTOS = new ArrayList<>();
 
-        SessionWSDTO sessionWSDTO = campaignSessionFramework.updateCampaignSessionService(userId,sessionId,clientId,agentId,campaignId,sessionState);
+        SessionWSDTO sessionWSDTO = campaignManualClientFramework.updateCampaignManualClientService(userId,sessionId,agentId,campaignId,sessionState);
         if (sessionWSDTO != null){
             sessionWSDTOS.add(sessionWSDTO);
         }
 
         response.setSessions(sessionWSDTOS);
-        general.setOperation("updateCampaignSession");
+        general.setOperation("updateCampaignManualClient");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -126,20 +126,19 @@ public class CampaignSessionMiddleware {
         return response;
     }
 
-
-    public SessionWSModel removeCampaignSession(long userId,long sessionId,long clientId) {
+    public SessionWSModel removeCampaignManualClient(long userId,long sessionId) {
 
         SessionWSModel response = new SessionWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<SessionWSDTO>sessionWSDTOS = new ArrayList<>();
 
-        SessionWSDTO sessionWSDTO = campaignSessionFramework.removeCampaignSessionService(userId,sessionId,clientId);
+        SessionWSDTO sessionWSDTO = campaignManualClientFramework.removeCampaignManualClientService(userId,sessionId);
         if (sessionWSDTO != null){
             sessionWSDTOS.add(sessionWSDTO);
         }
 
         response.setSessions(sessionWSDTOS);
-        general.setOperation("removeCampaignSession");
+        general.setOperation("removeCampaignManualClient");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
