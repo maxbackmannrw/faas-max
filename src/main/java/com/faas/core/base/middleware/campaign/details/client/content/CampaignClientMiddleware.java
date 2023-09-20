@@ -21,12 +21,12 @@ public class CampaignClientMiddleware {
     CampaignClientFramework campaignClientFramework;
 
 
-    public CampaignClientWSModel searchClients(long userId, String clientCity, String clientCountry, String clientState, int reqPage, int reqSize) {
+    public CampaignClientWSModel searchClients(long userId,String city, String country, String clientState, int reqPage, int reqSize) {
 
         CampaignClientWSModel response = new CampaignClientWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        CampaignClientWSDTO campaignClientWSDTO = campaignClientFramework.searchClientsService(clientCity,clientCountry,clientState,reqPage,reqSize);
+        CampaignClientWSDTO campaignClientWSDTO = campaignClientFramework.searchClientsService(city,country,clientState,reqPage,reqSize);
         if (campaignClientWSDTO != null){
             response.setCampaignClient(campaignClientWSDTO);
         }

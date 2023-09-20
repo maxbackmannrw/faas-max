@@ -25,13 +25,13 @@ public class CampaignClientController {
 
     @RequestMapping(value = BaseRoute.SEARCH_CLIENTS, method = RequestMethod.POST)
     public ResponseEntity<?> searchClients(@RequestParam long userId,
-                                           @RequestParam String clientCity,
-                                           @RequestParam String clientCountry,
+                                           @RequestParam String city,
+                                           @RequestParam String country,
                                            @RequestParam String clientState,
                                            @RequestParam int reqPage,
                                            @RequestParam int reqSize) {
 
-        CampaignClientWSModel response = campaignClientMiddleware.searchClients(userId,clientCity,clientCountry,clientState,reqPage,reqSize);
+        CampaignClientWSModel response = campaignClientMiddleware.searchClients(userId,city,country,clientState,reqPage,reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
