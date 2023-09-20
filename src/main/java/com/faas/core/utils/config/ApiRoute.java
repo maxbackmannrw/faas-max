@@ -61,12 +61,6 @@ public class ApiRoute {
     public static final String API_GET_FLOW_DETAILS = "apigetflowdetails";
 
 
-    public static final String API_GET_NOTIFICATIONS = "apigetnotifications";
-    public static final String API_GET_NOTIFICATIONS_BY_STATE = "apigetnotificationsbystate";
-    public static final String API_GET_NOTIFICATION = "apigetnotification";
-    public static final String API_UPDATE_NOTIFICATION = "apiupdatenotification";
-    public static final String API_REMOVE_NOTIFICATION = "apiremovenotification";
-
 
     public static final String API_GET_AGENT_SESSION = "apigetagentsession"; 
     public static final String API_GET_SESSIONS = "apigetsessions";

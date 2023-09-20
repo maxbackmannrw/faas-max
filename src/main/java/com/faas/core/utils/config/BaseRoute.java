@@ -561,16 +561,6 @@ public class BaseRoute {
     public static final String GET_SYSTEM_STATE = "getsystemstate";
 
 
-    public static final String GET_ALL_NOTIFICATIONS = "getallnotifications";
-    public static final String GET_NOTIFICATIONS_BY_STATE = "getnotificationsbystate";
-    public static final String GET_NOTIFICATION = "getnotification";
-    public static final String CREATE_NOTIFICATION = "createnotification";
-    public static final String UPDATE_NOTIFICATION = "updatenotification";
-    public static final String REMOVE_NOTIFICATION = "removenotification";
-
-
-    public static final String GET_NOTIFICATION_DETAILS = "getnotificationdetails";
-
 
 
 }

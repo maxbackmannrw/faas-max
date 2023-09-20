@@ -12,7 +12,6 @@ import com.faas.core.base.repo.client.details.ClientEmailRepository;
 import com.faas.core.base.repo.client.details.ClientPhoneRepository;
 import com.faas.core.base.repo.client.flow.ClientFlowRepository;
 import com.faas.core.base.repo.client.inquiry.ClientInquiryRepository;
-import com.faas.core.base.repo.notification.NotificationRepository;
 import com.faas.core.base.repo.operation.channel.*;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.operation.scenario.ScenarioExecutionRepository;
@@ -79,9 +78,6 @@ public class UtilsSettingsFramework {
 
     @Autowired
     ClientFlowRepository clientFlowRepository;
-
-    @Autowired
-    NotificationRepository notificationRepository;
 
     @Autowired
     ActionTempRepository actionTempRepository;
@@ -240,7 +236,6 @@ public class UtilsSettingsFramework {
     public void cleanSystemTablesService() {
 
         clientInquiryRepository.deleteAll();
-        notificationRepository.deleteAll();
         actionTempRepository.deleteAll();
         assetRepository.deleteAll();
         processRepository.deleteAll();
