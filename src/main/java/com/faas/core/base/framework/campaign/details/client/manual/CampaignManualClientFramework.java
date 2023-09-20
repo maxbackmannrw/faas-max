@@ -5,9 +5,9 @@ import com.faas.core.base.model.db.client.content.ClientDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.model.db.user.content.UserDBModel;
-import com.faas.core.base.model.ws.campaign.details.client.session.dto.CampaignSessionWSDTO;
-import com.faas.core.base.model.ws.client.session.content.SessionRequest;
-import com.faas.core.base.model.ws.client.session.content.dto.SessionRequestDTO;
+import com.faas.core.base.model.ws.campaign.details.client.manual.dto.CampaignSessionWSDTO;
+import com.faas.core.base.model.ws.campaign.details.client.manual.ManualClientRequest;
+import com.faas.core.base.model.ws.campaign.details.client.manual.dto.ManualClientRequestDTO;
 import com.faas.core.base.model.ws.client.session.content.dto.SessionWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;
@@ -98,11 +98,11 @@ public class CampaignManualClientFramework {
         return null;
     }
 
-    public List<SessionWSDTO> createCampaignManualClientService(SessionRequest sessionRequest) {
+    public List<SessionWSDTO> createCampaignManualClientService(ManualClientRequest manualClientRequest) {
 
         List<SessionWSDTO>sessionWSDTOS = new ArrayList<>();
-        for (int i=0;i<sessionRequest.getSessionRequests().size();i++){
-            SessionWSDTO sessionWSDTO = createCampaignSession(sessionRequest.getSessionRequests().get(i));
+        for (int i = 0; i< manualClientRequest.getClientRequests().size(); i++){
+            SessionWSDTO sessionWSDTO = createCampaignManualClient(manualClientRequest.getClientRequests().get(i));
             if (sessionWSDTO != null){
                 sessionWSDTOS.add(sessionWSDTO);
             }
@@ -110,11 +110,11 @@ public class CampaignManualClientFramework {
         return sessionWSDTOS;
     }
 
-    public SessionWSDTO createCampaignSession(SessionRequestDTO sessionRequestDTO) {
+    public SessionWSDTO createCampaignManualClient(ManualClientRequestDTO manualClientRequestDTO) {
 
-        Optional<ClientDBModel> clientDBModel = clientRepository.findById(sessionRequestDTO.getClientId());
-        Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(sessionRequestDTO.getCampaignId());
-        Optional<UserDBModel> agentDBModel = userRepository.findById(sessionRequestDTO.getAgentId());
+        Optional<ClientDBModel> clientDBModel = clientRepository.findById(manualClientRequestDTO.getClientId());
+        Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(manualClientRequestDTO.getCampaignId());
+        Optional<UserDBModel> agentDBModel = userRepository.findById(manualClientRequestDTO.getAgentId());
         if (clientDBModel.isPresent() && campaignDBModel.isPresent() && agentDBModel.isPresent()){
 
             clientDBModel.get().setClientState(AppConstant.BUSY_CLIENT);

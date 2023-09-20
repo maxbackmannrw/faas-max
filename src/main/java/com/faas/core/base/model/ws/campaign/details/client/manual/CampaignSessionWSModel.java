@@ -1,6 +1,6 @@
-package com.faas.core.base.model.ws.campaign.details.client.session;
+package com.faas.core.base.model.ws.campaign.details.client.manual;
 
-import com.faas.core.base.model.ws.campaign.details.client.session.dto.CampaignSessionWSDTO;
+import com.faas.core.base.model.ws.campaign.details.client.manual.dto.CampaignSessionWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 
 public class CampaignSessionWSModel {

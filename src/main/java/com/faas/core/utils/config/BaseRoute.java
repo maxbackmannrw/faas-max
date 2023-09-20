@@ -129,8 +129,6 @@ public class BaseRoute {
     public static final String GET_OPERATION_DETAILS = "getoperationdetails";
 
 
-
-
     public static final String GET_ALL_CLIENTS = "getallclients";
     public static final String GET_CLIENTS_BY_STATE = "getclientsbystate";
     public static final String GET_CLIENT = "getclient";

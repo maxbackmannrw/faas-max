@@ -1,10 +1,10 @@
 package com.faas.core.base.middleware.campaign.details.client.manual;
 
 import com.faas.core.base.framework.campaign.details.client.manual.CampaignManualClientFramework;
-import com.faas.core.base.model.ws.campaign.details.client.session.CampaignSessionWSModel;
-import com.faas.core.base.model.ws.campaign.details.client.session.dto.CampaignSessionWSDTO;
+import com.faas.core.base.model.ws.campaign.details.client.manual.CampaignSessionWSModel;
+import com.faas.core.base.model.ws.campaign.details.client.manual.dto.CampaignSessionWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.client.session.content.SessionRequest;
+import com.faas.core.base.model.ws.campaign.details.client.manual.ManualClientRequest;
 import com.faas.core.base.model.ws.client.session.content.SessionWSModel;
 import com.faas.core.base.model.ws.client.session.content.dto.SessionWSDTO;
 import com.faas.core.utils.config.AppConstant;
@@ -83,13 +83,12 @@ public class CampaignManualClientMiddleware {
         return response;
     }
 
-
-    public SessionWSModel createCampaignManualClient(SessionRequest sessionRequest) {
+    public SessionWSModel createCampaignManualClient(ManualClientRequest manualClientRequest) {
 
         SessionWSModel response = new SessionWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<SessionWSDTO> sessionWSDTOS = campaignManualClientFramework.createCampaignManualClientService(sessionRequest);
+        List<SessionWSDTO> sessionWSDTOS = campaignManualClientFramework.createCampaignManualClientService(manualClientRequest);
         if (sessionWSDTOS != null){
             response.setSessions(sessionWSDTOS);
         }
@@ -102,8 +101,6 @@ public class CampaignManualClientMiddleware {
 
         return response;
     }
-
-
 
     public SessionWSModel updateCampaignManualClient(long userId,long sessionId,long agentId,String campaignId,String sessionState) {
 

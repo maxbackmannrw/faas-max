@@ -1,8 +1,8 @@
 package com.faas.core.base.endpoint.controller.campaign.details.client.manual;
 
 import com.faas.core.base.middleware.campaign.details.client.manual.CampaignManualClientMiddleware;
-import com.faas.core.base.model.ws.campaign.details.client.session.CampaignSessionWSModel;
-import com.faas.core.base.model.ws.client.session.content.SessionRequest;
+import com.faas.core.base.model.ws.campaign.details.client.manual.CampaignSessionWSModel;
+import com.faas.core.base.model.ws.campaign.details.client.manual.ManualClientRequest;
 import com.faas.core.base.model.ws.client.session.content.SessionWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
@@ -68,9 +68,9 @@ public class CampaignManualClientController {
     }
 
     @RequestMapping(value = BaseRoute.CREATE_CAMPAIGN_MANUAL_CLIENT, method = RequestMethod.POST)
-    public ResponseEntity<?> createCampaignManualClient(@RequestBody SessionRequest sessionRequest) {
+    public ResponseEntity<?> createCampaignManualClient(@RequestBody ManualClientRequest manualClientRequest) {
 
-        SessionWSModel response = campaignManualClientMiddleware.createCampaignManualClient(sessionRequest);
+        SessionWSModel response = campaignManualClientMiddleware.createCampaignManualClient(manualClientRequest);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
