@@ -232,7 +232,6 @@ public class UtilsSettingsFramework {
     }
 
 
-
     public void cleanSystemTablesService() {
 
         clientInquiryRepository.deleteAll();
