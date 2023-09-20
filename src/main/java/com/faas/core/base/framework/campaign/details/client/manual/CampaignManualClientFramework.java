@@ -110,11 +110,12 @@ public class CampaignManualClientFramework {
         return sessionWSDTOS;
     }
 
-    public SessionWSDTO createCampaignManualClient(ManualClientRequestDTO manualClientRequestDTO) {
+    public SessionWSDTO createCampaignManualClient(ManualClientRequestDTO clientRequestDTO) {
 
-        Optional<ClientDBModel> clientDBModel = clientRepository.findById(manualClientRequestDTO.getClientId());
-        Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(manualClientRequestDTO.getCampaignId());
-        Optional<UserDBModel> agentDBModel = userRepository.findById(manualClientRequestDTO.getAgentId());
+        Optional<ClientDBModel> clientDBModel = clientRepository.findById(clientRequestDTO.getClientId());
+        Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(clientRequestDTO.getCampaignId());
+        Optional<UserDBModel> agentDBModel = userRepository.findById(clientRequestDTO.getAgentId());
+
         if (clientDBModel.isPresent() && campaignDBModel.isPresent() && agentDBModel.isPresent()){
 
             clientDBModel.get().setClientState(AppConstant.BUSY_CLIENT);
