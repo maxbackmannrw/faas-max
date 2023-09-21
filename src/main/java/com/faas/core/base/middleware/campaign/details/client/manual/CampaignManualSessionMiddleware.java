@@ -83,12 +83,12 @@ public class CampaignManualSessionMiddleware {
         return response;
     }
 
-    public SessionWSModel createCampaignManualSession(CampaignManualSessionRequest campaignManualSessionRequest) {
+    public SessionWSModel createCampaignManualSession(CampaignManualSessionRequest sessionRequest) {
 
         SessionWSModel response = new SessionWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<SessionWSDTO> sessionWSDTOS = campaignManualSessionFramework.createCampaignManualSessionService(campaignManualSessionRequest);
+        List<SessionWSDTO> sessionWSDTOS = campaignManualSessionFramework.createCampaignManualSessionService(sessionRequest);
         if (sessionWSDTOS != null){
             response.setSessions(sessionWSDTOS);
         }

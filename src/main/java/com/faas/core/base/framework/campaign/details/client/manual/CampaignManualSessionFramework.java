@@ -98,11 +98,11 @@ public class CampaignManualSessionFramework {
         return null;
     }
 
-    public List<SessionWSDTO> createCampaignManualSessionService(CampaignManualSessionRequest campaignManualSessionRequest) {
+    public List<SessionWSDTO> createCampaignManualSessionService(CampaignManualSessionRequest sessionRequest) {
 
         List<SessionWSDTO>sessionWSDTOS = new ArrayList<>();
-        for (int i = 0; i< campaignManualSessionRequest.getClientRequests().size(); i++){
-            SessionWSDTO sessionWSDTO = createCampaignManualClient(campaignManualSessionRequest.getClientRequests().get(i));
+        for (int i = 0; i< sessionRequest.getSessionRequests().size(); i++){
+            SessionWSDTO sessionWSDTO = createCampaignManualClient(sessionRequest.getSessionRequests().get(i));
             if (sessionWSDTO != null){
                 sessionWSDTOS.add(sessionWSDTO);
             }

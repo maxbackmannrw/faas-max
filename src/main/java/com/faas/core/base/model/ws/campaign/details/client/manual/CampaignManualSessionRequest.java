@@ -6,20 +6,20 @@ import java.util.List;
 
 public class CampaignManualSessionRequest {
 
-    private List<CampaignManualSessionRequestDTO>clientRequests;
+    private List<CampaignManualSessionRequestDTO>sessionRequests;
 
     public CampaignManualSessionRequest() {
     }
 
-    public CampaignManualSessionRequest(List<CampaignManualSessionRequestDTO> clientRequests) {
-        this.clientRequests = clientRequests;
+    public CampaignManualSessionRequest(List<CampaignManualSessionRequestDTO> sessionRequests) {
+        this.sessionRequests = sessionRequests;
     }
 
-    public List<CampaignManualSessionRequestDTO> getClientRequests() {
-        return clientRequests;
+    public List<CampaignManualSessionRequestDTO> getSessionRequests() {
+        return sessionRequests;
     }
 
-    public void setClientRequests(List<CampaignManualSessionRequestDTO> clientRequests) {
-        this.clientRequests = clientRequests;
+    public void setSessionRequests(List<CampaignManualSessionRequestDTO> sessionRequests) {
+        this.sessionRequests = sessionRequests;
     }
 }
