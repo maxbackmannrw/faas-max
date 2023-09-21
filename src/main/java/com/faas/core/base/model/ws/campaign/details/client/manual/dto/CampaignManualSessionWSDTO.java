@@ -5,15 +5,15 @@ import com.faas.core.base.model.ws.client.session.content.dto.SessionWSDTO;
 
 import java.util.List;
 
-public class CampaignSessionWSDTO {
+public class CampaignManualSessionWSDTO {
 
     private List<SessionWSDTO> sessions;
     private PaginationWSDTO pagination;
 
-    public CampaignSessionWSDTO() {
+    public CampaignManualSessionWSDTO() {
     }
 
-    public CampaignSessionWSDTO(List<SessionWSDTO> sessions, PaginationWSDTO pagination) {
+    public CampaignManualSessionWSDTO(List<SessionWSDTO> sessions, PaginationWSDTO pagination) {
         this.sessions = sessions;
         this.pagination = pagination;
     }

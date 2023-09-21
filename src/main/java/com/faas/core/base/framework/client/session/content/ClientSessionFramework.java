@@ -2,7 +2,7 @@ package com.faas.core.base.framework.client.session.content;
 
 import com.faas.core.base.model.db.client.content.ClientDBModel;
 import com.faas.core.base.model.db.client.session.SessionDBModel;
-import com.faas.core.base.model.ws.campaign.details.client.manual.CampaignManualClientRequest;
+import com.faas.core.base.model.ws.campaign.details.client.manual.CampaignManualSessionRequest;
 import com.faas.core.base.model.ws.client.session.content.dto.SessionWSDTO;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.client.details.*;
@@ -105,7 +105,7 @@ public class ClientSessionFramework {
     }
 
 
-    public SessionWSDTO createSessionsService(CampaignManualClientRequest campaignManualClientRequest) {
+    public SessionWSDTO createSessionsService(CampaignManualSessionRequest campaignManualSessionRequest) {
         return null;
     }
 

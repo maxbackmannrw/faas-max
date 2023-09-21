@@ -1,8 +1,8 @@
 package com.faas.core.base.framework.campaign.details.client.inquiry;
 
 import com.faas.core.base.model.ws.campaign.details.client.inquiry.dto.CampaignInquiryWSDTO;
-import com.faas.core.base.model.ws.campaign.details.client.inquiry.CampaignInquiryClientRequest;
-import com.faas.core.base.model.ws.campaign.details.client.inquiry.dto.CampaignInquiryClientRequestDTO;
+import com.faas.core.base.model.ws.campaign.details.client.inquiry.InquiryClientRequest;
+import com.faas.core.base.model.ws.campaign.details.client.inquiry.dto.InquiryClientRequestDTO;
 import com.faas.core.base.model.ws.client.inquiry.dto.ClientInquiryWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;
@@ -25,7 +25,7 @@ import java.util.List;
 
 
 @Component
-public class CampaignInquiryClientFramework {
+public class CampaignInquirySessionFramework {
 
 
     @Autowired
@@ -106,11 +106,11 @@ public class CampaignInquiryClientFramework {
         return null;
     }
 
-    public List<ClientInquiryWSDTO> createCampaignInquiryClientService(CampaignInquiryClientRequest campaignInquiryClientRequest) {
+    public List<ClientInquiryWSDTO> createCampaignInquiryClientService(InquiryClientRequest inquiryClientRequest) {
 
         List<ClientInquiryWSDTO> clientInquiryWSDTOS = new ArrayList<>();
-        for (int i = 0; i< campaignInquiryClientRequest.getInquiryRequests().size(); i++){
-            ClientInquiryWSDTO clientInquiryWSDTO = createCampaignInquiry(campaignInquiryClientRequest.getInquiryRequests().get(i));
+        for (int i = 0; i< inquiryClientRequest.getInquiryRequests().size(); i++){
+            ClientInquiryWSDTO clientInquiryWSDTO = createCampaignInquiry(inquiryClientRequest.getInquiryRequests().get(i));
             if (clientInquiryWSDTO != null){
                 clientInquiryWSDTOS.add(clientInquiryWSDTO);
             }
@@ -118,7 +118,7 @@ public class CampaignInquiryClientFramework {
         return clientInquiryWSDTOS;
     }
 
-    public ClientInquiryWSDTO createCampaignInquiry(CampaignInquiryClientRequestDTO campaignInquiryClientRequestDTO) {
+    public ClientInquiryWSDTO createCampaignInquiry(InquiryClientRequestDTO inquiryClientRequestDTO) {
 
      /*   if (!inquiryRepository.existsByClientIdAndCampaignId(inquiryRequestDTO.getClientId(),inquiryRequestDTO.getCampaignId())){
             Optional<ClientDBModel> clientDBModel = clientRepository.findById(inquiryRequestDTO.getClientId());

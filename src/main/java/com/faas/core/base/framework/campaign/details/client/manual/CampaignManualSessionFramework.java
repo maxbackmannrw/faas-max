@@ -5,9 +5,9 @@ import com.faas.core.base.model.db.client.content.ClientDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.model.db.user.content.UserDBModel;
-import com.faas.core.base.model.ws.campaign.details.client.manual.dto.CampaignSessionWSDTO;
-import com.faas.core.base.model.ws.campaign.details.client.manual.CampaignManualClientRequest;
-import com.faas.core.base.model.ws.campaign.details.client.manual.dto.CampaignManualClientRequestDTO;
+import com.faas.core.base.model.ws.campaign.details.client.manual.dto.CampaignManualSessionWSDTO;
+import com.faas.core.base.model.ws.campaign.details.client.manual.CampaignManualSessionRequest;
+import com.faas.core.base.model.ws.campaign.details.client.manual.dto.CampaignManualSessionRequestDTO;
 import com.faas.core.base.model.ws.client.session.content.dto.SessionWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;
@@ -32,7 +32,7 @@ import java.util.Optional;
 
 
 @Component
-public class CampaignManualClientFramework {
+public class CampaignManualSessionFramework {
 
     @Autowired
     SessionHelper sessionHelper;
@@ -65,31 +65,31 @@ public class CampaignManualClientFramework {
     AppUtils appUtils;
 
 
-    public CampaignSessionWSDTO searchCampaignManualClientsService(long userId,String campaignId,String city,String country,int reqPage,int reqSize) {
+    public CampaignManualSessionWSDTO searchCampaignManualSessionsService(long userId, String campaignId, String city, String country, int reqPage, int reqSize) {
 
         Page<SessionDBModel> sessionDBModels = sessionRepository.findAllByCampaignIdAndClientCityAndClientCountry(campaignId,city,country,PageRequest.of(reqPage,reqSize));
         if (sessionDBModels != null){
-            CampaignSessionWSDTO campaignSessionWSDTO = new CampaignSessionWSDTO();
-            campaignSessionWSDTO.setPagination(sessionHelper.createSessionPaginationWSDTO(sessionDBModels));
-            campaignSessionWSDTO.setSessions(sessionHelper.mapSessionWSDTOS(sessionDBModels.getContent()));
-            return campaignSessionWSDTO;
+            CampaignManualSessionWSDTO campaignManualSessionWSDTO = new CampaignManualSessionWSDTO();
+            campaignManualSessionWSDTO.setPagination(sessionHelper.createSessionPaginationWSDTO(sessionDBModels));
+            campaignManualSessionWSDTO.setSessions(sessionHelper.mapSessionWSDTOS(sessionDBModels.getContent()));
+            return campaignManualSessionWSDTO;
         }
         return null;
     }
 
-    public CampaignSessionWSDTO getCampaignManualClientsService(long userId,String campaignId,int reqPage,int reqSize) {
+    public CampaignManualSessionWSDTO getCampaignManualSessionsService(long userId, String campaignId, int reqPage, int reqSize) {
 
         Page<SessionDBModel> sessionDBModels = sessionRepository.findAllByCampaignId(campaignId, PageRequest.of(reqPage,reqSize));
         if (sessionDBModels != null){
-            CampaignSessionWSDTO campaignSessionWSDTO = new CampaignSessionWSDTO();
-            campaignSessionWSDTO.setPagination(sessionHelper.createSessionPaginationWSDTO(sessionDBModels));
-            campaignSessionWSDTO.setSessions(sessionHelper.mapSessionWSDTOS(sessionDBModels.getContent()));
-            return campaignSessionWSDTO;
+            CampaignManualSessionWSDTO campaignManualSessionWSDTO = new CampaignManualSessionWSDTO();
+            campaignManualSessionWSDTO.setPagination(sessionHelper.createSessionPaginationWSDTO(sessionDBModels));
+            campaignManualSessionWSDTO.setSessions(sessionHelper.mapSessionWSDTOS(sessionDBModels.getContent()));
+            return campaignManualSessionWSDTO;
         }
         return null;
     }
 
-    public SessionWSDTO getCampaignManualClientService(long userId, long sessionId) {
+    public SessionWSDTO getCampaignManualSessionService(long userId, long sessionId) {
 
         Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
         if (sessionDBModel.isPresent()){
@@ -98,11 +98,11 @@ public class CampaignManualClientFramework {
         return null;
     }
 
-    public List<SessionWSDTO> createCampaignManualClientService(CampaignManualClientRequest campaignManualClientRequest) {
+    public List<SessionWSDTO> createCampaignManualSessionService(CampaignManualSessionRequest campaignManualSessionRequest) {
 
         List<SessionWSDTO>sessionWSDTOS = new ArrayList<>();
-        for (int i = 0; i< campaignManualClientRequest.getClientRequests().size(); i++){
-            SessionWSDTO sessionWSDTO = createCampaignManualClient(campaignManualClientRequest.getClientRequests().get(i));
+        for (int i = 0; i< campaignManualSessionRequest.getClientRequests().size(); i++){
+            SessionWSDTO sessionWSDTO = createCampaignManualClient(campaignManualSessionRequest.getClientRequests().get(i));
             if (sessionWSDTO != null){
                 sessionWSDTOS.add(sessionWSDTO);
             }
@@ -110,7 +110,7 @@ public class CampaignManualClientFramework {
         return sessionWSDTOS;
     }
 
-    public SessionWSDTO createCampaignManualClient(CampaignManualClientRequestDTO clientRequestDTO) {
+    public SessionWSDTO createCampaignManualClient(CampaignManualSessionRequestDTO clientRequestDTO) {
 
         Optional<ClientDBModel> clientDBModel = clientRepository.findById(clientRequestDTO.getClientId());
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(clientRequestDTO.getCampaignId());
@@ -133,7 +133,7 @@ public class CampaignManualClientFramework {
         return null;
     }
 
-    public SessionWSDTO updateCampaignManualClientService(long userId,long sessionId,long agentId,String campaignId,String sessionState) {
+    public SessionWSDTO updateCampaignManualSessionService(long userId,long sessionId,long agentId,String campaignId,String sessionState) {
 
         Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
         Optional<UserDBModel> agentDBModel = userRepository.findById(agentId);
@@ -157,7 +157,7 @@ public class CampaignManualClientFramework {
         return null;
     }
 
-    public SessionWSDTO removeCampaignManualClientService(long userId,long sessionId) {
+    public SessionWSDTO removeCampaignManualSessionService(long userId,long sessionId) {
 
         Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
         if (sessionDBModel.isPresent()){

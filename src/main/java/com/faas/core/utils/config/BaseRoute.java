@@ -94,12 +94,12 @@ public class BaseRoute {
     public static final String SEARCH_CLIENTS = "searchclients";
     public static final String GET_CAMPAIGN_CLIENT = "getcampaignclient";
 
-    public static final String SEARCH_CAMPAIGN_MANUAL_CLIENTS = "searchcampaignmanualclients";
-    public static final String GET_CAMPAIGN_MANUAL_CLIENTS = "getcampaignmanualclients";
-    public static final String GET_CAMPAIGN_MANUAL_CLIENT = "getcampaignmanualclient";
-    public static final String CREATE_CAMPAIGN_MANUAL_CLIENT = "createcampaignmanualclient";
-    public static final String UPDATE_CAMPAIGN_MANUAL_CLIENT = "updatecampaignmanualclient";
-    public static final String REMOVE_CAMPAIGN_MANUAL_CLIENT = "removecampaignmanualclient";
+    public static final String SEARCH_CAMPAIGN_MANUAL_SESSIONS = "searchcampaignmanualsessions";
+    public static final String GET_CAMPAIGN_MANUAL_SESSIONS = "getcampaignmanualsessions";
+    public static final String GET_CAMPAIGN_MANUAL_SESSION = "getcampaignmanualsession";
+    public static final String CREATE_CAMPAIGN_MANUAL_SESSION = "createcampaignmanualsession";
+    public static final String UPDATE_CAMPAIGN_MANUAL_SESSION = "updatecampaignmanualsession";
+    public static final String REMOVE_CAMPAIGN_MANUAL_SESSION = "removecampaignmanualsession";
 
 
     public static final String SEARCH_CAMPAIGN_INQUIRY_CLIENTS = "searchcampaigninquiryclients";

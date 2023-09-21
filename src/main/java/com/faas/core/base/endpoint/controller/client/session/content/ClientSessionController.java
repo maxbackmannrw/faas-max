@@ -1,7 +1,7 @@
 package com.faas.core.base.endpoint.controller.client.session.content;
 
 import com.faas.core.base.middleware.client.session.content.ClientSessionMiddleware;
-import com.faas.core.base.model.ws.campaign.details.client.manual.CampaignManualClientRequest;
+import com.faas.core.base.model.ws.campaign.details.client.manual.CampaignManualSessionRequest;
 import com.faas.core.base.model.ws.client.session.content.SessionWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
@@ -82,9 +82,9 @@ public class ClientSessionController {
 
 
     @RequestMapping(value = BaseRoute.CREATE_SESSIONS, method = RequestMethod.POST)
-    public ResponseEntity<?> createSessions(@RequestBody CampaignManualClientRequest campaignManualClientRequest) {
+    public ResponseEntity<?> createSessions(@RequestBody CampaignManualSessionRequest campaignManualSessionRequest) {
 
-        SessionWSModel response = clientSessionMiddleware.createSessions(campaignManualClientRequest);
+        SessionWSModel response = clientSessionMiddleware.createSessions(campaignManualSessionRequest);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
