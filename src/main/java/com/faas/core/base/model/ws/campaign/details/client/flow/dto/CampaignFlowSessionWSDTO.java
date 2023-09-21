@@ -5,15 +5,15 @@ import com.faas.core.base.model.ws.general.PaginationWSDTO;
 
 import java.util.List;
 
-public class CampaignFlowWSDTO {
+public class CampaignFlowSessionWSDTO {
 
     private List<ClientFlowWSDTO> flows;
     private PaginationWSDTO pagination;
 
-    public CampaignFlowWSDTO() {
+    public CampaignFlowSessionWSDTO() {
     }
 
-    public CampaignFlowWSDTO(PaginationWSDTO pagination, List<ClientFlowWSDTO> flows) {
+    public CampaignFlowSessionWSDTO(PaginationWSDTO pagination, List<ClientFlowWSDTO> flows) {
         this.pagination = pagination;
         this.flows = flows;
     }

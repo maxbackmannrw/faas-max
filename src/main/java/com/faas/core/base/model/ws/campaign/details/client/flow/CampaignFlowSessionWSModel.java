@@ -1,17 +1,17 @@
 package com.faas.core.base.model.ws.campaign.details.client.flow;
 
-import com.faas.core.base.model.ws.campaign.details.client.flow.dto.CampaignFlowWSDTO;
+import com.faas.core.base.model.ws.campaign.details.client.flow.dto.CampaignFlowSessionWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 
-public class CampaignFlowWSModel {
+public class CampaignFlowSessionWSModel {
 
     private GeneralWSModel general;
-    private CampaignFlowWSDTO campaignFlow;
+    private CampaignFlowSessionWSDTO campaignFlow;
 
-    public CampaignFlowWSModel() {
+    public CampaignFlowSessionWSModel() {
     }
 
-    public CampaignFlowWSModel(GeneralWSModel general, CampaignFlowWSDTO campaignFlow) {
+    public CampaignFlowSessionWSModel(GeneralWSModel general, CampaignFlowSessionWSDTO campaignFlow) {
         this.general = general;
         this.campaignFlow = campaignFlow;
     }
@@ -24,11 +24,11 @@ public class CampaignFlowWSModel {
         this.general = general;
     }
 
-    public CampaignFlowWSDTO getCampaignFlow() {
+    public CampaignFlowSessionWSDTO getCampaignFlow() {
         return campaignFlow;
     }
 
-    public void setCampaignFlow(CampaignFlowWSDTO campaignFlow) {
+    public void setCampaignFlow(CampaignFlowSessionWSDTO campaignFlow) {
         this.campaignFlow = campaignFlow;
     }
 }

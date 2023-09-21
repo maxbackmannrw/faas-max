@@ -102,20 +102,20 @@ public class BaseRoute {
     public static final String REMOVE_CAMPAIGN_MANUAL_SESSION = "removecampaignmanualsession";
 
 
-    public static final String SEARCH_CAMPAIGN_INQUIRY_CLIENTS = "searchcampaigninquiryclients";
-    public static final String GET_CAMPAIGN_INQUIRY_CLIENTS = "getcampaigninquiryclients";
-    public static final String GET_CAMPAIGN_INQUIRY_CLIENT = "getcampaigninquiryclient";
-    public static final String CREATE_CAMPAIGN_INQUIRY_CLIENT = "createcampaigninquiryclient";
-    public static final String UPDATE_CAMPAIGN_INQUIRY_CLIENT = "updatecampaigninquiryclient";
-    public static final String REMOVE_CAMPAIGN_INQUIRY_CLIENT = "removecampaigninquiryclient";
+    public static final String SEARCH_CAMPAIGN_INQUIRY_SESSIONS = "searchcampaigninquirysessions";
+    public static final String GET_CAMPAIGN_INQUIRY_SESSIONS = "getcampaigninquirysessions";
+    public static final String GET_CAMPAIGN_INQUIRY_SESSION = "getcampaigninquirysession";
+    public static final String CREATE_CAMPAIGN_INQUIRY_SESSION = "createcampaigninquirysession";
+    public static final String UPDATE_CAMPAIGN_INQUIRY_SESSION = "updatecampaigninquirysession";
+    public static final String REMOVE_CAMPAIGN_INQUIRY_SESSION = "removecampaigninquirysession";
 
 
-    public static final String SEARCH_CAMPAIGN_FLOW_CLIENTS = "searchcampaignflowclients";
-    public static final String GET_CAMPAIGN_FLOW_CLIENTS = "getcampaignflowclients";
-    public static final String GET_CAMPAIGN_FLOW_CLIENT = "getcampaignflowclient";
-    public static final String CREATE_CAMPAIGN_FLOW_CLIENT = "createcampaignflowclient";
-    public static final String UPDATE_CAMPAIGN_FLOW_CLIENT = "updatecampaignflowclient";
-    public static final String REMOVE_CAMPAIGN_FLOW_CLIENT = "removecampaignflowclient";
+    public static final String SEARCH_CAMPAIGN_FLOW_SESSIONS = "searchcampaignflowsessions";
+    public static final String GET_CAMPAIGN_FLOW_SESSIONS = "getcampaignflowsessions";
+    public static final String GET_CAMPAIGN_FLOW_SESSION = "getcampaignflowsession";
+    public static final String CREATE_CAMPAIGN_FLOW_SESSION = "createcampaignflowsession";
+    public static final String UPDATE_CAMPAIGN_FLOW_SESSION = "updatecampaignflowsession";
+    public static final String REMOVE_CAMPAIGN_FLOW_SESSION = "removecampaignflowsession";
 
 
 

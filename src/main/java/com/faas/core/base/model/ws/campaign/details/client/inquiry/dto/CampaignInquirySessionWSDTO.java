@@ -5,15 +5,15 @@ import com.faas.core.base.model.ws.client.inquiry.dto.ClientInquiryWSDTO;
 
 import java.util.List;
 
-public class CampaignInquiryWSDTO {
+public class CampaignInquirySessionWSDTO {
 
     private List<ClientInquiryWSDTO>inquiries;
     private PaginationWSDTO pagination;
 
-    public CampaignInquiryWSDTO() {
+    public CampaignInquirySessionWSDTO() {
     }
 
-    public CampaignInquiryWSDTO(PaginationWSDTO pagination, List<ClientInquiryWSDTO> inquiries) {
+    public CampaignInquirySessionWSDTO(PaginationWSDTO pagination, List<ClientInquiryWSDTO> inquiries) {
         this.pagination = pagination;
         this.inquiries = inquiries;
     }

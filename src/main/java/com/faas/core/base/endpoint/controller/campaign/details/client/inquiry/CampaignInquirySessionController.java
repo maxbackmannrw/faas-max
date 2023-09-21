@@ -1,8 +1,8 @@
 package com.faas.core.base.endpoint.controller.campaign.details.client.inquiry;
 
 import com.faas.core.base.middleware.campaign.details.client.inquiry.CampaignInquirySessionMiddleware;
-import com.faas.core.base.model.ws.campaign.details.client.inquiry.CampaignInquiryWSModel;
-import com.faas.core.base.model.ws.campaign.details.client.inquiry.InquiryClientRequest;
+import com.faas.core.base.model.ws.campaign.details.client.inquiry.CampaignInquirySessionWSModel;
+import com.faas.core.base.model.ws.campaign.details.client.inquiry.CampaignInquirySessionRequest;
 import com.faas.core.base.model.ws.client.inquiry.ClientInquiryWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
@@ -25,29 +25,15 @@ public class CampaignInquirySessionController {
     CampaignInquirySessionMiddleware campaignInquirySessionMiddleware;
 
 
-    @RequestMapping(value = BaseRoute.SEARCH_CAMPAIGN_INQUIRY_CLIENTS, method = RequestMethod.POST)
-    public ResponseEntity<?> searchCampaignInquiryClients(@RequestParam long userId,
-                                                          @RequestParam String campaignId,
-                                                          @RequestParam String clientCity,
-                                                          @RequestParam String clientCountry,
-                                                          @RequestParam int reqPage,
-                                                          @RequestParam int reqSize) {
+    @RequestMapping(value = BaseRoute.SEARCH_CAMPAIGN_INQUIRY_SESSIONS, method = RequestMethod.POST)
+    public ResponseEntity<?> searchCampaignInquirySessions(@RequestParam long userId,
+                                                           @RequestParam String campaignId,
+                                                           @RequestParam String city,
+                                                           @RequestParam String country,
+                                                           @RequestParam int reqPage,
+                                                           @RequestParam int reqSize) {
 
-        CampaignInquiryWSModel response = campaignInquirySessionMiddleware.searchCampaignInquiryClients(userId,campaignId,clientCity,clientCountry,reqPage,reqSize);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-    @RequestMapping(value = BaseRoute.GET_CAMPAIGN_INQUIRY_CLIENTS, method = RequestMethod.POST)
-    public ResponseEntity<?> getCampaignInquiryClients(@RequestParam long userId,
-                                                       @RequestParam String campaignId,
-                                                       @RequestParam int reqPage,
-                                                       @RequestParam int reqSize) {
-
-        CampaignInquiryWSModel response = campaignInquirySessionMiddleware.getCampaignInquiryClients(userId,campaignId,reqPage,reqSize);
+        CampaignInquirySessionWSModel response = campaignInquirySessionMiddleware.searchCampaignInquirySessions(userId,campaignId,city,country,reqPage,reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -55,23 +41,13 @@ public class CampaignInquirySessionController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-    @RequestMapping(value = BaseRoute.GET_CAMPAIGN_INQUIRY_CLIENT, method = RequestMethod.POST)
-    public ResponseEntity<?> getCampaignInquiryClient(@RequestParam long userId,
-                                                      @RequestParam long inquiryId,
-                                                      @RequestParam long clientId) {
+    @RequestMapping(value = BaseRoute.GET_CAMPAIGN_INQUIRY_SESSIONS, method = RequestMethod.POST)
+    public ResponseEntity<?> getCampaignInquirySessions(@RequestParam long userId,
+                                                        @RequestParam String campaignId,
+                                                        @RequestParam int reqPage,
+                                                        @RequestParam int reqSize) {
 
-        ClientInquiryWSModel response = campaignInquirySessionMiddleware.getCampaignInquiryClient(userId,inquiryId,clientId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-    @RequestMapping(value = BaseRoute.CREATE_CAMPAIGN_INQUIRY_CLIENT, method = RequestMethod.POST)
-    public ResponseEntity<?> createCampaignInquiryClient(@RequestBody InquiryClientRequest inquiryClientRequest) {
-
-        ClientInquiryWSModel response = campaignInquirySessionMiddleware.createCampaignInquiryClient(inquiryClientRequest);
+        CampaignInquirySessionWSModel response = campaignInquirySessionMiddleware.getCampaignInquirySessions(userId,campaignId,reqPage,reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -79,13 +55,12 @@ public class CampaignInquirySessionController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-    @RequestMapping(value = BaseRoute.UPDATE_CAMPAIGN_INQUIRY_CLIENT, method = RequestMethod.POST)
-    public ResponseEntity<?> updateCampaignInquiryClient(@RequestParam long userId,
-                                                         @RequestParam long inquiryId,
-                                                         @RequestParam long clientId,
-                                                         @RequestParam String inquiryState) {
+    @RequestMapping(value = BaseRoute.GET_CAMPAIGN_INQUIRY_SESSION, method = RequestMethod.POST)
+    public ResponseEntity<?> getCampaignInquirySession(@RequestParam long userId,
+                                                       @RequestParam long inquiryId,
+                                                       @RequestParam long clientId) {
 
-        ClientInquiryWSModel response = campaignInquirySessionMiddleware.updateCampaignInquiryClient(userId,inquiryId,clientId,inquiryState);
+        ClientInquiryWSModel response = campaignInquirySessionMiddleware.getCampaignInquirySession(userId,inquiryId,clientId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -93,12 +68,37 @@ public class CampaignInquirySessionController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-    @RequestMapping(value = BaseRoute.REMOVE_CAMPAIGN_INQUIRY_CLIENT, method = RequestMethod.POST)
-    public ResponseEntity<?> removeCampaignInquiryClient(@RequestParam long userId,
-                                                         @RequestParam long inquiryId,
-                                                         @RequestParam long clientId) {
+    @RequestMapping(value = BaseRoute.CREATE_CAMPAIGN_INQUIRY_SESSION, method = RequestMethod.POST)
+    public ResponseEntity<?> createCampaignInquirySession(@RequestBody CampaignInquirySessionRequest campaignInquirySessionRequest) {
 
-        ClientInquiryWSModel response = campaignInquirySessionMiddleware.removeCampaignInquiryClient(userId,inquiryId,clientId);
+        ClientInquiryWSModel response = campaignInquirySessionMiddleware.createCampaignInquirySession(campaignInquirySessionRequest);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+    @RequestMapping(value = BaseRoute.UPDATE_CAMPAIGN_INQUIRY_SESSION, method = RequestMethod.POST)
+    public ResponseEntity<?> updateCampaignInquirySession(@RequestParam long userId,
+                                                          @RequestParam long inquiryId,
+                                                          @RequestParam long clientId,
+                                                          @RequestParam String inquiryState) {
+
+        ClientInquiryWSModel response = campaignInquirySessionMiddleware.updateCampaignInquirySession(userId,inquiryId,clientId,inquiryState);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+    @RequestMapping(value = BaseRoute.REMOVE_CAMPAIGN_INQUIRY_SESSION, method = RequestMethod.POST)
+    public ResponseEntity<?> removeCampaignInquirySession(@RequestParam long userId,
+                                                          @RequestParam long inquiryId,
+                                                          @RequestParam long clientId) {
+
+        ClientInquiryWSModel response = campaignInquirySessionMiddleware.removeCampaignInquirySession(userId,inquiryId,clientId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
