@@ -3,7 +3,7 @@ package com.faas.core.base.middleware.campaign.details.client.flow;
 import com.faas.core.base.framework.campaign.details.client.flow.CampaignFlowClientFramework;
 import com.faas.core.base.model.ws.campaign.details.client.flow.CampaignFlowWSModel;
 import com.faas.core.base.model.ws.campaign.details.client.flow.dto.CampaignFlowWSDTO;
-import com.faas.core.base.model.ws.client.flow.ClientFlowRequest;
+import com.faas.core.base.model.ws.campaign.details.client.flow.CampaignFlowClientRequest;
 import com.faas.core.base.model.ws.client.flow.ClientFlowWSModel;
 import com.faas.core.base.model.ws.client.flow.dto.ClientFlowWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
@@ -84,12 +84,12 @@ public class CampaignFlowClientMiddleware {
     }
 
 
-    public ClientFlowWSModel createCampaignFlowClient(ClientFlowRequest clientFlowRequest) {
+    public ClientFlowWSModel createCampaignFlowClient(CampaignFlowClientRequest campaignFlowClientRequest) {
 
         ClientFlowWSModel response = new ClientFlowWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ClientFlowWSDTO> clientFlowWSDTOS = campaignFlowClientFramework.createCampaignFlowClientService(clientFlowRequest);
+        List<ClientFlowWSDTO> clientFlowWSDTOS = campaignFlowClientFramework.createCampaignFlowClientService(campaignFlowClientRequest);
         if (clientFlowWSDTOS != null){
             response.setClientFlows(clientFlowWSDTOS);
         }

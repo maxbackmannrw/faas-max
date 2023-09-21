@@ -2,7 +2,7 @@ package com.faas.core.base.endpoint.controller.campaign.details.client.inquiry;
 
 import com.faas.core.base.middleware.campaign.details.client.inquiry.CampaignInquiryClientMiddleware;
 import com.faas.core.base.model.ws.campaign.details.client.inquiry.CampaignInquiryWSModel;
-import com.faas.core.base.model.ws.client.inquiry.ClientInquiryRequest;
+import com.faas.core.base.model.ws.campaign.details.client.inquiry.CampaignInquiryClientRequest;
 import com.faas.core.base.model.ws.client.inquiry.ClientInquiryWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
@@ -69,9 +69,9 @@ public class CampaignInquiryClientController {
     }
 
     @RequestMapping(value = BaseRoute.CREATE_CAMPAIGN_INQUIRY_CLIENT, method = RequestMethod.POST)
-    public ResponseEntity<?> createCampaignInquiryClient(@RequestBody ClientInquiryRequest clientInquiryRequest) {
+    public ResponseEntity<?> createCampaignInquiryClient(@RequestBody CampaignInquiryClientRequest campaignInquiryClientRequest) {
 
-        ClientInquiryWSModel response = campaignInquiryClientMiddleware.createCampaignInquiryClient(clientInquiryRequest);
+        ClientInquiryWSModel response = campaignInquiryClientMiddleware.createCampaignInquiryClient(campaignInquiryClientRequest);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

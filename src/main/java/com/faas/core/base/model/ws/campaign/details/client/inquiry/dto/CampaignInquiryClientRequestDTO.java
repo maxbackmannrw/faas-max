@@ -1,16 +1,16 @@
-package com.faas.core.base.model.ws.client.flow.dto;
+package com.faas.core.base.model.ws.campaign.details.client.inquiry.dto;
 
-public class ClientFlowRequestDTO {
+public class CampaignInquiryClientRequestDTO {
 
     private long userId;
     private String campaignId;
     private long clientId;
     private long agentId;
 
-    public ClientFlowRequestDTO() {
+    public CampaignInquiryClientRequestDTO() {
     }
 
-    public ClientFlowRequestDTO(long userId, String campaignId, long clientId, long agentId) {
+    public CampaignInquiryClientRequestDTO(long userId, String campaignId, long clientId, long agentId) {
         this.userId = userId;
         this.campaignId = campaignId;
         this.clientId = clientId;

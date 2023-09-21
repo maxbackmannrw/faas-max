@@ -1,16 +1,16 @@
-package com.faas.core.base.model.ws.campaign.details.client.manual.dto;
+package com.faas.core.base.model.ws.campaign.details.client.flow.dto;
 
-public class ManualClientRequestDTO {
+public class CampaignFlowClientRequestDTO {
 
     private long userId;
     private String campaignId;
     private long clientId;
     private long agentId;
 
-    public ManualClientRequestDTO() {
+    public CampaignFlowClientRequestDTO() {
     }
 
-    public ManualClientRequestDTO(long userId, String campaignId, long clientId, long agentId) {
+    public CampaignFlowClientRequestDTO(long userId, String campaignId, long clientId, long agentId) {
         this.userId = userId;
         this.campaignId = campaignId;
         this.clientId = clientId;

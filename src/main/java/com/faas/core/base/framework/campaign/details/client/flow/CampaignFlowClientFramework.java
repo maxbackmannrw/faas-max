@@ -1,8 +1,8 @@
 package com.faas.core.base.framework.campaign.details.client.flow;
 
 import com.faas.core.base.model.ws.campaign.details.client.flow.dto.CampaignFlowWSDTO;
-import com.faas.core.base.model.ws.client.flow.ClientFlowRequest;
-import com.faas.core.base.model.ws.client.flow.dto.ClientFlowRequestDTO;
+import com.faas.core.base.model.ws.campaign.details.client.flow.CampaignFlowClientRequest;
+import com.faas.core.base.model.ws.campaign.details.client.flow.dto.CampaignFlowClientRequestDTO;
 import com.faas.core.base.model.ws.client.flow.dto.ClientFlowWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
@@ -103,11 +103,11 @@ public class CampaignFlowClientFramework {
         return null;
     }
 
-    public List<ClientFlowWSDTO> createCampaignFlowClientService(ClientFlowRequest clientFlowRequest) {
+    public List<ClientFlowWSDTO> createCampaignFlowClientService(CampaignFlowClientRequest campaignFlowClientRequest) {
 
         List<ClientFlowWSDTO> clientFlowWSDTOS = new ArrayList<>();
-        for (int i = 0; i< clientFlowRequest.getFlowRequests().size(); i++){
-            ClientFlowWSDTO clientFlowWSDTO = createCampaignFlow(clientFlowRequest.getFlowRequests().get(i));
+        for (int i = 0; i< campaignFlowClientRequest.getFlowRequests().size(); i++){
+            ClientFlowWSDTO clientFlowWSDTO = createCampaignFlow(campaignFlowClientRequest.getFlowRequests().get(i));
             if (clientFlowWSDTO != null){
                 clientFlowWSDTOS.add(clientFlowWSDTO);
             }
@@ -115,7 +115,7 @@ public class CampaignFlowClientFramework {
         return clientFlowWSDTOS;
     }
 
-    public ClientFlowWSDTO createCampaignFlow(ClientFlowRequestDTO clientFlowRequestDTO){
+    public ClientFlowWSDTO createCampaignFlow(CampaignFlowClientRequestDTO campaignFlowClientRequestDTO){
 
     /*    if (!flowRepository.existsByClientIdAndCampaignId(flowRequestDTO.getClientId(),flowRequestDTO.getCampaignId())){
             Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(flowRequestDTO.getCampaignId());

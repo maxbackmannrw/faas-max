@@ -2,7 +2,7 @@ package com.faas.core.base.endpoint.controller.campaign.details.client.flow;
 
 import com.faas.core.base.middleware.campaign.details.client.flow.CampaignFlowClientMiddleware;
 import com.faas.core.base.model.ws.campaign.details.client.flow.CampaignFlowWSModel;
-import com.faas.core.base.model.ws.client.flow.ClientFlowRequest;
+import com.faas.core.base.model.ws.campaign.details.client.flow.CampaignFlowClientRequest;
 import com.faas.core.base.model.ws.client.flow.ClientFlowWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
@@ -69,9 +69,9 @@ public class CampaignFlowClientController {
     }
 
     @RequestMapping(value = BaseRoute.CREATE_CAMPAIGN_FLOW_CLIENT, method = RequestMethod.POST)
-    public ResponseEntity<?> createCampaignFlowClient(@RequestBody ClientFlowRequest clientFlowRequest) {
+    public ResponseEntity<?> createCampaignFlowClient(@RequestBody CampaignFlowClientRequest campaignFlowClientRequest) {
 
-        ClientFlowWSModel response = campaignFlowClientMiddleware.createCampaignFlowClient(clientFlowRequest);
+        ClientFlowWSModel response = campaignFlowClientMiddleware.createCampaignFlowClient(campaignFlowClientRequest);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

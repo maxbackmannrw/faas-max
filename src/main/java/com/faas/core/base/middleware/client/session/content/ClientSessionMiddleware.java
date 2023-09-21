@@ -1,7 +1,7 @@
 package com.faas.core.base.middleware.client.session.content;
 
 import com.faas.core.base.framework.client.session.content.ClientSessionFramework;
-import com.faas.core.base.model.ws.campaign.details.client.manual.ManualClientRequest;
+import com.faas.core.base.model.ws.campaign.details.client.manual.CampaignManualClientRequest;
 import com.faas.core.base.model.ws.client.session.content.SessionWSModel;
 import com.faas.core.base.model.ws.client.session.content.dto.SessionWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
@@ -105,13 +105,13 @@ public class ClientSessionMiddleware {
 
 
 
-    public SessionWSModel createSessions(ManualClientRequest manualClientRequest) {
+    public SessionWSModel createSessions(CampaignManualClientRequest campaignManualClientRequest) {
 
         SessionWSModel response = new SessionWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<SessionWSDTO> sessionWSDTOS = new ArrayList<>();
 
-        SessionWSDTO sessionWSDTO = clientSessionFramework.createSessionsService(manualClientRequest);
+        SessionWSDTO sessionWSDTO = clientSessionFramework.createSessionsService(campaignManualClientRequest);
         if (sessionWSDTO != null){
             sessionWSDTOS.add(sessionWSDTO);
         }

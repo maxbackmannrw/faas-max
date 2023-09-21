@@ -4,7 +4,7 @@ import com.faas.core.base.framework.campaign.details.client.inquiry.CampaignInqu
 import com.faas.core.base.model.ws.campaign.details.client.inquiry.CampaignInquiryWSModel;
 import com.faas.core.base.model.ws.campaign.details.client.inquiry.dto.CampaignInquiryWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.client.inquiry.ClientInquiryRequest;
+import com.faas.core.base.model.ws.campaign.details.client.inquiry.CampaignInquiryClientRequest;
 import com.faas.core.base.model.ws.client.inquiry.ClientInquiryWSModel;
 import com.faas.core.base.model.ws.client.inquiry.dto.ClientInquiryWSDTO;
 import com.faas.core.utils.config.AppConstant;
@@ -85,12 +85,12 @@ public class CampaignInquiryClientMiddleware {
 
 
 
-    public ClientInquiryWSModel createCampaignInquiryClient(ClientInquiryRequest clientInquiryRequest) {
+    public ClientInquiryWSModel createCampaignInquiryClient(CampaignInquiryClientRequest campaignInquiryClientRequest) {
 
         ClientInquiryWSModel response = new ClientInquiryWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ClientInquiryWSDTO> clientInquiryWSDTOS = campaignInquiryClientFramework.createCampaignInquiryClientService(clientInquiryRequest);
+        List<ClientInquiryWSDTO> clientInquiryWSDTOS = campaignInquiryClientFramework.createCampaignInquiryClientService(campaignInquiryClientRequest);
         if (clientInquiryWSDTOS != null){
             response.setClientInquiries(clientInquiryWSDTOS);
         }

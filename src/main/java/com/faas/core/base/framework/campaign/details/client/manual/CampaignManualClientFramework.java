@@ -6,8 +6,8 @@ import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.model.db.user.content.UserDBModel;
 import com.faas.core.base.model.ws.campaign.details.client.manual.dto.CampaignSessionWSDTO;
-import com.faas.core.base.model.ws.campaign.details.client.manual.ManualClientRequest;
-import com.faas.core.base.model.ws.campaign.details.client.manual.dto.ManualClientRequestDTO;
+import com.faas.core.base.model.ws.campaign.details.client.manual.CampaignManualClientRequest;
+import com.faas.core.base.model.ws.campaign.details.client.manual.dto.CampaignManualClientRequestDTO;
 import com.faas.core.base.model.ws.client.session.content.dto.SessionWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;
@@ -98,11 +98,11 @@ public class CampaignManualClientFramework {
         return null;
     }
 
-    public List<SessionWSDTO> createCampaignManualClientService(ManualClientRequest manualClientRequest) {
+    public List<SessionWSDTO> createCampaignManualClientService(CampaignManualClientRequest campaignManualClientRequest) {
 
         List<SessionWSDTO>sessionWSDTOS = new ArrayList<>();
-        for (int i = 0; i< manualClientRequest.getClientRequests().size(); i++){
-            SessionWSDTO sessionWSDTO = createCampaignManualClient(manualClientRequest.getClientRequests().get(i));
+        for (int i = 0; i< campaignManualClientRequest.getClientRequests().size(); i++){
+            SessionWSDTO sessionWSDTO = createCampaignManualClient(campaignManualClientRequest.getClientRequests().get(i));
             if (sessionWSDTO != null){
                 sessionWSDTOS.add(sessionWSDTO);
             }
@@ -110,7 +110,7 @@ public class CampaignManualClientFramework {
         return sessionWSDTOS;
     }
 
-    public SessionWSDTO createCampaignManualClient(ManualClientRequestDTO clientRequestDTO) {
+    public SessionWSDTO createCampaignManualClient(CampaignManualClientRequestDTO clientRequestDTO) {
 
         Optional<ClientDBModel> clientDBModel = clientRepository.findById(clientRequestDTO.getClientId());
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(clientRequestDTO.getCampaignId());
