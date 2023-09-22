@@ -10,7 +10,7 @@ public class ClientFlowDBModel {
     @Id
     private String id;
     private long sessionId;
-
+    private long clientId;
     private String flowState;
     private long uDate;
     private long cDate;
@@ -19,9 +19,10 @@ public class ClientFlowDBModel {
     public ClientFlowDBModel() {
     }
 
-    public ClientFlowDBModel(String id, long sessionId, String flowState, long uDate, long cDate, int status) {
+    public ClientFlowDBModel(String id, long sessionId, long clientId, String flowState, long uDate, long cDate, int status) {
         this.id = id;
         this.sessionId = sessionId;
+        this.clientId = clientId;
         this.flowState = flowState;
         this.uDate = uDate;
         this.cDate = cDate;
@@ -42,6 +43,14 @@ public class ClientFlowDBModel {
 
     public void setSessionId(long sessionId) {
         this.sessionId = sessionId;
+    }
+
+    public long getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(long clientId) {
+        this.clientId = clientId;
     }
 
     public String getFlowState() {

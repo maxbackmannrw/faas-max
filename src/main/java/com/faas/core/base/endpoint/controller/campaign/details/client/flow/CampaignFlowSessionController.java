@@ -4,6 +4,7 @@ import com.faas.core.base.middleware.campaign.details.client.flow.CampaignFlowSe
 import com.faas.core.base.model.ws.campaign.details.client.flow.CampaignFlowSessionWSModel;
 import com.faas.core.base.model.ws.campaign.details.client.flow.CampaignFlowSessionRequest;
 import com.faas.core.base.model.ws.client.flow.ClientFlowWSModel;
+import com.faas.core.base.model.ws.client.flow.FlowSessionWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,10 +58,9 @@ public class CampaignFlowSessionController {
 
     @RequestMapping(value = BaseRoute.GET_CAMPAIGN_FLOW_SESSION, method = RequestMethod.POST)
     public ResponseEntity<?> getCampaignFlowSession(@RequestParam long userId,
-                                                    @RequestParam long flowId,
-                                                    @RequestParam long clientId) {
+                                                    @RequestParam long sessionId) {
 
-        ClientFlowWSModel response = campaignFlowSessionMiddleware.getCampaignFlowSession(userId,flowId,clientId);
+        FlowSessionWSModel response = campaignFlowSessionMiddleware.getCampaignFlowSession(userId,sessionId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -69,9 +69,9 @@ public class CampaignFlowSessionController {
     }
 
     @RequestMapping(value = BaseRoute.CREATE_CAMPAIGN_FLOW_SESSION, method = RequestMethod.POST)
-    public ResponseEntity<?> createCampaignFlowSession(@RequestBody CampaignFlowSessionRequest campaignFlowSessionRequest) {
+    public ResponseEntity<?> createCampaignFlowSession(@RequestBody CampaignFlowSessionRequest flowSessionRequest) {
 
-        ClientFlowWSModel response = campaignFlowSessionMiddleware.createCampaignFlowSession(campaignFlowSessionRequest);
+        FlowSessionWSModel response = campaignFlowSessionMiddleware.createCampaignFlowSession(flowSessionRequest);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -81,11 +81,12 @@ public class CampaignFlowSessionController {
 
     @RequestMapping(value = BaseRoute.UPDATE_CAMPAIGN_FLOW_SESSION, method = RequestMethod.POST)
     public ResponseEntity<?> updateCampaignFlowSession(@RequestParam long userId,
-                                                       @RequestParam long flowId,
-                                                       @RequestParam long clientId,
+                                                       @RequestParam long sessionId,
+                                                       @RequestParam long agentId,
+                                                       @RequestParam String campaignId,
                                                        @RequestParam String flowState) {
 
-        ClientFlowWSModel response = campaignFlowSessionMiddleware.updateCampaignFlowSession(userId,flowId,clientId,flowState);
+        FlowSessionWSModel response = campaignFlowSessionMiddleware.updateCampaignFlowSession(userId,sessionId,agentId,campaignId,flowState);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -95,10 +96,9 @@ public class CampaignFlowSessionController {
 
     @RequestMapping(value = BaseRoute.REMOVE_CAMPAIGN_FLOW_SESSION, method = RequestMethod.POST)
     public ResponseEntity<?> removeCampaignFlowSession(@RequestParam long userId,
-                                                       @RequestParam long flowId,
-                                                       @RequestParam long clientId) {
+                                                       @RequestParam long sessionId) {
 
-        ClientFlowWSModel response = campaignFlowSessionMiddleware.removeCampaignFlowSession(userId,flowId,clientId);
+        FlowSessionWSModel response = campaignFlowSessionMiddleware.removeCampaignFlowSession(userId,sessionId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

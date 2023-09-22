@@ -98,11 +98,11 @@ public class CampaignManualSessionFramework {
         return null;
     }
 
-    public List<SessionWSDTO> createCampaignManualSessionService(CampaignManualSessionRequest sessionRequest) {
+    public List<SessionWSDTO> createCampaignManualSessionService(CampaignManualSessionRequest manualSessionRequest) {
 
         List<SessionWSDTO>sessionWSDTOS = new ArrayList<>();
-        for (int i = 0; i< sessionRequest.getSessionRequests().size(); i++){
-            SessionWSDTO sessionWSDTO = createCampaignManualClient(sessionRequest.getSessionRequests().get(i));
+        for (int i = 0; i< manualSessionRequest.getSessionRequests().size(); i++){
+            SessionWSDTO sessionWSDTO = createCampaignManualClient(manualSessionRequest.getSessionRequests().get(i));
             if (sessionWSDTO != null){
                 sessionWSDTOS.add(sessionWSDTO);
             }
@@ -110,11 +110,11 @@ public class CampaignManualSessionFramework {
         return sessionWSDTOS;
     }
 
-    public SessionWSDTO createCampaignManualClient(CampaignManualSessionRequestDTO clientRequestDTO) {
+    public SessionWSDTO createCampaignManualClient(CampaignManualSessionRequestDTO manualSessionRequest) {
 
-        Optional<ClientDBModel> clientDBModel = clientRepository.findById(clientRequestDTO.getClientId());
-        Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(clientRequestDTO.getCampaignId());
-        Optional<UserDBModel> agentDBModel = userRepository.findById(clientRequestDTO.getAgentId());
+        Optional<ClientDBModel> clientDBModel = clientRepository.findById(manualSessionRequest.getClientId());
+        Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(manualSessionRequest.getCampaignId());
+        Optional<UserDBModel> agentDBModel = userRepository.findById(manualSessionRequest.getAgentId());
 
         if (clientDBModel.isPresent() && campaignDBModel.isPresent() && agentDBModel.isPresent()){
 
@@ -156,6 +156,7 @@ public class CampaignManualSessionFramework {
         }
         return null;
     }
+
 
     public SessionWSDTO removeCampaignManualSessionService(long userId,long sessionId) {
 

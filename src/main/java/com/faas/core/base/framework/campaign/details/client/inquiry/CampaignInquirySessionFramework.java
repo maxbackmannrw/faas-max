@@ -1,9 +1,11 @@
 package com.faas.core.base.framework.campaign.details.client.inquiry;
 
+import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.model.ws.campaign.details.client.inquiry.dto.CampaignInquirySessionWSDTO;
 import com.faas.core.base.model.ws.campaign.details.client.inquiry.CampaignInquirySessionRequest;
 import com.faas.core.base.model.ws.campaign.details.client.inquiry.dto.CampaignInquirySessionRequestDTO;
 import com.faas.core.base.model.ws.client.inquiry.dto.ClientInquiryWSDTO;
+import com.faas.core.base.model.ws.client.inquiry.dto.InquirySessionWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.client.inquiry.ClientInquiryRepository;
@@ -18,10 +20,13 @@ import com.faas.core.utils.helpers.InquiryHelper;
 import com.faas.core.utils.helpers.OperationHelper;
 import com.faas.core.utils.helpers.SessionHelper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 @Component
@@ -67,58 +72,53 @@ public class CampaignInquirySessionFramework {
 
     public CampaignInquirySessionWSDTO searchCampaignInquirySessionsService(long userId, String campaignId, String city, String country, int reqPage, int reqSize) {
 
-     /*   Page<InquiryDBModel> inquiryDBModelPage = inquiryRepository.findAllByCampaignIdAndClientCityAndClientCountry(campaignId,clientCity,clientCountry, PageRequest.of(reqPage,reqSize));
-        if (inquiryDBModelPage != null){
-            CampaignInquiryWSDTO campaignInquiryWSDTO = new CampaignInquiryWSDTO();
-            campaignInquiryWSDTO.setPagination(inquiryHelper.createInquiryPagination(inquiryDBModelPage));
-            campaignInquiryWSDTO.setInquiries(inquiryHelper.createInquiryWSDTOS(inquiryDBModelPage.getContent()));
-            return campaignInquiryWSDTO;
-        }
+        Page<SessionDBModel> sessionDBModelPage = sessionRepository.findAllByCampaignIdAndClientCityAndClientCountry(campaignId,city,country, PageRequest.of(reqPage,reqSize));
+        if (sessionDBModelPage != null){
 
-      */
+            CampaignInquirySessionWSDTO campaignInquirySessionWSDTO = new CampaignInquirySessionWSDTO();
+            campaignInquirySessionWSDTO.setInquirySessions(inquiryHelper.createInquirySessionWSDTOS(sessionDBModelPage.getContent()));
+            campaignInquirySessionWSDTO.setPagination(inquiryHelper.createInquirySessionPagination(sessionDBModelPage));
+
+            return campaignInquirySessionWSDTO;
+        }
         return null;
     }
 
     public CampaignInquirySessionWSDTO getCampaignInquirySessionsService(long userId, String campaignId, int reqPage, int reqSize) {
 
-     /*   Page<InquiryDBModel> inquiryDBModelPage = inquiryRepository.findAllByCampaignId(campaignId, PageRequest.of(reqPage,reqSize));
-        if (inquiryDBModelPage != null){
+        Page<SessionDBModel> sessionDBModelPage = sessionRepository.findAllByCampaignId(campaignId, PageRequest.of(reqPage,reqSize));
+        if (sessionDBModelPage != null){
 
-            CampaignInquiryWSDTO campaignInquiryWSDTO = new CampaignInquiryWSDTO();
-            campaignInquiryWSDTO.setPagination(inquiryHelper.createInquiryPagination(inquiryDBModelPage));
-            campaignInquiryWSDTO.setInquiries(inquiryHelper.createInquiryWSDTOS(inquiryDBModelPage.getContent()));
+            CampaignInquirySessionWSDTO campaignInquirySessionWSDTO = new CampaignInquirySessionWSDTO();
+            campaignInquirySessionWSDTO.setInquirySessions(inquiryHelper.createInquirySessionWSDTOS(sessionDBModelPage.getContent()));
+            campaignInquirySessionWSDTO.setPagination(inquiryHelper.createInquirySessionPagination(sessionDBModelPage));
 
-            return campaignInquiryWSDTO;
+            return campaignInquirySessionWSDTO;
         }
-
-      */
         return null;
     }
 
-    public ClientInquiryWSDTO getCampaignInquirySessionService(long userId, long inquiryId, long clientId) {
 
-        /* List<InquiryDBModel> inquiryDBModels = inquiryRepository.findByIdAndClientId(inquiryId,clientId);
-        if (!inquiryDBModels.isEmpty()){
-            return new InquiryWSDTO(inquiryDBModels.get(0));
-        }
+    public InquirySessionWSDTO getCampaignInquirySessionService(long userId,long sessionId) {
 
-         */
-        return null;
+        Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
+        return sessionDBModel.map(dbModel -> inquiryHelper.createInquirySessionWSDTO(dbModel)).orElse(null);
     }
 
-    public List<ClientInquiryWSDTO> createCampaignInquirySessionService(CampaignInquirySessionRequest campaignInquirySessionRequest) {
+    public List<InquirySessionWSDTO> createCampaignInquirySessionService(CampaignInquirySessionRequest inquirySessionRequest) {
 
-        List<ClientInquiryWSDTO> clientInquiryWSDTOS = new ArrayList<>();
-        for (int i = 0; i< campaignInquirySessionRequest.getInquiryRequests().size(); i++){
-            ClientInquiryWSDTO clientInquiryWSDTO = createCampaignInquiry(campaignInquirySessionRequest.getInquiryRequests().get(i));
-            if (clientInquiryWSDTO != null){
-                clientInquiryWSDTOS.add(clientInquiryWSDTO);
+        List<InquirySessionWSDTO> inquirySessionWSDTOS = new ArrayList<>();
+        for (int i = 0; i< inquirySessionRequest.getSessionRequests().size(); i++){
+            InquirySessionWSDTO inquirySessionWSDTO = createCampaignInquirySession(inquirySessionRequest.getSessionRequests().get(i));
+            if (inquirySessionWSDTO != null){
+                inquirySessionWSDTOS.add(inquirySessionWSDTO);
             }
         }
-        return clientInquiryWSDTOS;
+        return inquirySessionWSDTOS;
     }
 
-    public ClientInquiryWSDTO createCampaignInquiry(CampaignInquirySessionRequestDTO campaignInquirySessionRequestDTO) {
+
+    public InquirySessionWSDTO createCampaignInquirySession(CampaignInquirySessionRequestDTO inquirySessionRequest) {
 
      /*   if (!inquiryRepository.existsByClientIdAndCampaignId(inquiryRequestDTO.getClientId(),inquiryRequestDTO.getCampaignId())){
             Optional<ClientDBModel> clientDBModel = clientRepository.findById(inquiryRequestDTO.getClientId());
@@ -144,7 +144,8 @@ public class CampaignInquirySessionFramework {
         return null;
     }
 
-    public ClientInquiryWSDTO updateCampaignInquirySessionService(long userId, long inquiryId, long clientId, String inquiryState) {
+
+    public InquirySessionWSDTO updateCampaignInquirySessionService(long userId, long sessionId, long agentId, String campaignId, String inquiryState) {
 
       /*  List<InquiryDBModel> inquiryDBModels = inquiryRepository.findByIdAndClientId(inquiryId,clientId);
         if (!inquiryDBModels.isEmpty()){
@@ -152,12 +153,11 @@ public class CampaignInquirySessionFramework {
             inquiryDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
             return new InquiryWSDTO(inquiryRepository.save(inquiryDBModels.get(0)));
         }
-
        */
         return null;
     }
 
-    public ClientInquiryWSDTO removeCampaignInquirySessionService(long userId, long inquiryId, long clientId) {
+    public InquirySessionWSDTO removeCampaignInquirySessionService(long userId,long sessionId) {
 
   /*      List<InquiryDBModel> inquiryDBModels = inquiryRepository.findByIdAndClientId(inquiryId,clientId);
         if (!inquiryDBModels.isEmpty()) {
@@ -175,7 +175,6 @@ public class CampaignInquirySessionFramework {
             }
             return new InquiryWSDTO(inquiryDBModels.get(0));
         }
-
    */
         return null;
     }

@@ -68,9 +68,9 @@ public class CampaignManualSessionController {
     }
 
     @RequestMapping(value = BaseRoute.CREATE_CAMPAIGN_MANUAL_SESSION, method = RequestMethod.POST)
-    public ResponseEntity<?> createCampaignManualSession(@RequestBody CampaignManualSessionRequest campaignManualSessionRequest) {
+    public ResponseEntity<?> createCampaignManualSession(@RequestBody CampaignManualSessionRequest manualSessionRequest) {
 
-        SessionWSModel response = campaignManualSessionMiddleware.createCampaignManualSession(campaignManualSessionRequest);
+        SessionWSModel response = campaignManualSessionMiddleware.createCampaignManualSession(manualSessionRequest);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

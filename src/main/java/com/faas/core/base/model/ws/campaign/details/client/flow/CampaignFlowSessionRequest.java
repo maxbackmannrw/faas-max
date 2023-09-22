@@ -6,21 +6,20 @@ import java.util.List;
 
 public class CampaignFlowSessionRequest {
 
-    private List<CampaignFlowSessionRequestDTO> flowRequests;
+    private List<CampaignFlowSessionRequestDTO> sessionRequests;
 
     public CampaignFlowSessionRequest() {
     }
 
-    public CampaignFlowSessionRequest(List<CampaignFlowSessionRequestDTO> flowRequests) {
-        this.flowRequests = flowRequests;
+    public CampaignFlowSessionRequest(List<CampaignFlowSessionRequestDTO> sessionRequests) {
+        this.sessionRequests = sessionRequests;
     }
 
-    public List<CampaignFlowSessionRequestDTO> getFlowRequests() {
-        return flowRequests;
+    public List<CampaignFlowSessionRequestDTO> getSessionRequests() {
+        return sessionRequests;
     }
 
-    public void setFlowRequests(List<CampaignFlowSessionRequestDTO> flowRequests) {
-        this.flowRequests = flowRequests;
+    public void setSessionRequests(List<CampaignFlowSessionRequestDTO> sessionRequests) {
+        this.sessionRequests = sessionRequests;
     }
-
 }

@@ -6,20 +6,20 @@ import java.util.List;
 
 public class CampaignInquirySessionRequest {
 
-    private List<CampaignInquirySessionRequestDTO>inquiryRequests;
+    private List<CampaignInquirySessionRequestDTO>sessionRequests;
 
     public CampaignInquirySessionRequest() {
     }
 
-    public CampaignInquirySessionRequest(List<CampaignInquirySessionRequestDTO> inquiryRequests) {
-        this.inquiryRequests = inquiryRequests;
+    public CampaignInquirySessionRequest(List<CampaignInquirySessionRequestDTO> sessionRequests) {
+        this.sessionRequests = sessionRequests;
     }
 
-    public List<CampaignInquirySessionRequestDTO> getInquiryRequests() {
-        return inquiryRequests;
+    public List<CampaignInquirySessionRequestDTO> getSessionRequests() {
+        return sessionRequests;
     }
 
-    public void setInquiryRequests(List<CampaignInquirySessionRequestDTO> inquiryRequests) {
-        this.inquiryRequests = inquiryRequests;
+    public void setSessionRequests(List<CampaignInquirySessionRequestDTO> sessionRequests) {
+        this.sessionRequests = sessionRequests;
     }
 }

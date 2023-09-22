@@ -10,19 +10,19 @@ public class ClientInquiryDBModel {
     @Id
     private String id;
     private long sessionId;
-
+    private long clientId;
     private String inquiryState;
     private long uDate;
     private long cDate;
     private int status;
 
-
     public ClientInquiryDBModel() {
     }
 
-    public ClientInquiryDBModel(String id, long sessionId, String inquiryState, long uDate, long cDate, int status) {
+    public ClientInquiryDBModel(String id, long sessionId, long clientId, String inquiryState, long uDate, long cDate, int status) {
         this.id = id;
         this.sessionId = sessionId;
+        this.clientId = clientId;
         this.inquiryState = inquiryState;
         this.uDate = uDate;
         this.cDate = cDate;
@@ -43,6 +43,14 @@ public class ClientInquiryDBModel {
 
     public void setSessionId(long sessionId) {
         this.sessionId = sessionId;
+    }
+
+    public long getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(long clientId) {
+        this.clientId = clientId;
     }
 
     public String getInquiryState() {

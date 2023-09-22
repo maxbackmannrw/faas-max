@@ -9,6 +9,7 @@ import com.faas.core.base.model.db.client.inquiry.ClientInquiryDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.model.db.user.content.UserDBModel;
+import com.faas.core.base.model.ws.client.inquiry.dto.InquirySessionWSDTO;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
 import com.faas.core.base.model.ws.client.inquiry.dto.ClientInquiryWSDTO;
 import com.faas.core.base.repo.client.content.ClientRepository;
@@ -23,6 +24,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class InquiryHelper {
@@ -94,6 +96,26 @@ public class InquiryHelper {
         return clientInquiryDBModel;
     }
 
+    public List<InquirySessionWSDTO> createInquirySessionWSDTOS(List<SessionDBModel> sessionDBModels){
+
+        List<InquirySessionWSDTO> inquirySessionWSDTOS = new ArrayList<>();
+        for (SessionDBModel sessionDBModel : sessionDBModels) {
+            inquirySessionWSDTOS.add(createInquirySessionWSDTO(sessionDBModel));
+        }
+        return inquirySessionWSDTOS;
+    }
+
+    public InquirySessionWSDTO createInquirySessionWSDTO(SessionDBModel sessionDBModel){
+
+        InquirySessionWSDTO inquirySessionWSDTO = new InquirySessionWSDTO();
+        inquirySessionWSDTO.setClientSession(sessionDBModel);
+        List<ClientInquiryDBModel> clientInquiryDBModels = clientInquiryRepository.findBySessionIdAndClientId(sessionDBModel.getId(),sessionDBModel.getClientId());
+        if (!clientInquiryDBModels.isEmpty()){
+            inquirySessionWSDTO.setClientInquiry(clientInquiryDBModels.get(0));
+        }
+        return inquirySessionWSDTO;
+    }
+
 
     public List<ClientInquiryWSDTO> createInquiryWSDTOS(List<ClientInquiryDBModel> clientInquiryDBModels){
 
@@ -104,6 +126,17 @@ public class InquiryHelper {
         return clientInquiryWSDTOS;
     }
 
+
+    public PaginationWSDTO createInquirySessionPagination(Page<SessionDBModel> sessionDBModelPage){
+
+        PaginationWSDTO paginationWSDTO = new PaginationWSDTO();
+        paginationWSDTO.setPageSize(sessionDBModelPage.getPageable().getPageSize());
+        paginationWSDTO.setPageNumber(sessionDBModelPage.getPageable().getPageNumber());
+        paginationWSDTO.setTotalPage(sessionDBModelPage.getTotalPages());
+        paginationWSDTO.setTotalElements(sessionDBModelPage.getTotalElements());
+
+        return paginationWSDTO;
+    }
 
 
     public PaginationWSDTO createInquiryPagination(Page<ClientInquiryDBModel> inquiryDBModelPage){
