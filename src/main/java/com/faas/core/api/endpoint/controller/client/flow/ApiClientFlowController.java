@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-@RequestMapping(value = AppConstant.API_VERSION + "/api/client/")
+@RequestMapping(value = AppConstant.API_VERSION + "/api/client/flow/")
 public class ApiClientFlowController {
 
 
