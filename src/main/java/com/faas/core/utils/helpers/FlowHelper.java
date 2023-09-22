@@ -29,11 +29,14 @@ public class FlowHelper {
     AppUtils appUtils;
 
 
-    public ClientFlowDBModel mapFlowDBModel(SessionDBModel sessionDBModel){
+    public ClientFlowDBModel mapClientFlowDBModel(SessionDBModel sessionDBModel){
 
         ClientFlowDBModel clientFlowDBModel = new ClientFlowDBModel();
-        clientFlowDBModel.setSessionId(sessionDBModel.getId());
 
+        clientFlowDBModel.setSessionId(sessionDBModel.getId());
+        clientFlowDBModel.setClientId(sessionDBModel.getClientId());
+        clientFlowDBModel.setCampaignId(sessionDBModel.getCampaignId());
+        clientFlowDBModel.setProcessId(sessionDBModel.getProcessId());
         clientFlowDBModel.setFlowState(AppConstant.NEW_FLOW);
         clientFlowDBModel.setuDate(appUtils.getCurrentTimeStamp());
         clientFlowDBModel.setcDate(appUtils.getCurrentTimeStamp());
@@ -104,7 +107,6 @@ public class FlowHelper {
     public SessionDBModel mapFlowSession(ClientDBModel clientDBModel, UserDBModel agentDBModel, CampaignDBModel campaignDBModel) {
 
         SessionDBModel sessionDBModel = new SessionDBModel();
-
         sessionDBModel.setSessionUUID(appUtils.generateUUID());
         sessionDBModel.setClientId(clientDBModel.getId());
         sessionDBModel.setClientName(clientDBModel.getClientName());

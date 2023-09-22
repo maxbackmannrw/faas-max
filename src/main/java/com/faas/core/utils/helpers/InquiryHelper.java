@@ -85,6 +85,7 @@ public class InquiryHelper {
     public ClientInquiryDBModel mapClientInquiryDBModel(SessionDBModel sessionDBModel){
 
         ClientInquiryDBModel clientInquiryDBModel = new ClientInquiryDBModel();
+
         clientInquiryDBModel.setSessionId(sessionDBModel.getId());
         clientInquiryDBModel.setClientId(sessionDBModel.getClientId());
         clientInquiryDBModel.setCampaignId(sessionDBModel.getCampaignId());
