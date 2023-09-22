@@ -76,14 +76,15 @@ public class CampaignFlowSessionFramework {
     @Autowired
     AppUtils appUtils;
 
-
     public CampaignFlowSessionWSDTO searchCampaignFlowSessionsService(long userId, String campaignId, String city, String country, int reqPage, int reqSize) {
 
         Page<SessionDBModel> sessionDBModelPage = sessionRepository.findAllByCampaignIdAndClientCityAndClientCountry(campaignId,city,country, PageRequest.of(reqPage,reqSize));
         if (sessionDBModelPage != null) {
+
             CampaignFlowSessionWSDTO campaignFlowSessionWSDTO = new CampaignFlowSessionWSDTO();
             campaignFlowSessionWSDTO.setPagination(flowHelper.createFlowSessionPagination(sessionDBModelPage));
             campaignFlowSessionWSDTO.setFlowSessions(flowHelper.createFlowSessionWSDTOS(sessionDBModelPage.getContent()));
+
             return campaignFlowSessionWSDTO;
         }
         return null;
@@ -93,9 +94,11 @@ public class CampaignFlowSessionFramework {
 
         Page<SessionDBModel> sessionDBModelPage = sessionRepository.findAllByCampaignId(campaignId, PageRequest.of(reqPage,reqSize));
         if (sessionDBModelPage != null) {
+
             CampaignFlowSessionWSDTO campaignFlowSessionWSDTO = new CampaignFlowSessionWSDTO();
-            campaignFlowSessionWSDTO.setPagination(flowHelper.createFlowSessionPagination(sessionDBModelPage));
             campaignFlowSessionWSDTO.setFlowSessions(flowHelper.createFlowSessionWSDTOS(sessionDBModelPage.getContent()));
+            campaignFlowSessionWSDTO.setPagination(flowHelper.createFlowSessionPagination(sessionDBModelPage));
+
             return campaignFlowSessionWSDTO;
         }
         return null;
@@ -134,9 +137,9 @@ public class CampaignFlowSessionFramework {
 
                 clientDBModel.get().setClientState(AppConstant.BUSY_CLIENT);
                 clientDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
-                clientRepository.save(clientDBModel.get());
+                ClientDBModel updatedClient = clientRepository.save(clientDBModel.get());
 
-                SessionDBModel sessionDBModel = flowHelper.mapFlowSession(clientDBModel.get(),agentDBModel.get(),campaignDBModel.get());
+                SessionDBModel sessionDBModel = flowHelper.mapFlowSession(updatedClient,agentDBModel.get(),campaignDBModel.get());
                 OperationDBModel operationDBModel = operationRepository.save(flowHelper.mapFlowOperation(sessionDBModel));
                 clientFlowRepository.save(flowHelper.mapClientFlowDBModel(sessionDBModel));
 
