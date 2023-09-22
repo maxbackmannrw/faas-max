@@ -32,7 +32,6 @@ public class FlowHelper {
     public ClientFlowDBModel mapClientFlowDBModel(SessionDBModel sessionDBModel){
 
         ClientFlowDBModel clientFlowDBModel = new ClientFlowDBModel();
-
         clientFlowDBModel.setSessionId(sessionDBModel.getId());
         clientFlowDBModel.setClientId(sessionDBModel.getClientId());
         clientFlowDBModel.setCampaignId(sessionDBModel.getCampaignId());
