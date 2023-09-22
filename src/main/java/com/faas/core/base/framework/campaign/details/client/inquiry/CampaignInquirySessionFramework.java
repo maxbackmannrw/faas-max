@@ -1,6 +1,11 @@
 package com.faas.core.base.framework.campaign.details.client.inquiry;
 
+import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
+import com.faas.core.base.model.db.client.content.ClientDBModel;
+import com.faas.core.base.model.db.client.inquiry.ClientInquiryDBModel;
 import com.faas.core.base.model.db.client.session.SessionDBModel;
+import com.faas.core.base.model.db.operation.content.OperationDBModel;
+import com.faas.core.base.model.db.user.content.UserDBModel;
 import com.faas.core.base.model.ws.campaign.details.client.inquiry.dto.CampaignInquirySessionWSDTO;
 import com.faas.core.base.model.ws.campaign.details.client.inquiry.CampaignInquirySessionRequest;
 import com.faas.core.base.model.ws.campaign.details.client.inquiry.dto.CampaignInquirySessionRequestDTO;
@@ -13,6 +18,7 @@ import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.client.session.SessionRepository;
 import com.faas.core.base.repo.user.content.UserRepository;
+import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.ActivityHelper;
 
@@ -120,27 +126,26 @@ public class CampaignInquirySessionFramework {
 
     public InquirySessionWSDTO createCampaignInquirySession(CampaignInquirySessionRequestDTO inquirySessionRequest) {
 
-     /*   if (!inquiryRepository.existsByClientIdAndCampaignId(inquiryRequestDTO.getClientId(),inquiryRequestDTO.getCampaignId())){
-            Optional<ClientDBModel> clientDBModel = clientRepository.findById(inquiryRequestDTO.getClientId());
-            Optional<UserDBModel> agentDBModel = userRepository.findById(inquiryRequestDTO.getAgentId());
-            Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(inquiryRequestDTO.getCampaignId());
-            if (clientDBModel.isPresent() && agentDBModel.isPresent() && campaignDBModel.isPresent() ){
+       if (!clientInquiryRepository.existsByClientIdAndCampaignId(inquirySessionRequest.getClientId(),inquirySessionRequest.getCampaignId())){
+            Optional<ClientDBModel> clientDBModel = clientRepository.findById(inquirySessionRequest.getClientId());
+            Optional<UserDBModel> agentDBModel = userRepository.findById(inquirySessionRequest.getAgentId());
+            Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(inquirySessionRequest.getCampaignId());
+            if (clientDBModel.isPresent() && clientDBModel.get().getClientState().equalsIgnoreCase(AppConstant.READY_CLIENT) && agentDBModel.isPresent() && campaignDBModel.isPresent() ){
 
                 clientDBModel.get().setClientState(AppConstant.BUSY_CLIENT);
                 clientDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
-                clientRepository.save(clientDBModel.get());
+                ClientDBModel updatedClient = clientRepository.save(clientDBModel.get());
 
-                SessionDBModel sessionDBModel = sessionRepository.save(inquiryHelper.mapInquirySession(clientDBModel.get(),agentDBModel.get(),campaignDBModel.get()));
-                OperationDBModel operationDBModel = operationRepository.save(inquiryHelper.mapInquiryOperation(sessionDBModel));
+                SessionDBModel sessionDBModel = sessionRepository.save(inquiryHelper.mapInquirySession(updatedClient,agentDBModel.get(),campaignDBModel.get()));
+                OperationDBModel operationDBModel = operationRepository.save(inquiryHelper.mapInquirySessionOperation(sessionDBModel));
+                clientInquiryRepository.save(inquiryHelper.mapClientInquiryDBModel(sessionDBModel));
 
                 activityHelper.createOperationActivity(sessionDBModel.getId(),operationDBModel.getId(),AppConstant.CREATE_SESSION_ACTIVITY,AppConstant.SESSION_ACTIVITY,String.valueOf(sessionDBModel.getAgentId()),AppConstant.USER_TYPE,String.valueOf(sessionDBModel.getId()),AppConstant.SESSION_TYPE);
                 activityHelper.createOperationActivity(sessionDBModel.getId(),operationDBModel.getId(),AppConstant.CREATE_OPERATION_ACTIVITY,AppConstant.OPERATION_ACTIVITY,String.valueOf(sessionDBModel.getAgentId()),AppConstant.USER_TYPE,String.valueOf(sessionDBModel.getId()),AppConstant.OPERATION_TYPE);
 
-                return new InquiryWSDTO(inquiryRepository.save(inquiryHelper.mapInquiryDBModel(sessionDBModel)));
+                return inquiryHelper.createInquirySessionWSDTO(sessionDBModel);
             }
         }
-
-      */
         return null;
     }
 
@@ -159,23 +164,24 @@ public class CampaignInquirySessionFramework {
 
     public InquirySessionWSDTO removeCampaignInquirySessionService(long userId,long sessionId) {
 
-  /*      List<InquiryDBModel> inquiryDBModels = inquiryRepository.findByIdAndClientId(inquiryId,clientId);
-        if (!inquiryDBModels.isEmpty()) {
-            inquiryRepository.delete(inquiryDBModels.get(0));
-            Optional<SessionDBModel>sessionDBModel = sessionRepository.findById(inquiryDBModels.get(0).getSessionId());
-            if(sessionDBModel.isPresent()){
-                sessionRepository.delete(sessionDBModel.get());
-                operationRepository.deleteAll(operationRepository.findBySessionIdAndClientId(sessionDBModel.get().getId(),clientId));
-            }
-            Optional<ClientDBModel> clientDBModel = clientRepository.findById(clientId);
-            if (clientDBModel.isPresent()){
+        List<ClientInquiryDBModel> clientInquiryDBModels = clientInquiryRepository.findBySessionId(sessionId);
+        Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
+        if (!clientInquiryDBModels.isEmpty() && sessionDBModel.isPresent()) {
+
+            Optional<ClientDBModel> clientDBModel = clientRepository.findById(sessionDBModel.get().getClientId());
+            if (clientDBModel.isPresent()) {
                 clientDBModel.get().setClientState(AppConstant.READY_CLIENT);
                 clientDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
                 clientRepository.save(clientDBModel.get());
             }
-            return new InquiryWSDTO(inquiryDBModels.get(0));
+
+            InquirySessionWSDTO deletedInquirySession = inquiryHelper.createInquirySessionWSDTO(sessionDBModel.get());
+            sessionRepository.delete(sessionDBModel.get());
+            operationRepository.deleteAll(operationRepository.findBySessionIdAndClientId(sessionDBModel.get().getId(), sessionDBModel.get().getClientId()));
+            clientInquiryRepository.deleteAll(clientInquiryDBModels);
+
+            return deletedInquirySession;
         }
-   */
         return null;
     }
 

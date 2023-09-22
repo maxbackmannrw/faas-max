@@ -14,4 +14,5 @@ public interface ClientInquiryRepository extends MongoRepository<ClientInquiryDB
 
     List<ClientInquiryDBModel>findBySessionId(long sessionId);
 
+    boolean existsByClientIdAndCampaignId(long clientId,String campaignId);
 }

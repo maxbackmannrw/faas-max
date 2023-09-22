@@ -108,7 +108,6 @@ public class FlowHelper {
         operationDBModel.setProcessId(sessionDBModel.getProcessId());
         operationDBModel.setActivities(new ArrayList<>());
         operationDBModel.setOperationState(AppConstant.NEW_OPERATION);
-        operationDBModel.setOperationResult(AppConstant.RESULT_EMPTY);
         operationDBModel.setuDate(appUtils.getCurrentTimeStamp());
         operationDBModel.setcDate(appUtils.getCurrentTimeStamp());
         operationDBModel.setStatus(1);

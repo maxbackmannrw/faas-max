@@ -97,7 +97,7 @@ public class AppConstant {
     public static final String FINISHED_OPERATION = "FINISHED_OPERATION";
 
 
-    public static final String RESULT_EMPTY = "RESULT_EMPTY";
+    public static final String NO_RESULT = "NO_RESULT";
     public static final String RESULT_SUCCESS = "RESULT_SUCCESS";
     public static final String RESULT_REJECTED = "RESULT_REJECTED";
     public static final String RESULT_NOT_RESPONDING = "RESULT_NOT_RESPONDING";

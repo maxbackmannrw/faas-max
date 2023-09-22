@@ -82,12 +82,13 @@ public class InquiryHelper {
     }
 
 
-    public ClientInquiryDBModel mapInquiryDBModel(SessionDBModel sessionDBModel){
+    public ClientInquiryDBModel mapClientInquiryDBModel(SessionDBModel sessionDBModel){
 
         ClientInquiryDBModel clientInquiryDBModel = new ClientInquiryDBModel();
-
         clientInquiryDBModel.setSessionId(sessionDBModel.getId());
-
+        clientInquiryDBModel.setClientId(sessionDBModel.getClientId());
+        clientInquiryDBModel.setCampaignId(sessionDBModel.getCampaignId());
+        clientInquiryDBModel.setProcessId(sessionDBModel.getProcessId());
         clientInquiryDBModel.setInquiryState(AppConstant.NEW_INQUIRY);
         clientInquiryDBModel.setuDate(appUtils.getCurrentTimeStamp());
         clientInquiryDBModel.setcDate(appUtils.getCurrentTimeStamp());
@@ -185,7 +186,7 @@ public class InquiryHelper {
     }
 
 
-    public OperationDBModel mapInquiryOperation(SessionDBModel sessionDBModel) {
+    public OperationDBModel mapInquirySessionOperation(SessionDBModel sessionDBModel) {
 
         if (!operationRepository.existsBySessionIdAndClientId(sessionDBModel.getId(),sessionDBModel.getClientId())){
 
@@ -198,7 +199,6 @@ public class InquiryHelper {
             operationDBModel.setProcessId(sessionDBModel.getProcessId());
             operationDBModel.setActivities(new ArrayList<>());
             operationDBModel.setOperationState(AppConstant.NEW_OPERATION);
-            operationDBModel.setOperationResult(AppConstant.RESULT_EMPTY);
             operationDBModel.setuDate(appUtils.getCurrentTimeStamp());
             operationDBModel.setcDate(appUtils.getCurrentTimeStamp());
             operationDBModel.setStatus(1);

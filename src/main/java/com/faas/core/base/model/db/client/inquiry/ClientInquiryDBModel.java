@@ -11,6 +11,8 @@ public class ClientInquiryDBModel {
     private String id;
     private long sessionId;
     private long clientId;
+    private String campaignId;
+    private String processId;
     private String inquiryState;
     private long uDate;
     private long cDate;
@@ -19,10 +21,12 @@ public class ClientInquiryDBModel {
     public ClientInquiryDBModel() {
     }
 
-    public ClientInquiryDBModel(String id, long sessionId, long clientId, String inquiryState, long uDate, long cDate, int status) {
+    public ClientInquiryDBModel(String id, long sessionId, long clientId, String campaignId, String processId, String inquiryState, long uDate, long cDate, int status) {
         this.id = id;
         this.sessionId = sessionId;
         this.clientId = clientId;
+        this.campaignId = campaignId;
+        this.processId = processId;
         this.inquiryState = inquiryState;
         this.uDate = uDate;
         this.cDate = cDate;
@@ -51,6 +55,22 @@ public class ClientInquiryDBModel {
 
     public void setClientId(long clientId) {
         this.clientId = clientId;
+    }
+
+    public String getCampaignId() {
+        return campaignId;
+    }
+
+    public void setCampaignId(String campaignId) {
+        this.campaignId = campaignId;
+    }
+
+    public String getProcessId() {
+        return processId;
+    }
+
+    public void setProcessId(String processId) {
+        this.processId = processId;
     }
 
     public String getInquiryState() {

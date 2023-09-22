@@ -145,7 +145,6 @@ public class ApiOperationFramework {
             sessionDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
             operationWSDTO.setOperationSession(sessionRepository.save(sessionDBModels.get(0)));
 
-            operationDBModels.get(0).setOperationResult(operationResult);
             operationDBModels.get(0).setOperationState(AppConstant.FINISHED_OPERATION);
             operationDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
             operationWSDTO.setOperation(operationRepository.save(operationDBModels.get(0)));
