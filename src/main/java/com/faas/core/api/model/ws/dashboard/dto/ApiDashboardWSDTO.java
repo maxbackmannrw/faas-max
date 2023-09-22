@@ -1,26 +1,26 @@
 package com.faas.core.api.model.ws.dashboard.dto;
 
 import com.faas.core.api.model.ws.campaign.content.dto.ApiCampaignWSDTO;
-import com.faas.core.api.model.ws.inquiry.content.dto.ApiInquiryWSDTO;
-import com.faas.core.api.model.ws.session.content.dto.ApiSessionWSDTO;
+import com.faas.core.api.model.ws.client.inquiry.dto.ApiClientInquiryWSDTO;
+import com.faas.core.api.model.ws.client.session.dto.ApiSessionWSDTO;
 
 import java.util.List;
 
 public class ApiDashboardWSDTO {
 
     private ApiSessionWSDTO readySession;
-    private ApiInquiryWSDTO readyInquiry;
     private ApiSessionWSDTO activeSession;
-    private List<ApiCampaignWSDTO> dashCampaigns;
+    private ApiClientInquiryWSDTO readyClientInquiry;
+    private List<ApiCampaignWSDTO> agentCampaigns;
 
     public ApiDashboardWSDTO() {
     }
 
-    public ApiDashboardWSDTO(ApiSessionWSDTO readySession, ApiInquiryWSDTO readyInquiry, ApiSessionWSDTO activeSession, List<ApiCampaignWSDTO> dashCampaigns) {
+    public ApiDashboardWSDTO(ApiSessionWSDTO readySession, ApiSessionWSDTO activeSession, ApiClientInquiryWSDTO readyClientInquiry, List<ApiCampaignWSDTO> agentCampaigns) {
         this.readySession = readySession;
-        this.readyInquiry = readyInquiry;
         this.activeSession = activeSession;
-        this.dashCampaigns = dashCampaigns;
+        this.readyClientInquiry = readyClientInquiry;
+        this.agentCampaigns = agentCampaigns;
     }
 
     public ApiSessionWSDTO getReadySession() {
@@ -31,14 +31,6 @@ public class ApiDashboardWSDTO {
         this.readySession = readySession;
     }
 
-    public ApiInquiryWSDTO getReadyInquiry() {
-        return readyInquiry;
-    }
-
-    public void setReadyInquiry(ApiInquiryWSDTO readyInquiry) {
-        this.readyInquiry = readyInquiry;
-    }
-
     public ApiSessionWSDTO getActiveSession() {
         return activeSession;
     }
@@ -47,11 +39,19 @@ public class ApiDashboardWSDTO {
         this.activeSession = activeSession;
     }
 
-    public List<ApiCampaignWSDTO> getDashCampaigns() {
-        return dashCampaigns;
+    public ApiClientInquiryWSDTO getReadyClientInquiry() {
+        return readyClientInquiry;
     }
 
-    public void setDashCampaigns(List<ApiCampaignWSDTO> dashCampaigns) {
-        this.dashCampaigns = dashCampaigns;
+    public void setReadyClientInquiry(ApiClientInquiryWSDTO readyClientInquiry) {
+        this.readyClientInquiry = readyClientInquiry;
+    }
+
+    public List<ApiCampaignWSDTO> getAgentCampaigns() {
+        return agentCampaigns;
+    }
+
+    public void setAgentCampaigns(List<ApiCampaignWSDTO> agentCampaigns) {
+        this.agentCampaigns = agentCampaigns;
     }
 }

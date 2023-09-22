@@ -9,8 +9,8 @@ import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
 import com.faas.core.api.model.ws.general.ApiSummaryWSModel;
 import com.faas.core.api.model.ws.inquiry.content.ApiInquiryWSModel;
 import com.faas.core.api.model.ws.inquiry.content.dto.ApiInquiryWSDTO;
-import com.faas.core.api.model.ws.session.content.ApiSessionWSModel;
-import com.faas.core.api.model.ws.session.content.dto.ApiSessionWSDTO;
+import com.faas.core.api.model.ws.client.session.ApiSessionWSModel;
+import com.faas.core.api.model.ws.client.session.dto.ApiSessionWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -92,7 +92,7 @@ public class ApiDashboardMiddleware {
         ApiCampaignWSModel response = new ApiCampaignWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ApiCampaignWSDTO> campaignWSDTOS = apiDashboardFramework.apiGetDashCampaignsService(agentId);
+        List<ApiCampaignWSDTO> campaignWSDTOS = apiDashboardFramework.apiAgentCampaignsService(agentId);
         if (campaignWSDTOS != null){
             response.setCampaigns(campaignWSDTOS);
         }

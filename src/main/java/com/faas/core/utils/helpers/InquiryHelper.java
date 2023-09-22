@@ -1,5 +1,7 @@
 package com.faas.core.utils.helpers;
 
+import com.faas.core.api.model.ws.client.inquiry.dto.ApiClientInquiryContent;
+import com.faas.core.api.model.ws.client.inquiry.dto.ApiClientInquiryWSDTO;
 import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
 import com.faas.core.api.model.ws.inquiry.content.dto.ApiInquiryWSDTO;
 import com.faas.core.api.model.ws.inquiry.content.dto.ApiInquiryDTO;
@@ -29,6 +31,8 @@ import java.util.Optional;
 @Component
 public class InquiryHelper {
 
+    @Autowired
+    SessionHelper sessionHelper;
 
     @Autowired
     ClientInquiryRepository clientInquiryRepository;
@@ -45,6 +49,27 @@ public class InquiryHelper {
     @Autowired
     AppUtils appUtils;
 
+
+
+    public ApiClientInquiryWSDTO mapApiClientInquiryWSDTO(Page<SessionDBModel> sessionDBModelPage){
+
+        ApiClientInquiryWSDTO clientInquiryWSDTO = new ApiClientInquiryWSDTO();
+        List<ApiClientInquiryContent> clientInquiryContents = new ArrayList<>();
+        for (int i=0;i<sessionDBModelPage.getContent().size();i++){
+            clientInquiryContents.add(mapApiClientInquiryContent(sessionDBModelPage.getContent().get(i)));
+        }
+        clientInquiryWSDTO.setClientInquiries(clientInquiryContents);
+        clientInquiryWSDTO.setPagination(sessionHelper.createSessionPaginationWSDTO(sessionDBModelPage));
+        return clientInquiryWSDTO;
+    }
+
+
+    public ApiClientInquiryContent mapApiClientInquiryContent(SessionDBModel sessionDBModel){
+
+        ApiClientInquiryContent clientInquiryContent = new ApiClientInquiryContent();
+
+        return clientInquiryContent;
+    }
 
     public ApiInquiryWSDTO getApiInquiryWSDTO(Page<ClientInquiryDBModel> inquiryModelPage){
 
@@ -148,6 +173,18 @@ public class InquiryHelper {
         paginationWSDTO.setPageNumber(inquiryDBModelPage.getPageable().getPageNumber());
         paginationWSDTO.setTotalPage(inquiryDBModelPage.getTotalPages());
         paginationWSDTO.setTotalElements(inquiryDBModelPage.getTotalElements());
+
+        return paginationWSDTO;
+    }
+
+
+    public PaginationWSDTO createClientInquiryPagination(Page<ClientInquiryDBModel> clientInquiryDBModelPage){
+
+        PaginationWSDTO paginationWSDTO = new PaginationWSDTO();
+        paginationWSDTO.setPageSize(clientInquiryDBModelPage.getPageable().getPageSize());
+        paginationWSDTO.setPageNumber(clientInquiryDBModelPage.getPageable().getPageNumber());
+        paginationWSDTO.setTotalPage(clientInquiryDBModelPage.getTotalPages());
+        paginationWSDTO.setTotalElements(clientInquiryDBModelPage.getTotalElements());
 
         return paginationWSDTO;
     }

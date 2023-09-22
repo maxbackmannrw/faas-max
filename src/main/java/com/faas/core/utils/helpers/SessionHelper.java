@@ -1,8 +1,8 @@
 package com.faas.core.utils.helpers;
 
 import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
-import com.faas.core.api.model.ws.session.content.dto.ApiSessionWSDTO;
-import com.faas.core.api.model.ws.session.details.dto.ApiSessionDetailsWSDTO;
+import com.faas.core.api.model.ws.client.session.dto.ApiSessionWSDTO;
+import com.faas.core.api.model.ws.client.session.dto.ApiSessionDetailsWSDTO;
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.client.content.ClientDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;

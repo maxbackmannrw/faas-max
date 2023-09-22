@@ -1,6 +1,7 @@
 package com.faas.core.base.repo.client.inquiry;
 
 import com.faas.core.base.model.db.client.inquiry.ClientInquiryDBModel;
+import org.springframework.data.domain.Page;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
@@ -15,4 +16,5 @@ public interface ClientInquiryRepository extends MongoRepository<ClientInquiryDB
     List<ClientInquiryDBModel>findBySessionId(long sessionId);
 
     boolean existsByClientIdAndCampaignId(long clientId,String campaignId);
+
 }

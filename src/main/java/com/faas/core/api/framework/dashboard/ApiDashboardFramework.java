@@ -4,7 +4,7 @@ import com.faas.core.api.model.ws.campaign.content.dto.ApiCampaignWSDTO;
 import com.faas.core.api.model.ws.dashboard.dto.ApiDashboardWSDTO;
 import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
 import com.faas.core.api.model.ws.inquiry.content.dto.ApiInquiryWSDTO;
-import com.faas.core.api.model.ws.session.content.dto.ApiSessionWSDTO;
+import com.faas.core.api.model.ws.client.session.dto.ApiSessionWSDTO;
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.campaign.details.CampaignAgentDBModel;
 import com.faas.core.base.model.db.process.content.ProcessDBModel;
@@ -62,9 +62,9 @@ public class ApiDashboardFramework {
 
         ApiDashboardWSDTO dashboardWSDTO = new ApiDashboardWSDTO();
         dashboardWSDTO.setReadySession(sessionHelper.mapApiSessionWSDTO(sessionRepository.findAllByAgentIdAndSessionStateAndSessionType(agentId,AppConstant.READY_SESSION,AppConstant.MANUAL_CAMPAIGN,PageRequest.of(reqPage,reqSize))));
-        // dashboardWSDTO.setReadyInquiry(inquiryHelper.getApiInquiryWSDTO(inquiryRepository.findAllByAgentIdAndInquiryState(agentId,AppConstant.NEW_INQUIRY,PageRequest.of(reqPage,reqSize))));
         dashboardWSDTO.setActiveSession(sessionHelper.mapApiSessionWSDTO(sessionRepository.findAllByAgentIdAndSessionState(agentId,AppConstant.ACTIVE_SESSION,PageRequest.of(reqPage,reqSize))));
-        dashboardWSDTO.setDashCampaigns(apiGetDashCampaignsService(agentId));
+        dashboardWSDTO.setReadyClientInquiry(inquiryHelper.mapApiClientInquiryWSDTO(sessionRepository.findAllByAgentIdAndSessionStateAndSessionType(agentId,AppConstant.READY_SESSION,AppConstant.INQUIRY_CAMPAIGN,PageRequest.of(reqPage,reqSize))));
+        dashboardWSDTO.setAgentCampaigns(apiAgentCampaignsService(agentId));
 
         return dashboardWSDTO;
     }
@@ -91,7 +91,7 @@ public class ApiDashboardFramework {
     }
 
 
-    public List<ApiCampaignWSDTO> apiGetDashCampaignsService(long agentId) {
+    public List<ApiCampaignWSDTO> apiAgentCampaignsService(long agentId) {
 
         List<ApiCampaignWSDTO> campaignWSDTOS = new ArrayList<>();
         List<CampaignAgentDBModel> agentCampaigns = campaignAgentRepository.findByAgentId(agentId);
