@@ -133,13 +133,13 @@ public class CampaignFlowSessionFramework {
             Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(flowSessionRequest.getCampaignId());
             Optional<ClientDBModel> clientDBModel = clientRepository.findById(flowSessionRequest.getClientId());
             Optional<UserDBModel> agentDBModel = userRepository.findById(flowSessionRequest.getAgentId());
-            if (clientDBModel.isPresent() && agentDBModel.isPresent() && campaignDBModel.isPresent() ) {
+            if (clientDBModel.isPresent() && agentDBModel.isPresent() && campaignDBModel.isPresent()) {
 
                 clientDBModel.get().setClientState(AppConstant.BUSY_CLIENT);
                 clientDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
                 ClientDBModel updatedClient = clientRepository.save(clientDBModel.get());
 
-                SessionDBModel sessionDBModel = flowHelper.mapFlowSession(updatedClient,agentDBModel.get(),campaignDBModel.get());
+                SessionDBModel sessionDBModel = sessionRepository.save(flowHelper.mapFlowSession(updatedClient,agentDBModel.get(),campaignDBModel.get()));
                 OperationDBModel operationDBModel = operationRepository.save(flowHelper.mapFlowOperation(sessionDBModel));
                 clientFlowRepository.save(flowHelper.mapClientFlowDBModel(sessionDBModel));
 
