@@ -6,22 +6,20 @@ import com.faas.core.base.model.db.client.inquiry.ClientInquiryDBModel;
 import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.user.content.UserDBModel;
-import com.faas.core.base.model.ws.campaign.details.client.inquiry.dto.CampaignInquirySessionWSDTO;
 import com.faas.core.base.model.ws.campaign.details.client.inquiry.CampaignInquirySessionRequest;
 import com.faas.core.base.model.ws.campaign.details.client.inquiry.dto.CampaignInquirySessionRequestDTO;
-import com.faas.core.base.model.ws.client.inquiry.dto.ClientInquiryWSDTO;
+import com.faas.core.base.model.ws.campaign.details.client.inquiry.dto.CampaignInquirySessionWSDTO;
 import com.faas.core.base.model.ws.client.inquiry.dto.InquirySessionWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.client.inquiry.ClientInquiryRepository;
+import com.faas.core.base.repo.client.session.SessionRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
-import com.faas.core.base.repo.client.session.SessionRepository;
 import com.faas.core.base.repo.user.content.UserRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.ActivityHelper;
-
 import com.faas.core.utils.helpers.InquiryHelper;
 import com.faas.core.utils.helpers.OperationHelper;
 import com.faas.core.utils.helpers.SessionHelper;
@@ -80,7 +78,6 @@ public class CampaignInquirySessionFramework {
 
         Page<SessionDBModel> sessionDBModelPage = sessionRepository.findAllByCampaignIdAndClientCityAndClientCountry(campaignId,city,country, PageRequest.of(reqPage,reqSize));
         if (sessionDBModelPage != null){
-
             CampaignInquirySessionWSDTO campaignInquirySessionWSDTO = new CampaignInquirySessionWSDTO();
             campaignInquirySessionWSDTO.setInquirySessions(inquiryHelper.createInquirySessionWSDTOS(sessionDBModelPage.getContent()));
             campaignInquirySessionWSDTO.setPagination(inquiryHelper.createInquirySessionPagination(sessionDBModelPage));
@@ -94,7 +91,6 @@ public class CampaignInquirySessionFramework {
 
         Page<SessionDBModel> sessionDBModelPage = sessionRepository.findAllByCampaignId(campaignId, PageRequest.of(reqPage,reqSize));
         if (sessionDBModelPage != null){
-
             CampaignInquirySessionWSDTO campaignInquirySessionWSDTO = new CampaignInquirySessionWSDTO();
             campaignInquirySessionWSDTO.setInquirySessions(inquiryHelper.createInquirySessionWSDTOS(sessionDBModelPage.getContent()));
             campaignInquirySessionWSDTO.setPagination(inquiryHelper.createInquirySessionPagination(sessionDBModelPage));
@@ -127,6 +123,7 @@ public class CampaignInquirySessionFramework {
     public InquirySessionWSDTO createCampaignInquirySession(CampaignInquirySessionRequestDTO inquirySessionRequest) {
 
        if (!clientInquiryRepository.existsByClientIdAndCampaignId(inquirySessionRequest.getClientId(),inquirySessionRequest.getCampaignId())){
+
             Optional<ClientDBModel> clientDBModel = clientRepository.findById(inquirySessionRequest.getClientId());
             Optional<UserDBModel> agentDBModel = userRepository.findById(inquirySessionRequest.getAgentId());
             Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(inquirySessionRequest.getCampaignId());

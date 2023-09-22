@@ -7,7 +7,9 @@ import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.model.db.user.content.UserDBModel;
 import com.faas.core.base.model.ws.client.flow.dto.ClientFlowWSDTO;
+import com.faas.core.base.model.ws.client.flow.dto.FlowSessionWSDTO;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
+import com.faas.core.base.repo.client.flow.ClientFlowRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,8 @@ import java.util.List;
 @Component
 public class FlowHelper {
 
+    @Autowired
+    ClientFlowRepository clientFlowRepository;
 
     @Autowired
     AppUtils appUtils;
@@ -39,6 +43,28 @@ public class FlowHelper {
     }
 
 
+    public List<FlowSessionWSDTO> createFlowSessionWSDTOS(List<SessionDBModel> sessionDBModels){
+
+        List<FlowSessionWSDTO> flowSessionWSDTOS = new ArrayList<>();
+        for (SessionDBModel sessionDBModel : sessionDBModels) {
+            flowSessionWSDTOS.add(createFlowSessionWSDTO(sessionDBModel));
+        }
+        return flowSessionWSDTOS;
+    }
+
+
+    public FlowSessionWSDTO createFlowSessionWSDTO(SessionDBModel sessionDBModel){
+
+        FlowSessionWSDTO flowSessionWSDTO = new FlowSessionWSDTO();
+        flowSessionWSDTO.setClientSession(sessionDBModel);
+        List<ClientFlowDBModel> clientFlowDBModels = clientFlowRepository.findBySessionIdAndClientId(sessionDBModel.getId(),sessionDBModel.getClientId());
+        if (!clientFlowDBModels.isEmpty()){
+            flowSessionWSDTO.setClientFlow(clientFlowDBModels.get(0));
+        }
+        return flowSessionWSDTO;
+    }
+
+
     public List<ClientFlowWSDTO> createFlowWSDTOS(List<ClientFlowDBModel> clientFlowDBModels){
 
         List<ClientFlowWSDTO> clientFlowWSDTOS = new ArrayList<>();
@@ -51,6 +77,7 @@ public class FlowHelper {
     }
 
 
+
     public PaginationWSDTO createFlowPagination(Page<ClientFlowDBModel> flowDBModelPage){
 
         PaginationWSDTO paginationWSDTO = new PaginationWSDTO();
@@ -58,6 +85,17 @@ public class FlowHelper {
         paginationWSDTO.setPageNumber(flowDBModelPage.getPageable().getPageNumber());
         paginationWSDTO.setTotalPage(flowDBModelPage.getTotalPages());
         paginationWSDTO.setTotalElements(flowDBModelPage.getTotalElements());
+
+        return paginationWSDTO;
+    }
+
+    public PaginationWSDTO createFlowSessionPagination(Page<SessionDBModel> sessionDBModelPage){
+
+        PaginationWSDTO paginationWSDTO = new PaginationWSDTO();
+        paginationWSDTO.setPageSize(sessionDBModelPage.getPageable().getPageSize());
+        paginationWSDTO.setPageNumber(sessionDBModelPage.getPageable().getPageNumber());
+        paginationWSDTO.setTotalPage(sessionDBModelPage.getTotalPages());
+        paginationWSDTO.setTotalElements(sessionDBModelPage.getTotalElements());
 
         return paginationWSDTO;
     }
