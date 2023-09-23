@@ -24,6 +24,7 @@ import java.util.Optional;
 @Component
 public class ApiCampaignFramework {
 
+
     @Autowired
     CampaignHelper campaignHelper;
 
@@ -65,7 +66,6 @@ public class ApiCampaignFramework {
         return apiAgentCampaignWSDTO;
     }
 
-
     public List<ApiCampaignWSDTO> apiGetCampaignsService(long agentId, String category) {
 
         List<ApiCampaignWSDTO> campaignWSDTOS = new ArrayList<>();
@@ -81,7 +81,6 @@ public class ApiCampaignFramework {
         return campaignWSDTOS;
     }
 
-
     public ApiCampaignWSDTO getApiCampaignService(long agentId, String campaignId) {
 
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
@@ -92,12 +91,10 @@ public class ApiCampaignFramework {
             if (processDBModel.isPresent()) {
                 campaignWSDTO.setCampaignProcess(processDBModel.get());
             }
-            campaignWSDTO.setSummaries(campaignHelper.mapCampaignSummary(agentId, campaignDBModel.get().getCampaign()));
             return campaignWSDTO;
         }
         return null;
     }
-
 
     public ApiCampaignWSDTO fillApiCampaignWSDTO(long agentId, CampaignDBModel campaignDBModel) {
 
@@ -107,10 +104,8 @@ public class ApiCampaignFramework {
         if (processDBModel.isPresent()) {
             campaignWSDTO.setCampaignProcess(processDBModel.get());
         }
-        campaignWSDTO.setSummaries(campaignHelper.mapCampaignSummary(agentId, campaignDBModel.getId()));
         return campaignWSDTO;
     }
-
 
     public List<ApiSummaryWSDTO> apiGetAgentCampaignSummaryService(long agentId) {
         return campaignHelper.mapAgentCampaignSummary(agentId);

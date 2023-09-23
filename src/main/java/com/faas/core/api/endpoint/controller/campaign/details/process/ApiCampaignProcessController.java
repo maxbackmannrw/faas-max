@@ -36,8 +36,8 @@ public class ApiCampaignProcessController {
 
     @RequestMapping(value = ApiRoute.API_GET_CAMPAIGN_PROCESSES, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetCampaignProcesses(@RequestParam long agentId,
-                                                   @RequestParam String campaignId,
-                                                   @RequestParam String processId) {
+                                                     @RequestParam String campaignId,
+                                                     @RequestParam String processId) {
 
         ApiProcessWSModel response = apiCampaignProcessMiddleware.apiGetCampaignProcesses(agentId,campaignId,processId);
 

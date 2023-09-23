@@ -27,10 +27,10 @@ public class ApiCampaignProcessDetailsMiddleware {
 
         ApiProcessDetailsWSModel response = new ApiProcessDetailsWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ApiProcessDetailsWSDTO> apiProcessDetailsWSDTOS = new ArrayList<>();
+        List<ApiProcessDetailsWSDTO> processDetailsWSDTOS = new ArrayList<>();
 
 
-        response.setProcessDetails(apiProcessDetailsWSDTOS);
+        response.setProcessDetails(processDetailsWSDTOS);
         general.setOperation("apiGetCampaignProcessDetails");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
