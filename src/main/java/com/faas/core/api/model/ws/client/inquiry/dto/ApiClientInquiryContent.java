@@ -1,36 +1,45 @@
  package com.faas.core.api.model.ws.client.inquiry.dto;
 
-import com.faas.core.base.model.db.client.session.SessionDBModel;
-import com.faas.core.base.model.ws.general.PaginationWSDTO;
+ import com.faas.core.base.model.db.client.content.ClientDBModel;
+ import com.faas.core.base.model.db.client.inquiry.ClientInquiryDBModel;
+ import com.faas.core.base.model.db.client.session.SessionDBModel;
 
-import java.util.List;
+ public class ApiClientInquiryContent {
 
-public class ApiClientInquiryContent {
+    private ClientDBModel client;
+    private SessionDBModel clientSession;
+    private ClientInquiryDBModel clientInquiry;
 
-    private List<SessionDBModel> sessions;
-    private PaginationWSDTO pagination;
+     public ApiClientInquiryContent() {
+     }
 
-    public ApiClientInquiryContent() {
-    }
+     public ApiClientInquiryContent(ClientDBModel client, SessionDBModel clientSession, ClientInquiryDBModel clientInquiry) {
+         this.client = client;
+         this.clientSession = clientSession;
+         this.clientInquiry = clientInquiry;
+     }
 
-    public ApiClientInquiryContent(List<SessionDBModel> sessions, PaginationWSDTO pagination) {
-        this.sessions = sessions;
-        this.pagination = pagination;
-    }
+     public ClientDBModel getClient() {
+         return client;
+     }
 
-    public List<SessionDBModel> getSessions() {
-        return sessions;
-    }
+     public void setClient(ClientDBModel client) {
+         this.client = client;
+     }
 
-    public void setSessions(List<SessionDBModel> sessions) {
-        this.sessions = sessions;
-    }
+     public SessionDBModel getClientSession() {
+         return clientSession;
+     }
 
-    public PaginationWSDTO getPagination() {
-        return pagination;
-    }
+     public void setClientSession(SessionDBModel clientSession) {
+         this.clientSession = clientSession;
+     }
 
-    public void setPagination(PaginationWSDTO pagination) {
-        this.pagination = pagination;
-    }
-}
+     public ClientInquiryDBModel getClientInquiry() {
+         return clientInquiry;
+     }
+
+     public void setClientInquiry(ClientInquiryDBModel clientInquiry) {
+         this.clientInquiry = clientInquiry;
+     }
+ }

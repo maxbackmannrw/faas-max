@@ -110,21 +110,13 @@ public class ApiDashboardFramework {
     public ApiCampaignWSDTO fillApiDashCampaignWSDTO(long agentId,CampaignDBModel campaignDBModel){
 
         ApiCampaignWSDTO dashCampaignWSDTO = new ApiCampaignWSDTO();
-
         dashCampaignWSDTO.setCampaign(campaignDBModel);
         List<ProcessDBModel> processDBModels = processRepository.findByIdAndStatus(campaignDBModel.getProcessId(),1);
         if (processDBModels.size()>0){
             dashCampaignWSDTO.setCampaignProcess(processDBModels.get(0));
         }
-
-        List<ApiSummaryWSDTO> summaries = new ArrayList<>();
-        summaries.add(new ApiSummaryWSDTO(AppConstant.READY_SESSIONS_SUMMARY,String.valueOf(sessionRepository.countByAgentIdAndSessionState(agentId,AppConstant.READY_SESSION))));
-        summaries.add(new ApiSummaryWSDTO(AppConstant.ACTIVE_SESSIONS_SUMMARY,String.valueOf(sessionRepository.countByAgentIdAndSessionState(agentId,AppConstant.ACTIVE_SESSION))));
-        dashCampaignWSDTO.setSummaries(summaries);
-
         return dashCampaignWSDTO;
     }
-
 
 
     public List<ApiSummaryWSDTO> apiGetDashSummaryService(long agentId) {

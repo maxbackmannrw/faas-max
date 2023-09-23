@@ -50,7 +50,6 @@ public class InquiryHelper {
     AppUtils appUtils;
 
 
-
     public ApiClientInquiryWSDTO mapApiClientInquiryWSDTO(Page<SessionDBModel> sessionDBModelPage){
 
         ApiClientInquiryWSDTO clientInquiryWSDTO = new ApiClientInquiryWSDTO();
@@ -67,9 +66,15 @@ public class InquiryHelper {
     public ApiClientInquiryContent mapApiClientInquiryContent(SessionDBModel sessionDBModel){
 
         ApiClientInquiryContent clientInquiryContent = new ApiClientInquiryContent();
-
+        Optional<ClientDBModel> clientDBModel = clientRepository.findById(sessionDBModel.getClientId());
+        List<ClientInquiryDBModel> clientInquiryDBModels = clientInquiryRepository.findBySessionIdAndClientId(sessionDBModel.getId(),sessionDBModel.getClientId());
+        if (clientDBModel.isPresent() && !clientInquiryDBModels.isEmpty()){
+            clientInquiryContent.setClient(clientDBModel.get());
+            clientInquiryContent.setClientInquiry(clientInquiryDBModels.get(0));
+        }
         return clientInquiryContent;
     }
+
 
     public ApiInquiryWSDTO getApiInquiryWSDTO(Page<ClientInquiryDBModel> inquiryModelPage){
 
