@@ -106,18 +106,17 @@ public class ApiDashboardMiddleware {
         return response;
     }
 
-
-    public ApiSummaryWSModel apiGetDashSummaries(long agentId) {
+    public ApiSummaryWSModel apiGetDashSummary(long agentId) {
 
         ApiSummaryWSModel response = new ApiSummaryWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ApiSummaryWSDTO> summaries = apiDashboardFramework.apiGetDashSummariesService(agentId);
+        List<ApiSummaryWSDTO> summaries = apiDashboardFramework.apiGetDashSummaryService(agentId);
         if (summaries != null){
             response.setSummaries(summaries);
         }
 
-        general.setOperation("apiGetDashSummaries");
+        general.setOperation("apiGetDashSummary");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

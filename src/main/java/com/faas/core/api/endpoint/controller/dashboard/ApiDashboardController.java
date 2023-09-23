@@ -39,7 +39,6 @@ public class ApiDashboardController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = ApiRoute.API_GET_DASH_SESSIONS, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetDashSessions(@RequestParam long agentId,
                                                 @RequestParam String sessionType,
@@ -55,7 +54,6 @@ public class ApiDashboardController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = ApiRoute.API_GET_DASH_INQUIRIES, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetDashInquiries(@RequestParam long agentId,
                                                  @RequestParam String inquiryState,
@@ -70,8 +68,6 @@ public class ApiDashboardController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
-
     @RequestMapping(value = ApiRoute.API_GET_DASH_CAMPAIGNS, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetDashCampaigns(@RequestParam long agentId) {
 
@@ -83,11 +79,10 @@ public class ApiDashboardController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+    @RequestMapping(value = ApiRoute.API_GET_DASH_SUMMARY, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetDashSummary(@RequestParam long agentId) {
 
-    @RequestMapping(value = ApiRoute.API_GET_DASH_SUMMARIES, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetDashSummaries(@RequestParam long agentId) {
-
-        ApiSummaryWSModel response = apiDashboardMiddleware.apiGetDashSummaries(agentId);
+        ApiSummaryWSModel response = apiDashboardMiddleware.apiGetDashSummary(agentId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
