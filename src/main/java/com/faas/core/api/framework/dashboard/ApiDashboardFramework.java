@@ -63,7 +63,7 @@ public class ApiDashboardFramework {
         ApiDashboardWSDTO dashboardWSDTO = new ApiDashboardWSDTO();
         dashboardWSDTO.setReadySession(sessionHelper.mapApiSessionWSDTO(sessionRepository.findAllByAgentIdAndSessionStateAndSessionType(agentId,AppConstant.READY_SESSION,AppConstant.MANUAL_CAMPAIGN,PageRequest.of(reqPage,reqSize))));
         dashboardWSDTO.setActiveSession(sessionHelper.mapApiSessionWSDTO(sessionRepository.findAllByAgentIdAndSessionState(agentId,AppConstant.ACTIVE_SESSION,PageRequest.of(reqPage,reqSize))));
-        dashboardWSDTO.setReadyClientInquiry(inquiryHelper.mapApiClientInquiryWSDTO(sessionRepository.findAllByAgentIdAndSessionStateAndSessionType(agentId,AppConstant.READY_SESSION,AppConstant.INQUIRY_CAMPAIGN,PageRequest.of(reqPage,reqSize))));
+        dashboardWSDTO.setClientInquiry(inquiryHelper.mapApiClientInquiryWSDTO(sessionRepository.findAllByAgentIdAndSessionStateAndSessionType(agentId,AppConstant.READY_SESSION,AppConstant.INQUIRY_CAMPAIGN,PageRequest.of(reqPage,reqSize))));
         dashboardWSDTO.setAgentCampaigns(apiAgentCampaignsService(agentId));
 
         return dashboardWSDTO;

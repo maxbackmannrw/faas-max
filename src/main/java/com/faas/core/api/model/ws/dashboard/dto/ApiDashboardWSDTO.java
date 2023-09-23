@@ -10,16 +10,16 @@ public class ApiDashboardWSDTO {
 
     private ApiSessionWSDTO readySession;
     private ApiSessionWSDTO activeSession;
-    private ApiClientInquiryWSDTO readyClientInquiry;
+    private ApiClientInquiryWSDTO clientInquiry;
     private List<ApiCampaignWSDTO> agentCampaigns;
 
     public ApiDashboardWSDTO() {
     }
 
-    public ApiDashboardWSDTO(ApiSessionWSDTO readySession, ApiSessionWSDTO activeSession, ApiClientInquiryWSDTO readyClientInquiry, List<ApiCampaignWSDTO> agentCampaigns) {
+    public ApiDashboardWSDTO(ApiSessionWSDTO readySession, ApiSessionWSDTO activeSession, ApiClientInquiryWSDTO clientInquiry, List<ApiCampaignWSDTO> agentCampaigns) {
         this.readySession = readySession;
         this.activeSession = activeSession;
-        this.readyClientInquiry = readyClientInquiry;
+        this.clientInquiry = clientInquiry;
         this.agentCampaigns = agentCampaigns;
     }
 
@@ -39,12 +39,12 @@ public class ApiDashboardWSDTO {
         this.activeSession = activeSession;
     }
 
-    public ApiClientInquiryWSDTO getReadyClientInquiry() {
-        return readyClientInquiry;
+    public ApiClientInquiryWSDTO getClientInquiry() {
+        return clientInquiry;
     }
 
-    public void setReadyClientInquiry(ApiClientInquiryWSDTO readyClientInquiry) {
-        this.readyClientInquiry = readyClientInquiry;
+    public void setClientInquiry(ApiClientInquiryWSDTO clientInquiry) {
+        this.clientInquiry = clientInquiry;
     }
 
     public List<ApiCampaignWSDTO> getAgentCampaigns() {

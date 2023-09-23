@@ -7,10 +7,8 @@ public class GeneralWSModel {
     private String operation;
     private String result;
 
-
     public GeneralWSModel() {
     }
-
 
     public GeneralWSModel(int statusCode, String status, String operation, String result) {
         this.statusCode = statusCode;
