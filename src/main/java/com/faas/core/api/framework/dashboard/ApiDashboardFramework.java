@@ -107,7 +107,6 @@ public class ApiDashboardFramework {
         return campaignWSDTOS;
     }
 
-
     public ApiCampaignWSDTO fillApiDashCampaignWSDTO(long agentId,CampaignDBModel campaignDBModel){
 
         ApiCampaignWSDTO dashCampaignWSDTO = new ApiCampaignWSDTO();
