@@ -1,4 +1,4 @@
-package com.faas.core.api.model.ws.campaign.details.process.details.dto;
+package com.faas.core.api.model.ws.campaign.process.dto;
 
 import com.faas.core.base.model.db.process.content.ProcessDBModel;
 

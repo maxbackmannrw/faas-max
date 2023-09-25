@@ -1,6 +1,7 @@
 package com.faas.core.api.endpoint.controller.client.session;
 
 import com.faas.core.api.middleware.client.session.ApiSessionMiddleware;
+import com.faas.core.api.model.ws.client.session.ApiSessionDetailsWSModel;
 import com.faas.core.api.model.ws.general.ApiSummaryWSModel;
 import com.faas.core.api.model.ws.client.session.ApiAgentSessionWSModel;
 import com.faas.core.api.model.ws.client.session.ApiSessionWSModel;
@@ -53,7 +54,6 @@ public class ApiSessionController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = ApiRoute.API_GET_SESSIONS, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetSessions(@RequestParam long agentId,
                                             @RequestParam String sessionState,
@@ -68,10 +68,6 @@ public class ApiSessionController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
-
-
-
     @RequestMapping(value = ApiRoute.API_GET_SESSION, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetSession(@RequestParam long agentId,
                                            @RequestParam long sessionId) {
@@ -84,6 +80,18 @@ public class ApiSessionController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+
+    @RequestMapping(value = ApiRoute.API_GET_SESSION_DETAILS, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetSessionDetails(@RequestParam long agentId,
+                                                  @RequestParam long sessionId) {
+
+        ApiSessionDetailsWSModel response = apiSessionMiddleware.apiGetSessionDetails(agentId,sessionId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
 
     @RequestMapping(value = ApiRoute.API_GET_SESSION_SUMMARY, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetSessionSummary(@RequestParam long agentId) {

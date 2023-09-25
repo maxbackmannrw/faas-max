@@ -1,6 +1,8 @@
 package com.faas.core.api.middleware.client.session;
 
 import com.faas.core.api.framework.client.session.ApiSessionFramework;
+import com.faas.core.api.model.ws.client.session.ApiSessionDetailsWSModel;
+import com.faas.core.api.model.ws.client.session.dto.ApiSessionDetailsWSDTO;
 import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
 import com.faas.core.api.model.ws.general.ApiSummaryWSModel;
 import com.faas.core.api.model.ws.client.session.ApiAgentSessionWSModel;
@@ -101,6 +103,25 @@ public class ApiSessionMiddleware {
     }
 
 
+    public ApiSessionDetailsWSModel apiGetSessionDetails(long agentId, long sessionId) {
+
+        ApiSessionDetailsWSModel response = new ApiSessionDetailsWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        ApiSessionDetailsWSDTO sessionDetailsWSDTO = apiSessionFramework.apiGetSessionDetailsService(agentId,sessionId);
+        if (sessionDetailsWSDTO != null) {
+            response.setSessionDetails(sessionDetailsWSDTO);
+        }
+
+        general.setOperation("apiGetSessionDetails");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
     public ApiSummaryWSModel apiGetSessionSummary(long agentId) {
 
         ApiSummaryWSModel response = new ApiSummaryWSModel();
@@ -119,7 +140,6 @@ public class ApiSessionMiddleware {
 
         return response;
     }
-
 
 
 }

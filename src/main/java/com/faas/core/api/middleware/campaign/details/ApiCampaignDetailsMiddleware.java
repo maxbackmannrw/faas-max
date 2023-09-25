@@ -1,8 +1,8 @@
-package com.faas.core.api.middleware.campaign.details.content;
+package com.faas.core.api.middleware.campaign.details;
 
-import com.faas.core.api.framework.campaign.details.content.ApiCampaignDetailsFramework;
-import com.faas.core.api.model.ws.campaign.details.content.ApiCampaignDetailsWSModel;
-import com.faas.core.api.model.ws.campaign.details.content.dto.ApiCampaignDetailsWSDTO;
+import com.faas.core.api.framework.campaign.details.ApiCampaignDetailsFramework;
+import com.faas.core.api.model.ws.campaign.details.ApiCampaignDetailsWSModel;
+import com.faas.core.api.model.ws.campaign.details.dto.ApiCampaignDetailsWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;

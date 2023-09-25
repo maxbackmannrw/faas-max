@@ -37,7 +37,6 @@ public class ApiClientController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = ApiRoute.API_GET_SESSIONS, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetSessions(@RequestParam long agentId,
                                             @RequestParam String sessionState,
@@ -51,7 +50,6 @@ public class ApiClientController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = ApiRoute.API_GET_CAMPAIGN_SESSIONS, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetCampaignSessions(@RequestParam long agentId,
@@ -68,8 +66,6 @@ public class ApiClientController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
-
     @RequestMapping(value = ApiRoute.API_GET_SESSION, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetSession(@RequestParam long agentId,
                                            @RequestParam long sessionId) {
@@ -81,7 +77,6 @@ public class ApiClientController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = ApiRoute.API_GET_SESSION_SUMMARY, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetSessionSummary(@RequestParam long agentId) {

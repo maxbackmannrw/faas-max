@@ -28,8 +28,8 @@ public class ApiRoute {
     public static final String API_GET_AGENT_CAMPAIGN_PROCESSES = "apigetagentcampaignprocesses";
     public static final String API_GET_CAMPAIGN_PROCESSES = "apigetcampaignprocesses";
     public static final String API_GET_CAMPAIGN_PROCESS = "apigetcampaignprocess";
-
     public static final String API_GET_CAMPAIGN_PROCESS_DETAILS = "apigetcampaignprocessdetails";
+
 
     public static final String API_GET_AGENT_ASSETS = "apigetagentassets";
     public static final String API_GET_AGENT_ASSET = "apigetagentasset";
@@ -63,10 +63,9 @@ public class ApiRoute {
 
 
     public static final String API_GET_AGENT_SESSION = "apigetagentsession"; 
-    public static final String API_GET_SESSIONS = "apigetsessions";
     public static final String API_GET_CAMPAIGN_SESSIONS = "apigetcampaignsessions";
+    public static final String API_GET_SESSIONS = "apigetsessions";
     public static final String API_GET_SESSION = "apigetsession";
-
     public static final String API_GET_SESSION_DETAILS = "apigetsessiondetails";
     public static final String API_GET_SESSION_SUMMARY = "apigetsessionsummary";
 

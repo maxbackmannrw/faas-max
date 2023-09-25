@@ -1,6 +1,6 @@
-package com.faas.core.api.model.ws.campaign.details.process.details;
+package com.faas.core.api.model.ws.campaign.process;
 
-import com.faas.core.api.model.ws.campaign.details.process.details.dto.ApiProcessDetailsWSDTO;
+import com.faas.core.api.model.ws.campaign.process.dto.ApiProcessDetailsWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 
 import java.util.List;

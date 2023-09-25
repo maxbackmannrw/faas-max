@@ -157,7 +157,6 @@ public class CampaignManualSessionFramework {
         return null;
     }
 
-
     public SessionWSDTO removeCampaignManualSessionService(long userId,long sessionId) {
 
         Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
@@ -177,6 +176,7 @@ public class CampaignManualSessionFramework {
         }
         return null;
     }
+
 
 
 }

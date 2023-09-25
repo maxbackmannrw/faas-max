@@ -1,6 +1,6 @@
-package com.faas.core.api.framework.campaign.details.process;
+package com.faas.core.api.framework.campaign.process;
 
-import com.faas.core.api.model.ws.campaign.details.content.dto.ApiCampaignDetailsWSDTO;
+import com.faas.core.api.model.ws.campaign.details.dto.ApiCampaignDetailsWSDTO;
 import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.utils.config.AppUtils;
@@ -28,6 +28,10 @@ public class ApiCampaignProcessFramework {
     }
 
 
+    public ApiCampaignDetailsWSDTO apiGetCampaignProcessDetailsService(long agentId, long campaignId) {
+
+        return null;
+    }
 
 
 

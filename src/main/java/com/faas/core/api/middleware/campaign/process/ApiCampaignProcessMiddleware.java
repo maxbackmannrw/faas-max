@@ -1,12 +1,12 @@
-package com.faas.core.api.middleware.campaign.details.process;
+package com.faas.core.api.middleware.campaign.process;
 
-import com.faas.core.api.framework.campaign.details.process.ApiCampaignProcessFramework;
-import com.faas.core.api.model.ws.campaign.details.process.content.ApiProcessWSModel;
-import com.faas.core.api.model.ws.campaign.details.process.content.dto.ApiProcessWSDTO;
+import com.faas.core.api.framework.campaign.process.ApiCampaignProcessFramework;
+import com.faas.core.api.model.ws.campaign.process.ApiProcessDetailsWSModel;
+import com.faas.core.api.model.ws.campaign.process.ApiProcessWSModel;
+import com.faas.core.api.model.ws.campaign.process.dto.ApiProcessDetailsWSDTO;
+import com.faas.core.api.model.ws.campaign.process.dto.ApiProcessWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
 import com.faas.core.utils.config.AppConstant;
-import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -17,14 +17,9 @@ import java.util.List;
 @Component
 public class ApiCampaignProcessMiddleware {
 
+
     @Autowired
     ApiCampaignProcessFramework apiCampaignProcessFramework;
-
-    @Autowired
-    CampaignAgentRepository campaignAgentRepository;
-
-    @Autowired
-    AppUtils appUtils;
 
 
     public ApiProcessWSModel apiGetAgentCampaignProcesses(long agentId) {
@@ -32,7 +27,6 @@ public class ApiCampaignProcessMiddleware {
         ApiProcessWSModel response = new ApiProcessWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ApiProcessWSDTO> apiProcessWSDTOS = new ArrayList<>();
-
 
 
         response.setProcesses(apiProcessWSDTOS);
@@ -45,13 +39,11 @@ public class ApiCampaignProcessMiddleware {
         return response;
     }
 
-
     public ApiProcessWSModel apiGetCampaignProcesses(long agentId, String campaignId, String processId) {
 
         ApiProcessWSModel response = new ApiProcessWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ApiProcessWSDTO> apiProcessWSDTOS = new ArrayList<>();
-
 
 
         response.setProcesses(apiProcessWSDTOS);
@@ -64,7 +56,6 @@ public class ApiCampaignProcessMiddleware {
         return response;
     }
 
-
     public ApiProcessWSModel apiGetCampaignProcess(long agentId, String campaignId, String processId) {
 
         ApiProcessWSModel response = new ApiProcessWSModel();
@@ -72,9 +63,25 @@ public class ApiCampaignProcessMiddleware {
         List<ApiProcessWSDTO> apiProcessWSDTOS = new ArrayList<>();
 
 
-
         response.setProcesses(apiProcessWSDTOS);
         general.setOperation("apiGetCampaignProcess");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public ApiProcessDetailsWSModel apiGetCampaignProcessDetails(long agentId, String campaignId, String processId) {
+
+        ApiProcessDetailsWSModel response = new ApiProcessDetailsWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+        List<ApiProcessDetailsWSDTO> processDetailsWSDTOS = new ArrayList<>();
+
+
+        response.setProcessDetails(processDetailsWSDTOS);
+        general.setOperation("apiGetCampaignProcessDetails");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

@@ -1,7 +1,7 @@
-package com.faas.core.api.endpoint.controller.campaign.details.content;
+package com.faas.core.api.endpoint.controller.campaign.details;
 
-import com.faas.core.api.middleware.campaign.details.content.ApiCampaignDetailsMiddleware;
-import com.faas.core.api.model.ws.campaign.details.content.ApiCampaignDetailsWSModel;
+import com.faas.core.api.middleware.campaign.details.ApiCampaignDetailsMiddleware;
+import com.faas.core.api.model.ws.campaign.details.ApiCampaignDetailsWSModel;
 import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +33,6 @@ public class ApiCampaignDetailsController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
-
 
 
 }

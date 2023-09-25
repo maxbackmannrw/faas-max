@@ -1,5 +1,6 @@
 package com.faas.core.api.framework.client.session;
 
+import com.faas.core.api.model.ws.client.session.dto.ApiSessionDetailsWSDTO;
 import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
 import com.faas.core.api.model.ws.client.session.dto.ApiAgentSessionWSDTO;
 import com.faas.core.api.model.ws.client.session.dto.ApiSessionWSDTO;
@@ -19,6 +20,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Component
@@ -93,9 +95,21 @@ public class ApiSessionFramework {
     }
 
 
+    public ApiSessionDetailsWSDTO apiGetSessionDetailsService(long agentId, long sessionId){
+
+        Optional<SessionDBModel> sessionDBModel =sessionRepository.findById(sessionId);
+        if (sessionDBModel.isPresent()){
+            return sessionHelper.mapApiSessionDetailsWSDTO(sessionDBModel.get());
+        }
+        return null;
+    }
+
     public List<ApiSummaryWSDTO> apiGetSessionSummaryService(long agentId) {
         return sessionHelper.getApiSessionSummary(agentId);
     }
 
-    
+
+
+
+
 }
