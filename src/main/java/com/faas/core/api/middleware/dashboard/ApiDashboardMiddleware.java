@@ -86,13 +86,12 @@ public class ApiDashboardMiddleware {
     }
 
 
-
     public ApiCampaignWSModel apiGetDashCampaigns(long agentId) {
 
         ApiCampaignWSModel response = new ApiCampaignWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ApiCampaignWSDTO> campaignWSDTOS = apiDashboardFramework.apiAgentCampaignsService(agentId);
+        List<ApiCampaignWSDTO> campaignWSDTOS = apiDashboardFramework.apiDashCampaignsService(agentId);
         if (campaignWSDTOS != null){
             response.setCampaigns(campaignWSDTOS);
         }

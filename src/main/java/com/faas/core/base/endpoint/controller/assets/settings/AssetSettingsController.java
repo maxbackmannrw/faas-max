@@ -33,7 +33,6 @@ public class AssetSettingsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.GET_ASSET_TYPE, method = RequestMethod.POST)
     public ResponseEntity<?> getAssetType(@RequestParam long userId,
                                           @RequestParam long typeId) {
@@ -62,7 +61,6 @@ public class AssetSettingsController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.UPDATE_ASSET_TYPE, method = RequestMethod.POST)
     public ResponseEntity<?> updateAssetType(@RequestParam long userId,

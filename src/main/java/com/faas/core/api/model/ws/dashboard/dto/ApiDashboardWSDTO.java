@@ -11,16 +11,16 @@ public class ApiDashboardWSDTO {
     private ApiSessionWSDTO readySession;
     private ApiSessionWSDTO activeSession;
     private ApiClientInquiryWSDTO clientInquiry;
-    private List<ApiCampaignWSDTO> agentCampaigns;
+    private List<ApiCampaignWSDTO> dashCampaigns;
 
     public ApiDashboardWSDTO() {
     }
 
-    public ApiDashboardWSDTO(ApiSessionWSDTO readySession, ApiSessionWSDTO activeSession, ApiClientInquiryWSDTO clientInquiry, List<ApiCampaignWSDTO> agentCampaigns) {
+    public ApiDashboardWSDTO(ApiSessionWSDTO readySession, ApiSessionWSDTO activeSession, ApiClientInquiryWSDTO clientInquiry, List<ApiCampaignWSDTO> dashCampaigns) {
         this.readySession = readySession;
         this.activeSession = activeSession;
         this.clientInquiry = clientInquiry;
-        this.agentCampaigns = agentCampaigns;
+        this.dashCampaigns = dashCampaigns;
     }
 
     public ApiSessionWSDTO getReadySession() {
@@ -47,11 +47,11 @@ public class ApiDashboardWSDTO {
         this.clientInquiry = clientInquiry;
     }
 
-    public List<ApiCampaignWSDTO> getAgentCampaigns() {
-        return agentCampaigns;
+    public List<ApiCampaignWSDTO> getDashCampaigns() {
+        return dashCampaigns;
     }
 
-    public void setAgentCampaigns(List<ApiCampaignWSDTO> agentCampaigns) {
-        this.agentCampaigns = agentCampaigns;
+    public void setDashCampaigns(List<ApiCampaignWSDTO> dashCampaigns) {
+        this.dashCampaigns = dashCampaigns;
     }
 }

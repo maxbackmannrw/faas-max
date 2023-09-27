@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping(value = AppConstant.API_VERSION + "/api/flow/")
 public class ApiFlowController {
 
-
     @Autowired
     ApiFlowMiddleware apiFlowMiddleware;
 
@@ -40,7 +39,6 @@ public class ApiFlowController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = ApiRoute.API_GET_CAMPAIGN_FLOW, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetCampaignFlow(@RequestParam long agentId,
                                                 @RequestParam String campaignId,
@@ -56,7 +54,6 @@ public class ApiFlowController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = ApiRoute.API_GET_FLOWS, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetFlows(@RequestParam long agentId,
                                          @RequestParam String flowState,
@@ -71,7 +68,6 @@ public class ApiFlowController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = ApiRoute.API_GET_FLOW, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetFlow(@RequestParam long agentId,
                                         @RequestParam long flowId,
@@ -84,7 +80,6 @@ public class ApiFlowController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = ApiRoute.API_START_FLOW, method = RequestMethod.POST)
     public ResponseEntity<?> apiStartFlow(@RequestParam long agentId,
@@ -100,7 +95,6 @@ public class ApiFlowController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = ApiRoute.API_UPDATE_FLOW, method = RequestMethod.POST)
     public ResponseEntity<?> apiUpdateFlow(@RequestParam long agentId,
                                            @RequestParam long flowId,
@@ -114,7 +108,6 @@ public class ApiFlowController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = ApiRoute.API_REMOVE_FLOW, method = RequestMethod.POST)
     public ResponseEntity<?> apiRemoveFlow(@RequestParam long agentId,
                                            @RequestParam long flowId) {
@@ -126,7 +119,6 @@ public class ApiFlowController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = ApiRoute.API_GET_FLOW_SUMMARY, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetFlowSummary(@RequestParam long agentId) {

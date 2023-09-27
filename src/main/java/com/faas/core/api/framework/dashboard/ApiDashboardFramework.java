@@ -64,7 +64,7 @@ public class ApiDashboardFramework {
         dashboardWSDTO.setReadySession(sessionHelper.mapApiSessionWSDTO(sessionRepository.findAllByAgentIdAndSessionStateAndSessionType(agentId,AppConstant.READY_SESSION,AppConstant.MANUAL_CAMPAIGN,PageRequest.of(reqPage,reqSize))));
         dashboardWSDTO.setActiveSession(sessionHelper.mapApiSessionWSDTO(sessionRepository.findAllByAgentIdAndSessionState(agentId,AppConstant.ACTIVE_SESSION,PageRequest.of(reqPage,reqSize))));
         dashboardWSDTO.setClientInquiry(inquiryHelper.mapApiClientInquiryWSDTO(sessionRepository.findAllByAgentIdAndSessionStateAndSessionType(agentId,AppConstant.READY_SESSION,AppConstant.INQUIRY_CAMPAIGN,PageRequest.of(reqPage,reqSize))));
-        dashboardWSDTO.setAgentCampaigns(apiAgentCampaignsService(agentId));
+        dashboardWSDTO.setDashCampaigns(apiDashCampaignsService(agentId));
 
         return dashboardWSDTO;
     }
@@ -91,12 +91,12 @@ public class ApiDashboardFramework {
     }
 
 
-    public List<ApiCampaignWSDTO> apiAgentCampaignsService(long agentId) {
+    public List<ApiCampaignWSDTO> apiDashCampaignsService(long agentId) {
 
         List<ApiCampaignWSDTO> campaignWSDTOS = new ArrayList<>();
-        List<CampaignAgentDBModel> agentCampaigns = campaignAgentRepository.findByAgentId(agentId);
-        for (CampaignAgentDBModel agentCampaign : agentCampaigns) {
-            Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(agentCampaign.getCampaignId());
+        List<CampaignAgentDBModel> dashCampaigns = campaignAgentRepository.findByAgentId(agentId);
+        for (CampaignAgentDBModel dashCampaign : dashCampaigns) {
+            Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(dashCampaign.getCampaignId());
             if (campaignDBModel.isPresent()) {
                 ApiCampaignWSDTO campaignWSDTO = fillApiDashCampaignWSDTO(agentId,campaignDBModel.get());
                 if (campaignWSDTO != null) {
