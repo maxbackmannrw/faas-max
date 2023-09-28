@@ -39,7 +39,6 @@ public class ApiOperationDetailsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = ApiRoute.API_OPERATION_VALIDATE, method = RequestMethod.POST)
     public ResponseEntity<?> apiOperationValidate(@RequestParam long agentId,
                                                   @RequestParam long sessionId) {
@@ -51,7 +50,6 @@ public class ApiOperationDetailsController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_CAMPAIGN, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationCampaign(@RequestParam long agentId,
