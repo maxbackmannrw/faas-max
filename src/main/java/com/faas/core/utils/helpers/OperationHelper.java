@@ -7,9 +7,9 @@ import com.faas.core.api.model.ws.operation.channel.message.email.dto.ApiEmailAc
 import com.faas.core.api.model.ws.operation.channel.message.sms.dto.ApiSmsAccountWSDTO;
 import com.faas.core.api.model.ws.operation.channel.message.push.dto.ApiPushAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.activity.dto.ApiOperationActivityWSDTO;
-import com.faas.core.api.model.ws.operation.details.client.content.dto.ApiOperationClientWSDTO;
-import com.faas.core.api.model.ws.operation.details.client.note.dto.ApiClientNoteWSDTO;
-import com.faas.core.api.model.ws.operation.details.client.osint.dto.ApiClientOsIntWSDTO;
+import com.faas.core.api.model.ws.operation.details.client.dto.ApiOperationClientWSDTO;
+import com.faas.core.api.model.ws.client.details.dto.ApiClientNoteWSDTO;
+import com.faas.core.api.model.ws.client.details.dto.ApiClientOsIntWSDTO;
 import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationCampaignWSDTO;
 import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationDetailsWSDTO;
 import com.faas.core.api.model.ws.operation.scenario.content.dto.ApiOperationScenarioWSDTO;

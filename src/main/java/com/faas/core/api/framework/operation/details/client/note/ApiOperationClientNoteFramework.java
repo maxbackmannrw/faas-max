@@ -1,6 +1,6 @@
 package com.faas.core.api.framework.operation.details.client.note;
 
-import com.faas.core.api.model.ws.operation.details.client.note.dto.ApiClientNoteWSDTO;
+import com.faas.core.api.model.ws.client.details.dto.ApiClientNoteWSDTO;
 import com.faas.core.base.model.db.client.details.ClientNoteDBModel;
 import com.faas.core.base.repo.client.details.ClientNoteRepository;
 import com.faas.core.utils.config.AppUtils;
@@ -12,7 +12,7 @@ import java.util.List;
 
 
 @Component
-public class ApiClientNoteFramework {
+public class ApiOperationClientNoteFramework {
 
     @Autowired
     ClientNoteRepository clientNoteRepository;
@@ -44,7 +44,6 @@ public class ApiClientNoteFramework {
 
     public ApiClientNoteWSDTO apiCreateClientNoteService(long agentId, long sessionId, long clientId, String noteTitle, String noteText, String noteAsset) {
 
-        ApiClientNoteWSDTO operationNoteWSDTO =  new ApiClientNoteWSDTO();
         ClientNoteDBModel clientNoteDBModel = new ClientNoteDBModel();
         clientNoteDBModel.setClientId(clientId);
         clientNoteDBModel.setSessionId(sessionId);
@@ -56,20 +55,14 @@ public class ApiClientNoteFramework {
         clientNoteDBModel.setcDate(appUtils.getCurrentTimeStamp());
         clientNoteDBModel.setStatus(1);
 
-        ClientNoteDBModel createdNote = clientNoteRepository.save(clientNoteDBModel);
-        List<ClientNoteDBModel>clientNoteDBModels = new ArrayList<>();
-        clientNoteDBModels.add(createdNote);
-
-        return operationNoteWSDTO;
+        return new ApiClientNoteWSDTO(clientNoteRepository.save(clientNoteDBModel)) ;
     }
-
 
     public ApiClientNoteWSDTO apiUpdateClientNoteService(long agentId, long sessionId, long clientId, long noteId, String noteTitle, String noteText, String noteAsset) {
 
         List<ClientNoteDBModel> clientNoteDBModel = clientNoteRepository.findByIdAndSessionIdAndClientId(noteId,sessionId,clientId);
-        if (clientNoteDBModel.size()>0){
+        if (!clientNoteDBModel.isEmpty()){
 
-            ApiClientNoteWSDTO operationNoteWSDTO =  new ApiClientNoteWSDTO();
             clientNoteDBModel.get(0).setCreatorId(agentId);
             clientNoteDBModel.get(0).setNoteTitle(noteTitle);
             clientNoteDBModel.get(0).setNoteText(noteText);
@@ -77,20 +70,15 @@ public class ApiClientNoteFramework {
             clientNoteDBModel.get(0).setuDate(appUtils.getCurrentTimeStamp());
             clientNoteDBModel.get(0).setStatus(1);
 
-            ClientNoteDBModel updatedNote = clientNoteRepository.save(clientNoteDBModel.get(0));
-            List<ClientNoteDBModel>clientNoteDBModels = new ArrayList<>();
-            clientNoteDBModels.add(updatedNote);
-
-            return operationNoteWSDTO;
+            return new ApiClientNoteWSDTO(clientNoteRepository.save(clientNoteDBModel.get(0)));
         }
         return null;
     }
 
-
     public ApiClientNoteWSDTO apiRemoveClientNoteService(long agentId, long sessionId, long clientId, long noteId) {
 
         List<ClientNoteDBModel> clientNoteDBModels = clientNoteRepository.findByIdAndSessionIdAndClientId(noteId,sessionId,clientId);
-        if (clientNoteDBModels.size()>0){
+        if (!clientNoteDBModels.isEmpty()){
             ApiClientNoteWSDTO operationNoteWSDTO =  new ApiClientNoteWSDTO();
             clientNoteRepository.delete(clientNoteDBModels.get(0));
 
@@ -98,6 +86,7 @@ public class ApiClientNoteFramework {
         }
         return null;
     }
+
 
 
 }

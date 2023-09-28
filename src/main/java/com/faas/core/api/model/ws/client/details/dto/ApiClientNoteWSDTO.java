@@ -1,8 +1,6 @@
-package com.faas.core.api.model.ws.operation.details.client.note.dto;
+package com.faas.core.api.model.ws.client.details.dto;
 
 import com.faas.core.base.model.db.client.details.ClientNoteDBModel;
-
-import java.util.List;
 
 public class ApiClientNoteWSDTO {
 

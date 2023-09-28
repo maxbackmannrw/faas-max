@@ -1,4 +1,4 @@
-package com.faas.core.api.model.ws.operation.details.client.osint.dto;
+package com.faas.core.api.model.ws.client.details.dto;
 
 import com.faas.core.base.model.db.client.content.ClientDBModel;
 

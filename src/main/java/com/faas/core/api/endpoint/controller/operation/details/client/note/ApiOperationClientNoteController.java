@@ -1,7 +1,7 @@
 package com.faas.core.api.endpoint.controller.operation.details.client.note;
 
-import com.faas.core.api.middleware.operation.details.client.note.ApiClientNoteMiddleware;
-import com.faas.core.api.model.ws.operation.details.client.note.ApiClientNoteWSModel;
+import com.faas.core.api.middleware.operation.details.client.note.ApiOperationClientNoteMiddleware;
+import com.faas.core.api.model.ws.client.details.ApiClientNoteWSModel;
 import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,18 +15,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping(value = AppConstant.API_VERSION + "/api/operation/details/client/note/")
-public class ApiClientNoteController {
+public class ApiOperationClientNoteController {
 
 
     @Autowired
-    ApiClientNoteMiddleware apiClientNoteMiddleware;
+    ApiOperationClientNoteMiddleware apiOperationClientNoteMiddleware;
 
 
     @RequestMapping(value = ApiRoute.API_GET_CLIENT_NOTES, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetClientNotes(@RequestParam long agentId,
                                                @RequestParam long clientId) {
 
-        ApiClientNoteWSModel response = apiClientNoteMiddleware.apiGetClientNotes(agentId,clientId);
+        ApiClientNoteWSModel response = apiOperationClientNoteMiddleware.apiGetClientNotes(agentId,clientId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -41,7 +41,7 @@ public class ApiClientNoteController {
                                               @RequestParam long clientId,
                                               @RequestParam long noteId) {
 
-        ApiClientNoteWSModel response = apiClientNoteMiddleware.apiGetClientNote(agentId,sessionId,clientId,noteId);
+        ApiClientNoteWSModel response = apiOperationClientNoteMiddleware.apiGetClientNote(agentId,sessionId,clientId,noteId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -58,7 +58,7 @@ public class ApiClientNoteController {
                                                  @RequestParam String noteText,
                                                  @RequestParam String noteAsset) {
 
-        ApiClientNoteWSModel response = apiClientNoteMiddleware.apiCreateClientNote(agentId,sessionId,clientId,noteTitle,noteText,noteAsset);
+        ApiClientNoteWSModel response = apiOperationClientNoteMiddleware.apiCreateClientNote(agentId,sessionId,clientId,noteTitle,noteText,noteAsset);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -76,7 +76,7 @@ public class ApiClientNoteController {
                                                  @RequestParam String noteText,
                                                  @RequestParam String noteAsset) {
 
-        ApiClientNoteWSModel response = apiClientNoteMiddleware.apiUpdateClientNote(agentId,sessionId,clientId,noteId,noteTitle,noteText,noteAsset);
+        ApiClientNoteWSModel response = apiOperationClientNoteMiddleware.apiUpdateClientNote(agentId,sessionId,clientId,noteId,noteTitle,noteText,noteAsset);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -91,7 +91,7 @@ public class ApiClientNoteController {
                                                  @RequestParam long clientId,
                                                  @RequestParam long noteId) {
 
-        ApiClientNoteWSModel response = apiClientNoteMiddleware.apiRemoveClientNote(agentId,sessionId,clientId,noteId);
+        ApiClientNoteWSModel response = apiOperationClientNoteMiddleware.apiRemoveClientNote(agentId,sessionId,clientId,noteId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

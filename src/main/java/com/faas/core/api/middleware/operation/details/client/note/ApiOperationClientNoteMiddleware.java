@@ -1,8 +1,8 @@
 package com.faas.core.api.middleware.operation.details.client.note;
 
-import com.faas.core.api.framework.operation.details.client.note.ApiClientNoteFramework;
-import com.faas.core.api.model.ws.operation.details.client.note.ApiClientNoteWSModel;
-import com.faas.core.api.model.ws.operation.details.client.note.dto.ApiClientNoteWSDTO;
+import com.faas.core.api.framework.operation.details.client.note.ApiOperationClientNoteFramework;
+import com.faas.core.api.model.ws.client.details.ApiClientNoteWSModel;
+import com.faas.core.api.model.ws.client.details.dto.ApiClientNoteWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,11 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class ApiClientNoteMiddleware {
+public class ApiOperationClientNoteMiddleware {
 
 
     @Autowired
-    ApiClientNoteFramework apiClientNoteFramework;
+    ApiOperationClientNoteFramework apiOperationClientNoteFramework;
 
 
     public ApiClientNoteWSModel apiGetClientNotes(long agentId, long clientId) {
@@ -24,7 +24,7 @@ public class ApiClientNoteMiddleware {
         ApiClientNoteWSModel response = new ApiClientNoteWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ApiClientNoteWSDTO> clientNoteWSDTOS = apiClientNoteFramework.apiGetClientNotesService(agentId,clientId);
+        List<ApiClientNoteWSDTO> clientNoteWSDTOS = apiOperationClientNoteFramework.apiGetClientNotesService(agentId,clientId);
         if (clientNoteWSDTOS != null){
             response.setClientNotes(clientNoteWSDTOS);
         }
@@ -46,7 +46,7 @@ public class ApiClientNoteMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ApiClientNoteWSDTO>clientNoteWSDTOS = new ArrayList<>();
 
-        ApiClientNoteWSDTO clientNoteWSDTO = apiClientNoteFramework.apiGetClientNoteService(agentId,sessionId,clientId,noteId);
+        ApiClientNoteWSDTO clientNoteWSDTO = apiOperationClientNoteFramework.apiGetClientNoteService(agentId,sessionId,clientId,noteId);
         if (clientNoteWSDTO != null){
             clientNoteWSDTOS.add(clientNoteWSDTO);
         }
@@ -68,7 +68,7 @@ public class ApiClientNoteMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ApiClientNoteWSDTO>clientNoteWSDTOS = new ArrayList<>();
 
-        ApiClientNoteWSDTO clientNoteWSDTO = apiClientNoteFramework.apiCreateClientNoteService(agentId,sessionId,clientId,noteTitle,noteText,noteAsset);
+        ApiClientNoteWSDTO clientNoteWSDTO = apiOperationClientNoteFramework.apiCreateClientNoteService(agentId,sessionId,clientId,noteTitle,noteText,noteAsset);
         if (clientNoteWSDTO != null){
             clientNoteWSDTOS.add(clientNoteWSDTO);
         }
@@ -90,7 +90,7 @@ public class ApiClientNoteMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ApiClientNoteWSDTO>clientNoteWSDTOS = new ArrayList<>();
 
-        ApiClientNoteWSDTO clientNoteWSDTO = apiClientNoteFramework.apiUpdateClientNoteService(agentId,sessionId,clientId,noteId,noteTitle,noteText,noteAsset);
+        ApiClientNoteWSDTO clientNoteWSDTO = apiOperationClientNoteFramework.apiUpdateClientNoteService(agentId,sessionId,clientId,noteId,noteTitle,noteText,noteAsset);
         if (clientNoteWSDTO != null){
             clientNoteWSDTOS.add(clientNoteWSDTO);
         }
@@ -112,7 +112,7 @@ public class ApiClientNoteMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ApiClientNoteWSDTO>clientNoteWSDTOS = new ArrayList<>();
 
-        ApiClientNoteWSDTO clientNoteWSDTO = apiClientNoteFramework.apiRemoveClientNoteService(agentId,sessionId,clientId,noteId);
+        ApiClientNoteWSDTO clientNoteWSDTO = apiOperationClientNoteFramework.apiRemoveClientNoteService(agentId,sessionId,clientId,noteId);
         if (clientNoteWSDTO != null){
             clientNoteWSDTOS.add(clientNoteWSDTO);
         }
