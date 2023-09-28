@@ -13,19 +13,19 @@ public class ApiOperationChannelWSDTO {
     private ApiOperationWappCallWSDTO operationWappCall;
     private ApiOperationSmsMessageWSDTO operationSmsMessage;
     private ApiOperationWappMessageWSDTO operationWappMessage;
-    private ApiOperationEmailWSDTO operationEmail;
     private ApiOperationPushMessageWSDTO operationPushMessage;
+    private ApiOperationEmailWSDTO operationEmail;
 
     public ApiOperationChannelWSDTO() {
     }
 
-    public ApiOperationChannelWSDTO(ApiOperationSipCallWSDTO operationSipCall, ApiOperationWappCallWSDTO operationWappCall, ApiOperationSmsMessageWSDTO operationSmsMessage, ApiOperationWappMessageWSDTO operationWappMessage, ApiOperationEmailWSDTO operationEmail, ApiOperationPushMessageWSDTO operationPushMessage) {
+    public ApiOperationChannelWSDTO(ApiOperationSipCallWSDTO operationSipCall, ApiOperationWappCallWSDTO operationWappCall, ApiOperationSmsMessageWSDTO operationSmsMessage, ApiOperationWappMessageWSDTO operationWappMessage, ApiOperationPushMessageWSDTO operationPushMessage, ApiOperationEmailWSDTO operationEmail) {
         this.operationSipCall = operationSipCall;
         this.operationWappCall = operationWappCall;
         this.operationSmsMessage = operationSmsMessage;
         this.operationWappMessage = operationWappMessage;
-        this.operationEmail = operationEmail;
         this.operationPushMessage = operationPushMessage;
+        this.operationEmail = operationEmail;
     }
 
     public ApiOperationSipCallWSDTO getOperationSipCall() {
@@ -60,19 +60,19 @@ public class ApiOperationChannelWSDTO {
         this.operationWappMessage = operationWappMessage;
     }
 
-    public ApiOperationEmailWSDTO getOperationEmail() {
-        return operationEmail;
-    }
-
-    public void setOperationEmail(ApiOperationEmailWSDTO operationEmail) {
-        this.operationEmail = operationEmail;
-    }
-
     public ApiOperationPushMessageWSDTO getOperationPushMessage() {
         return operationPushMessage;
     }
 
     public void setOperationPushMessage(ApiOperationPushMessageWSDTO operationPushMessage) {
         this.operationPushMessage = operationPushMessage;
+    }
+
+    public ApiOperationEmailWSDTO getOperationEmail() {
+        return operationEmail;
+    }
+
+    public void setOperationEmail(ApiOperationEmailWSDTO operationEmail) {
+        this.operationEmail = operationEmail;
     }
 }
