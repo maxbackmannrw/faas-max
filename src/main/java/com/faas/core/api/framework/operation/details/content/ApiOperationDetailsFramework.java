@@ -53,7 +53,6 @@ public class ApiOperationDetailsFramework {
         Optional<ClientDBModel> clientDBModel = clientRepository.findById(clientId);
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
         Optional<ProcessDBModel> processDBModel = processRepository.findById(processId);
-
         if (clientDBModel.isPresent() && campaignDBModel.isPresent() && processDBModel.isPresent()) {
             return operationHelper.mapApiOperationDetailsWSDTO(sessionDBModels.get(0), clientDBModel.get(), operationDBModels.get(0), campaignDBModel.get(), processDBModel.get());
         }
@@ -66,11 +65,9 @@ public class ApiOperationDetailsFramework {
         List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndAgentId(sessionId, agentId);
         List<OperationDBModel> operationDBModels = operationRepository.findBySessionId(sessionId);
         if (!sessionDBModels.isEmpty() && !operationDBModels.isEmpty()) {
-
             Optional<ClientDBModel> clientDBModel = clientRepository.findById(sessionDBModels.get(0).getClientId());
             Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(sessionDBModels.get(0).getCampaignId());
             Optional<ProcessDBModel> processDBModel = processRepository.findById(sessionDBModels.get(0).getProcessId());
-
             if (clientDBModel.isPresent() && campaignDBModel.isPresent() && processDBModel.isPresent()) {
                 return operationHelper.mapApiOperationDetailsWSDTO(sessionDBModels.get(0), clientDBModel.get(), operationDBModels.get(0), campaignDBModel.get(), processDBModel.get());
             }

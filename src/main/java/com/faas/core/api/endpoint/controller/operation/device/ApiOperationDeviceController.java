@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-@RequestMapping(value = AppConstant.API_VERSION + "/api/operation/details/peer/")
+@RequestMapping(value = AppConstant.API_VERSION + "/api/operation/device/")
 public class ApiOperationDeviceController {
 
 
@@ -25,9 +25,9 @@ public class ApiOperationDeviceController {
 
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_DEVICES, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationDevices(@RequestParam long agentId,
-                                                 @RequestParam long sessionId,
-                                                 @RequestParam long clientId,
-                                                 @RequestParam String campaignId) {
+                                                    @RequestParam long sessionId,
+                                                    @RequestParam long clientId,
+                                                    @RequestParam String campaignId) {
 
         ApiClientDeviceWSModel response = apiOperationDeviceMiddleware.apiGetOperationDevices(agentId,sessionId,clientId,campaignId);
 
@@ -39,9 +39,9 @@ public class ApiOperationDeviceController {
 
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_DEVICE, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationDevice(@RequestParam long agentId,
-                                               @RequestParam long sessionId,
-                                               @RequestParam long clientId,
-                                               @RequestParam String campaignId) {
+                                                   @RequestParam long sessionId,
+                                                   @RequestParam long clientId,
+                                                   @RequestParam String campaignId) {
 
         ApiClientDeviceWSModel response = apiOperationDeviceMiddleware.apiGetOperationDevice(agentId,sessionId,clientId,campaignId);
 
@@ -54,9 +54,9 @@ public class ApiOperationDeviceController {
 
     @RequestMapping(value = ApiRoute.API_CREATE_OPERATION_DEVICE, method = RequestMethod.POST)
     public ResponseEntity<?> apiCreateOperationDevice(@RequestParam long agentId,
-                                              @RequestParam long sessionId,
-                                              @RequestParam long clientId,
-                                              @RequestParam String campaignId) {
+                                                      @RequestParam long sessionId,
+                                                      @RequestParam long clientId,
+                                                      @RequestParam String campaignId) {
 
         ApiClientDeviceWSModel response = apiOperationDeviceMiddleware.apiCreateOperationDevice(agentId,sessionId,clientId,campaignId);
 
@@ -69,9 +69,9 @@ public class ApiOperationDeviceController {
 
     @RequestMapping(value = ApiRoute.API_UPDATE_OPERATION_DEVICE, method = RequestMethod.POST)
     public ResponseEntity<?> apiUpdateOperationDevice(@RequestParam long agentId,
-                                                 @RequestParam long sessionId,
-                                                 @RequestParam long clientId,
-                                                 @RequestParam String campaignId) {
+                                                      @RequestParam long sessionId,
+                                                      @RequestParam long clientId,
+                                                      @RequestParam String campaignId) {
 
         ApiClientDeviceWSModel response = apiOperationDeviceMiddleware.apiUpdateOperationDevice(agentId,sessionId,clientId,campaignId);
 
@@ -84,9 +84,9 @@ public class ApiOperationDeviceController {
 
     @RequestMapping(value = ApiRoute.API_REMOVE_OPERATION_DEVICE, method = RequestMethod.POST)
     public ResponseEntity<?> apiRemoveOperationDevice(@RequestParam long agentId,
-                                                 @RequestParam long sessionId,
-                                                 @RequestParam long clientId,
-                                                 @RequestParam String campaignId) {
+                                                      @RequestParam long sessionId,
+                                                      @RequestParam long clientId,
+                                                      @RequestParam String campaignId) {
 
         ApiClientDeviceWSModel response = apiOperationDeviceMiddleware.apiRemoveOperationDevice(agentId,sessionId,clientId,campaignId);
 

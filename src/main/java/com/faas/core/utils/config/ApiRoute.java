@@ -82,9 +82,15 @@ public class ApiRoute {
     public static final String API_OPERATION_VALIDATE = "apioperationvalidate";
     public static final String API_GET_OPERATION_CAMPAIGN = "apigetoperationcampaign";
 
+
+    public static final String API_GET_OPERATION_INQUIRY = "apigetoperationinquiry";
+
+
     public static final String API_GET_OPERATION_CLIENT = "apigetoperationclient";
 
+
     public static final String API_GET_CLIENT_OS_INTS = "apigetclientosints";
+
 
     public static final String API_GET_OPERATION_DEVICES = "apigetoperationdevices";
     public static final String API_GET_OPERATION_DEVICE = "apigetoperationdevice";
@@ -92,8 +98,6 @@ public class ApiRoute {
     public static final String API_UPDATE_OPERATION_DEVICE = "apiupdateoperationdevice";
     public static final String API_REMOVE_OPERATION_DEVICE = "apiremoveoperationdevice";
 
-
-    public static final String API_GET_OPERATION_CLIENT_INQUIRY = "apigetoperationclientinquiry";
 
 
     public static final String API_GET_CLIENT_NOTES = "apigetclientnotes";

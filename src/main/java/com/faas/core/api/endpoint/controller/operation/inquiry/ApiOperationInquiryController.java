@@ -21,13 +21,13 @@ public class ApiOperationInquiryController {
     @Autowired
     ApiOperationInquiryMiddleware apiOperationInquiryMiddleware;
 
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION_CLIENT_INQUIRY, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperationClientInquiry(@RequestParam long agentId,
-                                                 @RequestParam long sessionId,
-                                                 @RequestParam long clientId,
-                                                 @RequestParam String campaignId) {
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_INQUIRY, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationInquiry(@RequestParam long agentId,
+                                                    @RequestParam long sessionId,
+                                                    @RequestParam long clientId,
+                                                    @RequestParam String campaignId) {
 
-        ApiOperationDeviceWSModel response = apiOperationInquiryMiddleware.apiGetOperationClientInquiry(agentId,sessionId,clientId,campaignId);
+        ApiOperationDeviceWSModel response = apiOperationInquiryMiddleware.apiGetOperationInquiry(agentId,sessionId,clientId,campaignId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

@@ -14,7 +14,7 @@ public class ApiOperationInquiryFramework {
     AppUtils appUtils;
 
 
-    public ApiOperationDeviceWSDTO apiGetOperationClientInquiryService(){
+    public ApiOperationDeviceWSDTO apiGetOperationInquiryService(){
 
         ApiOperationDeviceWSDTO operationPeerWSDTO = new ApiOperationDeviceWSDTO();
         return operationPeerWSDTO;

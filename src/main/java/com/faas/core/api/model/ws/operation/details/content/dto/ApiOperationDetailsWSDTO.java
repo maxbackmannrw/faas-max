@@ -16,9 +16,9 @@ import java.util.List;
 public class ApiOperationDetailsWSDTO {
 
     private OperationDBModel operation;
+    private SessionDBModel operationSession;
     private ClientFlowDBModel operationFlow;
     private ClientInquiryDBModel operationInquiry;
-    private SessionDBModel operationSession;
     private ApiOperationClientWSDTO operationClient;
     private List<ApiClientOsIntWSDTO> clientOsInts;
     private List<ApiClientNoteWSDTO> clientNotes;
@@ -43,7 +43,6 @@ public class ApiOperationDetailsWSDTO {
         this.operationScenario = operationScenario;
         this.operationChannel = operationChannel;
     }
-
 
     public OperationDBModel getOperation() {
         return operation;
@@ -132,5 +131,4 @@ public class ApiOperationDetailsWSDTO {
     public void setOperationChannel(ApiOperationChannelWSDTO operationChannel) {
         this.operationChannel = operationChannel;
     }
-
 }

@@ -16,13 +16,13 @@ public class ApiOperationInquiryMiddleware {
     ApiOperationInquiryFramework apiOperationInquiryFramework;
 
 
-    public ApiOperationDeviceWSModel apiGetOperationClientInquiry(long agentId, long sessionId, long clientId, String campaignId) {
+    public ApiOperationDeviceWSModel apiGetOperationInquiry(long agentId, long sessionId, long clientId, String campaignId) {
 
         ApiOperationDeviceWSModel response = new ApiOperationDeviceWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
 
-        general.setOperation("apiGetOperationClientInquiry");
+        general.setOperation("apiGetOperationInquiry");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

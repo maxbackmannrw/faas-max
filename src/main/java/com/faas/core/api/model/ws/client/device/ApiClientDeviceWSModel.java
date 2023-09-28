@@ -8,14 +8,14 @@ import java.util.List;
 public class ApiClientDeviceWSModel {
 
     private GeneralWSModel general;
-    private List<ApiClientDeviceWSDTO>clientDevice;
+    private List<ApiClientDeviceWSDTO>clientDevices;
 
     public ApiClientDeviceWSModel() {
     }
 
-    public ApiClientDeviceWSModel(GeneralWSModel general, List<ApiClientDeviceWSDTO> clientDevice) {
+    public ApiClientDeviceWSModel(GeneralWSModel general, List<ApiClientDeviceWSDTO> clientDevices) {
         this.general = general;
-        this.clientDevice = clientDevice;
+        this.clientDevices = clientDevices;
     }
 
     public GeneralWSModel getGeneral() {
@@ -26,11 +26,11 @@ public class ApiClientDeviceWSModel {
         this.general = general;
     }
 
-    public List<ApiClientDeviceWSDTO> getClientDevice() {
-        return clientDevice;
+    public List<ApiClientDeviceWSDTO> getClientDevices() {
+        return clientDevices;
     }
 
-    public void setClientDevice(List<ApiClientDeviceWSDTO> clientDevice) {
-        this.clientDevice = clientDevice;
+    public void setClientDevices(List<ApiClientDeviceWSDTO> clientDevices) {
+        this.clientDevices = clientDevices;
     }
 }
