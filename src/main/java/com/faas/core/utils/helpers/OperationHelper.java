@@ -347,7 +347,6 @@ public class OperationHelper {
             if (scenarioDBModel.isPresent()) {
                 ApiProcessScenarioWSDTO scenarioWSDTO = new ApiProcessScenarioWSDTO();
                 scenarioWSDTO.setProcessScenario(processScenarioDBModel);
-                scenarioWSDTO.setScenario(scenarioDBModel.get());
                 scenarioWSDTOS.add(scenarioWSDTO);
             }
         }

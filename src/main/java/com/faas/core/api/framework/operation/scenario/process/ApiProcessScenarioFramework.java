@@ -47,33 +47,25 @@ public class ApiProcessScenarioFramework {
 
     public List<ApiProcessScenarioWSDTO> apiGetProcessScenariosService(long agentId, long sessionId, String processId) {
 
-        List<ApiProcessScenarioWSDTO>scenarioWSDTOS = new ArrayList<>();
-        Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
+        List<ApiProcessScenarioWSDTO>processScenarioWSDTOS = new ArrayList<>();
         List<ProcessScenarioDBModel> processScenarioDBModels = processScenarioRepository.findByProcessId(processId);
-        if (sessionDBModel.isPresent() && !processScenarioDBModels.isEmpty()){
+        if (!processScenarioDBModels.isEmpty()){
             for (ProcessScenarioDBModel processScenarioDBModel : processScenarioDBModels) {
-                Optional<ScenarioDBModel> scenarioDBModel = scenarioRepository.findById(processScenarioDBModel.getScenarioId());
-                if (scenarioDBModel.isPresent()) {
-                    scenarioWSDTOS.add(new ApiProcessScenarioWSDTO(scenarioDBModel.get(), processScenarioDBModel));
-                }
+                processScenarioWSDTOS.add(new ApiProcessScenarioWSDTO(processScenarioDBModel));
             }
         }
-        return scenarioWSDTOS;
+        return processScenarioWSDTOS;
     }
 
 
     public ApiProcessScenarioWSDTO apiGetProcessScenarioService(long agentId, long sessionId, String processId, String scenarioId) {
 
-        Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
         List<ProcessScenarioDBModel> processScenarioDBModels = processScenarioRepository.findByProcessIdAndScenarioId(processId,scenarioId);
-        Optional<ScenarioDBModel> scenarioDBModel = scenarioRepository.findById(scenarioId);
-        if (sessionDBModel.isPresent() && !processScenarioDBModels.isEmpty() && scenarioDBModel.isPresent()){
-            return new ApiProcessScenarioWSDTO(scenarioDBModel.get(),processScenarioDBModels.get(0));
+        if (!processScenarioDBModels.isEmpty()){
+            return new ApiProcessScenarioWSDTO(processScenarioDBModels.get(0));
         }
         return null;
     }
-
-
 
 
 
