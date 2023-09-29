@@ -57,7 +57,6 @@ public class ApiProcessScenarioFramework {
         return processScenarioWSDTOS;
     }
 
-
     public ApiProcessScenarioWSDTO apiGetProcessScenarioService(long agentId, long sessionId, String processId, String scenarioId) {
 
         List<ProcessScenarioDBModel> processScenarioDBModels = processScenarioRepository.findByProcessIdAndScenarioId(processId,scenarioId);
@@ -66,7 +65,6 @@ public class ApiProcessScenarioFramework {
         }
         return null;
     }
-
 
 
     public List<ApiScenarioElementWSDTO> apiGetProcessScenarioElementsService(long agentId, long sessionId, String scenarioId) {
@@ -82,7 +80,6 @@ public class ApiProcessScenarioFramework {
         return scenarioElementWSDTOS;
     }
 
-
     public ApiScenarioElementWSDTO apiGetProcessScenarioElementService(long agentId,long sessionId, String scenarioId,String elementId) {
 
         Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
@@ -96,7 +93,6 @@ public class ApiProcessScenarioFramework {
         }
         return null;
     }
-
 
 
 

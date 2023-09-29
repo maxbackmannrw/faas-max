@@ -8,14 +8,14 @@ import java.util.List;
 public class ApiOperationScenarioWSModel {
 
     private GeneralWSModel general;
-    private List<ApiOperationScenarioWSDTO>scenarioExecutions;
+    private List<ApiOperationScenarioWSDTO>operationScenarios;
 
     public ApiOperationScenarioWSModel() {
     }
 
-    public ApiOperationScenarioWSModel(GeneralWSModel general, List<ApiOperationScenarioWSDTO> scenarioExecutions) {
+    public ApiOperationScenarioWSModel(GeneralWSModel general, List<ApiOperationScenarioWSDTO> operationScenarios) {
         this.general = general;
-        this.scenarioExecutions = scenarioExecutions;
+        this.operationScenarios = operationScenarios;
     }
 
     public GeneralWSModel getGeneral() {
@@ -26,11 +26,11 @@ public class ApiOperationScenarioWSModel {
         this.general = general;
     }
 
-    public List<ApiOperationScenarioWSDTO> getScenarioExecutions() {
-        return scenarioExecutions;
+    public List<ApiOperationScenarioWSDTO> getOperationScenarios() {
+        return operationScenarios;
     }
 
-    public void setScenarioExecutions(List<ApiOperationScenarioWSDTO> scenarioExecutions) {
-        this.scenarioExecutions = scenarioExecutions;
+    public void setOperationScenarios(List<ApiOperationScenarioWSDTO> operationScenarios) {
+        this.operationScenarios = operationScenarios;
     }
 }

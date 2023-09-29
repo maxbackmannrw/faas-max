@@ -27,9 +27,9 @@ public class ApiProcessScenarioMiddleware {
         ApiProcessScenarioWSModel response = new ApiProcessScenarioWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ApiProcessScenarioWSDTO> scenarioWSDTOS = apiProcessScenarioFramework.apiGetProcessScenariosService(agentId,sessionId,processId);
-        if (scenarioWSDTOS != null){
-            response.setProcessScenarios(scenarioWSDTOS);
+        List<ApiProcessScenarioWSDTO> processScenarioWSDTOS = apiProcessScenarioFramework.apiGetProcessScenariosService(agentId,sessionId,processId);
+        if (processScenarioWSDTOS != null){
+            response.setProcessScenarios(processScenarioWSDTOS);
         }
 
         general.setOperation("apiGetProcessScenarios");
@@ -46,14 +46,14 @@ public class ApiProcessScenarioMiddleware {
 
         ApiProcessScenarioWSModel response = new ApiProcessScenarioWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ApiProcessScenarioWSDTO>scenarioWSDTOS = new ArrayList<>();
+        List<ApiProcessScenarioWSDTO>processScenarioWSDTOS = new ArrayList<>();
 
-        ApiProcessScenarioWSDTO scenarioWSDTO = apiProcessScenarioFramework.apiGetProcessScenarioService(agentId,sessionId,processId,scenarioId);
-        if (scenarioWSDTO != null){
-            scenarioWSDTOS.add(scenarioWSDTO);
+        ApiProcessScenarioWSDTO processScenarioWSDTO = apiProcessScenarioFramework.apiGetProcessScenarioService(agentId,sessionId,processId,scenarioId);
+        if (processScenarioWSDTO != null){
+            processScenarioWSDTOS.add(processScenarioWSDTO);
         }
 
-        response.setProcessScenarios(scenarioWSDTOS);
+        response.setProcessScenarios(processScenarioWSDTOS);
         general.setOperation("apiGetProcessScenario");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
