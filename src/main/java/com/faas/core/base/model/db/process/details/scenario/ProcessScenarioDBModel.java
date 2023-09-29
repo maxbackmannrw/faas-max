@@ -1,6 +1,10 @@
 package com.faas.core.base.model.db.process.details.scenario;
 
 import com.faas.core.base.model.db.process.details.scenario.dao.ProcessScenarioDataDAO;
+import com.faas.core.base.model.db.process.details.scenario.dao.ProcessScenarioElement;
+import com.faas.core.base.model.db.process.details.scenario.dao.ProcessScenarioVariableDAO;
+import com.faas.core.base.model.db.scenario.content.dao.ScenarioElement;
+import com.faas.core.base.model.db.scenario.content.dao.ScenarioVariableDAO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -14,6 +18,12 @@ public class ProcessScenarioDBModel {
     private String id;
     private String processId;
     private String scenarioId;
+    private String scenario;
+    private long scenarioTypeId;
+    private String scenarioType;
+    private String baseType;
+    private List<ProcessScenarioVariableDAO> scenarioVariables;
+    private List<ProcessScenarioElement> scenarioElements;
     private List<ProcessScenarioDataDAO> scenarioDatas;
     private int scenarioOrder;
     private long uDate;
@@ -23,10 +33,16 @@ public class ProcessScenarioDBModel {
     public ProcessScenarioDBModel() {
     }
 
-    public ProcessScenarioDBModel(String id, String processId, String scenarioId, List<ProcessScenarioDataDAO> scenarioDatas, int scenarioOrder, long uDate, long cDate, int status) {
+    public ProcessScenarioDBModel(String id, String processId, String scenarioId, String scenario, long scenarioTypeId, String scenarioType, String baseType, List<ProcessScenarioVariableDAO> scenarioVariables, List<ProcessScenarioElement> scenarioElements, List<ProcessScenarioDataDAO> scenarioDatas, int scenarioOrder, long uDate, long cDate, int status) {
         this.id = id;
         this.processId = processId;
         this.scenarioId = scenarioId;
+        this.scenario = scenario;
+        this.scenarioTypeId = scenarioTypeId;
+        this.scenarioType = scenarioType;
+        this.baseType = baseType;
+        this.scenarioVariables = scenarioVariables;
+        this.scenarioElements = scenarioElements;
         this.scenarioDatas = scenarioDatas;
         this.scenarioOrder = scenarioOrder;
         this.uDate = uDate;
@@ -56,6 +72,54 @@ public class ProcessScenarioDBModel {
 
     public void setScenarioId(String scenarioId) {
         this.scenarioId = scenarioId;
+    }
+
+    public String getScenario() {
+        return scenario;
+    }
+
+    public void setScenario(String scenario) {
+        this.scenario = scenario;
+    }
+
+    public long getScenarioTypeId() {
+        return scenarioTypeId;
+    }
+
+    public void setScenarioTypeId(long scenarioTypeId) {
+        this.scenarioTypeId = scenarioTypeId;
+    }
+
+    public String getScenarioType() {
+        return scenarioType;
+    }
+
+    public void setScenarioType(String scenarioType) {
+        this.scenarioType = scenarioType;
+    }
+
+    public String getBaseType() {
+        return baseType;
+    }
+
+    public void setBaseType(String baseType) {
+        this.baseType = baseType;
+    }
+
+    public List<ProcessScenarioVariableDAO> getScenarioVariables() {
+        return scenarioVariables;
+    }
+
+    public void setScenarioVariables(List<ProcessScenarioVariableDAO> scenarioVariables) {
+        this.scenarioVariables = scenarioVariables;
+    }
+
+    public List<ProcessScenarioElement> getScenarioElements() {
+        return scenarioElements;
+    }
+
+    public void setScenarioElements(List<ProcessScenarioElement> scenarioElements) {
+        this.scenarioElements = scenarioElements;
     }
 
     public List<ProcessScenarioDataDAO> getScenarioDatas() {

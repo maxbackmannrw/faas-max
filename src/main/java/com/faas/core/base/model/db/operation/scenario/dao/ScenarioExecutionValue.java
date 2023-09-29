@@ -1,6 +1,6 @@
 package com.faas.core.base.model.db.operation.scenario.dao;
 
-public class ExecutionValue {
+public class ScenarioExecutionValue {
 
     private String valueId;
     private String valueType;
@@ -8,10 +8,10 @@ public class ExecutionValue {
     private long cDate;
     private int status;
 
-    public ExecutionValue() {
+    public ScenarioExecutionValue() {
     }
 
-    public ExecutionValue(String valueId, String valueType, String value, long cDate, int status) {
+    public ScenarioExecutionValue(String valueId, String valueType, String value, long cDate, int status) {
         this.valueId = valueId;
         this.valueType = valueType;
         this.value = value;

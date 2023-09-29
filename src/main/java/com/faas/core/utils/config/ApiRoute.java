@@ -114,19 +114,17 @@ public class ApiRoute {
     public static final String API_REMOVE_OPERATION_ACTIVITY = "apiremoveoperationactivity";
 
 
+    public static final String API_GET_PROCESS_SCENARIOS = "apigetprocessscenarios";
+    public static final String API_GET_PROCESS_SCENARIO = "apigetprocessscenario";
+    public static final String API_GET_PROCESS_SCENARIO_ELEMENTS = "apigetprocessscenarioelements";
+    public static final String API_GET_PROCESS_SCENARIO_ELEMENT = "apigetprocessscenarioelement";
+
+
+    public static final String API_GET_OPERATION_SCENARIOS = "apigetoperationscenarios";
     public static final String API_GET_OPERATION_SCENARIO = "apigetoperationscenario";
-    public static final String API_GET_SCENARIOS = "apigetscenarios";
-    public static final String API_GET_SCENARIO = "apigetscenario";
-    public static final String API_GET_SCENARIO_DETAILS = "apigetscenariodetails";
-    public static final String API_GET_SCENARIO_ELEMENTS = "apigetscenarioelements";
-    public static final String API_GET_SCENARIO_ELEMENT = "apigetscenarioelement";
-
-
-    public static final String API_SCENARIO_EXECUTE = "apiscenarioexecute";
-    public static final String API_GET_SCENARIO_EXECUTIONS = "apigetscenarioexecutions";
-    public static final String API_GET_SCENARIO_EXECUTION = "apigetscenarioexecution";
-    public static final String API_UPDATE_SCENARIO_EXECUTION = "apiupdatescenarioexecution";
-    public static final String API_REMOVE_SCENARIO_EXECUTION = "apiremovescenarioexecution";
+    public static final String API_EXECUTE_OPERATION_SCENARIO = "apiexecuteoperationscenario";
+    public static final String API_UPDATE_OPERATION_SCENARIO = "apiupdateoperationscenario";
+    public static final String API_REMOVE_OPERATION_SCENARIO = "apiremoveoperationscenario";
 
 
 

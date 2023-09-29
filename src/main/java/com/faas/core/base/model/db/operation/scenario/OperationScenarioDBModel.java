@@ -1,14 +1,14 @@
 package com.faas.core.base.model.db.operation.scenario;
 
-import com.faas.core.base.model.db.operation.scenario.dao.ElementExecutionDAO;
+import com.faas.core.base.model.db.operation.scenario.dao.ScenarioExecutionDAO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
 
-@Document(collection = "scenario_execution_table")
-public class ScenarioExecutionDBModel {
+@Document(collection = "operation_scenario_table")
+public class OperationScenarioDBModel {
 
     @Id
     private String id;
@@ -21,16 +21,16 @@ public class ScenarioExecutionDBModel {
     private String scenario;
     private String scenarioType;
     private String baseType;
-    private List<ElementExecutionDAO> executions;
+    private List<ScenarioExecutionDAO> scenarioExecutions;
     private String executionState;
     private long uDate;
     private long cDate;
     private int status;
 
-    public ScenarioExecutionDBModel() {
+    public OperationScenarioDBModel() {
     }
 
-    public ScenarioExecutionDBModel(String id, long sessionId, long agentId, String operationId, String campaignId, String processId, String scenarioId, String scenario, String scenarioType, String baseType, List<ElementExecutionDAO> executions, String executionState, long uDate, long cDate, int status) {
+    public OperationScenarioDBModel(String id, long sessionId, long agentId, String operationId, String campaignId, String processId, String scenarioId, String scenario, String scenarioType, String baseType, List<ScenarioExecutionDAO> scenarioExecutions, String executionState, long uDate, long cDate, int status) {
         this.id = id;
         this.sessionId = sessionId;
         this.agentId = agentId;
@@ -41,7 +41,7 @@ public class ScenarioExecutionDBModel {
         this.scenario = scenario;
         this.scenarioType = scenarioType;
         this.baseType = baseType;
-        this.executions = executions;
+        this.scenarioExecutions = scenarioExecutions;
         this.executionState = executionState;
         this.uDate = uDate;
         this.cDate = cDate;
@@ -128,12 +128,12 @@ public class ScenarioExecutionDBModel {
         this.baseType = baseType;
     }
 
-    public List<ElementExecutionDAO> getExecutions() {
-        return executions;
+    public List<ScenarioExecutionDAO> getScenarioExecutions() {
+        return scenarioExecutions;
     }
 
-    public void setExecutions(List<ElementExecutionDAO> executions) {
-        this.executions = executions;
+    public void setScenarioExecutions(List<ScenarioExecutionDAO> scenarioExecutions) {
+        this.scenarioExecutions = scenarioExecutions;
     }
 
     public String getExecutionState() {

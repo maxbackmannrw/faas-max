@@ -1,13 +1,14 @@
-package com.faas.core.api.framework.operation.scenario.content;
+package com.faas.core.api.framework.operation.scenario;
 
-import com.faas.core.api.model.ws.operation.scenario.content.dto.*;
+import com.faas.core.api.model.ws.operation.scenario.dto.ApiProcessScenarioWSDTO;
+import com.faas.core.api.model.ws.operation.scenario.dto.ApiScenarioElementWSDTO;
+import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.model.db.process.details.scenario.ProcessScenarioDBModel;
 import com.faas.core.base.model.db.scenario.content.ScenarioDBModel;
-import com.faas.core.base.model.db.client.session.SessionDBModel;
-import com.faas.core.base.repo.operation.scenario.ScenarioExecutionRepository;
+import com.faas.core.base.repo.client.session.SessionRepository;
+import com.faas.core.base.repo.operation.scenario.OperationScenarioRepository;
 import com.faas.core.base.repo.process.details.scenario.ProcessScenarioRepository;
 import com.faas.core.base.repo.scenario.content.ScenarioRepository;
-import com.faas.core.base.repo.client.session.SessionRepository;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.ActivityHelper;
 import com.faas.core.utils.helpers.OperationHelper;
@@ -20,7 +21,7 @@ import java.util.Optional;
 
 
 @Component
-public class ApiScenarioFramework {
+public class ApiProcessScenarioFramework {
 
     @Autowired
     OperationHelper operationHelper;
@@ -35,7 +36,7 @@ public class ApiScenarioFramework {
     ScenarioRepository scenarioRepository;
 
     @Autowired
-    ScenarioExecutionRepository scenarioExecutionRepository;
+    OperationScenarioRepository operationScenarioRepository;
 
     @Autowired
     ProcessScenarioRepository processScenarioRepository;
@@ -44,21 +45,17 @@ public class ApiScenarioFramework {
     AppUtils appUtils;
 
 
-    public ApiOperationScenarioWSDTO apiGetOperationScenarioService(long agentId,long sessionId,String processId) {
-        return operationHelper.mapApiOperationScenarioWSDTO(sessionId,processId);
-    }
 
+    public List<ApiProcessScenarioWSDTO> apiGetProcessScenariosService(long agentId, long sessionId, String processId) {
 
-    public List<ApiScenarioWSDTO> apiGetScenariosService(long agentId,long sessionId,String processId) {
-
-        List<ApiScenarioWSDTO>scenarioWSDTOS = new ArrayList<>();
+        List<ApiProcessScenarioWSDTO>scenarioWSDTOS = new ArrayList<>();
         Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
         List<ProcessScenarioDBModel> processScenarioDBModels = processScenarioRepository.findByProcessId(processId);
         if (sessionDBModel.isPresent() && !processScenarioDBModels.isEmpty()){
             for (ProcessScenarioDBModel processScenarioDBModel : processScenarioDBModels) {
                 Optional<ScenarioDBModel> scenarioDBModel = scenarioRepository.findById(processScenarioDBModel.getScenarioId());
                 if (scenarioDBModel.isPresent()) {
-                    scenarioWSDTOS.add(new ApiScenarioWSDTO(scenarioDBModel.get(), processScenarioDBModel));
+                    scenarioWSDTOS.add(new ApiProcessScenarioWSDTO(scenarioDBModel.get(), processScenarioDBModel));
                 }
             }
         }
@@ -66,31 +63,22 @@ public class ApiScenarioFramework {
     }
 
 
-    public ApiScenarioWSDTO apiGetScenarioService(long agentId,long sessionId,String processId,String scenarioId) {
+    public ApiProcessScenarioWSDTO apiGetProcessScenarioService(long agentId, long sessionId, String processId, String scenarioId) {
 
         Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
         List<ProcessScenarioDBModel> processScenarioDBModels = processScenarioRepository.findByProcessIdAndScenarioId(processId,scenarioId);
         Optional<ScenarioDBModel> scenarioDBModel = scenarioRepository.findById(scenarioId);
         if (sessionDBModel.isPresent() && !processScenarioDBModels.isEmpty() && scenarioDBModel.isPresent()){
-            return new ApiScenarioWSDTO(scenarioDBModel.get(),processScenarioDBModels.get(0));
+            return new ApiProcessScenarioWSDTO(scenarioDBModel.get(),processScenarioDBModels.get(0));
         }
         return null;
     }
 
 
-    public ApiScenarioDetailsWSDTO apiGetScenarioDetailsService(long agentId, long sessionId, String processId, String scenarioId) {
-
-        Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
-        Optional<ScenarioDBModel> scenarioDBModel = scenarioRepository.findById(scenarioId);
-        List<ProcessScenarioDBModel> processScenarioDBModels = processScenarioRepository.findByProcessIdAndScenarioId(processId,scenarioId);
-        if (sessionDBModel.isPresent() && scenarioDBModel.isPresent() && !processScenarioDBModels.isEmpty()){
-            return new ApiScenarioDetailsWSDTO(scenarioDBModel.get(),processScenarioDBModels.get(0));
-        }
-        return null;
-    }
 
 
-    public List<ApiScenarioElementWSDTO> apiGetScenarioElementsService(long agentId,long sessionId,String scenarioId) {
+
+    public List<ApiScenarioElementWSDTO> apiGetProcessScenarioElementsService(long agentId, long sessionId, String scenarioId) {
 
         List<ApiScenarioElementWSDTO>scenarioElementWSDTOS = new ArrayList<>();
         Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
@@ -104,7 +92,7 @@ public class ApiScenarioFramework {
     }
 
 
-    public ApiScenarioElementWSDTO apiGetScenarioElementService(long agentId,long sessionId, String scenarioId,String elementId) {
+    public ApiScenarioElementWSDTO apiGetProcessScenarioElementService(long agentId,long sessionId, String scenarioId,String elementId) {
 
         Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
         Optional<ScenarioDBModel> scenarioDBModel = scenarioRepository.findById(scenarioId);

@@ -1,35 +1,31 @@
-package com.faas.core.base.model.db.operation.scenario.dao;
-
-
-import com.faas.core.base.model.db.scenario.content.dao.ActionDAO;
-import com.faas.core.base.model.db.scenario.content.dao.AutomationDAO;
+package com.faas.core.base.model.db.process.details.scenario.dao;
 
 import java.util.List;
 
-public class ElementExecutionDAO {
+public class ProcessScenarioElement {
 
     private String id;
-    private String elementId;
     private String element;
     private String elementType;
-    private ActionDAO action;
-    private AutomationDAO automation;
-    private List<ExecutionValue>executionValues;
+    private ScenarioActionDAO action;
+    private ScenarioAutomationDAO automation;
+    private List<ScenarioElementVariableDAO>variables;
+    private int elementOrder;
     private long uDate;
     private long cDate;
     private int status;
 
-    public ElementExecutionDAO() {
+    public ProcessScenarioElement() {
     }
 
-    public ElementExecutionDAO(String id, String elementId, String element, String elementType, ActionDAO action, AutomationDAO automation, List<ExecutionValue> executionValues, long uDate, long cDate, int status) {
+    public ProcessScenarioElement(String id, String element, String elementType, ScenarioActionDAO action, ScenarioAutomationDAO automation, List<ScenarioElementVariableDAO> variables, int elementOrder, long uDate, long cDate, int status) {
         this.id = id;
-        this.elementId = elementId;
         this.element = element;
         this.elementType = elementType;
         this.action = action;
         this.automation = automation;
-        this.executionValues = executionValues;
+        this.variables = variables;
+        this.elementOrder = elementOrder;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
@@ -41,14 +37,6 @@ public class ElementExecutionDAO {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getElementId() {
-        return elementId;
-    }
-
-    public void setElementId(String elementId) {
-        this.elementId = elementId;
     }
 
     public String getElement() {
@@ -67,28 +55,36 @@ public class ElementExecutionDAO {
         this.elementType = elementType;
     }
 
-    public ActionDAO getAction() {
+    public ScenarioActionDAO getAction() {
         return action;
     }
 
-    public void setAction(ActionDAO action) {
+    public void setAction(ScenarioActionDAO action) {
         this.action = action;
     }
 
-    public AutomationDAO getAutomation() {
+    public ScenarioAutomationDAO getAutomation() {
         return automation;
     }
 
-    public void setAutomation(AutomationDAO automation) {
+    public void setAutomation(ScenarioAutomationDAO automation) {
         this.automation = automation;
     }
 
-    public List<ExecutionValue> getExecutionValues() {
-        return executionValues;
+    public List<ScenarioElementVariableDAO> getVariables() {
+        return variables;
     }
 
-    public void setExecutionValues(List<ExecutionValue> executionValues) {
-        this.executionValues = executionValues;
+    public void setVariables(List<ScenarioElementVariableDAO> variables) {
+        this.variables = variables;
+    }
+
+    public int getElementOrder() {
+        return elementOrder;
+    }
+
+    public void setElementOrder(int elementOrder) {
+        this.elementOrder = elementOrder;
     }
 
     public long getuDate() {

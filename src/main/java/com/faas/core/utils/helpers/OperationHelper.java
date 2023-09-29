@@ -12,15 +12,14 @@ import com.faas.core.api.model.ws.client.details.dto.ApiClientNoteWSDTO;
 import com.faas.core.api.model.ws.client.details.dto.ApiClientOsIntWSDTO;
 import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationCampaignWSDTO;
 import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationDetailsWSDTO;
-import com.faas.core.api.model.ws.operation.scenario.content.dto.ApiOperationScenarioWSDTO;
-import com.faas.core.api.model.ws.operation.scenario.content.dto.ApiScenarioWSDTO;
-import com.faas.core.api.model.ws.operation.scenario.execution.dto.ApiScenarioExecutionWSDTO;
+import com.faas.core.api.model.ws.operation.scenario.dto.ApiProcessScenarioWSDTO;
+import com.faas.core.api.model.ws.operation.scenario.dto.ApiOperationScenarioWSDTO;
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.client.content.ClientDBModel;
 import com.faas.core.base.model.db.client.details.ClientNoteDBModel;
 import com.faas.core.base.model.db.client.details.ClientPhoneDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
-import com.faas.core.base.model.db.operation.scenario.ScenarioExecutionDBModel;
+import com.faas.core.base.model.db.operation.scenario.OperationScenarioDBModel;
 import com.faas.core.base.model.db.process.content.ProcessDBModel;
 import com.faas.core.base.model.db.process.details.channel.content.ProcessSmsChannelDBModel;
 import com.faas.core.base.model.db.process.details.channel.content.ProcessWappChannelDBModel;
@@ -28,12 +27,13 @@ import com.faas.core.base.model.db.process.details.scenario.ProcessScenarioDBMod
 import com.faas.core.base.model.db.scenario.content.ScenarioDBModel;
 import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.model.db.user.details.UserDetailsDBModel;
+import com.faas.core.base.model.ws.operation.scenario.content.dto.OperationScenarioWSDTO;
 import com.faas.core.base.repo.client.details.*;
 import com.faas.core.base.repo.client.flow.ClientFlowRepository;
 import com.faas.core.base.repo.client.inquiry.ClientInquiryRepository;
 import com.faas.core.base.repo.operation.channel.*;
 import com.faas.core.base.repo.operation.content.OperationRepository;
-import com.faas.core.base.repo.operation.scenario.ScenarioExecutionRepository;
+import com.faas.core.base.repo.operation.scenario.OperationScenarioRepository;
 import com.faas.core.base.repo.process.details.channel.content.*;
 import com.faas.core.base.repo.process.details.channel.temp.EmailTempRepository;
 import com.faas.core.base.repo.process.details.channel.temp.PushTempRepository;
@@ -125,7 +125,7 @@ public class OperationHelper {
     ProcessScenarioRepository processScenarioRepository;
 
     @Autowired
-    ScenarioExecutionRepository scenarioExecutionRepository;
+    OperationScenarioRepository operationScenarioRepository;
 
     @Autowired
     SmsMessageTempRepository smsMessageTempRepository;
@@ -267,7 +267,7 @@ public class OperationHelper {
         operationDetailsWSDTO.setClientNotes(mapApiOperationNoteWSDTO(clientDBModel));
         operationDetailsWSDTO.setOperationCampaign(mapApiOperationCampaignWSDTO(campaignDBModel,processDBModel));
         operationDetailsWSDTO.setOperationActivities(mapApiOperationActivities(operationDBModel));
-        operationDetailsWSDTO.setOperationScenario(mapApiOperationScenarioWSDTO(sessionDBModel.getId(),sessionDBModel.getProcessId()));
+        operationDetailsWSDTO.setOperationScenarios(mapApiOperationScenarioWSDTOS(sessionDBModel.getId(),sessionDBModel.getProcessId()));
         operationDetailsWSDTO.setOperationChannel(mapApiOperationChannelWSDTO(sessionDBModel,clientDBModel));
 
         return operationDetailsWSDTO;
@@ -327,22 +327,26 @@ public class OperationHelper {
     }
 
 
-    public ApiOperationScenarioWSDTO mapApiOperationScenarioWSDTO(long sessionId, String processId) {
+    public List<ApiOperationScenarioWSDTO> mapApiOperationScenarioWSDTOS(long sessionId, String processId) {
 
-        ApiOperationScenarioWSDTO operationScenarioWSDTO = new ApiOperationScenarioWSDTO();
-        operationScenarioWSDTO.setScenarios(mapApiScenarioWSDTOS(processScenarioRepository.findByProcessId(processId)));
-        operationScenarioWSDTO.setScenarioExecutions(mapApiScenarioExecutionWSDTOS(scenarioExecutionRepository.findBySessionIdAndProcessId(sessionId,processId)));
-        return operationScenarioWSDTO;
+        List<ApiOperationScenarioWSDTO> operationScenarioWSDTOS = new ArrayList<>();
+        List<OperationScenarioDBModel> operationScenarioDBModels = operationScenarioRepository.findBySessionIdAndProcessId(sessionId, processId);
+        for (OperationScenarioDBModel operationScenarioDBModel : operationScenarioDBModels) {
+            ApiOperationScenarioWSDTO operationScenarioWSDTO = new ApiOperationScenarioWSDTO();
+            operationScenarioWSDTO.setOperationScenario(operationScenarioDBModel);
+            operationScenarioWSDTOS.add(operationScenarioWSDTO);
+        }
+        return operationScenarioWSDTOS;
     }
 
 
-    public List<ApiScenarioWSDTO> mapApiScenarioWSDTOS(List<ProcessScenarioDBModel> processScenarioDBModels){
+    public List<ApiProcessScenarioWSDTO> mapApiScenarioWSDTOS(List<ProcessScenarioDBModel> processScenarioDBModels){
 
-        List<ApiScenarioWSDTO> scenarioWSDTOS = new ArrayList<>();
+        List<ApiProcessScenarioWSDTO> scenarioWSDTOS = new ArrayList<>();
         for (ProcessScenarioDBModel processScenarioDBModel : processScenarioDBModels) {
             Optional<ScenarioDBModel> scenarioDBModel = scenarioRepository.findById(processScenarioDBModel.getScenarioId());
             if (scenarioDBModel.isPresent()) {
-                ApiScenarioWSDTO scenarioWSDTO = new ApiScenarioWSDTO();
+                ApiProcessScenarioWSDTO scenarioWSDTO = new ApiProcessScenarioWSDTO();
                 scenarioWSDTO.setProcessScenario(processScenarioDBModel);
                 scenarioWSDTO.setScenario(scenarioDBModel.get());
                 scenarioWSDTOS.add(scenarioWSDTO);
@@ -352,11 +356,11 @@ public class OperationHelper {
     }
 
 
-    public List<ApiScenarioExecutionWSDTO> mapApiScenarioExecutionWSDTOS(List<ScenarioExecutionDBModel> scenarioExecutionDBModels){
+    public List<ApiOperationScenarioWSDTO> mapApiScenarioExecutionWSDTOS(List<OperationScenarioDBModel> operationScenarioDBModels){
 
-        List<ApiScenarioExecutionWSDTO> scenarioExecutionWSDTOS = new ArrayList<>();
-        for (ScenarioExecutionDBModel scenarioExecutionDBModel : scenarioExecutionDBModels) {
-            scenarioExecutionWSDTOS.add(new ApiScenarioExecutionWSDTO(scenarioExecutionDBModel));
+        List<ApiOperationScenarioWSDTO> scenarioExecutionWSDTOS = new ArrayList<>();
+        for (OperationScenarioDBModel operationScenarioDBModel : operationScenarioDBModels) {
+            scenarioExecutionWSDTOS.add(new ApiOperationScenarioWSDTO(operationScenarioDBModel));
         }
         return scenarioExecutionWSDTOS;
     }

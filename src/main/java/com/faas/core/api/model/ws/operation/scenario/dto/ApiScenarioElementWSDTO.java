@@ -1,4 +1,4 @@
-package com.faas.core.api.model.ws.operation.scenario.content.dto;
+package com.faas.core.api.model.ws.operation.scenario.dto;
 
 import com.faas.core.base.model.db.scenario.content.dao.ScenarioElement;
 
