@@ -5,18 +5,18 @@ public class ProcessScriptDAO {
     private String scriptId;
     private String scriptTitle;
     private String scriptBody;
-    private int order;
+    private int scriptOrder;
     private long cDate;
     private int status;
 
     public ProcessScriptDAO() {
     }
 
-    public ProcessScriptDAO(String scriptId, String scriptTitle, String scriptBody, int order, long cDate, int status) {
+    public ProcessScriptDAO(String scriptId, String scriptTitle, String scriptBody, int scriptOrder, long cDate, int status) {
         this.scriptId = scriptId;
         this.scriptTitle = scriptTitle;
         this.scriptBody = scriptBody;
-        this.order = order;
+        this.scriptOrder = scriptOrder;
         this.cDate = cDate;
         this.status = status;
     }
@@ -45,12 +45,12 @@ public class ProcessScriptDAO {
         this.scriptBody = scriptBody;
     }
 
-    public int getOrder() {
-        return order;
+    public int getScriptOrder() {
+        return scriptOrder;
     }
 
-    public void setOrder(int order) {
-        this.order = order;
+    public void setScriptOrder(int scriptOrder) {
+        this.scriptOrder = scriptOrder;
     }
 
     public long getcDate() {

@@ -54,9 +54,9 @@ public class ProcessScriptController {
                                                  @RequestParam String processId,
                                                  @RequestParam String scriptTitle,
                                                  @RequestParam String scriptBody,
-                                                 @RequestParam int order) {
+                                                 @RequestParam int scriptOrder) {
 
-        ProcessScriptWSModel response = processScriptMiddleware.createProcessScript(userId,processId,scriptTitle,scriptBody,order);
+        ProcessScriptWSModel response = processScriptMiddleware.createProcessScript(userId,processId,scriptTitle,scriptBody,scriptOrder);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -71,9 +71,9 @@ public class ProcessScriptController {
                                                  @RequestParam String scriptId,
                                                  @RequestParam String scriptTitle,
                                                  @RequestParam String scriptBody,
-                                                 @RequestParam int order) {
+                                                 @RequestParam int scriptOrder) {
 
-        ProcessScriptWSModel response = processScriptMiddleware.updateProcessScript(userId,processId,scriptId,scriptTitle,scriptBody,order);
+        ProcessScriptWSModel response = processScriptMiddleware.updateProcessScript(userId,processId,scriptId,scriptTitle,scriptBody,scriptOrder);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

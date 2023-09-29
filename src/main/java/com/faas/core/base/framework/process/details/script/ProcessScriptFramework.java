@@ -51,7 +51,7 @@ public class ProcessScriptFramework {
     }
 
 
-    public ProcessScriptWSDTO createProcessScriptService(String processId,String scriptTitle,String scriptBody,int order) {
+    public ProcessScriptWSDTO createProcessScriptService(String processId,String scriptTitle,String scriptBody,int scriptOrder) {
 
         Optional<ProcessDBModel> processDBModel = processRepository.findById(processId);
         if (processDBModel.isPresent()) {
@@ -60,7 +60,7 @@ public class ProcessScriptFramework {
             processScriptDAO.setScriptId(appUtils.generateUUID());
             processScriptDAO.setScriptTitle(scriptTitle);
             processScriptDAO.setScriptBody(scriptBody);
-            processScriptDAO.setOrder(order);
+            processScriptDAO.setScriptOrder(scriptOrder);
             processScriptDAO.setcDate(appUtils.getCurrentTimeStamp());
             processScriptDAO.setStatus(1);
 
@@ -80,7 +80,7 @@ public class ProcessScriptFramework {
     }
 
 
-    public ProcessScriptWSDTO updateProcessScriptService(String processId, String scriptId, String scriptTitle, String scriptBody, int order) {
+    public ProcessScriptWSDTO updateProcessScriptService(String processId, String scriptId, String scriptTitle, String scriptBody, int scriptOrder) {
 
         Optional<ProcessDBModel> processDBModel = processRepository.findById(processId);
         if (processDBModel.isPresent() && processDBModel.get().getProcessScripts() != null) {
@@ -89,9 +89,8 @@ public class ProcessScriptFramework {
 
                     processDBModel.get().getProcessScripts().get(i).setScriptTitle(scriptTitle);
                     processDBModel.get().getProcessScripts().get(i).setScriptBody(scriptBody);
-                    processDBModel.get().getProcessScripts().get(i).setOrder(order);
+                    processDBModel.get().getProcessScripts().get(i).setScriptOrder(scriptOrder);
                     processDBModel.get().getProcessScripts().get(i).setcDate(appUtils.getCurrentTimeStamp());
-
                     processDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
                     processRepository.save(processDBModel.get());
 

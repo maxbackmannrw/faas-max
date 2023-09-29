@@ -62,13 +62,13 @@ public class ProcessScriptMiddleware {
     }
 
 
-    public ProcessScriptWSModel createProcessScript(long userId,String processId,String scriptTitle,String scriptBody,int order) {
+    public ProcessScriptWSModel createProcessScript(long userId,String processId,String scriptTitle,String scriptBody,int scriptOrder) {
 
         ProcessScriptWSModel response = new ProcessScriptWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessScriptWSDTO> processScriptWSDTOS = new ArrayList<>();
 
-        ProcessScriptWSDTO processScriptWSDTO = processScriptFramework.createProcessScriptService(processId,scriptTitle,scriptBody,order);
+        ProcessScriptWSDTO processScriptWSDTO = processScriptFramework.createProcessScriptService(processId,scriptTitle,scriptBody,scriptOrder);
         if (processScriptWSDTO != null){
             processScriptWSDTOS.add(processScriptWSDTO);
         }
@@ -85,13 +85,13 @@ public class ProcessScriptMiddleware {
 
 
 
-    public ProcessScriptWSModel updateProcessScript(long userId,String processId, String scriptId, String scriptTitle, String scriptBody, int order) {
+    public ProcessScriptWSModel updateProcessScript(long userId,String processId, String scriptId, String scriptTitle, String scriptBody, int scriptOrder) {
 
         ProcessScriptWSModel response = new ProcessScriptWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessScriptWSDTO> processScriptWSDTOS = new ArrayList<>();
 
-        ProcessScriptWSDTO processScriptWSDTO = processScriptFramework.updateProcessScriptService(processId,scriptId,scriptTitle,scriptBody,order);
+        ProcessScriptWSDTO processScriptWSDTO = processScriptFramework.updateProcessScriptService(processId,scriptId,scriptTitle,scriptBody,scriptOrder);
         if (processScriptWSDTO != null){
             processScriptWSDTOS.add(processScriptWSDTO);
         }
