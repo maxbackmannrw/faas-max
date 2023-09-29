@@ -264,10 +264,11 @@ public class OperationHelper {
         operationDetailsWSDTO.setOperationClient(mapApiOperationClientWSDTO(clientDBModel));
         operationDetailsWSDTO.setClientOsInts(mapApiClientOsIntWSDTOS(clientDBModel));
         operationDetailsWSDTO.setClientNotes(mapApiOperationNoteWSDTO(clientDBModel));
-        operationDetailsWSDTO.setOperationCampaign(mapApiOperationCampaignWSDTO(campaignDBModel,processDBModel));
         operationDetailsWSDTO.setOperationActivities(mapApiOperationActivities(operationDBModel));
-        operationDetailsWSDTO.setOperationScenarios(mapApiOperationScenarioWSDTOS(sessionDBModel.getId(),sessionDBModel.getProcessId()));
+        operationDetailsWSDTO.setOperationCampaign(mapApiOperationCampaignWSDTO(campaignDBModel,processDBModel));
         operationDetailsWSDTO.setOperationChannel(mapApiOperationChannelWSDTO(sessionDBModel,clientDBModel));
+        operationDetailsWSDTO.setOperationScenarios(mapApiOperationScenarioWSDTOS(sessionDBModel.getId(),sessionDBModel.getProcessId()));
+        operationDetailsWSDTO.setProcessScenarios(mapApiProcessScenarioWSDTOS(processScenarioRepository.findByProcessId(sessionDBModel.getProcessId())));
 
         return operationDetailsWSDTO;
     }
@@ -339,18 +340,15 @@ public class OperationHelper {
     }
 
 
-    public List<ApiProcessScenarioWSDTO> mapApiScenarioWSDTOS(List<ProcessScenarioDBModel> processScenarioDBModels){
+    public List<ApiProcessScenarioWSDTO> mapApiProcessScenarioWSDTOS(List<ProcessScenarioDBModel> processScenarioDBModels){
 
-        List<ApiProcessScenarioWSDTO> scenarioWSDTOS = new ArrayList<>();
+        List<ApiProcessScenarioWSDTO> processScenarioWSDTOS = new ArrayList<>();
         for (ProcessScenarioDBModel processScenarioDBModel : processScenarioDBModels) {
-            Optional<ScenarioDBModel> scenarioDBModel = scenarioRepository.findById(processScenarioDBModel.getScenarioId());
-            if (scenarioDBModel.isPresent()) {
-                ApiProcessScenarioWSDTO scenarioWSDTO = new ApiProcessScenarioWSDTO();
-                scenarioWSDTO.setProcessScenario(processScenarioDBModel);
-                scenarioWSDTOS.add(scenarioWSDTO);
-            }
+            ApiProcessScenarioWSDTO processScenarioWSDTO = new ApiProcessScenarioWSDTO();
+            processScenarioWSDTO.setProcessScenario(processScenarioDBModel);
+            processScenarioWSDTOS.add(processScenarioWSDTO);
         }
-        return scenarioWSDTOS;
+        return processScenarioWSDTOS;
     }
 
 

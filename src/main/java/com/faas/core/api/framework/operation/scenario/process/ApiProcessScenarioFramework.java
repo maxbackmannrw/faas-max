@@ -1,7 +1,7 @@
 package com.faas.core.api.framework.operation.scenario.process;
 
 import com.faas.core.api.model.ws.operation.scenario.process.dto.ApiProcessScenarioWSDTO;
-import com.faas.core.api.model.ws.operation.scenario.process.dto.ApiScenarioElementWSDTO;
+import com.faas.core.api.model.ws.operation.scenario.process.dto.ApiProcessScenarioElementWSDTO;
 import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.model.db.process.details.scenario.ProcessScenarioDBModel;
 import com.faas.core.base.model.db.scenario.content.ScenarioDBModel;
@@ -67,28 +67,24 @@ public class ApiProcessScenarioFramework {
     }
 
 
-    public List<ApiScenarioElementWSDTO> apiGetProcessScenarioElementsService(long agentId, long sessionId, String scenarioId) {
+    public List<ApiProcessScenarioElementWSDTO> apiGetProcessScenarioElementsService(long agentId, long sessionId, String scenarioId) {
 
-        List<ApiScenarioElementWSDTO>scenarioElementWSDTOS = new ArrayList<>();
+        List<ApiProcessScenarioElementWSDTO>scenarioElementWSDTOS = new ArrayList<>();
         Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
         Optional<ScenarioDBModel> scenarioDBModel = scenarioRepository.findById(scenarioId);
         if (sessionDBModel.isPresent() && scenarioDBModel.isPresent() && scenarioDBModel.get().getElements() != null){
-            for (int i=0;i<scenarioDBModel.get().getElements().size();i++){
-                scenarioElementWSDTOS.add(new ApiScenarioElementWSDTO(scenarioDBModel.get().getElements().get(i)));
-            }
+
         }
         return scenarioElementWSDTOS;
     }
 
-    public ApiScenarioElementWSDTO apiGetProcessScenarioElementService(long agentId,long sessionId, String scenarioId,String elementId) {
+    public ApiProcessScenarioElementWSDTO apiGetProcessScenarioElementService(long agentId, long sessionId, String scenarioId, String elementId) {
 
         Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
         Optional<ScenarioDBModel> scenarioDBModel = scenarioRepository.findById(scenarioId);
         if (sessionDBModel.isPresent() && scenarioDBModel.isPresent() && scenarioDBModel.get().getElements() != null){
             for (int i=0;i<scenarioDBModel.get().getElements().size();i++){
-                if (scenarioDBModel.get().getElements().get(i).getId().equalsIgnoreCase(elementId)){
-                    return new ApiScenarioElementWSDTO(scenarioDBModel.get().getElements().get(i));
-                }
+
             }
         }
         return null;

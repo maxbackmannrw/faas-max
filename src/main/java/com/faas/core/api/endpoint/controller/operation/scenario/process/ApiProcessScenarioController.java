@@ -2,7 +2,7 @@ package com.faas.core.api.endpoint.controller.operation.scenario.process;
 
 import com.faas.core.api.middleware.operation.scenario.process.ApiProcessScenarioMiddleware;
 import com.faas.core.api.model.ws.operation.scenario.process.ApiProcessScenarioWSModel;
-import com.faas.core.api.model.ws.operation.scenario.process.ApiScenarioElementWSModel;
+import com.faas.core.api.model.ws.operation.scenario.process.ApiProcessScenarioElementWSModel;
 import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,13 +52,12 @@ public class ApiProcessScenarioController {
     }
 
 
-
     @RequestMapping(value = ApiRoute.API_GET_PROCESS_SCENARIO_ELEMENTS, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetProcessScenarioElements(@RequestParam long agentId,
                                                            @RequestParam long sessionId,
                                                            @RequestParam String scenarioId) {
 
-        ApiScenarioElementWSModel response = apiProcessScenarioMiddleware.apiGetProcessScenarioElements(agentId,sessionId,scenarioId);
+        ApiProcessScenarioElementWSModel response = apiProcessScenarioMiddleware.apiGetProcessScenarioElements(agentId,sessionId,scenarioId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -73,7 +72,7 @@ public class ApiProcessScenarioController {
                                                           @RequestParam String scenarioId,
                                                           @RequestParam String elementId) {
 
-        ApiScenarioElementWSModel response = apiProcessScenarioMiddleware.apiGetProcessScenarioElement(agentId,sessionId,scenarioId,elementId);
+        ApiProcessScenarioElementWSModel response = apiProcessScenarioMiddleware.apiGetProcessScenarioElement(agentId,sessionId,scenarioId,elementId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

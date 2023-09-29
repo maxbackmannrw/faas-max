@@ -4,10 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/scenario/content/ApiOperationScenarioFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/scenario/content/ApiOperationScenarioFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/scenario/content/ApiOperationScenarioMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/scenario/content/ApiOperationScenarioMiddleware.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/scenario/content/ApiOperationScenarioWSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/scenario/content/ApiOperationScenarioWSModel.java" afterDir="false" />
+    <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="   ScenarioExecutes -&gt; ScenarioExecutions converted">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/scenario/process/ApiProcessScenarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/scenario/process/ApiProcessScenarioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/scenario/process/ApiProcessScenarioFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/scenario/process/ApiProcessScenarioFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/scenario/process/ApiProcessScenarioMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/scenario/process/ApiProcessScenarioMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/details/content/dto/ApiOperationDetailsWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/details/content/dto/ApiOperationDetailsWSDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/scenario/process/ApiScenarioElementWSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/scenario/process/ApiProcessScenarioElementWSModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/scenario/process/dto/ApiScenarioElementWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/scenario/process/dto/ApiProcessScenarioElementWSDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/helpers/OperationHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/helpers/OperationHelper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -296,15 +301,7 @@
       <workItem from="1695900871065" duration="5533000" />
       <workItem from="1695945948610" duration="7815000" />
       <workItem from="1695982959272" duration="1566000" />
-      <workItem from="1695991494301" duration="1346000" />
-    </task>
-    <task id="LOCAL-00217" summary="   ScenarioExecutes -&gt; ScenarioExecutions converted">
-      <option name="closed" value="true" />
-      <created>1695175529473</created>
-      <option name="number" value="00217" />
-      <option name="presentableId" value="LOCAL-00217" />
-      <option name="project" value="LOCAL" />
-      <updated>1695175529473</updated>
+      <workItem from="1695991494301" duration="4454000" />
     </task>
     <task id="LOCAL-00218" summary="   ScenarioExecutes -&gt; ScenarioExecutions converted">
       <option name="closed" value="true" />
@@ -690,7 +687,15 @@
       <option name="project" value="LOCAL" />
       <updated>1695997598999</updated>
     </task>
-    <option name="localTasksCounter" value="266" />
+    <task id="LOCAL-00266" summary="   ScenarioExecutes -&gt; ScenarioExecutions converted">
+      <option name="closed" value="true" />
+      <created>1695998292595</created>
+      <option name="number" value="00266" />
+      <option name="presentableId" value="LOCAL-00266" />
+      <option name="project" value="LOCAL" />
+      <updated>1695998292595</updated>
+    </task>
+    <option name="localTasksCounter" value="267" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
