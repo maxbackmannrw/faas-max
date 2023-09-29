@@ -29,7 +29,7 @@ public class ApiProcessScenarioMiddleware {
 
         List<ApiProcessScenarioWSDTO> scenarioWSDTOS = apiProcessScenarioFramework.apiGetProcessScenariosService(agentId,sessionId,processId);
         if (scenarioWSDTOS != null){
-            response.setScenarios(scenarioWSDTOS);
+            response.setProcessScenarios(scenarioWSDTOS);
         }
 
         general.setOperation("apiGetProcessScenarios");
@@ -53,7 +53,7 @@ public class ApiProcessScenarioMiddleware {
             scenarioWSDTOS.add(scenarioWSDTO);
         }
 
-        response.setScenarios(scenarioWSDTOS);
+        response.setProcessScenarios(scenarioWSDTOS);
         general.setOperation("apiGetProcessScenario");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);

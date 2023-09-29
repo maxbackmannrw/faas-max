@@ -45,7 +45,6 @@ public class ApiProcessScenarioFramework {
     AppUtils appUtils;
 
 
-
     public List<ApiProcessScenarioWSDTO> apiGetProcessScenariosService(long agentId, long sessionId, String processId) {
 
         List<ApiProcessScenarioWSDTO>scenarioWSDTOS = new ArrayList<>();
