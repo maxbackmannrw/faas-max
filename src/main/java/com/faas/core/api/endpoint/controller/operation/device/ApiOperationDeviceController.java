@@ -2,7 +2,6 @@ package com.faas.core.api.endpoint.controller.operation.device;
 
 import com.faas.core.api.middleware.operation.device.ApiOperationDeviceMiddleware;
 import com.faas.core.api.model.ws.client.device.ApiClientDeviceWSModel;
-import com.faas.core.api.model.ws.operation.device.ApiOperationDeviceWSModel;
 import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,7 +50,6 @@ public class ApiOperationDeviceController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = ApiRoute.API_CREATE_OPERATION_DEVICE, method = RequestMethod.POST)
     public ResponseEntity<?> apiCreateOperationDevice(@RequestParam long agentId,
                                                       @RequestParam long sessionId,
@@ -66,7 +64,6 @@ public class ApiOperationDeviceController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = ApiRoute.API_UPDATE_OPERATION_DEVICE, method = RequestMethod.POST)
     public ResponseEntity<?> apiUpdateOperationDevice(@RequestParam long agentId,
                                                       @RequestParam long sessionId,
@@ -80,7 +77,6 @@ public class ApiOperationDeviceController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = ApiRoute.API_REMOVE_OPERATION_DEVICE, method = RequestMethod.POST)
     public ResponseEntity<?> apiRemoveOperationDevice(@RequestParam long agentId,

@@ -1,5 +1,6 @@
-package com.faas.core.api.endpoint.controller.operation.inquiry;
+package com.faas.core.api.endpoint.controller.operation.flow;
 
+import com.faas.core.api.middleware.operation.flow.ApiOperationFlowMiddleware;
 import com.faas.core.api.middleware.operation.inquiry.ApiOperationInquiryMiddleware;
 import com.faas.core.api.model.ws.operation.device.ApiOperationDeviceWSModel;
 import com.faas.core.utils.config.ApiRoute;
@@ -14,21 +15,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-@RequestMapping(value = AppConstant.API_VERSION + "/api/operation/inquiry/")
-public class ApiOperationInquiryController {
+@RequestMapping(value = AppConstant.API_VERSION + "/api/operation/flow/")
+public class ApiOperationFlowController {
 
 
     @Autowired
-    ApiOperationInquiryMiddleware apiOperationInquiryMiddleware;
+    ApiOperationFlowMiddleware apiOperationFlowMiddleware;
 
 
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION_INQUIRY, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperationInquiry(@RequestParam long agentId,
-                                                    @RequestParam long sessionId,
-                                                    @RequestParam long clientId,
-                                                    @RequestParam String campaignId) {
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_FLOW, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationFlow(@RequestParam long agentId,
+                                                 @RequestParam long sessionId,
+                                                 @RequestParam long clientId,
+                                                 @RequestParam String campaignId) {
 
-        ApiOperationDeviceWSModel response = apiOperationInquiryMiddleware.apiGetOperationInquiry(agentId,sessionId,clientId,campaignId);
+        ApiOperationDeviceWSModel response = apiOperationFlowMiddleware.apiGetOperationFlow(agentId,sessionId,clientId,campaignId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

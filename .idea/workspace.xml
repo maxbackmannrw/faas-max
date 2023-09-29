@@ -4,15 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="   ScenarioExecutes -&gt; ScenarioExecutions converted">
+    <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/flow/ApiOperationFlowController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/flow/ApiOperationFlowFramework.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/flow/ApiOperationFlowMiddleware.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/flow/ApiOperationFlowWSModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/flow/dto/ApiOperationFlowWSDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/inquiry/ApiOperationInquiryWSModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/inquiry/dto/ApiOperationInquiryWSDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/scenario/process/ApiProcessScenarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/scenario/process/ApiProcessScenarioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/scenario/process/ApiProcessScenarioFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/scenario/process/ApiProcessScenarioFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/scenario/process/ApiProcessScenarioMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/scenario/process/ApiProcessScenarioMiddleware.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/details/content/dto/ApiOperationDetailsWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/details/content/dto/ApiOperationDetailsWSDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/scenario/process/ApiScenarioElementWSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/scenario/process/ApiProcessScenarioElementWSModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/scenario/process/dto/ApiScenarioElementWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/scenario/process/dto/ApiProcessScenarioElementWSDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/helpers/OperationHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/helpers/OperationHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/device/ApiOperationDeviceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/device/ApiOperationDeviceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/inquiry/ApiOperationInquiryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/inquiry/ApiOperationInquiryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/config/ApiRoute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/config/ApiRoute.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,38 +61,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Applications/MAMP/htdocs/faas/backend/faas-core-server/src/main/java/com/faas/core/api/model/ws/operation/scenario&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;settings.editor.splitter.proportion&quot;: &quot;0.15697268&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;a74ad8dfacd4f985eb3977517615ce25&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Applications/MAMP/htdocs/faas/backend/faas-core-server/src/main/java/com/faas/core/api/model/ws/operation/inquiry",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.splitter.proportion": "0.15697268",
+    "spring.configuration.checksum": "a74ad8dfacd4f985eb3977517615ce25",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/inquiry" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation" />
       <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/scenario" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/scenario" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/scenario" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/client" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/client" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/scenario/content/dto" />
@@ -99,11 +102,11 @@
       <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/scenario/content" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.faas.core.base.model.db.process.details.scenario.dao" />
-      <recent name="com.faas.core.api.middleware.client.device" />
-      <recent name="com.faas.core.api.framework.client.device" />
-      <recent name="com.faas.core.api.endpoint.controller.client.device" />
-      <recent name="com.faas.core.api.framework.operation.details.inquiry" />
+      <recent name="com.faas.core.api.model.ws.operation.inquiry.dto" />
+      <recent name="com.faas.core.api.model.ws.operation.flow.dto" />
+      <recent name="com.faas.core.api.model.ws.operation.inquiry" />
+      <recent name="com.faas.core.api.model.ws.operation.flow" />
+      <recent name="com.faas.core.api.middleware.operation.flow" />
     </key>
   </component>
   <component name="RunManager">
@@ -301,15 +304,7 @@
       <workItem from="1695900871065" duration="5533000" />
       <workItem from="1695945948610" duration="7815000" />
       <workItem from="1695982959272" duration="1566000" />
-      <workItem from="1695991494301" duration="4454000" />
-    </task>
-    <task id="LOCAL-00218" summary="   ScenarioExecutes -&gt; ScenarioExecutions converted">
-      <option name="closed" value="true" />
-      <created>1695221032000</created>
-      <option name="number" value="00218" />
-      <option name="presentableId" value="LOCAL-00218" />
-      <option name="project" value="LOCAL" />
-      <updated>1695221032001</updated>
+      <workItem from="1695991494301" duration="5700000" />
     </task>
     <task id="LOCAL-00219" summary="   ScenarioExecutes -&gt; ScenarioExecutions converted">
       <option name="closed" value="true" />
@@ -695,7 +690,15 @@
       <option name="project" value="LOCAL" />
       <updated>1695998292595</updated>
     </task>
-    <option name="localTasksCounter" value="267" />
+    <task id="LOCAL-00267" summary="   ScenarioExecutes -&gt; ScenarioExecutions converted">
+      <option name="closed" value="true" />
+      <created>1696021670040</created>
+      <option name="number" value="00267" />
+      <option name="presentableId" value="LOCAL-00267" />
+      <option name="project" value="LOCAL" />
+      <updated>1696021670040</updated>
+    </task>
+    <option name="localTasksCounter" value="268" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

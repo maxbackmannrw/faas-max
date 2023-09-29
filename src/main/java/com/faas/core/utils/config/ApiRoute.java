@@ -83,7 +83,11 @@ public class ApiRoute {
     public static final String API_GET_OPERATION_CAMPAIGN = "apigetoperationcampaign";
 
 
+    public static final String API_GET_OPERATION_FLOW = "apigetoperationflow";
+
+
     public static final String API_GET_OPERATION_INQUIRY = "apigetoperationinquiry";
+
 
 
     public static final String API_GET_OPERATION_CLIENT = "apigetoperationclient";
