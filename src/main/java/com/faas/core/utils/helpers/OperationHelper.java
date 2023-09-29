@@ -12,8 +12,8 @@ import com.faas.core.api.model.ws.client.details.dto.ApiClientNoteWSDTO;
 import com.faas.core.api.model.ws.client.details.dto.ApiClientOsIntWSDTO;
 import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationCampaignWSDTO;
 import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationDetailsWSDTO;
-import com.faas.core.api.model.ws.operation.scenario.dto.ApiProcessScenarioWSDTO;
-import com.faas.core.api.model.ws.operation.scenario.dto.ApiOperationScenarioWSDTO;
+import com.faas.core.api.model.ws.operation.scenario.process.dto.ApiProcessScenarioWSDTO;
+import com.faas.core.api.model.ws.operation.scenario.content.dto.ApiOperationScenarioWSDTO;
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.client.content.ClientDBModel;
 import com.faas.core.base.model.db.client.details.ClientNoteDBModel;
@@ -27,7 +27,6 @@ import com.faas.core.base.model.db.process.details.scenario.ProcessScenarioDBMod
 import com.faas.core.base.model.db.scenario.content.ScenarioDBModel;
 import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.model.db.user.details.UserDetailsDBModel;
-import com.faas.core.base.model.ws.operation.scenario.content.dto.OperationScenarioWSDTO;
 import com.faas.core.base.repo.client.details.*;
 import com.faas.core.base.repo.client.flow.ClientFlowRepository;
 import com.faas.core.base.repo.client.inquiry.ClientInquiryRepository;
