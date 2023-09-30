@@ -5,7 +5,6 @@ import com.faas.core.base.model.ws.general.GeneralWSModel;
 
 import java.util.List;
 
-
 public class ApiOperationFlowWSModel {
 
     private GeneralWSModel general;

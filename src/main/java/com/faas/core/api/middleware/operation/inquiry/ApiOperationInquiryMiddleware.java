@@ -1,7 +1,7 @@
 package com.faas.core.api.middleware.operation.inquiry;
 
 import com.faas.core.api.framework.operation.inquiry.ApiOperationInquiryFramework;
-import com.faas.core.api.model.ws.operation.device.ApiOperationDeviceWSModel;
+import com.faas.core.api.model.ws.operation.inquiry.ApiOperationInquiryWSModel;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +16,9 @@ public class ApiOperationInquiryMiddleware {
     ApiOperationInquiryFramework apiOperationInquiryFramework;
 
 
-    public ApiOperationDeviceWSModel apiGetOperationInquiry(long agentId, long sessionId, long clientId, String campaignId) {
+    public ApiOperationInquiryWSModel apiGetOperationInquiry(long agentId, long sessionId, long clientId, String campaignId) {
 
-        ApiOperationDeviceWSModel response = new ApiOperationDeviceWSModel();
+        ApiOperationInquiryWSModel response = new ApiOperationInquiryWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
 

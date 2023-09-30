@@ -1,6 +1,7 @@
 package com.faas.core.api.framework.operation.inquiry;
 
 import com.faas.core.api.model.ws.operation.device.dto.ApiOperationDeviceWSDTO;
+import com.faas.core.api.model.ws.operation.inquiry.dto.ApiOperationInquiryWSDTO;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -14,10 +15,11 @@ public class ApiOperationInquiryFramework {
     AppUtils appUtils;
 
 
-    public ApiOperationDeviceWSDTO apiGetOperationInquiryService(){
+    public ApiOperationInquiryWSDTO apiGetOperationInquiryService(){
 
-        ApiOperationDeviceWSDTO operationPeerWSDTO = new ApiOperationDeviceWSDTO();
-        return operationPeerWSDTO;
+        ApiOperationInquiryWSDTO apiOperationInquiryWSDTO = new ApiOperationInquiryWSDTO();
+
+        return apiOperationInquiryWSDTO;
     }
 
 

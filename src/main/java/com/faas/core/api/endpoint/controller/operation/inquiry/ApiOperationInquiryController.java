@@ -2,6 +2,7 @@ package com.faas.core.api.endpoint.controller.operation.inquiry;
 
 import com.faas.core.api.middleware.operation.inquiry.ApiOperationInquiryMiddleware;
 import com.faas.core.api.model.ws.operation.device.ApiOperationDeviceWSModel;
+import com.faas.core.api.model.ws.operation.inquiry.ApiOperationInquiryWSModel;
 import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,7 @@ public class ApiOperationInquiryController {
                                                     @RequestParam long clientId,
                                                     @RequestParam String campaignId) {
 
-        ApiOperationDeviceWSModel response = apiOperationInquiryMiddleware.apiGetOperationInquiry(agentId,sessionId,clientId,campaignId);
+        ApiOperationInquiryWSModel response = apiOperationInquiryMiddleware.apiGetOperationInquiry(agentId,sessionId,clientId,campaignId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

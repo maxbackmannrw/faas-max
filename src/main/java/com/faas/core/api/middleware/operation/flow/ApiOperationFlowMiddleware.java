@@ -2,6 +2,7 @@ package com.faas.core.api.middleware.operation.flow;
 
 import com.faas.core.api.framework.operation.flow.ApiOperationFlowFramework;
 import com.faas.core.api.model.ws.operation.device.ApiOperationDeviceWSModel;
+import com.faas.core.api.model.ws.operation.flow.ApiOperationFlowWSModel;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +17,9 @@ public class ApiOperationFlowMiddleware {
     ApiOperationFlowFramework apiOperationFlowFramework;
 
 
-    public ApiOperationDeviceWSModel apiGetOperationFlow(long agentId, long sessionId, long clientId, String campaignId) {
+    public ApiOperationFlowWSModel apiGetOperationFlow(long agentId, long sessionId, long clientId, String campaignId) {
 
-        ApiOperationDeviceWSModel response = new ApiOperationDeviceWSModel();
+        ApiOperationFlowWSModel response = new ApiOperationFlowWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
 
