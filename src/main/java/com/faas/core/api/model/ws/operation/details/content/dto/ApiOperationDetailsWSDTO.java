@@ -27,12 +27,11 @@ public class ApiOperationDetailsWSDTO {
     private ApiOperationCampaignWSDTO operationCampaign;
     private ApiOperationChannelWSDTO operationChannel;
     private List<ApiOperationScenarioWSDTO> operationScenarios;
-    private List<ApiProcessScenarioWSDTO> processScenarios;
 
     public ApiOperationDetailsWSDTO() {
     }
 
-    public ApiOperationDetailsWSDTO(OperationDBModel operation, SessionDBModel operationSession, ClientFlowDBModel operationFlow, ClientInquiryDBModel operationInquiry, ApiOperationClientWSDTO operationClient, List<ApiClientOsIntWSDTO> clientOsInts, List<ApiClientNoteWSDTO> clientNotes, List<ApiOperationActivityWSDTO> operationActivities, ApiOperationCampaignWSDTO operationCampaign, ApiOperationChannelWSDTO operationChannel, List<ApiOperationScenarioWSDTO> operationScenarios, List<ApiProcessScenarioWSDTO> processScenarios) {
+    public ApiOperationDetailsWSDTO(OperationDBModel operation, SessionDBModel operationSession, ClientFlowDBModel operationFlow, ClientInquiryDBModel operationInquiry, ApiOperationClientWSDTO operationClient, List<ApiClientOsIntWSDTO> clientOsInts, List<ApiClientNoteWSDTO> clientNotes, List<ApiOperationActivityWSDTO> operationActivities, ApiOperationCampaignWSDTO operationCampaign, ApiOperationChannelWSDTO operationChannel, List<ApiOperationScenarioWSDTO> operationScenarios) {
         this.operation = operation;
         this.operationSession = operationSession;
         this.operationFlow = operationFlow;
@@ -44,7 +43,6 @@ public class ApiOperationDetailsWSDTO {
         this.operationCampaign = operationCampaign;
         this.operationChannel = operationChannel;
         this.operationScenarios = operationScenarios;
-        this.processScenarios = processScenarios;
     }
 
     public OperationDBModel getOperation() {
@@ -133,13 +131,5 @@ public class ApiOperationDetailsWSDTO {
 
     public void setOperationScenarios(List<ApiOperationScenarioWSDTO> operationScenarios) {
         this.operationScenarios = operationScenarios;
-    }
-
-    public List<ApiProcessScenarioWSDTO> getProcessScenarios() {
-        return processScenarios;
-    }
-
-    public void setProcessScenarios(List<ApiProcessScenarioWSDTO> processScenarios) {
-        this.processScenarios = processScenarios;
     }
 }

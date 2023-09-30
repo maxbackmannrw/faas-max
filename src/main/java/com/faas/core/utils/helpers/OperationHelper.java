@@ -268,7 +268,6 @@ public class OperationHelper {
         operationDetailsWSDTO.setOperationCampaign(mapApiOperationCampaignWSDTO(campaignDBModel,processDBModel));
         operationDetailsWSDTO.setOperationChannel(mapApiOperationChannelWSDTO(sessionDBModel,clientDBModel));
         operationDetailsWSDTO.setOperationScenarios(mapApiOperationScenarioWSDTOS(sessionDBModel.getId(),sessionDBModel.getProcessId()));
-        operationDetailsWSDTO.setProcessScenarios(mapApiProcessScenarioWSDTOS(processScenarioRepository.findByProcessId(sessionDBModel.getProcessId())));
 
         return operationDetailsWSDTO;
     }
