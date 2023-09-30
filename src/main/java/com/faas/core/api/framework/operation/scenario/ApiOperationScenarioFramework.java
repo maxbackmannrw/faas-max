@@ -1,8 +1,11 @@
-package com.faas.core.api.framework.operation.scenario.content;
+package com.faas.core.api.framework.operation.scenario;
 
 import com.faas.core.api.model.ws.operation.scenario.content.dto.ApiOperationScenarioWSDTO;
+import com.faas.core.api.model.ws.operation.scenario.process.dto.ApiProcessScenarioElementWSDTO;
+import com.faas.core.api.model.ws.operation.scenario.process.dto.ApiProcessScenarioWSDTO;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.operation.scenario.OperationScenarioDBModel;
+import com.faas.core.base.model.db.process.details.scenario.ProcessScenarioDBModel;
 import com.faas.core.base.model.db.scenario.content.ScenarioDBModel;
 import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
@@ -60,7 +63,7 @@ public class ApiOperationScenarioFramework {
     AppUtils appUtils;
 
 
-    public List<ApiOperationScenarioWSDTO> apiGetOperationScenariosService(long agentId, long sessionId, String processId) {
+    public List<ApiOperationScenarioWSDTO> apiGetOperationScenariosService(long agentId,long sessionId,String processId) {
 
         List<ApiOperationScenarioWSDTO> operationScenarioWSDTOS = new ArrayList<>();
         List<OperationScenarioDBModel> operationScenarioDBModels = operationScenarioRepository.findBySessionIdAndProcessId(sessionId,processId);
@@ -71,9 +74,9 @@ public class ApiOperationScenarioFramework {
     }
 
 
-    public ApiOperationScenarioWSDTO apiGetOperationScenarioService(long agentId, long sessionId, String executionId) {
+    public ApiOperationScenarioWSDTO apiGetOperationScenarioService(long agentId,long sessionId,String executeId) {
 
-        List<OperationScenarioDBModel> operationScenarioDBModels = operationScenarioRepository.findByIdAndSessionId(executionId,sessionId);
+        List<OperationScenarioDBModel> operationScenarioDBModels = operationScenarioRepository.findByIdAndSessionId(executeId,sessionId);
         if (!operationScenarioDBModels.isEmpty()){
             return new ApiOperationScenarioWSDTO(operationScenarioDBModels.get(0));
         }
@@ -81,7 +84,7 @@ public class ApiOperationScenarioFramework {
     }
 
 
-    public ApiOperationScenarioWSDTO apiExecuteOperationScenarioService(long agentId, long sessionId, String processId, String scenarioId) {
+    public ApiOperationScenarioWSDTO apiExecuteOperationScenarioService(long agentId,long sessionId,String processId,String scenarioId) {
 
         List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndAgentIdAndProcessId(sessionId,agentId,processId);
         Optional<ScenarioDBModel> scenarioDBModel = scenarioRepository.findById(scenarioId);
@@ -112,20 +115,18 @@ public class ApiOperationScenarioFramework {
         return null;
     }
 
+    public ApiOperationScenarioWSDTO apiUpdateOperationScenarioService(long agentId,long sessionId,String executeId) {
 
-    public ApiOperationScenarioWSDTO apiUpdateOperationScenarioService(long agentId, long sessionId, String executionId) {
-
-        List<OperationScenarioDBModel> operationScenarioDBModels = operationScenarioRepository.findByIdAndSessionId(executionId,sessionId);
+        List<OperationScenarioDBModel> operationScenarioDBModels = operationScenarioRepository.findByIdAndSessionId(executeId,sessionId);
         if (!operationScenarioDBModels.isEmpty()){
             return new ApiOperationScenarioWSDTO(operationScenarioDBModels.get(0));
         }
         return null;
     }
 
+    public ApiOperationScenarioWSDTO apiRemoveOperationScenarioService(long agentId,long sessionId,String executeId) {
 
-    public ApiOperationScenarioWSDTO apiRemoveOperationScenarioService(long agentId, long sessionId, String executionId) {
-
-        List<OperationScenarioDBModel> operationScenarioDBModels = operationScenarioRepository.findByIdAndSessionId(executionId,sessionId);
+        List<OperationScenarioDBModel> operationScenarioDBModels = operationScenarioRepository.findByIdAndSessionId(executeId,sessionId);
         if (!operationScenarioDBModels.isEmpty()){
             operationScenarioRepository.delete(operationScenarioDBModels.get(0));
             return new ApiOperationScenarioWSDTO(operationScenarioDBModels.get(0));
@@ -133,5 +134,51 @@ public class ApiOperationScenarioFramework {
         return null;
     }
 
+    public List<ApiProcessScenarioWSDTO> apiGetProcessScenariosService(long agentId, long sessionId, String processId) {
+
+        List<ApiProcessScenarioWSDTO>processScenarioWSDTOS = new ArrayList<>();
+        List<ProcessScenarioDBModel> processScenarioDBModels = processScenarioRepository.findByProcessId(processId);
+        if (!processScenarioDBModels.isEmpty()){
+            for (ProcessScenarioDBModel processScenarioDBModel : processScenarioDBModels) {
+                processScenarioWSDTOS.add(new ApiProcessScenarioWSDTO(processScenarioDBModel));
+            }
+        }
+        return processScenarioWSDTOS;
+    }
+
+    public ApiProcessScenarioWSDTO apiGetProcessScenarioService(long agentId, long sessionId, String processId, String scenarioId) {
+
+        List<ProcessScenarioDBModel> processScenarioDBModels = processScenarioRepository.findByProcessIdAndScenarioId(processId,scenarioId);
+        if (!processScenarioDBModels.isEmpty()){
+            return new ApiProcessScenarioWSDTO(processScenarioDBModels.get(0));
+        }
+        return null;
+    }
+
+
+
+
+    public List<ApiProcessScenarioElementWSDTO> apiGetProcessScenarioElementsService(long agentId, long sessionId, String scenarioId) {
+
+        List<ApiProcessScenarioElementWSDTO>scenarioElementWSDTOS = new ArrayList<>();
+        Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
+        Optional<ScenarioDBModel> scenarioDBModel = scenarioRepository.findById(scenarioId);
+        if (sessionDBModel.isPresent() && scenarioDBModel.isPresent() && scenarioDBModel.get().getElements() != null){
+
+        }
+        return scenarioElementWSDTOS;
+    }
+
+    public ApiProcessScenarioElementWSDTO apiGetProcessScenarioElementService(long agentId, long sessionId, String scenarioId, String elementId) {
+
+        Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
+        Optional<ScenarioDBModel> scenarioDBModel = scenarioRepository.findById(scenarioId);
+        if (sessionDBModel.isPresent() && scenarioDBModel.isPresent() && scenarioDBModel.get().getElements() != null){
+            for (int i=0;i<scenarioDBModel.get().getElements().size();i++){
+
+            }
+        }
+        return null;
+    }
 
 }
