@@ -31,7 +31,6 @@ import java.util.Optional;
 public class ApiOperationScenarioFramework {
 
 
-
     @Autowired
     SessionRepository sessionRepository;
 
