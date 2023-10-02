@@ -12,9 +12,9 @@ public class OperationScenarioDBModel {
 
     @Id
     private String id;
+    private String operationId;
     private long sessionId;
     private long agentId;
-    private String operationId;
     private String campaignId;
     private String processId;
     private String scenarioId;
@@ -30,11 +30,11 @@ public class OperationScenarioDBModel {
     public OperationScenarioDBModel() {
     }
 
-    public OperationScenarioDBModel(String id, long sessionId, long agentId, String operationId, String campaignId, String processId, String scenarioId, String scenario, String scenarioType, String baseType, List<ScenarioExecutionDAO> scenarioExecutions, String executionState, long uDate, long cDate, int status) {
+    public OperationScenarioDBModel(String id, String operationId, long sessionId, long agentId, String campaignId, String processId, String scenarioId, String scenario, String scenarioType, String baseType, List<ScenarioExecutionDAO> scenarioExecutions, String executionState, long uDate, long cDate, int status) {
         this.id = id;
+        this.operationId = operationId;
         this.sessionId = sessionId;
         this.agentId = agentId;
-        this.operationId = operationId;
         this.campaignId = campaignId;
         this.processId = processId;
         this.scenarioId = scenarioId;
@@ -56,6 +56,14 @@ public class OperationScenarioDBModel {
         this.id = id;
     }
 
+    public String getOperationId() {
+        return operationId;
+    }
+
+    public void setOperationId(String operationId) {
+        this.operationId = operationId;
+    }
+
     public long getSessionId() {
         return sessionId;
     }
@@ -70,14 +78,6 @@ public class OperationScenarioDBModel {
 
     public void setAgentId(long agentId) {
         this.agentId = agentId;
-    }
-
-    public String getOperationId() {
-        return operationId;
-    }
-
-    public void setOperationId(String operationId) {
-        this.operationId = operationId;
     }
 
     public String getCampaignId() {
