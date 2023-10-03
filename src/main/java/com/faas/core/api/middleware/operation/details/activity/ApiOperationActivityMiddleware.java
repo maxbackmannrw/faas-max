@@ -1,8 +1,10 @@
-package com.faas.core.api.middleware.operation.details.outcome;
+package com.faas.core.api.middleware.operation.details.activity;
 
-import com.faas.core.api.framework.operation.details.outcome.ApiOperationOutcomeFramework;
+import com.faas.core.api.framework.operation.details.activity.ApiOperationActivityFramework;
+import com.faas.core.api.framework.operation.details.inquiry.ApiOperationInquiryFramework;
 import com.faas.core.api.model.ws.operation.details.activity.ApiOperationActivityWSModel;
 import com.faas.core.api.model.ws.operation.details.activity.dto.ApiOperationActivityWSDTO;
+import com.faas.core.api.model.ws.operation.details.inquiry.ApiOperationInquiryWSModel;
 import com.faas.core.base.model.db.operation.content.dao.OperationActivityDAO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.utils.config.AppConstant;
@@ -12,24 +14,25 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @Component
-public class ApiOperationOutcomeMiddleware {
+public class ApiOperationActivityMiddleware {
 
 
     @Autowired
-    ApiOperationOutcomeFramework apiOperationOutcomeFramework;
+    ApiOperationActivityFramework apiOperationActivityFramework;
 
 
-    public ApiOperationActivityWSModel apiGetOperationActivities(long agentId, long sessionId,long clientId) {
+    public ApiOperationActivityWSModel apiGetOperationActivities(long agentId, long sessionId, long clientId) {
 
         ApiOperationActivityWSModel response = new ApiOperationActivityWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ApiOperationActivityWSDTO>operationActivityWSDTOS = new ArrayList<>();
+        List<ApiOperationActivityWSDTO> operationActivityWSDTOS = new ArrayList<>();
 
-        List<OperationActivityDAO> operationActivities = apiOperationOutcomeFramework.apiGetOperationActivitiesService(sessionId,clientId);
+        List<OperationActivityDAO> operationActivities = apiOperationActivityFramework.apiGetOperationActivitiesService(sessionId,clientId);
         if (operationActivities != null){
             for (OperationActivityDAO operationActivityDAO : operationActivities) {
-                operationActivityWSDTOS.add(apiOperationOutcomeFramework.fillApiOperationActivityWSDTO(operationActivityDAO));
+                operationActivityWSDTOS.add(apiOperationActivityFramework.fillApiOperationActivityWSDTO(operationActivityDAO));
             }
         }
 
@@ -51,9 +54,9 @@ public class ApiOperationOutcomeMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ApiOperationActivityWSDTO>operationActivityWSDTOS = new ArrayList<>();
 
-        OperationActivityDAO operationActivityDAO = apiOperationOutcomeFramework.apiGetOperationActivityService(sessionId,clientId,activityId);
+        OperationActivityDAO operationActivityDAO = apiOperationActivityFramework.apiGetOperationActivityService(sessionId,clientId,activityId);
         if (operationActivityDAO != null){
-            operationActivityWSDTOS.add(apiOperationOutcomeFramework.fillApiOperationActivityWSDTO(operationActivityDAO));
+            operationActivityWSDTOS.add(apiOperationActivityFramework.fillApiOperationActivityWSDTO(operationActivityDAO));
         }
 
         response.setOperationActivities(operationActivityWSDTOS);
@@ -65,6 +68,7 @@ public class ApiOperationOutcomeMiddleware {
 
         return response;
     }
+
 
 
 

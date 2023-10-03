@@ -1,5 +1,6 @@
-package com.faas.core.api.endpoint.controller.operation.details.outcome;
+package com.faas.core.api.endpoint.controller.operation.details.activity;
 
+import com.faas.core.api.middleware.operation.details.activity.ApiOperationActivityMiddleware;
 import com.faas.core.api.middleware.operation.details.outcome.ApiOperationOutcomeMiddleware;
 import com.faas.core.api.model.ws.operation.details.activity.ApiOperationActivityWSModel;
 import com.faas.core.utils.config.ApiRoute;
@@ -14,12 +15,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-@RequestMapping(value = AppConstant.API_VERSION + "/api/operation/details/outcome/")
-public class ApiOperationOutcomeController {
+@RequestMapping(value = AppConstant.API_VERSION + "/api/operation/details/activity/")
+public class ApiOperationActivityController {
 
 
     @Autowired
-    ApiOperationOutcomeMiddleware apiOperationOutcomeMiddleware;
+    ApiOperationActivityMiddleware apiOperationActivityMiddleware;
 
 
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_ACTIVITIES, method = RequestMethod.POST)
@@ -27,7 +28,7 @@ public class ApiOperationOutcomeController {
                                                        @RequestParam long sessionId,
                                                        @RequestParam long clientId) {
 
-        ApiOperationActivityWSModel response = apiOperationOutcomeMiddleware.apiGetOperationActivities(agentId,sessionId,clientId);
+        ApiOperationActivityWSModel response = apiOperationActivityMiddleware.apiGetOperationActivities(agentId,sessionId,clientId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -42,7 +43,7 @@ public class ApiOperationOutcomeController {
                                                      @RequestParam long clientId,
                                                      @RequestParam String activityId) {
 
-        ApiOperationActivityWSModel response = apiOperationOutcomeMiddleware.apiGetOperationActivity(agentId,sessionId,clientId,activityId);
+        ApiOperationActivityWSModel response = apiOperationActivityMiddleware.apiGetOperationActivity(agentId,sessionId,clientId,activityId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
