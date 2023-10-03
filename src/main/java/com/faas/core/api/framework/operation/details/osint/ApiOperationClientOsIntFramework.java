@@ -1,4 +1,4 @@
-package com.faas.core.api.framework.operation.details.client.osint;
+package com.faas.core.api.framework.operation.details.osint;
 
 import com.faas.core.api.model.ws.client.details.dto.ApiClientOsIntWSDTO;
 import com.faas.core.utils.config.AppUtils;

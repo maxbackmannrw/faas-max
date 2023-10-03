@@ -1,6 +1,6 @@
-package com.faas.core.api.endpoint.controller.operation.details.client.note;
+package com.faas.core.api.endpoint.controller.operation.details.note;
 
-import com.faas.core.api.middleware.operation.details.client.note.ApiOperationClientNoteMiddleware;
+import com.faas.core.api.middleware.operation.details.note.ApiOperationClientNoteMiddleware;
 import com.faas.core.api.model.ws.client.details.ApiClientNoteWSModel;
 import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;

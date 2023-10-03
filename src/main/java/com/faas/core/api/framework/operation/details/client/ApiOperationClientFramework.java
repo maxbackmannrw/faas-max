@@ -1,4 +1,4 @@
-package com.faas.core.api.framework.operation.details.client.content;
+package com.faas.core.api.framework.operation.details.client;
 
 import com.faas.core.api.model.ws.operation.details.client.dto.ApiOperationClientWSDTO;
 import com.faas.core.base.model.db.client.content.ClientDBModel;

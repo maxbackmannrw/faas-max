@@ -1,6 +1,6 @@
-package com.faas.core.api.endpoint.controller.operation.details.client.osint;
+package com.faas.core.api.endpoint.controller.operation.details.osint;
 
-import com.faas.core.api.middleware.operation.details.client.osint.ApiOperationClientOsIntMiddleware;
+import com.faas.core.api.middleware.operation.details.osint.ApiOperationClientOsIntMiddleware;
 import com.faas.core.api.model.ws.client.details.ApiClientOsIntWSModel;
 import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;

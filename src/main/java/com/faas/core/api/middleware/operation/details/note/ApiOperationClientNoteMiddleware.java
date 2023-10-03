@@ -1,6 +1,6 @@
-package com.faas.core.api.middleware.operation.details.client.note;
+package com.faas.core.api.middleware.operation.details.note;
 
-import com.faas.core.api.framework.operation.details.client.note.ApiOperationClientNoteFramework;
+import com.faas.core.api.framework.operation.details.note.ApiOperationClientNoteFramework;
 import com.faas.core.api.model.ws.client.details.ApiClientNoteWSModel;
 import com.faas.core.api.model.ws.client.details.dto.ApiClientNoteWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;

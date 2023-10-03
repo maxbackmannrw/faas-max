@@ -1,6 +1,6 @@
-package com.faas.core.api.middleware.operation.details.client.osint;
+package com.faas.core.api.middleware.operation.details.osint;
 
-import com.faas.core.api.framework.operation.details.client.osint.ApiOperationClientOsIntFramework;
+import com.faas.core.api.framework.operation.details.osint.ApiOperationClientOsIntFramework;
 import com.faas.core.api.model.ws.client.details.ApiClientOsIntWSModel;
 import com.faas.core.api.model.ws.client.details.dto.ApiClientOsIntWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
