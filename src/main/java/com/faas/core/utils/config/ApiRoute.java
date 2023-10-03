@@ -89,11 +89,10 @@ public class ApiRoute {
     public static final String API_GET_OPERATION_INQUIRY = "apigetoperationinquiry";
 
 
-
     public static final String API_GET_OPERATION_CLIENT = "apigetoperationclient";
 
 
-    public static final String API_GET_CLIENT_OS_INTS = "apigetclientosints";
+    public static final String API_GET_CLIENT_OS_INT = "apigetclientosint";
 
 
     public static final String API_GET_OPERATION_DEVICES = "apigetoperationdevices";
@@ -113,9 +112,6 @@ public class ApiRoute {
 
     public static final String API_GET_OPERATION_ACTIVITIES = "apigetoperationactivities";
     public static final String API_GET_OPERATION_ACTIVITY = "apigetoperationactivity";
-    public static final String API_CREATE_OPERATION_ACTIVITY = "apicreateoperationactivity";
-    public static final String API_UPDATE_OPERATION_ACTIVITY = "apiupdateoperationactivity";
-    public static final String API_REMOVE_OPERATION_ACTIVITY = "apiremoveoperationactivity";
 
 
     public static final String API_GET_PROCESS_SCENARIOS = "apigetprocessscenarios";
