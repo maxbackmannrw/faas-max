@@ -1,9 +1,7 @@
-package com.faas.core.api.endpoint.controller.operation.flow;
+package com.faas.core.api.endpoint.controller.operation.details.flow;
 
-import com.faas.core.api.middleware.operation.flow.ApiOperationFlowMiddleware;
-import com.faas.core.api.middleware.operation.inquiry.ApiOperationInquiryMiddleware;
-import com.faas.core.api.model.ws.operation.device.ApiOperationDeviceWSModel;
-import com.faas.core.api.model.ws.operation.flow.ApiOperationFlowWSModel;
+import com.faas.core.api.middleware.operation.details.flow.ApiOperationFlowMiddleware;
+import com.faas.core.api.model.ws.operation.details.flow.ApiOperationFlowWSModel;
 import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-@RequestMapping(value = AppConstant.API_VERSION + "/api/operation/flow/")
+@RequestMapping(value = AppConstant.API_VERSION + "/api/operation/details/flow/")
 public class ApiOperationFlowController {
 
 

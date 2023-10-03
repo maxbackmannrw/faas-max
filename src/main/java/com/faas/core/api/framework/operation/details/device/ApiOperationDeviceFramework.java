@@ -1,6 +1,6 @@
-package com.faas.core.api.framework.operation.device;
+package com.faas.core.api.framework.operation.details.device;
 
-import com.faas.core.api.model.ws.operation.device.dto.ApiOperationDeviceWSDTO;
+import com.faas.core.api.model.ws.operation.details.device.dto.ApiOperationDeviceWSDTO;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

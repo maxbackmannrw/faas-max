@@ -1,6 +1,6 @@
-package com.faas.core.api.endpoint.controller.operation.device;
+package com.faas.core.api.endpoint.controller.operation.details.device;
 
-import com.faas.core.api.middleware.operation.device.ApiOperationDeviceMiddleware;
+import com.faas.core.api.middleware.operation.details.device.ApiOperationDeviceMiddleware;
 import com.faas.core.api.model.ws.client.device.ApiClientDeviceWSModel;
 import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-@RequestMapping(value = AppConstant.API_VERSION + "/api/operation/device/")
+@RequestMapping(value = AppConstant.API_VERSION + "/api/operation/details/device/")
 public class ApiOperationDeviceController {
 
 

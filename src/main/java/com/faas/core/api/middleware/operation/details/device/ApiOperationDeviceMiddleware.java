@@ -1,8 +1,8 @@
-package com.faas.core.api.middleware.operation.device;
+package com.faas.core.api.middleware.operation.details.device;
 
-import com.faas.core.api.framework.operation.device.ApiOperationDeviceFramework;
+import com.faas.core.api.framework.operation.details.device.ApiOperationDeviceFramework;
 import com.faas.core.api.model.ws.client.device.ApiClientDeviceWSModel;
-import com.faas.core.api.model.ws.operation.device.dto.ApiOperationDeviceWSDTO;
+import com.faas.core.api.model.ws.operation.details.device.dto.ApiOperationDeviceWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;

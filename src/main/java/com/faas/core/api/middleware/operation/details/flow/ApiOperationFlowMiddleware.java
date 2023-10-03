@@ -1,8 +1,7 @@
-package com.faas.core.api.middleware.operation.flow;
+package com.faas.core.api.middleware.operation.details.flow;
 
-import com.faas.core.api.framework.operation.flow.ApiOperationFlowFramework;
-import com.faas.core.api.model.ws.operation.device.ApiOperationDeviceWSModel;
-import com.faas.core.api.model.ws.operation.flow.ApiOperationFlowWSModel;
+import com.faas.core.api.framework.operation.details.flow.ApiOperationFlowFramework;
+import com.faas.core.api.model.ws.operation.details.flow.ApiOperationFlowWSModel;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,8 +1,7 @@
-package com.faas.core.api.endpoint.controller.operation.inquiry;
+package com.faas.core.api.endpoint.controller.operation.details.inquiry;
 
-import com.faas.core.api.middleware.operation.inquiry.ApiOperationInquiryMiddleware;
-import com.faas.core.api.model.ws.operation.device.ApiOperationDeviceWSModel;
-import com.faas.core.api.model.ws.operation.inquiry.ApiOperationInquiryWSModel;
+import com.faas.core.api.middleware.operation.details.inquiry.ApiOperationInquiryMiddleware;
+import com.faas.core.api.model.ws.operation.details.inquiry.ApiOperationInquiryWSModel;
 import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-@RequestMapping(value = AppConstant.API_VERSION + "/api/operation/inquiry/")
+@RequestMapping(value = AppConstant.API_VERSION + "/api/operation/details/inquiry/")
 public class ApiOperationInquiryController {
 
 
