@@ -5,8 +5,10 @@ import com.faas.core.api.model.ws.client.details.ApiClientNoteWSModel;
 import com.faas.core.api.model.ws.client.details.ApiClientOsIntWSModel;
 import com.faas.core.api.model.ws.client.details.dto.ApiClientNoteWSDTO;
 import com.faas.core.api.model.ws.client.details.dto.ApiClientOsIntWSDTO;
+import com.faas.core.api.model.ws.client.device.ApiClientDeviceWSModel;
 import com.faas.core.api.model.ws.operation.details.client.ApiOperationClientWSModel;
 import com.faas.core.api.model.ws.operation.details.client.dto.ApiOperationClientWSDTO;
+import com.faas.core.api.model.ws.operation.details.client.dto.ApiOperationDeviceWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +43,45 @@ public class ApiOperationClientMiddleware {
 
         return response;
     }
+
+
+
+    public ApiClientDeviceWSModel apiGetOperationDevices(long agentId, long sessionId, long clientId, String campaignId) {
+
+        ApiClientDeviceWSModel response = new ApiClientDeviceWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        ApiOperationDeviceWSDTO operationDeviceWSDTO = apiOperationClientFramework.apiGetOperationDevicesService();
+        if (operationDeviceWSDTO != null){
+        }
+
+        general.setOperation("apiGetOperationDevices");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public ApiClientDeviceWSModel apiGetOperationDevice(long agentId, long sessionId, long clientId, String campaignId) {
+
+        ApiClientDeviceWSModel response = new ApiClientDeviceWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        ApiOperationDeviceWSDTO operationDeviceWSDTO = apiOperationClientFramework.apiGetOperationDeviceService();
+        if (operationDeviceWSDTO != null){
+        }
+
+        general.setOperation("apiGetOperationDevice");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
 
 
     public ApiClientNoteWSModel apiGetClientNotes(long agentId, long clientId) {

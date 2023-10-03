@@ -97,9 +97,6 @@ public class ApiRoute {
 
     public static final String API_GET_OPERATION_DEVICES = "apigetoperationdevices";
     public static final String API_GET_OPERATION_DEVICE = "apigetoperationdevice";
-    public static final String API_CREATE_OPERATION_DEVICE = "apicreateoperationdevice";
-    public static final String API_UPDATE_OPERATION_DEVICE = "apiupdateoperationdevice";
-    public static final String API_REMOVE_OPERATION_DEVICE = "apiremoveoperationdevice";
 
 
 

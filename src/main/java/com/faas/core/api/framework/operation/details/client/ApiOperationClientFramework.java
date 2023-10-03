@@ -3,6 +3,7 @@ package com.faas.core.api.framework.operation.details.client;
 import com.faas.core.api.model.ws.client.details.dto.ApiClientNoteWSDTO;
 import com.faas.core.api.model.ws.client.details.dto.ApiClientOsIntWSDTO;
 import com.faas.core.api.model.ws.operation.details.client.dto.ApiOperationClientWSDTO;
+import com.faas.core.api.model.ws.operation.details.client.dto.ApiOperationDeviceWSDTO;
 import com.faas.core.base.model.db.client.content.ClientDBModel;
 import com.faas.core.base.model.db.client.details.ClientNoteDBModel;
 import com.faas.core.base.model.db.client.session.SessionDBModel;
@@ -67,6 +68,22 @@ public class ApiOperationClientFramework {
     }
 
 
+
+    public ApiOperationDeviceWSDTO apiGetOperationDevicesService(){
+
+        ApiOperationDeviceWSDTO operationDeviceWSDTO = new ApiOperationDeviceWSDTO();
+        return operationDeviceWSDTO;
+    }
+
+    public ApiOperationDeviceWSDTO apiGetOperationDeviceService(){
+
+        ApiOperationDeviceWSDTO operationDeviceWSDTO = new ApiOperationDeviceWSDTO();
+        return operationDeviceWSDTO;
+    }
+
+
+
+
     public List<ApiClientNoteWSDTO> apiGetClientNotesService(long agentId, long clientId) {
 
         List<ApiClientNoteWSDTO> clientNoteWSDTOS = new ArrayList<>();
@@ -77,7 +94,6 @@ public class ApiOperationClientFramework {
         return clientNoteWSDTOS;
     }
 
-
     public ApiClientNoteWSDTO apiGetClientNoteService(long agentId, long sessionId, long clientId, long noteId) {
 
         List<ClientNoteDBModel> clientNoteDBModels = clientNoteRepository.findByIdAndSessionIdAndClientId(noteId,sessionId,clientId);
@@ -86,7 +102,6 @@ public class ApiOperationClientFramework {
         }
         return null;
     }
-
 
     public ApiClientNoteWSDTO apiCreateClientNoteService(long agentId, long sessionId, long clientId, String noteTitle, String noteText, String noteAsset) {
 
@@ -140,7 +155,6 @@ public class ApiOperationClientFramework {
         List<ApiClientOsIntWSDTO> clientOsIntWSDTOS = new ArrayList<>();
         return clientOsIntWSDTOS;
     }
-
 
 
 }
