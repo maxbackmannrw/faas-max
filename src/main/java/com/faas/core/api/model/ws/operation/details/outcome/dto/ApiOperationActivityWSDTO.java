@@ -1,4 +1,4 @@
-package com.faas.core.api.model.ws.operation.details.activity.dto;
+package com.faas.core.api.model.ws.operation.details.outcome.dto;
 
 import com.faas.core.base.model.db.operation.content.dao.OperationActivityDAO;
 

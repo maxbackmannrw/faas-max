@@ -1,8 +1,10 @@
-package com.faas.core.api.middleware.operation.details.result;
+package com.faas.core.api.middleware.operation.details.outcome;
 
-import com.faas.core.api.framework.operation.details.result.ApiOperationOutcomeFramework;
-import com.faas.core.api.model.ws.operation.details.activity.ApiOperationActivityWSModel;
-import com.faas.core.api.model.ws.operation.details.activity.dto.ApiOperationActivityWSDTO;
+import com.faas.core.api.framework.operation.details.outcome.ApiOperationOutcomeFramework;
+import com.faas.core.api.model.ws.operation.details.outcome.ApiOperationActivityWSModel;
+import com.faas.core.api.model.ws.operation.details.outcome.ApiOperationFlowWSModel;
+import com.faas.core.api.model.ws.operation.details.outcome.ApiOperationInquiryWSModel;
+import com.faas.core.api.model.ws.operation.details.outcome.dto.ApiOperationActivityWSDTO;
 import com.faas.core.base.model.db.operation.content.dao.OperationActivityDAO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.utils.config.AppConstant;
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @Component
 public class ApiOperationOutcomeMiddleware {
 
@@ -20,11 +23,11 @@ public class ApiOperationOutcomeMiddleware {
     ApiOperationOutcomeFramework apiOperationOutcomeFramework;
 
 
-    public ApiOperationActivityWSModel apiGetOperationActivities(long agentId, long sessionId,long clientId) {
+    public ApiOperationActivityWSModel apiGetOperationActivities(long agentId, long sessionId, long clientId) {
 
         ApiOperationActivityWSModel response = new ApiOperationActivityWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ApiOperationActivityWSDTO>operationActivityWSDTOS = new ArrayList<>();
+        List<ApiOperationActivityWSDTO> operationActivityWSDTOS = new ArrayList<>();
 
         List<OperationActivityDAO> operationActivities = apiOperationOutcomeFramework.apiGetOperationActivitiesService(sessionId,clientId);
         if (operationActivities != null){
@@ -66,6 +69,38 @@ public class ApiOperationOutcomeMiddleware {
         return response;
     }
 
+
+
+    public ApiOperationFlowWSModel apiGetOperationFlow(long agentId, long sessionId, long clientId, String campaignId) {
+
+        ApiOperationFlowWSModel response = new ApiOperationFlowWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+
+        general.setOperation("apiGetOperationFlow");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
+    public ApiOperationInquiryWSModel apiGetOperationInquiry(long agentId, long sessionId, long clientId, String campaignId) {
+
+        ApiOperationInquiryWSModel response = new ApiOperationInquiryWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+
+        general.setOperation("apiGetOperationInquiry");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
 
 
 }

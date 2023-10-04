@@ -1,7 +1,9 @@
-package com.faas.core.api.endpoint.controller.operation.details.result;
+package com.faas.core.api.endpoint.controller.operation.details.outcome;
 
-import com.faas.core.api.middleware.operation.details.result.ApiOperationOutcomeMiddleware;
-import com.faas.core.api.model.ws.operation.details.activity.ApiOperationActivityWSModel;
+import com.faas.core.api.middleware.operation.details.outcome.ApiOperationOutcomeMiddleware;
+import com.faas.core.api.model.ws.operation.details.outcome.ApiOperationActivityWSModel;
+import com.faas.core.api.model.ws.operation.details.outcome.ApiOperationFlowWSModel;
+import com.faas.core.api.model.ws.operation.details.outcome.ApiOperationInquiryWSModel;
 import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +52,35 @@ public class ApiOperationOutcomeController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_FLOW, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationFlow(@RequestParam long agentId,
+                                                 @RequestParam long sessionId,
+                                                 @RequestParam long clientId,
+                                                 @RequestParam String campaignId) {
+
+        ApiOperationFlowWSModel response = apiOperationOutcomeMiddleware.apiGetOperationFlow(agentId,sessionId,clientId,campaignId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_INQUIRY, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationInquiry(@RequestParam long agentId,
+                                                    @RequestParam long sessionId,
+                                                    @RequestParam long clientId,
+                                                    @RequestParam String campaignId) {
+
+        ApiOperationInquiryWSModel response = apiOperationOutcomeMiddleware.apiGetOperationInquiry(agentId,sessionId,clientId,campaignId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
 
 
 }

@@ -1,6 +1,8 @@
-package com.faas.core.api.framework.operation.details.activity;
+package com.faas.core.api.framework.operation.details.outcome;
 
-import com.faas.core.api.model.ws.operation.details.activity.dto.ApiOperationActivityWSDTO;
+import com.faas.core.api.model.ws.operation.details.outcome.dto.ApiOperationActivityWSDTO;
+import com.faas.core.api.model.ws.operation.details.outcome.dto.ApiOperationFlowWSDTO;
+import com.faas.core.api.model.ws.operation.details.outcome.dto.ApiOperationInquiryWSDTO;
 import com.faas.core.base.model.db.operation.content.dao.OperationActivityDAO;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +12,7 @@ import java.util.List;
 
 
 @Component
-public class ApiOperationActivityFramework {
+public class ApiOperationOutcomeFramework {
 
 
     @Autowired
@@ -35,6 +37,20 @@ public class ApiOperationActivityFramework {
         return null;
     }
 
+
+    public ApiOperationFlowWSDTO apiGetOperationFlowService(){
+
+        ApiOperationFlowWSDTO operationFlowWSDTO = new ApiOperationFlowWSDTO();
+
+        return operationFlowWSDTO;
+    }
+
+    public ApiOperationInquiryWSDTO apiGetOperationInquiryService(){
+
+        ApiOperationInquiryWSDTO apiOperationInquiryWSDTO = new ApiOperationInquiryWSDTO();
+
+        return apiOperationInquiryWSDTO;
+    }
 
 
 
