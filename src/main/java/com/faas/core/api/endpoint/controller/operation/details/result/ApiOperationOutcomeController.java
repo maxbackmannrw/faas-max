@@ -1,6 +1,6 @@
-package com.faas.core.api.endpoint.controller.operation.details.outcome;
+package com.faas.core.api.endpoint.controller.operation.details.result;
 
-import com.faas.core.api.middleware.operation.details.outcome.ApiOperationOutcomeMiddleware;
+import com.faas.core.api.middleware.operation.details.result.ApiOperationOutcomeMiddleware;
 import com.faas.core.api.model.ws.operation.details.activity.ApiOperationActivityWSModel;
 import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;
