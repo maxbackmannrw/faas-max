@@ -50,8 +50,6 @@ public class AppConstant {
     public static final String AUTOMATIC_PROCESS = "AUTOMATIC";
 
 
-
-
     public static final String ACTION_ELEMENT = "ACTION";
     public static final String AUTOMATION_ELEMENT = "AUTOMATION";
 

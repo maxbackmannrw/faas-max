@@ -251,13 +251,11 @@ public class OperationHelper {
         if (sessionDBModel.getSessionType().equalsIgnoreCase(AppConstant.INQUIRY_CAMPAIGN)){
             List<OperationInquiryDBModel> operationInquiryDBModels = operationInquiryRepository.findBySessionIdAndClientId(sessionDBModel.getId(),sessionDBModel.getClientId());
             if (!operationInquiryDBModels.isEmpty()){
-                operationDetailsWSDTO.setOperationInquiry(operationInquiryDBModels.get(0));
             }
         }
         if (sessionDBModel.getSessionType().equalsIgnoreCase(AppConstant.AUTOMATIC_CAMPAIGN)){
             List<OperationFlowDBModel> operationFlowDBModels = operationFlowRepository.findBySessionIdAndClientId(sessionDBModel.getId(),sessionDBModel.getClientId());
             if (!operationFlowDBModels.isEmpty()){
-                operationDetailsWSDTO.setOperationFlow(operationFlowDBModels.get(0));
             }
         }
         operationDetailsWSDTO.setOperationClient(mapApiOperationClientWSDTO(clientDBModel));
