@@ -7,15 +7,15 @@ import com.faas.core.api.model.ws.inquiry.content.dto.ApiInquiryWSDTO;
 import com.faas.core.api.model.ws.inquiry.content.dto.ApiInquiryDTO;
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.client.content.ClientDBModel;
-import com.faas.core.base.model.db.client.inquiry.ClientInquiryDBModel;
+import com.faas.core.base.model.db.operation.inquiry.OperationInquiryDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.model.db.user.content.UserDBModel;
-import com.faas.core.base.model.ws.client.inquiry.dto.InquirySessionWSDTO;
+import com.faas.core.base.model.ws.operation.inquiry.dto.OperationInquirySessionWSDTO;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
-import com.faas.core.base.model.ws.client.inquiry.dto.ClientInquiryWSDTO;
+import com.faas.core.base.model.ws.operation.inquiry.dto.OperationInquiryWSDTO;
 import com.faas.core.base.repo.client.content.ClientRepository;
-import com.faas.core.base.repo.client.inquiry.ClientInquiryRepository;
+import com.faas.core.base.repo.operation.inquiry.OperationInquiryRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.client.session.SessionRepository;
 import com.faas.core.utils.config.AppConstant;
@@ -35,7 +35,7 @@ public class InquiryHelper {
     SessionHelper sessionHelper;
 
     @Autowired
-    ClientInquiryRepository clientInquiryRepository;
+    OperationInquiryRepository operationInquiryRepository;
 
     @Autowired
     SessionRepository sessionRepository;
@@ -67,16 +67,16 @@ public class InquiryHelper {
 
         ApiClientInquiryContent clientInquiryContent = new ApiClientInquiryContent();
         Optional<ClientDBModel> clientDBModel = clientRepository.findById(sessionDBModel.getClientId());
-        List<ClientInquiryDBModel> clientInquiryDBModels = clientInquiryRepository.findBySessionIdAndClientId(sessionDBModel.getId(),sessionDBModel.getClientId());
-        if (clientDBModel.isPresent() && !clientInquiryDBModels.isEmpty()){
+        List<OperationInquiryDBModel> operationInquiryDBModels = operationInquiryRepository.findBySessionIdAndClientId(sessionDBModel.getId(),sessionDBModel.getClientId());
+        if (clientDBModel.isPresent() && !operationInquiryDBModels.isEmpty()){
             clientInquiryContent.setClient(clientDBModel.get());
-            clientInquiryContent.setClientInquiry(clientInquiryDBModels.get(0));
+            clientInquiryContent.setClientInquiry(operationInquiryDBModels.get(0));
         }
         return clientInquiryContent;
     }
 
 
-    public ApiInquiryWSDTO getApiInquiryWSDTO(Page<ClientInquiryDBModel> inquiryModelPage){
+    public ApiInquiryWSDTO getApiInquiryWSDTO(Page<OperationInquiryDBModel> inquiryModelPage){
 
         ApiInquiryWSDTO inquiryWSDTO = new ApiInquiryWSDTO();
         List<ApiInquiryDTO> inquiryDTOS = new ArrayList<>();
@@ -90,10 +90,10 @@ public class InquiryHelper {
     }
 
 
-    public ApiInquiryDTO getApiInquiryDTO(ClientInquiryDBModel clientInquiryDBModel){
+    public ApiInquiryDTO getApiInquiryDTO(OperationInquiryDBModel operationInquiryDBModel){
 
         ApiInquiryDTO inquiryWrapper = new ApiInquiryDTO();
-        inquiryWrapper.setInquiry(clientInquiryDBModel);
+        inquiryWrapper.setInquiry(operationInquiryDBModel);
         //List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndClientId(inquiryDBModel.getSessionId(),inquiryDBModel.getClientId());
        // if (!sessionDBModels.isEmpty()){
         //    inquiryWrapper.setInquirySession(sessionDBModels.get(0));
@@ -112,50 +112,50 @@ public class InquiryHelper {
     }
 
 
-    public ClientInquiryDBModel mapClientInquiryDBModel(SessionDBModel sessionDBModel){
+    public OperationInquiryDBModel mapClientInquiryDBModel(SessionDBModel sessionDBModel){
 
-        ClientInquiryDBModel clientInquiryDBModel = new ClientInquiryDBModel();
+        OperationInquiryDBModel operationInquiryDBModel = new OperationInquiryDBModel();
 
-        clientInquiryDBModel.setSessionId(sessionDBModel.getId());
-        clientInquiryDBModel.setClientId(sessionDBModel.getClientId());
-        clientInquiryDBModel.setCampaignId(sessionDBModel.getCampaignId());
-        clientInquiryDBModel.setProcessId(sessionDBModel.getProcessId());
-        clientInquiryDBModel.setInquiryState(AppConstant.NEW_INQUIRY);
-        clientInquiryDBModel.setuDate(appUtils.getCurrentTimeStamp());
-        clientInquiryDBModel.setcDate(appUtils.getCurrentTimeStamp());
-        clientInquiryDBModel.setStatus(1);
+        operationInquiryDBModel.setSessionId(sessionDBModel.getId());
+        operationInquiryDBModel.setClientId(sessionDBModel.getClientId());
+        operationInquiryDBModel.setCampaignId(sessionDBModel.getCampaignId());
+        operationInquiryDBModel.setProcessId(sessionDBModel.getProcessId());
+        operationInquiryDBModel.setInquiryState(AppConstant.NEW_INQUIRY);
+        operationInquiryDBModel.setuDate(appUtils.getCurrentTimeStamp());
+        operationInquiryDBModel.setcDate(appUtils.getCurrentTimeStamp());
+        operationInquiryDBModel.setStatus(1);
 
-        return clientInquiryDBModel;
+        return operationInquiryDBModel;
     }
 
-    public List<InquirySessionWSDTO> createInquirySessionWSDTOS(List<SessionDBModel> sessionDBModels){
+    public List<OperationInquirySessionWSDTO> createInquirySessionWSDTOS(List<SessionDBModel> sessionDBModels){
 
-        List<InquirySessionWSDTO> inquirySessionWSDTOS = new ArrayList<>();
+        List<OperationInquirySessionWSDTO> operationInquirySessionWSDTOS = new ArrayList<>();
         for (SessionDBModel sessionDBModel : sessionDBModels) {
-            inquirySessionWSDTOS.add(createInquirySessionWSDTO(sessionDBModel));
+            operationInquirySessionWSDTOS.add(createInquirySessionWSDTO(sessionDBModel));
         }
-        return inquirySessionWSDTOS;
+        return operationInquirySessionWSDTOS;
     }
 
-    public InquirySessionWSDTO createInquirySessionWSDTO(SessionDBModel sessionDBModel){
+    public OperationInquirySessionWSDTO createInquirySessionWSDTO(SessionDBModel sessionDBModel){
 
-        InquirySessionWSDTO inquirySessionWSDTO = new InquirySessionWSDTO();
-        inquirySessionWSDTO.setClientSession(sessionDBModel);
-        List<ClientInquiryDBModel> clientInquiryDBModels = clientInquiryRepository.findBySessionIdAndClientId(sessionDBModel.getId(),sessionDBModel.getClientId());
-        if (!clientInquiryDBModels.isEmpty()){
-            inquirySessionWSDTO.setClientInquiry(clientInquiryDBModels.get(0));
+        OperationInquirySessionWSDTO operationInquirySessionWSDTO = new OperationInquirySessionWSDTO();
+        operationInquirySessionWSDTO.setClientSession(sessionDBModel);
+        List<OperationInquiryDBModel> operationInquiryDBModels = operationInquiryRepository.findBySessionIdAndClientId(sessionDBModel.getId(),sessionDBModel.getClientId());
+        if (!operationInquiryDBModels.isEmpty()){
+            operationInquirySessionWSDTO.setClientInquiry(operationInquiryDBModels.get(0));
         }
-        return inquirySessionWSDTO;
+        return operationInquirySessionWSDTO;
     }
 
 
-    public List<ClientInquiryWSDTO> createInquiryWSDTOS(List<ClientInquiryDBModel> clientInquiryDBModels){
+    public List<OperationInquiryWSDTO> createInquiryWSDTOS(List<OperationInquiryDBModel> operationInquiryDBModels){
 
-        List<ClientInquiryWSDTO> clientInquiryWSDTOS = new ArrayList<>();
-        for (ClientInquiryDBModel clientInquiryDBModel : clientInquiryDBModels) {
-            clientInquiryWSDTOS.add(new ClientInquiryWSDTO(clientInquiryDBModel));
+        List<OperationInquiryWSDTO> operationInquiryWSDTOS = new ArrayList<>();
+        for (OperationInquiryDBModel operationInquiryDBModel : operationInquiryDBModels) {
+            operationInquiryWSDTOS.add(new OperationInquiryWSDTO(operationInquiryDBModel));
         }
-        return clientInquiryWSDTOS;
+        return operationInquiryWSDTOS;
     }
 
 
@@ -171,7 +171,7 @@ public class InquiryHelper {
     }
 
 
-    public PaginationWSDTO createInquiryPagination(Page<ClientInquiryDBModel> inquiryDBModelPage){
+    public PaginationWSDTO createInquiryPagination(Page<OperationInquiryDBModel> inquiryDBModelPage){
 
         PaginationWSDTO paginationWSDTO = new PaginationWSDTO();
         paginationWSDTO.setPageSize(inquiryDBModelPage.getPageable().getPageSize());
@@ -183,7 +183,7 @@ public class InquiryHelper {
     }
 
 
-    public PaginationWSDTO createClientInquiryPagination(Page<ClientInquiryDBModel> clientInquiryDBModelPage){
+    public PaginationWSDTO createClientInquiryPagination(Page<OperationInquiryDBModel> clientInquiryDBModelPage){
 
         PaginationWSDTO paginationWSDTO = new PaginationWSDTO();
         paginationWSDTO.setPageSize(clientInquiryDBModelPage.getPageable().getPageSize());
@@ -252,21 +252,21 @@ public class InquiryHelper {
     }
 
 
-    public ApiInquiryWSDTO mapApiInquiryWSDTO(ClientInquiryDBModel clientInquiryDBModel){
+    public ApiInquiryWSDTO mapApiInquiryWSDTO(OperationInquiryDBModel operationInquiryDBModel){
 
         ApiInquiryWSDTO inquiryWSDTO = new ApiInquiryWSDTO();
         List<ApiInquiryDTO>inquiryDTOS = new ArrayList<>();
-        inquiryDTOS.add(mapApiInquiryDTO(clientInquiryDBModel));
+        inquiryDTOS.add(mapApiInquiryDTO(operationInquiryDBModel));
         inquiryWSDTO.setInquiries(inquiryDTOS);
 
         return inquiryWSDTO;
     }
 
 
-    public ApiInquiryDTO mapApiInquiryDTO(ClientInquiryDBModel clientInquiryDBModel){
+    public ApiInquiryDTO mapApiInquiryDTO(OperationInquiryDBModel operationInquiryDBModel){
 
         ApiInquiryDTO inquiryWrapper = new ApiInquiryDTO();
-        inquiryWrapper.setInquiry(clientInquiryDBModel);
+        inquiryWrapper.setInquiry(operationInquiryDBModel);
         //List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndClientId(inquiryDBModel.getSessionId(),inquiryDBModel.getClientId());
         //if (!sessionDBModels.isEmpty()){
         //    inquiryWrapper.setInquirySession(sessionDBModels.get(0));

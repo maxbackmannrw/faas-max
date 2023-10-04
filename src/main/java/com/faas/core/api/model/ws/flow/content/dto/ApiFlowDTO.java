@@ -1,26 +1,26 @@
 package com.faas.core.api.model.ws.flow.content.dto;
 
-import com.faas.core.base.model.db.client.flow.ClientFlowDBModel;
+import com.faas.core.base.model.db.operation.flow.OperationFlowDBModel;
 import com.faas.core.base.model.db.client.session.SessionDBModel;
 
 public class ApiFlowDTO {
 
-    private ClientFlowDBModel flow;
+    private OperationFlowDBModel flow;
     private SessionDBModel flowSession;
 
     public ApiFlowDTO() {
     }
 
-    public ApiFlowDTO(ClientFlowDBModel flow, SessionDBModel flowSession) {
+    public ApiFlowDTO(OperationFlowDBModel flow, SessionDBModel flowSession) {
         this.flow = flow;
         this.flowSession = flowSession;
     }
 
-    public ClientFlowDBModel getFlow() {
+    public OperationFlowDBModel getFlow() {
         return flow;
     }
 
-    public void setFlow(ClientFlowDBModel flow) {
+    public void setFlow(OperationFlowDBModel flow) {
         this.flow = flow;
     }
 

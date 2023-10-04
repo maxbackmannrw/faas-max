@@ -189,27 +189,26 @@ public class BaseRoute {
 
 
 
+    public static final String GET_OPERATION_INQUIRY_CAMPAIGNS = "getoperationinquirycampaigns";
+    public static final String GET_OPERATION_INQUIRY_CAMPAIGN = "getoperationinquirycampaign";
 
-    public static final String GET_INQUIRY_CAMPAIGNS = "getinquirycampaigns";
-    public static final String GET_INQUIRY_CAMPAIGN = "getinquirycampaign";
-
-    public static final String GET_ALL_INQUIRIES = "getallinquiries";
-    public static final String GET_INQUIRIES_BY_STATE = "getinquiriesbystate";
-    public static final String GET_INQUIRY = "getinquiry";
-    public static final String CREATE_INQUIRY = "createinquiry";
-    public static final String UPDATE_INQUIRY = "updateinquiry";
-    public static final String REMOVE_INQUIRY = "removeinquiry";
+    public static final String GET_ALL_OPERATION_INQUIRIES = "getalloperationinquiries";
+    public static final String GET_OPERATION_INQUIRIES_BY_STATE = "getoperationinquiriesbystate";
+    public static final String GET_OPERATION_INQUIRY = "getoperationinquiry";
+    public static final String CREATE_OPERATION_INQUIRY = "createoperationinquiry";
+    public static final String UPDATE_OPERATION_INQUIRY = "updateoperationinquiry";
+    public static final String REMOVE_OPERATION_INQUIRY = "removeoperationinquiry";
 
 
-    public static final String GET_FLOW_CAMPAIGNS = "getflowcampaigns";
-    public static final String GET_FLOW_CAMPAIGN = "getflowcampaign";
+    public static final String GET_OPERATION_FLOW_CAMPAIGNS = "getoperationflowcampaigns";
+    public static final String GET_OPERATION_FLOW_CAMPAIGN = "getoperationflowcampaign";
 
-    public static final String GET_ALL_FLOWS = "getallflows";
-    public static final String GET_FLOWS_BY_STATE = "getflowsbystate";
-    public static final String GET_FLOW = "getflow";
-    public static final String CREATE_FLOW = "createflow";
-    public static final String UPDATE_FLOW = "updateflow";
-    public static final String REMOVE_FLOW = "removeflow";
+    public static final String GET_ALL_OPERATION_FLOWS = "getalloperationflows";
+    public static final String GET_OPERATION_FLOWS_BY_STATE = "getoperationflowsbystate";
+    public static final String GET_OPERATION_FLOW = "getoperationflow";
+    public static final String CREATE_OPERATION_FLOW = "createoperationflow";
+    public static final String UPDATE_OPERATION_FLOW = "updateoperationflow";
+    public static final String REMOVE_OPERATION_FLOW = "removeoperationflow";
 
 
 

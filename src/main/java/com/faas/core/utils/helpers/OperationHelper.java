@@ -27,8 +27,8 @@ import com.faas.core.base.model.db.process.details.scenario.ProcessScenarioDBMod
 import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.model.db.user.details.UserDetailsDBModel;
 import com.faas.core.base.repo.client.details.*;
-import com.faas.core.base.repo.client.flow.ClientFlowRepository;
-import com.faas.core.base.repo.client.inquiry.ClientInquiryRepository;
+import com.faas.core.base.repo.operation.flow.OperationFlowRepository;
+import com.faas.core.base.repo.operation.inquiry.OperationInquiryRepository;
 import com.faas.core.base.repo.operation.channel.*;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.operation.scenario.OperationScenarioRepository;
@@ -56,10 +56,10 @@ public class OperationHelper {
     ChannelHelper channelHelper;
 
     @Autowired
-    ClientFlowRepository clientFlowRepository;
+    OperationFlowRepository operationFlowRepository;
 
     @Autowired
-    ClientInquiryRepository clientInquiryRepository;
+    OperationInquiryRepository operationInquiryRepository;
 
     @Autowired
     OperationRepository operationRepository;

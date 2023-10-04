@@ -2,14 +2,14 @@ package com.faas.core.utils.helpers;
 
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.client.content.ClientDBModel;
-import com.faas.core.base.model.db.client.flow.ClientFlowDBModel;
+import com.faas.core.base.model.db.operation.flow.OperationFlowDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.model.db.user.content.UserDBModel;
-import com.faas.core.base.model.ws.client.flow.dto.ClientFlowWSDTO;
-import com.faas.core.base.model.ws.client.flow.dto.FlowSessionWSDTO;
+import com.faas.core.base.model.ws.operation.flow.dto.OperationFlowWSDTO;
+import com.faas.core.base.model.ws.operation.flow.dto.OperationFlowSessionWSDTO;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
-import com.faas.core.base.repo.client.flow.ClientFlowRepository;
+import com.faas.core.base.repo.operation.flow.OperationFlowRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,64 +23,64 @@ import java.util.List;
 public class FlowHelper {
 
     @Autowired
-    ClientFlowRepository clientFlowRepository;
+    OperationFlowRepository operationFlowRepository;
 
     @Autowired
     AppUtils appUtils;
 
 
-    public ClientFlowDBModel mapClientFlowDBModel(SessionDBModel sessionDBModel){
+    public OperationFlowDBModel mapClientFlowDBModel(SessionDBModel sessionDBModel){
 
-        ClientFlowDBModel clientFlowDBModel = new ClientFlowDBModel();
-        clientFlowDBModel.setSessionId(sessionDBModel.getId());
-        clientFlowDBModel.setClientId(sessionDBModel.getClientId());
-        clientFlowDBModel.setCampaignId(sessionDBModel.getCampaignId());
-        clientFlowDBModel.setProcessId(sessionDBModel.getProcessId());
-        clientFlowDBModel.setFlowState(AppConstant.NEW_FLOW);
-        clientFlowDBModel.setuDate(appUtils.getCurrentTimeStamp());
-        clientFlowDBModel.setcDate(appUtils.getCurrentTimeStamp());
-        clientFlowDBModel.setStatus(1);
+        OperationFlowDBModel operationFlowDBModel = new OperationFlowDBModel();
+        operationFlowDBModel.setSessionId(sessionDBModel.getId());
+        operationFlowDBModel.setClientId(sessionDBModel.getClientId());
+        operationFlowDBModel.setCampaignId(sessionDBModel.getCampaignId());
+        operationFlowDBModel.setProcessId(sessionDBModel.getProcessId());
+        operationFlowDBModel.setFlowState(AppConstant.NEW_FLOW);
+        operationFlowDBModel.setuDate(appUtils.getCurrentTimeStamp());
+        operationFlowDBModel.setcDate(appUtils.getCurrentTimeStamp());
+        operationFlowDBModel.setStatus(1);
 
-        return clientFlowDBModel;
+        return operationFlowDBModel;
     }
 
 
-    public List<FlowSessionWSDTO> createFlowSessionWSDTOS(List<SessionDBModel> sessionDBModels){
+    public List<OperationFlowSessionWSDTO> createFlowSessionWSDTOS(List<SessionDBModel> sessionDBModels){
 
-        List<FlowSessionWSDTO> flowSessionWSDTOS = new ArrayList<>();
+        List<OperationFlowSessionWSDTO> operationFlowSessionWSDTOS = new ArrayList<>();
         for (SessionDBModel sessionDBModel : sessionDBModels) {
-            flowSessionWSDTOS.add(createFlowSessionWSDTO(sessionDBModel));
+            operationFlowSessionWSDTOS.add(createFlowSessionWSDTO(sessionDBModel));
         }
-        return flowSessionWSDTOS;
+        return operationFlowSessionWSDTOS;
     }
 
 
-    public FlowSessionWSDTO createFlowSessionWSDTO(SessionDBModel sessionDBModel){
+    public OperationFlowSessionWSDTO createFlowSessionWSDTO(SessionDBModel sessionDBModel){
 
-        FlowSessionWSDTO flowSessionWSDTO = new FlowSessionWSDTO();
-        flowSessionWSDTO.setClientSession(sessionDBModel);
-        List<ClientFlowDBModel> clientFlowDBModels = clientFlowRepository.findBySessionIdAndClientId(sessionDBModel.getId(),sessionDBModel.getClientId());
-        if (!clientFlowDBModels.isEmpty()){
-            flowSessionWSDTO.setClientFlow(clientFlowDBModels.get(0));
+        OperationFlowSessionWSDTO operationFlowSessionWSDTO = new OperationFlowSessionWSDTO();
+        operationFlowSessionWSDTO.setClientSession(sessionDBModel);
+        List<OperationFlowDBModel> operationFlowDBModels = operationFlowRepository.findBySessionIdAndClientId(sessionDBModel.getId(),sessionDBModel.getClientId());
+        if (!operationFlowDBModels.isEmpty()){
+            operationFlowSessionWSDTO.setClientFlow(operationFlowDBModels.get(0));
         }
-        return flowSessionWSDTO;
+        return operationFlowSessionWSDTO;
     }
 
 
-    public List<ClientFlowWSDTO> createFlowWSDTOS(List<ClientFlowDBModel> clientFlowDBModels){
+    public List<OperationFlowWSDTO> createFlowWSDTOS(List<OperationFlowDBModel> operationFlowDBModels){
 
-        List<ClientFlowWSDTO> clientFlowWSDTOS = new ArrayList<>();
-        for (ClientFlowDBModel clientFlowDBModel : clientFlowDBModels) {
-            ClientFlowWSDTO clientFlowWSDTO = new ClientFlowWSDTO();
-            clientFlowWSDTO.setClientFlow(clientFlowDBModel);
-            clientFlowWSDTOS.add(clientFlowWSDTO);
+        List<OperationFlowWSDTO> operationFlowWSDTOS = new ArrayList<>();
+        for (OperationFlowDBModel operationFlowDBModel : operationFlowDBModels) {
+            OperationFlowWSDTO operationFlowWSDTO = new OperationFlowWSDTO();
+            operationFlowWSDTO.setClientFlow(operationFlowDBModel);
+            operationFlowWSDTOS.add(operationFlowWSDTO);
         }
-        return clientFlowWSDTOS;
+        return operationFlowWSDTOS;
     }
 
 
 
-    public PaginationWSDTO createFlowPagination(Page<ClientFlowDBModel> flowDBModelPage){
+    public PaginationWSDTO createFlowPagination(Page<OperationFlowDBModel> flowDBModelPage){
 
         PaginationWSDTO paginationWSDTO = new PaginationWSDTO();
         paginationWSDTO.setPageSize(flowDBModelPage.getPageable().getPageSize());

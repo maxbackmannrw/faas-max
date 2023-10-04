@@ -6,8 +6,8 @@ import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;
-import com.faas.core.base.repo.client.flow.ClientFlowRepository;
-import com.faas.core.base.repo.client.inquiry.ClientInquiryRepository;
+import com.faas.core.base.repo.operation.flow.OperationFlowRepository;
+import com.faas.core.base.repo.operation.inquiry.OperationInquiryRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.client.session.SessionRepository;
@@ -44,10 +44,10 @@ public class ApiOperationFramework {
     ClientRepository clientRepository;
 
     @Autowired
-    ClientInquiryRepository clientInquiryRepository;
+    OperationInquiryRepository operationInquiryRepository;
 
     @Autowired
-    ClientFlowRepository clientFlowRepository;
+    OperationFlowRepository operationFlowRepository;
 
     @Autowired
     AppUtils appUtils;

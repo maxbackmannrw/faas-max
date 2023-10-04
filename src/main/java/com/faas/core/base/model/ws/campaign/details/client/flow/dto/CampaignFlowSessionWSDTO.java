@@ -1,28 +1,28 @@
 package com.faas.core.base.model.ws.campaign.details.client.flow.dto;
 
-import com.faas.core.base.model.ws.client.flow.dto.FlowSessionWSDTO;
+import com.faas.core.base.model.ws.operation.flow.dto.OperationFlowSessionWSDTO;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
 
 import java.util.List;
 
 public class CampaignFlowSessionWSDTO {
 
-    private List<FlowSessionWSDTO> flowSessions;
+    private List<OperationFlowSessionWSDTO> flowSessions;
     private PaginationWSDTO pagination;
 
     public CampaignFlowSessionWSDTO() {
     }
 
-    public CampaignFlowSessionWSDTO(List<FlowSessionWSDTO> flowSessions, PaginationWSDTO pagination) {
+    public CampaignFlowSessionWSDTO(List<OperationFlowSessionWSDTO> flowSessions, PaginationWSDTO pagination) {
         this.flowSessions = flowSessions;
         this.pagination = pagination;
     }
 
-    public List<FlowSessionWSDTO> getFlowSessions() {
+    public List<OperationFlowSessionWSDTO> getFlowSessions() {
         return flowSessions;
     }
 
-    public void setFlowSessions(List<FlowSessionWSDTO> flowSessions) {
+    public void setFlowSessions(List<OperationFlowSessionWSDTO> flowSessions) {
         this.flowSessions = flowSessions;
     }
 

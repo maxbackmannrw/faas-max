@@ -2,21 +2,18 @@ package com.faas.core.base.framework.campaign.details.client.flow;
 
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.client.content.ClientDBModel;
-import com.faas.core.base.model.db.client.flow.ClientFlowDBModel;
-import com.faas.core.base.model.db.client.inquiry.ClientInquiryDBModel;
+import com.faas.core.base.model.db.operation.flow.OperationFlowDBModel;
 import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.user.content.UserDBModel;
 import com.faas.core.base.model.ws.campaign.details.client.flow.dto.CampaignFlowSessionWSDTO;
 import com.faas.core.base.model.ws.campaign.details.client.flow.CampaignFlowSessionRequest;
 import com.faas.core.base.model.ws.campaign.details.client.flow.dto.CampaignFlowSessionRequestDTO;
-import com.faas.core.base.model.ws.client.flow.dto.ClientFlowWSDTO;
-import com.faas.core.base.model.ws.client.flow.dto.FlowSessionWSDTO;
-import com.faas.core.base.model.ws.client.inquiry.dto.InquirySessionWSDTO;
+import com.faas.core.base.model.ws.operation.flow.dto.OperationFlowSessionWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;
-import com.faas.core.base.repo.client.flow.ClientFlowRepository;
+import com.faas.core.base.repo.operation.flow.OperationFlowRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.client.session.SessionRepository;
@@ -50,7 +47,7 @@ public class CampaignFlowSessionFramework {
     FlowHelper flowHelper;
 
     @Autowired
-    ClientFlowRepository clientFlowRepository;
+    OperationFlowRepository operationFlowRepository;
 
     @Autowired
     SessionRepository sessionRepository;
@@ -104,7 +101,7 @@ public class CampaignFlowSessionFramework {
         return null;
     }
 
-    public FlowSessionWSDTO getCampaignFlowSessionService(long userId,long sessionId) {
+    public OperationFlowSessionWSDTO getCampaignFlowSessionService(long userId, long sessionId) {
 
         Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
         if (sessionDBModel.isPresent()){
@@ -113,22 +110,22 @@ public class CampaignFlowSessionFramework {
         return null;
     }
 
-    public List<FlowSessionWSDTO> createCampaignFlowSessionService(CampaignFlowSessionRequest flowSessionRequest) {
+    public List<OperationFlowSessionWSDTO> createCampaignFlowSessionService(CampaignFlowSessionRequest flowSessionRequest) {
 
-        List<FlowSessionWSDTO> flowSessionWSDTOS = new ArrayList<>();
+        List<OperationFlowSessionWSDTO> operationFlowSessionWSDTOS = new ArrayList<>();
         for (int i = 0; i< flowSessionRequest.getSessionRequests().size(); i++){
-            FlowSessionWSDTO flowSessionWSDTO = createCampaignFlowSession(flowSessionRequest.getSessionRequests().get(i));
-            if (flowSessionWSDTO != null){
-                flowSessionWSDTOS.add(flowSessionWSDTO);
+            OperationFlowSessionWSDTO operationFlowSessionWSDTO = createCampaignFlowSession(flowSessionRequest.getSessionRequests().get(i));
+            if (operationFlowSessionWSDTO != null){
+                operationFlowSessionWSDTOS.add(operationFlowSessionWSDTO);
             }
         }
-        return flowSessionWSDTOS;
+        return operationFlowSessionWSDTOS;
     }
 
 
-    public FlowSessionWSDTO createCampaignFlowSession(CampaignFlowSessionRequestDTO flowSessionRequest){
+    public OperationFlowSessionWSDTO createCampaignFlowSession(CampaignFlowSessionRequestDTO flowSessionRequest){
 
-        if (!clientFlowRepository.existsByClientIdAndCampaignId(flowSessionRequest.getClientId(),flowSessionRequest.getCampaignId())){
+        if (!operationFlowRepository.existsByClientIdAndCampaignId(flowSessionRequest.getClientId(),flowSessionRequest.getCampaignId())){
 
             Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(flowSessionRequest.getCampaignId());
             Optional<ClientDBModel> clientDBModel = clientRepository.findById(flowSessionRequest.getClientId());
@@ -141,7 +138,7 @@ public class CampaignFlowSessionFramework {
 
                 SessionDBModel sessionDBModel = sessionRepository.save(flowHelper.mapFlowSession(updatedClient,agentDBModel.get(),campaignDBModel.get()));
                 OperationDBModel operationDBModel = operationRepository.save(flowHelper.mapFlowOperation(sessionDBModel));
-                clientFlowRepository.save(flowHelper.mapClientFlowDBModel(sessionDBModel));
+                operationFlowRepository.save(flowHelper.mapClientFlowDBModel(sessionDBModel));
 
                 activityHelper.createOperationActivity(sessionDBModel.getId(),operationDBModel.getId(),AppConstant.CREATE_SESSION_ACTIVITY,AppConstant.SESSION_ACTIVITY,String.valueOf(sessionDBModel.getAgentId()),AppConstant.USER_TYPE,String.valueOf(sessionDBModel.getId()),AppConstant.SESSION_TYPE);
                 activityHelper.createOperationActivity(sessionDBModel.getId(),operationDBModel.getId(),AppConstant.CREATE_OPERATION_ACTIVITY,AppConstant.OPERATION_ACTIVITY,String.valueOf(sessionDBModel.getAgentId()),AppConstant.USER_TYPE,String.valueOf(sessionDBModel.getId()),AppConstant.OPERATION_TYPE);
@@ -153,7 +150,7 @@ public class CampaignFlowSessionFramework {
     }
 
 
-    public FlowSessionWSDTO updateCampaignFlowSessionService(long userId,long sessionId,long agentId,String campaignId,String flowState) {
+    public OperationFlowSessionWSDTO updateCampaignFlowSessionService(long userId, long sessionId, long agentId, String campaignId, String flowState) {
 
     /*    List<FlowDBModel> flowDBModels = flowRepository.findByIdAndClientId(flowId, clientId);
         if (flowDBModels.size() > 0) {
@@ -165,11 +162,11 @@ public class CampaignFlowSessionFramework {
         return null;
     }
 
-    public FlowSessionWSDTO removeCampaignFlowSessionService(long userId,long sessionId) {
+    public OperationFlowSessionWSDTO removeCampaignFlowSessionService(long userId, long sessionId) {
 
-        List<ClientFlowDBModel> clientFlowDBModels = clientFlowRepository.findBySessionId(sessionId);
+        List<OperationFlowDBModel> operationFlowDBModels = operationFlowRepository.findBySessionId(sessionId);
         Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
-        if (!clientFlowDBModels.isEmpty() && sessionDBModel.isPresent()) {
+        if (!operationFlowDBModels.isEmpty() && sessionDBModel.isPresent()) {
 
             Optional<ClientDBModel> clientDBModel = clientRepository.findById(sessionDBModel.get().getClientId());
             if (clientDBModel.isPresent()) {
@@ -178,10 +175,10 @@ public class CampaignFlowSessionFramework {
                 clientRepository.save(clientDBModel.get());
             }
 
-            FlowSessionWSDTO deletedFlowSession = flowHelper.createFlowSessionWSDTO(sessionDBModel.get());
+            OperationFlowSessionWSDTO deletedFlowSession = flowHelper.createFlowSessionWSDTO(sessionDBModel.get());
             sessionRepository.delete(sessionDBModel.get());
             operationRepository.deleteAll(operationRepository.findBySessionIdAndClientId(sessionDBModel.get().getId(), sessionDBModel.get().getClientId()));
-            clientFlowRepository.deleteAll(clientFlowDBModels);
+            operationFlowRepository.deleteAll(operationFlowDBModels);
 
             return deletedFlowSession;
         }

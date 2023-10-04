@@ -1,26 +1,26 @@
 package com.faas.core.api.model.ws.inquiry.content.dto;
 
-import com.faas.core.base.model.db.client.inquiry.ClientInquiryDBModel;
+import com.faas.core.base.model.db.operation.inquiry.OperationInquiryDBModel;
 import com.faas.core.base.model.db.client.session.SessionDBModel;
 
 public class ApiInquiryDTO {
 
-    private ClientInquiryDBModel inquiry;
+    private OperationInquiryDBModel inquiry;
     private SessionDBModel inquirySession;
 
     public ApiInquiryDTO() {
     }
 
-    public ApiInquiryDTO(ClientInquiryDBModel inquiry, SessionDBModel inquirySession) {
+    public ApiInquiryDTO(OperationInquiryDBModel inquiry, SessionDBModel inquirySession) {
         this.inquiry = inquiry;
         this.inquirySession = inquirySession;
     }
 
-    public ClientInquiryDBModel getInquiry() {
+    public OperationInquiryDBModel getInquiry() {
         return inquiry;
     }
 
-    public void setInquiry(ClientInquiryDBModel inquiry) {
+    public void setInquiry(OperationInquiryDBModel inquiry) {
         this.inquiry = inquiry;
     }
 

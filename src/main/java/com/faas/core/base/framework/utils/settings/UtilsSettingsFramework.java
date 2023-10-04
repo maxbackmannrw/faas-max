@@ -10,8 +10,8 @@ import com.faas.core.base.repo.client.details.ClientAddressRepository;
 import com.faas.core.base.repo.client.details.ClientDataRepository;
 import com.faas.core.base.repo.client.details.ClientEmailRepository;
 import com.faas.core.base.repo.client.details.ClientPhoneRepository;
-import com.faas.core.base.repo.client.flow.ClientFlowRepository;
-import com.faas.core.base.repo.client.inquiry.ClientInquiryRepository;
+import com.faas.core.base.repo.operation.flow.OperationFlowRepository;
+import com.faas.core.base.repo.operation.inquiry.OperationInquiryRepository;
 import com.faas.core.base.repo.operation.channel.*;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.operation.scenario.OperationScenarioRepository;
@@ -74,10 +74,10 @@ public class UtilsSettingsFramework {
     WappMessageRepository wappMessageRepository;
 
     @Autowired
-    ClientInquiryRepository clientInquiryRepository;
+    OperationInquiryRepository operationInquiryRepository;
 
     @Autowired
-    ClientFlowRepository clientFlowRepository;
+    OperationFlowRepository operationFlowRepository;
 
     @Autowired
     ActionTempRepository actionTempRepository;
@@ -234,7 +234,7 @@ public class UtilsSettingsFramework {
 
     public void cleanSystemTablesService() {
 
-        clientInquiryRepository.deleteAll();
+        operationInquiryRepository.deleteAll();
         actionTempRepository.deleteAll();
         assetRepository.deleteAll();
         processRepository.deleteAll();

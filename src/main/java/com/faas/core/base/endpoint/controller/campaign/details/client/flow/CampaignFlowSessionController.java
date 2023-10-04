@@ -3,8 +3,7 @@ package com.faas.core.base.endpoint.controller.campaign.details.client.flow;
 import com.faas.core.base.middleware.campaign.details.client.flow.CampaignFlowSessionMiddleware;
 import com.faas.core.base.model.ws.campaign.details.client.flow.CampaignFlowSessionWSModel;
 import com.faas.core.base.model.ws.campaign.details.client.flow.CampaignFlowSessionRequest;
-import com.faas.core.base.model.ws.client.flow.ClientFlowWSModel;
-import com.faas.core.base.model.ws.client.flow.FlowSessionWSModel;
+import com.faas.core.base.model.ws.operation.flow.OperationFlowSessionWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,7 +59,7 @@ public class CampaignFlowSessionController {
     public ResponseEntity<?> getCampaignFlowSession(@RequestParam long userId,
                                                     @RequestParam long sessionId) {
 
-        FlowSessionWSModel response = campaignFlowSessionMiddleware.getCampaignFlowSession(userId,sessionId);
+        OperationFlowSessionWSModel response = campaignFlowSessionMiddleware.getCampaignFlowSession(userId,sessionId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -71,7 +70,7 @@ public class CampaignFlowSessionController {
     @RequestMapping(value = BaseRoute.CREATE_CAMPAIGN_FLOW_SESSION, method = RequestMethod.POST)
     public ResponseEntity<?> createCampaignFlowSession(@RequestBody CampaignFlowSessionRequest flowSessionRequest) {
 
-        FlowSessionWSModel response = campaignFlowSessionMiddleware.createCampaignFlowSession(flowSessionRequest);
+        OperationFlowSessionWSModel response = campaignFlowSessionMiddleware.createCampaignFlowSession(flowSessionRequest);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -86,7 +85,7 @@ public class CampaignFlowSessionController {
                                                        @RequestParam String campaignId,
                                                        @RequestParam String flowState) {
 
-        FlowSessionWSModel response = campaignFlowSessionMiddleware.updateCampaignFlowSession(userId,sessionId,agentId,campaignId,flowState);
+        OperationFlowSessionWSModel response = campaignFlowSessionMiddleware.updateCampaignFlowSession(userId,sessionId,agentId,campaignId,flowState);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -98,7 +97,7 @@ public class CampaignFlowSessionController {
     public ResponseEntity<?> removeCampaignFlowSession(@RequestParam long userId,
                                                        @RequestParam long sessionId) {
 
-        FlowSessionWSModel response = campaignFlowSessionMiddleware.removeCampaignFlowSession(userId,sessionId);
+        OperationFlowSessionWSModel response = campaignFlowSessionMiddleware.removeCampaignFlowSession(userId,sessionId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

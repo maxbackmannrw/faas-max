@@ -3,8 +3,7 @@ package com.faas.core.base.endpoint.controller.campaign.details.client.inquiry;
 import com.faas.core.base.middleware.campaign.details.client.inquiry.CampaignInquirySessionMiddleware;
 import com.faas.core.base.model.ws.campaign.details.client.inquiry.CampaignInquirySessionWSModel;
 import com.faas.core.base.model.ws.campaign.details.client.inquiry.CampaignInquirySessionRequest;
-import com.faas.core.base.model.ws.client.inquiry.ClientInquiryWSModel;
-import com.faas.core.base.model.ws.client.inquiry.InquirySessionWSModel;
+import com.faas.core.base.model.ws.operation.inquiry.OperationInquirySessionWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,7 +59,7 @@ public class CampaignInquirySessionController {
     public ResponseEntity<?> getCampaignInquirySession(@RequestParam long userId,
                                                        @RequestParam long sessionId) {
 
-        InquirySessionWSModel response = campaignInquirySessionMiddleware.getCampaignInquirySession(userId,sessionId);
+        OperationInquirySessionWSModel response = campaignInquirySessionMiddleware.getCampaignInquirySession(userId,sessionId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -71,7 +70,7 @@ public class CampaignInquirySessionController {
     @RequestMapping(value = BaseRoute.CREATE_CAMPAIGN_INQUIRY_SESSION, method = RequestMethod.POST)
     public ResponseEntity<?> createCampaignInquirySession(@RequestBody CampaignInquirySessionRequest inquirySessionRequest) {
 
-        InquirySessionWSModel response = campaignInquirySessionMiddleware.createCampaignInquirySession(inquirySessionRequest);
+        OperationInquirySessionWSModel response = campaignInquirySessionMiddleware.createCampaignInquirySession(inquirySessionRequest);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -86,7 +85,7 @@ public class CampaignInquirySessionController {
                                                           @RequestParam String campaignId,
                                                           @RequestParam String inquiryState) {
 
-        InquirySessionWSModel response = campaignInquirySessionMiddleware.updateCampaignInquirySession(userId,sessionId,agentId,campaignId,inquiryState);
+        OperationInquirySessionWSModel response = campaignInquirySessionMiddleware.updateCampaignInquirySession(userId,sessionId,agentId,campaignId,inquiryState);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -98,7 +97,7 @@ public class CampaignInquirySessionController {
     public ResponseEntity<?> removeCampaignInquirySession(@RequestParam long userId,
                                                           @RequestParam long sessionId) {
 
-        InquirySessionWSModel response = campaignInquirySessionMiddleware.removeCampaignInquirySession(userId,sessionId);
+        OperationInquirySessionWSModel response = campaignInquirySessionMiddleware.removeCampaignInquirySession(userId,sessionId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

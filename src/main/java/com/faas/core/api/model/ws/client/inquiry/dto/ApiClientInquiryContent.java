@@ -1,19 +1,19 @@
  package com.faas.core.api.model.ws.client.inquiry.dto;
 
  import com.faas.core.base.model.db.client.content.ClientDBModel;
- import com.faas.core.base.model.db.client.inquiry.ClientInquiryDBModel;
+ import com.faas.core.base.model.db.operation.inquiry.OperationInquiryDBModel;
  import com.faas.core.base.model.db.client.session.SessionDBModel;
 
  public class ApiClientInquiryContent {
 
     private ClientDBModel client;
     private SessionDBModel clientSession;
-    private ClientInquiryDBModel clientInquiry;
+    private OperationInquiryDBModel clientInquiry;
 
      public ApiClientInquiryContent() {
      }
 
-     public ApiClientInquiryContent(ClientDBModel client, SessionDBModel clientSession, ClientInquiryDBModel clientInquiry) {
+     public ApiClientInquiryContent(ClientDBModel client, SessionDBModel clientSession, OperationInquiryDBModel clientInquiry) {
          this.client = client;
          this.clientSession = clientSession;
          this.clientInquiry = clientInquiry;
@@ -35,11 +35,11 @@
          this.clientSession = clientSession;
      }
 
-     public ClientInquiryDBModel getClientInquiry() {
+     public OperationInquiryDBModel getClientInquiry() {
          return clientInquiry;
      }
 
-     public void setClientInquiry(ClientInquiryDBModel clientInquiry) {
+     public void setClientInquiry(OperationInquiryDBModel clientInquiry) {
          this.clientInquiry = clientInquiry;
      }
  }

@@ -3,12 +3,10 @@ package com.faas.core.base.middleware.campaign.details.client.inquiry;
 import com.faas.core.base.framework.campaign.details.client.inquiry.CampaignInquirySessionFramework;
 import com.faas.core.base.model.ws.campaign.details.client.inquiry.CampaignInquirySessionWSModel;
 import com.faas.core.base.model.ws.campaign.details.client.inquiry.dto.CampaignInquirySessionWSDTO;
-import com.faas.core.base.model.ws.client.inquiry.InquirySessionWSModel;
-import com.faas.core.base.model.ws.client.inquiry.dto.InquirySessionWSDTO;
+import com.faas.core.base.model.ws.operation.inquiry.OperationInquirySessionWSModel;
+import com.faas.core.base.model.ws.operation.inquiry.dto.OperationInquirySessionWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.model.ws.campaign.details.client.inquiry.CampaignInquirySessionRequest;
-import com.faas.core.base.model.ws.client.inquiry.ClientInquiryWSModel;
-import com.faas.core.base.model.ws.client.inquiry.dto.ClientInquiryWSDTO;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -61,18 +59,18 @@ public class CampaignInquirySessionMiddleware {
         return response;
     }
 
-    public InquirySessionWSModel getCampaignInquirySession(long userId,long sessionId) {
+    public OperationInquirySessionWSModel getCampaignInquirySession(long userId, long sessionId) {
 
-        InquirySessionWSModel response = new InquirySessionWSModel();
+        OperationInquirySessionWSModel response = new OperationInquirySessionWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<InquirySessionWSDTO>inquirySessionWSDTOS = new ArrayList<>();
+        List<OperationInquirySessionWSDTO> operationInquirySessionWSDTOS = new ArrayList<>();
 
-        InquirySessionWSDTO inquirySessionWSDTO = campaignInquirySessionFramework.getCampaignInquirySessionService(userId,sessionId);
-        if (inquirySessionWSDTO != null){
-            inquirySessionWSDTOS.add(inquirySessionWSDTO);
+        OperationInquirySessionWSDTO operationInquirySessionWSDTO = campaignInquirySessionFramework.getCampaignInquirySessionService(userId,sessionId);
+        if (operationInquirySessionWSDTO != null){
+            operationInquirySessionWSDTOS.add(operationInquirySessionWSDTO);
         }
 
-        response.setInquirySessions(inquirySessionWSDTOS);
+        response.setInquirySessions(operationInquirySessionWSDTOS);
         general.setOperation("getCampaignInquirySession");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -82,14 +80,14 @@ public class CampaignInquirySessionMiddleware {
         return response;
     }
 
-    public InquirySessionWSModel createCampaignInquirySession(CampaignInquirySessionRequest inquirySessionRequest) {
+    public OperationInquirySessionWSModel createCampaignInquirySession(CampaignInquirySessionRequest inquirySessionRequest) {
 
-        InquirySessionWSModel response = new InquirySessionWSModel();
+        OperationInquirySessionWSModel response = new OperationInquirySessionWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<InquirySessionWSDTO> inquirySessionWSDTOS = campaignInquirySessionFramework.createCampaignInquirySessionService(inquirySessionRequest);
-        if (inquirySessionWSDTOS != null){
-            response.setInquirySessions(inquirySessionWSDTOS);
+        List<OperationInquirySessionWSDTO> operationInquirySessionWSDTOS = campaignInquirySessionFramework.createCampaignInquirySessionService(inquirySessionRequest);
+        if (operationInquirySessionWSDTOS != null){
+            response.setInquirySessions(operationInquirySessionWSDTOS);
         }
 
         general.setOperation("createCampaignInquirySession");
@@ -102,18 +100,18 @@ public class CampaignInquirySessionMiddleware {
     }
 
 
-    public InquirySessionWSModel updateCampaignInquirySession(long userId,long sessionId,long agentId,String campaignId,String inquiryState) {
+    public OperationInquirySessionWSModel updateCampaignInquirySession(long userId, long sessionId, long agentId, String campaignId, String inquiryState) {
 
-        InquirySessionWSModel response = new InquirySessionWSModel();
+        OperationInquirySessionWSModel response = new OperationInquirySessionWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<InquirySessionWSDTO> inquirySessionWSDTOS = new ArrayList<>();
+        List<OperationInquirySessionWSDTO> operationInquirySessionWSDTOS = new ArrayList<>();
 
-        InquirySessionWSDTO inquirySessionWSDTO = campaignInquirySessionFramework.updateCampaignInquirySessionService(userId,sessionId,agentId,campaignId,inquiryState);
-        if (inquirySessionWSDTO != null){
-            inquirySessionWSDTOS.add(inquirySessionWSDTO);
+        OperationInquirySessionWSDTO operationInquirySessionWSDTO = campaignInquirySessionFramework.updateCampaignInquirySessionService(userId,sessionId,agentId,campaignId,inquiryState);
+        if (operationInquirySessionWSDTO != null){
+            operationInquirySessionWSDTOS.add(operationInquirySessionWSDTO);
         }
 
-        response.setInquirySessions(inquirySessionWSDTOS);
+        response.setInquirySessions(operationInquirySessionWSDTOS);
         general.setOperation("updateCampaignInquirySession");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -125,18 +123,18 @@ public class CampaignInquirySessionMiddleware {
 
 
 
-    public InquirySessionWSModel removeCampaignInquirySession(long userId, long sessionId) {
+    public OperationInquirySessionWSModel removeCampaignInquirySession(long userId, long sessionId) {
 
-        InquirySessionWSModel response = new InquirySessionWSModel();
+        OperationInquirySessionWSModel response = new OperationInquirySessionWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<InquirySessionWSDTO> inquirySessionWSDTOS = new ArrayList<>();
+        List<OperationInquirySessionWSDTO> operationInquirySessionWSDTOS = new ArrayList<>();
 
-        InquirySessionWSDTO inquirySessionWSDTO = campaignInquirySessionFramework.removeCampaignInquirySessionService(userId,sessionId);
-        if (inquirySessionWSDTO != null){
-            inquirySessionWSDTOS.add(inquirySessionWSDTO);
+        OperationInquirySessionWSDTO operationInquirySessionWSDTO = campaignInquirySessionFramework.removeCampaignInquirySessionService(userId,sessionId);
+        if (operationInquirySessionWSDTO != null){
+            operationInquirySessionWSDTOS.add(operationInquirySessionWSDTO);
         }
 
-        response.setInquirySessions(inquirySessionWSDTOS);
+        response.setInquirySessions(operationInquirySessionWSDTOS);
         general.setOperation("removeCampaignInquirySession");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);

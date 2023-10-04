@@ -1,7 +1,7 @@
 package com.faas.core.api.model.ws.operation.content.dto;
 
-import com.faas.core.base.model.db.client.flow.ClientFlowDBModel;
-import com.faas.core.base.model.db.client.inquiry.ClientInquiryDBModel;
+import com.faas.core.base.model.db.operation.flow.OperationFlowDBModel;
+import com.faas.core.base.model.db.operation.inquiry.OperationInquiryDBModel;
 import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 
@@ -9,13 +9,13 @@ public class ApiOperationWSDTO {
 
     private OperationDBModel operation;
     private SessionDBModel operationSession;
-    private ClientInquiryDBModel operationInquiry;
-    private ClientFlowDBModel operationFlow;
+    private OperationInquiryDBModel operationInquiry;
+    private OperationFlowDBModel operationFlow;
 
     public ApiOperationWSDTO() {
     }
 
-    public ApiOperationWSDTO(OperationDBModel operation, SessionDBModel operationSession, ClientInquiryDBModel operationInquiry, ClientFlowDBModel operationFlow) {
+    public ApiOperationWSDTO(OperationDBModel operation, SessionDBModel operationSession, OperationInquiryDBModel operationInquiry, OperationFlowDBModel operationFlow) {
         this.operation = operation;
         this.operationSession = operationSession;
         this.operationInquiry = operationInquiry;
@@ -38,19 +38,19 @@ public class ApiOperationWSDTO {
         this.operationSession = operationSession;
     }
 
-    public ClientInquiryDBModel getOperationInquiry() {
+    public OperationInquiryDBModel getOperationInquiry() {
         return operationInquiry;
     }
 
-    public void setOperationInquiry(ClientInquiryDBModel operationInquiry) {
+    public void setOperationInquiry(OperationInquiryDBModel operationInquiry) {
         this.operationInquiry = operationInquiry;
     }
 
-    public ClientFlowDBModel getOperationFlow() {
+    public OperationFlowDBModel getOperationFlow() {
         return operationFlow;
     }
 
-    public void setOperationFlow(ClientFlowDBModel operationFlow) {
+    public void setOperationFlow(OperationFlowDBModel operationFlow) {
         this.operationFlow = operationFlow;
     }
 }
