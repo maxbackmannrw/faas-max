@@ -19,6 +19,8 @@ import com.faas.core.base.model.db.client.content.ClientDBModel;
 import com.faas.core.base.model.db.client.details.ClientNoteDBModel;
 import com.faas.core.base.model.db.client.details.ClientPhoneDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
+import com.faas.core.base.model.db.operation.flow.OperationFlowDBModel;
+import com.faas.core.base.model.db.operation.inquiry.OperationInquiryDBModel;
 import com.faas.core.base.model.db.operation.scenario.OperationScenarioDBModel;
 import com.faas.core.base.model.db.process.content.ProcessDBModel;
 import com.faas.core.base.model.db.process.details.channel.content.ProcessSmsChannelDBModel;
@@ -241,23 +243,22 @@ public class OperationHelper {
         return null;
     }
 
-
     public ApiOperationDetailsWSDTO mapApiOperationDetailsWSDTO(SessionDBModel sessionDBModel, ClientDBModel clientDBModel, OperationDBModel operationDBModel, CampaignDBModel campaignDBModel, ProcessDBModel processDBModel) {
 
         ApiOperationDetailsWSDTO operationDetailsWSDTO = new ApiOperationDetailsWSDTO();
         operationDetailsWSDTO.setOperation(operationDBModel);
         operationDetailsWSDTO.setOperationSession(sessionDBModel);
         if (sessionDBModel.getSessionType().equalsIgnoreCase(AppConstant.INQUIRY_CAMPAIGN)){
-    //        List<InquiryDBModel> inquiryDBModels = inquiryRepository.findBySessionIdAndClientId(sessionDBModel.getId(),sessionDBModel.getClientId());
-    //        if (!inquiryDBModels.isEmpty()){
-    //            operationDetailsWSDTO.setOperationInquiry(inquiryDBModels.get(0));
-     //       }
+            List<OperationInquiryDBModel> operationInquiryDBModels = operationInquiryRepository.findBySessionIdAndClientId(sessionDBModel.getId(),sessionDBModel.getClientId());
+            if (!operationInquiryDBModels.isEmpty()){
+                operationDetailsWSDTO.setOperationInquiry(operationInquiryDBModels.get(0));
+            }
         }
         if (sessionDBModel.getSessionType().equalsIgnoreCase(AppConstant.AUTOMATIC_CAMPAIGN)){
-      //      List<FlowDBModel> flowDBModels = flowRepository.findBySessionIdAndClientId(sessionDBModel.getId(),sessionDBModel.getClientId());
-      //      if (!flowDBModels.isEmpty()){
-      //          operationDetailsWSDTO.setOperationFlow(flowDBModels.get(0));
-      //      }
+            List<OperationFlowDBModel> operationFlowDBModels = operationFlowRepository.findBySessionIdAndClientId(sessionDBModel.getId(),sessionDBModel.getClientId());
+            if (!operationFlowDBModels.isEmpty()){
+                operationDetailsWSDTO.setOperationFlow(operationFlowDBModels.get(0));
+            }
         }
         operationDetailsWSDTO.setOperationClient(mapApiOperationClientWSDTO(clientDBModel));
         operationDetailsWSDTO.setClientOsInts(mapApiClientOsIntWSDTOS(clientDBModel));
@@ -269,7 +270,6 @@ public class OperationHelper {
 
         return operationDetailsWSDTO;
     }
-
 
     public ApiOperationClientWSDTO mapApiOperationClientWSDTO(ClientDBModel clientDBModel) {
 
