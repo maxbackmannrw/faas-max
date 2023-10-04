@@ -12,6 +12,8 @@ import com.faas.core.api.model.ws.client.details.dto.ApiClientNoteWSDTO;
 import com.faas.core.api.model.ws.client.details.dto.ApiClientOsIntWSDTO;
 import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationCampaignWSDTO;
 import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationDetailsWSDTO;
+import com.faas.core.api.model.ws.operation.details.flow.dto.ApiOperationFlowWSDTO;
+import com.faas.core.api.model.ws.operation.details.inquiry.dto.ApiOperationInquiryWSDTO;
 import com.faas.core.api.model.ws.operation.scenario.process.dto.ApiProcessScenarioWSDTO;
 import com.faas.core.api.model.ws.operation.scenario.content.dto.ApiOperationScenarioWSDTO;
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
@@ -251,11 +253,13 @@ public class OperationHelper {
         if (sessionDBModel.getSessionType().equalsIgnoreCase(AppConstant.INQUIRY_CAMPAIGN)){
             List<OperationInquiryDBModel> operationInquiryDBModels = operationInquiryRepository.findBySessionIdAndClientId(sessionDBModel.getId(),sessionDBModel.getClientId());
             if (!operationInquiryDBModels.isEmpty()){
+                operationDetailsWSDTO.setOperationInquiry(mapApiOperationInquiryWSDTO(operationInquiryDBModels.get(0)));
             }
         }
         if (sessionDBModel.getSessionType().equalsIgnoreCase(AppConstant.AUTOMATIC_CAMPAIGN)){
             List<OperationFlowDBModel> operationFlowDBModels = operationFlowRepository.findBySessionIdAndClientId(sessionDBModel.getId(),sessionDBModel.getClientId());
             if (!operationFlowDBModels.isEmpty()){
+                operationDetailsWSDTO.setOperationFlow(mapApiOperationFlowWSDTO(operationFlowDBModels.get(0)));
             }
         }
         operationDetailsWSDTO.setOperationClient(mapApiOperationClientWSDTO(clientDBModel));
@@ -279,6 +283,20 @@ public class OperationHelper {
         operationClientWSDTO.setClientEmails(clientEmailRepository.findByClientId(clientDBModel.getId()));
 
         return operationClientWSDTO;
+    }
+
+    public ApiOperationInquiryWSDTO mapApiOperationInquiryWSDTO(OperationInquiryDBModel operationInquiryDBModel) {
+
+        ApiOperationInquiryWSDTO operationInquiryWSDTO = new ApiOperationInquiryWSDTO();
+
+        return operationInquiryWSDTO;
+    }
+
+    public ApiOperationFlowWSDTO mapApiOperationFlowWSDTO(OperationFlowDBModel operationFlowDBModel) {
+
+        ApiOperationFlowWSDTO operationFlowWSDTO = new ApiOperationFlowWSDTO();
+
+        return operationFlowWSDTO;
     }
 
 
