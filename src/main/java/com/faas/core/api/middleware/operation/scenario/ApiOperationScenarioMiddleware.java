@@ -3,10 +3,10 @@ package com.faas.core.api.middleware.operation.scenario;
 import com.faas.core.api.framework.operation.scenario.ApiOperationScenarioFramework;
 import com.faas.core.api.model.ws.operation.scenario.content.ApiOperationScenarioWSModel;
 import com.faas.core.api.model.ws.operation.scenario.content.dto.ApiOperationScenarioWSDTO;
-import com.faas.core.api.model.ws.operation.scenario.process.ApiProcessScenarioElementWSModel;
-import com.faas.core.api.model.ws.operation.scenario.process.ApiProcessScenarioWSModel;
-import com.faas.core.api.model.ws.operation.scenario.process.dto.ApiProcessScenarioElementWSDTO;
-import com.faas.core.api.model.ws.operation.scenario.process.dto.ApiProcessScenarioWSDTO;
+import com.faas.core.api.model.ws.operation.scenario.content.ApiProcessScenarioElementWSModel;
+import com.faas.core.api.model.ws.operation.scenario.content.ApiProcessScenarioWSModel;
+import com.faas.core.api.model.ws.operation.scenario.content.dto.ApiProcessScenarioElementWSDTO;
+import com.faas.core.api.model.ws.operation.scenario.content.dto.ApiProcessScenarioWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -129,7 +129,6 @@ public class ApiOperationScenarioMiddleware {
 
         return response;
     }
-
 
 
     public ApiProcessScenarioWSModel apiGetProcessScenarios(long agentId, long sessionId, String processId) {

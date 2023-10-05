@@ -1,6 +1,6 @@
-package com.faas.core.api.model.ws.operation.details.outcome;
+package com.faas.core.api.model.ws.operation.scenario.flow;
 
-import com.faas.core.api.model.ws.operation.details.outcome.dto.ApiOperationFlowWSDTO;
+import com.faas.core.api.model.ws.operation.scenario.flow.dto.ApiOperationFlowWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 
 import java.util.List;

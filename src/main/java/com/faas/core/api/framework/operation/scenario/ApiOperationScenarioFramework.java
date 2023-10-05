@@ -1,21 +1,21 @@
 package com.faas.core.api.framework.operation.scenario;
 
 import com.faas.core.api.model.ws.operation.scenario.content.dto.ApiOperationScenarioWSDTO;
-import com.faas.core.api.model.ws.operation.scenario.process.dto.ApiProcessScenarioElementWSDTO;
-import com.faas.core.api.model.ws.operation.scenario.process.dto.ApiProcessScenarioWSDTO;
+import com.faas.core.api.model.ws.operation.scenario.content.dto.ApiProcessScenarioElementWSDTO;
+import com.faas.core.api.model.ws.operation.scenario.content.dto.ApiProcessScenarioWSDTO;
+import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.operation.scenario.OperationScenarioDBModel;
 import com.faas.core.base.model.db.process.details.scenario.ProcessScenarioDBModel;
 import com.faas.core.base.model.db.scenario.content.ScenarioDBModel;
-import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;
+import com.faas.core.base.repo.client.session.SessionRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.operation.scenario.OperationScenarioRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.process.details.scenario.ProcessScenarioRepository;
 import com.faas.core.base.repo.scenario.content.ScenarioRepository;
-import com.faas.core.base.repo.client.session.SessionRepository;
 import com.faas.core.base.repo.user.content.UserRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
@@ -133,6 +133,7 @@ public class ApiOperationScenarioFramework {
         return null;
     }
 
+
     public List<ApiProcessScenarioWSDTO> apiGetProcessScenariosService(long agentId, long sessionId, String processId) {
 
         List<ApiProcessScenarioWSDTO>processScenarioWSDTOS = new ArrayList<>();
@@ -153,7 +154,6 @@ public class ApiOperationScenarioFramework {
         }
         return null;
     }
-
 
 
     public List<ApiProcessScenarioElementWSDTO> apiGetProcessScenarioElementsService(long agentId, long sessionId, String scenarioId) {

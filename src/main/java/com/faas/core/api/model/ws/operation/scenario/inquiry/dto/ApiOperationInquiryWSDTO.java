@@ -1,4 +1,4 @@
-package com.faas.core.api.model.ws.operation.details.outcome.dto;
+package com.faas.core.api.model.ws.operation.scenario.inquiry.dto;
 
 import com.faas.core.base.model.db.operation.inquiry.OperationInquiryDBModel;
 

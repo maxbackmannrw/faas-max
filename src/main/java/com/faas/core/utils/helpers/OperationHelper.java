@@ -6,15 +6,15 @@ import com.faas.core.api.model.ws.operation.channel.content.dto.ApiOperationChan
 import com.faas.core.api.model.ws.operation.channel.message.email.dto.ApiEmailAccountWSDTO;
 import com.faas.core.api.model.ws.operation.channel.message.sms.dto.ApiSmsAccountWSDTO;
 import com.faas.core.api.model.ws.operation.channel.message.push.dto.ApiPushAccountWSDTO;
-import com.faas.core.api.model.ws.operation.details.outcome.dto.ApiOperationActivityWSDTO;
+import com.faas.core.api.model.ws.operation.details.activity.dto.ApiOperationActivityWSDTO;
 import com.faas.core.api.model.ws.operation.details.client.dto.ApiOperationClientWSDTO;
 import com.faas.core.api.model.ws.client.details.dto.ApiClientNoteWSDTO;
 import com.faas.core.api.model.ws.client.details.dto.ApiClientOsIntWSDTO;
 import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationCampaignWSDTO;
 import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationDetailsWSDTO;
-import com.faas.core.api.model.ws.operation.details.outcome.dto.ApiOperationFlowWSDTO;
-import com.faas.core.api.model.ws.operation.details.outcome.dto.ApiOperationInquiryWSDTO;
-import com.faas.core.api.model.ws.operation.scenario.process.dto.ApiProcessScenarioWSDTO;
+import com.faas.core.api.model.ws.operation.scenario.flow.dto.ApiOperationFlowWSDTO;
+import com.faas.core.api.model.ws.operation.scenario.inquiry.dto.ApiOperationInquiryWSDTO;
+import com.faas.core.api.model.ws.operation.scenario.content.dto.ApiProcessScenarioWSDTO;
 import com.faas.core.api.model.ws.operation.scenario.content.dto.ApiOperationScenarioWSDTO;
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.client.content.ClientDBModel;
@@ -288,17 +288,16 @@ public class OperationHelper {
     public ApiOperationInquiryWSDTO mapApiOperationInquiryWSDTO(OperationInquiryDBModel operationInquiryDBModel) {
 
         ApiOperationInquiryWSDTO operationInquiryWSDTO = new ApiOperationInquiryWSDTO();
-
+        operationInquiryWSDTO.setOperationInquiry(operationInquiryDBModel);
         return operationInquiryWSDTO;
     }
 
     public ApiOperationFlowWSDTO mapApiOperationFlowWSDTO(OperationFlowDBModel operationFlowDBModel) {
 
         ApiOperationFlowWSDTO operationFlowWSDTO = new ApiOperationFlowWSDTO();
-
+        operationFlowWSDTO.setOperationFlow(operationFlowDBModel);
         return operationFlowWSDTO;
     }
-
 
     public List<ApiClientOsIntWSDTO> mapApiClientOsIntWSDTOS(ClientDBModel clientDBModel) {
 
