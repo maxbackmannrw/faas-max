@@ -1,6 +1,6 @@
-package com.faas.core.api.endpoint.controller.client.content;
+package com.faas.core.api.endpoint.controller.client.details;
 
-import com.faas.core.api.middleware.client.content.ApiClientMiddleware;
+import com.faas.core.api.middleware.client.details.ApiClientDeviceMiddleware;
 import com.faas.core.api.model.ws.session.ApiAgentSessionWSModel;
 import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;
@@ -14,20 +14,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-@RequestMapping(value = AppConstant.API_VERSION + "/api/client/")
-public class ApiClientController {
+@RequestMapping(value = AppConstant.API_VERSION + "/api/client/device/")
+public class ApiClientDeviceController {
 
 
     @Autowired
-    ApiClientMiddleware apiClientMiddleware;
+    ApiClientDeviceMiddleware apiClientDeviceMiddleware;
 
 
-    @RequestMapping(value = ApiRoute.API_GET_AGENT_CLIENTS, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetAgentClients(@RequestParam long agentId,
-                                                @RequestParam int reqPage,
-                                                @RequestParam int reqSize) {
+    @RequestMapping(value = ApiRoute.API_GET_CLIENT_DEVICES, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetClientDevices(@RequestParam long agentId,
+                                                 @RequestParam long clientId) {
 
-        ApiAgentSessionWSModel response = apiClientMiddleware.apiGetAgentClients(agentId,reqPage,reqSize);
+        ApiAgentSessionWSModel response = apiClientDeviceMiddleware.apiGetClientDevices(agentId,clientId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -36,11 +35,11 @@ public class ApiClientController {
     }
 
 
-    @RequestMapping(value = ApiRoute.API_GET_CLIENT, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetClient(@RequestParam long agentId,
-                                          @RequestParam long clientId) {
+    @RequestMapping(value = ApiRoute.API_GET_CLIENT_DEVICE, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetClientDevice(@RequestParam long agentId,
+                                                @RequestParam long clientId) {
 
-        ApiAgentSessionWSModel response = apiClientMiddleware.apiGetClient(agentId,clientId);
+        ApiAgentSessionWSModel response = apiClientDeviceMiddleware.apiGetClientDevice(agentId,clientId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

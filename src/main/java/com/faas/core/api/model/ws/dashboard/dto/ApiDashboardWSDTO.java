@@ -1,8 +1,8 @@
 package com.faas.core.api.model.ws.dashboard.dto;
 
 import com.faas.core.api.model.ws.campaign.content.dto.ApiCampaignWSDTO;
-import com.faas.core.api.model.ws.client.inquiry.dto.ApiClientInquiryWSDTO;
-import com.faas.core.api.model.ws.client.session.dto.ApiSessionWSDTO;
+import com.faas.core.api.model.ws.client.details.dto.ApiClientInquiryWSDTO;
+import com.faas.core.api.model.ws.session.dto.ApiSessionWSDTO;
 
 import java.util.List;
 

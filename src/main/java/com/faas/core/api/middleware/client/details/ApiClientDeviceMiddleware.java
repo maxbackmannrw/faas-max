@@ -1,33 +1,27 @@
-package com.faas.core.api.middleware.client.content;
+package com.faas.core.api.middleware.client.details;
 
-import com.faas.core.api.framework.client.content.ApiClientFramework;
+import com.faas.core.api.framework.client.details.ApiClientDeviceFramework;
 import com.faas.core.api.model.ws.session.ApiAgentSessionWSModel;
-import com.faas.core.api.model.ws.session.dto.ApiAgentSessionWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-
 @Component
-public class ApiClientMiddleware {
+public class ApiClientDeviceMiddleware {
 
 
     @Autowired
-    ApiClientFramework apiClientFramework;
+    ApiClientDeviceFramework apiClientDeviceFramework;
 
 
-    public ApiAgentSessionWSModel apiGetAgentClients(long agentId, int reqPage, int reqSize) {
+    public ApiAgentSessionWSModel apiGetClientDevices(long agentId, long clientId) {
 
         ApiAgentSessionWSModel response = new ApiAgentSessionWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiAgentSessionWSDTO agentSessionWSDTO = apiClientFramework.apiGetAgentClientsService(agentId,reqPage,reqSize);
-        if (agentSessionWSDTO != null){
-            response.setAgentSession(agentSessionWSDTO);
-        }
 
-        general.setOperation("apiGetAgentClients");
+        general.setOperation("apiGetClientDevices");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -37,14 +31,13 @@ public class ApiClientMiddleware {
     }
 
 
-    public ApiAgentSessionWSModel apiGetClient(long agentId,long clientId) {
+    public ApiAgentSessionWSModel apiGetClientDevice(long agentId, long clientId) {
 
         ApiAgentSessionWSModel response = new ApiAgentSessionWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
 
-
-        general.setOperation("apiGetClient");
+        general.setOperation("apiGetClientDevice");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
