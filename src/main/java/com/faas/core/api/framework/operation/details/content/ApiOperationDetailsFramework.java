@@ -1,5 +1,6 @@
 package com.faas.core.api.framework.operation.details.content;
 
+import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
 import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationCampaignWSDTO;
 import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationDetailsWSDTO;
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
@@ -60,7 +61,7 @@ public class ApiOperationDetailsFramework {
     }
 
 
-    public ApiOperationDetailsWSDTO apiOperationValidateService(long agentId, long sessionId) {
+    public ApiOperationDetailsWSDTO apiValidateOperationService(long agentId, long sessionId) {
 
         List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndAgentId(sessionId, agentId);
         List<OperationDBModel> operationDBModels = operationRepository.findBySessionId(sessionId);
@@ -74,6 +75,21 @@ public class ApiOperationDetailsFramework {
         }
         return null;
     }
+
+    public ApiOperationWSDTO apiValidateAgentOperationService(long agentId, long sessionId, String sessionState, String operationState) {
+
+        List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndAgentIdAndSessionState(sessionId,agentId,sessionState);
+        List<OperationDBModel> operationDBModels = operationRepository.findByAgentIdAndSessionIdAndOperationState(agentId,sessionId,operationState);
+        if (!operationDBModels.isEmpty() && !sessionDBModels.isEmpty()){
+            ApiOperationWSDTO operationWSDTO = new ApiOperationWSDTO();
+            operationWSDTO.setOperation(operationDBModels.get(0));
+            operationWSDTO.setOperationSession(sessionDBModels.get(0));
+
+            return operationWSDTO;
+        }
+        return null;
+    }
+
 
 
     public ApiOperationCampaignWSDTO apiGetOperationCampaignService(long sessionId, long clientId, String campaignId, String processId) {
