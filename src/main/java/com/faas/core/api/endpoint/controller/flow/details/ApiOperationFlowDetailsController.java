@@ -36,7 +36,6 @@ public class ApiOperationFlowDetailsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_FLOW_SUMMARY, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationFlowSummary(@RequestParam long agentId) {
 
@@ -47,5 +46,6 @@ public class ApiOperationFlowDetailsController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
+
 
 }

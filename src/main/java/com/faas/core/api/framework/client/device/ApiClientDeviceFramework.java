@@ -1,4 +1,4 @@
-package com.faas.core.api.framework.client.details;
+package com.faas.core.api.framework.client.device;
 
 import com.faas.core.api.model.ws.session.dto.ApiAgentSessionWSDTO;
 import com.faas.core.utils.config.AppUtils;

@@ -1,6 +1,6 @@
-package com.faas.core.api.model.ws.client.details;
+package com.faas.core.api.model.ws.client.device;
 
-import com.faas.core.api.model.ws.client.details.dto.ApiClientDeviceWSDTO;
+import com.faas.core.api.model.ws.client.device.dto.ApiClientDeviceWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 
 import java.util.List;

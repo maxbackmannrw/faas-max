@@ -36,8 +36,6 @@ public class ApiOperationInquiryDetailsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
-
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_INQUIRY_SUMMARY, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationInquirySummary(@RequestParam long agentId) {
 
@@ -48,6 +46,5 @@ public class ApiOperationInquiryDetailsController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
 }

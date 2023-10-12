@@ -38,7 +38,6 @@ public class ApiOperationInquiryController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = ApiRoute.API_GET_CAMPAIGN_OPERATION_INQUIRIES, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetCampaignOperationInquiries(@RequestParam long agentId,
                                                               @RequestParam String campaignId,
@@ -54,7 +53,6 @@ public class ApiOperationInquiryController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_INQUIRIES, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationInquiries(@RequestParam long agentId,
                                                       @RequestParam String inquiryState,
@@ -69,7 +67,6 @@ public class ApiOperationInquiryController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_INQUIRY, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationInquiry(@RequestParam long agentId,
                                                     @RequestParam long inquiryId,
@@ -82,7 +79,6 @@ public class ApiOperationInquiryController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = ApiRoute.API_START_OPERATION_INQUIRY, method = RequestMethod.POST)
     public ResponseEntity<?> apiStartOperationInquiry(@RequestParam long agentId,
@@ -98,7 +94,6 @@ public class ApiOperationInquiryController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = ApiRoute.API_UPDATE_OPERATION_INQUIRY, method = RequestMethod.POST)
     public ResponseEntity<?> apiUpdateOperationInquiry(@RequestParam long agentId,
                                                        @RequestParam long inquiryId,
@@ -112,7 +107,6 @@ public class ApiOperationInquiryController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = ApiRoute.API_REMOVE_OPERATION_INQUIRY, method = RequestMethod.POST)
     public ResponseEntity<?> apiRemoveOperationInquiry(@RequestParam long agentId,
                                                        @RequestParam long inquiryId) {
@@ -124,7 +118,5 @@ public class ApiOperationInquiryController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
-
 
 }
