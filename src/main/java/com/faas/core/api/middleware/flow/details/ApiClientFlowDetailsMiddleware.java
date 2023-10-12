@@ -1,27 +1,29 @@
-package com.faas.core.api.middleware.client.device;
+package com.faas.core.api.middleware.flow.details;
 
-import com.faas.core.api.framework.client.device.ApiClientDeviceFramework;
-import com.faas.core.api.model.ws.client.session.ApiAgentSessionWSModel;
+import com.faas.core.api.framework.flow.details.ApiClientFlowDetailsFramework;
+import com.faas.core.api.model.ws.flow.details.ApiFlowDetailsWSModel;
+import com.faas.core.api.model.ws.general.ApiSummaryWSModel;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ApiClientDeviceMiddleware {
+public class ApiClientFlowDetailsMiddleware {
 
 
     @Autowired
-    ApiClientDeviceFramework apiClientDeviceFramework;
+    ApiClientFlowDetailsFramework apiClientFlowDetailsFramework;
 
 
-    public ApiAgentSessionWSModel apiGetClientDevices(long agentId, long clientId) {
+    public ApiFlowDetailsWSModel apiGetOperationFlowDetails(long agentId, long inquiryId) {
 
-        ApiAgentSessionWSModel response = new ApiAgentSessionWSModel();
+        ApiFlowDetailsWSModel response = new ApiFlowDetailsWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
 
-        general.setOperation("apiGetClientDevices");
+
+        general.setOperation("apiGetOperationFlowDetails");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -31,13 +33,14 @@ public class ApiClientDeviceMiddleware {
     }
 
 
-    public ApiAgentSessionWSModel apiGetClientDevice(long agentId, long clientId) {
+    public ApiSummaryWSModel apiGetOperationFlowSummary(long agentId) {
 
-        ApiAgentSessionWSModel response = new ApiAgentSessionWSModel();
+        ApiSummaryWSModel response = new ApiSummaryWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
 
-        general.setOperation("apiGetClientDevice");
+
+        general.setOperation("apiGetOperationFlowSummary");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -45,6 +48,8 @@ public class ApiClientDeviceMiddleware {
 
         return response;
     }
+
+
 
 
 }

@@ -5,7 +5,7 @@ import com.faas.core.api.model.ws.campaign.content.ApiCampaignWSModel;
 import com.faas.core.api.model.ws.dashboard.ApiDashboardWSModel;
 import com.faas.core.api.model.ws.general.ApiSummaryWSModel;
 import com.faas.core.api.model.ws.inquiry.content.ApiInquiryWSModel;
-import com.faas.core.api.model.ws.session.ApiSessionWSModel;
+import com.faas.core.api.model.ws.client.session.ApiSessionWSModel;
 import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,8 +1,8 @@
 package com.faas.core.api.middleware.operation.details.client;
 
 import com.faas.core.api.framework.operation.details.client.ApiOperationClientFramework;
-import com.faas.core.api.model.ws.client.details.ApiClientOsIntWSModel;
-import com.faas.core.api.model.ws.client.details.dto.ApiClientOsIntWSDTO;
+import com.faas.core.api.model.ws.client.osint.ApiClientOsIntWSModel;
+import com.faas.core.api.model.ws.client.osint.dto.ApiClientOsIntWSDTO;
 import com.faas.core.api.model.ws.client.device.ApiClientDeviceWSModel;
 import com.faas.core.api.model.ws.operation.details.client.ApiOperationClientWSModel;
 import com.faas.core.api.model.ws.operation.details.client.dto.ApiOperationClientWSDTO;

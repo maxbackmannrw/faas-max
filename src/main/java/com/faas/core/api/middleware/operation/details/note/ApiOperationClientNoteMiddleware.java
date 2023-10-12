@@ -1,8 +1,8 @@
 package com.faas.core.api.middleware.operation.details.note;
 
 import com.faas.core.api.framework.operation.details.note.ApiOperationClientNoteFramework;
-import com.faas.core.api.model.ws.client.details.ApiClientNoteWSModel;
-import com.faas.core.api.model.ws.client.details.dto.ApiClientNoteWSDTO;
+import com.faas.core.api.model.ws.client.note.ApiClientNoteWSModel;
+import com.faas.core.api.model.ws.client.note.dto.ApiClientNoteWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
