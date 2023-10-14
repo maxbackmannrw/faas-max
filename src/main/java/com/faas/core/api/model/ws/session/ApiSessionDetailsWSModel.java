@@ -1,6 +1,6 @@
-package com.faas.core.api.model.ws.client.session;
+package com.faas.core.api.model.ws.session;
 
-import com.faas.core.api.model.ws.client.session.dto.ApiSessionDetailsWSDTO;
+import com.faas.core.api.model.ws.session.dto.ApiSessionDetailsWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 
 public class ApiSessionDetailsWSModel {

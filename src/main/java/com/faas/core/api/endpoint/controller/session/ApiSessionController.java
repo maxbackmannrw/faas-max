@@ -1,10 +1,10 @@
-package com.faas.core.api.endpoint.controller.client.session;
+package com.faas.core.api.endpoint.controller.session;
 
-import com.faas.core.api.middleware.client.session.ApiSessionMiddleware;
-import com.faas.core.api.model.ws.client.session.ApiSessionDetailsWSModel;
+import com.faas.core.api.middleware.session.ApiSessionMiddleware;
+import com.faas.core.api.model.ws.session.ApiSessionDetailsWSModel;
 import com.faas.core.api.model.ws.general.ApiSummaryWSModel;
-import com.faas.core.api.model.ws.client.session.ApiAgentSessionWSModel;
-import com.faas.core.api.model.ws.client.session.ApiSessionWSModel;
+import com.faas.core.api.model.ws.session.ApiAgentSessionWSModel;
+import com.faas.core.api.model.ws.session.ApiSessionWSModel;
 import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,11 @@
 package com.faas.core.api.middleware.operation.content;
 
 import com.faas.core.api.framework.operation.content.ApiOperationFramework;
+import com.faas.core.api.model.ws.operation.content.ApiAgentOperationWSModel;
+import com.faas.core.api.model.ws.operation.content.ApiOperationSessionWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiOperationWSModel;
+import com.faas.core.api.model.ws.operation.content.dto.ApiAgentOperationWSDTO;
+import com.faas.core.api.model.ws.operation.content.dto.ApiOperationSessionWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.repo.operation.content.OperationRepository;
@@ -26,6 +30,66 @@ public class ApiOperationMiddleware {
     AppUtils appUtils;
 
 
+    public ApiAgentOperationWSModel apiGetAgentOperations(long agentId, int reqPage, int reqSize) {
+
+        ApiAgentOperationWSModel response = new ApiAgentOperationWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        ApiAgentOperationWSDTO agentOperationWSDTO = apiOperationFramework.apiGetAgentOperationsService(agentId,reqPage,reqSize);
+        if (agentOperationWSDTO != null) {
+            response.setAgentOperation(agentOperationWSDTO);
+        }
+
+        general.setOperation("apiGetAgentOperations");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
+    public ApiOperationSessionWSModel apiGetCampaignOperations(long agentId,String campaignId,String operationState,int reqPage,int reqSize) {
+
+        ApiOperationSessionWSModel response = new ApiOperationSessionWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        ApiOperationSessionWSDTO operationSession = apiOperationFramework.apiGetCampaignOperationsService(agentId,campaignId,operationState,reqPage,reqSize);
+        if (operationSession != null) {
+            response.setOperation(operationSession);
+        }
+
+        general.setOperation("apiGetCampaignOperations");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
+    public ApiOperationSessionWSModel apiGetOperations(long agentId,String operationState,int reqPage,int reqSize) {
+
+        ApiOperationSessionWSModel response = new ApiOperationSessionWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        ApiOperationSessionWSDTO operationSession = apiOperationFramework.apiGetOperationsService(agentId,operationState,reqPage,reqSize);
+        if (operationSession != null) {
+            response.setOperation(operationSession);
+        }
+
+        general.setOperation("apiGetOperations");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
     public ApiOperationWSModel apiGetOperation(long agentId,long sessionId,long clientId) {
 
         ApiOperationWSModel response = new ApiOperationWSModel();
@@ -46,7 +110,6 @@ public class ApiOperationMiddleware {
 
         return response;
     }
-
 
 
     public ApiOperationWSModel apiLaunchOperation(long agentId,long sessionId,long clientId,String campaignId) {

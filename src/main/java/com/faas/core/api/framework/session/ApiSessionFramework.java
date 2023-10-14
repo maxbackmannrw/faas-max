@@ -1,9 +1,9 @@
-package com.faas.core.api.framework.client.session;
+package com.faas.core.api.framework.session;
 
-import com.faas.core.api.model.ws.client.session.dto.ApiSessionDetailsWSDTO;
+import com.faas.core.api.model.ws.session.dto.ApiSessionDetailsWSDTO;
 import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
-import com.faas.core.api.model.ws.client.session.dto.ApiAgentSessionWSDTO;
-import com.faas.core.api.model.ws.client.session.dto.ApiSessionWSDTO;
+import com.faas.core.api.model.ws.session.dto.ApiAgentSessionWSDTO;
+import com.faas.core.api.model.ws.session.dto.ApiSessionWSDTO;
 import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;

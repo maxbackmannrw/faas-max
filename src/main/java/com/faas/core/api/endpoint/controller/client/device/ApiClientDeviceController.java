@@ -1,7 +1,7 @@
 package com.faas.core.api.endpoint.controller.client.device;
 
 import com.faas.core.api.middleware.client.device.ApiClientDeviceMiddleware;
-import com.faas.core.api.model.ws.client.session.ApiAgentSessionWSModel;
+import com.faas.core.api.model.ws.session.ApiAgentSessionWSModel;
 import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;

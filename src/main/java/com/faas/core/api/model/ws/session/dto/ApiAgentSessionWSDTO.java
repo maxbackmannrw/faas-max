@@ -1,4 +1,4 @@
-package com.faas.core.api.model.ws.client.session.dto;
+package com.faas.core.api.model.ws.session.dto;
 
 public class ApiAgentSessionWSDTO {
 

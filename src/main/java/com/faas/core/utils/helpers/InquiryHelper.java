@@ -220,7 +220,7 @@ public class InquiryHelper {
         sessionDBModel.setAgentId(agentDBModel.getId());
         sessionDBModel.setAgentName(agentDBModel.getUserName());
         sessionDBModel.setSessionType(campaignDBModel.getCampaignCategory());
-        sessionDBModel.setSessionState(AppConstant.NEW_SESSION);
+        sessionDBModel.setSessionState(AppConstant.READY_SESSION);
         sessionDBModel.setuDate(appUtils.getCurrentTimeStamp());
         sessionDBModel.setcDate(appUtils.getCurrentTimeStamp());
         sessionDBModel.setStatus(1);
@@ -241,7 +241,7 @@ public class InquiryHelper {
             operationDBModel.setCampaignId(sessionDBModel.getCampaignId());
             operationDBModel.setProcessId(sessionDBModel.getProcessId());
             operationDBModel.setActivities(new ArrayList<>());
-            operationDBModel.setOperationState(AppConstant.NEW_OPERATION);
+            operationDBModel.setOperationState(AppConstant.READY_OPERATION);
             operationDBModel.setuDate(appUtils.getCurrentTimeStamp());
             operationDBModel.setcDate(appUtils.getCurrentTimeStamp());
             operationDBModel.setStatus(1);

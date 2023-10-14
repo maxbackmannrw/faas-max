@@ -72,8 +72,10 @@ public class ApiRoute {
 
 
 
+    public static final String API_GET_AGENT_OPERATIONS = "apigetagentoperations";
+    public static final String API_GET_CAMPAIGN_OPERATIONS = "apigetcampaignoperations";
+    public static final String API_GET_OPERATIONS = "apigetoperations";
     public static final String API_GET_OPERATION = "apigetoperation";
-
     public static final String API_LAUNCH_OPERATION = "apilaunchoperation";
     public static final String API_UPDATE_OPERATION = "apiupdateoperation";
     public static final String API_FINISH_OPERATION = "apifinishoperation";

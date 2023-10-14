@@ -1,4 +1,4 @@
-package com.faas.core.api.model.ws.client.session.dto;
+package com.faas.core.api.model.ws.session.dto;
 
 import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;

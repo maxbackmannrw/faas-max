@@ -6,6 +6,8 @@ import com.faas.core.api.model.ws.operation.channel.content.dto.ApiOperationChan
 import com.faas.core.api.model.ws.operation.channel.message.email.dto.ApiEmailAccountWSDTO;
 import com.faas.core.api.model.ws.operation.channel.message.sms.dto.ApiSmsAccountWSDTO;
 import com.faas.core.api.model.ws.operation.channel.message.push.dto.ApiPushAccountWSDTO;
+import com.faas.core.api.model.ws.operation.content.dto.ApiOperationSessionWSDTO;
+import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
 import com.faas.core.api.model.ws.operation.details.activity.dto.ApiOperationActivityWSDTO;
 import com.faas.core.api.model.ws.operation.details.client.dto.ApiOperationClientWSDTO;
 import com.faas.core.api.model.ws.client.note.dto.ApiClientNoteWSDTO;
@@ -30,7 +32,9 @@ import com.faas.core.base.model.db.process.details.channel.content.ProcessWappCh
 import com.faas.core.base.model.db.process.details.scenario.ProcessScenarioDBModel;
 import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.model.db.user.details.UserDetailsDBModel;
+import com.faas.core.base.model.ws.general.PaginationWSDTO;
 import com.faas.core.base.repo.client.details.*;
+import com.faas.core.base.repo.client.session.SessionRepository;
 import com.faas.core.base.repo.operation.flow.OperationFlowRepository;
 import com.faas.core.base.repo.operation.inquiry.OperationInquiryRepository;
 import com.faas.core.base.repo.operation.channel.*;
@@ -47,10 +51,12 @@ import com.faas.core.base.repo.user.details.UserDetailsRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 @Component
@@ -60,13 +66,16 @@ public class OperationHelper {
     ChannelHelper channelHelper;
 
     @Autowired
+    SessionRepository sessionRepository;
+
+    @Autowired
+    OperationRepository operationRepository;
+
+    @Autowired
     OperationFlowRepository operationFlowRepository;
 
     @Autowired
     OperationInquiryRepository operationInquiryRepository;
-
-    @Autowired
-    OperationRepository operationRepository;
 
     @Autowired
     UserDetailsRepository userDetailsRepository;
@@ -139,6 +148,22 @@ public class OperationHelper {
 
     @Autowired
     AppUtils appUtils;
+
+
+    public ApiOperationSessionWSDTO createApiOperationSessionWSDTO(Page<OperationDBModel> operationModelPage){
+
+        ApiOperationSessionWSDTO operationSessionWSDTO = new ApiOperationSessionWSDTO();
+        operationSessionWSDTO.setPagination(mapApiOperationPagination(operationModelPage));
+        List<ApiOperationWSDTO> operationWSDTOS = new ArrayList<>();
+        for (int i=0;operationModelPage.getContent().size()>i;i++){
+            ApiOperationWSDTO operationWSDTO = mapApiOperationWSDTO(operationModelPage.getContent().get(i));
+            if (operationWSDTO != null){
+                operationWSDTOS.add(operationWSDTO);
+            }
+        }
+        operationSessionWSDTO.setOperations(operationWSDTOS);
+        return operationSessionWSDTO;
+    }
 
 
     public ApiSipAccountWSDTO createApiSipCallAccountWSDTO(long agentId, long sessionId, long clientId, String campaignId, String processId){
@@ -377,7 +402,6 @@ public class OperationHelper {
     public ApiOperationChannelWSDTO mapApiOperationChannelWSDTO(SessionDBModel sessionDBModel, ClientDBModel clientDBModel) {
 
         List<ClientPhoneDBModel> clientPhoneDBModels = clientPhoneRepository.findByClientId(clientDBModel.getId());
-
         ApiOperationChannelWSDTO operationChannelWSDTO = new ApiOperationChannelWSDTO();
         operationChannelWSDTO.setOperationSipCall(channelHelper.mapApiOperationSipCallWSDTO(sessionDBModel,clientPhoneDBModels));
         operationChannelWSDTO.setOperationWappCall(channelHelper.mapApiOperationWappCallWSDTO(sessionDBModel,clientPhoneDBModels));
@@ -389,5 +413,41 @@ public class OperationHelper {
         return operationChannelWSDTO;
     }
 
+
+    public ApiOperationWSDTO mapApiOperationWSDTO(OperationDBModel operationDBModel) {
+
+        Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(operationDBModel.getSessionId());
+        if (sessionDBModel.isPresent()){
+            ApiOperationWSDTO operationWSDTO = new ApiOperationWSDTO();
+            operationWSDTO.setOperation(operationDBModel);
+            operationWSDTO.setOperationSession(sessionDBModel.get());
+            if (sessionDBModel.get().getSessionType().equalsIgnoreCase(AppConstant.INQUIRY_CAMPAIGN)){
+                List<OperationInquiryDBModel> operationInquiryDBModels = operationInquiryRepository.findBySessionIdAndClientId(sessionDBModel.get().getId(),sessionDBModel.get().getClientId());
+                if (!operationInquiryDBModels.isEmpty()) {
+                    operationWSDTO.setOperationInquiry(operationInquiryDBModels.get(0));
+                }
+            }
+            if (sessionDBModel.get().getSessionType().equalsIgnoreCase(AppConstant.AUTOMATIC_CAMPAIGN)){
+                List<OperationFlowDBModel> operationFlowDBModels = operationFlowRepository.findBySessionIdAndClientId(sessionDBModel.get().getId(),sessionDBModel.get().getClientId());
+                if (!operationFlowDBModels.isEmpty()) {
+                    operationWSDTO.setOperationFlow(operationFlowDBModels.get(0));
+                }
+            }
+            return operationWSDTO;
+        }
+        return null;
+    }
+
+
+    public PaginationWSDTO mapApiOperationPagination(Page<OperationDBModel> operationDBModelPage){
+
+        PaginationWSDTO paginationWSDTO = new PaginationWSDTO();
+        paginationWSDTO.setPageSize(operationDBModelPage.getPageable().getPageSize());
+        paginationWSDTO.setPageNumber(operationDBModelPage.getPageable().getPageNumber());
+        paginationWSDTO.setTotalPage(operationDBModelPage.getTotalPages());
+        paginationWSDTO.setTotalElements(operationDBModelPage.getTotalElements());
+
+        return paginationWSDTO;
+    }
 
 }

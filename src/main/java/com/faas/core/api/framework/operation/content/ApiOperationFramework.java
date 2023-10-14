@@ -1,5 +1,7 @@
 package com.faas.core.api.framework.operation.content;
 
+import com.faas.core.api.model.ws.operation.content.dto.ApiAgentOperationWSDTO;
+import com.faas.core.api.model.ws.operation.content.dto.ApiOperationSessionWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
 import com.faas.core.base.model.db.client.content.ClientDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
@@ -14,7 +16,10 @@ import com.faas.core.base.repo.client.session.SessionRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.ActivityHelper;
+import com.faas.core.utils.helpers.OperationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -27,6 +32,9 @@ public class ApiOperationFramework {
 
     @Autowired
     ActivityHelper activityHelper;
+
+    @Autowired
+    OperationHelper operationHelper;
 
     @Autowired
     CampaignRepository campaignRepository;
@@ -53,17 +61,46 @@ public class ApiOperationFramework {
     AppUtils appUtils;
 
 
+    public ApiAgentOperationWSDTO apiGetAgentOperationsService(long agentId, int reqPage, int reqSize) {
+
+        ApiAgentOperationWSDTO agentOperationWSDTO = new ApiAgentOperationWSDTO();
+        Page<OperationDBModel> readyOperationPage = operationRepository.findAllByAgentIdAndOperationState(agentId, AppConstant.READY_OPERATION, PageRequest.of(reqPage,reqSize));
+        if (readyOperationPage != null){
+            agentOperationWSDTO.setReadyOperation(operationHelper.createApiOperationSessionWSDTO(readyOperationPage));
+        }
+        Page<OperationDBModel> activeOperationPage = operationRepository.findAllByAgentIdAndOperationState(agentId, AppConstant.ACTIVE_OPERATION, PageRequest.of(reqPage,reqSize));
+        if (activeOperationPage != null){
+            agentOperationWSDTO.setActiveOperation(operationHelper.createApiOperationSessionWSDTO(activeOperationPage));
+        }
+        return agentOperationWSDTO;
+    }
+
+
+    public ApiOperationSessionWSDTO apiGetCampaignOperationsService(long agentId,String campaignId,String operationState,int reqPage,int reqSize) {
+
+        Page<OperationDBModel> campaignOperationPage = operationRepository.findAllByAgentIdAndCampaignIdAndOperationState(agentId, campaignId, operationState, PageRequest.of(reqPage,reqSize));
+        if (campaignOperationPage != null){
+            return operationHelper.createApiOperationSessionWSDTO(campaignOperationPage);
+        }
+        return null;
+    }
+
+
+    public ApiOperationSessionWSDTO apiGetOperationsService(long agentId, String operationState, int reqPage, int reqSize) {
+
+        Page<OperationDBModel> operationPage = operationRepository.findAllByAgentIdAndOperationState(agentId, operationState, PageRequest.of(reqPage,reqSize));
+        if (operationPage != null){
+            return operationHelper.createApiOperationSessionWSDTO(operationPage);
+        }
+        return null;
+    }
+
+
     public ApiOperationWSDTO apiGetOperationService(long agentId, long sessionId, long clientId) {
 
         List<OperationDBModel> operationDBModels = operationRepository.findBySessionIdAndClientId(sessionId, clientId);
-        List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndClientId(sessionId, clientId);
-        if (!sessionDBModels.isEmpty() && !operationDBModels.isEmpty()) {
-
-            ApiOperationWSDTO operationWSDTO = new ApiOperationWSDTO();
-            operationWSDTO.setOperation(operationDBModels.get(0));
-            operationWSDTO.setOperationSession(sessionDBModels.get(0));
-
-            return operationWSDTO;
+        if (!operationDBModels.isEmpty()) {
+            return operationHelper.mapApiOperationWSDTO(operationDBModels.get(0));
         }
         return null;
     }
@@ -73,7 +110,6 @@ public class ApiOperationFramework {
 
         List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndClientIdAndAgentIdAndCampaignIdAndSessionState(sessionId, clientId, agentId, campaignId, AppConstant.READY_SESSION);
         List<OperationDBModel> operationDBModels = operationRepository.findBySessionIdAndClientIdAndAgentIdAndCampaignIdAndOperationState(sessionId, clientId, agentId, campaignId, AppConstant.READY_OPERATION);
-
         if (!sessionDBModels.isEmpty() && !operationDBModels.isEmpty()) {
 
             ApiOperationWSDTO operationWSDTO = new ApiOperationWSDTO();

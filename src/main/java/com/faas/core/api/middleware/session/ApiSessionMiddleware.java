@@ -1,14 +1,14 @@
-package com.faas.core.api.middleware.client.session;
+package com.faas.core.api.middleware.session;
 
-import com.faas.core.api.framework.client.session.ApiSessionFramework;
-import com.faas.core.api.model.ws.client.session.ApiSessionDetailsWSModel;
-import com.faas.core.api.model.ws.client.session.dto.ApiSessionDetailsWSDTO;
+import com.faas.core.api.framework.session.ApiSessionFramework;
+import com.faas.core.api.model.ws.session.ApiSessionDetailsWSModel;
+import com.faas.core.api.model.ws.session.dto.ApiSessionDetailsWSDTO;
 import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
 import com.faas.core.api.model.ws.general.ApiSummaryWSModel;
-import com.faas.core.api.model.ws.client.session.ApiAgentSessionWSModel;
-import com.faas.core.api.model.ws.client.session.ApiSessionWSModel;
-import com.faas.core.api.model.ws.client.session.dto.ApiAgentSessionWSDTO;
-import com.faas.core.api.model.ws.client.session.dto.ApiSessionWSDTO;
+import com.faas.core.api.model.ws.session.ApiAgentSessionWSModel;
+import com.faas.core.api.model.ws.session.ApiSessionWSModel;
+import com.faas.core.api.model.ws.session.dto.ApiAgentSessionWSDTO;
+import com.faas.core.api.model.ws.session.dto.ApiSessionWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
