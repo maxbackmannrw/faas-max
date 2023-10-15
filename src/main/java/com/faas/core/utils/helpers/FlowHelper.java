@@ -106,6 +106,7 @@ public class FlowHelper {
     public SessionDBModel mapFlowSession(ClientDBModel clientDBModel, UserDBModel agentDBModel, CampaignDBModel campaignDBModel) {
 
         SessionDBModel sessionDBModel = new SessionDBModel();
+
         sessionDBModel.setSessionUUID(appUtils.generateUUID());
         sessionDBModel.setClientId(clientDBModel.getId());
         sessionDBModel.setClientName(clientDBModel.getClientName());
@@ -126,7 +127,7 @@ public class FlowHelper {
         sessionDBModel.setAgentId(agentDBModel.getId());
         sessionDBModel.setAgentName(agentDBModel.getUserName());
         sessionDBModel.setSessionType(campaignDBModel.getCampaignCategory());
-        sessionDBModel.setSessionState(AppConstant.READY_SESSION);
+        sessionDBModel.setSessionState(AppConstant.NEW_SESSION);
         sessionDBModel.setuDate(appUtils.getCurrentTimeStamp());
         sessionDBModel.setcDate(appUtils.getCurrentTimeStamp());
         sessionDBModel.setStatus(1);
@@ -146,7 +147,7 @@ public class FlowHelper {
         operationDBModel.setCampaignId(sessionDBModel.getCampaignId());
         operationDBModel.setProcessId(sessionDBModel.getProcessId());
         operationDBModel.setActivities(new ArrayList<>());
-        operationDBModel.setOperationState(AppConstant.READY_OPERATION);
+        operationDBModel.setOperationState(AppConstant.NEW_OPERATION);
         operationDBModel.setuDate(appUtils.getCurrentTimeStamp());
         operationDBModel.setcDate(appUtils.getCurrentTimeStamp());
         operationDBModel.setStatus(1);
