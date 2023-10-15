@@ -139,6 +139,12 @@ public class AppConstant {
     public static final String TOTAL_SESSIONS_SUMMARY = "TOTAL_SESSIONS_SUMMARY";
 
 
+    public static final String READY_OPERATIONS_SUMMARY = "READY_OPERATIONS_SUMMARY";
+    public static final String ACTIVE_OPERATIONS_SUMMARY = "ACTIVE_OPERATIONS_SUMMARY";
+    public static final String FINISHED_OPERATIONS_SUMMARY = "FINISHED_OPERATIONS_SUMMARY";
+    public static final String TOTAL_OPERATIONS_SUMMARY = "TOTAL_OPERATIONS_SUMMARY";
+
+
     public static final String TOTAL_CAMPAIGNS_SUMMARY = "TOTAL_CAMPAIGNS_SUMMARY";
 
     public static final String READY_INQUIRY_SUMMARY = "READY_INQUIRY_SUMMARY";
