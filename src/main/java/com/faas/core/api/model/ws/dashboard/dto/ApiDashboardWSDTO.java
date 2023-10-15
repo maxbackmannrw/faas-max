@@ -2,49 +2,50 @@ package com.faas.core.api.model.ws.dashboard.dto;
 
 import com.faas.core.api.model.ws.campaign.content.dto.ApiCampaignWSDTO;
 import com.faas.core.api.model.ws.inquiry.content.dto.ApiClientInquiryWSDTO;
+import com.faas.core.api.model.ws.operation.content.dto.ApiOperationSessionWSDTO;
 import com.faas.core.api.model.ws.session.dto.ApiSessionWSDTO;
 
 import java.util.List;
 
 public class ApiDashboardWSDTO {
 
-    private ApiSessionWSDTO readySession;
-    private ApiSessionWSDTO activeSession;
-    private ApiClientInquiryWSDTO clientInquiry;
+    private ApiOperationSessionWSDTO readyOperation;
+    private ApiOperationSessionWSDTO inquiryOperation;
+    private ApiOperationSessionWSDTO activeOperation;
     private List<ApiCampaignWSDTO> dashCampaigns;
 
     public ApiDashboardWSDTO() {
     }
 
-    public ApiDashboardWSDTO(ApiSessionWSDTO readySession, ApiSessionWSDTO activeSession, ApiClientInquiryWSDTO clientInquiry, List<ApiCampaignWSDTO> dashCampaigns) {
-        this.readySession = readySession;
-        this.activeSession = activeSession;
-        this.clientInquiry = clientInquiry;
+    public ApiDashboardWSDTO(ApiOperationSessionWSDTO readyOperation, ApiOperationSessionWSDTO inquiryOperation, ApiOperationSessionWSDTO activeOperation, List<ApiCampaignWSDTO> dashCampaigns) {
+        this.readyOperation = readyOperation;
+        this.inquiryOperation = inquiryOperation;
+        this.activeOperation = activeOperation;
         this.dashCampaigns = dashCampaigns;
     }
 
-    public ApiSessionWSDTO getReadySession() {
-        return readySession;
+    public ApiOperationSessionWSDTO getReadyOperation() {
+        return readyOperation;
     }
 
-    public void setReadySession(ApiSessionWSDTO readySession) {
-        this.readySession = readySession;
+    public void setReadyOperation(ApiOperationSessionWSDTO readyOperation) {
+        this.readyOperation = readyOperation;
     }
 
-    public ApiSessionWSDTO getActiveSession() {
-        return activeSession;
+    public ApiOperationSessionWSDTO getInquiryOperation() {
+        return inquiryOperation;
     }
 
-    public void setActiveSession(ApiSessionWSDTO activeSession) {
-        this.activeSession = activeSession;
+    public void setInquiryOperation(ApiOperationSessionWSDTO inquiryOperation) {
+        this.inquiryOperation = inquiryOperation;
     }
 
-    public ApiClientInquiryWSDTO getClientInquiry() {
-        return clientInquiry;
+    public ApiOperationSessionWSDTO getActiveOperation() {
+        return activeOperation;
     }
 
-    public void setClientInquiry(ApiClientInquiryWSDTO clientInquiry) {
-        this.clientInquiry = clientInquiry;
+    public void setActiveOperation(ApiOperationSessionWSDTO activeOperation) {
+        this.activeOperation = activeOperation;
     }
 
     public List<ApiCampaignWSDTO> getDashCampaigns() {

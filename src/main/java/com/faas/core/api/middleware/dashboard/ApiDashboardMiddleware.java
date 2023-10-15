@@ -9,6 +9,8 @@ import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
 import com.faas.core.api.model.ws.general.ApiSummaryWSModel;
 import com.faas.core.api.model.ws.inquiry.content.ApiInquiryWSModel;
 import com.faas.core.api.model.ws.inquiry.content.dto.ApiInquiryWSDTO;
+import com.faas.core.api.model.ws.operation.content.ApiOperationSessionWSModel;
+import com.faas.core.api.model.ws.operation.content.dto.ApiOperationSessionWSDTO;
 import com.faas.core.api.model.ws.session.ApiSessionWSModel;
 import com.faas.core.api.model.ws.session.dto.ApiSessionWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
@@ -46,37 +48,17 @@ public class ApiDashboardMiddleware {
     }
 
 
-    public ApiSessionWSModel apiGetDashSessions(long agentId,String sessionType,String sessionState,int reqPage,int reqSize) {
+    public ApiOperationSessionWSModel apiGetDashOperations(long agentId,String sessionType, String sessionState, int reqPage, int reqSize) {
 
-        ApiSessionWSModel response = new ApiSessionWSModel();
+        ApiOperationSessionWSModel response = new ApiOperationSessionWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiSessionWSDTO sessionWSDTO = apiDashboardFramework.apiGetDashSessionsService(agentId,sessionType,sessionState,reqPage,reqSize);
-        if (sessionWSDTO != null){
-            response.setSession(sessionWSDTO);
+        ApiOperationSessionWSDTO operationSession = apiDashboardFramework.apiGetDashOperationsService(agentId,sessionType,sessionState,reqPage,reqSize);
+        if (operationSession != null){
+            response.setOperationSession(operationSession);
         }
 
-        general.setOperation("apiGetDashSessions");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-
-    public ApiInquiryWSModel apiGetDashInquiries(long agentId,String inquiryState, int reqPage, int reqSize) {
-
-        ApiInquiryWSModel response = new ApiInquiryWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-        ApiInquiryWSDTO inquiryWSDTO = apiDashboardFramework.apiGetDashInquiriesService(agentId,inquiryState,reqPage,reqSize);
-        if (inquiryWSDTO != null){
-            response.setInquiry(inquiryWSDTO);
-        }
-
-        general.setOperation("apiGetDashReadyInquiries");
+        general.setOperation("apiGetDashOperations");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

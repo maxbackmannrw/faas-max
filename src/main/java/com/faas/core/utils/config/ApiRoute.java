@@ -11,8 +11,7 @@ public class ApiRoute {
 
 
     public static final String API_GET_DASHBOARD = "apigetdashboard";
-    public static final String API_GET_DASH_SESSIONS = "apigetdashsessions";
-    public static final String API_GET_DASH_INQUIRIES = "apigetdashinquiries";
+    public static final String API_GET_DASH_OPERATIONS = "apigetdashoperations";
     public static final String API_GET_DASH_CAMPAIGNS = "apigetdashcampaigns";
     public static final String API_GET_DASH_SUMMARY = "apigetdashsummary";
 

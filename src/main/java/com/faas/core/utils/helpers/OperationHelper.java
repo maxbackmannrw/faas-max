@@ -66,6 +66,9 @@ public class OperationHelper {
     ChannelHelper channelHelper;
 
     @Autowired
+    SessionHelper sessionHelper;
+
+    @Autowired
     SessionRepository sessionRepository;
 
     @Autowired
@@ -150,13 +153,29 @@ public class OperationHelper {
     AppUtils appUtils;
 
 
-    public ApiOperationSessionWSDTO createApiOperationSessionWSDTO(Page<OperationDBModel> operationModelPage){
+    public ApiOperationSessionWSDTO createApiOperationSessionFromOperationModel(Page<OperationDBModel> operationModelPage){
 
         ApiOperationSessionWSDTO operationSessionWSDTO = new ApiOperationSessionWSDTO();
         operationSessionWSDTO.setPagination(mapApiOperationPagination(operationModelPage));
         List<ApiOperationWSDTO> operationWSDTOS = new ArrayList<>();
         for (int i=0;operationModelPage.getContent().size()>i;i++){
-            ApiOperationWSDTO operationWSDTO = mapApiOperationWSDTO(operationModelPage.getContent().get(i));
+            ApiOperationWSDTO operationWSDTO = mapApiOperationWSDTOFromOperationModel(operationModelPage.getContent().get(i));
+            if (operationWSDTO != null){
+                operationWSDTOS.add(operationWSDTO);
+            }
+        }
+        operationSessionWSDTO.setOperations(operationWSDTOS);
+        return operationSessionWSDTO;
+    }
+
+
+    public ApiOperationSessionWSDTO createApiOperationSessionFromSessionModel(Page<SessionDBModel> sessionModelPage){
+
+        ApiOperationSessionWSDTO operationSessionWSDTO = new ApiOperationSessionWSDTO();
+        operationSessionWSDTO.setPagination(sessionHelper.createSessionPaginationWSDTO(sessionModelPage));
+        List<ApiOperationWSDTO> operationWSDTOS = new ArrayList<>();
+        for (int i=0;sessionModelPage.getContent().size()>i;i++){
+            ApiOperationWSDTO operationWSDTO = mapApiOperationWSDTOFromSessionModel(sessionModelPage.getContent().get(i));
             if (operationWSDTO != null){
                 operationWSDTOS.add(operationWSDTO);
             }
@@ -414,7 +433,7 @@ public class OperationHelper {
     }
 
 
-    public ApiOperationWSDTO mapApiOperationWSDTO(OperationDBModel operationDBModel) {
+    public ApiOperationWSDTO mapApiOperationWSDTOFromOperationModel(OperationDBModel operationDBModel) {
 
         Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(operationDBModel.getSessionId());
         if (sessionDBModel.isPresent()){
@@ -439,6 +458,33 @@ public class OperationHelper {
     }
 
 
+    public ApiOperationWSDTO mapApiOperationWSDTOFromSessionModel(SessionDBModel sessionDBModel) {
+
+        List<OperationDBModel>operationDBModels = operationRepository.findBySessionIdAndClientId(sessionDBModel.getId(),sessionDBModel.getClientId());
+        if (!operationDBModels.isEmpty()){
+
+            ApiOperationWSDTO operationWSDTO = new ApiOperationWSDTO();
+            operationWSDTO.setOperation(operationDBModels.get(0));
+            operationWSDTO.setOperationSession(sessionDBModel);
+
+            if (sessionDBModel.getSessionType().equalsIgnoreCase(AppConstant.INQUIRY_CAMPAIGN)){
+                List<OperationInquiryDBModel> operationInquiryDBModels = operationInquiryRepository.findBySessionIdAndClientId(sessionDBModel.getId(),sessionDBModel.getClientId());
+                if (!operationInquiryDBModels.isEmpty()) {
+                    operationWSDTO.setOperationInquiry(operationInquiryDBModels.get(0));
+                }
+            }
+            if (sessionDBModel.getSessionType().equalsIgnoreCase(AppConstant.AUTOMATIC_CAMPAIGN)){
+                List<OperationFlowDBModel> operationFlowDBModels = operationFlowRepository.findBySessionIdAndClientId(sessionDBModel.getId(),sessionDBModel.getClientId());
+                if (!operationFlowDBModels.isEmpty()) {
+                    operationWSDTO.setOperationFlow(operationFlowDBModels.get(0));
+                }
+            }
+            return operationWSDTO;
+        }
+        return null;
+    }
+
+
     public PaginationWSDTO mapApiOperationPagination(Page<OperationDBModel> operationDBModelPage){
 
         PaginationWSDTO paginationWSDTO = new PaginationWSDTO();
@@ -449,5 +495,6 @@ public class OperationHelper {
 
         return paginationWSDTO;
     }
+
 
 }

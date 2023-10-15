@@ -66,11 +66,11 @@ public class ApiOperationFramework {
         ApiAgentOperationWSDTO agentOperationWSDTO = new ApiAgentOperationWSDTO();
         Page<OperationDBModel> readyOperationPage = operationRepository.findAllByAgentIdAndOperationState(agentId, AppConstant.READY_OPERATION, PageRequest.of(reqPage,reqSize));
         if (readyOperationPage != null){
-            agentOperationWSDTO.setReadyOperation(operationHelper.createApiOperationSessionWSDTO(readyOperationPage));
+            agentOperationWSDTO.setReadyOperation(operationHelper.createApiOperationSessionFromOperationModel(readyOperationPage));
         }
         Page<OperationDBModel> activeOperationPage = operationRepository.findAllByAgentIdAndOperationState(agentId, AppConstant.ACTIVE_OPERATION, PageRequest.of(reqPage,reqSize));
         if (activeOperationPage != null){
-            agentOperationWSDTO.setActiveOperation(operationHelper.createApiOperationSessionWSDTO(activeOperationPage));
+            agentOperationWSDTO.setActiveOperation(operationHelper.createApiOperationSessionFromOperationModel(activeOperationPage));
         }
         return agentOperationWSDTO;
     }
@@ -80,7 +80,7 @@ public class ApiOperationFramework {
 
         Page<OperationDBModel> campaignOperationPage = operationRepository.findAllByAgentIdAndCampaignIdAndOperationState(agentId, campaignId, operationState, PageRequest.of(reqPage,reqSize));
         if (campaignOperationPage != null){
-            return operationHelper.createApiOperationSessionWSDTO(campaignOperationPage);
+            return operationHelper.createApiOperationSessionFromOperationModel(campaignOperationPage);
         }
         return null;
     }
@@ -90,7 +90,7 @@ public class ApiOperationFramework {
 
         Page<OperationDBModel> operationPage = operationRepository.findAllByAgentIdAndOperationState(agentId, operationState, PageRequest.of(reqPage,reqSize));
         if (operationPage != null){
-            return operationHelper.createApiOperationSessionWSDTO(operationPage);
+            return operationHelper.createApiOperationSessionFromOperationModel(operationPage);
         }
         return null;
     }
@@ -100,7 +100,7 @@ public class ApiOperationFramework {
 
         List<OperationDBModel> operationDBModels = operationRepository.findBySessionIdAndClientId(sessionId, clientId);
         if (!operationDBModels.isEmpty()) {
-            return operationHelper.mapApiOperationWSDTO(operationDBModels.get(0));
+            return operationHelper.mapApiOperationWSDTOFromOperationModel(operationDBModels.get(0));
         }
         return null;
     }
@@ -198,7 +198,6 @@ public class ApiOperationFramework {
         }
         return null;
     }
-
 
 
     public ApiOperationWSDTO apiRemoveOperationService(long agentId, long sessionId, long clientId, String campaignId) {

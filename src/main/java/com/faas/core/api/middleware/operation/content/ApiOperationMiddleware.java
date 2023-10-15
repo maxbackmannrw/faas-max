@@ -57,7 +57,7 @@ public class ApiOperationMiddleware {
 
         ApiOperationSessionWSDTO operationSession = apiOperationFramework.apiGetCampaignOperationsService(agentId,campaignId,operationState,reqPage,reqSize);
         if (operationSession != null) {
-            response.setOperation(operationSession);
+            response.setOperationSession(operationSession);
         }
 
         general.setOperation("apiGetCampaignOperations");
@@ -77,7 +77,7 @@ public class ApiOperationMiddleware {
 
         ApiOperationSessionWSDTO operationSession = apiOperationFramework.apiGetOperationsService(agentId,operationState,reqPage,reqSize);
         if (operationSession != null) {
-            response.setOperation(operationSession);
+            response.setOperationSession(operationSession);
         }
 
         general.setOperation("apiGetOperations");
