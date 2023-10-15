@@ -192,7 +192,6 @@ public class SessionHelper {
     }
 
 
-
     public ApiSessionDetailsWSDTO mapApiSessionDetailsWSDTO(SessionDBModel sessionDBModel){
 
         ApiSessionDetailsWSDTO sessionDetailsWSDTO = new ApiSessionDetailsWSDTO();

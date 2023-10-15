@@ -1,5 +1,6 @@
 package com.faas.core.api.framework.operation.content;
 
+import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiAgentOperationWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationSessionWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
@@ -210,6 +211,10 @@ public class ApiOperationFramework {
         return null;
     }
 
+
+    public List<ApiSummaryWSDTO> apiGetOperationSummaryService(long agentId) {
+        return operationHelper.getApiOperationSummary(agentId);
+    }
 
 
 }

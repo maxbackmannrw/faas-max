@@ -1,5 +1,6 @@
 package com.faas.core.utils.helpers;
 
+import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
 import com.faas.core.api.model.ws.operation.channel.call.sip.dto.ApiSipAccountWSDTO;
 import com.faas.core.api.model.ws.operation.channel.call.wapp.dto.ApiWappAccountWSDTO;
 import com.faas.core.api.model.ws.operation.channel.content.dto.ApiOperationChannelWSDTO;
@@ -33,6 +34,7 @@ import com.faas.core.base.model.db.process.details.scenario.ProcessScenarioDBMod
 import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.model.db.user.details.UserDetailsDBModel;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
+import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
 import com.faas.core.base.repo.client.details.*;
 import com.faas.core.base.repo.client.session.SessionRepository;
 import com.faas.core.base.repo.operation.flow.OperationFlowRepository;
@@ -148,6 +150,9 @@ public class OperationHelper {
 
     @Autowired
     WappMessageTempRepository wappMessageTempRepository;
+
+    @Autowired
+    CampaignAgentRepository campaignAgentRepository;
 
     @Autowired
     AppUtils appUtils;
@@ -496,5 +501,15 @@ public class OperationHelper {
         return paginationWSDTO;
     }
 
+
+    public List<ApiSummaryWSDTO> getApiOperationSummary(long agentId){
+
+        List<ApiSummaryWSDTO> sessionSummaries = new ArrayList<>();
+        sessionSummaries.add(new ApiSummaryWSDTO(AppConstant.ACTIVE_OPERATIONS_SUMMARY,String.valueOf(sessionRepository.countByAgentIdAndSessionState(agentId, AppConstant.ACTIVE_OPERATION))));
+        sessionSummaries.add(new ApiSummaryWSDTO(AppConstant.READY_OPERATIONS_SUMMARY,String.valueOf(sessionRepository.countByAgentIdAndSessionState(agentId, AppConstant.READY_OPERATION))));
+        sessionSummaries.add(new ApiSummaryWSDTO(AppConstant.TOTAL_CAMPAIGNS_SUMMARY,String.valueOf(campaignAgentRepository.countByAgentId(agentId))));
+
+        return sessionSummaries;
+    }
 
 }

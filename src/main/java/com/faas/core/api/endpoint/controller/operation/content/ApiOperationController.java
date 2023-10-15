@@ -1,6 +1,7 @@
 package com.faas.core.api.endpoint.controller.operation.content;
 
 import com.faas.core.api.middleware.operation.content.ApiOperationMiddleware;
+import com.faas.core.api.model.ws.general.ApiSummaryWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiAgentOperationWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiOperationSessionWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiOperationWSModel;
@@ -135,6 +136,18 @@ public class ApiOperationController {
                                                 @RequestParam String campaignId) {
 
         ApiOperationWSModel response = apiOperationMiddleware.apiRemoveOperation(agentId,sessionId,clientId,campaignId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_SUMMARY, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationSummary(@RequestParam long agentId) {
+
+        ApiSummaryWSModel response = apiOperationMiddleware.apiGetOperationSummary(agentId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
