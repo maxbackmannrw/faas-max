@@ -90,13 +90,13 @@ public class ApiOperationMiddleware {
     }
 
 
-    public ApiOperationWSModel apiGetOperation(long agentId,long sessionId,long clientId) {
+    public ApiOperationWSModel apiGetOperation(long agentId,long sessionId) {
 
         ApiOperationWSModel response = new ApiOperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ApiOperationWSDTO>operationWSDTOS = new ArrayList<>();
 
-        ApiOperationWSDTO operationWSDTO = apiOperationFramework.apiGetOperationService(agentId,sessionId,clientId);
+        ApiOperationWSDTO operationWSDTO = apiOperationFramework.apiGetOperationService(agentId,sessionId);
         if (operationWSDTO != null) {
             operationWSDTOS.add(operationWSDTO);
         }

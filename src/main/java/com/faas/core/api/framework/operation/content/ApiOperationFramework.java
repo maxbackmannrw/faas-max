@@ -96,9 +96,9 @@ public class ApiOperationFramework {
     }
 
 
-    public ApiOperationWSDTO apiGetOperationService(long agentId, long sessionId, long clientId) {
+    public ApiOperationWSDTO apiGetOperationService(long agentId, long sessionId) {
 
-        List<OperationDBModel> operationDBModels = operationRepository.findBySessionIdAndClientId(sessionId, clientId);
+        List<OperationDBModel> operationDBModels = operationRepository.findBySessionId(sessionId);
         if (!operationDBModels.isEmpty()) {
             return operationHelper.mapApiOperationWSDTOFromOperationModel(operationDBModels.get(0));
         }

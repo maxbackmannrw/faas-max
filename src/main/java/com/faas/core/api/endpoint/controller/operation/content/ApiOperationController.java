@@ -71,10 +71,9 @@ public class ApiOperationController {
 
     @RequestMapping(value = ApiRoute.API_GET_OPERATION, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperation(@RequestParam long agentId,
-                                             @RequestParam long sessionId,
-                                             @RequestParam long clientId) {
+                                             @RequestParam long sessionId) {
 
-        ApiOperationWSModel response = apiOperationMiddleware.apiGetOperation(agentId,sessionId,clientId);
+        ApiOperationWSModel response = apiOperationMiddleware.apiGetOperation(agentId,sessionId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
