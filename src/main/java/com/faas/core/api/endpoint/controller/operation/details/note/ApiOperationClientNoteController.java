@@ -1,7 +1,7 @@
 package com.faas.core.api.endpoint.controller.operation.details.note;
 
 import com.faas.core.api.middleware.operation.details.note.ApiOperationClientNoteMiddleware;
-import com.faas.core.api.model.ws.client.note.ApiClientNoteWSModel;
+import com.faas.core.api.model.ws.client.details.ApiClientNoteWSModel;
 import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;

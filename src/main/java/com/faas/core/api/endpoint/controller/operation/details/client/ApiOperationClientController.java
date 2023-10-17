@@ -1,8 +1,8 @@
 package com.faas.core.api.endpoint.controller.operation.details.client;
 
 import com.faas.core.api.middleware.operation.details.client.ApiOperationClientMiddleware;
-import com.faas.core.api.model.ws.client.osint.ApiClientOsIntWSModel;
-import com.faas.core.api.model.ws.client.device.ApiClientDeviceWSModel;
+import com.faas.core.api.model.ws.client.details.ApiClientOsIntWSModel;
+import com.faas.core.api.model.ws.client.details.ApiClientDeviceWSModel;
 import com.faas.core.api.model.ws.operation.details.client.ApiOperationClientWSModel;
 import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;

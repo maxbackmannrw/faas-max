@@ -1,0 +1,51 @@
+
+package com.faas.core.api.endpoint.controller.client.flow.details;
+
+import com.faas.core.api.middleware.client.flow.details.ApiClientFlowDetailsMiddleware;
+import com.faas.core.api.model.ws.client.flow.details.ApiFlowDetailsWSModel;
+import com.faas.core.api.model.ws.general.ApiSummaryWSModel;
+import com.faas.core.utils.config.ApiRoute;
+import com.faas.core.utils.config.AppConstant;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+
+@Controller
+@RequestMapping(value = AppConstant.API_VERSION + "/api/flow/details/")
+public class ApiClientFlowDetailsController {
+
+
+    @Autowired
+    ApiClientFlowDetailsMiddleware apiClientFlowDetailsMiddleware;
+
+
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_FLOW_DETAILS, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationFlowDetails(@RequestParam long agentId,
+                                                        @RequestParam long inquiryId) {
+
+        ApiFlowDetailsWSModel response = apiClientFlowDetailsMiddleware.apiGetOperationFlowDetails(agentId,inquiryId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_FLOW_SUMMARY, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationFlowSummary(@RequestParam long agentId) {
+
+        ApiSummaryWSModel response = apiClientFlowDetailsMiddleware.apiGetOperationFlowSummary(agentId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+}

@@ -1,6 +1,6 @@
 package com.faas.core.api.framework.operation.details.client;
 
-import com.faas.core.api.model.ws.client.osint.dto.ApiClientOsIntWSDTO;
+import com.faas.core.api.model.ws.client.details.dto.ApiClientOsIntWSDTO;
 import com.faas.core.api.model.ws.operation.details.client.dto.ApiOperationClientWSDTO;
 import com.faas.core.api.model.ws.operation.details.client.dto.ApiOperationDeviceWSDTO;
 import com.faas.core.base.model.db.client.content.ClientDBModel;

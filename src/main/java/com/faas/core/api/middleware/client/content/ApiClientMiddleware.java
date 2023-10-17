@@ -1,8 +1,8 @@
 package com.faas.core.api.middleware.client.content;
 
 import com.faas.core.api.framework.client.content.ApiClientFramework;
-import com.faas.core.api.model.ws.session.ApiAgentSessionWSModel;
-import com.faas.core.api.model.ws.session.dto.ApiAgentSessionWSDTO;
+import com.faas.core.api.model.ws.client.session.ApiAgentSessionWSModel;
+import com.faas.core.api.model.ws.client.session.dto.ApiAgentSessionWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;

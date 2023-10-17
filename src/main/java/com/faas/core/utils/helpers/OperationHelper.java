@@ -11,8 +11,8 @@ import com.faas.core.api.model.ws.operation.content.dto.ApiOperationSessionWSDTO
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
 import com.faas.core.api.model.ws.operation.details.activity.dto.ApiOperationActivityWSDTO;
 import com.faas.core.api.model.ws.operation.details.client.dto.ApiOperationClientWSDTO;
-import com.faas.core.api.model.ws.client.note.dto.ApiClientNoteWSDTO;
-import com.faas.core.api.model.ws.client.osint.dto.ApiClientOsIntWSDTO;
+import com.faas.core.api.model.ws.client.details.dto.ApiClientNoteWSDTO;
+import com.faas.core.api.model.ws.client.details.dto.ApiClientOsIntWSDTO;
 import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationCampaignWSDTO;
 import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationDetailsWSDTO;
 import com.faas.core.api.model.ws.operation.scenario.flow.dto.ApiOperationFlowWSDTO;
