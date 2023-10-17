@@ -1,10 +1,10 @@
 package com.faas.core.utils.helpers;
 
 import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
-import com.faas.core.api.model.ws.client.inquiry.content.dto.ApiClientInquiryContent;
-import com.faas.core.api.model.ws.client.inquiry.content.dto.ApiClientInquiryWSDTO;
-import com.faas.core.api.model.ws.client.inquiry.content.dto.ApiInquiryWSDTO;
-import com.faas.core.api.model.ws.client.inquiry.content.dto.ApiInquiryDTO;
+import com.faas.core.api.model.ws.inquiry.content.dto.ApiClientInquiryContent;
+import com.faas.core.api.model.ws.inquiry.content.dto.ApiClientInquiryWSDTO;
+import com.faas.core.api.model.ws.inquiry.content.dto.ApiInquiryWSDTO;
+import com.faas.core.api.model.ws.inquiry.content.dto.ApiInquiryDTO;
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.client.content.ClientDBModel;
 import com.faas.core.base.model.db.operation.inquiry.OperationInquiryDBModel;
