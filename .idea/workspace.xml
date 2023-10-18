@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/dashboard/ApiDashboardFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/dashboard/ApiDashboardFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/dashboard/dto/ApiDashboardWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/dashboard/dto/ApiDashboardWSDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/inquiry/content/ApiInquiryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/inquiry/content/ApiInquiryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/helpers/OperationHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/helpers/OperationHelper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -339,15 +339,7 @@
       <workItem from="1697430043100" duration="2000" />
       <workItem from="1697440543138" duration="3756000" />
       <workItem from="1697532155267" duration="3887000" />
-      <workItem from="1697560470119" duration="2417000" />
-    </task>
-    <task id="LOCAL-00260" summary="   ScenarioExecutes -&gt; ScenarioExecutions converted">
-      <option name="closed" value="true" />
-      <created>1695927352009</created>
-      <option name="number" value="00260" />
-      <option name="presentableId" value="LOCAL-00260" />
-      <option name="project" value="LOCAL" />
-      <updated>1695927352009</updated>
+      <workItem from="1697560470119" duration="4341000" />
     </task>
     <task id="LOCAL-00261" summary="   ScenarioExecutes -&gt; ScenarioExecutions converted">
       <option name="closed" value="true" />
@@ -733,7 +725,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697583106931</updated>
     </task>
-    <option name="localTasksCounter" value="309" />
+    <task id="LOCAL-00309" summary="   ScenarioExecutes -&gt; ScenarioExecutions converted">
+      <option name="closed" value="true" />
+      <created>1697632249629</created>
+      <option name="number" value="00309" />
+      <option name="presentableId" value="LOCAL-00309" />
+      <option name="project" value="LOCAL" />
+      <updated>1697632249630</updated>
+    </task>
+    <option name="localTasksCounter" value="310" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

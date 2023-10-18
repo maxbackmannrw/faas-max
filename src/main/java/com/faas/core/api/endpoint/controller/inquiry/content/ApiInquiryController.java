@@ -25,7 +25,7 @@ public class ApiInquiryController {
 
 
     @RequestMapping(value = ApiRoute.API_GET_AGENT_OPERATION_INQUIRIES, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetAgentOperationInquiries(@RequestParam long agentId,
+    public ResponseEntity<?> apiGetAgentInquiries(@RequestParam long agentId,
                                                            @RequestParam int reqPage,
                                                            @RequestParam int reqSize) {
 
@@ -38,7 +38,7 @@ public class ApiInquiryController {
     }
 
     @RequestMapping(value = ApiRoute.API_GET_CAMPAIGN_OPERATION_INQUIRIES, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetCampaignOperationInquiries(@RequestParam long agentId,
+    public ResponseEntity<?> apiGetCampaignInquiries(@RequestParam long agentId,
                                                               @RequestParam String campaignId,
                                                               @RequestParam String inquiryState,
                                                               @RequestParam int reqPage,
@@ -53,7 +53,7 @@ public class ApiInquiryController {
     }
 
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_INQUIRIES, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperationInquiries(@RequestParam long agentId,
+    public ResponseEntity<?> apiGetInquiries(@RequestParam long agentId,
                                                       @RequestParam String inquiryState,
                                                       @RequestParam int reqPage,
                                                       @RequestParam int reqSize) {
@@ -67,7 +67,7 @@ public class ApiInquiryController {
     }
 
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_INQUIRY, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperationInquiry(@RequestParam long agentId,
+    public ResponseEntity<?> apiGetInquiry(@RequestParam long agentId,
                                                     @RequestParam long inquiryId,
                                                     @RequestParam String campaignId) {
 
@@ -94,7 +94,7 @@ public class ApiInquiryController {
     }
 
     @RequestMapping(value = ApiRoute.API_UPDATE_OPERATION_INQUIRY, method = RequestMethod.POST)
-    public ResponseEntity<?> apiUpdateOperationInquiry(@RequestParam long agentId,
+    public ResponseEntity<?> apiUpdateInquiry(@RequestParam long agentId,
                                                        @RequestParam long inquiryId,
                                                        @RequestParam String inquiryState) {
 
@@ -107,7 +107,7 @@ public class ApiInquiryController {
     }
 
     @RequestMapping(value = ApiRoute.API_REMOVE_OPERATION_INQUIRY, method = RequestMethod.POST)
-    public ResponseEntity<?> apiRemoveOperationInquiry(@RequestParam long agentId,
+    public ResponseEntity<?> apiRemoveInquiry(@RequestParam long agentId,
                                                        @RequestParam long inquiryId) {
 
         ApiInquiryWSModel response = apiInquiryMiddleware.apiRemoveOperationInquiry(agentId,inquiryId);
