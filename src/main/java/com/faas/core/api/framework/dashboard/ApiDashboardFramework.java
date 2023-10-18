@@ -68,9 +68,10 @@ public class ApiDashboardFramework {
     public ApiDashboardWSDTO apiGetDashboardService(long agentId,int reqPage,int reqSize){
 
         ApiDashboardWSDTO dashboardWSDTO = new ApiDashboardWSDTO();
+
         dashboardWSDTO.setReadyOperation(operationHelper.createApiOperationSessionFromOperationModel(operationRepository.findAllByAgentIdAndOperationState(agentId, AppConstant.READY_OPERATION, PageRequest.of(reqPage,reqSize))));
+        dashboardWSDTO.setReadyInquiry(operationHelper.createApiOperationSessionFromSessionModel(sessionRepository.findAllByAgentIdAndSessionStateAndSessionType(agentId, AppConstant.READY_SESSION, AppConstant.INQUIRY_CAMPAIGN, PageRequest.of(reqPage,reqSize))));;
         dashboardWSDTO.setActiveOperation(operationHelper.createApiOperationSessionFromOperationModel(operationRepository.findAllByAgentIdAndOperationState(agentId, AppConstant.ACTIVE_OPERATION, PageRequest.of(reqPage,reqSize))));
-        dashboardWSDTO.setInquiryOperation(operationHelper.createApiOperationSessionFromSessionModel(sessionRepository.findAllByAgentIdAndSessionStateAndSessionType(agentId, AppConstant.READY_SESSION, AppConstant.INQUIRY_CAMPAIGN, PageRequest.of(reqPage,reqSize))));;
         dashboardWSDTO.setDashCampaigns(apiDashCampaignsService(agentId));
 
         return dashboardWSDTO;

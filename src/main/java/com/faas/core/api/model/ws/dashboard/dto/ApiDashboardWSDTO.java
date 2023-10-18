@@ -8,16 +8,16 @@ import java.util.List;
 public class ApiDashboardWSDTO {
 
     private ApiOperationSessionWSDTO readyOperation;
-    private ApiOperationSessionWSDTO inquiryOperation;
+    private ApiOperationSessionWSDTO readyInquiry;
     private ApiOperationSessionWSDTO activeOperation;
     private List<ApiCampaignWSDTO> dashCampaigns;
 
     public ApiDashboardWSDTO() {
     }
 
-    public ApiDashboardWSDTO(ApiOperationSessionWSDTO readyOperation, ApiOperationSessionWSDTO inquiryOperation, ApiOperationSessionWSDTO activeOperation, List<ApiCampaignWSDTO> dashCampaigns) {
+    public ApiDashboardWSDTO(ApiOperationSessionWSDTO readyOperation, ApiOperationSessionWSDTO readyInquiry, ApiOperationSessionWSDTO activeOperation, List<ApiCampaignWSDTO> dashCampaigns) {
         this.readyOperation = readyOperation;
-        this.inquiryOperation = inquiryOperation;
+        this.readyInquiry = readyInquiry;
         this.activeOperation = activeOperation;
         this.dashCampaigns = dashCampaigns;
     }
@@ -30,12 +30,12 @@ public class ApiDashboardWSDTO {
         this.readyOperation = readyOperation;
     }
 
-    public ApiOperationSessionWSDTO getInquiryOperation() {
-        return inquiryOperation;
+    public ApiOperationSessionWSDTO getReadyInquiry() {
+        return readyInquiry;
     }
 
-    public void setInquiryOperation(ApiOperationSessionWSDTO inquiryOperation) {
-        this.inquiryOperation = inquiryOperation;
+    public void setReadyInquiry(ApiOperationSessionWSDTO readyInquiry) {
+        this.readyInquiry = readyInquiry;
     }
 
     public ApiOperationSessionWSDTO getActiveOperation() {
