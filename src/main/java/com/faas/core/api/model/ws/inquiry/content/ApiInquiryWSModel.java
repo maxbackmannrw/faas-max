@@ -3,17 +3,19 @@ package com.faas.core.api.model.ws.inquiry.content;
 import com.faas.core.api.model.ws.inquiry.content.dto.ApiInquiryWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 
+import java.util.List;
+
 public class ApiInquiryWSModel {
 
     private GeneralWSModel general;
-    private ApiInquiryWSDTO inquiry;
+    private List<ApiInquiryWSDTO> inquiries;
 
     public ApiInquiryWSModel() {
     }
 
-    public ApiInquiryWSModel(GeneralWSModel general, ApiInquiryWSDTO inquiry) {
+    public ApiInquiryWSModel(GeneralWSModel general, List<ApiInquiryWSDTO> inquiries) {
         this.general = general;
-        this.inquiry = inquiry;
+        this.inquiries = inquiries;
     }
 
     public GeneralWSModel getGeneral() {
@@ -24,11 +26,11 @@ public class ApiInquiryWSModel {
         this.general = general;
     }
 
-    public ApiInquiryWSDTO getInquiry() {
-        return inquiry;
+    public List<ApiInquiryWSDTO> getInquiries() {
+        return inquiries;
     }
 
-    public void setInquiry(ApiInquiryWSDTO inquiry) {
-        this.inquiry = inquiry;
+    public void setInquiries(List<ApiInquiryWSDTO> inquiries) {
+        this.inquiries = inquiries;
     }
 }

@@ -11,6 +11,7 @@ public class OperationFlowDBModel {
     private String id;
     private long sessionId;
     private long clientId;
+    private long agentId;
     private String campaignId;
     private String processId;
     private String flowState;
@@ -21,10 +22,11 @@ public class OperationFlowDBModel {
     public OperationFlowDBModel() {
     }
 
-    public OperationFlowDBModel(String id, long sessionId, long clientId, String campaignId, String processId, String flowState, long uDate, long cDate, int status) {
+    public OperationFlowDBModel(String id, long sessionId, long clientId, long agentId, String campaignId, String processId, String flowState, long uDate, long cDate, int status) {
         this.id = id;
         this.sessionId = sessionId;
         this.clientId = clientId;
+        this.agentId = agentId;
         this.campaignId = campaignId;
         this.processId = processId;
         this.flowState = flowState;
@@ -55,6 +57,14 @@ public class OperationFlowDBModel {
 
     public void setClientId(long clientId) {
         this.clientId = clientId;
+    }
+
+    public long getAgentId() {
+        return agentId;
+    }
+
+    public void setAgentId(long agentId) {
+        this.agentId = agentId;
     }
 
     public String getCampaignId() {

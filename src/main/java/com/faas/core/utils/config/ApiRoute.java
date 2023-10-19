@@ -43,17 +43,15 @@ public class ApiRoute {
     public static final String API_START_OPERATION_INQUIRY = "apistartoperationinquiry";
     public static final String API_UPDATE_OPERATION_INQUIRY = "apiupdateoperationinquiry";
     public static final String API_REMOVE_OPERATION_INQUIRY = "apiremoveoperationinquiry";
-
+    public static final String API_GET_OPERATION_INQUIRY_SUMMARY = "apigetoperationinquirysummary";
 
     public static final String API_GET_OPERATION_INQUIRY_DETAILS = "apigetoperationinquirydetails";
-    public static final String API_GET_OPERATION_INQUIRY_SUMMARY = "apigetoperationinquirysummary";
 
 
     public static final String API_GET_AGENT_OPERATION_FLOWS = "apigetagentoperationflows";
     public static final String API_GET_CAMPAIGN_OPERATION_FLOWS = "apigetcampaignoperationflows";
     public static final String API_GET_OPERATION_FLOWS = "apigetoperationflows";
     public static final String API_GET_OPERATION_FLOW = "apigetoperationflow";
-    public static final String API_START_OPERATION_FLOW = "apistartoperationflow";
     public static final String API_UPDATE_OPERATION_FLOW = "apiupdateoperationflow";
     public static final String API_REMOVE_OPERATION_FLOW = "apiremoveoperationflow";
     public static final String API_GET_OPERATION_FLOW_SUMMARY = "apigetoperationflowsummary";

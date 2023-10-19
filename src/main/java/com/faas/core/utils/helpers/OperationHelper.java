@@ -17,8 +17,8 @@ import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationCamp
 import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationDetailsWSDTO;
 import com.faas.core.api.model.ws.operation.scenario.flow.dto.ApiOperationFlowWSDTO;
 import com.faas.core.api.model.ws.operation.scenario.inquiry.dto.ApiOperationInquiryWSDTO;
-import com.faas.core.api.model.ws.operation.scenario.content.dto.ApiProcessScenarioWSDTO;
-import com.faas.core.api.model.ws.operation.scenario.content.dto.ApiOperationScenarioWSDTO;
+import com.faas.core.api.model.ws.operation.scenario.dto.ApiProcessScenarioWSDTO;
+import com.faas.core.api.model.ws.operation.scenario.dto.ApiOperationScenarioWSDTO;
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.client.content.ClientDBModel;
 import com.faas.core.base.model.db.client.details.ClientNoteDBModel;

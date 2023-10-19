@@ -7,7 +7,7 @@ import com.faas.core.api.model.ws.client.details.dto.ApiClientNoteWSDTO;
 import com.faas.core.api.model.ws.client.details.dto.ApiClientOsIntWSDTO;
 import com.faas.core.api.model.ws.operation.scenario.flow.dto.ApiOperationFlowWSDTO;
 import com.faas.core.api.model.ws.operation.scenario.inquiry.dto.ApiOperationInquiryWSDTO;
-import com.faas.core.api.model.ws.operation.scenario.content.dto.ApiOperationScenarioWSDTO;
+import com.faas.core.api.model.ws.operation.scenario.dto.ApiOperationScenarioWSDTO;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.client.session.SessionDBModel;
 
