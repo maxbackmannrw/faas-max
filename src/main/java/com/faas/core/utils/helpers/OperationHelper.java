@@ -1,6 +1,8 @@
 package com.faas.core.utils.helpers;
 
+import com.faas.core.api.model.ws.flow.content.dto.ApiFlowWSDTO;
 import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
+import com.faas.core.api.model.ws.inquiry.content.dto.ApiInquiryWSDTO;
 import com.faas.core.api.model.ws.operation.channel.call.sip.dto.ApiSipAccountWSDTO;
 import com.faas.core.api.model.ws.operation.channel.call.wapp.dto.ApiWappAccountWSDTO;
 import com.faas.core.api.model.ws.operation.channel.content.dto.ApiOperationChannelWSDTO;
@@ -15,8 +17,6 @@ import com.faas.core.api.model.ws.client.details.dto.ApiClientNoteWSDTO;
 import com.faas.core.api.model.ws.client.details.dto.ApiClientOsIntWSDTO;
 import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationCampaignWSDTO;
 import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationDetailsWSDTO;
-import com.faas.core.api.model.ws.operation.scenario.flow.dto.ApiOperationFlowWSDTO;
-import com.faas.core.api.model.ws.operation.scenario.inquiry.dto.ApiOperationInquiryWSDTO;
 import com.faas.core.api.model.ws.operation.scenario.dto.ApiProcessScenarioWSDTO;
 import com.faas.core.api.model.ws.operation.scenario.dto.ApiOperationScenarioWSDTO;
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
@@ -302,13 +302,13 @@ public class OperationHelper {
         if (sessionDBModel.getSessionType().equalsIgnoreCase(AppConstant.INQUIRY_CAMPAIGN)){
             List<OperationInquiryDBModel> operationInquiryDBModels = operationInquiryRepository.findBySessionIdAndClientId(sessionDBModel.getId(),sessionDBModel.getClientId());
             if (!operationInquiryDBModels.isEmpty()){
-                operationDetailsWSDTO.setOperationInquiry(mapApiOperationInquiryWSDTO(operationInquiryDBModels.get(0)));
+                operationDetailsWSDTO.setOperationInquiry(mapApiOperationInquiryWSDTO(sessionDBModel,operationDBModel,operationInquiryDBModels.get(0)));
             }
         }
         if (sessionDBModel.getSessionType().equalsIgnoreCase(AppConstant.AUTOMATIC_CAMPAIGN)){
             List<OperationFlowDBModel> operationFlowDBModels = operationFlowRepository.findBySessionIdAndClientId(sessionDBModel.getId(),sessionDBModel.getClientId());
             if (!operationFlowDBModels.isEmpty()){
-                operationDetailsWSDTO.setOperationFlow(mapApiOperationFlowWSDTO(operationFlowDBModels.get(0)));
+                operationDetailsWSDTO.setOperationFlow(mapApiOperationFlowWSDTO(sessionDBModel,operationDBModel,operationFlowDBModels.get(0)));
             }
         }
         operationDetailsWSDTO.setOperationClient(mapApiOperationClientWSDTO(clientDBModel));
@@ -334,17 +334,23 @@ public class OperationHelper {
         return operationClientWSDTO;
     }
 
-    public ApiOperationInquiryWSDTO mapApiOperationInquiryWSDTO(OperationInquiryDBModel operationInquiryDBModel) {
+    public ApiInquiryWSDTO mapApiOperationInquiryWSDTO(SessionDBModel sessionDBModel,OperationDBModel operationDBModel,OperationInquiryDBModel operationInquiryDBModel) {
 
-        ApiOperationInquiryWSDTO operationInquiryWSDTO = new ApiOperationInquiryWSDTO();
+        ApiInquiryWSDTO operationInquiryWSDTO = new ApiInquiryWSDTO();
+        operationInquiryWSDTO.setOperationSession(sessionDBModel);
+        operationInquiryWSDTO.setOperation(operationDBModel);
         operationInquiryWSDTO.setOperationInquiry(operationInquiryDBModel);
+
         return operationInquiryWSDTO;
     }
 
-    public ApiOperationFlowWSDTO mapApiOperationFlowWSDTO(OperationFlowDBModel operationFlowDBModel) {
+    public ApiFlowWSDTO mapApiOperationFlowWSDTO(SessionDBModel sessionDBModel,OperationDBModel operationDBModel,OperationFlowDBModel operationFlowDBModel) {
 
-        ApiOperationFlowWSDTO operationFlowWSDTO = new ApiOperationFlowWSDTO();
+        ApiFlowWSDTO operationFlowWSDTO = new ApiFlowWSDTO();
+        operationFlowWSDTO.setOperationSession(sessionDBModel);
+        operationFlowWSDTO.setOperation(operationDBModel);
         operationFlowWSDTO.setOperationFlow(operationFlowDBModel);
+
         return operationFlowWSDTO;
     }
 
