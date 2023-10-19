@@ -47,7 +47,6 @@ public class ApiOperationInquiryFramework {
         ApiAgentOperationInquiryWSDTO agentOperationInquiryWSDTO = new ApiAgentOperationInquiryWSDTO();
         agentOperationInquiryWSDTO.setReadyOperationInquiry(inquiryHelper.getApiOperationInquiryWSDTO(operationInquiryRepository.findAllByAgentIdAndInquiryState(agentId,AppConstant.READY_INQUIRY, PageRequest.of(reqPage,reqSize))));
         agentOperationInquiryWSDTO.setActiveOperationInquiry(inquiryHelper.getApiOperationInquiryWSDTO(operationInquiryRepository.findAllByAgentIdAndInquiryState(agentId,AppConstant.ACTIVE_INQUIRY,PageRequest.of(reqPage,reqSize))));
-
         return agentOperationInquiryWSDTO;
     }
 

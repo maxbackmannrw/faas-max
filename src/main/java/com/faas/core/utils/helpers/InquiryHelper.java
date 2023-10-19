@@ -4,7 +4,6 @@ import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
 import com.faas.core.api.model.ws.inquiry.content.dto.ApiOperationInquiryContent;
 import com.faas.core.api.model.ws.inquiry.content.dto.ApiOperationInquiryWSDTO;
 import com.faas.core.api.model.ws.inquiry.content.dto.ApiInquiryWSDTO;
-import com.faas.core.api.model.ws.inquiry.content.dto.ApiInquiryDTO;
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.client.content.ClientDBModel;
 import com.faas.core.base.model.db.operation.inquiry.OperationInquiryDBModel;
@@ -75,37 +74,38 @@ public class InquiryHelper {
     }
 
 
-    public ApiInquiryWSDTO getApiInquiryWSDTO(Page<OperationInquiryDBModel> inquiryModelPage){
+    public ApiOperationInquiryWSDTO getApiOperationInquiryWSDTO(Page<OperationInquiryDBModel> operationInquiryPage){
 
-        ApiInquiryWSDTO inquiryWSDTO = new ApiInquiryWSDTO();
+        ApiOperationInquiryWSDTO operationInquiryWSDTO = new ApiOperationInquiryWSDTO();
+        List<ApiInquiryWSDTO> inquiryWSDTOS = new ArrayList<>();
 
-
-        return inquiryWSDTO;
-    }
-
-
-
-    public ApiInquiryDTO getApiInquiryDTO(OperationInquiryDBModel operationInquiryDBModel){
-
-        ApiInquiryDTO inquiryWrapper = new ApiInquiryDTO();
-        inquiryWrapper.setInquiry(operationInquiryDBModel);
-        //List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndClientId(inquiryDBModel.getSessionId(),inquiryDBModel.getClientId());
-       // if (!sessionDBModels.isEmpty()){
-        //    inquiryWrapper.setInquirySession(sessionDBModels.get(0));
-        //}
-        return inquiryWrapper;
-    }
-
-
-    public ApiOperationInquiryWSDTO getApiOperationInquiryWSDTO(Page<OperationInquiryDBModel> inquiryModelPage){
-
-        ApiOperationInquiryWSDTO inquiryWSDTO = new ApiOperationInquiryWSDTO();
-        List<ApiInquiryDTO> inquiryDTOS = new ArrayList<>();
-        for (int i=0;i<inquiryModelPage.getContent().size();i++){
-            inquiryDTOS.add(getApiInquiryDTO(inquiryModelPage.getContent().get(i)));
+        for (int i=0;i<operationInquiryPage.getContent().size();i++){
+            ApiInquiryWSDTO inquiryWSDTO = getApiInquiryWSDTO(operationInquiryPage.getContent().get(i));
+            if (inquiryWSDTO != null){
+                inquiryWSDTOS.add(inquiryWSDTO);
+            }
         }
+        operationInquiryWSDTO.setOperationInquiries(inquiryWSDTOS);
+        operationInquiryWSDTO.setPagination(createOperationInquiryPagination(operationInquiryPage));
+        return operationInquiryWSDTO;
+    }
 
-        return inquiryWSDTO;
+
+    public ApiInquiryWSDTO getApiInquiryWSDTO(OperationInquiryDBModel operationInquiryDBModel){
+
+        Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(operationInquiryDBModel.getSessionId());
+        List<OperationDBModel> operationDBModels = operationRepository.findBySessionId(operationInquiryDBModel.getSessionId());
+        if (sessionDBModel.isPresent() && !operationDBModels.isEmpty()){
+
+            ApiInquiryWSDTO inquiryWSDTO = new ApiInquiryWSDTO();
+
+            inquiryWSDTO.setOperation(operationDBModels.get(0));
+            inquiryWSDTO.setOperationSession(sessionDBModel.get());
+            inquiryWSDTO.setOperationInquiry(operationInquiryDBModel);
+
+            return inquiryWSDTO;
+        }
+        return null;
     }
 
 
@@ -178,13 +178,14 @@ public class InquiryHelper {
     }
 
 
-    public PaginationWSDTO createInquiryPagination(Page<OperationInquiryDBModel> inquiryDBModelPage){
+    public PaginationWSDTO createOperationInquiryPagination(Page<OperationInquiryDBModel> operationInquiryPage){
 
         PaginationWSDTO paginationWSDTO = new PaginationWSDTO();
-        paginationWSDTO.setPageSize(inquiryDBModelPage.getPageable().getPageSize());
-        paginationWSDTO.setPageNumber(inquiryDBModelPage.getPageable().getPageNumber());
-        paginationWSDTO.setTotalPage(inquiryDBModelPage.getTotalPages());
-        paginationWSDTO.setTotalElements(inquiryDBModelPage.getTotalElements());
+
+        paginationWSDTO.setPageSize(operationInquiryPage.getPageable().getPageSize());
+        paginationWSDTO.setPageNumber(operationInquiryPage.getPageable().getPageNumber());
+        paginationWSDTO.setTotalPage(operationInquiryPage.getTotalPages());
+        paginationWSDTO.setTotalElements(operationInquiryPage.getTotalElements());
 
         return paginationWSDTO;
     }
@@ -262,23 +263,12 @@ public class InquiryHelper {
     public ApiInquiryWSDTO mapApiInquiryWSDTO(OperationInquiryDBModel operationInquiryDBModel){
 
         ApiInquiryWSDTO inquiryWSDTO = new ApiInquiryWSDTO();
-        List<ApiInquiryDTO>inquiryDTOS = new ArrayList<>();
-        inquiryDTOS.add(mapApiInquiryDTO(operationInquiryDBModel));
 
         return inquiryWSDTO;
     }
 
 
-    public ApiInquiryDTO mapApiInquiryDTO(OperationInquiryDBModel operationInquiryDBModel){
 
-        ApiInquiryDTO inquiryWrapper = new ApiInquiryDTO();
-        inquiryWrapper.setInquiry(operationInquiryDBModel);
-        //List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndClientId(inquiryDBModel.getSessionId(),inquiryDBModel.getClientId());
-        //if (!sessionDBModels.isEmpty()){
-        //    inquiryWrapper.setInquirySession(sessionDBModels.get(0));
-        // }
-        return inquiryWrapper;
-    }
 
 
 
