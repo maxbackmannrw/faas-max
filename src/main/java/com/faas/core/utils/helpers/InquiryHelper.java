@@ -78,7 +78,6 @@ public class InquiryHelper {
 
         ApiOperationInquiryWSDTO operationInquiryWSDTO = new ApiOperationInquiryWSDTO();
         List<ApiInquiryWSDTO> inquiryWSDTOS = new ArrayList<>();
-
         for (int i=0;i<operationInquiryPage.getContent().size();i++){
             ApiInquiryWSDTO inquiryWSDTO = getApiInquiryWSDTO(operationInquiryPage.getContent().get(i));
             if (inquiryWSDTO != null){
