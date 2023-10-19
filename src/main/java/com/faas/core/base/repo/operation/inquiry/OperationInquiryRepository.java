@@ -20,4 +20,7 @@ public interface OperationInquiryRepository extends MongoRepository<OperationInq
 
     boolean existsByClientIdAndCampaignId(long clientId,String campaignId);
 
+    long countByAgentIdAndInquiryState(long agentId, String inquiryState);
+
+    long countByAgentId(long agentId);
 }

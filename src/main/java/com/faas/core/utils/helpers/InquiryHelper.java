@@ -108,13 +108,14 @@ public class InquiryHelper {
     }
 
 
-    public List<ApiSummaryWSDTO> getApiInquirySummary(long agentId) {
+    public List<ApiSummaryWSDTO> getApiOperationInquirySummary(long agentId) {
 
-        List<ApiSummaryWSDTO> apiSummaryWSDTOS = new ArrayList<>();
-        //apiSummaryWSDTOS.add(new ApiSummaryWSDTO(AppConstant.READY_INQUIRY_SUMMARY, String.valueOf(inquiryRepository.countByAgentIdAndInquiryState(agentId,AppConstant.READY_INQUIRY))));
-       // apiSummaryWSDTOS.add(new ApiSummaryWSDTO(AppConstant.ACTIVE_INQUIRY_SUMMARY, String.valueOf(inquiryRepository.countByAgentIdAndInquiryState(agentId,AppConstant.ACTIVE_INQUIRY))));
+        List<ApiSummaryWSDTO> apiOperationInquirySummaryWSDTOS = new ArrayList<>();
+        apiOperationInquirySummaryWSDTOS.add(new ApiSummaryWSDTO(AppConstant.READY_INQUIRIES_SUMMARY, String.valueOf(operationInquiryRepository.countByAgentIdAndInquiryState(agentId,AppConstant.READY_INQUIRY))));
+        apiOperationInquirySummaryWSDTOS.add(new ApiSummaryWSDTO(AppConstant.ACTIVE_INQUIRIES_SUMMARY, String.valueOf(operationInquiryRepository.countByAgentIdAndInquiryState(agentId,AppConstant.ACTIVE_INQUIRY))));
+        apiOperationInquirySummaryWSDTOS.add(new ApiSummaryWSDTO(AppConstant.TOTAL_INQUIRIES_SUMMARY, String.valueOf(operationInquiryRepository.countByAgentId(agentId))));
 
-        return apiSummaryWSDTOS;
+        return apiOperationInquirySummaryWSDTOS;
     }
 
 
