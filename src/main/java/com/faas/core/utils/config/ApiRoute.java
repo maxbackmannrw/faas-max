@@ -36,27 +36,27 @@ public class ApiRoute {
     public static final String API_GET_CAMPAIGN_ASSET = "apigetcampaignasset";
 
 
-    public static final String API_GET_AGENT_OPERATION_INQUIRIES = "apigetagentoperationinquiries";
-    public static final String API_GET_CAMPAIGN_OPERATION_INQUIRIES = "apigetcampaignoperationinquiries";
-    public static final String API_GET_OPERATION_INQUIRIES = "apigetoperationinquiries";
-    public static final String API_GET_OPERATION_INQUIRY = "apigetoperationinquiry";
-    public static final String API_START_OPERATION_INQUIRY = "apistartoperationinquiry";
-    public static final String API_UPDATE_OPERATION_INQUIRY = "apiupdateoperationinquiry";
-    public static final String API_REMOVE_OPERATION_INQUIRY = "apiremoveoperationinquiry";
-    public static final String API_GET_OPERATION_INQUIRY_SUMMARY = "apigetoperationinquirysummary";
+    public static final String API_GET_AGENT_INQUIRIES = "apigetagentinquiries";
+    public static final String API_GET_CAMPAIGN_INQUIRIES = "apigetcampaigninquiries";
+    public static final String API_GET_INQUIRIES = "apigetinquiries";
+    public static final String API_GET_INQUIRY = "apigetinquiry";
+    public static final String API_START_INQUIRY = "apistartinquiry";
+    public static final String API_UPDATE_INQUIRY = "apiupdateinquiry";
+    public static final String API_REMOVE_INQUIRY = "apiremoveinquiry";
+    public static final String API_GET_INQUIRY_SUMMARY = "apigetinquirysummary";
 
-    public static final String API_GET_OPERATION_INQUIRY_DETAILS = "apigetoperationinquirydetails";
+    public static final String API_GET_INQUIRY_DETAILS = "apigetinquirydetails";
 
 
-    public static final String API_GET_AGENT_OPERATION_FLOWS = "apigetagentoperationflows";
-    public static final String API_GET_CAMPAIGN_OPERATION_FLOWS = "apigetcampaignoperationflows";
-    public static final String API_GET_OPERATION_FLOWS = "apigetoperationflows";
-    public static final String API_GET_OPERATION_FLOW = "apigetoperationflow";
-    public static final String API_UPDATE_OPERATION_FLOW = "apiupdateoperationflow";
-    public static final String API_REMOVE_OPERATION_FLOW = "apiremoveoperationflow";
-    public static final String API_GET_OPERATION_FLOW_SUMMARY = "apigetoperationflowsummary";
+    public static final String API_GET_AGENT_FLOWS = "apigetagentflows";
+    public static final String API_GET_CAMPAIGN_FLOWS = "apigetcampaignflows";
+    public static final String API_GET_FLOWS = "apigetflows";
+    public static final String API_GET_FLOW = "apigetflow";
+    public static final String API_UPDATE_FLOW = "apiupdateflow";
+    public static final String API_REMOVE_FLOW = "apiremoveflow";
+    public static final String API_GET_FLOW_SUMMARY = "apigetflowsummary";
 
-    public static final String API_GET_OPERATION_FLOW_DETAILS = "apigetoperationflowdetails";
+    public static final String API_GET_FLOW_DETAILS = "apigetflowdetails";
 
 
 

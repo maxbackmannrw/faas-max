@@ -96,7 +96,6 @@ public class ApiDashboardFramework {
     }
 
 
-
     public List<ApiCampaignWSDTO> apiDashCampaignsService(long agentId) {
 
         List<ApiCampaignWSDTO> campaignWSDTOS = new ArrayList<>();
@@ -128,7 +127,6 @@ public class ApiDashboardFramework {
     public List<ApiSummaryWSDTO> apiGetDashSummaryService(long agentId) {
 
         List<ApiSummaryWSDTO> apiSummaryWSDTOS = new ArrayList<>();
-
         apiSummaryWSDTOS.add(new ApiSummaryWSDTO(AppConstant.TOTAL_CAMPAIGNS_SUMMARY,String.valueOf(campaignAgentRepository.countByAgentId(agentId))));
         apiSummaryWSDTOS.add(new ApiSummaryWSDTO(AppConstant.READY_OPERATIONS_SUMMARY,String.valueOf(sessionRepository.countByAgentIdAndSessionState(agentId, AppConstant.READY_SESSION))));
         apiSummaryWSDTOS.add(new ApiSummaryWSDTO(AppConstant.ACTIVE_OPERATIONS_SUMMARY,String.valueOf(sessionRepository.countByAgentIdAndSessionState(agentId, AppConstant.ACTIVE_SESSION))));

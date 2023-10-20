@@ -1,15 +1,13 @@
 package com.faas.core.api.model.ws.operation.details.content.dto;
 
 import com.faas.core.api.model.ws.flow.content.dto.ApiFlowWSDTO;
-import com.faas.core.api.model.ws.flow.content.dto.ApiOperationFlowWSDTO;
 import com.faas.core.api.model.ws.inquiry.content.dto.ApiInquiryWSDTO;
-import com.faas.core.api.model.ws.inquiry.content.dto.ApiOperationInquiryWSDTO;
 import com.faas.core.api.model.ws.operation.channel.content.dto.ApiOperationChannelWSDTO;
 import com.faas.core.api.model.ws.operation.details.activity.dto.ApiOperationActivityWSDTO;
 import com.faas.core.api.model.ws.operation.details.client.dto.ApiOperationClientWSDTO;
 import com.faas.core.api.model.ws.client.details.dto.ApiClientNoteWSDTO;
 import com.faas.core.api.model.ws.client.details.dto.ApiClientOsIntWSDTO;
-import com.faas.core.api.model.ws.operation.scenario.dto.ApiOperationScenarioWSDTO;
+import com.faas.core.api.model.ws.operation.details.scenario.dto.ApiOperationScenarioWSDTO;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.client.session.SessionDBModel;
 

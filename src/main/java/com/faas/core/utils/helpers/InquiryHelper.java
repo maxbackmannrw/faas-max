@@ -1,7 +1,6 @@
 package com.faas.core.utils.helpers;
 
 import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
-import com.faas.core.api.model.ws.inquiry.content.dto.ApiOperationInquiryContent;
 import com.faas.core.api.model.ws.inquiry.content.dto.ApiOperationInquiryWSDTO;
 import com.faas.core.api.model.ws.inquiry.content.dto.ApiInquiryWSDTO;
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
@@ -49,30 +48,6 @@ public class InquiryHelper {
     AppUtils appUtils;
 
 
-    public ApiOperationInquiryWSDTO mapApiClientInquiryWSDTO(Page<SessionDBModel> sessionDBModelPage){
-
-        ApiOperationInquiryWSDTO clientInquiryWSDTO = new ApiOperationInquiryWSDTO();
-        List<ApiOperationInquiryContent> clientInquiryContents = new ArrayList<>();
-        for (int i=0;i<sessionDBModelPage.getContent().size();i++){
-            clientInquiryContents.add(mapApiClientInquiryContent(sessionDBModelPage.getContent().get(i)));
-        }
-        clientInquiryWSDTO.setPagination(sessionHelper.createSessionPaginationWSDTO(sessionDBModelPage));
-        return clientInquiryWSDTO;
-    }
-
-
-    public ApiOperationInquiryContent mapApiClientInquiryContent(SessionDBModel sessionDBModel){
-
-        ApiOperationInquiryContent clientInquiryContent = new ApiOperationInquiryContent();
-        Optional<ClientDBModel> clientDBModel = clientRepository.findById(sessionDBModel.getClientId());
-        List<OperationInquiryDBModel> operationInquiryDBModels = operationInquiryRepository.findBySessionIdAndClientId(sessionDBModel.getId(),sessionDBModel.getClientId());
-        if (clientDBModel.isPresent() && !operationInquiryDBModels.isEmpty()){
-            clientInquiryContent.setClient(clientDBModel.get());
-            clientInquiryContent.setClientInquiry(operationInquiryDBModels.get(0));
-        }
-        return clientInquiryContent;
-    }
-
 
     public ApiOperationInquiryWSDTO getApiOperationInquiryWSDTO(Page<OperationInquiryDBModel> operationInquiryPage){
 
@@ -108,7 +83,7 @@ public class InquiryHelper {
     }
 
 
-    public List<ApiSummaryWSDTO> getApiOperationInquirySummary(long agentId) {
+    public List<ApiSummaryWSDTO> getApiInquirySummary(long agentId) {
 
         List<ApiSummaryWSDTO> apiOperationInquirySummaryWSDTOS = new ArrayList<>();
         apiOperationInquirySummaryWSDTOS.add(new ApiSummaryWSDTO(AppConstant.READY_INQUIRIES_SUMMARY, String.valueOf(operationInquiryRepository.countByAgentIdAndInquiryState(agentId,AppConstant.READY_INQUIRY))));
