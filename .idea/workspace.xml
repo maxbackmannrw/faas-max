@@ -6,49 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/flow/content/ApiOperationFlowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/flow/content/ApiFlowController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/flow/details/ApiOperationFlowDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/flow/details/ApiFlowDetailsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/inquiry/content/ApiOperationInquiryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/inquiry/content/ApiInquiryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/inquiry/details/ApiOperationInquiryDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/inquiry/details/ApiInquiryDetailsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/details/client/ApiOperationClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/details/client/content/ApiOperationClientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/details/note/ApiOperationClientNoteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/details/client/note/ApiOperationClientNoteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/scenario/ApiOperationScenarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/details/scenario/ApiOperationScenarioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/dashboard/ApiDashboardFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/dashboard/ApiDashboardFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/flow/content/ApiOperationFlowFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/flow/content/ApiFlowFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/flow/details/ApiOperationFlowDetailsFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/flow/details/ApiFlowDetailsFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/inquiry/content/ApiOperationInquiryFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/inquiry/content/ApiInquiryFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/inquiry/details/ApiOperationInquiryDetailsFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/inquiry/details/ApiInquiryDetailsFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/client/ApiOperationClientFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/client/content/ApiOperationClientFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/note/ApiOperationClientNoteFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/client/note/ApiOperationClientNoteFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/scenario/ApiOperationScenarioFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/scenario/ApiOperationScenarioFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/flow/content/ApiOperationFlowMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/flow/content/ApiFlowMiddleware.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/flow/details/ApiOperationFlowDetailsMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/flow/details/ApiFlowDetailsMiddleware.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/inquiry/content/ApiOperationInquiryMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/inquiry/content/ApiInquiryMiddleware.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/inquiry/details/ApiOperationInquiryDetailsMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/inquiry/details/ApiInquiryDetailsMiddleware.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/details/client/ApiOperationClientMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/details/client/content/ApiOperationClientMiddleware.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/details/note/ApiOperationClientNoteMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/details/client/note/ApiOperationClientNoteMiddleware.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/scenario/ApiOperationScenarioMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/details/scenario/ApiOperationScenarioMiddleware.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/flow/content/ApiAgentOperationFlowWSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/flow/content/ApiAgentFlowWSModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/flow/content/dto/ApiAgentOperationFlowWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/flow/content/dto/ApiAgentFlowWSDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/flow/content/dto/ApiOperationFlowContent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/flow/content/dto/ApiOperationFlowWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/flow/content/dto/ApiOperationFlowWSDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/flow/details/ApiOperationFlowDetailsWSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/flow/details/ApiFlowDetailsWSModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/flow/details/dto/ApiOperationFlowDetailsWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/flow/details/dto/ApiFlowDetailsWSDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/inquiry/content/ApiAgentOperationInquiryWSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/inquiry/content/ApiAgentInquiryWSModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/inquiry/content/dto/ApiAgentOperationInquiryWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/inquiry/content/dto/ApiAgentInquiryWSDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/inquiry/content/dto/ApiOperationInquiryContent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/inquiry/details/ApiOperationInquiryDetailsWSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/inquiry/details/ApiInquiryDetailsWSModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/inquiry/details/dto/ApiOperationInquiryDetailsWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/inquiry/details/dto/ApiInquiryDetailsWSDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/details/content/dto/ApiOperationDetailsWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/details/content/dto/ApiOperationDetailsWSDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/scenario/ApiOperationScenarioWSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/details/scenario/ApiOperationScenarioWSModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/scenario/ApiProcessScenarioElementWSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/details/scenario/ApiProcessScenarioElementWSModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/scenario/ApiProcessScenarioWSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/details/scenario/ApiProcessScenarioWSModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/scenario/dto/ApiOperationScenarioWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/details/scenario/dto/ApiOperationScenarioWSDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/scenario/dto/ApiProcessScenarioElementWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/details/scenario/dto/ApiProcessScenarioElementWSDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/scenario/dto/ApiProcessScenarioWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/details/scenario/dto/ApiProcessScenarioWSDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/config/ApiRoute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/config/ApiRoute.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/inquiry/content/ApiInquiryFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/inquiry/content/ApiInquiryFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/inquiry/content/dto/ApiAgentInquiryWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/inquiry/content/dto/ApiAgentInquiryWSDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/inquiry/content/dto/ApiOperationInquiryWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/inquiry/content/dto/ApiOperationInquiryWSDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/helpers/InquiryHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/helpers/InquiryHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/helpers/OperationHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/helpers/OperationHelper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -386,15 +347,7 @@
       <workItem from="1697669834977" duration="231000" />
       <workItem from="1697670084168" duration="1233000" />
       <workItem from="1697706022413" duration="9787000" />
-      <workItem from="1697793443714" duration="4660000" />
-    </task>
-    <task id="LOCAL-00270" summary="   ScenarioExecutes -&gt; ScenarioExecutions converted">
-      <option name="closed" value="true" />
-      <created>1696075346841</created>
-      <option name="number" value="00270" />
-      <option name="presentableId" value="LOCAL-00270" />
-      <option name="project" value="LOCAL" />
-      <updated>1696075346841</updated>
+      <workItem from="1697793443714" duration="5410000" />
     </task>
     <task id="LOCAL-00271" summary="   ScenarioExecutes -&gt; ScenarioExecutions converted">
       <option name="closed" value="true" />
@@ -780,7 +733,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697808658818</updated>
     </task>
-    <option name="localTasksCounter" value="319" />
+    <task id="LOCAL-00319" summary="   ScenarioExecutes -&gt; ScenarioExecutions converted">
+      <option name="closed" value="true" />
+      <created>1697829062301</created>
+      <option name="number" value="00319" />
+      <option name="presentableId" value="LOCAL-00319" />
+      <option name="project" value="LOCAL" />
+      <updated>1697829062301</updated>
+    </task>
+    <option name="localTasksCounter" value="320" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -59,8 +59,8 @@ public class InquiryHelper {
                 inquiryWSDTOS.add(inquiryWSDTO);
             }
         }
-        operationInquiryWSDTO.setOperationInquiries(inquiryWSDTOS);
-        operationInquiryWSDTO.setPagination(createOperationInquiryPagination(operationInquiryPage));
+        operationInquiryWSDTO.setInquiries(inquiryWSDTOS);
+        operationInquiryWSDTO.setPagination(createInquiryPagination(operationInquiryPage));
         return operationInquiryWSDTO;
     }
 
@@ -72,7 +72,6 @@ public class InquiryHelper {
         if (sessionDBModel.isPresent() && !operationDBModels.isEmpty()){
 
             ApiInquiryWSDTO inquiryWSDTO = new ApiInquiryWSDTO();
-
             inquiryWSDTO.setOperation(operationDBModels.get(0));
             inquiryWSDTO.setOperationSession(sessionDBModel.get());
             inquiryWSDTO.setOperationInquiry(operationInquiryDBModel);
@@ -153,7 +152,7 @@ public class InquiryHelper {
     }
 
 
-    public PaginationWSDTO createOperationInquiryPagination(Page<OperationInquiryDBModel> operationInquiryPage){
+    public PaginationWSDTO createInquiryPagination(Page<OperationInquiryDBModel> operationInquiryPage){
 
         PaginationWSDTO paginationWSDTO = new PaginationWSDTO();
 
@@ -161,18 +160,6 @@ public class InquiryHelper {
         paginationWSDTO.setPageNumber(operationInquiryPage.getPageable().getPageNumber());
         paginationWSDTO.setTotalPage(operationInquiryPage.getTotalPages());
         paginationWSDTO.setTotalElements(operationInquiryPage.getTotalElements());
-
-        return paginationWSDTO;
-    }
-
-
-    public PaginationWSDTO createClientInquiryPagination(Page<OperationInquiryDBModel> clientInquiryDBModelPage){
-
-        PaginationWSDTO paginationWSDTO = new PaginationWSDTO();
-        paginationWSDTO.setPageSize(clientInquiryDBModelPage.getPageable().getPageSize());
-        paginationWSDTO.setPageNumber(clientInquiryDBModelPage.getPageable().getPageNumber());
-        paginationWSDTO.setTotalPage(clientInquiryDBModelPage.getTotalPages());
-        paginationWSDTO.setTotalElements(clientInquiryDBModelPage.getTotalElements());
 
         return paginationWSDTO;
     }

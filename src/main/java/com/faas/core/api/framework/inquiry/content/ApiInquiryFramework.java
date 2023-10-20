@@ -45,8 +45,8 @@ public class ApiInquiryFramework {
     public ApiAgentInquiryWSDTO apiGetAgentInquiriesService(long agentId, int reqPage, int reqSize){
 
         ApiAgentInquiryWSDTO agentOperationInquiryWSDTO = new ApiAgentInquiryWSDTO();
-        agentOperationInquiryWSDTO.setReadyOperationInquiry(inquiryHelper.getApiOperationInquiryWSDTO(operationInquiryRepository.findAllByAgentIdAndInquiryState(agentId,AppConstant.READY_INQUIRY, PageRequest.of(reqPage,reqSize))));
-        agentOperationInquiryWSDTO.setActiveOperationInquiry(inquiryHelper.getApiOperationInquiryWSDTO(operationInquiryRepository.findAllByAgentIdAndInquiryState(agentId,AppConstant.ACTIVE_INQUIRY,PageRequest.of(reqPage,reqSize))));
+        agentOperationInquiryWSDTO.setReadyInquiry(inquiryHelper.getApiOperationInquiryWSDTO(operationInquiryRepository.findAllByAgentIdAndInquiryState(agentId,AppConstant.READY_INQUIRY, PageRequest.of(reqPage,reqSize))));
+        agentOperationInquiryWSDTO.setActiveInquiry(inquiryHelper.getApiOperationInquiryWSDTO(operationInquiryRepository.findAllByAgentIdAndInquiryState(agentId,AppConstant.ACTIVE_INQUIRY,PageRequest.of(reqPage,reqSize))));
         return agentOperationInquiryWSDTO;
     }
 

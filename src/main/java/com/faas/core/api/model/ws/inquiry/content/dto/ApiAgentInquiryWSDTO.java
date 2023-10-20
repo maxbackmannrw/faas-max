@@ -2,30 +2,30 @@ package com.faas.core.api.model.ws.inquiry.content.dto;
 
 public class ApiAgentInquiryWSDTO {
 
-    private ApiOperationInquiryWSDTO readyOperationInquiry;
-    private ApiOperationInquiryWSDTO activeOperationInquiry;
+    private ApiOperationInquiryWSDTO readyInquiry;
+    private ApiOperationInquiryWSDTO activeInquiry;
 
     public ApiAgentInquiryWSDTO() {
     }
 
-    public ApiAgentInquiryWSDTO(ApiOperationInquiryWSDTO readyOperationInquiry, ApiOperationInquiryWSDTO activeOperationInquiry) {
-        this.readyOperationInquiry = readyOperationInquiry;
-        this.activeOperationInquiry = activeOperationInquiry;
+    public ApiAgentInquiryWSDTO(ApiOperationInquiryWSDTO readyInquiry, ApiOperationInquiryWSDTO activeInquiry) {
+        this.readyInquiry = readyInquiry;
+        this.activeInquiry = activeInquiry;
     }
 
-    public ApiOperationInquiryWSDTO getReadyOperationInquiry() {
-        return readyOperationInquiry;
+    public ApiOperationInquiryWSDTO getReadyInquiry() {
+        return readyInquiry;
     }
 
-    public void setReadyOperationInquiry(ApiOperationInquiryWSDTO readyOperationInquiry) {
-        this.readyOperationInquiry = readyOperationInquiry;
+    public void setReadyInquiry(ApiOperationInquiryWSDTO readyInquiry) {
+        this.readyInquiry = readyInquiry;
     }
 
-    public ApiOperationInquiryWSDTO getActiveOperationInquiry() {
-        return activeOperationInquiry;
+    public ApiOperationInquiryWSDTO getActiveInquiry() {
+        return activeInquiry;
     }
 
-    public void setActiveOperationInquiry(ApiOperationInquiryWSDTO activeOperationInquiry) {
-        this.activeOperationInquiry = activeOperationInquiry;
+    public void setActiveInquiry(ApiOperationInquiryWSDTO activeInquiry) {
+        this.activeInquiry = activeInquiry;
     }
 }

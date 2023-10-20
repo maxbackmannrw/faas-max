@@ -6,23 +6,23 @@ import java.util.List;
 
 public class ApiOperationInquiryWSDTO {
 
-    private List<ApiInquiryWSDTO>operationInquiries;
+    private List<ApiInquiryWSDTO>inquiries;
     private PaginationWSDTO pagination;
 
     public ApiOperationInquiryWSDTO() {
     }
 
-    public ApiOperationInquiryWSDTO(List<ApiInquiryWSDTO> operationInquiries, PaginationWSDTO pagination) {
-        this.operationInquiries = operationInquiries;
+    public ApiOperationInquiryWSDTO(List<ApiInquiryWSDTO> inquiries, PaginationWSDTO pagination) {
+        this.inquiries = inquiries;
         this.pagination = pagination;
     }
 
-    public List<ApiInquiryWSDTO> getOperationInquiries() {
-        return operationInquiries;
+    public List<ApiInquiryWSDTO> getInquiries() {
+        return inquiries;
     }
 
-    public void setOperationInquiries(List<ApiInquiryWSDTO> operationInquiries) {
-        this.operationInquiries = operationInquiries;
+    public void setInquiries(List<ApiInquiryWSDTO> inquiries) {
+        this.inquiries = inquiries;
     }
 
     public PaginationWSDTO getPagination() {
