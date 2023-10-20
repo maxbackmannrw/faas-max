@@ -115,7 +115,6 @@ public class ApiInquiryFramework {
     }
 
 
-
     public List<ApiSummaryWSDTO> apiGetInquirySummaryService(long agentId){
         return inquiryHelper.getApiInquirySummary(agentId);
     }
