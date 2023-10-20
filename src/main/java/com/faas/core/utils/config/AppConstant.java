@@ -120,7 +120,6 @@ public class AppConstant {
 
     public static final String STANDARD_EMAIL = "STANDARD_EMAIL";
 
-
     public static final String TEXT_PUSH = "TEXT_PUSH";
 
 
