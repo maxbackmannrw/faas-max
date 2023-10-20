@@ -177,9 +177,9 @@ public class ApiOperationInquiryMiddleware {
         ApiSummaryWSModel response = new ApiSummaryWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ApiSummaryWSDTO> inquirySummaries  = apiOperationInquiryFramework.apiGetOperationInquirySummaryService(agentId);
-        if (inquirySummaries != null){
-            response.setSummaries(inquirySummaries);
+        List<ApiSummaryWSDTO> operationInquirySummary  = apiOperationInquiryFramework.apiGetOperationInquirySummaryService(agentId);
+        if (operationInquirySummary != null){
+            response.setSummaries(operationInquirySummary);
         }
 
         general.setOperation("apiGetOperationInquirySummary");
