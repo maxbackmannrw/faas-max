@@ -1,7 +1,7 @@
-package com.faas.core.api.endpoint.controller.operation.details.inquiry;
+package com.faas.core.api.endpoint.controller.operation.details.transaction.content;
 
-import com.faas.core.api.middleware.operation.details.scenario.ApiOperationScenarioMiddleware;
-import com.faas.core.api.model.ws.operation.details.scenario.ApiOperationScenarioWSModel;
+import com.faas.core.api.middleware.operation.details.transaction.content.ApiOperationTransactionMiddleware;
+import com.faas.core.api.model.ws.operation.details.transaction.scenario.ApiOperationScenarioWSModel;
 import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +14,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-@RequestMapping(value = AppConstant.API_VERSION + "/api/operation/details/inquiry/")
-public class ApiOperationInquiryController {
+@RequestMapping(value = AppConstant.API_VERSION + "/api/operation/details/transaction/")
+public class ApiOperationTransactionController {
 
 
     @Autowired
-    ApiOperationScenarioMiddleware apiOperationScenarioMiddleware;
+    ApiOperationTransactionMiddleware apiOperationTransactionMiddleware;
 
 
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_SCENARIOS, method = RequestMethod.POST)
@@ -27,13 +27,14 @@ public class ApiOperationInquiryController {
                                                       @RequestParam long sessionId,
                                                       @RequestParam String processId) {
 
-        ApiOperationScenarioWSModel response = apiOperationScenarioMiddleware.apiGetOperationScenarios(agentId,sessionId,processId);
+        ApiOperationScenarioWSModel response = apiOperationTransactionMiddleware.apiGetOperationScenarios(agentId,sessionId,processId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
+
 
 
 }

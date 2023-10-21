@@ -1,9 +1,9 @@
-package com.faas.core.api.endpoint.controller.operation.details.scenario;
+package com.faas.core.api.endpoint.controller.operation.details.transaction.scenario;
 
-import com.faas.core.api.middleware.operation.details.scenario.ApiOperationScenarioMiddleware;
-import com.faas.core.api.model.ws.operation.details.scenario.ApiOperationScenarioWSModel;
-import com.faas.core.api.model.ws.operation.details.scenario.ApiProcessScenarioElementWSModel;
-import com.faas.core.api.model.ws.operation.details.scenario.ApiProcessScenarioWSModel;
+import com.faas.core.api.middleware.operation.details.transaction.scenario.ApiOperationScenarioMiddleware;
+import com.faas.core.api.model.ws.operation.details.transaction.scenario.ApiOperationScenarioWSModel;
+import com.faas.core.api.model.ws.operation.details.transaction.scenario.ApiProcessScenarioElementWSModel;
+import com.faas.core.api.model.ws.operation.details.transaction.scenario.ApiProcessScenarioWSModel;
 import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-@RequestMapping(value = AppConstant.API_VERSION + "/api/operation/details/scenario/")
+@RequestMapping(value = AppConstant.API_VERSION + "/api/operation/details/transaction/scenario/")
 public class ApiOperationScenarioController {
 
 
