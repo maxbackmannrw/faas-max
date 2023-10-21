@@ -1,12 +1,12 @@
-package com.faas.core.api.middleware.operation.details.transaction.scenario;
+package com.faas.core.api.middleware.operation.details.scenario;
 
-import com.faas.core.api.framework.operation.details.transaction.scenario.ApiOperationScenarioFramework;
-import com.faas.core.api.model.ws.operation.details.transaction.scenario.ApiOperationScenarioWSModel;
-import com.faas.core.api.model.ws.operation.details.transaction.scenario.dto.ApiOperationScenarioWSDTO;
-import com.faas.core.api.model.ws.operation.details.transaction.scenario.ApiProcessScenarioElementWSModel;
-import com.faas.core.api.model.ws.operation.details.transaction.scenario.ApiProcessScenarioWSModel;
-import com.faas.core.api.model.ws.operation.details.transaction.scenario.dto.ApiProcessScenarioElementWSDTO;
-import com.faas.core.api.model.ws.operation.details.transaction.scenario.dto.ApiProcessScenarioWSDTO;
+import com.faas.core.api.framework.operation.details.scenario.ApiOperationScenarioFramework;
+import com.faas.core.api.model.ws.operation.details.scenario.ApiOperationScenarioWSModel;
+import com.faas.core.api.model.ws.operation.details.scenario.dto.ApiOperationScenarioWSDTO;
+import com.faas.core.api.model.ws.operation.details.scenario.ApiProcessScenarioElementWSModel;
+import com.faas.core.api.model.ws.operation.details.scenario.ApiProcessScenarioWSModel;
+import com.faas.core.api.model.ws.operation.details.scenario.dto.ApiProcessScenarioElementWSDTO;
+import com.faas.core.api.model.ws.operation.details.scenario.dto.ApiProcessScenarioWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;

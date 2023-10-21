@@ -1,7 +1,7 @@
 package com.faas.core.api.endpoint.controller.operation.details.transaction.content;
 
 import com.faas.core.api.middleware.operation.details.transaction.content.ApiTransactionMiddleware;
-import com.faas.core.api.model.ws.operation.details.transaction.scenario.ApiOperationScenarioWSModel;
+import com.faas.core.api.model.ws.operation.details.scenario.ApiOperationScenarioWSModel;
 import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
