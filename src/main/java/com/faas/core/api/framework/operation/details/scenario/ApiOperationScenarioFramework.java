@@ -80,7 +80,7 @@ public class ApiOperationScenarioFramework {
 
         List<OperationScenarioDBModel> operationScenarioDBModels = operationScenarioRepository.findByIdAndSessionId(executeId,sessionId);
         if (!operationScenarioDBModels.isEmpty()){
-            return new ApiOperationScenarioWSDTO(operationScenarioDBModels.get(0));
+            return operationHelper.getApiOperationScenarioWSDTO(operationScenarioDBModels.get(0));
         }
         return null;
     }
@@ -112,7 +112,7 @@ public class ApiOperationScenarioFramework {
             operationScenarioDBModel.setcDate(appUtils.getCurrentTimeStamp());
             operationScenarioDBModel.setStatus(1);
 
-            return new ApiOperationScenarioWSDTO(operationScenarioRepository.save(operationScenarioDBModel));
+            return operationHelper.getApiOperationScenarioWSDTO(operationScenarioRepository.save(operationScenarioDBModel));
         }
         return null;
     }
@@ -121,7 +121,7 @@ public class ApiOperationScenarioFramework {
 
         List<OperationScenarioDBModel> operationScenarioDBModels = operationScenarioRepository.findByIdAndSessionId(executeId,sessionId);
         if (!operationScenarioDBModels.isEmpty()){
-            return new ApiOperationScenarioWSDTO(operationScenarioDBModels.get(0));
+            return operationHelper.getApiOperationScenarioWSDTO(operationScenarioDBModels.get(0));
         }
         return null;
     }
@@ -131,7 +131,7 @@ public class ApiOperationScenarioFramework {
         List<OperationScenarioDBModel> operationScenarioDBModels = operationScenarioRepository.findByIdAndSessionId(executeId,sessionId);
         if (!operationScenarioDBModels.isEmpty()){
             operationScenarioRepository.delete(operationScenarioDBModels.get(0));
-            return new ApiOperationScenarioWSDTO(operationScenarioDBModels.get(0));
+            return operationHelper.getApiOperationScenarioWSDTO(operationScenarioDBModels.get(0));
         }
         return null;
     }
