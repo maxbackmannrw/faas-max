@@ -540,7 +540,6 @@ public class BaseRoute {
     public static final String REMOVE_ELEMENT_VARIABLE = "removeelementvariable";
 
 
-
     public static final String GET_ACTION_TEMPS = "getactiontemps";
     public static final String GET_ACTION_TEMP = "getactiontemp";
     public static final String CREATE_ACTION_TEMP = "createactiontemp";
@@ -548,18 +547,13 @@ public class BaseRoute {
     public static final String REMOVE_ACTION_TEMP = "removeactiontemp";
 
 
-    public static final String REMOVE_ALL_CLIENTS = "removeallclients";
-    public static final String REMOVE_ALL_SESSIONS = "removeallsessions";
-    public static final String REMOVE_ALL_FLOWS = "removeallflows";
-    public static final String REMOVE_ALL_INQUIRIES = "removeallinquiries";
+    public static final String GET_ALL_SYSTEM_SETTINGS = "getallsystemsettings";
 
-    public static final String REMOVE_SELECTED_TABLES = "removeselectedtables";
-    public static final String CLEAN_SYSTEM_TABLES = "cleansystemtables";
+    public static final String REMOVE_ALL_CLIENTS = "removeallclients";
+
 
 
     public static final String GET_SYSTEM_STATE = "getsystemstate";
-
-
 
 
 }

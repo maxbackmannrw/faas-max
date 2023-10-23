@@ -209,4 +209,16 @@ public class AppConstant {
     public static final String PROCESS_SCENARIO_TABLES = "PROCESS_SCENARIO_TABLES";
 
 
+    public static final String CLIENTS_SETTINGS = "CLIENTS_SETTINGS";
+    public static final String SESSIONS_SETTINGS = "SESSIONS_SETTINGS";
+    public static final String OPERATIONS_SETTINGS = "OPERATIONS_SETTINGS";
+    public static final String OPERATION_INQUIRIES_SETTINGS = "OPERATION_INQUIRIES_SETTINGS";
+    public static final String OPERATION_FLOWS_SETTINGS = "OPERATION_FLOWS_SETTINGS";
+    public static final String USERS_SETTINGS = "USERS_SETTINGS";
+    public static final String ASSETS_SETTINGS = "ASSETS_SETTINGS";
+    public static final String CAMPAIGNS_SETTINGS = "CAMPAIGNS_SETTINGS";
+    public static final String PROCESSES_SETTINGS = "PROCESSES_SETTINGS";
+    public static final String PROCESS_SCENARIOS_SETTINGS = "PROCESS_SCENARIOS_SETTINGS";
+
+
 }

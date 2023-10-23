@@ -17,8 +17,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping(value = AppConstant.API_VERSION + "/base/utils/settings/")
 public class UtilsSettingsController {
 
+
     @Autowired
     UtilsSettingsMiddleware utilsSettingsMiddleware;
+
+
+    @RequestMapping(value = BaseRoute.GET_ALL_SYSTEM_SETTINGS, method = RequestMethod.POST)
+    public ResponseEntity<?> getAllSystemSettings(@RequestParam long userId) {
+
+        UtilSettingsWSModel response = utilsSettingsMiddleware.getAllSystemSettings(userId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
 
 
     @RequestMapping(value = BaseRoute.REMOVE_ALL_CLIENTS, method = RequestMethod.POST)
@@ -32,66 +45,6 @@ public class UtilsSettingsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
-    @RequestMapping(value = BaseRoute.REMOVE_ALL_SESSIONS, method = RequestMethod.POST)
-    public ResponseEntity<?> removeAllSessions(@RequestParam long userId) {
-
-        UtilSettingsWSModel response = utilsSettingsMiddleware.removeAllSessions(userId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-
-    @RequestMapping(value = BaseRoute.REMOVE_ALL_FLOWS, method = RequestMethod.POST)
-    public ResponseEntity<?> removeAllFlows(@RequestParam long userId) {
-
-        UtilSettingsWSModel response = utilsSettingsMiddleware.removeAllFlows(userId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-
-    @RequestMapping(value = BaseRoute.REMOVE_ALL_INQUIRIES, method = RequestMethod.POST)
-    public ResponseEntity<?> removeAllInquiries(@RequestParam long userId) {
-
-        UtilSettingsWSModel response = utilsSettingsMiddleware.removeAllInquiries(userId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-
-    @RequestMapping(value = BaseRoute.REMOVE_SELECTED_TABLES, method = RequestMethod.POST)
-    public ResponseEntity<?> removeSelectedTables(@RequestParam long userId,
-                                                  @RequestParam String selected) {
-
-        UtilSettingsWSModel response = utilsSettingsMiddleware.removeSelectedTables(userId,selected);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-
-    @RequestMapping(value = BaseRoute.CLEAN_SYSTEM_TABLES, method = RequestMethod.POST)
-    public ResponseEntity<?> cleanSystemTables(@RequestParam long userId) {
-
-        UtilSettingsWSModel response = utilsSettingsMiddleware.cleanSystemTables(userId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
 
 
 }
