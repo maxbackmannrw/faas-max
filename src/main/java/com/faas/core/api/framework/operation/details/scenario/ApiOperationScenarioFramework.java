@@ -19,6 +19,7 @@ import com.faas.core.base.repo.scenario.content.ScenarioRepository;
 import com.faas.core.base.repo.user.content.UserRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
+import com.faas.core.utils.helpers.OperationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -30,6 +31,8 @@ import java.util.Optional;
 @Component
 public class ApiOperationScenarioFramework {
 
+    @Autowired
+    OperationHelper operationHelper;
 
     @Autowired
     SessionRepository sessionRepository;
@@ -67,7 +70,7 @@ public class ApiOperationScenarioFramework {
         List<ApiOperationScenarioWSDTO> operationScenarioWSDTOS = new ArrayList<>();
         List<OperationScenarioDBModel> operationScenarioDBModels = operationScenarioRepository.findBySessionIdAndProcessId(sessionId,processId);
         for (OperationScenarioDBModel operationScenarioDBModel : operationScenarioDBModels) {
-            operationScenarioWSDTOS.add(new ApiOperationScenarioWSDTO(operationScenarioDBModel));
+            operationScenarioWSDTOS.add(operationHelper.getApiOperationScenarioWSDTO(operationScenarioDBModel));
         }
         return operationScenarioWSDTOS;
     }

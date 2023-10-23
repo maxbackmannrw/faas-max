@@ -271,6 +271,18 @@ public class OperationHelper {
         return null;
     }
 
+    public ApiOperationScenarioWSDTO getApiOperationScenarioWSDTO(OperationScenarioDBModel operationScenarioDBModel){
+
+        ApiOperationScenarioWSDTO operationScenarioWSDTO = new ApiOperationScenarioWSDTO();
+        operationScenarioWSDTO.setOperationScenario(operationScenarioDBModel);
+        List<ProcessScenarioDBModel> processScenarioDBModels = processScenarioRepository.findByProcessIdAndScenarioId(operationScenarioDBModel.getProcessId(),operationScenarioDBModel.getScenarioId());
+        if (!processScenarioDBModels.isEmpty()){
+            operationScenarioWSDTO.setProcessScenario(processScenarioDBModels.get(0));
+        }
+        return operationScenarioWSDTO;
+    }
+
+
 
     public OperationDBModel mapOperationDBModel(SessionDBModel sessionDBModel) {
 
@@ -419,14 +431,6 @@ public class OperationHelper {
     }
 
 
-    public List<ApiOperationScenarioWSDTO> mapApiScenarioExecutionWSDTOS(List<OperationScenarioDBModel> operationScenarioDBModels){
-
-        List<ApiOperationScenarioWSDTO> scenarioExecutionWSDTOS = new ArrayList<>();
-        for (OperationScenarioDBModel operationScenarioDBModel : operationScenarioDBModels) {
-            scenarioExecutionWSDTOS.add(new ApiOperationScenarioWSDTO(operationScenarioDBModel));
-        }
-        return scenarioExecutionWSDTOS;
-    }
 
 
     public ApiOperationChannelWSDTO mapApiOperationChannelWSDTO(SessionDBModel sessionDBModel, ClientDBModel clientDBModel) {

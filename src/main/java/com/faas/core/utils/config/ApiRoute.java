@@ -179,9 +179,7 @@ public class ApiRoute {
     public static final String API_GET_EMAIL_TEMP = "apigetemailtemp";
 
 
-
     public static final String API_GET_OPERATION_PUSH_MESSAGE = "apigetoperationpushmessage";
-
     public static final String API_GET_PUSH_MESSAGES = "apigetpushmessages";
     public static final String API_GET_PUSH_MESSAGE = "apigetpushmessage";
     public static final String API_SEND_PUSH_MESSAGE = "apisendpushmessage";
@@ -190,15 +188,6 @@ public class ApiRoute {
 
     public static final String API_GET_PUSH_MESSAGE_TEMPS = "apigetpushmessagetemps";
     public static final String API_GET_PUSH_MESSAGE_TEMP = "apigetpushmessagetemp";
-
-
-
-
-
-
-
-
-
 
 
 }
