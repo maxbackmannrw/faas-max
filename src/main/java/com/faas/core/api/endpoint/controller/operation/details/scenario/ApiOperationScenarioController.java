@@ -124,33 +124,6 @@ public class ApiOperationScenarioController {
     }
 
 
-    @RequestMapping(value = ApiRoute.API_GET_PROCESS_SCENARIO_ELEMENTS, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetProcessScenarioElements(@RequestParam long agentId,
-                                                           @RequestParam long sessionId,
-                                                           @RequestParam String scenarioId) {
-
-        ApiProcessScenarioElementWSModel response = apiOperationScenarioMiddleware.apiGetProcessScenarioElements(agentId,sessionId,scenarioId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-
-    @RequestMapping(value = ApiRoute.API_GET_PROCESS_SCENARIO_ELEMENT, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetProcessScenarioElement(@RequestParam long agentId,
-                                                          @RequestParam long sessionId,
-                                                          @RequestParam String scenarioId,
-                                                          @RequestParam String elementId) {
-
-        ApiProcessScenarioElementWSModel response = apiOperationScenarioMiddleware.apiGetProcessScenarioElement(agentId,sessionId,scenarioId,elementId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
 
 
 }

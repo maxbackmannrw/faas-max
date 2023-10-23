@@ -86,23 +86,12 @@ public class ApiRoute {
     public static final String API_GET_OPERATION_CAMPAIGN = "apigetoperationcampaign";
 
 
-
     public static final String API_GET_OPERATION_CLIENT = "apigetoperationclient";
 
     public static final String API_GET_CLIENT_OS_INT = "apigetclientosint";
 
-
     public static final String API_GET_OPERATION_DEVICES = "apigetoperationdevices";
     public static final String API_GET_OPERATION_DEVICE = "apigetoperationdevice";
-
-
-
-    public static final String API_GET_CLIENT_NOTES = "apigetclientnotes";
-    public static final String API_GET_CLIENT_NOTE = "apigetclientnote";
-    public static final String API_CREATE_CLIENT_NOTE = "apicreateclientnote";
-    public static final String API_UPDATE_CLIENT_NOTE = "apiupdateclientnote";
-    public static final String API_REMOVE_CLIENT_NOTE = "apiremoveclientnote";
-
 
 
     public static final String API_GET_AGENT_CLIENTS = "apigetagentclients";
@@ -111,8 +100,11 @@ public class ApiRoute {
     public static final String API_GET_CLIENT_DEVICES = "apigetclientdevices";
     public static final String API_GET_CLIENT_DEVICE = "apigetclientdevice";
 
-
-
+    public static final String API_GET_CLIENT_NOTES = "apigetclientnotes";
+    public static final String API_GET_CLIENT_NOTE = "apigetclientnote";
+    public static final String API_CREATE_CLIENT_NOTE = "apicreateclientnote";
+    public static final String API_UPDATE_CLIENT_NOTE = "apiupdateclientnote";
+    public static final String API_REMOVE_CLIENT_NOTE = "apiremoveclientnote";
 
 
     public static final String API_GET_OPERATION_ACTIVITIES = "apigetoperationactivities";
@@ -121,8 +113,6 @@ public class ApiRoute {
 
     public static final String API_GET_PROCESS_SCENARIOS = "apigetprocessscenarios";
     public static final String API_GET_PROCESS_SCENARIO = "apigetprocessscenario";
-    public static final String API_GET_PROCESS_SCENARIO_ELEMENTS = "apigetprocessscenarioelements";
-    public static final String API_GET_PROCESS_SCENARIO_ELEMENT = "apigetprocessscenarioelement";
 
 
     public static final String API_GET_OPERATION_SCENARIOS = "apigetoperationscenarios";
