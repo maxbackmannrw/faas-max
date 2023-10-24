@@ -168,7 +168,7 @@ public class UtilsSettingsFramework {
 
         UtilSettingsWSDTO usersSettings = new UtilSettingsWSDTO();
         usersSettings.setSettingsName(AppConstant.AGENTS_SETTINGS);
-        usersSettings.setSettingsValue(String.valueOf(userRepository.count()));
+        usersSettings.setSettingsValue(String.valueOf(userRepository.countByUserType(AppConstant.AGENT_USER)));
         usersSettings.setSettingsState(true);
         return usersSettings;
     }
