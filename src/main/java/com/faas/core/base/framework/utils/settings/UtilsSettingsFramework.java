@@ -10,6 +10,7 @@ import com.faas.core.base.repo.operation.flow.OperationFlowRepository;
 import com.faas.core.base.repo.operation.inquiry.OperationInquiryRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.process.details.scenario.ProcessScenarioRepository;
+import com.faas.core.base.repo.scenario.content.ScenarioRepository;
 import com.faas.core.base.repo.user.content.UserRepository;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +48,9 @@ public class UtilsSettingsFramework {
     ProcessRepository processRepository;
 
     @Autowired
+    ScenarioRepository scenarioRepository;
+
+    @Autowired
     ProcessScenarioRepository processScenarioRepository;
 
     @Autowired
@@ -56,6 +60,7 @@ public class UtilsSettingsFramework {
     public List<UtilSettingsWSDTO> getAllSystemSettingsService(long userId) {
 
         List<UtilSettingsWSDTO>systemSettingsWSDTOS  = new ArrayList<>();
+
         systemSettingsWSDTOS.add(getClientsSettings());
         systemSettingsWSDTOS.add(getSessionsSettings());
         systemSettingsWSDTOS.add(getOperationsSettings());
@@ -64,13 +69,15 @@ public class UtilsSettingsFramework {
 
         systemSettingsWSDTOS.add(getCampaignsSettings());
         systemSettingsWSDTOS.add(getProcessesSettings());
-        systemSettingsWSDTOS.add(getProcessScenariosSettings());
+        systemSettingsWSDTOS.add(getScenariosSettings());
 
         systemSettingsWSDTOS.add(getUsersSettings());
+        systemSettingsWSDTOS.add(getAgentsSettings());
         systemSettingsWSDTOS.add(getAssetsSettings());
 
         return systemSettingsWSDTOS;
     }
+
 
 
     public UtilSettingsWSDTO getClientsSettings(){
@@ -119,7 +126,6 @@ public class UtilsSettingsFramework {
     }
 
 
-
     public UtilSettingsWSDTO getCampaignsSettings(){
 
         UtilSettingsWSDTO campaignsSettings = new UtilSettingsWSDTO();
@@ -138,20 +144,30 @@ public class UtilsSettingsFramework {
         return processesSettings;
     }
 
-    public UtilSettingsWSDTO getProcessScenariosSettings(){
+    public UtilSettingsWSDTO getScenariosSettings(){
 
         UtilSettingsWSDTO processScenariosSettings = new UtilSettingsWSDTO();
-        processScenariosSettings.setSettingsName(AppConstant.PROCESS_SCENARIOS_SETTINGS);
-        processScenariosSettings.setSettingsValue(String.valueOf(processScenarioRepository.count()));
+        processScenariosSettings.setSettingsName(AppConstant.SCENARIOS_SETTINGS);
+        processScenariosSettings.setSettingsValue(String.valueOf(scenarioRepository.count()));
         processScenariosSettings.setSettingsState(true);
         return processScenariosSettings;
     }
+
 
 
     public UtilSettingsWSDTO getUsersSettings(){
 
         UtilSettingsWSDTO usersSettings = new UtilSettingsWSDTO();
         usersSettings.setSettingsName(AppConstant.USERS_SETTINGS);
+        usersSettings.setSettingsValue(String.valueOf(userRepository.count()));
+        usersSettings.setSettingsState(true);
+        return usersSettings;
+    }
+
+    public UtilSettingsWSDTO getAgentsSettings(){
+
+        UtilSettingsWSDTO usersSettings = new UtilSettingsWSDTO();
+        usersSettings.setSettingsName(AppConstant.AGENTS_SETTINGS);
         usersSettings.setSettingsValue(String.valueOf(userRepository.count()));
         usersSettings.setSettingsState(true);
         return usersSettings;
@@ -165,6 +181,7 @@ public class UtilsSettingsFramework {
         assetsSettings.setSettingsState(true);
         return assetsSettings;
     }
+
 
 
 

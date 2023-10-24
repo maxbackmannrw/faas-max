@@ -189,7 +189,6 @@ public class AppConstant {
     public static final String FINISH_OPERATION_ACTIVITY_DESC = "operation finished by";
 
 
-
     public static final String URL_SHORTENER_API_URL = "https://tyny.to/linkApi";
     public static final String URL_SHORTENER_API_KEY = "b94afb4c-549d-4e40-9891-9aceb6155b31";
 
@@ -204,21 +203,19 @@ public class AppConstant {
     public static final String NATIVE_URL_TAG = "{nativeUrl}";
 
 
-    public static final String CAMPAIGN_TABLES = "CAMPAIGN_TABLES";
-    public static final String SCENARIO_TABLES = "SCENARIO_TABLES";
-    public static final String PROCESS_SCENARIO_TABLES = "PROCESS_SCENARIO_TABLES";
-
-
     public static final String CLIENTS_SETTINGS = "CLIENTS_SETTINGS";
     public static final String SESSIONS_SETTINGS = "SESSIONS_SETTINGS";
     public static final String OPERATIONS_SETTINGS = "OPERATIONS_SETTINGS";
     public static final String OPERATION_INQUIRIES_SETTINGS = "OPERATION_INQUIRIES_SETTINGS";
     public static final String OPERATION_FLOWS_SETTINGS = "OPERATION_FLOWS_SETTINGS";
-    public static final String USERS_SETTINGS = "USERS_SETTINGS";
-    public static final String ASSETS_SETTINGS = "ASSETS_SETTINGS";
+
     public static final String CAMPAIGNS_SETTINGS = "CAMPAIGNS_SETTINGS";
     public static final String PROCESSES_SETTINGS = "PROCESSES_SETTINGS";
-    public static final String PROCESS_SCENARIOS_SETTINGS = "PROCESS_SCENARIOS_SETTINGS";
+    public static final String SCENARIOS_SETTINGS = "SCENARIOS_SETTINGS";
+
+    public static final String USERS_SETTINGS = "USERS_SETTINGS";
+    public static final String AGENTS_SETTINGS = "AGENTS_SETTINGS";
+    public static final String ASSETS_SETTINGS = "ASSETS_SETTINGS";
 
 
 }
