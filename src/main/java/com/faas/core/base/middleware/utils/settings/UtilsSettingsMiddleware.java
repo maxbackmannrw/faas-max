@@ -39,14 +39,17 @@ public class UtilsSettingsMiddleware {
     }
 
 
-    public UtilSettingsWSModel removeAllClients(long userId) {
+    public UtilSettingsWSModel removeSystemSettings(long userId,String systemSettings) {
 
         UtilSettingsWSModel response = new UtilSettingsWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        utilsSettingsFramework.removeAllClientsService();
+        List<UtilSettingsWSDTO> systemSettingsWSDTOS = utilsSettingsFramework.removeSystemSettingsService(userId,systemSettings);
+        if (systemSettingsWSDTOS != null){
+            response.setUtilSettings(systemSettingsWSDTOS);
+        }
 
-        general.setOperation("removeAllClients");
+        general.setOperation("removeSystemSettings");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

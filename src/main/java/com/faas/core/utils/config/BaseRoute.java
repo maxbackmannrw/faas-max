@@ -548,8 +548,7 @@ public class BaseRoute {
 
 
     public static final String GET_ALL_SYSTEM_SETTINGS = "getallsystemsettings";
-
-    public static final String REMOVE_ALL_CLIENTS = "removeallclients";
+    public static final String REMOVE_SYSTEM_SETTINGS = "removesystemsettings";
 
 
 

@@ -34,10 +34,11 @@ public class UtilsSettingsController {
     }
 
 
-    @RequestMapping(value = BaseRoute.REMOVE_ALL_CLIENTS, method = RequestMethod.POST)
-    public ResponseEntity<?> removeAllClients(@RequestParam long userId) {
+    @RequestMapping(value = BaseRoute.REMOVE_SYSTEM_SETTINGS, method = RequestMethod.POST)
+    public ResponseEntity<?> removeSystemSettings(@RequestParam long userId,
+                                                  @RequestParam String systemSettings) {
 
-        UtilSettingsWSModel response = utilsSettingsMiddleware.removeAllClients(userId);
+        UtilSettingsWSModel response = utilsSettingsMiddleware.removeSystemSettings(userId,systemSettings);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

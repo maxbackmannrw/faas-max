@@ -61,10 +61,12 @@ public class UtilsSettingsFramework {
         systemSettingsWSDTOS.add(getOperationsSettings());
         systemSettingsWSDTOS.add(getOperationInquiriesSettings());
         systemSettingsWSDTOS.add(getOperationFlowsSettings());
-        systemSettingsWSDTOS.add(getUsersSettings());
+
         systemSettingsWSDTOS.add(getCampaignsSettings());
         systemSettingsWSDTOS.add(getProcessesSettings());
         systemSettingsWSDTOS.add(getProcessScenariosSettings());
+
+        systemSettingsWSDTOS.add(getUsersSettings());
         systemSettingsWSDTOS.add(getAssetsSettings());
 
         return systemSettingsWSDTOS;
@@ -116,14 +118,7 @@ public class UtilsSettingsFramework {
         return operationFlowsSettings;
     }
 
-    public UtilSettingsWSDTO getUsersSettings(){
 
-        UtilSettingsWSDTO usersSettings = new UtilSettingsWSDTO();
-        usersSettings.setSettingsName(AppConstant.USERS_SETTINGS);
-        usersSettings.setSettingsValue(String.valueOf(userRepository.count()));
-        usersSettings.setSettingsState(true);
-        return usersSettings;
-    }
 
     public UtilSettingsWSDTO getCampaignsSettings(){
 
@@ -152,6 +147,16 @@ public class UtilsSettingsFramework {
         return processScenariosSettings;
     }
 
+
+    public UtilSettingsWSDTO getUsersSettings(){
+
+        UtilSettingsWSDTO usersSettings = new UtilSettingsWSDTO();
+        usersSettings.setSettingsName(AppConstant.USERS_SETTINGS);
+        usersSettings.setSettingsValue(String.valueOf(userRepository.count()));
+        usersSettings.setSettingsState(true);
+        return usersSettings;
+    }
+
     public UtilSettingsWSDTO getAssetsSettings(){
 
         UtilSettingsWSDTO assetsSettings = new UtilSettingsWSDTO();
@@ -163,12 +168,53 @@ public class UtilsSettingsFramework {
 
 
 
+    public List<UtilSettingsWSDTO> removeSystemSettingsService(long userId,String systemSettings) {
 
-    public void removeAllClientsService() {
+        if (systemSettings.equalsIgnoreCase(AppConstant.CLIENTS_SETTINGS)){
 
+        }
 
+        if (systemSettings.equalsIgnoreCase(AppConstant.SESSIONS_SETTINGS)){
+
+        }
+
+        if (systemSettings.equalsIgnoreCase(AppConstant.OPERATIONS_SETTINGS)){
+
+        }
+
+        if (systemSettings.equalsIgnoreCase(AppConstant.OPERATION_INQUIRIES_SETTINGS)){
+
+        }
+
+        if (systemSettings.equalsIgnoreCase(AppConstant.OPERATION_FLOWS_SETTINGS)){
+
+        }
+
+        return null;
     }
 
+
+
+
+    public boolean removeAllClientSettings(){
+        return true;
+    }
+
+    public boolean removeAllSessionSettings(){
+        return true;
+    }
+
+    public boolean removeAllOperationSettings(){
+        return true;
+    }
+
+    public boolean removeAllOperationInquirySettings(){
+        return true;
+    }
+
+    public boolean removeAllOperationFlowSettings(){
+        return true;
+    }
 
 
 
