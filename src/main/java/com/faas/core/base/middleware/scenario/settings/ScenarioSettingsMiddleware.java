@@ -78,13 +78,13 @@ public class ScenarioSettingsMiddleware {
     }
 
 
-    public ScenarioTypeWSModel createScenarioType(long userId,String scenarioType,String baseType) {
+    public ScenarioTypeWSModel createScenarioType(long userId,String scenarioType) {
 
         ScenarioTypeWSModel response = new ScenarioTypeWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ScenarioTypeWSDTO>scenarioTypeWSDTOS = new ArrayList<>();
 
-        ScenarioTypeDBModel scenarioTypeDBModel = scenarioSettingsFramework.createScenarioTypeService(scenarioType,baseType);
+        ScenarioTypeDBModel scenarioTypeDBModel = scenarioSettingsFramework.createScenarioTypeService(scenarioType);
         if (scenarioTypeDBModel != null){
             scenarioTypeWSDTOS.add(scenarioSettingsFramework.fillScenarioTypeWSDTO(scenarioTypeDBModel));
         }
@@ -100,13 +100,13 @@ public class ScenarioSettingsMiddleware {
     }
 
 
-    public ScenarioTypeWSModel updateScenarioType(long userId,long typeId,String scenarioType,String baseType) {
+    public ScenarioTypeWSModel updateScenarioType(long userId,long typeId,String scenarioType) {
 
         ScenarioTypeWSModel response = new ScenarioTypeWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ScenarioTypeWSDTO>scenarioTypeWSDTOS = new ArrayList<>();
 
-        ScenarioTypeDBModel scenarioTypeDBModel = scenarioSettingsFramework.updateScenarioTypeService(typeId,scenarioType,baseType);
+        ScenarioTypeDBModel scenarioTypeDBModel = scenarioSettingsFramework.updateScenarioTypeService(typeId,scenarioType);
         if (scenarioTypeDBModel != null){
             scenarioTypeWSDTOS.add(scenarioSettingsFramework.fillScenarioTypeWSDTO(scenarioTypeDBModel));
         }

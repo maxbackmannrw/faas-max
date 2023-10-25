@@ -41,11 +41,10 @@ public class ScenarioSettingsFramework {
         return scenarioTypeWSDTO;
     }
 
-    public ScenarioTypeDBModel createScenarioTypeService(String scenarioType,String baseType) {
+    public ScenarioTypeDBModel createScenarioTypeService(String scenarioType) {
 
         ScenarioTypeDBModel scenarioTypeDBModel = new ScenarioTypeDBModel();
         scenarioTypeDBModel.setScenarioType(scenarioType);
-        scenarioTypeDBModel.setBaseType(baseType);
         scenarioTypeDBModel.setuDate(appUtils.getCurrentTimeStamp());
         scenarioTypeDBModel.setcDate(appUtils.getCurrentTimeStamp());
         scenarioTypeDBModel.setStatus(1);
@@ -53,12 +52,11 @@ public class ScenarioSettingsFramework {
         return scenarioTypeRepository.save(scenarioTypeDBModel);
     }
 
-    public ScenarioTypeDBModel updateScenarioTypeService(long typeId, String scenarioType,String baseType) {
+    public ScenarioTypeDBModel updateScenarioTypeService(long typeId, String scenarioType) {
 
         Optional<ScenarioTypeDBModel> scenarioTypeDBModel = scenarioTypeRepository.findById(typeId);
         if (scenarioTypeDBModel.isPresent()) {
             scenarioTypeDBModel.get().setScenarioType(scenarioType);
-            scenarioTypeDBModel.get().setBaseType(baseType);
             scenarioTypeDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
             scenarioTypeDBModel.get().setStatus(1);
 

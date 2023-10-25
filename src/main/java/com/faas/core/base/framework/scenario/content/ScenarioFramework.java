@@ -51,17 +51,6 @@ public class ScenarioFramework {
     }
 
 
-    public List<ScenarioWSDTO> getScenariosByBaseTypeService(String baseType) {
-
-        List<ScenarioWSDTO> scenarioWSDTOS = new ArrayList<>();
-        List<ScenarioDBModel> scenarioDBModels = scenarioRepository.findByBaseType(baseType);
-        for (ScenarioDBModel scenarioDBModel : scenarioDBModels) {
-            scenarioWSDTOS.add(fillScenarioWSDTO(scenarioDBModel));
-        }
-        return scenarioWSDTOS;
-    }
-
-
     public ScenarioWSDTO getScenarioService(String scenarioId) {
 
         Optional<ScenarioDBModel> scenarioDBModel = scenarioRepository.findById(scenarioId);

@@ -32,20 +32,6 @@ public class ScenarioController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
-    @RequestMapping(value = BaseRoute.GET_SCENARIOS_BY_BASE_TYPE, method = RequestMethod.POST)
-    public ResponseEntity<?> getScenariosByBaseType(@RequestParam long userId,
-                                                    @RequestParam String baseType) {
-
-        ScenarioWSModel response = scenarioMiddleware.getScenariosByBaseType(userId,baseType);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-
     @RequestMapping(value = BaseRoute.GET_SCENARIO, method = RequestMethod.POST)
     public ResponseEntity<?> getScenario(@RequestParam long userId,
                                          @RequestParam String scenarioId) {

@@ -61,7 +61,6 @@ public class AutomationTempFramework {
             automationTempDBModel.setStatus(1);
 
             return new AutomationTempWSDTO(automationTempRepository.save(automationTempDBModel));
-
         }
         return null;
     }
@@ -80,7 +79,6 @@ public class AutomationTempFramework {
             automationTempDBModel.get().setStatus(1);
 
             return new AutomationTempWSDTO(automationTempRepository.save(automationTempDBModel.get()));
-
         }
         return null;
     }

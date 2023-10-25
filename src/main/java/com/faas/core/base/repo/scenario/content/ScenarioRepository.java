@@ -11,7 +11,6 @@ public interface ScenarioRepository extends MongoRepository<ScenarioDBModel, Str
 
     List<ScenarioDBModel> findByStatus(int status);
     List<ScenarioDBModel>findByScenarioType(String scenarioType);
-    List<ScenarioDBModel>findByBaseType(String baseType);
 
 
 }

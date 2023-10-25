@@ -40,26 +40,6 @@ public class ScenarioMiddleware {
     }
 
 
-    public ScenarioWSModel getScenariosByBaseType(long userId, String baseType) {
-
-        ScenarioWSModel response = new ScenarioWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-        List<ScenarioWSDTO> scenarioWSDTOS = scenarioFramework.getScenariosByBaseTypeService(baseType);
-        if (scenarioWSDTOS != null){
-            response.setScenarios(scenarioWSDTOS);
-        }
-
-        general.setOperation("getScenariosByBaseType");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-
     public ScenarioWSModel getScenario(long userId, String scenarioId) {
 
         ScenarioWSModel response = new ScenarioWSModel();
