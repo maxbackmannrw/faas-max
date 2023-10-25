@@ -147,12 +147,10 @@ public class ScenarioElementFramework {
     public AutomationDAO createAutomationDAO(AutomationTempDBModel automationTempDBModel){
 
         AutomationDAO automationDAO = new AutomationDAO();
-
         automationDAO.setTempId(automationTempDBModel.getId());
         automationDAO.setAutomationTemp(automationTempDBModel.getAutomationTemp());
         automationDAO.setTypeId(automationTempDBModel.getTypeId());
         automationDAO.setAutomationType(automationTempDBModel.getAutomationType());
-        automationDAO.setBaseType(automationTempDBModel.getBaseType());
         automationDAO.setcDate(appUtils.getCurrentTimeStamp());
         automationDAO.setStatus(1);
 
@@ -204,7 +202,6 @@ public class ScenarioElementFramework {
         if (actionTempDBModel.isPresent()){
 
             ScenarioElement scenarioElement = new ScenarioElement();
-
             scenarioElement.setId(elementId);
             scenarioElement.setElement(element);
             scenarioElement.setElementType(elementType);
@@ -226,7 +223,6 @@ public class ScenarioElementFramework {
         if (automationTempDBModel.isPresent()){
 
             ScenarioElement scenarioElement = new ScenarioElement();
-
             scenarioElement.setId(elementId);
             scenarioElement.setElement(element);
             scenarioElement.setElementType(elementType);
@@ -249,7 +245,6 @@ public class ScenarioElementFramework {
         if (scenarioDBModel.isPresent() && scenarioDBModel.get().getElements() != null){
             for (int i=0;i<scenarioDBModel.get().getElements().size();i++){
                 if (scenarioDBModel.get().getElements().get(i).getId().equalsIgnoreCase(elementId)){
-
                     ScenarioElement scenarioElement = scenarioDBModel.get().getElements().get(i);
                     scenarioDBModel.get().getElements().remove(scenarioElement);
                     scenarioDBModel.get().setuDate(appUtils.getCurrentTimeStamp());

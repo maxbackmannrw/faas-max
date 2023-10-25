@@ -19,9 +19,6 @@ public class AutomationTempDBModel {
     @Column(name = "automation_type")
     private String automationType;
 
-    @Column(name = "base_type")
-    private String baseType;
-
     @Column(name = "u_date")
     private long uDate;
 
@@ -34,12 +31,11 @@ public class AutomationTempDBModel {
     public AutomationTempDBModel() {
     }
 
-    public AutomationTempDBModel(long id, String automationTemp, long typeId, String automationType, String baseType, long uDate, long cDate, int status) {
+    public AutomationTempDBModel(long id, String automationTemp, long typeId, String automationType, long uDate, long cDate, int status) {
         this.id = id;
         this.automationTemp = automationTemp;
         this.typeId = typeId;
         this.automationType = automationType;
-        this.baseType = baseType;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
@@ -75,14 +71,6 @@ public class AutomationTempDBModel {
 
     public void setAutomationType(String automationType) {
         this.automationType = automationType;
-    }
-
-    public String getBaseType() {
-        return baseType;
-    }
-
-    public void setBaseType(String baseType) {
-        this.baseType = baseType;
     }
 
     public long getuDate() {

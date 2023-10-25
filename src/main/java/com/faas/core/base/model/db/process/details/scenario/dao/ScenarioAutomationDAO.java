@@ -7,19 +7,17 @@ public class ScenarioAutomationDAO {
     private String automationTemp;
     private long automationTypeId;
     private String automationType;
-    private String baseType;
     private long cDate;
     private int status;
 
     public ScenarioAutomationDAO() {
     }
 
-    public ScenarioAutomationDAO(long tempId, String automationTemp, long automationTypeId, String automationType, String baseType, long cDate, int status) {
+    public ScenarioAutomationDAO(long tempId, String automationTemp, long automationTypeId, String automationType, long cDate, int status) {
         this.tempId = tempId;
         this.automationTemp = automationTemp;
         this.automationTypeId = automationTypeId;
         this.automationType = automationType;
-        this.baseType = baseType;
         this.cDate = cDate;
         this.status = status;
     }
@@ -54,14 +52,6 @@ public class ScenarioAutomationDAO {
 
     public void setAutomationType(String automationType) {
         this.automationType = automationType;
-    }
-
-    public String getBaseType() {
-        return baseType;
-    }
-
-    public void setBaseType(String baseType) {
-        this.baseType = baseType;
     }
 
     public long getcDate() {

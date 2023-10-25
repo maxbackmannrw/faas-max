@@ -80,7 +80,6 @@ public class ScenarioFramework {
         if (scenarioTypeDBModel.isPresent()) {
             scenarioDBModel.setTypeId(typeId);
             scenarioDBModel.setScenarioType(scenarioTypeDBModel.get().getScenarioType());
-            scenarioDBModel.setBaseType(scenarioTypeDBModel.get().getBaseType());
         }
         scenarioDBModel.setVariables(new ArrayList<>());
         scenarioDBModel.setElements(new ArrayList<>());
@@ -101,7 +100,6 @@ public class ScenarioFramework {
             if (scenarioTypeDBModel.isPresent()) {
                 scenarioDBModel.get().setTypeId(typeId);
                 scenarioDBModel.get().setScenarioType(scenarioTypeDBModel.get().getScenarioType());
-                scenarioDBModel.get().setBaseType(scenarioTypeDBModel.get().getBaseType());
             }
             scenarioDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
             scenarioDBModel.get().setStatus(1);

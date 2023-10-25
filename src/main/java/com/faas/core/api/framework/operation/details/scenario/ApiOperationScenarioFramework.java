@@ -105,7 +105,6 @@ public class ApiOperationScenarioFramework {
             operationScenarioDBModel.setScenarioId(scenarioDBModel.get().getId());
             operationScenarioDBModel.setScenario(scenarioDBModel.get().getScenario());
             operationScenarioDBModel.setScenarioType(scenarioDBModel.get().getScenarioType());
-            operationScenarioDBModel.setBaseType(scenarioDBModel.get().getBaseType());
             operationScenarioDBModel.setScenarioExecutions(new ArrayList<>());
             operationScenarioDBModel.setExecutionState(AppConstant.READY_EXECUTION);
             operationScenarioDBModel.setuDate(appUtils.getCurrentTimeStamp());

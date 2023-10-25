@@ -21,7 +21,6 @@ public class ProcessScenarioDBModel {
     private String scenario;
     private long scenarioTypeId;
     private String scenarioType;
-    private String baseType;
     private List<ProcessScenarioVariableDAO> scenarioVariables;
     private List<ProcessScenarioElement> scenarioElements;
     private List<ProcessScenarioDataDAO> scenarioDatas;
@@ -33,14 +32,13 @@ public class ProcessScenarioDBModel {
     public ProcessScenarioDBModel() {
     }
 
-    public ProcessScenarioDBModel(String id, String processId, String scenarioId, String scenario, long scenarioTypeId, String scenarioType, String baseType, List<ProcessScenarioVariableDAO> scenarioVariables, List<ProcessScenarioElement> scenarioElements, List<ProcessScenarioDataDAO> scenarioDatas, int scenarioOrder, long uDate, long cDate, int status) {
+    public ProcessScenarioDBModel(String id, String processId, String scenarioId, String scenario, long scenarioTypeId, String scenarioType, List<ProcessScenarioVariableDAO> scenarioVariables, List<ProcessScenarioElement> scenarioElements, List<ProcessScenarioDataDAO> scenarioDatas, int scenarioOrder, long uDate, long cDate, int status) {
         this.id = id;
         this.processId = processId;
         this.scenarioId = scenarioId;
         this.scenario = scenario;
         this.scenarioTypeId = scenarioTypeId;
         this.scenarioType = scenarioType;
-        this.baseType = baseType;
         this.scenarioVariables = scenarioVariables;
         this.scenarioElements = scenarioElements;
         this.scenarioDatas = scenarioDatas;
@@ -96,14 +94,6 @@ public class ProcessScenarioDBModel {
 
     public void setScenarioType(String scenarioType) {
         this.scenarioType = scenarioType;
-    }
-
-    public String getBaseType() {
-        return baseType;
-    }
-
-    public void setBaseType(String baseType) {
-        this.baseType = baseType;
     }
 
     public List<ProcessScenarioVariableDAO> getScenarioVariables() {

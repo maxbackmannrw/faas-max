@@ -20,7 +20,6 @@ public class OperationScenarioDBModel {
     private String scenarioId;
     private String scenario;
     private String scenarioType;
-    private String baseType;
     private List<ScenarioExecutionDAO> scenarioExecutions;
     private String executionState;
     private long uDate;
@@ -30,7 +29,7 @@ public class OperationScenarioDBModel {
     public OperationScenarioDBModel() {
     }
 
-    public OperationScenarioDBModel(String id, String operationId, long sessionId, long agentId, String campaignId, String processId, String scenarioId, String scenario, String scenarioType, String baseType, List<ScenarioExecutionDAO> scenarioExecutions, String executionState, long uDate, long cDate, int status) {
+    public OperationScenarioDBModel(String id, String operationId, long sessionId, long agentId, String campaignId, String processId, String scenarioId, String scenario, String scenarioType, List<ScenarioExecutionDAO> scenarioExecutions, String executionState, long uDate, long cDate, int status) {
         this.id = id;
         this.operationId = operationId;
         this.sessionId = sessionId;
@@ -40,7 +39,6 @@ public class OperationScenarioDBModel {
         this.scenarioId = scenarioId;
         this.scenario = scenario;
         this.scenarioType = scenarioType;
-        this.baseType = baseType;
         this.scenarioExecutions = scenarioExecutions;
         this.executionState = executionState;
         this.uDate = uDate;
@@ -118,14 +116,6 @@ public class OperationScenarioDBModel {
 
     public void setScenarioType(String scenarioType) {
         this.scenarioType = scenarioType;
-    }
-
-    public String getBaseType() {
-        return baseType;
-    }
-
-    public void setBaseType(String baseType) {
-        this.baseType = baseType;
     }
 
     public List<ScenarioExecutionDAO> getScenarioExecutions() {

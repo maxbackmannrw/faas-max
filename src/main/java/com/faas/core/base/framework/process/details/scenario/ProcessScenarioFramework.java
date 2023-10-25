@@ -84,7 +84,6 @@ public class ProcessScenarioFramework {
             processScenarioDBModel.setScenario(scenarioDBModel.get().getScenario());
             processScenarioDBModel.setScenarioTypeId(scenarioDBModel.get().getTypeId());
             processScenarioDBModel.setScenarioType(scenarioDBModel.get().getScenarioType());
-            processScenarioDBModel.setBaseType(scenarioDBModel.get().getBaseType());
             if (scenarioDBModel.get().getVariables() != null){
                 processScenarioDBModel.setScenarioVariables(getProcessScenarioVariables(scenarioDBModel.get().getVariables()));
             }else {
@@ -172,12 +171,10 @@ public class ProcessScenarioFramework {
     public ScenarioAutomationDAO getScenarioAutomation(AutomationDAO automationDAO){
 
         ScenarioAutomationDAO scenarioAutomationDAO = new ScenarioAutomationDAO();
-
         scenarioAutomationDAO.setTempId(automationDAO.getTempId());
         scenarioAutomationDAO.setAutomationTemp(automationDAO.getAutomationTemp());
         scenarioAutomationDAO.setAutomationTypeId(automationDAO.getTypeId());
         scenarioAutomationDAO.setAutomationType(automationDAO.getAutomationType());
-        scenarioAutomationDAO.setBaseType(automationDAO.getBaseType());
         scenarioAutomationDAO.setcDate(appUtils.getCurrentTimeStamp());
         scenarioAutomationDAO.setStatus(automationDAO.getStatus());
 
@@ -190,7 +187,6 @@ public class ProcessScenarioFramework {
         for (ElementVariableDAO elementVariable : elementVariables) {
 
             ScenarioElementVariableDAO scenarioElementVariable = new ScenarioElementVariableDAO();
-
             scenarioElementVariable.setVariableId(appUtils.generateUUID());
             scenarioElementVariable.setVariableType(elementVariable.getVariableType());
             scenarioElementVariable.setValue(elementVariable.getValue());

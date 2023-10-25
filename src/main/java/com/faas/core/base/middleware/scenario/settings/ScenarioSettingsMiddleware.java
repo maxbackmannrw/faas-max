@@ -78,13 +78,13 @@ public class ScenarioSettingsMiddleware {
     }
 
 
-    public ScenarioTypeWSModel createScenarioType(long userId,String scenarioType,String baseType) {
+    public ScenarioTypeWSModel createScenarioType(long userId,String scenarioType) {
 
         ScenarioTypeWSModel response = new ScenarioTypeWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ScenarioTypeWSDTO>scenarioTypeWSDTOS = new ArrayList<>();
 
-        ScenarioTypeDBModel scenarioTypeDBModel = scenarioSettingsFramework.createScenarioTypeService(scenarioType,baseType);
+        ScenarioTypeDBModel scenarioTypeDBModel = scenarioSettingsFramework.createScenarioTypeService(scenarioType);
         if (scenarioTypeDBModel != null){
             scenarioTypeWSDTOS.add(scenarioSettingsFramework.fillScenarioTypeWSDTO(scenarioTypeDBModel));
         }
@@ -100,13 +100,13 @@ public class ScenarioSettingsMiddleware {
     }
 
 
-    public ScenarioTypeWSModel updateScenarioType(long userId,long typeId,String scenarioType,String baseType) {
+    public ScenarioTypeWSModel updateScenarioType(long userId,long typeId,String scenarioType) {
 
         ScenarioTypeWSModel response = new ScenarioTypeWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ScenarioTypeWSDTO>scenarioTypeWSDTOS = new ArrayList<>();
 
-        ScenarioTypeDBModel scenarioTypeDBModel = scenarioSettingsFramework.updateScenarioTypeService(typeId,scenarioType,baseType);
+        ScenarioTypeDBModel scenarioTypeDBModel = scenarioSettingsFramework.updateScenarioTypeService(typeId,scenarioType);
         if (scenarioTypeDBModel != null){
             scenarioTypeWSDTOS.add(scenarioSettingsFramework.fillScenarioTypeWSDTO(scenarioTypeDBModel));
         }
@@ -187,13 +187,13 @@ public class ScenarioSettingsMiddleware {
     }
 
 
-    public AutomationTypeWSModel createAutomationType(long userId,String automationType,String baseType) {
+    public AutomationTypeWSModel createAutomationType(long userId,String automationType) {
 
         AutomationTypeWSModel response = new AutomationTypeWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<AutomationTypeWSDTO>automationTypeWSDTOS = new ArrayList<>();
 
-        AutomationTypeWSDTO automationTypeWSDTO = scenarioSettingsFramework.createAutomationTypeService(userId,automationType,baseType);
+        AutomationTypeWSDTO automationTypeWSDTO = scenarioSettingsFramework.createAutomationTypeService(userId,automationType);
         if (automationTypeWSDTO != null){
             automationTypeWSDTOS.add(automationTypeWSDTO);
         }
@@ -209,13 +209,13 @@ public class ScenarioSettingsMiddleware {
     }
 
 
-    public AutomationTypeWSModel updateAutomationType(long userId,long typeId,String automationType,String baseType) {
+    public AutomationTypeWSModel updateAutomationType(long userId,long typeId,String automationType) {
 
         AutomationTypeWSModel response = new AutomationTypeWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<AutomationTypeWSDTO>automationTypeWSDTOS = new ArrayList<>();
 
-        AutomationTypeWSDTO automationTypeWSDTO = scenarioSettingsFramework.updateAutomationTypeService(userId,typeId,automationType,baseType);
+        AutomationTypeWSDTO automationTypeWSDTO = scenarioSettingsFramework.updateAutomationTypeService(userId,typeId,automationType);
         if (automationTypeWSDTO != null){
             automationTypeWSDTOS.add(automationTypeWSDTO);
         }
@@ -229,7 +229,6 @@ public class ScenarioSettingsMiddleware {
 
         return response;
     }
-
 
     public AutomationTypeWSModel removeAutomationType(long userId,long typeId) {
 

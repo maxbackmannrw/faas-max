@@ -53,11 +53,9 @@ public class AutomationTempFramework {
         if (automationTypeDBModel.isPresent()){
 
             AutomationTempDBModel automationTempDBModel = new AutomationTempDBModel();
-
             automationTempDBModel.setAutomationTemp(automationTemp);
             automationTempDBModel.setTypeId(typeId);
             automationTempDBModel.setAutomationType(automationTypeDBModel.get().getAutomationType());
-            automationTempDBModel.setBaseType(automationTypeDBModel.get().getBaseType());
             automationTempDBModel.setuDate(appUtils.getCurrentTimeStamp());
             automationTempDBModel.setcDate(appUtils.getCurrentTimeStamp());
             automationTempDBModel.setStatus(1);
@@ -78,7 +76,6 @@ public class AutomationTempFramework {
             automationTempDBModel.get().setAutomationTemp(automationTemp);
             automationTempDBModel.get().setTypeId(typeId);
             automationTempDBModel.get().setAutomationType(automationTypeDBModel.get().getAutomationType());
-            automationTempDBModel.get().setBaseType(automationTypeDBModel.get().getBaseType());
             automationTempDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
             automationTempDBModel.get().setStatus(1);
 

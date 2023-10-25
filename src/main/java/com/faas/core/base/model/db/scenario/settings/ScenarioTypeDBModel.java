@@ -13,9 +13,6 @@ public class ScenarioTypeDBModel {
     @Column(name = "scenario_type")
     private String scenarioType;
 
-    @Column(name = "base_type")
-    private String baseType;
-
     @Column(name = "u_date")
     private long uDate;
 
@@ -29,10 +26,9 @@ public class ScenarioTypeDBModel {
     public ScenarioTypeDBModel() {
     }
 
-    public ScenarioTypeDBModel(long id, String scenarioType, String baseType, long uDate, long cDate, int status) {
+    public ScenarioTypeDBModel(long id, String scenarioType, long uDate, long cDate, int status) {
         this.id = id;
         this.scenarioType = scenarioType;
-        this.baseType = baseType;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
@@ -52,14 +48,6 @@ public class ScenarioTypeDBModel {
 
     public void setScenarioType(String scenarioType) {
         this.scenarioType = scenarioType;
-    }
-
-    public String getBaseType() {
-        return baseType;
-    }
-
-    public void setBaseType(String baseType) {
-        this.baseType = baseType;
     }
 
     public long getuDate() {

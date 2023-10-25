@@ -42,11 +42,10 @@ public class ScenarioSettingsFramework {
     }
 
 
-    public ScenarioTypeDBModel createScenarioTypeService(String scenarioType, String baseType) {
+    public ScenarioTypeDBModel createScenarioTypeService(String scenarioType) {
 
         ScenarioTypeDBModel scenarioTypeDBModel = new ScenarioTypeDBModel();
         scenarioTypeDBModel.setScenarioType(scenarioType);
-        scenarioTypeDBModel.setBaseType(baseType);
         scenarioTypeDBModel.setuDate(appUtils.getCurrentTimeStamp());
         scenarioTypeDBModel.setcDate(appUtils.getCurrentTimeStamp());
         scenarioTypeDBModel.setStatus(1);
@@ -55,12 +54,11 @@ public class ScenarioSettingsFramework {
     }
 
 
-    public ScenarioTypeDBModel updateScenarioTypeService(long typeId, String scenarioType, String baseType) {
+    public ScenarioTypeDBModel updateScenarioTypeService(long typeId, String scenarioType) {
 
         Optional<ScenarioTypeDBModel> scenarioTypeDBModel = scenarioTypeRepository.findById(typeId);
         if (scenarioTypeDBModel.isPresent()) {
             scenarioTypeDBModel.get().setScenarioType(scenarioType);
-            scenarioTypeDBModel.get().setBaseType(baseType);
             scenarioTypeDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
             scenarioTypeDBModel.get().setStatus(1);
 
@@ -103,12 +101,10 @@ public class ScenarioSettingsFramework {
     }
 
 
-    public AutomationTypeWSDTO createAutomationTypeService(long userId,String automationType,String baseType) {
+    public AutomationTypeWSDTO createAutomationTypeService(long userId,String automationType) {
 
         AutomationTypeDBModel automationTypeDBModel = new AutomationTypeDBModel();
-
         automationTypeDBModel.setAutomationType(automationType);
-        automationTypeDBModel.setBaseType(baseType);
         automationTypeDBModel.setuDate(appUtils.getCurrentTimeStamp());
         automationTypeDBModel.setcDate(appUtils.getCurrentTimeStamp());
         automationTypeDBModel.setStatus(1);
@@ -117,13 +113,11 @@ public class ScenarioSettingsFramework {
     }
 
 
-    public AutomationTypeWSDTO updateAutomationTypeService(long userId,long typeId,String automationType,String baseType) {
+    public AutomationTypeWSDTO updateAutomationTypeService(long userId,long typeId,String automationType) {
 
         Optional<AutomationTypeDBModel> automationTypeDBModel = automationTypeRepository.findById(typeId);
         if (automationTypeDBModel.isPresent()){
-
             automationTypeDBModel.get().setAutomationType(automationType);
-            automationTypeDBModel.get().setBaseType(baseType);
             automationTypeDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
             automationTypeDBModel.get().setStatus(1);
 
