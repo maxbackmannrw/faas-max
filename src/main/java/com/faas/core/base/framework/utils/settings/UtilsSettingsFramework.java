@@ -398,6 +398,7 @@ public class UtilsSettingsFramework {
     }
 
     public void resetAllClientsService(){
+
         Iterable<ClientDBModel> clientDBModels = clientRepository.findAll();
         for (ClientDBModel clientDBModel : clientDBModels) {
             clientDBModel.setClientState(AppConstant.READY_CLIENT);
@@ -437,7 +438,6 @@ public class UtilsSettingsFramework {
     }
 
 
-
     public void removeAllUsersService(){
 
         userRepository.deleteAll();
@@ -456,6 +456,7 @@ public class UtilsSettingsFramework {
     }
 
     public void removeAllAssetsService(){
+
         assetRepository.deleteAll();
     }
 

@@ -51,10 +51,9 @@ public class ProcessSettingsController {
 
     @RequestMapping(value = BaseRoute.CREATE_PROCESS_TYPE, method = RequestMethod.POST)
     public ResponseEntity<?> createProcessType(@RequestParam long userId,
-                                               @RequestParam String processType,
-                                               @RequestParam String baseType) {
+                                               @RequestParam String processType) {
 
-        ProcessTypeWSModel response = processSettingsMiddleware.createProcessType(userId,processType,baseType);
+        ProcessTypeWSModel response = processSettingsMiddleware.createProcessType(userId,processType);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -66,10 +65,9 @@ public class ProcessSettingsController {
     @RequestMapping(value = BaseRoute.UPDATE_PROCESS_TYPE, method = RequestMethod.POST)
     public ResponseEntity<?> updateProcessType(@RequestParam long userId,
                                                @RequestParam long typeId,
-                                               @RequestParam String processType,
-                                               @RequestParam String baseType) {
+                                               @RequestParam String processType) {
 
-        ProcessTypeWSModel response = processSettingsMiddleware.updateProcessType(userId,typeId,processType,baseType);
+        ProcessTypeWSModel response = processSettingsMiddleware.updateProcessType(userId,typeId,processType);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

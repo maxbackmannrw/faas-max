@@ -82,13 +82,13 @@ public class ProcessSettingsMiddleware {
         return response;
     }
 
-    public ProcessTypeWSModel createProcessType(long userId, String processType,String baseType) {
+    public ProcessTypeWSModel createProcessType(long userId, String processType) {
 
         ProcessTypeWSModel response = new ProcessTypeWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessTypeWSDTO> processTypeWSDTOS = new ArrayList<>();
 
-        ProcessTypeDBModel processTypeDBModel = processSettingsFramework.createProcessTypeService(processType,baseType);
+        ProcessTypeDBModel processTypeDBModel = processSettingsFramework.createProcessTypeService(processType);
         if (processTypeDBModel != null) {
             processTypeWSDTOS.add(processSettingsFramework.fillProcessTypeWSDTO(processTypeDBModel));
         }
@@ -103,13 +103,13 @@ public class ProcessSettingsMiddleware {
         return response;
     }
 
-    public ProcessTypeWSModel updateProcessType(long userId, long typeId, String processType,String baseType) {
+    public ProcessTypeWSModel updateProcessType(long userId, long typeId, String processType) {
 
         ProcessTypeWSModel response = new ProcessTypeWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessTypeWSDTO> processTypeWSDTOS = new ArrayList<>();
 
-        ProcessTypeDBModel processTypeDBModel = processSettingsFramework.updateProcessTypeService(typeId,processType,baseType);
+        ProcessTypeDBModel processTypeDBModel = processSettingsFramework.updateProcessTypeService(typeId,processType);
         if (processTypeDBModel != null) {
             processTypeWSDTOS.add(processSettingsFramework.fillProcessTypeWSDTO(processTypeDBModel));
         }

@@ -43,11 +43,10 @@ public class ProcessSettingsFramework {
     }
 
 
-    public ProcessTypeDBModel createProcessTypeService(String processType,String baseType) {
+    public ProcessTypeDBModel createProcessTypeService(String processType) {
 
         ProcessTypeDBModel processTypeDBModel = new ProcessTypeDBModel();
         processTypeDBModel.setProcessType(processType);
-        processTypeDBModel.setBaseType(baseType);
         processTypeDBModel.setuDate(appUtils.getCurrentTimeStamp());
         processTypeDBModel.setcDate(appUtils.getCurrentTimeStamp());
         processTypeDBModel.setStatus(1);
@@ -56,12 +55,11 @@ public class ProcessSettingsFramework {
     }
 
 
-    public ProcessTypeDBModel updateProcessTypeService(long typeId, String processType,String baseType) {
+    public ProcessTypeDBModel updateProcessTypeService(long typeId, String processType) {
 
         Optional<ProcessTypeDBModel> processTypeDBModel = processTypeRepository.findById(typeId);
         if (processTypeDBModel.isPresent()) {
             processTypeDBModel.get().setProcessType(processType);
-            processTypeDBModel.get().setBaseType(baseType);
             processTypeDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
             processTypeDBModel.get().setStatus(1);
 

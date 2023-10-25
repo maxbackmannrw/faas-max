@@ -55,7 +55,6 @@ public class ProcessFramework {
         if (processTypeDBModel.isPresent()){
             processDBModel.setProcessTypeId(processTypeId);
             processDBModel.setProcessType(processTypeDBModel.get().getProcessType());
-            processDBModel.setBaseType(processTypeDBModel.get().getBaseType());
         }
         processDBModel.setProcessCategory(processCategory);
         List<ProcessUrlDAO>processUrls = new ArrayList<>();
@@ -77,7 +76,6 @@ public class ProcessFramework {
     public ProcessUrlDAO createProcessUrlDAO(String urlType,String processUrl){
 
         ProcessUrlDAO processUrlDAO = new ProcessUrlDAO();
-
         processUrlDAO.setUrlId(appUtils.generateUUID());
         processUrlDAO.setUrlType(urlType);
         processUrlDAO.setUrl(processUrl);
@@ -109,7 +107,6 @@ public class ProcessFramework {
         Optional<ProcessDBModel> process = processRepository.findById(processId);
         if (process.isPresent()) {
             processRepository.delete(process.get());
-
             return process.get();
         }
         return null;

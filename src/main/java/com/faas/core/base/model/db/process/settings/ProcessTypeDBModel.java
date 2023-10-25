@@ -13,9 +13,6 @@ public class ProcessTypeDBModel {
     @Column(name = "process_type")
     private String processType;
 
-    @Column(name = "base_type")
-    private String baseType;
-
     @Column(name = "u_date")
     private long uDate;
 
@@ -29,11 +26,9 @@ public class ProcessTypeDBModel {
     public ProcessTypeDBModel() {
     }
 
-
-    public ProcessTypeDBModel(long id, String processType, String baseType, long uDate, long cDate, int status) {
+    public ProcessTypeDBModel(long id, String processType, long uDate, long cDate, int status) {
         this.id = id;
         this.processType = processType;
-        this.baseType = baseType;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
@@ -53,14 +48,6 @@ public class ProcessTypeDBModel {
 
     public void setProcessType(String processType) {
         this.processType = processType;
-    }
-
-    public String getBaseType() {
-        return baseType;
-    }
-
-    public void setBaseType(String baseType) {
-        this.baseType = baseType;
     }
 
     public long getuDate() {
