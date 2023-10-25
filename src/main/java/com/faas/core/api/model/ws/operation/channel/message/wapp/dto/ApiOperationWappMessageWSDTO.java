@@ -2,7 +2,7 @@ package com.faas.core.api.model.ws.operation.channel.message.wapp.dto;
 
 import com.faas.core.api.model.ws.operation.channel.call.wapp.dto.ApiWappAccountWSDTO;
 import com.faas.core.base.model.db.client.details.ClientPhoneDBModel;
-import com.faas.core.base.model.db.operation.channel.WappMessageDBModel;
+import com.faas.core.base.model.db.operation.channel.OperationWappMessageDBModel;
 import com.faas.core.base.model.db.process.details.channel.temp.WappMessageTempDBModel;
 
 import java.util.List;
@@ -11,13 +11,13 @@ public class ApiOperationWappMessageWSDTO {
 
     private ApiWappAccountWSDTO wappAccount;
     private List<ClientPhoneDBModel>phones;
-    private List<WappMessageDBModel>wappMessages;
+    private List<OperationWappMessageDBModel>wappMessages;
     private List<WappMessageTempDBModel>wappTemps;
 
     public ApiOperationWappMessageWSDTO() {
     }
 
-    public ApiOperationWappMessageWSDTO(ApiWappAccountWSDTO wappAccount, List<ClientPhoneDBModel> phones, List<WappMessageDBModel> wappMessages, List<WappMessageTempDBModel> wappTemps) {
+    public ApiOperationWappMessageWSDTO(ApiWappAccountWSDTO wappAccount, List<ClientPhoneDBModel> phones, List<OperationWappMessageDBModel> wappMessages, List<WappMessageTempDBModel> wappTemps) {
         this.wappAccount = wappAccount;
         this.phones = phones;
         this.wappMessages = wappMessages;
@@ -40,11 +40,11 @@ public class ApiOperationWappMessageWSDTO {
         this.phones = phones;
     }
 
-    public List<WappMessageDBModel> getWappMessages() {
+    public List<OperationWappMessageDBModel> getWappMessages() {
         return wappMessages;
     }
 
-    public void setWappMessages(List<WappMessageDBModel> wappMessages) {
+    public void setWappMessages(List<OperationWappMessageDBModel> wappMessages) {
         this.wappMessages = wappMessages;
     }
 

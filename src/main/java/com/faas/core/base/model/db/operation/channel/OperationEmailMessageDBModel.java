@@ -1,15 +1,14 @@
 package com.faas.core.base.model.db.operation.channel;
 
-import com.faas.core.base.model.db.operation.channel.dao.PushMessageDataDAO;
+import com.faas.core.base.model.db.operation.channel.dao.OperationEmailMessageDataDAO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
 
-@Document(collection = "push_message_table")
-public class PushMessageDBModel {
-
+@Document(collection = "operation_email_message_table")
+public class OperationEmailMessageDBModel {
 
     @Id
     private String id;
@@ -17,47 +16,48 @@ public class PushMessageDBModel {
     private String sessionUUID;
     private long clientId;
     private long agentId;
+    private long addressId;
+    private String emailAddress;
     private String tempId;
     private String campaignId;
     private String processId;
-    private String header;
+    private String subject;
     private String body;
     private String footer;
-    private List<PushMessageDataDAO>messageDatas;
+    private List<OperationEmailMessageDataDAO>messageDatas;
     private String sender;
-    private String pushType;
-    private String mainType;
+    private String emailType;
     private String accountId;
     private String sentId;
-    private String targetId;
-    private String pushState;
+    private String emailState;
     private long uDate;
     private long cDate;
     private int status;
 
-    public PushMessageDBModel() {
+
+    public OperationEmailMessageDBModel() {
     }
 
-    public PushMessageDBModel(String id, long sessionId, String sessionUUID, long clientId, long agentId, String tempId, String campaignId, String processId, String header, String body, String footer, List<PushMessageDataDAO> messageDatas, String sender, String pushType, String mainType, String accountId, String sentId, String targetId, String pushState, long uDate, long cDate, int status) {
+    public OperationEmailMessageDBModel(String id, long sessionId, String sessionUUID, long clientId, long agentId, long addressId, String emailAddress, String tempId, String campaignId, String processId, String subject, String body, String footer, List<OperationEmailMessageDataDAO> messageDatas, String sender, String emailType, String accountId, String sentId, String emailState, long uDate, long cDate, int status) {
         this.id = id;
         this.sessionId = sessionId;
         this.sessionUUID = sessionUUID;
         this.clientId = clientId;
         this.agentId = agentId;
+        this.addressId = addressId;
+        this.emailAddress = emailAddress;
         this.tempId = tempId;
         this.campaignId = campaignId;
         this.processId = processId;
-        this.header = header;
+        this.subject = subject;
         this.body = body;
         this.footer = footer;
         this.messageDatas = messageDatas;
         this.sender = sender;
-        this.pushType = pushType;
-        this.mainType = mainType;
+        this.emailType = emailType;
         this.accountId = accountId;
         this.sentId = sentId;
-        this.targetId = targetId;
-        this.pushState = pushState;
+        this.emailState = emailState;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
@@ -103,6 +103,22 @@ public class PushMessageDBModel {
         this.agentId = agentId;
     }
 
+    public long getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(long addressId) {
+        this.addressId = addressId;
+    }
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
+
     public String getTempId() {
         return tempId;
     }
@@ -127,12 +143,12 @@ public class PushMessageDBModel {
         this.processId = processId;
     }
 
-    public String getHeader() {
-        return header;
+    public String getSubject() {
+        return subject;
     }
 
-    public void setHeader(String header) {
-        this.header = header;
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 
     public String getBody() {
@@ -151,11 +167,11 @@ public class PushMessageDBModel {
         this.footer = footer;
     }
 
-    public List<PushMessageDataDAO> getMessageDatas() {
+    public List<OperationEmailMessageDataDAO> getMessageDatas() {
         return messageDatas;
     }
 
-    public void setMessageDatas(List<PushMessageDataDAO> messageDatas) {
+    public void setMessageDatas(List<OperationEmailMessageDataDAO> messageDatas) {
         this.messageDatas = messageDatas;
     }
 
@@ -167,20 +183,12 @@ public class PushMessageDBModel {
         this.sender = sender;
     }
 
-    public String getPushType() {
-        return pushType;
+    public String getEmailType() {
+        return emailType;
     }
 
-    public void setPushType(String pushType) {
-        this.pushType = pushType;
-    }
-
-    public String getMainType() {
-        return mainType;
-    }
-
-    public void setMainType(String mainType) {
-        this.mainType = mainType;
+    public void setEmailType(String emailType) {
+        this.emailType = emailType;
     }
 
     public String getAccountId() {
@@ -199,20 +207,12 @@ public class PushMessageDBModel {
         this.sentId = sentId;
     }
 
-    public String getTargetId() {
-        return targetId;
+    public String getEmailState() {
+        return emailState;
     }
 
-    public void setTargetId(String targetId) {
-        this.targetId = targetId;
-    }
-
-    public String getPushState() {
-        return pushState;
-    }
-
-    public void setPushState(String pushState) {
-        this.pushState = pushState;
+    public void setEmailState(String emailState) {
+        this.emailState = emailState;
     }
 
     public long getuDate() {

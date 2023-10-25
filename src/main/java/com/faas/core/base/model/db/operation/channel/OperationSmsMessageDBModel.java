@@ -1,11 +1,12 @@
 package com.faas.core.base.model.db.operation.channel;
 
-import com.faas.core.base.model.db.operation.channel.dao.WappMessageDAO;
+import com.faas.core.base.model.db.operation.channel.dao.OperationSmsMessageDAO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "wapp_message_table")
-public class WappMessageDBModel {
+
+@Document(collection = "operation_sms_message_table")
+public class OperationSmsMessageDBModel {
 
     @Id
     private String id;
@@ -16,17 +17,17 @@ public class WappMessageDBModel {
     private long agentId;
     private String campaignId;
     private String processId;
-    private WappMessageDAO wappMessage;
+    private OperationSmsMessageDAO smsMessage;
     private String messageSentId;
     private String messageState;
     private long uDate;
     private long cDate;
     private int status;
 
-    public WappMessageDBModel() {
+    public OperationSmsMessageDBModel() {
     }
 
-    public WappMessageDBModel(String id, long sessionId, long clientId, long numberId, String phoneNumber, long agentId, String campaignId, String processId, WappMessageDAO wappMessage, String messageSentId, String messageState, long uDate, long cDate, int status) {
+    public OperationSmsMessageDBModel(String id, long sessionId, long clientId, long numberId, String phoneNumber, long agentId, String campaignId, String processId, OperationSmsMessageDAO smsMessage, String messageSentId, String messageState, long uDate, long cDate, int status) {
         this.id = id;
         this.sessionId = sessionId;
         this.clientId = clientId;
@@ -35,7 +36,7 @@ public class WappMessageDBModel {
         this.agentId = agentId;
         this.campaignId = campaignId;
         this.processId = processId;
-        this.wappMessage = wappMessage;
+        this.smsMessage = smsMessage;
         this.messageSentId = messageSentId;
         this.messageState = messageState;
         this.uDate = uDate;
@@ -107,12 +108,12 @@ public class WappMessageDBModel {
         this.processId = processId;
     }
 
-    public WappMessageDAO getWappMessage() {
-        return wappMessage;
+    public OperationSmsMessageDAO getSmsMessage() {
+        return smsMessage;
     }
 
-    public void setWappMessage(WappMessageDAO wappMessage) {
-        this.wappMessage = wappMessage;
+    public void setSmsMessage(OperationSmsMessageDAO smsMessage) {
+        this.smsMessage = smsMessage;
     }
 
     public String getMessageSentId() {

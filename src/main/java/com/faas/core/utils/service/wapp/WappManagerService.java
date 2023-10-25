@@ -2,10 +2,10 @@ package com.faas.core.utils.service.wapp;
 
 import com.faas.core.base.model.db.channel.account.WappAccountDBModel;
 import com.faas.core.base.model.db.process.content.ProcessDBModel;
-import com.faas.core.base.model.db.operation.channel.WappMessageDBModel;
+import com.faas.core.base.model.db.operation.channel.OperationWappMessageDBModel;
 import com.faas.core.base.repo.channel.account.WappAccountRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
-import com.faas.core.base.repo.operation.channel.WappMessageRepository;
+import com.faas.core.base.repo.operation.channel.OperationWappMessageRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ public class WappManagerService {
     WappAccountRepository wappAccountRepository;
 
     @Autowired
-    WappMessageRepository wappMessageRepository;
+    OperationWappMessageRepository operationWappMessageRepository;
 
     @Autowired
     WappManagerRESTCall wappManagerRESTCall;
@@ -44,25 +44,25 @@ public class WappManagerService {
     }
 
 
-    public void sendWappMessageService(WappMessageDBModel wappMessageDBModel) throws IOException {
+    public void sendWappMessageService(OperationWappMessageDBModel operationWappMessageDBModel) throws IOException {
 
-        Optional<WappAccountDBModel> wappAccountDBModel = wappAccountRepository.findById(wappMessageDBModel.getWappMessage().getAccountId());
+        Optional<WappAccountDBModel> wappAccountDBModel = wappAccountRepository.findById(operationWappMessageDBModel.getWappMessage().getAccountId());
         if (wappAccountDBModel.isPresent()) {
-            if (wappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.TEXT_MESSAGE)) {
-                String messageBody = wappMessageBodyPopulate(wappMessageDBModel);
-                if (messageBody != null && wappManagerRESTCall.sendWappTextMessage(wappAccountDBModel.get().getServerUrl(), wappAccountDBModel.get().getInstanceKey(), wappMessageDBModel.getPhoneNumber(), messageBody)) {
-                    wappMessageDBModel.setMessageState(AppConstant.MESSAGE_SENT);
-                    wappMessageDBModel.setuDate(appUtils.getCurrentTimeStamp());
-                    wappMessageRepository.save(wappMessageDBModel);
+            if (operationWappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.TEXT_MESSAGE)) {
+                String messageBody = wappMessageBodyPopulate(operationWappMessageDBModel);
+                if (messageBody != null && wappManagerRESTCall.sendWappTextMessage(wappAccountDBModel.get().getServerUrl(), wappAccountDBModel.get().getInstanceKey(), operationWappMessageDBModel.getPhoneNumber(), messageBody)) {
+                    operationWappMessageDBModel.setMessageState(AppConstant.MESSAGE_SENT);
+                    operationWappMessageDBModel.setuDate(appUtils.getCurrentTimeStamp());
+                    operationWappMessageRepository.save(operationWappMessageDBModel);
                 }
             }
         }
     }
 
 
-    public String wappMessageBodyPopulate(WappMessageDBModel wappMessageDBModel) throws IOException {
+    public String wappMessageBodyPopulate(OperationWappMessageDBModel operationWappMessageDBModel) throws IOException {
 
-        String wappMessageBody = wappMessageDBModel.getWappMessage().getWappBody();
+        String wappMessageBody = operationWappMessageDBModel.getWappMessage().getWappBody();
         if (wappMessageBody.contains(AppConstant.CLIENT_NAME_TAG)) {
         //    wappMessageBody = wappMessageBody.replace(AppConstant.MESSAGE_CLIENT_NAME_TAG, wappMessageDBModel.getClientName());
         }
@@ -70,9 +70,9 @@ public class WappManagerService {
     }
 
 
-    public String wappPWAShortLinkCreate(WappMessageDBModel wappMessageDBModel) throws IOException {
+    public String wappPWAShortLinkCreate(OperationWappMessageDBModel operationWappMessageDBModel) throws IOException {
 
-        Optional<ProcessDBModel> processDBModel = processRepository.findById(wappMessageDBModel.getProcessId());
+        Optional<ProcessDBModel> processDBModel = processRepository.findById(operationWappMessageDBModel.getProcessId());
         return null;
     }
 

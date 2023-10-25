@@ -4,10 +4,10 @@ import com.faas.core.api.model.ws.operation.channel.call.sip.dto.ApiOperationSip
 import com.faas.core.api.model.ws.operation.channel.call.sip.dto.ApiSipAccountWSDTO;
 import com.faas.core.api.model.ws.operation.channel.call.sip.dto.ApiSipCallWSDTO;
 import com.faas.core.base.model.db.client.details.ClientPhoneDBModel;
-import com.faas.core.base.model.db.operation.channel.SipCallDBModel;
+import com.faas.core.base.model.db.operation.channel.OperationSipCallDBModel;
 import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.repo.client.details.ClientPhoneRepository;
-import com.faas.core.base.repo.operation.channel.SipCallRepository;
+import com.faas.core.base.repo.operation.channel.OperationSipCallRepository;
 import com.faas.core.base.repo.client.session.SessionRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
@@ -33,7 +33,7 @@ public class ApiSipCallFramework {
     ClientPhoneRepository clientPhoneRepository;
 
     @Autowired
-    SipCallRepository sipCallRepository;
+    OperationSipCallRepository operationSipCallRepository;
 
     @Autowired
     AppUtils appUtils;
@@ -52,8 +52,8 @@ public class ApiSipCallFramework {
     public List<ApiSipCallWSDTO> apiGetSipCallsService(long agentId,long sessionId,long clientId) {
 
         List<ApiSipCallWSDTO> sipCallWSDTOS = new ArrayList<>();
-        List<SipCallDBModel> sipCallDBModels = sipCallRepository.findBySessionIdAndClientId(sessionId,clientId);
-        for (SipCallDBModel sipCallDBModel : sipCallDBModels) {
+        List<OperationSipCallDBModel> sipCallDBModels = operationSipCallRepository.findBySessionIdAndClientId(sessionId,clientId);
+        for (OperationSipCallDBModel sipCallDBModel : sipCallDBModels) {
             sipCallWSDTOS.add(new ApiSipCallWSDTO(sipCallDBModel));
         }
         return sipCallWSDTOS;
@@ -62,7 +62,7 @@ public class ApiSipCallFramework {
 
     public ApiSipCallWSDTO apiGetSipCallService(long agentId,long sessionId,long clientId,long callId) {
 
-        List<SipCallDBModel> sipCallDBModels = sipCallRepository.findByIdAndSessionIdAndAgentIdAndClientId(callId,sessionId,agentId,clientId);
+        List<OperationSipCallDBModel> sipCallDBModels = operationSipCallRepository.findByIdAndSessionIdAndAgentIdAndClientId(callId,sessionId,agentId,clientId);
         if (!sipCallDBModels.isEmpty()) {
             return new ApiSipCallWSDTO(sipCallDBModels.get(0));
         }
@@ -76,9 +76,9 @@ public class ApiSipCallFramework {
         Optional<ClientPhoneDBModel> clientPhoneDBModel = clientPhoneRepository.findById(numberId);
         ApiSipAccountWSDTO sipAccountWSDTO = channelHelper.getApiSipAccountWSDTO(agentId, sessionModel.get(0).getProcessId());
 
-        if (!sipCallRepository.existsBySessionIdAndCallState(sessionId,AppConstant.READY_CALL) && !sipCallRepository.existsBySessionIdAndCallState(sessionId,AppConstant.ACTIVE_CALL) && !sessionModel.isEmpty() && clientPhoneDBModel.isPresent() && sipAccountWSDTO != null) {
+        if (!operationSipCallRepository.existsBySessionIdAndCallState(sessionId,AppConstant.READY_CALL) && !operationSipCallRepository.existsBySessionIdAndCallState(sessionId,AppConstant.ACTIVE_CALL) && !sessionModel.isEmpty() && clientPhoneDBModel.isPresent() && sipAccountWSDTO != null) {
 
-            SipCallDBModel sipCallDBModel = new SipCallDBModel();
+            OperationSipCallDBModel sipCallDBModel = new OperationSipCallDBModel();
             sipCallDBModel.setSessionId(sessionModel.get(0).getId());
             sipCallDBModel.setClientId(sessionModel.get(0).getClientId());
             sipCallDBModel.setAgentId(sessionModel.get(0).getAgentId());
@@ -97,7 +97,7 @@ public class ApiSipCallFramework {
             sipCallDBModel.setcDate(appUtils.getCurrentTimeStamp());
             sipCallDBModel.setStatus(1);
 
-            return new ApiSipCallWSDTO(sipCallRepository.save(sipCallDBModel));
+            return new ApiSipCallWSDTO(operationSipCallRepository.save(sipCallDBModel));
         }
         return null;
     }
@@ -105,14 +105,14 @@ public class ApiSipCallFramework {
 
     public ApiSipCallWSDTO apiMakeSipCallService(long agentId,long sessionId,long clientId,long callId) {
 
-        List<SipCallDBModel> sipCallDBModels = sipCallRepository.findByIdAndSessionIdAndAgentIdAndClientId(callId,sessionId,agentId,clientId);
+        List<OperationSipCallDBModel> sipCallDBModels = operationSipCallRepository.findByIdAndSessionIdAndAgentIdAndClientId(callId,sessionId,agentId,clientId);
         if (!sipCallDBModels.isEmpty() && sipCallDBModels.get(0).getCallState().equalsIgnoreCase(AppConstant.READY_CALL)) {
 
             sipCallDBModels.get(0).setCallState(AppConstant.ACTIVE_CALL);
             sipCallDBModels.get(0).setsDate(appUtils.getCurrentTimeStamp());
             sipCallDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
 
-            return new ApiSipCallWSDTO(sipCallRepository.save(sipCallDBModels.get(0)));
+            return new ApiSipCallWSDTO(operationSipCallRepository.save(sipCallDBModels.get(0)));
         }
         return null;
     }
@@ -120,14 +120,14 @@ public class ApiSipCallFramework {
 
     public ApiSipCallWSDTO apiEndSipCallService(long agentId,long sessionId,long clientId,long callId) {
 
-        List<SipCallDBModel> sipCallDBModels = sipCallRepository.findByIdAndSessionIdAndAgentIdAndClientId(callId,sessionId,agentId,clientId);
+        List<OperationSipCallDBModel> sipCallDBModels = operationSipCallRepository.findByIdAndSessionIdAndAgentIdAndClientId(callId,sessionId,agentId,clientId);
         if (!sipCallDBModels.isEmpty() && sipCallDBModels.get(0).getCallState().equalsIgnoreCase(AppConstant.ACTIVE_CALL)) {
 
             sipCallDBModels.get(0).setCallState(AppConstant.READY_CALL);
             sipCallDBModels.get(0).setfDate(appUtils.getCurrentTimeStamp());
             sipCallDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
 
-            return new ApiSipCallWSDTO(sipCallRepository.save(sipCallDBModels.get(0)));
+            return new ApiSipCallWSDTO(operationSipCallRepository.save(sipCallDBModels.get(0)));
         }
         return null;
     }
@@ -135,17 +135,17 @@ public class ApiSipCallFramework {
 
     public ApiSipCallWSDTO apiFinishSipCallService(long agentId,long sessionId,long clientId,long callId) {
 
-        List<SipCallDBModel> sipCallDBModels = sipCallRepository.findByIdAndSessionIdAndAgentIdAndClientId(callId,sessionId,agentId,clientId);
+        List<OperationSipCallDBModel> sipCallDBModels = operationSipCallRepository.findByIdAndSessionIdAndAgentIdAndClientId(callId,sessionId,agentId,clientId);
         if (!sipCallDBModels.isEmpty()) {
             if (sipCallDBModels.get(0).getsDate() == 0){
-                sipCallRepository.delete(sipCallDBModels.get(0));
+                operationSipCallRepository.delete(sipCallDBModels.get(0));
                 return new ApiSipCallWSDTO(sipCallDBModels.get(0));
             }else {
                 sipCallDBModels.get(0).setCallState(AppConstant.FINISHED_CALL);
                 sipCallDBModels.get(0).setfDate(appUtils.getCurrentTimeStamp());
                 sipCallDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
 
-                return new ApiSipCallWSDTO(sipCallRepository.save(sipCallDBModels.get(0)));
+                return new ApiSipCallWSDTO(operationSipCallRepository.save(sipCallDBModels.get(0)));
             }
         }
         return null;
@@ -155,7 +155,7 @@ public class ApiSipCallFramework {
 
     public ApiSipCallWSDTO apiUpdateSipCallService(long agentId,long sessionId,long clientId,long callId,String callState) {
 
-        List<SipCallDBModel> sipCallDBModels = sipCallRepository.findByIdAndSessionIdAndAgentIdAndClientId(callId,sessionId,agentId,clientId);
+        List<OperationSipCallDBModel> sipCallDBModels = operationSipCallRepository.findByIdAndSessionIdAndAgentIdAndClientId(callId,sessionId,agentId,clientId);
         if (!sipCallDBModels.isEmpty()) {
             sipCallDBModels.get(0).setCallState(callState);
             if (callState.equalsIgnoreCase(AppConstant.FINISHED_CALL)) {
@@ -163,7 +163,7 @@ public class ApiSipCallFramework {
             }
             sipCallDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
 
-            return new ApiSipCallWSDTO(sipCallRepository.save(sipCallDBModels.get(0)));
+            return new ApiSipCallWSDTO(operationSipCallRepository.save(sipCallDBModels.get(0)));
         }
         return null;
     }
@@ -172,9 +172,9 @@ public class ApiSipCallFramework {
 
     public ApiSipCallWSDTO apiRemoveSipCallService(long agentId,long sessionId,long clientId,long callId) {
 
-        List<SipCallDBModel> sipCallDBModels = sipCallRepository.findByIdAndSessionIdAndAgentIdAndClientId(callId,sessionId,agentId,clientId);
+        List<OperationSipCallDBModel> sipCallDBModels = operationSipCallRepository.findByIdAndSessionIdAndAgentIdAndClientId(callId,sessionId,agentId,clientId);
         if (!sipCallDBModels.isEmpty()) {
-            sipCallRepository.delete(sipCallDBModels.get(0));
+            operationSipCallRepository.delete(sipCallDBModels.get(0));
             return new ApiSipCallWSDTO(sipCallDBModels.get(0));
         }
         return null;

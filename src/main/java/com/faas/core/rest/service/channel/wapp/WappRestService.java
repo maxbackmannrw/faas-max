@@ -1,11 +1,11 @@
 package com.faas.core.rest.service.channel.wapp;
 
 import com.faas.core.base.model.db.channel.account.WappAccountDBModel;
-import com.faas.core.base.model.db.operation.channel.WappMessageDBModel;
+import com.faas.core.base.model.db.operation.channel.OperationWappMessageDBModel;
 import com.faas.core.base.model.db.process.content.ProcessDBModel;
 import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.repo.channel.account.WappAccountRepository;
-import com.faas.core.base.repo.operation.channel.WappMessageRepository;
+import com.faas.core.base.repo.operation.channel.OperationWappMessageRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.rest.call.channel.wapp.WappRestCall;
 import com.faas.core.rest.call.utility.UtilityRestCall;
@@ -36,7 +36,7 @@ public class WappRestService {
     WappAccountRepository wappAccountRepository;
 
     @Autowired
-    WappMessageRepository wappMessageRepository;
+    OperationWappMessageRepository operationWappMessageRepository;
 
     @Autowired
     AppUtils appUtils;
@@ -53,31 +53,31 @@ public class WappRestService {
 
 
     @Async
-    public void sendWappMessageService(SessionDBModel sessionDBModel,WappMessageDBModel wappMessageDBModel) throws IOException {
+    public void sendWappMessageService(SessionDBModel sessionDBModel, OperationWappMessageDBModel operationWappMessageDBModel) throws IOException {
 
-        Optional<WappAccountDBModel> wappAccountDBModel = wappAccountRepository.findById(wappMessageDBModel.getWappMessage().getAccountId());
+        Optional<WappAccountDBModel> wappAccountDBModel = wappAccountRepository.findById(operationWappMessageDBModel.getWappMessage().getAccountId());
         Optional<ProcessDBModel> processDBModel = processRepository.findById(sessionDBModel.getProcessId());
 
         if (wappAccountDBModel.isPresent() && processDBModel.isPresent()) {
-            wappMessageDBModel = generateWappMessageBodyService(sessionDBModel,wappMessageDBModel,wappAccountDBModel.get(),processDBModel.get());
-            if (wappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.TEXT_MESSAGE)){
-                wappRestClient.sendWappTextMessageRest(wappMessageDBModel,wappAccountDBModel.get());
+            operationWappMessageDBModel = generateWappMessageBodyService(sessionDBModel, operationWappMessageDBModel,wappAccountDBModel.get(),processDBModel.get());
+            if (operationWappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.TEXT_MESSAGE)){
+                wappRestClient.sendWappTextMessageRest(operationWappMessageDBModel,wappAccountDBModel.get());
             }
-            if (wappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.IMAGE_MESSAGE)){
+            if (operationWappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.IMAGE_MESSAGE)){
             }
-            if (wappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.VOICE_MESSAGE)){
+            if (operationWappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.VOICE_MESSAGE)){
             }
-            if (wappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.VIDEO_MESSAGE)){
+            if (operationWappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.VIDEO_MESSAGE)){
             }
-            if (wappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.DOC_MESSAGE)){
+            if (operationWappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.DOC_MESSAGE)){
             }
         }
     }
 
 
-    public WappMessageDBModel generateWappMessageBodyService(SessionDBModel sessionDBModel,WappMessageDBModel wappMessageDBModel,WappAccountDBModel wappAccountDBModel,ProcessDBModel processDBModel) throws IOException {
+    public OperationWappMessageDBModel generateWappMessageBodyService(SessionDBModel sessionDBModel, OperationWappMessageDBModel operationWappMessageDBModel, WappAccountDBModel wappAccountDBModel, ProcessDBModel processDBModel) throws IOException {
 
-        String wappMessageBody = wappMessageDBModel.getWappMessage().getWappBody();
+        String wappMessageBody = operationWappMessageDBModel.getWappMessage().getWappBody();
         if (wappMessageBody.contains(AppConstant.CLIENT_NAME_TAG)) {
             wappMessageBody = wappMessageBody.replace(AppConstant.CLIENT_NAME_TAG, sessionDBModel.getClientName());
         }
@@ -87,7 +87,7 @@ public class WappRestService {
                 Map<String,String> pwaUrlMap = utilityRestCall.urlShortenerRest(pwaUrl);
                 if (pwaUrlMap != null){
                     wappMessageBody = wappMessageBody.replace(AppConstant.PWA_URL_TAG, appUtils.getValueFromMap(pwaUrlMap,"shortnedUrl"));
-                    wappMessageDBModel.getWappMessage().getMessageMaps().putAll(pwaUrlMap);
+                    operationWappMessageDBModel.getWappMessage().getMessageMaps().putAll(pwaUrlMap);
                 }
             }
         }
@@ -97,15 +97,15 @@ public class WappRestService {
                 Map<String,String> nativeUrlMap = utilityRestCall.urlShortenerRest(nativeUrl);
                 if (nativeUrlMap != null){
                     wappMessageBody = wappMessageBody.replace(AppConstant.NATIVE_URL_TAG, appUtils.getValueFromMap(nativeUrlMap,"shortnedUrl"));
-                    wappMessageDBModel.getWappMessage().getMessageMaps().putAll(nativeUrlMap);
+                    operationWappMessageDBModel.getWappMessage().getMessageMaps().putAll(nativeUrlMap);
                 }
             }
         }
-        wappMessageDBModel.getWappMessage().setWappBody(wappMessageBody);
-        wappMessageDBModel.setMessageState(AppConstant.MESSAGE_SENDING);
-        wappMessageDBModel.setuDate(appUtils.getCurrentTimeStamp());
+        operationWappMessageDBModel.getWappMessage().setWappBody(wappMessageBody);
+        operationWappMessageDBModel.setMessageState(AppConstant.MESSAGE_SENDING);
+        operationWappMessageDBModel.setuDate(appUtils.getCurrentTimeStamp());
 
-        return wappMessageRepository.save(wappMessageDBModel);
+        return operationWappMessageRepository.save(operationWappMessageDBModel);
     }
 
 

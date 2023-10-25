@@ -1,11 +1,11 @@
 package com.faas.core.rest.service.channel.sms;
 
 import com.faas.core.base.model.db.channel.account.SmsAccountDBModel;
-import com.faas.core.base.model.db.operation.channel.SmsMessageDBModel;
+import com.faas.core.base.model.db.operation.channel.OperationSmsMessageDBModel;
 import com.faas.core.base.model.db.process.content.ProcessDBModel;
 import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.repo.channel.account.SmsAccountRepository;
-import com.faas.core.base.repo.operation.channel.SmsMessageRepository;
+import com.faas.core.base.repo.operation.channel.OperationSmsMessageRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.rest.call.channel.sms.SmsMessageRestCall;
 import com.faas.core.rest.call.utility.UtilityRestCall;
@@ -36,27 +36,27 @@ public class SmsRestService {
     SmsAccountRepository smsAccountRepository;
 
     @Autowired
-    SmsMessageRepository smsMessageRepository;
+    OperationSmsMessageRepository operationSmsMessageRepository;
 
     @Autowired
     AppUtils appUtils;
 
 
     @Async
-    public void sendSmsMessageService(SessionDBModel sessionDBModel,SmsMessageDBModel smsMessageDBModel) throws IOException {
+    public void sendSmsMessageService(SessionDBModel sessionDBModel, OperationSmsMessageDBModel operationSmsMessageDBModel) throws IOException {
 
-        Optional<SmsAccountDBModel> smsAccountDBModel = smsAccountRepository.findById(smsMessageDBModel.getSmsMessage().getAccountId());
+        Optional<SmsAccountDBModel> smsAccountDBModel = smsAccountRepository.findById(operationSmsMessageDBModel.getSmsMessage().getAccountId());
         Optional<ProcessDBModel> processDBModel = processRepository.findById(sessionDBModel.getProcessId());
         if (smsAccountDBModel.isPresent() && processDBModel.isPresent()) {
-            smsMessageDBModel = generateSmsBodyService(sessionDBModel,smsMessageDBModel,smsAccountDBModel.get(),processDBModel.get());
-            smsMessageRestCall.sendSmsMessageRest(smsMessageDBModel,smsAccountDBModel.get());
+            operationSmsMessageDBModel = generateSmsBodyService(sessionDBModel, operationSmsMessageDBModel,smsAccountDBModel.get(),processDBModel.get());
+            smsMessageRestCall.sendSmsMessageRest(operationSmsMessageDBModel,smsAccountDBModel.get());
         }
     }
 
 
-    public SmsMessageDBModel generateSmsBodyService(SessionDBModel sessionDBModel,SmsMessageDBModel smsMessageDBModel,SmsAccountDBModel smsAccountDBModel,ProcessDBModel processDBModel) throws IOException {
+    public OperationSmsMessageDBModel generateSmsBodyService(SessionDBModel sessionDBModel, OperationSmsMessageDBModel operationSmsMessageDBModel, SmsAccountDBModel smsAccountDBModel, ProcessDBModel processDBModel) throws IOException {
 
-        String smsMessageBody = smsMessageDBModel.getSmsMessage().getSmsBody();
+        String smsMessageBody = operationSmsMessageDBModel.getSmsMessage().getSmsBody();
         if (smsMessageBody.contains(AppConstant.CLIENT_NAME_TAG)) {
             smsMessageBody = smsMessageBody.replace(AppConstant.CLIENT_NAME_TAG, sessionDBModel.getClientName());
         }
@@ -66,7 +66,7 @@ public class SmsRestService {
                 Map<String,String> pwaUrlMap = utilityRestCall.urlShortenerRest(pwaUrl);
                 if (pwaUrlMap != null){
                     smsMessageBody = smsMessageBody.replace(AppConstant.PWA_URL_TAG, appUtils.getValueFromMap(pwaUrlMap,"shortnedUrl"));
-                    smsMessageDBModel.getSmsMessage().getMessageMaps().putAll(pwaUrlMap);
+                    operationSmsMessageDBModel.getSmsMessage().getMessageMaps().putAll(pwaUrlMap);
                 }
             }
         }
@@ -76,15 +76,15 @@ public class SmsRestService {
                 Map<String,String> nativeUrlMap = utilityRestCall.urlShortenerRest(nativeUrl);
                 if (nativeUrlMap != null){
                     smsMessageBody = smsMessageBody.replace(AppConstant.NATIVE_URL_TAG, appUtils.getValueFromMap(nativeUrlMap,"shortnedUrl"));
-                    smsMessageDBModel.getSmsMessage().getMessageMaps().putAll(nativeUrlMap);
+                    operationSmsMessageDBModel.getSmsMessage().getMessageMaps().putAll(nativeUrlMap);
                 }
             }
         }
-        smsMessageDBModel.getSmsMessage().setSmsBody(smsMessageBody);
-        smsMessageDBModel.setMessageState(AppConstant.MESSAGE_SENDING);
-        smsMessageDBModel.setuDate(appUtils.getCurrentTimeStamp());
+        operationSmsMessageDBModel.getSmsMessage().setSmsBody(smsMessageBody);
+        operationSmsMessageDBModel.setMessageState(AppConstant.MESSAGE_SENDING);
+        operationSmsMessageDBModel.setuDate(appUtils.getCurrentTimeStamp());
 
-        return smsMessageRepository.save(smsMessageDBModel);
+        return operationSmsMessageRepository.save(operationSmsMessageDBModel);
     }
 
 

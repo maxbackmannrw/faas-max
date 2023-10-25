@@ -89,10 +89,10 @@ public class OperationHelper {
     ScenarioRepository scenarioRepository;
 
     @Autowired
-    WappCallRepository wappCallRepository;
+    OperationWappCallRepository operationWappCallRepository;
 
     @Autowired
-    SmsMessageRepository smsMessageRepository;
+    OperationSmsMessageRepository operationSmsMessageRepository;
 
     @Autowired
     ProcessSipChannelRepository processSipChannelRepository;
@@ -110,13 +110,13 @@ public class OperationHelper {
     ProcessEmailChannelRepository processEmailChannelRepository;
 
     @Autowired
-    EmailMessageRepository emailMessageRepository;
+    OperationEmailMessageRepository operationEmailMessageRepository;
 
     @Autowired
     EmailTempRepository emailTempRepository;
 
     @Autowired
-    PushMessageRepository pushMessageRepository;
+    OperationPushMessageRepository operationPushMessageRepository;
 
     @Autowired
     PushTempRepository pushTempRepository;
@@ -146,7 +146,7 @@ public class OperationHelper {
     SmsMessageTempRepository smsMessageTempRepository;
 
     @Autowired
-    WappMessageRepository wappMessageRepository;
+    OperationWappMessageRepository operationWappMessageRepository;
 
     @Autowired
     WappMessageTempRepository wappMessageTempRepository;

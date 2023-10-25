@@ -66,22 +66,22 @@ public class ClientFramework {
     OperationRepository operationRepository;
 
     @Autowired
-    EmailMessageRepository emailMessageRepository;
+    OperationEmailMessageRepository operationEmailMessageRepository;
 
     @Autowired
-    PushMessageRepository pushMessageRepository;
+    OperationPushMessageRepository operationPushMessageRepository;
 
     @Autowired
-    SipCallRepository sipCallRepository;
+    OperationSipCallRepository operationSipCallRepository;
 
     @Autowired
-    SmsMessageRepository smsMessageRepository;
+    OperationSmsMessageRepository operationSmsMessageRepository;
 
     @Autowired
-    WappCallRepository wappCallRepository;
+    OperationWappCallRepository operationWappCallRepository;
 
     @Autowired
-    WappMessageRepository wappMessageRepository;
+    OperationWappMessageRepository operationWappMessageRepository;
 
     @Autowired
     CityRepository cityRepository;
@@ -267,12 +267,12 @@ public class ClientFramework {
             clientEmailRepository.deleteAll(clientEmailRepository.findByClientId(clientId));
             sessionRepository.deleteAll(sessionRepository.findByClientId(clientId));
             operationRepository.deleteAll(operationRepository.findByClientId(clientId));
-            emailMessageRepository.deleteAll(emailMessageRepository.findByClientId(clientId));
-            pushMessageRepository.deleteAll(pushMessageRepository.findByClientId(clientId));
-            sipCallRepository.deleteAll(sipCallRepository.findByClientId(clientId));
-            smsMessageRepository.deleteAll(smsMessageRepository.findByClientId(clientId));
-            wappCallRepository.deleteAll(wappCallRepository.findByClientId(clientId));
-            wappMessageRepository.deleteAll(wappMessageRepository.findByClientId(clientId));
+            operationEmailMessageRepository.deleteAll(operationEmailMessageRepository.findByClientId(clientId));
+            operationPushMessageRepository.deleteAll(operationPushMessageRepository.findByClientId(clientId));
+            operationSipCallRepository.deleteAll(operationSipCallRepository.findByClientId(clientId));
+            operationSmsMessageRepository.deleteAll(operationSmsMessageRepository.findByClientId(clientId));
+            operationWappCallRepository.deleteAll(operationWappCallRepository.findByClientId(clientId));
+            operationWappMessageRepository.deleteAll(operationWappMessageRepository.findByClientId(clientId));
         }
     }
 

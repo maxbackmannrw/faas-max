@@ -3,8 +3,8 @@ package com.faas.core.base.model.db.operation.channel;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "wapp_call_table")
-public class WappCallDBModel {
+@Table(name = "operation_wapp_call_table")
+public class OperationWappCallDBModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -58,10 +58,10 @@ public class WappCallDBModel {
     @Column(name = "status")
     private int status;
 
-    public WappCallDBModel() {
+    public OperationWappCallDBModel() {
     }
 
-    public WappCallDBModel(long id, long sessionId, long clientId, long agentId, String campaignId, String processId, long numberId, String phoneNumber, String accountId, String callerId, String connectionId, String callState, long sDate, long fDate, long uDate, long cDate, int status) {
+    public OperationWappCallDBModel(long id, long sessionId, long clientId, long agentId, String campaignId, String processId, long numberId, String phoneNumber, String accountId, String callerId, String connectionId, String callState, long sDate, long fDate, long uDate, long cDate, int status) {
         this.id = id;
         this.sessionId = sessionId;
         this.clientId = clientId;

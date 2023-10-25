@@ -2,10 +2,10 @@ package com.faas.core.api.framework.operation.channel.call.wapp;
 
 import com.faas.core.api.model.ws.operation.channel.call.wapp.dto.ApiOperationWappCallWSDTO;
 import com.faas.core.base.model.db.client.details.ClientPhoneDBModel;
-import com.faas.core.base.model.db.operation.channel.WappCallDBModel;
+import com.faas.core.base.model.db.operation.channel.OperationWappCallDBModel;
 import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.repo.client.details.ClientPhoneRepository;
-import com.faas.core.base.repo.operation.channel.WappCallRepository;
+import com.faas.core.base.repo.operation.channel.OperationWappCallRepository;
 import com.faas.core.base.repo.client.session.SessionRepository;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.ChannelHelper;
@@ -32,7 +32,7 @@ public class ApiWappCallFramework {
     ClientPhoneRepository clientPhoneRepository;
 
     @Autowired
-    WappCallRepository wappCallRepository;
+    OperationWappCallRepository operationWappCallRepository;
 
     @Autowired
     AppUtils appUtils;
@@ -60,9 +60,9 @@ public class ApiWappCallFramework {
 
         ApiOperationWappCallWSDTO operationWappCallWSDTO = new ApiOperationWappCallWSDTO();
         operationWappCallWSDTO.setClientPhones(clientPhoneRepository.findByClientId(clientId));
-        List<WappCallDBModel> wappCallDBModels = wappCallRepository.findByIdAndSessionId(callId,sessionId);
-        if (wappCallDBModels.size()>0){
-            operationWappCallWSDTO.setCurrentWappCall(wappCallDBModels.get(0));
+        List<OperationWappCallDBModel> operationWappCallDBModels = operationWappCallRepository.findByIdAndSessionId(callId,sessionId);
+        if (operationWappCallDBModels.size()>0){
+            operationWappCallWSDTO.setCurrentWappCall(operationWappCallDBModels.get(0));
         }
         return operationWappCallWSDTO;
     }
@@ -78,9 +78,9 @@ public class ApiWappCallFramework {
 
         ApiOperationWappCallWSDTO operationWappCallWSDTO = new ApiOperationWappCallWSDTO();
         operationWappCallWSDTO.setClientPhones(clientPhoneRepository.findByClientId(clientId));
-        List<WappCallDBModel> wappCallDBModels = wappCallRepository.findByIdAndSessionId(callId,sessionId);
-        if (!wappCallDBModels.isEmpty()){
-            operationWappCallWSDTO.setCurrentWappCall(wappCallDBModels.get(0));
+        List<OperationWappCallDBModel> operationWappCallDBModels = operationWappCallRepository.findByIdAndSessionId(callId,sessionId);
+        if (!operationWappCallDBModels.isEmpty()){
+            operationWappCallWSDTO.setCurrentWappCall(operationWappCallDBModels.get(0));
         }
         return operationWappCallWSDTO;
     }
@@ -88,13 +88,13 @@ public class ApiWappCallFramework {
 
     public ApiOperationWappCallWSDTO apiRemoveWappCallService(long agentId,long sessionId,long clientId, long callId) {
 
-        List<WappCallDBModel> wappCallDBModels = wappCallRepository.findByIdAndSessionId(callId,sessionId);
-        if (!wappCallDBModels.isEmpty()){
+        List<OperationWappCallDBModel> operationWappCallDBModels = operationWappCallRepository.findByIdAndSessionId(callId,sessionId);
+        if (!operationWappCallDBModels.isEmpty()){
 
-            wappCallRepository.delete(wappCallDBModels.get(0));
+            operationWappCallRepository.delete(operationWappCallDBModels.get(0));
             ApiOperationWappCallWSDTO operationWappCallWSDTO = new ApiOperationWappCallWSDTO();
             operationWappCallWSDTO.setClientPhones(clientPhoneRepository.findByClientId(clientId));
-            operationWappCallWSDTO.setCurrentWappCall(wappCallDBModels.get(0));
+            operationWappCallWSDTO.setCurrentWappCall(operationWappCallDBModels.get(0));
 
             return operationWappCallWSDTO;
         }

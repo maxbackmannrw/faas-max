@@ -1,7 +1,7 @@
 package com.faas.core.api.model.ws.operation.channel.call.sip.dto;
 
 import com.faas.core.base.model.db.client.details.ClientPhoneDBModel;
-import com.faas.core.base.model.db.operation.channel.SipCallDBModel;
+import com.faas.core.base.model.db.operation.channel.OperationSipCallDBModel;
 
 import java.util.List;
 
@@ -9,13 +9,13 @@ public class ApiOperationSipCallWSDTO {
 
     private ApiSipAccountWSDTO sipAccount;
     private List<ClientPhoneDBModel>clientPhones;
-    private SipCallDBModel currentSipCall;
-    private List<SipCallDBModel> recentSipCalls;
+    private OperationSipCallDBModel currentSipCall;
+    private List<OperationSipCallDBModel> recentSipCalls;
 
     public ApiOperationSipCallWSDTO() {
     }
 
-    public ApiOperationSipCallWSDTO(ApiSipAccountWSDTO sipAccount, List<ClientPhoneDBModel> clientPhones, SipCallDBModel currentSipCall, List<SipCallDBModel> recentSipCalls) {
+    public ApiOperationSipCallWSDTO(ApiSipAccountWSDTO sipAccount, List<ClientPhoneDBModel> clientPhones, OperationSipCallDBModel currentSipCall, List<OperationSipCallDBModel> recentSipCalls) {
         this.sipAccount = sipAccount;
         this.clientPhones = clientPhones;
         this.currentSipCall = currentSipCall;
@@ -38,19 +38,19 @@ public class ApiOperationSipCallWSDTO {
         this.clientPhones = clientPhones;
     }
 
-    public SipCallDBModel getCurrentSipCall() {
+    public OperationSipCallDBModel getCurrentSipCall() {
         return currentSipCall;
     }
 
-    public void setCurrentSipCall(SipCallDBModel currentSipCall) {
+    public void setCurrentSipCall(OperationSipCallDBModel currentSipCall) {
         this.currentSipCall = currentSipCall;
     }
 
-    public List<SipCallDBModel> getRecentSipCalls() {
+    public List<OperationSipCallDBModel> getRecentSipCalls() {
         return recentSipCalls;
     }
 
-    public void setRecentSipCalls(List<SipCallDBModel> recentSipCalls) {
+    public void setRecentSipCalls(List<OperationSipCallDBModel> recentSipCalls) {
         this.recentSipCalls = recentSipCalls;
     }
 }

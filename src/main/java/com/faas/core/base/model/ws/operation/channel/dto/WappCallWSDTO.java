@@ -1,23 +1,23 @@
 package com.faas.core.base.model.ws.operation.channel.dto;
 
-import com.faas.core.base.model.db.operation.channel.WappCallDBModel;
+import com.faas.core.base.model.db.operation.channel.OperationWappCallDBModel;
 
 public class WappCallWSDTO {
 
-    private WappCallDBModel wappCall;
+    private OperationWappCallDBModel wappCall;
 
     public WappCallWSDTO() {
     }
 
-    public WappCallWSDTO(WappCallDBModel wappCall) {
+    public WappCallWSDTO(OperationWappCallDBModel wappCall) {
         this.wappCall = wappCall;
     }
 
-    public WappCallDBModel getWappCall() {
+    public OperationWappCallDBModel getWappCall() {
         return wappCall;
     }
 
-    public void setWappCall(WappCallDBModel wappCall) {
+    public void setWappCall(OperationWappCallDBModel wappCall) {
         this.wappCall = wappCall;
     }
 }

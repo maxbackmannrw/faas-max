@@ -1,23 +1,23 @@
 package com.faas.core.api.model.ws.operation.channel.call.sip.dto;
 
-import com.faas.core.base.model.db.operation.channel.SipCallDBModel;
+import com.faas.core.base.model.db.operation.channel.OperationSipCallDBModel;
 
 public class ApiSipCallWSDTO {
 
-    private SipCallDBModel sipCall;
+    private OperationSipCallDBModel sipCall;
 
     public ApiSipCallWSDTO() {
     }
 
-    public ApiSipCallWSDTO(SipCallDBModel sipCall) {
+    public ApiSipCallWSDTO(OperationSipCallDBModel sipCall) {
         this.sipCall = sipCall;
     }
 
-    public SipCallDBModel getSipCall() {
+    public OperationSipCallDBModel getSipCall() {
         return sipCall;
     }
 
-    public void setSipCall(SipCallDBModel sipCall) {
+    public void setSipCall(OperationSipCallDBModel sipCall) {
         this.sipCall = sipCall;
     }
 }

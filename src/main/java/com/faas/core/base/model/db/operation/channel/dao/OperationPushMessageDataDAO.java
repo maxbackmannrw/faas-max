@@ -1,7 +1,7 @@
 package com.faas.core.base.model.db.operation.channel.dao;
 
 
-public class PushMessageDataDAO {
+public class OperationPushMessageDataDAO {
 
     private String dataId;
     private String dataType;
@@ -9,10 +9,10 @@ public class PushMessageDataDAO {
     private long cDate;
     private int status;
 
-    public PushMessageDataDAO() {
+    public OperationPushMessageDataDAO() {
     }
 
-    public PushMessageDataDAO(String dataId, String dataType, String value, long cDate, int status) {
+    public OperationPushMessageDataDAO(String dataId, String dataType, String value, long cDate, int status) {
         this.dataId = dataId;
         this.dataType = dataType;
         this.value = value;

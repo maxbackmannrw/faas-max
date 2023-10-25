@@ -1,7 +1,7 @@
 package com.faas.core.api.model.ws.operation.channel.call.wapp.dto;
 
 import com.faas.core.base.model.db.client.details.ClientPhoneDBModel;
-import com.faas.core.base.model.db.operation.channel.WappCallDBModel;
+import com.faas.core.base.model.db.operation.channel.OperationWappCallDBModel;
 
 import java.util.List;
 
@@ -9,13 +9,13 @@ public class ApiOperationWappCallWSDTO {
 
     private ApiWappAccountWSDTO wappAccount;
     private List<ClientPhoneDBModel>clientPhones;
-    private WappCallDBModel currentWappCall;
-    private List<WappCallDBModel>recentWappCalls;
+    private OperationWappCallDBModel currentWappCall;
+    private List<OperationWappCallDBModel>recentWappCalls;
 
     public ApiOperationWappCallWSDTO() {
     }
 
-    public ApiOperationWappCallWSDTO(ApiWappAccountWSDTO wappAccount, List<ClientPhoneDBModel> clientPhones, WappCallDBModel currentWappCall, List<WappCallDBModel> recentWappCalls) {
+    public ApiOperationWappCallWSDTO(ApiWappAccountWSDTO wappAccount, List<ClientPhoneDBModel> clientPhones, OperationWappCallDBModel currentWappCall, List<OperationWappCallDBModel> recentWappCalls) {
         this.wappAccount = wappAccount;
         this.clientPhones = clientPhones;
         this.currentWappCall = currentWappCall;
@@ -38,19 +38,19 @@ public class ApiOperationWappCallWSDTO {
         this.clientPhones = clientPhones;
     }
 
-    public WappCallDBModel getCurrentWappCall() {
+    public OperationWappCallDBModel getCurrentWappCall() {
         return currentWappCall;
     }
 
-    public void setCurrentWappCall(WappCallDBModel currentWappCall) {
+    public void setCurrentWappCall(OperationWappCallDBModel currentWappCall) {
         this.currentWappCall = currentWappCall;
     }
 
-    public List<WappCallDBModel> getRecentWappCalls() {
+    public List<OperationWappCallDBModel> getRecentWappCalls() {
         return recentWappCalls;
     }
 
-    public void setRecentWappCalls(List<WappCallDBModel> recentWappCalls) {
+    public void setRecentWappCalls(List<OperationWappCallDBModel> recentWappCalls) {
         this.recentWappCalls = recentWappCalls;
     }
 }

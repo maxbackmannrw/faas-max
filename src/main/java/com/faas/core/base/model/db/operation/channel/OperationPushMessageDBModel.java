@@ -1,14 +1,15 @@
 package com.faas.core.base.model.db.operation.channel;
 
-import com.faas.core.base.model.db.operation.channel.dao.EmailMessageDataDAO;
+import com.faas.core.base.model.db.operation.channel.dao.OperationPushMessageDataDAO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
 
-@Document(collection = "email_message_table")
-public class EmailMessageDBModel {
+@Document(collection = "operation_push_message_table")
+public class OperationPushMessageDBModel {
+
 
     @Id
     private String id;
@@ -16,48 +17,47 @@ public class EmailMessageDBModel {
     private String sessionUUID;
     private long clientId;
     private long agentId;
-    private long addressId;
-    private String emailAddress;
     private String tempId;
     private String campaignId;
     private String processId;
-    private String subject;
+    private String header;
     private String body;
     private String footer;
-    private List<EmailMessageDataDAO>messageDatas;
+    private List<OperationPushMessageDataDAO>messageDatas;
     private String sender;
-    private String emailType;
+    private String pushType;
+    private String mainType;
     private String accountId;
     private String sentId;
-    private String emailState;
+    private String targetId;
+    private String pushState;
     private long uDate;
     private long cDate;
     private int status;
 
-
-    public EmailMessageDBModel() {
+    public OperationPushMessageDBModel() {
     }
 
-    public EmailMessageDBModel(String id, long sessionId, String sessionUUID, long clientId, long agentId, long addressId, String emailAddress, String tempId, String campaignId, String processId, String subject, String body, String footer, List<EmailMessageDataDAO> messageDatas, String sender, String emailType, String accountId, String sentId, String emailState, long uDate, long cDate, int status) {
+    public OperationPushMessageDBModel(String id, long sessionId, String sessionUUID, long clientId, long agentId, String tempId, String campaignId, String processId, String header, String body, String footer, List<OperationPushMessageDataDAO> messageDatas, String sender, String pushType, String mainType, String accountId, String sentId, String targetId, String pushState, long uDate, long cDate, int status) {
         this.id = id;
         this.sessionId = sessionId;
         this.sessionUUID = sessionUUID;
         this.clientId = clientId;
         this.agentId = agentId;
-        this.addressId = addressId;
-        this.emailAddress = emailAddress;
         this.tempId = tempId;
         this.campaignId = campaignId;
         this.processId = processId;
-        this.subject = subject;
+        this.header = header;
         this.body = body;
         this.footer = footer;
         this.messageDatas = messageDatas;
         this.sender = sender;
-        this.emailType = emailType;
+        this.pushType = pushType;
+        this.mainType = mainType;
         this.accountId = accountId;
         this.sentId = sentId;
-        this.emailState = emailState;
+        this.targetId = targetId;
+        this.pushState = pushState;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
@@ -103,22 +103,6 @@ public class EmailMessageDBModel {
         this.agentId = agentId;
     }
 
-    public long getAddressId() {
-        return addressId;
-    }
-
-    public void setAddressId(long addressId) {
-        this.addressId = addressId;
-    }
-
-    public String getEmailAddress() {
-        return emailAddress;
-    }
-
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
-    }
-
     public String getTempId() {
         return tempId;
     }
@@ -143,12 +127,12 @@ public class EmailMessageDBModel {
         this.processId = processId;
     }
 
-    public String getSubject() {
-        return subject;
+    public String getHeader() {
+        return header;
     }
 
-    public void setSubject(String subject) {
-        this.subject = subject;
+    public void setHeader(String header) {
+        this.header = header;
     }
 
     public String getBody() {
@@ -167,11 +151,11 @@ public class EmailMessageDBModel {
         this.footer = footer;
     }
 
-    public List<EmailMessageDataDAO> getMessageDatas() {
+    public List<OperationPushMessageDataDAO> getMessageDatas() {
         return messageDatas;
     }
 
-    public void setMessageDatas(List<EmailMessageDataDAO> messageDatas) {
+    public void setMessageDatas(List<OperationPushMessageDataDAO> messageDatas) {
         this.messageDatas = messageDatas;
     }
 
@@ -183,12 +167,20 @@ public class EmailMessageDBModel {
         this.sender = sender;
     }
 
-    public String getEmailType() {
-        return emailType;
+    public String getPushType() {
+        return pushType;
     }
 
-    public void setEmailType(String emailType) {
-        this.emailType = emailType;
+    public void setPushType(String pushType) {
+        this.pushType = pushType;
+    }
+
+    public String getMainType() {
+        return mainType;
+    }
+
+    public void setMainType(String mainType) {
+        this.mainType = mainType;
     }
 
     public String getAccountId() {
@@ -207,12 +199,20 @@ public class EmailMessageDBModel {
         this.sentId = sentId;
     }
 
-    public String getEmailState() {
-        return emailState;
+    public String getTargetId() {
+        return targetId;
     }
 
-    public void setEmailState(String emailState) {
-        this.emailState = emailState;
+    public void setTargetId(String targetId) {
+        this.targetId = targetId;
+    }
+
+    public String getPushState() {
+        return pushState;
+    }
+
+    public void setPushState(String pushState) {
+        this.pushState = pushState;
     }
 
     public long getuDate() {

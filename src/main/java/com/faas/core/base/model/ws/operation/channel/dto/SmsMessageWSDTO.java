@@ -1,23 +1,23 @@
 package com.faas.core.base.model.ws.operation.channel.dto;
 
-import com.faas.core.base.model.db.operation.channel.SmsMessageDBModel;
+import com.faas.core.base.model.db.operation.channel.OperationSmsMessageDBModel;
 
 public class SmsMessageWSDTO {
 
-    private SmsMessageDBModel smsMessage;
+    private OperationSmsMessageDBModel smsMessage;
 
     public SmsMessageWSDTO() {
     }
 
-    public SmsMessageWSDTO(SmsMessageDBModel smsMessage) {
+    public SmsMessageWSDTO(OperationSmsMessageDBModel smsMessage) {
         this.smsMessage = smsMessage;
     }
 
-    public SmsMessageDBModel getSmsMessage() {
+    public OperationSmsMessageDBModel getSmsMessage() {
         return smsMessage;
     }
 
-    public void setSmsMessage(SmsMessageDBModel smsMessage) {
+    public void setSmsMessage(OperationSmsMessageDBModel smsMessage) {
         this.smsMessage = smsMessage;
     }
 }

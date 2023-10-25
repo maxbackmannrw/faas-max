@@ -2,26 +2,24 @@ package com.faas.core.base.model.db.operation.channel.dao;
 
 import java.util.Map;
 
-public class SmsMessageDAO {
+public class OperationWappMessageDAO {
 
     private String tempId;
     private String accountId;
-    private String smsTitle;
-    private String smsBody;
-    private String senderId;
+    private String wappTitle;
+    private String wappBody;
     private Map<String,String> messageMaps;
     private String messageType;
     private long cDate;
 
-    public SmsMessageDAO() {
+    public OperationWappMessageDAO() {
     }
 
-    public SmsMessageDAO(String tempId, String accountId, String smsTitle, String smsBody, String senderId, Map<String, String> messageMaps, String messageType, long cDate) {
+    public OperationWappMessageDAO(String tempId, String accountId, String wappTitle, String wappBody, Map<String, String> messageMaps, String messageType, long cDate) {
         this.tempId = tempId;
         this.accountId = accountId;
-        this.smsTitle = smsTitle;
-        this.smsBody = smsBody;
-        this.senderId = senderId;
+        this.wappTitle = wappTitle;
+        this.wappBody = wappBody;
         this.messageMaps = messageMaps;
         this.messageType = messageType;
         this.cDate = cDate;
@@ -43,28 +41,20 @@ public class SmsMessageDAO {
         this.accountId = accountId;
     }
 
-    public String getSmsTitle() {
-        return smsTitle;
+    public String getWappTitle() {
+        return wappTitle;
     }
 
-    public void setSmsTitle(String smsTitle) {
-        this.smsTitle = smsTitle;
+    public void setWappTitle(String wappTitle) {
+        this.wappTitle = wappTitle;
     }
 
-    public String getSmsBody() {
-        return smsBody;
+    public String getWappBody() {
+        return wappBody;
     }
 
-    public void setSmsBody(String smsBody) {
-        this.smsBody = smsBody;
-    }
-
-    public String getSenderId() {
-        return senderId;
-    }
-
-    public void setSenderId(String senderId) {
-        this.senderId = senderId;
+    public void setWappBody(String wappBody) {
+        this.wappBody = wappBody;
     }
 
     public Map<String, String> getMessageMaps() {

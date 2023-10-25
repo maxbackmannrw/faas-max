@@ -1,8 +1,8 @@
 package com.faas.core.rest.call.channel.sms;
 
 import com.faas.core.base.model.db.channel.account.SmsAccountDBModel;
-import com.faas.core.base.model.db.operation.channel.SmsMessageDBModel;
-import com.faas.core.base.repo.operation.channel.SmsMessageRepository;
+import com.faas.core.base.model.db.operation.channel.OperationSmsMessageDBModel;
+import com.faas.core.base.repo.operation.channel.OperationSmsMessageRepository;
 import com.faas.core.rest.call.content.RestCall;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
@@ -21,32 +21,32 @@ public class SmsMessageRestCall {
     RestCall restCall;
 
     @Autowired
-    SmsMessageRepository smsMessageRepository;
+    OperationSmsMessageRepository operationSmsMessageRepository;
 
     @Autowired
     AppUtils appUtils;
 
 
-    public void sendSmsMessageRest(SmsMessageDBModel smsMessageDBModel, SmsAccountDBModel smsAccountDBModel) throws IOException {
+    public void sendSmsMessageRest(OperationSmsMessageDBModel operationSmsMessageDBModel, SmsAccountDBModel smsAccountDBModel) throws IOException {
 
         Map<String,String> formData = new HashMap<>();
         formData.put("username", smsAccountDBModel.getUserName());
         formData.put("password", smsAccountDBModel.getPassword());
-        formData.put("mt", appUtils.convertSmsType(smsMessageDBModel.getSmsMessage().getMessageType()));
+        formData.put("mt", appUtils.convertSmsType(operationSmsMessageDBModel.getSmsMessage().getMessageType()));
         formData.put("fl", "fl");
-        formData.put("Sid", smsMessageDBModel.getSmsMessage().getSenderId());
-        formData.put("mno", smsMessageDBModel.getPhoneNumber());
-        formData.put("msg", smsMessageDBModel.getSmsMessage().getSmsBody());
+        formData.put("Sid", operationSmsMessageDBModel.getSmsMessage().getSenderId());
+        formData.put("mno", operationSmsMessageDBModel.getPhoneNumber());
+        formData.put("msg", operationSmsMessageDBModel.getSmsMessage().getSmsBody());
         String requestUrl = restCall.urlBuilder(smsAccountDBModel.getApiUrl(),"",null);
 
         String response = restCall.sendPostFormRequest(requestUrl,formData);
         if (response != null){
-            smsMessageDBModel.setMessageState(AppConstant.MESSAGE_SENT);
+            operationSmsMessageDBModel.setMessageState(AppConstant.MESSAGE_SENT);
         }else {
-            smsMessageDBModel.setMessageState(AppConstant.MESSAGE_FAILED);
+            operationSmsMessageDBModel.setMessageState(AppConstant.MESSAGE_FAILED);
         }
-        smsMessageDBModel.setuDate(appUtils.getCurrentTimeStamp());
-        smsMessageRepository.save(smsMessageDBModel);
+        operationSmsMessageDBModel.setuDate(appUtils.getCurrentTimeStamp());
+        operationSmsMessageRepository.save(operationSmsMessageDBModel);
     }
 
 

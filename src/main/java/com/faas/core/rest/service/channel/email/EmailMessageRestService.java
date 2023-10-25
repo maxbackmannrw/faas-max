@@ -1,6 +1,6 @@
 package com.faas.core.rest.service.channel.email;
 
-import com.faas.core.base.model.db.operation.channel.SmsMessageDBModel;
+import com.faas.core.base.model.db.operation.channel.OperationSmsMessageDBModel;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -15,7 +15,7 @@ public class EmailMessageRestService {
     AppUtils appUtils;
 
 
-    public void sendSmsMessageService(SmsMessageDBModel smsMessageDBModel) throws IOException {
+    public void sendSmsMessageService(OperationSmsMessageDBModel operationSmsMessageDBModel) throws IOException {
         return;
     }
 

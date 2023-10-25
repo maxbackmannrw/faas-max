@@ -1,7 +1,7 @@
 package com.faas.core.api.model.ws.operation.channel.message.sms.dto;
 
 import com.faas.core.base.model.db.client.details.ClientPhoneDBModel;
-import com.faas.core.base.model.db.operation.channel.SmsMessageDBModel;
+import com.faas.core.base.model.db.operation.channel.OperationSmsMessageDBModel;
 import com.faas.core.base.model.db.process.details.channel.temp.SmsMessageTempDBModel;
 
 import java.util.List;
@@ -10,13 +10,13 @@ public class ApiOperationSmsMessageWSDTO {
 
     private ApiSmsAccountWSDTO smsAccount;
     private List<ClientPhoneDBModel>phones;
-    private List<SmsMessageDBModel>smsMessages;
+    private List<OperationSmsMessageDBModel>smsMessages;
     private List<SmsMessageTempDBModel>smsTemps;
 
     public ApiOperationSmsMessageWSDTO() {
     }
 
-    public ApiOperationSmsMessageWSDTO(ApiSmsAccountWSDTO smsAccount, List<ClientPhoneDBModel> phones, List<SmsMessageDBModel> smsMessages, List<SmsMessageTempDBModel> smsTemps) {
+    public ApiOperationSmsMessageWSDTO(ApiSmsAccountWSDTO smsAccount, List<ClientPhoneDBModel> phones, List<OperationSmsMessageDBModel> smsMessages, List<SmsMessageTempDBModel> smsTemps) {
         this.smsAccount = smsAccount;
         this.phones = phones;
         this.smsMessages = smsMessages;
@@ -39,11 +39,11 @@ public class ApiOperationSmsMessageWSDTO {
         this.phones = phones;
     }
 
-    public List<SmsMessageDBModel> getSmsMessages() {
+    public List<OperationSmsMessageDBModel> getSmsMessages() {
         return smsMessages;
     }
 
-    public void setSmsMessages(List<SmsMessageDBModel> smsMessages) {
+    public void setSmsMessages(List<OperationSmsMessageDBModel> smsMessages) {
         this.smsMessages = smsMessages;
     }
 

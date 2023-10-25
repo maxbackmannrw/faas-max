@@ -8,6 +8,7 @@ import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -43,12 +44,12 @@ public class UtilsSettingsMiddleware {
 
         UtilSettingsWSModel response = new UtilSettingsWSModel();
         GeneralWSModel general = new GeneralWSModel();
+        List<UtilSettingsWSDTO> utilSettingsWSDTOS = new ArrayList<>();
 
-        List<UtilSettingsWSDTO> systemSettingsWSDTOS = utilsSettingsFramework.removeSystemSettingsService(userId,systemSettings);
-        if (systemSettingsWSDTOS != null){
-            response.setUtilSettings(systemSettingsWSDTOS);
-        }
+        boolean result = utilsSettingsFramework.removeSystemSettingsService(userId,systemSettings);
+        utilSettingsWSDTOS.add(new UtilSettingsWSDTO(systemSettings,"",result));
 
+        response.setUtilSettings(utilSettingsWSDTOS);
         general.setOperation("removeSystemSettings");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);

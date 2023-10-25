@@ -2,24 +2,26 @@ package com.faas.core.base.model.db.operation.channel.dao;
 
 import java.util.Map;
 
-public class WappMessageDAO {
+public class OperationSmsMessageDAO {
 
     private String tempId;
     private String accountId;
-    private String wappTitle;
-    private String wappBody;
+    private String smsTitle;
+    private String smsBody;
+    private String senderId;
     private Map<String,String> messageMaps;
     private String messageType;
     private long cDate;
 
-    public WappMessageDAO() {
+    public OperationSmsMessageDAO() {
     }
 
-    public WappMessageDAO(String tempId, String accountId, String wappTitle, String wappBody, Map<String, String> messageMaps, String messageType, long cDate) {
+    public OperationSmsMessageDAO(String tempId, String accountId, String smsTitle, String smsBody, String senderId, Map<String, String> messageMaps, String messageType, long cDate) {
         this.tempId = tempId;
         this.accountId = accountId;
-        this.wappTitle = wappTitle;
-        this.wappBody = wappBody;
+        this.smsTitle = smsTitle;
+        this.smsBody = smsBody;
+        this.senderId = senderId;
         this.messageMaps = messageMaps;
         this.messageType = messageType;
         this.cDate = cDate;
@@ -41,20 +43,28 @@ public class WappMessageDAO {
         this.accountId = accountId;
     }
 
-    public String getWappTitle() {
-        return wappTitle;
+    public String getSmsTitle() {
+        return smsTitle;
     }
 
-    public void setWappTitle(String wappTitle) {
-        this.wappTitle = wappTitle;
+    public void setSmsTitle(String smsTitle) {
+        this.smsTitle = smsTitle;
     }
 
-    public String getWappBody() {
-        return wappBody;
+    public String getSmsBody() {
+        return smsBody;
     }
 
-    public void setWappBody(String wappBody) {
-        this.wappBody = wappBody;
+    public void setSmsBody(String smsBody) {
+        this.smsBody = smsBody;
+    }
+
+    public String getSenderId() {
+        return senderId;
+    }
+
+    public void setSenderId(String senderId) {
+        this.senderId = senderId;
     }
 
     public Map<String, String> getMessageMaps() {

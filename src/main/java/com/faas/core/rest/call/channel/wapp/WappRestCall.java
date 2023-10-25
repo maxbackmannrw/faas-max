@@ -1,8 +1,8 @@
 package com.faas.core.rest.call.channel.wapp;
 
 import com.faas.core.base.model.db.channel.account.WappAccountDBModel;
-import com.faas.core.base.model.db.operation.channel.WappMessageDBModel;
-import com.faas.core.base.repo.operation.channel.WappMessageRepository;
+import com.faas.core.base.model.db.operation.channel.OperationWappMessageDBModel;
+import com.faas.core.base.repo.operation.channel.OperationWappMessageRepository;
 import com.faas.core.rest.call.content.RestCall;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
@@ -25,7 +25,7 @@ public class WappRestCall {
     RestCall restCall;
 
     @Autowired
-    WappMessageRepository wappMessageRepository;
+    OperationWappMessageRepository operationWappMessageRepository;
 
     @Autowired
     AppUtils appUtils;
@@ -142,7 +142,7 @@ public class WappRestCall {
     }
 
 
-    public void sendWappTextMessageRest(WappMessageDBModel wappMessageDBModel, WappAccountDBModel wappAccountDBModel) throws IOException {
+    public void sendWappTextMessageRest(OperationWappMessageDBModel operationWappMessageDBModel, WappAccountDBModel wappAccountDBModel) throws IOException {
 
         Map<String, String> paramObjs = new HashMap<>();
         paramObjs.put("key", wappAccountDBModel.getInstanceKey());
@@ -152,16 +152,16 @@ public class WappRestCall {
         //formData.put("id", wappMessageDBModel.getPhoneNumber());
         //formData.put("message", wappMessageDBModel.getWappMessage().getWappBody());
         formData.put("id", "905458189014");
-        formData.put("message",wappMessageDBModel.getWappMessage().getWappBody());
+        formData.put("message", operationWappMessageDBModel.getWappMessage().getWappBody());
 
         String response = restCall.sendPostFormRequest(requestUrl,formData);
         if (response != null){
-            wappMessageDBModel.setMessageState(AppConstant.MESSAGE_SENT);
+            operationWappMessageDBModel.setMessageState(AppConstant.MESSAGE_SENT);
         }else {
-            wappMessageDBModel.setMessageState(AppConstant.MESSAGE_FAILED);
+            operationWappMessageDBModel.setMessageState(AppConstant.MESSAGE_FAILED);
         }
-        wappMessageDBModel.setuDate(appUtils.getCurrentTimeStamp());
-        wappMessageRepository.save(wappMessageDBModel);
+        operationWappMessageDBModel.setuDate(appUtils.getCurrentTimeStamp());
+        operationWappMessageRepository.save(operationWappMessageDBModel);
     }
 
 

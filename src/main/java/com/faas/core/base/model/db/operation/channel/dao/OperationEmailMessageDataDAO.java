@@ -1,7 +1,7 @@
 package com.faas.core.base.model.db.operation.channel.dao;
 
 
-public class EmailMessageDataDAO {
+public class OperationEmailMessageDataDAO {
 
     private String dataId;
     private String dataType;
@@ -9,10 +9,10 @@ public class EmailMessageDataDAO {
     private long cDate;
     private int status;
 
-    public EmailMessageDataDAO() {
+    public OperationEmailMessageDataDAO() {
     }
 
-    public EmailMessageDataDAO(String dataId, String dataType, String value, long cDate, int status) {
+    public OperationEmailMessageDataDAO(String dataId, String dataType, String value, long cDate, int status) {
         this.dataId = dataId;
         this.dataType = dataType;
         this.value = value;

@@ -3,8 +3,8 @@ package com.faas.core.base.model.db.operation.channel;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "sip_call_table")
-public class SipCallDBModel {
+@Table(name = "operation_sip_call_table")
+public class OperationSipCallDBModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -62,10 +62,10 @@ public class SipCallDBModel {
     private int status;
 
 
-    public SipCallDBModel() {
+    public OperationSipCallDBModel() {
     }
 
-    public SipCallDBModel(long id, long sessionId, long clientId, long agentId, String campaignId, String processId, long numberId, String phoneNumber, String accountId, String callerId, String provider, String connectionId, String callState, long sDate, long fDate, long uDate, long cDate, int status) {
+    public OperationSipCallDBModel(long id, long sessionId, long clientId, long agentId, String campaignId, String processId, long numberId, String phoneNumber, String accountId, String callerId, String provider, String connectionId, String callState, long sDate, long fDate, long uDate, long cDate, int status) {
         this.id = id;
         this.sessionId = sessionId;
         this.clientId = clientId;
