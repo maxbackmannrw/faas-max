@@ -17,10 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-
 @Component
 public class ProcessFramework {
-
 
     @Autowired
     ProcessRepository processRepository;
