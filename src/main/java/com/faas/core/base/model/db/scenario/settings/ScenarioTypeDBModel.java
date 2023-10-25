@@ -3,7 +3,7 @@ package com.faas.core.base.model.db.scenario.settings;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "scenario_types_table")
+@Table(name = "scenario_type_table")
 public class ScenarioTypeDBModel {
 
     @Id
