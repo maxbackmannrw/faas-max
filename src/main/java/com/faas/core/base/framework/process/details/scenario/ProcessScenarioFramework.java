@@ -198,7 +198,6 @@ public class ProcessScenarioFramework {
         return scenarioElementVariables;
     }
 
-
     public ProcessScenarioWSDTO removeProcessScenarioService(String processId, String scenarioId) {
 
         List<ProcessScenarioDBModel> processScenarioDBModels = processScenarioRepository.findByProcessIdAndScenarioId(processId,scenarioId);
