@@ -10,7 +10,6 @@ public class ScenarioTypeWSModel {
     private GeneralWSModel general;
     private List<ScenarioTypeWSDTO> scenarioTypes;
 
-
     public ScenarioTypeWSModel() {
     }
 

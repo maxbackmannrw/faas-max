@@ -34,6 +34,7 @@ public class ScenarioSettingsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+
     @RequestMapping(value = BaseRoute.GET_SCENARIO_TYPE, method = RequestMethod.POST)
     public ResponseEntity<?> getScenarioType(@RequestParam long userId,
                                              @RequestParam long typeId) {
@@ -46,30 +47,35 @@ public class ScenarioSettingsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+
     @RequestMapping(value = BaseRoute.CREATE_SCENARIO_TYPE, method = RequestMethod.POST)
     public ResponseEntity<?> createScenarioType(@RequestParam long userId,
-                                                @RequestParam String scenarioType) {
+                                                @RequestParam String scenarioType,
+                                                @RequestParam String baseType) {
 
-        ScenarioTypeWSModel response = scenarioSettingsMiddleware.createScenarioType(userId,scenarioType);
+        ScenarioTypeWSModel response = scenarioSettingsMiddleware.createScenarioType(userId,scenarioType,baseType);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
+
 
     @RequestMapping(value = BaseRoute.UPDATE_SCENARIO_TYPE, method = RequestMethod.POST)
     public ResponseEntity<?> updateScenarioType(@RequestParam long userId,
                                                 @RequestParam long typeId,
-                                                @RequestParam String scenarioType) {
+                                                @RequestParam String scenarioType,
+                                                @RequestParam String baseType) {
 
-        ScenarioTypeWSModel response = scenarioSettingsMiddleware.updateScenarioType(userId,typeId,scenarioType);
+        ScenarioTypeWSModel response = scenarioSettingsMiddleware.updateScenarioType(userId,typeId,scenarioType,baseType);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
+
 
     @RequestMapping(value = BaseRoute.REMOVE_SCENARIO_TYPE, method = RequestMethod.POST)
     public ResponseEntity<?> removeScenarioType(@RequestParam long userId,
@@ -82,7 +88,6 @@ public class ScenarioSettingsController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
 
 
