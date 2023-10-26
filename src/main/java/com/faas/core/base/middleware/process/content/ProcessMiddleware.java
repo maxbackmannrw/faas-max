@@ -101,9 +101,9 @@ public class ProcessMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessWSDTO> processWSDTOS = new ArrayList<>();
 
-        ProcessDBModel processDBModel = processFramework.createProcessService(process,processDesc,pwaUrl,processTypeId,processCategory,processState);
-        if (processDBModel != null) {
-            processWSDTOS.add(processFramework.fillProcessWSDTO(processDBModel));
+        ProcessWSDTO processWSDTO = processFramework.createProcessService(process,processDesc,pwaUrl,processTypeId,processCategory,processState);
+        if (processWSDTO != null) {
+            processWSDTOS.add(processWSDTO);
         }
 
         response.setProcesses(processWSDTOS);
@@ -123,9 +123,9 @@ public class ProcessMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessWSDTO> processWSDTOS = new ArrayList<>();
 
-        ProcessDBModel processDBModel = processFramework.updateProcessService(processId,process,processDesc,processState);
-        if (processDBModel != null) {
-            processWSDTOS.add(processFramework.fillProcessWSDTO(processDBModel));
+        ProcessWSDTO processWSDTO = processFramework.updateProcessService(processId,process,processDesc,processState);
+        if (processWSDTO != null) {
+            processWSDTOS.add(processWSDTO);
         }
 
         response.setProcesses(processWSDTOS);
@@ -145,9 +145,9 @@ public class ProcessMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessWSDTO> processWSDTOS = new ArrayList<>();
 
-        ProcessDBModel processDBModel = processFramework.removeProcessService(processId);
-        if (processDBModel != null) {
-            processWSDTOS.add(processFramework.fillProcessWSDTO(processDBModel));
+        ProcessWSDTO processWSDTO = processFramework.removeProcessService(processId);
+        if (processWSDTO != null) {
+            processWSDTOS.add(processWSDTO);
         }
 
         response.setProcesses(processWSDTOS);

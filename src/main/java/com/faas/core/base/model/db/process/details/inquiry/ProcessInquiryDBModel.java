@@ -17,7 +17,6 @@ public class ProcessInquiryDBModel {
     private String inquiryDesc;
     private List<InquiryDataDAO>inquiryDatas;
     private List<InquiryUrlDAO>inquiryUrls;
-    private String inquiryType;
     private long uDate;
     private long cDate;
     private int status;
@@ -25,14 +24,13 @@ public class ProcessInquiryDBModel {
     public ProcessInquiryDBModel() {
     }
 
-    public ProcessInquiryDBModel(String id, String processId, String processInquiry, String inquiryDesc, List<InquiryDataDAO> inquiryDatas, List<InquiryUrlDAO> inquiryUrls, String inquiryType, long uDate, long cDate, int status) {
+    public ProcessInquiryDBModel(String id, String processId, String processInquiry, String inquiryDesc, List<InquiryDataDAO> inquiryDatas, List<InquiryUrlDAO> inquiryUrls, long uDate, long cDate, int status) {
         this.id = id;
         this.processId = processId;
         this.processInquiry = processInquiry;
         this.inquiryDesc = inquiryDesc;
         this.inquiryDatas = inquiryDatas;
         this.inquiryUrls = inquiryUrls;
-        this.inquiryType = inquiryType;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
@@ -84,14 +82,6 @@ public class ProcessInquiryDBModel {
 
     public void setInquiryUrls(List<InquiryUrlDAO> inquiryUrls) {
         this.inquiryUrls = inquiryUrls;
-    }
-
-    public String getInquiryType() {
-        return inquiryType;
-    }
-
-    public void setInquiryType(String inquiryType) {
-        this.inquiryType = inquiryType;
     }
 
     public long getuDate() {

@@ -43,17 +43,17 @@ public class ProcessFlowMiddleware {
         return response;
     }
 
-    public ProcessFlowWSModel createProcessFlow(long userId,String processId,String processFlow,String flowDesc,String flowType) {
+    public ProcessFlowWSModel updateProcessFlow(long userId,String processId,String processFlow,String flowDesc) {
 
         ProcessFlowWSModel response = new ProcessFlowWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ProcessFlowWSDTO processFlowWSDTO = processFlowFramework.createProcessFlowService(userId,processId,processFlow,flowDesc,flowType);
+        ProcessFlowWSDTO processFlowWSDTO = processFlowFramework.updateProcessFlowService(userId,processId,processFlow,flowDesc);
         if (processFlowWSDTO != null){
             response.setProcessFlow(processFlowWSDTO);
         }
 
-        general.setOperation("createProcessFlow");
+        general.setOperation("updateProcessFlow");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

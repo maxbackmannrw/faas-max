@@ -36,14 +36,13 @@ public class ProcessInquiryController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-    @RequestMapping(value = BaseRoute.CREATE_PROCESS_INQUIRY, method = RequestMethod.POST)
-    public ResponseEntity<?> createProcessInquiry(@RequestParam long userId,
+    @RequestMapping(value = BaseRoute.UPDATE_PROCESS_INQUIRY, method = RequestMethod.POST)
+    public ResponseEntity<?> updateProcessInquiry(@RequestParam long userId,
                                                   @RequestParam String processId,
                                                   @RequestParam String processInquiry,
-                                                  @RequestParam String inquiryDesc,
-                                                  @RequestParam String inquiryType) {
+                                                  @RequestParam String inquiryDesc) {
 
-        ProcessInquiryWSModel response = processInquiryMiddleware.createProcessInquiry(userId,processId,processInquiry,inquiryDesc,inquiryType);
+        ProcessInquiryWSModel response = processInquiryMiddleware.updateProcessInquiry(userId,processId,processInquiry,inquiryDesc);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

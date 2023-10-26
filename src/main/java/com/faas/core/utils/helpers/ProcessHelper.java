@@ -88,6 +88,9 @@ public class ProcessHelper {
     AppUtils appUtils;
 
 
+
+
+
     public ProcessDetailsWSDTO createProcessDetailsWSDTO(ProcessDBModel processDBModel) {
 
         ProcessDetailsWSDTO processDetailsWSDTO = new ProcessDetailsWSDTO();
@@ -117,6 +120,26 @@ public class ProcessHelper {
         return null;
     }
 
+    public ProcessInquiryDBModel createProcessInquiryHelper(ProcessDBModel processDBModel){
+
+        List<ProcessInquiryDBModel> processInquiryDBModels = processInquiryRepository.findByProcessId(processDBModel.getId());
+        if (processInquiryDBModels.isEmpty()){
+
+            ProcessInquiryDBModel processInquiryDBModel = new ProcessInquiryDBModel();
+            processInquiryDBModel.setProcessId(processDBModel.getId());
+            processInquiryDBModel.setProcessInquiry("");
+            processInquiryDBModel.setInquiryDesc("");
+            processInquiryDBModel.setInquiryDatas(new ArrayList<>());
+            processInquiryDBModel.setInquiryUrls(new ArrayList<>());
+            processInquiryDBModel.setuDate(appUtils.getCurrentTimeStamp());
+            processInquiryDBModel.setcDate(appUtils.getCurrentTimeStamp());
+            processInquiryDBModel.setStatus(1);
+
+            return processInquiryRepository.save(processInquiryDBModel);
+        }
+        return processInquiryDBModels.get(0);
+    }
+
 
     public ProcessFlowWSDTO createProcessFlowWSDTO(ProcessDBModel processDBModel){
 
@@ -126,6 +149,27 @@ public class ProcessHelper {
         }
         return null;
     }
+
+    public ProcessFlowDBModel createProcessFlowHelper(ProcessDBModel processDBModel){
+
+        List<ProcessFlowDBModel> processFlowDBModels = processFlowRepository.findByProcessId(processDBModel.getId());
+        if (processFlowDBModels.isEmpty()){
+
+            ProcessFlowDBModel processFlowDBModel = new ProcessFlowDBModel();
+            processFlowDBModel.setProcessId(processDBModel.getId());
+            processFlowDBModel.setProcessFlow("");
+            processFlowDBModel.setFlowDesc("");
+            processFlowDBModel.setFlowUrls(new ArrayList<>());
+            processFlowDBModel.setFlowDatas(new ArrayList<>());
+            processFlowDBModel.setuDate(appUtils.getCurrentTimeStamp());
+            processFlowDBModel.setcDate(appUtils.getCurrentTimeStamp());
+            processFlowDBModel.setStatus(1);
+
+            return processFlowRepository.save(processFlowDBModel);
+        }
+        return null;
+    }
+
 
 
     public List<ProcessTriggerWSDTO> createProcessTriggersWSDTOS(ProcessDBModel processDBModel){
