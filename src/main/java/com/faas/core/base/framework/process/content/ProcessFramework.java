@@ -93,11 +93,11 @@ public class ProcessFramework {
         processDBModel.setStatus(1);
 
         processDBModel =processRepository.save(processDBModel);
-        if (processDBModel.getProcessType().equalsIgnoreCase(AppConstant.INQUIRY_PROCESS)){
+        if (processDBModel.getProcessCategory().equalsIgnoreCase(AppConstant.INQUIRY_PROCESS)){
             ProcessInquiryDBModel processInquiryDBModel = processHelper.createProcessInquiryHelper(processDBModel);
             return new ProcessWSDTO(processDBModel,null,processInquiryDBModel);
         }
-        if (processDBModel.getProcessType().equalsIgnoreCase(AppConstant.AUTOMATIC_PROCESS)){
+        if (processDBModel.getProcessCategory().equalsIgnoreCase(AppConstant.AUTOMATIC_PROCESS)){
             ProcessFlowDBModel processFlowDBModel = processHelper.createProcessFlowHelper(processDBModel);
             return new ProcessWSDTO(processDBModel, processFlowDBModel, null);
         }
