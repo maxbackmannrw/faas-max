@@ -93,6 +93,7 @@ public class ProcessFramework {
         processDBModel.setStatus(1);
 
         processDBModel =processRepository.save(processDBModel);
+
         if (processDBModel.getProcessCategory().equalsIgnoreCase(AppConstant.INQUIRY_PROCESS)){
             ProcessInquiryDBModel processInquiryDBModel = processHelper.createProcessInquiryHelper(processDBModel);
             return new ProcessWSDTO(processDBModel,null,processInquiryDBModel);
@@ -122,6 +123,7 @@ public class ProcessFramework {
 
         Optional<ProcessDBModel> processDBModel = processRepository.findById(processId);
         if (processDBModel.isPresent()){
+
             processDBModel.get().setProcess(process);
             processDBModel.get().setProcessDesc(processDesc);
             processDBModel.get().setProcessState(processState);
