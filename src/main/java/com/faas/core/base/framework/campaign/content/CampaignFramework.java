@@ -69,7 +69,6 @@ public class CampaignFramework {
         return null;
     }
 
-
     public CampaignDBModel updateCampaignService(String campaignId,String campaign,String campaignDesc,String campaignState) {
 
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
@@ -86,7 +85,6 @@ public class CampaignFramework {
         return null;
     }
 
-
     public CampaignDBModel removeCampaignService(String campaignId) {
 
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
@@ -96,5 +94,6 @@ public class CampaignFramework {
         }
         return null;
     }
+
 
 }

@@ -33,7 +33,6 @@ public class CampaignController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.GET_CAMPAIGNS_BY_STATE, method = RequestMethod.POST)
     public ResponseEntity<?> getCampaignsByState(@RequestParam long userId,
                                                  @RequestParam String campaignState) {
@@ -45,7 +44,6 @@ public class CampaignController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.GET_CAMPAIGNS_BY_TYPE, method = RequestMethod.POST)
     public ResponseEntity<?> getCampaignsByType(@RequestParam long userId,
@@ -59,7 +57,6 @@ public class CampaignController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.GET_CAMPAIGNS_BY_CATEGORY, method = RequestMethod.POST)
     public ResponseEntity<?> getCampaignsByCategory(@RequestParam long userId,
                                                     @RequestParam String campaignCategory) {
@@ -72,7 +69,6 @@ public class CampaignController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.GET_CAMPAIGN, method = RequestMethod.POST)
     public ResponseEntity<?> getCampaign(@RequestParam long userId,
                                          @RequestParam String campaignId) {
@@ -84,7 +80,6 @@ public class CampaignController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.CREATE_CAMPAIGN, method = RequestMethod.POST)
     public ResponseEntity<?> createCampaign(@RequestParam long userId,
@@ -102,7 +97,6 @@ public class CampaignController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.UPDATE_CAMPAIGN, method = RequestMethod.POST)
     public ResponseEntity<?> updateCampaign(@RequestParam long userId,
                                             @RequestParam String campaignId,
@@ -118,7 +112,6 @@ public class CampaignController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.REMOVE_CAMPAIGN, method = RequestMethod.POST)
     public ResponseEntity<?> removeCampaign(@RequestParam long userId,
                                             @RequestParam String campaignId) {
@@ -130,6 +123,7 @@ public class CampaignController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
+
 
 
 }

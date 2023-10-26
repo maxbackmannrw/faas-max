@@ -34,14 +34,14 @@ import java.util.Optional;
 
 
 @Component
-public class CampaignInquirySessionFramework {
+public class CampaignClientInquiryFramework {
 
-
-    @Autowired
-    ActivityHelper activityHelper;
 
     @Autowired
     InquiryHelper inquiryHelper;
+
+    @Autowired
+    ActivityHelper activityHelper;
 
     @Autowired
     SessionHelper sessionHelper;

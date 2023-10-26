@@ -1,6 +1,6 @@
 package com.faas.core.base.middleware.campaign.details.client.manual;
 
-import com.faas.core.base.framework.campaign.details.client.manual.CampaignManualSessionFramework;
+import com.faas.core.base.framework.campaign.details.client.manual.CampaignClientManualFramework;
 import com.faas.core.base.model.ws.campaign.details.client.manual.CampaignManualSessionWSModel;
 import com.faas.core.base.model.ws.campaign.details.client.manual.dto.CampaignManualSessionWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
@@ -15,11 +15,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class CampaignManualSessionMiddleware {
+public class CampaignClientManualMiddleware {
 
 
     @Autowired
-    CampaignManualSessionFramework campaignManualSessionFramework;
+    CampaignClientManualFramework campaignClientManualFramework;
 
 
     public CampaignManualSessionWSModel searchCampaignManualSessions(long userId, String campaignId, String city, String country, int reqPage, int reqSize) {
@@ -27,7 +27,7 @@ public class CampaignManualSessionMiddleware {
         CampaignManualSessionWSModel response = new CampaignManualSessionWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        CampaignManualSessionWSDTO campaignSession =  campaignManualSessionFramework.searchCampaignManualSessionsService(userId,campaignId,city,country,reqPage,reqSize);
+        CampaignManualSessionWSDTO campaignSession =  campaignClientManualFramework.searchCampaignManualSessionsService(userId,campaignId,city,country,reqPage,reqSize);
         if (campaignSession != null){
             response.setCampaignSession(campaignSession);
         }
@@ -47,7 +47,7 @@ public class CampaignManualSessionMiddleware {
         CampaignManualSessionWSModel response = new CampaignManualSessionWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        CampaignManualSessionWSDTO campaignSession =  campaignManualSessionFramework.getCampaignManualSessionsService(userId,campaignId,reqPage,reqSize);
+        CampaignManualSessionWSDTO campaignSession =  campaignClientManualFramework.getCampaignManualSessionsService(userId,campaignId,reqPage,reqSize);
         if (campaignSession != null){
             response.setCampaignSession(campaignSession);
         }
@@ -68,7 +68,7 @@ public class CampaignManualSessionMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<SessionWSDTO>sessionWSDTOS = new ArrayList<>();
 
-        SessionWSDTO sessionWSDTO = campaignManualSessionFramework.getCampaignManualSessionService(userId,sessionId);
+        SessionWSDTO sessionWSDTO = campaignClientManualFramework.getCampaignManualSessionService(userId,sessionId);
         if (sessionWSDTO != null){
             sessionWSDTOS.add(sessionWSDTO);
         }
@@ -88,7 +88,7 @@ public class CampaignManualSessionMiddleware {
         SessionWSModel response = new SessionWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<SessionWSDTO> sessionWSDTOS = campaignManualSessionFramework.createCampaignManualSessionService(manualSessionRequest);
+        List<SessionWSDTO> sessionWSDTOS = campaignClientManualFramework.createCampaignManualSessionService(manualSessionRequest);
         if (sessionWSDTOS != null){
             response.setSessions(sessionWSDTOS);
         }
@@ -108,7 +108,7 @@ public class CampaignManualSessionMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<SessionWSDTO>sessionWSDTOS = new ArrayList<>();
 
-        SessionWSDTO sessionWSDTO = campaignManualSessionFramework.updateCampaignManualSessionService(userId,sessionId,agentId,campaignId,sessionState);
+        SessionWSDTO sessionWSDTO = campaignClientManualFramework.updateCampaignManualSessionService(userId,sessionId,agentId,campaignId,sessionState);
         if (sessionWSDTO != null){
             sessionWSDTOS.add(sessionWSDTO);
         }
@@ -130,7 +130,7 @@ public class CampaignManualSessionMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<SessionWSDTO>sessionWSDTOS = new ArrayList<>();
 
-        SessionWSDTO sessionWSDTO = campaignManualSessionFramework.removeCampaignManualSessionService(userId,sessionId);
+        SessionWSDTO sessionWSDTO = campaignClientManualFramework.removeCampaignManualSessionService(userId,sessionId);
         if (sessionWSDTO != null){
             sessionWSDTOS.add(sessionWSDTO);
         }

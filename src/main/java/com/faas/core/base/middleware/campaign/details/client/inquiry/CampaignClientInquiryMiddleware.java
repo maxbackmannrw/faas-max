@@ -1,6 +1,6 @@
 package com.faas.core.base.middleware.campaign.details.client.inquiry;
 
-import com.faas.core.base.framework.campaign.details.client.inquiry.CampaignInquirySessionFramework;
+import com.faas.core.base.framework.campaign.details.client.inquiry.CampaignClientInquiryFramework;
 import com.faas.core.base.model.ws.campaign.details.client.inquiry.CampaignInquirySessionWSModel;
 import com.faas.core.base.model.ws.campaign.details.client.inquiry.dto.CampaignInquirySessionWSDTO;
 import com.faas.core.base.model.ws.operation.inquiry.OperationInquirySessionWSModel;
@@ -15,10 +15,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class CampaignInquirySessionMiddleware {
+public class CampaignClientInquiryMiddleware {
 
     @Autowired
-    CampaignInquirySessionFramework campaignInquirySessionFramework;
+    CampaignClientInquiryFramework campaignClientInquiryFramework;
 
 
     public CampaignInquirySessionWSModel searchCampaignInquirySessions(long userId, String campaignId, String city, String country, int reqPage, int reqSize) {
@@ -26,7 +26,7 @@ public class CampaignInquirySessionMiddleware {
         CampaignInquirySessionWSModel response = new CampaignInquirySessionWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        CampaignInquirySessionWSDTO campaignInquirySessionWSDTO = campaignInquirySessionFramework.searchCampaignInquirySessionsService(userId,campaignId,city,country,reqPage,reqSize);
+        CampaignInquirySessionWSDTO campaignInquirySessionWSDTO = campaignClientInquiryFramework.searchCampaignInquirySessionsService(userId,campaignId,city,country,reqPage,reqSize);
         if (campaignInquirySessionWSDTO != null){
             response.setCampaignInquiry(campaignInquirySessionWSDTO);
         }
@@ -45,7 +45,7 @@ public class CampaignInquirySessionMiddleware {
         CampaignInquirySessionWSModel response = new CampaignInquirySessionWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        CampaignInquirySessionWSDTO campaignInquirySessionWSDTO = campaignInquirySessionFramework.getCampaignInquirySessionsService(userId,campaignId,reqPage,reqSize);
+        CampaignInquirySessionWSDTO campaignInquirySessionWSDTO = campaignClientInquiryFramework.getCampaignInquirySessionsService(userId,campaignId,reqPage,reqSize);
         if (campaignInquirySessionWSDTO != null){
             response.setCampaignInquiry(campaignInquirySessionWSDTO);
         }
@@ -65,7 +65,7 @@ public class CampaignInquirySessionMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<OperationInquirySessionWSDTO> operationInquirySessionWSDTOS = new ArrayList<>();
 
-        OperationInquirySessionWSDTO operationInquirySessionWSDTO = campaignInquirySessionFramework.getCampaignInquirySessionService(userId,sessionId);
+        OperationInquirySessionWSDTO operationInquirySessionWSDTO = campaignClientInquiryFramework.getCampaignInquirySessionService(userId,sessionId);
         if (operationInquirySessionWSDTO != null){
             operationInquirySessionWSDTOS.add(operationInquirySessionWSDTO);
         }
@@ -85,7 +85,7 @@ public class CampaignInquirySessionMiddleware {
         OperationInquirySessionWSModel response = new OperationInquirySessionWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<OperationInquirySessionWSDTO> operationInquirySessionWSDTOS = campaignInquirySessionFramework.createCampaignInquirySessionService(inquirySessionRequest);
+        List<OperationInquirySessionWSDTO> operationInquirySessionWSDTOS = campaignClientInquiryFramework.createCampaignInquirySessionService(inquirySessionRequest);
         if (operationInquirySessionWSDTOS != null){
             response.setInquirySessions(operationInquirySessionWSDTOS);
         }
@@ -106,7 +106,7 @@ public class CampaignInquirySessionMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<OperationInquirySessionWSDTO> operationInquirySessionWSDTOS = new ArrayList<>();
 
-        OperationInquirySessionWSDTO operationInquirySessionWSDTO = campaignInquirySessionFramework.updateCampaignInquirySessionService(userId,sessionId,agentId,campaignId,inquiryState);
+        OperationInquirySessionWSDTO operationInquirySessionWSDTO = campaignClientInquiryFramework.updateCampaignInquirySessionService(userId,sessionId,agentId,campaignId,inquiryState);
         if (operationInquirySessionWSDTO != null){
             operationInquirySessionWSDTOS.add(operationInquirySessionWSDTO);
         }
@@ -129,7 +129,7 @@ public class CampaignInquirySessionMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<OperationInquirySessionWSDTO> operationInquirySessionWSDTOS = new ArrayList<>();
 
-        OperationInquirySessionWSDTO operationInquirySessionWSDTO = campaignInquirySessionFramework.removeCampaignInquirySessionService(userId,sessionId);
+        OperationInquirySessionWSDTO operationInquirySessionWSDTO = campaignClientInquiryFramework.removeCampaignInquirySessionService(userId,sessionId);
         if (operationInquirySessionWSDTO != null){
             operationInquirySessionWSDTOS.add(operationInquirySessionWSDTO);
         }

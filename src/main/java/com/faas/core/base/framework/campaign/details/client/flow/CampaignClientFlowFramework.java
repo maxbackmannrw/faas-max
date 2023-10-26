@@ -34,17 +34,17 @@ import java.util.Optional;
 
 
 @Component
-public class CampaignFlowSessionFramework {
+public class CampaignClientFlowFramework {
 
+
+    @Autowired
+    FlowHelper flowHelper;
 
     @Autowired
     ActivityHelper activityHelper;
 
     @Autowired
     SessionHelper sessionHelper;
-
-    @Autowired
-    FlowHelper flowHelper;
 
     @Autowired
     OperationFlowRepository operationFlowRepository;
@@ -72,6 +72,7 @@ public class CampaignFlowSessionFramework {
 
     @Autowired
     AppUtils appUtils;
+
 
     public CampaignFlowSessionWSDTO searchCampaignFlowSessionsService(long userId, String campaignId, String city, String country, int reqPage, int reqSize) {
 

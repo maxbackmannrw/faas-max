@@ -32,7 +32,8 @@ import java.util.Optional;
 
 
 @Component
-public class CampaignManualSessionFramework {
+public class CampaignClientManualFramework {
+
 
     @Autowired
     SessionHelper sessionHelper;

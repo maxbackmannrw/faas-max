@@ -1,6 +1,6 @@
 package com.faas.core.base.middleware.campaign.details.client.flow;
 
-import com.faas.core.base.framework.campaign.details.client.flow.CampaignFlowSessionFramework;
+import com.faas.core.base.framework.campaign.details.client.flow.CampaignClientFlowFramework;
 import com.faas.core.base.model.ws.campaign.details.client.flow.CampaignFlowSessionWSModel;
 import com.faas.core.base.model.ws.campaign.details.client.flow.dto.CampaignFlowSessionWSDTO;
 import com.faas.core.base.model.ws.campaign.details.client.flow.CampaignFlowSessionRequest;
@@ -15,11 +15,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class CampaignFlowSessionMiddleware {
+public class CampaignClientFlowMiddleware {
 
 
     @Autowired
-    CampaignFlowSessionFramework campaignFlowSessionFramework;
+    CampaignClientFlowFramework campaignClientFlowFramework;
 
 
     public CampaignFlowSessionWSModel searchCampaignFlowSessions(long userId, String campaignId, String city, String country, int reqPage, int reqSize) {
@@ -27,7 +27,7 @@ public class CampaignFlowSessionMiddleware {
         CampaignFlowSessionWSModel response = new CampaignFlowSessionWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        CampaignFlowSessionWSDTO campaignFlowSessionWSDTO = campaignFlowSessionFramework.searchCampaignFlowSessionsService(userId,campaignId,city,country,reqPage,reqSize);
+        CampaignFlowSessionWSDTO campaignFlowSessionWSDTO = campaignClientFlowFramework.searchCampaignFlowSessionsService(userId,campaignId,city,country,reqPage,reqSize);
         if (campaignFlowSessionWSDTO != null){
             response.setCampaignFlow(campaignFlowSessionWSDTO);
         }
@@ -46,7 +46,7 @@ public class CampaignFlowSessionMiddleware {
         CampaignFlowSessionWSModel response = new CampaignFlowSessionWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        CampaignFlowSessionWSDTO campaignFlowSessionWSDTO = campaignFlowSessionFramework.getCampaignFlowSessionsService(userId,campaignId,reqPage,reqSize);
+        CampaignFlowSessionWSDTO campaignFlowSessionWSDTO = campaignClientFlowFramework.getCampaignFlowSessionsService(userId,campaignId,reqPage,reqSize);
         if (campaignFlowSessionWSDTO != null){
             response.setCampaignFlow(campaignFlowSessionWSDTO);
         }
@@ -66,7 +66,7 @@ public class CampaignFlowSessionMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<OperationFlowSessionWSDTO> operationFlowSessionWSDTOS = new ArrayList<>();
 
-        OperationFlowSessionWSDTO operationFlowSessionWSDTO = campaignFlowSessionFramework.getCampaignFlowSessionService(userId,sessionId);
+        OperationFlowSessionWSDTO operationFlowSessionWSDTO = campaignClientFlowFramework.getCampaignFlowSessionService(userId,sessionId);
         if (operationFlowSessionWSDTO != null){
             operationFlowSessionWSDTOS.add(operationFlowSessionWSDTO);
         }
@@ -86,7 +86,7 @@ public class CampaignFlowSessionMiddleware {
         OperationFlowSessionWSModel response = new OperationFlowSessionWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<OperationFlowSessionWSDTO> operationFlowSessionWSDTOS = campaignFlowSessionFramework.createCampaignFlowSessionService(flowSessionRequest);
+        List<OperationFlowSessionWSDTO> operationFlowSessionWSDTOS = campaignClientFlowFramework.createCampaignFlowSessionService(flowSessionRequest);
         if (operationFlowSessionWSDTOS != null){
             response.setFlowSessions(operationFlowSessionWSDTOS);
         }
@@ -106,7 +106,7 @@ public class CampaignFlowSessionMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<OperationFlowSessionWSDTO> operationFlowSessionWSDTOS = new ArrayList<>();
 
-        OperationFlowSessionWSDTO operationFlowSessionWSDTO = campaignFlowSessionFramework.updateCampaignFlowSessionService(userId,sessionId,agentId,campaignId,flowState);
+        OperationFlowSessionWSDTO operationFlowSessionWSDTO = campaignClientFlowFramework.updateCampaignFlowSessionService(userId,sessionId,agentId,campaignId,flowState);
         if (operationFlowSessionWSDTO != null){
             operationFlowSessionWSDTOS.add(operationFlowSessionWSDTO);
         }
@@ -127,7 +127,7 @@ public class CampaignFlowSessionMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<OperationFlowSessionWSDTO> operationFlowSessionWSDTOS = new ArrayList<>();
 
-        OperationFlowSessionWSDTO operationFlowSessionWSDTO = campaignFlowSessionFramework.removeCampaignFlowSessionService(userId,sessionId);
+        OperationFlowSessionWSDTO operationFlowSessionWSDTO = campaignClientFlowFramework.removeCampaignFlowSessionService(userId,sessionId);
         if (operationFlowSessionWSDTO != null){
             operationFlowSessionWSDTOS.add(operationFlowSessionWSDTO);
         }
