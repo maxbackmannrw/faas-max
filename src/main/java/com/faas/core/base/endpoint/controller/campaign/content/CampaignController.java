@@ -73,7 +73,6 @@ public class CampaignController {
     }
 
 
-
     @RequestMapping(value = BaseRoute.GET_CAMPAIGN, method = RequestMethod.POST)
     public ResponseEntity<?> getCampaign(@RequestParam long userId,
                                          @RequestParam String campaignId) {
