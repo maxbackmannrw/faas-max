@@ -34,7 +34,7 @@ import java.util.Optional;
 
 
 @Component
-public class CampaignClientFlowFramework {
+public class CampaignFlowSessionFramework {
 
 
     @Autowired

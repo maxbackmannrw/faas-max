@@ -99,7 +99,7 @@ public class BaseRoute {
     public static final String GET_CAMPAIGN_MANUAL_SESSION = "getcampaignmanualsession";
     public static final String CREATE_CAMPAIGN_MANUAL_SESSION = "createcampaignmanualsession";
     public static final String UPDATE_CAMPAIGN_MANUAL_SESSION = "updatecampaignmanualsession";
-    public static final String REMOVE_CAMPAIGN_MANUAL_SESSION = "removecampaignmanualsession";
+    public static final String REMOVE_CAMPAIGN_MANUAL_SESSION = "removecampaignmanualsessions";
 
 
     public static final String SEARCH_CAMPAIGN_INQUIRY_SESSIONS = "searchcampaigninquirysessions";

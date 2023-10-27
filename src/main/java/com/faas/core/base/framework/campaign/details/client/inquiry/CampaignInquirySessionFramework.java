@@ -34,7 +34,7 @@ import java.util.Optional;
 
 
 @Component
-public class CampaignClientInquiryFramework {
+public class CampaignInquirySessionFramework {
 
 
     @Autowired

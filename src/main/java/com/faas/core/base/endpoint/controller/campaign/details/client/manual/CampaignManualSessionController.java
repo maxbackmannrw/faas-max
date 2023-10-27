@@ -1,6 +1,6 @@
 package com.faas.core.base.endpoint.controller.campaign.details.client.manual;
 
-import com.faas.core.base.middleware.campaign.details.client.manual.CampaignClientManualMiddleware;
+import com.faas.core.base.middleware.campaign.details.client.manual.CampaignManualSessionMiddleware;
 import com.faas.core.base.model.ws.campaign.details.client.manual.CampaignManualSessionWSModel;
 import com.faas.core.base.model.ws.campaign.details.client.manual.CampaignManualSessionRequest;
 import com.faas.core.base.model.ws.client.session.content.SessionWSModel;
@@ -18,11 +18,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping(value = AppConstant.API_VERSION + "/base/campaign/details/client/manual/")
-public class CampaignClientManualController {
+public class CampaignManualSessionController {
 
 
     @Autowired
-    CampaignClientManualMiddleware campaignClientManualMiddleware;
+    CampaignManualSessionMiddleware campaignManualSessionMiddleware;
 
 
     @RequestMapping(value = BaseRoute.SEARCH_CAMPAIGN_MANUAL_SESSIONS, method = RequestMethod.POST)
@@ -33,7 +33,7 @@ public class CampaignClientManualController {
                                                           @RequestParam int reqPage,
                                                           @RequestParam int reqSize) {
 
-        CampaignManualSessionWSModel response = campaignClientManualMiddleware.searchCampaignManualSessions(userId,campaignId,city,country,reqPage,reqSize);
+        CampaignManualSessionWSModel response = campaignManualSessionMiddleware.searchCampaignManualSessions(userId,campaignId,city,country,reqPage,reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -47,7 +47,7 @@ public class CampaignClientManualController {
                                                        @RequestParam int reqPage,
                                                        @RequestParam int reqSize) {
 
-        CampaignManualSessionWSModel response = campaignClientManualMiddleware.getCampaignManualSessions(userId,campaignId,reqPage,reqSize);
+        CampaignManualSessionWSModel response = campaignManualSessionMiddleware.getCampaignManualSessions(userId,campaignId,reqPage,reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -59,7 +59,7 @@ public class CampaignClientManualController {
     public ResponseEntity<?> getCampaignManualSession(@RequestParam long userId,
                                                       @RequestParam long sessionId) {
 
-        SessionWSModel response = campaignClientManualMiddleware.getCampaignManualSession(userId,sessionId);
+        SessionWSModel response = campaignManualSessionMiddleware.getCampaignManualSession(userId,sessionId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -70,7 +70,7 @@ public class CampaignClientManualController {
     @RequestMapping(value = BaseRoute.CREATE_CAMPAIGN_MANUAL_SESSION, method = RequestMethod.POST)
     public ResponseEntity<?> createCampaignManualSession(@RequestBody CampaignManualSessionRequest manualSessionRequest) {
 
-        SessionWSModel response = campaignClientManualMiddleware.createCampaignManualSession(manualSessionRequest);
+        SessionWSModel response = campaignManualSessionMiddleware.createCampaignManualSession(manualSessionRequest);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -85,7 +85,7 @@ public class CampaignClientManualController {
                                                          @RequestParam String campaignId,
                                                          @RequestParam String sessionState) {
 
-        SessionWSModel response = campaignClientManualMiddleware.updateCampaignManualSession(userId,sessionId,agentId,campaignId,sessionState);
+        SessionWSModel response = campaignManualSessionMiddleware.updateCampaignManualSession(userId,sessionId,agentId,campaignId,sessionState);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -97,7 +97,7 @@ public class CampaignClientManualController {
     public ResponseEntity<?> removeCampaignManualSession(@RequestParam long userId,
                                                          @RequestParam long sessionId) {
 
-        SessionWSModel response = campaignClientManualMiddleware.removeCampaignManualSession(userId,sessionId);
+        SessionWSModel response = campaignManualSessionMiddleware.removeCampaignManualSession(userId,sessionId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

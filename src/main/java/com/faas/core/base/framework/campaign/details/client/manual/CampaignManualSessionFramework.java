@@ -32,7 +32,7 @@ import java.util.Optional;
 
 
 @Component
-public class CampaignClientManualFramework {
+public class CampaignManualSessionFramework {
 
 
     @Autowired
