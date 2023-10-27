@@ -25,6 +25,9 @@ public interface UserRepository extends PagingAndSortingRepository<UserDBModel, 
 
     List<UserDBModel> findByUserRoleAndUserTypeAndStatus(String userRole,String userType,int status);
 
+    List<UserDBModel> findByUserTypeAndUserRoleNotAndStatus(String userType, String userRole, int status);
+
+
     long countByUserType(String userType);
 
 }

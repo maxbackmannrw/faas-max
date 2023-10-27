@@ -50,7 +50,7 @@ public class CampaignAgentFramework {
 
     public CampaignAgentWSDTO assignCampaignAgentService(String campaignId, long agentId) {
 
-        if (!(campaignAgentRepository.findByCampaignIdAndAgentId(campaignId, agentId).size() > 0)
+        if (campaignAgentRepository.findByCampaignIdAndAgentId(campaignId, agentId).isEmpty()
                 && campaignRepository.findById(campaignId).isPresent() && userRepository.findById(agentId).isPresent()) {
 
             CampaignAgentDBModel campaignAgentDBModel = new CampaignAgentDBModel();
@@ -69,7 +69,7 @@ public class CampaignAgentFramework {
     public CampaignAgentDBModel removeCampaignAgentService(String campaignId, long agentId) {
 
         List<CampaignAgentDBModel> campaignAgents = campaignAgentRepository.findByCampaignIdAndAgentId(campaignId, agentId);
-        if (campaignAgents.size() > 0) {
+        if (!campaignAgents.isEmpty()) {
             campaignAgentRepository.deleteAll(campaignAgents);
             return campaignAgents.get(0);
         }
@@ -81,8 +81,9 @@ public class CampaignAgentFramework {
 
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
         if (campaignDBModel.isPresent()) {
-            if (campaignDBModel.get().getCampaignCategory().equalsIgnoreCase(AppConstant.MANUAL_CAMPAIGN) || campaignDBModel.get().getCampaignCategory().equalsIgnoreCase(AppConstant.INQUIRY_CAMPAIGN)) {
-                return filterAssignableAgents(campaignId, userRepository.findByUserRoleAndUserTypeAndStatus(AppConstant.BASIC_AGENT, AppConstant.AGENT_USER, 1));
+            if (campaignDBModel.get().getCampaignCategory().equalsIgnoreCase(AppConstant.MANUAL_CAMPAIGN)
+                    || campaignDBModel.get().getCampaignCategory().equalsIgnoreCase(AppConstant.INQUIRY_CAMPAIGN)) {
+                return filterAssignableAgents(campaignId, userRepository.findByUserTypeAndUserRoleNotAndStatus(AppConstant.AGENT_USER, AppConstant.AUTO_AGENT, 1));
             }
             if (campaignDBModel.get().getCampaignCategory().equalsIgnoreCase(AppConstant.AUTOMATIC_CAMPAIGN)) {
                 return filterAssignableAgents(campaignId, userRepository.findByUserRoleAndUserTypeAndStatus(AppConstant.AUTO_AGENT, AppConstant.AGENT_USER, 1));
@@ -95,7 +96,7 @@ public class CampaignAgentFramework {
 
         List<CampaignAgentWSDTO> campaignAgentWSDTOS = new ArrayList<>();
         for (UserDBModel agentDBModel : agentDBModels) {
-            if (!(campaignAgentRepository.findByCampaignIdAndAgentId(campaignId, agentDBModel.getId()).size() > 0)) {
+            if (campaignAgentRepository.findByCampaignIdAndAgentId(campaignId, agentDBModel.getId()).isEmpty()) {
                 campaignAgentWSDTOS.add(new CampaignAgentWSDTO(agentDBModel));
             }
         }
