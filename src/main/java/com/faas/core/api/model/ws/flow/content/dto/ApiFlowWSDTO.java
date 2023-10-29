@@ -2,11 +2,7 @@ package com.faas.core.api.model.ws.flow.content.dto;
 
 import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
-import com.faas.core.base.model.db.operation.flow.OperationFlowDBModel;
-import com.faas.core.base.model.db.operation.inquiry.OperationInquiryDBModel;
-import com.faas.core.base.model.ws.general.PaginationWSDTO;
-
-import java.util.List;
+import com.faas.core.base.model.db.operation.details.flow.OperationFlowDBModel;
 
 public class ApiFlowWSDTO {
 

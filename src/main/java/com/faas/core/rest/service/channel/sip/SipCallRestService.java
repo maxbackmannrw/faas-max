@@ -1,6 +1,6 @@
 package com.faas.core.rest.service.channel.sip;
 
-import com.faas.core.base.model.db.operation.channel.OperationSipCallDBModel;
+import com.faas.core.base.model.db.operation.details.channel.OperationSipCallDBModel;
 import com.faas.core.utils.config.AppUtils;
 import okhttp3.OkHttpClient;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -5,14 +5,14 @@ import com.faas.core.api.model.ws.operation.channel.message.wapp.dto.ApiOperatio
 import com.faas.core.api.model.ws.operation.channel.message.wapp.dto.ApiWappMessageTempWSDTO;
 import com.faas.core.api.model.ws.operation.channel.message.wapp.dto.ApiWappMessageWSDTO;
 import com.faas.core.base.model.db.client.details.ClientPhoneDBModel;
-import com.faas.core.base.model.db.operation.channel.OperationWappMessageDBModel;
+import com.faas.core.base.model.db.operation.details.channel.OperationWappMessageDBModel;
 import com.faas.core.base.model.db.process.details.channel.content.ProcessWappChannelDBModel;
 import com.faas.core.base.model.db.process.details.channel.temp.WappMessageTempDBModel;
 import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.model.db.user.details.UserDetailsDBModel;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.client.details.ClientPhoneRepository;
-import com.faas.core.base.repo.operation.channel.OperationWappMessageRepository;
+import com.faas.core.base.repo.operation.details.channel.OperationWappMessageRepository;
 import com.faas.core.base.repo.process.details.channel.content.ProcessWappChannelRepository;
 import com.faas.core.base.repo.process.details.channel.temp.WappMessageTempRepository;
 import com.faas.core.base.repo.client.session.SessionRepository;

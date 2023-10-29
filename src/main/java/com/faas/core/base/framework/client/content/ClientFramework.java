@@ -14,7 +14,7 @@ import com.faas.core.base.repo.client.details.ClientDataRepository;
 import com.faas.core.base.repo.client.details.ClientEmailRepository;
 import com.faas.core.base.repo.client.details.ClientPhoneRepository;
 import com.faas.core.base.repo.client.settings.ClientTypeRepository;
-import com.faas.core.base.repo.operation.channel.*;
+import com.faas.core.base.repo.operation.details.channel.*;
 import com.faas.core.base.repo.client.session.SessionRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.utils.location.CityRepository;

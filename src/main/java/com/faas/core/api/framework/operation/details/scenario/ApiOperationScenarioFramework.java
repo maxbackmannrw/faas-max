@@ -5,14 +5,14 @@ import com.faas.core.api.model.ws.operation.details.scenario.dto.ApiProcessScena
 import com.faas.core.api.model.ws.operation.details.scenario.dto.ApiProcessScenarioWSDTO;
 import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
-import com.faas.core.base.model.db.operation.scenario.OperationScenarioDBModel;
+import com.faas.core.base.model.db.operation.details.scenario.OperationScenarioDBModel;
 import com.faas.core.base.model.db.process.details.scenario.ProcessScenarioDBModel;
 import com.faas.core.base.model.db.scenario.content.ScenarioDBModel;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.client.session.SessionRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
-import com.faas.core.base.repo.operation.scenario.OperationScenarioRepository;
+import com.faas.core.base.repo.operation.details.scenario.OperationScenarioRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.process.details.scenario.ProcessScenarioRepository;
 import com.faas.core.base.repo.scenario.content.ScenarioRepository;

@@ -2,7 +2,7 @@ package com.faas.core.api.model.ws.inquiry.content.dto;
 
 import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
-import com.faas.core.base.model.db.operation.inquiry.OperationInquiryDBModel;
+import com.faas.core.base.model.db.operation.details.inquiry.OperationInquiryDBModel;
 
 public class ApiInquiryWSDTO {
 

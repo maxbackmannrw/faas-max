@@ -5,7 +5,7 @@ import com.faas.core.api.model.ws.agent.details.dto.ApiAgentInfoWSDTO;
 import com.faas.core.api.model.ws.agent.details.dto.ApiAgentSipAccountWSDTO;
 import com.faas.core.base.model.db.process.details.channel.content.ProcessSipChannelDBModel;
 import com.faas.core.base.model.db.user.details.UserDetailsDBModel;
-import com.faas.core.base.repo.operation.inquiry.OperationInquiryRepository;
+import com.faas.core.base.repo.operation.details.inquiry.OperationInquiryRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.process.details.channel.content.ProcessSipChannelRepository;
 import com.faas.core.base.repo.client.session.SessionRepository;

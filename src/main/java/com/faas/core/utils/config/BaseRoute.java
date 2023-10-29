@@ -187,28 +187,25 @@ public class BaseRoute {
     public static final String REMOVE_FLOW_TYPE = "removeflowtype";
 
 
-
-    public static final String GET_OPERATION_INQUIRY_CAMPAIGNS = "getoperationinquirycampaigns";
-    public static final String GET_OPERATION_INQUIRY_CAMPAIGN = "getoperationinquirycampaign";
-
-    public static final String GET_ALL_OPERATION_INQUIRIES = "getalloperationinquiries";
-    public static final String GET_OPERATION_INQUIRIES_BY_STATE = "getoperationinquiriesbystate";
-    public static final String GET_OPERATION_INQUIRY = "getoperationinquiry";
-    public static final String CREATE_OPERATION_INQUIRY = "createoperationinquiry";
-    public static final String UPDATE_OPERATION_INQUIRY = "updateoperationinquiry";
-    public static final String REMOVE_OPERATION_INQUIRY = "removeoperationinquiry";
+    public static final String GET_MANUAL_OPERATIONS = "getmanualoperations";
+    public static final String GET_MANUAL_OPERATION = "getmanualoperation";
+    public static final String CREATE_MANUAL_OPERATION = "createmanualoperation";
+    public static final String UPDATE_MANUAL_OPERATION = "updatemanualoperation";
+    public static final String REMOVE_MANUAL_OPERATION = "removemanualoperation";
 
 
-    public static final String GET_OPERATION_FLOW_CAMPAIGNS = "getoperationflowcampaigns";
-    public static final String GET_OPERATION_FLOW_CAMPAIGN = "getoperationflowcampaign";
+    public static final String GET_INQUIRY_OPERATIONS = "getinquiryoperations";
+    public static final String GET_INQUIRY_OPERATION = "getinquiryoperation";
+    public static final String CREATE_INQUIRY_OPERATION = "createinquiryoperation";
+    public static final String UPDATE_INQUIRY_OPERATION = "updateinquiryoperation";
+    public static final String REMOVE_INQUIRY_OPERATION = "removeinquiryoperation";
 
-    public static final String GET_ALL_OPERATION_FLOWS = "getalloperationflows";
-    public static final String GET_OPERATION_FLOWS_BY_STATE = "getoperationflowsbystate";
-    public static final String GET_OPERATION_FLOW = "getoperationflow";
-    public static final String CREATE_OPERATION_FLOW = "createoperationflow";
-    public static final String UPDATE_OPERATION_FLOW = "updateoperationflow";
-    public static final String REMOVE_OPERATION_FLOW = "removeoperationflow";
 
+    public static final String GET_AUTOMATIC_OPERATIONS = "getautomaticoperations";
+    public static final String GET_AUTOMATIC_OPERATION = "getautomaticoperation";
+    public static final String CREATE_AUTOMATIC_OPERATION = "createautomaticoperation";
+    public static final String UPDATE_AUTOMATIC_OPERATION = "updateautomaticoperation";
+    public static final String REMOVE_AUTOMATIC_OPERATION = "removeautomaticoperation";
 
 
     public static final String GET_ASSETS_BY_TYPE = "getassetsbytype";

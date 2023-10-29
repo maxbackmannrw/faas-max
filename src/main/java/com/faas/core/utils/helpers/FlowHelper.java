@@ -2,14 +2,14 @@ package com.faas.core.utils.helpers;
 
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.client.content.ClientDBModel;
-import com.faas.core.base.model.db.operation.flow.OperationFlowDBModel;
+import com.faas.core.base.model.db.operation.details.flow.OperationFlowDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.model.db.user.content.UserDBModel;
-import com.faas.core.base.model.ws.operation.flow.dto.OperationFlowWSDTO;
-import com.faas.core.base.model.ws.operation.flow.dto.OperationFlowSessionWSDTO;
+import com.faas.core.base.model.ws.operation.details.automatic.dto.AutomaticOperationWSDTO;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
-import com.faas.core.base.repo.operation.flow.OperationFlowRepository;
+import com.faas.core.base.model.ws.operation.details.automatic.dto.OperationFlowSessionWSDTO;
+import com.faas.core.base.repo.operation.details.flow.OperationFlowRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,15 +68,15 @@ public class FlowHelper {
     }
 
 
-    public List<OperationFlowWSDTO> createFlowWSDTOS(List<OperationFlowDBModel> operationFlowDBModels){
+    public List<AutomaticOperationWSDTO> createFlowWSDTOS(List<OperationFlowDBModel> operationFlowDBModels){
 
-        List<OperationFlowWSDTO> operationFlowWSDTOS = new ArrayList<>();
+        List<AutomaticOperationWSDTO> automaticOperationWSDTOS = new ArrayList<>();
         for (OperationFlowDBModel operationFlowDBModel : operationFlowDBModels) {
-            OperationFlowWSDTO operationFlowWSDTO = new OperationFlowWSDTO();
-            operationFlowWSDTO.setClientFlow(operationFlowDBModel);
-            operationFlowWSDTOS.add(operationFlowWSDTO);
+            AutomaticOperationWSDTO automaticOperationWSDTO = new AutomaticOperationWSDTO();
+            automaticOperationWSDTO.setClientFlow(operationFlowDBModel);
+            automaticOperationWSDTOS.add(automaticOperationWSDTO);
         }
-        return operationFlowWSDTOS;
+        return automaticOperationWSDTOS;
     }
 
 

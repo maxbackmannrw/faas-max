@@ -1,7 +1,7 @@
 package com.faas.core.api.model.ws.operation.channel.message.push.dto;
 
 
-import com.faas.core.base.model.db.operation.channel.OperationPushMessageDBModel;
+import com.faas.core.base.model.db.operation.details.channel.OperationPushMessageDBModel;
 import com.faas.core.base.model.db.process.details.channel.temp.PushTempDBModel;
 
 import java.util.List;

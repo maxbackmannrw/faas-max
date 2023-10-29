@@ -18,7 +18,7 @@ public class OperationDetailsFramework {
     AppUtils appUtils;
 
 
-    public OperationWSDTO fillOperationWSDTO(OperationDBModel operationDBModel) {
+    public OperationWSDTO getOperationDetailsService(OperationDBModel operationDBModel) {
 
         OperationWSDTO operationWSDTO = new OperationWSDTO();
         operationWSDTO.setOperation(operationDBModel);

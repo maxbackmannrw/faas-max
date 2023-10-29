@@ -1,7 +1,7 @@
 package com.faas.core.api.model.ws.operation.content.dto;
 
-import com.faas.core.base.model.db.operation.flow.OperationFlowDBModel;
-import com.faas.core.base.model.db.operation.inquiry.OperationInquiryDBModel;
+import com.faas.core.base.model.db.operation.details.flow.OperationFlowDBModel;
+import com.faas.core.base.model.db.operation.details.inquiry.OperationInquiryDBModel;
 import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 

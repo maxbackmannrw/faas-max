@@ -2,10 +2,10 @@ package com.faas.core.utils.service.wapp;
 
 import com.faas.core.base.model.db.channel.account.WappAccountDBModel;
 import com.faas.core.base.model.db.process.content.ProcessDBModel;
-import com.faas.core.base.model.db.operation.channel.OperationWappMessageDBModel;
+import com.faas.core.base.model.db.operation.details.channel.OperationWappMessageDBModel;
 import com.faas.core.base.repo.channel.account.WappAccountRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
-import com.faas.core.base.repo.operation.channel.OperationWappMessageRepository;
+import com.faas.core.base.repo.operation.details.channel.OperationWappMessageRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package com.faas.core.api.model.ws.operation.channel.message.sms.dto;
 
-import com.faas.core.base.model.db.operation.channel.OperationSmsMessageDBModel;
+import com.faas.core.base.model.db.operation.details.channel.OperationSmsMessageDBModel;
 
 public class ApiSmsMessageWSDTO {
 

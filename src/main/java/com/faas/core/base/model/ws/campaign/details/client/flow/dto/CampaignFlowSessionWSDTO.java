@@ -1,7 +1,7 @@
 package com.faas.core.base.model.ws.campaign.details.client.flow.dto;
 
-import com.faas.core.base.model.ws.operation.flow.dto.OperationFlowSessionWSDTO;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
+import com.faas.core.base.model.ws.operation.details.automatic.dto.OperationFlowSessionWSDTO;
 
 import java.util.List;
 

@@ -1,8 +1,8 @@
 package com.faas.core.rest.call.channel.sms;
 
 import com.faas.core.base.model.db.channel.account.SmsAccountDBModel;
-import com.faas.core.base.model.db.operation.channel.OperationSmsMessageDBModel;
-import com.faas.core.base.repo.operation.channel.OperationSmsMessageRepository;
+import com.faas.core.base.model.db.operation.details.channel.OperationSmsMessageDBModel;
+import com.faas.core.base.repo.operation.details.channel.OperationSmsMessageRepository;
 import com.faas.core.rest.call.content.RestCall;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;

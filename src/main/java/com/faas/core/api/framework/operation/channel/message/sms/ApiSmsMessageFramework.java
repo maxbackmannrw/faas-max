@@ -5,13 +5,13 @@ import com.faas.core.api.model.ws.operation.channel.message.sms.dto.ApiSmsAccoun
 import com.faas.core.api.model.ws.operation.channel.message.sms.dto.ApiSmsMessageTempWSDTO;
 import com.faas.core.api.model.ws.operation.channel.message.sms.dto.ApiSmsMessageWSDTO;
 import com.faas.core.base.model.db.client.details.ClientPhoneDBModel;
-import com.faas.core.base.model.db.operation.channel.OperationSmsMessageDBModel;
+import com.faas.core.base.model.db.operation.details.channel.OperationSmsMessageDBModel;
 import com.faas.core.base.model.db.process.details.channel.content.ProcessSmsChannelDBModel;
 import com.faas.core.base.model.db.process.details.channel.temp.SmsMessageTempDBModel;
 import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.client.details.ClientPhoneRepository;
-import com.faas.core.base.repo.operation.channel.OperationSmsMessageRepository;
+import com.faas.core.base.repo.operation.details.channel.OperationSmsMessageRepository;
 import com.faas.core.base.repo.process.details.channel.content.ProcessSmsChannelRepository;
 import com.faas.core.base.repo.process.details.channel.temp.SmsMessageTempRepository;
 import com.faas.core.base.repo.client.session.SessionRepository;

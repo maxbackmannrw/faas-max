@@ -1,7 +1,6 @@
 package com.faas.core.base.framework.utils.settings;
 
 import com.faas.core.base.model.db.client.content.ClientDBModel;
-import com.faas.core.base.model.db.process.details.channel.temp.SmsMessageTempDBModel;
 import com.faas.core.base.model.db.user.content.UserDBModel;
 import com.faas.core.base.model.ws.utils.settings.dto.UtilSettingsWSDTO;
 import com.faas.core.base.repo.assets.content.AssetRepository;
@@ -10,11 +9,11 @@ import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.client.details.*;
 import com.faas.core.base.repo.client.session.SessionRepository;
-import com.faas.core.base.repo.operation.channel.*;
+import com.faas.core.base.repo.operation.details.channel.*;
 import com.faas.core.base.repo.operation.content.OperationRepository;
-import com.faas.core.base.repo.operation.flow.OperationFlowRepository;
-import com.faas.core.base.repo.operation.inquiry.OperationInquiryRepository;
-import com.faas.core.base.repo.operation.scenario.OperationScenarioRepository;
+import com.faas.core.base.repo.operation.details.flow.OperationFlowRepository;
+import com.faas.core.base.repo.operation.details.inquiry.OperationInquiryRepository;
+import com.faas.core.base.repo.operation.details.scenario.OperationScenarioRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.process.details.channel.content.*;
 import com.faas.core.base.repo.process.details.channel.temp.EmailTempRepository;

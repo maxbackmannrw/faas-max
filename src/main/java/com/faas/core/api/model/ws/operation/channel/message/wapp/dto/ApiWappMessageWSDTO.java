@@ -1,6 +1,6 @@
 package com.faas.core.api.model.ws.operation.channel.message.wapp.dto;
 
-import com.faas.core.base.model.db.operation.channel.OperationWappMessageDBModel;
+import com.faas.core.base.model.db.operation.details.channel.OperationWappMessageDBModel;
 
 public class ApiWappMessageWSDTO {
 

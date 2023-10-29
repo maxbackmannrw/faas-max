@@ -1,7 +1,7 @@
 package com.faas.core.api.model.ws.operation.channel.call.wapp.dto;
 
 import com.faas.core.base.model.db.client.details.ClientPhoneDBModel;
-import com.faas.core.base.model.db.operation.channel.OperationWappCallDBModel;
+import com.faas.core.base.model.db.operation.details.channel.OperationWappCallDBModel;
 
 import java.util.List;
 

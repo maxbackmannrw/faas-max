@@ -24,7 +24,7 @@ public class OperationDetailsController {
 
     @RequestMapping(value = BaseRoute.GET_OPERATION_DETAILS, method = RequestMethod.POST)
     public ResponseEntity<?> getOperationDetails(@RequestParam long userId,
-                                                 @RequestParam String sessionId) {
+                                                 @RequestParam long sessionId) {
 
         OperationWSModel response = operationDetailsMiddleware.getOperationDetails(userId,sessionId);
 
