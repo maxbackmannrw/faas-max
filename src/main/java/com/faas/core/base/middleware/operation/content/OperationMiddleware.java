@@ -19,13 +19,13 @@ public class OperationMiddleware {
     AppUtils appUtils;
 
 
-    public OperationWSModel getSessionOperations(long userId, String sessionId) {
+    public OperationWSModel getAgentOperations(long userId,int reqPage,int reqSize) {
 
         OperationWSModel response = new OperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
 
-        general.setOperation("getSessionOperations");
+        general.setOperation("getAgentOperations");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -34,6 +34,81 @@ public class OperationMiddleware {
         return response;
     }
 
+    public OperationWSModel getOperations(long userId, String sessionId) {
+
+        OperationWSModel response = new OperationWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+
+        general.setOperation("getOperations");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
+    public OperationWSModel getOperation(long userId, String sessionId) {
+
+        OperationWSModel response = new OperationWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+
+        general.setOperation("getOperation");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public OperationWSModel createOperation(long userId, String sessionId) {
+
+        OperationWSModel response = new OperationWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+
+        general.setOperation("createOperation");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public OperationWSModel updateOperation(long userId, String sessionId) {
+
+        OperationWSModel response = new OperationWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+
+        general.setOperation("updateOperation");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public OperationWSModel removeOperation(long userId, String sessionId) {
+
+        OperationWSModel response = new OperationWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+
+        general.setOperation("removeOperation");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
 
 
 }

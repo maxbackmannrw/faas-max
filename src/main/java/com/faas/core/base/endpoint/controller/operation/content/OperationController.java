@@ -22,24 +22,12 @@ public class OperationController {
     OperationMiddleware operationMiddleware;
 
 
-    @RequestMapping(value = BaseRoute.GET_ALL_OPERATIONS, method = RequestMethod.POST)
-    public ResponseEntity<?> getAllOperations(@RequestParam long userId,
-                                                  @RequestParam String sessionId) {
+    @RequestMapping(value = BaseRoute.GET_AGENT_OPERATIONS, method = RequestMethod.POST)
+    public ResponseEntity<?> getAgentOperations(@RequestParam long userId,
+                                                @RequestParam int reqPage,
+                                                @RequestParam int reqSize) {
 
-        OperationWSModel response = operationMiddleware.getSessionOperations(userId,sessionId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-
-    @RequestMapping(value = BaseRoute.GET_OPERATIONS_BY_STATE, method = RequestMethod.POST)
-    public ResponseEntity<?> getOperationsByState(@RequestParam long userId,
-                                              @RequestParam String sessionId) {
-
-        OperationWSModel response = operationMiddleware.getSessionOperations(userId,sessionId);
+        OperationWSModel response = operationMiddleware.getAgentOperations(userId,reqPage,reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -47,12 +35,23 @@ public class OperationController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+    @RequestMapping(value = BaseRoute.GET_OPERATIONS, method = RequestMethod.POST)
+    public ResponseEntity<?> getOperations(@RequestParam long userId,
+                                           @RequestParam String sessionId) {
+
+        OperationWSModel response = operationMiddleware.getOperations(userId,sessionId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
 
     @RequestMapping(value = BaseRoute.GET_OPERATION, method = RequestMethod.POST)
     public ResponseEntity<?> getOperation(@RequestParam long userId,
                                                   @RequestParam String sessionId) {
 
-        OperationWSModel response = operationMiddleware.getSessionOperations(userId,sessionId);
+        OperationWSModel response = operationMiddleware.getOperation(userId,sessionId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -60,12 +59,11 @@ public class OperationController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.CREATE_OPERATION, method = RequestMethod.POST)
     public ResponseEntity<?> createOperation(@RequestParam long userId,
                                           @RequestParam String sessionId) {
 
-        OperationWSModel response = operationMiddleware.getSessionOperations(userId,sessionId);
+        OperationWSModel response = operationMiddleware.createOperation(userId,sessionId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -78,7 +76,7 @@ public class OperationController {
     public ResponseEntity<?> updateOperation(@RequestParam long userId,
                                              @RequestParam String sessionId) {
 
-        OperationWSModel response = operationMiddleware.getSessionOperations(userId,sessionId);
+        OperationWSModel response = operationMiddleware.updateOperation(userId,sessionId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -91,7 +89,7 @@ public class OperationController {
     public ResponseEntity<?> removeOperation(@RequestParam long userId,
                                              @RequestParam String sessionId) {
 
-        OperationWSModel response = operationMiddleware.getSessionOperations(userId,sessionId);
+        OperationWSModel response = operationMiddleware.removeOperation(userId,sessionId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

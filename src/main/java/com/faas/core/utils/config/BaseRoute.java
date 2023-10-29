@@ -118,9 +118,8 @@ public class BaseRoute {
     public static final String REMOVE_CAMPAIGN_FLOW_SESSION = "removecampaignflowsession";
 
 
-
-    public static final String GET_ALL_OPERATIONS = "getalloperations";
-    public static final String GET_OPERATIONS_BY_STATE = "getoperationsbystate";
+    public static final String GET_AGENT_OPERATIONS = "getagentoperations";
+    public static final String GET_OPERATIONS = "getoperations";
     public static final String GET_OPERATION = "getoperation";
     public static final String CREATE_OPERATION = "createoperation";
     public static final String UPDATE_OPERATION = "updateoperation";
