@@ -39,10 +39,15 @@ public interface SessionRepository extends PagingAndSortingRepository<SessionDBM
     List<SessionDBModel>findByAgentIdAndCampaignIdAndSessionState(long agentId, String campaignId, String sessionState);
     List<SessionDBModel>findByAgentIdAndCampaignIdAndProcessIdAndSessionState(long agentId, String campaignId, String processId, String sessionState);
 
+
+    Page<SessionDBModel>findAllByCampaignCategoryAndSessionState(String campaignCategory, String sessionState, Pageable pageable);
+    Page<SessionDBModel>findAllByCampaignCategory(String campaignCategory, Pageable pageable);
+    Page<SessionDBModel>findAllBySessionTypeAndSessionState(String sessionType,String sessionState, Pageable pageable);
+    Page<SessionDBModel>findAllBySessionType(String sessionType, Pageable pageable);
+    Page<SessionDBModel>findAllBySessionState(String sessionState, Pageable pageable);
     Page<SessionDBModel>findAllByStatus(int status, Pageable pageable);
     Page<SessionDBModel>findAllByIdAndAgentId(long sessionId,long agentId, Pageable pageable);
     Page<SessionDBModel>findAllByStatusAndSessionState(int status, String sessionState, Pageable pageable);
-    Page<SessionDBModel>findAllBySessionState(String sessionState, Pageable pageable);
     Page<SessionDBModel>findAllByAgentId(long agentId, Pageable pageable);
     Page<SessionDBModel>findAllByAgentIdAndSessionState(long agentId, String sessionState, Pageable pageable);
     Page<SessionDBModel>findAllByAgentIdAndSessionStateAndSessionType(long agentId, String sessionState,String sessionType, Pageable pageable);

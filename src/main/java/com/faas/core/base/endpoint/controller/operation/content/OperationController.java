@@ -1,6 +1,8 @@
 package com.faas.core.base.endpoint.controller.operation.content;
 
 import com.faas.core.base.middleware.operation.content.OperationMiddleware;
+import com.faas.core.base.model.ws.operation.content.AgentOperationWSModel;
+import com.faas.core.base.model.ws.operation.content.OperationListWSModel;
 import com.faas.core.base.model.ws.operation.content.OperationWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
@@ -27,7 +29,7 @@ public class OperationController {
                                                 @RequestParam int reqPage,
                                                 @RequestParam int reqSize) {
 
-        OperationWSModel response = operationMiddleware.getAgentOperations(userId,reqPage,reqSize);
+        AgentOperationWSModel response = operationMiddleware.getAgentOperations(userId,reqPage,reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -37,9 +39,12 @@ public class OperationController {
 
     @RequestMapping(value = BaseRoute.GET_OPERATIONS, method = RequestMethod.POST)
     public ResponseEntity<?> getOperations(@RequestParam long userId,
-                                           @RequestParam String sessionId) {
+                                           @RequestParam String campaignCategory,
+                                           @RequestParam String sessionState,
+                                           @RequestParam int reqPage,
+                                           @RequestParam int reqSize) {
 
-        OperationWSModel response = operationMiddleware.getOperations(userId,sessionId);
+        OperationListWSModel response = operationMiddleware.getOperations(userId,campaignCategory,sessionState,reqPage,reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -49,7 +54,7 @@ public class OperationController {
 
     @RequestMapping(value = BaseRoute.GET_OPERATION, method = RequestMethod.POST)
     public ResponseEntity<?> getOperation(@RequestParam long userId,
-                                                  @RequestParam String sessionId) {
+                                          @RequestParam long sessionId) {
 
         OperationWSModel response = operationMiddleware.getOperation(userId,sessionId);
 
@@ -60,10 +65,9 @@ public class OperationController {
     }
 
     @RequestMapping(value = BaseRoute.CREATE_OPERATION, method = RequestMethod.POST)
-    public ResponseEntity<?> createOperation(@RequestParam long userId,
-                                          @RequestParam String sessionId) {
+    public ResponseEntity<?> createOperation(@RequestParam long userId) {
 
-        OperationWSModel response = operationMiddleware.createOperation(userId,sessionId);
+        OperationWSModel response = operationMiddleware.createOperation(userId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -74,7 +78,7 @@ public class OperationController {
 
     @RequestMapping(value = BaseRoute.UPDATE_OPERATION, method = RequestMethod.POST)
     public ResponseEntity<?> updateOperation(@RequestParam long userId,
-                                             @RequestParam String sessionId) {
+                                             @RequestParam long sessionId) {
 
         OperationWSModel response = operationMiddleware.updateOperation(userId,sessionId);
 
@@ -87,7 +91,7 @@ public class OperationController {
 
     @RequestMapping(value = BaseRoute.REMOVE_OPERATION, method = RequestMethod.POST)
     public ResponseEntity<?> removeOperation(@RequestParam long userId,
-                                             @RequestParam String sessionId) {
+                                             @RequestParam long sessionId) {
 
         OperationWSModel response = operationMiddleware.removeOperation(userId,sessionId);
 

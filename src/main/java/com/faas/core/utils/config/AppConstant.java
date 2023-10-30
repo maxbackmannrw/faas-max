@@ -82,7 +82,6 @@ public class AppConstant {
     public static final String ALL_FLOWS = "ALL_FLOWS";
 
 
-    public static final String NEW_SESSION = "NEW_SESSION";
     public static final String READY_SESSION = "READY_SESSION";
     public static final String ACTIVE_SESSION = "ACTIVE_SESSION";
     public static final String FINISHED_SESSION = "FINISHED_SESSION";

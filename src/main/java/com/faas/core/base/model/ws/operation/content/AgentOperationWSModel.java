@@ -1,21 +1,19 @@
 package com.faas.core.base.model.ws.operation.content;
 
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
-
-import java.util.List;
+import com.faas.core.base.model.ws.operation.content.dto.AgentOperationWSDTO;
 
 public class AgentOperationWSModel {
 
     private GeneralWSModel general;
-    private List<OperationWSDTO>operations;
+    private AgentOperationWSDTO agentOperation;
 
     public AgentOperationWSModel() {
     }
 
-    public AgentOperationWSModel(GeneralWSModel general, List<OperationWSDTO> operations) {
+    public AgentOperationWSModel(GeneralWSModel general, AgentOperationWSDTO agentOperation) {
         this.general = general;
-        this.operations = operations;
+        this.agentOperation = agentOperation;
     }
 
     public GeneralWSModel getGeneral() {
@@ -26,11 +24,11 @@ public class AgentOperationWSModel {
         this.general = general;
     }
 
-    public List<OperationWSDTO> getOperations() {
-        return operations;
+    public AgentOperationWSDTO getAgentOperation() {
+        return agentOperation;
     }
 
-    public void setOperations(List<OperationWSDTO> operations) {
-        this.operations = operations;
+    public void setAgentOperation(AgentOperationWSDTO agentOperation) {
+        this.agentOperation = agentOperation;
     }
 }

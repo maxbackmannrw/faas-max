@@ -138,7 +138,6 @@ public class SessionHelper {
     public SessionDBModel mapSessionDBModel(CampaignDBModel campaignDBModel, UserDBModel agentDBModel , ClientDBModel clientDBModel ) {
 
         SessionDBModel sessionDBModel = new SessionDBModel();
-
         sessionDBModel.setSessionUUID(appUtils.generateUUID());
         sessionDBModel.setClientId(clientDBModel.getId());
         sessionDBModel.setClientName(clientDBModel.getClientName());

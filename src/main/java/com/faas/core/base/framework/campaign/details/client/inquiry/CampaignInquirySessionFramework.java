@@ -134,7 +134,7 @@ public class CampaignInquirySessionFramework {
                 ClientDBModel updatedClient = clientRepository.save(clientDBModel.get());
 
                 SessionDBModel sessionDBModel = sessionRepository.save(inquiryHelper.mapInquirySession(updatedClient,agentDBModel.get(),campaignDBModel.get()));
-                OperationDBModel operationDBModel = operationRepository.save(inquiryHelper.mapInquirySessionOperation(sessionDBModel));
+                OperationDBModel operationDBModel = operationRepository.save(inquiryHelper.mapInquiryOperation(sessionDBModel));
                 operationInquiryRepository.save(inquiryHelper.mapOperationInquiryDBModel(sessionDBModel));
 
                 activityHelper.createOperationActivity(sessionDBModel.getId(),operationDBModel.getId(),AppConstant.CREATE_SESSION_ACTIVITY,AppConstant.SESSION_ACTIVITY,String.valueOf(sessionDBModel.getAgentId()),AppConstant.USER_TYPE,String.valueOf(sessionDBModel.getId()),AppConstant.SESSION_TYPE);

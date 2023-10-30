@@ -1,23 +1,41 @@
 package com.faas.core.base.model.ws.operation.content.dto;
 
-import com.faas.core.base.model.db.operation.content.OperationDBModel;
-
 public class AgentOperationWSDTO {
 
-    private OperationDBModel operation;
+    private OperationListWSDTO manualOperations;
+    private OperationListWSDTO inquiryOperations;
+    private OperationListWSDTO automaticOperations;
 
     public AgentOperationWSDTO() {
     }
 
-    public AgentOperationWSDTO(OperationDBModel operation) {
-        this.operation = operation;
+    public AgentOperationWSDTO(OperationListWSDTO manualOperations, OperationListWSDTO inquiryOperations, OperationListWSDTO automaticOperations) {
+        this.manualOperations = manualOperations;
+        this.inquiryOperations = inquiryOperations;
+        this.automaticOperations = automaticOperations;
     }
 
-    public OperationDBModel getOperation() {
-        return operation;
+    public OperationListWSDTO getManualOperations() {
+        return manualOperations;
     }
 
-    public void setOperation(OperationDBModel operation) {
-        this.operation = operation;
+    public void setManualOperations(OperationListWSDTO manualOperations) {
+        this.manualOperations = manualOperations;
+    }
+
+    public OperationListWSDTO getInquiryOperations() {
+        return inquiryOperations;
+    }
+
+    public void setInquiryOperations(OperationListWSDTO inquiryOperations) {
+        this.inquiryOperations = inquiryOperations;
+    }
+
+    public OperationListWSDTO getAutomaticOperations() {
+        return automaticOperations;
+    }
+
+    public void setAutomaticOperations(OperationListWSDTO automaticOperations) {
+        this.automaticOperations = automaticOperations;
     }
 }
