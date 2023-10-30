@@ -1,6 +1,6 @@
 package com.faas.core.base.framework.operation.content;
 
-import com.faas.core.base.model.ws.operation.content.dto.AgentOperationWSDTO;
+import com.faas.core.base.model.ws.operation.content.dto.CampaignOperationWSDTO;
 import com.faas.core.base.model.ws.operation.content.dto.OperationListWSDTO;
 import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
 import com.faas.core.base.repo.client.session.SessionRepository;
@@ -30,14 +30,14 @@ public class OperationFramework {
     AppUtils appUtils;
 
 
-    public AgentOperationWSDTO getAgentOperationsService(long userId, int reqPage, int reqSize) {
+    public CampaignOperationWSDTO getCampaignOperationsService(long userId, int reqPage, int reqSize) {
 
-        AgentOperationWSDTO agentOperationWSDTO = new AgentOperationWSDTO();
-        agentOperationWSDTO.setManualOperations(operationHelper.getOperationListWSDTO(sessionRepository.findAllByCampaignCategoryAndSessionState(AppConstant.MANUAL_CAMPAIGN,AppConstant.READY_SESSION, PageRequest.of(reqPage,reqSize))));
-        agentOperationWSDTO.setInquiryOperations(operationHelper.getOperationListWSDTO(sessionRepository.findAllByCampaignCategoryAndSessionState(AppConstant.INQUIRY_CAMPAIGN,AppConstant.READY_SESSION, PageRequest.of(reqPage,reqSize))));
-        agentOperationWSDTO.setAutomaticOperations(operationHelper.getOperationListWSDTO(sessionRepository.findAllByCampaignCategoryAndSessionState(AppConstant.AUTOMATIC_CAMPAIGN,AppConstant.READY_SESSION, PageRequest.of(reqPage,reqSize))));
+        CampaignOperationWSDTO campaignOperationWSDTO = new CampaignOperationWSDTO();
+        campaignOperationWSDTO.setManualOperations(operationHelper.getOperationListWSDTO(sessionRepository.findAllByCampaignCategoryAndSessionState(AppConstant.MANUAL_CAMPAIGN,AppConstant.READY_SESSION, PageRequest.of(reqPage,reqSize))));
+        campaignOperationWSDTO.setInquiryOperations(operationHelper.getOperationListWSDTO(sessionRepository.findAllByCampaignCategoryAndSessionState(AppConstant.INQUIRY_CAMPAIGN,AppConstant.READY_SESSION, PageRequest.of(reqPage,reqSize))));
+        campaignOperationWSDTO.setAutomaticOperations(operationHelper.getOperationListWSDTO(sessionRepository.findAllByCampaignCategoryAndSessionState(AppConstant.AUTOMATIC_CAMPAIGN,AppConstant.READY_SESSION, PageRequest.of(reqPage,reqSize))));
 
-        return agentOperationWSDTO;
+        return campaignOperationWSDTO;
     }
 
 

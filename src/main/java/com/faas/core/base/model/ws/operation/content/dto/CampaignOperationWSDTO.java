@@ -1,15 +1,15 @@
 package com.faas.core.base.model.ws.operation.content.dto;
 
-public class AgentOperationWSDTO {
+public class CampaignOperationWSDTO {
 
     private OperationListWSDTO manualOperations;
     private OperationListWSDTO inquiryOperations;
     private OperationListWSDTO automaticOperations;
 
-    public AgentOperationWSDTO() {
+    public CampaignOperationWSDTO() {
     }
 
-    public AgentOperationWSDTO(OperationListWSDTO manualOperations, OperationListWSDTO inquiryOperations, OperationListWSDTO automaticOperations) {
+    public CampaignOperationWSDTO(OperationListWSDTO manualOperations, OperationListWSDTO inquiryOperations, OperationListWSDTO automaticOperations) {
         this.manualOperations = manualOperations;
         this.inquiryOperations = inquiryOperations;
         this.automaticOperations = automaticOperations;

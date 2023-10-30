@@ -2,10 +2,10 @@ package com.faas.core.base.middleware.operation.content;
 
 import com.faas.core.base.framework.operation.content.OperationFramework;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.operation.content.AgentOperationWSModel;
+import com.faas.core.base.model.ws.operation.content.CampaignOperationWSModel;
 import com.faas.core.base.model.ws.operation.content.OperationListWSModel;
 import com.faas.core.base.model.ws.operation.content.OperationWSModel;
-import com.faas.core.base.model.ws.operation.content.dto.AgentOperationWSDTO;
+import com.faas.core.base.model.ws.operation.content.dto.CampaignOperationWSDTO;
 import com.faas.core.base.model.ws.operation.content.dto.OperationListWSDTO;
 import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
 import com.faas.core.utils.config.AppConstant;
@@ -23,17 +23,17 @@ public class OperationMiddleware {
     OperationFramework operationFramework;
 
 
-    public AgentOperationWSModel getAgentOperations(long userId, int reqPage, int reqSize) {
+    public CampaignOperationWSModel getCampaignOperations(long userId, int reqPage, int reqSize) {
 
-        AgentOperationWSModel response = new AgentOperationWSModel();
+        CampaignOperationWSModel response = new CampaignOperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        AgentOperationWSDTO agentOperation = operationFramework.getAgentOperationsService(userId,reqPage,reqSize);
-        if (agentOperation != null){
-            response.setAgentOperation(agentOperation);
+        CampaignOperationWSDTO campaignOperationWSDTO = operationFramework.getCampaignOperationsService(userId,reqPage,reqSize);
+        if (campaignOperationWSDTO != null){
+            response.setCampaignOperation(campaignOperationWSDTO);
         }
 
-        general.setOperation("getAgentOperations");
+        general.setOperation("getCampaignOperations");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

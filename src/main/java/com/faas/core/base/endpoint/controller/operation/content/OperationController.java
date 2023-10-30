@@ -1,7 +1,7 @@
 package com.faas.core.base.endpoint.controller.operation.content;
 
 import com.faas.core.base.middleware.operation.content.OperationMiddleware;
-import com.faas.core.base.model.ws.operation.content.AgentOperationWSModel;
+import com.faas.core.base.model.ws.operation.content.CampaignOperationWSModel;
 import com.faas.core.base.model.ws.operation.content.OperationListWSModel;
 import com.faas.core.base.model.ws.operation.content.OperationWSModel;
 import com.faas.core.utils.config.AppConstant;
@@ -24,12 +24,12 @@ public class OperationController {
     OperationMiddleware operationMiddleware;
 
 
-    @RequestMapping(value = BaseRoute.GET_AGENT_OPERATIONS, method = RequestMethod.POST)
-    public ResponseEntity<?> getAgentOperations(@RequestParam long userId,
-                                                @RequestParam int reqPage,
-                                                @RequestParam int reqSize) {
+    @RequestMapping(value = BaseRoute.GET_CAMPAIGN_OPERATIONS, method = RequestMethod.POST)
+    public ResponseEntity<?> getCampaignOperations(@RequestParam long userId,
+                                                   @RequestParam int reqPage,
+                                                   @RequestParam int reqSize) {
 
-        AgentOperationWSModel response = operationMiddleware.getAgentOperations(userId,reqPage,reqSize);
+        CampaignOperationWSModel response = operationMiddleware.getCampaignOperations(userId,reqPage,reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

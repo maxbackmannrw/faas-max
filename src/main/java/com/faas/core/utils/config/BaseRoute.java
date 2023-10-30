@@ -118,7 +118,7 @@ public class BaseRoute {
     public static final String REMOVE_CAMPAIGN_FLOW_SESSION = "removecampaignflowsession";
 
 
-    public static final String GET_AGENT_OPERATIONS = "getagentoperations";
+    public static final String GET_CAMPAIGN_OPERATIONS = "getcampaignoperations";
     public static final String GET_OPERATIONS = "getoperations";
     public static final String GET_OPERATION = "getoperation";
     public static final String CREATE_OPERATION = "createoperation";
