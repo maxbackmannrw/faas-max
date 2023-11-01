@@ -2,8 +2,6 @@ package com.faas.core.base.middleware.operation.manual;
 
 import com.faas.core.base.framework.operation.manual.ManualOperationFramework;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.operation.inquiry.InquiryOperationWSModel;
-import com.faas.core.base.model.ws.operation.inquiry.dto.InquiryOperationWSDTO;
 import com.faas.core.base.model.ws.operation.manual.ManualOperationListWSModel;
 import com.faas.core.base.model.ws.operation.manual.ManualOperationWSModel;
 import com.faas.core.base.model.ws.operation.manual.dto.ManualOperationListWSDTO;

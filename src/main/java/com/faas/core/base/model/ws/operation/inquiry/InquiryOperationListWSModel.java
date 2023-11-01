@@ -1,7 +1,6 @@
 package com.faas.core.base.model.ws.operation.inquiry;
 
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.operation.content.dto.OperationListWSDTO;
 import com.faas.core.base.model.ws.operation.inquiry.dto.InquiryOperationListWSDTO;
 
 public class InquiryOperationListWSModel {

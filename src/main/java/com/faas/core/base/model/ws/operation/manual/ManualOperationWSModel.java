@@ -1,8 +1,6 @@
 package com.faas.core.base.model.ws.operation.manual;
 
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.operation.inquiry.dto.InquiryOperationWSDTO;
-import com.faas.core.base.model.ws.operation.manual.dto.ManualOperationListWSDTO;
 import com.faas.core.base.model.ws.operation.manual.dto.ManualOperationWSDTO;
 
 import java.util.List;

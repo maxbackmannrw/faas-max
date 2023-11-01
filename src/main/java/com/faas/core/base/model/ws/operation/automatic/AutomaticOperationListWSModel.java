@@ -2,7 +2,6 @@ package com.faas.core.base.model.ws.operation.automatic;
 
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.model.ws.operation.automatic.dto.AutomaticOperationListWSDTO;
-import com.faas.core.base.model.ws.operation.content.dto.OperationListWSDTO;
 
 public class AutomaticOperationListWSModel {
 

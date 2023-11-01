@@ -1,7 +1,6 @@
 package com.faas.core.base.model.ws.operation.manual.dto;
 
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
-import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
 
 import java.util.List;
 

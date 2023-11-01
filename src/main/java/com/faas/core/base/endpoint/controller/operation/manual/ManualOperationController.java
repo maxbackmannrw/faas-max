@@ -1,10 +1,8 @@
 package com.faas.core.base.endpoint.controller.operation.manual;
 
 import com.faas.core.base.middleware.operation.manual.ManualOperationMiddleware;
-import com.faas.core.base.model.ws.operation.inquiry.InquiryOperationWSModel;
 import com.faas.core.base.model.ws.operation.manual.ManualOperationListWSModel;
 import com.faas.core.base.model.ws.operation.manual.ManualOperationWSModel;
-import com.faas.core.base.model.ws.operation.manual.dto.ManualOperationWSDTO;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;

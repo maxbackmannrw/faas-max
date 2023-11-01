@@ -2,7 +2,6 @@ package com.faas.core.base.framework.operation.manual;
 
 import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
-import com.faas.core.base.model.db.operation.details.inquiry.OperationInquiryDBModel;
 import com.faas.core.base.model.ws.operation.manual.dto.ManualOperationListWSDTO;
 import com.faas.core.base.model.ws.operation.manual.dto.ManualOperationWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
@@ -12,7 +11,6 @@ import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.operation.details.inquiry.OperationInquiryRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
-import com.faas.core.utils.helpers.InquiryHelper;
 import com.faas.core.utils.helpers.OperationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

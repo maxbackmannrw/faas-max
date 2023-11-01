@@ -19,10 +19,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping(value = AppConstant.API_VERSION + "/base/operation/")
 public class OperationController {
 
-
     @Autowired
     OperationMiddleware operationMiddleware;
-
 
     @RequestMapping(value = BaseRoute.GET_CAMPAIGN_OPERATIONS, method = RequestMethod.POST)
     public ResponseEntity<?> getCampaignOperations(@RequestParam long userId,
