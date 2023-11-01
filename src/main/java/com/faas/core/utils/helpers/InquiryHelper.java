@@ -10,8 +10,9 @@ import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.model.db.user.content.UserDBModel;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
-import com.faas.core.base.model.ws.operation.details.inquiry.dto.InquiryOperationWSDTO;
-import com.faas.core.base.model.ws.operation.details.inquiry.dto.OperationInquirySessionWSDTO;
+import com.faas.core.base.model.ws.operation.inquiry.dto.InquiryOperationListWSDTO;
+import com.faas.core.base.model.ws.operation.inquiry.dto.InquiryOperationWSDTO;
+import com.faas.core.base.model.ws.operation.inquiry.dto.OperationInquirySessionWSDTO;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.operation.details.inquiry.OperationInquiryRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
@@ -46,6 +47,34 @@ public class InquiryHelper {
 
     @Autowired
     AppUtils appUtils;
+
+
+    public InquiryOperationListWSDTO getInquiryOperationListWSDTO(Page<SessionDBModel> sessionDBModelPage){
+
+        InquiryOperationListWSDTO operationListWSDTO = new InquiryOperationListWSDTO();
+        operationListWSDTO.setPagination(createInquirySessionPagination(sessionDBModelPage));
+        List<InquiryOperationWSDTO> operationWSDTOS = new ArrayList<>();
+        for (int i=0;i<sessionDBModelPage.getContent().size();i++){
+            List<OperationDBModel> operationDBModels = operationRepository.findBySessionIdAndClientId(sessionDBModelPage.getContent().get(i).getId(), sessionDBModelPage.getContent().get(i).getClientId());
+            List<OperationInquiryDBModel> operationInquiryDBModels = operationInquiryRepository.findBySessionId(sessionDBModelPage.getContent().get(i).getId());
+            if (!operationInquiryDBModels.isEmpty() && !operationDBModels.isEmpty()){
+                operationWSDTOS.add(getInquiryOperationWSDTO(sessionDBModelPage.getContent().get(i),operationDBModels.get(0),operationInquiryDBModels.get(0)));
+            }
+        }
+        operationListWSDTO.setOperations(operationWSDTOS);
+
+        return operationListWSDTO;
+    }
+
+    public InquiryOperationWSDTO getInquiryOperationWSDTO(SessionDBModel sessionDBModel,OperationDBModel operationDBModel,OperationInquiryDBModel operationInquiryDBModel){
+
+        InquiryOperationWSDTO operationWSDTO = new InquiryOperationWSDTO();
+        operationWSDTO.setOperation(operationDBModel);
+        operationWSDTO.setOperationSession(sessionDBModel);
+        operationWSDTO.setOperationInquiry(operationInquiryDBModel);
+
+        return operationWSDTO;
+    }
 
 
 
@@ -130,19 +159,11 @@ public class InquiryHelper {
     }
 
 
-    public List<InquiryOperationWSDTO> createInquiryWSDTOS(List<OperationInquiryDBModel> operationInquiryDBModels){
-
-        List<InquiryOperationWSDTO> inquiryOperationWSDTOS = new ArrayList<>();
-        for (OperationInquiryDBModel operationInquiryDBModel : operationInquiryDBModels) {
-            inquiryOperationWSDTOS.add(new InquiryOperationWSDTO(operationInquiryDBModel));
-        }
-        return inquiryOperationWSDTOS;
-    }
-
 
     public PaginationWSDTO createInquirySessionPagination(Page<SessionDBModel> sessionDBModelPage){
 
         PaginationWSDTO paginationWSDTO = new PaginationWSDTO();
+
         paginationWSDTO.setPageSize(sessionDBModelPage.getPageable().getPageSize());
         paginationWSDTO.setPageNumber(sessionDBModelPage.getPageable().getPageNumber());
         paginationWSDTO.setTotalPage(sessionDBModelPage.getTotalPages());

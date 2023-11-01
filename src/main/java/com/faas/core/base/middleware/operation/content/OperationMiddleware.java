@@ -42,12 +42,12 @@ public class OperationMiddleware {
         return response;
     }
 
-    public OperationListWSModel getOperations(long userId, String campaignCategory,String sessionState,int reqPage,int reqSize) {
+    public OperationListWSModel getOperations(long userId, String sessionType,String sessionState,int reqPage,int reqSize) {
 
         OperationListWSModel response = new OperationListWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        OperationListWSDTO operationListWSDTO = operationFramework.getOperationsService(userId,campaignCategory,sessionState,reqPage,reqSize);
+        OperationListWSDTO operationListWSDTO = operationFramework.getOperationsService(userId,sessionType,sessionState,reqPage,reqSize);
         if (operationListWSDTO != null){
             response.setOperationList(operationListWSDTO);
         }

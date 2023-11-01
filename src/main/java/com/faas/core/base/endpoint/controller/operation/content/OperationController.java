@@ -39,12 +39,12 @@ public class OperationController {
 
     @RequestMapping(value = BaseRoute.GET_OPERATIONS, method = RequestMethod.POST)
     public ResponseEntity<?> getOperations(@RequestParam long userId,
-                                           @RequestParam String campaignCategory,
+                                           @RequestParam String sessionType,
                                            @RequestParam String sessionState,
                                            @RequestParam int reqPage,
                                            @RequestParam int reqSize) {
 
-        OperationListWSModel response = operationMiddleware.getOperations(userId,campaignCategory,sessionState,reqPage,reqSize);
+        OperationListWSModel response = operationMiddleware.getOperations(userId,sessionType,sessionState,reqPage,reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

@@ -6,9 +6,12 @@ import com.faas.core.base.model.db.operation.details.flow.OperationFlowDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.client.session.SessionDBModel;
 import com.faas.core.base.model.db.user.content.UserDBModel;
-import com.faas.core.base.model.ws.operation.details.automatic.dto.AutomaticOperationWSDTO;
+import com.faas.core.base.model.ws.operation.automatic.dto.AutomaticOperationListWSDTO;
+import com.faas.core.base.model.ws.operation.automatic.dto.AutomaticOperationWSDTO;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
-import com.faas.core.base.model.ws.operation.details.automatic.dto.OperationFlowSessionWSDTO;
+import com.faas.core.base.model.ws.operation.automatic.dto.OperationFlowSessionWSDTO;
+import com.faas.core.base.repo.client.session.SessionRepository;
+import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.operation.details.flow.OperationFlowRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
@@ -23,10 +26,44 @@ import java.util.List;
 public class FlowHelper {
 
     @Autowired
+    SessionRepository sessionRepository;
+
+    @Autowired
+    OperationRepository operationRepository;
+
+    @Autowired
     OperationFlowRepository operationFlowRepository;
 
     @Autowired
     AppUtils appUtils;
+
+
+    public AutomaticOperationListWSDTO getAutomaticOperationListWSDTO(Page<SessionDBModel>sessionModelPage){
+
+        AutomaticOperationListWSDTO operationListWSDTO = new AutomaticOperationListWSDTO();
+        operationListWSDTO.setPagination(createFlowSessionPagination(sessionModelPage));
+        List<AutomaticOperationWSDTO> operationWSDTOS = new ArrayList<>();
+        for (int i=0;sessionModelPage.getContent().size()>i;i++){
+            List<OperationDBModel> operationDBModels = operationRepository.findBySessionId(sessionModelPage.getContent().get(i).getId());
+            List<OperationFlowDBModel> operationFlowDBModels = operationFlowRepository.findBySessionId(sessionModelPage.getContent().get(i).getId());
+            if (!operationDBModels.isEmpty() && !operationFlowDBModels.isEmpty()){
+                operationWSDTOS.add(getAutomaticOperationWSDTO(sessionModelPage.getContent().get(i), operationDBModels.get(0),operationFlowDBModels.get(0)));
+            }
+        }
+        operationListWSDTO.setOperations(operationWSDTOS);
+
+        return operationListWSDTO;
+    }
+
+    public AutomaticOperationWSDTO getAutomaticOperationWSDTO(SessionDBModel sessionDBModel,OperationDBModel operationDBModel,OperationFlowDBModel operationFlowDBModel){
+
+        AutomaticOperationWSDTO operationWSDTO = new AutomaticOperationWSDTO();
+        operationWSDTO.setOperation(operationDBModel);
+        operationWSDTO.setOperationSession(sessionDBModel);
+        operationWSDTO.setOperationFlow(operationFlowDBModel);
+
+        return operationWSDTO;
+    }
 
 
     public OperationFlowDBModel mapOperationFlowDBModel(SessionDBModel sessionDBModel){
@@ -73,7 +110,6 @@ public class FlowHelper {
         List<AutomaticOperationWSDTO> automaticOperationWSDTOS = new ArrayList<>();
         for (OperationFlowDBModel operationFlowDBModel : operationFlowDBModels) {
             AutomaticOperationWSDTO automaticOperationWSDTO = new AutomaticOperationWSDTO();
-            automaticOperationWSDTO.setClientFlow(operationFlowDBModel);
             automaticOperationWSDTOS.add(automaticOperationWSDTO);
         }
         return automaticOperationWSDTOS;
@@ -91,6 +127,7 @@ public class FlowHelper {
 
         return paginationWSDTO;
     }
+
 
     public PaginationWSDTO createFlowSessionPagination(Page<SessionDBModel> sessionDBModelPage){
 

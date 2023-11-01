@@ -41,9 +41,9 @@ public class OperationFramework {
     }
 
 
-    public OperationListWSDTO getOperationsService(long userId, String campaignCategory,String sessionState,int reqPage,int reqSize) {
+    public OperationListWSDTO getOperationsService(long userId, String sessionType,String sessionState,int reqPage,int reqSize) {
 
-        return operationHelper.getOperationListWSDTO(sessionRepository.findAllByCampaignCategoryAndSessionState(campaignCategory,sessionState,PageRequest.of(reqPage,reqSize)));
+        return operationHelper.getOperationListWSDTO(sessionRepository.findAllBySessionTypeAndSessionState(sessionType,sessionState,PageRequest.of(reqPage,reqSize)));
     }
 
 
