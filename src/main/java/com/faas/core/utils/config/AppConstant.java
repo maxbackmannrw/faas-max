@@ -88,7 +88,6 @@ public class AppConstant {
     public static final String ALL_SESSIONS = "ALL_SESSIONS";
 
 
-    public static final String NEW_OPERATION = "NEW_OPERATION";
     public static final String READY_OPERATION = "READY_OPERATION";
     public static final String ACTIVE_OPERATION = "ACTIVE_OPERATION";
     public static final String FINISHED_OPERATION = "FINISHED_OPERATION";
