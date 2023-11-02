@@ -3,7 +3,7 @@ package com.faas.core.base.endpoint.controller.campaign.details.client.flow;
 import com.faas.core.base.middleware.campaign.details.client.flow.CampaignFlowSessionMiddleware;
 import com.faas.core.base.model.ws.campaign.details.client.flow.CampaignFlowSessionWSModel;
 import com.faas.core.base.model.ws.campaign.details.client.flow.CampaignFlowSessionRequest;
-import com.faas.core.base.model.ws.operation.automatic.OperationFlowSessionWSModel;
+import com.faas.core.base.model.ws.manager.automatic.OperationFlowSessionWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;
