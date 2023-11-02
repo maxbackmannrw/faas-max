@@ -18,10 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping(value = AppConstant.API_VERSION + "/base/operation/manual/")
 public class ManualOperationController {
 
-
     @Autowired
     ManualOperationMiddleware manualOperationMiddleware;
-
 
     @RequestMapping(value = BaseRoute.GET_MANUAL_OPERATIONS, method = RequestMethod.POST)
     public ResponseEntity<?> getManualOperations(@RequestParam long userId,
