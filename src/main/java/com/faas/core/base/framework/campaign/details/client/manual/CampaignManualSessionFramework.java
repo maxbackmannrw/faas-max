@@ -161,18 +161,18 @@ public class CampaignManualSessionFramework {
     public SessionWSDTO removeCampaignManualSessionService(long userId,long sessionId) {
 
         Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
-        if (sessionDBModel.isPresent()){
-            sessionRepository.delete(sessionDBModel.get());
+        List<OperationDBModel> operationDBModels = operationRepository.findBySessionId(sessionId);
+        if (sessionDBModel.isPresent() && !operationDBModels.isEmpty()){
+
             Optional<ClientDBModel> clientDBModel = clientRepository.findById(sessionDBModel.get().getClientId());
             if (clientDBModel.isPresent()){
                 clientDBModel.get().setClientState(AppConstant.READY_CLIENT);
                 clientDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
                 clientRepository.save(clientDBModel.get());
             }
-            List<OperationDBModel> operationDBModels = operationRepository.findBySessionIdAndClientId(sessionId,sessionDBModel.get().getClientId());
-            if (!operationDBModels.isEmpty()){
-                operationRepository.delete(operationDBModels.get(0));
-            }
+            sessionRepository.delete(sessionDBModel.get());
+            operationRepository.delete(operationDBModels.get(0));
+
             return sessionHelper.mapSessionWSDTO(sessionDBModel.get());
         }
         return null;

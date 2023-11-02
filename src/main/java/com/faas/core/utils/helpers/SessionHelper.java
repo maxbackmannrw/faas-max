@@ -117,7 +117,6 @@ public class SessionHelper {
         return sessionWSDTOS;
     }
 
-
     public SessionWSDTO mapSessionWSDTO(SessionDBModel sessionDBModel){
 
         SessionWSDTO sessionWSDTO =  new SessionWSDTO();
@@ -134,10 +133,10 @@ public class SessionHelper {
         return sessionWSDTO;
     }
 
-
     public SessionDBModel mapSessionDBModel(CampaignDBModel campaignDBModel, UserDBModel agentDBModel , ClientDBModel clientDBModel ) {
 
         SessionDBModel sessionDBModel = new SessionDBModel();
+
         sessionDBModel.setSessionUUID(appUtils.generateUUID());
         sessionDBModel.setClientId(clientDBModel.getId());
         sessionDBModel.setClientName(clientDBModel.getClientName());

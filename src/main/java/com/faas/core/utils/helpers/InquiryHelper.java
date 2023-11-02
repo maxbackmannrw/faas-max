@@ -151,7 +151,7 @@ public class InquiryHelper {
 
         OperationInquirySessionWSDTO operationInquirySessionWSDTO = new OperationInquirySessionWSDTO();
         operationInquirySessionWSDTO.setClientSession(sessionDBModel);
-        List<OperationInquiryDBModel> operationInquiryDBModels = operationInquiryRepository.findBySessionIdAndClientId(sessionDBModel.getId(),sessionDBModel.getClientId());
+        List<OperationInquiryDBModel> operationInquiryDBModels = operationInquiryRepository.findBySessionId(sessionDBModel.getId());
         if (!operationInquiryDBModels.isEmpty()){
             operationInquirySessionWSDTO.setClientInquiry(operationInquiryDBModels.get(0));
         }
