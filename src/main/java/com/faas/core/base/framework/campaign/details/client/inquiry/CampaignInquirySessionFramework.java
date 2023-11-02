@@ -165,26 +165,21 @@ public class CampaignInquirySessionFramework {
         Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
         if (sessionDBModel.isPresent()) {
             OperationInquirySessionWSDTO inquirySessionWSDTO = inquiryHelper.createInquirySessionWSDTO(sessionDBModel.get());
-
             Optional<ClientDBModel> clientDBModel = clientRepository.findById(sessionDBModel.get().getClientId());
             if (clientDBModel.isPresent()) {
                 clientDBModel.get().setClientState(AppConstant.READY_CLIENT);
                 clientDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
                 clientRepository.save(clientDBModel.get());
             }
-
             List<OperationDBModel> operationDBModels = operationRepository.findBySessionId(sessionId);
             if (!operationDBModels.isEmpty()){
                 operationRepository.delete(operationDBModels.get(0));
             }
-
             List<OperationInquiryDBModel> operationInquiryDBModels = operationInquiryRepository.findBySessionId(sessionId);
             if (!operationInquiryDBModels.isEmpty()){
                 operationInquiryRepository.delete(operationInquiryDBModels.get(0));
             }
-
             sessionRepository.delete(sessionDBModel.get());
-
             return inquirySessionWSDTO;
         }
         return null;

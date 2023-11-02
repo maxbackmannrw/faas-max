@@ -78,7 +78,6 @@ public class CampaignFlowSessionFramework {
 
         Page<SessionDBModel> sessionDBModelPage = sessionRepository.findAllByCampaignIdAndClientCityAndClientCountry(campaignId,city,country, PageRequest.of(reqPage,reqSize));
         if (sessionDBModelPage != null) {
-
             CampaignFlowSessionWSDTO campaignFlowSessionWSDTO = new CampaignFlowSessionWSDTO();
             campaignFlowSessionWSDTO.setPagination(flowHelper.createFlowSessionPagination(sessionDBModelPage));
             campaignFlowSessionWSDTO.setFlowSessions(flowHelper.createFlowSessionWSDTOS(sessionDBModelPage.getContent()));
@@ -87,12 +86,12 @@ public class CampaignFlowSessionFramework {
         }
         return null;
     }
+
 
     public CampaignFlowSessionWSDTO getCampaignFlowSessionsService(long userId, String campaignId, int reqPage, int reqSize) {
 
         Page<SessionDBModel> sessionDBModelPage = sessionRepository.findAllByCampaignId(campaignId, PageRequest.of(reqPage,reqSize));
         if (sessionDBModelPage != null) {
-
             CampaignFlowSessionWSDTO campaignFlowSessionWSDTO = new CampaignFlowSessionWSDTO();
             campaignFlowSessionWSDTO.setFlowSessions(flowHelper.createFlowSessionWSDTOS(sessionDBModelPage.getContent()));
             campaignFlowSessionWSDTO.setPagination(flowHelper.createFlowSessionPagination(sessionDBModelPage));
@@ -101,6 +100,7 @@ public class CampaignFlowSessionFramework {
         }
         return null;
     }
+
 
     public OperationFlowSessionWSDTO getCampaignFlowSessionService(long userId, long sessionId) {
 
@@ -110,6 +110,7 @@ public class CampaignFlowSessionFramework {
         }
         return null;
     }
+
 
     public List<OperationFlowSessionWSDTO> createCampaignFlowSessionService(CampaignFlowSessionRequest flowSessionRequest) {
 
@@ -163,25 +164,28 @@ public class CampaignFlowSessionFramework {
         return null;
     }
 
+
     public OperationFlowSessionWSDTO removeCampaignFlowSessionService(long userId, long sessionId) {
 
-        List<OperationFlowDBModel> operationFlowDBModels = operationFlowRepository.findBySessionId(sessionId);
         Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
-        if (!operationFlowDBModels.isEmpty() && sessionDBModel.isPresent()) {
-
+        if (sessionDBModel.isPresent()) {
+            OperationFlowSessionWSDTO campaignFlowSession = flowHelper.createFlowSessionWSDTO(sessionDBModel.get());
             Optional<ClientDBModel> clientDBModel = clientRepository.findById(sessionDBModel.get().getClientId());
             if (clientDBModel.isPresent()) {
                 clientDBModel.get().setClientState(AppConstant.READY_CLIENT);
                 clientDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
                 clientRepository.save(clientDBModel.get());
             }
-
-            OperationFlowSessionWSDTO deletedFlowSession = flowHelper.createFlowSessionWSDTO(sessionDBModel.get());
+            List<OperationDBModel> operationDBModels = operationRepository.findBySessionId(sessionId);
+            if (!operationDBModels.isEmpty()){
+                operationRepository.delete(operationDBModels.get(0));
+            }
+            List<OperationFlowDBModel> operationFlowDBModels = operationFlowRepository.findBySessionId(sessionId);
+            if (!operationFlowDBModels.isEmpty()){
+                operationFlowRepository.delete(operationFlowDBModels.get(0));
+            }
             sessionRepository.delete(sessionDBModel.get());
-            operationRepository.deleteAll(operationRepository.findBySessionIdAndClientId(sessionDBModel.get().getId(), sessionDBModel.get().getClientId()));
-            operationFlowRepository.deleteAll(operationFlowDBModels);
-
-            return deletedFlowSession;
+            return campaignFlowSession;
         }
         return null;
     }

@@ -173,7 +173,6 @@ public class CampaignManualSessionFramework {
                 clientRepository.save(clientDBModel.get());
             }
             sessionRepository.delete(sessionDBModel.get());
-
             return sessionHelper.mapSessionWSDTO(sessionDBModel.get());
         }
         return null;
