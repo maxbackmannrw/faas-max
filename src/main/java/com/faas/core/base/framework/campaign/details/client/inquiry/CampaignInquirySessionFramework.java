@@ -162,10 +162,9 @@ public class CampaignInquirySessionFramework {
 
     public OperationInquirySessionWSDTO removeCampaignInquirySessionService(long userId, long sessionId) {
 
-        List<OperationInquiryDBModel> operationInquiryDBModels = operationInquiryRepository.findBySessionId(sessionId);
         Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
-        List<OperationDBModel> operationDBModels = operationRepository.findBySessionId(sessionId);
-        if (!operationInquiryDBModels.isEmpty() && sessionDBModel.isPresent() && !operationDBModels.isEmpty()) {
+        if (sessionDBModel.isPresent()) {
+            OperationInquirySessionWSDTO inquirySessionWSDTO = inquiryHelper.createInquirySessionWSDTO(sessionDBModel.get());
 
             Optional<ClientDBModel> clientDBModel = clientRepository.findById(sessionDBModel.get().getClientId());
             if (clientDBModel.isPresent()) {
@@ -173,15 +172,24 @@ public class CampaignInquirySessionFramework {
                 clientDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
                 clientRepository.save(clientDBModel.get());
             }
-            OperationInquirySessionWSDTO inquirySessionWSDTO = inquiryHelper.createInquirySessionWSDTO(sessionDBModel.get());
+
+            List<OperationDBModel> operationDBModels = operationRepository.findBySessionId(sessionId);
+            if (!operationDBModels.isEmpty()){
+                operationRepository.delete(operationDBModels.get(0));
+            }
+
+            List<OperationInquiryDBModel> operationInquiryDBModels = operationInquiryRepository.findBySessionId(sessionId);
+            if (!operationInquiryDBModels.isEmpty()){
+                operationInquiryRepository.delete(operationInquiryDBModels.get(0));
+            }
+
             sessionRepository.delete(sessionDBModel.get());
-            operationRepository.delete(operationDBModels.get(0));
-            operationInquiryRepository.delete(operationInquiryDBModels.get(0));
 
             return inquirySessionWSDTO;
         }
         return null;
     }
+
 
 
 }
