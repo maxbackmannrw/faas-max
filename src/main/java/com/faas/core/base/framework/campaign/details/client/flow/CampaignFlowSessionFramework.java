@@ -132,6 +132,7 @@ public class CampaignFlowSessionFramework {
             Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(flowSessionRequest.getCampaignId());
             Optional<ClientDBModel> clientDBModel = clientRepository.findById(flowSessionRequest.getClientId());
             Optional<UserDBModel> agentDBModel = userRepository.findById(flowSessionRequest.getAgentId());
+
             if (clientDBModel.isPresent() && agentDBModel.isPresent() && campaignDBModel.isPresent()) {
 
                 clientDBModel.get().setClientState(AppConstant.BUSY_CLIENT);

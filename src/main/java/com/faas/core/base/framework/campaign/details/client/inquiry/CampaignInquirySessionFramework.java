@@ -127,6 +127,7 @@ public class CampaignInquirySessionFramework {
             Optional<ClientDBModel> clientDBModel = clientRepository.findById(inquirySessionRequest.getClientId());
             Optional<UserDBModel> agentDBModel = userRepository.findById(inquirySessionRequest.getAgentId());
             Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(inquirySessionRequest.getCampaignId());
+
             if (clientDBModel.isPresent() && clientDBModel.get().getClientState().equalsIgnoreCase(AppConstant.READY_CLIENT) && agentDBModel.isPresent() && campaignDBModel.isPresent() ){
 
                 clientDBModel.get().setClientState(AppConstant.BUSY_CLIENT);
