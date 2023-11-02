@@ -1,6 +1,6 @@
 package com.faas.core.base.endpoint.controller.manager.manual.details;
 
-import com.faas.core.base.middleware.manager.manual.content.ManualManagerMiddleware;
+import com.faas.core.base.middleware.manager.manual.details.ManualManagerDetailsMiddleware;
 import com.faas.core.base.model.ws.manager.manual.ManualOperationListWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
@@ -18,7 +18,7 @@ public class ManualManagerDetailsController {
 
 
     @Autowired
-    ManualManagerMiddleware manualManagerMiddleware;
+    ManualManagerDetailsMiddleware manualManagerDetailsMiddleware;
 
 
     @RequestMapping(value = BaseRoute.GET_MANUAL_OPERATIONS, method = RequestMethod.POST)
@@ -27,7 +27,7 @@ public class ManualManagerDetailsController {
                                                  @RequestParam int reqPage,
                                                  @RequestParam int reqSize) {
 
-        ManualOperationListWSModel response = manualManagerMiddleware.getManualOperations(userId,sessionState,reqPage,reqSize);
+        ManualOperationListWSModel response = manualManagerDetailsMiddleware.getManualOperations(userId,sessionState,reqPage,reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

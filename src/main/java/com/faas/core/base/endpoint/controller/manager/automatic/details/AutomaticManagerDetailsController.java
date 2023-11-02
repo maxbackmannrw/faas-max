@@ -1,6 +1,6 @@
 package com.faas.core.base.endpoint.controller.manager.automatic.details;
 
-import com.faas.core.base.middleware.manager.automatic.content.AutomaticManagerMiddleware;
+import com.faas.core.base.middleware.manager.automatic.details.AutomaticManagerDetailsMiddleware;
 import com.faas.core.base.model.ws.manager.automatic.AutomaticOperationListWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
@@ -18,7 +18,7 @@ public class AutomaticManagerDetailsController {
 
 
     @Autowired
-    AutomaticManagerMiddleware automaticManagerMiddleware;
+    AutomaticManagerDetailsMiddleware automaticManagerDetailsMiddleware;
 
 
     @RequestMapping(value = BaseRoute.GET_AUTOMATIC_OPERATIONS, method = RequestMethod.POST)
@@ -27,7 +27,7 @@ public class AutomaticManagerDetailsController {
                                                     @RequestParam int reqPage,
                                                     @RequestParam int reqSize) {
 
-        AutomaticOperationListWSModel response = automaticManagerMiddleware.getAutomaticOperations(userId,sessionState,reqPage,reqSize);
+        AutomaticOperationListWSModel response = automaticManagerDetailsMiddleware.getAutomaticOperations(userId,sessionState,reqPage,reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
