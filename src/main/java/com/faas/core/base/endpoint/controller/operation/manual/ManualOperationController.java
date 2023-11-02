@@ -13,13 +13,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
 @Controller
 @RequestMapping(value = AppConstant.API_VERSION + "/base/operation/manual/")
 public class ManualOperationController {
 
+
     @Autowired
     ManualOperationMiddleware manualOperationMiddleware;
+
 
     @RequestMapping(value = BaseRoute.GET_MANUAL_OPERATIONS, method = RequestMethod.POST)
     public ResponseEntity<?> getManualOperations(@RequestParam long userId,
