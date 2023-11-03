@@ -5,15 +5,51 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/manager/automatic/details/AutomaticManagerDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/manager/automatic/details/AutomaticManagerDetailsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/manager/inquiry/details/InquiryManagerDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/manager/inquiry/details/InquiryManagerDetailsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/manager/manual/details/ManualManagerDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/manager/manual/details/ManualManagerDetailsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/manager/automatic/details/AutomaticManagerDetailsFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/manager/automatic/details/AutomaticManagerDetailsFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/manager/inquiry/details/InquiryManagerDetailsFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/manager/inquiry/details/InquiryManagerDetailsFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/manager/manual/details/ManualManagerDetailsFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/manager/manual/details/ManualManagerDetailsFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/manager/automatic/details/AutomaticManagerDetailsMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/manager/automatic/details/AutomaticManagerDetailsMiddleware.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/manager/inquiry/details/InquiryManagerDetailsMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/manager/inquiry/details/InquiryManagerDetailsMiddleware.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/manager/manual/details/ManualManagerDetailsMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/manager/manual/details/ManualManagerDetailsMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/campaign/details/client/flow/CampaignFlowSessionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/campaign/details/client/flow/CampaignFlowSessionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/campaign/details/client/inquiry/CampaignInquirySessionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/campaign/details/client/inquiry/CampaignInquirySessionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/manager/automatic/content/AutomaticManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/manager/automatic/operation/AutomaticOperationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/manager/automatic/details/AutomaticManagerDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/manager/automatic/campaign/AutomaticCampaignController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/manager/inquiry/content/InquiryManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/manager/inquiry/operation/InquiryOperationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/manager/inquiry/details/InquiryManagerDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/manager/inquiry/campaign/InquiryCampaignController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/manager/manual/content/ManualManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/manager/manual/operation/ManualOperationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/manager/manual/details/ManualManagerDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/manager/manual/campaign/ManualCampaignController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/campaign/details/client/flow/CampaignFlowSessionFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/campaign/details/client/flow/CampaignFlowSessionFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/campaign/details/client/inquiry/CampaignInquirySessionFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/campaign/details/client/inquiry/CampaignInquirySessionFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/manager/automatic/content/AutomaticManagerFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/manager/automatic/operation/AutomaticOperationFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/manager/automatic/details/AutomaticManagerDetailsFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/manager/automatic/campaign/AutomaticCampaignFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/manager/inquiry/content/InquiryManagerFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/manager/inquiry/operation/InquiryOperationFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/manager/inquiry/details/InquiryManagerDetailsFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/manager/inquiry/campaign/InquiryCampaignFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/manager/manual/content/ManualManagerFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/manager/manual/operation/ManualOperationFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/manager/manual/details/ManualManagerDetailsFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/manager/manual/campaign/ManualCampaignFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/campaign/details/client/flow/CampaignFlowSessionMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/campaign/details/client/flow/CampaignFlowSessionMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/campaign/details/client/inquiry/CampaignInquirySessionMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/campaign/details/client/inquiry/CampaignInquirySessionMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/manager/automatic/content/AutomaticManagerMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/manager/automatic/operation/AutomaticOperationMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/manager/automatic/details/AutomaticManagerDetailsMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/manager/automatic/campaign/AutomaticCampaignMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/manager/inquiry/content/InquiryManagerMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/manager/inquiry/operation/InquiryOperationMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/manager/inquiry/details/InquiryManagerDetailsMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/manager/inquiry/campaign/InquiryCampaignMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/manager/manual/content/ManualManagerMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/manager/manual/operation/ManualOperationMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/manager/manual/details/ManualManagerDetailsMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/manager/manual/campaign/ManualCampaignMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/details/client/flow/dto/CampaignFlowSessionWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/details/client/flow/dto/CampaignFlowSessionWSDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/details/client/inquiry/dto/CampaignInquirySessionWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/details/client/inquiry/dto/CampaignInquirySessionWSDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/automatic/AutomaticOperationListWSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/automatic/operation/AutomaticOperationListWSModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/automatic/AutomaticOperationWSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/automatic/operation/AutomaticOperationWSModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/automatic/OperationFlowSessionWSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/automatic/operation/OperationFlowSessionWSModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/automatic/dto/AutomaticOperationListWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/automatic/operation/dto/AutomaticOperationListWSDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/automatic/dto/AutomaticOperationWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/automatic/operation/dto/AutomaticOperationWSDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/automatic/dto/OperationFlowSessionWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/automatic/operation/dto/OperationFlowSessionWSDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/inquiry/InquiryOperationListWSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/inquiry/operation/InquiryOperationListWSModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/inquiry/InquiryOperationWSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/inquiry/operation/InquiryOperationWSModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/inquiry/OperationInquirySessionWSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/inquiry/operation/OperationInquirySessionWSModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/inquiry/dto/InquiryOperationListWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/inquiry/operation/dto/InquiryOperationListWSDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/inquiry/dto/InquiryOperationWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/inquiry/operation/dto/InquiryOperationWSDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/inquiry/dto/OperationInquirySessionWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/inquiry/operation/dto/OperationInquirySessionWSDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/manual/ManualOperationListWSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/manual/operation/ManualOperationListWSModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/manual/ManualOperationWSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/manual/operation/ManualOperationWSModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/manual/dto/ManualOperationListWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/manual/operation/dto/ManualOperationListWSDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/manual/dto/ManualOperationWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/manual/operation/dto/ManualOperationWSDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/helpers/FlowHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/helpers/FlowHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/helpers/InquiryHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/helpers/InquiryHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/helpers/OperationHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/helpers/OperationHelper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +113,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Applications/MAMP/htdocs/faas/backend/faas-core-server/src/main/java/com/faas/core/base/middleware/manager/manual",
+    "last_opened_file_path": "/Applications/MAMP/htdocs/faas/backend/faas-core-server/src/main/java/com/faas/core/base/model/ws/manager/manual",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -93,11 +129,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/manual" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/inquiry" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/automatic" />
       <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/manager/manual" />
       <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/manager/inquiry" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/manager/automatic" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/manager/manual" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/manager/inquiry" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/scenario/content/dto" />
@@ -381,15 +417,7 @@
       <workItem from="1698833175574" duration="173000" />
       <workItem from="1698833368558" duration="10685000" />
       <workItem from="1698864666255" duration="3247000" />
-      <workItem from="1698929028108" duration="5731000" />
-    </task>
-    <task id="LOCAL-00329" summary="   ScenarioExecutes -&gt; ScenarioExecutions converted">
-      <option name="closed" value="true" />
-      <created>1697906662623</created>
-      <option name="number" value="00329" />
-      <option name="presentableId" value="LOCAL-00329" />
-      <option name="project" value="LOCAL" />
-      <updated>1697906662623</updated>
+      <workItem from="1698929028108" duration="6940000" />
     </task>
     <task id="LOCAL-00330" summary="   ScenarioExecutes -&gt; ScenarioExecutions converted">
       <option name="closed" value="true" />
@@ -775,7 +803,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698956591545</updated>
     </task>
-    <option name="localTasksCounter" value="378" />
+    <task id="LOCAL-00378" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1698967811600</created>
+      <option name="number" value="00378" />
+      <option name="presentableId" value="LOCAL-00378" />
+      <option name="project" value="LOCAL" />
+      <updated>1698967811600</updated>
+    </task>
+    <option name="localTasksCounter" value="379" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -809,7 +845,7 @@
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/manager/automatic/content/AutomaticManagerFramework.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/manager/automatic/operation/AutomaticOperationFramework.java</url>
           <line>96</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
