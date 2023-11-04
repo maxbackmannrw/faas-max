@@ -39,6 +39,7 @@ public class ManualCampaignMiddleware {
         return response;
     }
 
+
     public ManualCampaignWSModel getManualCampaign(long userId,String campaignId) {
 
         ManualCampaignWSModel response = new ManualCampaignWSModel();
