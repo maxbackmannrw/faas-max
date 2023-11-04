@@ -1,38 +1,20 @@
 package com.faas.core.base.framework.manager.inquiry.campaign;
 
-import com.faas.core.base.model.db.client.session.SessionDBModel;
-import com.faas.core.base.model.ws.manager.inquiry.operation.dto.InquiryOperationListWSDTO;
+import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
+import com.faas.core.base.model.ws.manager.inquiry.campaign.dto.InquiryCampaignWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
-import com.faas.core.base.repo.client.content.ClientRepository;
-import com.faas.core.base.repo.client.session.SessionRepository;
-import com.faas.core.base.repo.operation.content.OperationRepository;
-import com.faas.core.base.repo.operation.details.inquiry.OperationInquiryRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
-import com.faas.core.utils.helpers.InquiryHelper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 
 @Component
 public class InquiryCampaignFramework {
-
-    @Autowired
-    InquiryHelper inquiryHelper;
-
-    @Autowired
-    ClientRepository clientRepository;
-
-    @Autowired
-    SessionRepository sessionRepository;
-
-    @Autowired
-    OperationRepository operationRepository;
-
-    @Autowired
-    OperationInquiryRepository operationInquiryRepository;
 
     @Autowired
     CampaignRepository campaignRepository;
@@ -41,14 +23,30 @@ public class InquiryCampaignFramework {
     AppUtils appUtils;
 
 
-    public InquiryOperationListWSDTO getInquiryOperationsService(long userId, String sessionState, int reqPage, int reqSize) {
+    public List<InquiryCampaignWSDTO> getInquiryCampaignsService(long userId) {
 
-        Page<SessionDBModel> sessionModelPage = sessionRepository.findAllBySessionTypeAndSessionState(AppConstant.INQUIRY_CAMPAIGN, sessionState,PageRequest.of(reqPage,reqSize));
-        if (sessionModelPage != null){
-            return inquiryHelper.getInquiryOperationListWSDTO(sessionModelPage);
+        List<InquiryCampaignWSDTO> campaignWSDTOS = new ArrayList<>();
+        List<CampaignDBModel> campaignDBModels = campaignRepository.findByCampaignCategory(AppConstant.INQUIRY_CAMPAIGN);
+        for (CampaignDBModel campaignDBModel : campaignDBModels) {
+            InquiryCampaignWSDTO campaignWSDTO = new InquiryCampaignWSDTO();
+            campaignWSDTO.setCampaign(campaignDBModel);
+            campaignWSDTOS.add(campaignWSDTO);
+        }
+        return campaignWSDTOS;
+    }
+
+
+    public InquiryCampaignWSDTO getInquiryCampaignService(long userId,String campaignId) {
+
+        Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
+        if (campaignDBModel.isPresent()){
+            InquiryCampaignWSDTO campaignWSDTO = new InquiryCampaignWSDTO();
+            campaignWSDTO.setCampaign(campaignDBModel.get());
+            return campaignWSDTO;
         }
         return null;
     }
+
 
 
 }

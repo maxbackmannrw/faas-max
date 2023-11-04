@@ -187,12 +187,18 @@ public class BaseRoute {
     public static final String REMOVE_FLOW_TYPE = "removeflowtype";
 
 
+    public static final String GET_MANUAL_CAMPAIGNS = "getmanualcampaigns";
+    public static final String GET_MANUAL_CAMPAIGN = "getmanualcampaign";
+
     public static final String GET_MANUAL_OPERATIONS = "getmanualoperations";
     public static final String GET_MANUAL_OPERATION = "getmanualoperation";
     public static final String CREATE_MANUAL_OPERATION = "createmanualoperation";
     public static final String UPDATE_MANUAL_OPERATION = "updatemanualoperation";
     public static final String REMOVE_MANUAL_OPERATION = "removemanualoperation";
 
+
+    public static final String GET_INQUIRY_CAMPAIGNS = "getinquirycampaigns";
+    public static final String GET_INQUIRY_CAMPAIGN = "getinquirycampaign";
 
     public static final String GET_INQUIRY_OPERATIONS = "getinquiryoperations";
     public static final String GET_INQUIRY_OPERATION = "getinquiryoperation";
@@ -201,11 +207,15 @@ public class BaseRoute {
     public static final String REMOVE_INQUIRY_OPERATION = "removeinquiryoperation";
 
 
+    public static final String GET_AUTOMATIC_CAMPAIGNS = "getautomaticcampaigns";
+    public static final String GET_AUTOMATIC_CAMPAIGN = "getautomaticcampaign";
+
     public static final String GET_AUTOMATIC_OPERATIONS = "getautomaticoperations";
     public static final String GET_AUTOMATIC_OPERATION = "getautomaticoperation";
     public static final String CREATE_AUTOMATIC_OPERATION = "createautomaticoperation";
     public static final String UPDATE_AUTOMATIC_OPERATION = "updateautomaticoperation";
     public static final String REMOVE_AUTOMATIC_OPERATION = "removeautomaticoperation";
+
 
 
     public static final String GET_ASSETS_BY_TYPE = "getassetsbytype";
