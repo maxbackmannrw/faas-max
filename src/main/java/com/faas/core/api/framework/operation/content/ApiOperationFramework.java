@@ -6,14 +6,14 @@ import com.faas.core.api.model.ws.operation.content.dto.ApiOperationSessionWSDTO
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
 import com.faas.core.base.model.db.client.content.ClientDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
-import com.faas.core.base.model.db.client.session.SessionDBModel;
+import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.operation.details.flow.OperationFlowRepository;
 import com.faas.core.base.repo.operation.details.inquiry.OperationInquiryRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
-import com.faas.core.base.repo.client.session.SessionRepository;
+import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.ActivityHelper;

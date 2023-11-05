@@ -4,8 +4,6 @@ public class BaseRoute {
 
     public static final String MANAGER_LOGIN = "managerlogin";
 
-
-
     public static final String GET_ALL_USERS = "getallusers";
     public static final String GET_USERS_BY_TYPE = "getusersbytype";
     public static final String GET_USER = "getuser";
@@ -125,7 +123,6 @@ public class BaseRoute {
     public static final String UPDATE_OPERATION = "updateoperation";
     public static final String REMOVE_OPERATION = "removeoperation";
 
-    public static final String GET_OPERATION_DETAILS = "getoperationdetails";
 
 
     public static final String GET_ALL_CLIENTS = "getallclients";
@@ -195,6 +192,12 @@ public class BaseRoute {
     public static final String CREATE_MANUAL_OPERATION = "createmanualoperation";
     public static final String UPDATE_MANUAL_OPERATION = "updatemanualoperation";
     public static final String REMOVE_MANUAL_OPERATION = "removemanualoperation";
+
+
+
+
+    public static final String GET_MANAGER_CLIENTS = "getmanagerclients";
+
 
 
     public static final String GET_INQUIRY_CAMPAIGNS = "getinquirycampaigns";

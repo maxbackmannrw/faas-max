@@ -3,7 +3,7 @@ package com.faas.core.rest.service.channel.sms;
 import com.faas.core.base.model.db.channel.account.SmsAccountDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationSmsMessageDBModel;
 import com.faas.core.base.model.db.process.content.ProcessDBModel;
-import com.faas.core.base.model.db.client.session.SessionDBModel;
+import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.repo.channel.account.SmsAccountRepository;
 import com.faas.core.base.repo.operation.details.channel.OperationSmsMessageRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;

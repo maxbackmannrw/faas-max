@@ -1,6 +1,6 @@
 package com.faas.core.api.model.ws.client.session.dto;
 
-import com.faas.core.base.model.db.client.session.SessionDBModel;
+import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
 
 import java.util.List;

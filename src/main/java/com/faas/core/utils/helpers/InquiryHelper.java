@@ -7,7 +7,7 @@ import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.client.content.ClientDBModel;
 import com.faas.core.base.model.db.operation.details.inquiry.OperationInquiryDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
-import com.faas.core.base.model.db.client.session.SessionDBModel;
+import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.db.user.content.UserDBModel;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
 import com.faas.core.base.model.ws.manager.inquiry.operation.dto.InquiryOperationListWSDTO;
@@ -16,7 +16,7 @@ import com.faas.core.base.model.ws.manager.inquiry.operation.dto.OperationInquir
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.operation.details.inquiry.OperationInquiryRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
-import com.faas.core.base.repo.client.session.SessionRepository;
+import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;

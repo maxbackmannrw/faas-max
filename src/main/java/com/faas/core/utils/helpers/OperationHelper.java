@@ -22,7 +22,7 @@ import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.client.content.ClientDBModel;
 import com.faas.core.base.model.db.client.details.ClientNoteDBModel;
 import com.faas.core.base.model.db.client.details.ClientPhoneDBModel;
-import com.faas.core.base.model.db.client.session.SessionDBModel;
+import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.operation.details.flow.OperationFlowDBModel;
 import com.faas.core.base.model.db.operation.details.inquiry.OperationInquiryDBModel;
@@ -39,7 +39,7 @@ import com.faas.core.base.model.ws.manager.manual.operation.dto.ManualOperationL
 import com.faas.core.base.model.ws.manager.manual.operation.dto.ManualOperationWSDTO;
 import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
 import com.faas.core.base.repo.client.details.*;
-import com.faas.core.base.repo.client.session.SessionRepository;
+import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.operation.details.channel.*;
 import com.faas.core.base.repo.operation.details.flow.OperationFlowRepository;

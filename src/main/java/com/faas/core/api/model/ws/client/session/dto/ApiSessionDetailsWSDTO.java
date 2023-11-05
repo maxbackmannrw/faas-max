@@ -3,7 +3,7 @@ package com.faas.core.api.model.ws.client.session.dto;
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.process.content.ProcessDBModel;
-import com.faas.core.base.model.db.client.session.SessionDBModel;
+import com.faas.core.base.model.db.session.SessionDBModel;
 
 public class ApiSessionDetailsWSDTO {
 

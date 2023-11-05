@@ -3,7 +3,7 @@ package com.faas.core.base.framework.operation;
 import com.faas.core.base.model.ws.operation.content.dto.CampaignOperationWSDTO;
 import com.faas.core.base.model.ws.operation.content.dto.OperationListWSDTO;
 import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
-import com.faas.core.base.repo.client.session.SessionRepository;
+import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;

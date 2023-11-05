@@ -3,7 +3,7 @@ package com.faas.core.base.framework.campaign.details.client.inquiry;
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.client.content.ClientDBModel;
 import com.faas.core.base.model.db.operation.details.inquiry.OperationInquiryDBModel;
-import com.faas.core.base.model.db.client.session.SessionDBModel;
+import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.user.content.UserDBModel;
 import com.faas.core.base.model.ws.campaign.details.client.inquiry.CampaignInquirySessionRequest;
@@ -13,7 +13,7 @@ import com.faas.core.base.model.ws.manager.inquiry.operation.dto.OperationInquir
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.operation.details.inquiry.OperationInquiryRepository;
-import com.faas.core.base.repo.client.session.SessionRepository;
+import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.user.content.UserRepository;

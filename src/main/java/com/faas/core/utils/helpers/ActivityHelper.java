@@ -4,7 +4,7 @@ import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.operation.content.dao.OperationActivityDAO;
 import com.faas.core.base.model.db.user.content.UserDBModel;
 import com.faas.core.base.repo.operation.content.OperationRepository;
-import com.faas.core.base.repo.client.session.SessionRepository;
+import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.base.repo.user.content.UserRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;

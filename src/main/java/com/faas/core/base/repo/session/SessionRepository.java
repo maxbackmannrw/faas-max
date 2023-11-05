@@ -1,6 +1,6 @@
-package com.faas.core.base.repo.client.session;
+package com.faas.core.base.repo.session;
 
-import com.faas.core.base.model.db.client.session.SessionDBModel;
+import com.faas.core.base.model.db.session.SessionDBModel;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;

@@ -2,7 +2,7 @@ package com.faas.core.base.model.ws.client.session.content.dto;
 
 import com.faas.core.base.model.db.client.content.ClientDBModel;
 import com.faas.core.base.model.db.client.details.*;
-import com.faas.core.base.model.db.client.session.SessionDBModel;
+import com.faas.core.base.model.db.session.SessionDBModel;
 
 import java.util.List;
 

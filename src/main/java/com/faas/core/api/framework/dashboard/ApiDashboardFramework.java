@@ -9,7 +9,7 @@ import com.faas.core.base.model.db.campaign.details.CampaignAgentDBModel;
 import com.faas.core.base.model.db.process.content.ProcessDBModel;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
-import com.faas.core.base.repo.client.session.SessionRepository;
+import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.operation.details.flow.OperationFlowRepository;
 import com.faas.core.base.repo.operation.details.inquiry.OperationInquiryRepository;

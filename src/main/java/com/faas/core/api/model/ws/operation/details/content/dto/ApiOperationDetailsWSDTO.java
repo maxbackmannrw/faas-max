@@ -9,7 +9,7 @@ import com.faas.core.api.model.ws.client.details.dto.ApiClientNoteWSDTO;
 import com.faas.core.api.model.ws.client.details.dto.ApiClientOsIntWSDTO;
 import com.faas.core.api.model.ws.operation.details.scenario.dto.ApiOperationScenarioWSDTO;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
-import com.faas.core.base.model.db.client.session.SessionDBModel;
+import com.faas.core.base.model.db.session.SessionDBModel;
 
 import java.util.List;
 

@@ -3,7 +3,7 @@ package com.faas.core.rest.service.channel.wapp;
 import com.faas.core.base.model.db.channel.account.WappAccountDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationWappMessageDBModel;
 import com.faas.core.base.model.db.process.content.ProcessDBModel;
-import com.faas.core.base.model.db.client.session.SessionDBModel;
+import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.repo.channel.account.WappAccountRepository;
 import com.faas.core.base.repo.operation.details.channel.OperationWappMessageRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;

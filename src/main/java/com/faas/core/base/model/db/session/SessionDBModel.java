@@ -1,4 +1,4 @@
-package com.faas.core.base.model.db.client.session;
+package com.faas.core.base.model.db.session;
 
 import javax.persistence.*;
 

@@ -1,6 +1,6 @@
 package com.faas.core.api.model.ws.flow.content.dto;
 
-import com.faas.core.base.model.db.client.session.SessionDBModel;
+import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.operation.details.flow.OperationFlowDBModel;
 

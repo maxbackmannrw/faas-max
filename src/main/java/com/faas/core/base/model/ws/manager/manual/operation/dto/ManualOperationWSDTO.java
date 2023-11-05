@@ -1,6 +1,6 @@
 package com.faas.core.base.model.ws.manager.manual.operation.dto;
 
-import com.faas.core.base.model.db.client.session.SessionDBModel;
+import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 
 public class ManualOperationWSDTO {
