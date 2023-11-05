@@ -1,4 +1,4 @@
-package com.faas.core.base.framework.client.management.content;
+package com.faas.core.base.framework.manager.client.content;
 
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.ws.manager.inquiry.campaign.dto.InquiryCampaignWSDTO;
@@ -13,7 +13,7 @@ import java.util.List;
 
 
 @Component
-public class ClientManagementFramework {
+public class ClientManagerFramework {
 
     @Autowired
     CampaignRepository campaignRepository;

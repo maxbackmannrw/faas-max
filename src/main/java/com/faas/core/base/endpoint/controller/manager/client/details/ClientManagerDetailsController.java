@@ -1,6 +1,6 @@
-package com.faas.core.base.endpoint.controller.client.management.content;
+package com.faas.core.base.endpoint.controller.manager.client.details;
 
-import com.faas.core.base.middleware.client.management.content.ClientManagementMiddleware;
+import com.faas.core.base.middleware.manager.client.details.ClientManagerDetailsMiddleware;
 import com.faas.core.base.model.ws.manager.inquiry.campaign.InquiryCampaignWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
@@ -13,24 +13,25 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping(value = AppConstant.API_VERSION + "/base/client/management/")
-public class ClientManagementController {
+@RequestMapping(value = AppConstant.API_VERSION + "/base/client/manager/details/")
+public class ClientManagerDetailsController {
 
 
     @Autowired
-    ClientManagementMiddleware clientManagementMiddleware;
+    ClientManagerDetailsMiddleware clientManagerDetailsMiddleware;
 
 
     @RequestMapping(value = BaseRoute.GET_INQUIRY_CAMPAIGNS, method = RequestMethod.POST)
     public ResponseEntity<?> getInquiryCampaigns(@RequestParam long userId) {
 
-        InquiryCampaignWSModel response = clientManagementMiddleware.getInquiryCampaigns(userId);
+        InquiryCampaignWSModel response = clientManagerDetailsMiddleware.getInquiryCampaigns(userId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
+
 
 
 }
