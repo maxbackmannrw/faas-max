@@ -1,6 +1,6 @@
-package com.faas.core.base.endpoint.controller.manager.client.manager;
+package com.faas.core.base.endpoint.controller.manager.client.content;
 
-import com.faas.core.base.middleware.manager.client.manager.ClientManagerMiddleware;
+import com.faas.core.base.middleware.manager.client.content.ClientManagerMiddleware;
 import com.faas.core.base.model.ws.manager.inquiry.campaign.InquiryCampaignWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
