@@ -54,7 +54,7 @@ public class ClientManagerMiddleware {
         }
 
         response.setClientRemotes(clientRemoteWSDTOS);
-        general.setOperation("getClientRemote");
+        general.setOperation("getClientRemotes");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
