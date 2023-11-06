@@ -1,7 +1,8 @@
 package com.faas.core.base.endpoint.controller.manager.client.content;
 
 import com.faas.core.base.middleware.manager.client.content.ClientManagerMiddleware;
-import com.faas.core.base.model.ws.manager.inquiry.campaign.InquiryCampaignWSModel;
+import com.faas.core.base.model.ws.manager.client.content.ClientRemoteWSModel;
+import com.faas.core.base.model.ws.manager.client.content.ClientManagerRemoteWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +22,27 @@ public class ClientManagerController {
     ClientManagerMiddleware clientManagerMiddleware;
 
 
-    @RequestMapping(value = BaseRoute.GET_MANAGER_CLIENTS, method = RequestMethod.POST)
-    public ResponseEntity<?> getManagerClients(@RequestParam long userId) {
+    @RequestMapping(value = BaseRoute.GET_CLIENT_MANAGER_REMOTES, method = RequestMethod.POST)
+    public ResponseEntity<?> getClientManagerRemotes(@RequestParam long userId,
+                                                     @RequestParam String remoteType,
+                                                     @RequestParam String remoteState,
+                                                     @RequestParam int reqPage,
+                                                     @RequestParam int reqSize) {
 
-        InquiryCampaignWSModel response = clientManagerMiddleware.getInquiryCampaigns(userId);
+        ClientManagerRemoteWSModel response = clientManagerMiddleware.getClientManagerRemotes(userId,remoteType,remoteState,reqPage,reqSize);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = BaseRoute.GET_CLIENT_REMOTES, method = RequestMethod.POST)
+    public ResponseEntity<?> getClientRemotes(@RequestParam long userId,
+                                              @RequestParam long clientId) {
+
+        ClientRemoteWSModel response = clientManagerMiddleware.getClientRemotes(userId,clientId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -33,16 +51,19 @@ public class ClientManagerController {
     }
 
 
-    @RequestMapping(value = BaseRoute.GET_INQUIRY_CAMPAIGNS, method = RequestMethod.POST)
-    public ResponseEntity<?> getManagerClients2(@RequestParam long userId) {
+    @RequestMapping(value = BaseRoute.GET_CLIENT_REMOTE, method = RequestMethod.POST)
+    public ResponseEntity<?> getClientRemote(@RequestParam long userId,
+                                             @RequestParam long clientId,
+                                             @RequestParam String remoteId) {
 
-        InquiryCampaignWSModel response = clientManagerMiddleware.getInquiryCampaigns(userId);
+        ClientRemoteWSModel response = clientManagerMiddleware.getClientRemote(userId,clientId,remoteId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
+
 
 
 }

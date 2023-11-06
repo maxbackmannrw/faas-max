@@ -1,6 +1,6 @@
-package com.faas.core.base.middleware.manager.client.management;
+package com.faas.core.base.middleware.manager.client.details;
 
-import com.faas.core.base.framework.manager.client.management.ClientManagementFramework;
+import com.faas.core.base.framework.manager.client.details.ClientManagerDetailsFramework;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.model.ws.manager.inquiry.campaign.InquiryCampaignWSModel;
 import com.faas.core.utils.config.AppConstant;
@@ -9,11 +9,11 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class ClientManagementMiddleware {
+public class ClientManagerDetailsMiddleware {
 
 
     @Autowired
-    ClientManagementFramework clientManagementFramework;
+    ClientManagerDetailsFramework clientManagerDetailsFramework;
 
 
     public InquiryCampaignWSModel getInquiryCampaigns(long userId) {

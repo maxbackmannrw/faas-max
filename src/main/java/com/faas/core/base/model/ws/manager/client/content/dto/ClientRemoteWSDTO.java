@@ -1,4 +1,4 @@
-package com.faas.core.base.model.ws.client.details.dto;
+package com.faas.core.base.model.ws.manager.client.content.dto;
 
 import com.faas.core.base.model.db.client.details.ClientRemoteDBModel;
 
