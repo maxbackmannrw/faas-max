@@ -58,6 +58,9 @@ public class UtilsSettingsFramework {
     ClientPhoneRepository clientPhoneRepository;
 
     @Autowired
+    ClientRemoteRepository clientRemoteRepository;
+
+    @Autowired
     SessionRepository sessionRepository;
 
     @Autowired
@@ -356,6 +359,7 @@ public class UtilsSettingsFramework {
         clientEmailRepository.deleteAll();
         clientNoteRepository.deleteAll();
         clientPhoneRepository.deleteAll();
+        clientRemoteRepository.deleteAll();
         sessionRepository.deleteAll();
         operationRepository.deleteAll();
         operationScenarioRepository.deleteAll();

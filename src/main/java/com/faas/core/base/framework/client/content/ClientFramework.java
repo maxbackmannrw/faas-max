@@ -9,10 +9,7 @@ import com.faas.core.base.model.ws.client.content.dto.ClientWSDTO;
 import com.faas.core.base.model.ws.client.content.dto.ClientsByStateWSDTO;
 import com.faas.core.base.model.ws.client.content.dto.CreateClientRequestDTO;
 import com.faas.core.base.repo.client.content.ClientRepository;
-import com.faas.core.base.repo.client.details.ClientAddressRepository;
-import com.faas.core.base.repo.client.details.ClientDataRepository;
-import com.faas.core.base.repo.client.details.ClientEmailRepository;
-import com.faas.core.base.repo.client.details.ClientPhoneRepository;
+import com.faas.core.base.repo.client.details.*;
 import com.faas.core.base.repo.client.settings.ClientTypeRepository;
 import com.faas.core.base.repo.operation.details.channel.*;
 import com.faas.core.base.repo.session.SessionRepository;
@@ -55,6 +52,12 @@ public class ClientFramework {
 
     @Autowired
     ClientAddressRepository clientAddressRepository;
+
+    @Autowired
+    ClientRemoteRepository clientRemoteRepository;
+
+    @Autowired
+    ClientNoteRepository clientNoteRepository;
 
     @Autowired
     ClientTypeRepository clientTypeRepository;
@@ -227,6 +230,7 @@ public class ClientFramework {
         if (clientDBModel.getEmailAddress() != null && !clientDBModel.getEmailAddress().equalsIgnoreCase("")){
             clientDetailsFramework.createClientEmailService(clientDBModel.getId(),clientDBModel.getEmailAddress());
         }
+        clientDetailsFramework.createClientRemoteService(clientDBModel.getId());
     }
 
 
@@ -266,6 +270,8 @@ public class ClientFramework {
             clientAddressRepository.deleteAll(clientAddressRepository.findByClientId(clientId));
             clientPhoneRepository.deleteAll(clientPhoneRepository.findByClientId(clientId));
             clientEmailRepository.deleteAll(clientEmailRepository.findByClientId(clientId));
+            clientRemoteRepository.deleteAll(clientRemoteRepository.findByClientId(clientId));
+            clientNoteRepository.deleteAll(clientNoteRepository.findByClientId(clientId));
             sessionRepository.deleteAll(sessionRepository.findByClientId(clientId));
             operationRepository.deleteAll(operationRepository.findByClientId(clientId));
             operationEmailMessageRepository.deleteAll(operationEmailMessageRepository.findByClientId(clientId));
