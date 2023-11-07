@@ -5,7 +5,7 @@ import org.hibernate.annotations.ColumnDefault;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "client_table")
+@Table(name = "clients_table")
 public class ClientDBModel {
 
     @Id
