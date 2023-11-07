@@ -5,26 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/client/details/dao/ClientRemoteDeviceDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/client/content/ClientRemoteDeviceWSModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/client/content/ClientRemoteListWSModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/client/content/dto/ClientRemoteDeviceWSDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/client/content/dto/ClientRemoteListWSDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/helpers/ClientHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/scenario/ApiOperationScenarioFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/scenario/ApiOperationScenarioFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/manager/client/content/ClientManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/manager/client/content/ClientManagerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/client/content/ClientFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/client/content/ClientFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/manager/client/content/ClientManagerFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/manager/client/content/ClientManagerFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/manager/client/content/ClientManagerMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/manager/client/content/ClientManagerMiddleware.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/client/content/ClientDBModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/client/content/ClientDBModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/client/details/ClientRemoteDBModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/client/details/ClientRemoteDBModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/client/content/dto/ClientManagerRemoteWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/client/content/dto/ClientManagerRemoteWSDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/client/content/dto/ClientRemoteWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/client/content/dto/ClientRemoteWSDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/repo/client/content/ClientRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/repo/client/content/ClientRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/repo/client/details/ClientRemoteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/repo/client/details/ClientRemoteRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/config/AppConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/config/AppConstant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/config/BaseRoute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/config/BaseRoute.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -403,15 +384,7 @@
       <workItem from="1699266870847" duration="13341000" />
       <workItem from="1699310939915" duration="288000" />
       <workItem from="1699343099624" duration="256000" />
-      <workItem from="1699349696628" duration="5867000" />
-    </task>
-    <task id="LOCAL-00339" summary="   ScenarioExecutes -&gt; ScenarioExecutions converted">
-      <option name="closed" value="true" />
-      <created>1698183262452</created>
-      <option name="number" value="00339" />
-      <option name="presentableId" value="LOCAL-00339" />
-      <option name="project" value="LOCAL" />
-      <updated>1698183262453</updated>
+      <workItem from="1699349696628" duration="7208000" />
     </task>
     <task id="LOCAL-00340" summary="   ScenarioExecutes -&gt; ScenarioExecutions converted">
       <option name="closed" value="true" />
@@ -797,7 +770,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699283137603</updated>
     </task>
-    <option name="localTasksCounter" value="388" />
+    <task id="LOCAL-00388" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1699357809670</created>
+      <option name="number" value="00388" />
+      <option name="presentableId" value="LOCAL-00388" />
+      <option name="project" value="LOCAL" />
+      <updated>1699357809670</updated>
+    </task>
+    <option name="localTasksCounter" value="389" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
