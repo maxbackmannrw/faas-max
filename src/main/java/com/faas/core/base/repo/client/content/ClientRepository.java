@@ -17,6 +17,7 @@ public interface ClientRepository extends PagingAndSortingRepository<ClientDBMod
     List<ClientDBModel>findByClientState(String clientState);
     List<ClientDBModel>findByPhoneNumber(String phoneNumber);
     List<ClientDBModel>findByIdAndClientState(long id,String clientState);
+    List<ClientDBModel>findByRemote(boolean isRemote);
     Page<ClientDBModel>findAllByStatus(int status,Pageable pageable);
     Page<ClientDBModel>findAllByClientState(String clientState,Pageable pageable);
     Page<ClientDBModel>findAllByClientStateAndStatus(String clientState,int status,Pageable pageable);

@@ -280,6 +280,24 @@ public class UtilsSettingsFramework {
     }
 
 
+    public boolean repairSystemSettingsService(long userId,String systemSettings) {
+
+        if (systemSettings.equalsIgnoreCase(AppConstant.CLIENTS_SETTINGS)){
+            repairAllClientsService();
+            return true;
+        }
+        return false;
+    }
+
+
+    public void repairAllClientsService(){
+
+
+
+    }
+
+
+
     public boolean removeSystemSettingsService(long userId,String systemSettings) {
 
         if (systemSettings.equalsIgnoreCase(AppConstant.CLIENTS_SETTINGS)){

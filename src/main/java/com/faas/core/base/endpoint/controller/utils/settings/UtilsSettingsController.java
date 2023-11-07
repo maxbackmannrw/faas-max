@@ -33,6 +33,18 @@ public class UtilsSettingsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+    @RequestMapping(value = BaseRoute.REPAIR_SYSTEM_SETTINGS, method = RequestMethod.POST)
+    public ResponseEntity<?> repairSystemSettings(@RequestParam long userId,
+                                                  @RequestParam String systemSettings) {
+
+        UtilSettingsWSModel response = utilsSettingsMiddleware.repairSystemSettings(userId,systemSettings);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
 
     @RequestMapping(value = BaseRoute.REMOVE_SYSTEM_SETTINGS, method = RequestMethod.POST)
     public ResponseEntity<?> removeSystemSettings(@RequestParam long userId,

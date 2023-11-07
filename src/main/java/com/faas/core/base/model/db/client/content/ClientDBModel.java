@@ -1,5 +1,7 @@
 package com.faas.core.base.model.db.client.content;
 
+import org.hibernate.annotations.ColumnDefault;
+
 import javax.persistence.*;
 
 @Entity
@@ -37,6 +39,7 @@ public class ClientDBModel {
     @Column(name = "client_state")
     private String clientState;
 
+    @ColumnDefault("false")
     @Column(name = "is_remote")
     private boolean isRemote;
 

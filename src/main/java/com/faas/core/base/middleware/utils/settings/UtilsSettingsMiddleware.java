@@ -40,14 +40,33 @@ public class UtilsSettingsMiddleware {
     }
 
 
+    public UtilSettingsWSModel repairSystemSettings(long userId,String systemSettings) {
+
+        UtilSettingsWSModel response = new UtilSettingsWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+        List<UtilSettingsWSDTO> utilSettingsWSDTOS = new ArrayList<>();
+
+        utilSettingsWSDTOS.add(new UtilSettingsWSDTO(systemSettings,"",utilsSettingsFramework.repairSystemSettingsService(userId,systemSettings)));
+
+        response.setUtilSettings(utilSettingsWSDTOS);
+        general.setOperation("repairSystemSettings");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
+
     public UtilSettingsWSModel removeSystemSettings(long userId,String systemSettings) {
 
         UtilSettingsWSModel response = new UtilSettingsWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<UtilSettingsWSDTO> utilSettingsWSDTOS = new ArrayList<>();
 
-        boolean result = utilsSettingsFramework.removeSystemSettingsService(userId,systemSettings);
-        utilSettingsWSDTOS.add(new UtilSettingsWSDTO(systemSettings,"",result));
+        utilSettingsWSDTOS.add(new UtilSettingsWSDTO(systemSettings,"",utilsSettingsFramework.removeSystemSettingsService(userId,systemSettings)));
 
         response.setUtilSettings(utilSettingsWSDTOS);
         general.setOperation("removeSystemSettings");
