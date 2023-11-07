@@ -73,16 +73,16 @@ public class ClientManagerFramework {
     public ClientManagerRemoteWSDTO getClientManagerRemoteService(long userId,int reqPage, int reqSize) {
 
         ClientManagerRemoteWSDTO clientManagerRemoteWSDTO = new ClientManagerRemoteWSDTO();
-        clientManagerRemoteWSDTO.setActiveRemoteList(clientHelper.getClientRemoteListWSDTO(clientRepository.findAllByRemoteAndStatus(true, 1, PageRequest.of(reqPage,reqSize))));;
-        clientManagerRemoteWSDTO.setInactiveRemoteList(clientHelper.getClientRemoteListWSDTO(clientRepository.findAllByRemoteAndStatus(false, 1, PageRequest.of(reqPage,reqSize))));
+        clientManagerRemoteWSDTO.setActiveRemoteList(clientHelper.getClientRemoteListWSDTO(clientRepository.findAllByRemoteConnAndStatus(true, 1, PageRequest.of(reqPage,reqSize))));;
+        clientManagerRemoteWSDTO.setInactiveRemoteList(clientHelper.getClientRemoteListWSDTO(clientRepository.findAllByRemoteConnAndStatus(false, 1, PageRequest.of(reqPage,reqSize))));
 
         return clientManagerRemoteWSDTO;
     }
 
 
-    public ClientRemoteListWSDTO getClientRemotesService(long userId,boolean remote,int reqPage,int reqSize) {
+    public ClientRemoteListWSDTO getClientRemotesService(long userId,boolean remoteConn,int reqPage,int reqSize) {
 
-        return clientHelper.getClientRemoteListWSDTO(clientRepository.findAllByRemoteAndStatus(remote,1, PageRequest.of(reqPage,reqSize)));
+        return clientHelper.getClientRemoteListWSDTO(clientRepository.findAllByRemoteConnAndStatus(remoteConn,1, PageRequest.of(reqPage,reqSize)));
     }
 
 

@@ -39,11 +39,11 @@ public class ClientManagerController {
 
     @RequestMapping(value = BaseRoute.GET_CLIENT_REMOTES, method = RequestMethod.POST)
     public ResponseEntity<?> getClientRemotes(@RequestParam long userId,
-                                              @RequestParam boolean remote,
+                                              @RequestParam boolean remoteConn,
                                               @RequestParam int reqPage,
                                               @RequestParam int reqSize) {
 
-        ClientRemoteListWSModel response = clientManagerMiddleware.getClientRemotes(userId,remote,reqPage,reqSize);
+        ClientRemoteListWSModel response = clientManagerMiddleware.getClientRemotes(userId,remoteConn,reqPage,reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

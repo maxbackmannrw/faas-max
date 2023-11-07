@@ -141,7 +141,7 @@ public class ClientFramework {
                 clientDBModel.setClientType(clientTypeDBModel.get().getClientType());
             }
             clientDBModel.setClientState(AppConstant.READY_CLIENT);
-            clientDBModel.setRemote(false);
+            clientDBModel.setRemoteConn(false);
             clientDBModel.setuDate(appUtils.getCurrentTimeStamp());
             clientDBModel.setcDate(appUtils.getCurrentTimeStamp());
             clientDBModel.setStatus(1);
@@ -175,7 +175,7 @@ public class ClientFramework {
             }
 
             clientDBModel.setClientState(AppConstant.READY_CLIENT);
-            clientDBModel.setRemote(false);
+            clientDBModel.setRemoteConn(false);
             clientDBModel.setuDate(appUtils.getCurrentTimeStamp());
             clientDBModel.setcDate(appUtils.getCurrentTimeStamp());
             clientDBModel.setStatus(1);

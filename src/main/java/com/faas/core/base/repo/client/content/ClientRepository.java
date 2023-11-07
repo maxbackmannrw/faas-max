@@ -17,11 +17,10 @@ public interface ClientRepository extends PagingAndSortingRepository<ClientDBMod
     List<ClientDBModel>findByClientState(String clientState);
     List<ClientDBModel>findByPhoneNumber(String phoneNumber);
     List<ClientDBModel>findByIdAndClientState(long id,String clientState);
-    List<ClientDBModel>findByRemote(boolean isRemote);
     Page<ClientDBModel>findAllByStatus(int status,Pageable pageable);
     Page<ClientDBModel>findAllByClientState(String clientState,Pageable pageable);
     Page<ClientDBModel>findAllByClientStateAndStatus(String clientState,int status,Pageable pageable);
     Page<ClientDBModel>findAllByClientCountryAndClientState(String country,String clientState, Pageable pageable);
     Page<ClientDBModel>findAllByClientCountryAndClientCityContainingIgnoreCaseAndClientState(String country,String city,String clientState,Pageable pageable);
-    Page<ClientDBModel>findAllByRemoteAndStatus(boolean isRemote,int status,Pageable pageable);
+    Page<ClientDBModel>findAllByRemoteConnAndStatus(boolean isRemote,int status,Pageable pageable);
 }

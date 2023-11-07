@@ -46,12 +46,12 @@ public class ClientManagerMiddleware {
     }
 
 
-    public ClientRemoteListWSModel getClientRemotes(long userId,boolean remote,int reqPage, int reqSize) {
+    public ClientRemoteListWSModel getClientRemotes(long userId,boolean remoteConn,int reqPage, int reqSize) {
 
         ClientRemoteListWSModel response = new ClientRemoteListWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ClientRemoteListWSDTO clientRemoteListWSDTO = clientManagerFramework.getClientRemotesService(userId,remote,reqPage,reqSize);
+        ClientRemoteListWSDTO clientRemoteListWSDTO = clientManagerFramework.getClientRemotesService(userId,remoteConn,reqPage,reqSize);
         if (clientRemoteListWSDTO != null){
             response.setClientRemoteList(clientRemoteListWSDTO);
         }
