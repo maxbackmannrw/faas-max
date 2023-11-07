@@ -1,6 +1,8 @@
 package com.faas.core.base.endpoint.controller.manager.client.content;
 
 import com.faas.core.base.middleware.manager.client.content.ClientManagerMiddleware;
+import com.faas.core.base.model.ws.manager.client.content.ClientRemoteDeviceWSModel;
+import com.faas.core.base.model.ws.manager.client.content.ClientRemoteListWSModel;
 import com.faas.core.base.model.ws.manager.client.content.ClientRemoteWSModel;
 import com.faas.core.base.model.ws.manager.client.content.ClientManagerRemoteWSModel;
 import com.faas.core.utils.config.AppConstant;
@@ -22,41 +24,38 @@ public class ClientManagerController {
     ClientManagerMiddleware clientManagerMiddleware;
 
 
-    @RequestMapping(value = BaseRoute.GET_CLIENT_MANAGER_REMOTES, method = RequestMethod.POST)
-    public ResponseEntity<?> getClientManagerRemotes(@RequestParam long userId,
-                                                     @RequestParam String remoteType,
-                                                     @RequestParam String remoteState,
-                                                     @RequestParam int reqPage,
-                                                     @RequestParam int reqSize) {
+    @RequestMapping(value = BaseRoute.GET_CLIENT_MANAGER_REMOTE, method = RequestMethod.POST)
+    public ResponseEntity<?> getClientManagerRemote(@RequestParam long userId,
+                                                    @RequestParam int reqPage,
+                                                    @RequestParam int reqSize) {
 
-        ClientManagerRemoteWSModel response = clientManagerMiddleware.getClientManagerRemotes(userId,remoteType,remoteState,reqPage,reqSize);
+        ClientManagerRemoteWSModel response = clientManagerMiddleware.getClientManagerRemote(userId,reqPage,reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.GET_CLIENT_REMOTES, method = RequestMethod.POST)
     public ResponseEntity<?> getClientRemotes(@RequestParam long userId,
-                                              @RequestParam long clientId) {
+                                              @RequestParam boolean remote,
+                                              @RequestParam int reqPage,
+                                              @RequestParam int reqSize) {
 
-        ClientRemoteWSModel response = clientManagerMiddleware.getClientRemotes(userId,clientId);
+        ClientRemoteListWSModel response = clientManagerMiddleware.getClientRemotes(userId,remote,reqPage,reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.GET_CLIENT_REMOTE, method = RequestMethod.POST)
     public ResponseEntity<?> getClientRemote(@RequestParam long userId,
-                                             @RequestParam long clientId,
-                                             @RequestParam String remoteId) {
+                                             @RequestParam long clientId) {
 
-        ClientRemoteWSModel response = clientManagerMiddleware.getClientRemote(userId,clientId,remoteId);
+        ClientRemoteWSModel response = clientManagerMiddleware.getClientRemote(userId,clientId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -64,6 +63,33 @@ public class ClientManagerController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+
+
+    @RequestMapping(value = BaseRoute.GET_CLIENT_REMOTE_DEVICES, method = RequestMethod.POST)
+    public ResponseEntity<?> getClientRemoteDevices(@RequestParam long userId,
+                                                    @RequestParam long clientId) {
+
+        ClientRemoteDeviceWSModel response = clientManagerMiddleware.getClientRemoteDevices(userId,clientId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = BaseRoute.GET_CLIENT_REMOTE_DEVICE, method = RequestMethod.POST)
+    public ResponseEntity<?> getClientRemoteDevice(@RequestParam long userId,
+                                                   @RequestParam long clientId,
+                                                   @RequestParam String deviceId) {
+
+        ClientRemoteDeviceWSModel response = clientManagerMiddleware.getClientRemoteDevice(userId,clientId,deviceId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
 
 
 }

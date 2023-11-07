@@ -195,9 +195,12 @@ public class BaseRoute {
 
 
 
-    public static final String GET_CLIENT_MANAGER_REMOTES = "getclientmanagerremotes";
+    public static final String GET_CLIENT_MANAGER_REMOTE = "getclientmanagerremote";
     public static final String GET_CLIENT_REMOTES = "getclientremotes";
     public static final String GET_CLIENT_REMOTE = "getclientremote";
+    public static final String GET_CLIENT_REMOTE_DEVICES = "getclientremotedevices";
+    public static final String GET_CLIENT_REMOTE_DEVICE = "getclientremotedevice";
+
 
 
     public static final String GET_INQUIRY_CAMPAIGNS = "getinquirycampaigns";

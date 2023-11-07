@@ -153,9 +153,23 @@ public class AppConstant {
     public static final String TOTAL_CAMPAIGNS_SUMMARY = "TOTAL_CAMPAIGNS_SUMMARY";
 
 
+
+    public static final String REMOTE_READY = "REMOTE_READY";
+    public static final String REMOTE_ACTIVE = "REMOTE_ACTIVE";
+    public static final String REMOTE_INACTIVE = "REMOTE_INACTIVE";
+    public static final String REMOTE_ALL_STATES = "REMOTE_ALL_STATES";
+
+
+    public static final String PWA_REMOTE = "PWA_REMOTE_TYPE";
+    public static final String IOS_REMOTE = "IOS_REMOTE_TYPE";
+    public static final String ANDROID_REMOTE = "ANDROID_REMOTE_TYPE";
+    public static final String ALL_REMOTES = "ALL_REMOTE_TYPES";
+
+
+
+
     public static final String USER_TYPE= "USER_TYPE";
     public static final String CLIENT_TYPE = "CLIENT_TYPE";
-
 
     public static final String SESSION_TYPE = "SESSION_TYPE";
     public static final String OPERATION_TYPE = "OPERATION_TYPE";

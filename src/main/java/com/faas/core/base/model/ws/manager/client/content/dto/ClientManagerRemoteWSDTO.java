@@ -1,36 +1,32 @@
 package com.faas.core.base.model.ws.manager.client.content.dto;
 
-import com.faas.core.base.model.ws.general.PaginationWSDTO;
-
-import java.util.List;
-
 public class ClientManagerRemoteWSDTO {
 
-    private List<ClientRemoteWSDTO> clientRemotes;
-    public PaginationWSDTO pagination;
+    private ClientRemoteListWSDTO activeRemoteList;
+    private ClientRemoteListWSDTO inactiveRemoteList;
 
     public ClientManagerRemoteWSDTO() {
     }
 
-    public ClientManagerRemoteWSDTO(List<ClientRemoteWSDTO> clientRemotes, PaginationWSDTO pagination) {
-        this.clientRemotes = clientRemotes;
-        this.pagination = pagination;
+    public ClientManagerRemoteWSDTO(ClientRemoteListWSDTO activeRemoteList, ClientRemoteListWSDTO inactiveRemoteList) {
+        this.activeRemoteList = activeRemoteList;
+        this.inactiveRemoteList = inactiveRemoteList;
     }
 
-    public List<ClientRemoteWSDTO> getClientRemotes() {
-        return clientRemotes;
+    public ClientRemoteListWSDTO getActiveRemoteList() {
+        return activeRemoteList;
     }
 
-    public void setClientRemotes(List<ClientRemoteWSDTO> clientRemotes) {
-        this.clientRemotes = clientRemotes;
+    public void setActiveRemoteList(ClientRemoteListWSDTO activeRemoteList) {
+        this.activeRemoteList = activeRemoteList;
     }
 
-    public PaginationWSDTO getPagination() {
-        return pagination;
+    public ClientRemoteListWSDTO getInactiveRemoteList() {
+        return inactiveRemoteList;
     }
 
-    public void setPagination(PaginationWSDTO pagination) {
-        this.pagination = pagination;
+    public void setInactiveRemoteList(ClientRemoteListWSDTO inactiveRemoteList) {
+        this.inactiveRemoteList = inactiveRemoteList;
     }
 }
 

@@ -129,7 +129,6 @@ public class ClientFramework {
         if (clientRepository.findByPhoneNumber(phoneNumber).isEmpty()){
 
             ClientDBModel clientDBModel = new ClientDBModel();
-
             clientDBModel.setClientName(clientName);
             clientDBModel.setNationalId(nationalId);
             clientDBModel.setPhoneNumber(phoneNumber);
@@ -142,6 +141,7 @@ public class ClientFramework {
                 clientDBModel.setClientType(clientTypeDBModel.get().getClientType());
             }
             clientDBModel.setClientState(AppConstant.READY_CLIENT);
+            clientDBModel.setRemote(false);
             clientDBModel.setuDate(appUtils.getCurrentTimeStamp());
             clientDBModel.setcDate(appUtils.getCurrentTimeStamp());
             clientDBModel.setStatus(1);
@@ -175,6 +175,7 @@ public class ClientFramework {
             }
 
             clientDBModel.setClientState(AppConstant.READY_CLIENT);
+            clientDBModel.setRemote(false);
             clientDBModel.setuDate(appUtils.getCurrentTimeStamp());
             clientDBModel.setcDate(appUtils.getCurrentTimeStamp());
             clientDBModel.setStatus(1);

@@ -1,7 +1,10 @@
 package com.faas.core.base.model.db.client.details;
 
+import com.faas.core.base.model.db.client.details.dao.ClientRemoteDeviceDAO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.List;
 
 @Document(collection = "client_remote_table")
 public class ClientRemoteDBModel {
@@ -9,8 +12,7 @@ public class ClientRemoteDBModel {
     @Id
     private String id;
     private long clientId;
-    private String remoteType;
-    private String remoteState;
+    private List<ClientRemoteDeviceDAO>remoteDevices;
     private long uDate;
     private long cDate;
     private int status;
@@ -18,11 +20,10 @@ public class ClientRemoteDBModel {
     public ClientRemoteDBModel() {
     }
 
-    public ClientRemoteDBModel(String id, long clientId, String remoteType, String remoteState, long uDate, long cDate, int status) {
+    public ClientRemoteDBModel(String id, long clientId, List<ClientRemoteDeviceDAO> remoteDevices, long uDate, long cDate, int status) {
         this.id = id;
         this.clientId = clientId;
-        this.remoteType = remoteType;
-        this.remoteState = remoteState;
+        this.remoteDevices = remoteDevices;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
@@ -44,20 +45,12 @@ public class ClientRemoteDBModel {
         this.clientId = clientId;
     }
 
-    public String getRemoteType() {
-        return remoteType;
+    public List<ClientRemoteDeviceDAO> getRemoteDevices() {
+        return remoteDevices;
     }
 
-    public void setRemoteType(String remoteType) {
-        this.remoteType = remoteType;
-    }
-
-    public String getRemoteState() {
-        return remoteState;
-    }
-
-    public void setRemoteState(String remoteState) {
-        this.remoteState = remoteState;
+    public void setRemoteDevices(List<ClientRemoteDeviceDAO> remoteDevices) {
+        this.remoteDevices = remoteDevices;
     }
 
     public long getuDate() {

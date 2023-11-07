@@ -92,9 +92,8 @@ public class ApiOperationScenarioFramework {
         Optional<ScenarioDBModel> scenarioDBModel = scenarioRepository.findById(scenarioId);
         List<OperationDBModel> operationDBModels = operationRepository.findBySessionId(sessionId);
 
-        if (!sessionDBModels.isEmpty() && sessionDBModels.get(0).getSessionState().equalsIgnoreCase(AppConstant.ACTIVE_SESSION)
-                && !operationDBModels.isEmpty() && operationDBModels.get(0).getOperationState().equalsIgnoreCase(AppConstant.ACTIVE_OPERATION)
-                && scenarioDBModel.isPresent()){
+        if (!sessionDBModels.isEmpty() && sessionDBModels.get(0).getSessionState().equalsIgnoreCase(AppConstant.ACTIVE_SESSION) && !operationDBModels.isEmpty()
+                && operationDBModels.get(0).getOperationState().equalsIgnoreCase(AppConstant.ACTIVE_OPERATION) && scenarioDBModel.isPresent()){
 
             OperationScenarioDBModel operationScenarioDBModel = new OperationScenarioDBModel();
             operationScenarioDBModel.setSessionId(sessionId);
