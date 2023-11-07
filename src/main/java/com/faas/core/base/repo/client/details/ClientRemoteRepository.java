@@ -15,13 +15,5 @@ public interface ClientRemoteRepository extends MongoRepository<ClientRemoteDBMo
 
     List<ClientRemoteDBModel>findByClientId(long clientId);
 
-    Page<ClientRemoteDBModel> findAllByStatus(int status, Pageable pageable);
-
-    Page<ClientRemoteDBModel> findAllByRemoteStateAndStatus(String remoteState,int status, Pageable pageable);
-
-    Page<ClientRemoteDBModel>findAllByRemoteTypeAndStatus(String remoteType,int status, Pageable pageable);
-
-    Page<ClientRemoteDBModel>findAllByRemoteTypeAndRemoteStateAndStatus(String remoteType,String remoteState,int status, Pageable pageable);
-
 
 }
