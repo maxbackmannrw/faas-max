@@ -1,10 +1,9 @@
 package com.faas.core.base.endpoint.controller.manager.client.content;
 
 import com.faas.core.base.middleware.manager.client.content.ClientManagerMiddleware;
-import com.faas.core.base.model.ws.manager.client.content.ClientRemoteDeviceWSModel;
-import com.faas.core.base.model.ws.manager.client.content.ClientRemoteListWSModel;
-import com.faas.core.base.model.ws.manager.client.content.ClientRemoteWSModel;
-import com.faas.core.base.model.ws.manager.client.content.ClientManagerRemoteWSModel;
+import com.faas.core.base.model.ws.manager.client.content.AllRemoteConnWSModel;
+import com.faas.core.base.model.ws.manager.client.content.RemoteConnListWSModel;
+import com.faas.core.base.model.ws.manager.client.content.RemoteConnWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,38 +23,12 @@ public class ClientManagerController {
     ClientManagerMiddleware clientManagerMiddleware;
 
 
-    @RequestMapping(value = BaseRoute.GET_CLIENT_MANAGER_REMOTE, method = RequestMethod.POST)
-    public ResponseEntity<?> getClientManagerRemote(@RequestParam long userId,
-                                                    @RequestParam int reqPage,
-                                                    @RequestParam int reqSize) {
+    @RequestMapping(value = BaseRoute.GET_ALL_REMOTE_CONNS, method = RequestMethod.POST)
+    public ResponseEntity<?> getAllRemoteConns(@RequestParam long userId,
+                                               @RequestParam int reqPage,
+                                               @RequestParam int reqSize) {
 
-        ClientManagerRemoteWSModel response = clientManagerMiddleware.getClientManagerRemote(userId,reqPage,reqSize);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-    @RequestMapping(value = BaseRoute.GET_CLIENT_REMOTES, method = RequestMethod.POST)
-    public ResponseEntity<?> getClientRemotes(@RequestParam long userId,
-                                              @RequestParam boolean remoteConn,
-                                              @RequestParam int reqPage,
-                                              @RequestParam int reqSize) {
-
-        ClientRemoteListWSModel response = clientManagerMiddleware.getClientRemotes(userId,remoteConn,reqPage,reqSize);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-    @RequestMapping(value = BaseRoute.GET_CLIENT_REMOTE, method = RequestMethod.POST)
-    public ResponseEntity<?> getClientRemote(@RequestParam long userId,
-                                             @RequestParam long clientId) {
-
-        ClientRemoteWSModel response = clientManagerMiddleware.getClientRemote(userId,clientId);
+        AllRemoteConnWSModel response = clientManagerMiddleware.getAllRemoteConns(userId,reqPage,reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -64,12 +37,27 @@ public class ClientManagerController {
     }
 
 
+    @RequestMapping(value = BaseRoute.GET_CLIENT_REMOTE_CONNS, method = RequestMethod.POST)
+    public ResponseEntity<?> getClientRemoteConns(@RequestParam long userId,
+                                                  @RequestParam long clientId) {
 
-    @RequestMapping(value = BaseRoute.GET_CLIENT_REMOTE_DEVICES, method = RequestMethod.POST)
-    public ResponseEntity<?> getClientRemoteDevices(@RequestParam long userId,
-                                                    @RequestParam long clientId) {
+        RemoteConnWSModel response = clientManagerMiddleware.getClientRemoteConns(userId,clientId);
 
-        ClientRemoteDeviceWSModel response = clientManagerMiddleware.getClientRemoteDevices(userId,clientId);
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = BaseRoute.GET_REMOTE_CONNS, method = RequestMethod.POST)
+    public ResponseEntity<?> getRemoteConns(@RequestParam long userId,
+                                            @RequestParam String connType,
+                                            @RequestParam String connState,
+                                            @RequestParam int reqPage,
+                                            @RequestParam int reqSize) {
+
+        RemoteConnListWSModel response = clientManagerMiddleware.getRemoteConns(userId,connType,connState,reqPage,reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -78,18 +66,22 @@ public class ClientManagerController {
     }
 
 
-    @RequestMapping(value = BaseRoute.GET_CLIENT_REMOTE_DEVICE, method = RequestMethod.POST)
-    public ResponseEntity<?> getClientRemoteDevice(@RequestParam long userId,
-                                                   @RequestParam long clientId,
-                                                   @RequestParam String deviceId) {
+    @RequestMapping(value = BaseRoute.GET_REMOTE_CONN, method = RequestMethod.POST)
+    public ResponseEntity<?> getRemoteConn(@RequestParam long userId,
+                                           @RequestParam long clientId,
+                                           @RequestParam String connId) {
 
-        ClientRemoteDeviceWSModel response = clientManagerMiddleware.getClientRemoteDevice(userId,clientId,deviceId);
+        RemoteConnWSModel response = clientManagerMiddleware.getRemoteConn(userId,clientId,connId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
+
+
+
+
 
 
 }

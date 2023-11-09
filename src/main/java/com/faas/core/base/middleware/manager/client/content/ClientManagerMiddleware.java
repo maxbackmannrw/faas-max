@@ -2,14 +2,12 @@ package com.faas.core.base.middleware.manager.client.content;
 
 import com.faas.core.base.framework.manager.client.content.ClientManagerFramework;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.manager.client.content.ClientRemoteDeviceWSModel;
-import com.faas.core.base.model.ws.manager.client.content.ClientRemoteListWSModel;
-import com.faas.core.base.model.ws.manager.client.content.ClientRemoteWSModel;
-import com.faas.core.base.model.ws.manager.client.content.dto.ClientManagerRemoteWSDTO;
-import com.faas.core.base.model.ws.manager.client.content.dto.ClientRemoteDeviceWSDTO;
-import com.faas.core.base.model.ws.manager.client.content.dto.ClientRemoteListWSDTO;
-import com.faas.core.base.model.ws.manager.client.content.dto.ClientRemoteWSDTO;
-import com.faas.core.base.model.ws.manager.client.content.ClientManagerRemoteWSModel;
+import com.faas.core.base.model.ws.manager.client.content.AllRemoteConnWSModel;
+import com.faas.core.base.model.ws.manager.client.content.RemoteConnListWSModel;
+import com.faas.core.base.model.ws.manager.client.content.RemoteConnWSModel;
+import com.faas.core.base.model.ws.manager.client.content.dto.AllRemoteConnWSDTO;
+import com.faas.core.base.model.ws.manager.client.content.dto.RemoteConnListWSDTO;
+import com.faas.core.base.model.ws.manager.client.content.dto.RemoteConnWSDTO;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -26,17 +24,17 @@ public class ClientManagerMiddleware {
     ClientManagerFramework clientManagerFramework;
 
 
-    public ClientManagerRemoteWSModel getClientManagerRemote(long userId,int reqPage, int reqSize) {
+    public AllRemoteConnWSModel getAllRemoteConns(long userId, int reqPage, int reqSize) {
 
-        ClientManagerRemoteWSModel response = new ClientManagerRemoteWSModel();
+        AllRemoteConnWSModel response = new AllRemoteConnWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ClientManagerRemoteWSDTO clientManagerRemoteWSDTO = clientManagerFramework.getClientManagerRemoteService(userId,reqPage,reqSize);
-        if (clientManagerRemoteWSDTO != null){
-            response.setClientManagerRemote(clientManagerRemoteWSDTO);
+        AllRemoteConnWSDTO allRemoteConnWSDTO = clientManagerFramework.getAllRemoteConnsService(userId,reqPage,reqSize);
+        if (allRemoteConnWSDTO != null){
+            response.setAllRemoteConn(allRemoteConnWSDTO);
         }
 
-        general.setOperation("getClientManagerRemote");
+        general.setOperation("getAllRemoteConns");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -46,38 +44,17 @@ public class ClientManagerMiddleware {
     }
 
 
-    public ClientRemoteListWSModel getClientRemotes(long userId,boolean remoteConn,int reqPage, int reqSize) {
+    public RemoteConnWSModel getClientRemoteConns(long userId, long clientId) {
 
-        ClientRemoteListWSModel response = new ClientRemoteListWSModel();
+        RemoteConnWSModel response = new RemoteConnWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ClientRemoteListWSDTO clientRemoteListWSDTO = clientManagerFramework.getClientRemotesService(userId,remoteConn,reqPage,reqSize);
-        if (clientRemoteListWSDTO != null){
-            response.setClientRemoteList(clientRemoteListWSDTO);
+        List<RemoteConnWSDTO> remoteConnWSDTOS = clientManagerFramework.getClientRemoteConnsService(userId,clientId);
+        if (remoteConnWSDTOS != null){
+            response.setRemoteConns(remoteConnWSDTOS);
         }
 
-        general.setOperation("getClientRemotes");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-    public ClientRemoteWSModel getClientRemote(long userId,long clientId) {
-
-        ClientRemoteWSModel response = new ClientRemoteWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-        List<ClientRemoteWSDTO>clientRemoteWSDTOS = new ArrayList<>();
-
-        ClientRemoteWSDTO clientRemoteWSDTO = clientManagerFramework.getClientRemoteService(userId,clientId);
-        if (clientRemoteWSDTO != null){
-            clientRemoteWSDTOS.add(clientRemoteWSDTO);
-        }
-
-        response.setClientRemotes(clientRemoteWSDTOS);
-        general.setOperation("getClientRemote");
+        general.setOperation("getClientRemoteConns");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -87,39 +64,17 @@ public class ClientManagerMiddleware {
     }
 
 
+    public RemoteConnListWSModel getRemoteConns(long userId,String connType,String connState, int reqPage, int reqSize) {
 
-    public ClientRemoteDeviceWSModel getClientRemoteDevices(long userId, long clientId) {
-
-        ClientRemoteDeviceWSModel response = new ClientRemoteDeviceWSModel();
+        RemoteConnListWSModel response = new RemoteConnListWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ClientRemoteDeviceWSDTO> remoteDeviceWSDTOS = clientManagerFramework.getClientRemoteDevicesService(userId,clientId);
-        if (remoteDeviceWSDTOS != null){
-            response.setRemoteDevices(remoteDeviceWSDTOS);
+        RemoteConnListWSDTO remoteConnListWSDTO = clientManagerFramework.getRemoteConnsService(userId,connType,connState,reqPage,reqSize);
+        if (remoteConnListWSDTO != null){
+            response.setRemoteConnList(remoteConnListWSDTO);
         }
 
-        general.setOperation("getClientRemoteDevices");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-    public ClientRemoteDeviceWSModel getClientRemoteDevice(long userId,long clientId,String deviceId) {
-
-        ClientRemoteDeviceWSModel response = new ClientRemoteDeviceWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-        List<ClientRemoteDeviceWSDTO>remoteDeviceWSDTOS = new ArrayList<>();
-
-        ClientRemoteDeviceWSDTO remoteDeviceWSDTO = clientManagerFramework.getClientRemoteDeviceService(userId,clientId,deviceId);
-        if (remoteDeviceWSDTO != null){
-            remoteDeviceWSDTOS.add(remoteDeviceWSDTO);
-        }
-
-        response.setRemoteDevices(remoteDeviceWSDTOS);
-        general.setOperation("getClientRemoteDevice");
+        general.setOperation("getRemoteConns");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -129,6 +84,26 @@ public class ClientManagerMiddleware {
     }
 
 
+    public RemoteConnWSModel getRemoteConn(long userId, long clientId, String connId) {
+
+        RemoteConnWSModel response = new RemoteConnWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+        List<RemoteConnWSDTO> remoteConnWSDTOS = new ArrayList<>();
+
+        RemoteConnWSDTO remoteConnWSDTO = clientManagerFramework.getRemoteConnService(userId,clientId,connId);
+        if (remoteConnWSDTO != null){
+            remoteConnWSDTOS.add(remoteConnWSDTO);
+        }
+
+        response.setRemoteConns(remoteConnWSDTOS);
+        general.setOperation("getRemoteConn");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
 
 
 }

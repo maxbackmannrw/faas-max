@@ -39,7 +39,7 @@ public class ClientManagerDetailsFramework {
     ClientPhoneRepository clientPhoneRepository;
 
     @Autowired
-    ClientRemoteRepository clientRemoteRepository;
+    RemoteConnRepository remoteConnRepository;
 
     @Autowired
     SessionRepository sessionRepository;

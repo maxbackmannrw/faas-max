@@ -55,7 +55,6 @@ public class ClientMiddleware {
             allClientsWSDTO.setBusyClients(busyClientsByState);
         }
 
-
         response.setAllClients(allClientsWSDTO);
         general.setOperation("getAllClients");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -94,7 +93,7 @@ public class ClientMiddleware {
         List<ClientWSDTO> clientWSDTOS = new ArrayList<>();
 
         List<ClientDBModel> clientDBModels = clientRepository.findByIdAndStatus(clientId,1);
-        if (clientDBModels.size()>0){
+        if (!clientDBModels.isEmpty()){
             clientWSDTOS.add(clientFramework.fillClientWSDTO(clientDBModels.get(0)));
         }
 

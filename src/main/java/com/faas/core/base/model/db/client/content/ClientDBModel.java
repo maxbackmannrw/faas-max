@@ -37,9 +37,6 @@ public class ClientDBModel {
     @Column(name = "client_state")
     private String clientState;
 
-    @Column(name = "remote_conn")
-    private boolean remoteConn;
-
     @Column(name = "u_date")
     private long uDate;
 
@@ -52,7 +49,7 @@ public class ClientDBModel {
     public ClientDBModel() {
     }
 
-    public ClientDBModel(long id, String clientName, String nationalId, String phoneNumber, String emailAddress, String clientCity, String clientCountry, long clientTypeId, String clientType, String clientState, boolean remoteConn, long uDate, long cDate, int status) {
+    public ClientDBModel(long id, String clientName, String nationalId, String phoneNumber, String emailAddress, String clientCity, String clientCountry, long clientTypeId, String clientType, String clientState, long uDate, long cDate, int status) {
         this.id = id;
         this.clientName = clientName;
         this.nationalId = nationalId;
@@ -63,7 +60,6 @@ public class ClientDBModel {
         this.clientTypeId = clientTypeId;
         this.clientType = clientType;
         this.clientState = clientState;
-        this.remoteConn = remoteConn;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
@@ -147,14 +143,6 @@ public class ClientDBModel {
 
     public void setClientState(String clientState) {
         this.clientState = clientState;
-    }
-
-    public boolean isRemoteConn() {
-        return remoteConn;
-    }
-
-    public void setRemoteConn(boolean remoteConn) {
-        this.remoteConn = remoteConn;
     }
 
     public long getuDate() {

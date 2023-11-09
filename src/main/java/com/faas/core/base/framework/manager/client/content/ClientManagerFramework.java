@@ -1,11 +1,10 @@
 package com.faas.core.base.framework.manager.client.content;
 
 import com.faas.core.base.model.db.client.content.ClientDBModel;
-import com.faas.core.base.model.db.client.details.ClientRemoteDBModel;
-import com.faas.core.base.model.ws.manager.client.content.dto.ClientManagerRemoteWSDTO;
-import com.faas.core.base.model.ws.manager.client.content.dto.ClientRemoteDeviceWSDTO;
-import com.faas.core.base.model.ws.manager.client.content.dto.ClientRemoteListWSDTO;
-import com.faas.core.base.model.ws.manager.client.content.dto.ClientRemoteWSDTO;
+import com.faas.core.base.model.db.client.details.RemoteConnDBModel;
+import com.faas.core.base.model.ws.manager.client.content.dto.AllRemoteConnWSDTO;
+import com.faas.core.base.model.ws.manager.client.content.dto.RemoteConnListWSDTO;
+import com.faas.core.base.model.ws.manager.client.content.dto.RemoteConnWSDTO;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.client.details.*;
 import com.faas.core.base.repo.operation.content.OperationRepository;
@@ -13,8 +12,9 @@ import com.faas.core.base.repo.operation.details.flow.OperationFlowRepository;
 import com.faas.core.base.repo.operation.details.inquiry.OperationInquiryRepository;
 import com.faas.core.base.repo.operation.details.scenario.OperationScenarioRepository;
 import com.faas.core.base.repo.session.SessionRepository;
+import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
-import com.faas.core.utils.helpers.ClientHelper;
+import com.faas.core.utils.helpers.RemoteHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
@@ -28,7 +28,7 @@ import java.util.Optional;
 public class ClientManagerFramework {
 
     @Autowired
-    ClientHelper clientHelper;
+    RemoteHelper remoteHelper;
 
     @Autowired
     ClientRepository clientRepository;
@@ -49,7 +49,7 @@ public class ClientManagerFramework {
     ClientPhoneRepository clientPhoneRepository;
 
     @Autowired
-    ClientRemoteRepository clientRemoteRepository;
+    RemoteConnRepository remoteConnRepository;
 
     @Autowired
     SessionRepository sessionRepository;
@@ -70,63 +70,61 @@ public class ClientManagerFramework {
     AppUtils appUtils;
 
 
-    public ClientManagerRemoteWSDTO getClientManagerRemoteService(long userId,int reqPage, int reqSize) {
+    public AllRemoteConnWSDTO getAllRemoteConnsService(long userId, int reqPage, int reqSize) {
 
-        ClientManagerRemoteWSDTO clientManagerRemoteWSDTO = new ClientManagerRemoteWSDTO();
-        clientManagerRemoteWSDTO.setActiveRemoteList(clientHelper.getClientRemoteListWSDTO(clientRepository.findAllByRemoteConnAndStatus(true, 1, PageRequest.of(reqPage,reqSize))));;
-        clientManagerRemoteWSDTO.setInactiveRemoteList(clientHelper.getClientRemoteListWSDTO(clientRepository.findAllByRemoteConnAndStatus(false, 1, PageRequest.of(reqPage,reqSize))));
+        AllRemoteConnWSDTO allRemoteConnWSDTO = new AllRemoteConnWSDTO();
+        allRemoteConnWSDTO.setReadyConnList(remoteHelper.getRemoteConnListWSDTO(remoteConnRepository.findAllByConnStateAndStatus(AppConstant.READY_CONN,1, PageRequest.of(reqPage,reqSize))));
+        allRemoteConnWSDTO.setActiveConnList(remoteHelper.getRemoteConnListWSDTO(remoteConnRepository.findAllByConnStateAndStatus(AppConstant.ACTIVE_CONN,1, PageRequest.of(reqPage,reqSize))));
+        allRemoteConnWSDTO.setInActiveConnList(remoteHelper.getRemoteConnListWSDTO(remoteConnRepository.findAllByConnStateAndStatus(AppConstant.INACTIVE_CONN,1, PageRequest.of(reqPage,reqSize))));
 
-        return clientManagerRemoteWSDTO;
+        return allRemoteConnWSDTO;
     }
 
 
-    public ClientRemoteListWSDTO getClientRemotesService(long userId,boolean remoteConn,int reqPage,int reqSize) {
 
-        return clientHelper.getClientRemoteListWSDTO(clientRepository.findAllByRemoteConnAndStatus(remoteConn,1, PageRequest.of(reqPage,reqSize)));
+    public List<RemoteConnWSDTO> getClientRemoteConnsService(long userId, long clientId) {
+
+        List<RemoteConnWSDTO>remoteConnWSDTOS = new ArrayList<>();
+        List<RemoteConnDBModel> remoteConnDBModels = remoteConnRepository.findByClientId(clientId);
+        for (RemoteConnDBModel remoteConnDBModel : remoteConnDBModels) {
+            RemoteConnWSDTO remoteConnWSDTO = remoteHelper.getRemoteConnWSDTO(remoteConnDBModel);
+            if (remoteConnWSDTO != null) {
+                remoteConnWSDTOS.add(remoteConnWSDTO);
+            }
+        }
+        return remoteConnWSDTOS;
     }
 
 
-    public ClientRemoteWSDTO getClientRemoteService(long userId,long clientId) {
+    public RemoteConnListWSDTO getRemoteConnsService(long userId,String connType,String connState, int reqPage, int reqSize) {
+
+        RemoteConnListWSDTO remoteConnListWSDTO = new RemoteConnListWSDTO();
+        if (connType.equalsIgnoreCase(AppConstant.ALL_CONNS) && connState.equalsIgnoreCase(AppConstant.ALL_CONNS)){
+            return remoteHelper.getRemoteConnListWSDTO(remoteConnRepository.findAllByStatus(1, PageRequest.of(reqPage,reqSize)));
+        }
+        if (connType.equalsIgnoreCase(AppConstant.ALL_CONNS) && !connState.equalsIgnoreCase(AppConstant.ALL_CONNS)){
+            return remoteHelper.getRemoteConnListWSDTO(remoteConnRepository.findAllByConnStateAndStatus(connState,1, PageRequest.of(reqPage,reqSize)));
+        }
+        if (!connType.equalsIgnoreCase(AppConstant.ALL_CONNS) && connState.equalsIgnoreCase(AppConstant.ALL_CONNS)){
+            return remoteHelper.getRemoteConnListWSDTO(remoteConnRepository.findAllByConnTypeAndStatus(connType,1, PageRequest.of(reqPage,reqSize)));
+        }
+        if (!connType.equalsIgnoreCase(AppConstant.ALL_CONNS) && !connState.equalsIgnoreCase(AppConstant.ALL_CONNS)){
+            return remoteHelper.getRemoteConnListWSDTO(remoteConnRepository.findAllByConnTypeAndConnStateAndStatus(connType,connState,1, PageRequest.of(reqPage,reqSize)));
+        }
+        return remoteConnListWSDTO;
+    }
+
+
+    public RemoteConnWSDTO getRemoteConnService(long userId, long clientId,String connId) {
 
         Optional<ClientDBModel> clientDBModel = clientRepository.findById(clientId);
-        List<ClientRemoteDBModel> clientRemoteDBModels = clientRemoteRepository.findByClientId(clientId);
-        if (clientDBModel.isPresent() && !clientRemoteDBModels.isEmpty()){
-            ClientRemoteWSDTO clientRemoteWSDTO = new ClientRemoteWSDTO();
-            clientRemoteWSDTO.setClient(clientDBModel.get());
-            clientRemoteWSDTO.setClientRemote(clientRemoteDBModels.get(0));
-
-            return clientRemoteWSDTO;
+        Optional<RemoteConnDBModel> remoteConnDBModel = remoteConnRepository.findById(connId);
+        if (clientDBModel.isPresent() && remoteConnDBModel.isPresent()){
+            return new RemoteConnWSDTO(clientDBModel.get(),remoteConnDBModel.get());
         }
         return null;
     }
 
-
-    public List<ClientRemoteDeviceWSDTO> getClientRemoteDevicesService(long userId, long clientId) {
-
-        List<ClientRemoteDeviceWSDTO> clientRemoteDeviceWSDTOS = new ArrayList<>();
-        Optional<ClientDBModel> clientDBModel = clientRepository.findById(clientId);
-        List<ClientRemoteDBModel> clientRemoteDBModels = clientRemoteRepository.findByClientId(clientId);
-        if (clientDBModel.isPresent() && !clientRemoteDBModels.isEmpty() && clientRemoteDBModels.get(0).getRemoteDevices() != null){
-            for (int i=0;i<clientRemoteDBModels.get(0).getRemoteDevices().size();i++){
-                clientRemoteDeviceWSDTOS.add(new ClientRemoteDeviceWSDTO(clientRemoteDBModels.get(0).getRemoteDevices().get(i)));
-            }
-        }
-        return clientRemoteDeviceWSDTOS;
-    }
-
-    public ClientRemoteDeviceWSDTO getClientRemoteDeviceService(long userId,long clientId,String remoteId) {
-
-        Optional<ClientDBModel> clientDBModel = clientRepository.findById(clientId);
-        List<ClientRemoteDBModel> clientRemoteDBModels = clientRemoteRepository.findByClientId(clientId);
-        if (clientDBModel.isPresent() && !clientRemoteDBModels.isEmpty() && clientRemoteDBModels.get(0).getRemoteDevices() != null){
-            for (int i=0;i<clientRemoteDBModels.get(0).getRemoteDevices().size();i++){
-                if (clientRemoteDBModels.get(0).getRemoteDevices().get(i).getDeviceId().equalsIgnoreCase(remoteId)){
-                    return new ClientRemoteDeviceWSDTO(clientRemoteDBModels.get(0).getRemoteDevices().get(i));
-                }
-            }
-        }
-        return null;
-    }
 
 
 }

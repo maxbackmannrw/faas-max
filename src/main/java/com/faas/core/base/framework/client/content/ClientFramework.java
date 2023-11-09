@@ -54,7 +54,7 @@ public class ClientFramework {
     ClientAddressRepository clientAddressRepository;
 
     @Autowired
-    ClientRemoteRepository clientRemoteRepository;
+    RemoteConnRepository remoteConnRepository;
 
     @Autowired
     ClientNoteRepository clientNoteRepository;
@@ -144,7 +144,6 @@ public class ClientFramework {
                 clientDBModel.setClientType(clientTypeDBModel.get().getClientType());
             }
             clientDBModel.setClientState(AppConstant.READY_CLIENT);
-            clientDBModel.setRemoteConn(false);
             clientDBModel.setuDate(appUtils.getCurrentTimeStamp());
             clientDBModel.setcDate(appUtils.getCurrentTimeStamp());
             clientDBModel.setStatus(1);
@@ -178,7 +177,6 @@ public class ClientFramework {
             }
 
             clientDBModel.setClientState(AppConstant.READY_CLIENT);
-            clientDBModel.setRemoteConn(false);
             clientDBModel.setuDate(appUtils.getCurrentTimeStamp());
             clientDBModel.setcDate(appUtils.getCurrentTimeStamp());
             clientDBModel.setStatus(1);
@@ -221,7 +219,6 @@ public class ClientFramework {
 
 
 
-
     public void createClientDetailsService(ClientDBModel clientDBModel){
 
         if (clientDBModel.getPhoneNumber() != null && !clientDBModel.getPhoneNumber().equalsIgnoreCase("")){
@@ -230,7 +227,6 @@ public class ClientFramework {
         if (clientDBModel.getEmailAddress() != null && !clientDBModel.getEmailAddress().equalsIgnoreCase("")){
             clientDetailsFramework.createClientEmailService(clientDBModel.getId(),clientDBModel.getEmailAddress());
         }
-        clientDetailsFramework.createClientRemoteService(clientDBModel.getId());
     }
 
 
@@ -270,7 +266,7 @@ public class ClientFramework {
             clientAddressRepository.deleteAll(clientAddressRepository.findByClientId(clientId));
             clientPhoneRepository.deleteAll(clientPhoneRepository.findByClientId(clientId));
             clientEmailRepository.deleteAll(clientEmailRepository.findByClientId(clientId));
-            clientRemoteRepository.deleteAll(clientRemoteRepository.findByClientId(clientId));
+            remoteConnRepository.deleteAll(remoteConnRepository.findByClientId(clientId));
             clientNoteRepository.deleteAll(clientNoteRepository.findByClientId(clientId));
             sessionRepository.deleteAll(sessionRepository.findByClientId(clientId));
             operationRepository.deleteAll(operationRepository.findByClientId(clientId));
