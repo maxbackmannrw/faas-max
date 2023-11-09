@@ -3,7 +3,7 @@ package com.faas.core.base.model.db.client.content;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "clients_table")
+@Table(name = "client_table")
 public class ClientDBModel {
 
     @Id
