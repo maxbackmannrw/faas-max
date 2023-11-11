@@ -5,7 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/client/content/ClientDBModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/client/content/ClientDBModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/manager/client/content/ClientManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/remote/content/RemoteConnController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/manager/client/details/ClientManagerDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/remote/details/RemoteConnDetailsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/client/content/ClientFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/client/content/ClientFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/client/details/ClientDetailsFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/client/details/ClientDetailsFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/manager/client/content/ClientManagerFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/remote/content/RemoteConnFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/manager/client/details/ClientManagerDetailsFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/remote/details/RemoteConnDetailsFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/utils/settings/UtilsSettingsFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/utils/settings/UtilsSettingsFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/manager/client/content/ClientManagerMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/remote/content/RemoteConnMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/manager/client/details/ClientManagerDetailsMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/remote/details/RemoteConnDetailsMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/client/details/RemoteConnDBModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/remote/RemoteConnDBModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/client/details/dao/RemoteConnDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/remote/dao/RemoteConnDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/client/content/AllRemoteConnWSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/remote/content/AllRemoteConnWSModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/client/content/RemoteConnListWSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/remote/content/RemoteConnListWSModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/client/content/RemoteConnWSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/remote/content/RemoteConnWSModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/client/content/dto/AllRemoteConnWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/remote/content/dto/AllRemoteConnWSDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/client/content/dto/RemoteConnListWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/remote/content/dto/RemoteConnListWSDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/manager/client/content/dto/RemoteConnWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/remote/content/dto/RemoteConnWSDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/repo/client/details/RemoteConnRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/repo/remote/RemoteConnRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/helpers/RemoteHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/helpers/RemoteConnHelper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -393,23 +412,11 @@
       <workItem from="1699469421808" duration="70000" />
       <workItem from="1699469517375" duration="1000000" />
       <workItem from="1699530325196" duration="8598000" />
-      <workItem from="1699565029198" duration="3716000" />
-    </task>
-    <task id="LOCAL-00351" summary="   ScenarioExecutes -&gt; ScenarioExecutions converted">
-      <option name="closed" value="true" />
-      <created>1698347674153</created>
-      <option name="number" value="00351" />
-      <option name="presentableId" value="LOCAL-00351" />
-      <option name="project" value="LOCAL" />
-      <updated>1698347674154</updated>
-    </task>
-    <task id="LOCAL-00352" summary="   ScenarioExecutes -&gt; ScenarioExecutions converted">
-      <option name="closed" value="true" />
-      <created>1698351294693</created>
-      <option name="number" value="00352" />
-      <option name="presentableId" value="LOCAL-00352" />
-      <option name="project" value="LOCAL" />
-      <updated>1698351294693</updated>
+      <workItem from="1699565029198" duration="4217000" />
+      <workItem from="1699612104051" duration="1710000" />
+      <workItem from="1699642548813" duration="1243000" />
+      <workItem from="1699652121929" duration="902000" />
+      <workItem from="1699661971321" duration="1567000" />
     </task>
     <task id="LOCAL-00353" summary="   ScenarioExecutes -&gt; ScenarioExecutions converted">
       <option name="closed" value="true" />
@@ -787,7 +794,23 @@
       <option name="project" value="LOCAL" />
       <updated>1699572098915</updated>
     </task>
-    <option name="localTasksCounter" value="400" />
+    <task id="LOCAL-00400" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1699572245802</created>
+      <option name="number" value="00400" />
+      <option name="presentableId" value="LOCAL-00400" />
+      <option name="project" value="LOCAL" />
+      <updated>1699572245802</updated>
+    </task>
+    <task id="LOCAL-00401" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1699572416566</created>
+      <option name="number" value="00401" />
+      <option name="presentableId" value="LOCAL-00401" />
+      <option name="project" value="LOCAL" />
+      <updated>1699572416566</updated>
+    </task>
+    <option name="localTasksCounter" value="402" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

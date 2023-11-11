@@ -1,6 +1,6 @@
-package com.faas.core.base.repo.client.details;
+package com.faas.core.base.repo.remote;
 
-import com.faas.core.base.model.db.client.details.RemoteConnDBModel;
+import com.faas.core.base.model.db.remote.RemoteConnDBModel;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.MongoRepository;

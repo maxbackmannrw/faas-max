@@ -1,12 +1,12 @@
 package com.faas.core.utils.helpers;
 
 import com.faas.core.base.model.db.client.content.ClientDBModel;
-import com.faas.core.base.model.db.client.details.RemoteConnDBModel;
+import com.faas.core.base.model.db.remote.RemoteConnDBModel;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
-import com.faas.core.base.model.ws.manager.client.content.dto.RemoteConnListWSDTO;
-import com.faas.core.base.model.ws.manager.client.content.dto.RemoteConnWSDTO;
+import com.faas.core.base.model.ws.remote.content.dto.RemoteConnListWSDTO;
+import com.faas.core.base.model.ws.remote.content.dto.RemoteConnWSDTO;
 import com.faas.core.base.repo.client.content.ClientRepository;
-import com.faas.core.base.repo.client.details.RemoteConnRepository;
+import com.faas.core.base.repo.remote.RemoteConnRepository;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
-public class RemoteHelper {
+public class RemoteConnHelper {
 
 
     @Autowired
@@ -69,7 +69,6 @@ public class RemoteHelper {
 
         return remoteConnPagination;
     }
-
 
 
 

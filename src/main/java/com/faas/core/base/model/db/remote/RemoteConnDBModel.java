@@ -1,6 +1,6 @@
-package com.faas.core.base.model.db.client.details;
+package com.faas.core.base.model.db.remote;
 
-import com.faas.core.base.model.db.client.details.dao.RemoteConnDAO;
+import com.faas.core.base.model.db.remote.dao.RemoteConnDAO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 

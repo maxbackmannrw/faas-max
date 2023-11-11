@@ -1,7 +1,7 @@
-package com.faas.core.base.model.ws.manager.client.content;
+package com.faas.core.base.model.ws.remote.content;
 
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.manager.client.content.dto.AllRemoteConnWSDTO;
+import com.faas.core.base.model.ws.remote.content.dto.AllRemoteConnWSDTO;
 
 public class AllRemoteConnWSModel {
 
