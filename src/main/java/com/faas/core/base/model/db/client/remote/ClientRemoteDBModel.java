@@ -1,35 +1,35 @@
-package com.faas.core.base.model.db.remote;
+package com.faas.core.base.model.db.client.remote;
 
-import com.faas.core.base.model.db.remote.dao.RemoteConnDAO;
+import com.faas.core.base.model.db.client.remote.dao.ClientRemoteDAO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "remote_conn_table")
-public class RemoteConnDBModel {
+@Document(collection = "client_remote_table")
+public class ClientRemoteDBModel {
 
     @Id
     private String id;
     private long clientId;
     private long sessionId;
     private String operationId;
-    private RemoteConnDAO remoteConn;
-    private String connType;
-    private String connState;
+    private ClientRemoteDAO clientRemote;
+    private String remoteType;
+    private String remoteState;
     private long uDate;
     private long cDate;
     private int status;
 
-    public RemoteConnDBModel() {
+    public ClientRemoteDBModel() {
     }
 
-    public RemoteConnDBModel(String id, long clientId, long sessionId, String operationId, RemoteConnDAO remoteConn, String connType, String connState, long uDate, long cDate, int status) {
+    public ClientRemoteDBModel(String id, long clientId, long sessionId, String operationId, ClientRemoteDAO clientRemote, String remoteType, String remoteState, long uDate, long cDate, int status) {
         this.id = id;
         this.clientId = clientId;
         this.sessionId = sessionId;
         this.operationId = operationId;
-        this.remoteConn = remoteConn;
-        this.connType = connType;
-        this.connState = connState;
+        this.clientRemote = clientRemote;
+        this.remoteType = remoteType;
+        this.remoteState = remoteState;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
@@ -67,28 +67,28 @@ public class RemoteConnDBModel {
         this.operationId = operationId;
     }
 
-    public RemoteConnDAO getRemoteConn() {
-        return remoteConn;
+    public ClientRemoteDAO getClientRemote() {
+        return clientRemote;
     }
 
-    public void setRemoteConn(RemoteConnDAO remoteConn) {
-        this.remoteConn = remoteConn;
+    public void setClientRemote(ClientRemoteDAO clientRemote) {
+        this.clientRemote = clientRemote;
     }
 
-    public String getConnType() {
-        return connType;
+    public String getRemoteType() {
+        return remoteType;
     }
 
-    public void setConnType(String connType) {
-        this.connType = connType;
+    public void setRemoteType(String remoteType) {
+        this.remoteType = remoteType;
     }
 
-    public String getConnState() {
-        return connState;
+    public String getRemoteState() {
+        return remoteState;
     }
 
-    public void setConnState(String connState) {
-        this.connState = connState;
+    public void setRemoteState(String remoteState) {
+        this.remoteState = remoteState;
     }
 
     public long getuDate() {

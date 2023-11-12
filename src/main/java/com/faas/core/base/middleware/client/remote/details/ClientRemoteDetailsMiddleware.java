@@ -1,6 +1,6 @@
-package com.faas.core.base.middleware.remote.details;
+package com.faas.core.base.middleware.client.remote.details;
 
-import com.faas.core.base.framework.remote.details.RemoteConnDetailsFramework;
+import com.faas.core.base.framework.client.remote.details.ClientRemoteDetailsFramework;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.model.ws.manager.inquiry.campaign.InquiryCampaignWSModel;
 import com.faas.core.utils.config.AppConstant;
@@ -9,11 +9,11 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class RemoteConnDetailsMiddleware {
+public class ClientRemoteDetailsMiddleware {
 
 
     @Autowired
-    RemoteConnDetailsFramework remoteConnDetailsFramework;
+    ClientRemoteDetailsFramework clientRemoteDetailsFramework;
 
 
     public InquiryCampaignWSModel getInquiryCampaigns(long userId) {

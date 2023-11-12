@@ -154,15 +154,17 @@ public class AppConstant {
 
 
 
-    public static final String READY_CONN = "READY_CONN";
-    public static final String ACTIVE_CONN = "ACTIVE_CONN";
-    public static final String INACTIVE_CONN = "INACTIVE_CONN";
+    public static final String NO_REMOTE_CONN = "NO_REMOTE_CONN";
+    public static final String READY_REMOTE_CONN = "READY_REMOTE_CONN";
+    public static final String ACTIVE_REMOTE_CONN = "ACTIVE_REMOTE_CONN";
+    public static final String TERMINATED_REMOTE_CONN = "TERMINATED_REMOTE_CONN";
 
-    public static final String PWA_CONN = "PWA_CONN";
-    public static final String IOS_CONN = "IOS_CONN";
-    public static final String ANDROID_CONN = "ANDROID_CONN";
 
-    public static final String ALL_CONNS = "ALL_CONNS";
+    public static final String PWA_REMOTE_CONN = "PWA_REMOTE_CONN";
+    public static final String IOS_REMOTE_CONN = "IOS_REMOTE_CONN";
+    public static final String ANDROID_REMOTE_CONN = "ANDROID_REMOTE_CONN";
+
+    public static final String ALL_REMOTE_CONNS = "ALL_REMOTE_CONNS";
 
 
 

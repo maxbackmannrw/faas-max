@@ -194,10 +194,9 @@ public class BaseRoute {
     public static final String REMOVE_MANUAL_OPERATION = "removemanualoperation";
 
 
-    public static final String GET_ALL_REMOTE_CONNS = "getallremoteconns";
-    public static final String GET_CLIENT_REMOTE_CONNS = "getclientremoteconns";
-    public static final String GET_REMOTE_CONNS = "getremoteconns";
-    public static final String GET_REMOTE_CONN = "getremoteconn";
+    public static final String GET_ALL_CLIENT_REMOTES = "getallclientremotes";
+    public static final String GET_CLIENT_REMOTES = "getclientremotes";
+    public static final String GET_CLIENT_REMOTE = "getclientremote";
 
 
 

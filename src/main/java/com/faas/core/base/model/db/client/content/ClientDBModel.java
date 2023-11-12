@@ -3,7 +3,7 @@ package com.faas.core.base.model.db.client.content;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "client__table")
+@Table(name = "clients__table")
 public class ClientDBModel {
 
     @Id
@@ -37,6 +37,9 @@ public class ClientDBModel {
     @Column(name = "client_state")
     private String clientState;
 
+    @Column(name = "conn_state")
+    private String connState;
+
     @Column(name = "u_date")
     private long uDate;
 
@@ -49,7 +52,7 @@ public class ClientDBModel {
     public ClientDBModel() {
     }
 
-    public ClientDBModel(long id, String clientName, String nationalId, String phoneNumber, String emailAddress, String clientCity, String clientCountry, long clientTypeId, String clientType, String clientState, long uDate, long cDate, int status) {
+    public ClientDBModel(long id, String clientName, String nationalId, String phoneNumber, String emailAddress, String clientCity, String clientCountry, long clientTypeId, String clientType, String clientState, String connState, long uDate, long cDate, int status) {
         this.id = id;
         this.clientName = clientName;
         this.nationalId = nationalId;
@@ -60,6 +63,7 @@ public class ClientDBModel {
         this.clientTypeId = clientTypeId;
         this.clientType = clientType;
         this.clientState = clientState;
+        this.connState = connState;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
@@ -143,6 +147,14 @@ public class ClientDBModel {
 
     public void setClientState(String clientState) {
         this.clientState = clientState;
+    }
+
+    public String getConnState() {
+        return connState;
+    }
+
+    public void setConnState(String connState) {
+        this.connState = connState;
     }
 
     public long getuDate() {

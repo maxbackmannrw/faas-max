@@ -1,28 +1,28 @@
-package com.faas.core.base.model.db.remote.dao;
+package com.faas.core.base.model.db.client.remote.dao;
 
-public class RemoteConnDAO {
+public class ClientRemoteDAO {
 
-    private String connUrl;
+    private String remoteUrl;
     private long uDate;
     private long cDate;
     private int status;
 
-    public RemoteConnDAO() {
+    public ClientRemoteDAO() {
     }
 
-    public RemoteConnDAO(String connUrl, long uDate, long cDate, int status) {
-        this.connUrl = connUrl;
+    public ClientRemoteDAO(String remoteUrl, long uDate, long cDate, int status) {
+        this.remoteUrl = remoteUrl;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
     }
 
-    public String getConnUrl() {
-        return connUrl;
+    public String getRemoteUrl() {
+        return remoteUrl;
     }
 
-    public void setConnUrl(String connUrl) {
-        this.connUrl = connUrl;
+    public void setRemoteUrl(String remoteUrl) {
+        this.remoteUrl = remoteUrl;
     }
 
     public long getuDate() {

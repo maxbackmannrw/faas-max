@@ -22,4 +22,5 @@ public interface ClientRepository extends PagingAndSortingRepository<ClientDBMod
     Page<ClientDBModel>findAllByClientStateAndStatus(String clientState,int status,Pageable pageable);
     Page<ClientDBModel>findAllByClientCountryAndClientState(String country,String clientState, Pageable pageable);
     Page<ClientDBModel>findAllByClientCountryAndClientCityContainingIgnoreCaseAndClientState(String country,String city,String clientState,Pageable pageable);
+    Page<ClientDBModel>findAllByConnStateAndStatus(String connState,int status,Pageable pageable);
 }

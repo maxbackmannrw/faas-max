@@ -12,7 +12,7 @@ import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.client.details.*;
 import com.faas.core.base.repo.client.settings.ClientTypeRepository;
 import com.faas.core.base.repo.operation.details.channel.*;
-import com.faas.core.base.repo.remote.RemoteConnRepository;
+import com.faas.core.base.repo.client.remote.ClientRemoteRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.utils.location.CityRepository;
@@ -55,7 +55,7 @@ public class ClientFramework {
     ClientAddressRepository clientAddressRepository;
 
     @Autowired
-    RemoteConnRepository remoteConnRepository;
+    ClientRemoteRepository clientRemoteRepository;
 
     @Autowired
     ClientNoteRepository clientNoteRepository;
@@ -139,12 +139,15 @@ public class ClientFramework {
             clientDBModel.setEmailAddress(emailAddress);
             clientDBModel.setClientCity(clientCity);
             clientDBModel.setClientCountry(clientCountry);
+
             Optional<ClientTypeDBModel> clientTypeDBModel = clientTypeRepository.findById(clientTypeId);
             if (clientTypeDBModel.isPresent()) {
                 clientDBModel.setClientTypeId(clientTypeId);
                 clientDBModel.setClientType(clientTypeDBModel.get().getClientType());
             }
+
             clientDBModel.setClientState(AppConstant.READY_CLIENT);
+            clientDBModel.setConnState(AppConstant.NO_REMOTE_CONN);
             clientDBModel.setuDate(appUtils.getCurrentTimeStamp());
             clientDBModel.setcDate(appUtils.getCurrentTimeStamp());
             clientDBModel.setStatus(1);
@@ -178,6 +181,7 @@ public class ClientFramework {
             }
 
             clientDBModel.setClientState(AppConstant.READY_CLIENT);
+            clientDBModel.setConnState(AppConstant.NO_REMOTE_CONN);
             clientDBModel.setuDate(appUtils.getCurrentTimeStamp());
             clientDBModel.setcDate(appUtils.getCurrentTimeStamp());
             clientDBModel.setStatus(1);
@@ -267,7 +271,7 @@ public class ClientFramework {
             clientAddressRepository.deleteAll(clientAddressRepository.findByClientId(clientId));
             clientPhoneRepository.deleteAll(clientPhoneRepository.findByClientId(clientId));
             clientEmailRepository.deleteAll(clientEmailRepository.findByClientId(clientId));
-            remoteConnRepository.deleteAll(remoteConnRepository.findByClientId(clientId));
+            clientRemoteRepository.deleteAll(clientRemoteRepository.findByClientId(clientId));
             clientNoteRepository.deleteAll(clientNoteRepository.findByClientId(clientId));
             sessionRepository.deleteAll(sessionRepository.findByClientId(clientId));
             operationRepository.deleteAll(operationRepository.findByClientId(clientId));
