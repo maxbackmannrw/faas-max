@@ -95,7 +95,10 @@ public class ClientRemoteFramework {
         List<ClientRemoteWSDTO> clientRemoteWSDTOS = new ArrayList<>();
         List<ClientRemoteDBModel> clientRemoteDBModels = clientRemoteRepository.findByClientId(clientId);
         for (ClientRemoteDBModel clientRemoteDBModel : clientRemoteDBModels) {
-
+            ClientRemoteWSDTO clientRemoteWSDTO = clientRemoteHelper.getClientRemoteWSDTO(clientRemoteDBModel);
+            if (clientRemoteWSDTO != null){
+                clientRemoteWSDTOS.add(clientRemoteWSDTO);
+            }
         }
         return clientRemoteWSDTOS;
     }
@@ -104,9 +107,9 @@ public class ClientRemoteFramework {
     public ClientRemoteWSDTO getClientRemoteService(long userId, long clientId, String remoteId) {
 
         Optional<ClientDBModel> clientDBModel = clientRepository.findById(clientId);
-        Optional<ClientRemoteDBModel> remoteConnDBModel = clientRemoteRepository.findById(remoteId);
-        if (clientDBModel.isPresent() && remoteConnDBModel.isPresent()){
-            return null;
+        Optional<ClientRemoteDBModel> clientRemoteDBModel = clientRemoteRepository.findById(remoteId);
+        if (clientDBModel.isPresent() && clientRemoteDBModel.isPresent()){
+            return new ClientRemoteWSDTO(clientDBModel.get(),clientRemoteDBModel.get());
         }
         return null;
     }

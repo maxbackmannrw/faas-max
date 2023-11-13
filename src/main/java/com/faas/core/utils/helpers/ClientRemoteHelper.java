@@ -44,15 +44,26 @@ public class ClientRemoteHelper {
 
         List<ClientRemoteWSDTO> clientRemoteWSDTOS = new ArrayList<>();
         for (ClientRemoteDBModel clientRemoteDBModel : clientRemoteDBModels) {
-            Optional<ClientDBModel> clientDBModel = clientRepository.findById(clientRemoteDBModel.getClientId());
-            if (clientDBModel.isPresent()) {
-                ClientRemoteWSDTO clientRemoteWSDTO = new ClientRemoteWSDTO();
-                clientRemoteWSDTO.setClient(clientDBModel.get());
-                clientRemoteWSDTO.setClientRemote(clientRemoteDBModel);
+            ClientRemoteWSDTO clientRemoteWSDTO = getClientRemoteWSDTO(clientRemoteDBModel);
+            if (clientRemoteWSDTO != null) {
                 clientRemoteWSDTOS.add(clientRemoteWSDTO);
             }
         }
         return clientRemoteWSDTOS;
+    }
+
+
+    public ClientRemoteWSDTO getClientRemoteWSDTO(ClientRemoteDBModel clientRemoteDBModel){
+
+        Optional<ClientDBModel> clientDBModel = clientRepository.findById(clientRemoteDBModel.getClientId());
+        if (clientDBModel.isPresent()) {
+            ClientRemoteWSDTO clientRemoteWSDTO = new ClientRemoteWSDTO();
+            clientRemoteWSDTO.setClient(clientDBModel.get());
+            clientRemoteWSDTO.setClientRemote(clientRemoteDBModel);
+
+            return clientRemoteWSDTO;
+        }
+        return new ;
     }
 
 
