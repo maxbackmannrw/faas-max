@@ -63,7 +63,7 @@ public class ClientRemoteHelper {
 
             return clientRemoteWSDTO;
         }
-        return new ;
+        return null;
     }
 
 

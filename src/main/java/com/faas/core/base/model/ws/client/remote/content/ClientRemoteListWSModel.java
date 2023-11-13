@@ -6,14 +6,14 @@ import com.faas.core.base.model.ws.client.remote.content.dto.ClientRemoteListWSD
 public class ClientRemoteListWSModel {
 
     private GeneralWSModel general;
-    private ClientRemoteListWSDTO clientRemoteList;
+    private ClientRemoteListWSDTO remoteList;
 
     public ClientRemoteListWSModel() {
     }
 
-    public ClientRemoteListWSModel(GeneralWSModel general, ClientRemoteListWSDTO clientRemoteList) {
+    public ClientRemoteListWSModel(GeneralWSModel general, ClientRemoteListWSDTO remoteList) {
         this.general = general;
-        this.clientRemoteList = clientRemoteList;
+        this.remoteList = remoteList;
     }
 
     public GeneralWSModel getGeneral() {
@@ -24,11 +24,11 @@ public class ClientRemoteListWSModel {
         this.general = general;
     }
 
-    public ClientRemoteListWSDTO getClientRemoteList() {
-        return clientRemoteList;
+    public ClientRemoteListWSDTO getRemoteList() {
+        return remoteList;
     }
 
-    public void setClientRemoteList(ClientRemoteListWSDTO clientRemoteList) {
-        this.clientRemoteList = clientRemoteList;
+    public void setRemoteList(ClientRemoteListWSDTO remoteList) {
+        this.remoteList = remoteList;
     }
 }

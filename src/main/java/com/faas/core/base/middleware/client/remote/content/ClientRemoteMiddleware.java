@@ -27,9 +27,9 @@ public class ClientRemoteMiddleware {
         ClientRemoteListWSModel response = new ClientRemoteListWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ClientRemoteListWSDTO clientRemoteListWSDTO = clientRemoteFramework.getAllClientRemotesService(userId,remoteType,remoteState,reqPage,reqSize);
-        if (clientRemoteListWSDTO != null){
-            response.setClientRemoteList(clientRemoteListWSDTO);
+        ClientRemoteListWSDTO remoteListWSDTO = clientRemoteFramework.getAllClientRemotesService(userId,remoteType,remoteState,reqPage,reqSize);
+        if (remoteListWSDTO != null){
+            response.setRemoteList(remoteListWSDTO);
         }
 
         general.setOperation("getAllClientRemotes");
