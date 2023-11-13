@@ -73,19 +73,20 @@ public class ClientRemoteFramework {
 
     public ClientRemoteListWSDTO getAllClientRemotesService(long userId,String remoteType,String remoteState, int reqPage, int reqSize) {
 
+        ClientRemoteListWSDTO clientRemoteListWSDTO = new ClientRemoteListWSDTO();
         if (remoteType.equalsIgnoreCase(AppConstant.ALL_CLIENT_REMOTES) && remoteState.equalsIgnoreCase(AppConstant.ALL_CLIENT_REMOTES)){
-            return clientRemoteHelper.getClientRemoteListWSDTO(clientRemoteRepository.findAllByStatus(1, PageRequest.of(reqPage,reqSize)));
+            clientRemoteListWSDTO = clientRemoteHelper.getClientRemoteListWSDTO(clientRemoteRepository.findAllByStatus(1, PageRequest.of(reqPage,reqSize)));
         }
         if (!remoteType.equalsIgnoreCase(AppConstant.ALL_CLIENT_REMOTES) && remoteState.equalsIgnoreCase(AppConstant.ALL_CLIENT_REMOTES)){
-            return clientRemoteHelper.getClientRemoteListWSDTO(clientRemoteRepository.findAllByRemoteTypeAndStatus(remoteType,1, PageRequest.of(reqPage,reqSize)));
+            clientRemoteListWSDTO = clientRemoteHelper.getClientRemoteListWSDTO(clientRemoteRepository.findAllByRemoteTypeAndStatus(remoteType,1, PageRequest.of(reqPage,reqSize)));
         }
         if (remoteType.equalsIgnoreCase(AppConstant.ALL_CLIENT_REMOTES) && !remoteState.equalsIgnoreCase(AppConstant.ALL_CLIENT_REMOTES)){
-            return clientRemoteHelper.getClientRemoteListWSDTO(clientRemoteRepository.findAllByRemoteStateAndStatus(remoteState,1, PageRequest.of(reqPage,reqSize)));
+            clientRemoteListWSDTO = clientRemoteHelper.getClientRemoteListWSDTO(clientRemoteRepository.findAllByRemoteStateAndStatus(remoteState,1, PageRequest.of(reqPage,reqSize)));
         }
         if (!remoteType.equalsIgnoreCase(AppConstant.ALL_CLIENT_REMOTES) && !remoteState.equalsIgnoreCase(AppConstant.ALL_CLIENT_REMOTES)){
-            return clientRemoteHelper.getClientRemoteListWSDTO(clientRemoteRepository.findAllByRemoteTypeAndRemoteStateAndStatus(remoteType,remoteState,1, PageRequest.of(reqPage,reqSize)));
+            clientRemoteListWSDTO = clientRemoteHelper.getClientRemoteListWSDTO(clientRemoteRepository.findAllByRemoteTypeAndRemoteStateAndStatus(remoteType,remoteState,1, PageRequest.of(reqPage,reqSize)));
         }
-        return null;
+        return clientRemoteListWSDTO;
     }
 
 
