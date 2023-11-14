@@ -197,6 +197,9 @@ public class BaseRoute {
     public static final String GET_ALL_CLIENT_REMOTES = "getallclientremotes";
     public static final String GET_CLIENT_REMOTES = "getclientremotes";
     public static final String GET_CLIENT_REMOTE = "getclientremote";
+    public static final String CREATE_CLIENT_REMOTE = "createclientremote";
+    public static final String UPDATE_CLIENT_REMOTE = "updateclientremote";
+    public static final String REMOVE_CLIENT_REMOTE = "removeclientremote";
 
 
 

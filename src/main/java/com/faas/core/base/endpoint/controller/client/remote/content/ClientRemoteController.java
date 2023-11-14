@@ -65,6 +65,45 @@ public class ClientRemoteController {
     }
 
 
+    @RequestMapping(value = BaseRoute.CREATE_CLIENT_REMOTE, method = RequestMethod.POST)
+    public ResponseEntity<?> createClientRemote(@RequestParam long userId,
+                                                @RequestParam long clientId) {
+
+        ClientRemoteWSModel response = clientRemoteMiddleware.createClientRemote(userId,clientId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = BaseRoute.UPDATE_CLIENT_REMOTE, method = RequestMethod.POST)
+    public ResponseEntity<?> updateClientRemote(@RequestParam long userId,
+                                                @RequestParam long clientId,
+                                                @RequestParam String remoteId) {
+
+        ClientRemoteWSModel response = clientRemoteMiddleware.updateClientRemote(userId,clientId,remoteId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = BaseRoute.REMOVE_CLIENT_REMOTE, method = RequestMethod.POST)
+    public ResponseEntity<?> removeClientRemote(@RequestParam long userId,
+                                                @RequestParam long clientId,
+                                                @RequestParam String remoteId) {
+
+        ClientRemoteWSModel response = clientRemoteMiddleware.removeClientRemote(userId,clientId,remoteId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
 
 
 }
