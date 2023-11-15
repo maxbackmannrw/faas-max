@@ -3,11 +3,13 @@ package com.faas.core.utils.helpers;
 import com.faas.core.base.model.db.client.content.ClientDBModel;
 import com.faas.core.base.model.db.client.remote.ClientRemoteDBModel;
 import com.faas.core.base.model.db.client.remote.dao.RemoteDeviceDAO;
+import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
 import com.faas.core.base.model.ws.client.remote.content.dto.ClientRemoteListWSDTO;
 import com.faas.core.base.model.ws.client.remote.content.dto.ClientRemoteWSDTO;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.client.remote.ClientRemoteRepository;
+import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -26,6 +28,9 @@ public class ClientRemoteHelper {
 
     @Autowired
     ClientRemoteRepository clientRemoteRepository;
+
+    @Autowired
+    SessionRepository sessionRepository;
 
     @Autowired
     AppUtils appUtils;
@@ -57,9 +62,12 @@ public class ClientRemoteHelper {
     public ClientRemoteWSDTO getClientRemoteWSDTO(ClientRemoteDBModel clientRemoteDBModel){
 
         Optional<ClientDBModel> clientDBModel = clientRepository.findById(clientRemoteDBModel.getClientId());
-        if (clientDBModel.isPresent()) {
+        List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndClientId(clientRemoteDBModel.getSessionId(),clientRemoteDBModel.getClientId());
+        if (clientDBModel.isPresent() && !sessionDBModels.isEmpty()) {
+
             ClientRemoteWSDTO clientRemoteWSDTO = new ClientRemoteWSDTO();
             clientRemoteWSDTO.setClient(clientDBModel.get());
+            clientRemoteWSDTO.setClientSession(sessionDBModels.get(0));
             clientRemoteWSDTO.setClientRemote(clientRemoteDBModel);
 
             return clientRemoteWSDTO;

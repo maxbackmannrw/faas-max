@@ -108,10 +108,9 @@ public class ClientRemoteFramework {
 
     public ClientRemoteWSDTO getClientRemoteService(long userId, long clientId, String remoteId) {
 
-        Optional<ClientDBModel> clientDBModel = clientRepository.findById(clientId);
         Optional<ClientRemoteDBModel> clientRemoteDBModel = clientRemoteRepository.findById(remoteId);
-        if (clientDBModel.isPresent() && clientRemoteDBModel.isPresent()){
-            return new ClientRemoteWSDTO(clientDBModel.get(),clientRemoteDBModel.get());
+        if ( clientRemoteDBModel.isPresent()){
+            return clientRemoteHelper.getClientRemoteWSDTO(clientRemoteDBModel.get());
         }
         return null;
     }
@@ -121,15 +120,16 @@ public class ClientRemoteFramework {
 
         List<OperationDBModel> operationDBModels = operationRepository.findBySessionId(sessionId);
         Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
-
         if (sessionDBModel.isPresent() && !operationDBModels.isEmpty()){
 
             Optional<ClientDBModel> clientDBModel = clientRepository.findById(sessionDBModel.get().getClientId());
-
             if (clientDBModel.isPresent()){
 
-                ClientRemoteDBModel clientRemoteDBModel = new ClientRemoteDBModel();
+                clientDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
+                clientDBModel.get().setRemoteState(AppConstant.HAVE_REMOTE);
+                clientRepository.save(clientDBModel.get());
 
+                ClientRemoteDBModel clientRemoteDBModel = new ClientRemoteDBModel();
                 clientRemoteDBModel.setClientId(sessionDBModel.get().getClientId());
                 clientRemoteDBModel.setSessionId(sessionId);
                 clientRemoteDBModel.setOperationId(operationDBModels.get(0).getId());
@@ -142,14 +142,7 @@ public class ClientRemoteFramework {
                 clientRemoteDBModel.setcDate(appUtils.getCurrentTimeStamp());
                 clientRemoteDBModel.setStatus(1);
 
-                ClientRemoteDBModel createdClientRemote = clientRemoteRepository.save(clientRemoteDBModel);
-
-                clientDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
-                clientDBModel.get().setRemoteState(AppConstant.HAVE_REMOTE);
-
-                ClientDBModel updatedClient = clientRepository.save(clientDBModel.get());
-
-                return new ClientRemoteWSDTO(updatedClient,createdClientRemote);
+                return clientRemoteHelper.getClientRemoteWSDTO(clientRemoteRepository.save(clientRemoteDBModel));
             }
         }
         return null;
