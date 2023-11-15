@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/config/AppConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/config/AppConstant.java" afterDir="false" />
-    </list>
+    <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -417,15 +415,7 @@
       <workItem from="1699903276287" duration="363000" />
       <workItem from="1699958369864" duration="3123000" />
       <workItem from="1699989145860" duration="226000" />
-      <workItem from="1700039035048" duration="8584000" />
-    </task>
-    <task id="LOCAL-00369" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1698880636023</created>
-      <option name="number" value="00369" />
-      <option name="presentableId" value="LOCAL-00369" />
-      <option name="project" value="LOCAL" />
-      <updated>1698880636023</updated>
+      <workItem from="1700039035048" duration="9050000" />
     </task>
     <task id="LOCAL-00370" summary="almost finish">
       <option name="closed" value="true" />
@@ -811,7 +801,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700054334330</updated>
     </task>
-    <option name="localTasksCounter" value="418" />
+    <task id="LOCAL-00418" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1700055030576</created>
+      <option name="number" value="00418" />
+      <option name="presentableId" value="LOCAL-00418" />
+      <option name="project" value="LOCAL" />
+      <updated>1700055030576</updated>
+    </task>
+    <option name="localTasksCounter" value="419" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
