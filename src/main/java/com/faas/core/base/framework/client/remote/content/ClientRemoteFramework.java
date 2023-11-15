@@ -121,12 +121,15 @@ public class ClientRemoteFramework {
 
         List<OperationDBModel> operationDBModels = operationRepository.findBySessionId(sessionId);
         Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
+
         if (sessionDBModel.isPresent() && !operationDBModels.isEmpty()){
 
             Optional<ClientDBModel> clientDBModel = clientRepository.findById(sessionDBModel.get().getClientId());
+
             if (clientDBModel.isPresent()){
 
                 ClientRemoteDBModel clientRemoteDBModel = new ClientRemoteDBModel();
+
                 clientRemoteDBModel.setClientId(sessionDBModel.get().getClientId());
                 clientRemoteDBModel.setSessionId(sessionId);
                 clientRemoteDBModel.setOperationId(operationDBModels.get(0).getId());
@@ -139,12 +142,14 @@ public class ClientRemoteFramework {
                 clientRemoteDBModel.setcDate(appUtils.getCurrentTimeStamp());
                 clientRemoteDBModel.setStatus(1);
 
-                clientRemoteRepository.save(clientRemoteDBModel);
+                ClientRemoteDBModel createdClientRemote = clientRemoteRepository.save(clientRemoteDBModel);
 
                 clientDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
                 clientDBModel.get().setRemoteState(AppConstant.HAVE_CLIENT_REMOTE);
 
-                return null;
+                ClientDBModel updatedClient = clientRepository.save(clientDBModel.get());
+
+                return new ClientRemoteWSDTO(updatedClient,createdClientRemote);
             }
         }
         return null;

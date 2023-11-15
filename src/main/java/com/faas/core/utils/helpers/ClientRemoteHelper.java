@@ -71,6 +71,7 @@ public class ClientRemoteHelper {
     public PaginationWSDTO createClientRemotePagination(Page<ClientRemoteDBModel> clientRemotePage){
 
         PaginationWSDTO clientRemotePagination = new PaginationWSDTO();
+
         clientRemotePagination.setPageSize(clientRemotePage.getPageable().getPageSize());
         clientRemotePagination.setPageNumber(clientRemotePage.getPageable().getPageNumber());
         clientRemotePagination.setTotalPage(clientRemotePage.getTotalPages());
@@ -83,6 +84,7 @@ public class ClientRemoteHelper {
     public RemoteDeviceDAO createRemoteDeviceDAO(String deviceBrand,String deviceModel,String deviceOS,String deviceUrl){
 
         RemoteDeviceDAO remoteDeviceDAO = new RemoteDeviceDAO();
+
         remoteDeviceDAO.setDeviceId(appUtils.generateUUID());
         remoteDeviceDAO.setDeviceBrand(deviceBrand);
         remoteDeviceDAO.setDeviceModel(deviceModel);
