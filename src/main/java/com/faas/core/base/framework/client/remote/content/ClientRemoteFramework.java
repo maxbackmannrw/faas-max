@@ -2,6 +2,8 @@ package com.faas.core.base.framework.client.remote.content;
 
 import com.faas.core.base.model.db.client.content.ClientDBModel;
 import com.faas.core.base.model.db.client.remote.ClientRemoteDBModel;
+import com.faas.core.base.model.db.operation.content.OperationDBModel;
+import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.ws.client.remote.content.dto.ClientRemoteListWSDTO;
 import com.faas.core.base.model.ws.client.remote.content.dto.ClientRemoteWSDTO;
 import com.faas.core.base.repo.client.content.ClientRepository;
@@ -115,14 +117,42 @@ public class ClientRemoteFramework {
     }
 
 
-    public ClientRemoteWSDTO createClientRemoteService(long userId,long clientId,long sessionId,String deviceBrand,String deviceModel,String deviceOS,String deviceUrl,String remoteType,String remoteState) {
+    public ClientRemoteWSDTO createClientRemoteService(long userId,long sessionId,String deviceBrand,String deviceModel,String deviceOS,String deviceUrl,String remoteType,String remoteState) {
 
+        List<OperationDBModel> operationDBModels = operationRepository.findBySessionId(sessionId);
+        Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
+        if (sessionDBModel.isPresent() && !operationDBModels.isEmpty()){
 
+            Optional<ClientDBModel> clientDBModel = clientRepository.findById(sessionDBModel.get().getClientId());
+            if (clientDBModel.isPresent()){
+
+                ClientRemoteDBModel clientRemoteDBModel = new ClientRemoteDBModel();
+                clientRemoteDBModel.setClientId(sessionDBModel.get().getClientId());
+                clientRemoteDBModel.setSessionId(sessionId);
+                clientRemoteDBModel.setOperationId(operationDBModels.get(0).getId());
+                clientRemoteDBModel.setCampaignId(sessionDBModel.get().getCampaignId());
+                clientRemoteDBModel.setProcessId(sessionDBModel.get().getProcessId());
+                clientRemoteDBModel.setRemoteDevice(clientRemoteHelper.createRemoteDeviceDAO(deviceBrand,deviceModel,deviceOS,deviceUrl));
+                clientRemoteDBModel.setRemoteType(remoteType);
+                clientRemoteDBModel.setRemoteState(remoteState);
+                clientRemoteDBModel.setuDate(appUtils.getCurrentTimeStamp());
+                clientRemoteDBModel.setcDate(appUtils.getCurrentTimeStamp());
+                clientRemoteDBModel.setStatus(1);
+
+                clientRemoteRepository.save(clientRemoteDBModel);
+
+                clientDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
+                clientDBModel.get().setRemoteState(AppConstant.HAVE_CLIENT_REMOTE);
+
+                return null;
+            }
+        }
         return null;
     }
 
 
-    public ClientRemoteWSDTO updateClientRemoteService(long userId,long clientId,String remoteId,String deviceBrand,String deviceModel,String deviceOS,String deviceUrl,String remoteState) {
+
+    public ClientRemoteWSDTO updateClientRemoteService(long userId,long sessionId,String remoteId,String deviceBrand,String deviceModel,String deviceOS,String deviceUrl,String remoteState) {
 
 
         return null;

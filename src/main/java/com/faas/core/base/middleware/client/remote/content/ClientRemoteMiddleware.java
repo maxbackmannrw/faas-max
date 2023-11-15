@@ -84,13 +84,13 @@ public class ClientRemoteMiddleware {
     }
 
 
-    public ClientRemoteWSModel createClientRemote(long userId,long clientId,long sessionId,String deviceBrand,String deviceModel,String deviceOS,String deviceUrl,String remoteType,String remoteState) {
+    public ClientRemoteWSModel createClientRemote(long userId,long sessionId,String deviceBrand,String deviceModel,String deviceOS,String deviceUrl,String remoteType,String remoteState) {
 
         ClientRemoteWSModel response = new ClientRemoteWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ClientRemoteWSDTO> clientRemoteWSDTOS = new ArrayList<>();
 
-        ClientRemoteWSDTO clientRemoteWSDTO = clientRemoteFramework.createClientRemoteService(userId,clientId,sessionId,deviceBrand,deviceModel,deviceOS,deviceUrl,remoteType,remoteState);
+        ClientRemoteWSDTO clientRemoteWSDTO = clientRemoteFramework.createClientRemoteService(userId,sessionId,deviceBrand,deviceModel,deviceOS,deviceUrl,remoteType,remoteState);
         if (clientRemoteWSDTO != null){
             clientRemoteWSDTOS.add(clientRemoteWSDTO);
         }
@@ -106,13 +106,13 @@ public class ClientRemoteMiddleware {
     }
 
 
-    public ClientRemoteWSModel updateClientRemote(long userId,long clientId,String remoteId,String deviceBrand,String deviceModel,String deviceOS,String deviceUrl,String remoteState) {
+    public ClientRemoteWSModel updateClientRemote(long userId,long sessionId,String remoteId,String deviceBrand,String deviceModel,String deviceOS,String deviceUrl,String remoteState) {
 
         ClientRemoteWSModel response = new ClientRemoteWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ClientRemoteWSDTO> clientRemoteWSDTOS = new ArrayList<>();
 
-        ClientRemoteWSDTO clientRemoteWSDTO = clientRemoteFramework.updateClientRemoteService(userId,clientId,remoteId,deviceBrand,deviceModel,deviceOS,deviceUrl,remoteState);
+        ClientRemoteWSDTO clientRemoteWSDTO = clientRemoteFramework.updateClientRemoteService(userId,sessionId,remoteId,deviceBrand,deviceModel,deviceOS,deviceUrl,remoteState);
         if (clientRemoteWSDTO != null){
             clientRemoteWSDTOS.add(clientRemoteWSDTO);
         }

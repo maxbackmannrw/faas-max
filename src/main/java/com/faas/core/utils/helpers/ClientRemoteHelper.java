@@ -2,6 +2,7 @@ package com.faas.core.utils.helpers;
 
 import com.faas.core.base.model.db.client.content.ClientDBModel;
 import com.faas.core.base.model.db.client.remote.ClientRemoteDBModel;
+import com.faas.core.base.model.db.client.remote.dao.RemoteDeviceDAO;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
 import com.faas.core.base.model.ws.client.remote.content.dto.ClientRemoteListWSDTO;
 import com.faas.core.base.model.ws.client.remote.content.dto.ClientRemoteWSDTO;
@@ -79,5 +80,19 @@ public class ClientRemoteHelper {
     }
 
 
+    public RemoteDeviceDAO createRemoteDeviceDAO(String deviceBrand,String deviceModel,String deviceOS,String deviceUrl){
+
+        RemoteDeviceDAO remoteDeviceDAO = new RemoteDeviceDAO();
+        remoteDeviceDAO.setDeviceId(appUtils.generateUUID());
+        remoteDeviceDAO.setDeviceBrand(deviceBrand);
+        remoteDeviceDAO.setDeviceModel(deviceModel);
+        remoteDeviceDAO.setDeviceOS(deviceOS);
+        remoteDeviceDAO.setDeviceUrl(deviceUrl);
+        remoteDeviceDAO.setuDate(appUtils.getCurrentTimeStamp());
+        remoteDeviceDAO.setcDate(appUtils.getCurrentTimeStamp());
+        remoteDeviceDAO.setStatus(1);
+
+        return remoteDeviceDAO;
+    }
 
 }
