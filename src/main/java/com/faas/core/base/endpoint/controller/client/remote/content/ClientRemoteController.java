@@ -67,9 +67,16 @@ public class ClientRemoteController {
 
     @RequestMapping(value = BaseRoute.CREATE_CLIENT_REMOTE, method = RequestMethod.POST)
     public ResponseEntity<?> createClientRemote(@RequestParam long userId,
-                                                @RequestParam long clientId) {
+                                                @RequestParam long clientId,
+                                                @RequestParam long sessionId,
+                                                @RequestParam String deviceBrand,
+                                                @RequestParam String deviceModel,
+                                                @RequestParam String deviceOS,
+                                                @RequestParam String deviceUrl,
+                                                @RequestParam String remoteType,
+                                                @RequestParam String remoteState) {
 
-        ClientRemoteWSModel response = clientRemoteMiddleware.createClientRemote(userId,clientId);
+        ClientRemoteWSModel response = clientRemoteMiddleware.createClientRemote(userId,clientId,sessionId,deviceBrand,deviceModel,deviceOS,deviceUrl,remoteType,remoteState);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -81,9 +88,14 @@ public class ClientRemoteController {
     @RequestMapping(value = BaseRoute.UPDATE_CLIENT_REMOTE, method = RequestMethod.POST)
     public ResponseEntity<?> updateClientRemote(@RequestParam long userId,
                                                 @RequestParam long clientId,
-                                                @RequestParam String remoteId) {
+                                                @RequestParam String remoteId,
+                                                @RequestParam String deviceBrand,
+                                                @RequestParam String deviceModel,
+                                                @RequestParam String deviceOS,
+                                                @RequestParam String deviceUrl,
+                                                @RequestParam String remoteState) {
 
-        ClientRemoteWSModel response = clientRemoteMiddleware.updateClientRemote(userId,clientId,remoteId);
+        ClientRemoteWSModel response = clientRemoteMiddleware.updateClientRemote(userId,clientId,remoteId,deviceBrand,deviceModel,deviceOS,deviceUrl,remoteState);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

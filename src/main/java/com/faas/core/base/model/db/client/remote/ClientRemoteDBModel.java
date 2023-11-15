@@ -1,6 +1,6 @@
 package com.faas.core.base.model.db.client.remote;
 
-import com.faas.core.base.model.db.client.remote.dao.ClientRemoteDAO;
+import com.faas.core.base.model.db.client.remote.dao.RemoteDeviceDAO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -12,7 +12,9 @@ public class ClientRemoteDBModel {
     private long clientId;
     private long sessionId;
     private String operationId;
-    private ClientRemoteDAO clientRemote;
+    private String campaignId;
+    private String processId;
+    private RemoteDeviceDAO remoteDevice;
     private String remoteType;
     private String remoteState;
     private long uDate;
@@ -22,12 +24,14 @@ public class ClientRemoteDBModel {
     public ClientRemoteDBModel() {
     }
 
-    public ClientRemoteDBModel(String id, long clientId, long sessionId, String operationId, ClientRemoteDAO clientRemote, String remoteType, String remoteState, long uDate, long cDate, int status) {
+    public ClientRemoteDBModel(String id, long clientId, long sessionId, String operationId, String campaignId, String processId, RemoteDeviceDAO remoteDevice, String remoteType, String remoteState, long uDate, long cDate, int status) {
         this.id = id;
         this.clientId = clientId;
         this.sessionId = sessionId;
         this.operationId = operationId;
-        this.clientRemote = clientRemote;
+        this.campaignId = campaignId;
+        this.processId = processId;
+        this.remoteDevice = remoteDevice;
         this.remoteType = remoteType;
         this.remoteState = remoteState;
         this.uDate = uDate;
@@ -67,12 +71,28 @@ public class ClientRemoteDBModel {
         this.operationId = operationId;
     }
 
-    public ClientRemoteDAO getClientRemote() {
-        return clientRemote;
+    public String getCampaignId() {
+        return campaignId;
     }
 
-    public void setClientRemote(ClientRemoteDAO clientRemote) {
-        this.clientRemote = clientRemote;
+    public void setCampaignId(String campaignId) {
+        this.campaignId = campaignId;
+    }
+
+    public String getProcessId() {
+        return processId;
+    }
+
+    public void setProcessId(String processId) {
+        this.processId = processId;
+    }
+
+    public RemoteDeviceDAO getRemoteDevice() {
+        return remoteDevice;
+    }
+
+    public void setRemoteDevice(RemoteDeviceDAO remoteDevice) {
+        this.remoteDevice = remoteDevice;
     }
 
     public String getRemoteType() {

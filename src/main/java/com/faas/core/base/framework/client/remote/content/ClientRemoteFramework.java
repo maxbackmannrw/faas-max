@@ -115,21 +115,16 @@ public class ClientRemoteFramework {
     }
 
 
-    public ClientRemoteWSDTO createClientRemoteService(long userId, long clientId) {
+    public ClientRemoteWSDTO createClientRemoteService(long userId,long clientId,long sessionId,String deviceBrand,String deviceModel,String deviceOS,String deviceUrl,String remoteType,String remoteState) {
 
-        Optional<ClientDBModel> clientDBModel = clientRepository.findById(clientId);
 
         return null;
     }
 
 
-    public ClientRemoteWSDTO updateClientRemoteService(long userId, long clientId, String remoteId) {
+    public ClientRemoteWSDTO updateClientRemoteService(long userId,long clientId,String remoteId,String deviceBrand,String deviceModel,String deviceOS,String deviceUrl,String remoteState) {
 
-        Optional<ClientDBModel> clientDBModel = clientRepository.findById(clientId);
-        Optional<ClientRemoteDBModel> clientRemoteDBModel = clientRemoteRepository.findById(remoteId);
-        if (clientDBModel.isPresent() && clientRemoteDBModel.isPresent()){
-            return new ClientRemoteWSDTO(clientDBModel.get(),clientRemoteDBModel.get());
-        }
+
         return null;
     }
 
@@ -137,10 +132,7 @@ public class ClientRemoteFramework {
     public ClientRemoteWSDTO removeClientRemoteService(long userId, long clientId, String remoteId) {
 
         Optional<ClientDBModel> clientDBModel = clientRepository.findById(clientId);
-        Optional<ClientRemoteDBModel> clientRemoteDBModel = clientRemoteRepository.findById(remoteId);
-        if (clientDBModel.isPresent() && clientRemoteDBModel.isPresent()){
-            return new ClientRemoteWSDTO(clientDBModel.get(),clientRemoteDBModel.get());
-        }
+
         return null;
     }
 
