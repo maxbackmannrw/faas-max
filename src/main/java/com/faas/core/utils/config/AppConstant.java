@@ -163,7 +163,6 @@ public class AppConstant {
     public static final String TERMINATED_REMOTE = "TERMINATED_REMOTE";
 
 
-
     public static final String PWA_REMOTE = "PWA_REMOTE";
     public static final String IOS_REMOTE = "IOS_REMOTE";
     public static final String ANDROID_REMOTE = "ANDROID_REMOTE";
