@@ -53,10 +53,9 @@ public class ClientRemoteController {
 
     @RequestMapping(value = BaseRoute.GET_CLIENT_REMOTE, method = RequestMethod.POST)
     public ResponseEntity<?> getClientRemote(@RequestParam long userId,
-                                             @RequestParam long clientId,
                                              @RequestParam String remoteId) {
 
-        ClientRemoteWSModel response = clientRemoteMiddleware.getClientRemote(userId,clientId,remoteId);
+        ClientRemoteWSModel response = clientRemoteMiddleware.getClientRemote(userId,remoteId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -105,10 +104,9 @@ public class ClientRemoteController {
 
     @RequestMapping(value = BaseRoute.REMOVE_CLIENT_REMOTE, method = RequestMethod.POST)
     public ResponseEntity<?> removeClientRemote(@RequestParam long userId,
-                                                @RequestParam long clientId,
                                                 @RequestParam String remoteId) {
 
-        ClientRemoteWSModel response = clientRemoteMiddleware.removeClientRemote(userId,clientId,remoteId);
+        ClientRemoteWSModel response = clientRemoteMiddleware.removeClientRemote(userId,remoteId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

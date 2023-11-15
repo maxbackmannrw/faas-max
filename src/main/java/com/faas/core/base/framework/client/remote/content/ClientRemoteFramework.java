@@ -106,7 +106,7 @@ public class ClientRemoteFramework {
     }
 
 
-    public ClientRemoteWSDTO getClientRemoteService(long userId, long clientId, String remoteId) {
+    public ClientRemoteWSDTO getClientRemoteService(long userId,String remoteId) {
 
         Optional<ClientRemoteDBModel> clientRemoteDBModel = clientRemoteRepository.findById(remoteId);
         if ( clientRemoteDBModel.isPresent()){
@@ -120,9 +120,10 @@ public class ClientRemoteFramework {
 
         List<OperationDBModel> operationDBModels = operationRepository.findBySessionId(sessionId);
         Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
-        if (sessionDBModel.isPresent() && !operationDBModels.isEmpty()){
 
+        if (sessionDBModel.isPresent() && !operationDBModels.isEmpty()){
             Optional<ClientDBModel> clientDBModel = clientRepository.findById(sessionDBModel.get().getClientId());
+
             if (clientDBModel.isPresent()){
 
                 clientDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
@@ -157,9 +158,8 @@ public class ClientRemoteFramework {
     }
 
 
-    public ClientRemoteWSDTO removeClientRemoteService(long userId, long clientId, String remoteId) {
+    public ClientRemoteWSDTO removeClientRemoteService(long userId, String remoteId) {
 
-        Optional<ClientDBModel> clientDBModel = clientRepository.findById(clientId);
 
         return null;
     }

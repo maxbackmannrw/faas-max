@@ -61,12 +61,9 @@ public class ClientRemoteHelper {
 
     public ClientRemoteWSDTO getClientRemoteWSDTO(ClientRemoteDBModel clientRemoteDBModel){
 
-        Optional<ClientDBModel> clientDBModel = clientRepository.findById(clientRemoteDBModel.getClientId());
         List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndClientId(clientRemoteDBModel.getSessionId(),clientRemoteDBModel.getClientId());
-        if (clientDBModel.isPresent() && !sessionDBModels.isEmpty()) {
-
+        if (!sessionDBModels.isEmpty()) {
             ClientRemoteWSDTO clientRemoteWSDTO = new ClientRemoteWSDTO();
-            clientRemoteWSDTO.setClient(clientDBModel.get());
             clientRemoteWSDTO.setClientSession(sessionDBModels.get(0));
             clientRemoteWSDTO.setClientRemote(clientRemoteDBModel);
 

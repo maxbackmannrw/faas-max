@@ -62,13 +62,13 @@ public class ClientRemoteMiddleware {
     }
 
 
-    public ClientRemoteWSModel getClientRemote(long userId, long clientId, String remoteId) {
+    public ClientRemoteWSModel getClientRemote(long userId,String remoteId) {
 
         ClientRemoteWSModel response = new ClientRemoteWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ClientRemoteWSDTO> clientRemoteWSDTOS = new ArrayList<>();
 
-        ClientRemoteWSDTO clientRemoteWSDTO = clientRemoteFramework.getClientRemoteService(userId,clientId,remoteId);
+        ClientRemoteWSDTO clientRemoteWSDTO = clientRemoteFramework.getClientRemoteService(userId,remoteId);
         if (clientRemoteWSDTO != null){
             clientRemoteWSDTOS.add(clientRemoteWSDTO);
         }
@@ -128,13 +128,13 @@ public class ClientRemoteMiddleware {
     }
 
 
-    public ClientRemoteWSModel removeClientRemote(long userId, long clientId, String remoteId) {
+    public ClientRemoteWSModel removeClientRemote(long userId,String remoteId) {
 
         ClientRemoteWSModel response = new ClientRemoteWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ClientRemoteWSDTO> clientRemoteWSDTOS = new ArrayList<>();
 
-        ClientRemoteWSDTO clientRemoteWSDTO = clientRemoteFramework.removeClientRemoteService(userId,clientId,remoteId);
+        ClientRemoteWSDTO clientRemoteWSDTO = clientRemoteFramework.removeClientRemoteService(userId,remoteId);
         if (clientRemoteWSDTO != null){
             clientRemoteWSDTOS.add(clientRemoteWSDTO);
         }
