@@ -154,20 +154,21 @@ public class AppConstant {
 
 
 
-    public static final String NO_CLIENT_REMOTE = "NO_CLIENT_REMOTE";
-    public static final String HAVE_CLIENT_REMOTE = "HAVE_CLIENT_REMOTE";
+    public static final String NO_REMOTE = "NO_REMOTE";
+    public static final String HAVE_REMOTE = "HAVE_REMOTE";
 
 
-    public static final String READY_CLIENT_REMOTE = "READY_CLIENT_REMOTE";
-    public static final String ACTIVE_CLIENT_REMOTE = "ACTIVE_CLIENT_REMOTE";
-    public static final String TERMINATED_CLIENT_REMOTE = "TERMINATED_CLIENT_REMOTE";
+    public static final String READY_REMOTE = "READY_REMOTE";
+    public static final String ACTIVE_REMOTE = "ACTIVE_REMOTE";
+    public static final String TERMINATED_REMOTE = "TERMINATED_REMOTE";
 
 
-    public static final String PWA_CLIENT_REMOTE = "PWA_CLIENT_REMOTE";
-    public static final String IOS_CLIENT_REMOTE = "IOS_CLIENT_REMOTE";
-    public static final String ANDROID_CLIENT_REMOTE = "ANDROID_CLIENT_REMOTE";
 
-    public static final String ALL_CLIENT_REMOTES = "ALL_CLIENT_REMOTES";
+    public static final String PWA_REMOTE = "PWA_REMOTE";
+    public static final String IOS_REMOTE = "IOS_REMOTE";
+    public static final String ANDROID_REMOTE = "ANDROID_REMOTE";
+
+    public static final String ALL_REMOTES = "ALL_REMOTES";
 
 
 

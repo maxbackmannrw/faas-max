@@ -76,16 +76,16 @@ public class ClientRemoteFramework {
     public ClientRemoteListWSDTO getAllClientRemotesService(long userId,String remoteType,String remoteState, int reqPage, int reqSize) {
 
         ClientRemoteListWSDTO clientRemoteListWSDTO = new ClientRemoteListWSDTO();
-        if (remoteType.equalsIgnoreCase(AppConstant.ALL_CLIENT_REMOTES) && remoteState.equalsIgnoreCase(AppConstant.ALL_CLIENT_REMOTES)){
+        if (remoteType.equalsIgnoreCase(AppConstant.ALL_REMOTES) && remoteState.equalsIgnoreCase(AppConstant.ALL_REMOTES)){
             clientRemoteListWSDTO = clientRemoteHelper.getClientRemoteListWSDTO(clientRemoteRepository.findAllByStatus(1, PageRequest.of(reqPage,reqSize)));
         }
-        if (!remoteType.equalsIgnoreCase(AppConstant.ALL_CLIENT_REMOTES) && remoteState.equalsIgnoreCase(AppConstant.ALL_CLIENT_REMOTES)){
+        if (!remoteType.equalsIgnoreCase(AppConstant.ALL_REMOTES) && remoteState.equalsIgnoreCase(AppConstant.ALL_REMOTES)){
             clientRemoteListWSDTO = clientRemoteHelper.getClientRemoteListWSDTO(clientRemoteRepository.findAllByRemoteTypeAndStatus(remoteType,1, PageRequest.of(reqPage,reqSize)));
         }
-        if (remoteType.equalsIgnoreCase(AppConstant.ALL_CLIENT_REMOTES) && !remoteState.equalsIgnoreCase(AppConstant.ALL_CLIENT_REMOTES)){
+        if (remoteType.equalsIgnoreCase(AppConstant.ALL_REMOTES) && !remoteState.equalsIgnoreCase(AppConstant.ALL_REMOTES)){
             clientRemoteListWSDTO = clientRemoteHelper.getClientRemoteListWSDTO(clientRemoteRepository.findAllByRemoteStateAndStatus(remoteState,1, PageRequest.of(reqPage,reqSize)));
         }
-        if (!remoteType.equalsIgnoreCase(AppConstant.ALL_CLIENT_REMOTES) && !remoteState.equalsIgnoreCase(AppConstant.ALL_CLIENT_REMOTES)){
+        if (!remoteType.equalsIgnoreCase(AppConstant.ALL_REMOTES) && !remoteState.equalsIgnoreCase(AppConstant.ALL_REMOTES)){
             clientRemoteListWSDTO = clientRemoteHelper.getClientRemoteListWSDTO(clientRemoteRepository.findAllByRemoteTypeAndRemoteStateAndStatus(remoteType,remoteState,1, PageRequest.of(reqPage,reqSize)));
         }
         return clientRemoteListWSDTO;
@@ -145,7 +145,7 @@ public class ClientRemoteFramework {
                 ClientRemoteDBModel createdClientRemote = clientRemoteRepository.save(clientRemoteDBModel);
 
                 clientDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
-                clientDBModel.get().setRemoteState(AppConstant.HAVE_CLIENT_REMOTE);
+                clientDBModel.get().setRemoteState(AppConstant.HAVE_REMOTE);
 
                 ClientDBModel updatedClient = clientRepository.save(clientDBModel.get());
 
