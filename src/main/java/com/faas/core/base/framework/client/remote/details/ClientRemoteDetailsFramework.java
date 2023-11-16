@@ -61,7 +61,7 @@ public class ClientRemoteDetailsFramework {
     AppUtils appUtils;
 
 
-    public List<InquiryCampaignWSDTO> getInquiryCampaignsService(long userId) {
+    public List<InquiryCampaignWSDTO> getClientRemoteDetailsService(long userId) {
 
         List<InquiryCampaignWSDTO> campaignWSDTOS = new ArrayList<>();
 

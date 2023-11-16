@@ -16,14 +16,14 @@ public class ClientRemoteDetailsMiddleware {
     ClientRemoteDetailsFramework clientRemoteDetailsFramework;
 
 
-    public InquiryCampaignWSModel getInquiryCampaigns(long userId) {
+    public InquiryCampaignWSModel getClientRemoteDetails(long userId) {
 
         InquiryCampaignWSModel response = new InquiryCampaignWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
 
 
-        general.setOperation("getInquiryCampaigns");
+        general.setOperation("getClientRemoteDetails");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

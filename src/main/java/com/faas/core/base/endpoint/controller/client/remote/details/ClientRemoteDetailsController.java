@@ -23,17 +23,15 @@ public class ClientRemoteDetailsController {
 
 
     @RequestMapping(value = BaseRoute.GET_INQUIRY_CAMPAIGNS, method = RequestMethod.POST)
-    public ResponseEntity<?> getInquiryCampaigns(@RequestParam long userId) {
+    public ResponseEntity<?> getClientRemoteDetails(@RequestParam long userId) {
 
-        InquiryCampaignWSModel response = clientRemoteDetailsMiddleware.getInquiryCampaigns(userId);
+        InquiryCampaignWSModel response = clientRemoteDetailsMiddleware.getClientRemoteDetails(userId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
-
 
 
 }
