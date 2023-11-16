@@ -3,7 +3,6 @@ package com.faas.core.base.model.ws.client.remote.content.dto;
 import com.faas.core.base.model.db.client.remote.ClientRemoteDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
 
-
 public class ClientRemoteWSDTO {
 
     private SessionDBModel clientSession;
