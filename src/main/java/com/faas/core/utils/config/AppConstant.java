@@ -154,9 +154,6 @@ public class AppConstant {
 
 
 
-    public static final String NO_REMOTE = "NO_REMOTE";
-    public static final String HAVE_REMOTE = "HAVE_REMOTE";
-
 
     public static final String READY_REMOTE = "READY_REMOTE";
     public static final String ACTIVE_REMOTE = "ACTIVE_REMOTE";

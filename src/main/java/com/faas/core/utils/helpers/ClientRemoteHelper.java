@@ -61,10 +61,11 @@ public class ClientRemoteHelper {
 
     public ClientRemoteWSDTO getClientRemoteWSDTO(ClientRemoteDBModel clientRemoteDBModel){
 
-        List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndClientId(clientRemoteDBModel.getSessionId(),clientRemoteDBModel.getClientId());
-        if (!sessionDBModels.isEmpty()) {
+        Optional<ClientDBModel> clientDBModel = clientRepository.findById(clientRemoteDBModel.getClientId());
+        if (clientDBModel.isPresent()) {
+
             ClientRemoteWSDTO clientRemoteWSDTO = new ClientRemoteWSDTO();
-            clientRemoteWSDTO.setClientSession(sessionDBModels.get(0));
+            clientRemoteWSDTO.setClient(clientDBModel.get());
             clientRemoteWSDTO.setClientRemote(clientRemoteDBModel);
 
             return clientRemoteWSDTO;
@@ -76,7 +77,6 @@ public class ClientRemoteHelper {
     public PaginationWSDTO createClientRemotePagination(Page<ClientRemoteDBModel> clientRemotePage){
 
         PaginationWSDTO clientRemotePagination = new PaginationWSDTO();
-
         clientRemotePagination.setPageSize(clientRemotePage.getPageable().getPageSize());
         clientRemotePagination.setPageNumber(clientRemotePage.getPageable().getPageNumber());
         clientRemotePagination.setTotalPage(clientRemotePage.getTotalPages());
@@ -89,7 +89,6 @@ public class ClientRemoteHelper {
     public RemoteDeviceDAO createRemoteDeviceDAO(String deviceBrand,String deviceModel,String deviceOS,String deviceUrl){
 
         RemoteDeviceDAO remoteDeviceDAO = new RemoteDeviceDAO();
-
         remoteDeviceDAO.setDeviceId(appUtils.generateUUID());
         remoteDeviceDAO.setDeviceBrand(deviceBrand);
         remoteDeviceDAO.setDeviceModel(deviceModel);

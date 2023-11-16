@@ -127,7 +127,6 @@ public class ClientRemoteFramework {
             if (clientDBModel.isPresent()){
 
                 clientDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
-                clientDBModel.get().setRemoteState(AppConstant.HAVE_REMOTE);
                 clientRepository.save(clientDBModel.get());
 
                 ClientRemoteDBModel clientRemoteDBModel = new ClientRemoteDBModel();
@@ -135,7 +134,9 @@ public class ClientRemoteFramework {
                 clientRemoteDBModel.setSessionId(sessionId);
                 clientRemoteDBModel.setOperationId(operationDBModels.get(0).getId());
                 clientRemoteDBModel.setCampaignId(sessionDBModel.get().getCampaignId());
+                clientRemoteDBModel.setCampaign(sessionDBModel.get().getCampaign());
                 clientRemoteDBModel.setProcessId(sessionDBModel.get().getProcessId());
+                clientRemoteDBModel.setProcess(sessionDBModel.get().getProcess());
                 clientRemoteDBModel.setRemoteDevice(clientRemoteHelper.createRemoteDeviceDAO(deviceBrand,deviceModel,deviceOS,deviceUrl));
                 clientRemoteDBModel.setRemoteType(remoteType);
                 clientRemoteDBModel.setRemoteState(remoteState);

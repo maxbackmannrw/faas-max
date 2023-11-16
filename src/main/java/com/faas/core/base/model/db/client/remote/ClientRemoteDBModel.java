@@ -13,7 +13,9 @@ public class ClientRemoteDBModel {
     private long sessionId;
     private String operationId;
     private String campaignId;
+    private String campaign;
     private String processId;
+    private String process;
     private RemoteDeviceDAO remoteDevice;
     private String remoteType;
     private String remoteState;
@@ -24,13 +26,15 @@ public class ClientRemoteDBModel {
     public ClientRemoteDBModel() {
     }
 
-    public ClientRemoteDBModel(String id, long clientId, long sessionId, String operationId, String campaignId, String processId, RemoteDeviceDAO remoteDevice, String remoteType, String remoteState, long uDate, long cDate, int status) {
+    public ClientRemoteDBModel(String id, long clientId, long sessionId, String operationId, String campaignId, String campaign, String processId, String process, RemoteDeviceDAO remoteDevice, String remoteType, String remoteState, long uDate, long cDate, int status) {
         this.id = id;
         this.clientId = clientId;
         this.sessionId = sessionId;
         this.operationId = operationId;
         this.campaignId = campaignId;
+        this.campaign = campaign;
         this.processId = processId;
+        this.process = process;
         this.remoteDevice = remoteDevice;
         this.remoteType = remoteType;
         this.remoteState = remoteState;
@@ -79,12 +83,28 @@ public class ClientRemoteDBModel {
         this.campaignId = campaignId;
     }
 
+    public String getCampaign() {
+        return campaign;
+    }
+
+    public void setCampaign(String campaign) {
+        this.campaign = campaign;
+    }
+
     public String getProcessId() {
         return processId;
     }
 
     public void setProcessId(String processId) {
         this.processId = processId;
+    }
+
+    public String getProcess() {
+        return process;
+    }
+
+    public void setProcess(String process) {
+        this.process = process;
     }
 
     public RemoteDeviceDAO getRemoteDevice() {
