@@ -1,6 +1,6 @@
-package com.faas.core.base.middleware.client.remote.details;
+package com.faas.core.base.middleware.remote.details;
 
-import com.faas.core.base.framework.client.remote.details.ClientRemoteDetailsFramework;
+import com.faas.core.base.framework.remote.details.RemoteDetailsFramework;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.model.ws.manager.inquiry.campaign.InquiryCampaignWSModel;
 import com.faas.core.utils.config.AppConstant;
@@ -9,21 +9,21 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class ClientRemoteDetailsMiddleware {
+public class RemoteDetailsMiddleware {
 
 
     @Autowired
-    ClientRemoteDetailsFramework clientRemoteDetailsFramework;
+    RemoteDetailsFramework remoteDetailsFramework;
 
 
-    public InquiryCampaignWSModel getClientRemoteDetails(long userId) {
+    public InquiryCampaignWSModel getRemoteDetails(long userId) {
 
         InquiryCampaignWSModel response = new InquiryCampaignWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
 
 
-        general.setOperation("getClientRemoteDetails");
+        general.setOperation("getRemoteDetails");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

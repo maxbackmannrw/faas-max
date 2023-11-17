@@ -1,4 +1,4 @@
-package com.faas.core.base.framework.client.remote.details;
+package com.faas.core.base.framework.remote.details;
 
 import com.faas.core.base.model.ws.manager.inquiry.campaign.dto.InquiryCampaignWSDTO;
 import com.faas.core.base.repo.client.content.ClientRepository;
@@ -7,7 +7,7 @@ import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.operation.details.flow.OperationFlowRepository;
 import com.faas.core.base.repo.operation.details.inquiry.OperationInquiryRepository;
 import com.faas.core.base.repo.operation.details.scenario.OperationScenarioRepository;
-import com.faas.core.base.repo.client.remote.ClientRemoteRepository;
+import com.faas.core.base.repo.remote.RemoteRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ import java.util.List;
 
 
 @Component
-public class ClientRemoteDetailsFramework {
+public class RemoteDetailsFramework {
 
 
     @Autowired
@@ -40,7 +40,7 @@ public class ClientRemoteDetailsFramework {
     ClientPhoneRepository clientPhoneRepository;
 
     @Autowired
-    ClientRemoteRepository clientRemoteRepository;
+    RemoteRepository remoteRepository;
 
     @Autowired
     SessionRepository sessionRepository;

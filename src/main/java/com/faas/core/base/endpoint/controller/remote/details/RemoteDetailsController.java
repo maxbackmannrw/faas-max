@@ -1,6 +1,6 @@
-package com.faas.core.base.endpoint.controller.client.remote.details;
+package com.faas.core.base.endpoint.controller.remote.details;
 
-import com.faas.core.base.middleware.client.remote.details.ClientRemoteDetailsMiddleware;
+import com.faas.core.base.middleware.remote.details.RemoteDetailsMiddleware;
 import com.faas.core.base.model.ws.manager.inquiry.campaign.InquiryCampaignWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
@@ -14,18 +14,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-@RequestMapping(value = AppConstant.API_VERSION + "/base/client/remote/details/")
-public class ClientRemoteDetailsController {
+@RequestMapping(value = AppConstant.API_VERSION + "/base/remote/details/")
+public class RemoteDetailsController {
 
 
     @Autowired
-    ClientRemoteDetailsMiddleware clientRemoteDetailsMiddleware;
+    RemoteDetailsMiddleware remoteDetailsMiddleware;
 
 
-    @RequestMapping(value = BaseRoute.GET_INQUIRY_CAMPAIGNS, method = RequestMethod.POST)
-    public ResponseEntity<?> getClientRemoteDetails(@RequestParam long userId) {
+    @RequestMapping(value = BaseRoute.GET_REMOTE_DETAILS, method = RequestMethod.POST)
+    public ResponseEntity<?> getRemoteDetails(@RequestParam long userId) {
 
-        InquiryCampaignWSModel response = clientRemoteDetailsMiddleware.getClientRemoteDetails(userId);
+        InquiryCampaignWSModel response = remoteDetailsMiddleware.getRemoteDetails(userId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

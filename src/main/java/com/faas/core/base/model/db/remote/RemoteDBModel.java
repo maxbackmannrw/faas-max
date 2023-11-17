@@ -1,11 +1,11 @@
-package com.faas.core.base.model.db.client.remote;
+package com.faas.core.base.model.db.remote;
 
-import com.faas.core.base.model.db.client.remote.dao.RemoteDeviceDAO;
+import com.faas.core.base.model.db.remote.dao.RemoteDeviceDAO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "client_remote_table")
-public class ClientRemoteDBModel {
+@Document(collection = "remote_table")
+public class RemoteDBModel {
 
     @Id
     private String id;
@@ -23,10 +23,10 @@ public class ClientRemoteDBModel {
     private long cDate;
     private int status;
 
-    public ClientRemoteDBModel() {
+    public RemoteDBModel() {
     }
 
-    public ClientRemoteDBModel(String id, long clientId, long sessionId, String operationId, String campaignId, String campaign, String processId, String process, RemoteDeviceDAO remoteDevice, String remoteType, String remoteState, long uDate, long cDate, int status) {
+    public RemoteDBModel(String id, long clientId, long sessionId, String operationId, String campaignId, String campaign, String processId, String process, RemoteDeviceDAO remoteDevice, String remoteType, String remoteState, long uDate, long cDate, int status) {
         this.id = id;
         this.clientId = clientId;
         this.sessionId = sessionId;
