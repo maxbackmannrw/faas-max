@@ -1,6 +1,6 @@
 package com.faas.core.base.endpoint.controller.client.details;
 
-import com.faas.core.base.middleware.client.details.ClientOSIntMiddleware;
+import com.faas.core.base.middleware.client.details.ClientOSINTMiddleware;
 import com.faas.core.base.model.ws.client.details.ClientDetailsWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping(value = AppConstant.API_VERSION + "/base/client/osint/")
-public class ClientOSIntController {
+public class ClientOSINTController {
 
 
     @Autowired
-    ClientOSIntMiddleware clientOSIntMiddleware;
+    ClientOSINTMiddleware clientOSIntMiddleware;
 
 
     @RequestMapping(value = BaseRoute.GET_CLIENT_OS_INTELS, method = RequestMethod.POST)

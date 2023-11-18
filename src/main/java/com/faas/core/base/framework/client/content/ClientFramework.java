@@ -5,8 +5,10 @@ import com.faas.core.base.model.db.client.content.ClientDBModel;
 import com.faas.core.base.model.db.client.settings.ClientTypeDBModel;
 import com.faas.core.base.model.db.utils.CityDBModel;
 import com.faas.core.base.model.db.utils.CountryDBModel;
+import com.faas.core.base.model.ws.client.content.AllClientWSModel;
+import com.faas.core.base.model.ws.client.content.dto.AllClientWSDTO;
 import com.faas.core.base.model.ws.client.content.dto.ClientWSDTO;
-import com.faas.core.base.model.ws.client.content.dto.ClientsByStateWSDTO;
+import com.faas.core.base.model.ws.client.content.dto.ClientListWSDTO;
 import com.faas.core.base.model.ws.client.content.dto.CreateClientRequestDTO;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.client.details.*;
@@ -19,6 +21,7 @@ import com.faas.core.base.repo.utils.CityRepository;
 import com.faas.core.base.repo.utils.CountryRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
+import com.faas.core.utils.helpers.ClientHelper;
 import com.faas.core.utils.helpers.SessionHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -34,7 +37,7 @@ import java.util.Optional;
 public class ClientFramework {
 
     @Autowired
-    SessionHelper sessionHelper;
+    ClientHelper clientHelper;
 
     @Autowired
     ClientRepository clientRepository;
@@ -96,39 +99,66 @@ public class ClientFramework {
     @Autowired
     AppUtils appUtils;
 
-
-    public ClientsByStateWSDTO fillClientsWSDTO(Page<ClientDBModel> clientDBModelPage) {
-
-        ClientsByStateWSDTO clientsByStateWSDTO = new ClientsByStateWSDTO();
-        List<ClientWSDTO>clientWSDTOS = new ArrayList<>();
-        for (int i=0;i<clientDBModelPage.getContent().size();i++){
-            clientWSDTOS.add(fillClientWSDTO(clientDBModelPage.getContent().get(i)));
-        }
-        clientsByStateWSDTO.setClients(clientWSDTOS);
-        clientsByStateWSDTO.setPagination(sessionHelper.createClientPaginationWSDTO(clientDBModelPage));
-
-        return clientsByStateWSDTO;
-    }
-
-
-    public ClientsByStateWSDTO getClientsByStateService(long userId, String clientState, int reqPage, int reqSize) {
-
-        if (clientState.equalsIgnoreCase(AppConstant.ALL_CLIENTS)){
-            return fillClientsWSDTO(clientRepository.findAllByStatus(1,PageRequest.of(reqPage,reqSize))) ;
-        }
-        return fillClientsWSDTO(clientRepository.findAllByClientStateAndStatus(clientState,1,PageRequest.of(reqPage,reqSize)));
-    }
-
-
     public ClientWSDTO fillClientWSDTO(ClientDBModel clientDBModel) {
 
         ClientWSDTO clientWSDTO = new ClientWSDTO();
         clientWSDTO.setClient(clientDBModel);
+
         return clientWSDTO;
     }
 
+    public ClientListWSDTO fillClientListWSDTO(Page<ClientDBModel> clientDBModelPage) {
 
-    public ClientDBModel createClientService(String clientName,String nationalId,String phoneNumber,String emailAddress,String clientCity,String clientCountry,long clientTypeId) {
+        ClientListWSDTO clientListWSDTO = new ClientListWSDTO();
+        List<ClientWSDTO>clientWSDTOS = new ArrayList<>();
+        for (int i=0;i<clientDBModelPage.getContent().size();i++){
+            clientWSDTOS.add(fillClientWSDTO(clientDBModelPage.getContent().get(i)));
+        }
+        clientListWSDTO.setClients(clientWSDTOS);
+        clientListWSDTO.setPagination(clientHelper.createClientPaginationWSDTO(clientDBModelPage));
+
+        return clientListWSDTO;
+    }
+
+
+
+    public AllClientWSDTO getAllClientsService(long userId, int reqPage, int reqSize) {
+
+        AllClientWSDTO allClientWSDTO = new AllClientWSDTO();
+        ClientListWSDTO clients = getClientsService(userId,AppConstant.CLIENTS,reqPage,reqSize);
+        if (clients != null){
+            allClientWSDTO.setClients(clients);
+        }
+        ClientListWSDTO readyClients = getClientsService(userId,AppConstant.READY_CLIENT,reqPage,reqSize);
+        if (readyClients != null){
+            allClientWSDTO.setReadyClients(readyClients);
+        }
+        ClientListWSDTO busyClients = getClientsService(userId,AppConstant.BUSY_CLIENT,reqPage,reqSize);
+        if (busyClients != null){
+            allClientWSDTO.setBusyClients(busyClients);
+        }
+        return allClientWSDTO;
+    }
+
+    public ClientListWSDTO getClientsService(long userId, String clientState, int reqPage, int reqSize) {
+
+        if (clientState.equalsIgnoreCase(AppConstant.CLIENTS)){
+            return fillClientListWSDTO(clientRepository.findAllByStatus(1,PageRequest.of(reqPage,reqSize))) ;
+        }
+        return fillClientListWSDTO(clientRepository.findAllByClientStateAndStatus(clientState,1,PageRequest.of(reqPage,reqSize)));
+    }
+
+    public ClientWSDTO getClientService(long userId,long clientId) {
+
+        Optional<ClientDBModel> clientDBModel = clientRepository.findById(clientId);
+        if (clientDBModel.isPresent()){
+            return fillClientWSDTO(clientDBModel.get());
+        }
+        return null;
+    }
+
+
+    public ClientWSDTO createClientService(String clientName,String nationalId,String phoneNumber,String emailAddress,String clientCity,String clientCountry,long clientTypeId) {
 
         if (clientRepository.findByPhoneNumber(phoneNumber).isEmpty()){
 
@@ -155,45 +185,46 @@ public class ClientFramework {
             createClientDetailsService(createdClient);
             checkAndInsertCityAndCountry(createdClient);
 
-            return createdClient;
+            return fillClientWSDTO(createdClient);
         }
         return null;
     }
 
+    public List<ClientWSDTO> createVolumeClientService(List<CreateClientRequestDTO> clientRequestDTOS) {
 
-    public ClientDBModel createVolumeClientService(CreateClientRequestDTO clientRequestDTO) {
+        List<ClientWSDTO> clientWSDTOS = new ArrayList<>();
+        for (CreateClientRequestDTO clientRequestDTO : clientRequestDTOS) {
+            if (clientRepository.findByPhoneNumber(clientRequestDTO.getPhoneNumber()).isEmpty()) {
 
-        if (clientRepository.findByPhoneNumber(clientRequestDTO.getPhoneNumber()).isEmpty()){
+                ClientDBModel clientDBModel = new ClientDBModel();
 
-            ClientDBModel clientDBModel = new ClientDBModel();
+                clientDBModel.setClientName(clientRequestDTO.getClientName());
+                clientDBModel.setNationalId(clientRequestDTO.getNationalId());
+                clientDBModel.setPhoneNumber(clientRequestDTO.getPhoneNumber());
+                clientDBModel.setEmailAddress(clientRequestDTO.getEmailAddress());
+                clientDBModel.setClientCity(clientRequestDTO.getClientCity().toUpperCase());
+                clientDBModel.setClientCountry(clientRequestDTO.getClientCountry().toUpperCase());
 
-            clientDBModel.setClientName(clientRequestDTO.getClientName());
-            clientDBModel.setNationalId(clientRequestDTO.getNationalId());
-            clientDBModel.setPhoneNumber(clientRequestDTO.getPhoneNumber());
-            clientDBModel.setEmailAddress(clientRequestDTO.getEmailAddress());
-            clientDBModel.setClientCity(clientRequestDTO.getClientCity().toUpperCase());
-            clientDBModel.setClientCountry(clientRequestDTO.getClientCountry().toUpperCase());
+                List<ClientTypeDBModel> clientTypeDBModels = clientTypeRepository.findByClientType(clientRequestDTO.getClientType());
+                if (!clientTypeDBModels.isEmpty()) {
+                    clientDBModel.setClientTypeId(clientTypeDBModels.get(0).getId());
+                    clientDBModel.setClientType(clientTypeDBModels.get(0).getClientType());
+                }
 
-            List<ClientTypeDBModel> clientTypeDBModels = clientTypeRepository.findByClientType(clientRequestDTO.getClientType());
-            if (!clientTypeDBModels.isEmpty()) {
-                clientDBModel.setClientTypeId(clientTypeDBModels.get(0).getId());
-                clientDBModel.setClientType(clientTypeDBModels.get(0).getClientType());
+                clientDBModel.setClientState(AppConstant.READY_CLIENT);
+                clientDBModel.setuDate(appUtils.getCurrentTimeStamp());
+                clientDBModel.setcDate(appUtils.getCurrentTimeStamp());
+                clientDBModel.setStatus(1);
+
+                ClientDBModel createdClient = clientRepository.save(clientDBModel);
+                createClientDetailsService(createdClient);
+                checkAndInsertCityAndCountry(createdClient);
+
+                clientWSDTOS.add(fillClientWSDTO(createdClient));
             }
-
-            clientDBModel.setClientState(AppConstant.READY_CLIENT);
-            clientDBModel.setuDate(appUtils.getCurrentTimeStamp());
-            clientDBModel.setcDate(appUtils.getCurrentTimeStamp());
-            clientDBModel.setStatus(1);
-
-            ClientDBModel createdClient = clientRepository.save(clientDBModel);
-            createClientDetailsService(createdClient);
-            checkAndInsertCityAndCountry(createdClient);
-
-            return createdClient;
         }
-        return null;
+        return clientWSDTOS;
     }
-
 
     public void checkAndInsertCityAndCountry(ClientDBModel clientDBModel){
 
@@ -221,7 +252,6 @@ public class ClientFramework {
 
     }
 
-
     public void createClientDetailsService(ClientDBModel clientDBModel){
 
         if (clientDBModel.getPhoneNumber() != null && !clientDBModel.getPhoneNumber().equalsIgnoreCase("")){
@@ -233,7 +263,7 @@ public class ClientFramework {
     }
 
 
-    public ClientDBModel updateClientService(long clientId,String clientName,String nationalId,String phoneNumber,String emailAddress,String clientCity,String clientCountry,long clientTypeId) {
+    public ClientWSDTO updateClientService(long clientId,String clientName,String nationalId,String phoneNumber,String emailAddress,String clientCity,String clientCountry,long clientTypeId) {
 
         Optional<ClientDBModel> clientDBModel = clientRepository.findById(clientId);
         if (clientDBModel.isPresent()) {
@@ -253,33 +283,18 @@ public class ClientFramework {
             clientDBModel.get().setcDate(appUtils.getCurrentTimeStamp());
             clientDBModel.get().setStatus(1);
 
-            return clientRepository.save(clientDBModel.get());
+            return fillClientWSDTO(clientRepository.save(clientDBModel.get()));
         }
         return null;
     }
 
-
-    public void removeClientService(long clientId) {
+    public ClientWSDTO removeClientService(long clientId) {
 
         Optional<ClientDBModel> clientDBModel = clientRepository.findById(clientId);
         if (clientDBModel.isPresent()){
-
-            clientRepository.delete(clientDBModel.get());
-            clientDataRepository.deleteAll(clientDataRepository.findByClientId(clientId));
-            clientAddressRepository.deleteAll(clientAddressRepository.findByClientId(clientId));
-            clientPhoneRepository.deleteAll(clientPhoneRepository.findByClientId(clientId));
-            clientEmailRepository.deleteAll(clientEmailRepository.findByClientId(clientId));
-            remoteRepository.deleteAll(remoteRepository.findByClientId(clientId));
-            clientNoteRepository.deleteAll(clientNoteRepository.findByClientId(clientId));
-            sessionRepository.deleteAll(sessionRepository.findByClientId(clientId));
-            operationRepository.deleteAll(operationRepository.findByClientId(clientId));
-            operationEmailMessageRepository.deleteAll(operationEmailMessageRepository.findByClientId(clientId));
-            operationPushMessageRepository.deleteAll(operationPushMessageRepository.findByClientId(clientId));
-            operationSipCallRepository.deleteAll(operationSipCallRepository.findByClientId(clientId));
-            operationSmsMessageRepository.deleteAll(operationSmsMessageRepository.findByClientId(clientId));
-            operationWappCallRepository.deleteAll(operationWappCallRepository.findByClientId(clientId));
-            operationWappMessageRepository.deleteAll(operationWappMessageRepository.findByClientId(clientId));
+            return fillClientWSDTO(clientHelper.deleteClient(clientDBModel.get()));
         }
+        return null;
     }
 
 

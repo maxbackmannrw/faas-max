@@ -1,6 +1,6 @@
 package com.faas.core.base.framework.dashboard.campaign;
 
-import com.faas.core.base.model.ws.client.content.dto.ClientsByStateWSDTO;
+import com.faas.core.base.model.ws.client.content.dto.ClientListWSDTO;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,11 +13,11 @@ public class DashCampaignFramework {
     AppUtils appUtils;
 
 
-    public ClientsByStateWSDTO getDashboardCampaignsService() {
+    public ClientListWSDTO getDashboardCampaignsService() {
 
-        ClientsByStateWSDTO clientsByStateWSDTO = new ClientsByStateWSDTO();
+        ClientListWSDTO clientListWSDTO = new ClientListWSDTO();
 
-        return clientsByStateWSDTO;
+        return clientListWSDTO;
     }
 
 

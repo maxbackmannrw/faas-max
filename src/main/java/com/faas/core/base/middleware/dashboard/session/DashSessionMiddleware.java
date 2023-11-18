@@ -1,7 +1,7 @@
 package com.faas.core.base.middleware.dashboard.session;
 
 import com.faas.core.base.framework.dashboard.session.DashSessionFramework;
-import com.faas.core.base.model.ws.client.content.dto.AllClientsWSDTO;
+import com.faas.core.base.model.ws.client.content.dto.AllClientWSDTO;
 import com.faas.core.base.model.ws.dashboard.session.DashboardSessionWSModel;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.utils.config.AppConstant;
@@ -21,7 +21,7 @@ public class DashSessionMiddleware {
 
         DashboardSessionWSModel response = new DashboardSessionWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        AllClientsWSDTO allClientsWSDTO = new AllClientsWSDTO();
+        AllClientWSDTO allClientWSDTO = new AllClientWSDTO();
 
 
         general.setOperation("getDashboardSessions");

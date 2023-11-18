@@ -1,7 +1,7 @@
 package com.faas.core.base.framework.dashboard.flow;
 
 import com.faas.core.base.model.db.client.content.ClientDBModel;
-import com.faas.core.base.model.ws.client.content.dto.ClientsByStateWSDTO;
+import com.faas.core.base.model.ws.client.content.dto.ClientListWSDTO;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -15,11 +15,11 @@ public class DashFlowFramework {
     AppUtils appUtils;
 
 
-    public ClientsByStateWSDTO fillClientsWSDTO(Page<ClientDBModel> clientDBModelPage) {
+    public ClientListWSDTO fillClientsWSDTO(Page<ClientDBModel> clientDBModelPage) {
 
-        ClientsByStateWSDTO clientsByStateWSDTO = new ClientsByStateWSDTO();
+        ClientListWSDTO clientListWSDTO = new ClientListWSDTO();
 
-        return clientsByStateWSDTO;
+        return clientListWSDTO;
     }
 
 

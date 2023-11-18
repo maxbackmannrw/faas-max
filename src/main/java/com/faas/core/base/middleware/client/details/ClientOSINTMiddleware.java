@@ -1,6 +1,6 @@
 package com.faas.core.base.middleware.client.details;
 
-import com.faas.core.base.framework.client.details.ClientOSIntFramework;
+import com.faas.core.base.framework.client.details.ClientOSINTFramework;
 import com.faas.core.base.model.ws.client.details.ClientDetailsWSModel;
 import com.faas.core.base.model.ws.client.details.dto.ClientDetailsWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
@@ -13,11 +13,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class ClientOSIntMiddleware {
+public class ClientOSINTMiddleware {
 
 
     @Autowired
-    ClientOSIntFramework clientOSIntFramework;
+    ClientOSINTFramework clientOSIntFramework;
 
     @Autowired
     AppUtils appUtils;

@@ -207,31 +207,4 @@ public class SessionHelper {
     }
 
 
-    public CampaignClientWSDTO mapCampaignClientWSDTO(Page<ClientDBModel>clientPageModels){
-
-        CampaignClientWSDTO campaignClientWSDTO = new CampaignClientWSDTO();
-        List<ClientWSDTO>clientWSDTOS = new ArrayList<>();
-        List<ClientDBModel> clientDBModels = clientPageModels.getContent();
-        for (ClientDBModel clientDBModel : clientDBModels) {
-            clientWSDTOS.add(new ClientWSDTO(clientDBModel));
-        }
-        campaignClientWSDTO.setClients(clientWSDTOS);
-        campaignClientWSDTO.setPagination(createClientPaginationWSDTO(clientPageModels));
-
-        return campaignClientWSDTO;
-    }
-
-
-    public PaginationWSDTO createClientPaginationWSDTO(Page<ClientDBModel> clientPage){
-
-        PaginationWSDTO paginationWSDTO = new PaginationWSDTO();
-        paginationWSDTO.setPageSize(clientPage.getPageable().getPageSize());
-        paginationWSDTO.setPageNumber(clientPage.getPageable().getPageNumber());
-        paginationWSDTO.setTotalPage(clientPage.getTotalPages());
-        paginationWSDTO.setTotalElements(clientPage.getTotalElements());
-
-        return paginationWSDTO;
-    }
-
-
 }

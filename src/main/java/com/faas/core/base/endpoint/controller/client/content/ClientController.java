@@ -1,9 +1,9 @@
 package com.faas.core.base.endpoint.controller.client.content;
 
 import com.faas.core.base.middleware.client.content.ClientMiddleware;
-import com.faas.core.base.model.ws.client.content.AllClientsWSModel;
+import com.faas.core.base.model.ws.client.content.AllClientWSModel;
 import com.faas.core.base.model.ws.client.content.ClientWSModel;
-import com.faas.core.base.model.ws.client.content.ClientsByStateWSModel;
+import com.faas.core.base.model.ws.client.content.ClientListWSModel;
 import com.faas.core.base.model.ws.client.content.CreateClientRequest;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
@@ -31,7 +31,7 @@ public class  ClientController {
                                            @RequestParam int reqPage,
                                            @RequestParam int reqSize) {
 
-        AllClientsWSModel response = clientMiddleware.getAllClients(userId,reqPage,reqSize);
+        AllClientWSModel response = clientMiddleware.getAllClients(userId,reqPage,reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -40,13 +40,13 @@ public class  ClientController {
     }
 
 
-    @RequestMapping(value = BaseRoute.GET_CLIENTS_BY_STATE, method = RequestMethod.POST)
-    public ResponseEntity<?> getClientsByState(@RequestParam long userId,
-                                               @RequestParam String clientState,
-                                               @RequestParam int reqPage,
-                                               @RequestParam int reqSize) {
+    @RequestMapping(value = BaseRoute.GET_CLIENTS, method = RequestMethod.POST)
+    public ResponseEntity<?> getClients(@RequestParam long userId,
+                                        @RequestParam String clientState,
+                                        @RequestParam int reqPage,
+                                        @RequestParam int reqSize) {
 
-        ClientsByStateWSModel response = clientMiddleware.getClientsByState(userId,clientState,reqPage,reqSize);
+        ClientListWSModel response = clientMiddleware.getClients(userId,clientState,reqPage,reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -130,7 +130,6 @@ public class  ClientController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
 
 

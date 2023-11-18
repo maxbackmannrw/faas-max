@@ -126,7 +126,7 @@ public class BaseRoute {
 
 
     public static final String GET_ALL_CLIENTS = "getallclients";
-    public static final String GET_CLIENTS_BY_STATE = "getclientsbystate";
+    public static final String GET_CLIENTS = "getclients";
     public static final String GET_CLIENT = "getclient";
     public static final String CREATE_CLIENT = "createclient";
     public static final String CREATE_VOLUME_CLIENT = "createvolumeclient";

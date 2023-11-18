@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class ClientOSIntFramework {
+public class ClientOSINTFramework {
 
 
     @Autowired
@@ -20,7 +20,6 @@ public class ClientOSIntFramework {
         ClientAddressWSDTO clientAddressWSDTO = new ClientAddressWSDTO();
         return clientAddressWSDTO;
     }
-
 
 
 
