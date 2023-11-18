@@ -3,7 +3,7 @@ package com.faas.core.base.model.db.utils;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "city_table")
+@Table(name = "city__table")
 public class CityDBModel {
 
 

@@ -3,7 +3,7 @@ package com.faas.core.base.model.db.utils;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "country_table")
+@Table(name = "country__table")
 public class CountryDBModel {
 
 
