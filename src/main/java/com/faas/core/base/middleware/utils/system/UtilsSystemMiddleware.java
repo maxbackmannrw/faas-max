@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Component
 public class UtilsSystemMiddleware {
 
@@ -39,14 +38,16 @@ public class UtilsSystemMiddleware {
         return response;
     }
 
-
-    public SystemInfoWSModel repairSystemInfo(long userId, String systemSettings) {
+    public SystemInfoWSModel repairSystemInfo(long userId, String systemInfo) {
 
         SystemInfoWSModel response = new SystemInfoWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<SystemInfoWSDTO> systemInfoWSDTOS = new ArrayList<>();
 
-        utilsSystemFramework.repairSystemSettingsService(userId,systemSettings);
+        SystemInfoWSDTO systemInfoWSDTO = utilsSystemFramework.repairSystemInfoService(userId,systemInfo);
+        if (systemInfoWSDTO != null){
+            systemInfoWSDTOS.add(systemInfoWSDTO);
+        }
 
         response.setSystemInfos(systemInfoWSDTOS);
         general.setOperation("repairSystemInfo");
@@ -58,17 +59,18 @@ public class UtilsSystemMiddleware {
         return response;
     }
 
-
-
-    public SystemInfoWSModel removeSystemInfo(long userId, String systemSettings) {
+    public SystemInfoWSModel removeSystemInfo(long userId, String systemInfo) {
 
         SystemInfoWSModel response = new SystemInfoWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<SystemInfoWSDTO> systemInfoWSDTOS = new ArrayList<>();
 
-        utilsSystemFramework.removeSystemSettingsService(userId,systemSettings);
+        SystemInfoWSDTO systemInfoWSDTO = utilsSystemFramework.removeSystemInfoService(userId,systemInfo);
+        if (systemInfoWSDTO != null){
+            systemInfoWSDTOS.add(systemInfoWSDTO);
+        }
 
-
+        response.setSystemInfos(systemInfoWSDTOS);
         general.setOperation("removeSystemInfo");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);

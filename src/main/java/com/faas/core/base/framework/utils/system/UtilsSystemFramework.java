@@ -158,6 +158,16 @@ public class UtilsSystemFramework {
     @Autowired
     AppUtils appUtils;
 
+    public SystemInfoWSDTO fillSystemInfoWSDTO(String infoName,String infoValue,boolean infoState){
+
+        SystemInfoWSDTO systemInfoWSDTO = new SystemInfoWSDTO();
+        systemInfoWSDTO.setInfoName(infoName);
+        systemInfoWSDTO.setInfoValue(infoValue);
+        systemInfoWSDTO.setInfoState(infoState);
+
+        return systemInfoWSDTO;
+    }
+
 
     public List<SystemInfoWSDTO> getSystemInfosService(long userId) {
 
@@ -283,13 +293,13 @@ public class UtilsSystemFramework {
     }
 
 
-    public boolean repairSystemSettingsService(long userId,String systemSettings) {
+    public SystemInfoWSDTO repairSystemInfoService(long userId,String systemInfo) {
 
-        if (systemSettings.equalsIgnoreCase(AppConstant.CLIENTS_INFOS)){
+        if (systemInfo.equalsIgnoreCase(AppConstant.CLIENTS_INFOS)){
             repairAllClientsService();
-            return true;
+            return fillSystemInfoWSDTO(systemInfo, String.valueOf(clientRepository.count()),true);
         }
-        return false;
+        return null;
     }
 
     public void repairAllClientsService(){
@@ -298,57 +308,59 @@ public class UtilsSystemFramework {
 
 
 
-    public boolean removeSystemSettingsService(long userId,String systemSettings) {
+    public SystemInfoWSDTO removeSystemInfoService(long userId,String systemInfo) {
 
-        if (systemSettings.equalsIgnoreCase(AppConstant.CLIENTS_INFOS)){
+        if (systemInfo.equalsIgnoreCase(AppConstant.CLIENTS_INFOS)){
             removeAllClientsService();
-            return true;
+            return fillSystemInfoWSDTO(systemInfo, String.valueOf(clientRepository.count()),true);
         }
-        if (systemSettings.equalsIgnoreCase(AppConstant.SESSIONS_INFOS)){
+        if (systemInfo.equalsIgnoreCase(AppConstant.SESSIONS_INFOS)){
             removeAllSessionsService();
-            return true;
+            return fillSystemInfoWSDTO(systemInfo, String.valueOf(sessionRepository.count()),true);
         }
-        if (systemSettings.equalsIgnoreCase(AppConstant.OPERATIONS_INFOS)){
+        if (systemInfo.equalsIgnoreCase(AppConstant.OPERATIONS_INFOS)){
             removeAllOperationsService();
-            return true;
+            return fillSystemInfoWSDTO(systemInfo, String.valueOf(operationRepository.count()),true);
         }
-        if (systemSettings.equalsIgnoreCase(AppConstant.OPERATION_INQUIRIES_INFOS)){
+        if (systemInfo.equalsIgnoreCase(AppConstant.OPERATION_INQUIRIES_INFOS)){
             removeAllOperationInquiriesService();
-            return true;
+            return fillSystemInfoWSDTO(systemInfo, String.valueOf(operationInquiryRepository.count()),true);
         }
-        if (systemSettings.equalsIgnoreCase(AppConstant.OPERATION_FLOWS_INFOS)){
+        if (systemInfo.equalsIgnoreCase(AppConstant.OPERATION_FLOWS_INFOS)){
             removeAllOperationFlowsService();
-            return true;
+            return fillSystemInfoWSDTO(systemInfo, String.valueOf(operationFlowRepository.count()),true);
         }
 
 
-        if (systemSettings.equalsIgnoreCase(AppConstant.CAMPAIGNS_INFOS)){
+        if (systemInfo.equalsIgnoreCase(AppConstant.CAMPAIGNS_INFOS)){
             removeAllCampaignsService();
-            return true;
+            return fillSystemInfoWSDTO(systemInfo, String.valueOf(campaignRepository.count()),true);
         }
-        if (systemSettings.equalsIgnoreCase(AppConstant.PROCESSES_INFOS)){
+        if (systemInfo.equalsIgnoreCase(AppConstant.PROCESSES_INFOS)){
             removeAllProcessesService();
-            return true;
+            return fillSystemInfoWSDTO(systemInfo, String.valueOf(processRepository.count()),true);
         }
-        if (systemSettings.equalsIgnoreCase(AppConstant.SCENARIOS_INFOS)){
+        if (systemInfo.equalsIgnoreCase(AppConstant.SCENARIOS_INFOS)){
             removeAllScenariosService();
-            return true;
+            return fillSystemInfoWSDTO(systemInfo, String.valueOf(scenarioRepository.count()),true);
         }
 
-        if (systemSettings.equalsIgnoreCase(AppConstant.USERS_INFOS)){
+        if (systemInfo.equalsIgnoreCase(AppConstant.USERS_INFOS)){
             removeAllUsersService();
-            return true;
+            return fillSystemInfoWSDTO(systemInfo, String.valueOf(userRepository.count()),true);
         }
-        if (systemSettings.equalsIgnoreCase(AppConstant.AGENTS_INFOS)){
+        if (systemInfo.equalsIgnoreCase(AppConstant.AGENTS_INFOS)){
             removeAllAgentsService();
-            return true;
+            return fillSystemInfoWSDTO(systemInfo, String.valueOf(userRepository.countByUserType(AppConstant.AGENT_USER)),true);
         }
-        if (systemSettings.equalsIgnoreCase(AppConstant.ASSETS_INFOS)){
+        if (systemInfo.equalsIgnoreCase(AppConstant.ASSETS_INFOS)){
             removeAllAssetsService();
-            return true;
+            return fillSystemInfoWSDTO(systemInfo, String.valueOf(assetRepository.count()),true);
         }
-        return false;
+        return null;
     }
+
+
 
 
     public void removeAllClientsService(){

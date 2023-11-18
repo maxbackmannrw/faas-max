@@ -35,9 +35,9 @@ public class UtilsSystemController {
 
     @RequestMapping(value = BaseRoute.REPAIR_SYSTEM_INFO, method = RequestMethod.POST)
     public ResponseEntity<?> repairSystemInfo(@RequestParam long userId,
-                                              @RequestParam String systemSettings) {
+                                              @RequestParam String systemInfo) {
 
-        SystemInfoWSModel response = utilsSystemMiddleware.repairSystemInfo(userId,systemSettings);
+        SystemInfoWSModel response = utilsSystemMiddleware.repairSystemInfo(userId,systemInfo);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -47,9 +47,9 @@ public class UtilsSystemController {
 
     @RequestMapping(value = BaseRoute.REMOVE_SYSTEM_INFO, method = RequestMethod.POST)
     public ResponseEntity<?> removeSystemInfo(@RequestParam long userId,
-                                              @RequestParam String systemSettings) {
+                                              @RequestParam String systemInfo) {
 
-        SystemInfoWSModel response = utilsSystemMiddleware.removeSystemInfo(userId,systemSettings);
+        SystemInfoWSModel response = utilsSystemMiddleware.removeSystemInfo(userId,systemInfo);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
