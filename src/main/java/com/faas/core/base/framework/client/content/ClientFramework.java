@@ -137,8 +137,8 @@ public class ClientFramework {
             clientDBModel.setNationalId(nationalId);
             clientDBModel.setPhoneNumber(phoneNumber);
             clientDBModel.setEmailAddress(emailAddress);
-            clientDBModel.setClientCity(clientCity);
-            clientDBModel.setClientCountry(clientCountry);
+            clientDBModel.setClientCity(clientCity.toUpperCase());
+            clientDBModel.setClientCountry(clientCountry.toUpperCase());
 
             Optional<ClientTypeDBModel> clientTypeDBModel = clientTypeRepository.findById(clientTypeId);
             if (clientTypeDBModel.isPresent()) {
@@ -161,19 +161,20 @@ public class ClientFramework {
     }
 
 
-    public ClientDBModel createVolumeClientService(CreateClientRequestDTO createClientRequestDTO) {
+    public ClientDBModel createVolumeClientService(CreateClientRequestDTO clientRequestDTO) {
 
-        if (clientRepository.findByPhoneNumber(createClientRequestDTO.getPhoneNumber()).isEmpty()){
+        if (clientRepository.findByPhoneNumber(clientRequestDTO.getPhoneNumber()).isEmpty()){
 
             ClientDBModel clientDBModel = new ClientDBModel();
-            clientDBModel.setClientName(createClientRequestDTO.getClientName());
-            clientDBModel.setNationalId(createClientRequestDTO.getNationalId());
-            clientDBModel.setPhoneNumber(createClientRequestDTO.getPhoneNumber());
-            clientDBModel.setEmailAddress(createClientRequestDTO.getEmailAddress());
-            clientDBModel.setClientCity(createClientRequestDTO.getClientCity());
-            clientDBModel.setClientCountry(createClientRequestDTO.getClientCountry());
 
-            List<ClientTypeDBModel> clientTypeDBModels = clientTypeRepository.findByClientType(createClientRequestDTO.getClientType());
+            clientDBModel.setClientName(clientRequestDTO.getClientName());
+            clientDBModel.setNationalId(clientRequestDTO.getNationalId());
+            clientDBModel.setPhoneNumber(clientRequestDTO.getPhoneNumber());
+            clientDBModel.setEmailAddress(clientRequestDTO.getEmailAddress());
+            clientDBModel.setClientCity(clientRequestDTO.getClientCity().toUpperCase());
+            clientDBModel.setClientCountry(clientRequestDTO.getClientCountry().toUpperCase());
+
+            List<ClientTypeDBModel> clientTypeDBModels = clientTypeRepository.findByClientType(clientRequestDTO.getClientType());
             if (!clientTypeDBModels.isEmpty()) {
                 clientDBModel.setClientTypeId(clientTypeDBModels.get(0).getId());
                 clientDBModel.setClientType(clientTypeDBModels.get(0).getClientType());
