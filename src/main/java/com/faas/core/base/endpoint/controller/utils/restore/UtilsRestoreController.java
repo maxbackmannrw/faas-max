@@ -45,7 +45,6 @@ public class UtilsRestoreController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.REMOVE_SYSTEM_SETTINGS, method = RequestMethod.POST)
     public ResponseEntity<?> removeSystemSettings(@RequestParam long userId,
                                                   @RequestParam String systemSettings) {
