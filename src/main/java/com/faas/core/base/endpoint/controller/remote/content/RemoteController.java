@@ -85,7 +85,6 @@ public class RemoteController {
 
     @RequestMapping(value = BaseRoute.UPDATE_REMOTE, method = RequestMethod.POST)
     public ResponseEntity<?> updateRemote(@RequestParam long userId,
-                                          @RequestParam long sessionId,
                                           @RequestParam String remoteId,
                                           @RequestParam String deviceBrand,
                                           @RequestParam String deviceModel,
@@ -93,7 +92,7 @@ public class RemoteController {
                                           @RequestParam String deviceUrl,
                                           @RequestParam String remoteState) {
 
-        RemoteWSModel response = remoteMiddleware.updateRemote(userId,sessionId,remoteId,deviceBrand,deviceModel,deviceOS,deviceUrl,remoteState);
+        RemoteWSModel response = remoteMiddleware.updateRemote(userId,remoteId,deviceBrand,deviceModel,deviceOS,deviceUrl,remoteState);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

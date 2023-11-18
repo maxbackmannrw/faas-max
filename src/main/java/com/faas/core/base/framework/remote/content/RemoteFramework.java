@@ -91,7 +91,6 @@ public class RemoteFramework {
         return remoteListWSDTO;
     }
 
-
     public List<RemoteWSDTO> getClientRemotesService(long userId, long clientId) {
 
         List<RemoteWSDTO> remoteWSDTOS = new ArrayList<>();
@@ -105,7 +104,6 @@ public class RemoteFramework {
         return remoteWSDTOS;
     }
 
-
     public RemoteWSDTO getRemoteService(long userId, String remoteId) {
 
         Optional<RemoteDBModel> remoteDBModel = remoteRepository.findById(remoteId);
@@ -115,43 +113,59 @@ public class RemoteFramework {
         return null;
     }
 
-
     public RemoteWSDTO createRemoteService(long userId, long sessionId, String deviceBrand, String deviceModel, String deviceOS, String deviceUrl, String remoteType, String remoteState) {
 
-        List<OperationDBModel> operationDBModels = operationRepository.findBySessionId(sessionId);
         Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
+        List<OperationDBModel> operationDBModels = operationRepository.findBySessionId(sessionId);
         if (sessionDBModel.isPresent() && !operationDBModels.isEmpty()){
+            if (clientRepository.existsById(sessionDBModel.get().getClientId())){
 
-            RemoteDBModel remoteDBModel = new RemoteDBModel();
-            remoteDBModel.setClientId(sessionDBModel.get().getClientId());
-            remoteDBModel.setSessionId(sessionId);
-            remoteDBModel.setOperationId(operationDBModels.get(0).getId());
-            remoteDBModel.setCampaignId(sessionDBModel.get().getCampaignId());
-            remoteDBModel.setCampaign(sessionDBModel.get().getCampaign());
-            remoteDBModel.setProcessId(sessionDBModel.get().getProcessId());
-            remoteDBModel.setProcess(sessionDBModel.get().getProcess());
-            remoteDBModel.setRemoteDevice(remoteHelper.createRemoteDeviceDAO(deviceBrand,deviceModel,deviceOS,deviceUrl));
-            remoteDBModel.setRemoteType(remoteType);
-            remoteDBModel.setRemoteState(remoteState);
-            remoteDBModel.setuDate(appUtils.getCurrentTimeStamp());
-            remoteDBModel.setcDate(appUtils.getCurrentTimeStamp());
-            remoteDBModel.setStatus(1);
+                RemoteDBModel remoteDBModel = new RemoteDBModel();
+                remoteDBModel.setClientId(sessionDBModel.get().getClientId());
+                remoteDBModel.setSessionId(sessionId);
+                remoteDBModel.setOperationId(operationDBModels.get(0).getId());
+                remoteDBModel.setCampaignId(sessionDBModel.get().getCampaignId());
+                remoteDBModel.setCampaign(sessionDBModel.get().getCampaign());
+                remoteDBModel.setProcessId(sessionDBModel.get().getProcessId());
+                remoteDBModel.setProcess(sessionDBModel.get().getProcess());
+                remoteDBModel.setRemoteDevice(remoteHelper.createRemoteDeviceDAO(deviceBrand,deviceModel,deviceOS,deviceUrl));
+                remoteDBModel.setRemoteType(remoteType);
+                remoteDBModel.setRemoteState(remoteState);
+                remoteDBModel.setuDate(appUtils.getCurrentTimeStamp());
+                remoteDBModel.setcDate(appUtils.getCurrentTimeStamp());
+                remoteDBModel.setStatus(1);
 
-            return remoteHelper.getRemoteWSDTO(remoteRepository.save(remoteDBModel));
+                return remoteHelper.getRemoteWSDTO(remoteRepository.save(remoteDBModel));
+            }
         }
         return null;
     }
 
+    public RemoteWSDTO updateRemoteService(long userId, String remoteId, String deviceBrand, String deviceModel, String deviceOS, String deviceUrl, String remoteState) {
 
-    public RemoteWSDTO updateRemoteService(long userId, long sessionId, String remoteId, String deviceBrand, String deviceModel, String deviceOS, String deviceUrl, String remoteState) {
+        Optional<RemoteDBModel> remoteDBModel = remoteRepository.findById(remoteId);
+        if (remoteDBModel.isPresent() && remoteDBModel.get().getRemoteDevice() != null){
 
+            remoteDBModel.get().getRemoteDevice().setDeviceBrand(deviceBrand);
+            remoteDBModel.get().getRemoteDevice().setDeviceModel(deviceModel);
+            remoteDBModel.get().getRemoteDevice().setDeviceOS(deviceOS);
+            remoteDBModel.get().getRemoteDevice().setDeviceUrl(deviceUrl);
+            remoteDBModel.get().setRemoteState(remoteState);
+            remoteDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
 
+            return remoteHelper.getRemoteWSDTO(remoteRepository.save(remoteDBModel.get()));
+        }
         return null;
     }
 
-
     public RemoteWSDTO removeRemoteService(long userId, String remoteId) {
 
+        Optional<RemoteDBModel> remoteDBModel = remoteRepository.findById(remoteId);
+        if (remoteDBModel.isPresent()){
+
+            remoteRepository.delete(remoteDBModel.get());
+            return remoteHelper.getRemoteWSDTO(remoteDBModel.get());
+        }
         return null;
     }
 

@@ -106,13 +106,13 @@ public class RemoteMiddleware {
     }
 
 
-    public RemoteWSModel updateRemote(long userId, long sessionId, String remoteId, String deviceBrand, String deviceModel, String deviceOS, String deviceUrl, String remoteState) {
+    public RemoteWSModel updateRemote(long userId, String remoteId, String deviceBrand, String deviceModel, String deviceOS, String deviceUrl, String remoteState) {
 
         RemoteWSModel response = new RemoteWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<RemoteWSDTO> remoteWSDTOS = new ArrayList<>();
 
-        RemoteWSDTO remoteWSDTO = remoteFramework.updateRemoteService(userId,sessionId,remoteId,deviceBrand,deviceModel,deviceOS,deviceUrl,remoteState);
+        RemoteWSDTO remoteWSDTO = remoteFramework.updateRemoteService(userId,remoteId,deviceBrand,deviceModel,deviceOS,deviceUrl,remoteState);
         if (remoteWSDTO != null){
             remoteWSDTOS.add(remoteWSDTO);
         }
