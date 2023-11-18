@@ -549,9 +549,9 @@ public class BaseRoute {
     public static final String REMOVE_ACTION_TEMP = "removeactiontemp";
 
 
-    public static final String GET_ALL_SYSTEM_SETTINGS = "getallsystemsettings";
-    public static final String REPAIR_SYSTEM_SETTINGS = "repairsystemsettings";
-    public static final String REMOVE_SYSTEM_SETTINGS = "removesystemsettings";
+    public static final String GET_SYSTEM_INFOS = "getsysteminfos";
+    public static final String REPAIR_SYSTEM_INFO = "repairsysteminfo";
+    public static final String REMOVE_SYSTEM_INFO = "removesysteminfo";
 
 
     public static final String GET_SYSTEM_STATE = "getsystemstate";

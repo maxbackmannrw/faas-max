@@ -1,8 +1,8 @@
-package com.faas.core.base.framework.utils.restore;
+package com.faas.core.base.framework.utils.system;
 
 import com.faas.core.base.model.db.client.content.ClientDBModel;
 import com.faas.core.base.model.db.user.content.UserDBModel;
-import com.faas.core.base.model.ws.utils.restore.dto.UtilSettingsWSDTO;
+import com.faas.core.base.model.ws.utils.system.dto.SystemInfoWSDTO;
 import com.faas.core.base.repo.assets.content.AssetRepository;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
@@ -38,7 +38,7 @@ import java.util.List;
 
 
 @Component
-public class UtilsRestoreFramework {
+public class UtilsSystemFramework {
 
 
     @Autowired
@@ -159,133 +159,133 @@ public class UtilsRestoreFramework {
     AppUtils appUtils;
 
 
-    public List<UtilSettingsWSDTO> getAllSystemSettingsService(long userId) {
+    public List<SystemInfoWSDTO> getSystemInfosService(long userId) {
 
-        List<UtilSettingsWSDTO>systemSettingsWSDTOS  = new ArrayList<>();
+        List<SystemInfoWSDTO>systemInfoWSDTOS  = new ArrayList<>();
 
-        systemSettingsWSDTOS.add(getClientsSettings());
-        systemSettingsWSDTOS.add(getSessionsSettings());
-        systemSettingsWSDTOS.add(getOperationsSettings());
-        systemSettingsWSDTOS.add(getOperationInquiriesSettings());
-        systemSettingsWSDTOS.add(getOperationFlowsSettings());
+        systemInfoWSDTOS.add(getClientsInfos());
+        systemInfoWSDTOS.add(getSessionsInfos());
+        systemInfoWSDTOS.add(getOperationsInfos());
+        systemInfoWSDTOS.add(getOperationInquiriesInfos());
+        systemInfoWSDTOS.add(getOperationFlowsInfos());
 
-        systemSettingsWSDTOS.add(getCampaignsSettings());
-        systemSettingsWSDTOS.add(getProcessesSettings());
-        systemSettingsWSDTOS.add(getScenariosSettings());
+        systemInfoWSDTOS.add(getCampaignsInfos());
+        systemInfoWSDTOS.add(getProcessesInfos());
+        systemInfoWSDTOS.add(getScenariosInfos());
 
-        systemSettingsWSDTOS.add(getUsersSettings());
-        systemSettingsWSDTOS.add(getAgentsSettings());
-        systemSettingsWSDTOS.add(getAssetsSettings());
+        systemInfoWSDTOS.add(getUsersInfos());
+        systemInfoWSDTOS.add(getAgentsInfos());
+        systemInfoWSDTOS.add(getAssetsInfos());
 
-        return systemSettingsWSDTOS;
+        return systemInfoWSDTOS;
     }
 
 
 
-    public UtilSettingsWSDTO getClientsSettings(){
+    public SystemInfoWSDTO getClientsInfos(){
 
-        UtilSettingsWSDTO clientSettings = new UtilSettingsWSDTO();
-        clientSettings.setSettingsName(AppConstant.CLIENTS_SETTINGS);
-        clientSettings.setSettingsValue(String.valueOf(clientRepository.count()));
-        clientSettings.setSettingsState(true);
-        return clientSettings;
+        SystemInfoWSDTO systemInfoWSDTO = new SystemInfoWSDTO();
+        systemInfoWSDTO.setInfoName(AppConstant.CLIENTS_INFOS);
+        systemInfoWSDTO.setInfoValue(String.valueOf(clientRepository.count()));
+        systemInfoWSDTO.setInfoState(true);
+        return systemInfoWSDTO;
     }
 
-    public UtilSettingsWSDTO getSessionsSettings(){
+    public SystemInfoWSDTO getSessionsInfos(){
 
-        UtilSettingsWSDTO sessionsSettings = new UtilSettingsWSDTO();
-        sessionsSettings.setSettingsName(AppConstant.SESSIONS_SETTINGS);
-        sessionsSettings.setSettingsValue(String.valueOf(sessionRepository.count()));
-        sessionsSettings.setSettingsState(true);
-        return sessionsSettings;
+        SystemInfoWSDTO systemInfoWSDTO = new SystemInfoWSDTO();
+        systemInfoWSDTO.setInfoName(AppConstant.SESSIONS_INFOS);
+        systemInfoWSDTO.setInfoValue(String.valueOf(sessionRepository.count()));
+        systemInfoWSDTO.setInfoState(true);
+        return systemInfoWSDTO;
     }
 
-    public UtilSettingsWSDTO getOperationsSettings(){
+    public SystemInfoWSDTO getOperationsInfos(){
 
-        UtilSettingsWSDTO operationsSettings = new UtilSettingsWSDTO();
-        operationsSettings.setSettingsName(AppConstant.OPERATIONS_SETTINGS);
-        operationsSettings.setSettingsValue(String.valueOf(operationRepository.count()));
-        operationsSettings.setSettingsState(true);
-        return operationsSettings;
+        SystemInfoWSDTO systemInfoWSDTO = new SystemInfoWSDTO();
+        systemInfoWSDTO.setInfoName(AppConstant.OPERATIONS_INFOS);
+        systemInfoWSDTO.setInfoValue(String.valueOf(operationRepository.count()));
+        systemInfoWSDTO.setInfoState(true);
+        return systemInfoWSDTO;
     }
 
-    public UtilSettingsWSDTO getOperationInquiriesSettings(){
+    public SystemInfoWSDTO getOperationInquiriesInfos(){
 
-        UtilSettingsWSDTO operationInquiriesSettings = new UtilSettingsWSDTO();
-        operationInquiriesSettings.setSettingsName(AppConstant.OPERATION_INQUIRIES_SETTINGS);
-        operationInquiriesSettings.setSettingsValue(String.valueOf(operationInquiryRepository.count()));
-        operationInquiriesSettings.setSettingsState(true);
-        return operationInquiriesSettings;
+        SystemInfoWSDTO systemInfoWSDTO = new SystemInfoWSDTO();
+        systemInfoWSDTO.setInfoName(AppConstant.OPERATION_INQUIRIES_INFOS);
+        systemInfoWSDTO.setInfoValue(String.valueOf(operationInquiryRepository.count()));
+        systemInfoWSDTO.setInfoState(true);
+        return systemInfoWSDTO;
     }
 
-    public UtilSettingsWSDTO getOperationFlowsSettings(){
+    public SystemInfoWSDTO getOperationFlowsInfos(){
 
-        UtilSettingsWSDTO operationFlowsSettings = new UtilSettingsWSDTO();
-        operationFlowsSettings.setSettingsName(AppConstant.OPERATION_FLOWS_SETTINGS);
-        operationFlowsSettings.setSettingsValue(String.valueOf(operationFlowRepository.count()));
-        operationFlowsSettings.setSettingsState(true);
-        return operationFlowsSettings;
+        SystemInfoWSDTO systemInfoWSDTO = new SystemInfoWSDTO();
+        systemInfoWSDTO.setInfoName(AppConstant.OPERATION_FLOWS_INFOS);
+        systemInfoWSDTO.setInfoValue(String.valueOf(operationFlowRepository.count()));
+        systemInfoWSDTO.setInfoState(true);
+        return systemInfoWSDTO;
     }
 
 
-    public UtilSettingsWSDTO getCampaignsSettings(){
+    public SystemInfoWSDTO getCampaignsInfos(){
 
-        UtilSettingsWSDTO campaignsSettings = new UtilSettingsWSDTO();
-        campaignsSettings.setSettingsName(AppConstant.CAMPAIGNS_SETTINGS);
-        campaignsSettings.setSettingsValue(String.valueOf(campaignRepository.count()));
-        campaignsSettings.setSettingsState(true);
-        return campaignsSettings;
+        SystemInfoWSDTO systemInfoWSDTO = new SystemInfoWSDTO();
+        systemInfoWSDTO.setInfoName(AppConstant.CAMPAIGNS_INFOS);
+        systemInfoWSDTO.setInfoValue(String.valueOf(campaignRepository.count()));
+        systemInfoWSDTO.setInfoState(true);
+        return systemInfoWSDTO;
     }
 
-    public UtilSettingsWSDTO getProcessesSettings(){
+    public SystemInfoWSDTO getProcessesInfos(){
 
-        UtilSettingsWSDTO processesSettings = new UtilSettingsWSDTO();
-        processesSettings.setSettingsName(AppConstant.PROCESSES_SETTINGS);
-        processesSettings.setSettingsValue(String.valueOf(processRepository.count()));
-        processesSettings.setSettingsState(true);
-        return processesSettings;
+        SystemInfoWSDTO systemInfoWSDTO = new SystemInfoWSDTO();
+        systemInfoWSDTO.setInfoName(AppConstant.PROCESSES_INFOS);
+        systemInfoWSDTO.setInfoValue(String.valueOf(processRepository.count()));
+        systemInfoWSDTO.setInfoState(true);
+        return systemInfoWSDTO;
     }
 
-    public UtilSettingsWSDTO getScenariosSettings(){
+    public SystemInfoWSDTO getScenariosInfos(){
 
-        UtilSettingsWSDTO processScenariosSettings = new UtilSettingsWSDTO();
-        processScenariosSettings.setSettingsName(AppConstant.SCENARIOS_SETTINGS);
-        processScenariosSettings.setSettingsValue(String.valueOf(scenarioRepository.count()));
-        processScenariosSettings.setSettingsState(true);
-        return processScenariosSettings;
+        SystemInfoWSDTO systemInfoWSDTO = new SystemInfoWSDTO();
+        systemInfoWSDTO.setInfoName(AppConstant.SCENARIOS_INFOS);
+        systemInfoWSDTO.setInfoValue(String.valueOf(scenarioRepository.count()));
+        systemInfoWSDTO.setInfoState(true);
+        return systemInfoWSDTO;
     }
 
-    public UtilSettingsWSDTO getUsersSettings(){
+    public SystemInfoWSDTO getUsersInfos(){
 
-        UtilSettingsWSDTO usersSettings = new UtilSettingsWSDTO();
-        usersSettings.setSettingsName(AppConstant.USERS_SETTINGS);
-        usersSettings.setSettingsValue(String.valueOf(userRepository.count()));
-        usersSettings.setSettingsState(true);
-        return usersSettings;
+        SystemInfoWSDTO systemInfoWSDTO = new SystemInfoWSDTO();
+        systemInfoWSDTO.setInfoName(AppConstant.USERS_INFOS);
+        systemInfoWSDTO.setInfoValue(String.valueOf(userRepository.count()));
+        systemInfoWSDTO.setInfoState(true);
+        return systemInfoWSDTO;
     }
 
-    public UtilSettingsWSDTO getAgentsSettings(){
+    public SystemInfoWSDTO getAgentsInfos(){
 
-        UtilSettingsWSDTO usersSettings = new UtilSettingsWSDTO();
-        usersSettings.setSettingsName(AppConstant.AGENTS_SETTINGS);
-        usersSettings.setSettingsValue(String.valueOf(userRepository.countByUserType(AppConstant.AGENT_USER)));
-        usersSettings.setSettingsState(true);
-        return usersSettings;
+        SystemInfoWSDTO systemInfoWSDTO = new SystemInfoWSDTO();
+        systemInfoWSDTO.setInfoName(AppConstant.AGENTS_INFOS);
+        systemInfoWSDTO.setInfoValue(String.valueOf(userRepository.countByUserType(AppConstant.AGENT_USER)));
+        systemInfoWSDTO.setInfoState(true);
+        return systemInfoWSDTO;
     }
 
-    public UtilSettingsWSDTO getAssetsSettings(){
+    public SystemInfoWSDTO getAssetsInfos(){
 
-        UtilSettingsWSDTO assetsSettings = new UtilSettingsWSDTO();
-        assetsSettings.setSettingsName(AppConstant.ASSETS_SETTINGS);
-        assetsSettings.setSettingsValue(String.valueOf(assetRepository.count()));
-        assetsSettings.setSettingsState(true);
-        return assetsSettings;
+        SystemInfoWSDTO systemInfoWSDTO = new SystemInfoWSDTO();
+        systemInfoWSDTO.setInfoName(AppConstant.ASSETS_INFOS);
+        systemInfoWSDTO.setInfoValue(String.valueOf(assetRepository.count()));
+        systemInfoWSDTO.setInfoState(true);
+        return systemInfoWSDTO;
     }
 
 
     public boolean repairSystemSettingsService(long userId,String systemSettings) {
 
-        if (systemSettings.equalsIgnoreCase(AppConstant.CLIENTS_SETTINGS)){
+        if (systemSettings.equalsIgnoreCase(AppConstant.CLIENTS_INFOS)){
             repairAllClientsService();
             return true;
         }
@@ -300,50 +300,50 @@ public class UtilsRestoreFramework {
 
     public boolean removeSystemSettingsService(long userId,String systemSettings) {
 
-        if (systemSettings.equalsIgnoreCase(AppConstant.CLIENTS_SETTINGS)){
+        if (systemSettings.equalsIgnoreCase(AppConstant.CLIENTS_INFOS)){
             removeAllClientsService();
             return true;
         }
-        if (systemSettings.equalsIgnoreCase(AppConstant.SESSIONS_SETTINGS)){
+        if (systemSettings.equalsIgnoreCase(AppConstant.SESSIONS_INFOS)){
             removeAllSessionsService();
             return true;
         }
-        if (systemSettings.equalsIgnoreCase(AppConstant.OPERATIONS_SETTINGS)){
+        if (systemSettings.equalsIgnoreCase(AppConstant.OPERATIONS_INFOS)){
             removeAllOperationsService();
             return true;
         }
-        if (systemSettings.equalsIgnoreCase(AppConstant.OPERATION_INQUIRIES_SETTINGS)){
+        if (systemSettings.equalsIgnoreCase(AppConstant.OPERATION_INQUIRIES_INFOS)){
             removeAllOperationInquiriesService();
             return true;
         }
-        if (systemSettings.equalsIgnoreCase(AppConstant.OPERATION_FLOWS_SETTINGS)){
+        if (systemSettings.equalsIgnoreCase(AppConstant.OPERATION_FLOWS_INFOS)){
             removeAllOperationFlowsService();
             return true;
         }
 
 
-        if (systemSettings.equalsIgnoreCase(AppConstant.CAMPAIGNS_SETTINGS)){
+        if (systemSettings.equalsIgnoreCase(AppConstant.CAMPAIGNS_INFOS)){
             removeAllCampaignsService();
             return true;
         }
-        if (systemSettings.equalsIgnoreCase(AppConstant.PROCESSES_SETTINGS)){
+        if (systemSettings.equalsIgnoreCase(AppConstant.PROCESSES_INFOS)){
             removeAllProcessesService();
             return true;
         }
-        if (systemSettings.equalsIgnoreCase(AppConstant.SCENARIOS_SETTINGS)){
+        if (systemSettings.equalsIgnoreCase(AppConstant.SCENARIOS_INFOS)){
             removeAllScenariosService();
             return true;
         }
 
-        if (systemSettings.equalsIgnoreCase(AppConstant.USERS_SETTINGS)){
+        if (systemSettings.equalsIgnoreCase(AppConstant.USERS_INFOS)){
             removeAllUsersService();
             return true;
         }
-        if (systemSettings.equalsIgnoreCase(AppConstant.AGENTS_SETTINGS)){
+        if (systemSettings.equalsIgnoreCase(AppConstant.AGENTS_INFOS)){
             removeAllAgentsService();
             return true;
         }
-        if (systemSettings.equalsIgnoreCase(AppConstant.ASSETS_SETTINGS)){
+        if (systemSettings.equalsIgnoreCase(AppConstant.ASSETS_INFOS)){
             removeAllAssetsService();
             return true;
         }
