@@ -3,8 +3,8 @@ package com.faas.core.base.framework.client.content;
 import com.faas.core.base.framework.client.details.ClientDetailsFramework;
 import com.faas.core.base.model.db.client.content.ClientDBModel;
 import com.faas.core.base.model.db.client.settings.ClientTypeDBModel;
-import com.faas.core.base.model.db.utils.location.CityDBModel;
-import com.faas.core.base.model.db.utils.location.CountryDBModel;
+import com.faas.core.base.model.db.utils.CityDBModel;
+import com.faas.core.base.model.db.utils.CountryDBModel;
 import com.faas.core.base.model.ws.client.content.dto.ClientWSDTO;
 import com.faas.core.base.model.ws.client.content.dto.ClientsByStateWSDTO;
 import com.faas.core.base.model.ws.client.content.dto.CreateClientRequestDTO;
@@ -15,8 +15,8 @@ import com.faas.core.base.repo.operation.details.channel.*;
 import com.faas.core.base.repo.remote.RemoteRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
-import com.faas.core.base.repo.utils.location.CityRepository;
-import com.faas.core.base.repo.utils.location.CountryRepository;
+import com.faas.core.base.repo.utils.CityRepository;
+import com.faas.core.base.repo.utils.CountryRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.SessionHelper;
@@ -196,7 +196,7 @@ public class ClientFramework {
 
     public void checkAndInsertCityAndCountry(ClientDBModel clientDBModel){
 
-        if (!cityRepository.existsByCityAndCountry(clientDBModel.getClientCity().toUpperCase(),clientDBModel.getClientCountry().toLowerCase())){
+        if (!cityRepository.existsByCityAndCountry(clientDBModel.getClientCity().toUpperCase(),clientDBModel.getClientCountry().toUpperCase())){
 
             CityDBModel cityDBModel = new CityDBModel();
             cityDBModel.setCity(clientDBModel.getClientCity().toUpperCase());
@@ -219,7 +219,6 @@ public class ClientFramework {
         }
 
     }
-
 
 
     public void createClientDetailsService(ClientDBModel clientDBModel){

@@ -5,13 +5,13 @@ import com.faas.core.base.model.db.process.details.scenario.ProcessScenarioDBMod
 import com.faas.core.base.model.db.process.details.scenario.dao.*;
 import com.faas.core.base.model.db.scenario.content.ScenarioDBModel;
 import com.faas.core.base.model.db.scenario.content.dao.*;
-import com.faas.core.base.model.db.utils.datatype.DataTypeDBModel;
+import com.faas.core.base.model.db.utils.DataTypeDBModel;
 import com.faas.core.base.model.ws.process.details.scenario.dto.ProcessScenarioDataWSDTO;
 import com.faas.core.base.model.ws.process.details.scenario.dto.ProcessScenarioWSDTO;
 import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.process.details.scenario.ProcessScenarioRepository;
 import com.faas.core.base.repo.scenario.content.ScenarioRepository;
-import com.faas.core.base.repo.utils.datatype.DataTypeRepository;
+import com.faas.core.base.repo.utils.DataTypeRepository;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

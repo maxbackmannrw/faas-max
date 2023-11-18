@@ -256,17 +256,6 @@ public class BaseRoute {
 
 
 
-
-
-
-    public static final String GET_ALL_CONTENT_TYPES = "getallcontenttypes";
-    public static final String GET_CONTENT_TYPES_BY_BASE_TYPE = "getcontenttypesbybasetype";
-    public static final String GET_CONTENT_TYPE = "getcontenttype";
-    public static final String CREATE_CONTENT_TYPE = "createcontenttype";
-    public static final String UPDATE_CONTENT_TYPE = "updatecontenttype";
-    public static final String REMOVE_CONTENT_TYPE = "removecontenttype";
-
-
     public static final String GET_ALL_CITIES = "getallcities";
     public static final String GET_CITY = "getcity";
     public static final String CREATE_CITY = "createcity";
