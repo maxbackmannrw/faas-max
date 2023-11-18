@@ -37,7 +37,6 @@ public class RemoteController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.GET_CLIENT_REMOTES, method = RequestMethod.POST)
     public ResponseEntity<?> getClientRemotes(@RequestParam long userId,
                                               @RequestParam long clientId) {
@@ -50,7 +49,6 @@ public class RemoteController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.GET_REMOTE, method = RequestMethod.POST)
     public ResponseEntity<?> getRemote(@RequestParam long userId,
                                        @RequestParam String remoteId) {
@@ -62,7 +60,6 @@ public class RemoteController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.CREATE_REMOTE, method = RequestMethod.POST)
     public ResponseEntity<?> createRemote(@RequestParam long userId,
@@ -82,7 +79,6 @@ public class RemoteController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.UPDATE_REMOTE, method = RequestMethod.POST)
     public ResponseEntity<?> updateRemote(@RequestParam long userId,
                                           @RequestParam String remoteId,
@@ -99,7 +95,6 @@ public class RemoteController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.REMOVE_REMOTE, method = RequestMethod.POST)
     public ResponseEntity<?> removeRemote(@RequestParam long userId,
