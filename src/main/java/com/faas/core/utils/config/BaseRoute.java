@@ -200,6 +200,7 @@ public class BaseRoute {
     public static final String CREATE_REMOTE = "createremote";
     public static final String UPDATE_REMOTE = "updateremote";
     public static final String REMOVE_REMOTE = "removeremote";
+    public static final String GET_REMOTE_SUMMARY = "getremotesummary";
 
     public static final String GET_REMOTE_DETAILS = "getremotedetails";
 

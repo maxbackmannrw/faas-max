@@ -2,8 +2,10 @@ package com.faas.core.base.middleware.remote.content;
 
 import com.faas.core.base.framework.remote.content.RemoteFramework;
 import com.faas.core.base.model.ws.remote.content.RemoteListWSModel;
+import com.faas.core.base.model.ws.remote.content.RemoteSummaryWSModel;
 import com.faas.core.base.model.ws.remote.content.RemoteWSModel;
 import com.faas.core.base.model.ws.remote.content.dto.RemoteListWSDTO;
+import com.faas.core.base.model.ws.remote.content.dto.RemoteSummaryWSDTO;
 import com.faas.core.base.model.ws.remote.content.dto.RemoteWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.utils.config.AppConstant;
@@ -149,5 +151,23 @@ public class RemoteMiddleware {
         return response;
     }
 
+
+    public RemoteSummaryWSModel getRemoteSummary(long userId) {
+
+        RemoteSummaryWSModel response = new RemoteSummaryWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        RemoteSummaryWSDTO remoteSummaryWSDTO = remoteFramework.getRemoteSummaryService(userId);
+        if (remoteSummaryWSDTO != null){
+            response.setRemoteSummary(remoteSummaryWSDTO);
+        }
+        general.setOperation("getRemoteSummary");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
 
 }

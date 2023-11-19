@@ -5,6 +5,7 @@ import com.faas.core.base.model.db.remote.RemoteDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.ws.remote.content.dto.RemoteListWSDTO;
+import com.faas.core.base.model.ws.remote.content.dto.RemoteSummaryWSDTO;
 import com.faas.core.base.model.ws.remote.content.dto.RemoteWSDTO;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.client.details.*;
@@ -162,12 +163,26 @@ public class RemoteFramework {
 
         Optional<RemoteDBModel> remoteDBModel = remoteRepository.findById(remoteId);
         if (remoteDBModel.isPresent()){
-
             remoteRepository.delete(remoteDBModel.get());
             return remoteHelper.getRemoteWSDTO(remoteDBModel.get());
         }
         return null;
     }
+
+
+    public RemoteSummaryWSDTO getRemoteSummaryService(long userId) {
+
+        RemoteSummaryWSDTO remoteSummaryWSDTO = new RemoteSummaryWSDTO();
+        remoteSummaryWSDTO.setTotalRemote(remoteRepository.count());
+        remoteSummaryWSDTO.setReadyRemote(remoteRepository.countByRemoteState(AppConstant.READY_REMOTE));
+        remoteSummaryWSDTO.setActiveRemote(remoteRepository.countByRemoteState(AppConstant.ACTIVE_REMOTE));
+        remoteSummaryWSDTO.setTerminatedRemote(remoteRepository.countByRemoteState(AppConstant.TERMINATED_REMOTE));
+
+        return remoteSummaryWSDTO;
+    }
+
+
+
 
 
 

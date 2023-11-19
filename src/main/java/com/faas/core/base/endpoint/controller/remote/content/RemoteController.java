@@ -2,6 +2,7 @@ package com.faas.core.base.endpoint.controller.remote.content;
 
 import com.faas.core.base.middleware.remote.content.RemoteMiddleware;
 import com.faas.core.base.model.ws.remote.content.RemoteListWSModel;
+import com.faas.core.base.model.ws.remote.content.RemoteSummaryWSModel;
 import com.faas.core.base.model.ws.remote.content.RemoteWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
@@ -108,5 +109,16 @@ public class RemoteController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+
+    @RequestMapping(value = BaseRoute.GET_REMOTE_SUMMARY, method = RequestMethod.POST)
+    public ResponseEntity<?> getRemoteSummary(@RequestParam long userId) {
+
+        RemoteSummaryWSModel response = remoteMiddleware.getRemoteSummary(userId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
 
 }
