@@ -116,7 +116,6 @@ public class BaseRoute {
     public static final String REMOVE_CAMPAIGN_FLOW_SESSION = "removecampaignflowsession";
 
 
-
     public static final String GET_OPERATIONS = "getoperations";
     public static final String GET_OPERATION = "getoperation";
     public static final String CREATE_OPERATION = "createoperation";
@@ -134,14 +133,12 @@ public class BaseRoute {
     public static final String GET_MANUAL_CAMPAIGN = "getmanualcampaign";
 
 
-
     public static final String GET_INQUIRY_MANAGER = "getinquirymanager";
     public static final String GET_INQUIRY_OPERATIONS = "getinquiryoperations";
     public static final String GET_INQUIRY_OPERATION = "getinquiryoperation";
     public static final String CREATE_INQUIRY_OPERATION = "createinquiryoperation";
     public static final String UPDATE_INQUIRY_OPERATION = "updateinquiryoperation";
     public static final String REMOVE_INQUIRY_OPERATION = "removeinquiryoperation";
-
     public static final String GET_INQUIRY_CAMPAIGNS = "getinquirycampaigns";
     public static final String GET_INQUIRY_CAMPAIGN = "getinquirycampaign";
 
@@ -152,10 +149,8 @@ public class BaseRoute {
     public static final String CREATE_AUTOMATIC_OPERATION = "createautomaticoperation";
     public static final String UPDATE_AUTOMATIC_OPERATION = "updateautomaticoperation";
     public static final String REMOVE_AUTOMATIC_OPERATION = "removeautomaticoperation";
-
     public static final String GET_AUTOMATIC_CAMPAIGNS = "getautomaticcampaigns";
     public static final String GET_AUTOMATIC_CAMPAIGN = "getautomaticcampaign";
-
 
 
 
