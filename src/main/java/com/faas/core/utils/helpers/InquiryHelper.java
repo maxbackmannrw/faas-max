@@ -60,8 +60,8 @@ public class InquiryHelper {
                 operationWSDTOS.add(getInquiryOperationWSDTO(sessionDBModelPage.getContent().get(i),operationDBModels.get(0),operationInquiryDBModels.get(0)));
             }
         }
-        operationListWSDTO.setPagination(createInquirySessionPagination(sessionDBModelPage));
         operationListWSDTO.setOperations(operationWSDTOS);
+        operationListWSDTO.setPagination(createInquirySessionPagination(sessionDBModelPage));
 
         return operationListWSDTO;
     }

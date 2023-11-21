@@ -57,8 +57,12 @@ public class AutomaticManagerFramework {
 
     public AutomaticManagerWSDTO getAutomaticManagerService(long userId, int reqPage, int reqSize) {
 
+        AutomaticManagerWSDTO automaticManagerWSDTO = new AutomaticManagerWSDTO();
+        automaticManagerWSDTO.setReadyOperationList(getAutomaticOperationsService(userId,AppConstant.READY_SESSION, reqPage, reqSize));
+        automaticManagerWSDTO.setActiveOperationList(getAutomaticOperationsService(userId,AppConstant.ACTIVE_SESSION, reqPage, reqSize));
+        automaticManagerWSDTO.setCampaigns(getAutomaticCampaignsService(userId));
 
-        return null;
+        return automaticManagerWSDTO;
     }
 
 
@@ -66,6 +70,7 @@ public class AutomaticManagerFramework {
 
         Page<SessionDBModel> sessionModelPage = sessionRepository.findAllBySessionTypeAndSessionState(AppConstant.AUTOMATIC_CAMPAIGN, sessionState,PageRequest.of(reqPage,reqSize));
         if (sessionModelPage != null){
+            return automaticHelper.getAutomaticOperationListWSDTO(sessionModelPage);
         }
         return null;
     }

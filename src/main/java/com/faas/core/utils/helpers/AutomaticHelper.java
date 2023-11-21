@@ -41,7 +41,6 @@ public class AutomaticHelper {
     public OperationListWSDTO getAutomaticOperationListWSDTO(Page<SessionDBModel>sessionModelPage){
 
         OperationListWSDTO operationListWSDTO = new OperationListWSDTO();
-        operationListWSDTO.setPagination(createFlowSessionPagination(sessionModelPage));
         List<OperationWSDTO> operationWSDTOS = new ArrayList<>();
         for (int i=0;sessionModelPage.getContent().size()>i;i++){
             List<OperationDBModel> operationDBModels = operationRepository.findBySessionId(sessionModelPage.getContent().get(i).getId());
@@ -51,6 +50,7 @@ public class AutomaticHelper {
             }
         }
         operationListWSDTO.setOperations(operationWSDTOS);
+        operationListWSDTO.setPagination(createFlowSessionPagination(sessionModelPage));
 
         return operationListWSDTO;
     }
