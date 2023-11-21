@@ -8,6 +8,7 @@ import com.faas.core.base.model.ws.operation.content.dto.OperationCampaignWSDTO;
 import com.faas.core.base.model.ws.operation.content.dto.OperationListWSDTO;
 import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
 import com.faas.core.base.model.ws.operation.inquiry.content.dto.InquiryManagerWSDTO;
+import com.faas.core.base.model.ws.operation.manual.content.dto.ManualManagerWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.session.SessionRepository;
@@ -53,7 +54,12 @@ public class InquiryManagerFramework {
 
     public InquiryManagerWSDTO getInquiryManagerService(long userId, int reqPage, int reqSize) {
 
-        return null;
+        InquiryManagerWSDTO inquiryManagerWSDTO = new InquiryManagerWSDTO();
+        inquiryManagerWSDTO.setReadyOperationList(getInquiryOperationsService(userId,AppConstant.READY_SESSION,reqPage,reqSize));
+        inquiryManagerWSDTO.setActiveOperationList(getInquiryOperationsService(userId,AppConstant.ACTIVE_SESSION,reqPage,reqSize));
+        inquiryManagerWSDTO.setCampaigns(getInquiryCampaignsService(userId));
+
+        return inquiryManagerWSDTO;
     }
 
 
@@ -61,6 +67,7 @@ public class InquiryManagerFramework {
 
         Page<SessionDBModel> sessionModelPage = sessionRepository.findAllBySessionTypeAndSessionState(AppConstant.INQUIRY_CAMPAIGN, sessionState,PageRequest.of(reqPage,reqSize));
         if (sessionModelPage != null){
+            return inquiryHelper.getInquiryOperationListWSDTO(sessionModelPage);
         }
         return null;
     }

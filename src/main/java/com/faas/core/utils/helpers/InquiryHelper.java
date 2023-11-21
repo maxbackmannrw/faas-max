@@ -52,7 +52,6 @@ public class InquiryHelper {
     public OperationListWSDTO getInquiryOperationListWSDTO(Page<SessionDBModel> sessionDBModelPage){
 
         OperationListWSDTO operationListWSDTO = new OperationListWSDTO();
-        operationListWSDTO.setPagination(createInquirySessionPagination(sessionDBModelPage));
         List<OperationWSDTO> operationWSDTOS = new ArrayList<>();
         for (int i=0;i<sessionDBModelPage.getContent().size();i++){
             List<OperationDBModel> operationDBModels = operationRepository.findBySessionIdAndClientId(sessionDBModelPage.getContent().get(i).getId(), sessionDBModelPage.getContent().get(i).getClientId());
@@ -61,6 +60,7 @@ public class InquiryHelper {
                 operationWSDTOS.add(getInquiryOperationWSDTO(sessionDBModelPage.getContent().get(i),operationDBModels.get(0),operationInquiryDBModels.get(0)));
             }
         }
+        operationListWSDTO.setPagination(createInquirySessionPagination(sessionDBModelPage));
         operationListWSDTO.setOperations(operationWSDTOS);
 
         return operationListWSDTO;
@@ -75,7 +75,6 @@ public class InquiryHelper {
 
         return operationWSDTO;
     }
-
 
 
     public ApiOperationInquiryWSDTO getApiOperationInquiryWSDTO(Page<OperationInquiryDBModel> operationInquiryPage){
