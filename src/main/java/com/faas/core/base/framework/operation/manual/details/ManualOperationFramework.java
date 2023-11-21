@@ -1,4 +1,4 @@
-package com.faas.core.base.framework.operation.automatic.details;
+package com.faas.core.base.framework.operation.manual.details;
 
 import com.faas.core.base.model.ws.operation.content.dto.OperationCampaignWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
@@ -8,9 +8,8 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-
 @Component
-public class AutomaticManagerDetailsFramework {
+public class ManualOperationFramework {
 
     @Autowired
     CampaignRepository campaignRepository;
@@ -19,14 +18,10 @@ public class AutomaticManagerDetailsFramework {
     AppUtils appUtils;
 
 
-    public List<OperationCampaignWSDTO> getAutomaticOperationDetailsService(long userId) {
+    public List<OperationCampaignWSDTO> getManualOperationDetailsService(long userId) {
 
         return null;
     }
 
-    public List<OperationCampaignWSDTO> getAutomaticCampaignDetailsService(long userId) {
-
-        return null;
-    }
 
 }

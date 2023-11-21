@@ -1,6 +1,7 @@
 package com.faas.core.base.endpoint.controller.operation.manual.details;
 
-import com.faas.core.base.middleware.operation.manual.details.ManualManagerDetailsMiddleware;
+import com.faas.core.base.middleware.operation.manual.details.ManualCampaignMiddleware;
+import com.faas.core.base.middleware.operation.manual.details.ManualOperationMiddleware;
 import com.faas.core.base.model.ws.operation.content.OperationCampaignWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
@@ -13,30 +14,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping(value = AppConstant.API_VERSION + "/base/operation/manager/manual/details/")
-public class ManualManagerDetailsController {
+@RequestMapping(value = AppConstant.API_VERSION + "/base/operation/manager/manual/campaign/")
+public class ManualCampaignController {
 
 
     @Autowired
-    ManualManagerDetailsMiddleware manualManagerDetailsMiddleware;
-
-
-    @RequestMapping(value = BaseRoute.GET_MANUAL_OPERATION_DETAILS, method = RequestMethod.POST)
-    public ResponseEntity<?> getManualOperationDetails(@RequestParam long userId) {
-
-        OperationCampaignWSModel response = manualManagerDetailsMiddleware.getManualOperationDetails(userId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
+    ManualCampaignMiddleware manualCampaignMiddleware;
 
 
     @RequestMapping(value = BaseRoute.GET_MANUAL_CAMPAIGN_DETAILS, method = RequestMethod.POST)
     public ResponseEntity<?> getManualCampaignDetails(@RequestParam long userId) {
 
-        OperationCampaignWSModel response = manualManagerDetailsMiddleware.getManualCampaignDetails(userId);
+        OperationCampaignWSModel response = manualCampaignMiddleware.getManualCampaignDetails(userId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

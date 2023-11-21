@@ -10,7 +10,7 @@ import java.util.List;
 
 
 @Component
-public class InquiryManagerDetailsFramework {
+public class InquiryOperationFramework {
 
     @Autowired
     CampaignRepository campaignRepository;
@@ -25,9 +25,5 @@ public class InquiryManagerDetailsFramework {
     }
 
 
-    public List<OperationCampaignWSDTO> getInquiryCampaignDetailsService(long userId) {
-
-        return null;
-    }
 
 }
