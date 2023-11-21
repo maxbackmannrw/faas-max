@@ -21,10 +21,10 @@ public class AutomaticManagerDetailsController {
     AutomaticManagerDetailsMiddleware automaticManagerDetailsMiddleware;
 
 
-    @RequestMapping(value = BaseRoute.GET_AUTOMATIC_CAMPAIGNS, method = RequestMethod.POST)
-    public ResponseEntity<?> getAutomaticCampaigns(@RequestParam long userId) {
+    @RequestMapping(value = BaseRoute.GET_AUTOMATIC_OPERATION_DETAILS, method = RequestMethod.POST)
+    public ResponseEntity<?> getAutomaticOperationDetails(@RequestParam long userId) {
 
-        OperationCampaignWSModel response = automaticManagerDetailsMiddleware.getAutomaticCampaigns(userId);
+        OperationCampaignWSModel response = automaticManagerDetailsMiddleware.getAutomaticOperationDetails(userId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -32,6 +32,17 @@ public class AutomaticManagerDetailsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+
+    @RequestMapping(value = BaseRoute.GET_AUTOMATIC_CAMPAIGN_DETAILS, method = RequestMethod.POST)
+    public ResponseEntity<?> getAutomaticCampaignDetails(@RequestParam long userId) {
+
+        OperationCampaignWSModel response = automaticManagerDetailsMiddleware.getAutomaticCampaignDetails(userId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
 
 
 

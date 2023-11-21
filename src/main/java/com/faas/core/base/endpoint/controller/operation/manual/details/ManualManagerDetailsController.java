@@ -21,10 +21,22 @@ public class ManualManagerDetailsController {
     ManualManagerDetailsMiddleware manualManagerDetailsMiddleware;
 
 
-    @RequestMapping(value = BaseRoute.GET_MANUAL_CAMPAIGNS, method = RequestMethod.POST)
-    public ResponseEntity<?> getManualCampaigns(@RequestParam long userId) {
+    @RequestMapping(value = BaseRoute.GET_MANUAL_OPERATION_DETAILS, method = RequestMethod.POST)
+    public ResponseEntity<?> getManualOperationDetails(@RequestParam long userId) {
 
-        OperationCampaignWSModel response = manualManagerDetailsMiddleware.getManualCampaigns(userId);
+        OperationCampaignWSModel response = manualManagerDetailsMiddleware.getManualOperationDetails(userId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = BaseRoute.GET_MANUAL_CAMPAIGN_DETAILS, method = RequestMethod.POST)
+    public ResponseEntity<?> getManualCampaignDetails(@RequestParam long userId) {
+
+        OperationCampaignWSModel response = manualManagerDetailsMiddleware.getManualCampaignDetails(userId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

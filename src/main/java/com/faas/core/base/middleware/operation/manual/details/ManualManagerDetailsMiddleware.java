@@ -16,14 +16,31 @@ public class ManualManagerDetailsMiddleware {
     ManualManagerDetailsFramework manualManagerDetailsFramework;
 
 
-    public OperationCampaignWSModel getManualCampaigns(long userId) {
+    public OperationCampaignWSModel getManualOperationDetails(long userId) {
 
         OperationCampaignWSModel response = new OperationCampaignWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
 
 
-        general.setOperation("getManualCampaigns");
+        general.setOperation("getManualOperationDetails");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
+    public OperationCampaignWSModel getManualCampaignDetails(long userId) {
+
+        OperationCampaignWSModel response = new OperationCampaignWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+
+
+        general.setOperation("getManualCampaignDetails");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

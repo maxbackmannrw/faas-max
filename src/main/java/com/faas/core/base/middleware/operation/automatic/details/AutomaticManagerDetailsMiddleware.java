@@ -16,13 +16,29 @@ public class AutomaticManagerDetailsMiddleware {
     AutomaticManagerDetailsFramework automaticManagerDetailsFramework;
 
 
-    public OperationCampaignWSModel getAutomaticCampaigns(long userId) {
+    public OperationCampaignWSModel getAutomaticOperationDetails(long userId) {
 
         OperationCampaignWSModel response = new OperationCampaignWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
 
-        general.setOperation("getAutomaticCampaigns");
+        general.setOperation("getAutomaticOperationDetails");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
+    public OperationCampaignWSModel getAutomaticCampaignDetails(long userId) {
+
+        OperationCampaignWSModel response = new OperationCampaignWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+
+        general.setOperation("getAutomaticCampaignDetails");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

@@ -16,13 +16,29 @@ public class InquiryManagerDetailsMiddleware {
     InquiryManagerDetailsFramework inquiryManagerDetailsFramework;
 
 
-    public OperationCampaignWSModel getInquiryCampaigns(long userId) {
+    public OperationCampaignWSModel getInquiryOperationDetails(long userId) {
 
         OperationCampaignWSModel response = new OperationCampaignWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
 
-        general.setOperation("getInquiryCampaigns");
+        general.setOperation("getInquiryCampaignDetails");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
+    public OperationCampaignWSModel getInquiryCampaignDetails(long userId) {
+
+        OperationCampaignWSModel response = new OperationCampaignWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+
+        general.setOperation("getInquiryCampaignDetails");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

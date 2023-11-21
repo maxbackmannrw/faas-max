@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="" />
+    <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/operation/automatic/details/AutomaticManagerDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/operation/automatic/details/AutomaticManagerDetailsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/operation/inquiry/details/InquiryManagerDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/operation/inquiry/details/InquiryManagerDetailsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/operation/manual/details/ManualManagerDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/operation/manual/details/ManualManagerDetailsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/operation/automatic/details/AutomaticManagerDetailsFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/operation/automatic/details/AutomaticManagerDetailsFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/operation/inquiry/details/InquiryManagerDetailsFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/operation/inquiry/details/InquiryManagerDetailsFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/operation/manual/details/ManualManagerDetailsFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/operation/manual/details/ManualManagerDetailsFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/operation/automatic/details/AutomaticManagerDetailsMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/operation/automatic/details/AutomaticManagerDetailsMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/operation/inquiry/details/InquiryManagerDetailsMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/operation/inquiry/details/InquiryManagerDetailsMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/operation/manual/details/ManualManagerDetailsMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/operation/manual/details/ManualManagerDetailsMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/config/BaseRoute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/config/BaseRoute.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -435,15 +447,8 @@
       <workItem from="1700405004089" duration="3261000" />
       <workItem from="1700490914137" duration="223000" />
       <workItem from="1700561972175" duration="440000" />
-      <workItem from="1700562429269" duration="13762000" />
-    </task>
-    <task id="LOCAL-00398" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1699571856690</created>
-      <option name="number" value="00398" />
-      <option name="presentableId" value="LOCAL-00398" />
-      <option name="project" value="LOCAL" />
-      <updated>1699571856690</updated>
+      <workItem from="1700562429269" duration="14126000" />
+      <workItem from="1700590197559" duration="1505000" />
     </task>
     <task id="LOCAL-00399" summary="almost finish">
       <option name="closed" value="true" />
@@ -829,7 +834,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700586125593</updated>
     </task>
-    <option name="localTasksCounter" value="447" />
+    <task id="LOCAL-00447" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1700587047972</created>
+      <option name="number" value="00447" />
+      <option name="presentableId" value="LOCAL-00447" />
+      <option name="project" value="LOCAL" />
+      <updated>1700587047972</updated>
+    </task>
+    <option name="localTasksCounter" value="448" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -18,7 +18,13 @@ public class ManualManagerDetailsFramework {
     AppUtils appUtils;
 
 
-    public List<OperationCampaignWSDTO> getManualCampaignsService(long userId) {
+    public List<OperationCampaignWSDTO> getManualOperationDetailsService(long userId) {
+
+        return null;
+    }
+
+
+    public List<OperationCampaignWSDTO> getManualCampaignDetailsService(long userId) {
 
         return null;
     }

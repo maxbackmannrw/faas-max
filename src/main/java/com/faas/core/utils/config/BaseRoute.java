@@ -123,6 +123,7 @@ public class BaseRoute {
     public static final String REMOVE_OPERATION = "removeoperation";
 
 
+
     public static final String GET_MANUAL_MANAGER = "getmanualmanager";
     public static final String GET_MANUAL_OPERATIONS = "getmanualoperations";
     public static final String GET_MANUAL_OPERATION = "getmanualoperation";
@@ -131,6 +132,9 @@ public class BaseRoute {
     public static final String REMOVE_MANUAL_OPERATION = "removemanualoperation";
     public static final String GET_MANUAL_CAMPAIGNS = "getmanualcampaigns";
     public static final String GET_MANUAL_CAMPAIGN = "getmanualcampaign";
+
+    public static final String GET_MANUAL_OPERATION_DETAILS = "getmanualoperationdetails";
+    public static final String GET_MANUAL_CAMPAIGN_DETAILS = "getmanualcampaigndetails";
 
 
     public static final String GET_INQUIRY_MANAGER = "getinquirymanager";
@@ -142,6 +146,9 @@ public class BaseRoute {
     public static final String GET_INQUIRY_CAMPAIGNS = "getinquirycampaigns";
     public static final String GET_INQUIRY_CAMPAIGN = "getinquirycampaign";
 
+    public static final String GET_INQUIRY_OPERATION_DETAILS = "getinquiryoperationdetails";
+    public static final String GET_INQUIRY_CAMPAIGN_DETAILS = "getinquirycampaigndetails";
+
 
     public static final String GET_AUTOMATIC_MANAGER = "getautomaticmanager";
     public static final String GET_AUTOMATIC_OPERATIONS = "getautomaticoperations";
@@ -151,6 +158,10 @@ public class BaseRoute {
     public static final String REMOVE_AUTOMATIC_OPERATION = "removeautomaticoperation";
     public static final String GET_AUTOMATIC_CAMPAIGNS = "getautomaticcampaigns";
     public static final String GET_AUTOMATIC_CAMPAIGN = "getautomaticcampaign";
+
+    public static final String GET_AUTOMATIC_OPERATION_DETAILS = "getautomaticoperationdetails";
+    public static final String GET_AUTOMATIC_CAMPAIGN_DETAILS = "getautomaticcampaigndetails";
+
 
 
 

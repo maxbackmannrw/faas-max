@@ -19,11 +19,15 @@ public class InquiryManagerDetailsFramework {
     AppUtils appUtils;
 
 
-    public List<OperationCampaignWSDTO> getInquiryCampaignsService(long userId) {
+    public List<OperationCampaignWSDTO> getInquiryOperationDetailsService(long userId) {
 
         return null;
     }
 
 
+    public List<OperationCampaignWSDTO> getInquiryCampaignDetailsService(long userId) {
+
+        return null;
+    }
 
 }

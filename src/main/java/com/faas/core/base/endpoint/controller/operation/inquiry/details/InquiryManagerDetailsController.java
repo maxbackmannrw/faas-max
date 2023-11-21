@@ -21,10 +21,22 @@ public class InquiryManagerDetailsController {
     InquiryManagerDetailsMiddleware inquiryManagerDetailsMiddleware;
 
 
-    @RequestMapping(value = BaseRoute.GET_INQUIRY_CAMPAIGNS, method = RequestMethod.POST)
-    public ResponseEntity<?> getInquiryCampaigns(@RequestParam long userId) {
+    @RequestMapping(value = BaseRoute.GET_INQUIRY_OPERATION_DETAILS, method = RequestMethod.POST)
+    public ResponseEntity<?> getInquiryOperationDetails(@RequestParam long userId) {
 
-        OperationCampaignWSModel response = inquiryManagerDetailsMiddleware.getInquiryCampaigns(userId);
+        OperationCampaignWSModel response = inquiryManagerDetailsMiddleware.getInquiryOperationDetails(userId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = BaseRoute.GET_INQUIRY_CAMPAIGN_DETAILS, method = RequestMethod.POST)
+    public ResponseEntity<?> getInquiryCampaignDetails(@RequestParam long userId) {
+
+        OperationCampaignWSModel response = inquiryManagerDetailsMiddleware.getInquiryCampaignDetails(userId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

@@ -19,10 +19,14 @@ public class AutomaticManagerDetailsFramework {
     AppUtils appUtils;
 
 
-    public List<OperationCampaignWSDTO> getAutomaticCampaignsService(long userId) {
+    public List<OperationCampaignWSDTO> getAutomaticOperationDetailsService(long userId) {
 
         return null;
     }
 
+    public List<OperationCampaignWSDTO> getAutomaticCampaignDetailsService(long userId) {
+
+        return null;
+    }
 
 }
