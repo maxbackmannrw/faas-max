@@ -1,23 +1,26 @@
 package com.faas.core.base.framework.operation.manual.content;
 
-import com.faas.core.base.model.db.session.SessionDBModel;
+import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
+import com.faas.core.base.model.db.session.SessionDBModel;
+import com.faas.core.base.model.ws.operation.content.dto.OperationCampaignWSDTO;
+import com.faas.core.base.model.ws.operation.content.dto.OperationListWSDTO;
+import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
 import com.faas.core.base.model.ws.operation.manual.content.dto.ManualManagerWSDTO;
-import com.faas.core.base.model.ws.operation.manual.content.dto.ManualOperationListWSDTO;
-import com.faas.core.base.model.ws.operation.manual.content.dto.ManualOperationWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;
-import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.operation.details.inquiry.OperationInquiryRepository;
+import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
-import com.faas.core.utils.helpers.OperationHelper;
+import com.faas.core.utils.helpers.ManualHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,7 +29,7 @@ public class ManualManagerFramework {
 
 
     @Autowired
-    OperationHelper operationHelper;
+    ManualHelper manualHelper;
 
     @Autowired
     ClientRepository clientRepository;
@@ -49,53 +52,81 @@ public class ManualManagerFramework {
 
     public ManualManagerWSDTO getManualManagerService(long userId,int reqPage,int reqSize) {
 
+        ManualManagerWSDTO manualManagerWSDTO = new ManualManagerWSDTO();
+        manualManagerWSDTO.setReadyOperationList(getManualOperationsService(userId,AppConstant.READY_SESSION,reqPage,reqSize));
+        manualManagerWSDTO.setActiveOperationList(getManualOperationsService(userId,AppConstant.ACTIVE_SESSION,reqPage,reqSize));
+        manualManagerWSDTO.setCampaigns(getManualCampaignsService(userId));
 
-        return null;
+        return manualManagerWSDTO;
     }
 
 
-    public ManualOperationListWSDTO getManualOperationsService(long userId, String sessionState, int reqPage, int reqSize) {
+    public OperationListWSDTO getManualOperationsService(long userId, String sessionState, int reqPage, int reqSize) {
 
         Page<SessionDBModel> sessionModelPage = sessionRepository.findAllBySessionTypeAndSessionState(AppConstant.MANUAL_CAMPAIGN, sessionState,PageRequest.of(reqPage,reqSize));
         if (sessionModelPage != null){
-            return operationHelper.getManualOperationListWSDTO(sessionModelPage);
+            return manualHelper.getManualOperationListWSDTO(sessionModelPage);
         }
         return null;
     }
 
 
-    public ManualOperationWSDTO getManualOperationService(long userId, long sessionId) {
+    public OperationWSDTO getManualOperationService(long userId, long sessionId) {
 
         Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
         List<OperationDBModel> operationDBModels = operationRepository.findBySessionId(sessionId);
         if (sessionDBModel.isPresent() && !operationDBModels.isEmpty()){
-            return new ManualOperationWSDTO(operationDBModels.get(0), sessionDBModel.get());
         }
         return null;
     }
 
 
-    public ManualOperationWSDTO createManualOperationService(long userId,long clientId,long agentId,String campaignId) {
+    public OperationWSDTO createManualOperationService(long userId,long clientId,long agentId,String campaignId) {
 
 
         return null;
     }
 
 
-    public ManualOperationWSDTO updateManualOperationService(long userId, long sessionId) {
+    public OperationWSDTO updateManualOperationService(long userId, long sessionId) {
 
 
         return null;
     }
 
-    public ManualOperationWSDTO removeManualOperationService(long userId, long sessionId) {
+    public OperationWSDTO removeManualOperationService(long userId, long sessionId) {
 
         Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
         List<OperationDBModel> operationDBModels = operationRepository.findBySessionId(sessionId);
         if (sessionDBModel.isPresent() && !operationDBModels.isEmpty()){
             sessionRepository.delete(sessionDBModel.get());
             operationRepository.delete(operationDBModels.get(0));
-            return new ManualOperationWSDTO(operationDBModels.get(0), sessionDBModel.get());
+
+        }
+        return null;
+    }
+
+
+    public List<OperationCampaignWSDTO> getManualCampaignsService(long userId) {
+
+        List<OperationCampaignWSDTO> campaignWSDTOS = new ArrayList<>();
+        List<CampaignDBModel> campaignDBModels = campaignRepository.findByCampaignCategory(AppConstant.MANUAL_CAMPAIGN);
+        for (CampaignDBModel campaignDBModel : campaignDBModels) {
+            OperationCampaignWSDTO campaignWSDTO = new OperationCampaignWSDTO();
+            campaignWSDTO.setCampaign(campaignDBModel);
+            campaignWSDTOS.add(campaignWSDTO);
+        }
+        return campaignWSDTOS;
+    }
+
+
+    public OperationCampaignWSDTO getManualCampaignService(long userId,String campaignId) {
+
+        Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
+        if (campaignDBModel.isPresent()){
+            OperationCampaignWSDTO campaignWSDTO = new OperationCampaignWSDTO();
+            campaignWSDTO.setCampaign(campaignDBModel.get());
+            return campaignWSDTO;
         }
         return null;
     }

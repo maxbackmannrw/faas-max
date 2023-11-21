@@ -1,6 +1,6 @@
 package com.faas.core.base.framework.remote.details;
 
-import com.faas.core.base.model.ws.operation.inquiry.details.dto.InquiryCampaignWSDTO;
+import com.faas.core.base.model.ws.remote.content.dto.RemoteWSDTO;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.client.details.*;
 import com.faas.core.base.repo.operation.content.OperationRepository;
@@ -12,9 +12,6 @@ import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 @Component
@@ -61,11 +58,9 @@ public class RemoteDetailsFramework {
     AppUtils appUtils;
 
 
-    public List<InquiryCampaignWSDTO> getClientRemoteDetailsService(long userId) {
+    public RemoteWSDTO getClientRemoteDetailsService(long userId) {
 
-        List<InquiryCampaignWSDTO> campaignWSDTOS = new ArrayList<>();
-
-        return campaignWSDTOS;
+        return null;
     }
 
 

@@ -130,9 +130,9 @@ public class BaseRoute {
     public static final String CREATE_MANUAL_OPERATION = "createmanualoperation";
     public static final String UPDATE_MANUAL_OPERATION = "updatemanualoperation";
     public static final String REMOVE_MANUAL_OPERATION = "removemanualoperation";
-
     public static final String GET_MANUAL_CAMPAIGNS = "getmanualcampaigns";
     public static final String GET_MANUAL_CAMPAIGN = "getmanualcampaign";
+
 
 
     public static final String GET_INQUIRY_MANAGER = "getinquirymanager";

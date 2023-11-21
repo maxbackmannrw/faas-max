@@ -21,7 +21,7 @@ import com.faas.core.base.repo.user.content.UserRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.ActivityHelper;
-import com.faas.core.utils.helpers.FlowHelper;
+import com.faas.core.utils.helpers.AutomaticHelper;
 import com.faas.core.utils.helpers.SessionHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -38,7 +38,7 @@ public class CampaignFlowSessionFramework {
 
 
     @Autowired
-    FlowHelper flowHelper;
+    AutomaticHelper automaticHelper;
 
     @Autowired
     ActivityHelper activityHelper;
@@ -79,8 +79,8 @@ public class CampaignFlowSessionFramework {
         Page<SessionDBModel> sessionDBModelPage = sessionRepository.findAllByCampaignIdAndClientCityAndClientCountry(campaignId,city,country, PageRequest.of(reqPage,reqSize));
         if (sessionDBModelPage != null) {
             CampaignFlowSessionWSDTO campaignFlowSessionWSDTO = new CampaignFlowSessionWSDTO();
-            campaignFlowSessionWSDTO.setPagination(flowHelper.createFlowSessionPagination(sessionDBModelPage));
-            campaignFlowSessionWSDTO.setFlowSessions(flowHelper.createFlowSessionWSDTOS(sessionDBModelPage.getContent()));
+            campaignFlowSessionWSDTO.setPagination(automaticHelper.createFlowSessionPagination(sessionDBModelPage));
+            campaignFlowSessionWSDTO.setFlowSessions(automaticHelper.createFlowSessionWSDTOS(sessionDBModelPage.getContent()));
 
             return campaignFlowSessionWSDTO;
         }
@@ -93,8 +93,8 @@ public class CampaignFlowSessionFramework {
         Page<SessionDBModel> sessionDBModelPage = sessionRepository.findAllByCampaignId(campaignId, PageRequest.of(reqPage,reqSize));
         if (sessionDBModelPage != null) {
             CampaignFlowSessionWSDTO campaignFlowSessionWSDTO = new CampaignFlowSessionWSDTO();
-            campaignFlowSessionWSDTO.setFlowSessions(flowHelper.createFlowSessionWSDTOS(sessionDBModelPage.getContent()));
-            campaignFlowSessionWSDTO.setPagination(flowHelper.createFlowSessionPagination(sessionDBModelPage));
+            campaignFlowSessionWSDTO.setFlowSessions(automaticHelper.createFlowSessionWSDTOS(sessionDBModelPage.getContent()));
+            campaignFlowSessionWSDTO.setPagination(automaticHelper.createFlowSessionPagination(sessionDBModelPage));
 
             return campaignFlowSessionWSDTO;
         }
@@ -106,7 +106,7 @@ public class CampaignFlowSessionFramework {
 
         Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
         if (sessionDBModel.isPresent()){
-            return flowHelper.createFlowSessionWSDTO(sessionDBModel.get());
+            return automaticHelper.createFlowSessionWSDTO(sessionDBModel.get());
         }
         return null;
     }
@@ -139,14 +139,14 @@ public class CampaignFlowSessionFramework {
                 clientDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
                 ClientDBModel updatedClient = clientRepository.save(clientDBModel.get());
 
-                SessionDBModel sessionDBModel = sessionRepository.save(flowHelper.mapFlowSession(updatedClient,agentDBModel.get(),campaignDBModel.get()));
-                OperationDBModel operationDBModel = operationRepository.save(flowHelper.mapFlowOperation(sessionDBModel));
-                operationFlowRepository.save(flowHelper.mapOperationFlowDBModel(sessionDBModel));
+                SessionDBModel sessionDBModel = sessionRepository.save(automaticHelper.mapFlowSession(updatedClient,agentDBModel.get(),campaignDBModel.get()));
+                OperationDBModel operationDBModel = operationRepository.save(automaticHelper.mapFlowOperation(sessionDBModel));
+                operationFlowRepository.save(automaticHelper.mapOperationFlowDBModel(sessionDBModel));
 
                 activityHelper.createOperationActivity(sessionDBModel.getId(),operationDBModel.getId(),AppConstant.CREATE_SESSION_ACTIVITY,AppConstant.SESSION_ACTIVITY,String.valueOf(sessionDBModel.getAgentId()),AppConstant.USER_TYPE,String.valueOf(sessionDBModel.getId()),AppConstant.SESSION_TYPE);
                 activityHelper.createOperationActivity(sessionDBModel.getId(),operationDBModel.getId(),AppConstant.CREATE_OPERATION_ACTIVITY,AppConstant.OPERATION_ACTIVITY,String.valueOf(sessionDBModel.getAgentId()),AppConstant.USER_TYPE,String.valueOf(sessionDBModel.getId()),AppConstant.OPERATION_TYPE);
 
-                return flowHelper.createFlowSessionWSDTO(sessionDBModel);
+                return automaticHelper.createFlowSessionWSDTO(sessionDBModel);
             }
         }
         return null;
@@ -170,7 +170,7 @@ public class CampaignFlowSessionFramework {
 
         Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
         if (sessionDBModel.isPresent()) {
-            OperationFlowSessionWSDTO campaignFlowSession = flowHelper.createFlowSessionWSDTO(sessionDBModel.get());
+            OperationFlowSessionWSDTO campaignFlowSession = automaticHelper.createFlowSessionWSDTO(sessionDBModel.get());
             Optional<ClientDBModel> clientDBModel = clientRepository.findById(sessionDBModel.get().getClientId());
             if (clientDBModel.isPresent()) {
                 clientDBModel.get().setClientState(AppConstant.READY_CLIENT);

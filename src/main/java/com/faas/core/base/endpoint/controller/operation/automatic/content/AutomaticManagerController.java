@@ -2,8 +2,9 @@ package com.faas.core.base.endpoint.controller.operation.automatic.content;
 
 import com.faas.core.base.middleware.operation.automatic.content.AutomaticManagerMiddleware;
 import com.faas.core.base.model.ws.operation.automatic.content.AutomaticManagerWSModel;
-import com.faas.core.base.model.ws.operation.automatic.content.AutomaticOperationListWSModel;
-import com.faas.core.base.model.ws.operation.automatic.content.AutomaticOperationWSModel;
+import com.faas.core.base.model.ws.operation.content.OperationCampaignWSModel;
+import com.faas.core.base.model.ws.operation.content.OperationListWSModel;
+import com.faas.core.base.model.ws.operation.content.OperationWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +44,7 @@ public class AutomaticManagerController {
                                                     @RequestParam int reqPage,
                                                     @RequestParam int reqSize) {
 
-        AutomaticOperationListWSModel response = automaticManagerMiddleware.getAutomaticOperations(userId,sessionState,reqPage,reqSize);
+        OperationListWSModel response = automaticManagerMiddleware.getAutomaticOperations(userId,sessionState,reqPage,reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -55,7 +56,7 @@ public class AutomaticManagerController {
     public ResponseEntity<?> getAutomaticOperation(@RequestParam long userId,
                                                    @RequestParam long sessionId) {
 
-        AutomaticOperationWSModel response = automaticManagerMiddleware.getAutomaticOperation(userId,sessionId);
+        OperationWSModel response = automaticManagerMiddleware.getAutomaticOperation(userId,sessionId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -69,7 +70,7 @@ public class AutomaticManagerController {
                                                       @RequestParam long agentId,
                                                       @RequestParam String campaignId) {
 
-        AutomaticOperationWSModel response = automaticManagerMiddleware.createAutomaticOperation(userId,clientId,agentId,campaignId);
+        OperationWSModel response = automaticManagerMiddleware.createAutomaticOperation(userId,clientId,agentId,campaignId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -81,7 +82,7 @@ public class AutomaticManagerController {
     public ResponseEntity<?> updateAutomaticOperation(@RequestParam long userId,
                                                       @RequestParam long sessionId) {
 
-        AutomaticOperationWSModel response = automaticManagerMiddleware.updateAutomaticOperation(userId,sessionId);
+        OperationWSModel response = automaticManagerMiddleware.updateAutomaticOperation(userId,sessionId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -93,7 +94,32 @@ public class AutomaticManagerController {
     public ResponseEntity<?> removeAutomaticOperation(@RequestParam long userId,
                                                       @RequestParam long sessionId) {
 
-        AutomaticOperationWSModel response = automaticManagerMiddleware.removeAutomaticOperation(userId,sessionId);
+        OperationWSModel response = automaticManagerMiddleware.removeAutomaticOperation(userId,sessionId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = BaseRoute.GET_AUTOMATIC_CAMPAIGNS, method = RequestMethod.POST)
+    public ResponseEntity<?> getAutomaticCampaigns(@RequestParam long userId) {
+
+        OperationCampaignWSModel response = automaticManagerMiddleware.getAutomaticCampaigns(userId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = BaseRoute.GET_AUTOMATIC_CAMPAIGN, method = RequestMethod.POST)
+    public ResponseEntity<?> getAutomaticCampaign(@RequestParam long userId,
+                                                  @RequestParam String campaignId) {
+
+        OperationCampaignWSModel response = automaticManagerMiddleware.getAutomaticCampaign(userId,campaignId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

@@ -35,8 +35,6 @@ import com.faas.core.base.model.db.user.details.UserDetailsDBModel;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
 import com.faas.core.base.model.ws.operation.content.dto.OperationListWSDTO;
 import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
-import com.faas.core.base.model.ws.operation.manual.content.dto.ManualOperationListWSDTO;
-import com.faas.core.base.model.ws.operation.manual.content.dto.ManualOperationWSDTO;
 import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
 import com.faas.core.base.repo.client.details.*;
 import com.faas.core.base.repo.session.SessionRepository;
@@ -186,31 +184,7 @@ public class OperationHelper {
         return operationWSDTO;
     }
 
-    public ManualOperationListWSDTO getManualOperationListWSDTO(Page<SessionDBModel>sessionModelPage){
 
-        ManualOperationListWSDTO operationListWSDTO = new ManualOperationListWSDTO();
-        operationListWSDTO.setPagination(mapOperationSessionPagination(sessionModelPage));
-        List<ManualOperationWSDTO> operationWSDTOS = new ArrayList<>();
-        for (int i=0;i<sessionModelPage.getContent().size();i++){
-            List<OperationDBModel> operationDBModels = operationRepository.findBySessionIdAndClientId(sessionModelPage.getContent().get(i).getId(), sessionModelPage.getContent().get(i).getClientId());
-            if (!operationDBModels.isEmpty()){
-                operationWSDTOS.add(getManualOperationWSDTO(sessionModelPage.getContent().get(i),operationDBModels.get(0)));
-            }
-        }
-        operationListWSDTO.setOperations(operationWSDTOS);
-
-        return operationListWSDTO;
-    }
-
-
-    public ManualOperationWSDTO getManualOperationWSDTO(SessionDBModel sessionDBModel,OperationDBModel operationDBModel){
-
-        ManualOperationWSDTO manualOperationWSDTO  = new ManualOperationWSDTO();
-        manualOperationWSDTO.setOperation(operationDBModel);
-        manualOperationWSDTO.setOperationSession(sessionDBModel);
-
-        return manualOperationWSDTO;
-    }
 
 
     public ApiOperationSessionWSDTO createApiOperationSessionFromOperationModel(Page<OperationDBModel> operationModelPage){

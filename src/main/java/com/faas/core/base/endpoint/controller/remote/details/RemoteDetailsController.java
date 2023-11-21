@@ -1,7 +1,7 @@
 package com.faas.core.base.endpoint.controller.remote.details;
 
 import com.faas.core.base.middleware.remote.details.RemoteDetailsMiddleware;
-import com.faas.core.base.model.ws.operation.inquiry.details.InquiryCampaignWSModel;
+import com.faas.core.base.model.ws.remote.content.RemoteWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ public class RemoteDetailsController {
     @RequestMapping(value = BaseRoute.GET_REMOTE_DETAILS, method = RequestMethod.POST)
     public ResponseEntity<?> getRemoteDetails(@RequestParam long userId) {
 
-        InquiryCampaignWSModel response = remoteDetailsMiddleware.getRemoteDetails(userId);
+        RemoteWSModel response = remoteDetailsMiddleware.getRemoteDetails(userId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

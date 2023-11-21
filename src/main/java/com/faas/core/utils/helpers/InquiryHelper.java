@@ -10,8 +10,8 @@ import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.db.user.content.UserDBModel;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
-import com.faas.core.base.model.ws.operation.inquiry.content.dto.InquiryOperationListWSDTO;
-import com.faas.core.base.model.ws.operation.inquiry.content.dto.InquiryOperationWSDTO;
+import com.faas.core.base.model.ws.operation.content.dto.OperationListWSDTO;
+import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
 import com.faas.core.base.model.ws.operation.inquiry.content.dto.OperationInquirySessionWSDTO;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.operation.details.inquiry.OperationInquiryRepository;
@@ -49,11 +49,11 @@ public class InquiryHelper {
     AppUtils appUtils;
 
 
-    public InquiryOperationListWSDTO getInquiryOperationListWSDTO(Page<SessionDBModel> sessionDBModelPage){
+    public OperationListWSDTO getInquiryOperationListWSDTO(Page<SessionDBModel> sessionDBModelPage){
 
-        InquiryOperationListWSDTO operationListWSDTO = new InquiryOperationListWSDTO();
+        OperationListWSDTO operationListWSDTO = new OperationListWSDTO();
         operationListWSDTO.setPagination(createInquirySessionPagination(sessionDBModelPage));
-        List<InquiryOperationWSDTO> operationWSDTOS = new ArrayList<>();
+        List<OperationWSDTO> operationWSDTOS = new ArrayList<>();
         for (int i=0;i<sessionDBModelPage.getContent().size();i++){
             List<OperationDBModel> operationDBModels = operationRepository.findBySessionIdAndClientId(sessionDBModelPage.getContent().get(i).getId(), sessionDBModelPage.getContent().get(i).getClientId());
             List<OperationInquiryDBModel> operationInquiryDBModels = operationInquiryRepository.findBySessionId(sessionDBModelPage.getContent().get(i).getId());
@@ -66,9 +66,9 @@ public class InquiryHelper {
         return operationListWSDTO;
     }
 
-    public InquiryOperationWSDTO getInquiryOperationWSDTO(SessionDBModel sessionDBModel,OperationDBModel operationDBModel,OperationInquiryDBModel operationInquiryDBModel){
+    public OperationWSDTO getInquiryOperationWSDTO(SessionDBModel sessionDBModel,OperationDBModel operationDBModel,OperationInquiryDBModel operationInquiryDBModel){
 
-        InquiryOperationWSDTO operationWSDTO = new InquiryOperationWSDTO();
+        OperationWSDTO operationWSDTO = new OperationWSDTO();
         operationWSDTO.setOperation(operationDBModel);
         operationWSDTO.setOperationSession(sessionDBModel);
         operationWSDTO.setOperationInquiry(operationInquiryDBModel);

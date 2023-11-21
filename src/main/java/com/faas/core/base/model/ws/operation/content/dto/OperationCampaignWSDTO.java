@@ -1,15 +1,15 @@
-package com.faas.core.base.model.ws.operation.inquiry.details.dto;
+package com.faas.core.base.model.ws.operation.content.dto;
 
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 
-public class InquiryCampaignWSDTO {
+public class OperationCampaignWSDTO {
 
     private CampaignDBModel campaign;
 
-    public InquiryCampaignWSDTO() {
+    public OperationCampaignWSDTO() {
     }
 
-    public InquiryCampaignWSDTO(CampaignDBModel campaign) {
+    public OperationCampaignWSDTO(CampaignDBModel campaign) {
         this.campaign = campaign;
     }
 

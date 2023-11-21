@@ -1,9 +1,10 @@
 package com.faas.core.base.endpoint.controller.operation.inquiry.content;
 
 import com.faas.core.base.middleware.operation.inquiry.content.InquiryManagerMiddleware;
+import com.faas.core.base.model.ws.operation.content.OperationCampaignWSModel;
+import com.faas.core.base.model.ws.operation.content.OperationListWSModel;
+import com.faas.core.base.model.ws.operation.content.OperationWSModel;
 import com.faas.core.base.model.ws.operation.inquiry.content.InquiryManagerWSModel;
-import com.faas.core.base.model.ws.operation.inquiry.content.InquiryOperationListWSModel;
-import com.faas.core.base.model.ws.operation.inquiry.content.InquiryOperationWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +44,7 @@ public class InquiryManagerController {
                                                   @RequestParam int reqPage,
                                                   @RequestParam int reqSize) {
 
-        InquiryOperationListWSModel response = inquiryManagerMiddleware.getInquiryOperations(userId,sessionState,reqPage,reqSize);
+        OperationListWSModel response = inquiryManagerMiddleware.getInquiryOperations(userId,sessionState,reqPage,reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -56,7 +57,7 @@ public class InquiryManagerController {
     public ResponseEntity<?> getInquiryOperation(@RequestParam long userId,
                                                  @RequestParam long sessionId) {
 
-        InquiryOperationWSModel response = inquiryManagerMiddleware.getInquiryOperation(userId,sessionId);
+        OperationWSModel response = inquiryManagerMiddleware.getInquiryOperation(userId,sessionId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -71,7 +72,7 @@ public class InquiryManagerController {
                                                     @RequestParam long agentId,
                                                     @RequestParam String campaignId) {
 
-        InquiryOperationWSModel response = inquiryManagerMiddleware.createInquiryOperation(userId,clientId,agentId,campaignId);
+        OperationWSModel response = inquiryManagerMiddleware.createInquiryOperation(userId,clientId,agentId,campaignId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -84,7 +85,7 @@ public class InquiryManagerController {
     public ResponseEntity<?> updateInquiryOperation(@RequestParam long userId,
                                                     @RequestParam long sessionId) {
 
-        InquiryOperationWSModel response = inquiryManagerMiddleware.updateInquiryOperation(userId,sessionId);
+        OperationWSModel response = inquiryManagerMiddleware.updateInquiryOperation(userId,sessionId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -97,7 +98,31 @@ public class InquiryManagerController {
     public ResponseEntity<?> removeInquiryOperation(@RequestParam long userId,
                                                     @RequestParam long sessionId) {
 
-        InquiryOperationWSModel response = inquiryManagerMiddleware.removeInquiryOperation(userId,sessionId);
+        OperationWSModel response = inquiryManagerMiddleware.removeInquiryOperation(userId,sessionId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = BaseRoute.GET_INQUIRY_CAMPAIGNS, method = RequestMethod.POST)
+    public ResponseEntity<?> getInquiryCampaigns(@RequestParam long userId) {
+
+        OperationCampaignWSModel response = inquiryManagerMiddleware.getInquiryCampaigns(userId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+    @RequestMapping(value = BaseRoute.GET_INQUIRY_CAMPAIGN, method = RequestMethod.POST)
+    public ResponseEntity<?> getInquiryCampaign(@RequestParam long userId,
+                                                @RequestParam String campaignId) {
+
+        OperationCampaignWSModel response = inquiryManagerMiddleware.getInquiryCampaign(userId,campaignId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

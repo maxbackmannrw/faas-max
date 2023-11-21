@@ -29,11 +29,6 @@ public class OperationManagerFramework {
     AppUtils appUtils;
 
 
-    public OperationManagerWSDTO getOperationManagerService(long userId, int reqPage, int reqSize) {
-
-        return null;
-    }
-
 
     public OperationListWSDTO getOperationsService(long userId, String sessionType,String sessionState,int reqPage,int reqSize) {
 

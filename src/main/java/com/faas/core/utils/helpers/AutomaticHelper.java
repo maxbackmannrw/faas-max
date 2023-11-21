@@ -6,10 +6,10 @@ import com.faas.core.base.model.db.operation.details.flow.OperationFlowDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.db.user.content.UserDBModel;
-import com.faas.core.base.model.ws.operation.automatic.content.dto.AutomaticOperationListWSDTO;
-import com.faas.core.base.model.ws.operation.automatic.content.dto.AutomaticOperationWSDTO;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
 import com.faas.core.base.model.ws.operation.automatic.content.dto.OperationFlowSessionWSDTO;
+import com.faas.core.base.model.ws.operation.content.dto.OperationListWSDTO;
+import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.operation.details.flow.OperationFlowRepository;
@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class FlowHelper {
+public class AutomaticHelper {
 
     @Autowired
     SessionRepository sessionRepository;
@@ -38,11 +38,11 @@ public class FlowHelper {
     AppUtils appUtils;
 
 
-    public AutomaticOperationListWSDTO getAutomaticOperationListWSDTO(Page<SessionDBModel>sessionModelPage){
+    public OperationListWSDTO getAutomaticOperationListWSDTO(Page<SessionDBModel>sessionModelPage){
 
-        AutomaticOperationListWSDTO operationListWSDTO = new AutomaticOperationListWSDTO();
+        OperationListWSDTO operationListWSDTO = new OperationListWSDTO();
         operationListWSDTO.setPagination(createFlowSessionPagination(sessionModelPage));
-        List<AutomaticOperationWSDTO> operationWSDTOS = new ArrayList<>();
+        List<OperationWSDTO> operationWSDTOS = new ArrayList<>();
         for (int i=0;sessionModelPage.getContent().size()>i;i++){
             List<OperationDBModel> operationDBModels = operationRepository.findBySessionId(sessionModelPage.getContent().get(i).getId());
             List<OperationFlowDBModel> operationFlowDBModels = operationFlowRepository.findBySessionId(sessionModelPage.getContent().get(i).getId());
@@ -55,9 +55,9 @@ public class FlowHelper {
         return operationListWSDTO;
     }
 
-    public AutomaticOperationWSDTO getAutomaticOperationWSDTO(SessionDBModel sessionDBModel,OperationDBModel operationDBModel,OperationFlowDBModel operationFlowDBModel){
+    public OperationWSDTO getAutomaticOperationWSDTO(SessionDBModel sessionDBModel,OperationDBModel operationDBModel,OperationFlowDBModel operationFlowDBModel){
 
-        AutomaticOperationWSDTO operationWSDTO = new AutomaticOperationWSDTO();
+        OperationWSDTO operationWSDTO = new OperationWSDTO();
         operationWSDTO.setOperation(operationDBModel);
         operationWSDTO.setOperationSession(sessionDBModel);
         operationWSDTO.setOperationFlow(operationFlowDBModel);
@@ -102,30 +102,6 @@ public class FlowHelper {
             operationFlowSessionWSDTO.setClientFlow(operationFlowDBModels.get(0));
         }
         return operationFlowSessionWSDTO;
-    }
-
-
-    public List<AutomaticOperationWSDTO> createFlowWSDTOS(List<OperationFlowDBModel> operationFlowDBModels){
-
-        List<AutomaticOperationWSDTO> automaticOperationWSDTOS = new ArrayList<>();
-        for (OperationFlowDBModel operationFlowDBModel : operationFlowDBModels) {
-            AutomaticOperationWSDTO automaticOperationWSDTO = new AutomaticOperationWSDTO();
-            automaticOperationWSDTOS.add(automaticOperationWSDTO);
-        }
-        return automaticOperationWSDTOS;
-    }
-
-
-
-    public PaginationWSDTO createFlowPagination(Page<OperationFlowDBModel> flowDBModelPage){
-
-        PaginationWSDTO paginationWSDTO = new PaginationWSDTO();
-        paginationWSDTO.setPageSize(flowDBModelPage.getPageable().getPageSize());
-        paginationWSDTO.setPageNumber(flowDBModelPage.getPageable().getPageNumber());
-        paginationWSDTO.setTotalPage(flowDBModelPage.getTotalPages());
-        paginationWSDTO.setTotalElements(flowDBModelPage.getTotalElements());
-
-        return paginationWSDTO;
     }
 
 

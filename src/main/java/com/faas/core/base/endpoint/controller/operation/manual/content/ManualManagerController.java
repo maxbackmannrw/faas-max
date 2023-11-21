@@ -1,9 +1,10 @@
 package com.faas.core.base.endpoint.controller.operation.manual.content;
 
 import com.faas.core.base.middleware.operation.manual.content.ManualManagerMiddleware;
+import com.faas.core.base.model.ws.operation.content.OperationCampaignWSModel;
+import com.faas.core.base.model.ws.operation.content.OperationListWSModel;
+import com.faas.core.base.model.ws.operation.content.OperationWSModel;
 import com.faas.core.base.model.ws.operation.manual.content.ManualManagerWSModel;
-import com.faas.core.base.model.ws.operation.manual.content.ManualOperationListWSModel;
-import com.faas.core.base.model.ws.operation.manual.content.ManualOperationWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,14 +37,13 @@ public class ManualManagerController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.GET_MANUAL_OPERATIONS, method = RequestMethod.POST)
     public ResponseEntity<?> getManualOperations(@RequestParam long userId,
                                                  @RequestParam String sessionState,
                                                  @RequestParam int reqPage,
                                                  @RequestParam int reqSize) {
 
-        ManualOperationListWSModel response = manualManagerMiddleware.getManualOperations(userId,sessionState,reqPage,reqSize);
+        OperationListWSModel response = manualManagerMiddleware.getManualOperations(userId,sessionState,reqPage,reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -55,7 +55,7 @@ public class ManualManagerController {
     public ResponseEntity<?> getManualOperation(@RequestParam long userId,
                                                 @RequestParam long sessionId) {
 
-        ManualOperationWSModel response = manualManagerMiddleware.getManualOperation(userId,sessionId);
+        OperationWSModel response = manualManagerMiddleware.getManualOperation(userId,sessionId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -69,7 +69,7 @@ public class ManualManagerController {
                                                    @RequestParam long agentId,
                                                    @RequestParam String campaignId) {
 
-        ManualOperationWSModel response = manualManagerMiddleware.createManualOperation(userId,clientId,agentId,campaignId);
+        OperationWSModel response = manualManagerMiddleware.createManualOperation(userId,clientId,agentId,campaignId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -81,7 +81,7 @@ public class ManualManagerController {
     public ResponseEntity<?> updateManualOperation(@RequestParam long userId,
                                                    @RequestParam long sessionId) {
 
-        ManualOperationWSModel response = manualManagerMiddleware.updateManualOperation(userId,sessionId);
+        OperationWSModel response = manualManagerMiddleware.updateManualOperation(userId,sessionId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -93,7 +93,31 @@ public class ManualManagerController {
     public ResponseEntity<?> removeManualOperation(@RequestParam long userId,
                                                    @RequestParam long sessionId) {
 
-        ManualOperationWSModel response = manualManagerMiddleware.removeManualOperation(userId,sessionId);
+        OperationWSModel response = manualManagerMiddleware.removeManualOperation(userId,sessionId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = BaseRoute.GET_MANUAL_CAMPAIGNS, method = RequestMethod.POST)
+    public ResponseEntity<?> getManualCampaigns(@RequestParam long userId) {
+
+        OperationCampaignWSModel response = manualManagerMiddleware.getManualCampaigns(userId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+    @RequestMapping(value = BaseRoute.GET_MANUAL_CAMPAIGN, method = RequestMethod.POST)
+    public ResponseEntity<?> getManualCampaign(@RequestParam long userId,
+                                               @RequestParam String campaignId) {
+
+        OperationCampaignWSModel response = manualManagerMiddleware.getManualCampaign(userId,campaignId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

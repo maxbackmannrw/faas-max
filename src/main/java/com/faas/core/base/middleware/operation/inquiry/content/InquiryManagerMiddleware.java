@@ -2,12 +2,14 @@ package com.faas.core.base.middleware.operation.inquiry.content;
 
 import com.faas.core.base.framework.operation.inquiry.content.InquiryManagerFramework;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
+import com.faas.core.base.model.ws.operation.content.OperationCampaignWSModel;
+import com.faas.core.base.model.ws.operation.content.OperationListWSModel;
+import com.faas.core.base.model.ws.operation.content.OperationWSModel;
+import com.faas.core.base.model.ws.operation.content.dto.OperationCampaignWSDTO;
+import com.faas.core.base.model.ws.operation.content.dto.OperationListWSDTO;
+import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
 import com.faas.core.base.model.ws.operation.inquiry.content.InquiryManagerWSModel;
-import com.faas.core.base.model.ws.operation.inquiry.content.InquiryOperationListWSModel;
-import com.faas.core.base.model.ws.operation.inquiry.content.InquiryOperationWSModel;
 import com.faas.core.base.model.ws.operation.inquiry.content.dto.InquiryManagerWSDTO;
-import com.faas.core.base.model.ws.operation.inquiry.content.dto.InquiryOperationListWSDTO;
-import com.faas.core.base.model.ws.operation.inquiry.content.dto.InquiryOperationWSDTO;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -44,12 +46,12 @@ public class InquiryManagerMiddleware {
     }
 
 
-    public InquiryOperationListWSModel getInquiryOperations(long userId, String sessionState, int reqPage, int reqSize) {
+    public OperationListWSModel getInquiryOperations(long userId, String sessionState, int reqPage, int reqSize) {
 
-        InquiryOperationListWSModel response = new InquiryOperationListWSModel();
+        OperationListWSModel response = new OperationListWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        InquiryOperationListWSDTO operationListWSDTO = operationInquiryFramework.getInquiryOperationsService(userId,sessionState,reqPage,reqSize);
+        OperationListWSDTO operationListWSDTO = operationInquiryFramework.getInquiryOperationsService(userId,sessionState,reqPage,reqSize);
         if (operationListWSDTO != null){
             response.setOperationList(operationListWSDTO);
         }
@@ -64,18 +66,18 @@ public class InquiryManagerMiddleware {
     }
 
 
-    public InquiryOperationWSModel getInquiryOperation(long userId, long sessionId) {
+    public OperationWSModel getInquiryOperation(long userId, long sessionId) {
 
-        InquiryOperationWSModel response = new InquiryOperationWSModel();
+        OperationWSModel response = new OperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<InquiryOperationWSDTO> inquiryOperationWSDTOS = new ArrayList<>();
+        List<OperationWSDTO> operationWSDTOS = new ArrayList<>();
 
-        InquiryOperationWSDTO inquiryOperationWSDTO = operationInquiryFramework.getInquiryOperationService(userId,sessionId);
-        if (inquiryOperationWSDTO != null){
-            inquiryOperationWSDTOS.add(inquiryOperationWSDTO);
+        OperationWSDTO operationWSDTO = operationInquiryFramework.getInquiryOperationService(userId,sessionId);
+        if (operationWSDTO != null){
+            operationWSDTOS.add(operationWSDTO);
         }
 
-        response.setInquiryOperations(inquiryOperationWSDTOS);
+        response.setOperations(operationWSDTOS);
         general.setOperation("getInquiryOperation");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -86,18 +88,18 @@ public class InquiryManagerMiddleware {
     }
 
 
-    public InquiryOperationWSModel createInquiryOperation(long userId, long clientId,long agentId,String campaignId) {
+    public OperationWSModel createInquiryOperation(long userId, long clientId,long agentId,String campaignId) {
 
-        InquiryOperationWSModel response = new InquiryOperationWSModel();
+        OperationWSModel response = new OperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<InquiryOperationWSDTO> inquiryOperationWSDTOS = new ArrayList<>();
+        List<OperationWSDTO> operationWSDTOS = new ArrayList<>();
 
-        InquiryOperationWSDTO inquiryOperationWSDTO = operationInquiryFramework.createInquiryOperationService(userId,clientId,agentId,campaignId);
-        if (inquiryOperationWSDTO != null){
-            inquiryOperationWSDTOS.add(inquiryOperationWSDTO);
+        OperationWSDTO operationWSDTO = operationInquiryFramework.createInquiryOperationService(userId,clientId,agentId,campaignId);
+        if (operationWSDTO != null){
+            operationWSDTOS.add(operationWSDTO);
         }
 
-        response.setInquiryOperations(inquiryOperationWSDTOS);
+        response.setOperations(operationWSDTOS);
         general.setOperation("createInquiryOperation");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -108,18 +110,18 @@ public class InquiryManagerMiddleware {
     }
 
 
-    public InquiryOperationWSModel updateInquiryOperation(long userId, long sessionId) {
+    public OperationWSModel updateInquiryOperation(long userId, long sessionId) {
 
-        InquiryOperationWSModel response = new InquiryOperationWSModel();
+        OperationWSModel response = new OperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<InquiryOperationWSDTO> inquiryOperationWSDTOS = new ArrayList<>();
+        List<OperationWSDTO> operationWSDTOS = new ArrayList<>();
 
-        InquiryOperationWSDTO inquiryOperationWSDTO = operationInquiryFramework.updateInquiryOperationService(userId,sessionId);
-        if (inquiryOperationWSDTO != null){
-            inquiryOperationWSDTOS.add(inquiryOperationWSDTO);
+        OperationWSDTO operationWSDTO = operationInquiryFramework.updateInquiryOperationService(userId,sessionId);
+        if (operationWSDTO != null){
+            operationWSDTOS.add(operationWSDTO);
         }
 
-        response.setInquiryOperations(inquiryOperationWSDTOS);
+        response.setOperations(operationWSDTOS);
         general.setOperation("updateInquiryOperation");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -130,18 +132,18 @@ public class InquiryManagerMiddleware {
     }
 
 
-    public InquiryOperationWSModel removeInquiryOperation(long userId, long sessionId) {
+    public OperationWSModel removeInquiryOperation(long userId, long sessionId) {
 
-        InquiryOperationWSModel response = new InquiryOperationWSModel();
+        OperationWSModel response = new OperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<InquiryOperationWSDTO> inquiryOperationWSDTOS = new ArrayList<>();
+        List<OperationWSDTO> operationWSDTOS = new ArrayList<>();
 
-        InquiryOperationWSDTO inquiryOperationWSDTO = operationInquiryFramework.removeInquiryOperationService(userId,sessionId);
-        if (inquiryOperationWSDTO != null){
-            inquiryOperationWSDTOS.add(inquiryOperationWSDTO);
+        OperationWSDTO operationWSDTO = operationInquiryFramework.removeInquiryOperationService(userId,sessionId);
+        if (operationWSDTO != null){
+            operationWSDTOS.add(operationWSDTO);
         }
 
-        response.setInquiryOperations(inquiryOperationWSDTOS);
+        response.setOperations(operationWSDTOS);
         general.setOperation("removeInquiryOperation");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -151,6 +153,47 @@ public class InquiryManagerMiddleware {
         return response;
     }
 
+
+
+    public OperationCampaignWSModel getInquiryCampaigns(long userId) {
+
+        OperationCampaignWSModel response = new OperationCampaignWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        List<OperationCampaignWSDTO> operationCampaignWSDTOS = operationInquiryFramework.getInquiryCampaignsService(userId);
+        if (operationCampaignWSDTOS != null){
+            response.setCampaigns(operationCampaignWSDTOS);
+        }
+
+        general.setOperation("getInquiryCampaigns");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public OperationCampaignWSModel getInquiryCampaign(long userId,String campaignId) {
+
+        OperationCampaignWSModel response = new OperationCampaignWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+        List<OperationCampaignWSDTO>operationCampaignWSDTOS = new ArrayList<>();
+
+        OperationCampaignWSDTO operationCampaignWSDTO = operationInquiryFramework.getInquiryCampaignService(userId,campaignId);
+        if (operationCampaignWSDTO != null){
+            operationCampaignWSDTOS.add(operationCampaignWSDTO);
+        }
+
+        response.setCampaigns(operationCampaignWSDTOS);
+        general.setOperation("getInquiryCampaign");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
 
 
 }

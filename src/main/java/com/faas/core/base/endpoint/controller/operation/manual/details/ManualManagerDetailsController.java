@@ -1,7 +1,7 @@
 package com.faas.core.base.endpoint.controller.operation.manual.details;
 
 import com.faas.core.base.middleware.operation.manual.details.ManualManagerDetailsMiddleware;
-import com.faas.core.base.model.ws.operation.manual.details.ManualCampaignWSModel;
+import com.faas.core.base.model.ws.operation.content.OperationCampaignWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ public class ManualManagerDetailsController {
     @RequestMapping(value = BaseRoute.GET_MANUAL_CAMPAIGNS, method = RequestMethod.POST)
     public ResponseEntity<?> getManualCampaigns(@RequestParam long userId) {
 
-        ManualCampaignWSModel response = manualManagerDetailsMiddleware.getManualCampaigns(userId);
+        OperationCampaignWSModel response = manualManagerDetailsMiddleware.getManualCampaigns(userId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -32,17 +32,6 @@ public class ManualManagerDetailsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-    @RequestMapping(value = BaseRoute.GET_MANUAL_CAMPAIGN, method = RequestMethod.POST)
-    public ResponseEntity<?> getManualCampaign(@RequestParam long userId,
-                                               @RequestParam String campaignId) {
-
-        ManualCampaignWSModel response = manualManagerDetailsMiddleware.getManualCampaign(userId,campaignId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
 
 
 }

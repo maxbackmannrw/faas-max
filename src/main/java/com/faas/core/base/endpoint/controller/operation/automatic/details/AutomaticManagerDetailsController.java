@@ -1,7 +1,7 @@
 package com.faas.core.base.endpoint.controller.operation.automatic.details;
 
 import com.faas.core.base.middleware.operation.automatic.details.AutomaticManagerDetailsMiddleware;
-import com.faas.core.base.model.ws.operation.automatic.details.AutomaticCampaignWSModel;
+import com.faas.core.base.model.ws.operation.content.OperationCampaignWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ public class AutomaticManagerDetailsController {
     @RequestMapping(value = BaseRoute.GET_AUTOMATIC_CAMPAIGNS, method = RequestMethod.POST)
     public ResponseEntity<?> getAutomaticCampaigns(@RequestParam long userId) {
 
-        AutomaticCampaignWSModel response = automaticManagerDetailsMiddleware.getAutomaticCampaigns(userId);
+        OperationCampaignWSModel response = automaticManagerDetailsMiddleware.getAutomaticCampaigns(userId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -32,18 +32,6 @@ public class AutomaticManagerDetailsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
-    @RequestMapping(value = BaseRoute.GET_AUTOMATIC_CAMPAIGN, method = RequestMethod.POST)
-    public ResponseEntity<?> getAutomaticCampaign(@RequestParam long userId,
-                                                  @RequestParam String campaignId) {
-
-        AutomaticCampaignWSModel response = automaticManagerDetailsMiddleware.getAutomaticCampaign(userId,campaignId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
 
 
 
