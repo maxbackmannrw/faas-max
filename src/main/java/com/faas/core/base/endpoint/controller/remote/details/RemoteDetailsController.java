@@ -1,7 +1,7 @@
 package com.faas.core.base.endpoint.controller.remote.details;
 
 import com.faas.core.base.middleware.remote.details.RemoteDetailsMiddleware;
-import com.faas.core.base.model.ws.manager.inquiry.campaign.InquiryCampaignWSModel;
+import com.faas.core.base.model.ws.operation.inquiry.details.InquiryCampaignWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;

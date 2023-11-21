@@ -2,7 +2,7 @@ package com.faas.core.base.middleware.remote.details;
 
 import com.faas.core.base.framework.remote.details.RemoteDetailsFramework;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.manager.inquiry.campaign.InquiryCampaignWSModel;
+import com.faas.core.base.model.ws.operation.inquiry.details.InquiryCampaignWSModel;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

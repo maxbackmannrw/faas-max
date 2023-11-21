@@ -1,6 +1,6 @@
 package com.faas.core.base.framework.remote.details;
 
-import com.faas.core.base.model.ws.manager.inquiry.campaign.dto.InquiryCampaignWSDTO;
+import com.faas.core.base.model.ws.operation.inquiry.details.dto.InquiryCampaignWSDTO;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.client.details.*;
 import com.faas.core.base.repo.operation.content.OperationRepository;
