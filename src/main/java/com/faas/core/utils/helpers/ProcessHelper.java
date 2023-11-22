@@ -9,7 +9,7 @@ import com.faas.core.base.model.db.process.details.channel.temp.WappMessageTempD
 import com.faas.core.base.model.db.process.details.flow.ProcessFlowDBModel;
 import com.faas.core.base.model.db.process.details.inquiry.ProcessInquiryDBModel;
 import com.faas.core.base.model.db.process.details.scenario.ProcessScenarioDBModel;
-import com.faas.core.base.model.db.process.details.trigger.ProcessTriggerDBModel;
+import com.faas.core.base.model.db.process.details.trigger.*;
 import com.faas.core.base.model.db.scenario.content.ScenarioDBModel;
 import com.faas.core.base.model.ws.process.details.channel.content.dto.*;
 import com.faas.core.base.model.ws.process.details.channel.temp.dto.*;
@@ -17,7 +17,7 @@ import com.faas.core.base.model.ws.process.details.content.dto.ProcessDetailsWSD
 import com.faas.core.base.model.ws.process.details.flow.dto.ProcessFlowWSDTO;
 import com.faas.core.base.model.ws.process.details.inquiry.dto.ProcessInquiryWSDTO;
 import com.faas.core.base.model.ws.process.details.scenario.dto.ProcessScenarioWSDTO;
-import com.faas.core.base.model.ws.process.details.trigger.dto.ProcessTriggerWSDTO;
+import com.faas.core.base.model.ws.process.details.trigger.dto.*;
 import com.faas.core.base.repo.process.details.channel.content.*;
 import com.faas.core.base.repo.process.details.channel.temp.EmailTempRepository;
 import com.faas.core.base.repo.process.details.channel.temp.PushTempRepository;
@@ -26,7 +26,7 @@ import com.faas.core.base.repo.process.details.channel.temp.WappMessageTempRepos
 import com.faas.core.base.repo.process.details.flow.ProcessFlowRepository;
 import com.faas.core.base.repo.process.details.inquiry.ProcessInquiryRepository;
 import com.faas.core.base.repo.process.details.scenario.ProcessScenarioRepository;
-import com.faas.core.base.repo.process.details.trigger.ProcessTriggerRepository;
+import com.faas.core.base.repo.process.details.trigger.*;
 import com.faas.core.base.repo.scenario.content.ScenarioRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
@@ -41,9 +41,6 @@ import java.util.Optional;
 @Component
 public class ProcessHelper {
 
-
-    @Autowired
-    ProcessTriggerRepository processTriggerRepository;
 
     @Autowired
     ScenarioRepository scenarioRepository;
@@ -85,10 +82,25 @@ public class ProcessHelper {
     ProcessFlowRepository processFlowRepository;
 
     @Autowired
+    AiTriggerRepository aiTriggerRepository;
+
+    @Autowired
+    EmailTriggerRepository emailTriggerRepository;
+
+    @Autowired
+    SipCallTriggerRepository sipCallTriggerRepository;
+
+    @Autowired
+    SmsMessageTriggerRepository smsMessageTriggerRepository;
+
+    @Autowired
+    WappCallTriggerRepository wappCallTriggerRepository;
+
+    @Autowired
+    WappMessageTriggerRepository wappMessageTriggerRepository;
+
+    @Autowired
     AppUtils appUtils;
-
-
-
 
 
     public ProcessDetailsWSDTO createProcessDetailsWSDTO(ProcessDBModel processDBModel) {
@@ -103,7 +115,7 @@ public class ProcessHelper {
         }
         processDetailsWSDTO.setProcessTemps(createProcessTempWSDTO(processDBModel.getId()));
         processDetailsWSDTO.setProcessChannels(createProcessChannelWSDTO(processDBModel.getId()));
-        processDetailsWSDTO.setProcessTriggers(createProcessTriggersWSDTOS(processDBModel));
+        processDetailsWSDTO.setProcessTrigger(createProcessTriggersWSDTO(processDBModel.getId()));
         processDetailsWSDTO.setProcessScenarios(createProcessScenarioWSDTOS(processDBModel));
         processDetailsWSDTO.setProcessAssets(new ArrayList<>());
 
@@ -171,16 +183,79 @@ public class ProcessHelper {
     }
 
 
+    public ProcessTriggerWSDTO createProcessTriggersWSDTO(String processId){
 
-    public List<ProcessTriggerWSDTO> createProcessTriggersWSDTOS(ProcessDBModel processDBModel){
+        ProcessTriggerWSDTO processTriggerWSDTO = new ProcessTriggerWSDTO();
+        processTriggerWSDTO.setAiTriggers(createAiTriggerWSDTOS(processId));
+        processTriggerWSDTO.setEmailTriggers(createEmailTriggerWSDTOS(processId));
+        processTriggerWSDTO.setSipCallTriggers(createSipCallTriggerWSDTOS(processId));
+        processTriggerWSDTO.setSmsMessageTriggers(createSmsMessageTriggerWSDTOS(processId));
+        processTriggerWSDTO.setWappCallTriggers(createWappCallTriggerWSDTOS(processId));
+        processTriggerWSDTO.setWappMessageTriggers(createWappMessageTriggerWSDTOS(processId));
 
-        List<ProcessTriggerWSDTO> processTriggerWSDTOS = new ArrayList<>();
-        List<ProcessTriggerDBModel> processTriggerDBModels = processTriggerRepository.findByProcessId(processDBModel.getId());
-        for (ProcessTriggerDBModel processTriggerDBModel : processTriggerDBModels) {
-            processTriggerWSDTOS.add(new ProcessTriggerWSDTO(processTriggerDBModel));
-        }
-        return processTriggerWSDTOS;
+        return processTriggerWSDTO;
     }
+
+    public List<AiTriggerWSDTO> createAiTriggerWSDTOS(String processId) {
+
+        List<AiTriggerWSDTO> aiTriggerWSDTOS = new ArrayList<>();
+        List<AiTriggerDBModel> aiTriggerDBModels = aiTriggerRepository.findByProcessId(processId);
+        for (AiTriggerDBModel aiTriggerDBModel : aiTriggerDBModels) {
+            aiTriggerWSDTOS.add(new AiTriggerWSDTO(aiTriggerDBModel));
+        }
+        return aiTriggerWSDTOS;
+    }
+
+    public List<EmailTriggerWSDTO> createEmailTriggerWSDTOS(String processId) {
+
+        List<EmailTriggerWSDTO> emailTriggerWSDTOS = new ArrayList<>();
+        List<EmailTriggerDBModel> emailTriggerDBModels = emailTriggerRepository.findByProcessId(processId);
+        for (EmailTriggerDBModel emailTriggerDBModel : emailTriggerDBModels) {
+            emailTriggerWSDTOS.add(new EmailTriggerWSDTO(emailTriggerDBModel));
+        }
+        return emailTriggerWSDTOS;
+    }
+
+    public List<SipCallTriggerWSDTO> createSipCallTriggerWSDTOS(String processId) {
+
+        List<SipCallTriggerWSDTO> sipCallTriggerWSDTOS = new ArrayList<>();
+        List<SipCallTriggerDBModel> sipCallTriggerDBModels = sipCallTriggerRepository.findByProcessId(processId);
+        for (SipCallTriggerDBModel sipCallTriggerDBModel : sipCallTriggerDBModels) {
+            sipCallTriggerWSDTOS.add(new SipCallTriggerWSDTO(sipCallTriggerDBModel));
+        }
+        return sipCallTriggerWSDTOS;
+    }
+
+    public List<SmsMessageTriggerWSDTO> createSmsMessageTriggerWSDTOS(String processId) {
+
+        List<SmsMessageTriggerWSDTO>smsMessageTriggerWSDTOS = new ArrayList<>();
+        List<SmsMessageTriggerDBModel> smsMessageTriggerDBModels = smsMessageTriggerRepository.findByProcessId(processId);
+        for (SmsMessageTriggerDBModel smsMessageTriggerDBModel : smsMessageTriggerDBModels) {
+            smsMessageTriggerWSDTOS.add(new SmsMessageTriggerWSDTO(smsMessageTriggerDBModel));
+        }
+        return smsMessageTriggerWSDTOS;
+    }
+
+    public List<WappCallTriggerWSDTO> createWappCallTriggerWSDTOS(String processId) {
+
+        List<WappCallTriggerWSDTO>wappCallTriggerWSDTOS = new ArrayList<>();
+        List<WappCallTriggerDBModel> wappCallTriggerDBModels = wappCallTriggerRepository.findByProcessId(processId);
+        for (WappCallTriggerDBModel wappCallTriggerDBModel : wappCallTriggerDBModels) {
+            wappCallTriggerWSDTOS.add(new WappCallTriggerWSDTO(wappCallTriggerDBModel));
+        }
+        return wappCallTriggerWSDTOS;
+    }
+
+    public List<WappMessageTriggerWSDTO> createWappMessageTriggerWSDTOS(String processId) {
+
+        List<WappMessageTriggerWSDTO>wappMessageTriggerWSDTOS = new ArrayList<>();
+        List<WappMessageTriggerDBModel> wappMessageTriggerDBModels = wappMessageTriggerRepository.findByProcessId(processId);
+        for (WappMessageTriggerDBModel wappMessageTriggerDBModel : wappMessageTriggerDBModels) {
+            wappMessageTriggerWSDTOS.add(new WappMessageTriggerWSDTO(wappMessageTriggerDBModel));
+        }
+        return wappMessageTriggerWSDTOS;
+    }
+
 
 
     public List<ProcessScenarioWSDTO> createProcessScenarioWSDTOS(ProcessDBModel processDBModel){

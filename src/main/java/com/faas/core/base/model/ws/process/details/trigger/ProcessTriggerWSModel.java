@@ -3,19 +3,18 @@ package com.faas.core.base.model.ws.process.details.trigger;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.model.ws.process.details.trigger.dto.ProcessTriggerWSDTO;
 
-import java.util.List;
 
 public class ProcessTriggerWSModel {
 
     private GeneralWSModel general;
-    private List<ProcessTriggerWSDTO>processTriggers;
+    private ProcessTriggerWSDTO processTrigger;
 
     public ProcessTriggerWSModel() {
     }
 
-    public ProcessTriggerWSModel(GeneralWSModel general, List<ProcessTriggerWSDTO> processTriggers) {
+    public ProcessTriggerWSModel(GeneralWSModel general, ProcessTriggerWSDTO processTrigger) {
         this.general = general;
-        this.processTriggers = processTriggers;
+        this.processTrigger = processTrigger;
     }
 
     public GeneralWSModel getGeneral() {
@@ -26,11 +25,11 @@ public class ProcessTriggerWSModel {
         this.general = general;
     }
 
-    public List<ProcessTriggerWSDTO> getProcessTriggers() {
-        return processTriggers;
+    public ProcessTriggerWSDTO getProcessTrigger() {
+        return processTrigger;
     }
 
-    public void setProcessTriggers(List<ProcessTriggerWSDTO> processTriggers) {
-        this.processTriggers = processTriggers;
+    public void setProcessTrigger(ProcessTriggerWSDTO processTrigger) {
+        this.processTrigger = processTrigger;
     }
 }

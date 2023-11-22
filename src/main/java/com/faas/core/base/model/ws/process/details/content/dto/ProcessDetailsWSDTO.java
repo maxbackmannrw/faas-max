@@ -18,20 +18,20 @@ public class ProcessDetailsWSDTO {
     private ProcessInquiryWSDTO processInquiry;
     private ProcessTempWSDTO processTemps;
     private ProcessChannelWSDTO processChannels;
-    private List<ProcessTriggerWSDTO> processTriggers;
+    private ProcessTriggerWSDTO processTrigger;
     private List<ProcessScenarioWSDTO> processScenarios;
     private List<ProcessAssetWSDTO>processAssets;
 
     public ProcessDetailsWSDTO() {
     }
 
-    public ProcessDetailsWSDTO(ProcessDBModel process, ProcessInquiryWSDTO processInquiry, ProcessFlowWSDTO processFlow, ProcessTempWSDTO processTemps, ProcessChannelWSDTO processChannels, List<ProcessTriggerWSDTO> processTriggers, List<ProcessScenarioWSDTO> processScenarios, List<ProcessAssetWSDTO> processAssets) {
+    public ProcessDetailsWSDTO(ProcessDBModel process, ProcessFlowWSDTO processFlow, ProcessInquiryWSDTO processInquiry, ProcessTempWSDTO processTemps, ProcessChannelWSDTO processChannels, ProcessTriggerWSDTO processTrigger, List<ProcessScenarioWSDTO> processScenarios, List<ProcessAssetWSDTO> processAssets) {
         this.process = process;
-        this.processInquiry = processInquiry;
         this.processFlow = processFlow;
+        this.processInquiry = processInquiry;
         this.processTemps = processTemps;
         this.processChannels = processChannels;
-        this.processTriggers = processTriggers;
+        this.processTrigger = processTrigger;
         this.processScenarios = processScenarios;
         this.processAssets = processAssets;
     }
@@ -44,20 +44,20 @@ public class ProcessDetailsWSDTO {
         this.process = process;
     }
 
-    public ProcessInquiryWSDTO getProcessInquiry() {
-        return processInquiry;
-    }
-
-    public void setProcessInquiry(ProcessInquiryWSDTO processInquiry) {
-        this.processInquiry = processInquiry;
-    }
-
     public ProcessFlowWSDTO getProcessFlow() {
         return processFlow;
     }
 
     public void setProcessFlow(ProcessFlowWSDTO processFlow) {
         this.processFlow = processFlow;
+    }
+
+    public ProcessInquiryWSDTO getProcessInquiry() {
+        return processInquiry;
+    }
+
+    public void setProcessInquiry(ProcessInquiryWSDTO processInquiry) {
+        this.processInquiry = processInquiry;
     }
 
     public ProcessTempWSDTO getProcessTemps() {
@@ -76,12 +76,12 @@ public class ProcessDetailsWSDTO {
         this.processChannels = processChannels;
     }
 
-    public List<ProcessTriggerWSDTO> getProcessTriggers() {
-        return processTriggers;
+    public ProcessTriggerWSDTO getProcessTrigger() {
+        return processTrigger;
     }
 
-    public void setProcessTriggers(List<ProcessTriggerWSDTO> processTriggers) {
-        this.processTriggers = processTriggers;
+    public void setProcessTrigger(ProcessTriggerWSDTO processTrigger) {
+        this.processTrigger = processTrigger;
     }
 
     public List<ProcessScenarioWSDTO> getProcessScenarios() {

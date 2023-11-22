@@ -8,6 +8,7 @@ import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.client.details.*;
+import com.faas.core.base.repo.process.details.trigger.*;
 import com.faas.core.base.repo.remote.RemoteRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.base.repo.operation.details.channel.*;
@@ -24,7 +25,6 @@ import com.faas.core.base.repo.process.details.channel.temp.WappMessageTempRepos
 import com.faas.core.base.repo.process.details.flow.ProcessFlowRepository;
 import com.faas.core.base.repo.process.details.inquiry.ProcessInquiryRepository;
 import com.faas.core.base.repo.process.details.scenario.ProcessScenarioRepository;
-import com.faas.core.base.repo.process.details.trigger.ProcessTriggerRepository;
 import com.faas.core.base.repo.scenario.content.ScenarioRepository;
 import com.faas.core.base.repo.user.content.UserRepository;
 import com.faas.core.base.repo.user.details.UserDetailsRepository;
@@ -141,9 +141,6 @@ public class UtilsSystemFramework {
     ProcessScenarioRepository processScenarioRepository;
 
     @Autowired
-    ProcessTriggerRepository processTriggerRepository;
-
-    @Autowired
     ScenarioRepository scenarioRepository;
 
     @Autowired
@@ -154,6 +151,24 @@ public class UtilsSystemFramework {
 
     @Autowired
     UserDetailsRepository userDetailsRepository;
+
+    @Autowired
+    AiTriggerRepository aiTriggerRepository;
+
+    @Autowired
+    EmailTriggerRepository emailTriggerRepository;
+
+    @Autowired
+    SipCallTriggerRepository sipCallTriggerRepository;
+
+    @Autowired
+    SmsMessageTriggerRepository smsMessageTriggerRepository;
+
+    @Autowired
+    WappCallTriggerRepository wappCallTriggerRepository;
+
+    @Autowired
+    WappMessageTriggerRepository wappMessageTriggerRepository;
 
     @Autowired
     AppUtils appUtils;
@@ -459,7 +474,17 @@ public class UtilsSystemFramework {
         processFlowRepository.deleteAll();
         processInquiryRepository.deleteAll();
         processScenarioRepository.deleteAll();
-        processTriggerRepository.deleteAll();
+        removeAllTriggers();
+    }
+
+    public void removeAllTriggers(){
+
+        aiTriggerRepository.deleteAll();
+        emailTriggerRepository.deleteAll();
+        sipCallTriggerRepository.deleteAll();
+        smsMessageTriggerRepository.deleteAll();
+        wappCallTriggerRepository.deleteAll();
+        wappMessageTriggerRepository.deleteAll();
     }
 
     public void removeAllScenariosService(){

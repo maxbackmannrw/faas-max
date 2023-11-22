@@ -2,8 +2,8 @@ package com.faas.core.base.middleware.process.details.trigger;
 
 import com.faas.core.base.framework.process.details.trigger.ProcessTriggerFramework;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.process.details.trigger.ProcessTriggerWSModel;
-import com.faas.core.base.model.ws.process.details.trigger.dto.ProcessTriggerWSDTO;
+import com.faas.core.base.model.ws.process.details.trigger.*;
+import com.faas.core.base.model.ws.process.details.trigger.dto.*;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -25,9 +25,9 @@ public class ProcessTriggerMiddleware {
         ProcessTriggerWSModel response = new ProcessTriggerWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ProcessTriggerWSDTO> processTriggerWSDTOS = processTriggerFramework.getProcessTriggersService(userId,processId);
-        if (processTriggerWSDTOS != null){
-            response.setProcessTriggers(processTriggerWSDTOS);
+        ProcessTriggerWSDTO processTriggerWSDTO = processTriggerFramework.getProcessTriggersService(userId,processId);
+        if (processTriggerWSDTO != null){
+            response.setProcessTrigger(processTriggerWSDTO);
         }
 
         general.setOperation("getProcessTriggers");
@@ -40,17 +40,39 @@ public class ProcessTriggerMiddleware {
     }
 
 
-    public ProcessTriggerWSModel getProcessTriggersByType(long userId, String processId, String baseType) {
 
-        ProcessTriggerWSModel response = new ProcessTriggerWSModel();
+    public AiTriggerWSModel getAITriggers(long userId, String processId) {
+
+        AiTriggerWSModel response = new AiTriggerWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ProcessTriggerWSDTO> processTriggerWSDTOS = processTriggerFramework.getProcessTriggersByTypeService(userId,processId,baseType);
-        if (processTriggerWSDTOS != null){
-            response.setProcessTriggers(processTriggerWSDTOS);
+        List<AiTriggerWSDTO> aiTriggerWSDTOS = processTriggerFramework.getAITriggersService(userId,processId);
+        if (aiTriggerWSDTOS != null){
+            response.setAiTriggers(aiTriggerWSDTOS);
         }
 
-        general.setOperation("getProcessTriggersByType");
+        general.setOperation("getAITriggers");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public AiTriggerWSModel getAITrigger(long userId, String triggerId) {
+
+        AiTriggerWSModel response = new AiTriggerWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+        List<AiTriggerWSDTO> aiTriggerWSDTOS = new ArrayList<>();
+
+        AiTriggerWSDTO aiTriggerWSDTO = processTriggerFramework.getAITriggerService(userId,triggerId);
+        if (aiTriggerWSDTO != null){
+            aiTriggerWSDTOS.add(aiTriggerWSDTO);
+        }
+
+        response.setAiTriggers(aiTriggerWSDTOS);
+        general.setOperation("getAITrigger");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -60,40 +82,18 @@ public class ProcessTriggerMiddleware {
     }
 
 
-    public ProcessTriggerWSModel getProcessTrigger(long userId,String processId, String triggerId) {
+    public AiTriggerWSModel createAITrigger(long userId,String processId,String triggerDesc,String accountId,long typeId) {
 
-        ProcessTriggerWSModel response = new ProcessTriggerWSModel();
+        AiTriggerWSModel response = new AiTriggerWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ProcessTriggerWSDTO> processTriggerWSDTOS = new ArrayList<>();
+        List<AiTriggerWSDTO> aiTriggerWSDTOS = new ArrayList<>();
 
-        ProcessTriggerWSDTO processTriggerWSDTO = processTriggerFramework.getProcessTriggerService(userId,processId,triggerId);
-        if (processTriggerWSDTO != null){
-            processTriggerWSDTOS.add(processTriggerWSDTO);
+        AiTriggerWSDTO aiTriggerWSDTO = processTriggerFramework.createAITriggerService(userId,processId,triggerDesc,accountId,typeId);
+        if (aiTriggerWSDTO != null){
+            aiTriggerWSDTOS.add(aiTriggerWSDTO);
         }
 
-        response.setProcessTriggers(processTriggerWSDTOS);
-        general.setOperation("getProcessTrigger");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-
-    public ProcessTriggerWSModel createAITrigger(long userId, String processId, String accountId, String trigger, long typeId) {
-
-        ProcessTriggerWSModel response = new ProcessTriggerWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-        List<ProcessTriggerWSDTO> processTriggerWSDTOS = new ArrayList<>();
-
-        ProcessTriggerWSDTO processTriggerWSDTO = processTriggerFramework.createAITriggerService(userId,processId,accountId,trigger,typeId);
-        if (processTriggerWSDTO != null){
-            processTriggerWSDTOS.add(processTriggerWSDTO);
-        }
-
-        response.setProcessTriggers(processTriggerWSDTOS);
+        response.setAiTriggers(aiTriggerWSDTOS);
         general.setOperation("createAITrigger");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -104,18 +104,18 @@ public class ProcessTriggerMiddleware {
     }
 
 
-    public ProcessTriggerWSModel updateAITrigger(long userId, String triggerId, String accountId, String trigger) {
+    public AiTriggerWSModel updateAITrigger(long userId, String triggerId, String triggerDesc,String accountId) {
 
-        ProcessTriggerWSModel response = new ProcessTriggerWSModel();
+        AiTriggerWSModel response = new AiTriggerWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ProcessTriggerWSDTO> processTriggerWSDTOS = new ArrayList<>();
+        List<AiTriggerWSDTO> aiTriggerWSDTOS = new ArrayList<>();
 
-        ProcessTriggerWSDTO processTriggerWSDTO = processTriggerFramework.updateAITriggerService(userId,triggerId,accountId,trigger);
-        if (processTriggerWSDTO != null){
-            processTriggerWSDTOS.add(processTriggerWSDTO);
+        AiTriggerWSDTO aiTriggerWSDTO = processTriggerFramework.updateAITriggerService(userId,triggerId,triggerDesc,accountId);
+        if (aiTriggerWSDTO != null){
+            aiTriggerWSDTOS.add(aiTriggerWSDTO);
         }
 
-        response.setProcessTriggers(processTriggerWSDTOS);
+        response.setAiTriggers(aiTriggerWSDTOS);
         general.setOperation("updateAITrigger");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -125,20 +125,82 @@ public class ProcessTriggerMiddleware {
         return response;
     }
 
+    public AiTriggerWSModel removeAITrigger(long userId, String triggerId) {
 
-
-    public ProcessTriggerWSModel createEmailTrigger(long userId, String processId, String accountId, String trigger, String emailSubject, String emailTitle, String emailBody, String emailSender, long typeId) {
-
-        ProcessTriggerWSModel response = new ProcessTriggerWSModel();
+        AiTriggerWSModel response = new AiTriggerWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ProcessTriggerWSDTO> processTriggerWSDTOS = new ArrayList<>();
+        List<AiTriggerWSDTO> aiTriggerWSDTOS = new ArrayList<>();
 
-        ProcessTriggerWSDTO processTriggerWSDTO = processTriggerFramework.createEmailTriggerService(userId,processId,accountId,trigger,emailSubject,emailTitle,emailBody,emailSender,typeId);
-        if (processTriggerWSDTO != null){
-            processTriggerWSDTOS.add(processTriggerWSDTO);
+        AiTriggerWSDTO aiTriggerWSDTO = processTriggerFramework.removeAITriggerService(userId,triggerId);
+        if (aiTriggerWSDTO != null){
+            aiTriggerWSDTOS.add(aiTriggerWSDTO);
         }
 
-        response.setProcessTriggers(processTriggerWSDTOS);
+        response.setAiTriggers(aiTriggerWSDTOS);
+        general.setOperation("removeAITrigger");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
+
+
+    public EmailTriggerWSModel getEmailTriggers(long userId, String processId) {
+
+        EmailTriggerWSModel response = new EmailTriggerWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        List<EmailTriggerWSDTO> emailTriggerWSDTOS = processTriggerFramework.getEmailTriggersService(userId,processId);
+        if (emailTriggerWSDTOS != null){
+            response.setEmailTriggers(emailTriggerWSDTOS);
+        }
+
+        general.setOperation("getEmailTriggers");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public EmailTriggerWSModel getEmailTrigger(long userId,String triggerId) {
+
+        EmailTriggerWSModel response = new EmailTriggerWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+        List<EmailTriggerWSDTO> emailTriggerWSDTOS = new ArrayList<>();
+
+        EmailTriggerWSDTO emailTriggerWSDTO = processTriggerFramework.getEmailTriggerService(userId,triggerId);
+        if (emailTriggerWSDTO != null){
+            emailTriggerWSDTOS.add(emailTriggerWSDTO);
+        }
+
+        response.setEmailTriggers(emailTriggerWSDTOS);
+        general.setOperation("getEmailTrigger");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public EmailTriggerWSModel createEmailTrigger(long userId,String processId,String triggerDesc,String accountId,String emailSubject,String emailTitle,String emailBody,String emailSender,long typeId) {
+
+        EmailTriggerWSModel response = new EmailTriggerWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+        List<EmailTriggerWSDTO> emailTriggerWSDTOS = new ArrayList<>();
+
+        EmailTriggerWSDTO emailTriggerWSDTO = processTriggerFramework.createEmailTriggerService(userId,processId,triggerDesc,accountId,emailSubject,emailTitle,emailBody,emailSender,typeId);
+        if (emailTriggerWSDTO != null){
+            emailTriggerWSDTOS.add(emailTriggerWSDTO);
+        }
+
+        response.setEmailTriggers(emailTriggerWSDTOS);
         general.setOperation("createEmailTrigger");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -148,19 +210,18 @@ public class ProcessTriggerMiddleware {
         return response;
     }
 
+    public EmailTriggerWSModel updateEmailTrigger(long userId,String triggerId, String triggerDesc,String accountId,String emailSubject,String emailTitle,String emailBody,String emailSender) {
 
-    public ProcessTriggerWSModel updateEmailTrigger(long userId, String triggerId, String accountId, String trigger, String emailSubject, String emailTitle, String emailBody, String emailSender) {
-
-        ProcessTriggerWSModel response = new ProcessTriggerWSModel();
+        EmailTriggerWSModel response = new EmailTriggerWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ProcessTriggerWSDTO> processTriggerWSDTOS = new ArrayList<>();
+        List<EmailTriggerWSDTO> emailTriggerWSDTOS = new ArrayList<>();
 
-        ProcessTriggerWSDTO processTriggerWSDTO = processTriggerFramework.updateEmailTriggerService(userId,triggerId,accountId,trigger,emailSubject,emailTitle,emailBody,emailSender);
-        if (processTriggerWSDTO != null){
-            processTriggerWSDTOS.add(processTriggerWSDTO);
+        EmailTriggerWSDTO emailTriggerWSDTO = processTriggerFramework.updateEmailTriggerService(userId,triggerId,triggerDesc,accountId,emailSubject,emailTitle,emailBody,emailSender);
+        if (emailTriggerWSDTO != null){
+            emailTriggerWSDTOS.add(emailTriggerWSDTO);
         }
 
-        response.setProcessTriggers(processTriggerWSDTOS);
+        response.setEmailTriggers(emailTriggerWSDTOS);
         general.setOperation("updateEmailTrigger");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -170,20 +231,82 @@ public class ProcessTriggerMiddleware {
         return response;
     }
 
+    public EmailTriggerWSModel removeEmailTrigger(long userId, String triggerId) {
 
-    public ProcessTriggerWSModel createSipTrigger(long userId, String processId, String accountId, String trigger, String callerId, long typeId) {
-
-        ProcessTriggerWSModel response = new ProcessTriggerWSModel();
+        EmailTriggerWSModel response = new EmailTriggerWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ProcessTriggerWSDTO> processTriggerWSDTOS = new ArrayList<>();
+        List<EmailTriggerWSDTO> emailTriggerWSDTOS = new ArrayList<>();
 
-        ProcessTriggerWSDTO processTriggerWSDTO = processTriggerFramework.createSipTriggerService(userId,processId,accountId,trigger,callerId,typeId);
-        if (processTriggerWSDTO != null){
-            processTriggerWSDTOS.add(processTriggerWSDTO);
-
+        EmailTriggerWSDTO emailTriggerWSDTO = processTriggerFramework.removeEmailTriggerService(userId,triggerId);
+        if (emailTriggerWSDTO != null){
+            emailTriggerWSDTOS.add(emailTriggerWSDTO);
         }
 
-        response.setProcessTriggers(processTriggerWSDTOS);
+        response.setEmailTriggers(emailTriggerWSDTOS);
+        general.setOperation("removeEmailTrigger");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
+
+
+    public SipCallTriggerWSModel getSipCallTriggers(long userId,String processId) {
+
+        SipCallTriggerWSModel response = new SipCallTriggerWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        List<SipCallTriggerWSDTO> sipCallTriggerWSDTOS = processTriggerFramework.getSipCallTriggersService(userId,processId);
+        if (sipCallTriggerWSDTOS != null){
+            response.setSipCallTriggers(sipCallTriggerWSDTOS);
+        }
+
+        general.setOperation("getSipCallTriggers");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public SipCallTriggerWSModel getSipCallTrigger(long userId,String triggerId) {
+
+        SipCallTriggerWSModel response = new SipCallTriggerWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+        List<SipCallTriggerWSDTO> sipCallTriggerWSDTOS = new ArrayList<>();
+
+        SipCallTriggerWSDTO sipCallTriggerWSDTO = processTriggerFramework.getSipCallTriggerService(userId,triggerId);
+        if (sipCallTriggerWSDTO != null){
+            sipCallTriggerWSDTOS.add(sipCallTriggerWSDTO);
+        }
+
+        response.setSipCallTriggers(sipCallTriggerWSDTOS);
+        general.setOperation("getSipCallTrigger");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public SipCallTriggerWSModel createSipCallTrigger(long userId,String processId,String triggerDesc,String accountId,String callerId,long typeId) {
+
+        SipCallTriggerWSModel response = new SipCallTriggerWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+        List<SipCallTriggerWSDTO> sipCallTriggerWSDTOS = new ArrayList<>();
+
+        SipCallTriggerWSDTO sipCallTriggerWSDTO = processTriggerFramework.createSipCallTriggerService(userId,processId,triggerDesc,accountId,callerId,typeId);
+        if (sipCallTriggerWSDTO != null){
+            sipCallTriggerWSDTOS.add(sipCallTriggerWSDTO);
+        }
+
+        response.setSipCallTriggers(sipCallTriggerWSDTOS);
         general.setOperation("createSipTrigger");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -193,19 +316,40 @@ public class ProcessTriggerMiddleware {
         return response;
     }
 
-    public ProcessTriggerWSModel updateSipTrigger(long userId, String triggerId, String accountId, String trigger, String callerId) {
+    public SipCallTriggerWSModel updateSipCallTrigger(long userId,String triggerId,String triggerDesc,String accountId,String callerId) {
 
-        ProcessTriggerWSModel response = new ProcessTriggerWSModel();
+        SipCallTriggerWSModel response = new SipCallTriggerWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ProcessTriggerWSDTO> processTriggerWSDTOS = new ArrayList<>();
+        List<SipCallTriggerWSDTO> sipCallTriggerWSDTOS = new ArrayList<>();
 
-        ProcessTriggerWSDTO processTriggerWSDTO = processTriggerFramework.updateSipTriggerService(userId,triggerId,accountId,trigger,callerId);
-        if (processTriggerWSDTO != null){
-            processTriggerWSDTOS.add(processTriggerWSDTO);
+        SipCallTriggerWSDTO sipCallTriggerWSDTO = processTriggerFramework.updateSipCallTriggerService(userId,triggerId,triggerDesc,accountId,callerId);
+        if (sipCallTriggerWSDTO != null){
+            sipCallTriggerWSDTOS.add(sipCallTriggerWSDTO);
         }
 
-        response.setProcessTriggers(processTriggerWSDTOS);
-        general.setOperation("updateSipTrigger");
+        response.setSipCallTriggers(sipCallTriggerWSDTOS);
+        general.setOperation("updateSipCallTrigger");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public SipCallTriggerWSModel removeSipCallTrigger(long userId,String triggerId) {
+
+        SipCallTriggerWSModel response = new SipCallTriggerWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+        List<SipCallTriggerWSDTO> sipCallTriggerWSDTOS = new ArrayList<>();
+
+        SipCallTriggerWSDTO sipCallTriggerWSDTO = processTriggerFramework.removeSipCallTriggerService(userId,triggerId);
+        if (sipCallTriggerWSDTO != null){
+            sipCallTriggerWSDTOS.add(sipCallTriggerWSDTO);
+        }
+
+        response.setSipCallTriggers(sipCallTriggerWSDTOS);
+        general.setOperation("removeSipCallTrigger");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -215,19 +359,18 @@ public class ProcessTriggerMiddleware {
     }
 
 
-    public ProcessTriggerWSModel createSmsTrigger(long userId, String processId, String accountId, String trigger, String smsTitle, String smsBody, String senderId, long typeId) {
 
-        ProcessTriggerWSModel response = new ProcessTriggerWSModel();
+    public SmsMessageTriggerWSModel getSmsMessageTriggers(long userId,String processId) {
+
+        SmsMessageTriggerWSModel response = new SmsMessageTriggerWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ProcessTriggerWSDTO> processTriggerWSDTOS = new ArrayList<>();
 
-        ProcessTriggerWSDTO processTriggerWSDTO = processTriggerFramework.createSmsTriggerService(userId,processId,accountId,trigger,smsTitle,smsBody,senderId,typeId);
-        if (processTriggerWSDTO != null){
-            processTriggerWSDTOS.add(processTriggerWSDTO);
+        List<SmsMessageTriggerWSDTO> smsMessageTriggerWSDTOS = processTriggerFramework.getSmsMessageTriggersService(userId,processId);
+        if (smsMessageTriggerWSDTOS != null){
+            response.setSmsMessageTriggers(smsMessageTriggerWSDTOS);
         }
 
-        response.setProcessTriggers(processTriggerWSDTOS);
-        general.setOperation("createSmsTrigger");
+        general.setOperation("getSmsMessageTriggers");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -236,18 +379,61 @@ public class ProcessTriggerMiddleware {
         return response;
     }
 
-    public ProcessTriggerWSModel updateSmsTrigger(long userId, String triggerId, String accountId, String trigger, String smsTitle, String smsBody, String senderId) {
+    public SmsMessageTriggerWSModel getSmsMessageTrigger(long userId, String triggerId) {
 
-        ProcessTriggerWSModel response = new ProcessTriggerWSModel();
+        SmsMessageTriggerWSModel response = new SmsMessageTriggerWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ProcessTriggerWSDTO> processTriggerWSDTOS = new ArrayList<>();
+        List<SmsMessageTriggerWSDTO> smsMessageTriggerWSDTOS = new ArrayList<>();
 
-        ProcessTriggerWSDTO processTriggerWSDTO = processTriggerFramework.updateSmsTriggerService(userId,triggerId,accountId,trigger,smsTitle,smsBody,senderId);
-        if (processTriggerWSDTO != null){
-            processTriggerWSDTOS.add(processTriggerWSDTO);
+        SmsMessageTriggerWSDTO smsMessageTriggerWSDTO = processTriggerFramework.getSmsMessageTriggerService(userId,triggerId);
+        if (smsMessageTriggerWSDTO != null){
+            smsMessageTriggerWSDTOS.add(smsMessageTriggerWSDTO);
         }
 
-        response.setProcessTriggers(processTriggerWSDTOS);
+        response.setSmsMessageTriggers(smsMessageTriggerWSDTOS);
+        general.setOperation("getSmsMessageTrigger");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
+    public SmsMessageTriggerWSModel createSmsMessageTrigger(long userId,String processId,String triggerDesc,String accountId,String smsTitle,String smsBody,String senderId,long typeId) {
+
+        SmsMessageTriggerWSModel response = new SmsMessageTriggerWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+        List<SmsMessageTriggerWSDTO> smsMessageTriggerWSDTOS = new ArrayList<>();
+
+        SmsMessageTriggerWSDTO smsMessageTriggerWSDTO = processTriggerFramework.createSmsMessageTriggerService(userId,processId,triggerDesc,accountId,smsTitle,smsBody,senderId,typeId);
+        if (smsMessageTriggerWSDTO != null){
+            smsMessageTriggerWSDTOS.add(smsMessageTriggerWSDTO);
+        }
+
+        response.setSmsMessageTriggers(smsMessageTriggerWSDTOS);
+        general.setOperation("createSmsMessageTrigger");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public SmsMessageTriggerWSModel updateSmsMessageTrigger(long userId,String triggerId,String triggerDesc,String accountId,String smsTitle,String smsBody,String senderId) {
+
+        SmsMessageTriggerWSModel response = new SmsMessageTriggerWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+        List<SmsMessageTriggerWSDTO> smsMessageTriggerWSDTOS = new ArrayList<>();
+
+        SmsMessageTriggerWSDTO smsMessageTriggerWSDTO = processTriggerFramework.updateSmsMessageTriggerService(userId,triggerId,triggerDesc,accountId,smsTitle,smsBody,senderId);
+        if (smsMessageTriggerWSDTO != null){
+            smsMessageTriggerWSDTOS.add(smsMessageTriggerWSDTO);
+        }
+
+        response.setSmsMessageTriggers(smsMessageTriggerWSDTOS);
         general.setOperation("updateSmsTrigger");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -257,42 +443,19 @@ public class ProcessTriggerMiddleware {
         return response;
     }
 
+    public SmsMessageTriggerWSModel removeSmsMessageTrigger(long userId,String triggerId) {
 
-
-    public ProcessTriggerWSModel createWappCallTrigger(long userId, String processId, String accountId, String trigger, long typeId) {
-
-        ProcessTriggerWSModel response = new ProcessTriggerWSModel();
+        SmsMessageTriggerWSModel response = new SmsMessageTriggerWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ProcessTriggerWSDTO> processTriggerWSDTOS = new ArrayList<>();
+        List<SmsMessageTriggerWSDTO> smsMessageTriggerWSDTOS = new ArrayList<>();
 
-        ProcessTriggerWSDTO processTriggerWSDTO = processTriggerFramework.createWappCallTriggerService(userId,processId,accountId,trigger,typeId);
-        if (processTriggerWSDTO != null){
-            processTriggerWSDTOS.add(processTriggerWSDTO);
+        SmsMessageTriggerWSDTO smsMessageTriggerWSDTO = processTriggerFramework.removeSmsMessageTriggerService(userId,triggerId);
+        if (smsMessageTriggerWSDTO != null){
+            smsMessageTriggerWSDTOS.add(smsMessageTriggerWSDTO);
         }
 
-        response.setProcessTriggers(processTriggerWSDTOS);
-        general.setOperation("updateWappTrigger");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-    public ProcessTriggerWSModel updateWappCallTrigger(long userId, String triggerId, String accountId, String trigger) {
-
-        ProcessTriggerWSModel response = new ProcessTriggerWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-        List<ProcessTriggerWSDTO> processTriggerWSDTOS = new ArrayList<>();
-
-        ProcessTriggerWSDTO processTriggerWSDTO = processTriggerFramework.updateWappCallTriggerService(userId,triggerId,accountId,trigger);
-        if (processTriggerWSDTO != null){
-            processTriggerWSDTOS.add(processTriggerWSDTO);
-        }
-
-        response.setProcessTriggers(processTriggerWSDTOS);
-        general.setOperation("updateWappTrigger");
+        response.setSmsMessageTriggers(smsMessageTriggerWSDTOS);
+        general.setOperation("removeSmsMessageTrigger");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -302,19 +465,102 @@ public class ProcessTriggerMiddleware {
     }
 
 
-    public ProcessTriggerWSModel createWappMessageTrigger(long userId, String processId, String accountId, String trigger, String wappTitle, String wappBody, long typeId) {
 
-        ProcessTriggerWSModel response = new ProcessTriggerWSModel();
+    public WappCallTriggerWSModel getWappCallTriggers(long userId, String processId) {
+
+        WappCallTriggerWSModel response = new WappCallTriggerWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ProcessTriggerWSDTO> processTriggerWSDTOS = new ArrayList<>();
 
-        ProcessTriggerWSDTO processTriggerWSDTO = processTriggerFramework.createWappMessageTriggerService(userId,processId,accountId,trigger,wappTitle,wappBody,typeId);
-        if (processTriggerWSDTO != null){
-            processTriggerWSDTOS.add(processTriggerWSDTO);
+        List<WappCallTriggerWSDTO> wappCallTriggerWSDTOS = processTriggerFramework.getWappCallTriggersService(userId,processId);
+        if (wappCallTriggerWSDTOS != null){
+            response.setWappCallTriggers(wappCallTriggerWSDTOS);
         }
 
-        response.setProcessTriggers(processTriggerWSDTOS);
-        general.setOperation("createWappTrigger");
+        general.setOperation("getWappCallTriggers");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public WappCallTriggerWSModel getWappCallTrigger(long userId,String triggerId) {
+
+        WappCallTriggerWSModel response = new WappCallTriggerWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+        List<WappCallTriggerWSDTO> wappCallTriggerWSDTOS = new ArrayList<>();
+
+        WappCallTriggerWSDTO wappCallTriggerWSDTO = processTriggerFramework.getWappCallTriggerService(userId,triggerId);
+        if (wappCallTriggerWSDTO != null){
+            wappCallTriggerWSDTOS.add(wappCallTriggerWSDTO);
+        }
+
+        response.setWappCallTriggers(wappCallTriggerWSDTOS);
+        general.setOperation("getWappCallTrigger");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public WappCallTriggerWSModel createWappCallTrigger(long userId,String processId,String triggerDesc,String accountId,long typeId) {
+
+        WappCallTriggerWSModel response = new WappCallTriggerWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+        List<WappCallTriggerWSDTO> wappCallTriggerWSDTOS = new ArrayList<>();
+
+        WappCallTriggerWSDTO wappCallTriggerWSDTO = processTriggerFramework.createWappCallTriggerService(userId,processId,triggerDesc,accountId,typeId);
+        if (wappCallTriggerWSDTO != null){
+            wappCallTriggerWSDTOS.add(wappCallTriggerWSDTO);
+        }
+
+        response.setWappCallTriggers(wappCallTriggerWSDTOS);
+        general.setOperation("createWappCallTrigger");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public WappCallTriggerWSModel updateWappCallTrigger(long userId,String triggerId,String triggerDesc,String accountId) {
+
+        WappCallTriggerWSModel response = new WappCallTriggerWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+        List<WappCallTriggerWSDTO> wappCallTriggerWSDTOS = new ArrayList<>();
+
+        WappCallTriggerWSDTO wappCallTriggerWSDTO = processTriggerFramework.updateWappCallTriggerService(userId,triggerId,triggerDesc,accountId);
+        if (wappCallTriggerWSDTO != null){
+            wappCallTriggerWSDTOS.add(wappCallTriggerWSDTO);
+        }
+
+        response.setWappCallTriggers(wappCallTriggerWSDTOS);
+        general.setOperation("updateWappCallTrigger");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public WappCallTriggerWSModel removeWappCallTrigger(long userId, String triggerId) {
+
+        WappCallTriggerWSModel response = new WappCallTriggerWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+        List<WappCallTriggerWSDTO> wappCallTriggerWSDTOS = new ArrayList<>();
+
+        WappCallTriggerWSDTO wappCallTriggerWSDTO = processTriggerFramework.removeWappCallTriggerService(userId,triggerId);
+        if (wappCallTriggerWSDTO != null){
+            wappCallTriggerWSDTOS.add(wappCallTriggerWSDTO);
+        }
+
+        response.setWappCallTriggers(wappCallTriggerWSDTOS);
+        general.setOperation("removeWappCallTrigger");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -324,19 +570,18 @@ public class ProcessTriggerMiddleware {
     }
 
 
-    public ProcessTriggerWSModel updateWappMessageTrigger(long userId, String triggerId, String accountId, String trigger, String wappTitle, String wappBody) {
 
-        ProcessTriggerWSModel response = new ProcessTriggerWSModel();
+    public WappMessageTriggerWSModel getWappMessageTriggers(long userId,String processId) {
+
+        WappMessageTriggerWSModel response = new WappMessageTriggerWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ProcessTriggerWSDTO> processTriggerWSDTOS = new ArrayList<>();
 
-        ProcessTriggerWSDTO processTriggerWSDTO = processTriggerFramework.updateWappMessageTriggerService(userId,triggerId,accountId,trigger,wappTitle,wappBody);
-        if (processTriggerWSDTO != null){
-            processTriggerWSDTOS.add(processTriggerWSDTO);
+        List<WappMessageTriggerWSDTO> wappMessageTriggerWSDTOS = processTriggerFramework.getWappMessageTriggersService(userId,processId);
+        if (wappMessageTriggerWSDTOS != null){
+            response.setWappMessageTriggers(wappMessageTriggerWSDTOS);
         }
 
-        response.setProcessTriggers(processTriggerWSDTOS);
-        general.setOperation("updateWappTrigger");
+        general.setOperation("getWappMessageTriggers");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -345,19 +590,83 @@ public class ProcessTriggerMiddleware {
         return response;
     }
 
-    public ProcessTriggerWSModel removeProcessTrigger(long userId, String triggerId) {
+    public WappMessageTriggerWSModel getWappMessageTrigger(long userId,String triggerId) {
 
-        ProcessTriggerWSModel response = new ProcessTriggerWSModel();
+        WappMessageTriggerWSModel response = new WappMessageTriggerWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ProcessTriggerWSDTO> processTriggerWSDTOS = new ArrayList<>();
+        List<WappMessageTriggerWSDTO> wappMessageTriggerWSDTOS = new ArrayList<>();
 
-        ProcessTriggerWSDTO processTriggerWSDTO = processTriggerFramework.removeProcessTriggerService(userId,triggerId);
-        if (processTriggerWSDTO != null){
-            processTriggerWSDTOS.add(processTriggerWSDTO);
+        WappMessageTriggerWSDTO wappMessageTriggerWSDTO = processTriggerFramework.getWappMessageTriggerService(userId,triggerId);
+        if (wappMessageTriggerWSDTO != null){
+            wappMessageTriggerWSDTOS.add(wappMessageTriggerWSDTO);
         }
 
-        response.setProcessTriggers(processTriggerWSDTOS);
-        general.setOperation("removeProcessTrigger");
+        response.setWappMessageTriggers(wappMessageTriggerWSDTOS);
+        general.setOperation("getWappMessageTrigger");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public WappMessageTriggerWSModel createWappMessageTrigger(long userId,String processId,String triggerDesc,String accountId,String wappTitle,String wappBody,long typeId) {
+
+        WappMessageTriggerWSModel response = new WappMessageTriggerWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+        List<WappMessageTriggerWSDTO> wappMessageTriggerWSDTOS = new ArrayList<>();
+
+        WappMessageTriggerWSDTO wappMessageTriggerWSDTO = processTriggerFramework.createWappMessageTriggerService(userId,processId,triggerDesc,accountId,wappTitle,wappBody,typeId);
+        if (wappMessageTriggerWSDTO != null){
+            wappMessageTriggerWSDTOS.add(wappMessageTriggerWSDTO);
+        }
+
+        response.setWappMessageTriggers(wappMessageTriggerWSDTOS);
+        general.setOperation("createWappMessageTrigger");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
+    public WappMessageTriggerWSModel updateWappMessageTrigger(long userId, String triggerId,String triggerDesc,String accountId,String wappTitle,String wappBody) {
+
+        WappMessageTriggerWSModel response = new WappMessageTriggerWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+        List<WappMessageTriggerWSDTO> wappMessageTriggerWSDTOS = new ArrayList<>();
+
+        WappMessageTriggerWSDTO wappMessageTriggerWSDTO = processTriggerFramework.updateWappMessageTriggerService(userId,triggerId,triggerDesc,accountId,wappTitle,wappBody);
+        if (wappMessageTriggerWSDTO != null){
+            wappMessageTriggerWSDTOS.add(wappMessageTriggerWSDTO);
+        }
+
+        response.setWappMessageTriggers(wappMessageTriggerWSDTOS);
+        general.setOperation("updateWappMessageTrigger");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public WappMessageTriggerWSModel removeWappMessageTrigger(long userId, String triggerId) {
+
+        WappMessageTriggerWSModel response = new WappMessageTriggerWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+        List<WappMessageTriggerWSDTO> wappMessageTriggerWSDTOS = new ArrayList<>();
+
+        WappMessageTriggerWSDTO wappMessageTriggerWSDTO = processTriggerFramework.removeWappMessageTriggerService(userId,triggerId);
+        if (wappMessageTriggerWSDTO != null){
+            wappMessageTriggerWSDTOS.add(wappMessageTriggerWSDTO);
+        }
+
+        response.setWappMessageTriggers(wappMessageTriggerWSDTOS);
+        general.setOperation("removeWappMessageTrigger");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
