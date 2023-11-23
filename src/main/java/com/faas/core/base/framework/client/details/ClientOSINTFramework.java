@@ -15,7 +15,7 @@ public class ClientOSINTFramework {
     AppUtils appUtils;
 
 
-    public ClientAddressWSDTO getClientDetailsService(ClientDBModel clientDBModel) {
+    public ClientAddressWSDTO getClientOSIntsService(ClientDBModel clientDBModel) {
 
         ClientAddressWSDTO clientAddressWSDTO = new ClientAddressWSDTO();
         return clientAddressWSDTO;

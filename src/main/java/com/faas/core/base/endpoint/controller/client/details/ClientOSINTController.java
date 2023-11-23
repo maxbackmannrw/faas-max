@@ -22,11 +22,11 @@ public class ClientOSINTController {
     ClientOSINTMiddleware clientOSIntMiddleware;
 
 
-    @RequestMapping(value = BaseRoute.GET_CLIENT_OS_INTELS, method = RequestMethod.POST)
-    public ResponseEntity<?> getClientOSIntels(@RequestParam long userId,
-                                               @RequestParam long clientId) {
+    @RequestMapping(value = BaseRoute.GET_CLIENT_OS_INTS, method = RequestMethod.POST)
+    public ResponseEntity<?> getClientOSInts(@RequestParam long userId,
+                                             @RequestParam long clientId) {
 
-        ClientDetailsWSModel response = clientOSIntMiddleware.getClientOSIntels(userId, clientId);
+        ClientDetailsWSModel response = clientOSIntMiddleware.getClientOSInts(userId, clientId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

@@ -23,7 +23,7 @@ public class ClientOSINTMiddleware {
     AppUtils appUtils;
 
 
-    public ClientDetailsWSModel getClientOSIntels(long userId, long clientId) {
+    public ClientDetailsWSModel getClientOSInts(long userId, long clientId) {
 
         ClientDetailsWSModel response = new ClientDetailsWSModel();
         GeneralWSModel general = new GeneralWSModel();
@@ -31,9 +31,8 @@ public class ClientOSINTMiddleware {
 
 
 
-
         response.setClientDetails(clientDetailsWSDTOS);
-        general.setOperation("getClientOsIntDatas");
+        general.setOperation("getClientOSInts");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

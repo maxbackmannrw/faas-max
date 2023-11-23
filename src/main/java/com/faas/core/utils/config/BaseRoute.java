@@ -164,7 +164,6 @@ public class BaseRoute {
 
 
 
-
     public static final String GET_ALL_CLIENTS = "getallclients";
     public static final String GET_CLIENTS = "getclients";
     public static final String GET_CLIENT = "getclient";
@@ -174,7 +173,8 @@ public class BaseRoute {
     public static final String REMOVE_CLIENT = "removeclient";
 
 
-    public static final String GET_CLIENT_OS_INTELS = "getclientosintels";
+    public static final String GET_CLIENT_OS_INTS = "getclientosints";
+
 
     public static final String GET_CLIENT_DETAILS = "getclientdetails";
 
