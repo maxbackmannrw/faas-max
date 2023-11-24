@@ -1,11 +1,11 @@
 package com.faas.core.utils.helpers;
 
 import com.faas.core.base.model.db.user.details.dao.UserDataDAO;
-import com.faas.core.base.model.db.utils.DataTypeDBModel;
+import com.faas.core.base.model.db.utility.DataTypeDBModel;
 import com.faas.core.base.repo.channel.account.SipAccountRepository;
 import com.faas.core.base.repo.channel.account.WappAccountRepository;
 import com.faas.core.base.repo.user.details.UserDetailsRepository;
-import com.faas.core.base.repo.utils.DataTypeRepository;
+import com.faas.core.base.repo.utility.DataTypeRepository;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

@@ -2,12 +2,12 @@ package com.faas.core.base.framework.client.details;
 
 import com.faas.core.base.model.db.client.content.ClientDBModel;
 import com.faas.core.base.model.db.client.details.*;
-import com.faas.core.base.model.db.utils.DataTypeDBModel;
+import com.faas.core.base.model.db.utility.DataTypeDBModel;
 import com.faas.core.base.model.ws.client.details.dto.*;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.client.details.*;
 import com.faas.core.base.repo.remote.RemoteRepository;
-import com.faas.core.base.repo.utils.DataTypeRepository;
+import com.faas.core.base.repo.utility.DataTypeRepository;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

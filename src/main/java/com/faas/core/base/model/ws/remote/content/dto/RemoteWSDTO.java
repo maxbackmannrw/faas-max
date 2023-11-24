@@ -1,7 +1,7 @@
 package com.faas.core.base.model.ws.remote.content.dto;
 
 import com.faas.core.base.model.db.client.content.ClientDBModel;
-import com.faas.core.base.model.db.remote.RemoteDBModel;
+import com.faas.core.base.model.db.remote.content.RemoteDBModel;
 
 public class RemoteWSDTO {
 

@@ -17,10 +17,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping(value = AppConstant.API_VERSION + "/base/remote/details/")
 public class RemoteDetailsController {
 
-
     @Autowired
     RemoteDetailsMiddleware remoteDetailsMiddleware;
-
 
     @RequestMapping(value = BaseRoute.GET_REMOTE_DETAILS, method = RequestMethod.POST)
     public ResponseEntity<?> getRemoteDetails(@RequestParam long userId) {

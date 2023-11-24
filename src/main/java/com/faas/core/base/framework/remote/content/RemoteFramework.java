@@ -1,7 +1,6 @@
 package com.faas.core.base.framework.remote.content;
 
-import com.faas.core.base.model.db.client.content.ClientDBModel;
-import com.faas.core.base.model.db.remote.RemoteDBModel;
+import com.faas.core.base.model.db.remote.content.RemoteDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.ws.remote.content.dto.RemoteListWSDTO;
