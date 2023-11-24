@@ -1,15 +1,15 @@
-package com.faas.core.api.model.ws.asset.dto;
+package com.faas.core.base.model.ws.asset.content.dto;
 
 import com.faas.core.base.model.db.asset.content.AssetDBModel;
 
-public class ApiAssetWSDTO {
+public class AssetWSDTO {
 
     private AssetDBModel asset;
 
-    public ApiAssetWSDTO() {
+    public AssetWSDTO() {
     }
 
-    public ApiAssetWSDTO(AssetDBModel asset) {
+    public AssetWSDTO(AssetDBModel asset) {
         this.asset = asset;
     }
 

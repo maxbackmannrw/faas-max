@@ -3,7 +3,7 @@ package com.faas.core.base.framework.utility.system;
 import com.faas.core.base.model.db.client.content.ClientDBModel;
 import com.faas.core.base.model.db.user.content.UserDBModel;
 import com.faas.core.base.model.ws.utility.system.dto.SystemInfoWSDTO;
-import com.faas.core.base.repo.assets.content.AssetRepository;
+import com.faas.core.base.repo.asset.content.AssetRepository;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;
