@@ -3,6 +3,7 @@ package com.faas.core.base.framework.utility.system;
 import com.faas.core.base.model.db.client.content.ClientDBModel;
 import com.faas.core.base.model.db.user.content.UserDBModel;
 import com.faas.core.base.model.ws.utility.system.dto.SystemInfoWSDTO;
+import com.faas.core.base.model.ws.utility.system.dto.SystemInitWSDTO;
 import com.faas.core.base.repo.asset.content.AssetRepository;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
@@ -30,6 +31,7 @@ import com.faas.core.base.repo.user.content.UserRepository;
 import com.faas.core.base.repo.user.details.UserDetailsRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
+import com.faas.core.utils.helpers.UtilityHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -40,6 +42,8 @@ import java.util.List;
 @Component
 public class UtilitySystemFramework {
 
+    @Autowired
+    UtilityHelper utilityHelper;
 
     @Autowired
     ClientRepository clientRepository;
@@ -306,6 +310,18 @@ public class UtilitySystemFramework {
         systemInfoWSDTO.setInfoState(true);
         return systemInfoWSDTO;
     }
+
+
+
+    public SystemInitWSDTO initializeSystemService(String initType) {
+
+        if (initType.equalsIgnoreCase(AppConstant.FIRST_TIME_INIT)){
+            return utilityHelper.firstInitSystemHelper(initType);
+        }
+       return null;
+    }
+
+
 
 
     public SystemInfoWSDTO repairSystemInfoService(long userId,String systemInfo) {

@@ -5,7 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/utility/system/SystemInitWSModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/utility/system/dto/SystemInitWSDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/helpers/UtilityHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/utility/system/UtilitySystemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/utility/system/UtilitySystemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/utility/system/UtilitySystemFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/utility/system/UtilitySystemFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/utility/system/UtilitySystemMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/utility/system/UtilitySystemMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/repo/user/settings/UserRoleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/repo/user/settings/UserRoleRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/config/AppConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/config/AppConstant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/config/BaseRoute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/config/BaseRoute.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,11 +119,11 @@
       <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/scenario/content" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.faas.core.utils.helpers" />
+      <recent name="com.faas.core.base.model.ws.utility.system.dto" />
+      <recent name="com.faas.core.base.model.ws.utility.system" />
       <recent name="com.faas.core.base.middleware.remote.settings" />
       <recent name="com.faas.core.base.framework.remote.settings" />
-      <recent name="com.faas.core.base.endpoint.controller.remote.settings" />
-      <recent name="com.faas.core.base.model.ws.process.details.trigger.dto" />
-      <recent name="com.faas.core.base.model.ws.process.details.trigger" />
     </key>
   </component>
   <component name="RunManager">
@@ -454,15 +463,11 @@
       <workItem from="1700847403255" duration="529000" />
       <workItem from="1700865422017" duration="142000" />
       <workItem from="1700909840701" duration="392000" />
-      <workItem from="1700914611745" duration="432000" />
-    </task>
-    <task id="LOCAL-00407" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1699888362329</created>
-      <option name="number" value="00407" />
-      <option name="presentableId" value="LOCAL-00407" />
-      <option name="project" value="LOCAL" />
-      <updated>1699888362329</updated>
+      <workItem from="1700914611745" duration="1267000" />
+      <workItem from="1700927241350" duration="10000" />
+      <workItem from="1700936971336" duration="565000" />
+      <workItem from="1700937625186" duration="4345000" />
+      <workItem from="1700991963946" duration="2109000" />
     </task>
     <task id="LOCAL-00408" summary="almost finish">
       <option name="closed" value="true" />
@@ -848,7 +853,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700827675642</updated>
     </task>
-    <option name="localTasksCounter" value="456" />
+    <task id="LOCAL-00456" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1700922882169</created>
+      <option name="number" value="00456" />
+      <option name="presentableId" value="LOCAL-00456" />
+      <option name="project" value="LOCAL" />
+      <updated>1700922882169</updated>
+    </task>
+    <option name="localTasksCounter" value="457" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

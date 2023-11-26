@@ -13,12 +13,21 @@ public class AppConstant {
     public static final String STATE_OK = "OK";
 
 
+    public static final String FIRST_TIME_INIT = "FIRST_TIME_INIT";
+
+
     public static final String MANAGER_USER = "MANAGER_USER";
     public static final String BASIC_MANAGER = "BASIC_MANAGER";
     public static final String SUPER_MANAGER = "SUPER_MANAGER";
 
+    public static final String DEFAULT_MANAGER_NAME = "manager";
+    public static final String DEFAULT_MANAGER_EMAIL = "manager";
+    public static final String DEFAULT_MANAGER_PASSWORD = "45781296";
+
+
     public static final String AGENT_USER = "AGENT_USER";
     public static final String BASIC_AGENT = "BASIC_AGENT";
+    public static final String SUPER_AGENT = "SUPER_AGENT";
     public static final String AUTO_AGENT = "AUTO_AGENT";
 
 

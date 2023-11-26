@@ -580,6 +580,7 @@ public class BaseRoute {
 
 
     public static final String GET_SYSTEM_INFOS = "getsysteminfos";
+    public static final String INITIALIZE_SYSTEM = "initializesystem";
     public static final String REPAIR_SYSTEM_INFO = "repairsysteminfo";
     public static final String REMOVE_SYSTEM_INFO = "removesysteminfo";
 

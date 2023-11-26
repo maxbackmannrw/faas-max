@@ -2,6 +2,7 @@ package com.faas.core.base.endpoint.controller.utility.system;
 
 import com.faas.core.base.middleware.utility.system.UtilitySystemMiddleware;
 import com.faas.core.base.model.ws.utility.system.SystemInfoWSModel;
+import com.faas.core.base.model.ws.utility.system.SystemInitWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,19 @@ public class UtilitySystemController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
+
+
+    @RequestMapping(value = BaseRoute.INITIALIZE_SYSTEM, method = RequestMethod.POST)
+    public ResponseEntity<?> initializeSystem(@RequestParam String initType) {
+
+        SystemInitWSModel response = utilitySystemMiddleware.initializeSystem(initType);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
 
     @RequestMapping(value = BaseRoute.REPAIR_SYSTEM_INFO, method = RequestMethod.POST)
     public ResponseEntity<?> repairSystemInfo(@RequestParam long userId,

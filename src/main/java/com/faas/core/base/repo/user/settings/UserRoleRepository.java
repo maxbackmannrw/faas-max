@@ -10,4 +10,5 @@ import java.util.List;
 public interface UserRoleRepository extends PagingAndSortingRepository<UserRoleDBModel, Long> {
 
     List<UserRoleDBModel> findByStatus(int status);
+    List<UserRoleDBModel>findByUserRole(String userRole);
 }

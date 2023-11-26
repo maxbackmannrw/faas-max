@@ -3,7 +3,9 @@ package com.faas.core.base.middleware.utility.system;
 import com.faas.core.base.framework.utility.system.UtilitySystemFramework;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.model.ws.utility.system.SystemInfoWSModel;
+import com.faas.core.base.model.ws.utility.system.SystemInitWSModel;
 import com.faas.core.base.model.ws.utility.system.dto.SystemInfoWSDTO;
+import com.faas.core.base.model.ws.utility.system.dto.SystemInitWSDTO;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -37,6 +39,27 @@ public class UtilitySystemMiddleware {
 
         return response;
     }
+
+
+    public SystemInitWSModel initializeSystem(String initType) {
+
+        SystemInitWSModel response = new SystemInitWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        SystemInitWSDTO systemInitWSDTO = utilitySystemFramework.initializeSystemService(initType);
+        if (systemInitWSDTO != null){
+            response.setSystemInit(systemInitWSDTO);
+        }
+
+        general.setOperation("initializeSystem");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
 
     public SystemInfoWSModel repairSystemInfo(long userId, String systemInfo) {
 
