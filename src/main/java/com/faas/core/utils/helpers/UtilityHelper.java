@@ -86,7 +86,7 @@ public class UtilityHelper {
 
     public void initializeManagerUsersHelper(){
 
-        createUserHelper(AppConstant.DEFAULT_MANAGER_NAME, AppConstant.DEFAULT_MANAGER_EMAIL, AppConstant.DEFAULT_MANAGER_EMAIL,AppConstant.SUPER_MANAGER );
+        createUserHelper(AppConstant.DEFAULT_MANAGER_NAME, AppConstant.DEFAULT_MANAGER_EMAIL, AppConstant.DEFAULT_MANAGER_PASSWORD,AppConstant.SUPER_MANAGER );
     }
 
     public void createUserHelper(String userName,String userEmail,String password,String userRole){

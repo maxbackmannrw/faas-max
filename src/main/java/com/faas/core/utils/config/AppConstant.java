@@ -9,11 +9,9 @@ public class AppConstant {
     public static final String GENERAL_SUCCESS_STATUS = "SUCCESS";
     public static final String GENERAL_FAIL_STATUS = "FAIL";
 
-    public static final String STATE_NOK = "NOK";
-    public static final String STATE_OK = "OK";
-
-
     public static final String FIRST_TIME_INIT = "FIRST_TIME_INIT";
+
+
 
 
     public static final String MANAGER_USER = "MANAGER_USER";
