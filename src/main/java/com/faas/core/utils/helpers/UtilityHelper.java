@@ -35,16 +35,16 @@ public class UtilityHelper {
     public SystemInitWSDTO firstInitSystemHelper(String initType){
 
         if (initType.equalsIgnoreCase(AppConstant.FIRST_TIME_INIT)){
-            checkUserRolesAndResetHelper();
+            checkUserRolesAndReset();
             initializeUserRolesHelper();
-            checkManagerUsersAndResetHelper();
-            initializeManagerUsersHelper();
+            checkUsersAndReset();
+            initializeUsersHelper();
         }
         return null;
     }
 
 
-    public void checkUserRolesAndResetHelper(){
+    public void checkUserRolesAndReset(){
 
         if (userRoleRepository.count()>0){
             userRoleRepository.deleteAll(userRoleRepository.findAll());
@@ -52,14 +52,14 @@ public class UtilityHelper {
     }
 
     public void initializeUserRolesHelper(){
-        userRoleRepository.save(createUserRoleModelHelper(AppConstant.SUPER_MANAGER,AppConstant.MANAGER_USER));
-        userRoleRepository.save(createUserRoleModelHelper(AppConstant.BASIC_MANAGER,AppConstant.MANAGER_USER));
-        userRoleRepository.save(createUserRoleModelHelper(AppConstant.BASIC_AGENT,AppConstant.AGENT_USER));
-        userRoleRepository.save(createUserRoleModelHelper(AppConstant.SUPER_AGENT,AppConstant.AGENT_USER));
-        userRoleRepository.save(createUserRoleModelHelper(AppConstant.AUTO_AGENT,AppConstant.AGENT_USER));
+        userRoleRepository.save(createUserRolesHelper(AppConstant.SUPER_MANAGER,AppConstant.MANAGER_USER));
+        userRoleRepository.save(createUserRolesHelper(AppConstant.BASIC_MANAGER,AppConstant.MANAGER_USER));
+        userRoleRepository.save(createUserRolesHelper(AppConstant.BASIC_AGENT,AppConstant.AGENT_USER));
+        userRoleRepository.save(createUserRolesHelper(AppConstant.SUPER_AGENT,AppConstant.AGENT_USER));
+        userRoleRepository.save(createUserRolesHelper(AppConstant.AUTO_AGENT,AppConstant.AGENT_USER));
     }
 
-    public UserRoleDBModel createUserRoleModelHelper(String userRole,String userType){
+    public UserRoleDBModel createUserRolesHelper(String userRole,String userType){
 
         UserRoleDBModel userRoleDBModel = new UserRoleDBModel();
         userRoleDBModel.setUserRole(userRole);
@@ -73,7 +73,7 @@ public class UtilityHelper {
 
 
 
-    public void checkManagerUsersAndResetHelper(){
+    public void checkUsersAndReset(){
 
         List<UserDBModel> managerUsers = userRepository.findByUserType(AppConstant.MANAGER_USER);
         if (!managerUsers.isEmpty()){
@@ -84,7 +84,7 @@ public class UtilityHelper {
         }
     }
 
-    public void initializeManagerUsersHelper(){
+    public void initializeUsersHelper(){
 
         createUserHelper(AppConstant.DEFAULT_MANAGER_NAME, AppConstant.DEFAULT_MANAGER_EMAIL, AppConstant.DEFAULT_MANAGER_PASSWORD,AppConstant.SUPER_MANAGER );
     }
@@ -95,6 +95,7 @@ public class UtilityHelper {
         if (!userRoleDBModels.isEmpty()){
 
             UserDBModel userDBModel = new UserDBModel();
+
             userDBModel.setUserName(userName);
             userDBModel.setUserEmail(userEmail.toLowerCase());
             userDBModel.setPassword(appUtils.base64Encoder(password));
@@ -121,6 +122,7 @@ public class UtilityHelper {
 
         userDetailsRepository.save(userDetailsDBModel);
     }
+
 
 
 
