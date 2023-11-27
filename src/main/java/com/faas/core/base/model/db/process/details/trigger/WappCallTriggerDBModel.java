@@ -12,6 +12,7 @@ public class WappCallTriggerDBModel {
     @Id
     private String id;
     private String processId;
+    private String trigger;
     private String triggerDesc;
     private String accountId;
     private String account;
@@ -25,9 +26,10 @@ public class WappCallTriggerDBModel {
     public WappCallTriggerDBModel() {
     }
 
-    public WappCallTriggerDBModel(String id, String processId, String triggerDesc, String accountId, String account, List<TriggerDataDAO> datas, long typeId, String triggerType, long uDate, long cDate, int status) {
+    public WappCallTriggerDBModel(String id, String processId, String trigger, String triggerDesc, String accountId, String account, List<TriggerDataDAO> datas, long typeId, String triggerType, long uDate, long cDate, int status) {
         this.id = id;
         this.processId = processId;
+        this.trigger = trigger;
         this.triggerDesc = triggerDesc;
         this.accountId = accountId;
         this.account = account;
@@ -53,6 +55,14 @@ public class WappCallTriggerDBModel {
 
     public void setProcessId(String processId) {
         this.processId = processId;
+    }
+
+    public String getTrigger() {
+        return trigger;
+    }
+
+    public void setTrigger(String trigger) {
+        this.trigger = trigger;
     }
 
     public String getTriggerDesc() {

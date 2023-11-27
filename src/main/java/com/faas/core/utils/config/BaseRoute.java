@@ -425,13 +425,11 @@ public class BaseRoute {
     public static final String UPDATE_SIP_CALL_TRIGGER = "updatesipcalltrigger";
     public static final String REMOVE_SIP_CALL_TRIGGER = "removesipcalltrigger";
 
-
     public static final String GET_SMS_MESSAGE_TRIGGERS = "getsmsmessagetriggers";
     public static final String GET_SMS_MESSAGE_TRIGGER = "getsmsmessagetrigger";
     public static final String CREATE_SMS_MESSAGE_TRIGGER = "createsmsmessagetrigger";
     public static final String UPDATE_SMS_MESSAGE_TRIGGER = "updatesmsmessagetrigger";
     public static final String REMOVE_SMS_MESSAGE_TRIGGER = "removesmsmessagetrigger";
-
 
     public static final String GET_WAPP_CALL_TRIGGERS = "getwappcalltriggers";
     public static final String GET_WAPP_CALL_TRIGGER = "getwappcalltrigger";
@@ -439,14 +437,11 @@ public class BaseRoute {
     public static final String UPDATE_WAPP_CALL_TRIGGER = "updatewappcalltrigger";
     public static final String REMOVE_WAPP_CALL_TRIGGER = "removewappcalltrigger";
 
-
     public static final String GET_WAPP_MESSAGE_TRIGGERS = "getwappmessagetriggers";
     public static final String GET_WAPP_MESSAGE_TRIGGER = "getwappmessagetrigger";
     public static final String CREATE_WAPP_MESSAGE_TRIGGER = "createwappmessagetrigger";
     public static final String UPDATE_WAPP_MESSAGE_TRIGGER = "updatewappmessagetrigger";
     public static final String REMOVE_WAPP_MESSAGE_TRIGGER = "removewappmessagetrigger";
-
-
 
 
     public static final String GET_PROCESS_SCENARIOS = "getprocessscenarios";

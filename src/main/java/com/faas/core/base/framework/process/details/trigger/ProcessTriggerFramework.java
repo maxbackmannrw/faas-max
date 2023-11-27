@@ -99,13 +99,14 @@ public class ProcessTriggerFramework {
         return null;
     }
 
-    public AiTriggerWSDTO createAITriggerService(long userId,String processId,String triggerDesc,String accountId,long typeId) {
+    public AiTriggerWSDTO createAITriggerService(long userId,String processId,String trigger,String triggerDesc,String accountId,long typeId) {
 
         Optional<TriggerTypeDBModel> triggerTypeDBModel = triggerTypeRepository.findById(typeId);
         if (triggerTypeDBModel.isPresent()){
 
             AiTriggerDBModel aiTriggerDBModel = new AiTriggerDBModel();
             aiTriggerDBModel.setProcessId(processId);
+            aiTriggerDBModel.setTrigger(trigger);
             aiTriggerDBModel.setTriggerDesc(triggerDesc);
             aiTriggerDBModel.setAccountId(accountId);
             aiTriggerDBModel.setAccount("");
@@ -121,10 +122,12 @@ public class ProcessTriggerFramework {
         return null;
     }
 
-    public AiTriggerWSDTO updateAITriggerService(long userId, String triggerId, String triggerDesc,String accountId) {
+    public AiTriggerWSDTO updateAITriggerService(long userId,String triggerId,String trigger,String triggerDesc,String accountId) {
 
         Optional<AiTriggerDBModel> aiTriggerDBModel = aiTriggerRepository.findById(triggerId);
         if (aiTriggerDBModel.isPresent()){
+
+            aiTriggerDBModel.get().setTrigger(trigger);
             aiTriggerDBModel.get().setTriggerDesc(triggerDesc);
             aiTriggerDBModel.get().setAccountId(accountId);
             aiTriggerDBModel.get().setAccount("");
@@ -146,8 +149,6 @@ public class ProcessTriggerFramework {
     }
 
 
-
-
     public List<EmailTriggerWSDTO> getEmailTriggersService(long userId, String processId) {
 
         List<EmailTriggerWSDTO> emailTriggerWSDTOS = new ArrayList<>();
@@ -167,7 +168,7 @@ public class ProcessTriggerFramework {
         return null;
     }
 
-    public EmailTriggerWSDTO createEmailTriggerService(long userId,String processId,String triggerDesc,String accountId,String emailSubject,String emailTitle,String emailBody,String emailSender,long typeId) {
+    public EmailTriggerWSDTO createEmailTriggerService(long userId,String processId,String trigger,String triggerDesc,String accountId,String emailSubject,String emailTitle,String emailBody,String emailSender,long typeId) {
 
         Optional<TriggerTypeDBModel> triggerTypeDBModel = triggerTypeRepository.findById(typeId);
         Optional<EmailAccountDBModel> emailAccountDBModel = emailAccountRepository.findById(accountId);
@@ -175,6 +176,7 @@ public class ProcessTriggerFramework {
 
             EmailTriggerDBModel emailTriggerDBModel = new EmailTriggerDBModel();
             emailTriggerDBModel.setProcessId(processId);
+            emailTriggerDBModel.setTrigger(trigger);
             emailTriggerDBModel.setTriggerDesc(triggerDesc);
             emailTriggerDBModel.setAccountId(accountId);
             emailTriggerDBModel.setAccount(emailAccountDBModel.get().getAccount());
@@ -194,12 +196,13 @@ public class ProcessTriggerFramework {
         return null;
     }
 
-    public EmailTriggerWSDTO updateEmailTriggerService(long userId,String triggerId, String triggerDesc,String accountId,String emailSubject,String emailTitle,String emailBody,String emailSender) {
+    public EmailTriggerWSDTO updateEmailTriggerService(long userId,String triggerId,String trigger,String triggerDesc,String accountId,String emailSubject,String emailTitle,String emailBody,String emailSender) {
 
         Optional<EmailTriggerDBModel> emailTriggerDBModel = emailTriggerRepository.findById(triggerId);
         Optional<EmailAccountDBModel> emailAccountDBModel = emailAccountRepository.findById(accountId);
         if (emailTriggerDBModel.isPresent() && emailAccountDBModel.isPresent()){
 
+            emailTriggerDBModel.get().setTrigger(trigger);
             emailTriggerDBModel.get().setTriggerDesc(triggerDesc);
             emailTriggerDBModel.get().setAccountId(accountId);
             emailTriggerDBModel.get().setAccount(emailAccountDBModel.get().getAccount());
@@ -226,7 +229,6 @@ public class ProcessTriggerFramework {
     }
 
 
-
     public List<SipCallTriggerWSDTO> getSipCallTriggersService(long userId,String processId) {
 
         List<SipCallTriggerWSDTO> sipCallTriggerWSDTOS = new ArrayList<>();
@@ -247,7 +249,7 @@ public class ProcessTriggerFramework {
         return null;
     }
 
-    public SipCallTriggerWSDTO createSipCallTriggerService(long userId,String processId,String triggerDesc,String accountId,String callerId,long typeId) {
+    public SipCallTriggerWSDTO createSipCallTriggerService(long userId,String processId,String trigger,String triggerDesc,String accountId,String callerId,long typeId) {
 
         Optional<TriggerTypeDBModel> triggerTypeDBModel = triggerTypeRepository.findById(typeId);
         Optional<SipAccountDBModel> sipAccountDBModel = sipAccountRepository.findById(accountId);
@@ -255,6 +257,7 @@ public class ProcessTriggerFramework {
 
             SipCallTriggerDBModel sipCallTriggerDBModel = new SipCallTriggerDBModel();
             sipCallTriggerDBModel.setProcessId(processId);
+            sipCallTriggerDBModel.setTrigger(trigger);
             sipCallTriggerDBModel.setTriggerDesc(triggerDesc);
             sipCallTriggerDBModel.setAccountId(accountId);
             sipCallTriggerDBModel.setAccount(sipAccountDBModel.get().getAccount());
@@ -270,12 +273,13 @@ public class ProcessTriggerFramework {
         return null;
     }
 
-    public SipCallTriggerWSDTO updateSipCallTriggerService(long userId,String triggerId,String triggerDesc,String accountId,String callerId) {
+    public SipCallTriggerWSDTO updateSipCallTriggerService(long userId,String triggerId,String trigger,String triggerDesc,String accountId,String callerId) {
 
         Optional<SipCallTriggerDBModel> sipCallTriggerDBModel = sipCallTriggerRepository.findById(triggerId);
         Optional<SipAccountDBModel> sipAccountDBModel = sipAccountRepository.findById(accountId);
-
         if (sipCallTriggerDBModel.isPresent() && sipAccountDBModel.isPresent()){
+
+            sipCallTriggerDBModel.get().setTrigger(trigger);
             sipCallTriggerDBModel.get().setTriggerDesc(triggerDesc);
             sipCallTriggerDBModel.get().setAccountId(accountId);
             sipCallTriggerDBModel.get().setAccount(sipAccountDBModel.get().getAccount());
@@ -320,7 +324,7 @@ public class ProcessTriggerFramework {
     }
 
 
-    public SmsMessageTriggerWSDTO createSmsMessageTriggerService(long userId,String processId,String triggerDesc,String accountId,String smsTitle,String smsBody,String senderId,long typeId) {
+    public SmsMessageTriggerWSDTO createSmsMessageTriggerService(long userId,String processId,String trigger,String triggerDesc,String accountId,String smsTitle,String smsBody,String senderId,long typeId) {
 
         Optional<SmsAccountDBModel> smsAccountDBModel = smsAccountRepository.findById(accountId);
         Optional<TriggerTypeDBModel> triggerTypeDBModel = triggerTypeRepository.findById(typeId);
@@ -328,6 +332,7 @@ public class ProcessTriggerFramework {
 
             SmsMessageTriggerDBModel smsMessageTriggerDBModel = new SmsMessageTriggerDBModel();
             smsMessageTriggerDBModel.setProcessId(processId);
+            smsMessageTriggerDBModel.setTrigger(trigger);
             smsMessageTriggerDBModel.setTriggerDesc(triggerDesc);
             smsMessageTriggerDBModel.setAccountId(accountId);
             smsMessageTriggerDBModel.setAccount(smsAccountDBModel.get().getAccount());
@@ -347,12 +352,13 @@ public class ProcessTriggerFramework {
     }
 
 
-    public SmsMessageTriggerWSDTO updateSmsMessageTriggerService(long userId,String triggerId,String triggerDesc,String accountId,String smsTitle,String smsBody,String senderId) {
+    public SmsMessageTriggerWSDTO updateSmsMessageTriggerService(long userId,String triggerId,String trigger,String triggerDesc,String accountId,String smsTitle,String smsBody,String senderId) {
 
         Optional<SmsMessageTriggerDBModel> smsMessageTriggerDBModel = smsMessageTriggerRepository.findById(triggerId);
         Optional<SmsAccountDBModel> smsAccountDBModel = smsAccountRepository.findById(accountId);
         if (smsMessageTriggerDBModel.isPresent() && smsAccountDBModel.isPresent()){
 
+            smsMessageTriggerDBModel.get().setTrigger(trigger);
             smsMessageTriggerDBModel.get().setTriggerDesc(triggerDesc);
             smsMessageTriggerDBModel.get().setAccountId(accountId);
             smsMessageTriggerDBModel.get().setAccount(smsAccountDBModel.get().getAccount());
@@ -398,7 +404,7 @@ public class ProcessTriggerFramework {
         return null;
     }
 
-    public WappCallTriggerWSDTO createWappCallTriggerService(long userId,String processId,String triggerDesc,String accountId,long typeId) {
+    public WappCallTriggerWSDTO createWappCallTriggerService(long userId,String processId,String trigger,String triggerDesc,String accountId,long typeId) {
 
         Optional<WappAccountDBModel> wappAccountDBModel = wappAccountRepository.findById(accountId);
         Optional<TriggerTypeDBModel> triggerTypeDBModel = triggerTypeRepository.findById(typeId);
@@ -406,6 +412,7 @@ public class ProcessTriggerFramework {
 
             WappCallTriggerDBModel wappCallTriggerDBModel = new WappCallTriggerDBModel();
             wappCallTriggerDBModel.setProcessId(processId);
+            wappCallTriggerDBModel.setTrigger(trigger);
             wappCallTriggerDBModel.setTriggerDesc(triggerDesc);
             wappCallTriggerDBModel.setAccountId(accountId);
             wappCallTriggerDBModel.setAccount(wappAccountDBModel.get().getAccount());
@@ -421,13 +428,13 @@ public class ProcessTriggerFramework {
         return null;
     }
 
-
-    public WappCallTriggerWSDTO updateWappCallTriggerService(long userId,String triggerId,String triggerDesc,String accountId) {
+    public WappCallTriggerWSDTO updateWappCallTriggerService(long userId,String triggerId,String trigger,String triggerDesc,String accountId) {
 
         Optional<WappCallTriggerDBModel> wappCallTriggerDBModel = wappCallTriggerRepository.findById(triggerId);
         Optional<WappAccountDBModel> wappAccountDBModel = wappAccountRepository.findById(accountId);
         if (wappCallTriggerDBModel.isPresent() && wappAccountDBModel.isPresent()){
 
+            wappCallTriggerDBModel.get().setTrigger(trigger);
             wappCallTriggerDBModel.get().setTriggerDesc(triggerDesc);
             wappCallTriggerDBModel.get().setAccountId(accountId);
             wappCallTriggerDBModel.get().setAccount(wappAccountDBModel.get().getAccount());
@@ -450,8 +457,6 @@ public class ProcessTriggerFramework {
     }
 
 
-
-
     public List<WappMessageTriggerWSDTO> getWappMessageTriggersService(long userId,String processId) {
 
         List<WappMessageTriggerWSDTO>wappMessageTriggerWSDTOS = new ArrayList<>();
@@ -471,8 +476,7 @@ public class ProcessTriggerFramework {
         return null;
     }
 
-
-    public WappMessageTriggerWSDTO createWappMessageTriggerService(long userId,String processId,String triggerDesc,String accountId,String wappTitle,String wappBody,long typeId) {
+    public WappMessageTriggerWSDTO createWappMessageTriggerService(long userId,String processId,String trigger,String triggerDesc,String accountId,String wappTitle,String wappBody,long typeId) {
 
         Optional<WappAccountDBModel> wappAccountDBModel = wappAccountRepository.findById(accountId);
         Optional<TriggerTypeDBModel> triggerTypeDBModel = triggerTypeRepository.findById(typeId);
@@ -480,6 +484,7 @@ public class ProcessTriggerFramework {
 
             WappMessageTriggerDBModel wappMessageTriggerDBModel = new WappMessageTriggerDBModel();
             wappMessageTriggerDBModel.setProcessId(processId);
+            wappMessageTriggerDBModel.setTrigger(trigger);
             wappMessageTriggerDBModel.setTriggerDesc(triggerDesc);
             wappMessageTriggerDBModel.setAccountId(accountId);
             wappMessageTriggerDBModel.setAccount(wappAccountDBModel.get().getAccount());
@@ -497,13 +502,13 @@ public class ProcessTriggerFramework {
         return null;
     }
 
-
-    public WappMessageTriggerWSDTO updateWappMessageTriggerService(long userId, String triggerId,String triggerDesc,String accountId,String wappTitle,String wappBody) {
+    public WappMessageTriggerWSDTO updateWappMessageTriggerService(long userId,String triggerId,String trigger,String triggerDesc,String accountId,String wappTitle,String wappBody) {
 
         Optional<WappMessageTriggerDBModel> wappMessageTriggerDBModel = wappMessageTriggerRepository.findById(triggerId);
         Optional<WappAccountDBModel> wappAccountDBModel = wappAccountRepository.findById(accountId);
         if (wappMessageTriggerDBModel.isPresent() && wappAccountDBModel.isPresent()){
 
+            wappMessageTriggerDBModel.get().setTrigger(trigger);
             wappMessageTriggerDBModel.get().setTriggerDesc(triggerDesc);
             wappMessageTriggerDBModel.get().setAccountId(accountId);
             wappMessageTriggerDBModel.get().setAccount(wappAccountDBModel.get().getAccount());
@@ -516,7 +521,6 @@ public class ProcessTriggerFramework {
         }
         return null;
     }
-
 
     public WappMessageTriggerWSDTO removeWappMessageTriggerService(long userId, String triggerId) {
 

@@ -12,6 +12,7 @@ public class EmailTriggerDBModel {
     @Id
     private String id;
     private String processId;
+    private String trigger;
     private String triggerDesc;
     private String accountId;
     private String account;
@@ -29,9 +30,10 @@ public class EmailTriggerDBModel {
     public EmailTriggerDBModel() {
     }
 
-    public EmailTriggerDBModel(String id, String processId, String triggerDesc, String accountId, String account, String emailSubject, String emailTitle, String emailBody, String emailSender, List<TriggerDataDAO> datas, long typeId, String triggerType, long uDate, long cDate, int status) {
+    public EmailTriggerDBModel(String id, String processId, String trigger, String triggerDesc, String accountId, String account, String emailSubject, String emailTitle, String emailBody, String emailSender, List<TriggerDataDAO> datas, long typeId, String triggerType, long uDate, long cDate, int status) {
         this.id = id;
         this.processId = processId;
+        this.trigger = trigger;
         this.triggerDesc = triggerDesc;
         this.accountId = accountId;
         this.account = account;
@@ -61,6 +63,14 @@ public class EmailTriggerDBModel {
 
     public void setProcessId(String processId) {
         this.processId = processId;
+    }
+
+    public String getTrigger() {
+        return trigger;
+    }
+
+    public void setTrigger(String trigger) {
+        this.trigger = trigger;
     }
 
     public String getTriggerDesc() {

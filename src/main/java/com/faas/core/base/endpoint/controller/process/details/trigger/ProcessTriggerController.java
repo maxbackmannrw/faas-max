@@ -64,11 +64,12 @@ public class ProcessTriggerController {
     @RequestMapping(value = BaseRoute.CREATE_AI_TRIGGER, method = RequestMethod.POST)
     public ResponseEntity<?> createAITrigger(@RequestParam long userId,
                                              @RequestParam String processId,
+                                             @RequestParam String trigger,
                                              @RequestParam String triggerDesc,
                                              @RequestParam String accountId,
                                              @RequestParam long typeId) {
 
-        AiTriggerWSModel response = processTriggerMiddleware.createAITrigger(userId,processId,triggerDesc,accountId,typeId);
+        AiTriggerWSModel response = processTriggerMiddleware.createAITrigger(userId,processId,trigger,triggerDesc,accountId,typeId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -80,10 +81,11 @@ public class ProcessTriggerController {
     @RequestMapping(value = BaseRoute.UPDATE_AI_TRIGGER, method = RequestMethod.POST)
     public ResponseEntity<?> updateAITrigger(@RequestParam long userId,
                                              @RequestParam String triggerId,
+                                             @RequestParam String trigger,
                                              @RequestParam String triggerDesc,
                                              @RequestParam String accountId) {
 
-        AiTriggerWSModel response = processTriggerMiddleware.updateAITrigger(userId,triggerId,triggerDesc,accountId);
+        AiTriggerWSModel response = processTriggerMiddleware.updateAITrigger(userId,triggerId,trigger,triggerDesc,accountId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -103,7 +105,6 @@ public class ProcessTriggerController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
 
     @RequestMapping(value = BaseRoute.GET_EMAIL_TRIGGERS, method = RequestMethod.POST)
@@ -133,6 +134,7 @@ public class ProcessTriggerController {
     @RequestMapping(value = BaseRoute.CREATE_EMAIL_TRIGGER, method = RequestMethod.POST)
     public ResponseEntity<?> createEmailTrigger(@RequestParam long userId,
                                                 @RequestParam String processId,
+                                                @RequestParam String trigger,
                                                 @RequestParam String triggerDesc,
                                                 @RequestParam String accountId,
                                                 @RequestParam String emailSubject,
@@ -141,7 +143,7 @@ public class ProcessTriggerController {
                                                 @RequestParam String emailSender,
                                                 @RequestParam long typeId) {
 
-        EmailTriggerWSModel response = processTriggerMiddleware.createEmailTrigger(userId,processId,triggerDesc,accountId,emailSubject,emailTitle,emailBody,emailSender,typeId);
+        EmailTriggerWSModel response = processTriggerMiddleware.createEmailTrigger(userId,processId,trigger,triggerDesc,accountId,emailSubject,emailTitle,emailBody,emailSender,typeId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -152,6 +154,7 @@ public class ProcessTriggerController {
     @RequestMapping(value = BaseRoute.UPDATE_EMAIL_TRIGGER, method = RequestMethod.POST)
     public ResponseEntity<?> updateEmailTrigger(@RequestParam long userId,
                                                 @RequestParam String triggerId,
+                                                @RequestParam String trigger,
                                                 @RequestParam String triggerDesc,
                                                 @RequestParam String accountId,
                                                 @RequestParam String emailSubject,
@@ -159,7 +162,7 @@ public class ProcessTriggerController {
                                                 @RequestParam String emailBody,
                                                 @RequestParam String emailSender) {
 
-        EmailTriggerWSModel response = processTriggerMiddleware.updateEmailTrigger(userId,triggerId,triggerDesc,accountId,emailSubject,emailTitle,emailBody,emailSender);
+        EmailTriggerWSModel response = processTriggerMiddleware.updateEmailTrigger(userId,triggerId,trigger,triggerDesc,accountId,emailSubject,emailTitle,emailBody,emailSender);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -210,12 +213,13 @@ public class ProcessTriggerController {
     @RequestMapping(value = BaseRoute.CREATE_SIP_CALL_TRIGGER, method = RequestMethod.POST)
     public ResponseEntity<?> createSipCallTrigger(@RequestParam long userId,
                                                   @RequestParam String processId,
+                                                  @RequestParam String trigger,
                                                   @RequestParam String triggerDesc,
                                                   @RequestParam String accountId,
                                                   @RequestParam String callerId,
                                                   @RequestParam long typeId) {
 
-        SipCallTriggerWSModel response = processTriggerMiddleware.createSipCallTrigger(userId,processId,triggerDesc,accountId,callerId,typeId);
+        SipCallTriggerWSModel response = processTriggerMiddleware.createSipCallTrigger(userId,processId,trigger,triggerDesc,accountId,callerId,typeId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -226,11 +230,12 @@ public class ProcessTriggerController {
     @RequestMapping(value = BaseRoute.UPDATE_SIP_CALL_TRIGGER, method = RequestMethod.POST)
     public ResponseEntity<?> updateSipCallTrigger(@RequestParam long userId,
                                                   @RequestParam String triggerId,
+                                                  @RequestParam String trigger,
                                                   @RequestParam String triggerDesc,
                                                   @RequestParam String accountId,
                                                   @RequestParam String callerId) {
 
-        SipCallTriggerWSModel response = processTriggerMiddleware.updateSipCallTrigger(userId,triggerId,triggerDesc,accountId,callerId);
+        SipCallTriggerWSModel response = processTriggerMiddleware.updateSipCallTrigger(userId,triggerId,trigger,triggerDesc,accountId,callerId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -279,6 +284,7 @@ public class ProcessTriggerController {
     @RequestMapping(value = BaseRoute.CREATE_SMS_MESSAGE_TRIGGER, method = RequestMethod.POST)
     public ResponseEntity<?> createSmsMessageTrigger(@RequestParam long userId,
                                                      @RequestParam String processId,
+                                                     @RequestParam String trigger,
                                                      @RequestParam String triggerDesc,
                                                      @RequestParam String accountId,
                                                      @RequestParam String smsTitle,
@@ -286,7 +292,7 @@ public class ProcessTriggerController {
                                                      @RequestParam String senderId,
                                                      @RequestParam long typeId) {
 
-        SmsMessageTriggerWSModel response = processTriggerMiddleware.createSmsMessageTrigger(userId,processId,triggerDesc,accountId,smsTitle,smsBody,senderId,typeId);
+        SmsMessageTriggerWSModel response = processTriggerMiddleware.createSmsMessageTrigger(userId,processId,trigger,triggerDesc,accountId,smsTitle,smsBody,senderId,typeId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -297,13 +303,14 @@ public class ProcessTriggerController {
     @RequestMapping(value = BaseRoute.UPDATE_SMS_MESSAGE_TRIGGER, method = RequestMethod.POST)
     public ResponseEntity<?> updateSmsMessageTrigger(@RequestParam long userId,
                                                      @RequestParam String triggerId,
+                                                     @RequestParam String trigger,
                                                      @RequestParam String triggerDesc,
                                                      @RequestParam String accountId,
                                                      @RequestParam String smsTitle,
                                                      @RequestParam String smsBody,
                                                      @RequestParam String senderId) {
 
-        SmsMessageTriggerWSModel response = processTriggerMiddleware.updateSmsMessageTrigger(userId,triggerId,triggerDesc,accountId,smsTitle,smsBody,senderId);
+        SmsMessageTriggerWSModel response = processTriggerMiddleware.updateSmsMessageTrigger(userId,triggerId,trigger,triggerDesc,accountId,smsTitle,smsBody,senderId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -322,7 +329,6 @@ public class ProcessTriggerController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
 
     @RequestMapping(value = BaseRoute.GET_WAPP_CALL_TRIGGERS, method = RequestMethod.POST)
@@ -352,11 +358,12 @@ public class ProcessTriggerController {
     @RequestMapping(value = BaseRoute.CREATE_WAPP_CALL_TRIGGER, method = RequestMethod.POST)
     public ResponseEntity<?> createWappCallTrigger(@RequestParam long userId,
                                                    @RequestParam String processId,
+                                                   @RequestParam String trigger,
                                                    @RequestParam String triggerDesc,
                                                    @RequestParam String accountId,
                                                    @RequestParam long typeId) {
 
-        WappCallTriggerWSModel response = processTriggerMiddleware.createWappCallTrigger(userId,processId,triggerDesc,accountId,typeId);
+        WappCallTriggerWSModel response = processTriggerMiddleware.createWappCallTrigger(userId,processId,trigger,triggerDesc,accountId,typeId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -367,10 +374,11 @@ public class ProcessTriggerController {
     @RequestMapping(value = BaseRoute.UPDATE_WAPP_CALL_TRIGGER, method = RequestMethod.POST)
     public ResponseEntity<?> updateWappCallTrigger(@RequestParam long userId,
                                                    @RequestParam String triggerId,
+                                                   @RequestParam String trigger,
                                                    @RequestParam String triggerDesc,
                                                    @RequestParam String accountId) {
 
-        WappCallTriggerWSModel response = processTriggerMiddleware.updateWappCallTrigger(userId,triggerId,triggerDesc,accountId);
+        WappCallTriggerWSModel response = processTriggerMiddleware.updateWappCallTrigger(userId,triggerId,trigger,triggerDesc,accountId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -389,7 +397,6 @@ public class ProcessTriggerController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
 
     @RequestMapping(value = BaseRoute.GET_WAPP_MESSAGE_TRIGGERS, method = RequestMethod.POST)
@@ -419,13 +426,14 @@ public class ProcessTriggerController {
     @RequestMapping(value = BaseRoute.CREATE_WAPP_MESSAGE_TRIGGER, method = RequestMethod.POST)
     public ResponseEntity<?> createWappMessageTrigger(@RequestParam long userId,
                                                       @RequestParam String processId,
+                                                      @RequestParam String trigger,
                                                       @RequestParam String triggerDesc,
                                                       @RequestParam String accountId,
                                                       @RequestParam String wappTitle,
                                                       @RequestParam String wappBody,
                                                       @RequestParam long typeId) {
 
-        WappMessageTriggerWSModel response = processTriggerMiddleware.createWappMessageTrigger(userId,processId,triggerDesc,accountId,wappTitle,wappBody,typeId);
+        WappMessageTriggerWSModel response = processTriggerMiddleware.createWappMessageTrigger(userId,processId,trigger,triggerDesc,accountId,wappTitle,wappBody,typeId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -436,12 +444,13 @@ public class ProcessTriggerController {
     @RequestMapping(value = BaseRoute.UPDATE_WAPP_MESSAGE_TRIGGER, method = RequestMethod.POST)
     public ResponseEntity<?> updateWappMessageTrigger(@RequestParam long userId,
                                                       @RequestParam String triggerId,
+                                                      @RequestParam String trigger,
                                                       @RequestParam String triggerDesc,
                                                       @RequestParam String accountId,
                                                       @RequestParam String wappTitle,
                                                       @RequestParam String wappBody) {
 
-        WappMessageTriggerWSModel response = processTriggerMiddleware.updateWappMessageTrigger(userId,triggerId,triggerDesc,accountId,wappTitle,wappBody);
+        WappMessageTriggerWSModel response = processTriggerMiddleware.updateWappMessageTrigger(userId,triggerId,trigger,triggerDesc,accountId,wappTitle,wappBody);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
