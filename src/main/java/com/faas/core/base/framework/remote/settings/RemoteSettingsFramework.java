@@ -35,7 +35,7 @@ public class RemoteSettingsFramework {
     }
 
 
-    public List<RemoteTypeWSDTO> getRemoteTypesByBaseService(long userId,String baseType) {
+    public List<RemoteTypeWSDTO> getRemoteTypesByBaseTypeService(long userId,String baseType) {
 
         List<RemoteTypeWSDTO> remoteTypeWSDTOS = new ArrayList<>();
         List<RemoteTypeDBModel> remoteTypeDBModels = remoteTypeRepository.findByBaseType(baseType);

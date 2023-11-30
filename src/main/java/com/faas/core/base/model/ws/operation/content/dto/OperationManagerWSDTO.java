@@ -1,8 +1,8 @@
 package com.faas.core.base.model.ws.operation.content.dto;
 
-import com.faas.core.base.model.ws.operation.automatic.content.dto.AutomaticManagerWSDTO;
-import com.faas.core.base.model.ws.operation.inquiry.content.dto.InquiryManagerWSDTO;
-import com.faas.core.base.model.ws.operation.manual.content.dto.ManualManagerWSDTO;
+import com.faas.core.base.model.ws.operation.automatic.dto.AutomaticManagerWSDTO;
+import com.faas.core.base.model.ws.operation.inquiry.dto.InquiryManagerWSDTO;
+import com.faas.core.base.model.ws.operation.manual.dto.ManualManagerWSDTO;
 
 public class OperationManagerWSDTO {
 

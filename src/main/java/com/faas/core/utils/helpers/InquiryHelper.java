@@ -12,7 +12,7 @@ import com.faas.core.base.model.db.user.content.UserDBModel;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
 import com.faas.core.base.model.ws.operation.content.dto.OperationListWSDTO;
 import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
-import com.faas.core.base.model.ws.operation.inquiry.content.dto.OperationInquirySessionWSDTO;
+import com.faas.core.base.model.ws.operation.inquiry.dto.OperationInquirySessionWSDTO;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.operation.details.inquiry.OperationInquiryRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;

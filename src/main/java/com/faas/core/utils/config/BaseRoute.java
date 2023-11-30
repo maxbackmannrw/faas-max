@@ -237,10 +237,17 @@ public class BaseRoute {
 
 
     public static final String GET_ALL_REMOTES = "getallremotes";
+    public static final String GET_REMOTES_BY_BASE_TYPE = "getremotesbybasetype";
+    public static final String GET_REMOTE = "getremote";
+    public static final String CREATE_REMOTE = "createremote";
+    public static final String UPDATE_REMOTE = "updateremote";
+    public static final String REMOVE_REMOTE = "removeremote";
+
+    public static final String GET_REMOTE_DETAILS = "getremotedetails";
 
 
     public static final String GET_ALL_REMOTE_TYPES = "getallremotetypes";
-    public static final String GET_REMOTE_TYPES_BY_BASE = "getremotetypesbybase";
+    public static final String GET_REMOTE_TYPES_BY_BASE_TYPE = "getremotetypesbybasetype";
     public static final String GET_REMOTE_TYPE = "getremotetype";
     public static final String CREATE_REMOTE_TYPE = "createremotetype";
     public static final String UPDATE_REMOTE_TYPE = "updateremotetype";

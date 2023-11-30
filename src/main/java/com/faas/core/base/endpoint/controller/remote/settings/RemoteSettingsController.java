@@ -33,11 +33,11 @@ public class RemoteSettingsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-    @RequestMapping(value = BaseRoute.GET_REMOTE_TYPES_BY_BASE, method = RequestMethod.POST)
-    public ResponseEntity<?> getRemoteTypesByBase(@RequestParam long userId,
-                                                  @RequestParam String baseType) {
+    @RequestMapping(value = BaseRoute.GET_REMOTE_TYPES_BY_BASE_TYPE, method = RequestMethod.POST)
+    public ResponseEntity<?> getRemoteTypesByBaseType(@RequestParam long userId,
+                                                      @RequestParam String baseType) {
 
-        RemoteTypeWSModel response = remoteSettingsMiddleware.getRemoteTypesByBase(userId,baseType);
+        RemoteTypeWSModel response = remoteSettingsMiddleware.getRemoteTypesByBaseType(userId,baseType);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

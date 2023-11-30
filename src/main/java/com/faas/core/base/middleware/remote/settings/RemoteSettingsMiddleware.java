@@ -40,17 +40,17 @@ public class RemoteSettingsMiddleware {
     }
 
 
-    public RemoteTypeWSModel getRemoteTypesByBase(long userId, String baseType) {
+    public RemoteTypeWSModel getRemoteTypesByBaseType(long userId, String baseType) {
 
         RemoteTypeWSModel response = new RemoteTypeWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<RemoteTypeWSDTO> remoteTypeWSDTOS = remoteSettingsFramework.getRemoteTypesByBaseService(userId,baseType);
+        List<RemoteTypeWSDTO> remoteTypeWSDTOS = remoteSettingsFramework.getRemoteTypesByBaseTypeService(userId,baseType);
         if (remoteTypeWSDTOS != null){
             response.setRemoteTypes(remoteTypeWSDTOS);
         }
 
-        general.setOperation("getRemoteTypesByBase");
+        general.setOperation("getRemoteTypesByBaseType");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

@@ -19,9 +19,37 @@ public class RemoteFramework {
     public ClientRemoteListWSDTO getAllRemotesService(long userId, String remoteType, String remoteState, int reqPage, int reqSize) {
 
         return null;
-
     }
 
+
+    public ClientRemoteListWSDTO getRemotesByBaseTypeService(long userId, String remoteType, String remoteState, int reqPage, int reqSize) {
+
+        return null;
+    }
+
+
+    public ClientRemoteListWSDTO getRemoteService(long userId, String remoteType, String remoteState, int reqPage, int reqSize) {
+
+        return null;
+    }
+
+
+    public ClientRemoteListWSDTO createRemoteService(long userId, String remoteType, String remoteState, int reqPage, int reqSize) {
+
+        return null;
+    }
+
+
+    public ClientRemoteListWSDTO updateRemoteService(long userId, String remoteType, String remoteState, int reqPage, int reqSize) {
+
+        return null;
+    }
+
+
+    public ClientRemoteListWSDTO removeRemoteService(long userId, String remoteType, String remoteState, int reqPage, int reqSize) {
+
+        return null;
+    }
 
 
 }

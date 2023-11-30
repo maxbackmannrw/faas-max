@@ -6,7 +6,6 @@ import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
 import com.faas.core.base.model.ws.operation.content.dto.OperationListWSDTO;
 import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
-import com.faas.core.base.model.ws.operation.manual.content.dto.ManualManagerWSDTO;
 import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
 import com.faas.core.base.repo.client.details.*;
 import com.faas.core.base.repo.operation.content.OperationRepository;
