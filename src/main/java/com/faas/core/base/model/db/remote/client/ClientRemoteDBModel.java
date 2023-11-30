@@ -1,11 +1,11 @@
-package com.faas.core.base.model.db.remote.content;
+package com.faas.core.base.model.db.remote.client;
 
-import com.faas.core.base.model.db.remote.content.dao.RemoteDeviceDAO;
+import com.faas.core.base.model.db.remote.client.dao.ClientRemoteDAO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "remote_table")
-public class RemoteDBModel {
+@Document(collection = "client_remote_table")
+public class ClientRemoteDBModel {
 
     @Id
     private String id;
@@ -16,17 +16,21 @@ public class RemoteDBModel {
     private String campaign;
     private String processId;
     private String process;
-    private RemoteDeviceDAO remoteDevice;
+    private String remoteId;
+    private String remote;
+    private String remoteDesc;
+    private long remoteTypeId;
     private String remoteType;
+    private ClientRemoteDAO clientRemote;
     private String remoteState;
     private long uDate;
     private long cDate;
     private int status;
 
-    public RemoteDBModel() {
+    public ClientRemoteDBModel() {
     }
 
-    public RemoteDBModel(String id, long clientId, long sessionId, String operationId, String campaignId, String campaign, String processId, String process, RemoteDeviceDAO remoteDevice, String remoteType, String remoteState, long uDate, long cDate, int status) {
+    public ClientRemoteDBModel(String id, long clientId, long sessionId, String operationId, String campaignId, String campaign, String processId, String process, String remoteId, String remote, String remoteDesc, long remoteTypeId, String remoteType, ClientRemoteDAO clientRemote, String remoteState, long uDate, long cDate, int status) {
         this.id = id;
         this.clientId = clientId;
         this.sessionId = sessionId;
@@ -35,8 +39,12 @@ public class RemoteDBModel {
         this.campaign = campaign;
         this.processId = processId;
         this.process = process;
-        this.remoteDevice = remoteDevice;
+        this.remoteId = remoteId;
+        this.remote = remote;
+        this.remoteDesc = remoteDesc;
+        this.remoteTypeId = remoteTypeId;
         this.remoteType = remoteType;
+        this.clientRemote = clientRemote;
         this.remoteState = remoteState;
         this.uDate = uDate;
         this.cDate = cDate;
@@ -107,12 +115,36 @@ public class RemoteDBModel {
         this.process = process;
     }
 
-    public RemoteDeviceDAO getRemoteDevice() {
-        return remoteDevice;
+    public String getRemoteId() {
+        return remoteId;
     }
 
-    public void setRemoteDevice(RemoteDeviceDAO remoteDevice) {
-        this.remoteDevice = remoteDevice;
+    public void setRemoteId(String remoteId) {
+        this.remoteId = remoteId;
+    }
+
+    public String getRemote() {
+        return remote;
+    }
+
+    public void setRemote(String remote) {
+        this.remote = remote;
+    }
+
+    public String getRemoteDesc() {
+        return remoteDesc;
+    }
+
+    public void setRemoteDesc(String remoteDesc) {
+        this.remoteDesc = remoteDesc;
+    }
+
+    public long getRemoteTypeId() {
+        return remoteTypeId;
+    }
+
+    public void setRemoteTypeId(long remoteTypeId) {
+        this.remoteTypeId = remoteTypeId;
     }
 
     public String getRemoteType() {
@@ -121,6 +153,14 @@ public class RemoteDBModel {
 
     public void setRemoteType(String remoteType) {
         this.remoteType = remoteType;
+    }
+
+    public ClientRemoteDAO getClientRemote() {
+        return clientRemote;
+    }
+
+    public void setClientRemote(ClientRemoteDAO clientRemote) {
+        this.clientRemote = clientRemote;
     }
 
     public String getRemoteState() {

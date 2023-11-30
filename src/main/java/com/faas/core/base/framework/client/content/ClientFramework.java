@@ -13,7 +13,7 @@ import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.client.details.*;
 import com.faas.core.base.repo.client.settings.ClientTypeRepository;
 import com.faas.core.base.repo.operation.details.channel.*;
-import com.faas.core.base.repo.remote.RemoteRepository;
+import com.faas.core.base.repo.remote.client.ClientRemoteRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.utility.CityRepository;
@@ -56,7 +56,7 @@ public class ClientFramework {
     ClientAddressRepository clientAddressRepository;
 
     @Autowired
-    RemoteRepository remoteRepository;
+    ClientRemoteRepository clientRemoteRepository;
 
     @Autowired
     ClientNoteRepository clientNoteRepository;

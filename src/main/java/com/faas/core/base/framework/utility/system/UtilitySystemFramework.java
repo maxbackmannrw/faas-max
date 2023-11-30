@@ -10,7 +10,7 @@ import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.client.details.*;
 import com.faas.core.base.repo.process.details.trigger.*;
-import com.faas.core.base.repo.remote.RemoteRepository;
+import com.faas.core.base.repo.remote.client.ClientRemoteRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.base.repo.operation.details.channel.*;
 import com.faas.core.base.repo.operation.content.OperationRepository;
@@ -64,7 +64,7 @@ public class UtilitySystemFramework {
     ClientPhoneRepository clientPhoneRepository;
 
     @Autowired
-    RemoteRepository remoteRepository;
+    ClientRemoteRepository clientRemoteRepository;
 
     @Autowired
     SessionRepository sessionRepository;
@@ -401,7 +401,7 @@ public class UtilitySystemFramework {
         clientEmailRepository.deleteAll();
         clientNoteRepository.deleteAll();
         clientPhoneRepository.deleteAll();
-        remoteRepository.deleteAll();
+        clientRemoteRepository.deleteAll();
         sessionRepository.deleteAll();
         operationRepository.deleteAll();
         operationScenarioRepository.deleteAll();

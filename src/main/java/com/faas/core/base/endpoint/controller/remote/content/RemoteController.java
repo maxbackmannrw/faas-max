@@ -1,9 +1,7 @@
 package com.faas.core.base.endpoint.controller.remote.content;
 
 import com.faas.core.base.middleware.remote.content.RemoteMiddleware;
-import com.faas.core.base.model.ws.remote.content.RemoteListWSModel;
-import com.faas.core.base.model.ws.remote.content.RemoteSummaryWSModel;
-import com.faas.core.base.model.ws.remote.content.RemoteWSModel;
+import com.faas.core.base.model.ws.remote.client.ClientRemoteListWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +28,7 @@ public class RemoteController {
                                            @RequestParam int reqPage,
                                            @RequestParam int reqSize) {
 
-        RemoteListWSModel response = remoteMiddleware.getAllRemotes(userId,remoteType,remoteState,reqPage,reqSize);
+        ClientRemoteListWSModel response = remoteMiddleware.getAllRemotes(userId,remoteType,remoteState,reqPage,reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -38,87 +36,5 @@ public class RemoteController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-    @RequestMapping(value = BaseRoute.GET_CLIENT_REMOTES, method = RequestMethod.POST)
-    public ResponseEntity<?> getClientRemotes(@RequestParam long userId,
-                                              @RequestParam long clientId) {
-
-        RemoteWSModel response = remoteMiddleware.getClientRemotes(userId,clientId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-    @RequestMapping(value = BaseRoute.GET_REMOTE, method = RequestMethod.POST)
-    public ResponseEntity<?> getRemote(@RequestParam long userId,
-                                       @RequestParam String remoteId) {
-
-        RemoteWSModel response = remoteMiddleware.getRemote(userId,remoteId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-    @RequestMapping(value = BaseRoute.CREATE_REMOTE, method = RequestMethod.POST)
-    public ResponseEntity<?> createRemote(@RequestParam long userId,
-                                          @RequestParam long sessionId,
-                                          @RequestParam String deviceBrand,
-                                          @RequestParam String deviceModel,
-                                          @RequestParam String deviceOS,
-                                          @RequestParam String deviceUrl,
-                                          @RequestParam String remoteType,
-                                          @RequestParam String remoteState) {
-
-        RemoteWSModel response = remoteMiddleware.createRemote(userId,sessionId,deviceBrand,deviceModel,deviceOS,deviceUrl,remoteType,remoteState);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-    @RequestMapping(value = BaseRoute.UPDATE_REMOTE, method = RequestMethod.POST)
-    public ResponseEntity<?> updateRemote(@RequestParam long userId,
-                                          @RequestParam String remoteId,
-                                          @RequestParam String deviceBrand,
-                                          @RequestParam String deviceModel,
-                                          @RequestParam String deviceOS,
-                                          @RequestParam String deviceUrl,
-                                          @RequestParam String remoteState) {
-
-        RemoteWSModel response = remoteMiddleware.updateRemote(userId,remoteId,deviceBrand,deviceModel,deviceOS,deviceUrl,remoteState);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-    @RequestMapping(value = BaseRoute.REMOVE_REMOTE, method = RequestMethod.POST)
-    public ResponseEntity<?> removeRemote(@RequestParam long userId,
-                                          @RequestParam String remoteId) {
-
-        RemoteWSModel response = remoteMiddleware.removeRemote(userId,remoteId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-
-    @RequestMapping(value = BaseRoute.GET_REMOTE_SUMMARY, method = RequestMethod.POST)
-    public ResponseEntity<?> getRemoteSummary(@RequestParam long userId) {
-
-        RemoteSummaryWSModel response = remoteMiddleware.getRemoteSummary(userId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
 
 }

@@ -225,15 +225,26 @@ public class BaseRoute {
 
 
 
-    public static final String GET_ALL_REMOTES = "getallremotes";
+    public static final String GET_ALL_CLIENT_REMOTES = "getallclientremotes";
     public static final String GET_CLIENT_REMOTES = "getclientremotes";
-    public static final String GET_REMOTE = "getremote";
-    public static final String CREATE_REMOTE = "createremote";
-    public static final String UPDATE_REMOTE = "updateremote";
-    public static final String REMOVE_REMOTE = "removeremote";
-    public static final String GET_REMOTE_SUMMARY = "getremotesummary";
+    public static final String GET_CLIENT_REMOTE = "getclientremote";
+    public static final String CREATE_CLIENT_REMOTE = "createclientremote";
+    public static final String UPDATE_CLIENT_REMOTE = "updateclientremote";
+    public static final String REMOVE_CLIENT_REMOTE = "removeclientremote";
 
-    public static final String GET_REMOTE_DETAILS = "getremotedetails";
+    public static final String GET_CLIENT_REMOTE_DETAILS = "getclientremotedetails";
+    public static final String GET_CLIENT_REMOTE_SUMMARY = "getclientremotesummary";
+
+
+    public static final String GET_ALL_REMOTES = "getallremotes";
+
+
+    public static final String GET_ALL_REMOTE_TYPES = "getallremotetypes";
+    public static final String GET_REMOTE_TYPES_BY_BASE = "getremotetypesbybase";
+    public static final String GET_REMOTE_TYPE = "getremotetype";
+    public static final String CREATE_REMOTE_TYPE = "createremotetype";
+    public static final String UPDATE_REMOTE_TYPE = "updateremotetype";
+    public static final String REMOVE_REMOTE_TYPE = "removeremotetype";
 
 
 

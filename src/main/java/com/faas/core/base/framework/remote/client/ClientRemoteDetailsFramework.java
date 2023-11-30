@@ -1,21 +1,23 @@
-package com.faas.core.base.framework.remote.details;
+package com.faas.core.base.framework.remote.client;
 
-import com.faas.core.base.model.ws.remote.content.dto.RemoteWSDTO;
+import com.faas.core.base.model.ws.remote.client.dto.ClientRemoteSummaryWSDTO;
+import com.faas.core.base.model.ws.remote.client.dto.ClientRemoteWSDTO;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.client.details.*;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.operation.details.flow.OperationFlowRepository;
 import com.faas.core.base.repo.operation.details.inquiry.OperationInquiryRepository;
 import com.faas.core.base.repo.operation.details.scenario.OperationScenarioRepository;
-import com.faas.core.base.repo.remote.RemoteRepository;
+import com.faas.core.base.repo.remote.client.ClientRemoteRepository;
 import com.faas.core.base.repo.session.SessionRepository;
+import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 
 @Component
-public class RemoteDetailsFramework {
+public class ClientRemoteDetailsFramework {
 
 
     @Autowired
@@ -37,7 +39,7 @@ public class RemoteDetailsFramework {
     ClientPhoneRepository clientPhoneRepository;
 
     @Autowired
-    RemoteRepository remoteRepository;
+    ClientRemoteRepository clientRemoteRepository;
 
     @Autowired
     SessionRepository sessionRepository;
@@ -58,11 +60,22 @@ public class RemoteDetailsFramework {
     AppUtils appUtils;
 
 
-    public RemoteWSDTO getClientRemoteDetailsService(long userId) {
+    public ClientRemoteWSDTO getClientRemoteDetailsService(long userId) {
 
         return null;
     }
 
+
+    public ClientRemoteSummaryWSDTO getClientRemoteSummaryService(long userId) {
+
+        ClientRemoteSummaryWSDTO clientRemoteSummaryWSDTO = new ClientRemoteSummaryWSDTO();
+        clientRemoteSummaryWSDTO.setTotalRemote(clientRemoteRepository.count());
+        clientRemoteSummaryWSDTO.setReadyRemote(clientRemoteRepository.countByRemoteState(AppConstant.READY_REMOTE));
+        clientRemoteSummaryWSDTO.setActiveRemote(clientRemoteRepository.countByRemoteState(AppConstant.ACTIVE_REMOTE));
+        clientRemoteSummaryWSDTO.setTerminatedRemote(clientRemoteRepository.countByRemoteState(AppConstant.TERMINATED_REMOTE));
+
+        return clientRemoteSummaryWSDTO;
+    }
 
 
 }

@@ -68,7 +68,6 @@ public class ProcessTriggerFramework {
     public ProcessTriggerWSDTO getProcessTriggersService(long userId, String processId) {
 
         ProcessTriggerWSDTO processTriggerWSDTO = new ProcessTriggerWSDTO();
-
         processTriggerWSDTO.setAiTriggers(getAITriggersService(userId,processId));
         processTriggerWSDTO.setEmailTriggers(getEmailTriggersService(userId,processId));
         processTriggerWSDTO.setSipCallTriggers(getSipCallTriggersService(userId,processId));

@@ -1,13 +1,13 @@
 package com.faas.core.utils.helpers;
 
 import com.faas.core.base.model.db.client.content.ClientDBModel;
-import com.faas.core.base.model.db.remote.content.RemoteDBModel;
-import com.faas.core.base.model.db.remote.content.dao.RemoteDeviceDAO;
+import com.faas.core.base.model.db.remote.client.ClientRemoteDBModel;
+import com.faas.core.base.model.db.remote.client.dao.ClientRemoteDAO;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
-import com.faas.core.base.model.ws.remote.content.dto.RemoteListWSDTO;
-import com.faas.core.base.model.ws.remote.content.dto.RemoteWSDTO;
+import com.faas.core.base.model.ws.remote.client.dto.ClientRemoteListWSDTO;
+import com.faas.core.base.model.ws.remote.client.dto.ClientRemoteWSDTO;
 import com.faas.core.base.repo.client.content.ClientRepository;
-import com.faas.core.base.repo.remote.RemoteRepository;
+import com.faas.core.base.repo.remote.client.ClientRemoteRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ public class RemoteHelper {
     ClientRepository clientRepository;
 
     @Autowired
-    RemoteRepository remoteRepository;
+    ClientRemoteRepository clientRemoteRepository;
 
     @Autowired
     SessionRepository sessionRepository;
@@ -35,45 +35,45 @@ public class RemoteHelper {
     AppUtils appUtils;
 
 
-    public RemoteListWSDTO getRemoteListWSDTO(Page<RemoteDBModel> remoteModelPage){
+    public ClientRemoteListWSDTO getRemoteListWSDTO(Page<ClientRemoteDBModel> remoteModelPage){
 
-        RemoteListWSDTO remoteListWSDTO = new RemoteListWSDTO();
-        remoteListWSDTO.setRemotes(getRemoteWSDTOS(remoteModelPage.getContent()));
-        remoteListWSDTO.setPagination(createRemotePagination(remoteModelPage));
+        ClientRemoteListWSDTO clientRemoteListWSDTO = new ClientRemoteListWSDTO();
+        clientRemoteListWSDTO.setRemotes(getRemoteWSDTOS(remoteModelPage.getContent()));
+        clientRemoteListWSDTO.setPagination(createRemotePagination(remoteModelPage));
 
-        return remoteListWSDTO;
+        return clientRemoteListWSDTO;
     }
 
 
-    public List<RemoteWSDTO> getRemoteWSDTOS(List<RemoteDBModel> remoteDBModels){
+    public List<ClientRemoteWSDTO> getRemoteWSDTOS(List<ClientRemoteDBModel> clientRemoteDBModels){
 
-        List<RemoteWSDTO> remoteWSDTOS = new ArrayList<>();
-        for (RemoteDBModel remoteDBModel : remoteDBModels) {
-            RemoteWSDTO remoteWSDTO = getRemoteWSDTO(remoteDBModel);
-            if (remoteWSDTO != null) {
-                remoteWSDTOS.add(remoteWSDTO);
+        List<ClientRemoteWSDTO> clientRemoteWSDTOS = new ArrayList<>();
+        for (ClientRemoteDBModel clientRemoteDBModel : clientRemoteDBModels) {
+            ClientRemoteWSDTO clientRemoteWSDTO = getRemoteWSDTO(clientRemoteDBModel);
+            if (clientRemoteWSDTO != null) {
+                clientRemoteWSDTOS.add(clientRemoteWSDTO);
             }
         }
-        return remoteWSDTOS;
+        return clientRemoteWSDTOS;
     }
 
 
-    public RemoteWSDTO getRemoteWSDTO(RemoteDBModel remoteDBModel){
+    public ClientRemoteWSDTO getRemoteWSDTO(ClientRemoteDBModel clientRemoteDBModel){
 
-        Optional<ClientDBModel> clientDBModel = clientRepository.findById(remoteDBModel.getClientId());
+        Optional<ClientDBModel> clientDBModel = clientRepository.findById(clientRemoteDBModel.getClientId());
         if (clientDBModel.isPresent()) {
 
-            RemoteWSDTO remoteWSDTO = new RemoteWSDTO();
-            remoteWSDTO.setClient(clientDBModel.get());
-            remoteWSDTO.setClientRemote(remoteDBModel);
+            ClientRemoteWSDTO clientRemoteWSDTO = new ClientRemoteWSDTO();
+            clientRemoteWSDTO.setClient(clientDBModel.get());
+            clientRemoteWSDTO.setClientRemote(clientRemoteDBModel);
 
-            return remoteWSDTO;
+            return clientRemoteWSDTO;
         }
         return null;
     }
 
 
-    public PaginationWSDTO createRemotePagination(Page<RemoteDBModel> remoteModelPage){
+    public PaginationWSDTO createRemotePagination(Page<ClientRemoteDBModel> remoteModelPage){
 
         PaginationWSDTO remotePagination = new PaginationWSDTO();
         remotePagination.setPageSize(remoteModelPage.getPageable().getPageSize());
@@ -85,19 +85,15 @@ public class RemoteHelper {
     }
 
 
-    public RemoteDeviceDAO createRemoteDeviceDAO(String deviceBrand,String deviceModel,String deviceOS,String deviceUrl){
+    public ClientRemoteDAO createRemoteDeviceDAO(String deviceBrand, String deviceModel, String deviceOS, String deviceUrl){
 
-        RemoteDeviceDAO remoteDeviceDAO = new RemoteDeviceDAO();
-        remoteDeviceDAO.setDeviceId(appUtils.generateUUID());
-        remoteDeviceDAO.setDeviceBrand(deviceBrand);
-        remoteDeviceDAO.setDeviceModel(deviceModel);
-        remoteDeviceDAO.setDeviceOS(deviceOS);
-        remoteDeviceDAO.setDeviceUrl(deviceUrl);
-        remoteDeviceDAO.setuDate(appUtils.getCurrentTimeStamp());
-        remoteDeviceDAO.setcDate(appUtils.getCurrentTimeStamp());
-        remoteDeviceDAO.setStatus(1);
+        ClientRemoteDAO clientRemoteDAO = new ClientRemoteDAO();
 
-        return remoteDeviceDAO;
+        clientRemoteDAO.setuDate(appUtils.getCurrentTimeStamp());
+        clientRemoteDAO.setcDate(appUtils.getCurrentTimeStamp());
+        clientRemoteDAO.setStatus(1);
+
+        return clientRemoteDAO;
     }
 
 }

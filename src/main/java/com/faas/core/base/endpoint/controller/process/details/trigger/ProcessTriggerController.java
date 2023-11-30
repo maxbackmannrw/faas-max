@@ -47,7 +47,6 @@ public class ProcessTriggerController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.GET_AI_TRIGGER, method = RequestMethod.POST)
     public ResponseEntity<?> getAITrigger(@RequestParam long userId,
                                           @RequestParam String triggerId) {
@@ -59,7 +58,6 @@ public class ProcessTriggerController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.CREATE_AI_TRIGGER, method = RequestMethod.POST)
     public ResponseEntity<?> createAITrigger(@RequestParam long userId,
@@ -77,7 +75,6 @@ public class ProcessTriggerController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.UPDATE_AI_TRIGGER, method = RequestMethod.POST)
     public ResponseEntity<?> updateAITrigger(@RequestParam long userId,
                                              @RequestParam String triggerId,
@@ -93,7 +90,6 @@ public class ProcessTriggerController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.REMOVE_AI_TRIGGER, method = RequestMethod.POST)
     public ResponseEntity<?> removeAITrigger(@RequestParam long userId,
                                              @RequestParam String triggerId) {
@@ -105,6 +101,7 @@ public class ProcessTriggerController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
+
 
 
     @RequestMapping(value = BaseRoute.GET_EMAIL_TRIGGERS, method = RequestMethod.POST)

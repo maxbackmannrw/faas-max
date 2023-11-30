@@ -1,7 +1,8 @@
 package com.faas.core.base.endpoint.controller.remote.settings;
 
 import com.faas.core.base.middleware.remote.settings.RemoteSettingsMiddleware;
-import com.faas.core.base.model.ws.remote.content.RemoteListWSModel;
+import com.faas.core.base.model.ws.remote.client.ClientRemoteListWSModel;
+import com.faas.core.base.model.ws.remote.settings.RemoteTypeWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,14 +22,10 @@ public class RemoteSettingsController {
     RemoteSettingsMiddleware remoteSettingsMiddleware;
 
 
-    @RequestMapping(value = BaseRoute.GET_ALL_REMOTES, method = RequestMethod.POST)
-    public ResponseEntity<?> getAllRemotes(@RequestParam long userId,
-                                           @RequestParam String remoteType,
-                                           @RequestParam String remoteState,
-                                           @RequestParam int reqPage,
-                                           @RequestParam int reqSize) {
+    @RequestMapping(value = BaseRoute.GET_ALL_REMOTE_TYPES, method = RequestMethod.POST)
+    public ResponseEntity<?> getAllRemoteTypes(@RequestParam long userId) {
 
-        RemoteListWSModel response = remoteSettingsMiddleware.getAllRemotes(userId,remoteType,remoteState,reqPage,reqSize);
+        RemoteTypeWSModel response = remoteSettingsMiddleware.getAllRemoteTypes(userId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -36,5 +33,70 @@ public class RemoteSettingsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+    @RequestMapping(value = BaseRoute.GET_REMOTE_TYPES_BY_BASE, method = RequestMethod.POST)
+    public ResponseEntity<?> getRemoteTypesByBase(@RequestParam long userId,
+                                                  @RequestParam String baseType) {
+
+        RemoteTypeWSModel response = remoteSettingsMiddleware.getRemoteTypesByBase(userId,baseType);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = BaseRoute.GET_REMOTE_TYPE, method = RequestMethod.POST)
+    public ResponseEntity<?> getRemoteType(@RequestParam long userId,
+                                           @RequestParam long remoteTypeId) {
+
+        RemoteTypeWSModel response = remoteSettingsMiddleware.getRemoteType(userId,remoteTypeId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+    @RequestMapping(value = BaseRoute.CREATE_REMOTE_TYPE, method = RequestMethod.POST)
+    public ResponseEntity<?> createRemoteType(@RequestParam long userId,
+                                              @RequestParam String remoteType,
+                                              @RequestParam String baseType) {
+
+        RemoteTypeWSModel response = remoteSettingsMiddleware.createRemoteType(userId,remoteType,baseType);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = BaseRoute.UPDATE_REMOTE_TYPE, method = RequestMethod.POST)
+    public ResponseEntity<?> updateRemoteType(@RequestParam long userId,
+                                              @RequestParam long remoteTypeId,
+                                              @RequestParam String remoteType,
+                                              @RequestParam String baseType) {
+
+        RemoteTypeWSModel response = remoteSettingsMiddleware.updateRemoteType(userId,remoteTypeId,remoteType,baseType);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = BaseRoute.REMOVE_REMOTE_TYPE, method = RequestMethod.POST)
+    public ResponseEntity<?> removeRemoteType(@RequestParam long userId,
+                                              @RequestParam long remoteTypeId) {
+
+        RemoteTypeWSModel response = remoteSettingsMiddleware.removeRemoteType(userId,remoteTypeId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
 
 }
