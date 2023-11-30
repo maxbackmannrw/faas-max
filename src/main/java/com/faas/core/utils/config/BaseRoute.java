@@ -248,7 +248,6 @@ public class BaseRoute {
 
 
 
-
     public static final String GET_ASSETS_BY_TYPE = "getassetsbytype";
     public static final String GET_ASSET = "getasset";
     public static final String CREATE_ASSET = "createasset";
