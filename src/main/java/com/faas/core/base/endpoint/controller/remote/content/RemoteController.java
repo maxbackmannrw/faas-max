@@ -48,7 +48,7 @@ public class RemoteController {
 
     @RequestMapping(value = BaseRoute.GET_REMOTE, method = RequestMethod.POST)
     public ResponseEntity<?> getRemote(@RequestParam long userId,
-                                       @RequestParam long remoteId) {
+                                       @RequestParam String remoteId) {
 
         RemoteWSModel response = remoteMiddleware.getRemote(userId,remoteId);
 
@@ -61,12 +61,14 @@ public class RemoteController {
 
     @RequestMapping(value = BaseRoute.CREATE_REMOTE, method = RequestMethod.POST)
     public ResponseEntity<?> createRemote(@RequestParam long userId,
-                                       @RequestParam String remoteType,
-                                       @RequestParam String remoteState,
-                                       @RequestParam int reqPage,
-                                       @RequestParam int reqSize) {
+                                          @RequestParam String remote,
+                                          @RequestParam String remoteDesc,
+                                          @RequestParam String remoteUrl,
+                                          @RequestParam String remoteModel,
+                                          @RequestParam String remoteVersion,
+                                          @RequestParam long typeId) {
 
-        RemoteWSModel response = remoteMiddleware.createRemote(userId,remoteType,remoteState,reqPage,reqSize);
+        RemoteWSModel response = remoteMiddleware.createRemote(userId,remote,remoteDesc,remoteUrl,remoteModel,remoteVersion,typeId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -77,12 +79,14 @@ public class RemoteController {
 
     @RequestMapping(value = BaseRoute.UPDATE_REMOTE, method = RequestMethod.POST)
     public ResponseEntity<?> updateRemote(@RequestParam long userId,
-                                          @RequestParam String remoteType,
-                                          @RequestParam String remoteState,
-                                          @RequestParam int reqPage,
-                                          @RequestParam int reqSize) {
+                                          @RequestParam String remoteId,
+                                          @RequestParam String remote,
+                                          @RequestParam String remoteDesc,
+                                          @RequestParam String remoteUrl,
+                                          @RequestParam String remoteModel,
+                                          @RequestParam String remoteVersion) {
 
-        RemoteWSModel response = remoteMiddleware.updateRemote(userId,remoteType,remoteState,reqPage,reqSize);
+        RemoteWSModel response = remoteMiddleware.updateRemote(userId,remoteId,remote,remoteDesc,remoteUrl,remoteModel,remoteVersion);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -93,7 +97,7 @@ public class RemoteController {
 
     @RequestMapping(value = BaseRoute.REMOVE_REMOTE, method = RequestMethod.POST)
     public ResponseEntity<?> removeRemote(@RequestParam long userId,
-                                          @RequestParam long remoteId) {
+                                          @RequestParam String remoteId) {
 
         RemoteWSModel response = remoteMiddleware.removeRemote(userId,remoteId);
 

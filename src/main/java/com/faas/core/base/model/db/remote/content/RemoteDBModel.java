@@ -1,8 +1,10 @@
 package com.faas.core.base.model.db.remote.content;
 
-import com.faas.core.base.model.db.remote.content.dao.RemoteDetails;
+import com.faas.core.base.model.db.remote.content.dao.RemoteDataDAO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.List;
 
 
 @Document(collection = "remote_table")
@@ -12,7 +14,10 @@ public class RemoteDBModel {
     private String id;
     private String remote;
     private String remoteDesc;
-    private RemoteDetails remoteDetails;
+    private String remoteUrl;
+    private String remoteModel;
+    private String remoteVersion;
+    private List<RemoteDataDAO>datas;
     private long typeId;
     private String remoteType;
     private String baseType;
@@ -23,11 +28,14 @@ public class RemoteDBModel {
     public RemoteDBModel() {
     }
 
-    public RemoteDBModel(String id, String remote, String remoteDesc, RemoteDetails remoteDetails, long typeId, String remoteType, String baseType, long uDate, long cDate, int status) {
+    public RemoteDBModel(String id, String remote, String remoteDesc, String remoteUrl, String remoteModel, String remoteVersion, List<RemoteDataDAO> datas, long typeId, String remoteType, String baseType, long uDate, long cDate, int status) {
         this.id = id;
         this.remote = remote;
         this.remoteDesc = remoteDesc;
-        this.remoteDetails = remoteDetails;
+        this.remoteUrl = remoteUrl;
+        this.remoteModel = remoteModel;
+        this.remoteVersion = remoteVersion;
+        this.datas = datas;
         this.typeId = typeId;
         this.remoteType = remoteType;
         this.baseType = baseType;
@@ -60,12 +68,36 @@ public class RemoteDBModel {
         this.remoteDesc = remoteDesc;
     }
 
-    public RemoteDetails getRemoteDetails() {
-        return remoteDetails;
+    public String getRemoteUrl() {
+        return remoteUrl;
     }
 
-    public void setRemoteDetails(RemoteDetails remoteDetails) {
-        this.remoteDetails = remoteDetails;
+    public void setRemoteUrl(String remoteUrl) {
+        this.remoteUrl = remoteUrl;
+    }
+
+    public String getRemoteModel() {
+        return remoteModel;
+    }
+
+    public void setRemoteModel(String remoteModel) {
+        this.remoteModel = remoteModel;
+    }
+
+    public String getRemoteVersion() {
+        return remoteVersion;
+    }
+
+    public void setRemoteVersion(String remoteVersion) {
+        this.remoteVersion = remoteVersion;
+    }
+
+    public List<RemoteDataDAO> getDatas() {
+        return datas;
+    }
+
+    public void setDatas(List<RemoteDataDAO> datas) {
+        this.datas = datas;
     }
 
     public long getTypeId() {
