@@ -1,7 +1,6 @@
 package com.faas.core.base.middleware.remote.content;
 
 import com.faas.core.base.framework.remote.content.RemoteDetailsFramework;
-import com.faas.core.base.framework.remote.content.RemoteFramework;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.model.ws.remote.client.ClientRemoteListWSModel;
 import com.faas.core.utils.config.AppConstant;
@@ -17,7 +16,7 @@ public class RemoteDetailsMiddleware {
     RemoteDetailsFramework remoteDetailsFramework;
 
 
-    public ClientRemoteListWSModel getRemoteDetails(long userId, String remoteType, String remoteState, int reqPage, int reqSize) {
+    public ClientRemoteListWSModel getRemoteDetails(long userId) {
 
         ClientRemoteListWSModel response = new ClientRemoteListWSModel();
         GeneralWSModel general = new GeneralWSModel();
@@ -32,5 +31,20 @@ public class RemoteDetailsMiddleware {
         return response;
     }
 
+
+    public ClientRemoteListWSModel getRemoteSummary(long userId) {
+
+        ClientRemoteListWSModel response = new ClientRemoteListWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+
+        general.setOperation("getRemoteSummary");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
 
 }

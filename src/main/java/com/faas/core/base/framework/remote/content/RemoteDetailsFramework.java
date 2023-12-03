@@ -16,12 +16,16 @@ public class RemoteDetailsFramework {
     @Autowired
     AppUtils appUtils;
 
-    public ClientRemoteListWSDTO getAllRemotesService(long userId, String remoteType, String remoteState, int reqPage, int reqSize) {
+    public ClientRemoteListWSDTO getRemoteDetailsService(long userId, String remoteType, String remoteState, int reqPage, int reqSize) {
 
         return null;
-
     }
 
+
+    public ClientRemoteListWSDTO getRemoteSummaryService(long userId, String remoteType, String remoteState, int reqPage, int reqSize) {
+
+        return null;
+    }
 
 
 }
