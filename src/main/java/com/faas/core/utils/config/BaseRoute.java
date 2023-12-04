@@ -244,7 +244,11 @@ public class BaseRoute {
     public static final String REMOVE_REMOTE = "removeremote";
 
     public static final String GET_REMOTE_DETAILS = "getremotedetails";
-    public static final String GET_REMOTE_SUMMARY = "getremotesummary";
+    public static final String GET_REMOTE_DATAS = "getremotedatas";
+    public static final String GET_REMOTE_DATA = "getremotedata";
+    public static final String CREATE_REMOTE_DATA = "createremotedata";
+    public static final String UPDATE_REMOTE_DATA = "updateremotedata";
+    public static final String REMOVE_REMOTE_DATA = "removeremotedata";
 
 
     public static final String GET_ALL_REMOTE_TYPES = "getallremotetypes";

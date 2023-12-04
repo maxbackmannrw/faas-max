@@ -3,6 +3,7 @@ package com.faas.core.utils.helpers;
 import com.faas.core.base.model.db.client.content.ClientDBModel;
 import com.faas.core.base.model.db.remote.client.ClientRemoteDBModel;
 import com.faas.core.base.model.db.remote.client.dao.ClientRemoteDAO;
+import com.faas.core.base.model.db.remote.content.dao.RemoteDataDAO;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
 import com.faas.core.base.model.ws.remote.client.dto.ClientRemoteListWSDTO;
 import com.faas.core.base.model.ws.remote.client.dto.ClientRemoteWSDTO;
@@ -73,18 +74,6 @@ public class RemoteHelper {
     }
 
 
-    public PaginationWSDTO createRemotePagination(Page<ClientRemoteDBModel> remoteModelPage){
-
-        PaginationWSDTO remotePagination = new PaginationWSDTO();
-        remotePagination.setPageSize(remoteModelPage.getPageable().getPageSize());
-        remotePagination.setPageNumber(remoteModelPage.getPageable().getPageNumber());
-        remotePagination.setTotalPage(remoteModelPage.getTotalPages());
-        remotePagination.setTotalElements(remoteModelPage.getTotalElements());
-
-        return remotePagination;
-    }
-
-
     public ClientRemoteDAO createRemoteDeviceDAO(String deviceBrand, String deviceModel, String deviceOS, String deviceUrl){
 
         ClientRemoteDAO clientRemoteDAO = new ClientRemoteDAO();
@@ -94,6 +83,31 @@ public class RemoteHelper {
         clientRemoteDAO.setStatus(1);
 
         return clientRemoteDAO;
+    }
+
+
+    public RemoteDataDAO createRemoteDataDAO(String dataId, String dataType, String value){
+
+        RemoteDataDAO remoteDataDAO = new RemoteDataDAO();
+        remoteDataDAO.setDataId(dataId);
+        remoteDataDAO.setDataType(dataType);
+        remoteDataDAO.setValue(value);
+        remoteDataDAO.setcDate(appUtils.getCurrentTimeStamp());
+        remoteDataDAO.setStatus(1);
+
+        return remoteDataDAO;
+    }
+
+
+    public PaginationWSDTO createRemotePagination(Page<ClientRemoteDBModel> remoteModelPage){
+
+        PaginationWSDTO remotePagination = new PaginationWSDTO();
+        remotePagination.setPageSize(remoteModelPage.getPageable().getPageSize());
+        remotePagination.setPageNumber(remoteModelPage.getPageable().getPageNumber());
+        remotePagination.setTotalPage(remoteModelPage.getTotalPages());
+        remotePagination.setTotalElements(remoteModelPage.getTotalElements());
+
+        return remotePagination;
     }
 
 }
