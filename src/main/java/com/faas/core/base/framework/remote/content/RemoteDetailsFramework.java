@@ -3,7 +3,6 @@ package com.faas.core.base.framework.remote.content;
 import com.faas.core.base.model.db.remote.content.RemoteDBModel;
 import com.faas.core.base.model.db.remote.content.dao.RemoteDataDAO;
 import com.faas.core.base.model.db.utility.DataTypeDBModel;
-import com.faas.core.base.model.ws.remote.client.dto.ClientRemoteListWSDTO;
 import com.faas.core.base.model.ws.remote.content.dto.RemoteDataWSDTO;
 import com.faas.core.base.model.ws.remote.content.dto.RemoteDetailsWSDTO;
 import com.faas.core.base.repo.remote.content.RemoteRepository;
@@ -13,6 +12,7 @@ import com.faas.core.utils.helpers.RemoteHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.rmi.Remote;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -35,6 +35,12 @@ public class RemoteDetailsFramework {
 
     public RemoteDetailsWSDTO getRemoteDetailsService(long userId, String remoteId) {
 
+        Optional<RemoteDBModel> remoteDBModel = remoteRepository.findById(remoteId);
+        if (remoteDBModel.isPresent()){
+            RemoteDetailsWSDTO remoteDetailsWSDTO = new RemoteDetailsWSDTO();
+            remoteDetailsWSDTO.setRemote(remoteDBModel.get());
+            return remoteDetailsWSDTO;
+        }
         return null;
     }
 
@@ -99,6 +105,7 @@ public class RemoteDetailsFramework {
                     remoteDBModel.get().getDatas().get(i).setStatus(1);
                     remoteDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
                     remoteRepository.save(remoteDBModel.get());
+
                     return new RemoteDataWSDTO(remoteDBModel.get().getDatas().get(i));
                 }
             }
@@ -112,11 +119,14 @@ public class RemoteDetailsFramework {
         Optional<RemoteDBModel> remoteDBModel = remoteRepository.findById(remoteId);
         if (remoteDBModel.isPresent() && remoteDBModel.get().getDatas() != null){
             for (int i=0;i<remoteDBModel.get().getDatas().size();i++){
+
                 if (remoteDBModel.get().getDatas().get(i).getDataId().equalsIgnoreCase(dataId)){
+
                     RemoteDataDAO remoteDataDAO = remoteDBModel.get().getDatas().get(i);
                     remoteDBModel.get().getDatas().remove(remoteDataDAO);
                     remoteDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
                     remoteRepository.save(remoteDBModel.get());
+
                     return new RemoteDataWSDTO(remoteDataDAO);
                 }
             }
