@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping(value = AppConstant.API_VERSION + "/base/manager/campaign/details/inquiry/")
+@RequestMapping(value = AppConstant.API_VERSION + "/base/manager/campaign/inquiry/")
 public class InquiryCampaignController {
 
 

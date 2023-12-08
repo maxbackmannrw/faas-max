@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-@RequestMapping(value = AppConstant.API_VERSION + "/base/manager/campaign/details/manual/")
+@RequestMapping(value = AppConstant.API_VERSION + "/base/manager/campaign/manual/")
 public class ManualCampaignController {
 
 

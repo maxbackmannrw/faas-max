@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-@RequestMapping(value = AppConstant.API_VERSION + "/base/manager/operation/details/inquiry/")
+@RequestMapping(value = AppConstant.API_VERSION + "/base/manager/operation/inquiry/")
 public class InquiryOperationController {
 
 

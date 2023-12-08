@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-@RequestMapping(value = AppConstant.API_VERSION + "/base/manager/operation/details/automatic/")
+@RequestMapping(value = AppConstant.API_VERSION + "/base/manager/operation/automatic/")
 public class AutomaticOperationController {
 
 

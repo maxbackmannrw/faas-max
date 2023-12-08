@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping(value = AppConstant.API_VERSION + "/base/manager/campaign/details/automatic/")
+@RequestMapping(value = AppConstant.API_VERSION + "/base/manager/campaign/automatic/")
 public class AutomaticCampaignController {
 
 
@@ -31,8 +31,6 @@ public class AutomaticCampaignController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
-
 
 
 }
