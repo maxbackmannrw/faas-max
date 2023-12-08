@@ -1,21 +1,21 @@
 package com.faas.core.base.model.ws.manager.campaign.details.automatic;
 
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.manager.campaign.content.dto.OperationCampaignWSDTO;
+import com.faas.core.base.model.ws.manager.campaign.details.automatic.dto.AutomaticCampaignWSDTO;
 
 import java.util.List;
 
 public class AutomaticCampaignWSModel {
 
     private GeneralWSModel general;
-    private List<OperationCampaignWSDTO>campaigns;
+    private List<AutomaticCampaignWSDTO>automaticCampaigns;
 
     public AutomaticCampaignWSModel() {
     }
 
-    public AutomaticCampaignWSModel(GeneralWSModel general, List<OperationCampaignWSDTO> campaigns) {
+    public AutomaticCampaignWSModel(GeneralWSModel general, List<AutomaticCampaignWSDTO> automaticCampaigns) {
         this.general = general;
-        this.campaigns = campaigns;
+        this.automaticCampaigns = automaticCampaigns;
     }
 
     public GeneralWSModel getGeneral() {
@@ -26,11 +26,11 @@ public class AutomaticCampaignWSModel {
         this.general = general;
     }
 
-    public List<OperationCampaignWSDTO> getCampaigns() {
-        return campaigns;
+    public List<AutomaticCampaignWSDTO> getAutomaticCampaigns() {
+        return automaticCampaigns;
     }
 
-    public void setCampaigns(List<OperationCampaignWSDTO> campaigns) {
-        this.campaigns = campaigns;
+    public void setAutomaticCampaigns(List<AutomaticCampaignWSDTO> automaticCampaigns) {
+        this.automaticCampaigns = automaticCampaigns;
     }
 }

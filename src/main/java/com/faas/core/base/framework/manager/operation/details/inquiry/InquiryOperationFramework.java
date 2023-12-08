@@ -1,6 +1,6 @@
 package com.faas.core.base.framework.manager.operation.details.inquiry;
 
-import com.faas.core.base.model.ws.manager.campaign.content.dto.OperationCampaignWSDTO;
+import com.faas.core.base.model.ws.manager.campaign.content.dto.CampaignManagerWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ public class InquiryOperationFramework {
     AppUtils appUtils;
 
 
-    public List<OperationCampaignWSDTO> getAutomaticOperationDetailsService(long userId) {
+    public List<CampaignManagerWSDTO> getAutomaticOperationDetailsService(long userId) {
 
         return null;
     }

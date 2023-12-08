@@ -2,7 +2,8 @@ package com.faas.core.base.middleware.manager.campaign.content;
 
 import com.faas.core.base.framework.manager.campaign.content.CampaignManagerFramework;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.operation.content.OperationListWSModel;
+import com.faas.core.base.model.ws.manager.campaign.content.CampaignManagerWSModel;
+import com.faas.core.base.model.ws.manager.campaign.content.dto.CampaignManagerWSDTO;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,11 +17,15 @@ public class CampaignManagerMiddleware {
     CampaignManagerFramework campaignManagerFramework;
 
 
-    public OperationListWSModel getCampaignManager(long userId) {
+    public CampaignManagerWSModel getCampaignManager(long userId) {
 
-        OperationListWSModel response = new OperationListWSModel();
+        CampaignManagerWSModel response = new CampaignManagerWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
+        CampaignManagerWSDTO campaignManagerWSDTO = campaignManagerFramework.getCampaignManagerService(userId);
+        if (campaignManagerWSDTO != null){
+            response.setCampaignManager(campaignManagerWSDTO);
+        }
 
         general.setOperation("getCampaignManager");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);

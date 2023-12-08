@@ -27,4 +27,6 @@ public interface CampaignRepository extends MongoRepository<CampaignDBModel, Str
 
     List<CampaignDBModel>findByIdAndProcessId(String campaignId,String processId);
 
+    List<CampaignDBModel>findByCampaignCategoryAndCampaignState(String campaignCategory,String campaignState);
+
 }

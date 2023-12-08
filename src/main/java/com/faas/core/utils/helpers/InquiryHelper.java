@@ -10,9 +10,12 @@ import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.db.user.content.UserDBModel;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
+import com.faas.core.base.model.ws.manager.campaign.details.automatic.dto.AutomaticCampaignWSDTO;
+import com.faas.core.base.model.ws.manager.campaign.details.inquiry.dto.InquiryCampaignWSDTO;
 import com.faas.core.base.model.ws.operation.content.dto.OperationListWSDTO;
 import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
 import com.faas.core.base.model.ws.operation.details.content.dto.OperationInquirySessionWSDTO;
+import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.operation.details.inquiry.OperationInquiryRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
@@ -34,6 +37,9 @@ public class InquiryHelper {
     SessionHelper sessionHelper;
 
     @Autowired
+    CampaignRepository campaignRepository;
+
+    @Autowired
     OperationInquiryRepository operationInquiryRepository;
 
     @Autowired
@@ -47,6 +53,16 @@ public class InquiryHelper {
 
     @Autowired
     AppUtils appUtils;
+
+
+    public List<InquiryCampaignWSDTO> getInquiryCampaignWSDTOS(List<CampaignDBModel> campaignDBModels){
+
+        List<InquiryCampaignWSDTO> inquiryCampaignWSDTOS = new ArrayList<>();
+        for (CampaignDBModel campaignDBModel : campaignDBModels) {
+            inquiryCampaignWSDTOS.add(new InquiryCampaignWSDTO(campaignDBModel));
+        }
+        return inquiryCampaignWSDTOS;
+    }
 
 
     public OperationListWSDTO getInquiryOperationListWSDTO(Page<SessionDBModel> sessionDBModelPage){

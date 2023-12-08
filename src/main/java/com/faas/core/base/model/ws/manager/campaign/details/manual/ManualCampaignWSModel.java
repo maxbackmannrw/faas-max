@@ -1,21 +1,21 @@
 package com.faas.core.base.model.ws.manager.campaign.details.manual;
 
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.manager.campaign.content.dto.OperationCampaignWSDTO;
+import com.faas.core.base.model.ws.manager.campaign.details.manual.dto.ManualCampaignWSDTO;
 
 import java.util.List;
 
 public class ManualCampaignWSModel {
 
     private GeneralWSModel general;
-    private List<OperationCampaignWSDTO>campaigns;
+    private List<ManualCampaignWSDTO>manualCampaigns;
 
     public ManualCampaignWSModel() {
     }
 
-    public ManualCampaignWSModel(GeneralWSModel general, List<OperationCampaignWSDTO> campaigns) {
+    public ManualCampaignWSModel(GeneralWSModel general, List<ManualCampaignWSDTO> manualCampaigns) {
         this.general = general;
-        this.campaigns = campaigns;
+        this.manualCampaigns = manualCampaigns;
     }
 
     public GeneralWSModel getGeneral() {
@@ -26,11 +26,11 @@ public class ManualCampaignWSModel {
         this.general = general;
     }
 
-    public List<OperationCampaignWSDTO> getCampaigns() {
-        return campaigns;
+    public List<ManualCampaignWSDTO> getManualCampaigns() {
+        return manualCampaigns;
     }
 
-    public void setCampaigns(List<OperationCampaignWSDTO> campaigns) {
-        this.campaigns = campaigns;
+    public void setManualCampaigns(List<ManualCampaignWSDTO> manualCampaigns) {
+        this.manualCampaigns = manualCampaigns;
     }
 }

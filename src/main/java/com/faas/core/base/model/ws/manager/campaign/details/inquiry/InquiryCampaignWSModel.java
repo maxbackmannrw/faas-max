@@ -1,21 +1,21 @@
 package com.faas.core.base.model.ws.manager.campaign.details.inquiry;
 
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.manager.campaign.content.dto.OperationCampaignWSDTO;
+import com.faas.core.base.model.ws.manager.campaign.details.inquiry.dto.InquiryCampaignWSDTO;
 
 import java.util.List;
 
 public class InquiryCampaignWSModel {
 
     private GeneralWSModel general;
-    private List<OperationCampaignWSDTO>campaigns;
+    private List<InquiryCampaignWSDTO>inquiryCampaigns;
 
     public InquiryCampaignWSModel() {
     }
 
-    public InquiryCampaignWSModel(GeneralWSModel general, List<OperationCampaignWSDTO> campaigns) {
+    public InquiryCampaignWSModel(GeneralWSModel general, List<InquiryCampaignWSDTO> inquiryCampaigns) {
         this.general = general;
-        this.campaigns = campaigns;
+        this.inquiryCampaigns = inquiryCampaigns;
     }
 
     public GeneralWSModel getGeneral() {
@@ -26,11 +26,11 @@ public class InquiryCampaignWSModel {
         this.general = general;
     }
 
-    public List<OperationCampaignWSDTO> getCampaigns() {
-        return campaigns;
+    public List<InquiryCampaignWSDTO> getInquiryCampaigns() {
+        return inquiryCampaigns;
     }
 
-    public void setCampaigns(List<OperationCampaignWSDTO> campaigns) {
-        this.campaigns = campaigns;
+    public void setInquiryCampaigns(List<InquiryCampaignWSDTO> inquiryCampaigns) {
+        this.inquiryCampaigns = inquiryCampaigns;
     }
 }
