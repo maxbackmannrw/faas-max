@@ -116,51 +116,24 @@ public class BaseRoute {
     public static final String REMOVE_CAMPAIGN_FLOW_SESSION = "removecampaignflowsession";
 
 
+
     public static final String GET_OPERATIONS = "getoperations";
     public static final String GET_OPERATION = "getoperation";
     public static final String CREATE_OPERATION = "createoperation";
     public static final String UPDATE_OPERATION = "updateoperation";
     public static final String REMOVE_OPERATION = "removeoperation";
 
+    public static final String GET_OPERATION_DETAILS = "getoperationdetails";
 
 
-    public static final String GET_MANUAL_MANAGER = "getmanualmanager";
-    public static final String GET_MANUAL_OPERATIONS = "getmanualoperations";
-    public static final String GET_MANUAL_OPERATION = "getmanualoperation";
-    public static final String CREATE_MANUAL_OPERATION = "createmanualoperation";
-    public static final String UPDATE_MANUAL_OPERATION = "updatemanualoperation";
-    public static final String REMOVE_MANUAL_OPERATION = "removemanualoperation";
-    public static final String GET_MANUAL_CAMPAIGNS = "getmanualcampaigns";
-    public static final String GET_MANUAL_CAMPAIGN = "getmanualcampaign";
-
-    public static final String GET_MANUAL_OPERATION_DETAILS = "getmanualoperationdetails";
-    public static final String GET_MANUAL_CAMPAIGN_DETAILS = "getmanualcampaigndetails";
+    public static final String GET_OPERATION_MANAGER = "getoperationmanager";
+    public static final String GET_OPERATION_MANAGER_DETAILS = "getoperationmanagerdetails";
 
 
-    public static final String GET_INQUIRY_MANAGER = "getinquirymanager";
-    public static final String GET_INQUIRY_OPERATIONS = "getinquiryoperations";
-    public static final String GET_INQUIRY_OPERATION = "getinquiryoperation";
-    public static final String CREATE_INQUIRY_OPERATION = "createinquiryoperation";
-    public static final String UPDATE_INQUIRY_OPERATION = "updateinquiryoperation";
-    public static final String REMOVE_INQUIRY_OPERATION = "removeinquiryoperation";
-    public static final String GET_INQUIRY_CAMPAIGNS = "getinquirycampaigns";
-    public static final String GET_INQUIRY_CAMPAIGN = "getinquirycampaign";
-
-    public static final String GET_INQUIRY_OPERATION_DETAILS = "getinquiryoperationdetails";
-    public static final String GET_INQUIRY_CAMPAIGN_DETAILS = "getinquirycampaigndetails";
 
 
-    public static final String GET_AUTOMATIC_MANAGER = "getautomaticmanager";
-    public static final String GET_AUTOMATIC_OPERATIONS = "getautomaticoperations";
-    public static final String GET_AUTOMATIC_OPERATION = "getautomaticoperation";
-    public static final String CREATE_AUTOMATIC_OPERATION = "createautomaticoperation";
-    public static final String UPDATE_AUTOMATIC_OPERATION = "updateautomaticoperation";
-    public static final String REMOVE_AUTOMATIC_OPERATION = "removeautomaticoperation";
-    public static final String GET_AUTOMATIC_CAMPAIGNS = "getautomaticcampaigns";
-    public static final String GET_AUTOMATIC_CAMPAIGN = "getautomaticcampaign";
-
-    public static final String GET_AUTOMATIC_OPERATION_DETAILS = "getautomaticoperationdetails";
-    public static final String GET_AUTOMATIC_CAMPAIGN_DETAILS = "getautomaticcampaigndetails";
+    public static final String GET_CAMPAIGN_MANAGER = "getcampaignmanager";
+    public static final String GET_CAMPAIGN_MANAGER_DETAILS = "getcampaignmanagerdetails";
 
 
 

@@ -3,7 +3,7 @@ package com.faas.core.base.endpoint.controller.campaign.details.client.inquiry;
 import com.faas.core.base.middleware.campaign.details.client.inquiry.CampaignInquirySessionMiddleware;
 import com.faas.core.base.model.ws.campaign.details.client.inquiry.CampaignInquirySessionWSModel;
 import com.faas.core.base.model.ws.campaign.details.client.inquiry.CampaignInquirySessionRequest;
-import com.faas.core.base.model.ws.operation.inquiry.OperationInquirySessionWSModel;
+import com.faas.core.base.model.ws.operation.details.content.OperationInquirySessionWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;

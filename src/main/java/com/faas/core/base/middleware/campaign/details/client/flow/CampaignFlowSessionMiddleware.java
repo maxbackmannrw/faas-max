@@ -5,8 +5,8 @@ import com.faas.core.base.model.ws.campaign.details.client.flow.CampaignFlowSess
 import com.faas.core.base.model.ws.campaign.details.client.flow.dto.CampaignFlowSessionWSDTO;
 import com.faas.core.base.model.ws.campaign.details.client.flow.CampaignFlowSessionRequest;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.operation.automatic.OperationFlowSessionWSModel;
-import com.faas.core.base.model.ws.operation.automatic.dto.OperationFlowSessionWSDTO;
+import com.faas.core.base.model.ws.operation.details.content.OperationFlowSessionWSModel;
+import com.faas.core.base.model.ws.operation.details.content.dto.OperationFlowSessionWSDTO;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

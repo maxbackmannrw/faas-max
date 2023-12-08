@@ -5,8 +5,8 @@ import com.faas.core.base.model.ws.campaign.details.client.inquiry.CampaignInqui
 import com.faas.core.base.model.ws.campaign.details.client.inquiry.dto.CampaignInquirySessionWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.model.ws.campaign.details.client.inquiry.CampaignInquirySessionRequest;
-import com.faas.core.base.model.ws.operation.inquiry.OperationInquirySessionWSModel;
-import com.faas.core.base.model.ws.operation.inquiry.dto.OperationInquirySessionWSDTO;
+import com.faas.core.base.model.ws.operation.details.content.OperationInquirySessionWSModel;
+import com.faas.core.base.model.ws.operation.details.content.dto.OperationInquirySessionWSDTO;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
