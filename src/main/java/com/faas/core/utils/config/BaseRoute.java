@@ -117,23 +117,18 @@ public class BaseRoute {
 
 
     public static final String GET_CAMPAIGN_MANAGER = "getcampaignmanager";
-    public static final String GET_CAMPAIGN_MANAGER_DETAILS = "getcampaignmanagerdetails";
-
 
     public static final String GET_MANUAL_CAMPAIGNS = "getmanualcampaigns";
     public static final String GET_MANUAL_CAMPAIGNS_BY_STATE = "getmanualcampaignsbystate";
     public static final String GET_MANUAL_CAMPAIGN = "getmanualcampaign";
 
-
     public static final String GET_INQUIRY_CAMPAIGNS = "getinquirycampaigns";
     public static final String GET_INQUIRY_CAMPAIGNS_BY_STATE = "getinquirycampaignsbystate";
     public static final String GET_INQUIRY_CAMPAIGN = "getinquirycampaign";
 
-
     public static final String GET_AUTOMATIC_CAMPAIGNS = "getautomaticcampaigns";
     public static final String GET_AUTOMATIC_CAMPAIGNS_BY_STATE = "getautomaticcampaignsbystate";
     public static final String GET_AUTOMATIC_CAMPAIGN = "getautomaticcampaign";
-
 
 
 
