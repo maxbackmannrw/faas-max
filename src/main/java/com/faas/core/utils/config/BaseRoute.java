@@ -116,20 +116,21 @@ public class BaseRoute {
     public static final String REMOVE_CAMPAIGN_FLOW_SESSION = "removecampaignflowsession";
 
 
+    public static final String GET_APP_MANAGER = "getappmanager";
+
+    public static final String GET_CAMPAIGN_MANAGERS = "getcampaignmanagers";
+    public static final String GET_CAMPAIGN_MANAGERS_BY_CATEGORY = "getcampaignmanagersbycategory";
     public static final String GET_CAMPAIGN_MANAGER = "getcampaignmanager";
 
-    public static final String GET_MANUAL_CAMPAIGNS = "getmanualcampaigns";
-    public static final String GET_MANUAL_CAMPAIGNS_BY_STATE = "getmanualcampaignsbystate";
-    public static final String GET_MANUAL_CAMPAIGN = "getmanualcampaign";
+    public static final String GET_CAMPAIGN_MANAGER_DETAILS = "getcampaignmanagerdetails";
 
-    public static final String GET_INQUIRY_CAMPAIGNS = "getinquirycampaigns";
-    public static final String GET_INQUIRY_CAMPAIGNS_BY_STATE = "getinquirycampaignsbystate";
-    public static final String GET_INQUIRY_CAMPAIGN = "getinquirycampaign";
 
-    public static final String GET_AUTOMATIC_CAMPAIGNS = "getautomaticcampaigns";
-    public static final String GET_AUTOMATIC_CAMPAIGNS_BY_STATE = "getautomaticcampaignsbystate";
-    public static final String GET_AUTOMATIC_CAMPAIGN = "getautomaticcampaign";
+    public static final String GET_OPERATION_MANAGERS = "getoperationmanagers";
+    public static final String GET_OPERATION_MANAGERS_BY_TYPE = "getoperationmanagersbytype";
+    public static final String GET_OPERATION_MANAGERS_BY_STATE = "getoperationmanagersbystate";
+    public static final String GET_OPERATION_MANAGER = "getoperationmanager";
 
+    public static final String GET_OPERATION_MANAGER_DETAILS = "getoperationmanagerdetails";
 
 
     public static final String GET_OPERATIONS = "getoperations";
@@ -139,11 +140,6 @@ public class BaseRoute {
     public static final String REMOVE_OPERATION = "removeoperation";
 
     public static final String GET_OPERATION_DETAILS = "getoperationdetails";
-
-
-    public static final String GET_OPERATION_MANAGER = "getoperationmanager";
-    public static final String GET_OPERATION_MANAGER_DETAILS = "getoperationmanagerdetails";
-
 
 
     public static final String GET_ALL_CLIENTS = "getallclients";

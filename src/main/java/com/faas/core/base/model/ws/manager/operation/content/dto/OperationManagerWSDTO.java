@@ -1,45 +1,36 @@
 package com.faas.core.base.model.ws.manager.operation.content.dto;
 
-import com.faas.core.base.model.ws.manager.operation.details.automatic.dto.AutomaticManagerWSDTO;
-import com.faas.core.base.model.ws.manager.operation.details.inquiry.dto.InquiryManagerWSDTO;
-import com.faas.core.base.model.ws.manager.operation.details.manual.dto.ManualManagerWSDTO;
+import com.faas.core.base.model.ws.general.PaginationWSDTO;
+import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
+
+import java.util.List;
 
 public class OperationManagerWSDTO {
 
-    private ManualManagerWSDTO manualManager;
-    private InquiryManagerWSDTO inquiryManager;
-    private AutomaticManagerWSDTO automaticManager;
+    private List<OperationWSDTO> operations;
+    private PaginationWSDTO pagination;
 
     public OperationManagerWSDTO() {
     }
 
-    public OperationManagerWSDTO(ManualManagerWSDTO manualManager, InquiryManagerWSDTO inquiryManager, AutomaticManagerWSDTO automaticManager) {
-        this.manualManager = manualManager;
-        this.inquiryManager = inquiryManager;
-        this.automaticManager = automaticManager;
+    public OperationManagerWSDTO(List<OperationWSDTO> operations, PaginationWSDTO pagination) {
+        this.operations = operations;
+        this.pagination = pagination;
     }
 
-    public ManualManagerWSDTO getManualManager() {
-        return manualManager;
+    public List<OperationWSDTO> getOperations() {
+        return operations;
     }
 
-    public void setManualManager(ManualManagerWSDTO manualManager) {
-        this.manualManager = manualManager;
+    public void setOperations(List<OperationWSDTO> operations) {
+        this.operations = operations;
     }
 
-    public InquiryManagerWSDTO getInquiryManager() {
-        return inquiryManager;
+    public PaginationWSDTO getPagination() {
+        return pagination;
     }
 
-    public void setInquiryManager(InquiryManagerWSDTO inquiryManager) {
-        this.inquiryManager = inquiryManager;
-    }
-
-    public AutomaticManagerWSDTO getAutomaticManager() {
-        return automaticManager;
-    }
-
-    public void setAutomaticManager(AutomaticManagerWSDTO automaticManager) {
-        this.automaticManager = automaticManager;
+    public void setPagination(PaginationWSDTO pagination) {
+        this.pagination = pagination;
     }
 }

@@ -1,34 +1,16 @@
 package com.faas.core.base.framework.manager.operation.content;
 
-import com.faas.core.base.model.ws.manager.operation.details.inquiry.dto.InquiryManagerWSDTO;
+import com.faas.core.base.model.ws.manager.campaign.content.dto.CampaignManagerWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
-import com.faas.core.base.repo.client.content.ClientRepository;
-import com.faas.core.base.repo.operation.content.OperationRepository;
-import com.faas.core.base.repo.operation.details.inquiry.OperationInquiryRepository;
-import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utils.config.AppUtils;
-import com.faas.core.utils.helpers.InquiryHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 
 @Component
 public class OperationManagerFramework {
-
-    @Autowired
-    InquiryHelper inquiryHelper;
-
-    @Autowired
-    ClientRepository clientRepository;
-
-    @Autowired
-    SessionRepository sessionRepository;
-
-    @Autowired
-    OperationRepository operationRepository;
-
-    @Autowired
-    OperationInquiryRepository operationInquiryRepository;
 
     @Autowired
     CampaignRepository campaignRepository;
@@ -37,11 +19,9 @@ public class OperationManagerFramework {
     AppUtils appUtils;
 
 
-    public InquiryManagerWSDTO getInquiryManagerService(long userId, int reqPage, int reqSize) {
+    public List<CampaignManagerWSDTO> getAutomaticOperationDetailsService(long userId) {
 
-        InquiryManagerWSDTO inquiryManagerWSDTO = new InquiryManagerWSDTO();
-
-        return inquiryManagerWSDTO;
+        return null;
     }
 
 

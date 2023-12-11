@@ -5,8 +5,6 @@ import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
-import com.faas.core.base.model.ws.manager.campaign.details.inquiry.dto.InquiryCampaignWSDTO;
-import com.faas.core.base.model.ws.manager.campaign.details.manual.dto.ManualCampaignWSDTO;
 import com.faas.core.base.model.ws.operation.content.dto.OperationListWSDTO;
 import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
@@ -134,16 +132,6 @@ public class ManualHelper {
 
     @Autowired
     AppUtils appUtils;
-
-
-    public List<ManualCampaignWSDTO> getManualCampaignWSDTOS(List<CampaignDBModel> campaignDBModels){
-
-        List<ManualCampaignWSDTO> manualCampaignWSDTOS = new ArrayList<>();
-        for (CampaignDBModel campaignDBModel : campaignDBModels) {
-            manualCampaignWSDTOS.add(new ManualCampaignWSDTO(campaignDBModel));
-        }
-        return manualCampaignWSDTOS;
-    }
 
 
     public OperationListWSDTO getManualOperationListWSDTO(Page<SessionDBModel> sessionModelPage){

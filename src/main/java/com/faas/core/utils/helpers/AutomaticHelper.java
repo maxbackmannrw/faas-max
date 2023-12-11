@@ -7,7 +7,6 @@ import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.db.user.content.UserDBModel;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
-import com.faas.core.base.model.ws.manager.campaign.details.automatic.dto.AutomaticCampaignWSDTO;
 import com.faas.core.base.model.ws.operation.details.content.dto.OperationFlowSessionWSDTO;
 import com.faas.core.base.model.ws.operation.content.dto.OperationListWSDTO;
 import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
@@ -41,17 +40,6 @@ public class AutomaticHelper {
 
     @Autowired
     AppUtils appUtils;
-
-
-
-    public List<AutomaticCampaignWSDTO> getAutomaticCampaignWSDTOS(List<CampaignDBModel> campaignDBModels){
-
-        List<AutomaticCampaignWSDTO> automaticCampaignWSDTOS = new ArrayList<>();
-        for (CampaignDBModel campaignDBModel : campaignDBModels) {
-            automaticCampaignWSDTOS.add(new AutomaticCampaignWSDTO(campaignDBModel));
-        }
-        return automaticCampaignWSDTOS;
-    }
 
 
     public OperationListWSDTO getAutomaticOperationListWSDTO(Page<SessionDBModel>sessionModelPage){

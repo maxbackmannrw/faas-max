@@ -3,18 +3,19 @@ package com.faas.core.base.model.ws.manager.campaign.content;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.model.ws.manager.campaign.content.dto.CampaignManagerWSDTO;
 
+import java.util.List;
 
 public class CampaignManagerWSModel {
 
     private GeneralWSModel general;
-    private CampaignManagerWSDTO campaignManager;
+    private List<CampaignManagerWSDTO> campaignManagers;
 
     public CampaignManagerWSModel() {
     }
 
-    public CampaignManagerWSModel(GeneralWSModel general, CampaignManagerWSDTO campaignManager) {
+    public CampaignManagerWSModel(GeneralWSModel general, List<CampaignManagerWSDTO> campaignManagers) {
         this.general = general;
-        this.campaignManager = campaignManager;
+        this.campaignManagers = campaignManagers;
     }
 
     public GeneralWSModel getGeneral() {
@@ -25,11 +26,11 @@ public class CampaignManagerWSModel {
         this.general = general;
     }
 
-    public CampaignManagerWSDTO getCampaignManager() {
-        return campaignManager;
+    public List<CampaignManagerWSDTO> getCampaignManagers() {
+        return campaignManagers;
     }
 
-    public void setCampaignManager(CampaignManagerWSDTO campaignManager) {
-        this.campaignManager = campaignManager;
+    public void setCampaignManagers(List<CampaignManagerWSDTO> campaignManagers) {
+        this.campaignManagers = campaignManagers;
     }
 }

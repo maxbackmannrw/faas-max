@@ -1,47 +1,35 @@
 package com.faas.core.base.model.ws.manager.campaign.content.dto;
 
-import com.faas.core.base.model.ws.manager.campaign.details.automatic.dto.AutomaticCampaignWSDTO;
-import com.faas.core.base.model.ws.manager.campaign.details.inquiry.dto.InquiryCampaignWSDTO;
-import com.faas.core.base.model.ws.manager.campaign.details.manual.dto.ManualCampaignWSDTO;
+import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
+import com.faas.core.base.model.db.process.content.ProcessDBModel;
 
-import java.util.List;
 
 public class CampaignManagerWSDTO {
 
-    private List<ManualCampaignWSDTO>manualCampaigns;
-    private List<InquiryCampaignWSDTO>inquiryCampaigns;
-    private List<AutomaticCampaignWSDTO>automaticCampaigns;
+    private CampaignDBModel campaign;
+    private ProcessDBModel campaignProcess;
 
     public CampaignManagerWSDTO() {
     }
 
-    public CampaignManagerWSDTO(List<ManualCampaignWSDTO> manualCampaigns, List<InquiryCampaignWSDTO> inquiryCampaigns, List<AutomaticCampaignWSDTO> automaticCampaigns) {
-        this.manualCampaigns = manualCampaigns;
-        this.inquiryCampaigns = inquiryCampaigns;
-        this.automaticCampaigns = automaticCampaigns;
+    public CampaignManagerWSDTO(CampaignDBModel campaign, ProcessDBModel campaignProcess) {
+        this.campaign = campaign;
+        this.campaignProcess = campaignProcess;
     }
 
-    public List<ManualCampaignWSDTO> getManualCampaigns() {
-        return manualCampaigns;
+    public CampaignDBModel getCampaign() {
+        return campaign;
     }
 
-    public void setManualCampaigns(List<ManualCampaignWSDTO> manualCampaigns) {
-        this.manualCampaigns = manualCampaigns;
+    public void setCampaign(CampaignDBModel campaign) {
+        this.campaign = campaign;
     }
 
-    public List<InquiryCampaignWSDTO> getInquiryCampaigns() {
-        return inquiryCampaigns;
+    public ProcessDBModel getCampaignProcess() {
+        return campaignProcess;
     }
 
-    public void setInquiryCampaigns(List<InquiryCampaignWSDTO> inquiryCampaigns) {
-        this.inquiryCampaigns = inquiryCampaigns;
-    }
-
-    public List<AutomaticCampaignWSDTO> getAutomaticCampaigns() {
-        return automaticCampaigns;
-    }
-
-    public void setAutomaticCampaigns(List<AutomaticCampaignWSDTO> automaticCampaigns) {
-        this.automaticCampaigns = automaticCampaigns;
+    public void setCampaignProcess(ProcessDBModel campaignProcess) {
+        this.campaignProcess = campaignProcess;
     }
 }
