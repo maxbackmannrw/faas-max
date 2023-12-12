@@ -38,9 +38,9 @@ public class AppManagerFramework {
         appManagerWSDTO.setManualCampaigns(managerHelper.getCampaignManagerWSDTOS(campaignRepository.findByCampaignCategoryAndCampaignState(AppConstant.MANUAL_CAMPAIGN,AppConstant.ACTIVE_CAMPAIGN)));
         appManagerWSDTO.setInquiryCampaigns(managerHelper.getCampaignManagerWSDTOS(campaignRepository.findByCampaignCategoryAndCampaignState(AppConstant.INQUIRY_CAMPAIGN,AppConstant.ACTIVE_CAMPAIGN)));
         appManagerWSDTO.setAutomaticCampaigns(managerHelper.getCampaignManagerWSDTOS(campaignRepository.findByCampaignCategoryAndCampaignState(AppConstant.AUTOMATIC_CAMPAIGN,AppConstant.ACTIVE_CAMPAIGN)));
-        appManagerWSDTO.setReadyOperation(managerHelper.getOperationManagerWSDTO(operationRepository.findAllByOperationState(AppConstant.READY_OPERATION,PageRequest.of(reqPage,reqSize))));
-        appManagerWSDTO.setActiveOperation(managerHelper.getOperationManagerWSDTO(operationRepository.findAllByOperationState(AppConstant.ACTIVE_OPERATION,PageRequest.of(reqPage,reqSize))));
-        appManagerWSDTO.setFinishedOperation(managerHelper.getOperationManagerWSDTO(operationRepository.findAllByOperationState(AppConstant.FINISHED_OPERATION,PageRequest.of(reqPage,reqSize))));
+        appManagerWSDTO.setReadyOperation(managerHelper.getOperationManagerWSDTOByOperationModel(operationRepository.findAllByOperationState(AppConstant.READY_OPERATION,PageRequest.of(reqPage,reqSize))));
+        appManagerWSDTO.setActiveOperation(managerHelper.getOperationManagerWSDTOByOperationModel(operationRepository.findAllByOperationState(AppConstant.ACTIVE_OPERATION,PageRequest.of(reqPage,reqSize))));
+        appManagerWSDTO.setFinishedOperation(managerHelper.getOperationManagerWSDTOByOperationModel(operationRepository.findAllByOperationState(AppConstant.FINISHED_OPERATION,PageRequest.of(reqPage,reqSize))));
 
         return appManagerWSDTO;
     }

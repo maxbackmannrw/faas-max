@@ -74,11 +74,18 @@ public class ManagerHelper {
     }
 
 
-
-    public OperationManagerWSDTO getOperationManagerWSDTO(Page<OperationDBModel> operationModelPage){
+    public OperationManagerWSDTO getOperationManagerWSDTOBySessionModel(Page<SessionDBModel> sessionModelPage){
 
         OperationManagerWSDTO operationManagerWSDTO = new OperationManagerWSDTO();
-        operationManagerWSDTO.setPagination(getManagerOperationPagination(operationModelPage));
+
+        return operationManagerWSDTO;
+    }
+
+
+    public OperationManagerWSDTO getOperationManagerWSDTOByOperationModel(Page<OperationDBModel> operationModelPage){
+
+        OperationManagerWSDTO operationManagerWSDTO = new OperationManagerWSDTO();
+        operationManagerWSDTO.setPagination(getOperationManagerPaginationByOperationModel(operationModelPage));
         List<OperationWSDTO> operationWSDTOS = new ArrayList<>();
         for (int i=0;operationModelPage.getContent().size()>i;i++){
             OperationWSDTO operationWSDTO = fillManagerOperationWSDTO(operationModelPage.getContent().get(i));
@@ -99,7 +106,6 @@ public class ManagerHelper {
         Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(operationModel.getSessionId());
         if (sessionDBModel.isPresent()){
             operationWSDTO.setOperationSession(sessionDBModel.get());
-
             if (sessionDBModel.get().getCampaignType().equalsIgnoreCase(AppConstant.INQUIRY_CAMPAIGN)){
                 List<OperationInquiryDBModel> operationInquiryDBModels = operationInquiryRepository.findBySessionId(sessionDBModel.get().getId());
                 if (!operationInquiryDBModels.isEmpty()){
@@ -117,10 +123,9 @@ public class ManagerHelper {
     }
 
 
-    public PaginationWSDTO getManagerOperationPagination(Page<OperationDBModel> operationModelPage){
+    public PaginationWSDTO getOperationManagerPaginationByOperationModel(Page<OperationDBModel> operationModelPage){
 
         PaginationWSDTO paginationWSDTO = new PaginationWSDTO();
-
         paginationWSDTO.setPageSize(operationModelPage.getPageable().getPageSize());
         paginationWSDTO.setPageNumber(operationModelPage.getPageable().getPageNumber());
         paginationWSDTO.setTotalPage(operationModelPage.getTotalPages());
@@ -129,6 +134,17 @@ public class ManagerHelper {
         return paginationWSDTO;
     }
 
+
+    public PaginationWSDTO getOperationManagerPaginationBySessionModel(Page<SessionDBModel> sessionModelPage){
+
+        PaginationWSDTO paginationWSDTO = new PaginationWSDTO();
+        paginationWSDTO.setPageSize(sessionModelPage.getPageable().getPageSize());
+        paginationWSDTO.setPageNumber(sessionModelPage.getPageable().getPageNumber());
+        paginationWSDTO.setTotalPage(sessionModelPage.getTotalPages());
+        paginationWSDTO.setTotalElements(sessionModelPage.getTotalElements());
+
+        return paginationWSDTO;
+    }
 
 
 }

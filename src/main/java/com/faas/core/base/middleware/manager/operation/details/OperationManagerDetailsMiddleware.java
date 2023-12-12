@@ -4,6 +4,7 @@ import com.faas.core.base.framework.manager.operation.content.OperationManagerFr
 import com.faas.core.base.framework.manager.operation.details.OperationManagerDetailsFramework;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.model.ws.manager.operation.details.OperationManagerDetailsWSModel;
+import com.faas.core.base.model.ws.manager.operation.details.dto.OperationManagerDetailsWSDTO;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,11 +17,15 @@ public class OperationManagerDetailsMiddleware {
     OperationManagerDetailsFramework operationManagerDetailsFramework;
 
 
-    public OperationManagerDetailsWSModel getOperationManagerDetails(long userId, int reqPage, int reqSize) {
+    public OperationManagerDetailsWSModel getOperationManagerDetails(long userId,long sessionId) {
 
         OperationManagerDetailsWSModel response = new OperationManagerDetailsWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
+        OperationManagerDetailsWSDTO operationManagerDetailsWSDTO = operationManagerDetailsFramework.getOperationManagerDetailsService(userId,sessionId);
+        if (operationManagerDetailsWSDTO != null){
+            response.setOperationManagerDetails(operationManagerDetailsWSDTO);
+        }
 
         general.setOperation("getOperationManagerDetails");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);

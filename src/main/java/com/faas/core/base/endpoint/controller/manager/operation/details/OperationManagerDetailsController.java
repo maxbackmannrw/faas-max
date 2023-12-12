@@ -24,10 +24,9 @@ public class OperationManagerDetailsController {
 
     @RequestMapping(value = BaseRoute.GET_OPERATION_MANAGER_DETAILS, method = RequestMethod.POST)
     public ResponseEntity<?> getOperationManagerDetails(@RequestParam long userId,
-                                                       @RequestParam int reqPage,
-                                                       @RequestParam int reqSize) {
+                                                        @RequestParam long sessionId) {
 
-        OperationManagerDetailsWSModel response = operationManagerDetailsMiddleware.getOperationManagerDetails(userId,reqPage,reqSize);
+        OperationManagerDetailsWSModel response = operationManagerDetailsMiddleware.getOperationManagerDetails(userId,sessionId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
