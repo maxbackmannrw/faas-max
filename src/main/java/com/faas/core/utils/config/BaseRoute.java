@@ -121,6 +121,8 @@ public class BaseRoute {
     public static final String GET_CAMPAIGN_MANAGERS = "getcampaignmanagers";
     public static final String GET_CAMPAIGN_MANAGERS_BY_CATEGORY = "getcampaignmanagersbycategory";
     public static final String GET_CAMPAIGN_MANAGER = "getcampaignmanager";
+    public static final String UPDATE_CAMPAIGN_MANAGER = "updatecampaignmanager";
+    public static final String REMOVE_CAMPAIGN_MANAGER = "removecampaignmanager";
 
     public static final String GET_CAMPAIGN_MANAGER_DETAILS = "getcampaignmanagerdetails";
 
@@ -129,6 +131,8 @@ public class BaseRoute {
     public static final String GET_OPERATION_MANAGERS_BY_TYPE = "getoperationmanagersbytype";
     public static final String GET_OPERATION_MANAGERS_BY_STATE = "getoperationmanagersbystate";
     public static final String GET_OPERATION_MANAGER = "getoperationmanager";
+    public static final String UPDATE_OPERATION_MANAGER = "updateoperationmanager";
+    public static final String REMOVE_OPERATION_MANAGER = "removeoperationmanager";
 
     public static final String GET_OPERATION_MANAGER_DETAILS = "getoperationmanagerdetails";
 

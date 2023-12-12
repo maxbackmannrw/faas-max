@@ -3,7 +3,6 @@ package com.faas.core.base.model.ws.manager.campaign.content.dto;
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.process.content.ProcessDBModel;
 
-
 public class CampaignManagerWSDTO {
 
     private CampaignDBModel campaign;

@@ -77,4 +77,32 @@ public class OperationManagerController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+
+    @RequestMapping(value = BaseRoute.UPDATE_OPERATION_MANAGER, method = RequestMethod.POST)
+    public ResponseEntity<?> updateOperationManager(@RequestParam long userId,
+                                                 @RequestParam int reqPage,
+                                                 @RequestParam int reqSize) {
+
+        OperationManagerWSModel response = operationManagerMiddleware.updateOperationManager(userId,reqPage,reqSize);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = BaseRoute.REMOVE_OPERATION_MANAGER, method = RequestMethod.POST)
+    public ResponseEntity<?> removeOperationManager(@RequestParam long userId,
+                                                    @RequestParam int reqPage,
+                                                    @RequestParam int reqSize) {
+
+        OperationManagerWSModel response = operationManagerMiddleware.removeOperationManager(userId,reqPage,reqSize);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
 }

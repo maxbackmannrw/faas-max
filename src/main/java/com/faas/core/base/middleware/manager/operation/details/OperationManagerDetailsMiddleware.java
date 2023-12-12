@@ -1,6 +1,7 @@
 package com.faas.core.base.middleware.manager.operation.details;
 
 import com.faas.core.base.framework.manager.operation.content.OperationManagerFramework;
+import com.faas.core.base.framework.manager.operation.details.OperationManagerDetailsFramework;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.model.ws.manager.operation.details.OperationManagerDetailsWSModel;
 import com.faas.core.utils.config.AppConstant;
@@ -11,9 +12,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class OperationManagerDetailsMiddleware {
 
-
     @Autowired
-    OperationManagerFramework operationManagerFramework;
+    OperationManagerDetailsFramework operationManagerDetailsFramework;
 
 
     public OperationManagerDetailsWSModel getOperationManagerDetails(long userId, int reqPage, int reqSize) {

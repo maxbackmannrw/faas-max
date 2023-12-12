@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class OperationManagerMiddleware {
 
-
     @Autowired
     OperationManagerFramework operationManagerFramework;
 
@@ -79,5 +78,36 @@ public class OperationManagerMiddleware {
         return response;
     }
 
+
+    public OperationManagerWSModel updateOperationManager(long userId,int reqPage,int reqSize) {
+
+        OperationManagerWSModel response = new OperationManagerWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+
+        general.setOperation("getOperationManager");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
+    public OperationManagerWSModel removeOperationManager(long userId,int reqPage,int reqSize) {
+
+        OperationManagerWSModel response = new OperationManagerWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+
+        general.setOperation("getOperationManager");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
 
 }
