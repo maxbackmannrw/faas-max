@@ -74,13 +74,6 @@ public class ManagerHelper {
     }
 
 
-    public OperationManagerWSDTO getOperationManagerWSDTOBySessionModel(Page<SessionDBModel> sessionModelPage){
-
-        OperationManagerWSDTO operationManagerWSDTO = new OperationManagerWSDTO();
-
-        return operationManagerWSDTO;
-    }
-
 
     public OperationManagerWSDTO getOperationManagerWSDTOByOperationModel(Page<OperationDBModel> operationModelPage){
 
@@ -88,18 +81,16 @@ public class ManagerHelper {
         operationManagerWSDTO.setPagination(getOperationManagerPaginationByOperationModel(operationModelPage));
         List<OperationWSDTO> operationWSDTOS = new ArrayList<>();
         for (int i=0;operationModelPage.getContent().size()>i;i++){
-            OperationWSDTO operationWSDTO = fillManagerOperationWSDTO(operationModelPage.getContent().get(i));
+            OperationWSDTO operationWSDTO = fillManagerOperationWSDTOByOperationModel(operationModelPage.getContent().get(i));
             if (operationWSDTO != null){
                 operationWSDTOS.add(operationWSDTO);
             }
         }
         operationManagerWSDTO.setOperations(operationWSDTOS);
-
         return operationManagerWSDTO;
     }
 
-
-    public OperationWSDTO fillManagerOperationWSDTO(OperationDBModel operationModel){
+    public OperationWSDTO fillManagerOperationWSDTOByOperationModel(OperationDBModel operationModel){
 
         OperationWSDTO operationWSDTO = new OperationWSDTO();
         operationWSDTO.setOperation(operationModel);
@@ -122,7 +113,6 @@ public class ManagerHelper {
         return operationWSDTO;
     }
 
-
     public PaginationWSDTO getOperationManagerPaginationByOperationModel(Page<OperationDBModel> operationModelPage){
 
         PaginationWSDTO paginationWSDTO = new PaginationWSDTO();
@@ -134,6 +124,44 @@ public class ManagerHelper {
         return paginationWSDTO;
     }
 
+
+
+    public OperationManagerWSDTO getOperationManagerWSDTOBySessionModel(Page<SessionDBModel> sessionModelPage){
+
+        OperationManagerWSDTO operationManagerWSDTO = new OperationManagerWSDTO();
+        operationManagerWSDTO.setPagination(getOperationManagerPaginationBySessionModel(sessionModelPage));
+        List<OperationWSDTO> operationWSDTOS = new ArrayList<>();
+        for (int i=0;sessionModelPage.getContent().size()>i;i++){
+            OperationWSDTO operationWSDTO = fillManagerOperationWSDTOBySessionModel(sessionModelPage.getContent().get(i));
+            if (operationWSDTO != null){
+                operationWSDTOS.add(operationWSDTO);
+            }
+        }
+        operationManagerWSDTO.setOperations(operationWSDTOS);
+        return operationManagerWSDTO;
+    }
+
+    public OperationWSDTO fillManagerOperationWSDTOBySessionModel(SessionDBModel sessionDBModel){
+
+        OperationWSDTO operationWSDTO = new OperationWSDTO();
+        operationWSDTO.setOperationSession(sessionDBModel);
+        List<OperationDBModel> operationDBModels = operationRepository.findBySessionId(sessionDBModel.getId());
+        if (!operationDBModels.isEmpty()){
+            if (sessionDBModel.getCampaignType().equalsIgnoreCase(AppConstant.INQUIRY_CAMPAIGN)){
+                List<OperationInquiryDBModel> operationInquiryDBModels = operationInquiryRepository.findBySessionId(sessionDBModel.getId());
+                if (!operationInquiryDBModels.isEmpty()){
+                    operationWSDTO.setOperationInquiry(operationInquiryDBModels.get(0));
+                }
+            }
+            if (sessionDBModel.getCampaignType().equalsIgnoreCase(AppConstant.AUTOMATIC_CAMPAIGN)){
+                List<OperationFlowDBModel> operationFlowDBModels = operationFlowRepository.findBySessionId(sessionDBModel.getId());
+                if (!operationFlowDBModels.isEmpty()){
+                    operationWSDTO.setOperationFlow(operationFlowDBModels.get(0));
+                }
+            }
+        }
+        return operationWSDTO;
+    }
 
     public PaginationWSDTO getOperationManagerPaginationBySessionModel(Page<SessionDBModel> sessionModelPage){
 
