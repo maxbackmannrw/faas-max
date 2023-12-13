@@ -8,10 +8,10 @@ import com.faas.core.base.model.db.process.details.channel.temp.ProcessWappMessa
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.model.ws.process.details.channel.temp.*;
 import com.faas.core.base.model.ws.process.details.channel.temp.dto.*;
-import com.faas.core.base.repo.process.details.channel.temp.EmailTempRepository;
-import com.faas.core.base.repo.process.details.channel.temp.PushTempRepository;
-import com.faas.core.base.repo.process.details.channel.temp.SmsMessageTempRepository;
-import com.faas.core.base.repo.process.details.channel.temp.WappMessageTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.ProcessEmailTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.ProcessPushTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.ProcessSmsMessageTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.ProcessWappMessageTempRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.helpers.ProcessHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,16 +32,16 @@ public class ProcessTempMiddleware {
     ProcessHelper processHelper;
 
     @Autowired
-    SmsMessageTempRepository smsMessageTempRepository;
+    ProcessSmsMessageTempRepository processSmsMessageTempRepository;
 
     @Autowired
-    WappMessageTempRepository wappMessageTempRepository;
+    ProcessWappMessageTempRepository processWappMessageTempRepository;
 
     @Autowired
-    EmailTempRepository emailTempRepository;
+    ProcessEmailTempRepository processEmailTempRepository;
 
     @Autowired
-    PushTempRepository pushTempRepository;
+    ProcessPushTempRepository processPushTempRepository;
 
 
     public ProcessTempWSModel getProcessTemps(long userId, String processId) {
@@ -64,18 +64,18 @@ public class ProcessTempMiddleware {
     }
 
 
-    public SmsMessageTempWSModel getProcessSmsMessageTemps(long userId, String processId) {
+    public ProcessSmsMessageTempWSModel getProcessSmsMessageTemps(long userId, String processId) {
 
-        SmsMessageTempWSModel response = new SmsMessageTempWSModel();
+        ProcessSmsMessageTempWSModel response = new ProcessSmsMessageTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<SmsMessageTempWSDTO> smsMessageTempWSDTOS = new ArrayList<>();
+        List<ProcessSmsMessageTempWSDTO> processSmsMessageTempWSDTOS = new ArrayList<>();
 
-        List<ProcessSmsMessageTempDBModel> processSmsMessageTempDBModels = smsMessageTempRepository.findByProcessId(processId);
+        List<ProcessSmsMessageTempDBModel> processSmsMessageTempDBModels = processSmsMessageTempRepository.findByProcessId(processId);
         for (ProcessSmsMessageTempDBModel processSmsMessageTempDBModel : processSmsMessageTempDBModels) {
-            smsMessageTempWSDTOS.add(processTempFramework.fillSmsMessageTempWSDTO(processSmsMessageTempDBModel));
+            processSmsMessageTempWSDTOS.add(processTempFramework.fillSmsMessageTempWSDTO(processSmsMessageTempDBModel));
         }
 
-        response.setSmsMessageTemps(smsMessageTempWSDTOS);
+        response.setSmsMessageTemps(processSmsMessageTempWSDTOS);
         general.setOperation("getProcessSmsMessageTemps");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -86,18 +86,18 @@ public class ProcessTempMiddleware {
     }
 
 
-    public SmsMessageTempWSModel getSmsMessageTemp(long userId, String tempId) {
+    public ProcessSmsMessageTempWSModel getSmsMessageTemp(long userId, String tempId) {
 
-        SmsMessageTempWSModel response = new SmsMessageTempWSModel();
+        ProcessSmsMessageTempWSModel response = new ProcessSmsMessageTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<SmsMessageTempWSDTO> smsMessageTempWSDTOS = new ArrayList<>();
+        List<ProcessSmsMessageTempWSDTO> processSmsMessageTempWSDTOS = new ArrayList<>();
 
-        Optional<ProcessSmsMessageTempDBModel> smsMessageTempDBModel = smsMessageTempRepository.findById(tempId);
+        Optional<ProcessSmsMessageTempDBModel> smsMessageTempDBModel = processSmsMessageTempRepository.findById(tempId);
         if (smsMessageTempDBModel.isPresent()) {
-            smsMessageTempWSDTOS.add(processTempFramework.fillSmsMessageTempWSDTO(smsMessageTempDBModel.get()));
+            processSmsMessageTempWSDTOS.add(processTempFramework.fillSmsMessageTempWSDTO(smsMessageTempDBModel.get()));
         }
 
-        response.setSmsMessageTemps(smsMessageTempWSDTOS);
+        response.setSmsMessageTemps(processSmsMessageTempWSDTOS);
         general.setOperation("getSmsMessageTemp");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -108,18 +108,18 @@ public class ProcessTempMiddleware {
     }
 
 
-    public SmsMessageTempWSModel createSmsMessageTemp(long userId,String processId,String smsTitle,String smsBody, String senderId, long typeId) {
+    public ProcessSmsMessageTempWSModel createSmsMessageTemp(long userId, String processId, String smsTitle, String smsBody, String senderId, long typeId) {
 
-        SmsMessageTempWSModel response = new SmsMessageTempWSModel();
+        ProcessSmsMessageTempWSModel response = new ProcessSmsMessageTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<SmsMessageTempWSDTO> smsMessageTempWSDTOS = new ArrayList<>();
+        List<ProcessSmsMessageTempWSDTO> processSmsMessageTempWSDTOS = new ArrayList<>();
 
         ProcessSmsMessageTempDBModel processSmsMessageTempDBModel = processTempFramework.createSmsMessageTempService(processId,smsTitle,smsBody,senderId,typeId);
         if (processSmsMessageTempDBModel != null) {
-            smsMessageTempWSDTOS.add(processTempFramework.fillSmsMessageTempWSDTO(processSmsMessageTempDBModel));
+            processSmsMessageTempWSDTOS.add(processTempFramework.fillSmsMessageTempWSDTO(processSmsMessageTempDBModel));
         }
 
-        response.setSmsMessageTemps(smsMessageTempWSDTOS);
+        response.setSmsMessageTemps(processSmsMessageTempWSDTOS);
         general.setOperation("createSmsMessageTemp");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -130,18 +130,18 @@ public class ProcessTempMiddleware {
     }
 
 
-    public SmsMessageTempWSModel updateSmsMessageTemp(long userId,String tempId, String smsTitle, String smsBody, String senderId, long typeId) {
+    public ProcessSmsMessageTempWSModel updateSmsMessageTemp(long userId, String tempId, String smsTitle, String smsBody, String senderId, long typeId) {
 
-        SmsMessageTempWSModel response = new SmsMessageTempWSModel();
+        ProcessSmsMessageTempWSModel response = new ProcessSmsMessageTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<SmsMessageTempWSDTO> smsMessageTempWSDTOS = new ArrayList<>();
+        List<ProcessSmsMessageTempWSDTO> processSmsMessageTempWSDTOS = new ArrayList<>();
 
         ProcessSmsMessageTempDBModel processSmsMessageTempDBModel = processTempFramework.updateSmsMessageTempService(tempId,smsTitle,smsBody,senderId,typeId);
         if (processSmsMessageTempDBModel != null) {
-            smsMessageTempWSDTOS.add(processTempFramework.fillSmsMessageTempWSDTO(processSmsMessageTempDBModel));
+            processSmsMessageTempWSDTOS.add(processTempFramework.fillSmsMessageTempWSDTO(processSmsMessageTempDBModel));
         }
 
-        response.setSmsMessageTemps(smsMessageTempWSDTOS);
+        response.setSmsMessageTemps(processSmsMessageTempWSDTOS);
         general.setOperation("updateSmsMessageTemp");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -152,18 +152,18 @@ public class ProcessTempMiddleware {
     }
 
 
-    public SmsMessageTempWSModel removeSmsMessageTemp(long userId, String tempId) {
+    public ProcessSmsMessageTempWSModel removeSmsMessageTemp(long userId, String tempId) {
 
-        SmsMessageTempWSModel response = new SmsMessageTempWSModel();
+        ProcessSmsMessageTempWSModel response = new ProcessSmsMessageTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<SmsMessageTempWSDTO> smsMessageTempWSDTOS = new ArrayList<>();
+        List<ProcessSmsMessageTempWSDTO> processSmsMessageTempWSDTOS = new ArrayList<>();
 
         ProcessSmsMessageTempDBModel processSmsMessageTempDBModel = processTempFramework.removeSmsMessageTempService(tempId);
         if (processSmsMessageTempDBModel != null) {
-            smsMessageTempWSDTOS.add(processTempFramework.fillSmsMessageTempWSDTO(processSmsMessageTempDBModel));
+            processSmsMessageTempWSDTOS.add(processTempFramework.fillSmsMessageTempWSDTO(processSmsMessageTempDBModel));
         }
 
-        response.setSmsMessageTemps(smsMessageTempWSDTOS);
+        response.setSmsMessageTemps(processSmsMessageTempWSDTOS);
         general.setOperation("removeSmsMessageTemp");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -174,13 +174,13 @@ public class ProcessTempMiddleware {
     }
 
 
-    public WappMessageTempWSModel getProcessWappMessageTemps(long userId, String processId) {
+    public ProcessWappMessageTempWSModel getProcessWappMessageTemps(long userId, String processId) {
 
-        WappMessageTempWSModel response = new WappMessageTempWSModel();
+        ProcessWappMessageTempWSModel response = new ProcessWappMessageTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<WappMessageTempWSDTO> wappMessageWSDTOS = new ArrayList<>();
+        List<ProcessWappMessageTempWSDTO> wappMessageWSDTOS = new ArrayList<>();
 
-        List<ProcessWappMessageTempDBModel> processWappMessageTempDBModels = wappMessageTempRepository.findByProcessId(processId);
+        List<ProcessWappMessageTempDBModel> processWappMessageTempDBModels = processWappMessageTempRepository.findByProcessId(processId);
         for (ProcessWappMessageTempDBModel processWappMessageTempDBModel : processWappMessageTempDBModels) {
             wappMessageWSDTOS.add(processTempFramework.fillWappMessageTempWSDTO(processWappMessageTempDBModel));
         }
@@ -196,13 +196,13 @@ public class ProcessTempMiddleware {
     }
 
 
-    public WappMessageTempWSModel getWappMessageTemp(long userId, String tempId) {
+    public ProcessWappMessageTempWSModel getWappMessageTemp(long userId, String tempId) {
 
-        WappMessageTempWSModel response = new WappMessageTempWSModel();
+        ProcessWappMessageTempWSModel response = new ProcessWappMessageTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<WappMessageTempWSDTO> wappMessageWSDTOS = new ArrayList<>();
+        List<ProcessWappMessageTempWSDTO> wappMessageWSDTOS = new ArrayList<>();
 
-        Optional<ProcessWappMessageTempDBModel> wappMessageTempDBModel = wappMessageTempRepository.findById(tempId);
+        Optional<ProcessWappMessageTempDBModel> wappMessageTempDBModel = processWappMessageTempRepository.findById(tempId);
         if (wappMessageTempDBModel.isPresent()) {
             wappMessageWSDTOS.add(processTempFramework.fillWappMessageTempWSDTO(wappMessageTempDBModel.get()));
         }
@@ -219,11 +219,11 @@ public class ProcessTempMiddleware {
 
 
 
-    public WappMessageTempWSModel createWappMessageTemp(long userId,String processId,String wappTitle,String wappBody,long typeId) {
+    public ProcessWappMessageTempWSModel createWappMessageTemp(long userId, String processId, String wappTitle, String wappBody, long typeId) {
 
-        WappMessageTempWSModel response = new WappMessageTempWSModel();
+        ProcessWappMessageTempWSModel response = new ProcessWappMessageTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<WappMessageTempWSDTO> wappMessageWSDTOS = new ArrayList<>();
+        List<ProcessWappMessageTempWSDTO> wappMessageWSDTOS = new ArrayList<>();
 
         ProcessWappMessageTempDBModel processWappMessageTempDBModel = processTempFramework.createWappMessageTempService(processId,wappTitle,wappBody,typeId);
         if (processWappMessageTempDBModel != null) {
@@ -242,11 +242,11 @@ public class ProcessTempMiddleware {
 
 
 
-    public WappMessageTempWSModel updateWappMessageTemp(long userId,String tempId, String wappTitle,String wappBody, long typeId) {
+    public ProcessWappMessageTempWSModel updateWappMessageTemp(long userId, String tempId, String wappTitle, String wappBody, long typeId) {
 
-        WappMessageTempWSModel response = new WappMessageTempWSModel();
+        ProcessWappMessageTempWSModel response = new ProcessWappMessageTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<WappMessageTempWSDTO> wappMessageWSDTOS = new ArrayList<>();
+        List<ProcessWappMessageTempWSDTO> wappMessageWSDTOS = new ArrayList<>();
 
         ProcessWappMessageTempDBModel processWappMessageTempDBModel = processTempFramework.updateWappMessageTempService(tempId,wappTitle,wappBody,typeId);
         if (processWappMessageTempDBModel != null) {
@@ -265,11 +265,11 @@ public class ProcessTempMiddleware {
 
 
 
-    public WappMessageTempWSModel removeWappMessageTemp(long userId, String tempId) {
+    public ProcessWappMessageTempWSModel removeWappMessageTemp(long userId, String tempId) {
 
-        WappMessageTempWSModel response = new WappMessageTempWSModel();
+        ProcessWappMessageTempWSModel response = new ProcessWappMessageTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<WappMessageTempWSDTO> wappMessageWSDTOS = new ArrayList<>();
+        List<ProcessWappMessageTempWSDTO> wappMessageWSDTOS = new ArrayList<>();
 
         ProcessWappMessageTempDBModel processWappMessageTempDBModel = processTempFramework.removeWappMessageTempService(tempId);
         if (processWappMessageTempDBModel != null) {
@@ -288,18 +288,18 @@ public class ProcessTempMiddleware {
 
 
 
-    public EmailTempWSModel getProcessEmailTemps(long userId, String processId) {
+    public ProcessEmailTempWSModel getProcessEmailTemps(long userId, String processId) {
 
-        EmailTempWSModel response = new EmailTempWSModel();
+        ProcessEmailTempWSModel response = new ProcessEmailTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<EmailTempWSDTO> emailTempWSDTOS = new ArrayList<>();
+        List<ProcessEmailTempWSDTO> processEmailTempWSDTOS = new ArrayList<>();
 
-        List<ProcessEmailTempDBModel> processEmailTempDBModels = emailTempRepository.findByProcessId(processId);
+        List<ProcessEmailTempDBModel> processEmailTempDBModels = processEmailTempRepository.findByProcessId(processId);
         for (ProcessEmailTempDBModel processEmailTempDBModel : processEmailTempDBModels) {
-            emailTempWSDTOS.add(processTempFramework.fillEmailTempWSDTO(processEmailTempDBModel));
+            processEmailTempWSDTOS.add(processTempFramework.fillEmailTempWSDTO(processEmailTempDBModel));
         }
 
-        response.setEmailTemps(emailTempWSDTOS);
+        response.setEmailTemps(processEmailTempWSDTOS);
         general.setOperation("getProcessEmailTemps");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -310,18 +310,18 @@ public class ProcessTempMiddleware {
     }
 
 
-    public EmailTempWSModel getEmailTemp(long userId, String tempId) {
+    public ProcessEmailTempWSModel getEmailTemp(long userId, String tempId) {
 
-        EmailTempWSModel response = new EmailTempWSModel();
+        ProcessEmailTempWSModel response = new ProcessEmailTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<EmailTempWSDTO> emailTempWSDTOS = new ArrayList<>();
+        List<ProcessEmailTempWSDTO> processEmailTempWSDTOS = new ArrayList<>();
 
-        Optional<ProcessEmailTempDBModel> emailTempDBModel = emailTempRepository.findById(tempId);
+        Optional<ProcessEmailTempDBModel> emailTempDBModel = processEmailTempRepository.findById(tempId);
         if (emailTempDBModel.isPresent()) {
-            emailTempWSDTOS.add(processTempFramework.fillEmailTempWSDTO(emailTempDBModel.get()));
+            processEmailTempWSDTOS.add(processTempFramework.fillEmailTempWSDTO(emailTempDBModel.get()));
         }
 
-        response.setEmailTemps(emailTempWSDTOS);
+        response.setEmailTemps(processEmailTempWSDTOS);
         general.setOperation("getEmailTemp");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -332,18 +332,18 @@ public class ProcessTempMiddleware {
     }
 
 
-    public EmailTempWSModel createEmailTemp(long userId,String processId,String emailSubject, String emailBody, String emailFooter,String emailSender, long typeId) {
+    public ProcessEmailTempWSModel createEmailTemp(long userId, String processId, String emailSubject, String emailBody, String emailFooter, String emailSender, long typeId) {
 
-        EmailTempWSModel response = new EmailTempWSModel();
+        ProcessEmailTempWSModel response = new ProcessEmailTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<EmailTempWSDTO> emailTempWSDTOS = new ArrayList<>();
+        List<ProcessEmailTempWSDTO> processEmailTempWSDTOS = new ArrayList<>();
 
         ProcessEmailTempDBModel processEmailTempDBModel = processTempFramework.createEmailTempService(processId,emailSubject,emailBody,emailFooter,emailSender,typeId);
         if (processEmailTempDBModel != null) {
-            emailTempWSDTOS.add(processTempFramework.fillEmailTempWSDTO(processEmailTempDBModel));
+            processEmailTempWSDTOS.add(processTempFramework.fillEmailTempWSDTO(processEmailTempDBModel));
         }
 
-        response.setEmailTemps(emailTempWSDTOS);
+        response.setEmailTemps(processEmailTempWSDTOS);
         general.setOperation("createEmailTemp");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -354,18 +354,18 @@ public class ProcessTempMiddleware {
     }
 
 
-    public EmailTempWSModel updateEmailTemp(long userId,String tempId,String emailSubject, String emailBody, String emailFooter,String emailSender, long typeId) {
+    public ProcessEmailTempWSModel updateEmailTemp(long userId, String tempId, String emailSubject, String emailBody, String emailFooter, String emailSender, long typeId) {
 
-        EmailTempWSModel response = new EmailTempWSModel();
+        ProcessEmailTempWSModel response = new ProcessEmailTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<EmailTempWSDTO> emailTempWSDTOS = new ArrayList<>();
+        List<ProcessEmailTempWSDTO> processEmailTempWSDTOS = new ArrayList<>();
 
         ProcessEmailTempDBModel processEmailTempDBModel = processTempFramework.updateEmailTempService(tempId,emailSubject,emailBody,emailFooter,emailSender,typeId);
         if (processEmailTempDBModel != null) {
-            emailTempWSDTOS.add(processTempFramework.fillEmailTempWSDTO(processEmailTempDBModel));
+            processEmailTempWSDTOS.add(processTempFramework.fillEmailTempWSDTO(processEmailTempDBModel));
         }
 
-        response.setEmailTemps(emailTempWSDTOS);
+        response.setEmailTemps(processEmailTempWSDTOS);
         general.setOperation("updateEmailTemp");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -376,18 +376,18 @@ public class ProcessTempMiddleware {
     }
 
 
-    public EmailTempWSModel removeEmailTemp(long userId, String tempId) {
+    public ProcessEmailTempWSModel removeEmailTemp(long userId, String tempId) {
 
-        EmailTempWSModel response = new EmailTempWSModel();
+        ProcessEmailTempWSModel response = new ProcessEmailTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<EmailTempWSDTO> emailTempWSDTOS = new ArrayList<>();
+        List<ProcessEmailTempWSDTO> processEmailTempWSDTOS = new ArrayList<>();
 
         ProcessEmailTempDBModel processEmailTempDBModel = processTempFramework.removeEmailTempService(tempId);
         if (processEmailTempDBModel != null) {
-            emailTempWSDTOS.add(processTempFramework.fillEmailTempWSDTO(processEmailTempDBModel));
+            processEmailTempWSDTOS.add(processTempFramework.fillEmailTempWSDTO(processEmailTempDBModel));
         }
 
-        response.setEmailTemps(emailTempWSDTOS);
+        response.setEmailTemps(processEmailTempWSDTOS);
         general.setOperation("removeEmailTemp");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -399,18 +399,18 @@ public class ProcessTempMiddleware {
 
 
 
-    public PushTempWSModel getProcessPushTemps(long userId, String processId) {
+    public ProcessPushTempWSModel getProcessPushTemps(long userId, String processId) {
 
-        PushTempWSModel response = new PushTempWSModel();
+        ProcessPushTempWSModel response = new ProcessPushTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<PushTempWSDTO> pushTempWSDTOS = new ArrayList<>();
+        List<ProcessPushTempWSDTO> processPushTempWSDTOS = new ArrayList<>();
 
-        List<ProcessPushTempDBModel> processPushTempDBModels = pushTempRepository.findByProcessId(processId);
+        List<ProcessPushTempDBModel> processPushTempDBModels = processPushTempRepository.findByProcessId(processId);
         for (ProcessPushTempDBModel processPushTempDBModel : processPushTempDBModels) {
-            pushTempWSDTOS.add(processTempFramework.fillPushTempWSDTO(processPushTempDBModel));
+            processPushTempWSDTOS.add(processTempFramework.fillPushTempWSDTO(processPushTempDBModel));
         }
 
-        response.setPushTemps(pushTempWSDTOS);
+        response.setPushTemps(processPushTempWSDTOS);
         general.setOperation("getProcessPushTemps");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -421,18 +421,18 @@ public class ProcessTempMiddleware {
     }
 
 
-    public PushTempWSModel getPushTemp(long userId, String tempId) {
+    public ProcessPushTempWSModel getPushTemp(long userId, String tempId) {
 
-        PushTempWSModel response = new PushTempWSModel();
+        ProcessPushTempWSModel response = new ProcessPushTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<PushTempWSDTO> pushTempWSDTOS = new ArrayList<>();
+        List<ProcessPushTempWSDTO> processPushTempWSDTOS = new ArrayList<>();
 
-        Optional<ProcessPushTempDBModel> pushTempDBModel = pushTempRepository.findById(tempId);
+        Optional<ProcessPushTempDBModel> pushTempDBModel = processPushTempRepository.findById(tempId);
         if (pushTempDBModel.isPresent()) {
-            pushTempWSDTOS.add(processTempFramework.fillPushTempWSDTO(pushTempDBModel.get()));
+            processPushTempWSDTOS.add(processTempFramework.fillPushTempWSDTO(pushTempDBModel.get()));
         }
 
-        response.setPushTemps(pushTempWSDTOS);
+        response.setPushTemps(processPushTempWSDTOS);
         general.setOperation("getPushTemp");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -443,18 +443,18 @@ public class ProcessTempMiddleware {
     }
 
 
-    public PushTempWSModel createPushTemp(long userId,String processId,String pushHeader, String pushBody, String pushFooter, String pushSender, long typeId) {
+    public ProcessPushTempWSModel createPushTemp(long userId, String processId, String pushHeader, String pushBody, String pushFooter, String pushSender, long typeId) {
 
-        PushTempWSModel response = new PushTempWSModel();
+        ProcessPushTempWSModel response = new ProcessPushTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<PushTempWSDTO> pushTempWSDTOS = new ArrayList<>();
+        List<ProcessPushTempWSDTO> processPushTempWSDTOS = new ArrayList<>();
 
         ProcessPushTempDBModel processPushTempDBModel = processTempFramework.createPushTempService(processId,pushHeader,pushBody,pushFooter,pushSender,typeId);
         if (processPushTempDBModel != null) {
-            pushTempWSDTOS.add(processTempFramework.fillPushTempWSDTO(processPushTempDBModel));
+            processPushTempWSDTOS.add(processTempFramework.fillPushTempWSDTO(processPushTempDBModel));
         }
 
-        response.setPushTemps(pushTempWSDTOS);
+        response.setPushTemps(processPushTempWSDTOS);
         general.setOperation("createPushTemp");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -466,18 +466,18 @@ public class ProcessTempMiddleware {
 
 
 
-    public PushTempWSModel updatePushTemp(long userId,String tempId,String pushHeader, String pushBody, String pushFooter, String pushSender, long typeId) {
+    public ProcessPushTempWSModel updatePushTemp(long userId, String tempId, String pushHeader, String pushBody, String pushFooter, String pushSender, long typeId) {
 
-        PushTempWSModel response = new PushTempWSModel();
+        ProcessPushTempWSModel response = new ProcessPushTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<PushTempWSDTO> pushTempWSDTOS = new ArrayList<>();
+        List<ProcessPushTempWSDTO> processPushTempWSDTOS = new ArrayList<>();
 
         ProcessPushTempDBModel processPushTempDBModel = processTempFramework.updatePushTempService(tempId,pushHeader,pushBody,pushFooter,pushSender,typeId);
         if (processPushTempDBModel != null) {
-            pushTempWSDTOS.add(processTempFramework.fillPushTempWSDTO(processPushTempDBModel));
+            processPushTempWSDTOS.add(processTempFramework.fillPushTempWSDTO(processPushTempDBModel));
         }
 
-        response.setPushTemps(pushTempWSDTOS);
+        response.setPushTemps(processPushTempWSDTOS);
         general.setOperation("updatePushTemp");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -488,18 +488,18 @@ public class ProcessTempMiddleware {
     }
 
 
-    public PushTempWSModel removePushTemp(long userId, String tempId) {
+    public ProcessPushTempWSModel removePushTemp(long userId, String tempId) {
 
-        PushTempWSModel response = new PushTempWSModel();
+        ProcessPushTempWSModel response = new ProcessPushTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<PushTempWSDTO> pushTempWSDTOS = new ArrayList<>();
+        List<ProcessPushTempWSDTO> processPushTempWSDTOS = new ArrayList<>();
 
         ProcessPushTempDBModel processPushTempDBModel = processTempFramework.removePushTempService(tempId);
         if (processPushTempDBModel != null) {
-            pushTempWSDTOS.add(processTempFramework.fillPushTempWSDTO(processPushTempDBModel));
+            processPushTempWSDTOS.add(processTempFramework.fillPushTempWSDTO(processPushTempDBModel));
         }
 
-        response.setPushTemps(pushTempWSDTOS);
+        response.setPushTemps(processPushTempWSDTOS);
         general.setOperation("removePushTemp");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);

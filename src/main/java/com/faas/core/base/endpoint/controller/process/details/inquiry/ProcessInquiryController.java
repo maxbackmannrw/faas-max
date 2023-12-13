@@ -1,8 +1,7 @@
 package com.faas.core.base.endpoint.controller.process.details.inquiry;
 
 import com.faas.core.base.middleware.process.details.inquiry.ProcessInquiryMiddleware;
-import com.faas.core.base.model.ws.process.details.inquiry.InquiryDataWSModel;
-import com.faas.core.base.model.ws.process.details.inquiry.InquiryUrlWSModel;
+import com.faas.core.base.model.ws.process.details.inquiry.ProcessInquiryDataWSModel;
 import com.faas.core.base.model.ws.process.details.inquiry.ProcessInquiryWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
@@ -68,7 +67,7 @@ public class ProcessInquiryController {
     public ResponseEntity<?> getProcessInquiryDatas(@RequestParam long userId,
                                                     @RequestParam String processId) {
 
-        InquiryDataWSModel response = processInquiryMiddleware.getProcessInquiryDatas(userId,processId);
+        ProcessInquiryDataWSModel response = processInquiryMiddleware.getProcessInquiryDatas(userId,processId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -81,7 +80,7 @@ public class ProcessInquiryController {
                                                    @RequestParam String processId,
                                                    @RequestParam String dataId) {
 
-        InquiryDataWSModel response = processInquiryMiddleware.getProcessInquiryData(userId,processId,dataId);
+        ProcessInquiryDataWSModel response = processInquiryMiddleware.getProcessInquiryData(userId,processId,dataId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -95,7 +94,7 @@ public class ProcessInquiryController {
                                                       @RequestParam long typeId,
                                                       @RequestParam String value) {
 
-        InquiryDataWSModel response = processInquiryMiddleware.createProcessInquiryData(userId,processId,typeId,value);
+        ProcessInquiryDataWSModel response = processInquiryMiddleware.createProcessInquiryData(userId,processId,typeId,value);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -110,7 +109,7 @@ public class ProcessInquiryController {
                                                       @RequestParam long typeId,
                                                       @RequestParam String value) {
 
-        InquiryDataWSModel response = processInquiryMiddleware.updateProcessInquiryData(userId,processId,dataId,typeId,value);
+        ProcessInquiryDataWSModel response = processInquiryMiddleware.updateProcessInquiryData(userId,processId,dataId,typeId,value);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -123,7 +122,7 @@ public class ProcessInquiryController {
                                                       @RequestParam String processId,
                                                       @RequestParam String dataId) {
 
-        InquiryDataWSModel response = processInquiryMiddleware.removeProcessInquiryData(userId,processId,dataId);
+        ProcessInquiryDataWSModel response = processInquiryMiddleware.removeProcessInquiryData(userId,processId,dataId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -133,72 +132,6 @@ public class ProcessInquiryController {
 
 
 
-    @RequestMapping(value = BaseRoute.GET_PROCESS_INQUIRY_URLS, method = RequestMethod.POST)
-    public ResponseEntity<?> getProcessInquiryUrls(@RequestParam long userId,
-                                                   @RequestParam String processId) {
-
-        InquiryUrlWSModel response = processInquiryMiddleware.getProcessInquiryUrls(userId,processId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-    @RequestMapping(value = BaseRoute.GET_PROCESS_INQUIRY_URL, method = RequestMethod.POST)
-    public ResponseEntity<?> getProcessInquiryUrl(@RequestParam long userId,
-                                                  @RequestParam String processId,
-                                                  @RequestParam String urlId) {
-
-        InquiryUrlWSModel response = processInquiryMiddleware.getProcessInquiryUrl(userId,processId,urlId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-    @RequestMapping(value = BaseRoute.CREATE_PROCESS_INQUIRY_URL, method = RequestMethod.POST)
-    public ResponseEntity<?> createProcessInquiryUrl(@RequestParam long userId,
-                                                     @RequestParam String processId,
-                                                     @RequestParam String urlType,
-                                                     @RequestParam String url) {
-
-        InquiryUrlWSModel response = processInquiryMiddleware.createProcessInquiryUrl(userId,processId,urlType,url);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-    @RequestMapping(value = BaseRoute.UPDATE_PROCESS_INQUIRY_URL, method = RequestMethod.POST)
-    public ResponseEntity<?> updateProcessInquiryUrl(@RequestParam long userId,
-                                                     @RequestParam String processId,
-                                                     @RequestParam String urlId,
-                                                     @RequestParam String urlType,
-                                                     @RequestParam String url) {
-
-        InquiryUrlWSModel response = processInquiryMiddleware.updateProcessInquiryUrl(userId,processId,urlId,urlType,url);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-    @RequestMapping(value = BaseRoute.REMOVE_PROCESS_INQUIRY_URL, method = RequestMethod.POST)
-    public ResponseEntity<?> removeProcessInquiryUrl(@RequestParam long userId,
-                                                     @RequestParam String processId,
-                                                     @RequestParam String urlId) {
-
-        InquiryUrlWSModel response = processInquiryMiddleware.removeProcessInquiryUrl(userId,processId,urlId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
 
 
 

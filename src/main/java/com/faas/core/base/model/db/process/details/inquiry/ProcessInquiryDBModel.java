@@ -1,7 +1,7 @@
 package com.faas.core.base.model.db.process.details.inquiry;
 
-import com.faas.core.base.model.db.process.details.inquiry.dao.InquiryDataDAO;
-import com.faas.core.base.model.db.process.details.inquiry.dao.InquiryUrlDAO;
+import com.faas.core.base.model.db.process.content.dao.ProcessRemoteDAO;
+import com.faas.core.base.model.db.process.details.inquiry.dao.ProcessInquiryDataDAO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -14,9 +14,8 @@ public class ProcessInquiryDBModel {
     private String id;
     private String processId;
     private String processInquiry;
-    private String inquiryDesc;
-    private List<InquiryDataDAO>inquiryDatas;
-    private List<InquiryUrlDAO>inquiryUrls;
+    private List<ProcessRemoteDAO>inquiryRemotes;
+    private List<ProcessInquiryDataDAO>inquiryDatas;
     private long uDate;
     private long cDate;
     private int status;
@@ -24,13 +23,12 @@ public class ProcessInquiryDBModel {
     public ProcessInquiryDBModel() {
     }
 
-    public ProcessInquiryDBModel(String id, String processId, String processInquiry, String inquiryDesc, List<InquiryDataDAO> inquiryDatas, List<InquiryUrlDAO> inquiryUrls, long uDate, long cDate, int status) {
+    public ProcessInquiryDBModel(String id, String processId, String processInquiry, List<ProcessRemoteDAO> inquiryRemotes, List<ProcessInquiryDataDAO> inquiryDatas, long uDate, long cDate, int status) {
         this.id = id;
         this.processId = processId;
         this.processInquiry = processInquiry;
-        this.inquiryDesc = inquiryDesc;
+        this.inquiryRemotes = inquiryRemotes;
         this.inquiryDatas = inquiryDatas;
-        this.inquiryUrls = inquiryUrls;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
@@ -60,28 +58,20 @@ public class ProcessInquiryDBModel {
         this.processInquiry = processInquiry;
     }
 
-    public String getInquiryDesc() {
-        return inquiryDesc;
+    public List<ProcessRemoteDAO> getInquiryRemotes() {
+        return inquiryRemotes;
     }
 
-    public void setInquiryDesc(String inquiryDesc) {
-        this.inquiryDesc = inquiryDesc;
+    public void setInquiryRemotes(List<ProcessRemoteDAO> inquiryRemotes) {
+        this.inquiryRemotes = inquiryRemotes;
     }
 
-    public List<InquiryDataDAO> getInquiryDatas() {
+    public List<ProcessInquiryDataDAO> getInquiryDatas() {
         return inquiryDatas;
     }
 
-    public void setInquiryDatas(List<InquiryDataDAO> inquiryDatas) {
+    public void setInquiryDatas(List<ProcessInquiryDataDAO> inquiryDatas) {
         this.inquiryDatas = inquiryDatas;
-    }
-
-    public List<InquiryUrlDAO> getInquiryUrls() {
-        return inquiryUrls;
-    }
-
-    public void setInquiryUrls(List<InquiryUrlDAO> inquiryUrls) {
-        this.inquiryUrls = inquiryUrls;
     }
 
     public long getuDate() {

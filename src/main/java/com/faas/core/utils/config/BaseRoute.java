@@ -330,10 +330,7 @@ public class BaseRoute {
 
 
 
-
-
-
-    public static final String GET_ALL_PROCESS = "getallprocess";
+    public static final String GET_ALL_PROCESSES = "getallprocesses";
     public static final String GET_PROCESSES_BY_CATEGORY = "getprocessesbycategory";
     public static final String GET_PROCESS = "getprocess";
     public static final String CREATE_PROCESS = "createprocess";
@@ -348,12 +345,6 @@ public class BaseRoute {
     public static final String UPDATE_PROCESS_DATA = "updateprocessdata";
     public static final String REMOVE_PROCESS_DATA = "removeprocessdata";
 
-
-    public static final String GET_PROCESS_URLS = "getprocessurls";
-    public static final String GET_PROCESS_URL = "getprocessurl";
-    public static final String CREATE_PROCESS_URL = "createprocessurl";
-    public static final String UPDATE_PROCESS_URL = "updateprocessurl";
-    public static final String REMOVE_PROCESS_URL = "removeprocessurl";
 
 
     public static final String GET_PROCESS_SCRIPTS = "getprocessscripts";
@@ -373,11 +364,7 @@ public class BaseRoute {
     public static final String UPDATE_PROCESS_INQUIRY_DATA = "updateprocessinquirydata";
     public static final String REMOVE_PROCESS_INQUIRY_DATA = "removeprocessinquirydata";
 
-    public static final String GET_PROCESS_INQUIRY_URLS = "getprocessinquiryurls";
-    public static final String GET_PROCESS_INQUIRY_URL = "getprocessinquiryurl";
-    public static final String CREATE_PROCESS_INQUIRY_URL = "createprocessinquiryurl";
-    public static final String UPDATE_PROCESS_INQUIRY_URL = "updateprocessinquiryurl";
-    public static final String REMOVE_PROCESS_INQUIRY_URL = "removeprocessinquiryurl";
+
 
 
     public static final String GET_PROCESS_FLOW = "getprocessflow";
@@ -389,12 +376,6 @@ public class BaseRoute {
     public static final String CREATE_PROCESS_FLOW_DATA = "createprocessflowdata";
     public static final String UPDATE_PROCESS_FLOW_DATA = "updateprocessflowdata";
     public static final String REMOVE_PROCESS_FLOW_DATA = "removeprocessflowdata";
-
-    public static final String GET_PROCESS_FLOW_URLS = "getprocessflowurls";
-    public static final String GET_PROCESS_FLOW_URL = "getprocessflowurl";
-    public static final String CREATE_PROCESS_FLOW_URL = "createprocessflowurl";
-    public static final String UPDATE_PROCESS_FLOW_URL = "updateprocessflowurl";
-    public static final String REMOVE_PROCESS_FLOW_URL = "removeprocessflowurl";
 
 
 

@@ -1,20 +1,20 @@
 package com.faas.core.base.model.ws.process.details.channel.temp;
 
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.process.details.channel.temp.dto.PushTempWSDTO;
+import com.faas.core.base.model.ws.process.details.channel.temp.dto.ProcessPushTempWSDTO;
 
 import java.util.List;
 
-public class PushTempWSModel {
+public class ProcessPushTempWSModel {
 
     private GeneralWSModel general;
-    private List<PushTempWSDTO>pushTemps;
+    private List<ProcessPushTempWSDTO>pushTemps;
 
 
-    public PushTempWSModel() {
+    public ProcessPushTempWSModel() {
     }
 
-    public PushTempWSModel(GeneralWSModel general, List<PushTempWSDTO> pushTemps) {
+    public ProcessPushTempWSModel(GeneralWSModel general, List<ProcessPushTempWSDTO> pushTemps) {
         this.general = general;
         this.pushTemps = pushTemps;
     }
@@ -27,11 +27,11 @@ public class PushTempWSModel {
         this.general = general;
     }
 
-    public List<PushTempWSDTO> getPushTemps() {
+    public List<ProcessPushTempWSDTO> getPushTemps() {
         return pushTemps;
     }
 
-    public void setPushTemps(List<PushTempWSDTO> pushTemps) {
+    public void setPushTemps(List<ProcessPushTempWSDTO> pushTemps) {
         this.pushTemps = pushTemps;
     }
 }

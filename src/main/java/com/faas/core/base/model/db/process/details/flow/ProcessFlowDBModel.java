@@ -1,7 +1,7 @@
 package com.faas.core.base.model.db.process.details.flow;
 
-import com.faas.core.base.model.db.process.details.flow.dao.FlowDataDAO;
-import com.faas.core.base.model.db.process.details.flow.dao.FlowUrlDAO;
+import com.faas.core.base.model.db.process.content.dao.ProcessRemoteDAO;
+import com.faas.core.base.model.db.process.details.flow.dao.ProcessFlowDataDAO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -14,9 +14,8 @@ public class ProcessFlowDBModel {
     private String id;
     private String processId;
     private String processFlow;
-    private String flowDesc;
-    private List<FlowUrlDAO>flowUrls;
-    private List<FlowDataDAO>flowDatas;
+    private List<ProcessRemoteDAO>flowRemotes;
+    private List<ProcessFlowDataDAO>flowDatas;
     private long uDate;
     private long cDate;
     private int status;
@@ -24,12 +23,11 @@ public class ProcessFlowDBModel {
     public ProcessFlowDBModel() {
     }
 
-    public ProcessFlowDBModel(String id, String processId, String processFlow, String flowDesc, List<FlowUrlDAO> flowUrls, List<FlowDataDAO> flowDatas, long uDate, long cDate, int status) {
+    public ProcessFlowDBModel(String id, String processId, String processFlow, List<ProcessRemoteDAO> flowRemotes, List<ProcessFlowDataDAO> flowDatas, long uDate, long cDate, int status) {
         this.id = id;
         this.processId = processId;
         this.processFlow = processFlow;
-        this.flowDesc = flowDesc;
-        this.flowUrls = flowUrls;
+        this.flowRemotes = flowRemotes;
         this.flowDatas = flowDatas;
         this.uDate = uDate;
         this.cDate = cDate;
@@ -60,27 +58,19 @@ public class ProcessFlowDBModel {
         this.processFlow = processFlow;
     }
 
-    public String getFlowDesc() {
-        return flowDesc;
+    public List<ProcessRemoteDAO> getFlowRemotes() {
+        return flowRemotes;
     }
 
-    public void setFlowDesc(String flowDesc) {
-        this.flowDesc = flowDesc;
+    public void setFlowRemotes(List<ProcessRemoteDAO> flowRemotes) {
+        this.flowRemotes = flowRemotes;
     }
 
-    public List<FlowUrlDAO> getFlowUrls() {
-        return flowUrls;
-    }
-
-    public void setFlowUrls(List<FlowUrlDAO> flowUrls) {
-        this.flowUrls = flowUrls;
-    }
-
-    public List<FlowDataDAO> getFlowDatas() {
+    public List<ProcessFlowDataDAO> getFlowDatas() {
         return flowDatas;
     }
 
-    public void setFlowDatas(List<FlowDataDAO> flowDatas) {
+    public void setFlowDatas(List<ProcessFlowDataDAO> flowDatas) {
         this.flowDatas = flowDatas;
     }
 

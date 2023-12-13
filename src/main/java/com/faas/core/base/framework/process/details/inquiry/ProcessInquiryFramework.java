@@ -1,11 +1,9 @@
 package com.faas.core.base.framework.process.details.inquiry;
 
 import com.faas.core.base.model.db.process.details.inquiry.ProcessInquiryDBModel;
-import com.faas.core.base.model.db.process.details.inquiry.dao.InquiryDataDAO;
-import com.faas.core.base.model.db.process.details.inquiry.dao.InquiryUrlDAO;
+import com.faas.core.base.model.db.process.details.inquiry.dao.ProcessInquiryDataDAO;
 import com.faas.core.base.model.db.utility.DataTypeDBModel;
-import com.faas.core.base.model.ws.process.details.inquiry.dto.InquiryDataWSDTO;
-import com.faas.core.base.model.ws.process.details.inquiry.dto.InquiryUrlWSDTO;
+import com.faas.core.base.model.ws.process.details.inquiry.dto.ProcessInquiryDataWSDTO;
 import com.faas.core.base.model.ws.process.details.inquiry.dto.ProcessInquiryWSDTO;
 import com.faas.core.base.repo.process.details.inquiry.ProcessInquiryRepository;
 import com.faas.core.base.repo.utility.DataTypeRepository;
@@ -45,7 +43,6 @@ public class ProcessInquiryFramework {
         if (!processInquiryDBModels.isEmpty()){
 
             processInquiryDBModels.get(0).setProcessInquiry(processInquiry);
-            processInquiryDBModels.get(0).setInquiryDesc(inquiryDesc);
             processInquiryDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
 
             return new ProcessInquiryWSDTO(processInquiryRepository.save(processInquiryDBModels.get(0)));
@@ -66,56 +63,56 @@ public class ProcessInquiryFramework {
 
 
 
-    public List<InquiryDataWSDTO> getProcessInquiryDatasService(long userId, String processId) {
+    public List<ProcessInquiryDataWSDTO> getProcessInquiryDatasService(long userId, String processId) {
 
         List<ProcessInquiryDBModel> processInquiryDBModels = processInquiryRepository.findByProcessId(processId);
         if (!processInquiryDBModels.isEmpty() && processInquiryDBModels.get(0).getInquiryDatas() != null){
-            List<InquiryDataWSDTO>inquiryDataWSDTOS = new ArrayList<>();
+            List<ProcessInquiryDataWSDTO> processInquiryDataWSDTOS = new ArrayList<>();
             for (int i=0;i<processInquiryDBModels.get(0).getInquiryDatas().size();i++){
-                inquiryDataWSDTOS.add(new InquiryDataWSDTO(processInquiryDBModels.get(0).getInquiryDatas().get(i)));
+                processInquiryDataWSDTOS.add(new ProcessInquiryDataWSDTO(processInquiryDBModels.get(0).getInquiryDatas().get(i)));
             }
-            return inquiryDataWSDTOS;
+            return processInquiryDataWSDTOS;
         }
         return null;
     }
 
-    public InquiryDataWSDTO getProcessInquiryDataService(long userId, String processId,String dataId) {
+    public ProcessInquiryDataWSDTO getProcessInquiryDataService(long userId, String processId, String dataId) {
 
         List<ProcessInquiryDBModel> processInquiryDBModels = processInquiryRepository.findByProcessId(processId);
         if (!processInquiryDBModels.isEmpty() && processInquiryDBModels.get(0).getInquiryDatas() != null){
             for (int i=0;i<processInquiryDBModels.get(0).getInquiryDatas().size();i++){
                 if (processInquiryDBModels.get(0).getInquiryDatas().get(i).getDataId().equalsIgnoreCase(dataId)){
-                    return new InquiryDataWSDTO(processInquiryDBModels.get(0).getInquiryDatas().get(i));
+                    return new ProcessInquiryDataWSDTO(processInquiryDBModels.get(0).getInquiryDatas().get(i));
                 }
             }
         }
         return null;
     }
 
-    public InquiryDataWSDTO createProcessInquiryDataService(long userId, String processId,long typeId,String value) {
+    public ProcessInquiryDataWSDTO createProcessInquiryDataService(long userId, String processId, long typeId, String value) {
 
         List<ProcessInquiryDBModel> processInquiryDBModels = processInquiryRepository.findByProcessId(processId);
         Optional<DataTypeDBModel> dataTypeDBModel = dataTypeRepository.findById(typeId);
         if (!processInquiryDBModels.isEmpty() && dataTypeDBModel.isPresent()){
 
-            InquiryDataDAO inquiryDataDAO = new InquiryDataDAO();
-            inquiryDataDAO.setDataId(appUtils.generateUUID());
-            inquiryDataDAO.setDataType(dataTypeDBModel.get().getDataType());
-            inquiryDataDAO.setValue(value);
-            inquiryDataDAO.setcDate(appUtils.getCurrentTimeStamp());
-            inquiryDataDAO.setStatus(1);
+            ProcessInquiryDataDAO processInquiryDataDAO = new ProcessInquiryDataDAO();
+            processInquiryDataDAO.setDataId(appUtils.generateUUID());
+            processInquiryDataDAO.setDataType(dataTypeDBModel.get().getDataType());
+            processInquiryDataDAO.setValue(value);
+            processInquiryDataDAO.setcDate(appUtils.getCurrentTimeStamp());
+            processInquiryDataDAO.setStatus(1);
 
-            processInquiryDBModels.get(0).getInquiryDatas().add(inquiryDataDAO);
+            processInquiryDBModels.get(0).getInquiryDatas().add(processInquiryDataDAO);
             processInquiryDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
             processInquiryRepository.save(processInquiryDBModels.get(0));
 
-            return new InquiryDataWSDTO(inquiryDataDAO);
+            return new ProcessInquiryDataWSDTO(processInquiryDataDAO);
         }
         return null;
     }
 
 
-    public InquiryDataWSDTO updateProcessInquiryDataService(long userId,String processId,String dataId,long typeId,String value) {
+    public ProcessInquiryDataWSDTO updateProcessInquiryDataService(long userId, String processId, String dataId, long typeId, String value) {
 
         List<ProcessInquiryDBModel> processInquiryDBModels = processInquiryRepository.findByProcessId(processId);
         Optional<DataTypeDBModel> dataTypeDBModel = dataTypeRepository.findById(typeId);
@@ -129,14 +126,14 @@ public class ProcessInquiryFramework {
                     processInquiryDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
                     processInquiryRepository.save(processInquiryDBModels.get(0));
 
-                    return new InquiryDataWSDTO(processInquiryDBModels.get(0).getInquiryDatas().get(i));
+                    return new ProcessInquiryDataWSDTO(processInquiryDBModels.get(0).getInquiryDatas().get(i));
                 }
             }
         }
         return null;
     }
 
-    public InquiryDataWSDTO removeProcessInquiryDataService(long userId, String processId, String dataId) {
+    public ProcessInquiryDataWSDTO removeProcessInquiryDataService(long userId, String processId, String dataId) {
 
         List<ProcessInquiryDBModel> processInquiryDBModels = processInquiryRepository.findByProcessId(processId);
         if (!processInquiryDBModels.isEmpty() && processInquiryDBModels.get(0).getInquiryDatas() != null){
@@ -147,98 +144,7 @@ public class ProcessInquiryFramework {
                     processInquiryDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
                     processInquiryRepository.save(processInquiryDBModels.get(0));
 
-                    return new InquiryDataWSDTO(processInquiryDBModels.get(0).getInquiryDatas().get(i));
-                }
-            }
-        }
-        return null;
-    }
-
-
-
-    public List<InquiryUrlWSDTO> getProcessInquiryUrlsService(long userId, String processId) {
-
-        List<ProcessInquiryDBModel> processInquiryDBModels = processInquiryRepository.findByProcessId(processId);
-        if (!processInquiryDBModels.isEmpty() && processInquiryDBModels.get(0).getInquiryUrls() != null){
-            List<InquiryUrlWSDTO>inquiryUrlWSDTOS = new ArrayList<>();
-            for (int i=0;i<processInquiryDBModels.get(0).getInquiryUrls().size();i++){
-                inquiryUrlWSDTOS.add(new InquiryUrlWSDTO(processInquiryDBModels.get(0).getInquiryUrls().get(i)));
-            }
-            return inquiryUrlWSDTOS;
-        }
-        return null;
-    }
-
-    public InquiryUrlWSDTO getProcessInquiryUrlService(long userId,String processId,String urlId) {
-
-        List<ProcessInquiryDBModel> processInquiryDBModels = processInquiryRepository.findByProcessId(processId);
-        if (!processInquiryDBModels.isEmpty() && processInquiryDBModels.get(0).getInquiryUrls() != null){
-            for (int i=0;i<processInquiryDBModels.get(0).getInquiryUrls().size();i++){
-                if (processInquiryDBModels.get(0).getInquiryUrls().get(i).getUrlId().equalsIgnoreCase(urlId)){
-                    return new InquiryUrlWSDTO(processInquiryDBModels.get(0).getInquiryUrls().get(i));
-                }
-            }
-        }
-        return null;
-    }
-
-    public InquiryUrlWSDTO createProcessInquiryUrlService(long userId,String processId,String urlType,String url) {
-
-        List<ProcessInquiryDBModel> processInquiryDBModels = processInquiryRepository.findByProcessId(processId);
-        if (!processInquiryDBModels.isEmpty()){
-
-            InquiryUrlDAO inquiryUrlDAO = new InquiryUrlDAO();
-            inquiryUrlDAO.setUrlId(appUtils.generateUUID());
-            inquiryUrlDAO.setUrlType(urlType);
-            inquiryUrlDAO.setUrl(url);
-            inquiryUrlDAO.setcDate(appUtils.getCurrentTimeStamp());
-            inquiryUrlDAO.setStatus(1);
-
-            if (!processInquiryDBModels.isEmpty() && processInquiryDBModels.get(0).getInquiryUrls() != null){
-                processInquiryDBModels.get(0).getInquiryUrls().add(inquiryUrlDAO);
-            }else {
-                List<InquiryUrlDAO>inquiryUrlDAOS = new ArrayList<>();
-                inquiryUrlDAOS.add(inquiryUrlDAO);
-                processInquiryDBModels.get(0).setInquiryUrls(inquiryUrlDAOS);
-            }
-            processInquiryDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
-            processInquiryRepository.save(processInquiryDBModels.get(0));
-
-            return new InquiryUrlWSDTO(inquiryUrlDAO);
-        }
-        return null;
-    }
-
-    public InquiryUrlWSDTO updateProcessInquiryUrlService(long userId, String processId,String urlId,String urlType,String url) {
-
-        List<ProcessInquiryDBModel> processInquiryDBModels = processInquiryRepository.findByProcessId(processId);
-        if (!processInquiryDBModels.isEmpty() && processInquiryDBModels.get(0).getInquiryUrls() != null){
-            for (int i=0;i<processInquiryDBModels.get(0).getInquiryUrls().size();i++){
-                if (processInquiryDBModels.get(0).getInquiryUrls().get(i).getUrlId().equalsIgnoreCase(urlId)){
-
-                    processInquiryDBModels.get(0).getInquiryUrls().get(i).setUrlType(urlType);
-                    processInquiryDBModels.get(0).getInquiryUrls().get(i).setUrl(url);
-                    processInquiryDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
-                    processInquiryRepository.save(processInquiryDBModels.get(0));
-
-                    return new InquiryUrlWSDTO(processInquiryDBModels.get(0).getInquiryUrls().get(i));
-                }
-            }
-        }
-        return null;
-    }
-
-    public InquiryUrlWSDTO removeProcessInquiryUrlService(long userId, String processId,String urlId) {
-
-        List<ProcessInquiryDBModel> processInquiryDBModels = processInquiryRepository.findByProcessId(processId);
-        if (!processInquiryDBModels.isEmpty() && processInquiryDBModels.get(0).getInquiryUrls() != null){
-            for (int i=0;i<processInquiryDBModels.get(0).getInquiryUrls().size();i++){
-                if (processInquiryDBModels.get(0).getInquiryUrls().get(i).getUrlId().equalsIgnoreCase(urlId)){
-                    processInquiryDBModels.get(0).getInquiryUrls().remove(processInquiryDBModels.get(0).getInquiryUrls().get(i));
-                    processInquiryDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
-                    processInquiryRepository.save(processInquiryDBModels.get(0));
-
-                    return new InquiryUrlWSDTO(processInquiryDBModels.get(0).getInquiryUrls().get(i));
+                    return new ProcessInquiryDataWSDTO(processInquiryDBModels.get(0).getInquiryDatas().get(i));
                 }
             }
         }

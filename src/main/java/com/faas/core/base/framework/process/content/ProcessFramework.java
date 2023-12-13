@@ -1,16 +1,18 @@
 package com.faas.core.base.framework.process.content;
 
 import com.faas.core.base.model.db.process.content.ProcessDBModel;
-import com.faas.core.base.model.db.process.content.dao.ProcessUrlDAO;
-import com.faas.core.base.model.db.process.details.flow.ProcessFlowDBModel;
-import com.faas.core.base.model.db.process.details.inquiry.ProcessInquiryDBModel;
 import com.faas.core.base.model.db.process.settings.ProcessTypeDBModel;
 import com.faas.core.base.model.ws.process.content.dto.ProcessWSDTO;
 import com.faas.core.base.repo.process.content.ProcessRepository;
-import com.faas.core.base.repo.process.details.channel.temp.SmsMessageTempRepository;
-import com.faas.core.base.repo.process.details.channel.temp.PushTempRepository;
+import com.faas.core.base.repo.process.details.channel.content.*;
+import com.faas.core.base.repo.process.details.channel.temp.ProcessEmailTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.ProcessSmsMessageTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.ProcessPushTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.ProcessWappMessageTempRepository;
 import com.faas.core.base.repo.process.details.flow.ProcessFlowRepository;
 import com.faas.core.base.repo.process.details.inquiry.ProcessInquiryRepository;
+import com.faas.core.base.repo.process.details.scenario.ProcessScenarioRepository;
+import com.faas.core.base.repo.process.details.trigger.*;
 import com.faas.core.base.repo.process.settings.ProcessTypeRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
@@ -41,81 +43,122 @@ public class ProcessFramework {
     ProcessTypeRepository processTypeRepository;
 
     @Autowired
-    SmsMessageTempRepository smsMessageTempRepository;
+    ProcessEmailChannelRepository processEmailChannelRepository;
 
     @Autowired
-    PushTempRepository pushTempRepository;
+    ProcessPushChannelRepository processPushChannelRepository;
+
+    @Autowired
+    ProcessSipChannelRepository processSipChannelRepository;
+
+    @Autowired
+    ProcessSmsChannelRepository processSmsChannelRepository;
+
+    @Autowired
+    ProcessWappChannelRepository processWappChannelRepository;
+
+    @Autowired
+    ProcessEmailTempRepository processEmailTempRepository;
+
+    @Autowired
+    ProcessPushTempRepository processPushTempRepository;
+
+    @Autowired
+    ProcessSmsMessageTempRepository processSmsMessageTempRepository;
+
+    @Autowired
+    ProcessWappMessageTempRepository processWappMessageTempRepository;
+
+    @Autowired
+    ProcessScenarioRepository processScenarioRepository;
+
+    @Autowired
+    AiTriggerRepository aiTriggerRepository;
+
+    @Autowired
+    EmailTriggerRepository emailTriggerRepository;
+
+    @Autowired
+    SipCallTriggerRepository sipCallTriggerRepository;
+
+    @Autowired
+    SmsMessageTriggerRepository smsMessageTriggerRepository;
+
+    @Autowired
+    WappCallTriggerRepository wappCallTriggerRepository;
+
+    @Autowired
+    WappMessageTriggerRepository wappMessageTriggerRepository;
 
     @Autowired
     AppUtils appUtils;
 
 
-    public ProcessWSDTO fillProcessWSDTO(ProcessDBModel processDBModel) {
+    public List<ProcessWSDTO> getAllProcessesService(long userId) {
 
-        ProcessWSDTO processWSDTO = new ProcessWSDTO();
-        processWSDTO.setProcess(processDBModel);
-        if (processDBModel.getProcessType().equalsIgnoreCase(AppConstant.INQUIRY_PROCESS)){
-            List<ProcessInquiryDBModel> processInquiryDBModels = processInquiryRepository.findByProcessId(processDBModel.getId());
-            if (!processInquiryDBModels.isEmpty()){
-                processWSDTO.setProcessInquiry(processInquiryDBModels.get(0));
-            }
+        List<ProcessWSDTO>processWSDTOS = new ArrayList<>();
+        List<ProcessDBModel> processDBModels = processRepository.findByStatus(1);
+        for (ProcessDBModel processDBModel : processDBModels) {
+            processWSDTOS.add(processHelper.getProcessWSDTO(processDBModel));
         }
-        if (processDBModel.getProcessType().equalsIgnoreCase(AppConstant.AUTOMATIC_PROCESS)){
-            List<ProcessFlowDBModel> processFlowDBModels = processFlowRepository.findByProcessId(processDBModel.getId());
-            if (!processFlowDBModels.isEmpty()){
-                processWSDTO.setProcessFlow(processFlowDBModels.get(0));
-            }
-        }
-        return processWSDTO;
+        return processWSDTOS;
     }
 
-    public ProcessWSDTO createProcessService(String process,String processDesc,String pwaUrl,long processTypeId,String processCategory,String processState) {
 
-        ProcessDBModel processDBModel = new ProcessDBModel();
-        processDBModel.setProcess(process);
-        processDBModel.setProcessDesc(processDesc);
+    public List<ProcessWSDTO> getProcessesByCategoryService(long userId,String processCategory) {
+
+        List<ProcessWSDTO>processWSDTOS = new ArrayList<>();
+        List<ProcessDBModel> processDBModels = processRepository.findByProcessCategory(processCategory);
+        for (ProcessDBModel processDBModel : processDBModels) {
+            processWSDTOS.add(processHelper.getProcessWSDTO(processDBModel));
+        }
+        return processWSDTOS;
+    }
+
+
+    public ProcessWSDTO getProcessService(long userId,String processId) {
+
+        Optional<ProcessDBModel> processDBModel = processRepository.findById(processId);
+        if (processDBModel.isPresent()){
+            return processHelper.getProcessWSDTO(processDBModel.get());
+        }
+        return null;
+    }
+
+
+    public ProcessWSDTO createProcessService(String process,String processDesc,long processTypeId,String processCategory,String processState) {
+
         Optional<ProcessTypeDBModel> processTypeDBModel = processTypeRepository.findById(processTypeId);
         if (processTypeDBModel.isPresent()){
+
+            ProcessDBModel processDBModel = new ProcessDBModel();
+            processDBModel.setProcess(process);
+            processDBModel.setProcessDesc(processDesc);
             processDBModel.setProcessTypeId(processTypeId);
             processDBModel.setProcessType(processTypeDBModel.get().getProcessType());
+            processDBModel.setProcessCategory(processCategory);
+            processDBModel.setProcessRemotes(new ArrayList<>());
+            processDBModel.setProcessAssets(new ArrayList<>());
+            processDBModel.setProcessScripts(new ArrayList<>());
+            processDBModel.setProcessDatas(new ArrayList<>());
+            processDBModel.setProcessState(processState);
+            processDBModel.setuDate(appUtils.getCurrentTimeStamp());
+            processDBModel.setcDate(appUtils.getCurrentTimeStamp());
+            processDBModel.setStatus(1);
+
+            processDBModel =processRepository.save(processDBModel);
+
+            if (processDBModel.getProcessCategory().equalsIgnoreCase(AppConstant.INQUIRY_PROCESS)){
+                processHelper.createProcessInquiryHelper(processDBModel);
+                return processHelper.getProcessWSDTO(processDBModel);
+            }
+            if (processDBModel.getProcessCategory().equalsIgnoreCase(AppConstant.AUTOMATIC_PROCESS)){
+                processHelper.createProcessFlowHelper(processDBModel);
+                return processHelper.getProcessWSDTO(processDBModel);
+            }
+            return processHelper.getProcessWSDTO(processDBModel);
         }
-        processDBModel.setProcessCategory(processCategory);
-        List<ProcessUrlDAO>processUrls = new ArrayList<>();
-        if (pwaUrl != null){
-            processUrls.add(createProcessUrlDAO(AppConstant.PWA_URL,pwaUrl));
-        }
-        processDBModel.setProcessUrls(processUrls);
-        processDBModel.setProcessDatas(new ArrayList<>());
-        processDBModel.setProcessState(processState);
-        processDBModel.setProcessScripts(new ArrayList<>());
-        processDBModel.setuDate(appUtils.getCurrentTimeStamp());
-        processDBModel.setcDate(appUtils.getCurrentTimeStamp());
-        processDBModel.setStatus(1);
-
-        processDBModel =processRepository.save(processDBModel);
-
-        if (processDBModel.getProcessCategory().equalsIgnoreCase(AppConstant.INQUIRY_PROCESS)){
-            ProcessInquiryDBModel processInquiryDBModel = processHelper.createProcessInquiryHelper(processDBModel);
-            return new ProcessWSDTO(processDBModel,null,processInquiryDBModel);
-        }
-        if (processDBModel.getProcessCategory().equalsIgnoreCase(AppConstant.AUTOMATIC_PROCESS)){
-            ProcessFlowDBModel processFlowDBModel = processHelper.createProcessFlowHelper(processDBModel);
-            return new ProcessWSDTO(processDBModel, processFlowDBModel, null);
-        }
-        return fillProcessWSDTO(processDBModel);
-    }
-
-
-    public ProcessUrlDAO createProcessUrlDAO(String urlType,String processUrl){
-
-        ProcessUrlDAO processUrlDAO = new ProcessUrlDAO();
-        processUrlDAO.setUrlId(appUtils.generateUUID());
-        processUrlDAO.setUrlType(urlType);
-        processUrlDAO.setUrl(processUrl);
-        processUrlDAO.setcDate(appUtils.getCurrentTimeStamp());
-        processUrlDAO.setStatus(1);
-
-        return processUrlDAO;
+        return null;
     }
 
 
@@ -130,7 +173,7 @@ public class ProcessFramework {
             processDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
             processDBModel.get().setStatus(1);
 
-            return fillProcessWSDTO(processRepository.save(processDBModel.get()));
+            return processHelper.getProcessWSDTO(processRepository.save(processDBModel.get()));
         }
        return null;
     }
@@ -140,8 +183,33 @@ public class ProcessFramework {
 
         Optional<ProcessDBModel> process = processRepository.findById(processId);
         if (process.isPresent()) {
+
+            ProcessWSDTO processWSDTO = processHelper.getProcessWSDTO(process.get());
+
             processRepository.delete(process.get());
-            return fillProcessWSDTO(process.get());
+            processEmailChannelRepository.deleteAll(processEmailChannelRepository.findByProcessId(processId));
+            processPushChannelRepository.deleteAll(processPushChannelRepository.findByProcessId(processId));
+            processSipChannelRepository.deleteAll(processSipChannelRepository.findByProcessId(processId));
+            processSmsChannelRepository.deleteAll(processSmsChannelRepository.findByProcessId(processId));
+            processWappChannelRepository.deleteAll(processWappChannelRepository.findByProcessId(processId));
+
+            processEmailTempRepository.deleteAll(processEmailTempRepository.findByProcessId(processId));
+            processPushTempRepository.deleteAll(processPushTempRepository.findByProcessId(processId));
+            processSmsMessageTempRepository.deleteAll(processSmsMessageTempRepository.findByProcessId(processId));
+            processWappMessageTempRepository.deleteAll(processWappMessageTempRepository.findByProcessId(processId));
+
+            processScenarioRepository.deleteAll(processScenarioRepository.findByProcessId(processId));
+            processInquiryRepository.deleteAll(processInquiryRepository.findByProcessId(processId));
+            processFlowRepository.deleteAll(processFlowRepository.findByProcessId(processId));
+
+            aiTriggerRepository.deleteAll(aiTriggerRepository.findByProcessId(processId));
+            emailTriggerRepository.deleteAll(emailTriggerRepository.findByProcessId(processId));
+            sipCallTriggerRepository.deleteAll(sipCallTriggerRepository.findByProcessId(processId));
+            smsMessageTriggerRepository.deleteAll(smsMessageTriggerRepository.findByProcessId(processId));
+            wappCallTriggerRepository.deleteAll(wappCallTriggerRepository.findByProcessId(processId));
+            wappMessageTriggerRepository.deleteAll(wappMessageTriggerRepository.findByProcessId(processId));
+
+            return processWSDTO;
         }
         return null;
     }

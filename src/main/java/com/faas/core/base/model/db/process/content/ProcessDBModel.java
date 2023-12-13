@@ -16,10 +16,10 @@ public class ProcessDBModel {
     private long processTypeId;
     private String processType;
     private String processCategory;
-    private List<ProcessUrlDAO>processUrls;
-    private List<ProcessDataDAO>processDatas;
+    private List<ProcessRemoteDAO>processRemotes;
     private List<ProcessAssetDAO>processAssets;
     private List<ProcessScriptDAO>processScripts;
+    private List<ProcessDataDAO>processDatas;
     private String processState;
     private long uDate;
     private long cDate;
@@ -28,17 +28,17 @@ public class ProcessDBModel {
     public ProcessDBModel() {
     }
 
-    public ProcessDBModel(String id, String process, String processDesc, long processTypeId, String processType, String processCategory, List<ProcessUrlDAO> processUrls, List<ProcessDataDAO> processDatas, List<ProcessAssetDAO> processAssets, List<ProcessScriptDAO> processScripts, String processState, long uDate, long cDate, int status) {
+    public ProcessDBModel(String id, String process, String processDesc, long processTypeId, String processType, String processCategory, List<ProcessRemoteDAO> processRemotes, List<ProcessAssetDAO> processAssets, List<ProcessScriptDAO> processScripts, List<ProcessDataDAO> processDatas, String processState, long uDate, long cDate, int status) {
         this.id = id;
         this.process = process;
         this.processDesc = processDesc;
         this.processTypeId = processTypeId;
         this.processType = processType;
         this.processCategory = processCategory;
-        this.processUrls = processUrls;
-        this.processDatas = processDatas;
+        this.processRemotes = processRemotes;
         this.processAssets = processAssets;
         this.processScripts = processScripts;
+        this.processDatas = processDatas;
         this.processState = processState;
         this.uDate = uDate;
         this.cDate = cDate;
@@ -93,20 +93,12 @@ public class ProcessDBModel {
         this.processCategory = processCategory;
     }
 
-    public List<ProcessUrlDAO> getProcessUrls() {
-        return processUrls;
+    public List<ProcessRemoteDAO> getProcessRemotes() {
+        return processRemotes;
     }
 
-    public void setProcessUrls(List<ProcessUrlDAO> processUrls) {
-        this.processUrls = processUrls;
-    }
-
-    public List<ProcessDataDAO> getProcessDatas() {
-        return processDatas;
-    }
-
-    public void setProcessDatas(List<ProcessDataDAO> processDatas) {
-        this.processDatas = processDatas;
+    public void setProcessRemotes(List<ProcessRemoteDAO> processRemotes) {
+        this.processRemotes = processRemotes;
     }
 
     public List<ProcessAssetDAO> getProcessAssets() {
@@ -123,6 +115,14 @@ public class ProcessDBModel {
 
     public void setProcessScripts(List<ProcessScriptDAO> processScripts) {
         this.processScripts = processScripts;
+    }
+
+    public List<ProcessDataDAO> getProcessDatas() {
+        return processDatas;
+    }
+
+    public void setProcessDatas(List<ProcessDataDAO> processDatas) {
+        this.processDatas = processDatas;
     }
 
     public String getProcessState() {

@@ -19,10 +19,10 @@ import com.faas.core.base.repo.operation.details.inquiry.OperationInquiryReposit
 import com.faas.core.base.repo.operation.details.scenario.OperationScenarioRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.process.details.channel.content.*;
-import com.faas.core.base.repo.process.details.channel.temp.EmailTempRepository;
-import com.faas.core.base.repo.process.details.channel.temp.PushTempRepository;
-import com.faas.core.base.repo.process.details.channel.temp.SmsMessageTempRepository;
-import com.faas.core.base.repo.process.details.channel.temp.WappMessageTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.ProcessEmailTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.ProcessPushTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.ProcessSmsMessageTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.ProcessWappMessageTempRepository;
 import com.faas.core.base.repo.process.details.flow.ProcessFlowRepository;
 import com.faas.core.base.repo.process.details.inquiry.ProcessInquiryRepository;
 import com.faas.core.base.repo.process.details.scenario.ProcessScenarioRepository;
@@ -124,16 +124,16 @@ public class UtilitySystemFramework {
     ProcessWappChannelRepository processWappChannelRepository;
 
     @Autowired
-    EmailTempRepository emailTempRepository;
+    ProcessEmailTempRepository processEmailTempRepository;
 
     @Autowired
-    PushTempRepository pushTempRepository;
+    ProcessPushTempRepository processPushTempRepository;
 
     @Autowired
-    SmsMessageTempRepository smsMessageTempRepository;
+    ProcessSmsMessageTempRepository processSmsMessageTempRepository;
 
     @Autowired
-    WappMessageTempRepository wappMessageTempRepository;
+    ProcessWappMessageTempRepository processWappMessageTempRepository;
 
     @Autowired
     ProcessFlowRepository processFlowRepository;
@@ -482,10 +482,10 @@ public class UtilitySystemFramework {
         processSipChannelRepository.deleteAll();
         processSmsChannelRepository.deleteAll();
         processWappChannelRepository.deleteAll();
-        emailTempRepository.deleteAll();
-        pushTempRepository.deleteAll();
-        smsMessageTempRepository.deleteAll();
-        wappMessageTempRepository.deleteAll();
+        processEmailTempRepository.deleteAll();
+        processPushTempRepository.deleteAll();
+        processSmsMessageTempRepository.deleteAll();
+        processWappMessageTempRepository.deleteAll();
         processFlowRepository.deleteAll();
         processInquiryRepository.deleteAll();
         processScenarioRepository.deleteAll();

@@ -1,20 +1,19 @@
 package com.faas.core.base.model.ws.process.details.flow;
 
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.process.details.flow.dto.FlowDataWSDTO;
-import com.faas.core.base.model.ws.process.details.flow.dto.ProcessFlowWSDTO;
+import com.faas.core.base.model.ws.process.details.flow.dto.ProcessFlowDataWSDTO;
 
 import java.util.List;
 
-public class FlowDataWSModel {
+public class ProcessFlowDataWSModel {
 
     private GeneralWSModel general;
-    private List<FlowDataWSDTO>flowDatas;
+    private List<ProcessFlowDataWSDTO>flowDatas;
 
-    public FlowDataWSModel() {
+    public ProcessFlowDataWSModel() {
     }
 
-    public FlowDataWSModel(GeneralWSModel general, List<FlowDataWSDTO> flowDatas) {
+    public ProcessFlowDataWSModel(GeneralWSModel general, List<ProcessFlowDataWSDTO> flowDatas) {
         this.general = general;
         this.flowDatas = flowDatas;
     }
@@ -27,11 +26,11 @@ public class FlowDataWSModel {
         this.general = general;
     }
 
-    public List<FlowDataWSDTO> getFlowDatas() {
+    public List<ProcessFlowDataWSDTO> getFlowDatas() {
         return flowDatas;
     }
 
-    public void setFlowDatas(List<FlowDataWSDTO> flowDatas) {
+    public void setFlowDatas(List<ProcessFlowDataWSDTO> flowDatas) {
         this.flowDatas = flowDatas;
     }
 }

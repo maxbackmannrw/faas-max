@@ -2,11 +2,9 @@ package com.faas.core.base.framework.process.details.content;
 
 import com.faas.core.base.model.db.process.content.ProcessDBModel;
 import com.faas.core.base.model.db.process.content.dao.ProcessDataDAO;
-import com.faas.core.base.model.db.process.content.dao.ProcessUrlDAO;
 import com.faas.core.base.model.db.utility.DataTypeDBModel;
 import com.faas.core.base.model.ws.process.details.content.dto.ProcessDataWSDTO;
 import com.faas.core.base.model.ws.process.details.content.dto.ProcessDetailsWSDTO;
-import com.faas.core.base.model.ws.process.details.content.dto.ProcessUrlWSDTO;
 import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.utility.DataTypeRepository;
 import com.faas.core.utils.config.AppUtils;
@@ -46,7 +44,6 @@ public class ProcessDetailsFramework {
         return processDataWSDTO;
     }
 
-
     public ProcessDataDAO createProcessDataService(String processId, long typeId, String value) {
 
         Optional<ProcessDBModel> processDBModel = processRepository.findById(processId);
@@ -69,7 +66,6 @@ public class ProcessDetailsFramework {
         return null;
     }
 
-
     public ProcessDataDAO updateProcessDataService(String processId, String dataId, long typeId, String value) {
 
         Optional<ProcessDBModel> processDBModel = processRepository.findById(processId);
@@ -91,7 +87,6 @@ public class ProcessDetailsFramework {
         return null;
     }
 
-
     public ProcessDataDAO removeProcessDataService(String processId, String dataId) {
 
         Optional<ProcessDBModel> processDBModel = processRepository.findById(processId);
@@ -104,75 +99,6 @@ public class ProcessDetailsFramework {
                     processRepository.save(processDBModel.get());
 
                     return processDataDAO;
-                }
-            }
-        }
-        return null;
-    }
-
-
-    public ProcessUrlWSDTO fillProcessUrlWSDTO(ProcessUrlDAO processUrlDAO) {
-
-        ProcessUrlWSDTO processUrlWSDTO = new ProcessUrlWSDTO();
-        processUrlWSDTO.setProcessUrl(processUrlDAO);
-        return processUrlWSDTO;
-    }
-
-
-    public ProcessUrlDAO createProcessUrlService(String processId, String urlType, String url) {
-
-        Optional<ProcessDBModel> processDBModel = processRepository.findById(processId);
-        if (processDBModel.isPresent()) {
-
-            ProcessUrlDAO processUrlDAO = new ProcessUrlDAO();
-            processUrlDAO.setUrlId(appUtils.generateUUID());
-            processUrlDAO.setUrlType(urlType);
-            processUrlDAO.setUrl(url);
-            processUrlDAO.setcDate(appUtils.getCurrentTimeStamp());
-            processUrlDAO.setStatus(1);
-
-            processDBModel.get().getProcessUrls().add(processUrlDAO);
-            processDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
-            processRepository.save(processDBModel.get());
-
-            return processUrlDAO;
-        }
-        return null;
-    }
-
-
-    public ProcessUrlDAO updateProcessUrlService(String processId, String urlId, String urlType, String url) {
-
-        Optional<ProcessDBModel> processDBModel = processRepository.findById(processId);
-        if (processDBModel.isPresent()) {
-            for (int i = 0; i < processDBModel.get().getProcessUrls().size(); i++) {
-                if (processDBModel.get().getProcessUrls().get(i).getUrlId().equalsIgnoreCase(urlId)) {
-                    processDBModel.get().getProcessUrls().get(i).setUrlType(urlType);
-                    processDBModel.get().getProcessUrls().get(i).setUrl(url);
-                    processDBModel.get().getProcessUrls().get(i).setcDate(appUtils.getCurrentTimeStamp());
-                    processDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
-                    processRepository.save(processDBModel.get());
-
-                    return processDBModel.get().getProcessUrls().get(i);
-                }
-            }
-        }
-        return null;
-    }
-
-
-    public ProcessUrlDAO removeProcessUrlService(String processId, String urlId) {
-
-        Optional<ProcessDBModel> processDBModel = processRepository.findById(processId);
-        if (processDBModel.isPresent() && processDBModel.get().getProcessUrls() != null) {
-            for (int i = 0; i < processDBModel.get().getProcessUrls().size(); i++) {
-                if (processDBModel.get().getProcessUrls().get(i).getUrlId().equalsIgnoreCase(urlId)) {
-                    ProcessUrlDAO processUrlDAO = processDBModel.get().getProcessUrls().get(i);
-                    processDBModel.get().getProcessUrls().remove(processUrlDAO);
-                    processDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
-                    processRepository.save(processDBModel.get());
-
-                    return processUrlDAO;
                 }
             }
         }

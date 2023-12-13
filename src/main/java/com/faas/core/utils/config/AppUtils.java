@@ -56,13 +56,7 @@ public class AppUtils {
 
     public String getSelectedUrl(SessionDBModel sessionDBModel, ProcessDBModel processDBModel, String urlType){
 
-        if (processDBModel.getProcessUrls() != null && !processDBModel.getProcessUrls().isEmpty()){
-            for (int i=0;i<processDBModel.getProcessUrls().size();i++){
-                if (processDBModel.getProcessUrls().get(i).getUrlType().equalsIgnoreCase(urlType)){
-                    return processDBModel.getProcessUrls().get(i).getUrl()+"?uuid="+sessionDBModel.getSessionUUID();
-                }
-            }
-        }
+
         return null;
     }
 

@@ -39,7 +39,7 @@ public class ProcessTempController {
     public ResponseEntity<?> getProcessSmsMessageTemps(@RequestParam long userId,
                                                        @RequestParam String processId) {
 
-        SmsMessageTempWSModel response = processTempMiddleware.getProcessSmsMessageTemps(userId, processId);
+        ProcessSmsMessageTempWSModel response = processTempMiddleware.getProcessSmsMessageTemps(userId, processId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -52,7 +52,7 @@ public class ProcessTempController {
     public ResponseEntity<?> getSmsMessageTemp(@RequestParam long userId,
                                                @RequestParam String tempId) {
 
-        SmsMessageTempWSModel response = processTempMiddleware.getSmsMessageTemp(userId,tempId);
+        ProcessSmsMessageTempWSModel response = processTempMiddleware.getSmsMessageTemp(userId,tempId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -69,7 +69,7 @@ public class ProcessTempController {
                                                   @RequestParam String senderId,
                                                   @RequestParam long typeId) {
 
-        SmsMessageTempWSModel response = processTempMiddleware.createSmsMessageTemp(userId,processId,smsTitle,smsBody,senderId,typeId);
+        ProcessSmsMessageTempWSModel response = processTempMiddleware.createSmsMessageTemp(userId,processId,smsTitle,smsBody,senderId,typeId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -86,7 +86,7 @@ public class ProcessTempController {
                                                   @RequestParam String senderId,
                                                   @RequestParam long typeId) {
 
-        SmsMessageTempWSModel response = processTempMiddleware.updateSmsMessageTemp(userId,tempId,smsTitle,smsBody,senderId,typeId);
+        ProcessSmsMessageTempWSModel response = processTempMiddleware.updateSmsMessageTemp(userId,tempId,smsTitle,smsBody,senderId,typeId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -99,7 +99,7 @@ public class ProcessTempController {
     public ResponseEntity<?> removeSmsMessageTemp(@RequestParam long userId,
                                                   @RequestParam String tempId) {
 
-        SmsMessageTempWSModel response = processTempMiddleware.removeSmsMessageTemp(userId,tempId);
+        ProcessSmsMessageTempWSModel response = processTempMiddleware.removeSmsMessageTemp(userId,tempId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -113,7 +113,7 @@ public class ProcessTempController {
     public ResponseEntity<?> getProcessWappMessageTemps(@RequestParam long userId,
                                                         @RequestParam String processId) {
 
-        WappMessageTempWSModel response = processTempMiddleware.getProcessWappMessageTemps(userId,processId);
+        ProcessWappMessageTempWSModel response = processTempMiddleware.getProcessWappMessageTemps(userId,processId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -126,7 +126,7 @@ public class ProcessTempController {
     public ResponseEntity<?> getWappMessageTemp(@RequestParam long userId,
                                                 @RequestParam String tempId) {
 
-        WappMessageTempWSModel response = processTempMiddleware.getWappMessageTemp(userId,tempId);
+        ProcessWappMessageTempWSModel response = processTempMiddleware.getWappMessageTemp(userId,tempId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -142,7 +142,7 @@ public class ProcessTempController {
                                                    @RequestParam String wappBody,
                                                    @RequestParam long typeId) {
 
-        WappMessageTempWSModel response = processTempMiddleware.createWappMessageTemp(userId,processId,wappTitle,wappBody,typeId);
+        ProcessWappMessageTempWSModel response = processTempMiddleware.createWappMessageTemp(userId,processId,wappTitle,wappBody,typeId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -158,7 +158,7 @@ public class ProcessTempController {
                                                    @RequestParam String wappBody,
                                                    @RequestParam long typeId) {
 
-        WappMessageTempWSModel response = processTempMiddleware.updateWappMessageTemp(userId,tempId,wappTitle,wappBody,typeId);
+        ProcessWappMessageTempWSModel response = processTempMiddleware.updateWappMessageTemp(userId,tempId,wappTitle,wappBody,typeId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -171,7 +171,7 @@ public class ProcessTempController {
     public ResponseEntity<?> removeWappMessageTemp(@RequestParam long userId,
                                                    @RequestParam String tempId) {
 
-        WappMessageTempWSModel response = processTempMiddleware.removeWappMessageTemp(userId,tempId);
+        ProcessWappMessageTempWSModel response = processTempMiddleware.removeWappMessageTemp(userId,tempId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -185,7 +185,7 @@ public class ProcessTempController {
     public ResponseEntity<?> getProcessEmailTemps(@RequestParam long userId,
                                                   @RequestParam String processId) {
 
-        EmailTempWSModel response = processTempMiddleware.getProcessEmailTemps(userId, processId);
+        ProcessEmailTempWSModel response = processTempMiddleware.getProcessEmailTemps(userId, processId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -198,7 +198,7 @@ public class ProcessTempController {
     public ResponseEntity<?> getEmailTemp(@RequestParam long userId,
                                           @RequestParam String tempId) {
 
-        EmailTempWSModel response = processTempMiddleware.getEmailTemp(userId,tempId);
+        ProcessEmailTempWSModel response = processTempMiddleware.getEmailTemp(userId,tempId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -216,7 +216,7 @@ public class ProcessTempController {
                                              @RequestParam String emailSender,
                                              @RequestParam long typeId) {
 
-        EmailTempWSModel response = processTempMiddleware.createEmailTemp(userId,processId,emailSubject,emailBody,emailFooter,emailSender,typeId);
+        ProcessEmailTempWSModel response = processTempMiddleware.createEmailTemp(userId,processId,emailSubject,emailBody,emailFooter,emailSender,typeId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -234,7 +234,7 @@ public class ProcessTempController {
                                              @RequestParam String emailSender,
                                              @RequestParam long typeId) {
 
-        EmailTempWSModel response = processTempMiddleware.updateEmailTemp(userId,tempId,emailSubject,emailBody,emailFooter,emailSender,typeId);
+        ProcessEmailTempWSModel response = processTempMiddleware.updateEmailTemp(userId,tempId,emailSubject,emailBody,emailFooter,emailSender,typeId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -247,7 +247,7 @@ public class ProcessTempController {
     public ResponseEntity<?> removeEmailTemp(@RequestParam long userId,
                                              @RequestParam String tempId) {
 
-        EmailTempWSModel response = processTempMiddleware.removeEmailTemp(userId,tempId);
+        ProcessEmailTempWSModel response = processTempMiddleware.removeEmailTemp(userId,tempId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -261,7 +261,7 @@ public class ProcessTempController {
     public ResponseEntity<?> getProcessPushTemps(@RequestParam long userId,
                                                  @RequestParam String processId) {
 
-        PushTempWSModel response = processTempMiddleware.getProcessPushTemps(userId, processId);
+        ProcessPushTempWSModel response = processTempMiddleware.getProcessPushTemps(userId, processId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -274,7 +274,7 @@ public class ProcessTempController {
     public ResponseEntity<?> getPushTemp(@RequestParam long userId,
                                          @RequestParam String tempId) {
 
-        PushTempWSModel response = processTempMiddleware.getPushTemp(userId,tempId);
+        ProcessPushTempWSModel response = processTempMiddleware.getPushTemp(userId,tempId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -292,7 +292,7 @@ public class ProcessTempController {
                                             @RequestParam String pushSender,
                                             @RequestParam long typeId) {
 
-        PushTempWSModel response = processTempMiddleware.createPushTemp(userId,processId,pushHeader,pushBody,pushFooter,pushSender,typeId);
+        ProcessPushTempWSModel response = processTempMiddleware.createPushTemp(userId,processId,pushHeader,pushBody,pushFooter,pushSender,typeId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -310,7 +310,7 @@ public class ProcessTempController {
                                             @RequestParam String pushSender,
                                             @RequestParam long typeId) {
 
-        PushTempWSModel response = processTempMiddleware.updatePushTemp(userId,tempId,pushHeader,pushBody,pushFooter,pushSender,typeId);
+        ProcessPushTempWSModel response = processTempMiddleware.updatePushTemp(userId,tempId,pushHeader,pushBody,pushFooter,pushSender,typeId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -323,7 +323,7 @@ public class ProcessTempController {
     public ResponseEntity<?> removePushTemp(@RequestParam long userId,
                                             @RequestParam String tempId) {
 
-        PushTempWSModel response = processTempMiddleware.removePushTemp(userId,tempId);
+        ProcessPushTempWSModel response = processTempMiddleware.removePushTemp(userId,tempId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

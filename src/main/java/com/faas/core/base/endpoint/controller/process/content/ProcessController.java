@@ -22,17 +22,16 @@ public class ProcessController {
     ProcessMiddleware processMiddleware;
 
 
-    @RequestMapping(value = BaseRoute.GET_ALL_PROCESS, method = RequestMethod.POST)
-    public ResponseEntity<?> getAllProcess(@RequestParam long userId) {
+    @RequestMapping(value = BaseRoute.GET_ALL_PROCESSES, method = RequestMethod.POST)
+    public ResponseEntity<?> getAllProcesses(@RequestParam long userId) {
 
-        ProcessWSModel response = processMiddleware.getAllProcess(userId);
+        ProcessWSModel response = processMiddleware.getAllProcesses(userId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.GET_PROCESSES_BY_CATEGORY, method = RequestMethod.POST)
     public ResponseEntity<?> getProcessesByCategory(@RequestParam long userId,
@@ -45,7 +44,6 @@ public class ProcessController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
     
     @RequestMapping(value = BaseRoute.GET_PROCESS, method = RequestMethod.POST)
     public ResponseEntity<?> getProcess(@RequestParam long userId,
@@ -59,24 +57,21 @@ public class ProcessController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.CREATE_PROCESS, method = RequestMethod.POST)
     public ResponseEntity<?> createProcess(@RequestParam long userId,
                                            @RequestParam String process,
                                            @RequestParam String processDesc,
-                                           @RequestParam String pwaUrl,
                                            @RequestParam long processTypeId,
                                            @RequestParam String processCategory,
                                            @RequestParam String processState) {
 
-        ProcessWSModel response = processMiddleware.createProcess(userId,process,processDesc,pwaUrl,processTypeId,processCategory,processState);
+        ProcessWSModel response = processMiddleware.createProcess(userId,process,processDesc,processTypeId,processCategory,processState);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.UPDATE_PROCESS, method = RequestMethod.POST)
     public ResponseEntity<?> updateProcess(@RequestParam long userId,
@@ -92,7 +87,6 @@ public class ProcessController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.REMOVE_PROCESS, method = RequestMethod.POST)
     public ResponseEntity<?> removeProcess(@RequestParam long userId,

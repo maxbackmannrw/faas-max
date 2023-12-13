@@ -44,10 +44,10 @@ import com.faas.core.base.repo.operation.details.flow.OperationFlowRepository;
 import com.faas.core.base.repo.operation.details.inquiry.OperationInquiryRepository;
 import com.faas.core.base.repo.operation.details.scenario.OperationScenarioRepository;
 import com.faas.core.base.repo.process.details.channel.content.*;
-import com.faas.core.base.repo.process.details.channel.temp.EmailTempRepository;
-import com.faas.core.base.repo.process.details.channel.temp.PushTempRepository;
-import com.faas.core.base.repo.process.details.channel.temp.SmsMessageTempRepository;
-import com.faas.core.base.repo.process.details.channel.temp.WappMessageTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.ProcessEmailTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.ProcessPushTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.ProcessSmsMessageTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.ProcessWappMessageTempRepository;
 import com.faas.core.base.repo.process.details.scenario.ProcessScenarioRepository;
 import com.faas.core.base.repo.scenario.content.ScenarioRepository;
 import com.faas.core.base.repo.user.details.UserDetailsRepository;
@@ -114,13 +114,13 @@ public class OperationHelper {
     OperationEmailMessageRepository operationEmailMessageRepository;
 
     @Autowired
-    EmailTempRepository emailTempRepository;
+    ProcessEmailTempRepository processEmailTempRepository;
 
     @Autowired
     OperationPushMessageRepository operationPushMessageRepository;
 
     @Autowired
-    PushTempRepository pushTempRepository;
+    ProcessPushTempRepository processPushTempRepository;
 
     @Autowired
     ClientDataRepository clientDataRepository;
@@ -144,13 +144,13 @@ public class OperationHelper {
     OperationScenarioRepository operationScenarioRepository;
 
     @Autowired
-    SmsMessageTempRepository smsMessageTempRepository;
+    ProcessSmsMessageTempRepository processSmsMessageTempRepository;
 
     @Autowired
     OperationWappMessageRepository operationWappMessageRepository;
 
     @Autowired
-    WappMessageTempRepository wappMessageTempRepository;
+    ProcessWappMessageTempRepository processWappMessageTempRepository;
 
     @Autowired
     CampaignAgentRepository campaignAgentRepository;

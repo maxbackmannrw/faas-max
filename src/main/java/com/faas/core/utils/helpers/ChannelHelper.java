@@ -31,10 +31,10 @@ import com.faas.core.base.repo.client.details.ClientEmailRepository;
 import com.faas.core.base.repo.client.details.ClientPhoneRepository;
 import com.faas.core.base.repo.operation.details.channel.*;
 import com.faas.core.base.repo.process.details.channel.content.*;
-import com.faas.core.base.repo.process.details.channel.temp.EmailTempRepository;
-import com.faas.core.base.repo.process.details.channel.temp.PushTempRepository;
-import com.faas.core.base.repo.process.details.channel.temp.SmsMessageTempRepository;
-import com.faas.core.base.repo.process.details.channel.temp.WappMessageTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.ProcessEmailTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.ProcessPushTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.ProcessSmsMessageTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.ProcessWappMessageTempRepository;
 import com.faas.core.base.repo.user.details.UserDetailsRepository;
 import com.faas.core.rest.service.channel.sms.SmsRestService;
 import com.faas.core.utils.config.AppConstant;
@@ -72,7 +72,7 @@ public class ChannelHelper {
     OperationWappMessageRepository operationWappMessageRepository;
 
     @Autowired
-    WappMessageTempRepository wappMessageTempRepository;
+    ProcessWappMessageTempRepository processWappMessageTempRepository;
 
     @Autowired
     ProcessEmailChannelRepository processEmailChannelRepository;
@@ -84,13 +84,13 @@ public class ChannelHelper {
     OperationEmailMessageRepository operationEmailMessageRepository;
 
     @Autowired
-    EmailTempRepository emailTempRepository;
+    ProcessEmailTempRepository processEmailTempRepository;
 
     @Autowired
     OperationPushMessageRepository operationPushMessageRepository;
 
     @Autowired
-    PushTempRepository pushTempRepository;
+    ProcessPushTempRepository processPushTempRepository;
 
     @Autowired
     ProcessPushChannelRepository processPushChannelRepository;
@@ -99,7 +99,7 @@ public class ChannelHelper {
     OperationSmsMessageRepository operationSmsMessageRepository;
 
     @Autowired
-    SmsMessageTempRepository smsMessageTempRepository;
+    ProcessSmsMessageTempRepository processSmsMessageTempRepository;
 
     @Autowired
     ProcessSmsChannelRepository processSmsChannelRepository;
@@ -327,7 +327,7 @@ public class ChannelHelper {
         }
         operationSmsMessageWSDTO.setPhones(clientPhones);
         operationSmsMessageWSDTO.setSmsMessages(operationSmsMessageRepository.findBySessionId(sessionDBModel.getId()));
-        operationSmsMessageWSDTO.setSmsTemps(smsMessageTempRepository.findByProcessId(sessionDBModel.getProcessId()));
+        operationSmsMessageWSDTO.setSmsTemps(processSmsMessageTempRepository.findByProcessId(sessionDBModel.getProcessId()));
 
         return operationSmsMessageWSDTO;
     }
@@ -366,7 +366,7 @@ public class ChannelHelper {
         }
         operationWappMessageWSDTO.setPhones(clientPhones);
         operationWappMessageWSDTO.setWappMessages(operationWappMessageRepository.findBySessionId(sessionDBModel.getId()));
-        operationWappMessageWSDTO.setWappTemps(wappMessageTempRepository.findByProcessId(sessionDBModel.getProcessId()));
+        operationWappMessageWSDTO.setWappTemps(processWappMessageTempRepository.findByProcessId(sessionDBModel.getProcessId()));
 
         return operationWappMessageWSDTO;
     }
@@ -401,7 +401,7 @@ public class ChannelHelper {
         }
         operationEmailWSDTO.setEmails(clientEmailRepository.findByClientId(sessionDBModel.getClientId()));
         operationEmailWSDTO.setEmailMessages(operationEmailMessageRepository.findBySessionId(sessionDBModel.getId()));
-        operationEmailWSDTO.setEmailTemps(emailTempRepository.findByProcessId(sessionDBModel.getProcessId()));
+        operationEmailWSDTO.setEmailTemps(processEmailTempRepository.findByProcessId(sessionDBModel.getProcessId()));
 
         return operationEmailWSDTO;
     }
@@ -416,7 +416,7 @@ public class ChannelHelper {
             ApiOperationPushMessageWSDTO operationPushMessageWSDTO = new ApiOperationPushMessageWSDTO();
             operationPushMessageWSDTO.setPushAccount(pushAccountWSDTO);
             operationPushMessageWSDTO.setPushMessages(operationPushMessageRepository.findBySessionId(sessionDBModel.getId()));
-            operationPushMessageWSDTO.setPushTemps(pushTempRepository.findByProcessId(sessionDBModel.getProcessId()));
+            operationPushMessageWSDTO.setPushTemps(processPushTempRepository.findByProcessId(sessionDBModel.getProcessId()));
 
             return operationPushMessageWSDTO;
         }

@@ -2,14 +2,14 @@ package com.faas.core.base.model.ws.process.details.channel.temp.dto;
 
 import com.faas.core.base.model.db.process.details.channel.temp.ProcessSmsMessageTempDBModel;
 
-public class SmsMessageTempWSDTO {
+public class ProcessSmsMessageTempWSDTO {
 
     private ProcessSmsMessageTempDBModel smsMessageTemp;
 
-    public SmsMessageTempWSDTO() {
+    public ProcessSmsMessageTempWSDTO() {
     }
 
-    public SmsMessageTempWSDTO(ProcessSmsMessageTempDBModel smsMessageTemp) {
+    public ProcessSmsMessageTempWSDTO(ProcessSmsMessageTempDBModel smsMessageTemp) {
         this.smsMessageTemp = smsMessageTemp;
     }
 

@@ -7,17 +7,17 @@ import com.faas.core.base.model.db.process.details.channel.temp.ProcessEmailTemp
 import com.faas.core.base.model.db.process.details.channel.temp.ProcessPushTempDBModel;
 import com.faas.core.base.model.db.process.details.channel.temp.ProcessSmsMessageTempDBModel;
 import com.faas.core.base.model.db.process.details.channel.temp.ProcessWappMessageTempDBModel;
-import com.faas.core.base.model.ws.process.details.channel.temp.dto.EmailTempWSDTO;
-import com.faas.core.base.model.ws.process.details.channel.temp.dto.PushTempWSDTO;
-import com.faas.core.base.model.ws.process.details.channel.temp.dto.SmsMessageTempWSDTO;
-import com.faas.core.base.model.ws.process.details.channel.temp.dto.WappMessageTempWSDTO;
+import com.faas.core.base.model.ws.process.details.channel.temp.dto.ProcessEmailTempWSDTO;
+import com.faas.core.base.model.ws.process.details.channel.temp.dto.ProcessPushTempWSDTO;
+import com.faas.core.base.model.ws.process.details.channel.temp.dto.ProcessSmsMessageTempWSDTO;
+import com.faas.core.base.model.ws.process.details.channel.temp.dto.ProcessWappMessageTempWSDTO;
 import com.faas.core.base.repo.channel.settings.EmailTypeRepository;
 import com.faas.core.base.repo.channel.settings.MessageTypeRepository;
 import com.faas.core.base.repo.channel.settings.PushTypeRepository;
-import com.faas.core.base.repo.process.details.channel.temp.EmailTempRepository;
-import com.faas.core.base.repo.process.details.channel.temp.PushTempRepository;
-import com.faas.core.base.repo.process.details.channel.temp.SmsMessageTempRepository;
-import com.faas.core.base.repo.process.details.channel.temp.WappMessageTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.ProcessEmailTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.ProcessPushTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.ProcessSmsMessageTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.ProcessWappMessageTempRepository;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -30,16 +30,16 @@ public class ProcessTempFramework {
 
 
     @Autowired
-    SmsMessageTempRepository smsMessageTempRepository;
+    ProcessSmsMessageTempRepository processSmsMessageTempRepository;
 
     @Autowired
-    WappMessageTempRepository wappMessageTempRepository;
+    ProcessWappMessageTempRepository processWappMessageTempRepository;
 
     @Autowired
-    EmailTempRepository emailTempRepository;
+    ProcessEmailTempRepository processEmailTempRepository;
 
     @Autowired
-    PushTempRepository pushTempRepository;
+    ProcessPushTempRepository processPushTempRepository;
 
     @Autowired
     EmailTypeRepository emailTypeRepository;
@@ -54,11 +54,11 @@ public class ProcessTempFramework {
     AppUtils appUtils;
 
 
-    public SmsMessageTempWSDTO fillSmsMessageTempWSDTO(ProcessSmsMessageTempDBModel processSmsMessageTempDBModel) {
+    public ProcessSmsMessageTempWSDTO fillSmsMessageTempWSDTO(ProcessSmsMessageTempDBModel processSmsMessageTempDBModel) {
 
-        SmsMessageTempWSDTO smsMessageTempWSDTO = new SmsMessageTempWSDTO();
-        smsMessageTempWSDTO.setSmsMessageTemp(processSmsMessageTempDBModel);
-        return smsMessageTempWSDTO;
+        ProcessSmsMessageTempWSDTO processSmsMessageTempWSDTO = new ProcessSmsMessageTempWSDTO();
+        processSmsMessageTempWSDTO.setSmsMessageTemp(processSmsMessageTempDBModel);
+        return processSmsMessageTempWSDTO;
     }
 
 
@@ -78,7 +78,7 @@ public class ProcessTempFramework {
             processSmsMessageTempDBModel.setcDate(appUtils.getCurrentTimeStamp());
             processSmsMessageTempDBModel.setStatus(1);
 
-            return smsMessageTempRepository.save(processSmsMessageTempDBModel);
+            return processSmsMessageTempRepository.save(processSmsMessageTempDBModel);
         }
         return null;
     }
@@ -87,7 +87,7 @@ public class ProcessTempFramework {
 
     public ProcessSmsMessageTempDBModel updateSmsMessageTempService(String tempId, String smsTitle, String smsBody, String senderId, long typeId) {
 
-        Optional<ProcessSmsMessageTempDBModel> smsMessageTempDBModel = smsMessageTempRepository.findById(tempId);
+        Optional<ProcessSmsMessageTempDBModel> smsMessageTempDBModel = processSmsMessageTempRepository.findById(tempId);
         Optional<MessageTypeDBModel> messageTypeDBModel = messageTypeRepository.findById(typeId);
         if (smsMessageTempDBModel.isPresent() && messageTypeDBModel.isPresent()) {
 
@@ -99,7 +99,7 @@ public class ProcessTempFramework {
             smsMessageTempDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
             smsMessageTempDBModel.get().setStatus(1);
 
-            return smsMessageTempRepository.save(smsMessageTempDBModel.get());
+            return processSmsMessageTempRepository.save(smsMessageTempDBModel.get());
         }
         return null;
     }
@@ -107,9 +107,9 @@ public class ProcessTempFramework {
 
     public ProcessSmsMessageTempDBModel removeSmsMessageTempService(String tempId) {
 
-        Optional<ProcessSmsMessageTempDBModel> smsMessageTempDBModel = smsMessageTempRepository.findById(tempId);
+        Optional<ProcessSmsMessageTempDBModel> smsMessageTempDBModel = processSmsMessageTempRepository.findById(tempId);
         if (smsMessageTempDBModel.isPresent()) {
-            smsMessageTempRepository.delete(smsMessageTempDBModel.get());
+            processSmsMessageTempRepository.delete(smsMessageTempDBModel.get());
             return smsMessageTempDBModel.get();
         }
         return null;
@@ -117,11 +117,11 @@ public class ProcessTempFramework {
 
 
 
-    public WappMessageTempWSDTO fillWappMessageTempWSDTO(ProcessWappMessageTempDBModel processWappMessageTempDBModel) {
+    public ProcessWappMessageTempWSDTO fillWappMessageTempWSDTO(ProcessWappMessageTempDBModel processWappMessageTempDBModel) {
 
-        WappMessageTempWSDTO wappMessageTempWSDTO = new WappMessageTempWSDTO();
-        wappMessageTempWSDTO.setWappMessageTemp(processWappMessageTempDBModel);
-        return wappMessageTempWSDTO;
+        ProcessWappMessageTempWSDTO processWappMessageTempWSDTO = new ProcessWappMessageTempWSDTO();
+        processWappMessageTempWSDTO.setWappMessageTemp(processWappMessageTempDBModel);
+        return processWappMessageTempWSDTO;
     }
 
 
@@ -140,7 +140,7 @@ public class ProcessTempFramework {
             processWappMessageTempDBModel.setcDate(appUtils.getCurrentTimeStamp());
             processWappMessageTempDBModel.setStatus(1);
 
-            return wappMessageTempRepository.save(processWappMessageTempDBModel);
+            return processWappMessageTempRepository.save(processWappMessageTempDBModel);
         }
         return null;
     }
@@ -148,7 +148,7 @@ public class ProcessTempFramework {
     public ProcessWappMessageTempDBModel updateWappMessageTempService(String tempId, String wappTitle, String wappBody, long typeId) {
 
         Optional<MessageTypeDBModel> messageTypeDBModel = messageTypeRepository.findById(typeId);
-        Optional<ProcessWappMessageTempDBModel> wappMessageTempDBModel = wappMessageTempRepository.findById(tempId);
+        Optional<ProcessWappMessageTempDBModel> wappMessageTempDBModel = processWappMessageTempRepository.findById(tempId);
         if (messageTypeDBModel.isPresent() && wappMessageTempDBModel.isPresent()) {
 
             wappMessageTempDBModel.get().setWappTitle(wappTitle);
@@ -158,27 +158,27 @@ public class ProcessTempFramework {
             wappMessageTempDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
             wappMessageTempDBModel.get().setStatus(1);
 
-            return wappMessageTempRepository.save(wappMessageTempDBModel.get());
+            return processWappMessageTempRepository.save(wappMessageTempDBModel.get());
         }
         return null;
     }
 
     public ProcessWappMessageTempDBModel removeWappMessageTempService(String tempId) {
 
-        Optional<ProcessWappMessageTempDBModel> wappMessageDBModel = wappMessageTempRepository.findById(tempId);
+        Optional<ProcessWappMessageTempDBModel> wappMessageDBModel = processWappMessageTempRepository.findById(tempId);
         if (wappMessageDBModel.isPresent()) {
-            wappMessageTempRepository.delete(wappMessageDBModel.get());
+            processWappMessageTempRepository.delete(wappMessageDBModel.get());
             return wappMessageDBModel.get();
         }
         return null;
     }
 
 
-    public EmailTempWSDTO fillEmailTempWSDTO(ProcessEmailTempDBModel processEmailTempDBModel) {
+    public ProcessEmailTempWSDTO fillEmailTempWSDTO(ProcessEmailTempDBModel processEmailTempDBModel) {
 
-        EmailTempWSDTO emailTempWSDTO = new EmailTempWSDTO();
-        emailTempWSDTO.setEmailTemp(processEmailTempDBModel);
-        return emailTempWSDTO;
+        ProcessEmailTempWSDTO processEmailTempWSDTO = new ProcessEmailTempWSDTO();
+        processEmailTempWSDTO.setEmailTemp(processEmailTempDBModel);
+        return processEmailTempWSDTO;
     }
 
 
@@ -199,13 +199,13 @@ public class ProcessTempFramework {
         processEmailTempDBModel.setcDate(appUtils.getCurrentTimeStamp());
         processEmailTempDBModel.setStatus(1);
 
-        return emailTempRepository.save(processEmailTempDBModel);
+        return processEmailTempRepository.save(processEmailTempDBModel);
     }
 
 
     public ProcessEmailTempDBModel updateEmailTempService(String tempId, String emailSubject, String emailBody, String emailFooter, String emailSender, long typeId) {
 
-        Optional<ProcessEmailTempDBModel> emailTempDBModel = emailTempRepository.findById(tempId);
+        Optional<ProcessEmailTempDBModel> emailTempDBModel = processEmailTempRepository.findById(tempId);
         Optional<EmailTypeDBModel> emailTypeDBModel = emailTypeRepository.findById(typeId);
         if (emailTempDBModel.isPresent() && emailTypeDBModel.isPresent()){
 
@@ -218,7 +218,7 @@ public class ProcessTempFramework {
             emailTempDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
             emailTempDBModel.get().setStatus(1);
 
-            return emailTempRepository.save(emailTempDBModel.get());
+            return processEmailTempRepository.save(emailTempDBModel.get());
         }
         return null;
     }
@@ -226,9 +226,9 @@ public class ProcessTempFramework {
 
     public ProcessEmailTempDBModel removeEmailTempService(String tempId) {
 
-        Optional<ProcessEmailTempDBModel> emailTempDBModel = emailTempRepository.findById(tempId);
+        Optional<ProcessEmailTempDBModel> emailTempDBModel = processEmailTempRepository.findById(tempId);
         if (emailTempDBModel.isPresent()){
-            emailTempRepository.delete(emailTempDBModel.get());
+            processEmailTempRepository.delete(emailTempDBModel.get());
             return emailTempDBModel.get();
         }
         return null;
@@ -236,11 +236,11 @@ public class ProcessTempFramework {
 
 
 
-    public PushTempWSDTO fillPushTempWSDTO(ProcessPushTempDBModel processPushTempDBModel) {
+    public ProcessPushTempWSDTO fillPushTempWSDTO(ProcessPushTempDBModel processPushTempDBModel) {
 
-        PushTempWSDTO pushTempWSDTO = new PushTempWSDTO();
-        pushTempWSDTO.setPushTemp(processPushTempDBModel);
-        return pushTempWSDTO;
+        ProcessPushTempWSDTO processPushTempWSDTO = new ProcessPushTempWSDTO();
+        processPushTempWSDTO.setPushTemp(processPushTempDBModel);
+        return processPushTempWSDTO;
     }
 
 
@@ -262,14 +262,14 @@ public class ProcessTempFramework {
             processPushTempDBModel.setcDate(appUtils.getCurrentTimeStamp());
             processPushTempDBModel.setStatus(1);
 
-            return pushTempRepository.save(processPushTempDBModel);
+            return processPushTempRepository.save(processPushTempDBModel);
         }
         return null;
     }
 
     public ProcessPushTempDBModel updatePushTempService(String tempId, String pushHeader, String pushBody, String pushFooter, String pushSender, long typeId) {
 
-        Optional<ProcessPushTempDBModel> pushTempDBModel = pushTempRepository.findById(tempId);
+        Optional<ProcessPushTempDBModel> pushTempDBModel = processPushTempRepository.findById(tempId);
         Optional<PushTypeDBModel> pushTypeDBModel = pushTypeRepository.findById(typeId);
         if (pushTempDBModel.isPresent() && pushTypeDBModel.isPresent()){
 
@@ -282,7 +282,7 @@ public class ProcessTempFramework {
             pushTempDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
             pushTempDBModel.get().setStatus(1);
 
-            return pushTempRepository.save(pushTempDBModel.get());
+            return processPushTempRepository.save(pushTempDBModel.get());
         }
         return null;
     }
@@ -290,9 +290,9 @@ public class ProcessTempFramework {
 
     public ProcessPushTempDBModel removePushTempService(String tempId) {
 
-        Optional<ProcessPushTempDBModel> pushTempDBModel = pushTempRepository.findById(tempId);
+        Optional<ProcessPushTempDBModel> pushTempDBModel = processPushTempRepository.findById(tempId);
         if (pushTempDBModel.isPresent()){
-            pushTempRepository.delete(pushTempDBModel.get());
+            processPushTempRepository.delete(pushTempDBModel.get());
             return pushTempDBModel.get();
         }
         return null;

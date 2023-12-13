@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface PushTempRepository extends MongoRepository<ProcessPushTempDBModel, String> {
+public interface ProcessPushTempRepository extends MongoRepository<ProcessPushTempDBModel, String> {
 
     List<ProcessPushTempDBModel> findByStatus(int status);
 

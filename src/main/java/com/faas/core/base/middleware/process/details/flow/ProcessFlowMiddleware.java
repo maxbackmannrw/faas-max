@@ -2,11 +2,9 @@ package com.faas.core.base.middleware.process.details.flow;
 
 import com.faas.core.base.framework.process.details.flow.ProcessFlowFramework;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.process.details.flow.FlowDataWSModel;
-import com.faas.core.base.model.ws.process.details.flow.FlowUrlWSModel;
+import com.faas.core.base.model.ws.process.details.flow.ProcessFlowDataWSModel;
 import com.faas.core.base.model.ws.process.details.flow.ProcessFlowWSModel;
-import com.faas.core.base.model.ws.process.details.flow.dto.FlowDataWSDTO;
-import com.faas.core.base.model.ws.process.details.flow.dto.FlowUrlWSDTO;
+import com.faas.core.base.model.ws.process.details.flow.dto.ProcessFlowDataWSDTO;
 import com.faas.core.base.model.ws.process.details.flow.dto.ProcessFlowWSDTO;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,14 +81,14 @@ public class ProcessFlowMiddleware {
 
 
 
-    public FlowDataWSModel getProcessFlowDatas(long userId, String processId) {
+    public ProcessFlowDataWSModel getProcessFlowDatas(long userId, String processId) {
 
-        FlowDataWSModel response = new FlowDataWSModel();
+        ProcessFlowDataWSModel response = new ProcessFlowDataWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<FlowDataWSDTO> flowDataWSDTOS = processFlowFramework.getProcessFlowDatasService(userId,processId);
-        if (flowDataWSDTOS != null){
-            response.setFlowDatas(flowDataWSDTOS);
+        List<ProcessFlowDataWSDTO> processFlowDataWSDTOS = processFlowFramework.getProcessFlowDatasService(userId,processId);
+        if (processFlowDataWSDTOS != null){
+            response.setFlowDatas(processFlowDataWSDTOS);
         }
 
         general.setOperation("getProcessFlowDatas");
@@ -102,18 +100,18 @@ public class ProcessFlowMiddleware {
         return response;
     }
 
-    public FlowDataWSModel getProcessFlowData(long userId,String processId,String dataId) {
+    public ProcessFlowDataWSModel getProcessFlowData(long userId, String processId, String dataId) {
 
-        FlowDataWSModel response = new FlowDataWSModel();
+        ProcessFlowDataWSModel response = new ProcessFlowDataWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<FlowDataWSDTO>flowDataWSDTOS = new ArrayList<>();
+        List<ProcessFlowDataWSDTO> processFlowDataWSDTOS = new ArrayList<>();
 
-        FlowDataWSDTO flowDataWSDTO = processFlowFramework.getProcessFlowDataService(userId,processId,dataId);
-        if (flowDataWSDTO != null){
-            flowDataWSDTOS.add(flowDataWSDTO);
+        ProcessFlowDataWSDTO processFlowDataWSDTO = processFlowFramework.getProcessFlowDataService(userId,processId,dataId);
+        if (processFlowDataWSDTO != null){
+            processFlowDataWSDTOS.add(processFlowDataWSDTO);
         }
 
-        response.setFlowDatas(flowDataWSDTOS);
+        response.setFlowDatas(processFlowDataWSDTOS);
         general.setOperation("getProcessFlowData");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -123,18 +121,18 @@ public class ProcessFlowMiddleware {
         return response;
     }
 
-    public FlowDataWSModel createProcessFlowData(long userId,String processId,long typeId,String value) {
+    public ProcessFlowDataWSModel createProcessFlowData(long userId, String processId, long typeId, String value) {
 
-        FlowDataWSModel response = new FlowDataWSModel();
+        ProcessFlowDataWSModel response = new ProcessFlowDataWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<FlowDataWSDTO>flowDataWSDTOS = new ArrayList<>();
+        List<ProcessFlowDataWSDTO> processFlowDataWSDTOS = new ArrayList<>();
 
-        FlowDataWSDTO flowDataWSDTO = processFlowFramework.createProcessFlowDataService(userId,processId,typeId,value);
-        if (flowDataWSDTO != null){
-            flowDataWSDTOS.add(flowDataWSDTO);
+        ProcessFlowDataWSDTO processFlowDataWSDTO = processFlowFramework.createProcessFlowDataService(userId,processId,typeId,value);
+        if (processFlowDataWSDTO != null){
+            processFlowDataWSDTOS.add(processFlowDataWSDTO);
         }
 
-        response.setFlowDatas(flowDataWSDTOS);
+        response.setFlowDatas(processFlowDataWSDTOS);
         general.setOperation("createProcessFlowData");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -144,18 +142,18 @@ public class ProcessFlowMiddleware {
         return response;
     }
 
-    public FlowDataWSModel updateProcessFlowData(long userId, String processId,String dataId,long typeId,String value) {
+    public ProcessFlowDataWSModel updateProcessFlowData(long userId, String processId, String dataId, long typeId, String value) {
 
-        FlowDataWSModel response = new FlowDataWSModel();
+        ProcessFlowDataWSModel response = new ProcessFlowDataWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<FlowDataWSDTO>flowDataWSDTOS = new ArrayList<>();
+        List<ProcessFlowDataWSDTO> processFlowDataWSDTOS = new ArrayList<>();
 
-        FlowDataWSDTO flowDataWSDTO = processFlowFramework.updateProcessFlowDataService(userId,processId,dataId,typeId,value);
-        if (flowDataWSDTO != null){
-            flowDataWSDTOS.add(flowDataWSDTO);
+        ProcessFlowDataWSDTO processFlowDataWSDTO = processFlowFramework.updateProcessFlowDataService(userId,processId,dataId,typeId,value);
+        if (processFlowDataWSDTO != null){
+            processFlowDataWSDTOS.add(processFlowDataWSDTO);
         }
 
-        response.setFlowDatas(flowDataWSDTOS);
+        response.setFlowDatas(processFlowDataWSDTOS);
         general.setOperation("updateProcessFlowData");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -165,18 +163,18 @@ public class ProcessFlowMiddleware {
         return response;
     }
 
-    public FlowDataWSModel removeProcessFlowData(long userId, String processId,String dataId) {
+    public ProcessFlowDataWSModel removeProcessFlowData(long userId, String processId, String dataId) {
 
-        FlowDataWSModel response = new FlowDataWSModel();
+        ProcessFlowDataWSModel response = new ProcessFlowDataWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<FlowDataWSDTO>flowDataWSDTOS = new ArrayList<>();
+        List<ProcessFlowDataWSDTO> processFlowDataWSDTOS = new ArrayList<>();
 
-        FlowDataWSDTO flowDataWSDTO = processFlowFramework.removeProcessFlowDataService(userId,processId,dataId);
-        if (flowDataWSDTO != null){
-            flowDataWSDTOS.add(flowDataWSDTO);
+        ProcessFlowDataWSDTO processFlowDataWSDTO = processFlowFramework.removeProcessFlowDataService(userId,processId,dataId);
+        if (processFlowDataWSDTO != null){
+            processFlowDataWSDTOS.add(processFlowDataWSDTO);
         }
 
-        response.setFlowDatas(flowDataWSDTOS);
+        response.setFlowDatas(processFlowDataWSDTOS);
         general.setOperation("removeProcessFlowData");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -185,112 +183,6 @@ public class ProcessFlowMiddleware {
 
         return response;
     }
-
-
-
-    public FlowUrlWSModel getProcessFlowUrls(long userId, String processId) {
-
-        FlowUrlWSModel response = new FlowUrlWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-        List<FlowUrlWSDTO> flowUrlWSDTOS = processFlowFramework.getProcessFlowUrlsService(userId,processId);
-        if (flowUrlWSDTOS != null){
-            response.setFlowUrls(flowUrlWSDTOS);
-        }
-
-        general.setOperation("getProcessFlowUrls");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-    public FlowUrlWSModel getProcessFlowUrl(long userId, String processId,String urlId) {
-
-        FlowUrlWSModel response = new FlowUrlWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-        List<FlowUrlWSDTO>flowUrlWSDTOS = new ArrayList<>();
-
-        FlowUrlWSDTO flowUrlWSDTO = processFlowFramework.getProcessFlowUrlService(userId,processId,urlId);
-        if (flowUrlWSDTO != null){
-            flowUrlWSDTOS.add(flowUrlWSDTO);
-        }
-
-        response.setFlowUrls(flowUrlWSDTOS);
-        general.setOperation("getProcessFlowUrl");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-    public FlowUrlWSModel createProcessFlowUrl(long userId, String processId,String urlType,String url) {
-
-        FlowUrlWSModel response = new FlowUrlWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-        List<FlowUrlWSDTO>flowUrlWSDTOS = new ArrayList<>();
-
-        FlowUrlWSDTO flowUrlWSDTO =  processFlowFramework.createProcessFlowUrlService(userId,processId,urlType,url);
-        if (flowUrlWSDTO != null){
-            flowUrlWSDTOS.add(flowUrlWSDTO);
-        }
-
-        response.setFlowUrls(flowUrlWSDTOS);
-        general.setOperation("createProcessFlowUrl");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-    public FlowUrlWSModel updateProcessFlowUrl(long userId,String processId,String urlId,String urlType,String url) {
-
-        FlowUrlWSModel response = new FlowUrlWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-        List<FlowUrlWSDTO>flowUrlWSDTOS = new ArrayList<>();
-
-        FlowUrlWSDTO flowUrlWSDTO =  processFlowFramework.updateProcessFlowUrlService(userId,processId,urlId,urlType,url);
-        if (flowUrlWSDTO != null){
-            flowUrlWSDTOS.add(flowUrlWSDTO);
-        }
-
-        response.setFlowUrls(flowUrlWSDTOS);
-        general.setOperation("updateProcessFlowUrl");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-    public FlowUrlWSModel removeProcessFlowUrl(long userId, String processId,String urlId) {
-
-        FlowUrlWSModel response = new FlowUrlWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-        List<FlowUrlWSDTO>flowUrlWSDTOS = new ArrayList<>();
-
-        FlowUrlWSDTO flowUrlWSDTO =  processFlowFramework.removeProcessFlowUrlService(userId,processId,urlId);
-        if (flowUrlWSDTO != null){
-            flowUrlWSDTOS.add(flowUrlWSDTO);
-        }
-
-        response.setFlowUrls(flowUrlWSDTOS);
-        general.setOperation("removeProcessFlowUrl");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
 
 
 }

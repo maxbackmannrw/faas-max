@@ -1,20 +1,20 @@
 package com.faas.core.base.model.ws.process.details.channel.temp;
 
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.process.details.channel.temp.dto.SmsMessageTempWSDTO;
+import com.faas.core.base.model.ws.process.details.channel.temp.dto.ProcessSmsMessageTempWSDTO;
 
 import java.util.List;
 
-public class SmsMessageTempWSModel {
+public class ProcessSmsMessageTempWSModel {
 
     private GeneralWSModel general;
-    private List<SmsMessageTempWSDTO>smsMessageTemps;
+    private List<ProcessSmsMessageTempWSDTO>smsMessageTemps;
 
 
-    public SmsMessageTempWSModel() {
+    public ProcessSmsMessageTempWSModel() {
     }
 
-    public SmsMessageTempWSModel(GeneralWSModel general, List<SmsMessageTempWSDTO> smsMessageTemps) {
+    public ProcessSmsMessageTempWSModel(GeneralWSModel general, List<ProcessSmsMessageTempWSDTO> smsMessageTemps) {
         this.general = general;
         this.smsMessageTemps = smsMessageTemps;
     }
@@ -27,11 +27,11 @@ public class SmsMessageTempWSModel {
         this.general = general;
     }
 
-    public List<SmsMessageTempWSDTO> getSmsMessageTemps() {
+    public List<ProcessSmsMessageTempWSDTO> getSmsMessageTemps() {
         return smsMessageTemps;
     }
 
-    public void setSmsMessageTemps(List<SmsMessageTempWSDTO> smsMessageTemps) {
+    public void setSmsMessageTemps(List<ProcessSmsMessageTempWSDTO> smsMessageTemps) {
         this.smsMessageTemps = smsMessageTemps;
     }
 }

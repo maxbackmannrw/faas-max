@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface EmailTempRepository extends MongoRepository<ProcessEmailTempDBModel, String> {
+public interface ProcessEmailTempRepository extends MongoRepository<ProcessEmailTempDBModel, String> {
 
     List<ProcessEmailTempDBModel> findByStatus(int status);
 

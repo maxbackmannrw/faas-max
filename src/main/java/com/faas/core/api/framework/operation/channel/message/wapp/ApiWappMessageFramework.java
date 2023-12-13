@@ -14,7 +14,7 @@ import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.client.details.ClientPhoneRepository;
 import com.faas.core.base.repo.operation.details.channel.OperationWappMessageRepository;
 import com.faas.core.base.repo.process.details.channel.content.ProcessWappChannelRepository;
-import com.faas.core.base.repo.process.details.channel.temp.WappMessageTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.ProcessWappMessageTempRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.base.repo.user.details.UserDetailsRepository;
 import com.faas.core.rest.service.channel.wapp.WappRestService;
@@ -56,7 +56,7 @@ public class ApiWappMessageFramework {
     OperationWappMessageRepository operationWappMessageRepository;
 
     @Autowired
-    WappMessageTempRepository wappMessageTempRepository;
+    ProcessWappMessageTempRepository processWappMessageTempRepository;
 
     @Autowired
     ProcessWappChannelRepository processWappChannelRepository;
@@ -103,7 +103,7 @@ public class ApiWappMessageFramework {
 
         List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndAgentId(sessionId,agentId);
         List<UserDetailsDBModel> agentDetails = userDetailsRepository.findByUserId(agentId);
-        List<ProcessWappMessageTempDBModel> processWappMessageTempDBModels = wappMessageTempRepository.findByIdAndProcessId(tempId,processId);
+        List<ProcessWappMessageTempDBModel> processWappMessageTempDBModels = processWappMessageTempRepository.findByIdAndProcessId(tempId,processId);
         Optional<ClientPhoneDBModel> clientPhoneDBModel = clientPhoneRepository.findById(numberId);
         List<ProcessWappChannelDBModel> processWappChannelDBModels = processWappChannelRepository.findByProcessId(processId);
 
@@ -166,7 +166,7 @@ public class ApiWappMessageFramework {
                 wappMessageTempWSDTO.setWappAccount(wappAccountWSDTO);
             }
             wappMessageTempWSDTO.setPhones(clientPhoneRepository.findByClientId(sessionDBModels.get(0).getClientId()));
-            wappMessageTempWSDTO.setWappTemps(wappMessageTempRepository.findByProcessId(processId));
+            wappMessageTempWSDTO.setWappTemps(processWappMessageTempRepository.findByProcessId(processId));
 
             return wappMessageTempWSDTO;
         }
@@ -184,7 +184,7 @@ public class ApiWappMessageFramework {
                 wappMessageTempWSDTO.setWappAccount(wappAccountWSDTO);
             }
             wappMessageTempWSDTO.setPhones(clientPhoneRepository.findByClientId(sessionDBModels.get(0).getClientId()));
-            wappMessageTempWSDTO.setWappTemps(wappMessageTempRepository.findByIdAndProcessId(tempId,processId));
+            wappMessageTempWSDTO.setWappTemps(processWappMessageTempRepository.findByIdAndProcessId(tempId,processId));
 
             return wappMessageTempWSDTO;
         }

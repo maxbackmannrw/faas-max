@@ -126,5 +126,4 @@ public class ScenarioElementController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
 }

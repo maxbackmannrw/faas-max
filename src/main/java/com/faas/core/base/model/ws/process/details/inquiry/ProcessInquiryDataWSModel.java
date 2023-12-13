@@ -1,19 +1,19 @@
 package com.faas.core.base.model.ws.process.details.inquiry;
 
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.process.details.inquiry.dto.InquiryDataWSDTO;
+import com.faas.core.base.model.ws.process.details.inquiry.dto.ProcessInquiryDataWSDTO;
 
 import java.util.List;
 
-public class InquiryDataWSModel {
+public class ProcessInquiryDataWSModel {
 
     private GeneralWSModel general;
-    private List<InquiryDataWSDTO> inquiryDatas;
+    private List<ProcessInquiryDataWSDTO> inquiryDatas;
 
-    public InquiryDataWSModel() {
+    public ProcessInquiryDataWSModel() {
     }
 
-    public InquiryDataWSModel(GeneralWSModel general, List<InquiryDataWSDTO> inquiryDatas) {
+    public ProcessInquiryDataWSModel(GeneralWSModel general, List<ProcessInquiryDataWSDTO> inquiryDatas) {
         this.general = general;
         this.inquiryDatas = inquiryDatas;
     }
@@ -26,11 +26,11 @@ public class InquiryDataWSModel {
         this.general = general;
     }
 
-    public List<InquiryDataWSDTO> getInquiryDatas() {
+    public List<ProcessInquiryDataWSDTO> getInquiryDatas() {
         return inquiryDatas;
     }
 
-    public void setInquiryDatas(List<InquiryDataWSDTO> inquiryDatas) {
+    public void setInquiryDatas(List<ProcessInquiryDataWSDTO> inquiryDatas) {
         this.inquiryDatas = inquiryDatas;
     }
 }

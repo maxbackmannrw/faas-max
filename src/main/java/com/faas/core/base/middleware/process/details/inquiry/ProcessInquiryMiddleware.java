@@ -2,11 +2,9 @@ package com.faas.core.base.middleware.process.details.inquiry;
 
 import com.faas.core.base.framework.process.details.inquiry.ProcessInquiryFramework;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.process.details.inquiry.InquiryDataWSModel;
-import com.faas.core.base.model.ws.process.details.inquiry.InquiryUrlWSModel;
+import com.faas.core.base.model.ws.process.details.inquiry.ProcessInquiryDataWSModel;
 import com.faas.core.base.model.ws.process.details.inquiry.ProcessInquiryWSModel;
-import com.faas.core.base.model.ws.process.details.inquiry.dto.InquiryDataWSDTO;
-import com.faas.core.base.model.ws.process.details.inquiry.dto.InquiryUrlWSDTO;
+import com.faas.core.base.model.ws.process.details.inquiry.dto.ProcessInquiryDataWSDTO;
 import com.faas.core.base.model.ws.process.details.inquiry.dto.ProcessInquiryWSDTO;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,14 +83,14 @@ public class ProcessInquiryMiddleware {
 
 
 
-    public InquiryDataWSModel getProcessInquiryDatas(long userId, String processId) {
+    public ProcessInquiryDataWSModel getProcessInquiryDatas(long userId, String processId) {
 
-        InquiryDataWSModel response = new InquiryDataWSModel();
+        ProcessInquiryDataWSModel response = new ProcessInquiryDataWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<InquiryDataWSDTO> inquiryDataWSDTOS = processInquiryFramework.getProcessInquiryDatasService(userId,processId);
-        if (inquiryDataWSDTOS != null){
-            response.setInquiryDatas(inquiryDataWSDTOS);
+        List<ProcessInquiryDataWSDTO> processInquiryDataWSDTOS = processInquiryFramework.getProcessInquiryDatasService(userId,processId);
+        if (processInquiryDataWSDTOS != null){
+            response.setInquiryDatas(processInquiryDataWSDTOS);
         }
 
         general.setOperation("getProcessInquiryDatas");
@@ -105,18 +103,18 @@ public class ProcessInquiryMiddleware {
     }
 
 
-    public InquiryDataWSModel getProcessInquiryData(long userId, String processId,String dataId) {
+    public ProcessInquiryDataWSModel getProcessInquiryData(long userId, String processId, String dataId) {
 
-        InquiryDataWSModel response = new InquiryDataWSModel();
+        ProcessInquiryDataWSModel response = new ProcessInquiryDataWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<InquiryDataWSDTO>inquiryDataWSDTOS = new ArrayList<>();
+        List<ProcessInquiryDataWSDTO> processInquiryDataWSDTOS = new ArrayList<>();
 
-        InquiryDataWSDTO inquiryDataWSDTO = processInquiryFramework.getProcessInquiryDataService(userId,processId,dataId);
-        if (inquiryDataWSDTO != null){
-            inquiryDataWSDTOS.add(inquiryDataWSDTO);
+        ProcessInquiryDataWSDTO processInquiryDataWSDTO = processInquiryFramework.getProcessInquiryDataService(userId,processId,dataId);
+        if (processInquiryDataWSDTO != null){
+            processInquiryDataWSDTOS.add(processInquiryDataWSDTO);
         }
 
-        response.setInquiryDatas(inquiryDataWSDTOS);
+        response.setInquiryDatas(processInquiryDataWSDTOS);
         general.setOperation("getProcessInquiryData");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -127,18 +125,18 @@ public class ProcessInquiryMiddleware {
     }
 
 
-    public InquiryDataWSModel createProcessInquiryData(long userId, String processId,long typeId,String value) {
+    public ProcessInquiryDataWSModel createProcessInquiryData(long userId, String processId, long typeId, String value) {
 
-        InquiryDataWSModel response = new InquiryDataWSModel();
+        ProcessInquiryDataWSModel response = new ProcessInquiryDataWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<InquiryDataWSDTO>inquiryDataWSDTOS = new ArrayList<>();
+        List<ProcessInquiryDataWSDTO> processInquiryDataWSDTOS = new ArrayList<>();
 
-        InquiryDataWSDTO inquiryDataWSDTO = processInquiryFramework.createProcessInquiryDataService(userId,processId,typeId,value);
-        if (inquiryDataWSDTO != null){
-            inquiryDataWSDTOS.add(inquiryDataWSDTO);
+        ProcessInquiryDataWSDTO processInquiryDataWSDTO = processInquiryFramework.createProcessInquiryDataService(userId,processId,typeId,value);
+        if (processInquiryDataWSDTO != null){
+            processInquiryDataWSDTOS.add(processInquiryDataWSDTO);
         }
 
-        response.setInquiryDatas(inquiryDataWSDTOS);
+        response.setInquiryDatas(processInquiryDataWSDTOS);
         general.setOperation("createProcessInquiryData");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -149,18 +147,18 @@ public class ProcessInquiryMiddleware {
     }
 
 
-    public InquiryDataWSModel updateProcessInquiryData(long userId,String processId,String dataId,long typeId,String value) {
+    public ProcessInquiryDataWSModel updateProcessInquiryData(long userId, String processId, String dataId, long typeId, String value) {
 
-        InquiryDataWSModel response = new InquiryDataWSModel();
+        ProcessInquiryDataWSModel response = new ProcessInquiryDataWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<InquiryDataWSDTO>inquiryDataWSDTOS = new ArrayList<>();
+        List<ProcessInquiryDataWSDTO> processInquiryDataWSDTOS = new ArrayList<>();
 
-        InquiryDataWSDTO InquiryDataWSDTO = processInquiryFramework.updateProcessInquiryDataService(userId,processId,dataId,typeId,value);
-        if (InquiryDataWSDTO != null){
-            inquiryDataWSDTOS.add(InquiryDataWSDTO);
+        ProcessInquiryDataWSDTO ProcessInquiryDataWSDTO = processInquiryFramework.updateProcessInquiryDataService(userId,processId,dataId,typeId,value);
+        if (ProcessInquiryDataWSDTO != null){
+            processInquiryDataWSDTOS.add(ProcessInquiryDataWSDTO);
         }
 
-        response.setInquiryDatas(inquiryDataWSDTOS);
+        response.setInquiryDatas(processInquiryDataWSDTOS);
         general.setOperation("updateProcessInquiryData");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -171,18 +169,18 @@ public class ProcessInquiryMiddleware {
     }
 
 
-    public InquiryDataWSModel removeProcessInquiryData(long userId, String processId, String dataId) {
+    public ProcessInquiryDataWSModel removeProcessInquiryData(long userId, String processId, String dataId) {
 
-        InquiryDataWSModel response = new InquiryDataWSModel();
+        ProcessInquiryDataWSModel response = new ProcessInquiryDataWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<InquiryDataWSDTO>inquiryDataWSDTOS = new ArrayList<>();
+        List<ProcessInquiryDataWSDTO> processInquiryDataWSDTOS = new ArrayList<>();
 
-        InquiryDataWSDTO InquiryDataWSDTO = processInquiryFramework.removeProcessInquiryDataService(userId,processId,dataId);
-        if (InquiryDataWSDTO != null){
-            inquiryDataWSDTOS.add(InquiryDataWSDTO);
+        ProcessInquiryDataWSDTO ProcessInquiryDataWSDTO = processInquiryFramework.removeProcessInquiryDataService(userId,processId,dataId);
+        if (ProcessInquiryDataWSDTO != null){
+            processInquiryDataWSDTOS.add(ProcessInquiryDataWSDTO);
         }
 
-        response.setInquiryDatas(inquiryDataWSDTOS);
+        response.setInquiryDatas(processInquiryDataWSDTOS);
         general.setOperation("removeProcessInquiryData");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -192,115 +190,6 @@ public class ProcessInquiryMiddleware {
         return response;
     }
 
-
-
-    public InquiryUrlWSModel getProcessInquiryUrls(long userId, String processId) {
-
-        InquiryUrlWSModel response = new InquiryUrlWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-        List<InquiryUrlWSDTO> inquiryUrlWSDTOS = processInquiryFramework.getProcessInquiryUrlsService(userId,processId);
-        if (inquiryUrlWSDTOS != null){
-            response.setInquiryUrls(inquiryUrlWSDTOS);
-        }
-
-        response.setInquiryUrls(inquiryUrlWSDTOS);
-        general.setOperation("getProcessInquiryUrls");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-
-    public InquiryUrlWSModel getProcessInquiryUrl(long userId,String processId,String urlId) {
-
-        InquiryUrlWSModel response = new InquiryUrlWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-        List<InquiryUrlWSDTO>inquiryUrlWSDTOS = new ArrayList<>();
-
-        InquiryUrlWSDTO inquiryUrlWSDTO = processInquiryFramework.getProcessInquiryUrlService(userId,processId,urlId);
-        if (inquiryUrlWSDTO != null){
-            inquiryUrlWSDTOS.add(inquiryUrlWSDTO);
-        }
-
-        response.setInquiryUrls(inquiryUrlWSDTOS);
-        general.setOperation("getProcessInquiryUrl");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-
-    public InquiryUrlWSModel createProcessInquiryUrl(long userId,String processId,String urlType,String url) {
-
-        InquiryUrlWSModel response = new InquiryUrlWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-        List<InquiryUrlWSDTO>inquiryUrlWSDTOS = new ArrayList<>();
-
-        InquiryUrlWSDTO inquiryUrlWSDTO = processInquiryFramework.createProcessInquiryUrlService(userId,processId,urlType,url);
-        if (inquiryUrlWSDTO != null){
-            inquiryUrlWSDTOS.add(inquiryUrlWSDTO);
-        }
-
-        response.setInquiryUrls(inquiryUrlWSDTOS);
-        general.setOperation("createProcessInquiryUrl");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-
-    public InquiryUrlWSModel updateProcessInquiryUrl(long userId, String processId,String urlId,String urlType,String url) {
-
-        InquiryUrlWSModel response = new InquiryUrlWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-        List<InquiryUrlWSDTO>inquiryUrlWSDTOS = new ArrayList<>();
-
-        InquiryUrlWSDTO inquiryUrlWSDTO = processInquiryFramework.updateProcessInquiryUrlService(userId,processId,urlId,urlType,url);
-        if (inquiryUrlWSDTO != null){
-            inquiryUrlWSDTOS.add(inquiryUrlWSDTO);
-        }
-
-        response.setInquiryUrls(inquiryUrlWSDTOS);
-        general.setOperation("updateProcessInquiryUrl");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-
-    public InquiryUrlWSModel removeProcessInquiryUrl(long userId, String processId,String urlId) {
-
-        InquiryUrlWSModel response = new InquiryUrlWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-        List<InquiryUrlWSDTO> inquiryUrlWSDTOS = new ArrayList<>();
-
-        InquiryUrlWSDTO inquiryUrlWSDTO = processInquiryFramework.removeProcessInquiryUrlService(userId,processId,urlId);
-        if (inquiryUrlWSDTO != null){
-            inquiryUrlWSDTOS.add(inquiryUrlWSDTO);
-        }
-
-        response.setInquiryUrls(inquiryUrlWSDTOS);
-        general.setOperation("removeProcessInquiryUrl");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
 
 
 

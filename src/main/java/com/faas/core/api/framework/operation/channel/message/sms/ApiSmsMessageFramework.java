@@ -13,7 +13,7 @@ import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.client.details.ClientPhoneRepository;
 import com.faas.core.base.repo.operation.details.channel.OperationSmsMessageRepository;
 import com.faas.core.base.repo.process.details.channel.content.ProcessSmsChannelRepository;
-import com.faas.core.base.repo.process.details.channel.temp.SmsMessageTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.ProcessSmsMessageTempRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.rest.service.channel.sms.SmsRestService;
 import com.faas.core.utils.config.AppConstant;
@@ -55,7 +55,7 @@ public class ApiSmsMessageFramework {
     OperationSmsMessageRepository operationSmsMessageRepository;
 
     @Autowired
-    SmsMessageTempRepository smsMessageTempRepository;
+    ProcessSmsMessageTempRepository processSmsMessageTempRepository;
 
     @Autowired
     ProcessSmsChannelRepository processSmsChannelRepository;
@@ -98,7 +98,7 @@ public class ApiSmsMessageFramework {
     public ApiSmsMessageWSDTO apiSendSmsMessageService(long agentId,long sessionId,String campaignId,String processId,String tempId,long numberId) throws IOException {
 
         List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndAgentId(sessionId,agentId);
-        List<ProcessSmsMessageTempDBModel> processSmsMessageTempDBModels = smsMessageTempRepository.findByIdAndProcessId(tempId,processId);
+        List<ProcessSmsMessageTempDBModel> processSmsMessageTempDBModels = processSmsMessageTempRepository.findByIdAndProcessId(tempId,processId);
         Optional<ClientPhoneDBModel> clientPhoneDBModel = clientPhoneRepository.findById(numberId);
         List<ProcessSmsChannelDBModel> processSmsChannelDBModels = processSmsChannelRepository.findByProcessId(processId);
 
@@ -160,7 +160,7 @@ public class ApiSmsMessageFramework {
                 smsMessageTempWSDTO.setSmsAccount(smsAccountWSDTO);
             }
             smsMessageTempWSDTO.setPhones(clientPhoneRepository.findByClientId(sessionDBModels.get(0).getClientId()));
-            smsMessageTempWSDTO.setSmsTemps(smsMessageTempRepository.findByProcessId(processId));
+            smsMessageTempWSDTO.setSmsTemps(processSmsMessageTempRepository.findByProcessId(processId));
 
             return smsMessageTempWSDTO;
         }
@@ -178,7 +178,7 @@ public class ApiSmsMessageFramework {
                 smsMessageTempWSDTO.setSmsAccount(smsAccountWSDTO);
             }
             smsMessageTempWSDTO.setPhones(clientPhoneRepository.findByClientId(sessionDBModels.get(0).getClientId()));
-            smsMessageTempWSDTO.setSmsTemps(smsMessageTempRepository.findByIdAndProcessId(tempId,processId));
+            smsMessageTempWSDTO.setSmsTemps(processSmsMessageTempRepository.findByIdAndProcessId(tempId,processId));
 
             return smsMessageTempWSDTO;
         }
