@@ -1,6 +1,6 @@
 package com.faas.core.base.model.db.operation.details.scenario;
 
-import com.faas.core.base.model.db.operation.details.scenario.dao.ScenarioExecutionDAO;
+import com.faas.core.base.model.db.operation.content.dao.OperationScenarioExecutionDAO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -20,7 +20,7 @@ public class OperationScenarioDBModel {
     private String scenarioId;
     private String scenario;
     private String scenarioType;
-    private List<ScenarioExecutionDAO> scenarioExecutions;
+    private List<OperationScenarioExecutionDAO> scenarioExecutions;
     private String executionState;
     private long uDate;
     private long cDate;
@@ -29,7 +29,7 @@ public class OperationScenarioDBModel {
     public OperationScenarioDBModel() {
     }
 
-    public OperationScenarioDBModel(String id, String operationId, long sessionId, long agentId, String campaignId, String processId, String scenarioId, String scenario, String scenarioType, List<ScenarioExecutionDAO> scenarioExecutions, String executionState, long uDate, long cDate, int status) {
+    public OperationScenarioDBModel(String id, String operationId, long sessionId, long agentId, String campaignId, String processId, String scenarioId, String scenario, String scenarioType, List<OperationScenarioExecutionDAO> scenarioExecutions, String executionState, long uDate, long cDate, int status) {
         this.id = id;
         this.operationId = operationId;
         this.sessionId = sessionId;
@@ -118,11 +118,11 @@ public class OperationScenarioDBModel {
         this.scenarioType = scenarioType;
     }
 
-    public List<ScenarioExecutionDAO> getScenarioExecutions() {
+    public List<OperationScenarioExecutionDAO> getScenarioExecutions() {
         return scenarioExecutions;
     }
 
-    public void setScenarioExecutions(List<ScenarioExecutionDAO> scenarioExecutions) {
+    public void setScenarioExecutions(List<OperationScenarioExecutionDAO> scenarioExecutions) {
         this.scenarioExecutions = scenarioExecutions;
     }
 

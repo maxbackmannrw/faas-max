@@ -23,8 +23,8 @@ import com.faas.core.base.model.db.process.details.channel.content.*;
 import com.faas.core.base.model.db.process.details.channel.content.dao.EmailAccountDAO;
 import com.faas.core.base.model.db.process.details.channel.content.dao.PushAccountDAO;
 import com.faas.core.base.model.db.process.details.channel.content.dao.SmsAccountDAO;
-import com.faas.core.base.model.db.process.details.channel.temp.SmsMessageTempDBModel;
-import com.faas.core.base.model.db.process.details.channel.temp.WappMessageTempDBModel;
+import com.faas.core.base.model.db.process.details.channel.temp.ProcessSmsMessageTempDBModel;
+import com.faas.core.base.model.db.process.details.channel.temp.ProcessWappMessageTempDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.db.user.details.UserDetailsDBModel;
 import com.faas.core.base.repo.client.details.ClientEmailRepository;
@@ -111,32 +111,32 @@ public class ChannelHelper {
     AppUtils appUtils;
 
 
-    public OperationSmsMessageDAO createSmsMessageDAO(SmsMessageTempDBModel smsMessageTempDBModel, ProcessSmsChannelDBModel processSmsChannelDBModel){
+    public OperationSmsMessageDAO createSmsMessageDAO(ProcessSmsMessageTempDBModel processSmsMessageTempDBModel, ProcessSmsChannelDBModel processSmsChannelDBModel){
 
         OperationSmsMessageDAO operationSmsMessageDAO = new OperationSmsMessageDAO();
 
-        operationSmsMessageDAO.setTempId(smsMessageTempDBModel.getId());
+        operationSmsMessageDAO.setTempId(processSmsMessageTempDBModel.getId());
         operationSmsMessageDAO.setAccountId(processSmsChannelDBModel.getAccountId());
-        operationSmsMessageDAO.setSmsTitle(smsMessageTempDBModel.getSmsTitle());
-        operationSmsMessageDAO.setSmsBody(smsMessageTempDBModel.getSmsBody());
-        operationSmsMessageDAO.setSenderId(smsMessageTempDBModel.getSenderId());
+        operationSmsMessageDAO.setSmsTitle(processSmsMessageTempDBModel.getSmsTitle());
+        operationSmsMessageDAO.setSmsBody(processSmsMessageTempDBModel.getSmsBody());
+        operationSmsMessageDAO.setSenderId(processSmsMessageTempDBModel.getSenderId());
         operationSmsMessageDAO.setMessageMaps(new HashMap<>());
-        operationSmsMessageDAO.setMessageType(smsMessageTempDBModel.getMessageType());
+        operationSmsMessageDAO.setMessageType(processSmsMessageTempDBModel.getMessageType());
         operationSmsMessageDAO.setcDate(appUtils.getCurrentTimeStamp());
 
         return operationSmsMessageDAO;
     }
 
 
-    public OperationWappMessageDAO createWappMessageDAO(WappMessageTempDBModel wappMessageTempDBModel, UserDetailsDBModel agentDetails){
+    public OperationWappMessageDAO createWappMessageDAO(ProcessWappMessageTempDBModel processWappMessageTempDBModel, UserDetailsDBModel agentDetails){
 
         OperationWappMessageDAO operationWappMessageDAO = new OperationWappMessageDAO();
-        operationWappMessageDAO.setTempId(wappMessageTempDBModel.getId());
+        operationWappMessageDAO.setTempId(processWappMessageTempDBModel.getId());
         operationWappMessageDAO.setAccountId(agentDetails.getWappChannel().getAccountId());
-        operationWappMessageDAO.setWappTitle(wappMessageTempDBModel.getWappTitle());
-        operationWappMessageDAO.setWappBody(wappMessageTempDBModel.getWappBody());
+        operationWappMessageDAO.setWappTitle(processWappMessageTempDBModel.getWappTitle());
+        operationWappMessageDAO.setWappBody(processWappMessageTempDBModel.getWappBody());
         operationWappMessageDAO.setMessageMaps(new HashMap<>());
-        operationWappMessageDAO.setMessageType(wappMessageTempDBModel.getMessageType());
+        operationWappMessageDAO.setMessageType(processWappMessageTempDBModel.getMessageType());
         operationWappMessageDAO.setcDate(appUtils.getCurrentTimeStamp());
 
         return operationWappMessageDAO;

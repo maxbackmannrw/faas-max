@@ -2,7 +2,7 @@ package com.faas.core.api.model.ws.operation.channel.message.email.dto;
 
 import com.faas.core.base.model.db.client.details.ClientEmailDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationEmailMessageDBModel;
-import com.faas.core.base.model.db.process.details.channel.temp.EmailTempDBModel;
+import com.faas.core.base.model.db.process.details.channel.temp.ProcessEmailTempDBModel;
 
 import java.util.List;
 
@@ -11,12 +11,12 @@ public class ApiOperationEmailWSDTO {
     private ApiEmailAccountWSDTO emailAccount;
     private List<ClientEmailDBModel>emails;
     private List<OperationEmailMessageDBModel> emailMessages;
-    private List<EmailTempDBModel>emailTemps;
+    private List<ProcessEmailTempDBModel>emailTemps;
 
     public ApiOperationEmailWSDTO() {
     }
 
-    public ApiOperationEmailWSDTO(ApiEmailAccountWSDTO emailAccount, List<ClientEmailDBModel> emails, List<OperationEmailMessageDBModel> emailMessages, List<EmailTempDBModel> emailTemps) {
+    public ApiOperationEmailWSDTO(ApiEmailAccountWSDTO emailAccount, List<ClientEmailDBModel> emails, List<OperationEmailMessageDBModel> emailMessages, List<ProcessEmailTempDBModel> emailTemps) {
         this.emailAccount = emailAccount;
         this.emails = emails;
         this.emailMessages = emailMessages;
@@ -47,11 +47,11 @@ public class ApiOperationEmailWSDTO {
         this.emailMessages = emailMessages;
     }
 
-    public List<EmailTempDBModel> getEmailTemps() {
+    public List<ProcessEmailTempDBModel> getEmailTemps() {
         return emailTemps;
     }
 
-    public void setEmailTemps(List<EmailTempDBModel> emailTemps) {
+    public void setEmailTemps(List<ProcessEmailTempDBModel> emailTemps) {
         this.emailTemps = emailTemps;
     }
 }

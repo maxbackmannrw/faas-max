@@ -19,6 +19,7 @@ public class OperationDBModel {
     private String campaignId;
     private String processId;
     private List<OperationActivityDAO>activities;
+    private String operationType;
     private String operationState;
     private long uDate;
     private long cDate;
@@ -27,7 +28,7 @@ public class OperationDBModel {
     public OperationDBModel() {
     }
 
-    public OperationDBModel(String id, long sessionId, String sessionUUID, long clientId, long agentId, String campaignId, String processId, List<OperationActivityDAO> activities, String operationState, long uDate, long cDate, int status) {
+    public OperationDBModel(String id, long sessionId, String sessionUUID, long clientId, long agentId, String campaignId, String processId, List<OperationActivityDAO> activities, String operationType, String operationState, long uDate, long cDate, int status) {
         this.id = id;
         this.sessionId = sessionId;
         this.sessionUUID = sessionUUID;
@@ -36,6 +37,7 @@ public class OperationDBModel {
         this.campaignId = campaignId;
         this.processId = processId;
         this.activities = activities;
+        this.operationType = operationType;
         this.operationState = operationState;
         this.uDate = uDate;
         this.cDate = cDate;
@@ -104,6 +106,14 @@ public class OperationDBModel {
 
     public void setActivities(List<OperationActivityDAO> activities) {
         this.activities = activities;
+    }
+
+    public String getOperationType() {
+        return operationType;
+    }
+
+    public void setOperationType(String operationType) {
+        this.operationType = operationType;
     }
 
     public String getOperationState() {

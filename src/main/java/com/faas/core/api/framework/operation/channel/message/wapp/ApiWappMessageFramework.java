@@ -7,7 +7,7 @@ import com.faas.core.api.model.ws.operation.channel.message.wapp.dto.ApiWappMess
 import com.faas.core.base.model.db.client.details.ClientPhoneDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationWappMessageDBModel;
 import com.faas.core.base.model.db.process.details.channel.content.ProcessWappChannelDBModel;
-import com.faas.core.base.model.db.process.details.channel.temp.WappMessageTempDBModel;
+import com.faas.core.base.model.db.process.details.channel.temp.ProcessWappMessageTempDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.db.user.details.UserDetailsDBModel;
 import com.faas.core.base.repo.client.content.ClientRepository;
@@ -103,11 +103,11 @@ public class ApiWappMessageFramework {
 
         List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndAgentId(sessionId,agentId);
         List<UserDetailsDBModel> agentDetails = userDetailsRepository.findByUserId(agentId);
-        List<WappMessageTempDBModel>wappMessageTempDBModels = wappMessageTempRepository.findByIdAndProcessId(tempId,processId);
+        List<ProcessWappMessageTempDBModel> processWappMessageTempDBModels = wappMessageTempRepository.findByIdAndProcessId(tempId,processId);
         Optional<ClientPhoneDBModel> clientPhoneDBModel = clientPhoneRepository.findById(numberId);
         List<ProcessWappChannelDBModel> processWappChannelDBModels = processWappChannelRepository.findByProcessId(processId);
 
-        if (!sessionDBModels.isEmpty() && !wappMessageTempDBModels.isEmpty() && clientPhoneDBModel.isPresent() && !agentDetails.isEmpty() && agentDetails.get(0).getWappChannel() != null
+        if (!sessionDBModels.isEmpty() && !processWappMessageTempDBModels.isEmpty() && clientPhoneDBModel.isPresent() && !agentDetails.isEmpty() && agentDetails.get(0).getWappChannel() != null
                 && !processWappChannelDBModels.isEmpty() && processWappChannelDBModels.get(0).getMessageStatus().equalsIgnoreCase(AppConstant.ACTIVE_STATUS)){
 
             OperationWappMessageDBModel operationWappMessageDBModel = new OperationWappMessageDBModel();
@@ -119,7 +119,7 @@ public class ApiWappMessageFramework {
             operationWappMessageDBModel.setAgentId(agentId);
             operationWappMessageDBModel.setCampaignId(campaignId);
             operationWappMessageDBModel.setProcessId(processId);
-            operationWappMessageDBModel.setWappMessage(channelHelper.createWappMessageDAO(wappMessageTempDBModels.get(0),agentDetails.get(0)));
+            operationWappMessageDBModel.setWappMessage(channelHelper.createWappMessageDAO(processWappMessageTempDBModels.get(0),agentDetails.get(0)));
             operationWappMessageDBModel.setMessageSentId("");
             operationWappMessageDBModel.setMessageState(AppConstant.MESSAGE_READY);
             operationWappMessageDBModel.setuDate(appUtils.getCurrentTimeStamp());

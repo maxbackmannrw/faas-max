@@ -3,7 +3,6 @@ package com.faas.core.base.endpoint.controller.scenario.settings;
 import com.faas.core.base.middleware.scenario.settings.ScenarioSettingsMiddleware;
 import com.faas.core.base.model.ws.scenario.settings.AutomationTypeWSModel;
 import com.faas.core.base.model.ws.scenario.settings.ScenarioTypeWSModel;
-import com.faas.core.base.model.ws.scenario.settings.VariableTypeWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -146,87 +145,6 @@ public class ScenarioSettingsController {
                                                   @RequestParam long typeId) {
 
         AutomationTypeWSModel response = scenarioSettingsMiddleware.removeAutomationType(userId,typeId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-
-
-    @RequestMapping(value = BaseRoute.GET_ALL_VARIABLE_TYPES, method = RequestMethod.POST)
-    public ResponseEntity<?> getAllVariableTypes(@RequestParam long userId) {
-
-        VariableTypeWSModel response = scenarioSettingsMiddleware.getAllVariableTypes(userId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-
-    @RequestMapping(value = BaseRoute.GET_VARIABLE_TYPES_BY_CATEGORY, method = RequestMethod.POST)
-    public ResponseEntity<?> getVariableTypesByCategory(@RequestParam long userId,
-                                                        @RequestParam String category) {
-
-        VariableTypeWSModel response = scenarioSettingsMiddleware.getVariableTypesByCategory(userId,category);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-
-    @RequestMapping(value = BaseRoute.GET_VARIABLE_TYPE, method = RequestMethod.POST)
-    public ResponseEntity<?> getVariableType(@RequestParam long userId,
-                                             @RequestParam long typeId) {
-
-        VariableTypeWSModel response = scenarioSettingsMiddleware.getVariableType(userId,typeId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-
-    @RequestMapping(value = BaseRoute.CREATE_VARIABLE_TYPE, method = RequestMethod.POST)
-    public ResponseEntity<?> createVariableType(@RequestParam long userId,
-                                                @RequestParam String variableType,
-                                                @RequestParam String category) {
-
-        VariableTypeWSModel response = scenarioSettingsMiddleware.createVariableType(userId,variableType,category);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-
-    @RequestMapping(value = BaseRoute.UPDATE_VARIABLE_TYPE, method = RequestMethod.POST)
-    public ResponseEntity<?> updateVariableType(@RequestParam long userId,
-                                                @RequestParam long typeId,
-                                                @RequestParam String variableType,
-                                                @RequestParam String category) {
-
-        VariableTypeWSModel response = scenarioSettingsMiddleware.updateVariableType(userId,typeId,variableType,category);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-
-    @RequestMapping(value = BaseRoute.REMOVE_VARIABLE_TYPE, method = RequestMethod.POST)
-    public ResponseEntity<?> removeVariableType(@RequestParam long userId,
-                                                @RequestParam long typeId) {
-
-        VariableTypeWSModel response = scenarioSettingsMiddleware.removeVariableType(userId, typeId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

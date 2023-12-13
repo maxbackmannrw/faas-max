@@ -2,10 +2,10 @@ package com.faas.core.utils.helpers;
 
 import com.faas.core.base.model.db.process.content.ProcessDBModel;
 import com.faas.core.base.model.db.process.details.channel.content.*;
-import com.faas.core.base.model.db.process.details.channel.temp.EmailTempDBModel;
-import com.faas.core.base.model.db.process.details.channel.temp.PushTempDBModel;
-import com.faas.core.base.model.db.process.details.channel.temp.SmsMessageTempDBModel;
-import com.faas.core.base.model.db.process.details.channel.temp.WappMessageTempDBModel;
+import com.faas.core.base.model.db.process.details.channel.temp.ProcessEmailTempDBModel;
+import com.faas.core.base.model.db.process.details.channel.temp.ProcessPushTempDBModel;
+import com.faas.core.base.model.db.process.details.channel.temp.ProcessSmsMessageTempDBModel;
+import com.faas.core.base.model.db.process.details.channel.temp.ProcessWappMessageTempDBModel;
 import com.faas.core.base.model.db.process.details.flow.ProcessFlowDBModel;
 import com.faas.core.base.model.db.process.details.inquiry.ProcessInquiryDBModel;
 import com.faas.core.base.model.db.process.details.scenario.ProcessScenarioDBModel;
@@ -199,9 +199,9 @@ public class ProcessHelper {
     public List<AiTriggerWSDTO> createAiTriggerWSDTOS(String processId) {
 
         List<AiTriggerWSDTO> aiTriggerWSDTOS = new ArrayList<>();
-        List<AiTriggerDBModel> aiTriggerDBModels = aiTriggerRepository.findByProcessId(processId);
-        for (AiTriggerDBModel aiTriggerDBModel : aiTriggerDBModels) {
-            aiTriggerWSDTOS.add(new AiTriggerWSDTO(aiTriggerDBModel));
+        List<ProcessAiTriggerDBModel> processAiTriggerDBModels = aiTriggerRepository.findByProcessId(processId);
+        for (ProcessAiTriggerDBModel processAiTriggerDBModel : processAiTriggerDBModels) {
+            aiTriggerWSDTOS.add(new AiTriggerWSDTO(processAiTriggerDBModel));
         }
         return aiTriggerWSDTOS;
     }
@@ -209,9 +209,9 @@ public class ProcessHelper {
     public List<EmailTriggerWSDTO> createEmailTriggerWSDTOS(String processId) {
 
         List<EmailTriggerWSDTO> emailTriggerWSDTOS = new ArrayList<>();
-        List<EmailTriggerDBModel> emailTriggerDBModels = emailTriggerRepository.findByProcessId(processId);
-        for (EmailTriggerDBModel emailTriggerDBModel : emailTriggerDBModels) {
-            emailTriggerWSDTOS.add(new EmailTriggerWSDTO(emailTriggerDBModel));
+        List<ProcessEmailTriggerDBModel> processEmailTriggerDBModels = emailTriggerRepository.findByProcessId(processId);
+        for (ProcessEmailTriggerDBModel processEmailTriggerDBModel : processEmailTriggerDBModels) {
+            emailTriggerWSDTOS.add(new EmailTriggerWSDTO(processEmailTriggerDBModel));
         }
         return emailTriggerWSDTOS;
     }
@@ -219,9 +219,9 @@ public class ProcessHelper {
     public List<SipCallTriggerWSDTO> createSipCallTriggerWSDTOS(String processId) {
 
         List<SipCallTriggerWSDTO> sipCallTriggerWSDTOS = new ArrayList<>();
-        List<SipCallTriggerDBModel> sipCallTriggerDBModels = sipCallTriggerRepository.findByProcessId(processId);
-        for (SipCallTriggerDBModel sipCallTriggerDBModel : sipCallTriggerDBModels) {
-            sipCallTriggerWSDTOS.add(new SipCallTriggerWSDTO(sipCallTriggerDBModel));
+        List<ProcessSipCallTriggerDBModel> processSipCallTriggerDBModels = sipCallTriggerRepository.findByProcessId(processId);
+        for (ProcessSipCallTriggerDBModel processSipCallTriggerDBModel : processSipCallTriggerDBModels) {
+            sipCallTriggerWSDTOS.add(new SipCallTriggerWSDTO(processSipCallTriggerDBModel));
         }
         return sipCallTriggerWSDTOS;
     }
@@ -229,9 +229,9 @@ public class ProcessHelper {
     public List<SmsMessageTriggerWSDTO> createSmsMessageTriggerWSDTOS(String processId) {
 
         List<SmsMessageTriggerWSDTO>smsMessageTriggerWSDTOS = new ArrayList<>();
-        List<SmsMessageTriggerDBModel> smsMessageTriggerDBModels = smsMessageTriggerRepository.findByProcessId(processId);
-        for (SmsMessageTriggerDBModel smsMessageTriggerDBModel : smsMessageTriggerDBModels) {
-            smsMessageTriggerWSDTOS.add(new SmsMessageTriggerWSDTO(smsMessageTriggerDBModel));
+        List<ProcessSmsMessageTriggerDBModel> processSmsMessageTriggerDBModels = smsMessageTriggerRepository.findByProcessId(processId);
+        for (ProcessSmsMessageTriggerDBModel processSmsMessageTriggerDBModel : processSmsMessageTriggerDBModels) {
+            smsMessageTriggerWSDTOS.add(new SmsMessageTriggerWSDTO(processSmsMessageTriggerDBModel));
         }
         return smsMessageTriggerWSDTOS;
     }
@@ -239,9 +239,9 @@ public class ProcessHelper {
     public List<WappCallTriggerWSDTO> createWappCallTriggerWSDTOS(String processId) {
 
         List<WappCallTriggerWSDTO>wappCallTriggerWSDTOS = new ArrayList<>();
-        List<WappCallTriggerDBModel> wappCallTriggerDBModels = wappCallTriggerRepository.findByProcessId(processId);
-        for (WappCallTriggerDBModel wappCallTriggerDBModel : wappCallTriggerDBModels) {
-            wappCallTriggerWSDTOS.add(new WappCallTriggerWSDTO(wappCallTriggerDBModel));
+        List<ProcessWappCallTriggerDBModel> processWappCallTriggerDBModels = wappCallTriggerRepository.findByProcessId(processId);
+        for (ProcessWappCallTriggerDBModel processWappCallTriggerDBModel : processWappCallTriggerDBModels) {
+            wappCallTriggerWSDTOS.add(new WappCallTriggerWSDTO(processWappCallTriggerDBModel));
         }
         return wappCallTriggerWSDTOS;
     }
@@ -249,9 +249,9 @@ public class ProcessHelper {
     public List<WappMessageTriggerWSDTO> createWappMessageTriggerWSDTOS(String processId) {
 
         List<WappMessageTriggerWSDTO>wappMessageTriggerWSDTOS = new ArrayList<>();
-        List<WappMessageTriggerDBModel> wappMessageTriggerDBModels = wappMessageTriggerRepository.findByProcessId(processId);
-        for (WappMessageTriggerDBModel wappMessageTriggerDBModel : wappMessageTriggerDBModels) {
-            wappMessageTriggerWSDTOS.add(new WappMessageTriggerWSDTO(wappMessageTriggerDBModel));
+        List<ProcessWappMessageTriggerDBModel> processWappMessageTriggerDBModels = wappMessageTriggerRepository.findByProcessId(processId);
+        for (ProcessWappMessageTriggerDBModel processWappMessageTriggerDBModel : processWappMessageTriggerDBModels) {
+            wappMessageTriggerWSDTOS.add(new WappMessageTriggerWSDTO(processWappMessageTriggerDBModel));
         }
         return wappMessageTriggerWSDTOS;
     }
@@ -287,30 +287,30 @@ public class ProcessHelper {
 
         ProcessTempWSDTO processTempWSDTO = new ProcessTempWSDTO();
 
-        List<EmailTempDBModel> emailTemps = emailTempRepository.findByProcessId(processId);
+        List<ProcessEmailTempDBModel> emailTemps = emailTempRepository.findByProcessId(processId);
         List<EmailTempWSDTO>emailTempWSDTOS = new ArrayList<>();
-        for (EmailTempDBModel emailTemp : emailTemps) {
+        for (ProcessEmailTempDBModel emailTemp : emailTemps) {
             emailTempWSDTOS.add(new EmailTempWSDTO(emailTemp));
         }
         processTempWSDTO.setEmailTemps(emailTempWSDTOS);
 
-        List<PushTempDBModel> pushTemps = pushTempRepository.findByProcessId(processId);
+        List<ProcessPushTempDBModel> pushTemps = pushTempRepository.findByProcessId(processId);
         List<PushTempWSDTO>pushTempWSDTOS = new ArrayList<>();
-        for (PushTempDBModel pushTemp : pushTemps) {
+        for (ProcessPushTempDBModel pushTemp : pushTemps) {
             pushTempWSDTOS.add(new PushTempWSDTO(pushTemp));
         }
         processTempWSDTO.setPushTemps(pushTempWSDTOS);
 
-        List<SmsMessageTempDBModel>smsMessageTemps = smsMessageTempRepository.findByProcessId(processId);
+        List<ProcessSmsMessageTempDBModel>smsMessageTemps = smsMessageTempRepository.findByProcessId(processId);
         List<SmsMessageTempWSDTO>smsMessageTempWSDTOS = new ArrayList<>();
-        for (SmsMessageTempDBModel smsMessageTemp : smsMessageTemps) {
+        for (ProcessSmsMessageTempDBModel smsMessageTemp : smsMessageTemps) {
             smsMessageTempWSDTOS.add(new SmsMessageTempWSDTO(smsMessageTemp));
         }
         processTempWSDTO.setSmsMessageTemps(smsMessageTempWSDTOS);
 
-        List<WappMessageTempDBModel>wappMessageTemps = wappMessageTempRepository.findByProcessId(processId);
+        List<ProcessWappMessageTempDBModel>wappMessageTemps = wappMessageTempRepository.findByProcessId(processId);
         List<WappMessageTempWSDTO>wappMessageTempWSDTOS = new ArrayList<>();
-        for (WappMessageTempDBModel wappMessageTemp : wappMessageTemps) {
+        for (ProcessWappMessageTempDBModel wappMessageTemp : wappMessageTemps) {
             wappMessageTempWSDTOS.add(new WappMessageTempWSDTO(wappMessageTemp));
         }
         processTempWSDTO.setWappMessageTemps(wappMessageTempWSDTOS);

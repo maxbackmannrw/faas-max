@@ -2,7 +2,7 @@ package com.faas.core.api.model.ws.operation.channel.message.wapp.dto;
 
 import com.faas.core.api.model.ws.operation.channel.call.wapp.dto.ApiWappAccountWSDTO;
 import com.faas.core.base.model.db.client.details.ClientPhoneDBModel;
-import com.faas.core.base.model.db.process.details.channel.temp.WappMessageTempDBModel;
+import com.faas.core.base.model.db.process.details.channel.temp.ProcessWappMessageTempDBModel;
 
 import java.util.List;
 
@@ -10,12 +10,12 @@ public class ApiWappMessageTempWSDTO {
 
     private ApiWappAccountWSDTO wappAccount;
     private List<ClientPhoneDBModel> phones;
-    private List<WappMessageTempDBModel>wappTemps;
+    private List<ProcessWappMessageTempDBModel>wappTemps;
 
     public ApiWappMessageTempWSDTO() {
     }
 
-    public ApiWappMessageTempWSDTO(ApiWappAccountWSDTO wappAccount, List<ClientPhoneDBModel> phones, List<WappMessageTempDBModel> wappTemps) {
+    public ApiWappMessageTempWSDTO(ApiWappAccountWSDTO wappAccount, List<ClientPhoneDBModel> phones, List<ProcessWappMessageTempDBModel> wappTemps) {
         this.wappAccount = wappAccount;
         this.phones = phones;
         this.wappTemps = wappTemps;
@@ -37,11 +37,11 @@ public class ApiWappMessageTempWSDTO {
         this.phones = phones;
     }
 
-    public List<WappMessageTempDBModel> getWappTemps() {
+    public List<ProcessWappMessageTempDBModel> getWappTemps() {
         return wappTemps;
     }
 
-    public void setWappTemps(List<WappMessageTempDBModel> wappTemps) {
+    public void setWappTemps(List<ProcessWappMessageTempDBModel> wappTemps) {
         this.wappTemps = wappTemps;
     }
 }

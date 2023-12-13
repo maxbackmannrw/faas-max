@@ -1,23 +1,23 @@
 package com.faas.core.base.model.ws.process.details.trigger.dto;
 
-import com.faas.core.base.model.db.process.details.trigger.SmsMessageTriggerDBModel;
+import com.faas.core.base.model.db.process.details.trigger.ProcessSmsMessageTriggerDBModel;
 
 public class SmsMessageTriggerWSDTO {
 
-    private SmsMessageTriggerDBModel smsMessageTrigger;
+    private ProcessSmsMessageTriggerDBModel smsMessageTrigger;
 
     public SmsMessageTriggerWSDTO() {
     }
 
-    public SmsMessageTriggerWSDTO(SmsMessageTriggerDBModel smsMessageTrigger) {
+    public SmsMessageTriggerWSDTO(ProcessSmsMessageTriggerDBModel smsMessageTrigger) {
         this.smsMessageTrigger = smsMessageTrigger;
     }
 
-    public SmsMessageTriggerDBModel getSmsMessageTrigger() {
+    public ProcessSmsMessageTriggerDBModel getSmsMessageTrigger() {
         return smsMessageTrigger;
     }
 
-    public void setSmsMessageTrigger(SmsMessageTriggerDBModel smsMessageTrigger) {
+    public void setSmsMessageTrigger(ProcessSmsMessageTriggerDBModel smsMessageTrigger) {
         this.smsMessageTrigger = smsMessageTrigger;
     }
 }

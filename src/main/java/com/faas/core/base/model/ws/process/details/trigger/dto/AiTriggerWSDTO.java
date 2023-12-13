@@ -1,23 +1,23 @@
 package com.faas.core.base.model.ws.process.details.trigger.dto;
 
-import com.faas.core.base.model.db.process.details.trigger.AiTriggerDBModel;
+import com.faas.core.base.model.db.process.details.trigger.ProcessAiTriggerDBModel;
 
 public class AiTriggerWSDTO {
 
-    private AiTriggerDBModel aiTrigger;
+    private ProcessAiTriggerDBModel aiTrigger;
 
     public AiTriggerWSDTO() {
     }
 
-    public AiTriggerWSDTO(AiTriggerDBModel aiTrigger) {
+    public AiTriggerWSDTO(ProcessAiTriggerDBModel aiTrigger) {
         this.aiTrigger = aiTrigger;
     }
 
-    public AiTriggerDBModel getAiTrigger() {
+    public ProcessAiTriggerDBModel getAiTrigger() {
         return aiTrigger;
     }
 
-    public void setAiTrigger(AiTriggerDBModel aiTrigger) {
+    public void setAiTrigger(ProcessAiTriggerDBModel aiTrigger) {
         this.aiTrigger = aiTrigger;
     }
 }

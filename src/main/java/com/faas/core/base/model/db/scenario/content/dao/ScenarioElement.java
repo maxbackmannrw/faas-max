@@ -1,16 +1,13 @@
 package com.faas.core.base.model.db.scenario.content.dao;
 
-import java.util.List;
-
 public class ScenarioElement {
 
     private String id;
     private String element;
     private String elementType;
-    private ActionDAO action;
-    private AutomationDAO automation;
-    private List<ElementVariableDAO>variables;
-    private int elementOrder;
+    private ScenarioActionDAO scenarioAction;
+    private ScenarioAutomationDAO scenarioAutomation;
+    private int order;
     private long uDate;
     private long cDate;
     private int status;
@@ -18,14 +15,13 @@ public class ScenarioElement {
     public ScenarioElement() {
     }
 
-    public ScenarioElement(String id, String element, String elementType, AutomationDAO automation, ActionDAO action, List<ElementVariableDAO> variables, int elementOrder, long uDate, long cDate, int status) {
+    public ScenarioElement(String id, String element, String elementType, ScenarioActionDAO scenarioAction, ScenarioAutomationDAO scenarioAutomation, int order, long uDate, long cDate, int status) {
         this.id = id;
         this.element = element;
         this.elementType = elementType;
-        this.automation = automation;
-        this.action = action;
-        this.variables = variables;
-        this.elementOrder = elementOrder;
+        this.scenarioAction = scenarioAction;
+        this.scenarioAutomation = scenarioAutomation;
+        this.order = order;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
@@ -55,36 +51,28 @@ public class ScenarioElement {
         this.elementType = elementType;
     }
 
-    public AutomationDAO getAutomation() {
-        return automation;
+    public ScenarioActionDAO getScenarioAction() {
+        return scenarioAction;
     }
 
-    public void setAutomation(AutomationDAO automation) {
-        this.automation = automation;
+    public void setScenarioAction(ScenarioActionDAO scenarioAction) {
+        this.scenarioAction = scenarioAction;
     }
 
-    public ActionDAO getAction() {
-        return action;
+    public ScenarioAutomationDAO getScenarioAutomation() {
+        return scenarioAutomation;
     }
 
-    public void setAction(ActionDAO action) {
-        this.action = action;
+    public void setScenarioAutomation(ScenarioAutomationDAO scenarioAutomation) {
+        this.scenarioAutomation = scenarioAutomation;
     }
 
-    public List<ElementVariableDAO> getVariables() {
-        return variables;
+    public int getOrder() {
+        return order;
     }
 
-    public void setVariables(List<ElementVariableDAO> variables) {
-        this.variables = variables;
-    }
-
-    public int getElementOrder() {
-        return elementOrder;
-    }
-
-    public void setElementOrder(int elementOrder) {
-        this.elementOrder = elementOrder;
+    public void setOrder(int order) {
+        this.order = order;
     }
 
     public long getuDate() {

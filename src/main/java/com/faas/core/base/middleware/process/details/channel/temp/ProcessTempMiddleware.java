@@ -1,10 +1,10 @@
 package com.faas.core.base.middleware.process.details.channel.temp;
 
 import com.faas.core.base.framework.process.details.channel.temp.ProcessTempFramework;
-import com.faas.core.base.model.db.process.details.channel.temp.EmailTempDBModel;
-import com.faas.core.base.model.db.process.details.channel.temp.PushTempDBModel;
-import com.faas.core.base.model.db.process.details.channel.temp.SmsMessageTempDBModel;
-import com.faas.core.base.model.db.process.details.channel.temp.WappMessageTempDBModel;
+import com.faas.core.base.model.db.process.details.channel.temp.ProcessEmailTempDBModel;
+import com.faas.core.base.model.db.process.details.channel.temp.ProcessPushTempDBModel;
+import com.faas.core.base.model.db.process.details.channel.temp.ProcessSmsMessageTempDBModel;
+import com.faas.core.base.model.db.process.details.channel.temp.ProcessWappMessageTempDBModel;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.model.ws.process.details.channel.temp.*;
 import com.faas.core.base.model.ws.process.details.channel.temp.dto.*;
@@ -70,9 +70,9 @@ public class ProcessTempMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<SmsMessageTempWSDTO> smsMessageTempWSDTOS = new ArrayList<>();
 
-        List<SmsMessageTempDBModel> smsMessageTempDBModels = smsMessageTempRepository.findByProcessId(processId);
-        for (SmsMessageTempDBModel smsMessageTempDBModel : smsMessageTempDBModels) {
-            smsMessageTempWSDTOS.add(processTempFramework.fillSmsMessageTempWSDTO(smsMessageTempDBModel));
+        List<ProcessSmsMessageTempDBModel> processSmsMessageTempDBModels = smsMessageTempRepository.findByProcessId(processId);
+        for (ProcessSmsMessageTempDBModel processSmsMessageTempDBModel : processSmsMessageTempDBModels) {
+            smsMessageTempWSDTOS.add(processTempFramework.fillSmsMessageTempWSDTO(processSmsMessageTempDBModel));
         }
 
         response.setSmsMessageTemps(smsMessageTempWSDTOS);
@@ -92,7 +92,7 @@ public class ProcessTempMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<SmsMessageTempWSDTO> smsMessageTempWSDTOS = new ArrayList<>();
 
-        Optional<SmsMessageTempDBModel> smsMessageTempDBModel = smsMessageTempRepository.findById(tempId);
+        Optional<ProcessSmsMessageTempDBModel> smsMessageTempDBModel = smsMessageTempRepository.findById(tempId);
         if (smsMessageTempDBModel.isPresent()) {
             smsMessageTempWSDTOS.add(processTempFramework.fillSmsMessageTempWSDTO(smsMessageTempDBModel.get()));
         }
@@ -114,9 +114,9 @@ public class ProcessTempMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<SmsMessageTempWSDTO> smsMessageTempWSDTOS = new ArrayList<>();
 
-        SmsMessageTempDBModel smsMessageTempDBModel = processTempFramework.createSmsMessageTempService(processId,smsTitle,smsBody,senderId,typeId);
-        if (smsMessageTempDBModel != null) {
-            smsMessageTempWSDTOS.add(processTempFramework.fillSmsMessageTempWSDTO(smsMessageTempDBModel));
+        ProcessSmsMessageTempDBModel processSmsMessageTempDBModel = processTempFramework.createSmsMessageTempService(processId,smsTitle,smsBody,senderId,typeId);
+        if (processSmsMessageTempDBModel != null) {
+            smsMessageTempWSDTOS.add(processTempFramework.fillSmsMessageTempWSDTO(processSmsMessageTempDBModel));
         }
 
         response.setSmsMessageTemps(smsMessageTempWSDTOS);
@@ -136,9 +136,9 @@ public class ProcessTempMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<SmsMessageTempWSDTO> smsMessageTempWSDTOS = new ArrayList<>();
 
-        SmsMessageTempDBModel smsMessageTempDBModel = processTempFramework.updateSmsMessageTempService(tempId,smsTitle,smsBody,senderId,typeId);
-        if (smsMessageTempDBModel != null) {
-            smsMessageTempWSDTOS.add(processTempFramework.fillSmsMessageTempWSDTO(smsMessageTempDBModel));
+        ProcessSmsMessageTempDBModel processSmsMessageTempDBModel = processTempFramework.updateSmsMessageTempService(tempId,smsTitle,smsBody,senderId,typeId);
+        if (processSmsMessageTempDBModel != null) {
+            smsMessageTempWSDTOS.add(processTempFramework.fillSmsMessageTempWSDTO(processSmsMessageTempDBModel));
         }
 
         response.setSmsMessageTemps(smsMessageTempWSDTOS);
@@ -158,9 +158,9 @@ public class ProcessTempMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<SmsMessageTempWSDTO> smsMessageTempWSDTOS = new ArrayList<>();
 
-        SmsMessageTempDBModel smsMessageTempDBModel = processTempFramework.removeSmsMessageTempService(tempId);
-        if (smsMessageTempDBModel != null) {
-            smsMessageTempWSDTOS.add(processTempFramework.fillSmsMessageTempWSDTO(smsMessageTempDBModel));
+        ProcessSmsMessageTempDBModel processSmsMessageTempDBModel = processTempFramework.removeSmsMessageTempService(tempId);
+        if (processSmsMessageTempDBModel != null) {
+            smsMessageTempWSDTOS.add(processTempFramework.fillSmsMessageTempWSDTO(processSmsMessageTempDBModel));
         }
 
         response.setSmsMessageTemps(smsMessageTempWSDTOS);
@@ -180,9 +180,9 @@ public class ProcessTempMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<WappMessageTempWSDTO> wappMessageWSDTOS = new ArrayList<>();
 
-        List<WappMessageTempDBModel> wappMessageTempDBModels = wappMessageTempRepository.findByProcessId(processId);
-        for (WappMessageTempDBModel wappMessageTempDBModel : wappMessageTempDBModels) {
-            wappMessageWSDTOS.add(processTempFramework.fillWappMessageTempWSDTO(wappMessageTempDBModel));
+        List<ProcessWappMessageTempDBModel> processWappMessageTempDBModels = wappMessageTempRepository.findByProcessId(processId);
+        for (ProcessWappMessageTempDBModel processWappMessageTempDBModel : processWappMessageTempDBModels) {
+            wappMessageWSDTOS.add(processTempFramework.fillWappMessageTempWSDTO(processWappMessageTempDBModel));
         }
 
         response.setWappMessageTemps(wappMessageWSDTOS);
@@ -202,7 +202,7 @@ public class ProcessTempMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<WappMessageTempWSDTO> wappMessageWSDTOS = new ArrayList<>();
 
-        Optional<WappMessageTempDBModel> wappMessageTempDBModel = wappMessageTempRepository.findById(tempId);
+        Optional<ProcessWappMessageTempDBModel> wappMessageTempDBModel = wappMessageTempRepository.findById(tempId);
         if (wappMessageTempDBModel.isPresent()) {
             wappMessageWSDTOS.add(processTempFramework.fillWappMessageTempWSDTO(wappMessageTempDBModel.get()));
         }
@@ -225,9 +225,9 @@ public class ProcessTempMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<WappMessageTempWSDTO> wappMessageWSDTOS = new ArrayList<>();
 
-        WappMessageTempDBModel wappMessageTempDBModel = processTempFramework.createWappMessageTempService(processId,wappTitle,wappBody,typeId);
-        if (wappMessageTempDBModel != null) {
-            wappMessageWSDTOS.add(processTempFramework.fillWappMessageTempWSDTO(wappMessageTempDBModel));
+        ProcessWappMessageTempDBModel processWappMessageTempDBModel = processTempFramework.createWappMessageTempService(processId,wappTitle,wappBody,typeId);
+        if (processWappMessageTempDBModel != null) {
+            wappMessageWSDTOS.add(processTempFramework.fillWappMessageTempWSDTO(processWappMessageTempDBModel));
         }
 
         response.setWappMessageTemps(wappMessageWSDTOS);
@@ -248,9 +248,9 @@ public class ProcessTempMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<WappMessageTempWSDTO> wappMessageWSDTOS = new ArrayList<>();
 
-        WappMessageTempDBModel wappMessageTempDBModel = processTempFramework.updateWappMessageTempService(tempId,wappTitle,wappBody,typeId);
-        if (wappMessageTempDBModel != null) {
-            wappMessageWSDTOS.add(processTempFramework.fillWappMessageTempWSDTO(wappMessageTempDBModel));
+        ProcessWappMessageTempDBModel processWappMessageTempDBModel = processTempFramework.updateWappMessageTempService(tempId,wappTitle,wappBody,typeId);
+        if (processWappMessageTempDBModel != null) {
+            wappMessageWSDTOS.add(processTempFramework.fillWappMessageTempWSDTO(processWappMessageTempDBModel));
         }
 
         response.setWappMessageTemps(wappMessageWSDTOS);
@@ -271,9 +271,9 @@ public class ProcessTempMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<WappMessageTempWSDTO> wappMessageWSDTOS = new ArrayList<>();
 
-        WappMessageTempDBModel wappMessageTempDBModel = processTempFramework.removeWappMessageTempService(tempId);
-        if (wappMessageTempDBModel != null) {
-            wappMessageWSDTOS.add(processTempFramework.fillWappMessageTempWSDTO(wappMessageTempDBModel));
+        ProcessWappMessageTempDBModel processWappMessageTempDBModel = processTempFramework.removeWappMessageTempService(tempId);
+        if (processWappMessageTempDBModel != null) {
+            wappMessageWSDTOS.add(processTempFramework.fillWappMessageTempWSDTO(processWappMessageTempDBModel));
         }
 
         response.setWappMessageTemps(wappMessageWSDTOS);
@@ -294,9 +294,9 @@ public class ProcessTempMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<EmailTempWSDTO> emailTempWSDTOS = new ArrayList<>();
 
-        List<EmailTempDBModel> emailTempDBModels = emailTempRepository.findByProcessId(processId);
-        for (EmailTempDBModel emailTempDBModel : emailTempDBModels) {
-            emailTempWSDTOS.add(processTempFramework.fillEmailTempWSDTO(emailTempDBModel));
+        List<ProcessEmailTempDBModel> processEmailTempDBModels = emailTempRepository.findByProcessId(processId);
+        for (ProcessEmailTempDBModel processEmailTempDBModel : processEmailTempDBModels) {
+            emailTempWSDTOS.add(processTempFramework.fillEmailTempWSDTO(processEmailTempDBModel));
         }
 
         response.setEmailTemps(emailTempWSDTOS);
@@ -316,7 +316,7 @@ public class ProcessTempMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<EmailTempWSDTO> emailTempWSDTOS = new ArrayList<>();
 
-        Optional<EmailTempDBModel> emailTempDBModel = emailTempRepository.findById(tempId);
+        Optional<ProcessEmailTempDBModel> emailTempDBModel = emailTempRepository.findById(tempId);
         if (emailTempDBModel.isPresent()) {
             emailTempWSDTOS.add(processTempFramework.fillEmailTempWSDTO(emailTempDBModel.get()));
         }
@@ -338,9 +338,9 @@ public class ProcessTempMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<EmailTempWSDTO> emailTempWSDTOS = new ArrayList<>();
 
-        EmailTempDBModel emailTempDBModel = processTempFramework.createEmailTempService(processId,emailSubject,emailBody,emailFooter,emailSender,typeId);
-        if (emailTempDBModel != null) {
-            emailTempWSDTOS.add(processTempFramework.fillEmailTempWSDTO(emailTempDBModel));
+        ProcessEmailTempDBModel processEmailTempDBModel = processTempFramework.createEmailTempService(processId,emailSubject,emailBody,emailFooter,emailSender,typeId);
+        if (processEmailTempDBModel != null) {
+            emailTempWSDTOS.add(processTempFramework.fillEmailTempWSDTO(processEmailTempDBModel));
         }
 
         response.setEmailTemps(emailTempWSDTOS);
@@ -360,9 +360,9 @@ public class ProcessTempMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<EmailTempWSDTO> emailTempWSDTOS = new ArrayList<>();
 
-        EmailTempDBModel emailTempDBModel = processTempFramework.updateEmailTempService(tempId,emailSubject,emailBody,emailFooter,emailSender,typeId);
-        if (emailTempDBModel != null) {
-            emailTempWSDTOS.add(processTempFramework.fillEmailTempWSDTO(emailTempDBModel));
+        ProcessEmailTempDBModel processEmailTempDBModel = processTempFramework.updateEmailTempService(tempId,emailSubject,emailBody,emailFooter,emailSender,typeId);
+        if (processEmailTempDBModel != null) {
+            emailTempWSDTOS.add(processTempFramework.fillEmailTempWSDTO(processEmailTempDBModel));
         }
 
         response.setEmailTemps(emailTempWSDTOS);
@@ -382,9 +382,9 @@ public class ProcessTempMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<EmailTempWSDTO> emailTempWSDTOS = new ArrayList<>();
 
-        EmailTempDBModel emailTempDBModel = processTempFramework.removeEmailTempService(tempId);
-        if (emailTempDBModel != null) {
-            emailTempWSDTOS.add(processTempFramework.fillEmailTempWSDTO(emailTempDBModel));
+        ProcessEmailTempDBModel processEmailTempDBModel = processTempFramework.removeEmailTempService(tempId);
+        if (processEmailTempDBModel != null) {
+            emailTempWSDTOS.add(processTempFramework.fillEmailTempWSDTO(processEmailTempDBModel));
         }
 
         response.setEmailTemps(emailTempWSDTOS);
@@ -405,9 +405,9 @@ public class ProcessTempMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<PushTempWSDTO> pushTempWSDTOS = new ArrayList<>();
 
-        List<PushTempDBModel> pushTempDBModels = pushTempRepository.findByProcessId(processId);
-        for (PushTempDBModel pushTempDBModel : pushTempDBModels) {
-            pushTempWSDTOS.add(processTempFramework.fillPushTempWSDTO(pushTempDBModel));
+        List<ProcessPushTempDBModel> processPushTempDBModels = pushTempRepository.findByProcessId(processId);
+        for (ProcessPushTempDBModel processPushTempDBModel : processPushTempDBModels) {
+            pushTempWSDTOS.add(processTempFramework.fillPushTempWSDTO(processPushTempDBModel));
         }
 
         response.setPushTemps(pushTempWSDTOS);
@@ -427,7 +427,7 @@ public class ProcessTempMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<PushTempWSDTO> pushTempWSDTOS = new ArrayList<>();
 
-        Optional<PushTempDBModel> pushTempDBModel = pushTempRepository.findById(tempId);
+        Optional<ProcessPushTempDBModel> pushTempDBModel = pushTempRepository.findById(tempId);
         if (pushTempDBModel.isPresent()) {
             pushTempWSDTOS.add(processTempFramework.fillPushTempWSDTO(pushTempDBModel.get()));
         }
@@ -449,9 +449,9 @@ public class ProcessTempMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<PushTempWSDTO> pushTempWSDTOS = new ArrayList<>();
 
-        PushTempDBModel pushTempDBModel = processTempFramework.createPushTempService(processId,pushHeader,pushBody,pushFooter,pushSender,typeId);
-        if (pushTempDBModel != null) {
-            pushTempWSDTOS.add(processTempFramework.fillPushTempWSDTO(pushTempDBModel));
+        ProcessPushTempDBModel processPushTempDBModel = processTempFramework.createPushTempService(processId,pushHeader,pushBody,pushFooter,pushSender,typeId);
+        if (processPushTempDBModel != null) {
+            pushTempWSDTOS.add(processTempFramework.fillPushTempWSDTO(processPushTempDBModel));
         }
 
         response.setPushTemps(pushTempWSDTOS);
@@ -472,9 +472,9 @@ public class ProcessTempMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<PushTempWSDTO> pushTempWSDTOS = new ArrayList<>();
 
-        PushTempDBModel pushTempDBModel = processTempFramework.updatePushTempService(tempId,pushHeader,pushBody,pushFooter,pushSender,typeId);
-        if (pushTempDBModel != null) {
-            pushTempWSDTOS.add(processTempFramework.fillPushTempWSDTO(pushTempDBModel));
+        ProcessPushTempDBModel processPushTempDBModel = processTempFramework.updatePushTempService(tempId,pushHeader,pushBody,pushFooter,pushSender,typeId);
+        if (processPushTempDBModel != null) {
+            pushTempWSDTOS.add(processTempFramework.fillPushTempWSDTO(processPushTempDBModel));
         }
 
         response.setPushTemps(pushTempWSDTOS);
@@ -494,9 +494,9 @@ public class ProcessTempMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<PushTempWSDTO> pushTempWSDTOS = new ArrayList<>();
 
-        PushTempDBModel pushTempDBModel = processTempFramework.removePushTempService(tempId);
-        if (pushTempDBModel != null) {
-            pushTempWSDTOS.add(processTempFramework.fillPushTempWSDTO(pushTempDBModel));
+        ProcessPushTempDBModel processPushTempDBModel = processTempFramework.removePushTempService(tempId);
+        if (processPushTempDBModel != null) {
+            pushTempWSDTOS.add(processTempFramework.fillPushTempWSDTO(processPushTempDBModel));
         }
 
         response.setPushTemps(pushTempWSDTOS);

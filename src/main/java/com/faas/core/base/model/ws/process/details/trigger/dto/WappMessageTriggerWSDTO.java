@@ -1,23 +1,23 @@
 package com.faas.core.base.model.ws.process.details.trigger.dto;
 
-import com.faas.core.base.model.db.process.details.trigger.WappMessageTriggerDBModel;
+import com.faas.core.base.model.db.process.details.trigger.ProcessWappMessageTriggerDBModel;
 
 public class WappMessageTriggerWSDTO {
 
-    private WappMessageTriggerDBModel wappMessageTrigger;
+    private ProcessWappMessageTriggerDBModel wappMessageTrigger;
 
     public WappMessageTriggerWSDTO() {
     }
 
-    public WappMessageTriggerWSDTO(WappMessageTriggerDBModel wappMessageTrigger) {
+    public WappMessageTriggerWSDTO(ProcessWappMessageTriggerDBModel wappMessageTrigger) {
         this.wappMessageTrigger = wappMessageTrigger;
     }
 
-    public WappMessageTriggerDBModel getWappMessageTrigger() {
+    public ProcessWappMessageTriggerDBModel getWappMessageTrigger() {
         return wappMessageTrigger;
     }
 
-    public void setWappMessageTrigger(WappMessageTriggerDBModel wappMessageTrigger) {
+    public void setWappMessageTrigger(ProcessWappMessageTriggerDBModel wappMessageTrigger) {
         this.wappMessageTrigger = wappMessageTrigger;
     }
 }

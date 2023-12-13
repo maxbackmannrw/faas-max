@@ -1,23 +1,23 @@
 package com.faas.core.api.model.ws.operation.details.scenario.dto;
 
-import com.faas.core.base.model.db.process.details.scenario.dao.ProcessScenarioElement;
+import com.faas.core.base.model.db.scenario.content.dao.ScenarioElement;
 
 public class ApiProcessScenarioElementWSDTO {
 
-    private ProcessScenarioElement scenarioElement;
+    private ScenarioElement scenarioElement;
 
     public ApiProcessScenarioElementWSDTO() {
     }
 
-    public ApiProcessScenarioElementWSDTO(ProcessScenarioElement scenarioElement) {
+    public ApiProcessScenarioElementWSDTO(ScenarioElement scenarioElement) {
         this.scenarioElement = scenarioElement;
     }
 
-    public ProcessScenarioElement getScenarioElement() {
+    public ScenarioElement getScenarioElement() {
         return scenarioElement;
     }
 
-    public void setScenarioElement(ProcessScenarioElement scenarioElement) {
+    public void setScenarioElement(ScenarioElement scenarioElement) {
         this.scenarioElement = scenarioElement;
     }
 }

@@ -7,7 +7,7 @@ import com.faas.core.api.model.ws.operation.channel.message.sms.dto.ApiSmsMessag
 import com.faas.core.base.model.db.client.details.ClientPhoneDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationSmsMessageDBModel;
 import com.faas.core.base.model.db.process.details.channel.content.ProcessSmsChannelDBModel;
-import com.faas.core.base.model.db.process.details.channel.temp.SmsMessageTempDBModel;
+import com.faas.core.base.model.db.process.details.channel.temp.ProcessSmsMessageTempDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.client.details.ClientPhoneRepository;
@@ -98,11 +98,11 @@ public class ApiSmsMessageFramework {
     public ApiSmsMessageWSDTO apiSendSmsMessageService(long agentId,long sessionId,String campaignId,String processId,String tempId,long numberId) throws IOException {
 
         List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndAgentId(sessionId,agentId);
-        List<SmsMessageTempDBModel>smsMessageTempDBModels = smsMessageTempRepository.findByIdAndProcessId(tempId,processId);
+        List<ProcessSmsMessageTempDBModel> processSmsMessageTempDBModels = smsMessageTempRepository.findByIdAndProcessId(tempId,processId);
         Optional<ClientPhoneDBModel> clientPhoneDBModel = clientPhoneRepository.findById(numberId);
         List<ProcessSmsChannelDBModel> processSmsChannelDBModels = processSmsChannelRepository.findByProcessId(processId);
 
-        if (!sessionDBModels.isEmpty() && !smsMessageTempDBModels.isEmpty() && clientPhoneDBModel.isPresent() && !processSmsChannelDBModels.isEmpty()){
+        if (!sessionDBModels.isEmpty() && !processSmsMessageTempDBModels.isEmpty() && clientPhoneDBModel.isPresent() && !processSmsChannelDBModels.isEmpty()){
 
             OperationSmsMessageDBModel operationSmsMessageDBModel = new OperationSmsMessageDBModel();
             operationSmsMessageDBModel.setSessionId(sessionId);
@@ -112,7 +112,7 @@ public class ApiSmsMessageFramework {
             operationSmsMessageDBModel.setAgentId(agentId);
             operationSmsMessageDBModel.setCampaignId(campaignId);
             operationSmsMessageDBModel.setProcessId(processId);
-            operationSmsMessageDBModel.setSmsMessage(channelHelper.createSmsMessageDAO(smsMessageTempDBModels.get(0),processSmsChannelDBModels.get(0)));
+            operationSmsMessageDBModel.setSmsMessage(channelHelper.createSmsMessageDAO(processSmsMessageTempDBModels.get(0),processSmsChannelDBModels.get(0)));
             operationSmsMessageDBModel.setMessageSentId("");
             operationSmsMessageDBModel.setMessageState(AppConstant.MESSAGE_READY);
             operationSmsMessageDBModel.setuDate(appUtils.getCurrentTimeStamp());

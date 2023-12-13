@@ -6,9 +6,7 @@ import com.faas.core.base.model.ws.scenario.settings.AutomationTypeWSModel;
 import com.faas.core.base.model.ws.scenario.settings.dto.AutomationTypeWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.model.ws.scenario.settings.ScenarioTypeWSModel;
-import com.faas.core.base.model.ws.scenario.settings.VariableTypeWSModel;
 import com.faas.core.base.model.ws.scenario.settings.dto.ScenarioTypeWSDTO;
-import com.faas.core.base.model.ws.scenario.settings.dto.VariableTypeWSDTO;
 import com.faas.core.base.repo.scenario.settings.ScenarioTypeRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
@@ -250,137 +248,6 @@ public class ScenarioSettingsMiddleware {
 
         return response;
     }
-
-
-
-    public VariableTypeWSModel getAllVariableTypes(long userId) {
-
-        VariableTypeWSModel response = new VariableTypeWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-        List<VariableTypeWSDTO> variableTypeWSDTOS = scenarioSettingsFramework.getAllVariableTypesService(userId);
-        if (variableTypeWSDTOS != null){
-            response.setVariableTypes(variableTypeWSDTOS);
-        }
-
-        response.setVariableTypes(variableTypeWSDTOS);
-        general.setOperation("getAllVariableTypes");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-
-    public VariableTypeWSModel getVariableTypesByCategory(long userId,String category) {
-
-        VariableTypeWSModel response = new VariableTypeWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-        List<VariableTypeWSDTO> variableTypeWSDTOS = scenarioSettingsFramework.getVariableTypesByCategoryService(userId,category);
-        if (variableTypeWSDTOS != null){
-            response.setVariableTypes(variableTypeWSDTOS);
-        }
-
-        general.setOperation("getVariableTypesByCategory");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-
-    public VariableTypeWSModel getVariableType(long userId,long typeId) {
-
-        VariableTypeWSModel response = new VariableTypeWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-        List<VariableTypeWSDTO>variableTypeWSDTOS = new ArrayList<>();
-
-        VariableTypeWSDTO variableTypeWSDTO = scenarioSettingsFramework.getVariableTypeService(userId,typeId);
-        if (variableTypeWSDTO != null){
-            variableTypeWSDTOS.add(variableTypeWSDTO);
-        }
-
-        response.setVariableTypes(variableTypeWSDTOS);
-        general.setOperation("getVariableType");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-
-    public VariableTypeWSModel createVariableType(long userId,String variableType,String category) {
-
-        VariableTypeWSModel response = new VariableTypeWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-        List<VariableTypeWSDTO>variableTypeWSDTOS = new ArrayList<>();
-
-        VariableTypeWSDTO variableTypeWSDTO = scenarioSettingsFramework.createVariableTypeService(userId,variableType,category);
-        if (variableTypeWSDTO != null){
-            variableTypeWSDTOS.add(variableTypeWSDTO);
-        }
-
-        response.setVariableTypes(variableTypeWSDTOS);
-        general.setOperation("createVariableType");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-
-    public VariableTypeWSModel updateVariableType(long userId,long typeId,String variableType,String category) {
-
-        VariableTypeWSModel response = new VariableTypeWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-        List<VariableTypeWSDTO>variableTypeWSDTOS = new ArrayList<>();
-
-        VariableTypeWSDTO variableTypeWSDTO = scenarioSettingsFramework.updateVariableTypeService(userId,typeId,variableType,category);
-        if (variableTypeWSDTO != null){
-            variableTypeWSDTOS.add(variableTypeWSDTO);
-        }
-
-        response.setVariableTypes(variableTypeWSDTOS);
-        general.setOperation("updateVariableType");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-
-    public VariableTypeWSModel removeVariableType(long userId,long typeId) {
-
-        VariableTypeWSModel response = new VariableTypeWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-        List<VariableTypeWSDTO>variableTypeWSDTOS = new ArrayList<>();
-
-        VariableTypeWSDTO variableTypeWSDTO = scenarioSettingsFramework.removeVariableTypeService(userId,typeId);
-        if (variableTypeWSDTO != null){
-            variableTypeWSDTOS.add(variableTypeWSDTO);
-        }
-
-        response.setVariableTypes(variableTypeWSDTOS);
-        general.setOperation("removeVariableType");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
 
 
 }

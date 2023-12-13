@@ -2,13 +2,10 @@ package com.faas.core.base.framework.scenario.settings;
 
 import com.faas.core.base.model.db.scenario.settings.AutomationTypeDBModel;
 import com.faas.core.base.model.db.scenario.settings.ScenarioTypeDBModel;
-import com.faas.core.base.model.db.scenario.settings.VariableTypeDBModel;
 import com.faas.core.base.model.ws.scenario.settings.dto.AutomationTypeWSDTO;
 import com.faas.core.base.model.ws.scenario.settings.dto.ScenarioTypeWSDTO;
-import com.faas.core.base.model.ws.scenario.settings.dto.VariableTypeWSDTO;
 import com.faas.core.base.repo.scenario.settings.AutomationTypeRepository;
 import com.faas.core.base.repo.scenario.settings.ScenarioTypeRepository;
-import com.faas.core.base.repo.scenario.settings.VariableTypeRepository;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -26,9 +23,6 @@ public class ScenarioSettingsFramework {
 
     @Autowired
     AutomationTypeRepository automationTypeRepository;
-
-    @Autowired
-    VariableTypeRepository variableTypeRepository;
 
     @Autowired
     AppUtils appUtils;
@@ -133,78 +127,6 @@ public class ScenarioSettingsFramework {
         }
         return null;
     }
-
-
-    public List<VariableTypeWSDTO> getAllVariableTypesService(long userId) {
-
-        List<VariableTypeWSDTO> variableTypeWSDTOS = new ArrayList<>();
-        List<VariableTypeDBModel> variableTypeDBModels = variableTypeRepository.findByStatus(1);
-        for (VariableTypeDBModel variableTypeDBModel : variableTypeDBModels) {
-            variableTypeWSDTOS.add(new VariableTypeWSDTO(variableTypeDBModel));
-        }
-        return variableTypeWSDTOS;
-    }
-
-
-    public List<VariableTypeWSDTO> getVariableTypesByCategoryService(long userId, String category) {
-
-        List<VariableTypeWSDTO> variableTypeWSDTOS = new ArrayList<>();
-        List<VariableTypeDBModel> variableTypeDBModels = variableTypeRepository.findByCategory(category);
-        for (VariableTypeDBModel variableTypeDBModel : variableTypeDBModels) {
-            variableTypeWSDTOS.add(new VariableTypeWSDTO(variableTypeDBModel));
-        }
-        return variableTypeWSDTOS;
-    }
-
-
-    public VariableTypeWSDTO getVariableTypeService(long userId, long typeId) {
-
-        Optional<VariableTypeDBModel> variableTypeDBModel = variableTypeRepository.findById(typeId);
-        if (variableTypeDBModel.isPresent()) {
-           return new VariableTypeWSDTO(variableTypeDBModel.get());
-        }
-        return null;
-    }
-
-
-    public VariableTypeWSDTO createVariableTypeService(long userId, String variableType, String category) {
-
-        VariableTypeDBModel variableTypeDBModel = new VariableTypeDBModel();
-        variableTypeDBModel.setVariableType(variableType);
-        variableTypeDBModel.setCategory(category);
-        variableTypeDBModel.setuDate(appUtils.getCurrentTimeStamp());
-        variableTypeDBModel.setcDate(appUtils.getCurrentTimeStamp());
-        variableTypeDBModel.setStatus(1);
-
-        return new VariableTypeWSDTO(variableTypeRepository.save(variableTypeDBModel));
-    }
-
-
-    public VariableTypeWSDTO updateVariableTypeService(long userId, long typeId, String variableType, String category) {
-
-        Optional<VariableTypeDBModel> variableTypeDBModel = variableTypeRepository.findById(typeId);
-        if (variableTypeDBModel.isPresent()) {
-            variableTypeDBModel.get().setVariableType(variableType);
-            variableTypeDBModel.get().setCategory(category);
-            variableTypeDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
-            variableTypeDBModel.get().setStatus(1);
-
-            return new VariableTypeWSDTO(variableTypeRepository.save(variableTypeDBModel.get()));
-        }
-        return null;
-    }
-
-
-    public VariableTypeWSDTO removeVariableTypeService(long userId, long typeId) {
-
-        Optional<VariableTypeDBModel> variableTypeDBModel = variableTypeRepository.findById(typeId);
-        if (variableTypeDBModel.isPresent()) {
-            variableTypeRepository.delete(variableTypeDBModel.get());
-            return new VariableTypeWSDTO(variableTypeDBModel.get());
-        }
-        return null;
-    }
-
 
 
 

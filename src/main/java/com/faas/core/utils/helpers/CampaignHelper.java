@@ -9,7 +9,7 @@ import com.faas.core.base.model.db.user.content.UserDBModel;
 import com.faas.core.base.model.ws.campaign.details.agent.dto.CampaignAgentWSDTO;
 import com.faas.core.base.model.ws.campaign.details.content.dto.CampaignProcessWSDTO;
 import com.faas.core.base.model.ws.process.details.scenario.dto.ProcessScenarioWSDTO;
-import com.faas.core.base.repo.scenario.temp.AutomationTempRepository;
+import com.faas.core.base.repo.automation.AutomationRepository;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
@@ -47,7 +47,7 @@ public class CampaignHelper {
     CampaignAgentRepository campaignAgentRepository;
 
     @Autowired
-    AutomationTempRepository automationTempRepository;
+    AutomationRepository automationRepository;
 
     @Autowired
     ScenarioRepository scenarioRepository;

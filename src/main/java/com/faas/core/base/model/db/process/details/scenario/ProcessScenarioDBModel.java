@@ -1,10 +1,7 @@
 package com.faas.core.base.model.db.process.details.scenario;
 
-import com.faas.core.base.model.db.process.details.scenario.dao.ProcessScenarioDataDAO;
-import com.faas.core.base.model.db.process.details.scenario.dao.ProcessScenarioElement;
-import com.faas.core.base.model.db.process.details.scenario.dao.ProcessScenarioVariableDAO;
+import com.faas.core.base.model.db.scenario.content.dao.ScenarioDataDAO;
 import com.faas.core.base.model.db.scenario.content.dao.ScenarioElement;
-import com.faas.core.base.model.db.scenario.content.dao.ScenarioVariableDAO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -19,12 +16,10 @@ public class ProcessScenarioDBModel {
     private String processId;
     private String scenarioId;
     private String scenario;
-    private long scenarioTypeId;
     private String scenarioType;
-    private List<ProcessScenarioVariableDAO> scenarioVariables;
-    private List<ProcessScenarioElement> scenarioElements;
-    private List<ProcessScenarioDataDAO> scenarioDatas;
-    private int scenarioOrder;
+    private List<ScenarioElement> scenarioElements;
+    private List<ScenarioDataDAO> scenarioDatas;
+    private int order;
     private long uDate;
     private long cDate;
     private int status;
@@ -32,17 +27,15 @@ public class ProcessScenarioDBModel {
     public ProcessScenarioDBModel() {
     }
 
-    public ProcessScenarioDBModel(String id, String processId, String scenarioId, String scenario, long scenarioTypeId, String scenarioType, List<ProcessScenarioVariableDAO> scenarioVariables, List<ProcessScenarioElement> scenarioElements, List<ProcessScenarioDataDAO> scenarioDatas, int scenarioOrder, long uDate, long cDate, int status) {
+    public ProcessScenarioDBModel(String id, String processId, String scenarioId, String scenario, String scenarioType, List<ScenarioElement> scenarioElements, List<ScenarioDataDAO> scenarioDatas, int order, long uDate, long cDate, int status) {
         this.id = id;
         this.processId = processId;
         this.scenarioId = scenarioId;
         this.scenario = scenario;
-        this.scenarioTypeId = scenarioTypeId;
         this.scenarioType = scenarioType;
-        this.scenarioVariables = scenarioVariables;
         this.scenarioElements = scenarioElements;
         this.scenarioDatas = scenarioDatas;
-        this.scenarioOrder = scenarioOrder;
+        this.order = order;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
@@ -80,14 +73,6 @@ public class ProcessScenarioDBModel {
         this.scenario = scenario;
     }
 
-    public long getScenarioTypeId() {
-        return scenarioTypeId;
-    }
-
-    public void setScenarioTypeId(long scenarioTypeId) {
-        this.scenarioTypeId = scenarioTypeId;
-    }
-
     public String getScenarioType() {
         return scenarioType;
     }
@@ -96,36 +81,28 @@ public class ProcessScenarioDBModel {
         this.scenarioType = scenarioType;
     }
 
-    public List<ProcessScenarioVariableDAO> getScenarioVariables() {
-        return scenarioVariables;
-    }
-
-    public void setScenarioVariables(List<ProcessScenarioVariableDAO> scenarioVariables) {
-        this.scenarioVariables = scenarioVariables;
-    }
-
-    public List<ProcessScenarioElement> getScenarioElements() {
+    public List<ScenarioElement> getScenarioElements() {
         return scenarioElements;
     }
 
-    public void setScenarioElements(List<ProcessScenarioElement> scenarioElements) {
+    public void setScenarioElements(List<ScenarioElement> scenarioElements) {
         this.scenarioElements = scenarioElements;
     }
 
-    public List<ProcessScenarioDataDAO> getScenarioDatas() {
+    public List<ScenarioDataDAO> getScenarioDatas() {
         return scenarioDatas;
     }
 
-    public void setScenarioDatas(List<ProcessScenarioDataDAO> scenarioDatas) {
+    public void setScenarioDatas(List<ScenarioDataDAO> scenarioDatas) {
         this.scenarioDatas = scenarioDatas;
     }
 
-    public int getScenarioOrder() {
-        return scenarioOrder;
+    public int getOrder() {
+        return order;
     }
 
-    public void setScenarioOrder(int scenarioOrder) {
-        this.scenarioOrder = scenarioOrder;
+    public void setOrder(int order) {
+        this.order = order;
     }
 
     public long getuDate() {

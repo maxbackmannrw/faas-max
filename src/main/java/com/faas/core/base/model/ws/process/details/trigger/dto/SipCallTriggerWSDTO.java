@@ -1,23 +1,23 @@
 package com.faas.core.base.model.ws.process.details.trigger.dto;
 
-import com.faas.core.base.model.db.process.details.trigger.SipCallTriggerDBModel;
+import com.faas.core.base.model.db.process.details.trigger.ProcessSipCallTriggerDBModel;
 
 public class SipCallTriggerWSDTO {
 
-    private SipCallTriggerDBModel sipCallTrigger;
+    private ProcessSipCallTriggerDBModel sipCallTrigger;
 
     public SipCallTriggerWSDTO() {
     }
 
-    public SipCallTriggerWSDTO(SipCallTriggerDBModel sipCallTrigger) {
+    public SipCallTriggerWSDTO(ProcessSipCallTriggerDBModel sipCallTrigger) {
         this.sipCallTrigger = sipCallTrigger;
     }
 
-    public SipCallTriggerDBModel getSipCallTrigger() {
+    public ProcessSipCallTriggerDBModel getSipCallTrigger() {
         return sipCallTrigger;
     }
 
-    public void setSipCallTrigger(SipCallTriggerDBModel sipCallTrigger) {
+    public void setSipCallTrigger(ProcessSipCallTriggerDBModel sipCallTrigger) {
         this.sipCallTrigger = sipCallTrigger;
     }
 }

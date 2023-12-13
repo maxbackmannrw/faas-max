@@ -46,11 +46,11 @@ public class BaseRoute {
     public static final String GET_SESSION_DETAILS = "getsessiondetails";
 
 
-    public static final String GET_AUTOMATION_TEMPS = "getautomationtemps";
-    public static final String GET_AUTOMATION_TEMP = "getautomationtemp";
-    public static final String CREATE_AUTOMATION_TEMP = "createautomationtemp";
-    public static final String UPDATE_AUTOMATION_TEMP = "updateautomationtemp";
-    public static final String REMOVE_AUTOMATION_TEMP = "removeautomationtemp";
+    public static final String GET_AUTOMATIONS = "getautomations";
+    public static final String GET_AUTOMATION = "getautomation";
+    public static final String CREATE_AUTOMATION = "createautomation";
+    public static final String UPDATE_AUTOMATION = "updateautomation";
+    public static final String REMOVE_AUTOMATION = "removeautomation";
 
 
     public static final String GET_AUTOMATION_TYPES = "getautomationtypes";
@@ -543,39 +543,42 @@ public class BaseRoute {
     public static final String UPDATE_SCENARIO_TYPE = "updatescenariotype";
     public static final String REMOVE_SCENARIO_TYPE = "removescenariotype";
 
-    public static final String GET_ALL_VARIABLE_TYPES = "getallvariabletypes";
-    public static final String GET_VARIABLE_TYPES_BY_CATEGORY = "getvariabletypesbycategory";
-    public static final String GET_VARIABLE_TYPE = "getvariabletype";
-    public static final String CREATE_VARIABLE_TYPE = "createvariabletype";
-    public static final String UPDATE_VARIABLE_TYPE = "updatevariabletype";
-    public static final String REMOVE_VARIABLE_TYPE = "removevariabletype";
 
-
-    public static final String GET_SCENARIO_VARIABLES = "getscenariovariables";
-    public static final String GET_SCENARIO_VARIABLE = "getscenariovariable";
-    public static final String CREATE_SCENARIO_VARIABLE = "createscenariovariable";
-    public static final String UPDATE_SCENARIO_VARIABLE = "updatescenariovariable";
-    public static final String REMOVE_SCENARIO_VARIABLE = "removescenariovariable";
+    public static final String GET_SCENARIO_DATAS = "getscenariodatas";
+    public static final String GET_SCENARIO_DATA = "getscenariodata";
+    public static final String CREATE_SCENARIO_DATA = "createscenariodata";
+    public static final String UPDATE_SCENARIO_DATA = "updatescenariodata";
+    public static final String REMOVE_SCENARIO_DATA = "removescenariodata";
 
 
     public static final String GET_SCENARIO_ELEMENTS = "getscenarioelements";
     public static final String GET_SCENARIO_ELEMENT = "getscenarioelement";
-    public static final String CREATE_SCENARIO_ELEMENT = "createscenarioelement";
-    public static final String UPDATE_SCENARIO_ELEMENT = "updatescenarioelement";
+    public static final String CREATE_SCENARIO_ACTION = "createscenarioaction";
+    public static final String CREATE_SCENARIO_AUTOMATION = "createscenarioautomation";
+    public static final String UPDATE_SCENARIO_ACTION = "updatescenarioaction";
+    public static final String UPDATE_SCENARIO_AUTOMATION = "updatescenarioautomation";
     public static final String REMOVE_SCENARIO_ELEMENT = "removescenarioelement";
 
-    public static final String GET_ELEMENT_VARIABLES = "getelementvariables";
-    public static final String GET_ELEMENT_VARIABLE = "getelementvariable";
-    public static final String CREATE_ELEMENT_VARIABLE = "createelementvariable";
-    public static final String UPDATE_ELEMENT_VARIABLE = "updateelementvariable";
-    public static final String REMOVE_ELEMENT_VARIABLE = "removeelementvariable";
+
+    public static final String GET_SCENARIO_ACTION_DATAS = "getscenarioactiondatas";
+    public static final String GET_SCENARIO_ACTION_DATA = "getscenarioactiondata";
+    public static final String CREATE_SCENARIO_ACTION_DATA = "createscenarioactiondata";
+    public static final String UPDATE_SCENARIO_ACTION_DATA = "updatescenarioactiondata";
+    public static final String REMOVE_SCENARIO_ACTION_DATA = "removescenarioactiondata";
+
+    public static final String GET_SCENARIO_AUTOMATION_DATAS = "getscenarioautomationdatas";
+    public static final String GET_SCENARIO_AUTOMATION_DATA = "getscenarioautomationdata";
+    public static final String CREATE_SCENARIO_AUTOMATION_DATA = "createscenarioautomationdata";
+    public static final String UPDATE_SCENARIO_AUTOMATION_DATA = "updatescenarioautomationdata";
+    public static final String REMOVE_SCENARIO_AUTOMATION_DATA = "removescenarioautomationdata";
 
 
-    public static final String GET_ACTION_TEMPS = "getactiontemps";
-    public static final String GET_ACTION_TEMP = "getactiontemp";
-    public static final String CREATE_ACTION_TEMP = "createactiontemp";
-    public static final String UPDATE_ACTION_TEMP = "updateactiontemp";
-    public static final String REMOVE_ACTION_TEMP = "removeactiontemp";
+
+    public static final String GET_ACTIONS = "getactions";
+    public static final String GET_ACTION = "getaction";
+    public static final String CREATE_ACTION = "createaction";
+    public static final String UPDATE_ACTION = "updateaction";
+    public static final String REMOVE_ACTION = "removeaction";
 
 
     public static final String GET_SYSTEM_INFOS = "getsysteminfos";

@@ -1,16 +1,16 @@
 package com.faas.core.base.repo.process.details.trigger;
 
-import com.faas.core.base.model.db.process.details.trigger.SipCallTriggerDBModel;
+import com.faas.core.base.model.db.process.details.trigger.ProcessSipCallTriggerDBModel;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface SipCallTriggerRepository extends MongoRepository<SipCallTriggerDBModel, String> {
+public interface SipCallTriggerRepository extends MongoRepository<ProcessSipCallTriggerDBModel, String> {
 
-    List<SipCallTriggerDBModel>findByStatus(int status);
-    List<SipCallTriggerDBModel>findByProcessId(String processId);
-    List<SipCallTriggerDBModel>findByIdAndProcessId(String triggerId, String processId);
+    List<ProcessSipCallTriggerDBModel>findByStatus(int status);
+    List<ProcessSipCallTriggerDBModel>findByProcessId(String processId);
+    List<ProcessSipCallTriggerDBModel>findByIdAndProcessId(String triggerId, String processId);
 }
 

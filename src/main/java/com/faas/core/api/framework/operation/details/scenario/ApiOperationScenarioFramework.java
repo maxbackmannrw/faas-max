@@ -162,7 +162,7 @@ public class ApiOperationScenarioFramework {
         List<ApiProcessScenarioElementWSDTO>scenarioElementWSDTOS = new ArrayList<>();
         Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
         Optional<ScenarioDBModel> scenarioDBModel = scenarioRepository.findById(scenarioId);
-        if (sessionDBModel.isPresent() && scenarioDBModel.isPresent() && scenarioDBModel.get().getElements() != null){
+        if (sessionDBModel.isPresent() && scenarioDBModel.isPresent() && scenarioDBModel.get().getScenarioElements() != null){
 
         }
         return scenarioElementWSDTOS;
@@ -172,8 +172,8 @@ public class ApiOperationScenarioFramework {
 
         Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
         Optional<ScenarioDBModel> scenarioDBModel = scenarioRepository.findById(scenarioId);
-        if (sessionDBModel.isPresent() && scenarioDBModel.isPresent() && scenarioDBModel.get().getElements() != null){
-            for (int i=0;i<scenarioDBModel.get().getElements().size();i++){
+        if (sessionDBModel.isPresent() && scenarioDBModel.isPresent() && scenarioDBModel.get().getScenarioElements() != null){
+            for (int i=0;i<scenarioDBModel.get().getScenarioElements().size();i++){
 
             }
         }
