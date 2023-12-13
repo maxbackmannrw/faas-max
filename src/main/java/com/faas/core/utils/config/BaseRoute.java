@@ -46,18 +46,7 @@ public class BaseRoute {
     public static final String GET_SESSION_DETAILS = "getsessiondetails";
 
 
-    public static final String GET_AUTOMATIONS = "getautomations";
-    public static final String GET_AUTOMATION = "getautomation";
-    public static final String CREATE_AUTOMATION = "createautomation";
-    public static final String UPDATE_AUTOMATION = "updateautomation";
-    public static final String REMOVE_AUTOMATION = "removeautomation";
 
-
-    public static final String GET_AUTOMATION_TYPES = "getautomationtypes";
-    public static final String GET_AUTOMATION_TYPE = "getautomationtype";
-    public static final String CREATE_AUTOMATION_TYPE = "createautomationtype";
-    public static final String UPDATE_AUTOMATION_TYPE = "updateautomationtype";
-    public static final String REMOVE_AUTOMATION_TYPE = "removeautomationtype";
 
 
 
@@ -572,6 +561,19 @@ public class BaseRoute {
     public static final String UPDATE_SCENARIO_AUTOMATION_DATA = "updatescenarioautomationdata";
     public static final String REMOVE_SCENARIO_AUTOMATION_DATA = "removescenarioautomationdata";
 
+
+    public static final String GET_AUTOMATIONS = "getautomations";
+    public static final String GET_AUTOMATION = "getautomation";
+    public static final String CREATE_AUTOMATION = "createautomation";
+    public static final String UPDATE_AUTOMATION = "updateautomation";
+    public static final String REMOVE_AUTOMATION = "removeautomation";
+
+
+    public static final String GET_AUTOMATION_TYPES = "getautomationtypes";
+    public static final String GET_AUTOMATION_TYPE = "getautomationtype";
+    public static final String CREATE_AUTOMATION_TYPE = "createautomationtype";
+    public static final String UPDATE_AUTOMATION_TYPE = "updateautomationtype";
+    public static final String REMOVE_AUTOMATION_TYPE = "removeautomationtype";
 
 
     public static final String GET_ACTIONS = "getactions";
