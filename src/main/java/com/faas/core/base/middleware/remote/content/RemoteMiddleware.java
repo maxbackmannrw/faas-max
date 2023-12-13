@@ -61,6 +61,26 @@ public class RemoteMiddleware {
     }
 
 
+    public RemoteWSModel getRemotesByType(long userId, String remoteType) {
+
+        RemoteWSModel response = new RemoteWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        List<RemoteWSDTO> remoteWSDTOS = remoteFramework.getRemotesByTypeService(userId,remoteType);
+        if (remoteWSDTOS != null){
+            response.setRemotes(remoteWSDTOS);
+        }
+
+        general.setOperation("getRemotesByType");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
     public RemoteWSModel getRemote(long userId, String remoteId) {
 
         RemoteWSModel response = new RemoteWSModel();

@@ -209,6 +209,7 @@ public class BaseRoute {
 
     public static final String GET_ALL_REMOTES = "getallremotes";
     public static final String GET_REMOTES_BY_BASE_TYPE = "getremotesbybasetype";
+    public static final String GET_REMOTES_BY_TYPE = "getremotesbytype";
     public static final String GET_REMOTE = "getremote";
     public static final String CREATE_REMOTE = "createremote";
     public static final String UPDATE_REMOTE = "updateremote";

@@ -15,4 +15,6 @@ public interface RemoteRepository extends MongoRepository<RemoteDBModel, String>
 
     List<RemoteDBModel>findByBaseType(String baseType);
 
+    List<RemoteDBModel>findByRemoteType(String remoteType);
+
 }

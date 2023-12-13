@@ -55,6 +55,17 @@ public class RemoteFramework {
     }
 
 
+    public List<RemoteWSDTO> getRemotesByTypeService(long userId, String remoteType) {
+
+        List<RemoteWSDTO>remoteWSDTOS = new ArrayList<>();
+        List<RemoteDBModel> remoteDBModels = remoteRepository.findByRemoteType(remoteType);
+        for (RemoteDBModel remoteDBModel : remoteDBModels) {
+            remoteWSDTOS.add(new RemoteWSDTO(remoteDBModel));
+        }
+        return remoteWSDTOS;
+    }
+
+
     public RemoteWSDTO getRemoteService(long userId, String remoteId) {
 
         Optional<RemoteDBModel> remoteDBModel = remoteRepository.findById(remoteId);

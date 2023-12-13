@@ -46,6 +46,19 @@ public class RemoteController {
     }
 
 
+    @RequestMapping(value = BaseRoute.GET_REMOTES_BY_TYPE, method = RequestMethod.POST)
+    public ResponseEntity<?> getRemotesByType(@RequestParam long userId,
+                                              @RequestParam String remoteType) {
+
+        RemoteWSModel response = remoteMiddleware.getRemotesByType(userId,remoteType);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
     @RequestMapping(value = BaseRoute.GET_REMOTE, method = RequestMethod.POST)
     public ResponseEntity<?> getRemote(@RequestParam long userId,
                                        @RequestParam String remoteId) {
