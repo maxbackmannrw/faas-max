@@ -44,7 +44,6 @@ public class ScenarioController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.CREATE_SCENARIO, method = RequestMethod.POST)
     public ResponseEntity<?> createScenario(@RequestParam long userId,
                                             @RequestParam String scenario,
@@ -57,7 +56,6 @@ public class ScenarioController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.UPDATE_SCENARIO, method = RequestMethod.POST)
     public ResponseEntity<?> updateScenario(@RequestParam long userId,
@@ -72,7 +70,6 @@ public class ScenarioController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.REMOVE_SCENARIO, method = RequestMethod.POST)
     public ResponseEntity<?> removeScenario(@RequestParam long userId,

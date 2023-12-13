@@ -67,6 +67,7 @@ public class ScenarioFramework {
         scenarioDBModel.setScenario(scenario);
         Optional<ScenarioTypeDBModel> scenarioTypeDBModel = scenarioTypeRepository.findById(typeId);
         if (scenarioTypeDBModel.isPresent()) {
+            scenarioDBModel.setTypeId(typeId);
             scenarioDBModel.setScenarioType(scenarioTypeDBModel.get().getScenarioType());
         }
         scenarioDBModel.setScenarioDatas(new ArrayList<>());
@@ -86,6 +87,7 @@ public class ScenarioFramework {
             scenarioDBModel.get().setScenario(scenario);
             Optional<ScenarioTypeDBModel> scenarioTypeDBModel = scenarioTypeRepository.findById(typeId);
             if (scenarioTypeDBModel.isPresent()) {
+                scenarioDBModel.get().setTypeId(typeId);
                 scenarioDBModel.get().setScenarioType(scenarioTypeDBModel.get().getScenarioType());
             }
             scenarioDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
