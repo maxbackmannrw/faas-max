@@ -2,9 +2,11 @@ package com.faas.core.base.framework.remote.content;
 
 import com.faas.core.base.model.db.remote.content.RemoteDBModel;
 import com.faas.core.base.model.db.remote.content.dao.RemoteDataDAO;
+import com.faas.core.base.model.db.remote.content.dao.RemoteUrlDAO;
 import com.faas.core.base.model.db.utility.DataTypeDBModel;
 import com.faas.core.base.model.ws.remote.content.dto.RemoteDataWSDTO;
 import com.faas.core.base.model.ws.remote.content.dto.RemoteDetailsWSDTO;
+import com.faas.core.base.model.ws.remote.content.dto.RemoteUrlWSDTO;
 import com.faas.core.base.repo.remote.content.RemoteRepository;
 import com.faas.core.base.repo.utility.DataTypeRepository;
 import com.faas.core.utils.config.AppUtils;
@@ -49,9 +51,9 @@ public class RemoteDetailsFramework {
 
         List<RemoteDataWSDTO>remoteDataWSDTOS = new ArrayList<>();
         Optional<RemoteDBModel> remoteDBModel = remoteRepository.findById(remoteId);
-        if (remoteDBModel.isPresent() && remoteDBModel.get().getDatas() != null){
-            for (int i=0;i<remoteDBModel.get().getDatas().size();i++){
-                remoteDataWSDTOS.add(new RemoteDataWSDTO(remoteDBModel.get().getDatas().get(i)));
+        if (remoteDBModel.isPresent() && remoteDBModel.get().getRemoteDatas() != null){
+            for (int i=0;i<remoteDBModel.get().getRemoteDatas().size();i++){
+                remoteDataWSDTOS.add(new RemoteDataWSDTO(remoteDBModel.get().getRemoteDatas().get(i)));
             }
         }
         return remoteDataWSDTOS;
@@ -60,10 +62,10 @@ public class RemoteDetailsFramework {
     public RemoteDataWSDTO getRemoteDataService(long userId,String remoteId,String dataId) {
 
         Optional<RemoteDBModel> remoteDBModel = remoteRepository.findById(remoteId);
-        if (remoteDBModel.isPresent() && remoteDBModel.get().getDatas() != null){
-            for (int i=0;i<remoteDBModel.get().getDatas().size();i++){
-                if (remoteDBModel.get().getDatas().get(i).getDataId().equalsIgnoreCase(dataId)){
-                    return new RemoteDataWSDTO(remoteDBModel.get().getDatas().get(i));
+        if (remoteDBModel.isPresent() && remoteDBModel.get().getRemoteDatas() != null){
+            for (int i=0;i<remoteDBModel.get().getRemoteDatas().size();i++){
+                if (remoteDBModel.get().getRemoteDatas().get(i).getDataId().equalsIgnoreCase(dataId)){
+                    return new RemoteDataWSDTO(remoteDBModel.get().getRemoteDatas().get(i));
                 }
             }
         }
@@ -76,12 +78,12 @@ public class RemoteDetailsFramework {
         Optional<DataTypeDBModel> dataTypeDBModel = dataTypeRepository.findById(typeId);
         if (remoteDBModel.isPresent() && dataTypeDBModel.isPresent()){
             RemoteDataDAO remoteDataDAO = remoteHelper.createRemoteDataDAO(appUtils.generateUUID(),dataTypeDBModel.get().getDataType(),value);
-            if (remoteDBModel.get().getDatas() == null){
+            if (remoteDBModel.get().getRemoteDatas() == null){
                 List<RemoteDataDAO> remoteDataDAOS = new ArrayList<>();
                 remoteDataDAOS.add(remoteDataDAO);
-                remoteDBModel.get().setDatas(remoteDataDAOS);
+                remoteDBModel.get().setRemoteDatas(remoteDataDAOS);
             }else {
-                remoteDBModel.get().getDatas().add(remoteDataDAO);
+                remoteDBModel.get().getRemoteDatas().add(remoteDataDAO);
             }
             remoteDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
             remoteRepository.save(remoteDBModel.get());
@@ -95,18 +97,18 @@ public class RemoteDetailsFramework {
 
         Optional<RemoteDBModel> remoteDBModel = remoteRepository.findById(remoteId);
         Optional<DataTypeDBModel> dataTypeDBModel = dataTypeRepository.findById(typeId);
-        if (remoteDBModel.isPresent() && remoteDBModel.get().getDatas() != null && dataTypeDBModel.isPresent()){
-            for (int i=0;i<remoteDBModel.get().getDatas().size();i++){
-                if (remoteDBModel.get().getDatas().get(i).getDataId().equalsIgnoreCase(dataId)){
+        if (remoteDBModel.isPresent() && remoteDBModel.get().getRemoteDatas() != null && dataTypeDBModel.isPresent()){
+            for (int i=0;i<remoteDBModel.get().getRemoteDatas().size();i++){
+                if (remoteDBModel.get().getRemoteDatas().get(i).getDataId().equalsIgnoreCase(dataId)){
 
-                    remoteDBModel.get().getDatas().get(i).setDataType(dataTypeDBModel.get().getDataType());
-                    remoteDBModel.get().getDatas().get(i).setValue(value);
-                    remoteDBModel.get().getDatas().get(i).setcDate(appUtils.getCurrentTimeStamp());
-                    remoteDBModel.get().getDatas().get(i).setStatus(1);
+                    remoteDBModel.get().getRemoteDatas().get(i).setDataType(dataTypeDBModel.get().getDataType());
+                    remoteDBModel.get().getRemoteDatas().get(i).setValue(value);
+                    remoteDBModel.get().getRemoteDatas().get(i).setcDate(appUtils.getCurrentTimeStamp());
+                    remoteDBModel.get().getRemoteDatas().get(i).setStatus(1);
                     remoteDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
                     remoteRepository.save(remoteDBModel.get());
 
-                    return new RemoteDataWSDTO(remoteDBModel.get().getDatas().get(i));
+                    return new RemoteDataWSDTO(remoteDBModel.get().getRemoteDatas().get(i));
                 }
             }
             return new RemoteDataWSDTO();
@@ -117,13 +119,12 @@ public class RemoteDetailsFramework {
     public RemoteDataWSDTO removeRemoteDataService(long userId, String remoteId, String dataId) {
 
         Optional<RemoteDBModel> remoteDBModel = remoteRepository.findById(remoteId);
-        if (remoteDBModel.isPresent() && remoteDBModel.get().getDatas() != null){
-            for (int i=0;i<remoteDBModel.get().getDatas().size();i++){
+        if (remoteDBModel.isPresent() && remoteDBModel.get().getRemoteDatas() != null){
+            for (int i=0;i<remoteDBModel.get().getRemoteDatas().size();i++){
+                if (remoteDBModel.get().getRemoteDatas().get(i).getDataId().equalsIgnoreCase(dataId)){
 
-                if (remoteDBModel.get().getDatas().get(i).getDataId().equalsIgnoreCase(dataId)){
-
-                    RemoteDataDAO remoteDataDAO = remoteDBModel.get().getDatas().get(i);
-                    remoteDBModel.get().getDatas().remove(remoteDataDAO);
+                    RemoteDataDAO remoteDataDAO = remoteDBModel.get().getRemoteDatas().get(i);
+                    remoteDBModel.get().getRemoteDatas().remove(remoteDataDAO);
                     remoteDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
                     remoteRepository.save(remoteDBModel.get());
 
@@ -135,6 +136,99 @@ public class RemoteDetailsFramework {
         return null;
     }
 
+
+
+    public List<RemoteUrlWSDTO> getRemoteUrlsService(long userId, String remoteId) {
+
+        List<RemoteUrlWSDTO> remoteUrlWSDTOS = new ArrayList<>();
+        Optional<RemoteDBModel> remoteDBModel = remoteRepository.findById(remoteId);
+        if (remoteDBModel.isPresent() && remoteDBModel.get().getRemoteUrls() != null){
+            for (int i=0;i<remoteDBModel.get().getRemoteUrls().size();i++){
+                remoteUrlWSDTOS.add(new RemoteUrlWSDTO(remoteDBModel.get().getRemoteUrls().get(i)));
+            }
+        }
+        return remoteUrlWSDTOS;
+    }
+
+    public RemoteUrlWSDTO getRemoteUrlService(long userId,String remoteId,String urlId) {
+
+        Optional<RemoteDBModel> remoteDBModel = remoteRepository.findById(remoteId);
+        if (remoteDBModel.isPresent() && remoteDBModel.get().getRemoteUrls() != null){
+            for (int i=0;i<remoteDBModel.get().getRemoteUrls().size();i++){
+                if (remoteDBModel.get().getRemoteUrls().get(i).getId().equalsIgnoreCase(urlId)){
+                    return new RemoteUrlWSDTO(remoteDBModel.get().getRemoteUrls().get(i));
+                }
+            }
+        }
+        return null;
+    }
+
+    public RemoteUrlWSDTO createRemoteUrlService(long userId,String remoteId,String remoteUrl,String urlType) {
+
+        Optional<RemoteDBModel> remoteDBModel = remoteRepository.findById(remoteId);
+        if (remoteDBModel.isPresent()){
+
+            RemoteUrlDAO remoteUrlDAO = new RemoteUrlDAO();
+            remoteUrlDAO.setId(appUtils.generateUUID());
+            remoteUrlDAO.setRemoteUrl(remoteUrl);
+            remoteUrlDAO.setUrlType(urlType);
+            remoteUrlDAO.setcDate(appUtils.getCurrentTimeStamp());
+            remoteUrlDAO.setStatus(1);
+
+            if (remoteDBModel.get().getRemoteUrls() == null){
+                List<RemoteUrlDAO>remoteUrlDAOS = new ArrayList<>();
+                remoteUrlDAOS.add(remoteUrlDAO);
+                remoteDBModel.get().setRemoteUrls(remoteUrlDAOS);
+            }else {
+                remoteDBModel.get().getRemoteUrls().add(remoteUrlDAO);
+            }
+            remoteDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
+            remoteRepository.save(remoteDBModel.get());
+
+            return new RemoteUrlWSDTO(remoteUrlDAO);
+        }
+        return null;
+    }
+
+    public RemoteUrlWSDTO updateRemoteUrlService(long userId,String remoteId,String urlId,String remoteUrl,String urlType) {
+
+        Optional<RemoteDBModel> remoteDBModel = remoteRepository.findById(remoteId);
+        if (remoteDBModel.isPresent() && remoteDBModel.get().getRemoteUrls() != null){
+            for (int i=0;i<remoteDBModel.get().getRemoteUrls().size();i++){
+                if (remoteDBModel.get().getRemoteUrls().get(i).getId().equalsIgnoreCase(urlId)){
+
+                    remoteDBModel.get().getRemoteUrls().get(i).setRemoteUrl(remoteUrl);
+                    remoteDBModel.get().getRemoteUrls().get(i).setUrlType(urlType);
+                    remoteDBModel.get().getRemoteUrls().get(i).setcDate(appUtils.getCurrentTimeStamp());
+                    remoteDBModel.get().getRemoteUrls().get(i).setStatus(1);
+                    remoteDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
+                    remoteRepository.save(remoteDBModel.get());
+
+                    return new RemoteUrlWSDTO(remoteDBModel.get().getRemoteUrls().get(i));
+                }
+            }
+        }
+        return null;
+    }
+
+    public RemoteUrlWSDTO removeRemoteUrlService(long userId,String remoteId,String urlId) {
+
+        Optional<RemoteDBModel> remoteDBModel = remoteRepository.findById(remoteId);
+        if (remoteDBModel.isPresent() && remoteDBModel.get().getRemoteUrls() != null){
+            for (int i=0;i<remoteDBModel.get().getRemoteUrls().size();i++){
+                if (remoteDBModel.get().getRemoteUrls().get(i).getId().equalsIgnoreCase(urlId)){
+
+                    RemoteUrlDAO remoteUrlDAO = remoteDBModel.get().getRemoteUrls().get(i);
+                    remoteDBModel.get().getRemoteUrls().remove(remoteUrlDAO);
+                    remoteDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
+                    remoteRepository.save(remoteDBModel.get());
+
+                    return new RemoteUrlWSDTO(remoteUrlDAO);
+                }
+            }
+        }
+        return null;
+    }
 
 
 }

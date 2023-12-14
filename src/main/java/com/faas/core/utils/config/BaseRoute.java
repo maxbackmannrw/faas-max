@@ -222,6 +222,12 @@ public class BaseRoute {
     public static final String UPDATE_REMOTE_DATA = "updateremotedata";
     public static final String REMOVE_REMOTE_DATA = "removeremotedata";
 
+    public static final String GET_REMOTE_URLS = "getremoteurls";
+    public static final String GET_REMOTE_URL = "getremoteurl";
+    public static final String CREATE_REMOTE_URL = "createremoteurl";
+    public static final String UPDATE_REMOTE_URL = "updateremoteurl";
+    public static final String REMOVE_REMOTE_URL = "removeremoteurl";
+
 
     public static final String GET_ALL_REMOTE_TYPES = "getallremotetypes";
     public static final String GET_REMOTE_TYPES_BY_BASE_TYPE = "getremotetypesbybasetype";
@@ -346,6 +352,11 @@ public class BaseRoute {
     public static final String UPDATE_PROCESS_DATA = "updateprocessdata";
     public static final String REMOVE_PROCESS_DATA = "removeprocessdata";
 
+    public static final String GET_PROCESS_REMOTES = "getprocessremotes";
+    public static final String GET_PROCESS_REMOTE = "getprocessremote";
+    public static final String CREATE_PROCESS_REMOTE = "createprocessremote";
+    public static final String UPDATE_PROCESS_REMOTE = "updateprocessremote";
+    public static final String REMOVE_PROCESS_REMOTE = "removeprocessremote";
 
 
     public static final String GET_PROCESS_SCRIPTS = "getprocessscripts";

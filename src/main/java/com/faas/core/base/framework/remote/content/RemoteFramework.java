@@ -76,8 +76,7 @@ public class RemoteFramework {
     }
 
 
-    public RemoteWSDTO createRemoteService(long userId, String remote,String remoteDesc,String remoteUrl,String remoteModel,String remoteVersion,long typeId) {
-
+    public RemoteWSDTO createRemoteService(long userId, String remote,String remoteDesc,String remoteModel,String remoteVersion,long typeId) {
 
         Optional<RemoteTypeDBModel> remoteTypeDBModel = remoteTypeRepository.findById(typeId);
         if (remoteTypeDBModel.isPresent()) {
@@ -85,10 +84,10 @@ public class RemoteFramework {
             RemoteDBModel remoteDBModel = new RemoteDBModel();
             remoteDBModel.setRemote(remote);
             remoteDBModel.setRemoteDesc(remoteDesc);
-            remoteDBModel.setRemoteUrl(remoteUrl);
             remoteDBModel.setRemoteModel(remoteModel);
             remoteDBModel.setRemoteVersion(remoteVersion);
-            remoteDBModel.setDatas(new ArrayList<>());
+            remoteDBModel.setRemoteDatas(new ArrayList<>());
+            remoteDBModel.setRemoteUrls(new ArrayList<>());
             remoteDBModel.setTypeId(typeId);
             remoteDBModel.setRemoteType(remoteTypeDBModel.get().getRemoteType());
             remoteDBModel.setBaseType(remoteTypeDBModel.get().getBaseType());
@@ -102,14 +101,13 @@ public class RemoteFramework {
     }
 
 
-    public RemoteWSDTO updateRemoteService(long userId, String remoteId,String remote,String remoteDesc,String remoteUrl,String remoteModel,String remoteVersion) {
+    public RemoteWSDTO updateRemoteService(long userId, String remoteId,String remote,String remoteDesc,String remoteModel,String remoteVersion) {
 
         Optional<RemoteDBModel>remoteDBModel = remoteRepository.findById(remoteId);
         if (remoteDBModel.isPresent()) {
 
             remoteDBModel.get().setRemote(remote);
             remoteDBModel.get().setRemoteDesc(remoteDesc);
-            remoteDBModel.get().setRemoteUrl(remoteUrl);
             remoteDBModel.get().setRemoteModel(remoteModel);
             remoteDBModel.get().setRemoteVersion(remoteVersion);
             remoteDBModel.get().setuDate(appUtils.getCurrentTimeStamp());

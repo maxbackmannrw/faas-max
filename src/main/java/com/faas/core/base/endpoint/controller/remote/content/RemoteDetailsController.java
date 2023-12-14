@@ -4,6 +4,7 @@ import com.faas.core.base.middleware.remote.content.RemoteDetailsMiddleware;
 import com.faas.core.base.model.ws.remote.client.ClientRemoteListWSModel;
 import com.faas.core.base.model.ws.remote.content.RemoteDataWSModel;
 import com.faas.core.base.model.ws.remote.content.RemoteDetailsWSModel;
+import com.faas.core.base.model.ws.remote.content.RemoteUrlWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -103,5 +104,73 @@ public class RemoteDetailsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+
+
+    @RequestMapping(value = BaseRoute.GET_REMOTE_URLS, method = RequestMethod.POST)
+    public ResponseEntity<?> getRemoteUrls(@RequestParam long userId,
+                                           @RequestParam String remoteId) {
+
+        RemoteUrlWSModel response = remoteDetailsMiddleware.getRemoteUrls(userId,remoteId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+    @RequestMapping(value = BaseRoute.GET_REMOTE_URL, method = RequestMethod.POST)
+    public ResponseEntity<?> getRemoteUrl(@RequestParam long userId,
+                                          @RequestParam String remoteId,
+                                          @RequestParam String urlId) {
+
+        RemoteUrlWSModel response = remoteDetailsMiddleware.getRemoteUrl(userId,remoteId,urlId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+    @RequestMapping(value = BaseRoute.CREATE_REMOTE_URL, method = RequestMethod.POST)
+    public ResponseEntity<?> createRemoteUrl(@RequestParam long userId,
+                                             @RequestParam String remoteId,
+                                             @RequestParam String remoteUrl,
+                                             @RequestParam String urlType) {
+
+        RemoteUrlWSModel response = remoteDetailsMiddleware.createRemoteUrl(userId,remoteId,remoteUrl,urlType);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+    @RequestMapping(value = BaseRoute.UPDATE_REMOTE_URL, method = RequestMethod.POST)
+    public ResponseEntity<?> updateRemoteUrl(@RequestParam long userId,
+                                             @RequestParam String remoteId,
+                                             @RequestParam String urlId,
+                                             @RequestParam String remoteUrl,
+                                             @RequestParam String urlType) {
+
+        RemoteUrlWSModel response = remoteDetailsMiddleware.updateRemoteUrl(userId,remoteId,urlId,remoteUrl,urlType);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+    @RequestMapping(value = BaseRoute.REMOVE_REMOTE_URL, method = RequestMethod.POST)
+    public ResponseEntity<?> removeRemoteUrl(@RequestParam long userId,
+                                             @RequestParam String remoteId,
+                                             @RequestParam String urlId) {
+
+        RemoteUrlWSModel response = remoteDetailsMiddleware.removeRemoteUrl(userId,remoteId,urlId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
 
 }
