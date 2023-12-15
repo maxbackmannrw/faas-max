@@ -189,7 +189,7 @@ public class ProcessFlowFramework {
         Optional<RemoteDBModel> remoteDBModel = remoteRepository.findById(remoteId);
         if (processDBModel.isPresent() && processDBModel.get().getProcessFlow() != null && remoteDBModel.isPresent()) {
 
-            ProcessRemoteDAO processRemoteDAO = remoteHelper.createFlowProcessRemoteDAO(processDBModel.get(),remoteDBModel.get());
+            ProcessRemoteDAO processRemoteDAO = remoteHelper.createFlowProcessRemoteDAO(remoteDBModel.get());
             processDBModel.get().getProcessFlow().getFlowRemotes().add(processRemoteDAO);
             processDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
             processRepository.save(processDBModel.get());

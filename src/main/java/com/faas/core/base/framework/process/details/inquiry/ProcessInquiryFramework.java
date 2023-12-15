@@ -190,7 +190,7 @@ public class ProcessInquiryFramework {
         Optional<RemoteDBModel> remoteDBModel = remoteRepository.findById(remoteId);
         if (processDBModel.isPresent() && processDBModel.get().getProcessInquiry() != null && remoteDBModel.isPresent()) {
 
-            ProcessRemoteDAO processRemoteDAO = remoteHelper.createInquiryProcessRemoteDAO(processDBModel.get(),remoteDBModel.get());
+            ProcessRemoteDAO processRemoteDAO = remoteHelper.createInquiryProcessRemoteDAO(remoteDBModel.get());
             processDBModel.get().getProcessInquiry().getInquiryRemotes().add(processRemoteDAO);
             processDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
             processRepository.save(processDBModel.get());

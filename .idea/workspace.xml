@@ -5,34 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/process/details/flow/ProcessFlowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/process/details/flow/ProcessFlowController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/process/details/inquiry/ProcessInquiryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/process/details/inquiry/ProcessInquiryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/content/ProcessFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/content/ProcessFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/content/ProcessDetailsFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/content/ProcessDetailsFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/flow/ProcessFlowFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/flow/ProcessFlowFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/inquiry/ProcessInquiryFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/inquiry/ProcessInquiryFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/remote/content/RemoteDetailsFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/remote/content/RemoteDetailsFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/flow/ProcessFlowMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/flow/ProcessFlowMiddleware.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/inquiry/ProcessInquiryMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/inquiry/ProcessInquiryMiddleware.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/process/content/ProcessDBModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/process/content/ProcessDBModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/process/content/dao/ProcessRemoteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/process/content/dao/ProcessRemoteDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/process/details/flow/ProcessFlowDBModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/process/content/dao/ProcessFlowDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/process/details/flow/dao/ProcessFlowDataDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/process/details/inquiry/ProcessInquiryDBModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/process/content/dao/ProcessInquiryDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/process/details/inquiry/dao/ProcessInquiryDataDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/content/dto/ProcessWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/content/dto/ProcessWSDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/content/dto/ProcessDetailsWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/content/dto/ProcessDetailsWSDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/flow/ProcessFlowDataWSModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/flow/dto/ProcessFlowDataWSDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/flow/dto/ProcessFlowWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/flow/dto/ProcessFlowWSDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/inquiry/ProcessInquiryDataWSModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/inquiry/dto/ProcessInquiryDataWSDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/inquiry/dto/ProcessInquiryWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/inquiry/dto/ProcessInquiryWSDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/repo/process/details/flow/ProcessFlowRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/repo/process/details/inquiry/ProcessInquiryRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/config/BaseRoute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/config/BaseRoute.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/helpers/ProcessHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/helpers/ProcessHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/helpers/RemoteHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/helpers/RemoteHelper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -556,15 +528,7 @@
       <workItem from="1702579879179" duration="966000" />
       <workItem from="1702586228488" duration="1942000" />
       <workItem from="1702633314110" duration="6889000" />
-      <workItem from="1702647155112" duration="915000" />
-    </task>
-    <task id="LOCAL-00437" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1700338075134</created>
-      <option name="number" value="00437" />
-      <option name="presentableId" value="LOCAL-00437" />
-      <option name="project" value="LOCAL" />
-      <updated>1700338075134</updated>
+      <workItem from="1702647155112" duration="1493000" />
     </task>
     <task id="LOCAL-00438" summary="almost finish">
       <option name="closed" value="true" />
@@ -950,7 +914,15 @@
       <option name="project" value="LOCAL" />
       <updated>1702561055832</updated>
     </task>
-    <option name="localTasksCounter" value="486" />
+    <task id="LOCAL-00486" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1702648209405</created>
+      <option name="number" value="00486" />
+      <option name="presentableId" value="LOCAL-00486" />
+      <option name="project" value="LOCAL" />
+      <updated>1702648209405</updated>
+    </task>
+    <option name="localTasksCounter" value="487" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
