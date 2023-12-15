@@ -79,6 +79,7 @@ public class ProcessScenarioFramework {
             processScenarioDBModel.setProcessId(processId);
             processScenarioDBModel.setScenarioId(scenarioId);
             processScenarioDBModel.setScenario(scenarioDBModel.get().getScenario());
+            processScenarioDBModel.setTypeId(scenarioDBModel.get().getTypeId());
             processScenarioDBModel.setScenarioType(scenarioDBModel.get().getScenarioType());
             if (scenarioDBModel.get().getScenarioDatas() != null){
                 processScenarioDBModel.setScenarioDatas(scenarioDBModel.get().getScenarioDatas());
@@ -90,7 +91,6 @@ public class ProcessScenarioFramework {
             }else {
                 processScenarioDBModel.setScenarioElements(new ArrayList<>());
             }
-            processScenarioDBModel.setScenarioDatas(new ArrayList<>());
             processScenarioDBModel.setOrder(order);
             processScenarioDBModel.setuDate(appUtils.getCurrentTimeStamp());
             processScenarioDBModel.setcDate(appUtils.getCurrentTimeStamp());

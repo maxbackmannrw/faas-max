@@ -18,8 +18,8 @@ public class ProcessScenarioDBModel {
     private String scenario;
     private long typeId;
     private String scenarioType;
-    private List<ScenarioElement> scenarioElements;
     private List<ScenarioDataDAO> scenarioDatas;
+    private List<ScenarioElement> scenarioElements;
     private int order;
     private long uDate;
     private long cDate;
@@ -28,15 +28,15 @@ public class ProcessScenarioDBModel {
     public ProcessScenarioDBModel() {
     }
 
-    public ProcessScenarioDBModel(String id, String processId, String scenarioId, String scenario, long typeId, String scenarioType, List<ScenarioElement> scenarioElements, List<ScenarioDataDAO> scenarioDatas, int order, long uDate, long cDate, int status) {
+    public ProcessScenarioDBModel(String id, String processId, String scenarioId, String scenario, long typeId, String scenarioType, List<ScenarioDataDAO> scenarioDatas, List<ScenarioElement> scenarioElements, int order, long uDate, long cDate, int status) {
         this.id = id;
         this.processId = processId;
         this.scenarioId = scenarioId;
         this.scenario = scenario;
         this.typeId = typeId;
         this.scenarioType = scenarioType;
-        this.scenarioElements = scenarioElements;
         this.scenarioDatas = scenarioDatas;
+        this.scenarioElements = scenarioElements;
         this.order = order;
         this.uDate = uDate;
         this.cDate = cDate;
@@ -91,20 +91,20 @@ public class ProcessScenarioDBModel {
         this.scenarioType = scenarioType;
     }
 
-    public List<ScenarioElement> getScenarioElements() {
-        return scenarioElements;
-    }
-
-    public void setScenarioElements(List<ScenarioElement> scenarioElements) {
-        this.scenarioElements = scenarioElements;
-    }
-
     public List<ScenarioDataDAO> getScenarioDatas() {
         return scenarioDatas;
     }
 
     public void setScenarioDatas(List<ScenarioDataDAO> scenarioDatas) {
         this.scenarioDatas = scenarioDatas;
+    }
+
+    public List<ScenarioElement> getScenarioElements() {
+        return scenarioElements;
+    }
+
+    public void setScenarioElements(List<ScenarioElement> scenarioElements) {
+        this.scenarioElements = scenarioElements;
     }
 
     public int getOrder() {
