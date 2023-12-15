@@ -76,6 +76,7 @@ public class ProcessScenarioFramework {
         if (!processScenarioRepository.existsByProcessIdAndScenarioId(processId,scenarioId) && processDBModel.isPresent() && scenarioDBModel.isPresent()) {
 
             ProcessScenarioDBModel processScenarioDBModel = new ProcessScenarioDBModel();
+
             processScenarioDBModel.setProcessId(processId);
             processScenarioDBModel.setScenarioId(scenarioId);
             processScenarioDBModel.setScenario(scenarioDBModel.get().getScenario());

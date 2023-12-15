@@ -124,12 +124,12 @@ public class ProcessFlowFramework {
                     processDBModel.get().getProcessFlow().getFlowDatas().get(i).setValue(value);
                     processDBModel.get().getProcessFlow().getFlowDatas().get(i).setcDate(appUtils.getCurrentTimeStamp());
                     processDBModel.get().getProcessFlow().getFlowDatas().get(i).setStatus(1);
+                    processDBModel.get().getProcessFlow().setuDate(appUtils.getCurrentTimeStamp());
 
-                    processDBModel.get().getProcessInquiry().setuDate(appUtils.getCurrentTimeStamp());
                     processDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
                     processRepository.save(processDBModel.get());
 
-                    return new ProcessDataWSDTO(processDBModel.get().getProcessInquiry().getInquiryDatas().get(i));
+                    return new ProcessDataWSDTO(processDBModel.get().getProcessFlow().getFlowDatas().get(i));
                 }
             }
         }
@@ -145,8 +145,8 @@ public class ProcessFlowFramework {
 
                     ProcessDataDAO processDataDAO = processDBModel.get().getProcessFlow().getFlowDatas().get(i);
                     processDBModel.get().getProcessFlow().getFlowDatas().remove(processDataDAO);
+                    processDBModel.get().getProcessFlow().setuDate(appUtils.getCurrentTimeStamp());
 
-                    processDBModel.get().getProcessInquiry().setuDate(appUtils.getCurrentTimeStamp());
                     processDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
                     processRepository.save(processDBModel.get());
 
@@ -191,6 +191,7 @@ public class ProcessFlowFramework {
 
             ProcessRemoteDAO processRemoteDAO = remoteHelper.createFlowProcessRemoteDAO(remoteDBModel.get());
             processDBModel.get().getProcessFlow().getFlowRemotes().add(processRemoteDAO);
+
             processDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
             processRepository.save(processDBModel.get());
 
@@ -209,6 +210,7 @@ public class ProcessFlowFramework {
                     processDBModel.get().getProcessFlow().getFlowRemotes().get(i).setRemoteState(remoteState);
                     processDBModel.get().getProcessFlow().getFlowRemotes().get(i).setuDate(appUtils.getCurrentTimeStamp());
                     processDBModel.get().getProcessFlow().setuDate(appUtils.getCurrentTimeStamp());
+
                     processDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
                     processRepository.save(processDBModel.get());
 
@@ -229,6 +231,7 @@ public class ProcessFlowFramework {
                     ProcessRemoteDAO processRemoteDAO =processDBModel.get().getProcessFlow().getFlowRemotes().get(i);
                     processDBModel.get().getProcessFlow().getFlowRemotes().remove(processRemoteDAO);
                     processDBModel.get().getProcessFlow().setuDate(appUtils.getCurrentTimeStamp());
+
                     processDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
                     processRepository.save(processDBModel.get());
 
