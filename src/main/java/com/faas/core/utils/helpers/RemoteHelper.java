@@ -1,8 +1,11 @@
 package com.faas.core.utils.helpers;
 
 import com.faas.core.base.model.db.client.content.ClientDBModel;
+import com.faas.core.base.model.db.process.content.ProcessDBModel;
+import com.faas.core.base.model.db.process.content.dao.ProcessRemoteDAO;
 import com.faas.core.base.model.db.remote.client.ClientRemoteDBModel;
 import com.faas.core.base.model.db.remote.client.dao.ClientRemoteDAO;
+import com.faas.core.base.model.db.remote.content.RemoteDBModel;
 import com.faas.core.base.model.db.remote.content.dao.RemoteDataDAO;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
 import com.faas.core.base.model.ws.remote.client.dto.ClientRemoteListWSDTO;
@@ -35,6 +38,21 @@ public class RemoteHelper {
     @Autowired
     AppUtils appUtils;
 
+
+    public ProcessRemoteDAO createProcessRemoteDAO(ProcessDBModel processDBModel, RemoteDBModel remoteDBModel){
+
+        return null;
+    }
+
+    public ProcessRemoteDAO createFlowProcessRemoteDAO(ProcessDBModel processDBModel, RemoteDBModel remoteDBModel){
+
+        return null;
+    }
+
+    public ProcessRemoteDAO createInquiryProcessRemoteDAO(ProcessDBModel processDBModel, RemoteDBModel remoteDBModel){
+
+        return null;
+    }
 
     public ClientRemoteListWSDTO getRemoteListWSDTO(Page<ClientRemoteDBModel> remoteModelPage){
 
@@ -71,18 +89,6 @@ public class RemoteHelper {
             return clientRemoteWSDTO;
         }
         return null;
-    }
-
-
-    public ClientRemoteDAO createRemoteDeviceDAO(String deviceBrand, String deviceModel, String deviceOS, String deviceUrl){
-
-        ClientRemoteDAO clientRemoteDAO = new ClientRemoteDAO();
-
-        clientRemoteDAO.setuDate(appUtils.getCurrentTimeStamp());
-        clientRemoteDAO.setcDate(appUtils.getCurrentTimeStamp());
-        clientRemoteDAO.setStatus(1);
-
-        return clientRemoteDAO;
     }
 
 

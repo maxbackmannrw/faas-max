@@ -2,6 +2,8 @@ package com.faas.core.base.framework.process.details.content;
 
 import com.faas.core.base.model.db.process.content.ProcessDBModel;
 import com.faas.core.base.model.db.process.content.dao.ProcessDataDAO;
+import com.faas.core.base.model.db.process.content.dao.ProcessRemoteDAO;
+import com.faas.core.base.model.db.remote.content.RemoteDBModel;
 import com.faas.core.base.model.db.utility.DataTypeDBModel;
 import com.faas.core.base.model.ws.process.details.content.dto.ProcessDataWSDTO;
 import com.faas.core.base.model.ws.process.details.content.dto.ProcessDetailsWSDTO;
@@ -11,6 +13,7 @@ import com.faas.core.base.repo.remote.content.RemoteRepository;
 import com.faas.core.base.repo.utility.DataTypeRepository;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.ProcessHelper;
+import com.faas.core.utils.helpers.RemoteHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -21,9 +24,11 @@ import java.util.Optional;
 @Component
 public class ProcessDetailsFramework {
 
-
     @Autowired
     ProcessHelper processHelper;
+
+    @Autowired
+    RemoteHelper remoteHelper;
 
     @Autowired
     ProcessRepository processRepository;
@@ -116,15 +121,14 @@ public class ProcessDetailsFramework {
 
     public List<ProcessRemoteWSDTO> getProcessRemotesService(long userId, String processId) {
 
+        List<ProcessRemoteWSDTO> processRemoteWSDTOS = new ArrayList<>();
         Optional<ProcessDBModel> processDBModel = processRepository.findById(processId);
         if (processDBModel.isPresent() && processDBModel.get().getProcessRemotes() != null) {
-            List<ProcessRemoteWSDTO> processRemoteWSDTOS = new ArrayList<>();
             for (int i=0;i<processDBModel.get().getProcessRemotes().size();i++){
                 processRemoteWSDTOS.add(new ProcessRemoteWSDTO(processDBModel.get().getProcessRemotes().get(i)));
             }
-            return processRemoteWSDTOS;
         }
-        return null;
+        return processRemoteWSDTOS;
     }
 
     public ProcessRemoteWSDTO getProcessRemoteService(long userId,String processId,String processRemoteId) {
@@ -132,7 +136,9 @@ public class ProcessDetailsFramework {
         Optional<ProcessDBModel> processDBModel = processRepository.findById(processId);
         if (processDBModel.isPresent() && processDBModel.get().getProcessRemotes() != null) {
             for (int i=0;i<processDBModel.get().getProcessRemotes().size();i++){
-
+                if (processDBModel.get().getProcessRemotes().get(i).getId().equalsIgnoreCase(processRemoteId)){
+                    return new ProcessRemoteWSDTO(processDBModel.get().getProcessRemotes().get(i));
+                }
             }
         }
         return null;
@@ -140,18 +146,55 @@ public class ProcessDetailsFramework {
 
     public ProcessRemoteWSDTO createProcessRemoteService(long userId,String processId,String remoteId) {
 
+        Optional<ProcessDBModel> processDBModel = processRepository.findById(processId);
+        Optional<RemoteDBModel> remoteDBModel = remoteRepository.findById(remoteId);
+        if (processDBModel.isPresent() && remoteDBModel.isPresent()) {
 
+            ProcessRemoteDAO processRemoteDAO = remoteHelper.createProcessRemoteDAO(processDBModel.get(),remoteDBModel.get());
+            processDBModel.get().getProcessRemotes().add(processRemoteDAO);
+            processDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
+            processRepository.save(processDBModel.get());
+
+            return new ProcessRemoteWSDTO(processRemoteDAO);
+        }
         return null;
     }
 
     public ProcessRemoteWSDTO updateProcessRemoteService(long userId,String processId,String processRemoteId,String remoteState) {
 
+        Optional<ProcessDBModel> processDBModel = processRepository.findById(processId);
+        if (processDBModel.isPresent() && processDBModel.get().getProcessRemotes() != null) {
+            for (int i=0;i<processDBModel.get().getProcessRemotes().size();i++){
+                if (processDBModel.get().getProcessRemotes().get(i).getId().equalsIgnoreCase(processRemoteId)){
 
+                    processDBModel.get().getProcessRemotes().get(i).setRemoteState(remoteState);
+                    processDBModel.get().getProcessRemotes().get(i).setuDate(appUtils.getCurrentTimeStamp());
+                    processDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
+                    processRepository.save(processDBModel.get());
+
+                    return new ProcessRemoteWSDTO(processDBModel.get().getProcessRemotes().get(i));
+                }
+            }
+        }
         return null;
     }
 
     public ProcessRemoteWSDTO removeProcessRemoteService(long userId,String processId,String processRemoteId) {
 
+        Optional<ProcessDBModel> processDBModel = processRepository.findById(processId);
+        if (processDBModel.isPresent() && processDBModel.get().getProcessRemotes() != null) {
+            for (int i=0;i<processDBModel.get().getProcessRemotes().size();i++){
+                if (processDBModel.get().getProcessRemotes().get(i).getId().equalsIgnoreCase(processRemoteId)){
+
+                    ProcessRemoteDAO processRemoteDAO = processDBModel.get().getProcessRemotes().get(i);
+                    processDBModel.get().getProcessRemotes().remove(processRemoteDAO);
+                    processDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
+                    processRepository.save(processDBModel.get());
+
+                    return new ProcessRemoteWSDTO(processRemoteDAO);
+                }
+            }
+        }
         return null;
     }
 

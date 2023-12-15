@@ -14,26 +14,20 @@ import java.util.List;
 public class ProcessDetailsWSDTO {
 
     private ProcessDBModel process;
-    private ProcessFlowWSDTO processFlow;
-    private ProcessInquiryWSDTO processInquiry;
     private ProcessTempWSDTO processTemps;
     private ProcessChannelWSDTO processChannels;
     private ProcessTriggerWSDTO processTrigger;
     private List<ProcessScenarioWSDTO> processScenarios;
-    private List<ProcessAssetWSDTO>processAssets;
 
     public ProcessDetailsWSDTO() {
     }
 
-    public ProcessDetailsWSDTO(ProcessDBModel process, ProcessFlowWSDTO processFlow, ProcessInquiryWSDTO processInquiry, ProcessTempWSDTO processTemps, ProcessChannelWSDTO processChannels, ProcessTriggerWSDTO processTrigger, List<ProcessScenarioWSDTO> processScenarios, List<ProcessAssetWSDTO> processAssets) {
+    public ProcessDetailsWSDTO(ProcessDBModel process, ProcessTempWSDTO processTemps, ProcessChannelWSDTO processChannels, ProcessTriggerWSDTO processTrigger, List<ProcessScenarioWSDTO> processScenarios) {
         this.process = process;
-        this.processFlow = processFlow;
-        this.processInquiry = processInquiry;
         this.processTemps = processTemps;
         this.processChannels = processChannels;
         this.processTrigger = processTrigger;
         this.processScenarios = processScenarios;
-        this.processAssets = processAssets;
     }
 
     public ProcessDBModel getProcess() {
@@ -42,22 +36,6 @@ public class ProcessDetailsWSDTO {
 
     public void setProcess(ProcessDBModel process) {
         this.process = process;
-    }
-
-    public ProcessFlowWSDTO getProcessFlow() {
-        return processFlow;
-    }
-
-    public void setProcessFlow(ProcessFlowWSDTO processFlow) {
-        this.processFlow = processFlow;
-    }
-
-    public ProcessInquiryWSDTO getProcessInquiry() {
-        return processInquiry;
-    }
-
-    public void setProcessInquiry(ProcessInquiryWSDTO processInquiry) {
-        this.processInquiry = processInquiry;
     }
 
     public ProcessTempWSDTO getProcessTemps() {
@@ -90,13 +68,5 @@ public class ProcessDetailsWSDTO {
 
     public void setProcessScenarios(List<ProcessScenarioWSDTO> processScenarios) {
         this.processScenarios = processScenarios;
-    }
-
-    public List<ProcessAssetWSDTO> getProcessAssets() {
-        return processAssets;
-    }
-
-    public void setProcessAssets(List<ProcessAssetWSDTO> processAssets) {
-        this.processAssets = processAssets;
     }
 }

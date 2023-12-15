@@ -1,23 +1,23 @@
 package com.faas.core.base.model.ws.process.details.flow.dto;
 
-import com.faas.core.base.model.db.process.details.flow.ProcessFlowDBModel;
+import com.faas.core.base.model.db.process.content.dao.ProcessFlowDAO;
 
 public class ProcessFlowWSDTO {
 
-    private ProcessFlowDBModel processFlow;
+    private ProcessFlowDAO processFlow;
 
     public ProcessFlowWSDTO() {
     }
 
-    public ProcessFlowWSDTO(ProcessFlowDBModel processFlow) {
+    public ProcessFlowWSDTO(ProcessFlowDAO processFlow) {
         this.processFlow = processFlow;
     }
 
-    public ProcessFlowDBModel getProcessFlow() {
+    public ProcessFlowDAO getProcessFlow() {
         return processFlow;
     }
 
-    public void setProcessFlow(ProcessFlowDBModel processFlow) {
+    public void setProcessFlow(ProcessFlowDAO processFlow) {
         this.processFlow = processFlow;
     }
 }

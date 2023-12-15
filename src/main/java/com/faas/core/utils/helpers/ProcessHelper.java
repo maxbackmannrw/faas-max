@@ -1,13 +1,13 @@
 package com.faas.core.utils.helpers;
 
 import com.faas.core.base.model.db.process.content.ProcessDBModel;
+import com.faas.core.base.model.db.process.content.dao.ProcessFlowDAO;
+import com.faas.core.base.model.db.process.content.dao.ProcessInquiryDAO;
 import com.faas.core.base.model.db.process.details.channel.content.*;
 import com.faas.core.base.model.db.process.details.channel.temp.ProcessEmailTempDBModel;
 import com.faas.core.base.model.db.process.details.channel.temp.ProcessPushTempDBModel;
 import com.faas.core.base.model.db.process.details.channel.temp.ProcessSmsMessageTempDBModel;
 import com.faas.core.base.model.db.process.details.channel.temp.ProcessWappMessageTempDBModel;
-import com.faas.core.base.model.db.process.details.flow.ProcessFlowDBModel;
-import com.faas.core.base.model.db.process.details.inquiry.ProcessInquiryDBModel;
 import com.faas.core.base.model.db.process.details.scenario.ProcessScenarioDBModel;
 import com.faas.core.base.model.db.process.details.trigger.*;
 import com.faas.core.base.model.db.scenario.content.ScenarioDBModel;
@@ -16,7 +16,6 @@ import com.faas.core.base.model.ws.process.details.channel.content.dto.*;
 import com.faas.core.base.model.ws.process.details.channel.temp.dto.*;
 import com.faas.core.base.model.ws.process.details.content.dto.ProcessDetailsWSDTO;
 import com.faas.core.base.model.ws.process.details.flow.dto.ProcessFlowWSDTO;
-import com.faas.core.base.model.ws.process.details.inquiry.dto.ProcessInquiryWSDTO;
 import com.faas.core.base.model.ws.process.details.scenario.dto.ProcessScenarioWSDTO;
 import com.faas.core.base.model.ws.process.details.trigger.dto.*;
 import com.faas.core.base.repo.process.details.channel.content.*;
@@ -24,12 +23,9 @@ import com.faas.core.base.repo.process.details.channel.temp.ProcessEmailTempRepo
 import com.faas.core.base.repo.process.details.channel.temp.ProcessPushTempRepository;
 import com.faas.core.base.repo.process.details.channel.temp.ProcessSmsMessageTempRepository;
 import com.faas.core.base.repo.process.details.channel.temp.ProcessWappMessageTempRepository;
-import com.faas.core.base.repo.process.details.flow.ProcessFlowRepository;
-import com.faas.core.base.repo.process.details.inquiry.ProcessInquiryRepository;
 import com.faas.core.base.repo.process.details.scenario.ProcessScenarioRepository;
 import com.faas.core.base.repo.process.details.trigger.*;
 import com.faas.core.base.repo.scenario.content.ScenarioRepository;
-import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -77,12 +73,6 @@ public class ProcessHelper {
     ProcessScenarioRepository processScenarioRepository;
 
     @Autowired
-    ProcessInquiryRepository processInquiryRepository;
-
-    @Autowired
-    ProcessFlowRepository processFlowRepository;
-
-    @Autowired
     AiTriggerRepository aiTriggerRepository;
 
     @Autowired
@@ -108,18 +98,6 @@ public class ProcessHelper {
 
         ProcessWSDTO processWSDTO = new ProcessWSDTO();
         processWSDTO.setProcess(processDBModel);
-        if (processDBModel.getProcessType().equalsIgnoreCase(AppConstant.INQUIRY_PROCESS)){
-            List<ProcessInquiryDBModel> processInquiryDBModels = processInquiryRepository.findByProcessId(processDBModel.getId());
-            if (!processInquiryDBModels.isEmpty()){
-                processWSDTO.setProcessInquiry(processInquiryDBModels.get(0));
-            }
-        }
-        if (processDBModel.getProcessType().equalsIgnoreCase(AppConstant.AUTOMATIC_PROCESS)){
-            List<ProcessFlowDBModel> processFlowDBModels = processFlowRepository.findByProcessId(processDBModel.getId());
-            if (!processFlowDBModels.isEmpty()){
-                processWSDTO.setProcessFlow(processFlowDBModels.get(0));
-            }
-        }
         return processWSDTO;
     }
 
@@ -128,77 +106,42 @@ public class ProcessHelper {
 
         ProcessDetailsWSDTO processDetailsWSDTO = new ProcessDetailsWSDTO();
         processDetailsWSDTO.setProcess(processDBModel);
-        if (processDBModel.getProcessCategory().equalsIgnoreCase(AppConstant.INQUIRY_PROCESS)){
-            processDetailsWSDTO.setProcessInquiry(createProcessInquiryWSDTO(processDBModel));
-        }
-        if (processDBModel.getProcessCategory().equalsIgnoreCase(AppConstant.AUTOMATIC_PROCESS)){
-            processDetailsWSDTO.setProcessFlow(createProcessFlowWSDTO(processDBModel));
-        }
         processDetailsWSDTO.setProcessTemps(createProcessTempWSDTO(processDBModel.getId()));
         processDetailsWSDTO.setProcessChannels(createProcessChannelWSDTO(processDBModel.getId()));
         processDetailsWSDTO.setProcessTrigger(createProcessTriggersWSDTO(processDBModel.getId()));
         processDetailsWSDTO.setProcessScenarios(createProcessScenarioWSDTOS(processDBModel));
-        processDetailsWSDTO.setProcessAssets(new ArrayList<>());
 
         return processDetailsWSDTO;
     }
 
 
-    public ProcessInquiryWSDTO createProcessInquiryWSDTO(ProcessDBModel processDBModel){
+    public ProcessInquiryDAO createProcessInquiryHelper(String processInquiry){
 
-        List<ProcessInquiryDBModel> processInquiryDBModels = processInquiryRepository.findByProcessId(processDBModel.getId());
-        if (!processInquiryDBModels.isEmpty()){
-            return new ProcessInquiryWSDTO(processInquiryDBModels.get(0));
-        }
-        return null;
-    }
+        ProcessInquiryDAO processInquiryDAO = new ProcessInquiryDAO();
+        processInquiryDAO.setInquiryId(appUtils.generateUUID());
+        processInquiryDAO.setProcessInquiry(processInquiry);
+        processInquiryDAO.setInquiryRemotes(new ArrayList<>());
+        processInquiryDAO.setInquiryDatas(new ArrayList<>());
+        processInquiryDAO.setuDate(appUtils.getCurrentTimeStamp());
+        processInquiryDAO.setcDate(appUtils.getCurrentTimeStamp());
+        processInquiryDAO.setStatus(1);
 
-    public ProcessInquiryDBModel createProcessInquiryHelper(ProcessDBModel processDBModel){
-
-        List<ProcessInquiryDBModel> processInquiryDBModels = processInquiryRepository.findByProcessId(processDBModel.getId());
-        if (processInquiryDBModels.isEmpty()){
-
-            ProcessInquiryDBModel processInquiryDBModel = new ProcessInquiryDBModel();
-            processInquiryDBModel.setProcessId(processDBModel.getId());
-            processInquiryDBModel.setProcessInquiry("");
-            processInquiryDBModel.setInquiryRemotes(new ArrayList<>());
-            processInquiryDBModel.setInquiryDatas(new ArrayList<>());
-            processInquiryDBModel.setuDate(appUtils.getCurrentTimeStamp());
-            processInquiryDBModel.setcDate(appUtils.getCurrentTimeStamp());
-            processInquiryDBModel.setStatus(1);
-
-            return processInquiryRepository.save(processInquiryDBModel);
-        }
-        return processInquiryDBModels.get(0);
+        return processInquiryDAO;
     }
 
 
-    public ProcessFlowWSDTO createProcessFlowWSDTO(ProcessDBModel processDBModel){
+    public ProcessFlowDAO createProcessFlowHelper(String processFlow){
 
-        List<ProcessFlowDBModel> processFlowDBModels = processFlowRepository.findByProcessId(processDBModel.getId());
-        if (!processFlowDBModels.isEmpty()){
-            return new ProcessFlowWSDTO(processFlowDBModels.get(0));
-        }
-        return null;
-    }
+        ProcessFlowDAO processFlowDAO = new ProcessFlowDAO();
+        processFlowDAO.setFlowId(appUtils.generateUUID());
+        processFlowDAO.setProcessFlow(processFlow);
+        processFlowDAO.setFlowRemotes(new ArrayList<>());
+        processFlowDAO.setFlowDatas(new ArrayList<>());
+        processFlowDAO.setuDate(appUtils.getCurrentTimeStamp());
+        processFlowDAO.setcDate(appUtils.getCurrentTimeStamp());
+        processFlowDAO.setStatus(1);
 
-    public ProcessFlowDBModel createProcessFlowHelper(ProcessDBModel processDBModel){
-
-        List<ProcessFlowDBModel> processFlowDBModels = processFlowRepository.findByProcessId(processDBModel.getId());
-        if (processFlowDBModels.isEmpty()){
-
-            ProcessFlowDBModel processFlowDBModel = new ProcessFlowDBModel();
-            processFlowDBModel.setProcessId(processDBModel.getId());
-            processFlowDBModel.setProcessFlow("");
-            processFlowDBModel.setFlowRemotes(new ArrayList<>());
-            processFlowDBModel.setFlowDatas(new ArrayList<>());
-            processFlowDBModel.setuDate(appUtils.getCurrentTimeStamp());
-            processFlowDBModel.setcDate(appUtils.getCurrentTimeStamp());
-            processFlowDBModel.setStatus(1);
-
-            return processFlowRepository.save(processFlowDBModel);
-        }
-        return null;
+        return processFlowDAO;
     }
 
 

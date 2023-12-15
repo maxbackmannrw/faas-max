@@ -2,9 +2,11 @@ package com.faas.core.base.middleware.process.details.inquiry;
 
 import com.faas.core.base.framework.process.details.inquiry.ProcessInquiryFramework;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.process.details.inquiry.ProcessInquiryDataWSModel;
+import com.faas.core.base.model.ws.process.details.content.ProcessDataWSModel;
+import com.faas.core.base.model.ws.process.details.content.ProcessRemoteWSModel;
+import com.faas.core.base.model.ws.process.details.content.dto.ProcessDataWSDTO;
+import com.faas.core.base.model.ws.process.details.content.dto.ProcessRemoteWSDTO;
 import com.faas.core.base.model.ws.process.details.inquiry.ProcessInquiryWSModel;
-import com.faas.core.base.model.ws.process.details.inquiry.dto.ProcessInquiryDataWSDTO;
 import com.faas.core.base.model.ws.process.details.inquiry.dto.ProcessInquiryWSDTO;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,13 +43,12 @@ public class ProcessInquiryMiddleware {
         return response;
     }
 
-
-    public ProcessInquiryWSModel updateProcessInquiry(long userId, String processId,String processInquiry,String inquiryDesc) {
+    public ProcessInquiryWSModel updateProcessInquiry(long userId,String processId,String processInquiry) {
 
         ProcessInquiryWSModel response = new ProcessInquiryWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ProcessInquiryWSDTO processInquiryWSDTO = processInquiryFramework.updateProcessInquiryService(userId,processId,processInquiry,inquiryDesc);
+        ProcessInquiryWSDTO processInquiryWSDTO = processInquiryFramework.updateProcessInquiryService(userId,processId,processInquiry);
         if (processInquiryWSDTO != null){
             response.setProcessInquiry(processInquiryWSDTO);
         }
@@ -62,35 +63,14 @@ public class ProcessInquiryMiddleware {
     }
 
 
-    public ProcessInquiryWSModel removeProcessInquiry(long userId, String processId) {
+    public ProcessDataWSModel getProcessInquiryDatas(long userId, String processId) {
 
-        ProcessInquiryWSModel response = new ProcessInquiryWSModel();
+        ProcessDataWSModel response = new ProcessDataWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ProcessInquiryWSDTO processInquiryWSDTO = processInquiryFramework.removeProcessInquiryService(userId,processId);
-        if (processInquiryWSDTO != null){
-            response.setProcessInquiry(processInquiryWSDTO);
-        }
-
-        general.setOperation("removeProcessInquiry");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-
-
-    public ProcessInquiryDataWSModel getProcessInquiryDatas(long userId, String processId) {
-
-        ProcessInquiryDataWSModel response = new ProcessInquiryDataWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-        List<ProcessInquiryDataWSDTO> processInquiryDataWSDTOS = processInquiryFramework.getProcessInquiryDatasService(userId,processId);
-        if (processInquiryDataWSDTOS != null){
-            response.setInquiryDatas(processInquiryDataWSDTOS);
+        List<ProcessDataWSDTO> processDataWSDTOS = processInquiryFramework.getProcessInquiryDatasService(userId,processId);
+        if (processDataWSDTOS != null){
+            response.setProcessDatas(processDataWSDTOS);
         }
 
         general.setOperation("getProcessInquiryDatas");
@@ -102,19 +82,18 @@ public class ProcessInquiryMiddleware {
         return response;
     }
 
+    public ProcessDataWSModel getProcessInquiryData(long userId, String processId, String dataId) {
 
-    public ProcessInquiryDataWSModel getProcessInquiryData(long userId, String processId, String dataId) {
-
-        ProcessInquiryDataWSModel response = new ProcessInquiryDataWSModel();
+        ProcessDataWSModel response = new ProcessDataWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ProcessInquiryDataWSDTO> processInquiryDataWSDTOS = new ArrayList<>();
+        List<ProcessDataWSDTO> processDataWSDTOS = new ArrayList<>();
 
-        ProcessInquiryDataWSDTO processInquiryDataWSDTO = processInquiryFramework.getProcessInquiryDataService(userId,processId,dataId);
-        if (processInquiryDataWSDTO != null){
-            processInquiryDataWSDTOS.add(processInquiryDataWSDTO);
+        ProcessDataWSDTO processDataWSDTO = processInquiryFramework.getProcessInquiryDataService(userId,processId,dataId);
+        if (processDataWSDTO != null){
+            processDataWSDTOS.add(processDataWSDTO);
         }
 
-        response.setInquiryDatas(processInquiryDataWSDTOS);
+        response.setProcessDatas(processDataWSDTOS);
         general.setOperation("getProcessInquiryData");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -124,19 +103,18 @@ public class ProcessInquiryMiddleware {
         return response;
     }
 
+    public ProcessDataWSModel createProcessInquiryData(long userId, String processId, long typeId, String value) {
 
-    public ProcessInquiryDataWSModel createProcessInquiryData(long userId, String processId, long typeId, String value) {
-
-        ProcessInquiryDataWSModel response = new ProcessInquiryDataWSModel();
+        ProcessDataWSModel response = new ProcessDataWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ProcessInquiryDataWSDTO> processInquiryDataWSDTOS = new ArrayList<>();
+        List<ProcessDataWSDTO> processDataWSDTOS = new ArrayList<>();
 
-        ProcessInquiryDataWSDTO processInquiryDataWSDTO = processInquiryFramework.createProcessInquiryDataService(userId,processId,typeId,value);
-        if (processInquiryDataWSDTO != null){
-            processInquiryDataWSDTOS.add(processInquiryDataWSDTO);
+        ProcessDataWSDTO processDataWSDTO = processInquiryFramework.createProcessInquiryDataService(userId,processId,typeId,value);
+        if (processDataWSDTO != null){
+            processDataWSDTOS.add(processDataWSDTO);
         }
 
-        response.setInquiryDatas(processInquiryDataWSDTOS);
+        response.setProcessDatas(processDataWSDTOS);
         general.setOperation("createProcessInquiryData");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -146,19 +124,18 @@ public class ProcessInquiryMiddleware {
         return response;
     }
 
+    public ProcessDataWSModel updateProcessInquiryData(long userId, String processId, String dataId,long typeId, String value) {
 
-    public ProcessInquiryDataWSModel updateProcessInquiryData(long userId, String processId, String dataId, long typeId, String value) {
-
-        ProcessInquiryDataWSModel response = new ProcessInquiryDataWSModel();
+        ProcessDataWSModel response = new ProcessDataWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ProcessInquiryDataWSDTO> processInquiryDataWSDTOS = new ArrayList<>();
+        List<ProcessDataWSDTO> processDataWSDTOS = new ArrayList<>();
 
-        ProcessInquiryDataWSDTO ProcessInquiryDataWSDTO = processInquiryFramework.updateProcessInquiryDataService(userId,processId,dataId,typeId,value);
-        if (ProcessInquiryDataWSDTO != null){
-            processInquiryDataWSDTOS.add(ProcessInquiryDataWSDTO);
+        ProcessDataWSDTO processDataWSDTO = processInquiryFramework.updateProcessInquiryDataService(userId,processId,dataId,typeId,value);
+        if (processDataWSDTO != null){
+            processDataWSDTOS.add(processDataWSDTO);
         }
 
-        response.setInquiryDatas(processInquiryDataWSDTOS);
+        response.setProcessDatas(processDataWSDTOS);
         general.setOperation("updateProcessInquiryData");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -168,19 +145,18 @@ public class ProcessInquiryMiddleware {
         return response;
     }
 
+    public ProcessDataWSModel removeProcessInquiryData(long userId, String processId, String dataId) {
 
-    public ProcessInquiryDataWSModel removeProcessInquiryData(long userId, String processId, String dataId) {
-
-        ProcessInquiryDataWSModel response = new ProcessInquiryDataWSModel();
+        ProcessDataWSModel response = new ProcessDataWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ProcessInquiryDataWSDTO> processInquiryDataWSDTOS = new ArrayList<>();
+        List<ProcessDataWSDTO> processDataWSDTOS = new ArrayList<>();
 
-        ProcessInquiryDataWSDTO ProcessInquiryDataWSDTO = processInquiryFramework.removeProcessInquiryDataService(userId,processId,dataId);
-        if (ProcessInquiryDataWSDTO != null){
-            processInquiryDataWSDTOS.add(ProcessInquiryDataWSDTO);
+        ProcessDataWSDTO processDataWSDTO = processInquiryFramework.removeProcessInquiryDataService(userId,processId,dataId);
+        if (processDataWSDTO != null){
+            processDataWSDTOS.add(processDataWSDTO);
         }
 
-        response.setInquiryDatas(processInquiryDataWSDTOS);
+        response.setProcessDatas(processDataWSDTOS);
         general.setOperation("removeProcessInquiryData");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -191,6 +167,109 @@ public class ProcessInquiryMiddleware {
     }
 
 
+
+    public ProcessRemoteWSModel getProcessInquiryRemotes(long userId, String processId) {
+
+        ProcessRemoteWSModel response = new ProcessRemoteWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        List<ProcessRemoteWSDTO> processRemoteWSDTOS = processInquiryFramework.getProcessInquiryRemotesService(userId,processId);
+        if (processRemoteWSDTOS != null){
+            response.setProcessRemotes(processRemoteWSDTOS);
+        }
+
+        general.setOperation("getProcessInquiryRemotes");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public ProcessRemoteWSModel getProcessInquiryRemote(long userId, String processId, String inquiryRemoteId) {
+
+        ProcessRemoteWSModel response = new ProcessRemoteWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+        List<ProcessRemoteWSDTO> processRemoteWSDTOS = new ArrayList<>();
+
+        ProcessRemoteWSDTO processRemoteWSDTO = processInquiryFramework.getProcessInquiryRemoteService(userId,processId,inquiryRemoteId);
+        if (processRemoteWSDTO != null){
+            processRemoteWSDTOS.add(processRemoteWSDTO);
+        }
+
+        response.setProcessRemotes(processRemoteWSDTOS);
+        general.setOperation("getProcessInquiryRemote");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public ProcessRemoteWSModel createProcessInquiryRemote(long userId,String processId,String remoteId) {
+
+        ProcessRemoteWSModel response = new ProcessRemoteWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+        List<ProcessRemoteWSDTO> processRemoteWSDTOS = new ArrayList<>();
+
+        ProcessRemoteWSDTO processRemoteWSDTO = processInquiryFramework.createProcessInquiryRemoteService(userId,processId,remoteId);
+        if (processRemoteWSDTO != null){
+            processRemoteWSDTOS.add(processRemoteWSDTO);
+        }
+
+        response.setProcessRemotes(processRemoteWSDTOS);
+        general.setOperation("createProcessInquiryRemote");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public ProcessRemoteWSModel updateProcessInquiryRemote(long userId,String processId,String inquiryRemoteId,String remoteState) {
+
+        ProcessRemoteWSModel response = new ProcessRemoteWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+        List<ProcessRemoteWSDTO> processRemoteWSDTOS = new ArrayList<>();
+
+        ProcessRemoteWSDTO processRemoteWSDTO = processInquiryFramework.updateProcessInquiryRemoteService(userId,processId,inquiryRemoteId,remoteState);
+        if (processRemoteWSDTO != null){
+            processRemoteWSDTOS.add(processRemoteWSDTO);
+        }
+
+        response.setProcessRemotes(processRemoteWSDTOS);
+        general.setOperation("updateProcessInquiryRemote");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public ProcessRemoteWSModel removeProcessInquiryRemote(long userId, String processId, String inquiryRemoteId) {
+
+        ProcessRemoteWSModel response = new ProcessRemoteWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+        List<ProcessRemoteWSDTO> processRemoteWSDTOS = new ArrayList<>();
+
+        ProcessRemoteWSDTO processRemoteWSDTO = processInquiryFramework.removeProcessInquiryRemoteService(userId,processId,inquiryRemoteId);
+        if (processRemoteWSDTO != null){
+            processRemoteWSDTOS.add(processRemoteWSDTO);
+        }
+
+        response.setProcessRemotes(processRemoteWSDTOS);
+        general.setOperation("removeProcessInquiryRemote");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
 
 
 }

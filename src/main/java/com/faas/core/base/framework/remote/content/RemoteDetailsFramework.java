@@ -217,7 +217,6 @@ public class RemoteDetailsFramework {
         if (remoteDBModel.isPresent() && remoteDBModel.get().getRemoteUrls() != null){
             for (int i=0;i<remoteDBModel.get().getRemoteUrls().size();i++){
                 if (remoteDBModel.get().getRemoteUrls().get(i).getId().equalsIgnoreCase(urlId)){
-
                     RemoteUrlDAO remoteUrlDAO = remoteDBModel.get().getRemoteUrls().get(i);
                     remoteDBModel.get().getRemoteUrls().remove(remoteUrlDAO);
                     remoteDBModel.get().setuDate(appUtils.getCurrentTimeStamp());

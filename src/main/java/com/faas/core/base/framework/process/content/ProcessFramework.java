@@ -9,8 +9,6 @@ import com.faas.core.base.repo.process.details.channel.temp.ProcessEmailTempRepo
 import com.faas.core.base.repo.process.details.channel.temp.ProcessSmsMessageTempRepository;
 import com.faas.core.base.repo.process.details.channel.temp.ProcessPushTempRepository;
 import com.faas.core.base.repo.process.details.channel.temp.ProcessWappMessageTempRepository;
-import com.faas.core.base.repo.process.details.flow.ProcessFlowRepository;
-import com.faas.core.base.repo.process.details.inquiry.ProcessInquiryRepository;
 import com.faas.core.base.repo.process.details.scenario.ProcessScenarioRepository;
 import com.faas.core.base.repo.process.details.trigger.*;
 import com.faas.core.base.repo.process.settings.ProcessTypeRepository;
@@ -32,12 +30,6 @@ public class ProcessFramework {
 
     @Autowired
     ProcessRepository processRepository;
-
-    @Autowired
-    ProcessInquiryRepository processInquiryRepository;
-
-    @Autowired
-    ProcessFlowRepository processFlowRepository;
 
     @Autowired
     ProcessTypeRepository processTypeRepository;
@@ -137,6 +129,12 @@ public class ProcessFramework {
             processDBModel.setProcessTypeId(processTypeId);
             processDBModel.setProcessType(processTypeDBModel.get().getProcessType());
             processDBModel.setProcessCategory(processCategory);
+            if (processCategory.equalsIgnoreCase(AppConstant.INQUIRY_PROCESS)){
+                processDBModel.setProcessInquiry(processHelper.createProcessInquiryHelper(process));
+            }
+            if (processCategory.equalsIgnoreCase(AppConstant.AUTOMATIC_PROCESS)){
+                processDBModel.setProcessFlow(processHelper.createProcessFlowHelper(process));;
+            }
             processDBModel.setProcessRemotes(new ArrayList<>());
             processDBModel.setProcessAssets(new ArrayList<>());
             processDBModel.setProcessScripts(new ArrayList<>());
@@ -146,17 +144,7 @@ public class ProcessFramework {
             processDBModel.setcDate(appUtils.getCurrentTimeStamp());
             processDBModel.setStatus(1);
 
-            processDBModel =processRepository.save(processDBModel);
-
-            if (processDBModel.getProcessCategory().equalsIgnoreCase(AppConstant.INQUIRY_PROCESS)){
-                processHelper.createProcessInquiryHelper(processDBModel);
-                return processHelper.getProcessWSDTO(processDBModel);
-            }
-            if (processDBModel.getProcessCategory().equalsIgnoreCase(AppConstant.AUTOMATIC_PROCESS)){
-                processHelper.createProcessFlowHelper(processDBModel);
-                return processHelper.getProcessWSDTO(processDBModel);
-            }
-            return processHelper.getProcessWSDTO(processDBModel);
+            return new ProcessWSDTO(processRepository.save(processDBModel));
         }
         return null;
     }
@@ -187,6 +175,8 @@ public class ProcessFramework {
             ProcessWSDTO processWSDTO = processHelper.getProcessWSDTO(process.get());
 
             processRepository.delete(process.get());
+            processScenarioRepository.deleteAll(processScenarioRepository.findByProcessId(processId));
+
             processEmailChannelRepository.deleteAll(processEmailChannelRepository.findByProcessId(processId));
             processPushChannelRepository.deleteAll(processPushChannelRepository.findByProcessId(processId));
             processSipChannelRepository.deleteAll(processSipChannelRepository.findByProcessId(processId));
@@ -197,10 +187,6 @@ public class ProcessFramework {
             processPushTempRepository.deleteAll(processPushTempRepository.findByProcessId(processId));
             processSmsMessageTempRepository.deleteAll(processSmsMessageTempRepository.findByProcessId(processId));
             processWappMessageTempRepository.deleteAll(processWappMessageTempRepository.findByProcessId(processId));
-
-            processScenarioRepository.deleteAll(processScenarioRepository.findByProcessId(processId));
-            processInquiryRepository.deleteAll(processInquiryRepository.findByProcessId(processId));
-            processFlowRepository.deleteAll(processFlowRepository.findByProcessId(processId));
 
             aiTriggerRepository.deleteAll(aiTriggerRepository.findByProcessId(processId));
             emailTriggerRepository.deleteAll(emailTriggerRepository.findByProcessId(processId));

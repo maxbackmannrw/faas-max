@@ -1,31 +1,23 @@
-package com.faas.core.base.model.db.process.details.inquiry;
+package com.faas.core.base.model.db.process.content.dao;
 
-import com.faas.core.base.model.db.process.content.dao.ProcessRemoteDAO;
-import com.faas.core.base.model.db.process.details.inquiry.dao.ProcessInquiryDataDAO;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
-@Document(collection = "process_inquiry_table")
-public class ProcessInquiryDBModel {
+public class ProcessInquiryDAO {
 
-    @Id
-    private String id;
-    private String processId;
+    private String inquiryId;
     private String processInquiry;
     private List<ProcessRemoteDAO>inquiryRemotes;
-    private List<ProcessInquiryDataDAO>inquiryDatas;
+    private List<ProcessDataDAO>inquiryDatas;
     private long uDate;
     private long cDate;
     private int status;
 
-    public ProcessInquiryDBModel() {
+    public ProcessInquiryDAO() {
     }
 
-    public ProcessInquiryDBModel(String id, String processId, String processInquiry, List<ProcessRemoteDAO> inquiryRemotes, List<ProcessInquiryDataDAO> inquiryDatas, long uDate, long cDate, int status) {
-        this.id = id;
-        this.processId = processId;
+    public ProcessInquiryDAO(String inquiryId, String processInquiry, List<ProcessRemoteDAO> inquiryRemotes, List<ProcessDataDAO> inquiryDatas, long uDate, long cDate, int status) {
+        this.inquiryId = inquiryId;
         this.processInquiry = processInquiry;
         this.inquiryRemotes = inquiryRemotes;
         this.inquiryDatas = inquiryDatas;
@@ -34,20 +26,12 @@ public class ProcessInquiryDBModel {
         this.status = status;
     }
 
-    public String getId() {
-        return id;
+    public String getInquiryId() {
+        return inquiryId;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getProcessId() {
-        return processId;
-    }
-
-    public void setProcessId(String processId) {
-        this.processId = processId;
+    public void setInquiryId(String inquiryId) {
+        this.inquiryId = inquiryId;
     }
 
     public String getProcessInquiry() {
@@ -66,11 +50,11 @@ public class ProcessInquiryDBModel {
         this.inquiryRemotes = inquiryRemotes;
     }
 
-    public List<ProcessInquiryDataDAO> getInquiryDatas() {
+    public List<ProcessDataDAO> getInquiryDatas() {
         return inquiryDatas;
     }
 
-    public void setInquiryDatas(List<ProcessInquiryDataDAO> inquiryDatas) {
+    public void setInquiryDatas(List<ProcessDataDAO> inquiryDatas) {
         this.inquiryDatas = inquiryDatas;
     }
 

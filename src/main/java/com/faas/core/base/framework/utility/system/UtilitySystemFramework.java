@@ -23,8 +23,6 @@ import com.faas.core.base.repo.process.details.channel.temp.ProcessEmailTempRepo
 import com.faas.core.base.repo.process.details.channel.temp.ProcessPushTempRepository;
 import com.faas.core.base.repo.process.details.channel.temp.ProcessSmsMessageTempRepository;
 import com.faas.core.base.repo.process.details.channel.temp.ProcessWappMessageTempRepository;
-import com.faas.core.base.repo.process.details.flow.ProcessFlowRepository;
-import com.faas.core.base.repo.process.details.inquiry.ProcessInquiryRepository;
 import com.faas.core.base.repo.process.details.scenario.ProcessScenarioRepository;
 import com.faas.core.base.repo.scenario.content.ScenarioRepository;
 import com.faas.core.base.repo.user.content.UserRepository;
@@ -134,12 +132,6 @@ public class UtilitySystemFramework {
 
     @Autowired
     ProcessWappMessageTempRepository processWappMessageTempRepository;
-
-    @Autowired
-    ProcessFlowRepository processFlowRepository;
-
-    @Autowired
-    ProcessInquiryRepository processInquiryRepository;
 
     @Autowired
     ProcessScenarioRepository processScenarioRepository;
@@ -486,8 +478,6 @@ public class UtilitySystemFramework {
         processPushTempRepository.deleteAll();
         processSmsMessageTempRepository.deleteAll();
         processWappMessageTempRepository.deleteAll();
-        processFlowRepository.deleteAll();
-        processInquiryRepository.deleteAll();
         processScenarioRepository.deleteAll();
         removeAllTriggers();
     }

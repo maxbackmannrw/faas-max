@@ -1,31 +1,22 @@
-package com.faas.core.base.model.db.process.details.flow;
-
-import com.faas.core.base.model.db.process.content.dao.ProcessRemoteDAO;
-import com.faas.core.base.model.db.process.details.flow.dao.ProcessFlowDataDAO;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+package com.faas.core.base.model.db.process.content.dao;
 
 import java.util.List;
 
-@Document(collection = "process_flow_table")
-public class ProcessFlowDBModel {
+public class ProcessFlowDAO {
 
-    @Id
-    private String id;
-    private String processId;
+    private String flowId;
     private String processFlow;
     private List<ProcessRemoteDAO>flowRemotes;
-    private List<ProcessFlowDataDAO>flowDatas;
+    private List<ProcessDataDAO>flowDatas;
     private long uDate;
     private long cDate;
     private int status;
 
-    public ProcessFlowDBModel() {
+    public ProcessFlowDAO() {
     }
 
-    public ProcessFlowDBModel(String id, String processId, String processFlow, List<ProcessRemoteDAO> flowRemotes, List<ProcessFlowDataDAO> flowDatas, long uDate, long cDate, int status) {
-        this.id = id;
-        this.processId = processId;
+    public ProcessFlowDAO(String flowId, String processFlow, List<ProcessRemoteDAO> flowRemotes, List<ProcessDataDAO> flowDatas, long uDate, long cDate, int status) {
+        this.flowId = flowId;
         this.processFlow = processFlow;
         this.flowRemotes = flowRemotes;
         this.flowDatas = flowDatas;
@@ -34,20 +25,12 @@ public class ProcessFlowDBModel {
         this.status = status;
     }
 
-    public String getId() {
-        return id;
+    public String getFlowId() {
+        return flowId;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getProcessId() {
-        return processId;
-    }
-
-    public void setProcessId(String processId) {
-        this.processId = processId;
+    public void setFlowId(String flowId) {
+        this.flowId = flowId;
     }
 
     public String getProcessFlow() {
@@ -66,11 +49,11 @@ public class ProcessFlowDBModel {
         this.flowRemotes = flowRemotes;
     }
 
-    public List<ProcessFlowDataDAO> getFlowDatas() {
+    public List<ProcessDataDAO> getFlowDatas() {
         return flowDatas;
     }
 
-    public void setFlowDatas(List<ProcessFlowDataDAO> flowDatas) {
+    public void setFlowDatas(List<ProcessDataDAO> flowDatas) {
         this.flowDatas = flowDatas;
     }
 

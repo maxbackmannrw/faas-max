@@ -367,7 +367,6 @@ public class BaseRoute {
 
     public static final String GET_PROCESS_INQUIRY = "getprocessinquiry";
     public static final String UPDATE_PROCESS_INQUIRY = "updateprocessinquiry";
-    public static final String REMOVE_PROCESS_INQUIRY = "removeprocessinquiry";
 
     public static final String GET_PROCESS_INQUIRY_DATAS = "getprocessinquirydatas";
     public static final String GET_PROCESS_INQUIRY_DATA = "getprocessinquirydata";
@@ -375,12 +374,15 @@ public class BaseRoute {
     public static final String UPDATE_PROCESS_INQUIRY_DATA = "updateprocessinquirydata";
     public static final String REMOVE_PROCESS_INQUIRY_DATA = "removeprocessinquirydata";
 
-
+    public static final String GET_PROCESS_INQUIRY_REMOTES = "getprocessinquiryremotes";
+    public static final String GET_PROCESS_INQUIRY_REMOTE = "getprocessinquiryremote";
+    public static final String CREATE_PROCESS_INQUIRY_REMOTE = "createprocessinquiryremote";
+    public static final String UPDATE_PROCESS_INQUIRY_REMOTE = "updateprocessinquiryremote";
+    public static final String REMOVE_PROCESS_INQUIRY_REMOTE = "removeprocessinquiryremote";
 
 
     public static final String GET_PROCESS_FLOW = "getprocessflow";
     public static final String UPDATE_PROCESS_FLOW = "updateprocessflow";
-    public static final String REMOVE_PROCESS_FLOW = "removeprocessflow";
 
     public static final String GET_PROCESS_FLOW_DATAS = "getprocessflowdatas";
     public static final String GET_PROCESS_FLOW_DATA = "getprocessflowdata";
@@ -388,6 +390,11 @@ public class BaseRoute {
     public static final String UPDATE_PROCESS_FLOW_DATA = "updateprocessflowdata";
     public static final String REMOVE_PROCESS_FLOW_DATA = "removeprocessflowdata";
 
+    public static final String GET_PROCESS_FLOW_REMOTES = "getprocessflowremotes";
+    public static final String GET_PROCESS_FLOW_REMOTE = "getprocessflowremote";
+    public static final String CREATE_PROCESS_FLOW_REMOTE = "createprocessflowremote";
+    public static final String UPDATE_PROCESS_FLOW_REMOTE = "updateprocessflowremote";
+    public static final String REMOVE_PROCESS_FLOW_REMOTE = "removeprocessflowremote";
 
 
     public static final String GET_PROCESS_TRIGGERS = "getprocesstriggers";
