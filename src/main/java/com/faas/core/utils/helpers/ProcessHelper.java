@@ -238,9 +238,6 @@ public class ProcessHelper {
 
         ProcessScenarioWSDTO processScenarioWSDTO = new ProcessScenarioWSDTO();
         processScenarioWSDTO.setProcessScenario(processScenarioDBModel);
-        Optional<ScenarioDBModel> scenarioDBModel = scenarioRepository.findById(processScenarioDBModel.getScenarioId());
-        scenarioDBModel.ifPresent(processScenarioWSDTO::setProcessScenarioDetails);
-
         return processScenarioWSDTO;
     }
 
