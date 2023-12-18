@@ -47,21 +47,6 @@ public class UtilitySystemFramework {
     ClientRepository clientRepository;
 
     @Autowired
-    ClientAddressRepository clientAddressRepository;
-
-    @Autowired
-    ClientDataRepository clientDataRepository;
-
-    @Autowired
-    ClientEmailRepository clientEmailRepository;
-
-    @Autowired
-    ClientNoteRepository clientNoteRepository;
-
-    @Autowired
-    ClientPhoneRepository clientPhoneRepository;
-
-    @Autowired
     ClientRemoteRepository clientRemoteRepository;
 
     @Autowired
@@ -388,11 +373,6 @@ public class UtilitySystemFramework {
     public void removeAllClientsService(){
 
         clientRepository.deleteAll();
-        clientAddressRepository.deleteAll();
-        clientDataRepository.deleteAll();
-        clientEmailRepository.deleteAll();
-        clientNoteRepository.deleteAll();
-        clientPhoneRepository.deleteAll();
         clientRemoteRepository.deleteAll();
         sessionRepository.deleteAll();
         operationRepository.deleteAll();

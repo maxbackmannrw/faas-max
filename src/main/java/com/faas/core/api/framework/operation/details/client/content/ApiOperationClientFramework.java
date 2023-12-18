@@ -27,21 +27,6 @@ public class ApiOperationClientFramework {
     ClientRepository clientRepository;
 
     @Autowired
-    ClientNoteRepository clientNoteRepository;
-
-    @Autowired
-    ClientDataRepository clientDataRepository;
-
-    @Autowired
-    ClientAddressRepository clientAddressRepository;
-
-    @Autowired
-    ClientPhoneRepository clientPhoneRepository;
-
-    @Autowired
-    ClientEmailRepository clientEmailRepository;
-
-    @Autowired
     AppUtils appUtils;
 
 
@@ -53,10 +38,6 @@ public class ApiOperationClientFramework {
 
             ApiOperationClientWSDTO operationClientWSDTO = new ApiOperationClientWSDTO();
             operationClientWSDTO.setClient(clientDBModel.get());
-            operationClientWSDTO.setClientDatas(clientDataRepository.findByClientId(clientId));
-            operationClientWSDTO.setClientAddresses(clientAddressRepository.findByClientId(clientId));
-            operationClientWSDTO.setClientPhones(clientPhoneRepository.findByClientId(clientId));
-            operationClientWSDTO.setClientEmails(clientEmailRepository.findByClientId(clientId));
 
             return operationClientWSDTO;
         }

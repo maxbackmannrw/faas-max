@@ -3,10 +3,8 @@ package com.faas.core.api.framework.operation.channel.call.sip;
 import com.faas.core.api.model.ws.operation.channel.call.sip.dto.ApiOperationSipCallWSDTO;
 import com.faas.core.api.model.ws.operation.channel.call.sip.dto.ApiSipAccountWSDTO;
 import com.faas.core.api.model.ws.operation.channel.call.sip.dto.ApiSipCallWSDTO;
-import com.faas.core.base.model.db.client.details.ClientPhoneDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationSipCallDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
-import com.faas.core.base.repo.client.details.ClientPhoneRepository;
 import com.faas.core.base.repo.operation.details.channel.OperationSipCallRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utils.config.AppConstant;
@@ -28,9 +26,6 @@ public class ApiSipCallFramework {
 
     @Autowired
     SessionRepository sessionRepository;
-
-    @Autowired
-    ClientPhoneRepository clientPhoneRepository;
 
     @Autowired
     OperationSipCallRepository operationSipCallRepository;
@@ -73,10 +68,9 @@ public class ApiSipCallFramework {
     public ApiSipCallWSDTO apiCreateSipCallService(long agentId,long sessionId,long clientId,long numberId) {
 
         List<SessionDBModel> sessionModel = sessionRepository.findByIdAndClientIdAndAgentId(sessionId,clientId,agentId);
-        Optional<ClientPhoneDBModel> clientPhoneDBModel = clientPhoneRepository.findById(numberId);
         ApiSipAccountWSDTO sipAccountWSDTO = channelHelper.getApiSipAccountWSDTO(agentId, sessionModel.get(0).getProcessId());
 
-        if (!operationSipCallRepository.existsBySessionIdAndCallState(sessionId,AppConstant.READY_CALL) && !operationSipCallRepository.existsBySessionIdAndCallState(sessionId,AppConstant.ACTIVE_CALL) && !sessionModel.isEmpty() && clientPhoneDBModel.isPresent() && sipAccountWSDTO != null) {
+        if (!operationSipCallRepository.existsBySessionIdAndCallState(sessionId,AppConstant.READY_CALL) && !operationSipCallRepository.existsBySessionIdAndCallState(sessionId,AppConstant.ACTIVE_CALL) && !sessionModel.isEmpty()  && sipAccountWSDTO != null) {
 
             OperationSipCallDBModel sipCallDBModel = new OperationSipCallDBModel();
             sipCallDBModel.setSessionId(sessionModel.get(0).getId());
@@ -84,8 +78,7 @@ public class ApiSipCallFramework {
             sipCallDBModel.setAgentId(sessionModel.get(0).getAgentId());
             sipCallDBModel.setCampaignId(sessionModel.get(0).getCampaignId());
             sipCallDBModel.setProcessId(sessionModel.get(0).getProcessId());
-            sipCallDBModel.setNumberId(clientPhoneDBModel.get().getId());
-            sipCallDBModel.setPhoneNumber(clientPhoneDBModel.get().getPhoneNumber());
+
             sipCallDBModel.setAccountId(sipAccountWSDTO.getAccountId());
             sipCallDBModel.setCallerId(sipAccountWSDTO.getCallerId());
             sipCallDBModel.setProvider(sipAccountWSDTO.getProvider());

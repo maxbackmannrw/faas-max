@@ -1,7 +1,7 @@
-package com.faas.core.base.endpoint.controller.client.details;
+package com.faas.core.base.endpoint.controller.client.details.content;
 
-import com.faas.core.base.middleware.client.details.ClientDetailsMiddleware;
-import com.faas.core.base.model.ws.client.details.*;
+import com.faas.core.base.middleware.client.details.content.ClientDetailsMiddleware;
+import com.faas.core.base.model.ws.client.details.content.*;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +35,6 @@ public class ClientDetailsController {
     }
 
 
-
     @RequestMapping(value = BaseRoute.GET_CLIENT_DATAS, method = RequestMethod.POST)
     public ResponseEntity<?> getClientDatas(@RequestParam long userId,
                                             @RequestParam long clientId) {
@@ -51,9 +50,10 @@ public class ClientDetailsController {
 
     @RequestMapping(value = BaseRoute.GET_CLIENT_DATA, method = RequestMethod.POST)
     public ResponseEntity<?> getClientData(@RequestParam long userId,
-                                           @RequestParam long dataId) {
+                                           @RequestParam long clientId,
+                                           @RequestParam String dataId) {
 
-        ClientDataWSModel response = clientDetailsMiddleware.getClientData(userId,dataId);
+        ClientDataWSModel response = clientDetailsMiddleware.getClientData(userId,clientId,dataId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -79,11 +79,12 @@ public class ClientDetailsController {
 
     @RequestMapping(value = BaseRoute.UPDATE_CLIENT_DATA, method = RequestMethod.POST)
     public ResponseEntity<?> updateClientData(@RequestParam long userId,
-                                              @RequestParam long dataId,
+                                              @RequestParam long clientId,
+                                              @RequestParam String dataId,
                                               @RequestParam long typeId,
                                               @RequestParam String value) {
 
-        ClientDataWSModel response = clientDetailsMiddleware.updateClientData(userId,dataId,typeId,value);
+        ClientDataWSModel response = clientDetailsMiddleware.updateClientData(userId,clientId,dataId,typeId,value);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -94,9 +95,10 @@ public class ClientDetailsController {
 
     @RequestMapping(value = BaseRoute.REMOVE_CLIENT_DATA, method = RequestMethod.POST)
     public ResponseEntity<?> removeClientData(@RequestParam long userId,
-                                              @RequestParam long dataId) {
+                                              @RequestParam long clientId,
+                                              @RequestParam String dataId) {
 
-        ClientDataWSModel response = clientDetailsMiddleware.removeClientData(userId,dataId);
+        ClientDataWSModel response = clientDetailsMiddleware.removeClientData(userId,clientId,dataId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -121,9 +123,10 @@ public class ClientDetailsController {
 
     @RequestMapping(value = BaseRoute.GET_CLIENT_ADDRESS, method = RequestMethod.POST)
     public ResponseEntity<?> getClientAddress(@RequestParam long userId,
-                                              @RequestParam long addressId) {
+                                              @RequestParam long clientId,
+                                              @RequestParam String addressId) {
 
-        ClientAddressWSModel response = clientDetailsMiddleware.getClientAddress(userId,addressId);
+        ClientAddressWSModel response = clientDetailsMiddleware.getClientAddress(userId,clientId,addressId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -152,14 +155,15 @@ public class ClientDetailsController {
 
     @RequestMapping(value = BaseRoute.UPDATE_CLIENT_ADDRESS, method = RequestMethod.POST)
     public ResponseEntity<?> updateClientAddress(@RequestParam long userId,
-                                                 @RequestParam long addressId,
+                                                 @RequestParam long clientId,
+                                                 @RequestParam String addressId,
                                                  @RequestParam String street,
                                                  @RequestParam String city,
                                                  @RequestParam String zipCode,
                                                  @RequestParam String state,
                                                  @RequestParam String country) {
 
-        ClientAddressWSModel response = clientDetailsMiddleware.updateClientAddress(userId,addressId,street,city,zipCode,state,country);
+        ClientAddressWSModel response = clientDetailsMiddleware.updateClientAddress(userId,clientId,addressId,street,city,zipCode,state,country);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -170,9 +174,10 @@ public class ClientDetailsController {
 
     @RequestMapping(value = BaseRoute.REMOVE_CLIENT_ADDRESS, method = RequestMethod.POST)
     public ResponseEntity<?> removeClientAddress(@RequestParam long userId,
-                                                 @RequestParam long addressId) {
+                                                 @RequestParam long clientId,
+                                                 @RequestParam String addressId) {
 
-        ClientAddressWSModel response = clientDetailsMiddleware.removeClientAddress(userId,addressId);
+        ClientAddressWSModel response = clientDetailsMiddleware.removeClientAddress(userId,clientId,addressId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -198,9 +203,10 @@ public class ClientDetailsController {
 
     @RequestMapping(value = BaseRoute.GET_CLIENT_EMAIL, method = RequestMethod.POST)
     public ResponseEntity<?> getClientEmail(@RequestParam long userId,
-                                            @RequestParam long emailId) {
+                                            @RequestParam long clientId,
+                                            @RequestParam String emailId) {
 
-        ClientEmailWSModel response = clientDetailsMiddleware.getClientEmail(userId,emailId);
+        ClientEmailWSModel response = clientDetailsMiddleware.getClientEmail(userId,clientId,emailId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -225,10 +231,11 @@ public class ClientDetailsController {
 
     @RequestMapping(value = BaseRoute.UPDATE_CLIENT_EMAIL, method = RequestMethod.POST)
     public ResponseEntity<?> updateClientEmail(@RequestParam long userId,
-                                               @RequestParam long emailId,
+                                               @RequestParam long clientId,
+                                               @RequestParam String emailId,
                                                @RequestParam String emailAddress) {
 
-        ClientEmailWSModel response = clientDetailsMiddleware.updateClientEmail(userId,emailId,emailAddress);
+        ClientEmailWSModel response = clientDetailsMiddleware.updateClientEmail(userId,clientId,emailId,emailAddress);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -239,9 +246,10 @@ public class ClientDetailsController {
 
     @RequestMapping(value = BaseRoute.REMOVE_CLIENT_EMAIL, method = RequestMethod.POST)
     public ResponseEntity<?> removeClientEmail(@RequestParam long userId,
-                                               @RequestParam long emailId) {
+                                               @RequestParam long clientId,
+                                               @RequestParam String emailId) {
 
-        ClientEmailWSModel response = clientDetailsMiddleware.removeClientEmail(userId,emailId);
+        ClientEmailWSModel response = clientDetailsMiddleware.removeClientEmail(userId,clientId,emailId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -266,9 +274,10 @@ public class ClientDetailsController {
 
     @RequestMapping(value = BaseRoute.GET_CLIENT_PHONE, method = RequestMethod.POST)
     public ResponseEntity<?> getClientPhone(@RequestParam long userId,
-                                            @RequestParam long numberId) {
+                                            @RequestParam long clientId,
+                                            @RequestParam String numberId) {
 
-        ClientPhoneWSModel response = clientDetailsMiddleware.getClientPhone(userId,numberId);
+        ClientPhoneWSModel response = clientDetailsMiddleware.getClientPhone(userId,clientId,numberId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -294,11 +303,12 @@ public class ClientDetailsController {
 
     @RequestMapping(value = BaseRoute.UPDATE_CLIENT_PHONE, method = RequestMethod.POST)
     public ResponseEntity<?> updateClientPhone(@RequestParam long userId,
-                                               @RequestParam long numberId,
+                                               @RequestParam long clientId,
+                                               @RequestParam String numberId,
                                                @RequestParam String phoneNumber,
                                                @RequestParam String phoneCarrier) {
 
-        ClientPhoneWSModel response = clientDetailsMiddleware.updateClientPhone(userId,numberId,phoneNumber,phoneCarrier);
+        ClientPhoneWSModel response = clientDetailsMiddleware.updateClientPhone(userId,clientId,numberId,phoneNumber,phoneCarrier);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -309,9 +319,10 @@ public class ClientDetailsController {
 
     @RequestMapping(value = BaseRoute.REMOVE_CLIENT_PHONE, method = RequestMethod.POST)
     public ResponseEntity<?> removeClientPhone(@RequestParam long userId,
-                                               @RequestParam long numberId) {
+                                               @RequestParam long clientId,
+                                               @RequestParam String numberId) {
 
-        ClientPhoneWSModel response = clientDetailsMiddleware.removeClientPhone(userId,numberId);
+        ClientPhoneWSModel response = clientDetailsMiddleware.removeClientPhone(userId,clientId,numberId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

@@ -14,7 +14,7 @@ import com.faas.core.api.model.ws.operation.channel.message.push.dto.ApiPushAcco
 import com.faas.core.base.model.db.channel.account.EmailAccountDBModel;
 import com.faas.core.base.model.db.channel.account.PushAccountDBModel;
 import com.faas.core.base.model.db.channel.account.SmsAccountDBModel;
-import com.faas.core.base.model.db.client.details.ClientPhoneDBModel;
+import com.faas.core.base.model.db.client.details.content.dao.ClientPhoneDAO;
 import com.faas.core.base.model.db.operation.details.channel.OperationSipCallDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationWappCallDBModel;
 import com.faas.core.base.model.db.operation.details.channel.dao.OperationSmsMessageDAO;
@@ -27,8 +27,6 @@ import com.faas.core.base.model.db.process.details.channel.temp.ProcessSmsMessag
 import com.faas.core.base.model.db.process.details.channel.temp.ProcessWappMessageTempDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.db.user.details.UserDetailsDBModel;
-import com.faas.core.base.repo.client.details.ClientEmailRepository;
-import com.faas.core.base.repo.client.details.ClientPhoneRepository;
 import com.faas.core.base.repo.operation.details.channel.*;
 import com.faas.core.base.repo.process.details.channel.content.*;
 import com.faas.core.base.repo.process.details.channel.temp.ProcessEmailTempRepository;
@@ -54,9 +52,6 @@ public class ChannelHelper {
     UserDetailsRepository userDetailsRepository;
 
     @Autowired
-    ClientPhoneRepository clientPhoneRepository;
-
-    @Autowired
     OperationSipCallRepository operationSipCallRepository;
 
     @Autowired
@@ -76,9 +71,6 @@ public class ChannelHelper {
 
     @Autowired
     ProcessEmailChannelRepository processEmailChannelRepository;
-
-    @Autowired
-    ClientEmailRepository clientEmailRepository;
 
     @Autowired
     OperationEmailMessageRepository operationEmailMessageRepository;
@@ -147,7 +139,6 @@ public class ChannelHelper {
 
         ApiOperationSipCallWSDTO operationSipCallWSDTO = new ApiOperationSipCallWSDTO();
         operationSipCallWSDTO.setSipAccount(getApiSipAccountWSDTO(agentId, processId));
-        operationSipCallWSDTO.setClientPhones(clientPhoneRepository.findByClientId(clientId));
         List<OperationSipCallDBModel> readySipCalls = operationSipCallRepository.findBySessionIdAndCallState(sessionId, AppConstant.READY_CALL);
         if (!readySipCalls.isEmpty()) {
             operationSipCallWSDTO.setCurrentSipCall(readySipCalls.get(0));
@@ -187,14 +178,13 @@ public class ChannelHelper {
     }
 
 
-    public ApiOperationSipCallWSDTO mapApiOperationSipCallWSDTO(SessionDBModel sessionDBModel, List<ClientPhoneDBModel> clientPhones) {
+    public ApiOperationSipCallWSDTO mapApiOperationSipCallWSDTO(SessionDBModel sessionDBModel, List<ClientPhoneDAO> clientPhones) {
 
         ApiSipAccountWSDTO sipAccountWSDTO = getApiSipAccountWSDTO(sessionDBModel.getAgentId(), sessionDBModel.getProcessId());
         if (sipAccountWSDTO != null) {
 
             ApiOperationSipCallWSDTO operationSipCall = new ApiOperationSipCallWSDTO();
             operationSipCall.setSipAccount(sipAccountWSDTO);
-            operationSipCall.setClientPhones(clientPhones);
             List<OperationSipCallDBModel> readySipCalls = operationSipCallRepository.findBySessionIdAndCallState(sessionDBModel.getId(), AppConstant.READY_CALL);
             if (!readySipCalls.isEmpty()) {
                 operationSipCall.setCurrentSipCall(readySipCalls.get(0));
@@ -236,13 +226,12 @@ public class ChannelHelper {
     }
 
 
-    public ApiOperationWappCallWSDTO mapApiOperationWappCallWSDTO(SessionDBModel sessionDBModel, List<ClientPhoneDBModel> clientPhones) {
+    public ApiOperationWappCallWSDTO mapApiOperationWappCallWSDTO(SessionDBModel sessionDBModel, List<ClientPhoneDAO> clientPhones) {
 
         ApiWappAccountWSDTO wappAccountWSDTO = getApiWappAccountWSDTO(sessionDBModel.getAgentId(), sessionDBModel.getProcessId());
         if (wappAccountWSDTO != null) {
             ApiOperationWappCallWSDTO operationWappCall = new ApiOperationWappCallWSDTO();
             operationWappCall.setWappAccount(wappAccountWSDTO);
-            operationWappCall.setClientPhones(clientPhones);
             List<OperationWappCallDBModel> readyWappCalls = operationWappCallRepository.findBySessionIdAndCallState(sessionDBModel.getId(), AppConstant.READY_CALL);
             if (!readyWappCalls.isEmpty()) {
                 operationWappCall.setCurrentWappCall(readyWappCalls.get(0));
@@ -318,14 +307,13 @@ public class ChannelHelper {
     }
 
 
-    public ApiOperationSmsMessageWSDTO mapApiOperationSmsMessageWSDTO(SessionDBModel sessionDBModel, List<ClientPhoneDBModel> clientPhones) {
+    public ApiOperationSmsMessageWSDTO mapApiOperationSmsMessageWSDTO(SessionDBModel sessionDBModel, List<ClientPhoneDAO> clientPhones) {
 
         ApiOperationSmsMessageWSDTO operationSmsMessageWSDTO = new ApiOperationSmsMessageWSDTO();
         ApiSmsAccountWSDTO smsAccountWSDTO = getApiSmsAccountWSDTO(sessionDBModel.getProcessId());
         if (smsAccountWSDTO != null){
             operationSmsMessageWSDTO.setSmsAccount(smsAccountWSDTO);
         }
-        operationSmsMessageWSDTO.setPhones(clientPhones);
         operationSmsMessageWSDTO.setSmsMessages(operationSmsMessageRepository.findBySessionId(sessionDBModel.getId()));
         operationSmsMessageWSDTO.setSmsTemps(processSmsMessageTempRepository.findByProcessId(sessionDBModel.getProcessId()));
 
@@ -357,14 +345,13 @@ public class ChannelHelper {
     }
 
 
-    public ApiOperationWappMessageWSDTO mapApiOperationWappMessageWSDTO(SessionDBModel sessionDBModel, List<ClientPhoneDBModel> clientPhones) {
+    public ApiOperationWappMessageWSDTO mapApiOperationWappMessageWSDTO(SessionDBModel sessionDBModel, List<ClientPhoneDAO> clientPhones) {
 
         ApiOperationWappMessageWSDTO operationWappMessageWSDTO = new ApiOperationWappMessageWSDTO();
         ApiWappAccountWSDTO wappAccountWSDTO = getApiWappAccountWSDTO(sessionDBModel.getAgentId(),sessionDBModel.getProcessId());
         if (wappAccountWSDTO != null){
             operationWappMessageWSDTO.setWappAccount(wappAccountWSDTO);
         }
-        operationWappMessageWSDTO.setPhones(clientPhones);
         operationWappMessageWSDTO.setWappMessages(operationWappMessageRepository.findBySessionId(sessionDBModel.getId()));
         operationWappMessageWSDTO.setWappTemps(processWappMessageTempRepository.findByProcessId(sessionDBModel.getProcessId()));
 
@@ -399,7 +386,6 @@ public class ChannelHelper {
         if (emailAccountWSDTO != null){
             operationEmailWSDTO.setEmailAccount(emailAccountWSDTO);
         }
-        operationEmailWSDTO.setEmails(clientEmailRepository.findByClientId(sessionDBModel.getClientId()));
         operationEmailWSDTO.setEmailMessages(operationEmailMessageRepository.findBySessionId(sessionDBModel.getId()));
         operationEmailWSDTO.setEmailTemps(processEmailTempRepository.findByProcessId(sessionDBModel.getProcessId()));
 

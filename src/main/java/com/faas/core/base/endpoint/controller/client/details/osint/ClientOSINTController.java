@@ -1,7 +1,7 @@
-package com.faas.core.base.endpoint.controller.client.details;
+package com.faas.core.base.endpoint.controller.client.details.osint;
 
-import com.faas.core.base.middleware.client.details.ClientOSINTMiddleware;
-import com.faas.core.base.model.ws.client.details.ClientDetailsWSModel;
+import com.faas.core.base.middleware.client.details.osint.ClientOSINTMiddleware;
+import com.faas.core.base.model.ws.client.details.osint.ClientOSINTWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-@RequestMapping(value = AppConstant.API_VERSION + "/base/client/osint/")
+@RequestMapping(value = AppConstant.API_VERSION + "/base/client/details/osint/")
 public class ClientOSINTController {
 
 
@@ -23,10 +23,10 @@ public class ClientOSINTController {
 
 
     @RequestMapping(value = BaseRoute.GET_CLIENT_OS_INTS, method = RequestMethod.POST)
-    public ResponseEntity<?> getClientOSInts(@RequestParam long userId,
+    public ResponseEntity<?> getClientOSINTS(@RequestParam long userId,
                                              @RequestParam long clientId) {
 
-        ClientDetailsWSModel response = clientOSIntMiddleware.getClientOSInts(userId, clientId);
+        ClientOSINTWSModel response = clientOSIntMiddleware.getClientOSINTS(userId, clientId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

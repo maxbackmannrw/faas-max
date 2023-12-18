@@ -1,49 +1,21 @@
-package com.faas.core.base.model.db.client.details;
+package com.faas.core.base.model.db.client.details.content.dao;
 
-import javax.persistence.*;
+public class ClientNoteDAO {
 
-@Entity
-@Table(name = "client_note_table")
-public class ClientNoteDBModel {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
-    @Column(name = "client_id")
-    private long clientId;
-
-    @Column(name = "session_id")
-    private long sessionId;
-
-    @Column(name = "creator_id")
+    private String id;
     private long creatorId;
-
-    @Column(name = "note_title")
     private String noteTitle;
-
-    @Column(name = "note_text",columnDefinition = "TEXT")
     private String noteText;
-
-    @Column(name = "note_asset",columnDefinition = "TEXT")
     private String noteAsset;
-
-    @Column(name = "u_date")
     private long uDate;
-
-    @Column(name = "c_date")
     private long cDate;
-
-    @Column(name = "status")
     private int status;
 
-    public ClientNoteDBModel() {
+    public ClientNoteDAO() {
     }
 
-    public ClientNoteDBModel(long id, long clientId, long sessionId, long creatorId, String noteTitle, String noteText, String noteAsset, long uDate, long cDate, int status) {
+    public ClientNoteDAO(String id, long creatorId, String noteTitle, String noteText, String noteAsset, long uDate, long cDate, int status) {
         this.id = id;
-        this.clientId = clientId;
-        this.sessionId = sessionId;
         this.creatorId = creatorId;
         this.noteTitle = noteTitle;
         this.noteText = noteText;
@@ -53,28 +25,12 @@ public class ClientNoteDBModel {
         this.status = status;
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
-    }
-
-    public long getClientId() {
-        return clientId;
-    }
-
-    public void setClientId(long clientId) {
-        this.clientId = clientId;
-    }
-
-    public long getSessionId() {
-        return sessionId;
-    }
-
-    public void setSessionId(long sessionId) {
-        this.sessionId = sessionId;
     }
 
     public long getCreatorId() {

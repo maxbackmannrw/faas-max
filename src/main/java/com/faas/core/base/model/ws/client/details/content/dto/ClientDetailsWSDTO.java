@@ -1,18 +1,18 @@
-package com.faas.core.api.model.ws.operation.details.client.dto;
+package com.faas.core.base.model.ws.client.details.content.dto;
 
 import com.faas.core.base.model.db.client.content.ClientDBModel;
 import com.faas.core.base.model.db.client.details.content.ClientDetailsDBModel;
 
 
-public class ApiOperationClientWSDTO {
+public class ClientDetailsWSDTO {
 
     private ClientDBModel client;
     private ClientDetailsDBModel clientDetails;
 
-    public ApiOperationClientWSDTO() {
+    public ClientDetailsWSDTO() {
     }
 
-    public ApiOperationClientWSDTO(ClientDBModel client, ClientDetailsDBModel clientDetails) {
+    public ClientDetailsWSDTO(ClientDBModel client, ClientDetailsDBModel clientDetails) {
         this.client = client;
         this.clientDetails = clientDetails;
     }

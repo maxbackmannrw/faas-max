@@ -36,20 +36,6 @@ public class ClientRemoteFramework {
     @Autowired
     ClientRepository clientRepository;
 
-    @Autowired
-    ClientAddressRepository clientAddressRepository;
-
-    @Autowired
-    ClientDataRepository clientDataRepository;
-
-    @Autowired
-    ClientEmailRepository clientEmailRepository;
-
-    @Autowired
-    ClientNoteRepository clientNoteRepository;
-
-    @Autowired
-    ClientPhoneRepository clientPhoneRepository;
 
     @Autowired
     ClientRemoteRepository clientRemoteRepository;

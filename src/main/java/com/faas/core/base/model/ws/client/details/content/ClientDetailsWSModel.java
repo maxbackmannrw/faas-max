@@ -1,19 +1,18 @@
-package com.faas.core.base.model.ws.client.details;
+package com.faas.core.base.model.ws.client.details.content;
 
-import com.faas.core.base.model.ws.client.details.dto.ClientDetailsWSDTO;
+import com.faas.core.base.model.ws.client.details.content.dto.ClientDetailsWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 
-import java.util.List;
 
 public class ClientDetailsWSModel {
 
     private GeneralWSModel general;
-    private List<ClientDetailsWSDTO>clientDetails;
+    private ClientDetailsWSDTO clientDetails;
 
     public ClientDetailsWSModel() {
     }
 
-    public ClientDetailsWSModel(GeneralWSModel general, List<ClientDetailsWSDTO> clientDetails) {
+    public ClientDetailsWSModel(GeneralWSModel general, ClientDetailsWSDTO clientDetails) {
         this.general = general;
         this.clientDetails = clientDetails;
     }
@@ -26,11 +25,11 @@ public class ClientDetailsWSModel {
         this.general = general;
     }
 
-    public List<ClientDetailsWSDTO> getClientDetails() {
+    public ClientDetailsWSDTO getClientDetails() {
         return clientDetails;
     }
 
-    public void setClientDetails(List<ClientDetailsWSDTO> clientDetails) {
+    public void setClientDetails(ClientDetailsWSDTO clientDetails) {
         this.clientDetails = clientDetails;
     }
 }

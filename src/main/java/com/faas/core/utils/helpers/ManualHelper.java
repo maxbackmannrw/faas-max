@@ -97,21 +97,6 @@ public class ManualHelper {
     ProcessPushTempRepository processPushTempRepository;
 
     @Autowired
-    ClientDataRepository clientDataRepository;
-
-    @Autowired
-    ClientAddressRepository clientAddressRepository;
-
-    @Autowired
-    ClientPhoneRepository clientPhoneRepository;
-
-    @Autowired
-    ClientEmailRepository clientEmailRepository;
-
-    @Autowired
-    ClientNoteRepository clientNoteRepository;
-
-    @Autowired
     ProcessScenarioRepository processScenarioRepository;
 
     @Autowired

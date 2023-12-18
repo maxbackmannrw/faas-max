@@ -1,56 +1,34 @@
-package com.faas.core.base.middleware.client.details;
+package com.faas.core.base.middleware.client.details.content;
 
-import com.faas.core.base.framework.client.details.ClientDetailsFramework;
-import com.faas.core.base.model.db.client.details.ClientAddressDBModel;
-import com.faas.core.base.model.db.client.details.ClientDataDBModel;
-import com.faas.core.base.model.db.client.details.ClientEmailDBModel;
-import com.faas.core.base.model.db.client.details.ClientPhoneDBModel;
-import com.faas.core.base.model.ws.client.details.*;
-import com.faas.core.base.model.ws.client.details.dto.*;
+import com.faas.core.base.framework.client.details.content.ClientDetailsFramework;
+import com.faas.core.base.model.ws.client.details.content.*;
+import com.faas.core.base.model.ws.client.details.content.dto.*;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.repo.client.details.ClientAddressRepository;
-import com.faas.core.base.repo.client.details.ClientDataRepository;
-import com.faas.core.base.repo.client.details.ClientEmailRepository;
-import com.faas.core.base.repo.client.details.ClientPhoneRepository;
 import com.faas.core.utils.config.AppConstant;
-import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Component
 public class ClientDetailsMiddleware {
 
+
     @Autowired
     ClientDetailsFramework clientDetailsFramework;
-
-    @Autowired
-    ClientDataRepository clientDataRepository;
-
-    @Autowired
-    ClientAddressRepository clientAddressRepository;
-
-    @Autowired
-    ClientPhoneRepository clientPhoneRepository;
-
-    @Autowired
-    ClientEmailRepository clientEmailRepository;
-
-    @Autowired
-    AppUtils appUtils;
 
 
     public ClientDetailsWSModel getClientDetails(long userId, long clientId) {
 
         ClientDetailsWSModel response = new ClientDetailsWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ClientDetailsWSDTO>clientDetailsWSDTOS = new ArrayList<>();
 
+        ClientDetailsWSDTO clientDetailsWSDTO = clientDetailsFramework.getClientDetailsService(userId,clientId);
+        if (clientDetailsWSDTO != null){
+            response.setClientDetails(clientDetailsWSDTO);
+        }
 
-        response.setClientDetails(clientDetailsWSDTOS);
         general.setOperation("getClientDetails");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -61,19 +39,16 @@ public class ClientDetailsMiddleware {
     }
 
 
-
     public ClientDataWSModel getClientDatas(long userId, long clientId) {
 
         ClientDataWSModel response = new ClientDataWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ClientDataWSDTO>clientDataWSDTOS = new ArrayList<>();
 
-        List<ClientDataDBModel> clientDataDBModels = clientDataRepository.findByClientId(clientId);
-        for (ClientDataDBModel clientDataDBModel : clientDataDBModels) {
-            clientDataWSDTOS.add(clientDetailsFramework.fillClientDataWSDTO(clientDataDBModel));
+        List<ClientDataWSDTO> clientDataWSDTOS = clientDetailsFramework.getClientDatasService(userId,clientId);
+        if (clientDataWSDTOS != null){
+            response.setClientDatas(clientDataWSDTOS);
         }
 
-        response.setClientDatas(clientDataWSDTOS);
         general.setOperation("getClientDatas");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -84,15 +59,15 @@ public class ClientDetailsMiddleware {
     }
 
 
-    public ClientDataWSModel getClientData(long userId,long dataId) {
+    public ClientDataWSModel getClientData(long userId,long clientId,String dataId) {
 
         ClientDataWSModel response = new ClientDataWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ClientDataWSDTO>clientDataWSDTOS = new ArrayList<>();
 
-        Optional<ClientDataDBModel> clientDataDBModel = clientDataRepository.findById(dataId);
-        if (clientDataDBModel.isPresent()) {
-            clientDataWSDTOS.add(clientDetailsFramework.fillClientDataWSDTO(clientDataDBModel.get()));
+        ClientDataWSDTO clientDataWSDTO = clientDetailsFramework.getClientDataService(userId,clientId,dataId);
+        if (clientDataWSDTO != null){
+            clientDataWSDTOS.add(clientDataWSDTO);
         }
 
         response.setClientDatas(clientDataWSDTOS);
@@ -112,9 +87,9 @@ public class ClientDetailsMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ClientDataWSDTO>clientDataWSDTOS = new ArrayList<>();
 
-        ClientDataDBModel clientDataDBModel = clientDetailsFramework.createClientDataService(clientId,typeId,value);
-        if (clientDataDBModel != null) {
-            clientDataWSDTOS.add(clientDetailsFramework.fillClientDataWSDTO(clientDataDBModel));
+        ClientDataWSDTO clientDataWSDTO = clientDetailsFramework.createClientDataService(userId,clientId,typeId,value);
+        if (clientDataWSDTO != null){
+            clientDataWSDTOS.add(clientDataWSDTO);
         }
 
         response.setClientDatas(clientDataWSDTOS);
@@ -128,15 +103,15 @@ public class ClientDetailsMiddleware {
     }
 
 
-    public ClientDataWSModel updateClientData(long userId,long dataId,long typeId,String value) {
+    public ClientDataWSModel updateClientData(long userId,long clientId,String dataId,long typeId,String value) {
 
         ClientDataWSModel response = new ClientDataWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ClientDataWSDTO>clientDataWSDTOS = new ArrayList<>();
 
-        ClientDataDBModel clientDataDBModel = clientDetailsFramework.updateClientDataService(dataId,typeId,value);
-        if (clientDataDBModel != null) {
-            clientDataWSDTOS.add(clientDetailsFramework.fillClientDataWSDTO(clientDataDBModel));
+        ClientDataWSDTO clientDataWSDTO = clientDetailsFramework.updateClientDataService(userId,clientId,dataId,typeId,value);
+        if (clientDataWSDTO != null){
+            clientDataWSDTOS.add(clientDataWSDTO);
         }
 
         response.setClientDatas(clientDataWSDTOS);
@@ -150,15 +125,15 @@ public class ClientDetailsMiddleware {
     }
 
 
-    public ClientDataWSModel removeClientData(long userId,long dataId) {
+    public ClientDataWSModel removeClientData(long userId,long clientId,String dataId) {
 
         ClientDataWSModel response = new ClientDataWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ClientDataWSDTO>clientDataWSDTOS = new ArrayList<>();
 
-        ClientDataDBModel clientDataDBModel = clientDetailsFramework.removeClientDataService(dataId);
-        if (clientDataDBModel != null) {
-            clientDataWSDTOS.add(clientDetailsFramework.fillClientDataWSDTO(clientDataDBModel));
+        ClientDataWSDTO clientDataWSDTO = clientDetailsFramework.removeClientDataService(userId,clientId,dataId);
+        if (clientDataWSDTO != null){
+            clientDataWSDTOS.add(clientDataWSDTO);
         }
 
         response.setClientDatas(clientDataWSDTOS);
@@ -178,14 +153,12 @@ public class ClientDetailsMiddleware {
 
         ClientAddressWSModel response = new ClientAddressWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ClientAddressWSDTO> clientAddressWSDTOS = new ArrayList<>();
 
-        List<ClientAddressDBModel> clientAddressDBModels = clientAddressRepository.findByClientId(clientId);
-        for (ClientAddressDBModel clientAddressDBModel : clientAddressDBModels) {
-            clientAddressWSDTOS.add(clientDetailsFramework.fillClientAddressWSDTO(clientAddressDBModel));
+        List<ClientAddressWSDTO> clientAddressWSDTOS = clientDetailsFramework.getClientAddressesService(userId,clientId);
+        if (clientAddressWSDTOS != null){
+            response.setClientAddresses(clientAddressWSDTOS);
         }
 
-        response.setClientAddresses(clientAddressWSDTOS);
         general.setOperation("getClientAddresses");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -196,15 +169,15 @@ public class ClientDetailsMiddleware {
     }
 
 
-    public ClientAddressWSModel getClientAddress(long userId,long addressId) {
+    public ClientAddressWSModel getClientAddress(long userId,long clientId,String addressId) {
 
         ClientAddressWSModel response = new ClientAddressWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ClientAddressWSDTO> clientAddressWSDTOS = new ArrayList<>();
 
-        Optional<ClientAddressDBModel> clientAddressDBModel = clientAddressRepository.findById(addressId);
-        if (clientAddressDBModel.isPresent()){
-            clientAddressWSDTOS.add(clientDetailsFramework.fillClientAddressWSDTO(clientAddressDBModel.get()));
+        ClientAddressWSDTO clientAddressWSDTO = clientDetailsFramework.getClientAddressService(userId,clientId,addressId);
+        if (clientAddressWSDTO != null){
+            clientAddressWSDTOS.add(clientAddressWSDTO);
         }
 
         response.setClientAddresses(clientAddressWSDTOS);
@@ -224,9 +197,9 @@ public class ClientDetailsMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ClientAddressWSDTO> clientAddressWSDTOS = new ArrayList<>();
 
-        ClientAddressDBModel clientAddressDBModel = clientDetailsFramework.createClientAddressService(clientId,street,city,zipCode,state,country);
-        if (clientAddressDBModel != null){
-            clientAddressWSDTOS.add(clientDetailsFramework.fillClientAddressWSDTO(clientAddressDBModel));
+        ClientAddressWSDTO clientAddressWSDTO = clientDetailsFramework.createClientAddressService(userId,clientId,street,city,zipCode,state,country);
+        if (clientAddressWSDTO != null){
+            clientAddressWSDTOS.add(clientAddressWSDTO);
         }
 
         response.setClientAddresses(clientAddressWSDTOS);
@@ -240,15 +213,15 @@ public class ClientDetailsMiddleware {
     }
 
 
-    public ClientAddressWSModel updateClientAddress(long userId,long addressId,String street,String city,String zipCode,String state,String country) {
+    public ClientAddressWSModel updateClientAddress(long userId,long clientId,String addressId,String street,String city,String zipCode,String state,String country) {
 
         ClientAddressWSModel response = new ClientAddressWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ClientAddressWSDTO> clientAddressWSDTOS = new ArrayList<>();
 
-        ClientAddressDBModel clientAddressDBModel = clientDetailsFramework.updateClientAddressService(addressId,street,city,zipCode,state,country);
-        if (clientAddressDBModel != null){
-            clientAddressWSDTOS.add(clientDetailsFramework.fillClientAddressWSDTO(clientAddressDBModel));
+        ClientAddressWSDTO clientAddressWSDTO = clientDetailsFramework.updateClientAddressService(userId,clientId,addressId,street,city,zipCode,state,country);
+        if (clientAddressWSDTO != null){
+            clientAddressWSDTOS.add(clientAddressWSDTO);
         }
 
         response.setClientAddresses(clientAddressWSDTOS);
@@ -262,15 +235,15 @@ public class ClientDetailsMiddleware {
     }
 
 
-    public ClientAddressWSModel removeClientAddress(long userId,long addressId) {
+    public ClientAddressWSModel removeClientAddress(long userId,long clientId,String addressId) {
 
         ClientAddressWSModel response = new ClientAddressWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ClientAddressWSDTO> clientAddressWSDTOS = new ArrayList<>();
 
-        ClientAddressDBModel clientAddressDBModel = clientDetailsFramework.removeClientAddressService(addressId);
-        if (clientAddressDBModel != null){
-            clientAddressWSDTOS.add(clientDetailsFramework.fillClientAddressWSDTO(clientAddressDBModel));
+        ClientAddressWSDTO clientAddressWSDTO = clientDetailsFramework.removeClientAddressService(userId,clientId,addressId);
+        if (clientAddressWSDTO != null){
+            clientAddressWSDTOS.add(clientAddressWSDTO);
         }
 
         response.setClientAddresses(clientAddressWSDTOS);
@@ -291,14 +264,12 @@ public class ClientDetailsMiddleware {
 
         ClientEmailWSModel response = new ClientEmailWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ClientEmailWSDTO> clientEmailWSDTOS = new ArrayList<>();
 
-        List<ClientEmailDBModel> clientEmailDBModels = clientEmailRepository.findByClientId(clientId);
-        for (ClientEmailDBModel clientEmailDBModel : clientEmailDBModels) {
-            clientEmailWSDTOS.add(clientDetailsFramework.fillClientEmailWSDTO(clientEmailDBModel));
+        List<ClientEmailWSDTO> clientEmailWSDTOS = clientDetailsFramework.getClientEmailsService(userId,clientId);
+        if (clientEmailWSDTOS != null){
+            response.setClientEmails(clientEmailWSDTOS);
         }
 
-        response.setClientEmails(clientEmailWSDTOS);
         general.setOperation("getClientEmails");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -309,15 +280,15 @@ public class ClientDetailsMiddleware {
     }
 
 
-    public ClientEmailWSModel getClientEmail(long userId,long emailId) {
+    public ClientEmailWSModel getClientEmail(long userId,long clientId,String emailId) {
 
         ClientEmailWSModel response = new ClientEmailWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ClientEmailWSDTO> clientEmailWSDTOS = new ArrayList<>();
 
-        Optional<ClientEmailDBModel> clientEmailDBModel = clientEmailRepository.findById(emailId);
-        if (clientEmailDBModel.isPresent()){
-            clientEmailWSDTOS.add(clientDetailsFramework.fillClientEmailWSDTO(clientEmailDBModel.get()));
+        ClientEmailWSDTO clientEmailWSDTO = clientDetailsFramework.getClientEmailService(userId,clientId,emailId);
+        if (clientEmailWSDTO != null){
+            clientEmailWSDTOS.add(clientEmailWSDTO);
         }
 
         response.setClientEmails(clientEmailWSDTOS);
@@ -337,9 +308,9 @@ public class ClientDetailsMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ClientEmailWSDTO> clientEmailWSDTOS = new ArrayList<>();
 
-        ClientEmailDBModel clientEmailDBModel = clientDetailsFramework.createClientEmailService(clientId,emailAddress);
-        if (clientEmailDBModel != null){
-            clientEmailWSDTOS.add(clientDetailsFramework.fillClientEmailWSDTO(clientEmailDBModel));
+        ClientEmailWSDTO clientEmailWSDTO = clientDetailsFramework.createClientEmailService(userId,clientId,emailAddress);
+        if (clientEmailWSDTO != null){
+            clientEmailWSDTOS.add(clientEmailWSDTO);
         }
 
         response.setClientEmails(clientEmailWSDTOS);
@@ -353,15 +324,15 @@ public class ClientDetailsMiddleware {
     }
 
 
-    public ClientEmailWSModel updateClientEmail(long userId,long emailId,String emailAddress) {
+    public ClientEmailWSModel updateClientEmail(long userId,long clientId,String emailId,String emailAddress) {
 
         ClientEmailWSModel response = new ClientEmailWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ClientEmailWSDTO> clientEmailWSDTOS = new ArrayList<>();
 
-        ClientEmailDBModel clientEmailDBModel = clientDetailsFramework.updateClientEmailService(emailId,emailAddress);
-        if (clientEmailDBModel != null){
-            clientEmailWSDTOS.add(clientDetailsFramework.fillClientEmailWSDTO(clientEmailDBModel));
+        ClientEmailWSDTO clientEmailWSDTO = clientDetailsFramework.updateClientEmailService(userId,clientId,emailId,emailAddress);
+        if (clientEmailWSDTO != null){
+            clientEmailWSDTOS.add(clientEmailWSDTO);
         }
 
         response.setClientEmails(clientEmailWSDTOS);
@@ -375,15 +346,15 @@ public class ClientDetailsMiddleware {
     }
 
 
-    public ClientEmailWSModel removeClientEmail(long userId,long emailId) {
+    public ClientEmailWSModel removeClientEmail(long userId,long clientId,String emailId) {
 
         ClientEmailWSModel response = new ClientEmailWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ClientEmailWSDTO> clientEmailWSDTOS = new ArrayList<>();
 
-        ClientEmailDBModel clientEmailDBModel = clientDetailsFramework.removeClientEmailService(emailId);
-        if (clientEmailDBModel != null){
-            clientEmailWSDTOS.add(clientDetailsFramework.fillClientEmailWSDTO(clientEmailDBModel));
+        ClientEmailWSDTO clientEmailWSDTO = clientDetailsFramework.removeClientEmailService(userId,clientId,emailId);
+        if (clientEmailWSDTO != null){
+            clientEmailWSDTOS.add(clientEmailWSDTO);
         }
 
         response.setClientEmails(clientEmailWSDTOS);
@@ -403,14 +374,12 @@ public class ClientDetailsMiddleware {
 
         ClientPhoneWSModel response = new ClientPhoneWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ClientPhoneWSDTO> clientPhoneWSDTOS = new ArrayList<>();
 
-        List<ClientPhoneDBModel> clientPhoneDBModels = clientPhoneRepository.findByClientId(clientId);
-        for (ClientPhoneDBModel clientPhoneDBModel : clientPhoneDBModels) {
-            clientPhoneWSDTOS.add(clientDetailsFramework.fillClientPhoneWSDTO(clientPhoneDBModel));
+        List<ClientPhoneWSDTO> clientPhoneWSDTOS = clientDetailsFramework.getClientPhonesService(userId,clientId);
+        if (clientPhoneWSDTOS != null){
+            response.setClientPhones(clientPhoneWSDTOS);
         }
 
-        response.setClientPhones(clientPhoneWSDTOS);
         general.setOperation("getClientPhones");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -420,15 +389,15 @@ public class ClientDetailsMiddleware {
         return response;
     }
 
-    public ClientPhoneWSModel getClientPhone(long userId,long numberId) {
+    public ClientPhoneWSModel getClientPhone(long userId,long clientId,String numberId) {
 
         ClientPhoneWSModel response = new ClientPhoneWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ClientPhoneWSDTO> clientPhoneWSDTOS = new ArrayList<>();
 
-        Optional<ClientPhoneDBModel> clientPhoneDBModel = clientPhoneRepository.findById(numberId);
-        if (clientPhoneDBModel.isPresent()) {
-            clientPhoneWSDTOS.add(clientDetailsFramework.fillClientPhoneWSDTO(clientPhoneDBModel.get()));
+        ClientPhoneWSDTO clientPhoneWSDTO = clientDetailsFramework.getClientPhoneService(userId,clientId,numberId);
+        if (clientPhoneWSDTO != null){
+            clientPhoneWSDTOS.add(clientPhoneWSDTO);
         }
 
         response.setClientPhones(clientPhoneWSDTOS);
@@ -448,9 +417,9 @@ public class ClientDetailsMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ClientPhoneWSDTO> clientPhoneWSDTOS = new ArrayList<>();
 
-        ClientPhoneDBModel clientPhoneDBModel = clientDetailsFramework.createClientPhoneService(clientId,phoneNumber,phoneCarrier);
-        if (clientPhoneDBModel != null) {
-            clientPhoneWSDTOS.add(clientDetailsFramework.fillClientPhoneWSDTO(clientPhoneDBModel));
+        ClientPhoneWSDTO clientPhoneWSDTO = clientDetailsFramework.createClientPhoneService(userId,clientId,phoneNumber,phoneCarrier);
+        if (clientPhoneWSDTO != null){
+            clientPhoneWSDTOS.add(clientPhoneWSDTO);
         }
 
         response.setClientPhones(clientPhoneWSDTOS);
@@ -464,15 +433,15 @@ public class ClientDetailsMiddleware {
     }
 
 
-    public ClientPhoneWSModel updateClientPhone(long userId,long numberId,String phoneNumber,String phoneCarrier) {
+    public ClientPhoneWSModel updateClientPhone(long userId,long clientId,String numberId,String phoneNumber,String phoneCarrier) {
 
         ClientPhoneWSModel response = new ClientPhoneWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ClientPhoneWSDTO> clientPhoneWSDTOS = new ArrayList<>();
 
-        ClientPhoneDBModel clientPhoneDBModel = clientDetailsFramework.updateClientPhoneService(numberId,phoneNumber,phoneCarrier);
-        if (clientPhoneDBModel != null) {
-            clientPhoneWSDTOS.add(clientDetailsFramework.fillClientPhoneWSDTO(clientPhoneDBModel));
+        ClientPhoneWSDTO clientPhoneWSDTO = clientDetailsFramework.updateClientPhoneService(userId,clientId,numberId,phoneNumber,phoneCarrier);
+        if (clientPhoneWSDTO != null){
+            clientPhoneWSDTOS.add(clientPhoneWSDTO);
         }
 
         response.setClientPhones(clientPhoneWSDTOS);
@@ -486,15 +455,15 @@ public class ClientDetailsMiddleware {
     }
 
 
-    public ClientPhoneWSModel removeClientPhone(long userId,long numberId) {
+    public ClientPhoneWSModel removeClientPhone(long userId,long clientId,String numberId) {
 
         ClientPhoneWSModel response = new ClientPhoneWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ClientPhoneWSDTO> clientPhoneWSDTOS = new ArrayList<>();
 
-        ClientPhoneDBModel clientPhoneDBModel = clientDetailsFramework.removeClientPhoneService(numberId);
-        if (clientPhoneDBModel != null) {
-            clientPhoneWSDTOS.add(clientDetailsFramework.fillClientPhoneWSDTO(clientPhoneDBModel));
+        ClientPhoneWSDTO clientPhoneWSDTO = clientDetailsFramework.removeClientPhoneService(userId,clientId,numberId);
+        if (clientPhoneWSDTO != null){
+            clientPhoneWSDTOS.add(clientPhoneWSDTO);
         }
 
         response.setClientPhones(clientPhoneWSDTOS);

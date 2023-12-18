@@ -1,23 +1,23 @@
 package com.faas.core.api.model.ws.client.details.dto;
 
-import com.faas.core.base.model.db.client.details.ClientNoteDBModel;
+import com.faas.core.base.model.db.client.details.content.dao.ClientNoteDAO;
 
 public class ApiClientNoteWSDTO {
 
-    private ClientNoteDBModel clientNote;
+    private ClientNoteDAO clientNote;
 
     public ApiClientNoteWSDTO() {
     }
 
-    public ApiClientNoteWSDTO(ClientNoteDBModel clientNote) {
+    public ApiClientNoteWSDTO(ClientNoteDAO clientNote) {
         this.clientNote = clientNote;
     }
 
-    public ClientNoteDBModel getClientNote() {
+    public ClientNoteDAO getClientNote() {
         return clientNote;
     }
 
-    public void setClientNote(ClientNoteDBModel clientNote) {
+    public void setClientNote(ClientNoteDAO clientNote) {
         this.clientNote = clientNote;
     }
 }

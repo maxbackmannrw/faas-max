@@ -32,21 +32,6 @@ public class ClientSessionFramework {
     ClientRepository clientRepository;
 
     @Autowired
-    ClientDataRepository clientDataRepository;
-
-    @Autowired
-    ClientNoteRepository clientNoteRepository;
-
-    @Autowired
-    ClientAddressRepository clientAddressRepository;
-
-    @Autowired
-    ClientPhoneRepository clientPhoneRepository;
-
-    @Autowired
-    ClientEmailRepository clientEmailRepository;
-
-    @Autowired
     AppUtils appUtils;
 
 
@@ -58,11 +43,7 @@ public class ClientSessionFramework {
 
         if (clientDBModel.isPresent()){
             sessionWSDTO.setClient(clientDBModel.get());
-            sessionWSDTO.setClientDatas(clientDataRepository.findByClientId(clientDBModel.get().getId()));
-            sessionWSDTO.setClientNotes(clientNoteRepository.findByClientId(clientDBModel.get().getId()));
-            sessionWSDTO.setClientAddresses(clientAddressRepository.findByClientId(clientDBModel.get().getId()));
-            sessionWSDTO.setClientPhones(clientPhoneRepository.findByClientId(clientDBModel.get().getId()));
-            sessionWSDTO.setClientEmails(clientEmailRepository.findByClientId(clientDBModel.get().getId()));
+
         }
         return sessionWSDTO;
     }

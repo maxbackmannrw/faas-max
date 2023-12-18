@@ -1,13 +1,17 @@
 package com.faas.core.utils.helpers;
 
 import com.faas.core.base.model.db.client.content.ClientDBModel;
+import com.faas.core.base.model.db.client.details.content.ClientDetailsDBModel;
+import com.faas.core.base.model.db.client.details.content.dao.ClientAddressDAO;
+import com.faas.core.base.model.db.client.details.content.dao.ClientEmailDAO;
+import com.faas.core.base.model.db.client.details.content.dao.ClientPhoneDAO;
 import com.faas.core.base.model.ws.campaign.details.client.content.dto.CampaignClientWSDTO;
 import com.faas.core.base.model.ws.client.content.dto.ClientWSDTO;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;
-import com.faas.core.base.repo.client.details.*;
+import com.faas.core.base.repo.client.details.ClientDetailsRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.operation.details.channel.*;
 import com.faas.core.base.repo.process.content.ProcessRepository;
@@ -31,28 +35,19 @@ public class ClientHelper {
     ProcessRepository processRepository;
 
     @Autowired
-    ClientPhoneRepository clientPhoneRepository;
-
-    @Autowired
     ClientRepository clientRepository;
 
     @Autowired
-    ClientDataRepository clientDataRepository;
-
-    @Autowired
-    ClientNoteRepository clientNoteRepository;
-
-    @Autowired
-    ClientAddressRepository clientAddressRepository;
-
-    @Autowired
-    ClientEmailRepository clientEmailRepository;
+    ClientDetailsRepository clientDetailsRepository;
 
     @Autowired
     CampaignAgentRepository campaignAgentRepository;
 
     @Autowired
     ClientRemoteRepository clientRemoteRepository;
+
+    @Autowired
+    CampaignRepository campaignRepository;
 
     @Autowired
     OperationRepository operationRepository;
@@ -76,20 +71,77 @@ public class ClientHelper {
     OperationWappMessageRepository operationWappMessageRepository;
 
     @Autowired
-    CampaignRepository campaignRepository;
-
-    @Autowired
     AppUtils appUtils;
+
+    public ClientDetailsDBModel createClientDetails(ClientDBModel clientDBModel){
+
+        if (!clientDetailsRepository.existsByClientId(clientDBModel.getId())){
+
+            ClientDetailsDBModel clientDetailsDBModel = new ClientDetailsDBModel();
+            clientDetailsDBModel.setClientId(clientDBModel.getId());
+            clientDetailsDBModel.setClientNotes(new ArrayList<>());
+            clientDetailsDBModel.setClientDatas(new ArrayList<>());
+
+            if (clientDBModel.getPhoneNumber() != null){
+                List<ClientPhoneDAO>clientPhoneDAOS = new ArrayList<>();
+                clientPhoneDAOS.add(createClientPhoneDAO(clientDBModel.getPhoneNumber(),"UNKNOWN"));
+                clientDetailsDBModel.setClientPhones(clientPhoneDAOS);
+            }else {
+                clientDetailsDBModel.setClientPhones(new ArrayList<>());
+            }
+
+            if (clientDBModel.getEmailAddress() != null){
+                List<ClientEmailDAO>clientEmailDAOS = new ArrayList<>();
+                clientEmailDAOS.add(createClientEmailDAO(clientDBModel.getEmailAddress()));
+                clientDetailsDBModel.setClientEmails(clientEmailDAOS);
+            }else {
+                clientDetailsDBModel.setClientEmails(new ArrayList<>());
+            }
+
+            if (clientDBModel.getClientCountry() != null){
+                List<ClientAddressDAO>clientAddressDAOS = new ArrayList<>();
+                clientAddressDAOS.add(createClientAddressDAO("",clientDBModel.getClientCity(),"","",clientDBModel.getClientCountry()));
+                clientDetailsDBModel.setClientAddresses(clientAddressDAOS);
+            }else {
+                clientDetailsDBModel.setClientAddresses(new ArrayList<>());
+            }
+            clientDetailsDBModel.setuDate(appUtils.getCurrentTimeStamp());
+            clientDetailsDBModel.setcDate(appUtils.getCurrentTimeStamp());
+            clientDetailsDBModel.setStatus(1);
+
+            return clientDetailsRepository.save(clientDetailsDBModel);
+
+        }
+        return null;
+    }
+
+
+    public ClientPhoneDAO createClientPhoneDAO(String phoneNumber,String phoneCarrier){
+
+        ClientPhoneDAO clientPhoneDAO = new ClientPhoneDAO();
+
+        return clientPhoneDAO;
+    }
+
+
+    public ClientEmailDAO createClientEmailDAO(String emailAddress){
+
+        ClientEmailDAO clientEmailDAO = new ClientEmailDAO();
+
+        return clientEmailDAO;
+    }
+
+
+    public ClientAddressDAO createClientAddressDAO(String street,String city,String zipCode,String state,String country){
+
+        ClientAddressDAO clientAddressDAO = new ClientAddressDAO();
+
+        return clientAddressDAO;
+    }
 
 
     public ClientDBModel deleteClient(ClientDBModel clientDBModel){
 
-        clientDataRepository.deleteAll(clientDataRepository.findByClientId(clientDBModel.getId()));
-        clientAddressRepository.deleteAll(clientAddressRepository.findByClientId(clientDBModel.getId()));
-        clientPhoneRepository.deleteAll(clientPhoneRepository.findByClientId(clientDBModel.getId()));
-        clientEmailRepository.deleteAll(clientEmailRepository.findByClientId(clientDBModel.getId()));
-        clientRemoteRepository.deleteAll(clientRemoteRepository.findByClientId(clientDBModel.getId()));
-        clientNoteRepository.deleteAll(clientNoteRepository.findByClientId(clientDBModel.getId()));
         sessionRepository.deleteAll(sessionRepository.findByClientId(clientDBModel.getId()));
         operationRepository.deleteAll(operationRepository.findByClientId(clientDBModel.getId()));
         operationEmailMessageRepository.deleteAll(operationEmailMessageRepository.findByClientId(clientDBModel.getId()));
@@ -98,6 +150,8 @@ public class ClientHelper {
         operationSmsMessageRepository.deleteAll(operationSmsMessageRepository.findByClientId(clientDBModel.getId()));
         operationWappCallRepository.deleteAll(operationWappCallRepository.findByClientId(clientDBModel.getId()));
         operationWappMessageRepository.deleteAll(operationWappMessageRepository.findByClientId(clientDBModel.getId()));
+        clientRemoteRepository.deleteAll(clientRemoteRepository.findByClientId(clientDBModel.getId()));
+        clientDetailsRepository.deleteAll(clientDetailsRepository.findByClientId(clientDBModel.getId()));
         clientRepository.delete(clientDBModel);
 
         return clientDBModel;

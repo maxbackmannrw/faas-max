@@ -1,72 +1,37 @@
-package com.faas.core.base.model.db.client.details;
+package com.faas.core.base.model.db.client.details.content.dao;
 
-import javax.persistence.*;
 
-@Entity
-@Table(name = "client_address_table")
-public class ClientAddressDBModel {
+public class ClientAddressDAO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
-    @Column(name = "client_id")
-    private long clientId;
-
-    @Column(name = "street")
+    private String id;
     private String street;
-
-    @Column(name = "city")
     private String city;
-
-    @Column(name = "zipCode")
     private String zipCode;
-
-    @Column(name = "state")
     private String state;
-
-    @Column(name = "country")
     private String country;
-
-    @Column(name = "u_date")
-    private long uDate;
-
-    @Column(name = "c_date")
     private long cDate;
-
-    @Column(name = "status")
     private int status;
 
-    public ClientAddressDBModel() {
+    public ClientAddressDAO() {
     }
 
-    public ClientAddressDBModel(long id, long clientId, String street, String city, String zipCode, String state, String country, long uDate, long cDate, int status) {
+    public ClientAddressDAO(String id, String street, String city, String zipCode, String state, String country, long cDate, int status) {
         this.id = id;
-        this.clientId = clientId;
         this.street = street;
         this.city = city;
         this.zipCode = zipCode;
         this.state = state;
         this.country = country;
-        this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
-    }
-
-    public long getClientId() {
-        return clientId;
-    }
-
-    public void setClientId(long clientId) {
-        this.clientId = clientId;
     }
 
     public String getStreet() {
@@ -107,14 +72,6 @@ public class ClientAddressDBModel {
 
     public void setCountry(String country) {
         this.country = country;
-    }
-
-    public long getuDate() {
-        return uDate;
-    }
-
-    public void setuDate(long uDate) {
-        this.uDate = uDate;
     }
 
     public long getcDate() {

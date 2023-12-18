@@ -41,22 +41,7 @@ public class SessionHelper {
     ProcessRepository processRepository;
 
     @Autowired
-    ClientPhoneRepository clientPhoneRepository;
-
-    @Autowired
     ClientRepository clientRepository;
-
-    @Autowired
-    ClientDataRepository clientDataRepository;
-
-    @Autowired
-    ClientNoteRepository clientNoteRepository;
-
-    @Autowired
-    ClientAddressRepository clientAddressRepository;
-
-    @Autowired
-    ClientEmailRepository clientEmailRepository;
 
     @Autowired
     CampaignAgentRepository campaignAgentRepository;
@@ -106,11 +91,6 @@ public class SessionHelper {
             Optional<ClientDBModel> clientDBModel = clientRepository.findById(sessionDBModel.getClientId());
             if (clientDBModel.isPresent()){
                 sessionWSDTO.setClient(clientDBModel.get());
-                sessionWSDTO.setClientDatas(clientDataRepository.findByClientId(clientDBModel.get().getId()));
-                sessionWSDTO.setClientNotes(clientNoteRepository.findByClientId(clientDBModel.get().getId()));
-                sessionWSDTO.setClientAddresses(clientAddressRepository.findByClientId(clientDBModel.get().getId()));
-                sessionWSDTO.setClientPhones(clientPhoneRepository.findByClientId(clientDBModel.get().getId()));
-                sessionWSDTO.setClientEmails(clientEmailRepository.findByClientId(clientDBModel.get().getId()));
             }
             sessionWSDTOS.add(sessionWSDTO);
         }
@@ -124,11 +104,7 @@ public class SessionHelper {
         Optional<ClientDBModel> clientDBModel = clientRepository.findById(sessionDBModel.getClientId());
         if (clientDBModel.isPresent()){
             sessionWSDTO.setClient(clientDBModel.get());
-            sessionWSDTO.setClientDatas(clientDataRepository.findByClientId(clientDBModel.get().getId()));
-            sessionWSDTO.setClientNotes(clientNoteRepository.findByClientId(clientDBModel.get().getId()));
-            sessionWSDTO.setClientAddresses(clientAddressRepository.findByClientId(clientDBModel.get().getId()));
-            sessionWSDTO.setClientPhones(clientPhoneRepository.findByClientId(clientDBModel.get().getId()));
-            sessionWSDTO.setClientEmails(clientEmailRepository.findByClientId(clientDBModel.get().getId()));
+
         }
         return sessionWSDTO;
     }

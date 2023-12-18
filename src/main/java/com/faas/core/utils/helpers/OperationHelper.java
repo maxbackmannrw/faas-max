@@ -20,8 +20,6 @@ import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationDeta
 import com.faas.core.api.model.ws.operation.details.scenario.dto.ApiOperationScenarioWSDTO;
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.client.content.ClientDBModel;
-import com.faas.core.base.model.db.client.details.ClientNoteDBModel;
-import com.faas.core.base.model.db.client.details.ClientPhoneDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.operation.details.flow.OperationFlowDBModel;
@@ -121,21 +119,6 @@ public class OperationHelper {
 
     @Autowired
     ProcessPushTempRepository processPushTempRepository;
-
-    @Autowired
-    ClientDataRepository clientDataRepository;
-
-    @Autowired
-    ClientAddressRepository clientAddressRepository;
-
-    @Autowired
-    ClientPhoneRepository clientPhoneRepository;
-
-    @Autowired
-    ClientEmailRepository clientEmailRepository;
-
-    @Autowired
-    ClientNoteRepository clientNoteRepository;
 
     @Autowired
     ProcessScenarioRepository processScenarioRepository;
@@ -368,10 +351,6 @@ public class OperationHelper {
 
         ApiOperationClientWSDTO operationClientWSDTO = new ApiOperationClientWSDTO();
         operationClientWSDTO.setClient(clientDBModel);
-        operationClientWSDTO.setClientDatas(clientDataRepository.findByClientId(clientDBModel.getId()));
-        operationClientWSDTO.setClientAddresses(clientAddressRepository.findByClientId(clientDBModel.getId()));
-        operationClientWSDTO.setClientPhones(clientPhoneRepository.findByClientId(clientDBModel.getId()));
-        operationClientWSDTO.setClientEmails(clientEmailRepository.findByClientId(clientDBModel.getId()));
 
         return operationClientWSDTO;
     }
@@ -406,10 +385,6 @@ public class OperationHelper {
     public List<ApiClientNoteWSDTO> mapApiOperationNoteWSDTO(ClientDBModel clientDBModel) {
 
         List<ApiClientNoteWSDTO> clientNoteWSDTOS = new ArrayList<>();
-        List<ClientNoteDBModel> clientNoteDBModels = clientNoteRepository.findByClientId(clientDBModel.getId());
-        for (ClientNoteDBModel clientNoteDBModel : clientNoteDBModels) {
-            clientNoteWSDTOS.add(new ApiClientNoteWSDTO(clientNoteDBModel));
-        }
         return clientNoteWSDTOS;
     }
 
@@ -455,12 +430,8 @@ public class OperationHelper {
 
     public ApiOperationChannelWSDTO mapApiOperationChannelWSDTO(SessionDBModel sessionDBModel, ClientDBModel clientDBModel) {
 
-        List<ClientPhoneDBModel> clientPhoneDBModels = clientPhoneRepository.findByClientId(clientDBModel.getId());
         ApiOperationChannelWSDTO operationChannelWSDTO = new ApiOperationChannelWSDTO();
-        operationChannelWSDTO.setOperationSipCall(channelHelper.mapApiOperationSipCallWSDTO(sessionDBModel,clientPhoneDBModels));
-        operationChannelWSDTO.setOperationWappCall(channelHelper.mapApiOperationWappCallWSDTO(sessionDBModel,clientPhoneDBModels));
-        operationChannelWSDTO.setOperationSmsMessage(channelHelper.mapApiOperationSmsMessageWSDTO(sessionDBModel,clientPhoneDBModels));
-        operationChannelWSDTO.setOperationWappMessage(channelHelper.mapApiOperationWappMessageWSDTO(sessionDBModel,clientPhoneDBModels));
+
         operationChannelWSDTO.setOperationPushMessage(channelHelper.mapApiOperationPushMessageWSDTO(sessionDBModel));
         operationChannelWSDTO.setOperationEmail(channelHelper.mapApiOperationEmailWSDTO(sessionDBModel));
 

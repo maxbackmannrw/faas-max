@@ -1,21 +1,19 @@
 package com.faas.core.base.framework.client.content;
 
-import com.faas.core.base.framework.client.details.ClientDetailsFramework;
 import com.faas.core.base.model.db.client.content.ClientDBModel;
 import com.faas.core.base.model.db.client.settings.ClientTypeDBModel;
 import com.faas.core.base.model.db.utility.CityDBModel;
 import com.faas.core.base.model.db.utility.CountryDBModel;
 import com.faas.core.base.model.ws.client.content.dto.AllClientWSDTO;
-import com.faas.core.base.model.ws.client.content.dto.ClientWSDTO;
 import com.faas.core.base.model.ws.client.content.dto.ClientListWSDTO;
+import com.faas.core.base.model.ws.client.content.dto.ClientWSDTO;
 import com.faas.core.base.model.ws.client.content.dto.CreateClientRequestDTO;
 import com.faas.core.base.repo.client.content.ClientRepository;
-import com.faas.core.base.repo.client.details.*;
+import com.faas.core.base.repo.client.details.ClientDetailsRepository;
 import com.faas.core.base.repo.client.settings.ClientTypeRepository;
-import com.faas.core.base.repo.operation.details.channel.*;
-import com.faas.core.base.repo.remote.client.ClientRemoteRepository;
-import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
+import com.faas.core.base.repo.operation.details.channel.*;
+import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.base.repo.utility.CityRepository;
 import com.faas.core.base.repo.utility.CountryRepository;
 import com.faas.core.utils.config.AppConstant;
@@ -41,25 +39,7 @@ public class ClientFramework {
     ClientRepository clientRepository;
 
     @Autowired
-    ClientDetailsFramework clientDetailsFramework;
-
-    @Autowired
-    ClientDataRepository clientDataRepository;
-
-    @Autowired
-    ClientEmailRepository clientEmailRepository;
-
-    @Autowired
-    ClientPhoneRepository clientPhoneRepository;
-
-    @Autowired
-    ClientAddressRepository clientAddressRepository;
-
-    @Autowired
-    ClientRemoteRepository clientRemoteRepository;
-
-    @Autowired
-    ClientNoteRepository clientNoteRepository;
+    ClientDetailsRepository clientDetailsRepository;
 
     @Autowired
     ClientTypeRepository clientTypeRepository;
@@ -158,7 +138,8 @@ public class ClientFramework {
 
     public ClientWSDTO createClientService(String clientName,String nationalId,String phoneNumber,String emailAddress,String clientCity,String clientCountry,long clientTypeId) {
 
-        if (clientRepository.findByPhoneNumber(phoneNumber).isEmpty()){
+        Optional<ClientTypeDBModel> clientTypeDBModel = clientTypeRepository.findById(clientTypeId);
+        if (clientRepository.findByPhoneNumber(phoneNumber).isEmpty() && clientTypeDBModel.isPresent()){
 
             ClientDBModel clientDBModel = new ClientDBModel();
             clientDBModel.setClientName(clientName);
@@ -167,23 +148,18 @@ public class ClientFramework {
             clientDBModel.setEmailAddress(emailAddress);
             clientDBModel.setClientCity(clientCity.toUpperCase());
             clientDBModel.setClientCountry(clientCountry.toUpperCase());
-
-            Optional<ClientTypeDBModel> clientTypeDBModel = clientTypeRepository.findById(clientTypeId);
-            if (clientTypeDBModel.isPresent()) {
-                clientDBModel.setClientTypeId(clientTypeId);
-                clientDBModel.setClientType(clientTypeDBModel.get().getClientType());
-            }
-
+            clientDBModel.setClientTypeId(clientTypeId);
+            clientDBModel.setClientType(clientTypeDBModel.get().getClientType());
             clientDBModel.setClientState(AppConstant.READY_CLIENT);
             clientDBModel.setuDate(appUtils.getCurrentTimeStamp());
             clientDBModel.setcDate(appUtils.getCurrentTimeStamp());
             clientDBModel.setStatus(1);
 
-            ClientDBModel createdClient = clientRepository.save(clientDBModel);
-            createClientDetailsService(createdClient);
-            checkAndInsertCityAndCountry(createdClient);
+            clientDBModel = clientRepository.save(clientDBModel);
+            clientHelper.createClientDetails(clientDBModel);
+            checkAndInsertCityAndCountry(clientDBModel);
 
-            return fillClientWSDTO(createdClient);
+            return fillClientWSDTO(clientDBModel);
         }
         return null;
     }
@@ -192,37 +168,34 @@ public class ClientFramework {
 
         List<ClientWSDTO> clientWSDTOS = new ArrayList<>();
         for (CreateClientRequestDTO clientRequestDTO : clientRequestDTOS) {
-            if (clientRepository.findByPhoneNumber(clientRequestDTO.getPhoneNumber()).isEmpty()) {
+            List<ClientTypeDBModel> clientTypeDBModels = clientTypeRepository.findByClientType(clientRequestDTO.getClientType());
+            if (clientRepository.findByPhoneNumber(clientRequestDTO.getPhoneNumber()).isEmpty() && !clientTypeDBModels.isEmpty()) {
 
                 ClientDBModel clientDBModel = new ClientDBModel();
-
                 clientDBModel.setClientName(clientRequestDTO.getClientName());
                 clientDBModel.setNationalId(clientRequestDTO.getNationalId());
                 clientDBModel.setPhoneNumber(clientRequestDTO.getPhoneNumber());
                 clientDBModel.setEmailAddress(clientRequestDTO.getEmailAddress());
                 clientDBModel.setClientCity(clientRequestDTO.getClientCity().toUpperCase());
                 clientDBModel.setClientCountry(clientRequestDTO.getClientCountry().toUpperCase());
-
-                List<ClientTypeDBModel> clientTypeDBModels = clientTypeRepository.findByClientType(clientRequestDTO.getClientType());
-                if (!clientTypeDBModels.isEmpty()) {
-                    clientDBModel.setClientTypeId(clientTypeDBModels.get(0).getId());
-                    clientDBModel.setClientType(clientTypeDBModels.get(0).getClientType());
-                }
-
+                clientDBModel.setClientTypeId(clientTypeDBModels.get(0).getId());
+                clientDBModel.setClientType(clientTypeDBModels.get(0).getClientType());
                 clientDBModel.setClientState(AppConstant.READY_CLIENT);
                 clientDBModel.setuDate(appUtils.getCurrentTimeStamp());
                 clientDBModel.setcDate(appUtils.getCurrentTimeStamp());
                 clientDBModel.setStatus(1);
 
-                ClientDBModel createdClient = clientRepository.save(clientDBModel);
-                createClientDetailsService(createdClient);
-                checkAndInsertCityAndCountry(createdClient);
+                clientDBModel = clientRepository.save(clientDBModel);
+                clientHelper.createClientDetails(clientDBModel);
+                checkAndInsertCityAndCountry(clientDBModel);
 
-                clientWSDTOS.add(fillClientWSDTO(createdClient));
+                clientWSDTOS.add(fillClientWSDTO(clientDBModel));
             }
         }
         return clientWSDTOS;
     }
+
+
 
     public void checkAndInsertCityAndCountry(ClientDBModel clientDBModel){
 
@@ -247,18 +220,8 @@ public class ClientFramework {
 
             countryRepository.save(countryDBModel);
         }
-
     }
 
-    public void createClientDetailsService(ClientDBModel clientDBModel){
-
-        if (clientDBModel.getPhoneNumber() != null && !clientDBModel.getPhoneNumber().equalsIgnoreCase("")){
-            clientDetailsFramework.createClientPhoneService(clientDBModel.getId(),clientDBModel.getPhoneNumber(),"UNKNOWN");
-        }
-        if (clientDBModel.getEmailAddress() != null && !clientDBModel.getEmailAddress().equalsIgnoreCase("")){
-            clientDetailsFramework.createClientEmailService(clientDBModel.getId(),clientDBModel.getEmailAddress());
-        }
-    }
 
 
     public ClientWSDTO updateClientService(long clientId,String clientName,String nationalId,String phoneNumber,String emailAddress,String clientCity,String clientCountry,long clientTypeId) {
