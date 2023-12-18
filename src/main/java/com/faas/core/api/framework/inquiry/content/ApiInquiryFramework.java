@@ -7,7 +7,6 @@ import com.faas.core.api.model.ws.inquiry.content.dto.ApiInquiryWSDTO;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
-import com.faas.core.base.repo.operation.details.inquiry.OperationInquiryRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utils.config.AppConstant;
@@ -33,9 +32,6 @@ public class ApiInquiryFramework {
     OperationRepository operationRepository;
 
     @Autowired
-    OperationInquiryRepository operationInquiryRepository;
-
-    @Autowired
     CampaignAgentRepository campaignAgentRepository;
 
     @Autowired
@@ -45,8 +41,6 @@ public class ApiInquiryFramework {
     public ApiAgentInquiryWSDTO apiGetAgentInquiriesService(long agentId, int reqPage, int reqSize){
 
         ApiAgentInquiryWSDTO agentOperationInquiryWSDTO = new ApiAgentInquiryWSDTO();
-        agentOperationInquiryWSDTO.setReadyInquiry(inquiryHelper.getApiOperationInquiryWSDTO(operationInquiryRepository.findAllByAgentIdAndInquiryState(agentId,AppConstant.READY_INQUIRY, PageRequest.of(reqPage,reqSize))));
-        agentOperationInquiryWSDTO.setActiveInquiry(inquiryHelper.getApiOperationInquiryWSDTO(operationInquiryRepository.findAllByAgentIdAndInquiryState(agentId,AppConstant.ACTIVE_INQUIRY,PageRequest.of(reqPage,reqSize))));
         return agentOperationInquiryWSDTO;
     }
 

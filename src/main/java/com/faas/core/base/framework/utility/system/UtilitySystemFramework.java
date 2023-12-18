@@ -8,15 +8,11 @@ import com.faas.core.base.repo.asset.content.AssetRepository;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;
-import com.faas.core.base.repo.client.details.*;
 import com.faas.core.base.repo.process.details.trigger.*;
 import com.faas.core.base.repo.remote.client.ClientRemoteRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.base.repo.operation.details.channel.*;
 import com.faas.core.base.repo.operation.content.OperationRepository;
-import com.faas.core.base.repo.operation.details.flow.OperationFlowRepository;
-import com.faas.core.base.repo.operation.details.inquiry.OperationInquiryRepository;
-import com.faas.core.base.repo.operation.details.scenario.OperationScenarioRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.process.details.channel.content.*;
 import com.faas.core.base.repo.process.details.channel.temp.ProcessEmailTempRepository;
@@ -56,9 +52,6 @@ public class UtilitySystemFramework {
     OperationRepository operationRepository;
 
     @Autowired
-    OperationScenarioRepository operationScenarioRepository;
-
-    @Autowired
     OperationEmailMessageRepository operationEmailMessageRepository;
 
     @Autowired
@@ -75,12 +68,6 @@ public class UtilitySystemFramework {
 
     @Autowired
     OperationWappMessageRepository operationWappMessageRepository;
-
-    @Autowired
-    OperationInquiryRepository operationInquiryRepository;
-
-    @Autowired
-    OperationFlowRepository operationFlowRepository;
 
     @Autowired
     CampaignRepository campaignRepository;
@@ -219,7 +206,6 @@ public class UtilitySystemFramework {
 
         SystemInfoWSDTO systemInfoWSDTO = new SystemInfoWSDTO();
         systemInfoWSDTO.setInfoName(AppConstant.OPERATION_INQUIRIES_INFOS);
-        systemInfoWSDTO.setInfoValue(String.valueOf(operationInquiryRepository.count()));
         systemInfoWSDTO.setInfoState(true);
         return systemInfoWSDTO;
     }
@@ -228,7 +214,6 @@ public class UtilitySystemFramework {
 
         SystemInfoWSDTO systemInfoWSDTO = new SystemInfoWSDTO();
         systemInfoWSDTO.setInfoName(AppConstant.OPERATION_FLOWS_INFOS);
-        systemInfoWSDTO.setInfoValue(String.valueOf(operationFlowRepository.count()));
         systemInfoWSDTO.setInfoState(true);
         return systemInfoWSDTO;
     }
@@ -331,11 +316,9 @@ public class UtilitySystemFramework {
         }
         if (systemInfo.equalsIgnoreCase(AppConstant.OPERATION_INQUIRIES_INFOS)){
             removeAllOperationInquiriesService();
-            return fillSystemInfoWSDTO(systemInfo, String.valueOf(operationInquiryRepository.count()),true);
         }
         if (systemInfo.equalsIgnoreCase(AppConstant.OPERATION_FLOWS_INFOS)){
             removeAllOperationFlowsService();
-            return fillSystemInfoWSDTO(systemInfo, String.valueOf(operationFlowRepository.count()),true);
         }
 
 
@@ -376,30 +359,24 @@ public class UtilitySystemFramework {
         clientRemoteRepository.deleteAll();
         sessionRepository.deleteAll();
         operationRepository.deleteAll();
-        operationScenarioRepository.deleteAll();
         operationEmailMessageRepository.deleteAll();
         operationPushMessageRepository.deleteAll();
         operationSipCallRepository.deleteAll();
         operationSmsMessageRepository.deleteAll();
         operationWappCallRepository.deleteAll();
         operationWappMessageRepository.deleteAll();
-        operationFlowRepository.deleteAll();
-        operationInquiryRepository.deleteAll();
     }
 
     public void removeAllSessionsService(){
 
         sessionRepository.deleteAll();
         operationRepository.deleteAll();
-        operationScenarioRepository.deleteAll();
         operationEmailMessageRepository.deleteAll();
         operationPushMessageRepository.deleteAll();
         operationSipCallRepository.deleteAll();
         operationSmsMessageRepository.deleteAll();
         operationWappCallRepository.deleteAll();
         operationWappMessageRepository.deleteAll();
-        operationFlowRepository.deleteAll();
-        operationInquiryRepository.deleteAll();
         resetAllClientsService();
     }
 
@@ -408,15 +385,12 @@ public class UtilitySystemFramework {
 
         sessionRepository.deleteAll();
         operationRepository.deleteAll();
-        operationScenarioRepository.deleteAll();
         operationEmailMessageRepository.deleteAll();
         operationPushMessageRepository.deleteAll();
         operationSipCallRepository.deleteAll();
         operationSmsMessageRepository.deleteAll();
         operationWappCallRepository.deleteAll();
         operationWappMessageRepository.deleteAll();
-        operationFlowRepository.deleteAll();
-        operationInquiryRepository.deleteAll();
         resetAllClientsService();
     }
 

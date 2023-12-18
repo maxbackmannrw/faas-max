@@ -2,7 +2,6 @@ package com.faas.core.base.framework.campaign.details.client.flow;
 
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.client.content.ClientDBModel;
-import com.faas.core.base.model.db.operation.details.flow.OperationFlowDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.user.content.UserDBModel;
@@ -13,7 +12,6 @@ import com.faas.core.base.model.ws.operation.details.content.dto.OperationFlowSe
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;
-import com.faas.core.base.repo.operation.details.flow.OperationFlowRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.session.SessionRepository;
@@ -45,9 +43,6 @@ public class CampaignFlowSessionFramework {
 
     @Autowired
     SessionHelper sessionHelper;
-
-    @Autowired
-    OperationFlowRepository operationFlowRepository;
 
     @Autowired
     SessionRepository sessionRepository;
@@ -127,28 +122,6 @@ public class CampaignFlowSessionFramework {
 
     public OperationFlowSessionWSDTO createCampaignFlowSession(CampaignFlowSessionRequestDTO flowSessionRequest){
 
-        if (!operationFlowRepository.existsByClientIdAndCampaignId(flowSessionRequest.getClientId(),flowSessionRequest.getCampaignId())){
-
-            Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(flowSessionRequest.getCampaignId());
-            Optional<ClientDBModel> clientDBModel = clientRepository.findById(flowSessionRequest.getClientId());
-            Optional<UserDBModel> agentDBModel = userRepository.findById(flowSessionRequest.getAgentId());
-
-            if (clientDBModel.isPresent() && agentDBModel.isPresent() && campaignDBModel.isPresent()) {
-
-                clientDBModel.get().setClientState(AppConstant.BUSY_CLIENT);
-                clientDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
-                ClientDBModel updatedClient = clientRepository.save(clientDBModel.get());
-
-                SessionDBModel sessionDBModel = sessionRepository.save(automaticHelper.mapFlowSession(updatedClient,agentDBModel.get(),campaignDBModel.get()));
-                OperationDBModel operationDBModel = operationRepository.save(automaticHelper.mapFlowOperation(sessionDBModel));
-                operationFlowRepository.save(automaticHelper.mapOperationFlowDBModel(sessionDBModel));
-
-                activityHelper.createOperationActivity(sessionDBModel.getId(),operationDBModel.getId(),AppConstant.CREATE_SESSION_ACTIVITY,AppConstant.SESSION_ACTIVITY,String.valueOf(sessionDBModel.getAgentId()),AppConstant.USER_TYPE,String.valueOf(sessionDBModel.getId()),AppConstant.SESSION_TYPE);
-                activityHelper.createOperationActivity(sessionDBModel.getId(),operationDBModel.getId(),AppConstant.CREATE_OPERATION_ACTIVITY,AppConstant.OPERATION_ACTIVITY,String.valueOf(sessionDBModel.getAgentId()),AppConstant.USER_TYPE,String.valueOf(sessionDBModel.getId()),AppConstant.OPERATION_TYPE);
-
-                return automaticHelper.createFlowSessionWSDTO(sessionDBModel);
-            }
-        }
         return null;
     }
 
@@ -181,10 +154,7 @@ public class CampaignFlowSessionFramework {
             if (!operationDBModels.isEmpty()){
                 operationRepository.delete(operationDBModels.get(0));
             }
-            List<OperationFlowDBModel> operationFlowDBModels = operationFlowRepository.findBySessionId(sessionId);
-            if (!operationFlowDBModels.isEmpty()){
-                operationFlowRepository.delete(operationFlowDBModels.get(0));
-            }
+
             sessionRepository.delete(sessionDBModel.get());
             return campaignFlowSession;
         }

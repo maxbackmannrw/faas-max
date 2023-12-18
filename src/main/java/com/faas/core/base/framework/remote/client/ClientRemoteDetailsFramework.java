@@ -3,11 +3,7 @@ package com.faas.core.base.framework.remote.client;
 import com.faas.core.base.model.ws.remote.client.dto.ClientRemoteSummaryWSDTO;
 import com.faas.core.base.model.ws.remote.client.dto.ClientRemoteWSDTO;
 import com.faas.core.base.repo.client.content.ClientRepository;
-import com.faas.core.base.repo.client.details.*;
 import com.faas.core.base.repo.operation.content.OperationRepository;
-import com.faas.core.base.repo.operation.details.flow.OperationFlowRepository;
-import com.faas.core.base.repo.operation.details.inquiry.OperationInquiryRepository;
-import com.faas.core.base.repo.operation.details.scenario.OperationScenarioRepository;
 import com.faas.core.base.repo.remote.client.ClientRemoteRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utils.config.AppConstant;
@@ -31,15 +27,6 @@ public class ClientRemoteDetailsFramework {
 
     @Autowired
     OperationRepository operationRepository;
-
-    @Autowired
-    OperationInquiryRepository operationInquiryRepository;
-
-    @Autowired
-    OperationFlowRepository operationFlowRepository;
-
-    @Autowired
-    OperationScenarioRepository operationScenarioRepository;
 
     @Autowired
     AppUtils appUtils;

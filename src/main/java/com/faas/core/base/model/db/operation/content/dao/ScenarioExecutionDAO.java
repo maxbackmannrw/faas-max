@@ -1,35 +1,32 @@
 package com.faas.core.base.model.db.operation.content.dao;
 
 
-import com.faas.core.base.model.db.scenario.content.dao.ScenarioActionDAO;
-import com.faas.core.base.model.db.scenario.content.dao.ScenarioAutomationDAO;
-
 import java.util.List;
 
-public class OperationScenarioExecutionDAO {
+public class ScenarioExecutionDAO {
 
     private String id;
     private String elementId;
     private String element;
     private String elementType;
-    private ScenarioActionDAO action;
-    private ScenarioAutomationDAO automation;
-    private List<ScenarioExecutionValue> executionValues;
+    private ScenarioActionExecutionDAO actionExecution;
+    private ScenarioAutomationExecutionDAO automationExecution;
+    private List<ScenarioExecutionDataDAO> executionDatas;
     private long uDate;
     private long cDate;
     private int status;
 
-    public OperationScenarioExecutionDAO() {
+    public ScenarioExecutionDAO() {
     }
 
-    public OperationScenarioExecutionDAO(String id, String elementId, String element, String elementType, ScenarioActionDAO action, ScenarioAutomationDAO automation, List<ScenarioExecutionValue> executionValues, long uDate, long cDate, int status) {
+    public ScenarioExecutionDAO(String id, String elementId, String element, String elementType, ScenarioActionExecutionDAO actionExecution, ScenarioAutomationExecutionDAO automationExecution, List<ScenarioExecutionDataDAO> executionDatas, long uDate, long cDate, int status) {
         this.id = id;
         this.elementId = elementId;
         this.element = element;
         this.elementType = elementType;
-        this.action = action;
-        this.automation = automation;
-        this.executionValues = executionValues;
+        this.actionExecution = actionExecution;
+        this.automationExecution = automationExecution;
+        this.executionDatas = executionDatas;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
@@ -67,28 +64,28 @@ public class OperationScenarioExecutionDAO {
         this.elementType = elementType;
     }
 
-    public ScenarioActionDAO getAction() {
-        return action;
+    public ScenarioActionExecutionDAO getActionExecution() {
+        return actionExecution;
     }
 
-    public void setAction(ScenarioActionDAO action) {
-        this.action = action;
+    public void setActionExecution(ScenarioActionExecutionDAO actionExecution) {
+        this.actionExecution = actionExecution;
     }
 
-    public ScenarioAutomationDAO getAutomation() {
-        return automation;
+    public ScenarioAutomationExecutionDAO getAutomationExecution() {
+        return automationExecution;
     }
 
-    public void setAutomation(ScenarioAutomationDAO automation) {
-        this.automation = automation;
+    public void setAutomationExecution(ScenarioAutomationExecutionDAO automationExecution) {
+        this.automationExecution = automationExecution;
     }
 
-    public List<ScenarioExecutionValue> getExecutionValues() {
-        return executionValues;
+    public List<ScenarioExecutionDataDAO> getExecutionDatas() {
+        return executionDatas;
     }
 
-    public void setExecutionValues(List<ScenarioExecutionValue> executionValues) {
-        this.executionValues = executionValues;
+    public void setExecutionDatas(List<ScenarioExecutionDataDAO> executionDatas) {
+        this.executionDatas = executionDatas;
     }
 
     public long getuDate() {

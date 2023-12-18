@@ -5,7 +5,6 @@ import com.faas.core.api.model.ws.inquiry.content.dto.ApiOperationInquiryWSDTO;
 import com.faas.core.api.model.ws.inquiry.content.dto.ApiInquiryWSDTO;
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.client.content.ClientDBModel;
-import com.faas.core.base.model.db.operation.details.inquiry.OperationInquiryDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.db.user.content.UserDBModel;
@@ -15,7 +14,6 @@ import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
 import com.faas.core.base.model.ws.operation.details.content.dto.OperationInquirySessionWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;
-import com.faas.core.base.repo.operation.details.inquiry.OperationInquiryRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utils.config.AppConstant;
@@ -38,9 +36,6 @@ public class InquiryHelper {
     CampaignRepository campaignRepository;
 
     @Autowired
-    OperationInquiryRepository operationInquiryRepository;
-
-    @Autowired
     SessionRepository sessionRepository;
 
     @Autowired
@@ -57,89 +52,34 @@ public class InquiryHelper {
 
         OperationListWSDTO operationListWSDTO = new OperationListWSDTO();
         List<OperationWSDTO> operationWSDTOS = new ArrayList<>();
-        for (int i=0;i<sessionDBModelPage.getContent().size();i++){
-            List<OperationDBModel> operationDBModels = operationRepository.findBySessionIdAndClientId(sessionDBModelPage.getContent().get(i).getId(), sessionDBModelPage.getContent().get(i).getClientId());
-            List<OperationInquiryDBModel> operationInquiryDBModels = operationInquiryRepository.findBySessionId(sessionDBModelPage.getContent().get(i).getId());
-            if (!operationInquiryDBModels.isEmpty() && !operationDBModels.isEmpty()){
-                operationWSDTOS.add(getInquiryOperationWSDTO(sessionDBModelPage.getContent().get(i),operationDBModels.get(0),operationInquiryDBModels.get(0)));
-            }
-        }
+
         operationListWSDTO.setOperations(operationWSDTOS);
         operationListWSDTO.setPagination(createInquirySessionPagination(sessionDBModelPage));
 
         return operationListWSDTO;
     }
 
-    public OperationWSDTO getInquiryOperationWSDTO(SessionDBModel sessionDBModel,OperationDBModel operationDBModel,OperationInquiryDBModel operationInquiryDBModel){
-
-        OperationWSDTO operationWSDTO = new OperationWSDTO();
-        operationWSDTO.setOperation(operationDBModel);
-        operationWSDTO.setOperationSession(sessionDBModel);
-        operationWSDTO.setOperationInquiry(operationInquiryDBModel);
-
-        return operationWSDTO;
-    }
 
 
-    public ApiOperationInquiryWSDTO getApiOperationInquiryWSDTO(Page<OperationInquiryDBModel> operationInquiryPage){
+
+    public ApiOperationInquiryWSDTO getApiOperationInquiryWSDTO(){
 
         ApiOperationInquiryWSDTO operationInquiryWSDTO = new ApiOperationInquiryWSDTO();
-        List<ApiInquiryWSDTO> inquiryWSDTOS = new ArrayList<>();
-        for (int i=0;i<operationInquiryPage.getContent().size();i++){
-            ApiInquiryWSDTO inquiryWSDTO = getApiInquiryWSDTO(operationInquiryPage.getContent().get(i));
-            if (inquiryWSDTO != null){
-                inquiryWSDTOS.add(inquiryWSDTO);
-            }
-        }
-        operationInquiryWSDTO.setInquiries(inquiryWSDTOS);
-        operationInquiryWSDTO.setPagination(createInquiryPagination(operationInquiryPage));
+
         return operationInquiryWSDTO;
     }
 
 
-    public ApiInquiryWSDTO getApiInquiryWSDTO(OperationInquiryDBModel operationInquiryDBModel){
-
-        Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(operationInquiryDBModel.getSessionId());
-        List<OperationDBModel> operationDBModels = operationRepository.findBySessionId(operationInquiryDBModel.getSessionId());
-        if (sessionDBModel.isPresent() && !operationDBModels.isEmpty()){
-
-            ApiInquiryWSDTO inquiryWSDTO = new ApiInquiryWSDTO();
-            inquiryWSDTO.setOperation(operationDBModels.get(0));
-            inquiryWSDTO.setOperationSession(sessionDBModel.get());
-            inquiryWSDTO.setOperationInquiry(operationInquiryDBModel);
-
-            return inquiryWSDTO;
-        }
-        return null;
-    }
 
 
     public List<ApiSummaryWSDTO> getApiInquirySummary(long agentId) {
 
         List<ApiSummaryWSDTO> apiOperationInquirySummaryWSDTOS = new ArrayList<>();
-        apiOperationInquirySummaryWSDTOS.add(new ApiSummaryWSDTO(AppConstant.READY_INQUIRIES_SUMMARY, String.valueOf(operationInquiryRepository.countByAgentIdAndInquiryState(agentId,AppConstant.READY_INQUIRY))));
-        apiOperationInquirySummaryWSDTOS.add(new ApiSummaryWSDTO(AppConstant.ACTIVE_INQUIRIES_SUMMARY, String.valueOf(operationInquiryRepository.countByAgentIdAndInquiryState(agentId,AppConstant.ACTIVE_INQUIRY))));
-        apiOperationInquirySummaryWSDTOS.add(new ApiSummaryWSDTO(AppConstant.TOTAL_INQUIRIES_SUMMARY, String.valueOf(operationInquiryRepository.countByAgentId(agentId))));
 
         return apiOperationInquirySummaryWSDTOS;
     }
 
 
-    public OperationInquiryDBModel mapOperationInquiryDBModel(SessionDBModel sessionDBModel){
-
-        OperationInquiryDBModel operationInquiryDBModel = new OperationInquiryDBModel();
-        operationInquiryDBModel.setSessionId(sessionDBModel.getId());
-        operationInquiryDBModel.setClientId(sessionDBModel.getClientId());
-        operationInquiryDBModel.setAgentId(sessionDBModel.getAgentId());
-        operationInquiryDBModel.setCampaignId(sessionDBModel.getCampaignId());
-        operationInquiryDBModel.setProcessId(sessionDBModel.getProcessId());
-        operationInquiryDBModel.setInquiryState(AppConstant.NEW_INQUIRY);
-        operationInquiryDBModel.setuDate(appUtils.getCurrentTimeStamp());
-        operationInquiryDBModel.setcDate(appUtils.getCurrentTimeStamp());
-        operationInquiryDBModel.setStatus(1);
-
-        return operationInquiryDBModel;
-    }
 
     public List<OperationInquirySessionWSDTO> createInquirySessionWSDTOS(List<SessionDBModel> sessionDBModels){
 
@@ -154,10 +94,7 @@ public class InquiryHelper {
 
         OperationInquirySessionWSDTO operationInquirySessionWSDTO = new OperationInquirySessionWSDTO();
         operationInquirySessionWSDTO.setClientSession(sessionDBModel);
-        List<OperationInquiryDBModel> operationInquiryDBModels = operationInquiryRepository.findBySessionId(sessionDBModel.getId());
-        if (!operationInquiryDBModels.isEmpty()){
-            operationInquirySessionWSDTO.setClientInquiry(operationInquiryDBModels.get(0));
-        }
+
         return operationInquirySessionWSDTO;
     }
 
@@ -176,17 +113,6 @@ public class InquiryHelper {
     }
 
 
-    public PaginationWSDTO createInquiryPagination(Page<OperationInquiryDBModel> operationInquiryPage){
-
-        PaginationWSDTO paginationWSDTO = new PaginationWSDTO();
-
-        paginationWSDTO.setPageSize(operationInquiryPage.getPageable().getPageSize());
-        paginationWSDTO.setPageNumber(operationInquiryPage.getPageable().getPageNumber());
-        paginationWSDTO.setTotalPage(operationInquiryPage.getTotalPages());
-        paginationWSDTO.setTotalElements(operationInquiryPage.getTotalElements());
-
-        return paginationWSDTO;
-    }
 
 
 
@@ -245,15 +171,6 @@ public class InquiryHelper {
         }
         return null;
     }
-
-
-    public ApiInquiryWSDTO mapApiInquiryWSDTO(OperationInquiryDBModel operationInquiryDBModel){
-
-        ApiInquiryWSDTO inquiryWSDTO = new ApiInquiryWSDTO();
-
-        return inquiryWSDTO;
-    }
-
 
 
 

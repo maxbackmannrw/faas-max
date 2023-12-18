@@ -1,6 +1,6 @@
 package com.faas.core.base.model.db.operation.content;
 
-import com.faas.core.base.model.db.operation.content.dao.OperationActivityDAO;
+import com.faas.core.base.model.db.operation.content.dao.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -18,6 +18,10 @@ public class OperationDBModel {
     private long agentId;
     private String campaignId;
     private String processId;
+    private OperationInquiryDAO inquiry;
+    private OperationFlowDAO flow;
+    private List<OperationScenarioDAO>scenarios;
+    private List<OperationDataDAO>datas;
     private List<OperationActivityDAO>activities;
     private String operationType;
     private String operationState;
@@ -28,7 +32,7 @@ public class OperationDBModel {
     public OperationDBModel() {
     }
 
-    public OperationDBModel(String id, long sessionId, String sessionUUID, long clientId, long agentId, String campaignId, String processId, List<OperationActivityDAO> activities, String operationType, String operationState, long uDate, long cDate, int status) {
+    public OperationDBModel(String id, long sessionId, String sessionUUID, long clientId, long agentId, String campaignId, String processId, OperationInquiryDAO inquiry, OperationFlowDAO flow, List<OperationScenarioDAO> scenarios, List<OperationDataDAO> datas, List<OperationActivityDAO> activities, String operationType, String operationState, long uDate, long cDate, int status) {
         this.id = id;
         this.sessionId = sessionId;
         this.sessionUUID = sessionUUID;
@@ -36,6 +40,10 @@ public class OperationDBModel {
         this.agentId = agentId;
         this.campaignId = campaignId;
         this.processId = processId;
+        this.inquiry = inquiry;
+        this.flow = flow;
+        this.scenarios = scenarios;
+        this.datas = datas;
         this.activities = activities;
         this.operationType = operationType;
         this.operationState = operationState;
@@ -98,6 +106,38 @@ public class OperationDBModel {
 
     public void setProcessId(String processId) {
         this.processId = processId;
+    }
+
+    public OperationInquiryDAO getInquiry() {
+        return inquiry;
+    }
+
+    public void setInquiry(OperationInquiryDAO inquiry) {
+        this.inquiry = inquiry;
+    }
+
+    public OperationFlowDAO getFlow() {
+        return flow;
+    }
+
+    public void setFlow(OperationFlowDAO flow) {
+        this.flow = flow;
+    }
+
+    public List<OperationScenarioDAO> getScenarios() {
+        return scenarios;
+    }
+
+    public void setScenarios(List<OperationScenarioDAO> scenarios) {
+        this.scenarios = scenarios;
+    }
+
+    public List<OperationDataDAO> getDatas() {
+        return datas;
+    }
+
+    public void setDatas(List<OperationDataDAO> datas) {
+        this.datas = datas;
     }
 
     public List<OperationActivityDAO> getActivities() {

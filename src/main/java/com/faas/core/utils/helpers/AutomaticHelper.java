@@ -2,7 +2,6 @@ package com.faas.core.utils.helpers;
 
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.client.content.ClientDBModel;
-import com.faas.core.base.model.db.operation.details.flow.OperationFlowDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.db.user.content.UserDBModel;
@@ -13,7 +12,6 @@ import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
-import com.faas.core.base.repo.operation.details.flow.OperationFlowRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,9 +34,6 @@ public class AutomaticHelper {
     OperationRepository operationRepository;
 
     @Autowired
-    OperationFlowRepository operationFlowRepository;
-
-    @Autowired
     AppUtils appUtils;
 
 
@@ -46,45 +41,17 @@ public class AutomaticHelper {
 
         OperationListWSDTO operationListWSDTO = new OperationListWSDTO();
         List<OperationWSDTO> operationWSDTOS = new ArrayList<>();
-        for (int i=0;sessionModelPage.getContent().size()>i;i++){
-            List<OperationDBModel> operationDBModels = operationRepository.findBySessionId(sessionModelPage.getContent().get(i).getId());
-            List<OperationFlowDBModel> operationFlowDBModels = operationFlowRepository.findBySessionId(sessionModelPage.getContent().get(i).getId());
-            if (!operationDBModels.isEmpty() && !operationFlowDBModels.isEmpty()){
-                operationWSDTOS.add(getAutomaticOperationWSDTO(sessionModelPage.getContent().get(i), operationDBModels.get(0),operationFlowDBModels.get(0)));
-            }
-        }
+
         operationListWSDTO.setOperations(operationWSDTOS);
         operationListWSDTO.setPagination(createFlowSessionPagination(sessionModelPage));
 
         return operationListWSDTO;
     }
 
-    public OperationWSDTO getAutomaticOperationWSDTO(SessionDBModel sessionDBModel,OperationDBModel operationDBModel,OperationFlowDBModel operationFlowDBModel){
-
-        OperationWSDTO operationWSDTO = new OperationWSDTO();
-        operationWSDTO.setOperation(operationDBModel);
-        operationWSDTO.setOperationSession(sessionDBModel);
-        operationWSDTO.setOperationFlow(operationFlowDBModel);
-
-        return operationWSDTO;
-    }
 
 
-    public OperationFlowDBModel mapOperationFlowDBModel(SessionDBModel sessionDBModel){
 
-        OperationFlowDBModel operationFlowDBModel = new OperationFlowDBModel();
-        operationFlowDBModel.setSessionId(sessionDBModel.getId());
-        operationFlowDBModel.setClientId(sessionDBModel.getClientId());
-        operationFlowDBModel.setAgentId(sessionDBModel.getAgentId());
-        operationFlowDBModel.setCampaignId(sessionDBModel.getCampaignId());
-        operationFlowDBModel.setProcessId(sessionDBModel.getProcessId());
-        operationFlowDBModel.setFlowState(AppConstant.NEW_FLOW);
-        operationFlowDBModel.setuDate(appUtils.getCurrentTimeStamp());
-        operationFlowDBModel.setcDate(appUtils.getCurrentTimeStamp());
-        operationFlowDBModel.setStatus(1);
 
-        return operationFlowDBModel;
-    }
 
 
     public List<OperationFlowSessionWSDTO> createFlowSessionWSDTOS(List<SessionDBModel> sessionDBModels){
@@ -101,10 +68,7 @@ public class AutomaticHelper {
 
         OperationFlowSessionWSDTO operationFlowSessionWSDTO = new OperationFlowSessionWSDTO();
         operationFlowSessionWSDTO.setClientSession(sessionDBModel);
-        List<OperationFlowDBModel> operationFlowDBModels = operationFlowRepository.findBySessionIdAndClientId(sessionDBModel.getId(),sessionDBModel.getClientId());
-        if (!operationFlowDBModels.isEmpty()){
-            operationFlowSessionWSDTO.setClientFlow(operationFlowDBModels.get(0));
-        }
+
         return operationFlowSessionWSDTO;
     }
 

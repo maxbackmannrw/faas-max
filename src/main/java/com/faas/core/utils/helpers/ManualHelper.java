@@ -8,12 +8,8 @@ import com.faas.core.base.model.ws.operation.content.dto.OperationListWSDTO;
 import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
-import com.faas.core.base.repo.client.details.*;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.operation.details.channel.*;
-import com.faas.core.base.repo.operation.details.flow.OperationFlowRepository;
-import com.faas.core.base.repo.operation.details.inquiry.OperationInquiryRepository;
-import com.faas.core.base.repo.operation.details.scenario.OperationScenarioRepository;
 import com.faas.core.base.repo.process.details.channel.content.*;
 import com.faas.core.base.repo.process.details.channel.temp.ProcessEmailTempRepository;
 import com.faas.core.base.repo.process.details.channel.temp.ProcessPushTempRepository;
@@ -50,12 +46,6 @@ public class ManualHelper {
 
     @Autowired
     OperationRepository operationRepository;
-
-    @Autowired
-    OperationFlowRepository operationFlowRepository;
-
-    @Autowired
-    OperationInquiryRepository operationInquiryRepository;
 
     @Autowired
     UserDetailsRepository userDetailsRepository;
@@ -98,9 +88,6 @@ public class ManualHelper {
 
     @Autowired
     ProcessScenarioRepository processScenarioRepository;
-
-    @Autowired
-    OperationScenarioRepository operationScenarioRepository;
 
     @Autowired
     ProcessSmsMessageTempRepository processSmsMessageTempRepository;

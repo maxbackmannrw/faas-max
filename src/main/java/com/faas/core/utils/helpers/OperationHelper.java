@@ -2,9 +2,7 @@ package com.faas.core.utils.helpers;
 
 import com.faas.core.api.model.ws.client.details.dto.ApiClientNoteWSDTO;
 import com.faas.core.api.model.ws.client.details.dto.ApiClientOsIntWSDTO;
-import com.faas.core.api.model.ws.flow.content.dto.ApiFlowWSDTO;
 import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
-import com.faas.core.api.model.ws.inquiry.content.dto.ApiInquiryWSDTO;
 import com.faas.core.api.model.ws.operation.channel.call.sip.dto.ApiSipAccountWSDTO;
 import com.faas.core.api.model.ws.operation.channel.call.wapp.dto.ApiWappAccountWSDTO;
 import com.faas.core.api.model.ws.operation.channel.content.dto.ApiOperationChannelWSDTO;
@@ -20,27 +18,20 @@ import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationDeta
 import com.faas.core.api.model.ws.operation.details.scenario.dto.ApiOperationScenarioWSDTO;
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.client.content.ClientDBModel;
+import com.faas.core.base.model.db.operation.content.dao.OperationScenarioDAO;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
-import com.faas.core.base.model.db.operation.details.flow.OperationFlowDBModel;
-import com.faas.core.base.model.db.operation.details.inquiry.OperationInquiryDBModel;
-import com.faas.core.base.model.db.operation.details.scenario.OperationScenarioDBModel;
 import com.faas.core.base.model.db.process.content.ProcessDBModel;
 import com.faas.core.base.model.db.process.details.channel.content.ProcessSmsChannelDBModel;
 import com.faas.core.base.model.db.process.details.channel.content.ProcessWappChannelDBModel;
-import com.faas.core.base.model.db.process.details.scenario.ProcessScenarioDBModel;
 import com.faas.core.base.model.db.user.details.UserDetailsDBModel;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
 import com.faas.core.base.model.ws.operation.content.dto.OperationListWSDTO;
 import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
 import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
-import com.faas.core.base.repo.client.details.*;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.operation.details.channel.*;
-import com.faas.core.base.repo.operation.details.flow.OperationFlowRepository;
-import com.faas.core.base.repo.operation.details.inquiry.OperationInquiryRepository;
-import com.faas.core.base.repo.operation.details.scenario.OperationScenarioRepository;
 import com.faas.core.base.repo.process.details.channel.content.*;
 import com.faas.core.base.repo.process.details.channel.temp.ProcessEmailTempRepository;
 import com.faas.core.base.repo.process.details.channel.temp.ProcessPushTempRepository;
@@ -74,12 +65,6 @@ public class OperationHelper {
 
     @Autowired
     OperationRepository operationRepository;
-
-    @Autowired
-    OperationFlowRepository operationFlowRepository;
-
-    @Autowired
-    OperationInquiryRepository operationInquiryRepository;
 
     @Autowired
     UserDetailsRepository userDetailsRepository;
@@ -122,9 +107,6 @@ public class OperationHelper {
 
     @Autowired
     ProcessScenarioRepository processScenarioRepository;
-
-    @Autowired
-    OperationScenarioRepository operationScenarioRepository;
 
     @Autowired
     ProcessSmsMessageTempRepository processSmsMessageTempRepository;
@@ -284,14 +266,10 @@ public class OperationHelper {
         return null;
     }
 
-    public ApiOperationScenarioWSDTO getApiOperationScenarioWSDTO(OperationScenarioDBModel operationScenarioDBModel){
+    public ApiOperationScenarioWSDTO getApiOperationScenarioWSDTO(OperationScenarioDAO operationScenarioDAO){
 
         ApiOperationScenarioWSDTO operationScenarioWSDTO = new ApiOperationScenarioWSDTO();
-        operationScenarioWSDTO.setOperationScenario(operationScenarioDBModel);
-        List<ProcessScenarioDBModel> processScenarioDBModels = processScenarioRepository.findByProcessIdAndScenarioId(operationScenarioDBModel.getProcessId(),operationScenarioDBModel.getScenarioId());
-        if (!processScenarioDBModels.isEmpty()){
-            operationScenarioWSDTO.setProcessScenario(processScenarioDBModels.get(0));
-        }
+
         return operationScenarioWSDTO;
     }
 
@@ -324,18 +302,7 @@ public class OperationHelper {
         ApiOperationDetailsWSDTO operationDetailsWSDTO = new ApiOperationDetailsWSDTO();
         operationDetailsWSDTO.setOperation(operationDBModel);
         operationDetailsWSDTO.setOperationSession(sessionDBModel);
-        if (sessionDBModel.getSessionType().equalsIgnoreCase(AppConstant.INQUIRY_CAMPAIGN)){
-            List<OperationInquiryDBModel> operationInquiryDBModels = operationInquiryRepository.findBySessionIdAndClientId(sessionDBModel.getId(),sessionDBModel.getClientId());
-            if (!operationInquiryDBModels.isEmpty()){
-                operationDetailsWSDTO.setOperationInquiry(mapApiOperationInquiryWSDTO(sessionDBModel,operationDBModel,operationInquiryDBModels.get(0)));
-            }
-        }
-        if (sessionDBModel.getSessionType().equalsIgnoreCase(AppConstant.AUTOMATIC_CAMPAIGN)){
-            List<OperationFlowDBModel> operationFlowDBModels = operationFlowRepository.findBySessionIdAndClientId(sessionDBModel.getId(),sessionDBModel.getClientId());
-            if (!operationFlowDBModels.isEmpty()){
-                operationDetailsWSDTO.setOperationFlow(mapApiOperationFlowWSDTO(sessionDBModel,operationDBModel,operationFlowDBModels.get(0)));
-            }
-        }
+
         operationDetailsWSDTO.setOperationClient(mapApiOperationClientWSDTO(clientDBModel));
         operationDetailsWSDTO.setClientOsInts(mapApiClientOsIntWSDTOS(clientDBModel));
         operationDetailsWSDTO.setClientNotes(mapApiOperationNoteWSDTO(clientDBModel));
@@ -355,25 +322,7 @@ public class OperationHelper {
         return operationClientWSDTO;
     }
 
-    public ApiInquiryWSDTO mapApiOperationInquiryWSDTO(SessionDBModel sessionDBModel,OperationDBModel operationDBModel,OperationInquiryDBModel operationInquiryDBModel) {
 
-        ApiInquiryWSDTO operationInquiryWSDTO = new ApiInquiryWSDTO();
-        operationInquiryWSDTO.setOperationSession(sessionDBModel);
-        operationInquiryWSDTO.setOperation(operationDBModel);
-        operationInquiryWSDTO.setOperationInquiry(operationInquiryDBModel);
-
-        return operationInquiryWSDTO;
-    }
-
-    public ApiFlowWSDTO mapApiOperationFlowWSDTO(SessionDBModel sessionDBModel,OperationDBModel operationDBModel,OperationFlowDBModel operationFlowDBModel) {
-
-        ApiFlowWSDTO operationFlowWSDTO = new ApiFlowWSDTO();
-        operationFlowWSDTO.setOperationSession(sessionDBModel);
-        operationFlowWSDTO.setOperation(operationDBModel);
-        operationFlowWSDTO.setOperationFlow(operationFlowDBModel);
-
-        return operationFlowWSDTO;
-    }
 
     public List<ApiClientOsIntWSDTO> mapApiClientOsIntWSDTOS(ClientDBModel clientDBModel) {
 
@@ -414,12 +363,7 @@ public class OperationHelper {
     public List<ApiOperationScenarioWSDTO> mapApiOperationScenarioWSDTOS(long sessionId, String processId) {
 
         List<ApiOperationScenarioWSDTO> operationScenarioWSDTOS = new ArrayList<>();
-        List<OperationScenarioDBModel> operationScenarioDBModels = operationScenarioRepository.findBySessionIdAndProcessId(sessionId, processId);
-        for (OperationScenarioDBModel operationScenarioDBModel : operationScenarioDBModels) {
-            ApiOperationScenarioWSDTO operationScenarioWSDTO = new ApiOperationScenarioWSDTO();
-            operationScenarioWSDTO.setOperationScenario(operationScenarioDBModel);
-            operationScenarioWSDTOS.add(operationScenarioWSDTO);
-        }
+
         return operationScenarioWSDTOS;
     }
 
@@ -446,18 +390,7 @@ public class OperationHelper {
             ApiOperationWSDTO operationWSDTO = new ApiOperationWSDTO();
             operationWSDTO.setOperation(operationDBModel);
             operationWSDTO.setOperationSession(sessionDBModel.get());
-            if (sessionDBModel.get().getSessionType().equalsIgnoreCase(AppConstant.INQUIRY_CAMPAIGN)){
-                List<OperationInquiryDBModel> operationInquiryDBModels = operationInquiryRepository.findBySessionIdAndClientId(sessionDBModel.get().getId(),sessionDBModel.get().getClientId());
-                if (!operationInquiryDBModels.isEmpty()) {
-                    operationWSDTO.setOperationInquiry(operationInquiryDBModels.get(0));
-                }
-            }
-            if (sessionDBModel.get().getSessionType().equalsIgnoreCase(AppConstant.AUTOMATIC_CAMPAIGN)){
-                List<OperationFlowDBModel> operationFlowDBModels = operationFlowRepository.findBySessionIdAndClientId(sessionDBModel.get().getId(),sessionDBModel.get().getClientId());
-                if (!operationFlowDBModels.isEmpty()) {
-                    operationWSDTO.setOperationFlow(operationFlowDBModels.get(0));
-                }
-            }
+
             return operationWSDTO;
         }
         return null;
@@ -473,18 +406,7 @@ public class OperationHelper {
             operationWSDTO.setOperation(operationDBModels.get(0));
             operationWSDTO.setOperationSession(sessionDBModel);
 
-            if (sessionDBModel.getSessionType().equalsIgnoreCase(AppConstant.INQUIRY_CAMPAIGN)){
-                List<OperationInquiryDBModel> operationInquiryDBModels = operationInquiryRepository.findBySessionIdAndClientId(sessionDBModel.getId(),sessionDBModel.getClientId());
-                if (!operationInquiryDBModels.isEmpty()) {
-                    operationWSDTO.setOperationInquiry(operationInquiryDBModels.get(0));
-                }
-            }
-            if (sessionDBModel.getSessionType().equalsIgnoreCase(AppConstant.AUTOMATIC_CAMPAIGN)){
-                List<OperationFlowDBModel> operationFlowDBModels = operationFlowRepository.findBySessionIdAndClientId(sessionDBModel.getId(),sessionDBModel.getClientId());
-                if (!operationFlowDBModels.isEmpty()) {
-                    operationWSDTO.setOperationFlow(operationFlowDBModels.get(0));
-                }
-            }
+
             return operationWSDTO;
         }
         return null;

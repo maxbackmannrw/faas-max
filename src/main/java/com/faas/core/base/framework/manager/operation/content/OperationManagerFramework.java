@@ -6,9 +6,6 @@ import com.faas.core.base.model.ws.manager.operation.content.dto.OperationManage
 import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.operation.details.channel.*;
-import com.faas.core.base.repo.operation.details.flow.OperationFlowRepository;
-import com.faas.core.base.repo.operation.details.inquiry.OperationInquiryRepository;
-import com.faas.core.base.repo.operation.details.scenario.OperationScenarioRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.ManagerHelper;
@@ -34,9 +31,6 @@ public class OperationManagerFramework {
     OperationRepository operationRepository;
 
     @Autowired
-    OperationScenarioRepository operationScenarioRepository;
-
-    @Autowired
     OperationSmsMessageRepository operationSmsMessageRepository;
 
     @Autowired
@@ -53,12 +47,6 @@ public class OperationManagerFramework {
 
     @Autowired
     OperationPushMessageRepository operationPushMessageRepository;
-
-    @Autowired
-    OperationFlowRepository operationFlowRepository;
-
-    @Autowired
-    OperationInquiryRepository operationInquiryRepository;
 
     @Autowired
     AppUtils appUtils;
@@ -114,9 +102,6 @@ public class OperationManagerFramework {
             OperationWSDTO operationWSDTO = managerHelper.fillManagerOperationWSDTOBySessionModel(sessionDBModel.get());
             sessionRepository.delete(sessionDBModel.get());
             operationRepository.deleteAll(operationRepository.findBySessionId(sessionId));
-            operationScenarioRepository.deleteAll(operationScenarioRepository.findBySessionId(sessionId));
-            operationFlowRepository.deleteAll(operationFlowRepository.findBySessionId(sessionId));
-            operationInquiryRepository.deleteAll(operationInquiryRepository.findBySessionId(sessionId));
             operationEmailMessageRepository.deleteAll(operationEmailMessageRepository.findBySessionId(sessionId));
             operationPushMessageRepository.deleteAll(operationPushMessageRepository.findBySessionId(sessionId));
             operationSipCallRepository.deleteAll(operationSipCallRepository.findBySessionId(sessionId));

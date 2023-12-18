@@ -2,21 +2,18 @@ package com.faas.core.api.model.ws.flow.content.dto;
 
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
-import com.faas.core.base.model.db.operation.details.flow.OperationFlowDBModel;
 
 public class ApiFlowWSDTO {
 
     private OperationDBModel operation;
     private SessionDBModel operationSession;
-    private OperationFlowDBModel operationFlow;
 
     public ApiFlowWSDTO() {
     }
 
-    public ApiFlowWSDTO(OperationDBModel operation, SessionDBModel operationSession, OperationFlowDBModel operationFlow) {
+    public ApiFlowWSDTO(OperationDBModel operation, SessionDBModel operationSession) {
         this.operation = operation;
         this.operationSession = operationSession;
-        this.operationFlow = operationFlow;
     }
 
     public OperationDBModel getOperation() {
@@ -33,13 +30,5 @@ public class ApiFlowWSDTO {
 
     public void setOperationSession(SessionDBModel operationSession) {
         this.operationSession = operationSession;
-    }
-
-    public OperationFlowDBModel getOperationFlow() {
-        return operationFlow;
-    }
-
-    public void setOperationFlow(OperationFlowDBModel operationFlow) {
-        this.operationFlow = operationFlow;
     }
 }

@@ -4,14 +4,9 @@ import com.faas.core.base.model.db.remote.client.ClientRemoteDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.ws.remote.client.dto.ClientRemoteListWSDTO;
-import com.faas.core.base.model.ws.remote.client.dto.ClientRemoteSummaryWSDTO;
 import com.faas.core.base.model.ws.remote.client.dto.ClientRemoteWSDTO;
 import com.faas.core.base.repo.client.content.ClientRepository;
-import com.faas.core.base.repo.client.details.*;
 import com.faas.core.base.repo.operation.content.OperationRepository;
-import com.faas.core.base.repo.operation.details.flow.OperationFlowRepository;
-import com.faas.core.base.repo.operation.details.inquiry.OperationInquiryRepository;
-import com.faas.core.base.repo.operation.details.scenario.OperationScenarioRepository;
 import com.faas.core.base.repo.remote.client.ClientRemoteRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utils.config.AppConstant;
@@ -45,15 +40,6 @@ public class ClientRemoteFramework {
 
     @Autowired
     OperationRepository operationRepository;
-
-    @Autowired
-    OperationInquiryRepository operationInquiryRepository;
-
-    @Autowired
-    OperationFlowRepository operationFlowRepository;
-
-    @Autowired
-    OperationScenarioRepository operationScenarioRepository;
 
     @Autowired
     AppUtils appUtils;

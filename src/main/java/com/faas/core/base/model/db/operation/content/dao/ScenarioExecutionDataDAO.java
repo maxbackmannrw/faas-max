@@ -1,38 +1,38 @@
 package com.faas.core.base.model.db.operation.content.dao;
 
-public class ScenarioExecutionValue {
+public class ScenarioExecutionDataDAO {
 
-    private String valueId;
-    private String valueType;
+    private String dataId;
+    private String dataType;
     private String value;
     private long cDate;
     private int status;
 
-    public ScenarioExecutionValue() {
+    public ScenarioExecutionDataDAO() {
     }
 
-    public ScenarioExecutionValue(String valueId, String valueType, String value, long cDate, int status) {
-        this.valueId = valueId;
-        this.valueType = valueType;
+    public ScenarioExecutionDataDAO(String dataId, String dataType, String value, long cDate, int status) {
+        this.dataId = dataId;
+        this.dataType = dataType;
         this.value = value;
         this.cDate = cDate;
         this.status = status;
     }
 
-    public String getValueId() {
-        return valueId;
+    public String getDataId() {
+        return dataId;
     }
 
-    public void setValueId(String valueId) {
-        this.valueId = valueId;
+    public void setDataId(String dataId) {
+        this.dataId = dataId;
     }
 
-    public String getValueType() {
-        return valueType;
+    public String getDataType() {
+        return dataType;
     }
 
-    public void setValueType(String valueType) {
-        this.valueType = valueType;
+    public void setDataType(String dataType) {
+        this.dataType = dataType;
     }
 
     public String getValue() {

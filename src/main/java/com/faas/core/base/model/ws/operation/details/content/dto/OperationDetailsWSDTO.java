@@ -1,23 +1,23 @@
 package com.faas.core.base.model.ws.operation.details.content.dto;
 
-import com.faas.core.base.model.db.operation.details.flow.OperationFlowDBModel;
+import com.faas.core.base.model.db.operation.content.OperationDBModel;
 
 public class OperationDetailsWSDTO {
 
-    private OperationFlowDBModel clientFlow;
+    private OperationDBModel operation;
 
     public OperationDetailsWSDTO() {
     }
 
-    public OperationDetailsWSDTO(OperationFlowDBModel clientFlow) {
-        this.clientFlow = clientFlow;
+    public OperationDetailsWSDTO(OperationDBModel operation) {
+        this.operation = operation;
     }
 
-    public OperationFlowDBModel getClientFlow() {
-        return clientFlow;
+    public OperationDBModel getOperation() {
+        return operation;
     }
 
-    public void setClientFlow(OperationFlowDBModel clientFlow) {
-        this.clientFlow = clientFlow;
+    public void setOperation(OperationDBModel operation) {
+        this.operation = operation;
     }
 }

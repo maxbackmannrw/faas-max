@@ -11,8 +11,6 @@ import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
-import com.faas.core.base.repo.operation.details.flow.OperationFlowRepository;
-import com.faas.core.base.repo.operation.details.inquiry.OperationInquiryRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
@@ -45,12 +43,6 @@ public class ApiDashboardFramework {
 
     @Autowired
     OperationRepository operationRepository;
-
-    @Autowired
-    OperationInquiryRepository operationInquiryRepository;
-
-    @Autowired
-    OperationFlowRepository operationFlowRepository;
 
     @Autowired
     CampaignRepository campaignRepository;

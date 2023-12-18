@@ -1,17 +1,12 @@
 package com.faas.core.base.model.db.operation.content.dao;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
+import java.util.List;
 
 public class OperationInquiryDAO {
 
     private String id;
-    private long sessionId;
-    private long clientId;
-    private long agentId;
-    private String campaignId;
-    private String processId;
+    private String operationInquiry;
+    private List<OperationDataDAO> operationInquiryDatas;
     private String inquiryState;
     private long uDate;
     private long cDate;
@@ -20,19 +15,15 @@ public class OperationInquiryDAO {
     public OperationInquiryDAO() {
     }
 
-    public OperationInquiryDAO(String id, long sessionId, long clientId, long agentId, String campaignId, String processId, String inquiryState, long uDate, long cDate, int status) {
+    public OperationInquiryDAO(String id, String operationInquiry, List<OperationDataDAO> operationInquiryDatas, String inquiryState, long uDate, long cDate, int status) {
         this.id = id;
-        this.sessionId = sessionId;
-        this.clientId = clientId;
-        this.agentId = agentId;
-        this.campaignId = campaignId;
-        this.processId = processId;
+        this.operationInquiry = operationInquiry;
+        this.operationInquiryDatas = operationInquiryDatas;
         this.inquiryState = inquiryState;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
     }
-
 
     public String getId() {
         return id;
@@ -42,44 +33,20 @@ public class OperationInquiryDAO {
         this.id = id;
     }
 
-    public long getSessionId() {
-        return sessionId;
+    public String getOperationInquiry() {
+        return operationInquiry;
     }
 
-    public void setSessionId(long sessionId) {
-        this.sessionId = sessionId;
+    public void setOperationInquiry(String operationInquiry) {
+        this.operationInquiry = operationInquiry;
     }
 
-    public long getClientId() {
-        return clientId;
+    public List<OperationDataDAO> getOperationInquiryDatas() {
+        return operationInquiryDatas;
     }
 
-    public void setClientId(long clientId) {
-        this.clientId = clientId;
-    }
-
-    public long getAgentId() {
-        return agentId;
-    }
-
-    public void setAgentId(long agentId) {
-        this.agentId = agentId;
-    }
-
-    public String getCampaignId() {
-        return campaignId;
-    }
-
-    public void setCampaignId(String campaignId) {
-        this.campaignId = campaignId;
-    }
-
-    public String getProcessId() {
-        return processId;
-    }
-
-    public void setProcessId(String processId) {
-        this.processId = processId;
+    public void setOperationInquiryDatas(List<OperationDataDAO> operationInquiryDatas) {
+        this.operationInquiryDatas = operationInquiryDatas;
     }
 
     public String getInquiryState() {

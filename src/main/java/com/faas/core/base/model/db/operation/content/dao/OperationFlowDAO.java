@@ -1,17 +1,12 @@
 package com.faas.core.base.model.db.operation.content.dao;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
+import java.util.List;
 
 public class OperationFlowDAO {
 
     private String id;
-    private long sessionId;
-    private long clientId;
-    private long agentId;
-    private String campaignId;
-    private String processId;
+    private String operationFlow;
+    private List<OperationDataDAO> operationFlowDatas;
     private String flowState;
     private long uDate;
     private long cDate;
@@ -20,13 +15,10 @@ public class OperationFlowDAO {
     public OperationFlowDAO() {
     }
 
-    public OperationFlowDAO(String id, long sessionId, long clientId, long agentId, String campaignId, String processId, String flowState, long uDate, long cDate, int status) {
+    public OperationFlowDAO(String id, String operationFlow, List<OperationDataDAO> operationFlowDatas, String flowState, long uDate, long cDate, int status) {
         this.id = id;
-        this.sessionId = sessionId;
-        this.clientId = clientId;
-        this.agentId = agentId;
-        this.campaignId = campaignId;
-        this.processId = processId;
+        this.operationFlow = operationFlow;
+        this.operationFlowDatas = operationFlowDatas;
         this.flowState = flowState;
         this.uDate = uDate;
         this.cDate = cDate;
@@ -41,44 +33,20 @@ public class OperationFlowDAO {
         this.id = id;
     }
 
-    public long getSessionId() {
-        return sessionId;
+    public String getOperationFlow() {
+        return operationFlow;
     }
 
-    public void setSessionId(long sessionId) {
-        this.sessionId = sessionId;
+    public void setOperationFlow(String operationFlow) {
+        this.operationFlow = operationFlow;
     }
 
-    public long getClientId() {
-        return clientId;
+    public List<OperationDataDAO> getOperationFlowDatas() {
+        return operationFlowDatas;
     }
 
-    public void setClientId(long clientId) {
-        this.clientId = clientId;
-    }
-
-    public long getAgentId() {
-        return agentId;
-    }
-
-    public void setAgentId(long agentId) {
-        this.agentId = agentId;
-    }
-
-    public String getCampaignId() {
-        return campaignId;
-    }
-
-    public void setCampaignId(String campaignId) {
-        this.campaignId = campaignId;
-    }
-
-    public String getProcessId() {
-        return processId;
-    }
-
-    public void setProcessId(String processId) {
-        this.processId = processId;
+    public void setOperationFlowDatas(List<OperationDataDAO> operationFlowDatas) {
+        this.operationFlowDatas = operationFlowDatas;
     }
 
     public String getFlowState() {

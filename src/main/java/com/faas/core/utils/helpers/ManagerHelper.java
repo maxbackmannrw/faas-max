@@ -2,8 +2,6 @@ package com.faas.core.utils.helpers;
 
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
-import com.faas.core.base.model.db.operation.details.flow.OperationFlowDBModel;
-import com.faas.core.base.model.db.operation.details.inquiry.OperationInquiryDBModel;
 import com.faas.core.base.model.db.process.content.ProcessDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
@@ -12,8 +10,6 @@ import com.faas.core.base.model.ws.manager.operation.content.dto.OperationManage
 import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
-import com.faas.core.base.repo.operation.details.flow.OperationFlowRepository;
-import com.faas.core.base.repo.operation.details.inquiry.OperationInquiryRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utils.config.AppConstant;
@@ -40,12 +36,6 @@ public class ManagerHelper {
 
     @Autowired
     OperationRepository operationRepository;
-
-    @Autowired
-    OperationFlowRepository operationFlowRepository;
-
-    @Autowired
-    OperationInquiryRepository operationInquiryRepository;
 
     @Autowired
     AppUtils appUtils;
@@ -97,18 +87,6 @@ public class ManagerHelper {
         Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(operationModel.getSessionId());
         if (sessionDBModel.isPresent()){
             operationWSDTO.setOperationSession(sessionDBModel.get());
-            if (sessionDBModel.get().getCampaignType().equalsIgnoreCase(AppConstant.INQUIRY_CAMPAIGN)){
-                List<OperationInquiryDBModel> operationInquiryDBModels = operationInquiryRepository.findBySessionId(sessionDBModel.get().getId());
-                if (!operationInquiryDBModels.isEmpty()){
-                    operationWSDTO.setOperationInquiry(operationInquiryDBModels.get(0));
-                }
-            }
-            if (sessionDBModel.get().getCampaignType().equalsIgnoreCase(AppConstant.AUTOMATIC_CAMPAIGN)){
-                List<OperationFlowDBModel> operationFlowDBModels = operationFlowRepository.findBySessionId(sessionDBModel.get().getId());
-                if (!operationFlowDBModels.isEmpty()){
-                    operationWSDTO.setOperationFlow(operationFlowDBModels.get(0));
-                }
-            }
         }
         return operationWSDTO;
     }
@@ -147,18 +125,7 @@ public class ManagerHelper {
         operationWSDTO.setOperationSession(sessionDBModel);
         List<OperationDBModel> operationDBModels = operationRepository.findBySessionId(sessionDBModel.getId());
         if (!operationDBModels.isEmpty()){
-            if (sessionDBModel.getCampaignType().equalsIgnoreCase(AppConstant.INQUIRY_CAMPAIGN)){
-                List<OperationInquiryDBModel> operationInquiryDBModels = operationInquiryRepository.findBySessionId(sessionDBModel.getId());
-                if (!operationInquiryDBModels.isEmpty()){
-                    operationWSDTO.setOperationInquiry(operationInquiryDBModels.get(0));
-                }
-            }
-            if (sessionDBModel.getCampaignType().equalsIgnoreCase(AppConstant.AUTOMATIC_CAMPAIGN)){
-                List<OperationFlowDBModel> operationFlowDBModels = operationFlowRepository.findBySessionId(sessionDBModel.getId());
-                if (!operationFlowDBModels.isEmpty()){
-                    operationWSDTO.setOperationFlow(operationFlowDBModels.get(0));
-                }
-            }
+
         }
         return operationWSDTO;
     }

@@ -2,21 +2,18 @@ package com.faas.core.api.model.ws.inquiry.content.dto;
 
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
-import com.faas.core.base.model.db.operation.details.inquiry.OperationInquiryDBModel;
 
 public class ApiInquiryWSDTO {
 
     private OperationDBModel operation;
     private SessionDBModel operationSession;
-    private OperationInquiryDBModel operationInquiry;
 
     public ApiInquiryWSDTO() {
     }
 
-    public ApiInquiryWSDTO(OperationDBModel operation, SessionDBModel operationSession, OperationInquiryDBModel operationInquiry) {
+    public ApiInquiryWSDTO(OperationDBModel operation, SessionDBModel operationSession) {
         this.operation = operation;
         this.operationSession = operationSession;
-        this.operationInquiry = operationInquiry;
     }
 
     public OperationDBModel getOperation() {
@@ -33,13 +30,5 @@ public class ApiInquiryWSDTO {
 
     public void setOperationSession(SessionDBModel operationSession) {
         this.operationSession = operationSession;
-    }
-
-    public OperationInquiryDBModel getOperationInquiry() {
-        return operationInquiry;
-    }
-
-    public void setOperationInquiry(OperationInquiryDBModel operationInquiry) {
-        this.operationInquiry = operationInquiry;
     }
 }
