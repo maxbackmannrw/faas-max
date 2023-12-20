@@ -95,11 +95,6 @@ public class AppConstant {
     public static final String ALL_STATES = "ALL_SESSIONS";
 
 
-    public static final String READY_OPERATION = "READY_OPERATION";
-    public static final String ACTIVE_OPERATION = "ACTIVE_OPERATION";
-    public static final String FINISHED_OPERATION = "FINISHED_OPERATION";
-    public static final String ALL_OPERATIONS = "ALL_OPERATIONS";
-
 
     public static final String NO_RESULT = "NO_RESULT";
     public static final String RESULT_SUCCESS = "RESULT_SUCCESS";
