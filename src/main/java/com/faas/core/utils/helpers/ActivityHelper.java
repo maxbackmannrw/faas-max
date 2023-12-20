@@ -1,7 +1,8 @@
 package com.faas.core.utils.helpers;
 
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
-import com.faas.core.base.model.db.operation.content.dao.OperationActivityDAO;
+import com.faas.core.base.model.db.operation.content.dao.ActivityDAO;
+import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.db.user.content.UserDBModel;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.session.SessionRepository;
@@ -12,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -32,97 +32,46 @@ public class ActivityHelper {
     AppUtils appUtils;
 
 
-    public void createOperationActivity(long sessionId,String operationId,String activity,String activityType,
-                                        String creatorId, String creatorType, String createdId, String createdType) {
+    public void createSessionActivity(SessionDBModel sessionDBModel,OperationDBModel operationDBModel) {
 
-        List<OperationDBModel> operationDBModels = operationRepository.findByIdAndSessionId(operationId,sessionId);
-        if (!operationDBModels.isEmpty()){
-            OperationActivityDAO operationActivityDAO = createOperationActivityDAO(sessionId,operationId,activity,activityType,creatorId,creatorType,createdId,createdType);
-            if (operationActivityDAO != null){
-                operationDBModels.get(0).getActivities().add(operationActivityDAO);
-                operationDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
-                operationRepository.save(operationDBModels.get(0));
-            }
-        }
+        ActivityDAO activityDAO = createActivityDAO(AppConstant.CREATE_SESSION_ACTIVITY,AppConstant.CREATE_SESSION_ACTIVITY_DESC,String.valueOf(sessionDBModel.getAgentId()),sessionDBModel.getAgentName(),String.valueOf(sessionDBModel.getId()),sessionDBModel.getClientName());
+        operationDBModel.getOperationActivities().add(activityDAO);
+        operationDBModel.setuDate(appUtils.getCurrentTimeStamp());
+        operationRepository.save(operationDBModel);
     }
 
 
-    public OperationActivityDAO createOperationActivityDAO(long sessionId, String operationId, String activity, String activityType,
-                                                           String creatorId, String creatorType, String createdId, String createdType){
+    public void createOperationActivity(SessionDBModel sessionDBModel,OperationDBModel operationDBModel) {
 
-        OperationActivityDAO operationActivityDAO = new OperationActivityDAO();
-
-        operationActivityDAO.setId(appUtils.generateUUID());
-        operationActivityDAO.setSessionId(sessionId);
-        operationActivityDAO.setOperationId(operationId);
-        operationActivityDAO.setActivity(activity);
-        operationActivityDAO.setActivityDesc(createOperationActivityDesc(activity));
-        operationActivityDAO.setActivityType(activityType);
-        operationActivityDAO = mapOperationActivityCreatorData(creatorId,creatorType, operationActivityDAO);
-        operationActivityDAO = mapOperationActivityCreatedData(createdId,createdType, operationActivityDAO);
-        operationActivityDAO.setActivityDatas(new ArrayList<>());
-        operationActivityDAO.setcDate(appUtils.getCurrentTimeStamp());
-        operationActivityDAO.setStatus(1);
-
-        return operationActivityDAO;
-    }
-
-
-    public OperationActivityDAO mapOperationActivityCreatorData(String creatorId, String creatorType, OperationActivityDAO operationActivityDAO){
-
-        if (creatorType.equalsIgnoreCase(AppConstant.USER_TYPE)){
-            Optional<UserDBModel> userDBModel = userRepository.findById(Long.parseLong(creatorId));
-            if (userDBModel.isPresent()){
-                operationActivityDAO.setCreatorId(creatorId);
-                operationActivityDAO.setCreatorName(userDBModel.get().getUserName());
-                operationActivityDAO.setCreatorType(creatorType);
-
-                return operationActivityDAO;
-            }
-        }
-        return operationActivityDAO;
-    }
-
-
-    public OperationActivityDAO mapOperationActivityCreatedData(String createdId, String createdType, OperationActivityDAO operationActivityDAO){
-
-        if (createdType.equalsIgnoreCase(AppConstant.SESSION_TYPE)){
-
-            operationActivityDAO.setCreatedId(createdId);
-            operationActivityDAO.setCreatedName(AppConstant.SESSION_TYPE);
-            operationActivityDAO.setCreatedType(createdType);
-
-            return operationActivityDAO;
-        }
-        if (createdType.equalsIgnoreCase(AppConstant.OPERATION_TYPE)){
-
-            operationActivityDAO.setCreatedId(createdId);
-            operationActivityDAO.setCreatedName(AppConstant.OPERATION_TYPE);
-            operationActivityDAO.setCreatedType(createdType);
-
-            return operationActivityDAO;
-        }
-        return operationActivityDAO;
+        ActivityDAO activityDAO = createActivityDAO(AppConstant.CREATE_OPERATION_ACTIVITY,AppConstant.CREATE_OPERATION_ACTIVITY_DESC,String.valueOf(sessionDBModel.getAgentId()),sessionDBModel.getAgentName(),operationDBModel.getId(),sessionDBModel.getClientName());
+        operationDBModel.getOperationActivities().add(activityDAO);
+        operationDBModel.setuDate(appUtils.getCurrentTimeStamp());
+        operationRepository.save(operationDBModel);
     }
 
 
 
-    public String createOperationActivityDesc(String activity){
+    public ActivityDAO createActivityDAO(String activity,String activityDesc,String creatorId,String creator,String createdId,String created){
 
-        if (activity.equalsIgnoreCase(AppConstant.CREATE_SESSION_ACTIVITY)){
-            return AppConstant.CREATE_SESSION_ACTIVITY_DESC;
-        }
-        if (activity.equalsIgnoreCase(AppConstant.CREATE_OPERATION_ACTIVITY)){
-            return AppConstant.CREATE_OPERATION_ACTIVITY_DESC;
-        }
-        if (activity.equalsIgnoreCase(AppConstant.LAUNCH_OPERATION_ACTIVITY)){
-            return AppConstant.LAUNCH_OPERATION_ACTIVITY_DESC;
-        }
-        if (activity.equalsIgnoreCase(AppConstant.FINISH_OPERATION_ACTIVITY)){
-            return AppConstant.FINISH_OPERATION_ACTIVITY_DESC;
-        }
-        return "";
+        ActivityDAO activityDAO = new ActivityDAO();
+        activityDAO.setId(appUtils.generateUUID());
+        activityDAO.setActivity(activity);
+        activityDAO.setActivityDesc(activityDesc);
+        activityDAO.setCreatorId(creatorId);
+        activityDAO.setCreator(creator);
+        activityDAO.setCreatedId(createdId);
+        activityDAO.setCreated(created);
+        activityDAO.setActivityDatas(new ArrayList<>());
+        activityDAO.setcDate(appUtils.getCurrentTimeStamp());
+        activityDAO.setStatus(1);
+
+        return activityDAO;
     }
+
+
+
+
+
 
 
 }

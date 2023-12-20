@@ -132,8 +132,6 @@ public class ApiOperationFramework {
                 // operationWSDTO.setOperationFlow(flowRepository.save(flowDBModels.get(0)));
             }
 
-            activityHelper.createOperationActivity(operation.getSessionId(), operation.getId(), AppConstant.LAUNCH_OPERATION_ACTIVITY,
-                    AppConstant.OPERATION_ACTIVITY, String.valueOf(operation.getAgentId()), AppConstant.USER_TYPE, operation.getId(), AppConstant.OPERATION_TYPE);
 
             return operationWSDTO;
         }

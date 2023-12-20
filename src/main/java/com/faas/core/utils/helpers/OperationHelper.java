@@ -18,6 +18,8 @@ import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationDeta
 import com.faas.core.api.model.ws.operation.details.scenario.dto.ApiOperationScenarioWSDTO;
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.client.content.ClientDBModel;
+import com.faas.core.base.model.db.operation.content.dao.OperationFlowDAO;
+import com.faas.core.base.model.db.operation.content.dao.OperationInquiryDAO;
 import com.faas.core.base.model.db.operation.content.dao.OperationScenarioDAO;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
@@ -30,6 +32,7 @@ import com.faas.core.base.model.ws.general.PaginationWSDTO;
 import com.faas.core.base.model.ws.operation.content.dto.OperationListWSDTO;
 import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
 import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
+import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.operation.details.channel.*;
@@ -123,6 +126,9 @@ public class OperationHelper {
 
     @Autowired
     CampaignAgentRepository campaignAgentRepository;
+
+    @Autowired
+    ProcessRepository processRepository;
 
     @Autowired
     AppUtils appUtils;
@@ -256,9 +262,20 @@ public class OperationHelper {
             operationDBModel.setCampaignId(sessionDBModel.getCampaignId());
             operationDBModel.setProcessId(sessionDBModel.getProcessId());
 
+            if (sessionDBModel.getSessionType().equalsIgnoreCase(AppConstant.INQUIRY_SESSION)){
+                operationDBModel.setOperationInquiry(createOperationInquiryDAO(sessionDBModel));
+            }
 
+            if (sessionDBModel.getSessionType().equalsIgnoreCase(AppConstant.AUTOMATIC_SESSION)){
+                operationDBModel.setOperationFlow(createOperationFlowDAO(sessionDBModel));
+            }
 
-            operationDBModel.setActivities(new ArrayList<>());
+            operationDBModel.setOperationScenarios(new ArrayList<>());
+            operationDBModel.setOperationActivities(new ArrayList<>());
+            operationDBModel.setOperationDatas(new ArrayList<>());
+
+            operationDBModel.setOperationType(sessionDBModel.getSessionType());
+            operationDBModel.setOperationState(sessionDBModel.getSessionState());
             operationDBModel.setuDate(appUtils.getCurrentTimeStamp());
             operationDBModel.setcDate(appUtils.getCurrentTimeStamp());
             operationDBModel.setStatus(1);
@@ -268,12 +285,52 @@ public class OperationHelper {
         return null;
     }
 
+
+    public OperationInquiryDAO createOperationInquiryDAO(SessionDBModel sessionDBModel) {
+
+        Optional<ProcessDBModel> processDBModel = processRepository.findById(sessionDBModel.getProcessId());
+        if (processDBModel.isPresent()){
+
+            OperationInquiryDAO operationInquiryDAO = new OperationInquiryDAO();
+            operationInquiryDAO.setId(appUtils.generateUUID());
+            operationInquiryDAO.setOperationInquiry(processDBModel.get().getProcessInquiry().getProcessInquiry());
+            operationInquiryDAO.setInquiryDatas(new ArrayList<>());
+            operationInquiryDAO.setuDate(appUtils.getCurrentTimeStamp());
+            operationInquiryDAO.setcDate(appUtils.getCurrentTimeStamp());
+            operationInquiryDAO.setStatus(1);
+
+            return operationInquiryDAO;
+        }
+        return null;
+    }
+
+
+    public OperationFlowDAO createOperationFlowDAO(SessionDBModel sessionDBModel) {
+
+        Optional<ProcessDBModel> processDBModel = processRepository.findById(sessionDBModel.getProcessId());
+        if (processDBModel.isPresent()){
+
+            OperationFlowDAO operationFlowDAO = new OperationFlowDAO();
+            operationFlowDAO.setId(appUtils.generateUUID());
+            operationFlowDAO.setOperationFlow(processDBModel.get().getProcessFlow().getProcessFlow());
+            operationFlowDAO.setFlowDatas(new ArrayList<>());
+            operationFlowDAO.setuDate(appUtils.getCurrentTimeStamp());
+            operationFlowDAO.setcDate(appUtils.getCurrentTimeStamp());
+            operationFlowDAO.setStatus(1);
+
+            return operationFlowDAO;
+        }
+        return null;
+    }
+
+
+
+
     public ApiOperationDetailsWSDTO mapApiOperationDetailsWSDTO(SessionDBModel sessionDBModel, ClientDBModel clientDBModel, OperationDBModel operationDBModel, CampaignDBModel campaignDBModel, ProcessDBModel processDBModel) {
 
         ApiOperationDetailsWSDTO operationDetailsWSDTO = new ApiOperationDetailsWSDTO();
         operationDetailsWSDTO.setOperation(operationDBModel);
         operationDetailsWSDTO.setOperationSession(sessionDBModel);
-
         operationDetailsWSDTO.setOperationClient(mapApiOperationClientWSDTO(clientDBModel));
         operationDetailsWSDTO.setClientOsInts(mapApiClientOsIntWSDTOS(clientDBModel));
         operationDetailsWSDTO.setClientNotes(mapApiOperationNoteWSDTO(clientDBModel));
@@ -320,13 +377,7 @@ public class OperationHelper {
 
     public List<ApiOperationActivityWSDTO> mapApiOperationActivities(OperationDBModel operationDBModel) {
 
-        if (operationDBModel != null && operationDBModel.getActivities() != null) {
-            List<ApiOperationActivityWSDTO> operationActivityWSDTOS = new ArrayList<>();
-            for (int i = 0; i < operationDBModel.getActivities().size(); i++) {
-                operationActivityWSDTOS.add(new ApiOperationActivityWSDTO(operationDBModel.getActivities().get(i)));
-            }
-            return operationActivityWSDTOS;
-        }
+
         return null;
     }
 

@@ -1,7 +1,7 @@
 package com.faas.core.api.framework.operation.details.activity;
 
 import com.faas.core.api.model.ws.operation.details.activity.dto.ApiOperationActivityWSDTO;
-import com.faas.core.base.model.db.operation.content.dao.OperationActivityDAO;
+import com.faas.core.base.model.db.operation.content.dao.ActivityDAO;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,20 +17,20 @@ public class ApiOperationActivityFramework {
     AppUtils appUtils;
 
 
-    public ApiOperationActivityWSDTO fillApiOperationActivityWSDTO(OperationActivityDAO operationActivityDAO) {
+    public ApiOperationActivityWSDTO fillApiOperationActivityWSDTO(ActivityDAO activityDAO) {
 
         ApiOperationActivityWSDTO operationActivityWSDTO = new ApiOperationActivityWSDTO();
         return operationActivityWSDTO;
     }
 
 
-    public List<OperationActivityDAO> apiGetOperationActivitiesService(long sessionId, long clientId) {
+    public List<ActivityDAO> apiGetOperationActivitiesService(long sessionId, long clientId) {
 
         return null;
     }
 
 
-    public OperationActivityDAO apiGetOperationActivityService(long sessionId, long clientId, String activityId) {
+    public ActivityDAO apiGetOperationActivityService(long sessionId, long clientId, String activityId) {
 
         return null;
     }

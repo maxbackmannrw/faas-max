@@ -126,6 +126,8 @@ public class CampaignOperationFramework {
 
             SessionDBModel sessionDBModel =sessionRepository.save(operationHelper.createSessionDBModel(clientDBModels.get(0),agentDBModel.get(),campaignDBModel.get()));
             OperationDBModel operationDBModel = operationRepository.save(operationHelper.createOperationDBModel(sessionDBModel));
+            activityHelper.createSessionActivity(sessionDBModel,operationDBModel);
+            activityHelper.createOperationActivity(sessionDBModel,operationDBModel);
 
             return new OperationWSDTO(operationDBModel,sessionDBModel);
         }

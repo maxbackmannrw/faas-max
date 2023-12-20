@@ -6,7 +6,7 @@ public class OperationFlowDAO {
 
     private String id;
     private String operationFlow;
-    private List<OperationDataDAO> operationFlowDatas;
+    private List<OperationDataDAO> flowDatas;
     private String flowState;
     private long uDate;
     private long cDate;
@@ -15,10 +15,10 @@ public class OperationFlowDAO {
     public OperationFlowDAO() {
     }
 
-    public OperationFlowDAO(String id, String operationFlow, List<OperationDataDAO> operationFlowDatas, String flowState, long uDate, long cDate, int status) {
+    public OperationFlowDAO(String id, String operationFlow, List<OperationDataDAO> flowDatas, String flowState, long uDate, long cDate, int status) {
         this.id = id;
         this.operationFlow = operationFlow;
-        this.operationFlowDatas = operationFlowDatas;
+        this.flowDatas = flowDatas;
         this.flowState = flowState;
         this.uDate = uDate;
         this.cDate = cDate;
@@ -41,12 +41,12 @@ public class OperationFlowDAO {
         this.operationFlow = operationFlow;
     }
 
-    public List<OperationDataDAO> getOperationFlowDatas() {
-        return operationFlowDatas;
+    public List<OperationDataDAO> getFlowDatas() {
+        return flowDatas;
     }
 
-    public void setOperationFlowDatas(List<OperationDataDAO> operationFlowDatas) {
-        this.operationFlowDatas = operationFlowDatas;
+    public void setFlowDatas(List<OperationDataDAO> flowDatas) {
+        this.flowDatas = flowDatas;
     }
 
     public String getFlowState() {

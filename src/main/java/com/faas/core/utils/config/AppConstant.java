@@ -34,35 +34,30 @@ public class AppConstant {
 
     public static final String PROCESS_DATA_TYPE = "PROCESS";
 
-
     public static final String SOURCE_URL = "SOURCE_URL";
     public static final String PWA_URL = "PWA_URL";
     public static final String NATIVE_URL = "NATIVE_URL";
 
 
+    public static final String MANUAL_SESSION = "MANUAL";
+    public static final String INQUIRY_SESSION = "INQUIRY";
+    public static final String AUTOMATIC_SESSION = "AUTOMATIC";
 
-    public static final String ALL_CAMPAIGNS = "ALL_CAMPAIGNS";
+    public static final String MANUAL_OPERATION = "MANUAL";
+    public static final String INQUIRY_OPERATION = "INQUIRY";
+    public static final String AUTOMATIC_OPERATION = "AUTOMATIC";
 
 
     public static final String MANUAL_CAMPAIGN = "MANUAL";
     public static final String INQUIRY_CAMPAIGN = "INQUIRY";
     public static final String AUTOMATIC_CAMPAIGN = "AUTOMATIC";
-    public static final String ALL_CAMPAIGN = "ALL";
+    public static final String ALL_CAMPAIGNS = "ALL";
 
 
     public static final String MANUAL_PROCESS = "MANUAL";
     public static final String INQUIRY_PROCESS = "INQUIRY";
     public static final String AUTOMATIC_PROCESS = "AUTOMATIC";
 
-
-    public static final String ACTION_ELEMENT = "ACTION";
-    public static final String AUTOMATION_ELEMENT = "AUTOMATION";
-
-
-    public static final String READY_EXECUTION = "READY_EXECUTION";
-    public static final String ACTIVE_EXECUTION = "ACTIVE_EXECUTION";
-    public static final String SUCCESS_EXECUTION = "SUCCESS_EXECUTION";
-    public static final String FAIL_EXECUTION = "FAIL_EXECUTION";
 
 
     public static final String CLIENTS = "CLIENTS";
@@ -174,25 +169,9 @@ public class AppConstant {
     public static final String USER_TYPE= "USER_TYPE";
     public static final String CLIENT_TYPE = "CLIENT_TYPE";
 
-    public static final String SESSION_TYPE = "SESSION_TYPE";
-    public static final String OPERATION_TYPE = "OPERATION_TYPE";
 
-
-    public static final String SESSION_ACTIVITY = "SESSION_ACTIVITY";
     public static final String CREATE_SESSION_ACTIVITY = "CREATE_SESSION_ACTIVITY";
     public static final String CREATE_SESSION_ACTIVITY_DESC = "session created by";
-
-    public static final String FLOW_ACTIVITY = "FLOW_ACTIVITY";
-    public static final String CREATE_FLOW_ACTIVITY = "CREATE_FLOW_ACTIVITY";
-    public static final String CREATE_FLOW_ACTIVITY_DESC = "flow created by";
-
-
-    public static final String INQUIRY_ACTIVITY = "INQUIRY_ACTIVITY";
-    public static final String CREATE_INQUIRY_ACTIVITY = "CREATE_INQUIRY_ACTIVITY";
-    public static final String CREATE_INQUIRY_ACTIVITY_DESC = "inquiry created by";
-
-
-    public static final String OPERATION_ACTIVITY = "OPERATION_ACTIVITY";
 
     public static final String CREATE_OPERATION_ACTIVITY = "CREATE_OPERATION_ACTIVITY";
     public static final String CREATE_OPERATION_ACTIVITY_DESC = "operation created by";
@@ -202,6 +181,7 @@ public class AppConstant {
 
     public static final String FINISH_OPERATION_ACTIVITY = "FINISH_OPERATION_ACTIVITY";
     public static final String FINISH_OPERATION_ACTIVITY_DESC = "operation finished by";
+
 
 
     public static final String URL_SHORTENER_API_URL = "https://tyny.to/linkApi";

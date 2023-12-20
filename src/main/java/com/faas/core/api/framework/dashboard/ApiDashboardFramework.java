@@ -81,7 +81,7 @@ public class ApiDashboardFramework {
         if (sessionType.equalsIgnoreCase(AppConstant.AUTOMATIC_CAMPAIGN)){
             return operationHelper.createApiOperationSessionFromSessionModel(sessionRepository.findAllByAgentIdAndSessionStateAndSessionType(agentId, sessionState, AppConstant.AUTOMATIC_CAMPAIGN, PageRequest.of(reqPage,reqSize)));
         }
-        if (sessionType.equalsIgnoreCase(AppConstant.ALL_CAMPAIGN)){
+        if (sessionType.equalsIgnoreCase(AppConstant.ALL_CAMPAIGNS)){
             return operationHelper.createApiOperationSessionFromSessionModel(sessionRepository.findAllByAgentIdAndSessionState(agentId, sessionState,  PageRequest.of(reqPage,reqSize)));
         }
         return null;

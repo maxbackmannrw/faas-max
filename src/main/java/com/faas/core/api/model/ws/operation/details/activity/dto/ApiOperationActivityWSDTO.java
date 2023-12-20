@@ -1,23 +1,23 @@
 package com.faas.core.api.model.ws.operation.details.activity.dto;
 
-import com.faas.core.base.model.db.operation.content.dao.OperationActivityDAO;
+import com.faas.core.base.model.db.operation.content.dao.ActivityDAO;
 
 public class ApiOperationActivityWSDTO {
 
-    private OperationActivityDAO operationActivityDAO;
+    private ActivityDAO activityDAO;
 
     public ApiOperationActivityWSDTO() {
     }
 
-    public ApiOperationActivityWSDTO(OperationActivityDAO operationActivityDAO) {
-        this.operationActivityDAO = operationActivityDAO;
+    public ApiOperationActivityWSDTO(ActivityDAO activityDAO) {
+        this.activityDAO = activityDAO;
     }
 
-    public OperationActivityDAO getOperationActivity() {
-        return operationActivityDAO;
+    public ActivityDAO getOperationActivity() {
+        return activityDAO;
     }
 
-    public void setOperationActivity(OperationActivityDAO operationActivityDAO) {
-        this.operationActivityDAO = operationActivityDAO;
+    public void setOperationActivity(ActivityDAO activityDAO) {
+        this.activityDAO = activityDAO;
     }
 }
