@@ -40,8 +40,6 @@ public class AppConstant {
     public static final String NATIVE_URL = "NATIVE_URL";
 
 
-    public static final String ACTIVE_CAMPAIGN = "ACTIVE_CAMPAIGN";
-    public static final String PASSIVE_CAMPAIGN = "PASSIVE_CAMPAIGN";
 
     public static final String ALL_CAMPAIGNS = "ALL_CAMPAIGNS";
 
