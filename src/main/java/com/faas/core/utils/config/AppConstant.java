@@ -89,7 +89,9 @@ public class AppConstant {
 
     public static final String READY_STATE = "READY_SESSION";
     public static final String ACTIVE_STATE = "ACTIVE_SESSION";
+    public static final String PASSIVE_STATE = "PASSIVE_STATE";
     public static final String FINISHED_STATE = "FINISHED_SESSION";
+
     public static final String ALL_STATES = "ALL_SESSIONS";
 
 

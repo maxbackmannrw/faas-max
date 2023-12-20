@@ -16,10 +16,10 @@ public class ProcessScenarioDBModel {
     private String processId;
     private String scenarioId;
     private String scenario;
-    private long typeId;
-    private String scenarioType;
     private List<ScenarioDataDAO> scenarioDatas;
     private List<ScenarioElement> scenarioElements;
+    private long typeId;
+    private String scenarioType;
     private int order;
     private long uDate;
     private long cDate;
@@ -28,15 +28,15 @@ public class ProcessScenarioDBModel {
     public ProcessScenarioDBModel() {
     }
 
-    public ProcessScenarioDBModel(String id, String processId, String scenarioId, String scenario, long typeId, String scenarioType, List<ScenarioDataDAO> scenarioDatas, List<ScenarioElement> scenarioElements, int order, long uDate, long cDate, int status) {
+    public ProcessScenarioDBModel(String id, String processId, String scenarioId, String scenario, List<ScenarioDataDAO> scenarioDatas, List<ScenarioElement> scenarioElements, long typeId, String scenarioType, int order, long uDate, long cDate, int status) {
         this.id = id;
         this.processId = processId;
         this.scenarioId = scenarioId;
         this.scenario = scenario;
-        this.typeId = typeId;
-        this.scenarioType = scenarioType;
         this.scenarioDatas = scenarioDatas;
         this.scenarioElements = scenarioElements;
+        this.typeId = typeId;
+        this.scenarioType = scenarioType;
         this.order = order;
         this.uDate = uDate;
         this.cDate = cDate;
@@ -75,22 +75,6 @@ public class ProcessScenarioDBModel {
         this.scenario = scenario;
     }
 
-    public long getTypeId() {
-        return typeId;
-    }
-
-    public void setTypeId(long typeId) {
-        this.typeId = typeId;
-    }
-
-    public String getScenarioType() {
-        return scenarioType;
-    }
-
-    public void setScenarioType(String scenarioType) {
-        this.scenarioType = scenarioType;
-    }
-
     public List<ScenarioDataDAO> getScenarioDatas() {
         return scenarioDatas;
     }
@@ -105,6 +89,22 @@ public class ProcessScenarioDBModel {
 
     public void setScenarioElements(List<ScenarioElement> scenarioElements) {
         this.scenarioElements = scenarioElements;
+    }
+
+    public long getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(long typeId) {
+        this.typeId = typeId;
+    }
+
+    public String getScenarioType() {
+        return scenarioType;
+    }
+
+    public void setScenarioType(String scenarioType) {
+        this.scenarioType = scenarioType;
     }
 
     public int getOrder() {

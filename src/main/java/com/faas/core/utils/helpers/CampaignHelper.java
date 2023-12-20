@@ -98,7 +98,6 @@ public class CampaignHelper {
         campaignProcessWSDTO.setProcess(processDBModel);
         List<ProcessScenarioWSDTO> processScenarioWSDTOS = new ArrayList<>();
         List<ProcessScenarioDBModel> processScenarioDBModels = processScenarioRepository.findByProcessId(processDBModel.getId());
-
         for (ProcessScenarioDBModel processScenarioDBModel : processScenarioDBModels) {
             processScenarioWSDTOS.add(mapProcessScenarioWSDTO(processScenarioDBModel));
         }

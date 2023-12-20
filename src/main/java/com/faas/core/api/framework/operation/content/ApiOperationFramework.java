@@ -111,7 +111,7 @@ public class ApiOperationFramework {
             SessionDBModel operationSession = sessionRepository.save(sessionDBModels.get(0));
             operationWSDTO.setOperationSession(operationSession);
 
-            operationDBModels.get(0).setOperationState(AppConstant.ACTIVE_OPERATION);
+            operationDBModels.get(0).setOperationState(AppConstant.ACTIVE_STATE);
             operationDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
             OperationDBModel operation = operationRepository.save(operationDBModels.get(0));
             operationWSDTO.setOperation(operation);
@@ -153,7 +153,7 @@ public class ApiOperationFramework {
 
         Optional<ClientDBModel> clientDBModel = clientRepository.findById(clientId);
         List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndClientIdAndAgentIdAndCampaignIdAndSessionState(sessionId, clientId, agentId, campaignId, AppConstant.ACTIVE_STATE);
-        List<OperationDBModel> operationDBModels = operationRepository.findBySessionIdAndClientIdAndAgentIdAndCampaignIdAndOperationState(sessionId, clientId, agentId, campaignId, AppConstant.ACTIVE_OPERATION);
+        List<OperationDBModel> operationDBModels = operationRepository.findBySessionIdAndClientIdAndAgentIdAndCampaignIdAndOperationState(sessionId, clientId, agentId, campaignId, AppConstant.ACTIVE_STATE);
 
         if (clientDBModel.isPresent() && clientDBModel.get().getClientState().equalsIgnoreCase(AppConstant.BUSY_CLIENT) && !sessionDBModels.isEmpty() && !operationDBModels.isEmpty()) {
 

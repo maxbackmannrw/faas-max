@@ -58,11 +58,11 @@ public class CampaignDetailsFramework {
 
             CampaignDetailsWSDTO campaignDetailsWSDTO = new CampaignDetailsWSDTO();
             campaignDetailsWSDTO.setCampaign(campaignDBModel.get());
-            campaignDetailsWSDTO.setCampaignAgents(campaignHelper.mapCampaignAgentWSDTOS(campaignAgentRepository.findByCampaignId(campaignId)));
             Optional<ProcessDBModel> processDBModel = processRepository.findById(campaignDBModel.get().getProcessId());
             if (processDBModel.isPresent()) {
                 campaignDetailsWSDTO.setCampaignProcess(campaignHelper.mapCampaignProcessWSDTO(processDBModel.get()));
             }
+            campaignDetailsWSDTO.setCampaignAgents(campaignHelper.mapCampaignAgentWSDTOS(campaignAgentRepository.findByCampaignId(campaignId)));
             return campaignDetailsWSDTO;
         }
         return null;
