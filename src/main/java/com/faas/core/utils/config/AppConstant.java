@@ -152,18 +152,10 @@ public class AppConstant {
 
 
 
-
-    public static final String READY_REMOTE = "READY_REMOTE";
-    public static final String ACTIVE_REMOTE = "ACTIVE_REMOTE";
-    public static final String TERMINATED_REMOTE = "TERMINATED_REMOTE";
-
-
     public static final String PWA_REMOTE = "PWA_REMOTE";
     public static final String IOS_REMOTE = "IOS_REMOTE";
     public static final String ANDROID_REMOTE = "ANDROID_REMOTE";
-
     public static final String ALL_REMOTES = "ALL_REMOTES";
-
 
 
     public static final String USER_TYPE= "USER_TYPE";

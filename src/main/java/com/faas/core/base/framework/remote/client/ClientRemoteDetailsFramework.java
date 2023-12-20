@@ -42,9 +42,7 @@ public class ClientRemoteDetailsFramework {
 
         ClientRemoteSummaryWSDTO clientRemoteSummaryWSDTO = new ClientRemoteSummaryWSDTO();
         clientRemoteSummaryWSDTO.setTotalRemote(clientRemoteRepository.count());
-        clientRemoteSummaryWSDTO.setReadyRemote(clientRemoteRepository.countByRemoteState(AppConstant.READY_REMOTE));
-        clientRemoteSummaryWSDTO.setActiveRemote(clientRemoteRepository.countByRemoteState(AppConstant.ACTIVE_REMOTE));
-        clientRemoteSummaryWSDTO.setTerminatedRemote(clientRemoteRepository.countByRemoteState(AppConstant.TERMINATED_REMOTE));
+        clientRemoteSummaryWSDTO.setReadyRemote(clientRemoteRepository.countByRemoteState(AppConstant.READY_STATE));
 
         return clientRemoteSummaryWSDTO;
     }
