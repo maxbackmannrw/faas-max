@@ -140,13 +140,13 @@ public class CampaignMiddleware {
     }
 
 
-    public CampaignWSModel createCampaign(long userId,String campaign,String campaignDesc,String campaignCategory,long campaignTypeId,String processId) {
+    public CampaignWSModel createCampaign(long userId,String campaign,String campaignDesc,String category,long typeId,String processId) {
 
         CampaignWSModel response = new CampaignWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignWSDTO> campaignWSDTOS = new ArrayList<>();
 
-        CampaignDBModel campaignDBModel = campaignFramework.createCampaignService(campaign,campaignDesc,campaignCategory,campaignTypeId,processId);
+        CampaignDBModel campaignDBModel = campaignFramework.createCampaignService(campaign,campaignDesc,category,typeId,processId);
         if (campaignDBModel != null) {
             campaignWSDTOS.add(campaignFramework.fillCampaignWSDTO(campaignDBModel));
         }

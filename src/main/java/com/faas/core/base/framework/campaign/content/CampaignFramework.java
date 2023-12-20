@@ -40,20 +40,18 @@ public class CampaignFramework {
         return campaignWSDTO;
     }
 
-    public CampaignDBModel createCampaignService(String campaign,String campaignDesc,String campaignCategory,long campaignTypeId,String processId) {
+    public CampaignDBModel createCampaignService(String campaign,String campaignDesc,String category,long typeId,String processId) {
 
         Optional<ProcessDBModel> processDBModel = processRepository.findById(processId);
-        if (processDBModel.isPresent()){
+        Optional<CampaignTypeDBModel> campaignTypeDBModel = campaignTypeRepository.findById(typeId);
+        if (processDBModel.isPresent() && campaignTypeDBModel.isPresent()){
 
             CampaignDBModel campaignDBModel = new CampaignDBModel();
             campaignDBModel.setCampaign(campaign);
             campaignDBModel.setCampaignDesc(campaignDesc);
-            Optional<CampaignTypeDBModel> campaignTypeDBModel = campaignTypeRepository.findById(campaignTypeId);
-            if (campaignTypeDBModel.isPresent()) {
-                campaignDBModel.setCampaignTypeId(campaignTypeId);
-                campaignDBModel.setCampaignType(campaignTypeDBModel.get().getCampaignType());
-            }
-            campaignDBModel.setCampaignCategory(campaignCategory);
+            campaignDBModel.setCampaignTypeId(typeId);
+            campaignDBModel.setCampaignType(campaignTypeDBModel.get().getCampaignType());
+            campaignDBModel.setCampaignCategory(category);
             campaignDBModel.setProcessId(processId);
             campaignDBModel.setProcess(processDBModel.get().getProcess());
             campaignDBModel.setProcessType(processDBModel.get().getProcessType());

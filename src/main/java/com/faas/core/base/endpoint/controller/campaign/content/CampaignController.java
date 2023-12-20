@@ -85,11 +85,11 @@ public class CampaignController {
     public ResponseEntity<?> createCampaign(@RequestParam long userId,
                                             @RequestParam String campaign,
                                             @RequestParam String campaignDesc,
-                                            @RequestParam String campaignCategory,
-                                            @RequestParam long campaignTypeId,
+                                            @RequestParam String category,
+                                            @RequestParam long typeId,
                                             @RequestParam String processId) {
 
-        CampaignWSModel response = campaignMiddleware.createCampaign(userId,campaign,campaignDesc,campaignCategory,campaignTypeId,processId);
+        CampaignWSModel response = campaignMiddleware.createCampaign(userId,campaign,campaignDesc,category,typeId,processId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
