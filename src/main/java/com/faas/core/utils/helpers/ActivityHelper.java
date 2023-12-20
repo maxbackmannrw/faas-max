@@ -50,7 +50,6 @@ public class ActivityHelper {
     }
 
 
-
     public ActivityDAO createActivityDAO(String activity,String activityDesc,String creatorId,String creator,String createdId,String created){
 
         ActivityDAO activityDAO = new ActivityDAO();
