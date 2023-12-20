@@ -48,8 +48,8 @@ public class ApiClientFramework {
     public ApiAgentSessionWSDTO apiGetAgentClientsService(long agentId, int reqPage, int reqSize) {
 
         ApiAgentSessionWSDTO agentSessionWSDTO = new ApiAgentSessionWSDTO();
-        agentSessionWSDTO.setReadySession(sessionHelper.getApiSessionWSDTO(agentId,AppConstant.READY_SESSION,reqPage,reqSize));
-        agentSessionWSDTO.setActiveSession(sessionHelper.getApiSessionWSDTO(agentId,AppConstant.ACTIVE_SESSION,reqPage,reqSize));
+        agentSessionWSDTO.setReadySession(sessionHelper.getApiSessionWSDTO(agentId,AppConstant.READY_STATE,reqPage,reqSize));
+        agentSessionWSDTO.setActiveSession(sessionHelper.getApiSessionWSDTO(agentId,AppConstant.ACTIVE_STATE,reqPage,reqSize));
 
         return agentSessionWSDTO;
     }

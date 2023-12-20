@@ -64,8 +64,8 @@ public class ApiAgentDetailsFramework {
     public ApiAgentInfoWSDTO apiGetAgentInfoService(long agentId) {
 
         ApiAgentInfoWSDTO agentInfoWSDTO = new ApiAgentInfoWSDTO();
-        agentInfoWSDTO.setReadySession(sessionRepository.countByAgentIdAndSessionState(agentId, AppConstant.READY_SESSION));
-        agentInfoWSDTO.setActiveSession(sessionRepository.countByAgentIdAndSessionState(agentId, AppConstant.ACTIVE_SESSION));
+        agentInfoWSDTO.setReadySession(sessionRepository.countByAgentIdAndSessionState(agentId, AppConstant.READY_STATE));
+        agentInfoWSDTO.setActiveSession(sessionRepository.countByAgentIdAndSessionState(agentId, AppConstant.ACTIVE_STATE));
         // agentInfoWSDTO.setReadyInquiry(inquiryRepository.countByAgentIdAndInquiryState(agentId, AppConstant.READY_INQUIRY));
         // agentInfoWSDTO.setActiveInquiry(inquiryRepository.countByAgentIdAndInquiryState(agentId, AppConstant.ACTIVE_INQUIRY));
 

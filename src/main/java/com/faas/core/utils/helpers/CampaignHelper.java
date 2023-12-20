@@ -119,8 +119,8 @@ public class CampaignHelper {
     public List<ApiSummaryWSDTO> mapCampaignSummary(long agentId,String campaignId){
 
         List<ApiSummaryWSDTO> apiSummaryWSDTOS = new ArrayList<>();
-        apiSummaryWSDTOS.add(new ApiSummaryWSDTO(AppConstant.READY_SESSIONS_SUMMARY, String.valueOf(sessionRepository.countByAgentIdAndCampaignIdAndSessionState(agentId,campaignId,AppConstant.READY_SESSION))));
-        apiSummaryWSDTOS.add(new ApiSummaryWSDTO(AppConstant.ACTIVE_SESSIONS_SUMMARY, String.valueOf(sessionRepository.countByAgentIdAndCampaignIdAndSessionState(agentId,campaignId,AppConstant.ACTIVE_SESSION))));
+        apiSummaryWSDTOS.add(new ApiSummaryWSDTO(AppConstant.READY_SESSIONS_SUMMARY, String.valueOf(sessionRepository.countByAgentIdAndCampaignIdAndSessionState(agentId,campaignId,AppConstant.READY_STATE))));
+        apiSummaryWSDTOS.add(new ApiSummaryWSDTO(AppConstant.ACTIVE_SESSIONS_SUMMARY, String.valueOf(sessionRepository.countByAgentIdAndCampaignIdAndSessionState(agentId,campaignId,AppConstant.ACTIVE_STATE))));
 
         return apiSummaryWSDTOS;
     }
@@ -130,8 +130,8 @@ public class CampaignHelper {
 
         List<ApiSummaryWSDTO> apiSummaryWSDTOS = new ArrayList<>();
 
-        apiSummaryWSDTOS.add(new ApiSummaryWSDTO(AppConstant.READY_OPERATIONS_SUMMARY, String.valueOf(sessionRepository.countByAgentIdAndSessionState(agentId,AppConstant.READY_SESSION))));
-        apiSummaryWSDTOS.add(new ApiSummaryWSDTO(AppConstant.ACTIVE_OPERATIONS_SUMMARY, String.valueOf(sessionRepository.countByAgentIdAndSessionState(agentId,AppConstant.ACTIVE_SESSION))));
+        apiSummaryWSDTOS.add(new ApiSummaryWSDTO(AppConstant.READY_OPERATIONS_SUMMARY, String.valueOf(sessionRepository.countByAgentIdAndSessionState(agentId,AppConstant.READY_STATE))));
+        apiSummaryWSDTOS.add(new ApiSummaryWSDTO(AppConstant.ACTIVE_OPERATIONS_SUMMARY, String.valueOf(sessionRepository.countByAgentIdAndSessionState(agentId,AppConstant.ACTIVE_STATE))));
         apiSummaryWSDTOS.add(new ApiSummaryWSDTO(AppConstant.TOTAL_CAMPAIGNS_SUMMARY,String.valueOf(campaignAgentRepository.countByAgentId(agentId))));
 
         return apiSummaryWSDTOS;

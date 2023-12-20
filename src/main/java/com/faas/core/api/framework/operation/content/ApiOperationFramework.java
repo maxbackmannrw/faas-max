@@ -152,7 +152,7 @@ public class ApiOperationFramework {
     public ApiOperationWSDTO apiFinishOperationService(long agentId, long sessionId, long clientId, String campaignId,String operationResult) {
 
         Optional<ClientDBModel> clientDBModel = clientRepository.findById(clientId);
-        List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndClientIdAndAgentIdAndCampaignIdAndSessionState(sessionId, clientId, agentId, campaignId, AppConstant.ACTIVE_SESSION);
+        List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndClientIdAndAgentIdAndCampaignIdAndSessionState(sessionId, clientId, agentId, campaignId, AppConstant.ACTIVE_STATE);
         List<OperationDBModel> operationDBModels = operationRepository.findBySessionIdAndClientIdAndAgentIdAndCampaignIdAndOperationState(sessionId, clientId, agentId, campaignId, AppConstant.ACTIVE_OPERATION);
 
         if (clientDBModel.isPresent() && clientDBModel.get().getClientState().equalsIgnoreCase(AppConstant.BUSY_CLIENT) && !sessionDBModels.isEmpty() && !operationDBModels.isEmpty()) {
@@ -163,7 +163,7 @@ public class ApiOperationFramework {
             clientDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
             clientRepository.save(clientDBModel.get());
 
-            sessionDBModels.get(0).setSessionState(AppConstant.FINISHED_SESSION);
+            sessionDBModels.get(0).setSessionState(AppConstant.FINISHED_STATE);
             sessionDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
             operationWSDTO.setOperationSession(sessionRepository.save(sessionDBModels.get(0)));
 
