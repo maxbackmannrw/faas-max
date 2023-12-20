@@ -13,6 +13,8 @@ import java.util.List;
 public interface OperationRepository extends MongoRepository<OperationDBModel, String> {
 
     boolean existsBySessionId(long sessionId);
+    boolean existsByClientIdAndOperationState(long clientId,String operationState);
+    boolean existsBySessionIdAndOperationState(long sessionId,String operationState);
     boolean existsBySessionIdAndClientId(long sessionId,long clientId);
     List<OperationDBModel>findByIdAndSessionId(String operationId,long sessionId);
     List<OperationDBModel>findByClientId(long clientId);

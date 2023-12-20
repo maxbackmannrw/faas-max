@@ -21,17 +21,17 @@ public class CampaignClientMiddleware {
     CampaignClientFramework campaignClientFramework;
 
 
-    public CampaignClientWSModel searchClients(long userId,String city, String country, String clientState, int reqPage, int reqSize) {
+    public CampaignClientWSModel searchCampaignClients(long userId,String city, String country, String clientState, int reqPage, int reqSize) {
 
         CampaignClientWSModel response = new CampaignClientWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        CampaignClientWSDTO campaignClientWSDTO = campaignClientFramework.searchClientsService(city,country,clientState,reqPage,reqSize);
+        CampaignClientWSDTO campaignClientWSDTO = campaignClientFramework.searchCampaignClientsService(city,country,clientState,reqPage,reqSize);
         if (campaignClientWSDTO != null){
             response.setCampaignClient(campaignClientWSDTO);
         }
 
-        general.setOperation("searchClients");
+        general.setOperation("searchCampaignClients");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -41,14 +41,13 @@ public class CampaignClientMiddleware {
     }
 
 
-
-    public ClientWSModel getCampaignClient(long userId, long clientId) {
+    public ClientWSModel getCampaignClient(long userId,long clientId,String campaignId) {
 
         ClientWSModel response = new ClientWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ClientWSDTO>clientWSDTOS = new ArrayList<>();
 
-        ClientWSDTO clientWSDTO = campaignClientFramework.getCampaignClientService(userId,clientId);
+        ClientWSDTO clientWSDTO = campaignClientFramework.getCampaignClientService(userId,clientId,campaignId);
         if (clientWSDTO != null){
             clientWSDTOS.add(clientWSDTO);
         }

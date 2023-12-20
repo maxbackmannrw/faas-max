@@ -57,11 +57,11 @@ public class ApiOperationFramework {
     public ApiAgentOperationWSDTO apiGetAgentOperationsService(long agentId, int reqPage, int reqSize) {
 
         ApiAgentOperationWSDTO agentOperationWSDTO = new ApiAgentOperationWSDTO();
-        Page<OperationDBModel> readyOperationPage = operationRepository.findAllByAgentIdAndOperationState(agentId, AppConstant.READY_OPERATION, PageRequest.of(reqPage,reqSize));
+        Page<OperationDBModel> readyOperationPage = operationRepository.findAllByAgentIdAndOperationState(agentId, AppConstant.READY_STATE, PageRequest.of(reqPage,reqSize));
         if (readyOperationPage != null){
             agentOperationWSDTO.setReadyOperation(operationHelper.createApiOperationSessionFromOperationModel(readyOperationPage));
         }
-        Page<OperationDBModel> activeOperationPage = operationRepository.findAllByAgentIdAndOperationState(agentId, AppConstant.ACTIVE_OPERATION, PageRequest.of(reqPage,reqSize));
+        Page<OperationDBModel> activeOperationPage = operationRepository.findAllByAgentIdAndOperationState(agentId, AppConstant.ACTIVE_STATE, PageRequest.of(reqPage,reqSize));
         if (activeOperationPage != null){
             agentOperationWSDTO.setActiveOperation(operationHelper.createApiOperationSessionFromOperationModel(activeOperationPage));
         }
@@ -101,12 +101,12 @@ public class ApiOperationFramework {
 
     public ApiOperationWSDTO apiLaunchOperationService(long agentId,long sessionId, long clientId, String campaignId) {
 
-        List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndClientIdAndAgentIdAndCampaignIdAndSessionState(sessionId, clientId, agentId, campaignId, AppConstant.READY_SESSION);
-        List<OperationDBModel> operationDBModels = operationRepository.findBySessionIdAndClientIdAndAgentIdAndCampaignIdAndOperationState(sessionId, clientId, agentId, campaignId, AppConstant.READY_OPERATION);
+        List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndClientIdAndAgentIdAndCampaignIdAndSessionState(sessionId, clientId, agentId, campaignId, AppConstant.READY_STATE);
+        List<OperationDBModel> operationDBModels = operationRepository.findBySessionIdAndClientIdAndAgentIdAndCampaignIdAndOperationState(sessionId, clientId, agentId, campaignId, AppConstant.READY_STATE);
         if (!sessionDBModels.isEmpty() && !operationDBModels.isEmpty()) {
 
             ApiOperationWSDTO operationWSDTO = new ApiOperationWSDTO();
-            sessionDBModels.get(0).setSessionState(AppConstant.ACTIVE_SESSION);
+            sessionDBModels.get(0).setSessionState(AppConstant.ACTIVE_STATE);
             sessionDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
             SessionDBModel operationSession = sessionRepository.save(sessionDBModels.get(0));
             operationWSDTO.setOperationSession(operationSession);

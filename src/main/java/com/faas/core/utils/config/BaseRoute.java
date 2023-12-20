@@ -70,7 +70,6 @@ public class BaseRoute {
     public static final String REMOVE_CAMPAIGN_DATA = "removecampaigndata";
 
 
-
     public static final String GET_CAMPAIGN_AGENTS = "getcampaignagents";
     public static final String GET_CAMPAIGN_AGENT = "getcampaignagent";
     public static final String ASSIGN_CAMPAIGN_AGENT = "assigncampaignagent";
@@ -78,31 +77,16 @@ public class BaseRoute {
     public static final String GET_ASSIGNABLE_AGENTS = "getassignableagents";
 
 
-    public static final String SEARCH_CLIENTS = "searchclients";
+    public static final String SEARCH_CAMPAIGN_CLIENTS = "searchcampaignclients";
+    public static final String GET_CAMPAIGN_CLIENTS = "getcampaignclients";
     public static final String GET_CAMPAIGN_CLIENT = "getcampaignclient";
 
-    public static final String SEARCH_CAMPAIGN_MANUAL_SESSIONS = "searchcampaignmanualsessions";
-    public static final String GET_CAMPAIGN_MANUAL_SESSIONS = "getcampaignmanualsessions";
-    public static final String GET_CAMPAIGN_MANUAL_SESSION = "getcampaignmanualsession";
-    public static final String CREATE_CAMPAIGN_MANUAL_SESSION = "createcampaignmanualsession";
-    public static final String UPDATE_CAMPAIGN_MANUAL_SESSION = "updatecampaignmanualsession";
-    public static final String REMOVE_CAMPAIGN_MANUAL_SESSION = "removecampaignmanualsession";
-
-
-    public static final String SEARCH_CAMPAIGN_INQUIRY_SESSIONS = "searchcampaigninquirysessions";
-    public static final String GET_CAMPAIGN_INQUIRY_SESSIONS = "getcampaigninquirysessions";
-    public static final String GET_CAMPAIGN_INQUIRY_SESSION = "getcampaigninquirysession";
-    public static final String CREATE_CAMPAIGN_INQUIRY_SESSION = "createcampaigninquirysession";
-    public static final String UPDATE_CAMPAIGN_INQUIRY_SESSION = "updatecampaigninquirysession";
-    public static final String REMOVE_CAMPAIGN_INQUIRY_SESSION = "removecampaigninquirysession";
-
-
-    public static final String SEARCH_CAMPAIGN_FLOW_SESSIONS = "searchcampaignflowsessions";
-    public static final String GET_CAMPAIGN_FLOW_SESSIONS = "getcampaignflowsessions";
-    public static final String GET_CAMPAIGN_FLOW_SESSION = "getcampaignflowsession";
-    public static final String CREATE_CAMPAIGN_FLOW_SESSION = "createcampaignflowsession";
-    public static final String UPDATE_CAMPAIGN_FLOW_SESSION = "updatecampaignflowsession";
-    public static final String REMOVE_CAMPAIGN_FLOW_SESSION = "removecampaignflowsession";
+    public static final String SEARCH_CAMPAIGN_OPERATIONS = "searchcampaignoperations";
+    public static final String GET_CAMPAIGN_OPERATIONS = "getcampaignoperations";
+    public static final String GET_CAMPAIGN_OPERATION = "getcampaignoperation";
+    public static final String CREATE_CAMPAIGN_OPERATION = "createcampaignoperation";
+    public static final String UPDATE_CAMPAIGN_OPERATION = "updatecampaignoperation";
+    public static final String REMOVE_CAMPAIGN_OPERATION = "removecampaignoperation";
 
 
     public static final String GET_APP_MANAGER = "getappmanager";

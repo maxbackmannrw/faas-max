@@ -2,10 +2,10 @@ package com.faas.core.base.framework.client.session.content;
 
 import com.faas.core.base.model.db.client.content.ClientDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
-import com.faas.core.base.model.ws.campaign.details.client.manual.CampaignManualSessionRequest;
 import com.faas.core.base.model.ws.client.session.content.dto.SessionWSDTO;
+import com.faas.core.base.model.ws.client.session.details.SessionRequest;
+import com.faas.core.base.model.ws.client.session.details.dto.SessionRequestDTO;
 import com.faas.core.base.repo.client.content.ClientRepository;
-import com.faas.core.base.repo.client.details.*;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.SessionHelper;
@@ -81,12 +81,12 @@ public class ClientSessionFramework {
     }
 
 
-    public SessionWSDTO createSessionService(long userId,long clientId,String campaign) {
+    public SessionWSDTO createSessionService(long userId,long clientId,long agentId,String campaignId) {
         return null;
     }
 
 
-    public SessionWSDTO createSessionsService(CampaignManualSessionRequest campaignManualSessionRequest) {
+    public List<SessionWSDTO> createSessionsService(List<SessionRequestDTO> sessionRequestDTOS) {
         return null;
     }
 

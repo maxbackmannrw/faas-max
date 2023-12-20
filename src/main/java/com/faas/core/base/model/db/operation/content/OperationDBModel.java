@@ -18,10 +18,10 @@ public class OperationDBModel {
     private long agentId;
     private String campaignId;
     private String processId;
-    private OperationInquiryDAO inquiry;
-    private OperationFlowDAO flow;
-    private List<OperationScenarioDAO>scenarios;
-    private List<OperationDataDAO>datas;
+    private OperationInquiryDAO operationInquiry;
+    private OperationFlowDAO operationFlow;
+    private List<OperationScenarioDAO>operationScenarios;
+    private List<OperationDataDAO>operationDatas;
     private List<OperationActivityDAO>activities;
     private String operationType;
     private String operationState;
@@ -32,7 +32,7 @@ public class OperationDBModel {
     public OperationDBModel() {
     }
 
-    public OperationDBModel(String id, long sessionId, String sessionUUID, long clientId, long agentId, String campaignId, String processId, OperationInquiryDAO inquiry, OperationFlowDAO flow, List<OperationScenarioDAO> scenarios, List<OperationDataDAO> datas, List<OperationActivityDAO> activities, String operationType, String operationState, long uDate, long cDate, int status) {
+    public OperationDBModel(String id, long sessionId, String sessionUUID, long clientId, long agentId, String campaignId, String processId, OperationInquiryDAO operationInquiry, OperationFlowDAO operationFlow, List<OperationScenarioDAO> operationScenarios, List<OperationDataDAO> operationDatas, List<OperationActivityDAO> activities, String operationType, String operationState, long uDate, long cDate, int status) {
         this.id = id;
         this.sessionId = sessionId;
         this.sessionUUID = sessionUUID;
@@ -40,10 +40,10 @@ public class OperationDBModel {
         this.agentId = agentId;
         this.campaignId = campaignId;
         this.processId = processId;
-        this.inquiry = inquiry;
-        this.flow = flow;
-        this.scenarios = scenarios;
-        this.datas = datas;
+        this.operationInquiry = operationInquiry;
+        this.operationFlow = operationFlow;
+        this.operationScenarios = operationScenarios;
+        this.operationDatas = operationDatas;
         this.activities = activities;
         this.operationType = operationType;
         this.operationState = operationState;
@@ -108,36 +108,36 @@ public class OperationDBModel {
         this.processId = processId;
     }
 
-    public OperationInquiryDAO getInquiry() {
-        return inquiry;
+    public OperationInquiryDAO getOperationInquiry() {
+        return operationInquiry;
     }
 
-    public void setInquiry(OperationInquiryDAO inquiry) {
-        this.inquiry = inquiry;
+    public void setOperationInquiry(OperationInquiryDAO operationInquiry) {
+        this.operationInquiry = operationInquiry;
     }
 
-    public OperationFlowDAO getFlow() {
-        return flow;
+    public OperationFlowDAO getOperationFlow() {
+        return operationFlow;
     }
 
-    public void setFlow(OperationFlowDAO flow) {
-        this.flow = flow;
+    public void setOperationFlow(OperationFlowDAO operationFlow) {
+        this.operationFlow = operationFlow;
     }
 
-    public List<OperationScenarioDAO> getScenarios() {
-        return scenarios;
+    public List<OperationScenarioDAO> getOperationScenarios() {
+        return operationScenarios;
     }
 
-    public void setScenarios(List<OperationScenarioDAO> scenarios) {
-        this.scenarios = scenarios;
+    public void setOperationScenarios(List<OperationScenarioDAO> operationScenarios) {
+        this.operationScenarios = operationScenarios;
     }
 
-    public List<OperationDataDAO> getDatas() {
-        return datas;
+    public List<OperationDataDAO> getOperationDatas() {
+        return operationDatas;
     }
 
-    public void setDatas(List<OperationDataDAO> datas) {
-        this.datas = datas;
+    public void setOperationDatas(List<OperationDataDAO> operationDatas) {
+        this.operationDatas = operationDatas;
     }
 
     public List<OperationActivityDAO> getActivities() {

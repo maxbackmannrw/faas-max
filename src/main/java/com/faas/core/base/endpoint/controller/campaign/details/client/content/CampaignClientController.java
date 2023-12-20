@@ -23,15 +23,15 @@ public class CampaignClientController {
     CampaignClientMiddleware campaignClientMiddleware;
 
 
-    @RequestMapping(value = BaseRoute.SEARCH_CLIENTS, method = RequestMethod.POST)
-    public ResponseEntity<?> searchClients(@RequestParam long userId,
-                                           @RequestParam String city,
-                                           @RequestParam String country,
-                                           @RequestParam String clientState,
-                                           @RequestParam int reqPage,
-                                           @RequestParam int reqSize) {
+    @RequestMapping(value = BaseRoute.SEARCH_CAMPAIGN_CLIENTS, method = RequestMethod.POST)
+    public ResponseEntity<?> searchCampaignClients(@RequestParam long userId,
+                                                   @RequestParam String city,
+                                                   @RequestParam String country,
+                                                   @RequestParam String clientState,
+                                                   @RequestParam int reqPage,
+                                                   @RequestParam int reqSize) {
 
-        CampaignClientWSModel response = campaignClientMiddleware.searchClients(userId,city,country,clientState,reqPage,reqSize);
+        CampaignClientWSModel response = campaignClientMiddleware.searchCampaignClients(userId,city,country,clientState,reqPage,reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -42,9 +42,10 @@ public class CampaignClientController {
 
     @RequestMapping(value = BaseRoute.GET_CAMPAIGN_CLIENT, method = RequestMethod.POST)
     public ResponseEntity<?> getCampaignClient(@RequestParam long userId,
-                                               @RequestParam long clientId) {
+                                               @RequestParam long clientId,
+                                               @RequestParam String campaignId) {
 
-        ClientWSModel response = campaignClientMiddleware.getCampaignClient(userId,clientId);
+        ClientWSModel response = campaignClientMiddleware.getCampaignClient(userId,clientId,campaignId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

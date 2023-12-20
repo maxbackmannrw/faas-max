@@ -89,10 +89,10 @@ public class AppConstant {
     public static final String ALL_FLOWS = "ALL_FLOWS";
 
 
-    public static final String READY_SESSION = "READY_SESSION";
-    public static final String ACTIVE_SESSION = "ACTIVE_SESSION";
-    public static final String FINISHED_SESSION = "FINISHED_SESSION";
-    public static final String ALL_SESSIONS = "ALL_SESSIONS";
+    public static final String READY_STATE = "READY_SESSION";
+    public static final String ACTIVE_STATE = "ACTIVE_SESSION";
+    public static final String FINISHED_STATE = "FINISHED_SESSION";
+    public static final String ALL_STATES = "ALL_SESSIONS";
 
 
     public static final String READY_OPERATION = "READY_OPERATION";

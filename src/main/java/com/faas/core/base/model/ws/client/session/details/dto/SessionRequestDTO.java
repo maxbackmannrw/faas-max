@@ -1,20 +1,20 @@
-package com.faas.core.base.model.ws.campaign.details.client.manual.dto;
+package com.faas.core.base.model.ws.client.session.details.dto;
 
-public class CampaignManualSessionRequestDTO {
+public class SessionRequestDTO {
 
     private long userId;
-    private String campaignId;
     private long clientId;
     private long agentId;
+    private String campaignId;
 
-    public CampaignManualSessionRequestDTO() {
+    public SessionRequestDTO() {
     }
 
-    public CampaignManualSessionRequestDTO(long userId, String campaignId, long clientId, long agentId) {
+    public SessionRequestDTO(long userId, long clientId, long agentId, String campaignId) {
         this.userId = userId;
-        this.campaignId = campaignId;
         this.clientId = clientId;
         this.agentId = agentId;
+        this.campaignId = campaignId;
     }
 
     public long getUserId() {
@@ -23,14 +23,6 @@ public class CampaignManualSessionRequestDTO {
 
     public void setUserId(long userId) {
         this.userId = userId;
-    }
-
-    public String getCampaignId() {
-        return campaignId;
-    }
-
-    public void setCampaignId(String campaignId) {
-        this.campaignId = campaignId;
     }
 
     public long getClientId() {
@@ -47,5 +39,13 @@ public class CampaignManualSessionRequestDTO {
 
     public void setAgentId(long agentId) {
         this.agentId = agentId;
+    }
+
+    public String getCampaignId() {
+        return campaignId;
+    }
+
+    public void setCampaignId(String campaignId) {
+        this.campaignId = campaignId;
     }
 }

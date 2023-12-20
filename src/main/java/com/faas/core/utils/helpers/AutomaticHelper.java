@@ -6,7 +6,6 @@ import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.db.user.content.UserDBModel;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
-import com.faas.core.base.model.ws.operation.details.content.dto.OperationFlowSessionWSDTO;
 import com.faas.core.base.model.ws.operation.content.dto.OperationListWSDTO;
 import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
@@ -50,29 +49,6 @@ public class AutomaticHelper {
 
 
 
-
-
-
-
-    public List<OperationFlowSessionWSDTO> createFlowSessionWSDTOS(List<SessionDBModel> sessionDBModels){
-
-        List<OperationFlowSessionWSDTO> operationFlowSessionWSDTOS = new ArrayList<>();
-        for (SessionDBModel sessionDBModel : sessionDBModels) {
-            operationFlowSessionWSDTOS.add(createFlowSessionWSDTO(sessionDBModel));
-        }
-        return operationFlowSessionWSDTOS;
-    }
-
-
-    public OperationFlowSessionWSDTO createFlowSessionWSDTO(SessionDBModel sessionDBModel){
-
-        OperationFlowSessionWSDTO operationFlowSessionWSDTO = new OperationFlowSessionWSDTO();
-        operationFlowSessionWSDTO.setClientSession(sessionDBModel);
-
-        return operationFlowSessionWSDTO;
-    }
-
-
     public PaginationWSDTO createFlowSessionPagination(Page<SessionDBModel> sessionDBModelPage){
 
         PaginationWSDTO paginationWSDTO = new PaginationWSDTO();
@@ -84,57 +60,6 @@ public class AutomaticHelper {
         return paginationWSDTO;
     }
 
-
-    public SessionDBModel mapFlowSession(ClientDBModel clientDBModel, UserDBModel agentDBModel, CampaignDBModel campaignDBModel) {
-
-        SessionDBModel sessionDBModel = new SessionDBModel();
-
-        sessionDBModel.setSessionUUID(appUtils.generateUUID());
-        sessionDBModel.setClientId(clientDBModel.getId());
-        sessionDBModel.setClientName(clientDBModel.getClientName());
-        sessionDBModel.setNationalId(clientDBModel.getNationalId());
-        sessionDBModel.setPhoneNumber(clientDBModel.getPhoneNumber());
-        sessionDBModel.setEmailAddress(clientDBModel.getEmailAddress());
-        sessionDBModel.setClientCity(clientDBModel.getClientCity());
-        sessionDBModel.setClientCountry(clientDBModel.getClientCountry());
-        sessionDBModel.setClientType(clientDBModel.getClientType());
-        sessionDBModel.setCampaignId(campaignDBModel.getId());
-        sessionDBModel.setCampaign(campaignDBModel.getCampaign());
-        sessionDBModel.setCampaignType(campaignDBModel.getCampaignType());
-        sessionDBModel.setCampaignCategory(campaignDBModel.getCampaignCategory());
-        sessionDBModel.setProcessId(campaignDBModel.getProcessId());
-        sessionDBModel.setProcess(campaignDBModel.getProcess());
-        sessionDBModel.setProcessType(campaignDBModel.getProcessType());
-        sessionDBModel.setProcessCategory(campaignDBModel.getProcessCategory());
-        sessionDBModel.setAgentId(agentDBModel.getId());
-        sessionDBModel.setAgentName(agentDBModel.getUserName());
-        sessionDBModel.setSessionType(campaignDBModel.getCampaignCategory());
-        sessionDBModel.setSessionState(AppConstant.READY_SESSION);
-        sessionDBModel.setuDate(appUtils.getCurrentTimeStamp());
-        sessionDBModel.setcDate(appUtils.getCurrentTimeStamp());
-        sessionDBModel.setStatus(1);
-
-        return sessionDBModel;
-    }
-
-
-    public OperationDBModel mapFlowOperation(SessionDBModel sessionDBModel) {
-
-        OperationDBModel operationDBModel = new OperationDBModel();
-        operationDBModel.setSessionId(sessionDBModel.getId());
-        operationDBModel.setSessionUUID(sessionDBModel.getSessionUUID());
-        operationDBModel.setClientId(sessionDBModel.getClientId());
-        operationDBModel.setAgentId(sessionDBModel.getAgentId());
-        operationDBModel.setCampaignId(sessionDBModel.getCampaignId());
-        operationDBModel.setProcessId(sessionDBModel.getProcessId());
-        operationDBModel.setActivities(new ArrayList<>());
-        operationDBModel.setOperationState(AppConstant.READY_OPERATION);
-        operationDBModel.setuDate(appUtils.getCurrentTimeStamp());
-        operationDBModel.setcDate(appUtils.getCurrentTimeStamp());
-        operationDBModel.setStatus(1);
-
-        return operationDBModel;
-    }
 
 
 

@@ -1,9 +1,9 @@
 package com.faas.core.base.middleware.client.session.content;
 
 import com.faas.core.base.framework.client.session.content.ClientSessionFramework;
-import com.faas.core.base.model.ws.campaign.details.client.manual.CampaignManualSessionRequest;
 import com.faas.core.base.model.ws.client.session.content.SessionWSModel;
 import com.faas.core.base.model.ws.client.session.content.dto.SessionWSDTO;
+import com.faas.core.base.model.ws.client.session.details.SessionRequest;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -82,13 +82,13 @@ public class ClientSessionMiddleware {
     }
 
 
-    public SessionWSModel createSession(long userId,long clientId,String campaign) {
+    public SessionWSModel createSession(long userId,long clientId,long agentId,String campaignId) {
 
         SessionWSModel response = new SessionWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<SessionWSDTO> sessionWSDTOS = new ArrayList<>();
 
-        SessionWSDTO sessionWSDTO = clientSessionFramework.createSessionService(userId,clientId,campaign);
+        SessionWSDTO sessionWSDTO = clientSessionFramework.createSessionService(userId,clientId,agentId,campaignId);
         if (sessionWSDTO != null){
             sessionWSDTOS.add(sessionWSDTO);
         }
@@ -105,18 +105,16 @@ public class ClientSessionMiddleware {
 
 
 
-    public SessionWSModel createSessions(CampaignManualSessionRequest campaignManualSessionRequest) {
+    public SessionWSModel createSessions(SessionRequest sessionRequest) {
 
         SessionWSModel response = new SessionWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<SessionWSDTO> sessionWSDTOS = new ArrayList<>();
 
-        SessionWSDTO sessionWSDTO = clientSessionFramework.createSessionsService(campaignManualSessionRequest);
-        if (sessionWSDTO != null){
-            sessionWSDTOS.add(sessionWSDTO);
+        List<SessionWSDTO> sessionWSDTOS = clientSessionFramework.createSessionsService(sessionRequest.getSessionRequests());
+        if (sessionWSDTOS != null){
+            response.setSessions(sessionWSDTOS);
         }
 
-        response.setSessions(sessionWSDTOS);
         general.setOperation("createSessions");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);

@@ -24,6 +24,7 @@ import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.process.content.ProcessDBModel;
 import com.faas.core.base.model.db.process.details.channel.content.ProcessSmsChannelDBModel;
 import com.faas.core.base.model.db.process.details.channel.content.ProcessWappChannelDBModel;
+import com.faas.core.base.model.db.user.content.UserDBModel;
 import com.faas.core.base.model.db.user.details.UserDetailsDBModel;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
 import com.faas.core.base.model.ws.operation.content.dto.OperationListWSDTO;
@@ -80,6 +81,9 @@ public class OperationHelper {
 
     @Autowired
     ProcessSipChannelRepository processSipChannelRepository;
+
+    @Autowired
+    OperationSipCallRepository operationSipCallRepository;
 
     @Autowired
     ProcessSmsChannelRepository processSmsChannelRepository;
@@ -139,6 +143,18 @@ public class OperationHelper {
         return operationListWSDTO;
     }
 
+    public List<OperationWSDTO> getOperationWSDTOS(List<SessionDBModel> sessionDBModels){
+
+        List<OperationWSDTO> operationWSDTOS = new ArrayList<>();
+        for (SessionDBModel sessionDBModel : sessionDBModels) {
+            List<OperationDBModel> operationDBModels = operationRepository.findBySessionId(sessionDBModel.getId());
+            if (!operationDBModels.isEmpty()) {
+                operationWSDTOS.add(getOperationWSDTO(operationDBModels.get(0), sessionDBModel));
+            }
+        }
+        return operationWSDTOS;
+    }
+
 
     public OperationWSDTO getOperationWSDTO(OperationDBModel operationDBModel, SessionDBModel sessionDBModel){
 
@@ -148,8 +164,6 @@ public class OperationHelper {
 
         return operationWSDTO;
     }
-
-
 
 
     public ApiOperationSessionWSDTO createApiOperationSessionFromOperationModel(Page<OperationDBModel> operationModelPage){
@@ -185,86 +199,8 @@ public class OperationHelper {
 
 
 
-    public ApiSipAccountWSDTO createApiSipCallAccountWSDTO(long agentId, long sessionId, long clientId, String campaignId, String processId){
-
-        ApiSipAccountWSDTO sipCallAccountWSDTO = new ApiSipAccountWSDTO();
-
-        return null;
-    }
 
 
-    public ApiWappAccountWSDTO createApiWappCallAccountWSDTO(long agentId, long sessionId, long clientId, String campaignId, String processId){
-
-        ApiWappAccountWSDTO wappCallAccountWSDTO = new ApiWappAccountWSDTO();
-        List<ProcessWappChannelDBModel> processWappChannels = processWappChannelRepository.findByProcessId(processId);
-        if (!processWappChannels.isEmpty()){
-            wappCallAccountWSDTO.setCallStatus(processWappChannels.get(0).getCallStatus());
-        }
-
-        List<UserDetailsDBModel> userDetails = userDetailsRepository.findByUserId(agentId);
-        if (!userDetails.isEmpty() && userDetails.get(0).getWappChannel() != null){
-            wappCallAccountWSDTO.setAccountId(userDetails.get(0).getWappChannel().getAccountId());
-            wappCallAccountWSDTO.setInstanceKey(userDetails.get(0).getWappChannel().getInstanceKey());
-            wappCallAccountWSDTO.setPhoneNumber(userDetails.get(0).getWappChannel().getPhoneNumber());
-            wappCallAccountWSDTO.setServerUrl(userDetails.get(0).getWappChannel().getServerUrl());
-
-            if (userDetails.get(0).getWappChannel().getAccountDatas() != null){
-                wappCallAccountWSDTO.setAccountDatas(userDetails.get(0).getWappChannel().getAccountDatas());
-            }else {
-                wappCallAccountWSDTO.setAccountDatas(new ArrayList<>());
-            }
-            wappCallAccountWSDTO.setcDate(userDetails.get(0).getWappChannel().getcDate());
-            wappCallAccountWSDTO.setStatus(userDetails.get(0).getWappChannel().getStatus());
-        }
-        return wappCallAccountWSDTO;
-    }
-
-
-    public ApiEmailAccountWSDTO createApiEmailAccountWSDTO(long agentId, long sessionId, long clientId, String campaignId, String processId){
-        return null;
-    }
-
-
-    public ApiSmsAccountWSDTO createApiSmsMessageAccountWSDTO(long agentId, long sessionId, long clientId, String campaignId, String processId){
-
-        ApiSmsAccountWSDTO smsMessageAccountWSDTO = new ApiSmsAccountWSDTO();
-        List<ProcessSmsChannelDBModel> processSmsChannels = processSmsChannelRepository.findByProcessId(processId);
-        if (processSmsChannels.size()>0){
-
-        }
-        return null;
-    }
-
-
-    public ApiWappAccountWSDTO createApiWappMessageAccountWSDTO(long agentId, long sessionId, long clientId, String campaignId, String processId){
-
-        ApiWappAccountWSDTO wappAccountWSDTO = new ApiWappAccountWSDTO();
-        List<ProcessWappChannelDBModel> processWappChannels = processWappChannelRepository.findByProcessId(processId);
-        if (!processWappChannels.isEmpty()){
-        }
-        List<UserDetailsDBModel> userDetails = userDetailsRepository.findByUserId(agentId);
-        if (!userDetails.isEmpty() && userDetails.get(0).getWappChannel() != null){
-            wappAccountWSDTO.setAccountId(userDetails.get(0).getWappChannel().getAccountId());
-            wappAccountWSDTO.setInstanceKey(userDetails.get(0).getWappChannel().getInstanceKey());
-            wappAccountWSDTO.setPhoneNumber(userDetails.get(0).getWappChannel().getPhoneNumber());
-            wappAccountWSDTO.setServerUrl(userDetails.get(0).getWappChannel().getServerUrl());
-
-            if (userDetails.get(0).getWappChannel().getAccountDatas() != null){
-                wappAccountWSDTO.setAccountDatas(userDetails.get(0).getWappChannel().getAccountDatas());
-            }else {
-                wappAccountWSDTO.setAccountDatas(new ArrayList<>());
-            }
-            wappAccountWSDTO.setcDate(userDetails.get(0).getWappChannel().getcDate());
-            wappAccountWSDTO.setStatus(userDetails.get(0).getWappChannel().getStatus());
-        }
-        return wappAccountWSDTO;
-    }
-
-
-    public ApiPushAccountWSDTO createApiPushAccountWSDTO(long agentId, long sessionId, long clientId, String campaignId, String processId){
-
-        return null;
-    }
 
     public ApiOperationScenarioWSDTO getApiOperationScenarioWSDTO(OperationScenarioDAO operationScenarioDAO){
 
@@ -275,7 +211,40 @@ public class OperationHelper {
 
 
 
-    public OperationDBModel mapOperationDBModel(SessionDBModel sessionDBModel) {
+    public SessionDBModel createSessionDBModel(ClientDBModel clientDBModel, UserDBModel agentDBModel,CampaignDBModel campaignDBModel  ) {
+
+        SessionDBModel sessionDBModel = new SessionDBModel();
+
+        sessionDBModel.setSessionUUID(appUtils.generateUUID());
+        sessionDBModel.setClientId(clientDBModel.getId());
+        sessionDBModel.setClientName(clientDBModel.getClientName());
+        sessionDBModel.setNationalId(clientDBModel.getNationalId());
+        sessionDBModel.setPhoneNumber(clientDBModel.getPhoneNumber());
+        sessionDBModel.setEmailAddress(clientDBModel.getEmailAddress());
+        sessionDBModel.setClientCity(clientDBModel.getClientCity());
+        sessionDBModel.setClientCountry(clientDBModel.getClientCountry());
+        sessionDBModel.setClientType(clientDBModel.getClientType());
+        sessionDBModel.setCampaignId(campaignDBModel.getId());
+        sessionDBModel.setCampaign(campaignDBModel.getCampaign());
+        sessionDBModel.setCampaignType(campaignDBModel.getCampaignType());
+        sessionDBModel.setCampaignCategory(campaignDBModel.getCampaignCategory());
+        sessionDBModel.setProcessId(campaignDBModel.getProcessId());
+        sessionDBModel.setProcess(campaignDBModel.getProcess());
+        sessionDBModel.setProcessType(campaignDBModel.getProcessType());
+        sessionDBModel.setProcessCategory(campaignDBModel.getProcessCategory());
+        sessionDBModel.setAgentId(agentDBModel.getId());
+        sessionDBModel.setAgentName(agentDBModel.getUserName());
+        sessionDBModel.setSessionType(campaignDBModel.getCampaignCategory());
+        sessionDBModel.setSessionState(AppConstant.READY_STATE);
+        sessionDBModel.setuDate(appUtils.getCurrentTimeStamp());
+        sessionDBModel.setcDate(appUtils.getCurrentTimeStamp());
+        sessionDBModel.setStatus(1);
+
+        return sessionDBModel;
+    }
+
+
+    public OperationDBModel createOperationDBModel(SessionDBModel sessionDBModel) {
 
         if (!operationRepository.existsBySessionIdAndClientId(sessionDBModel.getId(),sessionDBModel.getClientId())){
 
@@ -286,8 +255,10 @@ public class OperationHelper {
             operationDBModel.setAgentId(sessionDBModel.getAgentId());
             operationDBModel.setCampaignId(sessionDBModel.getCampaignId());
             operationDBModel.setProcessId(sessionDBModel.getProcessId());
+
+
+
             operationDBModel.setActivities(new ArrayList<>());
-            operationDBModel.setOperationState(AppConstant.READY_OPERATION);
             operationDBModel.setuDate(appUtils.getCurrentTimeStamp());
             operationDBModel.setcDate(appUtils.getCurrentTimeStamp());
             operationDBModel.setStatus(1);
@@ -413,6 +384,17 @@ public class OperationHelper {
     }
 
 
+    public void removeOperationDetails(long sessionId){
+
+        operationEmailMessageRepository.deleteAll(operationEmailMessageRepository.findBySessionId(sessionId));
+        operationPushMessageRepository.deleteAll(operationPushMessageRepository.findBySessionId(sessionId));
+        operationSipCallRepository.deleteAll(operationSipCallRepository.findBySessionId(sessionId));
+        operationSmsMessageRepository.deleteAll(operationSmsMessageRepository.findBySessionId(sessionId));
+        operationWappCallRepository.deleteAll(operationWappCallRepository.findBySessionId(sessionId));
+        operationWappMessageRepository.deleteAll(operationWappMessageRepository.findBySessionId(sessionId));
+    }
+
+
     public PaginationWSDTO mapOperationPagination(Page<OperationDBModel> operationDBModelPage){
 
         PaginationWSDTO paginationWSDTO = new PaginationWSDTO();
@@ -425,13 +407,13 @@ public class OperationHelper {
     }
 
 
-    public PaginationWSDTO mapOperationSessionPagination(Page<SessionDBModel> sessionDBModelPage){
+    public PaginationWSDTO mapOperationSessionPagination(Page<SessionDBModel> sessionModelPage){
 
         PaginationWSDTO paginationWSDTO = new PaginationWSDTO();
-        paginationWSDTO.setPageSize(sessionDBModelPage.getPageable().getPageSize());
-        paginationWSDTO.setPageNumber(sessionDBModelPage.getPageable().getPageNumber());
-        paginationWSDTO.setTotalPage(sessionDBModelPage.getTotalPages());
-        paginationWSDTO.setTotalElements(sessionDBModelPage.getTotalElements());
+        paginationWSDTO.setPageSize(sessionModelPage.getPageable().getPageSize());
+        paginationWSDTO.setPageNumber(sessionModelPage.getPageable().getPageNumber());
+        paginationWSDTO.setTotalPage(sessionModelPage.getTotalPages());
+        paginationWSDTO.setTotalElements(sessionModelPage.getTotalElements());
 
         return paginationWSDTO;
     }
