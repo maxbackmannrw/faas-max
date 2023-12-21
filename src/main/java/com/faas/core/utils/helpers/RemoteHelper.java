@@ -106,16 +106,19 @@ public class RemoteHelper {
         processRemoteDAO.setRemoteDesc(remoteDBModel.getRemoteDesc());
         processRemoteDAO.setRemoteModel(remoteDBModel.getRemoteModel());
         processRemoteDAO.setRemoteVersion(remoteDBModel.getRemoteVersion());
+
         if (remoteDBModel.getRemoteDatas() != null) {
             processRemoteDAO.setRemoteDatas(remoteDBModel.getRemoteDatas());
         }else {
             processRemoteDAO.setRemoteDatas(new ArrayList<>());
         }
+
         if (remoteDBModel.getRemoteUrls() != null) {
             processRemoteDAO.setRemoteUrls(remoteDBModel.getRemoteUrls());
         }else {
             processRemoteDAO.setRemoteUrls(new ArrayList<>());
         }
+
         processRemoteDAO.setTypeId(remoteDBModel.getTypeId());
         processRemoteDAO.setRemoteType(remoteDBModel.getRemoteType());
         processRemoteDAO.setBaseType(remoteDBModel.getBaseType());

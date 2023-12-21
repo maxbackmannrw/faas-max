@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/remote/client/ClientRemoteDetailsFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/remote/client/ClientRemoteDetailsFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/config/AppConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/config/AppConstant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/helpers/RemoteHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/helpers/RemoteHelper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -140,6 +138,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-11.0.21-corretto-11.0.21-249ae16d76d6-1290d802" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -541,15 +546,11 @@
       <workItem from="1702939968544" duration="4733000" />
       <workItem from="1702975861664" duration="2954000" />
       <workItem from="1702985899690" duration="1297000" />
-      <workItem from="1703063336740" duration="10820000" />
-    </task>
-    <task id="LOCAL-00453" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1700826512696</created>
-      <option name="number" value="00453" />
-      <option name="presentableId" value="LOCAL-00453" />
-      <option name="project" value="LOCAL" />
-      <updated>1700826512696</updated>
+      <workItem from="1703063336740" duration="11219000" />
+      <workItem from="1703087394407" duration="203000" />
+      <workItem from="1703096338360" duration="190000" />
+      <workItem from="1703127124224" duration="983000" />
+      <workItem from="1703152599266" duration="780000" />
     </task>
     <task id="LOCAL-00454" summary="almost finish">
       <option name="closed" value="true" />
@@ -935,7 +936,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703080115849</updated>
     </task>
-    <option name="localTasksCounter" value="502" />
+    <task id="LOCAL-00502" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1703081105156</created>
+      <option name="number" value="00502" />
+      <option name="presentableId" value="LOCAL-00502" />
+      <option name="project" value="LOCAL" />
+      <updated>1703081105157</updated>
+    </task>
+    <option name="localTasksCounter" value="503" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
