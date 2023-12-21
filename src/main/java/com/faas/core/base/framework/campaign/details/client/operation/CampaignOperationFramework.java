@@ -158,6 +158,7 @@ public class CampaignOperationFramework {
         Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
         List<OperationDBModel> operationDBModels = operationRepository.findBySessionId(sessionId);
         if (sessionDBModel.isPresent() && !operationDBModels.isEmpty()) {
+
             OperationWSDTO operationWSDTO = operationHelper.getOperationWSDTO(operationDBModels.get(0), sessionDBModel.get());
             Optional<ClientDBModel> clientDBModel = clientRepository.findById(sessionDBModel.get().getClientId());
             if (clientDBModel.isPresent()) {
@@ -165,7 +166,6 @@ public class CampaignOperationFramework {
                 clientDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
                 clientRepository.save(clientDBModel.get());
             }
-
             operationRepository.deleteAll(operationDBModels);
             sessionRepository.delete(sessionDBModel.get());
             operationHelper.removeOperationDetails(sessionId);
