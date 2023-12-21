@@ -57,9 +57,10 @@ public class CampaignOperationController {
 
     @RequestMapping(value = BaseRoute.GET_CAMPAIGN_OPERATION, method = RequestMethod.POST)
     public ResponseEntity<?> getCampaignOperation(@RequestParam long userId,
-                                                  @RequestParam long sessionId) {
+                                                  @RequestParam long sessionId,
+                                                  @RequestParam String campaignId) {
 
-        OperationWSModel response = campaignOperationMiddleware.getCampaignOperation(userId,sessionId);
+        OperationWSModel response = campaignOperationMiddleware.getCampaignOperation(userId,sessionId,campaignId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -94,9 +95,10 @@ public class CampaignOperationController {
 
     @RequestMapping(value = BaseRoute.REMOVE_CAMPAIGN_OPERATION, method = RequestMethod.POST)
     public ResponseEntity<?> removeCampaignOperation(@RequestParam long userId,
-                                                     @RequestParam long sessionId) {
+                                                     @RequestParam long sessionId,
+                                                     @RequestParam String campaignId) {
 
-        OperationWSModel response = campaignOperationMiddleware.removeCampaignOperation(userId,sessionId);
+        OperationWSModel response = campaignOperationMiddleware.removeCampaignOperation(userId,sessionId,campaignId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

@@ -61,13 +61,13 @@ public class CampaignOperationMiddleware {
     }
 
 
-    public OperationWSModel getCampaignOperation(long userId,long sessionId) {
+    public OperationWSModel getCampaignOperation(long userId,long sessionId,String campaignId) {
 
         OperationWSModel response = new OperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<OperationWSDTO> operationWSDTOS = new ArrayList<>();
 
-        OperationWSDTO operationWSDTO = campaignOperationFramework.getCampaignOperationService(userId,sessionId);
+        OperationWSDTO operationWSDTO = campaignOperationFramework.getCampaignOperationService(userId,sessionId,campaignId);
         if (operationWSDTO != null){
             operationWSDTOS.add(operationWSDTO);
         }
@@ -125,13 +125,13 @@ public class CampaignOperationMiddleware {
     }
 
 
-    public OperationWSModel removeCampaignOperation(long userId,long sessionId) {
+    public OperationWSModel removeCampaignOperation(long userId,long sessionId,String campaignId) {
 
         OperationWSModel response = new OperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<OperationWSDTO>operationWSDTOS = new ArrayList<>();
 
-        OperationWSDTO operationWSDTO = campaignOperationFramework.removeCampaignOperationService(userId,sessionId);
+        OperationWSDTO operationWSDTO = campaignOperationFramework.removeCampaignOperationService(userId,sessionId,campaignId);
         if (operationWSDTO != null){
             operationWSDTOS.add(operationWSDTO);
         }

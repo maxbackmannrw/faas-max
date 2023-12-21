@@ -93,12 +93,12 @@ public class CampaignOperationFramework {
     }
 
 
-    public OperationWSDTO getCampaignOperationService(long userId,long sessionId) {
+     public OperationWSDTO getCampaignOperationService(long userId,long sessionId,String campaignId) {
 
-        Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
+        List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndCampaignId(sessionId,campaignId);
         List<OperationDBModel> operationDBModels = operationRepository.findBySessionId(sessionId);
-        if (sessionDBModel.isPresent() && !operationDBModels.isEmpty()){
-            return operationHelper.getOperationWSDTO(operationDBModels.get(0),sessionDBModel.get());
+        if (!sessionDBModels.isEmpty() && !operationDBModels.isEmpty()){
+            return operationHelper.getOperationWSDTO(operationDBModels.get(0),sessionDBModels.get(0));
         }
         return null;
     }
@@ -152,21 +152,23 @@ public class CampaignOperationFramework {
     }
 
 
-    public OperationWSDTO removeCampaignOperationService(long userId,long sessionId) {
+    public OperationWSDTO removeCampaignOperationService(long userId,long sessionId,String campaignId) {
 
-        Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
+        List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndCampaignId(sessionId,campaignId);
         List<OperationDBModel> operationDBModels = operationRepository.findBySessionId(sessionId);
-        if (sessionDBModel.isPresent() && !operationDBModels.isEmpty()) {
+        if (!sessionDBModels.isEmpty() && !operationDBModels.isEmpty()) {
 
-            OperationWSDTO operationWSDTO = operationHelper.getOperationWSDTO(operationDBModels.get(0), sessionDBModel.get());
-            Optional<ClientDBModel> clientDBModel = clientRepository.findById(sessionDBModel.get().getClientId());
+            OperationWSDTO operationWSDTO = operationHelper.getOperationWSDTO(operationDBModels.get(0), sessionDBModels.get(0));
+            Optional<ClientDBModel> clientDBModel = clientRepository.findById(sessionDBModels.get(0).getClientId());
+
             if (clientDBModel.isPresent()) {
                 clientDBModel.get().setClientState(AppConstant.READY_CLIENT);
                 clientDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
                 clientRepository.save(clientDBModel.get());
             }
+
             operationRepository.deleteAll(operationDBModels);
-            sessionRepository.delete(sessionDBModel.get());
+            sessionRepository.delete(sessionDBModels.get(0));
             operationHelper.removeOperationDetails(sessionId);
 
             return operationWSDTO;
