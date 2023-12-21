@@ -147,7 +147,6 @@ public class CampaignOperationFramework {
         Optional<UserDBModel> agentDBModel = userRepository.findById(agentId);
         if (sessionDBModel.isPresent() && !operationDBModels.isEmpty() && agentDBModel.isPresent()){
 
-
         }
         return null;
     }
