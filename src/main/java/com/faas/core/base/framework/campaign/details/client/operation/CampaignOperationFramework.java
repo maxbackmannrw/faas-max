@@ -124,8 +124,13 @@ public class CampaignOperationFramework {
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(operationRequestDTO.getCampaignId());
         if (!clientDBModels.isEmpty() && agentDBModel.isPresent() && campaignDBModel.isPresent()){
 
-            SessionDBModel sessionDBModel =sessionRepository.save(operationHelper.createSessionDBModel(clientDBModels.get(0),agentDBModel.get(),campaignDBModel.get()));
+            clientDBModels.get(0).setClientState(AppConstant.BUSY_CLIENT);
+            clientDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
+            ClientDBModel clientDBModel = clientRepository.save(clientDBModels.get(0));
+
+            SessionDBModel sessionDBModel =sessionRepository.save(operationHelper.createSessionDBModel(clientDBModel,agentDBModel.get(),campaignDBModel.get()));
             OperationDBModel operationDBModel = operationRepository.save(operationHelper.createOperationDBModel(sessionDBModel));
+
             activityHelper.createSessionActivity(sessionDBModel,operationDBModel);
             activityHelper.createOperationActivity(sessionDBModel,operationDBModel);
 
