@@ -83,6 +83,7 @@ public class CampaignOperationFramework {
 
         Page<SessionDBModel> sessionModelPage = sessionRepository.findAllByCampaignId(campaignId, PageRequest.of(reqPage,reqSize));
         if (sessionModelPage != null){
+
             CampaignOperationWSDTO campaignOperationWSDTO = new CampaignOperationWSDTO();
             campaignOperationWSDTO.setOperations(operationHelper.getOperationWSDTOS(sessionModelPage.getContent()));
             campaignOperationWSDTO.setPagination(operationHelper.mapOperationSessionPagination(sessionModelPage));
