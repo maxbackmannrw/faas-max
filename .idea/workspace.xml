@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish" />
+    <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/manager/remote/content/RemoteManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/manager/remote/content/RemoteManagerController.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -554,15 +556,7 @@
       <workItem from="1703241205353" duration="3644000" />
       <workItem from="1703262448039" duration="3702000" />
       <workItem from="1703286183943" duration="847000" />
-      <workItem from="1703322224399" duration="5382000" />
-    </task>
-    <task id="LOCAL-00471" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1702028836251</created>
-      <option name="number" value="00471" />
-      <option name="presentableId" value="LOCAL-00471" />
-      <option name="project" value="LOCAL" />
-      <updated>1702028836251</updated>
+      <workItem from="1703322224399" duration="5736000" />
     </task>
     <task id="LOCAL-00472" summary="almost finish">
       <option name="closed" value="true" />
@@ -948,7 +942,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703341727587</updated>
     </task>
-    <option name="localTasksCounter" value="520" />
+    <task id="LOCAL-00520" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1703341951635</created>
+      <option name="number" value="00520" />
+      <option name="presentableId" value="LOCAL-00520" />
+      <option name="project" value="LOCAL" />
+      <updated>1703341951635</updated>
+    </task>
+    <option name="localTasksCounter" value="521" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
