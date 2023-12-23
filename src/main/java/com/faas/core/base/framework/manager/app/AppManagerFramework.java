@@ -1,15 +1,14 @@
 package com.faas.core.base.framework.manager.app;
 
-import com.faas.core.base.model.ws.manager.app.dto.AppManagerWSDTO;
+import com.faas.core.base.model.ws.manager.app.dto.AppManagerCampaignWSDTO;
+import com.faas.core.base.model.ws.manager.app.dto.AppManagerContentWSDTO;
+import com.faas.core.base.model.ws.manager.app.dto.AppManagerOperationWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
-import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.session.SessionRepository;
-import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.ManagerHelper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
 
@@ -32,19 +31,49 @@ public class AppManagerFramework {
     AppUtils appUtils;
 
 
-    public AppManagerWSDTO getAppManagerService(long userId,int reqPage,int reqSize) {
+    public AppManagerContentWSDTO getAppManagerContentService(long userId, String category, int reqPage, int reqSize) {
 
-        AppManagerWSDTO appManagerWSDTO = new AppManagerWSDTO();
-        appManagerWSDTO.setManualCampaigns(managerHelper.getCampaignManagerWSDTOS(campaignRepository.findByCampaignCategoryAndCampaignState(AppConstant.MANUAL_CAMPAIGN,AppConstant.ACTIVE_STATE)));
-        appManagerWSDTO.setInquiryCampaigns(managerHelper.getCampaignManagerWSDTOS(campaignRepository.findByCampaignCategoryAndCampaignState(AppConstant.INQUIRY_CAMPAIGN,AppConstant.ACTIVE_STATE)));
-        appManagerWSDTO.setAutomaticCampaigns(managerHelper.getCampaignManagerWSDTOS(campaignRepository.findByCampaignCategoryAndCampaignState(AppConstant.AUTOMATIC_CAMPAIGN,AppConstant.ACTIVE_STATE)));
-        appManagerWSDTO.setReadyOperation(managerHelper.getOperationManagerWSDTOByOperationModel(operationRepository.findAllByOperationState(AppConstant.READY_STATE,PageRequest.of(reqPage,reqSize))));
-        appManagerWSDTO.setActiveOperation(managerHelper.getOperationManagerWSDTOByOperationModel(operationRepository.findAllByOperationState(AppConstant.ACTIVE_STATE,PageRequest.of(reqPage,reqSize))));
-        appManagerWSDTO.setFinishedOperation(managerHelper.getOperationManagerWSDTOByOperationModel(operationRepository.findAllByOperationState(AppConstant.FINISHED_STATE,PageRequest.of(reqPage,reqSize))));
+        AppManagerContentWSDTO appManagerContentWSDTO = new AppManagerContentWSDTO();
 
-        return appManagerWSDTO;
+        return appManagerContentWSDTO;
     }
 
+
+    public AppManagerCampaignWSDTO getAppManagerCampaignsService(long userId, String category) {
+
+        AppManagerCampaignWSDTO appManagerCampaignWSDTO = new AppManagerCampaignWSDTO();
+
+        return appManagerCampaignWSDTO;
+    }
+
+    public AppManagerCampaignWSDTO getAppManagerCampaignService(long userId,String campaignId) {
+
+        AppManagerCampaignWSDTO appManagerCampaignWSDTO = new AppManagerCampaignWSDTO();
+
+        return appManagerCampaignWSDTO;
+    }
+
+
+    public AppManagerOperationWSDTO getAppManagerOperationsService(long userId, String category, int reqPage, int reqSize) {
+
+        AppManagerOperationWSDTO appManagerOperationWSDTO = new AppManagerOperationWSDTO();
+
+        return appManagerOperationWSDTO;
+    }
+
+    public AppManagerOperationWSDTO getAppManagerOperationsByStateService(long userId,String category,String operationState,int reqPage,int reqSize) {
+
+        AppManagerOperationWSDTO appManagerOperationWSDTO = new AppManagerOperationWSDTO();
+
+        return appManagerOperationWSDTO;
+    }
+
+    public AppManagerOperationWSDTO getAppManagerOperationService(long userId,long sessionId) {
+
+        AppManagerOperationWSDTO appManagerOperationWSDTO = new AppManagerOperationWSDTO();
+
+        return appManagerOperationWSDTO;
+    }
 
 
 }

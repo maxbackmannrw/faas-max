@@ -78,7 +78,6 @@ public class BaseRoute {
 
 
     public static final String SEARCH_CAMPAIGN_CLIENTS = "searchcampaignclients";
-    public static final String GET_CAMPAIGN_CLIENTS = "getcampaignclients";
     public static final String GET_CAMPAIGN_CLIENT = "getcampaignclient";
 
     public static final String SEARCH_CAMPAIGN_OPERATIONS = "searchcampaignoperations";
@@ -89,7 +88,16 @@ public class BaseRoute {
     public static final String REMOVE_CAMPAIGN_OPERATION = "removecampaignoperation";
 
 
-    public static final String GET_APP_MANAGER = "getappmanager";
+    public static final String GET_APP_MANAGER_CONTENT = "getappmanagercontent";
+
+    public static final String GET_APP_MANAGER_CAMPAIGNS = "getappmanagercampaigns";
+    public static final String GET_APP_MANAGER_CAMPAIGN = "getappmanagercampaign";
+
+    public static final String GET_APP_MANAGER_OPERATIONS = "getappmanageroperations";
+    public static final String GET_APP_MANAGER_OPERATIONS_BY_STATE = "getappmanageroperationsbystate";
+    public static final String GET_APP_MANAGER_OPERATION = "getappmanageroperation";
+
+
 
     public static final String GET_CAMPAIGN_MANAGERS = "getcampaignmanagers";
     public static final String GET_CAMPAIGN_MANAGERS_BY_CATEGORY = "getcampaignmanagersbycategory";

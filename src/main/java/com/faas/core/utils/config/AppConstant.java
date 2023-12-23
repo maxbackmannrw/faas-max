@@ -13,7 +13,6 @@ public class AppConstant {
 
 
 
-
     public static final String MANAGER_USER = "MANAGER_USER";
     public static final String BASIC_MANAGER = "BASIC_MANAGER";
     public static final String SUPER_MANAGER = "SUPER_MANAGER";
@@ -59,27 +58,9 @@ public class AppConstant {
     public static final String AUTOMATIC_PROCESS = "AUTOMATIC";
 
 
-
     public static final String CLIENTS = "CLIENTS";
     public static final String READY_CLIENT = "READY_CLIENT";
     public static final String BUSY_CLIENT = "BUSY_CLIENT";
-
-
-
-    public static final String NEW_INQUIRY = "NEW_INQUIRY";
-    public static final String READY_INQUIRY = "READY_INQUIRY";
-    public static final String ACTIVE_INQUIRY = "ACTIVE_INQUIRY";
-    public static final String FINISHED_INQUIRY = "FINISHED_INQUIRY";
-    public static final String ALL_INQUIRIES = "ALL_INQUIRIES";
-
-    public static final String FORM_INQUIRY = "FORM_INQUIRY";
-
-
-    public static final String NEW_FLOW = "NEW_FLOW";
-    public static final String READY_FLOW = "READY_FLOW";
-    public static final String ACTIVE_FLOW = "ACTIVE_FLOW";
-    public static final String FINISHED_FLOW = "FINISHED_FLOW";
-    public static final String ALL_FLOWS = "ALL_FLOWS";
 
 
     public static final String NEW_STATE = "NEW_STATE";
@@ -89,7 +70,6 @@ public class AppConstant {
     public static final String FINISHED_STATE = "FINISHED_STATE";
 
     public static final String ALL_STATES = "ALL_STATES";
-
 
 
     public static final String NO_RESULT = "NO_RESULT";

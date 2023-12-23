@@ -5,7 +5,7 @@ import com.faas.core.base.model.ws.manager.operation.content.dto.OperationManage
 
 import java.util.List;
 
-public class AppManagerWSDTO {
+public class AppManagerCampaignWSDTO {
 
     private List<CampaignManagerWSDTO>manualCampaigns;
     private List<CampaignManagerWSDTO>inquiryCampaigns;
@@ -14,10 +14,10 @@ public class AppManagerWSDTO {
     private OperationManagerWSDTO activeOperation;
     private OperationManagerWSDTO finishedOperation;
 
-    public AppManagerWSDTO() {
+    public AppManagerCampaignWSDTO() {
     }
 
-    public AppManagerWSDTO(List<CampaignManagerWSDTO> manualCampaigns, List<CampaignManagerWSDTO> inquiryCampaigns, List<CampaignManagerWSDTO> automaticCampaigns, OperationManagerWSDTO readyOperation, OperationManagerWSDTO activeOperation, OperationManagerWSDTO finishedOperation) {
+    public AppManagerCampaignWSDTO(List<CampaignManagerWSDTO> manualCampaigns, List<CampaignManagerWSDTO> inquiryCampaigns, List<CampaignManagerWSDTO> automaticCampaigns, OperationManagerWSDTO readyOperation, OperationManagerWSDTO activeOperation, OperationManagerWSDTO finishedOperation) {
         this.manualCampaigns = manualCampaigns;
         this.inquiryCampaigns = inquiryCampaigns;
         this.automaticCampaigns = automaticCampaigns;

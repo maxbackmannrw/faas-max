@@ -1,7 +1,7 @@
 package com.faas.core.base.endpoint.controller.manager.remote.content;
 
 import com.faas.core.base.middleware.manager.remote.content.RemoteManagerMiddleware;
-import com.faas.core.base.model.ws.manager.app.AppManagerWSModel;
+import com.faas.core.base.model.ws.manager.app.AppManagerOperationWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +27,7 @@ public class RemoteManagerController {
                                            @RequestParam int reqPage,
                                            @RequestParam int reqSize) {
 
-        AppManagerWSModel response = remoteManagerMiddleware.getAppManager(userId,reqPage,reqSize);
+        AppManagerOperationWSModel response = remoteManagerMiddleware.getAppManager(userId,reqPage,reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

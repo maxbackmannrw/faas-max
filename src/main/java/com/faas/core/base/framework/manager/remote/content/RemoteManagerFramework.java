@@ -1,6 +1,6 @@
 package com.faas.core.base.framework.manager.remote.content;
 
-import com.faas.core.base.model.ws.manager.app.dto.AppManagerWSDTO;
+import com.faas.core.base.model.ws.manager.app.dto.AppManagerCampaignWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.session.SessionRepository;
@@ -31,17 +31,17 @@ public class RemoteManagerFramework {
     AppUtils appUtils;
 
 
-    public AppManagerWSDTO getAppManagerService(long userId,int reqPage,int reqSize) {
+    public AppManagerCampaignWSDTO getAppManagerService(long userId, int reqPage, int reqSize) {
 
-        AppManagerWSDTO appManagerWSDTO = new AppManagerWSDTO();
-        appManagerWSDTO.setManualCampaigns(managerHelper.getCampaignManagerWSDTOS(campaignRepository.findByCampaignCategoryAndCampaignState(AppConstant.MANUAL_CAMPAIGN,AppConstant.ACTIVE_STATE)));
-        appManagerWSDTO.setInquiryCampaigns(managerHelper.getCampaignManagerWSDTOS(campaignRepository.findByCampaignCategoryAndCampaignState(AppConstant.INQUIRY_CAMPAIGN,AppConstant.ACTIVE_STATE)));
-        appManagerWSDTO.setAutomaticCampaigns(managerHelper.getCampaignManagerWSDTOS(campaignRepository.findByCampaignCategoryAndCampaignState(AppConstant.AUTOMATIC_CAMPAIGN,AppConstant.ACTIVE_STATE)));
-        appManagerWSDTO.setReadyOperation(managerHelper.getOperationManagerWSDTOByOperationModel(operationRepository.findAllByOperationState(AppConstant.READY_STATE,PageRequest.of(reqPage,reqSize))));
-        appManagerWSDTO.setActiveOperation(managerHelper.getOperationManagerWSDTOByOperationModel(operationRepository.findAllByOperationState(AppConstant.ACTIVE_STATE,PageRequest.of(reqPage,reqSize))));
-        appManagerWSDTO.setFinishedOperation(managerHelper.getOperationManagerWSDTOByOperationModel(operationRepository.findAllByOperationState(AppConstant.FINISHED_STATE,PageRequest.of(reqPage,reqSize))));
+        AppManagerCampaignWSDTO appManagerCampaignWSDTO = new AppManagerCampaignWSDTO();
+        appManagerCampaignWSDTO.setManualCampaigns(managerHelper.getCampaignManagerWSDTOS(campaignRepository.findByCampaignCategoryAndCampaignState(AppConstant.MANUAL_CAMPAIGN,AppConstant.ACTIVE_STATE)));
+        appManagerCampaignWSDTO.setInquiryCampaigns(managerHelper.getCampaignManagerWSDTOS(campaignRepository.findByCampaignCategoryAndCampaignState(AppConstant.INQUIRY_CAMPAIGN,AppConstant.ACTIVE_STATE)));
+        appManagerCampaignWSDTO.setAutomaticCampaigns(managerHelper.getCampaignManagerWSDTOS(campaignRepository.findByCampaignCategoryAndCampaignState(AppConstant.AUTOMATIC_CAMPAIGN,AppConstant.ACTIVE_STATE)));
+        appManagerCampaignWSDTO.setReadyOperation(managerHelper.getOperationManagerWSDTOByOperationModel(operationRepository.findAllByOperationState(AppConstant.READY_STATE,PageRequest.of(reqPage,reqSize))));
+        appManagerCampaignWSDTO.setActiveOperation(managerHelper.getOperationManagerWSDTOByOperationModel(operationRepository.findAllByOperationState(AppConstant.ACTIVE_STATE,PageRequest.of(reqPage,reqSize))));
+        appManagerCampaignWSDTO.setFinishedOperation(managerHelper.getOperationManagerWSDTOByOperationModel(operationRepository.findAllByOperationState(AppConstant.FINISHED_STATE,PageRequest.of(reqPage,reqSize))));
 
-        return appManagerWSDTO;
+        return appManagerCampaignWSDTO;
     }
 
 
