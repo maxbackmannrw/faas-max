@@ -22,7 +22,7 @@ public class RemoteManagerDetailsController {
     RemoteManagerDetailsMiddleware remoteManagerDetailsMiddleware;
 
 
-    @RequestMapping(value = BaseRoute.GET_APP_MANAGER, method = RequestMethod.POST)
+    @RequestMapping(value = BaseRoute.GET_CAMPAIGN_OPERATION, method = RequestMethod.POST)
     public ResponseEntity<?> getAppManager(@RequestParam long userId,
                                            @RequestParam int reqPage,
                                            @RequestParam int reqSize) {

@@ -30,17 +30,9 @@ public class RemoteManagerDetailsFramework {
     AppUtils appUtils;
 
 
-    public AppManagerCampaignWSDTO getAppManagerService(long userId, int reqPage, int reqSize) {
+    public void getAppManagerService(long userId, int reqPage, int reqSize) {
 
-        AppManagerCampaignWSDTO appManagerCampaignWSDTO = new AppManagerCampaignWSDTO();
-        appManagerCampaignWSDTO.setManualCampaigns(managerHelper.getCampaignManagerWSDTOS(campaignRepository.findByCampaignCategoryAndCampaignState(AppConstant.MANUAL_CAMPAIGN,AppConstant.ACTIVE_STATE)));
-        appManagerCampaignWSDTO.setInquiryCampaigns(managerHelper.getCampaignManagerWSDTOS(campaignRepository.findByCampaignCategoryAndCampaignState(AppConstant.INQUIRY_CAMPAIGN,AppConstant.ACTIVE_STATE)));
-        appManagerCampaignWSDTO.setAutomaticCampaigns(managerHelper.getCampaignManagerWSDTOS(campaignRepository.findByCampaignCategoryAndCampaignState(AppConstant.AUTOMATIC_CAMPAIGN,AppConstant.ACTIVE_STATE)));
-        appManagerCampaignWSDTO.setReadyOperation(managerHelper.getOperationManagerWSDTOByOperationModel(operationRepository.findAllByOperationState(AppConstant.READY_STATE,PageRequest.of(reqPage,reqSize))));
-        appManagerCampaignWSDTO.setActiveOperation(managerHelper.getOperationManagerWSDTOByOperationModel(operationRepository.findAllByOperationState(AppConstant.ACTIVE_STATE,PageRequest.of(reqPage,reqSize))));
-        appManagerCampaignWSDTO.setFinishedOperation(managerHelper.getOperationManagerWSDTOByOperationModel(operationRepository.findAllByOperationState(AppConstant.FINISHED_STATE,PageRequest.of(reqPage,reqSize))));
 
-        return appManagerCampaignWSDTO;
     }
 
 
