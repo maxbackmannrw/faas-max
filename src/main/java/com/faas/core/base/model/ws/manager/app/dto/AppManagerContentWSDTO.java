@@ -7,70 +7,40 @@ import java.util.List;
 
 public class AppManagerContentWSDTO {
 
-    private List<CampaignManagerWSDTO>manualCampaigns;
-    private List<CampaignManagerWSDTO>inquiryCampaigns;
-    private List<CampaignManagerWSDTO>automaticCampaigns;
-    private OperationManagerWSDTO readyOperation;
-    private OperationManagerWSDTO activeOperation;
-    private OperationManagerWSDTO finishedOperation;
+    private List<CampaignManagerWSDTO>campaignManagers;
+    private OperationManagerWSDTO readyOperationManager;
+    private OperationManagerWSDTO activeOperationManager;
 
     public AppManagerContentWSDTO() {
     }
 
-    public AppManagerContentWSDTO(List<CampaignManagerWSDTO> manualCampaigns, List<CampaignManagerWSDTO> inquiryCampaigns, List<CampaignManagerWSDTO> automaticCampaigns, OperationManagerWSDTO readyOperation, OperationManagerWSDTO activeOperation, OperationManagerWSDTO finishedOperation) {
-        this.manualCampaigns = manualCampaigns;
-        this.inquiryCampaigns = inquiryCampaigns;
-        this.automaticCampaigns = automaticCampaigns;
-        this.readyOperation = readyOperation;
-        this.activeOperation = activeOperation;
-        this.finishedOperation = finishedOperation;
+    public AppManagerContentWSDTO(List<CampaignManagerWSDTO> campaignManagers, OperationManagerWSDTO readyOperationManager, OperationManagerWSDTO activeOperationManager) {
+        this.campaignManagers = campaignManagers;
+        this.readyOperationManager = readyOperationManager;
+        this.activeOperationManager = activeOperationManager;
     }
 
-    public List<CampaignManagerWSDTO> getManualCampaigns() {
-        return manualCampaigns;
+    public List<CampaignManagerWSDTO> getCampaignManagers() {
+        return campaignManagers;
     }
 
-    public void setManualCampaigns(List<CampaignManagerWSDTO> manualCampaigns) {
-        this.manualCampaigns = manualCampaigns;
+    public void setCampaignManagers(List<CampaignManagerWSDTO> campaignManagers) {
+        this.campaignManagers = campaignManagers;
     }
 
-    public List<CampaignManagerWSDTO> getInquiryCampaigns() {
-        return inquiryCampaigns;
+    public OperationManagerWSDTO getReadyOperationManager() {
+        return readyOperationManager;
     }
 
-    public void setInquiryCampaigns(List<CampaignManagerWSDTO> inquiryCampaigns) {
-        this.inquiryCampaigns = inquiryCampaigns;
+    public void setReadyOperationManager(OperationManagerWSDTO readyOperationManager) {
+        this.readyOperationManager = readyOperationManager;
     }
 
-    public List<CampaignManagerWSDTO> getAutomaticCampaigns() {
-        return automaticCampaigns;
+    public OperationManagerWSDTO getActiveOperationManager() {
+        return activeOperationManager;
     }
 
-    public void setAutomaticCampaigns(List<CampaignManagerWSDTO> automaticCampaigns) {
-        this.automaticCampaigns = automaticCampaigns;
-    }
-
-    public OperationManagerWSDTO getReadyOperation() {
-        return readyOperation;
-    }
-
-    public void setReadyOperation(OperationManagerWSDTO readyOperation) {
-        this.readyOperation = readyOperation;
-    }
-
-    public OperationManagerWSDTO getActiveOperation() {
-        return activeOperation;
-    }
-
-    public void setActiveOperation(OperationManagerWSDTO activeOperation) {
-        this.activeOperation = activeOperation;
-    }
-
-    public OperationManagerWSDTO getFinishedOperation() {
-        return finishedOperation;
-    }
-
-    public void setFinishedOperation(OperationManagerWSDTO finishedOperation) {
-        this.finishedOperation = finishedOperation;
+    public void setActiveOperationManager(OperationManagerWSDTO activeOperationManager) {
+        this.activeOperationManager = activeOperationManager;
     }
 }

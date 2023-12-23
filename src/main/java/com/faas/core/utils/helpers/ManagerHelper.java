@@ -91,6 +91,7 @@ public class ManagerHelper {
         return operationWSDTO;
     }
 
+
     public PaginationWSDTO getOperationManagerPaginationByOperationModel(Page<OperationDBModel> operationModelPage){
 
         PaginationWSDTO paginationWSDTO = new PaginationWSDTO();

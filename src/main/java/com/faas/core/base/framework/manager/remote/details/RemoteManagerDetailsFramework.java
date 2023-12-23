@@ -1,6 +1,5 @@
 package com.faas.core.base.framework.manager.remote.details;
 
-import com.faas.core.base.model.ws.manager.app.dto.AppManagerCampaignWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.session.SessionRepository;

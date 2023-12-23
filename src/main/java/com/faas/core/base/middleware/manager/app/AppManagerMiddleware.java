@@ -5,12 +5,15 @@ import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.model.ws.manager.app.AppManagerCampaignWSModel;
 import com.faas.core.base.model.ws.manager.app.AppManagerContentWSModel;
 import com.faas.core.base.model.ws.manager.app.AppManagerOperationWSModel;
-import com.faas.core.base.model.ws.manager.app.dto.AppManagerCampaignWSDTO;
 import com.faas.core.base.model.ws.manager.app.dto.AppManagerContentWSDTO;
 import com.faas.core.base.model.ws.manager.app.dto.AppManagerOperationWSDTO;
+import com.faas.core.base.model.ws.manager.campaign.content.dto.CampaignManagerWSDTO;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Component
@@ -28,7 +31,7 @@ public class AppManagerMiddleware {
 
         AppManagerContentWSDTO appManagerContentWSDTO = appManagerFramework.getAppManagerContentService(userId,category,reqPage,reqSize);
         if (appManagerContentWSDTO != null){
-            response.setAppManagerContent(appManagerContentWSDTO);
+            response.setAppManager(appManagerContentWSDTO);
         }
 
         general.setOperation("getAppManagerContent");
@@ -46,9 +49,9 @@ public class AppManagerMiddleware {
         AppManagerCampaignWSModel response = new AppManagerCampaignWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        AppManagerCampaignWSDTO appManagerCampaignWSDTO = appManagerFramework.getAppManagerCampaignsService(userId,category);
-        if (appManagerCampaignWSDTO != null){
-            response.setAppManagerCampaign(appManagerCampaignWSDTO);
+        List<CampaignManagerWSDTO>campaignManagerWSDTOS = appManagerFramework.getAppManagerCampaignsService(userId,category);
+        if (campaignManagerWSDTOS != null){
+            response.setCampaignManagers(campaignManagerWSDTOS);
         }
 
         general.setOperation("getAppManagerCampaigns");
@@ -64,12 +67,14 @@ public class AppManagerMiddleware {
 
         AppManagerCampaignWSModel response = new AppManagerCampaignWSModel();
         GeneralWSModel general = new GeneralWSModel();
+        List<CampaignManagerWSDTO>campaignManagerWSDTOS = new ArrayList<>();
 
-        AppManagerCampaignWSDTO appManagerCampaignWSDTO = appManagerFramework.getAppManagerCampaignService(userId,campaignId);
-        if (appManagerCampaignWSDTO != null){
-            response.setAppManagerCampaign(appManagerCampaignWSDTO);
+        CampaignManagerWSDTO campaignManagerWSDTO = appManagerFramework.getAppManagerCampaignService(userId,campaignId);
+        if (campaignManagerWSDTO != null){
+            campaignManagerWSDTOS.add(campaignManagerWSDTO);
         }
 
+        response.setCampaignManagers(campaignManagerWSDTOS);
         general.setOperation("getAppManagerCampaign");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);

@@ -1,20 +1,19 @@
 package com.faas.core.base.model.ws.manager.app;
 
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.manager.app.dto.AppManagerCampaignWSDTO;
 import com.faas.core.base.model.ws.manager.app.dto.AppManagerContentWSDTO;
 
 public class AppManagerContentWSModel {
 
     private GeneralWSModel general;
-    private AppManagerContentWSDTO appManagerContent;
+    private AppManagerContentWSDTO appManager;
 
     public AppManagerContentWSModel() {
     }
 
-    public AppManagerContentWSModel(GeneralWSModel general, AppManagerContentWSDTO appManagerContent) {
+    public AppManagerContentWSModel(GeneralWSModel general, AppManagerContentWSDTO appManager) {
         this.general = general;
-        this.appManagerContent = appManagerContent;
+        this.appManager = appManager;
     }
 
     public GeneralWSModel getGeneral() {
@@ -25,11 +24,11 @@ public class AppManagerContentWSModel {
         this.general = general;
     }
 
-    public AppManagerContentWSDTO getAppManagerContent() {
-        return appManagerContent;
+    public AppManagerContentWSDTO getAppManager() {
+        return appManager;
     }
 
-    public void setAppManagerContent(AppManagerContentWSDTO appManagerContent) {
-        this.appManagerContent = appManagerContent;
+    public void setAppManager(AppManagerContentWSDTO appManager) {
+        this.appManager = appManager;
     }
 }
