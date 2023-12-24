@@ -4,6 +4,7 @@ import com.faas.core.base.middleware.manager.app.AppManagerMiddleware;
 import com.faas.core.base.model.ws.manager.app.AppManagerCampaignWSModel;
 import com.faas.core.base.model.ws.manager.app.AppManagerContentWSModel;
 import com.faas.core.base.model.ws.manager.app.AppManagerOperationWSModel;
+import com.faas.core.base.model.ws.manager.app.AppManagerWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,20 @@ public class AppManagerController {
     AppManagerMiddleware appManagerMiddleware;
 
 
+    @RequestMapping(value = BaseRoute. GET_APP_MANAGER, method = RequestMethod.POST)
+    public ResponseEntity<?> getAppManager(@RequestParam long userId,
+                                           @RequestParam int reqPage,
+                                           @RequestParam int reqSize) {
+
+        AppManagerWSModel response = appManagerMiddleware.getAppManager(userId,reqPage,reqSize);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
     @RequestMapping(value = BaseRoute. GET_APP_MANAGER_CONTENT, method = RequestMethod.POST)
     public ResponseEntity<?> getAppManagerContent(@RequestParam long userId,
                                                   @RequestParam String category,
@@ -39,6 +54,7 @@ public class AppManagerController {
     }
 
 
+
     @RequestMapping(value = BaseRoute.GET_APP_MANAGER_CAMPAIGNS, method = RequestMethod.POST)
     public ResponseEntity<?> getAppManagerCampaigns(@RequestParam long userId,
                                                     @RequestParam String category) {
@@ -50,6 +66,7 @@ public class AppManagerController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
+
 
     @RequestMapping(value = BaseRoute.GET_APP_MANAGER_CAMPAIGN, method = RequestMethod.POST)
     public ResponseEntity<?> getAppManagerCampaign(@RequestParam long userId,
@@ -79,6 +96,7 @@ public class AppManagerController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+
     @RequestMapping(value = BaseRoute.GET_APP_MANAGER_OPERATIONS_BY_STATE, method = RequestMethod.POST)
     public ResponseEntity<?> getAppManagerOperationsByState(@RequestParam long userId,
                                                             @RequestParam String category,
@@ -93,6 +111,7 @@ public class AppManagerController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
+
 
     @RequestMapping(value = BaseRoute.GET_APP_MANAGER_OPERATION, method = RequestMethod.POST)
     public ResponseEntity<?> getAppManagerOperation(@RequestParam long userId,

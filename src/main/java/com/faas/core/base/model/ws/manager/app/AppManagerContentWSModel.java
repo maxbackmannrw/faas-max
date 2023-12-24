@@ -6,14 +6,14 @@ import com.faas.core.base.model.ws.manager.app.dto.AppManagerContentWSDTO;
 public class AppManagerContentWSModel {
 
     private GeneralWSModel general;
-    private AppManagerContentWSDTO appManager;
+    private AppManagerContentWSDTO appManagerContent;
 
     public AppManagerContentWSModel() {
     }
 
-    public AppManagerContentWSModel(GeneralWSModel general, AppManagerContentWSDTO appManager) {
+    public AppManagerContentWSModel(GeneralWSModel general, AppManagerContentWSDTO appManagerContent) {
         this.general = general;
-        this.appManager = appManager;
+        this.appManagerContent = appManagerContent;
     }
 
     public GeneralWSModel getGeneral() {
@@ -24,11 +24,11 @@ public class AppManagerContentWSModel {
         this.general = general;
     }
 
-    public AppManagerContentWSDTO getAppManager() {
-        return appManager;
+    public AppManagerContentWSDTO getAppManagerContent() {
+        return appManagerContent;
     }
 
-    public void setAppManager(AppManagerContentWSDTO appManager) {
-        this.appManager = appManager;
+    public void setAppManagerContent(AppManagerContentWSDTO appManagerContent) {
+        this.appManagerContent = appManagerContent;
     }
 }

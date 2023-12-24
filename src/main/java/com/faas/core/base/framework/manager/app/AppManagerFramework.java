@@ -1,8 +1,10 @@
 package com.faas.core.base.framework.manager.app;
 
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
+import com.faas.core.base.model.ws.manager.app.AppManagerContentWSModel;
 import com.faas.core.base.model.ws.manager.app.dto.AppManagerContentWSDTO;
 import com.faas.core.base.model.ws.manager.app.dto.AppManagerOperationWSDTO;
+import com.faas.core.base.model.ws.manager.app.dto.AppManagerWSDTO;
 import com.faas.core.base.model.ws.manager.campaign.content.dto.CampaignManagerWSDTO;
 import com.faas.core.base.model.ws.manager.operation.content.dto.OperationManagerWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
@@ -42,26 +44,20 @@ public class AppManagerFramework {
     AppUtils appUtils;
 
 
-    public AppManagerContentWSDTO getAppManagerContentService(long userId, String category, int reqPage, int reqSize) {
+    public AppManagerWSDTO getAppManagerService(long userId,int reqPage,int reqSize) {
 
-        AppManagerContentWSDTO appManagerContentWSDTO = new AppManagerContentWSDTO();
-        List<CampaignDBModel> campaignDBModels = campaignRepository.findByCampaignCategory(category);
-        if (!campaignDBModels.isEmpty()){
-            List<CampaignManagerWSDTO> campaignManagerWSDTOS = managerHelper.getCampaignManagerWSDTOS(campaignDBModels);
-            if (campaignManagerWSDTOS != null){
-                appManagerContentWSDTO.setCampaignManagers(campaignManagerWSDTOS);
-            }
-        }
-        OperationManagerWSDTO readyOperationManagerWSDTO = managerHelper.getOperationManagerWSDTOByOperationModel(operationRepository.findAllByOperationStateAndOperationType(AppConstant.READY_STATE,category, PageRequest.of(reqPage,reqSize)));
-        if (readyOperationManagerWSDTO != null){
-            appManagerContentWSDTO.setReadyOperationManager(readyOperationManagerWSDTO);
-        }
-        OperationManagerWSDTO activeOperationManagerWSDTO = managerHelper.getOperationManagerWSDTOByOperationModel(operationRepository.findAllByOperationStateAndOperationType(AppConstant.ACTIVE_STATE,category, PageRequest.of(reqPage,reqSize)));
-        if (activeOperationManagerWSDTO != null){
-            appManagerContentWSDTO.setActiveOperationManager(activeOperationManagerWSDTO);
-        }
+        AppManagerWSDTO appManagerWSDTO = new AppManagerWSDTO();
+        appManagerWSDTO.setManualContent(managerHelper.getAppManagerContentWSDTO(userId,AppConstant.MANUAL_OPERATION,reqPage,reqSize));
+        appManagerWSDTO.setInquiryContent(managerHelper.getAppManagerContentWSDTO(userId,AppConstant.INQUIRY_OPERATION,reqPage,reqSize));
+        appManagerWSDTO.setAutomaticContent(managerHelper.getAppManagerContentWSDTO(userId,AppConstant.AUTOMATIC_OPERATION,reqPage,reqSize));
 
-        return appManagerContentWSDTO;
+        return appManagerWSDTO;
+    }
+
+
+    public AppManagerContentWSDTO getAppManagerContentService(long userId,String category,int reqPage,int reqSize) {
+
+        return managerHelper.getAppManagerContentWSDTO(userId,category,reqPage,reqSize);
     }
 
 
@@ -73,12 +69,14 @@ public class AppManagerFramework {
         return campaignManagerWSDTOS;
     }
 
+
     public CampaignManagerWSDTO getAppManagerCampaignService(long userId,String campaignId) {
 
         CampaignManagerWSDTO campaignManagerWSDTO = new CampaignManagerWSDTO();
 
         return campaignManagerWSDTO;
     }
+
 
 
     public AppManagerOperationWSDTO getAppManagerOperationsService(long userId, String category, int reqPage, int reqSize) {
@@ -88,6 +86,7 @@ public class AppManagerFramework {
         return appManagerOperationWSDTO;
     }
 
+
     public AppManagerOperationWSDTO getAppManagerOperationsByStateService(long userId,String category,String operationState,int reqPage,int reqSize) {
 
         AppManagerOperationWSDTO appManagerOperationWSDTO = new AppManagerOperationWSDTO();
@@ -95,12 +94,12 @@ public class AppManagerFramework {
         return appManagerOperationWSDTO;
     }
 
+
     public AppManagerOperationWSDTO getAppManagerOperationService(long userId,long sessionId) {
 
         AppManagerOperationWSDTO appManagerOperationWSDTO = new AppManagerOperationWSDTO();
 
         return appManagerOperationWSDTO;
     }
-
 
 }

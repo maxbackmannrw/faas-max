@@ -88,6 +88,7 @@ public class BaseRoute {
     public static final String REMOVE_CAMPAIGN_OPERATION = "removecampaignoperation";
 
 
+    public static final String GET_APP_MANAGER = "getappmanager";
     public static final String GET_APP_MANAGER_CONTENT = "getappmanagercontent";
 
     public static final String GET_APP_MANAGER_CAMPAIGNS = "getappmanagercampaigns";

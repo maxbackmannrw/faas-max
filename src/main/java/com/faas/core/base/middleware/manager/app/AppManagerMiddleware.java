@@ -5,8 +5,10 @@ import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.model.ws.manager.app.AppManagerCampaignWSModel;
 import com.faas.core.base.model.ws.manager.app.AppManagerContentWSModel;
 import com.faas.core.base.model.ws.manager.app.AppManagerOperationWSModel;
+import com.faas.core.base.model.ws.manager.app.AppManagerWSModel;
 import com.faas.core.base.model.ws.manager.app.dto.AppManagerContentWSDTO;
 import com.faas.core.base.model.ws.manager.app.dto.AppManagerOperationWSDTO;
+import com.faas.core.base.model.ws.manager.app.dto.AppManagerWSDTO;
 import com.faas.core.base.model.ws.manager.campaign.content.dto.CampaignManagerWSDTO;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,14 +26,34 @@ public class AppManagerMiddleware {
     AppManagerFramework appManagerFramework;
 
 
-    public AppManagerContentWSModel getAppManagerContent(long userId, String category, int reqPage, int reqSize) {
+    public AppManagerWSModel getAppManager(long userId, int reqPage, int reqSize) {
+
+        AppManagerWSModel response = new AppManagerWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        AppManagerWSDTO appManagerWSDTO = appManagerFramework.getAppManagerService(userId,reqPage,reqSize);
+        if (appManagerWSDTO != null){
+            response.setAppManager(appManagerWSDTO);
+        }
+
+        general.setOperation("getAppManager");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
+    public AppManagerContentWSModel getAppManagerContent(long userId,String category,int reqPage,int reqSize) {
 
         AppManagerContentWSModel response = new AppManagerContentWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
         AppManagerContentWSDTO appManagerContentWSDTO = appManagerFramework.getAppManagerContentService(userId,category,reqPage,reqSize);
         if (appManagerContentWSDTO != null){
-            response.setAppManager(appManagerContentWSDTO);
+            response.setAppManagerContent(appManagerContentWSDTO);
         }
 
         general.setOperation("getAppManagerContent");
@@ -42,6 +64,7 @@ public class AppManagerMiddleware {
 
         return response;
     }
+
 
 
     public AppManagerCampaignWSModel getAppManagerCampaigns(long userId, String category) {
@@ -62,6 +85,7 @@ public class AppManagerMiddleware {
 
         return response;
     }
+
 
     public AppManagerCampaignWSModel getAppManagerCampaign(long userId,String campaignId) {
 
@@ -85,6 +109,7 @@ public class AppManagerMiddleware {
     }
 
 
+
     public AppManagerOperationWSModel getAppManagerOperations(long userId,String category,int reqPage,int reqSize) {
 
         AppManagerOperationWSModel response = new AppManagerOperationWSModel();
@@ -103,6 +128,7 @@ public class AppManagerMiddleware {
 
         return response;
     }
+
 
     public AppManagerOperationWSModel getAppManagerOperationsByState(long userId,String category,String operationState,int reqPage,int reqSize) {
 
@@ -123,6 +149,7 @@ public class AppManagerMiddleware {
         return response;
     }
 
+
     public AppManagerOperationWSModel getAppManagerOperation(long userId,long sessionId) {
 
         AppManagerOperationWSModel response = new AppManagerOperationWSModel();
@@ -141,5 +168,6 @@ public class AppManagerMiddleware {
 
         return response;
     }
+
 
 }

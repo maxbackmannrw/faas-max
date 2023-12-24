@@ -5,6 +5,7 @@ import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.process.content.ProcessDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
+import com.faas.core.base.model.ws.manager.app.dto.AppManagerContentWSDTO;
 import com.faas.core.base.model.ws.manager.campaign.content.dto.CampaignManagerWSDTO;
 import com.faas.core.base.model.ws.manager.operation.content.dto.OperationManagerWSDTO;
 import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
@@ -16,6 +17,7 @@ import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -39,6 +41,29 @@ public class ManagerHelper {
 
     @Autowired
     AppUtils appUtils;
+
+
+    public AppManagerContentWSDTO getAppManagerContentWSDTO(long userId,String category,int reqPage,int reqSize){
+
+        AppManagerContentWSDTO appManagerContentWSDTO = new AppManagerContentWSDTO();
+        List<CampaignDBModel> campaignDBModels = campaignRepository.findByCampaignCategory(category);
+        if (!campaignDBModels.isEmpty()){
+            List<CampaignManagerWSDTO> campaignManagerWSDTOS = getCampaignManagerWSDTOS(campaignDBModels);
+            if (campaignManagerWSDTOS != null){
+                appManagerContentWSDTO.setCampaignManagers(campaignManagerWSDTOS);
+            }
+        }
+        OperationManagerWSDTO readyOperationManagerWSDTO = getOperationManagerWSDTOByOperationModel(operationRepository.findAllByOperationStateAndOperationType(AppConstant.READY_STATE,category, PageRequest.of(reqPage,reqSize)));
+        if (readyOperationManagerWSDTO != null){
+            appManagerContentWSDTO.setReadyOperationManager(readyOperationManagerWSDTO);
+        }
+        OperationManagerWSDTO activeOperationManagerWSDTO = getOperationManagerWSDTOByOperationModel(operationRepository.findAllByOperationStateAndOperationType(AppConstant.ACTIVE_STATE,category, PageRequest.of(reqPage,reqSize)));
+        if (activeOperationManagerWSDTO != null){
+            appManagerContentWSDTO.setActiveOperationManager(activeOperationManagerWSDTO);
+        }
+        return appManagerContentWSDTO;
+
+    }
 
 
     public List<CampaignManagerWSDTO> getCampaignManagerWSDTOS(List<CampaignDBModel>campaignModels){
