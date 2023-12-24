@@ -8,16 +8,16 @@ import java.util.List;
 public class AppManagerContentWSDTO {
 
     private List<CampaignManagerWSDTO>campaignManagers;
-    private OperationManagerWSDTO readyOperationManager;
-    private OperationManagerWSDTO activeOperationManager;
+    private OperationManagerWSDTO readyOperation;
+    private OperationManagerWSDTO activeOperation;
 
     public AppManagerContentWSDTO() {
     }
 
-    public AppManagerContentWSDTO(List<CampaignManagerWSDTO> campaignManagers, OperationManagerWSDTO readyOperationManager, OperationManagerWSDTO activeOperationManager) {
+    public AppManagerContentWSDTO(List<CampaignManagerWSDTO> campaignManagers, OperationManagerWSDTO readyOperation, OperationManagerWSDTO activeOperation) {
         this.campaignManagers = campaignManagers;
-        this.readyOperationManager = readyOperationManager;
-        this.activeOperationManager = activeOperationManager;
+        this.readyOperation = readyOperation;
+        this.activeOperation = activeOperation;
     }
 
     public List<CampaignManagerWSDTO> getCampaignManagers() {
@@ -28,19 +28,19 @@ public class AppManagerContentWSDTO {
         this.campaignManagers = campaignManagers;
     }
 
-    public OperationManagerWSDTO getReadyOperationManager() {
-        return readyOperationManager;
+    public OperationManagerWSDTO getReadyOperation() {
+        return readyOperation;
     }
 
-    public void setReadyOperationManager(OperationManagerWSDTO readyOperationManager) {
-        this.readyOperationManager = readyOperationManager;
+    public void setReadyOperation(OperationManagerWSDTO readyOperation) {
+        this.readyOperation = readyOperation;
     }
 
-    public OperationManagerWSDTO getActiveOperationManager() {
-        return activeOperationManager;
+    public OperationManagerWSDTO getActiveOperation() {
+        return activeOperation;
     }
 
-    public void setActiveOperationManager(OperationManagerWSDTO activeOperationManager) {
-        this.activeOperationManager = activeOperationManager;
+    public void setActiveOperation(OperationManagerWSDTO activeOperation) {
+        this.activeOperation = activeOperation;
     }
 }

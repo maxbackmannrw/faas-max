@@ -55,11 +55,11 @@ public class ManagerHelper {
         }
         OperationManagerWSDTO readyOperationManagerWSDTO = getOperationManagerWSDTOByOperationModel(operationRepository.findAllByOperationStateAndOperationType(AppConstant.READY_STATE,category, PageRequest.of(reqPage,reqSize)));
         if (readyOperationManagerWSDTO != null){
-            appManagerContentWSDTO.setReadyOperationManager(readyOperationManagerWSDTO);
+            appManagerContentWSDTO.setReadyOperation(readyOperationManagerWSDTO);
         }
         OperationManagerWSDTO activeOperationManagerWSDTO = getOperationManagerWSDTOByOperationModel(operationRepository.findAllByOperationStateAndOperationType(AppConstant.ACTIVE_STATE,category, PageRequest.of(reqPage,reqSize)));
         if (activeOperationManagerWSDTO != null){
-            appManagerContentWSDTO.setActiveOperationManager(activeOperationManagerWSDTO);
+            appManagerContentWSDTO.setActiveOperation(activeOperationManagerWSDTO);
         }
         return appManagerContentWSDTO;
 
@@ -87,7 +87,6 @@ public class ManagerHelper {
 
         return campaignManagerWSDTO;
     }
-
 
 
     public OperationManagerWSDTO getOperationManagerWSDTOByOperationModel(Page<OperationDBModel> operationModelPage){
