@@ -73,10 +73,7 @@ public class AppManagerFramework {
 
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
         if (campaignDBModel.isPresent()){
-            CampaignManagerWSDTO campaignManagerWSDTO = managerHelper.fillCampaignManagerWSDTO(campaignDBModel.get());
-            if (campaignManagerWSDTO != null){
-                return campaignManagerWSDTO;
-            }
+            return managerHelper.fillCampaignManagerWSDTO(campaignDBModel.get());
         }
         return null;
     }
@@ -96,14 +93,20 @@ public class AppManagerFramework {
 
         Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
         if (sessionDBModel.isPresent()){
-            OperationWSDTO operationWSDTO = managerHelper.fillManagerOperationWSDTOBySessionModel(sessionDBModel.get());
-            if (operationWSDTO != null){
-                return operationWSDTO;
-            }
+            return managerHelper.fillManagerOperationWSDTOBySessionModel(sessionDBModel.get());
         }
         return null;
     }
 
+    public OperationWSDTO removeAppManagerOperationService(long userId, long sessionId) {
 
+        Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
+        if (sessionDBModel.isPresent()){
+            OperationWSDTO operationWSDTO = managerHelper.fillManagerOperationWSDTOBySessionModel(sessionDBModel.get());
+            managerHelper.removeOperationManager(sessionDBModel.get());
+            return operationWSDTO;
+        }
+        return null;
+    }
 
 }

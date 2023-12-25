@@ -97,7 +97,7 @@ public class BaseRoute {
     public static final String GET_APP_MANAGER_OPERATIONS = "getappmanageroperations";
     public static final String GET_APP_MANAGER_OPERATIONS_BY_STATE = "getappmanageroperationsbystate";
     public static final String GET_APP_MANAGER_OPERATION = "getappmanageroperation";
-
+    public static final String REMOVE_APP_MANAGER_OPERATION = "removeappmanageroperation";
 
 
     public static final String GET_CAMPAIGN_MANAGERS = "getcampaignmanagers";

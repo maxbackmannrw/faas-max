@@ -127,4 +127,17 @@ public class AppManagerController {
     }
 
 
+    @RequestMapping(value = BaseRoute.REMOVE_APP_MANAGER_OPERATION, method = RequestMethod.POST)
+    public ResponseEntity<?> removeAppManagerOperation(@RequestParam long userId,
+                                                       @RequestParam long sessionId) {
+
+        OperationWSModel response = appManagerMiddleware.removeAppManagerOperation(userId,sessionId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
 }

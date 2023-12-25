@@ -11,6 +11,7 @@ import com.faas.core.base.model.ws.manager.operation.content.dto.OperationManage
 import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
+import com.faas.core.base.repo.operation.details.channel.*;
 import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utils.config.AppConstant;
@@ -40,6 +41,24 @@ public class ManagerHelper {
     OperationRepository operationRepository;
 
     @Autowired
+    OperationEmailMessageRepository operationEmailMessageRepository;
+
+    @Autowired
+    OperationPushMessageRepository operationPushMessageRepository;
+
+    @Autowired
+    OperationSipCallRepository operationSipCallRepository;
+
+    @Autowired
+    OperationSmsMessageRepository operationSmsMessageRepository;
+
+    @Autowired
+    OperationWappCallRepository operationWappCallRepository;
+
+    @Autowired
+    OperationWappMessageRepository operationWappMessageRepository;
+
+    @Autowired
     AppUtils appUtils;
 
 
@@ -62,7 +81,6 @@ public class ManagerHelper {
             appManagerContentWSDTO.setActiveOperation(activeOperationManagerWSDTO);
         }
         return appManagerContentWSDTO;
-
     }
 
 
@@ -164,6 +182,20 @@ public class ManagerHelper {
         paginationWSDTO.setTotalElements(sessionModelPage.getTotalElements());
 
         return paginationWSDTO;
+    }
+
+    public OperationWSDTO removeOperationManager(SessionDBModel sessionDBModel){
+
+        sessionRepository.delete(sessionDBModel);
+        operationRepository.deleteAll(operationRepository.findBySessionId(sessionDBModel.getId()));
+        operationEmailMessageRepository.deleteAll(operationEmailMessageRepository.findBySessionId(sessionDBModel.getId()));
+        operationPushMessageRepository.deleteAll(operationPushMessageRepository.findBySessionId(sessionDBModel.getId()));
+        operationSipCallRepository.deleteAll(operationSipCallRepository.findBySessionId(sessionDBModel.getId()));
+        operationSmsMessageRepository.deleteAll(operationSmsMessageRepository.findBySessionId(sessionDBModel.getId()));
+        operationWappCallRepository.deleteAll(operationWappCallRepository.findBySessionId(sessionDBModel.getId()));
+        operationWappMessageRepository.deleteAll(operationWappMessageRepository.findBySessionId(sessionDBModel.getId()));
+
+        return null;
     }
 
 

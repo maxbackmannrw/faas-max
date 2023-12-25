@@ -98,17 +98,8 @@ public class OperationManagerFramework {
 
         Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
         if (sessionDBModel.isPresent()){
-
             OperationWSDTO operationWSDTO = managerHelper.fillManagerOperationWSDTOBySessionModel(sessionDBModel.get());
-            sessionRepository.delete(sessionDBModel.get());
-            operationRepository.deleteAll(operationRepository.findBySessionId(sessionId));
-            operationEmailMessageRepository.deleteAll(operationEmailMessageRepository.findBySessionId(sessionId));
-            operationPushMessageRepository.deleteAll(operationPushMessageRepository.findBySessionId(sessionId));
-            operationSipCallRepository.deleteAll(operationSipCallRepository.findBySessionId(sessionId));
-            operationSmsMessageRepository.deleteAll(operationSmsMessageRepository.findBySessionId(sessionId));
-            operationWappCallRepository.deleteAll(operationWappCallRepository.findBySessionId(sessionId));
-            operationWappMessageRepository.deleteAll(operationWappMessageRepository.findBySessionId(sessionId));
-
+            managerHelper.removeOperationManager(sessionDBModel.get());
             return operationWSDTO;
         }
         return null;

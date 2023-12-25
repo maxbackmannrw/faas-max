@@ -168,4 +168,28 @@ public class AppManagerMiddleware {
     }
 
 
+
+    public OperationWSModel removeAppManagerOperation(long userId, long sessionId) {
+
+        OperationWSModel response = new OperationWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+        List<OperationWSDTO> operationWSDTOS = new ArrayList<>();
+
+        OperationWSDTO operationWSDTO = appManagerFramework.removeAppManagerOperationService(userId,sessionId);
+        if (operationWSDTO != null){
+            operationWSDTOS.add(operationWSDTO);
+        }
+
+        response.setOperations(operationWSDTOS);
+        general.setOperation("getAppManagerOperation");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    
+
 }
