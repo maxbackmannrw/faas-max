@@ -1,12 +1,12 @@
 package com.faas.core.base.framework.manager.app;
 
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
-import com.faas.core.base.model.ws.manager.app.AppManagerContentWSModel;
+import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.ws.manager.app.dto.AppManagerContentWSDTO;
-import com.faas.core.base.model.ws.manager.app.dto.AppManagerOperationWSDTO;
 import com.faas.core.base.model.ws.manager.app.dto.AppManagerWSDTO;
 import com.faas.core.base.model.ws.manager.campaign.content.dto.CampaignManagerWSDTO;
 import com.faas.core.base.model.ws.manager.operation.content.dto.OperationManagerWSDTO;
+import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
@@ -18,8 +18,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 @Component
@@ -54,52 +54,56 @@ public class AppManagerFramework {
         return appManagerWSDTO;
     }
 
-
     public AppManagerContentWSDTO getAppManagerContentService(long userId,String category,int reqPage,int reqSize) {
 
         return managerHelper.getAppManagerContentWSDTO(userId,category,reqPage,reqSize);
     }
 
 
-
     public List<CampaignManagerWSDTO> getAppManagerCampaignsService(long userId, String category) {
 
-        List<CampaignManagerWSDTO> campaignManagerWSDTOS = new ArrayList<>();
-
-        return campaignManagerWSDTOS;
+        List<CampaignDBModel> campaignDBModels = campaignRepository.findByCampaignCategory(category);
+        if (campaignDBModels != null){
+            return managerHelper.getCampaignManagerWSDTOS(campaignDBModels);
+        }
+        return null;
     }
-
 
     public CampaignManagerWSDTO getAppManagerCampaignService(long userId,String campaignId) {
 
-        CampaignManagerWSDTO campaignManagerWSDTO = new CampaignManagerWSDTO();
-
-        return campaignManagerWSDTO;
+        Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
+        if (campaignDBModel.isPresent()){
+            CampaignManagerWSDTO campaignManagerWSDTO = managerHelper.fillCampaignManagerWSDTO(campaignDBModel.get());
+            if (campaignManagerWSDTO != null){
+                return campaignManagerWSDTO;
+            }
+        }
+        return null;
     }
 
 
+    public OperationManagerWSDTO getAppManagerOperationsService(long userId, String category, int reqPage, int reqSize) {
 
-    public AppManagerOperationWSDTO getAppManagerOperationsService(long userId, String category, int reqPage, int reqSize) {
+        return managerHelper.getOperationManagerWSDTOByOperationModel(operationRepository.findAllByOperationType(category,PageRequest.of(reqPage,reqSize)));
+    }
 
-        AppManagerOperationWSDTO appManagerOperationWSDTO = new AppManagerOperationWSDTO();
+    public OperationManagerWSDTO getAppManagerOperationsByStateService(long userId,String category,String operationState,int reqPage,int reqSize) {
 
-        return appManagerOperationWSDTO;
+        return managerHelper.getOperationManagerWSDTOByOperationModel(operationRepository.findAllByOperationStateAndOperationType(operationState,category,PageRequest.of(reqPage,reqSize)));
+    }
+
+    public OperationWSDTO getAppManagerOperationService(long userId, long sessionId) {
+
+        Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
+        if (sessionDBModel.isPresent()){
+            OperationWSDTO operationWSDTO = managerHelper.fillManagerOperationWSDTOBySessionModel(sessionDBModel.get());
+            if (operationWSDTO != null){
+                return operationWSDTO;
+            }
+        }
+        return null;
     }
 
 
-    public AppManagerOperationWSDTO getAppManagerOperationsByStateService(long userId,String category,String operationState,int reqPage,int reqSize) {
-
-        AppManagerOperationWSDTO appManagerOperationWSDTO = new AppManagerOperationWSDTO();
-
-        return appManagerOperationWSDTO;
-    }
-
-
-    public AppManagerOperationWSDTO getAppManagerOperationService(long userId,long sessionId) {
-
-        AppManagerOperationWSDTO appManagerOperationWSDTO = new AppManagerOperationWSDTO();
-
-        return appManagerOperationWSDTO;
-    }
 
 }

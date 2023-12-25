@@ -5,6 +5,7 @@ import com.faas.core.base.model.ws.manager.app.AppManagerCampaignWSModel;
 import com.faas.core.base.model.ws.manager.app.AppManagerContentWSModel;
 import com.faas.core.base.model.ws.manager.app.AppManagerOperationWSModel;
 import com.faas.core.base.model.ws.manager.app.AppManagerWSModel;
+import com.faas.core.base.model.ws.operation.content.OperationWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -117,7 +118,7 @@ public class AppManagerController {
     public ResponseEntity<?> getAppManagerOperation(@RequestParam long userId,
                                                     @RequestParam long sessionId) {
 
-        AppManagerOperationWSModel response = appManagerMiddleware.getAppManagerOperation(userId,sessionId);
+        OperationWSModel response = appManagerMiddleware.getAppManagerOperation(userId,sessionId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

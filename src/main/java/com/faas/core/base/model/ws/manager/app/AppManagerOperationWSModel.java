@@ -1,19 +1,19 @@
 package com.faas.core.base.model.ws.manager.app;
 
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.manager.app.dto.AppManagerOperationWSDTO;
+import com.faas.core.base.model.ws.manager.operation.content.dto.OperationManagerWSDTO;
 
 public class AppManagerOperationWSModel {
 
     private GeneralWSModel general;
-    private AppManagerOperationWSDTO appManagerOperation;
+    private OperationManagerWSDTO operationManager;
 
     public AppManagerOperationWSModel() {
     }
 
-    public AppManagerOperationWSModel(GeneralWSModel general, AppManagerOperationWSDTO appManagerOperation) {
+    public AppManagerOperationWSModel(GeneralWSModel general, OperationManagerWSDTO operationManager) {
         this.general = general;
-        this.appManagerOperation = appManagerOperation;
+        this.operationManager = operationManager;
     }
 
     public GeneralWSModel getGeneral() {
@@ -24,11 +24,11 @@ public class AppManagerOperationWSModel {
         this.general = general;
     }
 
-    public AppManagerOperationWSDTO getAppManagerOperation() {
-        return appManagerOperation;
+    public OperationManagerWSDTO getOperationManager() {
+        return operationManager;
     }
 
-    public void setAppManagerOperation(AppManagerOperationWSDTO appManagerOperation) {
-        this.appManagerOperation = appManagerOperation;
+    public void setOperationManager(OperationManagerWSDTO operationManager) {
+        this.operationManager = operationManager;
     }
 }

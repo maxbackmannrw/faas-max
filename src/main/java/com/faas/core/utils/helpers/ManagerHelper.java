@@ -92,7 +92,6 @@ public class ManagerHelper {
     public OperationManagerWSDTO getOperationManagerWSDTOByOperationModel(Page<OperationDBModel> operationModelPage){
 
         OperationManagerWSDTO operationManagerWSDTO = new OperationManagerWSDTO();
-        operationManagerWSDTO.setPagination(getOperationManagerPaginationByOperationModel(operationModelPage));
         List<OperationWSDTO> operationWSDTOS = new ArrayList<>();
         for (int i=0;operationModelPage.getContent().size()>i;i++){
             OperationWSDTO operationWSDTO = fillManagerOperationWSDTOByOperationModel(operationModelPage.getContent().get(i));
@@ -101,6 +100,7 @@ public class ManagerHelper {
             }
         }
         operationManagerWSDTO.setOperations(operationWSDTOS);
+        operationManagerWSDTO.setPagination(getOperationManagerPaginationByOperationModel(operationModelPage));
         return operationManagerWSDTO;
     }
 
@@ -150,7 +150,7 @@ public class ManagerHelper {
         operationWSDTO.setOperationSession(sessionDBModel);
         List<OperationDBModel> operationDBModels = operationRepository.findBySessionId(sessionDBModel.getId());
         if (!operationDBModels.isEmpty()){
-
+            operationWSDTO.setOperation(operationDBModels.get(0));
         }
         return operationWSDTO;
     }
