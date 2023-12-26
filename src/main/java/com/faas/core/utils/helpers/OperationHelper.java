@@ -32,6 +32,7 @@ import com.faas.core.base.model.ws.general.PaginationWSDTO;
 import com.faas.core.base.model.ws.operation.content.dto.OperationListWSDTO;
 import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
 import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
+import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
@@ -63,6 +64,9 @@ public class OperationHelper {
 
     @Autowired
     SessionHelper sessionHelper;
+
+    @Autowired
+    ClientRepository clientRepository;
 
     @Autowired
     SessionRepository sessionRepository;
@@ -435,14 +439,27 @@ public class OperationHelper {
     }
 
 
-    public void removeOperationDetails(long sessionId){
+    public void removeOperationHelper(long sessionId){
 
-        operationEmailMessageRepository.deleteAll(operationEmailMessageRepository.findBySessionId(sessionId));
-        operationPushMessageRepository.deleteAll(operationPushMessageRepository.findBySessionId(sessionId));
-        operationSipCallRepository.deleteAll(operationSipCallRepository.findBySessionId(sessionId));
-        operationSmsMessageRepository.deleteAll(operationSmsMessageRepository.findBySessionId(sessionId));
-        operationWappCallRepository.deleteAll(operationWappCallRepository.findBySessionId(sessionId));
-        operationWappMessageRepository.deleteAll(operationWappMessageRepository.findBySessionId(sessionId));
+        Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
+        if (sessionDBModel.isPresent()) {
+
+            Optional<ClientDBModel> clientDBModel = clientRepository.findById(sessionDBModel.get().getClientId());
+            if (clientDBModel.isPresent()) {
+                clientDBModel.get().setClientState(AppConstant.READY_CLIENT);
+                clientDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
+                clientRepository.save(clientDBModel.get());
+            }
+
+            sessionRepository.delete(sessionDBModel.get());
+            operationRepository.deleteAll(operationRepository.findBySessionId(sessionId));
+            operationEmailMessageRepository.deleteAll(operationEmailMessageRepository.findBySessionId(sessionId));
+            operationPushMessageRepository.deleteAll(operationPushMessageRepository.findBySessionId(sessionId));
+            operationSipCallRepository.deleteAll(operationSipCallRepository.findBySessionId(sessionId));
+            operationSmsMessageRepository.deleteAll(operationSmsMessageRepository.findBySessionId(sessionId));
+            operationWappCallRepository.deleteAll(operationWappCallRepository.findBySessionId(sessionId));
+            operationWappMessageRepository.deleteAll(operationWappMessageRepository.findBySessionId(sessionId));
+        }
     }
 
 

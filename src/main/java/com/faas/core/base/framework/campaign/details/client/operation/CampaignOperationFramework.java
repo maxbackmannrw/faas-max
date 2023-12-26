@@ -158,20 +158,8 @@ public class CampaignOperationFramework {
         List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndCampaignId(sessionId,campaignId);
         List<OperationDBModel> operationDBModels = operationRepository.findBySessionId(sessionId);
         if (!sessionDBModels.isEmpty() && !operationDBModels.isEmpty()) {
-
             OperationWSDTO operationWSDTO = operationHelper.getOperationWSDTO(operationDBModels.get(0), sessionDBModels.get(0));
-            Optional<ClientDBModel> clientDBModel = clientRepository.findById(sessionDBModels.get(0).getClientId());
-
-            if (clientDBModel.isPresent()) {
-                clientDBModel.get().setClientState(AppConstant.READY_CLIENT);
-                clientDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
-                clientRepository.save(clientDBModel.get());
-            }
-
-            operationRepository.deleteAll(operationDBModels);
-            sessionRepository.delete(sessionDBModels.get(0));
-            operationHelper.removeOperationDetails(sessionId);
-
+            operationHelper.removeOperationHelper(sessionId);
             return operationWSDTO;
         }
         return null;
