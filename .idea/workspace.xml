@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/manager/app/AppManagerFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/manager/app/AppManagerFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -565,15 +565,10 @@
       <workItem from="1703544995266" duration="1855000" />
       <workItem from="1703575605228" duration="182000" />
       <workItem from="1703589669843" duration="1102000" />
-      <workItem from="1703599321787" duration="1149000" />
-    </task>
-    <task id="LOCAL-00481" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1702480793823</created>
-      <option name="number" value="00481" />
-      <option name="presentableId" value="LOCAL-00481" />
-      <option name="project" value="LOCAL" />
-      <updated>1702480793823</updated>
+      <workItem from="1703599321787" duration="1415000" />
+      <workItem from="1703611674419" duration="180000" />
+      <workItem from="1703630124405" duration="1236000" />
+      <workItem from="1703682400061" duration="609000" />
     </task>
     <task id="LOCAL-00482" summary="almost finish">
       <option name="closed" value="true" />
@@ -959,7 +954,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703600280129</updated>
     </task>
-    <option name="localTasksCounter" value="530" />
+    <task id="LOCAL-00530" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1703605365749</created>
+      <option name="number" value="00530" />
+      <option name="presentableId" value="LOCAL-00530" />
+      <option name="project" value="LOCAL" />
+      <updated>1703605365749</updated>
+    </task>
+    <option name="localTasksCounter" value="531" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
