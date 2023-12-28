@@ -168,7 +168,6 @@ public class AppManagerMiddleware {
     }
 
 
-
     public OperationWSModel removeAppManagerOperation(long userId, long sessionId) {
 
         OperationWSModel response = new OperationWSModel();

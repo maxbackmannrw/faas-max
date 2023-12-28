@@ -1,14 +1,13 @@
-package com.faas.core.base.middleware.remote.content;
+package com.faas.core.base.middleware.remote.app;
 
-import com.faas.core.base.framework.remote.content.RemoteDetailsFramework;
+import com.faas.core.base.framework.remote.app.RemoteDetailsFramework;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.remote.client.ClientRemoteListWSModel;
-import com.faas.core.base.model.ws.remote.content.RemoteDataWSModel;
-import com.faas.core.base.model.ws.remote.content.RemoteDetailsWSModel;
-import com.faas.core.base.model.ws.remote.content.RemoteUrlWSModel;
-import com.faas.core.base.model.ws.remote.content.dto.RemoteDataWSDTO;
-import com.faas.core.base.model.ws.remote.content.dto.RemoteDetailsWSDTO;
-import com.faas.core.base.model.ws.remote.content.dto.RemoteUrlWSDTO;
+import com.faas.core.base.model.ws.remote.app.RemoteDataWSModel;
+import com.faas.core.base.model.ws.remote.app.RemoteDetailsWSModel;
+import com.faas.core.base.model.ws.remote.app.RemoteUrlWSModel;
+import com.faas.core.base.model.ws.remote.app.dto.RemoteDataWSDTO;
+import com.faas.core.base.model.ws.remote.app.dto.RemoteDetailsWSDTO;
+import com.faas.core.base.model.ws.remote.app.dto.RemoteUrlWSDTO;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -47,7 +46,7 @@ public class RemoteDetailsMiddleware {
     }
 
 
-    public RemoteDataWSModel getRemoteDatas(long userId,String remoteId) {
+    public RemoteDataWSModel getRemoteDatas(long userId, String remoteId) {
 
         RemoteDataWSModel response = new RemoteDataWSModel();
         GeneralWSModel general = new GeneralWSModel();
@@ -66,7 +65,7 @@ public class RemoteDetailsMiddleware {
         return response;
     }
 
-    public RemoteDataWSModel getRemoteData(long userId,String remoteId,String dataId) {
+    public RemoteDataWSModel getRemoteData(long userId, String remoteId, String dataId) {
 
         RemoteDataWSModel response = new RemoteDataWSModel();
         GeneralWSModel general = new GeneralWSModel();
@@ -87,7 +86,7 @@ public class RemoteDetailsMiddleware {
         return response;
     }
 
-    public RemoteDataWSModel createRemoteData(long userId,String remoteId,long typeId,String value) {
+    public RemoteDataWSModel createRemoteData(long userId, String remoteId, long typeId, String value) {
 
         RemoteDataWSModel response = new RemoteDataWSModel();
         GeneralWSModel general = new GeneralWSModel();
@@ -108,7 +107,7 @@ public class RemoteDetailsMiddleware {
         return response;
     }
 
-    public RemoteDataWSModel updateRemoteData(long userId,String remoteId,String dataId,long typeId,String value) {
+    public RemoteDataWSModel updateRemoteData(long userId, String remoteId, String dataId, long typeId, String value) {
 
         RemoteDataWSModel response = new RemoteDataWSModel();
         GeneralWSModel general = new GeneralWSModel();

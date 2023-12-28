@@ -1,4 +1,4 @@
-package com.faas.core.base.model.db.remote.content.dao;
+package com.faas.core.base.model.db.remote.app.dao;
 
 public class RemoteDataDAO {
 

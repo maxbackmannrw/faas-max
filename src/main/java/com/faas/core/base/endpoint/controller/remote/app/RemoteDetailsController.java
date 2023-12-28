@@ -1,10 +1,9 @@
-package com.faas.core.base.endpoint.controller.remote.content;
+package com.faas.core.base.endpoint.controller.remote.app;
 
-import com.faas.core.base.middleware.remote.content.RemoteDetailsMiddleware;
-import com.faas.core.base.model.ws.remote.client.ClientRemoteListWSModel;
-import com.faas.core.base.model.ws.remote.content.RemoteDataWSModel;
-import com.faas.core.base.model.ws.remote.content.RemoteDetailsWSModel;
-import com.faas.core.base.model.ws.remote.content.RemoteUrlWSModel;
+import com.faas.core.base.middleware.remote.app.RemoteDetailsMiddleware;
+import com.faas.core.base.model.ws.remote.app.RemoteDataWSModel;
+import com.faas.core.base.model.ws.remote.app.RemoteDetailsWSModel;
+import com.faas.core.base.model.ws.remote.app.RemoteUrlWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,14 +20,14 @@ public class RemoteDetailsController {
 
 
     @Autowired
-    RemoteDetailsMiddleware remoteDetailsMiddleware;
+    RemoteDetailsMiddleware remoteAppDetailsMiddleware;
 
 
     @RequestMapping(value = BaseRoute.GET_REMOTE_DETAILS, method = RequestMethod.POST)
     public ResponseEntity<?> getRemoteDetails(@RequestParam long userId,
                                               @RequestParam String remoteId) {
 
-        RemoteDetailsWSModel response = remoteDetailsMiddleware.getRemoteDetails(userId,remoteId);
+        RemoteDetailsWSModel response = remoteAppDetailsMiddleware.getRemoteDetails(userId,remoteId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -41,7 +40,7 @@ public class RemoteDetailsController {
     public ResponseEntity<?> getRemoteDatas(@RequestParam long userId,
                                             @RequestParam String remoteId) {
 
-        RemoteDataWSModel response = remoteDetailsMiddleware.getRemoteDatas(userId,remoteId);
+        RemoteDataWSModel response = remoteAppDetailsMiddleware.getRemoteDatas(userId,remoteId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -54,7 +53,7 @@ public class RemoteDetailsController {
                                            @RequestParam String remoteId,
                                            @RequestParam String dataId) {
 
-        RemoteDataWSModel response = remoteDetailsMiddleware.getRemoteData(userId,remoteId,dataId);
+        RemoteDataWSModel response = remoteAppDetailsMiddleware.getRemoteData(userId,remoteId,dataId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -68,7 +67,7 @@ public class RemoteDetailsController {
                                               @RequestParam long typeId,
                                               @RequestParam String value) {
 
-        RemoteDataWSModel response = remoteDetailsMiddleware.createRemoteData(userId,remoteId,typeId,value);
+        RemoteDataWSModel response = remoteAppDetailsMiddleware.createRemoteData(userId,remoteId,typeId,value);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -83,7 +82,7 @@ public class RemoteDetailsController {
                                               @RequestParam long typeId,
                                               @RequestParam String value) {
 
-        RemoteDataWSModel response = remoteDetailsMiddleware.updateRemoteData(userId,remoteId,dataId,typeId,value);
+        RemoteDataWSModel response = remoteAppDetailsMiddleware.updateRemoteData(userId,remoteId,dataId,typeId,value);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -96,7 +95,7 @@ public class RemoteDetailsController {
                                               @RequestParam String remoteId,
                                               @RequestParam String dataId) {
 
-        RemoteDataWSModel response = remoteDetailsMiddleware.removeRemoteData(userId,remoteId,dataId);
+        RemoteDataWSModel response = remoteAppDetailsMiddleware.removeRemoteData(userId,remoteId,dataId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -110,7 +109,7 @@ public class RemoteDetailsController {
     public ResponseEntity<?> getRemoteUrls(@RequestParam long userId,
                                            @RequestParam String remoteId) {
 
-        RemoteUrlWSModel response = remoteDetailsMiddleware.getRemoteUrls(userId,remoteId);
+        RemoteUrlWSModel response = remoteAppDetailsMiddleware.getRemoteUrls(userId,remoteId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -123,7 +122,7 @@ public class RemoteDetailsController {
                                           @RequestParam String remoteId,
                                           @RequestParam String urlId) {
 
-        RemoteUrlWSModel response = remoteDetailsMiddleware.getRemoteUrl(userId,remoteId,urlId);
+        RemoteUrlWSModel response = remoteAppDetailsMiddleware.getRemoteUrl(userId,remoteId,urlId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -137,7 +136,7 @@ public class RemoteDetailsController {
                                              @RequestParam String remoteUrl,
                                              @RequestParam String urlType) {
 
-        RemoteUrlWSModel response = remoteDetailsMiddleware.createRemoteUrl(userId,remoteId,remoteUrl,urlType);
+        RemoteUrlWSModel response = remoteAppDetailsMiddleware.createRemoteUrl(userId,remoteId,remoteUrl,urlType);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -152,7 +151,7 @@ public class RemoteDetailsController {
                                              @RequestParam String remoteUrl,
                                              @RequestParam String urlType) {
 
-        RemoteUrlWSModel response = remoteDetailsMiddleware.updateRemoteUrl(userId,remoteId,urlId,remoteUrl,urlType);
+        RemoteUrlWSModel response = remoteAppDetailsMiddleware.updateRemoteUrl(userId,remoteId,urlId,remoteUrl,urlType);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -165,7 +164,7 @@ public class RemoteDetailsController {
                                              @RequestParam String remoteId,
                                              @RequestParam String urlId) {
 
-        RemoteUrlWSModel response = remoteDetailsMiddleware.removeRemoteUrl(userId,remoteId,urlId);
+        RemoteUrlWSModel response = remoteAppDetailsMiddleware.removeRemoteUrl(userId,remoteId,urlId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

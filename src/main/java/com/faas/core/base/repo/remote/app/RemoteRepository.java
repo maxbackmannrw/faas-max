@@ -1,9 +1,7 @@
-package com.faas.core.base.repo.remote.content;
+package com.faas.core.base.repo.remote.app;
 
-import com.faas.core.base.model.db.remote.content.RemoteDBModel;
-import com.faas.core.base.model.db.remote.settings.RemoteTypeDBModel;
+import com.faas.core.base.model.db.remote.app.RemoteDBModel;
 import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

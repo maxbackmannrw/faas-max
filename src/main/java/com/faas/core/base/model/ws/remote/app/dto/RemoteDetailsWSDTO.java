@@ -1,15 +1,15 @@
-package com.faas.core.base.model.ws.remote.content.dto;
+package com.faas.core.base.model.ws.remote.app.dto;
 
-import com.faas.core.base.model.db.remote.content.RemoteDBModel;
+import com.faas.core.base.model.db.remote.app.RemoteDBModel;
 
-public class RemoteWSDTO {
+public class RemoteDetailsWSDTO {
 
     private RemoteDBModel remote;
 
-    public RemoteWSDTO() {
+    public RemoteDetailsWSDTO() {
     }
 
-    public RemoteWSDTO(RemoteDBModel remote) {
+    public RemoteDetailsWSDTO(RemoteDBModel remote) {
         this.remote = remote;
     }
 

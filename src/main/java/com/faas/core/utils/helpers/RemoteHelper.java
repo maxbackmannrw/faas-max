@@ -1,12 +1,10 @@
 package com.faas.core.utils.helpers;
 
 import com.faas.core.base.model.db.client.content.ClientDBModel;
-import com.faas.core.base.model.db.process.content.ProcessDBModel;
 import com.faas.core.base.model.db.process.content.dao.ProcessRemoteDAO;
 import com.faas.core.base.model.db.remote.client.ClientRemoteDBModel;
-import com.faas.core.base.model.db.remote.client.dao.ClientRemoteDAO;
-import com.faas.core.base.model.db.remote.content.RemoteDBModel;
-import com.faas.core.base.model.db.remote.content.dao.RemoteDataDAO;
+import com.faas.core.base.model.db.remote.app.RemoteDBModel;
+import com.faas.core.base.model.db.remote.app.dao.RemoteDataDAO;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
 import com.faas.core.base.model.ws.remote.client.dto.ClientRemoteListWSDTO;
 import com.faas.core.base.model.ws.remote.client.dto.ClientRemoteWSDTO;

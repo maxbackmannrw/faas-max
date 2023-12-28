@@ -1,20 +1,19 @@
-package com.faas.core.base.framework.remote.content;
+package com.faas.core.base.framework.remote.app;
 
-import com.faas.core.base.model.db.remote.content.RemoteDBModel;
-import com.faas.core.base.model.db.remote.content.dao.RemoteDataDAO;
-import com.faas.core.base.model.db.remote.content.dao.RemoteUrlDAO;
+import com.faas.core.base.model.db.remote.app.RemoteDBModel;
+import com.faas.core.base.model.db.remote.app.dao.RemoteDataDAO;
+import com.faas.core.base.model.db.remote.app.dao.RemoteUrlDAO;
 import com.faas.core.base.model.db.utility.DataTypeDBModel;
-import com.faas.core.base.model.ws.remote.content.dto.RemoteDataWSDTO;
-import com.faas.core.base.model.ws.remote.content.dto.RemoteDetailsWSDTO;
-import com.faas.core.base.model.ws.remote.content.dto.RemoteUrlWSDTO;
-import com.faas.core.base.repo.remote.content.RemoteRepository;
+import com.faas.core.base.model.ws.remote.app.dto.RemoteDataWSDTO;
+import com.faas.core.base.model.ws.remote.app.dto.RemoteDetailsWSDTO;
+import com.faas.core.base.model.ws.remote.app.dto.RemoteUrlWSDTO;
+import com.faas.core.base.repo.remote.app.RemoteRepository;
 import com.faas.core.base.repo.utility.DataTypeRepository;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.RemoteHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.rmi.Remote;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -176,7 +175,7 @@ public class RemoteDetailsFramework {
             remoteUrlDAO.setStatus(1);
 
             if (remoteDBModel.get().getRemoteUrls() == null){
-                List<RemoteUrlDAO>remoteUrlDAOS = new ArrayList<>();
+                List<RemoteUrlDAO> remoteUrlDAOS = new ArrayList<>();
                 remoteUrlDAOS.add(remoteUrlDAO);
                 remoteDBModel.get().setRemoteUrls(remoteUrlDAOS);
             }else {

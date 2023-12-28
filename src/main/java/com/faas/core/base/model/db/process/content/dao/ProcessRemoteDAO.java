@@ -1,7 +1,7 @@
 package com.faas.core.base.model.db.process.content.dao;
 
-import com.faas.core.base.model.db.remote.content.dao.RemoteDataDAO;
-import com.faas.core.base.model.db.remote.content.dao.RemoteUrlDAO;
+import com.faas.core.base.model.db.remote.app.dao.RemoteDataDAO;
+import com.faas.core.base.model.db.remote.app.dao.RemoteUrlDAO;
 
 import java.util.List;
 

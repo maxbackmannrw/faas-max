@@ -1,10 +1,9 @@
-package com.faas.core.base.middleware.remote.content;
+package com.faas.core.base.middleware.remote.app;
 
-import com.faas.core.base.framework.remote.content.RemoteFramework;
-import com.faas.core.base.model.db.remote.content.RemoteDBModel;
+import com.faas.core.base.framework.remote.app.RemoteFramework;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.remote.content.RemoteWSModel;
-import com.faas.core.base.model.ws.remote.content.dto.RemoteWSDTO;
+import com.faas.core.base.model.ws.remote.app.RemoteWSModel;
+import com.faas.core.base.model.ws.remote.app.dto.RemoteWSDTO;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -103,7 +102,7 @@ public class RemoteMiddleware {
     }
 
 
-    public RemoteWSModel createRemote(long userId, String remote,String remoteDesc,String remoteModel,String remoteVersion,long typeId) {
+    public RemoteWSModel createRemote(long userId, String remote, String remoteDesc, String remoteModel, String remoteVersion, long typeId) {
 
         RemoteWSModel response = new RemoteWSModel();
         GeneralWSModel general = new GeneralWSModel();
@@ -125,7 +124,7 @@ public class RemoteMiddleware {
     }
 
 
-    public RemoteWSModel updateRemote(long userId, String remoteId,String remote,String remoteDesc,String remoteModel,String remoteVersion) {
+    public RemoteWSModel updateRemote(long userId, String remoteId, String remote, String remoteDesc, String remoteModel, String remoteVersion) {
 
         RemoteWSModel response = new RemoteWSModel();
         GeneralWSModel general = new GeneralWSModel();
@@ -147,7 +146,7 @@ public class RemoteMiddleware {
     }
 
 
-    public RemoteWSModel removeRemote(long userId,String remoteId) {
+    public RemoteWSModel removeRemote(long userId, String remoteId) {
 
         RemoteWSModel response = new RemoteWSModel();
         GeneralWSModel general = new GeneralWSModel();

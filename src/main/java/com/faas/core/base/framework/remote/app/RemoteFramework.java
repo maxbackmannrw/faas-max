@@ -1,12 +1,10 @@
-package com.faas.core.base.framework.remote.content;
+package com.faas.core.base.framework.remote.app;
 
-import com.faas.core.base.model.db.remote.content.RemoteDBModel;
+import com.faas.core.base.model.db.remote.app.RemoteDBModel;
 import com.faas.core.base.model.db.remote.settings.RemoteTypeDBModel;
-import com.faas.core.base.model.ws.remote.client.dto.ClientRemoteListWSDTO;
-import com.faas.core.base.model.ws.remote.content.dto.RemoteWSDTO;
-import com.faas.core.base.repo.remote.content.RemoteRepository;
+import com.faas.core.base.model.ws.remote.app.dto.RemoteWSDTO;
+import com.faas.core.base.repo.remote.app.RemoteRepository;
 import com.faas.core.base.repo.remote.settings.RemoteTypeRepository;
-import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.RemoteHelper;
 import org.springframework.beans.factory.annotation.Autowired;
