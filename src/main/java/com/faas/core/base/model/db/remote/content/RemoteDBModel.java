@@ -1,14 +1,18 @@
-package com.faas.core.base.model.db.process.content.dao;
+package com.faas.core.base.model.db.remote.content;
 
 import com.faas.core.base.model.db.remote.content.dao.RemoteDataDAO;
 import com.faas.core.base.model.db.remote.content.dao.RemoteUrlDAO;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
-public class ProcessRemoteDAO {
 
+@Document(collection = "remote_table")
+public class RemoteDBModel {
+
+    @Id
     private String id;
-    private String remoteId;
     private String remote;
     private String remoteDesc;
     private String remoteModel;
@@ -18,17 +22,15 @@ public class ProcessRemoteDAO {
     private long typeId;
     private String remoteType;
     private String baseType;
-    private String remoteState;
     private long uDate;
     private long cDate;
     private int status;
 
-    public ProcessRemoteDAO() {
+    public RemoteDBModel() {
     }
 
-    public ProcessRemoteDAO(String id, String remoteId, String remote, String remoteDesc, String remoteModel, String remoteVersion, List<RemoteDataDAO> remoteDatas, List<RemoteUrlDAO> remoteUrls, long typeId, String remoteType, String baseType, String remoteState, long uDate, long cDate, int status) {
+    public RemoteDBModel(String id, String remote, String remoteDesc, String remoteModel, String remoteVersion, List<RemoteDataDAO> remoteDatas, List<RemoteUrlDAO> remoteUrls, long typeId, String remoteType, String baseType, long uDate, long cDate, int status) {
         this.id = id;
-        this.remoteId = remoteId;
         this.remote = remote;
         this.remoteDesc = remoteDesc;
         this.remoteModel = remoteModel;
@@ -38,7 +40,6 @@ public class ProcessRemoteDAO {
         this.typeId = typeId;
         this.remoteType = remoteType;
         this.baseType = baseType;
-        this.remoteState = remoteState;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
@@ -50,14 +51,6 @@ public class ProcessRemoteDAO {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getRemoteId() {
-        return remoteId;
-    }
-
-    public void setRemoteId(String remoteId) {
-        this.remoteId = remoteId;
     }
 
     public String getRemote() {
@@ -130,14 +123,6 @@ public class ProcessRemoteDAO {
 
     public void setBaseType(String baseType) {
         this.baseType = baseType;
-    }
-
-    public String getRemoteState() {
-        return remoteState;
-    }
-
-    public void setRemoteState(String remoteState) {
-        this.remoteState = remoteState;
     }
 
     public long getuDate() {

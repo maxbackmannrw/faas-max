@@ -1,7 +1,6 @@
 package com.faas.core.base.framework.remote.settings;
 
 import com.faas.core.base.model.db.remote.settings.RemoteTypeDBModel;
-import com.faas.core.base.model.ws.remote.client.dto.ClientRemoteListWSDTO;
 import com.faas.core.base.model.ws.remote.settings.dto.RemoteTypeWSDTO;
 import com.faas.core.base.repo.remote.settings.RemoteTypeRepository;
 import com.faas.core.utils.config.AppUtils;

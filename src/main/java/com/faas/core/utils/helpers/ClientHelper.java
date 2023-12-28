@@ -15,7 +15,7 @@ import com.faas.core.base.repo.client.details.ClientDetailsRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.operation.details.channel.*;
 import com.faas.core.base.repo.process.content.ProcessRepository;
-import com.faas.core.base.repo.remote.client.ClientRemoteRepository;
+import com.faas.core.base.repo.remote.app.RemoteAppRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +44,7 @@ public class ClientHelper {
     CampaignAgentRepository campaignAgentRepository;
 
     @Autowired
-    ClientRemoteRepository clientRemoteRepository;
+    RemoteAppRepository remoteAppRepository;
 
     @Autowired
     CampaignRepository campaignRepository;
@@ -150,7 +150,7 @@ public class ClientHelper {
         operationSmsMessageRepository.deleteAll(operationSmsMessageRepository.findByClientId(clientDBModel.getId()));
         operationWappCallRepository.deleteAll(operationWappCallRepository.findByClientId(clientDBModel.getId()));
         operationWappMessageRepository.deleteAll(operationWappMessageRepository.findByClientId(clientDBModel.getId()));
-        clientRemoteRepository.deleteAll(clientRemoteRepository.findByClientId(clientDBModel.getId()));
+        remoteAppRepository.deleteAll(remoteAppRepository.findByClientId(clientDBModel.getId()));
         clientDetailsRepository.deleteAll(clientDetailsRepository.findByClientId(clientDBModel.getId()));
         clientRepository.delete(clientDBModel);
 

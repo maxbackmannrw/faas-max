@@ -1,7 +1,6 @@
 package com.faas.core.base.endpoint.controller.remote.settings;
 
 import com.faas.core.base.middleware.remote.settings.RemoteSettingsMiddleware;
-import com.faas.core.base.model.ws.remote.client.ClientRemoteListWSModel;
 import com.faas.core.base.model.ws.remote.settings.RemoteTypeWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
