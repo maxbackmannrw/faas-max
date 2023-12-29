@@ -40,7 +40,6 @@ public class RemoteAppMiddleware {
         return response;
     }
 
-
     public RemoteAppListWSModel getRemoteAppsByBaseType(long userId,String baseType,String remoteState,int reqPage,int reqSize) {
 
         RemoteAppListWSModel response = new RemoteAppListWSModel();
@@ -59,7 +58,6 @@ public class RemoteAppMiddleware {
         return response;
     }
 
-
     public RemoteAppWSModel getClientRemoteApps(long userId,long clientId) {
 
         RemoteAppWSModel response = new RemoteAppWSModel();
@@ -67,7 +65,7 @@ public class RemoteAppMiddleware {
 
         List<RemoteAppWSDTO> remoteAppWSDTOS = remoteAppFramework.getClientRemoteAppsService(userId,clientId);
         if (remoteAppWSDTOS != null){
-            response.setClientRemotes(remoteAppWSDTOS);
+            response.setRemoteApps(remoteAppWSDTOS);
         }
 
         general.setOperation("getClientRemoteApps");
@@ -79,19 +77,18 @@ public class RemoteAppMiddleware {
         return response;
     }
 
-
-    public RemoteAppWSModel getRemoteApp(long userId, String remoteAppId) {
+    public RemoteAppWSModel getRemoteApp(long userId, String appId) {
 
         RemoteAppWSModel response = new RemoteAppWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<RemoteAppWSDTO> remoteAppWSDTOS = new ArrayList<>();
 
-        RemoteAppWSDTO remoteAppWSDTO = remoteAppFramework.getRemoteAppService(userId,remoteAppId);
+        RemoteAppWSDTO remoteAppWSDTO = remoteAppFramework.getRemoteAppService(userId,appId);
         if (remoteAppWSDTO != null){
             remoteAppWSDTOS.add(remoteAppWSDTO);
         }
 
-        response.setClientRemotes(remoteAppWSDTOS);
+        response.setRemoteApps(remoteAppWSDTOS);
         general.setOperation("getRemoteApp");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -100,7 +97,6 @@ public class RemoteAppMiddleware {
 
         return response;
     }
-
 
     public RemoteAppWSModel createRemoteApp(long userId,long sessionId,String remoteId) {
 
@@ -113,7 +109,7 @@ public class RemoteAppMiddleware {
             remoteAppWSDTOS.add(remoteAppWSDTO);
         }
 
-        response.setClientRemotes(remoteAppWSDTOS);
+        response.setRemoteApps(remoteAppWSDTOS);
         general.setOperation("createClientRemote");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -123,19 +119,18 @@ public class RemoteAppMiddleware {
         return response;
     }
 
-
-    public RemoteAppWSModel updateRemoteApp(long userId,String remoteAppId,String remoteId,String remoteState) {
+    public RemoteAppWSModel updateRemoteApp(long userId,String appId,String remoteId,String remoteState) {
 
         RemoteAppWSModel response = new RemoteAppWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<RemoteAppWSDTO> remoteAppWSDTOS = new ArrayList<>();
 
-        RemoteAppWSDTO remoteAppWSDTO = remoteAppFramework.updateRemoteAppService(userId,remoteAppId,remoteId,remoteState);
+        RemoteAppWSDTO remoteAppWSDTO = remoteAppFramework.updateRemoteAppService(userId,appId,remoteId,remoteState);
         if (remoteAppWSDTO != null){
             remoteAppWSDTOS.add(remoteAppWSDTO);
         }
 
-        response.setClientRemotes(remoteAppWSDTOS);
+        response.setRemoteApps(remoteAppWSDTOS);
         general.setOperation("updateRemoteApp");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -145,19 +140,18 @@ public class RemoteAppMiddleware {
         return response;
     }
 
-
-    public RemoteAppWSModel removeRemoteApp(long userId, String remoteAppId) {
+    public RemoteAppWSModel removeRemoteApp(long userId, String appId) {
 
         RemoteAppWSModel response = new RemoteAppWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<RemoteAppWSDTO> remoteAppWSDTOS = new ArrayList<>();
 
-        RemoteAppWSDTO remoteAppWSDTO = remoteAppFramework.removeRemoteAppService(userId,remoteAppId);
+        RemoteAppWSDTO remoteAppWSDTO = remoteAppFramework.removeRemoteAppService(userId,appId);
         if (remoteAppWSDTO != null){
             remoteAppWSDTOS.add(remoteAppWSDTO);
         }
 
-        response.setClientRemotes(remoteAppWSDTOS);
+        response.setRemoteApps(remoteAppWSDTOS);
         general.setOperation("removeRemoteApp");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);

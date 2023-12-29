@@ -6,23 +6,23 @@ import java.util.List;
 
 public class RemoteAppListWSDTO {
 
-    private List<RemoteAppWSDTO> remotes;
+    private List<RemoteAppWSDTO> remoteApps;
     public PaginationWSDTO pagination;
 
     public RemoteAppListWSDTO() {
     }
 
-    public RemoteAppListWSDTO(List<RemoteAppWSDTO> remotes, PaginationWSDTO pagination) {
-        this.remotes = remotes;
+    public RemoteAppListWSDTO(List<RemoteAppWSDTO> remoteApps, PaginationWSDTO pagination) {
+        this.remoteApps = remoteApps;
         this.pagination = pagination;
     }
 
-    public List<RemoteAppWSDTO> getRemotes() {
-        return remotes;
+    public List<RemoteAppWSDTO> getRemoteApps() {
+        return remoteApps;
     }
 
-    public void setRemotes(List<RemoteAppWSDTO> remotes) {
-        this.remotes = remotes;
+    public void setRemoteApps(List<RemoteAppWSDTO> remoteApps) {
+        this.remoteApps = remoteApps;
     }
 
     public PaginationWSDTO getPagination() {

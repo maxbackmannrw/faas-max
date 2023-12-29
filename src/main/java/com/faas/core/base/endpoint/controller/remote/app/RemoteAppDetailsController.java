@@ -22,9 +22,10 @@ public class RemoteAppDetailsController {
     RemoteAppDetailsMiddleware remoteAppDetailsMiddleware;
 
     @RequestMapping(value = BaseRoute.GET_REMOTE_APP_DETAILS, method = RequestMethod.POST)
-    public ResponseEntity<?> getRemoteAppDetails(@RequestParam long userId) {
+    public ResponseEntity<?> getRemoteAppDetails(@RequestParam long userId,
+                                                 @RequestParam String appId) {
 
-        RemoteAppWSModel response = remoteAppDetailsMiddleware.getRemoteAppDetails(userId);
+        RemoteAppWSModel response = remoteAppDetailsMiddleware.getRemoteAppDetails(userId,appId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

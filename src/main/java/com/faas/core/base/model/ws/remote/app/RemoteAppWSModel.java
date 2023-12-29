@@ -8,14 +8,14 @@ import java.util.List;
 public class RemoteAppWSModel {
 
     private GeneralWSModel general;
-    private List<RemoteAppWSDTO>clientRemotes;
+    private List<RemoteAppWSDTO>remoteApps;
 
     public RemoteAppWSModel() {
     }
 
-    public RemoteAppWSModel(GeneralWSModel general, List<RemoteAppWSDTO> clientRemotes) {
+    public RemoteAppWSModel(GeneralWSModel general, List<RemoteAppWSDTO> remoteApps) {
         this.general = general;
-        this.clientRemotes = clientRemotes;
+        this.remoteApps = remoteApps;
     }
 
     public GeneralWSModel getGeneral() {
@@ -26,11 +26,11 @@ public class RemoteAppWSModel {
         this.general = general;
     }
 
-    public List<RemoteAppWSDTO> getClientRemotes() {
-        return clientRemotes;
+    public List<RemoteAppWSDTO> getRemoteApps() {
+        return remoteApps;
     }
 
-    public void setClientRemotes(List<RemoteAppWSDTO> clientRemotes) {
-        this.clientRemotes = clientRemotes;
+    public void setRemoteApps(List<RemoteAppWSDTO> remoteApps) {
+        this.remoteApps = remoteApps;
     }
 }

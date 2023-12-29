@@ -32,13 +32,13 @@ public class RemoteAppDetailsFramework {
     AppUtils appUtils;
 
 
-    public RemoteAppWSDTO getClientRemoteDetailsService(long userId) {
+    public RemoteAppWSDTO getRemoteAppDetailsService(long userId) {
 
         return null;
     }
 
 
-    public RemoteAppSummaryWSDTO getClientRemoteSummaryService(long userId) {
+    public RemoteAppSummaryWSDTO getRemoteAppSummaryService(long userId) {
 
         RemoteAppSummaryWSDTO remoteAppSummaryWSDTO = new RemoteAppSummaryWSDTO();
         remoteAppSummaryWSDTO.setTotalRemote(remoteAppRepository.count());

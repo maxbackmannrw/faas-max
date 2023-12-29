@@ -6,14 +6,14 @@ import com.faas.core.base.model.ws.remote.app.dto.RemoteAppSummaryWSDTO;
 public class RemoteAppSummaryWSModel {
 
     private GeneralWSModel general;
-    private RemoteAppSummaryWSDTO clientRemoteSummary;
+    private RemoteAppSummaryWSDTO remoteAppSummary;
 
     public RemoteAppSummaryWSModel() {
     }
 
-    public RemoteAppSummaryWSModel(GeneralWSModel general, RemoteAppSummaryWSDTO clientRemoteSummary) {
+    public RemoteAppSummaryWSModel(GeneralWSModel general, RemoteAppSummaryWSDTO remoteAppSummary) {
         this.general = general;
-        this.clientRemoteSummary = clientRemoteSummary;
+        this.remoteAppSummary = remoteAppSummary;
     }
 
     public GeneralWSModel getGeneral() {
@@ -24,11 +24,11 @@ public class RemoteAppSummaryWSModel {
         this.general = general;
     }
 
-    public RemoteAppSummaryWSDTO getClientRemoteSummary() {
-        return clientRemoteSummary;
+    public RemoteAppSummaryWSDTO getRemoteAppSummary() {
+        return remoteAppSummary;
     }
 
-    public void setClientRemoteSummary(RemoteAppSummaryWSDTO clientRemoteSummary) {
-        this.clientRemoteSummary = clientRemoteSummary;
+    public void setRemoteAppSummary(RemoteAppSummaryWSDTO remoteAppSummary) {
+        this.remoteAppSummary = remoteAppSummary;
     }
 }

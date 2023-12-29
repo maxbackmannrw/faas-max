@@ -18,7 +18,7 @@ public class RemoteAppDetailsMiddleware {
     RemoteAppDetailsFramework remoteAppDetailsFramework;
 
 
-    public RemoteAppWSModel getRemoteAppDetails(long userId) {
+    public RemoteAppWSModel getRemoteAppDetails(long userId,String appId) {
 
         RemoteAppWSModel response = new RemoteAppWSModel();
         GeneralWSModel general = new GeneralWSModel();
@@ -40,10 +40,11 @@ public class RemoteAppDetailsMiddleware {
         RemoteAppSummaryWSModel response = new RemoteAppSummaryWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        RemoteAppSummaryWSDTO remoteAppSummaryWSDTO = remoteAppDetailsFramework.getClientRemoteSummaryService(userId);
+        RemoteAppSummaryWSDTO remoteAppSummaryWSDTO = remoteAppDetailsFramework.getRemoteAppSummaryService(userId);
         if (remoteAppSummaryWSDTO != null){
-            response.setClientRemoteSummary(remoteAppSummaryWSDTO);
+            response.setRemoteAppSummary(remoteAppSummaryWSDTO);
         }
+
         general.setOperation("getRemoteAppSummary");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);

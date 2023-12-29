@@ -54,7 +54,6 @@ public class RemoteAppFramework {
         return remoteAppListWSDTO;
     }
 
-
     public RemoteAppListWSDTO getRemoteAppsByBaseTypeService(long userId,String baseType,String remoteState,int reqPage,int reqSize) {
 
         RemoteAppListWSDTO remoteAppListWSDTO = new RemoteAppListWSDTO();
@@ -64,7 +63,6 @@ public class RemoteAppFramework {
 
         return remoteAppListWSDTO;
     }
-
 
     public List<RemoteAppWSDTO> getClientRemoteAppsService(long userId,long clientId) {
 
@@ -79,9 +77,9 @@ public class RemoteAppFramework {
         return remoteAppWSDTOS;
     }
 
-    public RemoteAppWSDTO getRemoteAppService(long userId, String remoteAppId) {
+    public RemoteAppWSDTO getRemoteAppService(long userId, String appId) {
 
-        Optional<RemoteAppDBModel> remoteDBModel = remoteAppRepository.findById(remoteAppId);
+        Optional<RemoteAppDBModel> remoteDBModel = remoteAppRepository.findById(appId);
         if ( remoteDBModel.isPresent()){
             return remoteHelper.getRemoteWSDTO(remoteDBModel.get());
         }
@@ -112,22 +110,22 @@ public class RemoteAppFramework {
         return null;
     }
 
-    public RemoteAppWSDTO updateRemoteAppService(long userId,String remoteAppId,String remoteId,String remoteState) {
+    public RemoteAppWSDTO updateRemoteAppService(long userId,String appId,String remoteId,String remoteState) {
 
-        Optional<RemoteAppDBModel> remoteDBModel = remoteAppRepository.findById(remoteId);
 
         return null;
     }
 
-    public RemoteAppWSDTO removeRemoteAppService(long userId, String remoteAppId) {
+    public RemoteAppWSDTO removeRemoteAppService(long userId, String appId) {
 
-        Optional<RemoteAppDBModel> remoteDBModel = remoteAppRepository.findById(remoteAppId);
+        Optional<RemoteAppDBModel> remoteDBModel = remoteAppRepository.findById(appId);
         if (remoteDBModel.isPresent()){
             remoteAppRepository.delete(remoteDBModel.get());
             return remoteHelper.getRemoteWSDTO(remoteDBModel.get());
         }
         return null;
     }
+
 
 
 }
