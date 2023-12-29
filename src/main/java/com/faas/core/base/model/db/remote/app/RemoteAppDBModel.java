@@ -1,17 +1,19 @@
 package com.faas.core.base.model.db.remote.app;
 
-import com.faas.core.base.model.db.remote.app.dao.RemoteAppDAO;
+import com.faas.core.base.model.db.remote.content.dao.RemoteDataDAO;
+import com.faas.core.base.model.db.remote.content.dao.RemoteUrlDAO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "client_remote_table")
+import java.util.List;
+
+@Document(collection = "remote_app_table")
 public class RemoteAppDBModel {
 
     @Id
     private String id;
     private long clientId;
     private long sessionId;
-    private String operationId;
     private String campaignId;
     private String campaign;
     private String processId;
@@ -21,7 +23,7 @@ public class RemoteAppDBModel {
     private String remoteDesc;
     private long remoteTypeId;
     private String remoteType;
-    private RemoteAppDAO clientRemote;
+    private String baseType;
     private String remoteState;
     private long uDate;
     private long cDate;
@@ -30,11 +32,10 @@ public class RemoteAppDBModel {
     public RemoteAppDBModel() {
     }
 
-    public RemoteAppDBModel(String id, long clientId, long sessionId, String operationId, String campaignId, String campaign, String processId, String process, String remoteId, String remote, String remoteDesc, long remoteTypeId, String remoteType, RemoteAppDAO clientRemote, String remoteState, long uDate, long cDate, int status) {
+    public RemoteAppDBModel(String id, long clientId, long sessionId, String campaignId, String campaign, String processId, String process, String remoteId, String remote, String remoteDesc, long remoteTypeId, String remoteType, String baseType, String remoteState, long uDate, long cDate, int status) {
         this.id = id;
         this.clientId = clientId;
         this.sessionId = sessionId;
-        this.operationId = operationId;
         this.campaignId = campaignId;
         this.campaign = campaign;
         this.processId = processId;
@@ -44,7 +45,7 @@ public class RemoteAppDBModel {
         this.remoteDesc = remoteDesc;
         this.remoteTypeId = remoteTypeId;
         this.remoteType = remoteType;
-        this.clientRemote = clientRemote;
+        this.baseType = baseType;
         this.remoteState = remoteState;
         this.uDate = uDate;
         this.cDate = cDate;
@@ -73,14 +74,6 @@ public class RemoteAppDBModel {
 
     public void setSessionId(long sessionId) {
         this.sessionId = sessionId;
-    }
-
-    public String getOperationId() {
-        return operationId;
-    }
-
-    public void setOperationId(String operationId) {
-        this.operationId = operationId;
     }
 
     public String getCampaignId() {
@@ -155,12 +148,12 @@ public class RemoteAppDBModel {
         this.remoteType = remoteType;
     }
 
-    public RemoteAppDAO getClientRemote() {
-        return clientRemote;
+    public String getBaseType() {
+        return baseType;
     }
 
-    public void setClientRemote(RemoteAppDAO clientRemote) {
-        this.clientRemote = clientRemote;
+    public void setBaseType(String baseType) {
+        this.baseType = baseType;
     }
 
     public String getRemoteState() {

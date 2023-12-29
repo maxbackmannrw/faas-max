@@ -1,4 +1,4 @@
-package com.faas.core.base.model.ws.process.details.content.dto;
+package com.faas.core.base.model.ws.process.details.remote.dto;
 
 import com.faas.core.base.model.db.process.content.dao.ProcessRemoteDAO;
 

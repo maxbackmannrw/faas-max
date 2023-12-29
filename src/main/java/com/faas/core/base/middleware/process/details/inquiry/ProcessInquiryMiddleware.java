@@ -3,9 +3,9 @@ package com.faas.core.base.middleware.process.details.inquiry;
 import com.faas.core.base.framework.process.details.inquiry.ProcessInquiryFramework;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.model.ws.process.details.content.ProcessDataWSModel;
-import com.faas.core.base.model.ws.process.details.content.ProcessRemoteWSModel;
+import com.faas.core.base.model.ws.process.details.remote.ProcessRemoteWSModel;
 import com.faas.core.base.model.ws.process.details.content.dto.ProcessDataWSDTO;
-import com.faas.core.base.model.ws.process.details.content.dto.ProcessRemoteWSDTO;
+import com.faas.core.base.model.ws.process.details.remote.dto.ProcessRemoteWSDTO;
 import com.faas.core.base.model.ws.process.details.inquiry.ProcessInquiryWSModel;
 import com.faas.core.base.model.ws.process.details.inquiry.dto.ProcessInquiryWSDTO;
 import com.faas.core.utils.config.AppConstant;
@@ -187,13 +187,13 @@ public class ProcessInquiryMiddleware {
         return response;
     }
 
-    public ProcessRemoteWSModel getProcessInquiryRemote(long userId, String processId, String inquiryRemoteId) {
+    public ProcessRemoteWSModel getProcessInquiryRemote(long userId, String processId, String remoteId) {
 
         ProcessRemoteWSModel response = new ProcessRemoteWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessRemoteWSDTO> processRemoteWSDTOS = new ArrayList<>();
 
-        ProcessRemoteWSDTO processRemoteWSDTO = processInquiryFramework.getProcessInquiryRemoteService(userId,processId,inquiryRemoteId);
+        ProcessRemoteWSDTO processRemoteWSDTO = processInquiryFramework.getProcessInquiryRemoteService(userId,processId,remoteId);
         if (processRemoteWSDTO != null){
             processRemoteWSDTOS.add(processRemoteWSDTO);
         }
@@ -229,34 +229,13 @@ public class ProcessInquiryMiddleware {
         return response;
     }
 
-    public ProcessRemoteWSModel updateProcessInquiryRemote(long userId,String processId,String inquiryRemoteId,String remoteState) {
+    public ProcessRemoteWSModel removeProcessInquiryRemote(long userId, String processId, String remoteId) {
 
         ProcessRemoteWSModel response = new ProcessRemoteWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessRemoteWSDTO> processRemoteWSDTOS = new ArrayList<>();
 
-        ProcessRemoteWSDTO processRemoteWSDTO = processInquiryFramework.updateProcessInquiryRemoteService(userId,processId,inquiryRemoteId,remoteState);
-        if (processRemoteWSDTO != null){
-            processRemoteWSDTOS.add(processRemoteWSDTO);
-        }
-
-        response.setProcessRemotes(processRemoteWSDTOS);
-        general.setOperation("updateProcessInquiryRemote");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-    public ProcessRemoteWSModel removeProcessInquiryRemote(long userId, String processId, String inquiryRemoteId) {
-
-        ProcessRemoteWSModel response = new ProcessRemoteWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-        List<ProcessRemoteWSDTO> processRemoteWSDTOS = new ArrayList<>();
-
-        ProcessRemoteWSDTO processRemoteWSDTO = processInquiryFramework.removeProcessInquiryRemoteService(userId,processId,inquiryRemoteId);
+        ProcessRemoteWSDTO processRemoteWSDTO = processInquiryFramework.removeProcessInquiryRemoteService(userId,processId,remoteId);
         if (processRemoteWSDTO != null){
             processRemoteWSDTOS.add(processRemoteWSDTO);
         }

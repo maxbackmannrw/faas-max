@@ -15,7 +15,6 @@ public class RemoteDBModel {
     private String id;
     private String remote;
     private String remoteDesc;
-    private String remoteModel;
     private String remoteVersion;
     private List<RemoteDataDAO>remoteDatas;
     private List<RemoteUrlDAO>remoteUrls;
@@ -29,11 +28,10 @@ public class RemoteDBModel {
     public RemoteDBModel() {
     }
 
-    public RemoteDBModel(String id, String remote, String remoteDesc, String remoteModel, String remoteVersion, List<RemoteDataDAO> remoteDatas, List<RemoteUrlDAO> remoteUrls, long typeId, String remoteType, String baseType, long uDate, long cDate, int status) {
+    public RemoteDBModel(String id, String remote, String remoteDesc, String remoteVersion, List<RemoteDataDAO> remoteDatas, List<RemoteUrlDAO> remoteUrls, long typeId, String remoteType, String baseType, long uDate, long cDate, int status) {
         this.id = id;
         this.remote = remote;
         this.remoteDesc = remoteDesc;
-        this.remoteModel = remoteModel;
         this.remoteVersion = remoteVersion;
         this.remoteDatas = remoteDatas;
         this.remoteUrls = remoteUrls;
@@ -67,14 +65,6 @@ public class RemoteDBModel {
 
     public void setRemoteDesc(String remoteDesc) {
         this.remoteDesc = remoteDesc;
-    }
-
-    public String getRemoteModel() {
-        return remoteModel;
-    }
-
-    public void setRemoteModel(String remoteModel) {
-        this.remoteModel = remoteModel;
     }
 
     public String getRemoteVersion() {

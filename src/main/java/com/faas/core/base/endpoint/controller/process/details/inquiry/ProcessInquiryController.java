@@ -2,7 +2,7 @@ package com.faas.core.base.endpoint.controller.process.details.inquiry;
 
 import com.faas.core.base.middleware.process.details.inquiry.ProcessInquiryMiddleware;
 import com.faas.core.base.model.ws.process.details.content.ProcessDataWSModel;
-import com.faas.core.base.model.ws.process.details.content.ProcessRemoteWSModel;
+import com.faas.core.base.model.ws.process.details.remote.ProcessRemoteWSModel;
 import com.faas.core.base.model.ws.process.details.inquiry.ProcessInquiryWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
@@ -119,7 +119,6 @@ public class ProcessInquiryController {
     }
 
 
-
     @RequestMapping(value = BaseRoute.GET_PROCESS_INQUIRY_REMOTES, method = RequestMethod.POST)
     public ResponseEntity<?> getProcessInquiryRemotes(@RequestParam long userId,
                                                       @RequestParam String processId) {
@@ -135,9 +134,9 @@ public class ProcessInquiryController {
     @RequestMapping(value = BaseRoute.GET_PROCESS_INQUIRY_REMOTE, method = RequestMethod.POST)
     public ResponseEntity<?> getProcessInquiryRemote(@RequestParam long userId,
                                                      @RequestParam String processId,
-                                                     @RequestParam String inquiryRemoteId) {
+                                                     @RequestParam String remoteId) {
 
-        ProcessRemoteWSModel response = processInquiryMiddleware.getProcessInquiryRemote(userId,processId,inquiryRemoteId);
+        ProcessRemoteWSModel response = processInquiryMiddleware.getProcessInquiryRemote(userId,processId,remoteId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -158,26 +157,13 @@ public class ProcessInquiryController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-    @RequestMapping(value = BaseRoute.UPDATE_PROCESS_INQUIRY_REMOTE, method = RequestMethod.POST)
-    public ResponseEntity<?> updateProcessInquiryRemote(@RequestParam long userId,
-                                                        @RequestParam String processId,
-                                                        @RequestParam String inquiryRemoteId,
-                                                        @RequestParam String remoteState) {
-
-        ProcessRemoteWSModel response = processInquiryMiddleware.updateProcessInquiryRemote(userId,processId,inquiryRemoteId,remoteState);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
 
     @RequestMapping(value = BaseRoute.REMOVE_PROCESS_INQUIRY_REMOTE, method = RequestMethod.POST)
     public ResponseEntity<?> removeProcessInquiryRemote(@RequestParam long userId,
                                                         @RequestParam String processId,
-                                                        @RequestParam String inquiryRemoteId) {
+                                                        @RequestParam String remoteId) {
 
-        ProcessRemoteWSModel response = processInquiryMiddleware.removeProcessInquiryRemote(userId,processId,inquiryRemoteId);
+        ProcessRemoteWSModel response = processInquiryMiddleware.removeProcessInquiryRemote(userId,processId,remoteId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

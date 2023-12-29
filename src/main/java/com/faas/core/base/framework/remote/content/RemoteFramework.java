@@ -74,7 +74,7 @@ public class RemoteFramework {
     }
 
 
-    public RemoteWSDTO createRemoteService(long userId, String remote,String remoteDesc,String remoteModel,String remoteVersion,long typeId) {
+    public RemoteWSDTO createRemoteService(long userId, String remote,String remoteDesc,String remoteVersion,long typeId) {
 
         Optional<RemoteTypeDBModel> remoteTypeDBModel = remoteTypeRepository.findById(typeId);
         if (remoteTypeDBModel.isPresent()) {
@@ -82,7 +82,6 @@ public class RemoteFramework {
             RemoteDBModel remoteDBModel = new RemoteDBModel();
             remoteDBModel.setRemote(remote);
             remoteDBModel.setRemoteDesc(remoteDesc);
-            remoteDBModel.setRemoteModel(remoteModel);
             remoteDBModel.setRemoteVersion(remoteVersion);
             remoteDBModel.setRemoteDatas(new ArrayList<>());
             remoteDBModel.setRemoteUrls(new ArrayList<>());
@@ -99,14 +98,13 @@ public class RemoteFramework {
     }
 
 
-    public RemoteWSDTO updateRemoteService(long userId, String remoteId,String remote,String remoteDesc,String remoteModel,String remoteVersion) {
+    public RemoteWSDTO updateRemoteService(long userId, String remoteId,String remote,String remoteDesc,String remoteVersion) {
 
         Optional<RemoteDBModel>remoteDBModel = remoteRepository.findById(remoteId);
         if (remoteDBModel.isPresent()) {
 
             remoteDBModel.get().setRemote(remote);
             remoteDBModel.get().setRemoteDesc(remoteDesc);
-            remoteDBModel.get().setRemoteModel(remoteModel);
             remoteDBModel.get().setRemoteVersion(remoteVersion);
             remoteDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
 

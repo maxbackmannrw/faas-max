@@ -44,7 +44,6 @@ public class RemoteHelper {
         processRemoteDAO.setId(appUtils.generateUUID());
         processRemoteDAO.setRemote(remoteDBModel.getRemote());
         processRemoteDAO.setRemoteDesc(remoteDBModel.getRemoteDesc());
-        processRemoteDAO.setRemoteModel(remoteDBModel.getRemoteModel());
         processRemoteDAO.setRemoteVersion(remoteDBModel.getRemoteVersion());
         if (remoteDBModel.getRemoteDatas() != null) {
             processRemoteDAO.setRemoteDatas(remoteDBModel.getRemoteDatas());
@@ -59,7 +58,6 @@ public class RemoteHelper {
         processRemoteDAO.setTypeId(remoteDBModel.getTypeId());
         processRemoteDAO.setRemoteType(remoteDBModel.getRemoteType());
         processRemoteDAO.setBaseType(remoteDBModel.getBaseType());
-        processRemoteDAO.setRemoteState(AppConstant.ACTIVE_STATE);
         processRemoteDAO.setuDate(appUtils.getCurrentTimeStamp());
         processRemoteDAO.setcDate(appUtils.getCurrentTimeStamp());
         processRemoteDAO.setStatus(1);
@@ -73,7 +71,6 @@ public class RemoteHelper {
         processRemoteDAO.setId(appUtils.generateUUID());
         processRemoteDAO.setRemote(remoteDBModel.getRemote());
         processRemoteDAO.setRemoteDesc(remoteDBModel.getRemoteDesc());
-        processRemoteDAO.setRemoteModel(remoteDBModel.getRemoteModel());
         processRemoteDAO.setRemoteVersion(remoteDBModel.getRemoteVersion());
         if (remoteDBModel.getRemoteDatas() != null) {
             processRemoteDAO.setRemoteDatas(remoteDBModel.getRemoteDatas());
@@ -88,7 +85,6 @@ public class RemoteHelper {
         processRemoteDAO.setTypeId(remoteDBModel.getTypeId());
         processRemoteDAO.setRemoteType(remoteDBModel.getRemoteType());
         processRemoteDAO.setBaseType(remoteDBModel.getBaseType());
-        processRemoteDAO.setRemoteState(AppConstant.ACTIVE_STATE);
         processRemoteDAO.setuDate(appUtils.getCurrentTimeStamp());
         processRemoteDAO.setcDate(appUtils.getCurrentTimeStamp());
         processRemoteDAO.setStatus(1);
@@ -102,7 +98,6 @@ public class RemoteHelper {
         processRemoteDAO.setId(appUtils.generateUUID());
         processRemoteDAO.setRemote(remoteDBModel.getRemote());
         processRemoteDAO.setRemoteDesc(remoteDBModel.getRemoteDesc());
-        processRemoteDAO.setRemoteModel(remoteDBModel.getRemoteModel());
         processRemoteDAO.setRemoteVersion(remoteDBModel.getRemoteVersion());
 
         if (remoteDBModel.getRemoteDatas() != null) {
@@ -120,7 +115,6 @@ public class RemoteHelper {
         processRemoteDAO.setTypeId(remoteDBModel.getTypeId());
         processRemoteDAO.setRemoteType(remoteDBModel.getRemoteType());
         processRemoteDAO.setBaseType(remoteDBModel.getBaseType());
-        processRemoteDAO.setRemoteState(AppConstant.ACTIVE_STATE);
         processRemoteDAO.setuDate(appUtils.getCurrentTimeStamp());
         processRemoteDAO.setcDate(appUtils.getCurrentTimeStamp());
         processRemoteDAO.setStatus(1);

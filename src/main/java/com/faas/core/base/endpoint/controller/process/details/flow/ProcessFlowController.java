@@ -2,7 +2,7 @@ package com.faas.core.base.endpoint.controller.process.details.flow;
 
 import com.faas.core.base.middleware.process.details.flow.ProcessFlowMiddleware;
 import com.faas.core.base.model.ws.process.details.content.ProcessDataWSModel;
-import com.faas.core.base.model.ws.process.details.content.ProcessRemoteWSModel;
+import com.faas.core.base.model.ws.process.details.remote.ProcessRemoteWSModel;
 import com.faas.core.base.model.ws.process.details.flow.ProcessFlowWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
@@ -133,10 +133,10 @@ public class ProcessFlowController {
 
     @RequestMapping(value = BaseRoute.GET_PROCESS_FLOW_REMOTE, method = RequestMethod.POST)
     public ResponseEntity<?> getProcessFlowRemote(@RequestParam long userId,
-                                                @RequestParam String processId,
-                                                @RequestParam String flowRemoteId) {
+                                                  @RequestParam String processId,
+                                                  @RequestParam String remoteId) {
 
-        ProcessRemoteWSModel response = processFlowMiddleware.getProcessFlowRemote(userId,processId,flowRemoteId);
+        ProcessRemoteWSModel response = processFlowMiddleware.getProcessFlowRemote(userId,processId,remoteId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -157,26 +157,12 @@ public class ProcessFlowController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-    @RequestMapping(value = BaseRoute.UPDATE_PROCESS_FLOW_REMOTE, method = RequestMethod.POST)
-    public ResponseEntity<?> updateProcessFlowRemote(@RequestParam long userId,
-                                                     @RequestParam String processId,
-                                                     @RequestParam String flowRemoteId,
-                                                     @RequestParam String remoteState) {
-
-        ProcessRemoteWSModel response = processFlowMiddleware.updateProcessFlowRemote(userId,processId,flowRemoteId,remoteState);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
     @RequestMapping(value = BaseRoute.REMOVE_PROCESS_FLOW_REMOTE, method = RequestMethod.POST)
     public ResponseEntity<?> removeProcessFlowRemote(@RequestParam long userId,
                                                      @RequestParam String processId,
-                                                     @RequestParam String flowRemoteId) {
+                                                     @RequestParam String remoteId) {
 
-        ProcessRemoteWSModel response = processFlowMiddleware.removeProcessFlowRemote(userId,processId,flowRemoteId);
+        ProcessRemoteWSModel response = processFlowMiddleware.removeProcessFlowRemote(userId,processId,remoteId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

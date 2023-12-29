@@ -1,8 +1,7 @@
-package com.faas.core.base.model.ws.process.details.content;
+package com.faas.core.base.model.ws.process.details.remote;
 
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.process.details.content.dto.ProcessDataWSDTO;
-import com.faas.core.base.model.ws.process.details.content.dto.ProcessRemoteWSDTO;
+import com.faas.core.base.model.ws.process.details.remote.dto.ProcessRemoteWSDTO;
 
 import java.util.List;
 

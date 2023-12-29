@@ -189,7 +189,8 @@ public class BaseRoute {
 
 
 
-    public static final String GET_ALL_REMOTE_APPS = "getallremoteapps";
+    public static final String GET_REMOTE_APPS = "getremoteapps";
+    public static final String GET_REMOTE_APPS_BY_BASE_TYPE = "getremoteappsbybasetype";
     public static final String GET_CLIENT_REMOTE_APPS = "getclientremoteapps";
     public static final String GET_REMOTE_APP = "getremoteapp";
     public static final String CREATE_REMOTE_APP = "createremoteapp";
@@ -346,10 +347,10 @@ public class BaseRoute {
     public static final String UPDATE_PROCESS_DATA = "updateprocessdata";
     public static final String REMOVE_PROCESS_DATA = "removeprocessdata";
 
+
     public static final String GET_PROCESS_REMOTES = "getprocessremotes";
     public static final String GET_PROCESS_REMOTE = "getprocessremote";
     public static final String CREATE_PROCESS_REMOTE = "createprocessremote";
-    public static final String UPDATE_PROCESS_REMOTE = "updateprocessremote";
     public static final String REMOVE_PROCESS_REMOTE = "removeprocessremote";
 
 
@@ -372,7 +373,6 @@ public class BaseRoute {
     public static final String GET_PROCESS_INQUIRY_REMOTES = "getprocessinquiryremotes";
     public static final String GET_PROCESS_INQUIRY_REMOTE = "getprocessinquiryremote";
     public static final String CREATE_PROCESS_INQUIRY_REMOTE = "createprocessinquiryremote";
-    public static final String UPDATE_PROCESS_INQUIRY_REMOTE = "updateprocessinquiryremote";
     public static final String REMOVE_PROCESS_INQUIRY_REMOTE = "removeprocessinquiryremote";
 
 
@@ -388,7 +388,6 @@ public class BaseRoute {
     public static final String GET_PROCESS_FLOW_REMOTES = "getprocessflowremotes";
     public static final String GET_PROCESS_FLOW_REMOTE = "getprocessflowremote";
     public static final String CREATE_PROCESS_FLOW_REMOTE = "createprocessflowremote";
-    public static final String UPDATE_PROCESS_FLOW_REMOTE = "updateprocessflowremote";
     public static final String REMOVE_PROCESS_FLOW_REMOTE = "removeprocessflowremote";
 
 

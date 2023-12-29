@@ -6,7 +6,7 @@ import com.faas.core.base.model.db.process.content.dao.ProcessRemoteDAO;
 import com.faas.core.base.model.db.remote.content.RemoteDBModel;
 import com.faas.core.base.model.db.utility.DataTypeDBModel;
 import com.faas.core.base.model.ws.process.details.content.dto.ProcessDataWSDTO;
-import com.faas.core.base.model.ws.process.details.content.dto.ProcessRemoteWSDTO;
+import com.faas.core.base.model.ws.process.details.remote.dto.ProcessRemoteWSDTO;
 import com.faas.core.base.model.ws.process.details.flow.dto.ProcessFlowWSDTO;
 import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.remote.content.RemoteRepository;
@@ -170,12 +170,12 @@ public class ProcessFlowFramework {
         return processRemoteWSDTOS;
     }
 
-    public ProcessRemoteWSDTO getProcessFlowRemoteService(long userId, String processId, String flowRemoteId) {
+    public ProcessRemoteWSDTO getProcessFlowRemoteService(long userId, String processId, String remoteId) {
 
         Optional<ProcessDBModel> processDBModel = processRepository.findById(processId);
         if (processDBModel.isPresent() && processDBModel.get().getProcessFlow() != null && processDBModel.get().getProcessFlow().getFlowRemotes() != null) {
             for (int i=0;i<processDBModel.get().getProcessFlow().getFlowRemotes().size();i++){
-                if (processDBModel.get().getProcessFlow().getFlowRemotes().get(i).getId().equalsIgnoreCase(flowRemoteId)){
+                if (processDBModel.get().getProcessFlow().getFlowRemotes().get(i).getRemoteId().equalsIgnoreCase(remoteId)){
                     return new ProcessRemoteWSDTO(processDBModel.get().getProcessFlow().getFlowRemotes().get(i));
                 }
             }
@@ -200,33 +200,12 @@ public class ProcessFlowFramework {
         return null;
     }
 
-    public ProcessRemoteWSDTO updateProcessFlowRemoteService(long userId,String processId,String flowRemoteId,String remoteState) {
+    public ProcessRemoteWSDTO removeProcessFlowRemoteService(long userId, String processId, String remoteId) {
 
         Optional<ProcessDBModel> processDBModel = processRepository.findById(processId);
         if (processDBModel.isPresent() && processDBModel.get().getProcessFlow() != null && processDBModel.get().getProcessFlow().getFlowRemotes() != null) {
             for (int i=0;i<processDBModel.get().getProcessFlow().getFlowRemotes().size();i++){
-                if (processDBModel.get().getProcessFlow().getFlowRemotes().get(i).getId().equalsIgnoreCase(flowRemoteId)){
-
-                    processDBModel.get().getProcessFlow().getFlowRemotes().get(i).setRemoteState(remoteState);
-                    processDBModel.get().getProcessFlow().getFlowRemotes().get(i).setuDate(appUtils.getCurrentTimeStamp());
-                    processDBModel.get().getProcessFlow().setuDate(appUtils.getCurrentTimeStamp());
-
-                    processDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
-                    processRepository.save(processDBModel.get());
-
-                    return new ProcessRemoteWSDTO(processDBModel.get().getProcessFlow().getFlowRemotes().get(i));
-                }
-            }
-        }
-        return null;
-    }
-
-    public ProcessRemoteWSDTO removeProcessFlowRemoteService(long userId, String processId, String flowRemoteId) {
-
-        Optional<ProcessDBModel> processDBModel = processRepository.findById(processId);
-        if (processDBModel.isPresent() && processDBModel.get().getProcessFlow() != null && processDBModel.get().getProcessFlow().getFlowRemotes() != null) {
-            for (int i=0;i<processDBModel.get().getProcessFlow().getFlowRemotes().size();i++){
-                if (processDBModel.get().getProcessFlow().getFlowRemotes().get(i).getId().equalsIgnoreCase(flowRemoteId)){
+                if (processDBModel.get().getProcessFlow().getFlowRemotes().get(i).getRemoteId().equalsIgnoreCase(remoteId)){
 
                     ProcessRemoteDAO processRemoteDAO =processDBModel.get().getProcessFlow().getFlowRemotes().get(i);
                     processDBModel.get().getProcessFlow().getFlowRemotes().remove(processRemoteDAO);
@@ -241,5 +220,6 @@ public class ProcessFlowFramework {
         }
         return null;
     }
+
 
 }

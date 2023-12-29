@@ -3,9 +3,9 @@ package com.faas.core.base.middleware.process.details.flow;
 import com.faas.core.base.framework.process.details.flow.ProcessFlowFramework;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.model.ws.process.details.content.ProcessDataWSModel;
-import com.faas.core.base.model.ws.process.details.content.ProcessRemoteWSModel;
+import com.faas.core.base.model.ws.process.details.remote.ProcessRemoteWSModel;
 import com.faas.core.base.model.ws.process.details.content.dto.ProcessDataWSDTO;
-import com.faas.core.base.model.ws.process.details.content.dto.ProcessRemoteWSDTO;
+import com.faas.core.base.model.ws.process.details.remote.dto.ProcessRemoteWSDTO;
 import com.faas.core.base.model.ws.process.details.flow.ProcessFlowWSModel;
 import com.faas.core.base.model.ws.process.details.flow.dto.ProcessFlowWSDTO;
 import com.faas.core.utils.config.AppConstant;
@@ -187,13 +187,13 @@ public class ProcessFlowMiddleware {
         return response;
     }
 
-    public ProcessRemoteWSModel getProcessFlowRemote(long userId, String processId, String flowRemoteId) {
+    public ProcessRemoteWSModel getProcessFlowRemote(long userId, String processId, String remoteId) {
 
         ProcessRemoteWSModel response = new ProcessRemoteWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessRemoteWSDTO> processRemoteWSDTOS = new ArrayList<>();
 
-        ProcessRemoteWSDTO processRemoteWSDTO = processFlowFramework.getProcessFlowRemoteService(userId,processId,flowRemoteId);
+        ProcessRemoteWSDTO processRemoteWSDTO = processFlowFramework.getProcessFlowRemoteService(userId,processId,remoteId);
         if (processRemoteWSDTO != null){
             processRemoteWSDTOS.add(processRemoteWSDTO);
         }
@@ -229,34 +229,13 @@ public class ProcessFlowMiddleware {
         return response;
     }
 
-    public ProcessRemoteWSModel updateProcessFlowRemote(long userId,String processId,String flowRemoteId,String remoteState) {
+    public ProcessRemoteWSModel removeProcessFlowRemote(long userId,String processId,String remoteId) {
 
         ProcessRemoteWSModel response = new ProcessRemoteWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessRemoteWSDTO> processRemoteWSDTOS = new ArrayList<>();
 
-        ProcessRemoteWSDTO processRemoteWSDTO = processFlowFramework.updateProcessFlowRemoteService(userId,processId,flowRemoteId,remoteState);
-        if (processRemoteWSDTO != null){
-            processRemoteWSDTOS.add(processRemoteWSDTO);
-        }
-
-        response.setProcessRemotes(processRemoteWSDTOS);
-        general.setOperation("updateProcessFlowRemote");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-    public ProcessRemoteWSModel removeProcessFlowRemote(long userId,String processId,String flowRemoteId) {
-
-        ProcessRemoteWSModel response = new ProcessRemoteWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-        List<ProcessRemoteWSDTO> processRemoteWSDTOS = new ArrayList<>();
-
-        ProcessRemoteWSDTO processRemoteWSDTO = processFlowFramework.removeProcessFlowRemoteService(userId,processId,flowRemoteId);
+        ProcessRemoteWSDTO processRemoteWSDTO = processFlowFramework.removeProcessFlowRemoteService(userId,processId,remoteId);
         if (processRemoteWSDTO != null){
             processRemoteWSDTOS.add(processRemoteWSDTO);
         }
