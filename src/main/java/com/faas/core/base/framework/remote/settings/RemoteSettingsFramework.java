@@ -33,7 +33,6 @@ public class RemoteSettingsFramework {
         return remoteTypeWSDTOS;
     }
 
-
     public List<RemoteTypeWSDTO> getRemoteTypesByBaseTypeService(long userId,String baseType) {
 
         List<RemoteTypeWSDTO> remoteTypeWSDTOS = new ArrayList<>();
@@ -44,7 +43,6 @@ public class RemoteSettingsFramework {
         return remoteTypeWSDTOS;
     }
 
-
     public RemoteTypeWSDTO getRemoteTypeService(long userId,long remoteTypeId) {
 
         Optional<RemoteTypeDBModel> remoteTypeDBModel = remoteTypeRepository.findById(remoteTypeId);
@@ -53,7 +51,6 @@ public class RemoteSettingsFramework {
         }
         return null;
     }
-
 
     public RemoteTypeWSDTO createRemoteTypeService(long userId,String remoteType,String baseType) {
 
@@ -66,7 +63,6 @@ public class RemoteSettingsFramework {
 
         return new RemoteTypeWSDTO(remoteTypeRepository.save(remoteTypeDBModel));
     }
-
 
     public RemoteTypeWSDTO updateRemoteTypeService(long userId,long remoteTypeId,String remoteType,String baseType) {
 
@@ -81,7 +77,6 @@ public class RemoteSettingsFramework {
         }
         return null;
     }
-
 
     public RemoteTypeWSDTO removeRemoteTypeService(long userId,long remoteTypeId) {
 

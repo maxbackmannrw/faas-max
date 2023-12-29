@@ -44,7 +44,6 @@ public class RemoteSettingsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.GET_REMOTE_TYPE, method = RequestMethod.POST)
     public ResponseEntity<?> getRemoteType(@RequestParam long userId,
                                            @RequestParam long remoteTypeId) {
@@ -70,7 +69,6 @@ public class RemoteSettingsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.UPDATE_REMOTE_TYPE, method = RequestMethod.POST)
     public ResponseEntity<?> updateRemoteType(@RequestParam long userId,
                                               @RequestParam long remoteTypeId,
@@ -84,7 +82,6 @@ public class RemoteSettingsController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.REMOVE_REMOTE_TYPE, method = RequestMethod.POST)
     public ResponseEntity<?> removeRemoteType(@RequestParam long userId,
