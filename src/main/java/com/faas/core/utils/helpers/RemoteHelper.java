@@ -125,7 +125,7 @@ public class RemoteHelper {
     public RemoteAppListWSDTO getRemoteListWSDTO(Page<RemoteAppDBModel> remoteModelPage){
 
         RemoteAppListWSDTO remoteAppListWSDTO = new RemoteAppListWSDTO();
-        remoteAppListWSDTO.setRemotes(getRemoteWSDTOS(remoteModelPage.getContent()));
+        remoteAppListWSDTO.setRemoteApps(getRemoteWSDTOS(remoteModelPage.getContent()));
         remoteAppListWSDTO.setPagination(createRemotePagination(remoteModelPage));
 
         return remoteAppListWSDTO;
