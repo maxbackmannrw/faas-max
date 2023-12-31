@@ -72,10 +72,9 @@ public class AppConstant {
     public static final String ALL_STATES = "ALL_STATES";
 
 
+    public static final String APP_CONN_WAITING = "APP_CONN_WAITING";
     public static final String APP_CONN_READY = "APP_CONN_READY";
     public static final String APP_CONN_FAILED = "APP_CONN_FAILED";
-    public static final String APP_CONN_FINISHED = "APP_CONN_FINISHED";
-
 
 
     public static final String FLASH_MESSAGE = "FLASH_MESSAGE";

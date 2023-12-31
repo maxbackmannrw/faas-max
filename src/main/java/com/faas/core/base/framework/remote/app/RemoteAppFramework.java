@@ -117,9 +117,7 @@ public class RemoteAppFramework {
         List<OperationDBModel> operationDBModels = operationRepository.findBySessionId(sessionId);
         Optional<RemoteDBModel> remoteDBModel = remoteRepository.findById(remoteId);
         if (sessionDBModel.isPresent() && !operationDBModels.isEmpty() && remoteDBModel.isPresent()){
-
-            RemoteAppDBModel remoteAppDBModel = remoteAppRepository.save(remoteAppHelper.createRemoteAppDBModel(sessionDBModel.get(),operationDBModels.get(0),remoteDBModel.get()));
-
+            return remoteAppHelper.createRemoteAppWSDTO(remoteAppRepository.save(remoteAppHelper.createRemoteAppDBModel(sessionDBModel.get(),operationDBModels.get(0),remoteDBModel.get())));
         }
         return null;
     }

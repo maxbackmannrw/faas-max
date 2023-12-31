@@ -59,10 +59,17 @@ public class RemoteAppHelper {
         remoteAppDBModel.setRemote(remoteDBModel.getRemote());
         remoteAppDBModel.setRemoteDesc(remoteDBModel.getRemoteDesc());
         remoteAppDBModel.setRemoteVersion(remoteDBModel.getRemoteVersion());
+        remoteAppDBModel.setRemoteDatas(remoteDBModel.getRemoteDatas());
+        remoteAppDBModel.setRemoteUrls(remoteAppDBModel.getRemoteUrls());
+        remoteAppDBModel.setRemoteTypeId(remoteDBModel.getTypeId());
+        remoteAppDBModel.setRemoteType(remoteDBModel.getRemoteType());
+        remoteAppDBModel.setBaseType(remoteDBModel.getBaseType());
+        remoteAppDBModel.setAppConn("");
+        remoteAppDBModel.setuDate(appUtils.getCurrentTimeStamp());
+        remoteAppDBModel.setcDate(appUtils.getCurrentTimeStamp());
+        remoteAppDBModel.setStatus(1);
 
-
-
-        return null;
+        return remoteAppDBModel;
     }
 
 
