@@ -2,51 +2,51 @@ package com.faas.core.base.model.ws.remote.app.dto;
 
 public class RemoteAppSummaryWSDTO {
 
-    private long totalRemote;
-    private long readyRemote;
-    private long activeRemote;
-    private long terminatedRemote;
+    private long totalRemoteApps;
+    private long waitingRemoteApps;
+    private long readyRemoteApps;
+    private long failedRemoteApps;
 
     public RemoteAppSummaryWSDTO() {
     }
 
-    public RemoteAppSummaryWSDTO(long totalRemote, long readyRemote, long activeRemote, long terminatedRemote) {
-        this.totalRemote = totalRemote;
-        this.readyRemote = readyRemote;
-        this.activeRemote = activeRemote;
-        this.terminatedRemote = terminatedRemote;
+    public RemoteAppSummaryWSDTO(long totalRemoteApps, long waitingRemoteApps, long readyRemoteApps, long failedRemoteApps) {
+        this.totalRemoteApps = totalRemoteApps;
+        this.waitingRemoteApps = waitingRemoteApps;
+        this.readyRemoteApps = readyRemoteApps;
+        this.failedRemoteApps = failedRemoteApps;
     }
 
-    public long getTotalRemote() {
-        return totalRemote;
+    public long getTotalRemoteApps() {
+        return totalRemoteApps;
     }
 
-    public void setTotalRemote(long totalRemote) {
-        this.totalRemote = totalRemote;
+    public void setTotalRemoteApps(long totalRemoteApps) {
+        this.totalRemoteApps = totalRemoteApps;
     }
 
-    public long getReadyRemote() {
-        return readyRemote;
+    public long getWaitingRemoteApps() {
+        return waitingRemoteApps;
     }
 
-    public void setReadyRemote(long readyRemote) {
-        this.readyRemote = readyRemote;
+    public void setWaitingRemoteApps(long waitingRemoteApps) {
+        this.waitingRemoteApps = waitingRemoteApps;
     }
 
-    public long getActiveRemote() {
-        return activeRemote;
+    public long getReadyRemoteApps() {
+        return readyRemoteApps;
     }
 
-    public void setActiveRemote(long activeRemote) {
-        this.activeRemote = activeRemote;
+    public void setReadyRemoteApps(long readyRemoteApps) {
+        this.readyRemoteApps = readyRemoteApps;
     }
 
-    public long getTerminatedRemote() {
-        return terminatedRemote;
+    public long getFailedRemoteApps() {
+        return failedRemoteApps;
     }
 
-    public void setTerminatedRemote(long terminatedRemote) {
-        this.terminatedRemote = terminatedRemote;
+    public void setFailedRemoteApps(long failedRemoteApps) {
+        this.failedRemoteApps = failedRemoteApps;
     }
 }
 

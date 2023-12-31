@@ -12,6 +12,7 @@ import java.util.List;
 public interface RemoteAppRepository extends MongoRepository<RemoteAppDBModel, String> {
 
 
+    long countByAppConn(String appConn);
     List<RemoteAppDBModel> findByStatus(int status);
 
     List<RemoteAppDBModel>findByClientId(long clientId);
