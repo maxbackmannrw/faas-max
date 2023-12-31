@@ -72,17 +72,9 @@ public class AppConstant {
     public static final String ALL_STATES = "ALL_STATES";
 
 
-    public static final String NO_RESULT = "NO_RESULT";
-    public static final String RESULT_SUCCESS = "RESULT_SUCCESS";
-    public static final String RESULT_REJECTED = "RESULT_REJECTED";
-    public static final String RESULT_NOT_RESPONDING = "RESULT_NOT_RESPONDING";
-    public static final String RESULT_NOT_VALID = "RESULT_NOT_VALID";
-
-
-    public static final String ACTION_READY = "ACTION_READY";
-    public static final String ACTION_IN_PROGRESS = "ACTION_IN_PROGRESS";
-    public static final String ACTION_SUCCESSFUL = "ACTION_SUCCESSFUL";
-    public static final String ACTION_FAILED = "ACTION_FAILED";
+    public static final String APP_CONN_READY = "APP_CONN_READY";
+    public static final String APP_CONN_FAILED = "APP_CONN_FAILED";
+    public static final String APP_CONN_FINISHED = "APP_CONN_FINISHED";
 
 
 

@@ -42,7 +42,6 @@ public class RemoteAppDetailsFramework {
 
         RemoteAppSummaryWSDTO remoteAppSummaryWSDTO = new RemoteAppSummaryWSDTO();
         remoteAppSummaryWSDTO.setTotalRemote(remoteAppRepository.count());
-        remoteAppSummaryWSDTO.setReadyRemote(remoteAppRepository.countByRemoteState(AppConstant.READY_STATE));
 
         return remoteAppSummaryWSDTO;
     }

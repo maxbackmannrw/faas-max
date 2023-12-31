@@ -1,6 +1,6 @@
-package com.faas.core.base.endpoint.controller.manager.remote.content;
+package com.faas.core.base.endpoint.controller.manager.remoteapp.content;
 
-import com.faas.core.base.middleware.manager.remote.content.RemoteManagerMiddleware;
+import com.faas.core.base.middleware.manager.remoteapp.content.RemoteAppManagerMiddleware;
 import com.faas.core.base.model.ws.manager.app.AppManagerOperationWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
@@ -14,12 +14,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-@RequestMapping(value = AppConstant.API_VERSION + "/base/manager/remote/")
-public class RemoteManagerController {
+@RequestMapping(value = AppConstant.API_VERSION + "/base/manager/remote/app/")
+public class RemoteAppManagerController {
 
 
     @Autowired
-    RemoteManagerMiddleware remoteManagerMiddleware;
+    RemoteAppManagerMiddleware remoteAppManagerMiddleware;
 
 
     @RequestMapping(value = BaseRoute.GET_PROCESS_INQUIRY_REMOTE, method = RequestMethod.POST)
@@ -27,7 +27,7 @@ public class RemoteManagerController {
                                            @RequestParam int reqPage,
                                            @RequestParam int reqSize) {
 
-        AppManagerOperationWSModel response = remoteManagerMiddleware.getAppManager(userId,reqPage,reqSize);
+        AppManagerOperationWSModel response = remoteAppManagerMiddleware.getAppManager(userId,reqPage,reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

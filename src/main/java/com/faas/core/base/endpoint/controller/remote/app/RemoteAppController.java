@@ -24,11 +24,11 @@ public class RemoteAppController {
 
     @RequestMapping(value = BaseRoute.GET_REMOTE_APPS, method = RequestMethod.POST)
     public ResponseEntity<?> getRemoteApps(@RequestParam long userId,
-                                           @RequestParam String remoteState,
+                                           @RequestParam String appConn,
                                            @RequestParam int reqPage,
                                            @RequestParam int reqSize) {
 
-        RemoteAppListWSModel response = remoteAppMiddleware.getRemoteApps(userId,remoteState,reqPage,reqSize);
+        RemoteAppListWSModel response = remoteAppMiddleware.getRemoteApps(userId,appConn,reqPage,reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -38,12 +38,12 @@ public class RemoteAppController {
 
     @RequestMapping(value = BaseRoute.GET_REMOTE_APPS_BY_BASE_TYPE, method = RequestMethod.POST)
     public ResponseEntity<?> getRemoteAppsByBaseType(@RequestParam long userId,
+                                                     @RequestParam String appConn,
                                                      @RequestParam String baseType,
-                                                     @RequestParam String remoteState,
                                                      @RequestParam int reqPage,
                                                      @RequestParam int reqSize) {
 
-        RemoteAppListWSModel response = remoteAppMiddleware.getRemoteAppsByBaseType(userId,baseType,remoteState,reqPage,reqSize);
+        RemoteAppListWSModel response = remoteAppMiddleware.getRemoteAppsByBaseType(userId,appConn,baseType,reqPage,reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -91,10 +91,9 @@ public class RemoteAppController {
     @RequestMapping(value = BaseRoute.UPDATE_REMOTE_APP, method = RequestMethod.POST)
     public ResponseEntity<?> updateRemoteApp(@RequestParam long userId,
                                              @RequestParam String appId,
-                                             @RequestParam String remoteId,
-                                             @RequestParam String remoteState) {
+                                             @RequestParam String appConn) {
 
-        RemoteAppWSModel response = remoteAppMiddleware.updateRemoteApp(userId,appId,remoteId,remoteState);
+        RemoteAppWSModel response = remoteAppMiddleware.updateRemoteApp(userId,appId,appConn);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

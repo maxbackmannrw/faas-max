@@ -1,7 +1,6 @@
 package com.faas.core.base.model.ws.manager.app;
 
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.manager.app.dto.AppManagerContentWSDTO;
 import com.faas.core.base.model.ws.manager.app.dto.AppManagerWSDTO;
 
 public class AppManagerWSModel {

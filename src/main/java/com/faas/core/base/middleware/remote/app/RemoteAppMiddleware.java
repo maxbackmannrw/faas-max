@@ -22,16 +22,17 @@ public class RemoteAppMiddleware {
     RemoteAppFramework remoteAppFramework;
 
 
-    public RemoteAppListWSModel getRemoteApps(long userId,String remoteState,int reqPage,int reqSize) {
+    public RemoteAppListWSModel getRemoteApps(long userId,String appConn,int reqPage,int reqSize) {
 
         RemoteAppListWSModel response = new RemoteAppListWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        RemoteAppListWSDTO remoteAppListWSDTO = remoteAppFramework.getRemoteAppsService(userId,remoteState,reqPage,reqSize);
+        RemoteAppListWSDTO remoteAppListWSDTO = remoteAppFramework.getRemoteAppsService(userId,appConn,reqPage,reqSize);
         if (remoteAppListWSDTO != null){
+            response.setRemoteAppList(remoteAppListWSDTO);
         }
 
-        general.setOperation("getAllRemoteApps");
+        general.setOperation("getRemoteApps");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -40,16 +41,17 @@ public class RemoteAppMiddleware {
         return response;
     }
 
-    public RemoteAppListWSModel getRemoteAppsByBaseType(long userId,String baseType,String remoteState,int reqPage,int reqSize) {
+    public RemoteAppListWSModel getRemoteAppsByBaseType(long userId,String appConn,String baseType,int reqPage,int reqSize) {
 
         RemoteAppListWSModel response = new RemoteAppListWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        RemoteAppListWSDTO remoteAppListWSDTO = remoteAppFramework.getRemoteAppsByBaseTypeService(userId,baseType,remoteState,reqPage,reqSize);
+        RemoteAppListWSDTO remoteAppListWSDTO = remoteAppFramework.getRemoteAppsByBaseTypeService(userId,appConn,baseType,reqPage,reqSize);
         if (remoteAppListWSDTO != null){
+            response.setRemoteAppList(remoteAppListWSDTO);
         }
 
-        general.setOperation("getAllRemoteApps");
+        general.setOperation("getRemoteAppsByBaseType");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -77,7 +79,7 @@ public class RemoteAppMiddleware {
         return response;
     }
 
-    public RemoteAppWSModel getRemoteApp(long userId, String appId) {
+    public RemoteAppWSModel getRemoteApp(long userId,String appId) {
 
         RemoteAppWSModel response = new RemoteAppWSModel();
         GeneralWSModel general = new GeneralWSModel();
@@ -119,13 +121,13 @@ public class RemoteAppMiddleware {
         return response;
     }
 
-    public RemoteAppWSModel updateRemoteApp(long userId,String appId,String remoteId,String remoteState) {
+    public RemoteAppWSModel updateRemoteApp(long userId,String appId,String appConn) {
 
         RemoteAppWSModel response = new RemoteAppWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<RemoteAppWSDTO> remoteAppWSDTOS = new ArrayList<>();
 
-        RemoteAppWSDTO remoteAppWSDTO = remoteAppFramework.updateRemoteAppService(userId,appId,remoteId,remoteState);
+        RemoteAppWSDTO remoteAppWSDTO = remoteAppFramework.updateRemoteAppService(userId,appId,appConn);
         if (remoteAppWSDTO != null){
             remoteAppWSDTOS.add(remoteAppWSDTO);
         }
@@ -140,7 +142,7 @@ public class RemoteAppMiddleware {
         return response;
     }
 
-    public RemoteAppWSModel removeRemoteApp(long userId, String appId) {
+    public RemoteAppWSModel removeRemoteApp(long userId,String appId) {
 
         RemoteAppWSModel response = new RemoteAppWSModel();
         GeneralWSModel general = new GeneralWSModel();

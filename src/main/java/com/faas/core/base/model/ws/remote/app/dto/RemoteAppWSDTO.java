@@ -1,19 +1,23 @@
 package com.faas.core.base.model.ws.remote.app.dto;
 
 import com.faas.core.base.model.db.client.content.ClientDBModel;
+import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.remote.app.RemoteAppDBModel;
+import com.faas.core.base.model.db.session.SessionDBModel;
 
 public class RemoteAppWSDTO {
 
     private ClientDBModel client;
-    private RemoteAppDBModel clientRemote;
+    private SessionDBModel session;
+    private RemoteAppDBModel remoteApp;
 
     public RemoteAppWSDTO() {
     }
 
-    public RemoteAppWSDTO(ClientDBModel client, RemoteAppDBModel clientRemote) {
+    public RemoteAppWSDTO(ClientDBModel client, SessionDBModel session, RemoteAppDBModel remoteApp) {
         this.client = client;
-        this.clientRemote = clientRemote;
+        this.session = session;
+        this.remoteApp = remoteApp;
     }
 
     public ClientDBModel getClient() {
@@ -24,12 +28,20 @@ public class RemoteAppWSDTO {
         this.client = client;
     }
 
-    public RemoteAppDBModel getClientRemote() {
-        return clientRemote;
+    public SessionDBModel getSession() {
+        return session;
     }
 
-    public void setClientRemote(RemoteAppDBModel clientRemote) {
-        this.clientRemote = clientRemote;
+    public void setSession(SessionDBModel session) {
+        this.session = session;
+    }
+
+    public RemoteAppDBModel getRemoteApp() {
+        return remoteApp;
+    }
+
+    public void setRemoteApp(RemoteAppDBModel remoteApp) {
+        this.remoteApp = remoteApp;
     }
 }
 

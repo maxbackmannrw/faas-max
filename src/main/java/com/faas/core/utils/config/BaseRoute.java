@@ -188,7 +188,6 @@ public class BaseRoute {
     public static final String REMOVE_FLOW_TYPE = "removeflowtype";
 
 
-
     public static final String GET_REMOTE_APPS = "getremoteapps";
     public static final String GET_REMOTE_APPS_BY_BASE_TYPE = "getremoteappsbybasetype";
     public static final String GET_CLIENT_REMOTE_APPS = "getclientremoteapps";

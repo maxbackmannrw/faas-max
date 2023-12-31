@@ -1,6 +1,6 @@
-package com.faas.core.base.endpoint.controller.manager.remote.details;
+package com.faas.core.base.endpoint.controller.manager.remoteapp.details;
 
-import com.faas.core.base.middleware.manager.remote.details.RemoteManagerDetailsMiddleware;
+import com.faas.core.base.middleware.manager.remoteapp.details.RemoteAppManagerDetailsMiddleware;
 import com.faas.core.base.model.ws.manager.app.AppManagerOperationWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
@@ -14,12 +14,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-@RequestMapping(value = AppConstant.API_VERSION + "/base/manager/remote/details/")
-public class RemoteManagerDetailsController {
+@RequestMapping(value = AppConstant.API_VERSION + "/base/manager/remote/app/details/")
+public class RemoteAppManagerDetailsController {
 
 
     @Autowired
-    RemoteManagerDetailsMiddleware remoteManagerDetailsMiddleware;
+    RemoteAppManagerDetailsMiddleware remoteAppManagerDetailsMiddleware;
 
 
     @RequestMapping(value = BaseRoute.GET_CAMPAIGN_OPERATION, method = RequestMethod.POST)
@@ -27,7 +27,7 @@ public class RemoteManagerDetailsController {
                                            @RequestParam int reqPage,
                                            @RequestParam int reqSize) {
 
-        AppManagerOperationWSModel response = remoteManagerDetailsMiddleware.getAppManager(userId,reqPage,reqSize);
+        AppManagerOperationWSModel response = remoteAppManagerDetailsMiddleware.getAppManager(userId,reqPage,reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

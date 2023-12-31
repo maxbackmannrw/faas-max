@@ -1,25 +1,16 @@
 package com.faas.core.utils.helpers;
 
-import com.faas.core.base.model.db.client.content.ClientDBModel;
 import com.faas.core.base.model.db.process.content.dao.ProcessRemoteDAO;
-import com.faas.core.base.model.db.remote.app.RemoteAppDBModel;
 import com.faas.core.base.model.db.remote.content.RemoteDBModel;
 import com.faas.core.base.model.db.remote.content.dao.RemoteDataDAO;
-import com.faas.core.base.model.ws.general.PaginationWSDTO;
-import com.faas.core.base.model.ws.remote.app.dto.RemoteAppListWSDTO;
-import com.faas.core.base.model.ws.remote.app.dto.RemoteAppWSDTO;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.remote.app.RemoteAppRepository;
 import com.faas.core.base.repo.session.SessionRepository;
-import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 
 @Component
 public class RemoteHelper {
@@ -122,43 +113,6 @@ public class RemoteHelper {
         return processRemoteDAO;
     }
 
-    public RemoteAppListWSDTO getRemoteListWSDTO(Page<RemoteAppDBModel> remoteModelPage){
-
-        RemoteAppListWSDTO remoteAppListWSDTO = new RemoteAppListWSDTO();
-        remoteAppListWSDTO.setRemoteApps(getRemoteWSDTOS(remoteModelPage.getContent()));
-        remoteAppListWSDTO.setPagination(createRemotePagination(remoteModelPage));
-
-        return remoteAppListWSDTO;
-    }
-
-
-    public List<RemoteAppWSDTO> getRemoteWSDTOS(List<RemoteAppDBModel> remoteAppDBModels){
-
-        List<RemoteAppWSDTO> remoteAppWSDTOS = new ArrayList<>();
-        for (RemoteAppDBModel remoteAppDBModel : remoteAppDBModels) {
-            RemoteAppWSDTO remoteAppWSDTO = getRemoteWSDTO(remoteAppDBModel);
-            if (remoteAppWSDTO != null) {
-                remoteAppWSDTOS.add(remoteAppWSDTO);
-            }
-        }
-        return remoteAppWSDTOS;
-    }
-
-
-    public RemoteAppWSDTO getRemoteWSDTO(RemoteAppDBModel remoteAppDBModel){
-
-        Optional<ClientDBModel> clientDBModel = clientRepository.findById(remoteAppDBModel.getClientId());
-        if (clientDBModel.isPresent()) {
-
-            RemoteAppWSDTO remoteAppWSDTO = new RemoteAppWSDTO();
-            remoteAppWSDTO.setClient(clientDBModel.get());
-            remoteAppWSDTO.setClientRemote(remoteAppDBModel);
-
-            return remoteAppWSDTO;
-        }
-        return null;
-    }
-
 
     public RemoteDataDAO createRemoteDataDAO(String dataId, String dataType, String value){
 
@@ -170,18 +124,6 @@ public class RemoteHelper {
         remoteDataDAO.setStatus(1);
 
         return remoteDataDAO;
-    }
-
-
-    public PaginationWSDTO createRemotePagination(Page<RemoteAppDBModel> remoteModelPage){
-
-        PaginationWSDTO remotePagination = new PaginationWSDTO();
-        remotePagination.setPageSize(remoteModelPage.getPageable().getPageSize());
-        remotePagination.setPageNumber(remoteModelPage.getPageable().getPageNumber());
-        remotePagination.setTotalPage(remoteModelPage.getTotalPages());
-        remotePagination.setTotalElements(remoteModelPage.getTotalElements());
-
-        return remotePagination;
     }
 
 

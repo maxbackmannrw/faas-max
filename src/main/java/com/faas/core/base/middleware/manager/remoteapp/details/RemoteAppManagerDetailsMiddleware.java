@@ -1,6 +1,6 @@
-package com.faas.core.base.middleware.manager.remote.content;
+package com.faas.core.base.middleware.manager.remoteapp.details;
 
-import com.faas.core.base.framework.manager.remote.content.RemoteManagerFramework;
+import com.faas.core.base.framework.manager.remoteapp.details.RemoteAppManagerDetailsFramework;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.model.ws.manager.app.AppManagerOperationWSModel;
 import com.faas.core.utils.config.AppConstant;
@@ -9,11 +9,11 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class RemoteManagerMiddleware {
+public class RemoteAppManagerDetailsMiddleware {
 
 
     @Autowired
-    RemoteManagerFramework remoteManagerFramework;
+    RemoteAppManagerDetailsFramework remoteAppManagerDetailsFramework;
 
 
     public AppManagerOperationWSModel getAppManager(long userId, int reqPage, int reqSize) {

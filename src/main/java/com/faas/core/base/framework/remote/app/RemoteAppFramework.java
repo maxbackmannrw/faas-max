@@ -1,18 +1,23 @@
 package com.faas.core.base.framework.remote.app;
 
-import com.faas.core.base.model.db.remote.app.RemoteAppDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
+import com.faas.core.base.model.db.process.content.dao.ProcessRemoteDAO;
+import com.faas.core.base.model.db.remote.app.RemoteAppDBModel;
+import com.faas.core.base.model.db.remote.content.RemoteDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.ws.remote.app.dto.RemoteAppListWSDTO;
 import com.faas.core.base.model.ws.remote.app.dto.RemoteAppWSDTO;
+import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
+import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.remote.app.RemoteAppRepository;
+import com.faas.core.base.repo.remote.content.RemoteRepository;
 import com.faas.core.base.repo.session.SessionRepository;
-import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
-import com.faas.core.utils.helpers.RemoteHelper;
+import com.faas.core.utils.helpers.RemoteAppHelper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
@@ -24,15 +29,11 @@ import java.util.Optional;
 @Component
 public class RemoteAppFramework {
 
-
     @Autowired
-    RemoteHelper remoteHelper;
+    RemoteAppHelper remoteAppHelper;
 
     @Autowired
     ClientRepository clientRepository;
-
-    @Autowired
-    RemoteAppRepository remoteAppRepository;
 
     @Autowired
     SessionRepository sessionRepository;
@@ -41,87 +42,101 @@ public class RemoteAppFramework {
     OperationRepository operationRepository;
 
     @Autowired
+    RemoteAppRepository remoteAppRepository;
+
+    @Autowired
+    ProcessRepository processRepository;
+
+    @Autowired
+    RemoteRepository remoteRepository;
+
+    @Autowired
     AppUtils appUtils;
 
 
-    public RemoteAppListWSDTO getRemoteAppsService(long userId,String remoteState,int reqPage,int reqSize) {
+    public RemoteAppListWSDTO getRemoteAppsService(long userId,String appConn,int reqPage,int reqSize) {
 
-        RemoteAppListWSDTO remoteAppListWSDTO = new RemoteAppListWSDTO();
-        if (remoteState.equalsIgnoreCase(AppConstant.ALL_REMOTES) && remoteState.equalsIgnoreCase(AppConstant.ALL_REMOTES)){
-            remoteAppListWSDTO = remoteHelper.getRemoteListWSDTO(remoteAppRepository.findAllByStatus(1, PageRequest.of(reqPage,reqSize)));
+        Page<RemoteAppDBModel> remoteAppModelPage = remoteAppRepository.findAllByAppConn(appConn, PageRequest.of(reqPage,reqSize));
+        if (remoteAppModelPage != null){
+            RemoteAppListWSDTO remoteAppListWSDTO = new RemoteAppListWSDTO();
+            List<RemoteAppWSDTO> remoteAppWSDTOS = new ArrayList<>();
+            for (int i=0;i<remoteAppModelPage.getContent().size();i++){
+                remoteAppWSDTOS.add(remoteAppHelper.createRemoteAppWSDTO(remoteAppModelPage.getContent().get(i)));
+            }
+            remoteAppListWSDTO.setRemoteApps(remoteAppWSDTOS);
+            remoteAppListWSDTO.setPagination(remoteAppHelper.createRemoteAppPagination(remoteAppModelPage));
+
+            return remoteAppListWSDTO;
         }
-
-        return remoteAppListWSDTO;
+        return null;
     }
 
-    public RemoteAppListWSDTO getRemoteAppsByBaseTypeService(long userId,String baseType,String remoteState,int reqPage,int reqSize) {
 
-        RemoteAppListWSDTO remoteAppListWSDTO = new RemoteAppListWSDTO();
-        if (baseType.equalsIgnoreCase(AppConstant.ALL_REMOTES) && remoteState.equalsIgnoreCase(AppConstant.ALL_REMOTES)){
-            remoteAppListWSDTO = remoteHelper.getRemoteListWSDTO(remoteAppRepository.findAllByStatus(1, PageRequest.of(reqPage,reqSize)));
+    public RemoteAppListWSDTO getRemoteAppsByBaseTypeService(long userId,String appConn,String baseType,int reqPage,int reqSize) {
+
+        Page<RemoteAppDBModel> remoteAppModelPage = remoteAppRepository.findAllByAppConnAndBaseType(appConn,baseType, PageRequest.of(reqPage,reqSize));
+        if (remoteAppModelPage != null){
+            RemoteAppListWSDTO remoteAppListWSDTO = new RemoteAppListWSDTO();
+            List<RemoteAppWSDTO> remoteAppWSDTOS = new ArrayList<>();
+            for (int i=0;i<remoteAppModelPage.getContent().size();i++){
+                remoteAppWSDTOS.add(remoteAppHelper.createRemoteAppWSDTO(remoteAppModelPage.getContent().get(i)));
+            }
+            remoteAppListWSDTO.setRemoteApps(remoteAppWSDTOS);
+            remoteAppListWSDTO.setPagination(remoteAppHelper.createRemoteAppPagination(remoteAppModelPage));
+
+            return remoteAppListWSDTO;
         }
-
-        return remoteAppListWSDTO;
+        return null;
     }
+
 
     public List<RemoteAppWSDTO> getClientRemoteAppsService(long userId,long clientId) {
 
         List<RemoteAppWSDTO> remoteAppWSDTOS = new ArrayList<>();
         List<RemoteAppDBModel> remoteAppDBModels = remoteAppRepository.findByClientId(clientId);
         for (RemoteAppDBModel remoteAppDBModel : remoteAppDBModels) {
-            RemoteAppWSDTO remoteAppWSDTO = remoteHelper.getRemoteWSDTO(remoteAppDBModel);
-            if (remoteAppWSDTO != null){
-                remoteAppWSDTOS.add(remoteAppWSDTO);
-            }
+            remoteAppWSDTOS.add(remoteAppHelper.createRemoteAppWSDTO(remoteAppDBModel));
         }
         return remoteAppWSDTOS;
     }
 
+
     public RemoteAppWSDTO getRemoteAppService(long userId, String appId) {
 
-        Optional<RemoteAppDBModel> remoteDBModel = remoteAppRepository.findById(appId);
-        if ( remoteDBModel.isPresent()){
-            return remoteHelper.getRemoteWSDTO(remoteDBModel.get());
+        Optional<RemoteAppDBModel> remoteAppDBModel = remoteAppRepository.findById(appId);
+        if (remoteAppDBModel.isPresent()){
+            return remoteAppHelper.createRemoteAppWSDTO(remoteAppDBModel.get());
         }
         return null;
     }
+
 
     public RemoteAppWSDTO createRemoteAppService(long userId,long sessionId,String remoteId) {
 
         Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
         List<OperationDBModel> operationDBModels = operationRepository.findBySessionId(sessionId);
-        if (sessionDBModel.isPresent() && !operationDBModels.isEmpty()){
-            if (clientRepository.existsById(sessionDBModel.get().getClientId())){
+        Optional<RemoteDBModel> remoteDBModel = remoteRepository.findById(remoteId);
+        if (sessionDBModel.isPresent() && !operationDBModels.isEmpty() && remoteDBModel.isPresent()){
 
-                RemoteAppDBModel remoteAppDBModel = new RemoteAppDBModel();
-                remoteAppDBModel.setClientId(sessionDBModel.get().getClientId());
-                remoteAppDBModel.setSessionId(sessionId);
-                remoteAppDBModel.setCampaignId(sessionDBModel.get().getCampaignId());
-                remoteAppDBModel.setCampaign(sessionDBModel.get().getCampaign());
-                remoteAppDBModel.setProcessId(sessionDBModel.get().getProcessId());
-                remoteAppDBModel.setProcess(sessionDBModel.get().getProcess());
-                remoteAppDBModel.setuDate(appUtils.getCurrentTimeStamp());
-                remoteAppDBModel.setcDate(appUtils.getCurrentTimeStamp());
-                remoteAppDBModel.setStatus(1);
+            RemoteAppDBModel remoteAppDBModel = remoteAppRepository.save(remoteAppHelper.createRemoteAppDBModel(sessionDBModel.get(),operationDBModels.get(0),remoteDBModel.get()));
 
-                return remoteHelper.getRemoteWSDTO(remoteAppRepository.save(remoteAppDBModel));
-            }
         }
         return null;
     }
 
-    public RemoteAppWSDTO updateRemoteAppService(long userId,String appId,String remoteId,String remoteState) {
 
+    public RemoteAppWSDTO updateRemoteAppService(long userId,String appId,String appConn) {
 
         return null;
     }
 
-    public RemoteAppWSDTO removeRemoteAppService(long userId, String appId) {
 
-        Optional<RemoteAppDBModel> remoteDBModel = remoteAppRepository.findById(appId);
-        if (remoteDBModel.isPresent()){
-            remoteAppRepository.delete(remoteDBModel.get());
-            return remoteHelper.getRemoteWSDTO(remoteDBModel.get());
+    public RemoteAppWSDTO removeRemoteAppService(long userId,String appId) {
+
+        Optional<RemoteAppDBModel> remoteAppDBModel = remoteAppRepository.findById(appId);
+        if (remoteAppDBModel.isPresent()){
+            remoteAppRepository.delete(remoteAppDBModel.get());
+            return remoteAppHelper.createRemoteAppWSDTO(remoteAppDBModel.get());
         }
         return null;
     }

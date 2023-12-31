@@ -14,6 +14,7 @@ public class RemoteAppDBModel {
     private String id;
     private long clientId;
     private long sessionId;
+    private String operationId;
     private String campaignId;
     private String campaign;
     private String processId;
@@ -21,10 +22,13 @@ public class RemoteAppDBModel {
     private String remoteId;
     private String remote;
     private String remoteDesc;
+    private String remoteVersion;
+    private List<RemoteDataDAO> remoteDatas;
+    private List<RemoteUrlDAO>remoteUrls;
     private long remoteTypeId;
     private String remoteType;
     private String baseType;
-    private String remoteState;
+    private String appConn;
     private long uDate;
     private long cDate;
     private int status;
@@ -32,10 +36,11 @@ public class RemoteAppDBModel {
     public RemoteAppDBModel() {
     }
 
-    public RemoteAppDBModel(String id, long clientId, long sessionId, String campaignId, String campaign, String processId, String process, String remoteId, String remote, String remoteDesc, long remoteTypeId, String remoteType, String baseType, String remoteState, long uDate, long cDate, int status) {
+    public RemoteAppDBModel(String id, long clientId, long sessionId, String operationId, String campaignId, String campaign, String processId, String process, String remoteId, String remote, String remoteDesc, String remoteVersion, List<RemoteDataDAO> remoteDatas, List<RemoteUrlDAO> remoteUrls, long remoteTypeId, String remoteType, String baseType, String appConn, long uDate, long cDate, int status) {
         this.id = id;
         this.clientId = clientId;
         this.sessionId = sessionId;
+        this.operationId = operationId;
         this.campaignId = campaignId;
         this.campaign = campaign;
         this.processId = processId;
@@ -43,10 +48,13 @@ public class RemoteAppDBModel {
         this.remoteId = remoteId;
         this.remote = remote;
         this.remoteDesc = remoteDesc;
+        this.remoteVersion = remoteVersion;
+        this.remoteDatas = remoteDatas;
+        this.remoteUrls = remoteUrls;
         this.remoteTypeId = remoteTypeId;
         this.remoteType = remoteType;
         this.baseType = baseType;
-        this.remoteState = remoteState;
+        this.appConn = appConn;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
@@ -74,6 +82,14 @@ public class RemoteAppDBModel {
 
     public void setSessionId(long sessionId) {
         this.sessionId = sessionId;
+    }
+
+    public String getOperationId() {
+        return operationId;
+    }
+
+    public void setOperationId(String operationId) {
+        this.operationId = operationId;
     }
 
     public String getCampaignId() {
@@ -132,6 +148,30 @@ public class RemoteAppDBModel {
         this.remoteDesc = remoteDesc;
     }
 
+    public String getRemoteVersion() {
+        return remoteVersion;
+    }
+
+    public void setRemoteVersion(String remoteVersion) {
+        this.remoteVersion = remoteVersion;
+    }
+
+    public List<RemoteDataDAO> getRemoteDatas() {
+        return remoteDatas;
+    }
+
+    public void setRemoteDatas(List<RemoteDataDAO> remoteDatas) {
+        this.remoteDatas = remoteDatas;
+    }
+
+    public List<RemoteUrlDAO> getRemoteUrls() {
+        return remoteUrls;
+    }
+
+    public void setRemoteUrls(List<RemoteUrlDAO> remoteUrls) {
+        this.remoteUrls = remoteUrls;
+    }
+
     public long getRemoteTypeId() {
         return remoteTypeId;
     }
@@ -156,12 +196,12 @@ public class RemoteAppDBModel {
         this.baseType = baseType;
     }
 
-    public String getRemoteState() {
-        return remoteState;
+    public String getAppConn() {
+        return appConn;
     }
 
-    public void setRemoteState(String remoteState) {
-        this.remoteState = remoteState;
+    public void setAppConn(String appConn) {
+        this.appConn = appConn;
     }
 
     public long getuDate() {
