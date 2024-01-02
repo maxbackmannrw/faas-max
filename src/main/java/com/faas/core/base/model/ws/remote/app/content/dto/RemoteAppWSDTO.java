@@ -1,7 +1,6 @@
-package com.faas.core.base.model.ws.remote.app.dto;
+package com.faas.core.base.model.ws.remote.app.content.dto;
 
 import com.faas.core.base.model.db.client.content.ClientDBModel;
-import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.remote.app.RemoteAppDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
 

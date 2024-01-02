@@ -28,7 +28,7 @@ public class RemoteAppDBModel {
     private long remoteTypeId;
     private String remoteType;
     private String baseType;
-    private String appConn;
+    private String connState;
     private long uDate;
     private long cDate;
     private int status;
@@ -36,7 +36,7 @@ public class RemoteAppDBModel {
     public RemoteAppDBModel() {
     }
 
-    public RemoteAppDBModel(String id, long clientId, long sessionId, String operationId, String campaignId, String campaign, String processId, String process, String remoteId, String remote, String remoteDesc, String remoteVersion, List<RemoteDataDAO> remoteDatas, List<RemoteUrlDAO> remoteUrls, long remoteTypeId, String remoteType, String baseType, String appConn, long uDate, long cDate, int status) {
+    public RemoteAppDBModel(String id, long clientId, long sessionId, String operationId, String campaignId, String campaign, String processId, String process, String remoteId, String remote, String remoteDesc, String remoteVersion, List<RemoteDataDAO> remoteDatas, List<RemoteUrlDAO> remoteUrls, long remoteTypeId, String remoteType, String baseType, String connState, long uDate, long cDate, int status) {
         this.id = id;
         this.clientId = clientId;
         this.sessionId = sessionId;
@@ -54,7 +54,7 @@ public class RemoteAppDBModel {
         this.remoteTypeId = remoteTypeId;
         this.remoteType = remoteType;
         this.baseType = baseType;
-        this.appConn = appConn;
+        this.connState = connState;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
@@ -196,12 +196,12 @@ public class RemoteAppDBModel {
         this.baseType = baseType;
     }
 
-    public String getAppConn() {
-        return appConn;
+    public String getConnState() {
+        return connState;
     }
 
-    public void setAppConn(String appConn) {
-        this.appConn = appConn;
+    public void setConnState(String connState) {
+        this.connState = connState;
     }
 
     public long getuDate() {

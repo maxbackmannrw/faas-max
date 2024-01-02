@@ -2,9 +2,11 @@ package com.faas.core.base.middleware.remote.app;
 
 import com.faas.core.base.framework.remote.app.RemoteAppDetailsFramework;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.remote.app.RemoteAppSummaryWSModel;
-import com.faas.core.base.model.ws.remote.app.RemoteAppWSModel;
-import com.faas.core.base.model.ws.remote.app.dto.RemoteAppSummaryWSDTO;
+import com.faas.core.base.model.ws.remote.app.content.RemoteAppSummaryWSModel;
+import com.faas.core.base.model.ws.remote.app.content.RemoteAppWSModel;
+import com.faas.core.base.model.ws.remote.app.content.dto.RemoteAppSummaryWSDTO;
+import com.faas.core.base.model.ws.remote.app.details.RemoteAppDetailsWSModel;
+import com.faas.core.base.model.ws.remote.app.details.dto.RemoteAppDetailsWSDTO;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -18,12 +20,15 @@ public class RemoteAppDetailsMiddleware {
     RemoteAppDetailsFramework remoteAppDetailsFramework;
 
 
-    public RemoteAppWSModel getRemoteAppDetails(long userId,String appId) {
+    public RemoteAppDetailsWSModel getRemoteAppDetails(long userId,String appId) {
 
-        RemoteAppWSModel response = new RemoteAppWSModel();
+        RemoteAppDetailsWSModel response = new RemoteAppDetailsWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-
+        RemoteAppDetailsWSDTO remoteAppDetailsWSDTO = remoteAppDetailsFramework.getRemoteAppDetailsService(userId);
+        if (remoteAppDetailsWSDTO != null){
+            response.setRemoteAppDetails(remoteAppDetailsWSDTO);
+        }
 
         general.setOperation("getRemoteAppDetails");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -53,5 +58,6 @@ public class RemoteAppDetailsMiddleware {
 
         return response;
     }
+
 
 }

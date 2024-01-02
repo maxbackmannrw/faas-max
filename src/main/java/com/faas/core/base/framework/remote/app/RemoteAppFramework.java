@@ -1,13 +1,11 @@
 package com.faas.core.base.framework.remote.app;
 
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
-import com.faas.core.base.model.db.process.content.dao.ProcessRemoteDAO;
 import com.faas.core.base.model.db.remote.app.RemoteAppDBModel;
 import com.faas.core.base.model.db.remote.content.RemoteDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
-import com.faas.core.base.model.ws.remote.app.dto.RemoteAppListWSDTO;
-import com.faas.core.base.model.ws.remote.app.dto.RemoteAppWSDTO;
-import com.faas.core.base.repo.campaign.content.CampaignRepository;
+import com.faas.core.base.model.ws.remote.app.content.dto.RemoteAppListWSDTO;
+import com.faas.core.base.model.ws.remote.app.content.dto.RemoteAppWSDTO;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
@@ -54,9 +52,9 @@ public class RemoteAppFramework {
     AppUtils appUtils;
 
 
-    public RemoteAppListWSDTO getRemoteAppsService(long userId,String appConn,int reqPage,int reqSize) {
+    public RemoteAppListWSDTO getRemoteAppsService(long userId,String connState,int reqPage,int reqSize) {
 
-        Page<RemoteAppDBModel> remoteAppModelPage = remoteAppRepository.findAllByAppConn(appConn, PageRequest.of(reqPage,reqSize));
+        Page<RemoteAppDBModel> remoteAppModelPage = remoteAppRepository.findAllByConnState(connState, PageRequest.of(reqPage,reqSize));
         if (remoteAppModelPage != null){
             RemoteAppListWSDTO remoteAppListWSDTO = new RemoteAppListWSDTO();
             List<RemoteAppWSDTO> remoteAppWSDTOS = new ArrayList<>();
@@ -72,9 +70,9 @@ public class RemoteAppFramework {
     }
 
 
-    public RemoteAppListWSDTO getRemoteAppsByBaseTypeService(long userId,String appConn,String baseType,int reqPage,int reqSize) {
+    public RemoteAppListWSDTO getRemoteAppsByBaseTypeService(long userId,String connState,String baseType,int reqPage,int reqSize) {
 
-        Page<RemoteAppDBModel> remoteAppModelPage = remoteAppRepository.findAllByAppConnAndBaseType(appConn,baseType, PageRequest.of(reqPage,reqSize));
+        Page<RemoteAppDBModel> remoteAppModelPage = remoteAppRepository.findAllByConnStateAndBaseType(connState,baseType,PageRequest.of(reqPage,reqSize));
         if (remoteAppModelPage != null){
             RemoteAppListWSDTO remoteAppListWSDTO = new RemoteAppListWSDTO();
             List<RemoteAppWSDTO> remoteAppWSDTOS = new ArrayList<>();
@@ -117,14 +115,22 @@ public class RemoteAppFramework {
         List<OperationDBModel> operationDBModels = operationRepository.findBySessionId(sessionId);
         Optional<RemoteDBModel> remoteDBModel = remoteRepository.findById(remoteId);
         if (sessionDBModel.isPresent() && !operationDBModels.isEmpty() && remoteDBModel.isPresent()){
-            return remoteAppHelper.createRemoteAppWSDTO(remoteAppRepository.save(remoteAppHelper.createRemoteAppDBModel(sessionDBModel.get(),operationDBModels.get(0),remoteDBModel.get())));
+            RemoteAppDBModel remoteAppDBModel = remoteAppRepository.save(remoteAppHelper.createRemoteAppDBModel(sessionDBModel.get(),operationDBModels.get(0),remoteDBModel.get()));
+            return remoteAppHelper.createRemoteAppWSDTO(remoteAppDBModel);
         }
         return null;
     }
 
 
-    public RemoteAppWSDTO updateRemoteAppService(long userId,String appId,String appConn) {
+    public RemoteAppWSDTO updateRemoteAppService(long userId,String appId,String connState) {
 
+        Optional<RemoteAppDBModel>remoteAppDBModel = remoteAppRepository.findById(appId);
+        if (remoteAppDBModel.isPresent()){
+            remoteAppDBModel.get().setConnState(connState);
+            remoteAppDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
+
+            return remoteAppHelper.createRemoteAppWSDTO(remoteAppRepository.save(remoteAppDBModel.get()));
+        }
         return null;
     }
 

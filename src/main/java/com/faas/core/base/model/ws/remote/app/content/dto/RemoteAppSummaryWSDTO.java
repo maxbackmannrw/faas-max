@@ -1,18 +1,18 @@
-package com.faas.core.base.model.ws.remote.app.dto;
+package com.faas.core.base.model.ws.remote.app.content.dto;
 
 public class RemoteAppSummaryWSDTO {
 
     private long totalRemoteApps;
-    private long waitingRemoteApps;
+    private long newRemoteApps;
     private long readyRemoteApps;
     private long failedRemoteApps;
 
     public RemoteAppSummaryWSDTO() {
     }
 
-    public RemoteAppSummaryWSDTO(long totalRemoteApps, long waitingRemoteApps, long readyRemoteApps, long failedRemoteApps) {
+    public RemoteAppSummaryWSDTO(long totalRemoteApps, long newRemoteApps, long readyRemoteApps, long failedRemoteApps) {
         this.totalRemoteApps = totalRemoteApps;
-        this.waitingRemoteApps = waitingRemoteApps;
+        this.newRemoteApps = newRemoteApps;
         this.readyRemoteApps = readyRemoteApps;
         this.failedRemoteApps = failedRemoteApps;
     }
@@ -25,12 +25,12 @@ public class RemoteAppSummaryWSDTO {
         this.totalRemoteApps = totalRemoteApps;
     }
 
-    public long getWaitingRemoteApps() {
-        return waitingRemoteApps;
+    public long getNewRemoteApps() {
+        return newRemoteApps;
     }
 
-    public void setWaitingRemoteApps(long waitingRemoteApps) {
-        this.waitingRemoteApps = waitingRemoteApps;
+    public void setNewRemoteApps(long newRemoteApps) {
+        this.newRemoteApps = newRemoteApps;
     }
 
     public long getReadyRemoteApps() {

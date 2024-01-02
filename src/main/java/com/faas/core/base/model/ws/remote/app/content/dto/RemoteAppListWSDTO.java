@@ -1,4 +1,4 @@
-package com.faas.core.base.model.ws.remote.app.dto;
+package com.faas.core.base.model.ws.remote.app.content.dto;
 
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
 

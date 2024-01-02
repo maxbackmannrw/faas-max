@@ -12,7 +12,6 @@ public class AppConstant {
     public static final String FIRST_TIME_INIT = "FIRST_TIME_INIT";
 
 
-
     public static final String MANAGER_USER = "MANAGER_USER";
     public static final String BASIC_MANAGER = "BASIC_MANAGER";
     public static final String SUPER_MANAGER = "SUPER_MANAGER";
@@ -72,9 +71,9 @@ public class AppConstant {
     public static final String ALL_STATES = "ALL_STATES";
 
 
-    public static final String APP_CONN_WAITING = "APP_CONN_WAITING";
-    public static final String APP_CONN_READY = "APP_CONN_READY";
-    public static final String APP_CONN_FAILED = "APP_CONN_FAILED";
+    public static final String CONN_STATE_NEW = "CONN_STATE_NEW";
+    public static final String CONN_STATE_READY = "CONN_STATE_READY";
+    public static final String CONN_STATE_FAILED = "CONN_STATE_FAILED";
 
 
     public static final String FLASH_MESSAGE = "FLASH_MESSAGE";
@@ -103,21 +102,12 @@ public class AppConstant {
 
     public static final String READY_SESSIONS_SUMMARY = "READY_SESSIONS_SUMMARY";
     public static final String ACTIVE_SESSIONS_SUMMARY = "ACTIVE_SESSIONS_SUMMARY";
-    public static final String FINISHED_SESSIONS_SUMMARY = "FINISHED_SESSIONS_SUMMARY";
     public static final String TOTAL_SESSIONS_SUMMARY = "TOTAL_SESSIONS_SUMMARY";
 
 
     public static final String READY_OPERATIONS_SUMMARY = "READY_OPERATIONS_SUMMARY";
     public static final String ACTIVE_OPERATIONS_SUMMARY = "ACTIVE_OPERATIONS_SUMMARY";
     public static final String TOTAL_OPERATIONS_SUMMARY = "TOTAL_OPERATIONS_SUMMARY";
-
-    public static final String READY_INQUIRIES_SUMMARY = "READY_INQUIRIES_SUMMARY";
-    public static final String ACTIVE_INQUIRIES_SUMMARY = "ACTIVE_INQUIRIES_SUMMARY";
-    public static final String TOTAL_INQUIRIES_SUMMARY = "TOTAL_INQUIRIES_SUMMARY";
-
-    public static final String READY_FLOWS_SUMMARY = "READY_FLOWS_SUMMARY";
-    public static final String ACTIVE_FLOWS_SUMMARY = "ACTIVE_FLOWS_SUMMARY";
-    public static final String TOTAL_FLOWS_SUMMARY = "TOTAL_FLOWS_SUMMARY";
 
     public static final String TOTAL_CAMPAIGNS_SUMMARY = "TOTAL_CAMPAIGNS_SUMMARY";
 

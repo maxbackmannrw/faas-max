@@ -12,16 +12,16 @@ import java.util.List;
 public interface RemoteAppRepository extends MongoRepository<RemoteAppDBModel, String> {
 
 
-    long countByAppConn(String appConn);
+    long countByConnState(String connState);
     List<RemoteAppDBModel> findByStatus(int status);
 
     List<RemoteAppDBModel>findByClientId(long clientId);
 
     Page<RemoteAppDBModel>findAllByStatus(int status, Pageable pageable);
 
-    Page<RemoteAppDBModel>findAllByAppConn(String appConn, Pageable pageable);
+    Page<RemoteAppDBModel>findAllByConnState(String connState, Pageable pageable);
 
-    Page<RemoteAppDBModel>findAllByAppConnAndBaseType(String appConn, String baseType, Pageable pageable);
+    Page<RemoteAppDBModel>findAllByConnStateAndBaseType(String connState, String baseType, Pageable pageable);
 
 
 

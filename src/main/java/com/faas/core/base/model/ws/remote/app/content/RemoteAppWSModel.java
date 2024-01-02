@@ -1,7 +1,7 @@
-package com.faas.core.base.model.ws.remote.app;
+package com.faas.core.base.model.ws.remote.app.content;
 
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.remote.app.dto.RemoteAppWSDTO;
+import com.faas.core.base.model.ws.remote.app.content.dto.RemoteAppWSDTO;
 
 import java.util.List;
 

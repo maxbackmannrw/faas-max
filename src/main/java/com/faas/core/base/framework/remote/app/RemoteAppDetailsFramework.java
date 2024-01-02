@@ -1,7 +1,9 @@
 package com.faas.core.base.framework.remote.app;
 
-import com.faas.core.base.model.ws.remote.app.dto.RemoteAppSummaryWSDTO;
-import com.faas.core.base.model.ws.remote.app.dto.RemoteAppWSDTO;
+import com.faas.core.base.model.ws.remote.app.content.dto.RemoteAppSummaryWSDTO;
+import com.faas.core.base.model.ws.remote.app.content.dto.RemoteAppWSDTO;
+import com.faas.core.base.model.ws.remote.app.details.RemoteAppDetailsWSModel;
+import com.faas.core.base.model.ws.remote.app.details.dto.RemoteAppDetailsWSDTO;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.remote.app.RemoteAppRepository;
@@ -32,7 +34,7 @@ public class RemoteAppDetailsFramework {
     AppUtils appUtils;
 
 
-    public RemoteAppWSDTO getRemoteAppDetailsService(long userId) {
+    public RemoteAppDetailsWSDTO getRemoteAppDetailsService(long userId) {
 
         return null;
     }
@@ -42,9 +44,9 @@ public class RemoteAppDetailsFramework {
 
         RemoteAppSummaryWSDTO remoteAppSummaryWSDTO = new RemoteAppSummaryWSDTO();
         remoteAppSummaryWSDTO.setTotalRemoteApps(remoteAppRepository.count());
-        remoteAppSummaryWSDTO.setWaitingRemoteApps(remoteAppRepository.countByAppConn(AppConstant.APP_CONN_WAITING));
-        remoteAppSummaryWSDTO.setReadyRemoteApps(remoteAppRepository.countByAppConn(AppConstant.APP_CONN_READY));
-        remoteAppSummaryWSDTO.setFailedRemoteApps(remoteAppRepository.countByAppConn(AppConstant.APP_CONN_FAILED));
+        remoteAppSummaryWSDTO.setNewRemoteApps(remoteAppRepository.countByConnState(AppConstant.CONN_STATE_NEW));
+        remoteAppSummaryWSDTO.setReadyRemoteApps(remoteAppRepository.countByConnState(AppConstant.CONN_STATE_READY));
+        remoteAppSummaryWSDTO.setFailedRemoteApps(remoteAppRepository.countByConnState(AppConstant.CONN_STATE_FAILED));
 
         return remoteAppSummaryWSDTO;
     }

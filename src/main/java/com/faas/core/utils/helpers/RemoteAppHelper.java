@@ -2,15 +2,14 @@ package com.faas.core.utils.helpers;
 
 import com.faas.core.base.model.db.client.content.ClientDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
-import com.faas.core.base.model.db.process.content.ProcessDBModel;
-import com.faas.core.base.model.db.process.content.dao.ProcessRemoteDAO;
 import com.faas.core.base.model.db.remote.app.RemoteAppDBModel;
 import com.faas.core.base.model.db.remote.content.RemoteDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
-import com.faas.core.base.model.ws.remote.app.dto.RemoteAppWSDTO;
+import com.faas.core.base.model.ws.remote.app.content.dto.RemoteAppWSDTO;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
+import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -48,6 +47,7 @@ public class RemoteAppHelper {
     public RemoteAppDBModel createRemoteAppDBModel(SessionDBModel sessionDBModel, OperationDBModel operationDBModel, RemoteDBModel remoteDBModel){
 
         RemoteAppDBModel remoteAppDBModel = new RemoteAppDBModel();
+
         remoteAppDBModel.setClientId(sessionDBModel.getClientId());
         remoteAppDBModel.setSessionId(sessionDBModel.getId());
         remoteAppDBModel.setOperationId(operationDBModel.getId());
@@ -64,7 +64,7 @@ public class RemoteAppHelper {
         remoteAppDBModel.setRemoteTypeId(remoteDBModel.getTypeId());
         remoteAppDBModel.setRemoteType(remoteDBModel.getRemoteType());
         remoteAppDBModel.setBaseType(remoteDBModel.getBaseType());
-        remoteAppDBModel.setAppConn("");
+        remoteAppDBModel.setConnState(AppConstant.CONN_STATE_NEW);
         remoteAppDBModel.setuDate(appUtils.getCurrentTimeStamp());
         remoteAppDBModel.setcDate(appUtils.getCurrentTimeStamp());
         remoteAppDBModel.setStatus(1);
