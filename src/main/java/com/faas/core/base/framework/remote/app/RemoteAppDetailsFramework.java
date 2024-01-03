@@ -35,7 +35,6 @@ public class RemoteAppDetailsFramework {
         return null;
     }
 
-
     public RemoteAppSummaryWSDTO getRemoteAppSummaryService(long userId) {
 
         RemoteAppSummaryWSDTO remoteAppSummaryWSDTO = new RemoteAppSummaryWSDTO();
