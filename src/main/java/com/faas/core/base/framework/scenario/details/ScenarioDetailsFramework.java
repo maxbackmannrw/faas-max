@@ -4,7 +4,6 @@ import com.faas.core.base.model.db.scenario.content.ScenarioDBModel;
 import com.faas.core.base.model.db.scenario.content.dao.ScenarioDataDAO;
 import com.faas.core.base.model.db.utility.DataTypeDBModel;
 import com.faas.core.base.model.ws.scenario.details.dto.ScenarioDataWSDTO;
-import com.faas.core.base.repo.action.ActionRepository;
 import com.faas.core.base.repo.scenario.content.ScenarioRepository;
 import com.faas.core.base.repo.utility.DataTypeRepository;
 import com.faas.core.utils.config.AppUtils;
@@ -24,9 +23,6 @@ public class ScenarioDetailsFramework {
 
     @Autowired
     DataTypeRepository dataTypeRepository;
-
-    @Autowired
-    ActionRepository actionRepository;
 
     @Autowired
     AppUtils appUtils;
