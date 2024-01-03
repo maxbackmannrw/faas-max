@@ -55,7 +55,6 @@ public class CampaignDetailsFramework {
 
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
         if (campaignDBModel.isPresent()) {
-
             CampaignDetailsWSDTO campaignDetailsWSDTO = new CampaignDetailsWSDTO();
             campaignDetailsWSDTO.setCampaign(campaignDBModel.get());
             Optional<ProcessDBModel> processDBModel = processRepository.findById(campaignDBModel.get().getProcessId());

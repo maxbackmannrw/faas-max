@@ -47,7 +47,6 @@ public class RemoteAppHelper {
     public RemoteAppDBModel createRemoteAppDBModel(SessionDBModel sessionDBModel, OperationDBModel operationDBModel, RemoteDBModel remoteDBModel){
 
         RemoteAppDBModel remoteAppDBModel = new RemoteAppDBModel();
-
         remoteAppDBModel.setClientId(sessionDBModel.getClientId());
         remoteAppDBModel.setSessionId(sessionDBModel.getId());
         remoteAppDBModel.setOperationId(operationDBModel.getId());
@@ -64,7 +63,7 @@ public class RemoteAppHelper {
         remoteAppDBModel.setRemoteTypeId(remoteDBModel.getTypeId());
         remoteAppDBModel.setRemoteType(remoteDBModel.getRemoteType());
         remoteAppDBModel.setBaseType(remoteDBModel.getBaseType());
-        remoteAppDBModel.setConnState(AppConstant.CONN_STATE_NEW);
+        remoteAppDBModel.setConnState(AppConstant.APP_CONN_NEW);
         remoteAppDBModel.setuDate(appUtils.getCurrentTimeStamp());
         remoteAppDBModel.setcDate(appUtils.getCurrentTimeStamp());
         remoteAppDBModel.setStatus(1);

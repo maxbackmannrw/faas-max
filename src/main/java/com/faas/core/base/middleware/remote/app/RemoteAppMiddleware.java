@@ -22,12 +22,12 @@ public class RemoteAppMiddleware {
     RemoteAppFramework remoteAppFramework;
 
 
-    public RemoteAppListWSModel getRemoteApps(long userId,String connState,int reqPage,int reqSize) {
+    public RemoteAppListWSModel getRemoteApps(long userId,String appConn,int reqPage,int reqSize) {
 
         RemoteAppListWSModel response = new RemoteAppListWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        RemoteAppListWSDTO remoteAppListWSDTO = remoteAppFramework.getRemoteAppsService(userId,connState,reqPage,reqSize);
+        RemoteAppListWSDTO remoteAppListWSDTO = remoteAppFramework.getRemoteAppsService(userId,appConn,reqPage,reqSize);
         if (remoteAppListWSDTO != null){
             response.setRemoteAppList(remoteAppListWSDTO);
         }
@@ -41,12 +41,12 @@ public class RemoteAppMiddleware {
         return response;
     }
 
-    public RemoteAppListWSModel getRemoteAppsByBaseType(long userId,String connState,String baseType,int reqPage,int reqSize) {
+    public RemoteAppListWSModel getRemoteAppsByBaseType(long userId,String appConn,String baseType,int reqPage,int reqSize) {
 
         RemoteAppListWSModel response = new RemoteAppListWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        RemoteAppListWSDTO remoteAppListWSDTO = remoteAppFramework.getRemoteAppsByBaseTypeService(userId,connState,baseType,reqPage,reqSize);
+        RemoteAppListWSDTO remoteAppListWSDTO = remoteAppFramework.getRemoteAppsByBaseTypeService(userId,appConn,baseType,reqPage,reqSize);
         if (remoteAppListWSDTO != null){
             response.setRemoteAppList(remoteAppListWSDTO);
         }
@@ -121,13 +121,13 @@ public class RemoteAppMiddleware {
         return response;
     }
 
-    public RemoteAppWSModel updateRemoteApp(long userId,String appId,String connState) {
+    public RemoteAppWSModel updateRemoteApp(long userId,String appId,String appConn) {
 
         RemoteAppWSModel response = new RemoteAppWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<RemoteAppWSDTO> remoteAppWSDTOS = new ArrayList<>();
 
-        RemoteAppWSDTO remoteAppWSDTO = remoteAppFramework.updateRemoteAppService(userId,appId,connState);
+        RemoteAppWSDTO remoteAppWSDTO = remoteAppFramework.updateRemoteAppService(userId,appId,appConn);
         if (remoteAppWSDTO != null){
             remoteAppWSDTOS.add(remoteAppWSDTO);
         }

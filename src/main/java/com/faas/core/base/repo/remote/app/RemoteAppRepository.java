@@ -19,9 +19,9 @@ public interface RemoteAppRepository extends MongoRepository<RemoteAppDBModel, S
 
     Page<RemoteAppDBModel>findAllByStatus(int status, Pageable pageable);
 
-    Page<RemoteAppDBModel>findAllByConnState(String connState, Pageable pageable);
+    Page<RemoteAppDBModel>findAllByAppConn(String appConn, Pageable pageable);
 
-    Page<RemoteAppDBModel>findAllByConnStateAndBaseType(String connState, String baseType, Pageable pageable);
+    Page<RemoteAppDBModel>findAllByAppConnAndBaseType(String appConn, String baseType, Pageable pageable);
 
 
 
