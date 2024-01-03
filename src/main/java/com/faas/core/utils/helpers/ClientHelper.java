@@ -73,6 +73,7 @@ public class ClientHelper {
     @Autowired
     AppUtils appUtils;
 
+
     public ClientDetailsDBModel createClientDetails(ClientDBModel clientDBModel){
 
         if (!clientDetailsRepository.existsByClientId(clientDBModel.getId())){
@@ -110,7 +111,6 @@ public class ClientHelper {
             clientDetailsDBModel.setStatus(1);
 
             return clientDetailsRepository.save(clientDetailsDBModel);
-
         }
         return null;
     }

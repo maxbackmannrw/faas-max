@@ -39,9 +39,9 @@ public class RemoteAppDetailsFramework {
     public RemoteAppSummaryWSDTO getRemoteAppSummaryService(long userId) {
 
         RemoteAppSummaryWSDTO remoteAppSummaryWSDTO = new RemoteAppSummaryWSDTO();
-        remoteAppSummaryWSDTO.setNewRemoteApps(remoteAppRepository.countByConnState(AppConstant.APP_CONN_NEW));
-        remoteAppSummaryWSDTO.setReadyRemoteApps(remoteAppRepository.countByConnState(AppConstant.APP_CONN_READY));
-        remoteAppSummaryWSDTO.setFailedRemoteApps(remoteAppRepository.countByConnState(AppConstant.APP_CONN_FAILED));
+        remoteAppSummaryWSDTO.setNewRemoteApps(remoteAppRepository.countByAppConn(AppConstant.APP_CONN_NEW));
+        remoteAppSummaryWSDTO.setReadyRemoteApps(remoteAppRepository.countByAppConn(AppConstant.APP_CONN_READY));
+        remoteAppSummaryWSDTO.setFailedRemoteApps(remoteAppRepository.countByAppConn(AppConstant.APP_CONN_FAILED));
         remoteAppSummaryWSDTO.setTotalRemoteApps(remoteAppRepository.count());
 
         return remoteAppSummaryWSDTO;
