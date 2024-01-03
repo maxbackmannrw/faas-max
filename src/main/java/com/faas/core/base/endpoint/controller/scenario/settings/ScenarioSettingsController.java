@@ -1,7 +1,6 @@
 package com.faas.core.base.endpoint.controller.scenario.settings;
 
 import com.faas.core.base.middleware.scenario.settings.ScenarioSettingsMiddleware;
-import com.faas.core.base.model.ws.scenario.settings.AutomationTypeWSModel;
 import com.faas.core.base.model.ws.scenario.settings.ScenarioTypeWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
@@ -22,10 +21,22 @@ public class ScenarioSettingsController {
     ScenarioSettingsMiddleware scenarioSettingsMiddleware;
 
 
-    @RequestMapping(value = BaseRoute.GET_ALL_SCENARIO_TYPES, method = RequestMethod.POST)
-    public ResponseEntity<?> getAllScenarioTypes(@RequestParam long userId) {
+    @RequestMapping(value = BaseRoute.GET_SCENARIO_TYPES, method = RequestMethod.POST)
+    public ResponseEntity<?> getScenarioTypes(@RequestParam long userId) {
 
-        ScenarioTypeWSModel response = scenarioSettingsMiddleware.getAllScenarioTypes(userId);
+        ScenarioTypeWSModel response = scenarioSettingsMiddleware.getScenarioTypes(userId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+    @RequestMapping(value = BaseRoute.GET_SCENARIO_TYPES_BY_BASE_TYPE, method = RequestMethod.POST)
+    public ResponseEntity<?> getScenarioTypesByBaseType(@RequestParam long userId,
+                                                        @RequestParam String baseType) {
+
+        ScenarioTypeWSModel response = scenarioSettingsMiddleware.getScenarioTypesByBaseType(userId,baseType);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -36,9 +47,9 @@ public class ScenarioSettingsController {
 
     @RequestMapping(value = BaseRoute.GET_SCENARIO_TYPE, method = RequestMethod.POST)
     public ResponseEntity<?> getScenarioType(@RequestParam long userId,
-                                             @RequestParam long typeId) {
+                                             @RequestParam long scenarioTypeId) {
 
-        ScenarioTypeWSModel response = scenarioSettingsMiddleware.getScenarioType(userId,typeId);
+        ScenarioTypeWSModel response = scenarioSettingsMiddleware.getScenarioType(userId,scenarioTypeId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -49,9 +60,10 @@ public class ScenarioSettingsController {
 
     @RequestMapping(value = BaseRoute.CREATE_SCENARIO_TYPE, method = RequestMethod.POST)
     public ResponseEntity<?> createScenarioType(@RequestParam long userId,
-                                                @RequestParam String scenarioType) {
+                                                @RequestParam String scenarioType,
+                                                @RequestParam String baseType) {
 
-        ScenarioTypeWSModel response = scenarioSettingsMiddleware.createScenarioType(userId,scenarioType);
+        ScenarioTypeWSModel response = scenarioSettingsMiddleware.createScenarioType(userId,scenarioType,baseType);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -62,10 +74,11 @@ public class ScenarioSettingsController {
 
     @RequestMapping(value = BaseRoute.UPDATE_SCENARIO_TYPE, method = RequestMethod.POST)
     public ResponseEntity<?> updateScenarioType(@RequestParam long userId,
-                                                @RequestParam long typeId,
-                                                @RequestParam String scenarioType) {
+                                                @RequestParam long scenarioTypeId,
+                                                @RequestParam String scenarioType,
+                                                @RequestParam String baseType) {
 
-        ScenarioTypeWSModel response = scenarioSettingsMiddleware.updateScenarioType(userId,typeId,scenarioType);
+        ScenarioTypeWSModel response = scenarioSettingsMiddleware.updateScenarioType(userId,scenarioTypeId,scenarioType,baseType);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -76,83 +89,15 @@ public class ScenarioSettingsController {
 
     @RequestMapping(value = BaseRoute.REMOVE_SCENARIO_TYPE, method = RequestMethod.POST)
     public ResponseEntity<?> removeScenarioType(@RequestParam long userId,
-                                                @RequestParam long typeId) {
+                                                @RequestParam long scenarioTypeId) {
 
-        ScenarioTypeWSModel response = scenarioSettingsMiddleware.removeScenarioType(userId, typeId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-
-
-    @RequestMapping(value = BaseRoute.GET_AUTOMATION_TYPES, method = RequestMethod.POST)
-    public ResponseEntity<?> getAutomationTypes(@RequestParam long userId) {
-
-        AutomationTypeWSModel response = scenarioSettingsMiddleware.getAutomationTypes(userId);
+        ScenarioTypeWSModel response = scenarioSettingsMiddleware.removeScenarioType(userId,scenarioTypeId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
-
-    @RequestMapping(value = BaseRoute.GET_AUTOMATION_TYPE, method = RequestMethod.POST)
-    public ResponseEntity<?> getAutomationType(@RequestParam long userId,
-                                               @RequestParam long typeId) {
-
-        AutomationTypeWSModel response = scenarioSettingsMiddleware.getAutomationType(userId,typeId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-
-    @RequestMapping(value = BaseRoute.CREATE_AUTOMATION_TYPE, method = RequestMethod.POST)
-    public ResponseEntity<?> createAutomationType(@RequestParam long userId,
-                                                  @RequestParam String automationType) {
-
-        AutomationTypeWSModel response = scenarioSettingsMiddleware.createAutomationType(userId,automationType);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-
-    @RequestMapping(value = BaseRoute.UPDATE_AUTOMATION_TYPE, method = RequestMethod.POST)
-    public ResponseEntity<?> updateAutomationType(@RequestParam long userId,
-                                                  @RequestParam long typeId,
-                                                  @RequestParam String automationType) {
-
-        AutomationTypeWSModel response = scenarioSettingsMiddleware.updateAutomationType(userId,typeId,automationType);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-
-    @RequestMapping(value = BaseRoute.REMOVE_AUTOMATION_TYPE, method = RequestMethod.POST)
-    public ResponseEntity<?> removeAutomationType(@RequestParam long userId,
-                                                  @RequestParam long typeId) {
-
-        AutomationTypeWSModel response = scenarioSettingsMiddleware.removeAutomationType(userId,typeId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-
 
 
 }

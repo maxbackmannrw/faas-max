@@ -11,5 +11,6 @@ public interface ScenarioTypeRepository extends PagingAndSortingRepository<Scena
 
     List<ScenarioTypeDBModel>findByStatus(int status);
 
+    List<ScenarioTypeDBModel>findByBaseType(String baseType);
 
 }
