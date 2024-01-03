@@ -1,8 +1,6 @@
 package com.faas.core.base.framework.remote.app;
 
 import com.faas.core.base.model.ws.remote.app.content.dto.RemoteAppSummaryWSDTO;
-import com.faas.core.base.model.ws.remote.app.content.dto.RemoteAppWSDTO;
-import com.faas.core.base.model.ws.remote.app.details.RemoteAppDetailsWSModel;
 import com.faas.core.base.model.ws.remote.app.details.dto.RemoteAppDetailsWSDTO;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
@@ -16,7 +14,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class RemoteAppDetailsFramework {
-
 
     @Autowired
     ClientRepository clientRepository;
@@ -33,8 +30,7 @@ public class RemoteAppDetailsFramework {
     @Autowired
     AppUtils appUtils;
 
-
-    public RemoteAppDetailsWSDTO getRemoteAppDetailsService(long userId) {
+    public RemoteAppDetailsWSDTO getRemoteAppDetailsService(long userId,String appId) {
 
         return null;
     }
@@ -43,10 +39,10 @@ public class RemoteAppDetailsFramework {
     public RemoteAppSummaryWSDTO getRemoteAppSummaryService(long userId) {
 
         RemoteAppSummaryWSDTO remoteAppSummaryWSDTO = new RemoteAppSummaryWSDTO();
+        remoteAppSummaryWSDTO.setNewRemoteApps(remoteAppRepository.countByConnState(AppConstant.APP_CONN_NEW));
+        remoteAppSummaryWSDTO.setReadyRemoteApps(remoteAppRepository.countByConnState(AppConstant.APP_CONN_READY));
+        remoteAppSummaryWSDTO.setFailedRemoteApps(remoteAppRepository.countByConnState(AppConstant.APP_CONN_FAILED));
         remoteAppSummaryWSDTO.setTotalRemoteApps(remoteAppRepository.count());
-        remoteAppSummaryWSDTO.setNewRemoteApps(remoteAppRepository.countByConnState(AppConstant.CONN_STATE_NEW));
-        remoteAppSummaryWSDTO.setReadyRemoteApps(remoteAppRepository.countByConnState(AppConstant.CONN_STATE_READY));
-        remoteAppSummaryWSDTO.setFailedRemoteApps(remoteAppRepository.countByConnState(AppConstant.CONN_STATE_FAILED));
 
         return remoteAppSummaryWSDTO;
     }

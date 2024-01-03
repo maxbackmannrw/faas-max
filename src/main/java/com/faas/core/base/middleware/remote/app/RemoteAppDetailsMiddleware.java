@@ -3,7 +3,6 @@ package com.faas.core.base.middleware.remote.app;
 import com.faas.core.base.framework.remote.app.RemoteAppDetailsFramework;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.model.ws.remote.app.content.RemoteAppSummaryWSModel;
-import com.faas.core.base.model.ws.remote.app.content.RemoteAppWSModel;
 import com.faas.core.base.model.ws.remote.app.content.dto.RemoteAppSummaryWSDTO;
 import com.faas.core.base.model.ws.remote.app.details.RemoteAppDetailsWSModel;
 import com.faas.core.base.model.ws.remote.app.details.dto.RemoteAppDetailsWSDTO;
@@ -25,7 +24,7 @@ public class RemoteAppDetailsMiddleware {
         RemoteAppDetailsWSModel response = new RemoteAppDetailsWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        RemoteAppDetailsWSDTO remoteAppDetailsWSDTO = remoteAppDetailsFramework.getRemoteAppDetailsService(userId);
+        RemoteAppDetailsWSDTO remoteAppDetailsWSDTO = remoteAppDetailsFramework.getRemoteAppDetailsService(userId,appId);
         if (remoteAppDetailsWSDTO != null){
             response.setRemoteAppDetails(remoteAppDetailsWSDTO);
         }

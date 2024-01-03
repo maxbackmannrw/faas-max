@@ -2,7 +2,6 @@ package com.faas.core.base.endpoint.controller.remote.app;
 
 import com.faas.core.base.middleware.remote.app.RemoteAppDetailsMiddleware;
 import com.faas.core.base.model.ws.remote.app.content.RemoteAppSummaryWSModel;
-import com.faas.core.base.model.ws.remote.app.content.RemoteAppWSModel;
 import com.faas.core.base.model.ws.remote.app.details.RemoteAppDetailsWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
@@ -19,8 +18,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping(value = AppConstant.API_VERSION + "/base/remote/app/details/")
 public class RemoteAppDetailsController {
 
+
     @Autowired
     RemoteAppDetailsMiddleware remoteAppDetailsMiddleware;
+
 
     @RequestMapping(value = BaseRoute.GET_REMOTE_APP_DETAILS, method = RequestMethod.POST)
     public ResponseEntity<?> getRemoteAppDetails(@RequestParam long userId,
