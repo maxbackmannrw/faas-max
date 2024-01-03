@@ -11,9 +11,9 @@ import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-
 @Component
 public class RemoteAppDetailsFramework {
+
 
     @Autowired
     ClientRepository clientRepository;
@@ -30,6 +30,7 @@ public class RemoteAppDetailsFramework {
     @Autowired
     AppUtils appUtils;
 
+
     public RemoteAppDetailsWSDTO getRemoteAppDetailsService(long userId,String appId) {
 
         return null;
@@ -45,6 +46,5 @@ public class RemoteAppDetailsFramework {
 
         return remoteAppSummaryWSDTO;
     }
-
 
 }
