@@ -1,6 +1,5 @@
 package com.faas.core.base.model.db.scenario.content;
 
-import com.faas.core.base.model.db.scenario.content.dao.ScenarioElement;
 import com.faas.core.base.model.db.scenario.content.dao.ScenarioDataDAO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -13,9 +12,10 @@ public class ScenarioDBModel {
     @Id
     private String id;
     private String scenario;
+    private String scenarioDesc;
     private long typeId;
     private String scenarioType;
-    private List<ScenarioElement> scenarioElements;
+    private String baseType;
     private List<ScenarioDataDAO> scenarioDatas;
     private long uDate;
     private long cDate;
@@ -24,12 +24,13 @@ public class ScenarioDBModel {
     public ScenarioDBModel() {
     }
 
-    public ScenarioDBModel(String id, String scenario, long typeId, String scenarioType, List<ScenarioElement> scenarioElements, List<ScenarioDataDAO> scenarioDatas, long uDate, long cDate, int status) {
+    public ScenarioDBModel(String id, String scenario, String scenarioDesc, long typeId, String scenarioType, String baseType, List<ScenarioDataDAO> scenarioDatas, long uDate, long cDate, int status) {
         this.id = id;
         this.scenario = scenario;
+        this.scenarioDesc = scenarioDesc;
         this.typeId = typeId;
         this.scenarioType = scenarioType;
-        this.scenarioElements = scenarioElements;
+        this.baseType = baseType;
         this.scenarioDatas = scenarioDatas;
         this.uDate = uDate;
         this.cDate = cDate;
@@ -52,6 +53,14 @@ public class ScenarioDBModel {
         this.scenario = scenario;
     }
 
+    public String getScenarioDesc() {
+        return scenarioDesc;
+    }
+
+    public void setScenarioDesc(String scenarioDesc) {
+        this.scenarioDesc = scenarioDesc;
+    }
+
     public long getTypeId() {
         return typeId;
     }
@@ -68,12 +77,12 @@ public class ScenarioDBModel {
         this.scenarioType = scenarioType;
     }
 
-    public List<ScenarioElement> getScenarioElements() {
-        return scenarioElements;
+    public String getBaseType() {
+        return baseType;
     }
 
-    public void setScenarioElements(List<ScenarioElement> scenarioElements) {
-        this.scenarioElements = scenarioElements;
+    public void setBaseType(String baseType) {
+        this.baseType = baseType;
     }
 
     public List<ScenarioDataDAO> getScenarioDatas() {

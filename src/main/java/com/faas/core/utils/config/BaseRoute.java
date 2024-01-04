@@ -508,6 +508,7 @@ public class BaseRoute {
 
 
     public static final String GET_SCENARIOS = "getscenarios";
+    public static final String GET_SCENARIOS_BY_BASE_TYPE = "getscenariosbybasetype";
     public static final String GET_SCENARIO = "getscenario";
     public static final String CREATE_SCENARIO = "createscenario";
     public static final String UPDATE_SCENARIO = "updatescenario";

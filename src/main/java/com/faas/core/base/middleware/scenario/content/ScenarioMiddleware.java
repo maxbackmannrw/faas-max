@@ -25,7 +25,7 @@ public class ScenarioMiddleware {
         ScenarioWSModel response = new ScenarioWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ScenarioWSDTO> scenarioWSDTOS = scenarioFramework.getScenarios();
+        List<ScenarioWSDTO> scenarioWSDTOS = scenarioFramework.getScenariosService(userId);
         if (scenarioWSDTOS != null){
             response.setScenarios(scenarioWSDTOS);
         }
@@ -39,14 +39,32 @@ public class ScenarioMiddleware {
         return response;
     }
 
+    public ScenarioWSModel getScenariosByBaseType(long userId,String baseType) {
 
-    public ScenarioWSModel getScenario(long userId, String scenarioId) {
+        ScenarioWSModel response = new ScenarioWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        List<ScenarioWSDTO> scenarioWSDTOS = scenarioFramework.getScenariosByBaseTypeService(userId,baseType);
+        if (scenarioWSDTOS != null){
+            response.setScenarios(scenarioWSDTOS);
+        }
+
+        general.setOperation("getScenarios");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public ScenarioWSModel getScenario(long userId,String scenarioId) {
 
         ScenarioWSModel response = new ScenarioWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ScenarioWSDTO> scenarioWSDTOS = new ArrayList<>();
 
-        ScenarioWSDTO scenarioWSDTO = scenarioFramework.getScenarioService(scenarioId);
+        ScenarioWSDTO scenarioWSDTO = scenarioFramework.getScenarioService(userId,scenarioId);
         if (scenarioWSDTO != null){
             scenarioWSDTOS.add(scenarioWSDTO);
         }
@@ -61,14 +79,13 @@ public class ScenarioMiddleware {
         return response;
     }
 
-
-    public ScenarioWSModel createScenario(long userId, String scenario,long typeId) {
+    public ScenarioWSModel createScenario(long userId,String scenario,String scenarioDesc,long typeId) {
 
         ScenarioWSModel response = new ScenarioWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ScenarioWSDTO> scenarioWSDTOS = new ArrayList<>();
 
-        ScenarioWSDTO scenarioWSDTO = scenarioFramework.createScenarioService(scenario,typeId);
+        ScenarioWSDTO scenarioWSDTO = scenarioFramework.createScenarioService(userId,scenario,scenarioDesc,typeId);
         if (scenarioWSDTO != null){
             scenarioWSDTOS.add(scenarioWSDTO);
         }
@@ -83,14 +100,13 @@ public class ScenarioMiddleware {
         return response;
     }
 
-
-    public ScenarioWSModel updateScenario(long userId,String scenarioId,String scenario,long typeId) {
+    public ScenarioWSModel updateScenario(long userId,String scenarioId,String scenarioDesc,String scenario,long typeId) {
 
         ScenarioWSModel response = new ScenarioWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ScenarioWSDTO> scenarioWSDTOS = new ArrayList<>();
 
-        ScenarioWSDTO scenarioWSDTO = scenarioFramework.updateScenarioService(scenarioId,scenario,typeId);
+        ScenarioWSDTO scenarioWSDTO = scenarioFramework.updateScenarioService(userId,scenarioId,scenario,scenarioDesc,typeId);
         if (scenarioWSDTO != null){
             scenarioWSDTOS.add(scenarioWSDTO);
         }
@@ -105,8 +121,7 @@ public class ScenarioMiddleware {
         return response;
     }
 
-
-    public ScenarioWSModel removeScenario(long userId, String scenarioId) {
+    public ScenarioWSModel removeScenario(long userId,String scenarioId) {
 
         ScenarioWSModel response = new ScenarioWSModel();
         GeneralWSModel general = new GeneralWSModel();
@@ -126,8 +141,6 @@ public class ScenarioMiddleware {
 
         return response;
     }
-
-
 
 
 }

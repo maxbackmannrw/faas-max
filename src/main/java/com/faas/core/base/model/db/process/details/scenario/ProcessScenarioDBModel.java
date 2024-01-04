@@ -1,7 +1,6 @@
 package com.faas.core.base.model.db.process.details.scenario;
 
 import com.faas.core.base.model.db.scenario.content.dao.ScenarioDataDAO;
-import com.faas.core.base.model.db.scenario.content.dao.ScenarioElement;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 

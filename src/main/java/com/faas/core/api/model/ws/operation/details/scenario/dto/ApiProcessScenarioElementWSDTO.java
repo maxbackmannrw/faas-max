@@ -1,7 +1,5 @@
 package com.faas.core.api.model.ws.operation.details.scenario.dto;
 
-import com.faas.core.base.model.db.scenario.content.dao.ScenarioElement;
-
 public class ApiProcessScenarioElementWSDTO {
 
     private ScenarioElement scenarioElement;

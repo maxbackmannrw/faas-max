@@ -32,79 +32,81 @@ public class ScenarioFramework {
     AppUtils appUtils;
 
 
-    public ScenarioWSDTO fillScenarioWSDTO(ScenarioDBModel scenarioDBModel) {
-
-        ScenarioWSDTO scenarioWSDTO = new ScenarioWSDTO();
-        scenarioWSDTO.setScenario(scenarioDBModel);
-        return scenarioWSDTO;
-    }
-
-
-    public List<ScenarioWSDTO> getScenarios() {
+    public List<ScenarioWSDTO> getScenariosService(long userId) {
 
         List<ScenarioWSDTO> scenarioWSDTOS = new ArrayList<>();
         List<ScenarioDBModel> scenarioDBModels = scenarioRepository.findByStatus(1);
         for (ScenarioDBModel scenarioDBModel : scenarioDBModels) {
-            scenarioWSDTOS.add(fillScenarioWSDTO(scenarioDBModel));
+            scenarioWSDTOS.add(new ScenarioWSDTO(scenarioDBModel));
         }
         return scenarioWSDTOS;
     }
 
+    public List<ScenarioWSDTO> getScenariosByBaseTypeService(long userId,String baseType) {
 
-    public ScenarioWSDTO getScenarioService(String scenarioId) {
+        List<ScenarioWSDTO> scenarioWSDTOS = new ArrayList<>();
+        List<ScenarioDBModel> scenarioDBModels = scenarioRepository.findByBaseType(baseType);
+        for (ScenarioDBModel scenarioDBModel : scenarioDBModels) {
+            scenarioWSDTOS.add(new ScenarioWSDTO(scenarioDBModel));
+        }
+        return scenarioWSDTOS;
+    }
+
+    public ScenarioWSDTO getScenarioService(long userId,String scenarioId) {
 
         Optional<ScenarioDBModel> scenarioDBModel = scenarioRepository.findById(scenarioId);
         if (scenarioDBModel.isPresent()) {
-            return fillScenarioWSDTO(scenarioDBModel.get());
+            return new ScenarioWSDTO(scenarioDBModel.get());
         }
         return null;
     }
 
+    public ScenarioWSDTO createScenarioService(long userId,String scenario,String scenarioDesc,long typeId) {
 
-    public ScenarioWSDTO createScenarioService(String scenario,long typeId) {
-
-        ScenarioDBModel scenarioDBModel = new ScenarioDBModel();
-        scenarioDBModel.setScenario(scenario);
         Optional<ScenarioTypeDBModel> scenarioTypeDBModel = scenarioTypeRepository.findById(typeId);
         if (scenarioTypeDBModel.isPresent()) {
+
+            ScenarioDBModel scenarioDBModel = new ScenarioDBModel();
+            scenarioDBModel.setScenario(scenario);
+            scenarioDBModel.setScenarioDesc(scenarioDesc);
             scenarioDBModel.setTypeId(typeId);
             scenarioDBModel.setScenarioType(scenarioTypeDBModel.get().getScenarioType());
-        }
-        scenarioDBModel.setScenarioDatas(new ArrayList<>());
-        scenarioDBModel.setScenarioElements(new ArrayList<>());
-        scenarioDBModel.setuDate(appUtils.getCurrentTimeStamp());
-        scenarioDBModel.setcDate(appUtils.getCurrentTimeStamp());
-        scenarioDBModel.setStatus(1);
+            scenarioDBModel.setBaseType(scenarioTypeDBModel.get().getBaseType());
+            scenarioDBModel.setScenarioDatas(new ArrayList<>());
+            scenarioDBModel.setuDate(appUtils.getCurrentTimeStamp());
+            scenarioDBModel.setcDate(appUtils.getCurrentTimeStamp());
+            scenarioDBModel.setStatus(1);
 
-        return fillScenarioWSDTO(scenarioRepository.save(scenarioDBModel));
+            return new ScenarioWSDTO(scenarioRepository.save(scenarioDBModel));
+        }
+        return null;
     }
 
-
-    public ScenarioWSDTO updateScenarioService(String scenarioId,String scenario,long typeId) {
+    public ScenarioWSDTO updateScenarioService(long userId,String scenarioId,String scenarioDesc,String scenario,long typeId) {
 
         Optional<ScenarioDBModel> scenarioDBModel = scenarioRepository.findById(scenarioId);
-        if (scenarioDBModel.isPresent()) {
+        Optional<ScenarioTypeDBModel> scenarioTypeDBModel = scenarioTypeRepository.findById(typeId);
+        if (scenarioDBModel.isPresent() && scenarioTypeDBModel.isPresent()) {
+
             scenarioDBModel.get().setScenario(scenario);
-            Optional<ScenarioTypeDBModel> scenarioTypeDBModel = scenarioTypeRepository.findById(typeId);
-            if (scenarioTypeDBModel.isPresent()) {
-                scenarioDBModel.get().setTypeId(typeId);
-                scenarioDBModel.get().setScenarioType(scenarioTypeDBModel.get().getScenarioType());
-            }
+            scenarioDBModel.get().setScenarioDesc(scenarioDesc);
+            scenarioDBModel.get().setTypeId(typeId);
+            scenarioDBModel.get().setScenarioType(scenarioTypeDBModel.get().getScenarioType());
+            scenarioDBModel.get().setBaseType(scenarioTypeDBModel.get().getBaseType());
             scenarioDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
             scenarioDBModel.get().setStatus(1);
 
-            return fillScenarioWSDTO(scenarioRepository.save(scenarioDBModel.get()));
+            return new ScenarioWSDTO(scenarioRepository.save(scenarioDBModel.get()));
         }
         return null;
     }
-
 
     public ScenarioWSDTO removeScenarioService(String scenarioId) {
 
         Optional<ScenarioDBModel> scenarioDBModel = scenarioRepository.findById(scenarioId);
         if (scenarioDBModel.isPresent()) {
             scenarioRepository.delete(scenarioDBModel.get());
-            return fillScenarioWSDTO(scenarioDBModel.get());
+            return new ScenarioWSDTO(scenarioDBModel.get());
         }
         return null;
     }

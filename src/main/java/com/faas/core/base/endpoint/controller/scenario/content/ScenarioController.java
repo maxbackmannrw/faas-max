@@ -33,6 +33,18 @@ public class ScenarioController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+    @RequestMapping(value = BaseRoute.GET_SCENARIOS_BY_BASE_TYPE, method = RequestMethod.POST)
+    public ResponseEntity<?> getScenariosByBaseType(@RequestParam long userId,
+                                                    @RequestParam String baseType) {
+
+        ScenarioWSModel response = scenarioMiddleware.getScenariosByBaseType(userId,baseType);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
     @RequestMapping(value = BaseRoute.GET_SCENARIO, method = RequestMethod.POST)
     public ResponseEntity<?> getScenario(@RequestParam long userId,
                                          @RequestParam String scenarioId) {
@@ -48,9 +60,10 @@ public class ScenarioController {
     @RequestMapping(value = BaseRoute.CREATE_SCENARIO, method = RequestMethod.POST)
     public ResponseEntity<?> createScenario(@RequestParam long userId,
                                             @RequestParam String scenario,
+                                            @RequestParam String scenarioDesc,
                                             @RequestParam long typeId) {
 
-        ScenarioWSModel response = scenarioMiddleware.createScenario(userId,scenario,typeId);
+        ScenarioWSModel response = scenarioMiddleware.createScenario(userId,scenario,scenarioDesc,typeId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -62,9 +75,10 @@ public class ScenarioController {
     public ResponseEntity<?> updateScenario(@RequestParam long userId,
                                             @RequestParam String scenarioId,
                                             @RequestParam String scenario,
+                                            @RequestParam String scenarioDesc,
                                             @RequestParam long typeId) {
 
-        ScenarioWSModel response = scenarioMiddleware.updateScenario(userId,scenarioId,scenario,typeId);
+        ScenarioWSModel response = scenarioMiddleware.updateScenario(userId,scenarioId,scenario,scenarioDesc,typeId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -83,8 +97,6 @@ public class ScenarioController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
-
 
 
 }
