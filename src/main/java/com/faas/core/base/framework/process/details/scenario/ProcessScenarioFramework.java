@@ -87,11 +87,7 @@ public class ProcessScenarioFramework {
             }else {
                 processScenarioDBModel.setScenarioDatas(new ArrayList<>());
             }
-            if (scenarioDBModel.get().getScenarioElements() != null){
-                processScenarioDBModel.setScenarioElements(scenarioDBModel.get().getScenarioElements());
-            }else {
-                processScenarioDBModel.setScenarioElements(new ArrayList<>());
-            }
+
             processScenarioDBModel.setOrder(order);
             processScenarioDBModel.setuDate(appUtils.getCurrentTimeStamp());
             processScenarioDBModel.setcDate(appUtils.getCurrentTimeStamp());

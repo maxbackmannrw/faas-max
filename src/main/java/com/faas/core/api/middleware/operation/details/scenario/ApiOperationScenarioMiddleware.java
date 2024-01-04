@@ -3,9 +3,7 @@ package com.faas.core.api.middleware.operation.details.scenario;
 import com.faas.core.api.framework.operation.details.scenario.ApiOperationScenarioFramework;
 import com.faas.core.api.model.ws.operation.details.scenario.ApiOperationScenarioWSModel;
 import com.faas.core.api.model.ws.operation.details.scenario.dto.ApiOperationScenarioWSDTO;
-import com.faas.core.api.model.ws.operation.details.scenario.ApiProcessScenarioElementWSModel;
 import com.faas.core.api.model.ws.operation.details.scenario.ApiProcessScenarioWSModel;
-import com.faas.core.api.model.ws.operation.details.scenario.dto.ApiProcessScenarioElementWSDTO;
 import com.faas.core.api.model.ws.operation.details.scenario.dto.ApiProcessScenarioWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.utils.config.AppConstant;
@@ -163,46 +161,6 @@ public class ApiOperationScenarioMiddleware {
 
         response.setProcessScenarios(processScenarioWSDTOS);
         general.setOperation("apiGetProcessScenario");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-    public ApiProcessScenarioElementWSModel apiGetProcessScenarioElements(long agentId, long sessionId, String scenarioId) {
-
-        ApiProcessScenarioElementWSModel response = new ApiProcessScenarioElementWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-        List<ApiProcessScenarioElementWSDTO> scenarioElementWSDTOS = apiOperationScenarioFramework.apiGetProcessScenarioElementsService(agentId,sessionId,scenarioId);
-        if (scenarioElementWSDTOS != null){
-            response.setScenarioElements(scenarioElementWSDTOS);
-        }
-
-        general.setOperation("apiGetProcessScenarioElements");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-    public ApiProcessScenarioElementWSModel apiGetProcessScenarioElement(long agentId, long sessionId, String scenarioId, String elementId) {
-
-        ApiProcessScenarioElementWSModel response = new ApiProcessScenarioElementWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-        List<ApiProcessScenarioElementWSDTO>scenarioElementWSDTOS = new ArrayList<>();
-
-        ApiProcessScenarioElementWSDTO scenarioElementWSDTO = apiOperationScenarioFramework.apiGetProcessScenarioElementService(agentId,sessionId,scenarioId,elementId);
-        if (scenarioElementWSDTO != null){
-            scenarioElementWSDTOS.add(scenarioElementWSDTO);
-        }
-
-        response.setScenarioElements(scenarioElementWSDTOS);
-        general.setOperation("apiGetProcessScenarioElement");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

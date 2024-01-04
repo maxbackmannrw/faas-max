@@ -1,7 +1,6 @@
 package com.faas.core.api.framework.operation.details.scenario;
 
 import com.faas.core.api.model.ws.operation.details.scenario.dto.ApiOperationScenarioWSDTO;
-import com.faas.core.api.model.ws.operation.details.scenario.dto.ApiProcessScenarioElementWSDTO;
 import com.faas.core.api.model.ws.operation.details.scenario.dto.ApiProcessScenarioWSDTO;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
@@ -15,7 +14,6 @@ import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.process.details.scenario.ProcessScenarioRepository;
 import com.faas.core.base.repo.scenario.content.ScenarioRepository;
 import com.faas.core.base.repo.user.content.UserRepository;
-import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.OperationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -114,30 +112,6 @@ public class ApiOperationScenarioFramework {
         List<ProcessScenarioDBModel> processScenarioDBModels = processScenarioRepository.findByProcessIdAndScenarioId(processId,scenarioId);
         if (!processScenarioDBModels.isEmpty()){
             return new ApiProcessScenarioWSDTO(processScenarioDBModels.get(0));
-        }
-        return null;
-    }
-
-
-    public List<ApiProcessScenarioElementWSDTO> apiGetProcessScenarioElementsService(long agentId, long sessionId, String scenarioId) {
-
-        List<ApiProcessScenarioElementWSDTO>scenarioElementWSDTOS = new ArrayList<>();
-        Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
-        Optional<ScenarioDBModel> scenarioDBModel = scenarioRepository.findById(scenarioId);
-        if (sessionDBModel.isPresent() && scenarioDBModel.isPresent() && scenarioDBModel.get().getScenarioElements() != null){
-
-        }
-        return scenarioElementWSDTOS;
-    }
-
-    public ApiProcessScenarioElementWSDTO apiGetProcessScenarioElementService(long agentId, long sessionId, String scenarioId, String elementId) {
-
-        Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
-        Optional<ScenarioDBModel> scenarioDBModel = scenarioRepository.findById(scenarioId);
-        if (sessionDBModel.isPresent() && scenarioDBModel.isPresent() && scenarioDBModel.get().getScenarioElements() != null){
-            for (int i=0;i<scenarioDBModel.get().getScenarioElements().size();i++){
-
-            }
         }
         return null;
     }
