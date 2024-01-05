@@ -1,10 +1,7 @@
 package com.faas.core.api.model.ws.operation.content;
 
 import com.faas.core.api.model.ws.operation.content.dto.ApiAgentOperationWSDTO;
-import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-
-import java.util.List;
 
 public class ApiAgentOperationWSModel {
 

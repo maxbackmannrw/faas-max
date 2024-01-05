@@ -7,8 +7,8 @@ import com.faas.core.api.model.ws.dashboard.ApiDashboardWSModel;
 import com.faas.core.api.model.ws.dashboard.dto.ApiDashboardWSDTO;
 import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
 import com.faas.core.api.model.ws.general.ApiSummaryWSModel;
-import com.faas.core.api.model.ws.operation.content.ApiOperationSessionWSModel;
-import com.faas.core.api.model.ws.operation.content.dto.ApiOperationSessionWSDTO;
+import com.faas.core.api.model.ws.operation.content.ApiOperationListWSModel;
+import com.faas.core.api.model.ws.operation.content.dto.ApiOperationListWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,18 +43,17 @@ public class ApiDashboardMiddleware {
         return response;
     }
 
+    public ApiOperationListWSModel apiGetDashboardOperations(long agentId, String operationType, String operationState, int reqPage, int reqSize) {
 
-    public ApiOperationSessionWSModel apiGetDashOperations(long agentId,String sessionType, String sessionState, int reqPage, int reqSize) {
-
-        ApiOperationSessionWSModel response = new ApiOperationSessionWSModel();
+        ApiOperationListWSModel response = new ApiOperationListWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiOperationSessionWSDTO operationSession = apiDashboardFramework.apiGetDashOperationsService(agentId,sessionType,sessionState,reqPage,reqSize);
-        if (operationSession != null){
-            response.setOperationSession(operationSession);
+        ApiOperationListWSDTO operationListWSDTO = apiDashboardFramework.apiGetDashboardOperationsService(agentId,operationType,operationState,reqPage,reqSize);
+        if (operationListWSDTO != null){
+            response.setOperationList(operationListWSDTO);
         }
 
-        general.setOperation("apiGetDashOperations");
+        general.setOperation("apiGetDashboardOperations");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -63,18 +62,17 @@ public class ApiDashboardMiddleware {
         return response;
     }
 
-
-    public ApiCampaignWSModel apiGetDashCampaigns(long agentId) {
+    public ApiCampaignWSModel apiGetDashboardCampaigns(long agentId) {
 
         ApiCampaignWSModel response = new ApiCampaignWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ApiCampaignWSDTO> campaignWSDTOS = apiDashboardFramework.apiDashCampaignsService(agentId);
+        List<ApiCampaignWSDTO> campaignWSDTOS = apiDashboardFramework.apiGetDashboardCampaignsService(agentId);
         if (campaignWSDTOS != null){
             response.setCampaigns(campaignWSDTOS);
         }
 
-        general.setOperation("apiGetDashCampaigns");
+        general.setOperation("apiGetDashboardCampaigns");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -83,17 +81,17 @@ public class ApiDashboardMiddleware {
         return response;
     }
 
-    public ApiSummaryWSModel apiGetDashSummary(long agentId) {
+    public ApiSummaryWSModel apiGetDashboardSummary(long agentId) {
 
         ApiSummaryWSModel response = new ApiSummaryWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ApiSummaryWSDTO> summaries = apiDashboardFramework.apiGetDashSummaryService(agentId);
+        List<ApiSummaryWSDTO> summaries = apiDashboardFramework.apiGetDashboardSummaryService(agentId);
         if (summaries != null){
             response.setSummaries(summaries);
         }
 
-        general.setOperation("apiGetDashSummary");
+        general.setOperation("apiGetDashboardSummary");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

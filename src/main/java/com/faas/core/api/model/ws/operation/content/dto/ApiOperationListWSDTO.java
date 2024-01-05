@@ -4,15 +4,15 @@ import com.faas.core.base.model.ws.general.PaginationWSDTO;
 
 import java.util.List;
 
-public class ApiOperationSessionWSDTO {
+public class ApiOperationListWSDTO {
 
     private List<ApiOperationWSDTO> operations;
     private PaginationWSDTO pagination;
 
-    public ApiOperationSessionWSDTO() {
+    public ApiOperationListWSDTO() {
     }
 
-    public ApiOperationSessionWSDTO(List<ApiOperationWSDTO> operations, PaginationWSDTO pagination) {
+    public ApiOperationListWSDTO(List<ApiOperationWSDTO> operations, PaginationWSDTO pagination) {
         this.operations = operations;
         this.pagination = pagination;
     }

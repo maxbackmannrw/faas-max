@@ -2,7 +2,7 @@ package com.faas.core.api.framework.operation.content;
 
 import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiAgentOperationWSDTO;
-import com.faas.core.api.model.ws.operation.content.dto.ApiOperationSessionWSDTO;
+import com.faas.core.api.model.ws.operation.content.dto.ApiOperationListWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
 import com.faas.core.base.model.db.client.content.ClientDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
@@ -69,7 +69,7 @@ public class ApiOperationFramework {
     }
 
 
-    public ApiOperationSessionWSDTO apiGetCampaignOperationsService(long agentId,String campaignId,String operationState,int reqPage,int reqSize) {
+    public ApiOperationListWSDTO apiGetCampaignOperationsService(long agentId, String campaignId, String operationState, int reqPage, int reqSize) {
 
         Page<OperationDBModel> campaignOperationPage = operationRepository.findAllByAgentIdAndCampaignIdAndOperationState(agentId, campaignId, operationState, PageRequest.of(reqPage,reqSize));
         if (campaignOperationPage != null){
@@ -79,7 +79,7 @@ public class ApiOperationFramework {
     }
 
 
-    public ApiOperationSessionWSDTO apiGetOperationsService(long agentId, String operationState, int reqPage, int reqSize) {
+    public ApiOperationListWSDTO apiGetOperationsService(long agentId, String operationState, int reqPage, int reqSize) {
 
         Page<OperationDBModel> operationPage = operationRepository.findAllByAgentIdAndOperationState(agentId, operationState, PageRequest.of(reqPage,reqSize));
         if (operationPage != null){

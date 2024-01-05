@@ -1,56 +1,56 @@
 package com.faas.core.api.model.ws.dashboard.dto;
 
 import com.faas.core.api.model.ws.campaign.content.dto.ApiCampaignWSDTO;
-import com.faas.core.api.model.ws.operation.content.dto.ApiOperationSessionWSDTO;
+import com.faas.core.api.model.ws.operation.content.dto.ApiOperationListWSDTO;
 
 import java.util.List;
 
 public class ApiDashboardWSDTO {
 
-    private ApiOperationSessionWSDTO readyOperation;
-    private ApiOperationSessionWSDTO readyInquiry;
-    private ApiOperationSessionWSDTO activeOperation;
-    private List<ApiCampaignWSDTO> dashCampaigns;
+    private ApiOperationListWSDTO readManualOperation;
+    private ApiOperationListWSDTO readyInquiryOperation;
+    private ApiOperationListWSDTO activeOperation;
+    private List<ApiCampaignWSDTO> dashboardCampaigns;
 
     public ApiDashboardWSDTO() {
     }
 
-    public ApiDashboardWSDTO(ApiOperationSessionWSDTO readyOperation, ApiOperationSessionWSDTO readyInquiry, ApiOperationSessionWSDTO activeOperation, List<ApiCampaignWSDTO> dashCampaigns) {
-        this.readyOperation = readyOperation;
-        this.readyInquiry = readyInquiry;
+    public ApiDashboardWSDTO(ApiOperationListWSDTO readManualOperation, ApiOperationListWSDTO readyInquiryOperation, ApiOperationListWSDTO activeOperation, List<ApiCampaignWSDTO> dashboardCampaigns) {
+        this.readManualOperation = readManualOperation;
+        this.readyInquiryOperation = readyInquiryOperation;
         this.activeOperation = activeOperation;
-        this.dashCampaigns = dashCampaigns;
+        this.dashboardCampaigns = dashboardCampaigns;
     }
 
-    public ApiOperationSessionWSDTO getReadyOperation() {
-        return readyOperation;
+    public ApiOperationListWSDTO getReadManualOperation() {
+        return readManualOperation;
     }
 
-    public void setReadyOperation(ApiOperationSessionWSDTO readyOperation) {
-        this.readyOperation = readyOperation;
+    public void setReadManualOperation(ApiOperationListWSDTO readManualOperation) {
+        this.readManualOperation = readManualOperation;
     }
 
-    public ApiOperationSessionWSDTO getReadyInquiry() {
-        return readyInquiry;
+    public ApiOperationListWSDTO getReadyInquiryOperation() {
+        return readyInquiryOperation;
     }
 
-    public void setReadyInquiry(ApiOperationSessionWSDTO readyInquiry) {
-        this.readyInquiry = readyInquiry;
+    public void setReadyInquiryOperation(ApiOperationListWSDTO readyInquiryOperation) {
+        this.readyInquiryOperation = readyInquiryOperation;
     }
 
-    public ApiOperationSessionWSDTO getActiveOperation() {
+    public ApiOperationListWSDTO getActiveOperation() {
         return activeOperation;
     }
 
-    public void setActiveOperation(ApiOperationSessionWSDTO activeOperation) {
+    public void setActiveOperation(ApiOperationListWSDTO activeOperation) {
         this.activeOperation = activeOperation;
     }
 
-    public List<ApiCampaignWSDTO> getDashCampaigns() {
-        return dashCampaigns;
+    public List<ApiCampaignWSDTO> getDashboardCampaigns() {
+        return dashboardCampaigns;
     }
 
-    public void setDashCampaigns(List<ApiCampaignWSDTO> dashCampaigns) {
-        this.dashCampaigns = dashCampaigns;
+    public void setDashboardCampaigns(List<ApiCampaignWSDTO> dashboardCampaigns) {
+        this.dashboardCampaigns = dashboardCampaigns;
     }
 }

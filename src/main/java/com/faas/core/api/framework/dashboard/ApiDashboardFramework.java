@@ -3,7 +3,7 @@ package com.faas.core.api.framework.dashboard;
 import com.faas.core.api.model.ws.campaign.content.dto.ApiCampaignWSDTO;
 import com.faas.core.api.model.ws.dashboard.dto.ApiDashboardWSDTO;
 import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
-import com.faas.core.api.model.ws.operation.content.dto.ApiOperationSessionWSDTO;
+import com.faas.core.api.model.ws.operation.content.dto.ApiOperationListWSDTO;
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.campaign.details.CampaignAgentDBModel;
 import com.faas.core.base.model.db.process.content.ProcessDBModel;
@@ -60,17 +60,16 @@ public class ApiDashboardFramework {
     public ApiDashboardWSDTO apiGetDashboardService(long agentId,int reqPage,int reqSize){
 
         ApiDashboardWSDTO dashboardWSDTO = new ApiDashboardWSDTO();
-
-        dashboardWSDTO.setReadyOperation(operationHelper.createApiOperationSessionFromOperationModel(operationRepository.findAllByAgentIdAndOperationState(agentId, AppConstant.READY_STATE, PageRequest.of(reqPage,reqSize))));
-        dashboardWSDTO.setReadyInquiry(operationHelper.createApiOperationSessionFromSessionModel(sessionRepository.findAllByAgentIdAndSessionStateAndSessionType(agentId, AppConstant.READY_STATE, AppConstant.INQUIRY_CAMPAIGN, PageRequest.of(reqPage,reqSize))));;
+        dashboardWSDTO.setReadManualOperation(operationHelper.createApiOperationSessionFromOperationModel(operationRepository.findAllByAgentIdAndOperationState(agentId, AppConstant.READY_STATE, PageRequest.of(reqPage,reqSize))));
+        dashboardWSDTO.setReadyInquiryOperation(operationHelper.createApiOperationSessionFromSessionModel(sessionRepository.findAllByAgentIdAndSessionStateAndSessionType(agentId, AppConstant.READY_STATE, AppConstant.INQUIRY_CAMPAIGN, PageRequest.of(reqPage,reqSize))));;
         dashboardWSDTO.setActiveOperation(operationHelper.createApiOperationSessionFromOperationModel(operationRepository.findAllByAgentIdAndOperationState(agentId, AppConstant.ACTIVE_STATE, PageRequest.of(reqPage,reqSize))));
-        dashboardWSDTO.setDashCampaigns(apiDashCampaignsService(agentId));
+        dashboardWSDTO.setDashboardCampaigns(apiGetDashboardCampaignsService(agentId));
 
         return dashboardWSDTO;
     }
 
 
-    public ApiOperationSessionWSDTO apiGetDashOperationsService(long agentId,String sessionType, String sessionState, int reqPage, int reqSize){
+    public ApiOperationListWSDTO apiGetDashboardOperationsService(long agentId, String sessionType, String sessionState, int reqPage, int reqSize){
 
         if (sessionType.equalsIgnoreCase(AppConstant.MANUAL_CAMPAIGN)){
             return operationHelper.createApiOperationSessionFromSessionModel(sessionRepository.findAllByAgentIdAndSessionStateAndSessionType(agentId, sessionState, AppConstant.MANUAL_CAMPAIGN, PageRequest.of(reqPage,reqSize)));
@@ -88,7 +87,7 @@ public class ApiDashboardFramework {
     }
 
 
-    public List<ApiCampaignWSDTO> apiDashCampaignsService(long agentId) {
+    public List<ApiCampaignWSDTO> apiGetDashboardCampaignsService(long agentId) {
 
         List<ApiCampaignWSDTO> campaignWSDTOS = new ArrayList<>();
         List<CampaignAgentDBModel> dashCampaigns = campaignAgentRepository.findByAgentId(agentId);
@@ -116,7 +115,7 @@ public class ApiDashboardFramework {
     }
 
 
-    public List<ApiSummaryWSDTO> apiGetDashSummaryService(long agentId) {
+    public List<ApiSummaryWSDTO> apiGetDashboardSummaryService(long agentId) {
 
         List<ApiSummaryWSDTO> apiSummaryWSDTOS = new ArrayList<>();
         apiSummaryWSDTOS.add(new ApiSummaryWSDTO(AppConstant.TOTAL_CAMPAIGNS_SUMMARY,String.valueOf(campaignAgentRepository.countByAgentId(agentId))));

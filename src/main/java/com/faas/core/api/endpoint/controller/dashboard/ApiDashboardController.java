@@ -4,7 +4,7 @@ import com.faas.core.api.middleware.dashboard.ApiDashboardMiddleware;
 import com.faas.core.api.model.ws.campaign.content.ApiCampaignWSModel;
 import com.faas.core.api.model.ws.dashboard.ApiDashboardWSModel;
 import com.faas.core.api.model.ws.general.ApiSummaryWSModel;
-import com.faas.core.api.model.ws.operation.content.ApiOperationSessionWSModel;
+import com.faas.core.api.model.ws.operation.content.ApiOperationListWSModel;
 import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,27 +38,14 @@ public class ApiDashboardController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+    @RequestMapping(value = ApiRoute.API_GET_DASHBOARD_OPERATIONS, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetDashboardOperations(@RequestParam long agentId,
+                                                       @RequestParam String operationType,
+                                                       @RequestParam String operationState,
+                                                       @RequestParam int reqPage,
+                                                       @RequestParam int reqSize) {
 
-    @RequestMapping(value = ApiRoute.API_GET_DASH_OPERATIONS, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetDashOperations(@RequestParam long agentId,
-                                                  @RequestParam String sessionType,
-                                                  @RequestParam String sessionState,
-                                                  @RequestParam int reqPage,
-                                                  @RequestParam int reqSize) {
-
-        ApiOperationSessionWSModel response = apiDashboardMiddleware.apiGetDashOperations(agentId,sessionType,sessionState,reqPage,reqSize);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-
-    @RequestMapping(value = ApiRoute.API_GET_DASH_CAMPAIGNS, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetDashCampaigns(@RequestParam long agentId) {
-
-        ApiCampaignWSModel response = apiDashboardMiddleware.apiGetDashCampaigns(agentId);
+        ApiOperationListWSModel response = apiDashboardMiddleware.apiGetDashboardOperations(agentId,operationType,operationState,reqPage,reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -66,11 +53,21 @@ public class ApiDashboardController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+    @RequestMapping(value = ApiRoute.API_GET_DASHBOARD_CAMPAIGNS, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetDashboardCampaigns(@RequestParam long agentId) {
 
-    @RequestMapping(value = ApiRoute.API_GET_DASH_SUMMARY, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetDashSummary(@RequestParam long agentId) {
+        ApiCampaignWSModel response = apiDashboardMiddleware.apiGetDashboardCampaigns(agentId);
 
-        ApiSummaryWSModel response = apiDashboardMiddleware.apiGetDashSummary(agentId);
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+    @RequestMapping(value = ApiRoute.API_GET_DASHBOARD_SUMMARY, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetDashboardSummary(@RequestParam long agentId) {
+
+        ApiSummaryWSModel response = apiDashboardMiddleware.apiGetDashboardSummary(agentId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

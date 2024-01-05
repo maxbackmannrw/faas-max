@@ -11,9 +11,10 @@ public class ApiRoute {
 
 
     public static final String API_GET_DASHBOARD = "apigetdashboard";
-    public static final String API_GET_DASH_OPERATIONS = "apigetdashoperations";
-    public static final String API_GET_DASH_CAMPAIGNS = "apigetdashcampaigns";
-    public static final String API_GET_DASH_SUMMARY = "apigetdashsummary";
+    public static final String API_GET_DASHBOARD_OPERATIONS = "apigetdashboardoperations";
+    public static final String API_GET_DASHBOARD_CAMPAIGNS = "apigetdashboardcampaigns";
+    public static final String API_GET_DASHBOARD_SUMMARY = "apigetdashboardsummary";
+
 
 
     public static final String API_GET_AGENT_CAMPAIGN = "apigetagentcampaign";

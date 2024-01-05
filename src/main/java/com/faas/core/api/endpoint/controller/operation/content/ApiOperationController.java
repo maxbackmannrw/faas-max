@@ -3,7 +3,7 @@ package com.faas.core.api.endpoint.controller.operation.content;
 import com.faas.core.api.middleware.operation.content.ApiOperationMiddleware;
 import com.faas.core.api.model.ws.general.ApiSummaryWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiAgentOperationWSModel;
-import com.faas.core.api.model.ws.operation.content.ApiOperationSessionWSModel;
+import com.faas.core.api.model.ws.operation.content.ApiOperationListWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiOperationWSModel;
 import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;
@@ -46,7 +46,7 @@ public class ApiOperationController {
                                                       @RequestParam int reqPage,
                                                       @RequestParam int reqSize) {
 
-        ApiOperationSessionWSModel response = apiOperationMiddleware.apiGetCampaignOperations(agentId,campaignId,operationState,reqPage,reqSize);
+        ApiOperationListWSModel response = apiOperationMiddleware.apiGetCampaignOperations(agentId,campaignId,operationState,reqPage,reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -61,7 +61,7 @@ public class ApiOperationController {
                                               @RequestParam int reqPage,
                                               @RequestParam int reqSize) {
 
-        ApiOperationSessionWSModel response = apiOperationMiddleware.apiGetOperations(agentId,operationState,reqPage,reqSize);
+        ApiOperationListWSModel response = apiOperationMiddleware.apiGetOperations(agentId,operationState,reqPage,reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

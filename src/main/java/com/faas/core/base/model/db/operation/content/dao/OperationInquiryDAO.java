@@ -6,8 +6,7 @@ public class OperationInquiryDAO {
 
     private String id;
     private String operationInquiry;
-    private List<OperationDataDAO> inquiryDatas;
-    private String inquiryState;
+    private List<OperationDataDAO> operationInquiryDatas;
     private long uDate;
     private long cDate;
     private int status;
@@ -15,11 +14,10 @@ public class OperationInquiryDAO {
     public OperationInquiryDAO() {
     }
 
-    public OperationInquiryDAO(String id, String operationInquiry, List<OperationDataDAO> inquiryDatas, String inquiryState, long uDate, long cDate, int status) {
+    public OperationInquiryDAO(String id, String operationInquiry, List<OperationDataDAO> operationInquiryDatas, long uDate, long cDate, int status) {
         this.id = id;
         this.operationInquiry = operationInquiry;
-        this.inquiryDatas = inquiryDatas;
-        this.inquiryState = inquiryState;
+        this.operationInquiryDatas = operationInquiryDatas;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
@@ -41,20 +39,12 @@ public class OperationInquiryDAO {
         this.operationInquiry = operationInquiry;
     }
 
-    public List<OperationDataDAO> getInquiryDatas() {
-        return inquiryDatas;
+    public List<OperationDataDAO> getOperationInquiryDatas() {
+        return operationInquiryDatas;
     }
 
-    public void setInquiryDatas(List<OperationDataDAO> inquiryDatas) {
-        this.inquiryDatas = inquiryDatas;
-    }
-
-    public String getInquiryState() {
-        return inquiryState;
-    }
-
-    public void setInquiryState(String inquiryState) {
-        this.inquiryState = inquiryState;
+    public void setOperationInquiryDatas(List<OperationDataDAO> operationInquiryDatas) {
+        this.operationInquiryDatas = operationInquiryDatas;
     }
 
     public long getuDate() {
