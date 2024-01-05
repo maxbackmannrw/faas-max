@@ -1,6 +1,6 @@
 package com.faas.core.base.model.db.operation.content.dao;
 
-public class ActivityDataDAO {
+public class OperationActivityDataDAO {
 
     private String dataId;
     private String dataType;
@@ -9,10 +9,10 @@ public class ActivityDataDAO {
     private int status;
 
 
-    public ActivityDataDAO() {
+    public OperationActivityDataDAO() {
     }
 
-    public ActivityDataDAO(String dataId, String dataType, String value, long cDate, int status) {
+    public OperationActivityDataDAO(String dataId, String dataType, String value, long cDate, int status) {
         this.dataId = dataId;
         this.dataType = dataType;
         this.value = value;

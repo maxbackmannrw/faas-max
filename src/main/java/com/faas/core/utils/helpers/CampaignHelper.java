@@ -1,6 +1,8 @@
 package com.faas.core.utils.helpers;
 
+import com.faas.core.api.model.ws.dashboard.dto.ApiDashboardCampaignWSDTO;
 import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
+import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.campaign.details.CampaignAgentDBModel;
 import com.faas.core.base.model.db.process.content.ProcessDBModel;
 import com.faas.core.base.model.db.process.details.scenario.ProcessScenarioDBModel;
@@ -36,10 +38,10 @@ public class CampaignHelper {
     SessionRepository sessionRepository;
 
     @Autowired
-    ProcessRepository processRepository;
+    CampaignRepository campaignRepository;
 
     @Autowired
-    CampaignRepository campaignRepository;
+    ProcessRepository processRepository;
 
     @Autowired
     CampaignAgentRepository campaignAgentRepository;
@@ -58,7 +60,6 @@ public class CampaignHelper {
 
         CampaignAgentWSDTO campaignAgentWSDTO = new CampaignAgentWSDTO();
         campaignAgentWSDTO.setCampaignAgent(agentDBModel);
-
         return campaignAgentWSDTO;
     }
 
@@ -110,25 +111,28 @@ public class CampaignHelper {
     }
 
 
-    public List<ApiSummaryWSDTO> mapCampaignSummary(long agentId,String campaignId){
+    public List<ApiSummaryWSDTO> mapAgentCampaignSummary(long agentId){
 
         List<ApiSummaryWSDTO> apiSummaryWSDTOS = new ArrayList<>();
-        apiSummaryWSDTOS.add(new ApiSummaryWSDTO(AppConstant.READY_SESSIONS_SUMMARY, String.valueOf(sessionRepository.countByAgentIdAndCampaignIdAndSessionState(agentId,campaignId,AppConstant.READY_STATE))));
-        apiSummaryWSDTOS.add(new ApiSummaryWSDTO(AppConstant.ACTIVE_SESSIONS_SUMMARY, String.valueOf(sessionRepository.countByAgentIdAndCampaignIdAndSessionState(agentId,campaignId,AppConstant.ACTIVE_STATE))));
+        apiSummaryWSDTOS.add(new ApiSummaryWSDTO(AppConstant.AGENT_READY_OPERATIONS_SUMMARY, String.valueOf(sessionRepository.countByAgentIdAndSessionState(agentId,AppConstant.READY_STATE))));
+        apiSummaryWSDTOS.add(new ApiSummaryWSDTO(AppConstant.AGENT_ACTIVE_OPERATIONS_SUMMARY, String.valueOf(sessionRepository.countByAgentIdAndSessionState(agentId,AppConstant.ACTIVE_STATE))));
+        apiSummaryWSDTOS.add(new ApiSummaryWSDTO(AppConstant.AGENT_ALL_CAMPAIGNS_SUMMARY,String.valueOf(campaignAgentRepository.countByAgentId(agentId))));
 
         return apiSummaryWSDTOS;
     }
 
+    public ApiDashboardCampaignWSDTO mapApiDashboardCampaignWSDTO(CampaignDBModel campaignDBModel){
 
-    public List<ApiSummaryWSDTO> mapAgentCampaignSummary(long agentId){
+        Optional<ProcessDBModel> processDBModel = processRepository.findById(campaignDBModel.getProcessId());
+        if (processDBModel.isPresent()){
 
-        List<ApiSummaryWSDTO> apiSummaryWSDTOS = new ArrayList<>();
+            ApiDashboardCampaignWSDTO dashboardCampaignWSDTO = new ApiDashboardCampaignWSDTO();
+            dashboardCampaignWSDTO.setCampaign(campaignDBModel);
+            dashboardCampaignWSDTO.setCampaignProcess(processDBModel.get());
 
-        apiSummaryWSDTOS.add(new ApiSummaryWSDTO(AppConstant.READY_OPERATIONS_SUMMARY, String.valueOf(sessionRepository.countByAgentIdAndSessionState(agentId,AppConstant.READY_STATE))));
-        apiSummaryWSDTOS.add(new ApiSummaryWSDTO(AppConstant.ACTIVE_OPERATIONS_SUMMARY, String.valueOf(sessionRepository.countByAgentIdAndSessionState(agentId,AppConstant.ACTIVE_STATE))));
-        apiSummaryWSDTOS.add(new ApiSummaryWSDTO(AppConstant.TOTAL_CAMPAIGNS_SUMMARY,String.valueOf(campaignAgentRepository.countByAgentId(agentId))));
-
-        return apiSummaryWSDTOS;
+            return dashboardCampaignWSDTO;
+        }
+        return null;
     }
 
 

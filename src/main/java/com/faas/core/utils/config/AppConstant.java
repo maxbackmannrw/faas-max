@@ -62,7 +62,6 @@ public class AppConstant {
     public static final String BUSY_CLIENT = "BUSY_CLIENT";
 
 
-    public static final String NONE_STATE = "NONE_STATE";
     public static final String READY_STATE = "READY_STATE";
     public static final String ACTIVE_STATE = "ACTIVE_STATE";
     public static final String PASSIVE_STATE = "PASSIVE_STATE";
@@ -71,13 +70,14 @@ public class AppConstant {
     public static final String ALL_STATES = "ALL_STATES";
 
 
+    public static final String NO_INQUIRY = "NO_INQUIRY";
     public static final String NEW_INQUIRY = "NEW_INQUIRY";
-    public static final String WAITING_INQUIRY = "WAITING_INQUIRY";
-    public static final String ACCEPTED_INQUIRY = "ACCEPTED_INQUIRY";
-    public static final String DECLINED_INQUIRY = "DECLINED_INQUIRY";
+    public static final String READY_INQUIRY = "READY_INQUIRY";
+    public static final String FAILED_INQUIRY = "FAILED_INQUIRY";
     public static final String FINISHED_INQUIRY = "FINISHED_INQUIRY";
 
 
+    public static final String NO_FLOW = "NO_FLOW";
     public static final String NEW_FLOW = "NEW_FLOW";
     public static final String WAITING_FLOW = "WAITING_FLOW";
     public static final String ACCEPTED_FLOW = "ACCEPTED_FLOW";
@@ -115,16 +115,16 @@ public class AppConstant {
     public static final String FINISHED_CALL = "FINISHED_CALL";
 
 
-    public static final String READY_SESSIONS_SUMMARY = "READY_SESSIONS_SUMMARY";
-    public static final String ACTIVE_SESSIONS_SUMMARY = "ACTIVE_SESSIONS_SUMMARY";
-    public static final String TOTAL_SESSIONS_SUMMARY = "TOTAL_SESSIONS_SUMMARY";
+    public static final String AGENT_READY_SESSIONS_SUMMARY = "AGENT_READY_SESSIONS_SUMMARY";
+    public static final String AGENT_ACTIVE_SESSIONS_SUMMARY = "AGENT_ACTIVE_SESSIONS_SUMMARY";
+    public static final String AGENT_ALL_SESSIONS_SUMMARY = "AGENT_ALL_SESSIONS_SUMMARY";
 
 
-    public static final String READY_OPERATIONS_SUMMARY = "READY_OPERATIONS_SUMMARY";
-    public static final String ACTIVE_OPERATIONS_SUMMARY = "ACTIVE_OPERATIONS_SUMMARY";
-    public static final String TOTAL_OPERATIONS_SUMMARY = "TOTAL_OPERATIONS_SUMMARY";
+    public static final String AGENT_READY_OPERATIONS_SUMMARY = "AGENT_READY_OPERATIONS_SUMMARY";
+    public static final String AGENT_ACTIVE_OPERATIONS_SUMMARY = "AGENT_ACTIVE_OPERATIONS_SUMMARY";
+    public static final String AGENT_ALL_OPERATIONS_SUMMARY = "AGENT_ALL_OPERATIONS_SUMMARY";
 
-    public static final String TOTAL_CAMPAIGNS_SUMMARY = "TOTAL_CAMPAIGNS_SUMMARY";
+    public static final String AGENT_ALL_CAMPAIGNS_SUMMARY = "AGENT_ALL_CAMPAIGNS_SUMMARY";
 
 
 

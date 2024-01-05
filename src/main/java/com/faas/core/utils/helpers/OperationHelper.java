@@ -2,6 +2,7 @@ package com.faas.core.utils.helpers;
 
 import com.faas.core.api.model.ws.client.details.dto.ApiClientNoteWSDTO;
 import com.faas.core.api.model.ws.client.details.dto.ApiClientOsIntWSDTO;
+import com.faas.core.api.model.ws.dashboard.dto.ApiDashboardOperationWSDTO;
 import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
 import com.faas.core.api.model.ws.operation.channel.content.dto.ApiOperationChannelWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationListWSDTO;
@@ -53,9 +54,6 @@ public class OperationHelper {
 
     @Autowired
     ChannelHelper channelHelper;
-
-    @Autowired
-    SessionHelper sessionHelper;
 
     @Autowired
     ClientRepository clientRepository;
@@ -134,7 +132,7 @@ public class OperationHelper {
 
         OperationListWSDTO operationListWSDTO = new OperationListWSDTO();
         List<OperationWSDTO> operationWSDTOS = new ArrayList<>();
-        operationListWSDTO.setPagination(mapOperationSessionPagination(sessionModelPage));
+        operationListWSDTO.setPagination(mapSessionModelPagination(sessionModelPage));
         for (int i=0;sessionModelPage.getContent().size()>i;i++){
             List<OperationDBModel> operationDBModels = operationRepository.findBySessionId(sessionModelPage.getContent().get(i).getId());
             if (!operationDBModels.isEmpty()){
@@ -142,10 +140,11 @@ public class OperationHelper {
             }
         }
         operationListWSDTO.setOperations(operationWSDTOS);
+
         return operationListWSDTO;
     }
 
-    public List<OperationWSDTO> getOperationWSDTOS(List<SessionDBModel> sessionDBModels){
+    public List<OperationWSDTO> getOperationWSDTOSBySessionModels(List<SessionDBModel> sessionDBModels){
 
         List<OperationWSDTO> operationWSDTOS = new ArrayList<>();
         for (SessionDBModel sessionDBModel : sessionDBModels) {
@@ -168,38 +167,37 @@ public class OperationHelper {
     }
 
 
-    public ApiOperationListWSDTO createApiOperationSessionFromOperationModel(Page<OperationDBModel> operationModelPage){
+    public ApiOperationListWSDTO createApiOperationListWSDTO(Page<OperationDBModel> operationModelPage){
 
-        ApiOperationListWSDTO operationSessionWSDTO = new ApiOperationListWSDTO();
-        operationSessionWSDTO.setPagination(mapOperationPagination(operationModelPage));
+        ApiOperationListWSDTO operationListWSDTO = new ApiOperationListWSDTO();
         List<ApiOperationWSDTO> operationWSDTOS = new ArrayList<>();
         for (int i=0;operationModelPage.getContent().size()>i;i++){
-            ApiOperationWSDTO operationWSDTO = mapApiOperationWSDTOFromOperationModel(operationModelPage.getContent().get(i));
+            ApiOperationWSDTO operationWSDTO = mapApiOperationWSDTO(operationModelPage.getContent().get(i));
             if (operationWSDTO != null){
                 operationWSDTOS.add(operationWSDTO);
             }
         }
-        operationSessionWSDTO.setOperations(operationWSDTOS);
+        operationListWSDTO.setOperations(operationWSDTOS);
+        operationListWSDTO.setPagination(mapOperationPagination(operationModelPage));
 
-        return operationSessionWSDTO;
+        return operationListWSDTO;
     }
 
-    public ApiOperationListWSDTO createApiOperationSessionFromSessionModel(Page<SessionDBModel> sessionModelPage){
+    public ApiDashboardOperationWSDTO createApiDashboardOperationWSDTO(Page<OperationDBModel> operationModelPage){
 
-        ApiOperationListWSDTO operationSessionWSDTO = new ApiOperationListWSDTO();
-        operationSessionWSDTO.setPagination(sessionHelper.createSessionPaginationWSDTO(sessionModelPage));
+        ApiDashboardOperationWSDTO dashboardOperationWSDTO = new ApiDashboardOperationWSDTO();
         List<ApiOperationWSDTO> operationWSDTOS = new ArrayList<>();
-        for (int i=0;sessionModelPage.getContent().size()>i;i++){
-            ApiOperationWSDTO operationWSDTO = mapApiOperationWSDTOFromSessionModel(sessionModelPage.getContent().get(i));
+        for (int i=0;operationModelPage.getContent().size()>i;i++){
+            ApiOperationWSDTO operationWSDTO = mapApiOperationWSDTO(operationModelPage.getContent().get(i));
             if (operationWSDTO != null){
                 operationWSDTOS.add(operationWSDTO);
             }
         }
-        operationSessionWSDTO.setOperations(operationWSDTOS);
-        return operationSessionWSDTO;
+        dashboardOperationWSDTO.setOperations(operationWSDTOS);
+        dashboardOperationWSDTO.setPagination(mapOperationPagination(operationModelPage));
+
+        return dashboardOperationWSDTO;
     }
-
-
 
 
 
@@ -211,10 +209,10 @@ public class OperationHelper {
         return operationScenarioWSDTO;
     }
 
+
     public SessionDBModel createSessionDBModel(ClientDBModel clientDBModel, UserDBModel agentDBModel,CampaignDBModel campaignDBModel  ) {
 
         SessionDBModel sessionDBModel = new SessionDBModel();
-
         sessionDBModel.setSessionUUID(appUtils.generateUUID());
         sessionDBModel.setClientId(clientDBModel.getId());
         sessionDBModel.setClientName(clientDBModel.getClientName());
@@ -256,11 +254,25 @@ public class OperationHelper {
             operationDBModel.setCampaignId(sessionDBModel.getCampaignId());
             operationDBModel.setProcessId(sessionDBModel.getProcessId());
 
+            if (sessionDBModel.getSessionType().equalsIgnoreCase(AppConstant.MANUAL_SESSION)){
+                operationDBModel.setOperationInquiry(null);
+                operationDBModel.setOperationInquiryState(AppConstant.NO_INQUIRY);
+                operationDBModel.setOperationFlow(null);
+                operationDBModel.setOperationFlowState(AppConstant.NO_FLOW);
+            }
+
             if (sessionDBModel.getSessionType().equalsIgnoreCase(AppConstant.INQUIRY_SESSION)){
                 operationDBModel.setOperationInquiry(createOperationInquiryDAO(sessionDBModel));
+                operationDBModel.setOperationInquiryState(AppConstant.NEW_INQUIRY);
+                operationDBModel.setOperationFlow(null);
+                operationDBModel.setOperationFlowState(AppConstant.NO_FLOW);
             }
+
             if (sessionDBModel.getSessionType().equalsIgnoreCase(AppConstant.AUTOMATIC_SESSION)){
+                operationDBModel.setOperationInquiry(null);
+                operationDBModel.setOperationInquiryState(AppConstant.NO_INQUIRY);
                 operationDBModel.setOperationFlow(createOperationFlowDAO(sessionDBModel));
+                operationDBModel.setOperationFlowState(AppConstant.NEW_FLOW);
             }
 
             operationDBModel.setOperationScenarios(new ArrayList<>());
@@ -268,20 +280,6 @@ public class OperationHelper {
             operationDBModel.setOperationDatas(new ArrayList<>());
             operationDBModel.setOperationType(sessionDBModel.getSessionType());
             operationDBModel.setOperationState(sessionDBModel.getSessionState());
-
-            if (sessionDBModel.getSessionType().equalsIgnoreCase(AppConstant.MANUAL_SESSION)){
-                operationDBModel.setInquiryState(AppConstant.NONE_STATE);
-                operationDBModel.setFlowState(AppConstant.NONE_STATE);
-            }
-            if (sessionDBModel.getSessionType().equalsIgnoreCase(AppConstant.INQUIRY_SESSION)){
-                operationDBModel.setInquiryState(AppConstant.NEW_INQUIRY);
-                operationDBModel.setFlowState(AppConstant.NONE_STATE);
-            }
-            if (sessionDBModel.getSessionType().equalsIgnoreCase(AppConstant.AUTOMATIC_SESSION)){
-                operationDBModel.setInquiryState(AppConstant.NONE_STATE);
-                operationDBModel.setFlowState(AppConstant.NEW_FLOW);
-            }
-
             operationDBModel.setuDate(appUtils.getCurrentTimeStamp());
             operationDBModel.setcDate(appUtils.getCurrentTimeStamp());
             operationDBModel.setStatus(1);
@@ -290,7 +288,6 @@ public class OperationHelper {
         }
         return null;
     }
-
 
     public OperationInquiryDAO createOperationInquiryDAO(SessionDBModel sessionDBModel) {
 
@@ -309,7 +306,6 @@ public class OperationHelper {
         }
         return null;
     }
-
 
     public OperationFlowDAO createOperationFlowDAO(SessionDBModel sessionDBModel) {
 
@@ -396,7 +392,6 @@ public class OperationHelper {
 
 
 
-
     public ApiOperationChannelWSDTO mapApiOperationChannelWSDTO(SessionDBModel sessionDBModel, ClientDBModel clientDBModel) {
 
         ApiOperationChannelWSDTO operationChannelWSDTO = new ApiOperationChannelWSDTO();
@@ -408,29 +403,13 @@ public class OperationHelper {
     }
 
 
-    public ApiOperationWSDTO mapApiOperationWSDTOFromOperationModel(OperationDBModel operationDBModel) {
+    public ApiOperationWSDTO mapApiOperationWSDTO(OperationDBModel operationDBModel) {
 
         Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(operationDBModel.getSessionId());
         if (sessionDBModel.isPresent()){
             ApiOperationWSDTO operationWSDTO = new ApiOperationWSDTO();
             operationWSDTO.setOperation(operationDBModel);
             operationWSDTO.setOperationSession(sessionDBModel.get());
-
-            return operationWSDTO;
-        }
-        return null;
-    }
-
-
-    public ApiOperationWSDTO mapApiOperationWSDTOFromSessionModel(SessionDBModel sessionDBModel) {
-
-        List<OperationDBModel>operationDBModels = operationRepository.findBySessionIdAndClientId(sessionDBModel.getId(),sessionDBModel.getClientId());
-        if (!operationDBModels.isEmpty()){
-
-            ApiOperationWSDTO operationWSDTO = new ApiOperationWSDTO();
-            operationWSDTO.setOperation(operationDBModels.get(0));
-            operationWSDTO.setOperationSession(sessionDBModel);
-
 
             return operationWSDTO;
         }
@@ -473,8 +452,7 @@ public class OperationHelper {
         return paginationWSDTO;
     }
 
-
-    public PaginationWSDTO mapOperationSessionPagination(Page<SessionDBModel> sessionModelPage){
+    public PaginationWSDTO mapSessionModelPagination(Page<SessionDBModel> sessionModelPage){
 
         PaginationWSDTO paginationWSDTO = new PaginationWSDTO();
         paginationWSDTO.setPageSize(sessionModelPage.getPageable().getPageSize());
@@ -489,9 +467,9 @@ public class OperationHelper {
     public List<ApiSummaryWSDTO> getApiOperationSummary(long agentId){
 
         List<ApiSummaryWSDTO> operationSummary = new ArrayList<>();
-        operationSummary.add(new ApiSummaryWSDTO(AppConstant.ACTIVE_OPERATIONS_SUMMARY,String.valueOf(sessionRepository.countByAgentIdAndSessionState(agentId, AppConstant.ACTIVE_STATE))));
-        operationSummary.add(new ApiSummaryWSDTO(AppConstant.READY_OPERATIONS_SUMMARY,String.valueOf(sessionRepository.countByAgentIdAndSessionState(agentId, AppConstant.READY_STATE))));
-        operationSummary.add(new ApiSummaryWSDTO(AppConstant.TOTAL_CAMPAIGNS_SUMMARY,String.valueOf(campaignAgentRepository.countByAgentId(agentId))));
+        operationSummary.add(new ApiSummaryWSDTO(AppConstant.AGENT_ACTIVE_OPERATIONS_SUMMARY,String.valueOf(sessionRepository.countByAgentIdAndSessionState(agentId, AppConstant.ACTIVE_STATE))));
+        operationSummary.add(new ApiSummaryWSDTO(AppConstant.AGENT_READY_OPERATIONS_SUMMARY,String.valueOf(sessionRepository.countByAgentIdAndSessionState(agentId, AppConstant.READY_STATE))));
+        operationSummary.add(new ApiSummaryWSDTO(AppConstant.AGENT_ALL_CAMPAIGNS_SUMMARY,String.valueOf(campaignAgentRepository.countByAgentId(agentId))));
 
         return operationSummary;
     }

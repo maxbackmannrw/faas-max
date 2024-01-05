@@ -59,11 +59,9 @@ public class ApiOperationFramework {
         ApiAgentOperationWSDTO agentOperationWSDTO = new ApiAgentOperationWSDTO();
         Page<OperationDBModel> readyOperationPage = operationRepository.findAllByAgentIdAndOperationState(agentId, AppConstant.READY_STATE, PageRequest.of(reqPage,reqSize));
         if (readyOperationPage != null){
-            agentOperationWSDTO.setReadyOperation(operationHelper.createApiOperationSessionFromOperationModel(readyOperationPage));
         }
         Page<OperationDBModel> activeOperationPage = operationRepository.findAllByAgentIdAndOperationState(agentId, AppConstant.ACTIVE_STATE, PageRequest.of(reqPage,reqSize));
         if (activeOperationPage != null){
-            agentOperationWSDTO.setActiveOperation(operationHelper.createApiOperationSessionFromOperationModel(activeOperationPage));
         }
         return agentOperationWSDTO;
     }
@@ -73,7 +71,6 @@ public class ApiOperationFramework {
 
         Page<OperationDBModel> campaignOperationPage = operationRepository.findAllByAgentIdAndCampaignIdAndOperationState(agentId, campaignId, operationState, PageRequest.of(reqPage,reqSize));
         if (campaignOperationPage != null){
-            return operationHelper.createApiOperationSessionFromOperationModel(campaignOperationPage);
         }
         return null;
     }
@@ -83,7 +80,6 @@ public class ApiOperationFramework {
 
         Page<OperationDBModel> operationPage = operationRepository.findAllByAgentIdAndOperationState(agentId, operationState, PageRequest.of(reqPage,reqSize));
         if (operationPage != null){
-            return operationHelper.createApiOperationSessionFromOperationModel(operationPage);
         }
         return null;
     }
@@ -93,7 +89,6 @@ public class ApiOperationFramework {
 
         List<OperationDBModel> operationDBModels = operationRepository.findBySessionId(sessionId);
         if (!operationDBModels.isEmpty()) {
-            return operationHelper.mapApiOperationWSDTOFromOperationModel(operationDBModels.get(0));
         }
         return null;
     }

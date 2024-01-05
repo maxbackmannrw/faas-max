@@ -2,7 +2,7 @@ package com.faas.core.base.model.db.operation.content.dao;
 
 import java.util.List;
 
-public class ActivityDAO {
+public class OperationActivityDAO {
 
     private String id;
     private String activity;
@@ -11,14 +11,14 @@ public class ActivityDAO {
     private String creator;
     private String createdId;
     private String created;
-    private List<ActivityDataDAO>activityDatas;
+    private List<OperationActivityDataDAO>activityDatas;
     private long cDate;
     private int status;
 
-    public ActivityDAO() {
+    public OperationActivityDAO() {
     }
 
-    public ActivityDAO(String id, String activity, String activityDesc, String creatorId, String creator, String createdId, String created, List<ActivityDataDAO> activityDatas, long cDate, int status) {
+    public OperationActivityDAO(String id, String activity, String activityDesc, String creatorId, String creator, String createdId, String created, List<OperationActivityDataDAO> activityDatas, long cDate, int status) {
         this.id = id;
         this.activity = activity;
         this.activityDesc = activityDesc;
@@ -87,11 +87,11 @@ public class ActivityDAO {
         this.created = created;
     }
 
-    public List<ActivityDataDAO> getActivityDatas() {
+    public List<OperationActivityDataDAO> getActivityDatas() {
         return activityDatas;
     }
 
-    public void setActivityDatas(List<ActivityDataDAO> activityDatas) {
+    public void setActivityDatas(List<OperationActivityDataDAO> activityDatas) {
         this.activityDatas = activityDatas;
     }
 

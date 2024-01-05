@@ -1,9 +1,8 @@
 package com.faas.core.utils.helpers;
 
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
-import com.faas.core.base.model.db.operation.content.dao.ActivityDAO;
+import com.faas.core.base.model.db.operation.content.dao.OperationActivityDAO;
 import com.faas.core.base.model.db.session.SessionDBModel;
-import com.faas.core.base.model.db.user.content.UserDBModel;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.base.repo.user.content.UserRepository;
@@ -13,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
 @Component
 public class ActivityHelper {
@@ -34,8 +32,8 @@ public class ActivityHelper {
 
     public void createSessionActivity(SessionDBModel sessionDBModel,OperationDBModel operationDBModel) {
 
-        ActivityDAO activityDAO = createActivityDAO(AppConstant.CREATE_SESSION_ACTIVITY,AppConstant.CREATE_SESSION_ACTIVITY_DESC,String.valueOf(sessionDBModel.getAgentId()),sessionDBModel.getAgentName(),String.valueOf(sessionDBModel.getId()),sessionDBModel.getClientName());
-        operationDBModel.getOperationActivities().add(activityDAO);
+        OperationActivityDAO operationActivityDAO = createActivityDAO(AppConstant.CREATE_SESSION_ACTIVITY,AppConstant.CREATE_SESSION_ACTIVITY_DESC,String.valueOf(sessionDBModel.getAgentId()),sessionDBModel.getAgentName(),String.valueOf(sessionDBModel.getId()),sessionDBModel.getClientName());
+        operationDBModel.getOperationActivities().add(operationActivityDAO);
         operationDBModel.setuDate(appUtils.getCurrentTimeStamp());
         operationRepository.save(operationDBModel);
     }
@@ -43,28 +41,28 @@ public class ActivityHelper {
 
     public void createOperationActivity(SessionDBModel sessionDBModel,OperationDBModel operationDBModel) {
 
-        ActivityDAO activityDAO = createActivityDAO(AppConstant.CREATE_OPERATION_ACTIVITY,AppConstant.CREATE_OPERATION_ACTIVITY_DESC,String.valueOf(sessionDBModel.getAgentId()),sessionDBModel.getAgentName(),operationDBModel.getId(),sessionDBModel.getClientName());
-        operationDBModel.getOperationActivities().add(activityDAO);
+        OperationActivityDAO operationActivityDAO = createActivityDAO(AppConstant.CREATE_OPERATION_ACTIVITY,AppConstant.CREATE_OPERATION_ACTIVITY_DESC,String.valueOf(sessionDBModel.getAgentId()),sessionDBModel.getAgentName(),operationDBModel.getId(),sessionDBModel.getClientName());
+        operationDBModel.getOperationActivities().add(operationActivityDAO);
         operationDBModel.setuDate(appUtils.getCurrentTimeStamp());
         operationRepository.save(operationDBModel);
     }
 
 
-    public ActivityDAO createActivityDAO(String activity,String activityDesc,String creatorId,String creator,String createdId,String created){
+    public OperationActivityDAO createActivityDAO(String activity, String activityDesc, String creatorId, String creator, String createdId, String created){
 
-        ActivityDAO activityDAO = new ActivityDAO();
-        activityDAO.setId(appUtils.generateUUID());
-        activityDAO.setActivity(activity);
-        activityDAO.setActivityDesc(activityDesc);
-        activityDAO.setCreatorId(creatorId);
-        activityDAO.setCreator(creator);
-        activityDAO.setCreatedId(createdId);
-        activityDAO.setCreated(created);
-        activityDAO.setActivityDatas(new ArrayList<>());
-        activityDAO.setcDate(appUtils.getCurrentTimeStamp());
-        activityDAO.setStatus(1);
+        OperationActivityDAO operationActivityDAO = new OperationActivityDAO();
+        operationActivityDAO.setId(appUtils.generateUUID());
+        operationActivityDAO.setActivity(activity);
+        operationActivityDAO.setActivityDesc(activityDesc);
+        operationActivityDAO.setCreatorId(creatorId);
+        operationActivityDAO.setCreator(creator);
+        operationActivityDAO.setCreatedId(createdId);
+        operationActivityDAO.setCreated(created);
+        operationActivityDAO.setActivityDatas(new ArrayList<>());
+        operationActivityDAO.setcDate(appUtils.getCurrentTimeStamp());
+        operationActivityDAO.setStatus(1);
 
-        return activityDAO;
+        return operationActivityDAO;
     }
 
 

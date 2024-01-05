@@ -19,7 +19,6 @@ import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.ActivityHelper;
 import com.faas.core.utils.helpers.OperationHelper;
-import com.faas.core.utils.helpers.SessionHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -36,9 +35,6 @@ public class CampaignOperationFramework {
 
     @Autowired
     ActivityHelper activityHelper;
-
-    @Autowired
-    SessionHelper sessionHelper;
 
     @Autowired
     OperationHelper operationHelper;
@@ -70,8 +66,8 @@ public class CampaignOperationFramework {
         Page<SessionDBModel> sessionModelPage = sessionRepository.findAllByCampaignIdAndClientCityAndClientCountry(campaignId,city,country, PageRequest.of(reqPage,reqSize));
         if (sessionModelPage != null){
             CampaignOperationWSDTO campaignOperationWSDTO = new CampaignOperationWSDTO();
-            campaignOperationWSDTO.setOperations(operationHelper.getOperationWSDTOS(sessionModelPage.getContent()));
-            campaignOperationWSDTO.setPagination(operationHelper.mapOperationSessionPagination(sessionModelPage));
+            campaignOperationWSDTO.setOperations(operationHelper.getOperationWSDTOSBySessionModels(sessionModelPage.getContent()));
+            campaignOperationWSDTO.setPagination(operationHelper.mapSessionModelPagination(sessionModelPage));
 
             return campaignOperationWSDTO;
         }
@@ -85,8 +81,8 @@ public class CampaignOperationFramework {
         if (sessionModelPage != null){
 
             CampaignOperationWSDTO campaignOperationWSDTO = new CampaignOperationWSDTO();
-            campaignOperationWSDTO.setOperations(operationHelper.getOperationWSDTOS(sessionModelPage.getContent()));
-            campaignOperationWSDTO.setPagination(operationHelper.mapOperationSessionPagination(sessionModelPage));
+            campaignOperationWSDTO.setOperations(operationHelper.getOperationWSDTOSBySessionModels(sessionModelPage.getContent()));
+            campaignOperationWSDTO.setPagination(operationHelper.mapSessionModelPagination(sessionModelPage));
 
             return campaignOperationWSDTO;
         }

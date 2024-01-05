@@ -1,14 +1,14 @@
 package com.faas.core.api.middleware.dashboard;
 
 import com.faas.core.api.framework.dashboard.ApiDashboardFramework;
-import com.faas.core.api.model.ws.campaign.content.ApiCampaignWSModel;
-import com.faas.core.api.model.ws.campaign.content.dto.ApiCampaignWSDTO;
+import com.faas.core.api.model.ws.dashboard.ApiDashboardCampaignWSModel;
+import com.faas.core.api.model.ws.dashboard.ApiDashboardOperationWSModel;
 import com.faas.core.api.model.ws.dashboard.ApiDashboardWSModel;
+import com.faas.core.api.model.ws.dashboard.dto.ApiDashboardCampaignWSDTO;
+import com.faas.core.api.model.ws.dashboard.dto.ApiDashboardOperationWSDTO;
 import com.faas.core.api.model.ws.dashboard.dto.ApiDashboardWSDTO;
 import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
 import com.faas.core.api.model.ws.general.ApiSummaryWSModel;
-import com.faas.core.api.model.ws.operation.content.ApiOperationListWSModel;
-import com.faas.core.api.model.ws.operation.content.dto.ApiOperationListWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,14 +43,15 @@ public class ApiDashboardMiddleware {
         return response;
     }
 
-    public ApiOperationListWSModel apiGetDashboardOperations(long agentId, String operationType, String operationState, int reqPage, int reqSize) {
 
-        ApiOperationListWSModel response = new ApiOperationListWSModel();
+    public ApiDashboardOperationWSModel apiGetDashboardOperations(long agentId,String operationType,String operationState,int reqPage,int reqSize) {
+
+        ApiDashboardOperationWSModel response = new ApiDashboardOperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiOperationListWSDTO operationListWSDTO = apiDashboardFramework.apiGetDashboardOperationsService(agentId,operationType,operationState,reqPage,reqSize);
-        if (operationListWSDTO != null){
-            response.setOperationList(operationListWSDTO);
+        ApiDashboardOperationWSDTO dashboardOperationWSDTO = apiDashboardFramework.apiGetDashboardOperationsService(agentId,operationType,operationState,reqPage,reqSize);
+        if (dashboardOperationWSDTO != null){
+            response.setDashboardOperation(dashboardOperationWSDTO);
         }
 
         general.setOperation("apiGetDashboardOperations");
@@ -62,14 +63,15 @@ public class ApiDashboardMiddleware {
         return response;
     }
 
-    public ApiCampaignWSModel apiGetDashboardCampaigns(long agentId) {
 
-        ApiCampaignWSModel response = new ApiCampaignWSModel();
+    public ApiDashboardCampaignWSModel apiGetDashboardCampaigns(long agentId) {
+
+        ApiDashboardCampaignWSModel response = new ApiDashboardCampaignWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ApiCampaignWSDTO> campaignWSDTOS = apiDashboardFramework.apiGetDashboardCampaignsService(agentId);
-        if (campaignWSDTOS != null){
-            response.setCampaigns(campaignWSDTOS);
+        List<ApiDashboardCampaignWSDTO> dashboardCampaignWSDTOS = apiDashboardFramework.apiGetDashboardCampaignsService(agentId);
+        if (dashboardCampaignWSDTOS != null){
+            response.setDashboardCampaigns(dashboardCampaignWSDTOS);
         }
 
         general.setOperation("apiGetDashboardCampaigns");
@@ -81,14 +83,15 @@ public class ApiDashboardMiddleware {
         return response;
     }
 
+
     public ApiSummaryWSModel apiGetDashboardSummary(long agentId) {
 
         ApiSummaryWSModel response = new ApiSummaryWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ApiSummaryWSDTO> summaries = apiDashboardFramework.apiGetDashboardSummaryService(agentId);
-        if (summaries != null){
-            response.setSummaries(summaries);
+        List<ApiSummaryWSDTO> dashboardSummaries = apiDashboardFramework.apiGetDashboardSummaryService(agentId);
+        if (dashboardSummaries != null){
+            response.setSummaries(dashboardSummaries);
         }
 
         general.setOperation("apiGetDashboardSummary");

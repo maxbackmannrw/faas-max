@@ -10,9 +10,7 @@ import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.session.SessionRepository;
-import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
-import com.faas.core.utils.helpers.SessionHelper;
 import com.faas.core.utils.helpers.CampaignHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -26,8 +24,6 @@ import java.util.Optional;
 @Component
 public class ApiSessionFramework {
 
-    @Autowired
-    SessionHelper sessionHelper;
 
     @Autowired
     CampaignHelper campaignHelper;
@@ -51,8 +47,6 @@ public class ApiSessionFramework {
     public ApiAgentSessionWSDTO apiGetAgentSessionService(long agentId, int reqPage, int reqSize) {
 
         ApiAgentSessionWSDTO agentSessionWSDTO = new ApiAgentSessionWSDTO();
-        agentSessionWSDTO.setReadySession(sessionHelper.getApiSessionWSDTO(agentId,AppConstant.READY_STATE,reqPage,reqSize));
-        agentSessionWSDTO.setActiveSession(sessionHelper.getApiSessionWSDTO(agentId,AppConstant.ACTIVE_STATE,reqPage,reqSize));
 
         return agentSessionWSDTO;
     }
@@ -79,7 +73,6 @@ public class ApiSessionFramework {
 
         Page<SessionDBModel> sessionModelPage =sessionRepository.findAllByAgentIdAndSessionState(agentId,sessionState,PageRequest.of(reqPage,reqSize));
         if (sessionModelPage != null){
-            return fillApiSessionWSDTO(sessionModelPage.getContent(),sessionHelper.createSessionPaginationWSDTO(sessionModelPage)) ;
         }
         return null;
     }
@@ -89,7 +82,6 @@ public class ApiSessionFramework {
 
         Page<SessionDBModel> sessionModelPage =sessionRepository.findAllByIdAndAgentId(sessionId,agentId,PageRequest.of(0,20));
         if (sessionModelPage != null){
-            return fillApiSessionWSDTO(sessionModelPage.getContent(),sessionHelper.createSessionPaginationWSDTO(sessionModelPage)) ;
         }
         return null;
     }
@@ -99,13 +91,12 @@ public class ApiSessionFramework {
 
         Optional<SessionDBModel> sessionDBModel =sessionRepository.findById(sessionId);
         if (sessionDBModel.isPresent()){
-            return sessionHelper.mapApiSessionDetailsWSDTO(sessionDBModel.get());
         }
         return null;
     }
 
     public List<ApiSummaryWSDTO> apiGetSessionSummaryService(long agentId) {
-        return sessionHelper.getApiSessionSummary(agentId);
+        return null;
     }
 
 

@@ -16,6 +16,7 @@ public interface OperationRepository extends MongoRepository<OperationDBModel, S
     boolean existsByClientIdAndOperationState(long clientId,String operationState);
     boolean existsBySessionIdAndOperationState(long sessionId,String operationState);
     boolean existsBySessionIdAndClientId(long sessionId,long clientId);
+    long countByAgentIdAndOperationState(long agentId,String operationState);
     List<OperationDBModel>findByIdAndSessionId(String operationId,long sessionId);
     List<OperationDBModel>findByClientId(long clientId);
     List<OperationDBModel>findBySessionId(long sessionId);
@@ -31,21 +32,16 @@ public interface OperationRepository extends MongoRepository<OperationDBModel, S
     List<OperationDBModel>findByCampaignId(String campaignId);
     List<OperationDBModel>findByCampaignIdAndProcessId(String campaignId,String processId);
     List<OperationDBModel>findBySessionIdAndProcessId(long sessionId,String processId);
-
     Page<OperationDBModel>findAllByStatus(int status, Pageable pageable);
-
     Page<OperationDBModel>findAllByAgentId(long agentId, Pageable pageable);
-
-    Page<OperationDBModel>findAllByOperationState(String operationState, Pageable pageable);
-
-    Page<OperationDBModel>findAllByOperationType(String operationType,Pageable pageable);
-
-    Page<OperationDBModel>findAllByOperationStateAndOperationType(String operationState,String operationType, Pageable pageable);
-
-    Page<OperationDBModel>findAllByAgentIdAndOperationState(long agentId,String operationState, Pageable pageable);
-
     Page<OperationDBModel>findAllByAgentIdAndCampaignId(long agentId,String campaignId, Pageable pageable);
-
+    Page<OperationDBModel>findAllByOperationState(String operationState, Pageable pageable);
+    Page<OperationDBModel>findAllByOperationType(String operationType,Pageable pageable);
+    Page<OperationDBModel>findAllByOperationStateAndOperationType(String operationState,String operationType, Pageable pageable);
+    Page<OperationDBModel>findAllByAgentIdAndOperationState(long agentId,String operationState, Pageable pageable);
+    Page<OperationDBModel>findAllByAgentIdAndOperationTypeAndOperationState(long agentId,String operationType,String operationState, Pageable pageable);
+    Page<OperationDBModel>findAllByAgentIdAndOperationTypeAndOperationStateAndOperationFlowState(long agentId,String operationType,String operationState,String operationFlowState, Pageable pageable);
+    Page<OperationDBModel>findAllByAgentIdAndOperationTypeAndOperationStateAndOperationInquiryState(long agentId,String operationType,String operationState, String operationInquiryState, Pageable pageable);
     Page<OperationDBModel>findAllByAgentIdAndCampaignIdAndOperationState(long agentId,String campaignId,String operationState, Pageable pageable);
 
 

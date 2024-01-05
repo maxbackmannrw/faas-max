@@ -3,7 +3,7 @@ package com.faas.core.api.middleware.operation.details.activity;
 import com.faas.core.api.framework.operation.details.activity.ApiOperationActivityFramework;
 import com.faas.core.api.model.ws.operation.details.activity.ApiOperationActivityWSModel;
 import com.faas.core.api.model.ws.operation.details.activity.dto.ApiOperationActivityWSDTO;
-import com.faas.core.base.model.db.operation.content.dao.ActivityDAO;
+import com.faas.core.base.model.db.operation.content.dao.OperationActivityDAO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,10 +27,10 @@ public class ApiOperationActivityMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ApiOperationActivityWSDTO> operationActivityWSDTOS = new ArrayList<>();
 
-        List<ActivityDAO> operationActivities = apiOperationActivityFramework.apiGetOperationActivitiesService(sessionId,clientId);
+        List<OperationActivityDAO> operationActivities = apiOperationActivityFramework.apiGetOperationActivitiesService(sessionId,clientId);
         if (operationActivities != null){
-            for (ActivityDAO activityDAO : operationActivities) {
-                operationActivityWSDTOS.add(apiOperationActivityFramework.fillApiOperationActivityWSDTO(activityDAO));
+            for (OperationActivityDAO operationActivityDAO : operationActivities) {
+                operationActivityWSDTOS.add(apiOperationActivityFramework.fillApiOperationActivityWSDTO(operationActivityDAO));
             }
         }
 
@@ -52,9 +52,9 @@ public class ApiOperationActivityMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ApiOperationActivityWSDTO>operationActivityWSDTOS = new ArrayList<>();
 
-        ActivityDAO activityDAO = apiOperationActivityFramework.apiGetOperationActivityService(sessionId,clientId,activityId);
-        if (activityDAO != null){
-            operationActivityWSDTOS.add(apiOperationActivityFramework.fillApiOperationActivityWSDTO(activityDAO));
+        OperationActivityDAO operationActivityDAO = apiOperationActivityFramework.apiGetOperationActivityService(sessionId,clientId,activityId);
+        if (operationActivityDAO != null){
+            operationActivityWSDTOS.add(apiOperationActivityFramework.fillApiOperationActivityWSDTO(operationActivityDAO));
         }
 
         response.setOperationActivities(operationActivityWSDTOS);

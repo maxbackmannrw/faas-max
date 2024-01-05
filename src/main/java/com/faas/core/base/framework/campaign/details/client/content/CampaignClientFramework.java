@@ -8,12 +8,10 @@ import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.ClientHelper;
-import com.faas.core.utils.helpers.SessionHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
 import java.util.Optional;
 
 

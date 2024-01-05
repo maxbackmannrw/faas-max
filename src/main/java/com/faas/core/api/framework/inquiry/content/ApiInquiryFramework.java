@@ -11,9 +11,7 @@ import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
-import com.faas.core.utils.helpers.InquiryHelper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -21,9 +19,6 @@ import java.util.List;
 
 @Component
 public class ApiInquiryFramework {
-
-    @Autowired
-    InquiryHelper inquiryHelper;
 
     @Autowired
     SessionRepository sessionRepository;
@@ -110,7 +105,7 @@ public class ApiInquiryFramework {
 
 
     public List<ApiSummaryWSDTO> apiGetInquirySummaryService(long agentId){
-        return inquiryHelper.getApiInquirySummary(agentId);
+        return null;
     }
 
 

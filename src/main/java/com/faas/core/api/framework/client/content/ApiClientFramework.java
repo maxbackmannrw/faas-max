@@ -8,10 +8,8 @@ import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
-import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.CampaignHelper;
-import com.faas.core.utils.helpers.SessionHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -23,8 +21,6 @@ import java.util.List;
 @Component
 public class ApiClientFramework {
 
-    @Autowired
-    SessionHelper sessionHelper;
 
     @Autowired
     CampaignHelper campaignHelper;
@@ -48,8 +44,6 @@ public class ApiClientFramework {
     public ApiAgentSessionWSDTO apiGetAgentClientsService(long agentId, int reqPage, int reqSize) {
 
         ApiAgentSessionWSDTO agentSessionWSDTO = new ApiAgentSessionWSDTO();
-        agentSessionWSDTO.setReadySession(sessionHelper.getApiSessionWSDTO(agentId,AppConstant.READY_STATE,reqPage,reqSize));
-        agentSessionWSDTO.setActiveSession(sessionHelper.getApiSessionWSDTO(agentId,AppConstant.ACTIVE_STATE,reqPage,reqSize));
 
         return agentSessionWSDTO;
     }
@@ -70,7 +64,6 @@ public class ApiClientFramework {
 
         Page<SessionDBModel> sessionModelPage =sessionRepository.findAllByAgentIdAndSessionState(agentId,sessionState,PageRequest.of(reqPage,reqSize));
         if (sessionModelPage != null){
-            return fillApiSessionWSDTO(sessionModelPage.getContent(),sessionHelper.createSessionPaginationWSDTO(sessionModelPage)) ;
         }
         return null;
     }

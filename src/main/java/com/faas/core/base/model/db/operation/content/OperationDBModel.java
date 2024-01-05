@@ -18,14 +18,14 @@ public class OperationDBModel {
     private String campaignId;
     private String processId;
     private OperationInquiryDAO operationInquiry;
+    private String operationInquiryState;
     private OperationFlowDAO operationFlow;
+    private String operationFlowState;
     private List<OperationScenarioDAO>operationScenarios;
-    private List<ActivityDAO>operationActivities;
+    private List<OperationActivityDAO>operationActivities;
     private List<OperationDataDAO>operationDatas;
     private String operationType;
     private String operationState;
-    private String inquiryState;
-    private String flowState;
     private long uDate;
     private long cDate;
     private int status;
@@ -33,7 +33,7 @@ public class OperationDBModel {
     public OperationDBModel() {
     }
 
-    public OperationDBModel(String id, long sessionId, String sessionUUID, long clientId, long agentId, String campaignId, String processId, OperationInquiryDAO operationInquiry, OperationFlowDAO operationFlow, List<OperationScenarioDAO> operationScenarios, List<ActivityDAO> operationActivities, List<OperationDataDAO> operationDatas, String operationType, String operationState, String inquiryState, String flowState, long uDate, long cDate, int status) {
+    public OperationDBModel(String id, long sessionId, String sessionUUID, long clientId, long agentId, String campaignId, String processId, OperationInquiryDAO operationInquiry, String operationInquiryState, OperationFlowDAO operationFlow, String operationFlowState, List<OperationScenarioDAO> operationScenarios, List<OperationActivityDAO> operationActivities, List<OperationDataDAO> operationDatas, String operationType, String operationState, long uDate, long cDate, int status) {
         this.id = id;
         this.sessionId = sessionId;
         this.sessionUUID = sessionUUID;
@@ -42,14 +42,14 @@ public class OperationDBModel {
         this.campaignId = campaignId;
         this.processId = processId;
         this.operationInquiry = operationInquiry;
+        this.operationInquiryState = operationInquiryState;
         this.operationFlow = operationFlow;
+        this.operationFlowState = operationFlowState;
         this.operationScenarios = operationScenarios;
         this.operationActivities = operationActivities;
         this.operationDatas = operationDatas;
         this.operationType = operationType;
         this.operationState = operationState;
-        this.inquiryState = inquiryState;
-        this.flowState = flowState;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
@@ -119,12 +119,28 @@ public class OperationDBModel {
         this.operationInquiry = operationInquiry;
     }
 
+    public String getOperationInquiryState() {
+        return operationInquiryState;
+    }
+
+    public void setOperationInquiryState(String operationInquiryState) {
+        this.operationInquiryState = operationInquiryState;
+    }
+
     public OperationFlowDAO getOperationFlow() {
         return operationFlow;
     }
 
     public void setOperationFlow(OperationFlowDAO operationFlow) {
         this.operationFlow = operationFlow;
+    }
+
+    public String getOperationFlowState() {
+        return operationFlowState;
+    }
+
+    public void setOperationFlowState(String operationFlowState) {
+        this.operationFlowState = operationFlowState;
     }
 
     public List<OperationScenarioDAO> getOperationScenarios() {
@@ -135,11 +151,11 @@ public class OperationDBModel {
         this.operationScenarios = operationScenarios;
     }
 
-    public List<ActivityDAO> getOperationActivities() {
+    public List<OperationActivityDAO> getOperationActivities() {
         return operationActivities;
     }
 
-    public void setOperationActivities(List<ActivityDAO> operationActivities) {
+    public void setOperationActivities(List<OperationActivityDAO> operationActivities) {
         this.operationActivities = operationActivities;
     }
 
@@ -165,22 +181,6 @@ public class OperationDBModel {
 
     public void setOperationState(String operationState) {
         this.operationState = operationState;
-    }
-
-    public String getInquiryState() {
-        return inquiryState;
-    }
-
-    public void setInquiryState(String inquiryState) {
-        this.inquiryState = inquiryState;
-    }
-
-    public String getFlowState() {
-        return flowState;
-    }
-
-    public void setFlowState(String flowState) {
-        this.flowState = flowState;
     }
 
     public long getuDate() {
