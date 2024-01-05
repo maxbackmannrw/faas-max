@@ -17,6 +17,7 @@ import java.util.List;
 @Component
 public class ProcessScenarioMiddleware {
 
+
     @Autowired
     ProcessScenarioFramework processScenarioFramework;
 
@@ -40,7 +41,6 @@ public class ProcessScenarioMiddleware {
         return response;
     }
 
-
     public ProcessScenarioWSModel getProcessScenario(long userId,String processId,String scenarioId) {
 
         ProcessScenarioWSModel response = new ProcessScenarioWSModel();
@@ -62,14 +62,13 @@ public class ProcessScenarioMiddleware {
         return response;
     }
 
-
-    public ProcessScenarioWSModel createProcessScenario(long userId,String processId,String scenarioId,int order) {
+    public ProcessScenarioWSModel createProcessScenario(long userId,String processId,String scenarioId) {
 
         ProcessScenarioWSModel response = new ProcessScenarioWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessScenarioWSDTO>processScenarioWSDTOS = new ArrayList<>();
 
-        ProcessScenarioWSDTO processScenarioWSDTO = processScenarioFramework.createProcessScenarioService(processId,scenarioId,order);
+        ProcessScenarioWSDTO processScenarioWSDTO = processScenarioFramework.createProcessScenarioService(processId,scenarioId);
         if (processScenarioWSDTO != null){
             processScenarioWSDTOS.add(processScenarioWSDTO);
         }
@@ -83,7 +82,6 @@ public class ProcessScenarioMiddleware {
 
         return response;
     }
-
 
     public ProcessScenarioWSModel removeProcessScenario(long userId,String processId,String scenarioId) {
 
@@ -108,7 +106,6 @@ public class ProcessScenarioMiddleware {
 
 
 
-
     public ProcessScenarioDataWSModel getProcessScenarioDatas(long userId, String processId, String scenarioId) {
 
         ProcessScenarioDataWSModel response = new ProcessScenarioDataWSModel();
@@ -127,7 +124,6 @@ public class ProcessScenarioMiddleware {
 
         return response;
     }
-
 
     public ProcessScenarioDataWSModel getProcessScenarioData(long userId, String processId, String scenarioId, String dataId) {
 
@@ -150,7 +146,6 @@ public class ProcessScenarioMiddleware {
         return response;
     }
 
-
     public ProcessScenarioDataWSModel createProcessScenarioData(long userId, String processId, String scenarioId, long typeId, String value) {
 
         ProcessScenarioDataWSModel response = new ProcessScenarioDataWSModel();
@@ -172,7 +167,6 @@ public class ProcessScenarioMiddleware {
         return response;
     }
 
-
     public ProcessScenarioDataWSModel updateProcessScenarioData(long userId, String processId, String scenarioId, String dataId, long typeId, String value) {
 
         ProcessScenarioDataWSModel response = new ProcessScenarioDataWSModel();
@@ -193,7 +187,6 @@ public class ProcessScenarioMiddleware {
 
         return response;
     }
-
 
     public ProcessScenarioDataWSModel removeProcessScenarioData(long userId, String processId, String scenarioId, String dataId) {
 

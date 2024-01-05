@@ -15,10 +15,11 @@ public class ProcessScenarioDBModel {
     private String processId;
     private String scenarioId;
     private String scenario;
-    private List<ScenarioDataDAO> scenarioDatas;
+    private String scenarioDesc;
     private long typeId;
     private String scenarioType;
-    private int order;
+    private String baseType;
+    private List<ScenarioDataDAO> scenarioDatas;
     private long uDate;
     private long cDate;
     private int status;
@@ -26,15 +27,16 @@ public class ProcessScenarioDBModel {
     public ProcessScenarioDBModel() {
     }
 
-    public ProcessScenarioDBModel(String id, String processId, String scenarioId, String scenario, List<ScenarioDataDAO> scenarioDatas, long typeId, String scenarioType, int order, long uDate, long cDate, int status) {
+    public ProcessScenarioDBModel(String id, String processId, String scenarioId, String scenario, String scenarioDesc, long typeId, String scenarioType, String baseType, List<ScenarioDataDAO> scenarioDatas, long uDate, long cDate, int status) {
         this.id = id;
         this.processId = processId;
         this.scenarioId = scenarioId;
         this.scenario = scenario;
-        this.scenarioDatas = scenarioDatas;
+        this.scenarioDesc = scenarioDesc;
         this.typeId = typeId;
         this.scenarioType = scenarioType;
-        this.order = order;
+        this.baseType = baseType;
+        this.scenarioDatas = scenarioDatas;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
@@ -72,12 +74,12 @@ public class ProcessScenarioDBModel {
         this.scenario = scenario;
     }
 
-    public List<ScenarioDataDAO> getScenarioDatas() {
-        return scenarioDatas;
+    public String getScenarioDesc() {
+        return scenarioDesc;
     }
 
-    public void setScenarioDatas(List<ScenarioDataDAO> scenarioDatas) {
-        this.scenarioDatas = scenarioDatas;
+    public void setScenarioDesc(String scenarioDesc) {
+        this.scenarioDesc = scenarioDesc;
     }
 
     public long getTypeId() {
@@ -96,12 +98,20 @@ public class ProcessScenarioDBModel {
         this.scenarioType = scenarioType;
     }
 
-    public int getOrder() {
-        return order;
+    public String getBaseType() {
+        return baseType;
     }
 
-    public void setOrder(int order) {
-        this.order = order;
+    public void setBaseType(String baseType) {
+        this.baseType = baseType;
+    }
+
+    public List<ScenarioDataDAO> getScenarioDatas() {
+        return scenarioDatas;
+    }
+
+    public void setScenarioDatas(List<ScenarioDataDAO> scenarioDatas) {
+        this.scenarioDatas = scenarioDatas;
     }
 
     public long getuDate() {

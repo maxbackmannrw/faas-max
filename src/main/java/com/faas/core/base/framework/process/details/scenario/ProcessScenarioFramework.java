@@ -40,75 +40,65 @@ public class ProcessScenarioFramework {
     AppUtils appUtils;
 
 
-    public ProcessScenarioWSDTO fillProcessScenarioWSDTO(ProcessScenarioDBModel processScenarioDBModel) {
-
-        ProcessScenarioWSDTO processScenarioWSDTO = new ProcessScenarioWSDTO();
-        processScenarioWSDTO.setProcessScenario(processScenarioDBModel);
-        return processScenarioWSDTO;
-    }
-
-
     public List<ProcessScenarioWSDTO> getProcessScenariosService(String processId) {
 
         List<ProcessScenarioWSDTO> processScenarioWSDTOS = new ArrayList<>();
         List<ProcessScenarioDBModel> processScenarioDBModels = processScenarioRepository.findByProcessId(processId);
         for (ProcessScenarioDBModel processScenarioDBModel : processScenarioDBModels) {
-            processScenarioWSDTOS.add(fillProcessScenarioWSDTO(processScenarioDBModel));
+            processScenarioWSDTOS.add(new ProcessScenarioWSDTO(processScenarioDBModel));
         }
         return processScenarioWSDTOS;
     }
-
 
     public ProcessScenarioWSDTO getProcessScenarioService(String processId, String scenarioId) {
 
         List<ProcessScenarioDBModel> processScenarioDBModels = processScenarioRepository.findByProcessIdAndScenarioId(processId,scenarioId);
         if (!processScenarioDBModels.isEmpty()) {
-            return fillProcessScenarioWSDTO(processScenarioDBModels.get(0));
+            return new ProcessScenarioWSDTO(processScenarioDBModels.get(0));
         }
         return null;
     }
 
-
-    public ProcessScenarioWSDTO createProcessScenarioService(String processId,String scenarioId,int order) {
+    public ProcessScenarioWSDTO createProcessScenarioService(String processId,String scenarioId) {
 
         Optional<ProcessDBModel> processDBModel = processRepository.findById(processId);
         Optional<ScenarioDBModel> scenarioDBModel = scenarioRepository.findById(scenarioId);
         if (!processScenarioRepository.existsByProcessIdAndScenarioId(processId,scenarioId) && processDBModel.isPresent() && scenarioDBModel.isPresent()) {
 
             ProcessScenarioDBModel processScenarioDBModel = new ProcessScenarioDBModel();
-
             processScenarioDBModel.setProcessId(processId);
             processScenarioDBModel.setScenarioId(scenarioId);
             processScenarioDBModel.setScenario(scenarioDBModel.get().getScenario());
+            processScenarioDBModel.setScenarioDesc(scenarioDBModel.get().getScenarioDesc());
             processScenarioDBModel.setTypeId(scenarioDBModel.get().getTypeId());
             processScenarioDBModel.setScenarioType(scenarioDBModel.get().getScenarioType());
+            processScenarioDBModel.setBaseType(scenarioDBModel.get().getBaseType());
+
             if (scenarioDBModel.get().getScenarioDatas() != null){
                 processScenarioDBModel.setScenarioDatas(scenarioDBModel.get().getScenarioDatas());
             }else {
                 processScenarioDBModel.setScenarioDatas(new ArrayList<>());
             }
 
-            processScenarioDBModel.setOrder(order);
             processScenarioDBModel.setuDate(appUtils.getCurrentTimeStamp());
             processScenarioDBModel.setcDate(appUtils.getCurrentTimeStamp());
             processScenarioDBModel.setStatus(1);
 
-            return fillProcessScenarioWSDTO(processScenarioRepository.save(processScenarioDBModel));
+            return new ProcessScenarioWSDTO(processScenarioRepository.save(processScenarioDBModel));
         }
         return null;
     }
-
-
 
     public ProcessScenarioWSDTO removeProcessScenarioService(String processId, String scenarioId) {
 
         List<ProcessScenarioDBModel> processScenarioDBModels = processScenarioRepository.findByProcessIdAndScenarioId(processId,scenarioId);
         if (!processScenarioDBModels.isEmpty()) {
             processScenarioRepository.deleteAll(processScenarioDBModels);
-            return fillProcessScenarioWSDTO(processScenarioDBModels.get(0));
+            return new ProcessScenarioWSDTO(processScenarioDBModels.get(0));
         }
         return null;
     }
+
 
 
     public List<ProcessScenarioDataWSDTO> getProcessScenarioDatasService(String processId, String scenarioId) {
@@ -123,7 +113,6 @@ public class ProcessScenarioFramework {
         return scenarioDataWSDTOS;
     }
 
-
     public ProcessScenarioDataWSDTO getProcessScenarioDataService(String processId, String scenarioId, String dataId) {
 
         List<ProcessScenarioDBModel> scenarioDBModels = processScenarioRepository.findByProcessIdAndScenarioId(processId,scenarioId);
@@ -136,7 +125,6 @@ public class ProcessScenarioFramework {
         }
         return null;
     }
-
 
     public ProcessScenarioDataWSDTO createProcessScenarioDataService(String processId, String scenarioId, long typeId, String value) {
 
@@ -186,7 +174,6 @@ public class ProcessScenarioFramework {
         }
         return null;
     }
-
 
     public ProcessScenarioDataWSDTO removeProcessScenarioDataService(String processId, String scenarioId, String dataId) {
 
