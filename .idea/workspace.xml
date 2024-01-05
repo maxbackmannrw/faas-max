@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish" />
+    <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -606,14 +608,7 @@
       <workItem from="1704379491973" duration="4533000" />
       <workItem from="1704444958096" duration="146000" />
       <workItem from="1704448060495" duration="1770000" />
-    </task>
-    <task id="LOCAL-00512" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1703199203466</created>
-      <option name="number" value="00512" />
-      <option name="presentableId" value="LOCAL-00512" />
-      <option name="project" value="LOCAL" />
-      <updated>1703199203466</updated>
+      <workItem from="1704462696280" duration="907000" />
     </task>
     <task id="LOCAL-00513" summary="almost finish">
       <option name="closed" value="true" />
@@ -999,7 +994,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704453071674</updated>
     </task>
-    <option name="localTasksCounter" value="561" />
+    <task id="LOCAL-00561" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1704462777003</created>
+      <option name="number" value="00561" />
+      <option name="presentableId" value="LOCAL-00561" />
+      <option name="project" value="LOCAL" />
+      <updated>1704462777004</updated>
+    </task>
+    <option name="localTasksCounter" value="562" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
