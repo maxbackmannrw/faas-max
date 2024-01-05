@@ -105,7 +105,6 @@ public class ProcessScenarioMiddleware {
     }
 
 
-
     public ProcessScenarioDataWSModel getProcessScenarioDatas(long userId, String processId, String scenarioId) {
 
         ProcessScenarioDataWSModel response = new ProcessScenarioDataWSModel();

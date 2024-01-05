@@ -100,7 +100,6 @@ public class ProcessScenarioFramework {
     }
 
 
-
     public List<ProcessScenarioDataWSDTO> getProcessScenarioDatasService(String processId, String scenarioId) {
 
         List<ProcessScenarioDataWSDTO> scenarioDataWSDTOS = new ArrayList<>();
