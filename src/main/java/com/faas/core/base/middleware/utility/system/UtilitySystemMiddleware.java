@@ -2,10 +2,10 @@ package com.faas.core.base.middleware.utility.system;
 
 import com.faas.core.base.framework.utility.system.UtilitySystemFramework;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.utility.system.SystemInfoWSModel;
-import com.faas.core.base.model.ws.utility.system.SystemInitWSModel;
-import com.faas.core.base.model.ws.utility.system.dto.SystemInfoWSDTO;
-import com.faas.core.base.model.ws.utility.system.dto.SystemInitWSDTO;
+import com.faas.core.base.model.ws.utility.system.SystemUtilityWSModel;
+import com.faas.core.base.model.ws.utility.system.InitSystemUtilityWSModel;
+import com.faas.core.base.model.ws.utility.system.dto.SystemUtilityWSDTO;
+import com.faas.core.base.model.ws.utility.system.dto.InitSystemUtilityWSDTO;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -21,17 +21,17 @@ public class UtilitySystemMiddleware {
     UtilitySystemFramework utilitySystemFramework;
 
 
-    public SystemInfoWSModel getSystemInfos(long userId) {
+    public InitSystemUtilityWSModel initSystemUtility(String initType) {
 
-        SystemInfoWSModel response = new SystemInfoWSModel();
+        InitSystemUtilityWSModel response = new InitSystemUtilityWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<SystemInfoWSDTO> systemInfoWSDTOS = utilitySystemFramework.getSystemInfosService(userId);
-        if (systemInfoWSDTOS != null){
-            response.setSystemInfos(systemInfoWSDTOS);
+        InitSystemUtilityWSDTO initSystemUtilityWSDTO = utilitySystemFramework.initSystemUtilityService(initType);
+        if (initSystemUtilityWSDTO != null){
+            response.setInitSystemUtility(initSystemUtilityWSDTO);
         }
 
-        general.setOperation("getSystemInfos");
+        general.setOperation("initSystemUtility");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -41,17 +41,17 @@ public class UtilitySystemMiddleware {
     }
 
 
-    public SystemInitWSModel initializeSystem(String initType) {
+    public SystemUtilityWSModel getSystemUtilities(long userId) {
 
-        SystemInitWSModel response = new SystemInitWSModel();
+        SystemUtilityWSModel response = new SystemUtilityWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        SystemInitWSDTO systemInitWSDTO = utilitySystemFramework.initializeSystemService(initType);
-        if (systemInitWSDTO != null){
-            response.setSystemInit(systemInitWSDTO);
+        List<SystemUtilityWSDTO> systemUtilityWSDTOS = utilitySystemFramework.getSystemUtilitiesService(userId);
+        if (systemUtilityWSDTOS != null){
+            response.setSystemUtilities(systemUtilityWSDTOS);
         }
 
-        general.setOperation("initializeSystem");
+        general.setOperation("getSystemUtilities");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -61,19 +61,19 @@ public class UtilitySystemMiddleware {
     }
 
 
-    public SystemInfoWSModel repairSystemInfo(long userId, String systemInfo) {
+    public SystemUtilityWSModel repairSystemUtility(long userId, String systemUtility) {
 
-        SystemInfoWSModel response = new SystemInfoWSModel();
+        SystemUtilityWSModel response = new SystemUtilityWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<SystemInfoWSDTO> systemInfoWSDTOS = new ArrayList<>();
+        List<SystemUtilityWSDTO> systemUtilityWSDTOS = new ArrayList<>();
 
-        SystemInfoWSDTO systemInfoWSDTO = utilitySystemFramework.repairSystemInfoService(userId,systemInfo);
-        if (systemInfoWSDTO != null){
-            systemInfoWSDTOS.add(systemInfoWSDTO);
+        SystemUtilityWSDTO systemUtilityWSDTO = utilitySystemFramework.repairSystemUtilityService(userId,systemUtility);
+        if (systemUtilityWSDTO != null){
+            systemUtilityWSDTOS.add(systemUtilityWSDTO);
         }
 
-        response.setSystemInfos(systemInfoWSDTOS);
-        general.setOperation("repairSystemInfo");
+        response.setSystemUtilities(systemUtilityWSDTOS);
+        general.setOperation("repairSystemUtility");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -82,19 +82,19 @@ public class UtilitySystemMiddleware {
         return response;
     }
 
-    public SystemInfoWSModel removeSystemInfo(long userId, String systemInfo) {
+    public SystemUtilityWSModel removeSystemUtility(long userId, String systemUtility) {
 
-        SystemInfoWSModel response = new SystemInfoWSModel();
+        SystemUtilityWSModel response = new SystemUtilityWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<SystemInfoWSDTO> systemInfoWSDTOS = new ArrayList<>();
+        List<SystemUtilityWSDTO> systemUtilityWSDTOS = new ArrayList<>();
 
-        SystemInfoWSDTO systemInfoWSDTO = utilitySystemFramework.removeSystemInfoService(userId,systemInfo);
-        if (systemInfoWSDTO != null){
-            systemInfoWSDTOS.add(systemInfoWSDTO);
+        SystemUtilityWSDTO systemUtilityWSDTO = utilitySystemFramework.removeSystemUtilityService(userId,systemUtility);
+        if (systemUtilityWSDTO != null){
+            systemUtilityWSDTOS.add(systemUtilityWSDTO);
         }
 
-        response.setSystemInfos(systemInfoWSDTOS);
-        general.setOperation("removeSystemInfo");
+        response.setSystemUtilities(systemUtilityWSDTOS);
+        general.setOperation("removeSystemUtility");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -102,5 +102,7 @@ public class UtilitySystemMiddleware {
 
         return response;
     }
+
+
 
 }

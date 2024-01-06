@@ -9,7 +9,7 @@ public class AppConstant {
     public static final String GENERAL_SUCCESS_STATUS = "SUCCESS";
     public static final String GENERAL_FAIL_STATUS = "FAIL";
 
-    public static final String FIRST_TIME_INIT = "FIRST_TIME_INIT";
+
 
 
     public static final String MANAGER_USER = "MANAGER_USER";
@@ -151,7 +151,6 @@ public class AppConstant {
     public static final String FINISH_OPERATION_ACTIVITY_DESC = "operation finished by";
 
 
-
     public static final String URL_SHORTENER_API_URL = "https://tyny.to/linkApi";
     public static final String URL_SHORTENER_API_KEY = "b94afb4c-549d-4e40-9891-9aceb6155b31";
 
@@ -160,25 +159,24 @@ public class AppConstant {
     public static final String SMS_PROVIDER_USER_NAME = "wrwrozengint023";
     public static final String SMS_PROVIDER_PASSWORD = "web97898";
 
-
     public static final String CLIENT_NAME_TAG = "{clientName}";
     public static final String PWA_URL_TAG = "{pwaUrl}";
     public static final String NATIVE_URL_TAG = "{nativeUrl}";
 
 
-    public static final String CLIENTS_INFOS = "CLIENTS_INFOS";
-    public static final String SESSIONS_INFOS = "SESSIONS_INFOS";
-    public static final String OPERATIONS_INFOS = "OPERATIONS_INFOS";
-    public static final String OPERATION_INQUIRIES_INFOS = "OPERATION_INQUIRIES_INFOS";
-    public static final String OPERATION_FLOWS_INFOS = "OPERATION_FLOWS_INFOS";
 
-    public static final String CAMPAIGNS_INFOS = "CAMPAIGNS_INFOS";
-    public static final String PROCESSES_INFOS = "PROCESSES_INFOS";
-    public static final String SCENARIOS_INFOS = "SCENARIOS_INFOS";
+    public static final String FIRST_TIME_INIT = "FIRST_TIME_INIT";
 
-    public static final String USERS_INFOS = "USERS_INFOS";
-    public static final String AGENTS_INFOS = "AGENTS_INFOS";
-    public static final String ASSETS_INFOS = "ASSETS_INFOS";
+    public static final String CLIENT_UTILS = "CLIENT_UTILS";
+    public static final String SESSION_UTILS = "SESSION_UTILS";
+    public static final String OPERATION_UTILS = "OPERATION_UTILS";
 
+    public static final String CAMPAIGN_UTILS = "CAMPAIGN_UTILS";
+    public static final String PROCESS_UTILS = "PROCESS_UTILS";
+    public static final String SCENARIO_UTILS = "SCENARIO_UTILS";
+
+    public static final String USER_UTILS = "USER_UTILS";
+    public static final String AGENT_UTILS = "AGENT_UTILS";
+    public static final String ASSET_UTILS = "ASSET_UTILS";
 
 }

@@ -1,18 +1,13 @@
 package com.faas.core.base.framework.utility.system;
 
-import com.faas.core.base.model.db.client.content.ClientDBModel;
-import com.faas.core.base.model.db.user.content.UserDBModel;
-import com.faas.core.base.model.ws.utility.system.dto.SystemInfoWSDTO;
-import com.faas.core.base.model.ws.utility.system.dto.SystemInitWSDTO;
+import com.faas.core.base.model.ws.utility.system.dto.InitSystemUtilityWSDTO;
+import com.faas.core.base.model.ws.utility.system.dto.SystemUtilityWSDTO;
 import com.faas.core.base.repo.asset.content.AssetRepository;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;
-import com.faas.core.base.repo.process.details.trigger.*;
-import com.faas.core.base.repo.remote.app.RemoteAppRepository;
-import com.faas.core.base.repo.session.SessionRepository;
-import com.faas.core.base.repo.operation.details.channel.*;
 import com.faas.core.base.repo.operation.content.OperationRepository;
+import com.faas.core.base.repo.operation.details.channel.*;
 import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.process.details.channel.content.*;
 import com.faas.core.base.repo.process.details.channel.temp.ProcessEmailTempRepository;
@@ -20,7 +15,10 @@ import com.faas.core.base.repo.process.details.channel.temp.ProcessPushTempRepos
 import com.faas.core.base.repo.process.details.channel.temp.ProcessSmsMessageTempRepository;
 import com.faas.core.base.repo.process.details.channel.temp.ProcessWappMessageTempRepository;
 import com.faas.core.base.repo.process.details.scenario.ProcessScenarioRepository;
+import com.faas.core.base.repo.process.details.trigger.*;
+import com.faas.core.base.repo.remote.app.RemoteAppRepository;
 import com.faas.core.base.repo.scenario.content.ScenarioRepository;
+import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.base.repo.user.content.UserRepository;
 import com.faas.core.base.repo.user.details.UserDetailsRepository;
 import com.faas.core.utils.config.AppConstant;
@@ -29,12 +27,12 @@ import com.faas.core.utils.helpers.UtilityHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
 @Component
 public class UtilitySystemFramework {
+
 
     @Autowired
     UtilityHelper utilityHelper;
@@ -141,155 +139,24 @@ public class UtilitySystemFramework {
     @Autowired
     AppUtils appUtils;
 
-    public SystemInfoWSDTO fillSystemInfoWSDTO(String infoName,String infoValue,boolean infoState){
 
-        SystemInfoWSDTO systemInfoWSDTO = new SystemInfoWSDTO();
-        systemInfoWSDTO.setInfoName(infoName);
-        systemInfoWSDTO.setInfoValue(infoValue);
-        systemInfoWSDTO.setInfoState(infoState);
-
-        return systemInfoWSDTO;
-    }
-
-
-    public List<SystemInfoWSDTO> getSystemInfosService(long userId) {
-
-        List<SystemInfoWSDTO>systemInfoWSDTOS  = new ArrayList<>();
-
-        systemInfoWSDTOS.add(getClientsInfos());
-        systemInfoWSDTOS.add(getSessionsInfos());
-        systemInfoWSDTOS.add(getOperationsInfos());
-        systemInfoWSDTOS.add(getOperationInquiriesInfos());
-        systemInfoWSDTOS.add(getOperationFlowsInfos());
-
-        systemInfoWSDTOS.add(getCampaignsInfos());
-        systemInfoWSDTOS.add(getProcessesInfos());
-        systemInfoWSDTOS.add(getScenariosInfos());
-
-        systemInfoWSDTOS.add(getUsersInfos());
-        systemInfoWSDTOS.add(getAgentsInfos());
-        systemInfoWSDTOS.add(getAssetsInfos());
-
-        return systemInfoWSDTOS;
-    }
-
-
-
-    public SystemInfoWSDTO getClientsInfos(){
-
-        SystemInfoWSDTO systemInfoWSDTO = new SystemInfoWSDTO();
-        systemInfoWSDTO.setInfoName(AppConstant.CLIENTS_INFOS);
-        systemInfoWSDTO.setInfoValue(String.valueOf(clientRepository.count()));
-        systemInfoWSDTO.setInfoState(true);
-        return systemInfoWSDTO;
-    }
-
-    public SystemInfoWSDTO getSessionsInfos(){
-
-        SystemInfoWSDTO systemInfoWSDTO = new SystemInfoWSDTO();
-        systemInfoWSDTO.setInfoName(AppConstant.SESSIONS_INFOS);
-        systemInfoWSDTO.setInfoValue(String.valueOf(sessionRepository.count()));
-        systemInfoWSDTO.setInfoState(true);
-        return systemInfoWSDTO;
-    }
-
-    public SystemInfoWSDTO getOperationsInfos(){
-
-        SystemInfoWSDTO systemInfoWSDTO = new SystemInfoWSDTO();
-        systemInfoWSDTO.setInfoName(AppConstant.OPERATIONS_INFOS);
-        systemInfoWSDTO.setInfoValue(String.valueOf(operationRepository.count()));
-        systemInfoWSDTO.setInfoState(true);
-        return systemInfoWSDTO;
-    }
-
-    public SystemInfoWSDTO getOperationInquiriesInfos(){
-
-        SystemInfoWSDTO systemInfoWSDTO = new SystemInfoWSDTO();
-        systemInfoWSDTO.setInfoName(AppConstant.OPERATION_INQUIRIES_INFOS);
-        systemInfoWSDTO.setInfoState(true);
-        return systemInfoWSDTO;
-    }
-
-    public SystemInfoWSDTO getOperationFlowsInfos(){
-
-        SystemInfoWSDTO systemInfoWSDTO = new SystemInfoWSDTO();
-        systemInfoWSDTO.setInfoName(AppConstant.OPERATION_FLOWS_INFOS);
-        systemInfoWSDTO.setInfoState(true);
-        return systemInfoWSDTO;
-    }
-
-
-    public SystemInfoWSDTO getCampaignsInfos(){
-
-        SystemInfoWSDTO systemInfoWSDTO = new SystemInfoWSDTO();
-        systemInfoWSDTO.setInfoName(AppConstant.CAMPAIGNS_INFOS);
-        systemInfoWSDTO.setInfoValue(String.valueOf(campaignRepository.count()));
-        systemInfoWSDTO.setInfoState(true);
-        return systemInfoWSDTO;
-    }
-
-    public SystemInfoWSDTO getProcessesInfos(){
-
-        SystemInfoWSDTO systemInfoWSDTO = new SystemInfoWSDTO();
-        systemInfoWSDTO.setInfoName(AppConstant.PROCESSES_INFOS);
-        systemInfoWSDTO.setInfoValue(String.valueOf(processRepository.count()));
-        systemInfoWSDTO.setInfoState(true);
-        return systemInfoWSDTO;
-    }
-
-    public SystemInfoWSDTO getScenariosInfos(){
-
-        SystemInfoWSDTO systemInfoWSDTO = new SystemInfoWSDTO();
-        systemInfoWSDTO.setInfoName(AppConstant.SCENARIOS_INFOS);
-        systemInfoWSDTO.setInfoValue(String.valueOf(scenarioRepository.count()));
-        systemInfoWSDTO.setInfoState(true);
-        return systemInfoWSDTO;
-    }
-
-    public SystemInfoWSDTO getUsersInfos(){
-
-        SystemInfoWSDTO systemInfoWSDTO = new SystemInfoWSDTO();
-        systemInfoWSDTO.setInfoName(AppConstant.USERS_INFOS);
-        systemInfoWSDTO.setInfoValue(String.valueOf(userRepository.count()));
-        systemInfoWSDTO.setInfoState(true);
-        return systemInfoWSDTO;
-    }
-
-    public SystemInfoWSDTO getAgentsInfos(){
-
-        SystemInfoWSDTO systemInfoWSDTO = new SystemInfoWSDTO();
-        systemInfoWSDTO.setInfoName(AppConstant.AGENTS_INFOS);
-        systemInfoWSDTO.setInfoValue(String.valueOf(userRepository.countByUserType(AppConstant.AGENT_USER)));
-        systemInfoWSDTO.setInfoState(true);
-        return systemInfoWSDTO;
-    }
-
-    public SystemInfoWSDTO getAssetsInfos(){
-
-        SystemInfoWSDTO systemInfoWSDTO = new SystemInfoWSDTO();
-        systemInfoWSDTO.setInfoName(AppConstant.ASSETS_INFOS);
-        systemInfoWSDTO.setInfoValue(String.valueOf(assetRepository.count()));
-        systemInfoWSDTO.setInfoState(true);
-        return systemInfoWSDTO;
-    }
-
-
-
-    public SystemInitWSDTO initializeSystemService(String initType) {
+    public InitSystemUtilityWSDTO initSystemUtilityService(String initType) {
 
         if (initType.equalsIgnoreCase(AppConstant.FIRST_TIME_INIT)){
-            return utilityHelper.firstInitSystemHelper(initType);
+            return utilityHelper.firstTimeInitSystemUtilityHelper();
         }
-       return null;
+        return null;
     }
 
+    public List<SystemUtilityWSDTO> getSystemUtilitiesService(long userId) {
 
+        return utilityHelper.getSystemUtilitiesHelper(userId);
+    }
 
-    public SystemInfoWSDTO repairSystemInfoService(long userId,String systemInfo) {
+    public SystemUtilityWSDTO repairSystemUtilityService(long userId, String systemUtility) {
 
-        if (systemInfo.equalsIgnoreCase(AppConstant.CLIENTS_INFOS)){
+        if (systemUtility.equalsIgnoreCase(AppConstant.CLIENT_UTILS)){
             repairAllClientsService();
-            return fillSystemInfoWSDTO(systemInfo, String.valueOf(clientRepository.count()),true);
         }
         return null;
     }
@@ -299,180 +166,51 @@ public class UtilitySystemFramework {
     }
 
 
+    public SystemUtilityWSDTO removeSystemUtilityService(long userId, String systemUtility) {
 
-    public SystemInfoWSDTO removeSystemInfoService(long userId,String systemInfo) {
-
-        if (systemInfo.equalsIgnoreCase(AppConstant.CLIENTS_INFOS)){
-            removeAllClientsService();
-            return fillSystemInfoWSDTO(systemInfo, String.valueOf(clientRepository.count()),true);
+        if (systemUtility.equalsIgnoreCase(AppConstant.CLIENT_UTILS)){
+            utilityHelper.removeAllClientsHelper();
+            return new SystemUtilityWSDTO(AppConstant.CLIENT_UTILS,AppConstant.CLIENT_UTILS,true);
         }
-        if (systemInfo.equalsIgnoreCase(AppConstant.SESSIONS_INFOS)){
-            removeAllSessionsService();
-            return fillSystemInfoWSDTO(systemInfo, String.valueOf(sessionRepository.count()),true);
+        if (systemUtility.equalsIgnoreCase(AppConstant.SESSION_UTILS)){
+            utilityHelper.removeAllSessionsHelper();
+            return new SystemUtilityWSDTO(AppConstant.SESSION_UTILS,AppConstant.SESSION_UTILS,true);
         }
-        if (systemInfo.equalsIgnoreCase(AppConstant.OPERATIONS_INFOS)){
-            removeAllOperationsService();
-            return fillSystemInfoWSDTO(systemInfo, String.valueOf(operationRepository.count()),true);
-        }
-        if (systemInfo.equalsIgnoreCase(AppConstant.OPERATION_INQUIRIES_INFOS)){
-            removeAllOperationInquiriesService();
-        }
-        if (systemInfo.equalsIgnoreCase(AppConstant.OPERATION_FLOWS_INFOS)){
-            removeAllOperationFlowsService();
+        if (systemUtility.equalsIgnoreCase(AppConstant.OPERATION_UTILS)){
+            utilityHelper.removeAllOperationsHelper();
+            return new SystemUtilityWSDTO(AppConstant.OPERATION_UTILS,AppConstant.OPERATION_UTILS,true);
         }
 
+        if (systemUtility.equalsIgnoreCase(AppConstant.CAMPAIGN_UTILS)){
+            utilityHelper.removeAllCampaignsHelper();
+            return new SystemUtilityWSDTO(AppConstant.CAMPAIGN_UTILS,AppConstant.CAMPAIGN_UTILS,true);
+        }
+        if (systemUtility.equalsIgnoreCase(AppConstant.PROCESS_UTILS)){
+            utilityHelper.removeAllProcessesHelper();
+            return new SystemUtilityWSDTO(AppConstant.PROCESS_UTILS,AppConstant.PROCESS_UTILS,true);
+        }
+        if (systemUtility.equalsIgnoreCase(AppConstant.SCENARIO_UTILS)){
+            utilityHelper.removeAllScenariosHelper();
+            return new SystemUtilityWSDTO(AppConstant.SCENARIO_UTILS,AppConstant.SCENARIO_UTILS,true);
+        }
 
-        if (systemInfo.equalsIgnoreCase(AppConstant.CAMPAIGNS_INFOS)){
-            removeAllCampaignsService();
-            return fillSystemInfoWSDTO(systemInfo, String.valueOf(campaignRepository.count()),true);
+        if (systemUtility.equalsIgnoreCase(AppConstant.USER_UTILS)){
+            utilityHelper.removeAllUsersHelper();
+            return new SystemUtilityWSDTO(AppConstant.USER_UTILS,AppConstant.USER_UTILS,true);
         }
-        if (systemInfo.equalsIgnoreCase(AppConstant.PROCESSES_INFOS)){
-            removeAllProcessesService();
-            return fillSystemInfoWSDTO(systemInfo, String.valueOf(processRepository.count()),true);
+        if (systemUtility.equalsIgnoreCase(AppConstant.AGENT_UTILS)){
+            utilityHelper.removeAllAgentsHelper();
+            return new SystemUtilityWSDTO(AppConstant.AGENT_UTILS,AppConstant.AGENT_UTILS,true);
         }
-        if (systemInfo.equalsIgnoreCase(AppConstant.SCENARIOS_INFOS)){
-            removeAllScenariosService();
-            return fillSystemInfoWSDTO(systemInfo, String.valueOf(scenarioRepository.count()),true);
-        }
-
-        if (systemInfo.equalsIgnoreCase(AppConstant.USERS_INFOS)){
-            removeAllUsersService();
-            return fillSystemInfoWSDTO(systemInfo, String.valueOf(userRepository.count()),true);
-        }
-        if (systemInfo.equalsIgnoreCase(AppConstant.AGENTS_INFOS)){
-            removeAllAgentsService();
-            return fillSystemInfoWSDTO(systemInfo, String.valueOf(userRepository.countByUserType(AppConstant.AGENT_USER)),true);
-        }
-        if (systemInfo.equalsIgnoreCase(AppConstant.ASSETS_INFOS)){
-            removeAllAssetsService();
-            return fillSystemInfoWSDTO(systemInfo, String.valueOf(assetRepository.count()),true);
+        if (systemUtility.equalsIgnoreCase(AppConstant.ASSET_UTILS)){
+            utilityHelper.removeAllAssetsHelper();
+            return new SystemUtilityWSDTO(AppConstant.ASSET_UTILS,AppConstant.ASSET_UTILS,true);
         }
         return null;
     }
 
 
 
-
-    public void removeAllClientsService(){
-
-        clientRepository.deleteAll();
-        remoteAppRepository.deleteAll();
-        sessionRepository.deleteAll();
-        operationRepository.deleteAll();
-        operationEmailMessageRepository.deleteAll();
-        operationPushMessageRepository.deleteAll();
-        operationSipCallRepository.deleteAll();
-        operationSmsMessageRepository.deleteAll();
-        operationWappCallRepository.deleteAll();
-        operationWappMessageRepository.deleteAll();
-    }
-
-    public void removeAllSessionsService(){
-
-        sessionRepository.deleteAll();
-        operationRepository.deleteAll();
-        operationEmailMessageRepository.deleteAll();
-        operationPushMessageRepository.deleteAll();
-        operationSipCallRepository.deleteAll();
-        operationSmsMessageRepository.deleteAll();
-        operationWappCallRepository.deleteAll();
-        operationWappMessageRepository.deleteAll();
-        resetAllClientsService();
-    }
-
-
-    public void removeAllOperationsService(){
-
-        sessionRepository.deleteAll();
-        operationRepository.deleteAll();
-        operationEmailMessageRepository.deleteAll();
-        operationPushMessageRepository.deleteAll();
-        operationSipCallRepository.deleteAll();
-        operationSmsMessageRepository.deleteAll();
-        operationWappCallRepository.deleteAll();
-        operationWappMessageRepository.deleteAll();
-        resetAllClientsService();
-    }
-
-
-    public void removeAllOperationInquiriesService(){
-
-    }
-
-    public void removeAllOperationFlowsService(){
-
-    }
-
-    public void resetAllClientsService(){
-
-        Iterable<ClientDBModel> clientDBModels = clientRepository.findAll();
-        for (ClientDBModel clientDBModel : clientDBModels) {
-            clientDBModel.setClientState(AppConstant.READY_CLIENT);
-            clientDBModel.setuDate(appUtils.getCurrentTimeStamp());
-            clientRepository.save(clientDBModel);
-        }
-    }
-
-
-    public void removeAllCampaignsService(){
-
-        campaignRepository.deleteAll();
-        campaignAgentRepository.deleteAll();
-    }
-
-    public void removeAllProcessesService(){
-
-        processRepository.deleteAll();
-        processEmailChannelRepository.deleteAll();
-        processPushChannelRepository.deleteAll();
-        processSipChannelRepository.deleteAll();
-        processSmsChannelRepository.deleteAll();
-        processWappChannelRepository.deleteAll();
-        processEmailTempRepository.deleteAll();
-        processPushTempRepository.deleteAll();
-        processSmsMessageTempRepository.deleteAll();
-        processWappMessageTempRepository.deleteAll();
-        processScenarioRepository.deleteAll();
-        removeAllTriggers();
-    }
-
-    public void removeAllTriggers(){
-
-        aiTriggerRepository.deleteAll();
-        emailTriggerRepository.deleteAll();
-        sipCallTriggerRepository.deleteAll();
-        smsMessageTriggerRepository.deleteAll();
-        wappCallTriggerRepository.deleteAll();
-        wappMessageTriggerRepository.deleteAll();
-    }
-
-    public void removeAllScenariosService(){
-
-        scenarioRepository.deleteAll();
-    }
-
-
-    public void removeAllUsersService(){
-
-        userRepository.deleteAll();
-        userDetailsRepository.deleteAll();
-        campaignAgentRepository.deleteAll();
-    }
-
-    public void removeAllAgentsService(){
-
-        List<UserDBModel> userDBModels = userRepository.findByUserType(AppConstant.AGENT_USER);
-        for (UserDBModel userDBModel : userDBModels) {
-            userDetailsRepository.deleteAll(userDetailsRepository.findByUserId(userDBModel.getId()));
-            campaignAgentRepository.deleteAll();
-            userRepository.delete(userDBModel);
-        }
-    }
-
-    public void removeAllAssetsService(){
-
-        assetRepository.deleteAll();
-    }
 
 
 }
