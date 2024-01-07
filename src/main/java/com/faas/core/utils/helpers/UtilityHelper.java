@@ -266,7 +266,7 @@ public class UtilityHelper {
     public SystemUtilityWSDTO getClientUtils(){
 
         SystemUtilityWSDTO systemUtilityWSDTO = new SystemUtilityWSDTO();
-        systemUtilityWSDTO.setUtilityName(AppConstant.CAMPAIGN_UTILS);
+        systemUtilityWSDTO.setUtilityName(AppConstant.CLIENT_UTILS);
         systemUtilityWSDTO.setUtilityValue(String.valueOf(clientRepository.count()));
         systemUtilityWSDTO.setUtilityState(true);
         return systemUtilityWSDTO;
