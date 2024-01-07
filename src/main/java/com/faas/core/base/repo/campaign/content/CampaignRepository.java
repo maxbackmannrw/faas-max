@@ -9,6 +9,7 @@ import java.util.List;
 @Repository
 public interface CampaignRepository extends MongoRepository<CampaignDBModel, String> {
 
+    boolean existsById(String campaignId);
     boolean existsByIdAndCampaignState(String campaignId,String campaignState);
 
     long countByCampaignCategory(String category);

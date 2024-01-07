@@ -1,5 +1,6 @@
 package com.faas.core.utils.helpers;
 
+import com.faas.core.base.model.db.campaign.details.CampaignAgentDBModel;
 import com.faas.core.base.model.db.client.content.ClientDBModel;
 import com.faas.core.base.model.db.user.content.UserDBModel;
 import com.faas.core.base.model.db.user.details.UserDetailsDBModel;
@@ -233,17 +234,6 @@ public class UtilityHelper {
 
 
 
-
-    public SystemUtilityWSDTO fillSystemUtilityWSDTO(String utilityName, String utilityValue, boolean utilityState){
-
-        SystemUtilityWSDTO systemUtilityWSDTO = new SystemUtilityWSDTO();
-        systemUtilityWSDTO.setUtilityName(utilityName);
-        systemUtilityWSDTO.setUtilityValue(utilityValue);
-        systemUtilityWSDTO.setUtilityState(utilityState);
-
-        return systemUtilityWSDTO;
-    }
-
     public List<SystemUtilityWSDTO> getSystemUtilitiesHelper(long userId){
 
         List<SystemUtilityWSDTO> systemUtilityWSDTOS = new ArrayList<>();
@@ -344,6 +334,32 @@ public class UtilityHelper {
         return systemUtilityWSDTO;
     }
 
+
+
+    public void repairClientsHelper(){
+
+    }
+
+    public void repairAgentsHelper(){
+
+        List<UserDBModel> userDBModels = userRepository.findByUserType(AppConstant.AGENT_USER);
+        for (UserDBModel userDBModel : userDBModels) {
+            List<CampaignAgentDBModel> campaignAgentDBModels = campaignAgentRepository.findByAgentId(userDBModel.getId());
+            for (CampaignAgentDBModel campaignAgentDBModel : campaignAgentDBModels) {
+                if (!campaignRepository.existsById(campaignAgentDBModel.getCampaignId())) {
+                    campaignAgentRepository.delete(campaignAgentDBModel);
+                }
+            }
+        }
+
+        List<UserDetailsDBModel> userDetailsDBModels = userDetailsRepository.findAll();
+        for (UserDetailsDBModel userDetailsDBModel : userDetailsDBModels) {
+            if (!userRepository.existsById(userDetailsDBModel.getUserId())) {
+                userDetailsRepository.delete(userDetailsDBModel);
+            }
+        }
+
+    }
 
 
 

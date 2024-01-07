@@ -156,13 +156,12 @@ public class UtilitySystemFramework {
     public SystemUtilityWSDTO repairSystemUtilityService(long userId, String systemUtility) {
 
         if (systemUtility.equalsIgnoreCase(AppConstant.CLIENT_UTILS)){
-            repairAllClientsService();
+            utilityHelper.repairClientsHelper();
+        }
+        if (systemUtility.equalsIgnoreCase(AppConstant.AGENT_UTILS)){
+            utilityHelper.repairAgentsHelper();
         }
         return null;
-    }
-
-    public void repairAllClientsService(){
-
     }
 
 
@@ -208,8 +207,6 @@ public class UtilitySystemFramework {
         }
         return null;
     }
-
-
 
 
 
