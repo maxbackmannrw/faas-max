@@ -70,6 +70,11 @@ public class ApiDashboardFramework {
     }
 
 
+    public ApiDashboardOperationWSDTO apiGetDashboardOperationService(long agentId,String operationId){
+        return null;
+    }
+
+
     public List<ApiDashboardCampaignWSDTO> apiGetDashboardCampaignsService(long agentId) {
 
         List<ApiDashboardCampaignWSDTO> dashboardCampaignWSDTOS = new ArrayList<>();

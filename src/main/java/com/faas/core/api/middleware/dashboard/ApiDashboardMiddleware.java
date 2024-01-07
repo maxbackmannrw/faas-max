@@ -64,6 +64,26 @@ public class ApiDashboardMiddleware {
     }
 
 
+    public ApiDashboardOperationWSModel apiGetDashboardOperation(long agentId,String operationId) {
+
+        ApiDashboardOperationWSModel response = new ApiDashboardOperationWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        ApiDashboardOperationWSDTO dashboardOperationWSDTO = apiDashboardFramework.apiGetDashboardOperationService(agentId,operationId);
+        if (dashboardOperationWSDTO != null){
+            response.setDashboardOperation(dashboardOperationWSDTO);
+        }
+
+        general.setOperation("apiGetDashboardOperation");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
     public ApiDashboardCampaignWSModel apiGetDashboardCampaigns(long agentId) {
 
         ApiDashboardCampaignWSModel response = new ApiDashboardCampaignWSModel();
@@ -102,6 +122,7 @@ public class ApiDashboardMiddleware {
 
         return response;
     }
+
 
 
 }

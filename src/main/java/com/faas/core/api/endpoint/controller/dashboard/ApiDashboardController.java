@@ -38,6 +38,7 @@ public class ApiDashboardController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+
     @RequestMapping(value = ApiRoute.API_GET_DASHBOARD_OPERATIONS, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetDashboardOperations(@RequestParam long agentId,
                                                        @RequestParam String operationType,
@@ -53,6 +54,20 @@ public class ApiDashboardController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+
+    @RequestMapping(value = ApiRoute.API_GET_DASHBOARD_OPERATION, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetDashboardOperation(@RequestParam long agentId,
+                                                      @RequestParam String operationId) {
+
+        ApiDashboardOperationWSModel response = apiDashboardMiddleware.apiGetDashboardOperation(agentId,operationId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
     @RequestMapping(value = ApiRoute.API_GET_DASHBOARD_CAMPAIGNS, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetDashboardCampaigns(@RequestParam long agentId) {
 
@@ -63,6 +78,7 @@ public class ApiDashboardController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
+
 
     @RequestMapping(value = ApiRoute.API_GET_DASHBOARD_SUMMARY, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetDashboardSummary(@RequestParam long agentId) {
