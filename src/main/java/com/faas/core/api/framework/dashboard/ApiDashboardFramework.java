@@ -19,6 +19,7 @@ import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.CampaignHelper;
 import com.faas.core.utils.helpers.OperationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
@@ -69,6 +70,10 @@ public class ApiDashboardFramework {
 
     public ApiDashboardOperationWSDTO apiGetDashboardOperationsService(long agentId,String operationType,String operationState,int reqPage,int reqSize){
 
+        Page<OperationDBModel> operationModelPage = operationRepository.findAllByAgentIdAndOperationTypeAndOperationState(agentId,operationType,operationState,PageRequest.of(reqPage,reqSize));
+        if (operationModelPage != null){
+            return operationHelper.createApiDashboardOperationWSDTO(operationModelPage);
+        }
         return null;
     }
 
