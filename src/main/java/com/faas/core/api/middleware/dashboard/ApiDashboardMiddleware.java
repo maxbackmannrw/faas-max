@@ -9,11 +9,15 @@ import com.faas.core.api.model.ws.dashboard.dto.ApiDashboardOperationWSDTO;
 import com.faas.core.api.model.ws.dashboard.dto.ApiDashboardWSDTO;
 import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
 import com.faas.core.api.model.ws.general.ApiSummaryWSModel;
+import com.faas.core.api.model.ws.operation.content.ApiOperationWSModel;
+import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
+import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -64,16 +68,18 @@ public class ApiDashboardMiddleware {
     }
 
 
-    public ApiDashboardOperationWSModel apiGetDashboardOperation(long agentId,String operationId) {
+    public ApiOperationWSModel apiGetDashboardOperation(long agentId, String operationId) {
 
-        ApiDashboardOperationWSModel response = new ApiDashboardOperationWSModel();
+        ApiOperationWSModel response = new ApiOperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
+        List<ApiOperationWSDTO>apiOperationWSDTOS = new ArrayList<>();
 
-        ApiDashboardOperationWSDTO dashboardOperationWSDTO = apiDashboardFramework.apiGetDashboardOperationService(agentId,operationId);
-        if (dashboardOperationWSDTO != null){
-            response.setDashboardOperation(dashboardOperationWSDTO);
+        ApiOperationWSDTO apiOperationWSDTO = apiDashboardFramework.apiGetDashboardOperationService(agentId,operationId);
+        if (apiOperationWSDTO != null){
+            apiOperationWSDTOS.add(apiOperationWSDTO);
         }
 
+        response.setOperations(apiOperationWSDTOS);
         general.setOperation("apiGetDashboardOperation");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);

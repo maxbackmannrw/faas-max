@@ -5,6 +5,7 @@ import com.faas.core.api.model.ws.dashboard.ApiDashboardCampaignWSModel;
 import com.faas.core.api.model.ws.dashboard.ApiDashboardOperationWSModel;
 import com.faas.core.api.model.ws.dashboard.ApiDashboardWSModel;
 import com.faas.core.api.model.ws.general.ApiSummaryWSModel;
+import com.faas.core.api.model.ws.operation.content.ApiOperationWSModel;
 import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,7 +60,7 @@ public class ApiDashboardController {
     public ResponseEntity<?> apiGetDashboardOperation(@RequestParam long agentId,
                                                       @RequestParam String operationId) {
 
-        ApiDashboardOperationWSModel response = apiDashboardMiddleware.apiGetDashboardOperation(agentId,operationId);
+        ApiOperationWSModel response = apiDashboardMiddleware.apiGetDashboardOperation(agentId,operationId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

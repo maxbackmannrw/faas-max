@@ -4,8 +4,11 @@ import com.faas.core.api.model.ws.dashboard.dto.ApiDashboardCampaignWSDTO;
 import com.faas.core.api.model.ws.dashboard.dto.ApiDashboardOperationWSDTO;
 import com.faas.core.api.model.ws.dashboard.dto.ApiDashboardWSDTO;
 import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
+import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.campaign.details.CampaignAgentDBModel;
+import com.faas.core.base.model.db.operation.content.OperationDBModel;
+import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
 import com.faas.core.base.repo.session.SessionRepository;
@@ -70,7 +73,12 @@ public class ApiDashboardFramework {
     }
 
 
-    public ApiDashboardOperationWSDTO apiGetDashboardOperationService(long agentId,String operationId){
+    public ApiOperationWSDTO apiGetDashboardOperationService(long agentId, String operationId){
+
+        List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
+        if (!operationDBModels.isEmpty()){
+            return operationHelper.mapApiOperationWSDTO(operationDBModels.get(0));
+        }
         return null;
     }
 
