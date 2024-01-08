@@ -1,37 +1,40 @@
 package com.faas.core.api.model.ws.operation.content.dto;
 
 
+import com.faas.core.base.model.db.operation.content.OperationDBModel;
+import com.faas.core.base.model.db.user.content.UserDBModel;
+
 public class ApiValidateOperationWSDTO {
 
-    private long agentId;
-    private String operationId;
+    private UserDBModel agent;
+    private OperationDBModel operation;
     private long operationCount;
     private long operationLimit;
 
     public ApiValidateOperationWSDTO() {
     }
 
-    public ApiValidateOperationWSDTO(long agentId, String operationId, long operationCount, long operationLimit) {
-        this.agentId = agentId;
-        this.operationId = operationId;
+    public ApiValidateOperationWSDTO(UserDBModel agent, OperationDBModel operation, long operationCount, long operationLimit) {
+        this.agent = agent;
+        this.operation = operation;
         this.operationCount = operationCount;
         this.operationLimit = operationLimit;
     }
 
-    public long getAgentId() {
-        return agentId;
+    public UserDBModel getAgent() {
+        return agent;
     }
 
-    public void setAgentId(long agentId) {
-        this.agentId = agentId;
+    public void setAgent(UserDBModel agent) {
+        this.agent = agent;
     }
 
-    public String getOperationId() {
-        return operationId;
+    public OperationDBModel getOperation() {
+        return operation;
     }
 
-    public void setOperationId(String operationId) {
-        this.operationId = operationId;
+    public void setOperation(OperationDBModel operation) {
+        this.operation = operation;
     }
 
     public long getOperationCount() {

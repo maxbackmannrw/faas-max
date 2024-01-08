@@ -100,8 +100,8 @@ public class ApiDashboardFramework {
         if (userDBModel.isPresent() && !operationDBModels.isEmpty()){
 
             ApiValidateOperationWSDTO validateOperationWSDTO = new ApiValidateOperationWSDTO();
-            validateOperationWSDTO.setAgentId(agentId);
-            validateOperationWSDTO.setOperationId(operationId);
+            validateOperationWSDTO.setAgent(userDBModel.get());
+            validateOperationWSDTO.setOperation(operationDBModels.get(0));
             validateOperationWSDTO.setOperationCount(operationRepository.countByAgentIdAndOperationState(agentId,AppConstant.ACTIVE_STATE));
             if (userDBModel.get().getUserRole().equalsIgnoreCase(AppConstant.BASIC_AGENT)){
                 validateOperationWSDTO.setOperationLimit(AppConstant.BASIC_AGENT_OPERATION_LIMIT);
