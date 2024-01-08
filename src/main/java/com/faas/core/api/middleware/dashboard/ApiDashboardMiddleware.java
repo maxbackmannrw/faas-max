@@ -10,7 +10,9 @@ import com.faas.core.api.model.ws.dashboard.dto.ApiDashboardWSDTO;
 import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
 import com.faas.core.api.model.ws.general.ApiSummaryWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiOperationWSModel;
+import com.faas.core.api.model.ws.operation.content.ApiValidateOperationWSModel;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
+import com.faas.core.api.model.ws.operation.content.dto.ApiValidateOperationWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
 import com.faas.core.utils.config.AppConstant;
@@ -72,15 +74,35 @@ public class ApiDashboardMiddleware {
 
         ApiOperationWSModel response = new ApiOperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ApiOperationWSDTO>apiOperationWSDTOS = new ArrayList<>();
+        List<ApiOperationWSDTO>operationWSDTOS = new ArrayList<>();
 
-        ApiOperationWSDTO apiOperationWSDTO = apiDashboardFramework.apiGetDashboardOperationService(agentId,operationId);
-        if (apiOperationWSDTO != null){
-            apiOperationWSDTOS.add(apiOperationWSDTO);
+        ApiOperationWSDTO operationWSDTO = apiDashboardFramework.apiGetDashboardOperationService(agentId,operationId);
+        if (operationWSDTO != null){
+            operationWSDTOS.add(operationWSDTO);
         }
 
-        response.setOperations(apiOperationWSDTOS);
+        response.setOperations(operationWSDTOS);
         general.setOperation("apiGetDashboardOperation");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
+    public ApiValidateOperationWSModel apiValidateDashboardOperation(long agentId, String operationId) {
+
+        ApiValidateOperationWSModel response = new ApiValidateOperationWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        ApiValidateOperationWSDTO validateOperationWSDTO = apiDashboardFramework.apiValidateDashboardOperationService(agentId,operationId);
+        if (validateOperationWSDTO != null){
+            response.setValidateOperation(validateOperationWSDTO);
+        }
+
+        general.setOperation("apiValidateDashboardOperation");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

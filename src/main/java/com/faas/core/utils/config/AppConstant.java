@@ -10,8 +10,6 @@ public class AppConstant {
     public static final String GENERAL_FAIL_STATUS = "FAIL";
 
 
-
-
     public static final String MANAGER_USER = "MANAGER_USER";
     public static final String BASIC_MANAGER = "BASIC_MANAGER";
     public static final String SUPER_MANAGER = "SUPER_MANAGER";
@@ -25,6 +23,11 @@ public class AppConstant {
     public static final String BASIC_AGENT = "BASIC_AGENT";
     public static final String SUPER_AGENT = "SUPER_AGENT";
     public static final String AUTO_AGENT = "AUTO_AGENT";
+
+
+    public static final long BASIC_AGENT_OPERATION_LIMIT = 5;
+    public static final long SUPER_AGENT_OPERATION_LIMIT = 20;
+
 
 
     public static final String ACTIVE_STATUS = "ACTIVE_STATUS";

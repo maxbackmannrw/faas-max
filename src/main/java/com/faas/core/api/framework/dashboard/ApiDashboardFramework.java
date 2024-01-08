@@ -5,15 +5,17 @@ import com.faas.core.api.model.ws.dashboard.dto.ApiDashboardOperationWSDTO;
 import com.faas.core.api.model.ws.dashboard.dto.ApiDashboardWSDTO;
 import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
+import com.faas.core.api.model.ws.operation.content.dto.ApiValidateOperationWSDTO;
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.campaign.details.CampaignAgentDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
-import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
+import com.faas.core.base.model.db.user.content.UserDBModel;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
-import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
+import com.faas.core.base.repo.session.SessionRepository;
+import com.faas.core.base.repo.user.content.UserRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.CampaignHelper;
@@ -53,6 +55,9 @@ public class ApiDashboardFramework {
     CampaignAgentRepository campaignAgentRepository;
 
     @Autowired
+    UserRepository userRepository;
+
+    @Autowired
     AppUtils appUtils;
 
 
@@ -83,6 +88,28 @@ public class ApiDashboardFramework {
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
         if (!operationDBModels.isEmpty()){
             return operationHelper.mapApiOperationWSDTO(operationDBModels.get(0));
+        }
+        return null;
+    }
+
+
+    public ApiValidateOperationWSDTO apiValidateDashboardOperationService(long agentId, String operationId){
+
+        Optional<UserDBModel> userDBModel = userRepository.findById(agentId);
+        List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
+        if (userDBModel.isPresent() && !operationDBModels.isEmpty()){
+
+            ApiValidateOperationWSDTO validateOperationWSDTO = new ApiValidateOperationWSDTO();
+            validateOperationWSDTO.setAgentId(agentId);
+            validateOperationWSDTO.setOperationId(operationId);
+            validateOperationWSDTO.setOperationCount(operationRepository.countByAgentIdAndOperationState(agentId,AppConstant.ACTIVE_STATE));
+            if (userDBModel.get().getUserRole().equalsIgnoreCase(AppConstant.BASIC_AGENT)){
+                validateOperationWSDTO.setOperationLimit(AppConstant.BASIC_AGENT_OPERATION_LIMIT);
+            }
+            if (userDBModel.get().getUserRole().equalsIgnoreCase(AppConstant.SUPER_AGENT)){
+                validateOperationWSDTO.setOperationLimit(AppConstant.SUPER_AGENT_OPERATION_LIMIT);
+            }
+            return validateOperationWSDTO;
         }
         return null;
     }
