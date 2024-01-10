@@ -4,7 +4,7 @@ import com.faas.core.api.model.ws.operation.details.client.note.dto.ApiOperation
 import com.faas.core.api.model.ws.operation.details.client.osint.dto.ApiOperationOSINTWSDTO;
 import com.faas.core.api.model.ws.dashboard.dto.ApiDashboardOperationWSDTO;
 import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
-import com.faas.core.api.model.ws.operation.channel.content.dto.ApiOperationChannelWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.content.dto.ApiOperationChannelWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationListWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
 import com.faas.core.api.model.ws.operation.details.activity.dto.ApiOperationActivityWSDTO;
