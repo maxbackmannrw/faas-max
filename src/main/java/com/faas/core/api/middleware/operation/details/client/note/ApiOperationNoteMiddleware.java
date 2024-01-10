@@ -37,7 +37,6 @@ public class ApiOperationNoteMiddleware {
         return response;
     }
 
-
     public ApiOperationNoteWSModel apiGetOperationNote(long agentId, long sessionId, long clientId, long noteId) {
 
         ApiOperationNoteWSModel response = new ApiOperationNoteWSModel();
@@ -57,7 +56,6 @@ public class ApiOperationNoteMiddleware {
 
         return response;
     }
-
 
     public ApiOperationNoteWSModel apiCreateOperationNote(long agentId, long sessionId, long clientId, String noteTitle, String noteText, String noteAsset) {
 
@@ -79,7 +77,6 @@ public class ApiOperationNoteMiddleware {
         return response;
     }
 
-
     public ApiOperationNoteWSModel apiUpdateOperationNote(long agentId, long sessionId, long clientId, long noteId, String noteTitle, String noteText, String noteAsset) {
 
         ApiOperationNoteWSModel response = new ApiOperationNoteWSModel();
@@ -100,7 +97,6 @@ public class ApiOperationNoteMiddleware {
         return response;
     }
 
-
     public ApiOperationNoteWSModel apiRemoveOperationNote(long agentId, long sessionId, long clientId, long noteId) {
 
         ApiOperationNoteWSModel response = new ApiOperationNoteWSModel();
@@ -120,7 +116,6 @@ public class ApiOperationNoteMiddleware {
 
         return response;
     }
-
 
 
 

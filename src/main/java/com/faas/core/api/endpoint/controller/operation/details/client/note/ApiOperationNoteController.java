@@ -24,7 +24,7 @@ public class ApiOperationNoteController {
 
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_NOTES, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationNotes(@RequestParam long agentId,
-                                               @RequestParam long clientId) {
+                                                  @RequestParam long clientId) {
 
         ApiOperationNoteWSModel response = apiOperationNoteMiddleware.apiGetOperationNotes(agentId,clientId);
 
@@ -34,12 +34,11 @@ public class ApiOperationNoteController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_NOTE, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationNote(@RequestParam long agentId,
-                                              @RequestParam long sessionId,
-                                              @RequestParam long clientId,
-                                              @RequestParam long noteId) {
+                                                 @RequestParam long sessionId,
+                                                 @RequestParam long clientId,
+                                                 @RequestParam long noteId) {
 
         ApiOperationNoteWSModel response = apiOperationNoteMiddleware.apiGetOperationNote(agentId,sessionId,clientId,noteId);
 
@@ -49,14 +48,13 @@ public class ApiOperationNoteController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = ApiRoute.API_CREATE_OPERATION_NOTE, method = RequestMethod.POST)
     public ResponseEntity<?> apiCreateOperationNote(@RequestParam long agentId,
-                                                 @RequestParam long sessionId,
-                                                 @RequestParam long clientId,
-                                                 @RequestParam String noteTitle,
-                                                 @RequestParam String noteText,
-                                                 @RequestParam String noteAsset) {
+                                                    @RequestParam long sessionId,
+                                                    @RequestParam long clientId,
+                                                    @RequestParam String noteTitle,
+                                                    @RequestParam String noteText,
+                                                    @RequestParam String noteAsset) {
 
         ApiOperationNoteWSModel response = apiOperationNoteMiddleware.apiCreateOperationNote(agentId,sessionId,clientId,noteTitle,noteText,noteAsset);
 
@@ -66,15 +64,14 @@ public class ApiOperationNoteController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = ApiRoute.API_UPDATE_OPERATION_NOTE, method = RequestMethod.POST)
     public ResponseEntity<?> apiUpdateOperationNote(@RequestParam long agentId,
-                                                 @RequestParam long sessionId,
-                                                 @RequestParam long clientId,
-                                                 @RequestParam long noteId,
-                                                 @RequestParam String noteTitle,
-                                                 @RequestParam String noteText,
-                                                 @RequestParam String noteAsset) {
+                                                    @RequestParam long sessionId,
+                                                    @RequestParam long clientId,
+                                                    @RequestParam long noteId,
+                                                    @RequestParam String noteTitle,
+                                                    @RequestParam String noteText,
+                                                    @RequestParam String noteAsset) {
 
         ApiOperationNoteWSModel response = apiOperationNoteMiddleware.apiUpdateOperationNote(agentId,sessionId,clientId,noteId,noteTitle,noteText,noteAsset);
 
@@ -84,12 +81,11 @@ public class ApiOperationNoteController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = ApiRoute.API_REMOVE_OPERATION_NOTE, method = RequestMethod.POST)
     public ResponseEntity<?> apiRemoveOperationNote(@RequestParam long agentId,
-                                                 @RequestParam long sessionId,
-                                                 @RequestParam long clientId,
-                                                 @RequestParam long noteId) {
+                                                    @RequestParam long sessionId,
+                                                    @RequestParam long clientId,
+                                                    @RequestParam long noteId) {
 
         ApiOperationNoteWSModel response = apiOperationNoteMiddleware.apiRemoveOperationNote(agentId,sessionId,clientId,noteId);
 

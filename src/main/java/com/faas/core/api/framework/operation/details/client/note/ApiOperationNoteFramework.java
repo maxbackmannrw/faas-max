@@ -20,7 +20,6 @@ public class ApiOperationNoteFramework {
     @Autowired
     ClientRepository clientRepository;
 
-
     @Autowired
     AppUtils appUtils;
 

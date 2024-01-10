@@ -22,11 +22,11 @@ public class ApiClientController {
     ApiClientMiddleware apiClientMiddleware;
 
 
-    @RequestMapping(value = ApiRoute.API_GET_AGENT_CLIENT, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetAgentClient(@RequestParam long agentId,
-                                               @RequestParam long clientId) {
+    @RequestMapping(value = ApiRoute.API_GET_CLIENT, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetClient(@RequestParam long agentId,
+                                          @RequestParam long clientId) {
 
-        ApiClientWSModel response = apiClientMiddleware.apiGetAgentClient(agentId,clientId);
+        ApiClientWSModel response = apiClientMiddleware.apiGetClient(agentId,clientId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

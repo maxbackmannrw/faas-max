@@ -60,22 +60,29 @@ public class ApiRoute {
     public static final String API_UPDATE_OPERATION_NOTE = "apiupdateoperationnote";
     public static final String API_REMOVE_OPERATION_NOTE = "apiremoveoperationnote";
 
+    public static final String API_GET_OPERATION_OS_INTS = "apigetoperationosints";
+    public static final String API_GET_OPERATION_OS_INT = "apigetoperationosint";
+
+    public static final String API_GET_OPERATION_REMOTE_APPS = "apigetoperationremoteapps";
+    public static final String API_GET_OPERATION_REMOTE_APP = "apigetoperationremoteapp";
 
 
 
+    public static final String API_GET_CLIENT = "apigetclient";
 
-    public static final String API_GET_AGENT_CLIENT = "apigetagentclient";
-
-    public static final String API_GET_CLIENT_DEVICES = "apigetclientdevices";
-    public static final String API_GET_CLIENT_DEVICE = "apigetclientdevice";
-
-
-
+    public static final String API_GET_CLIENT_DETAILS = "apigetclientdetails";
     public static final String API_GET_CLIENT_NOTES = "apigetclientnotes";
     public static final String API_GET_CLIENT_NOTE = "apigetclientnote";
     public static final String API_CREATE_CLIENT_NOTE = "apicreateclientnote";
     public static final String API_UPDATE_CLIENT_NOTE = "apiupdateclientnote";
     public static final String API_REMOVE_CLIENT_NOTE = "apiremoveclientnote";
+
+    public static final String API_GET_CLIENT_REMOTE_APPS = "apigetclientremoteapps";
+    public static final String API_GET_CLIENT_REMOTE_APP = "apigetclientremoteapp";
+
+    public static final String API_GET_CLIENT_OS_INTS = "apigetclientosints";
+    public static final String API_GET_CLIENT_OS_INT = "apigetclientosint";
+
 
 
     public static final String API_GET_OPERATION_ACTIVITIES = "apigetoperationactivities";

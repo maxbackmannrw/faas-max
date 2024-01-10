@@ -13,12 +13,82 @@ public class ApiClientDetailsFramework {
     AppUtils appUtils;
 
 
-    public ApiClientDetailsWSDTO apiGetAgentSessionService(long agentId, int reqPage, int reqSize) {
+    public ApiClientDetailsWSDTO apiGetClientDetailsService(long agentId, long clientId) {
 
         ApiClientDetailsWSDTO clientDetailsWSDTO = new ApiClientDetailsWSDTO();
 
         return clientDetailsWSDTO;
     }
 
-    
+
+
+    public ApiClientDetailsWSDTO apiGetClientNotesService(long agentId, long clientId) {
+
+        ApiClientDetailsWSDTO clientDetailsWSDTO = new ApiClientDetailsWSDTO();
+
+        return clientDetailsWSDTO;
+    }
+
+    public ApiClientDetailsWSDTO apiGetClientNoteService(long agentId, long clientId) {
+
+        ApiClientDetailsWSDTO clientDetailsWSDTO = new ApiClientDetailsWSDTO();
+
+        return clientDetailsWSDTO;
+    }
+
+    public ApiClientDetailsWSDTO apiCreateClientNoteService(long agentId, long clientId) {
+
+        ApiClientDetailsWSDTO clientDetailsWSDTO = new ApiClientDetailsWSDTO();
+
+        return clientDetailsWSDTO;
+    }
+
+    public ApiClientDetailsWSDTO apiUpdateClientNoteService(long agentId, long clientId) {
+
+        ApiClientDetailsWSDTO clientDetailsWSDTO = new ApiClientDetailsWSDTO();
+
+        return clientDetailsWSDTO;
+    }
+
+    public ApiClientDetailsWSDTO apiRemoveClientNoteService(long agentId, long clientId) {
+
+        ApiClientDetailsWSDTO clientDetailsWSDTO = new ApiClientDetailsWSDTO();
+
+        return clientDetailsWSDTO;
+    }
+
+
+
+    public ApiClientDetailsWSDTO apiGetClientRemoteAppsService(long agentId, long clientId) {
+
+        ApiClientDetailsWSDTO clientDetailsWSDTO = new ApiClientDetailsWSDTO();
+
+        return clientDetailsWSDTO;
+    }
+
+    public ApiClientDetailsWSDTO apiGetClientRemoteAppService(long agentId, long clientId) {
+
+        ApiClientDetailsWSDTO clientDetailsWSDTO = new ApiClientDetailsWSDTO();
+
+        return clientDetailsWSDTO;
+    }
+
+
+
+    public ApiClientDetailsWSDTO apiGetClientOSINTsService(long agentId, long clientId) {
+
+        ApiClientDetailsWSDTO clientDetailsWSDTO = new ApiClientDetailsWSDTO();
+
+        return clientDetailsWSDTO;
+    }
+
+    public ApiClientDetailsWSDTO apiGetClientOSINTService(long agentId, long clientId) {
+
+        ApiClientDetailsWSDTO clientDetailsWSDTO = new ApiClientDetailsWSDTO();
+
+        return clientDetailsWSDTO;
+    }
+
+
+
 }

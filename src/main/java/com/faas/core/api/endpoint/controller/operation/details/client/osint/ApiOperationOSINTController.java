@@ -2,6 +2,7 @@ package com.faas.core.api.endpoint.controller.operation.details.client.osint;
 
 import com.faas.core.api.middleware.operation.details.client.osint.ApiOperationOSINTMiddleware;
 import com.faas.core.api.model.ws.operation.details.client.content.ApiOperationClientWSModel;
+import com.faas.core.api.model.ws.operation.details.client.osint.ApiOperationOSINTWSModel;
 import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +23,11 @@ public class ApiOperationOSINTController {
     ApiOperationOSINTMiddleware apiOperationOSINTMiddleware;
 
 
-    @RequestMapping(value = ApiRoute.API_GET_CLIENT_DEVICES, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetClientDevices(@RequestParam long agentId,
-                                                 @RequestParam long clientId) {
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_OS_INTS, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationOSINTs(@RequestParam long agentId,
+                                                   @RequestParam long clientId) {
 
-        ApiOperationClientWSModel response = apiOperationOSINTMiddleware.apiGetOperationClient(agentId,clientId);
+        ApiOperationOSINTWSModel response = apiOperationOSINTMiddleware.apiGetOperationOSINTs(agentId,clientId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -34,6 +35,17 @@ public class ApiOperationOSINTController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_OS_INT, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationOSINT(@RequestParam long agentId,
+                                                  @RequestParam long clientId) {
+
+        ApiOperationOSINTWSModel response = apiOperationOSINTMiddleware.apiGetOperationOSINT(agentId,clientId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
 
 
 }

@@ -5,8 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/client/session/ApiAgentSessionWSModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/client/session/dto/ApiAgentSessionWSDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/client/content/ApiClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/client/content/ApiClientController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/client/details/ApiClientDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/client/details/ApiClientDetailsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/details/client/note/ApiOperationNoteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/details/client/note/ApiOperationNoteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/details/client/osint/ApiOperationOSINTController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/details/client/osint/ApiOperationOSINTController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/details/client/remoteapp/ApiOperationRemoteAppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/details/client/remoteapp/ApiOperationRemoteAppController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/client/content/ApiClientFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/client/content/ApiClientFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/client/details/ApiClientDetailsFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/client/details/ApiClientDetailsFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/client/note/ApiOperationNoteFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/client/note/ApiOperationNoteFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/client/osint/ApiOperationOSINTFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/client/osint/ApiOperationOSINTFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/client/remoteapp/ApiOperationRemoteAppFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/client/remoteapp/ApiOperationRemoteAppFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/client/content/ApiClientMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/client/content/ApiClientMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/client/details/ApiClientDetailsMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/client/details/ApiClientDetailsMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/details/client/note/ApiOperationNoteMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/details/client/note/ApiOperationNoteMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/details/client/osint/ApiOperationOSINTMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/details/client/osint/ApiOperationOSINTMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/details/client/remoteapp/ApiOperationRemoteAppMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/details/client/remoteapp/ApiOperationRemoteAppMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/client/content/dto/ApiClientWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/client/content/dto/ApiClientWSDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/repo/operation/content/OperationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/repo/operation/content/OperationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/config/ApiRoute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/config/ApiRoute.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -619,15 +636,7 @@
       <workItem from="1704792148385" duration="837000" />
       <workItem from="1704821269357" duration="643000" />
       <workItem from="1704835205973" duration="514000" />
-      <workItem from="1704876282888" duration="8133000" />
-    </task>
-    <task id="LOCAL-00538" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1703846360504</created>
-      <option name="number" value="00538" />
-      <option name="presentableId" value="LOCAL-00538" />
-      <option name="project" value="LOCAL" />
-      <updated>1703846360504</updated>
+      <workItem from="1704876282888" duration="11052000" />
     </task>
     <task id="LOCAL-00539" summary="almost finish">
       <option name="closed" value="true" />
@@ -1013,7 +1022,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704896812037</updated>
     </task>
-    <option name="localTasksCounter" value="587" />
+    <task id="LOCAL-00587" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1704897310042</created>
+      <option name="number" value="00587" />
+      <option name="presentableId" value="LOCAL-00587" />
+      <option name="project" value="LOCAL" />
+      <updated>1704897310042</updated>
+    </task>
+    <option name="localTasksCounter" value="588" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -2,6 +2,7 @@ package com.faas.core.api.endpoint.controller.operation.details.client.remoteapp
 
 import com.faas.core.api.middleware.operation.details.client.remoteapp.ApiOperationRemoteAppMiddleware;
 import com.faas.core.api.model.ws.operation.details.client.content.ApiOperationClientWSModel;
+import com.faas.core.api.model.ws.operation.details.client.remoteapp.ApiOperationRemoteAppWSModel;
 import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +23,11 @@ public class ApiOperationRemoteAppController {
     ApiOperationRemoteAppMiddleware apiOperationRemoteAppMiddleware;
 
 
-    @RequestMapping(value = ApiRoute.API_GET_CLIENT_DEVICES, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetClientDevices(@RequestParam long agentId,
-                                                 @RequestParam long clientId) {
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_REMOTE_APPS, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationRemoteApps(@RequestParam long agentId,
+                                                       @RequestParam long clientId) {
 
-        ApiOperationClientWSModel response = apiOperationRemoteAppMiddleware.apiGetOperationClient(agentId,clientId);
+        ApiOperationRemoteAppWSModel response = apiOperationRemoteAppMiddleware.apiGetOperationRemoteApps(agentId,clientId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -34,6 +35,17 @@ public class ApiOperationRemoteAppController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_REMOTE_APP, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationRemoteApp(@RequestParam long agentId,
+                                                      @RequestParam long clientId) {
+
+        ApiOperationRemoteAppWSModel response = apiOperationRemoteAppMiddleware.apiGetOperationRemoteApp(agentId,clientId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
 
 
 }

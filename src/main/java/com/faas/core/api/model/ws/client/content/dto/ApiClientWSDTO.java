@@ -1,35 +1,34 @@
 package com.faas.core.api.model.ws.client.content.dto;
 
-import com.faas.core.base.model.ws.general.PaginationWSDTO;
-
-import java.util.List;
+import com.faas.core.base.model.db.client.content.ClientDBModel;
+import com.faas.core.base.model.db.client.details.content.ClientDetailsDBModel;
 
 public class ApiClientWSDTO {
 
-    private List<ApiClientWSDTO> clients;
-    private PaginationWSDTO pagination;
+    private ClientDBModel client;
+    private ClientDetailsDBModel clientDetails;
 
     public ApiClientWSDTO() {
     }
 
-    public ApiClientWSDTO(List<ApiClientWSDTO> clients, PaginationWSDTO pagination) {
-        this.clients = clients;
-        this.pagination = pagination;
+    public ApiClientWSDTO(ClientDBModel client, ClientDetailsDBModel clientDetails) {
+        this.client = client;
+        this.clientDetails = clientDetails;
     }
 
-    public List<ApiClientWSDTO> getClients() {
-        return clients;
+    public ClientDBModel getClient() {
+        return client;
     }
 
-    public void setClients(List<ApiClientWSDTO> clients) {
-        this.clients = clients;
+    public void setClient(ClientDBModel client) {
+        this.client = client;
     }
 
-    public PaginationWSDTO getPagination() {
-        return pagination;
+    public ClientDetailsDBModel getClientDetails() {
+        return clientDetails;
     }
 
-    public void setPagination(PaginationWSDTO pagination) {
-        this.pagination = pagination;
+    public void setClientDetails(ClientDetailsDBModel clientDetails) {
+        this.clientDetails = clientDetails;
     }
 }
