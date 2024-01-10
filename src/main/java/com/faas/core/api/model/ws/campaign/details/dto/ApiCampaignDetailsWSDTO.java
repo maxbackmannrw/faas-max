@@ -1,21 +1,19 @@
 package com.faas.core.api.model.ws.campaign.details.dto;
 
-import com.faas.core.api.model.ws.campaign.process.dto.ApiProcessWSDTO;
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 
-import java.util.List;
 
 public class ApiCampaignDetailsWSDTO {
 
     private CampaignDBModel campaign;
-    private List<ApiProcessWSDTO> processes;
+    private ApiCampaignProcessWSDTO campaignProcess;
 
     public ApiCampaignDetailsWSDTO() {
     }
 
-    public ApiCampaignDetailsWSDTO(CampaignDBModel campaign, List<ApiProcessWSDTO> processes) {
+    public ApiCampaignDetailsWSDTO(CampaignDBModel campaign, ApiCampaignProcessWSDTO campaignProcess) {
         this.campaign = campaign;
-        this.processes = processes;
+        this.campaignProcess = campaignProcess;
     }
 
     public CampaignDBModel getCampaign() {
@@ -26,11 +24,11 @@ public class ApiCampaignDetailsWSDTO {
         this.campaign = campaign;
     }
 
-    public List<ApiProcessWSDTO> getProcesses() {
-        return processes;
+    public ApiCampaignProcessWSDTO getCampaignProcess() {
+        return campaignProcess;
     }
 
-    public void setProcesses(List<ApiProcessWSDTO> processes) {
-        this.processes = processes;
+    public void setCampaignProcess(ApiCampaignProcessWSDTO campaignProcess) {
+        this.campaignProcess = campaignProcess;
     }
 }

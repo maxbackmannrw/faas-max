@@ -44,42 +44,49 @@ public class ApiCampaignFramework {
     AppUtils appUtils;
 
 
-    public ApiAgentCampaignWSDTO apiGetAgentCampaignService(long agentId) {
+    public ApiAgentCampaignWSDTO apiGetAgentCampaignsService(long agentId) {
 
-        ApiAgentCampaignWSDTO apiAgentCampaignWSDTO = new ApiAgentCampaignWSDTO();
+        ApiAgentCampaignWSDTO agentCampaignWSDTO = new ApiAgentCampaignWSDTO();
         List<ApiCampaignWSDTO> manualCampaigns = new ArrayList<>();
         List<ApiCampaignWSDTO> inquiryCampaigns = new ArrayList<>();
+        List<ApiCampaignWSDTO> automaticCampaigns = new ArrayList<>();
 
         List<CampaignAgentDBModel> campaignAgents = campaignAgentRepository.findByAgentId(agentId);
         for (CampaignAgentDBModel campaignAgent : campaignAgents) {
             Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignAgent.getCampaignId());
             if (campaignDBModel.isPresent() && campaignDBModel.get().getCampaignCategory().equalsIgnoreCase(AppConstant.MANUAL_CAMPAIGN)) {
-                manualCampaigns.add(fillApiCampaignWSDTO(agentId, campaignDBModel.get()));
+                manualCampaigns.add(campaignHelper.mapApiCampaignWSDTO(campaignDBModel.get()));
             }
             if (campaignDBModel.isPresent() && campaignDBModel.get().getCampaignCategory().equalsIgnoreCase(AppConstant.INQUIRY_CAMPAIGN)) {
-                inquiryCampaigns.add(fillApiCampaignWSDTO(agentId, campaignDBModel.get()));
+                inquiryCampaigns.add(campaignHelper.mapApiCampaignWSDTO(campaignDBModel.get()));
+            }
+            if (campaignDBModel.isPresent() && campaignDBModel.get().getCampaignCategory().equalsIgnoreCase(AppConstant.AUTOMATIC_CAMPAIGN)) {
+                automaticCampaigns.add(campaignHelper.mapApiCampaignWSDTO(campaignDBModel.get()));
             }
         }
-        apiAgentCampaignWSDTO.setManualCampaigns(manualCampaigns);
-        apiAgentCampaignWSDTO.setInquiryCampaigns(inquiryCampaigns);
+        agentCampaignWSDTO.setManualCampaigns(manualCampaigns);
+        agentCampaignWSDTO.setInquiryCampaigns(inquiryCampaigns);
+        agentCampaignWSDTO.setAutomaticCampaigns(automaticCampaigns);
 
-        return apiAgentCampaignWSDTO;
+        return agentCampaignWSDTO;
     }
 
-    public List<ApiCampaignWSDTO> apiGetCampaignsService(long agentId, String category) {
+
+    public List<ApiCampaignWSDTO> apiGetCampaignsService(long agentId, String campaignCategory) {
 
         List<ApiCampaignWSDTO> campaignWSDTOS = new ArrayList<>();
         List<CampaignAgentDBModel> campaignAgents = campaignAgentRepository.findByAgentId(agentId);
         for (CampaignAgentDBModel campaignAgent : campaignAgents) {
             Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignAgent.getCampaignId());
             if (campaignDBModel.isPresent()) {
-                if (campaignDBModel.get().getCampaignCategory().equalsIgnoreCase(category) || category.equalsIgnoreCase(AppConstant.ALL_CAMPAIGNS)) {
-                    campaignWSDTOS.add(fillApiCampaignWSDTO(agentId, campaignDBModel.get()));
+                if (campaignDBModel.get().getCampaignCategory().equalsIgnoreCase(campaignCategory) || campaignCategory.equalsIgnoreCase(AppConstant.ALL_CAMPAIGNS)) {
+                    campaignWSDTOS.add(campaignHelper.mapApiCampaignWSDTO(campaignDBModel.get()));
                 }
             }
         }
         return campaignWSDTOS;
     }
+
 
     public ApiCampaignWSDTO getApiCampaignService(long agentId, String campaignId) {
 
@@ -96,16 +103,6 @@ public class ApiCampaignFramework {
         return null;
     }
 
-    public ApiCampaignWSDTO fillApiCampaignWSDTO(long agentId, CampaignDBModel campaignDBModel) {
-
-        ApiCampaignWSDTO campaignWSDTO = new ApiCampaignWSDTO();
-        campaignWSDTO.setCampaign(campaignDBModel);
-        Optional<ProcessDBModel> processDBModel = processRepository.findById(campaignDBModel.getProcessId());
-        if (processDBModel.isPresent()) {
-            campaignWSDTO.setCampaignProcess(processDBModel.get());
-        }
-        return campaignWSDTO;
-    }
 
     public List<ApiSummaryWSDTO> apiGetAgentCampaignSummaryService(long agentId) {
         return campaignHelper.mapAgentCampaignSummary(agentId);

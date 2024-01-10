@@ -24,10 +24,10 @@ public class ApiCampaignController {
     ApiCampaignMiddleware apiCampaignMiddleware;
 
 
-    @RequestMapping(value = ApiRoute.API_GET_AGENT_CAMPAIGN, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetAgentCampaign(@RequestParam long agentId) {
+    @RequestMapping(value = ApiRoute.API_GET_AGENT_CAMPAIGNS, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetAgentCampaigns(@RequestParam long agentId) {
 
-        ApiAgentCampaignWSModel response = apiCampaignMiddleware.apiGetAgentCampaign(agentId);
+        ApiAgentCampaignWSModel response = apiCampaignMiddleware.apiGetAgentCampaigns(agentId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -37,9 +37,9 @@ public class ApiCampaignController {
 
     @RequestMapping(value = ApiRoute.API_GET_CAMPAIGNS, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetCampaigns(@RequestParam long agentId,
-                                             @RequestParam String category) {
+                                             @RequestParam String campaignCategory) {
 
-        ApiCampaignWSModel response = apiCampaignMiddleware.apiGetCampaigns(agentId,category);
+        ApiCampaignWSModel response = apiCampaignMiddleware.apiGetCampaigns(agentId,campaignCategory);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

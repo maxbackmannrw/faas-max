@@ -1,5 +1,6 @@
 package com.faas.core.utils.helpers;
 
+import com.faas.core.api.model.ws.campaign.content.dto.ApiCampaignWSDTO;
 import com.faas.core.api.model.ws.dashboard.dto.ApiDashboardCampaignWSDTO;
 import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
@@ -133,6 +134,18 @@ public class CampaignHelper {
             return dashboardCampaignWSDTO;
         }
         return null;
+    }
+
+
+    public ApiCampaignWSDTO mapApiCampaignWSDTO(CampaignDBModel campaignDBModel){
+
+        ApiCampaignWSDTO campaignWSDTO = new ApiCampaignWSDTO();
+        campaignWSDTO.setCampaign(campaignDBModel);
+        Optional<ProcessDBModel> processDBModel = processRepository.findById(campaignDBModel.getProcessId());
+        if (processDBModel.isPresent()) {
+            campaignWSDTO.setCampaignProcess(processDBModel.get());
+        }
+        return campaignWSDTO;
     }
 
 

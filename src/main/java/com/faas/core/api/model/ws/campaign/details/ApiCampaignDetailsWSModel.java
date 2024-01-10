@@ -8,13 +8,12 @@ import java.util.List;
 public class ApiCampaignDetailsWSModel {
 
     private GeneralWSModel general;
-    private List<ApiCampaignDetailsWSDTO>campaignDetails;
-
+    private ApiCampaignDetailsWSDTO campaignDetails;
 
     public ApiCampaignDetailsWSModel() {
     }
 
-    public ApiCampaignDetailsWSModel(GeneralWSModel general, List<ApiCampaignDetailsWSDTO> campaignDetails) {
+    public ApiCampaignDetailsWSModel(GeneralWSModel general, ApiCampaignDetailsWSDTO campaignDetails) {
         this.general = general;
         this.campaignDetails = campaignDetails;
     }
@@ -27,11 +26,11 @@ public class ApiCampaignDetailsWSModel {
         this.general = general;
     }
 
-    public List<ApiCampaignDetailsWSDTO> getCampaignDetails() {
+    public ApiCampaignDetailsWSDTO getCampaignDetails() {
         return campaignDetails;
     }
 
-    public void setCampaignDetails(List<ApiCampaignDetailsWSDTO> campaignDetails) {
+    public void setCampaignDetails(ApiCampaignDetailsWSDTO campaignDetails) {
         this.campaignDetails = campaignDetails;
     }
 }

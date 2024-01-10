@@ -118,17 +118,11 @@ public class AppConstant {
     public static final String FINISHED_CALL = "FINISHED_CALL";
 
 
-    public static final String AGENT_READY_SESSIONS_SUMMARY = "AGENT_READY_SESSIONS_SUMMARY";
-    public static final String AGENT_ACTIVE_SESSIONS_SUMMARY = "AGENT_ACTIVE_SESSIONS_SUMMARY";
-    public static final String AGENT_ALL_SESSIONS_SUMMARY = "AGENT_ALL_SESSIONS_SUMMARY";
-
-
     public static final String AGENT_READY_OPERATIONS_SUMMARY = "AGENT_READY_OPERATIONS_SUMMARY";
     public static final String AGENT_ACTIVE_OPERATIONS_SUMMARY = "AGENT_ACTIVE_OPERATIONS_SUMMARY";
     public static final String AGENT_ALL_OPERATIONS_SUMMARY = "AGENT_ALL_OPERATIONS_SUMMARY";
 
     public static final String AGENT_ALL_CAMPAIGNS_SUMMARY = "AGENT_ALL_CAMPAIGNS_SUMMARY";
-
 
 
     public static final String PWA_REMOTE = "PWA_REMOTE";
