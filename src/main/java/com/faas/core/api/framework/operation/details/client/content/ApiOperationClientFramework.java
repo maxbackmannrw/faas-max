@@ -1,18 +1,14 @@
 package com.faas.core.api.framework.operation.details.client.content;
 
-import com.faas.core.api.model.ws.client.details.dto.ApiClientOsIntWSDTO;
-import com.faas.core.api.model.ws.operation.details.client.dto.ApiOperationClientWSDTO;
-import com.faas.core.api.model.ws.operation.details.client.dto.ApiOperationDeviceWSDTO;
+import com.faas.core.api.model.ws.operation.details.client.content.dto.ApiOperationClientWSDTO;
 import com.faas.core.base.model.db.client.content.ClientDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.repo.client.content.ClientRepository;
-import com.faas.core.base.repo.client.details.*;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,26 +38,6 @@ public class ApiOperationClientFramework {
             return operationClientWSDTO;
         }
         return null;
-    }
-
-
-    public ApiOperationDeviceWSDTO apiGetOperationDevicesService(){
-
-        ApiOperationDeviceWSDTO operationDeviceWSDTO = new ApiOperationDeviceWSDTO();
-        return operationDeviceWSDTO;
-    }
-
-    public ApiOperationDeviceWSDTO apiGetOperationDeviceService(){
-
-        ApiOperationDeviceWSDTO operationDeviceWSDTO = new ApiOperationDeviceWSDTO();
-        return operationDeviceWSDTO;
-    }
-
-
-    public List<ApiClientOsIntWSDTO> apiGetClientOsIntService(){
-
-        List<ApiClientOsIntWSDTO> clientOsIntWSDTOS = new ArrayList<>();
-        return clientOsIntWSDTOS;
     }
 
 

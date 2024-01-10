@@ -1,14 +1,14 @@
 package com.faas.core.utils.helpers;
 
-import com.faas.core.api.model.ws.client.details.dto.ApiClientNoteWSDTO;
-import com.faas.core.api.model.ws.client.details.dto.ApiClientOsIntWSDTO;
+import com.faas.core.api.model.ws.operation.details.client.note.dto.ApiOperationNoteWSDTO;
+import com.faas.core.api.model.ws.operation.details.client.osint.dto.ApiOperationOSINTWSDTO;
 import com.faas.core.api.model.ws.dashboard.dto.ApiDashboardOperationWSDTO;
 import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
 import com.faas.core.api.model.ws.operation.channel.content.dto.ApiOperationChannelWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationListWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
 import com.faas.core.api.model.ws.operation.details.activity.dto.ApiOperationActivityWSDTO;
-import com.faas.core.api.model.ws.operation.details.client.dto.ApiOperationClientWSDTO;
+import com.faas.core.api.model.ws.operation.details.client.content.dto.ApiOperationClientWSDTO;
 import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationCampaignWSDTO;
 import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationDetailsWSDTO;
 import com.faas.core.api.model.ws.operation.details.scenario.dto.ApiOperationScenarioWSDTO;
@@ -351,16 +351,16 @@ public class OperationHelper {
     }
 
 
-    public List<ApiClientOsIntWSDTO> mapApiClientOsIntWSDTOS(ClientDBModel clientDBModel) {
+    public List<ApiOperationOSINTWSDTO> mapApiClientOsIntWSDTOS(ClientDBModel clientDBModel) {
 
-        List<ApiClientOsIntWSDTO> clientOsIntWSDTOS = new ArrayList<>();
+        List<ApiOperationOSINTWSDTO> clientOsIntWSDTOS = new ArrayList<>();
         return clientOsIntWSDTOS;
     }
 
 
-    public List<ApiClientNoteWSDTO> mapApiOperationNoteWSDTO(ClientDBModel clientDBModel) {
+    public List<ApiOperationNoteWSDTO> mapApiOperationNoteWSDTO(ClientDBModel clientDBModel) {
 
-        List<ApiClientNoteWSDTO> clientNoteWSDTOS = new ArrayList<>();
+        List<ApiOperationNoteWSDTO> clientNoteWSDTOS = new ArrayList<>();
         return clientNoteWSDTOS;
     }
 

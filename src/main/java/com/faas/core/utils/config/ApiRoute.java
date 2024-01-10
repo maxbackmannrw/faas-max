@@ -34,38 +34,6 @@ public class ApiRoute {
     public static final String API_GET_CAMPAIGN_ASSET = "apigetcampaignasset";
 
 
-    public static final String API_GET_AGENT_INQUIRIES = "apigetagentinquiries";
-    public static final String API_GET_CAMPAIGN_INQUIRIES = "apigetcampaigninquiries";
-    public static final String API_GET_INQUIRIES = "apigetinquiries";
-    public static final String API_GET_INQUIRY = "apigetinquiry";
-    public static final String API_START_INQUIRY = "apistartinquiry";
-    public static final String API_UPDATE_INQUIRY = "apiupdateinquiry";
-    public static final String API_REMOVE_INQUIRY = "apiremoveinquiry";
-    public static final String API_GET_INQUIRY_SUMMARY = "apigetinquirysummary";
-
-    public static final String API_GET_INQUIRY_DETAILS = "apigetinquirydetails";
-
-
-    public static final String API_GET_AGENT_FLOWS = "apigetagentflows";
-    public static final String API_GET_CAMPAIGN_FLOWS = "apigetcampaignflows";
-    public static final String API_GET_FLOWS = "apigetflows";
-    public static final String API_GET_FLOW = "apigetflow";
-    public static final String API_UPDATE_FLOW = "apiupdateflow";
-    public static final String API_REMOVE_FLOW = "apiremoveflow";
-    public static final String API_GET_FLOW_SUMMARY = "apigetflowsummary";
-
-    public static final String API_GET_FLOW_DETAILS = "apigetflowdetails";
-
-
-
-    public static final String API_GET_AGENT_SESSION = "apigetagentsession";
-    public static final String API_GET_CAMPAIGN_SESSIONS = "apigetcampaignsessions";
-    public static final String API_GET_SESSIONS = "apigetsessions";
-    public static final String API_GET_SESSION = "apigetsession";
-    public static final String API_GET_SESSION_DETAILS = "apigetsessiondetails";
-    public static final String API_GET_SESSION_SUMMARY = "apigetsessionsummary";
-
-
 
     public static final String API_GET_AGENT_OPERATIONS = "apigetagentoperations";
     public static final String API_GET_CAMPAIGN_OPERATIONS = "apigetcampaignoperations";
@@ -86,17 +54,22 @@ public class ApiRoute {
 
     public static final String API_GET_OPERATION_CLIENT = "apigetoperationclient";
 
-    public static final String API_GET_CLIENT_OS_INT = "apigetclientosint";
+    public static final String API_GET_OPERATION_NOTES = "apigetoperationnotes";
+    public static final String API_GET_OPERATION_NOTE = "apigetoperationnote";
+    public static final String API_CREATE_OPERATION_NOTE = "apicreateoperationnote";
+    public static final String API_UPDATE_OPERATION_NOTE = "apiupdateoperationnote";
+    public static final String API_REMOVE_OPERATION_NOTE = "apiremoveoperationnote";
 
-    public static final String API_GET_OPERATION_DEVICES = "apigetoperationdevices";
-    public static final String API_GET_OPERATION_DEVICE = "apigetoperationdevice";
 
 
-    public static final String API_GET_AGENT_CLIENTS = "apigetagentclients";
-    public static final String API_GET_CLIENT = "apigetclient";
+
+
+    public static final String API_GET_AGENT_CLIENT = "apigetagentclient";
 
     public static final String API_GET_CLIENT_DEVICES = "apigetclientdevices";
     public static final String API_GET_CLIENT_DEVICE = "apigetclientdevice";
+
+
 
     public static final String API_GET_CLIENT_NOTES = "apigetclientnotes";
     public static final String API_GET_CLIENT_NOTE = "apigetclientnote";

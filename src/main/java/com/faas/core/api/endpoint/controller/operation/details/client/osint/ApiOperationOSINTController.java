@@ -1,6 +1,6 @@
-package com.faas.core.api.endpoint.controller.operation.details.client.content;
+package com.faas.core.api.endpoint.controller.operation.details.client.osint;
 
-import com.faas.core.api.middleware.operation.details.client.content.ApiOperationClientMiddleware;
+import com.faas.core.api.middleware.operation.details.client.osint.ApiOperationOSINTMiddleware;
 import com.faas.core.api.model.ws.operation.details.client.content.ApiOperationClientWSModel;
 import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;
@@ -14,20 +14,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-@RequestMapping(value = AppConstant.API_VERSION + "/api/operation/details/client/")
-public class ApiOperationClientController {
+@RequestMapping(value = AppConstant.API_VERSION + "/api/operation/details/client/osint/")
+public class ApiOperationOSINTController {
 
 
     @Autowired
-    ApiOperationClientMiddleware apiOperationClientMiddleware;
+    ApiOperationOSINTMiddleware apiOperationOSINTMiddleware;
 
 
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION_CLIENT, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperationClient(@RequestParam long agentId,
-                                                   @RequestParam long sessionId,
-                                                   @RequestParam long clientId) {
+    @RequestMapping(value = ApiRoute.API_GET_CLIENT_DEVICES, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetClientDevices(@RequestParam long agentId,
+                                                 @RequestParam long clientId) {
 
-        ApiOperationClientWSModel response = apiOperationClientMiddleware.apiGetOperationClient(agentId,sessionId,clientId);
+        ApiOperationClientWSModel response = apiOperationOSINTMiddleware.apiGetOperationClient(agentId,clientId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

@@ -1,6 +1,7 @@
-package com.faas.core.api.middleware.operation.details.client.content;
+package com.faas.core.api.middleware.operation.details.client.osint;
 
 import com.faas.core.api.framework.operation.details.client.content.ApiOperationClientFramework;
+import com.faas.core.api.framework.operation.details.client.osint.ApiOperationOSINTFramework;
 import com.faas.core.api.model.ws.operation.details.client.content.ApiOperationClientWSModel;
 import com.faas.core.api.model.ws.operation.details.client.content.dto.ApiOperationClientWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
@@ -9,19 +10,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ApiOperationClientMiddleware {
+public class ApiOperationOSINTMiddleware {
 
 
     @Autowired
-    ApiOperationClientFramework apiOperationClientFramework;
+    ApiOperationOSINTFramework apiOperationOSINTFramework;
 
 
-    public ApiOperationClientWSModel apiGetOperationClient(long agentId, long sessionId, long clientId) {
+    public ApiOperationClientWSModel apiGetOperationClient(long agentId, long clientId) {
 
         ApiOperationClientWSModel response = new ApiOperationClientWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiOperationClientWSDTO operationClientWSDTO = apiOperationClientFramework.apiGetOperationClientService(agentId,sessionId,clientId);
+        ApiOperationClientWSDTO operationClientWSDTO = apiOperationOSINTFramework.apiGetOperationClientService(agentId,clientId);
         if (operationClientWSDTO != null){
             response.setOperationClient(operationClientWSDTO);
         }

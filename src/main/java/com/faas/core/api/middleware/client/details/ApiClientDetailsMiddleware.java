@@ -1,29 +1,27 @@
-package com.faas.core.api.middleware.client.content;
+package com.faas.core.api.middleware.client.details;
 
-import com.faas.core.api.framework.client.content.ApiClientFramework;
+import com.faas.core.api.framework.client.details.ApiClientDetailsFramework;
 import com.faas.core.api.model.ws.client.session.ApiAgentSessionWSModel;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-
 @Component
-public class ApiClientMiddleware {
+public class ApiClientDetailsMiddleware {
 
 
     @Autowired
-    ApiClientFramework apiClientFramework;
+    ApiClientDetailsFramework apiClientDetailsFramework;
 
 
-    public ApiAgentSessionWSModel apiGetAgentClient(long agentId,long clientId) {
+    public ApiAgentSessionWSModel apiGetClientDevices(long agentId, long clientId) {
 
         ApiAgentSessionWSModel response = new ApiAgentSessionWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
 
-
-        general.setOperation("apiGetAgentClient");
+        general.setOperation("apiGetClientDevices");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
