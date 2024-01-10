@@ -39,6 +39,12 @@ public class ApiCampaignDetailsFramework {
     }
 
 
+    public ApiCampaignProcessWSDTO apiGetCampaignProcessService(long agentId, String campaignId) {
+
+        return null;
+    }
+
+
     public List<ApiSummaryWSDTO> apiGetAgentCampaignSummaryService(long agentId) {
 
         List<ApiSummaryWSDTO> agentCampaignSummary = new ArrayList<>();
@@ -47,12 +53,6 @@ public class ApiCampaignDetailsFramework {
         agentCampaignSummary.add(new ApiSummaryWSDTO(AppConstant.AGENT_READY_OPERATIONS_SUMMARY, String.valueOf(operationRepository.countByAgentIdAndOperationState(agentId,AppConstant.READY_STATE))));
 
         return agentCampaignSummary;
-    }
-
-
-    public ApiCampaignProcessWSDTO apiGetCampaignProcessService(long agentId, String campaignId) {
-
-        return null;
     }
 
 

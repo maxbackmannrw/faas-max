@@ -42,26 +42,6 @@ public class ApiCampaignDetailsMiddleware {
     }
 
 
-    public ApiSummaryWSModel apiGetAgentCampaignSummary(long agentId) {
-
-        ApiSummaryWSModel response = new ApiSummaryWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-        List<ApiSummaryWSDTO> summaryWSDTOS = apiCampaignDetailsFramework.apiGetAgentCampaignSummaryService(agentId);
-        if (summaryWSDTOS != null){
-            response.setSummaries(summaryWSDTOS);
-        }
-
-        general.setOperation("apiGetAgentCampaignSummary");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-
     public ApiCampaignProcessWSModel apiGetCampaignProcess(long agentId,String campaignId) {
 
         ApiCampaignProcessWSModel response = new ApiCampaignProcessWSModel();
@@ -73,6 +53,26 @@ public class ApiCampaignDetailsMiddleware {
         }
 
         general.setOperation("apiGetCampaignProcess");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
+    public ApiSummaryWSModel apiGetAgentCampaignSummary(long agentId) {
+
+        ApiSummaryWSModel response = new ApiSummaryWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        List<ApiSummaryWSDTO> summaryWSDTOS = apiCampaignDetailsFramework.apiGetAgentCampaignSummaryService(agentId);
+        if (summaryWSDTOS != null){
+            response.setSummaries(summaryWSDTOS);
+        }
+
+        general.setOperation("apiGetAgentCampaignSummary");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
