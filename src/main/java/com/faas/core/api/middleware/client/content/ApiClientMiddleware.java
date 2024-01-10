@@ -1,7 +1,7 @@
 package com.faas.core.api.middleware.client.content;
 
 import com.faas.core.api.framework.client.content.ApiClientFramework;
-import com.faas.core.api.model.ws.client.session.ApiAgentSessionWSModel;
+import com.faas.core.api.model.ws.client.content.ApiClientWSModel;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +16,9 @@ public class ApiClientMiddleware {
     ApiClientFramework apiClientFramework;
 
 
-    public ApiAgentSessionWSModel apiGetAgentClient(long agentId,long clientId) {
+    public ApiClientWSModel apiGetAgentClient(long agentId, long clientId) {
 
-        ApiAgentSessionWSModel response = new ApiAgentSessionWSModel();
+        ApiClientWSModel response = new ApiClientWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
 

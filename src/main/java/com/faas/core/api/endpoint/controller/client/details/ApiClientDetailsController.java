@@ -1,7 +1,7 @@
 package com.faas.core.api.endpoint.controller.client.details;
 
 import com.faas.core.api.middleware.client.details.ApiClientDetailsMiddleware;
-import com.faas.core.api.model.ws.client.session.ApiAgentSessionWSModel;
+import com.faas.core.api.model.ws.client.details.ApiClientDetailsWSModel;
 import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ public class ApiClientDetailsController {
     public ResponseEntity<?> apiGetAgentClient(@RequestParam long agentId,
                                                @RequestParam long clientId) {
 
-        ApiAgentSessionWSModel response = apiClientDetailsMiddleware.apiGetClientDevices(agentId,clientId);
+        ApiClientDetailsWSModel response = apiClientDetailsMiddleware.apiGetClientDevices(agentId,clientId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

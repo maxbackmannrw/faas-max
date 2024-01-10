@@ -1,6 +1,6 @@
 package com.faas.core.api.framework.client.details;
 
-import com.faas.core.api.model.ws.client.session.dto.ApiAgentSessionWSDTO;
+import com.faas.core.api.model.ws.client.details.dto.ApiClientDetailsWSDTO;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,11 +13,11 @@ public class ApiClientDetailsFramework {
     AppUtils appUtils;
 
 
-    public ApiAgentSessionWSDTO apiGetAgentSessionService(long agentId, int reqPage, int reqSize) {
+    public ApiClientDetailsWSDTO apiGetAgentSessionService(long agentId, int reqPage, int reqSize) {
 
-        ApiAgentSessionWSDTO agentSessionWSDTO = new ApiAgentSessionWSDTO();
+        ApiClientDetailsWSDTO clientDetailsWSDTO = new ApiClientDetailsWSDTO();
 
-        return agentSessionWSDTO;
+        return clientDetailsWSDTO;
     }
 
     

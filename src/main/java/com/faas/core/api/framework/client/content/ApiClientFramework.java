@@ -1,6 +1,6 @@
 package com.faas.core.api.framework.client.content;
 
-import com.faas.core.api.model.ws.client.session.dto.ApiAgentSessionWSDTO;
+import com.faas.core.api.model.ws.client.content.dto.ApiClientWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
@@ -13,7 +13,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ApiClientFramework {
-
 
     @Autowired
     CampaignHelper campaignHelper;
@@ -34,11 +33,11 @@ public class ApiClientFramework {
     AppUtils appUtils;
 
 
-    public ApiAgentSessionWSDTO apiGetAgentClientService(long agentId, long clientId) {
+    public ApiClientWSDTO apiGetAgentClientService(long agentId, long clientId) {
 
-        ApiAgentSessionWSDTO agentSessionWSDTO = new ApiAgentSessionWSDTO();
+        ApiClientWSDTO clientWSDTO = new ApiClientWSDTO();
 
-        return agentSessionWSDTO;
+        return clientWSDTO;
     }
 
     
