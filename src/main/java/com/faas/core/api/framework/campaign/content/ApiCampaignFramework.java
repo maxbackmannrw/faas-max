@@ -49,7 +49,6 @@ public class ApiCampaignFramework {
         ApiAgentCampaignWSDTO agentCampaignWSDTO = new ApiAgentCampaignWSDTO();
         List<ApiCampaignWSDTO> manualCampaigns = new ArrayList<>();
         List<ApiCampaignWSDTO> inquiryCampaigns = new ArrayList<>();
-        List<ApiCampaignWSDTO> automaticCampaigns = new ArrayList<>();
 
         List<CampaignAgentDBModel> campaignAgents = campaignAgentRepository.findByAgentId(agentId);
         for (CampaignAgentDBModel campaignAgent : campaignAgents) {
