@@ -60,13 +60,9 @@ public class ApiCampaignFramework {
             if (campaignDBModel.isPresent() && campaignDBModel.get().getCampaignCategory().equalsIgnoreCase(AppConstant.INQUIRY_CAMPAIGN)) {
                 inquiryCampaigns.add(campaignHelper.mapApiCampaignWSDTO(campaignDBModel.get()));
             }
-            if (campaignDBModel.isPresent() && campaignDBModel.get().getCampaignCategory().equalsIgnoreCase(AppConstant.AUTOMATIC_CAMPAIGN)) {
-                automaticCampaigns.add(campaignHelper.mapApiCampaignWSDTO(campaignDBModel.get()));
-            }
         }
         agentCampaignWSDTO.setManualCampaigns(manualCampaigns);
         agentCampaignWSDTO.setInquiryCampaigns(inquiryCampaigns);
-        agentCampaignWSDTO.setAutomaticCampaigns(automaticCampaigns);
 
         return agentCampaignWSDTO;
     }
