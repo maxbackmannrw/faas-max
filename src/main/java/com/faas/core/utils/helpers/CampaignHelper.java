@@ -112,16 +112,6 @@ public class CampaignHelper {
     }
 
 
-    public List<ApiSummaryWSDTO> mapAgentCampaignSummary(long agentId){
-
-        List<ApiSummaryWSDTO> apiSummaryWSDTOS = new ArrayList<>();
-        apiSummaryWSDTOS.add(new ApiSummaryWSDTO(AppConstant.AGENT_READY_OPERATIONS_SUMMARY, String.valueOf(sessionRepository.countByAgentIdAndSessionState(agentId,AppConstant.READY_STATE))));
-        apiSummaryWSDTOS.add(new ApiSummaryWSDTO(AppConstant.AGENT_ACTIVE_OPERATIONS_SUMMARY, String.valueOf(sessionRepository.countByAgentIdAndSessionState(agentId,AppConstant.ACTIVE_STATE))));
-        apiSummaryWSDTOS.add(new ApiSummaryWSDTO(AppConstant.AGENT_ALL_CAMPAIGNS_SUMMARY,String.valueOf(campaignAgentRepository.countByAgentId(agentId))));
-
-        return apiSummaryWSDTOS;
-    }
-
     public ApiDashboardCampaignWSDTO mapApiDashboardCampaignWSDTO(CampaignDBModel campaignDBModel){
 
         Optional<ProcessDBModel> processDBModel = processRepository.findById(campaignDBModel.getProcessId());
