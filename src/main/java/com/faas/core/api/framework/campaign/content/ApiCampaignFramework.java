@@ -104,9 +104,5 @@ public class ApiCampaignFramework {
     }
 
 
-    public List<ApiSummaryWSDTO> apiGetAgentCampaignSummaryService(long agentId) {
-        return campaignHelper.mapAgentCampaignSummary(agentId);
-    }
-
 
 }
