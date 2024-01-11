@@ -5,16 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/details/validate/ApiOperationValidateController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/validate/ApiOperationValidateFramework.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/details/validate/ApiOperationValidateMiddleware.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/content/ApiOperationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/content/ApiOperationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/dashboard/ApiDashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/dashboard/ApiDashboardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/details/content/ApiOperationDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/details/content/ApiOperationDetailsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/details/validate/ApiOperationValidateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/details/validate/ApiOperationValidateController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/dashboard/ApiDashboardFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/dashboard/ApiDashboardFramework.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/content/ApiOperationFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/content/ApiOperationFramework.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/content/ApiOperationDetailsFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/content/ApiOperationDetailsFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/content/ApiOperationMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/content/ApiOperationMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/validate/ApiOperationValidateFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/validate/ApiOperationValidateFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/dashboard/ApiDashboardMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/dashboard/ApiDashboardMiddleware.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/details/content/ApiOperationDetailsMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/details/content/ApiOperationDetailsMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/details/validate/ApiOperationValidateMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/details/validate/ApiOperationValidateMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/content/ApiValidateOperationWSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/details/validate/ApiOperationValidateWSModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/content/dto/ApiValidateOperationWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/details/validate/dto/ApiOperationValidateWSDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/config/ApiRoute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/config/ApiRoute.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -132,11 +134,11 @@
       <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/scenario/content" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.faas.core.api.model.ws.operation.content.dto" />
+      <recent name="com.faas.core.api.model.ws.operation.content" />
       <recent name="com.faas.core.api.middleware.operation.details.validate" />
       <recent name="com.faas.core.api.framework.operation.details.validate" />
       <recent name="com.faas.core.api.endpoint.controller.operation.details.validate" />
-      <recent name="com.faas.core.api.middleware.operation.content" />
-      <recent name="com.faas.core.api.framework.operation.content" />
     </key>
   </component>
   <component name="RunManager">
@@ -634,15 +636,7 @@
       <workItem from="1704980040637" duration="219000" />
       <workItem from="1704983132520" duration="579000" />
       <workItem from="1704998996553" duration="34000" />
-      <workItem from="1705010403566" duration="1102000" />
-    </task>
-    <task id="LOCAL-00542" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1703991222116</created>
-      <option name="number" value="00542" />
-      <option name="presentableId" value="LOCAL-00542" />
-      <option name="project" value="LOCAL" />
-      <updated>1703991222116</updated>
+      <workItem from="1705010403566" duration="2176000" />
     </task>
     <task id="LOCAL-00543" summary="almost finish">
       <option name="closed" value="true" />
@@ -1028,7 +1022,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704981740881</updated>
     </task>
-    <option name="localTasksCounter" value="591" />
+    <task id="LOCAL-00591" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1705011537445</created>
+      <option name="number" value="00591" />
+      <option name="presentableId" value="LOCAL-00591" />
+      <option name="project" value="LOCAL" />
+      <updated>1705011537445</updated>
+    </task>
+    <option name="localTasksCounter" value="592" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

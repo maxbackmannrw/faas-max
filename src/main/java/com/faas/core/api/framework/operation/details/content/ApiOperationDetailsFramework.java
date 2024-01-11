@@ -1,7 +1,7 @@
 package com.faas.core.api.framework.operation.details.content;
 
+import com.faas.core.api.model.ws.campaign.details.dto.ApiCampaignDetailsWSDTO;
 import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
-import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
 import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationCampaignWSDTO;
 import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationDetailsWSDTO;
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
@@ -61,7 +61,7 @@ public class ApiOperationDetailsFramework {
         return null;
     }
 
-    public ApiOperationCampaignWSDTO apiGetOperationCampaignService(long sessionId, long clientId, String campaignId, String processId) {
+    public ApiCampaignDetailsWSDTO apiGetOperationCampaignService(long sessionId, long clientId, String campaignId, String processId) {
 
         List<CampaignDBModel> campaignDBModels = campaignRepository.findByIdAndStatus(campaignId,1);
         List<ProcessDBModel> processDBModels = processRepository.findByIdAndStatus(processId,1);
@@ -71,7 +71,6 @@ public class ApiOperationDetailsFramework {
             campaignWSDTO.setOperationCampaign(campaignDBModels.get(0));
             campaignWSDTO.setOperationProcess(processDBModels.get(0));
 
-            return campaignWSDTO;
         }
         return null;
     }

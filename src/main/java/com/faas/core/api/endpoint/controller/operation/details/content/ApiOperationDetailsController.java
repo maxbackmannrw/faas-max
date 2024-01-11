@@ -1,6 +1,7 @@
 package com.faas.core.api.endpoint.controller.operation.details.content;
 
 import com.faas.core.api.middleware.operation.details.content.ApiOperationDetailsMiddleware;
+import com.faas.core.api.model.ws.campaign.details.ApiCampaignDetailsWSModel;
 import com.faas.core.api.model.ws.general.ApiSummaryWSModel;
 import com.faas.core.api.model.ws.operation.details.content.ApiOperationCampaignWSModel;
 import com.faas.core.api.model.ws.operation.details.content.ApiOperationDetailsWSModel;
@@ -48,7 +49,7 @@ public class ApiOperationDetailsController {
                                                      @RequestParam String campaignId,
                                                      @RequestParam String processId) {
 
-        ApiOperationCampaignWSModel response = apiOperationDetailsMiddleware.apiGetOperationCampaign(agentId,sessionId,clientId,campaignId,processId);
+        ApiCampaignDetailsWSModel response = apiOperationDetailsMiddleware.apiGetOperationCampaign(agentId,sessionId,clientId,campaignId,processId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

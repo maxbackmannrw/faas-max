@@ -10,11 +10,10 @@ import com.faas.core.api.model.ws.dashboard.dto.ApiDashboardWSDTO;
 import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
 import com.faas.core.api.model.ws.general.ApiSummaryWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiOperationWSModel;
-import com.faas.core.api.model.ws.operation.content.ApiValidateOperationWSModel;
+import com.faas.core.api.model.ws.operation.details.validate.ApiOperationValidateWSModel;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
-import com.faas.core.api.model.ws.operation.content.dto.ApiValidateOperationWSDTO;
+import com.faas.core.api.model.ws.operation.details.validate.dto.ApiOperationValidateWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -92,17 +91,17 @@ public class ApiDashboardMiddleware {
     }
 
 
-    public ApiValidateOperationWSModel apiValidateDashboardOperation(long agentId, String operationId) {
+    public ApiOperationValidateWSModel apiDashboardOperationValidate(long agentId, String operationId) {
 
-        ApiValidateOperationWSModel response = new ApiValidateOperationWSModel();
+        ApiOperationValidateWSModel response = new ApiOperationValidateWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiValidateOperationWSDTO validateOperationWSDTO = apiDashboardFramework.apiValidateDashboardOperationService(agentId,operationId);
-        if (validateOperationWSDTO != null){
-            response.setValidateOperation(validateOperationWSDTO);
+        ApiOperationValidateWSDTO operationValidateWSDTO = apiDashboardFramework.apiDashboardOperationValidateService(agentId,operationId);
+        if (operationValidateWSDTO != null){
+            response.setOperationValidate(operationValidateWSDTO);
         }
 
-        general.setOperation("apiValidateDashboardOperation");
+        general.setOperation("apiDashboardOperationValidate");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

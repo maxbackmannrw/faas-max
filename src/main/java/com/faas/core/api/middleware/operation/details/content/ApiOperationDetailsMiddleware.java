@@ -1,11 +1,11 @@
 package com.faas.core.api.middleware.operation.details.content;
 
 import com.faas.core.api.framework.operation.details.content.ApiOperationDetailsFramework;
+import com.faas.core.api.model.ws.campaign.details.ApiCampaignDetailsWSModel;
+import com.faas.core.api.model.ws.campaign.details.dto.ApiCampaignDetailsWSDTO;
 import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
 import com.faas.core.api.model.ws.general.ApiSummaryWSModel;
-import com.faas.core.api.model.ws.operation.details.content.ApiOperationCampaignWSModel;
 import com.faas.core.api.model.ws.operation.details.content.ApiOperationDetailsWSModel;
-import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationCampaignWSDTO;
 import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationDetailsWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.utils.config.AppConstant;
@@ -42,14 +42,14 @@ public class ApiOperationDetailsMiddleware {
     }
 
 
-    public ApiOperationCampaignWSModel apiGetOperationCampaign(long agentId, long sessionId, long clientId, String campaignId, String processId) {
+    public ApiCampaignDetailsWSModel apiGetOperationCampaign(long agentId, long sessionId, long clientId, String campaignId, String processId) {
 
-        ApiOperationCampaignWSModel response = new ApiOperationCampaignWSModel();
+        ApiCampaignDetailsWSModel response = new ApiCampaignDetailsWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiOperationCampaignWSDTO operationCampaignWSDTO = apiOperationDetailsFramework.apiGetOperationCampaignService(sessionId,clientId,campaignId,processId);
-        if (operationCampaignWSDTO != null){
-            response.setCampaign(operationCampaignWSDTO);
+        ApiCampaignDetailsWSDTO operationCampaign = apiOperationDetailsFramework.apiGetOperationCampaignService(sessionId,clientId,campaignId,processId);
+        if (operationCampaign != null){
+            response.setCampaignDetails(operationCampaign);
         }
 
         general.setOperation("apiGetOperationCampaign");
@@ -67,9 +67,9 @@ public class ApiOperationDetailsMiddleware {
         ApiSummaryWSModel response = new ApiSummaryWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ApiSummaryWSDTO> sessionSummary = apiOperationDetailsFramework.apiGetOperationSummaryService(agentId);
-        if (sessionSummary != null){
-            response.setSummaries(sessionSummary);
+        List<ApiSummaryWSDTO> operationSummary = apiOperationDetailsFramework.apiGetOperationSummaryService(agentId);
+        if (operationSummary != null){
+            response.setSummaries(operationSummary);
         }
 
         general.setOperation("apiGetOperationSummary");

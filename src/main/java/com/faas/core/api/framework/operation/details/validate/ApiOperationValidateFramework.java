@@ -47,7 +47,7 @@ public class ApiOperationValidateFramework {
     @Autowired
     AppUtils appUtils;
 
-    public ApiOperationDetailsWSDTO apiValidateOperationService(long agentId, long sessionId) {
+    public ApiOperationDetailsWSDTO apiOperationValidateService(long agentId, long sessionId) {
 
         List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndAgentId(sessionId, agentId);
         List<OperationDBModel> operationDBModels = operationRepository.findBySessionId(sessionId);
@@ -62,7 +62,7 @@ public class ApiOperationValidateFramework {
         return null;
     }
 
-    public ApiOperationWSDTO apiValidateAgentOperationService(long agentId, long sessionId, String sessionState, String operationState) {
+    public ApiOperationWSDTO apiAgentOperationValidateService(long agentId, long sessionId, String sessionState, String operationState) {
 
         List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndAgentIdAndSessionState(sessionId,agentId,sessionState);
         List<OperationDBModel> operationDBModels = operationRepository.findByAgentIdAndSessionIdAndOperationState(agentId,sessionId,operationState);
@@ -76,7 +76,7 @@ public class ApiOperationValidateFramework {
         return null;
     }
 
-    public ApiOperationWSDTO apiLaunchOperationService(long agentId,long sessionId, long clientId, String campaignId) {
+    public ApiOperationWSDTO apiOperationLaunchService(long agentId,long sessionId, long clientId, String campaignId) {
 
         List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndClientIdAndAgentIdAndCampaignIdAndSessionState(sessionId, clientId, agentId, campaignId, AppConstant.READY_STATE);
         List<OperationDBModel> operationDBModels = operationRepository.findBySessionIdAndClientIdAndAgentIdAndCampaignIdAndOperationState(sessionId, clientId, agentId, campaignId, AppConstant.READY_STATE);
@@ -117,7 +117,7 @@ public class ApiOperationValidateFramework {
 
 
 
-    public ApiOperationWSDTO apiFinishOperationService(long agentId, long sessionId, long clientId, String campaignId,String operationResult) {
+    public ApiOperationWSDTO apiOperationFinishService(long agentId, long sessionId, long clientId, String campaignId,String operationResult) {
 
         Optional<ClientDBModel> clientDBModel = clientRepository.findById(clientId);
         List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndClientIdAndAgentIdAndCampaignIdAndSessionState(sessionId, clientId, agentId, campaignId, AppConstant.ACTIVE_STATE);

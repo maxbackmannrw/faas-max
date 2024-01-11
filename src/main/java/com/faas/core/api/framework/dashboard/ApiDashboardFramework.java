@@ -5,7 +5,7 @@ import com.faas.core.api.model.ws.dashboard.dto.ApiDashboardOperationWSDTO;
 import com.faas.core.api.model.ws.dashboard.dto.ApiDashboardWSDTO;
 import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
-import com.faas.core.api.model.ws.operation.content.dto.ApiValidateOperationWSDTO;
+import com.faas.core.api.model.ws.operation.details.validate.dto.ApiOperationValidateWSDTO;
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.campaign.details.CampaignAgentDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
@@ -93,23 +93,23 @@ public class ApiDashboardFramework {
     }
 
 
-    public ApiValidateOperationWSDTO apiValidateDashboardOperationService(long agentId, String operationId){
+    public ApiOperationValidateWSDTO apiDashboardOperationValidateService(long agentId, String operationId){
 
         Optional<UserDBModel> userDBModel = userRepository.findById(agentId);
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
         if (userDBModel.isPresent() && !operationDBModels.isEmpty()){
 
-            ApiValidateOperationWSDTO validateOperationWSDTO = new ApiValidateOperationWSDTO();
-            validateOperationWSDTO.setAgent(userDBModel.get());
-            validateOperationWSDTO.setOperation(operationDBModels.get(0));
-            validateOperationWSDTO.setOperationCount(operationRepository.countByAgentIdAndOperationState(agentId,AppConstant.ACTIVE_STATE));
+            ApiOperationValidateWSDTO operationValidateWSDTO = new ApiOperationValidateWSDTO();
+            operationValidateWSDTO.setAgent(userDBModel.get());
+            operationValidateWSDTO.setOperation(operationDBModels.get(0));
+            operationValidateWSDTO.setOperationCount(operationRepository.countByAgentIdAndOperationState(agentId,AppConstant.ACTIVE_STATE));
             if (userDBModel.get().getUserRole().equalsIgnoreCase(AppConstant.BASIC_AGENT)){
-                validateOperationWSDTO.setOperationLimit(AppConstant.BASIC_AGENT_OPERATION_LIMIT);
+                operationValidateWSDTO.setOperationLimit(AppConstant.BASIC_AGENT_OPERATION_LIMIT);
             }
             if (userDBModel.get().getUserRole().equalsIgnoreCase(AppConstant.SUPER_AGENT)){
-                validateOperationWSDTO.setOperationLimit(AppConstant.SUPER_AGENT_OPERATION_LIMIT);
+                operationValidateWSDTO.setOperationLimit(AppConstant.SUPER_AGENT_OPERATION_LIMIT);
             }
-            return validateOperationWSDTO;
+            return operationValidateWSDTO;
         }
         return null;
     }

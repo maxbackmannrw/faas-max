@@ -6,7 +6,7 @@ import com.faas.core.api.model.ws.dashboard.ApiDashboardOperationWSModel;
 import com.faas.core.api.model.ws.dashboard.ApiDashboardWSModel;
 import com.faas.core.api.model.ws.general.ApiSummaryWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiOperationWSModel;
-import com.faas.core.api.model.ws.operation.content.ApiValidateOperationWSModel;
+import com.faas.core.api.model.ws.operation.details.validate.ApiOperationValidateWSModel;
 import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,11 +70,11 @@ public class ApiDashboardController {
     }
 
 
-    @RequestMapping(value = ApiRoute.API_VALIDATE_DASHBOARD_OPERATION, method = RequestMethod.POST)
-    public ResponseEntity<?> apiValidateDashboardOperation(@RequestParam long agentId,
+    @RequestMapping(value = ApiRoute.API_DASHBOARD_OPERATION_VALIDATE, method = RequestMethod.POST)
+    public ResponseEntity<?> apiDashboardOperationValidate(@RequestParam long agentId,
                                                            @RequestParam String operationId) {
 
-        ApiValidateOperationWSModel response = apiDashboardMiddleware.apiValidateDashboardOperation(agentId,operationId);
+        ApiOperationValidateWSModel response = apiDashboardMiddleware.apiDashboardOperationValidate(agentId,operationId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

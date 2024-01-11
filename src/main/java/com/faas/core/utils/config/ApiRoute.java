@@ -13,7 +13,7 @@ public class ApiRoute {
     public static final String API_GET_DASHBOARD = "apigetdashboard";
     public static final String API_GET_DASHBOARD_OPERATIONS = "apigetdashboardoperations";
     public static final String API_GET_DASHBOARD_OPERATION = "apigetdashboardoperation";
-    public static final String API_VALIDATE_DASHBOARD_OPERATION = "apivalidatedashboardoperation";
+    public static final String API_DASHBOARD_OPERATION_VALIDATE = "apidashboardoperationvalidate";
     public static final String API_GET_DASHBOARD_CAMPAIGNS = "apigetdashboardcampaigns";
     public static final String API_GET_DASHBOARD_SUMMARY = "apigetdashboardsummary";
 
@@ -48,10 +48,10 @@ public class ApiRoute {
     public static final String API_GET_OPERATION_SUMMARY = "apigetoperationsummary";
 
 
-    public static final String API_VALIDATE_OPERATION = "apivalidateoperation";
-    public static final String API_VALIDATE_AGENT_OPERATION = "apivalidateagentoperation";
-    public static final String API_LAUNCH_OPERATION = "apilaunchoperation";
-    public static final String API_FINISH_OPERATION = "apifinishoperation";
+    public static final String API_OPERATION_VALIDATE = "apioperationvalidate";
+    public static final String API_AGENT_OPERATION_VALIDATE = "apiagentoperationvalidate";
+    public static final String API_OPERATION_LAUNCH = "apioperationlaunch";
+    public static final String API_OPERATION_FINISH = "apioperationfinish";
 
 
 

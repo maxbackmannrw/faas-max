@@ -1,6 +1,5 @@
 package com.faas.core.api.framework.operation.content;
 
-import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiAgentOperationWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationListWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;

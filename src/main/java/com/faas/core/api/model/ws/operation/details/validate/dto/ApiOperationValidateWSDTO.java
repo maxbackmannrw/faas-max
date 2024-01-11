@@ -1,20 +1,20 @@
-package com.faas.core.api.model.ws.operation.content.dto;
+package com.faas.core.api.model.ws.operation.details.validate.dto;
 
 
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.user.content.UserDBModel;
 
-public class ApiValidateOperationWSDTO {
+public class ApiOperationValidateWSDTO {
 
     private UserDBModel agent;
     private OperationDBModel operation;
     private long operationCount;
     private long operationLimit;
 
-    public ApiValidateOperationWSDTO() {
+    public ApiOperationValidateWSDTO() {
     }
 
-    public ApiValidateOperationWSDTO(UserDBModel agent, OperationDBModel operation, long operationCount, long operationLimit) {
+    public ApiOperationValidateWSDTO(UserDBModel agent, OperationDBModel operation, long operationCount, long operationLimit) {
         this.agent = agent;
         this.operation = operation;
         this.operationCount = operationCount;
