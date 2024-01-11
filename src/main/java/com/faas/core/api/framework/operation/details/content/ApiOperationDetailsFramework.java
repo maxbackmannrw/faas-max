@@ -1,5 +1,6 @@
 package com.faas.core.api.framework.operation.details.content;
 
+import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
 import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationCampaignWSDTO;
 import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationDetailsWSDTO;
@@ -60,38 +61,6 @@ public class ApiOperationDetailsFramework {
         return null;
     }
 
-
-    public ApiOperationDetailsWSDTO apiValidateOperationService(long agentId, long sessionId) {
-
-        List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndAgentId(sessionId, agentId);
-        List<OperationDBModel> operationDBModels = operationRepository.findBySessionId(sessionId);
-        if (!sessionDBModels.isEmpty() && !operationDBModels.isEmpty()) {
-            Optional<ClientDBModel> clientDBModel = clientRepository.findById(sessionDBModels.get(0).getClientId());
-            Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(sessionDBModels.get(0).getCampaignId());
-            Optional<ProcessDBModel> processDBModel = processRepository.findById(sessionDBModels.get(0).getProcessId());
-            if (clientDBModel.isPresent() && campaignDBModel.isPresent() && processDBModel.isPresent()) {
-                return operationHelper.mapApiOperationDetailsWSDTO(sessionDBModels.get(0), clientDBModel.get(), operationDBModels.get(0), campaignDBModel.get(), processDBModel.get());
-            }
-        }
-        return null;
-    }
-
-    public ApiOperationWSDTO apiValidateAgentOperationService(long agentId, long sessionId, String sessionState, String operationState) {
-
-        List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndAgentIdAndSessionState(sessionId,agentId,sessionState);
-        List<OperationDBModel> operationDBModels = operationRepository.findByAgentIdAndSessionIdAndOperationState(agentId,sessionId,operationState);
-        if (!operationDBModels.isEmpty() && !sessionDBModels.isEmpty()){
-            ApiOperationWSDTO operationWSDTO = new ApiOperationWSDTO();
-            operationWSDTO.setOperation(operationDBModels.get(0));
-            operationWSDTO.setOperationSession(sessionDBModels.get(0));
-
-            return operationWSDTO;
-        }
-        return null;
-    }
-
-
-
     public ApiOperationCampaignWSDTO apiGetOperationCampaignService(long sessionId, long clientId, String campaignId, String processId) {
 
         List<CampaignDBModel> campaignDBModels = campaignRepository.findByIdAndStatus(campaignId,1);
@@ -105,6 +74,11 @@ public class ApiOperationDetailsFramework {
             return campaignWSDTO;
         }
         return null;
+    }
+
+
+    public List<ApiSummaryWSDTO> apiGetOperationSummaryService(long agentId) {
+        return operationHelper.getApiOperationSummary(agentId);
     }
 
 

@@ -39,17 +39,20 @@ public class ApiRoute {
     public static final String API_GET_CAMPAIGN_OPERATIONS = "apigetcampaignoperations";
     public static final String API_GET_OPERATIONS = "apigetoperations";
     public static final String API_GET_OPERATION = "apigetoperation";
-    public static final String API_LAUNCH_OPERATION = "apilaunchoperation";
     public static final String API_UPDATE_OPERATION = "apiupdateoperation";
-    public static final String API_FINISH_OPERATION = "apifinishoperation";
     public static final String API_REMOVE_OPERATION = "apiremoveoperation";
-    public static final String API_GET_OPERATION_SUMMARY = "apigetoperationsummary";
 
 
     public static final String API_GET_OPERATION_DETAILS = "apigetoperationdetails";
+    public static final String API_GET_OPERATION_CAMPAIGN = "apigetoperationcampaign";
+    public static final String API_GET_OPERATION_SUMMARY = "apigetoperationsummary";
+
+
     public static final String API_VALIDATE_OPERATION = "apivalidateoperation";
     public static final String API_VALIDATE_AGENT_OPERATION = "apivalidateagentoperation";
-    public static final String API_GET_OPERATION_CAMPAIGN = "apigetoperationcampaign";
+    public static final String API_LAUNCH_OPERATION = "apilaunchoperation";
+    public static final String API_FINISH_OPERATION = "apifinishoperation";
+
 
 
     public static final String API_GET_OPERATION_CLIENT = "apigetoperationclient";

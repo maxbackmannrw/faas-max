@@ -1,7 +1,7 @@
 package com.faas.core.api.endpoint.controller.operation.details.content;
 
 import com.faas.core.api.middleware.operation.details.content.ApiOperationDetailsMiddleware;
-import com.faas.core.api.model.ws.operation.content.ApiOperationWSModel;
+import com.faas.core.api.model.ws.general.ApiSummaryWSModel;
 import com.faas.core.api.model.ws.operation.details.content.ApiOperationCampaignWSModel;
 import com.faas.core.api.model.ws.operation.details.content.ApiOperationDetailsWSModel;
 import com.faas.core.utils.config.ApiRoute;
@@ -40,32 +40,6 @@ public class ApiOperationDetailsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-    @RequestMapping(value = ApiRoute.API_VALIDATE_OPERATION, method = RequestMethod.POST)
-    public ResponseEntity<?> apiValidateOperation(@RequestParam long agentId,
-                                                  @RequestParam long sessionId) {
-
-        ApiOperationDetailsWSModel response = apiOperationDetailsMiddleware.apiValidateOperation(agentId,sessionId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-    @RequestMapping(value = ApiRoute.API_VALIDATE_AGENT_OPERATION, method = RequestMethod.POST)
-    public ResponseEntity<?> apiValidateAgentOperation(@RequestParam long agentId,
-                                                       @RequestParam long sessionId,
-                                                       @RequestParam String sessionState,
-                                                       @RequestParam String operationState) {
-
-        ApiOperationWSModel response = apiOperationDetailsMiddleware.apiValidateAgentOperation(agentId,sessionId,sessionState,operationState);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
 
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_CAMPAIGN, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationCampaign(@RequestParam long agentId,
@@ -75,6 +49,18 @@ public class ApiOperationDetailsController {
                                                      @RequestParam String processId) {
 
         ApiOperationCampaignWSModel response = apiOperationDetailsMiddleware.apiGetOperationCampaign(agentId,sessionId,clientId,campaignId,processId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_SUMMARY, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationSummary(@RequestParam long agentId) {
+
+        ApiSummaryWSModel response = apiOperationDetailsMiddleware.apiGetOperationSummary(agentId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
