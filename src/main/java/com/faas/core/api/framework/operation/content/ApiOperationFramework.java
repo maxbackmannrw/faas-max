@@ -53,6 +53,15 @@ public class ApiOperationFramework {
     AppUtils appUtils;
 
 
+    public ApiOperationListWSDTO apiGetOperationsService(long agentId, String operationState, int reqPage, int reqSize) {
+
+        Page<OperationDBModel> operationPage = operationRepository.findAllByAgentIdAndOperationState(agentId, operationState, PageRequest.of(reqPage,reqSize));
+        if (operationPage != null){
+        }
+        return null;
+    }
+
+
     public ApiAgentOperationWSDTO apiGetAgentOperationsService(long agentId, int reqPage, int reqSize) {
 
         ApiAgentOperationWSDTO agentOperationWSDTO = new ApiAgentOperationWSDTO();
@@ -74,14 +83,6 @@ public class ApiOperationFramework {
         return null;
     }
 
-
-    public ApiOperationListWSDTO apiGetOperationsService(long agentId, String operationState, int reqPage, int reqSize) {
-
-        Page<OperationDBModel> operationPage = operationRepository.findAllByAgentIdAndOperationState(agentId, operationState, PageRequest.of(reqPage,reqSize));
-        if (operationPage != null){
-        }
-        return null;
-    }
 
 
     public ApiOperationWSDTO apiGetOperationService(long agentId, long sessionId) {

@@ -23,6 +23,27 @@ public class ApiOperationMiddleware {
     ApiOperationFramework apiOperationFramework;
 
 
+    public ApiOperationListWSModel apiGetOperations(long agentId, String operationState, int reqPage, int reqSize) {
+
+        ApiOperationListWSModel response = new ApiOperationListWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        ApiOperationListWSDTO operationListWSDTO = apiOperationFramework.apiGetOperationsService(agentId,operationState,reqPage,reqSize);
+        if (operationListWSDTO != null) {
+            response.setOperationList(operationListWSDTO);
+        }
+
+        general.setOperation("apiGetOperations");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
+
     public ApiAgentOperationWSModel apiGetAgentOperations(long agentId, int reqPage, int reqSize) {
 
         ApiAgentOperationWSModel response = new ApiAgentOperationWSModel();
@@ -54,26 +75,6 @@ public class ApiOperationMiddleware {
         }
 
         general.setOperation("apiGetCampaignOperations");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-
-    public ApiOperationListWSModel apiGetOperations(long agentId, String operationState, int reqPage, int reqSize) {
-
-        ApiOperationListWSModel response = new ApiOperationListWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-        ApiOperationListWSDTO operationListWSDTO = apiOperationFramework.apiGetOperationsService(agentId,operationState,reqPage,reqSize);
-        if (operationListWSDTO != null) {
-            response.setOperationList(operationListWSDTO);
-        }
-
-        general.setOperation("apiGetOperations");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

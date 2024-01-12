@@ -31,7 +31,6 @@ public class ApiClientDetailsMiddleware {
     }
 
 
-
     public ApiClientDetailsWSModel apiGetClientNotes(long agentId, long clientId) {
 
         ApiClientDetailsWSModel response = new ApiClientDetailsWSModel();
@@ -108,7 +107,6 @@ public class ApiClientDetailsMiddleware {
     }
 
 
-
     public ApiClientDetailsWSModel apiGetClientRemoteApps(long agentId, long clientId) {
 
         ApiClientDetailsWSModel response = new ApiClientDetailsWSModel();
@@ -138,7 +136,6 @@ public class ApiClientDetailsMiddleware {
 
         return response;
     }
-
 
 
     public ApiClientDetailsWSModel apiGetClientOSINTs(long agentId, long clientId) {

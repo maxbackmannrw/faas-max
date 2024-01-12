@@ -24,6 +24,21 @@ public class ApiOperationController {
     ApiOperationMiddleware apiOperationMiddleware;
 
 
+    @RequestMapping(value = ApiRoute.API_GET_OPERATIONS, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperations(@RequestParam long agentId,
+                                              @RequestParam String operationState,
+                                              @RequestParam int reqPage,
+                                              @RequestParam int reqSize) {
+
+        ApiOperationListWSModel response = apiOperationMiddleware.apiGetOperations(agentId,operationState,reqPage,reqSize);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
     @RequestMapping(value = ApiRoute.API_GET_AGENT_OPERATIONS, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetAgentOperations(@RequestParam long agentId,
                                                    @RequestParam int reqPage,
@@ -46,21 +61,6 @@ public class ApiOperationController {
                                                       @RequestParam int reqSize) {
 
         ApiOperationListWSModel response = apiOperationMiddleware.apiGetCampaignOperations(agentId,campaignId,operationState,reqPage,reqSize);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-
-    @RequestMapping(value = ApiRoute.API_GET_OPERATIONS, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperations(@RequestParam long agentId,
-                                              @RequestParam String operationState,
-                                              @RequestParam int reqPage,
-                                              @RequestParam int reqSize) {
-
-        ApiOperationListWSModel response = apiOperationMiddleware.apiGetOperations(agentId,operationState,reqPage,reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
