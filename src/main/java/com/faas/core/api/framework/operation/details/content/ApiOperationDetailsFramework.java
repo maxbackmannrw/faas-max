@@ -75,7 +75,6 @@ public class ApiOperationDetailsFramework {
         return null;
     }
 
-
     public List<ApiSummaryWSDTO> apiGetOperationSummaryService(long agentId) {
         return operationHelper.getApiOperationSummary(agentId);
     }

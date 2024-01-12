@@ -34,9 +34,9 @@ public class ApiRoute {
     public static final String API_GET_CAMPAIGN_ASSET = "apigetcampaignasset";
 
 
-    public static final String API_GET_OPERATIONS = "apigetoperations";
     public static final String API_GET_AGENT_OPERATIONS = "apigetagentoperations";
     public static final String API_GET_CAMPAIGN_OPERATIONS = "apigetcampaignoperations";
+    public static final String API_GET_OPERATIONS = "apigetoperations";
     public static final String API_GET_OPERATION = "apigetoperation";
     public static final String API_UPDATE_OPERATION = "apiupdateoperation";
     public static final String API_REMOVE_OPERATION = "apiremoveoperation";
@@ -69,7 +69,7 @@ public class ApiRoute {
     public static final String API_GET_OPERATION_REMOTE_APP = "apigetoperationremoteapp";
 
 
-
+    public static final String API_GET_AGENT_CLIENTS = "apigetagentclients";
     public static final String API_GET_CLIENT = "apigetclient";
 
     public static final String API_GET_CLIENT_DETAILS = "apigetclientdetails";

@@ -41,7 +41,6 @@ public class ApiOperationDetailsMiddleware {
         return response;
     }
 
-
     public ApiCampaignDetailsWSModel apiGetOperationCampaign(long agentId, long sessionId, long clientId, String campaignId, String processId) {
 
         ApiCampaignDetailsWSModel response = new ApiCampaignDetailsWSModel();
@@ -61,7 +60,6 @@ public class ApiOperationDetailsMiddleware {
         return response;
     }
 
-
     public ApiSummaryWSModel apiGetOperationSummary(long agentId) {
 
         ApiSummaryWSModel response = new ApiSummaryWSModel();
@@ -80,7 +78,6 @@ public class ApiOperationDetailsMiddleware {
 
         return response;
     }
-
 
 
 }

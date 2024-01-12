@@ -407,6 +407,7 @@ public class OperationHelper {
 
         Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(operationDBModel.getSessionId());
         if (sessionDBModel.isPresent()){
+
             ApiOperationWSDTO operationWSDTO = new ApiOperationWSDTO();
             operationWSDTO.setOperation(operationDBModel);
             operationWSDTO.setOperationSession(sessionDBModel.get());
@@ -441,13 +442,13 @@ public class OperationHelper {
     }
 
 
-    public PaginationWSDTO mapOperationPagination(Page<OperationDBModel> operationDBModelPage){
+    public PaginationWSDTO mapOperationPagination(Page<OperationDBModel> operationModelPage){
 
         PaginationWSDTO paginationWSDTO = new PaginationWSDTO();
-        paginationWSDTO.setPageSize(operationDBModelPage.getPageable().getPageSize());
-        paginationWSDTO.setPageNumber(operationDBModelPage.getPageable().getPageNumber());
-        paginationWSDTO.setTotalPage(operationDBModelPage.getTotalPages());
-        paginationWSDTO.setTotalElements(operationDBModelPage.getTotalElements());
+        paginationWSDTO.setPageSize(operationModelPage.getPageable().getPageSize());
+        paginationWSDTO.setPageNumber(operationModelPage.getPageable().getPageNumber());
+        paginationWSDTO.setTotalPage(operationModelPage.getTotalPages());
+        paginationWSDTO.setTotalElements(operationModelPage.getTotalElements());
 
         return paginationWSDTO;
     }
@@ -467,8 +468,8 @@ public class OperationHelper {
     public List<ApiSummaryWSDTO> getApiOperationSummary(long agentId){
 
         List<ApiSummaryWSDTO> operationSummary = new ArrayList<>();
-        operationSummary.add(new ApiSummaryWSDTO(AppConstant.AGENT_ACTIVE_OPERATIONS_SUMMARY,String.valueOf(sessionRepository.countByAgentIdAndSessionState(agentId, AppConstant.ACTIVE_STATE))));
-        operationSummary.add(new ApiSummaryWSDTO(AppConstant.AGENT_READY_OPERATIONS_SUMMARY,String.valueOf(sessionRepository.countByAgentIdAndSessionState(agentId, AppConstant.READY_STATE))));
+        operationSummary.add(new ApiSummaryWSDTO(AppConstant.AGENT_ACTIVE_OPERATIONS_SUMMARY,String.valueOf(operationRepository.countByAgentIdAndOperationState(agentId,AppConstant.ACTIVE_STATE))));
+        operationSummary.add(new ApiSummaryWSDTO(AppConstant.AGENT_READY_OPERATIONS_SUMMARY,String.valueOf(operationRepository.countByAgentIdAndOperationState(agentId,AppConstant.READY_STATE))));
         operationSummary.add(new ApiSummaryWSDTO(AppConstant.AGENT_ALL_CAMPAIGNS_SUMMARY,String.valueOf(campaignAgentRepository.countByAgentId(agentId))));
 
         return operationSummary;

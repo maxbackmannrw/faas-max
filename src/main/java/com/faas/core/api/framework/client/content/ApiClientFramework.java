@@ -33,6 +33,13 @@ public class ApiClientFramework {
     AppUtils appUtils;
 
 
+    public ApiClientWSDTO apiAgentGetClientsService(long agentId,int reqPage,int reqSize) {
+
+
+        return null;
+    }
+
+
     public ApiClientWSDTO apiGetClientService(long agentId, long clientId) {
 
         if (operationRepository.existsByClientIdAndAgentId(clientId,agentId)){
@@ -48,7 +55,5 @@ public class ApiClientFramework {
         }
         return null;
     }
-
-
 
 }

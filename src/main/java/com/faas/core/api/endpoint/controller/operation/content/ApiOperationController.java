@@ -19,24 +19,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping(value = AppConstant.API_VERSION + "/api/operation/")
 public class ApiOperationController {
 
-
     @Autowired
     ApiOperationMiddleware apiOperationMiddleware;
-
-
-    @RequestMapping(value = ApiRoute.API_GET_OPERATIONS, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperations(@RequestParam long agentId,
-                                              @RequestParam String operationState,
-                                              @RequestParam int reqPage,
-                                              @RequestParam int reqSize) {
-
-        ApiOperationListWSModel response = apiOperationMiddleware.apiGetOperations(agentId,operationState,reqPage,reqSize);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
 
 
     @RequestMapping(value = ApiRoute.API_GET_AGENT_OPERATIONS, method = RequestMethod.POST)
@@ -69,11 +53,14 @@ public class ApiOperationController {
     }
 
 
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperation(@RequestParam long agentId,
-                                             @RequestParam long sessionId) {
+    @RequestMapping(value = ApiRoute.API_GET_OPERATIONS, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperations(@RequestParam long agentId,
+                                              @RequestParam String operationType,
+                                              @RequestParam String operationState,
+                                              @RequestParam int reqPage,
+                                              @RequestParam int reqSize) {
 
-        ApiOperationWSModel response = apiOperationMiddleware.apiGetOperation(agentId,sessionId);
+        ApiOperationListWSModel response = apiOperationMiddleware.apiGetOperations(agentId,operationType,operationState,reqPage,reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -81,14 +68,24 @@ public class ApiOperationController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperation(@RequestParam long agentId,
+                                             @RequestParam String operationId) {
+
+        ApiOperationWSModel response = apiOperationMiddleware.apiGetOperation(agentId,operationId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
 
     @RequestMapping(value = ApiRoute.API_UPDATE_OPERATION, method = RequestMethod.POST)
     public ResponseEntity<?> apiUpdateOperation(@RequestParam long agentId,
-                                                @RequestParam long sessionId,
-                                                @RequestParam long clientId,
-                                                @RequestParam String campaignId) {
+                                                @RequestParam String operationId,
+                                                @RequestParam String operationState) {
 
-        ApiOperationWSModel response = apiOperationMiddleware.apiUpdateOperation(agentId,sessionId,clientId,campaignId);
+        ApiOperationWSModel response = apiOperationMiddleware.apiUpdateOperation(agentId,operationId,operationState);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -99,11 +96,9 @@ public class ApiOperationController {
 
     @RequestMapping(value = ApiRoute.API_REMOVE_OPERATION, method = RequestMethod.POST)
     public ResponseEntity<?> apiRemoveOperation(@RequestParam long agentId,
-                                                @RequestParam long sessionId,
-                                                @RequestParam long clientId,
-                                                @RequestParam String campaignId) {
+                                                @RequestParam String operationId) {
 
-        ApiOperationWSModel response = apiOperationMiddleware.apiRemoveOperation(agentId,sessionId,clientId,campaignId);
+        ApiOperationWSModel response = apiOperationMiddleware.apiRemoveOperation(agentId,operationId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

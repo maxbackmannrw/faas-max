@@ -17,6 +17,25 @@ public class ApiClientMiddleware {
     ApiClientFramework apiClientFramework;
 
 
+    public ApiClientWSModel apiAgentGetClients(long agentId,int reqPage,int reqSize) {
+
+        ApiClientWSModel response = new ApiClientWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        ApiClientWSDTO clientWSDTO = apiClientFramework.apiAgentGetClientsService(agentId,reqPage,reqSize);
+        if (clientWSDTO != null){
+            response.setClient(clientWSDTO);
+        }
+
+        general.setOperation("apiGetClient");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
     public ApiClientWSModel apiGetClient(long agentId, long clientId) {
 
         ApiClientWSModel response = new ApiClientWSModel();

@@ -22,6 +22,20 @@ public class ApiClientController {
     ApiClientMiddleware apiClientMiddleware;
 
 
+    @RequestMapping(value = ApiRoute.API_GET_AGENT_CLIENTS, method = RequestMethod.POST)
+    public ResponseEntity<?> apiAgentGetClients(@RequestParam long agentId,
+                                                @RequestParam int reqPage,
+                                                @RequestParam int reqSize) {
+
+        ApiClientWSModel response = apiClientMiddleware.apiAgentGetClients(agentId,reqPage,reqSize);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
     @RequestMapping(value = ApiRoute.API_GET_CLIENT, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetClient(@RequestParam long agentId,
                                           @RequestParam long clientId) {
