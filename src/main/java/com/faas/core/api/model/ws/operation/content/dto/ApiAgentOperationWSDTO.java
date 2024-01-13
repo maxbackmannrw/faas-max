@@ -1,19 +1,20 @@
 package com.faas.core.api.model.ws.operation.content.dto;
 
-
 public class ApiAgentOperationWSDTO {
 
     private ApiOperationListWSDTO readyManualOperation;
+    private ApiOperationListWSDTO activeManualOperation;
     private ApiOperationListWSDTO readyInquiryOperation;
-    private ApiOperationListWSDTO activeOperation;
+    private ApiOperationListWSDTO activeInquiryOperation;
 
     public ApiAgentOperationWSDTO() {
     }
 
-    public ApiAgentOperationWSDTO(ApiOperationListWSDTO readyManualOperation, ApiOperationListWSDTO readyInquiryOperation, ApiOperationListWSDTO activeOperation) {
+    public ApiAgentOperationWSDTO(ApiOperationListWSDTO readyManualOperation, ApiOperationListWSDTO activeManualOperation, ApiOperationListWSDTO readyInquiryOperation, ApiOperationListWSDTO activeInquiryOperation) {
         this.readyManualOperation = readyManualOperation;
+        this.activeManualOperation = activeManualOperation;
         this.readyInquiryOperation = readyInquiryOperation;
-        this.activeOperation = activeOperation;
+        this.activeInquiryOperation = activeInquiryOperation;
     }
 
     public ApiOperationListWSDTO getReadyManualOperation() {
@@ -24,6 +25,14 @@ public class ApiAgentOperationWSDTO {
         this.readyManualOperation = readyManualOperation;
     }
 
+    public ApiOperationListWSDTO getActiveManualOperation() {
+        return activeManualOperation;
+    }
+
+    public void setActiveManualOperation(ApiOperationListWSDTO activeManualOperation) {
+        this.activeManualOperation = activeManualOperation;
+    }
+
     public ApiOperationListWSDTO getReadyInquiryOperation() {
         return readyInquiryOperation;
     }
@@ -32,11 +41,11 @@ public class ApiAgentOperationWSDTO {
         this.readyInquiryOperation = readyInquiryOperation;
     }
 
-    public ApiOperationListWSDTO getActiveOperation() {
-        return activeOperation;
+    public ApiOperationListWSDTO getActiveInquiryOperation() {
+        return activeInquiryOperation;
     }
 
-    public void setActiveOperation(ApiOperationListWSDTO activeOperation) {
-        this.activeOperation = activeOperation;
+    public void setActiveInquiryOperation(ApiOperationListWSDTO activeInquiryOperation) {
+        this.activeInquiryOperation = activeInquiryOperation;
     }
 }

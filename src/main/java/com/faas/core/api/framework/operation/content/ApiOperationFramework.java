@@ -52,9 +52,11 @@ public class ApiOperationFramework {
     public ApiAgentOperationWSDTO apiGetAgentOperationsService(long agentId, int reqPage, int reqSize) {
 
         ApiAgentOperationWSDTO agentOperationWSDTO = new ApiAgentOperationWSDTO();
-        agentOperationWSDTO.setReadyManualOperation(operationHelper.createApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationTypeAndOperationState(agentId,AppConstant.MANUAL_OPERATION, AppConstant.READY_STATE, PageRequest.of(reqPage,reqSize))));
-        agentOperationWSDTO.setReadyInquiryOperation(operationHelper.createApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationTypeAndOperationStateAndOperationInquiryState(agentId,AppConstant.INQUIRY_OPERATION, AppConstant.READY_STATE,AppConstant.NEW_INQUIRY, PageRequest.of(reqPage,reqSize))));
-        agentOperationWSDTO.setActiveOperation(operationHelper.createApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationState(agentId, AppConstant.ACTIVE_STATE, PageRequest.of(reqPage,reqSize))));
+        agentOperationWSDTO.setReadyManualOperation(operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationTypeAndOperationState(agentId,AppConstant.MANUAL_OPERATION, AppConstant.READY_STATE, PageRequest.of(reqPage,reqSize))));
+        agentOperationWSDTO.setActiveManualOperation(operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationTypeAndOperationState(agentId,AppConstant.MANUAL_OPERATION, AppConstant.ACTIVE_STATE, PageRequest.of(reqPage,reqSize))));
+        agentOperationWSDTO.setReadyInquiryOperation(operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationTypeAndOperationStateAndOperationInquiryState(agentId,AppConstant.INQUIRY_OPERATION, AppConstant.READY_STATE,AppConstant.NEW_INQUIRY, PageRequest.of(reqPage,reqSize))));
+        agentOperationWSDTO.setActiveInquiryOperation(operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationTypeAndOperationState(agentId,AppConstant.INQUIRY_OPERATION, AppConstant.ACTIVE_STATE, PageRequest.of(reqPage,reqSize))));
+
         return agentOperationWSDTO;
     }
 
@@ -63,7 +65,7 @@ public class ApiOperationFramework {
 
         Page<OperationDBModel> campaignOperation = operationRepository.findAllByAgentIdAndCampaignIdAndOperationState(agentId,campaignId,operationState,PageRequest.of(reqPage,reqSize));
         if (campaignOperation != null){
-            return operationHelper.createApiOperationListWSDTO(campaignOperation);
+            return operationHelper.getApiOperationListWSDTO(campaignOperation);
         }
         return null;
     }
@@ -73,7 +75,7 @@ public class ApiOperationFramework {
 
         Page<OperationDBModel> operationPage = operationRepository.findAllByAgentIdAndOperationTypeAndOperationState(agentId,operationType,operationState,PageRequest.of(reqPage,reqSize));
         if (operationPage != null){
-            return operationHelper.createApiOperationListWSDTO(operationPage);
+            return operationHelper.getApiOperationListWSDTO(operationPage);
         }
         return null;
     }

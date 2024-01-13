@@ -167,7 +167,7 @@ public class OperationHelper {
     }
 
 
-    public ApiOperationListWSDTO createApiOperationListWSDTO(Page<OperationDBModel> operationModelPage){
+    public ApiOperationListWSDTO getApiOperationListWSDTO(Page<OperationDBModel> operationModelPage){
 
         ApiOperationListWSDTO operationListWSDTO = new ApiOperationListWSDTO();
         List<ApiOperationWSDTO> operationWSDTOS = new ArrayList<>();
