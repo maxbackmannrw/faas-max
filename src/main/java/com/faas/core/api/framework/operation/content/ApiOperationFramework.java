@@ -53,8 +53,8 @@ public class ApiOperationFramework {
 
         ApiAgentOperationWSDTO agentOperationWSDTO = new ApiAgentOperationWSDTO();
         agentOperationWSDTO.setReadyManualOperation(operationHelper.createApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationTypeAndOperationState(agentId,AppConstant.MANUAL_OPERATION, AppConstant.READY_STATE, PageRequest.of(reqPage,reqSize))));
-        agentOperationWSDTO.setReadyInquiryOperation(operationHelper.createApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationTypeAndOperationState(agentId,AppConstant.INQUIRY_OPERATION, AppConstant.READY_STATE, PageRequest.of(reqPage,reqSize))));
-
+        agentOperationWSDTO.setReadyInquiryOperation(operationHelper.createApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationTypeAndOperationStateAndOperationInquiryState(agentId,AppConstant.INQUIRY_OPERATION, AppConstant.READY_STATE,AppConstant.NEW_INQUIRY, PageRequest.of(reqPage,reqSize))));
+        agentOperationWSDTO.setActiveOperation(operationHelper.createApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationState(agentId, AppConstant.ACTIVE_STATE, PageRequest.of(reqPage,reqSize))));
         return agentOperationWSDTO;
     }
 
