@@ -256,23 +256,23 @@ public class OperationHelper {
 
             if (sessionDBModel.getSessionType().equalsIgnoreCase(AppConstant.MANUAL_SESSION)){
                 operationDBModel.setOperationInquiry(null);
-                operationDBModel.setOperationInquiryState(AppConstant.NO_INQUIRY);
+                operationDBModel.setOperationInquiryState(AppConstant.NO_STATE);
                 operationDBModel.setOperationFlow(null);
-                operationDBModel.setOperationFlowState(AppConstant.NO_FLOW);
+                operationDBModel.setOperationFlowState(AppConstant.NO_STATE);
             }
 
             if (sessionDBModel.getSessionType().equalsIgnoreCase(AppConstant.INQUIRY_SESSION)){
                 operationDBModel.setOperationInquiry(createOperationInquiryDAO(sessionDBModel));
-                operationDBModel.setOperationInquiryState(AppConstant.NEW_INQUIRY);
+                operationDBModel.setOperationInquiryState(AppConstant.NEW_STATE);
                 operationDBModel.setOperationFlow(null);
-                operationDBModel.setOperationFlowState(AppConstant.NO_FLOW);
+                operationDBModel.setOperationFlowState(AppConstant.NO_STATE);
             }
 
             if (sessionDBModel.getSessionType().equalsIgnoreCase(AppConstant.AUTOMATIC_SESSION)){
                 operationDBModel.setOperationInquiry(null);
-                operationDBModel.setOperationInquiryState(AppConstant.NO_INQUIRY);
+                operationDBModel.setOperationInquiryState(AppConstant.NO_STATE);
                 operationDBModel.setOperationFlow(createOperationFlowDAO(sessionDBModel));
-                operationDBModel.setOperationFlowState(AppConstant.NEW_FLOW);
+                operationDBModel.setOperationFlowState(AppConstant.NEW_STATE);
             }
 
             operationDBModel.setOperationScenarios(new ArrayList<>());

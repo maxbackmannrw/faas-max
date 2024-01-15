@@ -65,6 +65,8 @@ public class AppConstant {
     public static final String BUSY_CLIENT = "BUSY_CLIENT";
 
 
+    public static final String NO_STATE = "NO_STATE";
+    public static final String NEW_STATE = "NEW_STATE";
     public static final String READY_STATE = "READY_STATE";
     public static final String ACTIVE_STATE = "ACTIVE_STATE";
     public static final String PASSIVE_STATE = "PASSIVE_STATE";
@@ -72,20 +74,6 @@ public class AppConstant {
 
     public static final String ALL_STATES = "ALL_STATES";
 
-
-    public static final String NO_INQUIRY = "NO_INQUIRY";
-    public static final String NEW_INQUIRY = "NEW_INQUIRY";
-    public static final String READY_INQUIRY = "READY_INQUIRY";
-    public static final String FAILED_INQUIRY = "FAILED_INQUIRY";
-    public static final String FINISHED_INQUIRY = "FINISHED_INQUIRY";
-
-
-    public static final String NO_FLOW = "NO_FLOW";
-    public static final String NEW_FLOW = "NEW_FLOW";
-    public static final String WAITING_FLOW = "WAITING_FLOW";
-    public static final String ACCEPTED_FLOW = "ACCEPTED_FLOW";
-    public static final String DECLINED_FLOW = "DECLINED_FLOW";
-    public static final String FINISHED_FLOW = "FINISHED_FLOW";
 
 
 

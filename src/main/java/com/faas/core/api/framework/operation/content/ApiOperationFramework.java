@@ -54,7 +54,7 @@ public class ApiOperationFramework {
         ApiAgentOperationWSDTO agentOperationWSDTO = new ApiAgentOperationWSDTO();
         agentOperationWSDTO.setReadyManualOperation(operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationTypeAndOperationState(agentId,AppConstant.MANUAL_OPERATION, AppConstant.READY_STATE, PageRequest.of(reqPage,reqSize))));
         agentOperationWSDTO.setActiveManualOperation(operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationTypeAndOperationState(agentId,AppConstant.MANUAL_OPERATION, AppConstant.ACTIVE_STATE, PageRequest.of(reqPage,reqSize))));
-        agentOperationWSDTO.setReadyInquiryOperation(operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationTypeAndOperationStateAndOperationInquiryState(agentId,AppConstant.INQUIRY_OPERATION, AppConstant.READY_STATE,AppConstant.NEW_INQUIRY, PageRequest.of(reqPage,reqSize))));
+        agentOperationWSDTO.setReadyInquiryOperation(operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationTypeAndOperationStateAndOperationInquiryState(agentId,AppConstant.INQUIRY_OPERATION, AppConstant.READY_STATE,AppConstant.NEW_STATE, PageRequest.of(reqPage,reqSize))));
         agentOperationWSDTO.setActiveInquiryOperation(operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationTypeAndOperationState(agentId,AppConstant.INQUIRY_OPERATION, AppConstant.ACTIVE_STATE, PageRequest.of(reqPage,reqSize))));
 
         return agentOperationWSDTO;
