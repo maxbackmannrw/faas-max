@@ -45,10 +45,12 @@ public class ApiDashboardController {
     public ResponseEntity<?> apiGetDashboardOperations(@RequestParam long agentId,
                                                        @RequestParam String operationType,
                                                        @RequestParam String operationState,
+                                                       @RequestParam String operationInquiryState,
+                                                       @RequestParam String operationFlowState,
                                                        @RequestParam int reqPage,
                                                        @RequestParam int reqSize) {
 
-        ApiDashboardOperationWSModel response = apiDashboardMiddleware.apiGetDashboardOperations(agentId,operationType,operationState,reqPage,reqSize);
+        ApiDashboardOperationWSModel response = apiDashboardMiddleware.apiGetDashboardOperations(agentId,operationType,operationState,operationInquiryState,operationFlowState,reqPage,reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

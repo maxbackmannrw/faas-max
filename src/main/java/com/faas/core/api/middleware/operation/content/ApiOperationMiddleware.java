@@ -62,12 +62,12 @@ public class ApiOperationMiddleware {
     }
 
 
-    public ApiOperationListWSModel apiGetOperations(long agentId,String operationType,String operationState,int reqPage,int reqSize) {
+    public ApiOperationListWSModel apiGetOperations(long agentId,String operationType,String operationState,String operationInquiryState,String operationFlowState,int reqPage,int reqSize) {
 
         ApiOperationListWSModel response = new ApiOperationListWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiOperationListWSDTO operationListWSDTO = apiOperationFramework.apiGetOperationsService(agentId,operationType,operationState,reqPage,reqSize);
+        ApiOperationListWSDTO operationListWSDTO = apiOperationFramework.apiGetOperationsService(agentId,operationType,operationState,operationInquiryState,operationFlowState,reqPage,reqSize);
         if (operationListWSDTO != null) {
             response.setOperationList(operationListWSDTO);
         }

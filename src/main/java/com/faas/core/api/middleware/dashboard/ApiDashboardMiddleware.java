@@ -49,12 +49,12 @@ public class ApiDashboardMiddleware {
     }
 
 
-    public ApiDashboardOperationWSModel apiGetDashboardOperations(long agentId,String operationType,String operationState,int reqPage,int reqSize) {
+    public ApiDashboardOperationWSModel apiGetDashboardOperations(long agentId,String operationType,String operationState,String operationInquiryState,String operationFlowState,int reqPage,int reqSize) {
 
         ApiDashboardOperationWSModel response = new ApiDashboardOperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiDashboardOperationWSDTO dashboardOperationWSDTO = apiDashboardFramework.apiGetDashboardOperationsService(agentId,operationType,operationState,reqPage,reqSize);
+        ApiDashboardOperationWSDTO dashboardOperationWSDTO = apiDashboardFramework.apiGetDashboardOperationsService(agentId,operationType,operationState,operationInquiryState,operationFlowState,reqPage,reqSize);
         if (dashboardOperationWSDTO != null){
             response.setDashboardOperation(dashboardOperationWSDTO);
         }

@@ -73,13 +73,9 @@ public class ApiDashboardFramework {
     }
 
 
-    public ApiDashboardOperationWSDTO apiGetDashboardOperationsService(long agentId,String operationType,String operationState,int reqPage,int reqSize){
+    public ApiDashboardOperationWSDTO apiGetDashboardOperationsService(long agentId,String operationType,String operationState,String operationInquiryState,String operationFlowState,int reqPage,int reqSize){
 
-        Page<OperationDBModel> operationModelPage = operationRepository.findAllByAgentIdAndOperationTypeAndOperationState(agentId,operationType,operationState,PageRequest.of(reqPage,reqSize));
-        if (operationModelPage != null){
-            return operationHelper.createApiDashboardOperationWSDTO(operationModelPage);
-        }
-        return null;
+        return operationHelper.createApiDashboardOperationWSDTO(operationRepository.findAllByAgentIdAndOperationTypeAndOperationStateAndOperationInquiryStateAndOperationFlowState(agentId,operationType,operationState,operationInquiryState,operationFlowState,PageRequest.of(reqPage,reqSize)));
     }
 
 
