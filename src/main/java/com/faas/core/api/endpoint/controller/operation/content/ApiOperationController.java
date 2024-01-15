@@ -97,7 +97,6 @@ public class ApiOperationController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = ApiRoute.API_REMOVE_OPERATION, method = RequestMethod.POST)
     public ResponseEntity<?> apiRemoveOperation(@RequestParam long agentId,
                                                 @RequestParam String operationId) {
@@ -109,7 +108,6 @@ public class ApiOperationController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = ApiRoute.API_OPERATION_VALIDATE, method = RequestMethod.POST)
     public ResponseEntity<?> apiOperationValidate(@RequestParam long agentId,
