@@ -12,6 +12,7 @@ import com.faas.core.api.model.ws.operation.details.client.content.dto.ApiOperat
 import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationCampaignWSDTO;
 import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationDetailsWSDTO;
 import com.faas.core.api.model.ws.operation.details.scenario.dto.ApiOperationScenarioWSDTO;
+import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationValidateWSDTO;
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.client.content.ClientDBModel;
 import com.faas.core.base.model.db.operation.content.dao.OperationFlowDAO;
@@ -473,6 +474,23 @@ public class OperationHelper {
         operationSummary.add(new ApiSummaryWSDTO(AppConstant.AGENT_ALL_CAMPAIGNS_SUMMARY,String.valueOf(campaignAgentRepository.countByAgentId(agentId))));
 
         return operationSummary;
+    }
+
+
+    public ApiOperationValidateWSDTO agentOperationValidateHelper(UserDBModel agentDBModel,OperationDBModel operationDBModel){
+
+        ApiOperationValidateWSDTO operationValidateWSDTO = new ApiOperationValidateWSDTO();
+        operationValidateWSDTO.setAgent(agentDBModel);
+        operationValidateWSDTO.setOperation(operationDBModel);
+        operationValidateWSDTO.setOperationCount(operationRepository.countByAgentIdAndOperationState(agentDBModel.getId(),AppConstant.ACTIVE_STATE));
+
+        if (agentDBModel.getUserRole().equalsIgnoreCase(AppConstant.BASIC_AGENT)){
+            operationValidateWSDTO.setOperationLimit(AppConstant.BASIC_AGENT_OPERATION_LIMIT);
+        }
+        if (agentDBModel.getUserRole().equalsIgnoreCase(AppConstant.SUPER_AGENT)){
+            operationValidateWSDTO.setOperationLimit(AppConstant.SUPER_AGENT_OPERATION_LIMIT);
+        }
+        return operationValidateWSDTO;
     }
 
 

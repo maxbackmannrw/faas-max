@@ -3,20 +3,19 @@ package com.faas.core.api.framework.operation.content;
 import com.faas.core.api.model.ws.operation.content.dto.ApiAgentOperationWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationListWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
-import com.faas.core.base.model.db.client.content.ClientDBModel;
+import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationValidateWSDTO;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
-import com.faas.core.base.model.db.session.SessionDBModel;
-import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
+import com.faas.core.base.model.db.user.content.UserDBModel;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.session.SessionRepository;
+import com.faas.core.base.repo.user.content.UserRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.OperationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
@@ -29,6 +28,9 @@ public class ApiOperationFramework {
 
     @Autowired
     OperationHelper operationHelper;
+
+    @Autowired
+    UserRepository userRepository;
 
     @Autowired
     CampaignRepository campaignRepository;
@@ -63,11 +65,7 @@ public class ApiOperationFramework {
 
     public ApiOperationListWSDTO apiGetCampaignOperationsService(long agentId, String campaignId, String operationState, int reqPage, int reqSize) {
 
-        Page<OperationDBModel> campaignOperation = operationRepository.findAllByAgentIdAndCampaignIdAndOperationState(agentId,campaignId,operationState,PageRequest.of(reqPage,reqSize));
-        if (campaignOperation != null){
-            return operationHelper.getApiOperationListWSDTO(campaignOperation);
-        }
-        return null;
+        return operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndCampaignIdAndOperationState(agentId,campaignId,operationState,PageRequest.of(reqPage,reqSize)));
     }
 
 
@@ -95,6 +93,17 @@ public class ApiOperationFramework {
         return null;
     }
 
+
+    public ApiOperationValidateWSDTO apiOperationValidateService(long agentId,String operationId) {
+
+        Optional<UserDBModel> userDBModel = userRepository.findById(agentId);
+        List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
+        if (userDBModel.isPresent() && !operationDBModels.isEmpty()){
+            userDBModel.get().setPassword("");
+            return operationHelper.agentOperationValidateHelper(userDBModel.get(),operationDBModels.get(0));
+        }
+        return null;
+    }
 
 
 }

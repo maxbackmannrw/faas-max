@@ -47,6 +47,7 @@ public class AppConstant {
     public static final String MANUAL_OPERATION = "MANUAL";
     public static final String INQUIRY_OPERATION = "INQUIRY";
     public static final String AUTOMATIC_OPERATION = "AUTOMATIC";
+    public static final String ALL_OPERATIONS = "ALL_OPERATIONS";
 
 
     public static final String MANUAL_CAMPAIGN = "MANUAL";
@@ -73,7 +74,6 @@ public class AppConstant {
     public static final String FINISHED_STATE = "FINISHED_STATE";
 
     public static final String ALL_STATES = "ALL_STATES";
-
 
 
 

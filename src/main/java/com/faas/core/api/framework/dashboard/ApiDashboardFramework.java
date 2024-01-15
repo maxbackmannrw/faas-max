@@ -5,7 +5,7 @@ import com.faas.core.api.model.ws.dashboard.dto.ApiDashboardOperationWSDTO;
 import com.faas.core.api.model.ws.dashboard.dto.ApiDashboardWSDTO;
 import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
-import com.faas.core.api.model.ws.operation.details.validate.dto.ApiOperationValidateWSDTO;
+import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationValidateWSDTO;
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.campaign.details.CampaignAgentDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
@@ -21,7 +21,6 @@ import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.CampaignHelper;
 import com.faas.core.utils.helpers.OperationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
@@ -75,7 +74,11 @@ public class ApiDashboardFramework {
 
     public ApiDashboardOperationWSDTO apiGetDashboardOperationsService(long agentId,String operationType,String operationState,String operationInquiryState,String operationFlowState,int reqPage,int reqSize){
 
-        return operationHelper.createApiDashboardOperationWSDTO(operationRepository.findAllByAgentIdAndOperationTypeAndOperationStateAndOperationInquiryStateAndOperationFlowState(agentId,operationType,operationState,operationInquiryState,operationFlowState,PageRequest.of(reqPage,reqSize)));
+        if (operationType.equalsIgnoreCase(AppConstant.ALL_OPERATIONS)){
+            return operationHelper.createApiDashboardOperationWSDTO(operationRepository.findAllByAgentIdAndOperationState(agentId,operationState,PageRequest.of(reqPage,reqSize)));
+        }else {
+            return operationHelper.createApiDashboardOperationWSDTO(operationRepository.findAllByAgentIdAndOperationTypeAndOperationStateAndOperationInquiryStateAndOperationFlowState(agentId,operationType,operationState,operationInquiryState,operationFlowState,PageRequest.of(reqPage,reqSize)));
+        }
     }
 
 
@@ -94,18 +97,8 @@ public class ApiDashboardFramework {
         Optional<UserDBModel> userDBModel = userRepository.findById(agentId);
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
         if (userDBModel.isPresent() && !operationDBModels.isEmpty()){
-
-            ApiOperationValidateWSDTO operationValidateWSDTO = new ApiOperationValidateWSDTO();
-            operationValidateWSDTO.setAgent(userDBModel.get());
-            operationValidateWSDTO.setOperation(operationDBModels.get(0));
-            operationValidateWSDTO.setOperationCount(operationRepository.countByAgentIdAndOperationState(agentId,AppConstant.ACTIVE_STATE));
-            if (userDBModel.get().getUserRole().equalsIgnoreCase(AppConstant.BASIC_AGENT)){
-                operationValidateWSDTO.setOperationLimit(AppConstant.BASIC_AGENT_OPERATION_LIMIT);
-            }
-            if (userDBModel.get().getUserRole().equalsIgnoreCase(AppConstant.SUPER_AGENT)){
-                operationValidateWSDTO.setOperationLimit(AppConstant.SUPER_AGENT_OPERATION_LIMIT);
-            }
-            return operationValidateWSDTO;
+            userDBModel.get().setPassword("");
+            return operationHelper.agentOperationValidateHelper(userDBModel.get(),operationDBModels.get(0));
         }
         return null;
     }
