@@ -5,7 +5,6 @@ import com.faas.core.base.model.ws.process.details.scenario.dto.ProcessScenarioW
 
 import java.util.List;
 
-
 public class CampaignProcessWSDTO {
 
     private ProcessDBModel process;

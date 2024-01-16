@@ -8,7 +8,6 @@ public class CampaignProcessWSModel {
     private GeneralWSModel general;
     private CampaignProcessWSDTO campaignProcess;
 
-
     public CampaignProcessWSModel() {
     }
 

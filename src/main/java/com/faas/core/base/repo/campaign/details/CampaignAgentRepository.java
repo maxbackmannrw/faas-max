@@ -9,6 +9,7 @@ import java.util.List;
 @Repository
 public interface CampaignAgentRepository extends PagingAndSortingRepository<CampaignAgentDBModel, Long> {
 
+    boolean existsByAgentIdAndCampaignId(long agentId,String campaignId);
     long countByAgentId(long agentId);
     List<CampaignAgentDBModel>findByAgentId(long agentId);
     List<CampaignAgentDBModel> findByCampaignId(String campaignId);
