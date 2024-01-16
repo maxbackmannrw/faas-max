@@ -2,10 +2,8 @@ package com.faas.core.api.framework.campaign.content;
 
 import com.faas.core.api.model.ws.campaign.content.dto.ApiAgentCampaignWSDTO;
 import com.faas.core.api.model.ws.campaign.content.dto.ApiCampaignWSDTO;
-import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.campaign.details.CampaignAgentDBModel;
-import com.faas.core.base.model.db.process.content.ProcessDBModel;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
@@ -23,7 +21,6 @@ import java.util.Optional;
 
 @Component
 public class ApiCampaignFramework {
-
 
     @Autowired
     CampaignHelper campaignHelper;

@@ -40,7 +40,6 @@ public class ApiCampaignMiddleware {
         return response;
     }
 
-
     public ApiCampaignWSModel apiGetCampaigns(long agentId,String campaignCategory) {
 
         ApiCampaignWSModel response = new ApiCampaignWSModel();
@@ -59,7 +58,6 @@ public class ApiCampaignMiddleware {
 
         return response;
     }
-
 
     public ApiCampaignWSModel apiGetCampaign(long agentId,String campaignId) {
 

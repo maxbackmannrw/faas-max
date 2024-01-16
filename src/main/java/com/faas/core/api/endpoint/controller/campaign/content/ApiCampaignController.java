@@ -34,7 +34,6 @@ public class ApiCampaignController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = ApiRoute.API_GET_CAMPAIGNS, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetCampaigns(@RequestParam long agentId,
                                              @RequestParam String campaignCategory) {
@@ -46,7 +45,6 @@ public class ApiCampaignController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = ApiRoute.API_GET_CAMPAIGN, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetCampaign(@RequestParam long agentId,
