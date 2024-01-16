@@ -62,17 +62,17 @@ public class ApiCampaignDetailsMiddleware {
     }
 
 
-    public ApiSummaryWSModel apiGetAgentCampaignSummary(long agentId) {
+    public ApiSummaryWSModel apiGetCampaignSummary(long agentId) {
 
         ApiSummaryWSModel response = new ApiSummaryWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ApiSummaryWSDTO> summaryWSDTOS = apiCampaignDetailsFramework.apiGetAgentCampaignSummaryService(agentId);
+        List<ApiSummaryWSDTO> summaryWSDTOS = apiCampaignDetailsFramework.apiGetCampaignSummaryService(agentId);
         if (summaryWSDTOS != null){
             response.setSummaries(summaryWSDTOS);
         }
 
-        general.setOperation("apiGetAgentCampaignSummary");
+        general.setOperation("apiGetCampaignSummary");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

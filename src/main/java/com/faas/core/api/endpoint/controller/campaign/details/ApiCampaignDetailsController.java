@@ -50,10 +50,10 @@ public class ApiCampaignDetailsController {
     }
 
 
-    @RequestMapping(value = ApiRoute.API_GET_AGENT_CAMPAIGN_SUMMARY, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetAgentCampaignSummary(@RequestParam long agentId) {
+    @RequestMapping(value = ApiRoute.API_GET_CAMPAIGN_SUMMARY, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetCampaignSummary(@RequestParam long agentId) {
 
-        ApiSummaryWSModel response = apiCampaignDetailsMiddleware.apiGetAgentCampaignSummary(agentId);
+        ApiSummaryWSModel response = apiCampaignDetailsMiddleware.apiGetCampaignSummary(agentId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
