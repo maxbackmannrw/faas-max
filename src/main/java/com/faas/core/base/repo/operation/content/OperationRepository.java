@@ -18,6 +18,8 @@ public interface OperationRepository extends MongoRepository<OperationDBModel, S
     boolean existsBySessionIdAndClientId(long sessionId,long clientId);
     boolean existsByClientIdAndAgentId(long clientId,long agentId);
     long countByAgentIdAndOperationState(long agentId,String operationState);
+    long countByAgentIdAndCampaignIdAndOperationState(long agentId,String campaignId,String operationState);
+    long countByAgentIdAndCampaignId(long agentId,String campaignId);
     List<OperationDBModel>findByIdAndSessionId(String operationId,long sessionId);
     List<OperationDBModel>findByClientId(long clientId);
     List<OperationDBModel>findBySessionId(long sessionId);

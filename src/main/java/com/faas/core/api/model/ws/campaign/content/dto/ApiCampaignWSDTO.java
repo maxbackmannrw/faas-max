@@ -1,19 +1,18 @@
 package com.faas.core.api.model.ws.campaign.content.dto;
 
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
-import com.faas.core.base.model.db.process.content.ProcessDBModel;
 
 public class ApiCampaignWSDTO {
 
     private CampaignDBModel campaign;
-    private ProcessDBModel campaignProcess;
+    private ApiAgentCampaignSummary campaignSummary;
 
     public ApiCampaignWSDTO() {
     }
 
-    public ApiCampaignWSDTO(CampaignDBModel campaign, ProcessDBModel campaignProcess) {
+    public ApiCampaignWSDTO(CampaignDBModel campaign, ApiAgentCampaignSummary campaignSummary) {
         this.campaign = campaign;
-        this.campaignProcess = campaignProcess;
+        this.campaignSummary = campaignSummary;
     }
 
     public CampaignDBModel getCampaign() {
@@ -24,11 +23,11 @@ public class ApiCampaignWSDTO {
         this.campaign = campaign;
     }
 
-    public ProcessDBModel getCampaignProcess() {
-        return campaignProcess;
+    public ApiAgentCampaignSummary getCampaignSummary() {
+        return campaignSummary;
     }
 
-    public void setCampaignProcess(ProcessDBModel campaignProcess) {
-        this.campaignProcess = campaignProcess;
+    public void setCampaignSummary(ApiAgentCampaignSummary campaignSummary) {
+        this.campaignSummary = campaignSummary;
     }
 }

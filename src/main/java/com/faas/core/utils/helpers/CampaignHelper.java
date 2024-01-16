@@ -1,5 +1,6 @@
 package com.faas.core.utils.helpers;
 
+import com.faas.core.api.model.ws.campaign.content.dto.ApiAgentCampaignSummary;
 import com.faas.core.api.model.ws.campaign.content.dto.ApiCampaignWSDTO;
 import com.faas.core.api.model.ws.dashboard.dto.ApiDashboardCampaignWSDTO;
 import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
@@ -13,6 +14,7 @@ import com.faas.core.base.model.ws.campaign.details.content.dto.CampaignProcessW
 import com.faas.core.base.model.ws.process.details.scenario.dto.ProcessScenarioWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
+import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.process.details.scenario.ProcessScenarioRepository;
 import com.faas.core.base.repo.scenario.content.ScenarioRepository;
@@ -52,6 +54,9 @@ public class CampaignHelper {
 
     @Autowired
     ProcessScenarioRepository processScenarioRepository;
+
+    @Autowired
+    OperationRepository operationRepository;
 
     @Autowired
     AppUtils appUtils;
@@ -112,31 +117,35 @@ public class CampaignHelper {
     }
 
 
-    public ApiDashboardCampaignWSDTO mapApiDashboardCampaignWSDTO(CampaignDBModel campaignDBModel){
+    public ApiDashboardCampaignWSDTO mapApiDashboardCampaignWSDTO(long agentId,CampaignDBModel campaignDBModel){
 
-        Optional<ProcessDBModel> processDBModel = processRepository.findById(campaignDBModel.getProcessId());
-        if (processDBModel.isPresent()){
+        ApiDashboardCampaignWSDTO dashboardCampaignWSDTO = new ApiDashboardCampaignWSDTO();
+        dashboardCampaignWSDTO.setCampaign(campaignDBModel);
+        dashboardCampaignWSDTO.setCampaignSummary(getApiAgentCampaignSummary(agentId,campaignDBModel.getId()));
 
-            ApiDashboardCampaignWSDTO dashboardCampaignWSDTO = new ApiDashboardCampaignWSDTO();
-            dashboardCampaignWSDTO.setCampaign(campaignDBModel);
-            dashboardCampaignWSDTO.setCampaignProcess(processDBModel.get());
-
-            return dashboardCampaignWSDTO;
-        }
-        return null;
+        return dashboardCampaignWSDTO;
     }
 
 
-    public ApiCampaignWSDTO mapApiCampaignWSDTO(CampaignDBModel campaignDBModel){
+    public ApiCampaignWSDTO getApiCampaignWSDTO(long agentId,CampaignDBModel campaignDBModel){
 
         ApiCampaignWSDTO campaignWSDTO = new ApiCampaignWSDTO();
         campaignWSDTO.setCampaign(campaignDBModel);
-        Optional<ProcessDBModel> processDBModel = processRepository.findById(campaignDBModel.getProcessId());
-        if (processDBModel.isPresent()) {
-            campaignWSDTO.setCampaignProcess(processDBModel.get());
-        }
+        campaignWSDTO.setCampaignSummary(getApiAgentCampaignSummary(agentId,campaignDBModel.getId()));
+
         return campaignWSDTO;
     }
+
+    public ApiAgentCampaignSummary getApiAgentCampaignSummary(long agentId,String campaignId){
+
+        ApiAgentCampaignSummary agentCampaignSummary = new ApiAgentCampaignSummary();
+        agentCampaignSummary.setReadyOperationCount(operationRepository.countByAgentIdAndCampaignIdAndOperationState(agentId,campaignId,AppConstant.READY_STATE));
+        agentCampaignSummary.setActiveOperationCount(operationRepository.countByAgentIdAndCampaignIdAndOperationState(agentId,campaignId,AppConstant.ACTIVE_STATE));
+        agentCampaignSummary.setTotalOperationCount(operationRepository.countByAgentIdAndCampaignId(agentId,campaignId));
+
+        return agentCampaignSummary;
+    }
+
 
 
 }

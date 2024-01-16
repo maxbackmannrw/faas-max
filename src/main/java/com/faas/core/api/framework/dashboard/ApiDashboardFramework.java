@@ -111,10 +111,7 @@ public class ApiDashboardFramework {
         for (CampaignAgentDBModel campaignAgentDBModel : campaignAgentDBModels) {
             Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignAgentDBModel.getCampaignId());
             if (campaignDBModel.isPresent()) {
-                ApiDashboardCampaignWSDTO dashboardCampaignWSDTO = campaignHelper.mapApiDashboardCampaignWSDTO(campaignDBModel.get());
-                if (dashboardCampaignWSDTO != null) {
-                    dashboardCampaignWSDTOS.add(dashboardCampaignWSDTO);
-                }
+                dashboardCampaignWSDTOS.add(campaignHelper.mapApiDashboardCampaignWSDTO(agentId,campaignDBModel.get()));
             }
         }
         return dashboardCampaignWSDTOS;

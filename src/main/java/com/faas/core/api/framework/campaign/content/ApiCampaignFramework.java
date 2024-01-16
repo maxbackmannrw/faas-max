@@ -54,10 +54,10 @@ public class ApiCampaignFramework {
         for (CampaignAgentDBModel campaignAgent : campaignAgents) {
             Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignAgent.getCampaignId());
             if (campaignDBModel.isPresent() && campaignDBModel.get().getCampaignCategory().equalsIgnoreCase(AppConstant.MANUAL_CAMPAIGN)) {
-                manualCampaigns.add(campaignHelper.mapApiCampaignWSDTO(campaignDBModel.get()));
+                manualCampaigns.add(campaignHelper.getApiCampaignWSDTO(agentId,campaignDBModel.get()));
             }
             if (campaignDBModel.isPresent() && campaignDBModel.get().getCampaignCategory().equalsIgnoreCase(AppConstant.INQUIRY_CAMPAIGN)) {
-                inquiryCampaigns.add(campaignHelper.mapApiCampaignWSDTO(campaignDBModel.get()));
+                inquiryCampaigns.add(campaignHelper.getApiCampaignWSDTO(agentId,campaignDBModel.get()));
             }
         }
         agentCampaignWSDTO.setManualCampaigns(manualCampaigns);
@@ -75,7 +75,7 @@ public class ApiCampaignFramework {
             Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignAgent.getCampaignId());
             if (campaignDBModel.isPresent()) {
                 if (campaignDBModel.get().getCampaignCategory().equalsIgnoreCase(campaignCategory) || campaignCategory.equalsIgnoreCase(AppConstant.ALL_CAMPAIGNS)) {
-                    campaignWSDTOS.add(campaignHelper.mapApiCampaignWSDTO(campaignDBModel.get()));
+                    campaignWSDTOS.add(campaignHelper.getApiCampaignWSDTO(agentId,campaignDBModel.get()));
                 }
             }
         }
@@ -87,17 +87,10 @@ public class ApiCampaignFramework {
 
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
         if (campaignDBModel.isPresent()) {
-            ApiCampaignWSDTO campaignWSDTO = new ApiCampaignWSDTO();
-            campaignWSDTO.setCampaign(campaignDBModel.get());
-            Optional<ProcessDBModel> processDBModel = processRepository.findById(campaignDBModel.get().getProcessId());
-            if (processDBModel.isPresent()) {
-                campaignWSDTO.setCampaignProcess(processDBModel.get());
-            }
-            return campaignWSDTO;
+            return campaignHelper.getApiCampaignWSDTO(agentId,campaignDBModel.get());
         }
         return null;
     }
-
 
 
 }
