@@ -82,7 +82,6 @@ public class ApiCampaignMiddleware {
         return response;
     }
 
-
     public ApiSummaryWSModel apiGetCampaignSummary(long agentId) {
 
         ApiSummaryWSModel response = new ApiSummaryWSModel();

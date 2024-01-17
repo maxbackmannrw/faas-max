@@ -59,7 +59,6 @@ public class ApiCampaignController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = ApiRoute.API_GET_CAMPAIGN_SUMMARY, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetCampaignSummary(@RequestParam long agentId) {
 

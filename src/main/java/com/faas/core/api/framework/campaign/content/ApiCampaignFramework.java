@@ -68,7 +68,6 @@ public class ApiCampaignFramework {
         return agentCampaignWSDTO;
     }
 
-
     public List<ApiCampaignWSDTO> apiGetCampaignsService(long agentId, String campaignCategory) {
 
         List<ApiCampaignWSDTO> campaignWSDTOS = new ArrayList<>();
@@ -84,7 +83,6 @@ public class ApiCampaignFramework {
         return campaignWSDTOS;
     }
 
-
     public ApiCampaignWSDTO getApiCampaignService(long agentId, String campaignId) {
 
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
@@ -93,7 +91,6 @@ public class ApiCampaignFramework {
         }
         return null;
     }
-
 
     public List<ApiSummaryWSDTO> apiGetCampaignSummaryService(long agentId) {
 
