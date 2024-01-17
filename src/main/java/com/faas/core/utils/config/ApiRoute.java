@@ -18,13 +18,19 @@ public class ApiRoute {
     public static final String API_GET_DASHBOARD_SUMMARY = "apigetdashboardsummary";
 
 
+
     public static final String API_GET_AGENT_CAMPAIGNS = "apigetagentcampaigns";
     public static final String API_GET_CAMPAIGNS = "apigetcampaigns";
     public static final String API_GET_CAMPAIGN = "apigetcampaign";
+    public static final String API_GET_CAMPAIGN_SUMMARY = "apigetcampaignsummary";
 
     public static final String API_GET_CAMPAIGN_DETAILS = "apigetcampaigndetails";
+    public static final String API_GET_CAMPAIGN_DETAILS_SUMMARY = "apigetcampaigndetailssummary";
     public static final String API_GET_CAMPAIGN_PROCESS = "apigetcampaignprocess";
-    public static final String API_GET_CAMPAIGN_SUMMARY = "apigetcampaignsummary";
+
+    public static final String API_GET_CAMPAIGN_OPERATIONS = "apigetcampaignoperations";
+    public static final String API_GET_CAMPAIGN_OPERATION = "apigetcampaignoperation";
+
 
 
 
@@ -35,7 +41,6 @@ public class ApiRoute {
 
 
     public static final String API_GET_AGENT_OPERATIONS = "apigetagentoperations";
-    public static final String API_GET_CAMPAIGN_OPERATIONS = "apigetcampaignoperations";
     public static final String API_GET_OPERATIONS = "apigetoperations";
     public static final String API_GET_OPERATION = "apigetoperation";
     public static final String API_UPDATE_OPERATION = "apiupdateoperation";

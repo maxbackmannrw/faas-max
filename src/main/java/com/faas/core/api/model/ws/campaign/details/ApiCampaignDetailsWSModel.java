@@ -3,8 +3,6 @@ package com.faas.core.api.model.ws.campaign.details;
 import com.faas.core.api.model.ws.campaign.details.dto.ApiCampaignDetailsWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 
-import java.util.List;
-
 public class ApiCampaignDetailsWSModel {
 
     private GeneralWSModel general;

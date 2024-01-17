@@ -2,10 +2,12 @@ package com.faas.core.api.framework.campaign.content;
 
 import com.faas.core.api.model.ws.campaign.content.dto.ApiAgentCampaignWSDTO;
 import com.faas.core.api.model.ws.campaign.content.dto.ApiCampaignWSDTO;
+import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.campaign.details.CampaignAgentDBModel;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
+import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utils.config.AppConstant;
@@ -27,6 +29,9 @@ public class ApiCampaignFramework {
 
     @Autowired
     SessionRepository sessionRepository;
+
+    @Autowired
+    OperationRepository operationRepository;
 
     @Autowired
     CampaignRepository campaignRepository;
@@ -87,6 +92,17 @@ public class ApiCampaignFramework {
             return campaignHelper.getApiCampaignWSDTO(agentId,campaignDBModel.get());
         }
         return null;
+    }
+
+
+    public List<ApiSummaryWSDTO> apiGetCampaignSummaryService(long agentId) {
+
+        List<ApiSummaryWSDTO> agentCampaignSummary = new ArrayList<>();
+        agentCampaignSummary.add(new ApiSummaryWSDTO(AppConstant.AGENT_ALL_CAMPAIGNS_SUMMARY,String.valueOf(campaignAgentRepository.countByAgentId(agentId))));
+        agentCampaignSummary.add(new ApiSummaryWSDTO(AppConstant.AGENT_ACTIVE_OPERATIONS_SUMMARY, String.valueOf(operationRepository.countByAgentIdAndOperationState(agentId,AppConstant.ACTIVE_STATE))));
+        agentCampaignSummary.add(new ApiSummaryWSDTO(AppConstant.AGENT_READY_OPERATIONS_SUMMARY, String.valueOf(operationRepository.countByAgentIdAndOperationState(agentId,AppConstant.READY_STATE))));
+
+        return agentCampaignSummary;
     }
 
 

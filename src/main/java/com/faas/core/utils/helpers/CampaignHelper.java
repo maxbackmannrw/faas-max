@@ -5,7 +5,6 @@ import com.faas.core.api.model.ws.campaign.content.dto.ApiCampaignWSDTO;
 import com.faas.core.api.model.ws.campaign.details.dto.ApiCampaignDetailsWSDTO;
 import com.faas.core.api.model.ws.campaign.details.dto.ApiCampaignProcessWSDTO;
 import com.faas.core.api.model.ws.dashboard.dto.ApiDashboardCampaignWSDTO;
-import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.campaign.details.CampaignAgentDBModel;
 import com.faas.core.base.model.db.process.content.ProcessDBModel;
@@ -118,7 +117,6 @@ public class CampaignHelper {
         return processScenarioWSDTO;
     }
 
-
     public ApiDashboardCampaignWSDTO mapApiDashboardCampaignWSDTO(long agentId,CampaignDBModel campaignDBModel){
 
         ApiDashboardCampaignWSDTO dashboardCampaignWSDTO = new ApiDashboardCampaignWSDTO();
@@ -137,17 +135,13 @@ public class CampaignHelper {
         return campaignWSDTO;
     }
 
-
-    public ApiCampaignDetailsWSDTO getApiCampaignDetailsWSDTO(long agentId,CampaignDBModel campaignDBModel){
+    public ApiCampaignDetailsWSDTO getApiCampaignDetailsWSDTO(CampaignDBModel campaignDBModel){
 
         ApiCampaignDetailsWSDTO campaignDetailsWSDTO = new ApiCampaignDetailsWSDTO();
         campaignDetailsWSDTO.setCampaign(campaignDBModel);
         Optional<ProcessDBModel> processDBModel = processRepository.findById(campaignDBModel.getProcessId());
         if (processDBModel.isPresent()){
-            ApiCampaignProcessWSDTO campaignProcessWSDTO = getApiCampaignProcessWSDTO(processDBModel.get());
-            if (campaignProcessWSDTO != null){
-                campaignDetailsWSDTO.setCampaignProcess(campaignProcessWSDTO);
-            }
+            campaignDetailsWSDTO.setCampaignProcess(getApiCampaignProcessWSDTO(processDBModel.get()));
         }
         return campaignDetailsWSDTO;
     }
@@ -171,7 +165,6 @@ public class CampaignHelper {
         return processScenarioWSDTOS;
     }
 
-
     public ApiAgentCampaignSummary getApiAgentCampaignSummary(long agentId,String campaignId){
 
         ApiAgentCampaignSummary agentCampaignSummary = new ApiAgentCampaignSummary();
@@ -181,9 +174,6 @@ public class CampaignHelper {
 
         return agentCampaignSummary;
     }
-
-
-
 
 
 }

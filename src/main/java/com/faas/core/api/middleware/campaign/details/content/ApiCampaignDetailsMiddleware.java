@@ -1,6 +1,6 @@
-package com.faas.core.api.middleware.campaign.details;
+package com.faas.core.api.middleware.campaign.details.content;
 
-import com.faas.core.api.framework.campaign.details.ApiCampaignDetailsFramework;
+import com.faas.core.api.framework.campaign.details.content.ApiCampaignDetailsFramework;
 import com.faas.core.api.model.ws.campaign.details.ApiCampaignDetailsWSModel;
 import com.faas.core.api.model.ws.campaign.details.ApiCampaignProcessWSModel;
 import com.faas.core.api.model.ws.campaign.details.dto.ApiCampaignDetailsWSDTO;
@@ -42,6 +42,26 @@ public class ApiCampaignDetailsMiddleware {
     }
 
 
+    public ApiSummaryWSModel apiGetCampaignDetailsSummary(long agentId,String campaignId) {
+
+        ApiSummaryWSModel response = new ApiSummaryWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        List<ApiSummaryWSDTO> campaignDetailsSummary = apiCampaignDetailsFramework.apiGetCampaignDetailsSummaryService(agentId,campaignId);
+        if (campaignDetailsSummary != null) {
+            response.setSummaries(campaignDetailsSummary);
+        }
+
+        general.setOperation("getAgentCampaignDetails");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
     public ApiCampaignProcessWSModel apiGetCampaignProcess(long agentId,String campaignId) {
 
         ApiCampaignProcessWSModel response = new ApiCampaignProcessWSModel();
@@ -62,24 +82,7 @@ public class ApiCampaignDetailsMiddleware {
     }
 
 
-    public ApiSummaryWSModel apiGetCampaignSummary(long agentId) {
 
-        ApiSummaryWSModel response = new ApiSummaryWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-        List<ApiSummaryWSDTO> summaryWSDTOS = apiCampaignDetailsFramework.apiGetCampaignSummaryService(agentId);
-        if (summaryWSDTOS != null){
-            response.setSummaries(summaryWSDTOS);
-        }
-
-        general.setOperation("apiGetCampaignSummary");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
 
 
 }
