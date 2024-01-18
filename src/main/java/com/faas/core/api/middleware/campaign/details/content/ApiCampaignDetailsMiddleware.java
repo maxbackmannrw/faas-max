@@ -22,12 +22,12 @@ public class ApiCampaignDetailsMiddleware {
     ApiCampaignDetailsFramework apiCampaignDetailsFramework;
 
 
-    public ApiCampaignDetailsWSModel apiGetCampaignDetails(long agentId,String campaignId) {
+    public ApiCampaignDetailsWSModel apiGetCampaignDetails(long agentId,String campaignId,int reqPage,int reqSize) {
 
         ApiCampaignDetailsWSModel response = new ApiCampaignDetailsWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiCampaignDetailsWSDTO campaignDetailsWSDTO = apiCampaignDetailsFramework.apiGetCampaignDetailsService(agentId,campaignId);
+        ApiCampaignDetailsWSDTO campaignDetailsWSDTO = apiCampaignDetailsFramework.apiGetCampaignDetailsService(agentId,campaignId,reqPage,reqSize);
         if (campaignDetailsWSDTO != null) {
             response.setCampaignDetails(campaignDetailsWSDTO);
         }

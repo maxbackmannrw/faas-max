@@ -135,16 +135,7 @@ public class CampaignHelper {
         return campaignWSDTO;
     }
 
-    public ApiCampaignDetailsWSDTO getApiCampaignDetailsWSDTO(CampaignDBModel campaignDBModel){
 
-        ApiCampaignDetailsWSDTO campaignDetailsWSDTO = new ApiCampaignDetailsWSDTO();
-        campaignDetailsWSDTO.setCampaign(campaignDBModel);
-        Optional<ProcessDBModel> processDBModel = processRepository.findById(campaignDBModel.getProcessId());
-        if (processDBModel.isPresent()){
-            campaignDetailsWSDTO.setCampaignProcess(getApiCampaignProcessWSDTO(processDBModel.get()));
-        }
-        return campaignDetailsWSDTO;
-    }
 
     public ApiCampaignProcessWSDTO getApiCampaignProcessWSDTO(ProcessDBModel processDBModel){
 

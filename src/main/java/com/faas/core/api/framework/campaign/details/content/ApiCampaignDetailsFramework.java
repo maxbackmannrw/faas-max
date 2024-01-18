@@ -13,7 +13,9 @@ import com.faas.core.base.repo.process.details.scenario.ProcessScenarioRepositor
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.CampaignHelper;
+import com.faas.core.utils.helpers.OperationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -26,6 +28,9 @@ public class ApiCampaignDetailsFramework {
 
     @Autowired
     CampaignHelper campaignHelper;
+
+    @Autowired
+    OperationHelper operationHelper;
 
     @Autowired
     OperationRepository operationRepository;
@@ -46,11 +51,21 @@ public class ApiCampaignDetailsFramework {
     AppUtils appUtils;
 
 
-    public ApiCampaignDetailsWSDTO apiGetCampaignDetailsService(long agentId,String campaignId) {
+    public ApiCampaignDetailsWSDTO apiGetCampaignDetailsService(long agentId,String campaignId,int reqPage,int reqSize) {
 
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
         if (campaignAgentRepository.existsByAgentIdAndCampaignId(agentId,campaignId) && campaignDBModel.isPresent()){
-            return campaignHelper.getApiCampaignDetailsWSDTO(campaignDBModel.get());
+
+            ApiCampaignDetailsWSDTO campaignDetailsWSDTO = new ApiCampaignDetailsWSDTO();
+            campaignDetailsWSDTO.setCampaign(campaignDBModel.get());
+            Optional<ProcessDBModel> processDBModel = processRepository.findById(campaignDBModel.get().getProcessId());
+            if (processDBModel.isPresent()){
+                campaignDetailsWSDTO.setCampaignProcess(campaignHelper.getApiCampaignProcessWSDTO(processDBModel.get()));
+            }
+            campaignDetailsWSDTO.setActiveOperation(operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndCampaignIdAndOperationState(agentId,campaignId,AppConstant.READY_STATE,PageRequest.of(reqPage,reqSize))));
+            campaignDetailsWSDTO.setActiveOperation(operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndCampaignIdAndOperationState(agentId,campaignId,AppConstant.ACTIVE_STATE,PageRequest.of(reqPage,reqSize))));
+
+            return campaignDetailsWSDTO;
         }
         return null;
     }
