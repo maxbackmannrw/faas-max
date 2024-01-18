@@ -62,7 +62,7 @@ public class ApiCampaignDetailsFramework {
             if (processDBModel.isPresent()){
                 campaignDetailsWSDTO.setCampaignProcess(campaignHelper.getApiCampaignProcessWSDTO(processDBModel.get()));
             }
-            campaignDetailsWSDTO.setActiveOperation(operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndCampaignIdAndOperationState(agentId,campaignId,AppConstant.READY_STATE,PageRequest.of(reqPage,reqSize))));
+            campaignDetailsWSDTO.setReadyOperation(operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndCampaignIdAndOperationState(agentId,campaignId,AppConstant.READY_STATE,PageRequest.of(reqPage,reqSize))));
             campaignDetailsWSDTO.setActiveOperation(operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndCampaignIdAndOperationState(agentId,campaignId,AppConstant.ACTIVE_STATE,PageRequest.of(reqPage,reqSize))));
 
             return campaignDetailsWSDTO;
