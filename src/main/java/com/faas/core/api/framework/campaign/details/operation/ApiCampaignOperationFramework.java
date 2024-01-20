@@ -2,12 +2,16 @@ package com.faas.core.api.framework.campaign.details.operation;
 
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationListWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
+import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationValidateWSDTO;
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
+import com.faas.core.base.model.db.operation.content.OperationDBModel;
+import com.faas.core.base.model.db.user.content.UserDBModel;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.process.details.scenario.ProcessScenarioRepository;
+import com.faas.core.base.repo.user.content.UserRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.OperationHelper;
@@ -15,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -23,6 +28,9 @@ public class ApiCampaignOperationFramework {
 
     @Autowired
     OperationHelper operationHelper;
+
+    @Autowired
+    UserRepository userRepository;
 
     @Autowired
     OperationRepository operationRepository;
@@ -68,6 +76,18 @@ public class ApiCampaignOperationFramework {
 
     public ApiOperationWSDTO apiGetCampaignOperationService(long agentId,String operationId) {
 
+        return null;
+    }
+
+
+    public ApiOperationValidateWSDTO apiCampaignOperationValidateService(long agentId, String operationId) {
+
+        Optional<UserDBModel> userDBModel = userRepository.findById(agentId);
+        List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
+        if (userDBModel.isPresent() && !operationDBModels.isEmpty()){
+            userDBModel.get().setPassword("");
+            return operationHelper.agentOperationValidateHelper(userDBModel.get(),operationDBModels.get(0));
+        }
         return null;
     }
 

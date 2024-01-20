@@ -18,7 +18,6 @@ public class ApiRoute {
     public static final String API_GET_DASHBOARD_SUMMARY = "apigetdashboardsummary";
 
 
-
     public static final String API_GET_AGENT_CAMPAIGNS = "apigetagentcampaigns";
     public static final String API_GET_CAMPAIGNS = "apigetcampaigns";
     public static final String API_GET_CAMPAIGN = "apigetcampaign";
@@ -30,7 +29,7 @@ public class ApiRoute {
 
     public static final String API_GET_CAMPAIGN_OPERATIONS = "apigetcampaignoperations";
     public static final String API_GET_CAMPAIGN_OPERATION = "apigetcampaignoperation";
-
+    public static final String API_CAMPAIGN_OPERATION_VALIDATE = "apicampaignoperationvalidate";
 
 
 

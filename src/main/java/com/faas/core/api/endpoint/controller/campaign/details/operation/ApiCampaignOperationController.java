@@ -3,6 +3,7 @@ package com.faas.core.api.endpoint.controller.campaign.details.operation;
 import com.faas.core.api.middleware.campaign.details.operation.ApiCampaignOperationMiddleware;
 import com.faas.core.api.model.ws.operation.content.ApiOperationListWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiOperationWSModel;
+import com.faas.core.api.model.ws.operation.details.content.ApiOperationValidateWSModel;
 import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,19 @@ public class ApiCampaignOperationController {
                                                      @RequestParam String operationId) {
 
         ApiOperationWSModel response = apiCampaignOperationMiddleware.apiGetCampaignOperation(agentId,operationId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = ApiRoute.API_CAMPAIGN_OPERATION_VALIDATE, method = RequestMethod.POST)
+    public ResponseEntity<?> apiCampaignOperationValidate(@RequestParam long agentId,
+                                                          @RequestParam String operationId) {
+
+        ApiOperationValidateWSModel response = apiCampaignOperationMiddleware.apiCampaignOperationValidate(agentId,operationId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

@@ -5,6 +5,8 @@ import com.faas.core.api.model.ws.operation.content.ApiOperationListWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiOperationWSModel;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationListWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
+import com.faas.core.api.model.ws.operation.details.content.ApiOperationValidateWSModel;
+import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationValidateWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,5 +65,23 @@ public class ApiCampaignOperationMiddleware {
     }
 
 
+    public ApiOperationValidateWSModel apiCampaignOperationValidate(long agentId, String operationId) {
+
+        ApiOperationValidateWSModel response = new ApiOperationValidateWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        ApiOperationValidateWSDTO operationValidateWSDTO = apiCampaignOperationFramework.apiCampaignOperationValidateService(agentId,operationId);
+        if (operationValidateWSDTO != null){
+            response.setOperationValidate(operationValidateWSDTO);
+        }
+
+        general.setOperation("apiCampaignOperationValidate");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
 
 }
