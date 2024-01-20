@@ -55,17 +55,25 @@ public class ApiCampaignDetailsFramework {
 
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
         if (campaignAgentRepository.existsByAgentIdAndCampaignId(agentId,campaignId) && campaignDBModel.isPresent()){
-
-            ApiCampaignDetailsWSDTO campaignDetailsWSDTO = new ApiCampaignDetailsWSDTO();
-            campaignDetailsWSDTO.setCampaign(campaignDBModel.get());
             Optional<ProcessDBModel> processDBModel = processRepository.findById(campaignDBModel.get().getProcessId());
             if (processDBModel.isPresent()){
-                campaignDetailsWSDTO.setCampaignProcess(campaignHelper.getApiCampaignProcessWSDTO(processDBModel.get()));
-            }
-            campaignDetailsWSDTO.setReadyOperation(operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndCampaignIdAndOperationState(agentId,campaignId,AppConstant.READY_STATE,PageRequest.of(reqPage,reqSize))));
-            campaignDetailsWSDTO.setActiveOperation(operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndCampaignIdAndOperationState(agentId,campaignId,AppConstant.ACTIVE_STATE,PageRequest.of(reqPage,reqSize))));
 
-            return campaignDetailsWSDTO;
+                ApiCampaignDetailsWSDTO campaignDetailsWSDTO = new ApiCampaignDetailsWSDTO();
+                campaignDetailsWSDTO.setCampaign(campaignDBModel.get());
+                campaignDetailsWSDTO.setCampaignProcess(campaignHelper.getApiCampaignProcessWSDTO(processDBModel.get()));
+                campaignDetailsWSDTO.setActiveOperation(operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndCampaignIdAndOperationState(agentId,campaignId,AppConstant.ACTIVE_STATE,PageRequest.of(reqPage,reqSize))));
+
+                if (campaignDBModel.get().getCampaignCategory().equalsIgnoreCase(AppConstant.MANUAL_CAMPAIGN)){
+                    campaignDetailsWSDTO.setReadyOperation(operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndCampaignIdAndOperationState(agentId,campaignId,AppConstant.READY_STATE,PageRequest.of(reqPage,reqSize))));
+                }
+                if (campaignDBModel.get().getCampaignCategory().equalsIgnoreCase(AppConstant.INQUIRY_CAMPAIGN)){
+                    campaignDetailsWSDTO.setReadyOperation(operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndCampaignIdAndOperationStateAndOperationInquiryState(agentId,campaignId,AppConstant.READY_STATE,AppConstant.NEW_STATE,PageRequest.of(reqPage,reqSize))));
+                }
+                if (campaignDBModel.get().getCampaignCategory().equalsIgnoreCase(AppConstant.AUTOMATIC_CAMPAIGN)){
+                    campaignDetailsWSDTO.setReadyOperation(operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndCampaignIdAndOperationStateAndOperationFlowState(agentId,campaignId,AppConstant.READY_STATE,AppConstant.NEW_STATE,PageRequest.of(reqPage,reqSize))));
+                }
+                return campaignDetailsWSDTO;
+            }
         }
         return null;
     }
