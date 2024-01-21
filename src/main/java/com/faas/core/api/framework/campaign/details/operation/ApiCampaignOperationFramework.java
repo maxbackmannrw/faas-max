@@ -76,6 +76,10 @@ public class ApiCampaignOperationFramework {
 
     public ApiOperationWSDTO apiGetCampaignOperationService(long agentId,String operationId) {
 
+        List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
+        if (!operationDBModels.isEmpty()){
+            return operationHelper.mapApiOperationWSDTO(operationDBModels.get(0));
+        }
         return null;
     }
 
