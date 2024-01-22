@@ -3,7 +3,6 @@ package com.faas.core.base.model.db.process.details.channel.content;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-
 @Document(collection = "process_sip_channel_table")
 public class ProcessSipChannelDBModel {
 

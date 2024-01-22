@@ -1,10 +1,10 @@
 package com.faas.core.api.endpoint.controller.dashboard;
 
 import com.faas.core.api.middleware.dashboard.ApiDashboardMiddleware;
-import com.faas.core.api.model.ws.dashboard.ApiDashboardCampaignWSModel;
-import com.faas.core.api.model.ws.dashboard.ApiDashboardOperationWSModel;
+import com.faas.core.api.model.ws.campaign.content.ApiCampaignWSModel;
 import com.faas.core.api.model.ws.dashboard.ApiDashboardWSModel;
 import com.faas.core.api.model.ws.general.ApiSummaryWSModel;
+import com.faas.core.api.model.ws.operation.content.ApiOperationListWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiOperationWSModel;
 import com.faas.core.api.model.ws.operation.details.content.ApiOperationValidateWSModel;
 import com.faas.core.utils.config.ApiRoute;
@@ -49,7 +49,7 @@ public class ApiDashboardController {
                                                        @RequestParam int reqPage,
                                                        @RequestParam int reqSize) {
 
-        ApiDashboardOperationWSModel response = apiDashboardMiddleware.apiGetDashboardOperations(agentId,operationType,operationState,operationInquiryState,operationFlowState,reqPage,reqSize);
+        ApiOperationListWSModel response = apiDashboardMiddleware.apiGetDashboardOperations(agentId,operationType,operationState,operationInquiryState,operationFlowState,reqPage,reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -85,7 +85,7 @@ public class ApiDashboardController {
     @RequestMapping(value = ApiRoute.API_GET_DASHBOARD_CAMPAIGNS, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetDashboardCampaigns(@RequestParam long agentId) {
 
-        ApiDashboardCampaignWSModel response = apiDashboardMiddleware.apiGetDashboardCampaigns(agentId);
+        ApiCampaignWSModel response = apiDashboardMiddleware.apiGetDashboardCampaigns(agentId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

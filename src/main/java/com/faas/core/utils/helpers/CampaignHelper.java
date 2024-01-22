@@ -2,9 +2,7 @@ package com.faas.core.utils.helpers;
 
 import com.faas.core.api.model.ws.campaign.content.dto.ApiAgentCampaignSummary;
 import com.faas.core.api.model.ws.campaign.content.dto.ApiCampaignWSDTO;
-import com.faas.core.api.model.ws.campaign.details.dto.ApiCampaignDetailsWSDTO;
 import com.faas.core.api.model.ws.campaign.details.dto.ApiCampaignProcessWSDTO;
-import com.faas.core.api.model.ws.dashboard.dto.ApiDashboardCampaignWSDTO;
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.campaign.details.CampaignAgentDBModel;
 import com.faas.core.base.model.db.process.content.ProcessDBModel;
@@ -117,14 +115,6 @@ public class CampaignHelper {
         return processScenarioWSDTO;
     }
 
-    public ApiDashboardCampaignWSDTO mapApiDashboardCampaignWSDTO(long agentId,CampaignDBModel campaignDBModel){
-
-        ApiDashboardCampaignWSDTO dashboardCampaignWSDTO = new ApiDashboardCampaignWSDTO();
-        dashboardCampaignWSDTO.setCampaign(campaignDBModel);
-        dashboardCampaignWSDTO.setCampaignSummary(getApiAgentCampaignSummary(agentId,campaignDBModel.getId()));
-
-        return dashboardCampaignWSDTO;
-    }
 
     public ApiCampaignWSDTO getApiCampaignWSDTO(long agentId,CampaignDBModel campaignDBModel){
 
@@ -134,7 +124,6 @@ public class CampaignHelper {
 
         return campaignWSDTO;
     }
-
 
 
     public ApiCampaignProcessWSDTO getApiCampaignProcessWSDTO(ProcessDBModel processDBModel){

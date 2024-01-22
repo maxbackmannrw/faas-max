@@ -4,7 +4,6 @@ import com.faas.core.base.model.db.process.details.channel.content.dao.PushAccou
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-
 @Document(collection = "process_push_channel_table")
 public class ProcessPushChannelDBModel {
 

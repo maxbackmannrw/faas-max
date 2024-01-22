@@ -2,6 +2,9 @@ package com.faas.core.api.endpoint.controller.client.details;
 
 import com.faas.core.api.middleware.client.details.ApiClientDetailsMiddleware;
 import com.faas.core.api.model.ws.client.details.ApiClientDetailsWSModel;
+import com.faas.core.api.model.ws.client.details.ApiClientNoteWSModel;
+import com.faas.core.api.model.ws.client.details.ApiClientOSINTWSModel;
+import com.faas.core.api.model.ws.client.details.ApiClientRemoteAppWSModel;
 import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,12 +38,11 @@ public class ApiClientDetailsController {
     }
 
 
-
     @RequestMapping(value = ApiRoute.API_GET_CLIENT_NOTES, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetClientNotes(@RequestParam long agentId,
                                                @RequestParam long clientId) {
 
-        ApiClientDetailsWSModel response = apiClientDetailsMiddleware.apiGetClientNotes(agentId,clientId);
+        ApiClientNoteWSModel response = apiClientDetailsMiddleware.apiGetClientNotes(agentId,clientId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -52,7 +54,7 @@ public class ApiClientDetailsController {
     public ResponseEntity<?> apiGetClientNote(@RequestParam long agentId,
                                               @RequestParam long clientId) {
 
-        ApiClientDetailsWSModel response = apiClientDetailsMiddleware.apiGetClientNote(agentId,clientId);
+        ApiClientNoteWSModel response = apiClientDetailsMiddleware.apiGetClientNote(agentId,clientId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -64,7 +66,7 @@ public class ApiClientDetailsController {
     public ResponseEntity<?> apiCreateClientNote(@RequestParam long agentId,
                                                  @RequestParam long clientId) {
 
-        ApiClientDetailsWSModel response = apiClientDetailsMiddleware.apiCreateClientNote(agentId,clientId);
+        ApiClientNoteWSModel response = apiClientDetailsMiddleware.apiCreateClientNote(agentId,clientId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -76,7 +78,7 @@ public class ApiClientDetailsController {
     public ResponseEntity<?> apiUpdateClientNote(@RequestParam long agentId,
                                                  @RequestParam long clientId) {
 
-        ApiClientDetailsWSModel response = apiClientDetailsMiddleware.apiUpdateClientNote(agentId,clientId);
+        ApiClientNoteWSModel response = apiClientDetailsMiddleware.apiUpdateClientNote(agentId,clientId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -88,7 +90,7 @@ public class ApiClientDetailsController {
     public ResponseEntity<?> apiRemoveClientNote(@RequestParam long agentId,
                                                  @RequestParam long clientId) {
 
-        ApiClientDetailsWSModel response = apiClientDetailsMiddleware.apiRemoveClientNote(agentId,clientId);
+        ApiClientNoteWSModel response = apiClientDetailsMiddleware.apiRemoveClientNote(agentId,clientId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -102,7 +104,7 @@ public class ApiClientDetailsController {
     public ResponseEntity<?> apiGetClientRemoteApps(@RequestParam long agentId,
                                                     @RequestParam long clientId) {
 
-        ApiClientDetailsWSModel response = apiClientDetailsMiddleware.apiGetClientRemoteApps(agentId,clientId);
+        ApiClientRemoteAppWSModel response = apiClientDetailsMiddleware.apiGetClientRemoteApps(agentId,clientId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -114,7 +116,7 @@ public class ApiClientDetailsController {
     public ResponseEntity<?> apiGetClientRemoteApp(@RequestParam long agentId,
                                                    @RequestParam long clientId) {
 
-        ApiClientDetailsWSModel response = apiClientDetailsMiddleware.apiGetClientRemoteApp(agentId,clientId);
+        ApiClientRemoteAppWSModel response = apiClientDetailsMiddleware.apiGetClientRemoteApp(agentId,clientId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -128,7 +130,7 @@ public class ApiClientDetailsController {
     public ResponseEntity<?> apiGetClientOSINTs(@RequestParam long agentId,
                                                 @RequestParam long clientId) {
 
-        ApiClientDetailsWSModel response = apiClientDetailsMiddleware.apiGetClientOSINTs(agentId,clientId);
+        ApiClientOSINTWSModel response = apiClientDetailsMiddleware.apiGetClientOSINTs(agentId,clientId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -140,7 +142,7 @@ public class ApiClientDetailsController {
     public ResponseEntity<?> apiGetClientOSINT(@RequestParam long agentId,
                                                @RequestParam long clientId) {
 
-        ApiClientDetailsWSModel response = apiClientDetailsMiddleware.apiGetClientOSINT(agentId,clientId);
+        ApiClientOSINTWSModel response = apiClientDetailsMiddleware.apiGetClientOSINT(agentId,clientId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

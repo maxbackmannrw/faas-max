@@ -47,9 +47,12 @@ public class ApiRoute {
     public static final String API_OPERATION_VALIDATE = "apioperationvalidate";
 
 
+
+
     public static final String API_GET_OPERATION_DETAILS = "apigetoperationdetails";
+    public static final String API_GET_OPERATION_DETAILS_SUMMARY = "apigetoperationdetailssummary";
     public static final String API_GET_OPERATION_CAMPAIGN = "apigetoperationcampaign";
-    public static final String API_GET_OPERATION_SUMMARY = "apigetoperationsummary";
+
     public static final String API_OPERATION_LAUNCH = "apioperationlaunch";
     public static final String API_OPERATION_FINISH = "apioperationfinish";
 

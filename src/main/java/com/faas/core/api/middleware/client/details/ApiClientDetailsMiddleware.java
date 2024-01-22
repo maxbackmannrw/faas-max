@@ -2,6 +2,9 @@ package com.faas.core.api.middleware.client.details;
 
 import com.faas.core.api.framework.client.details.ApiClientDetailsFramework;
 import com.faas.core.api.model.ws.client.details.ApiClientDetailsWSModel;
+import com.faas.core.api.model.ws.client.details.ApiClientNoteWSModel;
+import com.faas.core.api.model.ws.client.details.ApiClientOSINTWSModel;
+import com.faas.core.api.model.ws.client.details.ApiClientRemoteAppWSModel;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,9 +34,9 @@ public class ApiClientDetailsMiddleware {
     }
 
 
-    public ApiClientDetailsWSModel apiGetClientNotes(long agentId, long clientId) {
+    public ApiClientNoteWSModel apiGetClientNotes(long agentId, long clientId) {
 
-        ApiClientDetailsWSModel response = new ApiClientDetailsWSModel();
+        ApiClientNoteWSModel response = new ApiClientNoteWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
 
@@ -46,9 +49,9 @@ public class ApiClientDetailsMiddleware {
         return response;
     }
 
-    public ApiClientDetailsWSModel apiGetClientNote(long agentId, long clientId) {
+    public ApiClientNoteWSModel apiGetClientNote(long agentId, long clientId) {
 
-        ApiClientDetailsWSModel response = new ApiClientDetailsWSModel();
+        ApiClientNoteWSModel response = new ApiClientNoteWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
 
@@ -61,9 +64,9 @@ public class ApiClientDetailsMiddleware {
         return response;
     }
 
-    public ApiClientDetailsWSModel apiCreateClientNote(long agentId, long clientId) {
+    public ApiClientNoteWSModel apiCreateClientNote(long agentId, long clientId) {
 
-        ApiClientDetailsWSModel response = new ApiClientDetailsWSModel();
+        ApiClientNoteWSModel response = new ApiClientNoteWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
 
@@ -76,9 +79,9 @@ public class ApiClientDetailsMiddleware {
         return response;
     }
 
-    public ApiClientDetailsWSModel apiUpdateClientNote(long agentId, long clientId) {
+    public ApiClientNoteWSModel apiUpdateClientNote(long agentId, long clientId) {
 
-        ApiClientDetailsWSModel response = new ApiClientDetailsWSModel();
+        ApiClientNoteWSModel response = new ApiClientNoteWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
 
@@ -91,9 +94,9 @@ public class ApiClientDetailsMiddleware {
         return response;
     }
 
-    public ApiClientDetailsWSModel apiRemoveClientNote(long agentId, long clientId) {
+    public ApiClientNoteWSModel apiRemoveClientNote(long agentId, long clientId) {
 
-        ApiClientDetailsWSModel response = new ApiClientDetailsWSModel();
+        ApiClientNoteWSModel response = new ApiClientNoteWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
 
@@ -107,9 +110,9 @@ public class ApiClientDetailsMiddleware {
     }
 
 
-    public ApiClientDetailsWSModel apiGetClientRemoteApps(long agentId, long clientId) {
+    public ApiClientRemoteAppWSModel apiGetClientRemoteApps(long agentId, long clientId) {
 
-        ApiClientDetailsWSModel response = new ApiClientDetailsWSModel();
+        ApiClientRemoteAppWSModel response = new ApiClientRemoteAppWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
 
@@ -122,9 +125,9 @@ public class ApiClientDetailsMiddleware {
         return response;
     }
 
-    public ApiClientDetailsWSModel apiGetClientRemoteApp(long agentId, long clientId) {
+    public ApiClientRemoteAppWSModel apiGetClientRemoteApp(long agentId, long clientId) {
 
-        ApiClientDetailsWSModel response = new ApiClientDetailsWSModel();
+        ApiClientRemoteAppWSModel response = new ApiClientRemoteAppWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
 
@@ -138,9 +141,9 @@ public class ApiClientDetailsMiddleware {
     }
 
 
-    public ApiClientDetailsWSModel apiGetClientOSINTs(long agentId, long clientId) {
+    public ApiClientOSINTWSModel apiGetClientOSINTs(long agentId, long clientId) {
 
-        ApiClientDetailsWSModel response = new ApiClientDetailsWSModel();
+        ApiClientOSINTWSModel response = new ApiClientOSINTWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
 
@@ -153,9 +156,9 @@ public class ApiClientDetailsMiddleware {
         return response;
     }
 
-    public ApiClientDetailsWSModel apiGetClientOSINT(long agentId, long clientId) {
+    public ApiClientOSINTWSModel apiGetClientOSINT(long agentId, long clientId) {
 
-        ApiClientDetailsWSModel response = new ApiClientDetailsWSModel();
+        ApiClientOSINTWSModel response = new ApiClientOSINTWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
 

@@ -25,12 +25,12 @@ public class ApiOperationDetailsMiddleware {
     ApiOperationDetailsFramework apiOperationDetailsFramework;
 
 
-    public ApiOperationDetailsWSModel apiGetOperationDetails(long agentId, long sessionId, long clientId, String campaignId, String processId, String operationId) {
+    public ApiOperationDetailsWSModel apiGetOperationDetails(long agentId,String operationId) {
 
         ApiOperationDetailsWSModel response = new ApiOperationDetailsWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiOperationDetailsWSDTO operationDetailsWSDTO = apiOperationDetailsFramework.apiGetOperationDetailsService(agentId,sessionId,clientId,campaignId,processId,operationId);
+        ApiOperationDetailsWSDTO operationDetailsWSDTO = apiOperationDetailsFramework.apiGetOperationDetailsService(agentId,operationId);
         if (operationDetailsWSDTO != null){
             response.setOperationDetails(operationDetailsWSDTO);
         }
@@ -45,12 +45,12 @@ public class ApiOperationDetailsMiddleware {
     }
 
 
-    public ApiCampaignDetailsWSModel apiGetOperationCampaign(long agentId, long sessionId, long clientId, String campaignId, String processId) {
+    public ApiCampaignDetailsWSModel apiGetOperationCampaign(long agentId, String operationId) {
 
         ApiCampaignDetailsWSModel response = new ApiCampaignDetailsWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiCampaignDetailsWSDTO operationCampaign = apiOperationDetailsFramework.apiGetOperationCampaignService(sessionId,clientId,campaignId,processId);
+        ApiCampaignDetailsWSDTO operationCampaign = apiOperationDetailsFramework.apiGetOperationCampaignService(agentId,operationId);
         if (operationCampaign != null){
             response.setCampaignDetails(operationCampaign);
         }
@@ -65,17 +65,17 @@ public class ApiOperationDetailsMiddleware {
     }
 
 
-    public ApiSummaryWSModel apiGetOperationSummary(long agentId) {
+    public ApiSummaryWSModel apiGetOperationDetailsSummary(long agentId,String operationId) {
 
         ApiSummaryWSModel response = new ApiSummaryWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ApiSummaryWSDTO> operationSummary = apiOperationDetailsFramework.apiGetOperationSummaryService(agentId);
+        List<ApiSummaryWSDTO> operationSummary = apiOperationDetailsFramework.apiGetOperationDetailsSummaryService(agentId,operationId);
         if (operationSummary != null){
             response.setSummaries(operationSummary);
         }
 
-        general.setOperation("apiGetOperationSummary");
+        general.setOperation("apiGetOperationDetailsSummary");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -85,13 +85,13 @@ public class ApiOperationDetailsMiddleware {
     }
 
 
-    public ApiOperationWSModel apiOperationLaunch(long agentId, long sessionId, long clientId, String campaignId) {
+    public ApiOperationWSModel apiOperationLaunch(long agentId,String operationId) {
 
         ApiOperationWSModel response = new ApiOperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ApiOperationWSDTO>operationWSDTOS = new ArrayList<>();
 
-        ApiOperationWSDTO operationWSDTO = apiOperationDetailsFramework.apiOperationLaunchService(agentId,sessionId,clientId,campaignId);
+        ApiOperationWSDTO operationWSDTO = apiOperationDetailsFramework.apiOperationLaunchService(agentId,operationId);
         if (operationWSDTO != null){
             operationWSDTOS.add(operationWSDTO);
         }
@@ -107,13 +107,13 @@ public class ApiOperationDetailsMiddleware {
     }
 
 
-    public ApiOperationWSModel apiOperationFinish(long agentId,long sessionId,long clientId,String campaignId,String operationResult) {
+    public ApiOperationWSModel apiOperationFinish(long agentId,String operationId,String operationState) {
 
         ApiOperationWSModel response = new ApiOperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ApiOperationWSDTO>operationWSDTOS = new ArrayList<>();
 
-        ApiOperationWSDTO operationWSDTO = apiOperationDetailsFramework.apiOperationFinishService(agentId,sessionId,clientId,campaignId,operationResult);
+        ApiOperationWSDTO operationWSDTO = apiOperationDetailsFramework.apiOperationFinishService(agentId,operationId,operationState);
         if (operationWSDTO != null){
             operationWSDTOS.add(operationWSDTO);
         }
