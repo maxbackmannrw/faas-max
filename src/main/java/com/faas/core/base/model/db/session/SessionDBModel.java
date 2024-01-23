@@ -11,8 +11,8 @@ public class SessionDBModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "session_uuid")
-    private String sessionUUID;
+    @Column(name = "operation_id")
+    private String operationId;
 
     @Column(name = "client_id")
     private long clientId;
@@ -86,9 +86,9 @@ public class SessionDBModel {
     public SessionDBModel() {
     }
 
-    public SessionDBModel(long id, String sessionUUID, long clientId, String clientName, String nationalId, String phoneNumber, String emailAddress, String clientCity, String clientCountry, String clientType, String campaignId, String campaign, String campaignType, String campaignCategory, String processId, String process, String processType, String processCategory, long agentId, String agentName, String sessionType, String sessionState, long uDate, long cDate, int status) {
+    public SessionDBModel(long id, String operationId, long clientId, String clientName, String nationalId, String phoneNumber, String emailAddress, String clientCity, String clientCountry, String clientType, String campaignId, String campaign, String campaignType, String campaignCategory, String processId, String process, String processType, String processCategory, long agentId, String agentName, String sessionType, String sessionState, long uDate, long cDate, int status) {
         this.id = id;
-        this.sessionUUID = sessionUUID;
+        this.operationId = operationId;
         this.clientId = clientId;
         this.clientName = clientName;
         this.nationalId = nationalId;
@@ -122,12 +122,12 @@ public class SessionDBModel {
         this.id = id;
     }
 
-    public String getSessionUUID() {
-        return sessionUUID;
+    public String getOperationId() {
+        return operationId;
     }
 
-    public void setSessionUUID(String sessionUUID) {
-        this.sessionUUID = sessionUUID;
+    public void setOperationId(String operationId) {
+        this.operationId = operationId;
     }
 
     public long getClientId() {

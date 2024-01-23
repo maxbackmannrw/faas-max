@@ -128,6 +128,10 @@ public class CampaignOperationFramework {
             SessionDBModel sessionDBModel =sessionRepository.save(operationHelper.createSessionDBModel(clientDBModel,agentDBModel.get(),campaignDBModel.get()));
             OperationDBModel operationDBModel = operationRepository.save(operationHelper.createOperationDBModel(sessionDBModel));
 
+            sessionDBModel.setOperationId(operationDBModel.getId());
+            sessionDBModel.setuDate(appUtils.getCurrentTimeStamp());
+            sessionDBModel = sessionRepository.save(sessionDBModel);
+
             activityHelper.createSessionActivity(sessionDBModel,operationDBModel);
             activityHelper.createOperationActivity(sessionDBModel,operationDBModel);
 

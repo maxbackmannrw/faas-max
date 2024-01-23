@@ -11,7 +11,6 @@ import java.util.List;
 @Repository
 public interface SessionRepository extends PagingAndSortingRepository<SessionDBModel, Long> {
 
-
     long countByAgentIdAndSessionState(long agentId,String sessionState);
     long countByAgentId(long agentId);
     long countByAgentIdAndCampaignId(long agentId,String campaignId);
@@ -23,6 +22,7 @@ public interface SessionRepository extends PagingAndSortingRepository<SessionDBM
     boolean existsByClientIdAndCampaignId(long clientId, String campaignId);
     List<SessionDBModel>findByStatus(int status);
     List<SessionDBModel>findByClientId(long clientId);
+    List<SessionDBModel>findByAgentIdAndOperationId(long agentId, String operationId);
     List<SessionDBModel>findByIdAndClientId(long sessionId,long clientId);
     List<SessionDBModel>findByIdAndClientIdAndAgentIdAndCampaignId(long sessionId,long clientId,long agentId,String campaignId);
     List<SessionDBModel>findByIdAndClientIdAndAgentId(long sessionId,long clientId,long agentId);
@@ -41,7 +41,6 @@ public interface SessionRepository extends PagingAndSortingRepository<SessionDBM
     List<SessionDBModel>findByAgentIdAndSessionState(long agentId, String sessionState);
     List<SessionDBModel>findByAgentIdAndCampaignIdAndSessionState(long agentId, String campaignId, String sessionState);
     List<SessionDBModel>findByAgentIdAndCampaignIdAndProcessIdAndSessionState(long agentId, String campaignId, String processId, String sessionState);
-
 
     Page<SessionDBModel>findAllByCampaignCategoryAndSessionState(String campaignCategory, String sessionState, Pageable pageable);
     Page<SessionDBModel>findAllByCampaignCategory(String campaignCategory, Pageable pageable);

@@ -37,6 +37,7 @@ public class ApiOperationDetailsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+
     @RequestMapping(value = ApiRoute.API_OPERATION_START, method = RequestMethod.POST)
     public ResponseEntity<?> apiOperationStart(@RequestParam long agentId,
                                                @RequestParam String operationId) {
@@ -48,6 +49,7 @@ public class ApiOperationDetailsController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
+
 
     @RequestMapping(value = ApiRoute.API_OPERATION_FINISH, method = RequestMethod.POST)
     public ResponseEntity<?> apiOperationFinish(@RequestParam long agentId,
@@ -61,6 +63,7 @@ public class ApiOperationDetailsController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
+
 
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_DETAILS_SUMMARY, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationDetailsSummary(@RequestParam long agentId,

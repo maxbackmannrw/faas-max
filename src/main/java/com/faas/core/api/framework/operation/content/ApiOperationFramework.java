@@ -72,7 +72,7 @@ public class ApiOperationFramework {
 
         Optional<OperationDBModel> operationDBModel = operationRepository.findById(operationId);
         if (operationDBModel.isPresent()){
-            return operationHelper.mapApiOperationWSDTO(operationDBModel.get());
+            return operationHelper.getApiOperationWSDTO(operationDBModel.get());
         }
         return null;
     }

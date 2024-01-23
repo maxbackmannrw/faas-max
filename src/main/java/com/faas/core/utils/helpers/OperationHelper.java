@@ -135,7 +135,7 @@ public class OperationHelper {
     public SessionDBModel createSessionDBModel(ClientDBModel clientDBModel, UserDBModel agentDBModel,CampaignDBModel campaignDBModel  ) {
 
         SessionDBModel sessionDBModel = new SessionDBModel();
-        sessionDBModel.setSessionUUID(appUtils.generateUUID());
+        sessionDBModel.setOperationId(AppConstant.NO_VALUE);
         sessionDBModel.setClientId(clientDBModel.getId());
         sessionDBModel.setClientName(clientDBModel.getClientName());
         sessionDBModel.setNationalId(clientDBModel.getNationalId());
@@ -169,7 +169,6 @@ public class OperationHelper {
 
             OperationDBModel operationDBModel = new OperationDBModel();
             operationDBModel.setSessionId(sessionDBModel.getId());
-            operationDBModel.setSessionUUID(sessionDBModel.getSessionUUID());
             operationDBModel.setClientId(sessionDBModel.getClientId());
             operationDBModel.setAgentId(sessionDBModel.getAgentId());
             operationDBModel.setCampaignId(sessionDBModel.getCampaignId());
@@ -309,8 +308,7 @@ public class OperationHelper {
 
 
 
-
-    public ApiOperationWSDTO mapApiOperationWSDTO(OperationDBModel operationDBModel) {
+    public ApiOperationWSDTO getApiOperationWSDTO(OperationDBModel operationDBModel) {
 
         Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(operationDBModel.getSessionId());
         if (sessionDBModel.isPresent()){
@@ -321,6 +319,48 @@ public class OperationHelper {
             return operationWSDTO;
         }
         return null;
+    }
+
+    public ApiOperationWSDTO startManualOperationHelper(SessionDBModel sessionDBModel,OperationDBModel operationDBModel){
+
+        sessionDBModel.setSessionState(AppConstant.ACTIVE_STATE);
+        sessionDBModel.setuDate(appUtils.getCurrentTimeStamp());
+        sessionDBModel = sessionRepository.save(sessionDBModel);
+
+        operationDBModel.setOperationState(AppConstant.ACTIVE_STATE);
+        operationDBModel.setuDate(appUtils.getCurrentTimeStamp());
+        operationDBModel = operationRepository.save(operationDBModel);
+
+        return new ApiOperationWSDTO(operationDBModel,sessionDBModel);
+    }
+
+
+    public ApiOperationWSDTO startInquiryOperationHelper(SessionDBModel sessionDBModel,OperationDBModel operationDBModel){
+
+        sessionDBModel.setSessionState(AppConstant.ACTIVE_STATE);
+        sessionDBModel.setuDate(appUtils.getCurrentTimeStamp());
+        sessionDBModel = sessionRepository.save(sessionDBModel);
+
+        operationDBModel.setOperationState(AppConstant.ACTIVE_STATE);
+        operationDBModel.setOperationInquiryState(AppConstant.ACTIVE_STATE);
+        operationDBModel.setuDate(appUtils.getCurrentTimeStamp());
+        operationDBModel = operationRepository.save(operationDBModel);
+
+        return new ApiOperationWSDTO(operationDBModel,sessionDBModel);
+    }
+
+    public ApiOperationWSDTO startAutomaticOperationHelper(SessionDBModel sessionDBModel,OperationDBModel operationDBModel){
+
+        sessionDBModel.setSessionState(AppConstant.ACTIVE_STATE);
+        sessionDBModel.setuDate(appUtils.getCurrentTimeStamp());
+        sessionDBModel = sessionRepository.save(sessionDBModel);
+
+        operationDBModel.setOperationState(AppConstant.ACTIVE_STATE);
+        operationDBModel.setOperationFlowState(AppConstant.ACTIVE_STATE);
+        operationDBModel.setuDate(appUtils.getCurrentTimeStamp());
+        operationDBModel = operationRepository.save(operationDBModel);
+
+        return new ApiOperationWSDTO(operationDBModel,sessionDBModel);
     }
 
 
@@ -360,7 +400,7 @@ public class OperationHelper {
         ApiOperationListWSDTO operationListWSDTO = new ApiOperationListWSDTO();
         List<ApiOperationWSDTO> operationWSDTOS = new ArrayList<>();
         for (int i=0;operationModelPage.getContent().size()>i;i++){
-            ApiOperationWSDTO operationWSDTO = mapApiOperationWSDTO(operationModelPage.getContent().get(i));
+            ApiOperationWSDTO operationWSDTO = getApiOperationWSDTO(operationModelPage.getContent().get(i));
             if (operationWSDTO != null){
                 operationWSDTOS.add(operationWSDTO);
             }

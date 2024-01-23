@@ -66,6 +66,8 @@ public class AppConstant {
     public static final String BUSY_CLIENT = "BUSY_CLIENT";
 
 
+    public static final String NO_VALUE = "NO_VALUE";
+
     public static final String NO_STATE = "NO_STATE";
     public static final String NEW_STATE = "NEW_STATE";
     public static final String READY_STATE = "READY_STATE";

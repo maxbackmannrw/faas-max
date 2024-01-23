@@ -12,7 +12,6 @@ public class OperationDBModel {
     @Id
     private String id;
     private long sessionId;
-    private String sessionUUID;
     private long clientId;
     private long agentId;
     private String campaignId;
@@ -33,10 +32,9 @@ public class OperationDBModel {
     public OperationDBModel() {
     }
 
-    public OperationDBModel(String id, long sessionId, String sessionUUID, long clientId, long agentId, String campaignId, String processId, OperationInquiryDAO operationInquiry, String operationInquiryState, OperationFlowDAO operationFlow, String operationFlowState, List<OperationScenarioDAO> operationScenarios, List<OperationActivityDAO> operationActivities, List<OperationDataDAO> operationDatas, String operationType, String operationState, long uDate, long cDate, int status) {
+    public OperationDBModel(String id, long sessionId, long clientId, long agentId, String campaignId, String processId, OperationInquiryDAO operationInquiry, String operationInquiryState, OperationFlowDAO operationFlow, String operationFlowState, List<OperationScenarioDAO> operationScenarios, List<OperationActivityDAO> operationActivities, List<OperationDataDAO> operationDatas, String operationType, String operationState, long uDate, long cDate, int status) {
         this.id = id;
         this.sessionId = sessionId;
-        this.sessionUUID = sessionUUID;
         this.clientId = clientId;
         this.agentId = agentId;
         this.campaignId = campaignId;
@@ -69,14 +67,6 @@ public class OperationDBModel {
 
     public void setSessionId(long sessionId) {
         this.sessionId = sessionId;
-    }
-
-    public String getSessionUUID() {
-        return sessionUUID;
-    }
-
-    public void setSessionUUID(String sessionUUID) {
-        this.sessionUUID = sessionUUID;
     }
 
     public long getClientId() {

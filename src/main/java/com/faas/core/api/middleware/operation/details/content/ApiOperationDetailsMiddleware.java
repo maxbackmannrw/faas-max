@@ -43,6 +43,7 @@ public class ApiOperationDetailsMiddleware {
         return response;
     }
 
+
     public ApiOperationWSModel apiOperationStart(long agentId,String operationId) {
 
         ApiOperationWSModel response = new ApiOperationWSModel();
@@ -63,6 +64,7 @@ public class ApiOperationDetailsMiddleware {
 
         return response;
     }
+
 
     public ApiOperationWSModel apiOperationFinish(long agentId,String operationId,String operationState) {
 
@@ -85,6 +87,7 @@ public class ApiOperationDetailsMiddleware {
         return response;
     }
 
+
     public ApiSummaryWSModel apiGetOperationDetailsSummary(long agentId,String operationId) {
 
         ApiSummaryWSModel response = new ApiSummaryWSModel();
@@ -103,7 +106,6 @@ public class ApiOperationDetailsMiddleware {
 
         return response;
     }
-
 
 
 }

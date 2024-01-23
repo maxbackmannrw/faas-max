@@ -86,7 +86,7 @@ public class ApiDashboardFramework {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
         if (!operationDBModels.isEmpty()){
-            return operationHelper.mapApiOperationWSDTO(operationDBModels.get(0));
+            return operationHelper.getApiOperationWSDTO(operationDBModels.get(0));
         }
         return null;
     }
