@@ -90,7 +90,7 @@ public class ApiCampaignOperationFramework {
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
         if (userDBModel.isPresent() && !operationDBModels.isEmpty()){
             userDBModel.get().setPassword("");
-            return operationHelper.agentOperationValidateHelper(userDBModel.get(),operationDBModels.get(0));
+            return operationHelper.operationValidateHelper(userDBModel.get(),operationDBModels.get(0));
         }
         return null;
     }

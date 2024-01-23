@@ -1,7 +1,7 @@
-package com.faas.core.api.endpoint.controller.operation.details.activity;
+package com.faas.core.api.endpoint.controller.operation.details.campaign.activity;
 
-import com.faas.core.api.middleware.operation.details.activity.ApiOperationActivityMiddleware;
-import com.faas.core.api.model.ws.operation.details.activity.ApiOperationActivityWSModel;
+import com.faas.core.api.middleware.operation.details.campaign.activity.ApiOperationActivityMiddleware;
+import com.faas.core.api.model.ws.operation.details.campaign.activity.ApiOperationActivityWSModel;
 import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;

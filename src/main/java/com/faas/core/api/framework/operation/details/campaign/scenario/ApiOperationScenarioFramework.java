@@ -1,7 +1,7 @@
-package com.faas.core.api.framework.operation.details.scenario;
+package com.faas.core.api.framework.operation.details.campaign.scenario;
 
-import com.faas.core.api.model.ws.operation.details.scenario.dto.ApiOperationScenarioWSDTO;
-import com.faas.core.api.model.ws.operation.details.scenario.dto.ApiProcessScenarioWSDTO;
+import com.faas.core.api.model.ws.operation.details.campaign.scenario.dto.ApiOperationScenarioWSDTO;
+import com.faas.core.api.model.ws.operation.details.campaign.scenario.dto.ApiProcessScenarioWSDTO;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.process.details.scenario.ProcessScenarioDBModel;

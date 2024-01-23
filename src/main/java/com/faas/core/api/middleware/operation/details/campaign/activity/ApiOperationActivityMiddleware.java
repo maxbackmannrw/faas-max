@@ -1,8 +1,8 @@
-package com.faas.core.api.middleware.operation.details.activity;
+package com.faas.core.api.middleware.operation.details.campaign.activity;
 
-import com.faas.core.api.framework.operation.details.activity.ApiOperationActivityFramework;
-import com.faas.core.api.model.ws.operation.details.activity.ApiOperationActivityWSModel;
-import com.faas.core.api.model.ws.operation.details.activity.dto.ApiOperationActivityWSDTO;
+import com.faas.core.api.framework.operation.details.campaign.activity.ApiOperationActivityFramework;
+import com.faas.core.api.model.ws.operation.details.campaign.activity.ApiOperationActivityWSModel;
+import com.faas.core.api.model.ws.operation.details.campaign.activity.dto.ApiOperationActivityWSDTO;
 import com.faas.core.base.model.db.operation.content.dao.OperationActivityDAO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.utils.config.AppConstant;

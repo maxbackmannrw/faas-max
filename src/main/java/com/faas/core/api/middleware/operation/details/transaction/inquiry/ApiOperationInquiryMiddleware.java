@@ -1,8 +1,8 @@
 package com.faas.core.api.middleware.operation.details.transaction.inquiry;
 
 import com.faas.core.api.framework.operation.details.transaction.inquiry.ApiOperationInquiryFramework;
-import com.faas.core.api.model.ws.operation.details.scenario.ApiOperationScenarioWSModel;
-import com.faas.core.api.model.ws.operation.details.scenario.dto.ApiOperationScenarioWSDTO;
+import com.faas.core.api.model.ws.operation.details.campaign.scenario.ApiOperationScenarioWSModel;
+import com.faas.core.api.model.ws.operation.details.campaign.scenario.dto.ApiOperationScenarioWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;

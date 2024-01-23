@@ -5,7 +5,7 @@ import com.faas.core.api.model.ws.operation.content.dto.ApiOperationListWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.content.dto.ApiOperationChannelWSDTO;
 import com.faas.core.api.model.ws.operation.details.client.content.dto.ApiOperationClientWSDTO;
-import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationCampaignWSDTO;
+import com.faas.core.api.model.ws.operation.details.campaign.content.dto.ApiOperationCampaignWSDTO;
 import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationDetailsWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationValidateWSDTO;
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
@@ -323,7 +323,9 @@ public class OperationHelper {
         return null;
     }
 
-    public List<ApiSummaryWSDTO> getApiOperationSummary(long agentId){
+
+
+    public List<ApiSummaryWSDTO> apiGetOperationDetailsSummaryHelper(long agentId,String operationId) {
 
         List<ApiSummaryWSDTO> operationSummary = new ArrayList<>();
         operationSummary.add(new ApiSummaryWSDTO(AppConstant.AGENT_ACTIVE_OPERATIONS_SUMMARY,String.valueOf(operationRepository.countByAgentIdAndOperationState(agentId,AppConstant.ACTIVE_STATE))));
@@ -333,9 +335,13 @@ public class OperationHelper {
         return operationSummary;
     }
 
-    public ApiOperationValidateWSDTO agentOperationValidateHelper(UserDBModel agentDBModel,OperationDBModel operationDBModel){
+
+
+
+    public ApiOperationValidateWSDTO operationValidateHelper(UserDBModel agentDBModel,OperationDBModel operationDBModel){
 
         ApiOperationValidateWSDTO operationValidateWSDTO = new ApiOperationValidateWSDTO();
+
         operationValidateWSDTO.setAgent(agentDBModel);
         operationValidateWSDTO.setOperation(operationDBModel);
         operationValidateWSDTO.setOperationCount(operationRepository.countByAgentIdAndOperationState(agentDBModel.getId(),AppConstant.ACTIVE_STATE));
