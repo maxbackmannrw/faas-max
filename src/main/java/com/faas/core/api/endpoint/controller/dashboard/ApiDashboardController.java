@@ -6,7 +6,7 @@ import com.faas.core.api.model.ws.dashboard.ApiDashboardWSModel;
 import com.faas.core.api.model.ws.general.ApiSummaryWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiOperationListWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiOperationWSModel;
-import com.faas.core.api.model.ws.operation.details.content.ApiOperationValidateWSModel;
+import com.faas.core.api.model.ws.operation.content.ApiOperationValidateWSModel;
 import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;

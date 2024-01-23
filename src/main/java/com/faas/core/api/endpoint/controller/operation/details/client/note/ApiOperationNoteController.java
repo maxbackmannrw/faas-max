@@ -1,9 +1,7 @@
-package com.faas.core.api.endpoint.controller.operation.details.client;
+package com.faas.core.api.endpoint.controller.operation.details.client.note;
 
-import com.faas.core.api.middleware.operation.details.client.ApiOperationClientMiddleware;
-import com.faas.core.api.model.ws.operation.details.client.ApiOperationClientWSModel;
-import com.faas.core.api.model.ws.operation.details.client.ApiOperationNoteWSModel;
-import com.faas.core.api.model.ws.operation.details.client.ApiOperationOSINTWSModel;
+import com.faas.core.api.middleware.operation.details.client.note.ApiOperationNoteMiddleware;
+import com.faas.core.api.model.ws.operation.details.client.note.ApiOperationNoteWSModel;
 import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,33 +14,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-@RequestMapping(value = AppConstant.API_VERSION + "/api/operation/details/client/")
-public class ApiOperationClientController {
+@RequestMapping(value = AppConstant.API_VERSION + "/api/operation/details/client/note/")
+public class ApiOperationNoteController {
 
 
     @Autowired
-    ApiOperationClientMiddleware apiOperationClientMiddleware;
-
-
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION_CLIENT, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperationClient(@RequestParam long agentId,
-                                                   @RequestParam long sessionId,
-                                                   @RequestParam long clientId) {
-
-        ApiOperationClientWSModel response = apiOperationClientMiddleware.apiGetOperationClient(agentId,sessionId,clientId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
+    ApiOperationNoteMiddleware apiOperationNoteMiddleware;
 
 
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_NOTES, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationNotes(@RequestParam long agentId,
                                                   @RequestParam long clientId) {
 
-        ApiOperationNoteWSModel response = apiOperationClientMiddleware.apiGetOperationNotes(agentId,clientId);
+        ApiOperationNoteWSModel response = apiOperationNoteMiddleware.apiGetOperationNotes(agentId,clientId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -56,7 +40,7 @@ public class ApiOperationClientController {
                                                  @RequestParam long clientId,
                                                  @RequestParam long noteId) {
 
-        ApiOperationNoteWSModel response = apiOperationClientMiddleware.apiGetOperationNote(agentId,sessionId,clientId,noteId);
+        ApiOperationNoteWSModel response = apiOperationNoteMiddleware.apiGetOperationNote(agentId,sessionId,clientId,noteId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -72,7 +56,7 @@ public class ApiOperationClientController {
                                                     @RequestParam String noteText,
                                                     @RequestParam String noteAsset) {
 
-        ApiOperationNoteWSModel response = apiOperationClientMiddleware.apiCreateOperationNote(agentId,sessionId,clientId,noteTitle,noteText,noteAsset);
+        ApiOperationNoteWSModel response = apiOperationNoteMiddleware.apiCreateOperationNote(agentId,sessionId,clientId,noteTitle,noteText,noteAsset);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -89,7 +73,7 @@ public class ApiOperationClientController {
                                                     @RequestParam String noteText,
                                                     @RequestParam String noteAsset) {
 
-        ApiOperationNoteWSModel response = apiOperationClientMiddleware.apiUpdateOperationNote(agentId,sessionId,clientId,noteId,noteTitle,noteText,noteAsset);
+        ApiOperationNoteWSModel response = apiOperationNoteMiddleware.apiUpdateOperationNote(agentId,sessionId,clientId,noteId,noteTitle,noteText,noteAsset);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -103,7 +87,7 @@ public class ApiOperationClientController {
                                                     @RequestParam long clientId,
                                                     @RequestParam long noteId) {
 
-        ApiOperationNoteWSModel response = apiOperationClientMiddleware.apiRemoveOperationNote(agentId,sessionId,clientId,noteId);
+        ApiOperationNoteWSModel response = apiOperationNoteMiddleware.apiRemoveOperationNote(agentId,sessionId,clientId,noteId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -111,30 +95,6 @@ public class ApiOperationClientController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION_OS_INTS, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperationOSINTs(@RequestParam long agentId,
-                                                   @RequestParam long clientId) {
-
-        ApiOperationOSINTWSModel response = apiOperationClientMiddleware.apiGetOperationOSINTs(agentId,clientId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION_OS_INT, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperationOSINT(@RequestParam long agentId,
-                                                  @RequestParam long clientId) {
-
-        ApiOperationOSINTWSModel response = apiOperationClientMiddleware.apiGetOperationOSINT(agentId,clientId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
 
 
 

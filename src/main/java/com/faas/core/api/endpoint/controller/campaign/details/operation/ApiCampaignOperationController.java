@@ -3,7 +3,7 @@ package com.faas.core.api.endpoint.controller.campaign.details.operation;
 import com.faas.core.api.middleware.campaign.details.operation.ApiCampaignOperationMiddleware;
 import com.faas.core.api.model.ws.operation.content.ApiOperationListWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiOperationWSModel;
-import com.faas.core.api.model.ws.operation.details.content.ApiOperationValidateWSModel;
+import com.faas.core.api.model.ws.operation.content.ApiOperationValidateWSModel;
 import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;

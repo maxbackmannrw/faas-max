@@ -59,13 +59,6 @@ public class ApiOperationDetailsFramework {
     }
 
 
-    public ApiCampaignDetailsWSDTO apiGetOperationCampaignService(long agentId, String operationId) {
-
-
-        return null;
-    }
-
-
     public ApiOperationWSDTO apiOperationLaunchService(long agentId,String operationId) {
 
         /* List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndClientIdAndAgentIdAndCampaignIdAndSessionState(sessionId, clientId, agentId, campaignId, AppConstant.READY_STATE);
@@ -152,5 +145,11 @@ public class ApiOperationDetailsFramework {
     }
 
 
+
+    public ApiCampaignDetailsWSDTO apiGetOperationCampaignService(long agentId, String operationId) {
+
+
+        return null;
+    }
 
 }

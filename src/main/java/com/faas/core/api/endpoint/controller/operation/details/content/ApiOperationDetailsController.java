@@ -51,19 +51,6 @@ public class ApiOperationDetailsController {
     }
 
 
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION_CAMPAIGN, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperationCampaign(@RequestParam long agentId,
-                                                     @RequestParam String operationId) {
-
-        ApiCampaignDetailsWSModel response = apiOperationDetailsMiddleware.apiGetOperationCampaign(agentId,operationId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-
 
     @RequestMapping(value = ApiRoute.API_OPERATION_LAUNCH, method = RequestMethod.POST)
     public ResponseEntity<?> apiOperationLaunch(@RequestParam long agentId,
@@ -91,6 +78,19 @@ public class ApiOperationDetailsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+
+
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_CAMPAIGN, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationCampaign(@RequestParam long agentId,
+                                                     @RequestParam String operationId) {
+
+        ApiCampaignDetailsWSModel response = apiOperationDetailsMiddleware.apiGetOperationCampaign(agentId,operationId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
 
 
 }

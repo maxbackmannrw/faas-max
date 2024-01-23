@@ -1,6 +1,6 @@
-package com.faas.core.api.model.ws.operation.details.content;
+package com.faas.core.api.model.ws.operation.content;
 
-import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationValidateWSDTO;
+import com.faas.core.api.model.ws.operation.content.dto.ApiOperationValidateWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 
 public class ApiOperationValidateWSModel {

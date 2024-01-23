@@ -1,10 +1,6 @@
-package com.faas.core.api.framework.operation.details.client;
+package com.faas.core.api.framework.operation.details.client.note;
 
-import com.faas.core.api.model.ws.operation.details.client.dto.ApiOperationClientWSDTO;
-import com.faas.core.api.model.ws.operation.details.client.dto.ApiOperationNoteWSDTO;
-import com.faas.core.api.model.ws.operation.details.client.dto.ApiOperationOSINTWSDTO;
-import com.faas.core.base.model.db.client.content.ClientDBModel;
-import com.faas.core.base.model.db.session.SessionDBModel;
+import com.faas.core.api.model.ws.operation.details.client.note.dto.ApiOperationNoteWSDTO;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utils.config.AppUtils;
@@ -13,11 +9,10 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 
 @Component
-public class ApiOperationClientFramework {
+public class ApiOperationNoteFramework {
 
     @Autowired
     SessionRepository sessionRepository;
@@ -27,21 +22,6 @@ public class ApiOperationClientFramework {
 
     @Autowired
     AppUtils appUtils;
-
-
-    public ApiOperationClientWSDTO apiGetOperationClientService(long agentId, long sessionId,long clientId){
-
-        Optional<ClientDBModel> clientDBModel = clientRepository.findById(clientId);
-        List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndClientId(sessionId,clientId);
-        if (clientDBModel.isPresent() && !sessionDBModels.isEmpty()){
-
-            ApiOperationClientWSDTO operationClientWSDTO = new ApiOperationClientWSDTO();
-            operationClientWSDTO.setClient(clientDBModel.get());
-
-            return operationClientWSDTO;
-        }
-        return null;
-    }
 
 
     public List<ApiOperationNoteWSDTO> apiGetOperationNotesService(long agentId, long clientId) {
@@ -70,17 +50,6 @@ public class ApiOperationClientFramework {
 
     public ApiOperationNoteWSDTO apiRemoveOperationNoteService(long agentId, long sessionId, long clientId, long noteId) {
 
-
-        return null;
-    }
-
-
-    public List<ApiOperationOSINTWSDTO> apiGetOperationOSINTsService(long agentId, long clientId){
-
-        return null;
-    }
-
-    public ApiOperationOSINTWSDTO apiGetOperationOSINTService(long agentId,long clientId){
 
         return null;
     }

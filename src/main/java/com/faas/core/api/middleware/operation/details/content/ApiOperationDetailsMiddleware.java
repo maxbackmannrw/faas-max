@@ -45,26 +45,6 @@ public class ApiOperationDetailsMiddleware {
     }
 
 
-    public ApiCampaignDetailsWSModel apiGetOperationCampaign(long agentId, String operationId) {
-
-        ApiCampaignDetailsWSModel response = new ApiCampaignDetailsWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-        ApiCampaignDetailsWSDTO operationCampaign = apiOperationDetailsFramework.apiGetOperationCampaignService(agentId,operationId);
-        if (operationCampaign != null){
-            response.setCampaignDetails(operationCampaign);
-        }
-
-        general.setOperation("apiGetOperationCampaign");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-
     public ApiSummaryWSModel apiGetOperationDetailsSummary(long agentId,String operationId) {
 
         ApiSummaryWSModel response = new ApiSummaryWSModel();
@@ -120,6 +100,26 @@ public class ApiOperationDetailsMiddleware {
 
         response.setOperations(operationWSDTOS);
         general.setOperation("apiOperationFinish");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
+    public ApiCampaignDetailsWSModel apiGetOperationCampaign(long agentId, String operationId) {
+
+        ApiCampaignDetailsWSModel response = new ApiCampaignDetailsWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        ApiCampaignDetailsWSDTO operationCampaign = apiOperationDetailsFramework.apiGetOperationCampaignService(agentId,operationId);
+        if (operationCampaign != null){
+            response.setCampaignDetails(operationCampaign);
+        }
+
+        general.setOperation("apiGetOperationCampaign");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

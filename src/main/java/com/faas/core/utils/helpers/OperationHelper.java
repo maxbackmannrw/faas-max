@@ -4,10 +4,10 @@ import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationListWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.content.dto.ApiOperationChannelWSDTO;
-import com.faas.core.api.model.ws.operation.details.client.dto.ApiOperationClientWSDTO;
+import com.faas.core.api.model.ws.operation.details.client.content.dto.ApiOperationClientWSDTO;
 import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationCampaignWSDTO;
 import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationDetailsWSDTO;
-import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationValidateWSDTO;
+import com.faas.core.api.model.ws.operation.content.dto.ApiOperationValidateWSDTO;
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.client.content.ClientDBModel;
 import com.faas.core.base.model.db.client.details.content.ClientDetailsDBModel;
@@ -364,8 +364,6 @@ public class OperationHelper {
 
         return operationListWSDTO;
     }
-
-
 
 
 
