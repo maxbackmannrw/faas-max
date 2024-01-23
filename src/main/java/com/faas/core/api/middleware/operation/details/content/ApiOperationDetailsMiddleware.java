@@ -1,8 +1,6 @@
 package com.faas.core.api.middleware.operation.details.content;
 
 import com.faas.core.api.framework.operation.details.content.ApiOperationDetailsFramework;
-import com.faas.core.api.model.ws.campaign.details.ApiCampaignDetailsWSModel;
-import com.faas.core.api.model.ws.campaign.details.dto.ApiCampaignDetailsWSDTO;
 import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
 import com.faas.core.api.model.ws.general.ApiSummaryWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiOperationWSModel;
@@ -16,6 +14,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 @Component
 public class ApiOperationDetailsMiddleware {
@@ -44,40 +43,19 @@ public class ApiOperationDetailsMiddleware {
         return response;
     }
 
-
-    public ApiSummaryWSModel apiGetOperationDetailsSummary(long agentId,String operationId) {
-
-        ApiSummaryWSModel response = new ApiSummaryWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-        List<ApiSummaryWSDTO> operationSummary = apiOperationDetailsFramework.apiGetOperationDetailsSummaryService(agentId,operationId);
-        if (operationSummary != null){
-            response.setSummaries(operationSummary);
-        }
-
-        general.setOperation("apiGetOperationDetailsSummary");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-
-    public ApiOperationWSModel apiOperationLaunch(long agentId,String operationId) {
+    public ApiOperationWSModel apiOperationStart(long agentId,String operationId) {
 
         ApiOperationWSModel response = new ApiOperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ApiOperationWSDTO>operationWSDTOS = new ArrayList<>();
 
-        ApiOperationWSDTO operationWSDTO = apiOperationDetailsFramework.apiOperationLaunchService(agentId,operationId);
+        ApiOperationWSDTO operationWSDTO = apiOperationDetailsFramework.apiOperationStartService(agentId,operationId);
         if (operationWSDTO != null){
             operationWSDTOS.add(operationWSDTO);
         }
 
         response.setOperations(operationWSDTOS);
-        general.setOperation("apiOperationLaunch");
+        general.setOperation("apiOperationStart");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -85,7 +63,6 @@ public class ApiOperationDetailsMiddleware {
 
         return response;
     }
-
 
     public ApiOperationWSModel apiOperationFinish(long agentId,String operationId,String operationState) {
 
@@ -108,18 +85,17 @@ public class ApiOperationDetailsMiddleware {
         return response;
     }
 
+    public ApiSummaryWSModel apiGetOperationDetailsSummary(long agentId,String operationId) {
 
-    public ApiCampaignDetailsWSModel apiGetOperationCampaign(long agentId, String operationId) {
-
-        ApiCampaignDetailsWSModel response = new ApiCampaignDetailsWSModel();
+        ApiSummaryWSModel response = new ApiSummaryWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiCampaignDetailsWSDTO operationCampaign = apiOperationDetailsFramework.apiGetOperationCampaignService(agentId,operationId);
-        if (operationCampaign != null){
-            response.setCampaignDetails(operationCampaign);
+        List<ApiSummaryWSDTO> operationSummary = apiOperationDetailsFramework.apiGetOperationDetailsSummaryService(agentId,operationId);
+        if (operationSummary != null){
+            response.setSummaries(operationSummary);
         }
 
-        general.setOperation("apiGetOperationCampaign");
+        general.setOperation("apiGetOperationDetailsSummary");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -127,6 +103,7 @@ public class ApiOperationDetailsMiddleware {
 
         return response;
     }
+
 
 
 }

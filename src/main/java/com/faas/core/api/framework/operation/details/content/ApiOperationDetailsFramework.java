@@ -1,6 +1,5 @@
 package com.faas.core.api.framework.operation.details.content;
 
-import com.faas.core.api.model.ws.campaign.details.dto.ApiCampaignDetailsWSDTO;
 import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
 import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationDetailsWSDTO;
@@ -53,13 +52,7 @@ public class ApiOperationDetailsFramework {
         return null;
     }
 
-
-    public List<ApiSummaryWSDTO> apiGetOperationDetailsSummaryService(long agentId,String operationId) {
-        return operationHelper.apiGetOperationDetailsSummaryHelper(agentId,operationId);
-    }
-
-
-    public ApiOperationWSDTO apiOperationLaunchService(long agentId,String operationId) {
+    public ApiOperationWSDTO apiOperationStartService(long agentId,String operationId) {
 
         /* List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndClientIdAndAgentIdAndCampaignIdAndSessionState(sessionId, clientId, agentId, campaignId, AppConstant.READY_STATE);
         List<OperationDBModel> operationDBModels = operationRepository.findBySessionIdAndClientIdAndAgentIdAndCampaignIdAndOperationState(sessionId, clientId, agentId, campaignId, AppConstant.READY_STATE);
@@ -98,7 +91,6 @@ public class ApiOperationDetailsFramework {
         */
         return null;
     }
-
 
     public ApiOperationWSDTO apiOperationFinishService(long agentId,String operationId,String operationState) {
 
@@ -145,11 +137,10 @@ public class ApiOperationDetailsFramework {
     }
 
 
-
-    public ApiCampaignDetailsWSDTO apiGetOperationCampaignService(long agentId, String operationId) {
-
-
-        return null;
+    public List<ApiSummaryWSDTO> apiGetOperationDetailsSummaryService(long agentId,String operationId) {
+        return operationHelper.apiGetOperationDetailsSummaryHelper(agentId,operationId);
     }
+
+
 
 }
