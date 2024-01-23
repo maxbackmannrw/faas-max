@@ -1,5 +1,6 @@
 package com.faas.core.api.framework.operation.content;
 
+import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiAgentOperationWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationListWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
@@ -87,7 +88,6 @@ public class ApiOperationFramework {
         return null;
     }
 
-
     public ApiOperationValidateWSDTO apiOperationValidateService(long agentId,String operationId) {
 
         Optional<UserDBModel> userDBModel = userRepository.findById(agentId);
@@ -97,6 +97,12 @@ public class ApiOperationFramework {
             return operationHelper.operationValidateHelper(userDBModel.get(),operationDBModels.get(0));
         }
         return null;
+    }
+
+
+
+    public List<ApiSummaryWSDTO> apiGetOperationSummaryService(long agentId) {
+        return operationHelper.apiGetOperationSummaryHelper(agentId);
     }
 
 

@@ -1,6 +1,8 @@
 package com.faas.core.api.middleware.operation.content;
 
 import com.faas.core.api.framework.operation.content.ApiOperationFramework;
+import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
+import com.faas.core.api.model.ws.general.ApiSummaryWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiAgentOperationWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiOperationListWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiOperationWSModel;
@@ -145,5 +147,27 @@ public class ApiOperationMiddleware {
 
         return response;
     }
+
+
+    public ApiSummaryWSModel apiGetOperationSummary(long agentId) {
+
+        ApiSummaryWSModel response = new ApiSummaryWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        List<ApiSummaryWSDTO> operationSummaries = apiOperationFramework.apiGetOperationSummaryService(agentId);
+        if (operationSummaries != null){
+            response.setSummaries(operationSummaries);
+        }
+
+        general.setOperation("apiGetOperationSummary");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
 
 }

@@ -1,6 +1,7 @@
 package com.faas.core.api.endpoint.controller.operation.content;
 
 import com.faas.core.api.middleware.operation.content.ApiOperationMiddleware;
+import com.faas.core.api.model.ws.general.ApiSummaryWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiAgentOperationWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiOperationListWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiOperationWSModel;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping(value = AppConstant.API_VERSION + "/api/operation/")
 public class ApiOperationController {
+
 
     @Autowired
     ApiOperationMiddleware apiOperationMiddleware;
@@ -68,6 +70,7 @@ public class ApiOperationController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+
     @RequestMapping(value = ApiRoute.API_UPDATE_OPERATION, method = RequestMethod.POST)
     public ResponseEntity<?> apiUpdateOperation(@RequestParam long agentId,
                                                 @RequestParam String operationId,
@@ -81,6 +84,7 @@ public class ApiOperationController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+
     @RequestMapping(value = ApiRoute.API_REMOVE_OPERATION, method = RequestMethod.POST)
     public ResponseEntity<?> apiRemoveOperation(@RequestParam long agentId,
                                                 @RequestParam String operationId) {
@@ -93,6 +97,7 @@ public class ApiOperationController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+
     @RequestMapping(value = ApiRoute.API_OPERATION_VALIDATE, method = RequestMethod.POST)
     public ResponseEntity<?> apiOperationValidate(@RequestParam long agentId,
                                                   @RequestParam String operationId) {
@@ -104,6 +109,19 @@ public class ApiOperationController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
+
+
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_SUMMARY, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationSummary(@RequestParam long agentId) {
+
+        ApiSummaryWSModel response = apiOperationMiddleware.apiGetOperationSummary(agentId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
 
 
 }
