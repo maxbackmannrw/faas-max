@@ -129,10 +129,5 @@ public class ApiOperationDetailsFramework {
     }
 
 
-    public List<ApiSummaryWSDTO> apiGetOperationDetailsSummaryService(long agentId,String operationId) {
-        return operationHelper.apiGetOperationDetailsSummaryHelper(agentId,operationId);
-    }
-
-
 
 }

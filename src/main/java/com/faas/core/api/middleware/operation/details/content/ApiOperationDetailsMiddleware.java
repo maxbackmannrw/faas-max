@@ -88,24 +88,5 @@ public class ApiOperationDetailsMiddleware {
     }
 
 
-    public ApiSummaryWSModel apiGetOperationDetailsSummary(long agentId,String operationId) {
-
-        ApiSummaryWSModel response = new ApiSummaryWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-        List<ApiSummaryWSDTO> operationSummary = apiOperationDetailsFramework.apiGetOperationDetailsSummaryService(agentId,operationId);
-        if (operationSummary != null){
-            response.setSummaries(operationSummary);
-        }
-
-        general.setOperation("apiGetOperationDetailsSummary");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
 
 }

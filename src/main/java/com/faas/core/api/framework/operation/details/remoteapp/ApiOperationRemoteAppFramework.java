@@ -1,6 +1,6 @@
-package com.faas.core.api.framework.operation.details.client.remoteapp;
+package com.faas.core.api.framework.operation.details.remoteapp;
 
-import com.faas.core.api.model.ws.operation.details.client.remoteapp.dto.ApiOperationRemoteAppWSDTO;
+import com.faas.core.api.model.ws.operation.details.remoteapp.dto.ApiOperationRemoteAppWSDTO;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;

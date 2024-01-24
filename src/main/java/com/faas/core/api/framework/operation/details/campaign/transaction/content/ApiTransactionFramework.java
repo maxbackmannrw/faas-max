@@ -1,4 +1,4 @@
-package com.faas.core.api.framework.operation.details.transaction.inquiry;
+package com.faas.core.api.framework.operation.details.campaign.transaction.content;
 
 import com.faas.core.api.model.ws.operation.details.campaign.scenario.dto.ApiOperationScenarioWSDTO;
 import com.faas.core.utils.config.AppUtils;
@@ -10,7 +10,7 @@ import java.util.List;
 
 
 @Component
-public class ApiOperationInquiryFramework {
+public class ApiTransactionFramework {
 
 
     @Autowired

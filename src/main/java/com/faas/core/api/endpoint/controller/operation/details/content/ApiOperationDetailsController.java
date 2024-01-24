@@ -65,17 +65,6 @@ public class ApiOperationDetailsController {
     }
 
 
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION_DETAILS_SUMMARY, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperationDetailsSummary(@RequestParam long agentId,
-                                                           @RequestParam String operationId) {
-
-        ApiSummaryWSModel response = apiOperationDetailsMiddleware.apiGetOperationDetailsSummary(agentId,operationId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
 
 
 }

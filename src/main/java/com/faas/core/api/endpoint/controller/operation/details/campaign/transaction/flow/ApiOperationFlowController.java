@@ -1,6 +1,6 @@
-package com.faas.core.api.endpoint.controller.operation.details.transaction.content;
+package com.faas.core.api.endpoint.controller.operation.details.campaign.transaction.flow;
 
-import com.faas.core.api.middleware.operation.details.transaction.content.ApiTransactionMiddleware;
+import com.faas.core.api.middleware.operation.details.campaign.transaction.flow.ApiOperationFlowMiddleware;
 import com.faas.core.api.model.ws.operation.details.campaign.scenario.ApiOperationScenarioWSModel;
 import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;
@@ -14,12 +14,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-@RequestMapping(value = AppConstant.API_VERSION + "/api/operation/details/transaction/")
-public class ApiTransactionController {
+@RequestMapping(value = AppConstant.API_VERSION + "/api/operation/details/transaction/flow/")
+public class ApiOperationFlowController {
 
 
     @Autowired
-    ApiTransactionMiddleware apiTransactionMiddleware;
+    ApiOperationFlowMiddleware apiOperationFlowMiddleware;
 
 
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_SCENARIOS, method = RequestMethod.POST)
@@ -27,13 +27,14 @@ public class ApiTransactionController {
                                                       @RequestParam long sessionId,
                                                       @RequestParam String processId) {
 
-        ApiOperationScenarioWSModel response = apiTransactionMiddleware.apiGetOperationScenarios(agentId,sessionId,processId);
+        ApiOperationScenarioWSModel response = apiOperationFlowMiddleware.apiGetOperationScenarios(agentId,sessionId,processId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
+
 
 
 }

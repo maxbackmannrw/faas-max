@@ -1,6 +1,6 @@
-package com.faas.core.api.middleware.operation.details.transaction.flow;
+package com.faas.core.api.middleware.operation.details.campaign.transaction.inquiry;
 
-import com.faas.core.api.framework.operation.details.transaction.flow.ApiOperationFlowFramework;
+import com.faas.core.api.framework.operation.details.campaign.transaction.inquiry.ApiOperationInquiryFramework;
 import com.faas.core.api.model.ws.operation.details.campaign.scenario.ApiOperationScenarioWSModel;
 import com.faas.core.api.model.ws.operation.details.campaign.scenario.dto.ApiOperationScenarioWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
@@ -11,11 +11,11 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class ApiOperationFlowMiddleware {
+public class ApiOperationInquiryMiddleware {
 
 
     @Autowired
-    ApiOperationFlowFramework apiOperationFlowFramework;
+    ApiOperationInquiryFramework apiOperationInquiryFramework;
 
 
     public ApiOperationScenarioWSModel apiGetOperationScenarios(long agentId, long sessionId, String processId) {
@@ -23,7 +23,7 @@ public class ApiOperationFlowMiddleware {
         ApiOperationScenarioWSModel response = new ApiOperationScenarioWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ApiOperationScenarioWSDTO> operationScenarioWSDTOS = apiOperationFlowFramework.apiGetOperationScenariosService(agentId,sessionId,processId);
+        List<ApiOperationScenarioWSDTO> operationScenarioWSDTOS = apiOperationInquiryFramework.apiGetOperationScenariosService(agentId,sessionId,processId);
         if (operationScenarioWSDTOS != null){
             response.setOperationScenarios(operationScenarioWSDTOS);
         }

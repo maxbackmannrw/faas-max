@@ -1,4 +1,4 @@
-package com.faas.core.api.framework.operation.details.transaction.flow;
+package com.faas.core.api.framework.operation.details.campaign.transaction.flow;
 
 import com.faas.core.api.model.ws.operation.details.campaign.scenario.dto.ApiOperationScenarioWSDTO;
 import com.faas.core.utils.config.AppUtils;

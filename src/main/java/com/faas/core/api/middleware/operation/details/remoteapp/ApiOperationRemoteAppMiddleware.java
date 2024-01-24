@@ -1,7 +1,7 @@
-package com.faas.core.api.middleware.operation.details.client.remoteapp;
+package com.faas.core.api.middleware.operation.details.remoteapp;
 
-import com.faas.core.api.framework.operation.details.client.remoteapp.ApiOperationRemoteAppFramework;
-import com.faas.core.api.model.ws.operation.details.client.remoteapp.ApiOperationRemoteAppWSModel;
+import com.faas.core.api.framework.operation.details.remoteapp.ApiOperationRemoteAppFramework;
+import com.faas.core.api.model.ws.operation.details.remoteapp.ApiOperationRemoteAppWSModel;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
