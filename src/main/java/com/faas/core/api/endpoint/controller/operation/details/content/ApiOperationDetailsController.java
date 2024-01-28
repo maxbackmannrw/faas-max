@@ -1,8 +1,6 @@
 package com.faas.core.api.endpoint.controller.operation.details.content;
 
 import com.faas.core.api.middleware.operation.details.content.ApiOperationDetailsMiddleware;
-import com.faas.core.api.model.ws.campaign.details.ApiCampaignDetailsWSModel;
-import com.faas.core.api.model.ws.general.ApiSummaryWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiOperationWSModel;
 import com.faas.core.api.model.ws.operation.details.content.ApiOperationDetailsWSModel;
 import com.faas.core.utils.config.ApiRoute;
