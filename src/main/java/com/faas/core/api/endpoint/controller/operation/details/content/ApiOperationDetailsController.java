@@ -63,6 +63,32 @@ public class ApiOperationDetailsController {
     }
 
 
+    @RequestMapping(value = ApiRoute.API_GET_SWITCHABLE_OPERATIONS, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetSwichtableOperations(@RequestParam long agentId,
+                                                        @RequestParam String operationId) {
+
+        ApiOperationWSModel response = apiOperationDetailsMiddleware.apiGetSwichtableOperations(agentId,operationId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = ApiRoute.API_OPERATION_SWITCH, method = RequestMethod.POST)
+    public ResponseEntity<?> apiOperationSwitch(@RequestParam long agentId,
+                                                @RequestParam String operationId,
+                                                @RequestParam String selectedOperationId) {
+
+        ApiOperationWSModel response = apiOperationDetailsMiddleware.apiOperationSwitch(agentId,operationId,selectedOperationId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
 
 
 }

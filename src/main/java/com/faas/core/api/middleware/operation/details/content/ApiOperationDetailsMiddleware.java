@@ -88,5 +88,47 @@ public class ApiOperationDetailsMiddleware {
     }
 
 
+    public ApiOperationWSModel apiGetSwichtableOperations(long agentId,String operationId) {
+
+        ApiOperationWSModel response = new ApiOperationWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        List<ApiOperationWSDTO> operationWSDTOS = apiOperationDetailsFramework.apiGetSwichtableOperationsService(agentId,operationId);
+        if (operationWSDTOS != null){
+            response.setOperations(operationWSDTOS);
+        }
+
+        general.setOperation("apiGetSwichtableOperations");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
+    public ApiOperationWSModel apiOperationSwitch(long agentId,String operationId,String selectedOperationId) {
+
+        ApiOperationWSModel response = new ApiOperationWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+        List<ApiOperationWSDTO> operationWSDTOS = new ArrayList<>();
+
+        ApiOperationWSDTO operationWSDTO = apiOperationDetailsFramework.apiOperationSwitchService(agentId,operationId,selectedOperationId);
+        if (operationWSDTO != null){
+            operationWSDTOS.add(operationWSDTO);
+        }
+
+        response.setOperations(operationWSDTOS);
+        general.setOperation("apiOperationSwitch");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
 
 }

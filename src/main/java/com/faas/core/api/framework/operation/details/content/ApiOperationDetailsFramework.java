@@ -128,5 +128,18 @@ public class ApiOperationDetailsFramework {
     }
 
 
+    public List<ApiOperationWSDTO> apiGetSwichtableOperationsService(long agentId,String operationId) {
+
+
+        return null;
+    }
+
+
+    public ApiOperationWSDTO apiOperationSwitchService(long agentId,String operationId,String selectedOperationId) {
+
+        return null;
+    }
+
+
 
 }
