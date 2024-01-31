@@ -455,14 +455,9 @@ public class OperationHelper {
         if (campaignDBModel.isPresent() && processDBModel.isPresent()){
 
             ApiOperationCampaignWSDTO operationCampaignWSDTO = new ApiOperationCampaignWSDTO();
-            List<ApiProcessScenarioWSDTO> processScenarioWSDTOS = new ArrayList<>();
             operationCampaignWSDTO.setOperationCampaign(campaignDBModel.get());
             operationCampaignWSDTO.setOperationProcess(processDBModel.get());
-            List<ProcessScenarioDBModel> processScenarioDBModels = processScenarioRepository.findByProcessId(processId);
-            for (ProcessScenarioDBModel processScenarioDBModel : processScenarioDBModels) {
-                processScenarioWSDTOS.add(getApiProcessScenarioWSDTO(processScenarioDBModel));
-            }
-            operationCampaignWSDTO.setProcessScenarios(processScenarioWSDTOS);
+            operationCampaignWSDTO.setProcessScenarios(processScenarioRepository.findByProcessId(processId));
 
             return operationCampaignWSDTO;
         }
