@@ -3,6 +3,7 @@ package com.faas.core.utils.helpers;
 import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationListWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
+import com.faas.core.api.model.ws.operation.details.campaign.dto.ApiProcessScenarioWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.content.dto.ApiOperationChannelWSDTO;
 import com.faas.core.api.model.ws.operation.details.client.content.dto.ApiOperationClientWSDTO;
 import com.faas.core.api.model.ws.operation.details.campaign.dto.ApiOperationCampaignWSDTO;
@@ -15,6 +16,7 @@ import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.operation.content.dao.OperationFlowDAO;
 import com.faas.core.base.model.db.operation.content.dao.OperationInquiryDAO;
 import com.faas.core.base.model.db.process.content.ProcessDBModel;
+import com.faas.core.base.model.db.process.details.scenario.ProcessScenarioDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.db.user.content.UserDBModel;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
@@ -46,7 +48,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-
 @Component
 public class OperationHelper {
 
@@ -76,6 +77,9 @@ public class OperationHelper {
 
     @Autowired
     ProcessRepository processRepository;
+
+    @Autowired
+    ProcessScenarioRepository processScenarioRepository;
 
     @Autowired
     ScenarioRepository scenarioRepository;
@@ -425,11 +429,7 @@ public class OperationHelper {
             operationDetailsWSDTO.setOperation(operationDBModel);
             operationDetailsWSDTO.setOperationSession(sessionDBModels.get(0));
             operationDetailsWSDTO.setOperationClient(getApiOperationClientWSDTO(clientDBModel.get()));
-
-            ApiOperationCampaignWSDTO operationCampaignWSDTO =  getApiOperationCampaignWSDTO(operationDBModel.getCampaignId(),operationDBModel.getProcessId());
-            if (operationCampaignWSDTO != null){
-                operationDetailsWSDTO.setOperationCampaign(operationCampaignWSDTO);
-            }
+            operationDetailsWSDTO.setOperationCampaign(getApiOperationCampaignWSDTO(operationDBModel.getCampaignId(),operationDBModel.getProcessId()));
             operationDetailsWSDTO.setOperationChannel(getApiOperationChannelWSDTO(operationDBModel));
 
             return operationDetailsWSDTO;
@@ -455,13 +455,27 @@ public class OperationHelper {
         if (campaignDBModel.isPresent() && processDBModel.isPresent()){
 
             ApiOperationCampaignWSDTO operationCampaignWSDTO = new ApiOperationCampaignWSDTO();
+            List<ApiProcessScenarioWSDTO> processScenarioWSDTOS = new ArrayList<>();
             operationCampaignWSDTO.setOperationCampaign(campaignDBModel.get());
             operationCampaignWSDTO.setOperationProcess(processDBModel.get());
+            List<ProcessScenarioDBModel> processScenarioDBModels = processScenarioRepository.findByProcessId(processId);
+            for (ProcessScenarioDBModel processScenarioDBModel : processScenarioDBModels) {
+                processScenarioWSDTOS.add(getApiProcessScenarioWSDTO(processScenarioDBModel));
+            }
+            operationCampaignWSDTO.setProcessScenarios(processScenarioWSDTOS);
 
             return operationCampaignWSDTO;
         }
         return null;
     }
+
+    public ApiProcessScenarioWSDTO getApiProcessScenarioWSDTO(ProcessScenarioDBModel processScenarioDBModel) {
+
+        ApiProcessScenarioWSDTO processScenarioWSDTO =  new ApiProcessScenarioWSDTO();
+        processScenarioWSDTO.setProcessScenario(processScenarioDBModel);
+        return processScenarioWSDTO;
+    }
+
 
     public ApiOperationChannelWSDTO getApiOperationChannelWSDTO(OperationDBModel operationDBModel) {
 

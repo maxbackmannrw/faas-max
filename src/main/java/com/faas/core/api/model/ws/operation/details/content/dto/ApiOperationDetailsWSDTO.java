@@ -5,6 +5,9 @@ import com.faas.core.api.model.ws.operation.details.channel.content.dto.ApiOpera
 import com.faas.core.api.model.ws.operation.details.client.content.dto.ApiOperationClientWSDTO;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
+import com.faas.core.base.model.ws.operation.details.scenario.content.OperationScenarioWSModel;
+
+import java.util.List;
 
 public class ApiOperationDetailsWSDTO {
 
