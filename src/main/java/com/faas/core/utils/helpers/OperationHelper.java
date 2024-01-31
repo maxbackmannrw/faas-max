@@ -121,9 +121,6 @@ public class OperationHelper {
     ProcessPushTempRepository processPushTempRepository;
 
     @Autowired
-    ProcessScenarioRepository processScenarioRepository;
-
-    @Autowired
     ProcessSmsMessageTempRepository processSmsMessageTempRepository;
 
     @Autowired
