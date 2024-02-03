@@ -95,11 +95,13 @@ public class ApiOperationScenarioFramework {
     }
 
 
-    public List<ApiProcessScenarioWSDTO> apiGetProcessScenariosService(long agentId, long sessionId, String processId) {
+
+    public List<ApiProcessScenarioWSDTO> apiGetOperationProcessScenariosService(long agentId,String operationId) {
 
         List<ApiProcessScenarioWSDTO>processScenarioWSDTOS = new ArrayList<>();
-        List<ProcessScenarioDBModel> processScenarioDBModels = processScenarioRepository.findByProcessId(processId);
-        if (!processScenarioDBModels.isEmpty()){
+        List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
+        if (!sessionDBModels.isEmpty()){
+            List<ProcessScenarioDBModel> processScenarioDBModels = processScenarioRepository.findByProcessId(sessionDBModels.get(0).getProcessId());
             for (ProcessScenarioDBModel processScenarioDBModel : processScenarioDBModels) {
                 processScenarioWSDTOS.add(new ApiProcessScenarioWSDTO(processScenarioDBModel));
             }
@@ -107,11 +109,15 @@ public class ApiOperationScenarioFramework {
         return processScenarioWSDTOS;
     }
 
-    public ApiProcessScenarioWSDTO apiGetProcessScenarioService(long agentId, long sessionId, String processId, String scenarioId) {
 
-        List<ProcessScenarioDBModel> processScenarioDBModels = processScenarioRepository.findByProcessIdAndScenarioId(processId,scenarioId);
-        if (!processScenarioDBModels.isEmpty()){
-            return new ApiProcessScenarioWSDTO(processScenarioDBModels.get(0));
+    public ApiProcessScenarioWSDTO apiGetOperationProcessScenarioService(long agentId,String operationId,String scenarioId) {
+
+        List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
+        if (!sessionDBModels.isEmpty()){
+            List<ProcessScenarioDBModel> processScenarioDBModels = processScenarioRepository.findByProcessIdAndScenarioId(sessionDBModels.get(0).getProcessId(),scenarioId);
+            if (!processScenarioDBModels.isEmpty()){
+                return new ApiProcessScenarioWSDTO(processScenarioDBModels.get(0));
+            }
         }
         return null;
     }

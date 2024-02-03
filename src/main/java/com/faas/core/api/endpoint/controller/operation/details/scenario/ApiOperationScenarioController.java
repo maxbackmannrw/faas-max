@@ -94,12 +94,12 @@ public class ApiOperationScenarioController {
     }
 
 
-    @RequestMapping(value = ApiRoute.API_GET_PROCESS_SCENARIOS, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetProcessScenarios(@RequestParam long agentId,
-                                                    @RequestParam long sessionId,
-                                                    @RequestParam String processId) {
 
-        ApiProcessScenarioWSModel response = apiOperationScenarioMiddleware.apiGetProcessScenarios(agentId,sessionId,processId);
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_PROCESS_SCENARIOS, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationProcessScenarios(@RequestParam long agentId,
+                                                             @RequestParam String operationId) {
+
+        ApiProcessScenarioWSModel response = apiOperationScenarioMiddleware.apiGetOperationProcessScenarios(agentId,operationId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -108,13 +108,12 @@ public class ApiOperationScenarioController {
     }
 
 
-    @RequestMapping(value = ApiRoute.API_GET_PROCESS_SCENARIO, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetProcessScenario(@RequestParam long agentId,
-                                                   @RequestParam long sessionId,
-                                                   @RequestParam String processId,
-                                                   @RequestParam String scenarioId) {
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_PROCESS_SCENARIO, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationProcessScenario(@RequestParam long agentId,
+                                                            @RequestParam String operationId,
+                                                            @RequestParam String scenarioId) {
 
-        ApiProcessScenarioWSModel response = apiOperationScenarioMiddleware.apiGetProcessScenario(agentId,sessionId,processId,scenarioId);
+        ApiProcessScenarioWSModel response = apiOperationScenarioMiddleware.apiGetOperationProcessScenario(agentId,operationId,scenarioId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
