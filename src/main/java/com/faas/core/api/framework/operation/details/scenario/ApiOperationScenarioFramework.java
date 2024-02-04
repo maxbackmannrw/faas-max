@@ -2,6 +2,7 @@ package com.faas.core.api.framework.operation.details.scenario;
 
 import com.faas.core.api.model.ws.operation.details.scenario.dto.ApiOperationScenarioWSDTO;
 import com.faas.core.api.model.ws.operation.details.scenario.dto.ApiProcessScenarioWSDTO;
+import com.faas.core.base.model.db.operation.content.dao.OperationScenarioDAO;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.process.details.scenario.ProcessScenarioDBModel;
@@ -58,39 +59,66 @@ public class ApiOperationScenarioFramework {
     AppUtils appUtils;
 
 
-    public List<ApiOperationScenarioWSDTO> apiGetOperationScenariosService(long agentId,long sessionId,String processId) {
+    public List<ApiOperationScenarioWSDTO> apiGetOperationScenariosService(long agentId,String operationId) {
 
         List<ApiOperationScenarioWSDTO> operationScenarioWSDTOS = new ArrayList<>();
-
+        List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
+        if (!operationDBModels.isEmpty() && operationDBModels.get(0).getOperationScenarios() != null){
+            for (int i=0;i<operationDBModels.get(0).getOperationScenarios().size();i++){
+                operationScenarioWSDTOS.add(new ApiOperationScenarioWSDTO(operationDBModels.get(0).getOperationScenarios().get(i)));
+            }
+        }
         return operationScenarioWSDTOS;
     }
 
+    public ApiOperationScenarioWSDTO apiGetOperationScenarioService(long agentId,String operationId,String executeId) {
 
-    public ApiOperationScenarioWSDTO apiGetOperationScenarioService(long agentId,long sessionId,String executeId) {
+        List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
+        if (!operationDBModels.isEmpty() && operationDBModels.get(0).getOperationScenarios() != null){
+            for (int i=0;i<operationDBModels.get(0).getOperationScenarios().size();i++){
+                if (operationDBModels.get(0).getOperationScenarios().get(i).getId().equalsIgnoreCase(executeId)){
+                    return new ApiOperationScenarioWSDTO(operationDBModels.get(0).getOperationScenarios().get(i));
+                }
+            }
+        }
+        return null;
+    }
+
+    public ApiOperationScenarioWSDTO apiOperationExecuteScenarioService(long agentId,String operationId,String scenarioId) {
 
 
         return null;
     }
 
+    public ApiOperationScenarioWSDTO apiUpdateOperationScenarioService(long agentId,String operationId,String executeId) {
 
-    public ApiOperationScenarioWSDTO apiExecuteOperationScenarioService(long agentId,long sessionId,String processId,String scenarioId) {
-
-        List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndAgentIdAndProcessId(sessionId,agentId,processId);
-        Optional<ScenarioDBModel> scenarioDBModel = scenarioRepository.findById(scenarioId);
-        List<OperationDBModel> operationDBModels = operationRepository.findBySessionId(sessionId);
-
+        List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
+        if (!operationDBModels.isEmpty() && operationDBModels.get(0).getOperationScenarios() != null){
+            for (int i=0;i<operationDBModels.get(0).getOperationScenarios().size();i++){
+                if (operationDBModels.get(0).getOperationScenarios().get(i).getId().equalsIgnoreCase(executeId)){
+                    return new ApiOperationScenarioWSDTO(operationDBModels.get(0).getOperationScenarios().get(i));
+                }
+            }
+        }
         return null;
     }
 
-    public ApiOperationScenarioWSDTO apiUpdateOperationScenarioService(long agentId,long sessionId,String executeId) {
+    public ApiOperationScenarioWSDTO apiRemoveOperationScenarioService(long agentId,String operationId,String executeId) {
 
+        List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
+        if (!operationDBModels.isEmpty() && operationDBModels.get(0).getOperationScenarios() != null){
+            for (int i=0;i<operationDBModels.get(0).getOperationScenarios().size();i++){
+                if (operationDBModels.get(0).getOperationScenarios().get(i).getId().equalsIgnoreCase(executeId)){
 
-        return null;
-    }
+                    OperationScenarioDAO operationScenarioDAO = operationDBModels.get(0).getOperationScenarios().get(i);
+                    operationDBModels.get(0).getOperationScenarios().remove(operationScenarioDAO);
+                    operationDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
+                    operationRepository.save(operationDBModels.get(0));
 
-    public ApiOperationScenarioWSDTO apiRemoveOperationScenarioService(long agentId,long sessionId,String executeId) {
-
-
+                    return new ApiOperationScenarioWSDTO(operationScenarioDAO);
+                }
+            }
+        }
         return null;
     }
 
@@ -108,7 +136,6 @@ public class ApiOperationScenarioFramework {
         }
         return processScenarioWSDTOS;
     }
-
 
     public ApiProcessScenarioWSDTO apiGetOperationProcessScenarioService(long agentId,String operationId,String scenarioId) {
 
