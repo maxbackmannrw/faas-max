@@ -8,9 +8,11 @@ public class OperationScenarioDAO {
     private String id;
     private String scenarioId;
     private String scenario;
-    private long scenarioTypeId;
+    private long typeId;
     private String scenarioType;
-    private List<ScenarioExecutionDAO>executions;
+    private String baseType;
+    private List<OperationScenarioDataDAO>scenarioDatas;
+    private List<OperationScenarioDataDAO>scenarioResults;
     private String scenarioState;
     private long uDate;
     private long cDate;
@@ -19,13 +21,15 @@ public class OperationScenarioDAO {
     public OperationScenarioDAO() {
     }
 
-    public OperationScenarioDAO(String id, String scenarioId, String scenario, long scenarioTypeId, String scenarioType, List<ScenarioExecutionDAO> executions, String scenarioState, long uDate, long cDate, int status) {
+    public OperationScenarioDAO(String id, String scenarioId, String scenario, long typeId, String scenarioType, String baseType, List<OperationScenarioDataDAO> scenarioDatas, List<OperationScenarioDataDAO> scenarioResults, String scenarioState, long uDate, long cDate, int status) {
         this.id = id;
         this.scenarioId = scenarioId;
         this.scenario = scenario;
-        this.scenarioTypeId = scenarioTypeId;
+        this.typeId = typeId;
         this.scenarioType = scenarioType;
-        this.executions = executions;
+        this.baseType = baseType;
+        this.scenarioDatas = scenarioDatas;
+        this.scenarioResults = scenarioResults;
         this.scenarioState = scenarioState;
         this.uDate = uDate;
         this.cDate = cDate;
@@ -56,12 +60,12 @@ public class OperationScenarioDAO {
         this.scenario = scenario;
     }
 
-    public long getScenarioTypeId() {
-        return scenarioTypeId;
+    public long getTypeId() {
+        return typeId;
     }
 
-    public void setScenarioTypeId(long scenarioTypeId) {
-        this.scenarioTypeId = scenarioTypeId;
+    public void setTypeId(long typeId) {
+        this.typeId = typeId;
     }
 
     public String getScenarioType() {
@@ -72,12 +76,28 @@ public class OperationScenarioDAO {
         this.scenarioType = scenarioType;
     }
 
-    public List<ScenarioExecutionDAO> getExecutions() {
-        return executions;
+    public String getBaseType() {
+        return baseType;
     }
 
-    public void setExecutions(List<ScenarioExecutionDAO> executions) {
-        this.executions = executions;
+    public void setBaseType(String baseType) {
+        this.baseType = baseType;
+    }
+
+    public List<OperationScenarioDataDAO> getScenarioDatas() {
+        return scenarioDatas;
+    }
+
+    public void setScenarioDatas(List<OperationScenarioDataDAO> scenarioDatas) {
+        this.scenarioDatas = scenarioDatas;
+    }
+
+    public List<OperationScenarioDataDAO> getScenarioResults() {
+        return scenarioResults;
+    }
+
+    public void setScenarioResults(List<OperationScenarioDataDAO> scenarioResults) {
+        this.scenarioResults = scenarioResults;
     }
 
     public String getScenarioState() {
