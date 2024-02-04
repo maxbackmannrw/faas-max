@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class ApiEmailMessageFramework {
+public class ApiOperationEmailChannelFramework {
 
     @Autowired
     AppUtils appUtils;

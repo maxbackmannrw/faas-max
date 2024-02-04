@@ -15,7 +15,7 @@ import java.util.List;
 
 
 @Component
-public class ApiWappCallFramework {
+public class ApiOperationWappCallChannelFramework {
 
     @Autowired
     OperationHelper operationHelper;

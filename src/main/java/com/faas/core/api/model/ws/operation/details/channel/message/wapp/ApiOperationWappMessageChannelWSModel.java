@@ -3,7 +3,6 @@ package com.faas.core.api.model.ws.operation.details.channel.message.wapp;
 import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.ApiOperationWappMessageWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 
-
 public class ApiOperationWappMessageChannelWSModel {
 
     private GeneralWSModel general;

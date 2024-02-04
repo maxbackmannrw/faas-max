@@ -1,20 +1,19 @@
 package com.faas.core.api.model.ws.operation.details.channel.message.email;
 
-import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiOperationEmailWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiOperationEmailChannelWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-
 
 public class ApiOperationEmailChannelWSModel {
 
     private GeneralWSModel general;
-    private ApiOperationEmailWSDTO operationEmail;
+    private ApiOperationEmailChannelWSDTO emailChannel;
 
     public ApiOperationEmailChannelWSModel() {
     }
 
-    public ApiOperationEmailChannelWSModel(GeneralWSModel general, ApiOperationEmailWSDTO operationEmail) {
+    public ApiOperationEmailChannelWSModel(GeneralWSModel general, ApiOperationEmailChannelWSDTO emailChannel) {
         this.general = general;
-        this.operationEmail = operationEmail;
+        this.emailChannel = emailChannel;
     }
 
     public GeneralWSModel getGeneral() {
@@ -25,11 +24,11 @@ public class ApiOperationEmailChannelWSModel {
         this.general = general;
     }
 
-    public ApiOperationEmailWSDTO getOperationEmail() {
-        return operationEmail;
+    public ApiOperationEmailChannelWSDTO getEmailChannel() {
+        return emailChannel;
     }
 
-    public void setOperationEmail(ApiOperationEmailWSDTO operationEmail) {
-        this.operationEmail = operationEmail;
+    public void setEmailChannel(ApiOperationEmailChannelWSDTO emailChannel) {
+        this.emailChannel = emailChannel;
     }
 }

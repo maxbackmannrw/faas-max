@@ -1,19 +1,19 @@
 package com.faas.core.api.model.ws.operation.details.channel.call.sip;
 
-import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationSipCallWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationSipChannelWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 
 public class ApiOperationSipChannelWSModel {
 
     private GeneralWSModel general;
-    private ApiOperationSipCallWSDTO operationSipCall;
+    private ApiOperationSipChannelWSDTO sipChannel;
 
     public ApiOperationSipChannelWSModel() {
     }
 
-    public ApiOperationSipChannelWSModel(GeneralWSModel general, ApiOperationSipCallWSDTO operationSipCall) {
+    public ApiOperationSipChannelWSModel(GeneralWSModel general, ApiOperationSipChannelWSDTO sipChannel) {
         this.general = general;
-        this.operationSipCall = operationSipCall;
+        this.sipChannel = sipChannel;
     }
 
     public GeneralWSModel getGeneral() {
@@ -24,11 +24,11 @@ public class ApiOperationSipChannelWSModel {
         this.general = general;
     }
 
-    public ApiOperationSipCallWSDTO getOperationSipCall() {
-        return operationSipCall;
+    public ApiOperationSipChannelWSDTO getSipChannel() {
+        return sipChannel;
     }
 
-    public void setOperationSipCall(ApiOperationSipCallWSDTO operationSipCall) {
-        this.operationSipCall = operationSipCall;
+    public void setSipChannel(ApiOperationSipChannelWSDTO sipChannel) {
+        this.sipChannel = sipChannel;
     }
 }

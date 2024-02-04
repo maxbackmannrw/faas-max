@@ -29,7 +29,7 @@ import java.util.List;
 
 
 @Component
-public class ApiWappMessageFramework {
+public class ApiOperationWappMessageChannelFramework {
 
     @Autowired
     OperationHelper operationHelper;

@@ -1,6 +1,6 @@
 package com.faas.core.api.middleware.operation.details.channel.call.wapp;
 
-import com.faas.core.api.framework.operation.details.channel.call.wapp.ApiWappCallFramework;
+import com.faas.core.api.framework.operation.details.channel.call.wapp.ApiOperationWappCallChannelFramework;
 import com.faas.core.api.model.ws.operation.details.channel.call.wapp.ApiOperationWappCallWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.call.wapp.ApiWappCallWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiOperationWappCallWSDTO;
@@ -10,11 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ApiWappCallMiddleware {
+public class ApiOperationWappCallChannelMiddleware {
 
 
     @Autowired
-    ApiWappCallFramework apiWappCallFramework;
+    ApiOperationWappCallChannelFramework apiOperationWappCallChannelFramework;
 
 
     public ApiOperationWappCallWSModel apiGetOperationWappCall(long agentId, long sessionId, long clientId) {
@@ -22,7 +22,7 @@ public class ApiWappCallMiddleware {
         ApiOperationWappCallWSModel response = new ApiOperationWappCallWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiOperationWappCallWSDTO operationWappCallWSDTO = apiWappCallFramework.apiGetOperationWappCallService(agentId,sessionId,clientId);
+        ApiOperationWappCallWSDTO operationWappCallWSDTO = apiOperationWappCallChannelFramework.apiGetOperationWappCallService(agentId,sessionId,clientId);
         if (operationWappCallWSDTO != null){
             response.setOperationWappCall(operationWappCallWSDTO);
         }

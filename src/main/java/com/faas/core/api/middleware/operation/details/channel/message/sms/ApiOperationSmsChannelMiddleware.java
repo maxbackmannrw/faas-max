@@ -1,6 +1,6 @@
 package com.faas.core.api.middleware.operation.details.channel.message.sms;
 
-import com.faas.core.api.framework.operation.details.channel.message.sms.ApiSmsMessageFramework;
+import com.faas.core.api.framework.operation.details.channel.message.sms.ApiOperationSmsChannelFramework;
 import com.faas.core.api.model.ws.operation.details.channel.message.sms.ApiOperationSmsMessageWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.sms.ApiSmsMessageTempWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.sms.ApiSmsMessageWSModel;
@@ -17,11 +17,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class ApiSmsMessageMiddleware {
+public class ApiOperationSmsChannelMiddleware {
 
 
     @Autowired
-    ApiSmsMessageFramework apiSmsMessageFramework;
+    ApiOperationSmsChannelFramework apiOperationSmsChannelFramework;
 
 
     public ApiOperationSmsMessageWSModel apiGetOperationSmsMessage(long agentId,long sessionId) {
@@ -29,7 +29,7 @@ public class ApiSmsMessageMiddleware {
         ApiOperationSmsMessageWSModel response = new ApiOperationSmsMessageWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiOperationSmsMessageWSDTO operationSmsWSDTO = apiSmsMessageFramework.apiGetOperationSmsMessageService(agentId,sessionId);
+        ApiOperationSmsMessageWSDTO operationSmsWSDTO = apiOperationSmsChannelFramework.apiGetOperationSmsMessageService(agentId,sessionId);
         if (operationSmsWSDTO != null){
             response.setOperationSmsMessage(operationSmsWSDTO);
         }
@@ -49,7 +49,7 @@ public class ApiSmsMessageMiddleware {
         ApiSmsMessageWSModel response = new ApiSmsMessageWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ApiSmsMessageWSDTO> smsMessageWSDTOS = apiSmsMessageFramework.apiGetSmsMessagesService(agentId,sessionId,campaignId,processId);
+        List<ApiSmsMessageWSDTO> smsMessageWSDTOS = apiOperationSmsChannelFramework.apiGetSmsMessagesService(agentId,sessionId,campaignId,processId);
         if (smsMessageWSDTOS != null){
             response.setSmsMessages(smsMessageWSDTOS);
         }
@@ -70,7 +70,7 @@ public class ApiSmsMessageMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ApiSmsMessageWSDTO> smsMessageWSDTOS = new ArrayList<>();
 
-        ApiSmsMessageWSDTO smsMessageWSDTO = apiSmsMessageFramework.apiGetSmsMessageService(agentId,sessionId,campaignId,processId,messageId);
+        ApiSmsMessageWSDTO smsMessageWSDTO = apiOperationSmsChannelFramework.apiGetSmsMessageService(agentId,sessionId,campaignId,processId,messageId);
         if (smsMessageWSDTO != null){
             smsMessageWSDTOS.add(smsMessageWSDTO);
         }
@@ -92,7 +92,7 @@ public class ApiSmsMessageMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ApiSmsMessageWSDTO> smsMessageWSDTOS = new ArrayList<>();
 
-        ApiSmsMessageWSDTO smsMessageWSDTO = apiSmsMessageFramework.apiSendSmsMessageService(agentId,sessionId,campaignId,processId,tempId,numberId);
+        ApiSmsMessageWSDTO smsMessageWSDTO = apiOperationSmsChannelFramework.apiSendSmsMessageService(agentId,sessionId,campaignId,processId,tempId,numberId);
         if (smsMessageWSDTO != null){
             smsMessageWSDTOS.add(smsMessageWSDTO);
         }
@@ -114,7 +114,7 @@ public class ApiSmsMessageMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ApiSmsMessageWSDTO> smsMessageWSDTOS = new ArrayList<>();
 
-        ApiSmsMessageWSDTO smsMessageWSDTO = apiSmsMessageFramework.apiUpdateSmsMessageService(agentId,sessionId,campaignId,processId,messageId);
+        ApiSmsMessageWSDTO smsMessageWSDTO = apiOperationSmsChannelFramework.apiUpdateSmsMessageService(agentId,sessionId,campaignId,processId,messageId);
         if (smsMessageWSDTO != null){
             smsMessageWSDTOS.add(smsMessageWSDTO);
         }
@@ -136,7 +136,7 @@ public class ApiSmsMessageMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ApiSmsMessageWSDTO> smsMessageWSDTOS = new ArrayList<>();
 
-        ApiSmsMessageWSDTO smsMessageWSDTO = apiSmsMessageFramework.apiRemoveSmsMessageService(agentId,sessionId,campaignId,processId,messageId);
+        ApiSmsMessageWSDTO smsMessageWSDTO = apiOperationSmsChannelFramework.apiRemoveSmsMessageService(agentId,sessionId,campaignId,processId,messageId);
         if (smsMessageWSDTO != null){
             smsMessageWSDTOS.add(smsMessageWSDTO);
         }
@@ -158,7 +158,7 @@ public class ApiSmsMessageMiddleware {
         ApiSmsMessageTempWSModel response = new ApiSmsMessageTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiSmsMessageTempWSDTO smsMessageTempWSDTO = apiSmsMessageFramework.apiGetSmsMessageTempsService(agentId,sessionId,campaignId,processId);
+        ApiSmsMessageTempWSDTO smsMessageTempWSDTO = apiOperationSmsChannelFramework.apiGetSmsMessageTempsService(agentId,sessionId,campaignId,processId);
         if (smsMessageTempWSDTO != null){
             response.setSmsMessageTemp(smsMessageTempWSDTO);
         }
@@ -178,7 +178,7 @@ public class ApiSmsMessageMiddleware {
         ApiSmsMessageTempWSModel response = new ApiSmsMessageTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiSmsMessageTempWSDTO smsMessageTempWSDTO = apiSmsMessageFramework.apiGetSmsMessageTempService(agentId,sessionId,campaignId,processId,tempId);
+        ApiSmsMessageTempWSDTO smsMessageTempWSDTO = apiOperationSmsChannelFramework.apiGetSmsMessageTempService(agentId,sessionId,campaignId,processId,tempId);
         if (smsMessageTempWSDTO != null){
             response.setSmsMessageTemp(smsMessageTempWSDTO);
         }

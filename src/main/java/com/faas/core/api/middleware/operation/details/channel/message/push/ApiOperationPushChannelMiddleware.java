@@ -1,30 +1,29 @@
-package com.faas.core.api.middleware.operation.details.channel.message.email;
+package com.faas.core.api.middleware.operation.details.channel.message.push;
 
-import com.faas.core.api.framework.operation.details.channel.message.email.ApiEmailMessageFramework;
-import com.faas.core.api.model.ws.operation.details.channel.message.email.ApiEmailTempWSModel;
-import com.faas.core.api.model.ws.operation.details.channel.message.email.ApiEmailWSModel;
-import com.faas.core.api.model.ws.operation.details.channel.message.email.ApiOperationEmailWSModel;
+import com.faas.core.api.framework.operation.details.channel.message.push.ApiOperationPushChannelFramework;
+import com.faas.core.api.model.ws.operation.details.channel.message.push.ApiOperationPushMessageWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.message.push.ApiPushMessageTempWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.message.push.ApiPushMessageWSModel;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-
 @Component
-public class ApiEmailMessageMiddleware {
+public class ApiOperationPushChannelMiddleware {
 
 
     @Autowired
-    ApiEmailMessageFramework apiEmailMessageFramework;
+    ApiOperationPushChannelFramework apiOperationPushChannelFramework;
 
 
-    public ApiOperationEmailWSModel apiGetOperationEmail(long agentId, long sessionId) {
+    public ApiOperationPushMessageWSModel apiGetOperationPushMessage(long agentId, long sessionId) {
 
-        ApiOperationEmailWSModel response = new ApiOperationEmailWSModel();
+        ApiOperationPushMessageWSModel response = new ApiOperationPushMessageWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
 
-        general.setOperation("apiGetOperationEmail");
+        general.setOperation("apiGetOperationPushMessage");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -34,13 +33,13 @@ public class ApiEmailMessageMiddleware {
     }
 
 
-    public ApiEmailWSModel apiGetEmails(long agentId,long sessionId,String campaignId,String processId) {
+    public ApiPushMessageWSModel apiGetPushMessages(long agentId, long sessionId, long pushId) {
 
-        ApiEmailWSModel response = new ApiEmailWSModel();
+        ApiPushMessageWSModel response = new ApiPushMessageWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
 
-        general.setOperation("apiGetEmails");
+        general.setOperation("apiGetPushMessages");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -50,13 +49,13 @@ public class ApiEmailMessageMiddleware {
     }
 
 
-    public ApiEmailWSModel apiGetEmail(long agentId, long sessionId,String campaignId,String processId,String emailId) {
+    public ApiPushMessageWSModel apiGetPushMessage(long agentId, long sessionId, long pushId) {
 
-        ApiEmailWSModel response = new ApiEmailWSModel();
+        ApiPushMessageWSModel response = new ApiPushMessageWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
 
-        general.setOperation("apiGetEmail");
+        general.setOperation("apiGetPushMessage");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -66,13 +65,14 @@ public class ApiEmailMessageMiddleware {
     }
 
 
-    public ApiEmailWSModel apiSendEmail(long agentId, long sessionId,String campaignId,String processId,String tempId,long emailAddressId) {
+    public ApiPushMessageWSModel apiSendPushMessage(long agentId, long sessionId) {
 
-        ApiEmailWSModel response = new ApiEmailWSModel();
+        ApiPushMessageWSModel response = new ApiPushMessageWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
 
-        general.setOperation("apiSendEmail");
+
+        general.setOperation("apiSendPushMessage");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -82,13 +82,30 @@ public class ApiEmailMessageMiddleware {
     }
 
 
-    public ApiEmailWSModel apiUpdateEmail(long agentId, long sessionId,String campaignId,String processId,String emailId) {
+    public ApiPushMessageWSModel apiUpdatePushMessage(long agentId, long sessionId) {
 
-        ApiEmailWSModel response = new ApiEmailWSModel();
+        ApiPushMessageWSModel response = new ApiPushMessageWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
 
-        general.setOperation("apiUpdateEmail");
+        general.setOperation("apiUpdatePushMessage");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
+    public ApiPushMessageWSModel apiRemovePushMessage(long agentId, long sessionId) {
+
+        ApiPushMessageWSModel response = new ApiPushMessageWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+
+
+        general.setOperation("apiRemovePushMessage");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -99,13 +116,14 @@ public class ApiEmailMessageMiddleware {
 
 
 
-    public ApiEmailWSModel apiRemoveEmail(long agentId, long sessionId,String campaignId,String processId,String emailId) {
+    public ApiPushMessageTempWSModel apiGetPushMessageTemps(long agentId, long sessionId) {
 
-        ApiEmailWSModel response = new ApiEmailWSModel();
+        ApiPushMessageTempWSModel response = new ApiPushMessageTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
 
-        general.setOperation("apiRemoveEmail");
+
+        general.setOperation("apiGetPushMessageTemps");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -114,15 +132,14 @@ public class ApiEmailMessageMiddleware {
         return response;
     }
 
+    public ApiPushMessageTempWSModel apiGetPushMessageTemp(long agentId, long sessionId) {
 
-
-    public ApiEmailTempWSModel apiGetEmailTemps(long agentId,long sessionId,String campaignId,String processId) {
-
-        ApiEmailTempWSModel response = new ApiEmailTempWSModel();
+        ApiPushMessageTempWSModel response = new ApiPushMessageTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
 
-        general.setOperation("apiGetEmailTemps");
+
+        general.setOperation("apiGetPushMessageTemp");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -131,20 +148,5 @@ public class ApiEmailMessageMiddleware {
         return response;
     }
 
-
-    public ApiEmailTempWSModel apiGetEmailTemp(long agentId, long sessionId,String campaignId,String processId,String tempId) {
-
-        ApiEmailTempWSModel response = new ApiEmailTempWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-
-        general.setOperation("apiGetEmailTemp");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
 
 }

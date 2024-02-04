@@ -1,20 +1,20 @@
 package com.faas.core.api.model.ws.operation.details.channel.message.sms;
 
-import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiOperationSmsMessageWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiOperationSmsChannelWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 
 
 public class ApiOperationSmsChannelWSModel {
 
     private GeneralWSModel general;
-    private ApiOperationSmsMessageWSDTO operationSmsMessage;
+    private ApiOperationSmsChannelWSDTO smsChannel;
 
     public ApiOperationSmsChannelWSModel() {
     }
 
-    public ApiOperationSmsChannelWSModel(GeneralWSModel general, ApiOperationSmsMessageWSDTO operationSmsMessage) {
+    public ApiOperationSmsChannelWSModel(GeneralWSModel general, ApiOperationSmsChannelWSDTO smsChannel) {
         this.general = general;
-        this.operationSmsMessage = operationSmsMessage;
+        this.smsChannel = smsChannel;
     }
 
     public GeneralWSModel getGeneral() {
@@ -25,11 +25,11 @@ public class ApiOperationSmsChannelWSModel {
         this.general = general;
     }
 
-    public ApiOperationSmsMessageWSDTO getOperationSmsMessage() {
-        return operationSmsMessage;
+    public ApiOperationSmsChannelWSDTO getSmsChannel() {
+        return smsChannel;
     }
 
-    public void setOperationSmsMessage(ApiOperationSmsMessageWSDTO operationSmsMessage) {
-        this.operationSmsMessage = operationSmsMessage;
+    public void setSmsChannel(ApiOperationSmsChannelWSDTO smsChannel) {
+        this.smsChannel = smsChannel;
     }
 }

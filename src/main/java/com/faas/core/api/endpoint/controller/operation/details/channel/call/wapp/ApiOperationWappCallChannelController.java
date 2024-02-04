@@ -1,6 +1,6 @@
 package com.faas.core.api.endpoint.controller.operation.details.channel.call.wapp;
 
-import com.faas.core.api.middleware.operation.details.channel.call.wapp.ApiWappCallMiddleware;
+import com.faas.core.api.middleware.operation.details.channel.call.wapp.ApiOperationWappCallChannelMiddleware;
 import com.faas.core.api.model.ws.operation.details.channel.call.wapp.ApiOperationWappCallWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.call.wapp.ApiWappCallWSModel;
 import com.faas.core.utils.config.ApiRoute;
@@ -16,11 +16,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping(value = AppConstant.API_VERSION + "/api/operation/details/channel/call/wapp/")
-public class ApiWappCallController {
+public class ApiOperationWappCallChannelController {
 
 
     @Autowired
-    ApiWappCallMiddleware apiWappCallMiddleware;
+    ApiOperationWappCallChannelMiddleware apiOperationWappCallChannelMiddleware;
 
 
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_WAPP_CALL, method = RequestMethod.POST)
@@ -28,7 +28,7 @@ public class ApiWappCallController {
                                                      @RequestParam long sessionId,
                                                      @RequestParam long clientId) {
 
-        ApiOperationWappCallWSModel response = apiWappCallMiddleware.apiGetOperationWappCall(agentId,sessionId,clientId);
+        ApiOperationWappCallWSModel response = apiOperationWappCallChannelMiddleware.apiGetOperationWappCall(agentId,sessionId,clientId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -43,7 +43,7 @@ public class ApiWappCallController {
                                              @RequestParam String campaignId,
                                              @RequestParam String processId) {
 
-        ApiWappCallWSModel response = apiWappCallMiddleware.apiGetWappCalls(agentId,sessionId,campaignId,processId);
+        ApiWappCallWSModel response = apiOperationWappCallChannelMiddleware.apiGetWappCalls(agentId,sessionId,campaignId,processId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -59,7 +59,7 @@ public class ApiWappCallController {
                                             @RequestParam long clientId,
                                             @RequestParam long callId) {
 
-        ApiWappCallWSModel response = apiWappCallMiddleware.apiGetWappCall(agentId,sessionId,clientId,callId);
+        ApiWappCallWSModel response = apiOperationWappCallChannelMiddleware.apiGetWappCall(agentId,sessionId,clientId,callId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -75,7 +75,7 @@ public class ApiWappCallController {
                                                @RequestParam String processId,
                                                @RequestParam long numberId) {
 
-        ApiWappCallWSModel response = apiWappCallMiddleware.apiCreateWappCall(agentId,sessionId,clientId,processId,numberId);
+        ApiWappCallWSModel response = apiOperationWappCallChannelMiddleware.apiCreateWappCall(agentId,sessionId,clientId,processId,numberId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -91,7 +91,7 @@ public class ApiWappCallController {
                                              @RequestParam String processId,
                                              @RequestParam long numberId) {
 
-        ApiWappCallWSModel response = apiWappCallMiddleware.apiMakeWappCall(agentId,sessionId,clientId,processId,numberId);
+        ApiWappCallWSModel response = apiOperationWappCallChannelMiddleware.apiMakeWappCall(agentId,sessionId,clientId,processId,numberId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -107,7 +107,7 @@ public class ApiWappCallController {
                                             @RequestParam String processId,
                                             @RequestParam long numberId) {
 
-        ApiWappCallWSModel response = apiWappCallMiddleware.apiEndWappCall(agentId,sessionId,clientId,processId,numberId);
+        ApiWappCallWSModel response = apiOperationWappCallChannelMiddleware.apiEndWappCall(agentId,sessionId,clientId,processId,numberId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -123,7 +123,7 @@ public class ApiWappCallController {
                                                @RequestParam String processId,
                                                @RequestParam long numberId) {
 
-        ApiWappCallWSModel response = apiWappCallMiddleware.apiFinishWappCall(agentId,sessionId,clientId,processId,numberId);
+        ApiWappCallWSModel response = apiOperationWappCallChannelMiddleware.apiFinishWappCall(agentId,sessionId,clientId,processId,numberId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -138,7 +138,7 @@ public class ApiWappCallController {
                                                @RequestParam long clientId,
                                                @RequestParam long callId) {
 
-        ApiWappCallWSModel response = apiWappCallMiddleware.apiUpdateWappCall(agentId,sessionId,clientId,callId);
+        ApiWappCallWSModel response = apiOperationWappCallChannelMiddleware.apiUpdateWappCall(agentId,sessionId,clientId,callId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -153,7 +153,7 @@ public class ApiWappCallController {
                                                @RequestParam long clientId,
                                                @RequestParam long callId) {
 
-        ApiWappCallWSModel response = apiWappCallMiddleware.apiRemoveWappCall(agentId,sessionId,clientId,callId);
+        ApiWappCallWSModel response = apiOperationWappCallChannelMiddleware.apiRemoveWappCall(agentId,sessionId,clientId,callId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

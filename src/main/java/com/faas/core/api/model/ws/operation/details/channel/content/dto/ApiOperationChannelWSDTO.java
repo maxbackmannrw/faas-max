@@ -9,70 +9,70 @@ import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.Api
 
 public class ApiOperationChannelWSDTO {
 
-    private ApiOperationSipChannelWSDTO operationSipChannel;
-    private ApiOperationWappCallChannelWSDTO operationWappCallChannel;
-    private ApiOperationSmsChannelWSDTO operationSmsChannel;
-    private ApiOperationWappMessageChannelWSDTO operationWappMessageChannel;
-    private ApiOperationPushChannelWSDTO operationPushChannel;
-    private ApiOperationEmailChannelWSDTO operationEmailChannel;
+    private ApiOperationSipChannelWSDTO sipChannel;
+    private ApiOperationWappCallChannelWSDTO wappCallChannel;
+    private ApiOperationSmsChannelWSDTO smsChannel;
+    private ApiOperationWappMessageChannelWSDTO wappMessageChannel;
+    private ApiOperationEmailChannelWSDTO emailChannel;
+    private ApiOperationPushChannelWSDTO pushChannel;
 
     public ApiOperationChannelWSDTO() {
     }
 
-    public ApiOperationChannelWSDTO(ApiOperationSipChannelWSDTO operationSipChannel, ApiOperationWappCallChannelWSDTO operationWappCallChannel, ApiOperationSmsChannelWSDTO operationSmsChannel, ApiOperationWappMessageChannelWSDTO operationWappMessageChannel, ApiOperationPushChannelWSDTO operationPushChannel, ApiOperationEmailChannelWSDTO operationEmailChannel) {
-        this.operationSipChannel = operationSipChannel;
-        this.operationWappCallChannel = operationWappCallChannel;
-        this.operationSmsChannel = operationSmsChannel;
-        this.operationWappMessageChannel = operationWappMessageChannel;
-        this.operationPushChannel = operationPushChannel;
-        this.operationEmailChannel = operationEmailChannel;
+    public ApiOperationChannelWSDTO(ApiOperationSipChannelWSDTO sipChannel, ApiOperationWappCallChannelWSDTO wappCallChannel, ApiOperationSmsChannelWSDTO smsChannel, ApiOperationWappMessageChannelWSDTO wappMessageChannel, ApiOperationEmailChannelWSDTO emailChannel, ApiOperationPushChannelWSDTO pushChannel) {
+        this.sipChannel = sipChannel;
+        this.wappCallChannel = wappCallChannel;
+        this.smsChannel = smsChannel;
+        this.wappMessageChannel = wappMessageChannel;
+        this.emailChannel = emailChannel;
+        this.pushChannel = pushChannel;
     }
 
-    public ApiOperationSipChannelWSDTO getOperationSipChannel() {
-        return operationSipChannel;
+    public ApiOperationSipChannelWSDTO getSipChannel() {
+        return sipChannel;
     }
 
-    public void setOperationSipChannel(ApiOperationSipChannelWSDTO operationSipChannel) {
-        this.operationSipChannel = operationSipChannel;
+    public void setSipChannel(ApiOperationSipChannelWSDTO sipChannel) {
+        this.sipChannel = sipChannel;
     }
 
-    public ApiOperationWappCallChannelWSDTO getOperationWappCallChannel() {
-        return operationWappCallChannel;
+    public ApiOperationWappCallChannelWSDTO getWappCallChannel() {
+        return wappCallChannel;
     }
 
-    public void setOperationWappCallChannel(ApiOperationWappCallChannelWSDTO operationWappCallChannel) {
-        this.operationWappCallChannel = operationWappCallChannel;
+    public void setWappCallChannel(ApiOperationWappCallChannelWSDTO wappCallChannel) {
+        this.wappCallChannel = wappCallChannel;
     }
 
-    public ApiOperationSmsChannelWSDTO getOperationSmsChannel() {
-        return operationSmsChannel;
+    public ApiOperationSmsChannelWSDTO getSmsChannel() {
+        return smsChannel;
     }
 
-    public void setOperationSmsChannel(ApiOperationSmsChannelWSDTO operationSmsChannel) {
-        this.operationSmsChannel = operationSmsChannel;
+    public void setSmsChannel(ApiOperationSmsChannelWSDTO smsChannel) {
+        this.smsChannel = smsChannel;
     }
 
-    public ApiOperationWappMessageChannelWSDTO getOperationWappMessageChannel() {
-        return operationWappMessageChannel;
+    public ApiOperationWappMessageChannelWSDTO getWappMessageChannel() {
+        return wappMessageChannel;
     }
 
-    public void setOperationWappMessageChannel(ApiOperationWappMessageChannelWSDTO operationWappMessageChannel) {
-        this.operationWappMessageChannel = operationWappMessageChannel;
+    public void setWappMessageChannel(ApiOperationWappMessageChannelWSDTO wappMessageChannel) {
+        this.wappMessageChannel = wappMessageChannel;
     }
 
-    public ApiOperationPushChannelWSDTO getOperationPushChannel() {
-        return operationPushChannel;
+    public ApiOperationEmailChannelWSDTO getEmailChannel() {
+        return emailChannel;
     }
 
-    public void setOperationPushChannel(ApiOperationPushChannelWSDTO operationPushChannel) {
-        this.operationPushChannel = operationPushChannel;
+    public void setEmailChannel(ApiOperationEmailChannelWSDTO emailChannel) {
+        this.emailChannel = emailChannel;
     }
 
-    public ApiOperationEmailChannelWSDTO getOperationEmailChannel() {
-        return operationEmailChannel;
+    public ApiOperationPushChannelWSDTO getPushChannel() {
+        return pushChannel;
     }
 
-    public void setOperationEmailChannel(ApiOperationEmailChannelWSDTO operationEmailChannel) {
-        this.operationEmailChannel = operationEmailChannel;
+    public void setPushChannel(ApiOperationPushChannelWSDTO pushChannel) {
+        this.pushChannel = pushChannel;
     }
 }

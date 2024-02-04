@@ -1,6 +1,6 @@
 package com.faas.core.api.endpoint.controller.operation.details.channel.message.wapp;
 
-import com.faas.core.api.middleware.operation.details.channel.message.wapp.ApiWappMessageMiddleware;
+import com.faas.core.api.middleware.operation.details.channel.message.wapp.ApiOperationWappMessageChannelMiddleware;
 import com.faas.core.api.model.ws.operation.details.channel.message.wapp.ApiOperationWappMessageWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.wapp.ApiWappMessageTempWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.wapp.ApiWappMessageWSModel;
@@ -19,18 +19,18 @@ import java.io.IOException;
 
 @Controller
 @RequestMapping(value = AppConstant.API_VERSION + "/api/operation/details/channel/message/wapp/")
-public class ApiWappMessageController {
+public class ApiOperationWappMessageChannelController {
 
 
     @Autowired
-    ApiWappMessageMiddleware apiWappMessageMiddleware;
+    ApiOperationWappMessageChannelMiddleware apiOperationWappMessageChannelMiddleware;
 
 
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_WAPP_MESSAGE, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationWappMessage(@RequestParam long agentId,
                                                         @RequestParam long sessionId) {
 
-        ApiOperationWappMessageWSModel response = apiWappMessageMiddleware.apiGetOperationWappMessage(agentId,sessionId);
+        ApiOperationWappMessageWSModel response = apiOperationWappMessageChannelMiddleware.apiGetOperationWappMessage(agentId,sessionId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -45,7 +45,7 @@ public class ApiWappMessageController {
                                                 @RequestParam String campaignId,
                                                 @RequestParam String processId) {
 
-        ApiWappMessageWSModel response = apiWappMessageMiddleware.apiGetWappMessages(agentId,sessionId,campaignId,processId);
+        ApiWappMessageWSModel response = apiOperationWappMessageChannelMiddleware.apiGetWappMessages(agentId,sessionId,campaignId,processId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -61,7 +61,7 @@ public class ApiWappMessageController {
                                                @RequestParam String processId,
                                                @RequestParam String messageId) {
 
-        ApiWappMessageWSModel response = apiWappMessageMiddleware.apiGetWappMessage(agentId,sessionId,campaignId,processId,messageId);
+        ApiWappMessageWSModel response = apiOperationWappMessageChannelMiddleware.apiGetWappMessage(agentId,sessionId,campaignId,processId,messageId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -78,7 +78,7 @@ public class ApiWappMessageController {
                                                 @RequestParam String tempId,
                                                 @RequestParam long numberId) throws IOException {
 
-        ApiWappMessageWSModel response = apiWappMessageMiddleware.apiSendWappMessage(agentId,sessionId,campaignId,processId,tempId,numberId);
+        ApiWappMessageWSModel response = apiOperationWappMessageChannelMiddleware.apiSendWappMessage(agentId,sessionId,campaignId,processId,tempId,numberId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -94,7 +94,7 @@ public class ApiWappMessageController {
                                                   @RequestParam String processId,
                                                   @RequestParam String messageId) {
 
-        ApiWappMessageWSModel response = apiWappMessageMiddleware.apiUpdateWappMessage(agentId,sessionId,campaignId,processId,messageId);
+        ApiWappMessageWSModel response = apiOperationWappMessageChannelMiddleware.apiUpdateWappMessage(agentId,sessionId,campaignId,processId,messageId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -110,7 +110,7 @@ public class ApiWappMessageController {
                                                   @RequestParam String processId,
                                                   @RequestParam String messageId) {
 
-        ApiWappMessageWSModel response = apiWappMessageMiddleware.apiRemoveWappMessage(agentId,sessionId,campaignId,processId,messageId);
+        ApiWappMessageWSModel response = apiOperationWappMessageChannelMiddleware.apiRemoveWappMessage(agentId,sessionId,campaignId,processId,messageId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -126,7 +126,7 @@ public class ApiWappMessageController {
                                                     @RequestParam String campaignId,
                                                     @RequestParam String processId) {
 
-        ApiWappMessageTempWSModel response = apiWappMessageMiddleware.apiGetWappMessageTemps(agentId,sessionId,campaignId,processId);
+        ApiWappMessageTempWSModel response = apiOperationWappMessageChannelMiddleware.apiGetWappMessageTemps(agentId,sessionId,campaignId,processId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -142,7 +142,7 @@ public class ApiWappMessageController {
                                                    @RequestParam String processId,
                                                    @RequestParam String tempId) {
 
-        ApiWappMessageTempWSModel response = apiWappMessageMiddleware.apiGetWappMessageTemp(agentId,sessionId,campaignId,processId,tempId);
+        ApiWappMessageTempWSModel response = apiOperationWappMessageChannelMiddleware.apiGetWappMessageTemp(agentId,sessionId,campaignId,processId,tempId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
