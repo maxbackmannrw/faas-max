@@ -8,6 +8,7 @@ public class OperationScenarioDAO {
     private String id;
     private String scenarioId;
     private String scenario;
+    private String scenarioDesc;
     private long typeId;
     private String scenarioType;
     private String baseType;
@@ -21,10 +22,11 @@ public class OperationScenarioDAO {
     public OperationScenarioDAO() {
     }
 
-    public OperationScenarioDAO(String id, String scenarioId, String scenario, long typeId, String scenarioType, String baseType, List<OperationScenarioDataDAO> scenarioDatas, List<OperationScenarioDataDAO> scenarioResults, String scenarioState, long uDate, long cDate, int status) {
+    public OperationScenarioDAO(String id, String scenarioId, String scenario, String scenarioDesc, long typeId, String scenarioType, String baseType, List<OperationScenarioDataDAO> scenarioDatas, List<OperationScenarioDataDAO> scenarioResults, String scenarioState, long uDate, long cDate, int status) {
         this.id = id;
         this.scenarioId = scenarioId;
         this.scenario = scenario;
+        this.scenarioDesc = scenarioDesc;
         this.typeId = typeId;
         this.scenarioType = scenarioType;
         this.baseType = baseType;
@@ -58,6 +60,14 @@ public class OperationScenarioDAO {
 
     public void setScenario(String scenario) {
         this.scenario = scenario;
+    }
+
+    public String getScenarioDesc() {
+        return scenarioDesc;
+    }
+
+    public void setScenarioDesc(String scenarioDesc) {
+        this.scenarioDesc = scenarioDesc;
     }
 
     public long getTypeId() {

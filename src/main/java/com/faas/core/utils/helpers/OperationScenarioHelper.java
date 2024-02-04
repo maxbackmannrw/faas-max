@@ -30,6 +30,7 @@ public class OperationScenarioHelper {
         operationScenarioDAO.setId(appUtils.generateUUID());
         operationScenarioDAO.setScenarioId(processScenarioDBModel.getScenarioId());
         operationScenarioDAO.setScenario(processScenarioDBModel.getScenario());
+        operationScenarioDAO.setScenarioDesc(processScenarioDBModel.getScenarioDesc());
         operationScenarioDAO.setTypeId(processScenarioDBModel.getTypeId());
         operationScenarioDAO.setScenarioType(processScenarioDBModel.getScenarioType());
         operationScenarioDAO.setBaseType(processScenarioDBModel.getBaseType());
