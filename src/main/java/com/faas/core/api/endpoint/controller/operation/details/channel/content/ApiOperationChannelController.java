@@ -1,8 +1,8 @@
 package com.faas.core.api.endpoint.controller.operation.details.channel.content;
 
-import com.faas.core.api.middleware.operation.details.channel.call.sip.ApiOperationSipChannelMiddleware;
 import com.faas.core.api.middleware.operation.details.channel.content.ApiOperationChannelMiddleware;
-import com.faas.core.api.model.ws.operation.details.channel.call.sip.ApiOperationSipCallWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.content.ApiOperationCallChannelWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.content.ApiOperationMessageChannelWSModel;
 import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +23,11 @@ public class ApiOperationChannelController {
     ApiOperationChannelMiddleware apiOperationChannelMiddleware;
 
 
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION_SIP_CALL, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperationChannel(@RequestParam long agentId,
-                                                    @RequestParam long sessionId,
-                                                    @RequestParam long clientId) {
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_CALL_CHANNEL, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationCallChannel(@RequestParam long agentId,
+                                                        @RequestParam String operationId) {
 
-        ApiOperationSipCallWSModel response = apiOperationChannelMiddleware.apiGetOperationChannel(agentId,sessionId,clientId);
+        ApiOperationCallChannelWSModel response = apiOperationChannelMiddleware.apiGetOperationCallChannel(agentId,operationId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -36,6 +35,18 @@ public class ApiOperationChannelController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_MESSAGE_CHANNEL, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationMessageChannel(@RequestParam long agentId,
+                                                           @RequestParam String operationId) {
+
+        ApiOperationMessageChannelWSModel response = apiOperationChannelMiddleware.apiGetOperationMessageChannel(agentId,operationId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
 
 
 

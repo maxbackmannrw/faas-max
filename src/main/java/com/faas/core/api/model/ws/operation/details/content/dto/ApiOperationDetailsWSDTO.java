@@ -1,13 +1,11 @@
 package com.faas.core.api.model.ws.operation.details.content.dto;
 
 import com.faas.core.api.model.ws.operation.details.campaign.dto.ApiOperationCampaignWSDTO;
-import com.faas.core.api.model.ws.operation.details.channel.content.dto.ApiOperationChannelWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.content.dto.ApiOperationCallChannelWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.content.dto.ApiOperationMessageChannelWSDTO;
 import com.faas.core.api.model.ws.operation.details.client.content.dto.ApiOperationClientWSDTO;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
-import com.faas.core.base.model.ws.operation.details.scenario.content.OperationScenarioWSModel;
-
-import java.util.List;
 
 public class ApiOperationDetailsWSDTO {
 
@@ -15,17 +13,19 @@ public class ApiOperationDetailsWSDTO {
     private SessionDBModel operationSession;
     private ApiOperationClientWSDTO operationClient;
     private ApiOperationCampaignWSDTO operationCampaign;
-    private ApiOperationChannelWSDTO operationChannel;
+    private ApiOperationCallChannelWSDTO operationCallChannel;
+    private ApiOperationMessageChannelWSDTO operationMessageChannel;
 
     public ApiOperationDetailsWSDTO() {
     }
 
-    public ApiOperationDetailsWSDTO(OperationDBModel operation, SessionDBModel operationSession, ApiOperationClientWSDTO operationClient, ApiOperationCampaignWSDTO operationCampaign, ApiOperationChannelWSDTO operationChannel) {
+    public ApiOperationDetailsWSDTO(OperationDBModel operation, SessionDBModel operationSession, ApiOperationClientWSDTO operationClient, ApiOperationCampaignWSDTO operationCampaign, ApiOperationCallChannelWSDTO operationCallChannel, ApiOperationMessageChannelWSDTO operationMessageChannel) {
         this.operation = operation;
         this.operationSession = operationSession;
         this.operationClient = operationClient;
         this.operationCampaign = operationCampaign;
-        this.operationChannel = operationChannel;
+        this.operationCallChannel = operationCallChannel;
+        this.operationMessageChannel = operationMessageChannel;
     }
 
     public OperationDBModel getOperation() {
@@ -60,11 +60,19 @@ public class ApiOperationDetailsWSDTO {
         this.operationCampaign = operationCampaign;
     }
 
-    public ApiOperationChannelWSDTO getOperationChannel() {
-        return operationChannel;
+    public ApiOperationCallChannelWSDTO getOperationCallChannel() {
+        return operationCallChannel;
     }
 
-    public void setOperationChannel(ApiOperationChannelWSDTO operationChannel) {
-        this.operationChannel = operationChannel;
+    public void setOperationCallChannel(ApiOperationCallChannelWSDTO operationCallChannel) {
+        this.operationCallChannel = operationCallChannel;
+    }
+
+    public ApiOperationMessageChannelWSDTO getOperationMessageChannel() {
+        return operationMessageChannel;
+    }
+
+    public void setOperationMessageChannel(ApiOperationMessageChannelWSDTO operationMessageChannel) {
+        this.operationMessageChannel = operationMessageChannel;
     }
 }

@@ -1,21 +1,21 @@
 package com.faas.core.api.model.ws.operation.details.channel.call.wapp;
 
 import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiOperationWappCallWSDTO;
-import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiWappCallWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 
+import java.util.List;
 
 public class ApiOperationWappCallWSModel {
 
     private GeneralWSModel general;
-    private ApiOperationWappCallWSDTO operationWappCall;
+    private List<ApiOperationWappCallWSDTO> operationWappCalls;
 
     public ApiOperationWappCallWSModel() {
     }
 
-    public ApiOperationWappCallWSModel(GeneralWSModel general, ApiOperationWappCallWSDTO operationWappCall) {
+    public ApiOperationWappCallWSModel(GeneralWSModel general, List<ApiOperationWappCallWSDTO> operationWappCalls) {
         this.general = general;
-        this.operationWappCall = operationWappCall;
+        this.operationWappCalls = operationWappCalls;
     }
 
     public GeneralWSModel getGeneral() {
@@ -26,11 +26,11 @@ public class ApiOperationWappCallWSModel {
         this.general = general;
     }
 
-    public ApiOperationWappCallWSDTO getOperationWappCall() {
-        return operationWappCall;
+    public List<ApiOperationWappCallWSDTO> getOperationWappCalls() {
+        return operationWappCalls;
     }
 
-    public void setOperationWappCall(ApiOperationWappCallWSDTO operationWappCall) {
-        this.operationWappCall = operationWappCall;
+    public void setOperationWappCalls(List<ApiOperationWappCallWSDTO> operationWappCalls) {
+        this.operationWappCalls = operationWappCalls;
     }
 }

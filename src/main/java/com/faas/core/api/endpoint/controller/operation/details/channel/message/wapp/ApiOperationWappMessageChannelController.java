@@ -1,9 +1,9 @@
 package com.faas.core.api.endpoint.controller.operation.details.channel.message.wapp;
 
 import com.faas.core.api.middleware.operation.details.channel.message.wapp.ApiOperationWappMessageChannelMiddleware;
+import com.faas.core.api.model.ws.operation.details.channel.message.wapp.ApiOperationWappMessageChannelWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.message.wapp.ApiOperationWappMessageTempWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.wapp.ApiOperationWappMessageWSModel;
-import com.faas.core.api.model.ws.operation.details.channel.message.wapp.ApiWappMessageTempWSModel;
-import com.faas.core.api.model.ws.operation.details.channel.message.wapp.ApiWappMessageWSModel;
 import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,26 +26,38 @@ public class ApiOperationWappMessageChannelController {
     ApiOperationWappMessageChannelMiddleware apiOperationWappMessageChannelMiddleware;
 
 
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_WAPP_MESSAGE_CHANNEL, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationWappMessageChannel(@RequestParam long agentId,
+                                                               @RequestParam String operationId) {
+
+        ApiOperationWappMessageChannelWSModel response = apiOperationWappMessageChannelMiddleware.apiGetOperationWappMessageChannel(agentId,operationId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_WAPP_MESSAGES, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationWappMessages(@RequestParam long agentId,
+                                                         @RequestParam String operationId) {
+
+        ApiOperationWappMessageWSModel response = apiOperationWappMessageChannelMiddleware.apiGetOperationWappMessages(agentId,operationId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_WAPP_MESSAGE, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationWappMessage(@RequestParam long agentId,
-                                                        @RequestParam long sessionId) {
+                                                        @RequestParam String operationId,
+                                                        @RequestParam String messageId) {
 
-        ApiOperationWappMessageWSModel response = apiOperationWappMessageChannelMiddleware.apiGetOperationWappMessage(agentId,sessionId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-
-    @RequestMapping(value = ApiRoute.API_GET_WAPP_MESSAGES, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetWappMessages(@RequestParam long agentId,
-                                                @RequestParam long sessionId,
-                                                @RequestParam String campaignId,
-                                                @RequestParam String processId) {
-
-        ApiWappMessageWSModel response = apiOperationWappMessageChannelMiddleware.apiGetWappMessages(agentId,sessionId,campaignId,processId);
+        ApiOperationWappMessageWSModel response = apiOperationWappMessageChannelMiddleware.apiGetOperationWappMessage(agentId,operationId,messageId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -54,31 +66,13 @@ public class ApiOperationWappMessageChannelController {
     }
 
 
-    @RequestMapping(value = ApiRoute.API_GET_WAPP_MESSAGE, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetWappMessage(@RequestParam long agentId,
-                                               @RequestParam long sessionId,
-                                               @RequestParam String campaignId,
-                                               @RequestParam String processId,
-                                               @RequestParam String messageId) {
+    @RequestMapping(value = ApiRoute.API_SEND_OPERATION_WAPP_MESSAGE, method = RequestMethod.POST)
+    public ResponseEntity<?> apiSendOperationWappMessage(@RequestParam long agentId,
+                                                         @RequestParam String operationId,
+                                                         @RequestParam String messageTempId,
+                                                         @RequestParam String numberId) throws IOException {
 
-        ApiWappMessageWSModel response = apiOperationWappMessageChannelMiddleware.apiGetWappMessage(agentId,sessionId,campaignId,processId,messageId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-
-    @RequestMapping(value = ApiRoute.API_SEND_WAPP_MESSAGE, method = RequestMethod.POST)
-    public ResponseEntity<?> apiSendWappMessage(@RequestParam long agentId,
-                                                @RequestParam long sessionId,
-                                                @RequestParam String campaignId,
-                                                @RequestParam String processId,
-                                                @RequestParam String tempId,
-                                                @RequestParam long numberId) throws IOException {
-
-        ApiWappMessageWSModel response = apiOperationWappMessageChannelMiddleware.apiSendWappMessage(agentId,sessionId,campaignId,processId,tempId,numberId);
+        ApiOperationWappMessageWSModel response = apiOperationWappMessageChannelMiddleware.apiSendOperationWappMessage(agentId,operationId,messageTempId,numberId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -87,14 +81,13 @@ public class ApiOperationWappMessageChannelController {
     }
 
 
-    @RequestMapping(value = ApiRoute.API_UPDATE_WAPP_MESSAGE, method = RequestMethod.POST)
-    public ResponseEntity<?> apiUpdateWappMessage(@RequestParam long agentId,
-                                                  @RequestParam long sessionId,
-                                                  @RequestParam String campaignId,
-                                                  @RequestParam String processId,
-                                                  @RequestParam String messageId) {
+    @RequestMapping(value = ApiRoute.API_UPDATE_OPERATION_WAPP_MESSAGE, method = RequestMethod.POST)
+    public ResponseEntity<?> apiUpdateOperationWappMessage(@RequestParam long agentId,
+                                                           @RequestParam String operationId,
+                                                           @RequestParam String messageId,
+                                                           @RequestParam String messageState) {
 
-        ApiWappMessageWSModel response = apiOperationWappMessageChannelMiddleware.apiUpdateWappMessage(agentId,sessionId,campaignId,processId,messageId);
+        ApiOperationWappMessageWSModel response = apiOperationWappMessageChannelMiddleware.apiUpdateOperationWappMessage(agentId,operationId,messageId,messageState);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -103,14 +96,12 @@ public class ApiOperationWappMessageChannelController {
     }
 
 
-    @RequestMapping(value = ApiRoute.API_REMOVE_WAPP_MESSAGE, method = RequestMethod.POST)
-    public ResponseEntity<?> apiRemoveWappMessage(@RequestParam long agentId,
-                                                  @RequestParam long sessionId,
-                                                  @RequestParam String campaignId,
-                                                  @RequestParam String processId,
-                                                  @RequestParam String messageId) {
+    @RequestMapping(value = ApiRoute.API_REMOVE_OPERATION_WAPP_MESSAGE, method = RequestMethod.POST)
+    public ResponseEntity<?> apiRemoveOperationWappMessage(@RequestParam long agentId,
+                                                           @RequestParam String operationId,
+                                                           @RequestParam String messageId) {
 
-        ApiWappMessageWSModel response = apiOperationWappMessageChannelMiddleware.apiRemoveWappMessage(agentId,sessionId,campaignId,processId,messageId);
+        ApiOperationWappMessageWSModel response = apiOperationWappMessageChannelMiddleware.apiRemoveOperationWappMessage(agentId,operationId,messageId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -120,13 +111,11 @@ public class ApiOperationWappMessageChannelController {
 
 
 
-    @RequestMapping(value = ApiRoute.API_GET_WAPP_MESSAGE_TEMPS, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetWappMessageTemps(@RequestParam long agentId,
-                                                    @RequestParam long sessionId,
-                                                    @RequestParam String campaignId,
-                                                    @RequestParam String processId) {
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_WAPP_MESSAGE_TEMPS, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationWappMessageTemps(@RequestParam long agentId,
+                                                             @RequestParam String operationId) {
 
-        ApiWappMessageTempWSModel response = apiOperationWappMessageChannelMiddleware.apiGetWappMessageTemps(agentId,sessionId,campaignId,processId);
+        ApiOperationWappMessageTempWSModel response = apiOperationWappMessageChannelMiddleware.apiGetOperationWappMessageTemps(agentId,operationId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -135,20 +124,19 @@ public class ApiOperationWappMessageChannelController {
     }
 
 
-    @RequestMapping(value = ApiRoute.API_GET_WAPP_MESSAGE_TEMP, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetWappMessageTemp(@RequestParam long agentId,
-                                                   @RequestParam long sessionId,
-                                                   @RequestParam String campaignId,
-                                                   @RequestParam String processId,
-                                                   @RequestParam String tempId) {
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_WAPP_MESSAGE_TEMP, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationWappMessageTemp(@RequestParam long agentId,
+                                                            @RequestParam String operationId,
+                                                            @RequestParam String messageTempId) {
 
-        ApiWappMessageTempWSModel response = apiOperationWappMessageChannelMiddleware.apiGetWappMessageTemp(agentId,sessionId,campaignId,processId,tempId);
+        ApiOperationWappMessageTempWSModel response = apiOperationWappMessageChannelMiddleware.apiGetOperationWappMessageTemp(agentId,operationId,messageTempId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
+
 
 
 }

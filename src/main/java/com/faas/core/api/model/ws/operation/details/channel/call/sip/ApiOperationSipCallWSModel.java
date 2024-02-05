@@ -3,17 +3,19 @@ package com.faas.core.api.model.ws.operation.details.channel.call.sip;
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationSipCallWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 
+import java.util.List;
+
 public class ApiOperationSipCallWSModel {
 
     private GeneralWSModel general;
-    private ApiOperationSipCallWSDTO operationSipCall;
+    private List<ApiOperationSipCallWSDTO> operationSipCalls;
 
     public ApiOperationSipCallWSModel() {
     }
 
-    public ApiOperationSipCallWSModel(GeneralWSModel general, ApiOperationSipCallWSDTO operationSipCall) {
+    public ApiOperationSipCallWSModel(GeneralWSModel general, List<ApiOperationSipCallWSDTO> operationSipCalls) {
         this.general = general;
-        this.operationSipCall = operationSipCall;
+        this.operationSipCalls = operationSipCalls;
     }
 
     public GeneralWSModel getGeneral() {
@@ -24,11 +26,11 @@ public class ApiOperationSipCallWSModel {
         this.general = general;
     }
 
-    public ApiOperationSipCallWSDTO getOperationSipCall() {
-        return operationSipCall;
+    public List<ApiOperationSipCallWSDTO> getOperationSipCalls() {
+        return operationSipCalls;
     }
 
-    public void setOperationSipCall(ApiOperationSipCallWSDTO operationSipCall) {
-        this.operationSipCall = operationSipCall;
+    public void setOperationSipCalls(List<ApiOperationSipCallWSDTO> operationSipCalls) {
+        this.operationSipCalls = operationSipCalls;
     }
 }

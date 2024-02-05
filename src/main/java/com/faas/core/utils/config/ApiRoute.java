@@ -91,10 +91,8 @@ public class ApiRoute {
     public static final String API_GET_CLIENT_OS_INT = "apigetclientosint";
 
 
-
     public static final String API_GET_OPERATION_ACTIVITIES = "apigetoperationactivities";
     public static final String API_GET_OPERATION_ACTIVITY = "apigetoperationactivity";
-
 
 
     public static final String API_GET_OPERATION_SCENARIOS = "apigetoperationscenarios";
@@ -108,71 +106,75 @@ public class ApiRoute {
 
 
 
+    public static final String API_GET_OPERATION_CALL_CHANNEL = "apigetoperationcallchannel";
+    public static final String API_GET_OPERATION_MESSAGE_CHANNEL = "apigetoperationmessagechannel";
+
+
+    public static final String API_GET_OPERATION_SIP_CHANNEL = "apigetoperationsipchannel";
+    public static final String API_GET_OPERATION_SIP_CALLS = "apigetoperationsipcalls";
     public static final String API_GET_OPERATION_SIP_CALL = "apigetoperationsipcall";
-    public static final String API_GET_SIP_CALLS = "apigetsipcalls";
-    public static final String API_GET_SIP_CALL = "apigetsipcall";
-    public static final String API_CREATE_SIP_CALL = "apicreatesipcall";
-    public static final String API_MAKE_SIP_CALL = "apimakesipcall";
-    public static final String API_END_SIP_CALL = "apiendsipcall";
-    public static final String API_FINISH_SIP_CALL = "apifinishsipcall";
-    public static final String API_UPDATE_SIP_CALL = "apiupdatesipcall";
-    public static final String API_REMOVE_SIP_CALL = "apiremovesipcall";
+    public static final String API_CREATE_OPERATION_SIP_CALL = "apicreateoperationsipcall";
+    public static final String API_MAKE_OPERATION_SIP_CALL = "apimakeoperationsipcall";
+    public static final String API_END_OPERATION_SIP_CALL = "apiendoperationsipcall";
+    public static final String API_FINISH_OPERATION_SIP_CALL = "apifinishoperationsipcall";
+    public static final String API_UPDATE_OPERATION_SIP_CALL = "apiupdateoperationsipcall";
+    public static final String API_REMOVE_OPERATION_SIP_CALL = "apiremoveoperationsipcall";
 
 
-
+    public static final String API_GET_OPERATION_WAPP_CALL_CHANNEL = "apigetoperationwappcallchannel";
+    public static final String API_GET_OPERATION_WAPP_CALLS = "apigetoperationwappcalls";
     public static final String API_GET_OPERATION_WAPP_CALL = "apigetoperationwappcall";
-    public static final String API_GET_WAPP_CALLS = "apigetwappcalls";
-    public static final String API_GET_WAPP_CALL = "apigetwappcall";
-    public static final String API_CREATE_WAPP_CALL = "apicreatewappcall";
-    public static final String API_MAKE_WAPP_CALL = "apimakewappcall";
-    public static final String API_END_WAPP_CALL = "apiendwappcall";
-    public static final String API_FINISH_WAPP_CALL = "apifinishwappcall";
-    public static final String API_UPDATE_WAPP_CALL = "apiupdatewappcall";
-    public static final String API_REMOVE_WAPP_CALL = "apiremovewappcall";
+    public static final String API_CREATE_OPERATION_WAPP_CALL = "apicreateoperationwappcall";
+    public static final String API_MAKE_OPERATION_WAPP_CALL = "apimakeoperationwappcall";
+    public static final String API_END_OPERATION_WAPP_CALL = "apiendoperationwappcall";
+    public static final String API_FINISH_OPERATION_WAPP_CALL = "apifinishoperationwappcall";
+    public static final String API_UPDATE_OPERATION_WAPP_CALL = "apiupdateoperationwappcall";
+    public static final String API_REMOVE_OPERATION_WAPP_CALL = "apiremoveoperationwappcall";
 
 
-    public static final String API_GET_OPERATION_SMS_MESSAGE = "apigetoperationsmsmessage";
-    public static final String API_GET_SMS_MESSAGES = "apigetsmsmessages";
-    public static final String API_GET_SMS_MESSAGE = "apigetsmsmessage";
-    public static final String API_SEND_SMS_MESSAGE = "apisendsmsmessage";
-    public static final String API_UPDATE_SMS_MESSAGE = "apiupdatesmsmessage";
-    public static final String API_REMOVE_SMS_MESSAGE = "apiremovesmsmessage";
+    public static final String API_GET_OPERATION_SMS_CHANNEL = "apigetoperationsmschannel";
+    public static final String API_GET_OPERATION_SMSS = "apigetoperationsmss";
+    public static final String API_GET_OPERATION_SMS = "apigetoperationsms";
+    public static final String API_SEND_OPERATION_SMS = "apisendoperationsms";
+    public static final String API_UPDATE_OPERATION_SMS = "apiupdateoperationsms";
+    public static final String API_REMOVE_OPERATION_SMS = "apiremoveoperationsms";
 
-    public static final String API_GET_SMS_MESSAGE_TEMPS = "apigetsmsmessagetemps";
-    public static final String API_GET_SMS_MESSAGE_TEMP = "apigetsmsmessagetemp";
+    public static final String API_GET_OPERATION_SMS_TEMPS = "apigetoperationsmstemps";
+    public static final String API_GET_OPERATION_SMS_TEMP = "apigetoperationsmstemp";
 
 
+    public static final String API_GET_OPERATION_WAPP_MESSAGE_CHANNEL = "apigetoperationwappmessagechannel";
+    public static final String API_GET_OPERATION_WAPP_MESSAGES = "apigetoperationwappmessages";
     public static final String API_GET_OPERATION_WAPP_MESSAGE = "apigetoperationwappmessage";
-    public static final String API_GET_WAPP_MESSAGES = "apigetwappmessages";
-    public static final String API_GET_WAPP_MESSAGE = "apigetwappmessage";
-    public static final String API_SEND_WAPP_MESSAGE = "apisendwappmessage";
-    public static final String API_UPDATE_WAPP_MESSAGE = "apiupdatewappmessage";
-    public static final String API_REMOVE_WAPP_MESSAGE = "apiremovewappmessage";
+    public static final String API_SEND_OPERATION_WAPP_MESSAGE = "apisendoperationwappmessage";
+    public static final String API_UPDATE_OPERATION_WAPP_MESSAGE = "apiupdateoperationwappmessage";
+    public static final String API_REMOVE_OPERATION_WAPP_MESSAGE = "apiremoveoperationwappmessage";
 
-    public static final String API_GET_WAPP_MESSAGE_TEMPS = "apigetwappmessagetemps";
-    public static final String API_GET_WAPP_MESSAGE_TEMP = "apigetwappmessagetemp";
+    public static final String API_GET_OPERATION_WAPP_MESSAGE_TEMPS = "apigetoperatiowappmessagetemps";
+    public static final String API_GET_OPERATION_WAPP_MESSAGE_TEMP = "apigetoperatiowappmessagetemp";
 
 
+    public static final String API_GET_OPERATION_EMAIL_CHANNEL = "apigetoperationemailchannel";
+    public static final String API_GET_OPERATION_EMAILS = "apigetoperationemails";
     public static final String API_GET_OPERATION_EMAIL = "apigetoperationemail";
-    public static final String API_GET_EMAILS = "apigetemails";
-    public static final String API_GET_EMAIL = "apigetemail";
-    public static final String API_SEND_EMAIL = "apisendemail";
-    public static final String API_UPDATE_EMAIL = "apiupdateemail";
-    public static final String API_REMOVE_EMAIL = "apiremoveemail";
+    public static final String API_SEND_OPERATION_EMAIL = "apisendoperationemail";
+    public static final String API_UPDATE_OPERATION_EMAIL = "apiupdateoperationemail";
+    public static final String API_REMOVE_OPERATION_EMAIL = "apiremoveoperationemail";
 
-    public static final String API_GET_EMAIL_TEMPS = "apigetemailtemps";
-    public static final String API_GET_EMAIL_TEMP = "apigetemailtemp";
+    public static final String API_GET_OPERATION_EMAIL_TEMPS = "apigetoperationemailtemps";
+    public static final String API_GET_OPERATION_EMAIL_TEMP = "apigetoperationemailtemp";
 
 
-    public static final String API_GET_OPERATION_PUSH_MESSAGE = "apigetoperationpushmessage";
-    public static final String API_GET_PUSH_MESSAGES = "apigetpushmessages";
-    public static final String API_GET_PUSH_MESSAGE = "apigetpushmessage";
-    public static final String API_SEND_PUSH_MESSAGE = "apisendpushmessage";
-    public static final String API_UPDATE_PUSH_MESSAGE = "apiupdatepushmessage";
-    public static final String API_REMOVE_PUSH_MESSAGE = "apiremovepushmessage";
+    public static final String API_GET_OPERATION_PUSH_CHANNEL = "apigetoperationpushchannel";
+    public static final String API_GET_OPERATION_PUSHES = "apigetoperationpushes";
+    public static final String API_GET_OPERATION_PUSH = "apigetoperationpush";
+    public static final String API_SEND_OPERATION_PUSH = "apisendoperationpush";
+    public static final String API_UPDATE_OPERATION_PUSH = "apiupdateoperationpush";
+    public static final String API_REMOVE_OPERATION_PUSH = "apiremoveoperationpush";
 
-    public static final String API_GET_PUSH_MESSAGE_TEMPS = "apigetpushmessagetemps";
-    public static final String API_GET_PUSH_MESSAGE_TEMP = "apigetpushmessagetemp";
+    public static final String API_GET_OPERATION_PUSH_TEMPS = "apigetoperationpushtemps";
+    public static final String API_GET_OPERATION_PUSH_TEMP = "apigetoperationpushtemp";
+
 
 
 }

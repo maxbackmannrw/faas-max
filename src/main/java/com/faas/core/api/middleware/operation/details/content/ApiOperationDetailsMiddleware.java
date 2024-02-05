@@ -108,13 +108,13 @@ public class ApiOperationDetailsMiddleware {
     }
 
 
-    public ApiOperationWSModel apiOperationSwitch(long agentId,String operationId,String selectedOperationId) {
+    public ApiOperationWSModel apiOperationSwitch(long agentId,String operationId,String selectedId) {
 
         ApiOperationWSModel response = new ApiOperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ApiOperationWSDTO> operationWSDTOS = new ArrayList<>();
 
-        ApiOperationWSDTO operationWSDTO = apiOperationDetailsFramework.apiOperationSwitchService(agentId,operationId,selectedOperationId);
+        ApiOperationWSDTO operationWSDTO = apiOperationDetailsFramework.apiOperationSwitchService(agentId,operationId,selectedId);
         if (operationWSDTO != null){
             operationWSDTOS.add(operationWSDTO);
         }

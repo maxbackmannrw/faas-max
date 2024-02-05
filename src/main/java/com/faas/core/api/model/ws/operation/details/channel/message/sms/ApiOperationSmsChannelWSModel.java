@@ -7,14 +7,14 @@ import com.faas.core.base.model.ws.general.GeneralWSModel;
 public class ApiOperationSmsChannelWSModel {
 
     private GeneralWSModel general;
-    private ApiOperationSmsChannelWSDTO smsChannel;
+    private ApiOperationSmsChannelWSDTO operationSmsMessage;
 
     public ApiOperationSmsChannelWSModel() {
     }
 
-    public ApiOperationSmsChannelWSModel(GeneralWSModel general, ApiOperationSmsChannelWSDTO smsChannel) {
+    public ApiOperationSmsChannelWSModel(GeneralWSModel general, ApiOperationSmsChannelWSDTO operationSmsMessage) {
         this.general = general;
-        this.smsChannel = smsChannel;
+        this.operationSmsMessage = operationSmsMessage;
     }
 
     public GeneralWSModel getGeneral() {
@@ -25,11 +25,11 @@ public class ApiOperationSmsChannelWSModel {
         this.general = general;
     }
 
-    public ApiOperationSmsChannelWSDTO getSmsChannel() {
-        return smsChannel;
+    public ApiOperationSmsChannelWSDTO getOperationSmsMessage() {
+        return operationSmsMessage;
     }
 
-    public void setSmsChannel(ApiOperationSmsChannelWSDTO smsChannel) {
-        this.smsChannel = smsChannel;
+    public void setOperationSmsMessage(ApiOperationSmsChannelWSDTO operationSmsMessage) {
+        this.operationSmsMessage = operationSmsMessage;
     }
 }

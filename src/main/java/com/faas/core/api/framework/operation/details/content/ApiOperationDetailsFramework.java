@@ -135,7 +135,7 @@ public class ApiOperationDetailsFramework {
     }
 
 
-    public ApiOperationWSDTO apiOperationSwitchService(long agentId,String operationId,String selectedOperationId) {
+    public ApiOperationWSDTO apiOperationSwitchService(long agentId,String operationId,String selectedId) {
 
         return null;
     }

@@ -1,18 +1,18 @@
 package com.faas.core.api.model.ws.operation.details.channel.message.sms;
 
-import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiSmsMessageTempWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiOperationSmsTempWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 
 
-public class ApiSmsMessageTempWSModel {
+public class ApiOperationSmsTempWSModel {
 
     private GeneralWSModel general;
-    private ApiSmsMessageTempWSDTO smsMessageTemp;
+    private ApiOperationSmsTempWSDTO smsMessageTemp;
 
-    public ApiSmsMessageTempWSModel() {
+    public ApiOperationSmsTempWSModel() {
     }
 
-    public ApiSmsMessageTempWSModel(GeneralWSModel general, ApiSmsMessageTempWSDTO smsMessageTemp) {
+    public ApiOperationSmsTempWSModel(GeneralWSModel general, ApiOperationSmsTempWSDTO smsMessageTemp) {
         this.general = general;
         this.smsMessageTemp = smsMessageTemp;
     }
@@ -25,11 +25,11 @@ public class ApiSmsMessageTempWSModel {
         this.general = general;
     }
 
-    public ApiSmsMessageTempWSDTO getSmsMessageTemp() {
+    public ApiOperationSmsTempWSDTO getSmsMessageTemp() {
         return smsMessageTemp;
     }
 
-    public void setSmsMessageTemp(ApiSmsMessageTempWSDTO smsMessageTemp) {
+    public void setSmsMessageTemp(ApiOperationSmsTempWSDTO smsMessageTemp) {
         this.smsMessageTemp = smsMessageTemp;
     }
 }

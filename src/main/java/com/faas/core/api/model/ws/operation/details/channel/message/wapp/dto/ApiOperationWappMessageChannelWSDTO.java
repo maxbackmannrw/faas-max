@@ -1,6 +1,6 @@
 package com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto;
 
-import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiWappAccountWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiWappCallAccountWSDTO;
 import com.faas.core.base.model.db.operation.details.channel.OperationWappMessageDBModel;
 import com.faas.core.base.model.db.process.details.channel.temp.ProcessWappMessageTempDBModel;
 
@@ -8,40 +8,40 @@ import java.util.List;
 
 public class ApiOperationWappMessageChannelWSDTO {
 
-    private ApiWappAccountWSDTO wappAccount;
-    private List<OperationWappMessageDBModel>wappMessages;
-    private List<ProcessWappMessageTempDBModel>wappTemps;
+    private ApiWappCallAccountWSDTO wappMessageAccount;
+    private List<OperationWappMessageDBModel>operationWappMessages;
+    private List<ProcessWappMessageTempDBModel>operationWappMessageTemps;
 
     public ApiOperationWappMessageChannelWSDTO() {
     }
 
-    public ApiOperationWappMessageChannelWSDTO(ApiWappAccountWSDTO wappAccount, List<OperationWappMessageDBModel> wappMessages, List<ProcessWappMessageTempDBModel> wappTemps) {
-        this.wappAccount = wappAccount;
-        this.wappMessages = wappMessages;
-        this.wappTemps = wappTemps;
+    public ApiOperationWappMessageChannelWSDTO(ApiWappCallAccountWSDTO wappMessageAccount, List<OperationWappMessageDBModel> operationWappMessages, List<ProcessWappMessageTempDBModel> operationWappMessageTemps) {
+        this.wappMessageAccount = wappMessageAccount;
+        this.operationWappMessages = operationWappMessages;
+        this.operationWappMessageTemps = operationWappMessageTemps;
     }
 
-    public ApiWappAccountWSDTO getWappAccount() {
-        return wappAccount;
+    public ApiWappCallAccountWSDTO getWappMessageAccount() {
+        return wappMessageAccount;
     }
 
-    public void setWappAccount(ApiWappAccountWSDTO wappAccount) {
-        this.wappAccount = wappAccount;
+    public void setWappMessageAccount(ApiWappCallAccountWSDTO wappMessageAccount) {
+        this.wappMessageAccount = wappMessageAccount;
     }
 
-    public List<OperationWappMessageDBModel> getWappMessages() {
-        return wappMessages;
+    public List<OperationWappMessageDBModel> getOperationWappMessages() {
+        return operationWappMessages;
     }
 
-    public void setWappMessages(List<OperationWappMessageDBModel> wappMessages) {
-        this.wappMessages = wappMessages;
+    public void setOperationWappMessages(List<OperationWappMessageDBModel> operationWappMessages) {
+        this.operationWappMessages = operationWappMessages;
     }
 
-    public List<ProcessWappMessageTempDBModel> getWappTemps() {
-        return wappTemps;
+    public List<ProcessWappMessageTempDBModel> getOperationWappMessageTemps() {
+        return operationWappMessageTemps;
     }
 
-    public void setWappTemps(List<ProcessWappMessageTempDBModel> wappTemps) {
-        this.wappTemps = wappTemps;
+    public void setOperationWappMessageTemps(List<ProcessWappMessageTempDBModel> operationWappMessageTemps) {
+        this.operationWappMessageTemps = operationWappMessageTemps;
     }
 }

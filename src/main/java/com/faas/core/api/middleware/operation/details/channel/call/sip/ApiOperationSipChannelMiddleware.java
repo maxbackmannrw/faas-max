@@ -2,9 +2,9 @@ package com.faas.core.api.middleware.operation.details.channel.call.sip;
 
 import com.faas.core.api.framework.operation.details.channel.call.sip.ApiOperationSipChannelFramework;
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.ApiOperationSipCallWSModel;
-import com.faas.core.api.model.ws.operation.details.channel.call.sip.ApiSipCallWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.call.sip.ApiOperationSipChannelWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationSipCallWSDTO;
-import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiSipCallWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationSipChannelWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,14 +21,14 @@ public class ApiOperationSipChannelMiddleware {
     ApiOperationSipChannelFramework apiOperationSipChannelFramework;
 
 
-    public ApiOperationSipCallWSModel apiGetOperationSipCall(long agentId,long sessionId,long clientId) {
+    public ApiOperationSipChannelWSModel apiGetOperationSipChannel(long agentId, String operationId) {
 
-        ApiOperationSipCallWSModel response = new ApiOperationSipCallWSModel();
+        ApiOperationSipChannelWSModel response = new ApiOperationSipChannelWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiOperationSipCallWSDTO operationSipCallWSDTO = apiOperationSipChannelFramework.apiGetOperationSipCallService(agentId,sessionId,clientId);
-        if (operationSipCallWSDTO != null){
-            response.setOperationSipCall(operationSipCallWSDTO);
+        ApiOperationSipChannelWSDTO operationSipChannelWSDTO = apiOperationSipChannelFramework.apiGetOperationSipChannelService(agentId,operationId);
+        if (operationSipChannelWSDTO != null){
+            response.setSipChannel(operationSipChannelWSDTO);
         }
 
         general.setOperation("apiGetOperationSipCall");
@@ -41,17 +41,17 @@ public class ApiOperationSipChannelMiddleware {
     }
 
 
-    public ApiSipCallWSModel apiGetSipCalls(long agentId,long sessionId,long clientId) {
+    public ApiOperationSipCallWSModel apiGetOperationSipCalls(long agentId, String operationId) {
 
-        ApiSipCallWSModel response = new ApiSipCallWSModel();
+        ApiOperationSipCallWSModel response = new ApiOperationSipCallWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ApiSipCallWSDTO> sipCallWSDTOS = apiOperationSipChannelFramework.apiGetSipCallsService(agentId,sessionId,clientId);
-        if (sipCallWSDTOS != null){
-            response.setSipCalls(sipCallWSDTOS);
+        List<ApiOperationSipCallWSDTO> operationSipCallWSDTOS = apiOperationSipChannelFramework.apiGetOperationSipCallsService(agentId,operationId);
+        if (operationSipCallWSDTOS != null){
+            response.setOperationSipCalls(operationSipCallWSDTOS);
         }
 
-        general.setOperation("apiGetSipCalls");
+        general.setOperation("apiGetOperationSipCalls");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -61,19 +61,19 @@ public class ApiOperationSipChannelMiddleware {
     }
 
 
-    public ApiSipCallWSModel apiGetSipCall(long agentId,long sessionId,long clientId,long callId) {
+    public ApiOperationSipCallWSModel apiGetOperationSipCall(long agentId,String operationId,long callId) {
 
-        ApiSipCallWSModel response = new ApiSipCallWSModel();
+        ApiOperationSipCallWSModel response = new ApiOperationSipCallWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ApiSipCallWSDTO>sipCallWSDTOS = new ArrayList<>();
+        List<ApiOperationSipCallWSDTO>operationSipCallWSDTOS = new ArrayList<>();
 
-        ApiSipCallWSDTO sipCallWSDTO = apiOperationSipChannelFramework.apiGetSipCallService(agentId,sessionId,clientId,callId);
-        if (sipCallWSDTO != null){
-            sipCallWSDTOS.add(sipCallWSDTO);
+        ApiOperationSipCallWSDTO operationSipCallWSDTO = apiOperationSipChannelFramework.apiGetOperationSipCallService(agentId,operationId,callId);
+        if (operationSipCallWSDTO != null){
+            operationSipCallWSDTOS.add(operationSipCallWSDTO);
         }
 
-        response.setSipCalls(sipCallWSDTOS);
-        general.setOperation("apiGetSipCall");
+        response.setOperationSipCalls(operationSipCallWSDTOS);
+        general.setOperation("apiGetOperationSipCall");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -83,19 +83,19 @@ public class ApiOperationSipChannelMiddleware {
     }
 
 
-    public ApiSipCallWSModel apiCreateSipCall(long agentId,long sessionId,long clientId,long numberId) {
+    public ApiOperationSipCallWSModel apiCreateOperationSipCall(long agentId,String operationId,String numberId) {
 
-        ApiSipCallWSModel response = new ApiSipCallWSModel();
+        ApiOperationSipCallWSModel response = new ApiOperationSipCallWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ApiSipCallWSDTO>sipCallWSDTOS = new ArrayList<>();
+        List<ApiOperationSipCallWSDTO>operationSipCallWSDTOS = new ArrayList<>();
 
-        ApiSipCallWSDTO sipCallWSDTO = apiOperationSipChannelFramework.apiCreateSipCallService(agentId,sessionId,clientId,numberId);
-        if (sipCallWSDTO != null){
-            sipCallWSDTOS.add(sipCallWSDTO);
+        ApiOperationSipCallWSDTO operationSipCallWSDTO = apiOperationSipChannelFramework.apiCreateOperationSipCallService(agentId,operationId,numberId);
+        if (operationSipCallWSDTO != null){
+            operationSipCallWSDTOS.add(operationSipCallWSDTO);
         }
 
-        response.setSipCalls(sipCallWSDTOS);
-        general.setOperation("apiCreateSipCall");
+        response.setOperationSipCalls(operationSipCallWSDTOS);
+        general.setOperation("apiCreateOperationSipCall");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -105,19 +105,19 @@ public class ApiOperationSipChannelMiddleware {
     }
 
 
-    public ApiSipCallWSModel apiMakeSipCall(long agentId,long sessionId,long clientId,long callId) {
+    public ApiOperationSipCallWSModel apiMakeOperationSipCall(long agentId,String operationId,long callId) {
 
-        ApiSipCallWSModel response = new ApiSipCallWSModel();
+        ApiOperationSipCallWSModel response = new ApiOperationSipCallWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ApiSipCallWSDTO>sipCallWSDTOS = new ArrayList<>();
+        List<ApiOperationSipCallWSDTO>operationSipCallWSDTOS = new ArrayList<>();
 
-        ApiSipCallWSDTO sipCallWSDTO = apiOperationSipChannelFramework.apiMakeSipCallService(agentId,sessionId,clientId,callId);
-        if (sipCallWSDTO != null){
-            sipCallWSDTOS.add(sipCallWSDTO);
+        ApiOperationSipCallWSDTO operationSipCallWSDTO = apiOperationSipChannelFramework.apiMakeOperationSipCallService(agentId,operationId,callId);
+        if (operationSipCallWSDTO != null){
+            operationSipCallWSDTOS.add(operationSipCallWSDTO);
         }
 
-        response.setSipCalls(sipCallWSDTOS);
-        general.setOperation("apiMakeSipCall");
+        response.setOperationSipCalls(operationSipCallWSDTOS);
+        general.setOperation("apiMakeOperationSipCall");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -127,19 +127,19 @@ public class ApiOperationSipChannelMiddleware {
     }
 
 
-    public ApiSipCallWSModel apiEndSipCall(long agentId,long sessionId,long clientId,long callId) {
+    public ApiOperationSipCallWSModel apiEndOperationSipCall(long agentId,String operationId,long callId) {
 
-        ApiSipCallWSModel response = new ApiSipCallWSModel();
+        ApiOperationSipCallWSModel response = new ApiOperationSipCallWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ApiSipCallWSDTO>sipCallWSDTOS = new ArrayList<>();
+        List<ApiOperationSipCallWSDTO>operationSipCallWSDTOS = new ArrayList<>();
 
-        ApiSipCallWSDTO sipCallWSDTO = apiOperationSipChannelFramework.apiEndSipCallService(agentId,sessionId,clientId,callId);
-        if (sipCallWSDTO != null){
-            sipCallWSDTOS.add(sipCallWSDTO);
+        ApiOperationSipCallWSDTO operationSipCallWSDTO = apiOperationSipChannelFramework.apiEndOperationSipCallService(agentId,operationId,callId);
+        if (operationSipCallWSDTO != null){
+            operationSipCallWSDTOS.add(operationSipCallWSDTO);
         }
 
-        response.setSipCalls(sipCallWSDTOS);
-        general.setOperation("apiEndSipCall");
+        response.setOperationSipCalls(operationSipCallWSDTOS);
+        general.setOperation("apiEndOperationSipCall");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -150,19 +150,19 @@ public class ApiOperationSipChannelMiddleware {
 
 
 
-    public ApiSipCallWSModel apiFinishSipCall(long agentId,long sessionId,long clientId,long callId) {
+    public ApiOperationSipCallWSModel apiFinishOperationSipCall(long agentId,String operationId,long callId) {
 
-        ApiSipCallWSModel response = new ApiSipCallWSModel();
+        ApiOperationSipCallWSModel response = new ApiOperationSipCallWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ApiSipCallWSDTO>sipCallWSDTOS = new ArrayList<>();
+        List<ApiOperationSipCallWSDTO>operationSipCallWSDTOS = new ArrayList<>();
 
-        ApiSipCallWSDTO sipCallWSDTO = apiOperationSipChannelFramework.apiFinishSipCallService(agentId,sessionId,clientId,callId);
-        if (sipCallWSDTO != null){
-            sipCallWSDTOS.add(sipCallWSDTO);
+        ApiOperationSipCallWSDTO operationSipCallWSDTO = apiOperationSipChannelFramework.apiFinishOperationSipCallService(agentId,operationId,callId);
+        if (operationSipCallWSDTO != null){
+            operationSipCallWSDTOS.add(operationSipCallWSDTO);
         }
 
-        response.setSipCalls(sipCallWSDTOS);
-        general.setOperation("apiFinishSipCall");
+        response.setOperationSipCalls(operationSipCallWSDTOS);
+        general.setOperation("apiFinishOperationSipCall");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -172,19 +172,19 @@ public class ApiOperationSipChannelMiddleware {
     }
 
 
-    public ApiSipCallWSModel apiUpdateSipCall(long agentId,long sessionId,long clientId,long callId,String callState) {
+    public ApiOperationSipCallWSModel apiUpdateOperationSipCall(long agentId,String operationId,long callId,String callState) {
 
-        ApiSipCallWSModel response = new ApiSipCallWSModel();
+        ApiOperationSipCallWSModel response = new ApiOperationSipCallWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ApiSipCallWSDTO>sipCallWSDTOS = new ArrayList<>();
+        List<ApiOperationSipCallWSDTO>operationSipCallWSDTOS = new ArrayList<>();
 
-        ApiSipCallWSDTO sipCallWSDTO = apiOperationSipChannelFramework.apiUpdateSipCallService(agentId,sessionId,clientId,callId,callState);
-        if (sipCallWSDTO != null){
-            sipCallWSDTOS.add(sipCallWSDTO);
+        ApiOperationSipCallWSDTO operationSipCallWSDTO = apiOperationSipChannelFramework.apiUpdateOperationSipCallService(agentId,operationId,callId,callState);
+        if (operationSipCallWSDTO != null){
+            operationSipCallWSDTOS.add(operationSipCallWSDTO);
         }
 
-        response.setSipCalls(sipCallWSDTOS);
-        general.setOperation("apiUpdateSipCall");
+        response.setOperationSipCalls(operationSipCallWSDTOS);
+        general.setOperation("apiUpdateOperationSipCall");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -194,19 +194,19 @@ public class ApiOperationSipChannelMiddleware {
     }
 
 
-    public ApiSipCallWSModel apiRemoveSipCall(long agentId,long sessionId,long clientId,long callId) {
+    public ApiOperationSipCallWSModel apiRemoveOperationSipCall(long agentId,String operationId,long callId) {
 
-        ApiSipCallWSModel response = new ApiSipCallWSModel();
+        ApiOperationSipCallWSModel response = new ApiOperationSipCallWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ApiSipCallWSDTO>sipCallWSDTOS = new ArrayList<>();
+        List<ApiOperationSipCallWSDTO>operationSipCallWSDTOS = new ArrayList<>();
 
-        ApiSipCallWSDTO sipCallWSDTO = apiOperationSipChannelFramework.apiRemoveSipCallService(agentId,clientId,sessionId,callId);
-        if (sipCallWSDTO != null){
-            sipCallWSDTOS.add(sipCallWSDTO);
+        ApiOperationSipCallWSDTO operationSipCallWSDTO = apiOperationSipChannelFramework.apiRemoveOperationSipCallService(agentId,operationId,callId);
+        if (operationSipCallWSDTO != null){
+            operationSipCallWSDTOS.add(operationSipCallWSDTO);
         }
 
-        response.setSipCalls(sipCallWSDTOS);
-        general.setOperation("apiRemoveSipCall");
+        response.setOperationSipCalls(operationSipCallWSDTOS);
+        general.setOperation("apiRemoveOperationSipCall");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -214,8 +214,6 @@ public class ApiOperationSipChannelMiddleware {
 
         return response;
     }
-
-
 
 
 

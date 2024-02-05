@@ -1,22 +1,21 @@
 package com.faas.core.api.model.ws.operation.details.channel.call.sip;
 
-import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiSipCallWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiSipAccountWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 
 import java.util.List;
 
-
 public class ApiSipAccountWSModel {
 
     private GeneralWSModel general;
-    private List<ApiSipCallWSDTO>sipCalls;
+    private List<ApiSipAccountWSDTO>sipAccounts;
 
     public ApiSipAccountWSModel() {
     }
 
-    public ApiSipAccountWSModel(GeneralWSModel general, List<ApiSipCallWSDTO> sipCalls) {
+    public ApiSipAccountWSModel(GeneralWSModel general, List<ApiSipAccountWSDTO> sipAccounts) {
         this.general = general;
-        this.sipCalls = sipCalls;
+        this.sipAccounts = sipAccounts;
     }
 
     public GeneralWSModel getGeneral() {
@@ -27,11 +26,11 @@ public class ApiSipAccountWSModel {
         this.general = general;
     }
 
-    public List<ApiSipCallWSDTO> getSipCalls() {
-        return sipCalls;
+    public List<ApiSipAccountWSDTO> getSipAccounts() {
+        return sipAccounts;
     }
 
-    public void setSipCalls(List<ApiSipCallWSDTO> sipCalls) {
-        this.sipCalls = sipCalls;
+    public void setSipAccounts(List<ApiSipAccountWSDTO> sipAccounts) {
+        this.sipAccounts = sipAccounts;
     }
 }

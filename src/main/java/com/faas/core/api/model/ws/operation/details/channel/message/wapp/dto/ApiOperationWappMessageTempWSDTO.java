@@ -1,28 +1,28 @@
 package com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto;
 
-import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiWappAccountWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiWappCallAccountWSDTO;
 import com.faas.core.base.model.db.process.details.channel.temp.ProcessWappMessageTempDBModel;
 
 import java.util.List;
 
-public class ApiWappMessageTempWSDTO {
+public class ApiOperationWappMessageTempWSDTO {
 
-    private ApiWappAccountWSDTO wappAccount;
+    private ApiWappCallAccountWSDTO wappAccount;
     private List<ProcessWappMessageTempDBModel>wappTemps;
 
-    public ApiWappMessageTempWSDTO() {
+    public ApiOperationWappMessageTempWSDTO() {
     }
 
-    public ApiWappMessageTempWSDTO(ApiWappAccountWSDTO wappAccount, List<ProcessWappMessageTempDBModel> wappTemps) {
+    public ApiOperationWappMessageTempWSDTO(ApiWappCallAccountWSDTO wappAccount, List<ProcessWappMessageTempDBModel> wappTemps) {
         this.wappAccount = wappAccount;
         this.wappTemps = wappTemps;
     }
 
-    public ApiWappAccountWSDTO getWappAccount() {
+    public ApiWappCallAccountWSDTO getWappAccount() {
         return wappAccount;
     }
 
-    public void setWappAccount(ApiWappAccountWSDTO wappAccount) {
+    public void setWappAccount(ApiWappCallAccountWSDTO wappAccount) {
         this.wappAccount = wappAccount;
     }
 

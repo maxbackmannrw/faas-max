@@ -2,14 +2,14 @@ package com.faas.core.api.model.ws.operation.details.channel.message.email.dto;
 
 import com.faas.core.base.model.db.process.details.channel.temp.ProcessEmailTempDBModel;
 
-public class ApiEmailTempWSDTO {
+public class ApiOperationEmailTempWSDTO {
 
     private ProcessEmailTempDBModel emailTemp;
 
-    public ApiEmailTempWSDTO() {
+    public ApiOperationEmailTempWSDTO() {
     }
 
-    public ApiEmailTempWSDTO(ProcessEmailTempDBModel emailTemp) {
+    public ApiOperationEmailTempWSDTO(ProcessEmailTempDBModel emailTemp) {
         this.emailTemp = emailTemp;
     }
 

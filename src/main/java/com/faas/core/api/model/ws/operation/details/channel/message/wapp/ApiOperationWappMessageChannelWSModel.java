@@ -1,17 +1,18 @@
 package com.faas.core.api.model.ws.operation.details.channel.message.wapp;
 
-import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.ApiOperationWappMessageWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.ApiOperationWappMessageChannelWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
+
 
 public class ApiOperationWappMessageChannelWSModel {
 
     private GeneralWSModel general;
-    private ApiOperationWappMessageWSDTO operationWappMessage;
+    private ApiOperationWappMessageChannelWSDTO operationWappMessage;
 
     public ApiOperationWappMessageChannelWSModel() {
     }
 
-    public ApiOperationWappMessageChannelWSModel(GeneralWSModel general, ApiOperationWappMessageWSDTO operationWappMessage) {
+    public ApiOperationWappMessageChannelWSModel(GeneralWSModel general, ApiOperationWappMessageChannelWSDTO operationWappMessage) {
         this.general = general;
         this.operationWappMessage = operationWappMessage;
     }
@@ -24,11 +25,11 @@ public class ApiOperationWappMessageChannelWSModel {
         this.general = general;
     }
 
-    public ApiOperationWappMessageWSDTO getOperationWappMessage() {
+    public ApiOperationWappMessageChannelWSDTO getOperationWappMessage() {
         return operationWappMessage;
     }
 
-    public void setOperationWappMessage(ApiOperationWappMessageWSDTO operationWappMessage) {
+    public void setOperationWappMessage(ApiOperationWappMessageChannelWSDTO operationWappMessage) {
         this.operationWappMessage = operationWappMessage;
     }
 }

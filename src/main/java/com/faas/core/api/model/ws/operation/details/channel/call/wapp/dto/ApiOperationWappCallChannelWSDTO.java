@@ -6,33 +6,33 @@ import java.util.List;
 
 public class ApiOperationWappCallChannelWSDTO {
 
-    private ApiWappAccountWSDTO wappAccount;
-    private OperationWappCallDBModel currentWappCall;
+    private ApiWappCallAccountWSDTO wappCallAccount;
+    private OperationWappCallDBModel activeWappCall;
     private List<OperationWappCallDBModel>recentWappCalls;
 
     public ApiOperationWappCallChannelWSDTO() {
     }
 
-    public ApiOperationWappCallChannelWSDTO(ApiWappAccountWSDTO wappAccount, OperationWappCallDBModel currentWappCall, List<OperationWappCallDBModel> recentWappCalls) {
-        this.wappAccount = wappAccount;
-        this.currentWappCall = currentWappCall;
+    public ApiOperationWappCallChannelWSDTO(ApiWappCallAccountWSDTO wappCallAccount, OperationWappCallDBModel activeWappCall, List<OperationWappCallDBModel> recentWappCalls) {
+        this.wappCallAccount = wappCallAccount;
+        this.activeWappCall = activeWappCall;
         this.recentWappCalls = recentWappCalls;
     }
 
-    public ApiWappAccountWSDTO getWappAccount() {
-        return wappAccount;
+    public ApiWappCallAccountWSDTO getWappCallAccount() {
+        return wappCallAccount;
     }
 
-    public void setWappAccount(ApiWappAccountWSDTO wappAccount) {
-        this.wappAccount = wappAccount;
+    public void setWappCallAccount(ApiWappCallAccountWSDTO wappCallAccount) {
+        this.wappCallAccount = wappCallAccount;
     }
 
-    public OperationWappCallDBModel getCurrentWappCall() {
-        return currentWappCall;
+    public OperationWappCallDBModel getActiveWappCall() {
+        return activeWappCall;
     }
 
-    public void setCurrentWappCall(OperationWappCallDBModel currentWappCall) {
-        this.currentWappCall = currentWappCall;
+    public void setActiveWappCall(OperationWappCallDBModel activeWappCall) {
+        this.activeWappCall = activeWappCall;
     }
 
     public List<OperationWappCallDBModel> getRecentWappCalls() {

@@ -4,15 +4,15 @@ import com.faas.core.base.model.db.process.details.channel.temp.ProcessSmsMessag
 
 import java.util.List;
 
-public class ApiSmsMessageTempWSDTO {
+public class ApiOperationSmsTempWSDTO {
 
     private ApiSmsAccountWSDTO smsAccount;
     private List<ProcessSmsMessageTempDBModel>smsTemps;
 
-    public ApiSmsMessageTempWSDTO() {
+    public ApiOperationSmsTempWSDTO() {
     }
 
-    public ApiSmsMessageTempWSDTO(ApiSmsAccountWSDTO smsAccount, List<ProcessSmsMessageTempDBModel> smsTemps) {
+    public ApiOperationSmsTempWSDTO(ApiSmsAccountWSDTO smsAccount, List<ProcessSmsMessageTempDBModel> smsTemps) {
         this.smsAccount = smsAccount;
         this.smsTemps = smsTemps;
     }

@@ -1,6 +1,6 @@
 package com.faas.core.api.model.ws.operation.details.channel.message.email;
 
-import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiEmailWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiEmailAccountWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 
 import java.util.List;
@@ -8,14 +8,14 @@ import java.util.List;
 public class ApiEmailAccountWSModel {
 
     private GeneralWSModel general;
-    private List<ApiEmailWSDTO> emails;
+    private List<ApiEmailAccountWSDTO> emailAccounts;
 
     public ApiEmailAccountWSModel() {
     }
 
-    public ApiEmailAccountWSModel(GeneralWSModel general, List<ApiEmailWSDTO> emails) {
+    public ApiEmailAccountWSModel(GeneralWSModel general, List<ApiEmailAccountWSDTO> emailAccounts) {
         this.general = general;
-        this.emails = emails;
+        this.emailAccounts = emailAccounts;
     }
 
     public GeneralWSModel getGeneral() {
@@ -26,11 +26,11 @@ public class ApiEmailAccountWSModel {
         this.general = general;
     }
 
-    public List<ApiEmailWSDTO> getEmails() {
-        return emails;
+    public List<ApiEmailAccountWSDTO> getEmailAccounts() {
+        return emailAccounts;
     }
 
-    public void setEmails(List<ApiEmailWSDTO> emails) {
-        this.emails = emails;
+    public void setEmailAccounts(List<ApiEmailAccountWSDTO> emailAccounts) {
+        this.emailAccounts = emailAccounts;
     }
 }

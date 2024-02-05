@@ -1,6 +1,5 @@
 package com.faas.core.api.framework.operation.details.channel.message.email;
 
-import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiEmailWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiOperationEmailWSDTO;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,43 +20,43 @@ public class ApiOperationEmailChannelFramework {
 
 
 
-    public ApiEmailWSDTO apiGetEmailMessagesService() {
+    public ApiOperationEmailWSDTO apiGetEmailMessagesService() {
 
         return null;
     }
 
 
-    public ApiEmailWSDTO apiGetEmailMessageService() {
+    public ApiOperationEmailWSDTO apiGetEmailMessageService() {
 
         return null;
     }
 
 
-    public ApiEmailWSDTO apiSendEmailMessageService() {
+    public ApiOperationEmailWSDTO apiSendEmailMessageService() {
 
         return null;
     }
 
 
-    public ApiEmailWSDTO apiUpdateEmailMessageService() {
+    public ApiOperationEmailWSDTO apiUpdateEmailMessageService() {
 
         return null;
     }
 
 
-    public ApiEmailWSDTO apiRemoveEmailMessageService() {
+    public ApiOperationEmailWSDTO apiRemoveEmailMessageService() {
 
         return null;
     }
 
 
-    public ApiEmailWSDTO apiGetEmailMessageTempsService() {
+    public ApiOperationEmailWSDTO apiGetEmailMessageTempsService() {
 
         return null;
     }
 
 
-    public ApiEmailWSDTO apiGetEmailMessageTempService() {
+    public ApiOperationEmailWSDTO apiGetEmailMessageTempService() {
 
         return null;
     }

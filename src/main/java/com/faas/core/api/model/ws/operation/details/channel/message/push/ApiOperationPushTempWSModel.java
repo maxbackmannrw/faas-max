@@ -1,19 +1,19 @@
 package com.faas.core.api.model.ws.operation.details.channel.message.push;
 
-import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiPushMessageTempWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushTempWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 
 import java.util.List;
 
-public class ApiPushMessageTempWSModel {
+public class ApiOperationPushTempWSModel {
 
     private GeneralWSModel general;
-    private List<ApiPushMessageTempWSDTO>pushTemps;
+    private List<ApiOperationPushTempWSDTO>pushTemps;
 
-    public ApiPushMessageTempWSModel() {
+    public ApiOperationPushTempWSModel() {
     }
 
-    public ApiPushMessageTempWSModel(GeneralWSModel general, List<ApiPushMessageTempWSDTO> pushTemps) {
+    public ApiOperationPushTempWSModel(GeneralWSModel general, List<ApiOperationPushTempWSDTO> pushTemps) {
         this.general = general;
         this.pushTemps = pushTemps;
     }
@@ -26,11 +26,11 @@ public class ApiPushMessageTempWSModel {
         this.general = general;
     }
 
-    public List<ApiPushMessageTempWSDTO> getPushTemps() {
+    public List<ApiOperationPushTempWSDTO> getPushTemps() {
         return pushTemps;
     }
 
-    public void setPushTemps(List<ApiPushMessageTempWSDTO> pushTemps) {
+    public void setPushTemps(List<ApiOperationPushTempWSDTO> pushTemps) {
         this.pushTemps = pushTemps;
     }
 }

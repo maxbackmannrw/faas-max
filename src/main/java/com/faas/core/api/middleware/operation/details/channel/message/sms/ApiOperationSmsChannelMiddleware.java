@@ -1,12 +1,12 @@
 package com.faas.core.api.middleware.operation.details.channel.message.sms;
 
 import com.faas.core.api.framework.operation.details.channel.message.sms.ApiOperationSmsChannelFramework;
-import com.faas.core.api.model.ws.operation.details.channel.message.sms.ApiOperationSmsMessageWSModel;
-import com.faas.core.api.model.ws.operation.details.channel.message.sms.ApiSmsMessageTempWSModel;
-import com.faas.core.api.model.ws.operation.details.channel.message.sms.ApiSmsMessageWSModel;
-import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiOperationSmsMessageWSDTO;
-import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiSmsMessageTempWSDTO;
-import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiSmsMessageWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.sms.ApiOperationSmsChannelWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.message.sms.ApiOperationSmsTempWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.message.sms.ApiOperationSmsWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiOperationSmsChannelWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiOperationSmsTempWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiOperationSmsWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,12 +24,12 @@ public class ApiOperationSmsChannelMiddleware {
     ApiOperationSmsChannelFramework apiOperationSmsChannelFramework;
 
 
-    public ApiOperationSmsMessageWSModel apiGetOperationSmsMessage(long agentId,long sessionId) {
+    public ApiOperationSmsChannelWSModel apiGetOperationSmsChannel(long agentId,String operationId) {
 
-        ApiOperationSmsMessageWSModel response = new ApiOperationSmsMessageWSModel();
+        ApiOperationSmsChannelWSModel response = new ApiOperationSmsChannelWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiOperationSmsMessageWSDTO operationSmsWSDTO = apiOperationSmsChannelFramework.apiGetOperationSmsMessageService(agentId,sessionId);
+        ApiOperationSmsChannelWSDTO operationSmsWSDTO = apiOperationSmsChannelFramework.apiGetOperationSmsChannelService(agentId,operationId);
         if (operationSmsWSDTO != null){
             response.setOperationSmsMessage(operationSmsWSDTO);
         }
@@ -44,17 +44,17 @@ public class ApiOperationSmsChannelMiddleware {
     }
 
 
-    public ApiSmsMessageWSModel apiGetSmsMessages(long agentId,long sessionId,String campaignId,String processId) {
+    public ApiOperationSmsWSModel apiGetOperationSmss(long agentId,String operationId) {
 
-        ApiSmsMessageWSModel response = new ApiSmsMessageWSModel();
+        ApiOperationSmsWSModel response = new ApiOperationSmsWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ApiSmsMessageWSDTO> smsMessageWSDTOS = apiOperationSmsChannelFramework.apiGetSmsMessagesService(agentId,sessionId,campaignId,processId);
+        List<ApiOperationSmsWSDTO> smsMessageWSDTOS = apiOperationSmsChannelFramework.apiGetOperationSmssService(agentId,operationId);
         if (smsMessageWSDTOS != null){
             response.setSmsMessages(smsMessageWSDTOS);
         }
 
-        general.setOperation("apiGetSmsMessages");
+        general.setOperation("apiGetOperationSmss");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -64,19 +64,19 @@ public class ApiOperationSmsChannelMiddleware {
     }
 
 
-    public ApiSmsMessageWSModel apiGetSmsMessage(long agentId,long sessionId,String campaignId, String processId,String messageId) {
+    public ApiOperationSmsWSModel apiGetOperationSms(long agentId,String operationId,String smsId) {
 
-        ApiSmsMessageWSModel response = new ApiSmsMessageWSModel();
+        ApiOperationSmsWSModel response = new ApiOperationSmsWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ApiSmsMessageWSDTO> smsMessageWSDTOS = new ArrayList<>();
+        List<ApiOperationSmsWSDTO> smsMessageWSDTOS = new ArrayList<>();
 
-        ApiSmsMessageWSDTO smsMessageWSDTO = apiOperationSmsChannelFramework.apiGetSmsMessageService(agentId,sessionId,campaignId,processId,messageId);
+        ApiOperationSmsWSDTO smsMessageWSDTO = apiOperationSmsChannelFramework.apiGetOperationSmsService(agentId,operationId,smsId);
         if (smsMessageWSDTO != null){
             smsMessageWSDTOS.add(smsMessageWSDTO);
         }
 
         response.setSmsMessages(smsMessageWSDTOS);
-        general.setOperation("apiGetSmsMessage");
+        general.setOperation("apiGetOperationSms");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -86,19 +86,19 @@ public class ApiOperationSmsChannelMiddleware {
     }
 
 
-    public ApiSmsMessageWSModel apiSendSmsMessage(long agentId,long sessionId,String campaignId,String processId,String tempId,long numberId) throws IOException {
+    public ApiOperationSmsWSModel apiSendOperationSms(long agentId,String operationId,String smsTempId,String numberId) throws IOException {
 
-        ApiSmsMessageWSModel response = new ApiSmsMessageWSModel();
+        ApiOperationSmsWSModel response = new ApiOperationSmsWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ApiSmsMessageWSDTO> smsMessageWSDTOS = new ArrayList<>();
+        List<ApiOperationSmsWSDTO> smsMessageWSDTOS = new ArrayList<>();
 
-        ApiSmsMessageWSDTO smsMessageWSDTO = apiOperationSmsChannelFramework.apiSendSmsMessageService(agentId,sessionId,campaignId,processId,tempId,numberId);
+        ApiOperationSmsWSDTO smsMessageWSDTO = apiOperationSmsChannelFramework.apiSendOperationSmsService(agentId,operationId,smsTempId,numberId);
         if (smsMessageWSDTO != null){
             smsMessageWSDTOS.add(smsMessageWSDTO);
         }
 
         response.setSmsMessages(smsMessageWSDTOS);
-        general.setOperation("apiSendSmsMessage");
+        general.setOperation("apiSendOperationSms");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -108,19 +108,19 @@ public class ApiOperationSmsChannelMiddleware {
     }
 
 
-    public ApiSmsMessageWSModel apiUpdateSmsMessage(long agentId,long sessionId,String campaignId,String processId,String messageId) {
+    public ApiOperationSmsWSModel apiUpdateOperationSms(long agentId,String operationId,String smsId,String smsState) {
 
-        ApiSmsMessageWSModel response = new ApiSmsMessageWSModel();
+        ApiOperationSmsWSModel response = new ApiOperationSmsWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ApiSmsMessageWSDTO> smsMessageWSDTOS = new ArrayList<>();
+        List<ApiOperationSmsWSDTO> smsMessageWSDTOS = new ArrayList<>();
 
-        ApiSmsMessageWSDTO smsMessageWSDTO = apiOperationSmsChannelFramework.apiUpdateSmsMessageService(agentId,sessionId,campaignId,processId,messageId);
+        ApiOperationSmsWSDTO smsMessageWSDTO = apiOperationSmsChannelFramework.apiUpdateOperationSmsService(agentId,operationId,smsId,smsState);
         if (smsMessageWSDTO != null){
             smsMessageWSDTOS.add(smsMessageWSDTO);
         }
 
         response.setSmsMessages(smsMessageWSDTOS);
-        general.setOperation("apiUpdateSmsMessage");
+        general.setOperation("apiUpdateOperationSms");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -130,19 +130,19 @@ public class ApiOperationSmsChannelMiddleware {
     }
 
 
-    public ApiSmsMessageWSModel apiRemoveSmsMessage(long agentId,long sessionId,String campaignId,String processId,String messageId) {
+    public ApiOperationSmsWSModel apiRemoveOperationSms(long agentId,String operationId,String smsId) {
 
-        ApiSmsMessageWSModel response = new ApiSmsMessageWSModel();
+        ApiOperationSmsWSModel response = new ApiOperationSmsWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ApiSmsMessageWSDTO> smsMessageWSDTOS = new ArrayList<>();
+        List<ApiOperationSmsWSDTO> smsMessageWSDTOS = new ArrayList<>();
 
-        ApiSmsMessageWSDTO smsMessageWSDTO = apiOperationSmsChannelFramework.apiRemoveSmsMessageService(agentId,sessionId,campaignId,processId,messageId);
+        ApiOperationSmsWSDTO smsMessageWSDTO = apiOperationSmsChannelFramework.apiRemoveOperationSmsService(agentId,operationId,smsId);
         if (smsMessageWSDTO != null){
             smsMessageWSDTOS.add(smsMessageWSDTO);
         }
 
         response.setSmsMessages(smsMessageWSDTOS);
-        general.setOperation("apiRemoveSmsMessage");
+        general.setOperation("apiRemoveOperationSms");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -153,17 +153,17 @@ public class ApiOperationSmsChannelMiddleware {
 
 
 
-    public ApiSmsMessageTempWSModel apiGetSmsMessageTemps(long agentId,long sessionId,String campaignId ,String processId) {
+    public ApiOperationSmsTempWSModel apiGetOperationSmsTemps(long agentId,String operationId) {
 
-        ApiSmsMessageTempWSModel response = new ApiSmsMessageTempWSModel();
+        ApiOperationSmsTempWSModel response = new ApiOperationSmsTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiSmsMessageTempWSDTO smsMessageTempWSDTO = apiOperationSmsChannelFramework.apiGetSmsMessageTempsService(agentId,sessionId,campaignId,processId);
+        ApiOperationSmsTempWSDTO smsMessageTempWSDTO = apiOperationSmsChannelFramework.apiGetOperationSmsTempsService(agentId,operationId);
         if (smsMessageTempWSDTO != null){
             response.setSmsMessageTemp(smsMessageTempWSDTO);
         }
 
-        general.setOperation("apiGetSmsMessageTemps");
+        general.setOperation("apiGetOperationSmsTemps");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -173,17 +173,17 @@ public class ApiOperationSmsChannelMiddleware {
     }
 
 
-    public ApiSmsMessageTempWSModel apiGetSmsMessageTemp(long agentId,long sessionId,String campaignId,String processId,String tempId) {
+    public ApiOperationSmsTempWSModel apiGetOperationSmsTemp(long agentId,String operationId,String smsTempId) {
 
-        ApiSmsMessageTempWSModel response = new ApiSmsMessageTempWSModel();
+        ApiOperationSmsTempWSModel response = new ApiOperationSmsTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiSmsMessageTempWSDTO smsMessageTempWSDTO = apiOperationSmsChannelFramework.apiGetSmsMessageTempService(agentId,sessionId,campaignId,processId,tempId);
+        ApiOperationSmsTempWSDTO smsMessageTempWSDTO = apiOperationSmsChannelFramework.apiGetOperationSmsTempService(agentId,operationId,smsTempId);
         if (smsMessageTempWSDTO != null){
             response.setSmsMessageTemp(smsMessageTempWSDTO);
         }
 
-        general.setOperation("apiGetSmsMessageTemp");
+        general.setOperation("apiGetOperationSmsTemp");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

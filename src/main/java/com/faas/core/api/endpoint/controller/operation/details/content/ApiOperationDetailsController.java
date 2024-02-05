@@ -79,9 +79,9 @@ public class ApiOperationDetailsController {
     @RequestMapping(value = ApiRoute.API_OPERATION_SWITCH, method = RequestMethod.POST)
     public ResponseEntity<?> apiOperationSwitch(@RequestParam long agentId,
                                                 @RequestParam String operationId,
-                                                @RequestParam String selectedOperationId) {
+                                                @RequestParam String selectedId) {
 
-        ApiOperationWSModel response = apiOperationDetailsMiddleware.apiOperationSwitch(agentId,operationId,selectedOperationId);
+        ApiOperationWSModel response = apiOperationDetailsMiddleware.apiOperationSwitch(agentId,operationId,selectedId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

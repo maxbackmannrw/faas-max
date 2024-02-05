@@ -1,9 +1,9 @@
 package com.faas.core.api.middleware.operation.details.channel.message.push;
 
 import com.faas.core.api.framework.operation.details.channel.message.push.ApiOperationPushChannelFramework;
-import com.faas.core.api.model.ws.operation.details.channel.message.push.ApiOperationPushMessageWSModel;
-import com.faas.core.api.model.ws.operation.details.channel.message.push.ApiPushMessageTempWSModel;
-import com.faas.core.api.model.ws.operation.details.channel.message.push.ApiPushMessageWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.message.push.ApiOperationPushChannelWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.message.push.ApiOperationPushTempWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.message.push.ApiOperationPushWSModel;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,13 +17,90 @@ public class ApiOperationPushChannelMiddleware {
     ApiOperationPushChannelFramework apiOperationPushChannelFramework;
 
 
-    public ApiOperationPushMessageWSModel apiGetOperationPushMessage(long agentId, long sessionId) {
+    public ApiOperationPushChannelWSModel apiGetOperationPushChannel(long agentId,String operationId) {
 
-        ApiOperationPushMessageWSModel response = new ApiOperationPushMessageWSModel();
+        ApiOperationPushChannelWSModel response = new ApiOperationPushChannelWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
 
-        general.setOperation("apiGetOperationPushMessage");
+        general.setOperation("apiGetOperationPushChannel");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public ApiOperationPushWSModel apiGetOperationPushes(long agentId,String operationId) {
+
+        ApiOperationPushWSModel response = new ApiOperationPushWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+
+        general.setOperation("apiGetOperationPushes");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public ApiOperationPushWSModel apiGetOperationPush(long agentId,String operationId,String pushId) {
+
+        ApiOperationPushWSModel response = new ApiOperationPushWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+
+        general.setOperation("apiGetOperationPush");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public ApiOperationPushWSModel apiSendOperationPush(long agentId,String operationId) {
+
+        ApiOperationPushWSModel response = new ApiOperationPushWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+
+
+        general.setOperation("apiSendOperationPush");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public ApiOperationPushWSModel apiUpdateOperationPush(long agentId,String operationId) {
+
+        ApiOperationPushWSModel response = new ApiOperationPushWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+
+        general.setOperation("apiUpdateOperationPush");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public ApiOperationPushWSModel apiRemoveOperationPush(long agentId,String operationId) {
+
+        ApiOperationPushWSModel response = new ApiOperationPushWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+
+
+        general.setOperation("apiRemoveOperationPush");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -33,13 +110,14 @@ public class ApiOperationPushChannelMiddleware {
     }
 
 
-    public ApiPushMessageWSModel apiGetPushMessages(long agentId, long sessionId, long pushId) {
+    public ApiOperationPushTempWSModel apiGetOperationPushTemps(long agentId,String operationId) {
 
-        ApiPushMessageWSModel response = new ApiPushMessageWSModel();
+        ApiOperationPushTempWSModel response = new ApiOperationPushTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
 
-        general.setOperation("apiGetPushMessages");
+
+        general.setOperation("apiGetOperationPushTemps");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -48,14 +126,13 @@ public class ApiOperationPushChannelMiddleware {
         return response;
     }
 
+    public ApiOperationPushTempWSModel apiGetOperationPushTemp(long agentId,String operationId,String pushTempId) {
 
-    public ApiPushMessageWSModel apiGetPushMessage(long agentId, long sessionId, long pushId) {
-
-        ApiPushMessageWSModel response = new ApiPushMessageWSModel();
+        ApiOperationPushTempWSModel response = new ApiOperationPushTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
 
-        general.setOperation("apiGetPushMessage");
+        general.setOperation("apiGetOperationPushTemp");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -64,89 +141,6 @@ public class ApiOperationPushChannelMiddleware {
         return response;
     }
 
-
-    public ApiPushMessageWSModel apiSendPushMessage(long agentId, long sessionId) {
-
-        ApiPushMessageWSModel response = new ApiPushMessageWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-
-
-        general.setOperation("apiSendPushMessage");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-
-    public ApiPushMessageWSModel apiUpdatePushMessage(long agentId, long sessionId) {
-
-        ApiPushMessageWSModel response = new ApiPushMessageWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-
-        general.setOperation("apiUpdatePushMessage");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-
-    public ApiPushMessageWSModel apiRemovePushMessage(long agentId, long sessionId) {
-
-        ApiPushMessageWSModel response = new ApiPushMessageWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-
-
-        general.setOperation("apiRemovePushMessage");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-
-
-    public ApiPushMessageTempWSModel apiGetPushMessageTemps(long agentId, long sessionId) {
-
-        ApiPushMessageTempWSModel response = new ApiPushMessageTempWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-
-
-        general.setOperation("apiGetPushMessageTemps");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-    public ApiPushMessageTempWSModel apiGetPushMessageTemp(long agentId, long sessionId) {
-
-        ApiPushMessageTempWSModel response = new ApiPushMessageTempWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-
-
-        general.setOperation("apiGetPushMessageTemp");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
 
 
 }

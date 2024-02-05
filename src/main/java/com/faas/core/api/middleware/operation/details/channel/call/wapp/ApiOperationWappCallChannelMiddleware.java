@@ -1,9 +1,9 @@
 package com.faas.core.api.middleware.operation.details.channel.call.wapp;
 
 import com.faas.core.api.framework.operation.details.channel.call.wapp.ApiOperationWappCallChannelFramework;
+import com.faas.core.api.model.ws.operation.details.channel.call.wapp.ApiOperationWappCallChannelWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.call.wapp.ApiOperationWappCallWSModel;
-import com.faas.core.api.model.ws.operation.details.channel.call.wapp.ApiWappCallWSModel;
-import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiOperationWappCallWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiOperationWappCallChannelWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,14 +17,14 @@ public class ApiOperationWappCallChannelMiddleware {
     ApiOperationWappCallChannelFramework apiOperationWappCallChannelFramework;
 
 
-    public ApiOperationWappCallWSModel apiGetOperationWappCall(long agentId, long sessionId, long clientId) {
+    public ApiOperationWappCallChannelWSModel apiGetOperationWappCallChannel(long agentId, String operationId) {
 
-        ApiOperationWappCallWSModel response = new ApiOperationWappCallWSModel();
+        ApiOperationWappCallChannelWSModel response = new ApiOperationWappCallChannelWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiOperationWappCallWSDTO operationWappCallWSDTO = apiOperationWappCallChannelFramework.apiGetOperationWappCallService(agentId,sessionId,clientId);
-        if (operationWappCallWSDTO != null){
-            response.setOperationWappCall(operationWappCallWSDTO);
+        ApiOperationWappCallChannelWSDTO operationWappCallChannelWSDTO = apiOperationWappCallChannelFramework.apiGetOperationWappCallChannelService(agentId,operationId);
+        if (operationWappCallChannelWSDTO != null){
+            response.setWappCallChannel(operationWappCallChannelWSDTO);
         }
 
         general.setOperation("apiGetOperationWappCall");
@@ -37,9 +37,9 @@ public class ApiOperationWappCallChannelMiddleware {
     }
 
 
-    public ApiWappCallWSModel apiGetWappCalls(long agentId,long sessionId,String campaignId,String processId ) {
+    public ApiOperationWappCallWSModel apiGetOperationWappCalls(long agentId,String operationId) {
 
-        ApiWappCallWSModel response = new ApiWappCallWSModel();
+        ApiOperationWappCallWSModel response = new ApiOperationWappCallWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
 
@@ -53,9 +53,9 @@ public class ApiOperationWappCallChannelMiddleware {
     }
 
 
-    public ApiWappCallWSModel apiGetWappCall(long agentId,long sessionId,long clientId ,long callId) {
+    public ApiOperationWappCallWSModel apiGetOperationWappCall(long agentId,String operationId,long callId) {
 
-        ApiWappCallWSModel response = new ApiWappCallWSModel();
+        ApiOperationWappCallWSModel response = new ApiOperationWappCallWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
 
@@ -70,14 +70,14 @@ public class ApiOperationWappCallChannelMiddleware {
     }
 
 
-    public ApiWappCallWSModel apiCreateWappCall(long agentId,long sessionId,long clientId,String processId,long numberId) {
+    public ApiOperationWappCallWSModel apiCreateOperationWappCall(long agentId,String operationId,String numberId) {
 
-        ApiWappCallWSModel response = new ApiWappCallWSModel();
+        ApiOperationWappCallWSModel response = new ApiOperationWappCallWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
 
 
-        general.setOperation("apiCreateWappCall");
+        general.setOperation("apiCreateOperationWappCall");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -87,14 +87,14 @@ public class ApiOperationWappCallChannelMiddleware {
     }
 
 
-    public ApiWappCallWSModel apiMakeWappCall(long agentId,long sessionId,long clientId,String processId,long numberId) {
+    public ApiOperationWappCallWSModel apiMakeOperationWappCall(long agentId,String operationId,long callId) {
 
-        ApiWappCallWSModel response = new ApiWappCallWSModel();
+        ApiOperationWappCallWSModel response = new ApiOperationWappCallWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
 
 
-        general.setOperation("apiCreateWappCall");
+        general.setOperation("apiMakeOperationWappCall");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -104,14 +104,14 @@ public class ApiOperationWappCallChannelMiddleware {
     }
 
 
-    public ApiWappCallWSModel apiEndWappCall(long agentId,long sessionId,long clientId,String processId,long numberId) {
+    public ApiOperationWappCallWSModel apiEndOperationWappCall(long agentId,String operationId,long numberId) {
 
-        ApiWappCallWSModel response = new ApiWappCallWSModel();
+        ApiOperationWappCallWSModel response = new ApiOperationWappCallWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
 
 
-        general.setOperation("apiCreateWappCall");
+        general.setOperation("apiEndOperationWappCall");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -121,14 +121,14 @@ public class ApiOperationWappCallChannelMiddleware {
     }
 
 
-    public ApiWappCallWSModel apiFinishWappCall(long agentId,long sessionId,long clientId,String processId,long numberId) {
+    public ApiOperationWappCallWSModel apiFinishOperationWappCall(long agentId,String operationId,long callId) {
 
-        ApiWappCallWSModel response = new ApiWappCallWSModel();
+        ApiOperationWappCallWSModel response = new ApiOperationWappCallWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
 
 
-        general.setOperation("apiCreateWappCall");
+        general.setOperation("apiFinishOperationWappCall");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -138,14 +138,14 @@ public class ApiOperationWappCallChannelMiddleware {
     }
 
 
-    public ApiWappCallWSModel apiUpdateWappCall(long agentId,long sessionId,long clientId,long callId) {
+    public ApiOperationWappCallWSModel apiUpdateOperationWappCall(long agentId,String operationId,long callId,String callState) {
 
-        ApiWappCallWSModel response = new ApiWappCallWSModel();
+        ApiOperationWappCallWSModel response = new ApiOperationWappCallWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
 
 
-        general.setOperation("apiUpdateWappCall");
+        general.setOperation("apiUpdateOperationWappCall");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -156,14 +156,14 @@ public class ApiOperationWappCallChannelMiddleware {
 
 
 
-    public ApiWappCallWSModel apiRemoveWappCall(long agentId,long sessionId,long clientId, long callId) {
+    public ApiOperationWappCallWSModel apiRemoveOperationWappCall(long agentId,String operationId,long callId) {
 
-        ApiWappCallWSModel response = new ApiWappCallWSModel();
+        ApiOperationWappCallWSModel response = new ApiOperationWappCallWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
 
 
-        general.setOperation("apiRemoveWappCall");
+        general.setOperation("apiRemoveOperationWappCall");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

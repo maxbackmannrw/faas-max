@@ -3,10 +3,10 @@ package com.faas.core.utils.helpers;
 import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationListWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
-import com.faas.core.api.model.ws.operation.details.campaign.dto.ApiProcessScenarioWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationSipChannelWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiOperationWappCallChannelWSDTO;
-import com.faas.core.api.model.ws.operation.details.channel.content.dto.ApiOperationChannelWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.content.dto.ApiOperationCallChannelWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.content.dto.ApiOperationMessageChannelWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiOperationEmailChannelWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushChannelWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiOperationSmsChannelWSDTO;
@@ -22,7 +22,6 @@ import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.operation.content.dao.OperationFlowDAO;
 import com.faas.core.base.model.db.operation.content.dao.OperationInquiryDAO;
 import com.faas.core.base.model.db.process.content.ProcessDBModel;
-import com.faas.core.base.model.db.process.details.scenario.ProcessScenarioDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.db.user.content.UserDBModel;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
@@ -387,7 +386,6 @@ public class OperationHelper {
     public ApiOperationValidateWSDTO operationValidateHelper(UserDBModel agentDBModel,OperationDBModel operationDBModel){
 
         ApiOperationValidateWSDTO operationValidateWSDTO = new ApiOperationValidateWSDTO();
-
         operationValidateWSDTO.setAgent(agentDBModel);
         operationValidateWSDTO.setOperation(operationDBModel);
         operationValidateWSDTO.setOperationCount(operationRepository.countByAgentIdAndOperationState(agentDBModel.getId(),AppConstant.ACTIVE_STATE));
@@ -400,7 +398,6 @@ public class OperationHelper {
         }
         return operationValidateWSDTO;
     }
-
 
 
 
@@ -421,7 +418,6 @@ public class OperationHelper {
     }
 
 
-
     public ApiOperationDetailsWSDTO getApiOperationDetailsWSDTO(OperationDBModel operationDBModel) {
 
         List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndAgentId(operationDBModel.getSessionId(),operationDBModel.getAgentId());
@@ -433,7 +429,8 @@ public class OperationHelper {
             operationDetailsWSDTO.setOperationSession(sessionDBModels.get(0));
             operationDetailsWSDTO.setOperationClient(getApiOperationClientWSDTO(clientDBModel.get()));
             operationDetailsWSDTO.setOperationCampaign(getApiOperationCampaignWSDTO(operationDBModel.getCampaignId(),operationDBModel.getProcessId()));
-            operationDetailsWSDTO.setOperationChannel(getApiOperationChannelWSDTO(operationDBModel));
+            operationDetailsWSDTO.setOperationCallChannel(getApiOperationCallChannelWSDTO(operationDBModel));
+            operationDetailsWSDTO.setOperationMessageChannel(getApiOperationMessageChannelWSDTO(operationDBModel));
 
             return operationDetailsWSDTO;
         }
@@ -468,20 +465,14 @@ public class OperationHelper {
     }
 
 
-    public ApiOperationChannelWSDTO getApiOperationChannelWSDTO(OperationDBModel operationDBModel) {
 
-        ApiOperationChannelWSDTO operationChannelWSDTO = new ApiOperationChannelWSDTO();
-        operationChannelWSDTO.setSipChannel(getApiOperationSipChannelWSDTO(operationDBModel));
-        operationChannelWSDTO.setWappCallChannel(getApiOperationWappCallChannelWSDTO(operationDBModel));
-        operationChannelWSDTO.setSmsChannel(getApiOperationSmsChannelWSDTO(operationDBModel));
-        operationChannelWSDTO.setWappMessageChannel(getApiOperationWappMessageChannelWSDTO(operationDBModel));
-        operationChannelWSDTO.setEmailChannel(getApiOperationEmailChannelWSDTO(operationDBModel));
-        operationChannelWSDTO.setPushChannel(getApiOperationPushChannelWSDTO(operationDBModel));
+    public ApiOperationCallChannelWSDTO getApiOperationCallChannelWSDTO(OperationDBModel operationDBModel) {
 
-        return operationChannelWSDTO;
+        ApiOperationCallChannelWSDTO operationCallChannelWSDTO = new ApiOperationCallChannelWSDTO();
+        operationCallChannelWSDTO.setSipChannel(getApiOperationSipChannelWSDTO(operationDBModel));
+        operationCallChannelWSDTO.setWappCallChannel(getApiOperationWappCallChannelWSDTO(operationDBModel));
+        return operationCallChannelWSDTO;
     }
-
-
 
     public ApiOperationSipChannelWSDTO getApiOperationSipChannelWSDTO(OperationDBModel operationDBModel) {
 
@@ -491,6 +482,18 @@ public class OperationHelper {
     public ApiOperationWappCallChannelWSDTO getApiOperationWappCallChannelWSDTO(OperationDBModel operationDBModel) {
 
         return null;
+    }
+
+
+
+    public ApiOperationMessageChannelWSDTO getApiOperationMessageChannelWSDTO(OperationDBModel operationDBModel) {
+
+        ApiOperationMessageChannelWSDTO operationMessageChannelWSDTO = new ApiOperationMessageChannelWSDTO();
+        operationMessageChannelWSDTO.setSmsChannel(getApiOperationSmsChannelWSDTO(operationDBModel));
+        operationMessageChannelWSDTO.setWappMessageChannel(getApiOperationWappMessageChannelWSDTO(operationDBModel));
+        operationMessageChannelWSDTO.setEmailChannel(getApiOperationEmailChannelWSDTO(operationDBModel));
+        operationMessageChannelWSDTO.setPushChannel(getApiOperationPushChannelWSDTO(operationDBModel));
+        return operationMessageChannelWSDTO;
     }
 
 
@@ -515,13 +518,6 @@ public class OperationHelper {
     }
 
 
-
-    public ApiProcessScenarioWSDTO getApiProcessScenarioWSDTO(ProcessScenarioDBModel processScenarioDBModel) {
-
-        ApiProcessScenarioWSDTO processScenarioWSDTO =  new ApiProcessScenarioWSDTO();
-        processScenarioWSDTO.setProcessScenario(processScenarioDBModel);
-        return processScenarioWSDTO;
-    }
 
 
     public PaginationWSDTO mapOperationPagination(Page<OperationDBModel> operationModelPage){

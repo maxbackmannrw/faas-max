@@ -10,7 +10,6 @@ import java.util.List;
 @Document(collection = "operation_push_message_table")
 public class OperationPushMessageDBModel {
 
-
     @Id
     private String id;
     private long sessionId;

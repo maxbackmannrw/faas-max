@@ -2,14 +2,14 @@ package com.faas.core.api.model.ws.operation.details.channel.message.sms.dto;
 
 import com.faas.core.base.model.db.operation.details.channel.OperationSmsMessageDBModel;
 
-public class ApiSmsMessageWSDTO {
+public class ApiOperationSmsWSDTO {
 
     private OperationSmsMessageDBModel smsMessage;
 
-    public ApiSmsMessageWSDTO() {
+    public ApiOperationSmsWSDTO() {
     }
 
-    public ApiSmsMessageWSDTO(OperationSmsMessageDBModel smsMessage) {
+    public ApiOperationSmsWSDTO(OperationSmsMessageDBModel smsMessage) {
         this.smsMessage = smsMessage;
     }
 

@@ -1,6 +1,6 @@
 package com.faas.core.api.model.ws.operation.details.channel.message.wapp;
 
-import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.ApiWappMessageWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.ApiWappMessageAccountWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 
 import java.util.List;
@@ -8,14 +8,14 @@ import java.util.List;
 public class ApiWappMessageAccountWSModel {
 
     private GeneralWSModel general;
-    private List<ApiWappMessageWSDTO> wappMessages;
+    private List<ApiWappMessageAccountWSDTO> wappMessageAccounts;
 
     public ApiWappMessageAccountWSModel() {
     }
 
-    public ApiWappMessageAccountWSModel(GeneralWSModel general, List<ApiWappMessageWSDTO> wappMessages) {
+    public ApiWappMessageAccountWSModel(GeneralWSModel general, List<ApiWappMessageAccountWSDTO> wappMessageAccounts) {
         this.general = general;
-        this.wappMessages = wappMessages;
+        this.wappMessageAccounts = wappMessageAccounts;
     }
 
     public GeneralWSModel getGeneral() {
@@ -26,11 +26,11 @@ public class ApiWappMessageAccountWSModel {
         this.general = general;
     }
 
-    public List<ApiWappMessageWSDTO> getWappMessages() {
-        return wappMessages;
+    public List<ApiWappMessageAccountWSDTO> getWappMessageAccounts() {
+        return wappMessageAccounts;
     }
 
-    public void setWappMessages(List<ApiWappMessageWSDTO> wappMessages) {
-        this.wappMessages = wappMessages;
+    public void setWappMessageAccounts(List<ApiWappMessageAccountWSDTO> wappMessageAccounts) {
+        this.wappMessageAccounts = wappMessageAccounts;
     }
 }
