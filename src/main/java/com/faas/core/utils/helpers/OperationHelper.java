@@ -481,9 +481,16 @@ public class OperationHelper {
     public ApiOperationSipChannelWSDTO getApiOperationSipChannelWSDTO(OperationDBModel operationDBModel) {
 
         ApiSipAccountWSDTO sipAccountWSDTO = channelHelper.getApiSipAccountWSDTO(operationDBModel.getAgentId(),operationDBModel.getProcessId());
-        if (sipAccountWSDTO != null){
+        List<ClientDetailsDBModel> clientDetails = clientDetailsRepository.findByClientId(operationDBModel.getClientId());
+        if (sipAccountWSDTO != null && !clientDetails.isEmpty()){
+
             ApiOperationSipChannelWSDTO sipChannelWSDTO = new ApiOperationSipChannelWSDTO();
             sipChannelWSDTO.setSipAccount(sipAccountWSDTO);
+            if (clientDetails.get(0).getClientPhones() != null){
+                sipChannelWSDTO.setClientPhones(clientDetails.get(0).getClientPhones());
+            }else {
+                sipChannelWSDTO.setClientPhones(new ArrayList<>());
+            }
             List<OperationSipCallDBModel> activeSipCalls = operationSipCallRepository.findByOperationIdAndCallState(operationDBModel.getId(),AppConstant.ACTIVE_STATE);
             if (!activeSipCalls.isEmpty()){
                 sipChannelWSDTO.setActiveSipCall(activeSipCalls.get(0));
@@ -497,9 +504,16 @@ public class OperationHelper {
     public ApiOperationWappCallChannelWSDTO getApiOperationWappCallChannelWSDTO(OperationDBModel operationDBModel) {
 
         ApiWappCallAccountWSDTO wappCallAccountWSDTO = channelHelper.getApiWappCallAccountWSDTO(operationDBModel.getAgentId(),operationDBModel.getProcessId());
+        List<ClientDetailsDBModel> clientDetails = clientDetailsRepository.findByClientId(operationDBModel.getClientId());
         if (wappCallAccountWSDTO != null){
+
             ApiOperationWappCallChannelWSDTO wappCallChannelWSDTO = new ApiOperationWappCallChannelWSDTO();
             wappCallChannelWSDTO.setWappCallAccount(wappCallAccountWSDTO);
+            if (clientDetails.get(0).getClientPhones() != null){
+                wappCallChannelWSDTO.setClientPhones(clientDetails.get(0).getClientPhones());
+            }else {
+                wappCallChannelWSDTO.setClientPhones(new ArrayList<>());
+            }
             List<OperationWappCallDBModel> activeWappCalls = operationWappCallRepository.findByOperationIdAndCallState(operationDBModel.getId(),AppConstant.ACTIVE_STATE);
             if (!activeWappCalls.isEmpty()){
                 wappCallChannelWSDTO.setActiveWappCall(activeWappCalls.get(0));
