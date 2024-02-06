@@ -15,6 +15,7 @@ import com.faas.core.base.model.db.channel.account.EmailAccountDBModel;
 import com.faas.core.base.model.db.channel.account.PushAccountDBModel;
 import com.faas.core.base.model.db.channel.account.SmsAccountDBModel;
 import com.faas.core.base.model.db.client.details.content.dao.ClientPhoneDAO;
+import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.operation.details.channel.dao.OperationSmsMessageDAO;
 import com.faas.core.base.model.db.operation.details.channel.dao.OperationWappMessageDAO;
 import com.faas.core.base.model.db.process.details.channel.content.*;
@@ -140,14 +141,13 @@ public class ChannelHelper {
     }
 
 
-    public ApiSipAccountWSDTO getApiSipAccountWSDTO(long agentId, String processId) {
+    public ApiSipAccountWSDTO getApiSipAccountWSDTO(long agentId,String processId) {
 
         List<ProcessSipChannelDBModel> sipChannelDBModels = processSipChannelRepository.findByProcessId(processId);
         List<UserDetailsDBModel> agentDetails = userDetailsRepository.findByUserId(agentId);
         if (!sipChannelDBModels.isEmpty() && !agentDetails.isEmpty() && agentDetails.get(0).getSipChannel() != null) {
 
             ApiSipAccountWSDTO sipAccountWSDTO = new ApiSipAccountWSDTO();
-
             sipAccountWSDTO.setAccountId(agentDetails.get(0).getSipChannel().getAccountId());
             sipAccountWSDTO.setAccount(agentDetails.get(0).getSipChannel().getAccount());
             sipAccountWSDTO.setUserName(agentDetails.get(0).getSipChannel().getUserName());
@@ -169,18 +169,36 @@ public class ChannelHelper {
 
     public ApiOperationSipCallWSDTO mapApiOperationSipCallWSDTO(SessionDBModel sessionDBModel, List<ClientPhoneDAO> clientPhones) {
 
-        ApiSipAccountWSDTO sipAccountWSDTO = getApiSipAccountWSDTO(sessionDBModel.getAgentId(), sessionDBModel.getProcessId());
-        if (sipAccountWSDTO != null) {
 
-            ApiOperationSipCallWSDTO operationSipCall = new ApiOperationSipCallWSDTO();
+        return null;
+    }
 
-            return operationSipCall;
+
+    public ApiWappCallAccountWSDTO getApiWappCallAccountWSDTO(long agentId, String processId) {
+
+        List<UserDetailsDBModel> agentDetails = userDetailsRepository.findByUserId(agentId);
+        List<ProcessWappChannelDBModel> wappChannels = processWappChannelRepository.findByProcessId(processId);
+        if (!agentDetails.isEmpty() && agentDetails.get(0).getWappChannel() != null && agentDetails.get(0).getWappChannel().getAccountId() != null && !wappChannels.isEmpty()) {
+
+            ApiWappCallAccountWSDTO wappAccountWSDTO = new ApiWappCallAccountWSDTO();
+            wappAccountWSDTO.setAccountId(agentDetails.get(0).getWappChannel().getAccountId());
+            wappAccountWSDTO.setAccount(agentDetails.get(0).getWappChannel().getAccount());
+            wappAccountWSDTO.setInstanceKey(agentDetails.get(0).getWappChannel().getInstanceKey());
+            wappAccountWSDTO.setPhoneNumber(agentDetails.get(0).getWappChannel().getPhoneNumber());
+            wappAccountWSDTO.setServerUrl(agentDetails.get(0).getWappChannel().getServerUrl());
+            wappAccountWSDTO.setAccountDatas(agentDetails.get(0).getWappChannel().getAccountDatas());
+            wappAccountWSDTO.setCallStatus(wappChannels.get(0).getCallStatus());
+            wappAccountWSDTO.setMessageStatus(wappChannels.get(0).getMessageStatus());
+            wappAccountWSDTO.setcDate(wappChannels.get(0).getcDate());
+            wappAccountWSDTO.setStatus(wappChannels.get(0).getStatus());
+
+            return wappAccountWSDTO;
         }
         return null;
     }
 
 
-    public ApiWappCallAccountWSDTO getApiWappAccountWSDTO(long agentId, String processId) {
+    public ApiWappCallAccountWSDTO getApiWappMessageAccountWSDTO(long agentId, String processId) {
 
         List<UserDetailsDBModel> agentDetails = userDetailsRepository.findByUserId(agentId);
         List<ProcessWappChannelDBModel> wappChannels = processWappChannelRepository.findByProcessId(processId);
@@ -207,7 +225,6 @@ public class ChannelHelper {
 
     public ApiOperationWappCallWSDTO mapApiOperationWappCallWSDTO(SessionDBModel sessionDBModel, List<ClientPhoneDAO> clientPhones) {
 
-        ApiWappCallAccountWSDTO wappAccountWSDTO = getApiWappAccountWSDTO(sessionDBModel.getAgentId(), sessionDBModel.getProcessId());
 
         return null;
     }
@@ -313,7 +330,6 @@ public class ChannelHelper {
     public ApiOperationWappMessageChannelWSDTO mapApiOperationWappMessageWSDTO(SessionDBModel sessionDBModel, List<ClientPhoneDAO> clientPhones) {
 
         ApiOperationWappMessageChannelWSDTO operationWappMessageWSDTO = new ApiOperationWappMessageChannelWSDTO();
-        ApiWappCallAccountWSDTO wappAccountWSDTO = getApiWappAccountWSDTO(sessionDBModel.getAgentId(),sessionDBModel.getProcessId());
 
         return operationWappMessageWSDTO;
     }

@@ -10,8 +10,11 @@ import java.util.List;
 public interface OperationWappCallRepository extends PagingAndSortingRepository<OperationWappCallDBModel, Long> {
 
     List<OperationWappCallDBModel>findBySessionId(long sessionId);
+    List<OperationWappCallDBModel>findByOperationId(String operationId);
     List<OperationWappCallDBModel>findBySessionIdAndCallState(long sessionId, String callState);
+    List<OperationWappCallDBModel>findByOperationIdAndCallState(String operationId, String callState);
     List<OperationWappCallDBModel>findByIdAndSessionId(long callId, long sessionId);
+    List<OperationWappCallDBModel>findByIdAndOperationId(long callId, String operationId);
     List<OperationWappCallDBModel>findByClientId(long clientId);
     List<OperationWappCallDBModel>findBySessionIdAndClientId(long sessionId, long clientId);
 }

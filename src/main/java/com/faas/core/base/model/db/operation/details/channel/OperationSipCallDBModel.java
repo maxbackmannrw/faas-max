@@ -10,6 +10,9 @@ public class OperationSipCallDBModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Column(name = "operation_id")
+    private String operationId;
+
     @Column(name = "session_id")
     private long sessionId;
 
@@ -61,12 +64,12 @@ public class OperationSipCallDBModel {
     @Column(name = "status")
     private int status;
 
-
     public OperationSipCallDBModel() {
     }
 
-    public OperationSipCallDBModel(long id, long sessionId, long clientId, long agentId, String campaignId, String processId, long numberId, String phoneNumber, String accountId, String callerId, String provider, String connectionId, String callState, long sDate, long fDate, long uDate, long cDate, int status) {
+    public OperationSipCallDBModel(long id, String operationId, long sessionId, long clientId, long agentId, String campaignId, String processId, long numberId, String phoneNumber, String accountId, String callerId, String provider, String connectionId, String callState, long sDate, long fDate, long uDate, long cDate, int status) {
         this.id = id;
+        this.operationId = operationId;
         this.sessionId = sessionId;
         this.clientId = clientId;
         this.agentId = agentId;
@@ -92,6 +95,14 @@ public class OperationSipCallDBModel {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getOperationId() {
+        return operationId;
+    }
+
+    public void setOperationId(String operationId) {
+        this.operationId = operationId;
     }
 
     public long getSessionId() {

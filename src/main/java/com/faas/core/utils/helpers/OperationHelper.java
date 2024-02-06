@@ -4,7 +4,9 @@ import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationListWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationSipChannelWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiSipAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiOperationWappCallChannelWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiWappCallAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.content.dto.ApiOperationCallChannelWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.content.dto.ApiOperationMessageChannelWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiOperationEmailChannelWSDTO;
@@ -21,6 +23,8 @@ import com.faas.core.base.model.db.client.details.content.ClientDetailsDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.operation.content.dao.OperationFlowDAO;
 import com.faas.core.base.model.db.operation.content.dao.OperationInquiryDAO;
+import com.faas.core.base.model.db.operation.details.channel.OperationSipCallDBModel;
+import com.faas.core.base.model.db.operation.details.channel.OperationWappCallDBModel;
 import com.faas.core.base.model.db.process.content.ProcessDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.db.user.content.UserDBModel;
@@ -476,11 +480,33 @@ public class OperationHelper {
 
     public ApiOperationSipChannelWSDTO getApiOperationSipChannelWSDTO(OperationDBModel operationDBModel) {
 
+        ApiSipAccountWSDTO sipAccountWSDTO = channelHelper.getApiSipAccountWSDTO(operationDBModel.getAgentId(),operationDBModel.getProcessId());
+        if (sipAccountWSDTO != null){
+            ApiOperationSipChannelWSDTO sipChannelWSDTO = new ApiOperationSipChannelWSDTO();
+            sipChannelWSDTO.setSipAccount(sipAccountWSDTO);
+            List<OperationSipCallDBModel> activeSipCalls = operationSipCallRepository.findByOperationIdAndCallState(operationDBModel.getId(),AppConstant.ACTIVE_STATE);
+            if (!activeSipCalls.isEmpty()){
+                sipChannelWSDTO.setActiveSipCall(activeSipCalls.get(0));
+            }
+            sipChannelWSDTO.setRecentSipCalls(operationSipCallRepository.findByOperationId(operationDBModel.getId()));
+            return sipChannelWSDTO;
+        }
         return null;
     }
 
     public ApiOperationWappCallChannelWSDTO getApiOperationWappCallChannelWSDTO(OperationDBModel operationDBModel) {
 
+        ApiWappCallAccountWSDTO wappCallAccountWSDTO = channelHelper.getApiWappCallAccountWSDTO(operationDBModel.getAgentId(),operationDBModel.getProcessId());
+        if (wappCallAccountWSDTO != null){
+            ApiOperationWappCallChannelWSDTO wappCallChannelWSDTO = new ApiOperationWappCallChannelWSDTO();
+            wappCallChannelWSDTO.setWappCallAccount(wappCallAccountWSDTO);
+            List<OperationWappCallDBModel> activeWappCalls = operationWappCallRepository.findByOperationIdAndCallState(operationDBModel.getId(),AppConstant.ACTIVE_STATE);
+            if (!activeWappCalls.isEmpty()){
+                wappCallChannelWSDTO.setActiveWappCall(activeWappCalls.get(0));
+            }
+            wappCallChannelWSDTO.setRecentWappCalls(operationWappCallRepository.findByOperationId(operationDBModel.getId()));
+            return wappCallChannelWSDTO;
+        }
         return null;
     }
 
