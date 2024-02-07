@@ -9,8 +9,10 @@ import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiOpe
 import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiWappCallAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.content.dto.ApiOperationCallChannelWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.content.dto.ApiOperationMessageChannelWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiEmailAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiOperationEmailChannelWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushChannelWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiPushAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiOperationSmsChannelWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiSmsAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.ApiOperationWappMessageChannelWSDTO;
@@ -570,11 +572,32 @@ public class OperationHelper {
 
     public ApiOperationEmailChannelWSDTO getApiOperationEmailChannelWSDTO(OperationDBModel operationDBModel,ClientDetailsDBModel clientDetails) {
 
+        ApiEmailAccountWSDTO emailAccountWSDTO = channelHelper.getApiEmailAccountWSDTO(operationDBModel.getProcessId());
+        if (emailAccountWSDTO != null && clientDetails.getClientEmails() != null){
+
+            ApiOperationEmailChannelWSDTO emailChannelWSDTO = new ApiOperationEmailChannelWSDTO();
+            emailChannelWSDTO.setEmailAccount(emailAccountWSDTO);
+            emailChannelWSDTO.setClientEmails(clientDetails.getClientEmails());
+            emailChannelWSDTO.setOperationEmails(operationEmailMessageRepository.findByOperationId(operationDBModel.getId()));
+            emailChannelWSDTO.setOperationEmailTemps(processEmailTempRepository.findByProcessId(operationDBModel.getProcessId()));
+
+            return emailChannelWSDTO;
+        }
         return null;
     }
 
     public ApiOperationPushChannelWSDTO getApiOperationPushChannelWSDTO(OperationDBModel operationDBModel,ClientDetailsDBModel clientDetails) {
 
+        ApiPushAccountWSDTO pushAccountWSDTO = channelHelper.getApiPushAccountWSDTO(operationDBModel.getProcessId());
+        if (pushAccountWSDTO != null ){
+
+            ApiOperationPushChannelWSDTO pushChannelWSDTO = new ApiOperationPushChannelWSDTO();
+            pushChannelWSDTO.setPushAccount(pushAccountWSDTO);
+            pushChannelWSDTO.setOperationPushes(operationPushMessageRepository.findByOperationId(operationDBModel.getId()));
+            pushChannelWSDTO.setOperationPushTemps(processPushTempRepository.findByProcessId(operationDBModel.getProcessId()));
+
+            return pushChannelWSDTO;
+        }
         return null;
     }
 
@@ -582,24 +605,24 @@ public class OperationHelper {
 
     public PaginationWSDTO mapOperationPagination(Page<OperationDBModel> operationModelPage){
 
-        PaginationWSDTO paginationWSDTO = new PaginationWSDTO();
-        paginationWSDTO.setPageSize(operationModelPage.getPageable().getPageSize());
-        paginationWSDTO.setPageNumber(operationModelPage.getPageable().getPageNumber());
-        paginationWSDTO.setTotalPage(operationModelPage.getTotalPages());
-        paginationWSDTO.setTotalElements(operationModelPage.getTotalElements());
+        PaginationWSDTO operationPagination = new PaginationWSDTO();
+        operationPagination.setPageSize(operationModelPage.getPageable().getPageSize());
+        operationPagination.setPageNumber(operationModelPage.getPageable().getPageNumber());
+        operationPagination.setTotalPage(operationModelPage.getTotalPages());
+        operationPagination.setTotalElements(operationModelPage.getTotalElements());
 
-        return paginationWSDTO;
+        return operationPagination;
     }
 
     public PaginationWSDTO mapSessionModelPagination(Page<SessionDBModel> sessionModelPage){
 
-        PaginationWSDTO paginationWSDTO = new PaginationWSDTO();
-        paginationWSDTO.setPageSize(sessionModelPage.getPageable().getPageSize());
-        paginationWSDTO.setPageNumber(sessionModelPage.getPageable().getPageNumber());
-        paginationWSDTO.setTotalPage(sessionModelPage.getTotalPages());
-        paginationWSDTO.setTotalElements(sessionModelPage.getTotalElements());
+        PaginationWSDTO sessionPagination = new PaginationWSDTO();
+        sessionPagination.setPageSize(sessionModelPage.getPageable().getPageSize());
+        sessionPagination.setPageNumber(sessionModelPage.getPageable().getPageNumber());
+        sessionPagination.setTotalPage(sessionModelPage.getTotalPages());
+        sessionPagination.setTotalElements(sessionModelPage.getTotalElements());
 
-        return paginationWSDTO;
+        return sessionPagination;
     }
 
 

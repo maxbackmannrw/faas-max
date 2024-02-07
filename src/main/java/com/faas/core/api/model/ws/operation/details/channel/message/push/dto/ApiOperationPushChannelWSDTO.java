@@ -9,16 +9,16 @@ import java.util.List;
 public class ApiOperationPushChannelWSDTO {
 
     private ApiPushAccountWSDTO pushAccount;
-    private List<OperationPushMessageDBModel>pushMessages;
-    private List<ProcessPushTempDBModel>pushTemps;
+    private List<OperationPushMessageDBModel>operationPushes;
+    private List<ProcessPushTempDBModel>operationPushTemps;
 
     public ApiOperationPushChannelWSDTO() {
     }
 
-    public ApiOperationPushChannelWSDTO(ApiPushAccountWSDTO pushAccount, List<OperationPushMessageDBModel> pushMessages, List<ProcessPushTempDBModel> pushTemps) {
+    public ApiOperationPushChannelWSDTO(ApiPushAccountWSDTO pushAccount, List<OperationPushMessageDBModel> operationPushes, List<ProcessPushTempDBModel> operationPushTemps) {
         this.pushAccount = pushAccount;
-        this.pushMessages = pushMessages;
-        this.pushTemps = pushTemps;
+        this.operationPushes = operationPushes;
+        this.operationPushTemps = operationPushTemps;
     }
 
     public ApiPushAccountWSDTO getPushAccount() {
@@ -29,19 +29,19 @@ public class ApiOperationPushChannelWSDTO {
         this.pushAccount = pushAccount;
     }
 
-    public List<OperationPushMessageDBModel> getPushMessages() {
-        return pushMessages;
+    public List<OperationPushMessageDBModel> getOperationPushes() {
+        return operationPushes;
     }
 
-    public void setPushMessages(List<OperationPushMessageDBModel> pushMessages) {
-        this.pushMessages = pushMessages;
+    public void setOperationPushes(List<OperationPushMessageDBModel> operationPushes) {
+        this.operationPushes = operationPushes;
     }
 
-    public List<ProcessPushTempDBModel> getPushTemps() {
-        return pushTemps;
+    public List<ProcessPushTempDBModel> getOperationPushTemps() {
+        return operationPushTemps;
     }
 
-    public void setPushTemps(List<ProcessPushTempDBModel> pushTemps) {
-        this.pushTemps = pushTemps;
+    public void setOperationPushTemps(List<ProcessPushTempDBModel> operationPushTemps) {
+        this.operationPushTemps = operationPushTemps;
     }
 }

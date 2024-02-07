@@ -10,7 +10,10 @@ import java.util.List;
 public interface OperationEmailMessageRepository extends MongoRepository<OperationEmailMessageDBModel, String> {
 
     List<OperationEmailMessageDBModel>findBySessionId(long sessionId);
+    List<OperationEmailMessageDBModel>findByOperationId(String operationId);
     List<OperationEmailMessageDBModel>findByClientId(long clientId);
+    List<OperationEmailMessageDBModel>findByIdAndSessionId(String emailId, long sessionId);
+    List<OperationEmailMessageDBModel>findByIdAndOperationId(String emailId, String operationId);
 
 
 }

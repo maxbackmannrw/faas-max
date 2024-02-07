@@ -10,5 +10,8 @@ import java.util.List;
 public interface OperationPushMessageRepository extends MongoRepository<OperationPushMessageDBModel, String> {
 
     List<OperationPushMessageDBModel>findBySessionId(long sessionId);
+    List<OperationPushMessageDBModel>findByOperationId(String operationId);
     List<OperationPushMessageDBModel>findByClientId(long clientId);
+    List<OperationPushMessageDBModel>findByIdAndSessionId(String pushId, long sessionId);
+    List<OperationPushMessageDBModel>findByIdAndOperationId(String pushId, String operationId);
 }

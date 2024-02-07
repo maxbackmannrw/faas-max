@@ -369,8 +369,6 @@ public class ChannelHelper {
 
             ApiOperationPushChannelWSDTO operationPushMessageWSDTO = new ApiOperationPushChannelWSDTO();
             operationPushMessageWSDTO.setPushAccount(pushAccountWSDTO);
-            operationPushMessageWSDTO.setPushMessages(operationPushMessageRepository.findBySessionId(sessionDBModel.getId()));
-            operationPushMessageWSDTO.setPushTemps(processPushTempRepository.findByProcessId(sessionDBModel.getProcessId()));
 
             return operationPushMessageWSDTO;
         }
