@@ -12,11 +12,12 @@ public class OperationEmailMessageDBModel {
 
     @Id
     private String id;
+    private String operationId;
     private long sessionId;
     private String sessionUUID;
     private long clientId;
     private long agentId;
-    private long addressId;
+    private String emailAddressId;
     private String emailAddress;
     private String tempId;
     private String campaignId;
@@ -34,17 +35,17 @@ public class OperationEmailMessageDBModel {
     private long cDate;
     private int status;
 
-
     public OperationEmailMessageDBModel() {
     }
 
-    public OperationEmailMessageDBModel(String id, long sessionId, String sessionUUID, long clientId, long agentId, long addressId, String emailAddress, String tempId, String campaignId, String processId, String subject, String body, String footer, List<OperationEmailMessageDataDAO> messageDatas, String sender, String emailType, String accountId, String sentId, String emailState, long uDate, long cDate, int status) {
+    public OperationEmailMessageDBModel(String id, String operationId, long sessionId, String sessionUUID, long clientId, long agentId, String emailAddressId, String emailAddress, String tempId, String campaignId, String processId, String subject, String body, String footer, List<OperationEmailMessageDataDAO> messageDatas, String sender, String emailType, String accountId, String sentId, String emailState, long uDate, long cDate, int status) {
         this.id = id;
+        this.operationId = operationId;
         this.sessionId = sessionId;
         this.sessionUUID = sessionUUID;
         this.clientId = clientId;
         this.agentId = agentId;
-        this.addressId = addressId;
+        this.emailAddressId = emailAddressId;
         this.emailAddress = emailAddress;
         this.tempId = tempId;
         this.campaignId = campaignId;
@@ -69,6 +70,14 @@ public class OperationEmailMessageDBModel {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getOperationId() {
+        return operationId;
+    }
+
+    public void setOperationId(String operationId) {
+        this.operationId = operationId;
     }
 
     public long getSessionId() {
@@ -103,12 +112,12 @@ public class OperationEmailMessageDBModel {
         this.agentId = agentId;
     }
 
-    public long getAddressId() {
-        return addressId;
+    public String getEmailAddressId() {
+        return emailAddressId;
     }
 
-    public void setAddressId(long addressId) {
-        this.addressId = addressId;
+    public void setEmailAddressId(String emailAddressId) {
+        this.emailAddressId = emailAddressId;
     }
 
     public String getEmailAddress() {

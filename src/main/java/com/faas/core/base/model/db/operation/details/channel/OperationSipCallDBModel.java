@@ -29,7 +29,7 @@ public class OperationSipCallDBModel {
     private String processId;
 
     @Column(name = "number_id")
-    private long numberId;
+    private String numberId;
 
     @Column(name = "phone_number")
     private String phoneNumber;
@@ -67,7 +67,7 @@ public class OperationSipCallDBModel {
     public OperationSipCallDBModel() {
     }
 
-    public OperationSipCallDBModel(long id, String operationId, long sessionId, long clientId, long agentId, String campaignId, String processId, long numberId, String phoneNumber, String accountId, String callerId, String provider, String connectionId, String callState, long sDate, long fDate, long uDate, long cDate, int status) {
+    public OperationSipCallDBModel(long id, String operationId, long sessionId, long clientId, long agentId, String campaignId, String processId, String numberId, String phoneNumber, String accountId, String callerId, String provider, String connectionId, String callState, long sDate, long fDate, long uDate, long cDate, int status) {
         this.id = id;
         this.operationId = operationId;
         this.sessionId = sessionId;
@@ -145,11 +145,11 @@ public class OperationSipCallDBModel {
         this.processId = processId;
     }
 
-    public long getNumberId() {
+    public String getNumberId() {
         return numberId;
     }
 
-    public void setNumberId(long numberId) {
+    public void setNumberId(String numberId) {
         this.numberId = numberId;
     }
 

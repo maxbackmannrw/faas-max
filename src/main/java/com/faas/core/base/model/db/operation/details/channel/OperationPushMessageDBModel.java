@@ -12,6 +12,7 @@ public class OperationPushMessageDBModel {
 
     @Id
     private String id;
+    private String operationId;
     private long sessionId;
     private String sessionUUID;
     private long clientId;
@@ -37,8 +38,9 @@ public class OperationPushMessageDBModel {
     public OperationPushMessageDBModel() {
     }
 
-    public OperationPushMessageDBModel(String id, long sessionId, String sessionUUID, long clientId, long agentId, String tempId, String campaignId, String processId, String header, String body, String footer, List<OperationPushMessageDataDAO> messageDatas, String sender, String pushType, String mainType, String accountId, String sentId, String targetId, String pushState, long uDate, long cDate, int status) {
+    public OperationPushMessageDBModel(String id, String operationId, long sessionId, String sessionUUID, long clientId, long agentId, String tempId, String campaignId, String processId, String header, String body, String footer, List<OperationPushMessageDataDAO> messageDatas, String sender, String pushType, String mainType, String accountId, String sentId, String targetId, String pushState, long uDate, long cDate, int status) {
         this.id = id;
+        this.operationId = operationId;
         this.sessionId = sessionId;
         this.sessionUUID = sessionUUID;
         this.clientId = clientId;
@@ -68,6 +70,14 @@ public class OperationPushMessageDBModel {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getOperationId() {
+        return operationId;
+    }
+
+    public void setOperationId(String operationId) {
+        this.operationId = operationId;
     }
 
     public long getSessionId() {

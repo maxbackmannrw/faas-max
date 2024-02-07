@@ -11,6 +11,7 @@ import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiS
 import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.ApiOperationWappMessageChannelWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushChannelWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiPushAccountWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.ApiWappMessageAccountWSDTO;
 import com.faas.core.base.model.db.channel.account.EmailAccountDBModel;
 import com.faas.core.base.model.db.channel.account.PushAccountDBModel;
 import com.faas.core.base.model.db.channel.account.SmsAccountDBModel;
@@ -198,14 +199,13 @@ public class ChannelHelper {
     }
 
 
-    public ApiWappCallAccountWSDTO getApiWappMessageAccountWSDTO(long agentId, String processId) {
+    public ApiWappMessageAccountWSDTO getApiWappMessageAccountWSDTO(long agentId, String processId) {
 
         List<UserDetailsDBModel> agentDetails = userDetailsRepository.findByUserId(agentId);
         List<ProcessWappChannelDBModel> wappChannels = processWappChannelRepository.findByProcessId(processId);
         if (!agentDetails.isEmpty() && agentDetails.get(0).getWappChannel() != null && agentDetails.get(0).getWappChannel().getAccountId() != null && !wappChannels.isEmpty()) {
 
-            ApiWappCallAccountWSDTO wappAccountWSDTO = new ApiWappCallAccountWSDTO();
-
+            ApiWappMessageAccountWSDTO wappAccountWSDTO = new ApiWappMessageAccountWSDTO();
             wappAccountWSDTO.setAccountId(agentDetails.get(0).getWappChannel().getAccountId());
             wappAccountWSDTO.setAccount(agentDetails.get(0).getWappChannel().getAccount());
             wappAccountWSDTO.setInstanceKey(agentDetails.get(0).getWappChannel().getInstanceKey());
@@ -296,8 +296,6 @@ public class ChannelHelper {
         if (smsAccountWSDTO != null){
             operationSmsMessageWSDTO.setSmsAccount(smsAccountWSDTO);
         }
-        operationSmsMessageWSDTO.setSmsMessages(operationSmsMessageRepository.findBySessionId(sessionDBModel.getId()));
-        operationSmsMessageWSDTO.setSmsTemps(processSmsMessageTempRepository.findByProcessId(sessionDBModel.getProcessId()));
 
         return operationSmsMessageWSDTO;
     }

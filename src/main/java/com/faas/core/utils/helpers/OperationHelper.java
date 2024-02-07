@@ -12,7 +12,9 @@ import com.faas.core.api.model.ws.operation.details.channel.content.dto.ApiOpera
 import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiOperationEmailChannelWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushChannelWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiOperationSmsChannelWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiSmsAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.ApiOperationWappMessageChannelWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.ApiWappMessageAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.client.content.dto.ApiOperationClientWSDTO;
 import com.faas.core.api.model.ws.operation.details.campaign.dto.ApiOperationCampaignWSDTO;
 import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationDetailsWSDTO;
@@ -24,6 +26,7 @@ import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.operation.content.dao.OperationFlowDAO;
 import com.faas.core.base.model.db.operation.content.dao.OperationInquiryDAO;
 import com.faas.core.base.model.db.operation.details.channel.OperationSipCallDBModel;
+import com.faas.core.base.model.db.operation.details.channel.OperationSmsMessageDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationWappCallDBModel;
 import com.faas.core.base.model.db.process.content.ProcessDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
@@ -426,15 +429,16 @@ public class OperationHelper {
 
         List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndAgentId(operationDBModel.getSessionId(),operationDBModel.getAgentId());
         Optional<ClientDBModel> clientDBModel = clientRepository.findById(operationDBModel.getClientId());
-        if (!sessionDBModels.isEmpty() && clientDBModel.isPresent()){
+        List<ClientDetailsDBModel> clientDetails = clientDetailsRepository.findByClientId(operationDBModel.getClientId());
+        if (!sessionDBModels.isEmpty() && clientDBModel.isPresent() && !clientDetails.isEmpty()) {
 
             ApiOperationDetailsWSDTO operationDetailsWSDTO = new ApiOperationDetailsWSDTO();
             operationDetailsWSDTO.setOperation(operationDBModel);
             operationDetailsWSDTO.setOperationSession(sessionDBModels.get(0));
             operationDetailsWSDTO.setOperationClient(getApiOperationClientWSDTO(clientDBModel.get()));
             operationDetailsWSDTO.setOperationCampaign(getApiOperationCampaignWSDTO(operationDBModel.getCampaignId(),operationDBModel.getProcessId()));
-            operationDetailsWSDTO.setOperationCallChannel(getApiOperationCallChannelWSDTO(operationDBModel));
-            operationDetailsWSDTO.setOperationMessageChannel(getApiOperationMessageChannelWSDTO(operationDBModel));
+            operationDetailsWSDTO.setOperationCallChannel(getApiOperationCallChannelWSDTO(operationDBModel,clientDetails.get(0)));
+            operationDetailsWSDTO.setOperationMessageChannel(getApiOperationMessageChannelWSDTO(operationDBModel,clientDetails.get(0)));
 
             return operationDetailsWSDTO;
         }
@@ -469,56 +473,50 @@ public class OperationHelper {
     }
 
 
-
-    public ApiOperationCallChannelWSDTO getApiOperationCallChannelWSDTO(OperationDBModel operationDBModel) {
+    public ApiOperationCallChannelWSDTO getApiOperationCallChannelWSDTO(OperationDBModel operationDBModel,ClientDetailsDBModel clientDetails) {
 
         ApiOperationCallChannelWSDTO operationCallChannelWSDTO = new ApiOperationCallChannelWSDTO();
-        operationCallChannelWSDTO.setSipChannel(getApiOperationSipChannelWSDTO(operationDBModel));
-        operationCallChannelWSDTO.setWappCallChannel(getApiOperationWappCallChannelWSDTO(operationDBModel));
+        operationCallChannelWSDTO.setSipChannel(getApiOperationSipChannelWSDTO(operationDBModel,clientDetails));
+        operationCallChannelWSDTO.setWappCallChannel(getApiOperationWappCallChannelWSDTO(operationDBModel,clientDetails));
+
         return operationCallChannelWSDTO;
     }
 
-    public ApiOperationSipChannelWSDTO getApiOperationSipChannelWSDTO(OperationDBModel operationDBModel) {
+    public ApiOperationSipChannelWSDTO getApiOperationSipChannelWSDTO(OperationDBModel operationDBModel,ClientDetailsDBModel clientDetails) {
 
         ApiSipAccountWSDTO sipAccountWSDTO = channelHelper.getApiSipAccountWSDTO(operationDBModel.getAgentId(),operationDBModel.getProcessId());
-        List<ClientDetailsDBModel> clientDetails = clientDetailsRepository.findByClientId(operationDBModel.getClientId());
-        if (sipAccountWSDTO != null && !clientDetails.isEmpty()){
+        if (sipAccountWSDTO != null && clientDetails.getClientPhones() != null){
 
             ApiOperationSipChannelWSDTO sipChannelWSDTO = new ApiOperationSipChannelWSDTO();
             sipChannelWSDTO.setSipAccount(sipAccountWSDTO);
-            if (clientDetails.get(0).getClientPhones() != null){
-                sipChannelWSDTO.setClientPhones(clientDetails.get(0).getClientPhones());
-            }else {
-                sipChannelWSDTO.setClientPhones(new ArrayList<>());
+            sipChannelWSDTO.setClientPhones(clientDetails.getClientPhones());
+            List<OperationSipCallDBModel> sipCallDBModels = operationSipCallRepository.findByOperationId(operationDBModel.getId());
+            for (OperationSipCallDBModel sipCallDBModel : sipCallDBModels) {
+                if (sipCallDBModel.getCallState().equalsIgnoreCase(AppConstant.ACTIVE_STATE)) {
+                    sipChannelWSDTO.setActiveSipCall(sipCallDBModel);
+                }
             }
-            List<OperationSipCallDBModel> activeSipCalls = operationSipCallRepository.findByOperationIdAndCallState(operationDBModel.getId(),AppConstant.ACTIVE_STATE);
-            if (!activeSipCalls.isEmpty()){
-                sipChannelWSDTO.setActiveSipCall(activeSipCalls.get(0));
-            }
-            sipChannelWSDTO.setRecentSipCalls(operationSipCallRepository.findByOperationId(operationDBModel.getId()));
+            sipChannelWSDTO.setRecentSipCalls(sipCallDBModels);
             return sipChannelWSDTO;
         }
         return null;
     }
 
-    public ApiOperationWappCallChannelWSDTO getApiOperationWappCallChannelWSDTO(OperationDBModel operationDBModel) {
+    public ApiOperationWappCallChannelWSDTO getApiOperationWappCallChannelWSDTO(OperationDBModel operationDBModel,ClientDetailsDBModel clientDetails) {
 
-        ApiWappCallAccountWSDTO wappCallAccountWSDTO = channelHelper.getApiWappCallAccountWSDTO(operationDBModel.getAgentId(),operationDBModel.getProcessId());
-        List<ClientDetailsDBModel> clientDetails = clientDetailsRepository.findByClientId(operationDBModel.getClientId());
-        if (wappCallAccountWSDTO != null){
+        ApiWappCallAccountWSDTO wappAccountWSDTO = channelHelper.getApiWappCallAccountWSDTO(operationDBModel.getAgentId(),operationDBModel.getProcessId());
+        if (wappAccountWSDTO != null && clientDetails.getClientPhones() != null){
 
             ApiOperationWappCallChannelWSDTO wappCallChannelWSDTO = new ApiOperationWappCallChannelWSDTO();
-            wappCallChannelWSDTO.setWappCallAccount(wappCallAccountWSDTO);
-            if (clientDetails.get(0).getClientPhones() != null){
-                wappCallChannelWSDTO.setClientPhones(clientDetails.get(0).getClientPhones());
-            }else {
-                wappCallChannelWSDTO.setClientPhones(new ArrayList<>());
+            wappCallChannelWSDTO.setWappAccount(wappAccountWSDTO);
+            wappCallChannelWSDTO.setClientPhones(clientDetails.getClientPhones());
+            List<OperationWappCallDBModel> wappCallDBModels = operationWappCallRepository.findByOperationId(operationDBModel.getId());
+            for (OperationWappCallDBModel wappCallDBModel : wappCallDBModels) {
+                if (wappCallDBModel.getCallState().equalsIgnoreCase(AppConstant.ACTIVE_STATE)) {
+                    wappCallChannelWSDTO.setActiveWappCall(wappCallDBModel);
+                }
             }
-            List<OperationWappCallDBModel> activeWappCalls = operationWappCallRepository.findByOperationIdAndCallState(operationDBModel.getId(),AppConstant.ACTIVE_STATE);
-            if (!activeWappCalls.isEmpty()){
-                wappCallChannelWSDTO.setActiveWappCall(activeWappCalls.get(0));
-            }
-            wappCallChannelWSDTO.setRecentWappCalls(operationWappCallRepository.findByOperationId(operationDBModel.getId()));
+            wappCallChannelWSDTO.setRecentWappCalls(wappCallDBModels);
             return wappCallChannelWSDTO;
         }
         return null;
@@ -526,37 +524,59 @@ public class OperationHelper {
 
 
 
-    public ApiOperationMessageChannelWSDTO getApiOperationMessageChannelWSDTO(OperationDBModel operationDBModel) {
+    public ApiOperationMessageChannelWSDTO getApiOperationMessageChannelWSDTO(OperationDBModel operationDBModel,ClientDetailsDBModel clientDetails) {
 
         ApiOperationMessageChannelWSDTO operationMessageChannelWSDTO = new ApiOperationMessageChannelWSDTO();
-        operationMessageChannelWSDTO.setSmsChannel(getApiOperationSmsChannelWSDTO(operationDBModel));
-        operationMessageChannelWSDTO.setWappMessageChannel(getApiOperationWappMessageChannelWSDTO(operationDBModel));
-        operationMessageChannelWSDTO.setEmailChannel(getApiOperationEmailChannelWSDTO(operationDBModel));
-        operationMessageChannelWSDTO.setPushChannel(getApiOperationPushChannelWSDTO(operationDBModel));
+        operationMessageChannelWSDTO.setSmsChannel(getApiOperationSmsChannelWSDTO(operationDBModel,clientDetails));
+        operationMessageChannelWSDTO.setWappMessageChannel(getApiOperationWappMessageChannelWSDTO(operationDBModel,clientDetails));
+        operationMessageChannelWSDTO.setEmailChannel(getApiOperationEmailChannelWSDTO(operationDBModel,clientDetails));
+        operationMessageChannelWSDTO.setPushChannel(getApiOperationPushChannelWSDTO(operationDBModel,clientDetails));
+
         return operationMessageChannelWSDTO;
     }
 
 
-    public ApiOperationSmsChannelWSDTO getApiOperationSmsChannelWSDTO(OperationDBModel operationDBModel) {
+    public ApiOperationSmsChannelWSDTO getApiOperationSmsChannelWSDTO(OperationDBModel operationDBModel,ClientDetailsDBModel clientDetails) {
+
+        ApiSmsAccountWSDTO smsAccountWSDTO = channelHelper.getApiSmsAccountWSDTO(operationDBModel.getProcessId());
+        if (smsAccountWSDTO != null && clientDetails.getClientPhones() != null){
+
+            ApiOperationSmsChannelWSDTO operationSmsChannelWSDTO = new ApiOperationSmsChannelWSDTO();
+            operationSmsChannelWSDTO.setSmsAccount(smsAccountWSDTO);
+            operationSmsChannelWSDTO.setClientPhones(clientDetails.getClientPhones());
+            operationSmsChannelWSDTO.setOperationSmss(operationSmsMessageRepository.findByOperationId(operationDBModel.getId()));
+            operationSmsChannelWSDTO.setOperationSmsTemps(processSmsMessageTempRepository.findByProcessId(operationDBModel.getProcessId()));
+
+            return operationSmsChannelWSDTO;
+        }
+        return null;
+    }
+
+    public ApiOperationWappMessageChannelWSDTO getApiOperationWappMessageChannelWSDTO(OperationDBModel operationDBModel,ClientDetailsDBModel clientDetails) {
+
+        ApiWappMessageAccountWSDTO wappAccountWSDTO = channelHelper.getApiWappMessageAccountWSDTO(operationDBModel.getAgentId(),operationDBModel.getProcessId());
+        if (wappAccountWSDTO != null && clientDetails.getClientPhones() != null){
+
+            ApiOperationWappMessageChannelWSDTO wappMessageChannelWSDTO = new ApiOperationWappMessageChannelWSDTO();
+            wappMessageChannelWSDTO.setWappAccount(wappAccountWSDTO);
+            wappMessageChannelWSDTO.setClientPhones(clientDetails.getClientPhones());
+            wappMessageChannelWSDTO.setOperationWappMessages(operationWappMessageRepository.findByOperationId(operationDBModel.getId()));
+            wappMessageChannelWSDTO.setOperationWappMessageTemps(processWappMessageTempRepository.findByProcessId(operationDBModel.getProcessId()));
+
+            return wappMessageChannelWSDTO;
+        }
+        return null;
+    }
+
+    public ApiOperationEmailChannelWSDTO getApiOperationEmailChannelWSDTO(OperationDBModel operationDBModel,ClientDetailsDBModel clientDetails) {
 
         return null;
     }
 
-    public ApiOperationWappMessageChannelWSDTO getApiOperationWappMessageChannelWSDTO(OperationDBModel operationDBModel) {
+    public ApiOperationPushChannelWSDTO getApiOperationPushChannelWSDTO(OperationDBModel operationDBModel,ClientDetailsDBModel clientDetails) {
 
         return null;
     }
-
-    public ApiOperationEmailChannelWSDTO getApiOperationEmailChannelWSDTO(OperationDBModel operationDBModel) {
-
-        return null;
-    }
-
-    public ApiOperationPushChannelWSDTO getApiOperationPushChannelWSDTO(OperationDBModel operationDBModel) {
-
-        return null;
-    }
-
 
 
 
@@ -581,7 +601,6 @@ public class OperationHelper {
 
         return paginationWSDTO;
     }
-
 
 
 

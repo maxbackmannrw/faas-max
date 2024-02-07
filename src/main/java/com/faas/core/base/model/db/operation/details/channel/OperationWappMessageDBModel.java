@@ -9,9 +9,10 @@ public class OperationWappMessageDBModel {
 
     @Id
     private String id;
+    private String operationId;
     private long sessionId;
     private long clientId;
-    private long numberId;
+    private String numberId;
     private String phoneNumber;
     private long agentId;
     private String campaignId;
@@ -26,8 +27,9 @@ public class OperationWappMessageDBModel {
     public OperationWappMessageDBModel() {
     }
 
-    public OperationWappMessageDBModel(String id, long sessionId, long clientId, long numberId, String phoneNumber, long agentId, String campaignId, String processId, OperationWappMessageDAO wappMessage, String messageSentId, String messageState, long uDate, long cDate, int status) {
+    public OperationWappMessageDBModel(String id, String operationId, long sessionId, long clientId, String numberId, String phoneNumber, long agentId, String campaignId, String processId, OperationWappMessageDAO wappMessage, String messageSentId, String messageState, long uDate, long cDate, int status) {
         this.id = id;
+        this.operationId = operationId;
         this.sessionId = sessionId;
         this.clientId = clientId;
         this.numberId = numberId;
@@ -51,6 +53,14 @@ public class OperationWappMessageDBModel {
         this.id = id;
     }
 
+    public String getOperationId() {
+        return operationId;
+    }
+
+    public void setOperationId(String operationId) {
+        this.operationId = operationId;
+    }
+
     public long getSessionId() {
         return sessionId;
     }
@@ -67,11 +77,11 @@ public class OperationWappMessageDBModel {
         this.clientId = clientId;
     }
 
-    public long getNumberId() {
+    public String getNumberId() {
         return numberId;
     }
 
-    public void setNumberId(long numberId) {
+    public void setNumberId(String numberId) {
         this.numberId = numberId;
     }
 
