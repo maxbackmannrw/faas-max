@@ -17,6 +17,7 @@ import com.faas.core.base.repo.operation.details.channel.*;
 import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.remote.app.RemoteAppRepository;
 import com.faas.core.base.repo.session.SessionRepository;
+import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -85,7 +86,7 @@ public class ClientHelper {
 
             if (clientDBModel.getPhoneNumber() != null){
                 List<ClientPhoneDAO>clientPhoneDAOS = new ArrayList<>();
-                clientPhoneDAOS.add(createClientPhoneDAO(clientDBModel.getPhoneNumber(),"UNKNOWN"));
+                clientPhoneDAOS.add(createClientPhoneDAO(clientDBModel.getPhoneNumber(),AppConstant.UNKNOWN,AppConstant.MAIN_TYPE));
                 clientDetailsDBModel.setClientPhones(clientPhoneDAOS);
             }else {
                 clientDetailsDBModel.setClientPhones(new ArrayList<>());
@@ -93,7 +94,7 @@ public class ClientHelper {
 
             if (clientDBModel.getEmailAddress() != null){
                 List<ClientEmailDAO>clientEmailDAOS = new ArrayList<>();
-                clientEmailDAOS.add(createClientEmailDAO(clientDBModel.getEmailAddress()));
+                clientEmailDAOS.add(createClientEmailDAO(clientDBModel.getEmailAddress(),AppConstant.MAIN_TYPE));
                 clientDetailsDBModel.setClientEmails(clientEmailDAOS);
             }else {
                 clientDetailsDBModel.setClientEmails(new ArrayList<>());
@@ -101,7 +102,7 @@ public class ClientHelper {
 
             if (clientDBModel.getClientCountry() != null){
                 List<ClientAddressDAO>clientAddressDAOS = new ArrayList<>();
-                clientAddressDAOS.add(createClientAddressDAO("",clientDBModel.getClientCity(),"","",clientDBModel.getClientCountry()));
+                clientAddressDAOS.add(createClientAddressDAO("",clientDBModel.getClientCity(),"","",clientDBModel.getClientCountry(),AppConstant.MAIN_TYPE));
                 clientDetailsDBModel.setClientAddresses(clientAddressDAOS);
             }else {
                 clientDetailsDBModel.setClientAddresses(new ArrayList<>());
@@ -116,25 +117,45 @@ public class ClientHelper {
     }
 
 
-    public ClientPhoneDAO createClientPhoneDAO(String phoneNumber,String phoneCarrier){
+    public ClientPhoneDAO createClientPhoneDAO(String phoneNumber,String phoneCarrier,String numberType){
 
         ClientPhoneDAO clientPhoneDAO = new ClientPhoneDAO();
+        clientPhoneDAO.setId(appUtils.generateUUID());
+        clientPhoneDAO.setPhoneNumber(phoneNumber);
+        clientPhoneDAO.setPhoneCarrier(phoneCarrier);
+        clientPhoneDAO.setNumberType(numberType);
+        clientPhoneDAO.setcDate(appUtils.getCurrentTimeStamp());
+        clientPhoneDAO.setStatus(1);
 
         return clientPhoneDAO;
     }
 
 
-    public ClientEmailDAO createClientEmailDAO(String emailAddress){
+    public ClientEmailDAO createClientEmailDAO(String emailAddress,String emailType){
 
         ClientEmailDAO clientEmailDAO = new ClientEmailDAO();
+        clientEmailDAO.setId(appUtils.generateUUID());
+        clientEmailDAO.setEmailAddress(emailAddress);
+        clientEmailDAO.setEmailType(emailType);
+        clientEmailDAO.setcDate(appUtils.getCurrentTimeStamp());
+        clientEmailDAO.setStatus(1);
 
         return clientEmailDAO;
     }
 
 
-    public ClientAddressDAO createClientAddressDAO(String street,String city,String zipCode,String state,String country){
+    public ClientAddressDAO createClientAddressDAO(String street,String city,String zipCode,String state,String country,String addressType){
 
         ClientAddressDAO clientAddressDAO = new ClientAddressDAO();
+        clientAddressDAO.setId(appUtils.generateUUID());
+        clientAddressDAO.setStreet(street);
+        clientAddressDAO.setCity(city);
+        clientAddressDAO.setZipCode(zipCode);
+        clientAddressDAO.setState(state);
+        clientAddressDAO.setCountry(country);
+        clientAddressDAO.setAddressType(addressType);
+        clientAddressDAO.setcDate(appUtils.getCurrentTimeStamp());
+        clientAddressDAO.setStatus(1);
 
         return clientAddressDAO;
     }

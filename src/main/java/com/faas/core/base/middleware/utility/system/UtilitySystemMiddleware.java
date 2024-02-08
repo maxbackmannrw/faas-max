@@ -61,13 +61,13 @@ public class UtilitySystemMiddleware {
     }
 
 
-    public SystemUtilityWSModel repairSystemUtility(long userId, String systemUtility) {
+    public SystemUtilityWSModel repairSystemUtility(long userId, String repairType) {
 
         SystemUtilityWSModel response = new SystemUtilityWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<SystemUtilityWSDTO> systemUtilityWSDTOS = new ArrayList<>();
 
-        SystemUtilityWSDTO systemUtilityWSDTO = utilitySystemFramework.repairSystemUtilityService(userId,systemUtility);
+        SystemUtilityWSDTO systemUtilityWSDTO = utilitySystemFramework.repairSystemUtilityService(userId,repairType);
         if (systemUtilityWSDTO != null){
             systemUtilityWSDTOS.add(systemUtilityWSDTO);
         }
@@ -82,13 +82,13 @@ public class UtilitySystemMiddleware {
         return response;
     }
 
-    public SystemUtilityWSModel removeSystemUtility(long userId, String systemUtility) {
+    public SystemUtilityWSModel removeSystemUtility(long userId, String removeType) {
 
         SystemUtilityWSModel response = new SystemUtilityWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<SystemUtilityWSDTO> systemUtilityWSDTOS = new ArrayList<>();
 
-        SystemUtilityWSDTO systemUtilityWSDTO = utilitySystemFramework.removeSystemUtilityService(userId,systemUtility);
+        SystemUtilityWSDTO systemUtilityWSDTO = utilitySystemFramework.removeSystemUtilityService(userId,removeType);
         if (systemUtilityWSDTO != null){
             systemUtilityWSDTOS.add(systemUtilityWSDTO);
         }

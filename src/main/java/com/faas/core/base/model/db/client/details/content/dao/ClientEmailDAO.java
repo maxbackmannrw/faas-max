@@ -4,15 +4,17 @@ public class ClientEmailDAO {
 
     private String id;
     private String emailAddress;
+    private String emailType;
     private long cDate;
     private int status;
 
     public ClientEmailDAO() {
     }
 
-    public ClientEmailDAO(String id, String emailAddress, long cDate, int status) {
+    public ClientEmailDAO(String id, String emailAddress, String emailType, long cDate, int status) {
         this.id = id;
         this.emailAddress = emailAddress;
+        this.emailType = emailType;
         this.cDate = cDate;
         this.status = status;
     }
@@ -31,6 +33,14 @@ public class ClientEmailDAO {
 
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
+    }
+
+    public String getEmailType() {
+        return emailType;
+    }
+
+    public void setEmailType(String emailType) {
+        this.emailType = emailType;
     }
 
     public long getcDate() {

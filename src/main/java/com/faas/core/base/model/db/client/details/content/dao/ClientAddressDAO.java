@@ -9,19 +9,21 @@ public class ClientAddressDAO {
     private String zipCode;
     private String state;
     private String country;
+    private String addressType;
     private long cDate;
     private int status;
 
     public ClientAddressDAO() {
     }
 
-    public ClientAddressDAO(String id, String street, String city, String zipCode, String state, String country, long cDate, int status) {
+    public ClientAddressDAO(String id, String street, String city, String zipCode, String state, String country, String addressType, long cDate, int status) {
         this.id = id;
         this.street = street;
         this.city = city;
         this.zipCode = zipCode;
         this.state = state;
         this.country = country;
+        this.addressType = addressType;
         this.cDate = cDate;
         this.status = status;
     }
@@ -72,6 +74,14 @@ public class ClientAddressDAO {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public String getAddressType() {
+        return addressType;
+    }
+
+    public void setAddressType(String addressType) {
+        this.addressType = addressType;
     }
 
     public long getcDate() {

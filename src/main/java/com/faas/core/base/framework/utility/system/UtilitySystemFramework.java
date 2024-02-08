@@ -153,55 +153,55 @@ public class UtilitySystemFramework {
         return utilityHelper.getSystemUtilitiesHelper(userId);
     }
 
-    public SystemUtilityWSDTO repairSystemUtilityService(long userId, String systemUtility) {
+    public SystemUtilityWSDTO repairSystemUtilityService(long userId, String repairType) {
 
-        if (systemUtility.equalsIgnoreCase(AppConstant.CLIENT_UTILS)){
+        if (repairType.equalsIgnoreCase(AppConstant.CLIENT_UTILS)){
             utilityHelper.repairClientsHelper();
         }
-        if (systemUtility.equalsIgnoreCase(AppConstant.AGENT_UTILS)){
+        if (repairType.equalsIgnoreCase(AppConstant.AGENT_UTILS)){
             utilityHelper.repairAgentsHelper();
         }
         return null;
     }
 
 
-    public SystemUtilityWSDTO removeSystemUtilityService(long userId, String systemUtility) {
+    public SystemUtilityWSDTO removeSystemUtilityService(long userId, String removeType) {
 
-        if (systemUtility.equalsIgnoreCase(AppConstant.CLIENT_UTILS)){
+        if (removeType.equalsIgnoreCase(AppConstant.CLIENT_UTILS)){
             utilityHelper.removeAllClientsHelper();
             return new SystemUtilityWSDTO(AppConstant.CLIENT_UTILS,AppConstant.CLIENT_UTILS,true);
         }
-        if (systemUtility.equalsIgnoreCase(AppConstant.SESSION_UTILS)){
+        if (removeType.equalsIgnoreCase(AppConstant.SESSION_UTILS)){
             utilityHelper.removeAllSessionsHelper();
             return new SystemUtilityWSDTO(AppConstant.SESSION_UTILS,AppConstant.SESSION_UTILS,true);
         }
-        if (systemUtility.equalsIgnoreCase(AppConstant.OPERATION_UTILS)){
+        if (removeType.equalsIgnoreCase(AppConstant.OPERATION_UTILS)){
             utilityHelper.removeAllOperationsHelper();
             return new SystemUtilityWSDTO(AppConstant.OPERATION_UTILS,AppConstant.OPERATION_UTILS,true);
         }
 
-        if (systemUtility.equalsIgnoreCase(AppConstant.CAMPAIGN_UTILS)){
+        if (removeType.equalsIgnoreCase(AppConstant.CAMPAIGN_UTILS)){
             utilityHelper.removeAllCampaignsHelper();
             return new SystemUtilityWSDTO(AppConstant.CAMPAIGN_UTILS,AppConstant.CAMPAIGN_UTILS,true);
         }
-        if (systemUtility.equalsIgnoreCase(AppConstant.PROCESS_UTILS)){
+        if (removeType.equalsIgnoreCase(AppConstant.PROCESS_UTILS)){
             utilityHelper.removeAllProcessesHelper();
             return new SystemUtilityWSDTO(AppConstant.PROCESS_UTILS,AppConstant.PROCESS_UTILS,true);
         }
-        if (systemUtility.equalsIgnoreCase(AppConstant.SCENARIO_UTILS)){
+        if (removeType.equalsIgnoreCase(AppConstant.SCENARIO_UTILS)){
             utilityHelper.removeAllScenariosHelper();
             return new SystemUtilityWSDTO(AppConstant.SCENARIO_UTILS,AppConstant.SCENARIO_UTILS,true);
         }
 
-        if (systemUtility.equalsIgnoreCase(AppConstant.USER_UTILS)){
+        if (removeType.equalsIgnoreCase(AppConstant.USER_UTILS)){
             utilityHelper.removeAllUsersHelper();
             return new SystemUtilityWSDTO(AppConstant.USER_UTILS,AppConstant.USER_UTILS,true);
         }
-        if (systemUtility.equalsIgnoreCase(AppConstant.AGENT_UTILS)){
+        if (removeType.equalsIgnoreCase(AppConstant.AGENT_UTILS)){
             utilityHelper.removeAllAgentsHelper();
             return new SystemUtilityWSDTO(AppConstant.AGENT_UTILS,AppConstant.AGENT_UTILS,true);
         }
-        if (systemUtility.equalsIgnoreCase(AppConstant.ASSET_UTILS)){
+        if (removeType.equalsIgnoreCase(AppConstant.ASSET_UTILS)){
             utilityHelper.removeAllAssetsHelper();
             return new SystemUtilityWSDTO(AppConstant.ASSET_UTILS,AppConstant.ASSET_UTILS,true);
         }

@@ -2,6 +2,10 @@ package com.faas.core.utils.helpers;
 
 import com.faas.core.base.model.db.campaign.details.CampaignAgentDBModel;
 import com.faas.core.base.model.db.client.content.ClientDBModel;
+import com.faas.core.base.model.db.client.details.content.ClientDetailsDBModel;
+import com.faas.core.base.model.db.client.details.content.dao.ClientAddressDAO;
+import com.faas.core.base.model.db.client.details.content.dao.ClientEmailDAO;
+import com.faas.core.base.model.db.client.details.content.dao.ClientPhoneDAO;
 import com.faas.core.base.model.db.user.content.UserDBModel;
 import com.faas.core.base.model.db.user.details.UserDetailsDBModel;
 import com.faas.core.base.model.db.user.settings.UserRoleDBModel;
@@ -11,6 +15,7 @@ import com.faas.core.base.repo.asset.content.AssetRepository;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;
+import com.faas.core.base.repo.client.details.ClientDetailsRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.operation.details.channel.*;
 import com.faas.core.base.repo.process.content.ProcessRepository;
@@ -39,9 +44,14 @@ import java.util.List;
 @Component
 public class UtilityHelper {
 
+    @Autowired
+    ClientHelper clientHelper;
 
     @Autowired
     ClientRepository clientRepository;
+
+    @Autowired
+    ClientDetailsRepository clientDetailsRepository;
 
     @Autowired
     RemoteAppRepository remoteAppRepository;
@@ -335,10 +345,68 @@ public class UtilityHelper {
     }
 
 
-
     public void repairClientsHelper(){
 
+        clientRepository.findAll().forEach(clientDBModel -> {
+            List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(clientDBModel.getId());
+            if (!clientDetailsDBModels.isEmpty()){
+                ClientDetailsDBModel clientDetailsDBModel = clientDetailsDBModels.get(0);
+                List<ClientAddressDAO> clientAddressDAOS = new ArrayList<>();
+                clientAddressDAOS.add(clientHelper.createClientAddressDAO("",clientDBModel.getClientCity(),"","",clientDBModel.getClientCountry(),AppConstant.MAIN_TYPE));
+                clientDetailsDBModel.setClientAddresses(clientAddressDAOS);
+                List<ClientPhoneDAO>clientPhoneDAOS = new ArrayList<>();
+                clientPhoneDAOS.add(clientHelper.createClientPhoneDAO(clientDBModel.getPhoneNumber(),AppConstant.UNKNOWN,AppConstant.MAIN_TYPE));
+                clientDetailsDBModel.setClientPhones(clientPhoneDAOS);
+                List<ClientEmailDAO>clientEmailDAOS = new ArrayList<>();
+                clientEmailDAOS.add(clientHelper.createClientEmailDAO(clientDBModel.getEmailAddress(),AppConstant.MAIN_TYPE));
+                clientDetailsDBModel.setClientEmails(clientEmailDAOS);
+                clientDetailsDBModel.setuDate(appUtils.getCurrentTimeStamp());
+
+                clientDetailsRepository.save(clientDetailsDBModel);
+            }
+        });
     }
+
+    public List<ClientAddressDAO> checkAndUpdateClientAddressesHelper(ClientDBModel clientDBModel, List<ClientAddressDAO> clientAddressDAOS) {
+
+        for (int i=0;i<clientAddressDAOS.size();i++){
+            if (clientAddressDAOS.get(i).getAddressType().equalsIgnoreCase(AppConstant.MAIN_TYPE)){
+                clientAddressDAOS.remove(clientAddressDAOS.get(i));
+            }
+        }
+        if (clientDBModel.getClientCity() != null && !"".equalsIgnoreCase(clientDBModel.getClientCity()) && clientDBModel.getClientCountry() != null && !"".equalsIgnoreCase(clientDBModel.getClientCountry())){
+            clientAddressDAOS.add(clientHelper.createClientAddressDAO("",clientDBModel.getClientCity(),"","",clientDBModel.getClientCountry(),AppConstant.MAIN_TYPE));
+        }
+        return clientAddressDAOS;
+    }
+
+
+    public List<ClientPhoneDAO> checkAndUpdateClientPhonesHelper(ClientDBModel clientDBModel, List<ClientPhoneDAO> clientPhoneDAOS) {
+
+        for (int i=0;i<clientPhoneDAOS.size();i++){
+            if (clientPhoneDAOS.get(i).getNumberType().equalsIgnoreCase(AppConstant.MAIN_TYPE)){
+                clientPhoneDAOS.remove(clientPhoneDAOS.get(i));
+            }
+        }
+        if (clientDBModel.getPhoneNumber() != null && !"".equalsIgnoreCase(clientDBModel.getPhoneNumber())){
+            clientPhoneDAOS.add(clientHelper.createClientPhoneDAO(clientDBModel.getPhoneNumber(),AppConstant.UNKNOWN,AppConstant.MAIN_TYPE));
+        }
+        return clientPhoneDAOS;
+    }
+
+    public List<ClientEmailDAO> checkAndUpdateClientEmailsHelper(ClientDBModel clientDBModel, List<ClientEmailDAO> clientEmailDAOS) {
+
+        for (int i=0;i<clientEmailDAOS.size();i++){
+            if (clientEmailDAOS.get(i).getEmailType().equalsIgnoreCase(AppConstant.MAIN_TYPE)){
+                clientEmailDAOS.remove(clientEmailDAOS.get(i));
+            }
+        }
+        if (clientDBModel.getEmailAddress() != null && "".equalsIgnoreCase(clientDBModel.getEmailAddress())){
+            clientEmailDAOS.add(clientHelper.createClientEmailDAO(clientDBModel.getEmailAddress(),AppConstant.MAIN_TYPE));
+        }
+        return clientEmailDAOS;
+    }
+
 
     public void repairAgentsHelper(){
 
@@ -351,7 +419,6 @@ public class UtilityHelper {
                 }
             }
         }
-
         List<UserDetailsDBModel> userDetailsDBModels = userDetailsRepository.findAll();
         for (UserDetailsDBModel userDetailsDBModel : userDetailsDBModels) {
             if (!userRepository.existsById(userDetailsDBModel.getUserId())) {

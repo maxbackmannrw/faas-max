@@ -6,10 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/details/channel/message/push/dto/ApiOperationPushChannelWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/details/channel/message/push/dto/ApiOperationPushChannelWSDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/repo/operation/details/channel/OperationEmailMessageRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/repo/operation/details/channel/OperationEmailMessageRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/repo/operation/details/channel/OperationPushMessageRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/repo/operation/details/channel/OperationPushMessageRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/helpers/OperationHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/helpers/OperationHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/details/content/ApiOperationDetailsMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/details/content/ApiOperationDetailsMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/utility/system/UtilitySystemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/utility/system/UtilitySystemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/utility/system/UtilitySystemFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/utility/system/UtilitySystemFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/utility/system/UtilitySystemMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/utility/system/UtilitySystemMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/client/details/content/dao/ClientAddressDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/client/details/content/dao/ClientAddressDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/client/details/content/dao/ClientEmailDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/client/details/content/dao/ClientEmailDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/client/details/content/dao/ClientPhoneDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/client/details/content/dao/ClientPhoneDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/config/AppConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/config/AppConstant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/helpers/ClientHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/helpers/ClientHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/helpers/UtilityHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/helpers/UtilityHelper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -713,15 +719,12 @@
       <workItem from="1707241710207" duration="909000" />
       <workItem from="1707252317883" duration="609000" />
       <workItem from="1707276489334" duration="829000" />
-      <workItem from="1707294783714" duration="3930000" />
-    </task>
-    <task id="LOCAL-00598" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1705270311721</created>
-      <option name="number" value="00598" />
-      <option name="presentableId" value="LOCAL-00598" />
-      <option name="project" value="LOCAL" />
-      <updated>1705270311721</updated>
+      <workItem from="1707294783714" duration="6215000" />
+      <workItem from="1707344142486" duration="155000" />
+      <workItem from="1707386385448" duration="219000" />
+      <workItem from="1707395806795" duration="8234000" />
+      <workItem from="1707418747878" duration="307000" />
+      <workItem from="1707419841820" duration="6576000" />
     </task>
     <task id="LOCAL-00599" summary="almost finish">
       <option name="closed" value="true" />
@@ -1107,7 +1110,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707313762407</updated>
     </task>
-    <option name="localTasksCounter" value="647" />
+    <task id="LOCAL-00647" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1707316766968</created>
+      <option name="number" value="00647" />
+      <option name="presentableId" value="LOCAL-00647" />
+      <option name="project" value="LOCAL" />
+      <updated>1707316766968</updated>
+    </task>
+    <option name="localTasksCounter" value="648" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping(value = AppConstant.API_VERSION + "/base/utility/system/")
 public class UtilitySystemController {
 
-
     @Autowired
     UtilitySystemMiddleware utilitySystemMiddleware;
 
@@ -47,9 +46,9 @@ public class UtilitySystemController {
 
     @RequestMapping(value = BaseRoute.REPAIR_SYSTEM_UTILITY, method = RequestMethod.POST)
     public ResponseEntity<?> repairSystemUtility(@RequestParam long userId,
-                                                 @RequestParam String systemUtility) {
+                                                 @RequestParam String repairType) {
 
-        SystemUtilityWSModel response = utilitySystemMiddleware.repairSystemUtility(userId,systemUtility);
+        SystemUtilityWSModel response = utilitySystemMiddleware.repairSystemUtility(userId,repairType);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -59,9 +58,9 @@ public class UtilitySystemController {
 
     @RequestMapping(value = BaseRoute.REMOVE_SYSTEM_UTILITY, method = RequestMethod.POST)
     public ResponseEntity<?> removeSystemUtility(@RequestParam long userId,
-                                                 @RequestParam String systemUtility) {
+                                                 @RequestParam String removeType) {
 
-        SystemUtilityWSModel response = utilitySystemMiddleware.removeSystemUtility(userId,systemUtility);
+        SystemUtilityWSModel response = utilitySystemMiddleware.removeSystemUtility(userId,removeType);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

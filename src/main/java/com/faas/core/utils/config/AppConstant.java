@@ -29,9 +29,11 @@ public class AppConstant {
     public static final long SUPER_AGENT_OPERATION_LIMIT = 20;
 
 
+    public static final String MAIN_TYPE = "MAIN_TYPE";
+    public static final String SUB_TYPE = "SUB_TYPE";
 
-    public static final String ACTIVE_STATUS = "ACTIVE_STATUS";
-    public static final String PASSIVE_STATUS = "PASSIVE_STATUS";
+    public static final String UNKNOWN = "UNKNOWN";
+
 
     public static final String PROCESS_DATA_TYPE = "PROCESS";
 
@@ -76,7 +78,6 @@ public class AppConstant {
     public static final String FINISHED_STATE = "FINISHED_STATE";
 
     public static final String ALL_STATES = "ALL_STATES";
-
 
 
     public static final String APP_CONN_NEW = "APP_CONN_NEW";
