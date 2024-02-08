@@ -1,4 +1,4 @@
-package com.faas.core.api.model.ws.operation.details.channel.content.dto;
+package com.faas.core.api.model.ws.operation.details.channel.message.content.dto;
 
 import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiOperationEmailChannelWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushChannelWSDTO;

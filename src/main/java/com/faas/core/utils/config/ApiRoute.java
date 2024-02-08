@@ -107,8 +107,6 @@ public class ApiRoute {
 
 
     public static final String API_GET_OPERATION_CALL_CHANNEL = "apigetoperationcallchannel";
-    public static final String API_GET_OPERATION_MESSAGE_CHANNEL = "apigetoperationmessagechannel";
-
 
     public static final String API_GET_OPERATION_SIP_CHANNEL = "apigetoperationsipchannel";
     public static final String API_GET_OPERATION_SIP_CALLS = "apigetoperationsipcalls";
@@ -131,6 +129,8 @@ public class ApiRoute {
     public static final String API_UPDATE_OPERATION_WAPP_CALL = "apiupdateoperationwappcall";
     public static final String API_REMOVE_OPERATION_WAPP_CALL = "apiremoveoperationwappcall";
 
+
+    public static final String API_GET_OPERATION_MESSAGE_CHANNEL = "apigetoperationmessagechannel";
 
     public static final String API_GET_OPERATION_SMS_CHANNEL = "apigetoperationsmschannel";
     public static final String API_GET_OPERATION_SMSS = "apigetoperationsmss";
