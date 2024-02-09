@@ -406,7 +406,7 @@ public class UtilityHelper {
 
         List<ClientEmailDAO> checkedEmailDAOS = new ArrayList<>();
         for (ClientEmailDAO clientEmailDAO : clientEmailDAOS) {
-            if (clientEmailDAO.getEmailType() != null &&clientEmailDAO.getEmailType().equalsIgnoreCase(AppConstant.SUB_TYPE)) {
+            if (clientEmailDAO.getEmailType() != null && clientEmailDAO.getEmailType().equalsIgnoreCase(AppConstant.SUB_TYPE)) {
                 checkedEmailDAOS.add(clientEmailDAO);
             }
         }
