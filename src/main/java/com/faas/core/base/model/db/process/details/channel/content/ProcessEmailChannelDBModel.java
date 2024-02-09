@@ -1,6 +1,6 @@
 package com.faas.core.base.model.db.process.details.channel.content;
 
-import com.faas.core.base.model.db.process.details.channel.content.dao.EmailAccountDAO;
+import com.faas.core.base.model.db.process.details.channel.content.dao.ProcessEmailAccountDAO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -11,8 +11,8 @@ public class ProcessEmailChannelDBModel {
     private String id;
     private String processId;
     private String accountId;
-    private EmailAccountDAO emailAccount;
-    private String emailStatus;
+    private ProcessEmailAccountDAO emailAccount;
+    private String channelState;
     private long uDate;
     private long cDate;
     private int status;
@@ -20,12 +20,12 @@ public class ProcessEmailChannelDBModel {
     public ProcessEmailChannelDBModel() {
     }
 
-    public ProcessEmailChannelDBModel(String id, String processId, String accountId, EmailAccountDAO emailAccount, String emailStatus, long uDate, long cDate, int status) {
+    public ProcessEmailChannelDBModel(String id, String processId, String accountId, ProcessEmailAccountDAO emailAccount, String channelState, long uDate, long cDate, int status) {
         this.id = id;
         this.processId = processId;
         this.accountId = accountId;
         this.emailAccount = emailAccount;
-        this.emailStatus = emailStatus;
+        this.channelState = channelState;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
@@ -55,20 +55,20 @@ public class ProcessEmailChannelDBModel {
         this.accountId = accountId;
     }
 
-    public EmailAccountDAO getEmailAccount() {
+    public ProcessEmailAccountDAO getEmailAccount() {
         return emailAccount;
     }
 
-    public void setEmailAccount(EmailAccountDAO emailAccount) {
+    public void setEmailAccount(ProcessEmailAccountDAO emailAccount) {
         this.emailAccount = emailAccount;
     }
 
-    public String getEmailStatus() {
-        return emailStatus;
+    public String getChannelState() {
+        return channelState;
     }
 
-    public void setEmailStatus(String emailStatus) {
-        this.emailStatus = emailStatus;
+    public void setChannelState(String channelState) {
+        this.channelState = channelState;
     }
 
     public long getuDate() {

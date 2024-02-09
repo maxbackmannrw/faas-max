@@ -477,8 +477,8 @@ public class OperationHelper {
     public ApiOperationCallChannelWSDTO getApiOperationCallChannelWSDTO(OperationDBModel operationDBModel,ClientDetailsDBModel clientDetails) {
 
         ApiOperationCallChannelWSDTO operationCallChannelWSDTO = new ApiOperationCallChannelWSDTO();
-        operationCallChannelWSDTO.setSipChannel(getApiOperationSipChannelWSDTO(operationDBModel,clientDetails));
-        operationCallChannelWSDTO.setWappCallChannel(getApiOperationWappCallChannelWSDTO(operationDBModel,clientDetails));
+        operationCallChannelWSDTO.setOperationSipChannel(getApiOperationSipChannelWSDTO(operationDBModel,clientDetails));
+        operationCallChannelWSDTO.setOperationWappCallChannel(getApiOperationWappCallChannelWSDTO(operationDBModel,clientDetails));
 
         return operationCallChannelWSDTO;
     }
@@ -528,10 +528,10 @@ public class OperationHelper {
     public ApiOperationMessageChannelWSDTO getApiOperationMessageChannelWSDTO(OperationDBModel operationDBModel,ClientDetailsDBModel clientDetails) {
 
         ApiOperationMessageChannelWSDTO operationMessageChannelWSDTO = new ApiOperationMessageChannelWSDTO();
-        operationMessageChannelWSDTO.setSmsChannel(getApiOperationSmsChannelWSDTO(operationDBModel,clientDetails));
-        operationMessageChannelWSDTO.setWappMessageChannel(getApiOperationWappMessageChannelWSDTO(operationDBModel,clientDetails));
-        operationMessageChannelWSDTO.setEmailChannel(getApiOperationEmailChannelWSDTO(operationDBModel,clientDetails));
-        operationMessageChannelWSDTO.setPushChannel(getApiOperationPushChannelWSDTO(operationDBModel,clientDetails));
+        operationMessageChannelWSDTO.setOperationSmsChannel(getApiOperationSmsChannelWSDTO(operationDBModel,clientDetails));
+        operationMessageChannelWSDTO.setOperationWappMessageChannel(getApiOperationWappMessageChannelWSDTO(operationDBModel,clientDetails));
+        operationMessageChannelWSDTO.setOperationEmailChannel(getApiOperationEmailChannelWSDTO(operationDBModel,clientDetails));
+        operationMessageChannelWSDTO.setOperationPushChannel(getApiOperationPushChannelWSDTO(operationDBModel,clientDetails));
 
         return operationMessageChannelWSDTO;
     }

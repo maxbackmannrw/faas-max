@@ -6,14 +6,14 @@ import com.faas.core.base.model.ws.general.GeneralWSModel;
 public class ApiOperationWappCallChannelWSModel {
 
     private GeneralWSModel general;
-    private ApiOperationWappCallChannelWSDTO wappCallChannel;
+    private ApiOperationWappCallChannelWSDTO operationWappCallChannel;
 
     public ApiOperationWappCallChannelWSModel() {
     }
 
-    public ApiOperationWappCallChannelWSModel(GeneralWSModel general, ApiOperationWappCallChannelWSDTO wappCallChannel) {
+    public ApiOperationWappCallChannelWSModel(GeneralWSModel general, ApiOperationWappCallChannelWSDTO operationWappCallChannel) {
         this.general = general;
-        this.wappCallChannel = wappCallChannel;
+        this.operationWappCallChannel = operationWappCallChannel;
     }
 
     public GeneralWSModel getGeneral() {
@@ -24,11 +24,11 @@ public class ApiOperationWappCallChannelWSModel {
         this.general = general;
     }
 
-    public ApiOperationWappCallChannelWSDTO getWappCallChannel() {
-        return wappCallChannel;
+    public ApiOperationWappCallChannelWSDTO getOperationWappCallChannel() {
+        return operationWappCallChannel;
     }
 
-    public void setWappCallChannel(ApiOperationWappCallChannelWSDTO wappCallChannel) {
-        this.wappCallChannel = wappCallChannel;
+    public void setOperationWappCallChannel(ApiOperationWappCallChannelWSDTO operationWappCallChannel) {
+        this.operationWappCallChannel = operationWappCallChannel;
     }
 }

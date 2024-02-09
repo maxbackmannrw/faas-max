@@ -104,7 +104,7 @@ public class ApiOperationWappMessageChannelFramework {
     }
 
 
-    public ApiOperationWappMessageTempWSDTO apiGetOperationWappMessageTempsService(long agentId,String operationId){
+    public List<ApiOperationWappMessageTempWSDTO> apiGetOperationWappMessageTempsService(long agentId,String operationId){
 
 
         return null;

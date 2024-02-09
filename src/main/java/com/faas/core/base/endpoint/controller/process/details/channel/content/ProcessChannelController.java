@@ -57,9 +57,9 @@ public class ProcessChannelController {
     public ResponseEntity<?> createProcessSipChannel(@RequestParam long userId,
                                                      @RequestParam String processId,
                                                      @RequestParam String callerId,
-                                                     @RequestParam String sipStatus) {
+                                                     @RequestParam String channelState) {
 
-        ProcessSipChannelWSModel response = processChannelMiddleware.createProcessSipChannel(userId,processId,callerId,sipStatus);
+        ProcessSipChannelWSModel response = processChannelMiddleware.createProcessSipChannel(userId,processId,callerId,channelState);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -99,9 +99,9 @@ public class ProcessChannelController {
     public ResponseEntity<?> createProcessSmsChannel(@RequestParam long userId,
                                                      @RequestParam String processId,
                                                      @RequestParam String accountId,
-                                                     @RequestParam String smsStatus) {
+                                                     @RequestParam String channelState) {
 
-        ProcessSmsChannelWSModel response = processChannelMiddleware.createProcessSmsChannel(userId,processId,accountId,smsStatus);
+        ProcessSmsChannelWSModel response = processChannelMiddleware.createProcessSmsChannel(userId,processId,accountId,channelState);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -140,10 +140,10 @@ public class ProcessChannelController {
     @RequestMapping(value = BaseRoute.CREATE_PROCESS_WAPP_CHANNEL, method = RequestMethod.POST)
     public ResponseEntity<?> createProcessWappChannel(@RequestParam long userId,
                                                       @RequestParam String processId,
-                                                      @RequestParam String callStatus,
-                                                      @RequestParam String messageStatus) {
+                                                      @RequestParam String callState,
+                                                      @RequestParam String messageState) {
 
-        ProcessWappChannelWSModel response = processChannelMiddleware.createProcessWappChannel(userId,processId,callStatus,messageStatus);
+        ProcessWappChannelWSModel response = processChannelMiddleware.createProcessWappChannel(userId,processId,callState,messageState);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -183,9 +183,9 @@ public class ProcessChannelController {
     public ResponseEntity<?> createProcessEmailChannel(@RequestParam long userId,
                                                        @RequestParam String processId,
                                                        @RequestParam String accountId,
-                                                       @RequestParam String emailStatus) {
+                                                       @RequestParam String channelState) {
 
-        ProcessEmailChannelWSModel response = processChannelMiddleware.createProcessEmailChannel(userId,processId,accountId,emailStatus);
+        ProcessEmailChannelWSModel response = processChannelMiddleware.createProcessEmailChannel(userId,processId,accountId,channelState);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -227,9 +227,9 @@ public class ProcessChannelController {
     public ResponseEntity<?> createProcessPushChannel(@RequestParam long userId,
                                                       @RequestParam String processId,
                                                       @RequestParam String accountId,
-                                                      @RequestParam String pushStatus) {
+                                                      @RequestParam String channelState) {
 
-        ProcessPushChannelWSModel response = processChannelMiddleware.createProcessPushChannel(userId,processId,accountId,pushStatus);
+        ProcessPushChannelWSModel response = processChannelMiddleware.createProcessPushChannel(userId,processId,accountId,channelState);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

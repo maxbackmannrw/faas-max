@@ -7,50 +7,50 @@ import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.Api
 
 public class ApiOperationMessageChannelWSDTO {
 
-    private ApiOperationSmsChannelWSDTO smsChannel;
-    private ApiOperationWappMessageChannelWSDTO wappMessageChannel;
-    private ApiOperationEmailChannelWSDTO emailChannel;
-    private ApiOperationPushChannelWSDTO pushChannel;
+    private ApiOperationSmsChannelWSDTO operationSmsChannel;
+    private ApiOperationWappMessageChannelWSDTO operationWappMessageChannel;
+    private ApiOperationEmailChannelWSDTO operationEmailChannel;
+    private ApiOperationPushChannelWSDTO operationPushChannel;
 
     public ApiOperationMessageChannelWSDTO() {
     }
 
-    public ApiOperationMessageChannelWSDTO(ApiOperationSmsChannelWSDTO smsChannel, ApiOperationWappMessageChannelWSDTO wappMessageChannel, ApiOperationEmailChannelWSDTO emailChannel, ApiOperationPushChannelWSDTO pushChannel) {
-        this.smsChannel = smsChannel;
-        this.wappMessageChannel = wappMessageChannel;
-        this.emailChannel = emailChannel;
-        this.pushChannel = pushChannel;
+    public ApiOperationMessageChannelWSDTO(ApiOperationSmsChannelWSDTO operationSmsChannel, ApiOperationWappMessageChannelWSDTO operationWappMessageChannel, ApiOperationEmailChannelWSDTO operationEmailChannel, ApiOperationPushChannelWSDTO operationPushChannel) {
+        this.operationSmsChannel = operationSmsChannel;
+        this.operationWappMessageChannel = operationWappMessageChannel;
+        this.operationEmailChannel = operationEmailChannel;
+        this.operationPushChannel = operationPushChannel;
     }
 
-    public ApiOperationSmsChannelWSDTO getSmsChannel() {
-        return smsChannel;
+    public ApiOperationSmsChannelWSDTO getOperationSmsChannel() {
+        return operationSmsChannel;
     }
 
-    public void setSmsChannel(ApiOperationSmsChannelWSDTO smsChannel) {
-        this.smsChannel = smsChannel;
+    public void setOperationSmsChannel(ApiOperationSmsChannelWSDTO operationSmsChannel) {
+        this.operationSmsChannel = operationSmsChannel;
     }
 
-    public ApiOperationWappMessageChannelWSDTO getWappMessageChannel() {
-        return wappMessageChannel;
+    public ApiOperationWappMessageChannelWSDTO getOperationWappMessageChannel() {
+        return operationWappMessageChannel;
     }
 
-    public void setWappMessageChannel(ApiOperationWappMessageChannelWSDTO wappMessageChannel) {
-        this.wappMessageChannel = wappMessageChannel;
+    public void setOperationWappMessageChannel(ApiOperationWappMessageChannelWSDTO operationWappMessageChannel) {
+        this.operationWappMessageChannel = operationWappMessageChannel;
     }
 
-    public ApiOperationEmailChannelWSDTO getEmailChannel() {
-        return emailChannel;
+    public ApiOperationEmailChannelWSDTO getOperationEmailChannel() {
+        return operationEmailChannel;
     }
 
-    public void setEmailChannel(ApiOperationEmailChannelWSDTO emailChannel) {
-        this.emailChannel = emailChannel;
+    public void setOperationEmailChannel(ApiOperationEmailChannelWSDTO operationEmailChannel) {
+        this.operationEmailChannel = operationEmailChannel;
     }
 
-    public ApiOperationPushChannelWSDTO getPushChannel() {
-        return pushChannel;
+    public ApiOperationPushChannelWSDTO getOperationPushChannel() {
+        return operationPushChannel;
     }
 
-    public void setPushChannel(ApiOperationPushChannelWSDTO pushChannel) {
-        this.pushChannel = pushChannel;
+    public void setOperationPushChannel(ApiOperationPushChannelWSDTO operationPushChannel) {
+        this.operationPushChannel = operationPushChannel;
     }
 }

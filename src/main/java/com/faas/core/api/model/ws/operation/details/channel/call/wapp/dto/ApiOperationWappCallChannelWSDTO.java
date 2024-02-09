@@ -7,8 +7,8 @@ import java.util.List;
 
 public class ApiOperationWappCallChannelWSDTO {
 
-    private ApiWappCallAccountWSDTO wappAccount;
     private List<ClientPhoneDAO> clientPhones;
+    private ApiWappCallAccountWSDTO wappAccount;
     private OperationWappCallDBModel activeWappCall;
     private List<OperationWappCallDBModel>recentWappCalls;
 

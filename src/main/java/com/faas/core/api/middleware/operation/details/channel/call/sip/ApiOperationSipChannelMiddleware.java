@@ -28,7 +28,7 @@ public class ApiOperationSipChannelMiddleware {
 
         ApiOperationSipChannelWSDTO operationSipChannelWSDTO = apiOperationSipChannelFramework.apiGetOperationSipChannelService(agentId,operationId);
         if (operationSipChannelWSDTO != null){
-            response.setSipChannel(operationSipChannelWSDTO);
+            response.setOperationSipChannel(operationSipChannelWSDTO);
         }
 
         general.setOperation("apiGetOperationSipCall");

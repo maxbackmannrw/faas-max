@@ -10,19 +10,19 @@ public class ApiPushAccountWSDTO {
     private String account;
     private List<AccountDataDAO> accountDatas;
     private String provider;
-    private String pushStatus;
+    private String channelState;
     private long cDate;
     private int status;
 
     public ApiPushAccountWSDTO() {
     }
 
-    public ApiPushAccountWSDTO(String accountId, String account, List<AccountDataDAO> accountDatas, String provider, String pushStatus, long cDate, int status) {
+    public ApiPushAccountWSDTO(String accountId, String account, List<AccountDataDAO> accountDatas, String provider, String channelState, long cDate, int status) {
         this.accountId = accountId;
         this.account = account;
         this.accountDatas = accountDatas;
         this.provider = provider;
-        this.pushStatus = pushStatus;
+        this.channelState = channelState;
         this.cDate = cDate;
         this.status = status;
     }
@@ -59,12 +59,12 @@ public class ApiPushAccountWSDTO {
         this.provider = provider;
     }
 
-    public String getPushStatus() {
-        return pushStatus;
+    public String getChannelState() {
+        return channelState;
     }
 
-    public void setPushStatus(String pushStatus) {
-        this.pushStatus = pushStatus;
+    public void setChannelState(String channelState) {
+        this.channelState = channelState;
     }
 
     public long getcDate() {

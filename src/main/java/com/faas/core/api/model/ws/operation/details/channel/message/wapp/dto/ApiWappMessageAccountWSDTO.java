@@ -12,23 +12,23 @@ public class ApiWappMessageAccountWSDTO {
     private String phoneNumber;
     private String serverUrl;
     private List<AccountDataDAO> accountDatas;
-    private String callStatus;
-    private String messageStatus;
+    private String callState;
+    private String messageState;
     private long cDate;
     private int status;
 
     public ApiWappMessageAccountWSDTO() {
     }
 
-    public ApiWappMessageAccountWSDTO(String accountId, String account, String instanceKey, String phoneNumber, String serverUrl, List<AccountDataDAO> accountDatas, String callStatus, String messageStatus, long cDate, int status) {
+    public ApiWappMessageAccountWSDTO(String accountId, String account, String instanceKey, String phoneNumber, String serverUrl, List<AccountDataDAO> accountDatas, String callState, String messageState, long cDate, int status) {
         this.accountId = accountId;
         this.account = account;
         this.instanceKey = instanceKey;
         this.phoneNumber = phoneNumber;
         this.serverUrl = serverUrl;
         this.accountDatas = accountDatas;
-        this.callStatus = callStatus;
-        this.messageStatus = messageStatus;
+        this.callState = callState;
+        this.messageState = messageState;
         this.cDate = cDate;
         this.status = status;
     }
@@ -81,20 +81,20 @@ public class ApiWappMessageAccountWSDTO {
         this.accountDatas = accountDatas;
     }
 
-    public String getCallStatus() {
-        return callStatus;
+    public String getCallState() {
+        return callState;
     }
 
-    public void setCallStatus(String callStatus) {
-        this.callStatus = callStatus;
+    public void setCallState(String callState) {
+        this.callState = callState;
     }
 
-    public String getMessageStatus() {
-        return messageStatus;
+    public String getMessageState() {
+        return messageState;
     }
 
-    public void setMessageStatus(String messageStatus) {
-        this.messageStatus = messageStatus;
+    public void setMessageState(String messageState) {
+        this.messageState = messageState;
     }
 
     public long getcDate() {

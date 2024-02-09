@@ -14,14 +14,14 @@ public class ApiSmsAccountWSDTO {
     private String apiUrl;
     private List<AccountDataDAO> accountDatas;
     private String provider;
-    private String smsStatus;
+    private String channelState;
     private long cDate;
     private int status;
 
     public ApiSmsAccountWSDTO() {
     }
 
-    public ApiSmsAccountWSDTO(String accountId, String account, String userName, String password, String apiToken, String apiUrl, List<AccountDataDAO> accountDatas, String provider, String smsStatus, long cDate, int status) {
+    public ApiSmsAccountWSDTO(String accountId, String account, String userName, String password, String apiToken, String apiUrl, List<AccountDataDAO> accountDatas, String provider, String channelState, long cDate, int status) {
         this.accountId = accountId;
         this.account = account;
         this.userName = userName;
@@ -30,7 +30,7 @@ public class ApiSmsAccountWSDTO {
         this.apiUrl = apiUrl;
         this.accountDatas = accountDatas;
         this.provider = provider;
-        this.smsStatus = smsStatus;
+        this.channelState = channelState;
         this.cDate = cDate;
         this.status = status;
     }
@@ -99,12 +99,12 @@ public class ApiSmsAccountWSDTO {
         this.provider = provider;
     }
 
-    public String getSmsStatus() {
-        return smsStatus;
+    public String getChannelState() {
+        return channelState;
     }
 
-    public void setSmsStatus(String smsStatus) {
-        this.smsStatus = smsStatus;
+    public void setChannelState(String channelState) {
+        this.channelState = channelState;
     }
 
     public long getcDate() {

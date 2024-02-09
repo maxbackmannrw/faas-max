@@ -10,7 +10,7 @@ public class ProcessSipChannelDBModel {
     private String id;
     private String processId;
     private String callerId;
-    private String sipStatus;
+    private String channelState;
     private long uDate;
     private long cDate;
     private int status;
@@ -18,11 +18,11 @@ public class ProcessSipChannelDBModel {
     public ProcessSipChannelDBModel() {
     }
 
-    public ProcessSipChannelDBModel(String id, String processId, String callerId, String sipStatus, long uDate, long cDate, int status) {
+    public ProcessSipChannelDBModel(String id, String processId, String callerId, String channelState, long uDate, long cDate, int status) {
         this.id = id;
         this.processId = processId;
         this.callerId = callerId;
-        this.sipStatus = sipStatus;
+        this.channelState = channelState;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
@@ -52,12 +52,12 @@ public class ProcessSipChannelDBModel {
         this.callerId = callerId;
     }
 
-    public String getSipStatus() {
-        return sipStatus;
+    public String getChannelState() {
+        return channelState;
     }
 
-    public void setSipStatus(String sipStatus) {
-        this.sipStatus = sipStatus;
+    public void setChannelState(String channelState) {
+        this.channelState = channelState;
     }
 
     public long getuDate() {

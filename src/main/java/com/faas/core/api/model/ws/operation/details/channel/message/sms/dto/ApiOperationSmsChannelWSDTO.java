@@ -8,8 +8,8 @@ import java.util.List;
 
 public class ApiOperationSmsChannelWSDTO {
 
-    private ApiSmsAccountWSDTO smsAccount;
     private List<ClientPhoneDAO> clientPhones;
+    private ApiSmsAccountWSDTO smsAccount;
     private List<OperationSmsMessageDBModel>operationSmss;
     private List<ProcessSmsMessageTempDBModel>operationSmsTemps;
 

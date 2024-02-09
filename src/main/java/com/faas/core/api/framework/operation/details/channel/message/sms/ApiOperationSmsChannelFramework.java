@@ -101,7 +101,7 @@ public class ApiOperationSmsChannelFramework {
 
 
 
-    public ApiOperationSmsTempWSDTO apiGetOperationSmsTempsService(long agentId,String operationId) {
+    public List<ApiOperationSmsTempWSDTO> apiGetOperationSmsTempsService(long agentId,String operationId) {
 
 
         return null;

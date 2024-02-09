@@ -1,6 +1,6 @@
 package com.faas.core.base.model.db.process.details.channel.content;
 
-import com.faas.core.base.model.db.process.details.channel.content.dao.PushAccountDAO;
+import com.faas.core.base.model.db.process.details.channel.content.dao.ProcessPushAccountDAO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -11,8 +11,8 @@ public class ProcessPushChannelDBModel {
     private String id;
     private String processId;
     private String accountId;
-    private PushAccountDAO pushAccount;
-    private String pushStatus;
+    private ProcessPushAccountDAO pushAccount;
+    private String channelState;
     private long uDate;
     private long cDate;
     private int status;
@@ -20,12 +20,12 @@ public class ProcessPushChannelDBModel {
     public ProcessPushChannelDBModel() {
     }
 
-    public ProcessPushChannelDBModel(String id, String processId, String accountId, PushAccountDAO pushAccount, String pushStatus, long uDate, long cDate, int status) {
+    public ProcessPushChannelDBModel(String id, String processId, String accountId, ProcessPushAccountDAO pushAccount, String channelState, long uDate, long cDate, int status) {
         this.id = id;
         this.processId = processId;
         this.accountId = accountId;
         this.pushAccount = pushAccount;
-        this.pushStatus = pushStatus;
+        this.channelState = channelState;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
@@ -55,20 +55,20 @@ public class ProcessPushChannelDBModel {
         this.accountId = accountId;
     }
 
-    public PushAccountDAO getPushAccount() {
+    public ProcessPushAccountDAO getPushAccount() {
         return pushAccount;
     }
 
-    public void setPushAccount(PushAccountDAO pushAccount) {
+    public void setPushAccount(ProcessPushAccountDAO pushAccount) {
         this.pushAccount = pushAccount;
     }
 
-    public String getPushStatus() {
-        return pushStatus;
+    public String getChannelState() {
+        return channelState;
     }
 
-    public void setPushStatus(String pushStatus) {
-        this.pushStatus = pushStatus;
+    public void setChannelState(String channelState) {
+        this.channelState = channelState;
     }
 
     public long getuDate() {

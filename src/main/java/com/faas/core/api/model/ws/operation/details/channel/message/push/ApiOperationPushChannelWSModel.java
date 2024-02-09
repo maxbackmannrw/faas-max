@@ -7,14 +7,14 @@ import com.faas.core.base.model.ws.general.GeneralWSModel;
 public class ApiOperationPushChannelWSModel {
 
     private GeneralWSModel general;
-    private ApiOperationPushChannelWSDTO operationPushMessage;
+    private ApiOperationPushChannelWSDTO operationPushChannel;
 
     public ApiOperationPushChannelWSModel() {
     }
 
-    public ApiOperationPushChannelWSModel(GeneralWSModel general, ApiOperationPushChannelWSDTO operationPushMessage) {
+    public ApiOperationPushChannelWSModel(GeneralWSModel general, ApiOperationPushChannelWSDTO operationPushChannel) {
         this.general = general;
-        this.operationPushMessage = operationPushMessage;
+        this.operationPushChannel = operationPushChannel;
     }
 
     public GeneralWSModel getGeneral() {
@@ -25,11 +25,11 @@ public class ApiOperationPushChannelWSModel {
         this.general = general;
     }
 
-    public ApiOperationPushChannelWSDTO getOperationPushMessage() {
-        return operationPushMessage;
+    public ApiOperationPushChannelWSDTO getOperationPushChannel() {
+        return operationPushChannel;
     }
 
-    public void setOperationPushMessage(ApiOperationPushChannelWSDTO operationPushMessage) {
-        this.operationPushMessage = operationPushMessage;
+    public void setOperationPushChannel(ApiOperationPushChannelWSDTO operationPushChannel) {
+        this.operationPushChannel = operationPushChannel;
     }
 }

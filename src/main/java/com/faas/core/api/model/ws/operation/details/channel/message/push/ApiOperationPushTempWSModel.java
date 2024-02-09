@@ -8,14 +8,14 @@ import java.util.List;
 public class ApiOperationPushTempWSModel {
 
     private GeneralWSModel general;
-    private List<ApiOperationPushTempWSDTO>pushTemps;
+    private List<ApiOperationPushTempWSDTO>operationPushTemps;
 
     public ApiOperationPushTempWSModel() {
     }
 
-    public ApiOperationPushTempWSModel(GeneralWSModel general, List<ApiOperationPushTempWSDTO> pushTemps) {
+    public ApiOperationPushTempWSModel(GeneralWSModel general, List<ApiOperationPushTempWSDTO> operationPushTemps) {
         this.general = general;
-        this.pushTemps = pushTemps;
+        this.operationPushTemps = operationPushTemps;
     }
 
     public GeneralWSModel getGeneral() {
@@ -26,11 +26,11 @@ public class ApiOperationPushTempWSModel {
         this.general = general;
     }
 
-    public List<ApiOperationPushTempWSDTO> getPushTemps() {
-        return pushTemps;
+    public List<ApiOperationPushTempWSDTO> getOperationPushTemps() {
+        return operationPushTemps;
     }
 
-    public void setPushTemps(List<ApiOperationPushTempWSDTO> pushTemps) {
-        this.pushTemps = pushTemps;
+    public void setOperationPushTemps(List<ApiOperationPushTempWSDTO> operationPushTemps) {
+        this.operationPushTemps = operationPushTemps;
     }
 }

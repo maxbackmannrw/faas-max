@@ -5,18 +5,17 @@ import com.faas.core.base.model.ws.general.GeneralWSModel;
 
 import java.util.List;
 
-
 public class ApiOperationPushWSModel {
 
     private GeneralWSModel general;
-    private List<ApiOperationPushWSDTO> pushMessages;
+    private List<ApiOperationPushWSDTO> operationPushes;
 
     public ApiOperationPushWSModel() {
     }
 
-    public ApiOperationPushWSModel(GeneralWSModel general, List<ApiOperationPushWSDTO> pushMessages) {
+    public ApiOperationPushWSModel(GeneralWSModel general, List<ApiOperationPushWSDTO> operationPushes) {
         this.general = general;
-        this.pushMessages = pushMessages;
+        this.operationPushes = operationPushes;
     }
 
     public GeneralWSModel getGeneral() {
@@ -27,11 +26,11 @@ public class ApiOperationPushWSModel {
         this.general = general;
     }
 
-    public List<ApiOperationPushWSDTO> getPushMessages() {
-        return pushMessages;
+    public List<ApiOperationPushWSDTO> getOperationPushes() {
+        return operationPushes;
     }
 
-    public void setPushMessages(List<ApiOperationPushWSDTO> pushMessages) {
-        this.pushMessages = pushMessages;
+    public void setOperationPushes(List<ApiOperationPushWSDTO> operationPushes) {
+        this.operationPushes = operationPushes;
     }
 }

@@ -8,27 +8,19 @@ import java.util.List;
 
 public class ApiOperationEmailChannelWSDTO {
 
-    private ApiEmailAccountWSDTO emailAccount;
     private List<ClientEmailDAO> clientEmails;
+    private ApiEmailAccountWSDTO emailAccount;
     private List<OperationEmailMessageDBModel> operationEmails;
     private List<ProcessEmailTempDBModel>operationEmailTemps;
 
     public ApiOperationEmailChannelWSDTO() {
     }
 
-    public ApiOperationEmailChannelWSDTO(ApiEmailAccountWSDTO emailAccount, List<ClientEmailDAO> clientEmails, List<OperationEmailMessageDBModel> operationEmails, List<ProcessEmailTempDBModel> operationEmailTemps) {
-        this.emailAccount = emailAccount;
+    public ApiOperationEmailChannelWSDTO(List<ClientEmailDAO> clientEmails, ApiEmailAccountWSDTO emailAccount, List<OperationEmailMessageDBModel> operationEmails, List<ProcessEmailTempDBModel> operationEmailTemps) {
         this.clientEmails = clientEmails;
+        this.emailAccount = emailAccount;
         this.operationEmails = operationEmails;
         this.operationEmailTemps = operationEmailTemps;
-    }
-
-    public ApiEmailAccountWSDTO getEmailAccount() {
-        return emailAccount;
-    }
-
-    public void setEmailAccount(ApiEmailAccountWSDTO emailAccount) {
-        this.emailAccount = emailAccount;
     }
 
     public List<ClientEmailDAO> getClientEmails() {
@@ -37,6 +29,14 @@ public class ApiOperationEmailChannelWSDTO {
 
     public void setClientEmails(List<ClientEmailDAO> clientEmails) {
         this.clientEmails = clientEmails;
+    }
+
+    public ApiEmailAccountWSDTO getEmailAccount() {
+        return emailAccount;
+    }
+
+    public void setEmailAccount(ApiEmailAccountWSDTO emailAccount) {
+        this.emailAccount = emailAccount;
     }
 
     public List<OperationEmailMessageDBModel> getOperationEmails() {

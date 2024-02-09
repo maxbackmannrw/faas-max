@@ -6,14 +6,14 @@ import com.faas.core.base.model.ws.general.GeneralWSModel;
 public class ApiOperationSipChannelWSModel {
 
     private GeneralWSModel general;
-    private ApiOperationSipChannelWSDTO sipChannel;
+    private ApiOperationSipChannelWSDTO operationSipChannel;
 
     public ApiOperationSipChannelWSModel() {
     }
 
-    public ApiOperationSipChannelWSModel(GeneralWSModel general, ApiOperationSipChannelWSDTO sipChannel) {
+    public ApiOperationSipChannelWSModel(GeneralWSModel general, ApiOperationSipChannelWSDTO operationSipChannel) {
         this.general = general;
-        this.sipChannel = sipChannel;
+        this.operationSipChannel = operationSipChannel;
     }
 
     public GeneralWSModel getGeneral() {
@@ -24,11 +24,11 @@ public class ApiOperationSipChannelWSModel {
         this.general = general;
     }
 
-    public ApiOperationSipChannelWSDTO getSipChannel() {
-        return sipChannel;
+    public ApiOperationSipChannelWSDTO getOperationSipChannel() {
+        return operationSipChannel;
     }
 
-    public void setSipChannel(ApiOperationSipChannelWSDTO sipChannel) {
-        this.sipChannel = sipChannel;
+    public void setOperationSipChannel(ApiOperationSipChannelWSDTO operationSipChannel) {
+        this.operationSipChannel = operationSipChannel;
     }
 }

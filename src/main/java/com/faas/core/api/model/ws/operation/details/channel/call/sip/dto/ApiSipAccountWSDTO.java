@@ -15,14 +15,14 @@ public class ApiSipAccountWSDTO {
     private List<AccountDataDAO> accountDatas;
     private String provider;
     private String callerId;
-    private String sipStatus;
+    private String channelState;
     private long cDate;
     private int status;
 
     public ApiSipAccountWSDTO() {
     }
 
-    public ApiSipAccountWSDTO(String accountId, String account, String userName, String authUser, String password, String sipUrl, List<AccountDataDAO> accountDatas, String provider, String callerId, String sipStatus, long cDate, int status) {
+    public ApiSipAccountWSDTO(String accountId, String account, String userName, String authUser, String password, String sipUrl, List<AccountDataDAO> accountDatas, String provider, String callerId, String channelState, long cDate, int status) {
         this.accountId = accountId;
         this.account = account;
         this.userName = userName;
@@ -32,7 +32,7 @@ public class ApiSipAccountWSDTO {
         this.accountDatas = accountDatas;
         this.provider = provider;
         this.callerId = callerId;
-        this.sipStatus = sipStatus;
+        this.channelState = channelState;
         this.cDate = cDate;
         this.status = status;
     }
@@ -109,12 +109,12 @@ public class ApiSipAccountWSDTO {
         this.callerId = callerId;
     }
 
-    public String getSipStatus() {
-        return sipStatus;
+    public String getChannelState() {
+        return channelState;
     }
 
-    public void setSipStatus(String sipStatus) {
-        this.sipStatus = sipStatus;
+    public void setChannelState(String channelState) {
+        this.channelState = channelState;
     }
 
     public long getcDate() {

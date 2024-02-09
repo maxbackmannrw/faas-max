@@ -24,7 +24,7 @@ public class ApiOperationWappCallChannelMiddleware {
 
         ApiOperationWappCallChannelWSDTO operationWappCallChannelWSDTO = apiOperationWappCallChannelFramework.apiGetOperationWappCallChannelService(agentId,operationId);
         if (operationWappCallChannelWSDTO != null){
-            response.setWappCallChannel(operationWappCallChannelWSDTO);
+            response.setOperationWappCallChannel(operationWappCallChannelWSDTO);
         }
 
         general.setOperation("apiGetOperationWappCall");

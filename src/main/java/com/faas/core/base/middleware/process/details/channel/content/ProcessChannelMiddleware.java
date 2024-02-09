@@ -61,12 +61,12 @@ public class ProcessChannelMiddleware {
 
 
 
-    public ProcessSipChannelWSModel createProcessSipChannel(long userId,String processId, String callerId,String sipStatus) {
+    public ProcessSipChannelWSModel createProcessSipChannel(long userId,String processId, String callerId,String channelState) {
 
         ProcessSipChannelWSModel response = new ProcessSipChannelWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ProcessSipChannelWSDTO processSipChannelWSDTO = processChannelFramework.createProcessSipChannelService(processId,callerId,sipStatus);
+        ProcessSipChannelWSDTO processSipChannelWSDTO = processChannelFramework.createProcessSipChannelService(processId,callerId,channelState);
         if (processSipChannelWSDTO != null){
             response.setProcessSipChannel(processSipChannelWSDTO);
         }
@@ -121,12 +121,12 @@ public class ProcessChannelMiddleware {
         return response;
     }
 
-    public ProcessSmsChannelWSModel createProcessSmsChannel(long userId,String processId, String accountId,String smsStatus) {
+    public ProcessSmsChannelWSModel createProcessSmsChannel(long userId,String processId, String accountId,String channelState) {
 
         ProcessSmsChannelWSModel response = new ProcessSmsChannelWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ProcessSmsChannelWSDTO processSmsChannelWSDTO = processChannelFramework.createProcessSmsChannelService(processId,accountId,smsStatus);
+        ProcessSmsChannelWSDTO processSmsChannelWSDTO = processChannelFramework.createProcessSmsChannelService(processId,accountId,channelState);
         if (processSmsChannelWSDTO != null){
             response.setProcessSmsChannel(processSmsChannelWSDTO);
         }
@@ -182,12 +182,12 @@ public class ProcessChannelMiddleware {
     }
 
 
-    public ProcessWappChannelWSModel createProcessWappChannel(long userId,String processId, String callStatus, String messageStatus) {
+    public ProcessWappChannelWSModel createProcessWappChannel(long userId,String processId,String callState,String messageState) {
 
         ProcessWappChannelWSModel response = new ProcessWappChannelWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ProcessWappChannelWSDTO processWappChannelWSDTO = processChannelFramework.createProcessWappChannelService(processId,callStatus,messageStatus);
+        ProcessWappChannelWSDTO processWappChannelWSDTO = processChannelFramework.createProcessWappChannelService(userId,processId,callState,messageState);
         if (processWappChannelWSDTO != null){
             response.setProcessWappChannel(processWappChannelWSDTO);
         }
@@ -242,12 +242,12 @@ public class ProcessChannelMiddleware {
         return response;
     }
 
-    public ProcessEmailChannelWSModel createProcessEmailChannel(long userId,String processId, String accountId,String emailStatus) {
+    public ProcessEmailChannelWSModel createProcessEmailChannel(long userId,String processId, String accountId,String channelState) {
 
         ProcessEmailChannelWSModel response = new ProcessEmailChannelWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ProcessEmailChannelWSDTO processEmailChannelWSDTO = processChannelFramework.createProcessEmailChannelService(processId,accountId,emailStatus);
+        ProcessEmailChannelWSDTO processEmailChannelWSDTO = processChannelFramework.createProcessEmailChannelService(processId,accountId,channelState);
         if (processEmailChannelWSDTO != null){
             response.setProcessEmailChannel(processEmailChannelWSDTO);
         }
@@ -302,12 +302,12 @@ public class ProcessChannelMiddleware {
         return response;
     }
 
-    public ProcessPushChannelWSModel createProcessPushChannel(long userId,String processId, String accountId,String pushStatus) {
+    public ProcessPushChannelWSModel createProcessPushChannel(long userId,String processId, String accountId,String channelState) {
 
         ProcessPushChannelWSModel response = new ProcessPushChannelWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ProcessPushChannelWSDTO processPushChannelWSDTO = processChannelFramework.createProcessPushChannelService(processId,accountId,pushStatus);
+        ProcessPushChannelWSDTO processPushChannelWSDTO = processChannelFramework.createProcessPushChannelService(processId,accountId,channelState);
         if (processPushChannelWSDTO != null){
             response.setProcessPushChannel(processPushChannelWSDTO);
         }

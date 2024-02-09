@@ -4,7 +4,7 @@ import com.faas.core.base.model.db.channel.account.dao.AccountDataDAO;
 
 import java.util.List;
 
-public class SmsAccountDAO {
+public class ProcessSmsAccountDAO {
 
     private String accountId;
     private String account;
@@ -17,10 +17,10 @@ public class SmsAccountDAO {
     private long cDate;
     private int status;
 
-    public SmsAccountDAO() {
+    public ProcessSmsAccountDAO() {
     }
 
-    public SmsAccountDAO(String accountId, String account, String userName, String password, String apiToken, String apiUrl, List<AccountDataDAO> accountDatas, String provider, long cDate, int status) {
+    public ProcessSmsAccountDAO(String accountId, String account, String userName, String password, String apiToken, String apiUrl, List<AccountDataDAO> accountDatas, String provider, long cDate, int status) {
         this.accountId = accountId;
         this.account = account;
         this.userName = userName;

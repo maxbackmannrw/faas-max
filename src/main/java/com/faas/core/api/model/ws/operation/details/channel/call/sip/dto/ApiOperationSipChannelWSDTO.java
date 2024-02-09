@@ -7,27 +7,19 @@ import java.util.List;
 
 public class ApiOperationSipChannelWSDTO {
 
-    private ApiSipAccountWSDTO sipAccount;
     private List<ClientPhoneDAO> clientPhones;
+    private ApiSipAccountWSDTO sipAccount;
     private OperationSipCallDBModel activeSipCall;
     private List<OperationSipCallDBModel> recentSipCalls;
 
     public ApiOperationSipChannelWSDTO() {
     }
 
-    public ApiOperationSipChannelWSDTO(ApiSipAccountWSDTO sipAccount, List<ClientPhoneDAO> clientPhones, OperationSipCallDBModel activeSipCall, List<OperationSipCallDBModel> recentSipCalls) {
-        this.sipAccount = sipAccount;
+    public ApiOperationSipChannelWSDTO(List<ClientPhoneDAO> clientPhones, ApiSipAccountWSDTO sipAccount, OperationSipCallDBModel activeSipCall, List<OperationSipCallDBModel> recentSipCalls) {
         this.clientPhones = clientPhones;
+        this.sipAccount = sipAccount;
         this.activeSipCall = activeSipCall;
         this.recentSipCalls = recentSipCalls;
-    }
-
-    public ApiSipAccountWSDTO getSipAccount() {
-        return sipAccount;
-    }
-
-    public void setSipAccount(ApiSipAccountWSDTO sipAccount) {
-        this.sipAccount = sipAccount;
     }
 
     public List<ClientPhoneDAO> getClientPhones() {
@@ -36,6 +28,14 @@ public class ApiOperationSipChannelWSDTO {
 
     public void setClientPhones(List<ClientPhoneDAO> clientPhones) {
         this.clientPhones = clientPhones;
+    }
+
+    public ApiSipAccountWSDTO getSipAccount() {
+        return sipAccount;
+    }
+
+    public void setSipAccount(ApiSipAccountWSDTO sipAccount) {
+        this.sipAccount = sipAccount;
     }
 
     public OperationSipCallDBModel getActiveSipCall() {

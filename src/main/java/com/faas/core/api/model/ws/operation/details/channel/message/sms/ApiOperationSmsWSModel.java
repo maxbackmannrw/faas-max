@@ -8,14 +8,14 @@ import java.util.List;
 public class ApiOperationSmsWSModel {
 
     private GeneralWSModel general;
-    private List<ApiOperationSmsWSDTO> smsMessages;
+    private List<ApiOperationSmsWSDTO> operationSmss;
 
     public ApiOperationSmsWSModel() {
     }
 
-    public ApiOperationSmsWSModel(GeneralWSModel general, List<ApiOperationSmsWSDTO> smsMessages) {
+    public ApiOperationSmsWSModel(GeneralWSModel general, List<ApiOperationSmsWSDTO> operationSmss) {
         this.general = general;
-        this.smsMessages = smsMessages;
+        this.operationSmss = operationSmss;
     }
 
     public GeneralWSModel getGeneral() {
@@ -26,11 +26,11 @@ public class ApiOperationSmsWSModel {
         this.general = general;
     }
 
-    public List<ApiOperationSmsWSDTO> getSmsMessages() {
-        return smsMessages;
+    public List<ApiOperationSmsWSDTO> getOperationSmss() {
+        return operationSmss;
     }
 
-    public void setSmsMessages(List<ApiOperationSmsWSDTO> smsMessages) {
-        this.smsMessages = smsMessages;
+    public void setOperationSmss(List<ApiOperationSmsWSDTO> operationSmss) {
+        this.operationSmss = operationSmss;
     }
 }

@@ -4,7 +4,7 @@ import com.faas.core.base.model.db.channel.account.dao.AccountDataDAO;
 
 import java.util.List;
 
-public class EmailAccountDAO {
+public class ProcessEmailAccountDAO {
 
     private String accountId;
     private String account;
@@ -13,10 +13,10 @@ public class EmailAccountDAO {
     private long cDate;
     private int status;
 
-    public EmailAccountDAO() {
+    public ProcessEmailAccountDAO() {
     }
 
-    public EmailAccountDAO(String accountId, String account, List<AccountDataDAO> accountDatas, String provider, long cDate, int status) {
+    public ProcessEmailAccountDAO(String accountId, String account, List<AccountDataDAO> accountDatas, String provider, long cDate, int status) {
         this.accountId = accountId;
         this.account = account;
         this.accountDatas = accountDatas;

@@ -1,9 +1,7 @@
 package com.faas.core.base.model.db.process.details.channel.content;
 
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
 
 @Document(collection = "process_wapp_channel_table")
 public class ProcessWappChannelDBModel {
@@ -11,8 +9,8 @@ public class ProcessWappChannelDBModel {
     @Id
     private String id;
     private String processId;
-    private String callStatus;
-    private String messageStatus;
+    private String callState;
+    private String messageState;
     private long uDate;
     private long cDate;
     private int status;
@@ -20,11 +18,11 @@ public class ProcessWappChannelDBModel {
     public ProcessWappChannelDBModel() {
     }
 
-    public ProcessWappChannelDBModel(String id, String processId, String callStatus, String messageStatus, long uDate, long cDate, int status) {
+    public ProcessWappChannelDBModel(String id, String processId, String callState, String messageState, long uDate, long cDate, int status) {
         this.id = id;
         this.processId = processId;
-        this.callStatus = callStatus;
-        this.messageStatus = messageStatus;
+        this.callState = callState;
+        this.messageState = messageState;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
@@ -46,20 +44,20 @@ public class ProcessWappChannelDBModel {
         this.processId = processId;
     }
 
-    public String getCallStatus() {
-        return callStatus;
+    public String getCallState() {
+        return callState;
     }
 
-    public void setCallStatus(String callStatus) {
-        this.callStatus = callStatus;
+    public void setCallState(String callState) {
+        this.callState = callState;
     }
 
-    public String getMessageStatus() {
-        return messageStatus;
+    public String getMessageState() {
+        return messageState;
     }
 
-    public void setMessageStatus(String messageStatus) {
-        this.messageStatus = messageStatus;
+    public void setMessageState(String messageState) {
+        this.messageState = messageState;
     }
 
     public long getuDate() {

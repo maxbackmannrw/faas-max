@@ -8,27 +8,19 @@ import java.util.List;
 
 public class ApiOperationWappMessageChannelWSDTO {
 
-    private ApiWappMessageAccountWSDTO wappAccount;
     private List<ClientPhoneDAO> clientPhones;
+    private ApiWappMessageAccountWSDTO wappAccount;
     private List<OperationWappMessageDBModel>operationWappMessages;
     private List<ProcessWappMessageTempDBModel>operationWappMessageTemps;
 
     public ApiOperationWappMessageChannelWSDTO() {
     }
 
-    public ApiOperationWappMessageChannelWSDTO(ApiWappMessageAccountWSDTO wappAccount, List<ClientPhoneDAO> clientPhones, List<OperationWappMessageDBModel> operationWappMessages, List<ProcessWappMessageTempDBModel> operationWappMessageTemps) {
-        this.wappAccount = wappAccount;
+    public ApiOperationWappMessageChannelWSDTO(List<ClientPhoneDAO> clientPhones, ApiWappMessageAccountWSDTO wappAccount, List<OperationWappMessageDBModel> operationWappMessages, List<ProcessWappMessageTempDBModel> operationWappMessageTemps) {
         this.clientPhones = clientPhones;
+        this.wappAccount = wappAccount;
         this.operationWappMessages = operationWappMessages;
         this.operationWappMessageTemps = operationWappMessageTemps;
-    }
-
-    public ApiWappMessageAccountWSDTO getWappAccount() {
-        return wappAccount;
-    }
-
-    public void setWappAccount(ApiWappMessageAccountWSDTO wappAccount) {
-        this.wappAccount = wappAccount;
     }
 
     public List<ClientPhoneDAO> getClientPhones() {
@@ -37,6 +29,14 @@ public class ApiOperationWappMessageChannelWSDTO {
 
     public void setClientPhones(List<ClientPhoneDAO> clientPhones) {
         this.clientPhones = clientPhones;
+    }
+
+    public ApiWappMessageAccountWSDTO getWappAccount() {
+        return wappAccount;
+    }
+
+    public void setWappAccount(ApiWappMessageAccountWSDTO wappAccount) {
+        this.wappAccount = wappAccount;
     }
 
     public List<OperationWappMessageDBModel> getOperationWappMessages() {

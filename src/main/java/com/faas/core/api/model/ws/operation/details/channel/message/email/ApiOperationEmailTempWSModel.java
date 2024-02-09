@@ -8,14 +8,14 @@ import java.util.List;
 public class ApiOperationEmailTempWSModel {
 
     private GeneralWSModel general;
-    private List<ApiOperationEmailTempWSDTO>emailTemps;
+    private List<ApiOperationEmailTempWSDTO>operationEmailTemps;
 
     public ApiOperationEmailTempWSModel() {
     }
 
-    public ApiOperationEmailTempWSModel(GeneralWSModel general, List<ApiOperationEmailTempWSDTO> emailTemps) {
+    public ApiOperationEmailTempWSModel(GeneralWSModel general, List<ApiOperationEmailTempWSDTO> operationEmailTemps) {
         this.general = general;
-        this.emailTemps = emailTemps;
+        this.operationEmailTemps = operationEmailTemps;
     }
 
     public GeneralWSModel getGeneral() {
@@ -26,11 +26,11 @@ public class ApiOperationEmailTempWSModel {
         this.general = general;
     }
 
-    public List<ApiOperationEmailTempWSDTO> getEmailTemps() {
-        return emailTemps;
+    public List<ApiOperationEmailTempWSDTO> getOperationEmailTemps() {
+        return operationEmailTemps;
     }
 
-    public void setEmailTemps(List<ApiOperationEmailTempWSDTO> emailTemps) {
-        this.emailTemps = emailTemps;
+    public void setOperationEmailTemps(List<ApiOperationEmailTempWSDTO> operationEmailTemps) {
+        this.operationEmailTemps = operationEmailTemps;
     }
 }

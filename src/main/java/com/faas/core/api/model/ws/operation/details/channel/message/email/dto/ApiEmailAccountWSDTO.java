@@ -10,20 +10,19 @@ public class ApiEmailAccountWSDTO {
     private String account;
     private List<AccountDataDAO> accountDatas;
     private String provider;
-    private String emailStatus;
+    private String channelState;
     private long cDate;
     private int status;
-
 
     public ApiEmailAccountWSDTO() {
     }
 
-    public ApiEmailAccountWSDTO(String accountId, String account, List<AccountDataDAO> accountDatas, String provider, String emailStatus, long cDate, int status) {
+    public ApiEmailAccountWSDTO(String accountId, String account, List<AccountDataDAO> accountDatas, String provider, String channelState, long cDate, int status) {
         this.accountId = accountId;
         this.account = account;
         this.accountDatas = accountDatas;
         this.provider = provider;
-        this.emailStatus = emailStatus;
+        this.channelState = channelState;
         this.cDate = cDate;
         this.status = status;
     }
@@ -60,12 +59,12 @@ public class ApiEmailAccountWSDTO {
         this.provider = provider;
     }
 
-    public String getEmailStatus() {
-        return emailStatus;
+    public String getChannelState() {
+        return channelState;
     }
 
-    public void setEmailStatus(String emailStatus) {
-        this.emailStatus = emailStatus;
+    public void setChannelState(String channelState) {
+        this.channelState = channelState;
     }
 
     public long getcDate() {

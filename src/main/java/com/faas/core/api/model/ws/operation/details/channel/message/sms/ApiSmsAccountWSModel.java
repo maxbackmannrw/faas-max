@@ -1,6 +1,6 @@
 package com.faas.core.api.model.ws.operation.details.channel.message.sms;
 
-import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiOperationSmsWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiSmsAccountWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 
 import java.util.List;
@@ -8,14 +8,14 @@ import java.util.List;
 public class ApiSmsAccountWSModel {
 
     private GeneralWSModel general;
-    private List<ApiOperationSmsWSDTO> smsMessages;
+    private List<ApiSmsAccountWSDTO> smsAccounts;
 
     public ApiSmsAccountWSModel() {
     }
 
-    public ApiSmsAccountWSModel(GeneralWSModel general, List<ApiOperationSmsWSDTO> smsMessages) {
+    public ApiSmsAccountWSModel(GeneralWSModel general, List<ApiSmsAccountWSDTO> smsAccounts) {
         this.general = general;
-        this.smsMessages = smsMessages;
+        this.smsAccounts = smsAccounts;
     }
 
     public GeneralWSModel getGeneral() {
@@ -26,11 +26,11 @@ public class ApiSmsAccountWSModel {
         this.general = general;
     }
 
-    public List<ApiOperationSmsWSDTO> getSmsMessages() {
-        return smsMessages;
+    public List<ApiSmsAccountWSDTO> getSmsAccounts() {
+        return smsAccounts;
     }
 
-    public void setSmsMessages(List<ApiOperationSmsWSDTO> smsMessages) {
-        this.smsMessages = smsMessages;
+    public void setSmsAccounts(List<ApiSmsAccountWSDTO> smsAccounts) {
+        this.smsAccounts = smsAccounts;
     }
 }

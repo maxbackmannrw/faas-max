@@ -9,30 +9,30 @@ import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.Api
 
 public class ApiOperationCallChannelWSDTO {
 
-    private ApiOperationSipChannelWSDTO sipChannel;
-    private ApiOperationWappCallChannelWSDTO wappCallChannel;
+    private ApiOperationSipChannelWSDTO operationSipChannel;
+    private ApiOperationWappCallChannelWSDTO operationWappCallChannel;
 
     public ApiOperationCallChannelWSDTO() {
     }
 
-    public ApiOperationCallChannelWSDTO(ApiOperationSipChannelWSDTO sipChannel, ApiOperationWappCallChannelWSDTO wappCallChannel) {
-        this.sipChannel = sipChannel;
-        this.wappCallChannel = wappCallChannel;
+    public ApiOperationCallChannelWSDTO(ApiOperationSipChannelWSDTO operationSipChannel, ApiOperationWappCallChannelWSDTO operationWappCallChannel) {
+        this.operationSipChannel = operationSipChannel;
+        this.operationWappCallChannel = operationWappCallChannel;
     }
 
-    public ApiOperationSipChannelWSDTO getSipChannel() {
-        return sipChannel;
+    public ApiOperationSipChannelWSDTO getOperationSipChannel() {
+        return operationSipChannel;
     }
 
-    public void setSipChannel(ApiOperationSipChannelWSDTO sipChannel) {
-        this.sipChannel = sipChannel;
+    public void setOperationSipChannel(ApiOperationSipChannelWSDTO operationSipChannel) {
+        this.operationSipChannel = operationSipChannel;
     }
 
-    public ApiOperationWappCallChannelWSDTO getWappCallChannel() {
-        return wappCallChannel;
+    public ApiOperationWappCallChannelWSDTO getOperationWappCallChannel() {
+        return operationWappCallChannel;
     }
 
-    public void setWappCallChannel(ApiOperationWappCallChannelWSDTO wappCallChannel) {
-        this.wappCallChannel = wappCallChannel;
+    public void setOperationWappCallChannel(ApiOperationWappCallChannelWSDTO operationWappCallChannel) {
+        this.operationWappCallChannel = operationWappCallChannel;
     }
 }
