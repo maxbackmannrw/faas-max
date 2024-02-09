@@ -12,6 +12,6 @@ public interface ProcessSipChannelRepository extends MongoRepository<ProcessSipC
 
     List<ProcessSipChannelDBModel>findByStatus(int status);
     List<ProcessSipChannelDBModel>findByProcessId(String processId);
-    List<ProcessSipChannelDBModel>findByProcessIdAndSipStatus(String processId,String sipStatus);
+    List<ProcessSipChannelDBModel>findByProcessIdAndChannelState(String processId,String channelState);
 
 }
