@@ -28,11 +28,11 @@ public class AppConstant {
     public static final long BASIC_AGENT_OPERATION_LIMIT = 5;
     public static final long SUPER_AGENT_OPERATION_LIMIT = 20;
 
+    public static final String NONE = "NONE";
 
     public static final String MAIN_TYPE = "MAIN_TYPE";
     public static final String SUB_TYPE = "SUB_TYPE";
 
-    public static final String UNKNOWN = "UNKNOWN";
 
 
     public static final String PROCESS_DATA_TYPE = "PROCESS";

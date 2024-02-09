@@ -86,7 +86,7 @@ public class ClientHelper {
 
             if (clientDBModel.getPhoneNumber() != null){
                 List<ClientPhoneDAO>clientPhoneDAOS = new ArrayList<>();
-                clientPhoneDAOS.add(createClientPhoneDAO(clientDBModel.getPhoneNumber(),AppConstant.UNKNOWN,AppConstant.MAIN_TYPE));
+                clientPhoneDAOS.add(createClientPhoneDAO(clientDBModel.getPhoneNumber(),AppConstant.NONE,AppConstant.MAIN_TYPE));
                 clientDetailsDBModel.setClientPhones(clientPhoneDAOS);
             }else {
                 clientDetailsDBModel.setClientPhones(new ArrayList<>());
@@ -102,7 +102,7 @@ public class ClientHelper {
 
             if (clientDBModel.getClientCountry() != null){
                 List<ClientAddressDAO>clientAddressDAOS = new ArrayList<>();
-                clientAddressDAOS.add(createClientAddressDAO("",clientDBModel.getClientCity(),"","",clientDBModel.getClientCountry(),AppConstant.MAIN_TYPE));
+                clientAddressDAOS.add(createClientAddressDAO(AppConstant.NONE,clientDBModel.getClientCity(),AppConstant.NONE,AppConstant.NONE,clientDBModel.getClientCountry(),AppConstant.MAIN_TYPE));
                 clientDetailsDBModel.setClientAddresses(clientAddressDAOS);
             }else {
                 clientDetailsDBModel.setClientAddresses(new ArrayList<>());
@@ -117,13 +117,13 @@ public class ClientHelper {
     }
 
 
-    public ClientPhoneDAO createClientPhoneDAO(String phoneNumber,String phoneCarrier,String numberType){
+    public ClientPhoneDAO createClientPhoneDAO(String phoneNumber,String phoneCarrier,String phoneType){
 
         ClientPhoneDAO clientPhoneDAO = new ClientPhoneDAO();
         clientPhoneDAO.setId(appUtils.generateUUID());
         clientPhoneDAO.setPhoneNumber(phoneNumber);
         clientPhoneDAO.setPhoneCarrier(phoneCarrier);
-        clientPhoneDAO.setNumberType(numberType);
+        clientPhoneDAO.setPhoneType(phoneType);
         clientPhoneDAO.setcDate(appUtils.getCurrentTimeStamp());
         clientPhoneDAO.setStatus(1);
 

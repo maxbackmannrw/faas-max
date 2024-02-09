@@ -5,18 +5,18 @@ public class ClientPhoneDAO {
     private String id;
     private String phoneNumber;
     private String phoneCarrier;
-    private String numberType;
+    private String phoneType;
     private long cDate;
     private int status;
 
     public ClientPhoneDAO() {
     }
 
-    public ClientPhoneDAO(String id, String phoneNumber, String phoneCarrier, String numberType, long cDate, int status) {
+    public ClientPhoneDAO(String id, String phoneNumber, String phoneCarrier, String phoneType, long cDate, int status) {
         this.id = id;
         this.phoneNumber = phoneNumber;
         this.phoneCarrier = phoneCarrier;
-        this.numberType = numberType;
+        this.phoneType = phoneType;
         this.cDate = cDate;
         this.status = status;
     }
@@ -45,12 +45,12 @@ public class ClientPhoneDAO {
         this.phoneCarrier = phoneCarrier;
     }
 
-    public String getNumberType() {
-        return numberType;
+    public String getPhoneType() {
+        return phoneType;
     }
 
-    public void setNumberType(String numberType) {
-        this.numberType = numberType;
+    public void setPhoneType(String phoneType) {
+        this.phoneType = phoneType;
     }
 
     public long getcDate() {

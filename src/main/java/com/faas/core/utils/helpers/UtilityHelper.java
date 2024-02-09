@@ -350,16 +350,20 @@ public class UtilityHelper {
         clientRepository.findAll().forEach(clientDBModel -> {
             List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(clientDBModel.getId());
             if (!clientDetailsDBModels.isEmpty()){
+
                 ClientDetailsDBModel clientDetailsDBModel = clientDetailsDBModels.get(0);
-                List<ClientAddressDAO> clientAddressDAOS = new ArrayList<>();
-                clientAddressDAOS.add(clientHelper.createClientAddressDAO("",clientDBModel.getClientCity(),"","",clientDBModel.getClientCountry(),AppConstant.MAIN_TYPE));
-                clientDetailsDBModel.setClientAddresses(clientAddressDAOS);
-                List<ClientPhoneDAO>clientPhoneDAOS = new ArrayList<>();
-                clientPhoneDAOS.add(clientHelper.createClientPhoneDAO(clientDBModel.getPhoneNumber(),AppConstant.UNKNOWN,AppConstant.MAIN_TYPE));
-                clientDetailsDBModel.setClientPhones(clientPhoneDAOS);
-                List<ClientEmailDAO>clientEmailDAOS = new ArrayList<>();
-                clientEmailDAOS.add(clientHelper.createClientEmailDAO(clientDBModel.getEmailAddress(),AppConstant.MAIN_TYPE));
-                clientDetailsDBModel.setClientEmails(clientEmailDAOS);
+                if (clientDetailsDBModel.getClientAddresses() == null){
+                    clientDetailsDBModel.setClientAddresses(new ArrayList<>());
+                }
+                clientDetailsDBModel.setClientAddresses(checkAndUpdateClientAddressesHelper(clientDBModel,clientDetailsDBModel.getClientAddresses()));
+                if (clientDetailsDBModel.getClientPhones() == null){
+                    clientDetailsDBModel.setClientPhones(new ArrayList<>());
+                }
+                clientDetailsDBModel.setClientPhones(checkAndUpdateClientPhonesHelper(clientDBModel,clientDetailsDBModel.getClientPhones()));
+                if (clientDetailsDBModel.getClientEmails() == null){
+                    clientDetailsDBModel.setClientEmails(new ArrayList<>());
+                }
+                clientDetailsDBModel.setClientEmails(checkAndUpdateClientEmailsHelper(clientDBModel,clientDetailsDBModel.getClientEmails()));
                 clientDetailsDBModel.setuDate(appUtils.getCurrentTimeStamp());
 
                 clientDetailsRepository.save(clientDetailsDBModel);
@@ -369,42 +373,45 @@ public class UtilityHelper {
 
     public List<ClientAddressDAO> checkAndUpdateClientAddressesHelper(ClientDBModel clientDBModel, List<ClientAddressDAO> clientAddressDAOS) {
 
-        for (int i=0;i<clientAddressDAOS.size();i++){
-            if (clientAddressDAOS.get(i).getAddressType().equalsIgnoreCase(AppConstant.MAIN_TYPE)){
-                clientAddressDAOS.remove(clientAddressDAOS.get(i));
+        List<ClientAddressDAO> checkedAddressDAOS = new ArrayList<>();
+        for (ClientAddressDAO clientAddressDAO : clientAddressDAOS) {
+            if (clientAddressDAO.getAddressType().equalsIgnoreCase(AppConstant.SUB_TYPE)) {
+                checkedAddressDAOS.add(clientAddressDAO);
             }
         }
         if (clientDBModel.getClientCity() != null && !"".equalsIgnoreCase(clientDBModel.getClientCity()) && clientDBModel.getClientCountry() != null && !"".equalsIgnoreCase(clientDBModel.getClientCountry())){
-            clientAddressDAOS.add(clientHelper.createClientAddressDAO("",clientDBModel.getClientCity(),"","",clientDBModel.getClientCountry(),AppConstant.MAIN_TYPE));
+            checkedAddressDAOS.add(clientHelper.createClientAddressDAO(AppConstant.NONE,clientDBModel.getClientCity(),AppConstant.NONE,AppConstant.NONE,clientDBModel.getClientCountry(),AppConstant.MAIN_TYPE));
         }
-        return clientAddressDAOS;
+        return checkedAddressDAOS;
     }
 
 
     public List<ClientPhoneDAO> checkAndUpdateClientPhonesHelper(ClientDBModel clientDBModel, List<ClientPhoneDAO> clientPhoneDAOS) {
 
-        for (int i=0;i<clientPhoneDAOS.size();i++){
-            if (clientPhoneDAOS.get(i).getNumberType().equalsIgnoreCase(AppConstant.MAIN_TYPE)){
-                clientPhoneDAOS.remove(clientPhoneDAOS.get(i));
+        List<ClientPhoneDAO> checkedPhoneDAOS = new ArrayList<>();
+        for (ClientPhoneDAO clientPhoneDAO : clientPhoneDAOS) {
+            if (clientPhoneDAO.getPhoneType().equalsIgnoreCase(AppConstant.SUB_TYPE)) {
+                checkedPhoneDAOS.add(clientPhoneDAO);
             }
         }
         if (clientDBModel.getPhoneNumber() != null && !"".equalsIgnoreCase(clientDBModel.getPhoneNumber())){
-            clientPhoneDAOS.add(clientHelper.createClientPhoneDAO(clientDBModel.getPhoneNumber(),AppConstant.UNKNOWN,AppConstant.MAIN_TYPE));
+            checkedPhoneDAOS.add(clientHelper.createClientPhoneDAO(clientDBModel.getPhoneNumber(),AppConstant.NONE,AppConstant.MAIN_TYPE));
         }
-        return clientPhoneDAOS;
+        return checkedPhoneDAOS;
     }
 
     public List<ClientEmailDAO> checkAndUpdateClientEmailsHelper(ClientDBModel clientDBModel, List<ClientEmailDAO> clientEmailDAOS) {
 
-        for (int i=0;i<clientEmailDAOS.size();i++){
-            if (clientEmailDAOS.get(i).getEmailType().equalsIgnoreCase(AppConstant.MAIN_TYPE)){
-                clientEmailDAOS.remove(clientEmailDAOS.get(i));
+        List<ClientEmailDAO> checkedEmailDAOS = new ArrayList<>();
+        for (ClientEmailDAO clientEmailDAO : clientEmailDAOS) {
+            if (clientEmailDAO.getEmailType().equalsIgnoreCase(AppConstant.SUB_TYPE)) {
+                checkedEmailDAOS.add(clientEmailDAO);
             }
         }
         if (clientDBModel.getEmailAddress() != null && "".equalsIgnoreCase(clientDBModel.getEmailAddress())){
-            clientEmailDAOS.add(clientHelper.createClientEmailDAO(clientDBModel.getEmailAddress(),AppConstant.MAIN_TYPE));
+            checkedEmailDAOS.add(clientHelper.createClientEmailDAO(clientDBModel.getEmailAddress(),AppConstant.MAIN_TYPE));
         }
-        return clientEmailDAOS;
+        return checkedEmailDAOS;
     }
 
 
@@ -427,7 +434,6 @@ public class UtilityHelper {
         }
 
     }
-
 
 
 
