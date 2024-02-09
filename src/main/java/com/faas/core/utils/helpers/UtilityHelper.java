@@ -356,10 +356,12 @@ public class UtilityHelper {
                     clientDetailsDBModel.setClientAddresses(new ArrayList<>());
                 }
                 clientDetailsDBModel.setClientAddresses(checkAndUpdateClientAddressesHelper(clientDBModel,clientDetailsDBModel.getClientAddresses()));
+
                 if (clientDetailsDBModel.getClientPhones() == null){
                     clientDetailsDBModel.setClientPhones(new ArrayList<>());
                 }
                 clientDetailsDBModel.setClientPhones(checkAndUpdateClientPhonesHelper(clientDBModel,clientDetailsDBModel.getClientPhones()));
+
                 if (clientDetailsDBModel.getClientEmails() == null){
                     clientDetailsDBModel.setClientEmails(new ArrayList<>());
                 }
@@ -375,7 +377,7 @@ public class UtilityHelper {
 
         List<ClientAddressDAO> checkedAddressDAOS = new ArrayList<>();
         for (ClientAddressDAO clientAddressDAO : clientAddressDAOS) {
-            if (clientAddressDAO.getAddressType().equalsIgnoreCase(AppConstant.SUB_TYPE)) {
+            if (clientAddressDAO.getAddressType() != null &&clientAddressDAO.getAddressType().equalsIgnoreCase(AppConstant.SUB_TYPE)) {
                 checkedAddressDAOS.add(clientAddressDAO);
             }
         }
@@ -390,7 +392,7 @@ public class UtilityHelper {
 
         List<ClientPhoneDAO> checkedPhoneDAOS = new ArrayList<>();
         for (ClientPhoneDAO clientPhoneDAO : clientPhoneDAOS) {
-            if (clientPhoneDAO.getPhoneType().equalsIgnoreCase(AppConstant.SUB_TYPE)) {
+            if (clientPhoneDAO.getPhoneType() != null && clientPhoneDAO.getPhoneType().equalsIgnoreCase(AppConstant.SUB_TYPE)) {
                 checkedPhoneDAOS.add(clientPhoneDAO);
             }
         }
@@ -404,7 +406,7 @@ public class UtilityHelper {
 
         List<ClientEmailDAO> checkedEmailDAOS = new ArrayList<>();
         for (ClientEmailDAO clientEmailDAO : clientEmailDAOS) {
-            if (clientEmailDAO.getEmailType().equalsIgnoreCase(AppConstant.SUB_TYPE)) {
+            if (clientEmailDAO.getEmailType() != null &&clientEmailDAO.getEmailType().equalsIgnoreCase(AppConstant.SUB_TYPE)) {
                 checkedEmailDAOS.add(clientEmailDAO);
             }
         }
