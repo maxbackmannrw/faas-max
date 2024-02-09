@@ -410,7 +410,7 @@ public class UtilityHelper {
                 checkedEmailDAOS.add(clientEmailDAO);
             }
         }
-        if (clientDBModel.getEmailAddress() != null && "".equalsIgnoreCase(clientDBModel.getEmailAddress())){
+        if (clientDBModel.getEmailAddress() != null && !"".equalsIgnoreCase(clientDBModel.getEmailAddress())){
             checkedEmailDAOS.add(clientHelper.createClientEmailDAO(clientDBModel.getEmailAddress(),AppConstant.MAIN_TYPE));
         }
         return checkedEmailDAOS;
