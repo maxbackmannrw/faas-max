@@ -24,9 +24,6 @@ public class ApiOperationPushChannelController {
     ApiOperationPushChannelMiddleware apiOperationPushChannelMiddleware;
 
 
-
-
-
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_PUSHES, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationPushes(@RequestParam long agentId,
                                                    @RequestParam String operationId) {

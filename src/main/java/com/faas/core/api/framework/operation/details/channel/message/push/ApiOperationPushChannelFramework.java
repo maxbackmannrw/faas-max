@@ -1,6 +1,5 @@
 package com.faas.core.api.framework.operation.details.channel.message.push;
 
-import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushChannelWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushTempWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushWSDTO;
 import com.faas.core.utils.config.AppUtils;
@@ -13,9 +12,6 @@ public class ApiOperationPushChannelFramework {
 
     @Autowired
     AppUtils appUtils;
-
-
-
 
 
     public ApiOperationPushWSDTO apiGetPushMessagesService() {
