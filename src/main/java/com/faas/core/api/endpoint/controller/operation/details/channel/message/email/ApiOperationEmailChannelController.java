@@ -23,20 +23,6 @@ public class ApiOperationEmailChannelController {
     @Autowired
     ApiOperationEmailChannelMiddleware apiOperationEmailChannelMiddleware;
 
-
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION_EMAIL_CHANNEL, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperationEmailChannel(@RequestParam long agentId,
-                                                         @RequestParam String operationId) {
-
-        ApiOperationEmailChannelWSModel response = apiOperationEmailChannelMiddleware.apiGetOperationEmailChannel(agentId,operationId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_EMAILS, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationEmails(@RequestParam long agentId,
                                                    @RequestParam String operationId) {

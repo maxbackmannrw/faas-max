@@ -15,10 +15,7 @@ public class ApiOperationPushChannelFramework {
     AppUtils appUtils;
 
 
-    public ApiOperationPushChannelWSDTO apiGetOperationPushMessagesService() {
 
-        return null;
-    }
 
 
     public ApiOperationPushWSDTO apiGetPushMessagesService() {

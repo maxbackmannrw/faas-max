@@ -21,26 +21,6 @@ public class ApiOperationSipChannelMiddleware {
     ApiOperationSipChannelFramework apiOperationSipChannelFramework;
 
 
-    public ApiOperationSipChannelWSModel apiGetOperationSipChannel(long agentId, String operationId) {
-
-        ApiOperationSipChannelWSModel response = new ApiOperationSipChannelWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-        ApiOperationSipChannelWSDTO operationSipChannelWSDTO = apiOperationSipChannelFramework.apiGetOperationSipChannelService(agentId,operationId);
-        if (operationSipChannelWSDTO != null){
-            response.setOperationSipChannel(operationSipChannelWSDTO);
-        }
-
-        general.setOperation("apiGetOperationSipCall");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-
     public ApiOperationSipCallWSModel apiGetOperationSipCalls(long agentId, String operationId) {
 
         ApiOperationSipCallWSModel response = new ApiOperationSipCallWSModel();

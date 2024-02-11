@@ -57,11 +57,7 @@ public class ApiOperationWappMessageChannelFramework {
     AppUtils appUtils;
 
 
-    public ApiOperationWappMessageChannelWSDTO apiGetOperationWappMessageChannelService(long agentId,String operationId) {
 
-
-        return null;
-    }
 
 
     public List<ApiOperationWappMessageWSDTO> apiGetOperationWappMessagesService(long agentId,String operationId){

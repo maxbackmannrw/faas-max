@@ -1,7 +1,6 @@
 package com.faas.core.api.framework.operation.details.channel.call.sip;
 
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationSipCallWSDTO;
-import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationSipChannelWSDTO;
 import com.faas.core.base.repo.operation.details.channel.OperationSipCallRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utils.config.AppUtils;
@@ -27,12 +26,6 @@ public class ApiOperationSipChannelFramework {
 
     @Autowired
     AppUtils appUtils;
-
-
-    public ApiOperationSipChannelWSDTO apiGetOperationSipChannelService(long agentId, String operationId) {
-
-        return null;
-    }
 
 
     public List<ApiOperationSipCallWSDTO> apiGetOperationSipCallsService(long agentId, String operationId) {

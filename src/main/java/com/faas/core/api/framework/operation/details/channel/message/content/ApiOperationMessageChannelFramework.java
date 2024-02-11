@@ -1,6 +1,10 @@
 package com.faas.core.api.framework.operation.details.channel.message.content;
 
 import com.faas.core.api.model.ws.operation.details.channel.message.content.dto.ApiOperationMessageChannelWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiOperationEmailWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushChannelWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiOperationSmsChannelWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.ApiOperationWappMessageChannelWSDTO;
 import com.faas.core.base.model.db.client.details.content.ClientDetailsDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.repo.client.content.ClientRepository;
@@ -53,5 +57,29 @@ public class ApiOperationMessageChannelFramework {
         return null;
     }
 
+
+    public ApiOperationSmsChannelWSDTO apiGetOperationSmsChannelService(long agentId, String operationId) {
+
+        return null;
+    }
+
+
+    public ApiOperationWappMessageChannelWSDTO apiGetOperationWappMessageChannelService(long agentId, String operationId) {
+
+
+        return null;
+    }
+
+
+    public ApiOperationEmailWSDTO apiGetOperationEmailMessagesService(long agentId, long sessionId) {
+
+        return null;
+    }
+
+
+    public ApiOperationPushChannelWSDTO apiGetOperationPushMessagesService() {
+
+        return null;
+    }
 
 }

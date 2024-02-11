@@ -23,27 +23,6 @@ public class ApiOperationSmsChannelMiddleware {
     @Autowired
     ApiOperationSmsChannelFramework apiOperationSmsChannelFramework;
 
-
-    public ApiOperationSmsChannelWSModel apiGetOperationSmsChannel(long agentId,String operationId) {
-
-        ApiOperationSmsChannelWSModel response = new ApiOperationSmsChannelWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-        ApiOperationSmsChannelWSDTO operationSmsChannelWSDTO = apiOperationSmsChannelFramework.apiGetOperationSmsChannelService(agentId,operationId);
-        if (operationSmsChannelWSDTO != null){
-            response.setOperationSmsChannel(operationSmsChannelWSDTO);
-        }
-
-        general.setOperation("apiGetOperationSmsChannel");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-
     public ApiOperationSmsWSModel apiGetOperationSmss(long agentId,String operationId) {
 
         ApiOperationSmsWSModel response = new ApiOperationSmsWSModel();

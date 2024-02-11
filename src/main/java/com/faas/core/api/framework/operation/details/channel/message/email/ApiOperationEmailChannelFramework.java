@@ -13,10 +13,7 @@ public class ApiOperationEmailChannelFramework {
     AppUtils appUtils;
 
 
-    public ApiOperationEmailWSDTO apiGetOperationEmailMessagesService(long agentId, long sessionId) {
 
-        return null;
-    }
 
 
 

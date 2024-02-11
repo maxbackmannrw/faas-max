@@ -22,20 +22,6 @@ public class ApiOperationSipChannelController {
     @Autowired
     ApiOperationSipChannelMiddleware apiOperationSipChannelMiddleware;
 
-
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION_SIP_CHANNEL, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperationSipChannel(@RequestParam long agentId,
-                                                       @RequestParam String operationId) {
-
-        ApiOperationSipChannelWSModel response = apiOperationSipChannelMiddleware.apiGetOperationSipChannel(agentId,operationId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_SIP_CALLS, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationSipCalls(@RequestParam long agentId,
                                                      @RequestParam String operationId) {
@@ -47,7 +33,6 @@ public class ApiOperationSipChannelController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_SIP_CALL, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationSipCall(@RequestParam long agentId,

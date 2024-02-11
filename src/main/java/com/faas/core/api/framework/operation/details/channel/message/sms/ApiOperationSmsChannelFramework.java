@@ -63,10 +63,7 @@ public class ApiOperationSmsChannelFramework {
     AppUtils appUtils;
 
 
-    public ApiOperationSmsChannelWSDTO apiGetOperationSmsChannelService(long agentId,String operationId) {
 
-        return null;
-    }
 
 
     public List<ApiOperationSmsWSDTO> apiGetOperationSmssService(long agentId,String operationId) {

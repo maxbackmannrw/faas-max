@@ -17,23 +17,6 @@ public class ApiOperationEmailChannelMiddleware {
     @Autowired
     ApiOperationEmailChannelFramework apiOperationEmailChannelFramework;
 
-
-    public ApiOperationEmailChannelWSModel apiGetOperationEmailChannel(long agentId, String operationId) {
-
-        ApiOperationEmailChannelWSModel response = new ApiOperationEmailChannelWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-
-        general.setOperation("apiGetOperationEmail");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-
     public ApiOperationEmailWSModel apiGetOperationEmails(long agentId,String operationId) {
 
         ApiOperationEmailWSModel response = new ApiOperationEmailWSModel();

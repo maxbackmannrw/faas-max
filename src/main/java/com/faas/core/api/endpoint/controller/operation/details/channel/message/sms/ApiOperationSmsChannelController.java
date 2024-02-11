@@ -26,17 +26,7 @@ public class ApiOperationSmsChannelController {
     ApiOperationSmsChannelMiddleware apiOperationSmsChannelMiddleware;
 
 
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION_SMS_CHANNEL, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperationSmsChannel(@RequestParam long agentId,
-                                                       @RequestParam String operationId) {
 
-        ApiOperationSmsChannelWSModel response = apiOperationSmsChannelMiddleware.apiGetOperationSmsChannel(agentId,operationId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
 
 
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_SMSS, method = RequestMethod.POST)

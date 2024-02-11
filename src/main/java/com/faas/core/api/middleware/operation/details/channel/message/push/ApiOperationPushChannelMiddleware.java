@@ -16,22 +16,6 @@ public class ApiOperationPushChannelMiddleware {
     @Autowired
     ApiOperationPushChannelFramework apiOperationPushChannelFramework;
 
-
-    public ApiOperationPushChannelWSModel apiGetOperationPushChannel(long agentId,String operationId) {
-
-        ApiOperationPushChannelWSModel response = new ApiOperationPushChannelWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-
-        general.setOperation("apiGetOperationPushChannel");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
     public ApiOperationPushWSModel apiGetOperationPushes(long agentId,String operationId) {
 
         ApiOperationPushWSModel response = new ApiOperationPushWSModel();

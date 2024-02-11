@@ -22,20 +22,6 @@ public class ApiOperationWappCallChannelController {
     @Autowired
     ApiOperationWappCallChannelMiddleware apiOperationWappCallChannelMiddleware;
 
-
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION_WAPP_CALL_CHANNEL, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperationWappCallChannel(@RequestParam long agentId,
-                                                            @RequestParam String operationId) {
-
-        ApiOperationWappCallChannelWSModel response = apiOperationWappCallChannelMiddleware.apiGetOperationWappCallChannel(agentId,operationId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_WAPP_CALLS, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationWappCalls(@RequestParam long agentId,
                                                       @RequestParam String operationId) {

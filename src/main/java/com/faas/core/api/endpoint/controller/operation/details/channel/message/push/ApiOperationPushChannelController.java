@@ -24,17 +24,7 @@ public class ApiOperationPushChannelController {
     ApiOperationPushChannelMiddleware apiOperationPushChannelMiddleware;
 
 
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION_PUSH_CHANNEL, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperationPushChannel(@RequestParam long agentId,
-                                                        @RequestParam String operationId) {
 
-        ApiOperationPushChannelWSModel response = apiOperationPushChannelMiddleware.apiGetOperationPushChannel(agentId,operationId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
 
 
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_PUSHES, method = RequestMethod.POST)

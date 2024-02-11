@@ -17,26 +17,6 @@ public class ApiOperationWappCallChannelMiddleware {
     ApiOperationWappCallChannelFramework apiOperationWappCallChannelFramework;
 
 
-    public ApiOperationWappCallChannelWSModel apiGetOperationWappCallChannel(long agentId, String operationId) {
-
-        ApiOperationWappCallChannelWSModel response = new ApiOperationWappCallChannelWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-        ApiOperationWappCallChannelWSDTO operationWappCallChannelWSDTO = apiOperationWappCallChannelFramework.apiGetOperationWappCallChannelService(agentId,operationId);
-        if (operationWappCallChannelWSDTO != null){
-            response.setOperationWappCallChannel(operationWappCallChannelWSDTO);
-        }
-
-        general.setOperation("apiGetOperationWappCall");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-
     public ApiOperationWappCallWSModel apiGetOperationWappCalls(long agentId,String operationId) {
 
         ApiOperationWappCallWSModel response = new ApiOperationWappCallWSModel();
