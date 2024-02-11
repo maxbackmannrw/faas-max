@@ -111,7 +111,6 @@ public class ApiOperationSmsChannelController {
 
 
 
-
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_SMS_TEMPS, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationSmsTemps(@RequestParam long agentId,
                                                      @RequestParam String operationId) {
