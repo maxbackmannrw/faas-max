@@ -123,7 +123,7 @@ public class ApiOperationSmsChannelFramework {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
         if (!operationDBModels.isEmpty()){
-            List<ProcessSmsMessageTempDBModel> smsMessageTempDBModels = processSmsMessageTempRepository.findByIdAndProcessId(smsTempId,operationDBModels.get(0).getId());
+            List<ProcessSmsMessageTempDBModel> smsMessageTempDBModels = processSmsMessageTempRepository.findByIdAndProcessId(smsTempId,operationDBModels.get(0).getProcessId());
             if (!smsMessageTempDBModels.isEmpty()){
                 return new ApiOperationSmsTempWSDTO(smsMessageTempDBModels.get(0));
             }
