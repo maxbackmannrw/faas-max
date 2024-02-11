@@ -3,19 +3,18 @@ package com.faas.core.api.model.ws.operation.details.channel.message.wapp;
 import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.ApiOperationWappMessageTempWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 
-import java.util.List;
 
 public class ApiOperationWappMessageTempWSModel {
 
     private GeneralWSModel general;
-    private List<ApiOperationWappMessageTempWSDTO> operationWappMessageTemps;
+    private ApiOperationWappMessageTempWSDTO wappMessageTemp;
 
     public ApiOperationWappMessageTempWSModel() {
     }
 
-    public ApiOperationWappMessageTempWSModel(GeneralWSModel general, List<ApiOperationWappMessageTempWSDTO> operationWappMessageTemps) {
+    public ApiOperationWappMessageTempWSModel(GeneralWSModel general, ApiOperationWappMessageTempWSDTO wappMessageTemp) {
         this.general = general;
-        this.operationWappMessageTemps = operationWappMessageTemps;
+        this.wappMessageTemp = wappMessageTemp;
     }
 
     public GeneralWSModel getGeneral() {
@@ -26,11 +25,11 @@ public class ApiOperationWappMessageTempWSModel {
         this.general = general;
     }
 
-    public List<ApiOperationWappMessageTempWSDTO> getOperationWappMessageTemps() {
-        return operationWappMessageTemps;
+    public ApiOperationWappMessageTempWSDTO getWappMessageTemp() {
+        return wappMessageTemp;
     }
 
-    public void setOperationWappMessageTemps(List<ApiOperationWappMessageTempWSDTO> operationWappMessageTemps) {
-        this.operationWappMessageTemps = operationWappMessageTemps;
+    public void setWappMessageTemp(ApiOperationWappMessageTempWSDTO wappMessageTemp) {
+        this.wappMessageTemp = wappMessageTemp;
     }
 }
