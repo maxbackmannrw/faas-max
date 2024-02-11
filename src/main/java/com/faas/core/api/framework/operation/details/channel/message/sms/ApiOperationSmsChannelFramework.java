@@ -108,6 +108,7 @@ public class ApiOperationSmsChannelFramework {
                 smsTempWSDTO.setClientPhones(clientDetailsDBModels.get(0).getClientPhones());
             }
             smsTempWSDTO.setOperationSmsTemps(processSmsMessageTempRepository.findByProcessId(sessionDBModels.get(0).getProcessId()));
+
             return smsTempWSDTO;
         }
         return null;
@@ -125,6 +126,7 @@ public class ApiOperationSmsChannelFramework {
                 smsTempWSDTO.setClientPhones(clientDetailsDBModels.get(0).getClientPhones());
             }
             smsTempWSDTO.setOperationSmsTemps(processSmsMessageTempRepository.findByIdAndProcessId(smsTempId,sessionDBModels.get(0).getProcessId()));
+
             return smsTempWSDTO;
         }
         return null;

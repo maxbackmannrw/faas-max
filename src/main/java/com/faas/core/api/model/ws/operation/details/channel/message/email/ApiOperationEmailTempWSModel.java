@@ -3,19 +3,18 @@ package com.faas.core.api.model.ws.operation.details.channel.message.email;
 import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiOperationEmailTempWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 
-import java.util.List;
 
 public class ApiOperationEmailTempWSModel {
 
     private GeneralWSModel general;
-    private List<ApiOperationEmailTempWSDTO>operationEmailTemps;
+    private ApiOperationEmailTempWSDTO emailTemp;
 
     public ApiOperationEmailTempWSModel() {
     }
 
-    public ApiOperationEmailTempWSModel(GeneralWSModel general, List<ApiOperationEmailTempWSDTO> operationEmailTemps) {
+    public ApiOperationEmailTempWSModel(GeneralWSModel general, ApiOperationEmailTempWSDTO emailTemp) {
         this.general = general;
-        this.operationEmailTemps = operationEmailTemps;
+        this.emailTemp = emailTemp;
     }
 
     public GeneralWSModel getGeneral() {
@@ -26,11 +25,11 @@ public class ApiOperationEmailTempWSModel {
         this.general = general;
     }
 
-    public List<ApiOperationEmailTempWSDTO> getOperationEmailTemps() {
-        return operationEmailTemps;
+    public ApiOperationEmailTempWSDTO getEmailTemp() {
+        return emailTemp;
     }
 
-    public void setOperationEmailTemps(List<ApiOperationEmailTempWSDTO> operationEmailTemps) {
-        this.operationEmailTemps = operationEmailTemps;
+    public void setEmailTemp(ApiOperationEmailTempWSDTO emailTemp) {
+        this.emailTemp = emailTemp;
     }
 }

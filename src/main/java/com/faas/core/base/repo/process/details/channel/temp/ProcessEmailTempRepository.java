@@ -12,4 +12,6 @@ public interface ProcessEmailTempRepository extends MongoRepository<ProcessEmail
     List<ProcessEmailTempDBModel> findByStatus(int status);
 
     List<ProcessEmailTempDBModel> findByProcessId(String processId);
+
+    List<ProcessEmailTempDBModel>findByIdAndProcessId(String emailTempId, String processId);
 }

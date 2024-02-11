@@ -107,6 +107,7 @@ public class ApiOperationWappMessageChannelFramework {
                 wappMessageTempWSDTO.setClientPhones(clientDetailsDBModels.get(0).getClientPhones());
             }
             wappMessageTempWSDTO.setOperationWappMessageTemps(processWappMessageTempRepository.findByProcessId(sessionDBModels.get(0).getProcessId()));
+
             return wappMessageTempWSDTO;
         }
         return null;
@@ -124,6 +125,7 @@ public class ApiOperationWappMessageChannelFramework {
                 wappMessageTempWSDTO.setClientPhones(clientDetailsDBModels.get(0).getClientPhones());
             }
             wappMessageTempWSDTO.setOperationWappMessageTemps(processWappMessageTempRepository.findByIdAndProcessId(messageTempId,sessionDBModels.get(0).getProcessId()));
+
            return wappMessageTempWSDTO;
         }
         return null;

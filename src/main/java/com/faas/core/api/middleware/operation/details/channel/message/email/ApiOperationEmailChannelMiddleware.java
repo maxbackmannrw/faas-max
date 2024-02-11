@@ -3,7 +3,7 @@ package com.faas.core.api.middleware.operation.details.channel.message.email;
 import com.faas.core.api.framework.operation.details.channel.message.email.ApiOperationEmailChannelFramework;
 import com.faas.core.api.model.ws.operation.details.channel.message.email.ApiOperationEmailTempWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.email.ApiOperationEmailWSModel;
-import com.faas.core.api.model.ws.operation.details.channel.message.email.ApiOperationEmailChannelWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiOperationEmailTempWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +16,7 @@ public class ApiOperationEmailChannelMiddleware {
 
     @Autowired
     ApiOperationEmailChannelFramework apiOperationEmailChannelFramework;
+
 
     public ApiOperationEmailWSModel apiGetOperationEmails(long agentId,String operationId) {
 
@@ -98,12 +99,15 @@ public class ApiOperationEmailChannelMiddleware {
     }
 
 
-
     public ApiOperationEmailTempWSModel apiGetOperationEmailTemps(long agentId,String operationId) {
 
         ApiOperationEmailTempWSModel response = new ApiOperationEmailTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
+        ApiOperationEmailTempWSDTO emailTempWSDTO = apiOperationEmailChannelFramework.apiGetOperationEmailTempsService(agentId,operationId);
+        if (emailTempWSDTO != null) {
+            response.setEmailTemp(emailTempWSDTO);
+        }
 
         general.setOperation("apiGetOperationEmailTemps");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -120,6 +124,10 @@ public class ApiOperationEmailChannelMiddleware {
         ApiOperationEmailTempWSModel response = new ApiOperationEmailTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
+        ApiOperationEmailTempWSDTO emailTempWSDTO = apiOperationEmailChannelFramework.apiGetOperationEmailTempService(agentId,operationId,emailTempId);
+        if (emailTempWSDTO != null) {
+            response.setEmailTemp(emailTempWSDTO);
+        }
 
         general.setOperation("apiGetOperationEmailTemp");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
