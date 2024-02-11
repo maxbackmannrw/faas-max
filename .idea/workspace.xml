@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/details/channel/message/push/ApiOperationPushChannelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/details/channel/message/push/ApiOperationPushChannelController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/channel/message/push/ApiOperationPushChannelFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/channel/message/push/ApiOperationPushChannelFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/details/channel/message/push/ApiOperationPushChannelMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/details/channel/message/push/ApiOperationPushChannelMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/details/channel/message/sms/ApiOperationSmsChannelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/details/channel/message/sms/ApiOperationSmsChannelController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/details/channel/message/wapp/ApiOperationWappMessageChannelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/details/channel/message/wapp/ApiOperationWappMessageChannelController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -725,15 +724,7 @@
       <workItem from="1707593482289" duration="370000" />
       <workItem from="1707608033175" duration="226000" />
       <workItem from="1707645637832" duration="774000" />
-      <workItem from="1707650786130" duration="5528000" />
-    </task>
-    <task id="LOCAL-00613" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1705503494067</created>
-      <option name="number" value="00613" />
-      <option name="presentableId" value="LOCAL-00613" />
-      <option name="project" value="LOCAL" />
-      <updated>1705503494067</updated>
+      <workItem from="1707650786130" duration="5975000" />
     </task>
     <task id="LOCAL-00614" summary="almost finish">
       <option name="closed" value="true" />
@@ -1119,7 +1110,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707670147650</updated>
     </task>
-    <option name="localTasksCounter" value="662" />
+    <task id="LOCAL-00662" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1707671247401</created>
+      <option name="number" value="00662" />
+      <option name="presentableId" value="LOCAL-00662" />
+      <option name="project" value="LOCAL" />
+      <updated>1707671247401</updated>
+    </task>
+    <option name="localTasksCounter" value="663" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

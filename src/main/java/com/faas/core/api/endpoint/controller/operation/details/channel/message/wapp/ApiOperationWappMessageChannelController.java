@@ -26,9 +26,6 @@ public class ApiOperationWappMessageChannelController {
     ApiOperationWappMessageChannelMiddleware apiOperationWappMessageChannelMiddleware;
 
 
-
-
-
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_WAPP_MESSAGES, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationWappMessages(@RequestParam long agentId,
                                                          @RequestParam String operationId) {

@@ -1,7 +1,6 @@
 package com.faas.core.api.endpoint.controller.operation.details.channel.message.sms;
 
 import com.faas.core.api.middleware.operation.details.channel.message.sms.ApiOperationSmsChannelMiddleware;
-import com.faas.core.api.model.ws.operation.details.channel.message.sms.ApiOperationSmsChannelWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.sms.ApiOperationSmsTempWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.sms.ApiOperationSmsWSModel;
 import com.faas.core.utils.config.ApiRoute;
@@ -24,9 +23,6 @@ public class ApiOperationSmsChannelController {
 
     @Autowired
     ApiOperationSmsChannelMiddleware apiOperationSmsChannelMiddleware;
-
-
-
 
 
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_SMSS, method = RequestMethod.POST)
