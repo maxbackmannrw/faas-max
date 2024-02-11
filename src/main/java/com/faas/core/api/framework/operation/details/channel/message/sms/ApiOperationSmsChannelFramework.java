@@ -4,11 +4,13 @@ import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiO
 import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiSmsAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiOperationSmsTempWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiOperationSmsWSDTO;
+import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationSmsMessageDBModel;
 import com.faas.core.base.model.db.process.details.channel.content.ProcessSmsChannelDBModel;
 import com.faas.core.base.model.db.process.details.channel.temp.ProcessSmsMessageTempDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.repo.client.content.ClientRepository;
+import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.operation.details.channel.OperationSmsMessageRepository;
 import com.faas.core.base.repo.process.details.channel.content.ProcessSmsChannelRepository;
 import com.faas.core.base.repo.process.details.channel.temp.ProcessSmsMessageTempRepository;
@@ -40,11 +42,13 @@ public class ApiOperationSmsChannelFramework {
     SmsRestService smsRestService;
 
     @Autowired
+    ClientRepository clientRepository;
+
+    @Autowired
     SessionRepository sessionRepository;
 
     @Autowired
-    ClientRepository clientRepository;
-
+    OperationRepository operationRepository;
 
     @Autowired
     OperationSmsMessageRepository operationSmsMessageRepository;
@@ -103,14 +107,27 @@ public class ApiOperationSmsChannelFramework {
 
     public List<ApiOperationSmsTempWSDTO> apiGetOperationSmsTempsService(long agentId,String operationId) {
 
-
-        return null;
+        List<ApiOperationSmsTempWSDTO>smsTempWSDTOS = new ArrayList<>();
+        List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
+        if (!operationDBModels.isEmpty()){
+            List<ProcessSmsMessageTempDBModel> smsMessageTempDBModels = processSmsMessageTempRepository.findByProcessId(operationDBModels.get(0).getId());
+            for (ProcessSmsMessageTempDBModel smsMessageTempDBModel : smsMessageTempDBModels) {
+                smsTempWSDTOS.add(new ApiOperationSmsTempWSDTO(smsMessageTempDBModel));
+            }
+        }
+        return smsTempWSDTOS;
     }
 
 
     public ApiOperationSmsTempWSDTO apiGetOperationSmsTempService(long agentId,String operationId,String smsTempId) {
 
-
+        List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
+        if (!operationDBModels.isEmpty()){
+            List<ProcessSmsMessageTempDBModel> smsMessageTempDBModels = processSmsMessageTempRepository.findByIdAndProcessId(smsTempId,operationDBModels.get(0).getId());
+            if (!smsMessageTempDBModels.isEmpty()){
+                return new ApiOperationSmsTempWSDTO(smsMessageTempDBModels.get(0));
+            }
+        }
         return null;
     }
 

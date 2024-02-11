@@ -2,34 +2,22 @@ package com.faas.core.api.model.ws.operation.details.channel.message.sms.dto;
 
 import com.faas.core.base.model.db.process.details.channel.temp.ProcessSmsMessageTempDBModel;
 
-import java.util.List;
-
 public class ApiOperationSmsTempWSDTO {
 
-    private ApiSmsAccountWSDTO smsAccount;
-    private List<ProcessSmsMessageTempDBModel>smsTemps;
+    private ProcessSmsMessageTempDBModel operationSmsTemp;
 
     public ApiOperationSmsTempWSDTO() {
     }
 
-    public ApiOperationSmsTempWSDTO(ApiSmsAccountWSDTO smsAccount, List<ProcessSmsMessageTempDBModel> smsTemps) {
-        this.smsAccount = smsAccount;
-        this.smsTemps = smsTemps;
+    public ApiOperationSmsTempWSDTO(ProcessSmsMessageTempDBModel operationSmsTemp) {
+        this.operationSmsTemp = operationSmsTemp;
     }
 
-    public ApiSmsAccountWSDTO getSmsAccount() {
-        return smsAccount;
+    public ProcessSmsMessageTempDBModel getOperationSmsTemp() {
+        return operationSmsTemp;
     }
 
-    public void setSmsAccount(ApiSmsAccountWSDTO smsAccount) {
-        this.smsAccount = smsAccount;
-    }
-
-    public List<ProcessSmsMessageTempDBModel> getSmsTemps() {
-        return smsTemps;
-    }
-
-    public void setSmsTemps(List<ProcessSmsMessageTempDBModel> smsTemps) {
-        this.smsTemps = smsTemps;
+    public void setOperationSmsTemp(ProcessSmsMessageTempDBModel operationSmsTemp) {
+        this.operationSmsTemp = operationSmsTemp;
     }
 }

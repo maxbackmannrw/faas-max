@@ -1,9 +1,7 @@
 package com.faas.core.api.endpoint.controller.operation.details.channel.call.content;
 
 import com.faas.core.api.middleware.operation.details.channel.call.content.ApiOperationCallChannelMiddleware;
-import com.faas.core.api.middleware.operation.details.channel.message.content.ApiOperationMessageChannelMiddleware;
 import com.faas.core.api.model.ws.operation.details.channel.call.content.ApiOperationCallChannelWSModel;
-import com.faas.core.api.model.ws.operation.details.channel.message.content.ApiOperationMessageChannelWSModel;
 import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
