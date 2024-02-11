@@ -65,7 +65,6 @@ public class ApiOperationSmsChannelFramework {
 
     public ApiOperationSmsChannelWSDTO apiGetOperationSmsChannelService(long agentId,String operationId) {
 
-
         return null;
     }
 
@@ -108,9 +107,9 @@ public class ApiOperationSmsChannelFramework {
     public List<ApiOperationSmsTempWSDTO> apiGetOperationSmsTempsService(long agentId,String operationId) {
 
         List<ApiOperationSmsTempWSDTO>smsTempWSDTOS = new ArrayList<>();
-        List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
-        if (!operationDBModels.isEmpty()){
-            List<ProcessSmsMessageTempDBModel> smsMessageTempDBModels = processSmsMessageTempRepository.findByProcessId(operationDBModels.get(0).getId());
+        List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
+        if (!sessionDBModels.isEmpty()){
+            List<ProcessSmsMessageTempDBModel> smsMessageTempDBModels = processSmsMessageTempRepository.findByProcessId(sessionDBModels.get(0).getProcessId());
             for (ProcessSmsMessageTempDBModel smsMessageTempDBModel : smsMessageTempDBModels) {
                 smsTempWSDTOS.add(new ApiOperationSmsTempWSDTO(smsMessageTempDBModel));
             }
@@ -121,11 +120,11 @@ public class ApiOperationSmsChannelFramework {
 
     public ApiOperationSmsTempWSDTO apiGetOperationSmsTempService(long agentId,String operationId,String smsTempId) {
 
-        List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
-        if (!operationDBModels.isEmpty()){
-            List<ProcessSmsMessageTempDBModel> smsMessageTempDBModels = processSmsMessageTempRepository.findByIdAndProcessId(smsTempId,operationDBModels.get(0).getProcessId());
-            if (!smsMessageTempDBModels.isEmpty()){
-                return new ApiOperationSmsTempWSDTO(smsMessageTempDBModels.get(0));
+        List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
+        if (!sessionDBModels.isEmpty()){
+            List<ProcessSmsMessageTempDBModel> operationSmsTemps = processSmsMessageTempRepository.findByIdAndProcessId(smsTempId,sessionDBModels.get(0).getProcessId());
+            if (!operationSmsTemps.isEmpty()){
+                return new ApiOperationSmsTempWSDTO(operationSmsTemps.get(0));
             }
         }
         return null;

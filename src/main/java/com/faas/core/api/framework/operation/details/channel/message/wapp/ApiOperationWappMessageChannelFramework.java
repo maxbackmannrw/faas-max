@@ -1,14 +1,10 @@
 package com.faas.core.api.framework.operation.details.channel.message.wapp;
 
-import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiWappCallAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.ApiOperationWappMessageChannelWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.ApiOperationWappMessageTempWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.ApiOperationWappMessageWSDTO;
-import com.faas.core.base.model.db.operation.details.channel.OperationWappMessageDBModel;
-import com.faas.core.base.model.db.process.details.channel.content.ProcessWappChannelDBModel;
 import com.faas.core.base.model.db.process.details.channel.temp.ProcessWappMessageTempDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
-import com.faas.core.base.model.db.user.details.UserDetailsDBModel;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.operation.details.channel.OperationWappMessageRepository;
 import com.faas.core.base.repo.process.details.channel.content.ProcessWappChannelRepository;
@@ -16,7 +12,6 @@ import com.faas.core.base.repo.process.details.channel.temp.ProcessWappMessageTe
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.base.repo.user.details.UserDetailsRepository;
 import com.faas.core.rest.service.channel.wapp.WappRestService;
-import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.ChannelHelper;
 import com.faas.core.utils.helpers.OperationHelper;
@@ -106,14 +101,27 @@ public class ApiOperationWappMessageChannelFramework {
 
     public List<ApiOperationWappMessageTempWSDTO> apiGetOperationWappMessageTempsService(long agentId,String operationId){
 
-
-        return null;
+        List<ApiOperationWappMessageTempWSDTO> operationWappTemps = new ArrayList<>();
+        List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
+        if (!sessionDBModels.isEmpty()){
+            List<ProcessWappMessageTempDBModel>operationWappMessageTemps =  processWappMessageTempRepository.findByProcessId(sessionDBModels.get(0).getProcessId());
+            for (ProcessWappMessageTempDBModel operationWappMessageTemp : operationWappMessageTemps) {
+                operationWappTemps.add(new ApiOperationWappMessageTempWSDTO(operationWappMessageTemp));
+            }
+        }
+        return operationWappTemps;
     }
 
 
     public ApiOperationWappMessageTempWSDTO apiGetOperationWappMessageTempService(long agentId,String operationId,String messageTempId){
 
-
+        List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
+        if (!sessionDBModels.isEmpty()){
+            List<ProcessWappMessageTempDBModel>operationWappMessageTemps =  processWappMessageTempRepository.findByIdAndProcessId(messageTempId,sessionDBModels.get(0).getProcessId());
+           if (!operationWappMessageTemps.isEmpty()){
+               return new ApiOperationWappMessageTempWSDTO(operationWappMessageTemps.get(0));
+           }
+        }
         return null;
     }
 

@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/details/channel/message/sms/ApiOperationSmsChannelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/details/channel/message/sms/ApiOperationSmsChannelController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/channel/message/sms/ApiOperationSmsChannelFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/channel/message/sms/ApiOperationSmsChannelFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/channel/message/wapp/ApiOperationWappMessageChannelFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/channel/message/wapp/ApiOperationWappMessageChannelFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/details/channel/message/wapp/ApiOperationWappMessageTempWSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/details/channel/message/wapp/ApiOperationWappMessageTempWSModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/details/channel/message/wapp/dto/ApiOperationWappMessageTempWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/details/channel/message/wapp/dto/ApiOperationWappMessageTempWSDTO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -723,23 +726,7 @@
       <workItem from="1707593482289" duration="370000" />
       <workItem from="1707608033175" duration="226000" />
       <workItem from="1707645637832" duration="774000" />
-      <workItem from="1707650786130" duration="2198000" />
-    </task>
-    <task id="LOCAL-00609" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1705426198507</created>
-      <option name="number" value="00609" />
-      <option name="presentableId" value="LOCAL-00609" />
-      <option name="project" value="LOCAL" />
-      <updated>1705426198508</updated>
-    </task>
-    <task id="LOCAL-00610" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1705498312535</created>
-      <option name="number" value="00610" />
-      <option name="presentableId" value="LOCAL-00610" />
-      <option name="project" value="LOCAL" />
-      <updated>1705498312535</updated>
+      <workItem from="1707650786130" duration="4239000" />
     </task>
     <task id="LOCAL-00611" summary="almost finish">
       <option name="closed" value="true" />
@@ -1117,7 +1104,23 @@
       <option name="project" value="LOCAL" />
       <updated>1707660609484</updated>
     </task>
-    <option name="localTasksCounter" value="658" />
+    <task id="LOCAL-00658" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1707661082296</created>
+      <option name="number" value="00658" />
+      <option name="presentableId" value="LOCAL-00658" />
+      <option name="project" value="LOCAL" />
+      <updated>1707661082296</updated>
+    </task>
+    <task id="LOCAL-00659" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1707661278785</created>
+      <option name="number" value="00659" />
+      <option name="presentableId" value="LOCAL-00659" />
+      <option name="project" value="LOCAL" />
+      <updated>1707661278786</updated>
+    </task>
+    <option name="localTasksCounter" value="660" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
