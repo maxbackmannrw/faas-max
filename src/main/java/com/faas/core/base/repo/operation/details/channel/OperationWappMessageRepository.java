@@ -11,6 +11,7 @@ public interface OperationWappMessageRepository extends MongoRepository<Operatio
 
     List<OperationWappMessageDBModel>findBySessionId(long sessionId);
     List<OperationWappMessageDBModel>findByOperationId(String operationId);
+    List<OperationWappMessageDBModel>findByOperationIdAndAgentId(String operationId,long agentId);
     List<OperationWappMessageDBModel>findByIdAndSessionId(String messageId, long sessionId);
     List<OperationWappMessageDBModel>findByIdAndOperationId(String messageId, String operationId);
     List<OperationWappMessageDBModel>findBySessionIdAndClientIdAndProcessId(long sessionId, long clientId, String processId);

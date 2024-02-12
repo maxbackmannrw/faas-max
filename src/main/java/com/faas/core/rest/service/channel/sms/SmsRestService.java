@@ -81,7 +81,6 @@ public class SmsRestService {
             }
         }
         operationSmsMessageDBModel.getSmsMessage().setSmsBody(smsMessageBody);
-        operationSmsMessageDBModel.setMessageState(AppConstant.MESSAGE_SENDING);
         operationSmsMessageDBModel.setuDate(appUtils.getCurrentTimeStamp());
 
         return operationSmsMessageRepository.save(operationSmsMessageDBModel);

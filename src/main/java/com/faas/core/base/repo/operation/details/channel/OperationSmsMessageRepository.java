@@ -11,6 +11,7 @@ public interface OperationSmsMessageRepository extends MongoRepository<Operation
 
     List<OperationSmsMessageDBModel>findBySessionId(long sessionId);
     List<OperationSmsMessageDBModel>findByOperationId(String operationId);
+    List<OperationSmsMessageDBModel>findByOperationIdAndAgentId(String operationId,long agentId);
     List<OperationSmsMessageDBModel>findBySessionIdAndClientIdAndProcessId(long sessionId, long clientId, String processId);
     List<OperationSmsMessageDBModel>findBySessionIdAndCampaignIdAndProcessId(long sessionId, String campaignId, String processId);
     List<OperationSmsMessageDBModel>findByIdAndSessionIdAndClientIdAndProcessId(String smsId, long sessionId, long clientId, String processId);

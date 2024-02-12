@@ -19,8 +19,8 @@ public class OperationSmsMessageDBModel {
     private String campaignId;
     private String processId;
     private OperationSmsMessageDAO smsMessage;
-    private String messageSentId;
-    private String messageState;
+    private String smsSentId;
+    private String smsState;
     private long uDate;
     private long cDate;
     private int status;
@@ -28,7 +28,7 @@ public class OperationSmsMessageDBModel {
     public OperationSmsMessageDBModel() {
     }
 
-    public OperationSmsMessageDBModel(String id, String operationId, long sessionId, long clientId, String numberId, String phoneNumber, long agentId, String campaignId, String processId, OperationSmsMessageDAO smsMessage, String messageSentId, String messageState, long uDate, long cDate, int status) {
+    public OperationSmsMessageDBModel(String id, String operationId, long sessionId, long clientId, String numberId, String phoneNumber, long agentId, String campaignId, String processId, OperationSmsMessageDAO smsMessage, String smsSentId, String smsState, long uDate, long cDate, int status) {
         this.id = id;
         this.operationId = operationId;
         this.sessionId = sessionId;
@@ -39,8 +39,8 @@ public class OperationSmsMessageDBModel {
         this.campaignId = campaignId;
         this.processId = processId;
         this.smsMessage = smsMessage;
-        this.messageSentId = messageSentId;
-        this.messageState = messageState;
+        this.smsSentId = smsSentId;
+        this.smsState = smsState;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
@@ -126,20 +126,20 @@ public class OperationSmsMessageDBModel {
         this.smsMessage = smsMessage;
     }
 
-    public String getMessageSentId() {
-        return messageSentId;
+    public String getSmsSentId() {
+        return smsSentId;
     }
 
-    public void setMessageSentId(String messageSentId) {
-        this.messageSentId = messageSentId;
+    public void setSmsSentId(String smsSentId) {
+        this.smsSentId = smsSentId;
     }
 
-    public String getMessageState() {
-        return messageState;
+    public String getSmsState() {
+        return smsState;
     }
 
-    public void setMessageState(String messageState) {
-        this.messageState = messageState;
+    public void setSmsState(String smsState) {
+        this.smsState = smsState;
     }
 
     public long getuDate() {

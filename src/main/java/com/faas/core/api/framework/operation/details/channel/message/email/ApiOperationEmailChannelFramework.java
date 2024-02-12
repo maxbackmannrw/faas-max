@@ -7,6 +7,8 @@ import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.client.details.ClientDetailsRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
+import com.faas.core.base.repo.operation.details.channel.OperationEmailMessageRepository;
+import com.faas.core.base.repo.process.details.channel.content.ProcessEmailChannelRepository;
 import com.faas.core.base.repo.process.details.channel.temp.ProcessEmailTempRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utils.config.AppUtils;
@@ -19,6 +21,7 @@ import java.util.List;
 
 @Component
 public class ApiOperationEmailChannelFramework {
+
 
     @Autowired
     ChannelHelper channelHelper;
@@ -39,37 +42,40 @@ public class ApiOperationEmailChannelFramework {
     ProcessEmailTempRepository processEmailTempRepository;
 
     @Autowired
+    ProcessEmailChannelRepository processEmailChannelRepository;
+
+    @Autowired
+    OperationEmailMessageRepository operationEmailMessageRepository;
+
+    @Autowired
     AppUtils appUtils;
 
 
-    public ApiOperationEmailWSDTO apiGetEmailMessagesService() {
+    public List<ApiOperationEmailWSDTO> apiGetOperationEmailsService(long agentId,String operationId) {
 
         return null;
     }
 
-
-    public ApiOperationEmailWSDTO apiGetEmailMessageService() {
-
-        return null;
-    }
-
-
-    public ApiOperationEmailWSDTO apiSendEmailMessageService() {
+    public ApiOperationEmailWSDTO apiGetOperationEmailService(long agentId,String operationId,String emailId) {
 
         return null;
     }
 
+    public ApiOperationEmailWSDTO apiSendOperationEmailService() {
 
-    public ApiOperationEmailWSDTO apiUpdateEmailMessageService() {
+        return null;
+    }
+
+    public ApiOperationEmailWSDTO apiUpdateOperationEmailService(long agentId,String operationId,String emailId,String emailState) {
 
         return null;
     }
 
-
-    public ApiOperationEmailWSDTO apiRemoveEmailMessageService() {
+    public ApiOperationEmailWSDTO apiRemoveOperationEmailService(long agentId,String operationId,String emailId) {
 
         return null;
     }
+
 
 
     public ApiOperationEmailTempWSDTO apiGetOperationEmailTempsService(long agentId,String operationId) {

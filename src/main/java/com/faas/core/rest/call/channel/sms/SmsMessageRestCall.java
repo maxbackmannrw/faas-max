@@ -41,9 +41,7 @@ public class SmsMessageRestCall {
 
         String response = restCall.sendPostFormRequest(requestUrl,formData);
         if (response != null){
-            operationSmsMessageDBModel.setMessageState(AppConstant.MESSAGE_SENT);
         }else {
-            operationSmsMessageDBModel.setMessageState(AppConstant.MESSAGE_FAILED);
         }
         operationSmsMessageDBModel.setuDate(appUtils.getCurrentTimeStamp());
         operationSmsMessageRepository.save(operationSmsMessageDBModel);

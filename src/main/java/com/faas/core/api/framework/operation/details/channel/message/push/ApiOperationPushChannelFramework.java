@@ -65,12 +65,10 @@ public class ApiOperationPushChannelFramework {
         return null;
     }
 
-
     public ApiOperationPushWSDTO apiRemovePushMessageService() {
 
         return null;
     }
-
 
 
     public ApiOperationPushTempWSDTO apiGetOperationPushTempsService(long agentId,String operationId) {

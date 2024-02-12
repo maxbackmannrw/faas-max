@@ -38,9 +38,10 @@ public class ApiOperationEmailChannelController {
 
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_EMAIL, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationEmail(@RequestParam long agentId,
-                                                  @RequestParam String operationId) {
+                                                  @RequestParam String operationId,
+                                                  @RequestParam String emailId) {
 
-        ApiOperationEmailWSModel response = apiOperationEmailChannelMiddleware.apiGetOperationEmail(agentId,operationId);
+        ApiOperationEmailWSModel response = apiOperationEmailChannelMiddleware.apiGetOperationEmail(agentId,operationId,emailId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -67,9 +68,10 @@ public class ApiOperationEmailChannelController {
     @RequestMapping(value = ApiRoute.API_UPDATE_OPERATION_EMAIL, method = RequestMethod.POST)
     public ResponseEntity<?> apiUpdateOperationEmail(@RequestParam long agentId,
                                                      @RequestParam String operationId,
-                                                     @RequestParam String emailId) {
+                                                     @RequestParam String emailId,
+                                                     @RequestParam String emailState) {
 
-        ApiOperationEmailWSModel response = apiOperationEmailChannelMiddleware.apiUpdateOperationEmail(agentId,operationId,emailId);
+        ApiOperationEmailWSModel response = apiOperationEmailChannelMiddleware.apiUpdateOperationEmail(agentId,operationId,emailId,emailState);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
