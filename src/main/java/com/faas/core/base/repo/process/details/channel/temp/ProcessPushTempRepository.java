@@ -12,4 +12,6 @@ public interface ProcessPushTempRepository extends MongoRepository<ProcessPushTe
     List<ProcessPushTempDBModel> findByStatus(int status);
 
     List<ProcessPushTempDBModel> findByProcessId(String processId);
+
+    List<ProcessPushTempDBModel>findByIdAndProcessId(String pushTempId,String processId);
 }

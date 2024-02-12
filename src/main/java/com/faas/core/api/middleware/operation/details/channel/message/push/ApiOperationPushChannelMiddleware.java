@@ -4,6 +4,7 @@ import com.faas.core.api.framework.operation.details.channel.message.push.ApiOpe
 import com.faas.core.api.model.ws.operation.details.channel.message.push.ApiOperationPushChannelWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.ApiOperationPushTempWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.ApiOperationPushWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushTempWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -100,7 +101,10 @@ public class ApiOperationPushChannelMiddleware {
         ApiOperationPushTempWSModel response = new ApiOperationPushTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-
+        ApiOperationPushTempWSDTO pushTempWSDTO = apiOperationPushChannelFramework.apiGetOperationPushTempsService(agentId,operationId);
+        if (pushTempWSDTO != null){
+            response.setPushTemp(pushTempWSDTO);
+        }
 
         general.setOperation("apiGetOperationPushTemps");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -116,6 +120,10 @@ public class ApiOperationPushChannelMiddleware {
         ApiOperationPushTempWSModel response = new ApiOperationPushTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
+        ApiOperationPushTempWSDTO pushTempWSDTO = apiOperationPushChannelFramework.apiGetOperationPushTempService(agentId,operationId,pushTempId);
+        if (pushTempWSDTO != null){
+            response.setPushTemp(pushTempWSDTO);
+        }
 
         general.setOperation("apiGetOperationPushTemp");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
