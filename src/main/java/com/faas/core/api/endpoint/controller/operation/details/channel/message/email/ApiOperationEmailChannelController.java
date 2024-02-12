@@ -3,7 +3,6 @@ package com.faas.core.api.endpoint.controller.operation.details.channel.message.
 import com.faas.core.api.middleware.operation.details.channel.message.email.ApiOperationEmailChannelMiddleware;
 import com.faas.core.api.model.ws.operation.details.channel.message.email.ApiOperationEmailTempWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.email.ApiOperationEmailWSModel;
-import com.faas.core.api.model.ws.operation.details.channel.message.email.ApiOperationEmailChannelWSModel;
 import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +22,7 @@ public class ApiOperationEmailChannelController {
     @Autowired
     ApiOperationEmailChannelMiddleware apiOperationEmailChannelMiddleware;
 
+
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_EMAILS, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationEmails(@RequestParam long agentId,
                                                    @RequestParam String operationId) {
@@ -34,7 +34,6 @@ public class ApiOperationEmailChannelController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_EMAIL, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationEmail(@RequestParam long agentId,
@@ -48,7 +47,6 @@ public class ApiOperationEmailChannelController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = ApiRoute.API_SEND_OPERATION_EMAIL, method = RequestMethod.POST)
     public ResponseEntity<?> apiSendOperationEmail(@RequestParam long agentId,
@@ -64,7 +62,6 @@ public class ApiOperationEmailChannelController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = ApiRoute.API_UPDATE_OPERATION_EMAIL, method = RequestMethod.POST)
     public ResponseEntity<?> apiUpdateOperationEmail(@RequestParam long agentId,
                                                      @RequestParam String operationId,
@@ -78,7 +75,6 @@ public class ApiOperationEmailChannelController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = ApiRoute.API_REMOVE_OPERATION_EMAIL, method = RequestMethod.POST)
     public ResponseEntity<?> apiRemoveOperationEmail(@RequestParam long agentId,
@@ -114,6 +110,32 @@ public class ApiOperationEmailChannelController {
                                                       @RequestParam String emailTempId) {
 
         ApiOperationEmailTempWSModel response = apiOperationEmailChannelMiddleware.apiGetOperationEmailTemp(agentId,operationId,emailTempId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_EMAIL_ACCOUNTS, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationEmailAccounts(@RequestParam long agentId,
+                                                       @RequestParam String operationId) {
+
+        ApiOperationEmailTempWSModel response = apiOperationEmailChannelMiddleware.apiGetOperationEmailTemps(agentId,operationId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_EMAIL_ACCOUNT, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationEmailAccount(@RequestParam long agentId,
+                                                          @RequestParam String operationId) {
+
+        ApiOperationEmailTempWSModel response = apiOperationEmailChannelMiddleware.apiGetOperationEmailTemps(agentId,operationId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

@@ -119,4 +119,32 @@ public class ApiOperationPushChannelController {
 
 
 
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_PUSH_ACCOUNTS, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationPushAccounts(@RequestParam long agentId,
+                                                     @RequestParam String operationId,
+                                                     @RequestParam String pushTempId) {
+
+        ApiOperationPushTempWSModel response = apiOperationPushChannelMiddleware.apiGetOperationPushTemp(agentId,operationId,pushTempId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_PUSH_ACCOUNT, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationPushAccount(@RequestParam long agentId,
+                                                         @RequestParam String operationId,
+                                                         @RequestParam String pushTempId) {
+
+        ApiOperationPushTempWSModel response = apiOperationPushChannelMiddleware.apiGetOperationPushTemp(agentId,operationId,pushTempId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+
 }

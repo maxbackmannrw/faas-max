@@ -1,7 +1,6 @@
 package com.faas.core.api.endpoint.controller.operation.details.channel.message.wapp;
 
 import com.faas.core.api.middleware.operation.details.channel.message.wapp.ApiOperationWappMessageChannelMiddleware;
-import com.faas.core.api.model.ws.operation.details.channel.message.wapp.ApiOperationWappMessageChannelWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.wapp.ApiOperationWappMessageTempWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.wapp.ApiOperationWappMessageWSModel;
 import com.faas.core.utils.config.ApiRoute;
@@ -38,7 +37,6 @@ public class ApiOperationWappMessageChannelController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_WAPP_MESSAGE, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationWappMessage(@RequestParam long agentId,
                                                         @RequestParam String operationId,
@@ -51,7 +49,6 @@ public class ApiOperationWappMessageChannelController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = ApiRoute.API_SEND_OPERATION_WAPP_MESSAGE, method = RequestMethod.POST)
     public ResponseEntity<?> apiSendOperationWappMessage(@RequestParam long agentId,
@@ -67,7 +64,6 @@ public class ApiOperationWappMessageChannelController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = ApiRoute.API_UPDATE_OPERATION_WAPP_MESSAGE, method = RequestMethod.POST)
     public ResponseEntity<?> apiUpdateOperationWappMessage(@RequestParam long agentId,
                                                            @RequestParam String operationId,
@@ -81,7 +77,6 @@ public class ApiOperationWappMessageChannelController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = ApiRoute.API_REMOVE_OPERATION_WAPP_MESSAGE, method = RequestMethod.POST)
     public ResponseEntity<?> apiRemoveOperationWappMessage(@RequestParam long agentId,
@@ -115,6 +110,33 @@ public class ApiOperationWappMessageChannelController {
     public ResponseEntity<?> apiGetOperationWappMessageTemp(@RequestParam long agentId,
                                                             @RequestParam String operationId,
                                                             @RequestParam String messageTempId) {
+
+        ApiOperationWappMessageTempWSModel response = apiOperationWappMessageChannelMiddleware.apiGetOperationWappMessageTemp(agentId,operationId,messageTempId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_WAPP_MESSAGE_ACCOUNTS, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationWappMessageAccounts(@RequestParam long agentId,
+                                                            @RequestParam String operationId,
+                                                            @RequestParam String messageTempId) {
+
+        ApiOperationWappMessageTempWSModel response = apiOperationWappMessageChannelMiddleware.apiGetOperationWappMessageTemp(agentId,operationId,messageTempId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_WAPP_MESSAGE_ACCOUNT, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationWappMessageAccount(@RequestParam long agentId,
+                                                                @RequestParam String operationId,
+                                                                @RequestParam String messageTempId) {
 
         ApiOperationWappMessageTempWSModel response = apiOperationWappMessageChannelMiddleware.apiGetOperationWappMessageTemp(agentId,operationId,messageTempId);
 

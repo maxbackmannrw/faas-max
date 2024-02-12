@@ -130,7 +130,6 @@ public class ApiRoute {
     public static final String API_REMOVE_OPERATION_WAPP_CALL = "apiremoveoperationwappcall";
 
 
-
     public static final String API_GET_OPERATION_MESSAGE_CHANNEL = "apigetoperationmessagechannel";
     public static final String API_GET_OPERATION_SMS_CHANNEL = "apigetoperationsmschannel";
     public static final String API_GET_OPERATION_EMAIL_CHANNEL = "apigetoperationemailchannel";
@@ -145,14 +144,19 @@ public class ApiRoute {
     public static final String API_REMOVE_OPERATION_SMS = "apiremoveoperationsms";
     public static final String API_GET_OPERATION_SMS_TEMPS = "apigetoperationsmstemps";
     public static final String API_GET_OPERATION_SMS_TEMP = "apigetoperationsmstemp";
+    public static final String API_GET_OPERATION_SMS_ACCOUNTS = "apigetoperationsmsaccounts";
+    public static final String API_GET_OPERATION_SMS_ACCOUNT = "apigetoperationsmsaccount";
+
 
     public static final String API_GET_OPERATION_WAPP_MESSAGES = "apigetoperationwappmessages";
     public static final String API_GET_OPERATION_WAPP_MESSAGE = "apigetoperationwappmessage";
     public static final String API_SEND_OPERATION_WAPP_MESSAGE = "apisendoperationwappmessage";
     public static final String API_UPDATE_OPERATION_WAPP_MESSAGE = "apiupdateoperationwappmessage";
     public static final String API_REMOVE_OPERATION_WAPP_MESSAGE = "apiremoveoperationwappmessage";
-    public static final String API_GET_OPERATION_WAPP_MESSAGE_TEMPS = "apigetoperatiowappmessagetemps";
-    public static final String API_GET_OPERATION_WAPP_MESSAGE_TEMP = "apigetoperatiowappmessagetemp";
+    public static final String API_GET_OPERATION_WAPP_MESSAGE_TEMPS = "apigetoperationwappmessagetemps";
+    public static final String API_GET_OPERATION_WAPP_MESSAGE_TEMP = "apigetoperationwappmessagetemp";
+    public static final String API_GET_OPERATION_WAPP_MESSAGE_ACCOUNTS = "apigetoperationwappmessageaccounts";
+    public static final String API_GET_OPERATION_WAPP_MESSAGE_ACCOUNT = "apigetoperationwappmessageaccount";
 
 
     public static final String API_GET_OPERATION_EMAILS = "apigetoperationemails";
@@ -162,6 +166,8 @@ public class ApiRoute {
     public static final String API_REMOVE_OPERATION_EMAIL = "apiremoveoperationemail";
     public static final String API_GET_OPERATION_EMAIL_TEMPS = "apigetoperationemailtemps";
     public static final String API_GET_OPERATION_EMAIL_TEMP = "apigetoperationemailtemp";
+    public static final String API_GET_OPERATION_EMAIL_ACCOUNTS = "apigetoperationemailaccounts";
+    public static final String API_GET_OPERATION_EMAIL_ACCOUNT = "apigetoperationemailaccount";
 
 
     public static final String API_GET_OPERATION_PUSHES = "apigetoperationpushes";
@@ -171,7 +177,8 @@ public class ApiRoute {
     public static final String API_REMOVE_OPERATION_PUSH = "apiremoveoperationpush";
     public static final String API_GET_OPERATION_PUSH_TEMPS = "apigetoperationpushtemps";
     public static final String API_GET_OPERATION_PUSH_TEMP = "apigetoperationpushtemp";
-
+    public static final String API_GET_OPERATION_PUSH_ACCOUNTS = "apigetoperationpushaccounts";
+    public static final String API_GET_OPERATION_PUSH_ACCOUNT = "apigetoperationpushaccount";
 
 
 }
