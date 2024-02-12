@@ -11,6 +11,7 @@ public interface OperationEmailMessageRepository extends MongoRepository<Operati
 
     List<OperationEmailMessageDBModel>findBySessionId(long sessionId);
     List<OperationEmailMessageDBModel>findByOperationId(String operationId);
+    List<OperationEmailMessageDBModel>findByOperationIdAndAgentId(String operationId,long agentId);
     List<OperationEmailMessageDBModel>findByClientId(long clientId);
     List<OperationEmailMessageDBModel>findByIdAndSessionId(String emailId, long sessionId);
     List<OperationEmailMessageDBModel>findByIdAndOperationId(String emailId, String operationId);

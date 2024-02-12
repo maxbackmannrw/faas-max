@@ -3,6 +3,7 @@ package com.faas.core.api.framework.operation.details.channel.message.email;
 import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiOperationEmailTempWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiOperationEmailWSDTO;
 import com.faas.core.base.model.db.client.details.content.ClientDetailsDBModel;
+import com.faas.core.base.model.db.operation.details.channel.OperationEmailMessageDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.client.details.ClientDetailsRepository;
@@ -16,6 +17,7 @@ import com.faas.core.utils.helpers.ChannelHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -53,26 +55,46 @@ public class ApiOperationEmailChannelFramework {
 
     public List<ApiOperationEmailWSDTO> apiGetOperationEmailsService(long agentId,String operationId) {
 
-        return null;
+        List<ApiOperationEmailWSDTO>operationEmailWSDTOS = new ArrayList<>();
+        List<OperationEmailMessageDBModel> operationEmailMessages = operationEmailMessageRepository.findByOperationIdAndAgentId(operationId,agentId);
+        for (OperationEmailMessageDBModel operationEmailMessage : operationEmailMessages) {
+            operationEmailWSDTOS.add(new ApiOperationEmailWSDTO(operationEmailMessage));
+        }
+        return operationEmailWSDTOS;
     }
 
     public ApiOperationEmailWSDTO apiGetOperationEmailService(long agentId,String operationId,String emailId) {
 
+        List<OperationEmailMessageDBModel> operationEmailMessages = operationEmailMessageRepository.findByIdAndOperationId(emailId,operationId);
+        if (!operationEmailMessages.isEmpty()){
+            return new ApiOperationEmailWSDTO(operationEmailMessages.get(0));
+        }
         return null;
     }
 
-    public ApiOperationEmailWSDTO apiSendOperationEmailService() {
+    public ApiOperationEmailWSDTO apiSendOperationEmailService(long agentId, String operationId,String emailTempId,String emailAddressId) {
 
         return null;
     }
 
     public ApiOperationEmailWSDTO apiUpdateOperationEmailService(long agentId,String operationId,String emailId,String emailState) {
 
+        List<OperationEmailMessageDBModel> operationEmailMessages = operationEmailMessageRepository.findByIdAndOperationId(emailId,operationId);
+        if (!operationEmailMessages.isEmpty()){
+            operationEmailMessages.get(0).setEmailState(emailState);
+            operationEmailMessages.get(0).setuDate(appUtils.getCurrentTimeStamp());
+            return new ApiOperationEmailWSDTO(operationEmailMessageRepository.save(operationEmailMessages.get(0)));
+        }
         return null;
     }
 
     public ApiOperationEmailWSDTO apiRemoveOperationEmailService(long agentId,String operationId,String emailId) {
 
+        List<OperationEmailMessageDBModel> operationEmailMessages = operationEmailMessageRepository.findByIdAndOperationId(emailId,operationId);
+        if (!operationEmailMessages.isEmpty()){
+            operationEmailMessageRepository.delete(operationEmailMessages.get(0));
+            return new ApiOperationEmailWSDTO(operationEmailMessages.get(0));
+        }
         return null;
     }
 

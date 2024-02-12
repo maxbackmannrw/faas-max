@@ -41,7 +41,6 @@ public class ApiOperationEmailChannelMiddleware {
         return response;
     }
 
-
     public ApiOperationEmailWSModel apiGetOperationEmail(long agentId,String operationId,String emailId) {
 
         ApiOperationEmailWSModel response = new ApiOperationEmailWSModel();
@@ -63,13 +62,16 @@ public class ApiOperationEmailChannelMiddleware {
         return response;
     }
 
-
     public ApiOperationEmailWSModel apiSendOperationEmail(long agentId, String operationId,String emailTempId,String emailAddressId) {
 
         ApiOperationEmailWSModel response = new ApiOperationEmailWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ApiOperationEmailWSDTO> operationEmailWSDTOS = new ArrayList<>();
 
+        ApiOperationEmailWSDTO operationEmailWSDTO =  apiOperationEmailChannelFramework.apiSendOperationEmailService(agentId,operationId,emailTempId,emailAddressId);
+        if (operationEmailWSDTO != null){
+            operationEmailWSDTOS.add(operationEmailWSDTO);
+        }
 
         response.setOperationEmails(operationEmailWSDTOS);
         general.setOperation("apiSendOperationEmail");
@@ -80,7 +82,6 @@ public class ApiOperationEmailChannelMiddleware {
 
         return response;
     }
-
 
     public ApiOperationEmailWSModel apiUpdateOperationEmail(long agentId,String operationId,String emailId,String emailState) {
 
@@ -102,7 +103,6 @@ public class ApiOperationEmailChannelMiddleware {
 
         return response;
     }
-
 
     public ApiOperationEmailWSModel apiRemoveOperationEmail(long agentId,String operationId,String emailId) {
 
@@ -126,6 +126,7 @@ public class ApiOperationEmailChannelMiddleware {
     }
 
 
+
     public ApiOperationEmailTempWSModel apiGetOperationEmailTemps(long agentId,String operationId) {
 
         ApiOperationEmailTempWSModel response = new ApiOperationEmailTempWSModel();
@@ -144,7 +145,6 @@ public class ApiOperationEmailChannelMiddleware {
 
         return response;
     }
-
 
     public ApiOperationEmailTempWSModel apiGetOperationEmailTemp(long agentId,String operationId,String emailTempId) {
 
