@@ -9,14 +9,14 @@ import java.util.List;
 public class ApiOperationEmailChannelWSDTO {
 
     private List<ClientEmailDAO> clientEmails;
-    private ApiEmailAccountWSDTO emailAccount;
+    private ApiOperationEmailAccountWSDTO emailAccount;
     private List<OperationEmailMessageDBModel> operationEmails;
     private List<ProcessEmailTempDBModel>operationEmailTemps;
 
     public ApiOperationEmailChannelWSDTO() {
     }
 
-    public ApiOperationEmailChannelWSDTO(List<ClientEmailDAO> clientEmails, ApiEmailAccountWSDTO emailAccount, List<OperationEmailMessageDBModel> operationEmails, List<ProcessEmailTempDBModel> operationEmailTemps) {
+    public ApiOperationEmailChannelWSDTO(List<ClientEmailDAO> clientEmails, ApiOperationEmailAccountWSDTO emailAccount, List<OperationEmailMessageDBModel> operationEmails, List<ProcessEmailTempDBModel> operationEmailTemps) {
         this.clientEmails = clientEmails;
         this.emailAccount = emailAccount;
         this.operationEmails = operationEmails;
@@ -31,11 +31,11 @@ public class ApiOperationEmailChannelWSDTO {
         this.clientEmails = clientEmails;
     }
 
-    public ApiEmailAccountWSDTO getEmailAccount() {
+    public ApiOperationEmailAccountWSDTO getEmailAccount() {
         return emailAccount;
     }
 
-    public void setEmailAccount(ApiEmailAccountWSDTO emailAccount) {
+    public void setEmailAccount(ApiOperationEmailAccountWSDTO emailAccount) {
         this.emailAccount = emailAccount;
     }
 

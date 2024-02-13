@@ -1,6 +1,7 @@
 package com.faas.core.api.endpoint.controller.operation.details.channel.message.sms;
 
 import com.faas.core.api.middleware.operation.details.channel.message.sms.ApiOperationSmsChannelMiddleware;
+import com.faas.core.api.model.ws.operation.details.channel.message.sms.ApiOperationSmsAccountWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.sms.ApiOperationSmsTempWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.sms.ApiOperationSmsWSModel;
 import com.faas.core.utils.config.ApiRoute;
@@ -119,31 +120,18 @@ public class ApiOperationSmsChannelController {
     }
 
 
-
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION_SMS_ACCOUNTS, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperationSmsAccounts(@RequestParam long agentId,
-                                                    @RequestParam String operationId,
-                                                    @RequestParam String smsTempId) {
-
-        ApiOperationSmsTempWSModel response = apiOperationSmsChannelMiddleware.apiGetOperationSmsTemp(agentId,operationId,smsTempId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_SMS_ACCOUNT, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationSmsAccount(@RequestParam long agentId,
-                                                        @RequestParam String operationId,
-                                                        @RequestParam String smsTempId) {
+                                                       @RequestParam String operationId) {
 
-        ApiOperationSmsTempWSModel response = apiOperationSmsChannelMiddleware.apiGetOperationSmsTemp(agentId,operationId,smsTempId);
+        ApiOperationSmsAccountWSModel response = apiOperationSmsChannelMiddleware.apiGetOperationSmsAccount(agentId,operationId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
+
+
 
 }

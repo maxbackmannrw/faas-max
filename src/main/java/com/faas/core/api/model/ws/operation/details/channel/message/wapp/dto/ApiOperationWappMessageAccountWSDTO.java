@@ -4,7 +4,7 @@ import com.faas.core.base.model.db.channel.account.dao.AccountDataDAO;
 
 import java.util.List;
 
-public class ApiWappMessageAccountWSDTO {
+public class ApiOperationWappMessageAccountWSDTO {
 
     private String accountId;
     private String account;
@@ -17,10 +17,10 @@ public class ApiWappMessageAccountWSDTO {
     private long cDate;
     private int status;
 
-    public ApiWappMessageAccountWSDTO() {
+    public ApiOperationWappMessageAccountWSDTO() {
     }
 
-    public ApiWappMessageAccountWSDTO(String accountId, String account, String instanceKey, String phoneNumber, String serverUrl, List<AccountDataDAO> accountDatas, String callState, String messageState, long cDate, int status) {
+    public ApiOperationWappMessageAccountWSDTO(String accountId, String account, String instanceKey, String phoneNumber, String serverUrl, List<AccountDataDAO> accountDatas, String callState, String messageState, long cDate, int status) {
         this.accountId = accountId;
         this.account = account;
         this.instanceKey = instanceKey;

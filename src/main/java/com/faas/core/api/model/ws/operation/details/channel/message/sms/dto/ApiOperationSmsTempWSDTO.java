@@ -8,13 +8,13 @@ import java.util.List;
 public class ApiOperationSmsTempWSDTO {
 
     private List<ClientPhoneDAO> clientPhones;
-    private ApiSmsAccountWSDTO smsAccount;
+    private ApiOperationSmsAccountWSDTO smsAccount;
     private List<ProcessSmsMessageTempDBModel>operationSmsTemps;
 
     public ApiOperationSmsTempWSDTO() {
     }
 
-    public ApiOperationSmsTempWSDTO(List<ClientPhoneDAO> clientPhones, ApiSmsAccountWSDTO smsAccount, List<ProcessSmsMessageTempDBModel> operationSmsTemps) {
+    public ApiOperationSmsTempWSDTO(List<ClientPhoneDAO> clientPhones, ApiOperationSmsAccountWSDTO smsAccount, List<ProcessSmsMessageTempDBModel> operationSmsTemps) {
         this.clientPhones = clientPhones;
         this.smsAccount = smsAccount;
         this.operationSmsTemps = operationSmsTemps;
@@ -28,11 +28,11 @@ public class ApiOperationSmsTempWSDTO {
         this.clientPhones = clientPhones;
     }
 
-    public ApiSmsAccountWSDTO getSmsAccount() {
+    public ApiOperationSmsAccountWSDTO getSmsAccount() {
         return smsAccount;
     }
 
-    public void setSmsAccount(ApiSmsAccountWSDTO smsAccount) {
+    public void setSmsAccount(ApiOperationSmsAccountWSDTO smsAccount) {
         this.smsAccount = smsAccount;
     }
 

@@ -6,22 +6,22 @@ import java.util.List;
 
 public class ApiOperationPushTempWSDTO {
 
-    private ApiPushAccountWSDTO pushAccount;
+    private ApiOperationPushAccountWSDTO pushAccount;
     private List<ProcessPushTempDBModel>operationPushTemps;
 
     public ApiOperationPushTempWSDTO() {
     }
 
-    public ApiOperationPushTempWSDTO(ApiPushAccountWSDTO pushAccount, List<ProcessPushTempDBModel> operationPushTemps) {
+    public ApiOperationPushTempWSDTO(ApiOperationPushAccountWSDTO pushAccount, List<ProcessPushTempDBModel> operationPushTemps) {
         this.pushAccount = pushAccount;
         this.operationPushTemps = operationPushTemps;
     }
 
-    public ApiPushAccountWSDTO getPushAccount() {
+    public ApiOperationPushAccountWSDTO getPushAccount() {
         return pushAccount;
     }
 
-    public void setPushAccount(ApiPushAccountWSDTO pushAccount) {
+    public void setPushAccount(ApiOperationPushAccountWSDTO pushAccount) {
         this.pushAccount = pushAccount;
     }
 

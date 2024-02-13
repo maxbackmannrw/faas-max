@@ -1,5 +1,6 @@
 package com.faas.core.api.framework.operation.details.channel.message.email;
 
+import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiOperationEmailAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiOperationEmailTempWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiOperationEmailWSDTO;
 import com.faas.core.base.model.db.client.details.content.ClientDetailsDBModel;
@@ -133,6 +134,17 @@ public class ApiOperationEmailChannelFramework {
         }
         return null;
     }
+
+
+    public ApiOperationEmailAccountWSDTO apiGetOperationEmailAccountService(long agentId, String operationId) {
+
+        List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
+        if (!sessionDBModels.isEmpty()){
+            return channelHelper.getApiEmailAccountWSDTO(sessionDBModels.get(0).getProcessId());
+        }
+        return null;
+    }
+
 
 
 

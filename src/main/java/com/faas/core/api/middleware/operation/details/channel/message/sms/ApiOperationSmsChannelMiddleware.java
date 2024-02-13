@@ -1,9 +1,11 @@
 package com.faas.core.api.middleware.operation.details.channel.message.sms;
 
 import com.faas.core.api.framework.operation.details.channel.message.sms.ApiOperationSmsChannelFramework;
+import com.faas.core.api.model.ws.operation.details.channel.message.sms.ApiOperationSmsAccountWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.sms.ApiOperationSmsChannelWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.sms.ApiOperationSmsTempWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.sms.ApiOperationSmsWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiOperationSmsAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiOperationSmsChannelWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiOperationSmsTempWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiOperationSmsWSDTO;
@@ -108,7 +110,6 @@ public class ApiOperationSmsChannelMiddleware {
         return response;
     }
 
-
     public ApiOperationSmsWSModel apiRemoveOperationSms(long agentId,String operationId,String smsId) {
 
         ApiOperationSmsWSModel response = new ApiOperationSmsWSModel();
@@ -129,7 +130,6 @@ public class ApiOperationSmsChannelMiddleware {
 
         return response;
     }
-
 
 
     public ApiOperationSmsTempWSModel apiGetOperationSmsTemps(long agentId,String operationId) {
@@ -170,6 +170,27 @@ public class ApiOperationSmsChannelMiddleware {
 
         return response;
     }
+
+
+    public ApiOperationSmsAccountWSModel apiGetOperationSmsAccount(long agentId, String operationId) {
+
+        ApiOperationSmsAccountWSModel response = new ApiOperationSmsAccountWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        ApiOperationSmsAccountWSDTO smsAccountWSDTO = apiOperationSmsChannelFramework.apiGetOperationSmsAccountService(agentId,operationId);
+        if (smsAccountWSDTO != null){
+            response.setSmsAccount(smsAccountWSDTO);
+        }
+
+        general.setOperation("apiGetOperationSmsAccount");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
 
 
 }

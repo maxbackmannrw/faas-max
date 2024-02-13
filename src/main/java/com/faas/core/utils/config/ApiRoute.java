@@ -144,7 +144,6 @@ public class ApiRoute {
     public static final String API_REMOVE_OPERATION_SMS = "apiremoveoperationsms";
     public static final String API_GET_OPERATION_SMS_TEMPS = "apigetoperationsmstemps";
     public static final String API_GET_OPERATION_SMS_TEMP = "apigetoperationsmstemp";
-    public static final String API_GET_OPERATION_SMS_ACCOUNTS = "apigetoperationsmsaccounts";
     public static final String API_GET_OPERATION_SMS_ACCOUNT = "apigetoperationsmsaccount";
 
 
@@ -155,7 +154,6 @@ public class ApiRoute {
     public static final String API_REMOVE_OPERATION_WAPP_MESSAGE = "apiremoveoperationwappmessage";
     public static final String API_GET_OPERATION_WAPP_MESSAGE_TEMPS = "apigetoperationwappmessagetemps";
     public static final String API_GET_OPERATION_WAPP_MESSAGE_TEMP = "apigetoperationwappmessagetemp";
-    public static final String API_GET_OPERATION_WAPP_MESSAGE_ACCOUNTS = "apigetoperationwappmessageaccounts";
     public static final String API_GET_OPERATION_WAPP_MESSAGE_ACCOUNT = "apigetoperationwappmessageaccount";
 
 
@@ -166,7 +164,6 @@ public class ApiRoute {
     public static final String API_REMOVE_OPERATION_EMAIL = "apiremoveoperationemail";
     public static final String API_GET_OPERATION_EMAIL_TEMPS = "apigetoperationemailtemps";
     public static final String API_GET_OPERATION_EMAIL_TEMP = "apigetoperationemailtemp";
-    public static final String API_GET_OPERATION_EMAIL_ACCOUNTS = "apigetoperationemailaccounts";
     public static final String API_GET_OPERATION_EMAIL_ACCOUNT = "apigetoperationemailaccount";
 
 
@@ -177,7 +174,6 @@ public class ApiRoute {
     public static final String API_REMOVE_OPERATION_PUSH = "apiremoveoperationpush";
     public static final String API_GET_OPERATION_PUSH_TEMPS = "apigetoperationpushtemps";
     public static final String API_GET_OPERATION_PUSH_TEMP = "apigetoperationpushtemp";
-    public static final String API_GET_OPERATION_PUSH_ACCOUNTS = "apigetoperationpushaccounts";
     public static final String API_GET_OPERATION_PUSH_ACCOUNT = "apigetoperationpushaccount";
 
 

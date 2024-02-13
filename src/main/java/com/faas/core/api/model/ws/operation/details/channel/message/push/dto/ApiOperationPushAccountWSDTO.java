@@ -4,7 +4,7 @@ import com.faas.core.base.model.db.channel.account.dao.AccountDataDAO;
 
 import java.util.List;
 
-public class ApiPushAccountWSDTO {
+public class ApiOperationPushAccountWSDTO {
 
     private String accountId;
     private String account;
@@ -14,10 +14,10 @@ public class ApiPushAccountWSDTO {
     private long cDate;
     private int status;
 
-    public ApiPushAccountWSDTO() {
+    public ApiOperationPushAccountWSDTO() {
     }
 
-    public ApiPushAccountWSDTO(String accountId, String account, List<AccountDataDAO> accountDatas, String provider, String channelState, long cDate, int status) {
+    public ApiOperationPushAccountWSDTO(String accountId, String account, List<AccountDataDAO> accountDatas, String provider, String channelState, long cDate, int status) {
         this.accountId = accountId;
         this.account = account;
         this.accountDatas = accountDatas;

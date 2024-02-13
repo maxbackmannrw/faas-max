@@ -1,9 +1,11 @@
 package com.faas.core.api.middleware.operation.details.channel.message.push;
 
 import com.faas.core.api.framework.operation.details.channel.message.push.ApiOperationPushChannelFramework;
+import com.faas.core.api.model.ws.operation.details.channel.message.push.ApiOperationPushAccountWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.ApiOperationPushChannelWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.ApiOperationPushTempWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.ApiOperationPushWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushTempWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.utils.config.AppConstant;
@@ -134,6 +136,25 @@ public class ApiOperationPushChannelMiddleware {
         return response;
     }
 
+
+    public ApiOperationPushAccountWSModel apiGetOperationPushAccount(long agentId, String operationId) {
+
+        ApiOperationPushAccountWSModel response = new ApiOperationPushAccountWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        ApiOperationPushAccountWSDTO pushAccountWSDTO = apiOperationPushChannelFramework.apiGetOperationPushAccountService(agentId,operationId);
+        if (pushAccountWSDTO != null){
+            response.setPushAccount(pushAccountWSDTO);
+        }
+
+        general.setOperation("apiGetOperationPushAccount");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
 
 
 }

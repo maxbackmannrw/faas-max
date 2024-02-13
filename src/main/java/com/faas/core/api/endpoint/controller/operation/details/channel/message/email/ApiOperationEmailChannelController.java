@@ -1,6 +1,7 @@
 package com.faas.core.api.endpoint.controller.operation.details.channel.message.email;
 
 import com.faas.core.api.middleware.operation.details.channel.message.email.ApiOperationEmailChannelMiddleware;
+import com.faas.core.api.model.ws.operation.details.channel.message.email.ApiOperationEmailAccountWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.email.ApiOperationEmailTempWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.email.ApiOperationEmailWSModel;
 import com.faas.core.utils.config.ApiRoute;
@@ -118,24 +119,11 @@ public class ApiOperationEmailChannelController {
     }
 
 
-
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION_EMAIL_ACCOUNTS, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperationEmailAccounts(@RequestParam long agentId,
-                                                       @RequestParam String operationId) {
-
-        ApiOperationEmailTempWSModel response = apiOperationEmailChannelMiddleware.apiGetOperationEmailTemps(agentId,operationId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_EMAIL_ACCOUNT, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationEmailAccount(@RequestParam long agentId,
-                                                          @RequestParam String operationId) {
+                                                         @RequestParam String operationId) {
 
-        ApiOperationEmailTempWSModel response = apiOperationEmailChannelMiddleware.apiGetOperationEmailTemps(agentId,operationId);
+        ApiOperationEmailAccountWSModel response = apiOperationEmailChannelMiddleware.apiGetOperationEmailAccount(agentId,operationId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

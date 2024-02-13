@@ -1,5 +1,6 @@
 package com.faas.core.api.framework.operation.details.channel.message.sms;
 
+import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiOperationSmsAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiOperationSmsTempWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiOperationSmsWSDTO;
 import com.faas.core.base.model.db.client.details.content.ClientDetailsDBModel;
@@ -142,6 +143,16 @@ public class ApiOperationSmsChannelFramework {
             smsTempWSDTO.setOperationSmsTemps(processSmsMessageTempRepository.findByIdAndProcessId(smsTempId,sessionDBModels.get(0).getProcessId()));
 
             return smsTempWSDTO;
+        }
+        return null;
+    }
+
+
+    public ApiOperationSmsAccountWSDTO apiGetOperationSmsAccountService(long agentId, String operationId) {
+
+        List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
+        if (!sessionDBModels.isEmpty()){
+            return channelHelper.getApiSmsAccountWSDTO(sessionDBModels.get(0).getProcessId());
         }
         return null;
     }

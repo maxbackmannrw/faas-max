@@ -1,6 +1,7 @@
 package com.faas.core.api.framework.operation.details.channel.message.push;
 
 import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiOperationEmailTempWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushTempWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushWSDTO;
 import com.faas.core.base.model.db.client.details.content.ClientDetailsDBModel;
@@ -96,5 +97,17 @@ public class ApiOperationPushChannelFramework {
         }
         return null;
     }
+
+
+    public ApiOperationPushAccountWSDTO apiGetOperationPushAccountService(long agentId, String operationId) {
+
+        List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
+        if (!sessionDBModels.isEmpty()){
+            return channelHelper.getApiPushAccountWSDTO(sessionDBModels.get(0).getProcessId());
+        }
+        return null;
+    }
+
+
 
 }

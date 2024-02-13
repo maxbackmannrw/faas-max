@@ -8,24 +8,24 @@ import java.util.List;
 
 public class ApiOperationPushChannelWSDTO {
 
-    private ApiPushAccountWSDTO pushAccount;
+    private ApiOperationPushAccountWSDTO pushAccount;
     private List<OperationPushMessageDBModel>operationPushes;
     private List<ProcessPushTempDBModel>operationPushTemps;
 
     public ApiOperationPushChannelWSDTO() {
     }
 
-    public ApiOperationPushChannelWSDTO(ApiPushAccountWSDTO pushAccount, List<OperationPushMessageDBModel> operationPushes, List<ProcessPushTempDBModel> operationPushTemps) {
+    public ApiOperationPushChannelWSDTO(ApiOperationPushAccountWSDTO pushAccount, List<OperationPushMessageDBModel> operationPushes, List<ProcessPushTempDBModel> operationPushTemps) {
         this.pushAccount = pushAccount;
         this.operationPushes = operationPushes;
         this.operationPushTemps = operationPushTemps;
     }
 
-    public ApiPushAccountWSDTO getPushAccount() {
+    public ApiOperationPushAccountWSDTO getPushAccount() {
         return pushAccount;
     }
 
-    public void setPushAccount(ApiPushAccountWSDTO pushAccount) {
+    public void setPushAccount(ApiOperationPushAccountWSDTO pushAccount) {
         this.pushAccount = pushAccount;
     }
 

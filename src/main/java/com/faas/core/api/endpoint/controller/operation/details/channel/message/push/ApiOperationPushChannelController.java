@@ -1,6 +1,7 @@
 package com.faas.core.api.endpoint.controller.operation.details.channel.message.push;
 
 import com.faas.core.api.middleware.operation.details.channel.message.push.ApiOperationPushChannelMiddleware;
+import com.faas.core.api.model.ws.operation.details.channel.message.push.ApiOperationPushAccountWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.ApiOperationPushChannelWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.ApiOperationPushTempWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.ApiOperationPushWSModel;
@@ -90,7 +91,6 @@ public class ApiOperationPushChannelController {
     }
 
 
-
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_PUSH_TEMPS, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationPushTemps(@RequestParam long agentId,
                                                       @RequestParam String operationId) {
@@ -118,26 +118,11 @@ public class ApiOperationPushChannelController {
     }
 
 
-
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION_PUSH_ACCOUNTS, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperationPushAccounts(@RequestParam long agentId,
-                                                     @RequestParam String operationId,
-                                                     @RequestParam String pushTempId) {
-
-        ApiOperationPushTempWSModel response = apiOperationPushChannelMiddleware.apiGetOperationPushTemp(agentId,operationId,pushTempId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_PUSH_ACCOUNT, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationPushAccount(@RequestParam long agentId,
-                                                         @RequestParam String operationId,
-                                                         @RequestParam String pushTempId) {
+                                                        @RequestParam String operationId) {
 
-        ApiOperationPushTempWSModel response = apiOperationPushChannelMiddleware.apiGetOperationPushTemp(agentId,operationId,pushTempId);
+        ApiOperationPushAccountWSModel response = apiOperationPushChannelMiddleware.apiGetOperationPushAccount(agentId,operationId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

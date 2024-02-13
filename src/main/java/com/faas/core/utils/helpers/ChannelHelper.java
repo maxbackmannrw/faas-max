@@ -4,14 +4,14 @@ import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOper
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiSipAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiOperationWappCallWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiWappCallAccountWSDTO;
-import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiEmailAccountWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiOperationEmailAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiOperationEmailWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiOperationSmsChannelWSDTO;
-import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiSmsAccountWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiOperationSmsAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.ApiOperationWappMessageChannelWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushChannelWSDTO;
-import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiPushAccountWSDTO;
-import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.ApiWappMessageAccountWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushAccountWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.ApiOperationWappMessageAccountWSDTO;
 import com.faas.core.base.model.db.channel.account.EmailAccountDBModel;
 import com.faas.core.base.model.db.channel.account.PushAccountDBModel;
 import com.faas.core.base.model.db.channel.account.SmsAccountDBModel;
@@ -198,13 +198,13 @@ public class ChannelHelper {
     }
 
 
-    public ApiWappMessageAccountWSDTO getApiWappMessageAccountWSDTO(long agentId, String processId) {
+    public ApiOperationWappMessageAccountWSDTO getApiWappMessageAccountWSDTO(long agentId, String processId) {
 
         List<UserDetailsDBModel> agentDetails = userDetailsRepository.findByUserId(agentId);
         List<ProcessWappChannelDBModel> wappChannels = processWappChannelRepository.findByProcessId(processId);
         if (!agentDetails.isEmpty() && agentDetails.get(0).getWappChannel() != null && agentDetails.get(0).getWappChannel().getAccountId() != null && !wappChannels.isEmpty()) {
 
-            ApiWappMessageAccountWSDTO wappAccountWSDTO = new ApiWappMessageAccountWSDTO();
+            ApiOperationWappMessageAccountWSDTO wappAccountWSDTO = new ApiOperationWappMessageAccountWSDTO();
             wappAccountWSDTO.setAccountId(agentDetails.get(0).getWappChannel().getAccountId());
             wappAccountWSDTO.setAccount(agentDetails.get(0).getWappChannel().getAccount());
             wappAccountWSDTO.setInstanceKey(agentDetails.get(0).getWappChannel().getInstanceKey());
@@ -291,7 +291,7 @@ public class ChannelHelper {
     public ApiOperationSmsChannelWSDTO mapApiOperationSmsMessageWSDTO(SessionDBModel sessionDBModel, List<ClientPhoneDAO> clientPhones) {
 
         ApiOperationSmsChannelWSDTO operationSmsMessageWSDTO = new ApiOperationSmsChannelWSDTO();
-        ApiSmsAccountWSDTO smsAccountWSDTO = getApiSmsAccountWSDTO(sessionDBModel.getProcessId());
+        ApiOperationSmsAccountWSDTO smsAccountWSDTO = getApiSmsAccountWSDTO(sessionDBModel.getProcessId());
         if (smsAccountWSDTO != null){
             operationSmsMessageWSDTO.setSmsAccount(smsAccountWSDTO);
         }
@@ -300,12 +300,12 @@ public class ChannelHelper {
     }
 
 
-    public ApiSmsAccountWSDTO getApiSmsAccountWSDTO(String processId) {
+    public ApiOperationSmsAccountWSDTO getApiSmsAccountWSDTO(String processId) {
 
         List<ProcessSmsChannelDBModel>smsChannelDBModels = processSmsChannelRepository.findByProcessId(processId);
         if (!smsChannelDBModels.isEmpty() && smsChannelDBModels.get(0).getSmsAccount() != null) {
 
-            ApiSmsAccountWSDTO smsAccountWSDTO = new ApiSmsAccountWSDTO();
+            ApiOperationSmsAccountWSDTO smsAccountWSDTO = new ApiOperationSmsAccountWSDTO();
             smsAccountWSDTO.setAccountId(smsChannelDBModels.get(0).getAccountId());
             smsAccountWSDTO.setAccount(smsChannelDBModels.get(0).getSmsAccount().getAccount());
             smsAccountWSDTO.setUserName(smsChannelDBModels.get(0).getSmsAccount().getUserName());
@@ -332,12 +332,12 @@ public class ChannelHelper {
     }
 
 
-    public ApiEmailAccountWSDTO getApiEmailAccountWSDTO(String processId) {
+    public ApiOperationEmailAccountWSDTO getApiEmailAccountWSDTO(String processId) {
 
         List<ProcessEmailChannelDBModel>emailChannelDBModels = processEmailChannelRepository.findByProcessId(processId);
         if (!emailChannelDBModels.isEmpty() && emailChannelDBModels.get(0).getEmailAccount() != null) {
 
-            ApiEmailAccountWSDTO emailAccountWSDTO = new ApiEmailAccountWSDTO();
+            ApiOperationEmailAccountWSDTO emailAccountWSDTO = new ApiOperationEmailAccountWSDTO();
             emailAccountWSDTO.setAccountId(emailChannelDBModels.get(0).getAccountId());
             emailAccountWSDTO.setAccount(emailChannelDBModels.get(0).getEmailAccount().getAccount());
             emailAccountWSDTO.setAccountDatas(emailChannelDBModels.get(0).getEmailAccount().getAccountDatas());
@@ -363,7 +363,7 @@ public class ChannelHelper {
 
     public ApiOperationPushChannelWSDTO mapApiOperationPushMessageWSDTO(SessionDBModel sessionDBModel) {
 
-        ApiPushAccountWSDTO pushAccountWSDTO = getApiPushAccountWSDTO(sessionDBModel.getProcessId());
+        ApiOperationPushAccountWSDTO pushAccountWSDTO = getApiPushAccountWSDTO(sessionDBModel.getProcessId());
         if (pushAccountWSDTO != null){
 
             ApiOperationPushChannelWSDTO operationPushMessageWSDTO = new ApiOperationPushChannelWSDTO();
@@ -375,12 +375,12 @@ public class ChannelHelper {
     }
 
 
-    public ApiPushAccountWSDTO getApiPushAccountWSDTO(String processId) {
+    public ApiOperationPushAccountWSDTO getApiPushAccountWSDTO(String processId) {
 
         List<ProcessPushChannelDBModel>pushChannelDBModels = processPushChannelRepository.findByProcessId(processId);
         if (!pushChannelDBModels.isEmpty() && pushChannelDBModels.get(0).getPushAccount() != null) {
 
-            ApiPushAccountWSDTO pushAccountWSDTO = new ApiPushAccountWSDTO();
+            ApiOperationPushAccountWSDTO pushAccountWSDTO = new ApiOperationPushAccountWSDTO();
             pushAccountWSDTO.setAccountId(pushChannelDBModels.get(0).getAccountId());
             pushAccountWSDTO.setAccount(pushChannelDBModels.get(0).getPushAccount().getAccount());
             pushAccountWSDTO.setAccountDatas(pushChannelDBModels.get(0).getPushAccount().getAccountDatas());

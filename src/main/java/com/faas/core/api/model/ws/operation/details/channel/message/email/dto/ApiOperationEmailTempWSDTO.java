@@ -8,13 +8,13 @@ import java.util.List;
 public class ApiOperationEmailTempWSDTO {
 
     private List<ClientEmailDAO> clientEmails;
-    private ApiEmailAccountWSDTO emailAccount;
+    private ApiOperationEmailAccountWSDTO emailAccount;
     private List<ProcessEmailTempDBModel>operationEmailTemps;
 
     public ApiOperationEmailTempWSDTO() {
     }
 
-    public ApiOperationEmailTempWSDTO(List<ClientEmailDAO> clientEmails, ApiEmailAccountWSDTO emailAccount, List<ProcessEmailTempDBModel> operationEmailTemps) {
+    public ApiOperationEmailTempWSDTO(List<ClientEmailDAO> clientEmails, ApiOperationEmailAccountWSDTO emailAccount, List<ProcessEmailTempDBModel> operationEmailTemps) {
         this.clientEmails = clientEmails;
         this.emailAccount = emailAccount;
         this.operationEmailTemps = operationEmailTemps;
@@ -28,11 +28,11 @@ public class ApiOperationEmailTempWSDTO {
         this.clientEmails = clientEmails;
     }
 
-    public ApiEmailAccountWSDTO getEmailAccount() {
+    public ApiOperationEmailAccountWSDTO getEmailAccount() {
         return emailAccount;
     }
 
-    public void setEmailAccount(ApiEmailAccountWSDTO emailAccount) {
+    public void setEmailAccount(ApiOperationEmailAccountWSDTO emailAccount) {
         this.emailAccount = emailAccount;
     }
 

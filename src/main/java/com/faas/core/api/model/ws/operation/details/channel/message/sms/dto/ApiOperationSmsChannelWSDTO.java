@@ -9,25 +9,25 @@ import java.util.List;
 public class ApiOperationSmsChannelWSDTO {
 
     private List<ClientPhoneDAO> clientPhones;
-    private ApiSmsAccountWSDTO smsAccount;
+    private ApiOperationSmsAccountWSDTO smsAccount;
     private List<OperationSmsMessageDBModel>operationSmss;
     private List<ProcessSmsMessageTempDBModel>operationSmsTemps;
 
     public ApiOperationSmsChannelWSDTO() {
     }
 
-    public ApiOperationSmsChannelWSDTO(ApiSmsAccountWSDTO smsAccount, List<ClientPhoneDAO> clientPhones, List<OperationSmsMessageDBModel> operationSmss, List<ProcessSmsMessageTempDBModel> operationSmsTemps) {
+    public ApiOperationSmsChannelWSDTO(ApiOperationSmsAccountWSDTO smsAccount, List<ClientPhoneDAO> clientPhones, List<OperationSmsMessageDBModel> operationSmss, List<ProcessSmsMessageTempDBModel> operationSmsTemps) {
         this.smsAccount = smsAccount;
         this.clientPhones = clientPhones;
         this.operationSmss = operationSmss;
         this.operationSmsTemps = operationSmsTemps;
     }
 
-    public ApiSmsAccountWSDTO getSmsAccount() {
+    public ApiOperationSmsAccountWSDTO getSmsAccount() {
         return smsAccount;
     }
 
-    public void setSmsAccount(ApiSmsAccountWSDTO smsAccount) {
+    public void setSmsAccount(ApiOperationSmsAccountWSDTO smsAccount) {
         this.smsAccount = smsAccount;
     }
 

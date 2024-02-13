@@ -9,14 +9,14 @@ import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiOpe
 import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiWappCallAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.call.content.dto.ApiOperationCallChannelWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.content.dto.ApiOperationMessageChannelWSDTO;
-import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiEmailAccountWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiOperationEmailAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiOperationEmailChannelWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushChannelWSDTO;
-import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiPushAccountWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiOperationSmsChannelWSDTO;
-import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiSmsAccountWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiOperationSmsAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.ApiOperationWappMessageChannelWSDTO;
-import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.ApiWappMessageAccountWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.ApiOperationWappMessageAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.client.content.dto.ApiOperationClientWSDTO;
 import com.faas.core.api.model.ws.operation.details.campaign.dto.ApiOperationCampaignWSDTO;
 import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationDetailsWSDTO;
@@ -539,7 +539,7 @@ public class OperationHelper {
 
     public ApiOperationSmsChannelWSDTO getApiOperationSmsChannelWSDTO(OperationDBModel operationDBModel,ClientDetailsDBModel clientDetails) {
 
-        ApiSmsAccountWSDTO smsAccountWSDTO = channelHelper.getApiSmsAccountWSDTO(operationDBModel.getProcessId());
+        ApiOperationSmsAccountWSDTO smsAccountWSDTO = channelHelper.getApiSmsAccountWSDTO(operationDBModel.getProcessId());
         if (smsAccountWSDTO != null && clientDetails.getClientPhones() != null){
 
             ApiOperationSmsChannelWSDTO operationSmsChannelWSDTO = new ApiOperationSmsChannelWSDTO();
@@ -555,7 +555,7 @@ public class OperationHelper {
 
     public ApiOperationWappMessageChannelWSDTO getApiOperationWappMessageChannelWSDTO(OperationDBModel operationDBModel,ClientDetailsDBModel clientDetails) {
 
-        ApiWappMessageAccountWSDTO wappAccountWSDTO = channelHelper.getApiWappMessageAccountWSDTO(operationDBModel.getAgentId(),operationDBModel.getProcessId());
+        ApiOperationWappMessageAccountWSDTO wappAccountWSDTO = channelHelper.getApiWappMessageAccountWSDTO(operationDBModel.getAgentId(),operationDBModel.getProcessId());
         if (wappAccountWSDTO != null && clientDetails.getClientPhones() != null){
 
             ApiOperationWappMessageChannelWSDTO wappMessageChannelWSDTO = new ApiOperationWappMessageChannelWSDTO();
@@ -571,7 +571,7 @@ public class OperationHelper {
 
     public ApiOperationEmailChannelWSDTO getApiOperationEmailChannelWSDTO(OperationDBModel operationDBModel,ClientDetailsDBModel clientDetails) {
 
-        ApiEmailAccountWSDTO emailAccountWSDTO = channelHelper.getApiEmailAccountWSDTO(operationDBModel.getProcessId());
+        ApiOperationEmailAccountWSDTO emailAccountWSDTO = channelHelper.getApiEmailAccountWSDTO(operationDBModel.getProcessId());
         if (emailAccountWSDTO != null && clientDetails.getClientEmails() != null){
 
             ApiOperationEmailChannelWSDTO emailChannelWSDTO = new ApiOperationEmailChannelWSDTO();
@@ -587,7 +587,7 @@ public class OperationHelper {
 
     public ApiOperationPushChannelWSDTO getApiOperationPushChannelWSDTO(OperationDBModel operationDBModel,ClientDetailsDBModel clientDetails) {
 
-        ApiPushAccountWSDTO pushAccountWSDTO = channelHelper.getApiPushAccountWSDTO(operationDBModel.getProcessId());
+        ApiOperationPushAccountWSDTO pushAccountWSDTO = channelHelper.getApiPushAccountWSDTO(operationDBModel.getProcessId());
         if (pushAccountWSDTO != null ){
 
             ApiOperationPushChannelWSDTO pushChannelWSDTO = new ApiOperationPushChannelWSDTO();

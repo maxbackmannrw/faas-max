@@ -1,5 +1,6 @@
 package com.faas.core.api.framework.operation.details.channel.message.wapp;
 
+import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.ApiOperationWappMessageAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.ApiOperationWappMessageTempWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.ApiOperationWappMessageWSDTO;
 import com.faas.core.base.model.db.client.details.content.ClientDetailsDBModel;
@@ -138,6 +139,16 @@ public class ApiOperationWappMessageChannelFramework {
             wappMessageTempWSDTO.setOperationWappMessageTemps(processWappMessageTempRepository.findByIdAndProcessId(messageTempId,sessionDBModels.get(0).getProcessId()));
 
            return wappMessageTempWSDTO;
+        }
+        return null;
+    }
+
+
+    public ApiOperationWappMessageAccountWSDTO apiGetOperationWappMessageAccountService(long agentId, String operationId){
+
+        List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
+        if (!sessionDBModels.isEmpty()){
+            return channelHelper.getApiWappMessageAccountWSDTO(agentId,sessionDBModels.get(0).getProcessId());
         }
         return null;
     }

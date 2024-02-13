@@ -1,8 +1,10 @@
 package com.faas.core.api.middleware.operation.details.channel.message.email;
 
 import com.faas.core.api.framework.operation.details.channel.message.email.ApiOperationEmailChannelFramework;
+import com.faas.core.api.model.ws.operation.details.channel.message.email.ApiOperationEmailAccountWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.email.ApiOperationEmailTempWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.email.ApiOperationEmailWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiOperationEmailAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiOperationEmailTempWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiOperationEmailWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
@@ -126,7 +128,6 @@ public class ApiOperationEmailChannelMiddleware {
     }
 
 
-
     public ApiOperationEmailTempWSModel apiGetOperationEmailTemps(long agentId,String operationId) {
 
         ApiOperationEmailTempWSModel response = new ApiOperationEmailTempWSModel();
@@ -157,6 +158,26 @@ public class ApiOperationEmailChannelMiddleware {
         }
 
         general.setOperation("apiGetOperationEmailTemp");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
+    public ApiOperationEmailAccountWSModel apiGetOperationEmailAccount(long agentId, String operationId) {
+
+        ApiOperationEmailAccountWSModel response = new ApiOperationEmailAccountWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        ApiOperationEmailAccountWSDTO emailAccountWSDTO = apiOperationEmailChannelFramework.apiGetOperationEmailAccountService(agentId,operationId);
+        if (emailAccountWSDTO != null) {
+            response.setEmailAccount(emailAccountWSDTO);
+        }
+
+        general.setOperation("apiGetOperationEmailAccount");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

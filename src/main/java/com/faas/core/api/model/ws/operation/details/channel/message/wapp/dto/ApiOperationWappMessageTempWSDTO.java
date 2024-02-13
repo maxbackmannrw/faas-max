@@ -8,13 +8,13 @@ import java.util.List;
 public class ApiOperationWappMessageTempWSDTO {
 
     private List<ClientPhoneDAO> clientPhones;
-    private ApiWappMessageAccountWSDTO wappAccount;
+    private ApiOperationWappMessageAccountWSDTO wappAccount;
     private List<ProcessWappMessageTempDBModel>operationWappMessageTemps;
 
     public ApiOperationWappMessageTempWSDTO() {
     }
 
-    public ApiOperationWappMessageTempWSDTO(List<ClientPhoneDAO> clientPhones, ApiWappMessageAccountWSDTO wappAccount, List<ProcessWappMessageTempDBModel> operationWappMessageTemps) {
+    public ApiOperationWappMessageTempWSDTO(List<ClientPhoneDAO> clientPhones, ApiOperationWappMessageAccountWSDTO wappAccount, List<ProcessWappMessageTempDBModel> operationWappMessageTemps) {
         this.clientPhones = clientPhones;
         this.wappAccount = wappAccount;
         this.operationWappMessageTemps = operationWappMessageTemps;
@@ -28,11 +28,11 @@ public class ApiOperationWappMessageTempWSDTO {
         this.clientPhones = clientPhones;
     }
 
-    public ApiWappMessageAccountWSDTO getWappAccount() {
+    public ApiOperationWappMessageAccountWSDTO getWappAccount() {
         return wappAccount;
     }
 
-    public void setWappAccount(ApiWappMessageAccountWSDTO wappAccount) {
+    public void setWappAccount(ApiOperationWappMessageAccountWSDTO wappAccount) {
         this.wappAccount = wappAccount;
     }
 

@@ -1,10 +1,10 @@
 package com.faas.core.api.middleware.operation.details.channel.message.wapp;
 
 import com.faas.core.api.framework.operation.details.channel.message.wapp.ApiOperationWappMessageChannelFramework;
-import com.faas.core.api.model.ws.operation.details.channel.message.wapp.ApiOperationWappMessageChannelWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.message.wapp.ApiOperationWappMessageAccountWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.wapp.ApiOperationWappMessageTempWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.wapp.ApiOperationWappMessageWSModel;
-import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.ApiOperationWappMessageChannelWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.ApiOperationWappMessageAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.ApiOperationWappMessageTempWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.ApiOperationWappMessageWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
@@ -22,6 +22,7 @@ public class ApiOperationWappMessageChannelMiddleware {
 
     @Autowired
     ApiOperationWappMessageChannelFramework apiOperationWappMessageChannelFramework;
+
 
     public ApiOperationWappMessageWSModel apiGetOperationWappMessages(long agentId,String operationId) {
 
@@ -41,7 +42,6 @@ public class ApiOperationWappMessageChannelMiddleware {
 
         return response;
     }
-
 
     public ApiOperationWappMessageWSModel apiGetOperationWappMessage(long agentId,String operationId,String messageId) {
 
@@ -64,8 +64,6 @@ public class ApiOperationWappMessageChannelMiddleware {
         return response;
     }
 
-
-
     public ApiOperationWappMessageWSModel apiSendOperationWappMessage(long agentId,String operationId,String messageTempId,String numberId) throws IOException {
 
         ApiOperationWappMessageWSModel response = new ApiOperationWappMessageWSModel();
@@ -87,7 +85,6 @@ public class ApiOperationWappMessageChannelMiddleware {
         return response;
     }
 
-
     public ApiOperationWappMessageWSModel apiUpdateOperationWappMessage(long agentId,String operationId,String messageId,String messageState) {
 
         ApiOperationWappMessageWSModel response = new ApiOperationWappMessageWSModel();
@@ -108,7 +105,6 @@ public class ApiOperationWappMessageChannelMiddleware {
 
         return response;
     }
-
 
     public ApiOperationWappMessageWSModel apiRemoveOperationWappMessage(long agentId,String operationId,String messageId) {
 
@@ -132,7 +128,6 @@ public class ApiOperationWappMessageChannelMiddleware {
     }
 
 
-
     public ApiOperationWappMessageTempWSModel apiGetOperationWappMessageTemps(long agentId,String operationId) {
 
         ApiOperationWappMessageTempWSModel response = new ApiOperationWappMessageTempWSModel();
@@ -152,8 +147,6 @@ public class ApiOperationWappMessageChannelMiddleware {
         return response;
     }
 
-
-
     public ApiOperationWappMessageTempWSModel apiGetOperationWappMessageTemp(long agentId,String operationId,String messageTempId) {
 
         ApiOperationWappMessageTempWSModel response = new ApiOperationWappMessageTempWSModel();
@@ -172,6 +165,27 @@ public class ApiOperationWappMessageChannelMiddleware {
 
         return response;
     }
+
+
+    public ApiOperationWappMessageAccountWSModel apiGetOperationWappMessageAccount(long agentId, String operationId) {
+
+        ApiOperationWappMessageAccountWSModel response = new ApiOperationWappMessageAccountWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        ApiOperationWappMessageAccountWSDTO wappMessageAccountWSDTO = apiOperationWappMessageChannelFramework.apiGetOperationWappMessageAccountService(agentId,operationId);
+        if (wappMessageAccountWSDTO != null){
+            response.setWappMessageAccount(wappMessageAccountWSDTO);
+        }
+
+        general.setOperation("apiGetOperationWappMessageAccount");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
 
 
 }

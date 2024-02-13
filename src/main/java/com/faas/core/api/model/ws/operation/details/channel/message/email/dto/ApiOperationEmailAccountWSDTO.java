@@ -1,33 +1,25 @@
-package com.faas.core.api.model.ws.operation.details.channel.message.sms.dto;
+package com.faas.core.api.model.ws.operation.details.channel.message.email.dto;
 
 import com.faas.core.base.model.db.channel.account.dao.AccountDataDAO;
 
 import java.util.List;
 
-public class ApiSmsAccountWSDTO {
+public class ApiOperationEmailAccountWSDTO {
 
     private String accountId;
     private String account;
-    private String userName;
-    private String password;
-    private String apiToken;
-    private String apiUrl;
     private List<AccountDataDAO> accountDatas;
     private String provider;
     private String channelState;
     private long cDate;
     private int status;
 
-    public ApiSmsAccountWSDTO() {
+    public ApiOperationEmailAccountWSDTO() {
     }
 
-    public ApiSmsAccountWSDTO(String accountId, String account, String userName, String password, String apiToken, String apiUrl, List<AccountDataDAO> accountDatas, String provider, String channelState, long cDate, int status) {
+    public ApiOperationEmailAccountWSDTO(String accountId, String account, List<AccountDataDAO> accountDatas, String provider, String channelState, long cDate, int status) {
         this.accountId = accountId;
         this.account = account;
-        this.userName = userName;
-        this.password = password;
-        this.apiToken = apiToken;
-        this.apiUrl = apiUrl;
         this.accountDatas = accountDatas;
         this.provider = provider;
         this.channelState = channelState;
@@ -49,38 +41,6 @@ public class ApiSmsAccountWSDTO {
 
     public void setAccount(String account) {
         this.account = account;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getApiToken() {
-        return apiToken;
-    }
-
-    public void setApiToken(String apiToken) {
-        this.apiToken = apiToken;
-    }
-
-    public String getApiUrl() {
-        return apiUrl;
-    }
-
-    public void setApiUrl(String apiUrl) {
-        this.apiUrl = apiUrl;
     }
 
     public List<AccountDataDAO> getAccountDatas() {
