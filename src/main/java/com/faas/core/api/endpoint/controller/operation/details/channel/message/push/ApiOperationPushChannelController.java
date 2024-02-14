@@ -2,7 +2,6 @@ package com.faas.core.api.endpoint.controller.operation.details.channel.message.
 
 import com.faas.core.api.middleware.operation.details.channel.message.push.ApiOperationPushChannelMiddleware;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.ApiOperationPushAccountWSModel;
-import com.faas.core.api.model.ws.operation.details.channel.message.push.ApiOperationPushChannelWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.ApiOperationPushTempWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.ApiOperationPushWSModel;
 import com.faas.core.utils.config.ApiRoute;
@@ -37,7 +36,6 @@ public class ApiOperationPushChannelController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_PUSH, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationPush(@RequestParam long agentId,
                                                  @RequestParam String operationId,
@@ -51,7 +49,6 @@ public class ApiOperationPushChannelController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = ApiRoute.API_SEND_OPERATION_PUSH, method = RequestMethod.POST)
     public ResponseEntity<?> apiSendOperationPush(@RequestParam long agentId,
                                                   @RequestParam String operationId) {
@@ -64,7 +61,6 @@ public class ApiOperationPushChannelController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = ApiRoute.API_UPDATE_OPERATION_PUSH, method = RequestMethod.POST)
     public ResponseEntity<?> apiUpdateOperationPush(@RequestParam long agentId,
                                                     @RequestParam String operationId) {
@@ -76,7 +72,6 @@ public class ApiOperationPushChannelController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = ApiRoute.API_REMOVE_OPERATION_PUSH, method = RequestMethod.POST)
     public ResponseEntity<?> apiRemoveOperationPush(@RequestParam long agentId,
