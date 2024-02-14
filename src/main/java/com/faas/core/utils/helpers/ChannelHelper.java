@@ -124,7 +124,7 @@ public class ChannelHelper {
             operationSmsMessageDBModel.setPhoneNumber(clientPhoneDAO.getPhoneNumber());
             operationSmsMessageDBModel.setPhoneCarrier(clientPhoneDAO.getPhoneCarrier());
             operationSmsMessageDBModel.setPhoneType(clientPhoneDAO.getPhoneType());
-            operationSmsMessageDBModel.setOperationSmsMessage(createOperationSmsMessageDAO(sessionDBModel,smsMessageTempDBModel,smsChannelDBModel));
+            operationSmsMessageDBModel.setOperationSms(createOperationSmsMessageDAO(sessionDBModel,smsMessageTempDBModel,smsChannelDBModel));
             operationSmsMessageDBModel.setSmsSentId(AppConstant.NONE);
             operationSmsMessageDBModel.setSmsState(AppConstant.NONE);
             operationSmsMessageDBModel.setuDate(appUtils.getCurrentTimeStamp());
@@ -135,7 +135,6 @@ public class ChannelHelper {
         }
         return null;
     }
-
 
     public OperationSmsMessageDAO createOperationSmsMessageDAO(SessionDBModel sessionDBModel,ProcessSmsMessageTempDBModel smsMessageTempDBModel, ProcessSmsChannelDBModel smsChannelDBModel){
 
@@ -151,6 +150,7 @@ public class ChannelHelper {
 
         return operationSmsMessageDAO;
     }
+
 
 
     public OperationWappMessageDAO createOperationWappMessageDAO(ProcessWappMessageTempDBModel processWappMessageTempDBModel, UserDetailsDBModel agentDetails){

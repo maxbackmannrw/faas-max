@@ -20,7 +20,7 @@ public class OperationSmsMessageDBModel {
     private String phoneNumber;
     private String phoneCarrier;
     private String phoneType;
-    private OperationSmsMessageDAO operationSmsMessage;
+    private OperationSmsMessageDAO operationSms;
     private String smsSentId;
     private String smsState;
     private long uDate;
@@ -30,7 +30,7 @@ public class OperationSmsMessageDBModel {
     public OperationSmsMessageDBModel() {
     }
 
-    public OperationSmsMessageDBModel(String id, long clientId, long sessionId, String operationId, long agentId, String campaignId, String processId, String numberId, String phoneNumber, String phoneCarrier, String phoneType, OperationSmsMessageDAO operationSmsMessage, String smsSentId, String smsState, long uDate, long cDate, int status) {
+    public OperationSmsMessageDBModel(String id, long clientId, long sessionId, String operationId, long agentId, String campaignId, String processId, String numberId, String phoneNumber, String phoneCarrier, String phoneType, OperationSmsMessageDAO operationSms, String smsSentId, String smsState, long uDate, long cDate, int status) {
         this.id = id;
         this.clientId = clientId;
         this.sessionId = sessionId;
@@ -42,7 +42,7 @@ public class OperationSmsMessageDBModel {
         this.phoneNumber = phoneNumber;
         this.phoneCarrier = phoneCarrier;
         this.phoneType = phoneType;
-        this.operationSmsMessage = operationSmsMessage;
+        this.operationSms = operationSms;
         this.smsSentId = smsSentId;
         this.smsState = smsState;
         this.uDate = uDate;
@@ -138,12 +138,12 @@ public class OperationSmsMessageDBModel {
         this.phoneType = phoneType;
     }
 
-    public OperationSmsMessageDAO getOperationSmsMessage() {
-        return operationSmsMessage;
+    public OperationSmsMessageDAO getOperationSms() {
+        return operationSms;
     }
 
-    public void setOperationSmsMessage(OperationSmsMessageDAO operationSmsMessage) {
-        this.operationSmsMessage = operationSmsMessage;
+    public void setOperationSms(OperationSmsMessageDAO operationSms) {
+        this.operationSms = operationSms;
     }
 
     public String getSmsSentId() {

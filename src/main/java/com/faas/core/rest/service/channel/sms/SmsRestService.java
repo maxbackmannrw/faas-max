@@ -45,7 +45,7 @@ public class SmsRestService {
     @Async
     public void sendSmsMessageService(SessionDBModel sessionDBModel, OperationSmsMessageDBModel operationSmsMessageDBModel) throws IOException {
 
-        Optional<SmsAccountDBModel> smsAccountDBModel = smsAccountRepository.findById(operationSmsMessageDBModel.getOperationSmsMessage().getAccountId());
+        Optional<SmsAccountDBModel> smsAccountDBModel = smsAccountRepository.findById(operationSmsMessageDBModel.getOperationSms().getAccountId());
         Optional<ProcessDBModel> processDBModel = processRepository.findById(sessionDBModel.getProcessId());
         if (smsAccountDBModel.isPresent() && processDBModel.isPresent()) {
             operationSmsMessageDBModel = generateSmsBodyService(sessionDBModel, operationSmsMessageDBModel,smsAccountDBModel.get(),processDBModel.get());
@@ -56,7 +56,7 @@ public class SmsRestService {
 
     public OperationSmsMessageDBModel generateSmsBodyService(SessionDBModel sessionDBModel, OperationSmsMessageDBModel operationSmsMessageDBModel, SmsAccountDBModel smsAccountDBModel, ProcessDBModel processDBModel) throws IOException {
 
-        String smsMessageBody = operationSmsMessageDBModel.getOperationSmsMessage().getSmsBody();
+        String smsMessageBody = operationSmsMessageDBModel.getOperationSms().getSmsBody();
         if (smsMessageBody.contains(AppConstant.CLIENT_NAME_TAG)) {
             smsMessageBody = smsMessageBody.replace(AppConstant.CLIENT_NAME_TAG, sessionDBModel.getClientName());
         }
