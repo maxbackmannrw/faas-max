@@ -124,7 +124,7 @@ public class ChannelHelper {
             operationSmsMessageDBModel.setPhoneNumber(clientPhoneDAO.getPhoneNumber());
             operationSmsMessageDBModel.setPhoneCarrier(clientPhoneDAO.getPhoneCarrier());
             operationSmsMessageDBModel.setPhoneType(clientPhoneDAO.getPhoneType());
-            operationSmsMessageDBModel.setOperationSms(createOperationSmsMessageDAO(sessionDBModel,smsMessageTempDBModel,smsChannelDBModel));
+            operationSmsMessageDBModel.setSmsMessage(createOperationSmsMessageDAO(sessionDBModel,smsMessageTempDBModel,smsChannelDBModel));
             operationSmsMessageDBModel.setSmsSentId(AppConstant.NONE);
             operationSmsMessageDBModel.setSmsState(AppConstant.NONE);
             operationSmsMessageDBModel.setuDate(appUtils.getCurrentTimeStamp());
