@@ -10,15 +10,17 @@ public class OperationSmsMessageDBModel {
 
     @Id
     private String id;
-    private String operationId;
-    private long sessionId;
     private long clientId;
-    private String numberId;
-    private String phoneNumber;
+    private long sessionId;
+    private String operationId;
     private long agentId;
     private String campaignId;
     private String processId;
-    private OperationSmsMessageDAO smsMessage;
+    private String numberId;
+    private String phoneNumber;
+    private String phoneCarrier;
+    private String phoneType;
+    private OperationSmsMessageDAO operationSmsMessage;
     private String smsSentId;
     private String smsState;
     private long uDate;
@@ -28,17 +30,19 @@ public class OperationSmsMessageDBModel {
     public OperationSmsMessageDBModel() {
     }
 
-    public OperationSmsMessageDBModel(String id, String operationId, long sessionId, long clientId, String numberId, String phoneNumber, long agentId, String campaignId, String processId, OperationSmsMessageDAO smsMessage, String smsSentId, String smsState, long uDate, long cDate, int status) {
+    public OperationSmsMessageDBModel(String id, long clientId, long sessionId, String operationId, long agentId, String campaignId, String processId, String numberId, String phoneNumber, String phoneCarrier, String phoneType, OperationSmsMessageDAO operationSmsMessage, String smsSentId, String smsState, long uDate, long cDate, int status) {
         this.id = id;
-        this.operationId = operationId;
-        this.sessionId = sessionId;
         this.clientId = clientId;
-        this.numberId = numberId;
-        this.phoneNumber = phoneNumber;
+        this.sessionId = sessionId;
+        this.operationId = operationId;
         this.agentId = agentId;
         this.campaignId = campaignId;
         this.processId = processId;
-        this.smsMessage = smsMessage;
+        this.numberId = numberId;
+        this.phoneNumber = phoneNumber;
+        this.phoneCarrier = phoneCarrier;
+        this.phoneType = phoneType;
+        this.operationSmsMessage = operationSmsMessage;
         this.smsSentId = smsSentId;
         this.smsState = smsState;
         this.uDate = uDate;
@@ -54,12 +58,12 @@ public class OperationSmsMessageDBModel {
         this.id = id;
     }
 
-    public String getOperationId() {
-        return operationId;
+    public long getClientId() {
+        return clientId;
     }
 
-    public void setOperationId(String operationId) {
-        this.operationId = operationId;
+    public void setClientId(long clientId) {
+        this.clientId = clientId;
     }
 
     public long getSessionId() {
@@ -70,28 +74,12 @@ public class OperationSmsMessageDBModel {
         this.sessionId = sessionId;
     }
 
-    public long getClientId() {
-        return clientId;
+    public String getOperationId() {
+        return operationId;
     }
 
-    public void setClientId(long clientId) {
-        this.clientId = clientId;
-    }
-
-    public String getNumberId() {
-        return numberId;
-    }
-
-    public void setNumberId(String numberId) {
-        this.numberId = numberId;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setOperationId(String operationId) {
+        this.operationId = operationId;
     }
 
     public long getAgentId() {
@@ -118,12 +106,44 @@ public class OperationSmsMessageDBModel {
         this.processId = processId;
     }
 
-    public OperationSmsMessageDAO getSmsMessage() {
-        return smsMessage;
+    public String getNumberId() {
+        return numberId;
     }
 
-    public void setSmsMessage(OperationSmsMessageDAO smsMessage) {
-        this.smsMessage = smsMessage;
+    public void setNumberId(String numberId) {
+        this.numberId = numberId;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getPhoneCarrier() {
+        return phoneCarrier;
+    }
+
+    public void setPhoneCarrier(String phoneCarrier) {
+        this.phoneCarrier = phoneCarrier;
+    }
+
+    public String getPhoneType() {
+        return phoneType;
+    }
+
+    public void setPhoneType(String phoneType) {
+        this.phoneType = phoneType;
+    }
+
+    public OperationSmsMessageDAO getOperationSmsMessage() {
+        return operationSmsMessage;
+    }
+
+    public void setOperationSmsMessage(OperationSmsMessageDAO operationSmsMessage) {
+        this.operationSmsMessage = operationSmsMessage;
     }
 
     public String getSmsSentId() {

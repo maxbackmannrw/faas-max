@@ -1,38 +1,38 @@
 package com.faas.core.base.model.db.operation.details.channel.dao;
 
-import java.util.Map;
+import java.util.List;
 
 public class OperationSmsMessageDAO {
 
-    private String tempId;
+    private String smsTempId;
     private String accountId;
     private String smsTitle;
     private String smsBody;
     private String senderId;
-    private Map<String,String> messageMaps;
-    private String messageType;
-    private long cDate;
+    private List<OperationChannelDataDAO>smsDatas;
+    private String smsType;
+    private int status;
 
     public OperationSmsMessageDAO() {
     }
 
-    public OperationSmsMessageDAO(String tempId, String accountId, String smsTitle, String smsBody, String senderId, Map<String, String> messageMaps, String messageType, long cDate) {
-        this.tempId = tempId;
+    public OperationSmsMessageDAO(String smsTempId, String accountId, String smsTitle, String smsBody, String senderId, List<OperationChannelDataDAO> smsDatas, String smsType, int status) {
+        this.smsTempId = smsTempId;
         this.accountId = accountId;
         this.smsTitle = smsTitle;
         this.smsBody = smsBody;
         this.senderId = senderId;
-        this.messageMaps = messageMaps;
-        this.messageType = messageType;
-        this.cDate = cDate;
+        this.smsDatas = smsDatas;
+        this.smsType = smsType;
+        this.status = status;
     }
 
-    public String getTempId() {
-        return tempId;
+    public String getSmsTempId() {
+        return smsTempId;
     }
 
-    public void setTempId(String tempId) {
-        this.tempId = tempId;
+    public void setSmsTempId(String smsTempId) {
+        this.smsTempId = smsTempId;
     }
 
     public String getAccountId() {
@@ -67,27 +67,27 @@ public class OperationSmsMessageDAO {
         this.senderId = senderId;
     }
 
-    public Map<String, String> getMessageMaps() {
-        return messageMaps;
+    public List<OperationChannelDataDAO> getSmsDatas() {
+        return smsDatas;
     }
 
-    public void setMessageMaps(Map<String, String> messageMaps) {
-        this.messageMaps = messageMaps;
+    public void setSmsDatas(List<OperationChannelDataDAO> smsDatas) {
+        this.smsDatas = smsDatas;
     }
 
-    public String getMessageType() {
-        return messageType;
+    public String getSmsType() {
+        return smsType;
     }
 
-    public void setMessageType(String messageType) {
-        this.messageType = messageType;
+    public void setSmsType(String smsType) {
+        this.smsType = smsType;
     }
 
-    public long getcDate() {
-        return cDate;
+    public int getStatus() {
+        return status;
     }
 
-    public void setcDate(long cDate) {
-        this.cDate = cDate;
+    public void setStatus(int status) {
+        this.status = status;
     }
 }

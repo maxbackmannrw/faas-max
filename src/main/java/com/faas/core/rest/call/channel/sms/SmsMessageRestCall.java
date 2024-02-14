@@ -32,11 +32,11 @@ public class SmsMessageRestCall {
         Map<String,String> formData = new HashMap<>();
         formData.put("username", smsAccountDBModel.getUserName());
         formData.put("password", smsAccountDBModel.getPassword());
-        formData.put("mt", appUtils.convertSmsType(operationSmsMessageDBModel.getSmsMessage().getMessageType()));
+        formData.put("mt", appUtils.convertSmsType(operationSmsMessageDBModel.getOperationSmsMessage().getSmsType()));
         formData.put("fl", "fl");
-        formData.put("Sid", operationSmsMessageDBModel.getSmsMessage().getSenderId());
+        formData.put("Sid", operationSmsMessageDBModel.getOperationSmsMessage().getSenderId());
         formData.put("mno", operationSmsMessageDBModel.getPhoneNumber());
-        formData.put("msg", operationSmsMessageDBModel.getSmsMessage().getSmsBody());
+        formData.put("msg", operationSmsMessageDBModel.getOperationSmsMessage().getSmsBody());
         String requestUrl = restCall.urlBuilder(smsAccountDBModel.getApiUrl(),"",null);
 
         String response = restCall.sendPostFormRequest(requestUrl,formData);

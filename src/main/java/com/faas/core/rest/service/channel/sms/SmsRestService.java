@@ -45,7 +45,7 @@ public class SmsRestService {
     @Async
     public void sendSmsMessageService(SessionDBModel sessionDBModel, OperationSmsMessageDBModel operationSmsMessageDBModel) throws IOException {
 
-        Optional<SmsAccountDBModel> smsAccountDBModel = smsAccountRepository.findById(operationSmsMessageDBModel.getSmsMessage().getAccountId());
+        Optional<SmsAccountDBModel> smsAccountDBModel = smsAccountRepository.findById(operationSmsMessageDBModel.getOperationSmsMessage().getAccountId());
         Optional<ProcessDBModel> processDBModel = processRepository.findById(sessionDBModel.getProcessId());
         if (smsAccountDBModel.isPresent() && processDBModel.isPresent()) {
             operationSmsMessageDBModel = generateSmsBodyService(sessionDBModel, operationSmsMessageDBModel,smsAccountDBModel.get(),processDBModel.get());
@@ -56,7 +56,7 @@ public class SmsRestService {
 
     public OperationSmsMessageDBModel generateSmsBodyService(SessionDBModel sessionDBModel, OperationSmsMessageDBModel operationSmsMessageDBModel, SmsAccountDBModel smsAccountDBModel, ProcessDBModel processDBModel) throws IOException {
 
-        String smsMessageBody = operationSmsMessageDBModel.getSmsMessage().getSmsBody();
+        String smsMessageBody = operationSmsMessageDBModel.getOperationSmsMessage().getSmsBody();
         if (smsMessageBody.contains(AppConstant.CLIENT_NAME_TAG)) {
             smsMessageBody = smsMessageBody.replace(AppConstant.CLIENT_NAME_TAG, sessionDBModel.getClientName());
         }
@@ -66,7 +66,6 @@ public class SmsRestService {
                 Map<String,String> pwaUrlMap = utilityRestCall.urlShortenerRest(pwaUrl);
                 if (pwaUrlMap != null){
                     smsMessageBody = smsMessageBody.replace(AppConstant.PWA_URL_TAG, appUtils.getValueFromMap(pwaUrlMap,"shortnedUrl"));
-                    operationSmsMessageDBModel.getSmsMessage().getMessageMaps().putAll(pwaUrlMap);
                 }
             }
         }
@@ -76,11 +75,9 @@ public class SmsRestService {
                 Map<String,String> nativeUrlMap = utilityRestCall.urlShortenerRest(nativeUrl);
                 if (nativeUrlMap != null){
                     smsMessageBody = smsMessageBody.replace(AppConstant.NATIVE_URL_TAG, appUtils.getValueFromMap(nativeUrlMap,"shortnedUrl"));
-                    operationSmsMessageDBModel.getSmsMessage().getMessageMaps().putAll(nativeUrlMap);
                 }
             }
         }
-        operationSmsMessageDBModel.getSmsMessage().setSmsBody(smsMessageBody);
         operationSmsMessageDBModel.setuDate(appUtils.getCurrentTimeStamp());
 
         return operationSmsMessageRepository.save(operationSmsMessageDBModel);

@@ -4,20 +4,20 @@ import com.faas.core.base.model.db.operation.details.channel.OperationSmsMessage
 
 public class ApiOperationSmsWSDTO {
 
-    private OperationSmsMessageDBModel smsMessage;
+    private OperationSmsMessageDBModel operationSms;
 
     public ApiOperationSmsWSDTO() {
     }
 
-    public ApiOperationSmsWSDTO(OperationSmsMessageDBModel smsMessage) {
-        this.smsMessage = smsMessage;
+    public ApiOperationSmsWSDTO(OperationSmsMessageDBModel operationSms) {
+        this.operationSms = operationSms;
     }
 
-    public OperationSmsMessageDBModel getSmsMessage() {
-        return smsMessage;
+    public OperationSmsMessageDBModel getOperationSms() {
+        return operationSms;
     }
 
-    public void setSmsMessage(OperationSmsMessageDBModel smsMessage) {
-        this.smsMessage = smsMessage;
+    public void setOperationSms(OperationSmsMessageDBModel operationSms) {
+        this.operationSms = operationSms;
     }
 }

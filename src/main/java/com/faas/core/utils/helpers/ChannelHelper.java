@@ -15,7 +15,9 @@ import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.Api
 import com.faas.core.base.model.db.channel.account.EmailAccountDBModel;
 import com.faas.core.base.model.db.channel.account.PushAccountDBModel;
 import com.faas.core.base.model.db.channel.account.SmsAccountDBModel;
+import com.faas.core.base.model.db.client.details.content.ClientDetailsDBModel;
 import com.faas.core.base.model.db.client.details.content.dao.ClientPhoneDAO;
+import com.faas.core.base.model.db.operation.details.channel.OperationSmsMessageDBModel;
 import com.faas.core.base.model.db.operation.details.channel.dao.OperationSmsMessageDAO;
 import com.faas.core.base.model.db.operation.details.channel.dao.OperationWappMessageDAO;
 import com.faas.core.base.model.db.process.details.channel.content.*;
@@ -26,6 +28,8 @@ import com.faas.core.base.model.db.process.details.channel.temp.ProcessSmsMessag
 import com.faas.core.base.model.db.process.details.channel.temp.ProcessWappMessageTempDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.db.user.details.UserDetailsDBModel;
+import com.faas.core.base.repo.client.content.ClientRepository;
+import com.faas.core.base.repo.client.details.ClientDetailsRepository;
 import com.faas.core.base.repo.operation.details.channel.*;
 import com.faas.core.base.repo.process.details.channel.content.*;
 import com.faas.core.base.repo.process.details.channel.temp.ProcessEmailTempRepository;
@@ -34,6 +38,7 @@ import com.faas.core.base.repo.process.details.channel.temp.ProcessSmsMessageTem
 import com.faas.core.base.repo.process.details.channel.temp.ProcessWappMessageTempRepository;
 import com.faas.core.base.repo.user.details.UserDetailsRepository;
 import com.faas.core.rest.service.channel.sms.SmsRestService;
+import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -45,6 +50,11 @@ import java.util.List;
 @Component
 public class ChannelHelper {
 
+    @Autowired
+    ClientRepository clientRepository;
+
+    @Autowired
+    ClientDetailsRepository clientDetailsRepository;
 
     @Autowired
     UserDetailsRepository userDetailsRepository;
@@ -95,30 +105,55 @@ public class ChannelHelper {
     ProcessSmsChannelRepository processSmsChannelRepository;
 
     @Autowired
-    SmsRestService smsRestService;
-
-    @Autowired
     AppUtils appUtils;
 
 
-    public OperationSmsMessageDAO createSmsMessageDAO(ProcessSmsMessageTempDBModel processSmsMessageTempDBModel, ProcessSmsChannelDBModel processSmsChannelDBModel){
+    public OperationSmsMessageDBModel createOperationSmsMessageDBModel(SessionDBModel sessionDBModel,ClientDetailsDBModel clientDetailsDBModel,ProcessSmsMessageTempDBModel smsMessageTempDBModel,ProcessSmsChannelDBModel smsChannelDBModel,String numberId){
+
+        ClientPhoneDAO clientPhoneDAO = findClientPhoneDAO(clientDetailsDBModel.getClientPhones(),numberId);
+        if (clientPhoneDAO != null){
+
+            OperationSmsMessageDBModel operationSmsMessageDBModel = new OperationSmsMessageDBModel();
+            operationSmsMessageDBModel.setClientId(sessionDBModel.getClientId());
+            operationSmsMessageDBModel.setSessionId(sessionDBModel.getId());
+            operationSmsMessageDBModel.setOperationId(sessionDBModel.getOperationId());
+            operationSmsMessageDBModel.setAgentId(sessionDBModel.getAgentId());
+            operationSmsMessageDBModel.setCampaignId(sessionDBModel.getCampaignId());
+            operationSmsMessageDBModel.setProcessId(sessionDBModel.getProcessId());
+            operationSmsMessageDBModel.setNumberId(clientPhoneDAO.getId());
+            operationSmsMessageDBModel.setPhoneNumber(clientPhoneDAO.getPhoneNumber());
+            operationSmsMessageDBModel.setPhoneCarrier(clientPhoneDAO.getPhoneCarrier());
+            operationSmsMessageDBModel.setPhoneType(clientPhoneDAO.getPhoneType());
+            operationSmsMessageDBModel.setOperationSmsMessage(createOperationSmsMessageDAO(sessionDBModel,smsMessageTempDBModel,smsChannelDBModel));
+            operationSmsMessageDBModel.setSmsSentId(AppConstant.NONE);
+            operationSmsMessageDBModel.setSmsState(AppConstant.NONE);
+            operationSmsMessageDBModel.setuDate(appUtils.getCurrentTimeStamp());
+            operationSmsMessageDBModel.setcDate(appUtils.getCurrentTimeStamp());
+            operationSmsMessageDBModel.setStatus(1);
+
+            return operationSmsMessageRepository.save(operationSmsMessageDBModel);
+        }
+        return null;
+    }
+
+
+    public OperationSmsMessageDAO createOperationSmsMessageDAO(SessionDBModel sessionDBModel,ProcessSmsMessageTempDBModel smsMessageTempDBModel, ProcessSmsChannelDBModel smsChannelDBModel){
 
         OperationSmsMessageDAO operationSmsMessageDAO = new OperationSmsMessageDAO();
-
-        operationSmsMessageDAO.setTempId(processSmsMessageTempDBModel.getId());
-        operationSmsMessageDAO.setAccountId(processSmsChannelDBModel.getAccountId());
-        operationSmsMessageDAO.setSmsTitle(processSmsMessageTempDBModel.getSmsTitle());
-        operationSmsMessageDAO.setSmsBody(processSmsMessageTempDBModel.getSmsBody());
-        operationSmsMessageDAO.setSenderId(processSmsMessageTempDBModel.getSenderId());
-        operationSmsMessageDAO.setMessageMaps(new HashMap<>());
-        operationSmsMessageDAO.setMessageType(processSmsMessageTempDBModel.getMessageType());
-        operationSmsMessageDAO.setcDate(appUtils.getCurrentTimeStamp());
+        operationSmsMessageDAO.setSmsTempId(smsMessageTempDBModel.getId());
+        operationSmsMessageDAO.setAccountId(smsChannelDBModel.getAccountId());
+        operationSmsMessageDAO.setSmsTitle(smsMessageTempDBModel.getSmsTitle());
+        operationSmsMessageDAO.setSmsBody(smsMessageTempDBModel.getSmsBody());
+        operationSmsMessageDAO.setSenderId(smsMessageTempDBModel.getSenderId());
+        operationSmsMessageDAO.setSmsDatas(new ArrayList<>());
+        operationSmsMessageDAO.setSmsType(smsMessageTempDBModel.getMessageType());
+        operationSmsMessageDAO.setStatus(1);
 
         return operationSmsMessageDAO;
     }
 
 
-    public OperationWappMessageDAO createWappMessageDAO(ProcessWappMessageTempDBModel processWappMessageTempDBModel, UserDetailsDBModel agentDetails){
+    public OperationWappMessageDAO createOperationWappMessageDAO(ProcessWappMessageTempDBModel processWappMessageTempDBModel, UserDetailsDBModel agentDetails){
 
         OperationWappMessageDAO operationWappMessageDAO = new OperationWappMessageDAO();
         operationWappMessageDAO.setTempId(processWappMessageTempDBModel.getId());
@@ -138,6 +173,17 @@ public class ChannelHelper {
         ApiOperationSipCallWSDTO operationSipCallWSDTO = new ApiOperationSipCallWSDTO();
 
         return operationSipCallWSDTO;
+    }
+
+
+    public ClientPhoneDAO findClientPhoneDAO(List<ClientPhoneDAO>clientPhoneDAOS ,String numberId){
+
+        for (ClientPhoneDAO clientPhoneDAO : clientPhoneDAOS) {
+            if (clientPhoneDAO.getId().equalsIgnoreCase(numberId)) {
+                return clientPhoneDAO;
+            }
+        }
+        return null;
     }
 
 
