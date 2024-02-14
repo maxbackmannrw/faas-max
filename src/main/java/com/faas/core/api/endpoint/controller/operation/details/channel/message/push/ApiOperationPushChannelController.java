@@ -51,9 +51,10 @@ public class ApiOperationPushChannelController {
 
     @RequestMapping(value = ApiRoute.API_SEND_OPERATION_PUSH, method = RequestMethod.POST)
     public ResponseEntity<?> apiSendOperationPush(@RequestParam long agentId,
-                                                  @RequestParam String operationId) {
+                                                  @RequestParam String operationId,
+                                                  @RequestParam String tempId) {
 
-        ApiOperationPushWSModel response = apiOperationPushChannelMiddleware.apiSendOperationPush(agentId,operationId);
+        ApiOperationPushWSModel response = apiOperationPushChannelMiddleware.apiSendOperationPush(agentId,operationId,tempId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -63,9 +64,11 @@ public class ApiOperationPushChannelController {
 
     @RequestMapping(value = ApiRoute.API_UPDATE_OPERATION_PUSH, method = RequestMethod.POST)
     public ResponseEntity<?> apiUpdateOperationPush(@RequestParam long agentId,
-                                                    @RequestParam String operationId) {
+                                                    @RequestParam String operationId,
+                                                    @RequestParam String pushId,
+                                                    @RequestParam String pushState) {
 
-        ApiOperationPushWSModel response = apiOperationPushChannelMiddleware.apiUpdateOperationPush(agentId,operationId);
+        ApiOperationPushWSModel response = apiOperationPushChannelMiddleware.apiUpdateOperationPush(agentId,operationId,pushId,pushState);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -75,9 +78,10 @@ public class ApiOperationPushChannelController {
 
     @RequestMapping(value = ApiRoute.API_REMOVE_OPERATION_PUSH, method = RequestMethod.POST)
     public ResponseEntity<?> apiRemoveOperationPush(@RequestParam long agentId,
-                                                    @RequestParam String operationId) {
+                                                    @RequestParam String operationId,
+                                                    @RequestParam String pushId) {
 
-        ApiOperationPushWSModel response = apiOperationPushChannelMiddleware.apiRemoveOperationPush(agentId,operationId);
+        ApiOperationPushWSModel response = apiOperationPushChannelMiddleware.apiRemoveOperationPush(agentId,operationId,pushId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

@@ -4,20 +4,20 @@ import com.faas.core.base.model.db.operation.details.channel.OperationPushMessag
 
 public class ApiOperationPushWSDTO {
 
-    private OperationPushMessageDBModel pushMessage;
+    private OperationPushMessageDBModel operationPush;
 
     public ApiOperationPushWSDTO() {
     }
 
-    public ApiOperationPushWSDTO(OperationPushMessageDBModel pushMessage) {
-        this.pushMessage = pushMessage;
+    public ApiOperationPushWSDTO(OperationPushMessageDBModel operationPush) {
+        this.operationPush = operationPush;
     }
 
-    public OperationPushMessageDBModel getPushMessage() {
-        return pushMessage;
+    public OperationPushMessageDBModel getOperationPush() {
+        return operationPush;
     }
 
-    public void setPushMessage(OperationPushMessageDBModel pushMessage) {
-        this.pushMessage = pushMessage;
+    public void setOperationPush(OperationPushMessageDBModel operationPush) {
+        this.operationPush = operationPush;
     }
 }

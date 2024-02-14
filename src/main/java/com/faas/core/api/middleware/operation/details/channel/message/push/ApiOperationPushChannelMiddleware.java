@@ -49,7 +49,7 @@ public class ApiOperationPushChannelMiddleware {
         return response;
     }
 
-    public ApiOperationPushWSModel apiSendOperationPush(long agentId,String operationId) {
+    public ApiOperationPushWSModel apiSendOperationPush(long agentId,String operationId,String tempId) {
 
         ApiOperationPushWSModel response = new ApiOperationPushWSModel();
         GeneralWSModel general = new GeneralWSModel();
@@ -65,7 +65,7 @@ public class ApiOperationPushChannelMiddleware {
         return response;
     }
 
-    public ApiOperationPushWSModel apiUpdateOperationPush(long agentId,String operationId) {
+    public ApiOperationPushWSModel apiUpdateOperationPush(long agentId,String operationId,String pushId,String pushState) {
 
         ApiOperationPushWSModel response = new ApiOperationPushWSModel();
         GeneralWSModel general = new GeneralWSModel();
@@ -80,7 +80,7 @@ public class ApiOperationPushChannelMiddleware {
         return response;
     }
 
-    public ApiOperationPushWSModel apiRemoveOperationPush(long agentId,String operationId) {
+    public ApiOperationPushWSModel apiRemoveOperationPush(long agentId,String operationId,String pushId) {
 
         ApiOperationPushWSModel response = new ApiOperationPushWSModel();
         GeneralWSModel general = new GeneralWSModel();
