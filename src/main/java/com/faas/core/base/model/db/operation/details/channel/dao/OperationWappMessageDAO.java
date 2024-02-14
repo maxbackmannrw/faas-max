@@ -1,36 +1,28 @@
 package com.faas.core.base.model.db.operation.details.channel.dao;
 
-import java.util.Map;
+import java.util.List;
 
 public class OperationWappMessageDAO {
 
-    private String tempId;
     private String accountId;
+    private String tempId;
     private String wappTitle;
     private String wappBody;
-    private Map<String,String> messageMaps;
+    private List<OperationChannelDataDAO>messageDatas;
     private String messageType;
-    private long cDate;
+    private int status;
 
     public OperationWappMessageDAO() {
     }
 
-    public OperationWappMessageDAO(String tempId, String accountId, String wappTitle, String wappBody, Map<String, String> messageMaps, String messageType, long cDate) {
-        this.tempId = tempId;
+    public OperationWappMessageDAO(String accountId, String tempId, String wappTitle, String wappBody, List<OperationChannelDataDAO> messageDatas, String messageType, int status) {
         this.accountId = accountId;
+        this.tempId = tempId;
         this.wappTitle = wappTitle;
         this.wappBody = wappBody;
-        this.messageMaps = messageMaps;
+        this.messageDatas = messageDatas;
         this.messageType = messageType;
-        this.cDate = cDate;
-    }
-
-    public String getTempId() {
-        return tempId;
-    }
-
-    public void setTempId(String tempId) {
-        this.tempId = tempId;
+        this.status = status;
     }
 
     public String getAccountId() {
@@ -39,6 +31,14 @@ public class OperationWappMessageDAO {
 
     public void setAccountId(String accountId) {
         this.accountId = accountId;
+    }
+
+    public String getTempId() {
+        return tempId;
+    }
+
+    public void setTempId(String tempId) {
+        this.tempId = tempId;
     }
 
     public String getWappTitle() {
@@ -57,12 +57,12 @@ public class OperationWappMessageDAO {
         this.wappBody = wappBody;
     }
 
-    public Map<String, String> getMessageMaps() {
-        return messageMaps;
+    public List<OperationChannelDataDAO> getMessageDatas() {
+        return messageDatas;
     }
 
-    public void setMessageMaps(Map<String, String> messageMaps) {
-        this.messageMaps = messageMaps;
+    public void setMessageDatas(List<OperationChannelDataDAO> messageDatas) {
+        this.messageDatas = messageDatas;
     }
 
     public String getMessageType() {
@@ -73,11 +73,13 @@ public class OperationWappMessageDAO {
         this.messageType = messageType;
     }
 
-    public long getcDate() {
-        return cDate;
+    public int getStatus() {
+        return status;
     }
 
-    public void setcDate(long cDate) {
-        this.cDate = cDate;
+    public void setStatus(int status) {
+        this.status = status;
     }
 }
+
+

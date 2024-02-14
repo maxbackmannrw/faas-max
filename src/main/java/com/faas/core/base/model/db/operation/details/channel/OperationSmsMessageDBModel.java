@@ -1,5 +1,6 @@
 package com.faas.core.base.model.db.operation.details.channel;
 
+import com.faas.core.base.model.db.client.details.content.dao.ClientPhoneDAO;
 import com.faas.core.base.model.db.operation.details.channel.dao.OperationSmsMessageDAO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -16,10 +17,7 @@ public class OperationSmsMessageDBModel {
     private long agentId;
     private String campaignId;
     private String processId;
-    private String numberId;
-    private String phoneNumber;
-    private String phoneCarrier;
-    private String phoneType;
+    private ClientPhoneDAO clientPhone;
     private OperationSmsMessageDAO smsMessage;
     private String smsSentId;
     private String smsState;
@@ -30,7 +28,7 @@ public class OperationSmsMessageDBModel {
     public OperationSmsMessageDBModel() {
     }
 
-    public OperationSmsMessageDBModel(String id, long clientId, long sessionId, String operationId, long agentId, String campaignId, String processId, String numberId, String phoneNumber, String phoneCarrier, String phoneType, OperationSmsMessageDAO smsMessage, String smsSentId, String smsState, long uDate, long cDate, int status) {
+    public OperationSmsMessageDBModel(String id, long clientId, long sessionId, String operationId, long agentId, String campaignId, String processId, ClientPhoneDAO clientPhone, OperationSmsMessageDAO smsMessage, String smsSentId, String smsState, long uDate, long cDate, int status) {
         this.id = id;
         this.clientId = clientId;
         this.sessionId = sessionId;
@@ -38,10 +36,7 @@ public class OperationSmsMessageDBModel {
         this.agentId = agentId;
         this.campaignId = campaignId;
         this.processId = processId;
-        this.numberId = numberId;
-        this.phoneNumber = phoneNumber;
-        this.phoneCarrier = phoneCarrier;
-        this.phoneType = phoneType;
+        this.clientPhone = clientPhone;
         this.smsMessage = smsMessage;
         this.smsSentId = smsSentId;
         this.smsState = smsState;
@@ -106,36 +101,12 @@ public class OperationSmsMessageDBModel {
         this.processId = processId;
     }
 
-    public String getNumberId() {
-        return numberId;
+    public ClientPhoneDAO getClientPhone() {
+        return clientPhone;
     }
 
-    public void setNumberId(String numberId) {
-        this.numberId = numberId;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getPhoneCarrier() {
-        return phoneCarrier;
-    }
-
-    public void setPhoneCarrier(String phoneCarrier) {
-        this.phoneCarrier = phoneCarrier;
-    }
-
-    public String getPhoneType() {
-        return phoneType;
-    }
-
-    public void setPhoneType(String phoneType) {
-        this.phoneType = phoneType;
+    public void setClientPhone(ClientPhoneDAO clientPhone) {
+        this.clientPhone = clientPhone;
     }
 
     public OperationSmsMessageDAO getSmsMessage() {

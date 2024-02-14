@@ -1,5 +1,6 @@
 package com.faas.core.base.model.db.operation.details.channel;
 
+import com.faas.core.base.model.db.client.details.content.dao.ClientPhoneDAO;
 import com.faas.core.base.model.db.operation.details.channel.dao.OperationWappMessageDAO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -9,14 +10,13 @@ public class OperationWappMessageDBModel {
 
     @Id
     private String id;
-    private String operationId;
-    private long sessionId;
     private long clientId;
-    private String numberId;
-    private String phoneNumber;
+    private long sessionId;
+    private String operationId;
     private long agentId;
     private String campaignId;
     private String processId;
+    private ClientPhoneDAO clientPhone;
     private OperationWappMessageDAO wappMessage;
     private String messageSentId;
     private String messageState;
@@ -27,16 +27,15 @@ public class OperationWappMessageDBModel {
     public OperationWappMessageDBModel() {
     }
 
-    public OperationWappMessageDBModel(String id, String operationId, long sessionId, long clientId, String numberId, String phoneNumber, long agentId, String campaignId, String processId, OperationWappMessageDAO wappMessage, String messageSentId, String messageState, long uDate, long cDate, int status) {
+    public OperationWappMessageDBModel(String id, long clientId, long sessionId, String operationId, long agentId, String campaignId, String processId, ClientPhoneDAO clientPhone, OperationWappMessageDAO wappMessage, String messageSentId, String messageState, long uDate, long cDate, int status) {
         this.id = id;
-        this.operationId = operationId;
-        this.sessionId = sessionId;
         this.clientId = clientId;
-        this.numberId = numberId;
-        this.phoneNumber = phoneNumber;
+        this.sessionId = sessionId;
+        this.operationId = operationId;
         this.agentId = agentId;
         this.campaignId = campaignId;
         this.processId = processId;
+        this.clientPhone = clientPhone;
         this.wappMessage = wappMessage;
         this.messageSentId = messageSentId;
         this.messageState = messageState;
@@ -53,12 +52,12 @@ public class OperationWappMessageDBModel {
         this.id = id;
     }
 
-    public String getOperationId() {
-        return operationId;
+    public long getClientId() {
+        return clientId;
     }
 
-    public void setOperationId(String operationId) {
-        this.operationId = operationId;
+    public void setClientId(long clientId) {
+        this.clientId = clientId;
     }
 
     public long getSessionId() {
@@ -69,28 +68,12 @@ public class OperationWappMessageDBModel {
         this.sessionId = sessionId;
     }
 
-    public long getClientId() {
-        return clientId;
+    public String getOperationId() {
+        return operationId;
     }
 
-    public void setClientId(long clientId) {
-        this.clientId = clientId;
-    }
-
-    public String getNumberId() {
-        return numberId;
-    }
-
-    public void setNumberId(String numberId) {
-        this.numberId = numberId;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setOperationId(String operationId) {
+        this.operationId = operationId;
     }
 
     public long getAgentId() {
@@ -115,6 +98,14 @@ public class OperationWappMessageDBModel {
 
     public void setProcessId(String processId) {
         this.processId = processId;
+    }
+
+    public ClientPhoneDAO getClientPhone() {
+        return clientPhone;
+    }
+
+    public void setClientPhone(ClientPhoneDAO clientPhone) {
+        this.clientPhone = clientPhone;
     }
 
     public OperationWappMessageDAO getWappMessage() {

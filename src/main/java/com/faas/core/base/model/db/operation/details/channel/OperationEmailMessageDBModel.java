@@ -1,10 +1,9 @@
 package com.faas.core.base.model.db.operation.details.channel;
 
-import com.faas.core.base.model.db.operation.details.channel.dao.OperationEmailMessageDataDAO;
+import com.faas.core.base.model.db.client.details.content.dao.ClientEmailDAO;
+import com.faas.core.base.model.db.operation.details.channel.dao.OperationEmailMessageDAO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.util.List;
 
 
 @Document(collection = "operation_email_message_table")
@@ -12,24 +11,15 @@ public class OperationEmailMessageDBModel {
 
     @Id
     private String id;
-    private String operationId;
-    private long sessionId;
-    private String sessionUUID;
     private long clientId;
+    private long sessionId;
+    private String operationId;
     private long agentId;
-    private String emailAddressId;
-    private String emailAddress;
-    private String tempId;
     private String campaignId;
     private String processId;
-    private String subject;
-    private String body;
-    private String footer;
-    private List<OperationEmailMessageDataDAO>messageDatas;
-    private String sender;
-    private String emailType;
-    private String accountId;
-    private String sentId;
+    private ClientEmailDAO clientEmail;
+    private OperationEmailMessageDAO emailMessage;
+    private String emailSentId;
     private String emailState;
     private long uDate;
     private long cDate;
@@ -38,26 +28,17 @@ public class OperationEmailMessageDBModel {
     public OperationEmailMessageDBModel() {
     }
 
-    public OperationEmailMessageDBModel(String id, String operationId, long sessionId, String sessionUUID, long clientId, long agentId, String emailAddressId, String emailAddress, String tempId, String campaignId, String processId, String subject, String body, String footer, List<OperationEmailMessageDataDAO> messageDatas, String sender, String emailType, String accountId, String sentId, String emailState, long uDate, long cDate, int status) {
+    public OperationEmailMessageDBModel(String id, long clientId, long sessionId, String operationId, long agentId, String campaignId, String processId, ClientEmailDAO clientEmail, OperationEmailMessageDAO emailMessage, String emailSentId, String emailState, long uDate, long cDate, int status) {
         this.id = id;
-        this.operationId = operationId;
-        this.sessionId = sessionId;
-        this.sessionUUID = sessionUUID;
         this.clientId = clientId;
+        this.sessionId = sessionId;
+        this.operationId = operationId;
         this.agentId = agentId;
-        this.emailAddressId = emailAddressId;
-        this.emailAddress = emailAddress;
-        this.tempId = tempId;
         this.campaignId = campaignId;
         this.processId = processId;
-        this.subject = subject;
-        this.body = body;
-        this.footer = footer;
-        this.messageDatas = messageDatas;
-        this.sender = sender;
-        this.emailType = emailType;
-        this.accountId = accountId;
-        this.sentId = sentId;
+        this.clientEmail = clientEmail;
+        this.emailMessage = emailMessage;
+        this.emailSentId = emailSentId;
         this.emailState = emailState;
         this.uDate = uDate;
         this.cDate = cDate;
@@ -72,12 +53,12 @@ public class OperationEmailMessageDBModel {
         this.id = id;
     }
 
-    public String getOperationId() {
-        return operationId;
+    public long getClientId() {
+        return clientId;
     }
 
-    public void setOperationId(String operationId) {
-        this.operationId = operationId;
+    public void setClientId(long clientId) {
+        this.clientId = clientId;
     }
 
     public long getSessionId() {
@@ -88,20 +69,12 @@ public class OperationEmailMessageDBModel {
         this.sessionId = sessionId;
     }
 
-    public String getSessionUUID() {
-        return sessionUUID;
+    public String getOperationId() {
+        return operationId;
     }
 
-    public void setSessionUUID(String sessionUUID) {
-        this.sessionUUID = sessionUUID;
-    }
-
-    public long getClientId() {
-        return clientId;
-    }
-
-    public void setClientId(long clientId) {
-        this.clientId = clientId;
+    public void setOperationId(String operationId) {
+        this.operationId = operationId;
     }
 
     public long getAgentId() {
@@ -110,30 +83,6 @@ public class OperationEmailMessageDBModel {
 
     public void setAgentId(long agentId) {
         this.agentId = agentId;
-    }
-
-    public String getEmailAddressId() {
-        return emailAddressId;
-    }
-
-    public void setEmailAddressId(String emailAddressId) {
-        this.emailAddressId = emailAddressId;
-    }
-
-    public String getEmailAddress() {
-        return emailAddress;
-    }
-
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
-    }
-
-    public String getTempId() {
-        return tempId;
-    }
-
-    public void setTempId(String tempId) {
-        this.tempId = tempId;
     }
 
     public String getCampaignId() {
@@ -152,68 +101,28 @@ public class OperationEmailMessageDBModel {
         this.processId = processId;
     }
 
-    public String getSubject() {
-        return subject;
+    public ClientEmailDAO getClientEmail() {
+        return clientEmail;
     }
 
-    public void setSubject(String subject) {
-        this.subject = subject;
+    public void setClientEmail(ClientEmailDAO clientEmail) {
+        this.clientEmail = clientEmail;
     }
 
-    public String getBody() {
-        return body;
+    public OperationEmailMessageDAO getEmailMessage() {
+        return emailMessage;
     }
 
-    public void setBody(String body) {
-        this.body = body;
+    public void setEmailMessage(OperationEmailMessageDAO emailMessage) {
+        this.emailMessage = emailMessage;
     }
 
-    public String getFooter() {
-        return footer;
+    public String getEmailSentId() {
+        return emailSentId;
     }
 
-    public void setFooter(String footer) {
-        this.footer = footer;
-    }
-
-    public List<OperationEmailMessageDataDAO> getMessageDatas() {
-        return messageDatas;
-    }
-
-    public void setMessageDatas(List<OperationEmailMessageDataDAO> messageDatas) {
-        this.messageDatas = messageDatas;
-    }
-
-    public String getSender() {
-        return sender;
-    }
-
-    public void setSender(String sender) {
-        this.sender = sender;
-    }
-
-    public String getEmailType() {
-        return emailType;
-    }
-
-    public void setEmailType(String emailType) {
-        this.emailType = emailType;
-    }
-
-    public String getAccountId() {
-        return accountId;
-    }
-
-    public void setAccountId(String accountId) {
-        this.accountId = accountId;
-    }
-
-    public String getSentId() {
-        return sentId;
-    }
-
-    public void setSentId(String sentId) {
-        this.sentId = sentId;
+    public void setEmailSentId(String emailSentId) {
+        this.emailSentId = emailSentId;
     }
 
     public String getEmailState() {

@@ -10,14 +10,14 @@ public class OperationWappCallDBModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "operation_id")
-    private String operationId;
+    @Column(name = "client_id")
+    private long clientId;
 
     @Column(name = "session_id")
     private long sessionId;
 
-    @Column(name = "client_id")
-    private long clientId;
+    @Column(name = "operation_id")
+    private String operationId;
 
     @Column(name = "agent_id")
     private long agentId;
@@ -64,11 +64,11 @@ public class OperationWappCallDBModel {
     public OperationWappCallDBModel() {
     }
 
-    public OperationWappCallDBModel(long id, String operationId, long sessionId, long clientId, long agentId, String campaignId, String processId, String numberId, String phoneNumber, String accountId, String callerId, String connectionId, String callState, long sDate, long fDate, long uDate, long cDate, int status) {
+    public OperationWappCallDBModel(long id, long clientId, long sessionId, String operationId, long agentId, String campaignId, String processId, String numberId, String phoneNumber, String accountId, String callerId, String connectionId, String callState, long sDate, long fDate, long uDate, long cDate, int status) {
         this.id = id;
-        this.operationId = operationId;
-        this.sessionId = sessionId;
         this.clientId = clientId;
+        this.sessionId = sessionId;
+        this.operationId = operationId;
         this.agentId = agentId;
         this.campaignId = campaignId;
         this.processId = processId;
@@ -93,12 +93,12 @@ public class OperationWappCallDBModel {
         this.id = id;
     }
 
-    public String getOperationId() {
-        return operationId;
+    public long getClientId() {
+        return clientId;
     }
 
-    public void setOperationId(String operationId) {
-        this.operationId = operationId;
+    public void setClientId(long clientId) {
+        this.clientId = clientId;
     }
 
     public long getSessionId() {
@@ -109,12 +109,12 @@ public class OperationWappCallDBModel {
         this.sessionId = sessionId;
     }
 
-    public long getClientId() {
-        return clientId;
+    public String getOperationId() {
+        return operationId;
     }
 
-    public void setClientId(long clientId) {
-        this.clientId = clientId;
+    public void setOperationId(String operationId) {
+        this.operationId = operationId;
     }
 
     public long getAgentId() {

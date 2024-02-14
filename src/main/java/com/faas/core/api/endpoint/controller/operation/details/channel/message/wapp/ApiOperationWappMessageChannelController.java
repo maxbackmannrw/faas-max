@@ -54,10 +54,10 @@ public class ApiOperationWappMessageChannelController {
     @RequestMapping(value = ApiRoute.API_SEND_OPERATION_WAPP_MESSAGE, method = RequestMethod.POST)
     public ResponseEntity<?> apiSendOperationWappMessage(@RequestParam long agentId,
                                                          @RequestParam String operationId,
-                                                         @RequestParam String messageTempId,
+                                                         @RequestParam String tempId,
                                                          @RequestParam String numberId) throws IOException {
 
-        ApiOperationWappMessageWSModel response = apiOperationWappMessageChannelMiddleware.apiSendOperationWappMessage(agentId,operationId,messageTempId,numberId);
+        ApiOperationWappMessageWSModel response = apiOperationWappMessageChannelMiddleware.apiSendOperationWappMessage(agentId,operationId,tempId,numberId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

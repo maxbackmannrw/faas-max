@@ -64,13 +64,13 @@ public class ApiOperationWappMessageChannelMiddleware {
         return response;
     }
 
-    public ApiOperationWappMessageWSModel apiSendOperationWappMessage(long agentId,String operationId,String messageTempId,String numberId) throws IOException {
+    public ApiOperationWappMessageWSModel apiSendOperationWappMessage(long agentId,String operationId,String tempId,String numberId) throws IOException {
 
         ApiOperationWappMessageWSModel response = new ApiOperationWappMessageWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ApiOperationWappMessageWSDTO>wappMessageWSDTOS = new ArrayList<>();
 
-        ApiOperationWappMessageWSDTO wappMessageWSDTO = apiOperationWappMessageChannelFramework.apiSendOperationWappMessageService(agentId,operationId,messageTempId,numberId);
+        ApiOperationWappMessageWSDTO wappMessageWSDTO = apiOperationWappMessageChannelFramework.apiSendOperationWappMessageService(agentId,operationId,tempId,numberId);
         if (wappMessageWSDTO != null){
             wappMessageWSDTOS.add(wappMessageWSDTO);
         }

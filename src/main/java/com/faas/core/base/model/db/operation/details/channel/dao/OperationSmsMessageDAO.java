@@ -4,8 +4,8 @@ import java.util.List;
 
 public class OperationSmsMessageDAO {
 
-    private String smsTempId;
     private String accountId;
+    private String tempId;
     private String smsTitle;
     private String smsBody;
     private String senderId;
@@ -16,9 +16,9 @@ public class OperationSmsMessageDAO {
     public OperationSmsMessageDAO() {
     }
 
-    public OperationSmsMessageDAO(String smsTempId, String accountId, String smsTitle, String smsBody, String senderId, List<OperationChannelDataDAO> smsDatas, String smsType, int status) {
-        this.smsTempId = smsTempId;
+    public OperationSmsMessageDAO(String accountId, String tempId, String smsTitle, String smsBody, String senderId, List<OperationChannelDataDAO> smsDatas, String smsType, int status) {
         this.accountId = accountId;
+        this.tempId = tempId;
         this.smsTitle = smsTitle;
         this.smsBody = smsBody;
         this.senderId = senderId;
@@ -27,20 +27,20 @@ public class OperationSmsMessageDAO {
         this.status = status;
     }
 
-    public String getSmsTempId() {
-        return smsTempId;
-    }
-
-    public void setSmsTempId(String smsTempId) {
-        this.smsTempId = smsTempId;
-    }
-
     public String getAccountId() {
         return accountId;
     }
 
     public void setAccountId(String accountId) {
         this.accountId = accountId;
+    }
+
+    public String getTempId() {
+        return tempId;
+    }
+
+    public void setTempId(String tempId) {
+        this.tempId = tempId;
     }
 
     public String getSmsTitle() {

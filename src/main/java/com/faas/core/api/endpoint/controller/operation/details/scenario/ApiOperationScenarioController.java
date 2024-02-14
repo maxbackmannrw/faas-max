@@ -35,7 +35,6 @@ public class ApiOperationScenarioController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_SCENARIO, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationScenario(@RequestParam long agentId,
                                                      @RequestParam String operationId,
@@ -48,7 +47,6 @@ public class ApiOperationScenarioController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = ApiRoute.API_OPERATION_EXECUTE_SCENARIO, method = RequestMethod.POST)
     public ResponseEntity<?> apiOperationExecuteScenario(@RequestParam long agentId,
@@ -63,7 +61,6 @@ public class ApiOperationScenarioController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = ApiRoute.API_UPDATE_OPERATION_SCENARIO, method = RequestMethod.POST)
     public ResponseEntity<?> apiUpdateOperationScenario(@RequestParam long agentId,
                                                         @RequestParam String operationId,
@@ -76,7 +73,6 @@ public class ApiOperationScenarioController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = ApiRoute.API_REMOVE_OPERATION_SCENARIO, method = RequestMethod.POST)
     public ResponseEntity<?> apiRemoveOperationScenario(@RequestParam long agentId,
@@ -105,7 +101,6 @@ public class ApiOperationScenarioController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_PROCESS_SCENARIO, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationProcessScenario(@RequestParam long agentId,
                                                             @RequestParam String operationId,
@@ -118,7 +113,6 @@ public class ApiOperationScenarioController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
 
 

@@ -1,10 +1,8 @@
 package com.faas.core.base.model.db.operation.details.channel;
 
-import com.faas.core.base.model.db.operation.details.channel.dao.OperationPushMessageDataDAO;
+import com.faas.core.base.model.db.operation.details.channel.dao.OperationPushMessageDAO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.util.List;
 
 
 @Document(collection = "operation_push_message_table")
@@ -12,24 +10,14 @@ public class OperationPushMessageDBModel {
 
     @Id
     private String id;
-    private String operationId;
-    private long sessionId;
-    private String sessionUUID;
     private long clientId;
+    private long sessionId;
+    private String operationId;
     private long agentId;
-    private String tempId;
     private String campaignId;
     private String processId;
-    private String header;
-    private String body;
-    private String footer;
-    private List<OperationPushMessageDataDAO>messageDatas;
-    private String sender;
-    private String pushType;
-    private String mainType;
-    private String accountId;
-    private String sentId;
-    private String targetId;
+    private OperationPushMessageDAO pushMessage;
+    private String pushSentId;
     private String pushState;
     private long uDate;
     private long cDate;
@@ -38,26 +26,16 @@ public class OperationPushMessageDBModel {
     public OperationPushMessageDBModel() {
     }
 
-    public OperationPushMessageDBModel(String id, String operationId, long sessionId, String sessionUUID, long clientId, long agentId, String tempId, String campaignId, String processId, String header, String body, String footer, List<OperationPushMessageDataDAO> messageDatas, String sender, String pushType, String mainType, String accountId, String sentId, String targetId, String pushState, long uDate, long cDate, int status) {
+    public OperationPushMessageDBModel(String id, long clientId, long sessionId, String operationId, long agentId, String campaignId, String processId, OperationPushMessageDAO pushMessage, String pushSentId, String pushState, long uDate, long cDate, int status) {
         this.id = id;
-        this.operationId = operationId;
-        this.sessionId = sessionId;
-        this.sessionUUID = sessionUUID;
         this.clientId = clientId;
+        this.sessionId = sessionId;
+        this.operationId = operationId;
         this.agentId = agentId;
-        this.tempId = tempId;
         this.campaignId = campaignId;
         this.processId = processId;
-        this.header = header;
-        this.body = body;
-        this.footer = footer;
-        this.messageDatas = messageDatas;
-        this.sender = sender;
-        this.pushType = pushType;
-        this.mainType = mainType;
-        this.accountId = accountId;
-        this.sentId = sentId;
-        this.targetId = targetId;
+        this.pushMessage = pushMessage;
+        this.pushSentId = pushSentId;
         this.pushState = pushState;
         this.uDate = uDate;
         this.cDate = cDate;
@@ -72,12 +50,12 @@ public class OperationPushMessageDBModel {
         this.id = id;
     }
 
-    public String getOperationId() {
-        return operationId;
+    public long getClientId() {
+        return clientId;
     }
 
-    public void setOperationId(String operationId) {
-        this.operationId = operationId;
+    public void setClientId(long clientId) {
+        this.clientId = clientId;
     }
 
     public long getSessionId() {
@@ -88,20 +66,12 @@ public class OperationPushMessageDBModel {
         this.sessionId = sessionId;
     }
 
-    public String getSessionUUID() {
-        return sessionUUID;
+    public String getOperationId() {
+        return operationId;
     }
 
-    public void setSessionUUID(String sessionUUID) {
-        this.sessionUUID = sessionUUID;
-    }
-
-    public long getClientId() {
-        return clientId;
-    }
-
-    public void setClientId(long clientId) {
-        this.clientId = clientId;
+    public void setOperationId(String operationId) {
+        this.operationId = operationId;
     }
 
     public long getAgentId() {
@@ -110,14 +80,6 @@ public class OperationPushMessageDBModel {
 
     public void setAgentId(long agentId) {
         this.agentId = agentId;
-    }
-
-    public String getTempId() {
-        return tempId;
-    }
-
-    public void setTempId(String tempId) {
-        this.tempId = tempId;
     }
 
     public String getCampaignId() {
@@ -136,84 +98,20 @@ public class OperationPushMessageDBModel {
         this.processId = processId;
     }
 
-    public String getHeader() {
-        return header;
+    public OperationPushMessageDAO getPushMessage() {
+        return pushMessage;
     }
 
-    public void setHeader(String header) {
-        this.header = header;
+    public void setPushMessage(OperationPushMessageDAO pushMessage) {
+        this.pushMessage = pushMessage;
     }
 
-    public String getBody() {
-        return body;
+    public String getPushSentId() {
+        return pushSentId;
     }
 
-    public void setBody(String body) {
-        this.body = body;
-    }
-
-    public String getFooter() {
-        return footer;
-    }
-
-    public void setFooter(String footer) {
-        this.footer = footer;
-    }
-
-    public List<OperationPushMessageDataDAO> getMessageDatas() {
-        return messageDatas;
-    }
-
-    public void setMessageDatas(List<OperationPushMessageDataDAO> messageDatas) {
-        this.messageDatas = messageDatas;
-    }
-
-    public String getSender() {
-        return sender;
-    }
-
-    public void setSender(String sender) {
-        this.sender = sender;
-    }
-
-    public String getPushType() {
-        return pushType;
-    }
-
-    public void setPushType(String pushType) {
-        this.pushType = pushType;
-    }
-
-    public String getMainType() {
-        return mainType;
-    }
-
-    public void setMainType(String mainType) {
-        this.mainType = mainType;
-    }
-
-    public String getAccountId() {
-        return accountId;
-    }
-
-    public void setAccountId(String accountId) {
-        this.accountId = accountId;
-    }
-
-    public String getSentId() {
-        return sentId;
-    }
-
-    public void setSentId(String sentId) {
-        this.sentId = sentId;
-    }
-
-    public String getTargetId() {
-        return targetId;
-    }
-
-    public void setTargetId(String targetId) {
-        this.targetId = targetId;
+    public void setPushSentId(String pushSentId) {
+        this.pushSentId = pushSentId;
     }
 
     public String getPushState() {
