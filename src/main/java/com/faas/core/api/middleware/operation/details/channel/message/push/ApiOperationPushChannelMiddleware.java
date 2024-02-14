@@ -117,12 +117,12 @@ public class ApiOperationPushChannelMiddleware {
         return response;
     }
 
-    public ApiOperationPushTempWSModel apiGetOperationPushTemp(long agentId,String operationId,String pushTempId) {
+    public ApiOperationPushTempWSModel apiGetOperationPushTemp(long agentId,String operationId,String tempId) {
 
         ApiOperationPushTempWSModel response = new ApiOperationPushTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiOperationPushTempWSDTO pushTempWSDTO = apiOperationPushChannelFramework.apiGetOperationPushTempService(agentId,operationId,pushTempId);
+        ApiOperationPushTempWSDTO pushTempWSDTO = apiOperationPushChannelFramework.apiGetOperationPushTempService(agentId,operationId,tempId);
         if (pushTempWSDTO != null){
             response.setPushTemp(pushTempWSDTO);
         }

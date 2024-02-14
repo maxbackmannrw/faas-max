@@ -54,10 +54,10 @@ public class ApiOperationSmsChannelController {
     @RequestMapping(value = ApiRoute.API_SEND_OPERATION_SMS, method = RequestMethod.POST)
     public ResponseEntity<?> apiSendOperationSms(@RequestParam long agentId,
                                                  @RequestParam String operationId,
-                                                 @RequestParam String smsTempId,
+                                                 @RequestParam String tempId,
                                                  @RequestParam String numberId) throws IOException {
 
-        ApiOperationSmsWSModel response = apiOperationSmsChannelMiddleware.apiSendOperationSms(agentId,operationId,smsTempId,numberId);
+        ApiOperationSmsWSModel response = apiOperationSmsChannelMiddleware.apiSendOperationSms(agentId,operationId,tempId,numberId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -109,9 +109,9 @@ public class ApiOperationSmsChannelController {
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_SMS_TEMP, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationSmsTemp(@RequestParam long agentId,
                                                     @RequestParam String operationId,
-                                                    @RequestParam String smsTempId) {
+                                                    @RequestParam String tempId) {
 
-        ApiOperationSmsTempWSModel response = apiOperationSmsChannelMiddleware.apiGetOperationSmsTemp(agentId,operationId,smsTempId);
+        ApiOperationSmsTempWSModel response = apiOperationSmsChannelMiddleware.apiGetOperationSmsTemp(agentId,operationId,tempId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

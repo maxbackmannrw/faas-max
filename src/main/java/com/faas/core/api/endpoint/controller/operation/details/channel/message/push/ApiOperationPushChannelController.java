@@ -107,9 +107,9 @@ public class ApiOperationPushChannelController {
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_PUSH_TEMP, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationPushTemp(@RequestParam long agentId,
                                                      @RequestParam String operationId,
-                                                     @RequestParam String pushTempId) {
+                                                     @RequestParam String tempId) {
 
-        ApiOperationPushTempWSModel response = apiOperationPushChannelMiddleware.apiGetOperationPushTemp(agentId,operationId,pushTempId);
+        ApiOperationPushTempWSModel response = apiOperationPushChannelMiddleware.apiGetOperationPushTemp(agentId,operationId,tempId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

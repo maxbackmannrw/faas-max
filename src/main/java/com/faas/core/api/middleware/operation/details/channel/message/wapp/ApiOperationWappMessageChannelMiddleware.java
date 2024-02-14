@@ -147,12 +147,12 @@ public class ApiOperationWappMessageChannelMiddleware {
         return response;
     }
 
-    public ApiOperationWappMessageTempWSModel apiGetOperationWappMessageTemp(long agentId,String operationId,String messageTempId) {
+    public ApiOperationWappMessageTempWSModel apiGetOperationWappMessageTemp(long agentId,String operationId,String tempId) {
 
         ApiOperationWappMessageTempWSModel response = new ApiOperationWappMessageTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiOperationWappMessageTempWSDTO wappMessageTempWSDTO = apiOperationWappMessageChannelFramework.apiGetOperationWappMessageTempService(agentId,operationId,messageTempId);
+        ApiOperationWappMessageTempWSDTO wappMessageTempWSDTO = apiOperationWappMessageChannelFramework.apiGetOperationWappMessageTempService(agentId,operationId,tempId);
         if (wappMessageTempWSDTO != null){
             response.setWappMessageTemp(wappMessageTempWSDTO);
         }

@@ -87,7 +87,7 @@ public class WappRestService {
                 Map<String,String> pwaUrlMap = utilityRestCall.urlShortenerRest(pwaUrl);
                 if (pwaUrlMap != null){
                     wappMessageBody = wappMessageBody.replace(AppConstant.PWA_URL_TAG, appUtils.getValueFromMap(pwaUrlMap,"shortnedUrl"));
-                    operationWappMessageDBModel.getWappMessage().getMessageMaps().putAll(pwaUrlMap);
+                 //   operationWappMessageDBModel.getWappMessage().getMessageMaps().putAll(pwaUrlMap);
                 }
             }
         }
@@ -97,7 +97,7 @@ public class WappRestService {
                 Map<String,String> nativeUrlMap = utilityRestCall.urlShortenerRest(nativeUrl);
                 if (nativeUrlMap != null){
                     wappMessageBody = wappMessageBody.replace(AppConstant.NATIVE_URL_TAG, appUtils.getValueFromMap(nativeUrlMap,"shortnedUrl"));
-                    operationWappMessageDBModel.getWappMessage().getMessageMaps().putAll(nativeUrlMap);
+                   // operationWappMessageDBModel.getWappMessage().getMessageMaps().putAll(nativeUrlMap);
                 }
             }
         }

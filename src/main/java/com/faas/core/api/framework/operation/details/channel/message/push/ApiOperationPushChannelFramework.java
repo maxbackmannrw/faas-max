@@ -85,13 +85,13 @@ public class ApiOperationPushChannelFramework {
         return null;
     }
 
-    public ApiOperationPushTempWSDTO apiGetOperationPushTempService(long agentId,String operationId,String pushTempId) {
+    public ApiOperationPushTempWSDTO apiGetOperationPushTempService(long agentId,String operationId,String tempId) {
 
         List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
         if (!sessionDBModels.isEmpty()){
             ApiOperationPushTempWSDTO pushTempWSDTO = new ApiOperationPushTempWSDTO();
             pushTempWSDTO.setPushAccount(channelHelper.getApiPushAccountWSDTO(sessionDBModels.get(0).getProcessId()));
-            pushTempWSDTO.setOperationPushTemps(processPushTempRepository.findByIdAndProcessId(pushTempId,sessionDBModels.get(0).getProcessId()));
+            pushTempWSDTO.setOperationPushTemps(processPushTempRepository.findByIdAndProcessId(tempId,sessionDBModels.get(0).getProcessId()));
 
             return pushTempWSDTO;
         }

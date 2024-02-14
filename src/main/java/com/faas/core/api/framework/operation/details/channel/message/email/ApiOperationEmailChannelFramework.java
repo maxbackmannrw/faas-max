@@ -73,7 +73,7 @@ public class ApiOperationEmailChannelFramework {
         return null;
     }
 
-    public ApiOperationEmailWSDTO apiSendOperationEmailService(long agentId, String operationId,String emailTempId,String emailAddressId) {
+    public ApiOperationEmailWSDTO apiSendOperationEmailService(long agentId, String operationId,String tempId,String emailAddressId) {
 
         return null;
     }
@@ -118,7 +118,7 @@ public class ApiOperationEmailChannelFramework {
         return null;
     }
 
-    public ApiOperationEmailTempWSDTO apiGetOperationEmailTempService(long agentId,String operationId,String emailTempId) {
+    public ApiOperationEmailTempWSDTO apiGetOperationEmailTempService(long agentId,String operationId,String tempId) {
 
         List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
         if (!sessionDBModels.isEmpty()){
@@ -128,7 +128,7 @@ public class ApiOperationEmailChannelFramework {
             if (!clientDetailsDBModels.isEmpty() && clientDetailsDBModels.get(0).getClientEmails() != null){
                 emailTempWSDTO.setClientEmails(clientDetailsDBModels.get(0).getClientEmails());
             }
-            emailTempWSDTO.setOperationEmailTemps(processEmailTempRepository.findByIdAndProcessId(emailTempId,sessionDBModels.get(0).getProcessId()));
+            emailTempWSDTO.setOperationEmailTemps(processEmailTempRepository.findByIdAndProcessId(tempId,sessionDBModels.get(0).getProcessId()));
 
             return emailTempWSDTO;
         }

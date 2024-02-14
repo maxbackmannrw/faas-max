@@ -67,13 +67,13 @@ public class ApiOperationSmsChannelMiddleware {
     }
 
 
-    public ApiOperationSmsWSModel apiSendOperationSms(long agentId,String operationId,String smsTempId,String numberId) throws IOException {
+    public ApiOperationSmsWSModel apiSendOperationSms(long agentId,String operationId,String tempId,String numberId) throws IOException {
 
         ApiOperationSmsWSModel response = new ApiOperationSmsWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ApiOperationSmsWSDTO> operationSmsWSDTOS = new ArrayList<>();
 
-        ApiOperationSmsWSDTO operationSmsWSDTO = apiOperationSmsChannelFramework.apiSendOperationSmsService(agentId,operationId,smsTempId,numberId);
+        ApiOperationSmsWSDTO operationSmsWSDTO = apiOperationSmsChannelFramework.apiSendOperationSmsService(agentId,operationId,tempId,numberId);
         if (operationSmsWSDTO != null){
             operationSmsWSDTOS.add(operationSmsWSDTO);
         }
@@ -152,12 +152,12 @@ public class ApiOperationSmsChannelMiddleware {
     }
 
 
-    public ApiOperationSmsTempWSModel apiGetOperationSmsTemp(long agentId,String operationId,String smsTempId) {
+    public ApiOperationSmsTempWSModel apiGetOperationSmsTemp(long agentId,String operationId,String tempId) {
 
         ApiOperationSmsTempWSModel response = new ApiOperationSmsTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiOperationSmsTempWSDTO smsTempWSDTO = apiOperationSmsChannelFramework.apiGetOperationSmsTempService(agentId,operationId,smsTempId);
+        ApiOperationSmsTempWSDTO smsTempWSDTO = apiOperationSmsChannelFramework.apiGetOperationSmsTempService(agentId,operationId,tempId);
         if (smsTempWSDTO != null){
             response.setSmsTemp(smsTempWSDTO);
         }

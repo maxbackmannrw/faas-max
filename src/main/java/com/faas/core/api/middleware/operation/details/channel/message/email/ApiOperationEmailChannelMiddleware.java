@@ -64,13 +64,13 @@ public class ApiOperationEmailChannelMiddleware {
         return response;
     }
 
-    public ApiOperationEmailWSModel apiSendOperationEmail(long agentId, String operationId,String emailTempId,String emailAddressId) {
+    public ApiOperationEmailWSModel apiSendOperationEmail(long agentId, String operationId,String tempId,String emailAddressId) {
 
         ApiOperationEmailWSModel response = new ApiOperationEmailWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ApiOperationEmailWSDTO> operationEmailWSDTOS = new ArrayList<>();
 
-        ApiOperationEmailWSDTO operationEmailWSDTO =  apiOperationEmailChannelFramework.apiSendOperationEmailService(agentId,operationId,emailTempId,emailAddressId);
+        ApiOperationEmailWSDTO operationEmailWSDTO =  apiOperationEmailChannelFramework.apiSendOperationEmailService(agentId,operationId,tempId,emailAddressId);
         if (operationEmailWSDTO != null){
             operationEmailWSDTOS.add(operationEmailWSDTO);
         }
@@ -147,12 +147,12 @@ public class ApiOperationEmailChannelMiddleware {
         return response;
     }
 
-    public ApiOperationEmailTempWSModel apiGetOperationEmailTemp(long agentId,String operationId,String emailTempId) {
+    public ApiOperationEmailTempWSModel apiGetOperationEmailTemp(long agentId,String operationId,String tempId) {
 
         ApiOperationEmailTempWSModel response = new ApiOperationEmailTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiOperationEmailTempWSDTO emailTempWSDTO = apiOperationEmailChannelFramework.apiGetOperationEmailTempService(agentId,operationId,emailTempId);
+        ApiOperationEmailTempWSDTO emailTempWSDTO = apiOperationEmailChannelFramework.apiGetOperationEmailTempService(agentId,operationId,tempId);
         if (emailTempWSDTO != null) {
             response.setEmailTemp(emailTempWSDTO);
         }

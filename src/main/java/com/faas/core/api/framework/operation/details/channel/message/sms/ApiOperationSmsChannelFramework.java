@@ -87,15 +87,17 @@ public class ApiOperationSmsChannelFramework {
     }
 
 
-    public ApiOperationSmsWSDTO apiSendOperationSmsService(long agentId,String operationId,String smsTempId,String numberId) throws IOException {
+    public ApiOperationSmsWSDTO apiSendOperationSmsService(long agentId,String operationId,String tempId,String numberId) throws IOException {
 
         List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
         if (!sessionDBModels.isEmpty()){
+
             ClientPhoneDAO clientPhoneDAO = channelHelper.fetchClientPhoneDAO(sessionDBModels.get(0).getClientId(),numberId);
-            List<ProcessSmsMessageTempDBModel> smsMessageTempDBModels = processSmsMessageTempRepository.findByIdAndProcessId(smsTempId,sessionDBModels.get(0).getProcessId());
+            List<ProcessSmsMessageTempDBModel> smsMessageTempDBModels = processSmsMessageTempRepository.findByIdAndProcessId(tempId,sessionDBModels.get(0).getProcessId());
             List<ProcessSmsChannelDBModel> smsChannelDBModels = processSmsChannelRepository.findByProcessId(sessionDBModels.get(0).getProcessId());
-            if (!smsMessageTempDBModels.isEmpty() && !smsChannelDBModels.isEmpty() && clientPhoneDAO != null){
-                OperationSmsMessageDBModel smsMessageDBModel = channelHelper.createOperationSmsMessageDBModel(sessionDBModels.get(0),clientPhoneDAO,smsMessageTempDBModels.get(0),smsChannelDBModels.get(0),numberId);
+            if (clientPhoneDAO != null && !smsMessageTempDBModels.isEmpty() && !smsChannelDBModels.isEmpty() ){
+
+                OperationSmsMessageDBModel smsMessageDBModel = channelHelper.createOperationSmsMessageDBModel(sessionDBModels.get(0),clientPhoneDAO,smsMessageTempDBModels.get(0),smsChannelDBModels.get(0));
 
             }
         }
@@ -144,7 +146,7 @@ public class ApiOperationSmsChannelFramework {
     }
 
 
-    public ApiOperationSmsTempWSDTO apiGetOperationSmsTempService(long agentId,String operationId,String smsTempId) {
+    public ApiOperationSmsTempWSDTO apiGetOperationSmsTempService(long agentId,String operationId,String tempId) {
 
         List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
         if (!sessionDBModels.isEmpty()){
@@ -154,7 +156,7 @@ public class ApiOperationSmsChannelFramework {
             if (!clientDetailsDBModels.isEmpty() && clientDetailsDBModels.get(0).getClientPhones() != null){
                 smsTempWSDTO.setClientPhones(clientDetailsDBModels.get(0).getClientPhones());
             }
-            smsTempWSDTO.setOperationSmsTemps(processSmsMessageTempRepository.findByIdAndProcessId(smsTempId,sessionDBModels.get(0).getProcessId()));
+            smsTempWSDTO.setOperationSmsTemps(processSmsMessageTempRepository.findByIdAndProcessId(tempId,sessionDBModels.get(0).getProcessId()));
 
             return smsTempWSDTO;
         }

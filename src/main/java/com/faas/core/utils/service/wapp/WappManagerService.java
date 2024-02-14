@@ -50,7 +50,7 @@ public class WappManagerService {
         if (wappAccountDBModel.isPresent()) {
             if (operationWappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.TEXT_MESSAGE)) {
                 String messageBody = wappMessageBodyPopulate(operationWappMessageDBModel);
-                if (messageBody != null && wappManagerRESTCall.sendWappTextMessage(wappAccountDBModel.get().getServerUrl(), wappAccountDBModel.get().getInstanceKey(), operationWappMessageDBModel.getPhoneNumber(), messageBody)) {
+                if (messageBody != null && wappManagerRESTCall.sendWappTextMessage(wappAccountDBModel.get().getServerUrl(), wappAccountDBModel.get().getInstanceKey(), operationWappMessageDBModel.getClientPhone().getPhoneNumber(), messageBody)) {
                     operationWappMessageDBModel.setMessageState(AppConstant.MESSAGE_SENT);
                     operationWappMessageDBModel.setuDate(appUtils.getCurrentTimeStamp());
                     operationWappMessageRepository.save(operationWappMessageDBModel);

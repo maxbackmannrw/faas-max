@@ -35,7 +35,7 @@ public class SmsMessageRestCall {
         formData.put("mt", appUtils.convertSmsType(operationSmsMessageDBModel.getSmsMessage().getSmsType()));
         formData.put("fl", "fl");
         formData.put("Sid", operationSmsMessageDBModel.getSmsMessage().getSenderId());
-        formData.put("mno", operationSmsMessageDBModel.getPhoneNumber());
+       // formData.put("mno", operationSmsMessageDBModel.getPhoneNumber());
         formData.put("msg", operationSmsMessageDBModel.getSmsMessage().getSmsBody());
         String requestUrl = restCall.urlBuilder(smsAccountDBModel.getApiUrl(),"",null);
 

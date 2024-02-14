@@ -108,9 +108,9 @@ public class ApiOperationWappMessageChannelController {
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_WAPP_MESSAGE_TEMP, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationWappMessageTemp(@RequestParam long agentId,
                                                             @RequestParam String operationId,
-                                                            @RequestParam String messageTempId) {
+                                                            @RequestParam String tempId) {
 
-        ApiOperationWappMessageTempWSModel response = apiOperationWappMessageChannelMiddleware.apiGetOperationWappMessageTemp(agentId,operationId,messageTempId);
+        ApiOperationWappMessageTempWSModel response = apiOperationWappMessageChannelMiddleware.apiGetOperationWappMessageTemp(agentId,operationId,tempId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

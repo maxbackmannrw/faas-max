@@ -109,7 +109,7 @@ public class ChannelHelper {
     AppUtils appUtils;
 
 
-    public OperationSmsMessageDBModel createOperationSmsMessageDBModel(SessionDBModel sessionDBModel,ClientPhoneDAO clientPhoneDAO,ProcessSmsMessageTempDBModel smsMessageTempDBModel,ProcessSmsChannelDBModel smsChannelDBModel,String numberId){
+    public OperationSmsMessageDBModel createOperationSmsMessageDBModel(SessionDBModel sessionDBModel,ClientPhoneDAO clientPhoneDAO,ProcessSmsMessageTempDBModel smsMessageTempDBModel,ProcessSmsChannelDBModel smsChannelDBModel){
 
         OperationSmsMessageDBModel smsMessageDBModel = new OperationSmsMessageDBModel();
         smsMessageDBModel.setClientId(sessionDBModel.getClientId());
@@ -132,7 +132,7 @@ public class ChannelHelper {
     public OperationSmsMessageDAO createOperationSmsMessageDAO(SessionDBModel sessionDBModel,ProcessSmsMessageTempDBModel smsMessageTempDBModel, ProcessSmsChannelDBModel smsChannelDBModel){
 
         OperationSmsMessageDAO operationSmsMessageDAO = new OperationSmsMessageDAO();
-        operationSmsMessageDAO.setSmsTempId(smsMessageTempDBModel.getId());
+        operationSmsMessageDAO.setTempId(smsMessageTempDBModel.getId());
         operationSmsMessageDAO.setAccountId(smsChannelDBModel.getAccountId());
         operationSmsMessageDAO.setSmsTitle(smsMessageTempDBModel.getSmsTitle());
         operationSmsMessageDAO.setSmsBody(smsMessageTempDBModel.getSmsBody());
@@ -155,11 +155,7 @@ public class ChannelHelper {
         wappMessageDBModel.setAgentId(sessionDBModel.getAgentId());
         wappMessageDBModel.setCampaignId(sessionDBModel.getCampaignId());
         wappMessageDBModel.setProcessId(sessionDBModel.getProcessId());
-        wappMessageDBModel.setNumberId(clientPhoneDAO.getId());
-        wappMessageDBModel.setPhoneNumber(clientPhoneDAO.getPhoneNumber());
-        wappMessageDBModel.setPhoneCarrier(clientPhoneDAO.getPhoneCarrier());
-        wappMessageDBModel.setPhoneType(clientPhoneDAO.getPhoneType());
-        wappMessageDBModel.setWappMessage(createOperationWappMessageDAO(sessionDBModel,smsMessageTempDBModel,smsChannelDBModel));
+
         wappMessageDBModel.setMessageSentId(AppConstant.NONE);
         wappMessageDBModel.setMessageState(AppConstant.NEW_STATE);
         wappMessageDBModel.setuDate(appUtils.getCurrentTimeStamp());
@@ -173,12 +169,7 @@ public class ChannelHelper {
     public OperationWappMessageDAO createOperationWappMessageDAO(ProcessWappMessageTempDBModel wappMessageTempDBModel, UserDetailsDBModel agentDetails){
 
         OperationWappMessageDAO operationWappMessageDAO = new OperationWappMessageDAO();
-        operationWappMessageDAO.setTempId(processWappMessageTempDBModel.getId());
-        operationWappMessageDAO.setAccountId(agentDetails.getWappChannel().getAccountId());
-        operationWappMessageDAO.setWappTitle(processWappMessageTempDBModel.getWappTitle());
-        operationWappMessageDAO.setWappBody(processWappMessageTempDBModel.getWappBody());
-        operationWappMessageDAO.setMessageMaps(new HashMap<>());
-        operationWappMessageDAO.setMessageType(processWappMessageTempDBModel.getMessageType());
+
         operationWappMessageDAO.setStatus(1);
 
         return operationWappMessageDAO;
@@ -205,7 +196,6 @@ public class ChannelHelper {
         }
         return null;
     }
-
 
 
     public ApiSipAccountWSDTO getApiSipAccountWSDTO(long agentId,String processId) {
