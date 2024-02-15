@@ -146,7 +146,7 @@ public class ChannelHelper {
 
 
 
-    public OperationWappMessageDBModel createOperationWappMessageDBModel(SessionDBModel sessionDBModel, ClientPhoneDAO clientPhoneDAO, ProcessWappMessageTempDBModel wappMessageTempDBModel, String numberId){
+    public OperationWappMessageDBModel createOperationWappMessageDBModel(UserDetailsDBModel agentDetails,SessionDBModel sessionDBModel, ClientPhoneDAO clientPhoneDAO, ProcessWappMessageTempDBModel wappMessageTempDBModel){
 
         OperationWappMessageDBModel wappMessageDBModel = new OperationWappMessageDBModel();
         wappMessageDBModel.setClientId(sessionDBModel.getClientId());
@@ -155,7 +155,8 @@ public class ChannelHelper {
         wappMessageDBModel.setAgentId(sessionDBModel.getAgentId());
         wappMessageDBModel.setCampaignId(sessionDBModel.getCampaignId());
         wappMessageDBModel.setProcessId(sessionDBModel.getProcessId());
-
+        wappMessageDBModel.setClientPhone(clientPhoneDAO);
+        wappMessageDBModel.setWappMessage(createOperationWappMessageDAO(agentDetails,wappMessageTempDBModel));
         wappMessageDBModel.setMessageSentId(AppConstant.NONE);
         wappMessageDBModel.setMessageState(AppConstant.NEW_STATE);
         wappMessageDBModel.setuDate(appUtils.getCurrentTimeStamp());
@@ -166,10 +167,15 @@ public class ChannelHelper {
     }
 
 
-    public OperationWappMessageDAO createOperationWappMessageDAO(ProcessWappMessageTempDBModel wappMessageTempDBModel, UserDetailsDBModel agentDetails){
+    public OperationWappMessageDAO createOperationWappMessageDAO(UserDetailsDBModel agentDetails,ProcessWappMessageTempDBModel wappMessageTempDBModel){
 
         OperationWappMessageDAO operationWappMessageDAO = new OperationWappMessageDAO();
-
+        operationWappMessageDAO.setAccountId(agentDetails.getWappChannel().getAccountId());
+        operationWappMessageDAO.setTempId(wappMessageTempDBModel.getId());
+        operationWappMessageDAO.setWappTitle(wappMessageTempDBModel.getWappTitle());
+        operationWappMessageDAO.setWappBody(wappMessageTempDBModel.getWappBody());
+        operationWappMessageDAO.setMessageDatas(new ArrayList<>());
+        operationWappMessageDAO.setMessageType(wappMessageTempDBModel.getMessageType());
         operationWappMessageDAO.setStatus(1);
 
         return operationWappMessageDAO;
