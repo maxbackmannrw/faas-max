@@ -91,7 +91,6 @@ public class ApiOperationSmsChannelFramework {
 
         List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
         if (!sessionDBModels.isEmpty()){
-
             ClientPhoneDAO clientPhoneDAO = channelHelper.fetchClientPhoneDAO(sessionDBModels.get(0).getClientId(),numberId);
             List<ProcessSmsMessageTempDBModel> smsMessageTempDBModels = processSmsMessageTempRepository.findByIdAndProcessId(tempId,sessionDBModels.get(0).getProcessId());
             List<ProcessSmsChannelDBModel> smsChannelDBModels = processSmsChannelRepository.findByProcessId(sessionDBModels.get(0).getProcessId());
@@ -99,7 +98,7 @@ public class ApiOperationSmsChannelFramework {
 
                 OperationSmsMessageDBModel smsMessageDBModel = channelHelper.createOperationSmsMessageDBModel(sessionDBModels.get(0),clientPhoneDAO,smsMessageTempDBModels.get(0),smsChannelDBModels.get(0));
 
-            }
+                return new ApiOperationSmsWSDTO(operationSmsMessageRepository.save(smsMessageDBModel));           }
         }
         return null;
     }
