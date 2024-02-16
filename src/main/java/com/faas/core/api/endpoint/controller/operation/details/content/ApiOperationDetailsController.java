@@ -1,6 +1,7 @@
 package com.faas.core.api.endpoint.controller.operation.details.content;
 
 import com.faas.core.api.middleware.operation.details.content.ApiOperationDetailsMiddleware;
+import com.faas.core.api.model.ws.campaign.details.ApiCampaignDetailsWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiOperationWSModel;
 import com.faas.core.api.model.ws.operation.details.content.ApiOperationDetailsWSModel;
 import com.faas.core.utils.config.ApiRoute;
@@ -82,6 +83,19 @@ public class ApiOperationDetailsController {
                                                 @RequestParam String selectedId) {
 
         ApiOperationWSModel response = apiOperationDetailsMiddleware.apiOperationSwitch(agentId,operationId,selectedId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_CAMPAIGN, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationCampaign(@RequestParam long agentId,
+                                                     @RequestParam String operationId) {
+
+        ApiCampaignDetailsWSModel response = apiOperationDetailsMiddleware.apiGetOperationCampaign(agentId,operationId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

@@ -53,9 +53,8 @@ public class ApiRoute {
     public static final String API_OPERATION_FINISH = "apioperationfinish";
     public static final String API_GET_SWITCHABLE_OPERATIONS = "apigetswitchableoperations";
     public static final String API_OPERATION_SWITCH = "apioperationswitch";
-
-
     public static final String API_GET_OPERATION_CAMPAIGN = "apigetoperationcampaign";
+
 
 
     public static final String API_GET_OPERATION_CLIENT = "apigetoperationclient";

@@ -1,5 +1,6 @@
 package com.faas.core.api.framework.operation.details.content;
 
+import com.faas.core.api.model.ws.campaign.details.dto.ApiCampaignDetailsWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
 import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationDetailsWSDTO;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
@@ -140,6 +141,12 @@ public class ApiOperationDetailsFramework {
         return null;
     }
 
+
+    public ApiCampaignDetailsWSDTO apiGetOperationCampaignService(long agentId, String operationId) {
+
+
+        return null;
+    }
 
 
 }

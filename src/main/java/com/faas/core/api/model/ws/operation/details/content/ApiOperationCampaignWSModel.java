@@ -1,6 +1,6 @@
-package com.faas.core.api.model.ws.operation.details.campaign;
+package com.faas.core.api.model.ws.operation.details.content;
 
-import com.faas.core.api.model.ws.operation.details.campaign.dto.ApiOperationCampaignWSDTO;
+import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationCampaignWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 
 public class ApiOperationCampaignWSModel {
