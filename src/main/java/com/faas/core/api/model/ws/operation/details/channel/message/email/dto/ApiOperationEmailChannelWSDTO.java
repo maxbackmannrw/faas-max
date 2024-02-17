@@ -10,17 +10,17 @@ public class ApiOperationEmailChannelWSDTO {
 
     private List<ClientEmailDAO> clientEmails;
     private ApiOperationEmailAccountWSDTO emailAccount;
-    private List<OperationEmailMessageDBModel> operationEmails;
     private List<ProcessEmailTempDBModel>operationEmailTemps;
+    private List<OperationEmailMessageDBModel> operationEmails;
 
     public ApiOperationEmailChannelWSDTO() {
     }
 
-    public ApiOperationEmailChannelWSDTO(List<ClientEmailDAO> clientEmails, ApiOperationEmailAccountWSDTO emailAccount, List<OperationEmailMessageDBModel> operationEmails, List<ProcessEmailTempDBModel> operationEmailTemps) {
+    public ApiOperationEmailChannelWSDTO(List<ClientEmailDAO> clientEmails, ApiOperationEmailAccountWSDTO emailAccount, List<ProcessEmailTempDBModel> operationEmailTemps, List<OperationEmailMessageDBModel> operationEmails) {
         this.clientEmails = clientEmails;
         this.emailAccount = emailAccount;
-        this.operationEmails = operationEmails;
         this.operationEmailTemps = operationEmailTemps;
+        this.operationEmails = operationEmails;
     }
 
     public List<ClientEmailDAO> getClientEmails() {
@@ -39,19 +39,19 @@ public class ApiOperationEmailChannelWSDTO {
         this.emailAccount = emailAccount;
     }
 
-    public List<OperationEmailMessageDBModel> getOperationEmails() {
-        return operationEmails;
-    }
-
-    public void setOperationEmails(List<OperationEmailMessageDBModel> operationEmails) {
-        this.operationEmails = operationEmails;
-    }
-
     public List<ProcessEmailTempDBModel> getOperationEmailTemps() {
         return operationEmailTemps;
     }
 
     public void setOperationEmailTemps(List<ProcessEmailTempDBModel> operationEmailTemps) {
         this.operationEmailTemps = operationEmailTemps;
+    }
+
+    public List<OperationEmailMessageDBModel> getOperationEmails() {
+        return operationEmails;
+    }
+
+    public void setOperationEmails(List<OperationEmailMessageDBModel> operationEmails) {
+        this.operationEmails = operationEmails;
     }
 }

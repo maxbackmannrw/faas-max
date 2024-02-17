@@ -10,25 +10,17 @@ public class ApiOperationSmsChannelWSDTO {
 
     private List<ClientPhoneDAO> clientPhones;
     private ApiOperationSmsAccountWSDTO smsAccount;
-    private List<OperationSmsMessageDBModel>operationSmss;
     private List<ProcessSmsMessageTempDBModel>operationSmsTemps;
+    private List<OperationSmsMessageDBModel>operationSmss;
 
     public ApiOperationSmsChannelWSDTO() {
     }
 
-    public ApiOperationSmsChannelWSDTO(ApiOperationSmsAccountWSDTO smsAccount, List<ClientPhoneDAO> clientPhones, List<OperationSmsMessageDBModel> operationSmss, List<ProcessSmsMessageTempDBModel> operationSmsTemps) {
-        this.smsAccount = smsAccount;
+    public ApiOperationSmsChannelWSDTO(List<ClientPhoneDAO> clientPhones, ApiOperationSmsAccountWSDTO smsAccount, List<ProcessSmsMessageTempDBModel> operationSmsTemps, List<OperationSmsMessageDBModel> operationSmss) {
         this.clientPhones = clientPhones;
-        this.operationSmss = operationSmss;
-        this.operationSmsTemps = operationSmsTemps;
-    }
-
-    public ApiOperationSmsAccountWSDTO getSmsAccount() {
-        return smsAccount;
-    }
-
-    public void setSmsAccount(ApiOperationSmsAccountWSDTO smsAccount) {
         this.smsAccount = smsAccount;
+        this.operationSmsTemps = operationSmsTemps;
+        this.operationSmss = operationSmss;
     }
 
     public List<ClientPhoneDAO> getClientPhones() {
@@ -39,12 +31,12 @@ public class ApiOperationSmsChannelWSDTO {
         this.clientPhones = clientPhones;
     }
 
-    public List<OperationSmsMessageDBModel> getOperationSmss() {
-        return operationSmss;
+    public ApiOperationSmsAccountWSDTO getSmsAccount() {
+        return smsAccount;
     }
 
-    public void setOperationSmss(List<OperationSmsMessageDBModel> operationSmss) {
-        this.operationSmss = operationSmss;
+    public void setSmsAccount(ApiOperationSmsAccountWSDTO smsAccount) {
+        this.smsAccount = smsAccount;
     }
 
     public List<ProcessSmsMessageTempDBModel> getOperationSmsTemps() {
@@ -53,5 +45,13 @@ public class ApiOperationSmsChannelWSDTO {
 
     public void setOperationSmsTemps(List<ProcessSmsMessageTempDBModel> operationSmsTemps) {
         this.operationSmsTemps = operationSmsTemps;
+    }
+
+    public List<OperationSmsMessageDBModel> getOperationSmss() {
+        return operationSmss;
+    }
+
+    public void setOperationSmss(List<OperationSmsMessageDBModel> operationSmss) {
+        this.operationSmss = operationSmss;
     }
 }

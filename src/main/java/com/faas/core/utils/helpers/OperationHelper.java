@@ -561,8 +561,8 @@ public class OperationHelper {
             ApiOperationWappMessageChannelWSDTO wappMessageChannelWSDTO = new ApiOperationWappMessageChannelWSDTO();
             wappMessageChannelWSDTO.setWappAccount(wappAccountWSDTO);
             wappMessageChannelWSDTO.setClientPhones(clientDetails.getClientPhones());
-            wappMessageChannelWSDTO.setOperationWappMessages(operationWappMessageRepository.findByOperationId(operationDBModel.getId()));
             wappMessageChannelWSDTO.setOperationWappMessageTemps(processWappMessageTempRepository.findByProcessId(operationDBModel.getProcessId()));
+            wappMessageChannelWSDTO.setOperationWappMessages(operationWappMessageRepository.findByOperationId(operationDBModel.getId()));
 
             return wappMessageChannelWSDTO;
         }

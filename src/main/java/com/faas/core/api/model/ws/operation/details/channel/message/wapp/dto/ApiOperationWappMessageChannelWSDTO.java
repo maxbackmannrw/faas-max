@@ -10,17 +10,17 @@ public class ApiOperationWappMessageChannelWSDTO {
 
     private List<ClientPhoneDAO> clientPhones;
     private ApiOperationWappMessageAccountWSDTO wappAccount;
-    private List<OperationWappMessageDBModel>operationWappMessages;
     private List<ProcessWappMessageTempDBModel>operationWappMessageTemps;
+    private List<OperationWappMessageDBModel>operationWappMessages;
 
     public ApiOperationWappMessageChannelWSDTO() {
     }
 
-    public ApiOperationWappMessageChannelWSDTO(List<ClientPhoneDAO> clientPhones, ApiOperationWappMessageAccountWSDTO wappAccount, List<OperationWappMessageDBModel> operationWappMessages, List<ProcessWappMessageTempDBModel> operationWappMessageTemps) {
+    public ApiOperationWappMessageChannelWSDTO(List<ClientPhoneDAO> clientPhones, ApiOperationWappMessageAccountWSDTO wappAccount, List<ProcessWappMessageTempDBModel> operationWappMessageTemps, List<OperationWappMessageDBModel> operationWappMessages) {
         this.clientPhones = clientPhones;
         this.wappAccount = wappAccount;
-        this.operationWappMessages = operationWappMessages;
         this.operationWappMessageTemps = operationWappMessageTemps;
+        this.operationWappMessages = operationWappMessages;
     }
 
     public List<ClientPhoneDAO> getClientPhones() {
@@ -39,19 +39,19 @@ public class ApiOperationWappMessageChannelWSDTO {
         this.wappAccount = wappAccount;
     }
 
-    public List<OperationWappMessageDBModel> getOperationWappMessages() {
-        return operationWappMessages;
-    }
-
-    public void setOperationWappMessages(List<OperationWappMessageDBModel> operationWappMessages) {
-        this.operationWappMessages = operationWappMessages;
-    }
-
     public List<ProcessWappMessageTempDBModel> getOperationWappMessageTemps() {
         return operationWappMessageTemps;
     }
 
     public void setOperationWappMessageTemps(List<ProcessWappMessageTempDBModel> operationWappMessageTemps) {
         this.operationWappMessageTemps = operationWappMessageTemps;
+    }
+
+    public List<OperationWappMessageDBModel> getOperationWappMessages() {
+        return operationWappMessages;
+    }
+
+    public void setOperationWappMessages(List<OperationWappMessageDBModel> operationWappMessages) {
+        this.operationWappMessages = operationWappMessages;
     }
 }

@@ -104,7 +104,6 @@ public class ApiOperationEmailChannelController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_EMAIL_TEMP, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationEmailTemp(@RequestParam long agentId,
                                                       @RequestParam String operationId,
