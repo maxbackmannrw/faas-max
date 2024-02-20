@@ -8,8 +8,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/channel/message/email/ApiOperationEmailChannelFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/channel/message/email/ApiOperationEmailChannelFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/process/details/channel/temp/ProcessEmailTempDBModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/process/details/channel/temp/ProcessEmailTempDBModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,6 +145,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-11.0.22-corretto-11.0.22-4caba194b151-396cc1b2" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -750,23 +756,11 @@
       <workItem from="1708252553032" duration="557000" />
       <workItem from="1708277067085" duration="371000" />
       <workItem from="1708336940708" duration="587000" />
-      <workItem from="1708355359159" duration="3021000" />
-    </task>
-    <task id="LOCAL-00639" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1707052715606</created>
-      <option name="number" value="00639" />
-      <option name="presentableId" value="LOCAL-00639" />
-      <option name="project" value="LOCAL" />
-      <updated>1707052715606</updated>
-    </task>
-    <task id="LOCAL-00640" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1707067697353</created>
-      <option name="number" value="00640" />
-      <option name="presentableId" value="LOCAL-00640" />
-      <option name="project" value="LOCAL" />
-      <updated>1707067697353</updated>
+      <workItem from="1708355359159" duration="3686000" />
+      <workItem from="1708380738140" duration="123000" />
+      <workItem from="1708410816123" duration="189000" />
+      <workItem from="1708432972747" duration="161000" />
+      <workItem from="1708458585481" duration="301000" />
     </task>
     <task id="LOCAL-00641" summary="almost finish">
       <option name="closed" value="true" />
@@ -1144,7 +1138,23 @@
       <option name="project" value="LOCAL" />
       <updated>1708362595825</updated>
     </task>
-    <option name="localTasksCounter" value="688" />
+    <task id="LOCAL-00688" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1708366582666</created>
+      <option name="number" value="00688" />
+      <option name="presentableId" value="LOCAL-00688" />
+      <option name="project" value="LOCAL" />
+      <updated>1708366582667</updated>
+    </task>
+    <task id="LOCAL-00689" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1708366627403</created>
+      <option name="number" value="00689" />
+      <option name="presentableId" value="LOCAL-00689" />
+      <option name="project" value="LOCAL" />
+      <updated>1708366627403</updated>
+    </task>
+    <option name="localTasksCounter" value="690" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
