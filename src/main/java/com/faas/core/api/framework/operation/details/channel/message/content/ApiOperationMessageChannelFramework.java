@@ -1,7 +1,7 @@
 package com.faas.core.api.framework.operation.details.channel.message.content;
 
 import com.faas.core.api.model.ws.operation.details.channel.message.content.dto.ApiOperationMessageChannelWSDTO;
-import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiOperationEmailWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiOperationEmailChannelWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushChannelWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiOperationSmsChannelWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.ApiOperationWappMessageChannelWSDTO;
@@ -71,13 +71,13 @@ public class ApiOperationMessageChannelFramework {
     }
 
 
-    public ApiOperationEmailWSDTO apiGetOperationEmailMessagesService(long agentId, long sessionId) {
+    public ApiOperationEmailChannelWSDTO apiGetOperationEmailChannelService(long agentId, String operationId) {
 
         return null;
     }
 
 
-    public ApiOperationPushChannelWSDTO apiGetOperationPushMessagesService() {
+    public ApiOperationPushChannelWSDTO apiGetOperationPushChannelService(long agentId, String operationId) {
 
         return null;
     }
