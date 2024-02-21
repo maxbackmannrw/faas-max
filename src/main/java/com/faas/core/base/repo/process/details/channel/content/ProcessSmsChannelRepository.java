@@ -12,6 +12,5 @@ public interface ProcessSmsChannelRepository extends MongoRepository<ProcessSmsC
 
     List<ProcessSmsChannelDBModel>findByStatus(int status);
     List<ProcessSmsChannelDBModel>findByProcessId(String processId);
-    List<ProcessSmsChannelDBModel>findByProcessIdAndAccountId(String processId, String accountId);
 
 }

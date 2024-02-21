@@ -6,10 +6,10 @@ public class OperationEmailMessageDAO {
 
     private String accountId;
     private String tempId;
-    private String subject;
-    private String body;
-    private String footer;
-    private String sender;
+    private String emailSubject;
+    private String emailBody;
+    private String emailFooter;
+    private String emailSender;
     private List<OperationChannelDataDAO> emailDatas;
     private String emailType;
     private int status;
@@ -17,13 +17,13 @@ public class OperationEmailMessageDAO {
     public OperationEmailMessageDAO() {
     }
 
-    public OperationEmailMessageDAO(String accountId, String tempId, String subject, String body, String footer, String sender, List<OperationChannelDataDAO> emailDatas, String emailType, int status) {
+    public OperationEmailMessageDAO(String accountId, String tempId, String emailSubject, String emailBody, String emailFooter, String emailSender, List<OperationChannelDataDAO> emailDatas, String emailType, int status) {
         this.accountId = accountId;
         this.tempId = tempId;
-        this.subject = subject;
-        this.body = body;
-        this.footer = footer;
-        this.sender = sender;
+        this.emailSubject = emailSubject;
+        this.emailBody = emailBody;
+        this.emailFooter = emailFooter;
+        this.emailSender = emailSender;
         this.emailDatas = emailDatas;
         this.emailType = emailType;
         this.status = status;
@@ -45,36 +45,36 @@ public class OperationEmailMessageDAO {
         this.tempId = tempId;
     }
 
-    public String getSubject() {
-        return subject;
+    public String getEmailSubject() {
+        return emailSubject;
     }
 
-    public void setSubject(String subject) {
-        this.subject = subject;
+    public void setEmailSubject(String emailSubject) {
+        this.emailSubject = emailSubject;
     }
 
-    public String getBody() {
-        return body;
+    public String getEmailBody() {
+        return emailBody;
     }
 
-    public void setBody(String body) {
-        this.body = body;
+    public void setEmailBody(String emailBody) {
+        this.emailBody = emailBody;
     }
 
-    public String getFooter() {
-        return footer;
+    public String getEmailFooter() {
+        return emailFooter;
     }
 
-    public void setFooter(String footer) {
-        this.footer = footer;
+    public void setEmailFooter(String emailFooter) {
+        this.emailFooter = emailFooter;
     }
 
-    public String getSender() {
-        return sender;
+    public String getEmailSender() {
+        return emailSender;
     }
 
-    public void setSender(String sender) {
-        this.sender = sender;
+    public void setEmailSender(String emailSender) {
+        this.emailSender = emailSender;
     }
 
     public List<OperationChannelDataDAO> getEmailDatas() {

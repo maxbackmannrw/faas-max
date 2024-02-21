@@ -11,21 +11,18 @@ public class ProcessSmsChannelDBModel {
     @Id
     private String id;
     private String processId;
-    private String accountId;
     private ProcessSmsAccountDAO smsAccount;
     private String channelState;
     private long uDate;
     private long cDate;
     private int status;
 
-
     public ProcessSmsChannelDBModel() {
     }
 
-    public ProcessSmsChannelDBModel(String id, String processId, String accountId, ProcessSmsAccountDAO smsAccount, String channelState, long uDate, long cDate, int status) {
+    public ProcessSmsChannelDBModel(String id, String processId, ProcessSmsAccountDAO smsAccount, String channelState, long uDate, long cDate, int status) {
         this.id = id;
         this.processId = processId;
-        this.accountId = accountId;
         this.smsAccount = smsAccount;
         this.channelState = channelState;
         this.uDate = uDate;
@@ -47,14 +44,6 @@ public class ProcessSmsChannelDBModel {
 
     public void setProcessId(String processId) {
         this.processId = processId;
-    }
-
-    public String getAccountId() {
-        return accountId;
-    }
-
-    public void setAccountId(String accountId) {
-        this.accountId = accountId;
     }
 
     public ProcessSmsAccountDAO getSmsAccount() {

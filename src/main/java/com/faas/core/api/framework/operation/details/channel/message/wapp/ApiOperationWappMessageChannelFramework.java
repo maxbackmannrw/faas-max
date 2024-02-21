@@ -91,9 +91,9 @@ public class ApiOperationWappMessageChannelFramework {
             List<ProcessWappChannelDBModel> wappChannelDBModels = processWappChannelRepository.findByProcessId(sessionDBModels.get(0).getProcessId());
             if (!agentDetails.isEmpty() && agentDetails.get(0).getWappChannel() != null && clientPhoneDAO != null && !wappMessageTempDBModels.isEmpty() && !wappChannelDBModels.isEmpty() && wappChannelDBModels.get(0).getMessageState().equalsIgnoreCase(AppConstant.ACTIVE_STATE)){
 
-                OperationWappMessageDBModel operationWappMessageDBModel = channelHelper.createOperationWappMessageDBModel(agentDetails.get(0),sessionDBModels.get(0),clientPhoneDAO,wappMessageTempDBModels.get(0));
+                OperationWappMessageDBModel wappMessageDBModel = channelHelper.createOperationWappMessageDBModel(agentDetails.get(0),sessionDBModels.get(0),clientPhoneDAO,wappMessageTempDBModels.get(0));
 
-                return new ApiOperationWappMessageWSDTO(operationWappMessageDBModel);
+                return new ApiOperationWappMessageWSDTO(wappMessageDBModel);
             }
         }
         return null;

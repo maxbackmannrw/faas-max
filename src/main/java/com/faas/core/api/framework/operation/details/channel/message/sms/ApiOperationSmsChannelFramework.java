@@ -98,7 +98,7 @@ public class ApiOperationSmsChannelFramework {
 
                 OperationSmsMessageDBModel smsMessageDBModel = channelHelper.createOperationSmsMessageDBModel(sessionDBModels.get(0),clientPhoneDAO,smsMessageTempDBModels.get(0),smsChannelDBModels.get(0));
 
-                return new ApiOperationSmsWSDTO(operationSmsMessageRepository.save(smsMessageDBModel));           }
+                return new ApiOperationSmsWSDTO(smsMessageDBModel);           }
         }
         return null;
     }

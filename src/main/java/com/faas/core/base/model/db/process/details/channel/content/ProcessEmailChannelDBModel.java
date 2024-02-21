@@ -10,7 +10,6 @@ public class ProcessEmailChannelDBModel {
     @Id
     private String id;
     private String processId;
-    private String accountId;
     private ProcessEmailAccountDAO emailAccount;
     private String channelState;
     private long uDate;
@@ -20,10 +19,9 @@ public class ProcessEmailChannelDBModel {
     public ProcessEmailChannelDBModel() {
     }
 
-    public ProcessEmailChannelDBModel(String id, String processId, String accountId, ProcessEmailAccountDAO emailAccount, String channelState, long uDate, long cDate, int status) {
+    public ProcessEmailChannelDBModel(String id, String processId, ProcessEmailAccountDAO emailAccount, String channelState, long uDate, long cDate, int status) {
         this.id = id;
         this.processId = processId;
-        this.accountId = accountId;
         this.emailAccount = emailAccount;
         this.channelState = channelState;
         this.uDate = uDate;
@@ -45,14 +43,6 @@ public class ProcessEmailChannelDBModel {
 
     public void setProcessId(String processId) {
         this.processId = processId;
-    }
-
-    public String getAccountId() {
-        return accountId;
-    }
-
-    public void setAccountId(String accountId) {
-        this.accountId = accountId;
     }
 
     public ProcessEmailAccountDAO getEmailAccount() {

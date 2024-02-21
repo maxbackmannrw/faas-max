@@ -12,6 +12,5 @@ public interface ProcessEmailChannelRepository extends MongoRepository<ProcessEm
 
     List<ProcessEmailChannelDBModel>findByStatus(int status);
     List<ProcessEmailChannelDBModel>findByProcessId(String processId);
-    List<ProcessEmailChannelDBModel>findByProcessIdAndAccountId(String processId, String accountId);
 
 }

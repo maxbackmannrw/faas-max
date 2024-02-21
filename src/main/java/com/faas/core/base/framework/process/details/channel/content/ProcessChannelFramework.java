@@ -93,9 +93,15 @@ public class ProcessChannelFramework {
 
     public ProcessSipChannelWSDTO createProcessSipChannelService(String processId, String callerId, String channelState) {
 
-        List<ProcessSipChannelDBModel> currentSipChannel = processSipChannelRepository.findByProcessId(processId);
-        if (currentSipChannel.isEmpty()) {
+        List<ProcessSipChannelDBModel> existedSipChannel = processSipChannelRepository.findByProcessId(processId);
+        if (existedSipChannel.isEmpty()) {
 
+            existedSipChannel.get(0).setCallerId(callerId);
+            existedSipChannel.get(0).setChannelState(channelState);
+            existedSipChannel.get(0).setuDate(appUtils.getCurrentTimeStamp());
+
+            return new ProcessSipChannelWSDTO(processSipChannelRepository.save(existedSipChannel.get(0)));
+        }else {
             ProcessSipChannelDBModel processSipChannelDBModel = new ProcessSipChannelDBModel();
             processSipChannelDBModel.setProcessId(processId);
             processSipChannelDBModel.setCallerId(callerId);
@@ -106,11 +112,6 @@ public class ProcessChannelFramework {
 
             return new ProcessSipChannelWSDTO(processSipChannelRepository.save(processSipChannelDBModel));
         }
-        currentSipChannel.get(0).setCallerId(callerId);
-        currentSipChannel.get(0).setChannelState(channelState);
-        currentSipChannel.get(0).setuDate(appUtils.getCurrentTimeStamp());
-
-        return new ProcessSipChannelWSDTO(processSipChannelRepository.save(currentSipChannel.get(0)));
     }
 
 
@@ -143,28 +144,27 @@ public class ProcessChannelFramework {
         }
         ProcessSmsAccountDAO processSmsAccountDAO = channelHelper.mapProcessSmsAccountDAO(smsAccountDBModel.get());
         if (processSmsAccountDAO != null) {
-            List<ProcessSmsChannelDBModel> currentSmsChannel = processSmsChannelRepository.findByProcessId(processId);
-            if (!currentSmsChannel.isEmpty()) {
+            List<ProcessSmsChannelDBModel> existedSmsChannel = processSmsChannelRepository.findByProcessId(processId);
+            if (!existedSmsChannel.isEmpty()) {
 
-                currentSmsChannel.get(0).setAccountId(accountId);
-                currentSmsChannel.get(0).setSmsAccount(processSmsAccountDAO);
-                currentSmsChannel.get(0).setChannelState(channelState);
-                currentSmsChannel.get(0).setuDate(appUtils.getCurrentTimeStamp());
-                processSmsChannelRepository.save(currentSmsChannel.get(0));
+                existedSmsChannel.get(0).setSmsAccount(processSmsAccountDAO);
+                existedSmsChannel.get(0).setChannelState(channelState);
+                existedSmsChannel.get(0).setuDate(appUtils.getCurrentTimeStamp());
+                processSmsChannelRepository.save(existedSmsChannel.get(0));
 
-                return new ProcessSmsChannelWSDTO(currentSmsChannel.get(0));
+                return new ProcessSmsChannelWSDTO(existedSmsChannel.get(0));
+            }else {
+
+                ProcessSmsChannelDBModel processSmsChannelDBModel = new ProcessSmsChannelDBModel();
+                processSmsChannelDBModel.setProcessId(processId);
+                processSmsChannelDBModel.setSmsAccount(processSmsAccountDAO);
+                processSmsChannelDBModel.setChannelState(channelState);
+                processSmsChannelDBModel.setuDate(appUtils.getCurrentTimeStamp());
+                processSmsChannelDBModel.setcDate(appUtils.getCurrentTimeStamp());
+                processSmsChannelDBModel.setStatus(1);
+
+                return new ProcessSmsChannelWSDTO(processSmsChannelRepository.save(processSmsChannelDBModel));
             }
-
-            ProcessSmsChannelDBModel processSmsChannelDBModel = new ProcessSmsChannelDBModel();
-            processSmsChannelDBModel.setProcessId(processId);
-            processSmsChannelDBModel.setAccountId(accountId);
-            processSmsChannelDBModel.setSmsAccount(processSmsAccountDAO);
-            processSmsChannelDBModel.setChannelState(channelState);
-            processSmsChannelDBModel.setuDate(appUtils.getCurrentTimeStamp());
-            processSmsChannelDBModel.setcDate(appUtils.getCurrentTimeStamp());
-            processSmsChannelDBModel.setStatus(1);
-
-            return new ProcessSmsChannelWSDTO(processSmsChannelRepository.save(processSmsChannelDBModel));
         }
         return null;
     }
@@ -193,24 +193,24 @@ public class ProcessChannelFramework {
 
     public ProcessWappChannelWSDTO createProcessWappChannelService(long userId,String processId, String callState, String messageState) {
 
-        List<ProcessWappChannelDBModel> currentWappChannels = processWappChannelRepository.findByProcessId(processId);
-        if (!currentWappChannels.isEmpty()) {
-            currentWappChannels.get(0).setCallState(callState);
-            currentWappChannels.get(0).setMessageState(messageState);
-            currentWappChannels.get(0).setuDate(appUtils.getCurrentTimeStamp());
+        List<ProcessWappChannelDBModel> existedWappChannel = processWappChannelRepository.findByProcessId(processId);
+        if (!existedWappChannel.isEmpty()) {
+            existedWappChannel.get(0).setCallState(callState);
+            existedWappChannel.get(0).setMessageState(messageState);
+            existedWappChannel.get(0).setuDate(appUtils.getCurrentTimeStamp());
 
-            return new ProcessWappChannelWSDTO(processWappChannelRepository.save(currentWappChannels.get(0)));
+            return new ProcessWappChannelWSDTO(processWappChannelRepository.save(existedWappChannel.get(0)));
+        }else {
+            ProcessWappChannelDBModel processWappChannelDBModel = new ProcessWappChannelDBModel();
+            processWappChannelDBModel.setProcessId(processId);
+            processWappChannelDBModel.setCallState(callState);
+            processWappChannelDBModel.setMessageState(messageState);
+            processWappChannelDBModel.setuDate(appUtils.getCurrentTimeStamp());
+            processWappChannelDBModel.setcDate(appUtils.getCurrentTimeStamp());
+            processWappChannelDBModel.setStatus(1);
+
+            return new ProcessWappChannelWSDTO(processWappChannelRepository.save(processWappChannelDBModel));
         }
-
-        ProcessWappChannelDBModel processWappChannelDBModel = new ProcessWappChannelDBModel();
-        processWappChannelDBModel.setProcessId(processId);
-        processWappChannelDBModel.setCallState(callState);
-        processWappChannelDBModel.setMessageState(messageState);
-        processWappChannelDBModel.setuDate(appUtils.getCurrentTimeStamp());
-        processWappChannelDBModel.setcDate(appUtils.getCurrentTimeStamp());
-        processWappChannelDBModel.setStatus(1);
-
-        return new ProcessWappChannelWSDTO(processWappChannelRepository.save(processWappChannelDBModel));
     }
 
 
@@ -238,27 +238,25 @@ public class ProcessChannelFramework {
 
         Optional<EmailAccountDBModel> emailAccountDBModel = emailAccountRepository.findById(accountId);
         if (emailAccountDBModel.isPresent()) {
-            List<ProcessEmailChannelDBModel> currentEmailChannel = processEmailChannelRepository.findByProcessId(processId);
-            if (!currentEmailChannel.isEmpty()) {
+            List<ProcessEmailChannelDBModel> existedEmailChannel = processEmailChannelRepository.findByProcessId(processId);
+            if (!existedEmailChannel.isEmpty()) {
 
-                currentEmailChannel.get(0).setAccountId(accountId);
-                currentEmailChannel.get(0).setEmailAccount(channelHelper.mapProcessEmailAccountDAO(emailAccountDBModel.get()));
-                currentEmailChannel.get(0).setChannelState(channelState);
-                currentEmailChannel.get(0).setuDate(appUtils.getCurrentTimeStamp());
+                existedEmailChannel.get(0).setEmailAccount(channelHelper.mapProcessEmailAccountDAO(emailAccountDBModel.get()));
+                existedEmailChannel.get(0).setChannelState(channelState);
+                existedEmailChannel.get(0).setuDate(appUtils.getCurrentTimeStamp());
 
-                return new ProcessEmailChannelWSDTO(processEmailChannelRepository.save(currentEmailChannel.get(0)));
+                return new ProcessEmailChannelWSDTO(processEmailChannelRepository.save(existedEmailChannel.get(0)));
+            }else {
+                ProcessEmailChannelDBModel processEmailChannelDBModel = new ProcessEmailChannelDBModel();
+                processEmailChannelDBModel.setProcessId(processId);
+                processEmailChannelDBModel.setEmailAccount(channelHelper.mapProcessEmailAccountDAO(emailAccountDBModel.get()));
+                processEmailChannelDBModel.setChannelState(channelState);
+                processEmailChannelDBModel.setuDate(appUtils.getCurrentTimeStamp());
+                processEmailChannelDBModel.setcDate(appUtils.getCurrentTimeStamp());
+                processEmailChannelDBModel.setStatus(1);
+
+                return new ProcessEmailChannelWSDTO(processEmailChannelRepository.save(processEmailChannelDBModel));
             }
-
-            ProcessEmailChannelDBModel processEmailChannelDBModel = new ProcessEmailChannelDBModel();
-            processEmailChannelDBModel.setProcessId(processId);
-            processEmailChannelDBModel.setAccountId(accountId);
-            processEmailChannelDBModel.setEmailAccount(channelHelper.mapProcessEmailAccountDAO(emailAccountDBModel.get()));
-            processEmailChannelDBModel.setChannelState(channelState);
-            processEmailChannelDBModel.setuDate(appUtils.getCurrentTimeStamp());
-            processEmailChannelDBModel.setcDate(appUtils.getCurrentTimeStamp());
-            processEmailChannelDBModel.setStatus(1);
-
-            return new ProcessEmailChannelWSDTO(processEmailChannelRepository.save(processEmailChannelDBModel));
         }
         return null;
     }
@@ -289,27 +287,25 @@ public class ProcessChannelFramework {
 
         Optional<PushAccountDBModel> pushAccountDBModel = pushAccountRepository.findById(accountId);
         if (pushAccountDBModel.isPresent()) {
-            List<ProcessPushChannelDBModel> currentPushChannel = processPushChannelRepository.findByProcessId(processId);
-            if (!currentPushChannel.isEmpty()) {
+            List<ProcessPushChannelDBModel> existedPushChannel = processPushChannelRepository.findByProcessId(processId);
+            if (!existedPushChannel.isEmpty()) {
 
-                currentPushChannel.get(0).setAccountId(accountId);
-                currentPushChannel.get(0).setPushAccount(channelHelper.mapProcessPushAccountDAO(pushAccountDBModel.get()));
-                currentPushChannel.get(0).setChannelState(channelState);
-                currentPushChannel.get(0).setuDate(appUtils.getCurrentTimeStamp());
+                existedPushChannel.get(0).setPushAccount(channelHelper.mapProcessPushAccountDAO(pushAccountDBModel.get()));
+                existedPushChannel.get(0).setChannelState(channelState);
+                existedPushChannel.get(0).setuDate(appUtils.getCurrentTimeStamp());
 
-                return new ProcessPushChannelWSDTO(processPushChannelRepository.save(currentPushChannel.get(0)));
+                return new ProcessPushChannelWSDTO(processPushChannelRepository.save(existedPushChannel.get(0)));
+            }else {
+                ProcessPushChannelDBModel processPushChannelDBModel = new ProcessPushChannelDBModel();
+                processPushChannelDBModel.setProcessId(processId);
+                processPushChannelDBModel.setPushAccount(channelHelper.mapProcessPushAccountDAO(pushAccountDBModel.get()));
+                processPushChannelDBModel.setChannelState(channelState);
+                processPushChannelDBModel.setuDate(appUtils.getCurrentTimeStamp());
+                processPushChannelDBModel.setcDate(appUtils.getCurrentTimeStamp());
+                processPushChannelDBModel.setStatus(1);
+
+                return new ProcessPushChannelWSDTO(processPushChannelRepository.save(processPushChannelDBModel));
             }
-
-            ProcessPushChannelDBModel processPushChannelDBModel = new ProcessPushChannelDBModel();
-            processPushChannelDBModel.setProcessId(processId);
-            processPushChannelDBModel.setAccountId(accountId);
-            processPushChannelDBModel.setPushAccount(channelHelper.mapProcessPushAccountDAO(pushAccountDBModel.get()));
-            processPushChannelDBModel.setChannelState(channelState);
-            processPushChannelDBModel.setuDate(appUtils.getCurrentTimeStamp());
-            processPushChannelDBModel.setcDate(appUtils.getCurrentTimeStamp());
-            processPushChannelDBModel.setStatus(1);
-
-            return new ProcessPushChannelWSDTO(processPushChannelRepository.save(processPushChannelDBModel));
         }
         return null;
     }

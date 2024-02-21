@@ -10,7 +10,6 @@ public class ProcessPushChannelDBModel {
     @Id
     private String id;
     private String processId;
-    private String accountId;
     private ProcessPushAccountDAO pushAccount;
     private String channelState;
     private long uDate;
@@ -20,10 +19,9 @@ public class ProcessPushChannelDBModel {
     public ProcessPushChannelDBModel() {
     }
 
-    public ProcessPushChannelDBModel(String id, String processId, String accountId, ProcessPushAccountDAO pushAccount, String channelState, long uDate, long cDate, int status) {
+    public ProcessPushChannelDBModel(String id, String processId, ProcessPushAccountDAO pushAccount, String channelState, long uDate, long cDate, int status) {
         this.id = id;
         this.processId = processId;
-        this.accountId = accountId;
         this.pushAccount = pushAccount;
         this.channelState = channelState;
         this.uDate = uDate;
@@ -45,14 +43,6 @@ public class ProcessPushChannelDBModel {
 
     public void setProcessId(String processId) {
         this.processId = processId;
-    }
-
-    public String getAccountId() {
-        return accountId;
-    }
-
-    public void setAccountId(String accountId) {
-        this.accountId = accountId;
     }
 
     public ProcessPushAccountDAO getPushAccount() {

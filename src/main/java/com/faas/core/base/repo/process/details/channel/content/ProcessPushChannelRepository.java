@@ -12,5 +12,4 @@ public interface ProcessPushChannelRepository extends MongoRepository<ProcessPus
 
     List<ProcessPushChannelDBModel>findByStatus(int status);
     List<ProcessPushChannelDBModel>findByProcessId(String processId);
-    List<ProcessPushChannelDBModel>findByProcessIdAndAccountId(String processId, String accountId);
 }
