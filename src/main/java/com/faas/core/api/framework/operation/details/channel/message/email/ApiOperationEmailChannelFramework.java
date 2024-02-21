@@ -92,7 +92,8 @@ public class ApiOperationEmailChannelFramework {
 
                 OperationEmailMessageDBModel emailMessageDBModel = channelHelper.createOperationEmailMessageDBModel(sessionDBModels.get(0),clientEmailDAO,emailTempDBModels.get(0),emailChannelDBModels.get(0));
 
-                return new ApiOperationEmailWSDTO(emailMessageDBModel);           }
+                return new ApiOperationEmailWSDTO(emailMessageDBModel);
+            }
         }
         return null;
     }
