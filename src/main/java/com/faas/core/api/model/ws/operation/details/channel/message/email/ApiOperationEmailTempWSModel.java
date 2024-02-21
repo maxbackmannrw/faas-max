@@ -3,7 +3,6 @@ package com.faas.core.api.model.ws.operation.details.channel.message.email;
 import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiOperationEmailTempWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 
-
 public class ApiOperationEmailTempWSModel {
 
     private GeneralWSModel general;

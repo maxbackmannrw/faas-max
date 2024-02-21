@@ -6,10 +6,14 @@ import com.faas.core.api.model.ws.operation.details.channel.message.push.ApiOper
 import com.faas.core.api.model.ws.operation.details.channel.message.push.ApiOperationPushWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushTempWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class ApiOperationPushChannelMiddleware {
@@ -24,6 +28,10 @@ public class ApiOperationPushChannelMiddleware {
         ApiOperationPushWSModel response = new ApiOperationPushWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
+        List<ApiOperationPushWSDTO> operationPushWSDTOS = apiOperationPushChannelFramework.apiGetOperationPushesService(agentId,operationId);
+        if (operationPushWSDTOS != null){
+            response.setOperationPushes(operationPushWSDTOS);
+        }
 
         general.setOperation("apiGetOperationPushes");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -38,8 +46,14 @@ public class ApiOperationPushChannelMiddleware {
 
         ApiOperationPushWSModel response = new ApiOperationPushWSModel();
         GeneralWSModel general = new GeneralWSModel();
+        List<ApiOperationPushWSDTO> operationPushWSDTOS = new ArrayList<>();
 
+        ApiOperationPushWSDTO operationPushWSDTO = apiOperationPushChannelFramework.apiGetOperationPushService(agentId,operationId,pushId);
+        if (operationPushWSDTO != null){
+            operationPushWSDTOS.add(operationPushWSDTO);
+        }
 
+        response.setOperationPushes(operationPushWSDTOS);
         general.setOperation("apiGetOperationPush");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -69,8 +83,14 @@ public class ApiOperationPushChannelMiddleware {
 
         ApiOperationPushWSModel response = new ApiOperationPushWSModel();
         GeneralWSModel general = new GeneralWSModel();
+        List<ApiOperationPushWSDTO> operationPushWSDTOS = new ArrayList<>();
 
+        ApiOperationPushWSDTO operationPushWSDTO = apiOperationPushChannelFramework.apiUpdateOperationPushService(agentId,operationId,pushId,pushState);
+        if (operationPushWSDTO != null){
+            operationPushWSDTOS.add(operationPushWSDTO);
+        }
 
+        response.setOperationPushes(operationPushWSDTOS);
         general.setOperation("apiUpdateOperationPush");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -84,9 +104,14 @@ public class ApiOperationPushChannelMiddleware {
 
         ApiOperationPushWSModel response = new ApiOperationPushWSModel();
         GeneralWSModel general = new GeneralWSModel();
+        List<ApiOperationPushWSDTO> operationPushWSDTOS = new ArrayList<>();
 
+        ApiOperationPushWSDTO operationPushWSDTO = apiOperationPushChannelFramework.apiRemoveOperationPushService(agentId,operationId,pushId);
+        if (operationPushWSDTO != null){
+            operationPushWSDTOS.add(operationPushWSDTO);
+        }
 
-
+        response.setOperationPushes(operationPushWSDTOS);
         general.setOperation("apiRemoveOperationPush");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);

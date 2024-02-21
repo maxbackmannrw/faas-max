@@ -43,33 +43,31 @@ public class ApiOperationPushChannelFramework {
     AppUtils appUtils;
 
 
-    public ApiOperationPushWSDTO apiGetPushMessagesService() {
+    public List<ApiOperationPushWSDTO> apiGetOperationPushesService(long agentId,String operationId) {
 
         return null;
     }
 
-
-    public ApiOperationPushWSDTO apiGetPushMessageService() {
-
-        return null;
-    }
-
-
-    public ApiOperationPushWSDTO apiSendPushMessageService() {
+    public ApiOperationPushWSDTO apiGetOperationPushService(long agentId,String operationId,String pushId) {
 
         return null;
     }
 
+    public ApiOperationPushWSDTO apiSendOperationPushService() {
 
-    public ApiOperationPushWSDTO apiUpdatePushMessageService() {
+        return null;
+    }
+
+    public ApiOperationPushWSDTO apiUpdateOperationPushService(long agentId,String operationId,String pushId,String pushState) {
 
         return null;
     }
 
-    public ApiOperationPushWSDTO apiRemovePushMessageService() {
+    public ApiOperationPushWSDTO apiRemoveOperationPushService(long agentId,String operationId,String pushId) {
 
         return null;
     }
+
 
 
     public ApiOperationPushTempWSDTO apiGetOperationPushTempsService(long agentId,String operationId) {
@@ -99,6 +97,7 @@ public class ApiOperationPushChannelFramework {
     }
 
 
+
     public ApiOperationPushAccountWSDTO apiGetOperationPushAccountService(long agentId, String operationId) {
 
         List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
@@ -107,7 +106,6 @@ public class ApiOperationPushChannelFramework {
         }
         return null;
     }
-
 
 
 }
