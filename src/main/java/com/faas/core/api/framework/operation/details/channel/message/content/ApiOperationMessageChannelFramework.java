@@ -60,26 +60,54 @@ public class ApiOperationMessageChannelFramework {
 
     public ApiOperationSmsChannelWSDTO apiGetOperationSmsChannelService(long agentId, String operationId) {
 
+        List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
+        if (!operationDBModels.isEmpty()){
+            List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(operationDBModels.get(0).getClientId());
+            if (!clientDetailsDBModels.isEmpty()){
+                return operationHelper.getApiOperationSmsChannelWSDTO(operationDBModels.get(0),clientDetailsDBModels.get(0));
+            }
+        }
         return null;
     }
 
 
     public ApiOperationWappMessageChannelWSDTO apiGetOperationWappMessageChannelService(long agentId, String operationId) {
 
-
+        List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
+        if (!operationDBModels.isEmpty()){
+            List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(operationDBModels.get(0).getClientId());
+            if (!clientDetailsDBModels.isEmpty()){
+                return operationHelper.getApiOperationWappMessageChannelWSDTO(operationDBModels.get(0),clientDetailsDBModels.get(0));
+            }
+        }
         return null;
     }
 
 
     public ApiOperationEmailChannelWSDTO apiGetOperationEmailChannelService(long agentId, String operationId) {
 
+        List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
+        if (!operationDBModels.isEmpty()){
+            List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(operationDBModels.get(0).getClientId());
+            if (!clientDetailsDBModels.isEmpty()){
+                return operationHelper.getApiOperationEmailChannelWSDTO(operationDBModels.get(0),clientDetailsDBModels.get(0));
+            }
+        }
         return null;
     }
 
 
     public ApiOperationPushChannelWSDTO apiGetOperationPushChannelService(long agentId, String operationId) {
 
+        List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
+        if (!operationDBModels.isEmpty()){
+            List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(operationDBModels.get(0).getClientId());
+            if (!clientDetailsDBModels.isEmpty()){
+                return operationHelper.getApiOperationPushChannelWSDTO(operationDBModels.get(0),clientDetailsDBModels.get(0));
+            }
+        }
         return null;
     }
+
 
 }
