@@ -52,9 +52,10 @@ public class ApiOperationPushChannelController {
     @RequestMapping(value = ApiRoute.API_SEND_OPERATION_PUSH, method = RequestMethod.POST)
     public ResponseEntity<?> apiSendOperationPush(@RequestParam long agentId,
                                                   @RequestParam String operationId,
-                                                  @RequestParam String tempId) {
+                                                  @RequestParam String tempId,
+                                                  @RequestParam String remoteAppId) {
 
-        ApiOperationPushWSModel response = apiOperationPushChannelMiddleware.apiSendOperationPush(agentId,operationId,tempId);
+        ApiOperationPushWSModel response = apiOperationPushChannelMiddleware.apiSendOperationPush(agentId,operationId,tempId,remoteAppId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

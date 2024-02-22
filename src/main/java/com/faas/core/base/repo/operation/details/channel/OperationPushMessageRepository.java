@@ -11,6 +11,7 @@ public interface OperationPushMessageRepository extends MongoRepository<Operatio
 
     List<OperationPushMessageDBModel>findBySessionId(long sessionId);
     List<OperationPushMessageDBModel>findByOperationId(String operationId);
+    List<OperationPushMessageDBModel>findByOperationIdAndAgentId(String operationId,long agentId);
     List<OperationPushMessageDBModel>findByClientId(long clientId);
     List<OperationPushMessageDBModel>findByIdAndSessionId(String pushId, long sessionId);
     List<OperationPushMessageDBModel>findByIdAndOperationId(String pushId, String operationId);

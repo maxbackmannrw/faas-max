@@ -52,9 +52,9 @@ public class RemoteAppFramework {
     AppUtils appUtils;
 
 
-    public RemoteAppListWSDTO getRemoteAppsService(long userId,String appConn,int reqPage,int reqSize) {
+    public RemoteAppListWSDTO getRemoteAppsService(long userId,String connState,int reqPage,int reqSize) {
 
-        Page<RemoteAppDBModel> remoteAppModelPage = remoteAppRepository.findAllByAppConn(appConn,PageRequest.of(reqPage,reqSize));
+        Page<RemoteAppDBModel> remoteAppModelPage = remoteAppRepository.findAllByConnState(connState,PageRequest.of(reqPage,reqSize));
         if (remoteAppModelPage != null){
             RemoteAppListWSDTO remoteAppListWSDTO = new RemoteAppListWSDTO();
             List<RemoteAppWSDTO> remoteAppWSDTOS = new ArrayList<>();
@@ -70,9 +70,9 @@ public class RemoteAppFramework {
     }
 
 
-    public RemoteAppListWSDTO getRemoteAppsByBaseTypeService(long userId,String appConn,String baseType,int reqPage,int reqSize) {
+    public RemoteAppListWSDTO getRemoteAppsByBaseTypeService(long userId,String connState,String baseType,int reqPage,int reqSize) {
 
-        Page<RemoteAppDBModel> remoteAppModelPage = remoteAppRepository.findAllByAppConnAndBaseType(appConn,baseType,PageRequest.of(reqPage,reqSize));
+        Page<RemoteAppDBModel> remoteAppModelPage = remoteAppRepository.findAllByConnStateAndBaseType(connState,baseType,PageRequest.of(reqPage,reqSize));
         if (remoteAppModelPage != null){
             RemoteAppListWSDTO remoteAppListWSDTO = new RemoteAppListWSDTO();
             List<RemoteAppWSDTO> remoteAppWSDTOS = new ArrayList<>();
@@ -122,14 +122,12 @@ public class RemoteAppFramework {
     }
 
 
-    public RemoteAppWSDTO updateRemoteAppService(long userId,String appId,String appConn) {
+    public RemoteAppWSDTO updateRemoteAppService(long userId,String appId,String connState) {
 
         Optional<RemoteAppDBModel>remoteAppDBModel = remoteAppRepository.findById(appId);
         if (remoteAppDBModel.isPresent()){
-
-            remoteAppDBModel.get().setAppConn(appConn);
+            remoteAppDBModel.get().setConnState(connState);
             remoteAppDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
-
             return remoteAppHelper.createRemoteAppWSDTO(remoteAppRepository.save(remoteAppDBModel.get()));
         }
         return null;

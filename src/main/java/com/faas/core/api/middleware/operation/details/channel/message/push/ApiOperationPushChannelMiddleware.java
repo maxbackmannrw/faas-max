@@ -63,13 +63,18 @@ public class ApiOperationPushChannelMiddleware {
         return response;
     }
 
-    public ApiOperationPushWSModel apiSendOperationPush(long agentId,String operationId,String tempId) {
+    public ApiOperationPushWSModel apiSendOperationPush(long agentId,String operationId,String tempId,String remoteAppId) {
 
         ApiOperationPushWSModel response = new ApiOperationPushWSModel();
         GeneralWSModel general = new GeneralWSModel();
+        List<ApiOperationPushWSDTO> operationPushWSDTOS = new ArrayList<>();
 
+        ApiOperationPushWSDTO operationPushWSDTO = apiOperationPushChannelFramework.apiSendOperationPushService(agentId,operationId,tempId,remoteAppId);
+        if (operationPushWSDTO != null){
+            operationPushWSDTOS.add(operationPushWSDTO);
+        }
 
-
+        response.setOperationPushes(operationPushWSDTOS);
         general.setOperation("apiSendOperationPush");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);

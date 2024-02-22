@@ -63,7 +63,7 @@ public class RemoteAppHelper {
         remoteAppDBModel.setRemoteTypeId(remoteDBModel.getTypeId());
         remoteAppDBModel.setRemoteType(remoteDBModel.getRemoteType());
         remoteAppDBModel.setBaseType(remoteDBModel.getBaseType());
-        remoteAppDBModel.setAppConn(AppConstant.APP_CONN_NEW);
+        remoteAppDBModel.setConnState(AppConstant.CONN_STATE_NEW);
         remoteAppDBModel.setuDate(appUtils.getCurrentTimeStamp());
         remoteAppDBModel.setcDate(appUtils.getCurrentTimeStamp());
         remoteAppDBModel.setStatus(1);
