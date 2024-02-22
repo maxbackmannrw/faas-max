@@ -15,6 +15,7 @@ import java.util.List;
 @Component
 public class ApiOperationSipChannelFramework {
 
+
     @Autowired
     ChannelHelper channelHelper;
 
@@ -35,13 +36,11 @@ public class ApiOperationSipChannelFramework {
         return operationSipCallWSDTOS;
     }
 
-
-    public ApiOperationSipCallWSDTO apiGetOperationSipCallService(long agentId,String operationId,long callId) {
+    public ApiOperationSipCallWSDTO apiGetOperationSipCallService(long agentId,String operationId,String callId) {
 
 
         return null;
     }
-
 
     public ApiOperationSipCallWSDTO apiCreateOperationSipCallService(long agentId,String operationId,String numberId) {
 
@@ -49,42 +48,22 @@ public class ApiOperationSipChannelFramework {
         return null;
     }
 
+    public ApiOperationSipCallWSDTO apiUpdateOperationSipCallService(long agentId,String operationId,String callId,String callState) {
 
-    public ApiOperationSipCallWSDTO apiMakeOperationSipCallService(long agentId,String operationId,long callId) {
+        return null;
+    }
+
+    public ApiOperationSipCallWSDTO apiRemoveOperationSipCallService(long agentId,String operationId,String callId) {
 
 
         return null;
     }
 
 
-    public ApiOperationSipCallWSDTO apiEndOperationSipCallService(long agentId,String operationId,long callId) {
+    public ApiOperationSipCallWSDTO apiGetOperationSipAccountService(long agentId,String operationId,String callId) {
 
 
         return null;
     }
-
-
-    public ApiOperationSipCallWSDTO apiFinishOperationSipCallService(long agentId,String operationId,long callId) {
-
-
-        return null;
-    }
-
-
-
-    public ApiOperationSipCallWSDTO apiUpdateOperationSipCallService(long agentId,String operationId,long callId,String callState) {
-
-        return null;
-    }
-
-
-
-    public ApiOperationSipCallWSDTO apiRemoveOperationSipCallService(long agentId,String operationId,long callId) {
-
-
-        return null;
-    }
-
-
 
 }

@@ -4,9 +4,9 @@ import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationListWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationSipChannelWSDTO;
-import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiSipAccountWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationSipAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiOperationWappCallChannelWSDTO;
-import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiWappCallAccountWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiOperationWappCallAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.call.content.dto.ApiOperationCallChannelWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.content.dto.ApiOperationMessageChannelWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiOperationEmailAccountWSDTO;
@@ -485,7 +485,7 @@ public class OperationHelper {
 
     public ApiOperationSipChannelWSDTO getApiOperationSipChannelWSDTO(OperationDBModel operationDBModel,ClientDetailsDBModel clientDetails) {
 
-        ApiSipAccountWSDTO sipAccountWSDTO = channelHelper.getApiSipAccountWSDTO(operationDBModel.getAgentId(),operationDBModel.getProcessId());
+        ApiOperationSipAccountWSDTO sipAccountWSDTO = channelHelper.getApiSipAccountWSDTO(operationDBModel.getAgentId(),operationDBModel.getProcessId());
         if (sipAccountWSDTO != null && clientDetails.getClientPhones() != null){
 
             ApiOperationSipChannelWSDTO sipChannelWSDTO = new ApiOperationSipChannelWSDTO();
@@ -505,7 +505,7 @@ public class OperationHelper {
 
     public ApiOperationWappCallChannelWSDTO getApiOperationWappCallChannelWSDTO(OperationDBModel operationDBModel,ClientDetailsDBModel clientDetails) {
 
-        ApiWappCallAccountWSDTO wappAccountWSDTO = channelHelper.getApiWappCallAccountWSDTO(operationDBModel.getAgentId(),operationDBModel.getProcessId());
+        ApiOperationWappCallAccountWSDTO wappAccountWSDTO = channelHelper.getApiWappCallAccountWSDTO(operationDBModel.getAgentId(),operationDBModel.getProcessId());
         if (wappAccountWSDTO != null && clientDetails.getClientPhones() != null){
 
             ApiOperationWappCallChannelWSDTO wappCallChannelWSDTO = new ApiOperationWappCallChannelWSDTO();

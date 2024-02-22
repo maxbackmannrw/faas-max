@@ -8,14 +8,14 @@ import java.util.List;
 public class ApiOperationSipChannelWSDTO {
 
     private List<ClientPhoneDAO> clientPhones;
-    private ApiSipAccountWSDTO sipAccount;
+    private ApiOperationSipAccountWSDTO sipAccount;
     private OperationSipCallDBModel activeSipCall;
     private List<OperationSipCallDBModel> recentSipCalls;
 
     public ApiOperationSipChannelWSDTO() {
     }
 
-    public ApiOperationSipChannelWSDTO(List<ClientPhoneDAO> clientPhones, ApiSipAccountWSDTO sipAccount, OperationSipCallDBModel activeSipCall, List<OperationSipCallDBModel> recentSipCalls) {
+    public ApiOperationSipChannelWSDTO(List<ClientPhoneDAO> clientPhones, ApiOperationSipAccountWSDTO sipAccount, OperationSipCallDBModel activeSipCall, List<OperationSipCallDBModel> recentSipCalls) {
         this.clientPhones = clientPhones;
         this.sipAccount = sipAccount;
         this.activeSipCall = activeSipCall;
@@ -30,11 +30,11 @@ public class ApiOperationSipChannelWSDTO {
         this.clientPhones = clientPhones;
     }
 
-    public ApiSipAccountWSDTO getSipAccount() {
+    public ApiOperationSipAccountWSDTO getSipAccount() {
         return sipAccount;
     }
 
-    public void setSipAccount(ApiSipAccountWSDTO sipAccount) {
+    public void setSipAccount(ApiOperationSipAccountWSDTO sipAccount) {
         this.sipAccount = sipAccount;
     }
 

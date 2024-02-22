@@ -112,21 +112,17 @@ public class ApiRoute {
     public static final String API_GET_OPERATION_SIP_CALLS = "apigetoperationsipcalls";
     public static final String API_GET_OPERATION_SIP_CALL = "apigetoperationsipcall";
     public static final String API_CREATE_OPERATION_SIP_CALL = "apicreateoperationsipcall";
-    public static final String API_MAKE_OPERATION_SIP_CALL = "apimakeoperationsipcall";
-    public static final String API_END_OPERATION_SIP_CALL = "apiendoperationsipcall";
-    public static final String API_FINISH_OPERATION_SIP_CALL = "apifinishoperationsipcall";
     public static final String API_UPDATE_OPERATION_SIP_CALL = "apiupdateoperationsipcall";
     public static final String API_REMOVE_OPERATION_SIP_CALL = "apiremoveoperationsipcall";
-
+    public static final String API_GET_OPERATION_SIP_ACCOUNT = "apigetoperationsipaccount";
 
     public static final String API_GET_OPERATION_WAPP_CALLS = "apigetoperationwappcalls";
     public static final String API_GET_OPERATION_WAPP_CALL = "apigetoperationwappcall";
     public static final String API_CREATE_OPERATION_WAPP_CALL = "apicreateoperationwappcall";
-    public static final String API_MAKE_OPERATION_WAPP_CALL = "apimakeoperationwappcall";
-    public static final String API_END_OPERATION_WAPP_CALL = "apiendoperationwappcall";
-    public static final String API_FINISH_OPERATION_WAPP_CALL = "apifinishoperationwappcall";
     public static final String API_UPDATE_OPERATION_WAPP_CALL = "apiupdateoperationwappcall";
     public static final String API_REMOVE_OPERATION_WAPP_CALL = "apiremoveoperationwappcall";
+    public static final String API_GET_OPERATION_WAPP_CALL_ACCOUNT = "apigetoperationwappcallaccount";
+
 
 
     public static final String API_GET_OPERATION_MESSAGE_CHANNEL = "apigetoperationmessagechannel";
@@ -134,7 +130,6 @@ public class ApiRoute {
     public static final String API_GET_OPERATION_EMAIL_CHANNEL = "apigetoperationemailchannel";
     public static final String API_GET_OPERATION_WAPP_MESSAGE_CHANNEL = "apigetoperationwappmessagechannel";
     public static final String API_GET_OPERATION_PUSH_CHANNEL = "apigetoperationpushchannel";
-
 
     public static final String API_GET_OPERATION_SMSS = "apigetoperationsmss";
     public static final String API_GET_OPERATION_SMS = "apigetoperationsms";
@@ -145,7 +140,6 @@ public class ApiRoute {
     public static final String API_GET_OPERATION_SMS_TEMP = "apigetoperationsmstemp";
     public static final String API_GET_OPERATION_SMS_ACCOUNT = "apigetoperationsmsaccount";
 
-
     public static final String API_GET_OPERATION_WAPP_MESSAGES = "apigetoperationwappmessages";
     public static final String API_GET_OPERATION_WAPP_MESSAGE = "apigetoperationwappmessage";
     public static final String API_SEND_OPERATION_WAPP_MESSAGE = "apisendoperationwappmessage";
@@ -154,7 +148,6 @@ public class ApiRoute {
     public static final String API_GET_OPERATION_WAPP_MESSAGE_TEMPS = "apigetoperationwappmessagetemps";
     public static final String API_GET_OPERATION_WAPP_MESSAGE_TEMP = "apigetoperationwappmessagetemp";
     public static final String API_GET_OPERATION_WAPP_MESSAGE_ACCOUNT = "apigetoperationwappmessageaccount";
-
 
     public static final String API_GET_OPERATION_EMAILS = "apigetoperationemails";
     public static final String API_GET_OPERATION_EMAIL = "apigetoperationemail";
@@ -165,7 +158,6 @@ public class ApiRoute {
     public static final String API_GET_OPERATION_EMAIL_TEMP = "apigetoperationemailtemp";
     public static final String API_GET_OPERATION_EMAIL_ACCOUNT = "apigetoperationemailaccount";
 
-
     public static final String API_GET_OPERATION_PUSHES = "apigetoperationpushes";
     public static final String API_GET_OPERATION_PUSH = "apigetoperationpush";
     public static final String API_SEND_OPERATION_PUSH = "apisendoperationpush";
@@ -174,6 +166,7 @@ public class ApiRoute {
     public static final String API_GET_OPERATION_PUSH_TEMPS = "apigetoperationpushtemps";
     public static final String API_GET_OPERATION_PUSH_TEMP = "apigetoperationpushtemp";
     public static final String API_GET_OPERATION_PUSH_ACCOUNT = "apigetoperationpushaccount";
+
 
 
 }

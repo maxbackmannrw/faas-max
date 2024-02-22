@@ -4,7 +4,7 @@ import com.faas.core.base.model.db.channel.account.dao.AccountDataDAO;
 
 import java.util.List;
 
-public class ApiSipAccountWSDTO {
+public class ApiOperationSipAccountWSDTO {
 
     private String accountId;
     private String account;
@@ -19,10 +19,10 @@ public class ApiSipAccountWSDTO {
     private long cDate;
     private int status;
 
-    public ApiSipAccountWSDTO() {
+    public ApiOperationSipAccountWSDTO() {
     }
 
-    public ApiSipAccountWSDTO(String accountId, String account, String userName, String authUser, String password, String sipUrl, List<AccountDataDAO> accountDatas, String provider, String callerId, String channelState, long cDate, int status) {
+    public ApiOperationSipAccountWSDTO(String accountId, String account, String userName, String authUser, String password, String sipUrl, List<AccountDataDAO> accountDatas, String provider, String callerId, String channelState, long cDate, int status) {
         this.accountId = accountId;
         this.account = account;
         this.userName = userName;

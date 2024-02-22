@@ -1,8 +1,8 @@
 package com.faas.core.utils.helpers;
 
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationSipCallWSDTO;
-import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiSipAccountWSDTO;
-import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiWappCallAccountWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationSipAccountWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiOperationWappCallAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiOperationEmailAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiOperationSmsAccountWSDTO;
@@ -251,13 +251,13 @@ public class ChannelHelper {
     }
 
 
-    public ApiSipAccountWSDTO getApiSipAccountWSDTO(long agentId,String processId) {
+    public ApiOperationSipAccountWSDTO getApiSipAccountWSDTO(long agentId, String processId) {
 
         List<ProcessSipChannelDBModel> sipChannelDBModels = processSipChannelRepository.findByProcessId(processId);
         List<UserDetailsDBModel> agentDetails = userDetailsRepository.findByUserId(agentId);
         if (!sipChannelDBModels.isEmpty() && !agentDetails.isEmpty() && agentDetails.get(0).getSipChannel() != null) {
 
-            ApiSipAccountWSDTO sipAccountWSDTO = new ApiSipAccountWSDTO();
+            ApiOperationSipAccountWSDTO sipAccountWSDTO = new ApiOperationSipAccountWSDTO();
             sipAccountWSDTO.setAccountId(agentDetails.get(0).getSipChannel().getAccountId());
             sipAccountWSDTO.setAccount(agentDetails.get(0).getSipChannel().getAccount());
             sipAccountWSDTO.setUserName(agentDetails.get(0).getSipChannel().getUserName());
@@ -280,13 +280,13 @@ public class ChannelHelper {
 
 
 
-    public ApiWappCallAccountWSDTO getApiWappCallAccountWSDTO(long agentId, String processId) {
+    public ApiOperationWappCallAccountWSDTO getApiWappCallAccountWSDTO(long agentId, String processId) {
 
         List<UserDetailsDBModel> agentDetails = userDetailsRepository.findByUserId(agentId);
         List<ProcessWappChannelDBModel> wappChannels = processWappChannelRepository.findByProcessId(processId);
         if (!agentDetails.isEmpty() && agentDetails.get(0).getWappChannel() != null && agentDetails.get(0).getWappChannel().getAccountId() != null && !wappChannels.isEmpty()) {
 
-            ApiWappCallAccountWSDTO wappAccountWSDTO = new ApiWappCallAccountWSDTO();
+            ApiOperationWappCallAccountWSDTO wappAccountWSDTO = new ApiOperationWappCallAccountWSDTO();
             wappAccountWSDTO.setAccountId(agentDetails.get(0).getWappChannel().getAccountId());
             wappAccountWSDTO.setAccount(agentDetails.get(0).getWappChannel().getAccount());
             wappAccountWSDTO.setInstanceKey(agentDetails.get(0).getWappChannel().getInstanceKey());

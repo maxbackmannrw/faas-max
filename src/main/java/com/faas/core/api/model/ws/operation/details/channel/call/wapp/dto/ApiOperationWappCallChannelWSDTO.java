@@ -8,25 +8,25 @@ import java.util.List;
 public class ApiOperationWappCallChannelWSDTO {
 
     private List<ClientPhoneDAO> clientPhones;
-    private ApiWappCallAccountWSDTO wappAccount;
+    private ApiOperationWappCallAccountWSDTO wappAccount;
     private OperationWappCallDBModel activeWappCall;
     private List<OperationWappCallDBModel>recentWappCalls;
 
     public ApiOperationWappCallChannelWSDTO() {
     }
 
-    public ApiOperationWappCallChannelWSDTO(ApiWappCallAccountWSDTO wappAccount, List<ClientPhoneDAO> clientPhones, OperationWappCallDBModel activeWappCall, List<OperationWappCallDBModel> recentWappCalls) {
+    public ApiOperationWappCallChannelWSDTO(ApiOperationWappCallAccountWSDTO wappAccount, List<ClientPhoneDAO> clientPhones, OperationWappCallDBModel activeWappCall, List<OperationWappCallDBModel> recentWappCalls) {
         this.wappAccount = wappAccount;
         this.clientPhones = clientPhones;
         this.activeWappCall = activeWappCall;
         this.recentWappCalls = recentWappCalls;
     }
 
-    public ApiWappCallAccountWSDTO getWappAccount() {
+    public ApiOperationWappCallAccountWSDTO getWappAccount() {
         return wappAccount;
     }
 
-    public void setWappAccount(ApiWappCallAccountWSDTO wappAccount) {
+    public void setWappAccount(ApiOperationWappCallAccountWSDTO wappAccount) {
         this.wappAccount = wappAccount;
     }
 
