@@ -1,15 +1,12 @@
 package com.faas.core.api.middleware.operation.details.channel.call.content;
 
 import com.faas.core.api.framework.operation.details.channel.call.content.ApiOperationCallChannelFramework;
-import com.faas.core.api.framework.operation.details.channel.message.content.ApiOperationMessageChannelFramework;
 import com.faas.core.api.model.ws.operation.details.channel.call.content.ApiOperationCallChannelWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.call.content.dto.ApiOperationCallChannelWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.ApiOperationSipChannelWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationSipChannelWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.call.wapp.ApiOperationWappCallChannelWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiOperationWappCallChannelWSDTO;
-import com.faas.core.api.model.ws.operation.details.channel.message.content.ApiOperationMessageChannelWSModel;
-import com.faas.core.api.model.ws.operation.details.channel.message.content.dto.ApiOperationMessageChannelWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +39,6 @@ public class ApiOperationCallChannelMiddleware {
         return response;
     }
 
-
     public ApiOperationSipChannelWSModel apiGetOperationSipChannel(long agentId, String operationId) {
 
         ApiOperationSipChannelWSModel response = new ApiOperationSipChannelWSModel();
@@ -61,7 +57,6 @@ public class ApiOperationCallChannelMiddleware {
 
         return response;
     }
-
 
     public ApiOperationWappCallChannelWSModel apiGetOperationWappCallChannel(long agentId, String operationId) {
 

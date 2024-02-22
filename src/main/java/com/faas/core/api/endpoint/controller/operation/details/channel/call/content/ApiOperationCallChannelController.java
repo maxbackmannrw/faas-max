@@ -36,7 +36,6 @@ public class ApiOperationCallChannelController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_SIP_CHANNEL, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationSipChannel(@RequestParam long agentId,
                                                        @RequestParam String operationId) {
@@ -49,7 +48,6 @@ public class ApiOperationCallChannelController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_WAPP_CALL_CHANNEL, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationWappCallChannel(@RequestParam long agentId,
                                                             @RequestParam String operationId) {
@@ -61,6 +59,5 @@ public class ApiOperationCallChannelController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
 }
