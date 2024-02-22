@@ -22,7 +22,6 @@ public class ApiOperationWappCallChannelController {
     @Autowired
     ApiOperationWappCallChannelMiddleware apiOperationWappCallChannelMiddleware;
 
-
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_WAPP_CALLS, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationWappCalls(@RequestParam long agentId,
                                                       @RequestParam String operationId) {
