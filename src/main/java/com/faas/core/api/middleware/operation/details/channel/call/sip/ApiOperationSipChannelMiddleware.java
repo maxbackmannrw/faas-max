@@ -128,7 +128,6 @@ public class ApiOperationSipChannelMiddleware {
     }
 
 
-
     public ApiOperationActiveSipCallWSModel apiGetOperationActiveSipCall(long agentId, String operationId) {
 
         ApiOperationActiveSipCallWSModel response = new ApiOperationActiveSipCallWSModel();
@@ -139,7 +138,7 @@ public class ApiOperationSipChannelMiddleware {
             response.setOperationActiveSipCall(activeSipCallWSDTO);
         }
 
-        general.setOperation("apiGetOperationSipAccount");
+        general.setOperation("apiGetOperationActiveSipCall");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
