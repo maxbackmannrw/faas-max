@@ -3,8 +3,6 @@ package com.faas.core.base.framework.campaign.settings;
 import com.faas.core.base.model.db.campaign.settings.CampaignTypeDBModel;
 import com.faas.core.base.model.ws.campaign.settings.dto.CampaignTypeWSDTO;
 import com.faas.core.base.repo.campaign.settings.CampaignTypeRepository;
-import com.faas.core.base.repo.client.settings.FlowTypeRepository;
-import com.faas.core.base.repo.client.settings.InquiryTypeRepository;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -18,12 +16,6 @@ public class CampaignSettingsFramework {
 
     @Autowired
     CampaignTypeRepository campaignTypeRepository;
-
-    @Autowired
-    InquiryTypeRepository inquiryTypeRepository;
-
-    @Autowired
-    FlowTypeRepository flowTypeRepository;
 
     @Autowired
     AppUtils appUtils;

@@ -8,7 +8,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/details/channel/call/sip/ApiOperationSipChannelMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/details/channel/call/sip/ApiOperationSipChannelMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/client/settings/ClientSettingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/client/settings/ClientSettingsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/campaign/settings/CampaignSettingsFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/campaign/settings/CampaignSettingsFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/client/settings/ClientSettingsFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/client/settings/ClientSettingsFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/client/settings/ClientSettingsMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/client/settings/ClientSettingsMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/client/settings/FlowTypeDBModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/client/settings/InquiryTypeDBModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/client/settings/dto/FlowTypeWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/client/settings/dto/FlowTypeWSDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/client/settings/dto/InquiryTypeWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/client/settings/dto/InquiryTypeWSDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/repo/client/settings/FlowTypeRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/repo/client/settings/InquiryTypeRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/config/BaseRoute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/config/BaseRoute.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -770,15 +781,9 @@
       <workItem from="1708671605502" duration="200000" />
       <workItem from="1708677442740" duration="180000" />
       <workItem from="1708686647457" duration="2489000" />
-      <workItem from="1708698228715" duration="2926000" />
-    </task>
-    <task id="LOCAL-00656" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1707496404875</created>
-      <option name="number" value="00656" />
-      <option name="presentableId" value="LOCAL-00656" />
-      <option name="project" value="LOCAL" />
-      <updated>1707496404876</updated>
+      <workItem from="1708698228715" duration="4258000" />
+      <workItem from="1708726892544" duration="190000" />
+      <workItem from="1708728492546" duration="1079000" />
     </task>
     <task id="LOCAL-00657" summary="almost finish">
       <option name="closed" value="true" />
@@ -1164,7 +1169,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708702188871</updated>
     </task>
-    <option name="localTasksCounter" value="705" />
+    <task id="LOCAL-00705" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1708704180403</created>
+      <option name="number" value="00705" />
+      <option name="presentableId" value="LOCAL-00705" />
+      <option name="project" value="LOCAL" />
+      <updated>1708704180403</updated>
+    </task>
+    <option name="localTasksCounter" value="706" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
