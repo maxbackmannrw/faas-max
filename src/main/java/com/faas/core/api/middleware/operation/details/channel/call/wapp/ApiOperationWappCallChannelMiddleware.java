@@ -1,6 +1,7 @@
 package com.faas.core.api.middleware.operation.details.channel.call.wapp;
 
 import com.faas.core.api.framework.operation.details.channel.call.wapp.ApiOperationWappCallChannelFramework;
+import com.faas.core.api.model.ws.operation.details.channel.call.wapp.ApiOperationActiveWappCallWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.call.wapp.ApiOperationWappCallAccountWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.call.wapp.ApiOperationWappCallWSModel;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
@@ -37,7 +38,6 @@ public class ApiOperationWappCallChannelMiddleware {
         GeneralWSModel general = new GeneralWSModel();
 
 
-
         general.setOperation("apiGetOperationWappCall");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -51,7 +51,6 @@ public class ApiOperationWappCallChannelMiddleware {
 
         ApiOperationWappCallWSModel response = new ApiOperationWappCallWSModel();
         GeneralWSModel general = new GeneralWSModel();
-
 
 
         general.setOperation("apiCreateOperationWappCall");
@@ -69,7 +68,6 @@ public class ApiOperationWappCallChannelMiddleware {
         GeneralWSModel general = new GeneralWSModel();
 
 
-
         general.setOperation("apiUpdateOperationWappCall");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -85,8 +83,23 @@ public class ApiOperationWappCallChannelMiddleware {
         GeneralWSModel general = new GeneralWSModel();
 
 
-
         general.setOperation("apiRemoveOperationWappCall");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
+    public ApiOperationActiveWappCallWSModel apiGetOperationActiveWappCall(long agentId, String operationId) {
+
+        ApiOperationActiveWappCallWSModel response = new ApiOperationActiveWappCallWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+
+        general.setOperation("apiGetOperationActiveWappCall");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -111,5 +124,7 @@ public class ApiOperationWappCallChannelMiddleware {
 
         return response;
     }
+
+
 
 }

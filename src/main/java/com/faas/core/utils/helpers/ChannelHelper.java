@@ -213,6 +213,17 @@ public class ChannelHelper {
     }
 
 
+
+    public List<ClientPhoneDAO> getClientPhoneDAOS(long clientId){
+
+        List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(clientId);
+        if (!clientDetailsDBModels.isEmpty() && clientDetailsDBModels.get(0).getClientPhones() != null){
+            return clientDetailsDBModels.get(0).getClientPhones();
+        }
+        return null;
+    }
+
+
     public ClientPhoneDAO fetchClientPhoneDAO(long clientId,String numberId){
 
         List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(clientId);
@@ -279,7 +290,6 @@ public class ChannelHelper {
 
 
 
-
     public ApiOperationWappCallAccountWSDTO getApiWappCallAccountWSDTO(long agentId, String processId) {
 
         List<UserDetailsDBModel> agentDetails = userDetailsRepository.findByUserId(agentId);
@@ -328,8 +338,6 @@ public class ChannelHelper {
     }
 
 
-
-    
 
     public ProcessSmsAccountDAO mapProcessSmsAccountDAO(SmsAccountDBModel smsAccountDBModel) {
 

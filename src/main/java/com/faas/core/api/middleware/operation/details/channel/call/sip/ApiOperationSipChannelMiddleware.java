@@ -1,9 +1,12 @@
 package com.faas.core.api.middleware.operation.details.channel.call.sip;
 
 import com.faas.core.api.framework.operation.details.channel.call.sip.ApiOperationSipChannelFramework;
+import com.faas.core.api.model.ws.operation.details.channel.call.sip.ApiOperationActiveSipCallWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.ApiOperationSipAccountWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.ApiOperationSipCallWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationSipAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationSipCallWSDTO;
+import com.faas.core.base.model.db.client.details.content.dao.ClientPhoneDAO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -124,11 +127,10 @@ public class ApiOperationSipChannelMiddleware {
     }
 
 
-    public ApiOperationSipAccountWSModel apiGetOperationSipAccount(long agentId, String operationId) {
+    public ApiOperationActiveSipCallWSModel apiGetOperationActiveSipCall(long agentId, String operationId) {
 
-        ApiOperationSipAccountWSModel response = new ApiOperationSipAccountWSModel();
+        ApiOperationActiveSipCallWSModel response = new ApiOperationActiveSipCallWSModel();
         GeneralWSModel general = new GeneralWSModel();
-
 
 
         general.setOperation("apiGetOperationSipAccount");
@@ -139,6 +141,27 @@ public class ApiOperationSipChannelMiddleware {
 
         return response;
     }
+
+
+    public ApiOperationSipAccountWSModel apiGetOperationSipAccount(long agentId, String operationId) {
+
+        ApiOperationSipAccountWSModel response = new ApiOperationSipAccountWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        ApiOperationSipAccountWSDTO sipAccountWSDTO = apiOperationSipChannelFramework.apiGetOperationSipAccountService(agentId,operationId);
+        if (sipAccountWSDTO != null){
+            response.setSipAccount(sipAccountWSDTO);
+        }
+
+        general.setOperation("apiGetOperationSipAccount");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
 
 
 }

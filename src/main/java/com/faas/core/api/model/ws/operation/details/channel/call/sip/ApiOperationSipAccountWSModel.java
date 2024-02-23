@@ -9,15 +9,13 @@ import java.util.List;
 public class ApiOperationSipAccountWSModel {
 
     private GeneralWSModel general;
-    private List<ClientPhoneDAO> clientPhones;
     private ApiOperationSipAccountWSDTO sipAccount;
 
     public ApiOperationSipAccountWSModel() {
     }
 
-    public ApiOperationSipAccountWSModel(GeneralWSModel general, List<ClientPhoneDAO> clientPhones, ApiOperationSipAccountWSDTO sipAccount) {
+    public ApiOperationSipAccountWSModel(GeneralWSModel general, ApiOperationSipAccountWSDTO sipAccount) {
         this.general = general;
-        this.clientPhones = clientPhones;
         this.sipAccount = sipAccount;
     }
 
@@ -27,14 +25,6 @@ public class ApiOperationSipAccountWSModel {
 
     public void setGeneral(GeneralWSModel general) {
         this.general = general;
-    }
-
-    public List<ClientPhoneDAO> getClientPhones() {
-        return clientPhones;
-    }
-
-    public void setClientPhones(List<ClientPhoneDAO> clientPhones) {
-        this.clientPhones = clientPhones;
     }
 
     public ApiOperationSipAccountWSDTO getSipAccount() {

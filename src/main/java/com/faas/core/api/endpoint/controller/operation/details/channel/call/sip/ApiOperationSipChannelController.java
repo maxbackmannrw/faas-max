@@ -1,6 +1,7 @@
 package com.faas.core.api.endpoint.controller.operation.details.channel.call.sip;
 
 import com.faas.core.api.middleware.operation.details.channel.call.sip.ApiOperationSipChannelMiddleware;
+import com.faas.core.api.model.ws.operation.details.channel.call.sip.ApiOperationActiveSipCallWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.ApiOperationSipAccountWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.ApiOperationSipCallWSModel;
 import com.faas.core.utils.config.ApiRoute;
@@ -89,6 +90,19 @@ public class ApiOperationSipChannelController {
     }
 
 
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_ACTIVE_SIP_CALL, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationActiveSipCall(@RequestParam long agentId,
+                                                          @RequestParam String operationId) {
+
+        ApiOperationActiveSipCallWSModel response = apiOperationSipChannelMiddleware.apiGetOperationActiveSipCall(agentId,operationId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_SIP_ACCOUNT, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationSipAccount(@RequestParam long agentId,
                                                        @RequestParam String operationId) {
@@ -100,5 +114,6 @@ public class ApiOperationSipChannelController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
+
 
 }
