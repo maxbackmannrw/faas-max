@@ -128,6 +128,7 @@ public class ApiOperationSipChannelMiddleware {
     }
 
 
+
     public ApiOperationActiveSipCallWSModel apiGetOperationActiveSipCall(long agentId, String operationId) {
 
         ApiOperationActiveSipCallWSModel response = new ApiOperationActiveSipCallWSModel();
