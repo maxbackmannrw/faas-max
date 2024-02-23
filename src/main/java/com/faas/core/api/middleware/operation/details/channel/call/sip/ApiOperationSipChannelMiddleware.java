@@ -4,6 +4,7 @@ import com.faas.core.api.framework.operation.details.channel.call.sip.ApiOperati
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.ApiOperationActiveSipCallWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.ApiOperationSipAccountWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.ApiOperationSipCallWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationActiveSipCallWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationSipAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationSipCallWSDTO;
 import com.faas.core.base.model.db.client.details.content.dao.ClientPhoneDAO;
@@ -132,6 +133,10 @@ public class ApiOperationSipChannelMiddleware {
         ApiOperationActiveSipCallWSModel response = new ApiOperationActiveSipCallWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
+        ApiOperationActiveSipCallWSDTO activeSipCallWSDTO = apiOperationSipChannelFramework.apiGetOperationActiveSipCallService(agentId,operationId);
+        if (activeSipCallWSDTO != null){
+            response.setOperationActiveSipCall(activeSipCallWSDTO);
+        }
 
         general.setOperation("apiGetOperationSipAccount");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
