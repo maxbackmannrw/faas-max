@@ -1,16 +1,14 @@
 package com.faas.core.api.framework.operation.details.channel.call.sip;
 
-import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationActiveSipCallWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationCurrentSipCallWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationSipAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationSipCallWSDTO;
 import com.faas.core.base.model.db.client.details.content.ClientDetailsDBModel;
-import com.faas.core.base.model.db.client.details.content.dao.ClientPhoneDAO;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationSipCallDBModel;
 import com.faas.core.base.repo.client.details.ClientDetailsRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.operation.details.channel.OperationSipCallRepository;
-import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.ChannelHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -102,7 +100,7 @@ public class ApiOperationSipChannelFramework {
     }
 
 
-    public ApiOperationActiveSipCallWSDTO apiGetOperationActiveSipCallService(long agentId, String operationId) {
+    public ApiOperationCurrentSipCallWSDTO apiGetOperationCurrentSipCallService(long agentId, String operationId) {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
         if (!operationDBModels.isEmpty()){
@@ -111,14 +109,11 @@ public class ApiOperationSipChannelFramework {
             List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(operationDBModels.get(0).getClientId());
             if (sipAccountWSDTO != null && !clientDetailsDBModels.isEmpty() && clientDetailsDBModels.get(0).getClientPhones() != null){
 
-                ApiOperationActiveSipCallWSDTO operationActiveSipCallWSDTO = new ApiOperationActiveSipCallWSDTO();
-                operationActiveSipCallWSDTO.setSipAccount(sipAccountWSDTO);
-                operationActiveSipCallWSDTO.setClientPhones(clientDetailsDBModels.get(0).getClientPhones());
-                List<OperationSipCallDBModel> operationActiveSipCalls = operationSipCallRepository.findByOperationIdAndAgentIdAndCallState(operationId,agentId, AppConstant.ACTIVE_CALL);
-                if (!operationActiveSipCalls.isEmpty()){
-                    operationActiveSipCallWSDTO.setActiveSipCall(operationActiveSipCalls.get(0));
-                }
-                return operationActiveSipCallWSDTO;
+                ApiOperationCurrentSipCallWSDTO operationCurrentSipCallWSDTO = new ApiOperationCurrentSipCallWSDTO();
+                operationCurrentSipCallWSDTO.setSipAccount(sipAccountWSDTO);
+                operationCurrentSipCallWSDTO.setClientPhones(clientDetailsDBModels.get(0).getClientPhones());
+
+                return operationCurrentSipCallWSDTO;
             }
         }
         return null;

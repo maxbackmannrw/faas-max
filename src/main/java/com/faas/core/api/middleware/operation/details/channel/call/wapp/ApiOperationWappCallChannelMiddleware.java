@@ -1,10 +1,10 @@
 package com.faas.core.api.middleware.operation.details.channel.call.wapp;
 
 import com.faas.core.api.framework.operation.details.channel.call.wapp.ApiOperationWappCallChannelFramework;
-import com.faas.core.api.model.ws.operation.details.channel.call.wapp.ApiOperationActiveWappCallWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.call.wapp.ApiOperationCurrentWappCallWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.call.wapp.ApiOperationWappCallAccountWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.call.wapp.ApiOperationWappCallWSModel;
-import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiOperationActiveWappCallWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiOperationCurrentWappCallWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiOperationWappCallAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiOperationWappCallWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
@@ -169,17 +169,17 @@ public class ApiOperationWappCallChannelMiddleware {
     }
 
 
-    public ApiOperationActiveWappCallWSModel apiGetOperationActiveWappCall(long agentId, String operationId) {
+    public ApiOperationCurrentWappCallWSModel apiGetOperationCurrentWappCall(long agentId, String operationId) {
 
-        ApiOperationActiveWappCallWSModel response = new ApiOperationActiveWappCallWSModel();
+        ApiOperationCurrentWappCallWSModel response = new ApiOperationCurrentWappCallWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiOperationActiveWappCallWSDTO operationActiveWappCallWSDTO =  apiOperationWappCallChannelFramework.apiGetOperationActiveWappCallService(agentId,operationId);
-        if (operationActiveWappCallWSDTO != null){
-            response.setOperationActiveWappCall(operationActiveWappCallWSDTO);
+        ApiOperationCurrentWappCallWSDTO operationCurrentWappCallWSDTO =  apiOperationWappCallChannelFramework.apiGetOperationCurrentWappCallService(agentId,operationId);
+        if (operationCurrentWappCallWSDTO != null){
+            response.setOperationCurrentWappCall(operationCurrentWappCallWSDTO);
         }
 
-        general.setOperation("apiGetOperationActiveWappCall");
+        general.setOperation("apiGetOperationCurrentWappCall");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

@@ -5,19 +5,19 @@ import com.faas.core.base.model.db.operation.details.channel.OperationWappCallDB
 
 import java.util.List;
 
-public class ApiOperationActiveWappCallWSDTO {
+public class ApiOperationCurrentWappCallWSDTO {
 
     private List<ClientPhoneDAO> clientPhones;
     private ApiOperationWappCallAccountWSDTO wappAccount;
-    private OperationWappCallDBModel activeWappCall;
+    private OperationWappCallDBModel currentWappCall;
 
-    public ApiOperationActiveWappCallWSDTO() {
+    public ApiOperationCurrentWappCallWSDTO() {
     }
 
-    public ApiOperationActiveWappCallWSDTO(List<ClientPhoneDAO> clientPhones, ApiOperationWappCallAccountWSDTO wappAccount, OperationWappCallDBModel activeWappCall) {
+    public ApiOperationCurrentWappCallWSDTO(List<ClientPhoneDAO> clientPhones, ApiOperationWappCallAccountWSDTO wappAccount, OperationWappCallDBModel currentWappCall) {
         this.clientPhones = clientPhones;
         this.wappAccount = wappAccount;
-        this.activeWappCall = activeWappCall;
+        this.currentWappCall = currentWappCall;
     }
 
     public List<ClientPhoneDAO> getClientPhones() {
@@ -36,11 +36,11 @@ public class ApiOperationActiveWappCallWSDTO {
         this.wappAccount = wappAccount;
     }
 
-    public OperationWappCallDBModel getActiveWappCall() {
-        return activeWappCall;
+    public OperationWappCallDBModel getCurrentWappCall() {
+        return currentWappCall;
     }
 
-    public void setActiveWappCall(OperationWappCallDBModel activeWappCall) {
-        this.activeWappCall = activeWappCall;
+    public void setCurrentWappCall(OperationWappCallDBModel currentWappCall) {
+        this.currentWappCall = currentWappCall;
     }
 }

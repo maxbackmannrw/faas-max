@@ -1,7 +1,7 @@
 package com.faas.core.api.endpoint.controller.operation.details.channel.call.wapp;
 
 import com.faas.core.api.middleware.operation.details.channel.call.wapp.ApiOperationWappCallChannelMiddleware;
-import com.faas.core.api.model.ws.operation.details.channel.call.wapp.ApiOperationActiveWappCallWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.call.wapp.ApiOperationCurrentWappCallWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.call.wapp.ApiOperationWappCallAccountWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.call.wapp.ApiOperationWappCallWSModel;
 import com.faas.core.utils.config.ApiRoute;
@@ -115,11 +115,11 @@ public class ApiOperationWappCallChannelController {
     }
 
 
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION_ACTIVE_WAPP_CALL, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperationActiveWappCall(@RequestParam long agentId,
-                                                           @RequestParam String operationId) {
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_CURRENT_WAPP_CALL, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationCurrentWappCall(@RequestParam long agentId,
+                                                            @RequestParam String operationId) {
 
-        ApiOperationActiveWappCallWSModel response = apiOperationWappCallChannelMiddleware.apiGetOperationActiveWappCall(agentId,operationId);
+        ApiOperationCurrentWappCallWSModel response = apiOperationWappCallChannelMiddleware.apiGetOperationCurrentWappCall(agentId,operationId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

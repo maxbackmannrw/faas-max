@@ -488,36 +488,36 @@ public class OperationHelper {
         ApiOperationSipAccountWSDTO sipAccountWSDTO = channelHelper.getApiOperationSipAccountWSDTO(operationDBModel.getAgentId(),operationDBModel.getProcessId());
         if (sipAccountWSDTO != null && clientDetails.getClientPhones() != null){
 
-            ApiOperationSipChannelWSDTO sipChannelWSDTO = new ApiOperationSipChannelWSDTO();
-            sipChannelWSDTO.setSipAccount(sipAccountWSDTO);
-            sipChannelWSDTO.setClientPhones(clientDetails.getClientPhones());
-            List<OperationSipCallDBModel> sipCallDBModels = operationSipCallRepository.findByOperationId(operationDBModel.getId());
-            for (OperationSipCallDBModel sipCallDBModel : sipCallDBModels) {
-                if (sipCallDBModel.getCallState().equalsIgnoreCase(AppConstant.ACTIVE_STATE)) {
-                    sipChannelWSDTO.setActiveSipCall(sipCallDBModel);
-                }
+            ApiOperationSipChannelWSDTO operationSipChannelWSDTO = new ApiOperationSipChannelWSDTO();
+            operationSipChannelWSDTO.setSipAccount(sipAccountWSDTO);
+            operationSipChannelWSDTO.setClientPhones(clientDetails.getClientPhones());
+            List<OperationSipCallDBModel> operationSipCallDBModels = operationSipCallRepository.findByOperationId(operationDBModel.getId());
+            OperationSipCallDBModel currentSipCall = channelHelper.getApiOperationCurrentSipCallHelper(operationSipCallDBModels);
+            if (currentSipCall != null){
+                operationSipChannelWSDTO.setCurrentSipCall(currentSipCall);
             }
-            sipChannelWSDTO.setRecentSipCalls(sipCallDBModels);
-            return sipChannelWSDTO;
+            operationSipChannelWSDTO.setRecentSipCalls(operationSipCallDBModels);
+
+            return operationSipChannelWSDTO;
         }
         return null;
     }
 
     public ApiOperationWappCallChannelWSDTO getApiOperationWappCallChannelWSDTO(OperationDBModel operationDBModel,ClientDetailsDBModel clientDetails) {
 
-        ApiOperationWappCallAccountWSDTO wappAccountWSDTO = channelHelper.getApiWappCallAccountWSDTO(operationDBModel.getAgentId(),operationDBModel.getProcessId());
+        ApiOperationWappCallAccountWSDTO wappAccountWSDTO = channelHelper.getApiOperationWappCallAccountWSDTO(operationDBModel.getAgentId(),operationDBModel.getProcessId());
         if (wappAccountWSDTO != null && clientDetails.getClientPhones() != null){
 
             ApiOperationWappCallChannelWSDTO wappCallChannelWSDTO = new ApiOperationWappCallChannelWSDTO();
             wappCallChannelWSDTO.setWappAccount(wappAccountWSDTO);
             wappCallChannelWSDTO.setClientPhones(clientDetails.getClientPhones());
-            List<OperationWappCallDBModel> wappCallDBModels = operationWappCallRepository.findByOperationId(operationDBModel.getId());
-            for (OperationWappCallDBModel wappCallDBModel : wappCallDBModels) {
-                if (wappCallDBModel.getCallState().equalsIgnoreCase(AppConstant.ACTIVE_STATE)) {
-                    wappCallChannelWSDTO.setActiveWappCall(wappCallDBModel);
-                }
+            List<OperationWappCallDBModel> operationWappCallDBModels = operationWappCallRepository.findByOperationId(operationDBModel.getId());
+            OperationWappCallDBModel currentWappCall = channelHelper.getApiOperationCurrentWappCallHelper(operationWappCallDBModels);
+            if (currentWappCall != null){
+                wappCallChannelWSDTO.setCurrentWappCall(currentWappCall);
             }
-            wappCallChannelWSDTO.setRecentWappCalls(wappCallDBModels);
+            wappCallChannelWSDTO.setRecentWappCalls(operationWappCallDBModels);
+
             return wappCallChannelWSDTO;
         }
         return null;
@@ -539,7 +539,7 @@ public class OperationHelper {
 
     public ApiOperationSmsChannelWSDTO getApiOperationSmsChannelWSDTO(OperationDBModel operationDBModel,ClientDetailsDBModel clientDetails) {
 
-        ApiOperationSmsAccountWSDTO smsAccountWSDTO = channelHelper.getApiSmsAccountWSDTO(operationDBModel.getProcessId());
+        ApiOperationSmsAccountWSDTO smsAccountWSDTO = channelHelper.getApiOperationSmsAccountWSDTO(operationDBModel.getProcessId());
         if (smsAccountWSDTO != null && clientDetails.getClientPhones() != null){
 
             ApiOperationSmsChannelWSDTO operationSmsChannelWSDTO = new ApiOperationSmsChannelWSDTO();

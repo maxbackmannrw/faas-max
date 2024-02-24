@@ -1,12 +1,10 @@
 package com.faas.core.api.framework.operation.details.channel.call.wapp;
 
-import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationActiveSipCallWSDTO;
-import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiOperationActiveWappCallWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiOperationCurrentWappCallWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiOperationWappCallAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiOperationWappCallWSDTO;
 import com.faas.core.base.model.db.client.details.content.ClientDetailsDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
-import com.faas.core.base.model.db.operation.details.channel.OperationSipCallDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationWappCallDBModel;
 import com.faas.core.base.repo.client.details.ClientDetailsRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
@@ -97,22 +95,19 @@ public class ApiOperationWappCallChannelFramework {
     }
 
 
-    public ApiOperationActiveWappCallWSDTO apiGetOperationActiveWappCallService(long agentId, String operationId) {
+    public ApiOperationCurrentWappCallWSDTO apiGetOperationCurrentWappCallService(long agentId, String operationId) {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
         if (!operationDBModels.isEmpty()){
 
-            ApiOperationWappCallAccountWSDTO wappCallAccountWSDTO = channelHelper.getApiWappCallAccountWSDTO(agentId,operationDBModels.get(0).getProcessId());
+            ApiOperationWappCallAccountWSDTO wappCallAccountWSDTO = channelHelper.getApiOperationWappCallAccountWSDTO(agentId,operationDBModels.get(0).getProcessId());
             List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(operationDBModels.get(0).getClientId());
             if (wappCallAccountWSDTO != null && !clientDetailsDBModels.isEmpty() && clientDetailsDBModels.get(0).getClientPhones() != null){
 
-                ApiOperationActiveWappCallWSDTO operationActiveWappCallWSDTO = new ApiOperationActiveWappCallWSDTO();
+                ApiOperationCurrentWappCallWSDTO operationActiveWappCallWSDTO = new ApiOperationCurrentWappCallWSDTO();
                 operationActiveWappCallWSDTO.setWappAccount(wappCallAccountWSDTO);
                 operationActiveWappCallWSDTO.setClientPhones(clientDetailsDBModels.get(0).getClientPhones());
-                List<OperationWappCallDBModel> operationWappCallDBModels = operationWappCallRepository.findByOperationIdAndAgentIdAndCallState(operationId,agentId, AppConstant.ACTIVE_CALL);
-                if (!operationWappCallDBModels.isEmpty()){
-                    operationActiveWappCallWSDTO.setActiveWappCall(operationWappCallDBModels.get(0));
-                }
+
                 return operationActiveWappCallWSDTO;
             }
         }
@@ -124,7 +119,7 @@ public class ApiOperationWappCallChannelFramework {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
         if (!operationDBModels.isEmpty()){
-            return channelHelper.getApiWappCallAccountWSDTO(agentId,operationDBModels.get(0).getProcessId());
+            return channelHelper.getApiOperationWappCallAccountWSDTO(agentId,operationDBModels.get(0).getProcessId());
         }
         return null;
     }

@@ -132,7 +132,7 @@ public class ApiOperationSmsChannelFramework {
         List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
         if (!sessionDBModels.isEmpty()){
             ApiOperationSmsTempWSDTO smsTempWSDTO = new ApiOperationSmsTempWSDTO();
-            smsTempWSDTO.setSmsAccount(channelHelper.getApiSmsAccountWSDTO(sessionDBModels.get(0).getProcessId()));
+            smsTempWSDTO.setSmsAccount(channelHelper.getApiOperationSmsAccountWSDTO(sessionDBModels.get(0).getProcessId()));
             List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(sessionDBModels.get(0).getClientId());
             if (!clientDetailsDBModels.isEmpty() && clientDetailsDBModels.get(0).getClientPhones() != null){
                 smsTempWSDTO.setClientPhones(clientDetailsDBModels.get(0).getClientPhones());
@@ -150,7 +150,7 @@ public class ApiOperationSmsChannelFramework {
         List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
         if (!sessionDBModels.isEmpty()){
             ApiOperationSmsTempWSDTO smsTempWSDTO = new ApiOperationSmsTempWSDTO();
-            smsTempWSDTO.setSmsAccount(channelHelper.getApiSmsAccountWSDTO(sessionDBModels.get(0).getProcessId()));
+            smsTempWSDTO.setSmsAccount(channelHelper.getApiOperationSmsAccountWSDTO(sessionDBModels.get(0).getProcessId()));
             List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(sessionDBModels.get(0).getClientId());
             if (!clientDetailsDBModels.isEmpty() && clientDetailsDBModels.get(0).getClientPhones() != null){
                 smsTempWSDTO.setClientPhones(clientDetailsDBModels.get(0).getClientPhones());
@@ -167,7 +167,7 @@ public class ApiOperationSmsChannelFramework {
 
         List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
         if (!sessionDBModels.isEmpty()){
-            return channelHelper.getApiSmsAccountWSDTO(sessionDBModels.get(0).getProcessId());
+            return channelHelper.getApiOperationSmsAccountWSDTO(sessionDBModels.get(0).getProcessId());
         }
         return null;
     }

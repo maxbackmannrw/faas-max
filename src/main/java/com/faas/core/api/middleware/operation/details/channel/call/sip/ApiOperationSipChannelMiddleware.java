@@ -1,10 +1,10 @@
 package com.faas.core.api.middleware.operation.details.channel.call.sip;
 
 import com.faas.core.api.framework.operation.details.channel.call.sip.ApiOperationSipChannelFramework;
-import com.faas.core.api.model.ws.operation.details.channel.call.sip.ApiOperationActiveSipCallWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.call.sip.ApiOperationCurrentSipCallWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.ApiOperationSipAccountWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.ApiOperationSipCallWSModel;
-import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationActiveSipCallWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationCurrentSipCallWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationSipAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationSipCallWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
@@ -171,17 +171,17 @@ public class ApiOperationSipChannelMiddleware {
     }
 
 
-    public ApiOperationActiveSipCallWSModel apiGetOperationActiveSipCall(long agentId, String operationId) {
+    public ApiOperationCurrentSipCallWSModel apiGetOperationCurrentSipCall(long agentId, String operationId) {
 
-        ApiOperationActiveSipCallWSModel response = new ApiOperationActiveSipCallWSModel();
+        ApiOperationCurrentSipCallWSModel response = new ApiOperationCurrentSipCallWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiOperationActiveSipCallWSDTO activeSipCallWSDTO = apiOperationSipChannelFramework.apiGetOperationActiveSipCallService(agentId,operationId);
-        if (activeSipCallWSDTO != null){
-            response.setOperationActiveSipCall(activeSipCallWSDTO);
+        ApiOperationCurrentSipCallWSDTO currentSipCallWSDTO = apiOperationSipChannelFramework.apiGetOperationCurrentSipCallService(agentId,operationId);
+        if (currentSipCallWSDTO != null){
+            response.setOperationCurrentSipCall(currentSipCallWSDTO);
         }
 
-        general.setOperation("apiGetOperationActiveSipCall");
+        general.setOperation("apiGetOperationCurrentSipCall");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
