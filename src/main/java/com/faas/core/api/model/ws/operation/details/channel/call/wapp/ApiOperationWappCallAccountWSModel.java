@@ -9,15 +9,13 @@ import java.util.List;
 public class ApiOperationWappCallAccountWSModel {
 
     private GeneralWSModel general;
-    private List<ClientPhoneDAO> clientPhones;
     private ApiOperationWappCallAccountWSDTO  wappCallAccount;
 
     public ApiOperationWappCallAccountWSModel() {
     }
 
-    public ApiOperationWappCallAccountWSModel(GeneralWSModel general, List<ClientPhoneDAO> clientPhones, ApiOperationWappCallAccountWSDTO wappCallAccount) {
+    public ApiOperationWappCallAccountWSModel(GeneralWSModel general, ApiOperationWappCallAccountWSDTO wappCallAccount) {
         this.general = general;
-        this.clientPhones = clientPhones;
         this.wappCallAccount = wappCallAccount;
     }
 
@@ -27,14 +25,6 @@ public class ApiOperationWappCallAccountWSModel {
 
     public void setGeneral(GeneralWSModel general) {
         this.general = general;
-    }
-
-    public List<ClientPhoneDAO> getClientPhones() {
-        return clientPhones;
-    }
-
-    public void setClientPhones(List<ClientPhoneDAO> clientPhones) {
-        this.clientPhones = clientPhones;
     }
 
     public ApiOperationWappCallAccountWSDTO getWappCallAccount() {

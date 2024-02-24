@@ -9,7 +9,6 @@ import com.faas.core.base.model.db.operation.details.channel.OperationSipCallDBM
 import com.faas.core.base.repo.client.details.ClientDetailsRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.operation.details.channel.OperationSipCallRepository;
-import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.ChannelHelper;
@@ -28,9 +27,6 @@ public class ApiOperationSipChannelFramework {
 
     @Autowired
     ClientDetailsRepository clientDetailsRepository;
-
-    @Autowired
-    SessionRepository sessionRepository;
 
     @Autowired
     OperationRepository operationRepository;
@@ -72,7 +68,8 @@ public class ApiOperationSipChannelFramework {
         List<OperationSipCallDBModel> operationSipCallDBModels = operationSipCallRepository.findByIdAndOperationId(callId,operationId);
         if (!operationSipCallDBModels.isEmpty()) {
             operationSipCallDBModels.get(0).setCallState(callState);
-            return new ApiOperationSipCallWSDTO(operationSipCallDBModels.get(0));
+            operationSipCallDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
+            return new ApiOperationSipCallWSDTO(operationSipCallRepository.save(operationSipCallDBModels.get(0)));
         }
         return null;
     }

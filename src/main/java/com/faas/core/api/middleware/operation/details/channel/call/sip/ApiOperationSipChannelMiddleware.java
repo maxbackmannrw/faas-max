@@ -7,7 +7,6 @@ import com.faas.core.api.model.ws.operation.details.channel.call.sip.ApiOperatio
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationActiveSipCallWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationSipAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationSipCallWSDTO;
-import com.faas.core.base.model.db.client.details.content.dao.ClientPhoneDAO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
