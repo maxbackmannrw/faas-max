@@ -187,13 +187,13 @@ public class ProcessFlowMiddleware {
         return response;
     }
 
-    public ProcessRemoteWSModel getProcessFlowRemote(long userId, String processId, String remoteId) {
+    public ProcessRemoteWSModel getProcessFlowRemote(long userId, String processId, String flowRemoteId) {
 
         ProcessRemoteWSModel response = new ProcessRemoteWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessRemoteWSDTO> processRemoteWSDTOS = new ArrayList<>();
 
-        ProcessRemoteWSDTO processRemoteWSDTO = processFlowFramework.getProcessFlowRemoteService(userId,processId,remoteId);
+        ProcessRemoteWSDTO processRemoteWSDTO = processFlowFramework.getProcessFlowRemoteService(userId,processId,flowRemoteId);
         if (processRemoteWSDTO != null){
             processRemoteWSDTOS.add(processRemoteWSDTO);
         }

@@ -187,13 +187,13 @@ public class ProcessInquiryMiddleware {
         return response;
     }
 
-    public ProcessRemoteWSModel getProcessInquiryRemote(long userId, String processId, String remoteId) {
+    public ProcessRemoteWSModel getProcessInquiryRemote(long userId, String processId, String inquiryRemoteId) {
 
         ProcessRemoteWSModel response = new ProcessRemoteWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessRemoteWSDTO> processRemoteWSDTOS = new ArrayList<>();
 
-        ProcessRemoteWSDTO processRemoteWSDTO = processInquiryFramework.getProcessInquiryRemoteService(userId,processId,remoteId);
+        ProcessRemoteWSDTO processRemoteWSDTO = processInquiryFramework.getProcessInquiryRemoteService(userId,processId,inquiryRemoteId);
         if (processRemoteWSDTO != null){
             processRemoteWSDTOS.add(processRemoteWSDTO);
         }
@@ -229,13 +229,13 @@ public class ProcessInquiryMiddleware {
         return response;
     }
 
-    public ProcessRemoteWSModel removeProcessInquiryRemote(long userId, String processId, String remoteId) {
+    public ProcessRemoteWSModel removeProcessInquiryRemote(long userId, String processId, String inquiryRemoteId) {
 
         ProcessRemoteWSModel response = new ProcessRemoteWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessRemoteWSDTO> processRemoteWSDTOS = new ArrayList<>();
 
-        ProcessRemoteWSDTO processRemoteWSDTO = processInquiryFramework.removeProcessInquiryRemoteService(userId,processId,remoteId);
+        ProcessRemoteWSDTO processRemoteWSDTO = processInquiryFramework.removeProcessInquiryRemoteService(userId,processId,inquiryRemoteId);
         if (processRemoteWSDTO != null){
             processRemoteWSDTOS.add(processRemoteWSDTO);
         }

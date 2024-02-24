@@ -134,9 +134,9 @@ public class ProcessInquiryController {
     @RequestMapping(value = BaseRoute.GET_PROCESS_INQUIRY_REMOTE, method = RequestMethod.POST)
     public ResponseEntity<?> getProcessInquiryRemote(@RequestParam long userId,
                                                      @RequestParam String processId,
-                                                     @RequestParam String remoteId) {
+                                                     @RequestParam String inquiryRemoteId) {
 
-        ProcessRemoteWSModel response = processInquiryMiddleware.getProcessInquiryRemote(userId,processId,remoteId);
+        ProcessRemoteWSModel response = processInquiryMiddleware.getProcessInquiryRemote(userId,processId,inquiryRemoteId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -161,9 +161,9 @@ public class ProcessInquiryController {
     @RequestMapping(value = BaseRoute.REMOVE_PROCESS_INQUIRY_REMOTE, method = RequestMethod.POST)
     public ResponseEntity<?> removeProcessInquiryRemote(@RequestParam long userId,
                                                         @RequestParam String processId,
-                                                        @RequestParam String remoteId) {
+                                                        @RequestParam String inquiryRemoteId) {
 
-        ProcessRemoteWSModel response = processInquiryMiddleware.removeProcessInquiryRemote(userId,processId,remoteId);
+        ProcessRemoteWSModel response = processInquiryMiddleware.removeProcessInquiryRemote(userId,processId,inquiryRemoteId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

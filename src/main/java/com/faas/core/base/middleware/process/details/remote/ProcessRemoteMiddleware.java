@@ -39,13 +39,13 @@ public class ProcessRemoteMiddleware {
         return response;
     }
 
-    public ProcessRemoteWSModel getProcessRemote(long userId,String processId,String remoteId) {
+    public ProcessRemoteWSModel getProcessRemote(long userId,String processId,String processRemoteId) {
 
         ProcessRemoteWSModel response = new ProcessRemoteWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessRemoteWSDTO> processRemoteWSDTOS = new ArrayList<>();
 
-        ProcessRemoteWSDTO processRemoteWSDTO = processRemoteFramework.getProcessRemoteService(userId,processId,remoteId);
+        ProcessRemoteWSDTO processRemoteWSDTO = processRemoteFramework.getProcessRemoteService(userId,processId,processRemoteId);
         if (processRemoteWSDTO != null){
             processRemoteWSDTOS.add(processRemoteWSDTO);
         }

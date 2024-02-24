@@ -134,9 +134,9 @@ public class ProcessFlowController {
     @RequestMapping(value = BaseRoute.GET_PROCESS_FLOW_REMOTE, method = RequestMethod.POST)
     public ResponseEntity<?> getProcessFlowRemote(@RequestParam long userId,
                                                   @RequestParam String processId,
-                                                  @RequestParam String remoteId) {
+                                                  @RequestParam String flowRemoteId) {
 
-        ProcessRemoteWSModel response = processFlowMiddleware.getProcessFlowRemote(userId,processId,remoteId);
+        ProcessRemoteWSModel response = processFlowMiddleware.getProcessFlowRemote(userId,processId,flowRemoteId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

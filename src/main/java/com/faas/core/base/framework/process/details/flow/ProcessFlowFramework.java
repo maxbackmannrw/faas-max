@@ -170,12 +170,12 @@ public class ProcessFlowFramework {
         return processRemoteWSDTOS;
     }
 
-    public ProcessRemoteWSDTO getProcessFlowRemoteService(long userId, String processId, String remoteId) {
+    public ProcessRemoteWSDTO getProcessFlowRemoteService(long userId, String processId, String flowRemoteId) {
 
         Optional<ProcessDBModel> processDBModel = processRepository.findById(processId);
         if (processDBModel.isPresent() && processDBModel.get().getProcessFlow() != null && processDBModel.get().getProcessFlow().getFlowRemotes() != null) {
             for (int i=0;i<processDBModel.get().getProcessFlow().getFlowRemotes().size();i++){
-                if (processDBModel.get().getProcessFlow().getFlowRemotes().get(i).getRemoteId().equalsIgnoreCase(remoteId)){
+                if (processDBModel.get().getProcessFlow().getFlowRemotes().get(i).getId().equalsIgnoreCase(flowRemoteId)){
                     return new ProcessRemoteWSDTO(processDBModel.get().getProcessFlow().getFlowRemotes().get(i));
                 }
             }
@@ -191,7 +191,6 @@ public class ProcessFlowFramework {
 
             ProcessRemoteDAO processRemoteDAO = remoteHelper.createFlowProcessRemoteDAO(remoteDBModel.get());
             processDBModel.get().getProcessFlow().getFlowRemotes().add(processRemoteDAO);
-
             processDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
             processRepository.save(processDBModel.get());
 

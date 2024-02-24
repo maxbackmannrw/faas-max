@@ -37,9 +37,9 @@ public class ProcessRemoteController {
     @RequestMapping(value = BaseRoute.GET_PROCESS_REMOTE, method = RequestMethod.POST)
     public ResponseEntity<?> getProcessRemote(@RequestParam long userId,
                                               @RequestParam String processId,
-                                              @RequestParam String remoteId) {
+                                              @RequestParam String processRemoteId) {
 
-        ProcessRemoteWSModel response = processRemoteMiddleware.getProcessRemote(userId,processId,remoteId);
+        ProcessRemoteWSModel response = processRemoteMiddleware.getProcessRemote(userId,processId,processRemoteId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

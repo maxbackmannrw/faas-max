@@ -51,12 +51,12 @@ public class ProcessRemoteFramework {
         return processRemoteWSDTOS;
     }
 
-    public ProcessRemoteWSDTO getProcessRemoteService(long userId,String processId,String remoteId) {
+    public ProcessRemoteWSDTO getProcessRemoteService(long userId,String processId,String processRemoteId) {
 
         Optional<ProcessDBModel> processDBModel = processRepository.findById(processId);
         if (processDBModel.isPresent() && processDBModel.get().getProcessRemotes() != null) {
             for (int i=0;i<processDBModel.get().getProcessRemotes().size();i++){
-                if (processDBModel.get().getProcessRemotes().get(i).getRemoteId().equalsIgnoreCase(remoteId)){
+                if (processDBModel.get().getProcessRemotes().get(i).getId().equalsIgnoreCase(processRemoteId)){
                     return new ProcessRemoteWSDTO(processDBModel.get().getProcessRemotes().get(i));
                 }
             }

@@ -10,7 +10,6 @@ public class ProcessWSModel {
     private GeneralWSModel general;
     private List<ProcessWSDTO> processes;
 
-
     public ProcessWSModel() {
     }
 
