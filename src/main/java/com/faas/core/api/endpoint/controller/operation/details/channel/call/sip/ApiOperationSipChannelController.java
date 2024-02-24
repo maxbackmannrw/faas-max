@@ -76,11 +76,11 @@ public class ApiOperationSipChannelController {
     }
 
     @RequestMapping(value = ApiRoute.API_HANGUP_OPERATION_SIP_CALL, method = RequestMethod.POST)
-    public ResponseEntity<?> apiHangupOperationSipCall(@RequestParam long agentId,
+    public ResponseEntity<?> apiHangUpOperationSipCall(@RequestParam long agentId,
                                                        @RequestParam String operationId,
                                                        @RequestParam String callId) {
 
-        ApiOperationSipCallWSModel response = apiOperationSipChannelMiddleware.apiHangupOperationSipCall(agentId,operationId,callId);
+        ApiOperationSipCallWSModel response = apiOperationSipChannelMiddleware.apiHangUpOperationSipCall(agentId,operationId,callId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

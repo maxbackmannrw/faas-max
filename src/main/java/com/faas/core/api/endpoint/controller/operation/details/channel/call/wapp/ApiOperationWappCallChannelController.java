@@ -75,11 +75,11 @@ public class ApiOperationWappCallChannelController {
     }
 
     @RequestMapping(value = ApiRoute.API_HANGUP_OPERATION_WAPP_CALL, method = RequestMethod.POST)
-    public ResponseEntity<?> apiHangupOperationWappCall(@RequestParam long agentId,
+    public ResponseEntity<?> apiHangUpOperationWappCall(@RequestParam long agentId,
                                                         @RequestParam String operationId,
                                                         @RequestParam String callId) {
 
-        ApiOperationWappCallWSModel response = apiOperationWappCallChannelMiddleware.apiHangupOperationWappCall(agentId,operationId,callId);
+        ApiOperationWappCallWSModel response = apiOperationWappCallChannelMiddleware.apiHangUpOperationWappCall(agentId,operationId,callId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

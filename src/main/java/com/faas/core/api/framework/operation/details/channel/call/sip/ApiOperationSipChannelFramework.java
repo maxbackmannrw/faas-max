@@ -4,6 +4,7 @@ import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOper
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationSipAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationSipCallWSDTO;
 import com.faas.core.base.model.db.client.details.content.ClientDetailsDBModel;
+import com.faas.core.base.model.db.client.details.content.dao.ClientPhoneDAO;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationSipCallDBModel;
 import com.faas.core.base.repo.client.details.ClientDetailsRepository;
@@ -59,17 +60,21 @@ public class ApiOperationSipChannelFramework {
 
     public ApiOperationSipCallWSDTO apiCreateOperationSipCallService(long agentId,String operationId,String numberId) {
 
-
+        List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
+        if (!operationDBModels.isEmpty()){
+            return channelHelper.createOperationSipCallHelper(operationDBModels.get(0),numberId);
+        }
         return null;
     }
 
     public ApiOperationSipCallWSDTO apiStartOperationSipCallService(long agentId,String operationId,String callId) {
 
+        List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
 
         return null;
     }
 
-    public ApiOperationSipCallWSDTO apiHangupOperationSipCallService(long agentId,String operationId,String callId) {
+    public ApiOperationSipCallWSDTO apiHangUpOperationSipCallService(long agentId,String operationId,String callId) {
 
 
         return null;

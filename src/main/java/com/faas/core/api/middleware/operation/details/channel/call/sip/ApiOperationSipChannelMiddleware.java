@@ -106,19 +106,19 @@ public class ApiOperationSipChannelMiddleware {
         return response;
     }
 
-    public ApiOperationSipCallWSModel apiHangupOperationSipCall(long agentId,String operationId,String callId) {
+    public ApiOperationSipCallWSModel apiHangUpOperationSipCall(long agentId,String operationId,String callId) {
 
         ApiOperationSipCallWSModel response = new ApiOperationSipCallWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ApiOperationSipCallWSDTO>operationSipCallWSDTOS = new ArrayList<>();
 
-        ApiOperationSipCallWSDTO operationSipCallWSDTO = apiOperationSipChannelFramework.apiHangupOperationSipCallService(agentId,operationId,callId);
+        ApiOperationSipCallWSDTO operationSipCallWSDTO = apiOperationSipChannelFramework.apiHangUpOperationSipCallService(agentId,operationId,callId);
         if (operationSipCallWSDTO != null){
             operationSipCallWSDTOS.add(operationSipCallWSDTO);
         }
 
         response.setOperationSipCalls(operationSipCallWSDTOS);
-        general.setOperation("apiHangupOperationSipCall");
+        general.setOperation("apiHangUpOperationSipCall");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

@@ -1,7 +1,5 @@
 package com.faas.core.base.model.db.operation.details.channel;
 
-import com.faas.core.base.model.db.client.details.content.dao.ClientPhoneDAO;
-
 import com.faas.core.base.model.db.operation.details.channel.dao.OperationSipCallDAO;
 import org.springframework.data.mongodb.core.mapping.Document;
 

@@ -105,19 +105,19 @@ public class ApiOperationWappCallChannelMiddleware {
         return response;
     }
 
-    public ApiOperationWappCallWSModel apiHangupOperationWappCall(long agentId,String operationId,String callId) {
+    public ApiOperationWappCallWSModel apiHangUpOperationWappCall(long agentId,String operationId,String callId) {
 
         ApiOperationWappCallWSModel response = new ApiOperationWappCallWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ApiOperationWappCallWSDTO> operationWappCallWSDTOS = new ArrayList<>();
 
-        ApiOperationWappCallWSDTO operationWappCallWSDTO =  apiOperationWappCallChannelFramework.apiHangupOperationWappCallService(agentId,operationId,callId);
+        ApiOperationWappCallWSDTO operationWappCallWSDTO =  apiOperationWappCallChannelFramework.apiHangUpOperationWappCallService(agentId,operationId,callId);
         if (operationWappCallWSDTO != null){
             operationWappCallWSDTOS.add(operationWappCallWSDTO);
         }
 
         response.setOperationWappCalls(operationWappCallWSDTOS);
-        general.setOperation("apiStartOperationWappCall");
+        general.setOperation("apiHangUpOperationWappCall");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

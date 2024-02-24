@@ -69,7 +69,7 @@ public class ApiOperationWappCallChannelFramework {
         return null;
     }
 
-    public ApiOperationWappCallWSDTO apiHangupOperationWappCallService(long agentId,String operationId,String callId) {
+    public ApiOperationWappCallWSDTO apiHangUpOperationWappCallService(long agentId,String operationId,String callId) {
 
         return null;
     }

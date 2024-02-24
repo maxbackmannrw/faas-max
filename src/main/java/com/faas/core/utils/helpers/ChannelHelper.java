@@ -13,10 +13,13 @@ import com.faas.core.base.model.db.channel.account.SmsAccountDBModel;
 import com.faas.core.base.model.db.client.details.content.ClientDetailsDBModel;
 import com.faas.core.base.model.db.client.details.content.dao.ClientEmailDAO;
 import com.faas.core.base.model.db.client.details.content.dao.ClientPhoneDAO;
+import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationEmailMessageDBModel;
+import com.faas.core.base.model.db.operation.details.channel.OperationSipCallDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationSmsMessageDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationWappMessageDBModel;
 import com.faas.core.base.model.db.operation.details.channel.dao.OperationEmailMessageDAO;
+import com.faas.core.base.model.db.operation.details.channel.dao.OperationSipCallDAO;
 import com.faas.core.base.model.db.operation.details.channel.dao.OperationSmsMessageDAO;
 import com.faas.core.base.model.db.operation.details.channel.dao.OperationWappMessageDAO;
 import com.faas.core.base.model.db.process.details.channel.content.*;
@@ -254,6 +257,62 @@ public class ChannelHelper {
 
 
 
+
+    public ApiOperationSipCallWSDTO createOperationSipCallHelper(OperationDBModel operationDBModel,String numberId){
+
+        OperationSipCallDAO sipCallDAO = createOperationSipCallDAO(operationDBModel,numberId);
+        if (sipCallDAO != null && checkOperationSipCallExist(operationDBModel.getId())){
+
+            OperationSipCallDBModel operationSipCallDBModel = new OperationSipCallDBModel();
+            operationSipCallDBModel.setClientId(operationDBModel.getClientId());
+            operationSipCallDBModel.setSessionId(operationDBModel.getSessionId());
+            operationSipCallDBModel.setOperationId(operationDBModel.getId());
+            operationSipCallDBModel.setAgentId(operationDBModel.getAgentId());
+            operationSipCallDBModel.setCampaignId(operationDBModel.getCampaignId());
+            operationSipCallDBModel.setProcessId(operationDBModel.getProcessId());
+            operationSipCallDBModel.setSipCall(sipCallDAO);
+            operationSipCallDBModel.setCallConnId(AppConstant.NONE);
+            operationSipCallDBModel.setCallState(AppConstant.READY_CALL);
+            operationSipCallDBModel.setuDate(appUtils.getCurrentTimeStamp());
+            operationSipCallDBModel.setcDate(appUtils.getCurrentTimeStamp());
+            operationSipCallDBModel.setStatus(1);
+
+            return new ApiOperationSipCallWSDTO(operationSipCallRepository.save(operationSipCallDBModel));
+        }
+        return null;
+    }
+
+    public boolean checkOperationSipCallExist(String operationId){
+
+        if (operationSipCallRepository.existsByOperationIdAndCallState(operationId,AppConstant.READY_CALL) || operationSipCallRepository.existsByOperationIdAndCallState(operationId,AppConstant.ACTIVE_CALL)){
+            return false;
+        }
+        return true;
+    }
+
+
+    public OperationSipCallDAO createOperationSipCallDAO(OperationDBModel operationDBModel,String numberId){
+
+        ClientPhoneDAO clientPhoneDAO = fetchClientPhoneDAO(operationDBModel.getClientId(),numberId);
+        List<UserDetailsDBModel> agentDetails = userDetailsRepository.findByUserId(operationDBModel.getAgentId());
+        if (clientPhoneDAO != null && !agentDetails.isEmpty() && agentDetails.get(0).getSipChannel() != null){
+
+            OperationSipCallDAO operationSipCallDAO = new OperationSipCallDAO();
+            operationSipCallDAO.setNumberId(numberId);
+            operationSipCallDAO.setPhoneNumber(clientPhoneDAO.getPhoneNumber());
+            operationSipCallDAO.setPhoneCarrier(clientPhoneDAO.getPhoneCarrier());
+            operationSipCallDAO.setPhoneType(clientPhoneDAO.getPhoneType());
+            operationSipCallDAO.setAccountId(agentDetails.get(0).getSipChannel().getAccountId());
+            operationSipCallDAO.setsDate(appUtils.getCurrentTimeStamp());
+            operationSipCallDAO.setfDate(appUtils.getCurrentTimeStamp());
+            operationSipCallDAO.setStatus(1);
+
+            return operationSipCallDAO;
+        }
+        return null;
+    }
+
+
     public ApiOperationSipCallWSDTO getApiOperationSipCallWSDTO(long agentId, long sessionId,long clientId,String processId){
 
         ApiOperationSipCallWSDTO operationSipCallWSDTO = new ApiOperationSipCallWSDTO();
@@ -268,21 +327,21 @@ public class ChannelHelper {
         List<UserDetailsDBModel> agentDetails = userDetailsRepository.findByUserId(agentId);
         if (!sipChannelDBModels.isEmpty() && !agentDetails.isEmpty() && agentDetails.get(0).getSipChannel() != null) {
 
-            ApiOperationSipAccountWSDTO sipAccountWSDTO = new ApiOperationSipAccountWSDTO();
-            sipAccountWSDTO.setAccountId(agentDetails.get(0).getSipChannel().getAccountId());
-            sipAccountWSDTO.setAccount(agentDetails.get(0).getSipChannel().getAccount());
-            sipAccountWSDTO.setUserName(agentDetails.get(0).getSipChannel().getUserName());
-            sipAccountWSDTO.setAuthUser(agentDetails.get(0).getSipChannel().getAuthUser());
-            sipAccountWSDTO.setPassword(agentDetails.get(0).getSipChannel().getPassword());
-            sipAccountWSDTO.setSipUrl(agentDetails.get(0).getSipChannel().getSipUrl());
-            sipAccountWSDTO.setAccountDatas(agentDetails.get(0).getSipChannel().getAccountDatas());
-            sipAccountWSDTO.setProvider(agentDetails.get(0).getSipChannel().getProvider());
-            sipAccountWSDTO.setCallerId(sipChannelDBModels.get(0).getCallerId());
-            sipAccountWSDTO.setChannelState(sipChannelDBModels.get(0).getChannelState());
-            sipAccountWSDTO.setcDate(sipChannelDBModels.get(0).getcDate());
-            sipAccountWSDTO.setStatus(sipChannelDBModels.get(0).getStatus());
+            ApiOperationSipAccountWSDTO operationSipAccountWSDTO = new ApiOperationSipAccountWSDTO();
+            operationSipAccountWSDTO.setAccountId(agentDetails.get(0).getSipChannel().getAccountId());
+            operationSipAccountWSDTO.setAccount(agentDetails.get(0).getSipChannel().getAccount());
+            operationSipAccountWSDTO.setUserName(agentDetails.get(0).getSipChannel().getUserName());
+            operationSipAccountWSDTO.setAuthUser(agentDetails.get(0).getSipChannel().getAuthUser());
+            operationSipAccountWSDTO.setPassword(agentDetails.get(0).getSipChannel().getPassword());
+            operationSipAccountWSDTO.setSipUrl(agentDetails.get(0).getSipChannel().getSipUrl());
+            operationSipAccountWSDTO.setAccountDatas(agentDetails.get(0).getSipChannel().getAccountDatas());
+            operationSipAccountWSDTO.setProvider(agentDetails.get(0).getSipChannel().getProvider());
+            operationSipAccountWSDTO.setCallerId(sipChannelDBModels.get(0).getCallerId());
+            operationSipAccountWSDTO.setChannelState(sipChannelDBModels.get(0).getChannelState());
+            operationSipAccountWSDTO.setcDate(sipChannelDBModels.get(0).getcDate());
+            operationSipAccountWSDTO.setStatus(sipChannelDBModels.get(0).getStatus());
 
-            return sipAccountWSDTO;
+            return operationSipAccountWSDTO;
         }
         return null;
     }
