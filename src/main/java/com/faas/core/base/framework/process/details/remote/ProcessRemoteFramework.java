@@ -80,12 +80,12 @@ public class ProcessRemoteFramework {
         return null;
     }
 
-    public ProcessRemoteWSDTO removeProcessRemoteService(long userId,String processId,String remoteId) {
+    public ProcessRemoteWSDTO removeProcessRemoteService(long userId,String processId,String processRemoteId) {
 
         Optional<ProcessDBModel> processDBModel = processRepository.findById(processId);
         if (processDBModel.isPresent() && processDBModel.get().getProcessRemotes() != null) {
             for (int i=0;i<processDBModel.get().getProcessRemotes().size();i++){
-                if (processDBModel.get().getProcessRemotes().get(i).getRemoteId().equalsIgnoreCase(remoteId)){
+                if (processDBModel.get().getProcessRemotes().get(i).getId().equalsIgnoreCase(processRemoteId)){
 
                     ProcessRemoteDAO processRemoteDAO = processDBModel.get().getProcessRemotes().get(i);
                     processDBModel.get().getProcessRemotes().remove(processRemoteDAO);

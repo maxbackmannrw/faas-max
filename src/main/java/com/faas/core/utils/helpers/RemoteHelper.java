@@ -33,6 +33,7 @@ public class RemoteHelper {
 
         ProcessRemoteDAO processRemoteDAO = new ProcessRemoteDAO();
         processRemoteDAO.setId(appUtils.generateUUID());
+        processRemoteDAO.setRemoteId(remoteDBModel.getId());
         processRemoteDAO.setRemote(remoteDBModel.getRemote());
         processRemoteDAO.setRemoteDesc(remoteDBModel.getRemoteDesc());
         processRemoteDAO.setRemoteVersion(remoteDBModel.getRemoteVersion());

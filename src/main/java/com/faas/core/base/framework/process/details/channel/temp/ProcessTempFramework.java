@@ -22,6 +22,7 @@ import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 
@@ -136,6 +137,7 @@ public class ProcessTempFramework {
             processWappMessageTempDBModel.setWappBody(wappBody);
             processWappMessageTempDBModel.setTypeId(typeId);
             processWappMessageTempDBModel.setMessageType(messageTypeDBModel.get().getMessageType());
+            processWappMessageTempDBModel.setDatas(new ArrayList<>());
             processWappMessageTempDBModel.setuDate(appUtils.getCurrentTimeStamp());
             processWappMessageTempDBModel.setcDate(appUtils.getCurrentTimeStamp());
             processWappMessageTempDBModel.setStatus(1);
@@ -195,6 +197,7 @@ public class ProcessTempFramework {
             processEmailTempDBModel.setTypeId(typeId);
             processEmailTempDBModel.setEmailType(emailTypeDBModel.get().getEmailType());
         }
+        processEmailTempDBModel.setDatas(new ArrayList<>());
         processEmailTempDBModel.setuDate(appUtils.getCurrentTimeStamp());
         processEmailTempDBModel.setcDate(appUtils.getCurrentTimeStamp());
         processEmailTempDBModel.setStatus(1);
@@ -243,14 +246,12 @@ public class ProcessTempFramework {
         return processPushTempWSDTO;
     }
 
-
     public ProcessPushTempDBModel createPushTempService(String processId, String pushHeader, String pushBody, String pushFooter, String pushSender, long typeId) {
 
         Optional<PushTypeDBModel> pushTypeDBModel = pushTypeRepository.findById(typeId);
         if (pushTypeDBModel.isPresent()){
 
             ProcessPushTempDBModel processPushTempDBModel = new ProcessPushTempDBModel();
-
             processPushTempDBModel.setProcessId(processId);
             processPushTempDBModel.setPushHeader(pushHeader);
             processPushTempDBModel.setPushBody(pushBody);
@@ -258,6 +259,7 @@ public class ProcessTempFramework {
             processPushTempDBModel.setPushSender(pushSender);
             processPushTempDBModel.setTypeId(pushTypeDBModel.get().getId());
             processPushTempDBModel.setPushType(pushTypeDBModel.get().getPushType());
+            processPushTempDBModel.setDatas(new ArrayList<>());
             processPushTempDBModel.setuDate(appUtils.getCurrentTimeStamp());
             processPushTempDBModel.setcDate(appUtils.getCurrentTimeStamp());
             processPushTempDBModel.setStatus(1);
