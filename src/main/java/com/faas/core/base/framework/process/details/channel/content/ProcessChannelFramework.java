@@ -94,7 +94,7 @@ public class ProcessChannelFramework {
     public ProcessSipChannelWSDTO createProcessSipChannelService(String processId, String callerId, String channelState) {
 
         List<ProcessSipChannelDBModel> existedSipChannel = processSipChannelRepository.findByProcessId(processId);
-        if (existedSipChannel.isEmpty()) {
+        if (!existedSipChannel.isEmpty()) {
 
             existedSipChannel.get(0).setCallerId(callerId);
             existedSipChannel.get(0).setChannelState(channelState);
