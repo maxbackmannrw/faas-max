@@ -261,7 +261,7 @@ public class ChannelHelper {
     public ApiOperationSipCallWSDTO createOperationSipCallHelper(OperationDBModel operationDBModel,String numberId){
 
         OperationSipCallDAO sipCallDAO = createOperationSipCallDAO(operationDBModel,numberId);
-        if (sipCallDAO != null && checkOperationSipCallExist(operationDBModel.getId())){
+        if (sipCallDAO != null && !operationSipCallRepository.existsByOperationIdAndCallState(operationDBModel.getId(),AppConstant.READY_CALL) && !operationSipCallRepository.existsByOperationIdAndCallState(operationDBModel.getId(),AppConstant.ACTIVE_CALL)){
 
             OperationSipCallDBModel operationSipCallDBModel = new OperationSipCallDBModel();
             operationSipCallDBModel.setClientId(operationDBModel.getClientId());
@@ -280,14 +280,6 @@ public class ChannelHelper {
             return new ApiOperationSipCallWSDTO(operationSipCallRepository.save(operationSipCallDBModel));
         }
         return null;
-    }
-
-    public boolean checkOperationSipCallExist(String operationId){
-
-        if (operationSipCallRepository.existsByOperationIdAndCallState(operationId,AppConstant.READY_CALL) || operationSipCallRepository.existsByOperationIdAndCallState(operationId,AppConstant.ACTIVE_CALL)){
-            return false;
-        }
-        return true;
     }
 
 
