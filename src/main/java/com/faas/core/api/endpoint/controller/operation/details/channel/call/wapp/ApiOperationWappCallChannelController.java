@@ -61,6 +61,32 @@ public class ApiOperationWappCallChannelController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+    @RequestMapping(value = ApiRoute.API_START_OPERATION_WAPP_CALL, method = RequestMethod.POST)
+    public ResponseEntity<?> apiStartOperationWappCall(@RequestParam long agentId,
+                                                       @RequestParam String operationId,
+                                                       @RequestParam String callId) {
+
+        ApiOperationWappCallWSModel response = apiOperationWappCallChannelMiddleware.apiStartOperationWappCall(agentId,operationId,callId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+    @RequestMapping(value = ApiRoute.API_HANGUP_OPERATION_WAPP_CALL, method = RequestMethod.POST)
+    public ResponseEntity<?> apiHangupOperationWappCall(@RequestParam long agentId,
+                                                        @RequestParam String operationId,
+                                                        @RequestParam String callId) {
+
+        ApiOperationWappCallWSModel response = apiOperationWappCallChannelMiddleware.apiHangupOperationWappCall(agentId,operationId,callId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
     @RequestMapping(value = ApiRoute.API_UPDATE_OPERATION_WAPP_CALL, method = RequestMethod.POST)
     public ResponseEntity<?> apiUpdateOperationWappCall(@RequestParam long agentId,
                                                         @RequestParam String operationId,

@@ -63,6 +63,18 @@ public class ApiOperationSipChannelFramework {
         return null;
     }
 
+    public ApiOperationSipCallWSDTO apiStartOperationSipCallService(long agentId,String operationId,String callId) {
+
+
+        return null;
+    }
+
+    public ApiOperationSipCallWSDTO apiHangupOperationSipCallService(long agentId,String operationId,String callId) {
+
+
+        return null;
+    }
+
     public ApiOperationSipCallWSDTO apiUpdateOperationSipCallService(long agentId,String operationId,String callId,String callState) {
 
         List<OperationSipCallDBModel> operationSipCallDBModels = operationSipCallRepository.findByIdAndOperationId(callId,operationId);

@@ -84,6 +84,48 @@ public class ApiOperationWappCallChannelMiddleware {
         return response;
     }
 
+    public ApiOperationWappCallWSModel apiStartOperationWappCall(long agentId,String operationId,String callId) {
+
+        ApiOperationWappCallWSModel response = new ApiOperationWappCallWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+        List<ApiOperationWappCallWSDTO> operationWappCallWSDTOS = new ArrayList<>();
+
+        ApiOperationWappCallWSDTO operationWappCallWSDTO =  apiOperationWappCallChannelFramework.apiStartOperationWappCallService(agentId,operationId,callId);
+        if (operationWappCallWSDTO != null){
+            operationWappCallWSDTOS.add(operationWappCallWSDTO);
+        }
+
+        response.setOperationWappCalls(operationWappCallWSDTOS);
+        general.setOperation("apiStartOperationWappCall");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public ApiOperationWappCallWSModel apiHangupOperationWappCall(long agentId,String operationId,String callId) {
+
+        ApiOperationWappCallWSModel response = new ApiOperationWappCallWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+        List<ApiOperationWappCallWSDTO> operationWappCallWSDTOS = new ArrayList<>();
+
+        ApiOperationWappCallWSDTO operationWappCallWSDTO =  apiOperationWappCallChannelFramework.apiHangupOperationWappCallService(agentId,operationId,callId);
+        if (operationWappCallWSDTO != null){
+            operationWappCallWSDTOS.add(operationWappCallWSDTO);
+        }
+
+        response.setOperationWappCalls(operationWappCallWSDTOS);
+        general.setOperation("apiStartOperationWappCall");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
     public ApiOperationWappCallWSModel apiUpdateOperationWappCall(long agentId,String operationId,String callId,String callState) {
 
         ApiOperationWappCallWSModel response = new ApiOperationWappCallWSModel();

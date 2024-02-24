@@ -64,6 +64,16 @@ public class ApiOperationWappCallChannelFramework {
         return null;
     }
 
+    public ApiOperationWappCallWSDTO apiStartOperationWappCallService(long agentId,String operationId,String callId) {
+
+        return null;
+    }
+
+    public ApiOperationWappCallWSDTO apiHangupOperationWappCallService(long agentId,String operationId,String callId) {
+
+        return null;
+    }
+
     public ApiOperationWappCallWSDTO apiUpdateOperationWappCallService(long agentId,String operationId,String callId,String callState) {
 
         List<OperationWappCallDBModel> operationWappCallDBModels = operationWappCallRepository.findByIdAndOperationId(callId,operationId);
