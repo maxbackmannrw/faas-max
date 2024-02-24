@@ -199,17 +199,16 @@ public class ProcessFlowFramework {
         return null;
     }
 
-    public ProcessRemoteWSDTO removeProcessFlowRemoteService(long userId, String processId, String remoteId) {
+    public ProcessRemoteWSDTO removeProcessFlowRemoteService(long userId, String processId, String flowRemoteId) {
 
         Optional<ProcessDBModel> processDBModel = processRepository.findById(processId);
         if (processDBModel.isPresent() && processDBModel.get().getProcessFlow() != null && processDBModel.get().getProcessFlow().getFlowRemotes() != null) {
             for (int i=0;i<processDBModel.get().getProcessFlow().getFlowRemotes().size();i++){
-                if (processDBModel.get().getProcessFlow().getFlowRemotes().get(i).getRemoteId().equalsIgnoreCase(remoteId)){
+                if (processDBModel.get().getProcessFlow().getFlowRemotes().get(i).getId().equalsIgnoreCase(flowRemoteId)){
 
                     ProcessRemoteDAO processRemoteDAO =processDBModel.get().getProcessFlow().getFlowRemotes().get(i);
                     processDBModel.get().getProcessFlow().getFlowRemotes().remove(processRemoteDAO);
                     processDBModel.get().getProcessFlow().setuDate(appUtils.getCurrentTimeStamp());
-
                     processDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
                     processRepository.save(processDBModel.get());
 
