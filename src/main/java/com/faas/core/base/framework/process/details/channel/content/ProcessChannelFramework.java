@@ -102,6 +102,7 @@ public class ProcessChannelFramework {
 
             return new ProcessSipChannelWSDTO(processSipChannelRepository.save(existedSipChannel.get(0)));
         }else {
+
             ProcessSipChannelDBModel processSipChannelDBModel = new ProcessSipChannelDBModel();
             processSipChannelDBModel.setProcessId(processId);
             processSipChannelDBModel.setCallerId(callerId);
@@ -201,6 +202,7 @@ public class ProcessChannelFramework {
 
             return new ProcessWappChannelWSDTO(processWappChannelRepository.save(existedWappChannel.get(0)));
         }else {
+
             ProcessWappChannelDBModel processWappChannelDBModel = new ProcessWappChannelDBModel();
             processWappChannelDBModel.setProcessId(processId);
             processWappChannelDBModel.setCallState(callState);
@@ -247,6 +249,7 @@ public class ProcessChannelFramework {
 
                 return new ProcessEmailChannelWSDTO(processEmailChannelRepository.save(existedEmailChannel.get(0)));
             }else {
+
                 ProcessEmailChannelDBModel processEmailChannelDBModel = new ProcessEmailChannelDBModel();
                 processEmailChannelDBModel.setProcessId(processId);
                 processEmailChannelDBModel.setEmailAccount(channelHelper.mapProcessEmailAccountDAO(emailAccountDBModel.get()));
@@ -296,6 +299,7 @@ public class ProcessChannelFramework {
 
                 return new ProcessPushChannelWSDTO(processPushChannelRepository.save(existedPushChannel.get(0)));
             }else {
+
                 ProcessPushChannelDBModel processPushChannelDBModel = new ProcessPushChannelDBModel();
                 processPushChannelDBModel.setProcessId(processId);
                 processPushChannelDBModel.setPushAccount(channelHelper.mapProcessPushAccountDAO(pushAccountDBModel.get()));
