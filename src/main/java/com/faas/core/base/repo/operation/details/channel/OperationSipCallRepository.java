@@ -23,6 +23,7 @@ public interface OperationSipCallRepository extends MongoRepository<OperationSip
     List<OperationSipCallDBModel>findByIdAndSessionIdAndCampaignIdAndProcessId(String callId, long sessionId, String campaignId, String processId);
     List<OperationSipCallDBModel>findBySessionIdAndCallState(long sessionId, String callState);
     List<OperationSipCallDBModel>findByOperationIdAndCallState(String operationId, String callState);
+    List<OperationSipCallDBModel>findByOperationIdAndAgentIdAndCallState(String operationId,long agentId,String callState);
     List<OperationSipCallDBModel>findByClientId(long clientId);
     List<OperationSipCallDBModel>findBySessionIdAndClientId(long sessionId, long clientId);
 }

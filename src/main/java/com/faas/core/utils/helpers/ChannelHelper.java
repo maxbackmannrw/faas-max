@@ -262,7 +262,7 @@ public class ChannelHelper {
     }
 
 
-    public ApiOperationSipAccountWSDTO getApiSipAccountWSDTO(long agentId, String processId) {
+    public ApiOperationSipAccountWSDTO getApiOperationSipAccountWSDTO(long agentId, String processId) {
 
         List<ProcessSipChannelDBModel> sipChannelDBModels = processSipChannelRepository.findByProcessId(processId);
         List<UserDetailsDBModel> agentDetails = userDetailsRepository.findByUserId(agentId);
