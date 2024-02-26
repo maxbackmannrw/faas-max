@@ -95,26 +95,6 @@ public class ApiOperationWappCallChannelFramework {
     }
 
 
-    public ApiOperationCurrentWappCallWSDTO apiGetOperationCurrentWappCallService(long agentId, String operationId) {
-
-        List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
-        if (!operationDBModels.isEmpty()){
-
-            ApiOperationWappCallAccountWSDTO wappCallAccountWSDTO = channelHelper.getApiOperationWappCallAccountWSDTO(agentId,operationDBModels.get(0).getProcessId());
-            List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(operationDBModels.get(0).getClientId());
-            if (wappCallAccountWSDTO != null && !clientDetailsDBModels.isEmpty() && clientDetailsDBModels.get(0).getClientPhones() != null){
-
-                ApiOperationCurrentWappCallWSDTO operationActiveWappCallWSDTO = new ApiOperationCurrentWappCallWSDTO();
-                operationActiveWappCallWSDTO.setWappAccount(wappCallAccountWSDTO);
-                operationActiveWappCallWSDTO.setClientPhones(clientDetailsDBModels.get(0).getClientPhones());
-
-                return operationActiveWappCallWSDTO;
-            }
-        }
-        return null;
-    }
-
-
     public ApiOperationWappCallAccountWSDTO apiGetOperationWappCallAccountService(long agentId, String operationId) {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);

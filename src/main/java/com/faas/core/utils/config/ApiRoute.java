@@ -116,7 +116,6 @@ public class ApiRoute {
     public static final String API_HANGUP_OPERATION_SIP_CALL = "apihangupoperationsipcall";
     public static final String API_UPDATE_OPERATION_SIP_CALL = "apiupdateoperationsipcall";
     public static final String API_REMOVE_OPERATION_SIP_CALL = "apiremoveoperationsipcall";
-    public static final String API_GET_OPERATION_CURRENT_SIP_CALL = "apigetoperationcurrentsipcall";
     public static final String API_GET_OPERATION_SIP_ACCOUNT = "apigetoperationsipaccount";
 
     public static final String API_GET_OPERATION_WAPP_CALLS = "apigetoperationwappcalls";
@@ -126,7 +125,6 @@ public class ApiRoute {
     public static final String API_HANGUP_OPERATION_WAPP_CALL = "apihangupoperationwappcall";
     public static final String API_UPDATE_OPERATION_WAPP_CALL = "apiupdateoperationwappcall";
     public static final String API_REMOVE_OPERATION_WAPP_CALL = "apiremoveoperationwappcall";
-    public static final String API_GET_OPERATION_CURRENT_WAPP_CALL = "apigetoperationcurrentwappcall";
     public static final String API_GET_OPERATION_WAPP_CALL_ACCOUNT = "apigetoperationwappcallaccount";
 
 

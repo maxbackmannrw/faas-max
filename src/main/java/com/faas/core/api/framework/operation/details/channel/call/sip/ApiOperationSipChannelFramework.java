@@ -1,9 +1,7 @@
 package com.faas.core.api.framework.operation.details.channel.call.sip;
 
-import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationCurrentSipCallWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationSipAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationSipCallWSDTO;
-import com.faas.core.base.model.db.client.details.content.ClientDetailsDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationSipCallDBModel;
 import com.faas.core.base.repo.client.details.ClientDetailsRepository;
@@ -95,26 +93,6 @@ public class ApiOperationSipChannelFramework {
         if (!operationSipCallDBModels.isEmpty()) {
             operationSipCallRepository.delete(operationSipCallDBModels.get(0));
             return new ApiOperationSipCallWSDTO(operationSipCallDBModels.get(0));
-        }
-        return null;
-    }
-
-
-    public ApiOperationCurrentSipCallWSDTO apiGetOperationCurrentSipCallService(long agentId, String operationId) {
-
-        List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
-        if (!operationDBModels.isEmpty()){
-
-            ApiOperationSipAccountWSDTO sipAccountWSDTO = channelHelper.getApiOperationSipAccountWSDTO(agentId,operationDBModels.get(0).getProcessId());
-            List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(operationDBModels.get(0).getClientId());
-            if (sipAccountWSDTO != null && !clientDetailsDBModels.isEmpty() && clientDetailsDBModels.get(0).getClientPhones() != null){
-
-                ApiOperationCurrentSipCallWSDTO operationCurrentSipCallWSDTO = new ApiOperationCurrentSipCallWSDTO();
-                operationCurrentSipCallWSDTO.setSipAccount(sipAccountWSDTO);
-                operationCurrentSipCallWSDTO.setClientPhones(clientDetailsDBModels.get(0).getClientPhones());
-
-                return operationCurrentSipCallWSDTO;
-            }
         }
         return null;
     }

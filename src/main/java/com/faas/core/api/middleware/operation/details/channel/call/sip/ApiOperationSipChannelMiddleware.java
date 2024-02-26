@@ -1,10 +1,8 @@
 package com.faas.core.api.middleware.operation.details.channel.call.sip;
 
 import com.faas.core.api.framework.operation.details.channel.call.sip.ApiOperationSipChannelFramework;
-import com.faas.core.api.model.ws.operation.details.channel.call.sip.ApiOperationCurrentSipCallWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.ApiOperationSipAccountWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.ApiOperationSipCallWSModel;
-import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationCurrentSipCallWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationSipAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationSipCallWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
@@ -170,25 +168,6 @@ public class ApiOperationSipChannelMiddleware {
         return response;
     }
 
-
-    public ApiOperationCurrentSipCallWSModel apiGetOperationCurrentSipCall(long agentId, String operationId) {
-
-        ApiOperationCurrentSipCallWSModel response = new ApiOperationCurrentSipCallWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-        ApiOperationCurrentSipCallWSDTO currentSipCallWSDTO = apiOperationSipChannelFramework.apiGetOperationCurrentSipCallService(agentId,operationId);
-        if (currentSipCallWSDTO != null){
-            response.setCurrentSipCall(currentSipCallWSDTO);
-        }
-
-        general.setOperation("apiGetOperationCurrentSipCall");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
 
 
     public ApiOperationSipAccountWSModel apiGetOperationSipAccount(long agentId, String operationId) {
