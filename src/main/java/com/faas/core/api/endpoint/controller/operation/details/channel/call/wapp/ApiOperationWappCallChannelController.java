@@ -1,7 +1,6 @@
 package com.faas.core.api.endpoint.controller.operation.details.channel.call.wapp;
 
 import com.faas.core.api.middleware.operation.details.channel.call.wapp.ApiOperationWappCallChannelMiddleware;
-import com.faas.core.api.model.ws.operation.details.channel.call.wapp.ApiOperationCurrentWappCallWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.call.wapp.ApiOperationWappCallAccountWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.call.wapp.ApiOperationWappCallWSModel;
 import com.faas.core.utils.config.ApiRoute;

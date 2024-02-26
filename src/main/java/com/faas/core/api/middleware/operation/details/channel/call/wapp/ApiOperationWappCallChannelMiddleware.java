@@ -1,10 +1,8 @@
 package com.faas.core.api.middleware.operation.details.channel.call.wapp;
 
 import com.faas.core.api.framework.operation.details.channel.call.wapp.ApiOperationWappCallChannelFramework;
-import com.faas.core.api.model.ws.operation.details.channel.call.wapp.ApiOperationCurrentWappCallWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.call.wapp.ApiOperationWappCallAccountWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.call.wapp.ApiOperationWappCallWSModel;
-import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiOperationCurrentWappCallWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiOperationWappCallAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiOperationWappCallWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;

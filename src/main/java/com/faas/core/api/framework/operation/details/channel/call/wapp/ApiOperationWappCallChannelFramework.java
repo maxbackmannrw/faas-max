@@ -1,15 +1,12 @@
 package com.faas.core.api.framework.operation.details.channel.call.wapp;
 
-import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiOperationCurrentWappCallWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiOperationWappCallAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiOperationWappCallWSDTO;
-import com.faas.core.base.model.db.client.details.content.ClientDetailsDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationWappCallDBModel;
 import com.faas.core.base.repo.client.details.ClientDetailsRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.operation.details.channel.OperationWappCallRepository;
-import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.ChannelHelper;
 import org.springframework.beans.factory.annotation.Autowired;
