@@ -6,14 +6,14 @@ import com.faas.core.base.model.ws.general.GeneralWSModel;
 public class ApiOperationCurrentWappCallWSModel {
 
     private GeneralWSModel general;
-    private ApiOperationCurrentWappCallWSDTO operationCurrentWappCall;
+    private ApiOperationCurrentWappCallWSDTO currentWappCall;
 
     public ApiOperationCurrentWappCallWSModel() {
     }
 
-    public ApiOperationCurrentWappCallWSModel(GeneralWSModel general, ApiOperationCurrentWappCallWSDTO operationCurrentWappCall) {
+    public ApiOperationCurrentWappCallWSModel(GeneralWSModel general, ApiOperationCurrentWappCallWSDTO currentWappCall) {
         this.general = general;
-        this.operationCurrentWappCall = operationCurrentWappCall;
+        this.currentWappCall = currentWappCall;
     }
 
     public GeneralWSModel getGeneral() {
@@ -24,11 +24,11 @@ public class ApiOperationCurrentWappCallWSModel {
         this.general = general;
     }
 
-    public ApiOperationCurrentWappCallWSDTO getOperationCurrentWappCall() {
-        return operationCurrentWappCall;
+    public ApiOperationCurrentWappCallWSDTO getCurrentWappCall() {
+        return currentWappCall;
     }
 
-    public void setOperationCurrentWappCall(ApiOperationCurrentWappCallWSDTO operationCurrentWappCall) {
-        this.operationCurrentWappCall = operationCurrentWappCall;
+    public void setCurrentWappCall(ApiOperationCurrentWappCallWSDTO currentWappCall) {
+        this.currentWappCall = currentWappCall;
     }
 }

@@ -492,9 +492,9 @@ public class OperationHelper {
             operationSipChannelWSDTO.setSipAccount(sipAccountWSDTO);
             operationSipChannelWSDTO.setClientPhones(clientDetails.getClientPhones());
             List<OperationSipCallDBModel> operationSipCallDBModels = operationSipCallRepository.findByOperationId(operationDBModel.getId());
-            OperationSipCallDBModel currentSipCall = channelHelper.getApiOperationCurrentSipCallHelper(operationSipCallDBModels);
-            if (currentSipCall != null){
-                operationSipChannelWSDTO.setCurrentSipCall(currentSipCall);
+            OperationSipCallDBModel activeSipCall = channelHelper.getApiOperationActiveSipCallHelper(operationSipCallDBModels);
+            if (activeSipCall != null){
+                operationSipChannelWSDTO.setActiveSipCall(activeSipCall);
             }
             operationSipChannelWSDTO.setRecentSipCalls(operationSipCallDBModels);
 
@@ -512,9 +512,9 @@ public class OperationHelper {
             wappCallChannelWSDTO.setWappAccount(wappAccountWSDTO);
             wappCallChannelWSDTO.setClientPhones(clientDetails.getClientPhones());
             List<OperationWappCallDBModel> operationWappCallDBModels = operationWappCallRepository.findByOperationId(operationDBModel.getId());
-            OperationWappCallDBModel currentWappCall = channelHelper.getApiOperationCurrentWappCallHelper(operationWappCallDBModels);
-            if (currentWappCall != null){
-                wappCallChannelWSDTO.setCurrentWappCall(currentWappCall);
+            OperationWappCallDBModel activeWappCall = channelHelper.getApiOperationActiveWappCallHelper(operationWappCallDBModels);
+            if (activeWappCall != null){
+                wappCallChannelWSDTO.setActiveWappCall(activeWappCall);
             }
             wappCallChannelWSDTO.setRecentWappCalls(operationWappCallDBModels);
 

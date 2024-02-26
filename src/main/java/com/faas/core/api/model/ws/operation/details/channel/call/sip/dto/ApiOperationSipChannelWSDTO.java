@@ -9,16 +9,16 @@ public class ApiOperationSipChannelWSDTO {
 
     private List<ClientPhoneDAO> clientPhones;
     private ApiOperationSipAccountWSDTO sipAccount;
-    private OperationSipCallDBModel currentSipCall;
+    private OperationSipCallDBModel activeSipCall;
     private List<OperationSipCallDBModel> recentSipCalls;
 
     public ApiOperationSipChannelWSDTO() {
     }
 
-    public ApiOperationSipChannelWSDTO(List<ClientPhoneDAO> clientPhones, ApiOperationSipAccountWSDTO sipAccount, OperationSipCallDBModel currentSipCall, List<OperationSipCallDBModel> recentSipCalls) {
+    public ApiOperationSipChannelWSDTO(List<ClientPhoneDAO> clientPhones, ApiOperationSipAccountWSDTO sipAccount, OperationSipCallDBModel activeSipCall, List<OperationSipCallDBModel> recentSipCalls) {
         this.clientPhones = clientPhones;
         this.sipAccount = sipAccount;
-        this.currentSipCall = currentSipCall;
+        this.activeSipCall = activeSipCall;
         this.recentSipCalls = recentSipCalls;
     }
 
@@ -38,12 +38,12 @@ public class ApiOperationSipChannelWSDTO {
         this.sipAccount = sipAccount;
     }
 
-    public OperationSipCallDBModel getCurrentSipCall() {
-        return currentSipCall;
+    public OperationSipCallDBModel getActiveSipCall() {
+        return activeSipCall;
     }
 
-    public void setCurrentSipCall(OperationSipCallDBModel currentSipCall) {
-        this.currentSipCall = currentSipCall;
+    public void setActiveSipCall(OperationSipCallDBModel activeSipCall) {
+        this.activeSipCall = activeSipCall;
     }
 
     public List<OperationSipCallDBModel> getRecentSipCalls() {

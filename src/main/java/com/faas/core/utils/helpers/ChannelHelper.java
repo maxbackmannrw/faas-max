@@ -176,7 +176,7 @@ public class ChannelHelper {
         return null;
     }
 
-    public OperationSipCallDBModel getApiOperationCurrentSipCallHelper(List<OperationSipCallDBModel> operationSipCallDBModels) {
+    public OperationSipCallDBModel getApiOperationActiveSipCallHelper(List<OperationSipCallDBModel> operationSipCallDBModels) {
 
         for (OperationSipCallDBModel operationSipCallDBModel : operationSipCallDBModels) {
             if (operationSipCallDBModel.getCallState().equalsIgnoreCase(AppConstant.READY_CALL) || operationSipCallDBModel.getCallState().equalsIgnoreCase(AppConstant.ACTIVE_CALL)) {
@@ -210,7 +210,7 @@ public class ChannelHelper {
         return null;
     }
 
-    public OperationWappCallDBModel getApiOperationCurrentWappCallHelper(List<OperationWappCallDBModel> operationWappCallDBModels) {
+    public OperationWappCallDBModel getApiOperationActiveWappCallHelper(List<OperationWappCallDBModel> operationWappCallDBModels) {
 
         for (OperationWappCallDBModel operationWappCallDBModel : operationWappCallDBModels) {
             if (operationWappCallDBModel.getCallState().equalsIgnoreCase(AppConstant.READY_CALL) || operationWappCallDBModel.getCallState().equalsIgnoreCase(AppConstant.ACTIVE_CALL)) {

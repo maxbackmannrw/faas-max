@@ -6,14 +6,14 @@ import com.faas.core.base.model.ws.general.GeneralWSModel;
 public class ApiOperationCurrentSipCallWSModel {
 
     private GeneralWSModel general;
-    private ApiOperationCurrentSipCallWSDTO operationCurrentSipCall;
+    private ApiOperationCurrentSipCallWSDTO currentSipCall;
 
     public ApiOperationCurrentSipCallWSModel() {
     }
 
-    public ApiOperationCurrentSipCallWSModel(GeneralWSModel general, ApiOperationCurrentSipCallWSDTO operationCurrentSipCall) {
+    public ApiOperationCurrentSipCallWSModel(GeneralWSModel general, ApiOperationCurrentSipCallWSDTO currentSipCall) {
         this.general = general;
-        this.operationCurrentSipCall = operationCurrentSipCall;
+        this.currentSipCall = currentSipCall;
     }
 
     public GeneralWSModel getGeneral() {
@@ -24,11 +24,11 @@ public class ApiOperationCurrentSipCallWSModel {
         this.general = general;
     }
 
-    public ApiOperationCurrentSipCallWSDTO getOperationCurrentSipCall() {
-        return operationCurrentSipCall;
+    public ApiOperationCurrentSipCallWSDTO getCurrentSipCall() {
+        return currentSipCall;
     }
 
-    public void setOperationCurrentSipCall(ApiOperationCurrentSipCallWSDTO operationCurrentSipCall) {
-        this.operationCurrentSipCall = operationCurrentSipCall;
+    public void setCurrentSipCall(ApiOperationCurrentSipCallWSDTO currentSipCall) {
+        this.currentSipCall = currentSipCall;
     }
 }

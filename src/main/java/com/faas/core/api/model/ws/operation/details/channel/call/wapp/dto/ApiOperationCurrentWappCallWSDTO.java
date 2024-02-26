@@ -9,15 +9,15 @@ public class ApiOperationCurrentWappCallWSDTO {
 
     private List<ClientPhoneDAO> clientPhones;
     private ApiOperationWappCallAccountWSDTO wappAccount;
-    private OperationWappCallDBModel currentWappCall;
+    private OperationWappCallDBModel activeWappCall;
 
     public ApiOperationCurrentWappCallWSDTO() {
     }
 
-    public ApiOperationCurrentWappCallWSDTO(List<ClientPhoneDAO> clientPhones, ApiOperationWappCallAccountWSDTO wappAccount, OperationWappCallDBModel currentWappCall) {
+    public ApiOperationCurrentWappCallWSDTO(List<ClientPhoneDAO> clientPhones, ApiOperationWappCallAccountWSDTO wappAccount, OperationWappCallDBModel activeWappCall) {
         this.clientPhones = clientPhones;
         this.wappAccount = wappAccount;
-        this.currentWappCall = currentWappCall;
+        this.activeWappCall = activeWappCall;
     }
 
     public List<ClientPhoneDAO> getClientPhones() {
@@ -36,11 +36,11 @@ public class ApiOperationCurrentWappCallWSDTO {
         this.wappAccount = wappAccount;
     }
 
-    public OperationWappCallDBModel getCurrentWappCall() {
-        return currentWappCall;
+    public OperationWappCallDBModel getActiveWappCall() {
+        return activeWappCall;
     }
 
-    public void setCurrentWappCall(OperationWappCallDBModel currentWappCall) {
-        this.currentWappCall = currentWappCall;
+    public void setActiveWappCall(OperationWappCallDBModel activeWappCall) {
+        this.activeWappCall = activeWappCall;
     }
 }

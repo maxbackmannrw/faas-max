@@ -176,7 +176,7 @@ public class ApiOperationWappCallChannelMiddleware {
 
         ApiOperationCurrentWappCallWSDTO operationCurrentWappCallWSDTO =  apiOperationWappCallChannelFramework.apiGetOperationCurrentWappCallService(agentId,operationId);
         if (operationCurrentWappCallWSDTO != null){
-            response.setOperationCurrentWappCall(operationCurrentWappCallWSDTO);
+            response.setCurrentWappCall(operationCurrentWappCallWSDTO);
         }
 
         general.setOperation("apiGetOperationCurrentWappCall");

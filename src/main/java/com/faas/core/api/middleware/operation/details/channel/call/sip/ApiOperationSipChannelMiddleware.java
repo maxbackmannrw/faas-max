@@ -178,7 +178,7 @@ public class ApiOperationSipChannelMiddleware {
 
         ApiOperationCurrentSipCallWSDTO currentSipCallWSDTO = apiOperationSipChannelFramework.apiGetOperationCurrentSipCallService(agentId,operationId);
         if (currentSipCallWSDTO != null){
-            response.setOperationCurrentSipCall(currentSipCallWSDTO);
+            response.setCurrentSipCall(currentSipCallWSDTO);
         }
 
         general.setOperation("apiGetOperationCurrentSipCall");
