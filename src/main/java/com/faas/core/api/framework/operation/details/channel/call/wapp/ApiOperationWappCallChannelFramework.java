@@ -1,7 +1,9 @@
 package com.faas.core.api.framework.operation.details.channel.call.wapp;
 
 import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiOperationWappCallAccountWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiOperationWappCallChannelWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiOperationWappCallWSDTO;
+import com.faas.core.base.model.db.client.details.content.ClientDetailsDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationWappCallDBModel;
 import com.faas.core.base.repo.client.details.ClientDetailsRepository;
@@ -9,6 +11,7 @@ import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.operation.details.channel.OperationWappCallRepository;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.ChannelHelper;
+import com.faas.core.utils.helpers.OperationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,6 +21,9 @@ import java.util.List;
 
 @Component
 public class ApiOperationWappCallChannelFramework {
+
+    @Autowired
+    OperationHelper operationHelper;
 
     @Autowired
     ChannelHelper channelHelper;
@@ -34,6 +40,18 @@ public class ApiOperationWappCallChannelFramework {
     @Autowired
     AppUtils appUtils;
 
+
+    public ApiOperationWappCallChannelWSDTO apiGetOperationWappCallChannelService(long agentId, String operationId) {
+
+        List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
+        if (!operationDBModels.isEmpty()){
+            List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(operationDBModels.get(0).getClientId());
+            if (!clientDetailsDBModels.isEmpty()){
+                return operationHelper.getApiOperationWappCallChannelWSDTO(operationDBModels.get(0),clientDetailsDBModels.get(0));
+            }
+        }
+        return null;
+    }
 
     public List<ApiOperationWappCallWSDTO> apiGetOperationWappCallsService(long agentId, String operationId) {
 

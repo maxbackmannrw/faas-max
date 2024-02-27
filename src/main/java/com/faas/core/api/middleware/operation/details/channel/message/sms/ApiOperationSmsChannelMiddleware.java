@@ -2,9 +2,11 @@ package com.faas.core.api.middleware.operation.details.channel.message.sms;
 
 import com.faas.core.api.framework.operation.details.channel.message.sms.ApiOperationSmsChannelFramework;
 import com.faas.core.api.model.ws.operation.details.channel.message.sms.ApiOperationSmsAccountWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.message.sms.ApiOperationSmsChannelWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.sms.ApiOperationSmsTempWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.sms.ApiOperationSmsWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiOperationSmsAccountWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiOperationSmsChannelWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiOperationSmsTempWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiOperationSmsWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
@@ -22,6 +24,26 @@ public class ApiOperationSmsChannelMiddleware {
 
     @Autowired
     ApiOperationSmsChannelFramework apiOperationSmsChannelFramework;
+
+
+    public ApiOperationSmsChannelWSModel apiGetOperationSmsChannel(long agentId, String operationId) {
+
+        ApiOperationSmsChannelWSModel response = new ApiOperationSmsChannelWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        ApiOperationSmsChannelWSDTO smsChannelWSDTO = apiOperationSmsChannelFramework.apiGetOperationSmsChannelService(agentId,operationId);
+        if (smsChannelWSDTO != null){
+            response.setOperationSmsChannel(smsChannelWSDTO);
+        }
+
+        general.setOperation("apiGetOperationSmsChannel");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
 
     public ApiOperationSmsWSModel apiGetOperationSmss(long agentId,String operationId) {
 

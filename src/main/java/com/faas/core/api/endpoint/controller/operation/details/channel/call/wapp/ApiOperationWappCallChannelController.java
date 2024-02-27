@@ -2,6 +2,7 @@ package com.faas.core.api.endpoint.controller.operation.details.channel.call.wap
 
 import com.faas.core.api.middleware.operation.details.channel.call.wapp.ApiOperationWappCallChannelMiddleware;
 import com.faas.core.api.model.ws.operation.details.channel.call.wapp.ApiOperationWappCallAccountWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.call.wapp.ApiOperationWappCallChannelWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.call.wapp.ApiOperationWappCallWSModel;
 import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;
@@ -21,6 +22,19 @@ public class ApiOperationWappCallChannelController {
 
     @Autowired
     ApiOperationWappCallChannelMiddleware apiOperationWappCallChannelMiddleware;
+
+
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_WAPP_CALL_CHANNEL, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationWappCallChannel(@RequestParam long agentId,
+                                                            @RequestParam String operationId) {
+
+        ApiOperationWappCallChannelWSModel response = apiOperationWappCallChannelMiddleware.apiGetOperationWappCallChannel(agentId,operationId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
 
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_WAPP_CALLS, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationWappCalls(@RequestParam long agentId,

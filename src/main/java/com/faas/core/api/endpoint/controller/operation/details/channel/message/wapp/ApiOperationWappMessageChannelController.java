@@ -2,6 +2,7 @@ package com.faas.core.api.endpoint.controller.operation.details.channel.message.
 
 import com.faas.core.api.middleware.operation.details.channel.message.wapp.ApiOperationWappMessageChannelMiddleware;
 import com.faas.core.api.model.ws.operation.details.channel.message.wapp.ApiOperationWappMessageAccountWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.message.wapp.ApiOperationWappMessageChannelWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.wapp.ApiOperationWappMessageTempWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.wapp.ApiOperationWappMessageWSModel;
 import com.faas.core.utils.config.ApiRoute;
@@ -25,6 +26,18 @@ public class ApiOperationWappMessageChannelController {
     @Autowired
     ApiOperationWappMessageChannelMiddleware apiOperationWappMessageChannelMiddleware;
 
+
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_WAPP_MESSAGE_CHANNEL, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationWappMessageChannel(@RequestParam long agentId,
+                                                               @RequestParam String operationId) {
+
+        ApiOperationWappMessageChannelWSModel response = apiOperationWappMessageChannelMiddleware.apiGetOperationWappMessageChannel(agentId,operationId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
 
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_WAPP_MESSAGES, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationWappMessages(@RequestParam long agentId,

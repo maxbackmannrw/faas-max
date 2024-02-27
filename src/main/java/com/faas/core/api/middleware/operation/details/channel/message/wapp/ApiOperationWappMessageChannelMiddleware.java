@@ -2,9 +2,11 @@ package com.faas.core.api.middleware.operation.details.channel.message.wapp;
 
 import com.faas.core.api.framework.operation.details.channel.message.wapp.ApiOperationWappMessageChannelFramework;
 import com.faas.core.api.model.ws.operation.details.channel.message.wapp.ApiOperationWappMessageAccountWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.message.wapp.ApiOperationWappMessageChannelWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.wapp.ApiOperationWappMessageTempWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.wapp.ApiOperationWappMessageWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.ApiOperationWappMessageAccountWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.ApiOperationWappMessageChannelWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.ApiOperationWappMessageTempWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.ApiOperationWappMessageWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
@@ -23,6 +25,25 @@ public class ApiOperationWappMessageChannelMiddleware {
     @Autowired
     ApiOperationWappMessageChannelFramework apiOperationWappMessageChannelFramework;
 
+
+    public ApiOperationWappMessageChannelWSModel apiGetOperationWappMessageChannel(long agentId, String operationId) {
+
+        ApiOperationWappMessageChannelWSModel response = new ApiOperationWappMessageChannelWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        ApiOperationWappMessageChannelWSDTO wappMessageChannelWSDTO = apiOperationWappMessageChannelFramework.apiGetOperationWappMessageChannelService(agentId,operationId);
+        if (wappMessageChannelWSDTO != null){
+            response.setOperationWappMessageChannel(wappMessageChannelWSDTO);
+        }
+
+        general.setOperation("apiGetOperationWappMessageChannel");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
 
     public ApiOperationWappMessageWSModel apiGetOperationWappMessages(long agentId,String operationId) {
 

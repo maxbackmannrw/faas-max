@@ -2,9 +2,11 @@ package com.faas.core.api.middleware.operation.details.channel.message.push;
 
 import com.faas.core.api.framework.operation.details.channel.message.push.ApiOperationPushChannelFramework;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.ApiOperationPushAccountWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.message.push.ApiOperationPushChannelWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.ApiOperationPushTempWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.ApiOperationPushWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushAccountWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushChannelWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushTempWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
@@ -22,6 +24,25 @@ public class ApiOperationPushChannelMiddleware {
     @Autowired
     ApiOperationPushChannelFramework apiOperationPushChannelFramework;
 
+
+    public ApiOperationPushChannelWSModel apiGetOperationPushChannel(long agentId, String operationId) {
+
+        ApiOperationPushChannelWSModel response = new ApiOperationPushChannelWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        ApiOperationPushChannelWSDTO pushChannelWSDTO = apiOperationPushChannelFramework.apiGetOperationPushChannelService(agentId,operationId);
+        if (pushChannelWSDTO != null){
+            response.setOperationPushChannel(pushChannelWSDTO);
+        }
+
+        general.setOperation("apiGetOperationPushChannel");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
 
     public ApiOperationPushWSModel apiGetOperationPushes(long agentId,String operationId) {
 

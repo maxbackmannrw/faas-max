@@ -2,6 +2,8 @@ package com.faas.core.api.framework.operation.details.channel.call.sip;
 
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationSipAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationSipCallWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationSipChannelWSDTO;
+import com.faas.core.base.model.db.client.details.content.ClientDetailsDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationSipCallDBModel;
 import com.faas.core.base.repo.client.details.ClientDetailsRepository;
@@ -9,6 +11,7 @@ import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.operation.details.channel.OperationSipCallRepository;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.ChannelHelper;
+import com.faas.core.utils.helpers.OperationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,6 +21,9 @@ import java.util.List;
 
 @Component
 public class ApiOperationSipChannelFramework {
+
+    @Autowired
+    OperationHelper operationHelper;
 
     @Autowired
     ChannelHelper channelHelper;
@@ -34,6 +40,18 @@ public class ApiOperationSipChannelFramework {
     @Autowired
     AppUtils appUtils;
 
+
+    public ApiOperationSipChannelWSDTO apiGetOperationSipChannelService(long agentId, String operationId) {
+
+        List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
+        if (!operationDBModels.isEmpty()){
+            List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(operationDBModels.get(0).getClientId());
+            if (!clientDetailsDBModels.isEmpty()){
+                return operationHelper.getApiOperationSipChannelWSDTO(operationDBModels.get(0),clientDetailsDBModels.get(0));
+            }
+        }
+        return null;
+    }
 
     public List<ApiOperationSipCallWSDTO> apiGetOperationSipCallsService(long agentId, String operationId) {
 

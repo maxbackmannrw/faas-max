@@ -1,8 +1,11 @@
 package com.faas.core.api.framework.operation.details.channel.message.push;
 
 import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushAccountWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushChannelWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushTempWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushWSDTO;
+import com.faas.core.base.model.db.client.details.content.ClientDetailsDBModel;
+import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationPushMessageDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.repo.client.content.ClientRepository;
@@ -14,6 +17,7 @@ import com.faas.core.base.repo.process.details.channel.temp.ProcessPushTempRepos
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.ChannelHelper;
+import com.faas.core.utils.helpers.OperationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -22,6 +26,10 @@ import java.util.List;
 
 @Component
 public class ApiOperationPushChannelFramework {
+
+
+    @Autowired
+    OperationHelper operationHelper;
 
     @Autowired
     ChannelHelper channelHelper;
@@ -50,6 +58,18 @@ public class ApiOperationPushChannelFramework {
     @Autowired
     AppUtils appUtils;
 
+
+    public ApiOperationPushChannelWSDTO apiGetOperationPushChannelService(long agentId, String operationId) {
+
+        List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
+        if (!operationDBModels.isEmpty()){
+            List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(operationDBModels.get(0).getClientId());
+            if (!clientDetailsDBModels.isEmpty()){
+                return operationHelper.getApiOperationPushChannelWSDTO(operationDBModels.get(0),clientDetailsDBModels.get(0));
+            }
+        }
+        return null;
+    }
 
     public List<ApiOperationPushWSDTO> apiGetOperationPushesService(long agentId,String operationId) {
 
@@ -123,7 +143,6 @@ public class ApiOperationPushChannelFramework {
         }
         return null;
     }
-
 
 
     public ApiOperationPushAccountWSDTO apiGetOperationPushAccountService(long agentId, String operationId) {

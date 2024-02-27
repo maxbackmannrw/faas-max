@@ -3,6 +3,7 @@ package com.faas.core.api.endpoint.controller.operation.details.channel.call.sip
 import com.faas.core.api.middleware.operation.details.channel.call.sip.ApiOperationSipChannelMiddleware;
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.ApiOperationSipAccountWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.ApiOperationSipCallWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.call.sip.ApiOperationSipChannelWSModel;
 import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,18 @@ public class ApiOperationSipChannelController {
     @Autowired
     ApiOperationSipChannelMiddleware apiOperationSipChannelMiddleware;
 
+
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_SIP_CHANNEL, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationSipChannel(@RequestParam long agentId,
+                                                       @RequestParam String operationId) {
+
+        ApiOperationSipChannelWSModel response = apiOperationSipChannelMiddleware.apiGetOperationSipChannel(agentId,operationId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
 
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_SIP_CALLS, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationSipCalls(@RequestParam long agentId,

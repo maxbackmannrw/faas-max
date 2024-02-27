@@ -1,10 +1,12 @@
 package com.faas.core.api.framework.operation.details.channel.message.wapp;
 
 import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.ApiOperationWappMessageAccountWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.ApiOperationWappMessageChannelWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.ApiOperationWappMessageTempWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.ApiOperationWappMessageWSDTO;
 import com.faas.core.base.model.db.client.details.content.ClientDetailsDBModel;
 import com.faas.core.base.model.db.client.details.content.dao.ClientPhoneDAO;
+import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationWappMessageDBModel;
 import com.faas.core.base.model.db.process.details.channel.content.ProcessWappChannelDBModel;
 import com.faas.core.base.model.db.process.details.channel.temp.ProcessWappMessageTempDBModel;
@@ -12,6 +14,7 @@ import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.db.user.details.UserDetailsDBModel;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.client.details.ClientDetailsRepository;
+import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.operation.details.channel.OperationWappMessageRepository;
 import com.faas.core.base.repo.process.details.channel.content.ProcessWappChannelRepository;
 import com.faas.core.base.repo.process.details.channel.temp.ProcessWappMessageTempRepository;
@@ -20,6 +23,7 @@ import com.faas.core.base.repo.user.details.UserDetailsRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.ChannelHelper;
+import com.faas.core.utils.helpers.OperationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -27,10 +31,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Component
 public class ApiOperationWappMessageChannelFramework {
 
+
+    @Autowired
+    OperationHelper operationHelper;
 
     @Autowired
     ChannelHelper channelHelper;
@@ -39,13 +45,16 @@ public class ApiOperationWappMessageChannelFramework {
     UserDetailsRepository userDetailsRepository;
 
     @Autowired
-    SessionRepository sessionRepository;
-
-    @Autowired
     ClientRepository clientRepository;
 
     @Autowired
     ClientDetailsRepository clientDetailsRepository;
+
+    @Autowired
+    SessionRepository sessionRepository;
+
+    @Autowired
+    OperationRepository operationRepository;
 
     @Autowired
     ProcessWappMessageTempRepository processWappMessageTempRepository;
@@ -59,6 +68,18 @@ public class ApiOperationWappMessageChannelFramework {
     @Autowired
     AppUtils appUtils;
 
+
+    public ApiOperationWappMessageChannelWSDTO apiGetOperationWappMessageChannelService(long agentId, String operationId) {
+
+        List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
+        if (!operationDBModels.isEmpty()){
+            List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(operationDBModels.get(0).getClientId());
+            if (!clientDetailsDBModels.isEmpty()){
+                return operationHelper.getApiOperationWappMessageChannelWSDTO(operationDBModels.get(0),clientDetailsDBModels.get(0));
+            }
+        }
+        return null;
+    }
 
     public List<ApiOperationWappMessageWSDTO> apiGetOperationWappMessagesService(long agentId,String operationId){
 

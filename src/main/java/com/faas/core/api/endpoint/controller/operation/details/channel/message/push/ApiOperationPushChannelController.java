@@ -2,6 +2,7 @@ package com.faas.core.api.endpoint.controller.operation.details.channel.message.
 
 import com.faas.core.api.middleware.operation.details.channel.message.push.ApiOperationPushChannelMiddleware;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.ApiOperationPushAccountWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.message.push.ApiOperationPushChannelWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.ApiOperationPushTempWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.ApiOperationPushWSModel;
 import com.faas.core.utils.config.ApiRoute;
@@ -23,6 +24,18 @@ public class ApiOperationPushChannelController {
     @Autowired
     ApiOperationPushChannelMiddleware apiOperationPushChannelMiddleware;
 
+
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_PUSH_CHANNEL, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationPushChannel(@RequestParam long agentId,
+                                                        @RequestParam String operationId) {
+
+        ApiOperationPushChannelWSModel response = apiOperationPushChannelMiddleware.apiGetOperationPushChannel(agentId,operationId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
 
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_PUSHES, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationPushes(@RequestParam long agentId,

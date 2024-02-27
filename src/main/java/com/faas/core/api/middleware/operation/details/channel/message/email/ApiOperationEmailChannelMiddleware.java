@@ -2,9 +2,11 @@ package com.faas.core.api.middleware.operation.details.channel.message.email;
 
 import com.faas.core.api.framework.operation.details.channel.message.email.ApiOperationEmailChannelFramework;
 import com.faas.core.api.model.ws.operation.details.channel.message.email.ApiOperationEmailAccountWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.message.email.ApiOperationEmailChannelWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.email.ApiOperationEmailTempWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.email.ApiOperationEmailWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiOperationEmailAccountWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiOperationEmailChannelWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiOperationEmailTempWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiOperationEmailWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
@@ -23,6 +25,25 @@ public class ApiOperationEmailChannelMiddleware {
     @Autowired
     ApiOperationEmailChannelFramework apiOperationEmailChannelFramework;
 
+
+    public ApiOperationEmailChannelWSModel apiGetOperationEmailChannel(long agentId, String operationId) {
+
+        ApiOperationEmailChannelWSModel response = new ApiOperationEmailChannelWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        ApiOperationEmailChannelWSDTO emailChannelWSDTO = apiOperationEmailChannelFramework.apiGetOperationEmailChannelService(agentId,operationId);
+        if (emailChannelWSDTO != null){
+            response.setOperationEmailChannel(emailChannelWSDTO);
+        }
+
+        general.setOperation("apiGetOperationEmailChannel");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
 
     public ApiOperationEmailWSModel apiGetOperationEmails(long agentId,String operationId) {
 
