@@ -126,7 +126,6 @@ public class AppConstant {
     public static final String CLIENT_TYPE = "CLIENT_TYPE";
 
 
-
     public static final String CREATE_OPERATION_ACTIVITY = "CREATE_OPERATION_ACTIVITY";
     public static final String CREATE_OPERATION_ACTIVITY_DESC = "operation created by";
 
