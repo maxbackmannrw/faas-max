@@ -132,7 +132,6 @@ public class CampaignOperationFramework {
             sessionDBModel.setuDate(appUtils.getCurrentTimeStamp());
             sessionDBModel = sessionRepository.save(sessionDBModel);
 
-            activityHelper.createSessionActivity(sessionDBModel,operationDBModel);
             activityHelper.createOperationActivity(sessionDBModel,operationDBModel);
 
             return new OperationWSDTO(operationDBModel,sessionDBModel);

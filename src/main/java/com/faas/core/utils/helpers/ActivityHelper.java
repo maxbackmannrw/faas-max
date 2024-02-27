@@ -29,16 +29,6 @@ public class ActivityHelper {
     @Autowired
     AppUtils appUtils;
 
-
-    public void createSessionActivity(SessionDBModel sessionDBModel,OperationDBModel operationDBModel) {
-
-        OperationActivityDAO operationActivityDAO = createActivityDAO(AppConstant.CREATE_SESSION_ACTIVITY,AppConstant.CREATE_SESSION_ACTIVITY_DESC,String.valueOf(sessionDBModel.getAgentId()),sessionDBModel.getAgentName(),String.valueOf(sessionDBModel.getId()),sessionDBModel.getClientName());
-        operationDBModel.getOperationActivities().add(operationActivityDAO);
-        operationDBModel.setuDate(appUtils.getCurrentTimeStamp());
-        operationRepository.save(operationDBModel);
-    }
-
-
     public void createOperationActivity(SessionDBModel sessionDBModel,OperationDBModel operationDBModel) {
 
         OperationActivityDAO operationActivityDAO = createActivityDAO(AppConstant.CREATE_OPERATION_ACTIVITY,AppConstant.CREATE_OPERATION_ACTIVITY_DESC,String.valueOf(sessionDBModel.getAgentId()),sessionDBModel.getAgentName(),operationDBModel.getId(),sessionDBModel.getClientName());
