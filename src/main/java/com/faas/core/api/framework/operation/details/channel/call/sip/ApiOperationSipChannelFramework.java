@@ -18,10 +18,8 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Component
 public class ApiOperationSipChannelFramework {
-
 
     @Autowired
     OperationHelper operationHelper;
@@ -40,7 +38,6 @@ public class ApiOperationSipChannelFramework {
 
     @Autowired
     AppUtils appUtils;
-
 
     public ApiOperationSipChannelWSDTO apiGetOperationSipChannelService(long agentId, String operationId) {
 

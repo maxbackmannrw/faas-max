@@ -8,7 +8,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/channel/call/content/ApiOperationCallChannelFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/channel/call/content/ApiOperationCallChannelFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/channel/call/sip/ApiOperationSipChannelFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/channel/call/sip/ApiOperationSipChannelFramework.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/channel/call/wapp/ApiOperationWappCallChannelFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/channel/call/wapp/ApiOperationWappCallChannelFramework.java" afterDir="false" />
     </list>
@@ -785,15 +785,19 @@
       <workItem from="1708940038380" duration="151000" />
       <workItem from="1708952022575" duration="3262000" />
       <workItem from="1708991645800" duration="818000" />
-      <workItem from="1709041162352" duration="3564000" />
-    </task>
-    <task id="LOCAL-00678" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1707999619267</created>
-      <option name="number" value="00678" />
-      <option name="presentableId" value="LOCAL-00678" />
-      <option name="project" value="LOCAL" />
-      <updated>1707999619268</updated>
+      <workItem from="1709041162352" duration="4135000" />
+      <workItem from="1709067630720" duration="136000" />
+      <workItem from="1709128676528" duration="562000" />
+      <workItem from="1709159512826" duration="279000" />
+      <workItem from="1709190486953" duration="419000" />
+      <workItem from="1709199452617" duration="198000" />
+      <workItem from="1709207722894" duration="1872000" />
+      <workItem from="1709221565650" duration="311000" />
+      <workItem from="1709231133851" duration="506000" />
+      <workItem from="1709283831926" duration="560000" />
+      <workItem from="1709289422315" duration="142000" />
+      <workItem from="1709293706135" duration="196000" />
+      <workItem from="1709297800722" duration="335000" />
     </task>
     <task id="LOCAL-00679" summary="almost finish">
       <option name="closed" value="true" />
@@ -1179,7 +1183,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709056920895</updated>
     </task>
-    <option name="localTasksCounter" value="727" />
+    <task id="LOCAL-00727" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1709058026059</created>
+      <option name="number" value="00727" />
+      <option name="presentableId" value="LOCAL-00727" />
+      <option name="project" value="LOCAL" />
+      <updated>1709058026060</updated>
+    </task>
+    <option name="localTasksCounter" value="728" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
