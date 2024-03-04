@@ -187,6 +187,34 @@ public class ChannelHelper {
     }
 
 
+    public ApiOperationSipCallWSDTO startOperationSipCallHelper(OperationSipCallDBModel operationSipCallDBModel){
+
+        if (operationSipCallDBModel.getSipCall() != null && operationSipCallDBModel.getCallState().equalsIgnoreCase(AppConstant.READY_CALL)){
+
+            operationSipCallDBModel.getSipCall().setsDate(appUtils.getCurrentTimeStamp());
+            operationSipCallDBModel.setCallState(AppConstant.ACTIVE_CALL);
+            operationSipCallDBModel.setuDate(appUtils.getCurrentTimeStamp());
+
+            return new ApiOperationSipCallWSDTO(operationSipCallRepository.save(operationSipCallDBModel));
+        }
+        return null;
+    }
+
+
+    public ApiOperationSipCallWSDTO hangUpOperationSipCallHelper(OperationSipCallDBModel operationSipCallDBModel){
+
+        if (operationSipCallDBModel.getSipCall() != null && operationSipCallDBModel.getCallState().equalsIgnoreCase(AppConstant.ACTIVE_CALL)){
+
+            operationSipCallDBModel.getSipCall().setfDate(appUtils.getCurrentTimeStamp());
+            operationSipCallDBModel.setCallState(AppConstant.FINISHED_CALL);
+            operationSipCallDBModel.setuDate(appUtils.getCurrentTimeStamp());
+
+            return new ApiOperationSipCallWSDTO(operationSipCallRepository.save(operationSipCallDBModel));
+        }
+        return null;
+    }
+
+
     public ApiOperationWappCallAccountWSDTO getApiOperationWappCallAccountWSDTO(long agentId, String processId) {
 
         List<UserDetailsDBModel> agentDetails = userDetailsRepository.findByUserId(agentId);

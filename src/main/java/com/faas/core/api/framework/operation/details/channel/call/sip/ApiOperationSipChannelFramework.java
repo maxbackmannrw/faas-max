@@ -9,6 +9,7 @@ import com.faas.core.base.model.db.operation.details.channel.OperationSipCallDBM
 import com.faas.core.base.repo.client.details.ClientDetailsRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.operation.details.channel.OperationSipCallRepository;
+import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.ChannelHelper;
 import com.faas.core.utils.helpers.OperationHelper;
@@ -81,14 +82,19 @@ public class ApiOperationSipChannelFramework {
 
     public ApiOperationSipCallWSDTO apiStartOperationSipCallService(long agentId,String operationId,String callId) {
 
-        List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
-
+        List<OperationSipCallDBModel> operationSipCallDBModels = operationSipCallRepository.findByIdAndOperationIdAndAgentId(callId,operationId,agentId);
+        if (!operationSipCallDBModels.isEmpty()) {
+            return channelHelper.startOperationSipCallHelper(operationSipCallDBModels.get(0));
+        }
         return null;
     }
 
     public ApiOperationSipCallWSDTO apiHangUpOperationSipCallService(long agentId,String operationId,String callId) {
 
-
+        List<OperationSipCallDBModel> operationSipCallDBModels = operationSipCallRepository.findByIdAndOperationIdAndAgentId(callId,operationId,agentId);
+        if (!operationSipCallDBModels.isEmpty()) {
+            return channelHelper.hangUpOperationSipCallHelper(operationSipCallDBModels.get(0));
+        }
         return null;
     }
 

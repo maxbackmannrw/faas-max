@@ -87,7 +87,7 @@ public class ApiOperationSipChannelController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-    @RequestMapping(value = ApiRoute.API_HANGUP_OPERATION_SIP_CALL, method = RequestMethod.POST)
+    @RequestMapping(value = ApiRoute.API_HANG_UP_OPERATION_SIP_CALL, method = RequestMethod.POST)
     public ResponseEntity<?> apiHangUpOperationSipCall(@RequestParam long agentId,
                                                        @RequestParam String operationId,
                                                        @RequestParam String callId) {
