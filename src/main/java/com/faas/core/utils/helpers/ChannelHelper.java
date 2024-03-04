@@ -187,7 +187,7 @@ public class ChannelHelper {
     }
 
 
-    public ApiOperationSipCallWSDTO startOperationSipCallHelper(OperationSipCallDBModel operationSipCallDBModel){
+    public ApiOperationSipCallWSDTO startActiveSipCallHelper(OperationSipCallDBModel operationSipCallDBModel){
 
         if (operationSipCallDBModel.getSipCall() != null && operationSipCallDBModel.getCallState().equalsIgnoreCase(AppConstant.READY_CALL)){
 
@@ -201,7 +201,7 @@ public class ChannelHelper {
     }
 
 
-    public ApiOperationSipCallWSDTO hangUpOperationSipCallHelper(OperationSipCallDBModel operationSipCallDBModel){
+    public ApiOperationSipCallWSDTO hangUpActiveSipCallHelper(OperationSipCallDBModel operationSipCallDBModel){
 
         if (operationSipCallDBModel.getSipCall() != null && operationSipCallDBModel.getCallState().equalsIgnoreCase(AppConstant.ACTIVE_CALL)){
 
@@ -214,6 +214,14 @@ public class ChannelHelper {
         return null;
     }
 
+    public ApiOperationSipCallWSDTO removeActiveSipCallHelper(OperationSipCallDBModel operationSipCallDBModel){
+
+        if (operationSipCallDBModel.getSipCall() != null && operationSipCallDBModel.getCallState().equalsIgnoreCase(AppConstant.READY_CALL)){
+            operationSipCallRepository.delete(operationSipCallDBModel);
+            return new ApiOperationSipCallWSDTO(operationSipCallDBModel);
+        }
+        return null;
+    }
 
     public ApiOperationWappCallAccountWSDTO getApiOperationWappCallAccountWSDTO(long agentId, String processId) {
 

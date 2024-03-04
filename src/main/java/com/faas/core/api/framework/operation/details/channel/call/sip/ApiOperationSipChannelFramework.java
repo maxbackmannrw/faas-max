@@ -80,31 +80,19 @@ public class ApiOperationSipChannelFramework {
         return null;
     }
 
-    public ApiOperationSipCallWSDTO apiStartOperationSipCallService(long agentId,String operationId,String callId) {
-
-        List<OperationSipCallDBModel> operationSipCallDBModels = operationSipCallRepository.findByIdAndOperationIdAndAgentId(callId,operationId,agentId);
-        if (!operationSipCallDBModels.isEmpty()) {
-            return channelHelper.startOperationSipCallHelper(operationSipCallDBModels.get(0));
-        }
-        return null;
-    }
-
-    public ApiOperationSipCallWSDTO apiHangUpOperationSipCallService(long agentId,String operationId,String callId) {
-
-        List<OperationSipCallDBModel> operationSipCallDBModels = operationSipCallRepository.findByIdAndOperationIdAndAgentId(callId,operationId,agentId);
-        if (!operationSipCallDBModels.isEmpty()) {
-            return channelHelper.hangUpOperationSipCallHelper(operationSipCallDBModels.get(0));
-        }
-        return null;
-    }
-
-    public ApiOperationSipCallWSDTO apiUpdateOperationSipCallService(long agentId,String operationId,String callId,String callState) {
+    public ApiOperationSipCallWSDTO apiUpdateOperationSipCallService(long agentId,String operationId,String callId,String updateType) {
 
         List<OperationSipCallDBModel> operationSipCallDBModels = operationSipCallRepository.findByIdAndOperationId(callId,operationId);
         if (!operationSipCallDBModels.isEmpty()) {
-            operationSipCallDBModels.get(0).setCallState(callState);
-            operationSipCallDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
-            return new ApiOperationSipCallWSDTO(operationSipCallRepository.save(operationSipCallDBModels.get(0)));
+            if (AppConstant.START_ACTIVE_SIP_CALL.equalsIgnoreCase(updateType)) {
+                return channelHelper.startActiveSipCallHelper(operationSipCallDBModels.get(0));
+            }
+            if (AppConstant.HANG_UP_ACTIVE_SIP_CALL.equalsIgnoreCase(updateType)) {
+                return channelHelper.hangUpActiveSipCallHelper(operationSipCallDBModels.get(0));
+            }
+            if (AppConstant.REMOVE_ACTIVE_SIP_CALL.equalsIgnoreCase(updateType)) {
+                return channelHelper.removeActiveSipCallHelper(operationSipCallDBModels.get(0));
+            }
         }
         return null;
     }

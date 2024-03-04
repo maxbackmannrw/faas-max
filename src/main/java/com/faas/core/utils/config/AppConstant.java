@@ -108,6 +108,10 @@ public class AppConstant {
     public static final String ACTIVE_CALL = "ACTIVE_CALL";
     public static final String FINISHED_CALL = "FINISHED_CALL";
 
+    public static final String START_ACTIVE_SIP_CALL = "START_ACTIVE_SIP_CALL";
+    public static final String HANG_UP_ACTIVE_SIP_CALL = "HANG_UP_ACTIVE_SIP_CALL";
+    public static final String REMOVE_ACTIVE_SIP_CALL = "REMOVE_ACTIVE_SIP_CALL";
+
 
     public static final String AGENT_READY_OPERATIONS_SUMMARY = "AGENT_READY_OPERATIONS_SUMMARY";
     public static final String AGENT_ACTIVE_OPERATIONS_SUMMARY = "AGENT_ACTIVE_OPERATIONS_SUMMARY";
