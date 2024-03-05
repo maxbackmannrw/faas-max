@@ -187,7 +187,7 @@ public class ChannelHelper {
     }
 
 
-    public ApiOperationSipCallWSDTO startActiveSipCallHelper(OperationSipCallDBModel operationSipCallDBModel){
+    public ApiOperationSipCallWSDTO startOperationSipCallHelper(OperationSipCallDBModel operationSipCallDBModel){
 
         if (operationSipCallDBModel.getSipCall() != null && operationSipCallDBModel.getCallState().equalsIgnoreCase(AppConstant.READY_CALL)){
 
@@ -200,8 +200,7 @@ public class ChannelHelper {
         return null;
     }
 
-
-    public ApiOperationSipCallWSDTO hangUpActiveSipCallHelper(OperationSipCallDBModel operationSipCallDBModel){
+    public ApiOperationSipCallWSDTO hangUpOperationSipCallHelper(OperationSipCallDBModel operationSipCallDBModel){
 
         if (operationSipCallDBModel.getSipCall() != null && operationSipCallDBModel.getCallState().equalsIgnoreCase(AppConstant.ACTIVE_CALL)){
 
@@ -214,7 +213,7 @@ public class ChannelHelper {
         return null;
     }
 
-    public ApiOperationSipCallWSDTO removeActiveSipCallHelper(OperationSipCallDBModel operationSipCallDBModel){
+    public ApiOperationSipCallWSDTO cancelOperationSipCallHelper(OperationSipCallDBModel operationSipCallDBModel){
 
         if (operationSipCallDBModel.getSipCall() != null && operationSipCallDBModel.getCallState().equalsIgnoreCase(AppConstant.READY_CALL)){
             operationSipCallRepository.delete(operationSipCallDBModel);

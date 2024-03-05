@@ -84,14 +84,14 @@ public class ApiOperationSipChannelFramework {
 
         List<OperationSipCallDBModel> operationSipCallDBModels = operationSipCallRepository.findByIdAndOperationId(callId,operationId);
         if (!operationSipCallDBModels.isEmpty()) {
-            if (AppConstant.START_ACTIVE_SIP_CALL.equalsIgnoreCase(updateType)) {
-                return channelHelper.startActiveSipCallHelper(operationSipCallDBModels.get(0));
+            if (AppConstant.START_OPERATION_SIP_CALL.equalsIgnoreCase(updateType)) {
+                return channelHelper.startOperationSipCallHelper(operationSipCallDBModels.get(0));
             }
-            if (AppConstant.HANG_UP_ACTIVE_SIP_CALL.equalsIgnoreCase(updateType)) {
-                return channelHelper.hangUpActiveSipCallHelper(operationSipCallDBModels.get(0));
+            if (AppConstant.HANG_UP_OPERATION_SIP_CALL.equalsIgnoreCase(updateType)) {
+                return channelHelper.hangUpOperationSipCallHelper(operationSipCallDBModels.get(0));
             }
-            if (AppConstant.REMOVE_ACTIVE_SIP_CALL.equalsIgnoreCase(updateType)) {
-                return channelHelper.removeActiveSipCallHelper(operationSipCallDBModels.get(0));
+            if (AppConstant.CANCEL_OPERATION_SIP_CALL.equalsIgnoreCase(updateType)) {
+                return channelHelper.cancelOperationSipCallHelper(operationSipCallDBModels.get(0));
             }
         }
         return null;
