@@ -80,19 +80,40 @@ public class ApiOperationSipChannelFramework {
         return null;
     }
 
-    public ApiOperationSipCallWSDTO apiUpdateOperationSipCallService(long agentId,String operationId,String callId,String updateType) {
+    public ApiOperationSipCallWSDTO apiStartOperationSipCallService(long agentId,String operationId,String callId) {
 
         List<OperationSipCallDBModel> operationSipCallDBModels = operationSipCallRepository.findByIdAndOperationId(callId,operationId);
         if (!operationSipCallDBModels.isEmpty()) {
-            if (AppConstant.START_OPERATION_SIP_CALL.equalsIgnoreCase(updateType)) {
-                return channelHelper.startOperationSipCallHelper(operationSipCallDBModels.get(0));
-            }
-            if (AppConstant.HANG_UP_OPERATION_SIP_CALL.equalsIgnoreCase(updateType)) {
-                return channelHelper.hangUpOperationSipCallHelper(operationSipCallDBModels.get(0));
-            }
-            if (AppConstant.CANCEL_OPERATION_SIP_CALL.equalsIgnoreCase(updateType)) {
-                return channelHelper.cancelOperationSipCallHelper(operationSipCallDBModels.get(0));
-            }
+            return channelHelper.startOperationSipCallHelper(operationSipCallDBModels.get(0));
+        }
+        return null;
+    }
+
+    public ApiOperationSipCallWSDTO apiCancelOperationSipCallService(long agentId,String operationId,String callId) {
+
+        List<OperationSipCallDBModel> operationSipCallDBModels = operationSipCallRepository.findByIdAndOperationId(callId,operationId);
+        if (!operationSipCallDBModels.isEmpty()) {
+            return channelHelper.cancelOperationSipCallHelper(operationSipCallDBModels.get(0));
+        }
+        return null;
+    }
+
+    public ApiOperationSipCallWSDTO apiHangupOperationSipCallService(long agentId,String operationId,String callId) {
+
+        List<OperationSipCallDBModel> operationSipCallDBModels = operationSipCallRepository.findByIdAndOperationId(callId,operationId);
+        if (!operationSipCallDBModels.isEmpty()) {
+            return channelHelper.hangUpOperationSipCallHelper(operationSipCallDBModels.get(0));
+        }
+        return null;
+    }
+
+    public ApiOperationSipCallWSDTO apiUpdateOperationSipCallService(long agentId,String operationId,String callId,String callState) {
+
+        List<OperationSipCallDBModel> operationSipCallDBModels = operationSipCallRepository.findByIdAndOperationId(callId,operationId);
+        if (!operationSipCallDBModels.isEmpty()) {
+            operationSipCallDBModels.get(0).setCallState(callState);
+            operationSipCallDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
+            return new ApiOperationSipCallWSDTO(operationSipCallRepository.save(operationSipCallDBModels.get(0)));
         }
         return null;
     }

@@ -103,14 +103,76 @@ public class ApiOperationSipChannelMiddleware {
         return response;
     }
 
-
-    public ApiOperationSipCallWSModel apiUpdateOperationSipCall(long agentId,String operationId,String callId,String updateType) {
+    public ApiOperationSipCallWSModel apiStartOperationSipCall(long agentId,String operationId,String callId) {
 
         ApiOperationSipCallWSModel response = new ApiOperationSipCallWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ApiOperationSipCallWSDTO>operationSipCallWSDTOS = new ArrayList<>();
 
-        ApiOperationSipCallWSDTO operationSipCallWSDTO = apiOperationSipChannelFramework.apiUpdateOperationSipCallService(agentId,operationId,callId,updateType);
+        ApiOperationSipCallWSDTO operationSipCallWSDTO = apiOperationSipChannelFramework.apiStartOperationSipCallService(agentId,operationId,callId);
+        if (operationSipCallWSDTO != null){
+            operationSipCallWSDTOS.add(operationSipCallWSDTO);
+        }
+
+        response.setOperationSipCalls(operationSipCallWSDTOS);
+        general.setOperation("apiStartOperationSipCall");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public ApiOperationSipCallWSModel apiCancelOperationSipCall(long agentId,String operationId,String callId) {
+
+        ApiOperationSipCallWSModel response = new ApiOperationSipCallWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+        List<ApiOperationSipCallWSDTO>operationSipCallWSDTOS = new ArrayList<>();
+
+        ApiOperationSipCallWSDTO operationSipCallWSDTO = apiOperationSipChannelFramework.apiCancelOperationSipCallService(agentId,operationId,callId);
+        if (operationSipCallWSDTO != null){
+            operationSipCallWSDTOS.add(operationSipCallWSDTO);
+        }
+
+        response.setOperationSipCalls(operationSipCallWSDTOS);
+        general.setOperation("apiCancelOperationSipCall");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public ApiOperationSipCallWSModel apiHangupOperationSipCall(long agentId,String operationId,String callId) {
+
+        ApiOperationSipCallWSModel response = new ApiOperationSipCallWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+        List<ApiOperationSipCallWSDTO>operationSipCallWSDTOS = new ArrayList<>();
+
+        ApiOperationSipCallWSDTO operationSipCallWSDTO = apiOperationSipChannelFramework.apiHangupOperationSipCallService(agentId,operationId,callId);
+        if (operationSipCallWSDTO != null){
+            operationSipCallWSDTOS.add(operationSipCallWSDTO);
+        }
+
+        response.setOperationSipCalls(operationSipCallWSDTOS);
+        general.setOperation("apiHangupOperationSipCall");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public ApiOperationSipCallWSModel apiUpdateOperationSipCall(long agentId,String operationId,String callId,String callState) {
+
+        ApiOperationSipCallWSModel response = new ApiOperationSipCallWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+        List<ApiOperationSipCallWSDTO>operationSipCallWSDTOS = new ArrayList<>();
+
+        ApiOperationSipCallWSDTO operationSipCallWSDTO = apiOperationSipChannelFramework.apiUpdateOperationSipCallService(agentId,operationId,callId,callState);
         if (operationSipCallWSDTO != null){
             operationSipCallWSDTOS.add(operationSipCallWSDTO);
         }
