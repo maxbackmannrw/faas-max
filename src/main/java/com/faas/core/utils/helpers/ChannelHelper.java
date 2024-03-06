@@ -28,6 +28,7 @@ import com.faas.core.base.model.db.process.details.channel.temp.ProcessSmsMessag
 import com.faas.core.base.model.db.process.details.channel.temp.ProcessWappMessageTempDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.db.user.details.UserDetailsDBModel;
+import com.faas.core.base.model.ws.operation.details.channel.dto.OperationSipCallWSDTO;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.client.details.ClientDetailsRepository;
 import com.faas.core.base.repo.operation.details.channel.*;
@@ -224,11 +225,18 @@ public class ChannelHelper {
 
     public ApiOperationSipCallWSDTO cancelOperationSipCallHelper(OperationSipCallDBModel operationSipCallDBModel){
 
-        if (operationSipCallDBModel.getSipCall() != null && operationSipCallDBModel.getCallState().equalsIgnoreCase(AppConstant.READY_CALL)){
-            operationSipCallRepository.delete(operationSipCallDBModel);
-            return new ApiOperationSipCallWSDTO(operationSipCallDBModel);
+        if (operationSipCallDBModel.getSipCall() != null ){
+            if (operationSipCallDBModel.getCallState().equalsIgnoreCase(AppConstant.READY_CALL)){
+                operationSipCallRepository.delete(operationSipCallDBModel);
+            }
+            if (operationSipCallDBModel.getCallState().equalsIgnoreCase(AppConstant.ACTIVE_CALL)){
+                operationSipCallDBModel.getSipCall().setfDate(appUtils.getCurrentTimeStamp());
+                operationSipCallDBModel.setCallState(AppConstant.FINISHED_CALL);
+                operationSipCallDBModel.setuDate(appUtils.getCurrentTimeStamp());
+                operationSipCallDBModel = operationSipCallRepository.save(operationSipCallDBModel);
+            }
         }
-        return null;
+        return new ApiOperationSipCallWSDTO(operationSipCallDBModel);
     }
 
     public ApiOperationWappCallAccountWSDTO getApiOperationWappCallAccountWSDTO(long agentId, String processId) {
