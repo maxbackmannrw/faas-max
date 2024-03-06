@@ -1,10 +1,9 @@
 package com.faas.core.base.model.db.operation.details.channel;
 
-import com.faas.core.base.model.db.client.details.content.dao.ClientPhoneDAO;
 import com.faas.core.base.model.db.operation.details.channel.dao.OperationWappCallDAO;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.*;
+import javax.persistence.Id;
 
 @Document(collection = "operation_wapp_call_table")
 public class OperationWappCallDBModel {

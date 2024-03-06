@@ -17,6 +17,7 @@ public interface OperationWappCallRepository extends MongoRepository<OperationWa
     List<OperationWappCallDBModel>findByOperationIdAndCallState(String operationId, String callState);
     List<OperationWappCallDBModel>findByIdAndSessionId(String callId, long sessionId);
     List<OperationWappCallDBModel>findByIdAndOperationId(String callId, String operationId);
+    List<OperationWappCallDBModel>findByIdAndOperationIdAndAgentId(String callId, String operationId,long agentId);
     List<OperationWappCallDBModel>findByClientId(long clientId);
     List<OperationWappCallDBModel>findBySessionIdAndClientId(long sessionId, long clientId);
 }
