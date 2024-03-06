@@ -10,8 +10,8 @@
     <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/channel/call/wapp/ApiOperationWappCallChannelFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/channel/call/wapp/ApiOperationWappCallChannelFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/operation/details/channel/OperationWappCallDBModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/operation/details/channel/OperationWappCallDBModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/repo/operation/details/channel/OperationWappCallRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/repo/operation/details/channel/OperationWappCallRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/helpers/ChannelHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/helpers/ChannelHelper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -818,23 +818,7 @@
       <workItem from="1709721632596" duration="2417000" />
       <workItem from="1709736969477" duration="852000" />
       <workItem from="1709743085813" duration="139000" />
-      <workItem from="1709743256880" duration="831000" />
-    </task>
-    <task id="LOCAL-00688" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1708366582666</created>
-      <option name="number" value="00688" />
-      <option name="presentableId" value="LOCAL-00688" />
-      <option name="project" value="LOCAL" />
-      <updated>1708366582667</updated>
-    </task>
-    <task id="LOCAL-00689" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1708366627403</created>
-      <option name="number" value="00689" />
-      <option name="presentableId" value="LOCAL-00689" />
-      <option name="project" value="LOCAL" />
-      <updated>1708366627403</updated>
+      <workItem from="1709743256880" duration="1978000" />
     </task>
     <task id="LOCAL-00690" summary="almost finish">
       <option name="closed" value="true" />
@@ -1212,7 +1196,23 @@
       <option name="project" value="LOCAL" />
       <updated>1709743276168</updated>
     </task>
-    <option name="localTasksCounter" value="737" />
+    <task id="LOCAL-00737" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1709747108585</created>
+      <option name="number" value="00737" />
+      <option name="presentableId" value="LOCAL-00737" />
+      <option name="project" value="LOCAL" />
+      <updated>1709747108585</updated>
+    </task>
+    <task id="LOCAL-00738" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1709747136215</created>
+      <option name="number" value="00738" />
+      <option name="presentableId" value="LOCAL-00738" />
+      <option name="project" value="LOCAL" />
+      <updated>1709747136215</updated>
+    </task>
+    <option name="localTasksCounter" value="739" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -9,6 +9,9 @@ import java.util.List;
 @Repository
 public interface OperationWappCallRepository extends MongoRepository<OperationWappCallDBModel, String> {
 
+    boolean existsByIdAndCallState(String callId,String callState);
+    boolean existsBySessionIdAndCallState(long sessionId,String callState);
+    boolean existsByOperationIdAndCallState(String operationId,String callState);
     List<OperationWappCallDBModel>findBySessionId(long sessionId);
     List<OperationWappCallDBModel>findByOperationId(String operationId);
     List<OperationWappCallDBModel>findByOperationIdAndAgentId(String operationId,long agentId);

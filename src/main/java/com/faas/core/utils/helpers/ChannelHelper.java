@@ -3,6 +3,7 @@ package com.faas.core.utils.helpers;
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationSipCallWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationSipAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiOperationWappCallAccountWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiOperationWappCallWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiOperationEmailAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiOperationSmsAccountWSDTO;
@@ -15,10 +16,7 @@ import com.faas.core.base.model.db.client.details.content.dao.ClientEmailDAO;
 import com.faas.core.base.model.db.client.details.content.dao.ClientPhoneDAO;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.operation.details.channel.*;
-import com.faas.core.base.model.db.operation.details.channel.dao.OperationEmailMessageDAO;
-import com.faas.core.base.model.db.operation.details.channel.dao.OperationSipCallDAO;
-import com.faas.core.base.model.db.operation.details.channel.dao.OperationSmsMessageDAO;
-import com.faas.core.base.model.db.operation.details.channel.dao.OperationWappMessageDAO;
+import com.faas.core.base.model.db.operation.details.channel.dao.*;
 import com.faas.core.base.model.db.process.details.channel.content.*;
 import com.faas.core.base.model.db.process.details.channel.content.dao.ProcessEmailAccountDAO;
 import com.faas.core.base.model.db.process.details.channel.content.dao.ProcessPushAccountDAO;
@@ -196,7 +194,6 @@ public class ChannelHelper {
         return null;
     }
 
-
     public ApiOperationSipCallWSDTO startOperationSipCallHelper(OperationSipCallDBModel operationSipCallDBModel){
 
         if (operationSipCallDBModel.getSipCall() != null && operationSipCallDBModel.getCallState().equalsIgnoreCase(AppConstant.READY_CALL)){
@@ -239,6 +236,7 @@ public class ChannelHelper {
         return new ApiOperationSipCallWSDTO(operationSipCallDBModel);
     }
 
+
     public ApiOperationWappCallAccountWSDTO getApiOperationWappCallAccountWSDTO(long agentId, String processId) {
 
         List<UserDetailsDBModel> agentDetails = userDetailsRepository.findByUserId(agentId);
@@ -262,6 +260,52 @@ public class ChannelHelper {
         return null;
     }
 
+
+    public ApiOperationWappCallWSDTO createOperationWappCallHelper(OperationDBModel operationDBModel, String numberId){
+
+        OperationWappCallDAO wappCallDAO = createOperationWappCallDAO(operationDBModel,numberId);
+        if (wappCallDAO != null && !operationWappCallRepository.existsByOperationIdAndCallState(operationDBModel.getId(),AppConstant.READY_CALL) && !operationSipCallRepository.existsByOperationIdAndCallState(operationDBModel.getId(),AppConstant.ACTIVE_CALL)){
+
+            OperationWappCallDBModel operationWappCallDBModel = new OperationWappCallDBModel();
+            operationWappCallDBModel.setClientId(operationDBModel.getClientId());
+            operationWappCallDBModel.setSessionId(operationDBModel.getSessionId());
+            operationWappCallDBModel.setOperationId(operationDBModel.getId());
+            operationWappCallDBModel.setAgentId(operationDBModel.getAgentId());
+            operationWappCallDBModel.setCampaignId(operationDBModel.getCampaignId());
+            operationWappCallDBModel.setProcessId(operationDBModel.getProcessId());
+            operationWappCallDBModel.setWappCall(wappCallDAO);
+            operationWappCallDBModel.setCallConnId(AppConstant.NONE);
+            operationWappCallDBModel.setCallState(AppConstant.READY_CALL);
+            operationWappCallDBModel.setuDate(appUtils.getCurrentTimeStamp());
+            operationWappCallDBModel.setcDate(appUtils.getCurrentTimeStamp());
+            operationWappCallDBModel.setStatus(1);
+
+            return new ApiOperationWappCallWSDTO(operationWappCallRepository.save(operationWappCallDBModel));
+        }
+        return null;
+    }
+
+    public OperationWappCallDAO createOperationWappCallDAO(OperationDBModel operationDBModel, String numberId){
+
+        ClientPhoneDAO clientPhoneDAO = fetchClientPhoneDAO(operationDBModel.getClientId(),numberId);
+        List<UserDetailsDBModel> agentDetails = userDetailsRepository.findByUserId(operationDBModel.getAgentId());
+        if (clientPhoneDAO != null && !agentDetails.isEmpty() && agentDetails.get(0).getWappChannel() != null ){
+
+            OperationWappCallDAO operationWappCallDAO = new OperationWappCallDAO();
+            operationWappCallDAO.setNumberId(numberId);
+            operationWappCallDAO.setPhoneNumber(clientPhoneDAO.getPhoneNumber());
+            operationWappCallDAO.setPhoneCarrier(clientPhoneDAO.getPhoneCarrier());
+            operationWappCallDAO.setPhoneType(clientPhoneDAO.getPhoneType());
+            operationWappCallDAO.setAccountId(agentDetails.get(0).getSipChannel().getAccountId());
+            operationWappCallDAO.setsDate(appUtils.getCurrentTimeStamp());
+            operationWappCallDAO.setfDate(appUtils.getCurrentTimeStamp());
+            operationWappCallDAO.setStatus(1);
+
+            return operationWappCallDAO;
+        }
+        return null;
+    }
+
     public OperationWappCallDBModel getApiOperationActiveWappCallHelper(List<OperationWappCallDBModel> operationWappCallDBModels) {
 
         for (OperationWappCallDBModel operationWappCallDBModel : operationWappCallDBModels) {
@@ -270,6 +314,48 @@ public class ChannelHelper {
             }
         }
         return null;
+    }
+
+    public ApiOperationWappCallWSDTO startOperationWappCallHelper(OperationWappCallDBModel operationWappCallDBModel){
+
+        if (operationWappCallDBModel.getWappCall() != null && operationWappCallDBModel.getCallState().equalsIgnoreCase(AppConstant.READY_CALL)){
+
+            operationWappCallDBModel.getWappCall().setsDate(appUtils.getCurrentTimeStamp());
+            operationWappCallDBModel.setCallState(AppConstant.ACTIVE_CALL);
+            operationWappCallDBModel.setuDate(appUtils.getCurrentTimeStamp());
+
+            return new ApiOperationWappCallWSDTO(operationWappCallRepository.save(operationWappCallDBModel));
+        }
+        return null;
+    }
+
+    public ApiOperationWappCallWSDTO hangUpOperationWappCallHelper(OperationWappCallDBModel operationWappCallDBModel){
+
+        if (operationWappCallDBModel.getWappCall() != null && operationWappCallDBModel.getCallState().equalsIgnoreCase(AppConstant.ACTIVE_CALL)){
+
+            operationWappCallDBModel.getWappCall().setfDate(appUtils.getCurrentTimeStamp());
+            operationWappCallDBModel.setCallState(AppConstant.FINISHED_CALL);
+            operationWappCallDBModel.setuDate(appUtils.getCurrentTimeStamp());
+
+            return new ApiOperationWappCallWSDTO(operationWappCallRepository.save(operationWappCallDBModel));
+        }
+        return null;
+    }
+
+    public ApiOperationWappCallWSDTO cancelOperationWappCallHelper(OperationWappCallDBModel operationWappCallDBModel){
+
+        if (operationWappCallDBModel.getWappCall() != null ){
+            if (operationWappCallDBModel.getCallState().equalsIgnoreCase(AppConstant.READY_CALL)){
+                operationWappCallRepository.delete(operationWappCallDBModel);
+            }
+            if (operationWappCallDBModel.getCallState().equalsIgnoreCase(AppConstant.ACTIVE_CALL)){
+                operationWappCallDBModel.getWappCall().setfDate(appUtils.getCurrentTimeStamp());
+                operationWappCallDBModel.setCallState(AppConstant.FINISHED_CALL);
+                operationWappCallDBModel.setuDate(appUtils.getCurrentTimeStamp());
+                operationWappCallDBModel = operationWappCallRepository.save(operationWappCallDBModel);
+            }
+        }
+        return new ApiOperationWappCallWSDTO(operationWappCallDBModel);
     }
 
 
