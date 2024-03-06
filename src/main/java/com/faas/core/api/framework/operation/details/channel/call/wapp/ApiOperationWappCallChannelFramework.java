@@ -82,6 +82,11 @@ public class ApiOperationWappCallChannelFramework {
         return null;
     }
 
+    public ApiOperationWappCallWSDTO apiCancelOperationWappCallService(long agentId,String operationId,String callId) {
+
+        return null;
+    }
+
     public ApiOperationWappCallWSDTO apiHangUpOperationWappCallService(long agentId,String operationId,String callId) {
 
         return null;

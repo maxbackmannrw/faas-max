@@ -87,6 +87,19 @@ public class ApiOperationWappCallChannelController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+    @RequestMapping(value = ApiRoute.API_CANCEL_OPERATION_WAPP_CALL, method = RequestMethod.POST)
+    public ResponseEntity<?> apiCancelOperationWappCall(@RequestParam long agentId,
+                                                        @RequestParam String operationId,
+                                                        @RequestParam String callId) {
+
+        ApiOperationWappCallWSModel response = apiOperationWappCallChannelMiddleware.apiCancelOperationWappCall(agentId,operationId,callId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
     @RequestMapping(value = ApiRoute.API_HANGUP_OPERATION_WAPP_CALL, method = RequestMethod.POST)
     public ResponseEntity<?> apiHangUpOperationWappCall(@RequestParam long agentId,
                                                         @RequestParam String operationId,

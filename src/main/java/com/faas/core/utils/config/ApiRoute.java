@@ -123,10 +123,12 @@ public class ApiRoute {
     public static final String API_GET_OPERATION_WAPP_CALL = "apigetoperationwappcall";
     public static final String API_CREATE_OPERATION_WAPP_CALL = "apicreateoperationwappcall";
     public static final String API_START_OPERATION_WAPP_CALL = "apistartoperationwappcall";
+    public static final String API_CANCEL_OPERATION_WAPP_CALL = "apicanceloperationwappcall";
     public static final String API_HANGUP_OPERATION_WAPP_CALL = "apihangupoperationwappcall";
     public static final String API_UPDATE_OPERATION_WAPP_CALL = "apiupdateoperationwappcall";
     public static final String API_REMOVE_OPERATION_WAPP_CALL = "apiremoveoperationwappcall";
     public static final String API_GET_OPERATION_WAPP_CALL_ACCOUNT = "apigetoperationwappcallaccount";
+
 
 
     public static final String API_GET_OPERATION_MESSAGE_CHANNEL = "apigetoperationmessagechannel";

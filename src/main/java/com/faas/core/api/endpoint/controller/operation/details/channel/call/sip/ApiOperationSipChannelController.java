@@ -141,7 +141,6 @@ public class ApiOperationSipChannelController {
     }
 
 
-
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_SIP_ACCOUNT, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationSipAccount(@RequestParam long agentId,
                                                        @RequestParam String operationId) {
