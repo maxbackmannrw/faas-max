@@ -82,7 +82,7 @@ public class ApiOperationSipChannelFramework {
 
     public ApiOperationSipCallWSDTO apiStartOperationSipCallService(long agentId,String operationId,String callId) {
 
-        List<OperationSipCallDBModel> operationSipCallDBModels = operationSipCallRepository.findByIdAndOperationId(callId,operationId);
+        List<OperationSipCallDBModel> operationSipCallDBModels = operationSipCallRepository.findByIdAndOperationIdAndAgentId(callId,operationId,agentId);
         if (!operationSipCallDBModels.isEmpty()) {
             return channelHelper.startOperationSipCallHelper(operationSipCallDBModels.get(0));
         }
@@ -91,7 +91,7 @@ public class ApiOperationSipChannelFramework {
 
     public ApiOperationSipCallWSDTO apiCancelOperationSipCallService(long agentId,String operationId,String callId) {
 
-        List<OperationSipCallDBModel> operationSipCallDBModels = operationSipCallRepository.findByIdAndOperationId(callId,operationId);
+        List<OperationSipCallDBModel> operationSipCallDBModels = operationSipCallRepository.findByIdAndOperationIdAndAgentId(callId,operationId,agentId);
         if (!operationSipCallDBModels.isEmpty()) {
             return channelHelper.cancelOperationSipCallHelper(operationSipCallDBModels.get(0));
         }
@@ -100,7 +100,7 @@ public class ApiOperationSipChannelFramework {
 
     public ApiOperationSipCallWSDTO apiHangupOperationSipCallService(long agentId,String operationId,String callId) {
 
-        List<OperationSipCallDBModel> operationSipCallDBModels = operationSipCallRepository.findByIdAndOperationId(callId,operationId);
+        List<OperationSipCallDBModel> operationSipCallDBModels = operationSipCallRepository.findByIdAndOperationIdAndAgentId(callId,operationId,agentId);
         if (!operationSipCallDBModels.isEmpty()) {
             return channelHelper.hangUpOperationSipCallHelper(operationSipCallDBModels.get(0));
         }
