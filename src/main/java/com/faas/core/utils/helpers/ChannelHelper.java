@@ -159,7 +159,9 @@ public class ChannelHelper {
 
         ClientPhoneDAO clientPhoneDAO = fetchClientPhoneDAO(operationDBModel.getClientId(),numberId);
         List<UserDetailsDBModel> agentDetails = userDetailsRepository.findByUserId(operationDBModel.getAgentId());
-        if (clientPhoneDAO != null && !agentDetails.isEmpty() && agentDetails.get(0).getSipChannel() != null){
+        List<ProcessSipChannelDBModel> operationSipChannels = processSipChannelRepository.findByProcessIdAndChannelState(operationDBModel.getProcessId(),AppConstant.ACTIVE_STATE);
+
+        if (clientPhoneDAO != null && !agentDetails.isEmpty() && agentDetails.get(0).getSipChannel() != null ){
 
             OperationSipCallDAO operationSipCallDAO = new OperationSipCallDAO();
             operationSipCallDAO.setNumberId(numberId);
@@ -167,6 +169,13 @@ public class ChannelHelper {
             operationSipCallDAO.setPhoneCarrier(clientPhoneDAO.getPhoneCarrier());
             operationSipCallDAO.setPhoneType(clientPhoneDAO.getPhoneType());
             operationSipCallDAO.setAccountId(agentDetails.get(0).getSipChannel().getAccountId());
+
+            if (operationSipChannels.get(0).getCallerId() != null){
+                operationSipCallDAO.setCallerId(operationSipChannels.get(0).getCallerId());
+            }else {
+                operationSipCallDAO.setCallerId(AppConstant.NONE);
+            }
+
             operationSipCallDAO.setsDate(appUtils.getCurrentTimeStamp());
             operationSipCallDAO.setfDate(appUtils.getCurrentTimeStamp());
             operationSipCallDAO.setStatus(1);
