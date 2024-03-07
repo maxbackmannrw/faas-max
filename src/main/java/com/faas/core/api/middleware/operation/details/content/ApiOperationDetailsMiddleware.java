@@ -43,7 +43,6 @@ public class ApiOperationDetailsMiddleware {
         return response;
     }
 
-
     public ApiOperationWSModel apiStartOperation(long agentId,String operationId) {
 
         ApiOperationWSModel response = new ApiOperationWSModel();
@@ -64,7 +63,6 @@ public class ApiOperationDetailsMiddleware {
 
         return response;
     }
-
 
     public ApiOperationWSModel apiFinishOperation(long agentId,String operationId,String operationState) {
 
@@ -87,7 +85,6 @@ public class ApiOperationDetailsMiddleware {
         return response;
     }
 
-
     public ApiOperationWSModel apiGetSwichtableOperations(long agentId,String operationId) {
 
         ApiOperationWSModel response = new ApiOperationWSModel();
@@ -106,7 +103,6 @@ public class ApiOperationDetailsMiddleware {
 
         return response;
     }
-
 
     public ApiOperationWSModel apiSwitchOperation(long agentId,String operationId,String selectedId) {
 
@@ -129,7 +125,6 @@ public class ApiOperationDetailsMiddleware {
         return response;
     }
 
-
     public ApiCampaignDetailsWSModel apiGetOperationCampaign(long agentId, String operationId) {
 
         ApiCampaignDetailsWSModel response = new ApiCampaignDetailsWSModel();
@@ -148,6 +143,7 @@ public class ApiOperationDetailsMiddleware {
 
         return response;
     }
+
 
 
 }

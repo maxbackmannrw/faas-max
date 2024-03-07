@@ -54,7 +54,6 @@ public class ApiOperationDetailsFramework {
         return null;
     }
 
-
     public ApiOperationWSDTO apiStartOperationService(long agentId,String operationId) {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
@@ -83,7 +82,6 @@ public class ApiOperationDetailsFramework {
         }
         return null;
     }
-
 
     public ApiOperationWSDTO apiFinishOperationService(long agentId,String operationId,String operationState) {
 
@@ -129,7 +127,6 @@ public class ApiOperationDetailsFramework {
         return null;
     }
 
-
     public List<ApiOperationWSDTO> apiGetSwichtableOperationsService(long agentId,String operationId) {
 
         List<ApiOperationWSDTO> operationWSDTOS = new ArrayList<>();
@@ -142,18 +139,21 @@ public class ApiOperationDetailsFramework {
         return operationWSDTOS;
     }
 
-
     public ApiOperationWSDTO apiSwitchOperationService(long agentId,String operationId,String selectedId) {
 
+        List<OperationDBModel> currentOperations = operationRepository.findByIdAndAgentId(operationId,agentId);
+        List<OperationDBModel> selectedOperations = operationRepository.findByIdAndAgentId(selectedId,agentId);
+        if (!currentOperations.isEmpty() && !selectedOperations.isEmpty() && selectedOperations.get(0).getOperationState().equalsIgnoreCase(AppConstant.ACTIVE_STATE)){
+            return operationHelper.getApiOperationWSDTO(selectedOperations.get(0));
+        }
         return null;
     }
-
 
     public ApiCampaignDetailsWSDTO apiGetOperationCampaignService(long agentId, String operationId) {
 
-
         return null;
     }
+
 
 
 }

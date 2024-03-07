@@ -36,7 +36,6 @@ public class ApiOperationDetailsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = ApiRoute.API_START_OPERATION, method = RequestMethod.POST)
     public ResponseEntity<?> apiStartOperation(@RequestParam long agentId,
                                                @RequestParam String operationId) {
@@ -86,7 +85,6 @@ public class ApiOperationDetailsController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_CAMPAIGN, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationCampaign(@RequestParam long agentId,
