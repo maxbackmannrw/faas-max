@@ -44,19 +44,19 @@ public class ApiOperationDetailsMiddleware {
     }
 
 
-    public ApiOperationWSModel apiOperationStart(long agentId,String operationId) {
+    public ApiOperationWSModel apiStartOperation(long agentId,String operationId) {
 
         ApiOperationWSModel response = new ApiOperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ApiOperationWSDTO>operationWSDTOS = new ArrayList<>();
 
-        ApiOperationWSDTO operationWSDTO = apiOperationDetailsFramework.apiOperationStartService(agentId,operationId);
+        ApiOperationWSDTO operationWSDTO = apiOperationDetailsFramework.apiStartOperationService(agentId,operationId);
         if (operationWSDTO != null){
             operationWSDTOS.add(operationWSDTO);
         }
 
         response.setOperations(operationWSDTOS);
-        general.setOperation("apiOperationStart");
+        general.setOperation("apiStartOperation");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -66,19 +66,19 @@ public class ApiOperationDetailsMiddleware {
     }
 
 
-    public ApiOperationWSModel apiOperationFinish(long agentId,String operationId,String operationState) {
+    public ApiOperationWSModel apiFinishOperation(long agentId,String operationId,String operationState) {
 
         ApiOperationWSModel response = new ApiOperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ApiOperationWSDTO>operationWSDTOS = new ArrayList<>();
 
-        ApiOperationWSDTO operationWSDTO = apiOperationDetailsFramework.apiOperationFinishService(agentId,operationId,operationState);
+        ApiOperationWSDTO operationWSDTO = apiOperationDetailsFramework.apiFinishOperationService(agentId,operationId,operationState);
         if (operationWSDTO != null){
             operationWSDTOS.add(operationWSDTO);
         }
 
         response.setOperations(operationWSDTOS);
-        general.setOperation("apiOperationFinish");
+        general.setOperation("apiFinishOperation");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -108,19 +108,19 @@ public class ApiOperationDetailsMiddleware {
     }
 
 
-    public ApiOperationWSModel apiOperationSwitch(long agentId,String operationId,String selectedId) {
+    public ApiOperationWSModel apiSwitchOperation(long agentId,String operationId,String selectedId) {
 
         ApiOperationWSModel response = new ApiOperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ApiOperationWSDTO> operationWSDTOS = new ArrayList<>();
 
-        ApiOperationWSDTO operationWSDTO = apiOperationDetailsFramework.apiOperationSwitchService(agentId,operationId,selectedId);
+        ApiOperationWSDTO operationWSDTO = apiOperationDetailsFramework.apiSwitchOperationService(agentId,operationId,selectedId);
         if (operationWSDTO != null){
             operationWSDTOS.add(operationWSDTO);
         }
 
         response.setOperations(operationWSDTOS);
-        general.setOperation("apiOperationSwitch");
+        general.setOperation("apiSwitchOperation");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

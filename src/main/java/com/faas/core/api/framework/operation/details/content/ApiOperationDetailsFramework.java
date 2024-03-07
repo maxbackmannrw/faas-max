@@ -54,7 +54,7 @@ public class ApiOperationDetailsFramework {
     }
 
 
-    public ApiOperationWSDTO apiOperationStartService(long agentId,String operationId) {
+    public ApiOperationWSDTO apiStartOperationService(long agentId,String operationId) {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
         List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
@@ -84,7 +84,7 @@ public class ApiOperationDetailsFramework {
     }
 
 
-    public ApiOperationWSDTO apiOperationFinishService(long agentId,String operationId,String operationState) {
+    public ApiOperationWSDTO apiFinishOperationService(long agentId,String operationId,String operationState) {
 
        /* Optional<ClientDBModel> clientDBModel = clientRepository.findById(clientId);
         List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndClientIdAndAgentIdAndCampaignIdAndSessionState(sessionId, clientId, agentId, campaignId, AppConstant.ACTIVE_STATE);
@@ -136,7 +136,7 @@ public class ApiOperationDetailsFramework {
     }
 
 
-    public ApiOperationWSDTO apiOperationSwitchService(long agentId,String operationId,String selectedId) {
+    public ApiOperationWSDTO apiSwitchOperationService(long agentId,String operationId,String selectedId) {
 
         return null;
     }

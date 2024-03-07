@@ -49,10 +49,10 @@ public class ApiRoute {
 
 
     public static final String API_GET_OPERATION_DETAILS = "apigetoperationdetails";
-    public static final String API_OPERATION_START = "apioperationstart";
-    public static final String API_OPERATION_FINISH = "apioperationfinish";
+    public static final String API_START_OPERATION = "apistartoperation";
+    public static final String API_FINISH_OPERATION = "apifinishoperation";
     public static final String API_GET_SWITCHABLE_OPERATIONS = "apigetswitchableoperations";
-    public static final String API_OPERATION_SWITCH = "apioperationswitch";
+    public static final String API_SWITCH_OPERATION = "apiswitchoperation";
     public static final String API_GET_OPERATION_CAMPAIGN = "apigetoperationcampaign";
 
 
