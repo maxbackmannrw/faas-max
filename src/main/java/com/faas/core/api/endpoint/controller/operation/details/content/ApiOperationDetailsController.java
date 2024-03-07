@@ -74,7 +74,6 @@ public class ApiOperationDetailsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = ApiRoute.API_SWITCH_OPERATION, method = RequestMethod.POST)
     public ResponseEntity<?> apiSwitchOperation(@RequestParam long agentId,
                                                 @RequestParam String operationId,

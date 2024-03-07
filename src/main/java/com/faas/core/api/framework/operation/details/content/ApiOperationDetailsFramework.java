@@ -16,6 +16,7 @@ import com.faas.core.utils.helpers.OperationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -24,6 +25,9 @@ public class ApiOperationDetailsFramework {
 
     @Autowired
     OperationHelper operationHelper;
+
+    @Autowired
+    ClientRepository clientRepository;
 
     @Autowired
     SessionRepository sessionRepository;
@@ -36,9 +40,6 @@ public class ApiOperationDetailsFramework {
 
     @Autowired
     ProcessRepository processRepository;
-
-    @Autowired
-    ClientRepository clientRepository;
 
     @Autowired
     AppUtils appUtils;
@@ -131,8 +132,14 @@ public class ApiOperationDetailsFramework {
 
     public List<ApiOperationWSDTO> apiGetSwichtableOperationsService(long agentId,String operationId) {
 
-
-        return null;
+        List<ApiOperationWSDTO> operationWSDTOS = new ArrayList<>();
+        List<OperationDBModel> operationDBModels = operationRepository.findByAgentIdAndOperationState(agentId,AppConstant.ACTIVE_STATE);
+        for (OperationDBModel operationDBModel : operationDBModels) {
+            if (!operationDBModel.getId().equalsIgnoreCase(operationId)) {
+                operationWSDTOS.add(operationHelper.getApiOperationWSDTO(operationDBModel));
+            }
+        }
+        return operationWSDTOS;
     }
 
 
