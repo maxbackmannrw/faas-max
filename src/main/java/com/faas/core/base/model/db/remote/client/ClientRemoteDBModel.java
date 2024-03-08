@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
-@Document(collection = "client_remote_table")
+@Document(collection = "client_remotes_table")
 public class ClientRemoteDBModel {
 
     @Id
