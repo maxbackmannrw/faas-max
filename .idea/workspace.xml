@@ -7,9 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/remote/client/ClientRemoteDBModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/remote/client/ClientRemoteDBModel.java" afterDir="false" />
-    </list>
+    <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -823,23 +821,7 @@
       <workItem from="1709859835758" duration="71000" />
       <workItem from="1709886146411" duration="48000" />
       <workItem from="1709888623070" duration="68000" />
-      <workItem from="1709901889424" duration="7507000" />
-    </task>
-    <task id="LOCAL-00699" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1708636883388</created>
-      <option name="number" value="00699" />
-      <option name="presentableId" value="LOCAL-00699" />
-      <option name="project" value="LOCAL" />
-      <updated>1708636883388</updated>
-    </task>
-    <task id="LOCAL-00700" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1708636892757</created>
-      <option name="number" value="00700" />
-      <option name="presentableId" value="LOCAL-00700" />
-      <option name="project" value="LOCAL" />
-      <updated>1708636892757</updated>
+      <workItem from="1709901889424" duration="7702000" />
     </task>
     <task id="LOCAL-00701" summary="almost finish">
       <option name="closed" value="true" />
@@ -1217,7 +1199,23 @@
       <option name="project" value="LOCAL" />
       <updated>1709919481407</updated>
     </task>
-    <option name="localTasksCounter" value="748" />
+    <task id="LOCAL-00748" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1709919786285</created>
+      <option name="number" value="00748" />
+      <option name="presentableId" value="LOCAL-00748" />
+      <option name="project" value="LOCAL" />
+      <updated>1709919786286</updated>
+    </task>
+    <task id="LOCAL-00749" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1709919789755</created>
+      <option name="number" value="00749" />
+      <option name="presentableId" value="LOCAL-00749" />
+      <option name="project" value="LOCAL" />
+      <updated>1709919789755</updated>
+    </task>
+    <option name="localTasksCounter" value="750" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
