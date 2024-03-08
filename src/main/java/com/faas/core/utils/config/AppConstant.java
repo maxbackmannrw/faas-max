@@ -80,9 +80,9 @@ public class AppConstant {
     public static final String ALL_STATES = "ALL_STATES";
 
 
-    public static final String CONN_STATE_NEW = "CONN_STATE_NEW";
-    public static final String CONN_STATE_READY = "CONN_STATE_READY";
-    public static final String CONN_STATE_FAILED = "CONN_STATE_FAILED";
+    public static final String NEW_REMOTE = "NEW_REMOTE";
+    public static final String READY_REMOTE = "READY_REMOTE";
+    public static final String FAILED_REMOTE = "FAILED_REMOTE";
 
 
     public static final String FLASH_MESSAGE = "FLASH_MESSAGE";

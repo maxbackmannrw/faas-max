@@ -4,7 +4,7 @@ import com.faas.core.base.model.db.process.content.dao.ProcessRemoteDAO;
 import com.faas.core.base.model.db.remote.content.RemoteDBModel;
 import com.faas.core.base.model.db.remote.content.dao.RemoteDataDAO;
 import com.faas.core.base.repo.client.content.ClientRepository;
-import com.faas.core.base.repo.remote.app.RemoteAppRepository;
+import com.faas.core.base.repo.remote.client.ClientRemoteRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ public class RemoteHelper {
     ClientRepository clientRepository;
 
     @Autowired
-    RemoteAppRepository remoteAppRepository;
+    ClientRemoteRepository clientRemoteRepository;
 
     @Autowired
     SessionRepository sessionRepository;
