@@ -60,6 +60,7 @@ public class ClientRemoteFramework {
             for (int i=0;i<clientRemoteModelPage.getContent().size();i++){
                 clientRemoteWSDTOS.add(clientRemoteHelper.createClientRemoteWSDTO(clientRemoteModelPage.getContent().get(i)));
             }
+            clientRemoteListWSDTO.setClientRemotes(clientRemoteWSDTOS);
             clientRemoteListWSDTO.setPagination(clientRemoteHelper.createClientRemotePagination(clientRemoteModelPage));
 
             return clientRemoteListWSDTO;

@@ -7,7 +7,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish" />
+    <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/remote/client/ClientRemoteFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/remote/client/ClientRemoteFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/remote/client/ClientRemoteDBModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/remote/client/ClientRemoteDBModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/helpers/ClientRemoteHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/helpers/ClientRemoteHelper.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -128,11 +132,11 @@
       <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/scenario/content" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.faas.core.base.model.db.remote.client.dao" />
       <recent name="com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto" />
       <recent name="com.faas.core.api.model.ws.operation.details.channel.call.wapp" />
       <recent name="com.faas.core.api.model.ws.operation.details.channel.call.sip.dto" />
       <recent name="com.faas.core.api.model.ws.operation.details.channel.call.sip" />
-      <recent name="com.faas.core.base.model.db.operation.details.channel.dao" />
     </key>
   </component>
   <component name="RunManager">
@@ -821,15 +825,7 @@
       <workItem from="1709859835758" duration="71000" />
       <workItem from="1709886146411" duration="48000" />
       <workItem from="1709888623070" duration="68000" />
-      <workItem from="1709901889424" duration="5415000" />
-    </task>
-    <task id="LOCAL-00696" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1708549687280</created>
-      <option name="number" value="00696" />
-      <option name="presentableId" value="LOCAL-00696" />
-      <option name="project" value="LOCAL" />
-      <updated>1708549687280</updated>
+      <workItem from="1709901889424" duration="6394000" />
     </task>
     <task id="LOCAL-00697" summary="almost finish">
       <option name="closed" value="true" />
@@ -1215,7 +1211,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709915444334</updated>
     </task>
-    <option name="localTasksCounter" value="745" />
+    <task id="LOCAL-00745" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1709915809474</created>
+      <option name="number" value="00745" />
+      <option name="presentableId" value="LOCAL-00745" />
+      <option name="project" value="LOCAL" />
+      <updated>1709915809475</updated>
+    </task>
+    <option name="localTasksCounter" value="746" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

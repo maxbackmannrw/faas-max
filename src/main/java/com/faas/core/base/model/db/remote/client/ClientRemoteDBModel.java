@@ -17,8 +17,12 @@ public class ClientRemoteDBModel {
     private String operationId;
     private String campaignId;
     private String campaign;
+    private String campaignType;
+    private String campaignCategory;
     private String processId;
     private String process;
+    private String processType;
+    private String processCategory;
     private String remoteId;
     private String remote;
     private String remoteDesc;
@@ -27,7 +31,7 @@ public class ClientRemoteDBModel {
     private List<RemoteUrlDAO>remoteUrls;
     private long remoteTypeId;
     private String remoteType;
-    private String baseType;
+    private String remoteBaseType;
     private String remoteState;
     private long uDate;
     private long cDate;
@@ -36,15 +40,19 @@ public class ClientRemoteDBModel {
     public ClientRemoteDBModel() {
     }
 
-    public ClientRemoteDBModel(String id, long clientId, long sessionId, String operationId, String campaignId, String campaign, String processId, String process, String remoteId, String remote, String remoteDesc, String remoteVersion, List<RemoteDataDAO> remoteDatas, List<RemoteUrlDAO> remoteUrls, long remoteTypeId, String remoteType, String baseType, String remoteState, long uDate, long cDate, int status) {
+    public ClientRemoteDBModel(String id, long clientId, long sessionId, String operationId, String campaignId, String campaign, String campaignType, String campaignCategory, String processId, String process, String processType, String processCategory, String remoteId, String remote, String remoteDesc, String remoteVersion, List<RemoteDataDAO> remoteDatas, List<RemoteUrlDAO> remoteUrls, long remoteTypeId, String remoteType, String remoteBaseType, String remoteState, long uDate, long cDate, int status) {
         this.id = id;
         this.clientId = clientId;
         this.sessionId = sessionId;
         this.operationId = operationId;
         this.campaignId = campaignId;
         this.campaign = campaign;
+        this.campaignType = campaignType;
+        this.campaignCategory = campaignCategory;
         this.processId = processId;
         this.process = process;
+        this.processType = processType;
+        this.processCategory = processCategory;
         this.remoteId = remoteId;
         this.remote = remote;
         this.remoteDesc = remoteDesc;
@@ -53,7 +61,7 @@ public class ClientRemoteDBModel {
         this.remoteUrls = remoteUrls;
         this.remoteTypeId = remoteTypeId;
         this.remoteType = remoteType;
-        this.baseType = baseType;
+        this.remoteBaseType = remoteBaseType;
         this.remoteState = remoteState;
         this.uDate = uDate;
         this.cDate = cDate;
@@ -108,6 +116,22 @@ public class ClientRemoteDBModel {
         this.campaign = campaign;
     }
 
+    public String getCampaignType() {
+        return campaignType;
+    }
+
+    public void setCampaignType(String campaignType) {
+        this.campaignType = campaignType;
+    }
+
+    public String getCampaignCategory() {
+        return campaignCategory;
+    }
+
+    public void setCampaignCategory(String campaignCategory) {
+        this.campaignCategory = campaignCategory;
+    }
+
     public String getProcessId() {
         return processId;
     }
@@ -122,6 +146,22 @@ public class ClientRemoteDBModel {
 
     public void setProcess(String process) {
         this.process = process;
+    }
+
+    public String getProcessType() {
+        return processType;
+    }
+
+    public void setProcessType(String processType) {
+        this.processType = processType;
+    }
+
+    public String getProcessCategory() {
+        return processCategory;
+    }
+
+    public void setProcessCategory(String processCategory) {
+        this.processCategory = processCategory;
     }
 
     public String getRemoteId() {
@@ -188,12 +228,12 @@ public class ClientRemoteDBModel {
         this.remoteType = remoteType;
     }
 
-    public String getBaseType() {
-        return baseType;
+    public String getRemoteBaseType() {
+        return remoteBaseType;
     }
 
-    public void setBaseType(String baseType) {
-        this.baseType = baseType;
+    public void setRemoteBaseType(String remoteBaseType) {
+        this.remoteBaseType = remoteBaseType;
     }
 
     public String getRemoteState() {

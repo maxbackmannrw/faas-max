@@ -42,9 +42,8 @@ public class ClientRemoteHelper {
             clientRemoteWSDTO.setClientRemote(clientRemoteDBModel);
             clientRemoteWSDTO.setClient(clientDBModel.get());
             Optional<OperationDBModel> operationDBModel = operationRepository.findById(clientRemoteDBModel.getOperationId());
-            if (operationDBModel.isPresent()){
-                clientRemoteWSDTO.setOperation(operationDBModel.get());
-            }
+            operationDBModel.ifPresent(clientRemoteWSDTO::setOperation);
+
             return clientRemoteWSDTO;
         }
         return null;
@@ -59,8 +58,12 @@ public class ClientRemoteHelper {
         clientRemoteDBModel.setOperationId(operationDBModel.getId());
         clientRemoteDBModel.setCampaignId(sessionDBModel.getCampaignId());
         clientRemoteDBModel.setCampaign(sessionDBModel.getCampaign());
+        clientRemoteDBModel.setCampaignType(sessionDBModel.getCampaignType());
+        clientRemoteDBModel.setCampaignCategory(sessionDBModel.getCampaignCategory());
         clientRemoteDBModel.setProcessId(sessionDBModel.getProcessId());
         clientRemoteDBModel.setProcess(sessionDBModel.getProcess());
+        clientRemoteDBModel.setProcessType(sessionDBModel.getProcessType());
+        clientRemoteDBModel.setProcessCategory(sessionDBModel.getProcessCategory());
         clientRemoteDBModel.setRemoteId(remoteDBModel.getId());
         clientRemoteDBModel.setRemote(remoteDBModel.getRemote());
         clientRemoteDBModel.setRemoteDesc(remoteDBModel.getRemoteDesc());
@@ -69,7 +72,7 @@ public class ClientRemoteHelper {
         clientRemoteDBModel.setRemoteUrls(clientRemoteDBModel.getRemoteUrls());
         clientRemoteDBModel.setRemoteTypeId(remoteDBModel.getTypeId());
         clientRemoteDBModel.setRemoteType(remoteDBModel.getRemoteType());
-        clientRemoteDBModel.setBaseType(remoteDBModel.getBaseType());
+        clientRemoteDBModel.setRemoteBaseType(remoteDBModel.getBaseType());
         clientRemoteDBModel.setRemoteState(AppConstant.NEW_REMOTE);
         clientRemoteDBModel.setuDate(appUtils.getCurrentTimeStamp());
         clientRemoteDBModel.setcDate(appUtils.getCurrentTimeStamp());
