@@ -69,10 +69,10 @@ public class ClientRemoteHelper {
         clientRemoteDBModel.setRemoteDesc(remoteDBModel.getRemoteDesc());
         clientRemoteDBModel.setRemoteVersion(remoteDBModel.getRemoteVersion());
         clientRemoteDBModel.setRemoteDatas(remoteDBModel.getRemoteDatas());
-        clientRemoteDBModel.setRemoteUrls(clientRemoteDBModel.getRemoteUrls());
+        clientRemoteDBModel.setRemoteUrls(remoteDBModel.getRemoteUrls());
         clientRemoteDBModel.setRemoteTypeId(remoteDBModel.getTypeId());
         clientRemoteDBModel.setRemoteType(remoteDBModel.getRemoteType());
-        clientRemoteDBModel.setRemoteBaseType(remoteDBModel.getBaseType());
+        clientRemoteDBModel.setBaseType(remoteDBModel.getBaseType());
         clientRemoteDBModel.setRemoteState(AppConstant.NEW_REMOTE);
         clientRemoteDBModel.setuDate(appUtils.getCurrentTimeStamp());
         clientRemoteDBModel.setcDate(appUtils.getCurrentTimeStamp());

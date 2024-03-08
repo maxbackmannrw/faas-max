@@ -31,7 +31,7 @@ public class ClientRemoteDBModel {
     private List<RemoteUrlDAO>remoteUrls;
     private long remoteTypeId;
     private String remoteType;
-    private String remoteBaseType;
+    private String baseType;
     private String remoteState;
     private long uDate;
     private long cDate;
@@ -40,7 +40,7 @@ public class ClientRemoteDBModel {
     public ClientRemoteDBModel() {
     }
 
-    public ClientRemoteDBModel(String id, long clientId, long sessionId, String operationId, String campaignId, String campaign, String campaignType, String campaignCategory, String processId, String process, String processType, String processCategory, String remoteId, String remote, String remoteDesc, String remoteVersion, List<RemoteDataDAO> remoteDatas, List<RemoteUrlDAO> remoteUrls, long remoteTypeId, String remoteType, String remoteBaseType, String remoteState, long uDate, long cDate, int status) {
+    public ClientRemoteDBModel(String id, long clientId, long sessionId, String operationId, String campaignId, String campaign, String campaignType, String campaignCategory, String processId, String process, String processType, String processCategory, String remoteId, String remote, String remoteDesc, String remoteVersion, List<RemoteDataDAO> remoteDatas, List<RemoteUrlDAO> remoteUrls, long remoteTypeId, String remoteType, String baseType, String remoteState, long uDate, long cDate, int status) {
         this.id = id;
         this.clientId = clientId;
         this.sessionId = sessionId;
@@ -61,7 +61,7 @@ public class ClientRemoteDBModel {
         this.remoteUrls = remoteUrls;
         this.remoteTypeId = remoteTypeId;
         this.remoteType = remoteType;
-        this.remoteBaseType = remoteBaseType;
+        this.baseType = baseType;
         this.remoteState = remoteState;
         this.uDate = uDate;
         this.cDate = cDate;
@@ -228,12 +228,12 @@ public class ClientRemoteDBModel {
         this.remoteType = remoteType;
     }
 
-    public String getRemoteBaseType() {
-        return remoteBaseType;
+    public String getBaseType() {
+        return baseType;
     }
 
-    public void setRemoteBaseType(String remoteBaseType) {
-        this.remoteBaseType = remoteBaseType;
+    public void setBaseType(String baseType) {
+        this.baseType = baseType;
     }
 
     public String getRemoteState() {
