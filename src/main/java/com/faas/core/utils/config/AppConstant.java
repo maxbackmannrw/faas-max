@@ -85,6 +85,13 @@ public class AppConstant {
     public static final String FAILED_REMOTE = "FAILED_REMOTE";
 
 
+    public static final String OPERATION_SUCCESS = "OPERATION_SUCCESS";
+    public static final String OPERATION_REJECTED = "OPERATION_REJECTED";
+    public static final String OPERATION_NOT_RESPONDING = "OPERATION_NOT_RESPONDING";
+    public static final String OPERATION_NOT_VALID = "OPERATION_NOT_VALID";
+
+
+
     public static final String FLASH_MESSAGE = "FLASH_MESSAGE";
     public static final String TEXT_MESSAGE = "TEXT_MESSAGE";
     public static final String IMAGE_MESSAGE = "IMAGE_MESSAGE";

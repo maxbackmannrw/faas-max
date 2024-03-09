@@ -64,13 +64,13 @@ public class ApiOperationDetailsMiddleware {
         return response;
     }
 
-    public ApiOperationWSModel apiFinishOperation(long agentId,String operationId,String operationState) {
+    public ApiOperationWSModel apiFinishOperation(long agentId,String operationId,String operationEndResult) {
 
         ApiOperationWSModel response = new ApiOperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ApiOperationWSDTO>operationWSDTOS = new ArrayList<>();
 
-        ApiOperationWSDTO operationWSDTO = apiOperationDetailsFramework.apiFinishOperationService(agentId,operationId,operationState);
+        ApiOperationWSDTO operationWSDTO = apiOperationDetailsFramework.apiFinishOperationService(agentId,operationId,operationEndResult);
         if (operationWSDTO != null){
             operationWSDTOS.add(operationWSDTO);
         }

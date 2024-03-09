@@ -83,7 +83,7 @@ public class ApiOperationDetailsFramework {
         return null;
     }
 
-    public ApiOperationWSDTO apiFinishOperationService(long agentId,String operationId,String operationState) {
+    public ApiOperationWSDTO apiFinishOperationService(long agentId,String operationId,String operationEndResult) {
 
        /* Optional<ClientDBModel> clientDBModel = clientRepository.findById(clientId);
         List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndClientIdAndAgentIdAndCampaignIdAndSessionState(sessionId, clientId, agentId, campaignId, AppConstant.ACTIVE_STATE);

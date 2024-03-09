@@ -9,11 +9,11 @@
   <component name="ChangeListManager">
     <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/details/remote/ApiOperationRemoteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/details/remote/ApiOperationClientRemoteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/remote/ApiOperationRemoteFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/remote/ApiOperationClientRemoteFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/details/remote/ApiOperationRemoteMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/details/remote/ApiOperationClientRemoteMiddleware.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/details/remote/dto/ApiOperationClientRemoteWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/details/remote/dto/ApiOperationClientRemoteWSDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/repo/remote/client/ClientRemoteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/repo/remote/client/ClientRemoteRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/details/content/ApiOperationDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/details/content/ApiOperationDetailsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/content/ApiOperationDetailsFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/content/ApiOperationDetailsFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/details/content/ApiOperationDetailsMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/details/content/ApiOperationDetailsMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/config/ApiRoute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/config/ApiRoute.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/config/AppConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/config/AppConstant.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -833,15 +833,8 @@
       <workItem from="1709936061316" duration="391000" />
       <workItem from="1709943356877" duration="954000" />
       <workItem from="1709973079729" duration="1361000" />
-      <workItem from="1709990422162" duration="1267000" />
-    </task>
-    <task id="LOCAL-00704" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1708702188870</created>
-      <option name="number" value="00704" />
-      <option name="presentableId" value="LOCAL-00704" />
-      <option name="project" value="LOCAL" />
-      <updated>1708702188871</updated>
+      <workItem from="1709990422162" duration="1673000" />
+      <workItem from="1710001292641" duration="753000" />
     </task>
     <task id="LOCAL-00705" summary="almost finish">
       <option name="closed" value="true" />
@@ -1227,7 +1220,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709975388171</updated>
     </task>
-    <option name="localTasksCounter" value="753" />
+    <task id="LOCAL-00753" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1709991958457</created>
+      <option name="number" value="00753" />
+      <option name="presentableId" value="LOCAL-00753" />
+      <option name="project" value="LOCAL" />
+      <updated>1709991958457</updated>
+    </task>
+    <option name="localTasksCounter" value="754" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
