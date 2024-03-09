@@ -4,7 +4,7 @@ import com.faas.core.api.framework.client.details.ApiClientDetailsFramework;
 import com.faas.core.api.model.ws.client.details.ApiClientDetailsWSModel;
 import com.faas.core.api.model.ws.client.details.ApiClientNoteWSModel;
 import com.faas.core.api.model.ws.client.details.ApiClientOSINTWSModel;
-import com.faas.core.api.model.ws.client.details.ApiClientRemoteAppWSModel;
+import com.faas.core.api.model.ws.client.details.ApiClientRemoteWSModel;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -110,13 +110,13 @@ public class ApiClientDetailsMiddleware {
     }
 
 
-    public ApiClientRemoteAppWSModel apiGetClientRemoteApps(long agentId, long clientId) {
+    public ApiClientRemoteWSModel apiGetClientRemotes(long agentId, long clientId) {
 
-        ApiClientRemoteAppWSModel response = new ApiClientRemoteAppWSModel();
+        ApiClientRemoteWSModel response = new ApiClientRemoteWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
 
-        general.setOperation("apiGetClientRemoteApps");
+        general.setOperation("apiGetClientRemotes");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -125,13 +125,13 @@ public class ApiClientDetailsMiddleware {
         return response;
     }
 
-    public ApiClientRemoteAppWSModel apiGetClientRemoteApp(long agentId, long clientId) {
+    public ApiClientRemoteWSModel apiGetClientRemote(long agentId, long clientId, String clientRemoteId) {
 
-        ApiClientRemoteAppWSModel response = new ApiClientRemoteAppWSModel();
+        ApiClientRemoteWSModel response = new ApiClientRemoteWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
 
-        general.setOperation("apiGetClientRemoteApp");
+        general.setOperation("apiGetClientRemote");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -139,6 +139,7 @@ public class ApiClientDetailsMiddleware {
 
         return response;
     }
+
 
 
     public ApiClientOSINTWSModel apiGetClientOSINTs(long agentId, long clientId) {

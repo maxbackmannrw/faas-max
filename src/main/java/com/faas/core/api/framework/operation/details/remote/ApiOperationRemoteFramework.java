@@ -1,6 +1,6 @@
 package com.faas.core.api.framework.operation.details.remote;
 
-import com.faas.core.api.model.ws.operation.details.remoteapp.dto.ApiOperationRemoteAppWSDTO;
+import com.faas.core.api.model.ws.operation.details.remote.dto.ApiOperationClientRemoteWSDTO;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,13 +19,13 @@ public class ApiOperationRemoteFramework {
     AppUtils appUtils;
 
 
-    public List<ApiOperationRemoteAppWSDTO> apiGetOperationRemoteAppsService(long agentId, long sessionId, long clientId){
+    public List<ApiOperationClientRemoteWSDTO> apiGetOperationClientRemotesService(long agentId, long sessionId, long clientId){
 
 
         return null;
     }
 
-    public ApiOperationRemoteAppWSDTO apiGetOperationRemoteAppService(long agentId, long sessionId,long clientId){
+    public ApiOperationClientRemoteWSDTO apiGetOperationClientRemoteService(long agentId, long sessionId, long clientId){
 
 
         return null;

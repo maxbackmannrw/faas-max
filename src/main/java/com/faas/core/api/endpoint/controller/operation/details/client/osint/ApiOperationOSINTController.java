@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
 @Controller
 @RequestMapping(value = AppConstant.API_VERSION + "/api/operation/details/client/osint/")
 public class ApiOperationOSINTController {
@@ -22,11 +21,11 @@ public class ApiOperationOSINTController {
     ApiOperationOSINTMiddleware apiOperationOSINTMiddleware;
 
 
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION_OS_INTS, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperationOSINTs(@RequestParam long agentId,
-                                                   @RequestParam long clientId) {
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_CLIENT_OS_INTS, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationClientOSINTs(@RequestParam long agentId,
+                                                         @RequestParam long clientId) {
 
-        ApiOperationOSINTWSModel response = apiOperationOSINTMiddleware.apiGetOperationOSINTs(agentId,clientId);
+        ApiOperationOSINTWSModel response = apiOperationOSINTMiddleware.apiGetOperationClientOSINTs(agentId,clientId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -34,11 +33,11 @@ public class ApiOperationOSINTController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION_OS_INT, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperationOSINT(@RequestParam long agentId,
-                                                  @RequestParam long clientId) {
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_CLIENT_OS_INT, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationClientOSINT(@RequestParam long agentId,
+                                                        @RequestParam long clientId) {
 
-        ApiOperationOSINTWSModel response = apiOperationOSINTMiddleware.apiGetOperationOSINT(agentId,clientId);
+        ApiOperationOSINTWSModel response = apiOperationOSINTMiddleware.apiGetOperationClientOSINT(agentId,clientId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

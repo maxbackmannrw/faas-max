@@ -20,17 +20,17 @@ public class ApiOperationOSINTMiddleware {
 
 
 
-    public ApiOperationOSINTWSModel apiGetOperationOSINTs(long agentId, long clientId) {
+    public ApiOperationOSINTWSModel apiGetOperationClientOSINTs(long agentId, long clientId) {
 
         ApiOperationOSINTWSModel response = new ApiOperationOSINTWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ApiOperationOSINTWSDTO> operationOSINTWSDTOS = apiOperationOSINTFramework.apiGetOperationOSINTsService(agentId,clientId);
+        List<ApiOperationOSINTWSDTO> operationOSINTWSDTOS = apiOperationOSINTFramework.apiGetOperationClientOSINTsService(agentId,clientId);
         if (operationOSINTWSDTOS != null){
             response.setOperationOSINTs(operationOSINTWSDTOS);
         }
 
-        general.setOperation("apiGetOperationOSINTs");
+        general.setOperation("apiGetOperationClientOSINTs");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -39,19 +39,19 @@ public class ApiOperationOSINTMiddleware {
         return response;
     }
 
-    public ApiOperationOSINTWSModel apiGetOperationOSINT(long agentId, long clientId) {
+    public ApiOperationOSINTWSModel apiGetOperationClientOSINT(long agentId, long clientId) {
 
         ApiOperationOSINTWSModel response = new ApiOperationOSINTWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ApiOperationOSINTWSDTO> operationOSINTWSDTOS = new ArrayList<>();
 
-        ApiOperationOSINTWSDTO operationOSINTWSDTO = apiOperationOSINTFramework.apiGetOperationOSINTService(agentId,clientId);
+        ApiOperationOSINTWSDTO operationOSINTWSDTO = apiOperationOSINTFramework.apiGetOperationClientOSINTService(agentId,clientId);
         if (operationOSINTWSDTO != null){
             operationOSINTWSDTOS.add(operationOSINTWSDTO);
         }
 
         response.setOperationOSINTs(operationOSINTWSDTOS);
-        general.setOperation("apiGetOperationOSINT");
+        general.setOperation("apiGetOperationClientOSINT");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

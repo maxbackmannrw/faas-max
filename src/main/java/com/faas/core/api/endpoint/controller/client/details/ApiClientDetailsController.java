@@ -4,7 +4,7 @@ import com.faas.core.api.middleware.client.details.ApiClientDetailsMiddleware;
 import com.faas.core.api.model.ws.client.details.ApiClientDetailsWSModel;
 import com.faas.core.api.model.ws.client.details.ApiClientNoteWSModel;
 import com.faas.core.api.model.ws.client.details.ApiClientOSINTWSModel;
-import com.faas.core.api.model.ws.client.details.ApiClientRemoteAppWSModel;
+import com.faas.core.api.model.ws.client.details.ApiClientRemoteWSModel;
 import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -100,23 +100,11 @@ public class ApiClientDetailsController {
 
 
 
-    @RequestMapping(value = ApiRoute.API_GET_CLIENT_REMOTE_APPS, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetClientRemoteApps(@RequestParam long agentId,
-                                                    @RequestParam long clientId) {
+    @RequestMapping(value = ApiRoute.API_GET_CLIENT_REMOTES, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetClientRemotes(@RequestParam long agentId,
+                                                 @RequestParam long clientId) {
 
-        ApiClientRemoteAppWSModel response = apiClientDetailsMiddleware.apiGetClientRemoteApps(agentId,clientId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-    @RequestMapping(value = ApiRoute.API_GET_CLIENT_REMOTE_APP, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetClientRemoteApp(@RequestParam long agentId,
-                                                   @RequestParam long clientId) {
-
-        ApiClientRemoteAppWSModel response = apiClientDetailsMiddleware.apiGetClientRemoteApp(agentId,clientId);
+        ApiClientRemoteWSModel response = apiClientDetailsMiddleware.apiGetClientRemotes(agentId,clientId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -124,6 +112,18 @@ public class ApiClientDetailsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+    @RequestMapping(value = ApiRoute.API_GET_CLIENT_REMOTE, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetClientRemote(@RequestParam long agentId,
+                                                @RequestParam long clientId,
+                                                @RequestParam String clientRemoteId) {
+
+        ApiClientRemoteWSModel response = apiClientDetailsMiddleware.apiGetClientRemote(agentId,clientId,clientRemoteId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
 
 
     @RequestMapping(value = ApiRoute.API_GET_CLIENT_OS_INTS, method = RequestMethod.POST)

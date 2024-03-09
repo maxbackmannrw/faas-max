@@ -23,12 +23,12 @@ public class ApiOperationOSINTFramework {
     AppUtils appUtils;
 
 
-    public List<ApiOperationOSINTWSDTO> apiGetOperationOSINTsService(long agentId, long clientId){
+    public List<ApiOperationOSINTWSDTO> apiGetOperationClientOSINTsService(long agentId, long clientId){
 
         return null;
     }
 
-    public ApiOperationOSINTWSDTO apiGetOperationOSINTService(long agentId,long clientId){
+    public ApiOperationOSINTWSDTO apiGetOperationClientOSINTService(long agentId,long clientId){
 
         return null;
     }
