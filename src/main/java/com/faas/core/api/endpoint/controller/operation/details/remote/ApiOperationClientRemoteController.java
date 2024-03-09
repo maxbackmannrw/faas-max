@@ -1,6 +1,6 @@
 package com.faas.core.api.endpoint.controller.operation.details.remote;
 
-import com.faas.core.api.middleware.operation.details.remote.ApiOperationRemoteMiddleware;
+import com.faas.core.api.middleware.operation.details.remote.ApiOperationClientRemoteMiddleware;
 import com.faas.core.api.model.ws.operation.details.remote.ApiOperationClientRemoteWSModel;
 import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;
@@ -14,18 +14,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping(value = AppConstant.API_VERSION + "/api/operation/details/client/remote/")
-public class ApiOperationRemoteController {
+public class ApiOperationClientRemoteController {
 
 
     @Autowired
-    ApiOperationRemoteMiddleware apiOperationRemoteMiddleware;
+    ApiOperationClientRemoteMiddleware apiOperationClientRemoteMiddleware;
 
 
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_CLIENT_REMOTES, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationClientRemotes(@RequestParam long agentId,
-                                                          @RequestParam long clientId) {
+                                                          @RequestParam String operationId) {
 
-        ApiOperationClientRemoteWSModel response = apiOperationRemoteMiddleware.apiGetOperationClientRemotes(agentId,clientId);
+        ApiOperationClientRemoteWSModel response = apiOperationClientRemoteMiddleware.apiGetOperationClientRemotes(agentId,operationId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -35,10 +35,10 @@ public class ApiOperationRemoteController {
 
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_CLIENT_REMOTE, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationClientRemote(@RequestParam long agentId,
-                                                         @RequestParam long clientId,
+                                                         @RequestParam String operationId,
                                                          @RequestParam String clientRemoteId) {
 
-        ApiOperationClientRemoteWSModel response = apiOperationRemoteMiddleware.apiGetOperationClientRemote(agentId,clientId,clientRemoteId);
+        ApiOperationClientRemoteWSModel response = apiOperationClientRemoteMiddleware.apiGetOperationClientRemote(agentId,operationId,clientRemoteId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

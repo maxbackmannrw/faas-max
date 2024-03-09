@@ -15,6 +15,7 @@ public interface ClientRemoteRepository extends MongoRepository<ClientRemoteDBMo
     long countByRemoteState(String remoteState);
     List<ClientRemoteDBModel> findByStatus(int status);
     List<ClientRemoteDBModel>findByClientId(long clientId);
+    List<ClientRemoteDBModel>findByIdAndClientId(String clientRemoteId, long clientId);
     Page<ClientRemoteDBModel>findAllByStatus(int status, Pageable pageable);
     Page<ClientRemoteDBModel>findAllByRemoteState(String remoteState, Pageable pageable);
     Page<ClientRemoteDBModel>findAllByRemoteStateAndBaseType(String remoteState, String baseType, Pageable pageable);
