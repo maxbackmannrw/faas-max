@@ -71,6 +71,8 @@ public class ApiRoute {
     public static final String API_GET_SWITCHABLE_OPERATIONS = "apigetswitchableoperations";
     public static final String API_SWITCH_OPERATION = "apiswitchoperation";
     public static final String API_GET_OPERATION_CAMPAIGN = "apigetoperationcampaign";
+    public static final String API_GET_OPERATION_ACTIVITIES = "apigetoperationactivities";
+    public static final String API_GET_OPERATION_ACTIVITY = "apigetoperationactivity";
 
 
     public static final String API_GET_OPERATION_CLIENT = "apigetoperationclient";
@@ -87,9 +89,6 @@ public class ApiRoute {
     public static final String API_GET_OPERATION_CLIENT_REMOTES = "apigetoperationclientremotes";
     public static final String API_GET_OPERATION_CLIENT_REMOTE = "apigetoperationclientremote";
 
-
-    public static final String API_GET_OPERATION_ACTIVITIES = "apigetoperationactivities";
-    public static final String API_GET_OPERATION_ACTIVITY = "apigetoperationactivity";
 
 
     public static final String API_GET_OPERATION_SCENARIOS = "apigetoperationscenarios";

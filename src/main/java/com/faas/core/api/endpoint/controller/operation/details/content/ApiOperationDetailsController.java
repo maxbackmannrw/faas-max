@@ -3,6 +3,7 @@ package com.faas.core.api.endpoint.controller.operation.details.content;
 import com.faas.core.api.middleware.operation.details.content.ApiOperationDetailsMiddleware;
 import com.faas.core.api.model.ws.campaign.details.ApiCampaignDetailsWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiOperationWSModel;
+import com.faas.core.api.model.ws.operation.details.content.ApiOperationActivityWSModel;
 import com.faas.core.api.model.ws.operation.details.content.ApiOperationDetailsWSModel;
 import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;
@@ -91,6 +92,31 @@ public class ApiOperationDetailsController {
                                                      @RequestParam String operationId) {
 
         ApiCampaignDetailsWSModel response = apiOperationDetailsMiddleware.apiGetOperationCampaign(agentId,operationId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_ACTIVITIES, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationActivities(@RequestParam long agentId,
+                                                       @RequestParam String operationId) {
+
+        ApiOperationActivityWSModel response = apiOperationDetailsMiddleware.apiGetOperationActivities(agentId,operationId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_ACTIVITY, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationActivity(@RequestParam long agentId,
+                                                     @RequestParam String operationId,
+                                                     @RequestParam String activityId) {
+
+        ApiOperationActivityWSModel response = apiOperationDetailsMiddleware.apiGetOperationActivity(agentId,operationId,activityId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
