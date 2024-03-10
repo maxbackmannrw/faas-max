@@ -90,7 +90,6 @@ public class ApiRoute {
     public static final String API_GET_OPERATION_CLIENT_REMOTE = "apigetoperationclientremote";
 
 
-
     public static final String API_GET_OPERATION_SCENARIOS = "apigetoperationscenarios";
     public static final String API_GET_OPERATION_SCENARIO = "apigetoperationscenario";
     public static final String API_OPERATION_EXECUTE_SCENARIO = "apioperationexecutescenario";

@@ -99,7 +99,6 @@ public class AppConstant {
     public static final String VIDEO_MESSAGE = "VIDEO_MESSAGE";
     public static final String DOC_MESSAGE = "DOC_MESSAGE";
 
-
     public static final String STANDARD_EMAIL = "STANDARD_EMAIL";
 
     public static final String TEXT_PUSH = "TEXT_PUSH";
