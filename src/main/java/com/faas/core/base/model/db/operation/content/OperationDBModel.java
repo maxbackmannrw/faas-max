@@ -23,6 +23,7 @@ public class OperationDBModel {
     private List<OperationScenarioDAO>operationScenarios;
     private List<OperationActivityDAO>operationActivities;
     private List<OperationDataDAO>operationDatas;
+    private String operationOutcome;
     private String operationType;
     private String operationState;
     private long uDate;
@@ -32,7 +33,7 @@ public class OperationDBModel {
     public OperationDBModel() {
     }
 
-    public OperationDBModel(String id, long sessionId, long clientId, long agentId, String campaignId, String processId, OperationInquiryDAO operationInquiry, String operationInquiryState, OperationFlowDAO operationFlow, String operationFlowState, List<OperationScenarioDAO> operationScenarios, List<OperationActivityDAO> operationActivities, List<OperationDataDAO> operationDatas, String operationType, String operationState, long uDate, long cDate, int status) {
+    public OperationDBModel(String id, long sessionId, long clientId, long agentId, String campaignId, String processId, OperationInquiryDAO operationInquiry, String operationInquiryState, OperationFlowDAO operationFlow, String operationFlowState, List<OperationScenarioDAO> operationScenarios, List<OperationActivityDAO> operationActivities, List<OperationDataDAO> operationDatas, String operationOutcome, String operationType, String operationState, long uDate, long cDate, int status) {
         this.id = id;
         this.sessionId = sessionId;
         this.clientId = clientId;
@@ -46,6 +47,7 @@ public class OperationDBModel {
         this.operationScenarios = operationScenarios;
         this.operationActivities = operationActivities;
         this.operationDatas = operationDatas;
+        this.operationOutcome = operationOutcome;
         this.operationType = operationType;
         this.operationState = operationState;
         this.uDate = uDate;
@@ -155,6 +157,14 @@ public class OperationDBModel {
 
     public void setOperationDatas(List<OperationDataDAO> operationDatas) {
         this.operationDatas = operationDatas;
+    }
+
+    public String getOperationOutcome() {
+        return operationOutcome;
+    }
+
+    public void setOperationOutcome(String operationOutcome) {
+        this.operationOutcome = operationOutcome;
     }
 
     public String getOperationType() {

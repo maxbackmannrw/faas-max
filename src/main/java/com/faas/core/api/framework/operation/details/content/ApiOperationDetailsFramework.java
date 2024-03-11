@@ -4,6 +4,7 @@ import com.faas.core.api.model.ws.campaign.details.dto.ApiCampaignDetailsWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
 import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationActivityWSDTO;
 import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationDetailsWSDTO;
+import com.faas.core.base.model.db.client.content.ClientDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
@@ -19,6 +20,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 @Component
@@ -84,47 +86,30 @@ public class ApiOperationDetailsFramework {
         return null;
     }
 
-    public ApiOperationWSDTO apiFinishOperationService(long agentId,String operationId,String operationEndResult) {
+    public ApiOperationWSDTO apiFinishOperationService(long agentId,String operationId,String operationOutcome) {
 
-       /* Optional<ClientDBModel> clientDBModel = clientRepository.findById(clientId);
-        List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndClientIdAndAgentIdAndCampaignIdAndSessionState(sessionId, clientId, agentId, campaignId, AppConstant.ACTIVE_STATE);
-        List<OperationDBModel> operationDBModels = operationRepository.findBySessionIdAndClientIdAndAgentIdAndCampaignIdAndOperationState(sessionId, clientId, agentId, campaignId, AppConstant.ACTIVE_STATE);
+        List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentIdAndOperationState(operationId,agentId,AppConstant.ACTIVE_STATE);
+        List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationIdAndSessionState(agentId,operationId,AppConstant.ACTIVE_STATE);
+        if (!operationDBModels.isEmpty() && !sessionDBModels.isEmpty()) {
+            Optional<ClientDBModel> clientDBModel = clientRepository.findById(operationDBModels.get(0).getClientId());
+            if (clientDBModel.isPresent()){
 
-        if (clientDBModel.isPresent() && clientDBModel.get().getClientState().equalsIgnoreCase(AppConstant.BUSY_CLIENT) && !sessionDBModels.isEmpty() && !operationDBModels.isEmpty()) {
+                clientDBModel.get().setClientState(AppConstant.READY_CLIENT);
+                clientDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
+                clientRepository.save(clientDBModel.get());
 
-            ApiOperationWSDTO operationWSDTO = new ApiOperationWSDTO();
+                sessionDBModels.get(0).setSessionState(AppConstant.FINISHED_STATE);
+                sessionDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
+                sessionRepository.save(sessionDBModels.get(0));
 
-            clientDBModel.get().setClientState(AppConstant.READY_CLIENT);
-            clientDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
-            clientRepository.save(clientDBModel.get());
+                operationDBModels.get(0).setOperationOutcome(operationOutcome);
+                operationDBModels.get(0).setOperationState(AppConstant.FINISHED_STATE);
+                operationDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
+                operationRepository.save(operationDBModels.get(0));
 
-            sessionDBModels.get(0).setSessionState(AppConstant.FINISHED_STATE);
-            sessionDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
-            operationWSDTO.setOperationSession(sessionRepository.save(sessionDBModels.get(0)));
-
-            operationDBModels.get(0).setOperationState(AppConstant.FINISHED_STATE);
-            operationDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
-            operationWSDTO.setOperation(operationRepository.save(operationDBModels.get(0)));
-
-            if (sessionDBModels.get(0).getSessionType().equalsIgnoreCase(AppConstant.INQUIRY_CAMPAIGN)){
-
-                // List<InquiryDBModel> inquiryDBModels = inquiryRepository.findBySessionIdAndClientId(sessionId,clientId);
-                // inquiryDBModels.get(0).setInquiryState(AppConstant.FINISHED_INQUIRY);
-                // inquiryDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
-                // operationWSDTO.setOperationInquiry(inquiryRepository.save(inquiryDBModels.get(0)));
+                return new ApiOperationWSDTO(operationDBModels.get(0),sessionDBModels.get(0));
             }
-
-            if (sessionDBModels.get(0).getSessionType().equalsIgnoreCase(AppConstant.AUTOMATIC_CAMPAIGN)){
-
-                // List<FlowDBModel> flowDBModels = flowRepository.findBySessionIdAndClientId(sessionId,clientId);
-                // flowDBModels.get(0).setFlowState(AppConstant.FINISHED_FLOW);
-                // flowDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
-                // operationWSDTO.setOperationFlow(flowRepository.save(flowDBModels.get(0)));
-            }
-
-            return operationWSDTO;
         }
-        */
         return null;
     }
 
