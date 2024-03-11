@@ -9,7 +9,7 @@
   <component name="ChangeListManager">
     <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/scenario/ApiOperationScenarioFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/scenario/ApiOperationScenarioFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/details/scenario/ApiOperationScenarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/details/scenario/ApiOperationScenarioController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -835,15 +835,8 @@
       <workItem from="1710076399485" duration="305000" />
       <workItem from="1710096398873" duration="2040000" />
       <workItem from="1710149606696" duration="527000" />
-      <workItem from="1710153167528" duration="392000" />
-    </task>
-    <task id="LOCAL-00708" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1708775773922</created>
-      <option name="number" value="00708" />
-      <option name="presentableId" value="LOCAL-00708" />
-      <option name="project" value="LOCAL" />
-      <updated>1708775773923</updated>
+      <workItem from="1710153167528" duration="424000" />
+      <workItem from="1710164340976" duration="434000" />
     </task>
     <task id="LOCAL-00709" summary="almost finish">
       <option name="closed" value="true" />
@@ -1229,7 +1222,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710108790543</updated>
     </task>
-    <option name="localTasksCounter" value="757" />
+    <task id="LOCAL-00757" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1710158991131</created>
+      <option name="number" value="00757" />
+      <option name="presentableId" value="LOCAL-00757" />
+      <option name="project" value="LOCAL" />
+      <updated>1710158991132</updated>
+    </task>
+    <option name="localTasksCounter" value="758" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

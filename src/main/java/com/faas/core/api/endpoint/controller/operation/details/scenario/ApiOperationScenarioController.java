@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
 @Controller
 @RequestMapping(value = AppConstant.API_VERSION + "/api/operation/details/scenario/")
 public class ApiOperationScenarioController {
@@ -22,7 +21,7 @@ public class ApiOperationScenarioController {
     @Autowired
     ApiOperationScenarioMiddleware apiOperationScenarioMiddleware;
 
-
+    
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_SCENARIOS, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationScenarios(@RequestParam long agentId,
                                                       @RequestParam String operationId) {
