@@ -131,7 +131,6 @@ public class ApiOperationScenarioFramework {
     }
 
 
-
     public List<ApiProcessScenarioWSDTO> apiGetOperationProcessScenariosService(long agentId,String operationId) {
 
         List<ApiProcessScenarioWSDTO>processScenarioWSDTOS = new ArrayList<>();
