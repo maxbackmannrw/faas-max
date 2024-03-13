@@ -3,10 +3,9 @@ package com.faas.core.base.framework.channel.account;
 import com.faas.core.base.model.db.channel.account.*;
 import com.faas.core.base.model.ws.channel.account.dto.*;
 import com.faas.core.base.repo.channel.account.*;
-import com.faas.core.rest.service.channel.wapp.WappRestService;
+import com.faas.core.api.service.channel.wapp.WappRestService;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
-import com.faas.core.utils.service.wapp.WappManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

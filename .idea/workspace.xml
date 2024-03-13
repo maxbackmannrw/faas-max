@@ -8,7 +8,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/request/channel/call/wapp/ApiWappMessageRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/channel/message/sms/ApiOperationSmsChannelFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/channel/message/sms/ApiOperationSmsChannelFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/channel/account/ChannelAccountFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/channel/account/ChannelAccountFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/rest/call/channel/email/EmailMessageRestCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/request/channel/message/email/ApiEmailRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/rest/call/channel/push/PushMessageRestCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/request/channel/message/push/ApiPushRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/rest/call/channel/sip/SipCallRestCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/request/channel/call/sip/ApiSipCallRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/rest/call/channel/sms/SmsMessageRestCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/request/channel/message/sms/ApiSmsRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/rest/call/channel/wapp/WappRestCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/request/channel/message/wapp/ApiWappCallRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/rest/call/content/RestCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/request/common/ApiRestRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/rest/call/peer/NativePeerRestCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/request/peer/NativePeerRestCall.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/rest/call/peer/PWAPeerRestCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/request/peer/PWAPeerRestCall.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/rest/call/utility/UtilityRestCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/request/utility/ApiUtilityRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/rest/service/channel/email/EmailMessageRestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/service/channel/email/EmailMessageRestService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/rest/service/channel/push/PushMessageRestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/service/channel/push/PushMessageRestService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/rest/service/channel/sip/SipCallRestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/service/channel/sip/SipCallRestService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/rest/service/channel/sms/SmsRestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/service/channel/sms/SmsRestService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/rest/service/channel/wapp/WappRestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/service/channel/wapp/WappRestService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/rest/service/peer/NativePeerRestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/service/peer/NativePeerRestService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/rest/service/peer/PWAPeerRestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/service/peer/PWAPeerRestService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/rest/service/utility/UtilityRestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/service/utility/UtilityRestService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +81,7 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="Use Maven wrapper" />
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
       </MavenGeneralSettings>
     </option>
   </component>
@@ -97,7 +117,7 @@
     &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Applications/MAMP/htdocs/faas/backend/faas-core-server/src/main/java/com/faas/core/api/model/ws/operation/details/client&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Applications/MAMP/htdocs/faas/backend/faas-core-server/src/main/java/com/faas/core/rest/model&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -116,11 +136,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/rest/model" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/rest/endpoint" />
       <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/details/client" />
       <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/details/client" />
       <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/client" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/details/channel/message" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/details/channel/call" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/scenario/content/dto" />
@@ -130,11 +150,11 @@
       <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/scenario/content" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.faas.core.rest.endpoint.request.channel.call.wapp" />
       <recent name="com.faas.core.base.model.db.remote.client.dao" />
       <recent name="com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto" />
       <recent name="com.faas.core.api.model.ws.operation.details.channel.call.wapp" />
       <recent name="com.faas.core.api.model.ws.operation.details.channel.call.sip.dto" />
-      <recent name="com.faas.core.api.model.ws.operation.details.channel.call.sip" />
     </key>
   </component>
   <component name="RunManager">
@@ -836,15 +856,14 @@
       <workItem from="1710149606696" duration="527000" />
       <workItem from="1710153167528" duration="424000" />
       <workItem from="1710164340976" duration="434000" />
-      <workItem from="1710165651321" duration="3363000" />
-    </task>
-    <task id="LOCAL-00714" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1708791111160</created>
-      <option name="number" value="00714" />
-      <option name="presentableId" value="LOCAL-00714" />
-      <option name="project" value="LOCAL" />
-      <updated>1708791111160</updated>
+      <workItem from="1710165651321" duration="3375000" />
+      <workItem from="1710199452483" duration="472000" />
+      <workItem from="1710241211643" duration="1113000" />
+      <workItem from="1710259751754" duration="160000" />
+      <workItem from="1710264963301" duration="277000" />
+      <workItem from="1710324243378" duration="33000" />
+      <workItem from="1710324305076" duration="1076000" />
+      <workItem from="1710332769477" duration="2710000" />
     </task>
     <task id="LOCAL-00715" summary="almost finish">
       <option name="closed" value="true" />
@@ -1230,7 +1249,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710170294111</updated>
     </task>
-    <option name="localTasksCounter" value="763" />
+    <task id="LOCAL-00763" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1710178074642</created>
+      <option name="number" value="00763" />
+      <option name="presentableId" value="LOCAL-00763" />
+      <option name="project" value="LOCAL" />
+      <updated>1710178074642</updated>
+    </task>
+    <option name="localTasksCounter" value="764" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
