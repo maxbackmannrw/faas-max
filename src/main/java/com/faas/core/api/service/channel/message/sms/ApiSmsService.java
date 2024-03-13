@@ -1,4 +1,4 @@
-package com.faas.core.api.service.channel.sms;
+package com.faas.core.api.service.channel.message.sms;
 
 import com.faas.core.base.model.db.channel.account.SmsAccountDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationSmsMessageDBModel;
@@ -7,8 +7,8 @@ import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.repo.channel.account.SmsAccountRepository;
 import com.faas.core.base.repo.operation.details.channel.OperationSmsMessageRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
-import com.faas.core.api.endpoint.request.channel.message.sms.ApiSmsRequest;
-import com.faas.core.api.endpoint.request.utility.ApiUtilityRequest;
+import com.faas.core.api.endpoint.request.channel.message.sms.ApiSmsHttpRequest;
+import com.faas.core.api.endpoint.request.utility.ApiUtilityHttpRequest;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +21,13 @@ import java.util.Optional;
 
 
 @Component
-public class SmsRestService {
+public class ApiSmsService {
 
     @Autowired
-    ApiUtilityRequest apiUtilityRequest;
+    ApiUtilityHttpRequest apiUtilityHttpRequest;
 
     @Autowired
-    ApiSmsRequest apiSmsRequest;
+    ApiSmsHttpRequest apiSmsHttpRequest;
 
     @Autowired
     ProcessRepository processRepository;
@@ -49,7 +49,7 @@ public class SmsRestService {
         Optional<ProcessDBModel> processDBModel = processRepository.findById(sessionDBModel.getProcessId());
         if (smsAccountDBModel.isPresent() && processDBModel.isPresent()) {
             operationSmsMessageDBModel = generateSmsBodyService(sessionDBModel, operationSmsMessageDBModel,smsAccountDBModel.get(),processDBModel.get());
-            apiSmsRequest.sendSmsMessageRest(operationSmsMessageDBModel,smsAccountDBModel.get());
+            apiSmsHttpRequest.sendSmsMessageRest(operationSmsMessageDBModel,smsAccountDBModel.get());
         }
     }
 
@@ -63,7 +63,7 @@ public class SmsRestService {
         if (smsMessageBody.contains(AppConstant.PWA_URL_TAG)) {
             String pwaUrl = appUtils.getSelectedUrl(sessionDBModel,processDBModel,AppConstant.PWA_URL);
             if (pwaUrl != null){
-                Map<String,String> pwaUrlMap = apiUtilityRequest.urlShortenerRest(pwaUrl);
+                Map<String,String> pwaUrlMap = apiUtilityHttpRequest.urlShortenerRest(pwaUrl);
                 if (pwaUrlMap != null){
                     smsMessageBody = smsMessageBody.replace(AppConstant.PWA_URL_TAG, appUtils.getValueFromMap(pwaUrlMap,"shortnedUrl"));
                 }
@@ -72,7 +72,7 @@ public class SmsRestService {
         if (smsMessageBody.contains(AppConstant.NATIVE_URL_TAG)) {
             String nativeUrl = appUtils.getSelectedUrl(sessionDBModel,processDBModel,AppConstant.NATIVE_URL);
             if (nativeUrl != null){
-                Map<String,String> nativeUrlMap = apiUtilityRequest.urlShortenerRest(nativeUrl);
+                Map<String,String> nativeUrlMap = apiUtilityHttpRequest.urlShortenerRest(nativeUrl);
                 if (nativeUrlMap != null){
                     smsMessageBody = smsMessageBody.replace(AppConstant.NATIVE_URL_TAG, appUtils.getValueFromMap(nativeUrlMap,"shortnedUrl"));
                 }

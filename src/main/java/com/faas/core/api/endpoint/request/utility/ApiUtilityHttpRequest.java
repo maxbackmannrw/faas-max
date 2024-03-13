@@ -1,6 +1,5 @@
 package com.faas.core.api.endpoint.request.utility;
 
-import com.faas.core.api.endpoint.request.common.ApiRestRequest;
 import com.faas.core.utils.config.AppConstant;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -13,10 +12,10 @@ import java.util.Map;
 
 
 @Component
-public class ApiUtilityRequest {
+public class ApiUtilityHttpRequest {
 
     @Autowired
-    ApiRestRequest apiRestRequest;
+    com.faas.core.utils.config.ApiHttpRequest apiHttpRequest;
 
 
     public Map<String,String> urlShortenerRest(String httpUrl) throws IOException {
@@ -25,7 +24,7 @@ public class ApiUtilityRequest {
         formData.put("apiKey", AppConstant.URL_SHORTENER_API_KEY);
         formData.put("url", httpUrl);
 
-        String response = apiRestRequest.sendPostFormRequest(apiRestRequest.urlBuilder(AppConstant.URL_SHORTENER_API_URL,"/create",null),formData);
+        String response = apiHttpRequest.sendPostFormRequest(apiHttpRequest.urlBuilder(AppConstant.URL_SHORTENER_API_URL,"/create",null),formData);
         if (response != null){
             JsonObject resObject = JsonParser.parseString(response).getAsJsonObject();
             if (resObject.get("success").getAsBoolean()){

@@ -1,4 +1,4 @@
-package com.faas.core.api.endpoint.request.channel.message.push;
+package com.faas.core.api.endpoint.request.channel.message.email;
 
 import com.faas.core.base.model.db.operation.details.channel.OperationSipCallDBModel;
 import com.faas.core.utils.config.AppUtils;
@@ -7,8 +7,7 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class ApiPushRequest {
-
+public class ApiEmailHttpRequest {
 
     @Autowired
     AppUtils appUtils;

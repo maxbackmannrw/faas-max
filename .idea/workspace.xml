@@ -8,27 +8,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/request/channel/call/wapp/ApiWappMessageRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/request/remote/pwa/ApiAndroidRemoteHttpRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/service/channel/message/wapp/ApiWappMessageService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/service/remote/pwa/ApiPWARemoteService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/request/channel/call/sip/ApiSipCallRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/request/channel/call/sip/ApiSipCallHttpRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/request/channel/call/wapp/ApiWappMessageRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/request/channel/call/wapp/ApiWappCallHttpRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/request/channel/message/email/ApiEmailRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/request/channel/message/email/ApiEmailHttpRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/request/channel/message/push/ApiPushRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/request/channel/message/push/ApiPushHttpRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/request/channel/message/sms/ApiSmsRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/request/channel/message/sms/ApiSmsHttpRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/request/channel/message/wapp/ApiWappCallRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/request/channel/message/wapp/ApiWappMessageHttpRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/request/common/ApiRestRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/config/ApiHttpRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/request/peer/NativePeerRestCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/request/remote/ios/ApiIOSRemoteHttpRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/request/peer/PWAPeerRestCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/request/remote/android/ApiPWARemoteHttpRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/request/utility/ApiUtilityRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/request/utility/ApiUtilityHttpRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/channel/message/sms/ApiOperationSmsChannelFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/channel/message/sms/ApiOperationSmsChannelFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/service/channel/email/EmailMessageRestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/service/channel/message/email/ApiEmailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/service/channel/push/PushMessageRestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/service/channel/message/push/ApiPushService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/service/channel/sip/SipCallRestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/service/channel/call/sip/ApiSipCallService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/service/channel/sms/SmsRestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/service/channel/message/sms/ApiSmsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/service/channel/wapp/WappRestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/service/channel/call/wapp/ApiWappCallService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/service/peer/NativePeerRestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/service/remote/android/ApiAndroidRemoteService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/service/peer/PWAPeerRestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/service/remote/ios/ApiIOSRemoteService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/service/utility/UtilityRestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/service/utility/ApiUtilityService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/channel/account/ChannelAccountFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/channel/account/ChannelAccountFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/rest/call/channel/email/EmailMessageRestCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/request/channel/message/email/ApiEmailRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/rest/call/channel/push/PushMessageRestCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/request/channel/message/push/ApiPushRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/rest/call/channel/sip/SipCallRestCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/request/channel/call/sip/ApiSipCallRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/rest/call/channel/sms/SmsMessageRestCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/request/channel/message/sms/ApiSmsRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/rest/call/channel/wapp/WappRestCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/request/channel/message/wapp/ApiWappCallRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/rest/call/content/RestCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/request/common/ApiRestRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/rest/call/peer/NativePeerRestCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/request/peer/NativePeerRestCall.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/rest/call/peer/PWAPeerRestCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/request/peer/PWAPeerRestCall.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/rest/call/utility/UtilityRestCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/request/utility/ApiUtilityRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/rest/service/channel/email/EmailMessageRestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/service/channel/email/EmailMessageRestService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/rest/service/channel/push/PushMessageRestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/service/channel/push/PushMessageRestService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/rest/service/channel/sip/SipCallRestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/service/channel/sip/SipCallRestService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/rest/service/channel/sms/SmsRestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/service/channel/sms/SmsRestService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/rest/service/channel/wapp/WappRestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/service/channel/wapp/WappRestService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/rest/service/peer/NativePeerRestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/service/peer/NativePeerRestService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/rest/service/peer/PWAPeerRestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/service/peer/PWAPeerRestService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/rest/service/utility/UtilityRestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/service/utility/UtilityRestService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +77,9 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/flow/content/ApiFlowController.java" root0="FORCE_HIGHLIGHTING" />
   </component>
+  <component name="KubernetesApiProvider"><![CDATA[{
+  "isMigrated": true
+}]]></component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -150,11 +155,11 @@
       <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/scenario/content" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.faas.core.rest.endpoint.request.channel.call.wapp" />
-      <recent name="com.faas.core.base.model.db.remote.client.dao" />
-      <recent name="com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto" />
-      <recent name="com.faas.core.api.model.ws.operation.details.channel.call.wapp" />
-      <recent name="com.faas.core.api.model.ws.operation.details.channel.call.sip.dto" />
+      <recent name="com.faas.core.api.service.remote.pwa" />
+      <recent name="com.faas.core.api.service.remote.ios" />
+      <recent name="com.faas.core.api.service.remote.android" />
+      <recent name="com.faas.core.api.service.channel.message.wapp" />
+      <recent name="com.faas.core.api.endpoint.request.remote.pwa" />
     </key>
   </component>
   <component name="RunManager">
@@ -863,15 +868,7 @@
       <workItem from="1710264963301" duration="277000" />
       <workItem from="1710324243378" duration="33000" />
       <workItem from="1710324305076" duration="1076000" />
-      <workItem from="1710332769477" duration="2710000" />
-    </task>
-    <task id="LOCAL-00715" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1708793882831</created>
-      <option name="number" value="00715" />
-      <option name="presentableId" value="LOCAL-00715" />
-      <option name="project" value="LOCAL" />
-      <updated>1708793882831</updated>
+      <workItem from="1710332769477" duration="5398000" />
     </task>
     <task id="LOCAL-00716" summary="almost finish">
       <option name="closed" value="true" />
@@ -1257,7 +1254,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710178074642</updated>
     </task>
-    <option name="localTasksCounter" value="764" />
+    <task id="LOCAL-00764" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1710336045859</created>
+      <option name="number" value="00764" />
+      <option name="presentableId" value="LOCAL-00764" />
+      <option name="project" value="LOCAL" />
+      <updated>1710336045860</updated>
+    </task>
+    <option name="localTasksCounter" value="765" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

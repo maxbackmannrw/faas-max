@@ -1,4 +1,4 @@
-package com.faas.core.api.service.channel.push;
+package com.faas.core.api.service.channel.message.push;
 
 import com.faas.core.base.model.db.operation.details.channel.OperationSmsMessageDBModel;
 import com.faas.core.utils.config.AppUtils;
@@ -9,7 +9,7 @@ import java.io.IOException;
 
 
 @Component
-public class PushMessageRestService {
+public class ApiPushService {
 
 
     @Autowired

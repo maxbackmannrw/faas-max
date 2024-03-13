@@ -1,4 +1,4 @@
-package com.faas.core.api.endpoint.request.common;
+package com.faas.core.utils.config;
 
 import okhttp3.*;
 import org.springframework.stereotype.Component;
@@ -8,7 +8,7 @@ import java.util.Map;
 
 
 @Component
-public class ApiRestRequest {
+public class ApiHttpRequest {
 
     private final OkHttpClient client = new OkHttpClient();
 

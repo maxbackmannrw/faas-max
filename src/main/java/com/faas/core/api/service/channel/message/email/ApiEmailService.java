@@ -1,4 +1,4 @@
-package com.faas.core.api.service.channel.email;
+package com.faas.core.api.service.channel.message.email;
 
 import com.faas.core.base.model.db.operation.details.channel.OperationSmsMessageDBModel;
 import com.faas.core.utils.config.AppUtils;
@@ -9,7 +9,7 @@ import java.io.IOException;
 
 
 @Component
-public class EmailMessageRestService {
+public class ApiEmailService {
 
     @Autowired
     AppUtils appUtils;

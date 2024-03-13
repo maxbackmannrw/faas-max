@@ -1,4 +1,4 @@
-package com.faas.core.api.endpoint.request.channel.call.sip;
+package com.faas.core.api.endpoint.request.remote.pwa;
 
 import com.faas.core.base.model.db.operation.details.channel.OperationSipCallDBModel;
 import com.faas.core.utils.config.AppUtils;
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class ApiSipCallRequest {
+public class ApiAndroidRemoteHttpRequest {
 
 
     @Autowired

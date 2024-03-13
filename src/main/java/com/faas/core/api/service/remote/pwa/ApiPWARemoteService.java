@@ -1,4 +1,4 @@
-package com.faas.core.api.service.peer;
+package com.faas.core.api.service.remote.pwa;
 
 import com.faas.core.utils.config.AppUtils;
 import okhttp3.OkHttpClient;
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class NativePeerRestService {
+public class ApiPWARemoteService {
 
     private final OkHttpClient client = new OkHttpClient();
 

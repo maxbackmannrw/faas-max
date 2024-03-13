@@ -1,4 +1,4 @@
-package com.faas.core.api.endpoint.request.channel.message.email;
+package com.faas.core.api.endpoint.request.channel.call.sip;
 
 import com.faas.core.base.model.db.operation.details.channel.OperationSipCallDBModel;
 import com.faas.core.utils.config.AppUtils;
@@ -7,13 +7,15 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class ApiEmailRequest {
+public class ApiSipCallHttpRequest {
+
 
     @Autowired
     AppUtils appUtils;
 
 
     public void startSipCallIntegration(OperationSipCallDBModel sipCallDBModel) {
+
 
     }
 

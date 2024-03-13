@@ -1,6 +1,6 @@
 package com.faas.core.api.service.utility;
 
-import com.faas.core.api.endpoint.request.utility.ApiUtilityRequest;
+import com.faas.core.api.endpoint.request.utility.ApiUtilityHttpRequest;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -9,10 +9,10 @@ import java.io.IOException;
 
 
 @Component
-public class UtilityRestService {
+public class ApiUtilityService {
 
     @Autowired
-    ApiUtilityRequest apiUtilityRequest;
+    ApiUtilityHttpRequest apiUtilityHttpRequest;
 
     @Autowired
     AppUtils appUtils;
