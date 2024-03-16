@@ -55,10 +55,12 @@ public class UserDetailsFramework {
 
         Optional<UserDBModel> userDBModel = userRepository.findById(selectedId);
         if (userDBModel.isPresent()){
+
             UserDetailsWSDTO userDetailsWSDTO = new UserDetailsWSDTO();
             userDetailsWSDTO.setUser(userDBModel.get());
             List<UserDetailsDBModel> userDetailsDBModels = userDetailsRepository.findByUserId(selectedId);
-            if (userDetailsDBModels.size()>0){
+
+            if (!userDetailsDBModels.isEmpty()){
                 userDetailsWSDTO.setUserDetails(userDetailsDBModels.get(0));
             }
             return userDetailsWSDTO;
@@ -75,13 +77,14 @@ public class UserDetailsFramework {
         return userDataWSDTO;
     }
 
-
     public UserDataDAO createUserDataService(long selectedId,long dataTypeId,String value){
 
         List<UserDetailsDBModel> userDetailsDBModels = userDetailsRepository.findByUserId(selectedId);
-        if (userDetailsDBModels.size()>0){
+        if (!userDetailsDBModels.isEmpty()){
+
             UserDataDAO userDataDAO = userHelper.mapUserDataDAO(appUtils.generateUUID(),dataTypeId,value);
             if (userDataDAO != null){
+
                 userDetailsDBModels.get(0).getUserDatas().add(userDataDAO);
                 userDetailsDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
                 userDetailsRepository.save(userDetailsDBModels.get(0));
@@ -95,7 +98,7 @@ public class UserDetailsFramework {
     public UserDataDAO updateUserDataService(long selectedId,String dataId,long dataTypeId,String value){
 
         List<UserDetailsDBModel> userDetailsDBModels = userDetailsRepository.findByUserId(selectedId);
-        if (userDetailsDBModels.size()>0 && userDetailsDBModels.get(0).getUserDatas() != null){
+        if (!userDetailsDBModels.isEmpty() && userDetailsDBModels.get(0).getUserDatas() != null){
             for (int i=0;i<userDetailsDBModels.get(0).getUserDatas().size();i++){
                 if (userDetailsDBModels.get(0).getUserDatas().get(i).getDataId().equalsIgnoreCase(dataId)){
 
@@ -111,13 +114,13 @@ public class UserDetailsFramework {
         return null;
     }
 
-
     public UserDataDAO removeUserDataService(long selectedId,String dataId){
 
         List<UserDetailsDBModel> userDetailsDBModels = userDetailsRepository.findByUserId(selectedId);
-        if (userDetailsDBModels.size()>0 && userDetailsDBModels.get(0).getUserDatas() != null){
+        if (!userDetailsDBModels.isEmpty() && userDetailsDBModels.get(0).getUserDatas() != null){
             for (int i=0;i<userDetailsDBModels.get(0).getUserDatas().size();i++){
                 if (userDetailsDBModels.get(0).getUserDatas().get(i).getDataId().equalsIgnoreCase(dataId)){
+
                     UserDataDAO userDataDAO = userDetailsDBModels.get(0).getUserDatas().get(i);
                     userDetailsDBModels.get(0).getUserDatas().remove(userDataDAO);
                     userDetailsDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
@@ -135,7 +138,7 @@ public class UserDetailsFramework {
     public UserSipChannelWSDTO getUserSipChannelService(long selectedId){
 
         List<UserDetailsDBModel> userDetailsDBModels = userDetailsRepository.findByUserId(selectedId);
-        if (userDetailsDBModels.size()>0 && userDetailsDBModels.get(0).getSipChannel() != null){
+        if (!userDetailsDBModels.isEmpty() && userDetailsDBModels.get(0).getSipChannel() != null){
             return new UserSipChannelWSDTO(userDetailsDBModels.get(0).getSipChannel());
         }
         return null;
@@ -145,10 +148,9 @@ public class UserDetailsFramework {
 
         List<UserDetailsDBModel> userDetailsDBModels = userDetailsRepository.findByUserId(selectedId);
         Optional<SipAccountDBModel> sipAccountDBModel = sipAccountRepository.findById(accountId);
-        if (userDetailsDBModels.size()>0 && sipAccountDBModel.isPresent()){
+        if (!userDetailsDBModels.isEmpty() && sipAccountDBModel.isPresent()){
 
             UserSipChannelDAO userSipChannelDAO = new UserSipChannelDAO();
-
             userSipChannelDAO.setAccountId(sipAccountDBModel.get().getId());
             userSipChannelDAO.setAccount(sipAccountDBModel.get().getAccount());
             userSipChannelDAO.setUserName(sipAccountDBModel.get().getUserName());
@@ -173,11 +175,10 @@ public class UserDetailsFramework {
         return null;
     }
 
-
     public UserSipChannelWSDTO removeUserSipChannelService(long selectedId){
 
         List<UserDetailsDBModel> userDetailsDBModels = userDetailsRepository.findByUserId(selectedId);
-        if (userDetailsDBModels.size()>0 && userDetailsDBModels.get(0).getSipChannel() != null){
+        if (!userDetailsDBModels.isEmpty() && userDetailsDBModels.get(0).getSipChannel() != null){
 
             UserSipChannelDAO userSipChannelDAO = userDetailsDBModels.get(0).getSipChannel();
             userDetailsDBModels.get(0).setSipChannel(null);
@@ -194,7 +195,7 @@ public class UserDetailsFramework {
     public UserWappChannelWSDTO getUserWappChannelService(long selectedId){
 
         List<UserDetailsDBModel> userDetailsDBModels = userDetailsRepository.findByUserId(selectedId);
-        if (userDetailsDBModels.size()>0 && userDetailsDBModels.get(0).getWappChannel() != null){
+        if (!userDetailsDBModels.isEmpty() && userDetailsDBModels.get(0).getWappChannel() != null){
             return new UserWappChannelWSDTO(userDetailsDBModels.get(0).getWappChannel());
         }
         return null;
@@ -204,7 +205,7 @@ public class UserDetailsFramework {
 
         List<UserDetailsDBModel> userDetailsDBModels = userDetailsRepository.findByUserId(selectedId);
         Optional<WappAccountDBModel> wappAccountDBModel = wappAccountRepository.findById(accountId);
-        if (userDetailsDBModels.size()>0 && wappAccountDBModel.isPresent()){
+        if (!userDetailsDBModels.isEmpty() && wappAccountDBModel.isPresent()){
 
             UserWappChannelDAO userWappChannelDAO = new UserWappChannelDAO();
             userWappChannelDAO.setAccountId(accountId);
@@ -229,11 +230,10 @@ public class UserDetailsFramework {
         return null;
     }
 
-
     public UserWappChannelWSDTO removeUserWappChannelService(long selectedId){
 
         List<UserDetailsDBModel> userDetailsDBModels = userDetailsRepository.findByUserId(selectedId);
-        if (userDetailsDBModels.size()>0 && userDetailsDBModels.get(0).getWappChannel() != null){
+        if (!userDetailsDBModels.isEmpty() && userDetailsDBModels.get(0).getWappChannel() != null){
 
             UserWappChannelDAO userWappChannelDAO = userDetailsDBModels.get(0).getWappChannel();
             userDetailsDBModels.get(0).setWappChannel(null);
@@ -244,7 +244,6 @@ public class UserDetailsFramework {
         }
         return null;
     }
-
 
 
 

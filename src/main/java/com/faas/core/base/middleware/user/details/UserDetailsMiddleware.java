@@ -55,7 +55,6 @@ public class UserDetailsMiddleware {
     }
 
 
-
     public UserDataWSModel getUserDatas(long userId,long selectedId) {
 
         UserDataWSModel response = new UserDataWSModel();
@@ -78,7 +77,6 @@ public class UserDetailsMiddleware {
 
         return response;
     }
-
 
     public UserDataWSModel getUserData(long userId,long selectedId,String dataId) {
 
@@ -105,7 +103,6 @@ public class UserDetailsMiddleware {
         return response;
     }
 
-
     public UserDataWSModel createUserData(long userId,long selectedId,long dataTypeId,String value) {
 
         UserDataWSModel response = new UserDataWSModel();
@@ -127,7 +124,6 @@ public class UserDetailsMiddleware {
         return response;
     }
 
-
     public UserDataWSModel updateUserData(long userId,long selectedId,String dataId,long dataTypeId,String value) {
 
         UserDataWSModel response = new UserDataWSModel();
@@ -148,7 +144,6 @@ public class UserDetailsMiddleware {
 
         return response;
     }
-
 
     public UserDataWSModel removeUserData(long userId,long selectedId,String dataId) {
 
@@ -173,8 +168,6 @@ public class UserDetailsMiddleware {
 
 
 
-
-
     public UserSipChannelWSModel getUserSipChannel(long userId, long selectedId) {
 
         UserSipChannelWSModel response = new UserSipChannelWSModel();
@@ -194,7 +187,6 @@ public class UserDetailsMiddleware {
         return response;
     }
 
-
     public UserSipChannelWSModel createUserSipChannel(long userId, long selectedId, String accountId) {
 
         UserSipChannelWSModel response = new UserSipChannelWSModel();
@@ -213,8 +205,6 @@ public class UserDetailsMiddleware {
 
         return response;
     }
-
-
 
     public UserSipChannelWSModel removeUserSipChannel(long userId, long selectedId) {
 
@@ -237,7 +227,6 @@ public class UserDetailsMiddleware {
 
 
 
-
     public UserWappChannelWSModel getUserWappChannel(long userId, long selectedId) {
 
         UserWappChannelWSModel response = new UserWappChannelWSModel();
@@ -257,8 +246,6 @@ public class UserDetailsMiddleware {
         return response;
     }
 
-
-
     public UserWappChannelWSModel createUserWappChannel(long userId, long selectedId, String accountId) {
 
         UserWappChannelWSModel response = new UserWappChannelWSModel();
@@ -277,7 +264,6 @@ public class UserDetailsMiddleware {
 
         return response;
     }
-
 
     public UserWappChannelWSModel removeUserWappChannel(long userId, long selectedId) {
 

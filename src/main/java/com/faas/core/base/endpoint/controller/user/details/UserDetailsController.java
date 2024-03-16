@@ -37,7 +37,6 @@ public class UserDetailsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.GET_USER_DATAS, method = RequestMethod.POST)
     public ResponseEntity<?> getUserDatas(@RequestParam long userId,
                                             @RequestParam long selectedId) {
@@ -49,7 +48,6 @@ public class UserDetailsController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.GET_USER_DATA, method = RequestMethod.POST)
     public ResponseEntity<?> getUserData(@RequestParam long userId,
@@ -63,7 +61,6 @@ public class UserDetailsController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.CREATE_USER_DATA, method = RequestMethod.POST)
     public ResponseEntity<?> createUserData(@RequestParam long userId,
@@ -79,7 +76,6 @@ public class UserDetailsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.UPDATE_USER_DATA, method = RequestMethod.POST)
     public ResponseEntity<?> updateUserData(@RequestParam long userId,
                                             @RequestParam long selectedId,
@@ -94,7 +90,6 @@ public class UserDetailsController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.REMOVE_USER_DATA, method = RequestMethod.POST)
     public ResponseEntity<?> removeUserData(@RequestParam long userId,
@@ -123,7 +118,6 @@ public class UserDetailsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.CREATE_USER_SIP_CHANNEL, method = RequestMethod.POST)
     public ResponseEntity<?> createUserSipChannel(@RequestParam long userId,
                                                   @RequestParam long selectedId,
@@ -136,7 +130,6 @@ public class UserDetailsController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.REMOVE_USER_SIP_CHANNEL, method = RequestMethod.POST)
     public ResponseEntity<?> removeUserSipChannel(@RequestParam long userId,
@@ -164,7 +157,6 @@ public class UserDetailsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.CREATE_USER_WAPP_CHANNEL, method = RequestMethod.POST)
     public ResponseEntity<?> createUserWappChannel(@RequestParam long userId,
                                                    @RequestParam long selectedId,
@@ -178,7 +170,6 @@ public class UserDetailsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.REMOVE_USER_WAPP_CHANNEL, method = RequestMethod.POST)
     public ResponseEntity<?> removeUserWappChannel(@RequestParam long userId,
                                                    @RequestParam long selectedId) {
@@ -190,6 +181,7 @@ public class UserDetailsController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
+
 
 
 }
