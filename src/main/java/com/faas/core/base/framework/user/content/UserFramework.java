@@ -59,7 +59,7 @@ public class UserFramework {
     }
 
 
-    public UserWSDTO createUserService(String userName, String userEmail, String password, long roleId) {
+    public UserWSDTO createUserService(String userName, String userEmail, String password, long roleId, int operationLimit) {
 
         Optional<UserRoleDBModel> userRoles = userRoleRepository.findById(roleId);
         if (userRoles.isPresent() && validateUserEmail(userEmail)) {
@@ -77,7 +77,7 @@ public class UserFramework {
             userDBModel.setStatus(1);
 
             UserDBModel createdUser = userRepository.save(userDBModel);
-            createUserDetailsService(createdUser);
+            createUserDetailsService(createdUser,operationLimit);
 
             return fillUserWSDTO(createdUser);
         }
@@ -85,11 +85,12 @@ public class UserFramework {
     }
 
 
-    public void createUserDetailsService(UserDBModel userDBModel){
+    public void createUserDetailsService(UserDBModel userDBModel,int operationLimit){
 
         UserDetailsDBModel userDetailsDBModel = new UserDetailsDBModel();
         userDetailsDBModel.setUserId(userDBModel.getId());
         userDetailsDBModel.setUserDatas(new ArrayList<>());
+        userDetailsDBModel.setOperationLimit(operationLimit);
         userDetailsDBModel.setuDate(appUtils.getCurrentTimeStamp());
         userDetailsDBModel.setcDate(appUtils.getCurrentTimeStamp());
         userDetailsDBModel.setStatus(1);
@@ -99,11 +100,12 @@ public class UserFramework {
 
 
 
-    public UserWSDTO updateUserService(long selectedId, String userName, String userEmail, String password, long roleId, boolean validUser) {
+    public UserWSDTO updateUserService(long selectedId, String userName, String userEmail, String password, long roleId, int operationLimit, boolean validUser) {
 
         Optional<UserRoleDBModel> userRoles = userRoleRepository.findById(roleId);
         Optional<UserDBModel> userDBModel = userRepository.findById(selectedId);
-        if (userDBModel.isPresent() && userRoles.isPresent()) {
+        List<UserDetailsDBModel> userDetailsDBModels = userDetailsRepository.findByUserId(selectedId);
+        if (userDBModel.isPresent() && !userDetailsDBModels.isEmpty() && userRoles.isPresent()) {
 
             userDBModel.get().setUserName(userName);
             userDBModel.get().setUserEmail(userEmail.toLowerCase());
@@ -117,6 +119,10 @@ public class UserFramework {
             userDBModel.get().setStatus(1);
 
             UserDBModel updatedUser = userRepository.save(userDBModel.get());
+
+            userDetailsDBModels.get(0).setOperationLimit(operationLimit);
+            userDetailsDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
+            userDetailsRepository.save(userDetailsDBModels.get(0));
 
             return fillUserWSDTO(updatedUser);
         }

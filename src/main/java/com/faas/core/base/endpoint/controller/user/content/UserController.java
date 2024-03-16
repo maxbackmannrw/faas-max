@@ -78,9 +78,10 @@ public class UserController {
                                         @RequestParam String userName,
                                         @RequestParam String userEmail,
                                         @RequestParam String password,
-                                        @RequestParam long roleId) {
+                                        @RequestParam long roleId,
+                                        @RequestParam int operationLimit) {
 
-        UserWSModel response = userMiddleware.createUser(userId, userName, userEmail, password, roleId);
+        UserWSModel response = userMiddleware.createUser(userId, userName, userEmail, password, roleId, operationLimit);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -96,9 +97,10 @@ public class UserController {
                                         @RequestParam String userEmail,
                                         @RequestParam String password,
                                         @RequestParam long roleId,
+                                        @RequestParam int operationLimit,
                                         @RequestParam boolean validUser) {
 
-        UserWSModel response = userMiddleware.updateUser(userId, selectedId, userName, userEmail, password, roleId, validUser);
+        UserWSModel response = userMiddleware.updateUser(userId, selectedId, userName, userEmail, password, roleId, operationLimit, validUser);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

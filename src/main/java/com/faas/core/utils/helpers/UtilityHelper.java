@@ -204,7 +204,6 @@ public class UtilityHelper {
     }
 
     public void initializeUsersHelper(){
-
         createUserHelper(AppConstant.DEFAULT_MANAGER_NAME, AppConstant.DEFAULT_MANAGER_EMAIL, AppConstant.DEFAULT_MANAGER_PASSWORD,AppConstant.SUPER_MANAGER );
     }
 
@@ -214,7 +213,6 @@ public class UtilityHelper {
         if (!userRoleDBModels.isEmpty()){
 
             UserDBModel userDBModel = new UserDBModel();
-
             userDBModel.setUserName(userName);
             userDBModel.setUserEmail(userEmail.toLowerCase());
             userDBModel.setPassword(appUtils.base64Encoder(password));
@@ -235,6 +233,7 @@ public class UtilityHelper {
         UserDetailsDBModel userDetailsDBModel = new UserDetailsDBModel();
         userDetailsDBModel.setUserId(userDBModel.getId());
         userDetailsDBModel.setUserDatas(new ArrayList<>());
+        userDetailsDBModel.setOperationLimit(0);
         userDetailsDBModel.setuDate(appUtils.getCurrentTimeStamp());
         userDetailsDBModel.setcDate(appUtils.getCurrentTimeStamp());
         userDetailsDBModel.setStatus(1);

@@ -115,13 +115,13 @@ public class UserMiddleware {
     }
 
 
-    public UserWSModel createUser(long userId, String userName, String userEmail, String password, long roleId) {
+    public UserWSModel createUser(long userId, String userName, String userEmail, String password,long roleId,int operationLimit) {
 
         UserWSModel response = new UserWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<UserWSDTO> userWSDTOS = new ArrayList<>();
 
-        UserWSDTO userWSDTO = userFramework.createUserService(userName, userEmail, password, roleId);
+        UserWSDTO userWSDTO = userFramework.createUserService(userName, userEmail, password, roleId, operationLimit);
         if (userWSDTO != null) {
             userWSDTOS.add(userWSDTO);
         }
@@ -137,13 +137,13 @@ public class UserMiddleware {
     }
 
 
-    public UserWSModel updateUser(long userId, long selectedId, String userName, String userEmail, String password, long roleId, boolean validUser) {
+    public UserWSModel updateUser(long userId, long selectedId, String userName, String userEmail, String password, long roleId, int operationLimit, boolean validUser) {
 
         UserWSModel response = new UserWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<UserWSDTO> userWSDTOS = new ArrayList<>();
 
-        UserWSDTO userWSDTO = userFramework.updateUserService(selectedId, userName, userEmail, password, roleId, validUser);
+        UserWSDTO userWSDTO = userFramework.updateUserService(selectedId, userName, userEmail, password, roleId, operationLimit, validUser);
         if (userWSDTO != null) {
             userWSDTOS.add(userWSDTO);
         }

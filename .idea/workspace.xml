@@ -7,7 +7,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish" />
+    <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/user/content/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/user/content/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/user/content/UserFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/user/content/UserFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/user/content/UserMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/user/content/UserMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/user/details/UserDetailsDBModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/user/details/UserDetailsDBModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/user/content/UserWSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/user/content/UserWSModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/helpers/UtilityHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/helpers/UtilityHelper.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -53,9 +61,9 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/flow/content/ApiFlowController.java" root0="FORCE_HIGHLIGHTING" />
   </component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "isMigrated": true
-}]]></component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -844,15 +852,17 @@
       <workItem from="1710264963301" duration="277000" />
       <workItem from="1710324243378" duration="33000" />
       <workItem from="1710324305076" duration="1076000" />
-      <workItem from="1710332769477" duration="5681000" />
-    </task>
-    <task id="LOCAL-00717" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1708798225198</created>
-      <option name="number" value="00717" />
-      <option name="presentableId" value="LOCAL-00717" />
-      <option name="project" value="LOCAL" />
-      <updated>1708798225198</updated>
+      <workItem from="1710332769477" duration="6161000" />
+      <workItem from="1710361264402" duration="6000" />
+      <workItem from="1710367623175" duration="169000" />
+      <workItem from="1710411691978" duration="68000" />
+      <workItem from="1710420696616" duration="10000" />
+      <workItem from="1710421331745" duration="88000" />
+      <workItem from="1710421437446" duration="204000" />
+      <workItem from="1710448471410" duration="787000" />
+      <workItem from="1710488327753" duration="105000" />
+      <workItem from="1710545900853" duration="437000" />
+      <workItem from="1710584418619" duration="1359000" />
     </task>
     <task id="LOCAL-00718" summary="almost finish">
       <option name="closed" value="true" />
@@ -1238,7 +1248,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710341341583</updated>
     </task>
-    <option name="localTasksCounter" value="766" />
+    <task id="LOCAL-00766" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1710341858552</created>
+      <option name="number" value="00766" />
+      <option name="presentableId" value="LOCAL-00766" />
+      <option name="project" value="LOCAL" />
+      <updated>1710341858552</updated>
+    </task>
+    <option name="localTasksCounter" value="767" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

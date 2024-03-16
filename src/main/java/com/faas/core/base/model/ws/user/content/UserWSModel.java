@@ -10,7 +10,6 @@ public class UserWSModel {
     private GeneralWSModel general;
     private List<UserWSDTO> users;
 
-
     public UserWSModel() {
     }
 

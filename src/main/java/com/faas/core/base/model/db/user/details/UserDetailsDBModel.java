@@ -17,6 +17,7 @@ public class UserDetailsDBModel {
     private List<UserDataDAO>userDatas;
     private UserSipChannelDAO sipChannel;
     private UserWappChannelDAO wappChannel;
+    private int operationLimit;
     private long uDate;
     private long cDate;
     private int status;
@@ -24,12 +25,13 @@ public class UserDetailsDBModel {
     public UserDetailsDBModel() {
     }
 
-    public UserDetailsDBModel(String id, long userId, List<UserDataDAO> userDatas, UserSipChannelDAO sipChannel, UserWappChannelDAO wappChannel, long uDate, long cDate, int status) {
+    public UserDetailsDBModel(String id, long userId, List<UserDataDAO> userDatas, UserSipChannelDAO sipChannel, UserWappChannelDAO wappChannel, int operationLimit, long uDate, long cDate, int status) {
         this.id = id;
         this.userId = userId;
         this.userDatas = userDatas;
         this.sipChannel = sipChannel;
         this.wappChannel = wappChannel;
+        this.operationLimit = operationLimit;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
@@ -73,6 +75,14 @@ public class UserDetailsDBModel {
 
     public void setWappChannel(UserWappChannelDAO wappChannel) {
         this.wappChannel = wappChannel;
+    }
+
+    public int getOperationLimit() {
+        return operationLimit;
+    }
+
+    public void setOperationLimit(int operationLimit) {
+        this.operationLimit = operationLimit;
     }
 
     public long getuDate() {
