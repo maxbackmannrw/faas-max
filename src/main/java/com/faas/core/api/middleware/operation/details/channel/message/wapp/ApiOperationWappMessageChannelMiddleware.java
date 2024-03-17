@@ -85,7 +85,7 @@ public class ApiOperationWappMessageChannelMiddleware {
         return response;
     }
 
-    public ApiOperationWappMessageWSModel apiSendOperationWappMessage(long agentId,String operationId,String tempId,String numberId) throws IOException {
+    public ApiOperationWappMessageWSModel apiSendOperationWappMessage(long agentId,String operationId,String tempId,String numberId) {
 
         ApiOperationWappMessageWSModel response = new ApiOperationWappMessageWSModel();
         GeneralWSModel general = new GeneralWSModel();
