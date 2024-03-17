@@ -7,27 +7,27 @@ import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.repo.channel.account.SmsAccountRepository;
 import com.faas.core.base.repo.operation.details.channel.OperationSmsMessageRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
-import com.faas.core.utils.request.channel.message.sms.SmsHttpRequest;
+import com.faas.core.utils.request.channel.message.sms.SmsMessageHttpRequest;
 import com.faas.core.utils.request.utility.UtilityHttpRequest;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.Map;
 import java.util.Optional;
 
 
-@Component
-public class OperationSmsService {
+@Service
+public class SmsMessageService {
 
     @Autowired
     UtilityHttpRequest utilityHttpRequest;
 
     @Autowired
-    SmsHttpRequest smsHttpRequest;
+    SmsMessageHttpRequest smsMessageHttpRequest;
 
     @Autowired
     ProcessRepository processRepository;
@@ -49,7 +49,7 @@ public class OperationSmsService {
         Optional<ProcessDBModel> processDBModel = processRepository.findById(sessionDBModel.getProcessId());
         if (smsAccountDBModel.isPresent() && processDBModel.isPresent()) {
             operationSmsMessageDBModel = generateSmsBodyService(sessionDBModel, operationSmsMessageDBModel,smsAccountDBModel.get(),processDBModel.get());
-            smsHttpRequest.sendSmsMessageRest(operationSmsMessageDBModel,smsAccountDBModel.get());
+            smsMessageHttpRequest.sendSmsMessageRest(operationSmsMessageDBModel,smsAccountDBModel.get());
         }
     }
 

@@ -14,7 +14,7 @@ import java.util.Map;
 
 
 @Component
-public class SmsHttpRequest {
+public class SmsMessageHttpRequest {
 
     @Autowired
     ApiHttpRequest apiHttpRequest;

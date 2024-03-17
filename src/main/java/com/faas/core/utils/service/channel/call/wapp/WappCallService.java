@@ -1,7 +1,5 @@
-package com.faas.core.utils.service.channel.message.wapp;
+package com.faas.core.utils.service.channel.call.wapp;
 
-import com.faas.core.utils.request.channel.call.wapp.WappCallHttpRequest;
-import com.faas.core.utils.request.utility.UtilityHttpRequest;
 import com.faas.core.base.model.db.channel.account.WappAccountDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationWappMessageDBModel;
 import com.faas.core.base.model.db.process.content.ProcessDBModel;
@@ -9,19 +7,21 @@ import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.repo.channel.account.WappAccountRepository;
 import com.faas.core.base.repo.operation.details.channel.OperationWappMessageRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
+import com.faas.core.utils.request.channel.call.wapp.WappCallHttpRequest;
+import com.faas.core.utils.request.utility.UtilityHttpRequest;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.Map;
 import java.util.Optional;
 
 
-@Component
-public class OperationWappMessageService {
+@Service
+public class WappCallService {
 
     @Autowired
     WappCallHttpRequest wappRestClient;

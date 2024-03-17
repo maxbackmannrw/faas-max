@@ -1,24 +1,24 @@
-package com.faas.core.utils.service.channel.message.email;
+package com.faas.core.utils.service.channel.message.push;
 
 import com.faas.core.base.model.db.operation.details.channel.OperationSmsMessageDBModel;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 
 
-@Component
-public class OperationEmailService {
+@Service
+public class PushMessageService {
+
 
     @Autowired
     AppUtils appUtils;
 
 
     public void sendSmsMessageService(OperationSmsMessageDBModel operationSmsMessageDBModel) throws IOException {
-        return;
-    }
 
+    }
 
 
 

@@ -1,19 +1,23 @@
-package com.faas.core.utils.request.channel.message.email;
+package com.faas.core.utils.service.channel.call.sip;
 
 import com.faas.core.base.model.db.operation.details.channel.OperationSipCallDBModel;
 import com.faas.core.utils.config.AppUtils;
+import okhttp3.OkHttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 
-@Component
-public class EmailHttpRequest {
+@Service
+public class SipCallService {
+
+    private final OkHttpClient client = new OkHttpClient();
 
     @Autowired
     AppUtils appUtils;
 
 
     public void startSipCallIntegration(OperationSipCallDBModel sipCallDBModel) {
+
 
     }
 
