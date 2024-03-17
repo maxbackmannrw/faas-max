@@ -1,6 +1,7 @@
-package com.faas.core.api.framework.operation.details.channel.message.content;
+package com.faas.core.api.framework.operation.details.channel.content;
 
-import com.faas.core.api.model.ws.operation.details.channel.message.content.dto.ApiOperationMessageChannelWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.content.dto.ApiOperationCallChannelWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.content.dto.ApiOperationMessageChannelWSDTO;
 import com.faas.core.base.model.db.client.details.content.ClientDetailsDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.repo.client.content.ClientRepository;
@@ -15,9 +16,8 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-
 @Component
-public class ApiOperationMessageChannelFramework {
+public class ApiOperationChannelFramework {
 
     @Autowired
     ChannelHelper channelHelper;
@@ -41,6 +41,19 @@ public class ApiOperationMessageChannelFramework {
     AppUtils appUtils;
 
 
+    public ApiOperationCallChannelWSDTO apiGetOperationCallChannelService(long agentId, String operationId) {
+
+        List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
+        if (!operationDBModels.isEmpty()){
+            List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(operationDBModels.get(0).getClientId());
+            if (!clientDetailsDBModels.isEmpty()){
+                return operationHelper.getApiOperationCallChannelWSDTO(operationDBModels.get(0),clientDetailsDBModels.get(0));
+            }
+        }
+        return null;
+    }
+
+
     public ApiOperationMessageChannelWSDTO apiGetOperationMessageChannelService(long agentId, String operationId) {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
@@ -52,6 +65,7 @@ public class ApiOperationMessageChannelFramework {
         }
         return null;
     }
+
 
 
 }
