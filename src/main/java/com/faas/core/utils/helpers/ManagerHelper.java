@@ -6,7 +6,7 @@ import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.process.content.ProcessDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
-import com.faas.core.base.model.ws.manager.app.dto.AppManagerContentWSDTO;
+import com.faas.core.base.model.ws.manager.main.dto.MainManagerContentWSDTO;
 import com.faas.core.base.model.ws.manager.campaign.content.dto.CampaignManagerWSDTO;
 import com.faas.core.base.model.ws.manager.operation.content.dto.OperationManagerWSDTO;
 import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
@@ -68,25 +68,25 @@ public class ManagerHelper {
     AppUtils appUtils;
 
 
-    public AppManagerContentWSDTO getAppManagerContentWSDTO(long userId,String category,int reqPage,int reqSize){
+    public MainManagerContentWSDTO getMainManagerContentWSDTO(long userId, String category, int reqPage, int reqSize){
 
-        AppManagerContentWSDTO appManagerContentWSDTO = new AppManagerContentWSDTO();
+        MainManagerContentWSDTO mainManagerContentWSDTO = new MainManagerContentWSDTO();
         List<CampaignDBModel> campaignDBModels = campaignRepository.findByCampaignCategory(category);
         if (!campaignDBModels.isEmpty()){
             List<CampaignManagerWSDTO> campaignManagerWSDTOS = getCampaignManagerWSDTOS(campaignDBModels);
             if (campaignManagerWSDTOS != null){
-                appManagerContentWSDTO.setCampaignManagers(campaignManagerWSDTOS);
+                mainManagerContentWSDTO.setCampaignManagers(campaignManagerWSDTOS);
             }
         }
         OperationManagerWSDTO readyOperationManagerWSDTO = getOperationManagerWSDTOByOperationModel(operationRepository.findAllByOperationStateAndOperationType(AppConstant.READY_STATE,category, PageRequest.of(reqPage,reqSize)));
         if (readyOperationManagerWSDTO != null){
-            appManagerContentWSDTO.setReadyOperation(readyOperationManagerWSDTO);
+            mainManagerContentWSDTO.setReadyOperation(readyOperationManagerWSDTO);
         }
         OperationManagerWSDTO activeOperationManagerWSDTO = getOperationManagerWSDTOByOperationModel(operationRepository.findAllByOperationStateAndOperationType(AppConstant.ACTIVE_STATE,category, PageRequest.of(reqPage,reqSize)));
         if (activeOperationManagerWSDTO != null){
-            appManagerContentWSDTO.setActiveOperation(activeOperationManagerWSDTO);
+            mainManagerContentWSDTO.setActiveOperation(activeOperationManagerWSDTO);
         }
-        return appManagerContentWSDTO;
+        return mainManagerContentWSDTO;
     }
 
 

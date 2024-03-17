@@ -1,20 +1,20 @@
-package com.faas.core.base.model.ws.manager.app.dto;
+package com.faas.core.base.model.ws.manager.main.dto;
 
 import com.faas.core.base.model.ws.manager.campaign.content.dto.CampaignManagerWSDTO;
 import com.faas.core.base.model.ws.manager.operation.content.dto.OperationManagerWSDTO;
 
 import java.util.List;
 
-public class AppManagerContentWSDTO {
+public class MainManagerContentWSDTO {
 
     private List<CampaignManagerWSDTO>campaignManagers;
     private OperationManagerWSDTO readyOperation;
     private OperationManagerWSDTO activeOperation;
 
-    public AppManagerContentWSDTO() {
+    public MainManagerContentWSDTO() {
     }
 
-    public AppManagerContentWSDTO(List<CampaignManagerWSDTO> campaignManagers, OperationManagerWSDTO readyOperation, OperationManagerWSDTO activeOperation) {
+    public MainManagerContentWSDTO(List<CampaignManagerWSDTO> campaignManagers, OperationManagerWSDTO readyOperation, OperationManagerWSDTO activeOperation) {
         this.campaignManagers = campaignManagers;
         this.readyOperation = readyOperation;
         this.activeOperation = activeOperation;

@@ -1,13 +1,13 @@
-package com.faas.core.base.middleware.manager.app;
+package com.faas.core.base.middleware.manager.main;
 
-import com.faas.core.base.framework.manager.app.AppManagerFramework;
+import com.faas.core.base.framework.manager.main.MainManagerFramework;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.manager.app.AppManagerCampaignWSModel;
-import com.faas.core.base.model.ws.manager.app.AppManagerContentWSModel;
-import com.faas.core.base.model.ws.manager.app.AppManagerOperationWSModel;
-import com.faas.core.base.model.ws.manager.app.AppManagerWSModel;
-import com.faas.core.base.model.ws.manager.app.dto.AppManagerContentWSDTO;
-import com.faas.core.base.model.ws.manager.app.dto.AppManagerWSDTO;
+import com.faas.core.base.model.ws.manager.main.MainManagerCampaignWSModel;
+import com.faas.core.base.model.ws.manager.main.MainManagerContentWSModel;
+import com.faas.core.base.model.ws.manager.main.MainManagerOperationWSModel;
+import com.faas.core.base.model.ws.manager.main.MainManagerWSModel;
+import com.faas.core.base.model.ws.manager.main.dto.MainManagerContentWSDTO;
+import com.faas.core.base.model.ws.manager.main.dto.MainManagerWSDTO;
 import com.faas.core.base.model.ws.manager.campaign.content.dto.CampaignManagerWSDTO;
 import com.faas.core.base.model.ws.manager.operation.content.dto.OperationManagerWSDTO;
 import com.faas.core.base.model.ws.operation.content.OperationWSModel;
@@ -21,21 +21,21 @@ import java.util.List;
 
 
 @Component
-public class AppManagerMiddleware {
+public class MainManagerMiddleware {
 
 
     @Autowired
-    AppManagerFramework appManagerFramework;
+    MainManagerFramework mainManagerFramework;
 
 
-    public AppManagerWSModel getAppManager(long userId, int reqPage, int reqSize) {
+    public MainManagerWSModel getMainManager(long userId, int reqPage, int reqSize) {
 
-        AppManagerWSModel response = new AppManagerWSModel();
+        MainManagerWSModel response = new MainManagerWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        AppManagerWSDTO appManagerWSDTO = appManagerFramework.getAppManagerService(userId,reqPage,reqSize);
-        if (appManagerWSDTO != null){
-            response.setAppManager(appManagerWSDTO);
+        MainManagerWSDTO mainManagerWSDTO = mainManagerFramework.getMainManagerService(userId,reqPage,reqSize);
+        if (mainManagerWSDTO != null){
+            response.setMainManager(mainManagerWSDTO);
         }
 
         general.setOperation("getAppManager");
@@ -47,14 +47,14 @@ public class AppManagerMiddleware {
         return response;
     }
 
-    public AppManagerContentWSModel getAppManagerContent(long userId,String category,int reqPage,int reqSize) {
+    public MainManagerContentWSModel getMainManagerContent(long userId, String category, int reqPage, int reqSize) {
 
-        AppManagerContentWSModel response = new AppManagerContentWSModel();
+        MainManagerContentWSModel response = new MainManagerContentWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        AppManagerContentWSDTO appManagerContentWSDTO = appManagerFramework.getAppManagerContentService(userId,category,reqPage,reqSize);
-        if (appManagerContentWSDTO != null){
-            response.setAppManagerContent(appManagerContentWSDTO);
+        MainManagerContentWSDTO mainManagerContentWSDTO = mainManagerFramework.getMainManagerContentService(userId,category,reqPage,reqSize);
+        if (mainManagerContentWSDTO != null){
+            response.setMainManagerContent(mainManagerContentWSDTO);
         }
 
         general.setOperation("getAppManagerContent");
@@ -67,12 +67,12 @@ public class AppManagerMiddleware {
     }
 
 
-    public AppManagerCampaignWSModel getAppManagerCampaigns(long userId, String category) {
+    public MainManagerCampaignWSModel getMainManagerCampaigns(long userId, String category) {
 
-        AppManagerCampaignWSModel response = new AppManagerCampaignWSModel();
+        MainManagerCampaignWSModel response = new MainManagerCampaignWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<CampaignManagerWSDTO>campaignManagerWSDTOS = appManagerFramework.getAppManagerCampaignsService(userId,category);
+        List<CampaignManagerWSDTO>campaignManagerWSDTOS = mainManagerFramework.getMainManagerCampaignsService(userId,category);
         if (campaignManagerWSDTOS != null){
             response.setCampaignManagers(campaignManagerWSDTOS);
         }
@@ -86,13 +86,13 @@ public class AppManagerMiddleware {
         return response;
     }
 
-    public AppManagerCampaignWSModel getAppManagerCampaign(long userId,String campaignId) {
+    public MainManagerCampaignWSModel getMainManagerCampaign(long userId, String campaignId) {
 
-        AppManagerCampaignWSModel response = new AppManagerCampaignWSModel();
+        MainManagerCampaignWSModel response = new MainManagerCampaignWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignManagerWSDTO>campaignManagerWSDTOS = new ArrayList<>();
 
-        CampaignManagerWSDTO campaignManagerWSDTO = appManagerFramework.getAppManagerCampaignService(userId,campaignId);
+        CampaignManagerWSDTO campaignManagerWSDTO = mainManagerFramework.getMainManagerCampaignService(userId,campaignId);
         if (campaignManagerWSDTO != null){
             campaignManagerWSDTOS.add(campaignManagerWSDTO);
         }
@@ -108,12 +108,12 @@ public class AppManagerMiddleware {
     }
 
 
-    public AppManagerOperationWSModel getAppManagerOperations(long userId,String category,int reqPage,int reqSize) {
+    public MainManagerOperationWSModel getMainManagerOperations(long userId, String category, int reqPage, int reqSize) {
 
-        AppManagerOperationWSModel response = new AppManagerOperationWSModel();
+        MainManagerOperationWSModel response = new MainManagerOperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        OperationManagerWSDTO operationManagerWSDTO = appManagerFramework.getAppManagerOperationsService(userId,category,reqPage,reqSize);
+        OperationManagerWSDTO operationManagerWSDTO = mainManagerFramework.getMainManagerOperationsService(userId,category,reqPage,reqSize);
         if (operationManagerWSDTO != null){
             response.setOperationManager(operationManagerWSDTO);
         }
@@ -127,12 +127,12 @@ public class AppManagerMiddleware {
         return response;
     }
 
-    public AppManagerOperationWSModel getAppManagerOperationsByState(long userId,String category,String operationState,int reqPage,int reqSize) {
+    public MainManagerOperationWSModel getMainManagerOperationsByState(long userId, String category, String operationState, int reqPage, int reqSize) {
 
-        AppManagerOperationWSModel response = new AppManagerOperationWSModel();
+        MainManagerOperationWSModel response = new MainManagerOperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        OperationManagerWSDTO operationManagerWSDTO = appManagerFramework.getAppManagerOperationsByStateService(userId,category,operationState,reqPage,reqSize);
+        OperationManagerWSDTO operationManagerWSDTO = mainManagerFramework.getMainManagerOperationsByStateService(userId,category,operationState,reqPage,reqSize);
         if (operationManagerWSDTO != null){
             response.setOperationManager(operationManagerWSDTO);
         }
@@ -146,13 +146,13 @@ public class AppManagerMiddleware {
         return response;
     }
 
-    public OperationWSModel getAppManagerOperation(long userId, long sessionId) {
+    public OperationWSModel getMainManagerOperation(long userId, long sessionId) {
 
         OperationWSModel response = new OperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<OperationWSDTO> operationWSDTOS = new ArrayList<>();
 
-        OperationWSDTO operationWSDTO = appManagerFramework.getAppManagerOperationService(userId,sessionId);
+        OperationWSDTO operationWSDTO = mainManagerFramework.getMainManagerOperationService(userId,sessionId);
         if (operationWSDTO != null){
             operationWSDTOS.add(operationWSDTO);
         }
@@ -168,13 +168,13 @@ public class AppManagerMiddleware {
     }
 
 
-    public OperationWSModel removeAppManagerOperation(long userId, long sessionId) {
+    public OperationWSModel removeMainManagerOperation(long userId, long sessionId) {
 
         OperationWSModel response = new OperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<OperationWSDTO> operationWSDTOS = new ArrayList<>();
 
-        OperationWSDTO operationWSDTO = appManagerFramework.removeAppManagerOperationService(userId,sessionId);
+        OperationWSDTO operationWSDTO = mainManagerFramework.removeMainManagerOperationService(userId,sessionId);
         if (operationWSDTO != null){
             operationWSDTOS.add(operationWSDTO);
         }

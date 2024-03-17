@@ -83,16 +83,14 @@ public class BaseRoute {
     public static final String REMOVE_CAMPAIGN_OPERATION = "removecampaignoperation";
 
 
-    public static final String GET_APP_MANAGER = "getappmanager";
-    public static final String GET_APP_MANAGER_CONTENT = "getappmanagercontent";
-
-    public static final String GET_APP_MANAGER_CAMPAIGNS = "getappmanagercampaigns";
-    public static final String GET_APP_MANAGER_CAMPAIGN = "getappmanagercampaign";
-
-    public static final String GET_APP_MANAGER_OPERATIONS = "getappmanageroperations";
-    public static final String GET_APP_MANAGER_OPERATIONS_BY_STATE = "getappmanageroperationsbystate";
-    public static final String GET_APP_MANAGER_OPERATION = "getappmanageroperation";
-    public static final String REMOVE_APP_MANAGER_OPERATION = "removeappmanageroperation";
+    public static final String GET_MAIN_MANAGER = "getmainmanager";
+    public static final String GET_MAIN_MANAGER_CONTENT = "getmainmanagercontent";
+    public static final String GET_MAIN_MANAGER_CAMPAIGNS = "getmainmanagercampaigns";
+    public static final String GET_MAIN_MANAGER_CAMPAIGN = "getmainmanagercampaign";
+    public static final String GET_MAIN_MANAGER_OPERATIONS = "getmainmanageroperations";
+    public static final String GET_MAIN_MANAGER_OPERATIONS_BY_STATE = "getmainmanageroperationsbystate";
+    public static final String GET_MAIN_MANAGER_OPERATION = "getmainmanageroperation";
+    public static final String REMOVE_MAIN_MANAGER_OPERATION = "removemainmanageroperation";
 
 
     public static final String GET_CAMPAIGN_MANAGERS = "getcampaignmanagers";

@@ -1,19 +1,19 @@
-package com.faas.core.base.model.ws.manager.app;
+package com.faas.core.base.model.ws.manager.main;
 
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.model.ws.manager.campaign.content.dto.CampaignManagerWSDTO;
 
 import java.util.List;
 
-public class AppManagerCampaignWSModel {
+public class MainManagerCampaignWSModel {
 
     private GeneralWSModel general;
     private List<CampaignManagerWSDTO>campaignManagers;
 
-    public AppManagerCampaignWSModel() {
+    public MainManagerCampaignWSModel() {
     }
 
-    public AppManagerCampaignWSModel(GeneralWSModel general, List<CampaignManagerWSDTO> campaignManagers) {
+    public MainManagerCampaignWSModel(GeneralWSModel general, List<CampaignManagerWSDTO> campaignManagers) {
         this.general = general;
         this.campaignManagers = campaignManagers;
     }
