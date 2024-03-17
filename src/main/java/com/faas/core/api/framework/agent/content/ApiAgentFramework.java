@@ -2,6 +2,7 @@ package com.faas.core.api.framework.agent.content;
 
 import com.faas.core.api.model.ws.agent.content.dto.ApiAgentWSDTO;
 import com.faas.core.base.model.db.user.content.UserDBModel;
+import com.faas.core.base.model.db.user.details.UserDetailsDBModel;
 import com.faas.core.base.repo.channel.account.SipAccountRepository;
 import com.faas.core.base.repo.process.details.channel.content.ProcessSipChannelRepository;
 import com.faas.core.base.repo.user.content.UserRepository;
@@ -23,10 +24,10 @@ public class ApiAgentFramework {
     UserRepository userRepository;
 
     @Autowired
-    UserRoleRepository userRoleRepository;
+    UserDetailsRepository userDetailsRepository;
 
     @Autowired
-    UserDetailsRepository userDetailsRepository;
+    UserRoleRepository userRoleRepository;
 
     @Autowired
     ProcessSipChannelRepository processSipChannelRepository;
@@ -43,6 +44,10 @@ public class ApiAgentFramework {
         ApiAgentWSDTO apiAgentWSDTO = new ApiAgentWSDTO();
         userDBModel.setPassword("");
         apiAgentWSDTO.setAgent(userDBModel);
+        List<UserDetailsDBModel> agentDetails = userDetailsRepository.findByUserId(userDBModel.getId());
+        if (!agentDetails.isEmpty()){
+            apiAgentWSDTO.setAgentDetails(agentDetails.get(0));
+        }
 
         return apiAgentWSDTO;
     }
@@ -50,13 +55,11 @@ public class ApiAgentFramework {
     public ApiAgentWSDTO apiAgentLoginService(String userEmail, String password) {
 
         List<UserDBModel> userDBModels = userRepository.findByUserEmailAndPasswordAndUserTypeAndValidUser(userEmail.toLowerCase(), appUtils.base64Encoder(password), AppConstant.AGENT_USER, true);
-        if (userDBModels.size() > 0) {
+        if (!userDBModels.isEmpty()) {
             return fillAgentApiAgentWSDTO(userDBModels.get(0));
         }
         return null;
     }
-
-
 
 
 }

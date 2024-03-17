@@ -9,18 +9,18 @@
   <component name="ChangeListManager">
     <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/details/channel/call/content/ApiOperationCallChannelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/details/channel/content/ApiOperationChannelController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/details/channel/message/content/ApiOperationMessageChannelController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/channel/call/content/ApiOperationCallChannelFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/channel/content/ApiOperationChannelFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/channel/message/content/ApiOperationMessageChannelFramework.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/details/channel/call/content/ApiOperationCallChannelMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/details/channel/content/ApiOperationChannelMiddleware.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/details/channel/message/content/ApiOperationMessageChannelMiddleware.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/details/channel/call/content/ApiOperationCallChannelWSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/details/channel/content/ApiOperationCallChannelWSModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/details/channel/call/content/dto/ApiOperationCallChannelWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/details/channel/content/dto/ApiOperationCallChannelWSDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/details/channel/message/content/ApiOperationMessageChannelWSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/details/channel/content/ApiOperationMessageChannelWSModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/details/channel/message/content/dto/ApiOperationMessageChannelWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/details/channel/content/dto/ApiOperationMessageChannelWSDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/details/content/dto/ApiOperationDetailsWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/details/content/dto/ApiOperationDetailsWSDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/helpers/OperationHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/helpers/OperationHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/agent/content/ApiAgentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/agent/content/ApiAgentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/agent/content/ApiAgentFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/agent/content/ApiAgentFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/channel/message/sms/ApiOperationSmsChannelFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/channel/message/sms/ApiOperationSmsChannelFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/agent/content/ApiAgentMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/agent/content/ApiAgentMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/agent/content/dto/ApiAgentWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/agent/content/dto/ApiAgentWSDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/service/channel/call/sip/ApiSipCallService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/service/channel/call/sip/ApiOperationSipCallService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/service/channel/call/wapp/ApiWappCallService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/service/channel/call/wapp/ApiOperationWappCallService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/service/channel/message/email/ApiEmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/service/channel/message/email/ApiOperationEmailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/service/channel/message/push/ApiPushService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/service/channel/message/push/ApiOperationPushService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/service/channel/message/sms/ApiSmsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/service/channel/message/sms/ApiOperationSmsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/service/channel/message/wapp/ApiWappMessageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/service/channel/message/wapp/ApiOperationWappMessageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/channel/account/ChannelAccountFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/channel/account/ChannelAccountFramework.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -870,15 +870,7 @@
       <workItem from="1710545900853" duration="437000" />
       <workItem from="1710584418619" duration="1512000" />
       <workItem from="1710603731953" duration="3912000" />
-      <workItem from="1710687685491" duration="1876000" />
-    </task>
-    <task id="LOCAL-00722" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1709032888877</created>
-      <option name="number" value="00722" />
-      <option name="presentableId" value="LOCAL-00722" />
-      <option name="project" value="LOCAL" />
-      <updated>1709032888877</updated>
+      <workItem from="1710687685491" duration="2548000" />
     </task>
     <task id="LOCAL-00723" summary="almost finish">
       <option name="closed" value="true" />
@@ -1264,7 +1256,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710636496596</updated>
     </task>
-    <option name="localTasksCounter" value="771" />
+    <task id="LOCAL-00771" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1710697200717</created>
+      <option name="number" value="00771" />
+      <option name="presentableId" value="LOCAL-00771" />
+      <option name="project" value="LOCAL" />
+      <updated>1710697200717</updated>
+    </task>
+    <option name="localTasksCounter" value="772" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

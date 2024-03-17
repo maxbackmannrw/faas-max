@@ -21,7 +21,7 @@ import java.util.Optional;
 
 
 @Component
-public class ApiSmsService {
+public class ApiOperationSmsService {
 
     @Autowired
     ApiUtilityHttpRequest apiUtilityHttpRequest;

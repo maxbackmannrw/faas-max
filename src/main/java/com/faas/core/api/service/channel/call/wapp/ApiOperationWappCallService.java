@@ -21,7 +21,7 @@ import java.util.Optional;
 
 
 @Component
-public class ApiWappCallService {
+public class ApiOperationWappCallService {
 
     @Autowired
     ApiWappCallHttpRequest wappRestClient;

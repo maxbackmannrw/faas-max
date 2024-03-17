@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class ApiSipCallService {
+public class ApiOperationSipCallService {
 
     private final OkHttpClient client = new OkHttpClient();
 
