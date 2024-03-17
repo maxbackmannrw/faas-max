@@ -1,19 +1,20 @@
-package com.faas.core.utils.job;
+package com.faas.core.utils.task;
 
-import com.faas.core.utils.service.job.JobSchedulerService;
+import com.faas.core.utils.service.content.TaskSchedulerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 @Component
-public class JobScheduler {
+public class TaskScheduler {
 
     @Autowired
-    JobSchedulerService jobSchedulerService;
+    TaskSchedulerService taskSchedulerService;
 
     @Scheduled(fixedRate = 5000)
     public void jobScheduleCycle() {
 
+        System.out.println("Task Scheduler Running... "+System.currentTimeMillis());
      //   systemTaskService.refreshWappAccounts();
     }
 
