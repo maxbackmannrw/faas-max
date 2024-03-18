@@ -53,25 +53,9 @@ public class WappMessageService {
 
 
     @Async
-    public void sendWappMessageService(SessionDBModel sessionDBModel, OperationWappMessageDBModel operationWappMessageDBModel) throws IOException {
+    public void sendWappMessageService(OperationWappMessageDBModel wappMessageDBModel) {
 
-        Optional<WappAccountDBModel> wappAccountDBModel = wappAccountRepository.findById(operationWappMessageDBModel.getWappMessage().getAccountId());
-        Optional<ProcessDBModel> processDBModel = processRepository.findById(sessionDBModel.getProcessId());
-
-        if (wappAccountDBModel.isPresent() && processDBModel.isPresent()) {
-            operationWappMessageDBModel = generateWappMessageBodyService(sessionDBModel, operationWappMessageDBModel,wappAccountDBModel.get(),processDBModel.get());
-            if (operationWappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.TEXT_MESSAGE)){
-                wappRestClient.sendWappTextMessageRest(operationWappMessageDBModel,wappAccountDBModel.get());
-            }
-            if (operationWappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.IMAGE_MESSAGE)){
-            }
-            if (operationWappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.VOICE_MESSAGE)){
-            }
-            if (operationWappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.VIDEO_MESSAGE)){
-            }
-            if (operationWappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.DOC_MESSAGE)){
-            }
-        }
+        System.out.println("async sendWappMessageService  worked");
     }
 
 

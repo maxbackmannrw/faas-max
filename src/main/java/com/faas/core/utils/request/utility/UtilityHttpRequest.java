@@ -1,6 +1,7 @@
 package com.faas.core.utils.request.utility;
 
 import com.faas.core.utils.config.AppConstant;
+import com.faas.core.utils.request.content.HttpRequest;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ import java.util.Map;
 public class UtilityHttpRequest {
 
     @Autowired
-    com.faas.core.utils.config.ApiHttpRequest apiHttpRequest;
+    HttpRequest httpRequest;
 
 
     public Map<String,String> urlShortenerRest(String httpUrl) throws IOException {
@@ -24,7 +25,7 @@ public class UtilityHttpRequest {
         formData.put("apiKey", AppConstant.URL_SHORTENER_API_KEY);
         formData.put("url", httpUrl);
 
-        String response = apiHttpRequest.sendPostFormRequest(apiHttpRequest.urlBuilder(AppConstant.URL_SHORTENER_API_URL,"/create",null),formData);
+        String response = httpRequest.sendPostFormRequest(httpRequest.urlBuilder(AppConstant.URL_SHORTENER_API_URL,"/create",null),formData);
         if (response != null){
             JsonObject resObject = JsonParser.parseString(response).getAsJsonObject();
             if (resObject.get("success").getAsBoolean()){
