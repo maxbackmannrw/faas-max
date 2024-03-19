@@ -14,6 +14,7 @@ import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -85,7 +86,7 @@ public class ApiOperationEmailChannelMiddleware {
         return response;
     }
 
-    public ApiOperationEmailWSModel apiSendOperationEmail(long agentId, String operationId,String tempId,String emailAddressId) {
+    public ApiOperationEmailWSModel apiSendOperationEmail(long agentId, String operationId,String tempId,String emailAddressId) throws IOException {
 
         ApiOperationEmailWSModel response = new ApiOperationEmailWSModel();
         GeneralWSModel general = new GeneralWSModel();

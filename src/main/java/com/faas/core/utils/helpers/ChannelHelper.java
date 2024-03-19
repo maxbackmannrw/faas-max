@@ -632,4 +632,20 @@ public class ChannelHelper {
         return processPushAccountDAO;
     }
 
+    public OperationPushMessageDBModel createOperationPushMessageDBModel(SessionDBModel sessionDBModel){
+
+        OperationPushMessageDBModel operationPushMessageDBModel = new OperationPushMessageDBModel();
+        operationPushMessageDBModel.setClientId(sessionDBModel.getClientId());
+
+        return operationPushMessageRepository.save(operationPushMessageDBModel);
+    }
+
+    public OperationPushMessageDAO createOperationPushMessageDAO(ProcessEmailChannelDBModel emailChannelDBModel,ProcessEmailTempDBModel emailTempDBModel){
+
+        OperationPushMessageDAO pushMessageDAO = new OperationPushMessageDAO();
+
+        return pushMessageDAO;
+    }
+
+
 }

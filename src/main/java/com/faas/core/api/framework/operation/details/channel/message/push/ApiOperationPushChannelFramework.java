@@ -1,12 +1,19 @@
 package com.faas.core.api.framework.operation.details.channel.message.push;
 
+import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiOperationEmailWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushChannelWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushTempWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushWSDTO;
 import com.faas.core.base.model.db.client.details.content.ClientDetailsDBModel;
+import com.faas.core.base.model.db.client.details.content.dao.ClientEmailDAO;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
+import com.faas.core.base.model.db.operation.details.channel.OperationEmailMessageDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationPushMessageDBModel;
+import com.faas.core.base.model.db.process.details.channel.content.ProcessEmailChannelDBModel;
+import com.faas.core.base.model.db.process.details.channel.content.ProcessPushChannelDBModel;
+import com.faas.core.base.model.db.process.details.channel.temp.ProcessEmailTempDBModel;
+import com.faas.core.base.model.db.process.details.channel.temp.ProcessPushTempDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.client.details.ClientDetailsRepository;
@@ -18,6 +25,7 @@ import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.ChannelHelper;
 import com.faas.core.utils.helpers.OperationHelper;
+import com.faas.core.utils.service.channel.message.push.PushChannelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -33,6 +41,9 @@ public class ApiOperationPushChannelFramework {
 
     @Autowired
     ChannelHelper channelHelper;
+
+    @Autowired
+    PushChannelService pushChannelService;
 
     @Autowired
     ClientRepository clientRepository;
@@ -85,6 +96,7 @@ public class ApiOperationPushChannelFramework {
 
         List<OperationPushMessageDBModel> operationPushMessageDBModels = operationPushMessageRepository.findByIdAndOperationId(pushId,operationId);
         if (!operationPushMessageDBModels.isEmpty()){
+
             return new ApiOperationPushWSDTO(operationPushMessageDBModels.get(0));
         }
         return null;
@@ -92,6 +104,17 @@ public class ApiOperationPushChannelFramework {
 
     public ApiOperationPushWSDTO apiSendOperationPushService(long agentId,String operationId,String tempId,String remoteAppId) {
 
+        List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
+        if (!sessionDBModels.isEmpty()){
+
+            List<ProcessPushTempDBModel> pushTempDBModels = processPushTempRepository.findByIdAndProcessId(tempId,sessionDBModels.get(0).getProcessId());
+            List<ProcessPushChannelDBModel> pushChannelDBModels = processPushChannelRepository.findByProcessId(sessionDBModels.get(0).getProcessId());
+            if (!pushTempDBModels.isEmpty() && !pushChannelDBModels.isEmpty() ){
+
+                OperationPushMessageDBModel operationPushMessageDBModel = channelHelper.createOperationPushMessageDBModel(sessionDBModels.get(0));
+                return new ApiOperationPushWSDTO(operationPushMessageDBModel);
+            }
+        }
         return null;
     }
 
@@ -99,6 +122,7 @@ public class ApiOperationPushChannelFramework {
 
         List<OperationPushMessageDBModel> operationPushMessageDBModels = operationPushMessageRepository.findByIdAndOperationId(pushId,operationId);
         if (!operationPushMessageDBModels.isEmpty()){
+
             operationPushMessageDBModels.get(0).setPushState(pushState);
             operationPushMessageDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
             return new ApiOperationPushWSDTO(operationPushMessageRepository.save(operationPushMessageDBModels.get(0)));
@@ -110,6 +134,7 @@ public class ApiOperationPushChannelFramework {
 
         List<OperationPushMessageDBModel> operationPushMessageDBModels = operationPushMessageRepository.findByIdAndOperationId(pushId,operationId);
         if (!operationPushMessageDBModels.isEmpty()){
+
             operationPushMessageRepository.delete(operationPushMessageDBModels.get(0));
             return new ApiOperationPushWSDTO(operationPushMessageDBModels.get(0));
         }
@@ -117,15 +142,14 @@ public class ApiOperationPushChannelFramework {
     }
 
 
-
     public ApiOperationPushTempWSDTO apiGetOperationPushTempsService(long agentId,String operationId) {
 
         List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
         if (!sessionDBModels.isEmpty()){
+
             ApiOperationPushTempWSDTO pushTempWSDTO = new ApiOperationPushTempWSDTO();
             pushTempWSDTO.setPushAccount(channelHelper.getApiPushAccountWSDTO(sessionDBModels.get(0).getProcessId()));
             pushTempWSDTO.setOperationPushTemps(processPushTempRepository.findByProcessId(sessionDBModels.get(0).getProcessId()));
-
             return pushTempWSDTO;
         }
         return null;
@@ -135,15 +159,14 @@ public class ApiOperationPushChannelFramework {
 
         List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
         if (!sessionDBModels.isEmpty()){
+
             ApiOperationPushTempWSDTO pushTempWSDTO = new ApiOperationPushTempWSDTO();
             pushTempWSDTO.setPushAccount(channelHelper.getApiPushAccountWSDTO(sessionDBModels.get(0).getProcessId()));
             pushTempWSDTO.setOperationPushTemps(processPushTempRepository.findByIdAndProcessId(tempId,sessionDBModels.get(0).getProcessId()));
-
             return pushTempWSDTO;
         }
         return null;
     }
-
 
     public ApiOperationPushAccountWSDTO apiGetOperationPushAccountService(long agentId, String operationId) {
 

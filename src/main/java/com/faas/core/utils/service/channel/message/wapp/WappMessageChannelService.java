@@ -52,9 +52,9 @@ public class WappMessageChannelService {
 
 
     @Async
-    public void sendWappMessageService(OperationWappMessageDBModel wappMessageDBModel) {
+    public void sendAsyncWappMessageService(OperationWappMessageDBModel wappMessageDBModel) {
 
-        System.out.println("async sendWappMessageService  worked");
+        System.out.println("async sendAsyncWappMessageService  worked");
     }
 
 

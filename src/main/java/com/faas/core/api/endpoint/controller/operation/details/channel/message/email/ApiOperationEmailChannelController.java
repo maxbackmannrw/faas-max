@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.io.IOException;
+
 
 @Controller
 @RequestMapping(value = AppConstant.API_VERSION + "/api/operation/details/channel/message/email/")
@@ -66,7 +68,7 @@ public class ApiOperationEmailChannelController {
     public ResponseEntity<?> apiSendOperationEmail(@RequestParam long agentId,
                                                    @RequestParam String operationId,
                                                    @RequestParam String tempId,
-                                                   @RequestParam String emailAddressId) {
+                                                   @RequestParam String emailAddressId) throws IOException {
 
         ApiOperationEmailWSModel response = apiOperationEmailChannelMiddleware.apiSendOperationEmail(agentId,operationId,tempId,emailAddressId);
 

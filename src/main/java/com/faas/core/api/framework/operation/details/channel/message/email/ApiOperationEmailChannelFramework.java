@@ -21,9 +21,11 @@ import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.ChannelHelper;
 import com.faas.core.utils.helpers.OperationHelper;
+import com.faas.core.utils.service.channel.message.email.EmailChannelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +39,9 @@ public class ApiOperationEmailChannelFramework {
 
     @Autowired
     ChannelHelper channelHelper;
+
+    @Autowired
+    EmailChannelService emailChannelService;
 
     @Autowired
     ClientRepository clientRepository;
@@ -94,18 +99,19 @@ public class ApiOperationEmailChannelFramework {
         return null;
     }
 
-    public ApiOperationEmailWSDTO apiSendOperationEmailService(long agentId, String operationId,String tempId,String emailAddressId) {
+    public ApiOperationEmailWSDTO apiSendOperationEmailService(long agentId, String operationId,String tempId,String emailAddressId) throws IOException {
 
         List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
         if (!sessionDBModels.isEmpty()){
+
             ClientEmailDAO clientEmailDAO = channelHelper.fetchClientEmailDAO(sessionDBModels.get(0).getClientId(),emailAddressId);
             List<ProcessEmailTempDBModel> emailTempDBModels = processEmailTempRepository.findByIdAndProcessId(tempId,sessionDBModels.get(0).getProcessId());
             List<ProcessEmailChannelDBModel> emailChannelDBModels = processEmailChannelRepository.findByProcessId(sessionDBModels.get(0).getProcessId());
             if (clientEmailDAO != null && !emailTempDBModels.isEmpty() && !emailChannelDBModels.isEmpty() ){
 
-                OperationEmailMessageDBModel emailMessageDBModel = channelHelper.createOperationEmailMessageDBModel(sessionDBModels.get(0),clientEmailDAO,emailTempDBModels.get(0),emailChannelDBModels.get(0));
-
-                return new ApiOperationEmailWSDTO(emailMessageDBModel);
+                OperationEmailMessageDBModel operationEmailMessageDBModel = channelHelper.createOperationEmailMessageDBModel(sessionDBModels.get(0),clientEmailDAO,emailTempDBModels.get(0),emailChannelDBModels.get(0));
+                emailChannelService.sendAsyncEmailService(operationEmailMessageDBModel);
+                return new ApiOperationEmailWSDTO(operationEmailMessageDBModel);
             }
         }
         return null;
