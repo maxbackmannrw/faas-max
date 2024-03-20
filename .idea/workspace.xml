@@ -8,21 +8,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/details/channel/message/wapp/ApiOperationWappMessageChannelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/details/channel/message/wapp/ApiOperationWappMessageChannelController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/channel/call/sip/ApiOperationSipChannelFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/channel/call/sip/ApiOperationSipChannelFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/channel/message/email/ApiOperationEmailChannelFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/channel/message/email/ApiOperationEmailChannelFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/channel/message/push/ApiOperationPushChannelFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/channel/message/push/ApiOperationPushChannelFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/channel/message/sms/ApiOperationSmsChannelFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/channel/message/sms/ApiOperationSmsChannelFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/channel/message/wapp/ApiOperationWappMessageChannelFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/channel/message/wapp/ApiOperationWappMessageChannelFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/details/channel/message/wapp/ApiOperationWappMessageChannelMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/details/channel/message/wapp/ApiOperationWappMessageChannelMiddleware.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/endpoint/request/scenario/action/ScenarioActionRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/endpoint/request/scenario/automation/ScenarioAutomationRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/channel/account/ChannelAccountFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/channel/account/ChannelAccountFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/service/channel/call/sip/SipChannelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/service/channel/sip/SipChannelService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/service/channel/call/wapp/WappCallChannelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/service/channel/wapp/WappChannelService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/service/channel/message/email/EmailChannelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/service/channel/email/EmailChannelService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/service/channel/message/push/PushChannelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/service/channel/push/PushChannelService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/service/channel/message/sms/SmsChannelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/service/channel/sms/SmsChannelService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/service/channel/message/wapp/WappMessageChannelService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/endpoint/rest/channel/email/EmailChannelRestCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/endpoint/request/channel/email/EmailChannelRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/endpoint/rest/channel/push/PushChannelRestCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/endpoint/request/channel/push/PushChannelRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/endpoint/rest/channel/sip/SipChannelRestCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/endpoint/request/channel/sip/SipChannelRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/endpoint/rest/channel/sms/SmsChannelRestCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/endpoint/request/channel/sms/SmsChannelRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/endpoint/rest/channel/wapp/WappChannelRestCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/endpoint/request/channel/wapp/WappChannelRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/endpoint/rest/content/HttpRestCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/endpoint/request/utility/BaseHttpRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/endpoint/rest/remote/android/AndroidClientRemoteRestCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/endpoint/request/remote/android/AndroidClientRemoteRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/endpoint/rest/remote/ios/IOSClientRemoteRestCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/endpoint/request/remote/ios/IOSClientRemoteRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/endpoint/rest/remote/pwa/PWAClientRemoteRestCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/endpoint/request/remote/pwa/PWAClientRemoteRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/endpoint/rest/utility/UtilityRestCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/endpoint/request/utility/CommonRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/service/channel/sms/SmsChannelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/service/channel/sms/SmsChannelService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/service/channel/wapp/WappChannelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/service/channel/wapp/WappChannelService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/service/utility/UtilityService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/service/utility/UtilityService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,11 +148,11 @@
       <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/scenario/content" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.faas.core.utils.endpoint.request.scenario.automation" />
+      <recent name="com.faas.core.utils.endpoint.request.scenario.action" />
+      <recent name="com.faas.core.utils.service.channel.content" />
       <recent name="com.faas.core.utils.service.channel.call.content" />
       <recent name="com.faas.core.utils.service.channel.message.content" />
-      <recent name="com.faas.core.utils.service.job" />
-      <recent name="com.faas.core.api.service.remote.pwa" />
-      <recent name="com.faas.core.api.service.remote.ios" />
     </key>
   </component>
   <component name="RunManager">
@@ -878,23 +879,7 @@
       <workItem from="1710851479739" duration="1277000" />
       <workItem from="1710854870241" duration="5000" />
       <workItem from="1710854884821" duration="1362000" />
-      <workItem from="1710933012255" duration="1303000" />
-    </task>
-    <task id="LOCAL-00732" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1709648413288</created>
-      <option name="number" value="00732" />
-      <option name="presentableId" value="LOCAL-00732" />
-      <option name="project" value="LOCAL" />
-      <updated>1709648413288</updated>
-    </task>
-    <task id="LOCAL-00733" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1709723106737</created>
-      <option name="number" value="00733" />
-      <option name="presentableId" value="LOCAL-00733" />
-      <option name="project" value="LOCAL" />
-      <updated>1709723106737</updated>
+      <workItem from="1710933012255" duration="2778000" />
     </task>
     <task id="LOCAL-00734" summary="almost finish">
       <option name="closed" value="true" />
@@ -1272,7 +1257,23 @@
       <option name="project" value="LOCAL" />
       <updated>1710858745724</updated>
     </task>
-    <option name="localTasksCounter" value="781" />
+    <task id="LOCAL-00781" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1710937549771</created>
+      <option name="number" value="00781" />
+      <option name="presentableId" value="LOCAL-00781" />
+      <option name="project" value="LOCAL" />
+      <updated>1710937549772</updated>
+    </task>
+    <task id="LOCAL-00782" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1710937726031</created>
+      <option name="number" value="00782" />
+      <option name="presentableId" value="LOCAL-00782" />
+      <option name="project" value="LOCAL" />
+      <updated>1710937726031</updated>
+    </task>
+    <option name="localTasksCounter" value="783" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1301,7 +1302,7 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/faas/core/utils/endpoint/rest/wapp/WappManagerRESTCall.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/com/faas/core/utils/endpoint/request/wapp/WappManagerRESTCall.java</url>
           <line>249</line>
           <properties class="com.faas.core.utils.rest.wapp.WappManagerRESTCall">
             <option name="EMULATED" value="true" />

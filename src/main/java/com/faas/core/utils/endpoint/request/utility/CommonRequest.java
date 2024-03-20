@@ -1,7 +1,6 @@
-package com.faas.core.utils.endpoint.rest.utility;
+package com.faas.core.utils.endpoint.request.utility;
 
 import com.faas.core.utils.config.AppConstant;
-import com.faas.core.utils.endpoint.rest.content.HttpRestCall;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +12,10 @@ import java.util.Map;
 
 
 @Component
-public class UtilityRestCall {
+public class CommonRequest {
 
     @Autowired
-    HttpRestCall httpRestCall;
+    BaseHttpRequest baseHttpRequest;
 
 
     public Map<String,String> urlShortenerRest(String httpUrl) throws IOException {
@@ -25,7 +24,7 @@ public class UtilityRestCall {
         formData.put("apiKey", AppConstant.URL_SHORTENER_API_KEY);
         formData.put("url", httpUrl);
 
-        String response = httpRestCall.sendPostFormRequest(httpRestCall.urlBuilder(AppConstant.URL_SHORTENER_API_URL,"/create",null),formData);
+        String response = baseHttpRequest.sendPostFormRequest(baseHttpRequest.urlBuilder(AppConstant.URL_SHORTENER_API_URL,"/create",null),formData);
         if (response != null){
             JsonObject resObject = JsonParser.parseString(response).getAsJsonObject();
             if (resObject.get("success").getAsBoolean()){

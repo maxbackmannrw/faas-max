@@ -7,8 +7,8 @@ import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.repo.channel.account.SmsAccountRepository;
 import com.faas.core.base.repo.operation.details.channel.OperationSmsMessageRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
-import com.faas.core.utils.endpoint.rest.channel.sms.SmsChannelRestCall;
-import com.faas.core.utils.endpoint.rest.utility.UtilityRestCall;
+import com.faas.core.utils.endpoint.request.channel.sms.SmsChannelRequest;
+import com.faas.core.utils.endpoint.request.utility.CommonRequest;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +23,10 @@ import java.util.Map;
 public class SmsChannelService {
 
     @Autowired
-    UtilityRestCall utilityRestCall;
+    CommonRequest commonRequest;
 
     @Autowired
-    SmsChannelRestCall smsChannelRestCall;
+    SmsChannelRequest smsChannelRequest;
 
     @Autowired
     ProcessRepository processRepository;
@@ -65,7 +65,7 @@ public class SmsChannelService {
         if (smsMessageBody.contains(AppConstant.PWA_URL_TAG)) {
             String pwaUrl = appUtils.getSelectedUrl(sessionDBModel,processDBModel,AppConstant.PWA_URL);
             if (pwaUrl != null){
-                Map<String,String> pwaUrlMap = utilityRestCall.urlShortenerRest(pwaUrl);
+                Map<String,String> pwaUrlMap = commonRequest.urlShortenerRest(pwaUrl);
                 if (pwaUrlMap != null){
                     smsMessageBody = smsMessageBody.replace(AppConstant.PWA_URL_TAG, appUtils.getValueFromMap(pwaUrlMap,"shortnedUrl"));
                 }
@@ -74,7 +74,7 @@ public class SmsChannelService {
         if (smsMessageBody.contains(AppConstant.NATIVE_URL_TAG)) {
             String nativeUrl = appUtils.getSelectedUrl(sessionDBModel,processDBModel,AppConstant.NATIVE_URL);
             if (nativeUrl != null){
-                Map<String,String> nativeUrlMap = utilityRestCall.urlShortenerRest(nativeUrl);
+                Map<String,String> nativeUrlMap = commonRequest.urlShortenerRest(nativeUrl);
                 if (nativeUrlMap != null){
                     smsMessageBody = smsMessageBody.replace(AppConstant.NATIVE_URL_TAG, appUtils.getValueFromMap(nativeUrlMap,"shortnedUrl"));
                 }

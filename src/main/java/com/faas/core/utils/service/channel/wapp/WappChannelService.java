@@ -7,8 +7,8 @@ import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.repo.channel.account.WappAccountRepository;
 import com.faas.core.base.repo.operation.details.channel.OperationWappMessageRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
-import com.faas.core.utils.endpoint.rest.channel.wapp.WappChannelRestCall;
-import com.faas.core.utils.endpoint.rest.utility.UtilityRestCall;
+import com.faas.core.utils.endpoint.request.channel.wapp.WappChannelRequest;
+import com.faas.core.utils.endpoint.request.utility.CommonRequest;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,17 +17,16 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.Map;
-import java.util.Optional;
 
 
 @Service
 public class WappChannelService {
 
     @Autowired
-    WappChannelRestCall wappRestClient;
+    WappChannelRequest wappChannelRequest;
 
     @Autowired
-    UtilityRestCall utilityRestCall;
+    CommonRequest commonRequest;
 
     @Autowired
     ProcessRepository processRepository;
@@ -42,13 +41,13 @@ public class WappChannelService {
     AppUtils appUtils;
 
 
-    public String initWappInstanceService(String serverUrl) throws IOException {
-        return wappRestClient.initWappInstanceRest(serverUrl);
+    public String initWappChannelService(String serverUrl) throws IOException {
+        return wappChannelRequest.initWappChannelRequest(serverUrl);
     }
 
 
     public String getWappQRCodeInBase64Service(String serverUrl,String instanceKey) throws IOException {
-        return wappRestClient.getWappQRCodeInBase64Rest(serverUrl,instanceKey);
+        return wappChannelRequest.getWappQRCodeInBase64Rest(serverUrl,instanceKey);
     }
 
     @Async
@@ -86,7 +85,7 @@ public class WappChannelService {
         if (wappMessageBody.contains(AppConstant.PWA_URL_TAG)) {
             String pwaUrl = appUtils.getSelectedUrl(sessionDBModel,processDBModel,AppConstant.PWA_URL);
             if (pwaUrl != null){
-                Map<String,String> pwaUrlMap = utilityRestCall.urlShortenerRest(pwaUrl);
+                Map<String,String> pwaUrlMap = commonRequest.urlShortenerRest(pwaUrl);
                 if (pwaUrlMap != null){
                     wappMessageBody = wappMessageBody.replace(AppConstant.PWA_URL_TAG, appUtils.getValueFromMap(pwaUrlMap,"shortnedUrl"));
                  //   operationWappMessageDBModel.getWappMessage().getMessageMaps().putAll(pwaUrlMap);
@@ -96,7 +95,7 @@ public class WappChannelService {
         if (wappMessageBody.contains(AppConstant.NATIVE_URL_TAG)) {
             String nativeUrl = appUtils.getSelectedUrl(sessionDBModel,processDBModel,AppConstant.NATIVE_URL);
             if (nativeUrl != null){
-                Map<String,String> nativeUrlMap = utilityRestCall.urlShortenerRest(nativeUrl);
+                Map<String,String> nativeUrlMap = commonRequest.urlShortenerRest(nativeUrl);
                 if (nativeUrlMap != null){
                     wappMessageBody = wappMessageBody.replace(AppConstant.NATIVE_URL_TAG, appUtils.getValueFromMap(nativeUrlMap,"shortnedUrl"));
                    // operationWappMessageDBModel.getWappMessage().getMessageMaps().putAll(nativeUrlMap);

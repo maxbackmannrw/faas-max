@@ -217,7 +217,7 @@ public class ChannelAccountFramework {
 
     public WappAccountDBModel createWappAccountService(String account,String phoneNumber, String serverUrl) throws IOException {
 
-        String instanceKey = wappChannelService.initWappInstanceService(serverUrl);
+        String instanceKey = wappChannelService.initWappChannelService(serverUrl);
         if (instanceKey != null){
 
             WappAccountDBModel wappAccountDBModel = new WappAccountDBModel();

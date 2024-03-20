@@ -1,9 +1,9 @@
-package com.faas.core.utils.endpoint.rest.channel.sms;
+package com.faas.core.utils.endpoint.request.channel.sms;
 
 import com.faas.core.base.model.db.channel.account.SmsAccountDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationSmsMessageDBModel;
 import com.faas.core.base.repo.operation.details.channel.OperationSmsMessageRepository;
-import com.faas.core.utils.endpoint.rest.content.HttpRestCall;
+import com.faas.core.utils.endpoint.request.utility.BaseHttpRequest;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -14,10 +14,10 @@ import java.util.Map;
 
 
 @Component
-public class SmsChannelRestCall {
+public class SmsChannelRequest {
 
     @Autowired
-    HttpRestCall httpRestCall;
+    BaseHttpRequest baseHttpRequest;
 
     @Autowired
     OperationSmsMessageRepository operationSmsMessageRepository;
@@ -36,9 +36,9 @@ public class SmsChannelRestCall {
         formData.put("Sid", operationSmsMessageDBModel.getSmsMessage().getSenderId());
        // formData.put("mno", operationSmsMessageDBModel.getPhoneNumber());
         formData.put("msg", operationSmsMessageDBModel.getSmsMessage().getSmsBody());
-        String requestUrl = httpRestCall.urlBuilder(smsAccountDBModel.getApiUrl(),"",null);
+        String requestUrl = baseHttpRequest.urlBuilder(smsAccountDBModel.getApiUrl(),"",null);
 
-        String response = httpRestCall.sendPostFormRequest(requestUrl,formData);
+        String response = baseHttpRequest.sendPostFormRequest(requestUrl,formData);
         if (response != null){
         }else {
         }
