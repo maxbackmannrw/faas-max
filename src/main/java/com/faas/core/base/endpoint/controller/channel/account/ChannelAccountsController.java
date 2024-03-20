@@ -230,9 +230,9 @@ public class ChannelAccountsController {
     public ResponseEntity<?> createWappAccount(@RequestParam long userId,
                                                @RequestParam String account,
                                                @RequestParam String phoneNumber,
-                                               @RequestParam String serverUrl) throws IOException {
+                                               @RequestParam long serverId) throws IOException {
 
-        WappAccountWSModel response = channelAccountsMiddleware.createWappAccount(userId,account,phoneNumber,serverUrl);
+        WappAccountWSModel response = channelAccountsMiddleware.createWappAccount(userId,account,phoneNumber,serverId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

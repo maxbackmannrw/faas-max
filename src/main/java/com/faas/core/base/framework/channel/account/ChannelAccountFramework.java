@@ -1,8 +1,10 @@
 package com.faas.core.base.framework.channel.account;
 
 import com.faas.core.base.model.db.channel.account.*;
+import com.faas.core.base.model.db.channel.settings.WappServerDBModel;
 import com.faas.core.base.model.ws.channel.account.dto.*;
 import com.faas.core.base.repo.channel.account.*;
+import com.faas.core.base.repo.channel.settings.WappServerRepository;
 import com.faas.core.utils.service.channel.wapp.WappChannelService;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
@@ -29,6 +31,9 @@ public class ChannelAccountFramework {
 
     @Autowired
     WappAccountRepository wappAccountRepository;
+
+    @Autowired
+    WappServerRepository wappServerRepository;
 
     @Autowired
     EmailAccountRepository emailAccountRepository;
@@ -215,27 +220,32 @@ public class ChannelAccountFramework {
     }
 
 
-    public WappAccountDBModel createWappAccountService(String account,String phoneNumber, String serverUrl) throws IOException {
+    public WappAccountDBModel createWappAccountService(String account,String phoneNumber, long serverId) throws IOException {
 
-        String instanceKey = wappChannelService.initWappChannelService(serverUrl);
-        if (instanceKey != null){
+        Optional<WappServerDBModel> wappServerDBModel = wappServerRepository.findById(serverId);
+        if (wappServerDBModel.isPresent()){
+            String instanceKey = wappChannelService.initWappChannelService(wappServerDBModel.get().getServerUrl());
+            if (instanceKey != null){
 
-            WappAccountDBModel wappAccountDBModel = new WappAccountDBModel();
-            wappAccountDBModel.setAccount(account);
-            wappAccountDBModel.setInstanceKey(instanceKey);
-            wappAccountDBModel.setPhoneNumber(phoneNumber);
-            wappAccountDBModel.setServerUrl(serverUrl);
-            wappAccountDBModel.setAccountDatas(new ArrayList<>());
-            wappAccountDBModel.setuDate(appUtils.getCurrentTimeStamp());
-            wappAccountDBModel.setcDate(appUtils.getCurrentTimeStamp());
-            wappAccountDBModel.setStatus(1);
+                WappAccountDBModel wappAccountDBModel = new WappAccountDBModel();
+                wappAccountDBModel.setAccount(account);
+                wappAccountDBModel.setInstanceKey(instanceKey);
+                wappAccountDBModel.setPhoneNumber(phoneNumber);
+                wappAccountDBModel.setAccountDatas(new ArrayList<>());
+                wappAccountDBModel.setServerId(wappServerDBModel.get().getId());
+                wappAccountDBModel.setWappServer(wappServerDBModel.get().getWappServer());
+                wappAccountDBModel.setServerUrl(wappServerDBModel.get().getServerUrl());
+                wappAccountDBModel.setServerType(wappServerDBModel.get().getServerType());
+                wappAccountDBModel.setuDate(appUtils.getCurrentTimeStamp());
+                wappAccountDBModel.setcDate(appUtils.getCurrentTimeStamp());
+                wappAccountDBModel.setStatus(1);
 
-            return wappAccountRepository.save(wappAccountDBModel);
+                return wappAccountRepository.save(wappAccountDBModel);
+            }
+
         }
         return null;
     }
-
-
 
     public WappAccountDBModel updateWappAccountService(String accountId,String account,String instanceKey,String phoneNumber,String serverUrl) {
 

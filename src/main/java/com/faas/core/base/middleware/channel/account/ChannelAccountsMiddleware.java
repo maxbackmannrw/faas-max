@@ -351,13 +351,13 @@ public class ChannelAccountsMiddleware {
     }
 
 
-    public WappAccountWSModel createWappAccount(long userId,String account, String phoneNumber, String serverUrl) throws IOException {
+    public WappAccountWSModel createWappAccount(long userId,String account, String phoneNumber, long serverId) throws IOException {
 
         WappAccountWSModel response = new WappAccountWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<WappAccountWSDTO> wappAccountWSDTOS = new ArrayList<>();
 
-        WappAccountDBModel wappAccountDBModel = channelAccountFramework.createWappAccountService(account,phoneNumber,serverUrl);
+        WappAccountDBModel wappAccountDBModel = channelAccountFramework.createWappAccountService(account,phoneNumber,serverId);
         if (wappAccountDBModel != null){
             wappAccountWSDTOS.add(channelAccountFramework.fillWappAccountWSDTO(wappAccountDBModel));
         }

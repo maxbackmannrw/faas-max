@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
-@Document(collection = "wapp_account_table")
+@Document(collection = "wapp_accounts_table")
 public class WappAccountDBModel {
 
     @Id
@@ -14,8 +14,11 @@ public class WappAccountDBModel {
     private String account;
     private String instanceKey;
     private String phoneNumber;
-    private String serverUrl;
     private List<AccountDataDAO>accountDatas;
+    private long serverId;
+    private String wappServer;
+    private String serverUrl;
+    private String serverType;
     private long uDate;
     private long cDate;
     private int status;
@@ -23,13 +26,16 @@ public class WappAccountDBModel {
     public WappAccountDBModel() {
     }
 
-    public WappAccountDBModel(String id, String account, String instanceKey, String phoneNumber, String serverUrl, List<AccountDataDAO> accountDatas, long uDate, long cDate, int status) {
+    public WappAccountDBModel(String id, String account, String instanceKey, String phoneNumber, List<AccountDataDAO> accountDatas, long serverId, String wappServer, String serverUrl, String serverType, long uDate, long cDate, int status) {
         this.id = id;
         this.account = account;
         this.instanceKey = instanceKey;
         this.phoneNumber = phoneNumber;
-        this.serverUrl = serverUrl;
         this.accountDatas = accountDatas;
+        this.serverId = serverId;
+        this.wappServer = wappServer;
+        this.serverUrl = serverUrl;
+        this.serverType = serverType;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
@@ -67,6 +73,30 @@ public class WappAccountDBModel {
         this.phoneNumber = phoneNumber;
     }
 
+    public List<AccountDataDAO> getAccountDatas() {
+        return accountDatas;
+    }
+
+    public void setAccountDatas(List<AccountDataDAO> accountDatas) {
+        this.accountDatas = accountDatas;
+    }
+
+    public long getServerId() {
+        return serverId;
+    }
+
+    public void setServerId(long serverId) {
+        this.serverId = serverId;
+    }
+
+    public String getWappServer() {
+        return wappServer;
+    }
+
+    public void setWappServer(String wappServer) {
+        this.wappServer = wappServer;
+    }
+
     public String getServerUrl() {
         return serverUrl;
     }
@@ -75,12 +105,12 @@ public class WappAccountDBModel {
         this.serverUrl = serverUrl;
     }
 
-    public List<AccountDataDAO> getAccountDatas() {
-        return accountDatas;
+    public String getServerType() {
+        return serverType;
     }
 
-    public void setAccountDatas(List<AccountDataDAO> accountDatas) {
-        this.accountDatas = accountDatas;
+    public void setServerType(String serverType) {
+        this.serverType = serverType;
     }
 
     public long getuDate() {

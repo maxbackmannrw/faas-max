@@ -43,7 +43,8 @@ public class WappChannelService {
 
 
     public String initWappChannelService(String serverUrl) throws IOException {
-        return wappChannelRequest.initWappChannelRequest(serverUrl);
+        return "OK";
+        //return wappChannelRequest.initWappChannelRequest(serverUrl);
     }
 
 
