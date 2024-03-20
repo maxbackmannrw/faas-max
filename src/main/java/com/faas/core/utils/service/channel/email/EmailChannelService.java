@@ -1,6 +1,6 @@
-package com.faas.core.utils.service.channel.message.push;
+package com.faas.core.utils.service.channel.email;
 
-import com.faas.core.base.model.db.operation.details.channel.OperationPushMessageDBModel;
+import com.faas.core.base.model.db.operation.details.channel.OperationEmailMessageDBModel;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
@@ -9,15 +9,13 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 
 @Service
-public class PushChannelService {
-
+public class EmailChannelService {
 
     @Autowired
     AppUtils appUtils;
 
-
     @Async
-    public void sendAsyncPushService(OperationPushMessageDBModel operationPushMessageDBModel) throws IOException {
+    public void sendAsyncEmailService(OperationEmailMessageDBModel operationEmailMessageDBModel) throws IOException {
 
         /*
         Optional<SmsAccountDBModel> smsAccountDBModel = smsAccountRepository.findById(operationSmsMessageDBModel.getSmsMessage().getAccountId());
@@ -27,8 +25,9 @@ public class PushChannelService {
             /smsChannelRestCall.sendSmsMessageRest(operationSmsMessageDBModel,smsAccountDBModel.get());
         }
          */
-        System.out.println("async sendAsyncPushService  worked");
+        System.out.println("async sendAsyncEmailService  worked");
     }
+
 
 
 

@@ -1,4 +1,4 @@
-package com.faas.core.utils.service.channel.call.sip;
+package com.faas.core.utils.service.channel.sip;
 
 import com.faas.core.base.model.db.operation.details.channel.OperationSipCallDBModel;
 import com.faas.core.utils.config.AppUtils;

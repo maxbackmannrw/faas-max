@@ -1,18 +1,13 @@
 package com.faas.core.api.framework.operation.details.channel.message.push;
 
-import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiOperationEmailWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushChannelWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushTempWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushWSDTO;
 import com.faas.core.base.model.db.client.details.content.ClientDetailsDBModel;
-import com.faas.core.base.model.db.client.details.content.dao.ClientEmailDAO;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
-import com.faas.core.base.model.db.operation.details.channel.OperationEmailMessageDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationPushMessageDBModel;
-import com.faas.core.base.model.db.process.details.channel.content.ProcessEmailChannelDBModel;
 import com.faas.core.base.model.db.process.details.channel.content.ProcessPushChannelDBModel;
-import com.faas.core.base.model.db.process.details.channel.temp.ProcessEmailTempDBModel;
 import com.faas.core.base.model.db.process.details.channel.temp.ProcessPushTempDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.repo.client.content.ClientRepository;
@@ -25,7 +20,7 @@ import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.ChannelHelper;
 import com.faas.core.utils.helpers.OperationHelper;
-import com.faas.core.utils.service.channel.message.push.PushChannelService;
+import com.faas.core.utils.service.channel.push.PushChannelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

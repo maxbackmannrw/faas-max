@@ -68,7 +68,7 @@ public class ApiOperationWappMessageChannelController {
     public ResponseEntity<?> apiSendOperationWappMessage(@RequestParam long agentId,
                                                          @RequestParam String operationId,
                                                          @RequestParam String tempId,
-                                                         @RequestParam String numberId) {
+                                                         @RequestParam String numberId) throws IOException {
 
         ApiOperationWappMessageWSModel response = apiOperationWappMessageChannelMiddleware.apiSendOperationWappMessage(agentId,operationId,tempId,numberId);
 

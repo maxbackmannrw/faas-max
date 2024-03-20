@@ -25,10 +25,11 @@ import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.ChannelHelper;
 import com.faas.core.utils.helpers.OperationHelper;
-import com.faas.core.utils.service.channel.message.wapp.WappMessageChannelService;
+import com.faas.core.utils.service.channel.wapp.WappChannelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,7 +43,7 @@ public class ApiOperationWappMessageChannelFramework {
     ChannelHelper channelHelper;
 
     @Autowired
-    WappMessageChannelService wappMessageChannelService;
+    WappChannelService wappChannelService;
 
     @Autowired
     UserRepository userRepository;
@@ -108,7 +109,7 @@ public class ApiOperationWappMessageChannelFramework {
     }
 
 
-    public ApiOperationWappMessageWSDTO apiSendOperationWappMessageService(long agentId,String operationId,String tempId,String numberId){
+    public ApiOperationWappMessageWSDTO apiSendOperationWappMessageService(long agentId,String operationId,String tempId,String numberId) throws IOException {
 
         List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
         if (!sessionDBModels.isEmpty()){
@@ -120,7 +121,7 @@ public class ApiOperationWappMessageChannelFramework {
             if (!agentDetails.isEmpty() && agentDetails.get(0).getWappChannel() != null && clientPhoneDAO != null && !wappMessageTempDBModels.isEmpty() && !wappChannelDBModels.isEmpty() && wappChannelDBModels.get(0).getMessageState().equalsIgnoreCase(AppConstant.ACTIVE_STATE)){
 
                 OperationWappMessageDBModel operationWappMessageDBModel = channelHelper.createOperationWappMessageDBModel(agentDetails.get(0),sessionDBModels.get(0),clientPhoneDAO,wappMessageTempDBModels.get(0));
-                wappMessageChannelService.sendAsyncWappMessageService(operationWappMessageDBModel);
+                wappChannelService.sendAsyncWappMessageService(operationWappMessageDBModel);
                 return new ApiOperationWappMessageWSDTO(operationWappMessageDBModel);
             }
         }

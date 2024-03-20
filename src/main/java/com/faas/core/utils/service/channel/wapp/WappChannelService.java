@@ -1,4 +1,4 @@
-package com.faas.core.utils.service.channel.message.wapp;
+package com.faas.core.utils.service.channel.wapp;
 
 import com.faas.core.base.model.db.channel.account.WappAccountDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationWappMessageDBModel;
@@ -7,20 +7,21 @@ import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.repo.channel.account.WappAccountRepository;
 import com.faas.core.base.repo.operation.details.channel.OperationWappMessageRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
-import com.faas.core.utils.config.AppConstant;
-import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.endpoint.rest.channel.wapp.WappChannelRestCall;
 import com.faas.core.utils.endpoint.rest.utility.UtilityRestCall;
+import com.faas.core.utils.config.AppConstant;
+import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.Map;
+import java.util.Optional;
 
 
 @Service
-public class WappMessageChannelService {
+public class WappChannelService {
 
     @Autowired
     WappChannelRestCall wappRestClient;
@@ -50,11 +51,29 @@ public class WappMessageChannelService {
         return wappRestClient.getWappQRCodeInBase64Rest(serverUrl,instanceKey);
     }
 
-
     @Async
-    public void sendAsyncWappMessageService(OperationWappMessageDBModel wappMessageDBModel) {
+    public void sendAsyncWappMessageService(OperationWappMessageDBModel wappMessageDBModel) throws IOException {
 
-        System.out.println("async sendAsyncWappMessageService  worked");
+        /*
+        Optional<WappAccountDBModel> wappAccountDBModel = wappAccountRepository.findById(operationWappMessageDBModel.getWappMessage().getAccountId());
+        Optional<ProcessDBModel> processDBModel = processRepository.findById(sessionDBModel.getProcessId());
+
+        if (wappAccountDBModel.isPresent() && processDBModel.isPresent()) {
+            operationWappMessageDBModel = generateWappMessageBodyService(sessionDBModel, operationWappMessageDBModel,wappAccountDBModel.get(),processDBModel.get());
+            if (operationWappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.TEXT_MESSAGE)){
+                wappRestClient.sendWappTextMessageRest(operationWappMessageDBModel,wappAccountDBModel.get());
+            }
+            if (operationWappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.IMAGE_MESSAGE)){
+            }
+            if (operationWappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.VOICE_MESSAGE)){
+            }
+            if (operationWappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.VIDEO_MESSAGE)){
+            }
+            if (operationWappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.DOC_MESSAGE)){
+            }
+        }
+
+         */
     }
 
 

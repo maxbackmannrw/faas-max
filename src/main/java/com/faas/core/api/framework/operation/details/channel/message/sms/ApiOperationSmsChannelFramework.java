@@ -18,7 +18,7 @@ import com.faas.core.base.repo.operation.details.channel.OperationSmsMessageRepo
 import com.faas.core.base.repo.process.details.channel.content.ProcessSmsChannelRepository;
 import com.faas.core.base.repo.process.details.channel.temp.ProcessSmsMessageTempRepository;
 import com.faas.core.base.repo.session.SessionRepository;
-import com.faas.core.utils.service.channel.message.sms.SmsChannelService;
+import com.faas.core.utils.service.channel.sms.SmsChannelService;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.ChannelHelper;
 import com.faas.core.utils.helpers.OperationHelper;
