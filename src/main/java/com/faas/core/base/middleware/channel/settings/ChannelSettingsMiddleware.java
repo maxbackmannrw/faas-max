@@ -4,6 +4,8 @@ import com.faas.core.base.framework.channel.settings.ChannelSettingsFramework;
 import com.faas.core.base.model.db.channel.settings.EmailTypeDBModel;
 import com.faas.core.base.model.db.channel.settings.MessageTypeDBModel;
 import com.faas.core.base.model.db.channel.settings.PushTypeDBModel;
+import com.faas.core.base.model.ws.channel.settings.WappServerWSModel;
+import com.faas.core.base.model.ws.channel.settings.dto.WappServerWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.model.ws.channel.settings.EmailTypeWSModel;
 import com.faas.core.base.model.ws.channel.settings.MessageTypeWSModel;
@@ -65,7 +67,6 @@ public class ChannelSettingsMiddleware {
         return response;
     }
 
-
     public EmailTypeWSModel getEmailType(long userId,long typeId) {
 
         EmailTypeWSModel response = new EmailTypeWSModel();
@@ -86,7 +87,6 @@ public class ChannelSettingsMiddleware {
 
         return response;
     }
-
 
     public EmailTypeWSModel createEmailType(long userId,String emailType) {
 
@@ -109,8 +109,6 @@ public class ChannelSettingsMiddleware {
         return response;
     }
 
-
-
     public EmailTypeWSModel updateEmailType(long userId,long typeId,String emailType) {
 
         EmailTypeWSModel response = new EmailTypeWSModel();
@@ -132,8 +130,6 @@ public class ChannelSettingsMiddleware {
         return response;
     }
 
-
-
     public EmailTypeWSModel removeEmailType(long userId, long typeId) {
 
         EmailTypeWSModel response = new EmailTypeWSModel();
@@ -154,8 +150,6 @@ public class ChannelSettingsMiddleware {
 
         return response;
     }
-
-
 
 
     public PushTypeWSModel getPushTypes(long userId) {
@@ -181,7 +175,6 @@ public class ChannelSettingsMiddleware {
         return response;
     }
 
-
     public PushTypeWSModel getPushTypesByMain(long userId, String mainType) {
 
         PushTypeWSModel response = new PushTypeWSModel();
@@ -205,8 +198,6 @@ public class ChannelSettingsMiddleware {
         return response;
     }
 
-
-
     public PushTypeWSModel getPushType(long userId, long typeId) {
 
         PushTypeWSModel response = new PushTypeWSModel();
@@ -227,8 +218,6 @@ public class ChannelSettingsMiddleware {
 
         return response;
     }
-
-
 
     public PushTypeWSModel createPushType(long userId, String pushType, String mainType) {
 
@@ -251,7 +240,6 @@ public class ChannelSettingsMiddleware {
         return response;
     }
 
-
     public PushTypeWSModel updatePushType(long userId,long typeId, String pushType, String mainType) {
 
         PushTypeWSModel response = new PushTypeWSModel();
@@ -273,7 +261,6 @@ public class ChannelSettingsMiddleware {
         return response;
     }
 
-
     public PushTypeWSModel removePushType(long userId, long typeId) {
 
         PushTypeWSModel response = new PushTypeWSModel();
@@ -294,7 +281,6 @@ public class ChannelSettingsMiddleware {
 
         return response;
     }
-
 
 
     public MessageTypeWSModel getAllMessageTypes(long userId) {
@@ -338,7 +324,6 @@ public class ChannelSettingsMiddleware {
 
         return response;
     }
-
 
     public MessageTypeWSModel getMessageType(long userId, long typeId) {
 
@@ -403,7 +388,6 @@ public class ChannelSettingsMiddleware {
         return response;
     }
 
-
     public MessageTypeWSModel removeMessageType(long userId, long typeId) {
 
         MessageTypeWSModel response = new MessageTypeWSModel();
@@ -424,6 +408,113 @@ public class ChannelSettingsMiddleware {
 
         return response;
     }
+
+
+
+    public WappServerWSModel getWappServers(long userId) {
+
+        WappServerWSModel response = new WappServerWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        List<WappServerWSDTO>wappServerWSDTOS = channelSettingsFramework.getWappServersService(userId);
+        if (wappServerWSDTOS != null){
+            response.setWappServers(wappServerWSDTOS);
+        }
+
+        general.setOperation("getWappServers");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public WappServerWSModel getWappServer(long userId,long serverId) {
+
+        WappServerWSModel response = new WappServerWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+        List<WappServerWSDTO>wappServerWSDTOS = new ArrayList<>();
+
+        WappServerWSDTO wappServerWSDTO = channelSettingsFramework.getWappServerService(userId,serverId);
+        if (wappServerWSDTO != null){
+            wappServerWSDTOS.add(wappServerWSDTO);
+        }
+
+        response.setWappServers(wappServerWSDTOS);
+        general.setOperation("getWappServer");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public WappServerWSModel createWappServer(long userId,String wappServer,String serverUrl,String serverType) {
+
+        WappServerWSModel response = new WappServerWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+        List<WappServerWSDTO>wappServerWSDTOS = new ArrayList<>();
+
+        WappServerWSDTO wappServerWSDTO = channelSettingsFramework.createWappServerService(userId,wappServer,serverUrl,serverType);
+        if (wappServerWSDTO != null){
+            wappServerWSDTOS.add(wappServerWSDTO);
+        }
+
+        response.setWappServers(wappServerWSDTOS);
+        general.setOperation("createWappServer");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public WappServerWSModel updateWappServer(long userId,long serverId,String wappServer,String serverUrl,String serverType) {
+
+        WappServerWSModel response = new WappServerWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+        List<WappServerWSDTO>wappServerWSDTOS = new ArrayList<>();
+
+        WappServerWSDTO wappServerWSDTO = channelSettingsFramework.updateWappServerService(userId,serverId,wappServer,serverUrl,serverType);
+        if (wappServerWSDTO != null){
+            wappServerWSDTOS.add(wappServerWSDTO);
+        }
+
+        response.setWappServers(wappServerWSDTOS);
+        general.setOperation("updateWappServer");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public WappServerWSModel removeWappServer(long userId,long serverId) {
+
+        WappServerWSModel response = new WappServerWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+        List<WappServerWSDTO>wappServerWSDTOS = new ArrayList<>();
+
+        WappServerWSDTO wappServerWSDTO = channelSettingsFramework.removeWappServerService(userId,serverId);
+        if (wappServerWSDTO != null){
+            wappServerWSDTOS.add(wappServerWSDTO);
+        }
+
+        response.setWappServers(wappServerWSDTOS);
+        general.setOperation("removeWappServer");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
 
 
 }

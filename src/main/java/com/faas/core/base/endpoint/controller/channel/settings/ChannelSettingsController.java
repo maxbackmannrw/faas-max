@@ -4,6 +4,7 @@ import com.faas.core.base.middleware.channel.settings.ChannelSettingsMiddleware;
 import com.faas.core.base.model.ws.channel.settings.EmailTypeWSModel;
 import com.faas.core.base.model.ws.channel.settings.MessageTypeWSModel;
 import com.faas.core.base.model.ws.channel.settings.PushTypeWSModel;
+import com.faas.core.base.model.ws.channel.settings.WappServerWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,6 @@ public class ChannelSettingsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.GET_EMAIL_TYPE, method = RequestMethod.POST)
     public ResponseEntity<?> getEmailType(@RequestParam long userId,
                                           @RequestParam long typeId) {
@@ -48,7 +48,6 @@ public class ChannelSettingsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.CREATE_EMAIL_TYPE, method = RequestMethod.POST)
     public ResponseEntity<?> createEmailType(@RequestParam long userId,
                                              @RequestParam String emailType) {
@@ -60,7 +59,6 @@ public class ChannelSettingsController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.UPDATE_EMAIL_TYPE, method = RequestMethod.POST)
     public ResponseEntity<?> updateEmailType(@RequestParam long userId,
@@ -75,7 +73,6 @@ public class ChannelSettingsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.REMOVE_EMAIL_TYPE, method = RequestMethod.POST)
     public ResponseEntity<?> removeEmailType(@RequestParam long userId,
                                              @RequestParam long typeId) {
@@ -89,8 +86,6 @@ public class ChannelSettingsController {
     }
 
 
-
-
     @RequestMapping(value = BaseRoute.GET_PUSH_TYPES, method = RequestMethod.POST)
     public ResponseEntity<?> getPushTypes(@RequestParam long userId) {
 
@@ -101,7 +96,6 @@ public class ChannelSettingsController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.GET_PUSH_TYPES_BY_MAIN, method = RequestMethod.POST)
     public ResponseEntity<?> getPushTypesByMain(@RequestParam long userId,
@@ -115,7 +109,6 @@ public class ChannelSettingsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.GET_PUSH_TYPE, method = RequestMethod.POST)
     public ResponseEntity<?> getPushType(@RequestParam long userId,
                                          @RequestParam long typeId) {
@@ -127,8 +120,6 @@ public class ChannelSettingsController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
-
 
     @RequestMapping(value = BaseRoute.CREATE_PUSH_TYPE, method = RequestMethod.POST)
     public ResponseEntity<?> createPushType(@RequestParam long userId,
@@ -142,7 +133,6 @@ public class ChannelSettingsController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.UPDATE_PUSH_TYPE, method = RequestMethod.POST)
     public ResponseEntity<?> updatePushType(@RequestParam long userId,
@@ -158,7 +148,6 @@ public class ChannelSettingsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.REMOVE_PUSH_TYPE, method = RequestMethod.POST)
     public ResponseEntity<?> removePushType(@RequestParam long userId,
                                             @RequestParam long typeId) {
@@ -172,8 +161,6 @@ public class ChannelSettingsController {
     }
 
 
-
-
     @RequestMapping(value = BaseRoute.GET_ALL_MESSAGE_TYPES, method = RequestMethod.POST)
     public ResponseEntity<?> getAllMessageTypes(@RequestParam long userId) {
 
@@ -184,7 +171,6 @@ public class ChannelSettingsController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.GET_MESSAGE_TYPES_BY_MAIN, method = RequestMethod.POST)
     public ResponseEntity<?> getMessageTypesByMain(@RequestParam long userId,
@@ -198,7 +184,6 @@ public class ChannelSettingsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.GET_MESSAGE_TYPE, method = RequestMethod.POST)
     public ResponseEntity<?> getMessageType(@RequestParam long userId,
                                             @RequestParam long typeId) {
@@ -210,7 +195,6 @@ public class ChannelSettingsController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.CREATE_MESSAGE_TYPE, method = RequestMethod.POST)
     public ResponseEntity<?> createMessageType(@RequestParam long userId,
@@ -224,7 +208,6 @@ public class ChannelSettingsController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.UPDATE_MESSAGE_TYPE, method = RequestMethod.POST)
     public ResponseEntity<?> updateMessageType(@RequestParam long userId,
@@ -240,7 +223,6 @@ public class ChannelSettingsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.REMOVE_MESSAGE_TYPE, method = RequestMethod.POST)
     public ResponseEntity<?> removeMessageType(@RequestParam long userId,
                                                @RequestParam long typeId) {
@@ -252,5 +234,71 @@ public class ChannelSettingsController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
+
+
+    @RequestMapping(value = BaseRoute.GET_WAPP_SERVERS, method = RequestMethod.POST)
+    public ResponseEntity<?> getWappServers(@RequestParam long userId) {
+
+        WappServerWSModel response = channelSettingsMiddleware.getWappServers(userId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+    @RequestMapping(value = BaseRoute.GET_WAPP_SERVER, method = RequestMethod.POST)
+    public ResponseEntity<?> getWappServer(@RequestParam long userId,
+                                           @RequestParam long serverId) {
+
+        WappServerWSModel response = channelSettingsMiddleware.getWappServer(userId,serverId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+    @RequestMapping(value = BaseRoute.CREATE_WAPP_SERVER, method = RequestMethod.POST)
+    public ResponseEntity<?> createWappServer(@RequestParam long userId,
+                                              @RequestParam String wappServer,
+                                              @RequestParam String serverUrl,
+                                              @RequestParam String serverType) {
+
+        WappServerWSModel response = channelSettingsMiddleware.createWappServer(userId,wappServer,serverUrl,serverType);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+    @RequestMapping(value = BaseRoute.UPDATE_WAPP_SERVER, method = RequestMethod.POST)
+    public ResponseEntity<?> updateWappServer(@RequestParam long userId,
+                                              @RequestParam long serverId,
+                                              @RequestParam String wappServer,
+                                              @RequestParam String serverUrl,
+                                              @RequestParam String serverType) {
+
+        WappServerWSModel response = channelSettingsMiddleware.updateWappServer(userId,serverId,wappServer,serverUrl,serverType);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+    @RequestMapping(value = BaseRoute.REMOVE_WAPP_SERVER, method = RequestMethod.POST)
+    public ResponseEntity<?> removeWappServer(@RequestParam long userId,
+                                              @RequestParam long serverId) {
+
+        WappServerWSModel response = channelSettingsMiddleware.removeWappServer(userId,serverId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
 
 }

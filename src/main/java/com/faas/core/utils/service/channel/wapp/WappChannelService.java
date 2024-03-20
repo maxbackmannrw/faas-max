@@ -22,11 +22,12 @@ import java.util.Map;
 @Service
 public class WappChannelService {
 
-    @Autowired
-    WappChannelRequest wappChannelRequest;
 
     @Autowired
     CommonRequest commonRequest;
+
+    @Autowired
+    WappChannelRequest wappChannelRequest;
 
     @Autowired
     ProcessRepository processRepository;

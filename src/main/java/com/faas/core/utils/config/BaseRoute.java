@@ -309,6 +309,11 @@ public class BaseRoute {
     public static final String UPDATE_PUSH_TYPE = "updatepushtype";
     public static final String REMOVE_PUSH_TYPE = "removepushtype";
 
+    public static final String GET_WAPP_SERVERS = "getwappservers";
+    public static final String GET_WAPP_SERVER = "getwappserver";
+    public static final String CREATE_WAPP_SERVER = "createwappserver";
+    public static final String UPDATE_WAPP_SERVER = "updatewappserver";
+    public static final String REMOVE_WAPP_SERVER = "removewappserver";
 
 
     public static final String GET_ALL_PROCESSES = "getallprocesses";
