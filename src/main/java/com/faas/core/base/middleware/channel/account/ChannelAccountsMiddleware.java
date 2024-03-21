@@ -16,10 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-
 @Component
 public class ChannelAccountsMiddleware {
-
 
     @Autowired
     ChannelAccountFramework channelAccountFramework;
@@ -42,7 +40,6 @@ public class ChannelAccountsMiddleware {
     @Autowired
     AppUtils appUtils;
 
-
     public ChannelAccountWSModel getAllChannelAccounts(long userId) {
 
         ChannelAccountWSModel response = new ChannelAccountWSModel();
@@ -61,6 +58,7 @@ public class ChannelAccountsMiddleware {
 
         return response;
     }
+
 
     public SipAccountWSModel getAllSipAccounts(long userId) {
 
@@ -83,7 +81,6 @@ public class ChannelAccountsMiddleware {
         return response;
     }
 
-
     public SipAccountWSModel getSipAccount(long userId,String accountId) {
 
         SipAccountWSModel response = new SipAccountWSModel();
@@ -104,7 +101,6 @@ public class ChannelAccountsMiddleware {
 
         return response;
     }
-
 
     public SipAccountWSModel createSipAccount(long userId,String account,String userName,String authUser,String password,String sipUrl,String provider) {
 
@@ -127,7 +123,6 @@ public class ChannelAccountsMiddleware {
         return response;
     }
 
-
     public SipAccountWSModel updateSipAccount(long userId,String accountId,String account,String userName,String authUser,String password,String sipUrl,String provider) {
 
         SipAccountWSModel response = new SipAccountWSModel();
@@ -148,7 +143,6 @@ public class ChannelAccountsMiddleware {
 
         return response;
     }
-
 
     public SipAccountWSModel removeSipAccount(long userId,String accountId) {
 
@@ -196,8 +190,6 @@ public class ChannelAccountsMiddleware {
         return response;
     }
 
-
-
     public SmsAccountWSModel getSmsAccount(long userId,String accountId) {
 
         SmsAccountWSModel response = new SmsAccountWSModel();
@@ -218,8 +210,6 @@ public class ChannelAccountsMiddleware {
 
         return response;
     }
-
-
 
     public SmsAccountWSModel createSmsAccount(long userId,String account,String userName,String password,String apiToken,String apiUrl,String provider) {
 
@@ -242,7 +232,6 @@ public class ChannelAccountsMiddleware {
         return response;
     }
 
-
     public SmsAccountWSModel updateSmsAccount(long userId,String accountId,String account,String userName,String password,String apiToken,String apiUrl,String provider) {
 
         SmsAccountWSModel response = new SmsAccountWSModel();
@@ -263,7 +252,6 @@ public class ChannelAccountsMiddleware {
 
         return response;
     }
-
 
     public SmsAccountWSModel removeSmsAccount(long userId,String accountId) {
 
@@ -287,7 +275,6 @@ public class ChannelAccountsMiddleware {
     }
 
 
-
     public WappAccountWSModel getAllWappAccounts(long userId) {
 
         WappAccountWSModel response = new WappAccountWSModel();
@@ -308,7 +295,6 @@ public class ChannelAccountsMiddleware {
 
         return response;
     }
-
 
     public WappAccountWSModel getWappAccount(long userId, String accountId) {
 
@@ -350,7 +336,6 @@ public class ChannelAccountsMiddleware {
         return response;
     }
 
-
     public WappAccountWSModel createWappAccount(long userId,String account, String phoneNumber, long serverId) throws IOException {
 
         WappAccountWSModel response = new WappAccountWSModel();
@@ -371,8 +356,6 @@ public class ChannelAccountsMiddleware {
 
         return response;
     }
-
-
 
     public WappAccountWSModel updateWappAccount(long userId,String accountId,String account,String instanceKey,String phoneNumber,String serverUrl) {
 
@@ -395,7 +378,6 @@ public class ChannelAccountsMiddleware {
         return response;
     }
 
-
     public WappAccountWSModel removeWappAccount(long userId, String accountId) {
 
         WappAccountWSModel response = new WappAccountWSModel();
@@ -416,7 +398,6 @@ public class ChannelAccountsMiddleware {
 
         return response;
     }
-
 
 
     public EmailAccountWSModel getAllEmailAccounts(long userId) {
@@ -442,7 +423,6 @@ public class ChannelAccountsMiddleware {
         return response;
     }
 
-
     public EmailAccountWSModel getEmailAccount(long userId,String accountId) {
 
         EmailAccountWSModel response = new EmailAccountWSModel();
@@ -463,7 +443,6 @@ public class ChannelAccountsMiddleware {
 
         return response;
     }
-
 
     public EmailAccountWSModel createEmailAccount(long userId,String account,String provider) {
 
@@ -486,8 +465,6 @@ public class ChannelAccountsMiddleware {
         return response;
     }
 
-
-
     public EmailAccountWSModel updateEmailAccount(long userId,String accountId,String account,String provider) {
 
         EmailAccountWSModel response = new EmailAccountWSModel();
@@ -508,7 +485,6 @@ public class ChannelAccountsMiddleware {
 
         return response;
     }
-
 
     public EmailAccountWSModel removeEmailAccount(long userId,String accountId) {
 
@@ -553,8 +529,6 @@ public class ChannelAccountsMiddleware {
         return response;
     }
 
-
-
     public PushAccountWSModel getPushAccount(long userId, String accountId) {
 
         PushAccountWSModel response = new PushAccountWSModel();
@@ -575,8 +549,6 @@ public class ChannelAccountsMiddleware {
 
         return response;
     }
-
-
 
     public PushAccountWSModel createPushAccount(long userId,String account, String provider) {
 
@@ -599,8 +571,6 @@ public class ChannelAccountsMiddleware {
         return response;
     }
 
-
-
     public PushAccountWSModel updatePushAccount(long userId,String accountId, String account, String provider) {
 
         PushAccountWSModel response = new PushAccountWSModel();
@@ -622,7 +592,6 @@ public class ChannelAccountsMiddleware {
         return response;
     }
 
-
     public PushAccountWSModel removePushAccount(long userId, String accountId) {
 
         PushAccountWSModel response = new PushAccountWSModel();
@@ -643,5 +612,7 @@ public class ChannelAccountsMiddleware {
 
         return response;
     }
+
+
 
 }

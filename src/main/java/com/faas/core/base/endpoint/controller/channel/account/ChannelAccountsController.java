@@ -35,7 +35,6 @@ public class ChannelAccountsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.GET_ALL_SIP_ACCOUNTS, method = RequestMethod.POST)
     public ResponseEntity<?> getAllSipAccounts(@RequestParam long userId) {
 
@@ -46,7 +45,6 @@ public class ChannelAccountsController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.GET_SIP_ACCOUNT, method = RequestMethod.POST)
     public ResponseEntity<?> getSipAccount(@RequestParam long userId,
@@ -59,7 +57,6 @@ public class ChannelAccountsController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.CREATE_SIP_ACCOUNT, method = RequestMethod.POST)
     public ResponseEntity<?> createSipAccount(@RequestParam long userId,
@@ -78,7 +75,6 @@ public class ChannelAccountsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.UPDATE_SIP_ACCOUNT, method = RequestMethod.POST)
     public ResponseEntity<?> updateSipAccount(@RequestParam long userId,
                                               @RequestParam String accountId,
@@ -96,7 +92,6 @@ public class ChannelAccountsController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.REMOVE_SIP_ACCOUNT, method = RequestMethod.POST)
     public ResponseEntity<?> removeSipAccount(@RequestParam long userId,
@@ -123,7 +118,6 @@ public class ChannelAccountsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.GET_SMS_ACCOUNT, method = RequestMethod.POST)
     public ResponseEntity<?> getSmsAccount(@RequestParam long userId,
                                            @RequestParam String accountId) {
@@ -135,7 +129,6 @@ public class ChannelAccountsController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.CREATE_SMS_ACCOUNT, method = RequestMethod.POST)
     public ResponseEntity<?> createSmsAccount(@RequestParam long userId,
@@ -154,7 +147,6 @@ public class ChannelAccountsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.UPDATE_SMS_ACCOUNT, method = RequestMethod.POST)
     public ResponseEntity<?> updateSmsAccount(@RequestParam long userId,
                                               @RequestParam String accountId,
@@ -172,7 +164,6 @@ public class ChannelAccountsController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.REMOVE_SMS_ACCOUNT, method = RequestMethod.POST)
     public ResponseEntity<?> removeSmsAccount(@RequestParam long userId,
@@ -199,7 +190,6 @@ public class ChannelAccountsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.GET_WAPP_ACCOUNT, method = RequestMethod.POST)
     public ResponseEntity<?> getWappAccount(@RequestParam long userId,
                                             @RequestParam String accountId) {
@@ -212,7 +202,6 @@ public class ChannelAccountsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.GET_WAPP_ACCOUNT_QR_CODE, method = RequestMethod.POST)
     public ResponseEntity<?> getWappAccountQRCode(@RequestParam long userId,
                                                   @RequestParam String accountId) throws IOException {
@@ -224,7 +213,6 @@ public class ChannelAccountsController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.CREATE_WAPP_ACCOUNT, method = RequestMethod.POST)
     public ResponseEntity<?> createWappAccount(@RequestParam long userId,
@@ -239,7 +227,6 @@ public class ChannelAccountsController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.UPDATE_WAPP_ACCOUNT, method = RequestMethod.POST)
     public ResponseEntity<?> updateWappAccount(@RequestParam long userId,
@@ -257,7 +244,6 @@ public class ChannelAccountsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.REMOVE_WAPP_ACCOUNT, method = RequestMethod.POST)
     public ResponseEntity<?> removeWappAccount(@RequestParam long userId,
                                                @RequestParam String accountId) {
@@ -269,7 +255,6 @@ public class ChannelAccountsController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
 
     @RequestMapping(value = BaseRoute.GET_ALL_EMAIL_ACCOUNTS, method = RequestMethod.POST)
@@ -294,7 +279,6 @@ public class ChannelAccountsController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.CREATE_EMAIL_ACCOUNT, method= RequestMethod.POST)
     public ResponseEntity<?> createEmailAccount(@RequestParam long userId,
@@ -336,6 +320,7 @@ public class ChannelAccountsController {
     }
 
 
+
     @RequestMapping(value = BaseRoute.GET_ALL_PUSH_ACCOUNTS, method = RequestMethod.POST)
     public ResponseEntity<?> getAllPushAccounts(@RequestParam long userId) {
 
@@ -346,7 +331,6 @@ public class ChannelAccountsController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.GET_PUSH_ACCOUNT, method = RequestMethod.POST)
     public ResponseEntity<?> getPushAccount(@RequestParam long userId,
@@ -360,7 +344,6 @@ public class ChannelAccountsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.CREATE_PUSH_ACCOUNT, method = RequestMethod.POST)
     public ResponseEntity<?> createPushAccount(@RequestParam long userId,
                                                @RequestParam String account,
@@ -373,7 +356,6 @@ public class ChannelAccountsController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.UPDATE_PUSH_ACCOUNT, method = RequestMethod.POST)
     public ResponseEntity<?> updatePushAccount(@RequestParam long userId,
@@ -389,7 +371,6 @@ public class ChannelAccountsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.REMOVE_PUSH_ACCOUNT, method = RequestMethod.POST)
     public ResponseEntity<?> removePushAccount(@RequestParam long userId,
                                                @RequestParam String accountId) {
@@ -401,6 +382,7 @@ public class ChannelAccountsController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
+
 
 
 }

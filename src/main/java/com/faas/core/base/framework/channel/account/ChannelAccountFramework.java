@@ -149,7 +149,6 @@ public class ChannelAccountFramework {
         return smsAccountWSDTO;
     }
 
-
     public SmsAccountDBModel createSmsAccountService(String account,String userName,String password,String apiToken,String apiUrl,String provider) {
 
         SmsAccountDBModel smsAccountDBModel = new SmsAccountDBModel();
@@ -203,7 +202,6 @@ public class ChannelAccountFramework {
         return wappAccountWSDTO;
     }
 
-
     public WappQRCodeWSDTO getWappAccountQRCodeService(String accountId) throws IOException {
 
         Optional<WappAccountDBModel> wappAccountDBModel = wappAccountRepository.findById(accountId);
@@ -218,7 +216,6 @@ public class ChannelAccountFramework {
         }
         return null;
     }
-
 
     public WappAccountDBModel createWappAccountService(String account,String phoneNumber, long serverId) throws IOException {
 
@@ -242,28 +239,26 @@ public class ChannelAccountFramework {
 
                 return wappAccountRepository.save(wappAccountDBModel);
             }
-
         }
         return null;
     }
 
     public WappAccountDBModel updateWappAccountService(String accountId,String account,String instanceKey,String phoneNumber,String serverUrl) {
 
-        Optional<WappAccountDBModel> whatsappAccountDBModel = wappAccountRepository.findById(accountId);
-        if (whatsappAccountDBModel.isPresent()){
+        Optional<WappAccountDBModel> wappAccountDBModel = wappAccountRepository.findById(accountId);
+        if (wappAccountDBModel.isPresent()){
 
-            whatsappAccountDBModel.get().setAccount(account);
-            whatsappAccountDBModel.get().setInstanceKey(instanceKey);
-            whatsappAccountDBModel.get().setPhoneNumber(phoneNumber);
-            whatsappAccountDBModel.get().setServerUrl(serverUrl);
-            whatsappAccountDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
-            whatsappAccountDBModel.get().setStatus(1);
+            wappAccountDBModel.get().setAccount(account);
+            wappAccountDBModel.get().setInstanceKey(instanceKey);
+            wappAccountDBModel.get().setPhoneNumber(phoneNumber);
+            wappAccountDBModel.get().setServerUrl(serverUrl);
+            wappAccountDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
+            wappAccountDBModel.get().setStatus(1);
 
-            return wappAccountRepository.save(whatsappAccountDBModel.get());
+            return wappAccountRepository.save(wappAccountDBModel.get());
         }
         return null;
     }
-
 
     public WappAccountDBModel removeWappAccountService(String accountId) {
 
@@ -282,7 +277,6 @@ public class ChannelAccountFramework {
         emailAccountWSDTO.setEmailAccount(emailAccountDBModel);
         return emailAccountWSDTO;
     }
-
 
     public EmailAccountDBModel createEmailAccountService(String account,String provider) {
 
@@ -312,7 +306,6 @@ public class ChannelAccountFramework {
         }
         return null;
     }
-
 
     public EmailAccountDBModel removeEmailAccountService(String accountId) {
 
