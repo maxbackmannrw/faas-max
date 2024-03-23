@@ -221,6 +221,7 @@ public class ChannelAccountFramework {
 
         Optional<WappServerDBModel> wappServerDBModel = wappServerRepository.findById(serverId);
         if (wappServerDBModel.isPresent()){
+
             String instanceKey = wappChannelService.initWappChannelService(wappServerDBModel.get().getServerUrl());
             if (instanceKey != null){
 
