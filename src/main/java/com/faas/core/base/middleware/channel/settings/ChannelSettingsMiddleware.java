@@ -451,13 +451,13 @@ public class ChannelSettingsMiddleware {
         return response;
     }
 
-    public WappServerWSModel createWappServer(long userId,String wappServer,String serverUrl,String serverType) {
+    public WappServerWSModel createWappServer(long userId,String serverName,String serverUrl,String serverType) {
 
         WappServerWSModel response = new WappServerWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<WappServerWSDTO>wappServerWSDTOS = new ArrayList<>();
 
-        WappServerWSDTO wappServerWSDTO = channelSettingsFramework.createWappServerService(userId,wappServer,serverUrl,serverType);
+        WappServerWSDTO wappServerWSDTO = channelSettingsFramework.createWappServerService(userId,serverName,serverUrl,serverType);
         if (wappServerWSDTO != null){
             wappServerWSDTOS.add(wappServerWSDTO);
         }
@@ -472,13 +472,13 @@ public class ChannelSettingsMiddleware {
         return response;
     }
 
-    public WappServerWSModel updateWappServer(long userId,long serverId,String wappServer,String serverUrl,String serverType) {
+    public WappServerWSModel updateWappServer(long userId,long serverId,String serverName,String serverUrl,String serverType) {
 
         WappServerWSModel response = new WappServerWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<WappServerWSDTO>wappServerWSDTOS = new ArrayList<>();
 
-        WappServerWSDTO wappServerWSDTO = channelSettingsFramework.updateWappServerService(userId,serverId,wappServer,serverUrl,serverType);
+        WappServerWSDTO wappServerWSDTO = channelSettingsFramework.updateWappServerService(userId,serverId,serverName,serverUrl,serverType);
         if (wappServerWSDTO != null){
             wappServerWSDTOS.add(wappServerWSDTO);
         }

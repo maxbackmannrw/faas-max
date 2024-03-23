@@ -195,10 +195,10 @@ public class ChannelSettingsFramework {
         return null;
     }
 
-    public WappServerWSDTO createWappServerService(long userId,String wappServer,String serverUrl,String serverType) {
+    public WappServerWSDTO createWappServerService(long userId,String serverName,String serverUrl,String serverType) {
 
         WappServerDBModel wappServerDBModel = new WappServerDBModel();
-        wappServerDBModel.setWappServer(wappServer);
+        wappServerDBModel.setServerName(serverName);
         wappServerDBModel.setServerUrl(serverUrl);
         wappServerDBModel.setServerType(serverType);
         wappServerDBModel.setuDate(appUtils.getCurrentTimeStamp());
@@ -208,12 +208,12 @@ public class ChannelSettingsFramework {
         return new WappServerWSDTO(wappServerRepository.save(wappServerDBModel));
     }
 
-    public WappServerWSDTO updateWappServerService(long userId,long serverId,String wappServer,String serverUrl,String serverType) {
+    public WappServerWSDTO updateWappServerService(long userId,long serverId,String serverName,String serverUrl,String serverType) {
 
         Optional<WappServerDBModel> wappServerDBModel = wappServerRepository.findById(serverId);
         if (wappServerDBModel.isPresent()){
 
-            wappServerDBModel.get().setWappServer(wappServer);
+            wappServerDBModel.get().setServerName(serverName);
             wappServerDBModel.get().setServerUrl(serverUrl);
             wappServerDBModel.get().setServerType(serverType);
             wappServerDBModel.get().setuDate(appUtils.getCurrentTimeStamp());

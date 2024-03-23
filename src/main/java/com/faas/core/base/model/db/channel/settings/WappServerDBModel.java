@@ -3,15 +3,15 @@ package com.faas.core.base.model.db.channel.settings;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "wapp_server_table")
+@Table(name = "wapp_servers_table")
 public class WappServerDBModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "wapp_server")
-    private String wappServer;
+    @Column(name = "server_name")
+    private String serverName;
 
     @Column(name = "server_url")
     private String serverUrl;
@@ -31,9 +31,9 @@ public class WappServerDBModel {
     public WappServerDBModel() {
     }
 
-    public WappServerDBModel(long id, String wappServer, String serverUrl, String serverType, long uDate, long cDate, int status) {
+    public WappServerDBModel(long id, String serverName, String serverUrl, String serverType, long uDate, long cDate, int status) {
         this.id = id;
-        this.wappServer = wappServer;
+        this.serverName = serverName;
         this.serverUrl = serverUrl;
         this.serverType = serverType;
         this.uDate = uDate;
@@ -49,12 +49,12 @@ public class WappServerDBModel {
         this.id = id;
     }
 
-    public String getWappServer() {
-        return wappServer;
+    public String getServerName() {
+        return serverName;
     }
 
-    public void setWappServer(String wappServer) {
-        this.wappServer = wappServer;
+    public void setServerName(String serverName) {
+        this.serverName = serverName;
     }
 
     public String getServerUrl() {

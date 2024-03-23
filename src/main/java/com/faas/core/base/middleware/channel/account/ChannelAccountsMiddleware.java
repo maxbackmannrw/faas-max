@@ -40,6 +40,7 @@ public class ChannelAccountsMiddleware {
     @Autowired
     AppUtils appUtils;
 
+
     public ChannelAccountWSModel getAllChannelAccounts(long userId) {
 
         ChannelAccountWSModel response = new ChannelAccountWSModel();
@@ -58,6 +59,7 @@ public class ChannelAccountsMiddleware {
 
         return response;
     }
+
 
 
     public SipAccountWSModel getAllSipAccounts(long userId) {
@@ -400,6 +402,7 @@ public class ChannelAccountsMiddleware {
     }
 
 
+
     public EmailAccountWSModel getAllEmailAccounts(long userId) {
 
         EmailAccountWSModel response = new EmailAccountWSModel();
@@ -407,7 +410,7 @@ public class ChannelAccountsMiddleware {
         List<EmailAccountWSDTO> emailAccountWSDTOS = new ArrayList<>();
 
         List<EmailAccountDBModel>emailAccountDBModels = emailAccountRepository.findByStatus(1);
-        if (emailAccountDBModels.size()>0){
+        if (!emailAccountDBModels.isEmpty()){
             for (EmailAccountDBModel emailAccountDBModel : emailAccountDBModels) {
                 emailAccountWSDTOS.add(channelAccountFramework.fillEmailAccountWSDTO(emailAccountDBModel));
             }

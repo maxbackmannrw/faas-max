@@ -261,11 +261,11 @@ public class ChannelSettingsController {
 
     @RequestMapping(value = BaseRoute.CREATE_WAPP_SERVER, method = RequestMethod.POST)
     public ResponseEntity<?> createWappServer(@RequestParam long userId,
-                                              @RequestParam String wappServer,
+                                              @RequestParam String serverName,
                                               @RequestParam String serverUrl,
                                               @RequestParam String serverType) {
 
-        WappServerWSModel response = channelSettingsMiddleware.createWappServer(userId,wappServer,serverUrl,serverType);
+        WappServerWSModel response = channelSettingsMiddleware.createWappServer(userId,serverName,serverUrl,serverType);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -276,11 +276,11 @@ public class ChannelSettingsController {
     @RequestMapping(value = BaseRoute.UPDATE_WAPP_SERVER, method = RequestMethod.POST)
     public ResponseEntity<?> updateWappServer(@RequestParam long userId,
                                               @RequestParam long serverId,
-                                              @RequestParam String wappServer,
+                                              @RequestParam String serverName,
                                               @RequestParam String serverUrl,
                                               @RequestParam String serverType) {
 
-        WappServerWSModel response = channelSettingsMiddleware.updateWappServer(userId,serverId,wappServer,serverUrl,serverType);
+        WappServerWSModel response = channelSettingsMiddleware.updateWappServer(userId,serverId,serverName,serverUrl,serverType);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

@@ -231,7 +231,7 @@ public class ChannelAccountFramework {
                 wappAccountDBModel.setPhoneNumber(phoneNumber);
                 wappAccountDBModel.setAccountDatas(new ArrayList<>());
                 wappAccountDBModel.setServerId(wappServerDBModel.get().getId());
-                wappAccountDBModel.setWappServer(wappServerDBModel.get().getWappServer());
+                wappAccountDBModel.setServerName(wappServerDBModel.get().getServerName());
                 wappAccountDBModel.setServerUrl(wappServerDBModel.get().getServerUrl());
                 wappAccountDBModel.setServerType(wappServerDBModel.get().getServerType());
                 wappAccountDBModel.setuDate(appUtils.getCurrentTimeStamp());
@@ -270,6 +270,7 @@ public class ChannelAccountFramework {
         }
         return null;
     }
+
 
 
     public EmailAccountWSDTO fillEmailAccountWSDTO(EmailAccountDBModel emailAccountDBModel) {

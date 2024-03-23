@@ -16,7 +16,7 @@ public class WappAccountDBModel {
     private String phoneNumber;
     private List<AccountDataDAO>accountDatas;
     private long serverId;
-    private String wappServer;
+    private String serverName;
     private String serverUrl;
     private String serverType;
     private long uDate;
@@ -26,14 +26,14 @@ public class WappAccountDBModel {
     public WappAccountDBModel() {
     }
 
-    public WappAccountDBModel(String id, String account, String instanceKey, String phoneNumber, List<AccountDataDAO> accountDatas, long serverId, String wappServer, String serverUrl, String serverType, long uDate, long cDate, int status) {
+    public WappAccountDBModel(String id, String account, String instanceKey, String phoneNumber, List<AccountDataDAO> accountDatas, long serverId, String serverName, String serverUrl, String serverType, long uDate, long cDate, int status) {
         this.id = id;
         this.account = account;
         this.instanceKey = instanceKey;
         this.phoneNumber = phoneNumber;
         this.accountDatas = accountDatas;
         this.serverId = serverId;
-        this.wappServer = wappServer;
+        this.serverName = serverName;
         this.serverUrl = serverUrl;
         this.serverType = serverType;
         this.uDate = uDate;
@@ -89,12 +89,12 @@ public class WappAccountDBModel {
         this.serverId = serverId;
     }
 
-    public String getWappServer() {
-        return wappServer;
+    public String getServerName() {
+        return serverName;
     }
 
-    public void setWappServer(String wappServer) {
-        this.wappServer = wappServer;
+    public void setServerName(String serverName) {
+        this.serverName = serverName;
     }
 
     public String getServerUrl() {
