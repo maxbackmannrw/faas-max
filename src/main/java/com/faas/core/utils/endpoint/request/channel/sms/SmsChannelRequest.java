@@ -36,9 +36,9 @@ public class SmsChannelRequest {
         formData.put("Sid", operationSmsMessageDBModel.getSmsMessage().getSenderId());
        // formData.put("mno", operationSmsMessageDBModel.getPhoneNumber());
         formData.put("msg", operationSmsMessageDBModel.getSmsMessage().getSmsBody());
-        String requestUrl = httpRequest.urlBuilder(smsAccountDBModel.getApiUrl(),"",null);
+        String requestUrl = httpRequest.httpUrlBuilder(smsAccountDBModel.getApiUrl(),"",null);
 
-        String response = httpRequest.sendPostFormRequest(requestUrl,formData);
+        String response = httpRequest.callPostXFormRequest(requestUrl,formData);
         if (response != null){
         }else {
         }

@@ -24,7 +24,7 @@ public class CommonRequest {
         formData.put("apiKey", AppConstant.URL_SHORTENER_API_KEY);
         formData.put("url", httpUrl);
 
-        String response = httpRequest.sendPostFormRequest(httpRequest.urlBuilder(AppConstant.URL_SHORTENER_API_URL,"/create",null),formData);
+        String response = httpRequest.callPostXFormRequest(httpRequest.httpUrlBuilder(AppConstant.URL_SHORTENER_API_URL,"/create",null),formData);
         if (response != null){
             JsonObject resObject = JsonParser.parseString(response).getAsJsonObject();
             if (resObject.get("success").getAsBoolean()){

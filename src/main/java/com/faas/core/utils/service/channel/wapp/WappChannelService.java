@@ -43,13 +43,12 @@ public class WappChannelService {
 
 
     public String initWappChannelService(String serverUrl) throws IOException {
-        System.out.println("initWappChannelService serverUrl: " + serverUrl);
         return wappChannelRequest.initWappChannelRequest(serverUrl);
     }
 
 
-    public String getWappQRCodeInBase64Service(String serverUrl,String instanceKey) throws IOException {
-        return wappChannelRequest.getWappQRCodeInBase64Rest(serverUrl,instanceKey);
+    public String getWappAccountQRCodeService(String serverUrl,String instanceKey) throws IOException {
+        return wappChannelRequest.getWappAccountQRCodeRequest(serverUrl,instanceKey);
     }
 
     @Async
