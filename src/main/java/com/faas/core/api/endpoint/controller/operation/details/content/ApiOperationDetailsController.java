@@ -62,11 +62,11 @@ public class ApiOperationDetailsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-    @RequestMapping(value = ApiRoute.API_GET_SWITCHABLE_OPERATIONS, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetSwichtableOperations(@RequestParam long agentId,
-                                                        @RequestParam String operationId) {
+    @RequestMapping(value = ApiRoute.API_GET_SWITCH_OPERATIONS, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetSwitchOperations(@RequestParam long agentId,
+                                                    @RequestParam String operationId) {
 
-        ApiOperationWSModel response = apiOperationDetailsMiddleware.apiGetSwichtableOperations(agentId,operationId);
+        ApiOperationWSModel response = apiOperationDetailsMiddleware.apiGetSwitchOperations(agentId,operationId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

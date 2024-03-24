@@ -113,7 +113,7 @@ public class ApiOperationDetailsFramework {
         return null;
     }
 
-    public List<ApiOperationWSDTO> apiGetSwichtableOperationsService(long agentId,String operationId) {
+    public List<ApiOperationWSDTO> apiGetSwitchOperationsService(long agentId,String operationId) {
 
         List<ApiOperationWSDTO> operationWSDTOS = new ArrayList<>();
         List<OperationDBModel> operationDBModels = operationRepository.findByAgentIdAndOperationState(agentId,AppConstant.ACTIVE_STATE);

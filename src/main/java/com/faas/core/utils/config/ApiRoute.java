@@ -49,7 +49,6 @@ public class ApiRoute {
     public static final String API_GET_CLIENT_OS_INT = "apigetclientosint";
 
 
-
     public static final String API_GET_AGENT_ASSETS = "apigetagentassets";
     public static final String API_GET_AGENT_ASSET = "apigetagentasset";
     public static final String API_GET_CAMPAIGN_ASSETS = "apigetcampaignassets";
@@ -68,7 +67,7 @@ public class ApiRoute {
     public static final String API_GET_OPERATION_DETAILS = "apigetoperationdetails";
     public static final String API_START_OPERATION = "apistartoperation";
     public static final String API_FINISH_OPERATION = "apifinishoperation";
-    public static final String API_GET_SWITCHABLE_OPERATIONS = "apigetswitchableoperations";
+    public static final String API_GET_SWITCH_OPERATIONS = "apigetswitchoperations";
     public static final String API_SWITCH_OPERATION = "apiswitchoperation";
     public static final String API_GET_OPERATION_CAMPAIGN = "apigetoperationcampaign";
     public static final String API_GET_OPERATION_ACTIVITIES = "apigetoperationactivities";

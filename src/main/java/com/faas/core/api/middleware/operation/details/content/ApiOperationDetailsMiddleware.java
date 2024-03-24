@@ -87,17 +87,17 @@ public class ApiOperationDetailsMiddleware {
         return response;
     }
 
-    public ApiOperationWSModel apiGetSwichtableOperations(long agentId,String operationId) {
+    public ApiOperationWSModel apiGetSwitchOperations(long agentId,String operationId) {
 
         ApiOperationWSModel response = new ApiOperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ApiOperationWSDTO> operationWSDTOS = apiOperationDetailsFramework.apiGetSwichtableOperationsService(agentId,operationId);
+        List<ApiOperationWSDTO> operationWSDTOS = apiOperationDetailsFramework.apiGetSwitchOperationsService(agentId,operationId);
         if (operationWSDTOS != null){
             response.setOperations(operationWSDTOS);
         }
 
-        general.setOperation("apiGetSwichtableOperations");
+        general.setOperation("apiGetSwitchOperations");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
