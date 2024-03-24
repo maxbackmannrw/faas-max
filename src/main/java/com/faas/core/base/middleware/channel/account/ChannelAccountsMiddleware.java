@@ -359,13 +359,13 @@ public class ChannelAccountsMiddleware {
         return response;
     }
 
-    public WappAccountWSModel updateWappAccount(long userId,String accountId,String account,String instanceKey,String phoneNumber,String serverUrl) {
+    public WappAccountWSModel updateWappAccount(long userId,String accountId,String account,String instanceKey,String phoneNumber,long serverId) {
 
         WappAccountWSModel response = new WappAccountWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<WappAccountWSDTO> wappAccountWSDTOS = new ArrayList<>();
 
-        WappAccountDBModel wappAccountDBModel = channelAccountFramework.updateWappAccountService(accountId,account,instanceKey,phoneNumber,serverUrl);
+        WappAccountDBModel wappAccountDBModel = channelAccountFramework.updateWappAccountService(accountId,account,instanceKey,phoneNumber,serverId);
         if (wappAccountDBModel != null){
             wappAccountWSDTOS.add(channelAccountFramework.fillWappAccountWSDTO(wappAccountDBModel));
         }

@@ -234,9 +234,9 @@ public class ChannelAccountsController {
                                                @RequestParam String account,
                                                @RequestParam String instanceKey,
                                                @RequestParam String phoneNumber,
-                                               @RequestParam String serverUrl) {
+                                               @RequestParam long serverId) {
 
-        WappAccountWSModel response = channelAccountsMiddleware.updateWappAccount(userId,accountId,account,instanceKey,phoneNumber,serverUrl);
+        WappAccountWSModel response = channelAccountsMiddleware.updateWappAccount(userId,accountId,account,instanceKey,phoneNumber,serverId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

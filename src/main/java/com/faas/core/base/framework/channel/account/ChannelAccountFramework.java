@@ -220,10 +220,8 @@ public class ChannelAccountFramework {
 
         Optional<WappServerDBModel> wappServerDBModel = wappServerRepository.findById(serverId);
         if (wappServerDBModel.isPresent()){
-
             String instanceKey = wappChannelService.initWappChannelService(wappServerDBModel.get().getServerUrl());
             if (instanceKey != null){
-
                 WappAccountDBModel wappAccountDBModel = new WappAccountDBModel();
                 wappAccountDBModel.setAccount(account);
                 wappAccountDBModel.setInstanceKey(instanceKey);
@@ -243,15 +241,19 @@ public class ChannelAccountFramework {
         return null;
     }
 
-    public WappAccountDBModel updateWappAccountService(String accountId,String account,String instanceKey,String phoneNumber,String serverUrl) {
+    public WappAccountDBModel updateWappAccountService(String accountId,String account,String instanceKey,String phoneNumber,long serverId) {
 
         Optional<WappAccountDBModel> wappAccountDBModel = wappAccountRepository.findById(accountId);
-        if (wappAccountDBModel.isPresent()){
+        Optional<WappServerDBModel> wappServerDBModel = wappServerRepository.findById(serverId);
+        if (wappAccountDBModel.isPresent() && wappServerDBModel.isPresent()){
 
             wappAccountDBModel.get().setAccount(account);
             wappAccountDBModel.get().setInstanceKey(instanceKey);
             wappAccountDBModel.get().setPhoneNumber(phoneNumber);
-            wappAccountDBModel.get().setServerUrl(serverUrl);
+            wappAccountDBModel.get().setServerId(serverId);
+            wappAccountDBModel.get().setServerName(wappServerDBModel.get().getServerName());
+            wappAccountDBModel.get().setServerUrl(wappServerDBModel.get().getServerUrl());
+            wappAccountDBModel.get().setServerType(wappServerDBModel.get().getServerType());
             wappAccountDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
             wappAccountDBModel.get().setStatus(1);
 

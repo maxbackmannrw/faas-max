@@ -74,7 +74,6 @@ public class WappChannelService {
          */
     }
 
-
     public OperationWappMessageDBModel generateWappMessageBodyService(SessionDBModel sessionDBModel, OperationWappMessageDBModel operationWappMessageDBModel, WappAccountDBModel wappAccountDBModel, ProcessDBModel processDBModel) throws IOException {
 
         String wappMessageBody = operationWappMessageDBModel.getWappMessage().getWappBody();
