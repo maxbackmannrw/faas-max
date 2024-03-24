@@ -34,6 +34,7 @@ public class WappChannelRequest {
     public String initWappChannelRequest(String serverUrl) throws IOException {
 
         String requestUrl = baseHttpRequest.urlBuilder(serverUrl,"/instance/init",null);
+        System.out.println("initWappChannelRequest requestUrl : " + requestUrl);
         String response = baseHttpRequest.sendGetRequest(requestUrl);
         if (response != null){
             JsonObject resObject = JsonParser.parseString(response).getAsJsonObject();
