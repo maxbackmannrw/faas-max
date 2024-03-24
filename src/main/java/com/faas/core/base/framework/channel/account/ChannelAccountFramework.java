@@ -206,11 +206,14 @@ public class ChannelAccountFramework {
 
         Optional<WappAccountDBModel> wappAccountDBModel = wappAccountRepository.findById(accountId);
         if (wappAccountDBModel.isPresent()){
+
             String qrCodeInBase64 = wappChannelService.getWappQRCodeInBase64Service(wappAccountDBModel.get().getServerUrl(),wappAccountDBModel.get().getInstanceKey());
             if (qrCodeInBase64 != null){
+
                 WappQRCodeWSDTO wappQRCodeWSDTO = new WappQRCodeWSDTO();
                 wappQRCodeWSDTO.setQrCodeStatus(AppConstant.GENERAL_SUCCESS_STATUS);
                 wappQRCodeWSDTO.setQrCodeInBase64(qrCodeInBase64);
+
                 return wappQRCodeWSDTO;
             }
         }
