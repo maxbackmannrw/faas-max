@@ -19,6 +19,7 @@ public class HttpRequest {
                 .header("Content-Type", "application/x-www-form-urlencoded")
                 .build();
 
+        System.out.println("sendGetRequest request: " + request);
         try (Response response = client.newCall(request).execute()) {
             if (response.isSuccessful() && response.body() != null) {
                 try (ResponseBody responseBody = response.body()) {
