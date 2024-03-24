@@ -8,7 +8,7 @@ import java.util.Map;
 
 
 @Component
-public class BaseHttpRequest {
+public class HttpRequest {
 
     private final OkHttpClient client = new OkHttpClient();
 
