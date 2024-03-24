@@ -273,7 +273,6 @@ public class ChannelAccountFramework {
     }
 
 
-
     public EmailAccountWSDTO fillEmailAccountWSDTO(EmailAccountDBModel emailAccountDBModel) {
 
         EmailAccountWSDTO emailAccountWSDTO = new EmailAccountWSDTO();
