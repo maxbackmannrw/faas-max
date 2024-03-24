@@ -41,11 +41,9 @@ public class WappChannelService {
     @Autowired
     AppUtils appUtils;
 
-
     public String initWappChannelService(String serverUrl) throws IOException {
         return wappChannelRequest.initWappChannelRequest(serverUrl);
     }
-
 
     public String getWappAccountQRCodeService(String serverUrl,String instanceKey) throws IOException {
         return wappChannelRequest.getWappAccountQRCodeRequest(serverUrl,instanceKey);
