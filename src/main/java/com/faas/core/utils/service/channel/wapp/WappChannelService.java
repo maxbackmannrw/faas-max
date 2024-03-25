@@ -70,7 +70,6 @@ public class WappChannelService {
             if (operationWappMessageDBModel.getWappMessage().getMessageType().equalsIgnoreCase(AppConstant.DOC_MESSAGE)){
             }
         }
-
          */
     }
 
