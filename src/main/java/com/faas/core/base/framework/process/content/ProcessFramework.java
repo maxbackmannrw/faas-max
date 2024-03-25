@@ -65,22 +65,22 @@ public class ProcessFramework {
     ProcessScenarioRepository processScenarioRepository;
 
     @Autowired
-    AiTriggerRepository aiTriggerRepository;
+    ProcessAITriggerRepository processAITriggerRepository;
 
     @Autowired
-    EmailTriggerRepository emailTriggerRepository;
+    ProcessEmailTriggerRepository processEmailTriggerRepository;
 
     @Autowired
-    SipCallTriggerRepository sipCallTriggerRepository;
+    ProcessSipTriggerRepository processSipTriggerRepository;
 
     @Autowired
-    SmsMessageTriggerRepository smsMessageTriggerRepository;
+    ProcessSmsTriggerRepository processSmsTriggerRepository;
 
     @Autowired
-    WappCallTriggerRepository wappCallTriggerRepository;
+    ProcessWappCallTriggerRepository processWappCallTriggerRepository;
 
     @Autowired
-    WappMessageTriggerRepository wappMessageTriggerRepository;
+    ProcessWappMessageTriggerRepository processWappMessageTriggerRepository;
 
     @Autowired
     AppUtils appUtils;
@@ -188,12 +188,12 @@ public class ProcessFramework {
             processSmsMessageTempRepository.deleteAll(processSmsMessageTempRepository.findByProcessId(processId));
             processWappMessageTempRepository.deleteAll(processWappMessageTempRepository.findByProcessId(processId));
 
-            aiTriggerRepository.deleteAll(aiTriggerRepository.findByProcessId(processId));
-            emailTriggerRepository.deleteAll(emailTriggerRepository.findByProcessId(processId));
-            sipCallTriggerRepository.deleteAll(sipCallTriggerRepository.findByProcessId(processId));
-            smsMessageTriggerRepository.deleteAll(smsMessageTriggerRepository.findByProcessId(processId));
-            wappCallTriggerRepository.deleteAll(wappCallTriggerRepository.findByProcessId(processId));
-            wappMessageTriggerRepository.deleteAll(wappMessageTriggerRepository.findByProcessId(processId));
+            processAITriggerRepository.deleteAll(processAITriggerRepository.findByProcessId(processId));
+            processEmailTriggerRepository.deleteAll(processEmailTriggerRepository.findByProcessId(processId));
+            processSipTriggerRepository.deleteAll(processSipTriggerRepository.findByProcessId(processId));
+            processSmsTriggerRepository.deleteAll(processSmsTriggerRepository.findByProcessId(processId));
+            processWappCallTriggerRepository.deleteAll(processWappCallTriggerRepository.findByProcessId(processId));
+            processWappMessageTriggerRepository.deleteAll(processWappMessageTriggerRepository.findByProcessId(processId));
 
             return processWSDTO;
         }

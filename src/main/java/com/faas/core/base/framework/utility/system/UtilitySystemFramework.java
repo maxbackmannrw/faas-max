@@ -119,22 +119,22 @@ public class UtilitySystemFramework {
     UserDetailsRepository userDetailsRepository;
 
     @Autowired
-    AiTriggerRepository aiTriggerRepository;
+    ProcessAITriggerRepository processAITriggerRepository;
 
     @Autowired
-    EmailTriggerRepository emailTriggerRepository;
+    ProcessEmailTriggerRepository processEmailTriggerRepository;
 
     @Autowired
-    SipCallTriggerRepository sipCallTriggerRepository;
+    ProcessSipTriggerRepository processSipTriggerRepository;
 
     @Autowired
-    SmsMessageTriggerRepository smsMessageTriggerRepository;
+    ProcessSmsTriggerRepository processSmsTriggerRepository;
 
     @Autowired
-    WappCallTriggerRepository wappCallTriggerRepository;
+    ProcessWappCallTriggerRepository processWappCallTriggerRepository;
 
     @Autowired
-    WappMessageTriggerRepository wappMessageTriggerRepository;
+    ProcessWappMessageTriggerRepository processWappMessageTriggerRepository;
 
     @Autowired
     AppUtils appUtils;

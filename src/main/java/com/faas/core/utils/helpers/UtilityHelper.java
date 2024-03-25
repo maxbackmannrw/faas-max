@@ -135,22 +135,22 @@ public class UtilityHelper {
     UserRoleRepository userRoleRepository;
 
     @Autowired
-    AiTriggerRepository aiTriggerRepository;
+    ProcessAITriggerRepository processAITriggerRepository;
 
     @Autowired
-    EmailTriggerRepository emailTriggerRepository;
+    ProcessEmailTriggerRepository processEmailTriggerRepository;
 
     @Autowired
-    SipCallTriggerRepository sipCallTriggerRepository;
+    ProcessSipTriggerRepository processSipTriggerRepository;
 
     @Autowired
-    SmsMessageTriggerRepository smsMessageTriggerRepository;
+    ProcessSmsTriggerRepository processSmsTriggerRepository;
 
     @Autowired
-    WappCallTriggerRepository wappCallTriggerRepository;
+    ProcessWappCallTriggerRepository processWappCallTriggerRepository;
 
     @Autowired
-    WappMessageTriggerRepository wappMessageTriggerRepository;
+    ProcessWappMessageTriggerRepository processWappMessageTriggerRepository;
 
     @Autowired
     AppUtils appUtils;
@@ -513,12 +513,12 @@ public class UtilityHelper {
 
     public void removeAllTriggersHelper(){
 
-        aiTriggerRepository.deleteAll();
-        emailTriggerRepository.deleteAll();
-        sipCallTriggerRepository.deleteAll();
-        smsMessageTriggerRepository.deleteAll();
-        wappCallTriggerRepository.deleteAll();
-        wappMessageTriggerRepository.deleteAll();
+        processAITriggerRepository.deleteAll();
+        processEmailTriggerRepository.deleteAll();
+        processSipTriggerRepository.deleteAll();
+        processSmsTriggerRepository.deleteAll();
+        processWappCallTriggerRepository.deleteAll();
+        processWappMessageTriggerRepository.deleteAll();
     }
 
     public void removeAllScenariosHelper(){

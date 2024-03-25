@@ -7,13 +7,13 @@ public class ProcessTempWSDTO {
 
     private List<ProcessEmailTempWSDTO> emailTemps;
     private List<ProcessPushTempWSDTO>pushTemps;
-    private List<ProcessSmsMessageTempWSDTO>smsMessageTemps;
+    private List<ProcessSmsTempWSDTO>smsMessageTemps;
     private List<ProcessWappMessageTempWSDTO>wappMessageTemps;
 
     public ProcessTempWSDTO() {
     }
 
-    public ProcessTempWSDTO(List<ProcessEmailTempWSDTO> emailTemps, List<ProcessPushTempWSDTO> pushTemps, List<ProcessSmsMessageTempWSDTO> smsMessageTemps, List<ProcessWappMessageTempWSDTO> wappMessageTemps) {
+    public ProcessTempWSDTO(List<ProcessEmailTempWSDTO> emailTemps, List<ProcessPushTempWSDTO> pushTemps, List<ProcessSmsTempWSDTO> smsMessageTemps, List<ProcessWappMessageTempWSDTO> wappMessageTemps) {
         this.emailTemps = emailTemps;
         this.pushTemps = pushTemps;
         this.smsMessageTemps = smsMessageTemps;
@@ -36,11 +36,11 @@ public class ProcessTempWSDTO {
         this.pushTemps = pushTemps;
     }
 
-    public List<ProcessSmsMessageTempWSDTO> getSmsMessageTemps() {
+    public List<ProcessSmsTempWSDTO> getSmsMessageTemps() {
         return smsMessageTemps;
     }
 
-    public void setSmsMessageTemps(List<ProcessSmsMessageTempWSDTO> smsMessageTemps) {
+    public void setSmsMessageTemps(List<ProcessSmsTempWSDTO> smsMessageTemps) {
         this.smsMessageTemps = smsMessageTemps;
     }
 

@@ -5,7 +5,6 @@ import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.model.ws.process.details.channel.content.*;
 import com.faas.core.base.model.ws.process.details.channel.content.dto.*;
 import com.faas.core.utils.config.AppConstant;
-import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,11 +12,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class ProcessChannelMiddleware {
 
-    @Autowired
-    ProcessChannelFramework processChannelFramework;
 
     @Autowired
-    AppUtils appUtils;
+    ProcessChannelFramework processChannelFramework;
 
 
     public ProcessChannelWSModel getProcessChannels(long userId, String processId) {
@@ -39,7 +36,6 @@ public class ProcessChannelMiddleware {
         return response;
     }
 
-
     public ProcessSipChannelWSModel getProcessSipChannel(long userId, String processId) {
 
         ProcessSipChannelWSModel response = new ProcessSipChannelWSModel();
@@ -59,8 +55,6 @@ public class ProcessChannelMiddleware {
         return response;
     }
 
-
-
     public ProcessSipChannelWSModel createProcessSipChannel(long userId,String processId, String callerId,String channelState) {
 
         ProcessSipChannelWSModel response = new ProcessSipChannelWSModel();
@@ -79,7 +73,6 @@ public class ProcessChannelMiddleware {
 
         return response;
     }
-
 
     public ProcessSipChannelWSModel removeProcessSipChannel(long userId, String processId) {
 
@@ -140,7 +133,6 @@ public class ProcessChannelMiddleware {
         return response;
     }
 
-
     public ProcessSmsChannelWSModel removeProcessSmsChannel(long userId, String processId) {
 
         ProcessSmsChannelWSModel response = new ProcessSmsChannelWSModel();
@@ -159,7 +151,6 @@ public class ProcessChannelMiddleware {
 
         return response;
     }
-
 
 
     public ProcessWappChannelWSModel getProcessWappChannel(long userId, String processId) {
@@ -181,7 +172,6 @@ public class ProcessChannelMiddleware {
         return response;
     }
 
-
     public ProcessWappChannelWSModel createProcessWappChannel(long userId,String processId,String callState,String messageState) {
 
         ProcessWappChannelWSModel response = new ProcessWappChannelWSModel();
@@ -201,7 +191,6 @@ public class ProcessChannelMiddleware {
         return response;
     }
 
-
     public ProcessWappChannelWSModel removeProcessWappChannel(long userId, String processId) {
 
         ProcessWappChannelWSModel response = new ProcessWappChannelWSModel();
@@ -220,7 +209,6 @@ public class ProcessChannelMiddleware {
 
         return response;
     }
-
 
 
     public ProcessEmailChannelWSModel getProcessEmailChannel(long userId, String processId) {
@@ -281,8 +269,6 @@ public class ProcessChannelMiddleware {
     }
 
 
-
-
     public ProcessPushChannelWSModel getProcessPushChannel(long userId, String processId) {
 
         ProcessPushChannelWSModel response = new ProcessPushChannelWSModel();
@@ -339,7 +325,6 @@ public class ProcessChannelMiddleware {
 
         return response;
     }
-
 
 
 

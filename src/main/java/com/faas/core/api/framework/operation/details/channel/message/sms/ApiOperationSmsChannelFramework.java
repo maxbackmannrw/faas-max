@@ -9,7 +9,7 @@ import com.faas.core.base.model.db.client.details.content.dao.ClientPhoneDAO;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationSmsMessageDBModel;
 import com.faas.core.base.model.db.process.details.channel.content.ProcessSmsChannelDBModel;
-import com.faas.core.base.model.db.process.details.channel.temp.ProcessSmsMessageTempDBModel;
+import com.faas.core.base.model.db.process.details.channel.temp.ProcessSmsTempDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.client.details.ClientDetailsRepository;
@@ -104,7 +104,7 @@ public class ApiOperationSmsChannelFramework {
         if (!sessionDBModels.isEmpty()){
 
             ClientPhoneDAO clientPhoneDAO = channelHelper.fetchClientPhoneDAO(sessionDBModels.get(0).getClientId(),numberId);
-            List<ProcessSmsMessageTempDBModel> smsMessageTempDBModels = processSmsMessageTempRepository.findByIdAndProcessId(tempId,sessionDBModels.get(0).getProcessId());
+            List<ProcessSmsTempDBModel> smsMessageTempDBModels = processSmsMessageTempRepository.findByIdAndProcessId(tempId,sessionDBModels.get(0).getProcessId());
             List<ProcessSmsChannelDBModel> smsChannelDBModels = processSmsChannelRepository.findByProcessId(sessionDBModels.get(0).getProcessId());
             if (clientPhoneDAO != null && !smsMessageTempDBModels.isEmpty() && !smsChannelDBModels.isEmpty() ){
 

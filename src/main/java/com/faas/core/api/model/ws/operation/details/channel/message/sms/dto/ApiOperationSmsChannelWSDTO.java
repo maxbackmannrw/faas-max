@@ -2,7 +2,7 @@ package com.faas.core.api.model.ws.operation.details.channel.message.sms.dto;
 
 import com.faas.core.base.model.db.client.details.content.dao.ClientPhoneDAO;
 import com.faas.core.base.model.db.operation.details.channel.OperationSmsMessageDBModel;
-import com.faas.core.base.model.db.process.details.channel.temp.ProcessSmsMessageTempDBModel;
+import com.faas.core.base.model.db.process.details.channel.temp.ProcessSmsTempDBModel;
 
 import java.util.List;
 
@@ -10,13 +10,13 @@ public class ApiOperationSmsChannelWSDTO {
 
     private List<ClientPhoneDAO> clientPhones;
     private ApiOperationSmsAccountWSDTO smsAccount;
-    private List<ProcessSmsMessageTempDBModel>operationSmsTemps;
+    private List<ProcessSmsTempDBModel>operationSmsTemps;
     private List<OperationSmsMessageDBModel>operationSmss;
 
     public ApiOperationSmsChannelWSDTO() {
     }
 
-    public ApiOperationSmsChannelWSDTO(List<ClientPhoneDAO> clientPhones, ApiOperationSmsAccountWSDTO smsAccount, List<ProcessSmsMessageTempDBModel> operationSmsTemps, List<OperationSmsMessageDBModel> operationSmss) {
+    public ApiOperationSmsChannelWSDTO(List<ClientPhoneDAO> clientPhones, ApiOperationSmsAccountWSDTO smsAccount, List<ProcessSmsTempDBModel> operationSmsTemps, List<OperationSmsMessageDBModel> operationSmss) {
         this.clientPhones = clientPhones;
         this.smsAccount = smsAccount;
         this.operationSmsTemps = operationSmsTemps;
@@ -39,11 +39,11 @@ public class ApiOperationSmsChannelWSDTO {
         this.smsAccount = smsAccount;
     }
 
-    public List<ProcessSmsMessageTempDBModel> getOperationSmsTemps() {
+    public List<ProcessSmsTempDBModel> getOperationSmsTemps() {
         return operationSmsTemps;
     }
 
-    public void setOperationSmsTemps(List<ProcessSmsMessageTempDBModel> operationSmsTemps) {
+    public void setOperationSmsTemps(List<ProcessSmsTempDBModel> operationSmsTemps) {
         this.operationSmsTemps = operationSmsTemps;
     }
 

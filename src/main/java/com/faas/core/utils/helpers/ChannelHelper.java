@@ -22,11 +22,10 @@ import com.faas.core.base.model.db.process.details.channel.content.dao.ProcessEm
 import com.faas.core.base.model.db.process.details.channel.content.dao.ProcessPushAccountDAO;
 import com.faas.core.base.model.db.process.details.channel.content.dao.ProcessSmsAccountDAO;
 import com.faas.core.base.model.db.process.details.channel.temp.ProcessEmailTempDBModel;
-import com.faas.core.base.model.db.process.details.channel.temp.ProcessSmsMessageTempDBModel;
+import com.faas.core.base.model.db.process.details.channel.temp.ProcessSmsTempDBModel;
 import com.faas.core.base.model.db.process.details.channel.temp.ProcessWappMessageTempDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.db.user.details.UserDetailsDBModel;
-import com.faas.core.base.model.ws.operation.details.channel.dto.OperationSipCallWSDTO;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.client.details.ClientDetailsRepository;
 import com.faas.core.base.repo.operation.details.channel.*;
@@ -403,7 +402,7 @@ public class ChannelHelper {
         return processSmsAccountDAO;
     }
 
-    public OperationSmsMessageDBModel createOperationSmsMessageDBModel(SessionDBModel sessionDBModel,ClientPhoneDAO clientPhoneDAO,ProcessSmsMessageTempDBModel smsMessageTempDBModel,ProcessSmsChannelDBModel smsChannelDBModel){
+    public OperationSmsMessageDBModel createOperationSmsMessageDBModel(SessionDBModel sessionDBModel, ClientPhoneDAO clientPhoneDAO, ProcessSmsTempDBModel smsMessageTempDBModel, ProcessSmsChannelDBModel smsChannelDBModel){
 
         OperationSmsMessageDBModel smsMessageDBModel = new OperationSmsMessageDBModel();
         smsMessageDBModel.setClientId(sessionDBModel.getClientId());
@@ -423,7 +422,7 @@ public class ChannelHelper {
         return operationSmsMessageRepository.save(smsMessageDBModel);
     }
 
-    public OperationSmsMessageDAO createOperationSmsMessageDAO(SessionDBModel sessionDBModel,ProcessSmsMessageTempDBModel smsMessageTempDBModel, ProcessSmsChannelDBModel smsChannelDBModel){
+    public OperationSmsMessageDAO createOperationSmsMessageDAO(SessionDBModel sessionDBModel, ProcessSmsTempDBModel smsMessageTempDBModel, ProcessSmsChannelDBModel smsChannelDBModel){
 
         OperationSmsMessageDAO operationSmsMessageDAO = new OperationSmsMessageDAO();
         operationSmsMessageDAO.setTempId(smsMessageTempDBModel.getId());
