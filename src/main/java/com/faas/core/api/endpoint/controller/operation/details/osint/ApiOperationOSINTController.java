@@ -1,7 +1,7 @@
-package com.faas.core.api.endpoint.controller.operation.details.client.osint;
+package com.faas.core.api.endpoint.controller.operation.details.osint;
 
-import com.faas.core.api.middleware.operation.details.client.osint.ApiOperationOSINTMiddleware;
-import com.faas.core.api.model.ws.operation.details.client.osint.ApiOperationOSINTWSModel;
+import com.faas.core.api.middleware.operation.details.osint.ApiOperationOSINTMiddleware;
+import com.faas.core.api.model.ws.operation.details.osint.ApiOperationOSINTWSModel;
 import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping(value = AppConstant.API_VERSION + "/api/operation/details/client/osint/")
+@RequestMapping(value = AppConstant.API_VERSION + "/api/operation/details/osint/")
 public class ApiOperationOSINTController {
 
 

@@ -1,7 +1,7 @@
-package com.faas.core.api.endpoint.controller.operation.details.client.content;
+package com.faas.core.api.endpoint.controller.operation.details.client;
 
-import com.faas.core.api.middleware.operation.details.client.content.ApiOperationClientMiddleware;
-import com.faas.core.api.model.ws.operation.details.client.content.ApiOperationClientWSModel;
+import com.faas.core.api.middleware.operation.details.client.ApiOperationClientMiddleware;
+import com.faas.core.api.model.ws.operation.details.client.ApiOperationClientWSModel;
 import com.faas.core.utils.config.ApiRoute;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;

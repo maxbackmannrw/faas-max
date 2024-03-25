@@ -1,6 +1,6 @@
-package com.faas.core.api.model.ws.operation.details.client.osint;
+package com.faas.core.api.model.ws.operation.details.osint;
 
-import com.faas.core.api.model.ws.operation.details.client.osint.dto.ApiOperationOSINTWSDTO;
+import com.faas.core.api.model.ws.operation.details.osint.dto.ApiOperationOSINTWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 
 import java.util.List;
