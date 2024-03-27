@@ -244,7 +244,6 @@ public class ProcessChannelTempController {
     }
 
 
-
     @RequestMapping(value = BaseRoute.GET_PROCESS_PUSH_TEMPS, method = RequestMethod.POST)
     public ResponseEntity<?> getProcessPushTemps(@RequestParam long userId,
                                                  @RequestParam String processId) {
