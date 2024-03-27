@@ -4,20 +4,20 @@ import com.faas.core.base.model.db.process.details.channel.trigger.ProcessEmailT
 
 public class ProcessEmailTriggerWSDTO {
 
-    private ProcessEmailTriggerDBModel emailTrigger;
+    private ProcessEmailTriggerDBModel processEmailTrigger;
 
     public ProcessEmailTriggerWSDTO() {
     }
 
-    public ProcessEmailTriggerWSDTO(ProcessEmailTriggerDBModel emailTrigger) {
-        this.emailTrigger = emailTrigger;
+    public ProcessEmailTriggerWSDTO(ProcessEmailTriggerDBModel processEmailTrigger) {
+        this.processEmailTrigger = processEmailTrigger;
     }
 
-    public ProcessEmailTriggerDBModel getEmailTrigger() {
-        return emailTrigger;
+    public ProcessEmailTriggerDBModel getProcessEmailTrigger() {
+        return processEmailTrigger;
     }
 
-    public void setEmailTrigger(ProcessEmailTriggerDBModel emailTrigger) {
-        this.emailTrigger = emailTrigger;
+    public void setProcessEmailTrigger(ProcessEmailTriggerDBModel processEmailTrigger) {
+        this.processEmailTrigger = processEmailTrigger;
     }
 }

@@ -4,20 +4,20 @@ import com.faas.core.base.model.db.process.details.channel.trigger.ProcessSipTri
 
 public class ProcessSipTriggerWSDTO {
 
-    private ProcessSipTriggerDBModel sipCallTrigger;
+    private ProcessSipTriggerDBModel processSipTrigger;
 
     public ProcessSipTriggerWSDTO() {
     }
 
-    public ProcessSipTriggerWSDTO(ProcessSipTriggerDBModel sipCallTrigger) {
-        this.sipCallTrigger = sipCallTrigger;
+    public ProcessSipTriggerWSDTO(ProcessSipTriggerDBModel processSipTrigger) {
+        this.processSipTrigger = processSipTrigger;
     }
 
-    public ProcessSipTriggerDBModel getSipCallTrigger() {
-        return sipCallTrigger;
+    public ProcessSipTriggerDBModel getProcessSipTrigger() {
+        return processSipTrigger;
     }
 
-    public void setSipCallTrigger(ProcessSipTriggerDBModel sipCallTrigger) {
-        this.sipCallTrigger = sipCallTrigger;
+    public void setProcessSipTrigger(ProcessSipTriggerDBModel processSipTrigger) {
+        this.processSipTrigger = processSipTrigger;
     }
 }

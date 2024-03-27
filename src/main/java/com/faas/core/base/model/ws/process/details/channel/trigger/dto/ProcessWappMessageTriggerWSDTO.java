@@ -4,20 +4,20 @@ import com.faas.core.base.model.db.process.details.channel.trigger.ProcessWappMe
 
 public class ProcessWappMessageTriggerWSDTO {
 
-    private ProcessWappMessageTriggerDBModel wappMessageTrigger;
+    private ProcessWappMessageTriggerDBModel processWappMessageTrigger;
 
     public ProcessWappMessageTriggerWSDTO() {
     }
 
-    public ProcessWappMessageTriggerWSDTO(ProcessWappMessageTriggerDBModel wappMessageTrigger) {
-        this.wappMessageTrigger = wappMessageTrigger;
+    public ProcessWappMessageTriggerWSDTO(ProcessWappMessageTriggerDBModel processWappMessageTrigger) {
+        this.processWappMessageTrigger = processWappMessageTrigger;
     }
 
-    public ProcessWappMessageTriggerDBModel getWappMessageTrigger() {
-        return wappMessageTrigger;
+    public ProcessWappMessageTriggerDBModel getProcessWappMessageTrigger() {
+        return processWappMessageTrigger;
     }
 
-    public void setWappMessageTrigger(ProcessWappMessageTriggerDBModel wappMessageTrigger) {
-        this.wappMessageTrigger = wappMessageTrigger;
+    public void setProcessWappMessageTrigger(ProcessWappMessageTriggerDBModel processWappMessageTrigger) {
+        this.processWappMessageTrigger = processWappMessageTrigger;
     }
 }

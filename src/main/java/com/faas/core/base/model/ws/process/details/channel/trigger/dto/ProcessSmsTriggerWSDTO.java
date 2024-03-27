@@ -4,20 +4,20 @@ import com.faas.core.base.model.db.process.details.channel.trigger.ProcessSmsTri
 
 public class ProcessSmsTriggerWSDTO {
 
-    private ProcessSmsTriggerDBModel smsMessageTrigger;
+    private ProcessSmsTriggerDBModel processSmsTrigger;
 
     public ProcessSmsTriggerWSDTO() {
     }
 
-    public ProcessSmsTriggerWSDTO(ProcessSmsTriggerDBModel smsMessageTrigger) {
-        this.smsMessageTrigger = smsMessageTrigger;
+    public ProcessSmsTriggerWSDTO(ProcessSmsTriggerDBModel processSmsTrigger) {
+        this.processSmsTrigger = processSmsTrigger;
     }
 
-    public ProcessSmsTriggerDBModel getSmsMessageTrigger() {
-        return smsMessageTrigger;
+    public ProcessSmsTriggerDBModel getProcessSmsTrigger() {
+        return processSmsTrigger;
     }
 
-    public void setSmsMessageTrigger(ProcessSmsTriggerDBModel smsMessageTrigger) {
-        this.smsMessageTrigger = smsMessageTrigger;
+    public void setProcessSmsTrigger(ProcessSmsTriggerDBModel processSmsTrigger) {
+        this.processSmsTrigger = processSmsTrigger;
     }
 }
