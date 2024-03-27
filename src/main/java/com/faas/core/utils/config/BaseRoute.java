@@ -375,7 +375,7 @@ public class BaseRoute {
     public static final String REMOVE_PROCESS_FLOW_REMOTE = "removeprocessflowremote";
 
 
-    public static final String GET_PROCESS_CHANNEL_TRIGGER = "getprocesschanneltrigger";
+    public static final String GET_PROCESS_TRIGGER = "getprocesstrigger";
 
     public static final String GET_PROCESS_AI_TRIGGERS = "getprocessaitriggers";
     public static final String GET_PROCESS_AI_TRIGGER = "getprocessaitrigger";

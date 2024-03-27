@@ -1,6 +1,6 @@
 package com.faas.core.base.middleware.process.details.channel.trigger;
 
-import com.faas.core.base.framework.process.details.channel.trigger.ProcessChannelTriggerFramework;
+import com.faas.core.base.framework.process.details.channel.trigger.ProcessTriggerFramework;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.model.ws.process.details.channel.trigger.*;
 import com.faas.core.base.model.ws.process.details.channel.trigger.dto.*;
@@ -17,20 +17,20 @@ public class ProcessChannelTriggerMiddleware {
 
 
     @Autowired
-    ProcessChannelTriggerFramework processChannelTriggerFramework;
+    ProcessTriggerFramework processTriggerFramework;
 
 
-    public ProcessChannelTriggerWSModel getProcessChannelTrigger(long userId, String processId) {
+    public ProcessTriggerWSModel getProcessTrigger(long userId, String processId) {
 
-        ProcessChannelTriggerWSModel response = new ProcessChannelTriggerWSModel();
+        ProcessTriggerWSModel response = new ProcessTriggerWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ProcessChannelTriggerWSDTO processChannelTriggerWSDTO = processChannelTriggerFramework.getProcessChannelTriggerService(userId,processId);
-        if (processChannelTriggerWSDTO != null){
-            response.setProcessChannelTrigger(processChannelTriggerWSDTO);
+        ProcessTriggerWSDTO processTriggerWSDTO = processTriggerFramework.getProcessTriggerService(userId,processId);
+        if (processTriggerWSDTO != null){
+            response.setProcessTrigger(processTriggerWSDTO);
         }
 
-        general.setOperation("getProcessChannelTrigger");
+        general.setOperation("getProcessTrigger");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -40,13 +40,12 @@ public class ProcessChannelTriggerMiddleware {
     }
 
 
-
     public ProcessAITriggerWSModel getProcessAITriggers(long userId, String processId) {
 
         ProcessAITriggerWSModel response = new ProcessAITriggerWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ProcessAITriggerWSDTO> processAITriggerWSDTOS = processChannelTriggerFramework.getProcessAITriggersService(userId,processId);
+        List<ProcessAITriggerWSDTO> processAITriggerWSDTOS = processTriggerFramework.getProcessAITriggersService(userId,processId);
         if (processAITriggerWSDTOS != null){
             response.setProcessAITriggers(processAITriggerWSDTOS);
         }
@@ -66,7 +65,7 @@ public class ProcessChannelTriggerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessAITriggerWSDTO> processAITriggerWSDTOS = new ArrayList<>();
 
-        ProcessAITriggerWSDTO processAITriggerWSDTO = processChannelTriggerFramework.getProcessAITriggerService(userId,triggerId);
+        ProcessAITriggerWSDTO processAITriggerWSDTO = processTriggerFramework.getProcessAITriggerService(userId,triggerId);
         if (processAITriggerWSDTO != null){
             processAITriggerWSDTOS.add(processAITriggerWSDTO);
         }
@@ -87,7 +86,7 @@ public class ProcessChannelTriggerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessAITriggerWSDTO> processAITriggerWSDTOS = new ArrayList<>();
 
-        ProcessAITriggerWSDTO processAITriggerWSDTO = processChannelTriggerFramework.createProcessAITriggerService(userId,processId,trigger,triggerDesc,accountId,typeId);
+        ProcessAITriggerWSDTO processAITriggerWSDTO = processTriggerFramework.createProcessAITriggerService(userId,processId,trigger,triggerDesc,accountId,typeId);
         if (processAITriggerWSDTO != null){
             processAITriggerWSDTOS.add(processAITriggerWSDTO);
         }
@@ -108,7 +107,7 @@ public class ProcessChannelTriggerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessAITriggerWSDTO> processAITriggerWSDTOS = new ArrayList<>();
 
-        ProcessAITriggerWSDTO processAITriggerWSDTO = processChannelTriggerFramework.updateProcessAITriggerService(userId,triggerId,trigger,triggerDesc,accountId);
+        ProcessAITriggerWSDTO processAITriggerWSDTO = processTriggerFramework.updateProcessAITriggerService(userId,triggerId,trigger,triggerDesc,accountId);
         if (processAITriggerWSDTO != null){
             processAITriggerWSDTOS.add(processAITriggerWSDTO);
         }
@@ -129,7 +128,7 @@ public class ProcessChannelTriggerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessAITriggerWSDTO> processAITriggerWSDTOS = new ArrayList<>();
 
-        ProcessAITriggerWSDTO processAITriggerWSDTO = processChannelTriggerFramework.removeProcessAITriggerService(userId,triggerId);
+        ProcessAITriggerWSDTO processAITriggerWSDTO = processTriggerFramework.removeProcessAITriggerService(userId,triggerId);
         if (processAITriggerWSDTO != null){
             processAITriggerWSDTOS.add(processAITriggerWSDTO);
         }
@@ -151,7 +150,7 @@ public class ProcessChannelTriggerMiddleware {
         ProcessEmailTriggerWSModel response = new ProcessEmailTriggerWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ProcessEmailTriggerWSDTO> processEmailTriggerWSDTOS = processChannelTriggerFramework.getProcessEmailTriggersService(userId,processId);
+        List<ProcessEmailTriggerWSDTO> processEmailTriggerWSDTOS = processTriggerFramework.getProcessEmailTriggersService(userId,processId);
         if (processEmailTriggerWSDTOS != null){
             response.setProcessEmailTriggers(processEmailTriggerWSDTOS);
         }
@@ -171,7 +170,7 @@ public class ProcessChannelTriggerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessEmailTriggerWSDTO> processEmailTriggerWSDTOS = new ArrayList<>();
 
-        ProcessEmailTriggerWSDTO processEmailTriggerWSDTO = processChannelTriggerFramework.getProcessEmailTriggerService(userId,triggerId);
+        ProcessEmailTriggerWSDTO processEmailTriggerWSDTO = processTriggerFramework.getProcessEmailTriggerService(userId,triggerId);
         if (processEmailTriggerWSDTO != null){
             processEmailTriggerWSDTOS.add(processEmailTriggerWSDTO);
         }
@@ -192,7 +191,7 @@ public class ProcessChannelTriggerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessEmailTriggerWSDTO> processEmailTriggerWSDTOS = new ArrayList<>();
 
-        ProcessEmailTriggerWSDTO processEmailTriggerWSDTO = processChannelTriggerFramework.createProcessEmailTriggerService(userId,processId,trigger,triggerDesc,accountId,emailSubject,emailTitle,emailBody,emailSender,typeId);
+        ProcessEmailTriggerWSDTO processEmailTriggerWSDTO = processTriggerFramework.createProcessEmailTriggerService(userId,processId,trigger,triggerDesc,accountId,emailSubject,emailTitle,emailBody,emailSender,typeId);
         if (processEmailTriggerWSDTO != null){
             processEmailTriggerWSDTOS.add(processEmailTriggerWSDTO);
         }
@@ -213,7 +212,7 @@ public class ProcessChannelTriggerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessEmailTriggerWSDTO> processEmailTriggerWSDTOS = new ArrayList<>();
 
-        ProcessEmailTriggerWSDTO processEmailTriggerWSDTO = processChannelTriggerFramework.updateProcessEmailTriggerService(userId,triggerId,trigger,triggerDesc,accountId,emailSubject,emailTitle,emailBody,emailSender);
+        ProcessEmailTriggerWSDTO processEmailTriggerWSDTO = processTriggerFramework.updateProcessEmailTriggerService(userId,triggerId,trigger,triggerDesc,accountId,emailSubject,emailTitle,emailBody,emailSender);
         if (processEmailTriggerWSDTO != null){
             processEmailTriggerWSDTOS.add(processEmailTriggerWSDTO);
         }
@@ -234,7 +233,7 @@ public class ProcessChannelTriggerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessEmailTriggerWSDTO> processEmailTriggerWSDTOS = new ArrayList<>();
 
-        ProcessEmailTriggerWSDTO processEmailTriggerWSDTO = processChannelTriggerFramework.removeProcessEmailTriggerService(userId,triggerId);
+        ProcessEmailTriggerWSDTO processEmailTriggerWSDTO = processTriggerFramework.removeProcessEmailTriggerService(userId,triggerId);
         if (processEmailTriggerWSDTO != null){
             processEmailTriggerWSDTOS.add(processEmailTriggerWSDTO);
         }
@@ -255,7 +254,7 @@ public class ProcessChannelTriggerMiddleware {
         ProcessSipTriggerWSModel response = new ProcessSipTriggerWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ProcessSipTriggerWSDTO> processSipTriggerWSDTOS = processChannelTriggerFramework.getProcessSipTriggersService(userId,processId);
+        List<ProcessSipTriggerWSDTO> processSipTriggerWSDTOS = processTriggerFramework.getProcessSipTriggersService(userId,processId);
         if (processSipTriggerWSDTOS != null){
             response.setProcessSipTriggers(processSipTriggerWSDTOS);
         }
@@ -275,7 +274,7 @@ public class ProcessChannelTriggerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessSipTriggerWSDTO> processSipTriggerWSDTOS = new ArrayList<>();
 
-        ProcessSipTriggerWSDTO processSipTriggerWSDTO = processChannelTriggerFramework.getProcessSipTriggerService(userId,triggerId);
+        ProcessSipTriggerWSDTO processSipTriggerWSDTO = processTriggerFramework.getProcessSipTriggerService(userId,triggerId);
         if (processSipTriggerWSDTO != null){
             processSipTriggerWSDTOS.add(processSipTriggerWSDTO);
         }
@@ -296,7 +295,7 @@ public class ProcessChannelTriggerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessSipTriggerWSDTO> processSipTriggerWSDTOS = new ArrayList<>();
 
-        ProcessSipTriggerWSDTO processSipTriggerWSDTO = processChannelTriggerFramework.createProcessSipTriggerService(userId,processId,trigger,triggerDesc,accountId,callerId,typeId);
+        ProcessSipTriggerWSDTO processSipTriggerWSDTO = processTriggerFramework.createProcessSipTriggerService(userId,processId,trigger,triggerDesc,accountId,callerId,typeId);
         if (processSipTriggerWSDTO != null){
             processSipTriggerWSDTOS.add(processSipTriggerWSDTO);
         }
@@ -317,7 +316,7 @@ public class ProcessChannelTriggerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessSipTriggerWSDTO> processSipTriggerWSDTOS = new ArrayList<>();
 
-        ProcessSipTriggerWSDTO processSipTriggerWSDTO = processChannelTriggerFramework.updateProcessSipTriggerService(userId,triggerId,trigger,triggerDesc,accountId,callerId);
+        ProcessSipTriggerWSDTO processSipTriggerWSDTO = processTriggerFramework.updateProcessSipTriggerService(userId,triggerId,trigger,triggerDesc,accountId,callerId);
         if (processSipTriggerWSDTO != null){
             processSipTriggerWSDTOS.add(processSipTriggerWSDTO);
         }
@@ -338,7 +337,7 @@ public class ProcessChannelTriggerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessSipTriggerWSDTO> processSipTriggerWSDTOS = new ArrayList<>();
 
-        ProcessSipTriggerWSDTO processSipTriggerWSDTO = processChannelTriggerFramework.removeProcessSipTriggerService(userId,triggerId);
+        ProcessSipTriggerWSDTO processSipTriggerWSDTO = processTriggerFramework.removeProcessSipTriggerService(userId,triggerId);
         if (processSipTriggerWSDTO != null){
             processSipTriggerWSDTOS.add(processSipTriggerWSDTO);
         }
@@ -360,7 +359,7 @@ public class ProcessChannelTriggerMiddleware {
         ProcessSmsTriggerWSModel response = new ProcessSmsTriggerWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ProcessSmsTriggerWSDTO> processSmsTriggerWSDTOS = processChannelTriggerFramework.getProcessSmsTriggersService(userId,processId);
+        List<ProcessSmsTriggerWSDTO> processSmsTriggerWSDTOS = processTriggerFramework.getProcessSmsTriggersService(userId,processId);
         if (processSmsTriggerWSDTOS != null){
             response.setProcessSmsTriggers(processSmsTriggerWSDTOS);
         }
@@ -380,7 +379,7 @@ public class ProcessChannelTriggerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessSmsTriggerWSDTO> processSmsTriggerWSDTOS = new ArrayList<>();
 
-        ProcessSmsTriggerWSDTO processSmsTriggerWSDTO = processChannelTriggerFramework.getProcessSmsTriggerService(userId,triggerId);
+        ProcessSmsTriggerWSDTO processSmsTriggerWSDTO = processTriggerFramework.getProcessSmsTriggerService(userId,triggerId);
         if (processSmsTriggerWSDTO != null){
             processSmsTriggerWSDTOS.add(processSmsTriggerWSDTO);
         }
@@ -401,7 +400,7 @@ public class ProcessChannelTriggerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessSmsTriggerWSDTO> processSmsTriggerWSDTOS = new ArrayList<>();
 
-        ProcessSmsTriggerWSDTO processSmsTriggerWSDTO = processChannelTriggerFramework.createProcessSmsTriggerService(userId,processId,trigger,triggerDesc,accountId,smsTitle,smsBody,senderId,typeId);
+        ProcessSmsTriggerWSDTO processSmsTriggerWSDTO = processTriggerFramework.createProcessSmsTriggerService(userId,processId,trigger,triggerDesc,accountId,smsTitle,smsBody,senderId,typeId);
         if (processSmsTriggerWSDTO != null){
             processSmsTriggerWSDTOS.add(processSmsTriggerWSDTO);
         }
@@ -422,7 +421,7 @@ public class ProcessChannelTriggerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessSmsTriggerWSDTO> processSmsTriggerWSDTOS = new ArrayList<>();
 
-        ProcessSmsTriggerWSDTO processSmsTriggerWSDTO = processChannelTriggerFramework.updateProcessSmsTriggerService(userId,triggerId,trigger,triggerDesc,accountId,smsTitle,smsBody,senderId);
+        ProcessSmsTriggerWSDTO processSmsTriggerWSDTO = processTriggerFramework.updateProcessSmsTriggerService(userId,triggerId,trigger,triggerDesc,accountId,smsTitle,smsBody,senderId);
         if (processSmsTriggerWSDTO != null){
             processSmsTriggerWSDTOS.add(processSmsTriggerWSDTO);
         }
@@ -443,7 +442,7 @@ public class ProcessChannelTriggerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessSmsTriggerWSDTO> processSmsTriggerWSDTOS = new ArrayList<>();
 
-        ProcessSmsTriggerWSDTO processSmsTriggerWSDTO = processChannelTriggerFramework.removeProcessSmsTriggerService(userId,triggerId);
+        ProcessSmsTriggerWSDTO processSmsTriggerWSDTO = processTriggerFramework.removeProcessSmsTriggerService(userId,triggerId);
         if (processSmsTriggerWSDTO != null){
             processSmsTriggerWSDTOS.add(processSmsTriggerWSDTO);
         }
@@ -465,7 +464,7 @@ public class ProcessChannelTriggerMiddleware {
         ProcessWappCallTriggerWSModel response = new ProcessWappCallTriggerWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ProcessWappCallTriggerWSDTO> processWappCallTriggerWSDTOS = processChannelTriggerFramework.getProcessWappCallTriggersService(userId,processId);
+        List<ProcessWappCallTriggerWSDTO> processWappCallTriggerWSDTOS = processTriggerFramework.getProcessWappCallTriggersService(userId,processId);
         if (processWappCallTriggerWSDTOS != null){
             response.setProcessWappCallTriggers(processWappCallTriggerWSDTOS);
         }
@@ -485,7 +484,7 @@ public class ProcessChannelTriggerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessWappCallTriggerWSDTO> processWappCallTriggerWSDTOS = new ArrayList<>();
 
-        ProcessWappCallTriggerWSDTO processWappCallTriggerWSDTO = processChannelTriggerFramework.getProcessWappCallTriggerService(userId,triggerId);
+        ProcessWappCallTriggerWSDTO processWappCallTriggerWSDTO = processTriggerFramework.getProcessWappCallTriggerService(userId,triggerId);
         if (processWappCallTriggerWSDTO != null){
             processWappCallTriggerWSDTOS.add(processWappCallTriggerWSDTO);
         }
@@ -506,7 +505,7 @@ public class ProcessChannelTriggerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessWappCallTriggerWSDTO> processWappCallTriggerWSDTOS = new ArrayList<>();
 
-        ProcessWappCallTriggerWSDTO processWappCallTriggerWSDTO = processChannelTriggerFramework.createProcessWappCallTriggerService(userId,processId,trigger,triggerDesc,accountId,typeId);
+        ProcessWappCallTriggerWSDTO processWappCallTriggerWSDTO = processTriggerFramework.createProcessWappCallTriggerService(userId,processId,trigger,triggerDesc,accountId,typeId);
         if (processWappCallTriggerWSDTO != null){
             processWappCallTriggerWSDTOS.add(processWappCallTriggerWSDTO);
         }
@@ -527,7 +526,7 @@ public class ProcessChannelTriggerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessWappCallTriggerWSDTO> processWappCallTriggerWSDTOS = new ArrayList<>();
 
-        ProcessWappCallTriggerWSDTO processWappCallTriggerWSDTO = processChannelTriggerFramework.updateProcessWappCallTriggerService(userId,triggerId,trigger,triggerDesc,accountId);
+        ProcessWappCallTriggerWSDTO processWappCallTriggerWSDTO = processTriggerFramework.updateProcessWappCallTriggerService(userId,triggerId,trigger,triggerDesc,accountId);
         if (processWappCallTriggerWSDTO != null){
             processWappCallTriggerWSDTOS.add(processWappCallTriggerWSDTO);
         }
@@ -548,7 +547,7 @@ public class ProcessChannelTriggerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessWappCallTriggerWSDTO> processWappCallTriggerWSDTOS = new ArrayList<>();
 
-        ProcessWappCallTriggerWSDTO processWappCallTriggerWSDTO = processChannelTriggerFramework.removeProcessWappCallTriggerService(userId,triggerId);
+        ProcessWappCallTriggerWSDTO processWappCallTriggerWSDTO = processTriggerFramework.removeProcessWappCallTriggerService(userId,triggerId);
         if (processWappCallTriggerWSDTO != null){
             processWappCallTriggerWSDTOS.add(processWappCallTriggerWSDTO);
         }
@@ -570,7 +569,7 @@ public class ProcessChannelTriggerMiddleware {
         ProcessWappMessageTriggerWSModel response = new ProcessWappMessageTriggerWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ProcessWappMessageTriggerWSDTO> processWappMessageTriggerWSDTOS = processChannelTriggerFramework.getProcessWappMessageTriggersService(userId,processId);
+        List<ProcessWappMessageTriggerWSDTO> processWappMessageTriggerWSDTOS = processTriggerFramework.getProcessWappMessageTriggersService(userId,processId);
         if (processWappMessageTriggerWSDTOS != null){
             response.setProcessWappMessageTriggers(processWappMessageTriggerWSDTOS);
         }
@@ -590,7 +589,7 @@ public class ProcessChannelTriggerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessWappMessageTriggerWSDTO> processWappMessageTriggerWSDTOS = new ArrayList<>();
 
-        ProcessWappMessageTriggerWSDTO processWappMessageTriggerWSDTO = processChannelTriggerFramework.getProcessWappMessageTriggerService(userId,triggerId);
+        ProcessWappMessageTriggerWSDTO processWappMessageTriggerWSDTO = processTriggerFramework.getProcessWappMessageTriggerService(userId,triggerId);
         if (processWappMessageTriggerWSDTO != null){
             processWappMessageTriggerWSDTOS.add(processWappMessageTriggerWSDTO);
         }
@@ -611,7 +610,7 @@ public class ProcessChannelTriggerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessWappMessageTriggerWSDTO> processWappMessageTriggerWSDTOS = new ArrayList<>();
 
-        ProcessWappMessageTriggerWSDTO processWappMessageTriggerWSDTO = processChannelTriggerFramework.createProcessWappMessageTriggerService(userId,processId,trigger,triggerDesc,accountId,wappTitle,wappBody,typeId);
+        ProcessWappMessageTriggerWSDTO processWappMessageTriggerWSDTO = processTriggerFramework.createProcessWappMessageTriggerService(userId,processId,trigger,triggerDesc,accountId,wappTitle,wappBody,typeId);
         if (processWappMessageTriggerWSDTO != null){
             processWappMessageTriggerWSDTOS.add(processWappMessageTriggerWSDTO);
         }
@@ -632,7 +631,7 @@ public class ProcessChannelTriggerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessWappMessageTriggerWSDTO> processWappMessageTriggerWSDTOS = new ArrayList<>();
 
-        ProcessWappMessageTriggerWSDTO processWappMessageTriggerWSDTO = processChannelTriggerFramework.updateProcessWappMessageTriggerService(userId,triggerId,trigger,triggerDesc,accountId,wappTitle,wappBody);
+        ProcessWappMessageTriggerWSDTO processWappMessageTriggerWSDTO = processTriggerFramework.updateProcessWappMessageTriggerService(userId,triggerId,trigger,triggerDesc,accountId,wappTitle,wappBody);
         if (processWappMessageTriggerWSDTO != null){
             processWappMessageTriggerWSDTOS.add(processWappMessageTriggerWSDTO);
         }
@@ -653,7 +652,7 @@ public class ProcessChannelTriggerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessWappMessageTriggerWSDTO> processWappMessageTriggerWSDTOS = new ArrayList<>();
 
-        ProcessWappMessageTriggerWSDTO processWappMessageTriggerWSDTO = processChannelTriggerFramework.removeProcessWappMessageTriggerService(userId,triggerId);
+        ProcessWappMessageTriggerWSDTO processWappMessageTriggerWSDTO = processTriggerFramework.removeProcessWappMessageTriggerService(userId,triggerId);
         if (processWappMessageTriggerWSDTO != null){
             processWappMessageTriggerWSDTOS.add(processWappMessageTriggerWSDTO);
         }

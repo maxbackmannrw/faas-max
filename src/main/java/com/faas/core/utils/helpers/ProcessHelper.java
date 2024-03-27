@@ -105,7 +105,7 @@ public class ProcessHelper {
         processDetailsWSDTO.setProcess(processDBModel);
         processDetailsWSDTO.setProcessTemps(createProcessTempWSDTO(processDBModel.getId()));
         processDetailsWSDTO.setProcessChannels(createProcessChannelWSDTO(processDBModel.getId()));
-        processDetailsWSDTO.setProcessChannelTrigger(createProcessChannelTriggerWSDTO(processDBModel.getId()));
+        processDetailsWSDTO.setProcessTrigger(createProcessTriggerWSDTO(processDBModel.getId()));
         processDetailsWSDTO.setProcessScenarios(createProcessScenarioWSDTOS(processDBModel));
 
         return processDetailsWSDTO;
@@ -142,17 +142,17 @@ public class ProcessHelper {
     }
 
 
-    public ProcessChannelTriggerWSDTO createProcessChannelTriggerWSDTO(String processId){
+    public ProcessTriggerWSDTO createProcessTriggerWSDTO(String processId){
 
-        ProcessChannelTriggerWSDTO processChannelTriggerWSDTO = new ProcessChannelTriggerWSDTO();
-        processChannelTriggerWSDTO.setProcessAITriggers(createProcessAITriggerWSDTOS(processId));
-        processChannelTriggerWSDTO.setProcessEmailTriggers(createProcessEmailTriggerWSDTOS(processId));
-        processChannelTriggerWSDTO.setProcessSipTriggers(createProcessSipTriggerWSDTOS(processId));
-        processChannelTriggerWSDTO.setProcessSmsTriggers(createProcessSmsTriggerWSDTOS(processId));
-        processChannelTriggerWSDTO.setProcessWappCallTriggers(createProcessWappCallTriggerWSDTOS(processId));
-        processChannelTriggerWSDTO.setProcessWappMessageTriggers(createProcessWappMessageTriggerWSDTOS(processId));
+        ProcessTriggerWSDTO processTriggerWSDTO = new ProcessTriggerWSDTO();
+        processTriggerWSDTO.setProcessAITriggers(createProcessAITriggerWSDTOS(processId));
+        processTriggerWSDTO.setProcessEmailTriggers(createProcessEmailTriggerWSDTOS(processId));
+        processTriggerWSDTO.setProcessSipTriggers(createProcessSipTriggerWSDTOS(processId));
+        processTriggerWSDTO.setProcessSmsTriggers(createProcessSmsTriggerWSDTOS(processId));
+        processTriggerWSDTO.setProcessWappCallTriggers(createProcessWappCallTriggerWSDTOS(processId));
+        processTriggerWSDTO.setProcessWappMessageTriggers(createProcessWappMessageTriggerWSDTOS(processId));
 
-        return processChannelTriggerWSDTO;
+        return processTriggerWSDTO;
     }
 
     public List<ProcessAITriggerWSDTO> createProcessAITriggerWSDTOS(String processId) {

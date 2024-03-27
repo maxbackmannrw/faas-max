@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
-public class ProcessChannelTriggerFramework {
+public class ProcessTriggerFramework {
 
     @Autowired
     ProcessAITriggerRepository processAITriggerRepository;
@@ -65,17 +65,17 @@ public class ProcessChannelTriggerFramework {
     AppUtils appUtils;
 
 
-    public ProcessChannelTriggerWSDTO getProcessChannelTriggerService(long userId, String processId) {
+    public ProcessTriggerWSDTO getProcessTriggerService(long userId, String processId) {
 
-        ProcessChannelTriggerWSDTO processChannelTriggerWSDTO = new ProcessChannelTriggerWSDTO();
-        processChannelTriggerWSDTO.setProcessAITriggers(getProcessAITriggersService(userId,processId));
-        processChannelTriggerWSDTO.setProcessEmailTriggers(getProcessEmailTriggersService(userId,processId));
-        processChannelTriggerWSDTO.setProcessSipTriggers(getProcessSipTriggersService(userId,processId));
-        processChannelTriggerWSDTO.setProcessSmsTriggers(getProcessSmsTriggersService(userId,processId));
-        processChannelTriggerWSDTO.setProcessWappCallTriggers(getProcessWappCallTriggersService(userId,processId));
-        processChannelTriggerWSDTO.setProcessWappMessageTriggers(getProcessWappMessageTriggersService(userId,processId));
+        ProcessTriggerWSDTO processTriggerWSDTO = new ProcessTriggerWSDTO();
+        processTriggerWSDTO.setProcessAITriggers(getProcessAITriggersService(userId,processId));
+        processTriggerWSDTO.setProcessEmailTriggers(getProcessEmailTriggersService(userId,processId));
+        processTriggerWSDTO.setProcessSipTriggers(getProcessSipTriggersService(userId,processId));
+        processTriggerWSDTO.setProcessSmsTriggers(getProcessSmsTriggersService(userId,processId));
+        processTriggerWSDTO.setProcessWappCallTriggers(getProcessWappCallTriggersService(userId,processId));
+        processTriggerWSDTO.setProcessWappMessageTriggers(getProcessWappMessageTriggersService(userId,processId));
 
-        return processChannelTriggerWSDTO;
+        return processTriggerWSDTO;
     }
 
 

@@ -14,19 +14,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-@RequestMapping(value = AppConstant.API_VERSION + "/base/process/details/trigger/")
-public class ProcessChannelTriggerController {
+@RequestMapping(value = AppConstant.API_VERSION + "/base/process/details/channel/trigger/")
+public class ProcessTriggerController {
 
 
     @Autowired
     ProcessChannelTriggerMiddleware processChannelTriggerMiddleware;
 
 
-    @RequestMapping(value = BaseRoute.GET_PROCESS_CHANNEL_TRIGGER, method = RequestMethod.POST)
-    public ResponseEntity<?> getProcessChannelTrigger(@RequestParam long userId,
-                                                      @RequestParam String processId) {
+    @RequestMapping(value = BaseRoute.GET_PROCESS_TRIGGER, method = RequestMethod.POST)
+    public ResponseEntity<?> getProcessTrigger(@RequestParam long userId,
+                                               @RequestParam String processId) {
 
-        ProcessChannelTriggerWSModel response = processChannelTriggerMiddleware.getProcessChannelTrigger(userId,processId);
+        ProcessTriggerWSModel response = processChannelTriggerMiddleware.getProcessTrigger(userId,processId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -101,6 +101,7 @@ public class ProcessChannelTriggerController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
+
 
 
     @RequestMapping(value = BaseRoute.GET_PROCESS_EMAIL_TRIGGERS, method = RequestMethod.POST)

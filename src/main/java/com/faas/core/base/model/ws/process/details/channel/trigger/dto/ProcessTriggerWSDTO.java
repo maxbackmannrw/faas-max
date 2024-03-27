@@ -2,7 +2,7 @@ package com.faas.core.base.model.ws.process.details.channel.trigger.dto;
 
 import java.util.List;
 
-public class ProcessChannelTriggerWSDTO {
+public class ProcessTriggerWSDTO {
 
     private List<ProcessAITriggerWSDTO> processAITriggers;
     private List<ProcessEmailTriggerWSDTO>processEmailTriggers;
@@ -11,10 +11,10 @@ public class ProcessChannelTriggerWSDTO {
     private List<ProcessWappCallTriggerWSDTO>processWappCallTriggers;
     private List<ProcessWappMessageTriggerWSDTO>processWappMessageTriggers;
 
-    public ProcessChannelTriggerWSDTO() {
+    public ProcessTriggerWSDTO() {
     }
 
-    public ProcessChannelTriggerWSDTO(List<ProcessAITriggerWSDTO> processAITriggers, List<ProcessEmailTriggerWSDTO> processEmailTriggers, List<ProcessSipTriggerWSDTO> processSipTriggers, List<ProcessSmsTriggerWSDTO> processSmsTriggers, List<ProcessWappCallTriggerWSDTO> processWappCallTriggers, List<ProcessWappMessageTriggerWSDTO> processWappMessageTriggers) {
+    public ProcessTriggerWSDTO(List<ProcessAITriggerWSDTO> processAITriggers, List<ProcessEmailTriggerWSDTO> processEmailTriggers, List<ProcessSipTriggerWSDTO> processSipTriggers, List<ProcessSmsTriggerWSDTO> processSmsTriggers, List<ProcessWappCallTriggerWSDTO> processWappCallTriggers, List<ProcessWappMessageTriggerWSDTO> processWappMessageTriggers) {
         this.processAITriggers = processAITriggers;
         this.processEmailTriggers = processEmailTriggers;
         this.processSipTriggers = processSipTriggers;

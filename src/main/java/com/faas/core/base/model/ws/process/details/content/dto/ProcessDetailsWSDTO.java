@@ -4,7 +4,7 @@ import com.faas.core.base.model.db.process.content.ProcessDBModel;
 import com.faas.core.base.model.ws.process.details.channel.content.dto.ProcessChannelWSDTO;
 import com.faas.core.base.model.ws.process.details.channel.temp.dto.ProcessTempWSDTO;
 import com.faas.core.base.model.ws.process.details.scenario.dto.ProcessScenarioWSDTO;
-import com.faas.core.base.model.ws.process.details.channel.trigger.dto.ProcessChannelTriggerWSDTO;
+import com.faas.core.base.model.ws.process.details.channel.trigger.dto.ProcessTriggerWSDTO;
 
 import java.util.List;
 
@@ -13,17 +13,17 @@ public class ProcessDetailsWSDTO {
     private ProcessDBModel process;
     private ProcessTempWSDTO processTemps;
     private ProcessChannelWSDTO processChannels;
-    private ProcessChannelTriggerWSDTO processChannelTrigger;
+    private ProcessTriggerWSDTO processTrigger;
     private List<ProcessScenarioWSDTO> processScenarios;
 
     public ProcessDetailsWSDTO() {
     }
 
-    public ProcessDetailsWSDTO(ProcessDBModel process, ProcessTempWSDTO processTemps, ProcessChannelWSDTO processChannels, ProcessChannelTriggerWSDTO processChannelTrigger, List<ProcessScenarioWSDTO> processScenarios) {
+    public ProcessDetailsWSDTO(ProcessDBModel process, ProcessTempWSDTO processTemps, ProcessChannelWSDTO processChannels, ProcessTriggerWSDTO processTrigger, List<ProcessScenarioWSDTO> processScenarios) {
         this.process = process;
         this.processTemps = processTemps;
         this.processChannels = processChannels;
-        this.processChannelTrigger = processChannelTrigger;
+        this.processTrigger = processTrigger;
         this.processScenarios = processScenarios;
     }
 
@@ -51,12 +51,12 @@ public class ProcessDetailsWSDTO {
         this.processChannels = processChannels;
     }
 
-    public ProcessChannelTriggerWSDTO getProcessChannelTrigger() {
-        return processChannelTrigger;
+    public ProcessTriggerWSDTO getProcessTrigger() {
+        return processTrigger;
     }
 
-    public void setProcessChannelTrigger(ProcessChannelTriggerWSDTO processChannelTrigger) {
-        this.processChannelTrigger = processChannelTrigger;
+    public void setProcessTrigger(ProcessTriggerWSDTO processTrigger) {
+        this.processTrigger = processTrigger;
     }
 
     public List<ProcessScenarioWSDTO> getProcessScenarios() {
