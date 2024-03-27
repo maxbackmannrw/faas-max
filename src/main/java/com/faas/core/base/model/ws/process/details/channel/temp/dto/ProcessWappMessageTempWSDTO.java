@@ -4,20 +4,20 @@ import com.faas.core.base.model.db.process.details.channel.temp.ProcessWappMessa
 
 public class ProcessWappMessageTempWSDTO {
 
-    private ProcessWappMessageTempDBModel wappMessageTemp;
+    private ProcessWappMessageTempDBModel processWappMessageTemp;
 
     public ProcessWappMessageTempWSDTO() {
     }
 
-    public ProcessWappMessageTempWSDTO(ProcessWappMessageTempDBModel wappMessageTemp) {
-        this.wappMessageTemp = wappMessageTemp;
+    public ProcessWappMessageTempWSDTO(ProcessWappMessageTempDBModel processWappMessageTemp) {
+        this.processWappMessageTemp = processWappMessageTemp;
     }
 
-    public ProcessWappMessageTempDBModel getWappMessageTemp() {
-        return wappMessageTemp;
+    public ProcessWappMessageTempDBModel getProcessWappMessageTemp() {
+        return processWappMessageTemp;
     }
 
-    public void setWappMessageTemp(ProcessWappMessageTempDBModel wappMessageTemp) {
-        this.wappMessageTemp = wappMessageTemp;
+    public void setProcessWappMessageTemp(ProcessWappMessageTempDBModel processWappMessageTemp) {
+        this.processWappMessageTemp = processWappMessageTemp;
     }
 }

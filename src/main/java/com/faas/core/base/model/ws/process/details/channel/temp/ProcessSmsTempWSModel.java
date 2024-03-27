@@ -8,15 +8,14 @@ import java.util.List;
 public class ProcessSmsTempWSModel {
 
     private GeneralWSModel general;
-    private List<ProcessSmsTempWSDTO>smsMessageTemps;
-
+    private List<ProcessSmsTempWSDTO>processSmsTemps;
 
     public ProcessSmsTempWSModel() {
     }
 
-    public ProcessSmsTempWSModel(GeneralWSModel general, List<ProcessSmsTempWSDTO> smsMessageTemps) {
+    public ProcessSmsTempWSModel(GeneralWSModel general, List<ProcessSmsTempWSDTO> processSmsTemps) {
         this.general = general;
-        this.smsMessageTemps = smsMessageTemps;
+        this.processSmsTemps = processSmsTemps;
     }
 
     public GeneralWSModel getGeneral() {
@@ -27,11 +26,11 @@ public class ProcessSmsTempWSModel {
         this.general = general;
     }
 
-    public List<ProcessSmsTempWSDTO> getSmsMessageTemps() {
-        return smsMessageTemps;
+    public List<ProcessSmsTempWSDTO> getProcessSmsTemps() {
+        return processSmsTemps;
     }
 
-    public void setSmsMessageTemps(List<ProcessSmsTempWSDTO> smsMessageTemps) {
-        this.smsMessageTemps = smsMessageTemps;
+    public void setProcessSmsTemps(List<ProcessSmsTempWSDTO> processSmsTemps) {
+        this.processSmsTemps = processSmsTemps;
     }
 }

@@ -3,7 +3,7 @@ package com.faas.core.base.model.db.process.details.channel.temp;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "process_sms_message_temp_table")
+@Document(collection = "process_sms_temp_table")
 public class ProcessSmsTempDBModel {
 
     @Id

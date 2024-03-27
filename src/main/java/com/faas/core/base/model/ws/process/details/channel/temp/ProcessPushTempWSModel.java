@@ -8,15 +8,14 @@ import java.util.List;
 public class ProcessPushTempWSModel {
 
     private GeneralWSModel general;
-    private List<ProcessPushTempWSDTO>pushTemps;
-
+    private List<ProcessPushTempWSDTO>processPushTemps;
 
     public ProcessPushTempWSModel() {
     }
 
-    public ProcessPushTempWSModel(GeneralWSModel general, List<ProcessPushTempWSDTO> pushTemps) {
+    public ProcessPushTempWSModel(GeneralWSModel general, List<ProcessPushTempWSDTO> processPushTemps) {
         this.general = general;
-        this.pushTemps = pushTemps;
+        this.processPushTemps = processPushTemps;
     }
 
     public GeneralWSModel getGeneral() {
@@ -27,11 +26,11 @@ public class ProcessPushTempWSModel {
         this.general = general;
     }
 
-    public List<ProcessPushTempWSDTO> getPushTemps() {
-        return pushTemps;
+    public List<ProcessPushTempWSDTO> getProcessPushTemps() {
+        return processPushTemps;
     }
 
-    public void setPushTemps(List<ProcessPushTempWSDTO> pushTemps) {
-        this.pushTemps = pushTemps;
+    public void setProcessPushTemps(List<ProcessPushTempWSDTO> processPushTemps) {
+        this.processPushTemps = processPushTemps;
     }
 }

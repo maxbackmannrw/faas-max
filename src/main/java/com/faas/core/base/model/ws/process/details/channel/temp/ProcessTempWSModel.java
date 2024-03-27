@@ -6,14 +6,14 @@ import com.faas.core.base.model.ws.process.details.channel.temp.dto.ProcessTempW
 public class ProcessTempWSModel {
 
     private GeneralWSModel general;
-    private ProcessTempWSDTO processTemps;
+    private ProcessTempWSDTO processTemp;
 
     public ProcessTempWSModel() {
     }
 
-    public ProcessTempWSModel(GeneralWSModel general, ProcessTempWSDTO processTemps) {
+    public ProcessTempWSModel(GeneralWSModel general, ProcessTempWSDTO processTemp) {
         this.general = general;
-        this.processTemps = processTemps;
+        this.processTemp = processTemp;
     }
 
     public GeneralWSModel getGeneral() {
@@ -24,11 +24,11 @@ public class ProcessTempWSModel {
         this.general = general;
     }
 
-    public ProcessTempWSDTO getProcessTemps() {
-        return processTemps;
+    public ProcessTempWSDTO getProcessTemp() {
+        return processTemp;
     }
 
-    public void setProcessTemps(ProcessTempWSDTO processTemps) {
-        this.processTemps = processTemps;
+    public void setProcessTemp(ProcessTempWSDTO processTemp) {
+        this.processTemp = processTemp;
     }
 }

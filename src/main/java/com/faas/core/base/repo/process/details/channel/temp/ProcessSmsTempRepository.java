@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ProcessSmsMessageTempRepository extends MongoRepository<ProcessSmsTempDBModel, String> {
+public interface ProcessSmsTempRepository extends MongoRepository<ProcessSmsTempDBModel, String> {
 
     List<ProcessSmsTempDBModel> findByStatus(int status);
 

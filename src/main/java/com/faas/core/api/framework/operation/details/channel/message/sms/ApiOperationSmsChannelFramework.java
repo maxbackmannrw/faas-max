@@ -16,7 +16,7 @@ import com.faas.core.base.repo.client.details.ClientDetailsRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.operation.details.channel.OperationSmsMessageRepository;
 import com.faas.core.base.repo.process.details.channel.content.ProcessSmsChannelRepository;
-import com.faas.core.base.repo.process.details.channel.temp.ProcessSmsMessageTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.ProcessSmsTempRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utils.service.channel.sms.SmsChannelService;
 import com.faas.core.utils.config.AppUtils;
@@ -61,7 +61,7 @@ public class ApiOperationSmsChannelFramework {
     OperationSmsMessageRepository operationSmsMessageRepository;
 
     @Autowired
-    ProcessSmsMessageTempRepository processSmsMessageTempRepository;
+    ProcessSmsTempRepository processSmsTempRepository;
 
     @Autowired
     AppUtils appUtils;
@@ -104,7 +104,7 @@ public class ApiOperationSmsChannelFramework {
         if (!sessionDBModels.isEmpty()){
 
             ClientPhoneDAO clientPhoneDAO = channelHelper.fetchClientPhoneDAO(sessionDBModels.get(0).getClientId(),numberId);
-            List<ProcessSmsTempDBModel> smsMessageTempDBModels = processSmsMessageTempRepository.findByIdAndProcessId(tempId,sessionDBModels.get(0).getProcessId());
+            List<ProcessSmsTempDBModel> smsMessageTempDBModels = processSmsTempRepository.findByIdAndProcessId(tempId,sessionDBModels.get(0).getProcessId());
             List<ProcessSmsChannelDBModel> smsChannelDBModels = processSmsChannelRepository.findByProcessId(sessionDBModels.get(0).getProcessId());
             if (clientPhoneDAO != null && !smsMessageTempDBModels.isEmpty() && !smsChannelDBModels.isEmpty() ){
 
@@ -148,7 +148,7 @@ public class ApiOperationSmsChannelFramework {
             if (!clientDetailsDBModels.isEmpty() && clientDetailsDBModels.get(0).getClientPhones() != null){
                 smsTempWSDTO.setClientPhones(clientDetailsDBModels.get(0).getClientPhones());
             }
-            smsTempWSDTO.setOperationSmsTemps(processSmsMessageTempRepository.findByProcessId(sessionDBModels.get(0).getProcessId()));
+            smsTempWSDTO.setOperationSmsTemps(processSmsTempRepository.findByProcessId(sessionDBModels.get(0).getProcessId()));
 
             return smsTempWSDTO;
         }
@@ -166,7 +166,7 @@ public class ApiOperationSmsChannelFramework {
             if (!clientDetailsDBModels.isEmpty() && clientDetailsDBModels.get(0).getClientPhones() != null){
                 smsTempWSDTO.setClientPhones(clientDetailsDBModels.get(0).getClientPhones());
             }
-            smsTempWSDTO.setOperationSmsTemps(processSmsMessageTempRepository.findByIdAndProcessId(tempId,sessionDBModels.get(0).getProcessId()));
+            smsTempWSDTO.setOperationSmsTemps(processSmsTempRepository.findByIdAndProcessId(tempId,sessionDBModels.get(0).getProcessId()));
 
             return smsTempWSDTO;
         }

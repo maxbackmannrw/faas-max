@@ -1,54 +1,53 @@
 package com.faas.core.base.model.ws.process.details.channel.temp.dto;
 
-
 import java.util.List;
 
 public class ProcessTempWSDTO {
 
-    private List<ProcessEmailTempWSDTO> emailTemps;
-    private List<ProcessPushTempWSDTO>pushTemps;
-    private List<ProcessSmsTempWSDTO>smsMessageTemps;
-    private List<ProcessWappMessageTempWSDTO>wappMessageTemps;
+    private List<ProcessEmailTempWSDTO> processEmailTemps;
+    private List<ProcessPushTempWSDTO>processPushTemps;
+    private List<ProcessSmsTempWSDTO>processSmsTemps;
+    private List<ProcessWappMessageTempWSDTO>processWappMessageTemps;
 
     public ProcessTempWSDTO() {
     }
 
-    public ProcessTempWSDTO(List<ProcessEmailTempWSDTO> emailTemps, List<ProcessPushTempWSDTO> pushTemps, List<ProcessSmsTempWSDTO> smsMessageTemps, List<ProcessWappMessageTempWSDTO> wappMessageTemps) {
-        this.emailTemps = emailTemps;
-        this.pushTemps = pushTemps;
-        this.smsMessageTemps = smsMessageTemps;
-        this.wappMessageTemps = wappMessageTemps;
+    public ProcessTempWSDTO(List<ProcessEmailTempWSDTO> processEmailTemps, List<ProcessPushTempWSDTO> processPushTemps, List<ProcessSmsTempWSDTO> processSmsTemps, List<ProcessWappMessageTempWSDTO> processWappMessageTemps) {
+        this.processEmailTemps = processEmailTemps;
+        this.processPushTemps = processPushTemps;
+        this.processSmsTemps = processSmsTemps;
+        this.processWappMessageTemps = processWappMessageTemps;
     }
 
-    public List<ProcessEmailTempWSDTO> getEmailTemps() {
-        return emailTemps;
+    public List<ProcessEmailTempWSDTO> getProcessEmailTemps() {
+        return processEmailTemps;
     }
 
-    public void setEmailTemps(List<ProcessEmailTempWSDTO> emailTemps) {
-        this.emailTemps = emailTemps;
+    public void setProcessEmailTemps(List<ProcessEmailTempWSDTO> processEmailTemps) {
+        this.processEmailTemps = processEmailTemps;
     }
 
-    public List<ProcessPushTempWSDTO> getPushTemps() {
-        return pushTemps;
+    public List<ProcessPushTempWSDTO> getProcessPushTemps() {
+        return processPushTemps;
     }
 
-    public void setPushTemps(List<ProcessPushTempWSDTO> pushTemps) {
-        this.pushTemps = pushTemps;
+    public void setProcessPushTemps(List<ProcessPushTempWSDTO> processPushTemps) {
+        this.processPushTemps = processPushTemps;
     }
 
-    public List<ProcessSmsTempWSDTO> getSmsMessageTemps() {
-        return smsMessageTemps;
+    public List<ProcessSmsTempWSDTO> getProcessSmsTemps() {
+        return processSmsTemps;
     }
 
-    public void setSmsMessageTemps(List<ProcessSmsTempWSDTO> smsMessageTemps) {
-        this.smsMessageTemps = smsMessageTemps;
+    public void setProcessSmsTemps(List<ProcessSmsTempWSDTO> processSmsTemps) {
+        this.processSmsTemps = processSmsTemps;
     }
 
-    public List<ProcessWappMessageTempWSDTO> getWappMessageTemps() {
-        return wappMessageTemps;
+    public List<ProcessWappMessageTempWSDTO> getProcessWappMessageTemps() {
+        return processWappMessageTemps;
     }
 
-    public void setWappMessageTemps(List<ProcessWappMessageTempWSDTO> wappMessageTemps) {
-        this.wappMessageTemps = wappMessageTemps;
+    public void setProcessWappMessageTemps(List<ProcessWappMessageTempWSDTO> processWappMessageTemps) {
+        this.processWappMessageTemps = processWappMessageTemps;
     }
 }

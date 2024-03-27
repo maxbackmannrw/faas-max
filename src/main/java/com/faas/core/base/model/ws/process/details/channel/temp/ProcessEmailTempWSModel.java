@@ -8,15 +8,14 @@ import java.util.List;
 public class ProcessEmailTempWSModel {
 
     private GeneralWSModel general;
-    private List<ProcessEmailTempWSDTO>emailTemps;
-
+    private List<ProcessEmailTempWSDTO>processEmailTemps;
 
     public ProcessEmailTempWSModel() {
     }
 
-    public ProcessEmailTempWSModel(GeneralWSModel general, List<ProcessEmailTempWSDTO> emailTemps) {
+    public ProcessEmailTempWSModel(GeneralWSModel general, List<ProcessEmailTempWSDTO> processEmailTemps) {
         this.general = general;
-        this.emailTemps = emailTemps;
+        this.processEmailTemps = processEmailTemps;
     }
 
     public GeneralWSModel getGeneral() {
@@ -27,11 +26,11 @@ public class ProcessEmailTempWSModel {
         this.general = general;
     }
 
-    public List<ProcessEmailTempWSDTO> getEmailTemps() {
-        return emailTemps;
+    public List<ProcessEmailTempWSDTO> getProcessEmailTemps() {
+        return processEmailTemps;
     }
 
-    public void setEmailTemps(List<ProcessEmailTempWSDTO> emailTemps) {
-        this.emailTemps = emailTemps;
+    public void setProcessEmailTemps(List<ProcessEmailTempWSDTO> processEmailTemps) {
+        this.processEmailTemps = processEmailTemps;
     }
 }

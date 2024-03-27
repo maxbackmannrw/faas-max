@@ -456,31 +456,33 @@ public class BaseRoute {
     public static final String REMOVE_PROCESS_PUSH_CHANNEL = "removeprocesspushchannel";
 
 
-    public static final String GET_PROCESS_TEMPS = "getprocesstemps";
 
-    public static final String GET_PROCESS_SMS_MESSAGE_TEMPS = "getprocesssmsmessagetemps";
-    public static final String GET_SMS_MESSAGE_TEMP = "getsmsmessagetemp";
-    public static final String CREATE_SMS_MESSAGE_TEMP = "createsmsmessagetemp";
-    public static final String UPDATE_SMS_MESSAGE_TEMP = "updatesmsmessagetemp";
-    public static final String REMOVE_SMS_MESSAGE_TEMP = "removesmsmessagetemp";
+    public static final String GET_PROCESS_TEMP = "getprocesstemp";
+
+    public static final String GET_PROCESS_SMS_TEMPS = "getprocesssmstemps";
+    public static final String GET_PROCESS_SMS_TEMP = "getprocesssmstemp";
+    public static final String CREATE_PROCESS_SMS_TEMP = "createprocesssmstemp";
+    public static final String UPDATE_PROCESS_SMS_TEMP = "updateprocesssmstemp";
+    public static final String REMOVE_PROCESS_SMS_TEMP = "removeprocesssmstemp";
 
     public static final String GET_PROCESS_WAPP_MESSAGE_TEMPS = "getprocesswappmessagetemps";
-    public static final String GET_WAPP_MESSAGE_TEMP = "getwappmessagetemp";
-    public static final String CREATE_WAPP_MESSAGE_TEMP = "createwappmessagetemp";
-    public static final String UPDATE_WAPP_MESSAGE_TEMP = "updatewappmessagetemp";
-    public static final String REMOVE_WAPP_MESSAGE_TEMP = "removewappmessagetemp";
+    public static final String GET_PROCESS_WAPP_MESSAGE_TEMP = "getprocesswappmessagetemp";
+    public static final String CREATE_PROCESS_WAPP_MESSAGE_TEMP = "createprocesswappmessagetemp";
+    public static final String UPDATE_PROCESS_WAPP_MESSAGE_TEMP = "updateprocesswappmessagetemp";
+    public static final String REMOVE_PROCESS_WAPP_MESSAGE_TEMP = "removeprocesswappmessagetemp";
 
     public static final String GET_PROCESS_EMAIL_TEMPS = "getprocessemailtemps";
-    public static final String GET_EMAIL_TEMP = "getemailtemp";
-    public static final String CREATE_EMAIL_TEMP = "createemailtemp";
-    public static final String UPDATE_EMAIL_TEMP = "updateemailtemp";
-    public static final String REMOVE_EMAIL_TEMP = "removeemailtemp";
+    public static final String GET_PROCESS_EMAIL_TEMP = "getprocessemailtemp";
+    public static final String CREATE_PROCESS_EMAIL_TEMP = "createprocessemailtemp";
+    public static final String UPDATE_PROCESS_EMAIL_TEMP = "updateprocessemailtemp";
+    public static final String REMOVE_PROCESS_EMAIL_TEMP = "removeprocessemailtemp";
 
     public static final String GET_PROCESS_PUSH_TEMPS = "getprocesspushtemps";
-    public static final String GET_PUSH_TEMP = "getpushtemp";
-    public static final String CREATE_PUSH_TEMP = "createpushtemp";
-    public static final String UPDATE_PUSH_TEMP = "updatepushtemp";
-    public static final String REMOVE_PUSH_TEMP = "removepushtemp";
+    public static final String GET_PROCESS_PUSH_TEMP = "getprocesspushtemp";
+    public static final String CREATE_PROCESS_PUSH_TEMP = "createprocesspushtemp";
+    public static final String UPDATE_PROCESS_PUSH_TEMP = "updateprocesspushtemp";
+    public static final String REMOVE_PROCESS_PUSH_TEMP = "removeprocesspushtemp";
+
 
 
     public static final String GET_ALL_PROCESS_TYPES = "getallprocesstypes";

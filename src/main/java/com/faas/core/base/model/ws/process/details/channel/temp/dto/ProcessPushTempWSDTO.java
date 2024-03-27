@@ -4,20 +4,20 @@ import com.faas.core.base.model.db.process.details.channel.temp.ProcessPushTempD
 
 public class ProcessPushTempWSDTO {
 
-    private ProcessPushTempDBModel pushTemp;
+    private ProcessPushTempDBModel processPushTemp;
 
     public ProcessPushTempWSDTO() {
     }
 
-    public ProcessPushTempWSDTO(ProcessPushTempDBModel pushTemp) {
-        this.pushTemp = pushTemp;
+    public ProcessPushTempWSDTO(ProcessPushTempDBModel processPushTemp) {
+        this.processPushTemp = processPushTemp;
     }
 
-    public ProcessPushTempDBModel getPushTemp() {
-        return pushTemp;
+    public ProcessPushTempDBModel getProcessPushTemp() {
+        return processPushTemp;
     }
 
-    public void setPushTemp(ProcessPushTempDBModel pushTemp) {
-        this.pushTemp = pushTemp;
+    public void setProcessPushTemp(ProcessPushTempDBModel processPushTemp) {
+        this.processPushTemp = processPushTemp;
     }
 }

@@ -8,15 +8,14 @@ import java.util.List;
 public class ProcessWappMessageTempWSModel {
 
     private GeneralWSModel general;
-    private List<ProcessWappMessageTempWSDTO>wappMessageTemps;
-
+    private List<ProcessWappMessageTempWSDTO>processWappMessageTemps;
 
     public ProcessWappMessageTempWSModel() {
     }
 
-    public ProcessWappMessageTempWSModel(GeneralWSModel general, List<ProcessWappMessageTempWSDTO> wappMessageTemps) {
+    public ProcessWappMessageTempWSModel(GeneralWSModel general, List<ProcessWappMessageTempWSDTO> processWappMessageTemps) {
         this.general = general;
-        this.wappMessageTemps = wappMessageTemps;
+        this.processWappMessageTemps = processWappMessageTemps;
     }
 
     public GeneralWSModel getGeneral() {
@@ -27,11 +26,11 @@ public class ProcessWappMessageTempWSModel {
         this.general = general;
     }
 
-    public List<ProcessWappMessageTempWSDTO> getWappMessageTemps() {
-        return wappMessageTemps;
+    public List<ProcessWappMessageTempWSDTO> getProcessWappMessageTemps() {
+        return processWappMessageTemps;
     }
 
-    public void setWappMessageTemps(List<ProcessWappMessageTempWSDTO> wappMessageTemps) {
-        this.wappMessageTemps = wappMessageTemps;
+    public void setProcessWappMessageTemps(List<ProcessWappMessageTempWSDTO> processWappMessageTemps) {
+        this.processWappMessageTemps = processWappMessageTemps;
     }
 }

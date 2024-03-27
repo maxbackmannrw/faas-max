@@ -32,7 +32,7 @@ import com.faas.core.base.repo.operation.details.channel.*;
 import com.faas.core.base.repo.process.details.channel.content.*;
 import com.faas.core.base.repo.process.details.channel.temp.ProcessEmailTempRepository;
 import com.faas.core.base.repo.process.details.channel.temp.ProcessPushTempRepository;
-import com.faas.core.base.repo.process.details.channel.temp.ProcessSmsMessageTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.ProcessSmsTempRepository;
 import com.faas.core.base.repo.process.details.channel.temp.ProcessWappMessageTempRepository;
 import com.faas.core.base.repo.user.details.UserDetailsRepository;
 import com.faas.core.utils.config.AppConstant;
@@ -95,7 +95,7 @@ public class ChannelHelper {
     OperationSmsMessageRepository operationSmsMessageRepository;
 
     @Autowired
-    ProcessSmsMessageTempRepository processSmsMessageTempRepository;
+    ProcessSmsTempRepository processSmsTempRepository;
 
     @Autowired
     ProcessSmsChannelRepository processSmsChannelRepository;

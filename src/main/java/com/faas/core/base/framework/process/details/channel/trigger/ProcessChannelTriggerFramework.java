@@ -14,6 +14,7 @@ import com.faas.core.base.repo.channel.account.WappAccountRepository;
 import com.faas.core.base.repo.channel.settings.MessageTypeRepository;
 import com.faas.core.base.repo.process.details.trigger.*;
 import com.faas.core.base.repo.process.settings.TriggerTypeRepository;
+import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -23,7 +24,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
-public class ProcessTriggerFramework {
+public class ProcessChannelTriggerFramework {
 
     @Autowired
     ProcessAITriggerRepository processAITriggerRepository;
@@ -108,7 +109,7 @@ public class ProcessTriggerFramework {
             processAiTriggerDBModel.setTrigger(trigger);
             processAiTriggerDBModel.setTriggerDesc(triggerDesc);
             processAiTriggerDBModel.setAccountId(accountId);
-            processAiTriggerDBModel.setAccount("");
+            processAiTriggerDBModel.setAccount(AppConstant.NONE);
             processAiTriggerDBModel.setDatas(new ArrayList<>());
             processAiTriggerDBModel.setTypeId(typeId);
             processAiTriggerDBModel.setTriggerType(triggerTypeDBModel.get().getTriggerType());

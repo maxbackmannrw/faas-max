@@ -4,20 +4,20 @@ import com.faas.core.base.model.db.process.details.channel.temp.ProcessSmsTempDB
 
 public class ProcessSmsTempWSDTO {
 
-    private ProcessSmsTempDBModel smsMessageTemp;
+    private ProcessSmsTempDBModel processSmsTemp;
 
     public ProcessSmsTempWSDTO() {
     }
 
-    public ProcessSmsTempWSDTO(ProcessSmsTempDBModel smsMessageTemp) {
-        this.smsMessageTemp = smsMessageTemp;
+    public ProcessSmsTempWSDTO(ProcessSmsTempDBModel processSmsTemp) {
+        this.processSmsTemp = processSmsTemp;
     }
 
-    public ProcessSmsTempDBModel getSmsMessageTemp() {
-        return smsMessageTemp;
+    public ProcessSmsTempDBModel getProcessSmsTemp() {
+        return processSmsTemp;
     }
 
-    public void setSmsMessageTemp(ProcessSmsTempDBModel smsMessageTemp) {
-        this.smsMessageTemp = smsMessageTemp;
+    public void setProcessSmsTemp(ProcessSmsTempDBModel processSmsTemp) {
+        this.processSmsTemp = processSmsTemp;
     }
 }

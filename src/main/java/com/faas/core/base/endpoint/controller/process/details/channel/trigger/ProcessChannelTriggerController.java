@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping(value = AppConstant.API_VERSION + "/base/process/details/channel/trigger/")
-public class ProcessTriggerController {
+public class ProcessChannelTriggerController {
 
 
     @Autowired

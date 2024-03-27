@@ -11,7 +11,7 @@ import java.util.List;
 public class ProcessDetailsWSDTO {
 
     private ProcessDBModel process;
-    private ProcessTempWSDTO processTemps;
+    private ProcessTempWSDTO processTemp;
     private ProcessChannelWSDTO processChannels;
     private ProcessTriggerWSDTO processTrigger;
     private List<ProcessScenarioWSDTO> processScenarios;
@@ -19,9 +19,9 @@ public class ProcessDetailsWSDTO {
     public ProcessDetailsWSDTO() {
     }
 
-    public ProcessDetailsWSDTO(ProcessDBModel process, ProcessTempWSDTO processTemps, ProcessChannelWSDTO processChannels, ProcessTriggerWSDTO processTrigger, List<ProcessScenarioWSDTO> processScenarios) {
+    public ProcessDetailsWSDTO(ProcessDBModel process, ProcessTempWSDTO processTemp, ProcessChannelWSDTO processChannels, ProcessTriggerWSDTO processTrigger, List<ProcessScenarioWSDTO> processScenarios) {
         this.process = process;
-        this.processTemps = processTemps;
+        this.processTemp = processTemp;
         this.processChannels = processChannels;
         this.processTrigger = processTrigger;
         this.processScenarios = processScenarios;
@@ -35,12 +35,12 @@ public class ProcessDetailsWSDTO {
         this.process = process;
     }
 
-    public ProcessTempWSDTO getProcessTemps() {
-        return processTemps;
+    public ProcessTempWSDTO getProcessTemp() {
+        return processTemp;
     }
 
-    public void setProcessTemps(ProcessTempWSDTO processTemps) {
-        this.processTemps = processTemps;
+    public void setProcessTemp(ProcessTempWSDTO processTemp) {
+        this.processTemp = processTemp;
     }
 
     public ProcessChannelWSDTO getProcessChannels() {

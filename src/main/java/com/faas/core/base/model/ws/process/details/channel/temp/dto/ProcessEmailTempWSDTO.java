@@ -4,20 +4,20 @@ import com.faas.core.base.model.db.process.details.channel.temp.ProcessEmailTemp
 
 public class ProcessEmailTempWSDTO {
 
-    private ProcessEmailTempDBModel emailTemp;
+    private ProcessEmailTempDBModel processEmailTemp;
 
     public ProcessEmailTempWSDTO() {
     }
 
-    public ProcessEmailTempWSDTO(ProcessEmailTempDBModel emailTemp) {
-        this.emailTemp = emailTemp;
+    public ProcessEmailTempWSDTO(ProcessEmailTempDBModel processEmailTemp) {
+        this.processEmailTemp = processEmailTemp;
     }
 
-    public ProcessEmailTempDBModel getEmailTemp() {
-        return emailTemp;
+    public ProcessEmailTempDBModel getProcessEmailTemp() {
+        return processEmailTemp;
     }
 
-    public void setEmailTemp(ProcessEmailTempDBModel emailTemp) {
-        this.emailTemp = emailTemp;
+    public void setProcessEmailTemp(ProcessEmailTempDBModel processEmailTemp) {
+        this.processEmailTemp = processEmailTemp;
     }
 }

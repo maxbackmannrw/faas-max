@@ -12,7 +12,7 @@ import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.process.details.channel.content.*;
 import com.faas.core.base.repo.process.details.channel.temp.ProcessEmailTempRepository;
 import com.faas.core.base.repo.process.details.channel.temp.ProcessPushTempRepository;
-import com.faas.core.base.repo.process.details.channel.temp.ProcessSmsMessageTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.ProcessSmsTempRepository;
 import com.faas.core.base.repo.process.details.channel.temp.ProcessWappMessageTempRepository;
 import com.faas.core.base.repo.process.details.scenario.ProcessScenarioRepository;
 import com.faas.core.base.repo.process.details.trigger.*;
@@ -98,7 +98,7 @@ public class UtilitySystemFramework {
     ProcessPushTempRepository processPushTempRepository;
 
     @Autowired
-    ProcessSmsMessageTempRepository processSmsMessageTempRepository;
+    ProcessSmsTempRepository processSmsTempRepository;
 
     @Autowired
     ProcessWappMessageTempRepository processWappMessageTempRepository;

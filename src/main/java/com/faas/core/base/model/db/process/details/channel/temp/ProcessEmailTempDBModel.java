@@ -1,6 +1,6 @@
 package com.faas.core.base.model.db.process.details.channel.temp;
 
-import com.faas.core.base.model.db.process.details.channel.temp.dao.ProcessChannelTempDataDAO;
+import com.faas.core.base.model.db.process.details.channel.temp.dao.ProcessTempDataDAO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -18,7 +18,7 @@ public class ProcessEmailTempDBModel {
     private String emailSender;
     private long typeId;
     private String emailType;
-    private List<ProcessChannelTempDataDAO>datas;
+    private List<ProcessTempDataDAO>datas;
     private long uDate;
     private long cDate;
     private int status;
@@ -26,7 +26,7 @@ public class ProcessEmailTempDBModel {
     public ProcessEmailTempDBModel() {
     }
 
-    public ProcessEmailTempDBModel(String id, String processId, String emailSubject, String emailBody, String emailFooter, String emailSender, long typeId, String emailType, List<ProcessChannelTempDataDAO> datas, long uDate, long cDate, int status) {
+    public ProcessEmailTempDBModel(String id, String processId, String emailSubject, String emailBody, String emailFooter, String emailSender, long typeId, String emailType, List<ProcessTempDataDAO> datas, long uDate, long cDate, int status) {
         this.id = id;
         this.processId = processId;
         this.emailSubject = emailSubject;
@@ -105,11 +105,11 @@ public class ProcessEmailTempDBModel {
         this.emailType = emailType;
     }
 
-    public List<ProcessChannelTempDataDAO> getDatas() {
+    public List<ProcessTempDataDAO> getDatas() {
         return datas;
     }
 
-    public void setDatas(List<ProcessChannelTempDataDAO> datas) {
+    public void setDatas(List<ProcessTempDataDAO> datas) {
         this.datas = datas;
     }
 

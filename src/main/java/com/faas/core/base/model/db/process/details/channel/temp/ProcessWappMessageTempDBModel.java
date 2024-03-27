@@ -1,6 +1,6 @@
 package com.faas.core.base.model.db.process.details.channel.temp;
 
-import com.faas.core.base.model.db.process.details.channel.temp.dao.ProcessChannelTempDataDAO;
+import com.faas.core.base.model.db.process.details.channel.temp.dao.ProcessTempDataDAO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -17,7 +17,7 @@ public class ProcessWappMessageTempDBModel {
     private String wappBody;
     private long typeId;
     private String messageType;
-    private List<ProcessChannelTempDataDAO>datas;
+    private List<ProcessTempDataDAO>datas;
     private long uDate;
     private long cDate;
     private int status;
@@ -26,7 +26,7 @@ public class ProcessWappMessageTempDBModel {
     public ProcessWappMessageTempDBModel() {
     }
 
-    public ProcessWappMessageTempDBModel(String id, String processId, String wappTitle, String wappBody, long typeId, String messageType, List<ProcessChannelTempDataDAO> datas, long uDate, long cDate, int status) {
+    public ProcessWappMessageTempDBModel(String id, String processId, String wappTitle, String wappBody, long typeId, String messageType, List<ProcessTempDataDAO> datas, long uDate, long cDate, int status) {
         this.id = id;
         this.processId = processId;
         this.wappTitle = wappTitle;
@@ -87,11 +87,11 @@ public class ProcessWappMessageTempDBModel {
         this.messageType = messageType;
     }
 
-    public List<ProcessChannelTempDataDAO> getDatas() {
+    public List<ProcessTempDataDAO> getDatas() {
         return datas;
     }
 
-    public void setDatas(List<ProcessChannelTempDataDAO> datas) {
+    public void setDatas(List<ProcessTempDataDAO> datas) {
         this.datas = datas;
     }
 
