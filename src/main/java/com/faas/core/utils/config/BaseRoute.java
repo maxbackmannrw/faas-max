@@ -346,6 +346,7 @@ public class BaseRoute {
     public static final String REMOVE_PROCESS_SCRIPT = "removeprocessscript";
 
 
+
     public static final String GET_PROCESS_INQUIRY = "getprocessinquiry";
     public static final String UPDATE_PROCESS_INQUIRY = "updateprocessinquiry";
 
@@ -356,6 +357,7 @@ public class BaseRoute {
     public static final String REMOVE_PROCESS_INQUIRY_DATA = "removeprocessinquirydata";
 
 
+
     public static final String GET_PROCESS_FLOW = "getprocessflow";
     public static final String UPDATE_PROCESS_FLOW = "updateprocessflow";
 
@@ -364,6 +366,7 @@ public class BaseRoute {
     public static final String CREATE_PROCESS_FLOW_DATA = "createprocessflowdata";
     public static final String UPDATE_PROCESS_FLOW_DATA = "updateprocessflowdata";
     public static final String REMOVE_PROCESS_FLOW_DATA = "removeprocessflowdata";
+
 
 
     public static final String GET_PROCESS_TRIGGER = "getprocesstrigger";

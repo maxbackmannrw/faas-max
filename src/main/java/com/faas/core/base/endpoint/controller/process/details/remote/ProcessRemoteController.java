@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping(value = AppConstant.API_VERSION + "/base/process/details/remote/")
 public class ProcessRemoteController {
 
-
     @Autowired
     ProcessRemoteMiddleware processRemoteMiddleware;
 
