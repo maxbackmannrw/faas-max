@@ -21,6 +21,7 @@ import com.faas.core.base.repo.process.details.channel.temp.ProcessEmailTempRepo
 import com.faas.core.base.repo.process.details.channel.temp.ProcessPushTempRepository;
 import com.faas.core.base.repo.process.details.channel.temp.ProcessSmsTempRepository;
 import com.faas.core.base.repo.process.details.channel.temp.ProcessWappMessageTempRepository;
+import com.faas.core.base.repo.process.details.remote.ProcessRemoteRepository;
 import com.faas.core.base.repo.process.details.scenario.ProcessScenarioRepository;
 import com.faas.core.base.repo.process.details.trigger.*;
 import com.faas.core.base.repo.scenario.content.ScenarioRepository;
@@ -35,9 +36,11 @@ import java.util.List;
 @Component
 public class ProcessHelper {
 
-
     @Autowired
     ScenarioRepository scenarioRepository;
+
+    @Autowired
+    ProcessRemoteRepository processRemoteRepository;
 
     @Autowired
     ProcessEmailTempRepository processEmailTempRepository;
@@ -107,6 +110,7 @@ public class ProcessHelper {
         processDetailsWSDTO.setProcessChannels(createProcessChannelWSDTO(processDBModel.getId()));
         processDetailsWSDTO.setProcessTrigger(createProcessTriggerWSDTO(processDBModel.getId()));
         processDetailsWSDTO.setProcessScenarios(createProcessScenarioWSDTOS(processDBModel));
+        processDetailsWSDTO.setProcessRemotes(processRemoteRepository.findByProcessId(processDBModel.getId()));
 
         return processDetailsWSDTO;
     }
