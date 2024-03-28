@@ -81,7 +81,7 @@ public class ProcessRemoteFramework {
 
     public ProcessRemoteWSDTO removeProcessRemoteService(long userId,String processId,String processRemoteId) {
 
-        List<ProcessRemoteDBModel> processRemoteDBModels = processRemoteRepository.findByIdAndProcessId(processId,processRemoteId);
+        List<ProcessRemoteDBModel> processRemoteDBModels = processRemoteRepository.findByIdAndProcessId(processRemoteId,processId);
         if (!processRemoteDBModels.isEmpty()) {
             processRemoteRepository.delete(processRemoteDBModels.get(0));
             return new ProcessRemoteWSDTO(processRemoteDBModels.get(0));
