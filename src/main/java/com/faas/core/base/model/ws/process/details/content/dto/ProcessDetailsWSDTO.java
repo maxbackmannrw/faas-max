@@ -4,6 +4,7 @@ import com.faas.core.base.model.db.process.content.ProcessDBModel;
 import com.faas.core.base.model.db.process.details.remote.ProcessRemoteDBModel;
 import com.faas.core.base.model.ws.process.details.channel.content.dto.ProcessChannelWSDTO;
 import com.faas.core.base.model.ws.process.details.channel.temp.dto.ProcessTempWSDTO;
+import com.faas.core.base.model.ws.process.details.remote.dto.ProcessRemoteWSDTO;
 import com.faas.core.base.model.ws.process.details.scenario.dto.ProcessScenarioWSDTO;
 import com.faas.core.base.model.ws.process.details.channel.trigger.dto.ProcessTriggerWSDTO;
 
@@ -16,12 +17,12 @@ public class ProcessDetailsWSDTO {
     private ProcessChannelWSDTO processChannels;
     private ProcessTriggerWSDTO processTrigger;
     private List<ProcessScenarioWSDTO> processScenarios;
-    private List<ProcessRemoteDBModel>processRemotes;
+    private List<ProcessRemoteWSDTO>processRemotes;
 
     public ProcessDetailsWSDTO() {
     }
 
-    public ProcessDetailsWSDTO(ProcessDBModel process, ProcessTempWSDTO processTemp, ProcessChannelWSDTO processChannels, ProcessTriggerWSDTO processTrigger, List<ProcessScenarioWSDTO> processScenarios, List<ProcessRemoteDBModel> processRemotes) {
+    public ProcessDetailsWSDTO(ProcessDBModel process, ProcessTempWSDTO processTemp, ProcessChannelWSDTO processChannels, ProcessTriggerWSDTO processTrigger, List<ProcessScenarioWSDTO> processScenarios, List<ProcessRemoteWSDTO> processRemotes) {
         this.process = process;
         this.processTemp = processTemp;
         this.processChannels = processChannels;
@@ -70,11 +71,11 @@ public class ProcessDetailsWSDTO {
         this.processScenarios = processScenarios;
     }
 
-    public List<ProcessRemoteDBModel> getProcessRemotes() {
+    public List<ProcessRemoteWSDTO> getProcessRemotes() {
         return processRemotes;
     }
 
-    public void setProcessRemotes(List<ProcessRemoteDBModel> processRemotes) {
+    public void setProcessRemotes(List<ProcessRemoteWSDTO> processRemotes) {
         this.processRemotes = processRemotes;
     }
 }

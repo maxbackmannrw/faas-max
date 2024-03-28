@@ -8,12 +8,14 @@ import com.faas.core.base.model.db.process.details.channel.temp.ProcessEmailTemp
 import com.faas.core.base.model.db.process.details.channel.temp.ProcessPushTempDBModel;
 import com.faas.core.base.model.db.process.details.channel.temp.ProcessSmsTempDBModel;
 import com.faas.core.base.model.db.process.details.channel.temp.ProcessWappMessageTempDBModel;
+import com.faas.core.base.model.db.process.details.remote.ProcessRemoteDBModel;
 import com.faas.core.base.model.db.process.details.scenario.ProcessScenarioDBModel;
 import com.faas.core.base.model.db.process.details.channel.trigger.*;
 import com.faas.core.base.model.ws.process.content.dto.ProcessWSDTO;
 import com.faas.core.base.model.ws.process.details.channel.content.dto.*;
 import com.faas.core.base.model.ws.process.details.channel.temp.dto.*;
 import com.faas.core.base.model.ws.process.details.content.dto.ProcessDetailsWSDTO;
+import com.faas.core.base.model.ws.process.details.remote.dto.ProcessRemoteWSDTO;
 import com.faas.core.base.model.ws.process.details.scenario.dto.ProcessScenarioWSDTO;
 import com.faas.core.base.model.ws.process.details.channel.trigger.dto.*;
 import com.faas.core.base.repo.process.details.channel.content.*;
@@ -110,7 +112,7 @@ public class ProcessHelper {
         processDetailsWSDTO.setProcessChannels(createProcessChannelWSDTO(processDBModel.getId()));
         processDetailsWSDTO.setProcessTrigger(createProcessTriggerWSDTO(processDBModel.getId()));
         processDetailsWSDTO.setProcessScenarios(createProcessScenarioWSDTOS(processDBModel));
-        processDetailsWSDTO.setProcessRemotes(processRemoteRepository.findByProcessId(processDBModel.getId()));
+        processDetailsWSDTO.setProcessRemotes(createProcessRemoteWSDTOS(processDBModel));
 
         return processDetailsWSDTO;
     }
@@ -238,6 +240,16 @@ public class ProcessHelper {
         ProcessScenarioWSDTO processScenarioWSDTO = new ProcessScenarioWSDTO();
         processScenarioWSDTO.setProcessScenario(processScenarioDBModel);
         return processScenarioWSDTO;
+    }
+
+    public List<ProcessRemoteWSDTO> createProcessRemoteWSDTOS(ProcessDBModel processDBModel){
+
+        List<ProcessRemoteWSDTO> processRemoteWSDTOS = new ArrayList<>();
+        List<ProcessRemoteDBModel> processRemoteDBModels = processRemoteRepository.findByProcessId(processDBModel.getId());
+        for (ProcessRemoteDBModel processRemoteDBModel : processRemoteDBModels) {
+            processRemoteWSDTOS.add(new ProcessRemoteWSDTO(processRemoteDBModel));
+        }
+        return processRemoteWSDTOS;
     }
 
 
