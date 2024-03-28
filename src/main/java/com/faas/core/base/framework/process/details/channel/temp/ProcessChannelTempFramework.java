@@ -218,7 +218,7 @@ public class ProcessChannelTempFramework {
 
         Optional<ProcessEmailTempDBModel> processEmailTempDBModel = processEmailTempRepository.findById(tempId);
         if (processEmailTempDBModel.isPresent()) {
-            new ProcessEmailTempWSDTO(processEmailTempDBModel.get());
+            return new ProcessEmailTempWSDTO(processEmailTempDBModel.get());
         }
         return null;
     }
@@ -339,7 +339,7 @@ public class ProcessChannelTempFramework {
         return null;
     }
 
-    public ProcessPushTempWSDTO removePushTempService(String tempId) {
+    public ProcessPushTempWSDTO removeProcessPushTempService(String tempId) {
 
         Optional<ProcessPushTempDBModel> processPushTempDBModel = processPushTempRepository.findById(tempId);
         if (processPushTempDBModel.isPresent()){

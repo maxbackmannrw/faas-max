@@ -463,7 +463,7 @@ public class ProcessChannelTempMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessPushTempWSDTO> processPushTempWSDTOS = new ArrayList<>();
 
-        ProcessPushTempWSDTO processPushTempWSDTO = processChannelTempFramework.removePushTempService(tempId);
+        ProcessPushTempWSDTO processPushTempWSDTO = processChannelTempFramework.removeProcessPushTempService(tempId);
         if (processPushTempWSDTO != null) {
             processPushTempWSDTOS.add(processPushTempWSDTO);
         }

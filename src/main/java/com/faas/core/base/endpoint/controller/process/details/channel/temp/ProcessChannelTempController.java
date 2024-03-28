@@ -104,7 +104,6 @@ public class ProcessChannelTempController {
     }
 
 
-
     @RequestMapping(value = BaseRoute.GET_PROCESS_WAPP_MESSAGE_TEMPS, method = RequestMethod.POST)
     public ResponseEntity<?> getProcessWappMessageTemps(@RequestParam long userId,
                                                         @RequestParam String processId) {
@@ -170,7 +169,6 @@ public class ProcessChannelTempController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
 
     @RequestMapping(value = BaseRoute.GET_PROCESS_EMAIL_TEMPS, method = RequestMethod.POST)
@@ -313,7 +311,6 @@ public class ProcessChannelTempController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
 
 }
