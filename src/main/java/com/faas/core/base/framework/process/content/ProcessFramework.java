@@ -135,7 +135,6 @@ public class ProcessFramework {
             if (processCategory.equalsIgnoreCase(AppConstant.AUTOMATIC_PROCESS)){
                 processDBModel.setProcessFlow(processHelper.createProcessFlowHelper(process));;
             }
-            processDBModel.setProcessRemotes(new ArrayList<>());
             processDBModel.setProcessAssets(new ArrayList<>());
             processDBModel.setProcessScripts(new ArrayList<>());
             processDBModel.setProcessDatas(new ArrayList<>());

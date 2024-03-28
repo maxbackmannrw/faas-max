@@ -18,7 +18,6 @@ public class ProcessDBModel {
     private String processCategory;
     private ProcessFlowDAO processFlow;
     private ProcessInquiryDAO processInquiry;
-    private List<ProcessRemoteDAO>processRemotes;
     private List<ProcessAssetDAO>processAssets;
     private List<ProcessScriptDAO>processScripts;
     private List<ProcessDataDAO>processDatas;
@@ -30,7 +29,7 @@ public class ProcessDBModel {
     public ProcessDBModel() {
     }
 
-    public ProcessDBModel(String id, String process, String processDesc, long processTypeId, String processType, String processCategory, ProcessFlowDAO processFlow, ProcessInquiryDAO processInquiry, List<ProcessRemoteDAO> processRemotes, List<ProcessAssetDAO> processAssets, List<ProcessScriptDAO> processScripts, List<ProcessDataDAO> processDatas, String processState, long uDate, long cDate, int status) {
+    public ProcessDBModel(String id, String process, String processDesc, long processTypeId, String processType, String processCategory, ProcessFlowDAO processFlow, ProcessInquiryDAO processInquiry, List<ProcessAssetDAO> processAssets, List<ProcessScriptDAO> processScripts, List<ProcessDataDAO> processDatas, String processState, long uDate, long cDate, int status) {
         this.id = id;
         this.process = process;
         this.processDesc = processDesc;
@@ -39,7 +38,6 @@ public class ProcessDBModel {
         this.processCategory = processCategory;
         this.processFlow = processFlow;
         this.processInquiry = processInquiry;
-        this.processRemotes = processRemotes;
         this.processAssets = processAssets;
         this.processScripts = processScripts;
         this.processDatas = processDatas;
@@ -111,14 +109,6 @@ public class ProcessDBModel {
 
     public void setProcessInquiry(ProcessInquiryDAO processInquiry) {
         this.processInquiry = processInquiry;
-    }
-
-    public List<ProcessRemoteDAO> getProcessRemotes() {
-        return processRemotes;
-    }
-
-    public void setProcessRemotes(List<ProcessRemoteDAO> processRemotes) {
-        this.processRemotes = processRemotes;
     }
 
     public List<ProcessAssetDAO> getProcessAssets() {

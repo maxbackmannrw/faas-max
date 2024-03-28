@@ -117,7 +117,6 @@ public class ProcessHelper {
         ProcessInquiryDAO processInquiryDAO = new ProcessInquiryDAO();
         processInquiryDAO.setInquiryId(appUtils.generateUUID());
         processInquiryDAO.setProcessInquiry(processInquiry);
-        processInquiryDAO.setInquiryRemotes(new ArrayList<>());
         processInquiryDAO.setInquiryDatas(new ArrayList<>());
         processInquiryDAO.setuDate(appUtils.getCurrentTimeStamp());
         processInquiryDAO.setcDate(appUtils.getCurrentTimeStamp());
@@ -132,7 +131,6 @@ public class ProcessHelper {
         ProcessFlowDAO processFlowDAO = new ProcessFlowDAO();
         processFlowDAO.setFlowId(appUtils.generateUUID());
         processFlowDAO.setProcessFlow(processFlow);
-        processFlowDAO.setFlowRemotes(new ArrayList<>());
         processFlowDAO.setFlowDatas(new ArrayList<>());
         processFlowDAO.setuDate(appUtils.getCurrentTimeStamp());
         processFlowDAO.setcDate(appUtils.getCurrentTimeStamp());

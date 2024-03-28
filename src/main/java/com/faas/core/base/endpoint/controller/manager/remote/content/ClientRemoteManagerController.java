@@ -22,7 +22,7 @@ public class ClientRemoteManagerController {
     ClientRemoteManagerMiddleware clientRemoteManagerMiddleware;
 
 
-    @RequestMapping(value = BaseRoute.GET_PROCESS_INQUIRY_REMOTE, method = RequestMethod.POST)
+    @RequestMapping(value = BaseRoute.GET_OPERATION_MANAGERS, method = RequestMethod.POST)
     public ResponseEntity<?> getAppManager(@RequestParam long userId,
                                            @RequestParam int reqPage,
                                            @RequestParam int reqSize) {

@@ -2,7 +2,6 @@ package com.faas.core.base.framework.process.details.inquiry;
 
 import com.faas.core.base.model.db.process.content.ProcessDBModel;
 import com.faas.core.base.model.db.process.content.dao.ProcessDataDAO;
-import com.faas.core.base.model.db.process.content.dao.ProcessRemoteDAO;
 import com.faas.core.base.model.db.remote.content.RemoteDBModel;
 import com.faas.core.base.model.db.utility.DataTypeDBModel;
 import com.faas.core.base.model.ws.process.details.content.dto.ProcessDataWSDTO;
@@ -146,7 +145,6 @@ public class ProcessInquiryFramework {
 
                     ProcessDataDAO processDataDAO = processDBModel.get().getProcessInquiry().getInquiryDatas().get(i);
                     processDBModel.get().getProcessInquiry().getInquiryDatas().remove(processDataDAO);
-
                     processDBModel.get().getProcessInquiry().setuDate(appUtils.getCurrentTimeStamp());
                     processDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
                     processRepository.save(processDBModel.get());
@@ -158,68 +156,6 @@ public class ProcessInquiryFramework {
         return null;
     }
 
-
-    public List<ProcessRemoteWSDTO> getProcessInquiryRemotesService(long userId, String processId) {
-
-        List<ProcessRemoteWSDTO> processRemoteWSDTOS = new ArrayList<>();
-        Optional<ProcessDBModel> processDBModel = processRepository.findById(processId);
-        if (processDBModel.isPresent() && processDBModel.get().getProcessInquiry() != null && processDBModel.get().getProcessInquiry().getInquiryRemotes() != null) {
-            for (int i=0;i<processDBModel.get().getProcessInquiry().getInquiryRemotes().size();i++){
-                processRemoteWSDTOS.add(new ProcessRemoteWSDTO(processDBModel.get().getProcessInquiry().getInquiryRemotes().get(i)));
-            }
-        }
-        return processRemoteWSDTOS;
-    }
-
-    public ProcessRemoteWSDTO getProcessInquiryRemoteService(long userId, String processId, String inquiryRemoteId) {
-
-        Optional<ProcessDBModel> processDBModel = processRepository.findById(processId);
-        if (processDBModel.isPresent() && processDBModel.get().getProcessInquiry() != null && processDBModel.get().getProcessInquiry().getInquiryRemotes() != null) {
-            for (int i=0;i<processDBModel.get().getProcessInquiry().getInquiryRemotes().size();i++){
-                if (processDBModel.get().getProcessInquiry().getInquiryRemotes().get(i).getId().equalsIgnoreCase(inquiryRemoteId)){
-                    return new ProcessRemoteWSDTO(processDBModel.get().getProcessInquiry().getInquiryRemotes().get(i));
-                }
-            }
-        }
-        return null;
-    }
-
-    public ProcessRemoteWSDTO createProcessInquiryRemoteService(long userId,String processId,String remoteId) {
-
-        Optional<ProcessDBModel> processDBModel = processRepository.findById(processId);
-        Optional<RemoteDBModel> remoteDBModel = remoteRepository.findById(remoteId);
-        if (processDBModel.isPresent() && processDBModel.get().getProcessInquiry() != null && remoteDBModel.isPresent()) {
-
-            ProcessRemoteDAO processRemoteDAO = remoteHelper.createInquiryProcessRemoteDAO(remoteDBModel.get());
-            processDBModel.get().getProcessInquiry().getInquiryRemotes().add(processRemoteDAO);
-            processDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
-            processRepository.save(processDBModel.get());
-
-            return new ProcessRemoteWSDTO(processRemoteDAO);
-        }
-        return null;
-    }
-
-
-    public ProcessRemoteWSDTO removeProcessInquiryRemoteService(long userId, String processId, String inquiryRemoteId) {
-
-        Optional<ProcessDBModel> processDBModel = processRepository.findById(processId);
-        if (processDBModel.isPresent() && processDBModel.get().getProcessInquiry() != null && processDBModel.get().getProcessInquiry().getInquiryRemotes() != null) {
-            for (int i=0;i<processDBModel.get().getProcessInquiry().getInquiryRemotes().size();i++){
-                if (processDBModel.get().getProcessInquiry().getInquiryRemotes().get(i).getId().equalsIgnoreCase(inquiryRemoteId)){
-
-                    ProcessRemoteDAO processRemoteDAO =processDBModel.get().getProcessInquiry().getInquiryRemotes().get(i);
-                    processDBModel.get().getProcessInquiry().getInquiryRemotes().remove(processRemoteDAO);
-                    processDBModel.get().getProcessInquiry().setuDate(appUtils.getCurrentTimeStamp());
-                    processDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
-                    processRepository.save(processDBModel.get());
-
-                    return new ProcessRemoteWSDTO(processRemoteDAO);
-                }
-            }
-        }
-        return null;
-    }
 
 
 }

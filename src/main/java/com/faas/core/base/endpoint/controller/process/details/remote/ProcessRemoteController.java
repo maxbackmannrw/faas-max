@@ -34,6 +34,19 @@ public class ProcessRemoteController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+    @RequestMapping(value = BaseRoute.GET_PROCESS_REMOTES_BY_CATEGORY, method = RequestMethod.POST)
+    public ResponseEntity<?> getProcessRemotesByCategory(@RequestParam long userId,
+                                                         @RequestParam String processId,
+                                                         @RequestParam String remoteCategory) {
+
+        ProcessRemoteWSModel response = processRemoteMiddleware.getProcessRemotesByCategory(userId,processId,remoteCategory);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
     @RequestMapping(value = BaseRoute.GET_PROCESS_REMOTE, method = RequestMethod.POST)
     public ResponseEntity<?> getProcessRemote(@RequestParam long userId,
                                               @RequestParam String processId,
@@ -50,9 +63,10 @@ public class ProcessRemoteController {
     @RequestMapping(value = BaseRoute.CREATE_PROCESS_REMOTE, method = RequestMethod.POST)
     public ResponseEntity<?> createProcessRemote(@RequestParam long userId,
                                                  @RequestParam String processId,
-                                                 @RequestParam String remoteId) {
+                                                 @RequestParam String remoteId,
+                                                 @RequestParam String remoteCategory) {
 
-        ProcessRemoteWSModel response = processRemoteMiddleware.createProcessRemote(userId,processId,remoteId);
+        ProcessRemoteWSModel response = processRemoteMiddleware.createProcessRemote(userId,processId,remoteId,remoteCategory);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

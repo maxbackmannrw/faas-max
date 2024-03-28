@@ -1,11 +1,10 @@
 package com.faas.core.utils.helpers;
 
-import com.faas.core.base.model.db.process.content.dao.ProcessRemoteDAO;
+import com.faas.core.base.model.db.process.content.ProcessDBModel;
+import com.faas.core.base.model.db.process.details.remote.ProcessRemoteDBModel;
 import com.faas.core.base.model.db.remote.content.RemoteDBModel;
 import com.faas.core.base.model.db.remote.content.dao.RemoteDataDAO;
-import com.faas.core.base.repo.client.content.ClientRepository;
-import com.faas.core.base.repo.remote.client.ClientRemoteRepository;
-import com.faas.core.base.repo.session.SessionRepository;
+import com.faas.core.base.repo.process.details.remote.ProcessRemoteRepository;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,100 +16,41 @@ public class RemoteHelper {
 
 
     @Autowired
-    ClientRepository clientRepository;
-
-    @Autowired
-    ClientRemoteRepository clientRemoteRepository;
-
-    @Autowired
-    SessionRepository sessionRepository;
+    ProcessRemoteRepository processRemoteRepository;
 
     @Autowired
     AppUtils appUtils;
 
 
-    public ProcessRemoteDAO createProcessRemoteDAO(RemoteDBModel remoteDBModel){
+    public ProcessRemoteDBModel createProcessRemoteDBModel(ProcessDBModel processDBModel, RemoteDBModel remoteDBModel,String remoteCategory){
 
-        ProcessRemoteDAO processRemoteDAO = new ProcessRemoteDAO();
-        processRemoteDAO.setId(appUtils.generateUUID());
-        processRemoteDAO.setRemoteId(remoteDBModel.getId());
-        processRemoteDAO.setRemote(remoteDBModel.getRemote());
-        processRemoteDAO.setRemoteDesc(remoteDBModel.getRemoteDesc());
-        processRemoteDAO.setRemoteVersion(remoteDBModel.getRemoteVersion());
+        ProcessRemoteDBModel processRemoteDBModel = new ProcessRemoteDBModel();
+
+        processRemoteDBModel.setProcessId(processDBModel.getId());
+        processRemoteDBModel.setProcess(processDBModel.getProcess());
+        processRemoteDBModel.setRemoteId(remoteDBModel.getId());
+        processRemoteDBModel.setRemote(remoteDBModel.getRemote());
+        processRemoteDBModel.setRemoteDesc(remoteDBModel.getRemoteDesc());
+        processRemoteDBModel.setRemoteVersion(remoteDBModel.getRemoteVersion());
         if (remoteDBModel.getRemoteDatas() != null) {
-            processRemoteDAO.setRemoteDatas(remoteDBModel.getRemoteDatas());
+            processRemoteDBModel.setRemoteDatas(remoteDBModel.getRemoteDatas());
         }else {
-            processRemoteDAO.setRemoteDatas(new ArrayList<>());
+            processRemoteDBModel.setRemoteDatas(new ArrayList<>());
         }
         if (remoteDBModel.getRemoteUrls() != null) {
-            processRemoteDAO.setRemoteUrls(remoteDBModel.getRemoteUrls());
+            processRemoteDBModel.setRemoteUrls(remoteDBModel.getRemoteUrls());
         }else {
-            processRemoteDAO.setRemoteUrls(new ArrayList<>());
+            processRemoteDBModel.setRemoteUrls(new ArrayList<>());
         }
-        processRemoteDAO.setTypeId(remoteDBModel.getTypeId());
-        processRemoteDAO.setRemoteType(remoteDBModel.getRemoteType());
-        processRemoteDAO.setBaseType(remoteDBModel.getBaseType());
-        processRemoteDAO.setuDate(appUtils.getCurrentTimeStamp());
-        processRemoteDAO.setcDate(appUtils.getCurrentTimeStamp());
-        processRemoteDAO.setStatus(1);
+        processRemoteDBModel.setRemoteCategory(remoteCategory);
+        processRemoteDBModel.setTypeId(remoteDBModel.getTypeId());
+        processRemoteDBModel.setRemoteType(remoteDBModel.getRemoteType());
+        processRemoteDBModel.setBaseType(remoteDBModel.getBaseType());
+        processRemoteDBModel.setuDate(appUtils.getCurrentTimeStamp());
+        processRemoteDBModel.setcDate(appUtils.getCurrentTimeStamp());
+        processRemoteDBModel.setStatus(1);
 
-        return processRemoteDAO;
-    }
-
-    public ProcessRemoteDAO createFlowProcessRemoteDAO(RemoteDBModel remoteDBModel){
-
-        ProcessRemoteDAO processRemoteDAO = new ProcessRemoteDAO();
-        processRemoteDAO.setId(appUtils.generateUUID());
-        processRemoteDAO.setRemoteId(remoteDBModel.getId());
-        processRemoteDAO.setRemote(remoteDBModel.getRemote());
-        processRemoteDAO.setRemoteDesc(remoteDBModel.getRemoteDesc());
-        processRemoteDAO.setRemoteVersion(remoteDBModel.getRemoteVersion());
-        if (remoteDBModel.getRemoteDatas() != null) {
-            processRemoteDAO.setRemoteDatas(remoteDBModel.getRemoteDatas());
-        }else {
-            processRemoteDAO.setRemoteDatas(new ArrayList<>());
-        }
-        if (remoteDBModel.getRemoteUrls() != null) {
-            processRemoteDAO.setRemoteUrls(remoteDBModel.getRemoteUrls());
-        }else {
-            processRemoteDAO.setRemoteUrls(new ArrayList<>());
-        }
-        processRemoteDAO.setTypeId(remoteDBModel.getTypeId());
-        processRemoteDAO.setRemoteType(remoteDBModel.getRemoteType());
-        processRemoteDAO.setBaseType(remoteDBModel.getBaseType());
-        processRemoteDAO.setuDate(appUtils.getCurrentTimeStamp());
-        processRemoteDAO.setcDate(appUtils.getCurrentTimeStamp());
-        processRemoteDAO.setStatus(1);
-
-        return processRemoteDAO;
-    }
-
-    public ProcessRemoteDAO createInquiryProcessRemoteDAO(RemoteDBModel remoteDBModel){
-
-        ProcessRemoteDAO processRemoteDAO = new ProcessRemoteDAO();
-        processRemoteDAO.setId(appUtils.generateUUID());
-        processRemoteDAO.setRemoteId(remoteDBModel.getId());
-        processRemoteDAO.setRemote(remoteDBModel.getRemote());
-        processRemoteDAO.setRemoteDesc(remoteDBModel.getRemoteDesc());
-        processRemoteDAO.setRemoteVersion(remoteDBModel.getRemoteVersion());
-        if (remoteDBModel.getRemoteDatas() != null) {
-            processRemoteDAO.setRemoteDatas(remoteDBModel.getRemoteDatas());
-        }else {
-            processRemoteDAO.setRemoteDatas(new ArrayList<>());
-        }
-        if (remoteDBModel.getRemoteUrls() != null) {
-            processRemoteDAO.setRemoteUrls(remoteDBModel.getRemoteUrls());
-        }else {
-            processRemoteDAO.setRemoteUrls(new ArrayList<>());
-        }
-        processRemoteDAO.setTypeId(remoteDBModel.getTypeId());
-        processRemoteDAO.setRemoteType(remoteDBModel.getRemoteType());
-        processRemoteDAO.setBaseType(remoteDBModel.getBaseType());
-        processRemoteDAO.setuDate(appUtils.getCurrentTimeStamp());
-        processRemoteDAO.setcDate(appUtils.getCurrentTimeStamp());
-        processRemoteDAO.setStatus(1);
-
-        return processRemoteDAO;
+        return processRemoteRepository.save(processRemoteDBModel);
     }
 
 

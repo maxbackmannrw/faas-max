@@ -1,6 +1,7 @@
 package com.faas.core.base.model.ws.process.details.content.dto;
 
 import com.faas.core.base.model.db.process.content.ProcessDBModel;
+import com.faas.core.base.model.db.process.details.remote.ProcessRemoteDBModel;
 import com.faas.core.base.model.ws.process.details.channel.content.dto.ProcessChannelWSDTO;
 import com.faas.core.base.model.ws.process.details.channel.temp.dto.ProcessTempWSDTO;
 import com.faas.core.base.model.ws.process.details.scenario.dto.ProcessScenarioWSDTO;
@@ -15,16 +16,18 @@ public class ProcessDetailsWSDTO {
     private ProcessChannelWSDTO processChannels;
     private ProcessTriggerWSDTO processTrigger;
     private List<ProcessScenarioWSDTO> processScenarios;
+    private List<ProcessRemoteDBModel>processRemotes;
 
     public ProcessDetailsWSDTO() {
     }
 
-    public ProcessDetailsWSDTO(ProcessDBModel process, ProcessTempWSDTO processTemp, ProcessChannelWSDTO processChannels, ProcessTriggerWSDTO processTrigger, List<ProcessScenarioWSDTO> processScenarios) {
+    public ProcessDetailsWSDTO(ProcessDBModel process, ProcessTempWSDTO processTemp, ProcessChannelWSDTO processChannels, ProcessTriggerWSDTO processTrigger, List<ProcessScenarioWSDTO> processScenarios, List<ProcessRemoteDBModel> processRemotes) {
         this.process = process;
         this.processTemp = processTemp;
         this.processChannels = processChannels;
         this.processTrigger = processTrigger;
         this.processScenarios = processScenarios;
+        this.processRemotes = processRemotes;
     }
 
     public ProcessDBModel getProcess() {
@@ -65,5 +68,13 @@ public class ProcessDetailsWSDTO {
 
     public void setProcessScenarios(List<ProcessScenarioWSDTO> processScenarios) {
         this.processScenarios = processScenarios;
+    }
+
+    public List<ProcessRemoteDBModel> getProcessRemotes() {
+        return processRemotes;
+    }
+
+    public void setProcessRemotes(List<ProcessRemoteDBModel> processRemotes) {
+        this.processRemotes = processRemotes;
     }
 }

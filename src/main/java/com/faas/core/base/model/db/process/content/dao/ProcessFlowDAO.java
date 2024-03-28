@@ -6,7 +6,6 @@ public class ProcessFlowDAO {
 
     private String flowId;
     private String processFlow;
-    private List<ProcessRemoteDAO>flowRemotes;
     private List<ProcessDataDAO>flowDatas;
     private long uDate;
     private long cDate;
@@ -15,10 +14,9 @@ public class ProcessFlowDAO {
     public ProcessFlowDAO() {
     }
 
-    public ProcessFlowDAO(String flowId, String processFlow, List<ProcessRemoteDAO> flowRemotes, List<ProcessDataDAO> flowDatas, long uDate, long cDate, int status) {
+    public ProcessFlowDAO(String flowId, String processFlow, List<ProcessDataDAO> flowDatas, long uDate, long cDate, int status) {
         this.flowId = flowId;
         this.processFlow = processFlow;
-        this.flowRemotes = flowRemotes;
         this.flowDatas = flowDatas;
         this.uDate = uDate;
         this.cDate = cDate;
@@ -39,14 +37,6 @@ public class ProcessFlowDAO {
 
     public void setProcessFlow(String processFlow) {
         this.processFlow = processFlow;
-    }
-
-    public List<ProcessRemoteDAO> getFlowRemotes() {
-        return flowRemotes;
-    }
-
-    public void setFlowRemotes(List<ProcessRemoteDAO> flowRemotes) {
-        this.flowRemotes = flowRemotes;
     }
 
     public List<ProcessDataDAO> getFlowDatas() {

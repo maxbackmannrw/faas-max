@@ -2,7 +2,6 @@ package com.faas.core.base.framework.process.details.flow;
 
 import com.faas.core.base.model.db.process.content.ProcessDBModel;
 import com.faas.core.base.model.db.process.content.dao.ProcessDataDAO;
-import com.faas.core.base.model.db.process.content.dao.ProcessRemoteDAO;
 import com.faas.core.base.model.db.remote.content.RemoteDBModel;
 import com.faas.core.base.model.db.utility.DataTypeDBModel;
 import com.faas.core.base.model.ws.process.details.content.dto.ProcessDataWSDTO;
@@ -146,7 +145,6 @@ public class ProcessFlowFramework {
                     ProcessDataDAO processDataDAO = processDBModel.get().getProcessFlow().getFlowDatas().get(i);
                     processDBModel.get().getProcessFlow().getFlowDatas().remove(processDataDAO);
                     processDBModel.get().getProcessFlow().setuDate(appUtils.getCurrentTimeStamp());
-
                     processDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
                     processRepository.save(processDBModel.get());
 
@@ -157,67 +155,6 @@ public class ProcessFlowFramework {
         return null;
     }
 
-
-    public List<ProcessRemoteWSDTO> getProcessFlowRemotesService(long userId, String processId) {
-
-        List<ProcessRemoteWSDTO> processRemoteWSDTOS = new ArrayList<>();
-        Optional<ProcessDBModel> processDBModel = processRepository.findById(processId);
-        if (processDBModel.isPresent() && processDBModel.get().getProcessFlow() != null && processDBModel.get().getProcessFlow().getFlowRemotes() != null) {
-            for (int i=0;i<processDBModel.get().getProcessFlow().getFlowRemotes().size();i++){
-                processRemoteWSDTOS.add(new ProcessRemoteWSDTO(processDBModel.get().getProcessFlow().getFlowRemotes().get(i)));
-            }
-        }
-        return processRemoteWSDTOS;
-    }
-
-    public ProcessRemoteWSDTO getProcessFlowRemoteService(long userId, String processId, String flowRemoteId) {
-
-        Optional<ProcessDBModel> processDBModel = processRepository.findById(processId);
-        if (processDBModel.isPresent() && processDBModel.get().getProcessFlow() != null && processDBModel.get().getProcessFlow().getFlowRemotes() != null) {
-            for (int i=0;i<processDBModel.get().getProcessFlow().getFlowRemotes().size();i++){
-                if (processDBModel.get().getProcessFlow().getFlowRemotes().get(i).getId().equalsIgnoreCase(flowRemoteId)){
-                    return new ProcessRemoteWSDTO(processDBModel.get().getProcessFlow().getFlowRemotes().get(i));
-                }
-            }
-        }
-        return null;
-    }
-
-    public ProcessRemoteWSDTO createProcessFlowRemoteService(long userId,String processId,String remoteId) {
-
-        Optional<ProcessDBModel> processDBModel = processRepository.findById(processId);
-        Optional<RemoteDBModel> remoteDBModel = remoteRepository.findById(remoteId);
-        if (processDBModel.isPresent() && processDBModel.get().getProcessFlow() != null && remoteDBModel.isPresent()) {
-
-            ProcessRemoteDAO processRemoteDAO = remoteHelper.createFlowProcessRemoteDAO(remoteDBModel.get());
-            processDBModel.get().getProcessFlow().getFlowRemotes().add(processRemoteDAO);
-            processDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
-            processRepository.save(processDBModel.get());
-
-            return new ProcessRemoteWSDTO(processRemoteDAO);
-        }
-        return null;
-    }
-
-    public ProcessRemoteWSDTO removeProcessFlowRemoteService(long userId, String processId, String flowRemoteId) {
-
-        Optional<ProcessDBModel> processDBModel = processRepository.findById(processId);
-        if (processDBModel.isPresent() && processDBModel.get().getProcessFlow() != null && processDBModel.get().getProcessFlow().getFlowRemotes() != null) {
-            for (int i=0;i<processDBModel.get().getProcessFlow().getFlowRemotes().size();i++){
-                if (processDBModel.get().getProcessFlow().getFlowRemotes().get(i).getId().equalsIgnoreCase(flowRemoteId)){
-
-                    ProcessRemoteDAO processRemoteDAO =processDBModel.get().getProcessFlow().getFlowRemotes().get(i);
-                    processDBModel.get().getProcessFlow().getFlowRemotes().remove(processRemoteDAO);
-                    processDBModel.get().getProcessFlow().setuDate(appUtils.getCurrentTimeStamp());
-                    processDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
-                    processRepository.save(processDBModel.get());
-
-                    return new ProcessRemoteWSDTO(processRemoteDAO);
-                }
-            }
-        }
-        return null;
-    }
 
 
 }

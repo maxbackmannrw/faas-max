@@ -39,6 +39,25 @@ public class ProcessRemoteMiddleware {
         return response;
     }
 
+    public ProcessRemoteWSModel getProcessRemotesByCategory(long userId,String processId,String remoteCategory) {
+
+        ProcessRemoteWSModel response = new ProcessRemoteWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        List<ProcessRemoteWSDTO> processRemoteWSDTOS = processRemoteFramework.getProcessRemotesByCategoryService(userId,processId,remoteCategory);
+        if (processRemoteWSDTOS != null){
+            response.setProcessRemotes(processRemoteWSDTOS);
+        }
+
+        general.setOperation("getProcessRemotesByCategory");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
     public ProcessRemoteWSModel getProcessRemote(long userId,String processId,String processRemoteId) {
 
         ProcessRemoteWSModel response = new ProcessRemoteWSModel();
@@ -60,13 +79,13 @@ public class ProcessRemoteMiddleware {
         return response;
     }
 
-    public ProcessRemoteWSModel createProcessRemote(long userId,String processId,String remoteId) {
+    public ProcessRemoteWSModel createProcessRemote(long userId,String processId,String remoteId,String remoteCategory) {
 
         ProcessRemoteWSModel response = new ProcessRemoteWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessRemoteWSDTO> processRemoteWSDTOS = new ArrayList<>();
 
-        ProcessRemoteWSDTO processRemoteWSDTO = processRemoteFramework.createProcessRemoteService(userId,processId,remoteId);
+        ProcessRemoteWSDTO processRemoteWSDTO = processRemoteFramework.createProcessRemoteService(userId,processId,remoteId,remoteCategory);
         if (processRemoteWSDTO != null){
             processRemoteWSDTOS.add(processRemoteWSDTO);
         }
@@ -80,7 +99,6 @@ public class ProcessRemoteMiddleware {
 
         return response;
     }
-
 
     public ProcessRemoteWSModel removeProcessRemote(long userId,String processId,String processRemoteId) {
 

@@ -8,10 +8,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/process/details/remote/ProcessRemoteDBModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/repo/process/details/remote/ProcessRemoteRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/process/details/channel/temp/ProcessChannelTempController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/process/details/channel/temp/ProcessChannelTempController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/channel/temp/ProcessChannelTempFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/channel/temp/ProcessChannelTempFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/channel/temp/ProcessChannelTempMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/channel/temp/ProcessChannelTempMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/manager/remote/content/ClientRemoteManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/manager/remote/content/ClientRemoteManagerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/process/details/flow/ProcessFlowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/process/details/flow/ProcessFlowController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/process/details/inquiry/ProcessInquiryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/process/details/inquiry/ProcessInquiryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/process/details/remote/ProcessRemoteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/process/details/remote/ProcessRemoteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/flow/ProcessFlowFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/flow/ProcessFlowFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/inquiry/ProcessInquiryFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/inquiry/ProcessInquiryFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/remote/ProcessRemoteFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/remote/ProcessRemoteFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/flow/ProcessFlowMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/flow/ProcessFlowMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/inquiry/ProcessInquiryMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/inquiry/ProcessInquiryMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/remote/ProcessRemoteMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/remote/ProcessRemoteMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/process/content/ProcessDBModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/process/content/ProcessDBModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/process/content/dao/ProcessFlowDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/process/content/dao/ProcessFlowDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/process/content/dao/ProcessInquiryDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/process/content/dao/ProcessInquiryDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/process/content/dao/ProcessRemoteDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/content/dto/ProcessDetailsWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/content/dto/ProcessDetailsWSDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/remote/dto/ProcessRemoteWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/remote/dto/ProcessRemoteWSDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/config/BaseRoute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/config/BaseRoute.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/helpers/RemoteHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/helpers/RemoteHelper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,11 +153,11 @@
       <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/scenario/content" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.faas.core.base.repo.process.details.remote" />
+      <recent name="com.faas.core.base.model.db.process.details.remote" />
       <recent name="com.faas.core.base.repo.channel.settings" />
       <recent name="com.faas.core.base.model.db.channel.settings" />
       <recent name="com.faas.core.base.model.ws.channel.settings.dto" />
-      <recent name="com.faas.core.base.model.ws.channel.settings" />
-      <recent name="com.faas.core.utils.service.scenario.automation" />
     </key>
   </component>
   <component name="RunManager">
@@ -894,15 +911,7 @@
       <workItem from="1711527604700" duration="11668000" />
       <workItem from="1711579699806" duration="675000" />
       <workItem from="1711597862376" duration="117000" />
-      <workItem from="1711613112111" duration="1350000" />
-    </task>
-    <task id="LOCAL-00761" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1710169609753</created>
-      <option name="number" value="00761" />
-      <option name="presentableId" value="LOCAL-00761" />
-      <option name="project" value="LOCAL" />
-      <updated>1710169609753</updated>
+      <workItem from="1711613112111" duration="3455000" />
     </task>
     <task id="LOCAL-00762" summary="almost finish">
       <option name="closed" value="true" />
@@ -1288,7 +1297,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711570080837</updated>
     </task>
-    <option name="localTasksCounter" value="810" />
+    <task id="LOCAL-00810" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1711633197693</created>
+      <option name="number" value="00810" />
+      <option name="presentableId" value="LOCAL-00810" />
+      <option name="project" value="LOCAL" />
+      <updated>1711633197693</updated>
+    </task>
+    <option name="localTasksCounter" value="811" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

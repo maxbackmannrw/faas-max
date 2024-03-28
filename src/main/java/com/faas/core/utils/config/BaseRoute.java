@@ -333,6 +333,7 @@ public class BaseRoute {
 
 
     public static final String GET_PROCESS_REMOTES = "getprocessremotes";
+    public static final String GET_PROCESS_REMOTES_BY_CATEGORY = "getprocessremotesbycategory";
     public static final String GET_PROCESS_REMOTE = "getprocessremote";
     public static final String CREATE_PROCESS_REMOTE = "createprocessremote";
     public static final String REMOVE_PROCESS_REMOTE = "removeprocessremote";
@@ -354,11 +355,6 @@ public class BaseRoute {
     public static final String UPDATE_PROCESS_INQUIRY_DATA = "updateprocessinquirydata";
     public static final String REMOVE_PROCESS_INQUIRY_DATA = "removeprocessinquirydata";
 
-    public static final String GET_PROCESS_INQUIRY_REMOTES = "getprocessinquiryremotes";
-    public static final String GET_PROCESS_INQUIRY_REMOTE = "getprocessinquiryremote";
-    public static final String CREATE_PROCESS_INQUIRY_REMOTE = "createprocessinquiryremote";
-    public static final String REMOVE_PROCESS_INQUIRY_REMOTE = "removeprocessinquiryremote";
-
 
     public static final String GET_PROCESS_FLOW = "getprocessflow";
     public static final String UPDATE_PROCESS_FLOW = "updateprocessflow";
@@ -368,11 +364,6 @@ public class BaseRoute {
     public static final String CREATE_PROCESS_FLOW_DATA = "createprocessflowdata";
     public static final String UPDATE_PROCESS_FLOW_DATA = "updateprocessflowdata";
     public static final String REMOVE_PROCESS_FLOW_DATA = "removeprocessflowdata";
-
-    public static final String GET_PROCESS_FLOW_REMOTES = "getprocessflowremotes";
-    public static final String GET_PROCESS_FLOW_REMOTE = "getprocessflowremote";
-    public static final String CREATE_PROCESS_FLOW_REMOTE = "createprocessflowremote";
-    public static final String REMOVE_PROCESS_FLOW_REMOTE = "removeprocessflowremote";
 
 
     public static final String GET_PROCESS_TRIGGER = "getprocesstrigger";
