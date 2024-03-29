@@ -34,7 +34,6 @@ public class ClientRemoteDetailsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.GET_CLIENT_REMOTE_SUMMARY, method = RequestMethod.POST)
     public ResponseEntity<?> getClientRemoteSummary(@RequestParam long userId) {
 

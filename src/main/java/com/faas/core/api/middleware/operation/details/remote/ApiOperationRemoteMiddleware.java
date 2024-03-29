@@ -1,6 +1,6 @@
 package com.faas.core.api.middleware.operation.details.remote;
 
-import com.faas.core.api.framework.operation.details.remote.ApiOperationClientRemoteFramework;
+import com.faas.core.api.framework.operation.details.remote.ApiOperationRemoteFramework;
 import com.faas.core.api.model.ws.operation.details.remote.ApiOperationClientRemoteWSModel;
 import com.faas.core.api.model.ws.operation.details.remote.dto.ApiOperationClientRemoteWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
@@ -12,11 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class ApiOperationClientRemoteMiddleware {
+public class ApiOperationRemoteMiddleware {
 
 
     @Autowired
-    ApiOperationClientRemoteFramework apiOperationClientRemoteFramework;
+    ApiOperationRemoteFramework apiOperationRemoteFramework;
 
 
     public ApiOperationClientRemoteWSModel apiGetOperationClientRemotes(long agentId,String operationId) {
@@ -24,7 +24,7 @@ public class ApiOperationClientRemoteMiddleware {
         ApiOperationClientRemoteWSModel response = new ApiOperationClientRemoteWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ApiOperationClientRemoteWSDTO> operationClientRemoteWSDTOS =  apiOperationClientRemoteFramework.apiGetOperationClientRemotesService(agentId,operationId);
+        List<ApiOperationClientRemoteWSDTO> operationClientRemoteWSDTOS =  apiOperationRemoteFramework.apiGetOperationClientRemotesService(agentId,operationId);
         if (operationClientRemoteWSDTOS != null) {
             response.setClientRemotes(operationClientRemoteWSDTOS);
         }
@@ -44,7 +44,7 @@ public class ApiOperationClientRemoteMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ApiOperationClientRemoteWSDTO>operationClientRemoteWSDTOS = new ArrayList<>();
 
-        ApiOperationClientRemoteWSDTO operationClientRemoteWSDTO = apiOperationClientRemoteFramework.apiGetOperationClientRemoteService(agentId,operationId,clientRemoteId);
+        ApiOperationClientRemoteWSDTO operationClientRemoteWSDTO = apiOperationRemoteFramework.apiGetOperationClientRemoteService(agentId,operationId,clientRemoteId);
         if (operationClientRemoteWSDTO != null) {
             operationClientRemoteWSDTOS.add(operationClientRemoteWSDTO);
         }

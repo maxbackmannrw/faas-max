@@ -16,7 +16,7 @@ import java.util.List;
 
 
 @Component
-public class ApiOperationClientRemoteFramework {
+public class ApiOperationRemoteFramework {
 
     @Autowired
     ClientRepository clientRepository;
