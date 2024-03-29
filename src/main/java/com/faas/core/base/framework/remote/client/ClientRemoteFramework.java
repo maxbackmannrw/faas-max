@@ -103,13 +103,13 @@ public class ClientRemoteFramework {
         return null;
     }
 
-    public ClientRemoteWSDTO createClientRemoteService(long userId,long sessionId, String remoteId) {
+    public ClientRemoteWSDTO createClientRemoteService(long userId,String operationId,String remoteId) {
 
-        Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
-        List<OperationDBModel> operationDBModels = operationRepository.findBySessionId(sessionId);
+        Optional<OperationDBModel> operationDBModel = operationRepository.findById(operationId);
+        List<SessionDBModel> sessionDBModels = sessionRepository.findByOperationId(operationId);
         Optional<RemoteDBModel> remoteDBModel = remoteRepository.findById(remoteId);
-        if (sessionDBModel.isPresent() && !operationDBModels.isEmpty() && remoteDBModel.isPresent()){
-            return clientRemoteHelper.createClientRemoteWSDTO(clientRemoteRepository.save(clientRemoteHelper.createClientRemoteDBModel(sessionDBModel.get(),operationDBModels.get(0),remoteDBModel.get())));
+        if (!sessionDBModels.isEmpty() && operationDBModel.isPresent() && remoteDBModel.isPresent()){
+            return clientRemoteHelper.createClientRemoteWSDTO(clientRemoteRepository.save(clientRemoteHelper.createClientRemoteDBModel(sessionDBModels.get(0),operationDBModel.get(),remoteDBModel.get())));
         }
         return null;
     }

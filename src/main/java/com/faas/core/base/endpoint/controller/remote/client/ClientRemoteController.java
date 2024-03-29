@@ -78,10 +78,10 @@ public class ClientRemoteController {
 
     @RequestMapping(value = BaseRoute.CREATE_CLIENT_REMOTE, method = RequestMethod.POST)
     public ResponseEntity<?> createClientRemote(@RequestParam long userId,
-                                                @RequestParam long sessionId,
+                                                @RequestParam String operationId,
                                                 @RequestParam String remoteId) {
 
-        ClientRemoteWSModel response = clientRemoteMiddleware.createClientRemote(userId,sessionId,remoteId);
+        ClientRemoteWSModel response = clientRemoteMiddleware.createClientRemote(userId,operationId,remoteId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
