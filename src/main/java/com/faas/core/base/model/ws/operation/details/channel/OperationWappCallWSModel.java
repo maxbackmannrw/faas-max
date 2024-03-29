@@ -8,14 +8,14 @@ import java.util.List;
 public class OperationWappCallWSModel {
 
     private GeneralWSModel general;
-    private List<OperationWappCallWSDTO>wappCalls;
+    private List<OperationWappCallWSDTO>operationWappCalls;
 
     public OperationWappCallWSModel() {
     }
 
-    public OperationWappCallWSModel(GeneralWSModel general, List<OperationWappCallWSDTO> wappCalls) {
+    public OperationWappCallWSModel(GeneralWSModel general, List<OperationWappCallWSDTO> operationWappCalls) {
         this.general = general;
-        this.wappCalls = wappCalls;
+        this.operationWappCalls = operationWappCalls;
     }
 
     public GeneralWSModel getGeneral() {
@@ -26,11 +26,11 @@ public class OperationWappCallWSModel {
         this.general = general;
     }
 
-    public List<OperationWappCallWSDTO> getWappCalls() {
-        return wappCalls;
+    public List<OperationWappCallWSDTO> getOperationWappCalls() {
+        return operationWappCalls;
     }
 
-    public void setWappCalls(List<OperationWappCallWSDTO> wappCalls) {
-        this.wappCalls = wappCalls;
+    public void setOperationWappCalls(List<OperationWappCallWSDTO> operationWappCalls) {
+        this.operationWappCalls = operationWappCalls;
     }
 }

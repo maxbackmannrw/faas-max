@@ -4,20 +4,20 @@ import com.faas.core.base.model.db.operation.details.channel.OperationSipCallDBM
 
 public class OperationSipCallWSDTO {
 
-    private OperationSipCallDBModel sipCall;
+    private OperationSipCallDBModel operationSipCall;
 
     public OperationSipCallWSDTO() {
     }
 
-    public OperationSipCallWSDTO(OperationSipCallDBModel sipCall) {
-        this.sipCall = sipCall;
+    public OperationSipCallWSDTO(OperationSipCallDBModel operationSipCall) {
+        this.operationSipCall = operationSipCall;
     }
 
-    public OperationSipCallDBModel getSipCall() {
-        return sipCall;
+    public OperationSipCallDBModel getOperationSipCall() {
+        return operationSipCall;
     }
 
-    public void setSipCall(OperationSipCallDBModel sipCall) {
-        this.sipCall = sipCall;
+    public void setOperationSipCall(OperationSipCallDBModel operationSipCall) {
+        this.operationSipCall = operationSipCall;
     }
 }

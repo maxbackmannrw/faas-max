@@ -7,14 +7,14 @@ import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiO
 import com.faas.core.base.model.db.client.details.content.ClientDetailsDBModel;
 import com.faas.core.base.model.db.client.details.content.dao.ClientPhoneDAO;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
-import com.faas.core.base.model.db.operation.details.channel.OperationSmsMessageDBModel;
+import com.faas.core.base.model.db.operation.details.channel.OperationSmsDBModel;
 import com.faas.core.base.model.db.process.details.channel.content.ProcessSmsChannelDBModel;
 import com.faas.core.base.model.db.process.details.channel.temp.ProcessSmsTempDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.client.details.ClientDetailsRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
-import com.faas.core.base.repo.operation.details.channel.OperationSmsMessageRepository;
+import com.faas.core.base.repo.operation.details.channel.OperationSmsRepository;
 import com.faas.core.base.repo.process.details.channel.content.ProcessSmsChannelRepository;
 import com.faas.core.base.repo.process.details.channel.temp.ProcessSmsTempRepository;
 import com.faas.core.base.repo.session.SessionRepository;
@@ -58,7 +58,7 @@ public class ApiOperationSmsChannelFramework {
     ProcessSmsChannelRepository processSmsChannelRepository;
 
     @Autowired
-    OperationSmsMessageRepository operationSmsMessageRepository;
+    OperationSmsRepository operationSmsRepository;
 
     @Autowired
     ProcessSmsTempRepository processSmsTempRepository;
@@ -82,8 +82,8 @@ public class ApiOperationSmsChannelFramework {
     public List<ApiOperationSmsWSDTO> apiGetOperationSmssService(long agentId,String operationId) {
 
         List<ApiOperationSmsWSDTO> operationSmsWSDTOS = new ArrayList<>();
-        List<OperationSmsMessageDBModel> operationSmsMessages = operationSmsMessageRepository.findByOperationIdAndAgentId(operationId,agentId);
-        for (OperationSmsMessageDBModel operationSmsMessage : operationSmsMessages) {
+        List<OperationSmsDBModel> operationSmsMessages = operationSmsRepository.findByOperationIdAndAgentId(operationId,agentId);
+        for (OperationSmsDBModel operationSmsMessage : operationSmsMessages) {
             operationSmsWSDTOS.add(new ApiOperationSmsWSDTO(operationSmsMessage));
         }
         return operationSmsWSDTOS;
@@ -91,7 +91,7 @@ public class ApiOperationSmsChannelFramework {
 
     public ApiOperationSmsWSDTO apiGetOperationSmsService(long agentId,String operationId,String smsId) {
 
-        List<OperationSmsMessageDBModel> operationSmsMessages = operationSmsMessageRepository.findByIdAndOperationId(smsId,operationId);
+        List<OperationSmsDBModel> operationSmsMessages = operationSmsRepository.findByIdAndOperationId(smsId,operationId);
         if (!operationSmsMessages.isEmpty()){
             return new ApiOperationSmsWSDTO(operationSmsMessages.get(0));
         }
@@ -108,9 +108,9 @@ public class ApiOperationSmsChannelFramework {
             List<ProcessSmsChannelDBModel> smsChannelDBModels = processSmsChannelRepository.findByProcessId(sessionDBModels.get(0).getProcessId());
             if (clientPhoneDAO != null && !smsMessageTempDBModels.isEmpty() && !smsChannelDBModels.isEmpty() ){
 
-                OperationSmsMessageDBModel operationSmsMessageDBModel = channelHelper.createOperationSmsMessageDBModel(sessionDBModels.get(0),clientPhoneDAO,smsMessageTempDBModels.get(0),smsChannelDBModels.get(0));
-                smsChannelService.sendAsyncSmsService(operationSmsMessageDBModel);
-                return new ApiOperationSmsWSDTO(operationSmsMessageDBModel);
+                OperationSmsDBModel operationSmsDBModel = channelHelper.createOperationSmsMessageDBModel(sessionDBModels.get(0),clientPhoneDAO,smsMessageTempDBModels.get(0),smsChannelDBModels.get(0));
+                smsChannelService.sendAsyncSmsService(operationSmsDBModel);
+                return new ApiOperationSmsWSDTO(operationSmsDBModel);
             }
         }
         return null;
@@ -118,20 +118,20 @@ public class ApiOperationSmsChannelFramework {
 
     public ApiOperationSmsWSDTO apiUpdateOperationSmsService(long agentId,String operationId,String smsId,String smsState) {
 
-        List<OperationSmsMessageDBModel> operationSmsMessages = operationSmsMessageRepository.findByIdAndOperationId(smsId,operationId);
+        List<OperationSmsDBModel> operationSmsMessages = operationSmsRepository.findByIdAndOperationId(smsId,operationId);
         if (!operationSmsMessages.isEmpty()){
             operationSmsMessages.get(0).setSmsState(smsState);
             operationSmsMessages.get(0).setuDate(appUtils.getCurrentTimeStamp());
-            return new ApiOperationSmsWSDTO(operationSmsMessageRepository.save(operationSmsMessages.get(0)));
+            return new ApiOperationSmsWSDTO(operationSmsRepository.save(operationSmsMessages.get(0)));
         }
         return null;
     }
 
     public ApiOperationSmsWSDTO apiRemoveOperationSmsService(long agentId,String operationId,String smsId) {
 
-        List<OperationSmsMessageDBModel> operationSmsMessages = operationSmsMessageRepository.findByIdAndOperationId(smsId,operationId);
+        List<OperationSmsDBModel> operationSmsMessages = operationSmsRepository.findByIdAndOperationId(smsId,operationId);
         if (!operationSmsMessages.isEmpty()){
-            operationSmsMessageRepository.delete(operationSmsMessages.get(0));
+            operationSmsRepository.delete(operationSmsMessages.get(0));
             return new ApiOperationSmsWSDTO(operationSmsMessages.get(0));
         }
         return null;

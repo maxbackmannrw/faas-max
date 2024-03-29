@@ -1,6 +1,6 @@
 package com.faas.core.utils.service.channel.email;
 
-import com.faas.core.base.model.db.operation.details.channel.OperationEmailMessageDBModel;
+import com.faas.core.base.model.db.operation.details.channel.OperationEmailDBModel;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
@@ -15,7 +15,7 @@ public class EmailChannelService {
     AppUtils appUtils;
 
     @Async
-    public void sendAsyncEmailService(OperationEmailMessageDBModel operationEmailMessageDBModel) throws IOException {
+    public void sendAsyncEmailService(OperationEmailDBModel operationEmailDBModel) throws IOException {
 
         /*
         Optional<SmsAccountDBModel> smsAccountDBModel = smsAccountRepository.findById(operationSmsMessageDBModel.getSmsMessage().getAccountId());

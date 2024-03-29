@@ -6,14 +6,14 @@ import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.Api
 import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushWSDTO;
 import com.faas.core.base.model.db.client.details.content.ClientDetailsDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
-import com.faas.core.base.model.db.operation.details.channel.OperationPushMessageDBModel;
+import com.faas.core.base.model.db.operation.details.channel.OperationPushDBModel;
 import com.faas.core.base.model.db.process.details.channel.content.ProcessPushChannelDBModel;
 import com.faas.core.base.model.db.process.details.channel.temp.ProcessPushTempDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.client.details.ClientDetailsRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
-import com.faas.core.base.repo.operation.details.channel.OperationPushMessageRepository;
+import com.faas.core.base.repo.operation.details.channel.OperationPushRepository;
 import com.faas.core.base.repo.process.details.channel.content.ProcessPushChannelRepository;
 import com.faas.core.base.repo.process.details.channel.temp.ProcessPushTempRepository;
 import com.faas.core.base.repo.session.SessionRepository;
@@ -59,7 +59,7 @@ public class ApiOperationPushChannelFramework {
     ProcessPushChannelRepository processPushChannelRepository;
 
     @Autowired
-    OperationPushMessageRepository operationPushMessageRepository;
+    OperationPushRepository operationPushRepository;
 
     @Autowired
     AppUtils appUtils;
@@ -80,19 +80,19 @@ public class ApiOperationPushChannelFramework {
     public List<ApiOperationPushWSDTO> apiGetOperationPushesService(long agentId,String operationId) {
 
         List<ApiOperationPushWSDTO> operationPushWSDTOS = new ArrayList<>();
-        List<OperationPushMessageDBModel> operationPushMessageDBModels = operationPushMessageRepository.findByOperationIdAndAgentId(operationId,agentId);
-        for (OperationPushMessageDBModel operationPushMessageDBModel : operationPushMessageDBModels) {
-            operationPushWSDTOS.add(new ApiOperationPushWSDTO(operationPushMessageDBModel));
+        List<OperationPushDBModel> operationPushDBModels = operationPushRepository.findByOperationIdAndAgentId(operationId,agentId);
+        for (OperationPushDBModel operationPushDBModel : operationPushDBModels) {
+            operationPushWSDTOS.add(new ApiOperationPushWSDTO(operationPushDBModel));
         }
         return operationPushWSDTOS;
     }
 
     public ApiOperationPushWSDTO apiGetOperationPushService(long agentId,String operationId,String pushId) {
 
-        List<OperationPushMessageDBModel> operationPushMessageDBModels = operationPushMessageRepository.findByIdAndOperationId(pushId,operationId);
-        if (!operationPushMessageDBModels.isEmpty()){
+        List<OperationPushDBModel> operationPushDBModels = operationPushRepository.findByIdAndOperationId(pushId,operationId);
+        if (!operationPushDBModels.isEmpty()){
 
-            return new ApiOperationPushWSDTO(operationPushMessageDBModels.get(0));
+            return new ApiOperationPushWSDTO(operationPushDBModels.get(0));
         }
         return null;
     }
@@ -106,8 +106,8 @@ public class ApiOperationPushChannelFramework {
             List<ProcessPushChannelDBModel> pushChannelDBModels = processPushChannelRepository.findByProcessId(sessionDBModels.get(0).getProcessId());
             if (!pushTempDBModels.isEmpty() && !pushChannelDBModels.isEmpty() ){
 
-                OperationPushMessageDBModel operationPushMessageDBModel = channelHelper.createOperationPushMessageDBModel(sessionDBModels.get(0));
-                return new ApiOperationPushWSDTO(operationPushMessageDBModel);
+                OperationPushDBModel operationPushDBModel = channelHelper.createOperationPushMessageDBModel(sessionDBModels.get(0));
+                return new ApiOperationPushWSDTO(operationPushDBModel);
             }
         }
         return null;
@@ -115,23 +115,23 @@ public class ApiOperationPushChannelFramework {
 
     public ApiOperationPushWSDTO apiUpdateOperationPushService(long agentId,String operationId,String pushId,String pushState) {
 
-        List<OperationPushMessageDBModel> operationPushMessageDBModels = operationPushMessageRepository.findByIdAndOperationId(pushId,operationId);
-        if (!operationPushMessageDBModels.isEmpty()){
+        List<OperationPushDBModel> operationPushDBModels = operationPushRepository.findByIdAndOperationId(pushId,operationId);
+        if (!operationPushDBModels.isEmpty()){
 
-            operationPushMessageDBModels.get(0).setPushState(pushState);
-            operationPushMessageDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
-            return new ApiOperationPushWSDTO(operationPushMessageRepository.save(operationPushMessageDBModels.get(0)));
+            operationPushDBModels.get(0).setPushState(pushState);
+            operationPushDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
+            return new ApiOperationPushWSDTO(operationPushRepository.save(operationPushDBModels.get(0)));
         }
         return null;
     }
 
     public ApiOperationPushWSDTO apiRemoveOperationPushService(long agentId,String operationId,String pushId) {
 
-        List<OperationPushMessageDBModel> operationPushMessageDBModels = operationPushMessageRepository.findByIdAndOperationId(pushId,operationId);
-        if (!operationPushMessageDBModels.isEmpty()){
+        List<OperationPushDBModel> operationPushDBModels = operationPushRepository.findByIdAndOperationId(pushId,operationId);
+        if (!operationPushDBModels.isEmpty()){
 
-            operationPushMessageRepository.delete(operationPushMessageDBModels.get(0));
-            return new ApiOperationPushWSDTO(operationPushMessageDBModels.get(0));
+            operationPushRepository.delete(operationPushDBModels.get(0));
+            return new ApiOperationPushWSDTO(operationPushDBModels.get(0));
         }
         return null;
     }

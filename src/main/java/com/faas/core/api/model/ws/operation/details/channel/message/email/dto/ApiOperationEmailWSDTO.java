@@ -1,23 +1,23 @@
 package com.faas.core.api.model.ws.operation.details.channel.message.email.dto;
 
-import com.faas.core.base.model.db.operation.details.channel.OperationEmailMessageDBModel;
+import com.faas.core.base.model.db.operation.details.channel.OperationEmailDBModel;
 
 public class ApiOperationEmailWSDTO {
 
-    private OperationEmailMessageDBModel operationEmail;
+    private OperationEmailDBModel operationEmail;
 
     public ApiOperationEmailWSDTO() {
     }
 
-    public ApiOperationEmailWSDTO(OperationEmailMessageDBModel operationEmail) {
+    public ApiOperationEmailWSDTO(OperationEmailDBModel operationEmail) {
         this.operationEmail = operationEmail;
     }
 
-    public OperationEmailMessageDBModel getOperationEmail() {
+    public OperationEmailDBModel getOperationEmail() {
         return operationEmail;
     }
 
-    public void setOperationEmail(OperationEmailMessageDBModel operationEmail) {
+    public void setOperationEmail(OperationEmailDBModel operationEmail) {
         this.operationEmail = operationEmail;
     }
 }

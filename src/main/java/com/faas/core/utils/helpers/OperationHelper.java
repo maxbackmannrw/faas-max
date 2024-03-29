@@ -101,7 +101,7 @@ public class OperationHelper {
     OperationWappCallRepository operationWappCallRepository;
 
     @Autowired
-    OperationSmsMessageRepository operationSmsMessageRepository;
+    OperationSmsRepository operationSmsRepository;
 
     @Autowired
     ProcessSipChannelRepository processSipChannelRepository;
@@ -122,13 +122,13 @@ public class OperationHelper {
     ProcessEmailChannelRepository processEmailChannelRepository;
 
     @Autowired
-    OperationEmailMessageRepository operationEmailMessageRepository;
+    OperationEmailRepository operationEmailRepository;
 
     @Autowired
     ProcessEmailTempRepository processEmailTempRepository;
 
     @Autowired
-    OperationPushMessageRepository operationPushMessageRepository;
+    OperationPushRepository operationPushRepository;
 
     @Autowired
     ProcessPushTempRepository processPushTempRepository;
@@ -312,10 +312,10 @@ public class OperationHelper {
 
             sessionRepository.delete(sessionDBModel.get());
             operationRepository.deleteAll(operationRepository.findBySessionId(sessionId));
-            operationEmailMessageRepository.deleteAll(operationEmailMessageRepository.findBySessionId(sessionId));
-            operationPushMessageRepository.deleteAll(operationPushMessageRepository.findBySessionId(sessionId));
+            operationEmailRepository.deleteAll(operationEmailRepository.findBySessionId(sessionId));
+            operationPushRepository.deleteAll(operationPushRepository.findBySessionId(sessionId));
             operationSipCallRepository.deleteAll(operationSipCallRepository.findBySessionId(sessionId));
-            operationSmsMessageRepository.deleteAll(operationSmsMessageRepository.findBySessionId(sessionId));
+            operationSmsRepository.deleteAll(operationSmsRepository.findBySessionId(sessionId));
             operationWappCallRepository.deleteAll(operationWappCallRepository.findBySessionId(sessionId));
             operationWappMessageRepository.deleteAll(operationWappMessageRepository.findBySessionId(sessionId));
         }
@@ -545,7 +545,7 @@ public class OperationHelper {
             ApiOperationSmsChannelWSDTO operationSmsChannelWSDTO = new ApiOperationSmsChannelWSDTO();
             operationSmsChannelWSDTO.setSmsAccount(smsAccountWSDTO);
             operationSmsChannelWSDTO.setClientPhones(clientDetails.getClientPhones());
-            operationSmsChannelWSDTO.setOperationSmss(operationSmsMessageRepository.findByOperationId(operationDBModel.getId()));
+            operationSmsChannelWSDTO.setOperationSmss(operationSmsRepository.findByOperationId(operationDBModel.getId()));
             operationSmsChannelWSDTO.setOperationSmsTemps(processSmsTempRepository.findByProcessId(operationDBModel.getProcessId()));
 
             return operationSmsChannelWSDTO;
@@ -577,7 +577,7 @@ public class OperationHelper {
             ApiOperationEmailChannelWSDTO emailChannelWSDTO = new ApiOperationEmailChannelWSDTO();
             emailChannelWSDTO.setEmailAccount(emailAccountWSDTO);
             emailChannelWSDTO.setClientEmails(clientDetails.getClientEmails());
-            emailChannelWSDTO.setOperationEmails(operationEmailMessageRepository.findByOperationId(operationDBModel.getId()));
+            emailChannelWSDTO.setOperationEmails(operationEmailRepository.findByOperationId(operationDBModel.getId()));
             emailChannelWSDTO.setOperationEmailTemps(processEmailTempRepository.findByProcessId(operationDBModel.getProcessId()));
 
             return emailChannelWSDTO;
@@ -592,7 +592,7 @@ public class OperationHelper {
 
             ApiOperationPushChannelWSDTO pushChannelWSDTO = new ApiOperationPushChannelWSDTO();
             pushChannelWSDTO.setPushAccount(pushAccountWSDTO);
-            pushChannelWSDTO.setOperationPushes(operationPushMessageRepository.findByOperationId(operationDBModel.getId()));
+            pushChannelWSDTO.setOperationPushes(operationPushRepository.findByOperationId(operationDBModel.getId()));
             pushChannelWSDTO.setOperationPushTemps(processPushTempRepository.findByProcessId(operationDBModel.getProcessId()));
 
             return pushChannelWSDTO;

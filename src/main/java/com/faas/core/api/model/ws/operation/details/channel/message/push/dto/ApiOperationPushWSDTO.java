@@ -1,23 +1,23 @@
 package com.faas.core.api.model.ws.operation.details.channel.message.push.dto;
 
-import com.faas.core.base.model.db.operation.details.channel.OperationPushMessageDBModel;
+import com.faas.core.base.model.db.operation.details.channel.OperationPushDBModel;
 
 public class ApiOperationPushWSDTO {
 
-    private OperationPushMessageDBModel operationPush;
+    private OperationPushDBModel operationPush;
 
     public ApiOperationPushWSDTO() {
     }
 
-    public ApiOperationPushWSDTO(OperationPushMessageDBModel operationPush) {
+    public ApiOperationPushWSDTO(OperationPushDBModel operationPush) {
         this.operationPush = operationPush;
     }
 
-    public OperationPushMessageDBModel getOperationPush() {
+    public OperationPushDBModel getOperationPush() {
         return operationPush;
     }
 
-    public void setOperationPush(OperationPushMessageDBModel operationPush) {
+    public void setOperationPush(OperationPushDBModel operationPush) {
         this.operationPush = operationPush;
     }
 }

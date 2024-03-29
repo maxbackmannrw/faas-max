@@ -1,7 +1,7 @@
 package com.faas.core.api.model.ws.operation.details.channel.message.push.dto;
 
 
-import com.faas.core.base.model.db.operation.details.channel.OperationPushMessageDBModel;
+import com.faas.core.base.model.db.operation.details.channel.OperationPushDBModel;
 import com.faas.core.base.model.db.process.details.channel.temp.ProcessPushTempDBModel;
 
 import java.util.List;
@@ -9,13 +9,13 @@ import java.util.List;
 public class ApiOperationPushChannelWSDTO {
 
     private ApiOperationPushAccountWSDTO pushAccount;
-    private List<OperationPushMessageDBModel>operationPushes;
+    private List<OperationPushDBModel>operationPushes;
     private List<ProcessPushTempDBModel>operationPushTemps;
 
     public ApiOperationPushChannelWSDTO() {
     }
 
-    public ApiOperationPushChannelWSDTO(ApiOperationPushAccountWSDTO pushAccount, List<OperationPushMessageDBModel> operationPushes, List<ProcessPushTempDBModel> operationPushTemps) {
+    public ApiOperationPushChannelWSDTO(ApiOperationPushAccountWSDTO pushAccount, List<OperationPushDBModel> operationPushes, List<ProcessPushTempDBModel> operationPushTemps) {
         this.pushAccount = pushAccount;
         this.operationPushes = operationPushes;
         this.operationPushTemps = operationPushTemps;
@@ -29,11 +29,11 @@ public class ApiOperationPushChannelWSDTO {
         this.pushAccount = pushAccount;
     }
 
-    public List<OperationPushMessageDBModel> getOperationPushes() {
+    public List<OperationPushDBModel> getOperationPushes() {
         return operationPushes;
     }
 
-    public void setOperationPushes(List<OperationPushMessageDBModel> operationPushes) {
+    public void setOperationPushes(List<OperationPushDBModel> operationPushes) {
         this.operationPushes = operationPushes;
     }
 

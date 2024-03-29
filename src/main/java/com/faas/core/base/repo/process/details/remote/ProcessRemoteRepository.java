@@ -1,6 +1,5 @@
 package com.faas.core.base.repo.process.details.remote;
 
-import com.faas.core.base.model.db.process.details.channel.content.ProcessEmailChannelDBModel;
 import com.faas.core.base.model.db.process.details.remote.ProcessRemoteDBModel;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;

@@ -4,20 +4,20 @@ import com.faas.core.base.model.db.operation.details.channel.OperationWappCallDB
 
 public class OperationWappCallWSDTO {
 
-    private OperationWappCallDBModel wappCall;
+    private OperationWappCallDBModel operationWappCall;
 
     public OperationWappCallWSDTO() {
     }
 
-    public OperationWappCallWSDTO(OperationWappCallDBModel wappCall) {
-        this.wappCall = wappCall;
+    public OperationWappCallWSDTO(OperationWappCallDBModel operationWappCall) {
+        this.operationWappCall = operationWappCall;
     }
 
-    public OperationWappCallDBModel getWappCall() {
-        return wappCall;
+    public OperationWappCallDBModel getOperationWappCall() {
+        return operationWappCall;
     }
 
-    public void setWappCall(OperationWappCallDBModel wappCall) {
-        this.wappCall = wappCall;
+    public void setOperationWappCall(OperationWappCallDBModel operationWappCall) {
+        this.operationWappCall = operationWappCall;
     }
 }

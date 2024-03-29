@@ -9,7 +9,6 @@ import com.faas.core.base.model.db.operation.details.channel.OperationSipCallDBM
 import com.faas.core.base.repo.client.details.ClientDetailsRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.operation.details.channel.OperationSipCallRepository;
-import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.ChannelHelper;
 import com.faas.core.utils.helpers.OperationHelper;

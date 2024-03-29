@@ -50,16 +50,16 @@ public class UtilitySystemFramework {
     OperationRepository operationRepository;
 
     @Autowired
-    OperationEmailMessageRepository operationEmailMessageRepository;
+    OperationEmailRepository operationEmailRepository;
 
     @Autowired
-    OperationPushMessageRepository operationPushMessageRepository;
+    OperationPushRepository operationPushRepository;
 
     @Autowired
     OperationSipCallRepository operationSipCallRepository;
 
     @Autowired
-    OperationSmsMessageRepository operationSmsMessageRepository;
+    OperationSmsRepository operationSmsRepository;
 
     @Autowired
     OperationWappCallRepository operationWappCallRepository;
@@ -125,7 +125,7 @@ public class UtilitySystemFramework {
     ProcessEmailTriggerRepository processEmailTriggerRepository;
 
     @Autowired
-    ProcessSipTriggerRepository processSipTriggerRepository;
+    ProcessSipCallTriggerRepository processSipCallTriggerRepository;
 
     @Autowired
     ProcessSmsTriggerRepository processSmsTriggerRepository;

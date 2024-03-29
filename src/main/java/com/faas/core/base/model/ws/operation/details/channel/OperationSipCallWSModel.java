@@ -8,14 +8,14 @@ import java.util.List;
 public class OperationSipCallWSModel {
 
     private GeneralWSModel general;
-    private List<OperationSipCallWSDTO>sipCalls;
+    private List<OperationSipCallWSDTO>operationSipCalls;
 
     public OperationSipCallWSModel() {
     }
 
-    public OperationSipCallWSModel(GeneralWSModel general, List<OperationSipCallWSDTO> sipCalls) {
+    public OperationSipCallWSModel(GeneralWSModel general, List<OperationSipCallWSDTO> operationSipCalls) {
         this.general = general;
-        this.sipCalls = sipCalls;
+        this.operationSipCalls = operationSipCalls;
     }
 
     public GeneralWSModel getGeneral() {
@@ -26,11 +26,11 @@ public class OperationSipCallWSModel {
         this.general = general;
     }
 
-    public List<OperationSipCallWSDTO> getSipCalls() {
-        return sipCalls;
+    public List<OperationSipCallWSDTO> getOperationSipCalls() {
+        return operationSipCalls;
     }
 
-    public void setSipCalls(List<OperationSipCallWSDTO> sipCalls) {
-        this.sipCalls = sipCalls;
+    public void setOperationSipCalls(List<OperationSipCallWSDTO> operationSipCalls) {
+        this.operationSipCalls = operationSipCalls;
     }
 }

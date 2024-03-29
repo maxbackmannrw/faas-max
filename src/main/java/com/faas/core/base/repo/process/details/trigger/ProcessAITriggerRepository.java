@@ -1,6 +1,6 @@
 package com.faas.core.base.repo.process.details.trigger;
 
-import com.faas.core.base.model.db.process.details.channel.trigger.ProcessAITriggerDBModel;
+import com.faas.core.base.model.db.process.details.trigger.ProcessAITriggerDBModel;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

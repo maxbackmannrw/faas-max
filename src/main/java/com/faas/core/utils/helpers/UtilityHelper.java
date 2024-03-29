@@ -63,16 +63,16 @@ public class UtilityHelper {
     OperationRepository operationRepository;
 
     @Autowired
-    OperationEmailMessageRepository operationEmailMessageRepository;
+    OperationEmailRepository operationEmailRepository;
 
     @Autowired
-    OperationPushMessageRepository operationPushMessageRepository;
+    OperationPushRepository operationPushRepository;
 
     @Autowired
     OperationSipCallRepository operationSipCallRepository;
 
     @Autowired
-    OperationSmsMessageRepository operationSmsMessageRepository;
+    OperationSmsRepository operationSmsRepository;
 
     @Autowired
     OperationWappCallRepository operationWappCallRepository;
@@ -141,7 +141,7 @@ public class UtilityHelper {
     ProcessEmailTriggerRepository processEmailTriggerRepository;
 
     @Autowired
-    ProcessSipTriggerRepository processSipTriggerRepository;
+    ProcessSipCallTriggerRepository processSipCallTriggerRepository;
 
     @Autowired
     ProcessSmsTriggerRepository processSmsTriggerRepository;
@@ -444,10 +444,10 @@ public class UtilityHelper {
         clientRemoteRepository.deleteAll();
         sessionRepository.deleteAll();
         operationRepository.deleteAll();
-        operationEmailMessageRepository.deleteAll();
-        operationPushMessageRepository.deleteAll();
+        operationEmailRepository.deleteAll();
+        operationPushRepository.deleteAll();
         operationSipCallRepository.deleteAll();
-        operationSmsMessageRepository.deleteAll();
+        operationSmsRepository.deleteAll();
         operationWappCallRepository.deleteAll();
         operationWappMessageRepository.deleteAll();
     }
@@ -456,10 +456,10 @@ public class UtilityHelper {
 
         sessionRepository.deleteAll();
         operationRepository.deleteAll();
-        operationEmailMessageRepository.deleteAll();
-        operationPushMessageRepository.deleteAll();
+        operationEmailRepository.deleteAll();
+        operationPushRepository.deleteAll();
         operationSipCallRepository.deleteAll();
-        operationSmsMessageRepository.deleteAll();
+        operationSmsRepository.deleteAll();
         operationWappCallRepository.deleteAll();
         operationWappMessageRepository.deleteAll();
         resetAllClientsHelper();
@@ -469,10 +469,10 @@ public class UtilityHelper {
 
         sessionRepository.deleteAll();
         operationRepository.deleteAll();
-        operationEmailMessageRepository.deleteAll();
-        operationPushMessageRepository.deleteAll();
+        operationEmailRepository.deleteAll();
+        operationPushRepository.deleteAll();
         operationSipCallRepository.deleteAll();
-        operationSmsMessageRepository.deleteAll();
+        operationSmsRepository.deleteAll();
         operationWappCallRepository.deleteAll();
         operationWappMessageRepository.deleteAll();
         resetAllClientsHelper();
@@ -515,7 +515,7 @@ public class UtilityHelper {
 
         processAITriggerRepository.deleteAll();
         processEmailTriggerRepository.deleteAll();
-        processSipTriggerRepository.deleteAll();
+        processSipCallTriggerRepository.deleteAll();
         processSmsTriggerRepository.deleteAll();
         processWappCallTriggerRepository.deleteAll();
         processWappMessageTriggerRepository.deleteAll();

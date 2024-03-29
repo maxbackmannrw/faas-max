@@ -41,16 +41,16 @@ public class ManagerHelper {
     OperationRepository operationRepository;
 
     @Autowired
-    OperationEmailMessageRepository operationEmailMessageRepository;
+    OperationEmailRepository operationEmailRepository;
 
     @Autowired
-    OperationPushMessageRepository operationPushMessageRepository;
+    OperationPushRepository operationPushRepository;
 
     @Autowired
     OperationSipCallRepository operationSipCallRepository;
 
     @Autowired
-    OperationSmsMessageRepository operationSmsMessageRepository;
+    OperationSmsRepository operationSmsRepository;
 
     @Autowired
     OperationWappCallRepository operationWappCallRepository;
@@ -200,10 +200,10 @@ public class ManagerHelper {
             }
             sessionRepository.delete(sessionDBModel);
             operationRepository.deleteAll(operationRepository.findBySessionId(sessionDBModel.getId()));
-            operationEmailMessageRepository.deleteAll(operationEmailMessageRepository.findBySessionId(sessionDBModel.getId()));
-            operationPushMessageRepository.deleteAll(operationPushMessageRepository.findBySessionId(sessionDBModel.getId()));
+            operationEmailRepository.deleteAll(operationEmailRepository.findBySessionId(sessionDBModel.getId()));
+            operationPushRepository.deleteAll(operationPushRepository.findBySessionId(sessionDBModel.getId()));
             operationSipCallRepository.deleteAll(operationSipCallRepository.findBySessionId(sessionDBModel.getId()));
-            operationSmsMessageRepository.deleteAll(operationSmsMessageRepository.findBySessionId(sessionDBModel.getId()));
+            operationSmsRepository.deleteAll(operationSmsRepository.findBySessionId(sessionDBModel.getId()));
             operationWappCallRepository.deleteAll(operationWappCallRepository.findBySessionId(sessionDBModel.getId()));
             operationWappMessageRepository.deleteAll(operationWappMessageRepository.findBySessionId(sessionDBModel.getId()));
 

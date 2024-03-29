@@ -54,16 +54,16 @@ public class ClientHelper {
     OperationRepository operationRepository;
 
     @Autowired
-    OperationEmailMessageRepository operationEmailMessageRepository;
+    OperationEmailRepository operationEmailRepository;
 
     @Autowired
-    OperationPushMessageRepository operationPushMessageRepository;
+    OperationPushRepository operationPushRepository;
 
     @Autowired
     OperationSipCallRepository operationSipCallRepository;
 
     @Autowired
-    OperationSmsMessageRepository operationSmsMessageRepository;
+    OperationSmsRepository operationSmsRepository;
 
     @Autowired
     OperationWappCallRepository operationWappCallRepository;
@@ -165,10 +165,10 @@ public class ClientHelper {
 
         sessionRepository.deleteAll(sessionRepository.findByClientId(clientDBModel.getId()));
         operationRepository.deleteAll(operationRepository.findByClientId(clientDBModel.getId()));
-        operationEmailMessageRepository.deleteAll(operationEmailMessageRepository.findByClientId(clientDBModel.getId()));
-        operationPushMessageRepository.deleteAll(operationPushMessageRepository.findByClientId(clientDBModel.getId()));
+        operationEmailRepository.deleteAll(operationEmailRepository.findByClientId(clientDBModel.getId()));
+        operationPushRepository.deleteAll(operationPushRepository.findByClientId(clientDBModel.getId()));
         operationSipCallRepository.deleteAll(operationSipCallRepository.findByClientId(clientDBModel.getId()));
-        operationSmsMessageRepository.deleteAll(operationSmsMessageRepository.findByClientId(clientDBModel.getId()));
+        operationSmsRepository.deleteAll(operationSmsRepository.findByClientId(clientDBModel.getId()));
         operationWappCallRepository.deleteAll(operationWappCallRepository.findByClientId(clientDBModel.getId()));
         operationWappMessageRepository.deleteAll(operationWappMessageRepository.findByClientId(clientDBModel.getId()));
         clientRemoteRepository.deleteAll(clientRemoteRepository.findByClientId(clientDBModel.getId()));

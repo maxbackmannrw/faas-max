@@ -8,14 +8,14 @@ import java.util.List;
 public class OperationWappMessageWSModel {
 
     private GeneralWSModel general;
-    private List<OperationWappMessageWSDTO>wappMessages;
+    private List<OperationWappMessageWSDTO>operationWappMessages;
 
     public OperationWappMessageWSModel() {
     }
 
-    public OperationWappMessageWSModel(GeneralWSModel general, List<OperationWappMessageWSDTO> wappMessages) {
+    public OperationWappMessageWSModel(GeneralWSModel general, List<OperationWappMessageWSDTO> operationWappMessages) {
         this.general = general;
-        this.wappMessages = wappMessages;
+        this.operationWappMessages = operationWappMessages;
     }
 
     public GeneralWSModel getGeneral() {
@@ -26,11 +26,11 @@ public class OperationWappMessageWSModel {
         this.general = general;
     }
 
-    public List<OperationWappMessageWSDTO> getWappMessages() {
-        return wappMessages;
+    public List<OperationWappMessageWSDTO> getOperationWappMessages() {
+        return operationWappMessages;
     }
 
-    public void setWappMessages(List<OperationWappMessageWSDTO> wappMessages) {
-        this.wappMessages = wappMessages;
+    public void setOperationWappMessages(List<OperationWappMessageWSDTO> operationWappMessages) {
+        this.operationWappMessages = operationWappMessages;
     }
 }

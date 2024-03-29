@@ -4,20 +4,20 @@ import com.faas.core.base.model.db.operation.details.channel.OperationWappMessag
 
 public class OperationWappMessageWSDTO {
 
-    private OperationWappMessageDBModel wappMessage;
+    private OperationWappMessageDBModel operationWappMessage;
 
     public OperationWappMessageWSDTO() {
     }
 
-    public OperationWappMessageWSDTO(OperationWappMessageDBModel wappMessage) {
-        this.wappMessage = wappMessage;
+    public OperationWappMessageWSDTO(OperationWappMessageDBModel operationWappMessage) {
+        this.operationWappMessage = operationWappMessage;
     }
 
-    public OperationWappMessageDBModel getWappMessage() {
-        return wappMessage;
+    public OperationWappMessageDBModel getOperationWappMessage() {
+        return operationWappMessage;
     }
 
-    public void setWappMessage(OperationWappMessageDBModel wappMessage) {
-        this.wappMessage = wappMessage;
+    public void setOperationWappMessage(OperationWappMessageDBModel operationWappMessage) {
+        this.operationWappMessage = operationWappMessage;
     }
 }

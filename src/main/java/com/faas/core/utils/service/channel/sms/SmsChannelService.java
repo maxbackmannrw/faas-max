@@ -1,11 +1,11 @@
 package com.faas.core.utils.service.channel.sms;
 
 import com.faas.core.base.model.db.channel.account.SmsAccountDBModel;
-import com.faas.core.base.model.db.operation.details.channel.OperationSmsMessageDBModel;
+import com.faas.core.base.model.db.operation.details.channel.OperationSmsDBModel;
 import com.faas.core.base.model.db.process.content.ProcessDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.repo.channel.account.SmsAccountRepository;
-import com.faas.core.base.repo.operation.details.channel.OperationSmsMessageRepository;
+import com.faas.core.base.repo.operation.details.channel.OperationSmsRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.utils.endpoint.request.channel.sms.SmsChannelRequest;
 import com.faas.core.utils.endpoint.request.utility.CommonRequest;
@@ -35,14 +35,14 @@ public class SmsChannelService {
     SmsAccountRepository smsAccountRepository;
 
     @Autowired
-    OperationSmsMessageRepository operationSmsMessageRepository;
+    OperationSmsRepository operationSmsRepository;
 
     @Autowired
     AppUtils appUtils;
 
 
     @Async
-    public void sendAsyncSmsService(OperationSmsMessageDBModel operationSmsMessageDBModel) throws IOException {
+    public void sendAsyncSmsService(OperationSmsDBModel operationSmsDBModel) throws IOException {
 
         /*
         Optional<SmsAccountDBModel> smsAccountDBModel = smsAccountRepository.findById(operationSmsMessageDBModel.getSmsMessage().getAccountId());
@@ -56,9 +56,9 @@ public class SmsChannelService {
     }
 
 
-    public OperationSmsMessageDBModel generateSmsBodyService(SessionDBModel sessionDBModel, OperationSmsMessageDBModel operationSmsMessageDBModel, SmsAccountDBModel smsAccountDBModel, ProcessDBModel processDBModel) throws IOException {
+    public OperationSmsDBModel generateSmsBodyService(SessionDBModel sessionDBModel, OperationSmsDBModel operationSmsDBModel, SmsAccountDBModel smsAccountDBModel, ProcessDBModel processDBModel) throws IOException {
 
-        String smsMessageBody = operationSmsMessageDBModel.getSmsMessage().getSmsBody();
+        String smsMessageBody = operationSmsDBModel.getSmsMessage().getSmsBody();
         if (smsMessageBody.contains(AppConstant.CLIENT_NAME_TAG)) {
             smsMessageBody = smsMessageBody.replace(AppConstant.CLIENT_NAME_TAG, sessionDBModel.getClientName());
         }
@@ -80,9 +80,9 @@ public class SmsChannelService {
                 }
             }
         }
-        operationSmsMessageDBModel.setuDate(appUtils.getCurrentTimeStamp());
+        operationSmsDBModel.setuDate(appUtils.getCurrentTimeStamp());
 
-        return operationSmsMessageRepository.save(operationSmsMessageDBModel);
+        return operationSmsRepository.save(operationSmsDBModel);
     }
 
 

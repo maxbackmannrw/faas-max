@@ -1,6 +1,6 @@
 package com.faas.core.utils.service.channel.push;
 
-import com.faas.core.base.model.db.operation.details.channel.OperationPushMessageDBModel;
+import com.faas.core.base.model.db.operation.details.channel.OperationPushDBModel;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
@@ -17,7 +17,7 @@ public class PushChannelService {
 
 
     @Async
-    public void sendAsyncPushService(OperationPushMessageDBModel operationPushMessageDBModel) throws IOException {
+    public void sendAsyncPushService(OperationPushDBModel operationPushDBModel) throws IOException {
 
         /*
         Optional<SmsAccountDBModel> smsAccountDBModel = smsAccountRepository.findById(operationSmsMessageDBModel.getSmsMessage().getAccountId());

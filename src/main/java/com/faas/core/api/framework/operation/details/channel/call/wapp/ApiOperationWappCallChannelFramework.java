@@ -5,7 +5,6 @@ import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiOpe
 import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiOperationWappCallWSDTO;
 import com.faas.core.base.model.db.client.details.content.ClientDetailsDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
-import com.faas.core.base.model.db.operation.details.channel.OperationSipCallDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationWappCallDBModel;
 import com.faas.core.base.repo.client.details.ClientDetailsRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
