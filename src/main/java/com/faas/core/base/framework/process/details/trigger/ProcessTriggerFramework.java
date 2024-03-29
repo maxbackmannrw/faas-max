@@ -262,6 +262,7 @@ public class ProcessTriggerFramework {
             sipCallTriggerDBModel.setAccountId(accountId);
             sipCallTriggerDBModel.setAccount(sipAccountDBModel.get().getAccount());
             sipCallTriggerDBModel.setCallerId(callerId);
+            sipCallTriggerDBModel.setDatas(new ArrayList<>());
             sipCallTriggerDBModel.setTypeId(typeId);
             sipCallTriggerDBModel.setTriggerType(triggerTypeDBModel.get().getTriggerType());
             sipCallTriggerDBModel.setuDate(appUtils.getCurrentTimeStamp());
