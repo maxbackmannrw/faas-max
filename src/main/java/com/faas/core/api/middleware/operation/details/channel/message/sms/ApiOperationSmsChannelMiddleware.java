@@ -45,6 +45,67 @@ public class ApiOperationSmsChannelMiddleware {
         return response;
     }
 
+
+    public ApiOperationSmsAccountWSModel apiGetOperationSmsAccount(long agentId, String operationId) {
+
+        ApiOperationSmsAccountWSModel response = new ApiOperationSmsAccountWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        ApiOperationSmsAccountWSDTO smsAccountWSDTO = apiOperationSmsChannelFramework.apiGetOperationSmsAccountService(agentId,operationId);
+        if (smsAccountWSDTO != null){
+            response.setSmsAccount(smsAccountWSDTO);
+        }
+
+        general.setOperation("apiGetOperationSmsAccount");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
+    public ApiOperationSmsTempWSModel apiGetOperationSmsTemps(long agentId,String operationId) {
+
+        ApiOperationSmsTempWSModel response = new ApiOperationSmsTempWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        ApiOperationSmsTempWSDTO smsTempWSDTO = apiOperationSmsChannelFramework.apiGetOperationSmsTempsService(agentId,operationId);
+        if (smsTempWSDTO != null){
+            response.setSmsTemp(smsTempWSDTO);
+        }
+
+        general.setOperation("apiGetOperationSmsTemps");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
+    public ApiOperationSmsTempWSModel apiGetOperationSmsTemp(long agentId,String operationId,String tempId) {
+
+        ApiOperationSmsTempWSModel response = new ApiOperationSmsTempWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        ApiOperationSmsTempWSDTO smsTempWSDTO = apiOperationSmsChannelFramework.apiGetOperationSmsTempService(agentId,operationId,tempId);
+        if (smsTempWSDTO != null){
+            response.setSmsTemp(smsTempWSDTO);
+        }
+
+        general.setOperation("apiGetOperationSmsTemp");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
     public ApiOperationSmsWSModel apiGetOperationSmss(long agentId,String operationId) {
 
         ApiOperationSmsWSModel response = new ApiOperationSmsWSModel();
@@ -150,67 +211,6 @@ public class ApiOperationSmsChannelMiddleware {
 
         return response;
     }
-
-
-    public ApiOperationSmsTempWSModel apiGetOperationSmsTemps(long agentId,String operationId) {
-
-        ApiOperationSmsTempWSModel response = new ApiOperationSmsTempWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-        ApiOperationSmsTempWSDTO smsTempWSDTO = apiOperationSmsChannelFramework.apiGetOperationSmsTempsService(agentId,operationId);
-        if (smsTempWSDTO != null){
-            response.setSmsTemp(smsTempWSDTO);
-        }
-
-        general.setOperation("apiGetOperationSmsTemps");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-
-    public ApiOperationSmsTempWSModel apiGetOperationSmsTemp(long agentId,String operationId,String tempId) {
-
-        ApiOperationSmsTempWSModel response = new ApiOperationSmsTempWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-        ApiOperationSmsTempWSDTO smsTempWSDTO = apiOperationSmsChannelFramework.apiGetOperationSmsTempService(agentId,operationId,tempId);
-        if (smsTempWSDTO != null){
-            response.setSmsTemp(smsTempWSDTO);
-        }
-
-        general.setOperation("apiGetOperationSmsTemp");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-
-    public ApiOperationSmsAccountWSModel apiGetOperationSmsAccount(long agentId, String operationId) {
-
-        ApiOperationSmsAccountWSModel response = new ApiOperationSmsAccountWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-        ApiOperationSmsAccountWSDTO smsAccountWSDTO = apiOperationSmsChannelFramework.apiGetOperationSmsAccountService(agentId,operationId);
-        if (smsAccountWSDTO != null){
-            response.setSmsAccount(smsAccountWSDTO);
-        }
-
-        general.setOperation("apiGetOperationSmsAccount");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
 
 
 }

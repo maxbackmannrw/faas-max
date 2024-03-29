@@ -53,6 +53,16 @@ public class ApiOperationSipChannelFramework {
         return null;
     }
 
+    public ApiOperationSipAccountWSDTO apiGetOperationSipAccountService(long agentId, String operationId) {
+
+        List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
+        if (!operationDBModels.isEmpty()){
+            return channelHelper.getApiOperationSipAccountWSDTO(agentId,operationDBModels.get(0).getProcessId());
+        }
+        return null;
+    }
+
+
     public List<ApiOperationSipCallWSDTO> apiGetOperationSipCallsService(long agentId, String operationId) {
 
         List<ApiOperationSipCallWSDTO> operationSipCallWSDTOS = new ArrayList<>();
@@ -128,17 +138,6 @@ public class ApiOperationSipChannelFramework {
         }
         return null;
     }
-
-
-    public ApiOperationSipAccountWSDTO apiGetOperationSipAccountService(long agentId, String operationId) {
-
-        List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
-        if (!operationDBModels.isEmpty()){
-            return channelHelper.getApiOperationSipAccountWSDTO(agentId,operationDBModels.get(0).getProcessId());
-        }
-        return null;
-    }
-
 
 
 }

@@ -39,6 +39,46 @@ public class ApiOperationEmailChannelController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_EMAIL_ACCOUNT, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationEmailAccount(@RequestParam long agentId,
+                                                         @RequestParam String operationId) {
+
+        ApiOperationEmailAccountWSModel response = apiOperationEmailChannelMiddleware.apiGetOperationEmailAccount(agentId,operationId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_EMAIL_TEMPS, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationEmailTemps(@RequestParam long agentId,
+                                                       @RequestParam String operationId) {
+
+        ApiOperationEmailTempWSModel response = apiOperationEmailChannelMiddleware.apiGetOperationEmailTemps(agentId,operationId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_EMAIL_TEMP, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationEmailTemp(@RequestParam long agentId,
+                                                      @RequestParam String operationId,
+                                                      @RequestParam String tempId) {
+
+        ApiOperationEmailTempWSModel response = apiOperationEmailChannelMiddleware.apiGetOperationEmailTemp(agentId,operationId,tempId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_EMAILS, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationEmails(@RequestParam long agentId,
                                                    @RequestParam String operationId) {
@@ -98,46 +138,6 @@ public class ApiOperationEmailChannelController {
                                                      @RequestParam String emailId) {
 
         ApiOperationEmailWSModel response = apiOperationEmailChannelMiddleware.apiRemoveOperationEmail(agentId,operationId,emailId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-
-
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION_EMAIL_TEMPS, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperationEmailTemps(@RequestParam long agentId,
-                                                       @RequestParam String operationId) {
-
-        ApiOperationEmailTempWSModel response = apiOperationEmailChannelMiddleware.apiGetOperationEmailTemps(agentId,operationId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION_EMAIL_TEMP, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperationEmailTemp(@RequestParam long agentId,
-                                                      @RequestParam String operationId,
-                                                      @RequestParam String tempId) {
-
-        ApiOperationEmailTempWSModel response = apiOperationEmailChannelMiddleware.apiGetOperationEmailTemp(agentId,operationId,tempId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION_EMAIL_ACCOUNT, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperationEmailAccount(@RequestParam long agentId,
-                                                         @RequestParam String operationId) {
-
-        ApiOperationEmailAccountWSModel response = apiOperationEmailChannelMiddleware.apiGetOperationEmailAccount(agentId,operationId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

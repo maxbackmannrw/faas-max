@@ -39,6 +39,46 @@ public class ApiOperationWappMessageChannelController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_WAPP_MESSAGE_ACCOUNT, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationWappMessageAccount(@RequestParam long agentId,
+                                                               @RequestParam String operationId) {
+
+        ApiOperationWappMessageAccountWSModel response = apiOperationWappMessageChannelMiddleware.apiGetOperationWappMessageAccount(agentId,operationId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_WAPP_MESSAGE_TEMPS, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationWappMessageTemps(@RequestParam long agentId,
+                                                             @RequestParam String operationId) {
+
+        ApiOperationWappMessageTempWSModel response = apiOperationWappMessageChannelMiddleware.apiGetOperationWappMessageTemps(agentId,operationId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_WAPP_MESSAGE_TEMP, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationWappMessageTemp(@RequestParam long agentId,
+                                                            @RequestParam String operationId,
+                                                            @RequestParam String tempId) {
+
+        ApiOperationWappMessageTempWSModel response = apiOperationWappMessageChannelMiddleware.apiGetOperationWappMessageTemp(agentId,operationId,tempId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_WAPP_MESSAGES, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationWappMessages(@RequestParam long agentId,
                                                          @RequestParam String operationId) {
@@ -98,45 +138,6 @@ public class ApiOperationWappMessageChannelController {
                                                            @RequestParam String messageId) {
 
         ApiOperationWappMessageWSModel response = apiOperationWappMessageChannelMiddleware.apiRemoveOperationWappMessage(agentId,operationId,messageId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION_WAPP_MESSAGE_TEMPS, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperationWappMessageTemps(@RequestParam long agentId,
-                                                             @RequestParam String operationId) {
-
-        ApiOperationWappMessageTempWSModel response = apiOperationWappMessageChannelMiddleware.apiGetOperationWappMessageTemps(agentId,operationId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION_WAPP_MESSAGE_TEMP, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperationWappMessageTemp(@RequestParam long agentId,
-                                                            @RequestParam String operationId,
-                                                            @RequestParam String tempId) {
-
-        ApiOperationWappMessageTempWSModel response = apiOperationWappMessageChannelMiddleware.apiGetOperationWappMessageTemp(agentId,operationId,tempId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION_WAPP_MESSAGE_ACCOUNT, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperationWappMessageAccount(@RequestParam long agentId,
-                                                               @RequestParam String operationId) {
-
-        ApiOperationWappMessageAccountWSModel response = apiOperationWappMessageChannelMiddleware.apiGetOperationWappMessageAccount(agentId,operationId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

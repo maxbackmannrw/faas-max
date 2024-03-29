@@ -36,6 +36,19 @@ public class ApiOperationSipChannelController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_SIP_ACCOUNT, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationSipAccount(@RequestParam long agentId,
+                                                       @RequestParam String operationId) {
+
+        ApiOperationSipAccountWSModel response = apiOperationSipChannelMiddleware.apiGetOperationSipAccount(agentId,operationId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_SIP_CALLS, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationSipCalls(@RequestParam long agentId,
                                                      @RequestParam String operationId) {
@@ -133,19 +146,6 @@ public class ApiOperationSipChannelController {
                                                        @RequestParam String callId) {
 
         ApiOperationSipCallWSModel response = apiOperationSipChannelMiddleware.apiRemoveOperationSipCall(agentId,operationId,callId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION_SIP_ACCOUNT, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperationSipAccount(@RequestParam long agentId,
-                                                       @RequestParam String operationId) {
-
-        ApiOperationSipAccountWSModel response = apiOperationSipChannelMiddleware.apiGetOperationSipAccount(agentId,operationId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

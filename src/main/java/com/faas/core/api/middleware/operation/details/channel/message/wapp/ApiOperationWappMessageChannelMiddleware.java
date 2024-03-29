@@ -45,6 +45,66 @@ public class ApiOperationWappMessageChannelMiddleware {
         return response;
     }
 
+
+    public ApiOperationWappMessageAccountWSModel apiGetOperationWappMessageAccount(long agentId, String operationId) {
+
+        ApiOperationWappMessageAccountWSModel response = new ApiOperationWappMessageAccountWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        ApiOperationWappMessageAccountWSDTO wappMessageAccountWSDTO = apiOperationWappMessageChannelFramework.apiGetOperationWappMessageAccountService(agentId,operationId);
+        if (wappMessageAccountWSDTO != null){
+            response.setWappMessageAccount(wappMessageAccountWSDTO);
+        }
+
+        general.setOperation("apiGetOperationWappMessageAccount");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
+    public ApiOperationWappMessageTempWSModel apiGetOperationWappMessageTemps(long agentId,String operationId) {
+
+        ApiOperationWappMessageTempWSModel response = new ApiOperationWappMessageTempWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        ApiOperationWappMessageTempWSDTO wappMessageTempWSDTO = apiOperationWappMessageChannelFramework.apiGetOperationWappMessageTempsService(agentId,operationId);
+        if (wappMessageTempWSDTO != null){
+            response.setWappMessageTemp(wappMessageTempWSDTO);
+        }
+
+        general.setOperation("apiGetOperationWappMessageTemps");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public ApiOperationWappMessageTempWSModel apiGetOperationWappMessageTemp(long agentId,String operationId,String tempId) {
+
+        ApiOperationWappMessageTempWSModel response = new ApiOperationWappMessageTempWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        ApiOperationWappMessageTempWSDTO wappMessageTempWSDTO = apiOperationWappMessageChannelFramework.apiGetOperationWappMessageTempService(agentId,operationId,tempId);
+        if (wappMessageTempWSDTO != null){
+            response.setWappMessageTemp(wappMessageTempWSDTO);
+        }
+
+        general.setOperation("apiGetWappMessageTemp");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
     public ApiOperationWappMessageWSModel apiGetOperationWappMessages(long agentId,String operationId) {
 
         ApiOperationWappMessageWSModel response = new ApiOperationWappMessageWSModel();
@@ -147,66 +207,6 @@ public class ApiOperationWappMessageChannelMiddleware {
 
         return response;
     }
-
-
-    public ApiOperationWappMessageTempWSModel apiGetOperationWappMessageTemps(long agentId,String operationId) {
-
-        ApiOperationWappMessageTempWSModel response = new ApiOperationWappMessageTempWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-        ApiOperationWappMessageTempWSDTO wappMessageTempWSDTO = apiOperationWappMessageChannelFramework.apiGetOperationWappMessageTempsService(agentId,operationId);
-        if (wappMessageTempWSDTO != null){
-            response.setWappMessageTemp(wappMessageTempWSDTO);
-        }
-
-        general.setOperation("apiGetOperationWappMessageTemps");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-    public ApiOperationWappMessageTempWSModel apiGetOperationWappMessageTemp(long agentId,String operationId,String tempId) {
-
-        ApiOperationWappMessageTempWSModel response = new ApiOperationWappMessageTempWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-        ApiOperationWappMessageTempWSDTO wappMessageTempWSDTO = apiOperationWappMessageChannelFramework.apiGetOperationWappMessageTempService(agentId,operationId,tempId);
-        if (wappMessageTempWSDTO != null){
-            response.setWappMessageTemp(wappMessageTempWSDTO);
-        }
-
-        general.setOperation("apiGetWappMessageTemp");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-
-    public ApiOperationWappMessageAccountWSModel apiGetOperationWappMessageAccount(long agentId, String operationId) {
-
-        ApiOperationWappMessageAccountWSModel response = new ApiOperationWappMessageAccountWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-        ApiOperationWappMessageAccountWSDTO wappMessageAccountWSDTO = apiOperationWappMessageChannelFramework.apiGetOperationWappMessageAccountService(agentId,operationId);
-        if (wappMessageAccountWSDTO != null){
-            response.setWappMessageAccount(wappMessageAccountWSDTO);
-        }
-
-        general.setOperation("apiGetOperationWappMessageAccount");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
 
 
 }

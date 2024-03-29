@@ -46,6 +46,66 @@ public class ApiOperationEmailChannelMiddleware {
         return response;
     }
 
+
+    public ApiOperationEmailAccountWSModel apiGetOperationEmailAccount(long agentId, String operationId) {
+
+        ApiOperationEmailAccountWSModel response = new ApiOperationEmailAccountWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        ApiOperationEmailAccountWSDTO emailAccountWSDTO = apiOperationEmailChannelFramework.apiGetOperationEmailAccountService(agentId,operationId);
+        if (emailAccountWSDTO != null) {
+            response.setEmailAccount(emailAccountWSDTO);
+        }
+
+        general.setOperation("apiGetOperationEmailAccount");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
+    public ApiOperationEmailTempWSModel apiGetOperationEmailTemps(long agentId,String operationId) {
+
+        ApiOperationEmailTempWSModel response = new ApiOperationEmailTempWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        ApiOperationEmailTempWSDTO emailTempWSDTO = apiOperationEmailChannelFramework.apiGetOperationEmailTempsService(agentId,operationId);
+        if (emailTempWSDTO != null) {
+            response.setEmailTemp(emailTempWSDTO);
+        }
+
+        general.setOperation("apiGetOperationEmailTemps");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public ApiOperationEmailTempWSModel apiGetOperationEmailTemp(long agentId,String operationId,String tempId) {
+
+        ApiOperationEmailTempWSModel response = new ApiOperationEmailTempWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        ApiOperationEmailTempWSDTO emailTempWSDTO = apiOperationEmailChannelFramework.apiGetOperationEmailTempService(agentId,operationId,tempId);
+        if (emailTempWSDTO != null) {
+            response.setEmailTemp(emailTempWSDTO);
+        }
+
+        general.setOperation("apiGetOperationEmailTemp");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
     public ApiOperationEmailWSModel apiGetOperationEmails(long agentId,String operationId) {
 
         ApiOperationEmailWSModel response = new ApiOperationEmailWSModel();
@@ -148,66 +208,6 @@ public class ApiOperationEmailChannelMiddleware {
 
         return response;
     }
-
-
-    public ApiOperationEmailTempWSModel apiGetOperationEmailTemps(long agentId,String operationId) {
-
-        ApiOperationEmailTempWSModel response = new ApiOperationEmailTempWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-        ApiOperationEmailTempWSDTO emailTempWSDTO = apiOperationEmailChannelFramework.apiGetOperationEmailTempsService(agentId,operationId);
-        if (emailTempWSDTO != null) {
-            response.setEmailTemp(emailTempWSDTO);
-        }
-
-        general.setOperation("apiGetOperationEmailTemps");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-    public ApiOperationEmailTempWSModel apiGetOperationEmailTemp(long agentId,String operationId,String tempId) {
-
-        ApiOperationEmailTempWSModel response = new ApiOperationEmailTempWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-        ApiOperationEmailTempWSDTO emailTempWSDTO = apiOperationEmailChannelFramework.apiGetOperationEmailTempService(agentId,operationId,tempId);
-        if (emailTempWSDTO != null) {
-            response.setEmailTemp(emailTempWSDTO);
-        }
-
-        general.setOperation("apiGetOperationEmailTemp");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-
-    public ApiOperationEmailAccountWSModel apiGetOperationEmailAccount(long agentId, String operationId) {
-
-        ApiOperationEmailAccountWSModel response = new ApiOperationEmailAccountWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-        ApiOperationEmailAccountWSDTO emailAccountWSDTO = apiOperationEmailChannelFramework.apiGetOperationEmailAccountService(agentId,operationId);
-        if (emailAccountWSDTO != null) {
-            response.setEmailAccount(emailAccountWSDTO);
-        }
-
-        general.setOperation("apiGetOperationEmailAccount");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
 
 
 }

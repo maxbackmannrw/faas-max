@@ -77,6 +77,44 @@ public class ApiOperationPushChannelFramework {
         return null;
     }
 
+
+    public ApiOperationPushAccountWSDTO apiGetOperationPushAccountService(long agentId, String operationId) {
+
+        List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
+        if (!sessionDBModels.isEmpty()){
+            return channelHelper.getApiPushAccountWSDTO(sessionDBModels.get(0).getProcessId());
+        }
+        return null;
+    }
+
+
+    public ApiOperationPushTempWSDTO apiGetOperationPushTempsService(long agentId,String operationId) {
+
+        List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
+        if (!sessionDBModels.isEmpty()){
+
+            ApiOperationPushTempWSDTO pushTempWSDTO = new ApiOperationPushTempWSDTO();
+            pushTempWSDTO.setPushAccount(channelHelper.getApiPushAccountWSDTO(sessionDBModels.get(0).getProcessId()));
+            pushTempWSDTO.setOperationPushTemps(processPushTempRepository.findByProcessId(sessionDBModels.get(0).getProcessId()));
+            return pushTempWSDTO;
+        }
+        return null;
+    }
+
+    public ApiOperationPushTempWSDTO apiGetOperationPushTempService(long agentId,String operationId,String tempId) {
+
+        List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
+        if (!sessionDBModels.isEmpty()){
+
+            ApiOperationPushTempWSDTO pushTempWSDTO = new ApiOperationPushTempWSDTO();
+            pushTempWSDTO.setPushAccount(channelHelper.getApiPushAccountWSDTO(sessionDBModels.get(0).getProcessId()));
+            pushTempWSDTO.setOperationPushTemps(processPushTempRepository.findByIdAndProcessId(tempId,sessionDBModels.get(0).getProcessId()));
+            return pushTempWSDTO;
+        }
+        return null;
+    }
+
+
     public List<ApiOperationPushWSDTO> apiGetOperationPushesService(long agentId,String operationId) {
 
         List<ApiOperationPushWSDTO> operationPushWSDTOS = new ArrayList<>();
@@ -132,42 +170,6 @@ public class ApiOperationPushChannelFramework {
 
             operationPushRepository.delete(operationPushDBModels.get(0));
             return new ApiOperationPushWSDTO(operationPushDBModels.get(0));
-        }
-        return null;
-    }
-
-
-    public ApiOperationPushTempWSDTO apiGetOperationPushTempsService(long agentId,String operationId) {
-
-        List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
-        if (!sessionDBModels.isEmpty()){
-
-            ApiOperationPushTempWSDTO pushTempWSDTO = new ApiOperationPushTempWSDTO();
-            pushTempWSDTO.setPushAccount(channelHelper.getApiPushAccountWSDTO(sessionDBModels.get(0).getProcessId()));
-            pushTempWSDTO.setOperationPushTemps(processPushTempRepository.findByProcessId(sessionDBModels.get(0).getProcessId()));
-            return pushTempWSDTO;
-        }
-        return null;
-    }
-
-    public ApiOperationPushTempWSDTO apiGetOperationPushTempService(long agentId,String operationId,String tempId) {
-
-        List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
-        if (!sessionDBModels.isEmpty()){
-
-            ApiOperationPushTempWSDTO pushTempWSDTO = new ApiOperationPushTempWSDTO();
-            pushTempWSDTO.setPushAccount(channelHelper.getApiPushAccountWSDTO(sessionDBModels.get(0).getProcessId()));
-            pushTempWSDTO.setOperationPushTemps(processPushTempRepository.findByIdAndProcessId(tempId,sessionDBModels.get(0).getProcessId()));
-            return pushTempWSDTO;
-        }
-        return null;
-    }
-
-    public ApiOperationPushAccountWSDTO apiGetOperationPushAccountService(long agentId, String operationId) {
-
-        List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
-        if (!sessionDBModels.isEmpty()){
-            return channelHelper.getApiPushAccountWSDTO(sessionDBModels.get(0).getProcessId());
         }
         return null;
     }

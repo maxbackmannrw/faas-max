@@ -53,6 +53,16 @@ public class ApiOperationWappCallChannelFramework {
         return null;
     }
 
+    public ApiOperationWappCallAccountWSDTO apiGetOperationWappCallAccountService(long agentId, String operationId) {
+
+        List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
+        if (!operationDBModels.isEmpty()){
+            return channelHelper.getApiOperationWappCallAccountWSDTO(agentId,operationDBModels.get(0).getProcessId());
+        }
+        return null;
+    }
+
+
     public List<ApiOperationWappCallWSDTO> apiGetOperationWappCallsService(long agentId, String operationId) {
 
         List<ApiOperationWappCallWSDTO> operationWappCallWSDTOS = new ArrayList<>();
@@ -129,15 +139,6 @@ public class ApiOperationWappCallChannelFramework {
         return null;
     }
 
-
-    public ApiOperationWappCallAccountWSDTO apiGetOperationWappCallAccountService(long agentId, String operationId) {
-
-        List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
-        if (!operationDBModels.isEmpty()){
-            return channelHelper.getApiOperationWappCallAccountWSDTO(agentId,operationDBModels.get(0).getProcessId());
-        }
-        return null;
-    }
 
 
 }

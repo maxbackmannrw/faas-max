@@ -39,6 +39,46 @@ public class ApiOperationSmsChannelController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_SMS_ACCOUNT, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationSmsAccount(@RequestParam long agentId,
+                                                       @RequestParam String operationId) {
+
+        ApiOperationSmsAccountWSModel response = apiOperationSmsChannelMiddleware.apiGetOperationSmsAccount(agentId,operationId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_SMS_TEMPS, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationSmsTemps(@RequestParam long agentId,
+                                                     @RequestParam String operationId) {
+
+        ApiOperationSmsTempWSModel response = apiOperationSmsChannelMiddleware.apiGetOperationSmsTemps(agentId,operationId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_SMS_TEMP, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationSmsTemp(@RequestParam long agentId,
+                                                    @RequestParam String operationId,
+                                                    @RequestParam String tempId) {
+
+        ApiOperationSmsTempWSModel response = apiOperationSmsChannelMiddleware.apiGetOperationSmsTemp(agentId,operationId,tempId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_SMSS, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationSmss(@RequestParam long agentId,
                                                  @RequestParam String operationId) {
@@ -104,47 +144,6 @@ public class ApiOperationSmsChannelController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
-
-
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION_SMS_TEMPS, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperationSmsTemps(@RequestParam long agentId,
-                                                     @RequestParam String operationId) {
-
-        ApiOperationSmsTempWSModel response = apiOperationSmsChannelMiddleware.apiGetOperationSmsTemps(agentId,operationId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION_SMS_TEMP, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperationSmsTemp(@RequestParam long agentId,
-                                                    @RequestParam String operationId,
-                                                    @RequestParam String tempId) {
-
-        ApiOperationSmsTempWSModel response = apiOperationSmsChannelMiddleware.apiGetOperationSmsTemp(agentId,operationId,tempId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION_SMS_ACCOUNT, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperationSmsAccount(@RequestParam long agentId,
-                                                       @RequestParam String operationId) {
-
-        ApiOperationSmsAccountWSModel response = apiOperationSmsChannelMiddleware.apiGetOperationSmsAccount(agentId,operationId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
 
 
 }

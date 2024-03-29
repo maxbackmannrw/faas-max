@@ -37,6 +37,47 @@ public class ApiOperationPushChannelController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_PUSH_ACCOUNT, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationPushAccount(@RequestParam long agentId,
+                                                        @RequestParam String operationId) {
+
+        ApiOperationPushAccountWSModel response = apiOperationPushChannelMiddleware.apiGetOperationPushAccount(agentId,operationId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_PUSH_TEMPS, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationPushTemps(@RequestParam long agentId,
+                                                      @RequestParam String operationId) {
+
+        ApiOperationPushTempWSModel response = apiOperationPushChannelMiddleware.apiGetOperationPushTemps(agentId,operationId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_PUSH_TEMP, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationPushTemp(@RequestParam long agentId,
+                                                     @RequestParam String operationId,
+                                                     @RequestParam String tempId) {
+
+        ApiOperationPushTempWSModel response = apiOperationPushChannelMiddleware.apiGetOperationPushTemp(agentId,operationId,tempId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_PUSHES, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationPushes(@RequestParam long agentId,
                                                    @RequestParam String operationId) {
@@ -103,45 +144,6 @@ public class ApiOperationPushChannelController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION_PUSH_TEMPS, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperationPushTemps(@RequestParam long agentId,
-                                                      @RequestParam String operationId) {
-
-        ApiOperationPushTempWSModel response = apiOperationPushChannelMiddleware.apiGetOperationPushTemps(agentId,operationId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION_PUSH_TEMP, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperationPushTemp(@RequestParam long agentId,
-                                                     @RequestParam String operationId,
-                                                     @RequestParam String tempId) {
-
-        ApiOperationPushTempWSModel response = apiOperationPushChannelMiddleware.apiGetOperationPushTemp(agentId,operationId,tempId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION_PUSH_ACCOUNT, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperationPushAccount(@RequestParam long agentId,
-                                                        @RequestParam String operationId) {
-
-        ApiOperationPushAccountWSModel response = apiOperationPushChannelMiddleware.apiGetOperationPushAccount(agentId,operationId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
 
 
 

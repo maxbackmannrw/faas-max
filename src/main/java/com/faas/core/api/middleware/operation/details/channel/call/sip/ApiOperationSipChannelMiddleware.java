@@ -42,6 +42,26 @@ public class ApiOperationSipChannelMiddleware {
         return response;
     }
 
+    public ApiOperationSipAccountWSModel apiGetOperationSipAccount(long agentId, String operationId) {
+
+        ApiOperationSipAccountWSModel response = new ApiOperationSipAccountWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        ApiOperationSipAccountWSDTO sipAccountWSDTO = apiOperationSipChannelFramework.apiGetOperationSipAccountService(agentId,operationId);
+        if (sipAccountWSDTO != null){
+            response.setSipAccount(sipAccountWSDTO);
+        }
+
+        general.setOperation("apiGetOperationSipAccount");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
     public ApiOperationSipCallWSModel apiGetOperationSipCalls(long agentId, String operationId) {
 
         ApiOperationSipCallWSModel response = new ApiOperationSipCallWSModel();
@@ -207,28 +227,6 @@ public class ApiOperationSipChannelMiddleware {
 
         return response;
     }
-
-
-
-    public ApiOperationSipAccountWSModel apiGetOperationSipAccount(long agentId, String operationId) {
-
-        ApiOperationSipAccountWSModel response = new ApiOperationSipAccountWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-        ApiOperationSipAccountWSDTO sipAccountWSDTO = apiOperationSipChannelFramework.apiGetOperationSipAccountService(agentId,operationId);
-        if (sipAccountWSDTO != null){
-            response.setSipAccount(sipAccountWSDTO);
-        }
-
-        general.setOperation("apiGetOperationSipAccount");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
 
 
 }

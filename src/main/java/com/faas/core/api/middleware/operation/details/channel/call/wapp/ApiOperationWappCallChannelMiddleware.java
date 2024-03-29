@@ -42,6 +42,26 @@ public class ApiOperationWappCallChannelMiddleware {
         return response;
     }
 
+    public ApiOperationWappCallAccountWSModel apiGetOperationWappCallAccount(long agentId, String operationId) {
+
+        ApiOperationWappCallAccountWSModel response = new ApiOperationWappCallAccountWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        ApiOperationWappCallAccountWSDTO operationWappCallAccountWSDTO = apiOperationWappCallChannelFramework.apiGetOperationWappCallAccountService(agentId,operationId);
+        if (operationWappCallAccountWSDTO != null){
+            response.setWappCallAccount(operationWappCallAccountWSDTO);
+        }
+
+        general.setOperation("apiGetOperationWappCallAccount");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
     public ApiOperationWappCallWSModel apiGetOperationWappCalls(long agentId,String operationId) {
 
         ApiOperationWappCallWSModel response = new ApiOperationWappCallWSModel();
@@ -202,26 +222,6 @@ public class ApiOperationWappCallChannelMiddleware {
 
         response.setOperationWappCalls(operationWappCallWSDTOS);
         general.setOperation("apiRemoveOperationWappCall");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-
-    public ApiOperationWappCallAccountWSModel apiGetOperationWappCallAccount(long agentId, String operationId) {
-
-        ApiOperationWappCallAccountWSModel response = new ApiOperationWappCallAccountWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-        ApiOperationWappCallAccountWSDTO operationWappCallAccountWSDTO = apiOperationWappCallChannelFramework.apiGetOperationWappCallAccountService(agentId,operationId);
-        if (operationWappCallAccountWSDTO != null){
-            response.setWappCallAccount(operationWappCallAccountWSDTO);
-        }
-
-        general.setOperation("apiGetOperationWappCallAccount");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

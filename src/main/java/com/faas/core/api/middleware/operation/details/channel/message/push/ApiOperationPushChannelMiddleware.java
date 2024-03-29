@@ -44,6 +44,66 @@ public class ApiOperationPushChannelMiddleware {
         return response;
     }
 
+
+    public ApiOperationPushAccountWSModel apiGetOperationPushAccount(long agentId, String operationId) {
+
+        ApiOperationPushAccountWSModel response = new ApiOperationPushAccountWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        ApiOperationPushAccountWSDTO pushAccountWSDTO = apiOperationPushChannelFramework.apiGetOperationPushAccountService(agentId,operationId);
+        if (pushAccountWSDTO != null){
+            response.setPushAccount(pushAccountWSDTO);
+        }
+
+        general.setOperation("apiGetOperationPushAccount");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
+    public ApiOperationPushTempWSModel apiGetOperationPushTemps(long agentId,String operationId) {
+
+        ApiOperationPushTempWSModel response = new ApiOperationPushTempWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        ApiOperationPushTempWSDTO pushTempWSDTO = apiOperationPushChannelFramework.apiGetOperationPushTempsService(agentId,operationId);
+        if (pushTempWSDTO != null){
+            response.setPushTemp(pushTempWSDTO);
+        }
+
+        general.setOperation("apiGetOperationPushTemps");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public ApiOperationPushTempWSModel apiGetOperationPushTemp(long agentId,String operationId,String tempId) {
+
+        ApiOperationPushTempWSModel response = new ApiOperationPushTempWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        ApiOperationPushTempWSDTO pushTempWSDTO = apiOperationPushChannelFramework.apiGetOperationPushTempService(agentId,operationId,tempId);
+        if (pushTempWSDTO != null){
+            response.setPushTemp(pushTempWSDTO);
+        }
+
+        general.setOperation("apiGetOperationPushTemp");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
     public ApiOperationPushWSModel apiGetOperationPushes(long agentId,String operationId) {
 
         ApiOperationPushWSModel response = new ApiOperationPushWSModel();
@@ -148,63 +208,7 @@ public class ApiOperationPushChannelMiddleware {
     }
 
 
-    public ApiOperationPushTempWSModel apiGetOperationPushTemps(long agentId,String operationId) {
 
-        ApiOperationPushTempWSModel response = new ApiOperationPushTempWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-        ApiOperationPushTempWSDTO pushTempWSDTO = apiOperationPushChannelFramework.apiGetOperationPushTempsService(agentId,operationId);
-        if (pushTempWSDTO != null){
-            response.setPushTemp(pushTempWSDTO);
-        }
-
-        general.setOperation("apiGetOperationPushTemps");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-    public ApiOperationPushTempWSModel apiGetOperationPushTemp(long agentId,String operationId,String tempId) {
-
-        ApiOperationPushTempWSModel response = new ApiOperationPushTempWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-        ApiOperationPushTempWSDTO pushTempWSDTO = apiOperationPushChannelFramework.apiGetOperationPushTempService(agentId,operationId,tempId);
-        if (pushTempWSDTO != null){
-            response.setPushTemp(pushTempWSDTO);
-        }
-
-        general.setOperation("apiGetOperationPushTemp");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-
-    public ApiOperationPushAccountWSModel apiGetOperationPushAccount(long agentId, String operationId) {
-
-        ApiOperationPushAccountWSModel response = new ApiOperationPushAccountWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-        ApiOperationPushAccountWSDTO pushAccountWSDTO = apiOperationPushChannelFramework.apiGetOperationPushAccountService(agentId,operationId);
-        if (pushAccountWSDTO != null){
-            response.setPushAccount(pushAccountWSDTO);
-        }
-
-        general.setOperation("apiGetOperationPushAccount");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
 
 
 }

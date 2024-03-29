@@ -36,6 +36,19 @@ public class ApiOperationWappCallChannelController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_WAPP_CALL_ACCOUNT, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationWappCallAccount(@RequestParam long agentId,
+                                                            @RequestParam String operationId) {
+
+        ApiOperationWappCallAccountWSModel response = apiOperationWappCallChannelMiddleware.apiGetOperationWappCallAccount(agentId,operationId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_WAPP_CALLS, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationWappCalls(@RequestParam long agentId,
                                                       @RequestParam String operationId) {
@@ -140,18 +153,6 @@ public class ApiOperationWappCallChannelController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION_WAPP_CALL_ACCOUNT, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperationWappCallAccount(@RequestParam long agentId,
-                                                            @RequestParam String operationId) {
-
-        ApiOperationWappCallAccountWSModel response = apiOperationWappCallChannelMiddleware.apiGetOperationWappCallAccount(agentId,operationId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
 
 
 }

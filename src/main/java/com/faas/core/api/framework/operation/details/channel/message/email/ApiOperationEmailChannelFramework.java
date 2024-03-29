@@ -80,6 +80,52 @@ public class ApiOperationEmailChannelFramework {
         return null;
     }
 
+
+    public ApiOperationEmailAccountWSDTO apiGetOperationEmailAccountService(long agentId, String operationId) {
+
+        List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
+        if (!sessionDBModels.isEmpty()){
+            return channelHelper.getApiEmailAccountWSDTO(sessionDBModels.get(0).getProcessId());
+        }
+        return null;
+    }
+
+
+    public ApiOperationEmailTempWSDTO apiGetOperationEmailTempsService(long agentId,String operationId) {
+
+        List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
+        if (!sessionDBModels.isEmpty()){
+            ApiOperationEmailTempWSDTO emailTempWSDTO = new ApiOperationEmailTempWSDTO();
+            emailTempWSDTO.setEmailAccount(channelHelper.getApiEmailAccountWSDTO(sessionDBModels.get(0).getProcessId()));
+            List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(sessionDBModels.get(0).getClientId());
+            if (!clientDetailsDBModels.isEmpty() && clientDetailsDBModels.get(0).getClientEmails() != null){
+                emailTempWSDTO.setClientEmails(clientDetailsDBModels.get(0).getClientEmails());
+            }
+            emailTempWSDTO.setOperationEmailTemps(processEmailTempRepository.findByProcessId(sessionDBModels.get(0).getProcessId()));
+
+            return emailTempWSDTO;
+        }
+        return null;
+    }
+
+    public ApiOperationEmailTempWSDTO apiGetOperationEmailTempService(long agentId,String operationId,String tempId) {
+
+        List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
+        if (!sessionDBModels.isEmpty()){
+            ApiOperationEmailTempWSDTO emailTempWSDTO = new ApiOperationEmailTempWSDTO();
+            emailTempWSDTO.setEmailAccount(channelHelper.getApiEmailAccountWSDTO(sessionDBModels.get(0).getProcessId()));
+            List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(sessionDBModels.get(0).getClientId());
+            if (!clientDetailsDBModels.isEmpty() && clientDetailsDBModels.get(0).getClientEmails() != null){
+                emailTempWSDTO.setClientEmails(clientDetailsDBModels.get(0).getClientEmails());
+            }
+            emailTempWSDTO.setOperationEmailTemps(processEmailTempRepository.findByIdAndProcessId(tempId,sessionDBModels.get(0).getProcessId()));
+
+            return emailTempWSDTO;
+        }
+        return null;
+    }
+
+
     public List<ApiOperationEmailWSDTO> apiGetOperationEmailsService(long agentId,String operationId) {
 
         List<ApiOperationEmailWSDTO>operationEmailWSDTOS = new ArrayList<>();
@@ -134,51 +180,6 @@ public class ApiOperationEmailChannelFramework {
         if (!operationEmailMessages.isEmpty()){
             operationEmailRepository.delete(operationEmailMessages.get(0));
             return new ApiOperationEmailWSDTO(operationEmailMessages.get(0));
-        }
-        return null;
-    }
-
-
-    public ApiOperationEmailTempWSDTO apiGetOperationEmailTempsService(long agentId,String operationId) {
-
-        List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
-        if (!sessionDBModels.isEmpty()){
-            ApiOperationEmailTempWSDTO emailTempWSDTO = new ApiOperationEmailTempWSDTO();
-            emailTempWSDTO.setEmailAccount(channelHelper.getApiEmailAccountWSDTO(sessionDBModels.get(0).getProcessId()));
-            List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(sessionDBModels.get(0).getClientId());
-            if (!clientDetailsDBModels.isEmpty() && clientDetailsDBModels.get(0).getClientEmails() != null){
-                emailTempWSDTO.setClientEmails(clientDetailsDBModels.get(0).getClientEmails());
-            }
-            emailTempWSDTO.setOperationEmailTemps(processEmailTempRepository.findByProcessId(sessionDBModels.get(0).getProcessId()));
-
-            return emailTempWSDTO;
-        }
-        return null;
-    }
-
-    public ApiOperationEmailTempWSDTO apiGetOperationEmailTempService(long agentId,String operationId,String tempId) {
-
-        List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
-        if (!sessionDBModels.isEmpty()){
-            ApiOperationEmailTempWSDTO emailTempWSDTO = new ApiOperationEmailTempWSDTO();
-            emailTempWSDTO.setEmailAccount(channelHelper.getApiEmailAccountWSDTO(sessionDBModels.get(0).getProcessId()));
-            List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(sessionDBModels.get(0).getClientId());
-            if (!clientDetailsDBModels.isEmpty() && clientDetailsDBModels.get(0).getClientEmails() != null){
-                emailTempWSDTO.setClientEmails(clientDetailsDBModels.get(0).getClientEmails());
-            }
-            emailTempWSDTO.setOperationEmailTemps(processEmailTempRepository.findByIdAndProcessId(tempId,sessionDBModels.get(0).getProcessId()));
-
-            return emailTempWSDTO;
-        }
-        return null;
-    }
-
-
-    public ApiOperationEmailAccountWSDTO apiGetOperationEmailAccountService(long agentId, String operationId) {
-
-        List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
-        if (!sessionDBModels.isEmpty()){
-            return channelHelper.getApiEmailAccountWSDTO(sessionDBModels.get(0).getProcessId());
         }
         return null;
     }
