@@ -402,36 +402,36 @@ public class ChannelHelper {
         return processSmsAccountDAO;
     }
 
-    public OperationSmsDBModel createOperationSmsMessageDBModel(SessionDBModel sessionDBModel, ClientPhoneDAO clientPhoneDAO, ProcessSmsTempDBModel smsMessageTempDBModel, ProcessSmsChannelDBModel smsChannelDBModel){
+    public OperationSmsDBModel createOperationSmsDBModel(SessionDBModel sessionDBModel, ClientPhoneDAO clientPhoneDAO, ProcessSmsTempDBModel smsTempDBModel, ProcessSmsChannelDBModel smsChannelDBModel){
 
-        OperationSmsDBModel smsMessageDBModel = new OperationSmsDBModel();
-        smsMessageDBModel.setClientId(sessionDBModel.getClientId());
-        smsMessageDBModel.setSessionId(sessionDBModel.getId());
-        smsMessageDBModel.setOperationId(sessionDBModel.getOperationId());
-        smsMessageDBModel.setAgentId(sessionDBModel.getAgentId());
-        smsMessageDBModel.setCampaignId(sessionDBModel.getCampaignId());
-        smsMessageDBModel.setProcessId(sessionDBModel.getProcessId());
-        smsMessageDBModel.setClientPhone(clientPhoneDAO);
-        smsMessageDBModel.setSmsMessage(createOperationSmsMessageDAO(sessionDBModel,smsMessageTempDBModel,smsChannelDBModel));
-        smsMessageDBModel.setSmsSentId(AppConstant.NONE);
-        smsMessageDBModel.setSmsState(AppConstant.NEW_STATE);
-        smsMessageDBModel.setuDate(appUtils.getCurrentTimeStamp());
-        smsMessageDBModel.setcDate(appUtils.getCurrentTimeStamp());
-        smsMessageDBModel.setStatus(1);
+        OperationSmsDBModel operationSmsDBModel = new OperationSmsDBModel();
+        operationSmsDBModel.setClientId(sessionDBModel.getClientId());
+        operationSmsDBModel.setSessionId(sessionDBModel.getId());
+        operationSmsDBModel.setOperationId(sessionDBModel.getOperationId());
+        operationSmsDBModel.setAgentId(sessionDBModel.getAgentId());
+        operationSmsDBModel.setCampaignId(sessionDBModel.getCampaignId());
+        operationSmsDBModel.setProcessId(sessionDBModel.getProcessId());
+        operationSmsDBModel.setClientPhone(clientPhoneDAO);
+        operationSmsDBModel.setSmsMessage(createOperationSmsDAO(sessionDBModel,smsTempDBModel,smsChannelDBModel));
+        operationSmsDBModel.setSmsSentId(AppConstant.NONE);
+        operationSmsDBModel.setSmsState(AppConstant.NEW_STATE);
+        operationSmsDBModel.setuDate(appUtils.getCurrentTimeStamp());
+        operationSmsDBModel.setcDate(appUtils.getCurrentTimeStamp());
+        operationSmsDBModel.setStatus(1);
 
-        return operationSmsRepository.save(smsMessageDBModel);
+        return operationSmsRepository.save(operationSmsDBModel);
     }
 
-    public OperationSmsDAO createOperationSmsMessageDAO(SessionDBModel sessionDBModel, ProcessSmsTempDBModel smsMessageTempDBModel, ProcessSmsChannelDBModel smsChannelDBModel){
+    public OperationSmsDAO createOperationSmsDAO(SessionDBModel sessionDBModel, ProcessSmsTempDBModel smsTempDBModel, ProcessSmsChannelDBModel smsChannelDBModel){
 
         OperationSmsDAO operationSmsDAO = new OperationSmsDAO();
-        operationSmsDAO.setTempId(smsMessageTempDBModel.getId());
+        operationSmsDAO.setTempId(smsTempDBModel.getId());
         operationSmsDAO.setAccountId(smsChannelDBModel.getSmsAccount().getAccountId());
-        operationSmsDAO.setSmsTitle(smsMessageTempDBModel.getSmsTitle());
-        operationSmsDAO.setSmsBody(smsMessageTempDBModel.getSmsBody());
-        operationSmsDAO.setSenderId(smsMessageTempDBModel.getSenderId());
+        operationSmsDAO.setSmsTitle(smsTempDBModel.getSmsTitle());
+        operationSmsDAO.setSmsBody(smsTempDBModel.getSmsBody());
+        operationSmsDAO.setSenderId(smsTempDBModel.getSenderId());
         operationSmsDAO.setSmsDatas(new ArrayList<>());
-        operationSmsDAO.setSmsType(smsMessageTempDBModel.getMessageType());
+        operationSmsDAO.setSmsType(smsTempDBModel.getMessageType());
         operationSmsDAO.setStatus(1);
 
         return operationSmsDAO;
@@ -451,7 +451,7 @@ public class ChannelHelper {
             wappAccountWSDTO.setPhoneNumber(agentDetails.get(0).getWappChannel().getPhoneNumber());
             wappAccountWSDTO.setServerUrl(agentDetails.get(0).getWappChannel().getServerUrl());
             wappAccountWSDTO.setAccountDatas(agentDetails.get(0).getWappChannel().getAccountDatas());
-            wappAccountWSDTO.setCallState(wappChannels.get(0).getMessageState());
+            wappAccountWSDTO.setCallState(wappChannels.get(0).getCallState());
             wappAccountWSDTO.setMessageState(wappChannels.get(0).getMessageState());
             wappAccountWSDTO.setcDate(wappChannels.get(0).getcDate());
             wappAccountWSDTO.setStatus(wappChannels.get(0).getStatus());
@@ -544,39 +544,39 @@ public class ChannelHelper {
 
         return processEmailAccountDAO;
     }
-    public OperationEmailDBModel createOperationEmailMessageDBModel(SessionDBModel sessionDBModel, ClientEmailDAO clientEmailDAO, ProcessEmailTempDBModel emailTempDBModel, ProcessEmailChannelDBModel emailChannelDBModel){
+    public OperationEmailDBModel createOperationEmailDBModel(SessionDBModel sessionDBModel, ClientEmailDAO clientEmailDAO, ProcessEmailTempDBModel emailTempDBModel, ProcessEmailChannelDBModel emailChannelDBModel){
 
-        OperationEmailDBModel emailMessageDBModel = new OperationEmailDBModel();
-        emailMessageDBModel.setClientId(sessionDBModel.getClientId());
-        emailMessageDBModel.setSessionId(sessionDBModel.getId());
-        emailMessageDBModel.setOperationId(sessionDBModel.getOperationId());
-        emailMessageDBModel.setAgentId(sessionDBModel.getAgentId());
-        emailMessageDBModel.setCampaignId(sessionDBModel.getCampaignId());
-        emailMessageDBModel.setProcessId(sessionDBModel.getProcessId());
-        emailMessageDBModel.setClientEmail(clientEmailDAO);
-        emailMessageDBModel.setEmailMessage(createOperationEmailMessageDAO(emailChannelDBModel,emailTempDBModel));
-        emailMessageDBModel.setEmailSentId(AppConstant.NONE);
-        emailMessageDBModel.setEmailState(AppConstant.NEW_STATE);
-        emailMessageDBModel.setuDate(appUtils.getCurrentTimeStamp());
-        emailMessageDBModel.setcDate(appUtils.getCurrentTimeStamp());
-        emailMessageDBModel.setStatus(1);
+        OperationEmailDBModel operationEmailDBModel = new OperationEmailDBModel();
+        operationEmailDBModel.setClientId(sessionDBModel.getClientId());
+        operationEmailDBModel.setSessionId(sessionDBModel.getId());
+        operationEmailDBModel.setOperationId(sessionDBModel.getOperationId());
+        operationEmailDBModel.setAgentId(sessionDBModel.getAgentId());
+        operationEmailDBModel.setCampaignId(sessionDBModel.getCampaignId());
+        operationEmailDBModel.setProcessId(sessionDBModel.getProcessId());
+        operationEmailDBModel.setClientEmail(clientEmailDAO);
+        operationEmailDBModel.setEmailMessage(createOperationEmailDAO(emailChannelDBModel,emailTempDBModel));
+        operationEmailDBModel.setEmailSentId(AppConstant.NONE);
+        operationEmailDBModel.setEmailState(AppConstant.NEW_STATE);
+        operationEmailDBModel.setuDate(appUtils.getCurrentTimeStamp());
+        operationEmailDBModel.setcDate(appUtils.getCurrentTimeStamp());
+        operationEmailDBModel.setStatus(1);
 
-        return operationEmailRepository.save(emailMessageDBModel);
+        return operationEmailRepository.save(operationEmailDBModel);
     }
 
-    public OperationEmailDAO createOperationEmailMessageDAO(ProcessEmailChannelDBModel emailChannelDBModel, ProcessEmailTempDBModel emailTempDBModel){
+    public OperationEmailDAO createOperationEmailDAO(ProcessEmailChannelDBModel emailChannelDBModel, ProcessEmailTempDBModel emailTempDBModel){
 
-        OperationEmailDAO emailMessageDAO = new OperationEmailDAO();
-        emailMessageDAO.setAccountId(emailChannelDBModel.getEmailAccount().getAccountId());
-        emailMessageDAO.setTempId(emailTempDBModel.getId());
-        emailMessageDAO.setEmailSubject(emailTempDBModel.getEmailSubject());
-        emailMessageDAO.setEmailBody(emailTempDBModel.getEmailBody());
-        emailMessageDAO.setEmailFooter(emailTempDBModel.getEmailFooter());
-        emailMessageDAO.setEmailSender(emailTempDBModel.getEmailSender());
-        emailMessageDAO.setEmailType(emailTempDBModel.getEmailType());
-        emailMessageDAO.setStatus(1);
+        OperationEmailDAO operationEmailDAO = new OperationEmailDAO();
+        operationEmailDAO.setAccountId(emailChannelDBModel.getEmailAccount().getAccountId());
+        operationEmailDAO.setTempId(emailTempDBModel.getId());
+        operationEmailDAO.setEmailSubject(emailTempDBModel.getEmailSubject());
+        operationEmailDAO.setEmailBody(emailTempDBModel.getEmailBody());
+        operationEmailDAO.setEmailFooter(emailTempDBModel.getEmailFooter());
+        operationEmailDAO.setEmailSender(emailTempDBModel.getEmailSender());
+        operationEmailDAO.setEmailType(emailTempDBModel.getEmailType());
+        operationEmailDAO.setStatus(1);
 
-        return emailMessageDAO;
+        return operationEmailDAO;
     }
 
     public ClientEmailDAO fetchClientEmailDAO(long clientId, String emailAddressId){
@@ -631,7 +631,7 @@ public class ChannelHelper {
         return processPushAccountDAO;
     }
 
-    public OperationPushDBModel createOperationPushMessageDBModel(SessionDBModel sessionDBModel){
+    public OperationPushDBModel createOperationPushDBModel(SessionDBModel sessionDBModel){
 
         OperationPushDBModel operationPushDBModel = new OperationPushDBModel();
         operationPushDBModel.setClientId(sessionDBModel.getClientId());
@@ -639,11 +639,11 @@ public class ChannelHelper {
         return operationPushRepository.save(operationPushDBModel);
     }
 
-    public OperationPushDAO createOperationPushMessageDAO(ProcessEmailChannelDBModel emailChannelDBModel, ProcessEmailTempDBModel emailTempDBModel){
+    public OperationPushDAO createOperationPushDAO(ProcessPushChannelDBModel pushChannelDBModel){
 
-        OperationPushDAO pushMessageDAO = new OperationPushDAO();
+        OperationPushDAO operationPushDAO = new OperationPushDAO();
 
-        return pushMessageDAO;
+        return operationPushDAO;
     }
 
 

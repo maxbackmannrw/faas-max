@@ -144,7 +144,7 @@ public class ApiOperationPushChannelFramework {
             List<ProcessPushChannelDBModel> pushChannelDBModels = processPushChannelRepository.findByProcessId(sessionDBModels.get(0).getProcessId());
             if (!pushTempDBModels.isEmpty() && !pushChannelDBModels.isEmpty() ){
 
-                OperationPushDBModel operationPushDBModel = channelHelper.createOperationPushMessageDBModel(sessionDBModels.get(0));
+                OperationPushDBModel operationPushDBModel = channelHelper.createOperationPushDBModel(sessionDBModels.get(0));
                 return new ApiOperationPushWSDTO(operationPushDBModel);
             }
         }

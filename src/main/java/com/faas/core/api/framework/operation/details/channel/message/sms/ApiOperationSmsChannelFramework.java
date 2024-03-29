@@ -150,11 +150,11 @@ public class ApiOperationSmsChannelFramework {
         if (!sessionDBModels.isEmpty()){
 
             ClientPhoneDAO clientPhoneDAO = channelHelper.fetchClientPhoneDAO(sessionDBModels.get(0).getClientId(),numberId);
-            List<ProcessSmsTempDBModel> smsMessageTempDBModels = processSmsTempRepository.findByIdAndProcessId(tempId,sessionDBModels.get(0).getProcessId());
+            List<ProcessSmsTempDBModel> smsTempDBModels = processSmsTempRepository.findByIdAndProcessId(tempId,sessionDBModels.get(0).getProcessId());
             List<ProcessSmsChannelDBModel> smsChannelDBModels = processSmsChannelRepository.findByProcessId(sessionDBModels.get(0).getProcessId());
-            if (clientPhoneDAO != null && !smsMessageTempDBModels.isEmpty() && !smsChannelDBModels.isEmpty() ){
+            if (clientPhoneDAO != null && !smsTempDBModels.isEmpty() && !smsChannelDBModels.isEmpty() ){
 
-                OperationSmsDBModel operationSmsDBModel = channelHelper.createOperationSmsMessageDBModel(sessionDBModels.get(0),clientPhoneDAO,smsMessageTempDBModels.get(0),smsChannelDBModels.get(0));
+                OperationSmsDBModel operationSmsDBModel = channelHelper.createOperationSmsDBModel(sessionDBModels.get(0),clientPhoneDAO,smsTempDBModels.get(0),smsChannelDBModels.get(0));
                 smsChannelService.sendAsyncSmsService(operationSmsDBModel);
                 return new ApiOperationSmsWSDTO(operationSmsDBModel);
             }
