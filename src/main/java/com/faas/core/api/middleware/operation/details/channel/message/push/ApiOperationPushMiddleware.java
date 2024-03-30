@@ -1,6 +1,6 @@
 package com.faas.core.api.middleware.operation.details.channel.message.push;
 
-import com.faas.core.api.framework.operation.details.channel.message.push.ApiOperationPushChannelFramework;
+import com.faas.core.api.framework.operation.details.channel.message.push.ApiOperationPushFramework;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.ApiOperationPushAccountWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.ApiOperationPushChannelWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.ApiOperationPushTempWSModel;
@@ -18,11 +18,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class ApiOperationPushChannelMiddleware {
+public class ApiOperationPushMiddleware {
 
 
     @Autowired
-    ApiOperationPushChannelFramework apiOperationPushChannelFramework;
+    ApiOperationPushFramework apiOperationPushFramework;
 
 
     public ApiOperationPushChannelWSModel apiGetOperationPushChannel(long agentId, String operationId) {
@@ -30,7 +30,7 @@ public class ApiOperationPushChannelMiddleware {
         ApiOperationPushChannelWSModel response = new ApiOperationPushChannelWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiOperationPushChannelWSDTO pushChannelWSDTO = apiOperationPushChannelFramework.apiGetOperationPushChannelService(agentId,operationId);
+        ApiOperationPushChannelWSDTO pushChannelWSDTO = apiOperationPushFramework.apiGetOperationPushChannelService(agentId,operationId);
         if (pushChannelWSDTO != null){
             response.setOperationPushChannel(pushChannelWSDTO);
         }
@@ -50,7 +50,7 @@ public class ApiOperationPushChannelMiddleware {
         ApiOperationPushAccountWSModel response = new ApiOperationPushAccountWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiOperationPushAccountWSDTO pushAccountWSDTO = apiOperationPushChannelFramework.apiGetOperationPushAccountService(agentId,operationId);
+        ApiOperationPushAccountWSDTO pushAccountWSDTO = apiOperationPushFramework.apiGetOperationPushAccountService(agentId,operationId);
         if (pushAccountWSDTO != null){
             response.setPushAccount(pushAccountWSDTO);
         }
@@ -70,7 +70,7 @@ public class ApiOperationPushChannelMiddleware {
         ApiOperationPushTempWSModel response = new ApiOperationPushTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiOperationPushTempWSDTO pushTempWSDTO = apiOperationPushChannelFramework.apiGetOperationPushTempsService(agentId,operationId);
+        ApiOperationPushTempWSDTO pushTempWSDTO = apiOperationPushFramework.apiGetOperationPushTempsService(agentId,operationId);
         if (pushTempWSDTO != null){
             response.setPushTemp(pushTempWSDTO);
         }
@@ -89,7 +89,7 @@ public class ApiOperationPushChannelMiddleware {
         ApiOperationPushTempWSModel response = new ApiOperationPushTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiOperationPushTempWSDTO pushTempWSDTO = apiOperationPushChannelFramework.apiGetOperationPushTempService(agentId,operationId,tempId);
+        ApiOperationPushTempWSDTO pushTempWSDTO = apiOperationPushFramework.apiGetOperationPushTempService(agentId,operationId,tempId);
         if (pushTempWSDTO != null){
             response.setPushTemp(pushTempWSDTO);
         }
@@ -109,7 +109,7 @@ public class ApiOperationPushChannelMiddleware {
         ApiOperationPushWSModel response = new ApiOperationPushWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ApiOperationPushWSDTO> operationPushWSDTOS = apiOperationPushChannelFramework.apiGetOperationPushesService(agentId,operationId);
+        List<ApiOperationPushWSDTO> operationPushWSDTOS = apiOperationPushFramework.apiGetOperationPushesService(agentId,operationId);
         if (operationPushWSDTOS != null){
             response.setOperationPushes(operationPushWSDTOS);
         }
@@ -129,7 +129,7 @@ public class ApiOperationPushChannelMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ApiOperationPushWSDTO> operationPushWSDTOS = new ArrayList<>();
 
-        ApiOperationPushWSDTO operationPushWSDTO = apiOperationPushChannelFramework.apiGetOperationPushService(agentId,operationId,pushId);
+        ApiOperationPushWSDTO operationPushWSDTO = apiOperationPushFramework.apiGetOperationPushService(agentId,operationId,pushId);
         if (operationPushWSDTO != null){
             operationPushWSDTOS.add(operationPushWSDTO);
         }
@@ -150,7 +150,7 @@ public class ApiOperationPushChannelMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ApiOperationPushWSDTO> operationPushWSDTOS = new ArrayList<>();
 
-        ApiOperationPushWSDTO operationPushWSDTO = apiOperationPushChannelFramework.apiSendOperationPushService(agentId,operationId,tempId,remoteAppId);
+        ApiOperationPushWSDTO operationPushWSDTO = apiOperationPushFramework.apiSendOperationPushService(agentId,operationId,tempId,remoteAppId);
         if (operationPushWSDTO != null){
             operationPushWSDTOS.add(operationPushWSDTO);
         }
@@ -171,7 +171,7 @@ public class ApiOperationPushChannelMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ApiOperationPushWSDTO> operationPushWSDTOS = new ArrayList<>();
 
-        ApiOperationPushWSDTO operationPushWSDTO = apiOperationPushChannelFramework.apiUpdateOperationPushService(agentId,operationId,pushId,pushState);
+        ApiOperationPushWSDTO operationPushWSDTO = apiOperationPushFramework.apiUpdateOperationPushService(agentId,operationId,pushId,pushState);
         if (operationPushWSDTO != null){
             operationPushWSDTOS.add(operationPushWSDTO);
         }
@@ -192,7 +192,7 @@ public class ApiOperationPushChannelMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ApiOperationPushWSDTO> operationPushWSDTOS = new ArrayList<>();
 
-        ApiOperationPushWSDTO operationPushWSDTO = apiOperationPushChannelFramework.apiRemoveOperationPushService(agentId,operationId,pushId);
+        ApiOperationPushWSDTO operationPushWSDTO = apiOperationPushFramework.apiRemoveOperationPushService(agentId,operationId,pushId);
         if (operationPushWSDTO != null){
             operationPushWSDTOS.add(operationPushWSDTO);
         }

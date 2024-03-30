@@ -1,6 +1,6 @@
 package com.faas.core.api.endpoint.controller.operation.details.channel.message.push;
 
-import com.faas.core.api.middleware.operation.details.channel.message.push.ApiOperationPushChannelMiddleware;
+import com.faas.core.api.middleware.operation.details.channel.message.push.ApiOperationPushMiddleware;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.ApiOperationPushAccountWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.ApiOperationPushChannelWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.ApiOperationPushTempWSModel;
@@ -18,18 +18,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping(value = AppConstant.API_VERSION + "/api/operation/details/channel/message/push/")
-public class ApiOperationPushChannelController {
+public class ApiOperationPushController {
 
 
     @Autowired
-    ApiOperationPushChannelMiddleware apiOperationPushChannelMiddleware;
+    ApiOperationPushMiddleware apiOperationPushMiddleware;
 
 
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_PUSH_CHANNEL, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationPushChannel(@RequestParam long agentId,
                                                         @RequestParam String operationId) {
 
-        ApiOperationPushChannelWSModel response = apiOperationPushChannelMiddleware.apiGetOperationPushChannel(agentId,operationId);
+        ApiOperationPushChannelWSModel response = apiOperationPushMiddleware.apiGetOperationPushChannel(agentId,operationId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -42,7 +42,7 @@ public class ApiOperationPushChannelController {
     public ResponseEntity<?> apiGetOperationPushAccount(@RequestParam long agentId,
                                                         @RequestParam String operationId) {
 
-        ApiOperationPushAccountWSModel response = apiOperationPushChannelMiddleware.apiGetOperationPushAccount(agentId,operationId);
+        ApiOperationPushAccountWSModel response = apiOperationPushMiddleware.apiGetOperationPushAccount(agentId,operationId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -55,7 +55,7 @@ public class ApiOperationPushChannelController {
     public ResponseEntity<?> apiGetOperationPushTemps(@RequestParam long agentId,
                                                       @RequestParam String operationId) {
 
-        ApiOperationPushTempWSModel response = apiOperationPushChannelMiddleware.apiGetOperationPushTemps(agentId,operationId);
+        ApiOperationPushTempWSModel response = apiOperationPushMiddleware.apiGetOperationPushTemps(agentId,operationId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -69,7 +69,7 @@ public class ApiOperationPushChannelController {
                                                      @RequestParam String operationId,
                                                      @RequestParam String tempId) {
 
-        ApiOperationPushTempWSModel response = apiOperationPushChannelMiddleware.apiGetOperationPushTemp(agentId,operationId,tempId);
+        ApiOperationPushTempWSModel response = apiOperationPushMiddleware.apiGetOperationPushTemp(agentId,operationId,tempId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -82,7 +82,7 @@ public class ApiOperationPushChannelController {
     public ResponseEntity<?> apiGetOperationPushes(@RequestParam long agentId,
                                                    @RequestParam String operationId) {
 
-        ApiOperationPushWSModel response = apiOperationPushChannelMiddleware.apiGetOperationPushes(agentId,operationId);
+        ApiOperationPushWSModel response = apiOperationPushMiddleware.apiGetOperationPushes(agentId,operationId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -95,7 +95,7 @@ public class ApiOperationPushChannelController {
                                                  @RequestParam String operationId,
                                                  @RequestParam String pushId) {
 
-        ApiOperationPushWSModel response = apiOperationPushChannelMiddleware.apiGetOperationPush(agentId,operationId,pushId);
+        ApiOperationPushWSModel response = apiOperationPushMiddleware.apiGetOperationPush(agentId,operationId,pushId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -109,7 +109,7 @@ public class ApiOperationPushChannelController {
                                                   @RequestParam String tempId,
                                                   @RequestParam String remoteAppId) {
 
-        ApiOperationPushWSModel response = apiOperationPushChannelMiddleware.apiSendOperationPush(agentId,operationId,tempId,remoteAppId);
+        ApiOperationPushWSModel response = apiOperationPushMiddleware.apiSendOperationPush(agentId,operationId,tempId,remoteAppId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -123,7 +123,7 @@ public class ApiOperationPushChannelController {
                                                     @RequestParam String pushId,
                                                     @RequestParam String pushState) {
 
-        ApiOperationPushWSModel response = apiOperationPushChannelMiddleware.apiUpdateOperationPush(agentId,operationId,pushId,pushState);
+        ApiOperationPushWSModel response = apiOperationPushMiddleware.apiUpdateOperationPush(agentId,operationId,pushId,pushState);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -136,7 +136,7 @@ public class ApiOperationPushChannelController {
                                                     @RequestParam String operationId,
                                                     @RequestParam String pushId) {
 
-        ApiOperationPushWSModel response = apiOperationPushChannelMiddleware.apiRemoveOperationPush(agentId,operationId,pushId);
+        ApiOperationPushWSModel response = apiOperationPushMiddleware.apiRemoveOperationPush(agentId,operationId,pushId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

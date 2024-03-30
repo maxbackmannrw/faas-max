@@ -1,6 +1,6 @@
 package com.faas.core.api.middleware.operation.details.channel.message.wapp;
 
-import com.faas.core.api.framework.operation.details.channel.message.wapp.ApiOperationWappMessageChannelFramework;
+import com.faas.core.api.framework.operation.details.channel.message.wapp.ApiOperationWappMessageFramework;
 import com.faas.core.api.model.ws.operation.details.channel.message.wapp.ApiOperationWappMessageAccountWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.wapp.ApiOperationWappMessageChannelWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.wapp.ApiOperationWappMessageTempWSModel;
@@ -19,11 +19,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class ApiOperationWappMessageChannelMiddleware {
+public class ApiOperationWappMessageMiddleware {
 
 
     @Autowired
-    ApiOperationWappMessageChannelFramework apiOperationWappMessageChannelFramework;
+    ApiOperationWappMessageFramework apiOperationWappMessageFramework;
 
 
     public ApiOperationWappMessageChannelWSModel apiGetOperationWappMessageChannel(long agentId, String operationId) {
@@ -31,7 +31,7 @@ public class ApiOperationWappMessageChannelMiddleware {
         ApiOperationWappMessageChannelWSModel response = new ApiOperationWappMessageChannelWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiOperationWappMessageChannelWSDTO wappMessageChannelWSDTO = apiOperationWappMessageChannelFramework.apiGetOperationWappMessageChannelService(agentId,operationId);
+        ApiOperationWappMessageChannelWSDTO wappMessageChannelWSDTO = apiOperationWappMessageFramework.apiGetOperationWappMessageChannelService(agentId,operationId);
         if (wappMessageChannelWSDTO != null){
             response.setOperationWappMessageChannel(wappMessageChannelWSDTO);
         }
@@ -51,7 +51,7 @@ public class ApiOperationWappMessageChannelMiddleware {
         ApiOperationWappMessageAccountWSModel response = new ApiOperationWappMessageAccountWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiOperationWappMessageAccountWSDTO wappMessageAccountWSDTO = apiOperationWappMessageChannelFramework.apiGetOperationWappMessageAccountService(agentId,operationId);
+        ApiOperationWappMessageAccountWSDTO wappMessageAccountWSDTO = apiOperationWappMessageFramework.apiGetOperationWappMessageAccountService(agentId,operationId);
         if (wappMessageAccountWSDTO != null){
             response.setWappMessageAccount(wappMessageAccountWSDTO);
         }
@@ -71,7 +71,7 @@ public class ApiOperationWappMessageChannelMiddleware {
         ApiOperationWappMessageTempWSModel response = new ApiOperationWappMessageTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiOperationWappMessageTempWSDTO wappMessageTempWSDTO = apiOperationWappMessageChannelFramework.apiGetOperationWappMessageTempsService(agentId,operationId);
+        ApiOperationWappMessageTempWSDTO wappMessageTempWSDTO = apiOperationWappMessageFramework.apiGetOperationWappMessageTempsService(agentId,operationId);
         if (wappMessageTempWSDTO != null){
             response.setWappMessageTemp(wappMessageTempWSDTO);
         }
@@ -90,7 +90,7 @@ public class ApiOperationWappMessageChannelMiddleware {
         ApiOperationWappMessageTempWSModel response = new ApiOperationWappMessageTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiOperationWappMessageTempWSDTO wappMessageTempWSDTO = apiOperationWappMessageChannelFramework.apiGetOperationWappMessageTempService(agentId,operationId,tempId);
+        ApiOperationWappMessageTempWSDTO wappMessageTempWSDTO = apiOperationWappMessageFramework.apiGetOperationWappMessageTempService(agentId,operationId,tempId);
         if (wappMessageTempWSDTO != null){
             response.setWappMessageTemp(wappMessageTempWSDTO);
         }
@@ -110,7 +110,7 @@ public class ApiOperationWappMessageChannelMiddleware {
         ApiOperationWappMessageWSModel response = new ApiOperationWappMessageWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ApiOperationWappMessageWSDTO> wappMessageWSDTOS = apiOperationWappMessageChannelFramework.apiGetOperationWappMessagesService(agentId,operationId);
+        List<ApiOperationWappMessageWSDTO> wappMessageWSDTOS = apiOperationWappMessageFramework.apiGetOperationWappMessagesService(agentId,operationId);
         if (wappMessageWSDTOS != null){
             response.setOperationWappMessages(wappMessageWSDTOS);
         }
@@ -130,7 +130,7 @@ public class ApiOperationWappMessageChannelMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ApiOperationWappMessageWSDTO>wappMessageWSDTOS = new ArrayList<>();
 
-        ApiOperationWappMessageWSDTO wappMessageWSDTO = apiOperationWappMessageChannelFramework.apiGetOperationWappMessageService(agentId,operationId,messageId);
+        ApiOperationWappMessageWSDTO wappMessageWSDTO = apiOperationWappMessageFramework.apiGetOperationWappMessageService(agentId,operationId,messageId);
         if (wappMessageWSDTO != null){
             wappMessageWSDTOS.add(wappMessageWSDTO);
         }
@@ -151,7 +151,7 @@ public class ApiOperationWappMessageChannelMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ApiOperationWappMessageWSDTO>wappMessageWSDTOS = new ArrayList<>();
 
-        ApiOperationWappMessageWSDTO wappMessageWSDTO = apiOperationWappMessageChannelFramework.apiSendOperationWappMessageService(agentId,operationId,tempId,numberId);
+        ApiOperationWappMessageWSDTO wappMessageWSDTO = apiOperationWappMessageFramework.apiSendOperationWappMessageService(agentId,operationId,tempId,numberId);
         if (wappMessageWSDTO != null){
             wappMessageWSDTOS.add(wappMessageWSDTO);
         }
@@ -172,7 +172,7 @@ public class ApiOperationWappMessageChannelMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ApiOperationWappMessageWSDTO>wappMessageWSDTOS = new ArrayList<>();
 
-        ApiOperationWappMessageWSDTO wappMessageWSDTO = apiOperationWappMessageChannelFramework.apiUpdateOperationWappMessageService(agentId,operationId,messageId,messageState);
+        ApiOperationWappMessageWSDTO wappMessageWSDTO = apiOperationWappMessageFramework.apiUpdateOperationWappMessageService(agentId,operationId,messageId,messageState);
         if (wappMessageWSDTO != null){
             wappMessageWSDTOS.add(wappMessageWSDTO);
         }
@@ -193,7 +193,7 @@ public class ApiOperationWappMessageChannelMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ApiOperationWappMessageWSDTO>wappMessageWSDTOS = new ArrayList<>();
 
-        ApiOperationWappMessageWSDTO wappMessageWSDTO = apiOperationWappMessageChannelFramework.apiRemoveOperationWappMessageService(agentId,operationId,messageId);
+        ApiOperationWappMessageWSDTO wappMessageWSDTO = apiOperationWappMessageFramework.apiRemoveOperationWappMessageService(agentId,operationId,messageId);
         if (wappMessageWSDTO != null){
             wappMessageWSDTOS.add(wappMessageWSDTO);
         }

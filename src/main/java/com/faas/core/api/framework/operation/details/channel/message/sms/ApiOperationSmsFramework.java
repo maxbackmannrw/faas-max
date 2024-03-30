@@ -31,7 +31,7 @@ import java.util.List;
 
 
 @Component
-public class ApiOperationSmsChannelFramework {
+public class ApiOperationSmsFramework {
 
     @Autowired
     OperationHelper operationHelper;

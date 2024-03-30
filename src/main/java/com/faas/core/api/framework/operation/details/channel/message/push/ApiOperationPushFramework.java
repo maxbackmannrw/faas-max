@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class ApiOperationPushChannelFramework {
+public class ApiOperationPushFramework {
 
 
     @Autowired

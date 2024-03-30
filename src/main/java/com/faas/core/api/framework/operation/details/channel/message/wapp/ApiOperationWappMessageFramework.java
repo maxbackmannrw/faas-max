@@ -34,7 +34,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class ApiOperationWappMessageChannelFramework {
+public class ApiOperationWappMessageFramework {
 
     @Autowired
     OperationHelper operationHelper;

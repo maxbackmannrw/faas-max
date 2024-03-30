@@ -31,7 +31,7 @@ import java.util.List;
 
 
 @Component
-public class ApiOperationEmailChannelFramework {
+public class ApiOperationEmailFramework {
 
 
     @Autowired

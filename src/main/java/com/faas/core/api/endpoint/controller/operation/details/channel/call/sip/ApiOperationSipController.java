@@ -1,6 +1,6 @@
 package com.faas.core.api.endpoint.controller.operation.details.channel.call.sip;
 
-import com.faas.core.api.middleware.operation.details.channel.call.sip.ApiOperationSipChannelMiddleware;
+import com.faas.core.api.middleware.operation.details.channel.call.sip.ApiOperationSipMiddleware;
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.ApiOperationSipAccountWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.ApiOperationSipCallWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.ApiOperationSipChannelWSModel;
@@ -17,18 +17,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping(value = AppConstant.API_VERSION + "/api/operation/details/channel/call/sip/")
-public class ApiOperationSipChannelController {
+public class ApiOperationSipController {
 
 
     @Autowired
-    ApiOperationSipChannelMiddleware apiOperationSipChannelMiddleware;
+    ApiOperationSipMiddleware apiOperationSipMiddleware;
 
 
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_SIP_CHANNEL, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationSipChannel(@RequestParam long agentId,
                                                        @RequestParam String operationId) {
 
-        ApiOperationSipChannelWSModel response = apiOperationSipChannelMiddleware.apiGetOperationSipChannel(agentId,operationId);
+        ApiOperationSipChannelWSModel response = apiOperationSipMiddleware.apiGetOperationSipChannel(agentId,operationId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -40,7 +40,7 @@ public class ApiOperationSipChannelController {
     public ResponseEntity<?> apiGetOperationSipAccount(@RequestParam long agentId,
                                                        @RequestParam String operationId) {
 
-        ApiOperationSipAccountWSModel response = apiOperationSipChannelMiddleware.apiGetOperationSipAccount(agentId,operationId);
+        ApiOperationSipAccountWSModel response = apiOperationSipMiddleware.apiGetOperationSipAccount(agentId,operationId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -53,7 +53,7 @@ public class ApiOperationSipChannelController {
     public ResponseEntity<?> apiGetOperationSipCalls(@RequestParam long agentId,
                                                      @RequestParam String operationId) {
 
-        ApiOperationSipCallWSModel response = apiOperationSipChannelMiddleware.apiGetOperationSipCalls(agentId,operationId);
+        ApiOperationSipCallWSModel response = apiOperationSipMiddleware.apiGetOperationSipCalls(agentId,operationId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -66,7 +66,7 @@ public class ApiOperationSipChannelController {
                                                     @RequestParam String operationId,
                                                     @RequestParam String callId) {
 
-        ApiOperationSipCallWSModel response = apiOperationSipChannelMiddleware.apiGetOperationSipCall(agentId,operationId,callId);
+        ApiOperationSipCallWSModel response = apiOperationSipMiddleware.apiGetOperationSipCall(agentId,operationId,callId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -79,7 +79,7 @@ public class ApiOperationSipChannelController {
                                                        @RequestParam String operationId,
                                                        @RequestParam String numberId) {
 
-        ApiOperationSipCallWSModel response = apiOperationSipChannelMiddleware.apiCreateOperationSipCall(agentId,operationId,numberId);
+        ApiOperationSipCallWSModel response = apiOperationSipMiddleware.apiCreateOperationSipCall(agentId,operationId,numberId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -92,7 +92,7 @@ public class ApiOperationSipChannelController {
                                                       @RequestParam String operationId,
                                                       @RequestParam String callId) {
 
-        ApiOperationSipCallWSModel response = apiOperationSipChannelMiddleware.apiStartOperationSipCall(agentId,operationId,callId);
+        ApiOperationSipCallWSModel response = apiOperationSipMiddleware.apiStartOperationSipCall(agentId,operationId,callId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -105,7 +105,7 @@ public class ApiOperationSipChannelController {
                                                        @RequestParam String operationId,
                                                        @RequestParam String callId) {
 
-        ApiOperationSipCallWSModel response = apiOperationSipChannelMiddleware.apiCancelOperationSipCall(agentId,operationId,callId);
+        ApiOperationSipCallWSModel response = apiOperationSipMiddleware.apiCancelOperationSipCall(agentId,operationId,callId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -118,7 +118,7 @@ public class ApiOperationSipChannelController {
                                                        @RequestParam String operationId,
                                                        @RequestParam String callId) {
 
-        ApiOperationSipCallWSModel response = apiOperationSipChannelMiddleware.apiHangupOperationSipCall(agentId,operationId,callId);
+        ApiOperationSipCallWSModel response = apiOperationSipMiddleware.apiHangupOperationSipCall(agentId,operationId,callId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -132,7 +132,7 @@ public class ApiOperationSipChannelController {
                                                        @RequestParam String callId,
                                                        @RequestParam String callState) {
 
-        ApiOperationSipCallWSModel response = apiOperationSipChannelMiddleware.apiUpdateOperationSipCall(agentId,operationId,callId,callState);
+        ApiOperationSipCallWSModel response = apiOperationSipMiddleware.apiUpdateOperationSipCall(agentId,operationId,callId,callState);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -145,7 +145,7 @@ public class ApiOperationSipChannelController {
                                                        @RequestParam String operationId,
                                                        @RequestParam String callId) {
 
-        ApiOperationSipCallWSModel response = apiOperationSipChannelMiddleware.apiRemoveOperationSipCall(agentId,operationId,callId);
+        ApiOperationSipCallWSModel response = apiOperationSipMiddleware.apiRemoveOperationSipCall(agentId,operationId,callId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

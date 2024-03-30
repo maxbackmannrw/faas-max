@@ -1,6 +1,6 @@
 package com.faas.core.api.endpoint.controller.operation.details.channel.message.email;
 
-import com.faas.core.api.middleware.operation.details.channel.message.email.ApiOperationEmailChannelMiddleware;
+import com.faas.core.api.middleware.operation.details.channel.message.email.ApiOperationEmailMiddleware;
 import com.faas.core.api.model.ws.operation.details.channel.message.email.ApiOperationEmailAccountWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.email.ApiOperationEmailChannelWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.email.ApiOperationEmailTempWSModel;
@@ -20,18 +20,18 @@ import java.io.IOException;
 
 @Controller
 @RequestMapping(value = AppConstant.API_VERSION + "/api/operation/details/channel/message/email/")
-public class ApiOperationEmailChannelController {
+public class ApiOperationEmailController {
 
 
     @Autowired
-    ApiOperationEmailChannelMiddleware apiOperationEmailChannelMiddleware;
+    ApiOperationEmailMiddleware apiOperationEmailMiddleware;
 
 
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_EMAIL_CHANNEL, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationEmailChannel(@RequestParam long agentId,
                                                          @RequestParam String operationId) {
 
-        ApiOperationEmailChannelWSModel response = apiOperationEmailChannelMiddleware.apiGetOperationEmailChannel(agentId,operationId);
+        ApiOperationEmailChannelWSModel response = apiOperationEmailMiddleware.apiGetOperationEmailChannel(agentId,operationId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -44,7 +44,7 @@ public class ApiOperationEmailChannelController {
     public ResponseEntity<?> apiGetOperationEmailAccount(@RequestParam long agentId,
                                                          @RequestParam String operationId) {
 
-        ApiOperationEmailAccountWSModel response = apiOperationEmailChannelMiddleware.apiGetOperationEmailAccount(agentId,operationId);
+        ApiOperationEmailAccountWSModel response = apiOperationEmailMiddleware.apiGetOperationEmailAccount(agentId,operationId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -57,7 +57,7 @@ public class ApiOperationEmailChannelController {
     public ResponseEntity<?> apiGetOperationEmailTemps(@RequestParam long agentId,
                                                        @RequestParam String operationId) {
 
-        ApiOperationEmailTempWSModel response = apiOperationEmailChannelMiddleware.apiGetOperationEmailTemps(agentId,operationId);
+        ApiOperationEmailTempWSModel response = apiOperationEmailMiddleware.apiGetOperationEmailTemps(agentId,operationId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -70,7 +70,7 @@ public class ApiOperationEmailChannelController {
                                                       @RequestParam String operationId,
                                                       @RequestParam String tempId) {
 
-        ApiOperationEmailTempWSModel response = apiOperationEmailChannelMiddleware.apiGetOperationEmailTemp(agentId,operationId,tempId);
+        ApiOperationEmailTempWSModel response = apiOperationEmailMiddleware.apiGetOperationEmailTemp(agentId,operationId,tempId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -83,7 +83,7 @@ public class ApiOperationEmailChannelController {
     public ResponseEntity<?> apiGetOperationEmails(@RequestParam long agentId,
                                                    @RequestParam String operationId) {
 
-        ApiOperationEmailWSModel response = apiOperationEmailChannelMiddleware.apiGetOperationEmails(agentId,operationId);
+        ApiOperationEmailWSModel response = apiOperationEmailMiddleware.apiGetOperationEmails(agentId,operationId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -96,7 +96,7 @@ public class ApiOperationEmailChannelController {
                                                   @RequestParam String operationId,
                                                   @RequestParam String emailId) {
 
-        ApiOperationEmailWSModel response = apiOperationEmailChannelMiddleware.apiGetOperationEmail(agentId,operationId,emailId);
+        ApiOperationEmailWSModel response = apiOperationEmailMiddleware.apiGetOperationEmail(agentId,operationId,emailId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -110,7 +110,7 @@ public class ApiOperationEmailChannelController {
                                                    @RequestParam String tempId,
                                                    @RequestParam String emailAddressId) throws IOException {
 
-        ApiOperationEmailWSModel response = apiOperationEmailChannelMiddleware.apiSendOperationEmail(agentId,operationId,tempId,emailAddressId);
+        ApiOperationEmailWSModel response = apiOperationEmailMiddleware.apiSendOperationEmail(agentId,operationId,tempId,emailAddressId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -124,7 +124,7 @@ public class ApiOperationEmailChannelController {
                                                      @RequestParam String emailId,
                                                      @RequestParam String emailState) {
 
-        ApiOperationEmailWSModel response = apiOperationEmailChannelMiddleware.apiUpdateOperationEmail(agentId,operationId,emailId,emailState);
+        ApiOperationEmailWSModel response = apiOperationEmailMiddleware.apiUpdateOperationEmail(agentId,operationId,emailId,emailState);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -137,7 +137,7 @@ public class ApiOperationEmailChannelController {
                                                      @RequestParam String operationId,
                                                      @RequestParam String emailId) {
 
-        ApiOperationEmailWSModel response = apiOperationEmailChannelMiddleware.apiRemoveOperationEmail(agentId,operationId,emailId);
+        ApiOperationEmailWSModel response = apiOperationEmailMiddleware.apiRemoveOperationEmail(agentId,operationId,emailId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
