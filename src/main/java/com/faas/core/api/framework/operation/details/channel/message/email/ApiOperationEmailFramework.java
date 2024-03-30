@@ -72,7 +72,9 @@ public class ApiOperationEmailFramework {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
         if (!operationDBModels.isEmpty()){
+
             List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(operationDBModels.get(0).getClientId());
+
             if (!clientDetailsDBModels.isEmpty()){
                 return operationHelper.getApiOperationEmailChannelWSDTO(operationDBModels.get(0),clientDetailsDBModels.get(0));
             }
@@ -95,14 +97,15 @@ public class ApiOperationEmailFramework {
 
         List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
         if (!sessionDBModels.isEmpty()){
+
             ApiOperationEmailTempWSDTO emailTempWSDTO = new ApiOperationEmailTempWSDTO();
             emailTempWSDTO.setEmailAccount(channelHelper.getApiEmailAccountWSDTO(sessionDBModels.get(0).getProcessId()));
             List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(sessionDBModels.get(0).getClientId());
+
             if (!clientDetailsDBModels.isEmpty() && clientDetailsDBModels.get(0).getClientEmails() != null){
                 emailTempWSDTO.setClientEmails(clientDetailsDBModels.get(0).getClientEmails());
             }
             emailTempWSDTO.setOperationEmailTemps(processEmailTempRepository.findByProcessId(sessionDBModels.get(0).getProcessId()));
-
             return emailTempWSDTO;
         }
         return null;
@@ -112,14 +115,15 @@ public class ApiOperationEmailFramework {
 
         List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
         if (!sessionDBModels.isEmpty()){
+
             ApiOperationEmailTempWSDTO emailTempWSDTO = new ApiOperationEmailTempWSDTO();
             emailTempWSDTO.setEmailAccount(channelHelper.getApiEmailAccountWSDTO(sessionDBModels.get(0).getProcessId()));
             List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(sessionDBModels.get(0).getClientId());
+
             if (!clientDetailsDBModels.isEmpty() && clientDetailsDBModels.get(0).getClientEmails() != null){
                 emailTempWSDTO.setClientEmails(clientDetailsDBModels.get(0).getClientEmails());
             }
             emailTempWSDTO.setOperationEmailTemps(processEmailTempRepository.findByIdAndProcessId(tempId,sessionDBModels.get(0).getProcessId()));
-
             return emailTempWSDTO;
         }
         return null;
@@ -168,6 +172,7 @@ public class ApiOperationEmailFramework {
 
         List<OperationEmailDBModel> operationEmailMessages = operationEmailRepository.findByIdAndOperationId(emailId,operationId);
         if (!operationEmailMessages.isEmpty()){
+
             operationEmailMessages.get(0).setEmailState(emailState);
             operationEmailMessages.get(0).setuDate(appUtils.getCurrentTimeStamp());
             return new ApiOperationEmailWSDTO(operationEmailRepository.save(operationEmailMessages.get(0)));
@@ -179,6 +184,7 @@ public class ApiOperationEmailFramework {
 
         List<OperationEmailDBModel> operationEmailMessages = operationEmailRepository.findByIdAndOperationId(emailId,operationId);
         if (!operationEmailMessages.isEmpty()){
+
             operationEmailRepository.delete(operationEmailMessages.get(0));
             return new ApiOperationEmailWSDTO(operationEmailMessages.get(0));
         }
