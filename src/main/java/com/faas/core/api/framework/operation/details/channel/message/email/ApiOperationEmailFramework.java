@@ -106,6 +106,7 @@ public class ApiOperationEmailFramework {
                 emailTempWSDTO.setClientEmails(clientDetailsDBModels.get(0).getClientEmails());
             }
             emailTempWSDTO.setOperationEmailTemps(processEmailTempRepository.findByProcessId(sessionDBModels.get(0).getProcessId()));
+
             return emailTempWSDTO;
         }
         return null;
@@ -124,6 +125,7 @@ public class ApiOperationEmailFramework {
                 emailTempWSDTO.setClientEmails(clientDetailsDBModels.get(0).getClientEmails());
             }
             emailTempWSDTO.setOperationEmailTemps(processEmailTempRepository.findByIdAndProcessId(tempId,sessionDBModels.get(0).getProcessId()));
+
             return emailTempWSDTO;
         }
         return null;
@@ -162,6 +164,7 @@ public class ApiOperationEmailFramework {
 
                 OperationEmailDBModel operationEmailDBModel = channelHelper.createOperationEmailDBModel(sessionDBModels.get(0),clientEmailDAO,emailTempDBModels.get(0),emailChannelDBModels.get(0));
                 emailChannelService.sendAsyncEmailService(operationEmailDBModel);
+
                 return new ApiOperationEmailWSDTO(operationEmailDBModel);
             }
         }
@@ -175,6 +178,7 @@ public class ApiOperationEmailFramework {
 
             operationEmailMessages.get(0).setEmailState(emailState);
             operationEmailMessages.get(0).setuDate(appUtils.getCurrentTimeStamp());
+
             return new ApiOperationEmailWSDTO(operationEmailRepository.save(operationEmailMessages.get(0)));
         }
         return null;
@@ -186,6 +190,7 @@ public class ApiOperationEmailFramework {
         if (!operationEmailMessages.isEmpty()){
 
             operationEmailRepository.delete(operationEmailMessages.get(0));
+
             return new ApiOperationEmailWSDTO(operationEmailMessages.get(0));
         }
         return null;
