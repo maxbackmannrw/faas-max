@@ -9,6 +9,7 @@
   <component name="ChangeListManager">
     <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/channel/message/email/ApiOperationEmailFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/channel/message/email/ApiOperationEmailFramework.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -900,14 +901,9 @@
       <workItem from="1711781393576" duration="197000" />
       <workItem from="1711783016801" duration="488000" />
       <workItem from="1711977507765" duration="872000" />
-    </task>
-    <task id="LOCAL-00778" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1710854760716</created>
-      <option name="number" value="00778" />
-      <option name="presentableId" value="LOCAL-00778" />
-      <option name="project" value="LOCAL" />
-      <updated>1710854760717</updated>
+      <workItem from="1711993353573" duration="1144000" />
+      <workItem from="1712041735288" duration="50000" />
+      <workItem from="1712047156341" duration="952000" />
     </task>
     <task id="LOCAL-00779" summary="almost finish">
       <option name="closed" value="true" />
@@ -1293,7 +1289,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711779368426</updated>
     </task>
-    <option name="localTasksCounter" value="827" />
+    <task id="LOCAL-00827" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1711993585891</created>
+      <option name="number" value="00827" />
+      <option name="presentableId" value="LOCAL-00827" />
+      <option name="project" value="LOCAL" />
+      <updated>1711993585891</updated>
+    </task>
+    <option name="localTasksCounter" value="828" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
