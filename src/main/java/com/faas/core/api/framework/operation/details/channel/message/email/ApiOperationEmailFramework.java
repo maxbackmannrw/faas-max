@@ -41,9 +41,6 @@ public class ApiOperationEmailFramework {
     ChannelHelper channelHelper;
 
     @Autowired
-    EmailChannelService emailChannelService;
-
-    @Autowired
     ClientRepository clientRepository;
 
     @Autowired
@@ -54,6 +51,9 @@ public class ApiOperationEmailFramework {
 
     @Autowired
     OperationRepository operationRepository;
+
+    @Autowired
+    EmailChannelService emailChannelService;
 
     @Autowired
     ProcessEmailTempRepository processEmailTempRepository;
