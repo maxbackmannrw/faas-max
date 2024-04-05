@@ -1,4 +1,4 @@
-package com.faas.core.utils.handler;
+package com.faas.core.utils.handler.cron;
 
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;

@@ -85,10 +85,10 @@ public class AppConstant {
     public static final String FAILED_REMOTE = "FAILED_REMOTE";
 
 
-    public static final String OPERATION_SUCCESS = "OPERATION_SUCCESS";
-    public static final String OPERATION_REJECTED = "OPERATION_REJECTED";
-    public static final String OPERATION_NOT_RESPONDING = "OPERATION_NOT_RESPONDING";
-    public static final String OPERATION_NOT_VALID = "OPERATION_NOT_VALID";
+    public static final String OP_SUCCESS = "OP_SUCCESS";
+    public static final String OP_REJECTED = "OP_REJECTED";
+    public static final String OP_NOT_AVAILABLE = "OP_NOT_AVAILABLE";
+    public static final String OP_DATA_NOT_VALID = "OP_DATA_NOT_VALID";
 
 
 

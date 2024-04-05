@@ -18,7 +18,7 @@ import com.faas.core.base.repo.operation.details.channel.OperationSmsRepository;
 import com.faas.core.base.repo.process.details.channel.content.ProcessSmsChannelRepository;
 import com.faas.core.base.repo.process.details.channel.temp.ProcessSmsTempRepository;
 import com.faas.core.base.repo.session.SessionRepository;
-import com.faas.core.utils.service.channel.sms.SmsChannelService;
+import com.faas.core.utils.handler.channel.sms.SmsChannelHandler;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.ChannelHelper;
 import com.faas.core.utils.helpers.OperationHelper;
@@ -40,7 +40,7 @@ public class ApiOperationSmsFramework {
     ChannelHelper channelHelper;
 
     @Autowired
-    SmsChannelService smsChannelService;
+    SmsChannelHandler smsChannelHandler;
 
     @Autowired
     ClientRepository clientRepository;
@@ -152,10 +152,11 @@ public class ApiOperationSmsFramework {
             ClientPhoneDAO clientPhoneDAO = channelHelper.fetchClientPhoneDAO(sessionDBModels.get(0).getClientId(),numberId);
             List<ProcessSmsTempDBModel> smsTempDBModels = processSmsTempRepository.findByIdAndProcessId(tempId,sessionDBModels.get(0).getProcessId());
             List<ProcessSmsChannelDBModel> smsChannelDBModels = processSmsChannelRepository.findByProcessId(sessionDBModels.get(0).getProcessId());
+
             if (clientPhoneDAO != null && !smsTempDBModels.isEmpty() && !smsChannelDBModels.isEmpty() ){
 
                 OperationSmsDBModel operationSmsDBModel = channelHelper.createOperationSmsDBModel(sessionDBModels.get(0),clientPhoneDAO,smsTempDBModels.get(0),smsChannelDBModels.get(0));
-                smsChannelService.sendAsyncSmsService(operationSmsDBModel);
+                smsChannelHandler.sendAsyncSmsHandler(operationSmsDBModel);
                 return new ApiOperationSmsWSDTO(operationSmsDBModel);
             }
         }

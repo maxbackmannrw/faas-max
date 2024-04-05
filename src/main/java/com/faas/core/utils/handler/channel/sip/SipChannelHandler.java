@@ -1,4 +1,4 @@
-package com.faas.core.utils.service.channel.sip;
+package com.faas.core.utils.handler.channel.sip;
 
 import com.faas.core.base.model.db.operation.details.channel.OperationSipCallDBModel;
 import com.faas.core.utils.config.AppUtils;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class SipChannelService {
+public class SipChannelHandler {
 
     private final OkHttpClient client = new OkHttpClient();
 

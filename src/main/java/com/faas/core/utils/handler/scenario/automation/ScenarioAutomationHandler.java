@@ -1,4 +1,4 @@
-package com.faas.core.utils.service.scenario.automation;
+package com.faas.core.utils.handler.scenario.automation;
 
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.endpoint.request.utility.CommonRequest;
@@ -9,7 +9,7 @@ import java.io.IOException;
 
 
 @Component
-public class ScenarioAutomationService {
+public class ScenarioAutomationHandler {
 
     @Autowired
     CommonRequest commonRequest;

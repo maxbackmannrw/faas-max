@@ -1,4 +1,4 @@
-package com.faas.core.utils.service.channel.email;
+package com.faas.core.utils.handler.channel.email;
 
 import com.faas.core.base.model.db.operation.details.channel.OperationEmailDBModel;
 import com.faas.core.utils.config.AppUtils;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 
 @Service
-public class EmailChannelService {
+public class EmailChannelHandler {
 
     @Autowired
     AppUtils appUtils;

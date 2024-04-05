@@ -1,4 +1,4 @@
-package com.faas.core.utils.service.channel.wapp;
+package com.faas.core.utils.handler.channel.wapp;
 
 import com.faas.core.base.model.db.channel.account.WappAccountDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationWappMessageDBModel;
@@ -20,7 +20,7 @@ import java.util.Map;
 
 
 @Service
-public class WappChannelService {
+public class WappChannelHandler {
 
 
     @Autowired

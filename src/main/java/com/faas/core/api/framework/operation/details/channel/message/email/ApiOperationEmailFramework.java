@@ -21,7 +21,7 @@ import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.ChannelHelper;
 import com.faas.core.utils.helpers.OperationHelper;
-import com.faas.core.utils.service.channel.email.EmailChannelService;
+import com.faas.core.utils.handler.channel.email.EmailChannelHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -53,7 +53,7 @@ public class ApiOperationEmailFramework {
     OperationRepository operationRepository;
 
     @Autowired
-    EmailChannelService emailChannelService;
+    EmailChannelHandler emailChannelHandler;
 
     @Autowired
     ProcessEmailTempRepository processEmailTempRepository;
@@ -157,7 +157,7 @@ public class ApiOperationEmailFramework {
             if (clientEmailDAO != null && !emailTempDBModels.isEmpty() && !emailChannelDBModels.isEmpty() ){
 
                 OperationEmailDBModel operationEmailDBModel = channelHelper.createOperationEmailDBModel(sessionDBModels.get(0),clientEmailDAO,emailTempDBModels.get(0),emailChannelDBModels.get(0));
-                emailChannelService.sendAsyncEmailService(operationEmailDBModel);
+                emailChannelHandler.sendAsyncEmailService(operationEmailDBModel);
                 return new ApiOperationEmailWSDTO(operationEmailDBModel);
             }
         }

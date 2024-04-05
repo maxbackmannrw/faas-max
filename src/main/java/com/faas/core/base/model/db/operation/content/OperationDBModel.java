@@ -23,9 +23,9 @@ public class OperationDBModel {
     private List<OperationScenarioDAO>operationScenarios;
     private List<OperationActivityDAO>operationActivities;
     private List<OperationDataDAO>operationDatas;
-    private String operationOutcome;
     private String operationType;
     private String operationState;
+    private String operationResult;
     private long uDate;
     private long cDate;
     private int status;
@@ -33,7 +33,7 @@ public class OperationDBModel {
     public OperationDBModel() {
     }
 
-    public OperationDBModel(String id, long sessionId, long clientId, long agentId, String campaignId, String processId, OperationInquiryDAO operationInquiry, String operationInquiryState, OperationFlowDAO operationFlow, String operationFlowState, List<OperationScenarioDAO> operationScenarios, List<OperationActivityDAO> operationActivities, List<OperationDataDAO> operationDatas, String operationOutcome, String operationType, String operationState, long uDate, long cDate, int status) {
+    public OperationDBModel(String id, long sessionId, long clientId, long agentId, String campaignId, String processId, OperationInquiryDAO operationInquiry, String operationInquiryState, OperationFlowDAO operationFlow, String operationFlowState, List<OperationScenarioDAO> operationScenarios, List<OperationActivityDAO> operationActivities, List<OperationDataDAO> operationDatas, String operationType, String operationState, String operationResult, long uDate, long cDate, int status) {
         this.id = id;
         this.sessionId = sessionId;
         this.clientId = clientId;
@@ -47,9 +47,9 @@ public class OperationDBModel {
         this.operationScenarios = operationScenarios;
         this.operationActivities = operationActivities;
         this.operationDatas = operationDatas;
-        this.operationOutcome = operationOutcome;
         this.operationType = operationType;
         this.operationState = operationState;
+        this.operationResult = operationResult;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
@@ -159,14 +159,6 @@ public class OperationDBModel {
         this.operationDatas = operationDatas;
     }
 
-    public String getOperationOutcome() {
-        return operationOutcome;
-    }
-
-    public void setOperationOutcome(String operationOutcome) {
-        this.operationOutcome = operationOutcome;
-    }
-
     public String getOperationType() {
         return operationType;
     }
@@ -181,6 +173,14 @@ public class OperationDBModel {
 
     public void setOperationState(String operationState) {
         this.operationState = operationState;
+    }
+
+    public String getOperationResult() {
+        return operationResult;
+    }
+
+    public void setOperationResult(String operationResult) {
+        this.operationResult = operationResult;
     }
 
     public long getuDate() {

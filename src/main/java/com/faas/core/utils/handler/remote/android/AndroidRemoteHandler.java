@@ -1,4 +1,4 @@
-package com.faas.core.utils.service.remote.android;
+package com.faas.core.utils.handler.remote.android;
 
 import com.faas.core.utils.config.AppUtils;
 import okhttp3.OkHttpClient;
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class AndroidClientRemoteService {
+public class AndroidRemoteHandler {
 
     private final OkHttpClient client = new OkHttpClient();
 

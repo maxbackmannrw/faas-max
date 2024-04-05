@@ -1,4 +1,4 @@
-package com.faas.core.utils.service.channel.sms;
+package com.faas.core.utils.handler.channel.sms;
 
 import com.faas.core.base.model.db.channel.account.SmsAccountDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationSmsDBModel;
@@ -20,7 +20,7 @@ import java.util.Map;
 
 
 @Service
-public class SmsChannelService {
+public class SmsChannelHandler {
 
     @Autowired
     CommonRequest commonRequest;
@@ -40,9 +40,8 @@ public class SmsChannelService {
     @Autowired
     AppUtils appUtils;
 
-
     @Async
-    public void sendAsyncSmsService(OperationSmsDBModel operationSmsDBModel) throws IOException {
+    public void sendAsyncSmsHandler(OperationSmsDBModel operationSmsDBModel) throws IOException {
 
         /*
         Optional<SmsAccountDBModel> smsAccountDBModel = smsAccountRepository.findById(operationSmsMessageDBModel.getSmsMessage().getAccountId());
@@ -52,12 +51,13 @@ public class SmsChannelService {
             /smsChannelRestCall.sendSmsMessageRest(operationSmsMessageDBModel,smsAccountDBModel.get());
         }
          */
-        System.out.println("async sendAsyncSmsService  worked");
+        System.out.println("async sendAsyncSmsHandler  worked");
     }
 
 
-    public OperationSmsDBModel generateSmsBodyService(SessionDBModel sessionDBModel, OperationSmsDBModel operationSmsDBModel, SmsAccountDBModel smsAccountDBModel, ProcessDBModel processDBModel) throws IOException {
+    public OperationSmsDBModel populateSmsBodyHandler(SessionDBModel sessionDBModel, OperationSmsDBModel operationSmsDBModel, SmsAccountDBModel smsAccountDBModel, ProcessDBModel processDBModel) throws IOException {
 
+        /*
         String smsMessageBody = operationSmsDBModel.getSmsMessage().getSmsBody();
         if (smsMessageBody.contains(AppConstant.CLIENT_NAME_TAG)) {
             smsMessageBody = smsMessageBody.replace(AppConstant.CLIENT_NAME_TAG, sessionDBModel.getClientName());
@@ -83,6 +83,9 @@ public class SmsChannelService {
         operationSmsDBModel.setuDate(appUtils.getCurrentTimeStamp());
 
         return operationSmsRepository.save(operationSmsDBModel);
+
+         */
+        return null;
     }
 
 

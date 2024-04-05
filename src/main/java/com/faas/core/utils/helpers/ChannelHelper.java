@@ -37,6 +37,11 @@ import com.faas.core.base.repo.process.details.channel.temp.ProcessWappMessageTe
 import com.faas.core.base.repo.user.details.UserDetailsRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
+import com.faas.core.utils.handler.channel.email.EmailChannelHandler;
+import com.faas.core.utils.handler.channel.push.PushChannelHandler;
+import com.faas.core.utils.handler.channel.sip.SipChannelHandler;
+import com.faas.core.utils.handler.channel.sms.SmsChannelHandler;
+import com.faas.core.utils.handler.channel.wapp.WappChannelHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -45,6 +50,21 @@ import java.util.List;
 
 @Component
 public class ChannelHelper {
+
+    @Autowired
+    SipChannelHandler sipChannelHandler;
+
+    @Autowired
+    WappChannelHandler wappChannelHandler;
+
+    @Autowired
+    SmsChannelHandler smsChannelHandler;
+
+    @Autowired
+    EmailChannelHandler emailChannelHandler;
+
+    @Autowired
+    PushChannelHandler pushChannelHandler;
 
     @Autowired
     ClientRepository clientRepository;
@@ -132,7 +152,8 @@ public class ChannelHelper {
     public ApiOperationSipCallWSDTO createOperationSipCallHelper(OperationDBModel operationDBModel,String numberId){
 
         OperationSipCallDAO sipCallDAO = createOperationSipCallDAO(operationDBModel,numberId);
-        if (sipCallDAO != null && !operationSipCallRepository.existsByOperationIdAndCallState(operationDBModel.getId(),AppConstant.READY_CALL) && !operationSipCallRepository.existsByOperationIdAndCallState(operationDBModel.getId(),AppConstant.ACTIVE_CALL)){
+        if (sipCallDAO != null && !operationSipCallRepository.existsByOperationIdAndCallState(operationDBModel.getId(),AppConstant.READY_CALL)
+                && !operationSipCallRepository.existsByOperationIdAndCallState(operationDBModel.getId(),AppConstant.ACTIVE_CALL)){
 
             OperationSipCallDBModel operationSipCallDBModel = new OperationSipCallDBModel();
             operationSipCallDBModel.setClientId(operationDBModel.getClientId());
@@ -412,7 +433,7 @@ public class ChannelHelper {
         operationSmsDBModel.setCampaignId(sessionDBModel.getCampaignId());
         operationSmsDBModel.setProcessId(sessionDBModel.getProcessId());
         operationSmsDBModel.setClientPhone(clientPhoneDAO);
-        operationSmsDBModel.setSmsMessage(createOperationSmsDAO(sessionDBModel,smsTempDBModel,smsChannelDBModel));
+        operationSmsDBModel.setOperationSms(createOperationSmsDAO(smsTempDBModel,smsChannelDBModel));
         operationSmsDBModel.setSmsSentId(AppConstant.NONE);
         operationSmsDBModel.setSmsState(AppConstant.NEW_STATE);
         operationSmsDBModel.setuDate(appUtils.getCurrentTimeStamp());
@@ -422,11 +443,11 @@ public class ChannelHelper {
         return operationSmsRepository.save(operationSmsDBModel);
     }
 
-    public OperationSmsDAO createOperationSmsDAO(SessionDBModel sessionDBModel, ProcessSmsTempDBModel smsTempDBModel, ProcessSmsChannelDBModel smsChannelDBModel){
+    public OperationSmsDAO createOperationSmsDAO(ProcessSmsTempDBModel smsTempDBModel, ProcessSmsChannelDBModel smsChannelDBModel){
 
         OperationSmsDAO operationSmsDAO = new OperationSmsDAO();
-        operationSmsDAO.setTempId(smsTempDBModel.getId());
         operationSmsDAO.setAccountId(smsChannelDBModel.getSmsAccount().getAccountId());
+        operationSmsDAO.setTempId(smsTempDBModel.getId());
         operationSmsDAO.setSmsTitle(smsTempDBModel.getSmsTitle());
         operationSmsDAO.setSmsBody(smsTempDBModel.getSmsBody());
         operationSmsDAO.setSenderId(smsTempDBModel.getSenderId());

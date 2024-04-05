@@ -5,8 +5,7 @@ import com.faas.core.base.model.db.channel.settings.WappServerDBModel;
 import com.faas.core.base.model.ws.channel.account.dto.*;
 import com.faas.core.base.repo.channel.account.*;
 import com.faas.core.base.repo.channel.settings.WappServerRepository;
-import com.faas.core.utils.service.channel.wapp.WappChannelService;
-import com.faas.core.utils.config.AppConstant;
+import com.faas.core.utils.handler.channel.wapp.WappChannelHandler;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -21,7 +20,7 @@ import java.util.Optional;
 public class ChannelAccountFramework {
 
     @Autowired
-    WappChannelService wappChannelService;
+    WappChannelHandler wappChannelHandler;
 
     @Autowired
     SipAccountRepository sipAccountRepository;
@@ -206,7 +205,7 @@ public class ChannelAccountFramework {
 
         Optional<WappAccountDBModel> wappAccountDBModel = wappAccountRepository.findById(accountId);
         if (wappAccountDBModel.isPresent()){
-            String qrCode = wappChannelService.getWappAccountQRCodeService(wappAccountDBModel.get().getServerUrl(),wappAccountDBModel.get().getInstanceKey());
+            String qrCode = wappChannelHandler.getWappAccountQRCodeService(wappAccountDBModel.get().getServerUrl(),wappAccountDBModel.get().getInstanceKey());
             if (qrCode != null){
                 WappQRCodeWSDTO wappQRCodeWSDTO = new WappQRCodeWSDTO();
                 wappQRCodeWSDTO.setQrcode(qrCode);
@@ -220,7 +219,7 @@ public class ChannelAccountFramework {
 
         Optional<WappServerDBModel> wappServerDBModel = wappServerRepository.findById(serverId);
         if (wappServerDBModel.isPresent()){
-            String instanceKey = wappChannelService.initWappChannelService(wappServerDBModel.get().getServerUrl());
+            String instanceKey = wappChannelHandler.initWappChannelService(wappServerDBModel.get().getServerUrl());
             if (instanceKey != null){
                 WappAccountDBModel wappAccountDBModel = new WappAccountDBModel();
                 wappAccountDBModel.setAccount(account);

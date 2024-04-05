@@ -1,7 +1,7 @@
-package com.faas.core.utils.service.utility;
+package com.faas.core.utils.handler.scenario.action;
 
-import com.faas.core.utils.endpoint.request.utility.CommonRequest;
 import com.faas.core.utils.config.AppUtils;
+import com.faas.core.utils.endpoint.request.utility.CommonRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -9,7 +9,7 @@ import java.io.IOException;
 
 
 @Component
-public class CommonService {
+public class ScenarioActionHandler {
 
     @Autowired
     CommonRequest commonRequest;

@@ -28,6 +28,7 @@ public class SmsChannelRequest {
 
     public void sendSmsMessageRest(OperationSmsDBModel operationSmsDBModel, SmsAccountDBModel smsAccountDBModel) throws IOException {
 
+        /*
         Map<String,String> formData = new HashMap<>();
         formData.put("username", smsAccountDBModel.getUserName());
         formData.put("password", smsAccountDBModel.getPassword());
@@ -44,6 +45,8 @@ public class SmsChannelRequest {
         }
         operationSmsDBModel.setuDate(appUtils.getCurrentTimeStamp());
         operationSmsRepository.save(operationSmsDBModel);
+
+         */
     }
 
 

@@ -1,4 +1,4 @@
-package com.faas.core.utils.service.remote.pwa;
+package com.faas.core.utils.handler.remote.ios;
 
 import com.faas.core.utils.config.AppUtils;
 import okhttp3.OkHttpClient;
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class PWAClientRemoteService {
+public class IOSRemoteHandler {
 
     private final OkHttpClient client = new OkHttpClient();
 

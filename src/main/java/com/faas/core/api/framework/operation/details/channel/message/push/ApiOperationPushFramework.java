@@ -20,7 +20,7 @@ import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.ChannelHelper;
 import com.faas.core.utils.helpers.OperationHelper;
-import com.faas.core.utils.service.channel.push.PushChannelService;
+import com.faas.core.utils.handler.channel.push.PushChannelHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -38,7 +38,7 @@ public class ApiOperationPushFramework {
     ChannelHelper channelHelper;
 
     @Autowired
-    PushChannelService pushChannelService;
+    PushChannelHandler pushChannelHandler;
 
     @Autowired
     ClientRepository clientRepository;

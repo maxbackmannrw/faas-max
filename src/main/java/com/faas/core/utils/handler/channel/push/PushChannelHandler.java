@@ -1,4 +1,4 @@
-package com.faas.core.utils.service.channel.push;
+package com.faas.core.utils.handler.channel.push;
 
 import com.faas.core.base.model.db.operation.details.channel.OperationPushDBModel;
 import com.faas.core.utils.config.AppUtils;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 
 @Service
-public class PushChannelService {
+public class PushChannelHandler {
 
 
     @Autowired

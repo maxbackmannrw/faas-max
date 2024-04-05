@@ -14,10 +14,13 @@ public class OperationSmsDBModel {
     private long sessionId;
     private String operationId;
     private long agentId;
+    private String agentName;
     private String campaignId;
+    private String campaign;
     private String processId;
+    private String process;
     private ClientPhoneDAO clientPhone;
-    private OperationSmsDAO smsMessage;
+    private OperationSmsDAO operationSms;
     private String smsSentId;
     private String smsState;
     private long uDate;
@@ -27,16 +30,19 @@ public class OperationSmsDBModel {
     public OperationSmsDBModel() {
     }
 
-    public OperationSmsDBModel(String id, long clientId, long sessionId, String operationId, long agentId, String campaignId, String processId, ClientPhoneDAO clientPhone, OperationSmsDAO smsMessage, String smsSentId, String smsState, long uDate, long cDate, int status) {
+    public OperationSmsDBModel(String id, long clientId, long sessionId, String operationId, long agentId, String agentName, String campaignId, String campaign, String processId, String process, ClientPhoneDAO clientPhone, OperationSmsDAO operationSms, String smsSentId, String smsState, long uDate, long cDate, int status) {
         this.id = id;
         this.clientId = clientId;
         this.sessionId = sessionId;
         this.operationId = operationId;
         this.agentId = agentId;
+        this.agentName = agentName;
         this.campaignId = campaignId;
+        this.campaign = campaign;
         this.processId = processId;
+        this.process = process;
         this.clientPhone = clientPhone;
-        this.smsMessage = smsMessage;
+        this.operationSms = operationSms;
         this.smsSentId = smsSentId;
         this.smsState = smsState;
         this.uDate = uDate;
@@ -84,12 +90,28 @@ public class OperationSmsDBModel {
         this.agentId = agentId;
     }
 
+    public String getAgentName() {
+        return agentName;
+    }
+
+    public void setAgentName(String agentName) {
+        this.agentName = agentName;
+    }
+
     public String getCampaignId() {
         return campaignId;
     }
 
     public void setCampaignId(String campaignId) {
         this.campaignId = campaignId;
+    }
+
+    public String getCampaign() {
+        return campaign;
+    }
+
+    public void setCampaign(String campaign) {
+        this.campaign = campaign;
     }
 
     public String getProcessId() {
@@ -100,6 +122,14 @@ public class OperationSmsDBModel {
         this.processId = processId;
     }
 
+    public String getProcess() {
+        return process;
+    }
+
+    public void setProcess(String process) {
+        this.process = process;
+    }
+
     public ClientPhoneDAO getClientPhone() {
         return clientPhone;
     }
@@ -108,12 +138,12 @@ public class OperationSmsDBModel {
         this.clientPhone = clientPhone;
     }
 
-    public OperationSmsDAO getSmsMessage() {
-        return smsMessage;
+    public OperationSmsDAO getOperationSms() {
+        return operationSms;
     }
 
-    public void setSmsMessage(OperationSmsDAO smsMessage) {
-        this.smsMessage = smsMessage;
+    public void setOperationSms(OperationSmsDAO operationSms) {
+        this.operationSms = operationSms;
     }
 
     public String getSmsSentId() {

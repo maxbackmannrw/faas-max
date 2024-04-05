@@ -52,9 +52,9 @@ public class ApiOperationDetailsController {
     @RequestMapping(value = ApiRoute.API_FINISH_OPERATION, method = RequestMethod.POST)
     public ResponseEntity<?> apiFinishOperation(@RequestParam long agentId,
                                                 @RequestParam String operationId,
-                                                @RequestParam String operationOutcome) {
+                                                @RequestParam String operationResult) {
 
-        ApiOperationWSModel response = apiOperationDetailsMiddleware.apiFinishOperation(agentId,operationId,operationOutcome);
+        ApiOperationWSModel response = apiOperationDetailsMiddleware.apiFinishOperation(agentId,operationId,operationResult);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

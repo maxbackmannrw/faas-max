@@ -212,7 +212,7 @@ public class OperationHelper {
             operationDBModel.setOperationScenarios(new ArrayList<>());
             operationDBModel.setOperationActivities(new ArrayList<>());
             operationDBModel.setOperationDatas(new ArrayList<>());
-            operationDBModel.setOperationOutcome(AppConstant.NONE);
+            operationDBModel.setOperationResult(AppConstant.NONE);
             operationDBModel.setOperationType(sessionDBModel.getSessionType());
             operationDBModel.setOperationState(sessionDBModel.getSessionState());
             operationDBModel.setuDate(appUtils.getCurrentTimeStamp());
