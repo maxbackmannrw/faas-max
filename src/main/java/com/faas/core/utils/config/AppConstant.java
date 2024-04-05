@@ -75,7 +75,7 @@ public class AppConstant {
     public static final String READY_STATE = "READY_STATE";
     public static final String ACTIVE_STATE = "ACTIVE_STATE";
     public static final String PASSIVE_STATE = "PASSIVE_STATE";
-    public static final String FINISHED_STATE = "FINISHED_STATE";
+    public static final String COMPLETED_STATE = "COMPLETED_STATE";
 
     public static final String ALL_STATES = "ALL_STATES";
 
@@ -88,7 +88,7 @@ public class AppConstant {
     public static final String OP_SUCCESS = "OP_SUCCESS";
     public static final String OP_REJECTED = "OP_REJECTED";
     public static final String OP_NOT_AVAILABLE = "OP_NOT_AVAILABLE";
-    public static final String OP_DATA_NOT_VALID = "OP_DATA_NOT_VALID";
+    public static final String OP_DATA_FALSE = "OP_DATA_FALSE";
 
 
 

@@ -66,7 +66,7 @@ public class ApiRoute {
 
     public static final String API_GET_OPERATION_DETAILS = "apigetoperationdetails";
     public static final String API_START_OPERATION = "apistartoperation";
-    public static final String API_FINISH_OPERATION = "apifinishoperation";
+    public static final String API_COMPLETE_OPERATION = "apicompleteoperation";
     public static final String API_GET_SWITCH_OPERATIONS = "apigetswitchoperations";
     public static final String API_SWITCH_OPERATION = "apiswitchoperation";
     public static final String API_GET_OPERATION_CAMPAIGN = "apigetoperationcampaign";

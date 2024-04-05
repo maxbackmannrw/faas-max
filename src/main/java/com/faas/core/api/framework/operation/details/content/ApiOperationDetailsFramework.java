@@ -86,7 +86,7 @@ public class ApiOperationDetailsFramework {
         return null;
     }
 
-    public ApiOperationWSDTO apiFinishOperationService(long agentId,String operationId,String operationResult) {
+    public ApiOperationWSDTO apiCompleteOperationService(long agentId,String operationId,String operationResult) {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentIdAndOperationState(operationId,agentId,AppConstant.ACTIVE_STATE);
         List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationIdAndSessionState(agentId,operationId,AppConstant.ACTIVE_STATE);
@@ -99,12 +99,12 @@ public class ApiOperationDetailsFramework {
                 clientDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
                 clientRepository.save(clientDBModel.get());
 
-                sessionDBModels.get(0).setSessionState(AppConstant.FINISHED_STATE);
+                sessionDBModels.get(0).setSessionState(AppConstant.COMPLETED_STATE);
                 sessionDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
                 sessionRepository.save(sessionDBModels.get(0));
 
+                operationDBModels.get(0).setOperationState(AppConstant.COMPLETED_STATE);
                 operationDBModels.get(0).setOperationResult(operationResult);
-                operationDBModels.get(0).setOperationState(AppConstant.FINISHED_STATE);
                 operationDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
                 operationRepository.save(operationDBModels.get(0));
 
