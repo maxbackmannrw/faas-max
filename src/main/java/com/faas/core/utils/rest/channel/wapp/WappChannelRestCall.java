@@ -1,9 +1,9 @@
-package com.faas.core.utils.endpoint.request.channel.wapp;
+package com.faas.core.utils.rest.channel.wapp;
 
 import com.faas.core.base.model.db.channel.account.WappAccountDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationWappMessageDBModel;
 import com.faas.core.base.repo.operation.details.channel.OperationWappMessageRepository;
-import com.faas.core.utils.endpoint.request.utility.HttpRequest;
+import com.faas.core.utils.rest.utility.RestCallTemplate;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import com.google.gson.JsonObject;
@@ -19,10 +19,10 @@ import java.util.Map;
 
 
 @Component
-public class WappChannelRequest {
+public class WappChannelRestCall {
 
     @Autowired
-    HttpRequest httpRequest;
+    RestCallTemplate restCallTemplate;
 
     @Autowired
     OperationWappMessageRepository operationWappMessageRepository;
@@ -33,8 +33,8 @@ public class WappChannelRequest {
 
     public String initWappChannelRequest(String serverUrl) throws IOException {
 
-        String requestUrl = httpRequest.httpUrlBuilder(serverUrl,"/instance/init",null);
-        String response = httpRequest.callGetRequest(requestUrl);
+        String requestUrl = restCallTemplate.httpUrlBuilder(serverUrl,"/instance/init",null);
+        String response = restCallTemplate.callGetRequest(requestUrl);
         if (response != null){
             JsonObject resObject = JsonParser.parseString(response).getAsJsonObject();
             return resObject.getAsJsonPrimitive("key").getAsString();
@@ -47,8 +47,8 @@ public class WappChannelRequest {
 
         Map<String, String> paramObjs = new HashMap<>();
         paramObjs.put("key", instanceKey);
-        String requestUrl = httpRequest.httpUrlBuilder(serverUrl,"/instance",paramObjs);
-        String response = httpRequest.callGetRequest(requestUrl);
+        String requestUrl = restCallTemplate.httpUrlBuilder(serverUrl,"/instance",paramObjs);
+        String response = restCallTemplate.callGetRequest(requestUrl);
         if (response != null){
             JsonObject resObject = JsonParser.parseString(response).getAsJsonObject();
             return resObject.getAsJsonPrimitive("key").getAsString();
@@ -61,8 +61,8 @@ public class WappChannelRequest {
 
         Map<String, String> paramObjs = new HashMap<>();
         paramObjs.put("key", instanceKey);
-        String requestUrl = httpRequest.httpUrlBuilder(serverUrl,"/instance/qrbase64",paramObjs);
-        String response = httpRequest.callGetRequest(requestUrl);
+        String requestUrl = restCallTemplate.httpUrlBuilder(serverUrl,"/instance/qrbase64",paramObjs);
+        String response = restCallTemplate.callGetRequest(requestUrl);
         if (response != null){
             JsonObject resObject = JsonParser.parseString(response).getAsJsonObject();
             return resObject.getAsJsonPrimitive("qrcode").getAsString();
@@ -75,8 +75,8 @@ public class WappChannelRequest {
 
         Map<String, String> paramObjs = new HashMap<>();
         paramObjs.put("key", instanceKey);
-        String requestUrl = httpRequest.httpUrlBuilder(serverUrl,"/instance/info",paramObjs);
-        String response = httpRequest.callGetRequest(requestUrl);
+        String requestUrl = restCallTemplate.httpUrlBuilder(serverUrl,"/instance/info",paramObjs);
+        String response = restCallTemplate.callGetRequest(requestUrl);
         if (response != null){
             JsonObject resObject = JsonParser.parseString(response).getAsJsonObject();
             return resObject.getAsJsonObject("qrcode").getAsString();
@@ -89,8 +89,8 @@ public class WappChannelRequest {
 
         Map<String, String> paramObjs = new HashMap<>();
         paramObjs.put("key", instanceKey);
-        String requestUrl = httpRequest.httpUrlBuilder(serverUrl,"/instance/info",paramObjs);
-        String response = httpRequest.callGetRequest(requestUrl);
+        String requestUrl = restCallTemplate.httpUrlBuilder(serverUrl,"/instance/info",paramObjs);
+        String response = restCallTemplate.callGetRequest(requestUrl);
         if (response != null){
             JsonObject resObject = JsonParser.parseString(response).getAsJsonObject();
             return resObject.getAsJsonObject("qrcode").getAsString();
@@ -102,8 +102,8 @@ public class WappChannelRequest {
 
         Map<String, String> paramObjs = new HashMap<>();
         paramObjs.put("key", instanceKey);
-        String requestUrl = httpRequest.httpUrlBuilder(serverUrl,"/instance/info",paramObjs);
-        String response = httpRequest.callGetRequest(requestUrl);
+        String requestUrl = restCallTemplate.httpUrlBuilder(serverUrl,"/instance/info",paramObjs);
+        String response = restCallTemplate.callGetRequest(requestUrl);
         if (response != null){
             JsonObject resObject = JsonParser.parseString(response).getAsJsonObject();
             return resObject.getAsJsonObject("qrcode").getAsString();
@@ -116,8 +116,8 @@ public class WappChannelRequest {
 
         Map<String, String> paramObjs = new HashMap<>();
         paramObjs.put("key", instanceKey);
-        String requestUrl = httpRequest.httpUrlBuilder(serverUrl,"/instance/info",paramObjs);
-        String response = httpRequest.callGetRequest(requestUrl);
+        String requestUrl = restCallTemplate.httpUrlBuilder(serverUrl,"/instance/info",paramObjs);
+        String response = restCallTemplate.callGetRequest(requestUrl);
         if (response != null){
             JsonObject resObject = JsonParser.parseString(response).getAsJsonObject();
             return resObject.getAsJsonObject("qrcode").getAsString();
@@ -128,8 +128,8 @@ public class WappChannelRequest {
 
     public String listAllWappInstancesRest(String serverUrl) throws IOException {
 
-        String requestUrl = httpRequest.httpUrlBuilder(serverUrl,"/instance/list",null);
-        String response = httpRequest.callGetRequest(requestUrl);
+        String requestUrl = restCallTemplate.httpUrlBuilder(serverUrl,"/instance/list",null);
+        String response = restCallTemplate.callGetRequest(requestUrl);
         if (response != null){
             JsonObject resObject = JsonParser.parseString(response).getAsJsonObject();
             return resObject.getAsJsonObject("qrcode").getAsString();
@@ -142,7 +142,7 @@ public class WappChannelRequest {
 
         Map<String, String> paramObjs = new HashMap<>();
         paramObjs.put("key", wappAccountDBModel.getInstanceKey());
-        String requestUrl = httpRequest.httpUrlBuilder(wappAccountDBModel.getServerUrl(),"/message/text",paramObjs);
+        String requestUrl = restCallTemplate.httpUrlBuilder(wappAccountDBModel.getServerUrl(),"/message/text",paramObjs);
 
         Map<String,String> formData = new HashMap<>();
         //formData.put("id", wappMessageDBModel.getPhoneNumber());
@@ -150,7 +150,7 @@ public class WappChannelRequest {
         formData.put("id", "905458189014");
         formData.put("message", operationWappMessageDBModel.getWappMessage().getWappBody());
 
-        String response = httpRequest.callPostXFormRequest(requestUrl,formData);
+        String response = restCallTemplate.callPostXFormRequest(requestUrl,formData);
         if (response != null){
             operationWappMessageDBModel.setMessageState(AppConstant.MESSAGE_SENT);
         }else {

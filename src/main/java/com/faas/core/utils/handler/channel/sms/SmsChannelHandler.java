@@ -7,26 +7,24 @@ import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.repo.channel.account.SmsAccountRepository;
 import com.faas.core.base.repo.operation.details.channel.OperationSmsRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
-import com.faas.core.utils.endpoint.request.channel.sms.SmsChannelRequest;
-import com.faas.core.utils.endpoint.request.utility.CommonRequest;
-import com.faas.core.utils.config.AppConstant;
+import com.faas.core.utils.rest.channel.sms.SmsChannelRestCall;
+import com.faas.core.utils.rest.utility.CommonRestCall;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.util.Map;
 
 
 @Service
 public class SmsChannelHandler {
 
     @Autowired
-    CommonRequest commonRequest;
+    CommonRestCall commonRestCall;
 
     @Autowired
-    SmsChannelRequest smsChannelRequest;
+    SmsChannelRestCall smsChannelRestCall;
 
     @Autowired
     ProcessRepository processRepository;

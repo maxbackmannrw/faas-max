@@ -1,4 +1,4 @@
-package com.faas.core.utils.endpoint.request.utility;
+package com.faas.core.utils.rest.utility;
 
 import com.faas.core.utils.config.AppConstant;
 import com.google.gson.JsonObject;
@@ -12,10 +12,10 @@ import java.util.Map;
 
 
 @Component
-public class CommonRequest {
+public class CommonRestCall {
 
     @Autowired
-    HttpRequest httpRequest;
+    RestCallTemplate restCallTemplate;
 
 
     public Map<String,String> urlShortenerRest(String httpUrl) throws IOException {
@@ -24,7 +24,7 @@ public class CommonRequest {
         formData.put("apiKey", AppConstant.URL_SHORTENER_API_KEY);
         formData.put("url", httpUrl);
 
-        String response = httpRequest.callPostXFormRequest(httpRequest.httpUrlBuilder(AppConstant.URL_SHORTENER_API_URL,"/create",null),formData);
+        String response = restCallTemplate.callPostXFormRequest(restCallTemplate.httpUrlBuilder(AppConstant.URL_SHORTENER_API_URL,"/create",null),formData);
         if (response != null){
             JsonObject resObject = JsonParser.parseString(response).getAsJsonObject();
             if (resObject.get("success").getAsBoolean()){

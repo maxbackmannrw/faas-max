@@ -1,23 +1,21 @@
-package com.faas.core.utils.endpoint.request.channel.sms;
+package com.faas.core.utils.rest.channel.sms;
 
 import com.faas.core.base.model.db.channel.account.SmsAccountDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationSmsDBModel;
 import com.faas.core.base.repo.operation.details.channel.OperationSmsRepository;
-import com.faas.core.utils.endpoint.request.utility.HttpRequest;
+import com.faas.core.utils.rest.utility.RestCallTemplate;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 
 @Component
-public class SmsChannelRequest {
+public class SmsChannelRestCall {
 
     @Autowired
-    HttpRequest httpRequest;
+    RestCallTemplate restCallTemplate;
 
     @Autowired
     OperationSmsRepository operationSmsRepository;

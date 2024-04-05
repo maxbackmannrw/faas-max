@@ -1,4 +1,4 @@
-package com.faas.core.utils.endpoint.request.channel.push;
+package com.faas.core.utils.rest.remote.pwa;
 
 import com.faas.core.base.model.db.operation.details.channel.OperationSipCallDBModel;
 import com.faas.core.utils.config.AppUtils;
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class PushChannelRequest {
+public class PWARemoteRestCall {
 
 
     @Autowired
@@ -15,6 +15,7 @@ public class PushChannelRequest {
 
 
     public void startSipCallIntegration(OperationSipCallDBModel sipCallDBModel) {
+
 
     }
 

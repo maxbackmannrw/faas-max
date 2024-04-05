@@ -1,4 +1,4 @@
-package com.faas.core.utils.endpoint.request.channel.email;
+package com.faas.core.utils.rest.channel.push;
 
 import com.faas.core.base.model.db.operation.details.channel.OperationSipCallDBModel;
 import com.faas.core.utils.config.AppUtils;
@@ -7,7 +7,8 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class EmailChannelRequest {
+public class PushChannelRestCall {
+
 
     @Autowired
     AppUtils appUtils;
