@@ -7,6 +7,7 @@ import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.repo.channel.account.SmsAccountRepository;
 import com.faas.core.base.repo.operation.details.channel.OperationSmsRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
+import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.rest.channel.sms.SmsChannelRestCall;
 import com.faas.core.utils.rest.utility.CommonRestCall;
 import com.faas.core.utils.config.AppUtils;
@@ -15,10 +16,13 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.Map;
+import java.util.Optional;
 
 
 @Service
 public class SmsChannelHandler {
+
 
     @Autowired
     CommonRestCall commonRestCall;
@@ -39,36 +43,45 @@ public class SmsChannelHandler {
     AppUtils appUtils;
 
     @Async
-    public void sendAsyncSmsHandler(OperationSmsDBModel operationSmsDBModel) throws IOException {
+    public void sendSmsHandlerAsync(SessionDBModel sessionModel, OperationSmsDBModel operationSmsModel) throws IOException {
 
-        /*
-        Optional<SmsAccountDBModel> smsAccountDBModel = smsAccountRepository.findById(operationSmsMessageDBModel.getSmsMessage().getAccountId());
-        Optional<ProcessDBModel> processDBModel = processRepository.findById(sessionDBModel.getProcessId());
-        if (smsAccountDBModel.isPresent() && processDBModel.isPresent()) {
-            operationSmsMessageDBModel = generateSmsBodyService(sessionDBModel, operationSmsMessageDBModel,smsAccountDBModel.get(),processDBModel.get());
-            /smsChannelRestCall.sendSmsMessageRest(operationSmsMessageDBModel,smsAccountDBModel.get());
+        Optional<ProcessDBModel> processModel = processRepository.findById(sessionModel.getProcessId());
+        Optional<SmsAccountDBModel> smsAccountModel = smsAccountRepository.findById(operationSmsModel.getOperationSms().getAccountId());
+        if (processModel.isPresent() && smsAccountModel.isPresent() && operationSmsModel.getOperationSms() != null && operationSmsModel.getOperationSms().getSmsBody() != null) {
+
+            operationSmsModel = smsChannelRestCall.sendSmsRestCall(populateSmsBodyHandler(sessionModel, processModel.get(), operationSmsModel), smsAccountModel.get());
+
+            operationSmsRepository.save(operationSmsModel);
         }
-         */
-        System.out.println("async sendAsyncSmsHandler  worked");
     }
 
 
-    public OperationSmsDBModel populateSmsBodyHandler(SessionDBModel sessionDBModel, OperationSmsDBModel operationSmsDBModel, SmsAccountDBModel smsAccountDBModel, ProcessDBModel processDBModel) throws IOException {
+    public OperationSmsDBModel populateSmsBodyHandler(SessionDBModel sessionModel,ProcessDBModel processModel, OperationSmsDBModel operationSmsModel) throws IOException {
 
-        /*
-        String smsMessageBody = operationSmsDBModel.getSmsMessage().getSmsBody();
-        if (smsMessageBody.contains(AppConstant.CLIENT_NAME_TAG)) {
-            smsMessageBody = smsMessageBody.replace(AppConstant.CLIENT_NAME_TAG, sessionDBModel.getClientName());
-        }
-        if (smsMessageBody.contains(AppConstant.PWA_URL_TAG)) {
-            String pwaUrl = appUtils.getSelectedUrl(sessionDBModel,processDBModel,AppConstant.PWA_URL);
-            if (pwaUrl != null){
-                Map<String,String> pwaUrlMap = commonRequest.urlShortenerRest(pwaUrl);
-                if (pwaUrlMap != null){
-                    smsMessageBody = smsMessageBody.replace(AppConstant.PWA_URL_TAG, appUtils.getValueFromMap(pwaUrlMap,"shortnedUrl"));
+        if (operationSmsModel.getOperationSms() != null && operationSmsModel.getOperationSms().getSmsBody() != null) {
+
+            operationSmsModel = replaceSmsClientNameTag(sessionModel,operationSmsModel);
+            operationSmsModel = replaceSmsRemoteUrlsTag(sessionModel,processModel,operationSmsModel);
+
+            String smsBody = operationSmsModel.getOperationSms().getSmsBody();
+            if (smsBody.contains(AppConstant.CLIENT_NAME_TAG)) {
+                smsBody = smsBody.replace(AppConstant.CLIENT_NAME_TAG, sessionModel.getClientName());
+            }
+
+            /*
+            if (smsBody.contains(AppConstant.PWA_URL_TAG)) {
+                String pwaUrl = appUtils.getSelectedUrl(sessionDBModel,processDBModel,AppConstant.PWA_URL);
+                if (pwaUrl != null){
+                    Map<String,String> pwaUrlMap = commonRestCall.urlShortenerRest(pwaUrl);
+                    if (pwaUrlMap != null){
+                        smsMessageBody = smsMessageBody.replace(AppConstant.PWA_URL_TAG, appUtils.getValueFromMap(pwaUrlMap,"shortnedUrl"));
+                    }
                 }
             }
-        }
+
+                    String smsMessageBody = operationSmsDBModel.getSmsMessage().getSmsBody();
+
+
         if (smsMessageBody.contains(AppConstant.NATIVE_URL_TAG)) {
             String nativeUrl = appUtils.getSelectedUrl(sessionDBModel,processDBModel,AppConstant.NATIVE_URL);
             if (nativeUrl != null){
@@ -82,8 +95,25 @@ public class SmsChannelHandler {
 
         return operationSmsRepository.save(operationSmsDBModel);
 
-         */
+
+*/
+        }
         return null;
+    }
+
+    public OperationSmsDBModel replaceSmsClientNameTag(SessionDBModel sessionModel, OperationSmsDBModel operationSmsModel) {
+
+        String smsBody = operationSmsModel.getOperationSms().getSmsBody();
+        if (smsBody.contains(AppConstant.CLIENT_NAME_TAG)) {
+            smsBody = smsBody.replace(AppConstant.CLIENT_NAME_TAG, sessionModel.getClientName());
+            operationSmsModel.getOperationSms().setSmsBody(smsBody);
+        }
+        return operationSmsModel;
+    }
+
+    public OperationSmsDBModel replaceSmsRemoteUrlsTag(SessionDBModel sessionModel, ProcessDBModel processModel, OperationSmsDBModel operationSmsModel) {
+
+        return operationSmsModel;
     }
 
 

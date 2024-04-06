@@ -7,7 +7,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
-
 @Document(collection = "remote_table")
 public class RemoteDBModel {
 
@@ -15,7 +14,8 @@ public class RemoteDBModel {
     private String id;
     private String remote;
     private String remoteDesc;
-    private String remoteVersion;
+    private String version;
+    private String sourceUrl;
     private List<RemoteDataDAO>remoteDatas;
     private List<RemoteUrlDAO>remoteUrls;
     private long typeId;
@@ -28,11 +28,12 @@ public class RemoteDBModel {
     public RemoteDBModel() {
     }
 
-    public RemoteDBModel(String id, String remote, String remoteDesc, String remoteVersion, List<RemoteDataDAO> remoteDatas, List<RemoteUrlDAO> remoteUrls, long typeId, String remoteType, String baseType, long uDate, long cDate, int status) {
+    public RemoteDBModel(String id, String remote, String remoteDesc, String version, String sourceUrl, List<RemoteDataDAO> remoteDatas, List<RemoteUrlDAO> remoteUrls, long typeId, String remoteType, String baseType, long uDate, long cDate, int status) {
         this.id = id;
         this.remote = remote;
         this.remoteDesc = remoteDesc;
-        this.remoteVersion = remoteVersion;
+        this.version = version;
+        this.sourceUrl = sourceUrl;
         this.remoteDatas = remoteDatas;
         this.remoteUrls = remoteUrls;
         this.typeId = typeId;
@@ -67,12 +68,20 @@ public class RemoteDBModel {
         this.remoteDesc = remoteDesc;
     }
 
-    public String getRemoteVersion() {
-        return remoteVersion;
+    public String getVersion() {
+        return version;
     }
 
-    public void setRemoteVersion(String remoteVersion) {
-        this.remoteVersion = remoteVersion;
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
+    public String getSourceUrl() {
+        return sourceUrl;
+    }
+
+    public void setSourceUrl(String sourceUrl) {
+        this.sourceUrl = sourceUrl;
     }
 
     public List<RemoteDataDAO> getRemoteDatas() {

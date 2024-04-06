@@ -16,12 +16,10 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.util.Map;
 
 
 @Service
 public class WappChannelHandler {
-
 
     @Autowired
     CommonRestCall commonRestCall;
@@ -79,6 +77,7 @@ public class WappChannelHandler {
         if (wappMessageBody.contains(AppConstant.CLIENT_NAME_TAG)) {
             wappMessageBody = wappMessageBody.replace(AppConstant.CLIENT_NAME_TAG, sessionDBModel.getClientName());
         }
+        /*
         if (wappMessageBody.contains(AppConstant.PWA_URL_TAG)) {
             String pwaUrl = appUtils.getSelectedUrl(sessionDBModel,processDBModel,AppConstant.PWA_URL);
             if (pwaUrl != null){
@@ -99,6 +98,7 @@ public class WappChannelHandler {
                 }
             }
         }
+        */
         operationWappMessageDBModel.getWappMessage().setWappBody(wappMessageBody);
         operationWappMessageDBModel.setMessageState(AppConstant.MESSAGE_SENDING);
         operationWappMessageDBModel.setuDate(appUtils.getCurrentTimeStamp());

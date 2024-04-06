@@ -76,10 +76,11 @@ public class RemoteController {
     public ResponseEntity<?> createRemote(@RequestParam long userId,
                                           @RequestParam String remote,
                                           @RequestParam String remoteDesc,
-                                          @RequestParam String remoteVersion,
+                                          @RequestParam String version,
+                                          @RequestParam String sourceUrl,
                                           @RequestParam long typeId) {
 
-        RemoteWSModel response = remoteMiddleware.createRemote(userId,remote,remoteDesc,remoteVersion,typeId);
+        RemoteWSModel response = remoteMiddleware.createRemote(userId,remote,remoteDesc,version,sourceUrl,typeId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -93,9 +94,10 @@ public class RemoteController {
                                           @RequestParam String remoteId,
                                           @RequestParam String remote,
                                           @RequestParam String remoteDesc,
-                                          @RequestParam String remoteVersion) {
+                                          @RequestParam String version,
+                                          @RequestParam String sourceUrl) {
 
-        RemoteWSModel response = remoteMiddleware.updateRemote(userId,remoteId,remote,remoteDesc,remoteVersion);
+        RemoteWSModel response = remoteMiddleware.updateRemote(userId,remoteId,remote,remoteDesc,version,sourceUrl);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

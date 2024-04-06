@@ -87,9 +87,8 @@ public class AppConstant {
 
     public static final String OP_SUCCESS = "OP_SUCCESS";
     public static final String OP_REJECTED = "OP_REJECTED";
-    public static final String OP_NOT_AVAILABLE = "OP_NOT_AVAILABLE";
-    public static final String OP_DATA_FALSE = "OP_DATA_FALSE";
-
+    public static final String OP_NO_RESPONSE = "OP_NO_RESPONSE";
+    public static final String OP_FALSE_INFO = "OP_FALSE_INFO";
 
 
     public static final String FLASH_MESSAGE = "FLASH_MESSAGE";
@@ -150,10 +149,11 @@ public class AppConstant {
     public static final String SMS_PROVIDER_USER_NAME = "wrwrozengint023";
     public static final String SMS_PROVIDER_PASSWORD = "web97898";
 
-    public static final String CLIENT_NAME_TAG = "{clientName}";
-    public static final String PWA_URL_TAG = "{pwaUrl}";
-    public static final String NATIVE_URL_TAG = "{nativeUrl}";
 
+    public static final String CLIENT_NAME_TAG = "{clientName}";
+    public static final String REMOTE_SOURCE_URL_TAG = "{remoteSourceUrl}";
+    public static final String REMOTE_CONTENT_URL_TAG = "{remoteContentUrl}";
+    public static final String REMOTE_UPDATE_URL_TAG = "{remoteUpdateUrl}";
 
 
     public static final String FIRST_TIME_INIT = "FIRST_TIME_INIT";

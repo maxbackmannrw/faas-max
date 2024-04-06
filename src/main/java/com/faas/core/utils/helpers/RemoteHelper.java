@@ -31,7 +31,8 @@ public class RemoteHelper {
         processRemoteDBModel.setRemoteId(remoteDBModel.getId());
         processRemoteDBModel.setRemote(remoteDBModel.getRemote());
         processRemoteDBModel.setRemoteDesc(remoteDBModel.getRemoteDesc());
-        processRemoteDBModel.setRemoteVersion(remoteDBModel.getRemoteVersion());
+        processRemoteDBModel.setVersion(remoteDBModel.getVersion());
+        processRemoteDBModel.setSourceUrl(remoteDBModel.getSourceUrl());
         if (remoteDBModel.getRemoteDatas() != null) {
             processRemoteDBModel.setRemoteDatas(remoteDBModel.getRemoteDatas());
         }else {

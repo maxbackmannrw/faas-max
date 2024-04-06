@@ -26,10 +26,11 @@ public class ClientRemoteDBModel {
     private String remoteId;
     private String remote;
     private String remoteDesc;
-    private String remoteVersion;
+    private String version;
+    private String sourceUrl;
     private List<RemoteDataDAO> remoteDatas;
     private List<RemoteUrlDAO>remoteUrls;
-    private long remoteTypeId;
+    private long typeId;
     private String remoteType;
     private String baseType;
     private String remoteState;
@@ -40,7 +41,7 @@ public class ClientRemoteDBModel {
     public ClientRemoteDBModel() {
     }
 
-    public ClientRemoteDBModel(String id, long clientId, long sessionId, String operationId, String campaignId, String campaign, String campaignType, String campaignCategory, String processId, String process, String processType, String processCategory, String remoteId, String remote, String remoteDesc, String remoteVersion, List<RemoteDataDAO> remoteDatas, List<RemoteUrlDAO> remoteUrls, long remoteTypeId, String remoteType, String baseType, String remoteState, long uDate, long cDate, int status) {
+    public ClientRemoteDBModel(String id, long clientId, long sessionId, String operationId, String campaignId, String campaign, String campaignType, String campaignCategory, String processId, String process, String processType, String processCategory, String remoteId, String remote, String remoteDesc, String version, String sourceUrl, List<RemoteDataDAO> remoteDatas, List<RemoteUrlDAO> remoteUrls, long typeId, String remoteType, String baseType, String remoteState, long uDate, long cDate, int status) {
         this.id = id;
         this.clientId = clientId;
         this.sessionId = sessionId;
@@ -56,10 +57,11 @@ public class ClientRemoteDBModel {
         this.remoteId = remoteId;
         this.remote = remote;
         this.remoteDesc = remoteDesc;
-        this.remoteVersion = remoteVersion;
+        this.version = version;
+        this.sourceUrl = sourceUrl;
         this.remoteDatas = remoteDatas;
         this.remoteUrls = remoteUrls;
-        this.remoteTypeId = remoteTypeId;
+        this.typeId = typeId;
         this.remoteType = remoteType;
         this.baseType = baseType;
         this.remoteState = remoteState;
@@ -188,12 +190,20 @@ public class ClientRemoteDBModel {
         this.remoteDesc = remoteDesc;
     }
 
-    public String getRemoteVersion() {
-        return remoteVersion;
+    public String getVersion() {
+        return version;
     }
 
-    public void setRemoteVersion(String remoteVersion) {
-        this.remoteVersion = remoteVersion;
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
+    public String getSourceUrl() {
+        return sourceUrl;
+    }
+
+    public void setSourceUrl(String sourceUrl) {
+        this.sourceUrl = sourceUrl;
     }
 
     public List<RemoteDataDAO> getRemoteDatas() {
@@ -212,12 +222,12 @@ public class ClientRemoteDBModel {
         this.remoteUrls = remoteUrls;
     }
 
-    public long getRemoteTypeId() {
-        return remoteTypeId;
+    public long getTypeId() {
+        return typeId;
     }
 
-    public void setRemoteTypeId(long remoteTypeId) {
-        this.remoteTypeId = remoteTypeId;
+    public void setTypeId(long typeId) {
+        this.typeId = typeId;
     }
 
     public String getRemoteType() {

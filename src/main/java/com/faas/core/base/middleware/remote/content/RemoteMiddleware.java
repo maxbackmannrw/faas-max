@@ -102,13 +102,13 @@ public class RemoteMiddleware {
     }
 
 
-    public RemoteWSModel createRemote(long userId, String remote, String remoteDesc, String remoteVersion, long typeId) {
+    public RemoteWSModel createRemote(long userId, String remote, String remoteDesc, String version, String sourceUrl, long typeId) {
 
         RemoteWSModel response = new RemoteWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<RemoteWSDTO>remoteWSDTOS = new ArrayList<>();
 
-        RemoteWSDTO remoteWSDTO = remoteFramework.createRemoteService(userId,remote,remoteDesc,remoteVersion,typeId);
+        RemoteWSDTO remoteWSDTO = remoteFramework.createRemoteService(userId,remote,remoteDesc,version,sourceUrl,typeId);
         if (remoteWSDTO != null){
             remoteWSDTOS.add(remoteWSDTO);
         }
@@ -124,13 +124,13 @@ public class RemoteMiddleware {
     }
 
 
-    public RemoteWSModel updateRemote(long userId, String remoteId, String remote, String remoteDesc,String remoteVersion) {
+    public RemoteWSModel updateRemote(long userId, String remoteId, String remote, String remoteDesc,String version, String sourceUrl) {
 
         RemoteWSModel response = new RemoteWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<RemoteWSDTO>remoteWSDTOS = new ArrayList<>();
 
-        RemoteWSDTO remoteWSDTO = remoteFramework.updateRemoteService(userId,remoteId,remote,remoteDesc,remoteVersion);
+        RemoteWSDTO remoteWSDTO = remoteFramework.updateRemoteService(userId,remoteId,remote,remoteDesc,version,sourceUrl);
         if (remoteWSDTO != null){
             remoteWSDTOS.add(remoteWSDTO);
         }

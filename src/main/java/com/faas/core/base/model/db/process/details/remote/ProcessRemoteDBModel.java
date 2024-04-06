@@ -17,7 +17,8 @@ public class ProcessRemoteDBModel {
     private String remoteId;
     private String remote;
     private String remoteDesc;
-    private String remoteVersion;
+    private String version;
+    private String sourceUrl;
     private List<RemoteDataDAO> remoteDatas;
     private List<RemoteUrlDAO>remoteUrls;
     private String remoteCategory;
@@ -31,14 +32,15 @@ public class ProcessRemoteDBModel {
     public ProcessRemoteDBModel() {
     }
 
-    public ProcessRemoteDBModel(String id, String processId, String process, String remoteId, String remote, String remoteDesc, String remoteVersion, List<RemoteDataDAO> remoteDatas, List<RemoteUrlDAO> remoteUrls, String remoteCategory, long typeId, String remoteType, String baseType, long uDate, long cDate, int status) {
+    public ProcessRemoteDBModel(String id, String processId, String process, String remoteId, String remote, String remoteDesc, String version, String sourceUrl, List<RemoteDataDAO> remoteDatas, List<RemoteUrlDAO> remoteUrls, String remoteCategory, long typeId, String remoteType, String baseType, long uDate, long cDate, int status) {
         this.id = id;
         this.processId = processId;
         this.process = process;
         this.remoteId = remoteId;
         this.remote = remote;
         this.remoteDesc = remoteDesc;
-        this.remoteVersion = remoteVersion;
+        this.version = version;
+        this.sourceUrl = sourceUrl;
         this.remoteDatas = remoteDatas;
         this.remoteUrls = remoteUrls;
         this.remoteCategory = remoteCategory;
@@ -98,12 +100,20 @@ public class ProcessRemoteDBModel {
         this.remoteDesc = remoteDesc;
     }
 
-    public String getRemoteVersion() {
-        return remoteVersion;
+    public String getVersion() {
+        return version;
     }
 
-    public void setRemoteVersion(String remoteVersion) {
-        this.remoteVersion = remoteVersion;
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
+    public String getSourceUrl() {
+        return sourceUrl;
+    }
+
+    public void setSourceUrl(String sourceUrl) {
+        this.sourceUrl = sourceUrl;
     }
 
     public List<RemoteDataDAO> getRemoteDatas() {
