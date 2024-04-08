@@ -42,7 +42,7 @@ public class ApiCampaignDetailsMiddleware {
     }
 
 
-    public ApiSummaryWSModel apiGetCampaignDetailsSummary(long agentId,String campaignId) {
+    public ApiSummaryWSModel apiGetCampaignSummary(long agentId,String campaignId) {
 
         ApiSummaryWSModel response = new ApiSummaryWSModel();
         GeneralWSModel general = new GeneralWSModel();
@@ -52,7 +52,7 @@ public class ApiCampaignDetailsMiddleware {
             response.setSummaries(campaignDetailsSummary);
         }
 
-        general.setOperation("getAgentCampaignDetails");
+        general.setOperation("apiGetCampaignSummary");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

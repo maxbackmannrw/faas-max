@@ -92,7 +92,7 @@ public class ApiCampaignFramework {
         return null;
     }
 
-    public List<ApiSummaryWSDTO> apiGetCampaignSummaryService(long agentId) {
+    public List<ApiSummaryWSDTO> apiGetCampaignsSummaryService(long agentId) {
 
         List<ApiSummaryWSDTO> agentCampaignSummary = new ArrayList<>();
         agentCampaignSummary.add(new ApiSummaryWSDTO(AppConstant.AGENT_ALL_CAMPAIGNS_SUMMARY,String.valueOf(campaignAgentRepository.countByAgentId(agentId))));

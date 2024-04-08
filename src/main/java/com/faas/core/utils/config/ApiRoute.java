@@ -21,10 +21,10 @@ public class ApiRoute {
     public static final String API_GET_AGENT_CAMPAIGNS = "apigetagentcampaigns";
     public static final String API_GET_CAMPAIGNS = "apigetcampaigns";
     public static final String API_GET_CAMPAIGN = "apigetcampaign";
-    public static final String API_GET_CAMPAIGN_SUMMARY = "apigetcampaignsummary";
+    public static final String API_GET_CAMPAIGNS_SUMMARY = "apigetcampaignssummary";
 
     public static final String API_GET_CAMPAIGN_DETAILS = "apigetcampaigndetails";
-    public static final String API_GET_CAMPAIGN_DETAILS_SUMMARY = "apigetcampaigndetailssummary";
+    public static final String API_GET_CAMPAIGN_SUMMARY = "apigetcampaigndetailssummary";
     public static final String API_GET_CAMPAIGN_PROCESS = "apigetcampaignprocess";
 
     public static final String API_GET_CAMPAIGN_OPERATIONS = "apigetcampaignoperations";
