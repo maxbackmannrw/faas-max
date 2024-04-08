@@ -427,22 +427,15 @@ public class ChannelHelper {
 
         OperationSmsDBModel operationSmsDBModel = new OperationSmsDBModel();
         operationSmsDBModel.setClientId(operationDBModel.getClientId());
-        operationSmsDBModel.setClientName(operationDBModel.getClientName());
         operationSmsDBModel.setSessionId(operationDBModel.getSessionId());
         operationSmsDBModel.setOperationId(operationDBModel.getId());
         operationSmsDBModel.setAgentId(operationDBModel.getAgentId());
         operationSmsDBModel.setCampaignId(operationDBModel.getCampaignId());
-        operationSmsDBModel.setCampaign(operationDBModel.getCampaign());
-        operationSmsDBModel.setCampaignType(operationDBModel.getCampaignType());
-        operationSmsDBModel.setCampaignCategory(operationDBModel.getCampaignCategory());
         operationSmsDBModel.setProcessId(operationDBModel.getProcessId());
-        operationSmsDBModel.setProcess(operationDBModel.getProcess());
-        operationSmsDBModel.setProcessType(operationDBModel.getProcessType());
-        operationSmsDBModel.setProcessCategory(operationDBModel.getProcessCategory());
         operationSmsDBModel.setClientPhone(clientPhoneDAO);
         operationSmsDBModel.setOperationSms(createOperationSmsDAO(smsTempDBModel,smsChannelDBModel));
         operationSmsDBModel.setSmsSentId(AppConstant.NONE);
-        operationSmsDBModel.setSmsState(AppConstant.NEW_STATE);
+        operationSmsDBModel.setSmsState(AppConstant.MESSAGE_READY);
         operationSmsDBModel.setuDate(appUtils.getCurrentTimeStamp());
         operationSmsDBModel.setcDate(appUtils.getCurrentTimeStamp());
         operationSmsDBModel.setStatus(1);
@@ -489,19 +482,19 @@ public class ChannelHelper {
         return null;
     }
 
-    public OperationWappMessageDBModel createOperationWappMessageDBModel(UserDetailsDBModel agentDetails,SessionDBModel sessionDBModel, ClientPhoneDAO clientPhoneDAO, ProcessWappMessageTempDBModel wappMessageTempDBModel){
+    public OperationWappMessageDBModel createOperationWappMessageDBModel(UserDetailsDBModel agentDetails,OperationDBModel operationModel, ClientPhoneDAO clientPhoneDAO, ProcessWappMessageTempDBModel wappMessageTempModel){
 
         OperationWappMessageDBModel wappMessageDBModel = new OperationWappMessageDBModel();
-        wappMessageDBModel.setClientId(sessionDBModel.getClientId());
-        wappMessageDBModel.setSessionId(sessionDBModel.getId());
-        wappMessageDBModel.setOperationId(sessionDBModel.getOperationId());
-        wappMessageDBModel.setAgentId(sessionDBModel.getAgentId());
-        wappMessageDBModel.setCampaignId(sessionDBModel.getCampaignId());
-        wappMessageDBModel.setProcessId(sessionDBModel.getProcessId());
+        wappMessageDBModel.setClientId(operationModel.getClientId());
+        wappMessageDBModel.setSessionId(operationModel.getSessionId());
+        wappMessageDBModel.setOperationId(operationModel.getId());
+        wappMessageDBModel.setAgentId(operationModel.getAgentId());
+        wappMessageDBModel.setCampaignId(operationModel.getCampaignId());
+        wappMessageDBModel.setProcessId(operationModel.getProcessId());
         wappMessageDBModel.setClientPhone(clientPhoneDAO);
-        wappMessageDBModel.setWappMessage(createOperationWappMessageDAO(agentDetails,wappMessageTempDBModel));
+        wappMessageDBModel.setWappMessage(createOperationWappMessageDAO(agentDetails,wappMessageTempModel));
         wappMessageDBModel.setMessageSentId(AppConstant.NONE);
-        wappMessageDBModel.setMessageState(AppConstant.NEW_STATE);
+        wappMessageDBModel.setMessageState(AppConstant.MESSAGE_READY);
         wappMessageDBModel.setuDate(appUtils.getCurrentTimeStamp());
         wappMessageDBModel.setcDate(appUtils.getCurrentTimeStamp());
         wappMessageDBModel.setStatus(1);

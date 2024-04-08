@@ -10,9 +10,9 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
-
 @Component
 public class SmsChannelRestCall {
+
 
     @Autowired
     RestCallTemplate restCallTemplate;
@@ -24,7 +24,7 @@ public class SmsChannelRestCall {
     AppUtils appUtils;
 
 
-    public OperationSmsDBModel sendOperationSmsRestCall(OperationSmsDBModel operationSmsDBModel, SmsAccountDBModel smsAccountDBModel) throws IOException {
+    public OperationSmsDBModel sendSmsRestCall(OperationSmsDBModel operationSmsDBModel, SmsAccountDBModel smsAccountDBModel) throws IOException {
 
         /*
         Map<String,String> formData = new HashMap<>();

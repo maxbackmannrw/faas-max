@@ -158,17 +158,17 @@ public class ApiOperationWappMessageFramework {
 
     public ApiOperationWappMessageWSDTO apiSendOperationWappMessageService(long agentId,String operationId,String tempId,String numberId) throws IOException {
 
-        List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
-        if (!sessionDBModels.isEmpty()){
+        List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
+        if (!operationDBModels.isEmpty()){
 
             List<UserDetailsDBModel> agentDetails = userDetailsRepository.findByUserId(agentId);
-            ClientPhoneDAO clientPhoneDAO = channelHelper.fetchClientPhoneDAO(sessionDBModels.get(0).getClientId(),numberId);
-            List<ProcessWappMessageTempDBModel> wappMessageTempDBModels = processWappMessageTempRepository.findByIdAndProcessId(tempId,sessionDBModels.get(0).getProcessId());
-            List<ProcessWappChannelDBModel> wappChannelDBModels = processWappChannelRepository.findByProcessId(sessionDBModels.get(0).getProcessId());
+            ClientPhoneDAO clientPhoneDAO = channelHelper.fetchClientPhoneDAO(operationDBModels.get(0).getClientId(),numberId);
+            List<ProcessWappMessageTempDBModel> wappMessageTempDBModels = processWappMessageTempRepository.findByIdAndProcessId(tempId,operationDBModels.get(0).getProcessId());
+            List<ProcessWappChannelDBModel> wappChannelDBModels = processWappChannelRepository.findByProcessId(operationDBModels.get(0).getProcessId());
 
             if (!agentDetails.isEmpty() && agentDetails.get(0).getWappChannel() != null && clientPhoneDAO != null && !wappMessageTempDBModels.isEmpty() && !wappChannelDBModels.isEmpty() && wappChannelDBModels.get(0).getMessageState().equalsIgnoreCase(AppConstant.ACTIVE_STATE)){
 
-                OperationWappMessageDBModel operationWappMessageDBModel = channelHelper.createOperationWappMessageDBModel(agentDetails.get(0),sessionDBModels.get(0),clientPhoneDAO,wappMessageTempDBModels.get(0));
+                OperationWappMessageDBModel operationWappMessageDBModel = channelHelper.createOperationWappMessageDBModel(agentDetails.get(0),operationDBModels.get(0),clientPhoneDAO,wappMessageTempDBModels.get(0));
                 wappChannelHandler.sendAsyncWappMessageService(operationWappMessageDBModel);
                 return new ApiOperationWappMessageWSDTO(operationWappMessageDBModel);
             }

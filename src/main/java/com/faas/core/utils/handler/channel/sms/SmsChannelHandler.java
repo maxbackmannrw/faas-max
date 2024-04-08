@@ -45,20 +45,20 @@ public class SmsChannelHandler {
 
 
     @Async
-    public void asyncSendOperationSmsHandler(OperationDBModel operationModel, OperationSmsDBModel operationSmsModel) throws IOException {
+    public void asyncSendSmsHandler(OperationDBModel operationModel, OperationSmsDBModel operationSmsModel) throws IOException {
 
         Optional<ProcessDBModel> processModel = processRepository.findById(operationModel.getProcessId());
         Optional<SmsAccountDBModel> smsAccountModel = smsAccountRepository.findById(operationSmsModel.getOperationSms().getAccountId());
         if (processModel.isPresent() && smsAccountModel.isPresent() && operationSmsModel.getOperationSms() != null && operationSmsModel.getOperationSms().getSmsBody() != null) {
-            operationSmsModel = populateOperationSmsContent(operationModel, processModel.get(), operationSmsModel);
+            operationSmsModel = populateSmsContent(operationModel, processModel.get(), operationSmsModel);
             if (operationSmsModel != null){
-                operationSmsRepository.save(smsChannelRestCall.sendOperationSmsRestCall(operationSmsModel,smsAccountModel.get()));
+                operationSmsRepository.save(smsChannelRestCall.sendSmsRestCall(operationSmsModel,smsAccountModel.get()));
             }
         }
     }
 
 
-    public OperationSmsDBModel populateOperationSmsContent(OperationDBModel operationModel,ProcessDBModel processModel, OperationSmsDBModel operationSmsModel) throws IOException {
+    public OperationSmsDBModel populateSmsContent(OperationDBModel operationModel,ProcessDBModel processModel, OperationSmsDBModel operationSmsModel) throws IOException {
 
         if (operationSmsModel.getOperationSms() != null && operationSmsModel.getOperationSms().getSmsBody() != null) {
 
@@ -93,7 +93,7 @@ public class SmsChannelHandler {
         return operationSmsRepository.save(operationSmsDBModel);
 
 */
-            operationSmsModel.setSmsState(AppConstant.READY_STATE);
+            operationSmsModel.setSmsState(AppConstant.MESSAGE_SENDING);
             operationSmsModel.setuDate(appUtils.getCurrentTimeStamp());
             return operationSmsRepository.save(operationSmsModel);
         }
