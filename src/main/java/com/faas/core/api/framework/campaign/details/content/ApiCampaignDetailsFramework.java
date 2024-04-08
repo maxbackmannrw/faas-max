@@ -79,14 +79,14 @@ public class ApiCampaignDetailsFramework {
     }
 
 
-    public List<ApiSummaryWSDTO> apiGetCampaignDetailsSummaryService(long agentId, String campaignId) {
+    public List<ApiSummaryWSDTO> apiGetCampaignSummaryService(long agentId, String campaignId) {
 
-        List<ApiSummaryWSDTO> campaignDetailsSummary = new ArrayList<>();
-        campaignDetailsSummary.add(new ApiSummaryWSDTO(AppConstant.AGENT_ACTIVE_OPERATIONS_SUMMARY, String.valueOf(operationRepository.countByAgentIdAndCampaignIdAndOperationState(agentId,campaignId,AppConstant.ACTIVE_STATE))));
-        campaignDetailsSummary.add(new ApiSummaryWSDTO(AppConstant.AGENT_READY_OPERATIONS_SUMMARY,String.valueOf(operationRepository.countByAgentIdAndCampaignIdAndOperationState(agentId,campaignId,AppConstant.READY_STATE ))));
-        campaignDetailsSummary.add(new ApiSummaryWSDTO(AppConstant.AGENT_ALL_OPERATIONS_SUMMARY, String.valueOf(operationRepository.countByAgentIdAndCampaignId(agentId,campaignId))));
+        List<ApiSummaryWSDTO> campaignSummaries = new ArrayList<>();
+        campaignSummaries.add(new ApiSummaryWSDTO(AppConstant.AGENT_ACTIVE_OPERATIONS_SUMMARY, String.valueOf(operationRepository.countByAgentIdAndCampaignIdAndOperationState(agentId,campaignId,AppConstant.ACTIVE_STATE))));
+        campaignSummaries.add(new ApiSummaryWSDTO(AppConstant.AGENT_READY_OPERATIONS_SUMMARY,String.valueOf(operationRepository.countByAgentIdAndCampaignIdAndOperationState(agentId,campaignId,AppConstant.READY_STATE ))));
+        campaignSummaries.add(new ApiSummaryWSDTO(AppConstant.AGENT_ALL_OPERATIONS_SUMMARY, String.valueOf(operationRepository.countByAgentIdAndCampaignId(agentId,campaignId))));
 
-        return campaignDetailsSummary;
+        return campaignSummaries;
     }
 
 

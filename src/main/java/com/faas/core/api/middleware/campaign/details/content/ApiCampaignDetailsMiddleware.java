@@ -47,7 +47,7 @@ public class ApiCampaignDetailsMiddleware {
         ApiSummaryWSModel response = new ApiSummaryWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ApiSummaryWSDTO> campaignDetailsSummary = apiCampaignDetailsFramework.apiGetCampaignDetailsSummaryService(agentId,campaignId);
+        List<ApiSummaryWSDTO> campaignDetailsSummary = apiCampaignDetailsFramework.apiGetCampaignSummaryService(agentId,campaignId);
         if (campaignDetailsSummary != null) {
             response.setSummaries(campaignDetailsSummary);
         }
