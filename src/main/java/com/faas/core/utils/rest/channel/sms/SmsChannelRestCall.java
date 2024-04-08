@@ -24,7 +24,7 @@ public class SmsChannelRestCall {
     AppUtils appUtils;
 
 
-    public OperationSmsDBModel sendSmsRestCall(OperationSmsDBModel operationSmsDBModel, SmsAccountDBModel smsAccountDBModel) throws IOException {
+    public OperationSmsDBModel sendOperationSmsRestCall(OperationSmsDBModel operationSmsDBModel, SmsAccountDBModel smsAccountDBModel) throws IOException {
 
         /*
         Map<String,String> formData = new HashMap<>();

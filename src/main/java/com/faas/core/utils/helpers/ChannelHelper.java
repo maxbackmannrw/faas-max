@@ -423,15 +423,22 @@ public class ChannelHelper {
         return processSmsAccountDAO;
     }
 
-    public OperationSmsDBModel createOperationSmsDBModel(SessionDBModel sessionDBModel, ClientPhoneDAO clientPhoneDAO, ProcessSmsTempDBModel smsTempDBModel, ProcessSmsChannelDBModel smsChannelDBModel){
+    public OperationSmsDBModel createOperationSmsModel(OperationDBModel operationDBModel, ClientPhoneDAO clientPhoneDAO, ProcessSmsTempDBModel smsTempDBModel, ProcessSmsChannelDBModel smsChannelDBModel){
 
         OperationSmsDBModel operationSmsDBModel = new OperationSmsDBModel();
-        operationSmsDBModel.setClientId(sessionDBModel.getClientId());
-        operationSmsDBModel.setSessionId(sessionDBModel.getId());
-        operationSmsDBModel.setOperationId(sessionDBModel.getOperationId());
-        operationSmsDBModel.setAgentId(sessionDBModel.getAgentId());
-        operationSmsDBModel.setCampaignId(sessionDBModel.getCampaignId());
-        operationSmsDBModel.setProcessId(sessionDBModel.getProcessId());
+        operationSmsDBModel.setClientId(operationDBModel.getClientId());
+        operationSmsDBModel.setClientName(operationDBModel.getClientName());
+        operationSmsDBModel.setSessionId(operationDBModel.getSessionId());
+        operationSmsDBModel.setOperationId(operationDBModel.getId());
+        operationSmsDBModel.setAgentId(operationDBModel.getAgentId());
+        operationSmsDBModel.setCampaignId(operationDBModel.getCampaignId());
+        operationSmsDBModel.setCampaign(operationDBModel.getCampaign());
+        operationSmsDBModel.setCampaignType(operationDBModel.getCampaignType());
+        operationSmsDBModel.setCampaignCategory(operationDBModel.getCampaignCategory());
+        operationSmsDBModel.setProcessId(operationDBModel.getProcessId());
+        operationSmsDBModel.setProcess(operationDBModel.getProcess());
+        operationSmsDBModel.setProcessType(operationDBModel.getProcessType());
+        operationSmsDBModel.setProcessCategory(operationDBModel.getProcessCategory());
         operationSmsDBModel.setClientPhone(clientPhoneDAO);
         operationSmsDBModel.setOperationSms(createOperationSmsDAO(smsTempDBModel,smsChannelDBModel));
         operationSmsDBModel.setSmsSentId(AppConstant.NONE);

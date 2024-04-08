@@ -184,9 +184,17 @@ public class OperationHelper {
             OperationDBModel operationDBModel = new OperationDBModel();
             operationDBModel.setSessionId(sessionDBModel.getId());
             operationDBModel.setClientId(sessionDBModel.getClientId());
+            operationDBModel.setClientName(sessionDBModel.getClientName());
             operationDBModel.setAgentId(sessionDBModel.getAgentId());
+            operationDBModel.setAgentName(sessionDBModel.getAgentName());
             operationDBModel.setCampaignId(sessionDBModel.getCampaignId());
+            operationDBModel.setCampaign(sessionDBModel.getCampaign());
+            operationDBModel.setCampaignType(sessionDBModel.getCampaignType());
+            operationDBModel.setCampaignCategory(sessionDBModel.getCampaignCategory());
             operationDBModel.setProcessId(sessionDBModel.getProcessId());
+            operationDBModel.setProcess(sessionDBModel.getProcess());
+            operationDBModel.setProcessType(sessionDBModel.getProcessType());
+            operationDBModel.setProcessCategory(sessionDBModel.getProcessCategory());
 
             if (sessionDBModel.getSessionType().equalsIgnoreCase(AppConstant.MANUAL_SESSION)){
                 operationDBModel.setOperationInquiry(null);
@@ -212,9 +220,10 @@ public class OperationHelper {
             operationDBModel.setOperationScenarios(new ArrayList<>());
             operationDBModel.setOperationActivities(new ArrayList<>());
             operationDBModel.setOperationDatas(new ArrayList<>());
-            operationDBModel.setOperationResult(AppConstant.NONE);
+
             operationDBModel.setOperationType(sessionDBModel.getSessionType());
             operationDBModel.setOperationState(sessionDBModel.getSessionState());
+            operationDBModel.setOperationResult(AppConstant.NONE);
             operationDBModel.setuDate(appUtils.getCurrentTimeStamp());
             operationDBModel.setcDate(appUtils.getCurrentTimeStamp());
             operationDBModel.setStatus(1);

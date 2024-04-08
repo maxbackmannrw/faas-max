@@ -5,20 +5,24 @@ import com.faas.core.base.model.db.operation.details.channel.dao.OperationSmsDAO
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "operation_sms_table")
+@Document(collection = "operation_smss_table")
 public class OperationSmsDBModel {
 
     @Id
     private String id;
     private long clientId;
+    private String clientName;
     private long sessionId;
     private String operationId;
     private long agentId;
-    private String agentName;
     private String campaignId;
     private String campaign;
+    private String campaignType;
+    private String campaignCategory;
     private String processId;
     private String process;
+    private String processType;
+    private String processCategory;
     private ClientPhoneDAO clientPhone;
     private OperationSmsDAO operationSms;
     private String smsSentId;
@@ -30,17 +34,21 @@ public class OperationSmsDBModel {
     public OperationSmsDBModel() {
     }
 
-    public OperationSmsDBModel(String id, long clientId, long sessionId, String operationId, long agentId, String agentName, String campaignId, String campaign, String processId, String process, ClientPhoneDAO clientPhone, OperationSmsDAO operationSms, String smsSentId, String smsState, long uDate, long cDate, int status) {
+    public OperationSmsDBModel(String id, long clientId, String clientName, long sessionId, String operationId, long agentId, String campaignId, String campaign, String campaignType, String campaignCategory, String processId, String process, String processType, String processCategory, ClientPhoneDAO clientPhone, OperationSmsDAO operationSms, String smsSentId, String smsState, long uDate, long cDate, int status) {
         this.id = id;
         this.clientId = clientId;
+        this.clientName = clientName;
         this.sessionId = sessionId;
         this.operationId = operationId;
         this.agentId = agentId;
-        this.agentName = agentName;
         this.campaignId = campaignId;
         this.campaign = campaign;
+        this.campaignType = campaignType;
+        this.campaignCategory = campaignCategory;
         this.processId = processId;
         this.process = process;
+        this.processType = processType;
+        this.processCategory = processCategory;
         this.clientPhone = clientPhone;
         this.operationSms = operationSms;
         this.smsSentId = smsSentId;
@@ -64,6 +72,14 @@ public class OperationSmsDBModel {
 
     public void setClientId(long clientId) {
         this.clientId = clientId;
+    }
+
+    public String getClientName() {
+        return clientName;
+    }
+
+    public void setClientName(String clientName) {
+        this.clientName = clientName;
     }
 
     public long getSessionId() {
@@ -90,14 +106,6 @@ public class OperationSmsDBModel {
         this.agentId = agentId;
     }
 
-    public String getAgentName() {
-        return agentName;
-    }
-
-    public void setAgentName(String agentName) {
-        this.agentName = agentName;
-    }
-
     public String getCampaignId() {
         return campaignId;
     }
@@ -114,6 +122,22 @@ public class OperationSmsDBModel {
         this.campaign = campaign;
     }
 
+    public String getCampaignType() {
+        return campaignType;
+    }
+
+    public void setCampaignType(String campaignType) {
+        this.campaignType = campaignType;
+    }
+
+    public String getCampaignCategory() {
+        return campaignCategory;
+    }
+
+    public void setCampaignCategory(String campaignCategory) {
+        this.campaignCategory = campaignCategory;
+    }
+
     public String getProcessId() {
         return processId;
     }
@@ -128,6 +152,22 @@ public class OperationSmsDBModel {
 
     public void setProcess(String process) {
         this.process = process;
+    }
+
+    public String getProcessType() {
+        return processType;
+    }
+
+    public void setProcessType(String processType) {
+        this.processType = processType;
+    }
+
+    public String getProcessCategory() {
+        return processCategory;
+    }
+
+    public void setProcessCategory(String processCategory) {
+        this.processCategory = processCategory;
     }
 
     public ClientPhoneDAO getClientPhone() {

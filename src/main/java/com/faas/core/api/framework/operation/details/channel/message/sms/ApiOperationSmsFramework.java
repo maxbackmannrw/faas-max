@@ -146,16 +146,14 @@ public class ApiOperationSmsFramework {
 
     public ApiOperationSmsWSDTO apiSendOperationSmsService(long agentId,String operationId,String tempId,String numberId) throws IOException {
 
-        List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
-        if (!sessionDBModels.isEmpty()){
-
-            ClientPhoneDAO clientPhoneDAO = channelHelper.fetchClientPhoneDAO(sessionDBModels.get(0).getClientId(),numberId);
-            List<ProcessSmsTempDBModel> smsTempDBModels = processSmsTempRepository.findByIdAndProcessId(tempId,sessionDBModels.get(0).getProcessId());
-            List<ProcessSmsChannelDBModel> smsChannelDBModels = processSmsChannelRepository.findByProcessId(sessionDBModels.get(0).getProcessId());
+        List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
+        if (!operationDBModels.isEmpty()){
+            ClientPhoneDAO clientPhoneDAO = channelHelper.fetchClientPhoneDAO(operationDBModels.get(0).getClientId(),numberId);
+            List<ProcessSmsTempDBModel> smsTempDBModels = processSmsTempRepository.findByIdAndProcessId(tempId,operationDBModels.get(0).getProcessId());
+            List<ProcessSmsChannelDBModel> smsChannelDBModels = processSmsChannelRepository.findByProcessId(operationDBModels.get(0).getProcessId());
             if (clientPhoneDAO != null && !smsTempDBModels.isEmpty() && !smsChannelDBModels.isEmpty()){
-
-                OperationSmsDBModel operationSmsDBModel = channelHelper.createOperationSmsDBModel(sessionDBModels.get(0),clientPhoneDAO,smsTempDBModels.get(0),smsChannelDBModels.get(0));
-                smsChannelHandler.sendSmsHandlerAsync(sessionDBModels.get(0),operationSmsDBModel);
+                OperationSmsDBModel operationSmsDBModel = channelHelper.createOperationSmsModel(operationDBModels.get(0),clientPhoneDAO,smsTempDBModels.get(0),smsChannelDBModels.get(0));
+                smsChannelHandler.asyncSendOperationSmsHandler(operationDBModels.get(0),operationSmsDBModel);
                 return new ApiOperationSmsWSDTO(operationSmsDBModel);
             }
         }
