@@ -440,6 +440,7 @@ public class OperationHelper {
         List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndAgentId(operationDBModel.getSessionId(),operationDBModel.getAgentId());
         Optional<ClientDBModel> clientDBModel = clientRepository.findById(operationDBModel.getClientId());
         List<ClientDetailsDBModel> clientDetails = clientDetailsRepository.findByClientId(operationDBModel.getClientId());
+
         if (!sessionDBModels.isEmpty() && clientDBModel.isPresent() && !clientDetails.isEmpty()) {
 
             ApiOperationDetailsWSDTO operationDetailsWSDTO = new ApiOperationDetailsWSDTO();

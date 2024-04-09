@@ -17,7 +17,7 @@ public class OperationWappMessageDBModel {
     private String campaignId;
     private String processId;
     private ClientPhoneDAO clientPhone;
-    private OperationWappMessageDAO wappMessage;
+    private OperationWappMessageDAO operationWappMessage;
     private String messageSentId;
     private String messageState;
     private long uDate;
@@ -27,7 +27,7 @@ public class OperationWappMessageDBModel {
     public OperationWappMessageDBModel() {
     }
 
-    public OperationWappMessageDBModel(String id, long clientId, long sessionId, String operationId, long agentId, String campaignId, String processId, ClientPhoneDAO clientPhone, OperationWappMessageDAO wappMessage, String messageSentId, String messageState, long uDate, long cDate, int status) {
+    public OperationWappMessageDBModel(String id, long clientId, long sessionId, String operationId, long agentId, String campaignId, String processId, ClientPhoneDAO clientPhone, OperationWappMessageDAO operationWappMessage, String messageSentId, String messageState, long uDate, long cDate, int status) {
         this.id = id;
         this.clientId = clientId;
         this.sessionId = sessionId;
@@ -36,7 +36,7 @@ public class OperationWappMessageDBModel {
         this.campaignId = campaignId;
         this.processId = processId;
         this.clientPhone = clientPhone;
-        this.wappMessage = wappMessage;
+        this.operationWappMessage = operationWappMessage;
         this.messageSentId = messageSentId;
         this.messageState = messageState;
         this.uDate = uDate;
@@ -108,12 +108,12 @@ public class OperationWappMessageDBModel {
         this.clientPhone = clientPhone;
     }
 
-    public OperationWappMessageDAO getWappMessage() {
-        return wappMessage;
+    public OperationWappMessageDAO getOperationWappMessage() {
+        return operationWappMessage;
     }
 
-    public void setWappMessage(OperationWappMessageDAO wappMessage) {
-        this.wappMessage = wappMessage;
+    public void setOperationWappMessage(OperationWappMessageDAO operationWappMessage) {
+        this.operationWappMessage = operationWappMessage;
     }
 
     public String getMessageSentId() {

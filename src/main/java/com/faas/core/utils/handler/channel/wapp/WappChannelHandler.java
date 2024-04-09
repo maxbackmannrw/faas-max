@@ -73,7 +73,7 @@ public class WappChannelHandler {
 
     public OperationWappMessageDBModel prepareWappMessageHandler(SessionDBModel sessionDBModel, OperationWappMessageDBModel operationWappMessageDBModel, WappAccountDBModel wappAccountDBModel, ProcessDBModel processDBModel) throws IOException {
 
-        String wappMessageBody = operationWappMessageDBModel.getWappMessage().getWappBody();
+        String wappMessageBody = operationWappMessageDBModel.getOperationWappMessage().getWappBody();
         if (wappMessageBody.contains(AppConstant.CLIENT_NAME_TAG)) {
             wappMessageBody = wappMessageBody.replace(AppConstant.CLIENT_NAME_TAG, sessionDBModel.getClientName());
         }
@@ -99,7 +99,7 @@ public class WappChannelHandler {
             }
         }
         */
-        operationWappMessageDBModel.getWappMessage().setWappBody(wappMessageBody);
+        operationWappMessageDBModel.getOperationWappMessage().setWappBody(wappMessageBody);
         operationWappMessageDBModel.setMessageState(AppConstant.MESSAGE_SENDING);
         operationWappMessageDBModel.setuDate(appUtils.getCurrentTimeStamp());
 

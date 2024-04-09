@@ -160,17 +160,15 @@ public class ApiOperationWappMessageFramework {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
         if (!operationDBModels.isEmpty()){
-
             List<UserDetailsDBModel> agentDetails = userDetailsRepository.findByUserId(agentId);
             ClientPhoneDAO clientPhoneDAO = channelHelper.fetchClientPhoneDAO(operationDBModels.get(0).getClientId(),numberId);
             List<ProcessWappMessageTempDBModel> wappMessageTempDBModels = processWappMessageTempRepository.findByIdAndProcessId(tempId,operationDBModels.get(0).getProcessId());
             List<ProcessWappChannelDBModel> wappChannelDBModels = processWappChannelRepository.findByProcessId(operationDBModels.get(0).getProcessId());
-
             if (!agentDetails.isEmpty() && agentDetails.get(0).getWappChannel() != null && clientPhoneDAO != null && !wappMessageTempDBModels.isEmpty() && !wappChannelDBModels.isEmpty() && wappChannelDBModels.get(0).getMessageState().equalsIgnoreCase(AppConstant.ACTIVE_STATE)){
-
                 OperationWappMessageDBModel operationWappMessageDBModel = channelHelper.createOperationWappMessageModel(agentDetails.get(0),operationDBModels.get(0),clientPhoneDAO,wappMessageTempDBModels.get(0));
-                wappChannelHandler.sendAsyncWappMessageHandler(operationWappMessageDBModel);
-
+                if (operationWappMessageDBModel != null){
+                    wappChannelHandler.sendAsyncWappMessageHandler(operationWappMessageDBModel);
+                }
                 return new ApiOperationWappMessageWSDTO(operationWappMessageDBModel);
             }
         }

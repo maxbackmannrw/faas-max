@@ -54,9 +54,9 @@ public class SmsChannelHandler {
 
         Optional<SmsAccountDBModel> smsAccountModel = smsAccountRepository.findById(operationSmsModel.getOperationSms().getAccountId());
         if (smsAccountModel.isPresent() && operationSmsModel.getOperationSms() != null && operationSmsModel.getOperationSms().getSmsBody() != null) {
-            operationSmsModel = prepareOperationSmsHandler(operationModel, operationSmsModel);
+            operationSmsModel = smsChannelRestCall.sendSmsRestCall(prepareOperationSmsHandler(operationModel, operationSmsModel),smsAccountModel.get());
             if (operationSmsModel != null){
-                operationSmsRepository.save(smsChannelRestCall.sendSmsRestCall(operationSmsModel,smsAccountModel.get()));
+                operationSmsRepository.save(operationSmsModel);
             }
         }
     }

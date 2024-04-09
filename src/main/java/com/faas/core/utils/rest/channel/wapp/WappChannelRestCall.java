@@ -148,7 +148,7 @@ public class WappChannelRestCall {
         //formData.put("id", wappMessageDBModel.getPhoneNumber());
         //formData.put("message", wappMessageDBModel.getWappMessage().getWappBody());
         formData.put("id", "905458189014");
-        formData.put("message", operationWappMessageDBModel.getWappMessage().getWappBody());
+        formData.put("message", operationWappMessageDBModel.getOperationWappMessage().getWappBody());
 
         String response = restCallTemplate.callPostXFormRequest(requestUrl,formData);
         if (response != null){

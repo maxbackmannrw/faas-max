@@ -484,22 +484,22 @@ public class ChannelHelper {
 
     public OperationWappMessageDBModel createOperationWappMessageModel(UserDetailsDBModel agentDetails,OperationDBModel operationModel, ClientPhoneDAO clientPhoneDAO, ProcessWappMessageTempDBModel wappMessageTempModel){
 
-        OperationWappMessageDBModel wappMessageDBModel = new OperationWappMessageDBModel();
-        wappMessageDBModel.setClientId(operationModel.getClientId());
-        wappMessageDBModel.setSessionId(operationModel.getSessionId());
-        wappMessageDBModel.setOperationId(operationModel.getId());
-        wappMessageDBModel.setAgentId(operationModel.getAgentId());
-        wappMessageDBModel.setCampaignId(operationModel.getCampaignId());
-        wappMessageDBModel.setProcessId(operationModel.getProcessId());
-        wappMessageDBModel.setClientPhone(clientPhoneDAO);
-        wappMessageDBModel.setWappMessage(createOperationWappMessageDAO(agentDetails,wappMessageTempModel));
-        wappMessageDBModel.setMessageSentId(AppConstant.NONE);
-        wappMessageDBModel.setMessageState(AppConstant.MESSAGE_READY);
-        wappMessageDBModel.setuDate(appUtils.getCurrentTimeStamp());
-        wappMessageDBModel.setcDate(appUtils.getCurrentTimeStamp());
-        wappMessageDBModel.setStatus(1);
+        OperationWappMessageDBModel operationWappMessageDBModel = new OperationWappMessageDBModel();
+        operationWappMessageDBModel.setClientId(operationModel.getClientId());
+        operationWappMessageDBModel.setSessionId(operationModel.getSessionId());
+        operationWappMessageDBModel.setOperationId(operationModel.getId());
+        operationWappMessageDBModel.setAgentId(operationModel.getAgentId());
+        operationWappMessageDBModel.setCampaignId(operationModel.getCampaignId());
+        operationWappMessageDBModel.setProcessId(operationModel.getProcessId());
+        operationWappMessageDBModel.setClientPhone(clientPhoneDAO);
+        operationWappMessageDBModel.setOperationWappMessage(createOperationWappMessageDAO(agentDetails,wappMessageTempModel));
+        operationWappMessageDBModel.setMessageSentId(AppConstant.NONE);
+        operationWappMessageDBModel.setMessageState(AppConstant.MESSAGE_READY);
+        operationWappMessageDBModel.setuDate(appUtils.getCurrentTimeStamp());
+        operationWappMessageDBModel.setcDate(appUtils.getCurrentTimeStamp());
+        operationWappMessageDBModel.setStatus(1);
 
-        return operationWappMessageRepository.save(wappMessageDBModel);
+        return operationWappMessageRepository.save(operationWappMessageDBModel);
     }
 
     public OperationWappMessageDAO createOperationWappMessageDAO(UserDetailsDBModel agentDetails,ProcessWappMessageTempDBModel wappMessageTempDBModel){
