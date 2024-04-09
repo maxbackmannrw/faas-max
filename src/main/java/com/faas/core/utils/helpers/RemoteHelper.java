@@ -4,6 +4,7 @@ import com.faas.core.base.model.db.process.content.ProcessDBModel;
 import com.faas.core.base.model.db.process.details.remote.ProcessRemoteDBModel;
 import com.faas.core.base.model.db.remote.content.RemoteDBModel;
 import com.faas.core.base.model.db.remote.content.dao.RemoteDataDAO;
+import com.faas.core.base.model.db.remote.content.dao.RemoteUrlDAO;
 import com.faas.core.base.repo.process.details.remote.ProcessRemoteRepository;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,6 @@ public class RemoteHelper {
         processRemoteDBModel.setRemote(remoteDBModel.getRemote());
         processRemoteDBModel.setRemoteDesc(remoteDBModel.getRemoteDesc());
         processRemoteDBModel.setVersion(remoteDBModel.getVersion());
-        processRemoteDBModel.setSourceUrl(remoteDBModel.getSourceUrl());
         if (remoteDBModel.getRemoteDatas() != null) {
             processRemoteDBModel.setRemoteDatas(remoteDBModel.getRemoteDatas());
         }else {
@@ -67,5 +67,18 @@ public class RemoteHelper {
         return remoteDataDAO;
     }
 
+
+
+    public RemoteUrlDAO createRemoteUrlDAO(String remoteUrl, String urlType) {
+
+        RemoteUrlDAO remoteUrlDAO = new RemoteUrlDAO();
+        remoteUrlDAO.setId(appUtils.generateUUID());
+        remoteUrlDAO.setRemoteUrl(remoteUrl);
+        remoteUrlDAO.setUrlType(urlType);
+        remoteUrlDAO.setcDate(appUtils.getCurrentTimeStamp());
+        remoteUrlDAO.setStatus(1);
+
+        return remoteUrlDAO;
+    }
 
 }

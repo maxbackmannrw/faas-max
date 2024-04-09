@@ -1,6 +1,7 @@
 package com.faas.core.base.model.db.process.details.channel.temp;
 
 import com.faas.core.base.model.db.process.details.channel.temp.dao.ProcessTempDataDAO;
+import com.faas.core.base.model.db.process.details.channel.temp.dao.ProcessTempRemoteUrlDAO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -17,22 +18,23 @@ public class ProcessWappMessageTempDBModel {
     private String wappBody;
     private long typeId;
     private String messageType;
+    private List<ProcessTempRemoteUrlDAO>remotes;
     private List<ProcessTempDataDAO>datas;
     private long uDate;
     private long cDate;
     private int status;
 
-
     public ProcessWappMessageTempDBModel() {
     }
 
-    public ProcessWappMessageTempDBModel(String id, String processId, String wappTitle, String wappBody, long typeId, String messageType, List<ProcessTempDataDAO> datas, long uDate, long cDate, int status) {
+    public ProcessWappMessageTempDBModel(String id, String processId, String wappTitle, String wappBody, long typeId, String messageType, List<ProcessTempRemoteUrlDAO> remotes, List<ProcessTempDataDAO> datas, long uDate, long cDate, int status) {
         this.id = id;
         this.processId = processId;
         this.wappTitle = wappTitle;
         this.wappBody = wappBody;
         this.typeId = typeId;
         this.messageType = messageType;
+        this.remotes = remotes;
         this.datas = datas;
         this.uDate = uDate;
         this.cDate = cDate;
@@ -85,6 +87,14 @@ public class ProcessWappMessageTempDBModel {
 
     public void setMessageType(String messageType) {
         this.messageType = messageType;
+    }
+
+    public List<ProcessTempRemoteUrlDAO> getRemotes() {
+        return remotes;
+    }
+
+    public void setRemotes(List<ProcessTempRemoteUrlDAO> remotes) {
+        this.remotes = remotes;
     }
 
     public List<ProcessTempDataDAO> getDatas() {

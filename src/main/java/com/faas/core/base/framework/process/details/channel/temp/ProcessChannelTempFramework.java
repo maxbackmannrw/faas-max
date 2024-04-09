@@ -81,7 +81,7 @@ public class ProcessChannelTempFramework {
         return null;
     }
 
-    public ProcessSmsTempWSDTO createProcessSmsTempService(String processId, String smsTitle, String smsBody, String senderId, long typeId) {
+    public ProcessSmsTempWSDTO createProcessSmsTempService(long userId, String processId, String smsTitle, String smsBody, String senderId, String processRemoteId, String remoteUrlId, long typeId) {
 
         Optional<MessageTypeDBModel> messageTypeDBModel = messageTypeRepository.findById(typeId);
         if (messageTypeDBModel.isPresent()) {

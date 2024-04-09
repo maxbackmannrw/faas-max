@@ -1,6 +1,7 @@
 package com.faas.core.base.model.db.process.details.channel.temp;
 
 import com.faas.core.base.model.db.process.details.channel.temp.dao.ProcessTempDataDAO;
+import com.faas.core.base.model.db.process.details.channel.temp.dao.ProcessTempRemoteUrlDAO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -18,6 +19,7 @@ public class ProcessEmailTempDBModel {
     private String emailSender;
     private long typeId;
     private String emailType;
+    private List<ProcessTempRemoteUrlDAO>remotes;
     private List<ProcessTempDataDAO>datas;
     private long uDate;
     private long cDate;
@@ -26,7 +28,7 @@ public class ProcessEmailTempDBModel {
     public ProcessEmailTempDBModel() {
     }
 
-    public ProcessEmailTempDBModel(String id, String processId, String emailSubject, String emailBody, String emailFooter, String emailSender, long typeId, String emailType, List<ProcessTempDataDAO> datas, long uDate, long cDate, int status) {
+    public ProcessEmailTempDBModel(String id, String processId, String emailSubject, String emailBody, String emailFooter, String emailSender, long typeId, String emailType, List<ProcessTempRemoteUrlDAO> remotes, List<ProcessTempDataDAO> datas, long uDate, long cDate, int status) {
         this.id = id;
         this.processId = processId;
         this.emailSubject = emailSubject;
@@ -35,6 +37,7 @@ public class ProcessEmailTempDBModel {
         this.emailSender = emailSender;
         this.typeId = typeId;
         this.emailType = emailType;
+        this.remotes = remotes;
         this.datas = datas;
         this.uDate = uDate;
         this.cDate = cDate;
@@ -103,6 +106,14 @@ public class ProcessEmailTempDBModel {
 
     public void setEmailType(String emailType) {
         this.emailType = emailType;
+    }
+
+    public List<ProcessTempRemoteUrlDAO> getRemotes() {
+        return remotes;
+    }
+
+    public void setRemotes(List<ProcessTempRemoteUrlDAO> remotes) {
+        this.remotes = remotes;
     }
 
     public List<ProcessTempDataDAO> getDatas() {

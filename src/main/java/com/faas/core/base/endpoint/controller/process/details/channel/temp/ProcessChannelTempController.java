@@ -65,9 +65,11 @@ public class ProcessChannelTempController {
                                                   @RequestParam String smsTitle,
                                                   @RequestParam String smsBody,
                                                   @RequestParam String senderId,
+                                                  @RequestParam String processRemoteId,
+                                                  @RequestParam String remoteUrlId,
                                                   @RequestParam long typeId) {
 
-        ProcessSmsTempWSModel response = processChannelTempMiddleware.createProcessSmsTemp(userId,processId,smsTitle,smsBody,senderId,typeId);
+        ProcessSmsTempWSModel response = processChannelTempMiddleware.createProcessSmsTemp(userId,processId,smsTitle,smsBody,senderId,processRemoteId,remoteUrlId,typeId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

@@ -18,9 +18,8 @@ public class ProcessRemoteDBModel {
     private String remote;
     private String remoteDesc;
     private String version;
-    private String sourceUrl;
-    private List<RemoteDataDAO> remoteDatas;
     private List<RemoteUrlDAO>remoteUrls;
+    private List<RemoteDataDAO> remoteDatas;
     private String remoteCategory;
     private long typeId;
     private String remoteType;
@@ -32,7 +31,7 @@ public class ProcessRemoteDBModel {
     public ProcessRemoteDBModel() {
     }
 
-    public ProcessRemoteDBModel(String id, String processId, String process, String remoteId, String remote, String remoteDesc, String version, String sourceUrl, List<RemoteDataDAO> remoteDatas, List<RemoteUrlDAO> remoteUrls, String remoteCategory, long typeId, String remoteType, String baseType, long uDate, long cDate, int status) {
+    public ProcessRemoteDBModel(String id, String processId, String process, String remoteId, String remote, String remoteDesc, String version, List<RemoteUrlDAO> remoteUrls, List<RemoteDataDAO> remoteDatas, String remoteCategory, long typeId, String remoteType, String baseType, long uDate, long cDate, int status) {
         this.id = id;
         this.processId = processId;
         this.process = process;
@@ -40,9 +39,8 @@ public class ProcessRemoteDBModel {
         this.remote = remote;
         this.remoteDesc = remoteDesc;
         this.version = version;
-        this.sourceUrl = sourceUrl;
-        this.remoteDatas = remoteDatas;
         this.remoteUrls = remoteUrls;
+        this.remoteDatas = remoteDatas;
         this.remoteCategory = remoteCategory;
         this.typeId = typeId;
         this.remoteType = remoteType;
@@ -108,12 +106,12 @@ public class ProcessRemoteDBModel {
         this.version = version;
     }
 
-    public String getSourceUrl() {
-        return sourceUrl;
+    public List<RemoteUrlDAO> getRemoteUrls() {
+        return remoteUrls;
     }
 
-    public void setSourceUrl(String sourceUrl) {
-        this.sourceUrl = sourceUrl;
+    public void setRemoteUrls(List<RemoteUrlDAO> remoteUrls) {
+        this.remoteUrls = remoteUrls;
     }
 
     public List<RemoteDataDAO> getRemoteDatas() {
@@ -122,14 +120,6 @@ public class ProcessRemoteDBModel {
 
     public void setRemoteDatas(List<RemoteDataDAO> remoteDatas) {
         this.remoteDatas = remoteDatas;
-    }
-
-    public List<RemoteUrlDAO> getRemoteUrls() {
-        return remoteUrls;
-    }
-
-    public void setRemoteUrls(List<RemoteUrlDAO> remoteUrls) {
-        this.remoteUrls = remoteUrls;
     }
 
     public String getRemoteCategory() {

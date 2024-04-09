@@ -101,13 +101,13 @@ public class ProcessChannelTempMiddleware {
         return response;
     }
 
-    public ProcessSmsTempWSModel createProcessSmsTemp(long userId, String processId, String smsTitle, String smsBody, String senderId, long typeId) {
+    public ProcessSmsTempWSModel createProcessSmsTemp(long userId, String processId, String smsTitle, String smsBody, String senderId, String processRemoteId, String remoteUrlId, long typeId) {
 
         ProcessSmsTempWSModel response = new ProcessSmsTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessSmsTempWSDTO> processSmsTempWSDTOS = new ArrayList<>();
 
-        ProcessSmsTempWSDTO processSmsTempWSDTO = processChannelTempFramework.createProcessSmsTempService(processId,smsTitle,smsBody,senderId,typeId);
+        ProcessSmsTempWSDTO processSmsTempWSDTO = processChannelTempFramework.createProcessSmsTempService(userId,processId,smsTitle,smsBody,senderId,processRemoteId,remoteUrlId,typeId);
         if (processSmsTempWSDTO != null) {
             processSmsTempWSDTOS.add(processSmsTempWSDTO);
         }

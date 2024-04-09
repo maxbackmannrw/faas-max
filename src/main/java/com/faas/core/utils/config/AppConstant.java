@@ -150,6 +150,11 @@ public class AppConstant {
     public static final String SMS_PROVIDER_PASSWORD = "web97898";
 
 
+    public static final String REMOTE_SOURCE_URL = "REMOTE_SOURCE_URL";
+    public static final String REMOTE_CONTENT_URL = "REMOTE_CONTENT_URL";
+    public static final String REMOTE_UPDATE_URL = "REMOTE_UPDATE_URL";
+
+
     public static final String CLIENT_NAME_TAG = "{clientName}";
     public static final String REMOTE_SOURCE_URL_TAG = "{remoteSourceUrl}";
     public static final String REMOTE_CONTENT_URL_TAG = "{remoteContentUrl}";

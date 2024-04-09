@@ -27,7 +27,6 @@ public class ClientRemoteDBModel {
     private String remote;
     private String remoteDesc;
     private String version;
-    private String sourceUrl;
     private List<RemoteDataDAO> remoteDatas;
     private List<RemoteUrlDAO>remoteUrls;
     private long typeId;
@@ -41,7 +40,7 @@ public class ClientRemoteDBModel {
     public ClientRemoteDBModel() {
     }
 
-    public ClientRemoteDBModel(String id, long clientId, long sessionId, String operationId, String campaignId, String campaign, String campaignType, String campaignCategory, String processId, String process, String processType, String processCategory, String remoteId, String remote, String remoteDesc, String version, String sourceUrl, List<RemoteDataDAO> remoteDatas, List<RemoteUrlDAO> remoteUrls, long typeId, String remoteType, String baseType, String remoteState, long uDate, long cDate, int status) {
+    public ClientRemoteDBModel(String id, long clientId, long sessionId, String operationId, String campaignId, String campaign, String campaignType, String campaignCategory, String processId, String process, String processType, String processCategory, String remoteId, String remote, String remoteDesc, String version, List<RemoteDataDAO> remoteDatas, List<RemoteUrlDAO> remoteUrls, long typeId, String remoteType, String baseType, String remoteState, long uDate, long cDate, int status) {
         this.id = id;
         this.clientId = clientId;
         this.sessionId = sessionId;
@@ -58,7 +57,6 @@ public class ClientRemoteDBModel {
         this.remote = remote;
         this.remoteDesc = remoteDesc;
         this.version = version;
-        this.sourceUrl = sourceUrl;
         this.remoteDatas = remoteDatas;
         this.remoteUrls = remoteUrls;
         this.typeId = typeId;
@@ -196,14 +194,6 @@ public class ClientRemoteDBModel {
 
     public void setVersion(String version) {
         this.version = version;
-    }
-
-    public String getSourceUrl() {
-        return sourceUrl;
-    }
-
-    public void setSourceUrl(String sourceUrl) {
-        this.sourceUrl = sourceUrl;
     }
 
     public List<RemoteDataDAO> getRemoteDatas() {

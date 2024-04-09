@@ -1,6 +1,7 @@
 package com.faas.core.base.model.db.process.details.channel.temp;
 
 import com.faas.core.base.model.db.process.details.channel.temp.dao.ProcessTempDataDAO;
+import com.faas.core.base.model.db.process.details.channel.temp.dao.ProcessTempRemoteUrlDAO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -18,6 +19,7 @@ public class ProcessPushTempDBModel {
     private String pushSender;
     private long typeId;
     private String pushType;
+    private List<ProcessTempRemoteUrlDAO>remotes;
     private List<ProcessTempDataDAO>datas;
     private long uDate;
     private long cDate;
@@ -26,7 +28,7 @@ public class ProcessPushTempDBModel {
     public ProcessPushTempDBModel() {
     }
 
-    public ProcessPushTempDBModel(String id, String processId, String pushHeader, String pushBody, String pushFooter, String pushSender, long typeId, String pushType, List<ProcessTempDataDAO> datas, long uDate, long cDate, int status) {
+    public ProcessPushTempDBModel(String id, String processId, String pushHeader, String pushBody, String pushFooter, String pushSender, long typeId, String pushType, List<ProcessTempRemoteUrlDAO> remotes, List<ProcessTempDataDAO> datas, long uDate, long cDate, int status) {
         this.id = id;
         this.processId = processId;
         this.pushHeader = pushHeader;
@@ -35,6 +37,7 @@ public class ProcessPushTempDBModel {
         this.pushSender = pushSender;
         this.typeId = typeId;
         this.pushType = pushType;
+        this.remotes = remotes;
         this.datas = datas;
         this.uDate = uDate;
         this.cDate = cDate;
@@ -103,6 +106,14 @@ public class ProcessPushTempDBModel {
 
     public void setPushType(String pushType) {
         this.pushType = pushType;
+    }
+
+    public List<ProcessTempRemoteUrlDAO> getRemotes() {
+        return remotes;
+    }
+
+    public void setRemotes(List<ProcessTempRemoteUrlDAO> remotes) {
+        this.remotes = remotes;
     }
 
     public List<ProcessTempDataDAO> getDatas() {

@@ -113,6 +113,11 @@ public class SmsChannelHandler {
 
     public OperationSmsDBModel replaceSmsRemoteUrlsTag(OperationDBModel operationModel, OperationSmsDBModel operationSmsModel) {
 
+        String smsBody = operationSmsModel.getOperationSms().getSmsBody();
+        if (smsBody.contains(AppConstant.REMOTE_SOURCE_URL_TAG)) {
+            smsBody = smsBody.replace(AppConstant.CLIENT_NAME_TAG, operationModel.getClientName());
+            operationSmsModel.getOperationSms().setSmsBody(smsBody);
+        }
         return operationSmsModel;
     }
 

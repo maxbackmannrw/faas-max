@@ -173,7 +173,6 @@ public class RemoteDetailsFramework {
             remoteUrlDAO.setUrlType(urlType);
             remoteUrlDAO.setcDate(appUtils.getCurrentTimeStamp());
             remoteUrlDAO.setStatus(1);
-
             if (remoteDBModel.get().getRemoteUrls() == null){
                 List<RemoteUrlDAO> remoteUrlDAOS = new ArrayList<>();
                 remoteUrlDAOS.add(remoteUrlDAO);

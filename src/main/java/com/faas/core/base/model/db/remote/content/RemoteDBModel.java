@@ -15,9 +15,8 @@ public class RemoteDBModel {
     private String remote;
     private String remoteDesc;
     private String version;
-    private String sourceUrl;
-    private List<RemoteDataDAO>remoteDatas;
     private List<RemoteUrlDAO>remoteUrls;
+    private List<RemoteDataDAO>remoteDatas;
     private long typeId;
     private String remoteType;
     private String baseType;
@@ -28,14 +27,13 @@ public class RemoteDBModel {
     public RemoteDBModel() {
     }
 
-    public RemoteDBModel(String id, String remote, String remoteDesc, String version, String sourceUrl, List<RemoteDataDAO> remoteDatas, List<RemoteUrlDAO> remoteUrls, long typeId, String remoteType, String baseType, long uDate, long cDate, int status) {
+    public RemoteDBModel(String id, String remote, String remoteDesc, String version, List<RemoteUrlDAO> remoteUrls, List<RemoteDataDAO> remoteDatas, long typeId, String remoteType, String baseType, long uDate, long cDate, int status) {
         this.id = id;
         this.remote = remote;
         this.remoteDesc = remoteDesc;
         this.version = version;
-        this.sourceUrl = sourceUrl;
-        this.remoteDatas = remoteDatas;
         this.remoteUrls = remoteUrls;
+        this.remoteDatas = remoteDatas;
         this.typeId = typeId;
         this.remoteType = remoteType;
         this.baseType = baseType;
@@ -76,12 +74,12 @@ public class RemoteDBModel {
         this.version = version;
     }
 
-    public String getSourceUrl() {
-        return sourceUrl;
+    public List<RemoteUrlDAO> getRemoteUrls() {
+        return remoteUrls;
     }
 
-    public void setSourceUrl(String sourceUrl) {
-        this.sourceUrl = sourceUrl;
+    public void setRemoteUrls(List<RemoteUrlDAO> remoteUrls) {
+        this.remoteUrls = remoteUrls;
     }
 
     public List<RemoteDataDAO> getRemoteDatas() {
@@ -90,14 +88,6 @@ public class RemoteDBModel {
 
     public void setRemoteDatas(List<RemoteDataDAO> remoteDatas) {
         this.remoteDatas = remoteDatas;
-    }
-
-    public List<RemoteUrlDAO> getRemoteUrls() {
-        return remoteUrls;
-    }
-
-    public void setRemoteUrls(List<RemoteUrlDAO> remoteUrls) {
-        this.remoteUrls = remoteUrls;
     }
 
     public long getTypeId() {

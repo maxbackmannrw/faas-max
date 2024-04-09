@@ -1,10 +1,12 @@
 package com.faas.core.base.framework.remote.content;
 
 import com.faas.core.base.model.db.remote.content.RemoteDBModel;
+import com.faas.core.base.model.db.remote.content.dao.RemoteUrlDAO;
 import com.faas.core.base.model.db.remote.settings.RemoteTypeDBModel;
 import com.faas.core.base.model.ws.remote.content.dto.RemoteWSDTO;
 import com.faas.core.base.repo.remote.content.RemoteRepository;
 import com.faas.core.base.repo.remote.settings.RemoteTypeRepository;
+import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.RemoteHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,9 +85,12 @@ public class RemoteFramework {
             remoteDBModel.setRemote(remote);
             remoteDBModel.setRemoteDesc(remoteDesc);
             remoteDBModel.setVersion(version);
-            remoteDBModel.setSourceUrl(sourceUrl);
+            List<RemoteUrlDAO> remoteUrlDAOS = new ArrayList<>();
+            if (sourceUrl != null){
+                remoteUrlDAOS.add(remoteHelper.createRemoteUrlDAO(sourceUrl, AppConstant.REMOTE_SOURCE_URL));
+            }
+            remoteDBModel.setRemoteUrls(remoteUrlDAOS);
             remoteDBModel.setRemoteDatas(new ArrayList<>());
-            remoteDBModel.setRemoteUrls(new ArrayList<>());
             remoteDBModel.setTypeId(typeId);
             remoteDBModel.setRemoteType(remoteTypeDBModel.get().getRemoteType());
             remoteDBModel.setBaseType(remoteTypeDBModel.get().getBaseType());
@@ -99,7 +104,7 @@ public class RemoteFramework {
     }
 
 
-    public RemoteWSDTO updateRemoteService(long userId, String remoteId, String remote, String remoteDesc,String version, String sourceUrl) {
+    public RemoteWSDTO updateRemoteService(long userId, String remoteId, String remote, String remoteDesc,String version) {
 
         Optional<RemoteDBModel>remoteDBModel = remoteRepository.findById(remoteId);
         if (remoteDBModel.isPresent()) {
@@ -107,7 +112,6 @@ public class RemoteFramework {
             remoteDBModel.get().setRemote(remote);
             remoteDBModel.get().setRemoteDesc(remoteDesc);
             remoteDBModel.get().setVersion(version);
-            remoteDBModel.get().setSourceUrl(sourceUrl);
             remoteDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
 
             return new RemoteWSDTO(remoteRepository.save(remoteDBModel.get()));
