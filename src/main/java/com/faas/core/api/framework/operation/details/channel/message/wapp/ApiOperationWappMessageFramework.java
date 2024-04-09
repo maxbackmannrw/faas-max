@@ -23,9 +23,9 @@ import com.faas.core.base.repo.user.content.UserRepository;
 import com.faas.core.base.repo.user.details.UserDetailsRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
+import com.faas.core.utils.handler.channel.wapp.WappChannelHandler;
 import com.faas.core.utils.helpers.ChannelHelper;
 import com.faas.core.utils.helpers.OperationHelper;
-import com.faas.core.utils.handler.channel.wapp.WappChannelHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -78,35 +78,35 @@ public class ApiOperationWappMessageFramework {
 
     public ApiOperationWappMessageChannelWSDTO apiGetOperationWappMessageChannelService(long agentId, String operationId) {
 
-        List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
-        if (!operationDBModels.isEmpty()){
+        List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
+        if (!operationDBModels.isEmpty()) {
             List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(operationDBModels.get(0).getClientId());
-            if (!clientDetailsDBModels.isEmpty()){
-                return operationHelper.getApiOperationWappMessageChannelWSDTO(operationDBModels.get(0),clientDetailsDBModels.get(0));
+            if (!clientDetailsDBModels.isEmpty()) {
+                return operationHelper.getApiOperationWappMessageChannelWSDTO(operationDBModels.get(0), clientDetailsDBModels.get(0));
             }
         }
         return null;
     }
 
 
-    public ApiOperationWappMessageAccountWSDTO apiGetOperationWappMessageAccountService(long agentId, String operationId){
+    public ApiOperationWappMessageAccountWSDTO apiGetOperationWappMessageAccountService(long agentId, String operationId) {
 
-        List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
-        if (!sessionDBModels.isEmpty()){
-            return channelHelper.getApiWappMessageAccountWSDTO(agentId,sessionDBModels.get(0).getProcessId());
+        List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId, operationId);
+        if (!sessionDBModels.isEmpty()) {
+            return channelHelper.getApiWappMessageAccountWSDTO(agentId, sessionDBModels.get(0).getProcessId());
         }
         return null;
     }
 
 
-    public ApiOperationWappMessageTempWSDTO apiGetOperationWappMessageTempsService(long agentId,String operationId){
+    public ApiOperationWappMessageTempWSDTO apiGetOperationWappMessageTempsService(long agentId, String operationId) {
 
-        List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
-        if (!sessionDBModels.isEmpty()){
+        List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId, operationId);
+        if (!sessionDBModels.isEmpty()) {
             ApiOperationWappMessageTempWSDTO wappMessageTempWSDTO = new ApiOperationWappMessageTempWSDTO();
-            wappMessageTempWSDTO.setWappAccount(channelHelper.getApiWappMessageAccountWSDTO(agentId,sessionDBModels.get(0).getProcessId()));
+            wappMessageTempWSDTO.setWappAccount(channelHelper.getApiWappMessageAccountWSDTO(agentId, sessionDBModels.get(0).getProcessId()));
             List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(sessionDBModels.get(0).getClientId());
-            if (!clientDetailsDBModels.isEmpty() && clientDetailsDBModels.get(0).getClientPhones() != null){
+            if (!clientDetailsDBModels.isEmpty() && clientDetailsDBModels.get(0).getClientPhones() != null) {
                 wappMessageTempWSDTO.setClientPhones(clientDetailsDBModels.get(0).getClientPhones());
             }
             wappMessageTempWSDTO.setOperationWappMessageTemps(processWappMessageTempRepository.findByProcessId(sessionDBModels.get(0).getProcessId()));
@@ -117,17 +117,17 @@ public class ApiOperationWappMessageFramework {
     }
 
 
-    public ApiOperationWappMessageTempWSDTO apiGetOperationWappMessageTempService(long agentId,String operationId,String tempId){
+    public ApiOperationWappMessageTempWSDTO apiGetOperationWappMessageTempService(long agentId, String operationId, String tempId) {
 
-        List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
-        if (!sessionDBModels.isEmpty()){
+        List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId, operationId);
+        if (!sessionDBModels.isEmpty()) {
             ApiOperationWappMessageTempWSDTO wappMessageTempWSDTO = new ApiOperationWappMessageTempWSDTO();
-            wappMessageTempWSDTO.setWappAccount(channelHelper.getApiWappMessageAccountWSDTO(agentId,sessionDBModels.get(0).getProcessId()));
+            wappMessageTempWSDTO.setWappAccount(channelHelper.getApiWappMessageAccountWSDTO(agentId, sessionDBModels.get(0).getProcessId()));
             List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(sessionDBModels.get(0).getClientId());
-            if (!clientDetailsDBModels.isEmpty() && clientDetailsDBModels.get(0).getClientPhones() != null){
+            if (!clientDetailsDBModels.isEmpty() && clientDetailsDBModels.get(0).getClientPhones() != null) {
                 wappMessageTempWSDTO.setClientPhones(clientDetailsDBModels.get(0).getClientPhones());
             }
-            wappMessageTempWSDTO.setOperationWappMessageTemps(processWappMessageTempRepository.findByIdAndProcessId(tempId,sessionDBModels.get(0).getProcessId()));
+            wappMessageTempWSDTO.setOperationWappMessageTemps(processWappMessageTempRepository.findByIdAndProcessId(tempId, sessionDBModels.get(0).getProcessId()));
 
             return wappMessageTempWSDTO;
         }
@@ -135,38 +135,38 @@ public class ApiOperationWappMessageFramework {
     }
 
 
-    public List<ApiOperationWappMessageWSDTO> apiGetOperationWappMessagesService(long agentId,String operationId){
+    public List<ApiOperationWappMessageWSDTO> apiGetOperationWappMessagesService(long agentId, String operationId) {
 
-        List<ApiOperationWappMessageWSDTO>wappMessageWSDTOS = new ArrayList<>();
-        List<OperationWappMessageDBModel> operationWappMessages = operationWappMessageRepository.findByOperationIdAndAgentId(operationId,agentId);
+        List<ApiOperationWappMessageWSDTO> operationWappMessageWSDTOS = new ArrayList<>();
+        List<OperationWappMessageDBModel> operationWappMessages = operationWappMessageRepository.findByOperationIdAndAgentId(operationId, agentId);
         for (OperationWappMessageDBModel operationWappMessage : operationWappMessages) {
-            wappMessageWSDTOS.add(new ApiOperationWappMessageWSDTO(operationWappMessage));
+            operationWappMessageWSDTOS.add(new ApiOperationWappMessageWSDTO(operationWappMessage));
         }
-        return wappMessageWSDTOS;
+        return operationWappMessageWSDTOS;
     }
 
 
-    public ApiOperationWappMessageWSDTO apiGetOperationWappMessageService(long agentId,String operationId,String messageId) {
+    public ApiOperationWappMessageWSDTO apiGetOperationWappMessageService(long agentId, String operationId, String messageId) {
 
-        List<OperationWappMessageDBModel> operationWappMessages = operationWappMessageRepository.findByIdAndOperationId(messageId,operationId);
-        if (!operationWappMessages.isEmpty()){
+        List<OperationWappMessageDBModel> operationWappMessages = operationWappMessageRepository.findByIdAndOperationId(messageId, operationId);
+        if (!operationWappMessages.isEmpty()) {
             return new ApiOperationWappMessageWSDTO(operationWappMessages.get(0));
         }
         return null;
     }
 
 
-    public ApiOperationWappMessageWSDTO apiSendOperationWappMessageService(long agentId,String operationId,String tempId,String numberId) throws IOException {
+    public ApiOperationWappMessageWSDTO apiSendOperationWappMessageService(long agentId, String operationId, String tempId, String numberId) throws IOException {
 
-        List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
-        if (!operationDBModels.isEmpty()){
+        List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
+        if (!operationDBModels.isEmpty()) {
             List<UserDetailsDBModel> agentDetails = userDetailsRepository.findByUserId(agentId);
-            ClientPhoneDAO clientPhoneDAO = channelHelper.fetchClientPhoneDAO(operationDBModels.get(0).getClientId(),numberId);
-            List<ProcessWappMessageTempDBModel> wappMessageTempDBModels = processWappMessageTempRepository.findByIdAndProcessId(tempId,operationDBModels.get(0).getProcessId());
+            ClientPhoneDAO clientPhoneDAO = channelHelper.fetchClientPhoneDAO(operationDBModels.get(0).getClientId(), numberId);
+            List<ProcessWappMessageTempDBModel> wappMessageTempDBModels = processWappMessageTempRepository.findByIdAndProcessId(tempId, operationDBModels.get(0).getProcessId());
             List<ProcessWappChannelDBModel> wappChannelDBModels = processWappChannelRepository.findByProcessId(operationDBModels.get(0).getProcessId());
-            if (!agentDetails.isEmpty() && agentDetails.get(0).getWappChannel() != null && clientPhoneDAO != null && !wappMessageTempDBModels.isEmpty() && !wappChannelDBModels.isEmpty() && wappChannelDBModels.get(0).getMessageState().equalsIgnoreCase(AppConstant.ACTIVE_STATE)){
-                OperationWappMessageDBModel operationWappMessageDBModel = channelHelper.createOperationWappMessageModel(agentDetails.get(0),operationDBModels.get(0),clientPhoneDAO,wappMessageTempDBModels.get(0));
-                if (operationWappMessageDBModel != null){
+            if (!agentDetails.isEmpty() && agentDetails.get(0).getWappChannel() != null && clientPhoneDAO != null && !wappMessageTempDBModels.isEmpty() && !wappChannelDBModels.isEmpty() && wappChannelDBModels.get(0).getMessageState().equalsIgnoreCase(AppConstant.ACTIVE_STATE)) {
+                OperationWappMessageDBModel operationWappMessageDBModel = channelHelper.createOperationWappMessageModel(agentDetails.get(0), operationDBModels.get(0), clientPhoneDAO, wappMessageTempDBModels.get(0));
+                if (operationWappMessageDBModel != null) {
                     wappChannelHandler.sendAsyncWappMessageHandler(operationWappMessageDBModel);
                 }
                 return new ApiOperationWappMessageWSDTO(operationWappMessageDBModel);
@@ -176,10 +176,10 @@ public class ApiOperationWappMessageFramework {
     }
 
 
-    public ApiOperationWappMessageWSDTO apiUpdateOperationWappMessageService(long agentId,String operationId,String messageId,String messageState){
+    public ApiOperationWappMessageWSDTO apiUpdateOperationWappMessageService(long agentId, String operationId, String messageId, String messageState) {
 
-        List<OperationWappMessageDBModel> operationWappMessages = operationWappMessageRepository.findByIdAndOperationId(messageId,operationId);
-        if (!operationWappMessages.isEmpty()){
+        List<OperationWappMessageDBModel> operationWappMessages = operationWappMessageRepository.findByIdAndOperationId(messageId, operationId);
+        if (!operationWappMessages.isEmpty()) {
             operationWappMessages.get(0).setMessageState(messageState);
             operationWappMessages.get(0).setuDate(appUtils.getCurrentTimeStamp());
             return new ApiOperationWappMessageWSDTO(operationWappMessageRepository.save(operationWappMessages.get(0)));
@@ -188,10 +188,10 @@ public class ApiOperationWappMessageFramework {
     }
 
 
-    public ApiOperationWappMessageWSDTO apiRemoveOperationWappMessageService(long agentId,String operationId,String messageId){
+    public ApiOperationWappMessageWSDTO apiRemoveOperationWappMessageService(long agentId, String operationId, String messageId) {
 
-        List<OperationWappMessageDBModel> operationWappMessages = operationWappMessageRepository.findByIdAndOperationId(messageId,operationId);
-        if (!operationWappMessages.isEmpty()){
+        List<OperationWappMessageDBModel> operationWappMessages = operationWappMessageRepository.findByIdAndOperationId(messageId, operationId);
+        if (!operationWappMessages.isEmpty()) {
             operationWappMessageRepository.delete(operationWappMessages.get(0));
             return new ApiOperationWappMessageWSDTO(operationWappMessages.get(0));
         }
