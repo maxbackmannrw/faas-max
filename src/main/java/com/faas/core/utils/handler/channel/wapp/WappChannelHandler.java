@@ -48,7 +48,7 @@ public class WappChannelHandler {
     }
 
     @Async
-    public void sendAsyncWappMessageService(OperationWappMessageDBModel wappMessageDBModel) throws IOException {
+    public void sendAsyncWappMessageHandler(OperationWappMessageDBModel wappMessageDBModel) throws IOException {
 
         /*
         Optional<WappAccountDBModel> wappAccountDBModel = wappAccountRepository.findById(operationWappMessageDBModel.getWappMessage().getAccountId());
@@ -71,7 +71,7 @@ public class WappChannelHandler {
          */
     }
 
-    public OperationWappMessageDBModel generateWappMessageBodyService(SessionDBModel sessionDBModel, OperationWappMessageDBModel operationWappMessageDBModel, WappAccountDBModel wappAccountDBModel, ProcessDBModel processDBModel) throws IOException {
+    public OperationWappMessageDBModel prepareWappMessageHandler(SessionDBModel sessionDBModel, OperationWappMessageDBModel operationWappMessageDBModel, WappAccountDBModel wappAccountDBModel, ProcessDBModel processDBModel) throws IOException {
 
         String wappMessageBody = operationWappMessageDBModel.getWappMessage().getWappBody();
         if (wappMessageBody.contains(AppConstant.CLIENT_NAME_TAG)) {

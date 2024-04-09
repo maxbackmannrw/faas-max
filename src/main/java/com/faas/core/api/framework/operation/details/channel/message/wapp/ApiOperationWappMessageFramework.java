@@ -168,8 +168,9 @@ public class ApiOperationWappMessageFramework {
 
             if (!agentDetails.isEmpty() && agentDetails.get(0).getWappChannel() != null && clientPhoneDAO != null && !wappMessageTempDBModels.isEmpty() && !wappChannelDBModels.isEmpty() && wappChannelDBModels.get(0).getMessageState().equalsIgnoreCase(AppConstant.ACTIVE_STATE)){
 
-                OperationWappMessageDBModel operationWappMessageDBModel = channelHelper.createOperationWappMessageDBModel(agentDetails.get(0),operationDBModels.get(0),clientPhoneDAO,wappMessageTempDBModels.get(0));
-                wappChannelHandler.sendAsyncWappMessageService(operationWappMessageDBModel);
+                OperationWappMessageDBModel operationWappMessageDBModel = channelHelper.createOperationWappMessageModel(agentDetails.get(0),operationDBModels.get(0),clientPhoneDAO,wappMessageTempDBModels.get(0));
+                wappChannelHandler.sendAsyncWappMessageHandler(operationWappMessageDBModel);
+
                 return new ApiOperationWappMessageWSDTO(operationWappMessageDBModel);
             }
         }

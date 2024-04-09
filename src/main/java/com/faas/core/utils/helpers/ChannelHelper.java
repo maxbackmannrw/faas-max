@@ -482,7 +482,7 @@ public class ChannelHelper {
         return null;
     }
 
-    public OperationWappMessageDBModel createOperationWappMessageDBModel(UserDetailsDBModel agentDetails,OperationDBModel operationModel, ClientPhoneDAO clientPhoneDAO, ProcessWappMessageTempDBModel wappMessageTempModel){
+    public OperationWappMessageDBModel createOperationWappMessageModel(UserDetailsDBModel agentDetails,OperationDBModel operationModel, ClientPhoneDAO clientPhoneDAO, ProcessWappMessageTempDBModel wappMessageTempModel){
 
         OperationWappMessageDBModel wappMessageDBModel = new OperationWappMessageDBModel();
         wappMessageDBModel.setClientId(operationModel.getClientId());

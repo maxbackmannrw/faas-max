@@ -156,7 +156,7 @@ public class ApiOperationSmsFramework {
             if (clientPhoneDAO != null && !smsTempDBModels.isEmpty() && !smsChannelDBModels.isEmpty()){
 
                 OperationSmsDBModel operationSmsDBModel = channelHelper.createOperationSmsModel(operationDBModels.get(0),clientPhoneDAO,smsTempDBModels.get(0),smsChannelDBModels.get(0));
-                smsChannelHandler.asyncSendSmsHandler(operationDBModels.get(0),operationSmsDBModel);
+                smsChannelHandler.sendAsyncSmsHandler(operationDBModels.get(0),operationSmsDBModel);
 
                 return new ApiOperationSmsWSDTO(operationSmsDBModel);
             }

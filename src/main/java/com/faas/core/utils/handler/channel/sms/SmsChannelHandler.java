@@ -1,10 +1,12 @@
 package com.faas.core.utils.handler.channel.sms;
 
+import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.channel.account.SmsAccountDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationSmsDBModel;
 import com.faas.core.base.model.db.process.content.ProcessDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
+import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.channel.account.SmsAccountRepository;
 import com.faas.core.base.repo.operation.details.channel.OperationSmsRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
@@ -32,6 +34,9 @@ public class SmsChannelHandler {
     SmsChannelRestCall smsChannelRestCall;
 
     @Autowired
+    CampaignRepository campaignRepository;
+
+    @Autowired
     ProcessRepository processRepository;
 
     @Autowired
@@ -45,25 +50,21 @@ public class SmsChannelHandler {
 
 
     @Async
-    public void asyncSendSmsHandler(OperationDBModel operationModel, OperationSmsDBModel operationSmsModel) throws IOException {
+    public void sendAsyncSmsHandler(OperationDBModel operationModel, OperationSmsDBModel operationSmsModel) throws IOException {
 
-        Optional<ProcessDBModel> processModel = processRepository.findById(operationModel.getProcessId());
         Optional<SmsAccountDBModel> smsAccountModel = smsAccountRepository.findById(operationSmsModel.getOperationSms().getAccountId());
-        if (processModel.isPresent() && smsAccountModel.isPresent() && operationSmsModel.getOperationSms() != null && operationSmsModel.getOperationSms().getSmsBody() != null) {
-            operationSmsModel = populateSmsContent(operationModel, processModel.get(), operationSmsModel);
+        if (smsAccountModel.isPresent() && operationSmsModel.getOperationSms() != null && operationSmsModel.getOperationSms().getSmsBody() != null) {
+            operationSmsModel = prepareOperationSmsHandler(operationModel, operationSmsModel);
             if (operationSmsModel != null){
                 operationSmsRepository.save(smsChannelRestCall.sendSmsRestCall(operationSmsModel,smsAccountModel.get()));
             }
         }
     }
 
+    public OperationSmsDBModel prepareOperationSmsHandler(OperationDBModel operationModel,OperationSmsDBModel operationSmsModel) throws IOException {
 
-    public OperationSmsDBModel populateSmsContent(OperationDBModel operationModel,ProcessDBModel processModel, OperationSmsDBModel operationSmsModel) throws IOException {
-
-        if (operationSmsModel.getOperationSms() != null && operationSmsModel.getOperationSms().getSmsBody() != null) {
-
-            operationSmsModel = replaceSmsClientNameTag(operationModel,operationSmsModel);
-            operationSmsModel = replaceSmsRemoteUrlsTag(operationModel,processModel,operationSmsModel);
+        operationSmsModel = replaceSmsClientNameTag(operationModel,operationSmsModel);
+        operationSmsModel = replaceSmsRemoteUrlsTag(operationModel,operationSmsModel);
 
             /*
             if (smsBody.contains(AppConstant.PWA_URL_TAG)) {
@@ -93,11 +94,11 @@ public class SmsChannelHandler {
         return operationSmsRepository.save(operationSmsDBModel);
 
 */
-            operationSmsModel.setSmsState(AppConstant.MESSAGE_SENDING);
-            operationSmsModel.setuDate(appUtils.getCurrentTimeStamp());
-            return operationSmsRepository.save(operationSmsModel);
-        }
-        return null;
+
+        operationSmsModel.setSmsState(AppConstant.MESSAGE_SENDING);
+        operationSmsModel.setuDate(appUtils.getCurrentTimeStamp());
+
+        return operationSmsRepository.save(operationSmsModel);
     }
 
     public OperationSmsDBModel replaceSmsClientNameTag(OperationDBModel operationModel, OperationSmsDBModel operationSmsModel) {
@@ -110,7 +111,7 @@ public class SmsChannelHandler {
         return operationSmsModel;
     }
 
-    public OperationSmsDBModel replaceSmsRemoteUrlsTag(OperationDBModel operationModel, ProcessDBModel processModel, OperationSmsDBModel operationSmsModel) {
+    public OperationSmsDBModel replaceSmsRemoteUrlsTag(OperationDBModel operationModel, OperationSmsDBModel operationSmsModel) {
 
         return operationSmsModel;
     }
