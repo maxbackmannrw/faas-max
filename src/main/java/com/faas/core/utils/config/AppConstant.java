@@ -80,15 +80,14 @@ public class AppConstant {
     public static final String ALL_STATES = "ALL_STATES";
 
 
-    public static final String NEW_REMOTE = "NEW_REMOTE";
-    public static final String READY_REMOTE = "READY_REMOTE";
-    public static final String FAILED_REMOTE = "FAILED_REMOTE";
 
 
-    public static final String OP_SUCCESS = "OP_SUCCESS";
-    public static final String OP_REJECTED = "OP_REJECTED";
-    public static final String OP_NO_RESPONSE = "OP_NO_RESPONSE";
-    public static final String OP_FALSE_INFO = "OP_FALSE_INFO";
+
+
+    public static final String OPERATION_SUCCESS = "OPERATION_SUCCESS";
+    public static final String OPERATION_REJECTED = "OPERATION_REJECTED";
+    public static final String OPERATION_NO_RESPONSE = "OPERATION_NO_RESPONSE";
+    public static final String OPERATION_FALSE_CONTENT = "OPERATION_FALSE_CONTENT";
 
 
     public static final String FLASH_MESSAGE = "FLASH_MESSAGE";
@@ -150,6 +149,17 @@ public class AppConstant {
     public static final String SMS_PROVIDER_PASSWORD = "web97898";
 
 
+
+    public static final String MAIN_REMOTE = "MAIN_REMOTE";
+    public static final String INQUIRY_REMOTE = "INQUIRY_REMOTE";
+    public static final String FLOW_REMOTE = "FLOW_REMOTE";
+
+    public static final String NEW_REMOTE = "NEW_REMOTE";
+    public static final String READY_REMOTE = "READY_REMOTE";
+    public static final String FAILED_REMOTE = "FAILED_REMOTE";
+
+
+
     public static final String REMOTE_SOURCE_URL = "REMOTE_SOURCE_URL";
     public static final String REMOTE_CONTENT_URL = "REMOTE_CONTENT_URL";
     public static final String REMOTE_UPDATE_URL = "REMOTE_UPDATE_URL";
@@ -159,6 +169,9 @@ public class AppConstant {
     public static final String REMOTE_SOURCE_URL_TAG = "{remoteSourceUrl}";
     public static final String REMOTE_CONTENT_URL_TAG = "{remoteContentUrl}";
     public static final String REMOTE_UPDATE_URL_TAG = "{remoteUpdateUrl}";
+
+
+
 
 
     public static final String FIRST_TIME_INIT = "FIRST_TIME_INIT";
