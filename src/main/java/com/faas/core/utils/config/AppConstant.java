@@ -120,10 +120,7 @@ public class AppConstant {
     public static final String AGENT_ALL_CAMPAIGNS_SUMMARY = "AGENT_ALL_CAMPAIGNS_SUMMARY";
 
 
-    public static final String PWA_REMOTE = "PWA_REMOTE";
-    public static final String IOS_REMOTE = "IOS_REMOTE";
-    public static final String ANDROID_REMOTE = "ANDROID_REMOTE";
-    public static final String ALL_REMOTES = "ALL_REMOTES";
+
 
 
     public static final String USER_TYPE= "USER_TYPE";
@@ -150,6 +147,11 @@ public class AppConstant {
 
 
 
+    public static final String PWA_REMOTE = "PWA_REMOTE";
+    public static final String IOS_REMOTE = "IOS_REMOTE";
+    public static final String ANDROID_REMOTE = "ANDROID_REMOTE";
+    public static final String ALL_REMOTES = "ALL_REMOTES";
+
     public static final String MAIN_REMOTE = "MAIN_REMOTE";
     public static final String INQUIRY_REMOTE = "INQUIRY_REMOTE";
     public static final String FLOW_REMOTE = "FLOW_REMOTE";
@@ -169,8 +171,6 @@ public class AppConstant {
     public static final String REMOTE_SOURCE_URL_TAG = "{remoteSourceUrl}";
     public static final String REMOTE_CONTENT_URL_TAG = "{remoteContentUrl}";
     public static final String REMOTE_UPDATE_URL_TAG = "{remoteUpdateUrl}";
-
-
 
 
 
