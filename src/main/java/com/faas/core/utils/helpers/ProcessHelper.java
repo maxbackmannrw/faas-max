@@ -13,7 +13,11 @@ import com.faas.core.base.model.db.process.details.scenario.ProcessScenarioDBMod
 import com.faas.core.base.model.db.process.details.trigger.*;
 import com.faas.core.base.model.ws.process.content.dto.ProcessWSDTO;
 import com.faas.core.base.model.ws.process.details.channel.content.dto.*;
-import com.faas.core.base.model.ws.process.details.channel.temp.dto.*;
+import com.faas.core.base.model.ws.process.details.channel.temp.dto.ProcessTempWSDTO;
+import com.faas.core.base.model.ws.process.details.channel.temp.dto.ProcessEmailTempWSDTO;
+import com.faas.core.base.model.ws.process.details.channel.temp.dto.ProcessPushTempWSDTO;
+import com.faas.core.base.model.ws.process.details.channel.temp.dto.ProcessSmsTempWSDTO;
+import com.faas.core.base.model.ws.process.details.channel.temp.dto.ProcessWappMessageTempWSDTO;
 import com.faas.core.base.model.ws.process.details.content.dto.ProcessDetailsWSDTO;
 import com.faas.core.base.model.ws.process.details.remote.dto.ProcessRemoteWSDTO;
 import com.faas.core.base.model.ws.process.details.scenario.dto.ProcessScenarioWSDTO;

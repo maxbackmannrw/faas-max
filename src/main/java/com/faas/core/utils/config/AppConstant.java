@@ -152,7 +152,7 @@ public class AppConstant {
     public static final String ANDROID_REMOTE = "ANDROID_REMOTE";
     public static final String ALL_REMOTES = "ALL_REMOTES";
 
-    public static final String MAIN_REMOTE = "MAIN_REMOTE";
+    public static final String BASE_REMOTE = "BASE_REMOTE";
     public static final String INQUIRY_REMOTE = "INQUIRY_REMOTE";
     public static final String FLOW_REMOTE = "FLOW_REMOTE";
 
