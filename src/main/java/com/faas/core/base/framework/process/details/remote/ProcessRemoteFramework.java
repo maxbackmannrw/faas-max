@@ -62,7 +62,7 @@ public class ProcessRemoteFramework {
 
     public ProcessRemoteWSDTO getProcessRemoteService(long userId,String processId,String processRemoteId) {
 
-        List<ProcessRemoteDBModel> processRemoteDBModels = processRemoteRepository.findByIdAndProcessId(processId,processRemoteId);
+        List<ProcessRemoteDBModel> processRemoteDBModels = processRemoteRepository.findByIdAndProcessId(processRemoteId,processId);
         if (!processRemoteDBModels.isEmpty()) {
             return new ProcessRemoteWSDTO(processRemoteDBModels.get(0));
         }
