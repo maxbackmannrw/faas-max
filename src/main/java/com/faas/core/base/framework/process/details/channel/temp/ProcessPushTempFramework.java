@@ -64,7 +64,7 @@ public class ProcessPushTempFramework {
             processPushTempDBModel.setPushSender(pushSender);
             processPushTempDBModel.setTypeId(pushTypeDBModel.get().getId());
             processPushTempDBModel.setPushType(pushTypeDBModel.get().getPushType());
-            processPushTempDBModel.setDatas(new ArrayList<>());
+            processPushTempDBModel.setTempDatas(new ArrayList<>());
             processPushTempDBModel.setuDate(appUtils.getCurrentTimeStamp());
             processPushTempDBModel.setcDate(appUtils.getCurrentTimeStamp());
             processPushTempDBModel.setStatus(1);

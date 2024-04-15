@@ -10,17 +10,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class ProcessTempFramework {
 
-
     @Autowired
     ProcessHelper processHelper;
 
     @Autowired
     AppUtils appUtils;
 
-
     public ProcessTempWSDTO getProcessTempService(long userId, String processId) {
         return processHelper.createProcessTempWSDTO(processId);
     }
-
 
 }

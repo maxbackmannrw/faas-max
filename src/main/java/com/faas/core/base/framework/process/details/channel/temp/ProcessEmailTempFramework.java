@@ -53,23 +53,25 @@ public class ProcessEmailTempFramework {
 
     public ProcessEmailTempWSDTO createProcessEmailTempService(String processId, String emailSubject, String emailBody, String emailFooter, String emailSender, long typeId) {
 
-        ProcessEmailTempDBModel processEmailTempDBModel = new ProcessEmailTempDBModel();
-        processEmailTempDBModel.setProcessId(processId);
-        processEmailTempDBModel.setEmailSubject(emailSubject);
-        processEmailTempDBModel.setEmailBody(emailBody);
-        processEmailTempDBModel.setEmailFooter(emailFooter);
-        processEmailTempDBModel.setEmailSender(emailSender);
         Optional<EmailTypeDBModel> emailTypeDBModel = emailTypeRepository.findById(typeId);
         if (emailTypeDBModel.isPresent()){
+
+            ProcessEmailTempDBModel processEmailTempDBModel = new ProcessEmailTempDBModel();
+            processEmailTempDBModel.setProcessId(processId);
+            processEmailTempDBModel.setEmailSubject(emailSubject);
+            processEmailTempDBModel.setEmailBody(emailBody);
+            processEmailTempDBModel.setEmailFooter(emailFooter);
+            processEmailTempDBModel.setEmailSender(emailSender);
             processEmailTempDBModel.setTypeId(typeId);
             processEmailTempDBModel.setEmailType(emailTypeDBModel.get().getEmailType());
-        }
-        processEmailTempDBModel.setDatas(new ArrayList<>());
-        processEmailTempDBModel.setuDate(appUtils.getCurrentTimeStamp());
-        processEmailTempDBModel.setcDate(appUtils.getCurrentTimeStamp());
-        processEmailTempDBModel.setStatus(1);
+            processEmailTempDBModel.setTempDatas(new ArrayList<>());
+            processEmailTempDBModel.setuDate(appUtils.getCurrentTimeStamp());
+            processEmailTempDBModel.setcDate(appUtils.getCurrentTimeStamp());
+            processEmailTempDBModel.setStatus(1);
 
-        return new ProcessEmailTempWSDTO(processEmailTempRepository.save(processEmailTempDBModel));
+            return new ProcessEmailTempWSDTO(processEmailTempRepository.save(processEmailTempDBModel));
+        }
+        return null;
     }
 
 

@@ -77,6 +77,7 @@ public class ProcessSmsTempFramework {
             processSmsTempDBModel.setSenderId(senderId);
             processSmsTempDBModel.setTypeId(typeId);
             processSmsTempDBModel.setMessageType(messageTypeDBModel.get().getMessageType());
+            processSmsTempDBModel.setTempDatas(new ArrayList<>());
             processSmsTempDBModel.setuDate(appUtils.getCurrentTimeStamp());
             processSmsTempDBModel.setcDate(appUtils.getCurrentTimeStamp());
             processSmsTempDBModel.setStatus(1);

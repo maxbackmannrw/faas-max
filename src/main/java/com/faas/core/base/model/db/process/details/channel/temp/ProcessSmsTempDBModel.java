@@ -1,6 +1,6 @@
 package com.faas.core.base.model.db.process.details.channel.temp;
 
-import com.faas.core.base.model.db.process.details.channel.temp.dao.ProcessTempRemoteUrlDAO;
+import com.faas.core.base.model.db.process.details.channel.temp.dao.ProcessTempDataDAO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -17,7 +17,7 @@ public class ProcessSmsTempDBModel {
     private String senderId;
     private long typeId;
     private String messageType;
-    private List<ProcessTempRemoteUrlDAO> remotes;
+    private List<ProcessTempDataDAO>tempDatas;
     private long uDate;
     private long cDate;
     private int status;
@@ -25,7 +25,7 @@ public class ProcessSmsTempDBModel {
     public ProcessSmsTempDBModel() {
     }
 
-    public ProcessSmsTempDBModel(String id, String processId, String smsTitle, String smsBody, String senderId, long typeId, String messageType, List<ProcessTempRemoteUrlDAO> remotes, long uDate, long cDate, int status) {
+    public ProcessSmsTempDBModel(String id, String processId, String smsTitle, String smsBody, String senderId, long typeId, String messageType, List<ProcessTempDataDAO> tempDatas, long uDate, long cDate, int status) {
         this.id = id;
         this.processId = processId;
         this.smsTitle = smsTitle;
@@ -33,7 +33,7 @@ public class ProcessSmsTempDBModel {
         this.senderId = senderId;
         this.typeId = typeId;
         this.messageType = messageType;
-        this.remotes = remotes;
+        this.tempDatas = tempDatas;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
@@ -95,12 +95,12 @@ public class ProcessSmsTempDBModel {
         this.messageType = messageType;
     }
 
-    public List<ProcessTempRemoteUrlDAO> getRemotes() {
-        return remotes;
+    public List<ProcessTempDataDAO> getTempDatas() {
+        return tempDatas;
     }
 
-    public void setRemotes(List<ProcessTempRemoteUrlDAO> remotes) {
-        this.remotes = remotes;
+    public void setTempDatas(List<ProcessTempDataDAO> tempDatas) {
+        this.tempDatas = tempDatas;
     }
 
     public long getuDate() {
