@@ -9,16 +9,6 @@
   <component name="ChangeListManager">
     <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/channel/temp/ProcessEmailTempFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/channel/temp/ProcessEmailTempFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/channel/temp/ProcessPushTempFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/channel/temp/ProcessPushTempFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/channel/temp/ProcessSmsTempFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/channel/temp/ProcessSmsTempFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/channel/temp/ProcessTempFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/channel/temp/ProcessTempFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/channel/temp/ProcessWappTempFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/channel/temp/ProcessWappTempFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/process/details/channel/temp/ProcessEmailTempDBModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/process/details/channel/temp/ProcessEmailTempDBModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/process/details/channel/temp/ProcessPushTempDBModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/process/details/channel/temp/ProcessPushTempDBModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/process/details/channel/temp/ProcessSmsTempDBModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/process/details/channel/temp/ProcessSmsTempDBModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/process/details/channel/temp/ProcessWappMessageTempDBModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/process/details/channel/temp/ProcessWappMessageTempDBModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/process/details/channel/temp/dao/ProcessTempRemoteUrlDAO.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -948,15 +938,26 @@
       <workItem from="1713093140354" duration="4669000" />
       <workItem from="1713126145992" duration="4184000" />
       <workItem from="1713183371976" duration="660000" />
-      <workItem from="1713192084546" duration="864000" />
-    </task>
-    <task id="LOCAL-00801" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1711322290489</created>
-      <option name="number" value="00801" />
-      <option name="presentableId" value="LOCAL-00801" />
-      <option name="project" value="LOCAL" />
-      <updated>1711322290489</updated>
+      <workItem from="1713192084546" duration="2815000" />
+      <workItem from="1713204959093" duration="1583000" />
+      <workItem from="1713214475390" duration="166000" />
+      <workItem from="1713217901465" duration="16000" />
+      <workItem from="1713217935912" duration="184000" />
+      <workItem from="1713254359085" duration="313000" />
+      <workItem from="1713271940043" duration="1552000" />
+      <workItem from="1713288842159" duration="135000" />
+      <workItem from="1713370390022" duration="2903000" />
+      <workItem from="1713398803217" duration="307000" />
+      <workItem from="1713430926961" duration="273000" />
+      <workItem from="1713431587970" duration="685000" />
+      <workItem from="1713442348166" duration="2048000" />
+      <workItem from="1713453117460" duration="194000" />
+      <workItem from="1713458057406" duration="1640000" />
+      <workItem from="1713475187196" duration="491000" />
+      <workItem from="1713532902204" duration="511000" />
+      <workItem from="1713535046767" duration="196000" />
+      <workItem from="1713541396196" duration="68000" />
+      <workItem from="1713546776082" duration="286000" />
     </task>
     <task id="LOCAL-00802" summary="almost finish">
       <option name="closed" value="true" />
@@ -1342,7 +1343,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713130608834</updated>
     </task>
-    <option name="localTasksCounter" value="850" />
+    <task id="LOCAL-00850" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1713193296185</created>
+      <option name="number" value="00850" />
+      <option name="presentableId" value="LOCAL-00850" />
+      <option name="project" value="LOCAL" />
+      <updated>1713193296186</updated>
+    </task>
+    <option name="localTasksCounter" value="851" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
