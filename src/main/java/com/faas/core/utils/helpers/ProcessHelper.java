@@ -31,6 +31,8 @@ import com.faas.core.base.repo.process.details.remote.ProcessRemoteRepository;
 import com.faas.core.base.repo.process.details.scenario.ProcessScenarioRepository;
 import com.faas.core.base.repo.process.details.trigger.*;
 import com.faas.core.base.repo.scenario.content.ScenarioRepository;
+import com.faas.core.base.repo.utility.UrlRepository;
+import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -47,6 +49,9 @@ public class ProcessHelper {
 
     @Autowired
     ProcessRemoteRepository processRemoteRepository;
+
+    @Autowired
+    UrlRepository urlRepository;
 
     @Autowired
     ProcessEmailTempRepository processEmailTempRepository;
@@ -251,9 +256,18 @@ public class ProcessHelper {
         List<ProcessRemoteWSDTO> processRemoteWSDTOS = new ArrayList<>();
         List<ProcessRemoteDBModel> processRemoteDBModels = processRemoteRepository.findByProcessId(processDBModel.getId());
         for (ProcessRemoteDBModel processRemoteDBModel : processRemoteDBModels) {
-            processRemoteWSDTOS.add(new ProcessRemoteWSDTO(processRemoteDBModel));
+            processRemoteWSDTOS.add(mapProcessRemoteWSDTO(processRemoteDBModel));
         }
         return processRemoteWSDTOS;
+    }
+
+    public ProcessRemoteWSDTO mapProcessRemoteWSDTO(ProcessRemoteDBModel processRemoteDBModel){
+
+        ProcessRemoteWSDTO processRemoteWSDTO = new ProcessRemoteWSDTO();
+        processRemoteWSDTO.setProcessRemote(processRemoteDBModel);
+        processRemoteWSDTO.setProcessRemoteUrls(urlRepository.findByBaseTypeAndOwnerId(AppConstant.REMOTE_URL,processRemoteDBModel.getRemoteId()));
+
+        return processRemoteWSDTO;
     }
 
 

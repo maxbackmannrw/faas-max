@@ -1,7 +1,6 @@
 package com.faas.core.base.model.db.remote.client;
 
 import com.faas.core.base.model.db.remote.content.dao.RemoteDataDAO;
-import com.faas.core.base.model.db.remote.content.dao.RemoteUrlDAO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -28,7 +27,6 @@ public class ClientRemoteDBModel {
     private String remoteDesc;
     private String version;
     private List<RemoteDataDAO> remoteDatas;
-    private List<RemoteUrlDAO>remoteUrls;
     private long typeId;
     private String remoteType;
     private String baseType;
@@ -40,7 +38,7 @@ public class ClientRemoteDBModel {
     public ClientRemoteDBModel() {
     }
 
-    public ClientRemoteDBModel(String id, long clientId, long sessionId, String operationId, String campaignId, String campaign, String campaignType, String campaignCategory, String processId, String process, String processType, String processCategory, String remoteId, String remote, String remoteDesc, String version, List<RemoteDataDAO> remoteDatas, List<RemoteUrlDAO> remoteUrls, long typeId, String remoteType, String baseType, String remoteState, long uDate, long cDate, int status) {
+    public ClientRemoteDBModel(String id, long clientId, long sessionId, String operationId, String campaignId, String campaign, String campaignType, String campaignCategory, String processId, String process, String processType, String processCategory, String remoteId, String remote, String remoteDesc, String version, List<RemoteDataDAO> remoteDatas, long typeId, String remoteType, String baseType, String remoteState, long uDate, long cDate, int status) {
         this.id = id;
         this.clientId = clientId;
         this.sessionId = sessionId;
@@ -58,7 +56,6 @@ public class ClientRemoteDBModel {
         this.remoteDesc = remoteDesc;
         this.version = version;
         this.remoteDatas = remoteDatas;
-        this.remoteUrls = remoteUrls;
         this.typeId = typeId;
         this.remoteType = remoteType;
         this.baseType = baseType;
@@ -202,14 +199,6 @@ public class ClientRemoteDBModel {
 
     public void setRemoteDatas(List<RemoteDataDAO> remoteDatas) {
         this.remoteDatas = remoteDatas;
-    }
-
-    public List<RemoteUrlDAO> getRemoteUrls() {
-        return remoteUrls;
-    }
-
-    public void setRemoteUrls(List<RemoteUrlDAO> remoteUrls) {
-        this.remoteUrls = remoteUrls;
     }
 
     public long getTypeId() {

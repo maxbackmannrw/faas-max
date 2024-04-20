@@ -1,7 +1,6 @@
 package com.faas.core.base.model.db.remote.content;
 
 import com.faas.core.base.model.db.remote.content.dao.RemoteDataDAO;
-import com.faas.core.base.model.db.remote.content.dao.RemoteUrlDAO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -15,7 +14,6 @@ public class RemoteDBModel {
     private String remote;
     private String remoteDesc;
     private String version;
-    private List<RemoteUrlDAO>remoteUrls;
     private List<RemoteDataDAO>remoteDatas;
     private long typeId;
     private String remoteType;
@@ -27,12 +25,11 @@ public class RemoteDBModel {
     public RemoteDBModel() {
     }
 
-    public RemoteDBModel(String id, String remote, String remoteDesc, String version, List<RemoteUrlDAO> remoteUrls, List<RemoteDataDAO> remoteDatas, long typeId, String remoteType, String baseType, long uDate, long cDate, int status) {
+    public RemoteDBModel(String id, String remote, String remoteDesc, String version, List<RemoteDataDAO> remoteDatas, long typeId, String remoteType, String baseType, long uDate, long cDate, int status) {
         this.id = id;
         this.remote = remote;
         this.remoteDesc = remoteDesc;
         this.version = version;
-        this.remoteUrls = remoteUrls;
         this.remoteDatas = remoteDatas;
         this.typeId = typeId;
         this.remoteType = remoteType;
@@ -72,14 +69,6 @@ public class RemoteDBModel {
 
     public void setVersion(String version) {
         this.version = version;
-    }
-
-    public List<RemoteUrlDAO> getRemoteUrls() {
-        return remoteUrls;
-    }
-
-    public void setRemoteUrls(List<RemoteUrlDAO> remoteUrls) {
-        this.remoteUrls = remoteUrls;
     }
 
     public List<RemoteDataDAO> getRemoteDatas() {

@@ -1,7 +1,6 @@
 package com.faas.core.base.model.db.process.details.remote;
 
 import com.faas.core.base.model.db.remote.content.dao.RemoteDataDAO;
-import com.faas.core.base.model.db.remote.content.dao.RemoteUrlDAO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -18,9 +17,8 @@ public class ProcessRemoteDBModel {
     private String remote;
     private String remoteDesc;
     private String version;
-    private List<RemoteUrlDAO>remoteUrls;
-    private List<RemoteDataDAO> remoteDatas;
     private String remoteCategory;
+    private List<RemoteDataDAO> remoteDatas;
     private long typeId;
     private String remoteType;
     private String baseType;
@@ -31,7 +29,7 @@ public class ProcessRemoteDBModel {
     public ProcessRemoteDBModel() {
     }
 
-    public ProcessRemoteDBModel(String id, String processId, String process, String remoteId, String remote, String remoteDesc, String version, List<RemoteUrlDAO> remoteUrls, List<RemoteDataDAO> remoteDatas, String remoteCategory, long typeId, String remoteType, String baseType, long uDate, long cDate, int status) {
+    public ProcessRemoteDBModel(String id, String processId, String process, String remoteId, String remote, String remoteDesc, String version, String remoteCategory, List<RemoteDataDAO> remoteDatas, long typeId, String remoteType, String baseType, long uDate, long cDate, int status) {
         this.id = id;
         this.processId = processId;
         this.process = process;
@@ -39,9 +37,8 @@ public class ProcessRemoteDBModel {
         this.remote = remote;
         this.remoteDesc = remoteDesc;
         this.version = version;
-        this.remoteUrls = remoteUrls;
-        this.remoteDatas = remoteDatas;
         this.remoteCategory = remoteCategory;
+        this.remoteDatas = remoteDatas;
         this.typeId = typeId;
         this.remoteType = remoteType;
         this.baseType = baseType;
@@ -106,12 +103,12 @@ public class ProcessRemoteDBModel {
         this.version = version;
     }
 
-    public List<RemoteUrlDAO> getRemoteUrls() {
-        return remoteUrls;
+    public String getRemoteCategory() {
+        return remoteCategory;
     }
 
-    public void setRemoteUrls(List<RemoteUrlDAO> remoteUrls) {
-        this.remoteUrls = remoteUrls;
+    public void setRemoteCategory(String remoteCategory) {
+        this.remoteCategory = remoteCategory;
     }
 
     public List<RemoteDataDAO> getRemoteDatas() {
@@ -120,14 +117,6 @@ public class ProcessRemoteDBModel {
 
     public void setRemoteDatas(List<RemoteDataDAO> remoteDatas) {
         this.remoteDatas = remoteDatas;
-    }
-
-    public String getRemoteCategory() {
-        return remoteCategory;
-    }
-
-    public void setRemoteCategory(String remoteCategory) {
-        this.remoteCategory = remoteCategory;
     }
 
     public long getTypeId() {

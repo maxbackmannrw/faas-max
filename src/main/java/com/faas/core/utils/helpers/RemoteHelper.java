@@ -4,8 +4,11 @@ import com.faas.core.base.model.db.process.content.ProcessDBModel;
 import com.faas.core.base.model.db.process.details.remote.ProcessRemoteDBModel;
 import com.faas.core.base.model.db.remote.content.RemoteDBModel;
 import com.faas.core.base.model.db.remote.content.dao.RemoteDataDAO;
-import com.faas.core.base.model.db.remote.content.dao.RemoteUrlDAO;
+import com.faas.core.base.model.db.utility.UrlDBModel;
+import com.faas.core.base.model.ws.remote.content.dto.RemoteWSDTO;
 import com.faas.core.base.repo.process.details.remote.ProcessRemoteRepository;
+import com.faas.core.base.repo.utility.UrlRepository;
+import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -20,7 +23,20 @@ public class RemoteHelper {
     ProcessRemoteRepository processRemoteRepository;
 
     @Autowired
+    UrlRepository urlRepository;
+
+    @Autowired
     AppUtils appUtils;
+
+
+    public RemoteWSDTO mapRemoteWSDTOHelper(RemoteDBModel remoteDBModel){
+
+        RemoteWSDTO remoteWSDTO = new RemoteWSDTO();
+        remoteWSDTO.setRemote(remoteDBModel);
+        remoteWSDTO.setRemoteUrls(urlRepository.findByBaseTypeAndOwnerId(AppConstant.REMOTE_URL,remoteDBModel.getId()));
+
+        return remoteWSDTO;
+    }
 
 
     public ProcessRemoteDBModel createProcessRemoteDBModel(ProcessDBModel processDBModel, RemoteDBModel remoteDBModel,String remoteCategory){
@@ -37,11 +53,6 @@ public class RemoteHelper {
             processRemoteDBModel.setRemoteDatas(remoteDBModel.getRemoteDatas());
         }else {
             processRemoteDBModel.setRemoteDatas(new ArrayList<>());
-        }
-        if (remoteDBModel.getRemoteUrls() != null) {
-            processRemoteDBModel.setRemoteUrls(remoteDBModel.getRemoteUrls());
-        }else {
-            processRemoteDBModel.setRemoteUrls(new ArrayList<>());
         }
         processRemoteDBModel.setRemoteCategory(remoteCategory);
         processRemoteDBModel.setTypeId(remoteDBModel.getTypeId());
@@ -69,16 +80,18 @@ public class RemoteHelper {
 
 
 
-    public RemoteUrlDAO createRemoteUrlDAO(String remoteUrl, String urlType) {
+    public UrlDBModel createRemoteUrlHelper(String remoteId,String remoteUrl, String urlType,String baseType) {
 
-        RemoteUrlDAO remoteUrlDAO = new RemoteUrlDAO();
-        remoteUrlDAO.setId(appUtils.generateUUID());
-        remoteUrlDAO.setRemoteUrl(remoteUrl);
-        remoteUrlDAO.setUrlType(urlType);
-        remoteUrlDAO.setcDate(appUtils.getCurrentTimeStamp());
-        remoteUrlDAO.setStatus(1);
+        UrlDBModel remoteUrlDBModel = new UrlDBModel();
+        remoteUrlDBModel.setUrl(remoteUrl);
+        remoteUrlDBModel.setUrlType(urlType);
+        remoteUrlDBModel.setBaseType(baseType);
+        remoteUrlDBModel.setOwnerId(remoteId);
+        remoteUrlDBModel.setuDate(appUtils.getCurrentTimeStamp());
+        remoteUrlDBModel.setcDate(appUtils.getCurrentTimeStamp());
+        remoteUrlDBModel.setStatus(1);
 
-        return remoteUrlDAO;
+        return remoteUrlDBModel;
     }
 
 }

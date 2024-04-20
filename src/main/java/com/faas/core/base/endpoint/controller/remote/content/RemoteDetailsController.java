@@ -119,10 +119,9 @@ public class RemoteDetailsController {
 
     @RequestMapping(value = BaseRoute.GET_REMOTE_URL, method = RequestMethod.POST)
     public ResponseEntity<?> getRemoteUrl(@RequestParam long userId,
-                                          @RequestParam String remoteId,
-                                          @RequestParam String urlId) {
+                                          @RequestParam long urlId) {
 
-        RemoteUrlWSModel response = remoteAppDetailsMiddleware.getRemoteUrl(userId,remoteId,urlId);
+        RemoteUrlWSModel response = remoteAppDetailsMiddleware.getRemoteUrl(userId,urlId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -146,12 +145,12 @@ public class RemoteDetailsController {
 
     @RequestMapping(value = BaseRoute.UPDATE_REMOTE_URL, method = RequestMethod.POST)
     public ResponseEntity<?> updateRemoteUrl(@RequestParam long userId,
+                                             @RequestParam long urlId,
                                              @RequestParam String remoteId,
-                                             @RequestParam String urlId,
                                              @RequestParam String remoteUrl,
                                              @RequestParam String urlType) {
 
-        RemoteUrlWSModel response = remoteAppDetailsMiddleware.updateRemoteUrl(userId,remoteId,urlId,remoteUrl,urlType);
+        RemoteUrlWSModel response = remoteAppDetailsMiddleware.updateRemoteUrl(userId,urlId,remoteId,remoteUrl,urlType);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -161,10 +160,9 @@ public class RemoteDetailsController {
 
     @RequestMapping(value = BaseRoute.REMOVE_REMOTE_URL, method = RequestMethod.POST)
     public ResponseEntity<?> removeRemoteUrl(@RequestParam long userId,
-                                             @RequestParam String remoteId,
-                                             @RequestParam String urlId) {
+                                             @RequestParam long urlId) {
 
-        RemoteUrlWSModel response = remoteAppDetailsMiddleware.removeRemoteUrl(userId,remoteId,urlId);
+        RemoteUrlWSModel response = remoteAppDetailsMiddleware.removeRemoteUrl(userId,urlId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

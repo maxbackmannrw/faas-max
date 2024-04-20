@@ -1,38 +1,38 @@
-package com.faas.core.base.model.db.remote.content.dao;
+package com.faas.core.base.model.db.process.details.channel.temp.dao;
 
-public class RemoteUrlDAO {
+public class ProcessTempUrlDAO {
 
-    private String id;
-    private String remoteUrl;
+    private int id;
+    private String tempUrl;
     private String urlType;
     private long cDate;
     private int status;
 
-    public RemoteUrlDAO() {
+    public ProcessTempUrlDAO() {
     }
 
-    public RemoteUrlDAO(String id, String remoteUrl, String urlType, long cDate, int status) {
+    public ProcessTempUrlDAO(int id, String tempUrl, String urlType, long cDate, int status) {
         this.id = id;
-        this.remoteUrl = remoteUrl;
+        this.tempUrl = tempUrl;
         this.urlType = urlType;
         this.cDate = cDate;
         this.status = status;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getRemoteUrl() {
-        return remoteUrl;
+    public String getTempUrl() {
+        return tempUrl;
     }
 
-    public void setRemoteUrl(String remoteUrl) {
-        this.remoteUrl = remoteUrl;
+    public void setTempUrl(String tempUrl) {
+        this.tempUrl = tempUrl;
     }
 
     public String getUrlType() {
@@ -59,3 +59,5 @@ public class RemoteUrlDAO {
         this.status = status;
     }
 }
+
+

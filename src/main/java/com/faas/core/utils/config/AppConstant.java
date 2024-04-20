@@ -161,10 +161,13 @@ public class AppConstant {
     public static final String FAILED_REMOTE = "FAILED_REMOTE";
 
 
+    public static final String TEMP_URL = "TEMP_URL";
+    public static final String REMOTE_URL = "REMOTE_URL";
 
     public static final String REMOTE_SOURCE_URL = "REMOTE_SOURCE_URL";
     public static final String REMOTE_CONTENT_URL = "REMOTE_CONTENT_URL";
     public static final String REMOTE_UPDATE_URL = "REMOTE_UPDATE_URL";
+
 
 
     public static final String CLIENT_NAME_TAG = "{clientName}";

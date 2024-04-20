@@ -6,13 +6,12 @@ import javax.persistence.*;
 @Table(name = "asset_table")
 public class AssetDBModel {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "asset_name")
-    private String assetName;
+    @Column(name = "asset")
+    private String asset;
 
     @Column(name = "asset_desc")
     private String assetDesc;
@@ -38,13 +37,12 @@ public class AssetDBModel {
     @Column(name = "status")
     private int status;
 
-
     public AssetDBModel() {
     }
 
-    public AssetDBModel(long id, String assetName, String assetDesc, String assetUrl, long typeId, String assetType, String baseType, long uDate, long cDate, int status) {
+    public AssetDBModel(long id, String asset, String assetDesc, String assetUrl, long typeId, String assetType, String baseType, long uDate, long cDate, int status) {
         this.id = id;
-        this.assetName = assetName;
+        this.asset = asset;
         this.assetDesc = assetDesc;
         this.assetUrl = assetUrl;
         this.typeId = typeId;
@@ -63,12 +61,12 @@ public class AssetDBModel {
         this.id = id;
     }
 
-    public String getAssetName() {
-        return assetName;
+    public String getAsset() {
+        return asset;
     }
 
-    public void setAssetName(String assetName) {
-        this.assetName = assetName;
+    public void setAsset(String asset) {
+        this.asset = asset;
     }
 
     public String getAssetDesc() {

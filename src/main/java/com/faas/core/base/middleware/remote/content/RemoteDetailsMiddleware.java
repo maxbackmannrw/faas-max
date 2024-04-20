@@ -151,6 +151,7 @@ public class RemoteDetailsMiddleware {
 
 
 
+
     public RemoteUrlWSModel getRemoteUrls(long userId, String remoteId) {
 
         RemoteUrlWSModel response = new RemoteUrlWSModel();
@@ -170,13 +171,13 @@ public class RemoteDetailsMiddleware {
         return response;
     }
 
-    public RemoteUrlWSModel getRemoteUrl(long userId,String remoteId,String urlId) {
+    public RemoteUrlWSModel getRemoteUrl(long userId, long urlId) {
 
         RemoteUrlWSModel response = new RemoteUrlWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<RemoteUrlWSDTO> remoteUrlWSDTOS = new ArrayList<>();
 
-        RemoteUrlWSDTO remoteUrlWSDTO = remoteDetailsFramework.getRemoteUrlService(userId,remoteId,urlId);
+        RemoteUrlWSDTO remoteUrlWSDTO = remoteDetailsFramework.getRemoteUrlService(userId,urlId);
         if (remoteUrlWSDTO != null){
             remoteUrlWSDTOS.add(remoteUrlWSDTO);
         }
@@ -212,13 +213,13 @@ public class RemoteDetailsMiddleware {
         return response;
     }
 
-    public RemoteUrlWSModel updateRemoteUrl(long userId,String remoteId,String urlId,String remoteUrl,String urlType) {
+    public RemoteUrlWSModel updateRemoteUrl(long userId,long urlId,String remoteId,String remoteUrl,String urlType) {
 
         RemoteUrlWSModel response = new RemoteUrlWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<RemoteUrlWSDTO> remoteUrlWSDTOS = new ArrayList<>();
 
-        RemoteUrlWSDTO remoteUrlWSDTO = remoteDetailsFramework.updateRemoteUrlService(userId,remoteId,urlId,remoteUrl,urlType);
+        RemoteUrlWSDTO remoteUrlWSDTO = remoteDetailsFramework.updateRemoteUrlService(userId,urlId,remoteId,remoteUrl,urlType);
         if (remoteUrlWSDTO != null){
             remoteUrlWSDTOS.add(remoteUrlWSDTO);
         }
@@ -233,13 +234,13 @@ public class RemoteDetailsMiddleware {
         return response;
     }
 
-    public RemoteUrlWSModel removeRemoteUrl(long userId,String remoteId,String urlId) {
+    public RemoteUrlWSModel removeRemoteUrl(long userId,long urlId) {
 
         RemoteUrlWSModel response = new RemoteUrlWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<RemoteUrlWSDTO> remoteUrlWSDTOS = new ArrayList<>();
 
-        RemoteUrlWSDTO remoteUrlWSDTO = remoteDetailsFramework.removeRemoteUrlService(userId,remoteId,urlId);
+        RemoteUrlWSDTO remoteUrlWSDTO = remoteDetailsFramework.removeRemoteUrlService(userId,urlId);
         if (remoteUrlWSDTO != null){
             remoteUrlWSDTOS.add(remoteUrlWSDTO);
         }

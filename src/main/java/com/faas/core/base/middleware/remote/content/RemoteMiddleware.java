@@ -39,7 +39,6 @@ public class RemoteMiddleware {
         return response;
     }
 
-
     public RemoteWSModel getRemotesByBaseType(long userId, String baseType) {
 
         RemoteWSModel response = new RemoteWSModel();
@@ -59,7 +58,6 @@ public class RemoteMiddleware {
         return response;
     }
 
-
     public RemoteWSModel getRemotesByType(long userId, String remoteType) {
 
         RemoteWSModel response = new RemoteWSModel();
@@ -78,7 +76,6 @@ public class RemoteMiddleware {
 
         return response;
     }
-
 
     public RemoteWSModel getRemote(long userId, String remoteId) {
 
@@ -101,7 +98,6 @@ public class RemoteMiddleware {
         return response;
     }
 
-
     public RemoteWSModel createRemote(long userId, String remote, String remoteDesc, String version, String sourceUrl, long typeId) {
 
         RemoteWSModel response = new RemoteWSModel();
@@ -122,7 +118,6 @@ public class RemoteMiddleware {
 
         return response;
     }
-
 
     public RemoteWSModel updateRemote(long userId, String remoteId, String remote, String remoteDesc,String version) {
 
@@ -145,7 +140,6 @@ public class RemoteMiddleware {
         return response;
     }
 
-
     public RemoteWSModel removeRemote(long userId, String remoteId) {
 
         RemoteWSModel response = new RemoteWSModel();
@@ -166,6 +160,7 @@ public class RemoteMiddleware {
 
         return response;
     }
+
 
 
 }

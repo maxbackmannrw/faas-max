@@ -1,6 +1,8 @@
 package com.faas.core.base.model.db.process.details.channel.temp;
 
+import com.faas.core.base.model.db.process.details.channel.temp.dao.ProcessTempAssetDAO;
 import com.faas.core.base.model.db.process.details.channel.temp.dao.ProcessTempDataDAO;
+import com.faas.core.base.model.db.process.details.channel.temp.dao.ProcessTempUrlDAO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -18,6 +20,8 @@ public class ProcessEmailTempDBModel {
     private String emailSender;
     private long typeId;
     private String emailType;
+    private List<ProcessTempUrlDAO>tempUrls;
+    private List<ProcessTempAssetDAO>tempAssets;
     private List<ProcessTempDataDAO>tempDatas;
     private long uDate;
     private long cDate;
@@ -26,7 +30,7 @@ public class ProcessEmailTempDBModel {
     public ProcessEmailTempDBModel() {
     }
 
-    public ProcessEmailTempDBModel(String id, String processId, String emailSubject, String emailBody, String emailFooter, String emailSender, long typeId, String emailType, List<ProcessTempDataDAO> tempDatas, long uDate, long cDate, int status) {
+    public ProcessEmailTempDBModel(String id, String processId, String emailSubject, String emailBody, String emailFooter, String emailSender, long typeId, String emailType, List<ProcessTempUrlDAO> tempUrls, List<ProcessTempAssetDAO> tempAssets, List<ProcessTempDataDAO> tempDatas, long uDate, long cDate, int status) {
         this.id = id;
         this.processId = processId;
         this.emailSubject = emailSubject;
@@ -35,6 +39,8 @@ public class ProcessEmailTempDBModel {
         this.emailSender = emailSender;
         this.typeId = typeId;
         this.emailType = emailType;
+        this.tempUrls = tempUrls;
+        this.tempAssets = tempAssets;
         this.tempDatas = tempDatas;
         this.uDate = uDate;
         this.cDate = cDate;
@@ -103,6 +109,22 @@ public class ProcessEmailTempDBModel {
 
     public void setEmailType(String emailType) {
         this.emailType = emailType;
+    }
+
+    public List<ProcessTempUrlDAO> getTempUrls() {
+        return tempUrls;
+    }
+
+    public void setTempUrls(List<ProcessTempUrlDAO> tempUrls) {
+        this.tempUrls = tempUrls;
+    }
+
+    public List<ProcessTempAssetDAO> getTempAssets() {
+        return tempAssets;
+    }
+
+    public void setTempAssets(List<ProcessTempAssetDAO> tempAssets) {
+        this.tempAssets = tempAssets;
     }
 
     public List<ProcessTempDataDAO> getTempDatas() {

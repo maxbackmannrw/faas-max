@@ -226,13 +226,6 @@ public class BaseRoute {
 
 
 
-    public static final String GET_ALL_DATA_TYPES = "getalldatatypes";
-    public static final String GET_BASE_DATA_TYPES = "getbasedatatypes";
-    public static final String GET_DATA_TYPE = "getdatatype";
-    public static final String CREATE_DATA_TYPE = "createdatatype";
-    public static final String UPDATE_DATA_TYPE = "updatedatatype";
-    public static final String REMOVE_DATA_TYPE = "removedatatype";
-
 
     public static final String GET_ALL_CAMPAIGN_TYPES = "getallcampaigntypes";
     public static final String GET_CAMPAIGN_TYPE = "getcampaigntype";
@@ -240,6 +233,13 @@ public class BaseRoute {
     public static final String UPDATE_CAMPAIGN_TYPE = "updatecampaigntype";
     public static final String REMOVE_CAMPAIGN_TYPE = "removecampaigntype";
 
+
+    public static final String GET_ALL_DATA_TYPES = "getalldatatypes";
+    public static final String GET_BASE_DATA_TYPES = "getbasedatatypes";
+    public static final String GET_DATA_TYPE = "getdatatype";
+    public static final String CREATE_DATA_TYPE = "createdatatype";
+    public static final String UPDATE_DATA_TYPE = "updatedatatype";
+    public static final String REMOVE_DATA_TYPE = "removedatatype";
 
 
     public static final String GET_ALL_CITIES = "getallcities";
@@ -254,6 +254,15 @@ public class BaseRoute {
     public static final String CREATE_COUNTRY = "createcountry";
     public static final String UPDATE_COUNTRY = "updatecountry";
     public static final String REMOVE_COUNTRY = "removecountry";
+
+
+    public static final String GET_ALL_URLS = "getallurls";
+    public static final String GET_URLS_BY_BASE_TYPE = "geturlsbybasetype";
+    public static final String GET_URLS_BY_OWNER_ID = "geturlsbyownerid";
+    public static final String GET_URL = "geturl";
+    public static final String CREATE_URL = "createurl";
+    public static final String UPDATE_URL = "updateurl";
+    public static final String REMOVE_URL = "removeurl";
 
 
     public static final String GET_ALL_CHANNEL_ACCOUNTS = "getallchannelaccounts";

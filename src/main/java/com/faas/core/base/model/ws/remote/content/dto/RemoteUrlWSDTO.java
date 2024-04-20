@@ -1,23 +1,23 @@
 package com.faas.core.base.model.ws.remote.content.dto;
 
-import com.faas.core.base.model.db.remote.content.dao.RemoteUrlDAO;
+import com.faas.core.base.model.db.utility.UrlDBModel;
 
 public class RemoteUrlWSDTO {
 
-    private RemoteUrlDAO remoteUrl;
+    private UrlDBModel remoteUrl;
 
     public RemoteUrlWSDTO() {
     }
 
-    public RemoteUrlWSDTO(RemoteUrlDAO remoteUrl) {
+    public RemoteUrlWSDTO(UrlDBModel remoteUrl) {
         this.remoteUrl = remoteUrl;
     }
 
-    public RemoteUrlDAO getRemoteUrl() {
+    public UrlDBModel getRemoteUrl() {
         return remoteUrl;
     }
 
-    public void setRemoteUrl(RemoteUrlDAO remoteUrl) {
+    public void setRemoteUrl(UrlDBModel remoteUrl) {
         this.remoteUrl = remoteUrl;
     }
 }

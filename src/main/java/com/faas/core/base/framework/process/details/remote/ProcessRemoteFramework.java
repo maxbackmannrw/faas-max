@@ -45,7 +45,7 @@ public class ProcessRemoteFramework {
         List<ProcessRemoteWSDTO> processRemoteWSDTOS = new ArrayList<>();
         List<ProcessRemoteDBModel> processRemoteDBModels = processRemoteRepository.findByProcessId(processId);
         for (ProcessRemoteDBModel processRemoteDBModel : processRemoteDBModels) {
-            processRemoteWSDTOS.add(new ProcessRemoteWSDTO(processRemoteDBModel));
+            processRemoteWSDTOS.add(processHelper.mapProcessRemoteWSDTO(processRemoteDBModel));
         }
         return processRemoteWSDTOS;
     }
@@ -55,7 +55,7 @@ public class ProcessRemoteFramework {
         List<ProcessRemoteWSDTO> processRemoteWSDTOS = new ArrayList<>();
         List<ProcessRemoteDBModel> processRemoteDBModels = processRemoteRepository.findByProcessIdAndRemoteCategory(processId,remoteCategory);
         for (ProcessRemoteDBModel processRemoteDBModel : processRemoteDBModels) {
-            processRemoteWSDTOS.add(new ProcessRemoteWSDTO(processRemoteDBModel));
+            processRemoteWSDTOS.add(processHelper.mapProcessRemoteWSDTO(processRemoteDBModel));
         }
         return processRemoteWSDTOS;
     }
@@ -64,7 +64,7 @@ public class ProcessRemoteFramework {
 
         List<ProcessRemoteDBModel> processRemoteDBModels = processRemoteRepository.findByIdAndProcessId(processRemoteId,processId);
         if (!processRemoteDBModels.isEmpty()) {
-            return new ProcessRemoteWSDTO(processRemoteDBModels.get(0));
+            return processHelper.mapProcessRemoteWSDTO(processRemoteDBModels.get(0));
         }
         return null;
     }
@@ -74,7 +74,7 @@ public class ProcessRemoteFramework {
         Optional<ProcessDBModel> processDBModel = processRepository.findById(processId);
         Optional<RemoteDBModel> remoteDBModel = remoteRepository.findById(remoteId);
         if (processDBModel.isPresent() && remoteDBModel.isPresent()) {
-            return new ProcessRemoteWSDTO(remoteHelper.createProcessRemoteDBModel(processDBModel.get(),remoteDBModel.get(),remoteCategory));
+            return processHelper.mapProcessRemoteWSDTO(remoteHelper.createProcessRemoteDBModel(processDBModel.get(),remoteDBModel.get(),remoteCategory));
         }
         return null;
     }
@@ -84,7 +84,7 @@ public class ProcessRemoteFramework {
         List<ProcessRemoteDBModel> processRemoteDBModels = processRemoteRepository.findByIdAndProcessId(processRemoteId,processId);
         if (!processRemoteDBModels.isEmpty()) {
             processRemoteRepository.delete(processRemoteDBModels.get(0));
-            return new ProcessRemoteWSDTO(processRemoteDBModels.get(0));
+            return processHelper.mapProcessRemoteWSDTO(processRemoteDBModels.get(0));
         }
         return null;
     }

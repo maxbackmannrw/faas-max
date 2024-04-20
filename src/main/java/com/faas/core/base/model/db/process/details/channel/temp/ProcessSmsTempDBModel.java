@@ -1,6 +1,8 @@
 package com.faas.core.base.model.db.process.details.channel.temp;
 
+import com.faas.core.base.model.db.process.details.channel.temp.dao.ProcessTempAssetDAO;
 import com.faas.core.base.model.db.process.details.channel.temp.dao.ProcessTempDataDAO;
+import com.faas.core.base.model.db.process.details.channel.temp.dao.ProcessTempUrlDAO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -17,6 +19,8 @@ public class ProcessSmsTempDBModel {
     private String senderId;
     private long typeId;
     private String messageType;
+    private List<ProcessTempUrlDAO>tempUrls;
+    private List<ProcessTempAssetDAO>tempAssets;
     private List<ProcessTempDataDAO>tempDatas;
     private long uDate;
     private long cDate;
@@ -25,7 +29,7 @@ public class ProcessSmsTempDBModel {
     public ProcessSmsTempDBModel() {
     }
 
-    public ProcessSmsTempDBModel(String id, String processId, String smsTitle, String smsBody, String senderId, long typeId, String messageType, List<ProcessTempDataDAO> tempDatas, long uDate, long cDate, int status) {
+    public ProcessSmsTempDBModel(String id, String processId, String smsTitle, String smsBody, String senderId, long typeId, String messageType, List<ProcessTempUrlDAO> tempUrls, List<ProcessTempAssetDAO> tempAssets, List<ProcessTempDataDAO> tempDatas, long uDate, long cDate, int status) {
         this.id = id;
         this.processId = processId;
         this.smsTitle = smsTitle;
@@ -33,6 +37,8 @@ public class ProcessSmsTempDBModel {
         this.senderId = senderId;
         this.typeId = typeId;
         this.messageType = messageType;
+        this.tempUrls = tempUrls;
+        this.tempAssets = tempAssets;
         this.tempDatas = tempDatas;
         this.uDate = uDate;
         this.cDate = cDate;
@@ -93,6 +99,22 @@ public class ProcessSmsTempDBModel {
 
     public void setMessageType(String messageType) {
         this.messageType = messageType;
+    }
+
+    public List<ProcessTempUrlDAO> getTempUrls() {
+        return tempUrls;
+    }
+
+    public void setTempUrls(List<ProcessTempUrlDAO> tempUrls) {
+        this.tempUrls = tempUrls;
+    }
+
+    public List<ProcessTempAssetDAO> getTempAssets() {
+        return tempAssets;
+    }
+
+    public void setTempAssets(List<ProcessTempAssetDAO> tempAssets) {
+        this.tempAssets = tempAssets;
     }
 
     public List<ProcessTempDataDAO> getTempDatas() {
