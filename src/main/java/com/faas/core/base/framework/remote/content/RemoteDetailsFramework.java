@@ -163,30 +163,31 @@ public class RemoteDetailsFramework {
 
     public RemoteUrlWSDTO createRemoteUrlService(long userId,String remoteId,String remoteUrl,String urlType) {
 
-        UrlDBModel remoteUrlDBModel = new UrlDBModel();
-        remoteUrlDBModel.setUrl(remoteUrl);
-        remoteUrlDBModel.setUrlType(urlType);
-        remoteUrlDBModel.setBaseType(AppConstant.REMOTE_URL);
-        remoteUrlDBModel.setOwnerId(remoteId);
-        remoteUrlDBModel.setuDate(appUtils.getCurrentTimeStamp());
-        remoteUrlDBModel.setcDate(appUtils.getCurrentTimeStamp());
-        remoteUrlDBModel.setStatus(1);
+        UrlDBModel urlDBModel = new UrlDBModel();
 
-        return new RemoteUrlWSDTO(urlRepository.save(remoteUrlDBModel));
+        urlDBModel.setUrl(remoteUrl);
+        urlDBModel.setUrlType(urlType);
+        urlDBModel.setBaseType(AppConstant.REMOTE_URL);
+        urlDBModel.setOwnerId(remoteId);
+        urlDBModel.setuDate(appUtils.getCurrentTimeStamp());
+        urlDBModel.setcDate(appUtils.getCurrentTimeStamp());
+        urlDBModel.setStatus(1);
+
+        return new RemoteUrlWSDTO(urlRepository.save(urlDBModel));
     }
 
     public RemoteUrlWSDTO updateRemoteUrlService(long userId,long urlId,String remoteId,String remoteUrl,String urlType) {
 
-        Optional<UrlDBModel> remoteUrlDBModel = urlRepository.findById(urlId);
-        if (remoteUrlDBModel.isPresent()){
+        Optional<UrlDBModel> urlDBModel = urlRepository.findById(urlId);
+        if (urlDBModel.isPresent()){
 
-            remoteUrlDBModel.get().setUrl(remoteUrl);
-            remoteUrlDBModel.get().setUrlType(urlType);
-            remoteUrlDBModel.get().setOwnerId(remoteId);
-            remoteUrlDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
-            remoteUrlDBModel.get().setStatus(1);
+            urlDBModel.get().setUrl(remoteUrl);
+            urlDBModel.get().setUrlType(urlType);
+            urlDBModel.get().setOwnerId(remoteId);
+            urlDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
+            urlDBModel.get().setStatus(1);
 
-            return new RemoteUrlWSDTO(urlRepository.save(remoteUrlDBModel.get()));
+            return new RemoteUrlWSDTO(urlRepository.save(urlDBModel.get()));
         }
         return null;
     }
