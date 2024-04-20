@@ -34,7 +34,6 @@ public class RemoteHelper {
         RemoteWSDTO remoteWSDTO = new RemoteWSDTO();
         remoteWSDTO.setRemote(remoteDBModel);
         remoteWSDTO.setRemoteUrls(urlRepository.findByBaseTypeAndOwnerId(AppConstant.REMOTE_URL,remoteDBModel.getId()));
-
         return remoteWSDTO;
     }
 
