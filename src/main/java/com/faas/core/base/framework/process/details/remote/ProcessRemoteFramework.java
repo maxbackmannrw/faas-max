@@ -99,9 +99,12 @@ public class ProcessRemoteFramework {
     public List<RemoteUrlWSDTO> getProcessRemoteUrlsService(long userId, String processId) {
 
         List<RemoteUrlWSDTO>remoteUrlWSDTOS = new ArrayList<>();
-        List<UrlDBModel> urlDBModels = urlRepository.findByBaseTypeAndOwnerId(AppConstant.REMOTE_URL,processId);
-        for (UrlDBModel urlDBModel : urlDBModels) {
-            remoteUrlWSDTOS.add(new RemoteUrlWSDTO(urlDBModel));
+        List<ProcessRemoteDBModel> processRemoteDBModels = processRemoteRepository.findByProcessId(processId);
+        for (ProcessRemoteDBModel processRemoteDBModel : processRemoteDBModels) {
+            List<UrlDBModel> urlDBModels = urlRepository.findByBaseTypeAndOwnerId(AppConstant.REMOTE_URL, processRemoteDBModel.getRemoteId());
+            for (UrlDBModel urlDBModel : urlDBModels) {
+                remoteUrlWSDTOS.add(new RemoteUrlWSDTO(urlDBModel));
+            }
         }
         return remoteUrlWSDTOS;
     }
