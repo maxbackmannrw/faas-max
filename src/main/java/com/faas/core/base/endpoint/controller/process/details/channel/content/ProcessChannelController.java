@@ -52,7 +52,6 @@ public class ProcessChannelController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.CREATE_PROCESS_SIP_CHANNEL, method = RequestMethod.POST)
     public ResponseEntity<?> createProcessSipChannel(@RequestParam long userId,
                                                      @RequestParam String processId,
@@ -67,7 +66,6 @@ public class ProcessChannelController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.REMOVE_PROCESS_SIP_CHANNEL, method = RequestMethod.POST)
     public ResponseEntity<?> removeProcessSipChannel(@RequestParam long userId,
                                                      @RequestParam String processId) {
@@ -81,7 +79,6 @@ public class ProcessChannelController {
     }
 
 
-
     @RequestMapping(value = BaseRoute.GET_PROCESS_SMS_CHANNEL, method = RequestMethod.POST)
     public ResponseEntity<?> getProcessSmsChannel(@RequestParam long userId,
                                                   @RequestParam String processId) {
@@ -93,7 +90,6 @@ public class ProcessChannelController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.CREATE_PROCESS_SMS_CHANNEL, method = RequestMethod.POST)
     public ResponseEntity<?> createProcessSmsChannel(@RequestParam long userId,
@@ -109,7 +105,6 @@ public class ProcessChannelController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.REMOVE_PROCESS_SMS_CHANNEL, method = RequestMethod.POST)
     public ResponseEntity<?> removeProcessSmsChannel(@RequestParam long userId,
                                                      @RequestParam String processId) {
@@ -123,7 +118,6 @@ public class ProcessChannelController {
     }
 
 
-
     @RequestMapping(value = BaseRoute.GET_PROCESS_WAPP_CHANNEL, method = RequestMethod.POST)
     public ResponseEntity<?> getProcessWappChannel(@RequestParam long userId,
                                                    @RequestParam String processId) {
@@ -135,7 +129,6 @@ public class ProcessChannelController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.CREATE_PROCESS_WAPP_CHANNEL, method = RequestMethod.POST)
     public ResponseEntity<?> createProcessWappChannel(@RequestParam long userId,
@@ -151,7 +144,6 @@ public class ProcessChannelController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.REMOVE_PROCESS_WAPP_CHANNEL, method = RequestMethod.POST)
     public ResponseEntity<?> removeProcessWappChannel(@RequestParam long userId,
                                                       @RequestParam String processId) {
@@ -165,7 +157,6 @@ public class ProcessChannelController {
     }
 
 
-
     @RequestMapping(value = BaseRoute.GET_PROCESS_EMAIL_CHANNEL, method = RequestMethod.POST)
     public ResponseEntity<?> getProcessEmailChannel(@RequestParam long userId,
                                                     @RequestParam String processId) {
@@ -177,7 +168,6 @@ public class ProcessChannelController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.CREATE_PROCESS_EMAIL_CHANNEL, method = RequestMethod.POST)
     public ResponseEntity<?> createProcessEmailChannel(@RequestParam long userId,
@@ -193,8 +183,6 @@ public class ProcessChannelController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
-
     @RequestMapping(value = BaseRoute.REMOVE_PROCESS_EMAIL_CHANNEL, method = RequestMethod.POST)
     public ResponseEntity<?> removeProcessEmailChannel(@RequestParam long userId,
                                                        @RequestParam String processId) {
@@ -208,8 +196,6 @@ public class ProcessChannelController {
     }
 
 
-
-
     @RequestMapping(value = BaseRoute.GET_PROCESS_PUSH_CHANNEL, method = RequestMethod.POST)
     public ResponseEntity<?> getProcessPushChannel(@RequestParam long userId,
                                                    @RequestParam String processId) {
@@ -221,7 +207,6 @@ public class ProcessChannelController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.CREATE_PROCESS_PUSH_CHANNEL, method = RequestMethod.POST)
     public ResponseEntity<?> createProcessPushChannel(@RequestParam long userId,
@@ -237,7 +222,6 @@ public class ProcessChannelController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.REMOVE_PROCESS_PUSH_CHANNEL, method = RequestMethod.POST)
     public ResponseEntity<?> removeProcessPushChannel(@RequestParam long userId,
                                                       @RequestParam String processId) {
@@ -249,6 +233,7 @@ public class ProcessChannelController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
+
 
 
 }

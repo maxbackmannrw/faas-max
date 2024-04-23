@@ -4,6 +4,8 @@ import com.faas.core.base.framework.process.details.remote.ProcessRemoteFramewor
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.model.ws.process.details.remote.ProcessRemoteWSModel;
 import com.faas.core.base.model.ws.process.details.remote.dto.ProcessRemoteWSDTO;
+import com.faas.core.base.model.ws.remote.content.RemoteUrlWSModel;
+import com.faas.core.base.model.ws.remote.content.dto.RemoteUrlWSDTO;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -113,6 +115,25 @@ public class ProcessRemoteMiddleware {
 
         response.setProcessRemotes(processRemoteWSDTOS);
         general.setOperation("removeProcessRemote");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public RemoteUrlWSModel getProcessRemoteUrls(long userId, String processId) {
+
+        RemoteUrlWSModel response = new RemoteUrlWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        List<RemoteUrlWSDTO> remoteUrlWSDTOS = processRemoteFramework.getProcessRemoteUrlsService(userId,processId);
+        if (remoteUrlWSDTOS != null){
+            response.setRemoteUrls(remoteUrlWSDTOS);
+        }
+
+        general.setOperation("getProcessRemoteUrls");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

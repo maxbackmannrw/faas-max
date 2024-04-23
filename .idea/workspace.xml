@@ -9,7 +9,11 @@
   <component name="ChangeListManager">
     <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/config/AppConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/config/AppConstant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/process/details/channel/content/ProcessChannelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/process/details/channel/content/ProcessChannelController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/process/details/remote/ProcessRemoteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/process/details/remote/ProcessRemoteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/remote/ProcessRemoteFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/remote/ProcessRemoteFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/remote/ProcessRemoteMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/remote/ProcessRemoteMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/config/BaseRoute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/config/BaseRoute.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,9 +109,9 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;settings.editor.splitter.proportion&quot;: &quot;0.15697268&quot;,
@@ -132,11 +136,11 @@
       <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/scenario/content" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.faas.core.base.model.ws.process.details.remote" />
       <recent name="com.faas.core.base.model.ws.utility.content.dto" />
       <recent name="com.faas.core.base.model.ws.utility.content" />
       <recent name="com.faas.core.base.middleware.utility.content" />
       <recent name="com.faas.core.base.framework.utility.content" />
-      <recent name="com.faas.core.base.endpoint.controller.utility.content" />
     </key>
   </component>
   <component name="RunManager">
@@ -963,15 +967,14 @@
       <workItem from="1713646708284" duration="2615000" />
       <workItem from="1713662770103" duration="265000" />
       <workItem from="1713697452379" duration="1558000" />
-      <workItem from="1713710628197" duration="201000" />
-    </task>
-    <task id="LOCAL-00809" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1711570080837</created>
-      <option name="number" value="00809" />
-      <option name="presentableId" value="LOCAL-00809" />
-      <option name="project" value="LOCAL" />
-      <updated>1711570080837</updated>
+      <workItem from="1713710628197" duration="1954000" />
+      <workItem from="1713789328629" duration="1157000" />
+      <workItem from="1713798445508" duration="544000" />
+      <workItem from="1713811519744" duration="1579000" />
+      <workItem from="1713814520787" duration="236000" />
+      <workItem from="1713857434438" duration="142000" />
+      <workItem from="1713874412378" duration="157000" />
+      <workItem from="1713884016403" duration="1922000" />
     </task>
     <task id="LOCAL-00810" summary="almost finish">
       <option name="closed" value="true" />
@@ -1357,7 +1360,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713704138884</updated>
     </task>
-    <option name="localTasksCounter" value="858" />
+    <task id="LOCAL-00858" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1713712919117</created>
+      <option name="number" value="00858" />
+      <option name="presentableId" value="LOCAL-00858" />
+      <option name="project" value="LOCAL" />
+      <updated>1713712919118</updated>
+    </task>
+    <option name="localTasksCounter" value="859" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

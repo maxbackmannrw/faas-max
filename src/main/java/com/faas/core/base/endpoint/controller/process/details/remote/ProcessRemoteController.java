@@ -2,6 +2,7 @@ package com.faas.core.base.endpoint.controller.process.details.remote;
 
 import com.faas.core.base.middleware.process.details.remote.ProcessRemoteMiddleware;
 import com.faas.core.base.model.ws.process.details.remote.ProcessRemoteWSModel;
+import com.faas.core.base.model.ws.remote.content.RemoteUrlWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,6 +86,19 @@ public class ProcessRemoteController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
+
+    @RequestMapping(value = BaseRoute.GET_PROCESS_REMOTE_URLS, method = RequestMethod.POST)
+    public ResponseEntity<?> getProcessRemoteUrls(@RequestParam long userId,
+                                                  @RequestParam String processId) {
+
+        RemoteUrlWSModel response = processRemoteMiddleware.getProcessRemoteUrls(userId,processId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
 
 
 }

@@ -3,11 +3,15 @@ package com.faas.core.base.framework.process.details.remote;
 import com.faas.core.base.model.db.process.content.ProcessDBModel;
 import com.faas.core.base.model.db.process.details.remote.ProcessRemoteDBModel;
 import com.faas.core.base.model.db.remote.content.RemoteDBModel;
+import com.faas.core.base.model.db.utility.UrlDBModel;
 import com.faas.core.base.model.ws.process.details.remote.dto.ProcessRemoteWSDTO;
+import com.faas.core.base.model.ws.remote.content.dto.RemoteUrlWSDTO;
 import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.process.details.remote.ProcessRemoteRepository;
 import com.faas.core.base.repo.remote.content.RemoteRepository;
 import com.faas.core.base.repo.utility.DataTypeRepository;
+import com.faas.core.base.repo.utility.UrlRepository;
+import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.ProcessHelper;
 import com.faas.core.utils.helpers.RemoteHelper;
@@ -35,6 +39,9 @@ public class ProcessRemoteFramework {
 
     @Autowired
     RemoteRepository remoteRepository;
+
+    @Autowired
+    UrlRepository urlRepository;
 
     @Autowired
     AppUtils appUtils;
@@ -88,6 +95,17 @@ public class ProcessRemoteFramework {
         }
         return null;
     }
+
+    public List<RemoteUrlWSDTO> getProcessRemoteUrlsService(long userId, String processId) {
+
+        List<RemoteUrlWSDTO>remoteUrlWSDTOS = new ArrayList<>();
+        List<UrlDBModel> urlDBModels = urlRepository.findByBaseTypeAndOwnerId(AppConstant.REMOTE_URL,processId);
+        for (UrlDBModel urlDBModel : urlDBModels) {
+            remoteUrlWSDTOS.add(new RemoteUrlWSDTO(urlDBModel));
+        }
+        return remoteUrlWSDTOS;
+    }
+
 
 
 }
