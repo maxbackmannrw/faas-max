@@ -2,7 +2,6 @@ package com.faas.core.base.model.db.process.details.channel.temp;
 
 import com.faas.core.base.model.db.process.details.channel.temp.dao.ProcessTempAssetDAO;
 import com.faas.core.base.model.db.process.details.channel.temp.dao.ProcessTempDataDAO;
-import com.faas.core.base.model.db.process.details.channel.temp.dao.ProcessTempUrlDAO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -19,9 +18,8 @@ public class ProcessWappMessageTempDBModel {
     private String wappBody;
     private long typeId;
     private String messageType;
-    private List<ProcessTempUrlDAO>tempUrls;
-    private List<ProcessTempAssetDAO>tempAssets;
     private List<ProcessTempDataDAO>tempDatas;
+    private List<ProcessTempAssetDAO>tempAssets;
     private long uDate;
     private long cDate;
     private int status;
@@ -29,16 +27,15 @@ public class ProcessWappMessageTempDBModel {
     public ProcessWappMessageTempDBModel() {
     }
 
-    public ProcessWappMessageTempDBModel(String id, String processId, String wappTitle, String wappBody, long typeId, String messageType, List<ProcessTempUrlDAO> tempUrls, List<ProcessTempAssetDAO> tempAssets, List<ProcessTempDataDAO> tempDatas, long uDate, long cDate, int status) {
+    public ProcessWappMessageTempDBModel(String id, String processId, String wappTitle, String wappBody, long typeId, String messageType, List<ProcessTempDataDAO> tempDatas, List<ProcessTempAssetDAO> tempAssets, long uDate, long cDate, int status) {
         this.id = id;
         this.processId = processId;
         this.wappTitle = wappTitle;
         this.wappBody = wappBody;
         this.typeId = typeId;
         this.messageType = messageType;
-        this.tempUrls = tempUrls;
-        this.tempAssets = tempAssets;
         this.tempDatas = tempDatas;
+        this.tempAssets = tempAssets;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
@@ -92,12 +89,12 @@ public class ProcessWappMessageTempDBModel {
         this.messageType = messageType;
     }
 
-    public List<ProcessTempUrlDAO> getTempUrls() {
-        return tempUrls;
+    public List<ProcessTempDataDAO> getTempDatas() {
+        return tempDatas;
     }
 
-    public void setTempUrls(List<ProcessTempUrlDAO> tempUrls) {
-        this.tempUrls = tempUrls;
+    public void setTempDatas(List<ProcessTempDataDAO> tempDatas) {
+        this.tempDatas = tempDatas;
     }
 
     public List<ProcessTempAssetDAO> getTempAssets() {
@@ -106,14 +103,6 @@ public class ProcessWappMessageTempDBModel {
 
     public void setTempAssets(List<ProcessTempAssetDAO> tempAssets) {
         this.tempAssets = tempAssets;
-    }
-
-    public List<ProcessTempDataDAO> getTempDatas() {
-        return tempDatas;
-    }
-
-    public void setTempDatas(List<ProcessTempDataDAO> tempDatas) {
-        this.tempDatas = tempDatas;
     }
 
     public long getuDate() {

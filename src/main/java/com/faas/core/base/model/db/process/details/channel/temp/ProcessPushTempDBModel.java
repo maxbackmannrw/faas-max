@@ -2,7 +2,6 @@ package com.faas.core.base.model.db.process.details.channel.temp;
 
 import com.faas.core.base.model.db.process.details.channel.temp.dao.ProcessTempAssetDAO;
 import com.faas.core.base.model.db.process.details.channel.temp.dao.ProcessTempDataDAO;
-import com.faas.core.base.model.db.process.details.channel.temp.dao.ProcessTempUrlDAO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -20,9 +19,8 @@ public class ProcessPushTempDBModel {
     private String pushSender;
     private long typeId;
     private String pushType;
-    private List<ProcessTempUrlDAO>tempUrls;
-    private List<ProcessTempAssetDAO>tempAssets;
     private List<ProcessTempDataDAO>tempDatas;
+    private List<ProcessTempAssetDAO>tempAssets;
     private long uDate;
     private long cDate;
     private int status;
@@ -30,7 +28,7 @@ public class ProcessPushTempDBModel {
     public ProcessPushTempDBModel() {
     }
 
-    public ProcessPushTempDBModel(String id, String processId, String pushHeader, String pushBody, String pushFooter, String pushSender, long typeId, String pushType, List<ProcessTempUrlDAO> tempUrls, List<ProcessTempAssetDAO> tempAssets, List<ProcessTempDataDAO> tempDatas, long uDate, long cDate, int status) {
+    public ProcessPushTempDBModel(String id, String processId, String pushHeader, String pushBody, String pushFooter, String pushSender, long typeId, String pushType, List<ProcessTempDataDAO> tempDatas, List<ProcessTempAssetDAO> tempAssets, long uDate, long cDate, int status) {
         this.id = id;
         this.processId = processId;
         this.pushHeader = pushHeader;
@@ -39,9 +37,8 @@ public class ProcessPushTempDBModel {
         this.pushSender = pushSender;
         this.typeId = typeId;
         this.pushType = pushType;
-        this.tempUrls = tempUrls;
-        this.tempAssets = tempAssets;
         this.tempDatas = tempDatas;
+        this.tempAssets = tempAssets;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
@@ -111,12 +108,12 @@ public class ProcessPushTempDBModel {
         this.pushType = pushType;
     }
 
-    public List<ProcessTempUrlDAO> getTempUrls() {
-        return tempUrls;
+    public List<ProcessTempDataDAO> getTempDatas() {
+        return tempDatas;
     }
 
-    public void setTempUrls(List<ProcessTempUrlDAO> tempUrls) {
-        this.tempUrls = tempUrls;
+    public void setTempDatas(List<ProcessTempDataDAO> tempDatas) {
+        this.tempDatas = tempDatas;
     }
 
     public List<ProcessTempAssetDAO> getTempAssets() {
@@ -125,14 +122,6 @@ public class ProcessPushTempDBModel {
 
     public void setTempAssets(List<ProcessTempAssetDAO> tempAssets) {
         this.tempAssets = tempAssets;
-    }
-
-    public List<ProcessTempDataDAO> getTempDatas() {
-        return tempDatas;
-    }
-
-    public void setTempDatas(List<ProcessTempDataDAO> tempDatas) {
-        this.tempDatas = tempDatas;
     }
 
     public long getuDate() {

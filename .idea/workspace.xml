@@ -8,8 +8,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/remote/ProcessRemoteFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/remote/ProcessRemoteFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/config/BaseRoute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/config/BaseRoute.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/config/AppConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/config/AppConstant.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -970,15 +970,9 @@
       <workItem from="1713814520787" duration="236000" />
       <workItem from="1713857434438" duration="142000" />
       <workItem from="1713874412378" duration="157000" />
-      <workItem from="1713884016403" duration="2226000" />
-    </task>
-    <task id="LOCAL-00811" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1711637012924</created>
-      <option name="number" value="00811" />
-      <option name="presentableId" value="LOCAL-00811" />
-      <option name="project" value="LOCAL" />
-      <updated>1711637012924</updated>
+      <workItem from="1713884016403" duration="4023000" />
+      <workItem from="1713904536339" duration="192000" />
+      <workItem from="1713956659542" duration="2614000" />
     </task>
     <task id="LOCAL-00812" summary="almost finish">
       <option name="closed" value="true" />
@@ -1364,7 +1358,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713891341986</updated>
     </task>
-    <option name="localTasksCounter" value="860" />
+    <task id="LOCAL-00860" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1713891732354</created>
+      <option name="number" value="00860" />
+      <option name="presentableId" value="LOCAL-00860" />
+      <option name="project" value="LOCAL" />
+      <updated>1713891732354</updated>
+    </task>
+    <option name="localTasksCounter" value="861" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

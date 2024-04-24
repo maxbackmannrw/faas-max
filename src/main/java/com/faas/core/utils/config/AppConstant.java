@@ -83,7 +83,6 @@ public class AppConstant {
 
 
 
-
     public static final String OPERATION_SUCCESS = "OPERATION_SUCCESS";
     public static final String OPERATION_REJECTED = "OPERATION_REJECTED";
     public static final String OPERATION_NO_RESPONSE = "OPERATION_NO_RESPONSE";
@@ -118,7 +117,6 @@ public class AppConstant {
     public static final String AGENT_ALL_OPERATIONS_SUMMARY = "AGENT_ALL_OPERATIONS_SUMMARY";
 
     public static final String AGENT_ALL_CAMPAIGNS_SUMMARY = "AGENT_ALL_CAMPAIGNS_SUMMARY";
-
 
 
 
@@ -170,6 +168,7 @@ public class AppConstant {
     public static final String REMOTE_SOURCE_URL = "REMOTE_SOURCE_URL";
     public static final String REMOTE_CONTENT_URL = "REMOTE_CONTENT_URL";
     public static final String REMOTE_UPDATE_URL = "REMOTE_UPDATE_URL";
+
 
 
     public static final String CLIENT_NAME_TAG = "{clientName}";
