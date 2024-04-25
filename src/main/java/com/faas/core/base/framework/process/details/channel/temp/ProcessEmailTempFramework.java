@@ -64,6 +64,7 @@ public class ProcessEmailTempFramework {
             processEmailTempDBModel.setTypeId(typeId);
             processEmailTempDBModel.setEmailType(emailTypeDBModel.get().getEmailType());
             processEmailTempDBModel.setTempDatas(new ArrayList<>());
+            processEmailTempDBModel.setTempAssets(new ArrayList<>());
             processEmailTempDBModel.setuDate(appUtils.getCurrentTimeStamp());
             processEmailTempDBModel.setcDate(appUtils.getCurrentTimeStamp());
             processEmailTempDBModel.setStatus(1);
