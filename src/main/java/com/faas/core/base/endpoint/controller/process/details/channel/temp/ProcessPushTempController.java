@@ -51,11 +51,10 @@ public class ProcessPushTempController {
                                                    @RequestParam String processId,
                                                    @RequestParam String pushHeader,
                                                    @RequestParam String pushBody,
-                                                   @RequestParam String pushFooter,
                                                    @RequestParam String pushSender,
                                                    @RequestParam long typeId) {
 
-        ProcessPushTempWSModel response = processPushTempMiddleware.createProcessPushTemp(userId,processId,pushHeader,pushBody,pushFooter,pushSender,typeId);
+        ProcessPushTempWSModel response = processPushTempMiddleware.createProcessPushTemp(userId,processId,pushHeader,pushBody,pushSender,typeId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -68,11 +67,10 @@ public class ProcessPushTempController {
                                                    @RequestParam String tempId,
                                                    @RequestParam String pushHeader,
                                                    @RequestParam String pushBody,
-                                                   @RequestParam String pushFooter,
                                                    @RequestParam String pushSender,
                                                    @RequestParam long typeId) {
 
-        ProcessPushTempWSModel response = processPushTempMiddleware.updateProcessPushTemp(userId,tempId,pushHeader,pushBody,pushFooter,pushSender,typeId);
+        ProcessPushTempWSModel response = processPushTempMiddleware.updateProcessPushTemp(userId,tempId,pushHeader,pushBody,pushSender,typeId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

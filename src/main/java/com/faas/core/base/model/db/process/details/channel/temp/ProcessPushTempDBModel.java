@@ -15,7 +15,6 @@ public class ProcessPushTempDBModel {
     private String processId;
     private String pushHeader;
     private String pushBody;
-    private String pushFooter;
     private String pushSender;
     private long typeId;
     private String pushType;
@@ -28,12 +27,11 @@ public class ProcessPushTempDBModel {
     public ProcessPushTempDBModel() {
     }
 
-    public ProcessPushTempDBModel(String id, String processId, String pushHeader, String pushBody, String pushFooter, String pushSender, long typeId, String pushType, List<ProcessTempDataDAO> tempDatas, List<ProcessTempAssetDAO> tempAssets, long uDate, long cDate, int status) {
+    public ProcessPushTempDBModel(String id, String processId, String pushHeader, String pushBody, String pushSender, long typeId, String pushType, List<ProcessTempDataDAO> tempDatas, List<ProcessTempAssetDAO> tempAssets, long uDate, long cDate, int status) {
         this.id = id;
         this.processId = processId;
         this.pushHeader = pushHeader;
         this.pushBody = pushBody;
-        this.pushFooter = pushFooter;
         this.pushSender = pushSender;
         this.typeId = typeId;
         this.pushType = pushType;
@@ -74,14 +72,6 @@ public class ProcessPushTempDBModel {
 
     public void setPushBody(String pushBody) {
         this.pushBody = pushBody;
-    }
-
-    public String getPushFooter() {
-        return pushFooter;
-    }
-
-    public void setPushFooter(String pushFooter) {
-        this.pushFooter = pushFooter;
     }
 
     public String getPushSender() {

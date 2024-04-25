@@ -51,7 +51,7 @@ public class ProcessPushTempFramework {
         return null;
     }
 
-    public ProcessPushTempWSDTO createProcessPushTempService(String processId, String pushHeader, String pushBody, String pushFooter, String pushSender, long typeId) {
+    public ProcessPushTempWSDTO createProcessPushTempService(String processId, String pushHeader, String pushBody, String pushSender, long typeId) {
 
         Optional<PushTypeDBModel> pushTypeDBModel = pushTypeRepository.findById(typeId);
         if (pushTypeDBModel.isPresent()){
@@ -60,11 +60,11 @@ public class ProcessPushTempFramework {
             processPushTempDBModel.setProcessId(processId);
             processPushTempDBModel.setPushHeader(pushHeader);
             processPushTempDBModel.setPushBody(pushBody);
-            processPushTempDBModel.setPushFooter(pushFooter);
             processPushTempDBModel.setPushSender(pushSender);
             processPushTempDBModel.setTypeId(pushTypeDBModel.get().getId());
             processPushTempDBModel.setPushType(pushTypeDBModel.get().getPushType());
             processPushTempDBModel.setTempDatas(new ArrayList<>());
+            processPushTempDBModel.setTempAssets(new ArrayList<>());
             processPushTempDBModel.setuDate(appUtils.getCurrentTimeStamp());
             processPushTempDBModel.setcDate(appUtils.getCurrentTimeStamp());
             processPushTempDBModel.setStatus(1);
@@ -74,7 +74,7 @@ public class ProcessPushTempFramework {
         return null;
     }
 
-    public ProcessPushTempWSDTO updateProcessPushTempService(String tempId, String pushHeader, String pushBody, String pushFooter, String pushSender, long typeId) {
+    public ProcessPushTempWSDTO updateProcessPushTempService(String tempId, String pushHeader, String pushBody, String pushSender, long typeId) {
 
         Optional<ProcessPushTempDBModel> processPushTempDBModel = processPushTempRepository.findById(tempId);
         Optional<PushTypeDBModel> pushTypeDBModel = pushTypeRepository.findById(typeId);
@@ -82,7 +82,6 @@ public class ProcessPushTempFramework {
 
             processPushTempDBModel.get().setPushHeader(pushHeader);
             processPushTempDBModel.get().setPushBody(pushBody);
-            processPushTempDBModel.get().setPushFooter(pushFooter);
             processPushTempDBModel.get().setPushSender(pushSender);
             processPushTempDBModel.get().setTypeId(pushTypeDBModel.get().getId());
             processPushTempDBModel.get().setPushType(pushTypeDBModel.get().getPushType());

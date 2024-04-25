@@ -59,13 +59,13 @@ public class ProcessPushTempMiddleware {
         return response;
     }
 
-    public ProcessPushTempWSModel createProcessPushTemp(long userId, String processId, String pushHeader, String pushBody, String pushFooter, String pushSender, long typeId) {
+    public ProcessPushTempWSModel createProcessPushTemp(long userId, String processId, String pushHeader, String pushBody, String pushSender, long typeId) {
 
         ProcessPushTempWSModel response = new ProcessPushTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessPushTempWSDTO> processPushTempWSDTOS = new ArrayList<>();
 
-        ProcessPushTempWSDTO processPushTempWSDTO = processPushTempFramework.createProcessPushTempService(processId,pushHeader,pushBody,pushFooter,pushSender,typeId);
+        ProcessPushTempWSDTO processPushTempWSDTO = processPushTempFramework.createProcessPushTempService(processId,pushHeader,pushBody,pushSender,typeId);
         if (processPushTempWSDTO != null) {
             processPushTempWSDTOS.add(processPushTempWSDTO);
         }
@@ -80,13 +80,13 @@ public class ProcessPushTempMiddleware {
         return response;
     }
 
-    public ProcessPushTempWSModel updateProcessPushTemp(long userId, String tempId, String pushHeader, String pushBody, String pushFooter, String pushSender, long typeId) {
+    public ProcessPushTempWSModel updateProcessPushTemp(long userId, String tempId, String pushHeader, String pushBody, String pushSender, long typeId) {
 
         ProcessPushTempWSModel response = new ProcessPushTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessPushTempWSDTO> processPushTempWSDTOS = new ArrayList<>();
 
-        ProcessPushTempWSDTO processPushTempWSDTO = processPushTempFramework.updateProcessPushTempService(tempId,pushHeader,pushBody,pushFooter,pushSender,typeId);
+        ProcessPushTempWSDTO processPushTempWSDTO = processPushTempFramework.updateProcessPushTempService(tempId,pushHeader,pushBody,pushSender,typeId);
         if (processPushTempWSDTO != null) {
             processPushTempWSDTOS.add(processPushTempWSDTO);
         }
