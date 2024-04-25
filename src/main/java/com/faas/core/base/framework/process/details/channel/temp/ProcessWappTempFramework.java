@@ -64,6 +64,7 @@ public class ProcessWappTempFramework {
             processWappMessageTempDBModel.setTypeId(typeId);
             processWappMessageTempDBModel.setMessageType(messageTypeDBModel.get().getMessageType());
             processWappMessageTempDBModel.setTempDatas(new ArrayList<>());
+            processWappMessageTempDBModel.setTempAssets(new ArrayList<>());
             processWappMessageTempDBModel.setuDate(appUtils.getCurrentTimeStamp());
             processWappMessageTempDBModel.setcDate(appUtils.getCurrentTimeStamp());
             processWappMessageTempDBModel.setStatus(1);
