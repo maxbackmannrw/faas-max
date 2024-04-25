@@ -1,6 +1,6 @@
 package com.faas.core.base.middleware.process.details.channel.temp;
 
-import com.faas.core.base.framework.process.details.channel.temp.ProcessTempFramework;
+import com.faas.core.base.framework.process.details.channel.temp.ProcessChannelTempFramework;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.model.ws.process.details.channel.temp.*;
 import com.faas.core.base.model.ws.process.details.channel.temp.dto.*;
@@ -9,11 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ProcessTempMiddleware {
+public class ProcessChannelTempMiddleware {
 
 
     @Autowired
-    ProcessTempFramework processTempFramework;
+    ProcessChannelTempFramework processChannelTempFramework;
 
 
     public ProcessTempWSModel getProcessTemp(long userId, String processId) {
@@ -21,7 +21,7 @@ public class ProcessTempMiddleware {
         ProcessTempWSModel response = new ProcessTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ProcessTempWSDTO processTempWSDTO = processTempFramework.getProcessTempService(userId,processId);
+        ProcessTempWSDTO processTempWSDTO = processChannelTempFramework.getProcessTempService(userId,processId);
         if (processTempWSDTO != null){
             response.setProcessTemp(processTempWSDTO);
         }

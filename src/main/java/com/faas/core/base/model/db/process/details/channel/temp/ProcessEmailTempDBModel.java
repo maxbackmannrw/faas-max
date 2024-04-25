@@ -15,7 +15,6 @@ public class ProcessEmailTempDBModel {
     private String processId;
     private String emailSubject;
     private String emailBody;
-    private String emailFooter;
     private String emailSender;
     private long typeId;
     private String emailType;
@@ -28,12 +27,11 @@ public class ProcessEmailTempDBModel {
     public ProcessEmailTempDBModel() {
     }
 
-    public ProcessEmailTempDBModel(String id, String processId, String emailSubject, String emailBody, String emailFooter, String emailSender, long typeId, String emailType, List<ProcessTempDataDAO> tempDatas, List<ProcessTempAssetDAO> tempAssets, long uDate, long cDate, int status) {
+    public ProcessEmailTempDBModel(String id, String processId, String emailSubject, String emailBody, String emailSender, long typeId, String emailType, List<ProcessTempDataDAO> tempDatas, List<ProcessTempAssetDAO> tempAssets, long uDate, long cDate, int status) {
         this.id = id;
         this.processId = processId;
         this.emailSubject = emailSubject;
         this.emailBody = emailBody;
-        this.emailFooter = emailFooter;
         this.emailSender = emailSender;
         this.typeId = typeId;
         this.emailType = emailType;
@@ -74,14 +72,6 @@ public class ProcessEmailTempDBModel {
 
     public void setEmailBody(String emailBody) {
         this.emailBody = emailBody;
-    }
-
-    public String getEmailFooter() {
-        return emailFooter;
-    }
-
-    public void setEmailFooter(String emailFooter) {
-        this.emailFooter = emailFooter;
     }
 
     public String getEmailSender() {

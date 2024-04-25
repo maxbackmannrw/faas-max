@@ -51,11 +51,10 @@ public class ProcessEmailTempController {
                                                     @RequestParam String processId,
                                                     @RequestParam String emailSubject,
                                                     @RequestParam String emailBody,
-                                                    @RequestParam String emailFooter,
                                                     @RequestParam String emailSender,
                                                     @RequestParam long typeId) {
 
-        ProcessEmailTempWSModel response = processEmailTempMiddleware.createProcessEmailTemp(userId,processId,emailSubject,emailBody,emailFooter,emailSender,typeId);
+        ProcessEmailTempWSModel response = processEmailTempMiddleware.createProcessEmailTemp(userId,processId,emailSubject,emailBody,emailSender,typeId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -68,11 +67,10 @@ public class ProcessEmailTempController {
                                                     @RequestParam String tempId,
                                                     @RequestParam String emailSubject,
                                                     @RequestParam String emailBody,
-                                                    @RequestParam String emailFooter,
                                                     @RequestParam String emailSender,
                                                     @RequestParam long typeId) {
 
-        ProcessEmailTempWSModel response = processEmailTempMiddleware.updateProcessEmailTemp(userId,tempId,emailSubject,emailBody,emailFooter,emailSender,typeId);
+        ProcessEmailTempWSModel response = processEmailTempMiddleware.updateProcessEmailTemp(userId,tempId,emailSubject,emailBody,emailSender,typeId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

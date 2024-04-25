@@ -8,7 +8,8 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class ProcessTempFramework {
+public class ProcessChannelTempFramework {
+
 
     @Autowired
     ProcessHelper processHelper;
@@ -16,8 +17,10 @@ public class ProcessTempFramework {
     @Autowired
     AppUtils appUtils;
 
+
     public ProcessTempWSDTO getProcessTempService(long userId, String processId) {
         return processHelper.createProcessTempWSDTO(processId);
     }
+
 
 }

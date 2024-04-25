@@ -51,7 +51,7 @@ public class ProcessEmailTempFramework {
         return null;
     }
 
-    public ProcessEmailTempWSDTO createProcessEmailTempService(String processId, String emailSubject, String emailBody, String emailFooter, String emailSender, long typeId) {
+    public ProcessEmailTempWSDTO createProcessEmailTempService(String processId, String emailSubject, String emailBody, String emailSender, long typeId) {
 
         Optional<EmailTypeDBModel> emailTypeDBModel = emailTypeRepository.findById(typeId);
         if (emailTypeDBModel.isPresent()){
@@ -60,7 +60,6 @@ public class ProcessEmailTempFramework {
             processEmailTempDBModel.setProcessId(processId);
             processEmailTempDBModel.setEmailSubject(emailSubject);
             processEmailTempDBModel.setEmailBody(emailBody);
-            processEmailTempDBModel.setEmailFooter(emailFooter);
             processEmailTempDBModel.setEmailSender(emailSender);
             processEmailTempDBModel.setTypeId(typeId);
             processEmailTempDBModel.setEmailType(emailTypeDBModel.get().getEmailType());
@@ -75,7 +74,7 @@ public class ProcessEmailTempFramework {
     }
 
 
-    public ProcessEmailTempWSDTO updateProcessEmailTempService(String tempId, String emailSubject, String emailBody, String emailFooter, String emailSender, long typeId) {
+    public ProcessEmailTempWSDTO updateProcessEmailTempService(String tempId, String emailSubject, String emailBody, String emailSender, long typeId) {
 
         Optional<ProcessEmailTempDBModel> processEmailTempDBModel = processEmailTempRepository.findById(tempId);
         Optional<EmailTypeDBModel> emailTypeDBModel = emailTypeRepository.findById(typeId);
@@ -83,7 +82,6 @@ public class ProcessEmailTempFramework {
 
             processEmailTempDBModel.get().setEmailSubject(emailSubject);
             processEmailTempDBModel.get().setEmailBody(emailBody);
-            processEmailTempDBModel.get().setEmailFooter(emailFooter);
             processEmailTempDBModel.get().setEmailSender(emailSender);
             processEmailTempDBModel.get().setTypeId(typeId);
             processEmailTempDBModel.get().setEmailType(emailTypeDBModel.get().getEmailType());

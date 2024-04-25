@@ -58,13 +58,13 @@ public class ProcessEmailTempMiddleware {
         return response;
     }
 
-    public ProcessEmailTempWSModel createProcessEmailTemp(long userId, String processId, String emailSubject, String emailBody, String emailFooter, String emailSender, long typeId) {
+    public ProcessEmailTempWSModel createProcessEmailTemp(long userId, String processId, String emailSubject, String emailBody, String emailSender, long typeId) {
 
         ProcessEmailTempWSModel response = new ProcessEmailTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessEmailTempWSDTO> processEmailTempWSDTOS = new ArrayList<>();
 
-        ProcessEmailTempWSDTO processEmailTempWSDTO = processEmailTempFramework.createProcessEmailTempService(processId,emailSubject,emailBody,emailFooter,emailSender,typeId);
+        ProcessEmailTempWSDTO processEmailTempWSDTO = processEmailTempFramework.createProcessEmailTempService(processId,emailSubject,emailBody,emailSender,typeId);
         if (processEmailTempWSDTO != null) {
             processEmailTempWSDTOS.add(processEmailTempWSDTO);
         }
@@ -79,13 +79,13 @@ public class ProcessEmailTempMiddleware {
         return response;
     }
 
-    public ProcessEmailTempWSModel updateProcessEmailTemp(long userId, String tempId, String emailSubject, String emailBody, String emailFooter, String emailSender, long typeId) {
+    public ProcessEmailTempWSModel updateProcessEmailTemp(long userId, String tempId, String emailSubject, String emailBody, String emailSender, long typeId) {
 
         ProcessEmailTempWSModel response = new ProcessEmailTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessEmailTempWSDTO> processEmailTempWSDTOS = new ArrayList<>();
 
-        ProcessEmailTempWSDTO processEmailTempWSDTO = processEmailTempFramework.updateProcessEmailTempService(tempId,emailSubject,emailBody,emailFooter,emailSender,typeId);
+        ProcessEmailTempWSDTO processEmailTempWSDTO = processEmailTempFramework.updateProcessEmailTempService(tempId,emailSubject,emailBody,emailSender,typeId);
         if (processEmailTempWSDTO != null) {
             processEmailTempWSDTOS.add(processEmailTempWSDTO);
         }

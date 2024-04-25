@@ -592,7 +592,6 @@ public class ChannelHelper {
         operationEmailDAO.setTempId(emailTempDBModel.getId());
         operationEmailDAO.setEmailSubject(emailTempDBModel.getEmailSubject());
         operationEmailDAO.setEmailBody(emailTempDBModel.getEmailBody());
-        operationEmailDAO.setEmailFooter(emailTempDBModel.getEmailFooter());
         operationEmailDAO.setEmailSender(emailTempDBModel.getEmailSender());
         operationEmailDAO.setEmailType(emailTempDBModel.getEmailType());
         operationEmailDAO.setStatus(1);
