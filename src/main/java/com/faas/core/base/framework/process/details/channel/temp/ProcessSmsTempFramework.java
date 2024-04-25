@@ -65,7 +65,7 @@ public class ProcessSmsTempFramework {
         return null;
     }
 
-    public ProcessSmsTempWSDTO createProcessSmsTempService(long userId, String processId, String smsTitle, String smsBody, String senderId, String processRemoteId, String remoteUrlId, long typeId) {
+    public ProcessSmsTempWSDTO createProcessSmsTempService(long userId, String processId, String smsTitle, String smsBody, String senderId, long typeId) {
 
         Optional<MessageTypeDBModel> messageTypeDBModel = messageTypeRepository.findById(typeId);
         if (messageTypeDBModel.isPresent()) {
@@ -78,6 +78,7 @@ public class ProcessSmsTempFramework {
             processSmsTempDBModel.setTypeId(typeId);
             processSmsTempDBModel.setMessageType(messageTypeDBModel.get().getMessageType());
             processSmsTempDBModel.setTempDatas(new ArrayList<>());
+            processSmsTempDBModel.setTempAssets(new ArrayList<>());
             processSmsTempDBModel.setuDate(appUtils.getCurrentTimeStamp());
             processSmsTempDBModel.setcDate(appUtils.getCurrentTimeStamp());
             processSmsTempDBModel.setStatus(1);

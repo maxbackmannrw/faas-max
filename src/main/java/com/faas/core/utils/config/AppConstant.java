@@ -160,21 +160,22 @@ public class AppConstant {
 
 
     public static final String REMOTE_URL = "REMOTE_URL";
-    public static final String SMS_TEMP_URL = "SMS_TEMP_URL";
-    public static final String WAPP_MESSAGE_TEMP_URL = "WAPP_MESSAGE_TEMP_URL";
-    public static final String EMAIL_TEMP_URL = "EMAIL_TEMP_URL";
-    public static final String PUSH_TEMP_URL = "EMAIL_TEMP_URL";
+    public static final String TEMP_URL = "TEMP_URL";
 
     public static final String REMOTE_SOURCE_URL = "REMOTE_SOURCE_URL";
     public static final String REMOTE_CONTENT_URL = "REMOTE_CONTENT_URL";
     public static final String REMOTE_UPDATE_URL = "REMOTE_UPDATE_URL";
 
+    public static final String SMS_TEMP_URL = "SMS_TEMP_URL";
+    public static final String WAPP_MESSAGE_TEMP_URL = "WAPP_MESSAGE_TEMP_URL";
+    public static final String EMAIL_TEMP_URL = "EMAIL_TEMP_URL";
+    public static final String PUSH_TEMP_URL = "PUSH_TEMP_URL";
 
 
-    public static final String CLIENT_NAME_TAG = "{clientName}";
-    public static final String REMOTE_SOURCE_URL_TAG = "{remoteSourceUrl}";
-    public static final String REMOTE_CONTENT_URL_TAG = "{remoteContentUrl}";
-    public static final String REMOTE_UPDATE_URL_TAG = "{remoteUpdateUrl}";
+    public static final String CLIENT_NAME_TAG = "[clientName]";
+    public static final String REMOTE_URL_TAG = "[remoteUrl]";
+    public static final String TEMP_URL_TAG = "[tempUrl]";
+
 
 
 
