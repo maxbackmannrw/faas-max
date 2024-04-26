@@ -1,35 +1,21 @@
 package com.faas.core.base.framework.process.details.channel.temp;
 
-import com.faas.core.base.model.db.channel.settings.EmailTypeDBModel;
 import com.faas.core.base.model.db.channel.settings.MessageTypeDBModel;
-import com.faas.core.base.model.db.channel.settings.PushTypeDBModel;
-import com.faas.core.base.model.db.process.details.channel.temp.ProcessEmailTempDBModel;
-import com.faas.core.base.model.db.process.details.channel.temp.ProcessPushTempDBModel;
 import com.faas.core.base.model.db.process.details.channel.temp.ProcessSmsTempDBModel;
-import com.faas.core.base.model.db.process.details.channel.temp.ProcessWappMessageTempDBModel;
-import com.faas.core.base.model.ws.process.details.channel.temp.dto.ProcessTempWSDTO;
-import com.faas.core.base.model.ws.process.details.channel.temp.dto.ProcessEmailTempWSDTO;
-import com.faas.core.base.model.ws.process.details.channel.temp.dto.ProcessPushTempWSDTO;
 import com.faas.core.base.model.ws.process.details.channel.temp.dto.ProcessSmsTempWSDTO;
-import com.faas.core.base.model.ws.process.details.channel.temp.dto.ProcessWappMessageTempWSDTO;
-import com.faas.core.base.repo.channel.settings.EmailTypeRepository;
 import com.faas.core.base.repo.channel.settings.MessageTypeRepository;
-import com.faas.core.base.repo.channel.settings.PushTypeRepository;
-import com.faas.core.base.repo.process.details.channel.temp.ProcessEmailTempRepository;
-import com.faas.core.base.repo.process.details.channel.temp.ProcessPushTempRepository;
 import com.faas.core.base.repo.process.details.channel.temp.ProcessSmsTempRepository;
-import com.faas.core.base.repo.process.details.channel.temp.ProcessWappMessageTempRepository;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.ProcessHelper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 
-@Component
+@Service
 public class ProcessSmsTempFramework {
 
 

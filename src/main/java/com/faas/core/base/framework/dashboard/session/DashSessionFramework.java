@@ -5,10 +5,10 @@ import com.faas.core.base.model.ws.client.content.dto.ClientListWSDTO;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 
-@Component
+@Service
 public class DashSessionFramework {
 
     @Autowired

@@ -6,13 +6,16 @@ import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 
-@Component
+@Service
 public class DashOperationFramework {
+
 
     @Autowired
     AppUtils appUtils;
+
 
     public ClientListWSDTO fillClientsWSDTO(Page<ClientDBModel> clientDBModelPage) {
 

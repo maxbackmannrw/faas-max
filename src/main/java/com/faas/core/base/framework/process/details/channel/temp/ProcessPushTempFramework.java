@@ -9,13 +9,14 @@ import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.ProcessHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 
-@Component
+@Service
 public class ProcessPushTempFramework {
 
 
@@ -102,8 +103,6 @@ public class ProcessPushTempFramework {
         }
         return null;
     }
-
-
 
 
 }

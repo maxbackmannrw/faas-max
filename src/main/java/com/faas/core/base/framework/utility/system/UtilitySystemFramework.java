@@ -25,14 +25,13 @@ import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.UtilityHelper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 
-@Component
+@Service
 public class UtilitySystemFramework {
-
 
     @Autowired
     UtilityHelper utilityHelper;

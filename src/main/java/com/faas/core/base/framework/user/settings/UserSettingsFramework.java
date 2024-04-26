@@ -5,12 +5,12 @@ import com.faas.core.base.model.ws.user.settings.dto.UserRoleWSDTO;
 import com.faas.core.base.repo.user.settings.UserRoleRepository;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 
-@Component
+@Service
 public class UserSettingsFramework {
 
     @Autowired

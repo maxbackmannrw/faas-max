@@ -7,11 +7,12 @@ import com.faas.core.base.repo.asset.settings.AssetTypeRepository;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 
-@Component
+@Service
 public class AssetFramework {
 
 

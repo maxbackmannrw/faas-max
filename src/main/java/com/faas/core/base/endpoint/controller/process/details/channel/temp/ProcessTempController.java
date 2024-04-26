@@ -1,6 +1,6 @@
 package com.faas.core.base.endpoint.controller.process.details.channel.temp;
 
-import com.faas.core.base.middleware.process.details.channel.temp.ProcessChannelTempMiddleware;
+import com.faas.core.base.middleware.process.details.channel.temp.ProcessTempMiddleware;
 import com.faas.core.base.model.ws.process.details.channel.temp.*;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
@@ -15,18 +15,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping(value = AppConstant.API_VERSION + "/base/process/details/channel/temp/")
-public class ProcessChannelTempController {
+public class ProcessTempController {
 
 
     @Autowired
-    ProcessChannelTempMiddleware processChannelTempMiddleware;
+    ProcessTempMiddleware processTempMiddleware;
 
 
     @RequestMapping(value = BaseRoute.GET_PROCESS_TEMP, method = RequestMethod.POST)
     public ResponseEntity<?> getProcessTemp(@RequestParam long userId,
                                             @RequestParam String processId) {
 
-        ProcessTempWSModel response = processChannelTempMiddleware.getProcessTemp(userId, processId);
+        ProcessTempWSModel response = processTempMiddleware.getProcessTemp(userId, processId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

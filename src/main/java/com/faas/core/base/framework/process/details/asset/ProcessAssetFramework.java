@@ -5,9 +5,10 @@ import com.faas.core.base.model.ws.process.details.assets.dto.ProcessAssetWSDTO;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 
-@Component
+@Service
 public class ProcessAssetFramework {
 
 

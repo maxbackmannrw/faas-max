@@ -9,6 +9,7 @@ import com.faas.core.utils.handler.channel.wapp.WappChannelHandler;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,8 +17,9 @@ import java.util.List;
 import java.util.Optional;
 
 
-@Component
+@Service
 public class ChannelAccountFramework {
+
 
     @Autowired
     WappChannelHandler wappChannelHandler;

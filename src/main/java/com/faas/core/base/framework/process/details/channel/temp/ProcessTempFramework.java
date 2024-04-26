@@ -4,11 +4,11 @@ import com.faas.core.base.model.ws.process.details.channel.temp.dto.*;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.ProcessHelper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 
-@Component
-public class ProcessChannelTempFramework {
+@Service
+public class ProcessTempFramework {
 
 
     @Autowired

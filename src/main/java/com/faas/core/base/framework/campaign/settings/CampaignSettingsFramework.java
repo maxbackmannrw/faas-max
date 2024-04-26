@@ -6,11 +6,12 @@ import com.faas.core.base.repo.campaign.settings.CampaignTypeRepository;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 
-@Component
+@Service
 public class CampaignSettingsFramework {
 
 

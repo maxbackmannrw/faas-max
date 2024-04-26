@@ -4,11 +4,12 @@ import com.faas.core.base.model.ws.manager.operation.details.dto.OperationManage
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.ManagerHelper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 
-@Component
+@Service
 public class OperationManagerDetailsFramework {
+
 
     @Autowired
     ManagerHelper managerHelper;

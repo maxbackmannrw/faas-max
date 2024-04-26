@@ -3,13 +3,13 @@ package com.faas.core.base.framework.client.details.osint;
 import com.faas.core.base.model.ws.client.details.osint.dto.ClientOSINTWSDTO;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-@Component
+@Service
 public class ClientOSINTFramework {
 
 
@@ -23,8 +23,6 @@ public class ClientOSINTFramework {
 
         return clientOSINTWSDTOS;
     }
-
-
 
 
 }
