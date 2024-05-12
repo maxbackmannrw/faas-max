@@ -15,6 +15,7 @@ import java.util.Optional;
 @Service
 public class RemoteSettingsFramework {
 
+
     @Autowired
     RemoteTypeRepository remoteTypeRepository;
 

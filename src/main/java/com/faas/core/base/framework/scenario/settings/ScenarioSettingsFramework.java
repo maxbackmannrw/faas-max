@@ -5,7 +5,6 @@ import com.faas.core.base.model.ws.scenario.settings.dto.ScenarioTypeWSDTO;
 import com.faas.core.base.repo.scenario.settings.ScenarioTypeRepository;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -15,6 +14,7 @@ import java.util.Optional;
 
 @Service
 public class ScenarioSettingsFramework {
+
 
     @Autowired
     ScenarioTypeRepository scenarioTypeRepository;

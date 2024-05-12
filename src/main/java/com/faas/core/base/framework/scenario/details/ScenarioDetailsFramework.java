@@ -19,6 +19,7 @@ import java.util.Optional;
 @Service
 public class ScenarioDetailsFramework {
 
+
     @Autowired
     ScenarioRepository scenarioRepository;
 
@@ -27,6 +28,7 @@ public class ScenarioDetailsFramework {
 
     @Autowired
     AppUtils appUtils;
+
 
     public ScenarioDataWSDTO fillScenarioDataWSDTO(ScenarioDataDAO scenarioDataDAO) {
 

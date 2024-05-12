@@ -1,12 +1,10 @@
 package com.faas.core.base.framework.utility.content;
 
 import com.faas.core.base.model.db.utility.UrlDBModel;
-import com.faas.core.base.model.ws.utility.content.dto.DataTypeWSDTO;
 import com.faas.core.base.model.ws.utility.content.dto.UrlWSDTO;
 import com.faas.core.base.repo.utility.UrlRepository;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -16,6 +14,7 @@ import java.util.Optional;
 
 @Service
 public class UtilityUrlFramework {
+
 
     @Autowired
     UrlRepository urlRepository;
