@@ -2,7 +2,7 @@ package com.faas.core.api.framework.operation.client.content;
 
 import com.faas.core.api.model.ws.operation.client.content.dto.ApiOperationClientWSDTO;
 import com.faas.core.base.model.db.client.content.ClientDBModel;
-import com.faas.core.base.model.db.client.details.content.ClientDetailsDBModel;
+import com.faas.core.base.model.db.client.details.ClientDetailsDBModel;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.client.details.ClientDetailsRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;

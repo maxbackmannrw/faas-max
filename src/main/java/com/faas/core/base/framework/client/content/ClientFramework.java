@@ -18,11 +18,10 @@ import com.faas.core.base.repo.utility.CityRepository;
 import com.faas.core.base.repo.utility.CountryRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
-import com.faas.core.utils.helpers.ClientHelper;
+import com.faas.core.utils.helpers.client.ClientHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

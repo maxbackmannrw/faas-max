@@ -1,4 +1,4 @@
-package com.faas.core.utils.helpers;
+package com.faas.core.utils.helpers.campaign;
 
 import com.faas.core.api.model.ws.campaign.content.dto.ApiAgentCampaignSummary;
 import com.faas.core.api.model.ws.campaign.content.dto.ApiCampaignWSDTO;

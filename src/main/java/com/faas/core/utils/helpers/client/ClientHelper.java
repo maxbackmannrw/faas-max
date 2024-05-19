@@ -1,10 +1,10 @@
-package com.faas.core.utils.helpers;
+package com.faas.core.utils.helpers.client;
 
 import com.faas.core.base.model.db.client.content.ClientDBModel;
-import com.faas.core.base.model.db.client.details.content.ClientDetailsDBModel;
-import com.faas.core.base.model.db.client.details.content.dao.ClientAddressDAO;
-import com.faas.core.base.model.db.client.details.content.dao.ClientEmailDAO;
-import com.faas.core.base.model.db.client.details.content.dao.ClientPhoneDAO;
+import com.faas.core.base.model.db.client.details.ClientDetailsDBModel;
+import com.faas.core.base.model.db.client.details.dao.ClientAddressDAO;
+import com.faas.core.base.model.db.client.details.dao.ClientEmailDAO;
+import com.faas.core.base.model.db.client.details.dao.ClientPhoneDAO;
 import com.faas.core.base.model.ws.campaign.details.client.content.dto.CampaignClientWSDTO;
 import com.faas.core.base.model.ws.client.content.dto.ClientWSDTO;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;

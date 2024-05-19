@@ -17,12 +17,11 @@ import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.user.content.UserRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
-import com.faas.core.utils.helpers.ActivityHelper;
-import com.faas.core.utils.helpers.OperationHelper;
+import com.faas.core.utils.helpers.activity.ActivityHelper;
+import com.faas.core.utils.helpers.operation.OperationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

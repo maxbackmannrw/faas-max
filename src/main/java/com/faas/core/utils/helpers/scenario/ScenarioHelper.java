@@ -1,4 +1,4 @@
-package com.faas.core.utils.helpers;
+package com.faas.core.utils.helpers.scenario;
 
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.operation.content.dao.OperationScenarioDAO;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class OperationScenarioHelper {
+public class ScenarioHelper {
 
     @Autowired
     OperationRepository operationRepository;

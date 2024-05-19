@@ -1,4 +1,4 @@
-package com.faas.core.base.model.db.client.details.content.dao;
+package com.faas.core.base.model.db.client.details.dao;
 
 public class ClientDataDAO {
 

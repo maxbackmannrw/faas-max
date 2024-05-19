@@ -4,7 +4,7 @@ import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.Api
 import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushChannelWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushTempWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushWSDTO;
-import com.faas.core.base.model.db.client.details.content.ClientDetailsDBModel;
+import com.faas.core.base.model.db.client.details.ClientDetailsDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationPushDBModel;
 import com.faas.core.base.model.db.process.details.channel.content.ProcessPushChannelDBModel;
@@ -18,8 +18,8 @@ import com.faas.core.base.repo.process.details.channel.content.ProcessPushChanne
 import com.faas.core.base.repo.process.details.channel.temp.ProcessPushTempRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utils.config.AppUtils;
-import com.faas.core.utils.helpers.ChannelHelper;
-import com.faas.core.utils.helpers.OperationHelper;
+import com.faas.core.utils.helpers.channel.ChannelHelper;
+import com.faas.core.utils.helpers.operation.OperationHelper;
 import com.faas.core.utils.handler.channel.push.PushChannelHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

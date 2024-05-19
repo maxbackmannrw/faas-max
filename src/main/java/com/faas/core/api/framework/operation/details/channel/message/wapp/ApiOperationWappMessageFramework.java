@@ -4,8 +4,8 @@ import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.Api
 import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.ApiOperationWappMessageChannelWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.ApiOperationWappMessageTempWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.ApiOperationWappMessageWSDTO;
-import com.faas.core.base.model.db.client.details.content.ClientDetailsDBModel;
-import com.faas.core.base.model.db.client.details.content.dao.ClientPhoneDAO;
+import com.faas.core.base.model.db.client.details.ClientDetailsDBModel;
+import com.faas.core.base.model.db.client.details.dao.ClientPhoneDAO;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationWappMessageDBModel;
 import com.faas.core.base.model.db.process.details.channel.content.ProcessWappChannelDBModel;
@@ -24,8 +24,8 @@ import com.faas.core.base.repo.user.details.UserDetailsRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.handler.channel.wapp.WappChannelHandler;
-import com.faas.core.utils.helpers.ChannelHelper;
-import com.faas.core.utils.helpers.OperationHelper;
+import com.faas.core.utils.helpers.channel.ChannelHelper;
+import com.faas.core.utils.helpers.operation.OperationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

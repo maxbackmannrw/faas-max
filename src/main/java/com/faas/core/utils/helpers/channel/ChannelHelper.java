@@ -1,4 +1,4 @@
-package com.faas.core.utils.helpers;
+package com.faas.core.utils.helpers.channel;
 
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationSipCallWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationSipAccountWSDTO;
@@ -11,9 +11,9 @@ import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.Api
 import com.faas.core.base.model.db.channel.account.EmailAccountDBModel;
 import com.faas.core.base.model.db.channel.account.PushAccountDBModel;
 import com.faas.core.base.model.db.channel.account.SmsAccountDBModel;
-import com.faas.core.base.model.db.client.details.content.ClientDetailsDBModel;
-import com.faas.core.base.model.db.client.details.content.dao.ClientEmailDAO;
-import com.faas.core.base.model.db.client.details.content.dao.ClientPhoneDAO;
+import com.faas.core.base.model.db.client.details.ClientDetailsDBModel;
+import com.faas.core.base.model.db.client.details.dao.ClientEmailDAO;
+import com.faas.core.base.model.db.client.details.dao.ClientPhoneDAO;
 import com.faas.core.base.model.db.operation.details.channel.*;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.operation.details.channel.dao.*;

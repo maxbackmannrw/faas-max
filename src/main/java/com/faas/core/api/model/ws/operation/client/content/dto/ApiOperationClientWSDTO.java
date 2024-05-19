@@ -1,7 +1,7 @@
 package com.faas.core.api.model.ws.operation.client.content.dto;
 
 import com.faas.core.base.model.db.client.content.ClientDBModel;
-import com.faas.core.base.model.db.client.details.content.ClientDetailsDBModel;
+import com.faas.core.base.model.db.client.details.ClientDetailsDBModel;
 
 public class ApiOperationClientWSDTO {
 

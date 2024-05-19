@@ -6,7 +6,7 @@ import com.faas.core.base.model.ws.process.details.channel.temp.dto.ProcessSmsTe
 import com.faas.core.base.repo.channel.settings.MessageTypeRepository;
 import com.faas.core.base.repo.process.details.channel.temp.ProcessSmsTempRepository;
 import com.faas.core.utils.config.AppUtils;
-import com.faas.core.utils.helpers.ProcessHelper;
+import com.faas.core.utils.helpers.process.ProcessHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

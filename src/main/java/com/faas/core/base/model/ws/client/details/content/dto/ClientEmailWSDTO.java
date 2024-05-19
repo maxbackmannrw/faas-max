@@ -1,6 +1,6 @@
 package com.faas.core.base.model.ws.client.details.content.dto;
 
-import com.faas.core.base.model.db.client.details.content.dao.ClientEmailDAO;
+import com.faas.core.base.model.db.client.details.dao.ClientEmailDAO;
 
 public class ClientEmailWSDTO {
 

@@ -1,6 +1,6 @@
 package com.faas.core.api.model.ws.operation.details.channel.call.sip.dto;
 
-import com.faas.core.base.model.db.client.details.content.dao.ClientPhoneDAO;
+import com.faas.core.base.model.db.client.details.dao.ClientPhoneDAO;
 import com.faas.core.base.model.db.operation.details.channel.OperationSipCallDBModel;
 
 import java.util.List;

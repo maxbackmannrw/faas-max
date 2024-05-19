@@ -1,6 +1,6 @@
 package com.faas.core.api.model.ws.operation.details.channel.message.email.dto;
 
-import com.faas.core.base.model.db.client.details.content.dao.ClientEmailDAO;
+import com.faas.core.base.model.db.client.details.dao.ClientEmailDAO;
 import com.faas.core.base.model.db.operation.details.channel.OperationEmailDBModel;
 import com.faas.core.base.model.db.process.details.channel.temp.ProcessEmailTempDBModel;
 

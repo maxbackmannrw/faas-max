@@ -1,11 +1,11 @@
-package com.faas.core.utils.helpers;
+package com.faas.core.utils.helpers.utility;
 
 import com.faas.core.base.model.db.campaign.details.CampaignAgentDBModel;
 import com.faas.core.base.model.db.client.content.ClientDBModel;
-import com.faas.core.base.model.db.client.details.content.ClientDetailsDBModel;
-import com.faas.core.base.model.db.client.details.content.dao.ClientAddressDAO;
-import com.faas.core.base.model.db.client.details.content.dao.ClientEmailDAO;
-import com.faas.core.base.model.db.client.details.content.dao.ClientPhoneDAO;
+import com.faas.core.base.model.db.client.details.ClientDetailsDBModel;
+import com.faas.core.base.model.db.client.details.dao.ClientAddressDAO;
+import com.faas.core.base.model.db.client.details.dao.ClientEmailDAO;
+import com.faas.core.base.model.db.client.details.dao.ClientPhoneDAO;
 import com.faas.core.base.model.db.user.content.UserDBModel;
 import com.faas.core.base.model.db.user.details.UserDetailsDBModel;
 import com.faas.core.base.model.db.user.settings.UserRoleDBModel;
@@ -34,6 +34,7 @@ import com.faas.core.base.repo.user.details.UserDetailsRepository;
 import com.faas.core.base.repo.user.settings.UserRoleRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
+import com.faas.core.utils.helpers.client.ClientHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

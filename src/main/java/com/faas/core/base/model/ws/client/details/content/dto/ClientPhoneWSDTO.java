@@ -1,6 +1,6 @@
 package com.faas.core.base.model.ws.client.details.content.dto;
 
-import com.faas.core.base.model.db.client.details.content.dao.ClientPhoneDAO;
+import com.faas.core.base.model.db.client.details.dao.ClientPhoneDAO;
 
 public class ClientPhoneWSDTO {
 

@@ -1,6 +1,6 @@
-package com.faas.core.base.model.db.client.details.content;
+package com.faas.core.base.model.db.client.details;
 
-import com.faas.core.base.model.db.client.details.content.dao.*;
+import com.faas.core.base.model.db.client.details.dao.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 

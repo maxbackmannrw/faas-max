@@ -1,6 +1,6 @@
 package com.faas.core.api.model.ws.operation.details.note.dto;
 
-import com.faas.core.base.model.db.client.details.content.dao.ClientNoteDAO;
+import com.faas.core.base.model.db.client.details.dao.ClientNoteDAO;
 
 public class ApiOperationNoteWSDTO {
 

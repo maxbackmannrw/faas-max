@@ -6,9 +6,8 @@ import com.faas.core.base.model.ws.process.details.channel.temp.dto.ProcessEmail
 import com.faas.core.base.repo.channel.settings.EmailTypeRepository;
 import com.faas.core.base.repo.process.details.channel.temp.ProcessEmailTempRepository;
 import com.faas.core.utils.config.AppUtils;
-import com.faas.core.utils.helpers.ProcessHelper;
+import com.faas.core.utils.helpers.process.ProcessHelper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

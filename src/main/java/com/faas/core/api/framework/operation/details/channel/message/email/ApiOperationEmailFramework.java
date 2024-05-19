@@ -4,8 +4,8 @@ import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.Ap
 import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiOperationEmailChannelWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiOperationEmailTempWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiOperationEmailWSDTO;
-import com.faas.core.base.model.db.client.details.content.ClientDetailsDBModel;
-import com.faas.core.base.model.db.client.details.content.dao.ClientEmailDAO;
+import com.faas.core.base.model.db.client.details.ClientDetailsDBModel;
+import com.faas.core.base.model.db.client.details.dao.ClientEmailDAO;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationEmailDBModel;
 import com.faas.core.base.model.db.process.details.channel.content.ProcessEmailChannelDBModel;
@@ -19,8 +19,8 @@ import com.faas.core.base.repo.process.details.channel.content.ProcessEmailChann
 import com.faas.core.base.repo.process.details.channel.temp.ProcessEmailTempRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utils.config.AppUtils;
-import com.faas.core.utils.helpers.ChannelHelper;
-import com.faas.core.utils.helpers.OperationHelper;
+import com.faas.core.utils.helpers.channel.ChannelHelper;
+import com.faas.core.utils.helpers.operation.OperationHelper;
 import com.faas.core.utils.handler.channel.email.EmailChannelHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

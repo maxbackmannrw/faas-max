@@ -6,9 +6,8 @@ import com.faas.core.base.model.ws.process.details.channel.temp.dto.ProcessPushT
 import com.faas.core.base.repo.channel.settings.PushTypeRepository;
 import com.faas.core.base.repo.process.details.channel.temp.ProcessPushTempRepository;
 import com.faas.core.utils.config.AppUtils;
-import com.faas.core.utils.helpers.ProcessHelper;
+import com.faas.core.utils.helpers.process.ProcessHelper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

@@ -1,10 +1,7 @@
 package com.faas.core.api.model.ws.operation.details.channel.call.sip;
 
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationSipAccountWSDTO;
-import com.faas.core.base.model.db.client.details.content.dao.ClientPhoneDAO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-
-import java.util.List;
 
 public class ApiOperationSipAccountWSModel {
 

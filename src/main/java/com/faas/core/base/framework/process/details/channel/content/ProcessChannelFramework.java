@@ -11,9 +11,8 @@ import com.faas.core.base.repo.channel.account.PushAccountRepository;
 import com.faas.core.base.repo.channel.account.SmsAccountRepository;
 import com.faas.core.base.repo.process.details.channel.content.*;
 import com.faas.core.utils.config.AppUtils;
-import com.faas.core.utils.helpers.ChannelHelper;
+import com.faas.core.utils.helpers.channel.ChannelHelper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

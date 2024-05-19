@@ -1,4 +1,4 @@
-package com.faas.core.utils.helpers;
+package com.faas.core.utils.helpers.manager;
 
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.client.content.ClientDBModel;

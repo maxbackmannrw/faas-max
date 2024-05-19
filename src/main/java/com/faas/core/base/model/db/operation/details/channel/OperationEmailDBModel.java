@@ -1,6 +1,6 @@
 package com.faas.core.base.model.db.operation.details.channel;
 
-import com.faas.core.base.model.db.client.details.content.dao.ClientEmailDAO;
+import com.faas.core.base.model.db.client.details.dao.ClientEmailDAO;
 import com.faas.core.base.model.db.operation.details.channel.dao.OperationEmailDAO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

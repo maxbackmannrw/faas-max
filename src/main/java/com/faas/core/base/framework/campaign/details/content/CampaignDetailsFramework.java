@@ -14,9 +14,8 @@ import com.faas.core.base.repo.process.details.scenario.ProcessScenarioRepositor
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.base.repo.utility.DataTypeRepository;
 import com.faas.core.utils.config.AppUtils;
-import com.faas.core.utils.helpers.CampaignHelper;
+import com.faas.core.utils.helpers.campaign.CampaignHelper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

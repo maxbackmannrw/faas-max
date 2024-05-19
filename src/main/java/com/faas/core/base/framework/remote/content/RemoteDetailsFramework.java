@@ -12,9 +12,8 @@ import com.faas.core.base.repo.utility.DataTypeRepository;
 import com.faas.core.base.repo.utility.UrlRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
-import com.faas.core.utils.helpers.RemoteHelper;
+import com.faas.core.utils.helpers.remote.RemoteHelper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.faas.core.utils.helpers;
+package com.faas.core.utils.helpers.activity;
 
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.operation.content.dao.OperationActivityDAO;
@@ -54,11 +54,6 @@ public class ActivityHelper {
 
         return operationActivityDAO;
     }
-
-
-
-
-
 
 
 }

@@ -1,11 +1,11 @@
 package com.faas.core.base.framework.client.details.content;
 
 import com.faas.core.base.model.db.client.content.ClientDBModel;
-import com.faas.core.base.model.db.client.details.content.ClientDetailsDBModel;
-import com.faas.core.base.model.db.client.details.content.dao.ClientAddressDAO;
-import com.faas.core.base.model.db.client.details.content.dao.ClientDataDAO;
-import com.faas.core.base.model.db.client.details.content.dao.ClientEmailDAO;
-import com.faas.core.base.model.db.client.details.content.dao.ClientPhoneDAO;
+import com.faas.core.base.model.db.client.details.ClientDetailsDBModel;
+import com.faas.core.base.model.db.client.details.dao.ClientAddressDAO;
+import com.faas.core.base.model.db.client.details.dao.ClientDataDAO;
+import com.faas.core.base.model.db.client.details.dao.ClientEmailDAO;
+import com.faas.core.base.model.db.client.details.dao.ClientPhoneDAO;
 import com.faas.core.base.model.db.utility.DataTypeDBModel;
 import com.faas.core.base.model.ws.client.details.content.dto.*;
 import com.faas.core.base.repo.client.content.ClientRepository;
@@ -14,7 +14,6 @@ import com.faas.core.base.repo.remote.client.ClientRemoteRepository;
 import com.faas.core.base.repo.utility.DataTypeRepository;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

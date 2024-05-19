@@ -2,7 +2,7 @@ package com.faas.core.base.framework.manager.operation.details;
 
 import com.faas.core.base.model.ws.manager.operation.details.dto.OperationManagerDetailsWSDTO;
 import com.faas.core.utils.config.AppUtils;
-import com.faas.core.utils.helpers.ManagerHelper;
+import com.faas.core.utils.helpers.manager.ManagerHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

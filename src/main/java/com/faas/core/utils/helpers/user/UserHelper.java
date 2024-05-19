@@ -1,4 +1,4 @@
-package com.faas.core.utils.helpers;
+package com.faas.core.utils.helpers.user;
 
 import com.faas.core.base.model.db.user.details.dao.UserDataDAO;
 import com.faas.core.base.model.db.utility.DataTypeDBModel;
