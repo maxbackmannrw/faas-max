@@ -6,7 +6,7 @@ public class ProcessTriggerWSDTO {
 
     private List<ProcessAITriggerWSDTO> processAITriggers;
     private List<ProcessEmailTriggerWSDTO>processEmailTriggers;
-    private List<ProcessSipCallTriggerWSDTO>processSipCallTriggers;
+    private List<ProcessSipTriggerWSDTO>processSipTriggers;
     private List<ProcessSmsTriggerWSDTO>processSmsTriggers;
     private List<ProcessWappCallTriggerWSDTO>processWappCallTriggers;
     private List<ProcessWappMessageTriggerWSDTO>processWappMessageTriggers;
@@ -14,10 +14,10 @@ public class ProcessTriggerWSDTO {
     public ProcessTriggerWSDTO() {
     }
 
-    public ProcessTriggerWSDTO(List<ProcessAITriggerWSDTO> processAITriggers, List<ProcessEmailTriggerWSDTO> processEmailTriggers, List<ProcessSipCallTriggerWSDTO> processSipCallTriggers, List<ProcessSmsTriggerWSDTO> processSmsTriggers, List<ProcessWappCallTriggerWSDTO> processWappCallTriggers, List<ProcessWappMessageTriggerWSDTO> processWappMessageTriggers) {
+    public ProcessTriggerWSDTO(List<ProcessAITriggerWSDTO> processAITriggers, List<ProcessEmailTriggerWSDTO> processEmailTriggers, List<ProcessSipTriggerWSDTO> processSipTriggers, List<ProcessSmsTriggerWSDTO> processSmsTriggers, List<ProcessWappCallTriggerWSDTO> processWappCallTriggers, List<ProcessWappMessageTriggerWSDTO> processWappMessageTriggers) {
         this.processAITriggers = processAITriggers;
         this.processEmailTriggers = processEmailTriggers;
-        this.processSipCallTriggers = processSipCallTriggers;
+        this.processSipTriggers = processSipTriggers;
         this.processSmsTriggers = processSmsTriggers;
         this.processWappCallTriggers = processWappCallTriggers;
         this.processWappMessageTriggers = processWappMessageTriggers;
@@ -39,12 +39,12 @@ public class ProcessTriggerWSDTO {
         this.processEmailTriggers = processEmailTriggers;
     }
 
-    public List<ProcessSipCallTriggerWSDTO> getProcessSipCallTriggers() {
-        return processSipCallTriggers;
+    public List<ProcessSipTriggerWSDTO> getProcessSipTriggers() {
+        return processSipTriggers;
     }
 
-    public void setProcessSipCallTriggers(List<ProcessSipCallTriggerWSDTO> processSipCallTriggers) {
-        this.processSipCallTriggers = processSipCallTriggers;
+    public void setProcessSipTriggers(List<ProcessSipTriggerWSDTO> processSipTriggers) {
+        this.processSipTriggers = processSipTriggers;
     }
 
     public List<ProcessSmsTriggerWSDTO> getProcessSmsTriggers() {

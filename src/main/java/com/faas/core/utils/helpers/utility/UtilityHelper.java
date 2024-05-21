@@ -142,7 +142,7 @@ public class UtilityHelper {
     ProcessEmailTriggerRepository processEmailTriggerRepository;
 
     @Autowired
-    ProcessSipCallTriggerRepository processSipCallTriggerRepository;
+    ProcessSipTriggerRepository processSipTriggerRepository;
 
     @Autowired
     ProcessSmsTriggerRepository processSmsTriggerRepository;
@@ -516,7 +516,7 @@ public class UtilityHelper {
 
         processAITriggerRepository.deleteAll();
         processEmailTriggerRepository.deleteAll();
-        processSipCallTriggerRepository.deleteAll();
+        processSipTriggerRepository.deleteAll();
         processSmsTriggerRepository.deleteAll();
         processWappCallTriggerRepository.deleteAll();
         processWappMessageTriggerRepository.deleteAll();

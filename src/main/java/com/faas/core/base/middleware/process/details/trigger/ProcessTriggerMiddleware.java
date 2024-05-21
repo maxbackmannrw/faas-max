@@ -249,17 +249,17 @@ public class ProcessTriggerMiddleware {
     }
 
 
-    public ProcessSipCallTriggerWSModel getProcessSipCallTriggers(long userId, String processId) {
+    public ProcessSipTriggerWSModel getProcessSipTriggers(long userId, String processId) {
 
-        ProcessSipCallTriggerWSModel response = new ProcessSipCallTriggerWSModel();
+        ProcessSipTriggerWSModel response = new ProcessSipTriggerWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ProcessSipCallTriggerWSDTO> processSipCallTriggerWSDTOS = processTriggerFramework.getProcessSipCallTriggersService(userId,processId);
-        if (processSipCallTriggerWSDTOS != null){
-            response.setProcessSipCallTriggers(processSipCallTriggerWSDTOS);
+        List<ProcessSipTriggerWSDTO> processSipTriggerWSDTOS = processTriggerFramework.getProcessSipTriggersService(userId,processId);
+        if (processSipTriggerWSDTOS != null){
+            response.setProcessSipTriggers(processSipTriggerWSDTOS);
         }
 
-        general.setOperation("getProcessSipCallTriggers");
+        general.setOperation("getProcessSipTriggers");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -269,19 +269,19 @@ public class ProcessTriggerMiddleware {
     }
 
 
-    public ProcessSipCallTriggerWSModel getProcessSipCallTrigger(long userId, String triggerId) {
+    public ProcessSipTriggerWSModel getProcessSipTrigger(long userId, String triggerId) {
 
-        ProcessSipCallTriggerWSModel response = new ProcessSipCallTriggerWSModel();
+        ProcessSipTriggerWSModel response = new ProcessSipTriggerWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ProcessSipCallTriggerWSDTO> processSipCallTriggerWSDTOS = new ArrayList<>();
+        List<ProcessSipTriggerWSDTO> processSipTriggerWSDTOS = new ArrayList<>();
 
-        ProcessSipCallTriggerWSDTO processSipCallTriggerWSDTO = processTriggerFramework.getProcessSipCallTriggerService(userId,triggerId);
-        if (processSipCallTriggerWSDTO != null){
-            processSipCallTriggerWSDTOS.add(processSipCallTriggerWSDTO);
+        ProcessSipTriggerWSDTO processSipTriggerWSDTO = processTriggerFramework.getProcessSipTriggerService(userId,triggerId);
+        if (processSipTriggerWSDTO != null){
+            processSipTriggerWSDTOS.add(processSipTriggerWSDTO);
         }
 
-        response.setProcessSipCallTriggers(processSipCallTriggerWSDTOS);
-        general.setOperation("getProcessSipCallTrigger");
+        response.setProcessSipTriggers(processSipTriggerWSDTOS);
+        general.setOperation("getProcessSipTrigger");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -290,19 +290,19 @@ public class ProcessTriggerMiddleware {
         return response;
     }
 
-    public ProcessSipCallTriggerWSModel createProcessSipCallTrigger(long userId, String processId, String trigger, String triggerDesc, String accountId, String callerId, long typeId) {
+    public ProcessSipTriggerWSModel createProcessSipTrigger(long userId, String processId, String trigger, String triggerDesc, String accountId, String callerId, long typeId) {
 
-        ProcessSipCallTriggerWSModel response = new ProcessSipCallTriggerWSModel();
+        ProcessSipTriggerWSModel response = new ProcessSipTriggerWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ProcessSipCallTriggerWSDTO> processSipCallTriggerWSDTOS = new ArrayList<>();
+        List<ProcessSipTriggerWSDTO> processSipTriggerWSDTOS = new ArrayList<>();
 
-        ProcessSipCallTriggerWSDTO processSipCallTriggerWSDTO = processTriggerFramework.createProcessSipCallTriggerService(userId,processId,trigger,triggerDesc,accountId,callerId,typeId);
-        if (processSipCallTriggerWSDTO != null){
-            processSipCallTriggerWSDTOS.add(processSipCallTriggerWSDTO);
+        ProcessSipTriggerWSDTO processSipTriggerWSDTO = processTriggerFramework.createProcessSipTriggerService(userId,processId,trigger,triggerDesc,accountId,callerId,typeId);
+        if (processSipTriggerWSDTO != null){
+            processSipTriggerWSDTOS.add(processSipTriggerWSDTO);
         }
 
-        response.setProcessSipCallTriggers(processSipCallTriggerWSDTOS);
-        general.setOperation("createProcessSipCallTrigger");
+        response.setProcessSipTriggers(processSipTriggerWSDTOS);
+        general.setOperation("createProcessSipTrigger");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -311,19 +311,19 @@ public class ProcessTriggerMiddleware {
         return response;
     }
 
-    public ProcessSipCallTriggerWSModel updateProcessSipCallTrigger(long userId, String triggerId, String trigger, String triggerDesc, String accountId, String callerId) {
+    public ProcessSipTriggerWSModel updateProcessSipTrigger(long userId, String triggerId, String trigger, String triggerDesc, String accountId, String callerId) {
 
-        ProcessSipCallTriggerWSModel response = new ProcessSipCallTriggerWSModel();
+        ProcessSipTriggerWSModel response = new ProcessSipTriggerWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ProcessSipCallTriggerWSDTO> processSipCallTriggerWSDTOS = new ArrayList<>();
+        List<ProcessSipTriggerWSDTO> processSipTriggerWSDTOS = new ArrayList<>();
 
-        ProcessSipCallTriggerWSDTO processSipCallTriggerWSDTO = processTriggerFramework.updateProcessSipCallTriggerService(userId,triggerId,trigger,triggerDesc,accountId,callerId);
-        if (processSipCallTriggerWSDTO != null){
-            processSipCallTriggerWSDTOS.add(processSipCallTriggerWSDTO);
+        ProcessSipTriggerWSDTO processSipTriggerWSDTO = processTriggerFramework.updateProcessSipTriggerService(userId,triggerId,trigger,triggerDesc,accountId,callerId);
+        if (processSipTriggerWSDTO != null){
+            processSipTriggerWSDTOS.add(processSipTriggerWSDTO);
         }
 
-        response.setProcessSipCallTriggers(processSipCallTriggerWSDTOS);
-        general.setOperation("updateProcessSipCallTrigger");
+        response.setProcessSipTriggers(processSipTriggerWSDTOS);
+        general.setOperation("updateProcessSipTrigger");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -332,19 +332,19 @@ public class ProcessTriggerMiddleware {
         return response;
     }
 
-    public ProcessSipCallTriggerWSModel removeProcessSipCallTrigger(long userId, String triggerId) {
+    public ProcessSipTriggerWSModel removeProcessSipTrigger(long userId, String triggerId) {
 
-        ProcessSipCallTriggerWSModel response = new ProcessSipCallTriggerWSModel();
+        ProcessSipTriggerWSModel response = new ProcessSipTriggerWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ProcessSipCallTriggerWSDTO> processSipCallTriggerWSDTOS = new ArrayList<>();
+        List<ProcessSipTriggerWSDTO> processSipTriggerWSDTOS = new ArrayList<>();
 
-        ProcessSipCallTriggerWSDTO processSipCallTriggerWSDTO = processTriggerFramework.removeProcessSipCallTriggerService(userId,triggerId);
-        if (processSipCallTriggerWSDTO != null){
-            processSipCallTriggerWSDTOS.add(processSipCallTriggerWSDTO);
+        ProcessSipTriggerWSDTO processSipTriggerWSDTO = processTriggerFramework.removeProcessSipTriggerService(userId,triggerId);
+        if (processSipTriggerWSDTO != null){
+            processSipTriggerWSDTOS.add(processSipTriggerWSDTO);
         }
 
-        response.setProcessSipCallTriggers(processSipCallTriggerWSDTOS);
-        general.setOperation("removeProcessSipCallTrigger");
+        response.setProcessSipTriggers(processSipTriggerWSDTOS);
+        general.setOperation("removeProcessSipTrigger");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

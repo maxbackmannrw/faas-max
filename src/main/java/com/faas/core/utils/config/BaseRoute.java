@@ -393,11 +393,11 @@ public class BaseRoute {
     public static final String UPDATE_PROCESS_EMAIL_TRIGGER = "updateprocessemailtrigger";
     public static final String REMOVE_PROCESS_EMAIL_TRIGGER = "removeprocessemailtrigger";
 
-    public static final String GET_PROCESS_SIP_CALL_TRIGGERS = "getprocesssipcalltriggers";
-    public static final String GET_PROCESS_SIP_CALL_TRIGGER = "getprocesssipcalltrigger";
-    public static final String CREATE_PROCESS_SIP_CALL_TRIGGER = "createprocesssipcalltrigger";
-    public static final String UPDATE_PROCESS_SIP_CALL_TRIGGER = "updateprocesssipcalltrigger";
-    public static final String REMOVE_PROCESS_SIP_CALL_TRIGGER = "removeprocesssipcalltrigger";
+    public static final String GET_PROCESS_SIP_TRIGGERS = "getprocesssiptriggers";
+    public static final String GET_PROCESS_SIP_TRIGGER = "getprocesssiptrigger";
+    public static final String CREATE_PROCESS_SIP_TRIGGER = "createprocesssiptrigger";
+    public static final String UPDATE_PROCESS_SIP_TRIGGER = "updateprocesssiptrigger";
+    public static final String REMOVE_PROCESS_SIP_TRIGGER = "removeprocesssiptrigger";
 
     public static final String GET_PROCESS_SMS_TRIGGERS = "getprocesssmstriggers";
     public static final String GET_PROCESS_SMS_TRIGGER = "getprocesssmstrigger";

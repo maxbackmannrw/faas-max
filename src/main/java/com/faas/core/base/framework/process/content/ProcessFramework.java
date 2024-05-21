@@ -71,7 +71,7 @@ public class ProcessFramework {
     ProcessEmailTriggerRepository processEmailTriggerRepository;
 
     @Autowired
-    ProcessSipCallTriggerRepository processSipCallTriggerRepository;
+    ProcessSipTriggerRepository processSipTriggerRepository;
 
     @Autowired
     ProcessSmsTriggerRepository processSmsTriggerRepository;
@@ -189,7 +189,7 @@ public class ProcessFramework {
 
             processAITriggerRepository.deleteAll(processAITriggerRepository.findByProcessId(processId));
             processEmailTriggerRepository.deleteAll(processEmailTriggerRepository.findByProcessId(processId));
-            processSipCallTriggerRepository.deleteAll(processSipCallTriggerRepository.findByProcessId(processId));
+            processSipTriggerRepository.deleteAll(processSipTriggerRepository.findByProcessId(processId));
             processSmsTriggerRepository.deleteAll(processSmsTriggerRepository.findByProcessId(processId));
             processWappCallTriggerRepository.deleteAll(processWappCallTriggerRepository.findByProcessId(processId));
             processWappMessageTriggerRepository.deleteAll(processWappMessageTriggerRepository.findByProcessId(processId));

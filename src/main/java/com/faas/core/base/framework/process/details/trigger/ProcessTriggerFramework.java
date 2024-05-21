@@ -17,7 +17,6 @@ import com.faas.core.base.repo.process.settings.TriggerTypeRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -34,7 +33,7 @@ public class ProcessTriggerFramework {
     ProcessEmailTriggerRepository processEmailTriggerRepository;
 
     @Autowired
-    ProcessSipCallTriggerRepository processSipCallTriggerRepository;
+    ProcessSipTriggerRepository processSipTriggerRepository;
 
     @Autowired
     ProcessSmsTriggerRepository processSmsTriggerRepository;
@@ -72,7 +71,7 @@ public class ProcessTriggerFramework {
         ProcessTriggerWSDTO processTriggerWSDTO = new ProcessTriggerWSDTO();
         processTriggerWSDTO.setProcessAITriggers(getProcessAITriggersService(userId,processId));
         processTriggerWSDTO.setProcessEmailTriggers(getProcessEmailTriggersService(userId,processId));
-        processTriggerWSDTO.setProcessSipCallTriggers(getProcessSipCallTriggersService(userId,processId));
+        processTriggerWSDTO.setProcessSipTriggers(getProcessSipTriggersService(userId,processId));
         processTriggerWSDTO.setProcessSmsTriggers(getProcessSmsTriggersService(userId,processId));
         processTriggerWSDTO.setProcessWappCallTriggers(getProcessWappCallTriggersService(userId,processId));
         processTriggerWSDTO.setProcessWappMessageTriggers(getProcessWappMessageTriggersService(userId,processId));
@@ -230,76 +229,76 @@ public class ProcessTriggerFramework {
     }
 
 
-    public List<ProcessSipCallTriggerWSDTO> getProcessSipCallTriggersService(long userId, String processId) {
+    public List<ProcessSipTriggerWSDTO> getProcessSipTriggersService(long userId, String processId) {
 
-        List<ProcessSipCallTriggerWSDTO> processSipCallTriggerWSDTOS = new ArrayList<>();
-        List<ProcessSipCallTriggerDBModel> sipCallTriggerDBModels = processSipCallTriggerRepository.findByProcessId(processId);
-        for (ProcessSipCallTriggerDBModel sipCallTriggerDBModel : sipCallTriggerDBModels) {
-            processSipCallTriggerWSDTOS.add(new ProcessSipCallTriggerWSDTO(sipCallTriggerDBModel));
+        List<ProcessSipTriggerWSDTO> processSipTriggerWSDTOS = new ArrayList<>();
+        List<ProcessSipTriggerDBModel> sipTriggerDBModels = processSipTriggerRepository.findByProcessId(processId);
+        for (ProcessSipTriggerDBModel sipTriggerDBModel : sipTriggerDBModels) {
+            processSipTriggerWSDTOS.add(new ProcessSipTriggerWSDTO(sipTriggerDBModel));
         }
-        return processSipCallTriggerWSDTOS;
+        return processSipTriggerWSDTOS;
     }
 
 
-    public ProcessSipCallTriggerWSDTO getProcessSipCallTriggerService(long userId, String triggerId) {
+    public ProcessSipTriggerWSDTO getProcessSipTriggerService(long userId, String triggerId) {
 
-        Optional<ProcessSipCallTriggerDBModel> sipCallTriggerDBModel = processSipCallTriggerRepository.findById(triggerId);
-        if (sipCallTriggerDBModel.isPresent()){
-            return new ProcessSipCallTriggerWSDTO(sipCallTriggerDBModel.get());
+        Optional<ProcessSipTriggerDBModel> sipTriggerDBModel = processSipTriggerRepository.findById(triggerId);
+        if (sipTriggerDBModel.isPresent()){
+            return new ProcessSipTriggerWSDTO(sipTriggerDBModel.get());
         }
         return null;
     }
 
-    public ProcessSipCallTriggerWSDTO createProcessSipCallTriggerService(long userId, String processId, String trigger, String triggerDesc, String accountId, String callerId, long typeId) {
+    public ProcessSipTriggerWSDTO createProcessSipTriggerService(long userId, String processId, String trigger, String triggerDesc, String accountId, String callerId, long typeId) {
 
         Optional<TriggerTypeDBModel> triggerTypeDBModel = triggerTypeRepository.findById(typeId);
         Optional<SipAccountDBModel> sipAccountDBModel = sipAccountRepository.findById(accountId);
         if (triggerTypeDBModel.isPresent() && sipAccountDBModel.isPresent()){
 
-            ProcessSipCallTriggerDBModel sipCallTriggerDBModel = new ProcessSipCallTriggerDBModel();
-            sipCallTriggerDBModel.setProcessId(processId);
-            sipCallTriggerDBModel.setTrigger(trigger);
-            sipCallTriggerDBModel.setTriggerDesc(triggerDesc);
-            sipCallTriggerDBModel.setAccountId(accountId);
-            sipCallTriggerDBModel.setAccount(sipAccountDBModel.get().getAccount());
-            sipCallTriggerDBModel.setCallerId(callerId);
-            sipCallTriggerDBModel.setDatas(new ArrayList<>());
-            sipCallTriggerDBModel.setTypeId(typeId);
-            sipCallTriggerDBModel.setTriggerType(triggerTypeDBModel.get().getTriggerType());
-            sipCallTriggerDBModel.setuDate(appUtils.getCurrentTimeStamp());
-            sipCallTriggerDBModel.setcDate(appUtils.getCurrentTimeStamp());
-            sipCallTriggerDBModel.setStatus(1);
+            ProcessSipTriggerDBModel sipTriggerDBModel = new ProcessSipTriggerDBModel();
+            sipTriggerDBModel.setProcessId(processId);
+            sipTriggerDBModel.setTrigger(trigger);
+            sipTriggerDBModel.setTriggerDesc(triggerDesc);
+            sipTriggerDBModel.setAccountId(accountId);
+            sipTriggerDBModel.setAccount(sipAccountDBModel.get().getAccount());
+            sipTriggerDBModel.setCallerId(callerId);
+            sipTriggerDBModel.setDatas(new ArrayList<>());
+            sipTriggerDBModel.setTypeId(typeId);
+            sipTriggerDBModel.setTriggerType(triggerTypeDBModel.get().getTriggerType());
+            sipTriggerDBModel.setuDate(appUtils.getCurrentTimeStamp());
+            sipTriggerDBModel.setcDate(appUtils.getCurrentTimeStamp());
+            sipTriggerDBModel.setStatus(1);
 
-            return new ProcessSipCallTriggerWSDTO(processSipCallTriggerRepository.save(sipCallTriggerDBModel));
+            return new ProcessSipTriggerWSDTO(processSipTriggerRepository.save(sipTriggerDBModel));
         }
         return null;
     }
 
-    public ProcessSipCallTriggerWSDTO updateProcessSipCallTriggerService(long userId, String triggerId, String trigger, String triggerDesc, String accountId, String callerId) {
+    public ProcessSipTriggerWSDTO updateProcessSipTriggerService(long userId, String triggerId, String trigger, String triggerDesc, String accountId, String callerId) {
 
-        Optional<ProcessSipCallTriggerDBModel> sipCallTriggerDBModel = processSipCallTriggerRepository.findById(triggerId);
+        Optional<ProcessSipTriggerDBModel> sipTriggerDBModel = processSipTriggerRepository.findById(triggerId);
         Optional<SipAccountDBModel> sipAccountDBModel = sipAccountRepository.findById(accountId);
-        if (sipCallTriggerDBModel.isPresent() && sipAccountDBModel.isPresent()){
+        if (sipTriggerDBModel.isPresent() && sipAccountDBModel.isPresent()){
 
-            sipCallTriggerDBModel.get().setTrigger(trigger);
-            sipCallTriggerDBModel.get().setTriggerDesc(triggerDesc);
-            sipCallTriggerDBModel.get().setAccountId(accountId);
-            sipCallTriggerDBModel.get().setAccount(sipAccountDBModel.get().getAccount());
-            sipCallTriggerDBModel.get().setCallerId(callerId);
-            sipCallTriggerDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
-            sipCallTriggerDBModel.get().setStatus(1);
+            sipTriggerDBModel.get().setTrigger(trigger);
+            sipTriggerDBModel.get().setTriggerDesc(triggerDesc);
+            sipTriggerDBModel.get().setAccountId(accountId);
+            sipTriggerDBModel.get().setAccount(sipAccountDBModel.get().getAccount());
+            sipTriggerDBModel.get().setCallerId(callerId);
+            sipTriggerDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
+            sipTriggerDBModel.get().setStatus(1);
 
-            return new ProcessSipCallTriggerWSDTO(processSipCallTriggerRepository.save(sipCallTriggerDBModel.get()));
+            return new ProcessSipTriggerWSDTO(processSipTriggerRepository.save(sipTriggerDBModel.get()));
         }
         return null;
     }
 
-    public ProcessSipCallTriggerWSDTO removeProcessSipCallTriggerService(long userId, String triggerId) {
+    public ProcessSipTriggerWSDTO removeProcessSipTriggerService(long userId, String triggerId) {
 
-        Optional<ProcessSipCallTriggerDBModel> sipCallTriggerDBModel = processSipCallTriggerRepository.findById(triggerId);
-        if (sipCallTriggerDBModel.isPresent()){
-            processSipCallTriggerRepository.delete(sipCallTriggerDBModel.get());
-            return new ProcessSipCallTriggerWSDTO(sipCallTriggerDBModel.get());
+        Optional<ProcessSipTriggerDBModel> sipTriggerDBModel = processSipTriggerRepository.findById(triggerId);
+        if (sipTriggerDBModel.isPresent()){
+            processSipTriggerRepository.delete(sipTriggerDBModel.get());
+            return new ProcessSipTriggerWSDTO(sipTriggerDBModel.get());
         }
         return null;
     }

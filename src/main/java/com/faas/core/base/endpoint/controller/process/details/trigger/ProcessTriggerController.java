@@ -181,24 +181,11 @@ public class ProcessTriggerController {
     }
 
 
+    @RequestMapping(value = BaseRoute.GET_PROCESS_SIP_TRIGGERS, method = RequestMethod.POST)
+    public ResponseEntity<?> getProcessSipTriggers(@RequestParam long userId,
+                                                   @RequestParam String processId){
 
-    @RequestMapping(value = BaseRoute.GET_PROCESS_SIP_CALL_TRIGGERS, method = RequestMethod.POST)
-    public ResponseEntity<?> getProcessSipCallTriggers(@RequestParam long userId,
-                                                       @RequestParam String processId){
-
-        ProcessSipCallTriggerWSModel response = processTriggerMiddleware.getProcessSipCallTriggers(userId,processId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-    @RequestMapping(value = BaseRoute.GET_PROCESS_SIP_CALL_TRIGGER, method = RequestMethod.POST)
-    public ResponseEntity<?> getProcessSipCallTrigger(@RequestParam long userId,
-                                                      @RequestParam String triggerId) {
-
-        ProcessSipCallTriggerWSModel response = processTriggerMiddleware.getProcessSipCallTrigger(userId,triggerId);
+        ProcessSipTriggerWSModel response = processTriggerMiddleware.getProcessSipTriggers(userId,processId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -206,17 +193,11 @@ public class ProcessTriggerController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+    @RequestMapping(value = BaseRoute.GET_PROCESS_SIP_TRIGGER, method = RequestMethod.POST)
+    public ResponseEntity<?> getProcessSipTrigger(@RequestParam long userId,
+                                                  @RequestParam String triggerId) {
 
-    @RequestMapping(value = BaseRoute.CREATE_PROCESS_SIP_CALL_TRIGGER, method = RequestMethod.POST)
-    public ResponseEntity<?> createProcessSipCallTrigger(@RequestParam long userId,
-                                                         @RequestParam String processId,
-                                                         @RequestParam String trigger,
-                                                         @RequestParam String triggerDesc,
-                                                         @RequestParam String accountId,
-                                                         @RequestParam String callerId,
-                                                         @RequestParam long typeId) {
-
-        ProcessSipCallTriggerWSModel response = processTriggerMiddleware.createProcessSipCallTrigger(userId,processId,trigger,triggerDesc,accountId,callerId,typeId);
+        ProcessSipTriggerWSModel response = processTriggerMiddleware.getProcessSipTrigger(userId,triggerId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -224,15 +205,17 @@ public class ProcessTriggerController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-    @RequestMapping(value = BaseRoute.UPDATE_PROCESS_SIP_CALL_TRIGGER, method = RequestMethod.POST)
-    public ResponseEntity<?> updateProcessSipCallTrigger(@RequestParam long userId,
-                                                         @RequestParam String triggerId,
-                                                         @RequestParam String trigger,
-                                                         @RequestParam String triggerDesc,
-                                                         @RequestParam String accountId,
-                                                         @RequestParam String callerId) {
 
-        ProcessSipCallTriggerWSModel response = processTriggerMiddleware.updateProcessSipCallTrigger(userId,triggerId,trigger,triggerDesc,accountId,callerId);
+    @RequestMapping(value = BaseRoute.CREATE_PROCESS_SIP_TRIGGER, method = RequestMethod.POST)
+    public ResponseEntity<?> createProcessSipTrigger(@RequestParam long userId,
+                                                     @RequestParam String processId,
+                                                     @RequestParam String trigger,
+                                                     @RequestParam String triggerDesc,
+                                                     @RequestParam String accountId,
+                                                     @RequestParam String callerId,
+                                                     @RequestParam long typeId) {
+
+        ProcessSipTriggerWSModel response = processTriggerMiddleware.createProcessSipTrigger(userId,processId,trigger,triggerDesc,accountId,callerId,typeId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -240,11 +223,27 @@ public class ProcessTriggerController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-    @RequestMapping(value = BaseRoute.REMOVE_PROCESS_SIP_CALL_TRIGGER, method = RequestMethod.POST)
-    public ResponseEntity<?> removeProcessSipCallTrigger(@RequestParam long userId,
-                                                         @RequestParam String triggerId) {
+    @RequestMapping(value = BaseRoute.UPDATE_PROCESS_SIP_TRIGGER, method = RequestMethod.POST)
+    public ResponseEntity<?> updateProcessSipTrigger(@RequestParam long userId,
+                                                     @RequestParam String triggerId,
+                                                     @RequestParam String trigger,
+                                                     @RequestParam String triggerDesc,
+                                                     @RequestParam String accountId,
+                                                     @RequestParam String callerId) {
 
-        ProcessSipCallTriggerWSModel response = processTriggerMiddleware.removeProcessSipCallTrigger(userId,triggerId);
+        ProcessSipTriggerWSModel response = processTriggerMiddleware.updateProcessSipTrigger(userId,triggerId,trigger,triggerDesc,accountId,callerId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+    @RequestMapping(value = BaseRoute.REMOVE_PROCESS_SIP_TRIGGER, method = RequestMethod.POST)
+    public ResponseEntity<?> removeProcessSipTrigger(@RequestParam long userId,
+                                                     @RequestParam String triggerId) {
+
+        ProcessSipTriggerWSModel response = processTriggerMiddleware.removeProcessSipTrigger(userId,triggerId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

@@ -6,8 +6,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
-@Document(collection = "process_sip_call_trigger_table")
-public class ProcessSipCallTriggerDBModel {
+@Document(collection = "process_sip_trigger_table")
+public class ProcessSipTriggerDBModel {
 
     @Id
     private String id;
@@ -24,10 +24,10 @@ public class ProcessSipCallTriggerDBModel {
     private long cDate;
     private int status;
 
-    public ProcessSipCallTriggerDBModel() {
+    public ProcessSipTriggerDBModel() {
     }
 
-    public ProcessSipCallTriggerDBModel(String id, String processId, String trigger, String triggerDesc, String accountId, String account, String callerId, List<ProcessTriggerDataDAO> datas, long typeId, String triggerType, long uDate, long cDate, int status) {
+    public ProcessSipTriggerDBModel(String id, String processId, String trigger, String triggerDesc, String accountId, String account, String callerId, List<ProcessTriggerDataDAO> datas, long typeId, String triggerType, long uDate, long cDate, int status) {
         this.id = id;
         this.processId = processId;
         this.trigger = trigger;

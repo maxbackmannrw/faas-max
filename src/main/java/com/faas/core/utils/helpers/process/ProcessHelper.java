@@ -90,7 +90,7 @@ public class ProcessHelper {
     ProcessEmailTriggerRepository processEmailTriggerRepository;
 
     @Autowired
-    ProcessSipCallTriggerRepository processSipCallTriggerRepository;
+    ProcessSipTriggerRepository processSipTriggerRepository;
 
     @Autowired
     ProcessSmsTriggerRepository processSmsTriggerRepository;
@@ -160,7 +160,7 @@ public class ProcessHelper {
         ProcessTriggerWSDTO processTriggerWSDTO = new ProcessTriggerWSDTO();
         processTriggerWSDTO.setProcessAITriggers(createProcessAITriggerWSDTOS(processId));
         processTriggerWSDTO.setProcessEmailTriggers(createProcessEmailTriggerWSDTOS(processId));
-        processTriggerWSDTO.setProcessSipCallTriggers(createProcessSipCallTriggerWSDTOS(processId));
+        processTriggerWSDTO.setProcessSipTriggers(createProcessSipTriggerWSDTOS(processId));
         processTriggerWSDTO.setProcessSmsTriggers(createProcessSmsTriggerWSDTOS(processId));
         processTriggerWSDTO.setProcessWappCallTriggers(createProcessWappCallTriggerWSDTOS(processId));
         processTriggerWSDTO.setProcessWappMessageTriggers(createProcessWappMessageTriggerWSDTOS(processId));
@@ -188,14 +188,14 @@ public class ProcessHelper {
         return processEmailTriggerWSDTOS;
     }
 
-    public List<ProcessSipCallTriggerWSDTO> createProcessSipCallTriggerWSDTOS(String processId) {
+    public List<ProcessSipTriggerWSDTO> createProcessSipTriggerWSDTOS(String processId) {
 
-        List<ProcessSipCallTriggerWSDTO> processSipCallTriggerWSDTOS = new ArrayList<>();
-        List<ProcessSipCallTriggerDBModel> processSipCallTriggerDBModels = processSipCallTriggerRepository.findByProcessId(processId);
-        for (ProcessSipCallTriggerDBModel processSipCallTriggerDBModel : processSipCallTriggerDBModels) {
-            processSipCallTriggerWSDTOS.add(new ProcessSipCallTriggerWSDTO(processSipCallTriggerDBModel));
+        List<ProcessSipTriggerWSDTO> processSipTriggerWSDTOS = new ArrayList<>();
+        List<ProcessSipTriggerDBModel> processSipTriggerDBModels = processSipTriggerRepository.findByProcessId(processId);
+        for (ProcessSipTriggerDBModel processSipTriggerDBModel : processSipTriggerDBModels) {
+            processSipTriggerWSDTOS.add(new ProcessSipTriggerWSDTO(processSipTriggerDBModel));
         }
-        return processSipCallTriggerWSDTOS;
+        return processSipTriggerWSDTOS;
     }
 
     public List<ProcessSmsTriggerWSDTO> createProcessSmsTriggerWSDTOS(String processId) {
