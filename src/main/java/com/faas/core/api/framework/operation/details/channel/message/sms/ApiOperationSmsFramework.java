@@ -9,14 +9,14 @@ import com.faas.core.base.model.db.client.details.dao.ClientPhoneDAO;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationSmsDBModel;
 import com.faas.core.base.model.db.process.details.channel.content.ProcessSmsChannelDBModel;
-import com.faas.core.base.model.db.process.details.channel.temp.ProcessSmsTempDBModel;
+import com.faas.core.base.model.db.process.details.channel.temp.SmsTempDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.client.details.ClientDetailsRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.operation.details.channel.OperationSmsRepository;
 import com.faas.core.base.repo.process.details.channel.content.ProcessSmsChannelRepository;
-import com.faas.core.base.repo.process.details.channel.temp.ProcessSmsTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.SmsTempRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utils.handler.channel.sms.SmsChannelHandler;
 import com.faas.core.utils.config.AppUtils;
@@ -61,7 +61,7 @@ public class ApiOperationSmsFramework {
     OperationSmsRepository operationSmsRepository;
 
     @Autowired
-    ProcessSmsTempRepository processSmsTempRepository;
+    SmsTempRepository smsTempRepository;
 
     @Autowired
     AppUtils appUtils;
@@ -99,7 +99,7 @@ public class ApiOperationSmsFramework {
             if (!clientDetailsDBModels.isEmpty() && clientDetailsDBModels.get(0).getClientPhones() != null){
                 smsTempWSDTO.setClientPhones(clientDetailsDBModels.get(0).getClientPhones());
             }
-            smsTempWSDTO.setOperationSmsTemps(processSmsTempRepository.findByProcessId(sessionDBModels.get(0).getProcessId()));
+            smsTempWSDTO.setOperationSmsTemps(smsTempRepository.findByProcessId(sessionDBModels.get(0).getProcessId()));
 
             return smsTempWSDTO;
         }
@@ -117,7 +117,7 @@ public class ApiOperationSmsFramework {
             if (!clientDetailsDBModels.isEmpty() && clientDetailsDBModels.get(0).getClientPhones() != null){
                 smsTempWSDTO.setClientPhones(clientDetailsDBModels.get(0).getClientPhones());
             }
-            smsTempWSDTO.setOperationSmsTemps(processSmsTempRepository.findByIdAndProcessId(tempId,sessionDBModels.get(0).getProcessId()));
+            smsTempWSDTO.setOperationSmsTemps(smsTempRepository.findByIdAndProcessId(tempId,sessionDBModels.get(0).getProcessId()));
 
             return smsTempWSDTO;
         }
@@ -149,7 +149,7 @@ public class ApiOperationSmsFramework {
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
         if (!operationDBModels.isEmpty()){
             ClientPhoneDAO clientPhoneDAO = channelHelper.fetchClientPhoneDAO(operationDBModels.get(0).getClientId(),numberId);
-            List<ProcessSmsTempDBModel> smsTempDBModels = processSmsTempRepository.findByIdAndProcessId(tempId,operationDBModels.get(0).getProcessId());
+            List<SmsTempDBModel> smsTempDBModels = smsTempRepository.findByIdAndProcessId(tempId,operationDBModels.get(0).getProcessId());
             List<ProcessSmsChannelDBModel> smsChannelDBModels = processSmsChannelRepository.findByProcessId(operationDBModels.get(0).getProcessId());
             if (clientPhoneDAO != null && !smsTempDBModels.isEmpty() && !smsChannelDBModels.isEmpty()){
                 OperationSmsDBModel operationSmsDBModel = channelHelper.createOperationSmsModel(operationDBModels.get(0),clientPhoneDAO,smsTempDBModels.get(0),smsChannelDBModels.get(0));

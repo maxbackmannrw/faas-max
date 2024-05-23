@@ -1,38 +1,37 @@
 package com.faas.core.base.model.db.process.details.channel.temp;
 
-import com.faas.core.base.model.db.process.details.channel.temp.dao.ProcessTempAssetDAO;
-import com.faas.core.base.model.db.process.details.channel.temp.dao.ProcessTempDataDAO;
+import com.faas.core.base.model.db.process.details.channel.temp.dao.TempAssetDAO;
+import com.faas.core.base.model.db.process.details.channel.temp.dao.TempDataDAO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
-@Document(collection = "process_sms_temp_table")
-public class ProcessSmsTempDBModel {
+
+@Document(collection = "wapp_message_temp_table")
+public class WappMessageTempDBModel {
 
     @Id
     private String id;
     private String processId;
-    private String smsTitle;
-    private String smsBody;
-    private String senderId;
+    private String wappTitle;
+    private String wappBody;
     private long typeId;
     private String messageType;
-    private List<ProcessTempDataDAO>tempDatas;
-    private List<ProcessTempAssetDAO>tempAssets;
+    private List<TempDataDAO>tempDatas;
+    private List<TempAssetDAO>tempAssets;
     private long uDate;
     private long cDate;
     private int status;
 
-    public ProcessSmsTempDBModel() {
+    public WappMessageTempDBModel() {
     }
 
-    public ProcessSmsTempDBModel(String id, String processId, String smsTitle, String smsBody, String senderId, long typeId, String messageType, List<ProcessTempDataDAO> tempDatas, List<ProcessTempAssetDAO> tempAssets, long uDate, long cDate, int status) {
+    public WappMessageTempDBModel(String id, String processId, String wappTitle, String wappBody, long typeId, String messageType, List<TempDataDAO> tempDatas, List<TempAssetDAO> tempAssets, long uDate, long cDate, int status) {
         this.id = id;
         this.processId = processId;
-        this.smsTitle = smsTitle;
-        this.smsBody = smsBody;
-        this.senderId = senderId;
+        this.wappTitle = wappTitle;
+        this.wappBody = wappBody;
         this.typeId = typeId;
         this.messageType = messageType;
         this.tempDatas = tempDatas;
@@ -58,28 +57,20 @@ public class ProcessSmsTempDBModel {
         this.processId = processId;
     }
 
-    public String getSmsTitle() {
-        return smsTitle;
+    public String getWappTitle() {
+        return wappTitle;
     }
 
-    public void setSmsTitle(String smsTitle) {
-        this.smsTitle = smsTitle;
+    public void setWappTitle(String wappTitle) {
+        this.wappTitle = wappTitle;
     }
 
-    public String getSmsBody() {
-        return smsBody;
+    public String getWappBody() {
+        return wappBody;
     }
 
-    public void setSmsBody(String smsBody) {
-        this.smsBody = smsBody;
-    }
-
-    public String getSenderId() {
-        return senderId;
-    }
-
-    public void setSenderId(String senderId) {
-        this.senderId = senderId;
+    public void setWappBody(String wappBody) {
+        this.wappBody = wappBody;
     }
 
     public long getTypeId() {
@@ -98,19 +89,19 @@ public class ProcessSmsTempDBModel {
         this.messageType = messageType;
     }
 
-    public List<ProcessTempDataDAO> getTempDatas() {
+    public List<TempDataDAO> getTempDatas() {
         return tempDatas;
     }
 
-    public void setTempDatas(List<ProcessTempDataDAO> tempDatas) {
+    public void setTempDatas(List<TempDataDAO> tempDatas) {
         this.tempDatas = tempDatas;
     }
 
-    public List<ProcessTempAssetDAO> getTempAssets() {
+    public List<TempAssetDAO> getTempAssets() {
         return tempAssets;
     }
 
-    public void setTempAssets(List<ProcessTempAssetDAO> tempAssets) {
+    public void setTempAssets(List<TempAssetDAO> tempAssets) {
         this.tempAssets = tempAssets;
     }
 

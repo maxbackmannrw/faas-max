@@ -1,10 +1,10 @@
 package com.faas.core.base.framework.process.details.channel.temp;
 
 import com.faas.core.base.model.db.channel.settings.MessageTypeDBModel;
-import com.faas.core.base.model.db.process.details.channel.temp.ProcessSmsTempDBModel;
+import com.faas.core.base.model.db.process.details.channel.temp.SmsTempDBModel;
 import com.faas.core.base.model.ws.process.details.channel.temp.dto.ProcessSmsTempWSDTO;
 import com.faas.core.base.repo.channel.settings.MessageTypeRepository;
-import com.faas.core.base.repo.process.details.channel.temp.ProcessSmsTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.SmsTempRepository;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.process.ProcessHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ public class ProcessSmsTempFramework {
     ProcessHelper processHelper;
 
     @Autowired
-    ProcessSmsTempRepository processSmsTempRepository;
+    SmsTempRepository smsTempRepository;
 
     @Autowired
     MessageTypeRepository messageTypeRepository;
@@ -35,16 +35,16 @@ public class ProcessSmsTempFramework {
     public List<ProcessSmsTempWSDTO> getProcessSmsTempsService(long userId, String processId) {
 
         List<ProcessSmsTempWSDTO> processSmsTempWSDTOS = new ArrayList<>();
-        List<ProcessSmsTempDBModel> processSmsTempDBModels = processSmsTempRepository.findByProcessId(processId);
-        for (ProcessSmsTempDBModel processSmsTempDBModel : processSmsTempDBModels) {
-            processSmsTempWSDTOS.add(new ProcessSmsTempWSDTO(processSmsTempDBModel));
+        List<SmsTempDBModel> smsTempDBModels = smsTempRepository.findByProcessId(processId);
+        for (SmsTempDBModel smsTempDBModel : smsTempDBModels) {
+            processSmsTempWSDTOS.add(new ProcessSmsTempWSDTO(smsTempDBModel));
         }
         return processSmsTempWSDTOS;
     }
 
     public ProcessSmsTempWSDTO getProcessSmsTempService(long userId, String tempId) {
 
-        Optional<ProcessSmsTempDBModel> processSmsTempDBModel = processSmsTempRepository.findById(tempId);
+        Optional<SmsTempDBModel> processSmsTempDBModel = smsTempRepository.findById(tempId);
         if (processSmsTempDBModel.isPresent()) {
             return new ProcessSmsTempWSDTO(processSmsTempDBModel.get());
         }
@@ -56,27 +56,27 @@ public class ProcessSmsTempFramework {
         Optional<MessageTypeDBModel> messageTypeDBModel = messageTypeRepository.findById(typeId);
         if (messageTypeDBModel.isPresent()) {
 
-            ProcessSmsTempDBModel processSmsTempDBModel = new ProcessSmsTempDBModel();
-            processSmsTempDBModel.setProcessId(processId);
-            processSmsTempDBModel.setSmsTitle(smsTitle);
-            processSmsTempDBModel.setSmsBody(smsBody);
-            processSmsTempDBModel.setSenderId(senderId);
-            processSmsTempDBModel.setTypeId(typeId);
-            processSmsTempDBModel.setMessageType(messageTypeDBModel.get().getMessageType());
-            processSmsTempDBModel.setTempDatas(new ArrayList<>());
-            processSmsTempDBModel.setTempAssets(new ArrayList<>());
-            processSmsTempDBModel.setuDate(appUtils.getCurrentTimeStamp());
-            processSmsTempDBModel.setcDate(appUtils.getCurrentTimeStamp());
-            processSmsTempDBModel.setStatus(1);
+            SmsTempDBModel smsTempDBModel = new SmsTempDBModel();
+            smsTempDBModel.setProcessId(processId);
+            smsTempDBModel.setSmsTitle(smsTitle);
+            smsTempDBModel.setSmsBody(smsBody);
+            smsTempDBModel.setSenderId(senderId);
+            smsTempDBModel.setTypeId(typeId);
+            smsTempDBModel.setMessageType(messageTypeDBModel.get().getMessageType());
+            smsTempDBModel.setTempDatas(new ArrayList<>());
+            smsTempDBModel.setTempAssets(new ArrayList<>());
+            smsTempDBModel.setuDate(appUtils.getCurrentTimeStamp());
+            smsTempDBModel.setcDate(appUtils.getCurrentTimeStamp());
+            smsTempDBModel.setStatus(1);
 
-            return new ProcessSmsTempWSDTO(processSmsTempRepository.save(processSmsTempDBModel));
+            return new ProcessSmsTempWSDTO(smsTempRepository.save(smsTempDBModel));
         }
         return null;
     }
 
     public ProcessSmsTempWSDTO updateProcessSmsTempService(String tempId, String smsTitle, String smsBody, String senderId, long typeId) {
 
-        Optional<ProcessSmsTempDBModel> smsMessageTempDBModel = processSmsTempRepository.findById(tempId);
+        Optional<SmsTempDBModel> smsMessageTempDBModel = smsTempRepository.findById(tempId);
         Optional<MessageTypeDBModel> messageTypeDBModel = messageTypeRepository.findById(typeId);
         if (smsMessageTempDBModel.isPresent() && messageTypeDBModel.isPresent()) {
 
@@ -88,16 +88,16 @@ public class ProcessSmsTempFramework {
             smsMessageTempDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
             smsMessageTempDBModel.get().setStatus(1);
 
-            return new ProcessSmsTempWSDTO(processSmsTempRepository.save(smsMessageTempDBModel.get()));
+            return new ProcessSmsTempWSDTO(smsTempRepository.save(smsMessageTempDBModel.get()));
         }
         return null;
     }
 
     public ProcessSmsTempWSDTO removeProcessSmsTempService(String tempId) {
 
-        Optional<ProcessSmsTempDBModel> processSmsTempDBModel = processSmsTempRepository.findById(tempId);
+        Optional<SmsTempDBModel> processSmsTempDBModel = smsTempRepository.findById(tempId);
         if (processSmsTempDBModel.isPresent()) {
-            processSmsTempRepository.delete(processSmsTempDBModel.get());
+            smsTempRepository.delete(processSmsTempDBModel.get());
             return new ProcessSmsTempWSDTO(processSmsTempDBModel.get());
         }
         return null;

@@ -1,10 +1,10 @@
 package com.faas.core.base.framework.process.details.channel.temp;
 
 import com.faas.core.base.model.db.channel.settings.EmailTypeDBModel;
-import com.faas.core.base.model.db.process.details.channel.temp.ProcessEmailTempDBModel;
+import com.faas.core.base.model.db.process.details.channel.temp.EmailTempDBModel;
 import com.faas.core.base.model.ws.process.details.channel.temp.dto.ProcessEmailTempWSDTO;
 import com.faas.core.base.repo.channel.settings.EmailTypeRepository;
-import com.faas.core.base.repo.process.details.channel.temp.ProcessEmailTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.EmailTempRepository;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.process.ProcessHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ public class ProcessEmailTempFramework {
     ProcessHelper processHelper;
 
     @Autowired
-    ProcessEmailTempRepository processEmailTempRepository;
+    EmailTempRepository emailTempRepository;
 
     @Autowired
     EmailTypeRepository emailTypeRepository;
@@ -35,16 +35,16 @@ public class ProcessEmailTempFramework {
     public List<ProcessEmailTempWSDTO> getProcessEmailTempsService(long userId, String processId) {
 
         List<ProcessEmailTempWSDTO> processEmailTempWSDTOS = new ArrayList<>();
-        List<ProcessEmailTempDBModel> processEmailTempDBModels = processEmailTempRepository.findByProcessId(processId);
-        for (ProcessEmailTempDBModel processEmailTempDBModel : processEmailTempDBModels) {
-            processEmailTempWSDTOS.add(new ProcessEmailTempWSDTO(processEmailTempDBModel));
+        List<EmailTempDBModel> emailTempDBModels = emailTempRepository.findByProcessId(processId);
+        for (EmailTempDBModel emailTempDBModel : emailTempDBModels) {
+            processEmailTempWSDTOS.add(new ProcessEmailTempWSDTO(emailTempDBModel));
         }
         return processEmailTempWSDTOS;
     }
 
     public ProcessEmailTempWSDTO getProcessEmailTempService(long userId, String tempId) {
 
-        Optional<ProcessEmailTempDBModel> processEmailTempDBModel = processEmailTempRepository.findById(tempId);
+        Optional<EmailTempDBModel> processEmailTempDBModel = emailTempRepository.findById(tempId);
         if (processEmailTempDBModel.isPresent()) {
             return new ProcessEmailTempWSDTO(processEmailTempDBModel.get());
         }
@@ -56,20 +56,20 @@ public class ProcessEmailTempFramework {
         Optional<EmailTypeDBModel> emailTypeDBModel = emailTypeRepository.findById(typeId);
         if (emailTypeDBModel.isPresent()){
 
-            ProcessEmailTempDBModel processEmailTempDBModel = new ProcessEmailTempDBModel();
-            processEmailTempDBModel.setProcessId(processId);
-            processEmailTempDBModel.setEmailSubject(emailSubject);
-            processEmailTempDBModel.setEmailBody(emailBody);
-            processEmailTempDBModel.setEmailSender(emailSender);
-            processEmailTempDBModel.setTypeId(typeId);
-            processEmailTempDBModel.setEmailType(emailTypeDBModel.get().getEmailType());
-            processEmailTempDBModel.setTempDatas(new ArrayList<>());
-            processEmailTempDBModel.setTempAssets(new ArrayList<>());
-            processEmailTempDBModel.setuDate(appUtils.getCurrentTimeStamp());
-            processEmailTempDBModel.setcDate(appUtils.getCurrentTimeStamp());
-            processEmailTempDBModel.setStatus(1);
+            EmailTempDBModel emailTempDBModel = new EmailTempDBModel();
+            emailTempDBModel.setProcessId(processId);
+            emailTempDBModel.setEmailSubject(emailSubject);
+            emailTempDBModel.setEmailBody(emailBody);
+            emailTempDBModel.setEmailSender(emailSender);
+            emailTempDBModel.setTypeId(typeId);
+            emailTempDBModel.setEmailType(emailTypeDBModel.get().getEmailType());
+            emailTempDBModel.setTempDatas(new ArrayList<>());
+            emailTempDBModel.setTempAssets(new ArrayList<>());
+            emailTempDBModel.setuDate(appUtils.getCurrentTimeStamp());
+            emailTempDBModel.setcDate(appUtils.getCurrentTimeStamp());
+            emailTempDBModel.setStatus(1);
 
-            return new ProcessEmailTempWSDTO(processEmailTempRepository.save(processEmailTempDBModel));
+            return new ProcessEmailTempWSDTO(emailTempRepository.save(emailTempDBModel));
         }
         return null;
     }
@@ -77,7 +77,7 @@ public class ProcessEmailTempFramework {
 
     public ProcessEmailTempWSDTO updateProcessEmailTempService(String tempId, String emailSubject, String emailBody, String emailSender, long typeId) {
 
-        Optional<ProcessEmailTempDBModel> processEmailTempDBModel = processEmailTempRepository.findById(tempId);
+        Optional<EmailTempDBModel> processEmailTempDBModel = emailTempRepository.findById(tempId);
         Optional<EmailTypeDBModel> emailTypeDBModel = emailTypeRepository.findById(typeId);
         if (processEmailTempDBModel.isPresent() && emailTypeDBModel.isPresent()){
 
@@ -89,16 +89,16 @@ public class ProcessEmailTempFramework {
             processEmailTempDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
             processEmailTempDBModel.get().setStatus(1);
 
-            return new ProcessEmailTempWSDTO(processEmailTempRepository.save(processEmailTempDBModel.get()));
+            return new ProcessEmailTempWSDTO(emailTempRepository.save(processEmailTempDBModel.get()));
         }
         return null;
     }
 
     public ProcessEmailTempWSDTO removeProcessEmailTempService(String tempId) {
 
-        Optional<ProcessEmailTempDBModel> processEmailTempDBModel = processEmailTempRepository.findById(tempId);
+        Optional<EmailTempDBModel> processEmailTempDBModel = emailTempRepository.findById(tempId);
         if (processEmailTempDBModel.isPresent()){
-            processEmailTempRepository.delete(processEmailTempDBModel.get());
+            emailTempRepository.delete(processEmailTempDBModel.get());
             return new ProcessEmailTempWSDTO(processEmailTempDBModel.get());
         }
         return null;

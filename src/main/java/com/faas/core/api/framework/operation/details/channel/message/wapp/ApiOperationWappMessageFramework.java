@@ -9,7 +9,7 @@ import com.faas.core.base.model.db.client.details.dao.ClientPhoneDAO;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationWappMessageDBModel;
 import com.faas.core.base.model.db.process.details.channel.content.ProcessWappChannelDBModel;
-import com.faas.core.base.model.db.process.details.channel.temp.ProcessWappMessageTempDBModel;
+import com.faas.core.base.model.db.process.details.channel.temp.WappMessageTempDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.db.user.details.UserDetailsDBModel;
 import com.faas.core.base.repo.client.content.ClientRepository;
@@ -17,7 +17,7 @@ import com.faas.core.base.repo.client.details.ClientDetailsRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.operation.details.channel.OperationWappMessageRepository;
 import com.faas.core.base.repo.process.details.channel.content.ProcessWappChannelRepository;
-import com.faas.core.base.repo.process.details.channel.temp.ProcessWappMessageTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.WappMessageTempRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.base.repo.user.content.UserRepository;
 import com.faas.core.base.repo.user.details.UserDetailsRepository;
@@ -64,7 +64,7 @@ public class ApiOperationWappMessageFramework {
     OperationRepository operationRepository;
 
     @Autowired
-    ProcessWappMessageTempRepository processWappMessageTempRepository;
+    WappMessageTempRepository wappMessageTempRepository;
 
     @Autowired
     ProcessWappChannelRepository processWappChannelRepository;
@@ -109,7 +109,7 @@ public class ApiOperationWappMessageFramework {
             if (!clientDetailsDBModels.isEmpty() && clientDetailsDBModels.get(0).getClientPhones() != null) {
                 wappMessageTempWSDTO.setClientPhones(clientDetailsDBModels.get(0).getClientPhones());
             }
-            wappMessageTempWSDTO.setOperationWappMessageTemps(processWappMessageTempRepository.findByProcessId(sessionDBModels.get(0).getProcessId()));
+            wappMessageTempWSDTO.setOperationWappMessageTemps(wappMessageTempRepository.findByProcessId(sessionDBModels.get(0).getProcessId()));
 
             return wappMessageTempWSDTO;
         }
@@ -127,7 +127,7 @@ public class ApiOperationWappMessageFramework {
             if (!clientDetailsDBModels.isEmpty() && clientDetailsDBModels.get(0).getClientPhones() != null) {
                 wappMessageTempWSDTO.setClientPhones(clientDetailsDBModels.get(0).getClientPhones());
             }
-            wappMessageTempWSDTO.setOperationWappMessageTemps(processWappMessageTempRepository.findByIdAndProcessId(tempId, sessionDBModels.get(0).getProcessId()));
+            wappMessageTempWSDTO.setOperationWappMessageTemps(wappMessageTempRepository.findByIdAndProcessId(tempId, sessionDBModels.get(0).getProcessId()));
 
             return wappMessageTempWSDTO;
         }
@@ -162,7 +162,7 @@ public class ApiOperationWappMessageFramework {
         if (!operationDBModels.isEmpty()) {
             List<UserDetailsDBModel> agentDetails = userDetailsRepository.findByUserId(agentId);
             ClientPhoneDAO clientPhoneDAO = channelHelper.fetchClientPhoneDAO(operationDBModels.get(0).getClientId(), numberId);
-            List<ProcessWappMessageTempDBModel> wappMessageTempDBModels = processWappMessageTempRepository.findByIdAndProcessId(tempId, operationDBModels.get(0).getProcessId());
+            List<WappMessageTempDBModel> wappMessageTempDBModels = wappMessageTempRepository.findByIdAndProcessId(tempId, operationDBModels.get(0).getProcessId());
             List<ProcessWappChannelDBModel> wappChannelDBModels = processWappChannelRepository.findByProcessId(operationDBModels.get(0).getProcessId());
             if (!agentDetails.isEmpty() && agentDetails.get(0).getWappChannel() != null && clientPhoneDAO != null && !wappMessageTempDBModels.isEmpty() && !wappChannelDBModels.isEmpty() && wappChannelDBModels.get(0).getMessageState().equalsIgnoreCase(AppConstant.ACTIVE_STATE)) {
                 OperationWappMessageDBModel operationWappMessageDBModel = channelHelper.createOperationWappMessageModel(agentDetails.get(0), operationDBModels.get(0), clientPhoneDAO, wappMessageTempDBModels.get(0));

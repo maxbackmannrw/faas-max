@@ -1,23 +1,23 @@
 package com.faas.core.base.model.ws.process.details.channel.temp.dto;
 
-import com.faas.core.base.model.db.process.details.channel.temp.ProcessPushTempDBModel;
+import com.faas.core.base.model.db.process.details.channel.temp.PushTempDBModel;
 
 public class ProcessPushTempWSDTO {
 
-    private ProcessPushTempDBModel processPushTemp;
+    private PushTempDBModel processPushTemp;
 
     public ProcessPushTempWSDTO() {
     }
 
-    public ProcessPushTempWSDTO(ProcessPushTempDBModel processPushTemp) {
+    public ProcessPushTempWSDTO(PushTempDBModel processPushTemp) {
         this.processPushTemp = processPushTemp;
     }
 
-    public ProcessPushTempDBModel getProcessPushTemp() {
+    public PushTempDBModel getProcessPushTemp() {
         return processPushTemp;
     }
 
-    public void setProcessPushTemp(ProcessPushTempDBModel processPushTemp) {
+    public void setProcessPushTemp(PushTempDBModel processPushTemp) {
         this.processPushTemp = processPushTemp;
     }
 }

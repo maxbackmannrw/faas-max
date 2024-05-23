@@ -43,10 +43,10 @@ import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.operation.details.channel.*;
 import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.process.details.channel.content.*;
-import com.faas.core.base.repo.process.details.channel.temp.ProcessEmailTempRepository;
-import com.faas.core.base.repo.process.details.channel.temp.ProcessPushTempRepository;
-import com.faas.core.base.repo.process.details.channel.temp.ProcessSmsTempRepository;
-import com.faas.core.base.repo.process.details.channel.temp.ProcessWappMessageTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.EmailTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.PushTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.SmsTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.WappMessageTempRepository;
 import com.faas.core.base.repo.process.details.scenario.ProcessScenarioRepository;
 import com.faas.core.base.repo.scenario.content.ScenarioRepository;
 import com.faas.core.base.repo.session.SessionRepository;
@@ -126,22 +126,22 @@ public class OperationHelper {
     OperationEmailRepository operationEmailRepository;
 
     @Autowired
-    ProcessEmailTempRepository processEmailTempRepository;
+    EmailTempRepository emailTempRepository;
 
     @Autowired
     OperationPushRepository operationPushRepository;
 
     @Autowired
-    ProcessPushTempRepository processPushTempRepository;
+    PushTempRepository pushTempRepository;
 
     @Autowired
-    ProcessSmsTempRepository processSmsTempRepository;
+    SmsTempRepository smsTempRepository;
 
     @Autowired
     OperationWappMessageRepository operationWappMessageRepository;
 
     @Autowired
-    ProcessWappMessageTempRepository processWappMessageTempRepository;
+    WappMessageTempRepository wappMessageTempRepository;
 
     @Autowired
     AppUtils appUtils;
@@ -557,7 +557,7 @@ public class OperationHelper {
             operationSmsChannelWSDTO.setSmsAccount(smsAccountWSDTO);
             operationSmsChannelWSDTO.setClientPhones(clientDetails.getClientPhones());
             operationSmsChannelWSDTO.setOperationSmss(operationSmsRepository.findByOperationId(operationDBModel.getId()));
-            operationSmsChannelWSDTO.setOperationSmsTemps(processSmsTempRepository.findByProcessId(operationDBModel.getProcessId()));
+            operationSmsChannelWSDTO.setOperationSmsTemps(smsTempRepository.findByProcessId(operationDBModel.getProcessId()));
 
             return operationSmsChannelWSDTO;
         }
@@ -572,7 +572,7 @@ public class OperationHelper {
             ApiOperationWappMessageChannelWSDTO wappMessageChannelWSDTO = new ApiOperationWappMessageChannelWSDTO();
             wappMessageChannelWSDTO.setWappAccount(wappAccountWSDTO);
             wappMessageChannelWSDTO.setClientPhones(clientDetails.getClientPhones());
-            wappMessageChannelWSDTO.setOperationWappMessageTemps(processWappMessageTempRepository.findByProcessId(operationDBModel.getProcessId()));
+            wappMessageChannelWSDTO.setOperationWappMessageTemps(wappMessageTempRepository.findByProcessId(operationDBModel.getProcessId()));
             wappMessageChannelWSDTO.setOperationWappMessages(operationWappMessageRepository.findByOperationId(operationDBModel.getId()));
 
             return wappMessageChannelWSDTO;
@@ -589,7 +589,7 @@ public class OperationHelper {
             emailChannelWSDTO.setEmailAccount(emailAccountWSDTO);
             emailChannelWSDTO.setClientEmails(clientDetails.getClientEmails());
             emailChannelWSDTO.setOperationEmails(operationEmailRepository.findByOperationId(operationDBModel.getId()));
-            emailChannelWSDTO.setOperationEmailTemps(processEmailTempRepository.findByProcessId(operationDBModel.getProcessId()));
+            emailChannelWSDTO.setOperationEmailTemps(emailTempRepository.findByProcessId(operationDBModel.getProcessId()));
 
             return emailChannelWSDTO;
         }
@@ -604,7 +604,7 @@ public class OperationHelper {
             ApiOperationPushChannelWSDTO pushChannelWSDTO = new ApiOperationPushChannelWSDTO();
             pushChannelWSDTO.setPushAccount(pushAccountWSDTO);
             pushChannelWSDTO.setOperationPushes(operationPushRepository.findByOperationId(operationDBModel.getId()));
-            pushChannelWSDTO.setOperationPushTemps(processPushTempRepository.findByProcessId(operationDBModel.getProcessId()));
+            pushChannelWSDTO.setOperationPushTemps(pushTempRepository.findByProcessId(operationDBModel.getProcessId()));
 
             return pushChannelWSDTO;
         }

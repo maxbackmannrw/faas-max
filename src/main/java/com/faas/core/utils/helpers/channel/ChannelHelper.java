@@ -21,19 +21,19 @@ import com.faas.core.base.model.db.process.details.channel.content.*;
 import com.faas.core.base.model.db.process.details.channel.content.dao.ProcessEmailAccountDAO;
 import com.faas.core.base.model.db.process.details.channel.content.dao.ProcessPushAccountDAO;
 import com.faas.core.base.model.db.process.details.channel.content.dao.ProcessSmsAccountDAO;
-import com.faas.core.base.model.db.process.details.channel.temp.ProcessEmailTempDBModel;
-import com.faas.core.base.model.db.process.details.channel.temp.ProcessSmsTempDBModel;
-import com.faas.core.base.model.db.process.details.channel.temp.ProcessWappMessageTempDBModel;
+import com.faas.core.base.model.db.process.details.channel.temp.EmailTempDBModel;
+import com.faas.core.base.model.db.process.details.channel.temp.SmsTempDBModel;
+import com.faas.core.base.model.db.process.details.channel.temp.WappMessageTempDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.db.user.details.UserDetailsDBModel;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.client.details.ClientDetailsRepository;
 import com.faas.core.base.repo.operation.details.channel.*;
 import com.faas.core.base.repo.process.details.channel.content.*;
-import com.faas.core.base.repo.process.details.channel.temp.ProcessEmailTempRepository;
-import com.faas.core.base.repo.process.details.channel.temp.ProcessPushTempRepository;
-import com.faas.core.base.repo.process.details.channel.temp.ProcessSmsTempRepository;
-import com.faas.core.base.repo.process.details.channel.temp.ProcessWappMessageTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.EmailTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.PushTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.SmsTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.WappMessageTempRepository;
 import com.faas.core.base.repo.user.details.UserDetailsRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
@@ -91,7 +91,7 @@ public class ChannelHelper {
     OperationWappMessageRepository operationWappMessageRepository;
 
     @Autowired
-    ProcessWappMessageTempRepository processWappMessageTempRepository;
+    WappMessageTempRepository wappMessageTempRepository;
 
     @Autowired
     ProcessEmailChannelRepository processEmailChannelRepository;
@@ -100,13 +100,13 @@ public class ChannelHelper {
     OperationEmailRepository operationEmailRepository;
 
     @Autowired
-    ProcessEmailTempRepository processEmailTempRepository;
+    EmailTempRepository emailTempRepository;
 
     @Autowired
     OperationPushRepository operationPushRepository;
 
     @Autowired
-    ProcessPushTempRepository processPushTempRepository;
+    PushTempRepository pushTempRepository;
 
     @Autowired
     ProcessPushChannelRepository processPushChannelRepository;
@@ -115,7 +115,7 @@ public class ChannelHelper {
     OperationSmsRepository operationSmsRepository;
 
     @Autowired
-    ProcessSmsTempRepository processSmsTempRepository;
+    SmsTempRepository smsTempRepository;
 
     @Autowired
     ProcessSmsChannelRepository processSmsChannelRepository;
@@ -423,7 +423,7 @@ public class ChannelHelper {
         return processSmsAccountDAO;
     }
 
-    public OperationSmsDBModel createOperationSmsModel(OperationDBModel operationDBModel, ClientPhoneDAO clientPhoneDAO, ProcessSmsTempDBModel smsTempDBModel, ProcessSmsChannelDBModel smsChannelDBModel){
+    public OperationSmsDBModel createOperationSmsModel(OperationDBModel operationDBModel, ClientPhoneDAO clientPhoneDAO, SmsTempDBModel smsTempDBModel, ProcessSmsChannelDBModel smsChannelDBModel){
 
         OperationSmsDBModel operationSmsDBModel = new OperationSmsDBModel();
         operationSmsDBModel.setClientId(operationDBModel.getClientId());
@@ -443,7 +443,7 @@ public class ChannelHelper {
         return operationSmsRepository.save(operationSmsDBModel);
     }
 
-    public OperationSmsDAO createOperationSmsDAO(ProcessSmsTempDBModel smsTempDBModel, ProcessSmsChannelDBModel smsChannelDBModel){
+    public OperationSmsDAO createOperationSmsDAO(SmsTempDBModel smsTempDBModel, ProcessSmsChannelDBModel smsChannelDBModel){
 
         OperationSmsDAO operationSmsDAO = new OperationSmsDAO();
         operationSmsDAO.setAccountId(smsChannelDBModel.getSmsAccount().getAccountId());
@@ -482,7 +482,7 @@ public class ChannelHelper {
         return null;
     }
 
-    public OperationWappMessageDBModel createOperationWappMessageModel(UserDetailsDBModel agentDetails,OperationDBModel operationModel, ClientPhoneDAO clientPhoneDAO, ProcessWappMessageTempDBModel wappMessageTempModel){
+    public OperationWappMessageDBModel createOperationWappMessageModel(UserDetailsDBModel agentDetails,OperationDBModel operationModel, ClientPhoneDAO clientPhoneDAO, WappMessageTempDBModel wappMessageTempModel){
 
         OperationWappMessageDBModel operationWappMessageDBModel = new OperationWappMessageDBModel();
         operationWappMessageDBModel.setClientId(operationModel.getClientId());
@@ -502,7 +502,7 @@ public class ChannelHelper {
         return operationWappMessageRepository.save(operationWappMessageDBModel);
     }
 
-    public OperationWappMessageDAO createOperationWappMessageDAO(UserDetailsDBModel agentDetails,ProcessWappMessageTempDBModel wappMessageTempDBModel){
+    public OperationWappMessageDAO createOperationWappMessageDAO(UserDetailsDBModel agentDetails, WappMessageTempDBModel wappMessageTempDBModel){
 
         OperationWappMessageDAO operationWappMessageDAO = new OperationWappMessageDAO();
         operationWappMessageDAO.setAccountId(agentDetails.getWappChannel().getAccountId());
@@ -565,7 +565,7 @@ public class ChannelHelper {
 
         return processEmailAccountDAO;
     }
-    public OperationEmailDBModel createOperationEmailDBModel(SessionDBModel sessionDBModel, ClientEmailDAO clientEmailDAO, ProcessEmailTempDBModel emailTempDBModel, ProcessEmailChannelDBModel emailChannelDBModel){
+    public OperationEmailDBModel createOperationEmailDBModel(SessionDBModel sessionDBModel, ClientEmailDAO clientEmailDAO, EmailTempDBModel emailTempDBModel, ProcessEmailChannelDBModel emailChannelDBModel){
 
         OperationEmailDBModel operationEmailDBModel = new OperationEmailDBModel();
         operationEmailDBModel.setClientId(sessionDBModel.getClientId());
@@ -585,7 +585,7 @@ public class ChannelHelper {
         return operationEmailRepository.save(operationEmailDBModel);
     }
 
-    public OperationEmailDAO createOperationEmailDAO(ProcessEmailChannelDBModel emailChannelDBModel, ProcessEmailTempDBModel emailTempDBModel){
+    public OperationEmailDAO createOperationEmailDAO(ProcessEmailChannelDBModel emailChannelDBModel, EmailTempDBModel emailTempDBModel){
 
         OperationEmailDAO operationEmailDAO = new OperationEmailDAO();
         operationEmailDAO.setAccountId(emailChannelDBModel.getEmailAccount().getAccountId());

@@ -1,14 +1,14 @@
 package com.faas.core.base.model.db.process.details.channel.temp;
 
-import com.faas.core.base.model.db.process.details.channel.temp.dao.ProcessTempAssetDAO;
-import com.faas.core.base.model.db.process.details.channel.temp.dao.ProcessTempDataDAO;
+import com.faas.core.base.model.db.process.details.channel.temp.dao.TempAssetDAO;
+import com.faas.core.base.model.db.process.details.channel.temp.dao.TempDataDAO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
-@Document(collection = "process_email_temp_table")
-public class ProcessEmailTempDBModel {
+@Document(collection = "email_temp_table")
+public class EmailTempDBModel {
 
     @Id
     private String id;
@@ -18,16 +18,16 @@ public class ProcessEmailTempDBModel {
     private String emailSender;
     private long typeId;
     private String emailType;
-    private List<ProcessTempDataDAO>tempDatas;
-    private List<ProcessTempAssetDAO>tempAssets;
+    private List<TempDataDAO>tempDatas;
+    private List<TempAssetDAO>tempAssets;
     private long uDate;
     private long cDate;
     private int status;
 
-    public ProcessEmailTempDBModel() {
+    public EmailTempDBModel() {
     }
 
-    public ProcessEmailTempDBModel(String id, String processId, String emailSubject, String emailBody, String emailSender, long typeId, String emailType, List<ProcessTempDataDAO> tempDatas, List<ProcessTempAssetDAO> tempAssets, long uDate, long cDate, int status) {
+    public EmailTempDBModel(String id, String processId, String emailSubject, String emailBody, String emailSender, long typeId, String emailType, List<TempDataDAO> tempDatas, List<TempAssetDAO> tempAssets, long uDate, long cDate, int status) {
         this.id = id;
         this.processId = processId;
         this.emailSubject = emailSubject;
@@ -98,19 +98,19 @@ public class ProcessEmailTempDBModel {
         this.emailType = emailType;
     }
 
-    public List<ProcessTempDataDAO> getTempDatas() {
+    public List<TempDataDAO> getTempDatas() {
         return tempDatas;
     }
 
-    public void setTempDatas(List<ProcessTempDataDAO> tempDatas) {
+    public void setTempDatas(List<TempDataDAO> tempDatas) {
         this.tempDatas = tempDatas;
     }
 
-    public List<ProcessTempAssetDAO> getTempAssets() {
+    public List<TempAssetDAO> getTempAssets() {
         return tempAssets;
     }
 
-    public void setTempAssets(List<ProcessTempAssetDAO> tempAssets) {
+    public void setTempAssets(List<TempAssetDAO> tempAssets) {
         this.tempAssets = tempAssets;
     }
 

@@ -5,10 +5,10 @@ import com.faas.core.base.model.db.process.settings.ProcessTypeDBModel;
 import com.faas.core.base.model.ws.process.content.dto.ProcessWSDTO;
 import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.process.details.channel.content.*;
-import com.faas.core.base.repo.process.details.channel.temp.ProcessEmailTempRepository;
-import com.faas.core.base.repo.process.details.channel.temp.ProcessSmsTempRepository;
-import com.faas.core.base.repo.process.details.channel.temp.ProcessPushTempRepository;
-import com.faas.core.base.repo.process.details.channel.temp.ProcessWappMessageTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.EmailTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.SmsTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.PushTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.WappMessageTempRepository;
 import com.faas.core.base.repo.process.details.scenario.ProcessScenarioRepository;
 import com.faas.core.base.repo.process.details.trigger.*;
 import com.faas.core.base.repo.process.settings.ProcessTypeRepository;
@@ -50,16 +50,16 @@ public class ProcessFramework {
     ProcessWappChannelRepository processWappChannelRepository;
 
     @Autowired
-    ProcessEmailTempRepository processEmailTempRepository;
+    EmailTempRepository emailTempRepository;
 
     @Autowired
-    ProcessPushTempRepository processPushTempRepository;
+    PushTempRepository pushTempRepository;
 
     @Autowired
-    ProcessSmsTempRepository processSmsTempRepository;
+    SmsTempRepository smsTempRepository;
 
     @Autowired
-    ProcessWappMessageTempRepository processWappMessageTempRepository;
+    WappMessageTempRepository wappMessageTempRepository;
 
     @Autowired
     ProcessScenarioRepository processScenarioRepository;
@@ -182,10 +182,10 @@ public class ProcessFramework {
             processSmsChannelRepository.deleteAll(processSmsChannelRepository.findByProcessId(processId));
             processWappChannelRepository.deleteAll(processWappChannelRepository.findByProcessId(processId));
 
-            processEmailTempRepository.deleteAll(processEmailTempRepository.findByProcessId(processId));
-            processPushTempRepository.deleteAll(processPushTempRepository.findByProcessId(processId));
-            processSmsTempRepository.deleteAll(processSmsTempRepository.findByProcessId(processId));
-            processWappMessageTempRepository.deleteAll(processWappMessageTempRepository.findByProcessId(processId));
+            emailTempRepository.deleteAll(emailTempRepository.findByProcessId(processId));
+            pushTempRepository.deleteAll(pushTempRepository.findByProcessId(processId));
+            smsTempRepository.deleteAll(smsTempRepository.findByProcessId(processId));
+            wappMessageTempRepository.deleteAll(wappMessageTempRepository.findByProcessId(processId));
 
             AITriggerRepository.deleteAll(AITriggerRepository.findByProcessId(processId));
             emailTriggerRepository.deleteAll(emailTriggerRepository.findByProcessId(processId));

@@ -1,6 +1,6 @@
 package com.faas.core.base.model.db.process.details.channel.temp.dao;
 
-public class ProcessTempDataDAO {
+public class TempDataDAO {
 
     private String dataId;
     private String dataType;
@@ -8,10 +8,10 @@ public class ProcessTempDataDAO {
     private long cDate;
     private int status;
 
-    public ProcessTempDataDAO() {
+    public TempDataDAO() {
     }
 
-    public ProcessTempDataDAO(String dataId, String dataType, String value, long cDate, int status) {
+    public TempDataDAO(String dataId, String dataType, String value, long cDate, int status) {
         this.dataId = dataId;
         this.dataType = dataType;
         this.value = value;

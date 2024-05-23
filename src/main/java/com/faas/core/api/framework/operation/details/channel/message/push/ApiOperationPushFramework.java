@@ -8,14 +8,14 @@ import com.faas.core.base.model.db.client.details.ClientDetailsDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationPushDBModel;
 import com.faas.core.base.model.db.process.details.channel.content.ProcessPushChannelDBModel;
-import com.faas.core.base.model.db.process.details.channel.temp.ProcessPushTempDBModel;
+import com.faas.core.base.model.db.process.details.channel.temp.PushTempDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.client.details.ClientDetailsRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.operation.details.channel.OperationPushRepository;
 import com.faas.core.base.repo.process.details.channel.content.ProcessPushChannelRepository;
-import com.faas.core.base.repo.process.details.channel.temp.ProcessPushTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.PushTempRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.channel.ChannelHelper;
@@ -53,7 +53,7 @@ public class ApiOperationPushFramework {
     OperationRepository operationRepository;
 
     @Autowired
-    ProcessPushTempRepository processPushTempRepository;
+    PushTempRepository pushTempRepository;
 
     @Autowired
     ProcessPushChannelRepository processPushChannelRepository;
@@ -95,7 +95,7 @@ public class ApiOperationPushFramework {
 
             ApiOperationPushTempWSDTO pushTempWSDTO = new ApiOperationPushTempWSDTO();
             pushTempWSDTO.setPushAccount(channelHelper.getApiPushAccountWSDTO(sessionDBModels.get(0).getProcessId()));
-            pushTempWSDTO.setOperationPushTemps(processPushTempRepository.findByProcessId(sessionDBModels.get(0).getProcessId()));
+            pushTempWSDTO.setOperationPushTemps(pushTempRepository.findByProcessId(sessionDBModels.get(0).getProcessId()));
             return pushTempWSDTO;
         }
         return null;
@@ -108,7 +108,7 @@ public class ApiOperationPushFramework {
 
             ApiOperationPushTempWSDTO pushTempWSDTO = new ApiOperationPushTempWSDTO();
             pushTempWSDTO.setPushAccount(channelHelper.getApiPushAccountWSDTO(sessionDBModels.get(0).getProcessId()));
-            pushTempWSDTO.setOperationPushTemps(processPushTempRepository.findByIdAndProcessId(tempId,sessionDBModels.get(0).getProcessId()));
+            pushTempWSDTO.setOperationPushTemps(pushTempRepository.findByIdAndProcessId(tempId,sessionDBModels.get(0).getProcessId()));
             return pushTempWSDTO;
         }
         return null;
@@ -140,7 +140,7 @@ public class ApiOperationPushFramework {
         List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
         if (!sessionDBModels.isEmpty()){
 
-            List<ProcessPushTempDBModel> pushTempDBModels = processPushTempRepository.findByIdAndProcessId(tempId,sessionDBModels.get(0).getProcessId());
+            List<PushTempDBModel> pushTempDBModels = pushTempRepository.findByIdAndProcessId(tempId,sessionDBModels.get(0).getProcessId());
             List<ProcessPushChannelDBModel> pushChannelDBModels = processPushChannelRepository.findByProcessId(sessionDBModels.get(0).getProcessId());
             if (!pushTempDBModels.isEmpty() && !pushChannelDBModels.isEmpty() ){
 

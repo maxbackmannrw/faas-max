@@ -4,10 +4,10 @@ import com.faas.core.base.model.db.process.content.ProcessDBModel;
 import com.faas.core.base.model.db.process.content.dao.ProcessFlowDAO;
 import com.faas.core.base.model.db.process.content.dao.ProcessInquiryDAO;
 import com.faas.core.base.model.db.process.details.channel.content.*;
-import com.faas.core.base.model.db.process.details.channel.temp.ProcessEmailTempDBModel;
-import com.faas.core.base.model.db.process.details.channel.temp.ProcessPushTempDBModel;
-import com.faas.core.base.model.db.process.details.channel.temp.ProcessSmsTempDBModel;
-import com.faas.core.base.model.db.process.details.channel.temp.ProcessWappMessageTempDBModel;
+import com.faas.core.base.model.db.process.details.channel.temp.EmailTempDBModel;
+import com.faas.core.base.model.db.process.details.channel.temp.PushTempDBModel;
+import com.faas.core.base.model.db.process.details.channel.temp.SmsTempDBModel;
+import com.faas.core.base.model.db.process.details.channel.temp.WappMessageTempDBModel;
 import com.faas.core.base.model.db.process.details.remote.ProcessRemoteDBModel;
 import com.faas.core.base.model.db.process.details.scenario.ProcessScenarioDBModel;
 import com.faas.core.base.model.db.process.details.trigger.*;
@@ -29,10 +29,10 @@ import com.faas.core.base.model.ws.process.details.trigger.sms.dto.ProcessSmsTri
 import com.faas.core.base.model.ws.process.details.trigger.wapp.dto.ProcessWappCallTriggerWSDTO;
 import com.faas.core.base.model.ws.process.details.trigger.wapp.dto.ProcessWappMessageTriggerWSDTO;
 import com.faas.core.base.repo.process.details.channel.content.*;
-import com.faas.core.base.repo.process.details.channel.temp.ProcessEmailTempRepository;
-import com.faas.core.base.repo.process.details.channel.temp.ProcessPushTempRepository;
-import com.faas.core.base.repo.process.details.channel.temp.ProcessSmsTempRepository;
-import com.faas.core.base.repo.process.details.channel.temp.ProcessWappMessageTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.EmailTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.PushTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.SmsTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.WappMessageTempRepository;
 import com.faas.core.base.repo.process.details.remote.ProcessRemoteRepository;
 import com.faas.core.base.repo.process.details.scenario.ProcessScenarioRepository;
 import com.faas.core.base.repo.process.details.trigger.*;
@@ -60,16 +60,16 @@ public class ProcessHelper {
     UrlRepository urlRepository;
 
     @Autowired
-    ProcessEmailTempRepository processEmailTempRepository;
+    EmailTempRepository emailTempRepository;
 
     @Autowired
-    ProcessPushTempRepository processPushTempRepository;
+    PushTempRepository pushTempRepository;
 
     @Autowired
-    ProcessSmsTempRepository processSmsTempRepository;
+    SmsTempRepository smsTempRepository;
 
     @Autowired
-    ProcessWappMessageTempRepository processWappMessageTempRepository;
+    WappMessageTempRepository wappMessageTempRepository;
 
     @Autowired
     ProcessWappChannelRepository processWappChannelRepository;
@@ -281,30 +281,30 @@ public class ProcessHelper {
 
         ProcessTempWSDTO processTempWSDTO = new ProcessTempWSDTO();
 
-        List<ProcessEmailTempDBModel> processEmailTemps = processEmailTempRepository.findByProcessId(processId);
+        List<EmailTempDBModel> processEmailTemps = emailTempRepository.findByProcessId(processId);
         List<ProcessEmailTempWSDTO> processEmailTempWSDTOS = new ArrayList<>();
-        for (ProcessEmailTempDBModel processEmailTemp : processEmailTemps) {
+        for (EmailTempDBModel processEmailTemp : processEmailTemps) {
             processEmailTempWSDTOS.add(new ProcessEmailTempWSDTO(processEmailTemp));
         }
         processTempWSDTO.setProcessEmailTemps(processEmailTempWSDTOS);
 
-        List<ProcessPushTempDBModel> processPushTemps = processPushTempRepository.findByProcessId(processId);
+        List<PushTempDBModel> processPushTemps = pushTempRepository.findByProcessId(processId);
         List<ProcessPushTempWSDTO> processPushTempWSDTOS = new ArrayList<>();
-        for (ProcessPushTempDBModel processPushTemp : processPushTemps) {
+        for (PushTempDBModel processPushTemp : processPushTemps) {
             processPushTempWSDTOS.add(new ProcessPushTempWSDTO(processPushTemp));
         }
         processTempWSDTO.setProcessPushTemps(processPushTempWSDTOS);
 
-        List<ProcessSmsTempDBModel>processSmsTemps = processSmsTempRepository.findByProcessId(processId);
+        List<SmsTempDBModel>processSmsTemps = smsTempRepository.findByProcessId(processId);
         List<ProcessSmsTempWSDTO> processSmsTempWSDTOS = new ArrayList<>();
-        for (ProcessSmsTempDBModel processSmsTemp : processSmsTemps) {
+        for (SmsTempDBModel processSmsTemp : processSmsTemps) {
             processSmsTempWSDTOS.add(new ProcessSmsTempWSDTO(processSmsTemp));
         }
         processTempWSDTO.setProcessSmsTemps(processSmsTempWSDTOS);
 
-        List<ProcessWappMessageTempDBModel>processWappMessageTemps = processWappMessageTempRepository.findByProcessId(processId);
+        List<WappMessageTempDBModel>processWappMessageTemps = wappMessageTempRepository.findByProcessId(processId);
         List<ProcessWappMessageTempWSDTO> processWappMessageTempWSDTOS = new ArrayList<>();
-        for (ProcessWappMessageTempDBModel processWappMessageTemp : processWappMessageTemps) {
+        for (WappMessageTempDBModel processWappMessageTemp : processWappMessageTemps) {
             processWappMessageTempWSDTOS.add(new ProcessWappMessageTempWSDTO(processWappMessageTemp));
         }
         processTempWSDTO.setProcessWappMessageTemps(processWappMessageTempWSDTOS);

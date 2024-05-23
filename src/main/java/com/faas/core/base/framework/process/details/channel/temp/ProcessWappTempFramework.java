@@ -1,10 +1,10 @@
 package com.faas.core.base.framework.process.details.channel.temp;
 
 import com.faas.core.base.model.db.channel.settings.MessageTypeDBModel;
-import com.faas.core.base.model.db.process.details.channel.temp.ProcessWappMessageTempDBModel;
+import com.faas.core.base.model.db.process.details.channel.temp.WappMessageTempDBModel;
 import com.faas.core.base.model.ws.process.details.channel.temp.dto.ProcessWappMessageTempWSDTO;
 import com.faas.core.base.repo.channel.settings.MessageTypeRepository;
-import com.faas.core.base.repo.process.details.channel.temp.ProcessWappMessageTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.WappMessageTempRepository;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.process.ProcessHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ public class ProcessWappTempFramework {
     ProcessHelper processHelper;
 
     @Autowired
-    ProcessWappMessageTempRepository processWappMessageTempRepository;
+    WappMessageTempRepository wappMessageTempRepository;
 
     @Autowired
     MessageTypeRepository messageTypeRepository;
@@ -35,16 +35,16 @@ public class ProcessWappTempFramework {
     public List<ProcessWappMessageTempWSDTO> getProcessWappMessageTempsService(long userId, String processId) {
 
         List<ProcessWappMessageTempWSDTO> processWappMessageTempWSDTOS = new ArrayList<>();
-        List<ProcessWappMessageTempDBModel> processWappMessageTempDBModels = processWappMessageTempRepository.findByProcessId(processId);
-        for (ProcessWappMessageTempDBModel processWappMessageTempDBModel : processWappMessageTempDBModels) {
-            processWappMessageTempWSDTOS.add(new ProcessWappMessageTempWSDTO(processWappMessageTempDBModel));
+        List<WappMessageTempDBModel> wappMessageTempDBModels = wappMessageTempRepository.findByProcessId(processId);
+        for (WappMessageTempDBModel wappMessageTempDBModel : wappMessageTempDBModels) {
+            processWappMessageTempWSDTOS.add(new ProcessWappMessageTempWSDTO(wappMessageTempDBModel));
         }
         return processWappMessageTempWSDTOS;
     }
 
     public ProcessWappMessageTempWSDTO getProcessWappMessageTempService(long userId, String tempId) {
 
-        Optional<ProcessWappMessageTempDBModel> processWappMessageTempDBModel = processWappMessageTempRepository.findById(tempId);
+        Optional<WappMessageTempDBModel> processWappMessageTempDBModel = wappMessageTempRepository.findById(tempId);
         if (processWappMessageTempDBModel.isPresent()){
             return new ProcessWappMessageTempWSDTO(processWappMessageTempDBModel.get());
         }
@@ -57,19 +57,19 @@ public class ProcessWappTempFramework {
         Optional<MessageTypeDBModel> messageTypeDBModel = messageTypeRepository.findById(typeId);
         if (messageTypeDBModel.isPresent()) {
 
-            ProcessWappMessageTempDBModel processWappMessageTempDBModel = new ProcessWappMessageTempDBModel();
-            processWappMessageTempDBModel.setProcessId(processId);
-            processWappMessageTempDBModel.setWappTitle(wappTitle);
-            processWappMessageTempDBModel.setWappBody(wappBody);
-            processWappMessageTempDBModel.setTypeId(typeId);
-            processWappMessageTempDBModel.setMessageType(messageTypeDBModel.get().getMessageType());
-            processWappMessageTempDBModel.setTempDatas(new ArrayList<>());
-            processWappMessageTempDBModel.setTempAssets(new ArrayList<>());
-            processWappMessageTempDBModel.setuDate(appUtils.getCurrentTimeStamp());
-            processWappMessageTempDBModel.setcDate(appUtils.getCurrentTimeStamp());
-            processWappMessageTempDBModel.setStatus(1);
+            WappMessageTempDBModel wappMessageTempDBModel = new WappMessageTempDBModel();
+            wappMessageTempDBModel.setProcessId(processId);
+            wappMessageTempDBModel.setWappTitle(wappTitle);
+            wappMessageTempDBModel.setWappBody(wappBody);
+            wappMessageTempDBModel.setTypeId(typeId);
+            wappMessageTempDBModel.setMessageType(messageTypeDBModel.get().getMessageType());
+            wappMessageTempDBModel.setTempDatas(new ArrayList<>());
+            wappMessageTempDBModel.setTempAssets(new ArrayList<>());
+            wappMessageTempDBModel.setuDate(appUtils.getCurrentTimeStamp());
+            wappMessageTempDBModel.setcDate(appUtils.getCurrentTimeStamp());
+            wappMessageTempDBModel.setStatus(1);
 
-            return new ProcessWappMessageTempWSDTO(processWappMessageTempRepository.save(processWappMessageTempDBModel));
+            return new ProcessWappMessageTempWSDTO(wappMessageTempRepository.save(wappMessageTempDBModel));
         }
         return null;
     }
@@ -77,7 +77,7 @@ public class ProcessWappTempFramework {
     public ProcessWappMessageTempWSDTO updateProcessWappMessageTempService(String tempId, String wappTitle, String wappBody, long typeId) {
 
         Optional<MessageTypeDBModel> messageTypeDBModel = messageTypeRepository.findById(typeId);
-        Optional<ProcessWappMessageTempDBModel> processWappMessageTempDBModel = processWappMessageTempRepository.findById(tempId);
+        Optional<WappMessageTempDBModel> processWappMessageTempDBModel = wappMessageTempRepository.findById(tempId);
         if (messageTypeDBModel.isPresent() && processWappMessageTempDBModel.isPresent()) {
 
             processWappMessageTempDBModel.get().setWappTitle(wappTitle);
@@ -87,16 +87,16 @@ public class ProcessWappTempFramework {
             processWappMessageTempDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
             processWappMessageTempDBModel.get().setStatus(1);
 
-            return new ProcessWappMessageTempWSDTO(processWappMessageTempRepository.save(processWappMessageTempDBModel.get()));
+            return new ProcessWappMessageTempWSDTO(wappMessageTempRepository.save(processWappMessageTempDBModel.get()));
         }
         return null;
     }
 
     public ProcessWappMessageTempWSDTO removeProcessWappMessageTempService(String tempId) {
 
-        Optional<ProcessWappMessageTempDBModel> processWappMessageTempDBModel = processWappMessageTempRepository.findById(tempId);
+        Optional<WappMessageTempDBModel> processWappMessageTempDBModel = wappMessageTempRepository.findById(tempId);
         if (processWappMessageTempDBModel.isPresent()) {
-            processWappMessageTempRepository.delete(processWappMessageTempDBModel.get());
+            wappMessageTempRepository.delete(processWappMessageTempDBModel.get());
             return new ProcessWappMessageTempWSDTO(processWappMessageTempDBModel.get());
         }
         return null;

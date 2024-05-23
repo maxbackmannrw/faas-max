@@ -1,6 +1,6 @@
 package com.faas.core.base.model.db.process.details.channel.temp.dao;
 
-public class ProcessTempAssetDAO {
+public class TempAssetDAO {
 
     private int id;
     private long assetId;
@@ -11,10 +11,10 @@ public class ProcessTempAssetDAO {
     private long cDate;
     private int status;
 
-    public ProcessTempAssetDAO() {
+    public TempAssetDAO() {
     }
 
-    public ProcessTempAssetDAO(int id, long assetId, String asset, String assetUrl, String assetType, String baseType, long cDate, int status) {
+    public TempAssetDAO(int id, long assetId, String asset, String assetUrl, String assetType, String baseType, long cDate, int status) {
         this.id = id;
         this.assetId = assetId;
         this.asset = asset;

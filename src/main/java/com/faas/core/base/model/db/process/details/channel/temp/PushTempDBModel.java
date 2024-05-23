@@ -1,14 +1,14 @@
 package com.faas.core.base.model.db.process.details.channel.temp;
 
-import com.faas.core.base.model.db.process.details.channel.temp.dao.ProcessTempAssetDAO;
-import com.faas.core.base.model.db.process.details.channel.temp.dao.ProcessTempDataDAO;
+import com.faas.core.base.model.db.process.details.channel.temp.dao.TempAssetDAO;
+import com.faas.core.base.model.db.process.details.channel.temp.dao.TempDataDAO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
-@Document(collection = "process_push_temp_table")
-public class ProcessPushTempDBModel {
+@Document(collection = "push_temp_table")
+public class PushTempDBModel {
 
     @Id
     private String id;
@@ -18,16 +18,16 @@ public class ProcessPushTempDBModel {
     private String pushSender;
     private long typeId;
     private String pushType;
-    private List<ProcessTempDataDAO>tempDatas;
-    private List<ProcessTempAssetDAO>tempAssets;
+    private List<TempDataDAO>tempDatas;
+    private List<TempAssetDAO>tempAssets;
     private long uDate;
     private long cDate;
     private int status;
 
-    public ProcessPushTempDBModel() {
+    public PushTempDBModel() {
     }
 
-    public ProcessPushTempDBModel(String id, String processId, String pushHeader, String pushBody, String pushSender, long typeId, String pushType, List<ProcessTempDataDAO> tempDatas, List<ProcessTempAssetDAO> tempAssets, long uDate, long cDate, int status) {
+    public PushTempDBModel(String id, String processId, String pushHeader, String pushBody, String pushSender, long typeId, String pushType, List<TempDataDAO> tempDatas, List<TempAssetDAO> tempAssets, long uDate, long cDate, int status) {
         this.id = id;
         this.processId = processId;
         this.pushHeader = pushHeader;
@@ -98,19 +98,19 @@ public class ProcessPushTempDBModel {
         this.pushType = pushType;
     }
 
-    public List<ProcessTempDataDAO> getTempDatas() {
+    public List<TempDataDAO> getTempDatas() {
         return tempDatas;
     }
 
-    public void setTempDatas(List<ProcessTempDataDAO> tempDatas) {
+    public void setTempDatas(List<TempDataDAO> tempDatas) {
         this.tempDatas = tempDatas;
     }
 
-    public List<ProcessTempAssetDAO> getTempAssets() {
+    public List<TempAssetDAO> getTempAssets() {
         return tempAssets;
     }
 
-    public void setTempAssets(List<ProcessTempAssetDAO> tempAssets) {
+    public void setTempAssets(List<TempAssetDAO> tempAssets) {
         this.tempAssets = tempAssets;
     }
 

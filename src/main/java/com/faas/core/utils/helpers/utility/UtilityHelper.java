@@ -20,10 +20,10 @@ import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.operation.details.channel.*;
 import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.process.details.channel.content.*;
-import com.faas.core.base.repo.process.details.channel.temp.ProcessEmailTempRepository;
-import com.faas.core.base.repo.process.details.channel.temp.ProcessPushTempRepository;
-import com.faas.core.base.repo.process.details.channel.temp.ProcessSmsTempRepository;
-import com.faas.core.base.repo.process.details.channel.temp.ProcessWappMessageTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.EmailTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.PushTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.SmsTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.WappMessageTempRepository;
 import com.faas.core.base.repo.process.details.scenario.ProcessScenarioRepository;
 import com.faas.core.base.repo.process.details.trigger.*;
 import com.faas.core.base.repo.remote.client.ClientRemoteRepository;
@@ -106,16 +106,16 @@ public class UtilityHelper {
     ProcessWappChannelRepository processWappChannelRepository;
 
     @Autowired
-    ProcessEmailTempRepository processEmailTempRepository;
+    EmailTempRepository emailTempRepository;
 
     @Autowired
-    ProcessPushTempRepository processPushTempRepository;
+    PushTempRepository pushTempRepository;
 
     @Autowired
-    ProcessSmsTempRepository processSmsTempRepository;
+    SmsTempRepository smsTempRepository;
 
     @Autowired
-    ProcessWappMessageTempRepository processWappMessageTempRepository;
+    WappMessageTempRepository wappMessageTempRepository;
 
     @Autowired
     ProcessScenarioRepository processScenarioRepository;
@@ -504,10 +504,10 @@ public class UtilityHelper {
         processSipChannelRepository.deleteAll();
         processSmsChannelRepository.deleteAll();
         processWappChannelRepository.deleteAll();
-        processEmailTempRepository.deleteAll();
-        processPushTempRepository.deleteAll();
-        processSmsTempRepository.deleteAll();
-        processWappMessageTempRepository.deleteAll();
+        emailTempRepository.deleteAll();
+        pushTempRepository.deleteAll();
+        smsTempRepository.deleteAll();
+        wappMessageTempRepository.deleteAll();
         processScenarioRepository.deleteAll();
         removeAllTriggersHelper();
     }

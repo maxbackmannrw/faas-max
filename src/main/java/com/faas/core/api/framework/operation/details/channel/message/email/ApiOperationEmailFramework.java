@@ -9,14 +9,14 @@ import com.faas.core.base.model.db.client.details.dao.ClientEmailDAO;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationEmailDBModel;
 import com.faas.core.base.model.db.process.details.channel.content.ProcessEmailChannelDBModel;
-import com.faas.core.base.model.db.process.details.channel.temp.ProcessEmailTempDBModel;
+import com.faas.core.base.model.db.process.details.channel.temp.EmailTempDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.client.details.ClientDetailsRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.operation.details.channel.OperationEmailRepository;
 import com.faas.core.base.repo.process.details.channel.content.ProcessEmailChannelRepository;
-import com.faas.core.base.repo.process.details.channel.temp.ProcessEmailTempRepository;
+import com.faas.core.base.repo.process.details.channel.temp.EmailTempRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.channel.ChannelHelper;
@@ -56,7 +56,7 @@ public class ApiOperationEmailFramework {
     EmailChannelHandler emailChannelHandler;
 
     @Autowired
-    ProcessEmailTempRepository processEmailTempRepository;
+    EmailTempRepository emailTempRepository;
 
     @Autowired
     ProcessEmailChannelRepository processEmailChannelRepository;
@@ -103,7 +103,7 @@ public class ApiOperationEmailFramework {
             if (!clientDetailsDBModels.isEmpty() && clientDetailsDBModels.get(0).getClientEmails() != null){
                 emailTempWSDTO.setClientEmails(clientDetailsDBModels.get(0).getClientEmails());
             }
-            emailTempWSDTO.setOperationEmailTemps(processEmailTempRepository.findByProcessId(sessionDBModels.get(0).getProcessId()));
+            emailTempWSDTO.setOperationEmailTemps(emailTempRepository.findByProcessId(sessionDBModels.get(0).getProcessId()));
             return emailTempWSDTO;
         }
         return null;
@@ -120,7 +120,7 @@ public class ApiOperationEmailFramework {
             if (!clientDetailsDBModels.isEmpty() && clientDetailsDBModels.get(0).getClientEmails() != null){
                 emailTempWSDTO.setClientEmails(clientDetailsDBModels.get(0).getClientEmails());
             }
-            emailTempWSDTO.setOperationEmailTemps(processEmailTempRepository.findByIdAndProcessId(tempId,sessionDBModels.get(0).getProcessId()));
+            emailTempWSDTO.setOperationEmailTemps(emailTempRepository.findByIdAndProcessId(tempId,sessionDBModels.get(0).getProcessId()));
             return emailTempWSDTO;
         }
         return null;
@@ -152,7 +152,7 @@ public class ApiOperationEmailFramework {
         if (!sessionDBModels.isEmpty()){
 
             ClientEmailDAO clientEmailDAO = channelHelper.fetchClientEmailDAO(sessionDBModels.get(0).getClientId(),emailAddressId);
-            List<ProcessEmailTempDBModel> emailTempDBModels = processEmailTempRepository.findByIdAndProcessId(tempId,sessionDBModels.get(0).getProcessId());
+            List<EmailTempDBModel> emailTempDBModels = emailTempRepository.findByIdAndProcessId(tempId,sessionDBModels.get(0).getProcessId());
             List<ProcessEmailChannelDBModel> emailChannelDBModels = processEmailChannelRepository.findByProcessId(sessionDBModels.get(0).getProcessId());
             if (clientEmailDAO != null && !emailTempDBModels.isEmpty() && !emailChannelDBModels.isEmpty() ){
 
