@@ -7,85 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/trigger/temp/ai/AiTriggerTempFramework.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/trigger/temp/email/EmailTriggerTempFramework.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/trigger/temp/sip/SipTriggerTempFramework.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/trigger/temp/sms/SmsTriggerTempFramework.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/trigger/temp/wapp/call/WappCallTriggerTempFramework.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/trigger/temp/wapp/message/WappMessageTriggerTempFramework.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/trigger/temp/ai/AiTriggerTempMiddleware.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/trigger/temp/email/EmailTriggerTempMiddleware.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/trigger/temp/sip/SipTriggerTempMiddleware.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/trigger/temp/sms/SmsTriggerTempMiddleware.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/trigger/temp/wapp/call/WappCallTriggerTempMiddleware.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/trigger/temp/wapp/message/WappMessageTriggerTempMiddleware.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/trigger/temp/ai/AITriggerTempWSModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/trigger/temp/ai/dto/AITriggerTempWSDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/trigger/temp/email/EmailTriggerTempWSModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/trigger/temp/email/dto/EmailTriggerTempWSDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/trigger/temp/sip/SipTriggerTempWSModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/trigger/temp/sip/dto/SipTriggerTempWSDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/trigger/temp/sms/SmsTriggerTempWSModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/trigger/temp/sms/dto/SmsTriggerTempWSDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/trigger/temp/wapp/call/WappCallTriggerTempWSModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/trigger/temp/wapp/call/dto/WappCallTriggerTempWSDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/trigger/temp/wapp/message/WappMessageTriggerTempWSModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/trigger/temp/wapp/message/dto/WappMessageTriggerTempWSDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/process/details/trigger/ai/ProcessAiTriggerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/process/details/trigger/temp/ai/AiTriggerTempController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/process/details/trigger/content/ProcessTriggerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/process/details/trigger/content/ProcessTriggerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/process/details/trigger/email/ProcessEmailTriggerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/process/details/trigger/temp/email/EmailTriggerTempController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/process/details/trigger/sip/ProcessSipTriggerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/process/details/trigger/temp/sip/SipTriggerTempController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/process/details/trigger/sms/ProcessSmsTriggerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/process/details/trigger/temp/sms/SmsTriggerTempController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/process/details/trigger/wapp/ProcessWappCallTriggerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/process/details/trigger/temp/wapp/call/WappCallTriggerTempController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/process/details/trigger/wapp/ProcessWappMessageTriggerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/process/details/trigger/temp/wapp/message/WappMessageTriggerTempController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/content/ProcessFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/content/ProcessFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/trigger/ai/ProcessAiTriggerFramework.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/trigger/content/ProcessTriggerFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/trigger/content/ProcessTriggerFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/trigger/email/ProcessEmailTriggerFramework.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/trigger/sip/ProcessSipTriggerFramework.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/trigger/sms/ProcessSmsTriggerFramework.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/trigger/wapp/ProcessWappCallTriggerFramework.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/trigger/wapp/ProcessWappMessageTriggerFramework.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/utility/system/UtilitySystemFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/utility/system/UtilitySystemFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/trigger/ai/ProcessAiTriggerMiddleware.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/trigger/content/ProcessTriggerMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/trigger/content/ProcessTriggerMiddleware.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/trigger/email/ProcessEmailTriggerMiddleware.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/trigger/sip/ProcessSipTriggerMiddleware.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/trigger/sms/ProcessSmsTriggerMiddleware.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/trigger/wapp/ProcessWappCallTriggerMiddleware.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/trigger/wapp/ProcessWappMessageTriggerMiddleware.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/process/details/trigger/AITriggerDBModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/process/details/trigger/AITriggerTempDBModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/process/details/trigger/EmailTriggerDBModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/process/details/trigger/EmailTriggerTempDBModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/process/details/trigger/SipTriggerDBModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/process/details/trigger/SipTriggerTempDBModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/process/details/trigger/SmsTriggerDBModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/process/details/trigger/SmsTriggerTempDBModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/process/details/trigger/WappCallTriggerDBModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/process/details/trigger/WappCallTriggerTempDBModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/process/details/trigger/WappMessageTriggerDBModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/process/details/trigger/WappMessageTriggerTempDBModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/process/details/trigger/dao/TriggerDataDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/process/details/trigger/dao/TriggerTempDataDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/trigger/ai/ProcessAITriggerWSModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/trigger/ai/dto/ProcessAITriggerWSDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/trigger/content/dto/ProcessTriggerWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/trigger/content/dto/ProcessTriggerWSDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/trigger/email/ProcessEmailTriggerWSModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/trigger/email/dto/ProcessEmailTriggerWSDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/trigger/sip/ProcessSipTriggerWSModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/trigger/sip/dto/ProcessSipTriggerWSDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/trigger/sms/ProcessSmsTriggerWSModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/trigger/sms/dto/ProcessSmsTriggerWSDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/trigger/wapp/ProcessWappCallTriggerWSModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/trigger/wapp/ProcessWappMessageTriggerWSModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/trigger/wapp/dto/ProcessWappCallTriggerWSDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/trigger/wapp/dto/ProcessWappMessageTriggerWSDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/repo/process/details/trigger/AITriggerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/repo/process/details/trigger/AITriggerTempRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/repo/process/details/trigger/EmailTriggerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/repo/process/details/trigger/EmailTriggerTempRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/repo/process/details/trigger/SipTriggerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/repo/process/details/trigger/SipTriggerTempRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/repo/process/details/trigger/SmsTriggerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/repo/process/details/trigger/SmsTriggerTempRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/repo/process/details/trigger/WappCallTriggerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/repo/process/details/trigger/WappCallTriggerTempRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/repo/process/details/trigger/WappMessageTriggerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/repo/process/details/trigger/WappMessageTriggerTempRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/config/BaseRoute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/config/BaseRoute.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/helpers/process/ProcessHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/helpers/process/ProcessHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/helpers/utility/UtilityHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/helpers/utility/UtilityHelper.java" afterDir="false" />
-    </list>
+    <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -1097,15 +1019,7 @@
       <workItem from="1716294624440" duration="7970000" />
       <workItem from="1716328101739" duration="71000" />
       <workItem from="1716457732333" duration="3274000" />
-      <workItem from="1716461310744" duration="14149000" />
-    </task>
-    <task id="LOCAL-00831" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1712170393064</created>
-      <option name="number" value="00831" />
-      <option name="presentableId" value="LOCAL-00831" />
-      <option name="project" value="LOCAL" />
-      <updated>1712170393064</updated>
+      <workItem from="1716461310744" duration="14475000" />
     </task>
     <task id="LOCAL-00832" summary="almost finish">
       <option name="closed" value="true" />
@@ -1491,7 +1405,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716477426332</updated>
     </task>
-    <option name="localTasksCounter" value="880" />
+    <task id="LOCAL-00880" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1716490772650</created>
+      <option name="number" value="00880" />
+      <option name="presentableId" value="LOCAL-00880" />
+      <option name="project" value="LOCAL" />
+      <updated>1716490772650</updated>
+    </task>
+    <option name="localTasksCounter" value="881" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
