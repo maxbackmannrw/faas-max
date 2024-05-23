@@ -367,7 +367,6 @@ public class BaseRoute {
     public static final String REMOVE_PROCESS_INQUIRY_DATA = "removeprocessinquirydata";
 
 
-
     public static final String GET_PROCESS_FLOW = "getprocessflow";
     public static final String UPDATE_PROCESS_FLOW = "updateprocessflow";
 
@@ -379,43 +378,44 @@ public class BaseRoute {
 
 
 
-    public static final String GET_PROCESS_TRIGGERS = "getprocesstriggers";
+    public static final String GET_PROCESS_TRIGGER = "getprocesstrigger";
 
-    public static final String GET_PROCESS_AI_TRIGGERS = "getprocessaitriggers";
-    public static final String GET_PROCESS_AI_TRIGGER = "getprocessaitrigger";
-    public static final String CREATE_PROCESS_AI_TRIGGER = "createprocessaitrigger";
-    public static final String UPDATE_PROCESS_AI_TRIGGER = "updateprocessaitrigger";
-    public static final String REMOVE_PROCESS_AI_TRIGGER = "removeprocessaitrigger";
+    public static final String GET_AI_TRIGGER_TEMPS = "getaitriggertemps";
+    public static final String GET_AI_TRIGGER_TEMP = "getaitriggertemp";
+    public static final String CREATE_AI_TRIGGER_TEMP = "createaitriggertemp";
+    public static final String UPDATE_AI_TRIGGER_TEMP = "updateaitriggertemp";
+    public static final String REMOVE_AI_TRIGGER_TEMP = "removeaitriggertemp";
 
-    public static final String GET_PROCESS_EMAIL_TRIGGERS = "getprocessemailtriggers";
-    public static final String GET_PROCESS_EMAIL_TRIGGER = "getprocessemailtrigger";
-    public static final String CREATE_PROCESS_EMAIL_TRIGGER = "createprocessemailtrigger";
-    public static final String UPDATE_PROCESS_EMAIL_TRIGGER = "updateprocessemailtrigger";
-    public static final String REMOVE_PROCESS_EMAIL_TRIGGER = "removeprocessemailtrigger";
+    public static final String GET_EMAIL_TRIGGER_TEMPS = "getemailtriggertemps";
+    public static final String GET_EMAIL_TRIGGER_TEMP = "getemailtriggertemp";
+    public static final String CREATE_EMAIL_TRIGGER_TEMP = "createemailtriggertemp";
+    public static final String UPDATE_EMAIL_TRIGGER_TEMP = "updateemailtriggertemp";
+    public static final String REMOVE_EMAIL_TRIGGER_TEMP = "removeemailtriggertemp";
 
-    public static final String GET_PROCESS_SIP_TRIGGERS = "getprocesssiptriggers";
-    public static final String GET_PROCESS_SIP_TRIGGER = "getprocesssiptrigger";
-    public static final String CREATE_PROCESS_SIP_TRIGGER = "createprocesssiptrigger";
-    public static final String UPDATE_PROCESS_SIP_TRIGGER = "updateprocesssiptrigger";
-    public static final String REMOVE_PROCESS_SIP_TRIGGER = "removeprocesssiptrigger";
+    public static final String GET_SIP_TRIGGER_TEMPS = "getsiptriggertemps";
+    public static final String GET_SIP_TRIGGER_TEMP = "getsiptriggertemp";
+    public static final String CREATE_SIP_TRIGGER_TEMP = "createsiptriggertemp";
+    public static final String UPDATE_SIP_TRIGGER_TEMP = "updatesiptriggertemp";
+    public static final String REMOVE_SIP_TRIGGER_TEMP = "removesiptriggertemp";
 
-    public static final String GET_PROCESS_SMS_TRIGGERS = "getprocesssmstriggers";
-    public static final String GET_PROCESS_SMS_TRIGGER = "getprocesssmstrigger";
-    public static final String CREATE_PROCESS_SMS_TRIGGER = "createprocesssmstrigger";
-    public static final String UPDATE_PROCESS_SMS_TRIGGER = "updateprocesssmstrigger";
-    public static final String REMOVE_PROCESS_SMS_TRIGGER = "removeprocesssmstrigger";
+    public static final String GET_SMS_TRIGGER_TEMPS = "getsmstriggertemps";
+    public static final String GET_SMS_TRIGGER_TEMP = "getsmstriggertemp";
+    public static final String CREATE_SMS_TRIGGER_TEMP = "createsmstriggertemp";
+    public static final String UPDATE_SMS_TRIGGER_TEMP = "updatesmstriggertemp";
+    public static final String REMOVE_SMS_TRIGGER_TEMP = "removesmstriggertemp";
 
-    public static final String GET_PROCESS_WAPP_CALL_TRIGGERS = "getprocesswappcalltriggers";
-    public static final String GET_PROCESS_WAPP_CALL_TRIGGER = "getprocesswappcalltrigger";
-    public static final String CREATE_PROCESS_WAPP_CALL_TRIGGER = "createprocesswappcalltrigger";
-    public static final String UPDATE_PROCESS_WAPP_CALL_TRIGGER = "updateprocesswappcalltrigger";
-    public static final String REMOVE_PROCESS_WAPP_CALL_TRIGGER = "removeprocesswappcalltrigger";
+    public static final String GET_WAPP_CALL_TRIGGER_TEMPS = "getwappcalltriggertemps";
+    public static final String GET_WAPP_CALL_TRIGGER_TEMP = "getwappcalltriggertemp";
+    public static final String CREATE_WAPP_CALL_TRIGGER_TEMP = "createwappcalltriggertemp";
+    public static final String UPDATE_WAPP_CALL_TRIGGER_TEMP = "updatewappcalltriggertemp";
+    public static final String REMOVE_WAPP_CALL_TRIGGER_TEMP = "removewappcalltriggertemp";
 
-    public static final String GET_PROCESS_WAPP_MESSAGE_TRIGGERS = "getprocesswappmessagetriggers";
-    public static final String GET_PROCESS_WAPP_MESSAGE_TRIGGER = "getprocesswappmessagetrigger";
-    public static final String CREATE_PROCESS_WAPP_MESSAGE_TRIGGER = "createprocesswappmessagetrigger";
-    public static final String UPDATE_PROCESS_WAPP_MESSAGE_TRIGGER = "updateprocesswappmessagetrigger";
-    public static final String REMOVE_PROCESS_WAPP_MESSAGE_TRIGGER = "removeprocesswappmessagetrigger";
+    public static final String GET_WAPP_MESSAGE_TRIGGER_TEMPS = "getwappmessagetriggertemps";
+    public static final String GET_WAPP_MESSAGE_TRIGGER_TEMP = "getwappmessagetriggertemp";
+    public static final String CREATE_WAPP_MESSAGE_TRIGGER_TEMP = "createwappmessagetriggertemp";
+    public static final String UPDATE_WAPP_MESSAGE_TRIGGER_TEMP = "updatewappmessagetriggertemp";
+    public static final String REMOVE_WAPP_MESSAGE_TRIGGER_TEMP = "removewappmessagetriggertemp";
+
 
 
     public static final String GET_PROCESS_SCENARIOS = "getprocessscenarios";

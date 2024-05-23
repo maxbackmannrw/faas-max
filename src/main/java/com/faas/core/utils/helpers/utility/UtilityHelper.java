@@ -136,22 +136,22 @@ public class UtilityHelper {
     UserRoleRepository userRoleRepository;
 
     @Autowired
-    com.faas.core.base.repo.process.details.trigger.AITriggerRepository AITriggerRepository;
+    AITriggerTempRepository AITriggerTempRepository;
 
     @Autowired
-    EmailTriggerRepository emailTriggerRepository;
+    EmailTriggerTempRepository emailTriggerTempRepository;
 
     @Autowired
-    SipTriggerRepository sipTriggerRepository;
+    SipTriggerTempRepository sipTriggerTempRepository;
 
     @Autowired
-    SmsTriggerRepository smsTriggerRepository;
+    SmsTriggerTempRepository smsTriggerTempRepository;
 
     @Autowired
-    WappCallTriggerRepository wappCallTriggerRepository;
+    WappCallTriggerTempRepository wappCallTriggerTempRepository;
 
     @Autowired
-    WappMessageTriggerRepository wappMessageTriggerRepository;
+    WappMessageTriggerTempRepository wappMessageTriggerTempRepository;
 
     @Autowired
     AppUtils appUtils;
@@ -514,12 +514,12 @@ public class UtilityHelper {
 
     public void removeAllTriggersHelper(){
 
-        AITriggerRepository.deleteAll();
-        emailTriggerRepository.deleteAll();
-        sipTriggerRepository.deleteAll();
-        smsTriggerRepository.deleteAll();
-        wappCallTriggerRepository.deleteAll();
-        wappMessageTriggerRepository.deleteAll();
+        AITriggerTempRepository.deleteAll();
+        emailTriggerTempRepository.deleteAll();
+        sipTriggerTempRepository.deleteAll();
+        smsTriggerTempRepository.deleteAll();
+        wappCallTriggerTempRepository.deleteAll();
+        wappMessageTriggerTempRepository.deleteAll();
     }
 
     public void removeAllScenariosHelper(){

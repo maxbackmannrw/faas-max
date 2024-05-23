@@ -1,80 +1,80 @@
 package com.faas.core.base.model.ws.process.details.trigger.content.dto;
 
-import com.faas.core.base.model.ws.process.details.trigger.ai.dto.ProcessAITriggerWSDTO;
-import com.faas.core.base.model.ws.process.details.trigger.email.dto.ProcessEmailTriggerWSDTO;
-import com.faas.core.base.model.ws.process.details.trigger.sip.dto.ProcessSipTriggerWSDTO;
-import com.faas.core.base.model.ws.process.details.trigger.sms.dto.ProcessSmsTriggerWSDTO;
-import com.faas.core.base.model.ws.process.details.trigger.wapp.dto.ProcessWappCallTriggerWSDTO;
-import com.faas.core.base.model.ws.process.details.trigger.wapp.dto.ProcessWappMessageTriggerWSDTO;
+import com.faas.core.base.model.ws.process.details.trigger.temp.ai.dto.AITriggerTempWSDTO;
+import com.faas.core.base.model.ws.process.details.trigger.temp.email.dto.EmailTriggerTempWSDTO;
+import com.faas.core.base.model.ws.process.details.trigger.temp.sip.dto.SipTriggerTempWSDTO;
+import com.faas.core.base.model.ws.process.details.trigger.temp.sms.dto.SmsTriggerTempWSDTO;
+import com.faas.core.base.model.ws.process.details.trigger.temp.wapp.call.dto.WappCallTriggerTempWSDTO;
+import com.faas.core.base.model.ws.process.details.trigger.temp.wapp.message.dto.WappMessageTriggerTempWSDTO;
 
 import java.util.List;
 
 public class ProcessTriggerWSDTO {
 
-    private List<ProcessAITriggerWSDTO> processAITriggers;
-    private List<ProcessEmailTriggerWSDTO>processEmailTriggers;
-    private List<ProcessSipTriggerWSDTO>processSipTriggers;
-    private List<ProcessSmsTriggerWSDTO>processSmsTriggers;
-    private List<ProcessWappCallTriggerWSDTO>processWappCallTriggers;
-    private List<ProcessWappMessageTriggerWSDTO>processWappMessageTriggers;
+    private List<AITriggerTempWSDTO> aiTriggerTemps;
+    private List<EmailTriggerTempWSDTO>emailTriggerTemps;
+    private List<SipTriggerTempWSDTO>sipTriggerTemps;
+    private List<SmsTriggerTempWSDTO>smsTriggerTemps;
+    private List<WappCallTriggerTempWSDTO>wappCallTriggerTemps;
+    private List<WappMessageTriggerTempWSDTO>wappMessageTriggerTemps;
 
     public ProcessTriggerWSDTO() {
     }
 
-    public ProcessTriggerWSDTO(List<ProcessAITriggerWSDTO> processAITriggers, List<ProcessEmailTriggerWSDTO> processEmailTriggers, List<ProcessSipTriggerWSDTO> processSipTriggers, List<ProcessSmsTriggerWSDTO> processSmsTriggers, List<ProcessWappCallTriggerWSDTO> processWappCallTriggers, List<ProcessWappMessageTriggerWSDTO> processWappMessageTriggers) {
-        this.processAITriggers = processAITriggers;
-        this.processEmailTriggers = processEmailTriggers;
-        this.processSipTriggers = processSipTriggers;
-        this.processSmsTriggers = processSmsTriggers;
-        this.processWappCallTriggers = processWappCallTriggers;
-        this.processWappMessageTriggers = processWappMessageTriggers;
+    public ProcessTriggerWSDTO(List<AITriggerTempWSDTO> aiTriggerTemps, List<EmailTriggerTempWSDTO> emailTriggerTemps, List<SipTriggerTempWSDTO> sipTriggerTemps, List<SmsTriggerTempWSDTO> smsTriggerTemps, List<WappCallTriggerTempWSDTO> wappCallTriggerTemps, List<WappMessageTriggerTempWSDTO> wappMessageTriggerTemps) {
+        this.aiTriggerTemps = aiTriggerTemps;
+        this.emailTriggerTemps = emailTriggerTemps;
+        this.sipTriggerTemps = sipTriggerTemps;
+        this.smsTriggerTemps = smsTriggerTemps;
+        this.wappCallTriggerTemps = wappCallTriggerTemps;
+        this.wappMessageTriggerTemps = wappMessageTriggerTemps;
     }
 
-    public List<ProcessAITriggerWSDTO> getProcessAITriggers() {
-        return processAITriggers;
+    public List<AITriggerTempWSDTO> getAiTriggerTemps() {
+        return aiTriggerTemps;
     }
 
-    public void setProcessAITriggers(List<ProcessAITriggerWSDTO> processAITriggers) {
-        this.processAITriggers = processAITriggers;
+    public void setAiTriggerTemps(List<AITriggerTempWSDTO> aiTriggerTemps) {
+        this.aiTriggerTemps = aiTriggerTemps;
     }
 
-    public List<ProcessEmailTriggerWSDTO> getProcessEmailTriggers() {
-        return processEmailTriggers;
+    public List<EmailTriggerTempWSDTO> getEmailTriggerTemps() {
+        return emailTriggerTemps;
     }
 
-    public void setProcessEmailTriggers(List<ProcessEmailTriggerWSDTO> processEmailTriggers) {
-        this.processEmailTriggers = processEmailTriggers;
+    public void setEmailTriggerTemps(List<EmailTriggerTempWSDTO> emailTriggerTemps) {
+        this.emailTriggerTemps = emailTriggerTemps;
     }
 
-    public List<ProcessSipTriggerWSDTO> getProcessSipTriggers() {
-        return processSipTriggers;
+    public List<SipTriggerTempWSDTO> getSipTriggerTemps() {
+        return sipTriggerTemps;
     }
 
-    public void setProcessSipTriggers(List<ProcessSipTriggerWSDTO> processSipTriggers) {
-        this.processSipTriggers = processSipTriggers;
+    public void setSipTriggerTemps(List<SipTriggerTempWSDTO> sipTriggerTemps) {
+        this.sipTriggerTemps = sipTriggerTemps;
     }
 
-    public List<ProcessSmsTriggerWSDTO> getProcessSmsTriggers() {
-        return processSmsTriggers;
+    public List<SmsTriggerTempWSDTO> getSmsTriggerTemps() {
+        return smsTriggerTemps;
     }
 
-    public void setProcessSmsTriggers(List<ProcessSmsTriggerWSDTO> processSmsTriggers) {
-        this.processSmsTriggers = processSmsTriggers;
+    public void setSmsTriggerTemps(List<SmsTriggerTempWSDTO> smsTriggerTemps) {
+        this.smsTriggerTemps = smsTriggerTemps;
     }
 
-    public List<ProcessWappCallTriggerWSDTO> getProcessWappCallTriggers() {
-        return processWappCallTriggers;
+    public List<WappCallTriggerTempWSDTO> getWappCallTriggerTemps() {
+        return wappCallTriggerTemps;
     }
 
-    public void setProcessWappCallTriggers(List<ProcessWappCallTriggerWSDTO> processWappCallTriggers) {
-        this.processWappCallTriggers = processWappCallTriggers;
+    public void setWappCallTriggerTemps(List<WappCallTriggerTempWSDTO> wappCallTriggerTemps) {
+        this.wappCallTriggerTemps = wappCallTriggerTemps;
     }
 
-    public List<ProcessWappMessageTriggerWSDTO> getProcessWappMessageTriggers() {
-        return processWappMessageTriggers;
+    public List<WappMessageTriggerTempWSDTO> getWappMessageTriggerTemps() {
+        return wappMessageTriggerTemps;
     }
 
-    public void setProcessWappMessageTriggers(List<ProcessWappMessageTriggerWSDTO> processWappMessageTriggers) {
-        this.processWappMessageTriggers = processWappMessageTriggers;
+    public void setWappMessageTriggerTemps(List<WappMessageTriggerTempWSDTO> wappMessageTriggerTemps) {
+        this.wappMessageTriggerTemps = wappMessageTriggerTemps;
     }
 }
