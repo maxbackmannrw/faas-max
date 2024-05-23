@@ -24,7 +24,7 @@ public class ProcessTriggerController {
 
     @RequestMapping(value = BaseRoute.GET_PROCESS_TRIGGERS, method = RequestMethod.POST)
     public ResponseEntity<?> getProcessTriggers(@RequestParam long userId,
-                                               @RequestParam String processId) {
+                                                @RequestParam String processId) {
 
         ProcessTriggerWSModel response = processTriggerMiddleware.getProcessTriggers(userId,processId);
 
@@ -33,7 +33,6 @@ public class ProcessTriggerController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
 
 }
