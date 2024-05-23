@@ -117,22 +117,22 @@ public class UtilitySystemFramework {
     UserDetailsRepository userDetailsRepository;
 
     @Autowired
-    ProcessAITriggerRepository processAITriggerRepository;
+    com.faas.core.base.repo.process.details.trigger.AITriggerRepository AITriggerRepository;
 
     @Autowired
-    ProcessEmailTriggerRepository processEmailTriggerRepository;
+    EmailTriggerRepository emailTriggerRepository;
 
     @Autowired
-    ProcessSipTriggerRepository processSipTriggerRepository;
+    SipTriggerRepository sipTriggerRepository;
 
     @Autowired
-    ProcessSmsTriggerRepository processSmsTriggerRepository;
+    SmsTriggerRepository smsTriggerRepository;
 
     @Autowired
-    ProcessWappCallTriggerRepository processWappCallTriggerRepository;
+    WappCallTriggerRepository wappCallTriggerRepository;
 
     @Autowired
-    ProcessWappMessageTriggerRepository processWappMessageTriggerRepository;
+    WappMessageTriggerRepository wappMessageTriggerRepository;
 
     @Autowired
     AppUtils appUtils;

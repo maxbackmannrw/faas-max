@@ -5,7 +5,7 @@ import com.faas.core.base.model.ws.process.details.channel.content.dto.ProcessCh
 import com.faas.core.base.model.ws.process.details.channel.temp.dto.ProcessTempWSDTO;
 import com.faas.core.base.model.ws.process.details.remote.dto.ProcessRemoteWSDTO;
 import com.faas.core.base.model.ws.process.details.scenario.dto.ProcessScenarioWSDTO;
-import com.faas.core.base.model.ws.process.details.trigger.dto.ProcessTriggerWSDTO;
+import com.faas.core.base.model.ws.process.details.trigger.content.dto.ProcessTriggerWSDTO;
 
 import java.util.List;
 
