@@ -2,7 +2,7 @@ package com.faas.core.base.middleware.process.details.trigger.content;
 
 import com.faas.core.base.framework.process.details.trigger.content.ProcessTriggerFramework;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.process.details.trigger.content.ProcessTriggerWSModel;
+import com.faas.core.base.model.ws.process.details.trigger.content.ProcessTriggerTempWSModel;
 import com.faas.core.base.model.ws.process.details.trigger.content.dto.*;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,17 +17,17 @@ public class ProcessTriggerMiddleware {
     ProcessTriggerFramework processTriggerFramework;
 
 
-    public ProcessTriggerWSModel getProcessTrigger(long userId, String processId) {
+    public ProcessTriggerTempWSModel getProcessTriggerTemp(long userId, String processId) {
 
-        ProcessTriggerWSModel response = new ProcessTriggerWSModel();
+        ProcessTriggerTempWSModel response = new ProcessTriggerTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ProcessTriggerWSDTO processTriggerWSDTO = processTriggerFramework.getProcessTriggerService(userId,processId);
-        if (processTriggerWSDTO != null){
-            response.setProcessTrigger(processTriggerWSDTO);
+        ProcessTriggerTempWSDTO processTriggerTempWSDTO = processTriggerFramework.getProcessTriggerTempService(userId,processId);
+        if (processTriggerTempWSDTO != null){
+            response.setProcessTriggerTemp(processTriggerTempWSDTO);
         }
 
-        general.setOperation("getProcessTrigger");
+        general.setOperation("getProcessTriggerTemp");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

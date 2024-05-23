@@ -29,12 +29,12 @@ public class AiTriggerTempFramework {
 
     public List<AITriggerTempWSDTO> getAITriggerTempsService(long userId, String processId) {
 
-        List<AITriggerTempWSDTO> AITriggerTempWSDTOS = new ArrayList<>();
+        List<AITriggerTempWSDTO> aiTriggerTempWSDTOS = new ArrayList<>();
         List<AITriggerTempDBModel> aiTriggerTempDBModels = aiTriggerTempRepository.findByProcessId(processId);
         for (AITriggerTempDBModel aiTriggerTempDBModel : aiTriggerTempDBModels) {
-            AITriggerTempWSDTOS.add(new AITriggerTempWSDTO(aiTriggerTempDBModel));
+            aiTriggerTempWSDTOS.add(new AITriggerTempWSDTO(aiTriggerTempDBModel));
         }
-        return AITriggerTempWSDTOS;
+        return aiTriggerTempWSDTOS;
     }
 
     public AITriggerTempWSDTO getAITriggerTempService(long userId, String tempId) {

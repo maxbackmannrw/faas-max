@@ -64,18 +64,17 @@ public class ProcessTriggerFramework {
     @Autowired
     AppUtils appUtils;
 
+    public ProcessTriggerTempWSDTO getProcessTriggerTempService(long userId, String processId) {
 
-    public ProcessTriggerWSDTO getProcessTriggerService(long userId, String processId) {
+        ProcessTriggerTempWSDTO processTriggerTempWSDTO = new ProcessTriggerTempWSDTO();
+        processTriggerTempWSDTO.setAiTriggerTemps(getAITriggerTemps(userId,processId));
+        processTriggerTempWSDTO.setEmailTriggerTemps(getEmailTriggerTemps(userId,processId));
+        processTriggerTempWSDTO.setSipTriggerTemps(getSipTriggerTemps(userId,processId));
+        processTriggerTempWSDTO.setSmsTriggerTemps(getSmsTriggerTemps(userId,processId));
+        processTriggerTempWSDTO.setWappCallTriggerTemps(getWappCallTriggerTemps(userId,processId));
+        processTriggerTempWSDTO.setWappMessageTriggerTemps(getWappMessageTriggerTemps(userId,processId));
 
-        ProcessTriggerWSDTO processTriggerWSDTO = new ProcessTriggerWSDTO();
-        processTriggerWSDTO.setAiTriggerTemps(getAITriggerTemps(userId,processId));
-        processTriggerWSDTO.setEmailTriggerTemps(getEmailTriggerTemps(userId,processId));
-        processTriggerWSDTO.setSipTriggerTemps(getSipTriggerTemps(userId,processId));
-        processTriggerWSDTO.setSmsTriggerTemps(getSmsTriggerTemps(userId,processId));
-        processTriggerWSDTO.setWappCallTriggerTemps(getWappCallTriggerTemps(userId,processId));
-        processTriggerWSDTO.setWappMessageTriggerTemps(getWappMessageTriggerTemps(userId,processId));
-
-        return processTriggerWSDTO;
+        return processTriggerTempWSDTO;
     }
 
     public List<AITriggerTempWSDTO> getAITriggerTemps(long userId, String processId) {

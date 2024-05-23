@@ -125,7 +125,7 @@ public class ProcessHelper {
         processDetailsWSDTO.setProcess(processDBModel);
         processDetailsWSDTO.setProcessTemp(createProcessTempWSDTO(processDBModel.getId()));
         processDetailsWSDTO.setProcessChannels(createProcessChannelWSDTO(processDBModel.getId()));
-        processDetailsWSDTO.setProcessTrigger(createProcessTriggerWSDTO(processDBModel.getId()));
+        processDetailsWSDTO.setProcessTriggerTemp(createProcessTriggerTempWSDTO(processDBModel.getId()));
         processDetailsWSDTO.setProcessScenarios(createProcessScenarioWSDTOS(processDBModel));
         processDetailsWSDTO.setProcessRemotes(createProcessRemoteWSDTOS(processDBModel));
 
@@ -161,17 +161,17 @@ public class ProcessHelper {
     }
 
 
-    public ProcessTriggerWSDTO createProcessTriggerWSDTO(String processId){
+    public ProcessTriggerTempWSDTO createProcessTriggerTempWSDTO(String processId){
 
-        ProcessTriggerWSDTO processTriggerWSDTO = new ProcessTriggerWSDTO();
-        processTriggerWSDTO.setAiTriggerTemps(createAITriggerTempWSDTOS(processId));
-        processTriggerWSDTO.setEmailTriggerTemps(createEmailTriggerTempWSDTOS(processId));
-        processTriggerWSDTO.setSipTriggerTemps(createSipTriggerTempWSDTOS(processId));
-        processTriggerWSDTO.setSmsTriggerTemps(createSmsTriggerTempWSDTOS(processId));
-        processTriggerWSDTO.setWappCallTriggerTemps(createWappCallTriggerTempWSDTOS(processId));
-        processTriggerWSDTO.setWappMessageTriggerTemps(createWappMessageTriggerTempWSDTOS(processId));
+        ProcessTriggerTempWSDTO processTriggerTempWSDTO = new ProcessTriggerTempWSDTO();
+        processTriggerTempWSDTO.setAiTriggerTemps(createAITriggerTempWSDTOS(processId));
+        processTriggerTempWSDTO.setEmailTriggerTemps(createEmailTriggerTempWSDTOS(processId));
+        processTriggerTempWSDTO.setSipTriggerTemps(createSipTriggerTempWSDTOS(processId));
+        processTriggerTempWSDTO.setSmsTriggerTemps(createSmsTriggerTempWSDTOS(processId));
+        processTriggerTempWSDTO.setWappCallTriggerTemps(createWappCallTriggerTempWSDTOS(processId));
+        processTriggerTempWSDTO.setWappMessageTriggerTemps(createWappMessageTriggerTempWSDTOS(processId));
 
-        return processTriggerWSDTO;
+        return processTriggerTempWSDTO;
     }
 
     public List<AITriggerTempWSDTO> createAITriggerTempWSDTOS(String processId) {

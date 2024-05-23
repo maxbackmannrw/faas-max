@@ -1,7 +1,7 @@
 package com.faas.core.base.endpoint.controller.process.details.trigger.content;
 
 import com.faas.core.base.middleware.process.details.trigger.content.ProcessTriggerMiddleware;
-import com.faas.core.base.model.ws.process.details.trigger.content.ProcessTriggerWSModel;
+import com.faas.core.base.model.ws.process.details.trigger.content.ProcessTriggerTempWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +22,11 @@ public class ProcessTriggerController {
     ProcessTriggerMiddleware processTriggerMiddleware;
 
 
-    @RequestMapping(value = BaseRoute.GET_PROCESS_TRIGGER, method = RequestMethod.POST)
-    public ResponseEntity<?> getProcessTrigger(@RequestParam long userId,
-                                               @RequestParam String processId) {
+    @RequestMapping(value = BaseRoute.GET_PROCESS_TRIGGER_TEMP, method = RequestMethod.POST)
+    public ResponseEntity<?> getProcessTriggerTemp(@RequestParam long userId,
+                                                   @RequestParam String processId) {
 
-        ProcessTriggerWSModel response = processTriggerMiddleware.getProcessTrigger(userId,processId);
+        ProcessTriggerTempWSModel response = processTriggerMiddleware.getProcessTriggerTemp(userId,processId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

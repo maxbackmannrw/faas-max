@@ -9,7 +9,7 @@ import com.faas.core.base.model.ws.process.details.trigger.temp.wapp.message.dto
 
 import java.util.List;
 
-public class ProcessTriggerWSDTO {
+public class ProcessTriggerTempWSDTO {
 
     private List<AITriggerTempWSDTO> aiTriggerTemps;
     private List<EmailTriggerTempWSDTO>emailTriggerTemps;
@@ -18,10 +18,10 @@ public class ProcessTriggerWSDTO {
     private List<WappCallTriggerTempWSDTO>wappCallTriggerTemps;
     private List<WappMessageTriggerTempWSDTO>wappMessageTriggerTemps;
 
-    public ProcessTriggerWSDTO() {
+    public ProcessTriggerTempWSDTO() {
     }
 
-    public ProcessTriggerWSDTO(List<AITriggerTempWSDTO> aiTriggerTemps, List<EmailTriggerTempWSDTO> emailTriggerTemps, List<SipTriggerTempWSDTO> sipTriggerTemps, List<SmsTriggerTempWSDTO> smsTriggerTemps, List<WappCallTriggerTempWSDTO> wappCallTriggerTemps, List<WappMessageTriggerTempWSDTO> wappMessageTriggerTemps) {
+    public ProcessTriggerTempWSDTO(List<AITriggerTempWSDTO> aiTriggerTemps, List<EmailTriggerTempWSDTO> emailTriggerTemps, List<SipTriggerTempWSDTO> sipTriggerTemps, List<SmsTriggerTempWSDTO> smsTriggerTemps, List<WappCallTriggerTempWSDTO> wappCallTriggerTemps, List<WappMessageTriggerTempWSDTO> wappMessageTriggerTemps) {
         this.aiTriggerTemps = aiTriggerTemps;
         this.emailTriggerTemps = emailTriggerTemps;
         this.sipTriggerTemps = sipTriggerTemps;

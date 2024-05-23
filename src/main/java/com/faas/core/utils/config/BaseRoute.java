@@ -378,7 +378,7 @@ public class BaseRoute {
 
 
 
-    public static final String GET_PROCESS_TRIGGER = "getprocesstrigger";
+    public static final String GET_PROCESS_TRIGGER_TEMP = "getprocesstriggertemp";
 
     public static final String GET_AI_TRIGGER_TEMPS = "getaitriggertemps";
     public static final String GET_AI_TRIGGER_TEMP = "getaitriggertemp";

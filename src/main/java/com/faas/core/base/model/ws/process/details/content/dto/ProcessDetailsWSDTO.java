@@ -5,7 +5,7 @@ import com.faas.core.base.model.ws.process.details.channel.content.dto.ProcessCh
 import com.faas.core.base.model.ws.process.details.channel.temp.dto.ProcessTempWSDTO;
 import com.faas.core.base.model.ws.process.details.remote.dto.ProcessRemoteWSDTO;
 import com.faas.core.base.model.ws.process.details.scenario.dto.ProcessScenarioWSDTO;
-import com.faas.core.base.model.ws.process.details.trigger.content.dto.ProcessTriggerWSDTO;
+import com.faas.core.base.model.ws.process.details.trigger.content.dto.ProcessTriggerTempWSDTO;
 
 import java.util.List;
 
@@ -14,20 +14,20 @@ public class ProcessDetailsWSDTO {
     private ProcessDBModel process;
     private ProcessTempWSDTO processTemp;
     private ProcessChannelWSDTO processChannels;
-    private ProcessTriggerWSDTO processTrigger;
+    private ProcessTriggerTempWSDTO processTriggerTemp;
     private List<ProcessScenarioWSDTO> processScenarios;
     private List<ProcessRemoteWSDTO>processRemotes;
 
     public ProcessDetailsWSDTO() {
     }
 
-    public ProcessDetailsWSDTO(ProcessDBModel process, ProcessTempWSDTO processTemp, ProcessChannelWSDTO processChannels, ProcessTriggerWSDTO processTrigger, List<ProcessScenarioWSDTO> processScenarios, List<ProcessRemoteWSDTO> processRemotes) {
+    public ProcessDetailsWSDTO(ProcessDBModel process, ProcessChannelWSDTO processChannels, List<ProcessRemoteWSDTO> processRemotes, List<ProcessScenarioWSDTO> processScenarios, ProcessTempWSDTO processTemp, ProcessTriggerTempWSDTO processTriggerTemp) {
         this.process = process;
-        this.processTemp = processTemp;
         this.processChannels = processChannels;
-        this.processTrigger = processTrigger;
-        this.processScenarios = processScenarios;
         this.processRemotes = processRemotes;
+        this.processScenarios = processScenarios;
+        this.processTemp = processTemp;
+        this.processTriggerTemp = processTriggerTemp;
     }
 
     public ProcessDBModel getProcess() {
@@ -38,14 +38,6 @@ public class ProcessDetailsWSDTO {
         this.process = process;
     }
 
-    public ProcessTempWSDTO getProcessTemp() {
-        return processTemp;
-    }
-
-    public void setProcessTemp(ProcessTempWSDTO processTemp) {
-        this.processTemp = processTemp;
-    }
-
     public ProcessChannelWSDTO getProcessChannels() {
         return processChannels;
     }
@@ -54,12 +46,12 @@ public class ProcessDetailsWSDTO {
         this.processChannels = processChannels;
     }
 
-    public ProcessTriggerWSDTO getProcessTrigger() {
-        return processTrigger;
+    public List<ProcessRemoteWSDTO> getProcessRemotes() {
+        return processRemotes;
     }
 
-    public void setProcessTrigger(ProcessTriggerWSDTO processTrigger) {
-        this.processTrigger = processTrigger;
+    public void setProcessRemotes(List<ProcessRemoteWSDTO> processRemotes) {
+        this.processRemotes = processRemotes;
     }
 
     public List<ProcessScenarioWSDTO> getProcessScenarios() {
@@ -70,11 +62,19 @@ public class ProcessDetailsWSDTO {
         this.processScenarios = processScenarios;
     }
 
-    public List<ProcessRemoteWSDTO> getProcessRemotes() {
-        return processRemotes;
+    public ProcessTempWSDTO getProcessTemp() {
+        return processTemp;
     }
 
-    public void setProcessRemotes(List<ProcessRemoteWSDTO> processRemotes) {
-        this.processRemotes = processRemotes;
+    public void setProcessTemp(ProcessTempWSDTO processTemp) {
+        this.processTemp = processTemp;
+    }
+
+    public ProcessTriggerTempWSDTO getProcessTriggerTemp() {
+        return processTriggerTemp;
+    }
+
+    public void setProcessTriggerTemp(ProcessTriggerTempWSDTO processTriggerTemp) {
+        this.processTriggerTemp = processTriggerTemp;
     }
 }
