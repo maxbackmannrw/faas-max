@@ -50,11 +50,10 @@ public class ProcessWappCallTriggerController {
     public ResponseEntity<?> createProcessWappCallTrigger(@RequestParam long userId,
                                                           @RequestParam String processId,
                                                           @RequestParam String trigger,
-                                                          @RequestParam String triggerDesc,
                                                           @RequestParam String accountId,
                                                           @RequestParam long typeId) {
 
-        ProcessWappCallTriggerWSModel response = processWappCallTriggerMiddleware.createProcessWappCallTrigger(userId,processId,trigger,triggerDesc,accountId,typeId);
+        ProcessWappCallTriggerWSModel response = processWappCallTriggerMiddleware.createProcessWappCallTrigger(userId,processId,trigger,accountId,typeId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -66,10 +65,9 @@ public class ProcessWappCallTriggerController {
     public ResponseEntity<?> updateProcessWappCallTrigger(@RequestParam long userId,
                                                           @RequestParam String triggerId,
                                                           @RequestParam String trigger,
-                                                          @RequestParam String triggerDesc,
                                                           @RequestParam String accountId) {
 
-        ProcessWappCallTriggerWSModel response = processWappCallTriggerMiddleware.updateProcessWappCallTrigger(userId,triggerId,trigger,triggerDesc,accountId);
+        ProcessWappCallTriggerWSModel response = processWappCallTriggerMiddleware.updateProcessWappCallTrigger(userId,triggerId,trigger,accountId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

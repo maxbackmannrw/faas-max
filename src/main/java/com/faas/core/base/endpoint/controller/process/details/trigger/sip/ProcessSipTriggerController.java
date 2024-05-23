@@ -51,12 +51,11 @@ public class ProcessSipTriggerController {
     public ResponseEntity<?> createProcessSipTrigger(@RequestParam long userId,
                                                      @RequestParam String processId,
                                                      @RequestParam String trigger,
-                                                     @RequestParam String triggerDesc,
                                                      @RequestParam String accountId,
                                                      @RequestParam String callerId,
                                                      @RequestParam long typeId) {
 
-        ProcessSipTriggerWSModel response = processSipTriggerMiddleware.createProcessSipTrigger(userId,processId,trigger,triggerDesc,accountId,callerId,typeId);
+        ProcessSipTriggerWSModel response = processSipTriggerMiddleware.createProcessSipTrigger(userId,processId,trigger,accountId,callerId,typeId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -68,11 +67,10 @@ public class ProcessSipTriggerController {
     public ResponseEntity<?> updateProcessSipTrigger(@RequestParam long userId,
                                                      @RequestParam String triggerId,
                                                      @RequestParam String trigger,
-                                                     @RequestParam String triggerDesc,
                                                      @RequestParam String accountId,
                                                      @RequestParam String callerId) {
 
-        ProcessSipTriggerWSModel response = processSipTriggerMiddleware.updateProcessSipTrigger(userId,triggerId,trigger,triggerDesc,accountId,callerId);
+        ProcessSipTriggerWSModel response = processSipTriggerMiddleware.updateProcessSipTrigger(userId,triggerId,trigger,accountId,callerId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

@@ -50,11 +50,10 @@ public class ProcessAiTriggerController {
     public ResponseEntity<?> createProcessAITrigger(@RequestParam long userId,
                                                     @RequestParam String processId,
                                                     @RequestParam String trigger,
-                                                    @RequestParam String triggerDesc,
                                                     @RequestParam String accountId,
                                                     @RequestParam long typeId) {
 
-        ProcessAITriggerWSModel response = processAiTriggerMiddleware.createProcessAITrigger(userId,processId,trigger,triggerDesc,accountId,typeId);
+        ProcessAITriggerWSModel response = processAiTriggerMiddleware.createProcessAITrigger(userId,processId,trigger,accountId,typeId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -66,10 +65,9 @@ public class ProcessAiTriggerController {
     public ResponseEntity<?> updateProcessAITrigger(@RequestParam long userId,
                                                     @RequestParam String triggerId,
                                                     @RequestParam String trigger,
-                                                    @RequestParam String triggerDesc,
                                                     @RequestParam String accountId) {
 
-        ProcessAITriggerWSModel response = processAiTriggerMiddleware.updateProcessAITrigger(userId,triggerId,trigger,triggerDesc,accountId);
+        ProcessAITriggerWSModel response = processAiTriggerMiddleware.updateProcessAITrigger(userId,triggerId,trigger,accountId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

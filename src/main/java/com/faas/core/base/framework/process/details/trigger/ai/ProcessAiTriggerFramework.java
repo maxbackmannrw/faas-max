@@ -46,7 +46,7 @@ public class ProcessAiTriggerFramework {
         return null;
     }
 
-    public ProcessAITriggerWSDTO createProcessAITriggerService(long userId, String processId, String trigger, String triggerDesc, String accountId, long typeId) {
+    public ProcessAITriggerWSDTO createProcessAITriggerService(long userId, String processId, String trigger, String accountId, long typeId) {
 
         Optional<TriggerTypeDBModel> triggerTypeDBModel = triggerTypeRepository.findById(typeId);
         if (triggerTypeDBModel.isPresent()){
@@ -54,7 +54,6 @@ public class ProcessAiTriggerFramework {
             AITriggerDBModel aiTriggerDBModel = new AITriggerDBModel();
             aiTriggerDBModel.setProcessId(processId);
             aiTriggerDBModel.setTrigger(trigger);
-            aiTriggerDBModel.setTriggerDesc(triggerDesc);
             aiTriggerDBModel.setAccountId(accountId);
             aiTriggerDBModel.setAccount(AppConstant.NONE);
             aiTriggerDBModel.setDatas(new ArrayList<>());
@@ -69,15 +68,14 @@ public class ProcessAiTriggerFramework {
         return null;
     }
 
-    public ProcessAITriggerWSDTO updateProcessAITriggerService(long userId, String triggerId, String trigger, String triggerDesc, String accountId) {
+    public ProcessAITriggerWSDTO updateProcessAITriggerService(long userId, String triggerId, String trigger, String accountId) {
 
         Optional<AITriggerDBModel> processAITriggerDBModel = aiTriggerRepository.findById(triggerId);
         if (processAITriggerDBModel.isPresent()){
 
             processAITriggerDBModel.get().setTrigger(trigger);
-            processAITriggerDBModel.get().setTriggerDesc(triggerDesc);
             processAITriggerDBModel.get().setAccountId(accountId);
-            processAITriggerDBModel.get().setAccount("");
+            processAITriggerDBModel.get().setAccount(AppConstant.NONE);
             processAITriggerDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
 
             return new ProcessAITriggerWSDTO(aiTriggerRepository.save(processAITriggerDBModel.get()));

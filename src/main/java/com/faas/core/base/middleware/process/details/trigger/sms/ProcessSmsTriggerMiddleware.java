@@ -60,13 +60,13 @@ public class ProcessSmsTriggerMiddleware {
         return response;
     }
 
-    public ProcessSmsTriggerWSModel createProcessSmsTrigger(long userId, String processId, String trigger, String triggerDesc, String accountId, String smsTitle, String smsBody, String senderId, long typeId) {
+    public ProcessSmsTriggerWSModel createProcessSmsTrigger(long userId, String processId, String trigger, String accountId, String smsTitle, String smsBody, String senderId, long typeId) {
 
         ProcessSmsTriggerWSModel response = new ProcessSmsTriggerWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessSmsTriggerWSDTO> processSmsTriggerWSDTOS = new ArrayList<>();
 
-        ProcessSmsTriggerWSDTO processSmsTriggerWSDTO = processSmsTriggerFramework.createProcessSmsTriggerService(userId,processId,trigger,triggerDesc,accountId,smsTitle,smsBody,senderId,typeId);
+        ProcessSmsTriggerWSDTO processSmsTriggerWSDTO = processSmsTriggerFramework.createProcessSmsTriggerService(userId,processId,trigger,accountId,smsTitle,smsBody,senderId,typeId);
         if (processSmsTriggerWSDTO != null){
             processSmsTriggerWSDTOS.add(processSmsTriggerWSDTO);
         }
@@ -81,13 +81,13 @@ public class ProcessSmsTriggerMiddleware {
         return response;
     }
 
-    public ProcessSmsTriggerWSModel updateProcessSmsTrigger(long userId, String triggerId, String trigger, String triggerDesc, String accountId, String smsTitle, String smsBody, String senderId) {
+    public ProcessSmsTriggerWSModel updateProcessSmsTrigger(long userId, String triggerId, String trigger, String accountId, String smsTitle, String smsBody, String senderId) {
 
         ProcessSmsTriggerWSModel response = new ProcessSmsTriggerWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessSmsTriggerWSDTO> processSmsTriggerWSDTOS = new ArrayList<>();
 
-        ProcessSmsTriggerWSDTO processSmsTriggerWSDTO = processSmsTriggerFramework.updateProcessSmsTriggerService(userId,triggerId,trigger,triggerDesc,accountId,smsTitle,smsBody,senderId);
+        ProcessSmsTriggerWSDTO processSmsTriggerWSDTO = processSmsTriggerFramework.updateProcessSmsTriggerService(userId,triggerId,trigger,accountId,smsTitle,smsBody,senderId);
         if (processSmsTriggerWSDTO != null){
             processSmsTriggerWSDTOS.add(processSmsTriggerWSDTO);
         }

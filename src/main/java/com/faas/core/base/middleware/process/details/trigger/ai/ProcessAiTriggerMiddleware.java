@@ -61,13 +61,13 @@ public class ProcessAiTriggerMiddleware {
         return response;
     }
 
-    public ProcessAITriggerWSModel createProcessAITrigger(long userId, String processId, String trigger, String triggerDesc, String accountId, long typeId) {
+    public ProcessAITriggerWSModel createProcessAITrigger(long userId, String processId, String trigger,  String accountId, long typeId) {
 
         ProcessAITriggerWSModel response = new ProcessAITriggerWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessAITriggerWSDTO> processAITriggerWSDTOS = new ArrayList<>();
 
-        ProcessAITriggerWSDTO processAITriggerWSDTO = processAiTriggerFramework.createProcessAITriggerService(userId,processId,trigger,triggerDesc,accountId,typeId);
+        ProcessAITriggerWSDTO processAITriggerWSDTO = processAiTriggerFramework.createProcessAITriggerService(userId,processId,trigger,accountId,typeId);
         if (processAITriggerWSDTO != null){
             processAITriggerWSDTOS.add(processAITriggerWSDTO);
         }
@@ -82,13 +82,13 @@ public class ProcessAiTriggerMiddleware {
         return response;
     }
 
-    public ProcessAITriggerWSModel updateProcessAITrigger(long userId, String triggerId, String trigger, String triggerDesc, String accountId) {
+    public ProcessAITriggerWSModel updateProcessAITrigger(long userId, String triggerId, String trigger, String accountId) {
 
         ProcessAITriggerWSModel response = new ProcessAITriggerWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessAITriggerWSDTO> processAITriggerWSDTOS = new ArrayList<>();
 
-        ProcessAITriggerWSDTO processAITriggerWSDTO = processAiTriggerFramework.updateProcessAITriggerService(userId,triggerId,trigger,triggerDesc,accountId);
+        ProcessAITriggerWSDTO processAITriggerWSDTO = processAiTriggerFramework.updateProcessAITriggerService(userId,triggerId,trigger,accountId);
         if (processAITriggerWSDTO != null){
             processAITriggerWSDTOS.add(processAITriggerWSDTO);
         }

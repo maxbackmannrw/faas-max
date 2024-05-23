@@ -55,7 +55,7 @@ public class ProcessWappMessageTriggerFramework {
         return null;
     }
 
-    public ProcessWappMessageTriggerWSDTO createProcessWappMessageTriggerService(long userId, String processId, String trigger, String triggerDesc, String accountId, String wappTitle, String wappBody, long typeId) {
+    public ProcessWappMessageTriggerWSDTO createProcessWappMessageTriggerService(long userId, String processId, String trigger, String accountId, String wappTitle, String wappBody, long typeId) {
 
         Optional<WappAccountDBModel> wappAccountDBModel = wappAccountRepository.findById(accountId);
         Optional<TriggerTypeDBModel> triggerTypeDBModel = triggerTypeRepository.findById(typeId);
@@ -64,7 +64,6 @@ public class ProcessWappMessageTriggerFramework {
             WappMessageTriggerDBModel wappMessageTriggerDBModel = new WappMessageTriggerDBModel();
             wappMessageTriggerDBModel.setProcessId(processId);
             wappMessageTriggerDBModel.setTrigger(trigger);
-            wappMessageTriggerDBModel.setTriggerDesc(triggerDesc);
             wappMessageTriggerDBModel.setAccountId(accountId);
             wappMessageTriggerDBModel.setAccount(wappAccountDBModel.get().getAccount());
             wappMessageTriggerDBModel.setWappTitle(wappTitle);
@@ -81,14 +80,13 @@ public class ProcessWappMessageTriggerFramework {
         return null;
     }
 
-    public ProcessWappMessageTriggerWSDTO updateProcessWappMessageTriggerService(long userId, String triggerId, String trigger, String triggerDesc, String accountId, String wappTitle, String wappBody) {
+    public ProcessWappMessageTriggerWSDTO updateProcessWappMessageTriggerService(long userId, String triggerId, String trigger, String accountId, String wappTitle, String wappBody) {
 
         Optional<WappMessageTriggerDBModel> wappMessageTriggerDBModel = wappMessageTriggerRepository.findById(triggerId);
         Optional<WappAccountDBModel> wappAccountDBModel = wappAccountRepository.findById(accountId);
         if (wappMessageTriggerDBModel.isPresent() && wappAccountDBModel.isPresent()){
 
             wappMessageTriggerDBModel.get().setTrigger(trigger);
-            wappMessageTriggerDBModel.get().setTriggerDesc(triggerDesc);
             wappMessageTriggerDBModel.get().setAccountId(accountId);
             wappMessageTriggerDBModel.get().setAccount(wappAccountDBModel.get().getAccount());
             wappMessageTriggerDBModel.get().setWappTitle(wappTitle);

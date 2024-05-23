@@ -50,7 +50,7 @@ public class ProcessEmailTriggerFramework {
         return null;
     }
 
-    public ProcessEmailTriggerWSDTO createProcessEmailTriggerService(long userId, String processId, String trigger, String triggerDesc, String accountId, String emailSubject, String emailTitle, String emailBody, String emailSender, long typeId) {
+    public ProcessEmailTriggerWSDTO createProcessEmailTriggerService(long userId, String processId, String trigger, String accountId, String emailSubject, String emailTitle, String emailBody, String emailSender, long typeId) {
 
         Optional<TriggerTypeDBModel> triggerTypeDBModel = triggerTypeRepository.findById(typeId);
         Optional<EmailAccountDBModel> emailAccountDBModel = emailAccountRepository.findById(accountId);
@@ -59,7 +59,6 @@ public class ProcessEmailTriggerFramework {
             EmailTriggerDBModel emailTriggerDBModel = new EmailTriggerDBModel();
             emailTriggerDBModel.setProcessId(processId);
             emailTriggerDBModel.setTrigger(trigger);
-            emailTriggerDBModel.setTriggerDesc(triggerDesc);
             emailTriggerDBModel.setAccountId(accountId);
             emailTriggerDBModel.setAccount(emailAccountDBModel.get().getAccount());
             emailTriggerDBModel.setEmailSubject(emailSubject);
@@ -78,14 +77,13 @@ public class ProcessEmailTriggerFramework {
         return null;
     }
 
-    public ProcessEmailTriggerWSDTO updateProcessEmailTriggerService(long userId, String triggerId, String trigger, String triggerDesc, String accountId, String emailSubject, String emailTitle, String emailBody, String emailSender) {
+    public ProcessEmailTriggerWSDTO updateProcessEmailTriggerService(long userId, String triggerId, String trigger, String accountId, String emailSubject, String emailTitle, String emailBody, String emailSender) {
 
         Optional<EmailTriggerDBModel> processEmailTriggerDBModel = emailTriggerRepository.findById(triggerId);
         Optional<EmailAccountDBModel> emailAccountDBModel = emailAccountRepository.findById(accountId);
         if (processEmailTriggerDBModel.isPresent() && emailAccountDBModel.isPresent()){
 
             processEmailTriggerDBModel.get().setTrigger(trigger);
-            processEmailTriggerDBModel.get().setTriggerDesc(triggerDesc);
             processEmailTriggerDBModel.get().setAccountId(accountId);
             processEmailTriggerDBModel.get().setAccount(emailAccountDBModel.get().getAccount());
             processEmailTriggerDBModel.get().setEmailSubject(emailSubject);

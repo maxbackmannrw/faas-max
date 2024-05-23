@@ -51,7 +51,7 @@ public class ProcessWappCallTriggerFramework {
         return null;
     }
 
-    public ProcessWappCallTriggerWSDTO createProcessWappCallTriggerService(long userId, String processId, String trigger, String triggerDesc, String accountId, long typeId) {
+    public ProcessWappCallTriggerWSDTO createProcessWappCallTriggerService(long userId, String processId, String trigger, String accountId, long typeId) {
 
         Optional<WappAccountDBModel> wappAccountDBModel = wappAccountRepository.findById(accountId);
         Optional<TriggerTypeDBModel> triggerTypeDBModel = triggerTypeRepository.findById(typeId);
@@ -60,7 +60,6 @@ public class ProcessWappCallTriggerFramework {
             WappCallTriggerDBModel wappCallTriggerDBModel = new WappCallTriggerDBModel();
             wappCallTriggerDBModel.setProcessId(processId);
             wappCallTriggerDBModel.setTrigger(trigger);
-            wappCallTriggerDBModel.setTriggerDesc(triggerDesc);
             wappCallTriggerDBModel.setAccountId(accountId);
             wappCallTriggerDBModel.setAccount(wappAccountDBModel.get().getAccount());
             wappCallTriggerDBModel.setDatas(new ArrayList<>());
@@ -75,14 +74,13 @@ public class ProcessWappCallTriggerFramework {
         return null;
     }
 
-    public ProcessWappCallTriggerWSDTO updateProcessWappCallTriggerService(long userId, String triggerId, String trigger, String triggerDesc, String accountId) {
+    public ProcessWappCallTriggerWSDTO updateProcessWappCallTriggerService(long userId, String triggerId, String trigger, String accountId) {
 
         Optional<WappCallTriggerDBModel> wappCallTriggerDBModel = wappCallTriggerRepository.findById(triggerId);
         Optional<WappAccountDBModel> wappAccountDBModel = wappAccountRepository.findById(accountId);
         if (wappCallTriggerDBModel.isPresent() && wappAccountDBModel.isPresent()){
 
             wappCallTriggerDBModel.get().setTrigger(trigger);
-            wappCallTriggerDBModel.get().setTriggerDesc(triggerDesc);
             wappCallTriggerDBModel.get().setAccountId(accountId);
             wappCallTriggerDBModel.get().setAccount(wappAccountDBModel.get().getAccount());
             wappCallTriggerDBModel.get().setuDate(appUtils.getCurrentTimeStamp());

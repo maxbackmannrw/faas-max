@@ -60,13 +60,13 @@ public class ProcessEmailTriggerMiddleware {
         return response;
     }
 
-    public ProcessEmailTriggerWSModel createProcessEmailTrigger(long userId, String processId, String trigger, String triggerDesc, String accountId, String emailSubject, String emailTitle, String emailBody, String emailSender, long typeId) {
+    public ProcessEmailTriggerWSModel createProcessEmailTrigger(long userId, String processId, String trigger, String accountId, String emailSubject, String emailTitle, String emailBody, String emailSender, long typeId) {
 
         ProcessEmailTriggerWSModel response = new ProcessEmailTriggerWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessEmailTriggerWSDTO> processEmailTriggerWSDTOS = new ArrayList<>();
 
-        ProcessEmailTriggerWSDTO processEmailTriggerWSDTO = processEmailTriggerFramework.createProcessEmailTriggerService(userId,processId,trigger,triggerDesc,accountId,emailSubject,emailTitle,emailBody,emailSender,typeId);
+        ProcessEmailTriggerWSDTO processEmailTriggerWSDTO = processEmailTriggerFramework.createProcessEmailTriggerService(userId,processId,trigger,accountId,emailSubject,emailTitle,emailBody,emailSender,typeId);
         if (processEmailTriggerWSDTO != null){
             processEmailTriggerWSDTOS.add(processEmailTriggerWSDTO);
         }
@@ -81,13 +81,13 @@ public class ProcessEmailTriggerMiddleware {
         return response;
     }
 
-    public ProcessEmailTriggerWSModel updateProcessEmailTrigger(long userId, String triggerId, String trigger, String triggerDesc, String accountId, String emailSubject, String emailTitle, String emailBody, String emailSender) {
+    public ProcessEmailTriggerWSModel updateProcessEmailTrigger(long userId, String triggerId, String trigger, String accountId, String emailSubject, String emailTitle, String emailBody, String emailSender) {
 
         ProcessEmailTriggerWSModel response = new ProcessEmailTriggerWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessEmailTriggerWSDTO> processEmailTriggerWSDTOS = new ArrayList<>();
 
-        ProcessEmailTriggerWSDTO processEmailTriggerWSDTO = processEmailTriggerFramework.updateProcessEmailTriggerService(userId,triggerId,trigger,triggerDesc,accountId,emailSubject,emailTitle,emailBody,emailSender);
+        ProcessEmailTriggerWSDTO processEmailTriggerWSDTO = processEmailTriggerFramework.updateProcessEmailTriggerService(userId,triggerId,trigger,accountId,emailSubject,emailTitle,emailBody,emailSender);
         if (processEmailTriggerWSDTO != null){
             processEmailTriggerWSDTOS.add(processEmailTriggerWSDTO);
         }

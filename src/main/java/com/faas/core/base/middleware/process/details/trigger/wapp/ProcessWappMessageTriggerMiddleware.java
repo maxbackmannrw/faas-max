@@ -60,13 +60,13 @@ public class ProcessWappMessageTriggerMiddleware {
         return response;
     }
 
-    public ProcessWappMessageTriggerWSModel createProcessWappMessageTrigger(long userId, String processId, String trigger, String triggerDesc, String accountId, String wappTitle, String wappBody, long typeId) {
+    public ProcessWappMessageTriggerWSModel createProcessWappMessageTrigger(long userId, String processId, String trigger, String accountId, String wappTitle, String wappBody, long typeId) {
 
         ProcessWappMessageTriggerWSModel response = new ProcessWappMessageTriggerWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessWappMessageTriggerWSDTO> processWappMessageTriggerWSDTOS = new ArrayList<>();
 
-        ProcessWappMessageTriggerWSDTO processWappMessageTriggerWSDTO = processWappMessageTriggerFramework.createProcessWappMessageTriggerService(userId,processId,trigger,triggerDesc,accountId,wappTitle,wappBody,typeId);
+        ProcessWappMessageTriggerWSDTO processWappMessageTriggerWSDTO = processWappMessageTriggerFramework.createProcessWappMessageTriggerService(userId,processId,trigger,accountId,wappTitle,wappBody,typeId);
         if (processWappMessageTriggerWSDTO != null){
             processWappMessageTriggerWSDTOS.add(processWappMessageTriggerWSDTO);
         }
@@ -81,13 +81,13 @@ public class ProcessWappMessageTriggerMiddleware {
         return response;
     }
 
-    public ProcessWappMessageTriggerWSModel updateProcessWappMessageTrigger(long userId, String triggerId, String trigger, String triggerDesc, String accountId, String wappTitle, String wappBody) {
+    public ProcessWappMessageTriggerWSModel updateProcessWappMessageTrigger(long userId, String triggerId, String trigger, String accountId, String wappTitle, String wappBody) {
 
         ProcessWappMessageTriggerWSModel response = new ProcessWappMessageTriggerWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessWappMessageTriggerWSDTO> processWappMessageTriggerWSDTOS = new ArrayList<>();
 
-        ProcessWappMessageTriggerWSDTO processWappMessageTriggerWSDTO = processWappMessageTriggerFramework.updateProcessWappMessageTriggerService(userId,triggerId,trigger,triggerDesc,accountId,wappTitle,wappBody);
+        ProcessWappMessageTriggerWSDTO processWappMessageTriggerWSDTO = processWappMessageTriggerFramework.updateProcessWappMessageTriggerService(userId,triggerId,trigger,accountId,wappTitle,wappBody);
         if (processWappMessageTriggerWSDTO != null){
             processWappMessageTriggerWSDTOS.add(processWappMessageTriggerWSDTO);
         }

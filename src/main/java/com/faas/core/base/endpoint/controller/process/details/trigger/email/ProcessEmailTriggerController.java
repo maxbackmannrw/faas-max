@@ -50,7 +50,6 @@ public class ProcessEmailTriggerController {
     public ResponseEntity<?> createProcessEmailTrigger(@RequestParam long userId,
                                                        @RequestParam String processId,
                                                        @RequestParam String trigger,
-                                                       @RequestParam String triggerDesc,
                                                        @RequestParam String accountId,
                                                        @RequestParam String emailSubject,
                                                        @RequestParam String emailTitle,
@@ -58,7 +57,7 @@ public class ProcessEmailTriggerController {
                                                        @RequestParam String emailSender,
                                                        @RequestParam long typeId) {
 
-        ProcessEmailTriggerWSModel response = processEmailTriggerMiddleware.createProcessEmailTrigger(userId,processId,trigger,triggerDesc,accountId,emailSubject,emailTitle,emailBody,emailSender,typeId);
+        ProcessEmailTriggerWSModel response = processEmailTriggerMiddleware.createProcessEmailTrigger(userId,processId,trigger,accountId,emailSubject,emailTitle,emailBody,emailSender,typeId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -70,14 +69,13 @@ public class ProcessEmailTriggerController {
     public ResponseEntity<?> updateProcessEmailTrigger(@RequestParam long userId,
                                                        @RequestParam String triggerId,
                                                        @RequestParam String trigger,
-                                                       @RequestParam String triggerDesc,
                                                        @RequestParam String accountId,
                                                        @RequestParam String emailSubject,
                                                        @RequestParam String emailTitle,
                                                        @RequestParam String emailBody,
                                                        @RequestParam String emailSender) {
 
-        ProcessEmailTriggerWSModel response = processEmailTriggerMiddleware.updateProcessEmailTrigger(userId,triggerId,trigger,triggerDesc,accountId,emailSubject,emailTitle,emailBody,emailSender);
+        ProcessEmailTriggerWSModel response = processEmailTriggerMiddleware.updateProcessEmailTrigger(userId,triggerId,trigger,accountId,emailSubject,emailTitle,emailBody,emailSender);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

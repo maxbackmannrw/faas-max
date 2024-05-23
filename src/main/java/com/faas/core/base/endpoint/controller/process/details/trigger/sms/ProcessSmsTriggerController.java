@@ -50,14 +50,13 @@ public class ProcessSmsTriggerController {
     public ResponseEntity<?> createProcessSmsTrigger(@RequestParam long userId,
                                                      @RequestParam String processId,
                                                      @RequestParam String trigger,
-                                                     @RequestParam String triggerDesc,
                                                      @RequestParam String accountId,
                                                      @RequestParam String smsTitle,
                                                      @RequestParam String smsBody,
                                                      @RequestParam String senderId,
                                                      @RequestParam long typeId) {
 
-        ProcessSmsTriggerWSModel response = processSmsTriggerMiddleware.createProcessSmsTrigger(userId,processId,trigger,triggerDesc,accountId,smsTitle,smsBody,senderId,typeId);
+        ProcessSmsTriggerWSModel response = processSmsTriggerMiddleware.createProcessSmsTrigger(userId,processId,trigger,accountId,smsTitle,smsBody,senderId,typeId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -69,13 +68,12 @@ public class ProcessSmsTriggerController {
     public ResponseEntity<?> updateProcessSmsTrigger(@RequestParam long userId,
                                                      @RequestParam String triggerId,
                                                      @RequestParam String trigger,
-                                                     @RequestParam String triggerDesc,
                                                      @RequestParam String accountId,
                                                      @RequestParam String smsTitle,
                                                      @RequestParam String smsBody,
                                                      @RequestParam String senderId) {
 
-        ProcessSmsTriggerWSModel response = processSmsTriggerMiddleware.updateProcessSmsTrigger(userId,triggerId,trigger,triggerDesc,accountId,smsTitle,smsBody,senderId);
+        ProcessSmsTriggerWSModel response = processSmsTriggerMiddleware.updateProcessSmsTrigger(userId,triggerId,trigger,accountId,smsTitle,smsBody,senderId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

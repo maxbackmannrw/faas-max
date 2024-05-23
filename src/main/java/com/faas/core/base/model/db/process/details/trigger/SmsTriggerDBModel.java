@@ -13,7 +13,6 @@ public class SmsTriggerDBModel {
     private String id;
     private String processId;
     private String trigger;
-    private String triggerDesc;
     private String accountId;
     private String account;
     private String smsTitle;
@@ -29,7 +28,7 @@ public class SmsTriggerDBModel {
     public SmsTriggerDBModel() {
     }
 
-    public SmsTriggerDBModel(String account, String accountId, long cDate, List<TriggerDataDAO> datas, String id, String processId, String senderId, String smsBody, String smsTitle, int status, String trigger, String triggerDesc, String triggerType, long typeId, long uDate) {
+    public SmsTriggerDBModel(String account, String accountId, long cDate, List<TriggerDataDAO> datas, String id, String processId, String senderId, String smsBody, String smsTitle, int status, String trigger, String triggerType, long typeId, long uDate) {
         this.account = account;
         this.accountId = accountId;
         this.cDate = cDate;
@@ -41,7 +40,6 @@ public class SmsTriggerDBModel {
         this.smsTitle = smsTitle;
         this.status = status;
         this.trigger = trigger;
-        this.triggerDesc = triggerDesc;
         this.triggerType = triggerType;
         this.typeId = typeId;
         this.uDate = uDate;
@@ -133,14 +131,6 @@ public class SmsTriggerDBModel {
 
     public void setTrigger(String trigger) {
         this.trigger = trigger;
-    }
-
-    public String getTriggerDesc() {
-        return triggerDesc;
-    }
-
-    public void setTriggerDesc(String triggerDesc) {
-        this.triggerDesc = triggerDesc;
     }
 
     public String getTriggerType() {

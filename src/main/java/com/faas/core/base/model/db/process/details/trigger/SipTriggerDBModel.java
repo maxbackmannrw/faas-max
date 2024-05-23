@@ -13,7 +13,6 @@ public class SipTriggerDBModel {
     private String id;
     private String processId;
     private String trigger;
-    private String triggerDesc;
     private String accountId;
     private String account;
     private String callerId;
@@ -27,7 +26,7 @@ public class SipTriggerDBModel {
     public SipTriggerDBModel() {
     }
 
-    public SipTriggerDBModel(String account, String accountId, String callerId, long cDate, List<TriggerDataDAO> datas, String id, String processId, int status, String trigger, String triggerDesc, String triggerType, long typeId, long uDate) {
+    public SipTriggerDBModel(String account, String accountId, String callerId, long cDate, List<TriggerDataDAO> datas, String id, String processId, int status, String trigger, String triggerType, long typeId, long uDate) {
         this.account = account;
         this.accountId = accountId;
         this.callerId = callerId;
@@ -37,7 +36,6 @@ public class SipTriggerDBModel {
         this.processId = processId;
         this.status = status;
         this.trigger = trigger;
-        this.triggerDesc = triggerDesc;
         this.triggerType = triggerType;
         this.typeId = typeId;
         this.uDate = uDate;
@@ -113,14 +111,6 @@ public class SipTriggerDBModel {
 
     public void setTrigger(String trigger) {
         this.trigger = trigger;
-    }
-
-    public String getTriggerDesc() {
-        return triggerDesc;
-    }
-
-    public void setTriggerDesc(String triggerDesc) {
-        this.triggerDesc = triggerDesc;
     }
 
     public String getTriggerType() {

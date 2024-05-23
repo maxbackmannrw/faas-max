@@ -13,7 +13,6 @@ public class WappMessageTriggerDBModel {
     private String id;
     private String processId;
     private String trigger;
-    private String triggerDesc;
     private String accountId;
     private String account;
     private String wappTitle;
@@ -28,7 +27,7 @@ public class WappMessageTriggerDBModel {
     public WappMessageTriggerDBModel() {
     }
 
-    public WappMessageTriggerDBModel(String account, String accountId, long cDate, List<TriggerDataDAO> datas, String id, String processId, int status, String trigger, String triggerDesc, String triggerType, long typeId, long uDate, String wappBody, String wappTitle) {
+    public WappMessageTriggerDBModel(String account, String accountId, long cDate, List<TriggerDataDAO> datas, String id, String processId, int status, String trigger, String triggerType, long typeId, long uDate, String wappBody, String wappTitle) {
         this.account = account;
         this.accountId = accountId;
         this.cDate = cDate;
@@ -37,7 +36,6 @@ public class WappMessageTriggerDBModel {
         this.processId = processId;
         this.status = status;
         this.trigger = trigger;
-        this.triggerDesc = triggerDesc;
         this.triggerType = triggerType;
         this.typeId = typeId;
         this.uDate = uDate;
@@ -107,14 +105,6 @@ public class WappMessageTriggerDBModel {
 
     public void setTrigger(String trigger) {
         this.trigger = trigger;
-    }
-
-    public String getTriggerDesc() {
-        return triggerDesc;
-    }
-
-    public void setTriggerDesc(String triggerDesc) {
-        this.triggerDesc = triggerDesc;
     }
 
     public String getTriggerType() {

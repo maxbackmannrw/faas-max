@@ -55,7 +55,7 @@ public class ProcessSmsTriggerFramework {
         return null;
     }
 
-    public ProcessSmsTriggerWSDTO createProcessSmsTriggerService(long userId, String processId, String trigger, String triggerDesc, String accountId, String smsTitle, String smsBody, String senderId, long typeId) {
+    public ProcessSmsTriggerWSDTO createProcessSmsTriggerService(long userId, String processId, String trigger, String accountId, String smsTitle, String smsBody, String senderId, long typeId) {
 
         Optional<SmsAccountDBModel> smsAccountDBModel = smsAccountRepository.findById(accountId);
         Optional<TriggerTypeDBModel> triggerTypeDBModel = triggerTypeRepository.findById(typeId);
@@ -64,7 +64,6 @@ public class ProcessSmsTriggerFramework {
             SmsTriggerDBModel smsTriggerDBModel = new SmsTriggerDBModel();
             smsTriggerDBModel.setProcessId(processId);
             smsTriggerDBModel.setTrigger(trigger);
-            smsTriggerDBModel.setTriggerDesc(triggerDesc);
             smsTriggerDBModel.setAccountId(accountId);
             smsTriggerDBModel.setAccount(smsAccountDBModel.get().getAccount());
             smsTriggerDBModel.setSmsTitle(smsTitle);
@@ -82,14 +81,13 @@ public class ProcessSmsTriggerFramework {
         return null;
     }
 
-    public ProcessSmsTriggerWSDTO updateProcessSmsTriggerService(long userId, String triggerId, String trigger, String triggerDesc, String accountId, String smsTitle, String smsBody, String senderId) {
+    public ProcessSmsTriggerWSDTO updateProcessSmsTriggerService(long userId, String triggerId, String trigger, String accountId, String smsTitle, String smsBody, String senderId) {
 
         Optional<SmsTriggerDBModel> processSmsTriggerDBModel = smsTriggerRepository.findById(triggerId);
         Optional<SmsAccountDBModel> smsAccountDBModel = smsAccountRepository.findById(accountId);
         if (processSmsTriggerDBModel.isPresent() && smsAccountDBModel.isPresent()){
 
             processSmsTriggerDBModel.get().setTrigger(trigger);
-            processSmsTriggerDBModel.get().setTriggerDesc(triggerDesc);
             processSmsTriggerDBModel.get().setAccountId(accountId);
             processSmsTriggerDBModel.get().setAccount(smsAccountDBModel.get().getAccount());
             processSmsTriggerDBModel.get().setSmsTitle(smsTitle);

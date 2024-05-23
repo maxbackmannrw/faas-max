@@ -60,13 +60,13 @@ public class ProcessSipTriggerMiddleware {
         return response;
     }
 
-    public ProcessSipTriggerWSModel createProcessSipTrigger(long userId, String processId, String trigger, String triggerDesc, String accountId, String callerId, long typeId) {
+    public ProcessSipTriggerWSModel createProcessSipTrigger(long userId, String processId, String trigger, String accountId, String callerId, long typeId) {
 
         ProcessSipTriggerWSModel response = new ProcessSipTriggerWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessSipTriggerWSDTO> processSipTriggerWSDTOS = new ArrayList<>();
 
-        ProcessSipTriggerWSDTO processSipTriggerWSDTO = processSipTriggerFramework.createProcessSipTriggerService(userId,processId,trigger,triggerDesc,accountId,callerId,typeId);
+        ProcessSipTriggerWSDTO processSipTriggerWSDTO = processSipTriggerFramework.createProcessSipTriggerService(userId,processId,trigger,accountId,callerId,typeId);
         if (processSipTriggerWSDTO != null){
             processSipTriggerWSDTOS.add(processSipTriggerWSDTO);
         }
@@ -81,13 +81,13 @@ public class ProcessSipTriggerMiddleware {
         return response;
     }
 
-    public ProcessSipTriggerWSModel updateProcessSipTrigger(long userId, String triggerId, String trigger, String triggerDesc, String accountId, String callerId) {
+    public ProcessSipTriggerWSModel updateProcessSipTrigger(long userId, String triggerId, String trigger, String accountId, String callerId) {
 
         ProcessSipTriggerWSModel response = new ProcessSipTriggerWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessSipTriggerWSDTO> processSipTriggerWSDTOS = new ArrayList<>();
 
-        ProcessSipTriggerWSDTO processSipTriggerWSDTO = processSipTriggerFramework.updateProcessSipTriggerService(userId,triggerId,trigger,triggerDesc,accountId,callerId);
+        ProcessSipTriggerWSDTO processSipTriggerWSDTO = processSipTriggerFramework.updateProcessSipTriggerService(userId,triggerId,trigger,accountId,callerId);
         if (processSipTriggerWSDTO != null){
             processSipTriggerWSDTOS.add(processSipTriggerWSDTO);
         }

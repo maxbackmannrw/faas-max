@@ -50,7 +50,7 @@ public class ProcessSipTriggerFramework {
         return null;
     }
 
-    public ProcessSipTriggerWSDTO createProcessSipTriggerService(long userId, String processId, String trigger, String triggerDesc, String accountId, String callerId, long typeId) {
+    public ProcessSipTriggerWSDTO createProcessSipTriggerService(long userId, String processId, String trigger, String accountId, String callerId, long typeId) {
 
         Optional<TriggerTypeDBModel> triggerTypeDBModel = triggerTypeRepository.findById(typeId);
         Optional<SipAccountDBModel> sipAccountDBModel = sipAccountRepository.findById(accountId);
@@ -59,7 +59,6 @@ public class ProcessSipTriggerFramework {
             SipTriggerDBModel sipTriggerDBModel = new SipTriggerDBModel();
             sipTriggerDBModel.setProcessId(processId);
             sipTriggerDBModel.setTrigger(trigger);
-            sipTriggerDBModel.setTriggerDesc(triggerDesc);
             sipTriggerDBModel.setAccountId(accountId);
             sipTriggerDBModel.setAccount(sipAccountDBModel.get().getAccount());
             sipTriggerDBModel.setCallerId(callerId);
@@ -75,14 +74,13 @@ public class ProcessSipTriggerFramework {
         return null;
     }
 
-    public ProcessSipTriggerWSDTO updateProcessSipTriggerService(long userId, String triggerId, String trigger, String triggerDesc, String accountId, String callerId) {
+    public ProcessSipTriggerWSDTO updateProcessSipTriggerService(long userId, String triggerId, String trigger, String accountId, String callerId) {
 
         Optional<SipTriggerDBModel> sipTriggerDBModel = sipTriggerRepository.findById(triggerId);
         Optional<SipAccountDBModel> sipAccountDBModel = sipAccountRepository.findById(accountId);
         if (sipTriggerDBModel.isPresent() && sipAccountDBModel.isPresent()){
 
             sipTriggerDBModel.get().setTrigger(trigger);
-            sipTriggerDBModel.get().setTriggerDesc(triggerDesc);
             sipTriggerDBModel.get().setAccountId(accountId);
             sipTriggerDBModel.get().setAccount(sipAccountDBModel.get().getAccount());
             sipTriggerDBModel.get().setCallerId(callerId);

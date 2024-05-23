@@ -50,13 +50,12 @@ public class ProcessWappMessageTriggerController {
     public ResponseEntity<?> createProcessWappMessageTrigger(@RequestParam long userId,
                                                              @RequestParam String processId,
                                                              @RequestParam String trigger,
-                                                             @RequestParam String triggerDesc,
                                                              @RequestParam String accountId,
                                                              @RequestParam String wappTitle,
                                                              @RequestParam String wappBody,
                                                              @RequestParam long typeId) {
 
-        ProcessWappMessageTriggerWSModel response = processWappMessageTriggerMiddleware.createProcessWappMessageTrigger(userId,processId,trigger,triggerDesc,accountId,wappTitle,wappBody,typeId);
+        ProcessWappMessageTriggerWSModel response = processWappMessageTriggerMiddleware.createProcessWappMessageTrigger(userId,processId,trigger,accountId,wappTitle,wappBody,typeId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -68,12 +67,11 @@ public class ProcessWappMessageTriggerController {
     public ResponseEntity<?> updateProcessWappMessageTrigger(@RequestParam long userId,
                                                              @RequestParam String triggerId,
                                                              @RequestParam String trigger,
-                                                             @RequestParam String triggerDesc,
                                                              @RequestParam String accountId,
                                                              @RequestParam String wappTitle,
                                                              @RequestParam String wappBody) {
 
-        ProcessWappMessageTriggerWSModel response = processWappMessageTriggerMiddleware.updateProcessWappMessageTrigger(userId,triggerId,trigger,triggerDesc,accountId,wappTitle,wappBody);
+        ProcessWappMessageTriggerWSModel response = processWappMessageTriggerMiddleware.updateProcessWappMessageTrigger(userId,triggerId,trigger,accountId,wappTitle,wappBody);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
