@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-@RequestMapping(value = AppConstant.API_VERSION + "/base/process/details/trigger/sip/")
+@RequestMapping(value = AppConstant.API_VERSION + "/base/process/details/trigger/temp/sip/")
 public class SipTriggerTempController {
 
 
@@ -45,7 +45,6 @@ public class SipTriggerTempController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.CREATE_SIP_TRIGGER_TEMP, method = RequestMethod.POST)
     public ResponseEntity<?> createSipTriggerTemp(@RequestParam long userId,
@@ -89,6 +88,7 @@ public class SipTriggerTempController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
+
 
 
 }

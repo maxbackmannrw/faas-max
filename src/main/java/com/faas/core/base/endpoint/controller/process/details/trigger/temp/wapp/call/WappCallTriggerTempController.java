@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-@RequestMapping(value = AppConstant.API_VERSION + "/base/process/details/trigger/wapp/call/")
+@RequestMapping(value = AppConstant.API_VERSION + "/base/process/details/trigger/temp/wapp/call/")
 public class WappCallTriggerTempController {
 
 

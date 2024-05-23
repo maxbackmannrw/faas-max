@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-@RequestMapping(value = AppConstant.API_VERSION + "/base/process/details/trigger/email/")
+@RequestMapping(value = AppConstant.API_VERSION + "/base/process/details/trigger/temp/email/")
 public class EmailTriggerTempController {
 
 
@@ -82,7 +82,6 @@ public class EmailTriggerTempController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.REMOVE_EMAIL_TRIGGER_TEMP, method = RequestMethod.POST)
     public ResponseEntity<?> removeEmailTriggerTemp(@RequestParam long userId,

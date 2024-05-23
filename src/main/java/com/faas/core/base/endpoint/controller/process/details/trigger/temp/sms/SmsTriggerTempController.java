@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-@RequestMapping(value = AppConstant.API_VERSION + "/base/process/details/trigger/sms/")
+@RequestMapping(value = AppConstant.API_VERSION + "/base/process/details/trigger/temp/sms/")
 public class SmsTriggerTempController {
 
 

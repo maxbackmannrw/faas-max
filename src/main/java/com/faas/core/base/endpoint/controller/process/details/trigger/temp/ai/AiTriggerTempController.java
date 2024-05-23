@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-@RequestMapping(value = AppConstant.API_VERSION + "/base/process/details/trigger/ai/")
+@RequestMapping(value = AppConstant.API_VERSION + "/base/process/details/trigger/temp/ai/")
 public class AiTriggerTempController {
 
 
