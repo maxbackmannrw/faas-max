@@ -22,11 +22,11 @@ public class ProcessTriggerController {
     ProcessTriggerMiddleware processTriggerMiddleware;
 
 
-    @RequestMapping(value = BaseRoute.GET_PROCESS_TRIGGER_TEMP, method = RequestMethod.POST)
-    public ResponseEntity<?> getProcessTriggerTemp(@RequestParam long userId,
+    @RequestMapping(value = BaseRoute.GET_PROCESS_TRIGGER_TEMPS, method = RequestMethod.POST)
+    public ResponseEntity<?> getProcessTriggerTemps(@RequestParam long userId,
                                                    @RequestParam String processId) {
 
-        ProcessTriggerTempWSModel response = processTriggerMiddleware.getProcessTriggerTemp(userId,processId);
+        ProcessTriggerTempWSModel response = processTriggerMiddleware.getProcessTriggerTemps(userId,processId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

@@ -65,7 +65,7 @@ public class ProcessTriggerFramework {
     @Autowired
     AppUtils appUtils;
 
-    public ProcessTriggerTempWSDTO getProcessTriggerTempService(long userId, String processId) {
+    public ProcessTriggerTempWSDTO getProcessTriggerTempsService(long userId, String processId) {
 
         ProcessTriggerTempWSDTO processTriggerTempWSDTO = new ProcessTriggerTempWSDTO();
         processTriggerTempWSDTO.setAiTriggerTemps(getAITriggerTemps(userId,processId));

@@ -17,17 +17,17 @@ public class ProcessTriggerMiddleware {
     ProcessTriggerFramework processTriggerFramework;
 
 
-    public ProcessTriggerTempWSModel getProcessTriggerTemp(long userId, String processId) {
+    public ProcessTriggerTempWSModel getProcessTriggerTemps(long userId, String processId) {
 
         ProcessTriggerTempWSModel response = new ProcessTriggerTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ProcessTriggerTempWSDTO processTriggerTempWSDTO = processTriggerFramework.getProcessTriggerTempService(userId,processId);
+        ProcessTriggerTempWSDTO processTriggerTempWSDTO = processTriggerFramework.getProcessTriggerTempsService(userId,processId);
         if (processTriggerTempWSDTO != null){
             response.setProcessTriggerTemp(processTriggerTempWSDTO);
         }
 
-        general.setOperation("getProcessTriggerTemp");
+        general.setOperation("getProcessTriggerTemps");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
