@@ -9,7 +9,7 @@ import com.faas.core.base.model.ws.manager.main.MainManagerWSModel;
 import com.faas.core.base.model.ws.manager.main.dto.MainManagerContentWSDTO;
 import com.faas.core.base.model.ws.manager.main.dto.MainManagerWSDTO;
 import com.faas.core.base.model.ws.manager.campaign.content.dto.CampaignManagerWSDTO;
-import com.faas.core.base.model.ws.manager.operation.content.dto.OperationManagerWSDTO;
+import com.faas.core.base.model.ws.operation.manager.content.dto.OperationManagerWSDTO;
 import com.faas.core.base.model.ws.operation.content.OperationWSModel;
 import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
 import com.faas.core.utils.config.AppConstant;

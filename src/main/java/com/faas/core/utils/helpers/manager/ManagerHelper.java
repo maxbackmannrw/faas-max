@@ -8,7 +8,7 @@ import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
 import com.faas.core.base.model.ws.manager.main.dto.MainManagerContentWSDTO;
 import com.faas.core.base.model.ws.manager.campaign.content.dto.CampaignManagerWSDTO;
-import com.faas.core.base.model.ws.manager.operation.content.dto.OperationManagerWSDTO;
+import com.faas.core.base.model.ws.operation.manager.content.dto.OperationManagerWSDTO;
 import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;

@@ -18,8 +18,8 @@ public class WappMessageTempDBModel {
     private String wappBody;
     private long typeId;
     private String messageType;
-    private List<TempDataDAO>tempDatas;
     private List<TempAssetDAO>tempAssets;
+    private List<TempDataDAO>tempDatas;
     private long uDate;
     private long cDate;
     private int status;
@@ -27,90 +27,18 @@ public class WappMessageTempDBModel {
     public WappMessageTempDBModel() {
     }
 
-    public WappMessageTempDBModel(String id, String processId, String wappTitle, String wappBody, long typeId, String messageType, List<TempDataDAO> tempDatas, List<TempAssetDAO> tempAssets, long uDate, long cDate, int status) {
-        this.id = id;
-        this.processId = processId;
-        this.wappTitle = wappTitle;
-        this.wappBody = wappBody;
-        this.typeId = typeId;
-        this.messageType = messageType;
-        this.tempDatas = tempDatas;
-        this.tempAssets = tempAssets;
-        this.uDate = uDate;
+    public WappMessageTempDBModel(long cDate, String id, String messageType, String processId, int status, List<TempAssetDAO> tempAssets, List<TempDataDAO> tempDatas, long typeId, long uDate, String wappBody, String wappTitle) {
         this.cDate = cDate;
-        this.status = status;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
         this.id = id;
-    }
-
-    public String getProcessId() {
-        return processId;
-    }
-
-    public void setProcessId(String processId) {
-        this.processId = processId;
-    }
-
-    public String getWappTitle() {
-        return wappTitle;
-    }
-
-    public void setWappTitle(String wappTitle) {
-        this.wappTitle = wappTitle;
-    }
-
-    public String getWappBody() {
-        return wappBody;
-    }
-
-    public void setWappBody(String wappBody) {
-        this.wappBody = wappBody;
-    }
-
-    public long getTypeId() {
-        return typeId;
-    }
-
-    public void setTypeId(long typeId) {
-        this.typeId = typeId;
-    }
-
-    public String getMessageType() {
-        return messageType;
-    }
-
-    public void setMessageType(String messageType) {
         this.messageType = messageType;
-    }
-
-    public List<TempDataDAO> getTempDatas() {
-        return tempDatas;
-    }
-
-    public void setTempDatas(List<TempDataDAO> tempDatas) {
-        this.tempDatas = tempDatas;
-    }
-
-    public List<TempAssetDAO> getTempAssets() {
-        return tempAssets;
-    }
-
-    public void setTempAssets(List<TempAssetDAO> tempAssets) {
+        this.processId = processId;
+        this.status = status;
         this.tempAssets = tempAssets;
-    }
-
-    public long getuDate() {
-        return uDate;
-    }
-
-    public void setuDate(long uDate) {
+        this.tempDatas = tempDatas;
+        this.typeId = typeId;
         this.uDate = uDate;
+        this.wappBody = wappBody;
+        this.wappTitle = wappTitle;
     }
 
     public long getcDate() {
@@ -121,11 +49,83 @@ public class WappMessageTempDBModel {
         this.cDate = cDate;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getMessageType() {
+        return messageType;
+    }
+
+    public void setMessageType(String messageType) {
+        this.messageType = messageType;
+    }
+
+    public String getProcessId() {
+        return processId;
+    }
+
+    public void setProcessId(String processId) {
+        this.processId = processId;
+    }
+
     public int getStatus() {
         return status;
     }
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public List<TempAssetDAO> getTempAssets() {
+        return tempAssets;
+    }
+
+    public void setTempAssets(List<TempAssetDAO> tempAssets) {
+        this.tempAssets = tempAssets;
+    }
+
+    public List<TempDataDAO> getTempDatas() {
+        return tempDatas;
+    }
+
+    public void setTempDatas(List<TempDataDAO> tempDatas) {
+        this.tempDatas = tempDatas;
+    }
+
+    public long getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(long typeId) {
+        this.typeId = typeId;
+    }
+
+    public long getuDate() {
+        return uDate;
+    }
+
+    public void setuDate(long uDate) {
+        this.uDate = uDate;
+    }
+
+    public String getWappBody() {
+        return wappBody;
+    }
+
+    public void setWappBody(String wappBody) {
+        this.wappBody = wappBody;
+    }
+
+    public String getWappTitle() {
+        return wappTitle;
+    }
+
+    public void setWappTitle(String wappTitle) {
+        this.wappTitle = wappTitle;
     }
 }

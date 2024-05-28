@@ -1,17 +1,17 @@
-package com.faas.core.base.model.ws.manager.main;
+package com.faas.core.base.model.ws.operation.manager.content;
 
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.model.ws.operation.manager.content.dto.OperationManagerWSDTO;
 
-public class MainManagerOperationWSModel {
+public class OperationManagerWSModel {
 
     private GeneralWSModel general;
     private OperationManagerWSDTO operationManager;
 
-    public MainManagerOperationWSModel() {
+    public OperationManagerWSModel() {
     }
 
-    public MainManagerOperationWSModel(GeneralWSModel general, OperationManagerWSDTO operationManager) {
+    public OperationManagerWSModel(GeneralWSModel general, OperationManagerWSDTO operationManager) {
         this.general = general;
         this.operationManager = operationManager;
     }

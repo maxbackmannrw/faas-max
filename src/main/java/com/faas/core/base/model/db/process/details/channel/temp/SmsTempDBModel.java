@@ -18,8 +18,8 @@ public class SmsTempDBModel {
     private String senderId;
     private long typeId;
     private String messageType;
-    private List<TempDataDAO>tempDatas;
     private List<TempAssetDAO>tempAssets;
+    private List<TempDataDAO>tempDatas;
     private long uDate;
     private long cDate;
     private int status;
@@ -27,98 +27,18 @@ public class SmsTempDBModel {
     public SmsTempDBModel() {
     }
 
-    public SmsTempDBModel(String id, String processId, String smsTitle, String smsBody, String senderId, long typeId, String messageType, List<TempDataDAO> tempDatas, List<TempAssetDAO> tempAssets, long uDate, long cDate, int status) {
-        this.id = id;
-        this.processId = processId;
-        this.smsTitle = smsTitle;
-        this.smsBody = smsBody;
-        this.senderId = senderId;
-        this.typeId = typeId;
-        this.messageType = messageType;
-        this.tempDatas = tempDatas;
-        this.tempAssets = tempAssets;
-        this.uDate = uDate;
+    public SmsTempDBModel(long cDate, String id, String messageType, String processId, String senderId, String smsBody, String smsTitle, int status, List<TempAssetDAO> tempAssets, List<TempDataDAO> tempDatas, long typeId, long uDate) {
         this.cDate = cDate;
-        this.status = status;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
         this.id = id;
-    }
-
-    public String getProcessId() {
-        return processId;
-    }
-
-    public void setProcessId(String processId) {
-        this.processId = processId;
-    }
-
-    public String getSmsTitle() {
-        return smsTitle;
-    }
-
-    public void setSmsTitle(String smsTitle) {
-        this.smsTitle = smsTitle;
-    }
-
-    public String getSmsBody() {
-        return smsBody;
-    }
-
-    public void setSmsBody(String smsBody) {
-        this.smsBody = smsBody;
-    }
-
-    public String getSenderId() {
-        return senderId;
-    }
-
-    public void setSenderId(String senderId) {
-        this.senderId = senderId;
-    }
-
-    public long getTypeId() {
-        return typeId;
-    }
-
-    public void setTypeId(long typeId) {
-        this.typeId = typeId;
-    }
-
-    public String getMessageType() {
-        return messageType;
-    }
-
-    public void setMessageType(String messageType) {
         this.messageType = messageType;
-    }
-
-    public List<TempDataDAO> getTempDatas() {
-        return tempDatas;
-    }
-
-    public void setTempDatas(List<TempDataDAO> tempDatas) {
-        this.tempDatas = tempDatas;
-    }
-
-    public List<TempAssetDAO> getTempAssets() {
-        return tempAssets;
-    }
-
-    public void setTempAssets(List<TempAssetDAO> tempAssets) {
+        this.processId = processId;
+        this.senderId = senderId;
+        this.smsBody = smsBody;
+        this.smsTitle = smsTitle;
+        this.status = status;
         this.tempAssets = tempAssets;
-    }
-
-    public long getuDate() {
-        return uDate;
-    }
-
-    public void setuDate(long uDate) {
+        this.tempDatas = tempDatas;
+        this.typeId = typeId;
         this.uDate = uDate;
     }
 
@@ -130,11 +50,91 @@ public class SmsTempDBModel {
         this.cDate = cDate;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getMessageType() {
+        return messageType;
+    }
+
+    public void setMessageType(String messageType) {
+        this.messageType = messageType;
+    }
+
+    public String getProcessId() {
+        return processId;
+    }
+
+    public void setProcessId(String processId) {
+        this.processId = processId;
+    }
+
+    public String getSenderId() {
+        return senderId;
+    }
+
+    public void setSenderId(String senderId) {
+        this.senderId = senderId;
+    }
+
+    public String getSmsBody() {
+        return smsBody;
+    }
+
+    public void setSmsBody(String smsBody) {
+        this.smsBody = smsBody;
+    }
+
+    public String getSmsTitle() {
+        return smsTitle;
+    }
+
+    public void setSmsTitle(String smsTitle) {
+        this.smsTitle = smsTitle;
+    }
+
     public int getStatus() {
         return status;
     }
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public List<TempAssetDAO> getTempAssets() {
+        return tempAssets;
+    }
+
+    public void setTempAssets(List<TempAssetDAO> tempAssets) {
+        this.tempAssets = tempAssets;
+    }
+
+    public List<TempDataDAO> getTempDatas() {
+        return tempDatas;
+    }
+
+    public void setTempDatas(List<TempDataDAO> tempDatas) {
+        this.tempDatas = tempDatas;
+    }
+
+    public long getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(long typeId) {
+        this.typeId = typeId;
+    }
+
+    public long getuDate() {
+        return uDate;
+    }
+
+    public void setuDate(long uDate) {
+        this.uDate = uDate;
     }
 }

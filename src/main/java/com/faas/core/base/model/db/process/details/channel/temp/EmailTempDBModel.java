@@ -18,8 +18,8 @@ public class EmailTempDBModel {
     private String emailSender;
     private long typeId;
     private String emailType;
-    private List<TempDataDAO>tempDatas;
     private List<TempAssetDAO>tempAssets;
+    private List<TempDataDAO>tempDatas;
     private long uDate;
     private long cDate;
     private int status;
@@ -27,43 +27,27 @@ public class EmailTempDBModel {
     public EmailTempDBModel() {
     }
 
-    public EmailTempDBModel(String id, String processId, String emailSubject, String emailBody, String emailSender, long typeId, String emailType, List<TempDataDAO> tempDatas, List<TempAssetDAO> tempAssets, long uDate, long cDate, int status) {
-        this.id = id;
-        this.processId = processId;
-        this.emailSubject = emailSubject;
+    public EmailTempDBModel(long cDate, String emailBody, String emailSender, String emailSubject, String emailType, String id, String processId, int status, List<TempAssetDAO> tempAssets, List<TempDataDAO> tempDatas, long typeId, long uDate) {
+        this.cDate = cDate;
         this.emailBody = emailBody;
         this.emailSender = emailSender;
-        this.typeId = typeId;
-        this.emailType = emailType;
-        this.tempDatas = tempDatas;
-        this.tempAssets = tempAssets;
-        this.uDate = uDate;
-        this.cDate = cDate;
-        this.status = status;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getProcessId() {
-        return processId;
-    }
-
-    public void setProcessId(String processId) {
-        this.processId = processId;
-    }
-
-    public String getEmailSubject() {
-        return emailSubject;
-    }
-
-    public void setEmailSubject(String emailSubject) {
         this.emailSubject = emailSubject;
+        this.emailType = emailType;
+        this.id = id;
+        this.processId = processId;
+        this.status = status;
+        this.tempAssets = tempAssets;
+        this.tempDatas = tempDatas;
+        this.typeId = typeId;
+        this.uDate = uDate;
+    }
+
+    public long getcDate() {
+        return cDate;
+    }
+
+    public void setcDate(long cDate) {
+        this.cDate = cDate;
     }
 
     public String getEmailBody() {
@@ -82,12 +66,12 @@ public class EmailTempDBModel {
         this.emailSender = emailSender;
     }
 
-    public long getTypeId() {
-        return typeId;
+    public String getEmailSubject() {
+        return emailSubject;
     }
 
-    public void setTypeId(long typeId) {
-        this.typeId = typeId;
+    public void setEmailSubject(String emailSubject) {
+        this.emailSubject = emailSubject;
     }
 
     public String getEmailType() {
@@ -98,12 +82,28 @@ public class EmailTempDBModel {
         this.emailType = emailType;
     }
 
-    public List<TempDataDAO> getTempDatas() {
-        return tempDatas;
+    public String getId() {
+        return id;
     }
 
-    public void setTempDatas(List<TempDataDAO> tempDatas) {
-        this.tempDatas = tempDatas;
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getProcessId() {
+        return processId;
+    }
+
+    public void setProcessId(String processId) {
+        this.processId = processId;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public List<TempAssetDAO> getTempAssets() {
@@ -114,27 +114,27 @@ public class EmailTempDBModel {
         this.tempAssets = tempAssets;
     }
 
+    public List<TempDataDAO> getTempDatas() {
+        return tempDatas;
+    }
+
+    public void setTempDatas(List<TempDataDAO> tempDatas) {
+        this.tempDatas = tempDatas;
+    }
+
+    public long getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(long typeId) {
+        this.typeId = typeId;
+    }
+
     public long getuDate() {
         return uDate;
     }
 
     public void setuDate(long uDate) {
         this.uDate = uDate;
-    }
-
-    public long getcDate() {
-        return cDate;
-    }
-
-    public void setcDate(long cDate) {
-        this.cDate = cDate;
-    }
-
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
     }
 }
