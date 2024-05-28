@@ -1,6 +1,5 @@
 package com.faas.core.base.model.db.process.content.dao;
 
-
 import java.util.List;
 
 public class ProcessInquiryDAO {
