@@ -24,7 +24,7 @@ public class ProcessTriggerController {
 
     @RequestMapping(value = BaseRoute.GET_PROCESS_TRIGGER_TEMPS, method = RequestMethod.POST)
     public ResponseEntity<?> getProcessTriggerTemps(@RequestParam long userId,
-                                                   @RequestParam String processId) {
+                                                    @RequestParam String processId) {
 
         ProcessTriggerTempWSModel response = processTriggerMiddleware.getProcessTriggerTemps(userId,processId);
 

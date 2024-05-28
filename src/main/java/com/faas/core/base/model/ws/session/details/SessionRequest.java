@@ -1,6 +1,6 @@
-package com.faas.core.base.model.ws.client.session.details;
+package com.faas.core.base.model.ws.session.details;
 
-import com.faas.core.base.model.ws.client.session.details.dto.SessionRequestDTO;
+import com.faas.core.base.model.ws.session.details.dto.SessionRequestDTO;
 
 import java.util.List;
 

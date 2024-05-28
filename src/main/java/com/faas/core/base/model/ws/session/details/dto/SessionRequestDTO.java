@@ -1,4 +1,4 @@
-package com.faas.core.base.model.ws.client.session.details.dto;
+package com.faas.core.base.model.ws.session.details.dto;
 
 public class SessionRequestDTO {
 

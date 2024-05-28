@@ -1,4 +1,4 @@
-package com.faas.core.base.model.ws.client.session.content.dto;
+package com.faas.core.base.model.ws.session.content.dto;
 
 import com.faas.core.base.model.db.client.content.ClientDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;

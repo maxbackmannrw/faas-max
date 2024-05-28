@@ -1,7 +1,7 @@
-package com.faas.core.base.model.ws.client.session.details;
+package com.faas.core.base.model.ws.session.details;
 
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.client.session.details.dto.SessionDetailsWSDTO;
+import com.faas.core.base.model.ws.session.details.dto.SessionDetailsWSDTO;
 
 import java.util.List;
 

@@ -1,22 +1,18 @@
-package com.faas.core.base.middleware.client.session.details;
+package com.faas.core.base.middleware.session.details;
 
-import com.faas.core.base.framework.client.session.details.ClientSessionDetailsFramework;
+import com.faas.core.base.framework.session.details.SessionDetailsFramework;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.client.session.details.SessionDetailsWSModel;
+import com.faas.core.base.model.ws.session.details.SessionDetailsWSModel;
 import com.faas.core.utils.config.AppConstant;
-import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ClientSessionDetailsMiddleware {
+public class SessionDetailsMiddleware {
 
 
     @Autowired
-    ClientSessionDetailsFramework clientSessionDetailsFramework;
-
-    @Autowired
-    AppUtils appUtils;
+    SessionDetailsFramework sessionDetailsFramework;
 
 
     public SessionDetailsWSModel getSessionDetails(long userId, String sessionId) {
