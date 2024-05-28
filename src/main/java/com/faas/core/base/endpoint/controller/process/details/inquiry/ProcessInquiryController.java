@@ -2,7 +2,6 @@ package com.faas.core.base.endpoint.controller.process.details.inquiry;
 
 import com.faas.core.base.middleware.process.details.inquiry.ProcessInquiryMiddleware;
 import com.faas.core.base.model.ws.process.details.content.ProcessDataWSModel;
-import com.faas.core.base.model.ws.process.details.remote.ProcessRemoteWSModel;
 import com.faas.core.base.model.ws.process.details.inquiry.ProcessInquiryWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
