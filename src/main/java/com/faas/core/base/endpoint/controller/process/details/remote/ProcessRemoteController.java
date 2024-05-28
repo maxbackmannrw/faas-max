@@ -87,18 +87,6 @@ public class ProcessRemoteController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-    @RequestMapping(value = BaseRoute.GET_PROCESS_REMOTE_URLS, method = RequestMethod.POST)
-    public ResponseEntity<?> getProcessRemoteUrls(@RequestParam long userId,
-                                                  @RequestParam String processId) {
-
-        RemoteUrlWSModel response = processRemoteMiddleware.getProcessRemoteUrls(userId,processId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
 
 
 }

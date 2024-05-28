@@ -346,7 +346,7 @@ public class BaseRoute {
     public static final String GET_PROCESS_REMOTE = "getprocessremote";
     public static final String CREATE_PROCESS_REMOTE = "createprocessremote";
     public static final String REMOVE_PROCESS_REMOTE = "removeprocessremote";
-    public static final String GET_PROCESS_REMOTE_URLS = "getprocessremoteurls";
+
 
 
     public static final String GET_PROCESS_SCRIPTS = "getprocessscripts";
