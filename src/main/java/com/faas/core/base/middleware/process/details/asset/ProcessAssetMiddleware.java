@@ -5,7 +5,6 @@ import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.model.ws.process.details.assets.ProcessAssetWSModel;
 import com.faas.core.base.model.ws.process.details.assets.dto.ProcessAssetWSDTO;
 import com.faas.core.utils.config.AppConstant;
-import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,11 +15,9 @@ import java.util.List;
 @Component
 public class ProcessAssetMiddleware {
 
-    @Autowired
-    ProcessAssetFramework processAssetFramework;
 
     @Autowired
-    AppUtils appUtils;
+    ProcessAssetFramework processAssetFramework;
 
 
     public ProcessAssetWSModel getProcessAssets(long userId, String processId) {
@@ -32,7 +29,7 @@ public class ProcessAssetMiddleware {
 
 
         response.setProcessAssets(processAssetWSDTOS);
-        general.setOperation("getProcessActions");
+        general.setOperation("getProcessAssets");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -51,7 +48,7 @@ public class ProcessAssetMiddleware {
 
 
         response.setProcessAssets(processAssetWSDTOS);
-        general.setOperation("getProcessActions");
+        general.setOperation("getProcessAsset");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -70,7 +67,7 @@ public class ProcessAssetMiddleware {
 
 
         response.setProcessAssets(processAssetWSDTOS);
-        general.setOperation("getProcessActions");
+        general.setOperation("createProcessAsset");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -89,7 +86,7 @@ public class ProcessAssetMiddleware {
 
 
         response.setProcessAssets(processAssetWSDTOS);
-        general.setOperation("getProcessActions");
+        general.setOperation("updateProcessAsset");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -108,7 +105,7 @@ public class ProcessAssetMiddleware {
 
 
         response.setProcessAssets(processAssetWSDTOS);
-        general.setOperation("getProcessActions");
+        general.setOperation("removeProcessAsset");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

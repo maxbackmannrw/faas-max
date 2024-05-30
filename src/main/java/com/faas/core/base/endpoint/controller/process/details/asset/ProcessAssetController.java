@@ -24,7 +24,7 @@ public class ProcessAssetController {
 
     @RequestMapping(value = BaseRoute.GET_PROCESS_ASSETS, method = RequestMethod.POST)
     public ResponseEntity<?> getProcessAssets(@RequestParam long userId,
-                                               @RequestParam String processId) {
+                                              @RequestParam String processId) {
 
         ProcessAssetWSModel response = processAssetMiddleware.getProcessAssets(userId, processId);
 
@@ -37,7 +37,7 @@ public class ProcessAssetController {
 
     @RequestMapping(value = BaseRoute.GET_PROCESS_ASSET, method = RequestMethod.POST)
     public ResponseEntity<?> getProcessAsset(@RequestParam long userId,
-                                              @RequestParam String processId) {
+                                             @RequestParam String processId) {
 
         ProcessAssetWSModel response = processAssetMiddleware.getProcessAsset(userId, processId);
 
@@ -50,7 +50,7 @@ public class ProcessAssetController {
 
     @RequestMapping(value = BaseRoute.CREATE_PROCESS_ASSET, method = RequestMethod.POST)
     public ResponseEntity<?> createProcessAsset(@RequestParam long userId,
-                                             @RequestParam String processId) {
+                                                @RequestParam String processId) {
 
         ProcessAssetWSModel response = processAssetMiddleware.createProcessAsset(userId, processId);
 
@@ -86,4 +86,6 @@ public class ProcessAssetController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
+
+
 }
