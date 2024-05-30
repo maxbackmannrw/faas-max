@@ -1,11 +1,11 @@
 package com.faas.core.base.model.ws.process.details.trigger.content.dto;
 
-import com.faas.core.base.model.ws.process.details.trigger.temp.ai.dto.AITriggerTempWSDTO;
-import com.faas.core.base.model.ws.process.details.trigger.temp.email.dto.EmailTriggerTempWSDTO;
-import com.faas.core.base.model.ws.process.details.trigger.temp.sip.dto.SipTriggerTempWSDTO;
-import com.faas.core.base.model.ws.process.details.trigger.temp.sms.dto.SmsTriggerTempWSDTO;
-import com.faas.core.base.model.ws.process.details.trigger.temp.wapp.call.dto.WappCallTriggerTempWSDTO;
-import com.faas.core.base.model.ws.process.details.trigger.temp.wapp.message.dto.WappMessageTriggerTempWSDTO;
+import com.faas.core.base.model.ws.process.details.trigger.temp.dto.AITriggerTempWSDTO;
+import com.faas.core.base.model.ws.process.details.trigger.temp.dto.EmailTriggerTempWSDTO;
+import com.faas.core.base.model.ws.process.details.trigger.temp.dto.SipTriggerTempWSDTO;
+import com.faas.core.base.model.ws.process.details.trigger.temp.dto.SmsTriggerTempWSDTO;
+import com.faas.core.base.model.ws.process.details.trigger.temp.dto.WappCallTriggerTempWSDTO;
+import com.faas.core.base.model.ws.process.details.trigger.temp.dto.WappMessageTriggerTempWSDTO;
 
 import java.util.List;
 

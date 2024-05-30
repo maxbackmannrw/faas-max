@@ -16,7 +16,7 @@ public class ProcessDetailsWSDTO {
     private ProcessChannelWSDTO processChannels;
     private ProcessTriggerTempWSDTO processTriggerTemp;
     private List<ProcessScenarioWSDTO> processScenarios;
-    private List<ProcessRemoteWSDTO>processRemotes;
+    private List<ProcessRemoteWSDTO> processRemotes;
 
     public ProcessDetailsWSDTO() {
     }
