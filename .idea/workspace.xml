@@ -8,19 +8,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/process/details/asset/ProcessAssetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/process/details/asset/ProcessAssetController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/process/details/trigger/temp/EmailTriggerTempController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/process/details/trigger/temp/EmailTriggerTempController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/process/details/trigger/temp/SmsTriggerTempController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/process/details/trigger/temp/SmsTriggerTempController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/process/details/trigger/temp/WappTriggerTempController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/process/details/trigger/temp/WappTriggerTempController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/trigger/temp/AiTriggerTempFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/trigger/temp/AiTriggerTempFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/trigger/temp/EmailTriggerTempFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/trigger/temp/EmailTriggerTempFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/trigger/temp/SipTriggerTempFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/trigger/temp/SipTriggerTempFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/trigger/temp/SmsTriggerTempFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/trigger/temp/SmsTriggerTempFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/asset/ProcessAssetMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/asset/ProcessAssetMiddleware.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/trigger/temp/EmailTriggerTempMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/trigger/temp/EmailTriggerTempMiddleware.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/trigger/temp/SipTriggerTempMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/trigger/temp/SipTriggerTempMiddleware.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/trigger/temp/SmsTriggerTempMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/trigger/temp/ProcessSmsTriggerTempMiddleware.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/trigger/temp/WappTriggerTempMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/trigger/temp/ProcessWappTriggerTempMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/trigger/temp/WappTriggerTempMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/trigger/temp/WappTriggerTempMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/config/BaseRoute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utils/config/BaseRoute.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -1049,15 +1039,14 @@
       <workItem from="1717023823934" duration="99000" />
       <workItem from="1717073111520" duration="87000" />
       <workItem from="1717073259502" duration="2845000" />
-      <workItem from="1717086242438" duration="3387000" />
-    </task>
-    <task id="LOCAL-00846" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1712944748422</created>
-      <option name="number" value="00846" />
-      <option name="presentableId" value="LOCAL-00846" />
-      <option name="project" value="LOCAL" />
-      <updated>1712944748422</updated>
+      <workItem from="1717086242438" duration="3974000" />
+      <workItem from="1717102140275" duration="485000" />
+      <workItem from="1717250601216" duration="559000" />
+      <workItem from="1717267801932" duration="3535000" />
+      <workItem from="1717318502630" duration="1047000" />
+      <workItem from="1717330718981" duration="306000" />
+      <workItem from="1717337933060" duration="6523000" />
+      <workItem from="1717530687489" duration="592000" />
     </task>
     <task id="LOCAL-00847" summary="almost finish">
       <option name="closed" value="true" />
@@ -1443,7 +1432,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717095032508</updated>
     </task>
-    <option name="localTasksCounter" value="895" />
+    <task id="LOCAL-00895" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1717096270090</created>
+      <option name="number" value="00895" />
+      <option name="presentableId" value="LOCAL-00895" />
+      <option name="project" value="LOCAL" />
+      <updated>1717096270090</updated>
+    </task>
+    <option name="localTasksCounter" value="896" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

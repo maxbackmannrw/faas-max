@@ -380,29 +380,17 @@ public class BaseRoute {
 
     public static final String GET_PROCESS_TRIGGER_TEMPS = "getprocesstriggertemps";
 
-    public static final String GET_AI_TRIGGER_TEMPS = "getaitriggertemps";
-    public static final String GET_AI_TRIGGER_TEMP = "getaitriggertemp";
-    public static final String CREATE_AI_TRIGGER_TEMP = "createaitriggertemp";
-    public static final String UPDATE_AI_TRIGGER_TEMP = "updateaitriggertemp";
-    public static final String REMOVE_AI_TRIGGER_TEMP = "removeaitriggertemp";
-
-    public static final String GET_EMAIL_TRIGGER_TEMPS = "getemailtriggertemps";
-    public static final String GET_EMAIL_TRIGGER_TEMP = "getemailtriggertemp";
-    public static final String CREATE_EMAIL_TRIGGER_TEMP = "createemailtriggertemp";
-    public static final String UPDATE_EMAIL_TRIGGER_TEMP = "updateemailtriggertemp";
-    public static final String REMOVE_EMAIL_TRIGGER_TEMP = "removeemailtriggertemp";
-
-    public static final String GET_SIP_TRIGGER_TEMPS = "getsiptriggertemps";
-    public static final String GET_SIP_TRIGGER_TEMP = "getsiptriggertemp";
-    public static final String CREATE_SIP_TRIGGER_TEMP = "createsiptriggertemp";
-    public static final String UPDATE_SIP_TRIGGER_TEMP = "updatesiptriggertemp";
-    public static final String REMOVE_SIP_TRIGGER_TEMP = "removesiptriggertemp";
-
     public static final String GET_SMS_TRIGGER_TEMPS = "getsmstriggertemps";
     public static final String GET_SMS_TRIGGER_TEMP = "getsmstriggertemp";
     public static final String CREATE_SMS_TRIGGER_TEMP = "createsmstriggertemp";
     public static final String UPDATE_SMS_TRIGGER_TEMP = "updatesmstriggertemp";
     public static final String REMOVE_SMS_TRIGGER_TEMP = "removesmstriggertemp";
+
+    public static final String GET_WAPP_MESSAGE_TRIGGER_TEMPS = "getwappmessagetriggertemps";
+    public static final String GET_WAPP_MESSAGE_TRIGGER_TEMP = "getwappmessagetriggertemp";
+    public static final String CREATE_WAPP_MESSAGE_TRIGGER_TEMP = "createwappmessagetriggertemp";
+    public static final String UPDATE_WAPP_MESSAGE_TRIGGER_TEMP = "updatewappmessagetriggertemp";
+    public static final String REMOVE_WAPP_MESSAGE_TRIGGER_TEMP = "removewappmessagetriggertemp";
 
     public static final String GET_WAPP_CALL_TRIGGER_TEMPS = "getwappcalltriggertemps";
     public static final String GET_WAPP_CALL_TRIGGER_TEMP = "getwappcalltriggertemp";
@@ -410,11 +398,23 @@ public class BaseRoute {
     public static final String UPDATE_WAPP_CALL_TRIGGER_TEMP = "updatewappcalltriggertemp";
     public static final String REMOVE_WAPP_CALL_TRIGGER_TEMP = "removewappcalltriggertemp";
 
-    public static final String GET_WAPP_MESSAGE_TRIGGER_TEMPS = "getwappmessagetriggertemps";
-    public static final String GET_WAPP_MESSAGE_TRIGGER_TEMP = "getwappmessagetriggertemp";
-    public static final String CREATE_WAPP_MESSAGE_TRIGGER_TEMP = "createwappmessagetriggertemp";
-    public static final String UPDATE_WAPP_MESSAGE_TRIGGER_TEMP = "updatewappmessagetriggertemp";
-    public static final String REMOVE_WAPP_MESSAGE_TRIGGER_TEMP = "removewappmessagetriggertemp";
+    public static final String GET_SIP_TRIGGER_TEMPS = "getsiptriggertemps";
+    public static final String GET_SIP_TRIGGER_TEMP = "getsiptriggertemp";
+    public static final String CREATE_SIP_TRIGGER_TEMP = "createsiptriggertemp";
+    public static final String UPDATE_SIP_TRIGGER_TEMP = "updatesiptriggertemp";
+    public static final String REMOVE_SIP_TRIGGER_TEMP = "removesiptriggertemp";
+
+    public static final String GET_EMAIL_TRIGGER_TEMPS = "getemailtriggertemps";
+    public static final String GET_EMAIL_TRIGGER_TEMP = "getemailtriggertemp";
+    public static final String CREATE_EMAIL_TRIGGER_TEMP = "createemailtriggertemp";
+    public static final String UPDATE_EMAIL_TRIGGER_TEMP = "updateemailtriggertemp";
+    public static final String REMOVE_EMAIL_TRIGGER_TEMP = "removeemailtriggertemp";
+
+    public static final String GET_AI_TRIGGER_TEMPS = "getaitriggertemps";
+    public static final String GET_AI_TRIGGER_TEMP = "getaitriggertemp";
+    public static final String CREATE_AI_TRIGGER_TEMP = "createaitriggertemp";
+    public static final String UPDATE_AI_TRIGGER_TEMP = "updateaitriggertemp";
+    public static final String REMOVE_AI_TRIGGER_TEMP = "removeaitriggertemp";
 
 
 

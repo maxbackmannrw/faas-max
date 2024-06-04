@@ -126,6 +126,7 @@ public class WappTriggerTempMiddleware {
     }
 
 
+
     public WappMessageTriggerTempWSModel getWappMessageTriggerTemps(long userId, String processId) {
 
         WappMessageTriggerTempWSModel response = new WappMessageTriggerTempWSModel();
