@@ -1,7 +1,7 @@
-package com.faas.core.base.model.ws.process.details.inquiry;
+package com.faas.core.base.model.ws.process.details.content;
 
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.process.details.inquiry.dto.ProcessInquiryWSDTO;
+import com.faas.core.base.model.ws.process.details.content.dto.ProcessInquiryWSDTO;
 
 
 public class ProcessInquiryWSModel {

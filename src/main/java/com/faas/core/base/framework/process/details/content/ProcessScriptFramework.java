@@ -1,12 +1,11 @@
-package com.faas.core.base.framework.process.details.script;
+package com.faas.core.base.framework.process.details.content;
 
 import com.faas.core.base.model.db.process.content.ProcessDBModel;
 import com.faas.core.base.model.db.process.content.dao.ProcessScriptDAO;
-import com.faas.core.base.model.ws.process.details.script.dto.ProcessScriptWSDTO;
+import com.faas.core.base.model.ws.process.details.content.dto.ProcessScriptWSDTO;
 import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

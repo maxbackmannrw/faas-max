@@ -1,4 +1,4 @@
-package com.faas.core.base.model.ws.process.details.flow.dto;
+package com.faas.core.base.model.ws.process.details.content.dto;
 
 import com.faas.core.base.model.db.process.content.dao.ProcessFlowDAO;
 

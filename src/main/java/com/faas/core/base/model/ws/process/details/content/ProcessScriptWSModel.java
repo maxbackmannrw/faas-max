@@ -1,7 +1,7 @@
-package com.faas.core.base.model.ws.process.details.script;
+package com.faas.core.base.model.ws.process.details.content;
 
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.process.details.script.dto.ProcessScriptWSDTO;
+import com.faas.core.base.model.ws.process.details.content.dto.ProcessScriptWSDTO;
 
 import java.util.List;
 

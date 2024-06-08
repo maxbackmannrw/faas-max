@@ -1,9 +1,9 @@
-package com.faas.core.base.middleware.process.details.script;
+package com.faas.core.base.middleware.process.details.content;
 
-import com.faas.core.base.framework.process.details.script.ProcessScriptFramework;
+import com.faas.core.base.framework.process.details.content.ProcessScriptFramework;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.process.details.script.ProcessScriptWSModel;
-import com.faas.core.base.model.ws.process.details.script.dto.ProcessScriptWSDTO;
+import com.faas.core.base.model.ws.process.details.content.ProcessScriptWSModel;
+import com.faas.core.base.model.ws.process.details.content.dto.ProcessScriptWSDTO;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

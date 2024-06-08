@@ -1,10 +1,10 @@
-package com.faas.core.base.framework.process.details.flow;
+package com.faas.core.base.framework.process.details.content;
 
 import com.faas.core.base.model.db.process.content.ProcessDBModel;
 import com.faas.core.base.model.db.process.content.dao.ProcessDataDAO;
 import com.faas.core.base.model.db.utility.DataTypeDBModel;
 import com.faas.core.base.model.ws.process.details.content.dto.ProcessDataWSDTO;
-import com.faas.core.base.model.ws.process.details.flow.dto.ProcessFlowWSDTO;
+import com.faas.core.base.model.ws.process.details.content.dto.ProcessFlowWSDTO;
 import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.remote.content.RemoteRepository;
 import com.faas.core.base.repo.utility.DataTypeRepository;

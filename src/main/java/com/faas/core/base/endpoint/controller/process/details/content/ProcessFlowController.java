@@ -1,8 +1,8 @@
-package com.faas.core.base.endpoint.controller.process.details.flow;
+package com.faas.core.base.endpoint.controller.process.details.content;
 
-import com.faas.core.base.middleware.process.details.flow.ProcessFlowMiddleware;
+import com.faas.core.base.middleware.process.details.content.ProcessFlowMiddleware;
 import com.faas.core.base.model.ws.process.details.content.ProcessDataWSModel;
-import com.faas.core.base.model.ws.process.details.flow.ProcessFlowWSModel;
+import com.faas.core.base.model.ws.process.details.content.ProcessFlowWSModel;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;
