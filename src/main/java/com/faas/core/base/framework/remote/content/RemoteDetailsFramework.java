@@ -2,14 +2,14 @@ package com.faas.core.base.framework.remote.content;
 
 import com.faas.core.base.model.db.remote.content.RemoteDBModel;
 import com.faas.core.base.model.db.remote.content.dao.RemoteDataDAO;
-import com.faas.core.base.model.db.utility.DataTypeDBModel;
-import com.faas.core.base.model.db.utility.UrlDBModel;
+import com.faas.core.base.model.db.utils.DataTypeDBModel;
+import com.faas.core.base.model.db.utils.UrlDBModel;
 import com.faas.core.base.model.ws.remote.content.dto.RemoteDataWSDTO;
 import com.faas.core.base.model.ws.remote.content.dto.RemoteDetailsWSDTO;
 import com.faas.core.base.model.ws.remote.content.dto.RemoteUrlWSDTO;
 import com.faas.core.base.repo.remote.content.RemoteRepository;
-import com.faas.core.base.repo.utility.DataTypeRepository;
-import com.faas.core.base.repo.utility.UrlRepository;
+import com.faas.core.base.repo.utils.DataTypeRepository;
+import com.faas.core.base.repo.utils.UrlRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.remote.RemoteHelper;

@@ -37,7 +37,7 @@ import com.faas.core.base.repo.process.details.remote.ProcessRemoteRepository;
 import com.faas.core.base.repo.process.details.scenario.ProcessScenarioRepository;
 import com.faas.core.base.repo.process.details.trigger.*;
 import com.faas.core.base.repo.scenario.content.ScenarioRepository;
-import com.faas.core.base.repo.utility.UrlRepository;
+import com.faas.core.base.repo.utils.UrlRepository;
 import com.faas.core.utils.config.AppConstant;
 import com.faas.core.utils.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
