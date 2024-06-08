@@ -42,7 +42,6 @@ public class ProcessDetailsMiddleware {
         return response;
     }
 
-
     public ProcessDataWSModel getProcessDatas(long userId, String processId) {
 
         ProcessDataWSModel response = new ProcessDataWSModel();
@@ -59,7 +58,6 @@ public class ProcessDetailsMiddleware {
 
         return response;
     }
-
 
     public ProcessDataWSModel getProcessData(long userId, String processId, String dataId) {
 
@@ -78,7 +76,6 @@ public class ProcessDetailsMiddleware {
 
         return response;
     }
-
 
     public ProcessDataWSModel createProcessData(long userId,String processId,long typeId,String value) {
 
@@ -101,7 +98,6 @@ public class ProcessDetailsMiddleware {
         return response;
     }
 
-
     public ProcessDataWSModel updateProcessData(long userId,String processId,String dataId,long typeId,String value) {
 
         ProcessDataWSModel response = new ProcessDataWSModel();
@@ -123,7 +119,6 @@ public class ProcessDetailsMiddleware {
         return response;
     }
 
-
     public ProcessDataWSModel removeProcessData(long userId,String processId,String dataId) {
 
         ProcessDataWSModel response = new ProcessDataWSModel();
@@ -144,5 +139,6 @@ public class ProcessDetailsMiddleware {
 
         return response;
     }
+
 
 }

@@ -35,7 +35,6 @@ public class ProcessDetailsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.GET_PROCESS_DATAS, method = RequestMethod.POST)
     public ResponseEntity<?> getProcessDatas(@RequestParam long userId,
                                              @RequestParam String processId) {
@@ -47,7 +46,6 @@ public class ProcessDetailsController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.GET_PROCESS_DATA, method = RequestMethod.POST)
     public ResponseEntity<?> getProcessData(@RequestParam long userId,
@@ -62,7 +60,6 @@ public class ProcessDetailsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.CREATE_PROCESS_DATA, method = RequestMethod.POST)
     public ResponseEntity<?> createProcessData(@RequestParam long userId,
                                                @RequestParam String processId,
@@ -76,7 +73,6 @@ public class ProcessDetailsController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.UPDATE_PROCESS_DATA, method = RequestMethod.POST)
     public ResponseEntity<?> updateProcessData(@RequestParam long userId,
@@ -93,7 +89,6 @@ public class ProcessDetailsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.REMOVE_PROCESS_DATA, method = RequestMethod.POST)
     public ResponseEntity<?> removeProcessData(@RequestParam long userId,
                                                @RequestParam String processId,
@@ -106,5 +101,6 @@ public class ProcessDetailsController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
+
 
 }

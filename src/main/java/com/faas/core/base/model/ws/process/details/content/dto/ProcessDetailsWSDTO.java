@@ -5,7 +5,7 @@ import com.faas.core.base.model.ws.process.details.channel.content.dto.ProcessCh
 import com.faas.core.base.model.ws.process.details.channel.temp.dto.ProcessTempWSDTO;
 import com.faas.core.base.model.ws.process.details.remote.dto.ProcessRemoteWSDTO;
 import com.faas.core.base.model.ws.process.details.scenario.dto.ProcessScenarioWSDTO;
-import com.faas.core.base.model.ws.process.details.trigger.content.dto.ProcessTriggerTempWSDTO;
+import com.faas.core.base.model.ws.process.details.trigger.content.dto.ProcessTriggerWSDTO;
 
 import java.util.List;
 
@@ -14,20 +14,20 @@ public class ProcessDetailsWSDTO {
     private ProcessDBModel process;
     private ProcessTempWSDTO processTemp;
     private ProcessChannelWSDTO processChannels;
-    private ProcessTriggerTempWSDTO processTriggerTemp;
+    private ProcessTriggerWSDTO processTrigger;
     private List<ProcessScenarioWSDTO> processScenarios;
     private List<ProcessRemoteWSDTO> processRemotes;
 
     public ProcessDetailsWSDTO() {
     }
 
-    public ProcessDetailsWSDTO(ProcessDBModel process, ProcessChannelWSDTO processChannels, List<ProcessRemoteWSDTO> processRemotes, List<ProcessScenarioWSDTO> processScenarios, ProcessTempWSDTO processTemp, ProcessTriggerTempWSDTO processTriggerTemp) {
+    public ProcessDetailsWSDTO(ProcessDBModel process, ProcessChannelWSDTO processChannels, List<ProcessRemoteWSDTO> processRemotes, List<ProcessScenarioWSDTO> processScenarios, ProcessTempWSDTO processTemp, ProcessTriggerWSDTO processTrigger) {
         this.process = process;
         this.processChannels = processChannels;
         this.processRemotes = processRemotes;
         this.processScenarios = processScenarios;
         this.processTemp = processTemp;
-        this.processTriggerTemp = processTriggerTemp;
+        this.processTrigger = processTrigger;
     }
 
     public ProcessDBModel getProcess() {
@@ -70,11 +70,11 @@ public class ProcessDetailsWSDTO {
         this.processTemp = processTemp;
     }
 
-    public ProcessTriggerTempWSDTO getProcessTriggerTemp() {
-        return processTriggerTemp;
+    public ProcessTriggerWSDTO getProcessTrigger() {
+        return processTrigger;
     }
 
-    public void setProcessTriggerTemp(ProcessTriggerTempWSDTO processTriggerTemp) {
-        this.processTriggerTemp = processTriggerTemp;
+    public void setProcessTrigger(ProcessTriggerWSDTO processTrigger) {
+        this.processTrigger = processTrigger;
     }
 }
