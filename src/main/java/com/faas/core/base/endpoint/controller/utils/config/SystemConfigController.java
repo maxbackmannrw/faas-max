@@ -1,6 +1,6 @@
 package com.faas.core.base.endpoint.controller.utils.config;
 
-import com.faas.core.base.middleware.utils.config.ConfigUtilsMiddleware;
+import com.faas.core.base.middleware.utils.config.SystemConfigMiddleware;
 import com.faas.core.base.model.ws.utils.config.CityWSModel;
 import com.faas.core.base.model.ws.utils.config.CountryWSModel;
 import com.faas.core.base.model.ws.utils.config.DataTypeWSModel;
@@ -18,17 +18,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping(value = AppConstant.API_VERSION + "/base/utils/config/")
-public class ConfigUtilsController {
+public class SystemConfigController {
 
 
     @Autowired
-    ConfigUtilsMiddleware configUtilsMiddleware;
+    SystemConfigMiddleware systemConfigMiddleware;
 
 
     @RequestMapping(value = BaseRoute.GET_ALL_DATA_TYPES, method = RequestMethod.POST)
     public ResponseEntity<?> getAllDataTypes(@RequestParam long userId) {
 
-        DataTypeWSModel response = configUtilsMiddleware.getAllDataTypes(userId);
+        DataTypeWSModel response = systemConfigMiddleware.getAllDataTypes(userId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -40,7 +40,7 @@ public class ConfigUtilsController {
     public ResponseEntity<?> getBaseDataTypes(@RequestParam long userId,
                                               @RequestParam String baseType) {
 
-        DataTypeWSModel response = configUtilsMiddleware.getBaseDataTypes(userId, baseType);
+        DataTypeWSModel response = systemConfigMiddleware.getBaseDataTypes(userId, baseType);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -52,7 +52,7 @@ public class ConfigUtilsController {
     public ResponseEntity<?> getDataType(@RequestParam long userId,
                                          @RequestParam long typeId) {
 
-        DataTypeWSModel response = configUtilsMiddleware.getDataType(userId, typeId);
+        DataTypeWSModel response = systemConfigMiddleware.getDataType(userId, typeId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -65,7 +65,7 @@ public class ConfigUtilsController {
                                             @RequestParam String dataType,
                                             @RequestParam String baseType) {
 
-        DataTypeWSModel response = configUtilsMiddleware.createDataType(userId,dataType,baseType);
+        DataTypeWSModel response = systemConfigMiddleware.createDataType(userId,dataType,baseType);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -79,7 +79,7 @@ public class ConfigUtilsController {
                                             @RequestParam String dataType,
                                             @RequestParam String baseType) {
 
-        DataTypeWSModel response = configUtilsMiddleware.updateDataType(userId,typeId,dataType,baseType);
+        DataTypeWSModel response = systemConfigMiddleware.updateDataType(userId,typeId,dataType,baseType);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -92,7 +92,7 @@ public class ConfigUtilsController {
     public ResponseEntity<?> removeDataType(@RequestParam long userId,
                                             @RequestParam long typeId) {
 
-        DataTypeWSModel response = configUtilsMiddleware.removeDataType(userId,typeId);
+        DataTypeWSModel response = systemConfigMiddleware.removeDataType(userId,typeId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -104,7 +104,7 @@ public class ConfigUtilsController {
     @RequestMapping(value = BaseRoute.GET_ALL_CITIES, method = RequestMethod.POST)
     public ResponseEntity<?> getAllCities(@RequestParam long userId) {
 
-        CityWSModel response = configUtilsMiddleware.getAllCities(userId);
+        CityWSModel response = systemConfigMiddleware.getAllCities(userId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -116,7 +116,7 @@ public class ConfigUtilsController {
     public ResponseEntity<?> getCity(@RequestParam long userId,
                                      @RequestParam long cityId) {
 
-        CityWSModel response = configUtilsMiddleware.getCity(userId,cityId);
+        CityWSModel response = systemConfigMiddleware.getCity(userId,cityId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -129,7 +129,7 @@ public class ConfigUtilsController {
                                         @RequestParam String city,
                                         @RequestParam String country) {
 
-        CityWSModel response = configUtilsMiddleware.createCity(userId,city,country);
+        CityWSModel response = systemConfigMiddleware.createCity(userId,city,country);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -143,7 +143,7 @@ public class ConfigUtilsController {
                                         @RequestParam String city,
                                         @RequestParam String country) {
 
-        CityWSModel response = configUtilsMiddleware.updateCity(userId,cityId,city,country);
+        CityWSModel response = systemConfigMiddleware.updateCity(userId,cityId,city,country);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -155,7 +155,7 @@ public class ConfigUtilsController {
     public ResponseEntity<?> removeCity(@RequestParam long userId,
                                         @RequestParam long cityId) {
 
-        CityWSModel response = configUtilsMiddleware.removeCity(userId,cityId);
+        CityWSModel response = systemConfigMiddleware.removeCity(userId,cityId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -167,7 +167,7 @@ public class ConfigUtilsController {
     @RequestMapping(value = BaseRoute.GET_ALL_COUNTRIES, method = RequestMethod.POST)
     public ResponseEntity<?> getAllCountries(@RequestParam long userId) {
 
-        CountryWSModel response = configUtilsMiddleware.getAllCountries(userId);
+        CountryWSModel response = systemConfigMiddleware.getAllCountries(userId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -179,7 +179,7 @@ public class ConfigUtilsController {
     public ResponseEntity<?> getCountry(@RequestParam long userId,
                                         @RequestParam long countryId) {
 
-        CountryWSModel response = configUtilsMiddleware.getCountry(userId,countryId);
+        CountryWSModel response = systemConfigMiddleware.getCountry(userId,countryId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -191,7 +191,7 @@ public class ConfigUtilsController {
     public ResponseEntity<?> createCountry(@RequestParam long userId,
                                            @RequestParam String country) {
 
-        CountryWSModel response = configUtilsMiddleware.createCountry(userId,country);
+        CountryWSModel response = systemConfigMiddleware.createCountry(userId,country);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -204,7 +204,7 @@ public class ConfigUtilsController {
                                            @RequestParam long countryId,
                                            @RequestParam String country) {
 
-        CountryWSModel response = configUtilsMiddleware.updateCountry(userId,countryId,country);
+        CountryWSModel response = systemConfigMiddleware.updateCountry(userId,countryId,country);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -216,7 +216,7 @@ public class ConfigUtilsController {
     public ResponseEntity<?> removeCountry(@RequestParam long userId,
                                            @RequestParam long countryId) {
 
-        CountryWSModel response = configUtilsMiddleware.removeCountry(userId, countryId);
+        CountryWSModel response = systemConfigMiddleware.removeCountry(userId, countryId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -228,7 +228,7 @@ public class ConfigUtilsController {
     @RequestMapping(value = BaseRoute.GET_ALL_URLS, method = RequestMethod.POST)
     public ResponseEntity<?> getAllUrls(@RequestParam long userId) {
 
-        UrlWSModel response = configUtilsMiddleware.getAllUrls(userId);
+        UrlWSModel response = systemConfigMiddleware.getAllUrls(userId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -240,7 +240,7 @@ public class ConfigUtilsController {
     public ResponseEntity<?> getUrlsByBaseType(@RequestParam long userId,
                                                @RequestParam String baseType) {
 
-        UrlWSModel response = configUtilsMiddleware.getUrlsByBaseType(userId,baseType);
+        UrlWSModel response = systemConfigMiddleware.getUrlsByBaseType(userId,baseType);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -253,7 +253,7 @@ public class ConfigUtilsController {
                                               @RequestParam String baseType,
                                               @RequestParam String ownerId) {
 
-        UrlWSModel response = configUtilsMiddleware.getUrlsByOwnerId(userId,baseType,ownerId);
+        UrlWSModel response = systemConfigMiddleware.getUrlsByOwnerId(userId,baseType,ownerId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -265,7 +265,7 @@ public class ConfigUtilsController {
     public ResponseEntity<?> getUrl(@RequestParam long userId,
                                     @RequestParam long urlId) {
 
-        UrlWSModel response = configUtilsMiddleware.getUrl(userId,urlId);
+        UrlWSModel response = systemConfigMiddleware.getUrl(userId,urlId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -280,7 +280,7 @@ public class ConfigUtilsController {
                                        @RequestParam String baseType,
                                        @RequestParam String ownerId) {
 
-        UrlWSModel response = configUtilsMiddleware.createUrl(userId,url,urlType,baseType,ownerId);
+        UrlWSModel response = systemConfigMiddleware.createUrl(userId,url,urlType,baseType,ownerId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -295,7 +295,7 @@ public class ConfigUtilsController {
                                        @RequestParam String urlType,
                                        @RequestParam String ownerId) {
 
-        UrlWSModel response = configUtilsMiddleware.updateUrl(userId,urlId,url,urlType,ownerId);
+        UrlWSModel response = systemConfigMiddleware.updateUrl(userId,urlId,url,urlType,ownerId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -307,7 +307,7 @@ public class ConfigUtilsController {
     public ResponseEntity<?> removeUrl(@RequestParam long userId,
                                        @RequestParam long urlId) {
 
-        UrlWSModel response = configUtilsMiddleware.removeUrl(userId,urlId);
+        UrlWSModel response = systemConfigMiddleware.removeUrl(userId,urlId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

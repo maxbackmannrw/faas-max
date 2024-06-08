@@ -1,4 +1,4 @@
-package com.faas.core.base.model.ws.utils.backup.dto;
+package com.faas.core.base.model.ws.utils.recovery.dto;
 
 public class InitSystemUtilityWSDTO {
 

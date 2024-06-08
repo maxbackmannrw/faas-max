@@ -1,7 +1,7 @@
 package com.faas.core.base.framework.utils.recovery;
 
-import com.faas.core.base.model.ws.utils.backup.dto.InitSystemUtilityWSDTO;
-import com.faas.core.base.model.ws.utils.backup.dto.SystemUtilityWSDTO;
+import com.faas.core.base.model.ws.utils.recovery.dto.InitSystemUtilityWSDTO;
+import com.faas.core.base.model.ws.utils.recovery.dto.SystemUtilityWSDTO;
 import com.faas.core.base.repo.utils.asset.content.AssetRepository;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
@@ -30,7 +30,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class RecoveryUtilsFramework {
+public class SystemRecoveryFramework {
 
     @Autowired
     UtilityHelper utilityHelper;

@@ -1,11 +1,11 @@
 package com.faas.core.base.middleware.utils.recovery;
 
-import com.faas.core.base.framework.utils.recovery.RecoveryUtilsFramework;
+import com.faas.core.base.framework.utils.recovery.SystemRecoveryFramework;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.utils.backup.SystemUtilityWSModel;
-import com.faas.core.base.model.ws.utils.backup.InitSystemUtilityWSModel;
-import com.faas.core.base.model.ws.utils.backup.dto.SystemUtilityWSDTO;
-import com.faas.core.base.model.ws.utils.backup.dto.InitSystemUtilityWSDTO;
+import com.faas.core.base.model.ws.utils.recovery.SystemUtilityWSModel;
+import com.faas.core.base.model.ws.utils.recovery.InitSystemUtilityWSModel;
+import com.faas.core.base.model.ws.utils.recovery.dto.SystemUtilityWSDTO;
+import com.faas.core.base.model.ws.utils.recovery.dto.InitSystemUtilityWSDTO;
 import com.faas.core.utils.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -14,11 +14,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class RecoveryUtilsMiddleware {
+public class SystemRecoveryMiddleware {
 
 
     @Autowired
-    RecoveryUtilsFramework recoveryUtilsFramework;
+    SystemRecoveryFramework systemRecoveryFramework;
 
 
     public InitSystemUtilityWSModel initSystemUtility(String initType) {
@@ -26,7 +26,7 @@ public class RecoveryUtilsMiddleware {
         InitSystemUtilityWSModel response = new InitSystemUtilityWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        InitSystemUtilityWSDTO initSystemUtilityWSDTO = recoveryUtilsFramework.initSystemUtilityService(initType);
+        InitSystemUtilityWSDTO initSystemUtilityWSDTO = systemRecoveryFramework.initSystemUtilityService(initType);
         if (initSystemUtilityWSDTO != null){
             response.setInitSystemUtility(initSystemUtilityWSDTO);
         }
@@ -46,7 +46,7 @@ public class RecoveryUtilsMiddleware {
         SystemUtilityWSModel response = new SystemUtilityWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<SystemUtilityWSDTO> systemUtilityWSDTOS = recoveryUtilsFramework.getSystemUtilitiesService(userId);
+        List<SystemUtilityWSDTO> systemUtilityWSDTOS = systemRecoveryFramework.getSystemUtilitiesService(userId);
         if (systemUtilityWSDTOS != null){
             response.setSystemUtilities(systemUtilityWSDTOS);
         }
@@ -67,7 +67,7 @@ public class RecoveryUtilsMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<SystemUtilityWSDTO> systemUtilityWSDTOS = new ArrayList<>();
 
-        SystemUtilityWSDTO systemUtilityWSDTO = recoveryUtilsFramework.repairSystemUtilityService(userId,repairType);
+        SystemUtilityWSDTO systemUtilityWSDTO = systemRecoveryFramework.repairSystemUtilityService(userId,repairType);
         if (systemUtilityWSDTO != null){
             systemUtilityWSDTOS.add(systemUtilityWSDTO);
         }
@@ -88,7 +88,7 @@ public class RecoveryUtilsMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<SystemUtilityWSDTO> systemUtilityWSDTOS = new ArrayList<>();
 
-        SystemUtilityWSDTO systemUtilityWSDTO = recoveryUtilsFramework.removeSystemUtilityService(userId,removeType);
+        SystemUtilityWSDTO systemUtilityWSDTO = systemRecoveryFramework.removeSystemUtilityService(userId,removeType);
         if (systemUtilityWSDTO != null){
             systemUtilityWSDTOS.add(systemUtilityWSDTO);
         }

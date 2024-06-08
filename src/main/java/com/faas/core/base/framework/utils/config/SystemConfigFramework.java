@@ -22,7 +22,7 @@ import java.util.Optional;
 
 
 @Service
-public class ConfigUtilsFramework {
+public class SystemConfigFramework {
 
 
     @Autowired
@@ -235,7 +235,6 @@ public class ConfigUtilsFramework {
     }
 
 
-
     public List<UrlWSDTO> getAllUrlsService(long userId) {
 
         List<UrlWSDTO>urlWSDTOS = new ArrayList<>();
@@ -315,6 +314,7 @@ public class ConfigUtilsFramework {
         }
         return null;
     }
+
 
 
 }

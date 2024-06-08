@@ -1,7 +1,7 @@
-package com.faas.core.base.model.ws.utils.backup;
+package com.faas.core.base.model.ws.utils.recovery;
 
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.utils.backup.dto.SystemUtilityWSDTO;
+import com.faas.core.base.model.ws.utils.recovery.dto.SystemUtilityWSDTO;
 
 import java.util.List;
 

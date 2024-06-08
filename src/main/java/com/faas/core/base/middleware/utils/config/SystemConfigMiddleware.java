@@ -1,6 +1,6 @@
 package com.faas.core.base.middleware.utils.config;
 
-import com.faas.core.base.framework.utils.config.ConfigUtilsFramework;
+import com.faas.core.base.framework.utils.config.SystemConfigFramework;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.model.ws.utils.config.CityWSModel;
 import com.faas.core.base.model.ws.utils.config.CountryWSModel;
@@ -19,11 +19,11 @@ import java.util.List;
 
 
 @Component
-public class ConfigUtilsMiddleware {
+public class SystemConfigMiddleware {
 
 
     @Autowired
-    ConfigUtilsFramework configUtilsFramework;
+    SystemConfigFramework systemConfigFramework;
 
 
     public DataTypeWSModel getAllDataTypes(long userId) {
@@ -31,7 +31,7 @@ public class ConfigUtilsMiddleware {
         DataTypeWSModel response = new DataTypeWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<DataTypeWSDTO> dataTypeWSDTOS = configUtilsFramework.getAllDataTypesService(userId);
+        List<DataTypeWSDTO> dataTypeWSDTOS = systemConfigFramework.getAllDataTypesService(userId);
         if (dataTypeWSDTOS != null){
             response.setDataTypes(dataTypeWSDTOS);
         }
@@ -50,7 +50,7 @@ public class ConfigUtilsMiddleware {
         DataTypeWSModel response = new DataTypeWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<DataTypeWSDTO> dataTypeWSDTOS = configUtilsFramework.getBaseDataTypesService(baseType);
+        List<DataTypeWSDTO> dataTypeWSDTOS = systemConfigFramework.getBaseDataTypesService(baseType);
         if (dataTypeWSDTOS != null){
             response.setDataTypes(dataTypeWSDTOS);
         }
@@ -70,7 +70,7 @@ public class ConfigUtilsMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<DataTypeWSDTO> dataTypeWSDTOS = new ArrayList<>();
 
-        DataTypeWSDTO dataTypeWSDTO = configUtilsFramework.getDataTypeService(typeId);
+        DataTypeWSDTO dataTypeWSDTO = systemConfigFramework.getDataTypeService(typeId);
         if (dataTypeWSDTO != null){
             dataTypeWSDTOS.add(dataTypeWSDTO);
         }
@@ -91,7 +91,7 @@ public class ConfigUtilsMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<DataTypeWSDTO> dataTypeWSDTOS = new ArrayList<>();
 
-        DataTypeWSDTO dataTypeWSDTO = configUtilsFramework.createDataTypeService(dataType,baseType);
+        DataTypeWSDTO dataTypeWSDTO = systemConfigFramework.createDataTypeService(dataType,baseType);
         if (dataTypeWSDTO != null) {
             dataTypeWSDTOS.add(dataTypeWSDTO);
         }
@@ -112,7 +112,7 @@ public class ConfigUtilsMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<DataTypeWSDTO> dataTypeWSDTOS = new ArrayList<>();
 
-        DataTypeWSDTO dataTypeWSDTO = configUtilsFramework.updateDataTypeService(typeId,dataType,baseType);
+        DataTypeWSDTO dataTypeWSDTO = systemConfigFramework.updateDataTypeService(typeId,dataType,baseType);
         if (dataTypeWSDTO != null) {
             dataTypeWSDTOS.add(dataTypeWSDTO);
         }
@@ -133,7 +133,7 @@ public class ConfigUtilsMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<DataTypeWSDTO> dataTypeWSDTOS = new ArrayList<>();
 
-        DataTypeWSDTO dataTypeWSDTO = configUtilsFramework.removeDataTypeService(typeId);
+        DataTypeWSDTO dataTypeWSDTO = systemConfigFramework.removeDataTypeService(typeId);
         if (dataTypeWSDTO != null) {
             dataTypeWSDTOS.add(dataTypeWSDTO);
         }
@@ -154,7 +154,7 @@ public class ConfigUtilsMiddleware {
         CityWSModel response = new CityWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<CityWSDTO> cityWSDTOS = configUtilsFramework.getAllCitiesService(userId);
+        List<CityWSDTO> cityWSDTOS = systemConfigFramework.getAllCitiesService(userId);
         if (cityWSDTOS != null){
             response.setCities(cityWSDTOS);
         }
@@ -174,7 +174,7 @@ public class ConfigUtilsMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CityWSDTO>cityWSDTOS = new ArrayList<>();
 
-        CityWSDTO cityWSDTO = configUtilsFramework.getCityService(cityId);
+        CityWSDTO cityWSDTO = systemConfigFramework.getCityService(cityId);
         if (cityWSDTO != null){
             cityWSDTOS.add(cityWSDTO);
         }
@@ -195,7 +195,7 @@ public class ConfigUtilsMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CityWSDTO>cityWSDTOS = new ArrayList<>();
 
-        CityWSDTO cityWSDTO = configUtilsFramework.createCityService(city,country);
+        CityWSDTO cityWSDTO = systemConfigFramework.createCityService(city,country);
         if (cityWSDTO != null){
             cityWSDTOS.add(cityWSDTO);
         }
@@ -216,7 +216,7 @@ public class ConfigUtilsMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CityWSDTO>cityWSDTOS = new ArrayList<>();
 
-        CityWSDTO cityWSDTO = configUtilsFramework.updateCityService(cityId,city,country);
+        CityWSDTO cityWSDTO = systemConfigFramework.updateCityService(cityId,city,country);
         if (cityWSDTO != null){
             cityWSDTOS.add(cityWSDTO);
         }
@@ -237,7 +237,7 @@ public class ConfigUtilsMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CityWSDTO>cityWSDTOS = new ArrayList<>();
 
-        CityWSDTO cityWSDTO = configUtilsFramework.removeCityService(cityId);
+        CityWSDTO cityWSDTO = systemConfigFramework.removeCityService(cityId);
         if (cityWSDTO != null){
             cityWSDTOS.add(cityWSDTO);
         }
@@ -258,7 +258,7 @@ public class ConfigUtilsMiddleware {
         CountryWSModel response = new CountryWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<CountryWSDTO> countryWSDTOS = configUtilsFramework.getAllCountriesService(userId);
+        List<CountryWSDTO> countryWSDTOS = systemConfigFramework.getAllCountriesService(userId);
         if (countryWSDTOS != null){
             response.setCountries(countryWSDTOS);
         }
@@ -278,7 +278,7 @@ public class ConfigUtilsMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CountryWSDTO> countryWSDTOS = new ArrayList<>();
 
-        CountryWSDTO countryWSDTO = configUtilsFramework.getCountryService(countryId);
+        CountryWSDTO countryWSDTO = systemConfigFramework.getCountryService(countryId);
         if (countryWSDTO != null){
             countryWSDTOS.add(countryWSDTO);
         }
@@ -299,7 +299,7 @@ public class ConfigUtilsMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CountryWSDTO> countryWSDTOS = new ArrayList<>();
 
-        CountryWSDTO countryWSDTO = configUtilsFramework.createCountryService(country);
+        CountryWSDTO countryWSDTO = systemConfigFramework.createCountryService(country);
         if (countryWSDTO != null){
             countryWSDTOS.add(countryWSDTO);
         }
@@ -320,7 +320,7 @@ public class ConfigUtilsMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CountryWSDTO> countryWSDTOS = new ArrayList<>();
 
-        CountryWSDTO countryWSDTO = configUtilsFramework.updateCountryService(countryId,country);
+        CountryWSDTO countryWSDTO = systemConfigFramework.updateCountryService(countryId,country);
         if (countryWSDTO != null){
             countryWSDTOS.add(countryWSDTO);
         }
@@ -341,7 +341,7 @@ public class ConfigUtilsMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CountryWSDTO> countryWSDTOS = new ArrayList<>();
 
-        CountryWSDTO countryWSDTO = configUtilsFramework.removeCountryService(countryId);
+        CountryWSDTO countryWSDTO = systemConfigFramework.removeCountryService(countryId);
         if (countryWSDTO != null){
             countryWSDTOS.add(countryWSDTO);
         }
@@ -362,7 +362,7 @@ public class ConfigUtilsMiddleware {
         UrlWSModel response = new UrlWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<UrlWSDTO> urlWSDTOS = configUtilsFramework.getAllUrlsService(userId);
+        List<UrlWSDTO> urlWSDTOS = systemConfigFramework.getAllUrlsService(userId);
         if (urlWSDTOS != null){
             response.setUrls(urlWSDTOS);
         }
@@ -381,7 +381,7 @@ public class ConfigUtilsMiddleware {
         UrlWSModel response = new UrlWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<UrlWSDTO> urlWSDTOS = configUtilsFramework.getUrlsByBaseTypeService(userId,baseType);
+        List<UrlWSDTO> urlWSDTOS = systemConfigFramework.getUrlsByBaseTypeService(userId,baseType);
         if (urlWSDTOS != null){
             response.setUrls(urlWSDTOS);
         }
@@ -400,7 +400,7 @@ public class ConfigUtilsMiddleware {
         UrlWSModel response = new UrlWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<UrlWSDTO> urlWSDTOS = configUtilsFramework.getUrlsByOwnerIdService(userId,baseType,ownerId);
+        List<UrlWSDTO> urlWSDTOS = systemConfigFramework.getUrlsByOwnerIdService(userId,baseType,ownerId);
         if (urlWSDTOS != null){
             response.setUrls(urlWSDTOS);
         }
@@ -420,7 +420,7 @@ public class ConfigUtilsMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<UrlWSDTO> urlWSDTOS = new ArrayList<>();
 
-        UrlWSDTO urlWSDTO = configUtilsFramework.getUrlService(userId,urlId);
+        UrlWSDTO urlWSDTO = systemConfigFramework.getUrlService(userId,urlId);
         if (urlWSDTO != null){
             urlWSDTOS.add(urlWSDTO);
         }
@@ -441,7 +441,7 @@ public class ConfigUtilsMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<UrlWSDTO> urlWSDTOS = new ArrayList<>();
 
-        UrlWSDTO urlWSDTO = configUtilsFramework.createUrlService(userId,url,urlType,baseType,ownerId);
+        UrlWSDTO urlWSDTO = systemConfigFramework.createUrlService(userId,url,urlType,baseType,ownerId);
         if (urlWSDTO != null){
             urlWSDTOS.add(urlWSDTO);
         }
@@ -462,7 +462,7 @@ public class ConfigUtilsMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<UrlWSDTO> urlWSDTOS = new ArrayList<>();
 
-        UrlWSDTO urlWSDTO = configUtilsFramework.updateUrlService(userId,urlId,url,urlType,ownerId);
+        UrlWSDTO urlWSDTO = systemConfigFramework.updateUrlService(userId,urlId,url,urlType,ownerId);
         if (urlWSDTO != null){
             urlWSDTOS.add(urlWSDTO);
         }
@@ -483,7 +483,7 @@ public class ConfigUtilsMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<UrlWSDTO> urlWSDTOS = new ArrayList<>();
 
-        UrlWSDTO urlWSDTO = configUtilsFramework.removeUrlService(userId,urlId);
+        UrlWSDTO urlWSDTO = systemConfigFramework.removeUrlService(userId,urlId);
         if (urlWSDTO != null){
             urlWSDTOS.add(urlWSDTO);
         }
