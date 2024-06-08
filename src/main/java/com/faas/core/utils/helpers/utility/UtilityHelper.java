@@ -11,7 +11,7 @@ import com.faas.core.base.model.db.user.details.UserDetailsDBModel;
 import com.faas.core.base.model.db.user.settings.UserRoleDBModel;
 import com.faas.core.base.model.ws.utils.backup.dto.InitSystemUtilityWSDTO;
 import com.faas.core.base.model.ws.utils.backup.dto.SystemUtilityWSDTO;
-import com.faas.core.base.repo.asset.content.AssetRepository;
+import com.faas.core.base.repo.utils.asset.content.AssetRepository;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;

@@ -1,7 +1,7 @@
 package com.faas.core.base.model.ws.remote.content.dto;
 
 import com.faas.core.base.model.db.remote.content.RemoteDBModel;
-import com.faas.core.base.model.db.utils.UrlDBModel;
+import com.faas.core.base.model.db.utils.config.UrlDBModel;
 
 import java.util.List;
 

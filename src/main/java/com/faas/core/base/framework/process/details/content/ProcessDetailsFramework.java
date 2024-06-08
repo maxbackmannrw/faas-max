@@ -2,12 +2,12 @@ package com.faas.core.base.framework.process.details.content;
 
 import com.faas.core.base.model.db.process.content.ProcessDBModel;
 import com.faas.core.base.model.db.process.content.dao.ProcessDataDAO;
-import com.faas.core.base.model.db.utils.DataTypeDBModel;
+import com.faas.core.base.model.db.utils.config.DataTypeDBModel;
 import com.faas.core.base.model.ws.process.details.content.dto.ProcessDataWSDTO;
 import com.faas.core.base.model.ws.process.details.content.dto.ProcessDetailsWSDTO;
 import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.remote.content.RemoteRepository;
-import com.faas.core.base.repo.utils.DataTypeRepository;
+import com.faas.core.base.repo.utils.config.DataTypeRepository;
 import com.faas.core.utils.config.AppUtils;
 import com.faas.core.utils.helpers.process.ProcessHelper;
 import com.faas.core.utils.helpers.remote.RemoteHelper;

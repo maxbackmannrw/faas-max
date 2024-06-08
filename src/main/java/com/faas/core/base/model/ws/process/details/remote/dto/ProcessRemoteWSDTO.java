@@ -1,7 +1,7 @@
 package com.faas.core.base.model.ws.process.details.remote.dto;
 
 import com.faas.core.base.model.db.process.details.remote.ProcessRemoteDBModel;
-import com.faas.core.base.model.db.utils.UrlDBModel;
+import com.faas.core.base.model.db.utils.config.UrlDBModel;
 
 import java.util.List;
 

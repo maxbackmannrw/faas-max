@@ -1,6 +1,6 @@
 package com.faas.core.base.model.ws.utils.config.dto;
 
-import com.faas.core.base.model.db.utils.CityDBModel;
+import com.faas.core.base.model.db.utils.config.CityDBModel;
 
 public class CityWSDTO {
 
