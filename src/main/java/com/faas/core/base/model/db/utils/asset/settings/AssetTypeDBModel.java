@@ -6,7 +6,6 @@ import javax.persistence.*;
 @Table(name = "asset_type_table")
 public class AssetTypeDBModel {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -34,7 +33,6 @@ public class AssetTypeDBModel {
 
     @Column(name = "status")
     private int status;
-
 
     public AssetTypeDBModel() {
     }
