@@ -6,7 +6,7 @@ import com.faas.core.base.model.ws.operation.manager.content.OperationManagerWSM
 import com.faas.core.base.model.ws.operation.manager.content.dto.OperationManagerWSDTO;
 import com.faas.core.base.model.ws.operation.content.OperationWSModel;
 import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
-import com.faas.core.utils.config.AppConstant;
+import com.faas.core.utility.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

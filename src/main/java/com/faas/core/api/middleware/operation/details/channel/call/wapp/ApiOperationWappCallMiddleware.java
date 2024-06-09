@@ -8,7 +8,7 @@ import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiOpe
 import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiOperationWappCallChannelWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiOperationWappCallWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.utils.config.AppConstant;
+import com.faas.core.utility.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -4,8 +4,8 @@ import com.faas.core.base.middleware.campaign.details.content.CampaignDetailsMid
 import com.faas.core.base.model.ws.campaign.details.content.CampaignDataWSModel;
 import com.faas.core.base.model.ws.campaign.details.content.CampaignDetailsWSModel;
 import com.faas.core.base.model.ws.campaign.details.content.CampaignProcessWSModel;
-import com.faas.core.utils.config.AppConstant;
-import com.faas.core.utils.config.BaseRoute;
+import com.faas.core.utility.config.AppConstant;
+import com.faas.core.utility.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

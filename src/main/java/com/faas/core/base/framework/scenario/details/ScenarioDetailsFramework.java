@@ -6,7 +6,7 @@ import com.faas.core.base.model.db.utils.config.DataTypeDBModel;
 import com.faas.core.base.model.ws.scenario.details.dto.ScenarioDataWSDTO;
 import com.faas.core.base.repo.scenario.content.ScenarioRepository;
 import com.faas.core.base.repo.utils.config.DataTypeRepository;
-import com.faas.core.utils.config.AppUtils;
+import com.faas.core.utility.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

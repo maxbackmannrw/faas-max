@@ -6,7 +6,7 @@ import com.faas.core.base.model.ws.session.content.dto.SessionWSDTO;
 import com.faas.core.base.model.ws.session.details.dto.SessionRequestDTO;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.session.SessionRepository;
-import com.faas.core.utils.config.AppUtils;
+import com.faas.core.utility.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

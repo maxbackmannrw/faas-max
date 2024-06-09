@@ -8,7 +8,7 @@ import com.faas.core.base.model.ws.remote.content.RemoteUrlWSModel;
 import com.faas.core.base.model.ws.remote.content.dto.RemoteDataWSDTO;
 import com.faas.core.base.model.ws.remote.content.dto.RemoteDetailsWSDTO;
 import com.faas.core.base.model.ws.remote.content.dto.RemoteUrlWSDTO;
-import com.faas.core.utils.config.AppConstant;
+import com.faas.core.utility.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -5,8 +5,8 @@ import com.faas.core.base.model.db.process.settings.TriggerTypeDBModel;
 import com.faas.core.base.model.ws.process.details.trigger.details.dto.ProcessAITriggerWSDTO;
 import com.faas.core.base.repo.process.details.trigger.*;
 import com.faas.core.base.repo.process.settings.TriggerTypeRepository;
-import com.faas.core.utils.config.AppConstant;
-import com.faas.core.utils.config.AppUtils;
+import com.faas.core.utility.config.AppConstant;
+import com.faas.core.utility.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

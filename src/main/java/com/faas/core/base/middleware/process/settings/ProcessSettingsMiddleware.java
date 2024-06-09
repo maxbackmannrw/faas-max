@@ -2,18 +2,15 @@ package com.faas.core.base.middleware.process.settings;
 
 import com.faas.core.base.framework.process.settings.ProcessSettingsFramework;
 import com.faas.core.base.model.db.process.settings.ProcessTypeDBModel;
-import com.faas.core.base.model.db.scenario.settings.ScenarioTypeDBModel;
 import com.faas.core.base.model.ws.process.settings.TriggerTypeWSModel;
 import com.faas.core.base.model.ws.process.settings.dto.TriggerTypeWSDTO;
-import com.faas.core.base.model.ws.scenario.settings.ScenarioTypeWSModel;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.model.ws.process.settings.ProcessTypeWSModel;
 import com.faas.core.base.model.ws.process.settings.dto.ProcessTypeWSDTO;
-import com.faas.core.base.model.ws.scenario.settings.dto.ScenarioTypeWSDTO;
 import com.faas.core.base.repo.process.settings.ProcessTypeRepository;
 import com.faas.core.base.repo.scenario.settings.ScenarioTypeRepository;
-import com.faas.core.utils.config.AppConstant;
-import com.faas.core.utils.config.AppUtils;
+import com.faas.core.utility.config.AppConstant;
+import com.faas.core.utility.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

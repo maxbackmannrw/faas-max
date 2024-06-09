@@ -6,7 +6,7 @@ import com.faas.core.base.model.ws.process.details.trigger.details.ProcessWappCa
 import com.faas.core.base.model.ws.process.details.trigger.details.ProcessWappMessageTriggerWSModel;
 import com.faas.core.base.model.ws.process.details.trigger.details.dto.ProcessWappCallTriggerWSDTO;
 import com.faas.core.base.model.ws.process.details.trigger.details.dto.ProcessWappMessageTriggerWSDTO;
-import com.faas.core.utils.config.AppConstant;
+import com.faas.core.utility.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

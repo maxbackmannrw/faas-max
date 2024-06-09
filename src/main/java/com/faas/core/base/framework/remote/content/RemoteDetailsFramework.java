@@ -10,9 +10,9 @@ import com.faas.core.base.model.ws.remote.content.dto.RemoteUrlWSDTO;
 import com.faas.core.base.repo.remote.content.RemoteRepository;
 import com.faas.core.base.repo.utils.config.DataTypeRepository;
 import com.faas.core.base.repo.utils.config.UrlRepository;
-import com.faas.core.utils.config.AppConstant;
-import com.faas.core.utils.config.AppUtils;
-import com.faas.core.utils.helpers.remote.RemoteHelper;
+import com.faas.core.utility.config.AppConstant;
+import com.faas.core.utility.config.AppUtils;
+import com.faas.core.utility.helpers.remote.RemoteHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

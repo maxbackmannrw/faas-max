@@ -6,7 +6,7 @@ import com.faas.core.base.model.ws.remote.client.content.ClientRemoteListWSModel
 import com.faas.core.base.model.ws.remote.client.content.ClientRemoteWSModel;
 import com.faas.core.base.model.ws.remote.client.content.dto.ClientRemoteListWSDTO;
 import com.faas.core.base.model.ws.remote.client.content.dto.ClientRemoteWSDTO;
-import com.faas.core.utils.config.AppConstant;
+import com.faas.core.utility.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

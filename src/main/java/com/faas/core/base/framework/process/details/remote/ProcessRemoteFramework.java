@@ -8,9 +8,9 @@ import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.process.details.remote.ProcessRemoteRepository;
 import com.faas.core.base.repo.remote.content.RemoteRepository;
 import com.faas.core.base.repo.utils.config.UrlRepository;
-import com.faas.core.utils.config.AppUtils;
-import com.faas.core.utils.helpers.process.ProcessHelper;
-import com.faas.core.utils.helpers.remote.RemoteHelper;
+import com.faas.core.utility.config.AppUtils;
+import com.faas.core.utility.helpers.process.ProcessHelper;
+import com.faas.core.utility.helpers.remote.RemoteHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -10,7 +10,7 @@ import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationActi
 import com.faas.core.api.model.ws.operation.details.content.ApiOperationDetailsWSModel;
 import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationDetailsWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.utils.config.AppConstant;
+import com.faas.core.utility.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

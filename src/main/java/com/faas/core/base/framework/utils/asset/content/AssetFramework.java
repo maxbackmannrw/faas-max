@@ -4,7 +4,7 @@ import com.faas.core.base.model.db.utils.asset.content.AssetDBModel;
 import com.faas.core.base.model.ws.utils.asset.content.dto.AssetWSDTO;
 import com.faas.core.base.repo.utils.asset.content.AssetRepository;
 import com.faas.core.base.repo.utils.asset.settings.AssetTypeRepository;
-import com.faas.core.utils.config.AppUtils;
+import com.faas.core.utility.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -16,8 +16,8 @@ import com.faas.core.base.model.ws.channel.settings.dto.PushTypeWSDTO;
 import com.faas.core.base.repo.channel.settings.EmailTypeRepository;
 import com.faas.core.base.repo.channel.settings.MessageTypeRepository;
 import com.faas.core.base.repo.channel.settings.PushTypeRepository;
-import com.faas.core.utils.config.AppConstant;
-import com.faas.core.utils.config.AppUtils;
+import com.faas.core.utility.config.AppConstant;
+import com.faas.core.utility.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

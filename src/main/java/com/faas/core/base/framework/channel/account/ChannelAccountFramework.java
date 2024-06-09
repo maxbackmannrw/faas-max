@@ -5,10 +5,9 @@ import com.faas.core.base.model.db.channel.settings.WappServerDBModel;
 import com.faas.core.base.model.ws.channel.account.dto.*;
 import com.faas.core.base.repo.channel.account.*;
 import com.faas.core.base.repo.channel.settings.WappServerRepository;
-import com.faas.core.utils.handler.channel.wapp.WappChannelHandler;
-import com.faas.core.utils.config.AppUtils;
+import com.faas.core.utility.handler.channel.wapp.WappChannelHandler;
+import com.faas.core.utility.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;

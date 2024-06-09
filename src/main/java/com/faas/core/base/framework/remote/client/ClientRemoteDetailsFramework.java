@@ -6,10 +6,9 @@ import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.remote.client.ClientRemoteRepository;
 import com.faas.core.base.repo.session.SessionRepository;
-import com.faas.core.utils.config.AppConstant;
-import com.faas.core.utils.config.AppUtils;
+import com.faas.core.utility.config.AppConstant;
+import com.faas.core.utility.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 @Service

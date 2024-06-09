@@ -5,8 +5,8 @@ import com.faas.core.api.model.ws.operation.details.channel.message.sms.ApiOpera
 import com.faas.core.api.model.ws.operation.details.channel.message.sms.ApiOperationSmsChannelWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.sms.ApiOperationSmsTempWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.message.sms.ApiOperationSmsWSModel;
-import com.faas.core.utils.config.ApiRoute;
-import com.faas.core.utils.config.AppConstant;
+import com.faas.core.utility.config.ApiRoute;
+import com.faas.core.utility.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

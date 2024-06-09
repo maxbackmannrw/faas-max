@@ -8,8 +8,8 @@ import com.faas.core.base.repo.process.details.channel.content.ProcessSipChannel
 import com.faas.core.base.repo.user.content.UserRepository;
 import com.faas.core.base.repo.user.details.UserDetailsRepository;
 import com.faas.core.base.repo.user.settings.UserRoleRepository;
-import com.faas.core.utils.config.AppConstant;
-import com.faas.core.utils.config.AppUtils;
+import com.faas.core.utility.config.AppConstant;
+import com.faas.core.utility.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

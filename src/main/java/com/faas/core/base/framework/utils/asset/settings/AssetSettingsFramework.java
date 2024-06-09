@@ -3,7 +3,7 @@ package com.faas.core.base.framework.utils.asset.settings;
 import com.faas.core.base.model.db.utils.asset.settings.AssetTypeDBModel;
 import com.faas.core.base.model.ws.utils.asset.settings.dto.AssetTypeWSDTO;
 import com.faas.core.base.repo.utils.asset.settings.AssetTypeRepository;
-import com.faas.core.utils.config.AppUtils;
+import com.faas.core.utility.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

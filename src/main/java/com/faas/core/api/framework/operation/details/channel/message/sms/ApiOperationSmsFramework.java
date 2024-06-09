@@ -18,10 +18,10 @@ import com.faas.core.base.repo.operation.details.channel.OperationSmsRepository;
 import com.faas.core.base.repo.process.details.channel.content.ProcessSmsChannelRepository;
 import com.faas.core.base.repo.process.details.channel.temp.SmsTempRepository;
 import com.faas.core.base.repo.session.SessionRepository;
-import com.faas.core.utils.handler.channel.sms.SmsChannelHandler;
-import com.faas.core.utils.config.AppUtils;
-import com.faas.core.utils.helpers.channel.ChannelHelper;
-import com.faas.core.utils.helpers.operation.OperationHelper;
+import com.faas.core.utility.handler.channel.sms.SmsChannelHandler;
+import com.faas.core.utility.config.AppUtils;
+import com.faas.core.utility.helpers.channel.ChannelHelper;
+import com.faas.core.utility.helpers.operation.OperationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

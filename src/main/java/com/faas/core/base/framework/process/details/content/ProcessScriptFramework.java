@@ -4,7 +4,7 @@ import com.faas.core.base.model.db.process.content.ProcessDBModel;
 import com.faas.core.base.model.db.process.content.dao.ProcessScriptDAO;
 import com.faas.core.base.model.ws.process.details.content.dto.ProcessScriptWSDTO;
 import com.faas.core.base.repo.process.content.ProcessRepository;
-import com.faas.core.utils.config.AppUtils;
+import com.faas.core.utility.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

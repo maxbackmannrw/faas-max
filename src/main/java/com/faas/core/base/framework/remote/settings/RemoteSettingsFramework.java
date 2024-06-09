@@ -3,7 +3,7 @@ package com.faas.core.base.framework.remote.settings;
 import com.faas.core.base.model.db.remote.settings.RemoteTypeDBModel;
 import com.faas.core.base.model.ws.remote.settings.dto.RemoteTypeWSDTO;
 import com.faas.core.base.repo.remote.settings.RemoteTypeRepository;
-import com.faas.core.utils.config.AppUtils;
+import com.faas.core.utility.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

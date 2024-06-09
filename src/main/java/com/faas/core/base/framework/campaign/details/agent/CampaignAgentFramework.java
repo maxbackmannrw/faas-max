@@ -7,9 +7,9 @@ import com.faas.core.base.model.ws.campaign.details.agent.dto.CampaignAgentWSDTO
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
 import com.faas.core.base.repo.user.content.UserRepository;
-import com.faas.core.utils.config.AppConstant;
-import com.faas.core.utils.config.AppUtils;
-import com.faas.core.utils.helpers.campaign.CampaignHelper;
+import com.faas.core.utility.config.AppConstant;
+import com.faas.core.utility.config.AppUtils;
+import com.faas.core.utility.helpers.campaign.CampaignHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

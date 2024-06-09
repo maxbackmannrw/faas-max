@@ -12,7 +12,7 @@ import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.client.details.*;
 import com.faas.core.base.repo.remote.client.ClientRemoteRepository;
 import com.faas.core.base.repo.utils.config.DataTypeRepository;
-import com.faas.core.utils.config.AppUtils;
+import com.faas.core.utility.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

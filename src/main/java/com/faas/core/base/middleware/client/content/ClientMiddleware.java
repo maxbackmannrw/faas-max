@@ -1,7 +1,6 @@
 package com.faas.core.base.middleware.client.content;
 
 import com.faas.core.base.framework.client.content.ClientFramework;
-import com.faas.core.base.model.db.client.content.ClientDBModel;
 import com.faas.core.base.model.ws.client.content.AllClientWSModel;
 import com.faas.core.base.model.ws.client.content.ClientWSModel;
 import com.faas.core.base.model.ws.client.content.ClientListWSModel;
@@ -11,8 +10,8 @@ import com.faas.core.base.model.ws.client.content.dto.ClientWSDTO;
 import com.faas.core.base.model.ws.client.content.dto.ClientListWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.repo.client.content.ClientRepository;
-import com.faas.core.utils.config.AppConstant;
-import com.faas.core.utils.config.AppUtils;
+import com.faas.core.utility.config.AppConstant;
+import com.faas.core.utility.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

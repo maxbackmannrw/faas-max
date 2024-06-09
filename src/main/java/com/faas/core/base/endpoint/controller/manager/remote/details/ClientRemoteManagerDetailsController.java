@@ -2,8 +2,8 @@ package com.faas.core.base.endpoint.controller.manager.remote.details;
 
 import com.faas.core.base.middleware.manager.remote.details.ClientRemoteManagerDetailsMiddleware;
 import com.faas.core.base.model.ws.manager.main.MainManagerOperationWSModel;
-import com.faas.core.utils.config.AppConstant;
-import com.faas.core.utils.config.BaseRoute;
+import com.faas.core.utility.config.AppConstant;
+import com.faas.core.utility.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

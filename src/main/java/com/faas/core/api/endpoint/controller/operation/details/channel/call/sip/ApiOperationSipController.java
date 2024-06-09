@@ -4,8 +4,8 @@ import com.faas.core.api.middleware.operation.details.channel.call.sip.ApiOperat
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.ApiOperationSipAccountWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.ApiOperationSipCallWSModel;
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.ApiOperationSipChannelWSModel;
-import com.faas.core.utils.config.ApiRoute;
-import com.faas.core.utils.config.AppConstant;
+import com.faas.core.utility.config.ApiRoute;
+import com.faas.core.utility.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

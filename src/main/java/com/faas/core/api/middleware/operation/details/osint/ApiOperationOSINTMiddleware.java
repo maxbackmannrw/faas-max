@@ -4,7 +4,7 @@ import com.faas.core.api.framework.operation.details.osint.ApiOperationOSINTFram
 import com.faas.core.api.model.ws.operation.details.osint.ApiOperationOSINTWSModel;
 import com.faas.core.api.model.ws.operation.details.osint.dto.ApiOperationOSINTWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.utils.config.AppConstant;
+import com.faas.core.utility.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

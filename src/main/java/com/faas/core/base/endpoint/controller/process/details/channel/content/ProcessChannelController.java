@@ -7,8 +7,8 @@ import com.faas.core.base.model.ws.process.details.channel.content.ProcessWappCh
 import com.faas.core.base.model.ws.process.details.channel.content.ProcessEmailChannelWSModel;
 import com.faas.core.base.model.ws.process.details.channel.content.ProcessPushChannelWSModel;
 import com.faas.core.base.model.ws.process.details.channel.content.ProcessSmsChannelWSModel;
-import com.faas.core.utils.config.AppConstant;
-import com.faas.core.utils.config.BaseRoute;
+import com.faas.core.utility.config.AppConstant;
+import com.faas.core.utility.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

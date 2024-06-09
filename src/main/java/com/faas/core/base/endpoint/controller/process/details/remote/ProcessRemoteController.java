@@ -2,9 +2,8 @@ package com.faas.core.base.endpoint.controller.process.details.remote;
 
 import com.faas.core.base.middleware.process.details.remote.ProcessRemoteMiddleware;
 import com.faas.core.base.model.ws.process.details.remote.ProcessRemoteWSModel;
-import com.faas.core.base.model.ws.remote.content.RemoteUrlWSModel;
-import com.faas.core.utils.config.AppConstant;
-import com.faas.core.utils.config.BaseRoute;
+import com.faas.core.utility.config.AppConstant;
+import com.faas.core.utility.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

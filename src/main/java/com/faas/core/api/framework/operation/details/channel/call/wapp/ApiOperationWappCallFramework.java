@@ -9,9 +9,9 @@ import com.faas.core.base.model.db.operation.details.channel.OperationWappCallDB
 import com.faas.core.base.repo.client.details.ClientDetailsRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.operation.details.channel.OperationWappCallRepository;
-import com.faas.core.utils.config.AppUtils;
-import com.faas.core.utils.helpers.channel.ChannelHelper;
-import com.faas.core.utils.helpers.operation.OperationHelper;
+import com.faas.core.utility.config.AppUtils;
+import com.faas.core.utility.helpers.channel.ChannelHelper;
+import com.faas.core.utility.helpers.operation.OperationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

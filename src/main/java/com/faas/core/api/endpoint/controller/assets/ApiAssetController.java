@@ -3,8 +3,8 @@ package com.faas.core.api.endpoint.controller.assets;
 
 import com.faas.core.api.middleware.asset.ApiAssetMiddleware;
 import com.faas.core.api.model.ws.asset.ApiAssetWSModel;
-import com.faas.core.utils.config.ApiRoute;
-import com.faas.core.utils.config.AppConstant;
+import com.faas.core.utility.config.ApiRoute;
+import com.faas.core.utility.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

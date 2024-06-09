@@ -4,7 +4,7 @@ import com.faas.core.base.framework.client.details.content.ClientDetailsFramewor
 import com.faas.core.base.model.ws.client.details.content.*;
 import com.faas.core.base.model.ws.client.details.content.dto.*;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.utils.config.AppConstant;
+import com.faas.core.utility.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

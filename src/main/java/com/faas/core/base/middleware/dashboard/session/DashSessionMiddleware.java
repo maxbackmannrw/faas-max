@@ -4,7 +4,7 @@ import com.faas.core.base.framework.dashboard.session.DashSessionFramework;
 import com.faas.core.base.model.ws.client.content.dto.AllClientWSDTO;
 import com.faas.core.base.model.ws.dashboard.session.DashboardSessionWSModel;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.utils.config.AppConstant;
+import com.faas.core.utility.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

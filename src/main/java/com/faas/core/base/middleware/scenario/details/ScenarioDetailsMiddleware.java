@@ -4,7 +4,7 @@ import com.faas.core.base.framework.scenario.details.ScenarioDetailsFramework;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.model.ws.scenario.details.ScenarioDataWSModel;
 import com.faas.core.base.model.ws.scenario.details.dto.ScenarioDataWSDTO;
-import com.faas.core.utils.config.AppConstant;
+import com.faas.core.utility.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

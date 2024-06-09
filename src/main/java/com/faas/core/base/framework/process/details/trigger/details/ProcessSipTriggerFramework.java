@@ -7,7 +7,7 @@ import com.faas.core.base.model.ws.process.details.trigger.details.dto.ProcessSi
 import com.faas.core.base.repo.channel.account.SipAccountRepository;
 import com.faas.core.base.repo.process.details.trigger.*;
 import com.faas.core.base.repo.process.settings.TriggerTypeRepository;
-import com.faas.core.utils.config.AppUtils;
+import com.faas.core.utility.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

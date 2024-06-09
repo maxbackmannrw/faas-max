@@ -4,9 +4,7 @@ import com.faas.core.base.framework.process.details.remote.ProcessRemoteFramewor
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.model.ws.process.details.remote.ProcessRemoteWSModel;
 import com.faas.core.base.model.ws.process.details.remote.dto.ProcessRemoteWSDTO;
-import com.faas.core.base.model.ws.remote.content.RemoteUrlWSModel;
-import com.faas.core.base.model.ws.remote.content.dto.RemoteUrlWSDTO;
-import com.faas.core.utils.config.AppConstant;
+import com.faas.core.utility.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

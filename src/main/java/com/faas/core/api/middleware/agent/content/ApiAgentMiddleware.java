@@ -4,8 +4,8 @@ import com.faas.core.api.framework.agent.content.ApiAgentFramework;
 import com.faas.core.api.model.ws.agent.content.ApiAgentWSModel;
 import com.faas.core.api.model.ws.agent.content.dto.ApiAgentWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.utils.config.AppConstant;
-import com.faas.core.utils.config.AppUtils;
+import com.faas.core.utility.config.AppConstant;
+import com.faas.core.utility.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

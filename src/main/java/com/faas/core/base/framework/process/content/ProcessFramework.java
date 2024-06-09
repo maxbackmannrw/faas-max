@@ -12,9 +12,9 @@ import com.faas.core.base.repo.process.details.channel.temp.WappMessageTempRepos
 import com.faas.core.base.repo.process.details.scenario.ProcessScenarioRepository;
 import com.faas.core.base.repo.process.details.trigger.*;
 import com.faas.core.base.repo.process.settings.ProcessTypeRepository;
-import com.faas.core.utils.config.AppConstant;
-import com.faas.core.utils.config.AppUtils;
-import com.faas.core.utils.helpers.process.ProcessHelper;
+import com.faas.core.utility.config.AppConstant;
+import com.faas.core.utility.config.AppUtils;
+import com.faas.core.utility.helpers.process.ProcessHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

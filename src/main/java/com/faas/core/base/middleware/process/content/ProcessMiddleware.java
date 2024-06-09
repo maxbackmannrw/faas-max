@@ -1,19 +1,17 @@
 package com.faas.core.base.middleware.process.content;
 
 import com.faas.core.base.framework.process.content.ProcessFramework;
-import com.faas.core.base.model.db.process.content.ProcessDBModel;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.model.ws.process.content.ProcessWSModel;
 import com.faas.core.base.model.ws.process.content.dto.ProcessWSDTO;
 import com.faas.core.base.repo.process.content.ProcessRepository;
-import com.faas.core.utils.config.AppConstant;
-import com.faas.core.utils.config.AppUtils;
+import com.faas.core.utility.config.AppConstant;
+import com.faas.core.utility.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 
 @Component

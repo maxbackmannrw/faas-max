@@ -3,7 +3,7 @@ package com.faas.core.base.middleware.dashboard.campaign;
 import com.faas.core.base.framework.dashboard.campaign.DashCampaignFramework;
 import com.faas.core.base.model.ws.dashboard.campaign.DashboardCampaignWSModel;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.utils.config.AppConstant;
+import com.faas.core.utility.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -8,7 +8,7 @@ import com.faas.core.api.model.ws.agent.details.dto.ApiAgentDetailsWSDTO;
 import com.faas.core.api.model.ws.agent.details.dto.ApiAgentInfoWSDTO;
 import com.faas.core.api.model.ws.agent.details.dto.ApiAgentSipAccountWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.utils.config.AppConstant;
+import com.faas.core.utility.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

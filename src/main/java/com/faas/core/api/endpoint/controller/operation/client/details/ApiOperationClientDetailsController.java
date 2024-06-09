@@ -5,8 +5,8 @@ import com.faas.core.api.model.ws.operation.client.details.ApiOperationClientDet
 import com.faas.core.api.model.ws.operation.client.details.ApiOperationClientNoteWSModel;
 import com.faas.core.api.model.ws.operation.client.details.ApiOperationClientOSINTWSModel;
 import com.faas.core.api.model.ws.operation.client.details.ApiOperationClientRemoteWSModel;
-import com.faas.core.utils.config.ApiRoute;
-import com.faas.core.utils.config.AppConstant;
+import com.faas.core.utility.config.ApiRoute;
+import com.faas.core.utility.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

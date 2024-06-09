@@ -1,9 +1,9 @@
 package com.faas.core.api.endpoint.controller.agent.content;
 
-import com.faas.core.utils.config.ApiRoute;
+import com.faas.core.utility.config.ApiRoute;
 import com.faas.core.api.middleware.agent.content.ApiAgentMiddleware;
 import com.faas.core.api.model.ws.agent.content.ApiAgentWSModel;
-import com.faas.core.utils.config.AppConstant;
+import com.faas.core.utility.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

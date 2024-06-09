@@ -3,9 +3,8 @@ package com.faas.core.base.framework.campaign.settings;
 import com.faas.core.base.model.db.campaign.settings.CampaignTypeDBModel;
 import com.faas.core.base.model.ws.campaign.settings.dto.CampaignTypeWSDTO;
 import com.faas.core.base.repo.campaign.settings.CampaignTypeRepository;
-import com.faas.core.utils.config.AppUtils;
+import com.faas.core.utility.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;

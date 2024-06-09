@@ -5,8 +5,8 @@ import com.faas.core.base.model.db.process.details.channel.temp.PushTempDBModel;
 import com.faas.core.base.model.ws.process.details.channel.temp.dto.ProcessPushTempWSDTO;
 import com.faas.core.base.repo.channel.settings.PushTypeRepository;
 import com.faas.core.base.repo.process.details.channel.temp.PushTempRepository;
-import com.faas.core.utils.config.AppUtils;
-import com.faas.core.utils.helpers.process.ProcessHelper;
+import com.faas.core.utility.config.AppUtils;
+import com.faas.core.utility.helpers.process.ProcessHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

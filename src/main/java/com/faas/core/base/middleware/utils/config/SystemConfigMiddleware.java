@@ -10,7 +10,7 @@ import com.faas.core.base.model.ws.utils.config.dto.CityWSDTO;
 import com.faas.core.base.model.ws.utils.config.dto.CountryWSDTO;
 import com.faas.core.base.model.ws.utils.config.dto.DataTypeWSDTO;
 import com.faas.core.base.model.ws.utils.config.dto.UrlWSDTO;
-import com.faas.core.utils.config.AppConstant;
+import com.faas.core.utility.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

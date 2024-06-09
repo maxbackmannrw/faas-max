@@ -6,8 +6,8 @@ import com.faas.core.base.model.ws.client.settings.ClientTypeWSModel;
 import com.faas.core.base.model.ws.client.settings.dto.ClientTypeWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.repo.client.settings.ClientTypeRepository;
-import com.faas.core.utils.config.AppConstant;
-import com.faas.core.utils.config.AppUtils;
+import com.faas.core.utility.config.AppConstant;
+import com.faas.core.utility.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

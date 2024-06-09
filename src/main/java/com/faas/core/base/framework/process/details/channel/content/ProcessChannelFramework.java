@@ -10,8 +10,8 @@ import com.faas.core.base.repo.channel.account.EmailAccountRepository;
 import com.faas.core.base.repo.channel.account.PushAccountRepository;
 import com.faas.core.base.repo.channel.account.SmsAccountRepository;
 import com.faas.core.base.repo.process.details.channel.content.*;
-import com.faas.core.utils.config.AppUtils;
-import com.faas.core.utils.helpers.channel.ChannelHelper;
+import com.faas.core.utility.config.AppUtils;
+import com.faas.core.utility.helpers.channel.ChannelHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

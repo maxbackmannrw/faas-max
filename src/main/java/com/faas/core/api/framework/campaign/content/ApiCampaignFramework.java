@@ -10,9 +10,9 @@ import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.session.SessionRepository;
-import com.faas.core.utils.config.AppConstant;
-import com.faas.core.utils.config.AppUtils;
-import com.faas.core.utils.helpers.campaign.CampaignHelper;
+import com.faas.core.utility.config.AppConstant;
+import com.faas.core.utility.config.AppUtils;
+import com.faas.core.utility.helpers.campaign.CampaignHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

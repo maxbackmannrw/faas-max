@@ -2,8 +2,8 @@ package com.faas.core.base.endpoint.controller.process.details.trigger.details;
 
 import com.faas.core.base.middleware.process.details.trigger.details.ProcessSmsTriggerMiddleware;
 import com.faas.core.base.model.ws.process.details.trigger.details.ProcessSmsTriggerWSModel;
-import com.faas.core.utils.config.AppConstant;
-import com.faas.core.utils.config.BaseRoute;
+import com.faas.core.utility.config.AppConstant;
+import com.faas.core.utility.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

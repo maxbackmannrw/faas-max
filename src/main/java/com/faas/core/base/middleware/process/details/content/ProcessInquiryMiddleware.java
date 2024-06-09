@@ -6,7 +6,7 @@ import com.faas.core.base.model.ws.process.details.content.ProcessDataWSModel;
 import com.faas.core.base.model.ws.process.details.content.dto.ProcessDataWSDTO;
 import com.faas.core.base.model.ws.process.details.content.ProcessInquiryWSModel;
 import com.faas.core.base.model.ws.process.details.content.dto.ProcessInquiryWSDTO;
-import com.faas.core.utils.config.AppConstant;
+import com.faas.core.utility.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

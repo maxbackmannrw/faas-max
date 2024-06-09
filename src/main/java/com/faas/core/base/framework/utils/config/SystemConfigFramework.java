@@ -12,7 +12,7 @@ import com.faas.core.base.repo.utils.config.CityRepository;
 import com.faas.core.base.repo.utils.config.CountryRepository;
 import com.faas.core.base.repo.utils.config.DataTypeRepository;
 import com.faas.core.base.repo.utils.config.UrlRepository;
-import com.faas.core.utils.config.AppUtils;
+import com.faas.core.utility.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

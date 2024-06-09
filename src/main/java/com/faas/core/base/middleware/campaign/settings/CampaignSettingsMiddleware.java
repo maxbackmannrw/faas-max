@@ -6,8 +6,8 @@ import com.faas.core.base.model.ws.campaign.settings.CampaignTypeWSModel;
 import com.faas.core.base.model.ws.campaign.settings.dto.CampaignTypeWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.repo.campaign.settings.CampaignTypeRepository;
-import com.faas.core.utils.config.AppConstant;
-import com.faas.core.utils.config.AppUtils;
+import com.faas.core.utility.config.AppConstant;
+import com.faas.core.utility.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

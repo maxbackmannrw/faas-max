@@ -17,10 +17,10 @@ import com.faas.core.base.repo.operation.details.channel.OperationPushRepository
 import com.faas.core.base.repo.process.details.channel.content.ProcessPushChannelRepository;
 import com.faas.core.base.repo.process.details.channel.temp.PushTempRepository;
 import com.faas.core.base.repo.session.SessionRepository;
-import com.faas.core.utils.config.AppUtils;
-import com.faas.core.utils.helpers.channel.ChannelHelper;
-import com.faas.core.utils.helpers.operation.OperationHelper;
-import com.faas.core.utils.handler.channel.push.PushChannelHandler;
+import com.faas.core.utility.config.AppUtils;
+import com.faas.core.utility.helpers.channel.ChannelHelper;
+import com.faas.core.utility.helpers.operation.OperationHelper;
+import com.faas.core.utility.handler.channel.push.PushChannelHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

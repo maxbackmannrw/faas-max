@@ -12,9 +12,8 @@ import com.faas.core.base.repo.channel.settings.EmailTypeRepository;
 import com.faas.core.base.repo.channel.settings.MessageTypeRepository;
 import com.faas.core.base.repo.channel.settings.PushTypeRepository;
 import com.faas.core.base.repo.channel.settings.WappServerRepository;
-import com.faas.core.utils.config.AppUtils;
+import com.faas.core.utility.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
