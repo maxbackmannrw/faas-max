@@ -144,11 +144,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/channel/temp" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/process/details/channel/temp" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/channel/temp" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/channel/temp" />
       <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/operation" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/operation" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/operation" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/operation" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/trigger" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/scenario/content/dto" />
