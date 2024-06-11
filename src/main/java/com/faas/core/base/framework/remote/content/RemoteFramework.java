@@ -95,7 +95,7 @@ public class RemoteFramework {
 
             remoteDBModel = remoteRepository.save(remoteDBModel);
             if (sourceUrl != null){
-                urlRepository.save(remoteHelper.createRemoteUrlHelper(remoteDBModel.getId(),sourceUrl, AppConstant.REMOTE_SOURCE_URL,AppConstant.REMOTE_URL));
+                urlRepository.save(remoteHelper.createRemoteUrlHelper(remoteDBModel.getId(),sourceUrl, AppConstant.SOURCE_URL,AppConstant.REMOTE_URL));
             }
             return remoteHelper.mapRemoteWSDTOHelper(remoteDBModel);
         }

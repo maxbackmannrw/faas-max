@@ -36,10 +36,6 @@ public class AppConstant {
 
     public static final String PROCESS_DATA_TYPE = "PROCESS";
 
-    public static final String SOURCE_URL = "SOURCE_URL";
-    public static final String PWA_URL = "PWA_URL";
-    public static final String NATIVE_URL = "NATIVE_URL";
-
 
     public static final String MANUAL_SESSION = "MANUAL";
     public static final String INQUIRY_SESSION = "INQUIRY";
@@ -77,7 +73,6 @@ public class AppConstant {
     public static final String COMPLETED_STATE = "COMPLETED_STATE";
 
     public static final String ALL_STATES = "ALL_STATES";
-
 
 
 
@@ -159,22 +154,27 @@ public class AppConstant {
 
 
     public static final String REMOTE_URL = "REMOTE_URL";
-    public static final String TEMP_URL = "TEMP_URL";
-
-    public static final String REMOTE_SOURCE_URL = "REMOTE_SOURCE_URL";
-    public static final String REMOTE_CONTENT_URL = "REMOTE_CONTENT_URL";
-    public static final String REMOTE_UPDATE_URL = "REMOTE_UPDATE_URL";
 
     public static final String SMS_TEMP_URL = "SMS_TEMP_URL";
     public static final String WAPP_MESSAGE_TEMP_URL = "WAPP_MESSAGE_TEMP_URL";
     public static final String EMAIL_TEMP_URL = "EMAIL_TEMP_URL";
     public static final String PUSH_TEMP_URL = "PUSH_TEMP_URL";
 
+    public static final String SMS_TRIGGER_URL = "SMS_TRIGGER_URL";
+    public static final String WAPP_MESSAGE_TRIGGER_URL = "WAPP_MESSAGE_TEMP_URL";
+    public static final String EMAIL_TRIGGER_URL = "EMAIL_TEMP_URL";
+    public static final String AI_TRIGGER_URL = "AI_TRIGGER_URL";
+
+
+    public static final String SOURCE_URL = "SOURCE_URL";
+    public static final String CONTENT_URL = "CONTENT_URL";
+    public static final String UPDATE_URL = "UPDATE_URL";
+
+
 
     public static final String CLIENT_NAME_TAG = "[clientName]";
     public static final String REMOTE_URL_TAG = "[remoteUrl]";
     public static final String TEMP_URL_TAG = "[tempUrl]";
-
 
 
 

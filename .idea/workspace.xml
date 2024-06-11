@@ -9,33 +9,8 @@
   <component name="ChangeListManager">
     <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/process/details/channel/temp/ProcessEmailTempController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/process/details/channel/temp/details/ProcessEmailTempController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/process/details/channel/temp/ProcessPushTempController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/process/details/channel/temp/details/ProcessPushTempController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/process/details/channel/temp/ProcessSmsTempController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/process/details/channel/temp/details/ProcessSmsTempController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/process/details/channel/temp/ProcessTempController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/process/details/channel/temp/content/ProcessTempController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/process/details/channel/temp/ProcessWappTempController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/process/details/channel/temp/details/ProcessWappTempController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/channel/temp/ProcessEmailTempFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/channel/temp/details/ProcessEmailTempFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/channel/temp/ProcessPushTempFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/channel/temp/details/ProcessPushTempFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/channel/temp/ProcessSmsTempFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/channel/temp/details/ProcessSmsTempFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/channel/temp/ProcessTempFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/channel/temp/content/ProcessTempFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/channel/temp/ProcessWappTempFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/process/details/channel/temp/details/ProcessWappTempFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/channel/temp/ProcessEmailTempMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/channel/temp/details/ProcessEmailTempMiddleware.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/channel/temp/ProcessPushTempMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/channel/temp/details/ProcessPushTempMiddleware.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/channel/temp/ProcessSmsTempMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/channel/temp/details/ProcessSmsTempMiddleware.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/channel/temp/ProcessTempMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/channel/temp/content/ProcessTempMiddleware.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/channel/temp/ProcessWappTempMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/process/details/channel/temp/details/ProcessWappTempMiddleware.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/channel/temp/ProcessEmailTempWSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/channel/temp/details/ProcessEmailTempWSModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/channel/temp/ProcessPushTempWSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/channel/temp/details/ProcessPushTempWSModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/channel/temp/ProcessSmsTempWSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/channel/temp/details/ProcessSmsTempWSModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/channel/temp/ProcessTempWSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/channel/temp/content/ProcessTempWSModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/channel/temp/ProcessWappMessageTempWSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/channel/temp/details/ProcessWappMessageTempWSModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/channel/temp/dto/ProcessEmailTempWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/channel/temp/details/dto/ProcessEmailTempWSDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/channel/temp/dto/ProcessPushTempWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/channel/temp/details/dto/ProcessPushTempWSDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/channel/temp/dto/ProcessSmsTempWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/channel/temp/details/dto/ProcessSmsTempWSDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/channel/temp/dto/ProcessTempWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/channel/temp/content/dto/ProcessTempWSDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/channel/temp/dto/ProcessWappMessageTempWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/channel/temp/details/dto/ProcessWappMessageTempWSDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/content/dto/ProcessDetailsWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/process/details/content/dto/ProcessDetailsWSDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utility/helpers/process/ProcessHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utility/helpers/process/ProcessHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/remote/content/RemoteFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/remote/content/RemoteFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utility/config/AppConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utility/config/AppConstant.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -1084,23 +1059,7 @@
       <workItem from="1717975980155" duration="203000" />
       <workItem from="1718009198270" duration="2964000" />
       <workItem from="1718035990297" duration="117000" />
-      <workItem from="1718106935345" duration="1450000" />
-    </task>
-    <task id="LOCAL-00857" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1713704138884</created>
-      <option name="number" value="00857" />
-      <option name="presentableId" value="LOCAL-00857" />
-      <option name="project" value="LOCAL" />
-      <updated>1713704138884</updated>
-    </task>
-    <task id="LOCAL-00858" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1713712919117</created>
-      <option name="number" value="00858" />
-      <option name="presentableId" value="LOCAL-00858" />
-      <option name="project" value="LOCAL" />
-      <updated>1713712919118</updated>
+      <workItem from="1718106935345" duration="6651000" />
     </task>
     <task id="LOCAL-00859" summary="almost finish">
       <option name="closed" value="true" />
@@ -1478,7 +1437,23 @@
       <option name="project" value="LOCAL" />
       <updated>1717900966738</updated>
     </task>
-    <option name="localTasksCounter" value="906" />
+    <task id="LOCAL-00906" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1718110859722</created>
+      <option name="number" value="00906" />
+      <option name="presentableId" value="LOCAL-00906" />
+      <option name="project" value="LOCAL" />
+      <updated>1718110859723</updated>
+    </task>
+    <task id="LOCAL-00907" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1718114571169</created>
+      <option name="number" value="00907" />
+      <option name="presentableId" value="LOCAL-00907" />
+      <option name="project" value="LOCAL" />
+      <updated>1718114571169</updated>
+    </task>
+    <option name="localTasksCounter" value="908" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
