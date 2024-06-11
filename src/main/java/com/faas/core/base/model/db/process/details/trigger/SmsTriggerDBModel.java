@@ -18,8 +18,8 @@ public class SmsTriggerDBModel {
     private String smsTitle;
     private String smsBody;
     private String senderId;
-    private long typeId;
     private List<TriggerDataDAO> datas;
+    private long typeId;
     private String triggerType;
     private long uDate;
     private long cDate;
