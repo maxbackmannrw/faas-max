@@ -1,7 +1,7 @@
-package com.faas.core.base.model.ws.process.details.channel.temp;
+package com.faas.core.base.model.ws.process.details.channel.temp.content;
 
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.process.details.channel.temp.dto.ProcessTempWSDTO;
+import com.faas.core.base.model.ws.process.details.channel.temp.content.dto.ProcessTempWSDTO;
 
 public class ProcessTempWSModel {
 

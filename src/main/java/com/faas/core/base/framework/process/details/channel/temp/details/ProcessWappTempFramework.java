@@ -1,8 +1,8 @@
-package com.faas.core.base.framework.process.details.channel.temp;
+package com.faas.core.base.framework.process.details.channel.temp.details;
 
 import com.faas.core.base.model.db.channel.settings.MessageTypeDBModel;
 import com.faas.core.base.model.db.process.details.channel.temp.WappMessageTempDBModel;
-import com.faas.core.base.model.ws.process.details.channel.temp.dto.ProcessWappMessageTempWSDTO;
+import com.faas.core.base.model.ws.process.details.channel.temp.details.dto.ProcessWappMessageTempWSDTO;
 import com.faas.core.base.repo.channel.settings.MessageTypeRepository;
 import com.faas.core.base.repo.process.details.channel.temp.WappMessageTempRepository;
 import com.faas.core.utility.config.AppUtils;

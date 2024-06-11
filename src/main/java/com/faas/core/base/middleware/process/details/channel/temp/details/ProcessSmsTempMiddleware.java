@@ -1,9 +1,9 @@
-package com.faas.core.base.middleware.process.details.channel.temp;
+package com.faas.core.base.middleware.process.details.channel.temp.details;
 
-import com.faas.core.base.framework.process.details.channel.temp.ProcessSmsTempFramework;
+import com.faas.core.base.framework.process.details.channel.temp.details.ProcessSmsTempFramework;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.process.details.channel.temp.ProcessSmsTempWSModel;
-import com.faas.core.base.model.ws.process.details.channel.temp.dto.ProcessSmsTempWSDTO;
+import com.faas.core.base.model.ws.process.details.channel.temp.details.ProcessSmsTempWSModel;
+import com.faas.core.base.model.ws.process.details.channel.temp.details.dto.ProcessSmsTempWSDTO;
 import com.faas.core.utility.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

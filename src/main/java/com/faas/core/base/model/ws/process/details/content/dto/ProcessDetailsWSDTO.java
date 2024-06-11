@@ -2,7 +2,7 @@ package com.faas.core.base.model.ws.process.details.content.dto;
 
 import com.faas.core.base.model.db.process.content.ProcessDBModel;
 import com.faas.core.base.model.ws.process.details.channel.content.dto.ProcessChannelWSDTO;
-import com.faas.core.base.model.ws.process.details.channel.temp.dto.ProcessTempWSDTO;
+import com.faas.core.base.model.ws.process.details.channel.temp.content.dto.ProcessTempWSDTO;
 import com.faas.core.base.model.ws.process.details.remote.dto.ProcessRemoteWSDTO;
 import com.faas.core.base.model.ws.process.details.scenario.dto.ProcessScenarioWSDTO;
 import com.faas.core.base.model.ws.process.details.trigger.content.dto.ProcessTriggerWSDTO;

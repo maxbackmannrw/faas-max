@@ -1,4 +1,9 @@
-package com.faas.core.base.model.ws.process.details.channel.temp.dto;
+package com.faas.core.base.model.ws.process.details.channel.temp.content.dto;
+
+import com.faas.core.base.model.ws.process.details.channel.temp.details.dto.ProcessEmailTempWSDTO;
+import com.faas.core.base.model.ws.process.details.channel.temp.details.dto.ProcessPushTempWSDTO;
+import com.faas.core.base.model.ws.process.details.channel.temp.details.dto.ProcessSmsTempWSDTO;
+import com.faas.core.base.model.ws.process.details.channel.temp.details.dto.ProcessWappMessageTempWSDTO;
 
 import java.util.List;
 

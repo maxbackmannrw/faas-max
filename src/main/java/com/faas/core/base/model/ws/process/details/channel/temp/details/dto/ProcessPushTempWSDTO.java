@@ -1,4 +1,4 @@
-package com.faas.core.base.model.ws.process.details.channel.temp.dto;
+package com.faas.core.base.model.ws.process.details.channel.temp.details.dto;
 
 import com.faas.core.base.model.db.process.details.channel.temp.PushTempDBModel;
 

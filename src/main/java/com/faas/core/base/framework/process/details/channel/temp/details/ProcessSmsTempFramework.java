@@ -1,8 +1,8 @@
-package com.faas.core.base.framework.process.details.channel.temp;
+package com.faas.core.base.framework.process.details.channel.temp.details;
 
 import com.faas.core.base.model.db.channel.settings.MessageTypeDBModel;
 import com.faas.core.base.model.db.process.details.channel.temp.SmsTempDBModel;
-import com.faas.core.base.model.ws.process.details.channel.temp.dto.ProcessSmsTempWSDTO;
+import com.faas.core.base.model.ws.process.details.channel.temp.details.dto.ProcessSmsTempWSDTO;
 import com.faas.core.base.repo.channel.settings.MessageTypeRepository;
 import com.faas.core.base.repo.process.details.channel.temp.SmsTempRepository;
 import com.faas.core.utility.config.AppUtils;

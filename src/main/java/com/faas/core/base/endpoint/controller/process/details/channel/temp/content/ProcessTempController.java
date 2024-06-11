@@ -1,7 +1,7 @@
-package com.faas.core.base.endpoint.controller.process.details.channel.temp;
+package com.faas.core.base.endpoint.controller.process.details.channel.temp.content;
 
-import com.faas.core.base.middleware.process.details.channel.temp.ProcessTempMiddleware;
-import com.faas.core.base.model.ws.process.details.channel.temp.*;
+import com.faas.core.base.middleware.process.details.channel.temp.content.ProcessTempMiddleware;
+import com.faas.core.base.model.ws.process.details.channel.temp.content.ProcessTempWSModel;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;
