@@ -33,7 +33,6 @@ public class RemoteController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.GET_REMOTES_BY_BASE_TYPE, method = RequestMethod.POST)
     public ResponseEntity<?> getRemotesByBaseType(@RequestParam long userId,
                                                   @RequestParam String baseType) {
@@ -45,7 +44,6 @@ public class RemoteController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.GET_REMOTES_BY_TYPE, method = RequestMethod.POST)
     public ResponseEntity<?> getRemotesByType(@RequestParam long userId,
@@ -59,7 +57,6 @@ public class RemoteController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.GET_REMOTE, method = RequestMethod.POST)
     public ResponseEntity<?> getRemote(@RequestParam long userId,
                                        @RequestParam String remoteId) {
@@ -71,7 +68,6 @@ public class RemoteController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.CREATE_REMOTE, method = RequestMethod.POST)
     public ResponseEntity<?> createRemote(@RequestParam long userId,
@@ -89,7 +85,6 @@ public class RemoteController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.UPDATE_REMOTE, method = RequestMethod.POST)
     public ResponseEntity<?> updateRemote(@RequestParam long userId,
                                           @RequestParam String remoteId,
@@ -105,7 +100,6 @@ public class RemoteController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.REMOVE_REMOTE, method = RequestMethod.POST)
     public ResponseEntity<?> removeRemote(@RequestParam long userId,
                                           @RequestParam String remoteId) {
@@ -117,6 +111,7 @@ public class RemoteController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
+
 
 
 }

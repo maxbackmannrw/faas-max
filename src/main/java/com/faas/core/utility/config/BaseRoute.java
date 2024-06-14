@@ -168,16 +168,17 @@ public class BaseRoute {
 
 
 
-    public static final String GET_ALL_CLIENT_REMOTES = "getallclientremotes";
-    public static final String GET_ALL_CLIENT_REMOTES_BY_BASE_TYPE = "getallclientremotesbybasetype";
-    public static final String GET_CLIENT_REMOTES = "getclientremotes";
-    public static final String GET_CLIENT_REMOTE = "getclientremote";
-    public static final String CREATE_CLIENT_REMOTE = "createclientremote";
-    public static final String UPDATE_CLIENT_REMOTE = "updateclientremote";
-    public static final String REMOVE_CLIENT_REMOTE = "removeclientremote";
+    public static final String GET_REMOTE_CLIENTS = "getremoteclients";
+    public static final String GET_REMOTE_CLIENTS_BY_STATE = "getremoteclientsbystate";
+    public static final String GET_REMOTE_CLIENTS_BY_BASE_TYPE = "getremoteclientsbybasetype";
+    public static final String GET_CLIENT_REMOTE_CLIENTS = "getclientremoteclients";
+    public static final String GET_REMOTE_CLIENT = "getremoteclient";
+    public static final String CREATE_REMOTE_CLIENT = "createremoteclient";
+    public static final String UPDATE_REMOTE_CLIENT = "updateremoteclient";
+    public static final String REMOVE_REMOTE_CLIENT = "removeremoteclient";
 
-    public static final String GET_CLIENT_REMOTE_DETAILS = "getclientremotedetails";
-    public static final String GET_CLIENT_REMOTE_SUMMARY = "getclientremotesummary";
+    public static final String GET_REMOTE_CLIENT_DETAILS = "getremoteclientdetails";
+    public static final String GET_REMOTE_CLIENT_SUMMARY = "getremoteclientsummary";
 
 
 

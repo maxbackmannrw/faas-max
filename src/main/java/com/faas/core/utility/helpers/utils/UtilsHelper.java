@@ -26,7 +26,7 @@ import com.faas.core.base.repo.process.details.channel.temp.SmsTempRepository;
 import com.faas.core.base.repo.process.details.channel.temp.WappMessageTempRepository;
 import com.faas.core.base.repo.process.details.scenario.ProcessScenarioRepository;
 import com.faas.core.base.repo.process.details.trigger.*;
-import com.faas.core.base.repo.remote.client.ClientRemoteRepository;
+import com.faas.core.base.repo.remote.client.RemoteClientRepository;
 import com.faas.core.base.repo.scenario.content.ScenarioRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.base.repo.user.content.UserRepository;
@@ -55,7 +55,7 @@ public class UtilsHelper {
     ClientDetailsRepository clientDetailsRepository;
 
     @Autowired
-    ClientRemoteRepository clientRemoteRepository;
+    RemoteClientRepository remoteClientRepository;
 
     @Autowired
     SessionRepository sessionRepository;
@@ -440,7 +440,7 @@ public class UtilsHelper {
     public void removeAllClientContentsHelper(){
 
         clientRepository.deleteAll();
-        clientRemoteRepository.deleteAll();
+        remoteClientRepository.deleteAll();
         sessionRepository.deleteAll();
         operationRepository.deleteAll();
         operationEmailRepository.deleteAll();

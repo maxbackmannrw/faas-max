@@ -1,8 +1,8 @@
-package com.faas.core.base.endpoint.controller.remote.client;
+package com.faas.core.base.endpoint.controller.remote.client.details;
 
-import com.faas.core.base.middleware.remote.client.ClientRemoteDetailsMiddleware;
-import com.faas.core.base.model.ws.remote.client.content.ClientRemoteSummaryWSModel;
-import com.faas.core.base.model.ws.remote.client.details.ClientRemoteDetailsWSModel;
+import com.faas.core.base.middleware.remote.client.details.RemoteClientDetailsMiddleware;
+import com.faas.core.base.model.ws.remote.client.content.RemoteClientSummaryWSModel;
+import com.faas.core.base.model.ws.remote.client.details.RemoteClientDetailsWSModel;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,18 +15,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping(value = AppConstant.API_VERSION + "/base/remote/client/details/")
-public class ClientRemoteDetailsController {
+public class RemoteClientDetailsController {
 
 
     @Autowired
-    ClientRemoteDetailsMiddleware clientRemoteDetailsMiddleware;
+    RemoteClientDetailsMiddleware remoteClientDetailsMiddleware;
 
 
-    @RequestMapping(value = BaseRoute.GET_CLIENT_REMOTE_DETAILS, method = RequestMethod.POST)
-    public ResponseEntity<?> getClientRemoteDetails(@RequestParam long userId,
+    @RequestMapping(value = BaseRoute.GET_REMOTE_CLIENT_DETAILS, method = RequestMethod.POST)
+    public ResponseEntity<?> getRemoteClientDetails(@RequestParam long userId,
                                                     @RequestParam String clientRemoteId) {
 
-        ClientRemoteDetailsWSModel response = clientRemoteDetailsMiddleware.getClientRemoteDetails(userId,clientRemoteId);
+        RemoteClientDetailsWSModel response = remoteClientDetailsMiddleware.getRemoteClientDetails(userId,clientRemoteId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -34,16 +34,17 @@ public class ClientRemoteDetailsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-    @RequestMapping(value = BaseRoute.GET_CLIENT_REMOTE_SUMMARY, method = RequestMethod.POST)
-    public ResponseEntity<?> getClientRemoteSummary(@RequestParam long userId) {
+    @RequestMapping(value = BaseRoute.GET_REMOTE_CLIENT_SUMMARY, method = RequestMethod.POST)
+    public ResponseEntity<?> getRemoteClientSummary(@RequestParam long userId) {
 
-        ClientRemoteSummaryWSModel response = clientRemoteDetailsMiddleware.getClientRemoteSummary(userId);
+        RemoteClientSummaryWSModel response = remoteClientDetailsMiddleware.getRemoteClientSummary(userId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
+
 
 
 }

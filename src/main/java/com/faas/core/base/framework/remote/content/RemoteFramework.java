@@ -66,7 +66,6 @@ public class RemoteFramework {
         return remoteWSDTOS;
     }
 
-
     public RemoteWSDTO getRemoteService(long userId, String remoteId) {
 
         Optional<RemoteDBModel> remoteDBModel = remoteRepository.findById(remoteId);

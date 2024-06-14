@@ -1,16 +1,16 @@
 package com.faas.core.base.model.ws.remote.client.content.dto;
 
-public class ClientRemoteSummaryWSDTO {
+public class RemoteClientSummaryWSDTO {
 
     private long totalClientRemotes;
     private long newClientRemotes;
     private long readyClientRemotes;
     private long failedClientRemotes;
 
-    public ClientRemoteSummaryWSDTO() {
+    public RemoteClientSummaryWSDTO() {
     }
 
-    public ClientRemoteSummaryWSDTO(long totalClientRemotes, long newClientRemotes, long readyClientRemotes, long failedClientRemotes) {
+    public RemoteClientSummaryWSDTO(long totalClientRemotes, long newClientRemotes, long readyClientRemotes, long failedClientRemotes) {
         this.totalClientRemotes = totalClientRemotes;
         this.newClientRemotes = newClientRemotes;
         this.readyClientRemotes = readyClientRemotes;

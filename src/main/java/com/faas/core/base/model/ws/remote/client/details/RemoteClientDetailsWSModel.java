@@ -1,17 +1,17 @@
 package com.faas.core.base.model.ws.remote.client.details;
 
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.remote.client.details.dto.ClientRemoteDetailsWSDTO;
+import com.faas.core.base.model.ws.remote.client.details.dto.RemoteClientDetailsWSDTO;
 
-public class ClientRemoteDetailsWSModel {
+public class RemoteClientDetailsWSModel {
 
     private GeneralWSModel general;
-    private ClientRemoteDetailsWSDTO clientRemoteDetails;
+    private RemoteClientDetailsWSDTO clientRemoteDetails;
 
-    public ClientRemoteDetailsWSModel() {
+    public RemoteClientDetailsWSModel() {
     }
 
-    public ClientRemoteDetailsWSModel(GeneralWSModel general, ClientRemoteDetailsWSDTO clientRemoteDetails) {
+    public RemoteClientDetailsWSModel(GeneralWSModel general, RemoteClientDetailsWSDTO clientRemoteDetails) {
         this.general = general;
         this.clientRemoteDetails = clientRemoteDetails;
     }
@@ -24,11 +24,11 @@ public class ClientRemoteDetailsWSModel {
         this.general = general;
     }
 
-    public ClientRemoteDetailsWSDTO getClientRemoteDetails() {
+    public RemoteClientDetailsWSDTO getClientRemoteDetails() {
         return clientRemoteDetails;
     }
 
-    public void setClientRemoteDetails(ClientRemoteDetailsWSDTO clientRemoteDetails) {
+    public void setClientRemoteDetails(RemoteClientDetailsWSDTO clientRemoteDetails) {
         this.clientRemoteDetails = clientRemoteDetails;
     }
 }

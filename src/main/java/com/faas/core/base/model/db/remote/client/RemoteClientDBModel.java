@@ -6,8 +6,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
-@Document(collection = "client_remotes_table")
-public class ClientRemoteDBModel {
+@Document(collection = "remote_client_table")
+public class RemoteClientDBModel {
 
     @Id
     private String id;
@@ -35,10 +35,10 @@ public class ClientRemoteDBModel {
     private long cDate;
     private int status;
 
-    public ClientRemoteDBModel() {
+    public RemoteClientDBModel() {
     }
 
-    public ClientRemoteDBModel(String id, long clientId, long sessionId, String operationId, String campaignId, String campaign, String campaignType, String campaignCategory, String processId, String process, String processType, String processCategory, String remoteId, String remote, String remoteDesc, String version, List<RemoteDataDAO> remoteDatas, long typeId, String remoteType, String baseType, String remoteState, long uDate, long cDate, int status) {
+    public RemoteClientDBModel(String id, long clientId, long sessionId, String operationId, String campaignId, String campaign, String campaignType, String campaignCategory, String processId, String process, String processType, String processCategory, String remoteId, String remote, String remoteDesc, String version, List<RemoteDataDAO> remoteDatas, long typeId, String remoteType, String baseType, String remoteState, long uDate, long cDate, int status) {
         this.id = id;
         this.clientId = clientId;
         this.sessionId = sessionId;
