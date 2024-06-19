@@ -55,10 +55,9 @@ public class SessionController {
 
     @RequestMapping(value = BaseRoute.GET_SESSION, method = RequestMethod.POST)
     public ResponseEntity<?> getSession(@RequestParam long userId,
-                                        @RequestParam long sessionId,
-                                        @RequestParam long clientId) {
+                                        @RequestParam long sessionId) {
 
-        SessionWSModel response = sessionMiddleware.getSession(userId,sessionId,clientId);
+        SessionWSModel response = sessionMiddleware.getSession(userId,sessionId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -96,10 +95,9 @@ public class SessionController {
 
     @RequestMapping(value = BaseRoute.UPDATE_SESSION, method = RequestMethod.POST)
     public ResponseEntity<?> updateSession(@RequestParam long userId,
-                                           @RequestParam long sessionId,
-                                           @RequestParam long clientId) {
+                                           @RequestParam long sessionId) {
 
-        SessionWSModel response = sessionMiddleware.updateSession(userId,sessionId,clientId);
+        SessionWSModel response = sessionMiddleware.updateSession(userId,sessionId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -110,10 +108,9 @@ public class SessionController {
 
     @RequestMapping(value = BaseRoute.REMOVE_SESSION, method = RequestMethod.POST)
     public ResponseEntity<?> removeSession(@RequestParam long userId,
-                                           @RequestParam long sessionId,
-                                           @RequestParam long clientId) {
+                                           @RequestParam long sessionId) {
 
-        SessionWSModel response = sessionMiddleware.removeSession(userId,sessionId,clientId);
+        SessionWSModel response = sessionMiddleware.removeSession(userId,sessionId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

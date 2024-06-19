@@ -60,13 +60,13 @@ public class SessionMiddleware {
     }
 
 
-    public SessionWSModel getSession(long userId,long sessionId,long clientId) {
+    public SessionWSModel getSession(long userId,long sessionId) {
 
         SessionWSModel response = new SessionWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<SessionWSDTO> sessionWSDTOS = new ArrayList<>();
 
-        SessionWSDTO sessionWSDTO = sessionFramework.getSessionService(userId,sessionId,clientId);
+        SessionWSDTO sessionWSDTO = sessionFramework.getSessionService(userId,sessionId);
         if (sessionWSDTO != null){
             sessionWSDTOS.add(sessionWSDTO);
         }
@@ -125,13 +125,13 @@ public class SessionMiddleware {
     }
 
 
-    public SessionWSModel updateSession(long userId,long sessionId,long clientId) {
+    public SessionWSModel updateSession(long userId,long sessionId) {
 
         SessionWSModel response = new SessionWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<SessionWSDTO> sessionWSDTOS = new ArrayList<>();
 
-        SessionWSDTO sessionWSDTO = sessionFramework.updateSessionService(userId,sessionId,clientId);
+        SessionWSDTO sessionWSDTO = sessionFramework.updateSessionService(userId,sessionId);
         if (sessionWSDTO != null){
             sessionWSDTOS.add(sessionWSDTO);
         }
@@ -148,13 +148,13 @@ public class SessionMiddleware {
 
 
 
-    public SessionWSModel removeSession(long userId,long sessionId,long clientId) {
+    public SessionWSModel removeSession(long userId,long sessionId) {
 
         SessionWSModel response = new SessionWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<SessionWSDTO> sessionWSDTOS = new ArrayList<>();
 
-        SessionWSDTO sessionWSDTO = sessionFramework.removeSessionService(userId,sessionId,clientId);
+        SessionWSDTO sessionWSDTO = sessionFramework.removeSessionService(userId,sessionId);
         if (sessionWSDTO != null){
             sessionWSDTOS.add(sessionWSDTO);
         }

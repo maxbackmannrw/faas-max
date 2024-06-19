@@ -36,10 +36,8 @@ public class SessionFramework {
         SessionWSDTO sessionWSDTO =  new SessionWSDTO();
         sessionWSDTO.setSession(sessionDBModel);
         Optional<ClientDBModel> clientDBModel = clientRepository.findById(sessionDBModel.getClientId());
-
         if (clientDBModel.isPresent()){
             sessionWSDTO.setClient(clientDBModel.get());
-
         }
         return sessionWSDTO;
     }
@@ -67,11 +65,11 @@ public class SessionFramework {
     }
 
 
-    public SessionWSDTO getSessionService(long userId,long sessionId,long clientId) {
+    public SessionWSDTO getSessionService(long userId,long sessionId) {
 
-        List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndClientId(sessionId,clientId);
-        if (sessionDBModels.size()>0){
-            return filSessionWSDTO(sessionDBModels.get(0));
+        Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
+        if (sessionDBModel.isPresent()){
+            return filSessionWSDTO(sessionDBModel.get());
         }
         return null;
     }
@@ -87,12 +85,12 @@ public class SessionFramework {
     }
 
 
-    public SessionWSDTO updateSessionService(long userId,long sessionId,long clientId) {
+    public SessionWSDTO updateSessionService(long userId,long sessionId) {
         return null;
     }
 
 
-    public SessionWSDTO removeSessionService(long userId,long sessionId,long clientId) {
+    public SessionWSDTO removeSessionService(long userId,long sessionId) {
         return null;
     }
 
