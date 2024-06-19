@@ -24,7 +24,7 @@ public class SessionDetailsController {
 
     @RequestMapping(value = BaseRoute.GET_SESSION_DETAILS, method = RequestMethod.POST)
     public ResponseEntity<?> getSessionDetails(@RequestParam long userId,
-                                               @RequestParam String sessionId) {
+                                               @RequestParam long sessionId) {
 
         SessionDetailsWSModel response = sessionDetailsMiddleware.getSessionDetails(userId,sessionId);
 
