@@ -35,15 +35,6 @@ public class BaseRoute {
     public static final String UPDATE_USER_ROLE = "updateuserrole";
     public static final String REMOVE_USER_ROLE = "removeuserrole";
 
-    public static final String GET_ALL_SESSIONS = "getallsessions";
-    public static final String GET_SESSIONS_BY_STATE = "getsessionsbystate";
-    public static final String GET_SESSION = "getsession";
-    public static final String CREATE_SESSION = "createsession";
-    public static final String CREATE_SESSIONS = "createsessions";
-    public static final String UPDATE_SESSION = "updatesession";
-    public static final String REMOVE_SESSION = "removesession";
-
-    public static final String GET_SESSION_DETAILS = "getsessiondetails";
 
 
     public static final String GET_ALL_CAMPAIGNS = "getallcampaigns";
