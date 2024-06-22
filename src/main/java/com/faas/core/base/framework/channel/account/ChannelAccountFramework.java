@@ -87,7 +87,6 @@ public class ChannelAccountFramework {
         return channelAccountWSDTO;
     }
 
-
     public SipAccountWSDTO fillSipAccountWSDTO(SipAccountDBModel sipAccountDBModel) {
 
         SipAccountWSDTO sipAccountWSDTO = new SipAccountWSDTO();
@@ -365,7 +364,6 @@ public class ChannelAccountFramework {
         }
         return null;
     }
-
 
 
 }

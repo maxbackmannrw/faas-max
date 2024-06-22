@@ -61,7 +61,6 @@ public class ChannelAccountsMiddleware {
     }
 
 
-
     public SipAccountWSModel getAllSipAccounts(long userId) {
 
         SipAccountWSModel response = new SipAccountWSModel();
@@ -166,7 +165,6 @@ public class ChannelAccountsMiddleware {
 
         return response;
     }
-
 
 
     public SmsAccountWSModel getAllSmsAccounts(long userId) {
@@ -402,7 +400,6 @@ public class ChannelAccountsMiddleware {
     }
 
 
-
     public EmailAccountWSModel getAllEmailAccounts(long userId) {
 
         EmailAccountWSModel response = new EmailAccountWSModel();
@@ -615,7 +612,6 @@ public class ChannelAccountsMiddleware {
 
         return response;
     }
-
 
 
 }

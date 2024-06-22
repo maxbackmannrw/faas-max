@@ -106,7 +106,6 @@ public class ChannelAccountsController {
     }
 
 
-
     @RequestMapping(value = BaseRoute.GET_ALL_SMS_ACCOUNTS, method = RequestMethod.POST)
     public ResponseEntity<?> getAllSmsAccounts(@RequestParam long userId) {
 
@@ -176,7 +175,6 @@ public class ChannelAccountsController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
 
     @RequestMapping(value = BaseRoute.GET_ALL_WAPP_ACCOUNTS, method = RequestMethod.POST)
@@ -320,7 +318,6 @@ public class ChannelAccountsController {
     }
 
 
-
     @RequestMapping(value = BaseRoute.GET_ALL_PUSH_ACCOUNTS, method = RequestMethod.POST)
     public ResponseEntity<?> getAllPushAccounts(@RequestParam long userId) {
 
@@ -382,7 +379,6 @@ public class ChannelAccountsController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
 
 }
