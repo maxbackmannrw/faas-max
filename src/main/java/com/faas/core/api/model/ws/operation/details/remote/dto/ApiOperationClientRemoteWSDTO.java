@@ -1,23 +1,23 @@
 package com.faas.core.api.model.ws.operation.details.remote.dto;
 
-import com.faas.core.base.model.db.remote.client.RemoteClientDBModel;
+import com.faas.core.base.model.db.remote.app.RemoteAppDBModel;
 
 public class ApiOperationClientRemoteWSDTO {
 
-    private RemoteClientDBModel clientRemote;
+    private RemoteAppDBModel clientRemote;
 
     public ApiOperationClientRemoteWSDTO() {
     }
 
-    public ApiOperationClientRemoteWSDTO(RemoteClientDBModel clientRemote) {
+    public ApiOperationClientRemoteWSDTO(RemoteAppDBModel clientRemote) {
         this.clientRemote = clientRemote;
     }
 
-    public RemoteClientDBModel getClientRemote() {
+    public RemoteAppDBModel getClientRemote() {
         return clientRemote;
     }
 
-    public void setClientRemote(RemoteClientDBModel clientRemote) {
+    public void setClientRemote(RemoteAppDBModel clientRemote) {
         this.clientRemote = clientRemote;
     }
 }

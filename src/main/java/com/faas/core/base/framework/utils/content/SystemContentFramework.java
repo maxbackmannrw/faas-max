@@ -16,7 +16,7 @@ import com.faas.core.base.repo.process.details.channel.temp.SmsTempRepository;
 import com.faas.core.base.repo.process.details.channel.temp.WappMessageTempRepository;
 import com.faas.core.base.repo.process.details.scenario.ProcessScenarioRepository;
 import com.faas.core.base.repo.process.details.trigger.*;
-import com.faas.core.base.repo.remote.client.RemoteClientRepository;
+import com.faas.core.base.repo.remote.app.RemoteAppRepository;
 import com.faas.core.base.repo.scenario.content.ScenarioRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.base.repo.user.content.UserRepository;
@@ -39,7 +39,7 @@ public class SystemContentFramework {
     ClientRepository clientRepository;
 
     @Autowired
-    RemoteClientRepository remoteClientRepository;
+    RemoteAppRepository remoteAppRepository;
 
     @Autowired
     SessionRepository sessionRepository;

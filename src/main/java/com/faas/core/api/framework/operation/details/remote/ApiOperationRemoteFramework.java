@@ -2,10 +2,10 @@ package com.faas.core.api.framework.operation.details.remote;
 
 import com.faas.core.api.model.ws.operation.details.remote.dto.ApiOperationClientRemoteWSDTO;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
-import com.faas.core.base.model.db.remote.client.RemoteClientDBModel;
+import com.faas.core.base.model.db.remote.app.RemoteAppDBModel;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
-import com.faas.core.base.repo.remote.client.RemoteClientRepository;
+import com.faas.core.base.repo.remote.app.RemoteAppRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utility.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +27,7 @@ public class ApiOperationRemoteFramework {
     OperationRepository operationRepository;
 
     @Autowired
-    RemoteClientRepository remoteClientRepository;
+    RemoteAppRepository remoteAppRepository;
 
     @Autowired
     AppUtils appUtils;
@@ -37,9 +37,9 @@ public class ApiOperationRemoteFramework {
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
         if (!operationDBModels.isEmpty()){
             List<ApiOperationClientRemoteWSDTO> operationClientRemoteWSDTOS = new ArrayList<>();
-            List<RemoteClientDBModel> remoteClientDBModels = remoteClientRepository.findByClientId(operationDBModels.get(0).getClientId());
-            for (RemoteClientDBModel remoteClientDBModel : remoteClientDBModels) {
-                operationClientRemoteWSDTOS.add(new ApiOperationClientRemoteWSDTO(remoteClientDBModel));
+            List<RemoteAppDBModel> remoteAppDBModels = remoteAppRepository.findByClientId(operationDBModels.get(0).getClientId());
+            for (RemoteAppDBModel remoteAppDBModel : remoteAppDBModels) {
+                operationClientRemoteWSDTOS.add(new ApiOperationClientRemoteWSDTO(remoteAppDBModel));
             }
             return operationClientRemoteWSDTOS;
         }
@@ -50,9 +50,9 @@ public class ApiOperationRemoteFramework {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
         if (!operationDBModels.isEmpty()){
-            List<RemoteClientDBModel> remoteClientDBModels = remoteClientRepository.findByIdAndClientId(clientRemoteId,operationDBModels.get(0).getClientId());
-            if (!remoteClientDBModels.isEmpty()){
-                return new ApiOperationClientRemoteWSDTO(remoteClientDBModels.get(0));
+            List<RemoteAppDBModel> remoteAppDBModels = remoteAppRepository.findByIdAndClientId(clientRemoteId,operationDBModels.get(0).getClientId());
+            if (!remoteAppDBModels.isEmpty()){
+                return new ApiOperationClientRemoteWSDTO(remoteAppDBModels.get(0));
             }
         }
         return null;
