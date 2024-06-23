@@ -161,7 +161,6 @@ public class UtilsHelpers {
     public SystemInitWSDTO initSystemContentHelper(String initType) {
 
         if (initType.equalsIgnoreCase(AppConstant.FIRST_TIME_INIT)){
-
             deleteUserRolesHelper();
             createUserRolesHelper();
             deleteUsersHelper();
@@ -174,7 +173,8 @@ public class UtilsHelpers {
 
 
     public void deleteUserRolesHelper(){
-        userRoleRepository.deleteAll(userRoleRepository.findAll());
+
+        userRoleRepository.deleteAll();
     }
 
     public void createUserRolesHelper(){
@@ -201,8 +201,8 @@ public class UtilsHelpers {
 
     public void deleteUsersHelper(){
 
-        userRepository.deleteAll(userRepository.findAll());
-        userDetailsRepository.deleteAll(userDetailsRepository.findAll());
+        userRepository.deleteAll();
+        userDetailsRepository.deleteAll();
     }
 
     public void createUsersHelper(){
@@ -228,11 +228,11 @@ public class UtilsHelpers {
             userDBModel.setcDate(appUtils.getCurrentTimeStamp());
             userDBModel.setStatus(1);
 
-            initUserDetailsDBModel(userRepository.save(userDBModel));
+            createUserDetailsDBModel(userRepository.save(userDBModel));
         }
     }
 
-    public void initUserDetailsDBModel(UserDBModel userDBModel){
+    public void createUserDetailsDBModel(UserDBModel userDBModel){
 
         UserDetailsDBModel userDetailsDBModel = new UserDetailsDBModel();
         userDetailsDBModel.setUserId(userDBModel.getId());
@@ -255,7 +255,6 @@ public class UtilsHelpers {
 
         userDetailsRepository.save(userDetailsDBModel);
     }
-
 
 
     public List<SystemContentWSDTO> getSystemContentsHelper(long userId){
