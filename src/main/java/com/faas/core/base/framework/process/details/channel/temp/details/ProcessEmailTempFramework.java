@@ -6,7 +6,7 @@ import com.faas.core.base.model.ws.process.details.channel.temp.dto.ProcessEmail
 import com.faas.core.base.repo.channel.settings.EmailTypeRepository;
 import com.faas.core.base.repo.process.details.channel.temp.EmailTempRepository;
 import com.faas.core.utility.config.AppUtils;
-import com.faas.core.utility.helpers.process.ProcessHelper;
+import com.faas.core.utility.helpers.process.ProcessHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +20,7 @@ public class ProcessEmailTempFramework {
 
 
     @Autowired
-    ProcessHelper processHelper;
+    ProcessHelpers processHelpers;
 
     @Autowired
     EmailTempRepository emailTempRepository;

@@ -9,7 +9,7 @@ import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.remote.content.RemoteRepository;
 import com.faas.core.base.repo.utils.DataTypeRepository;
 import com.faas.core.utility.config.AppUtils;
-import com.faas.core.utility.helpers.remote.RemoteHelper;
+import com.faas.core.utility.helpers.remote.RemoteHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +21,7 @@ import java.util.Optional;
 public class ProcessInquiryFramework {
 
     @Autowired
-    RemoteHelper remoteHelper;
+    RemoteHelpers remoteHelpers;
 
     @Autowired
     ProcessRepository processRepository;

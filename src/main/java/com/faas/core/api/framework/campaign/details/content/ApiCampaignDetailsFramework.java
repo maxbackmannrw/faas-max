@@ -12,8 +12,8 @@ import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.process.details.scenario.ProcessScenarioRepository;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.AppUtils;
-import com.faas.core.utility.helpers.campaign.CampaignHelper;
-import com.faas.core.utility.helpers.operation.OperationHelper;
+import com.faas.core.utility.helpers.campaign.CampaignHelpers;
+import com.faas.core.utility.helpers.operation.OperationHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
@@ -27,10 +27,10 @@ import java.util.Optional;
 public class ApiCampaignDetailsFramework {
 
     @Autowired
-    CampaignHelper campaignHelper;
+    CampaignHelpers campaignHelpers;
 
     @Autowired
-    OperationHelper operationHelper;
+    OperationHelpers operationHelpers;
 
     @Autowired
     OperationRepository operationRepository;
@@ -60,17 +60,17 @@ public class ApiCampaignDetailsFramework {
 
                 ApiCampaignDetailsWSDTO campaignDetailsWSDTO = new ApiCampaignDetailsWSDTO();
                 campaignDetailsWSDTO.setCampaign(campaignDBModel.get());
-                campaignDetailsWSDTO.setCampaignProcess(campaignHelper.getApiCampaignProcessWSDTO(processDBModel.get()));
-                campaignDetailsWSDTO.setActiveOperation(operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndCampaignIdAndOperationState(agentId,campaignId,AppConstant.ACTIVE_STATE,PageRequest.of(reqPage,reqSize))));
+                campaignDetailsWSDTO.setCampaignProcess(campaignHelpers.getApiCampaignProcessWSDTO(processDBModel.get()));
+                campaignDetailsWSDTO.setActiveOperation(operationHelpers.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndCampaignIdAndOperationState(agentId,campaignId,AppConstant.ACTIVE_STATE,PageRequest.of(reqPage,reqSize))));
 
                 if (campaignDBModel.get().getCampaignCategory().equalsIgnoreCase(AppConstant.MANUAL_CAMPAIGN)){
-                    campaignDetailsWSDTO.setReadyOperation(operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndCampaignIdAndOperationState(agentId,campaignId,AppConstant.READY_STATE,PageRequest.of(reqPage,reqSize))));
+                    campaignDetailsWSDTO.setReadyOperation(operationHelpers.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndCampaignIdAndOperationState(agentId,campaignId,AppConstant.READY_STATE,PageRequest.of(reqPage,reqSize))));
                 }
                 if (campaignDBModel.get().getCampaignCategory().equalsIgnoreCase(AppConstant.INQUIRY_CAMPAIGN)){
-                    campaignDetailsWSDTO.setReadyOperation(operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndCampaignIdAndOperationStateAndOperationInquiryState(agentId,campaignId,AppConstant.READY_STATE,AppConstant.NEW_STATE,PageRequest.of(reqPage,reqSize))));
+                    campaignDetailsWSDTO.setReadyOperation(operationHelpers.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndCampaignIdAndOperationStateAndOperationInquiryState(agentId,campaignId,AppConstant.READY_STATE,AppConstant.NEW_STATE,PageRequest.of(reqPage,reqSize))));
                 }
                 if (campaignDBModel.get().getCampaignCategory().equalsIgnoreCase(AppConstant.AUTOMATIC_CAMPAIGN)){
-                    campaignDetailsWSDTO.setReadyOperation(operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndCampaignIdAndOperationStateAndOperationFlowState(agentId,campaignId,AppConstant.READY_STATE,AppConstant.NEW_STATE,PageRequest.of(reqPage,reqSize))));
+                    campaignDetailsWSDTO.setReadyOperation(operationHelpers.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndCampaignIdAndOperationStateAndOperationFlowState(agentId,campaignId,AppConstant.READY_STATE,AppConstant.NEW_STATE,PageRequest.of(reqPage,reqSize))));
                 }
                 return campaignDetailsWSDTO;
             }
@@ -96,7 +96,7 @@ public class ApiCampaignDetailsFramework {
         if (campaignAgentRepository.existsByAgentIdAndCampaignId(agentId,campaignId) && campaignDBModel.isPresent()){
             Optional<ProcessDBModel> processDBModel = processRepository.findById(campaignDBModel.get().getProcessId());
             if (processDBModel.isPresent()){
-                return campaignHelper.getApiCampaignProcessWSDTO(processDBModel.get());
+                return campaignHelpers.getApiCampaignProcessWSDTO(processDBModel.get());
             }
         }
         return null;

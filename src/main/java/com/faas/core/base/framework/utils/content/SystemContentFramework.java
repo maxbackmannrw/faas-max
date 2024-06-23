@@ -23,7 +23,7 @@ import com.faas.core.base.repo.user.content.UserRepository;
 import com.faas.core.base.repo.user.details.UserDetailsRepository;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.AppUtils;
-import com.faas.core.utility.helpers.utils.UtilsHelper;
+import com.faas.core.utility.helpers.utils.UtilsHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,7 +33,7 @@ import java.util.List;
 public class SystemContentFramework {
 
     @Autowired
-    UtilsHelper utilsHelper;
+    UtilsHelpers utilsHelpers;
 
     @Autowired
     ClientRepository clientRepository;
@@ -140,67 +140,63 @@ public class SystemContentFramework {
 
     public SystemInitWSDTO initSystemContentService(String initType) {
 
-        if (initType.equalsIgnoreCase(AppConstant.FIRST_TIME_INIT)){
-            return utilsHelper.initSystemContentServiceHelper();
-        }
-        return null;
+        return utilsHelpers.initSystemContentHelper(initType);
     }
 
     public List<SystemContentWSDTO> getSystemContentsService(long userId) {
 
-        return utilsHelper.getSystemContentsServiceHelper(userId);
+        return utilsHelpers.getSystemContentsHelper(userId);
     }
 
     public SystemContentWSDTO recoverSystemContentService(long userId, String contentType) {
 
         if (contentType.equalsIgnoreCase(AppConstant.CLIENT_CONTENTS)){
-            utilsHelper.recoverClientContentsHelper();
+            utilsHelpers.recoverClientContentsHelper();
         }
         if (contentType.equalsIgnoreCase(AppConstant.AGENT_CONTENTS)){
-            utilsHelper.recoverAgentContentsHelper();
+            utilsHelpers.recoverAgentContentsHelper();
         }
         return null;
     }
 
-
     public SystemContentWSDTO removeSystemContentService(long userId, String contentType) {
 
         if (contentType.equalsIgnoreCase(AppConstant.CLIENT_CONTENTS)){
-            utilsHelper.removeAllClientContentsHelper();
+            utilsHelpers.removeAllClientsHelper();
             return new SystemContentWSDTO(AppConstant.CLIENT_CONTENTS,AppConstant.CLIENT_CONTENTS,true);
         }
         if (contentType.equalsIgnoreCase(AppConstant.SESSION_CONTENTS)){
-            utilsHelper.removeAllSessionContentsHelper();
+            utilsHelpers.removeAllSessionsHelper();
             return new SystemContentWSDTO(AppConstant.SESSION_CONTENTS,AppConstant.SESSION_CONTENTS,true);
         }
         if (contentType.equalsIgnoreCase(AppConstant.OPERATION_CONTENTS)){
-            utilsHelper.removeAllOperationContentsHelper();
+            utilsHelpers.removeAllOperationsHelper();
             return new SystemContentWSDTO(AppConstant.OPERATION_CONTENTS,AppConstant.OPERATION_CONTENTS,true);
         }
 
         if (contentType.equalsIgnoreCase(AppConstant.CAMPAIGN_CONTENTS)){
-            utilsHelper.removeAllCampaignContentsHelper();
+            utilsHelpers.removeAllCampaignsHelper();
             return new SystemContentWSDTO(AppConstant.CAMPAIGN_CONTENTS,AppConstant.CAMPAIGN_CONTENTS,true);
         }
         if (contentType.equalsIgnoreCase(AppConstant.PROCESS_CONTENTS)){
-            utilsHelper.removeAllProcessContentsHelper();
+            utilsHelpers.removeAllProcessesHelper();
             return new SystemContentWSDTO(AppConstant.PROCESS_CONTENTS,AppConstant.PROCESS_CONTENTS,true);
         }
         if (contentType.equalsIgnoreCase(AppConstant.SCENARIO_CONTENTS)){
-            utilsHelper.removeAllScenarioContentsHelper();
+            utilsHelpers.removeAllScenariosHelper();
             return new SystemContentWSDTO(AppConstant.SCENARIO_CONTENTS,AppConstant.SCENARIO_CONTENTS,true);
         }
 
         if (contentType.equalsIgnoreCase(AppConstant.USER_CONTENTS)){
-            utilsHelper.removeAllUserContentsHelper();
+            utilsHelpers.removeAllUsersHelper();
             return new SystemContentWSDTO(AppConstant.USER_CONTENTS,AppConstant.USER_CONTENTS,true);
         }
         if (contentType.equalsIgnoreCase(AppConstant.AGENT_CONTENTS)){
-            utilsHelper.removeAllAgentContentsHelper();
+            utilsHelpers.removeAllAgentsHelper();
             return new SystemContentWSDTO(AppConstant.AGENT_CONTENTS,AppConstant.AGENT_CONTENTS,true);
         }
         if (contentType.equalsIgnoreCase(AppConstant.ASSET_CONTENTS)){
-            utilsHelper.removeAllAssetContentsHelper();
+            utilsHelpers.removeAllAssetsHelper();
             return new SystemContentWSDTO(AppConstant.ASSET_CONTENTS,AppConstant.ASSET_CONTENTS,true);
         }
         return null;

@@ -12,7 +12,7 @@ import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.AppUtils;
-import com.faas.core.utility.helpers.campaign.CampaignHelper;
+import com.faas.core.utility.helpers.campaign.CampaignHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -25,7 +25,7 @@ import java.util.Optional;
 public class ApiCampaignFramework {
 
     @Autowired
-    CampaignHelper campaignHelper;
+    CampaignHelpers campaignHelpers;
 
     @Autowired
     SessionRepository sessionRepository;
@@ -56,10 +56,10 @@ public class ApiCampaignFramework {
         for (CampaignAgentDBModel campaignAgent : campaignAgents) {
             Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignAgent.getCampaignId());
             if (campaignDBModel.isPresent() && campaignDBModel.get().getCampaignCategory().equalsIgnoreCase(AppConstant.MANUAL_CAMPAIGN)) {
-                manualCampaigns.add(campaignHelper.getApiCampaignWSDTO(agentId,campaignDBModel.get()));
+                manualCampaigns.add(campaignHelpers.getApiCampaignWSDTO(agentId,campaignDBModel.get()));
             }
             if (campaignDBModel.isPresent() && campaignDBModel.get().getCampaignCategory().equalsIgnoreCase(AppConstant.INQUIRY_CAMPAIGN)) {
-                inquiryCampaigns.add(campaignHelper.getApiCampaignWSDTO(agentId,campaignDBModel.get()));
+                inquiryCampaigns.add(campaignHelpers.getApiCampaignWSDTO(agentId,campaignDBModel.get()));
             }
         }
         agentCampaignWSDTO.setManualCampaigns(manualCampaigns);
@@ -76,7 +76,7 @@ public class ApiCampaignFramework {
             Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignAgent.getCampaignId());
             if (campaignDBModel.isPresent()) {
                 if (campaignDBModel.get().getCampaignCategory().equalsIgnoreCase(campaignCategory) || campaignCategory.equalsIgnoreCase(AppConstant.ALL_CAMPAIGNS)) {
-                    campaignWSDTOS.add(campaignHelper.getApiCampaignWSDTO(agentId,campaignDBModel.get()));
+                    campaignWSDTOS.add(campaignHelpers.getApiCampaignWSDTO(agentId,campaignDBModel.get()));
                 }
             }
         }
@@ -87,7 +87,7 @@ public class ApiCampaignFramework {
 
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
         if (campaignDBModel.isPresent()) {
-            return campaignHelper.getApiCampaignWSDTO(agentId,campaignDBModel.get());
+            return campaignHelpers.getApiCampaignWSDTO(agentId,campaignDBModel.get());
         }
         return null;
     }

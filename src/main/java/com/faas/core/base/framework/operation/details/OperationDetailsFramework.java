@@ -4,7 +4,7 @@ import com.faas.core.base.model.ws.operation.content.dto.OperationListWSDTO;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utility.config.AppUtils;
-import com.faas.core.utility.helpers.operation.OperationHelper;
+import com.faas.core.utility.helpers.operation.OperationHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +14,7 @@ public class OperationDetailsFramework {
 
 
     @Autowired
-    OperationHelper operationHelper;
+    OperationHelpers operationHelpers;
 
     @Autowired
     SessionRepository sessionRepository;

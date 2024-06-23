@@ -53,7 +53,7 @@ import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.base.repo.user.details.UserDetailsRepository;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.AppUtils;
-import com.faas.core.utility.helpers.channel.ChannelHelper;
+import com.faas.core.utility.helpers.channel.ChannelHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
@@ -63,10 +63,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
-public class OperationHelper {
+public class OperationHelpers {
 
     @Autowired
-    ChannelHelper channelHelper;
+    ChannelHelpers channelHelpers;
 
     @Autowired
     ClientRepository clientRepository;
@@ -150,7 +150,7 @@ public class OperationHelper {
     public SessionDBModel createSessionDBModel(ClientDBModel clientDBModel, UserDBModel agentDBModel,CampaignDBModel campaignDBModel  ) {
 
         SessionDBModel sessionDBModel = new SessionDBModel();
-        sessionDBModel.setOperationId(AppConstant.NO_VALUE);
+        sessionDBModel.setOperationId(AppConstant.NONE);
         sessionDBModel.setClientId(clientDBModel.getId());
         sessionDBModel.setClientName(clientDBModel.getClientName());
         sessionDBModel.setNationalId(clientDBModel.getNationalId());
@@ -496,14 +496,14 @@ public class OperationHelper {
 
     public ApiOperationSipChannelWSDTO getApiOperationSipChannelWSDTO(OperationDBModel operationDBModel,ClientDetailsDBModel clientDetails) {
 
-        ApiOperationSipAccountWSDTO sipAccountWSDTO = channelHelper.getApiOperationSipAccountWSDTO(operationDBModel.getAgentId(),operationDBModel.getProcessId());
+        ApiOperationSipAccountWSDTO sipAccountWSDTO = channelHelpers.getApiOperationSipAccountWSDTO(operationDBModel.getAgentId(),operationDBModel.getProcessId());
         if (sipAccountWSDTO != null && clientDetails.getClientPhones() != null){
 
             ApiOperationSipChannelWSDTO operationSipChannelWSDTO = new ApiOperationSipChannelWSDTO();
             operationSipChannelWSDTO.setSipAccount(sipAccountWSDTO);
             operationSipChannelWSDTO.setClientPhones(clientDetails.getClientPhones());
             List<OperationSipCallDBModel> operationSipCallDBModels = sipCallRepository.findByOperationId(operationDBModel.getId());
-            OperationSipCallDBModel activeSipCall = channelHelper.getApiOperationActiveSipCallHelper(operationSipCallDBModels);
+            OperationSipCallDBModel activeSipCall = channelHelpers.getApiOperationActiveSipCallHelper(operationSipCallDBModels);
             if (activeSipCall != null){
                 operationSipChannelWSDTO.setActiveSipCall(activeSipCall);
             }
@@ -516,14 +516,14 @@ public class OperationHelper {
 
     public ApiOperationWappCallChannelWSDTO getApiOperationWappCallChannelWSDTO(OperationDBModel operationDBModel,ClientDetailsDBModel clientDetails) {
 
-        ApiOperationWappCallAccountWSDTO wappAccountWSDTO = channelHelper.getApiOperationWappCallAccountWSDTO(operationDBModel.getAgentId(),operationDBModel.getProcessId());
+        ApiOperationWappCallAccountWSDTO wappAccountWSDTO = channelHelpers.getApiOperationWappCallAccountWSDTO(operationDBModel.getAgentId(),operationDBModel.getProcessId());
         if (wappAccountWSDTO != null && clientDetails.getClientPhones() != null){
 
             ApiOperationWappCallChannelWSDTO wappCallChannelWSDTO = new ApiOperationWappCallChannelWSDTO();
             wappCallChannelWSDTO.setWappAccount(wappAccountWSDTO);
             wappCallChannelWSDTO.setClientPhones(clientDetails.getClientPhones());
             List<OperationWappCallDBModel> operationWappCallDBModels = wappCallRepository.findByOperationId(operationDBModel.getId());
-            OperationWappCallDBModel activeWappCall = channelHelper.getApiOperationActiveWappCallHelper(operationWappCallDBModels);
+            OperationWappCallDBModel activeWappCall = channelHelpers.getApiOperationActiveWappCallHelper(operationWappCallDBModels);
             if (activeWappCall != null){
                 wappCallChannelWSDTO.setActiveWappCall(activeWappCall);
             }
@@ -550,7 +550,7 @@ public class OperationHelper {
 
     public ApiOperationSmsChannelWSDTO getApiOperationSmsChannelWSDTO(OperationDBModel operationDBModel,ClientDetailsDBModel clientDetails) {
 
-        ApiOperationSmsAccountWSDTO smsAccountWSDTO = channelHelper.getApiOperationSmsAccountWSDTO(operationDBModel.getProcessId());
+        ApiOperationSmsAccountWSDTO smsAccountWSDTO = channelHelpers.getApiOperationSmsAccountWSDTO(operationDBModel.getProcessId());
         if (smsAccountWSDTO != null && clientDetails.getClientPhones() != null){
 
             ApiOperationSmsChannelWSDTO operationSmsChannelWSDTO = new ApiOperationSmsChannelWSDTO();
@@ -566,7 +566,7 @@ public class OperationHelper {
 
     public ApiOperationWappMessageChannelWSDTO getApiOperationWappMessageChannelWSDTO(OperationDBModel operationDBModel,ClientDetailsDBModel clientDetails) {
 
-        ApiOperationWappMessageAccountWSDTO wappAccountWSDTO = channelHelper.getApiWappMessageAccountWSDTO(operationDBModel.getAgentId(),operationDBModel.getProcessId());
+        ApiOperationWappMessageAccountWSDTO wappAccountWSDTO = channelHelpers.getApiWappMessageAccountWSDTO(operationDBModel.getAgentId(),operationDBModel.getProcessId());
         if (wappAccountWSDTO != null && clientDetails.getClientPhones() != null){
 
             ApiOperationWappMessageChannelWSDTO wappMessageChannelWSDTO = new ApiOperationWappMessageChannelWSDTO();
@@ -582,7 +582,7 @@ public class OperationHelper {
 
     public ApiOperationEmailChannelWSDTO getApiOperationEmailChannelWSDTO(OperationDBModel operationDBModel,ClientDetailsDBModel clientDetails) {
 
-        ApiOperationEmailAccountWSDTO emailAccountWSDTO = channelHelper.getApiEmailAccountWSDTO(operationDBModel.getProcessId());
+        ApiOperationEmailAccountWSDTO emailAccountWSDTO = channelHelpers.getApiEmailAccountWSDTO(operationDBModel.getProcessId());
         if (emailAccountWSDTO != null && clientDetails.getClientEmails() != null){
 
             ApiOperationEmailChannelWSDTO emailChannelWSDTO = new ApiOperationEmailChannelWSDTO();
@@ -598,7 +598,7 @@ public class OperationHelper {
 
     public ApiOperationPushChannelWSDTO getApiOperationPushChannelWSDTO(OperationDBModel operationDBModel,ClientDetailsDBModel clientDetails) {
 
-        ApiOperationPushAccountWSDTO pushAccountWSDTO = channelHelper.getApiPushAccountWSDTO(operationDBModel.getProcessId());
+        ApiOperationPushAccountWSDTO pushAccountWSDTO = channelHelpers.getApiPushAccountWSDTO(operationDBModel.getProcessId());
         if (pushAccountWSDTO != null ){
 
             ApiOperationPushChannelWSDTO pushChannelWSDTO = new ApiOperationPushChannelWSDTO();

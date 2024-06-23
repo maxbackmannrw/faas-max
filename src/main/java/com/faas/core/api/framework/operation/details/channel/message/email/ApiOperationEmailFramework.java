@@ -19,8 +19,8 @@ import com.faas.core.base.repo.process.details.channel.content.ProcessEmailChann
 import com.faas.core.base.repo.process.details.channel.temp.EmailTempRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utility.config.AppUtils;
-import com.faas.core.utility.helpers.channel.ChannelHelper;
-import com.faas.core.utility.helpers.operation.OperationHelper;
+import com.faas.core.utility.helpers.channel.ChannelHelpers;
+import com.faas.core.utility.helpers.operation.OperationHelpers;
 import com.faas.core.utility.handler.channel.email.EmailChannelHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -35,10 +35,10 @@ public class ApiOperationEmailFramework {
 
 
     @Autowired
-    OperationHelper operationHelper;
+    OperationHelpers operationHelpers;
 
     @Autowired
-    ChannelHelper channelHelper;
+    ChannelHelpers channelHelpers;
 
     @Autowired
     ClientRepository clientRepository;
@@ -75,7 +75,7 @@ public class ApiOperationEmailFramework {
 
             List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(operationDBModels.get(0).getClientId());
             if (!clientDetailsDBModels.isEmpty()){
-                return operationHelper.getApiOperationEmailChannelWSDTO(operationDBModels.get(0),clientDetailsDBModels.get(0));
+                return operationHelpers.getApiOperationEmailChannelWSDTO(operationDBModels.get(0),clientDetailsDBModels.get(0));
             }
         }
         return null;
@@ -86,7 +86,7 @@ public class ApiOperationEmailFramework {
 
         List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
         if (!sessionDBModels.isEmpty()){
-            return channelHelper.getApiEmailAccountWSDTO(sessionDBModels.get(0).getProcessId());
+            return channelHelpers.getApiEmailAccountWSDTO(sessionDBModels.get(0).getProcessId());
         }
         return null;
     }
@@ -98,7 +98,7 @@ public class ApiOperationEmailFramework {
         if (!sessionDBModels.isEmpty()){
 
             ApiOperationEmailTempWSDTO emailTempWSDTO = new ApiOperationEmailTempWSDTO();
-            emailTempWSDTO.setEmailAccount(channelHelper.getApiEmailAccountWSDTO(sessionDBModels.get(0).getProcessId()));
+            emailTempWSDTO.setEmailAccount(channelHelpers.getApiEmailAccountWSDTO(sessionDBModels.get(0).getProcessId()));
             List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(sessionDBModels.get(0).getClientId());
             if (!clientDetailsDBModels.isEmpty() && clientDetailsDBModels.get(0).getClientEmails() != null){
                 emailTempWSDTO.setClientEmails(clientDetailsDBModels.get(0).getClientEmails());
@@ -115,7 +115,7 @@ public class ApiOperationEmailFramework {
         if (!sessionDBModels.isEmpty()){
 
             ApiOperationEmailTempWSDTO emailTempWSDTO = new ApiOperationEmailTempWSDTO();
-            emailTempWSDTO.setEmailAccount(channelHelper.getApiEmailAccountWSDTO(sessionDBModels.get(0).getProcessId()));
+            emailTempWSDTO.setEmailAccount(channelHelpers.getApiEmailAccountWSDTO(sessionDBModels.get(0).getProcessId()));
             List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(sessionDBModels.get(0).getClientId());
             if (!clientDetailsDBModels.isEmpty() && clientDetailsDBModels.get(0).getClientEmails() != null){
                 emailTempWSDTO.setClientEmails(clientDetailsDBModels.get(0).getClientEmails());
@@ -151,12 +151,12 @@ public class ApiOperationEmailFramework {
         List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
         if (!sessionDBModels.isEmpty()){
 
-            ClientEmailDAO clientEmailDAO = channelHelper.fetchClientEmailDAO(sessionDBModels.get(0).getClientId(),emailAddressId);
+            ClientEmailDAO clientEmailDAO = channelHelpers.fetchClientEmailDAO(sessionDBModels.get(0).getClientId(),emailAddressId);
             List<EmailTempDBModel> emailTempDBModels = emailTempRepository.findByIdAndProcessId(tempId,sessionDBModels.get(0).getProcessId());
             List<ProcessEmailChannelDBModel> emailChannelDBModels = processEmailChannelRepository.findByProcessId(sessionDBModels.get(0).getProcessId());
             if (clientEmailDAO != null && !emailTempDBModels.isEmpty() && !emailChannelDBModels.isEmpty() ){
 
-                OperationEmailDBModel operationEmailDBModel = channelHelper.createOperationEmailDBModel(sessionDBModels.get(0),clientEmailDAO,emailTempDBModels.get(0),emailChannelDBModels.get(0));
+                OperationEmailDBModel operationEmailDBModel = channelHelpers.createOperationEmailDBModel(sessionDBModels.get(0),clientEmailDAO,emailTempDBModels.get(0),emailChannelDBModels.get(0));
                 emailChannelHandler.sendAsyncEmailService(operationEmailDBModel);
                 return new ApiOperationEmailWSDTO(operationEmailDBModel);
             }

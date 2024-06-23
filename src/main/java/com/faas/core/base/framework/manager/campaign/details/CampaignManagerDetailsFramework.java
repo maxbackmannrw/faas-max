@@ -3,7 +3,7 @@ package com.faas.core.base.framework.manager.campaign.details;
 import com.faas.core.base.model.ws.manager.campaign.details.dto.CampaignManagerDetailsWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.utility.config.AppUtils;
-import com.faas.core.utility.helpers.manager.ManagerHelper;
+import com.faas.core.utility.helpers.manager.ManagerHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +13,7 @@ public class CampaignManagerDetailsFramework {
 
 
     @Autowired
-    ManagerHelper managerHelper;
+    ManagerHelpers managerHelpers;
 
     @Autowired
     CampaignRepository campaignRepository;

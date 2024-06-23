@@ -34,7 +34,7 @@ import com.faas.core.base.repo.user.details.UserDetailsRepository;
 import com.faas.core.base.repo.user.settings.UserRoleRepository;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.AppUtils;
-import com.faas.core.utility.helpers.client.ClientHelper;
+import com.faas.core.utility.helpers.client.ClientHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -43,10 +43,11 @@ import java.util.List;
 
 
 @Component
-public class UtilsHelper {
+public class UtilsHelpers {
+
 
     @Autowired
-    ClientHelper clientHelper;
+    ClientHelpers clientHelpers;
 
     @Autowired
     ClientRepository clientRepository;
@@ -157,31 +158,35 @@ public class UtilsHelper {
     AppUtils appUtils;
 
 
-    public SystemInitWSDTO initSystemContentServiceHelper(){
+    public SystemInitWSDTO initSystemContentHelper(String initType) {
 
-        checkUserRolesAndReset();
-        initializeUserRolesHelper();
-        checkUsersAndReset();
-        initUsersHelper();
-        return new SystemInitWSDTO(AppConstant.FIRST_TIME_INIT,AppConstant.FIRST_TIME_INIT,true);
-    }
+        if (initType.equalsIgnoreCase(AppConstant.FIRST_TIME_INIT)){
 
-    public void checkUserRolesAndReset(){
+            deleteUserRolesHelper();
+            createUserRolesHelper();
+            deleteUsersHelper();
+            createUsersHelper();
 
-        if (userRoleRepository.count()>0){
-            userRoleRepository.deleteAll(userRoleRepository.findAll());
+            return new SystemInitWSDTO(AppConstant.FIRST_TIME_INIT,AppConstant.FIRST_TIME_INIT,true);
         }
+        return null;
     }
 
-    public void initializeUserRolesHelper(){
-        userRoleRepository.save(createUserRolesHelper(AppConstant.SUPER_MANAGER,AppConstant.MANAGER_USER));
-        userRoleRepository.save(createUserRolesHelper(AppConstant.BASIC_MANAGER,AppConstant.MANAGER_USER));
-        userRoleRepository.save(createUserRolesHelper(AppConstant.BASIC_AGENT,AppConstant.AGENT_USER));
-        userRoleRepository.save(createUserRolesHelper(AppConstant.SUPER_AGENT,AppConstant.AGENT_USER));
-        userRoleRepository.save(createUserRolesHelper(AppConstant.AUTO_AGENT,AppConstant.AGENT_USER));
+
+    public void deleteUserRolesHelper(){
+        userRoleRepository.deleteAll(userRoleRepository.findAll());
     }
 
-    public UserRoleDBModel createUserRolesHelper(String userRole,String userType){
+    public void createUserRolesHelper(){
+
+        createUserRoleDBModel(AppConstant.SUPER_MANAGER,AppConstant.MANAGER_USER);
+        createUserRoleDBModel(AppConstant.BASIC_MANAGER,AppConstant.MANAGER_USER);
+        createUserRoleDBModel(AppConstant.BASIC_AGENT,AppConstant.AGENT_USER);
+        createUserRoleDBModel(AppConstant.SUPER_AGENT,AppConstant.AGENT_USER);
+        createUserRoleDBModel(AppConstant.AUTO_AGENT,AppConstant.AGENT_USER);
+    }
+
+    public void createUserRoleDBModel(String userRole,String userType){
 
         UserRoleDBModel userRoleDBModel = new UserRoleDBModel();
         userRoleDBModel.setUserRole(userRole);
@@ -190,25 +195,23 @@ public class UtilsHelper {
         userRoleDBModel.setcDate(appUtils.getCurrentTimeStamp());
         userRoleDBModel.setStatus(1);
 
-        return userRoleDBModel;
+        userRoleRepository.save(userRoleDBModel);
     }
 
-    public void checkUsersAndReset(){
 
-        List<UserDBModel> managerUsers = userRepository.findByUserType(AppConstant.MANAGER_USER);
-        if (!managerUsers.isEmpty()){
-            userRepository.deleteAll(managerUsers);
-            for (UserDBModel managerUser : managerUsers) {
-                userDetailsRepository.deleteAll(userDetailsRepository.findByUserId(managerUser.getId()));
-            }
-        }
+    public void deleteUsersHelper(){
+
+        userRepository.deleteAll(userRepository.findAll());
+        userDetailsRepository.deleteAll(userDetailsRepository.findAll());
     }
 
-    public void initUsersHelper(){
-        createUserHelper(AppConstant.DEFAULT_MANAGER_NAME, AppConstant.DEFAULT_MANAGER_EMAIL, AppConstant.DEFAULT_MANAGER_PASSWORD,AppConstant.SUPER_MANAGER );
+    public void createUsersHelper(){
+
+        createUserDBModel(AppConstant.DEFAULT_MANAGER_NAME, AppConstant.DEFAULT_MANAGER_EMAIL, AppConstant.DEFAULT_MANAGER_PASSWORD,AppConstant.SUPER_MANAGER );
+        createUserDBModel(AppConstant.DEFAULT_AGENT_NAME, AppConstant.DEFAULT_AGENT_EMAIL, AppConstant.DEFAULT_AGENT_PASSWORD,AppConstant.SUPER_AGENT );
     }
 
-    public void createUserHelper(String userName,String userEmail,String password,String userRole){
+    public void createUserDBModel(String userName,String userEmail,String password,String userRole){
 
         List<UserRoleDBModel> userRoleDBModels = userRoleRepository.findByUserRole(userRole);
         if (!userRoleDBModels.isEmpty()){
@@ -225,16 +228,27 @@ public class UtilsHelper {
             userDBModel.setcDate(appUtils.getCurrentTimeStamp());
             userDBModel.setStatus(1);
 
-            createUserDetailsHelper(userRepository.save(userDBModel));
+            initUserDetailsDBModel(userRepository.save(userDBModel));
         }
     }
 
-    public void createUserDetailsHelper(UserDBModel userDBModel){
+    public void initUserDetailsDBModel(UserDBModel userDBModel){
 
         UserDetailsDBModel userDetailsDBModel = new UserDetailsDBModel();
         userDetailsDBModel.setUserId(userDBModel.getId());
         userDetailsDBModel.setUserDatas(new ArrayList<>());
-        userDetailsDBModel.setOperationLimit(0);
+        if (userDBModel.getUserRole().equals(AppConstant.BASIC_AGENT)){
+            userDetailsDBModel.setOperationLimit(AppConstant.BASIC_AGENT_OPERATION_LIMIT);
+        }
+        if (userDBModel.getUserRole().equals(AppConstant.SUPER_AGENT)){
+            userDetailsDBModel.setOperationLimit(AppConstant.SUPER_AGENT_OPERATION_LIMIT);
+        }
+        if (userDBModel.getUserRole().equals(AppConstant.BASIC_MANAGER)){
+            userDetailsDBModel.setOperationLimit(AppConstant.BASIC_MANAGER_OPERATION_LIMIT);
+        }
+        if (userDBModel.getUserRole().equals(AppConstant.SUPER_MANAGER)){
+            userDetailsDBModel.setOperationLimit(AppConstant.SUPER_MANAGER_OPERATION_LIMIT);
+        }
         userDetailsDBModel.setuDate(appUtils.getCurrentTimeStamp());
         userDetailsDBModel.setcDate(appUtils.getCurrentTimeStamp());
         userDetailsDBModel.setStatus(1);
@@ -243,35 +257,34 @@ public class UtilsHelper {
     }
 
 
-    public List<SystemContentWSDTO> getSystemContentsServiceHelper(long userId){
 
-        List<SystemContentWSDTO> systemContentWSDTOS = new ArrayList<>();
-        systemContentWSDTOS.add(getClientContentsHelper());
-        systemContentWSDTOS.add(getSessionContentsHelper());
-        systemContentWSDTOS.add(getOperationContentsHelper());
+    public List<SystemContentWSDTO> getSystemContentsHelper(long userId){
 
-        systemContentWSDTOS.add(getCampaignContentsHelper());
-        systemContentWSDTOS.add(getProcessContentsHelper());
-        systemContentWSDTOS.add(getScenarioContentsHelper());
+        List<SystemContentWSDTO> systemContents = new ArrayList<>();
+        systemContents.add(getSystemClientsHelper());
+        systemContents.add(getSystemSessionsHelper());
+        systemContents.add(getSystemOperationsHelper());
+        systemContents.add(getSystemCampaignsHelper());
+        systemContents.add(getSystemProcessesHelper());
+        systemContents.add(getSystemScenariosHelper());
+        systemContents.add(getSystemUsersHelper());
+        systemContents.add(getSystemAgentsHelper());
+        systemContents.add(getSystemAssetsHelper());
 
-        systemContentWSDTOS.add(getUserContentsHelper());
-        systemContentWSDTOS.add(getAgentContentsHelper());
-        systemContentWSDTOS.add(getAssetContentsHelper());
-
-        return systemContentWSDTOS;
+        return systemContents;
     }
 
-
-    public SystemContentWSDTO getClientContentsHelper(){
+    public SystemContentWSDTO getSystemClientsHelper(){
 
         SystemContentWSDTO systemContentWSDTO = new SystemContentWSDTO();
         systemContentWSDTO.setContentName(AppConstant.CLIENT_CONTENTS);
         systemContentWSDTO.setContentValue(String.valueOf(clientRepository.count()));
         systemContentWSDTO.setContentState(true);
+
         return systemContentWSDTO;
     }
 
-    public SystemContentWSDTO getSessionContentsHelper(){
+    public SystemContentWSDTO getSystemSessionsHelper(){
 
         SystemContentWSDTO systemContentWSDTO = new SystemContentWSDTO();
         systemContentWSDTO.setContentName(AppConstant.SESSION_CONTENTS);
@@ -280,7 +293,7 @@ public class UtilsHelper {
         return systemContentWSDTO;
     }
 
-    public SystemContentWSDTO getOperationContentsHelper(){
+    public SystemContentWSDTO getSystemOperationsHelper(){
 
         SystemContentWSDTO systemContentWSDTO = new SystemContentWSDTO();
         systemContentWSDTO.setContentName(AppConstant.OPERATION_CONTENTS);
@@ -289,7 +302,7 @@ public class UtilsHelper {
         return systemContentWSDTO;
     }
 
-    public SystemContentWSDTO getCampaignContentsHelper(){
+    public SystemContentWSDTO getSystemCampaignsHelper(){
 
         SystemContentWSDTO systemContentWSDTO = new SystemContentWSDTO();
         systemContentWSDTO.setContentName(AppConstant.CAMPAIGN_CONTENTS);
@@ -298,7 +311,7 @@ public class UtilsHelper {
         return systemContentWSDTO;
     }
 
-    public SystemContentWSDTO getProcessContentsHelper(){
+    public SystemContentWSDTO getSystemProcessesHelper(){
 
         SystemContentWSDTO systemContentWSDTO = new SystemContentWSDTO();
         systemContentWSDTO.setContentName(AppConstant.PROCESS_CONTENTS);
@@ -307,7 +320,7 @@ public class UtilsHelper {
         return systemContentWSDTO;
     }
 
-    public SystemContentWSDTO getScenarioContentsHelper(){
+    public SystemContentWSDTO getSystemScenariosHelper(){
 
         SystemContentWSDTO systemContentWSDTO = new SystemContentWSDTO();
         systemContentWSDTO.setContentName(AppConstant.SCENARIO_CONTENTS);
@@ -316,7 +329,7 @@ public class UtilsHelper {
         return systemContentWSDTO;
     }
 
-    public SystemContentWSDTO getUserContentsHelper(){
+    public SystemContentWSDTO getSystemUsersHelper(){
 
         SystemContentWSDTO systemContentWSDTO = new SystemContentWSDTO();
         systemContentWSDTO.setContentName(AppConstant.USER_CONTENTS);
@@ -325,7 +338,7 @@ public class UtilsHelper {
         return systemContentWSDTO;
     }
 
-    public SystemContentWSDTO getAgentContentsHelper(){
+    public SystemContentWSDTO getSystemAgentsHelper(){
 
         SystemContentWSDTO systemContentWSDTO = new SystemContentWSDTO();
         systemContentWSDTO.setContentName(AppConstant.AGENT_CONTENTS);
@@ -334,7 +347,7 @@ public class UtilsHelper {
         return systemContentWSDTO;
     }
 
-    public SystemContentWSDTO getAssetContentsHelper(){
+    public SystemContentWSDTO getSystemAssetsHelper(){
 
         SystemContentWSDTO systemContentWSDTO = new SystemContentWSDTO();
         systemContentWSDTO.setContentName(AppConstant.ASSET_CONTENTS);
@@ -354,17 +367,17 @@ public class UtilsHelper {
                 if (clientDetailsDBModel.getClientAddresses() == null){
                     clientDetailsDBModel.setClientAddresses(new ArrayList<>());
                 }
-                clientDetailsDBModel.setClientAddresses(checkAndUpdateClientAddressesHelper(clientDBModel,clientDetailsDBModel.getClientAddresses()));
+                clientDetailsDBModel.setClientAddresses(updateClientAddressesHelper(clientDBModel,clientDetailsDBModel.getClientAddresses()));
 
                 if (clientDetailsDBModel.getClientPhones() == null){
                     clientDetailsDBModel.setClientPhones(new ArrayList<>());
                 }
-                clientDetailsDBModel.setClientPhones(checkAndUpdateClientPhonesHelper(clientDBModel,clientDetailsDBModel.getClientPhones()));
+                clientDetailsDBModel.setClientPhones(updateClientPhonesHelper(clientDBModel,clientDetailsDBModel.getClientPhones()));
 
                 if (clientDetailsDBModel.getClientEmails() == null){
                     clientDetailsDBModel.setClientEmails(new ArrayList<>());
                 }
-                clientDetailsDBModel.setClientEmails(checkAndUpdateClientEmailsHelper(clientDBModel,clientDetailsDBModel.getClientEmails()));
+                clientDetailsDBModel.setClientEmails(updateClientEmailsHelper(clientDBModel,clientDetailsDBModel.getClientEmails()));
                 clientDetailsDBModel.setuDate(appUtils.getCurrentTimeStamp());
 
                 clientDetailsRepository.save(clientDetailsDBModel);
@@ -372,22 +385,21 @@ public class UtilsHelper {
         });
     }
 
-    public List<ClientAddressDAO> checkAndUpdateClientAddressesHelper(ClientDBModel clientDBModel, List<ClientAddressDAO> clientAddressDAOS) {
+    public List<ClientAddressDAO> updateClientAddressesHelper(ClientDBModel clientDBModel, List<ClientAddressDAO> clientAddressDAOS) {
 
         List<ClientAddressDAO> checkedAddressDAOS = new ArrayList<>();
         for (ClientAddressDAO clientAddressDAO : clientAddressDAOS) {
-            if (clientAddressDAO.getAddressType() != null &&clientAddressDAO.getAddressType().equalsIgnoreCase(AppConstant.SUB_TYPE)) {
+            if (clientAddressDAO.getAddressType() != null && clientAddressDAO.getAddressType().equalsIgnoreCase(AppConstant.SUB_TYPE)) {
                 checkedAddressDAOS.add(clientAddressDAO);
             }
         }
         if (clientDBModel.getClientCity() != null && !"".equalsIgnoreCase(clientDBModel.getClientCity()) && clientDBModel.getClientCountry() != null && !"".equalsIgnoreCase(clientDBModel.getClientCountry())){
-            checkedAddressDAOS.add(clientHelper.createClientAddressDAO(AppConstant.NONE,clientDBModel.getClientCity(),AppConstant.NONE,AppConstant.NONE,clientDBModel.getClientCountry(),AppConstant.MAIN_TYPE));
+            checkedAddressDAOS.add(clientHelpers.createClientAddressDAO(AppConstant.NONE,clientDBModel.getClientCity(),AppConstant.NONE,AppConstant.NONE,clientDBModel.getClientCountry(),AppConstant.MAIN_TYPE));
         }
         return checkedAddressDAOS;
     }
 
-
-    public List<ClientPhoneDAO> checkAndUpdateClientPhonesHelper(ClientDBModel clientDBModel, List<ClientPhoneDAO> clientPhoneDAOS) {
+    public List<ClientPhoneDAO> updateClientPhonesHelper(ClientDBModel clientDBModel, List<ClientPhoneDAO> clientPhoneDAOS) {
 
         List<ClientPhoneDAO> checkedPhoneDAOS = new ArrayList<>();
         for (ClientPhoneDAO clientPhoneDAO : clientPhoneDAOS) {
@@ -396,12 +408,12 @@ public class UtilsHelper {
             }
         }
         if (clientDBModel.getPhoneNumber() != null && !"".equalsIgnoreCase(clientDBModel.getPhoneNumber())){
-            checkedPhoneDAOS.add(clientHelper.createClientPhoneDAO(clientDBModel.getPhoneNumber(),AppConstant.NONE,AppConstant.MAIN_TYPE));
+            checkedPhoneDAOS.add(clientHelpers.createClientPhoneDAO(clientDBModel.getPhoneNumber(),AppConstant.NONE,AppConstant.MAIN_TYPE));
         }
         return checkedPhoneDAOS;
     }
 
-    public List<ClientEmailDAO> checkAndUpdateClientEmailsHelper(ClientDBModel clientDBModel, List<ClientEmailDAO> clientEmailDAOS) {
+    public List<ClientEmailDAO> updateClientEmailsHelper(ClientDBModel clientDBModel, List<ClientEmailDAO> clientEmailDAOS) {
 
         List<ClientEmailDAO> checkedEmailDAOS = new ArrayList<>();
         for (ClientEmailDAO clientEmailDAO : clientEmailDAOS) {
@@ -410,7 +422,7 @@ public class UtilsHelper {
             }
         }
         if (clientDBModel.getEmailAddress() != null && !"".equalsIgnoreCase(clientDBModel.getEmailAddress())){
-            checkedEmailDAOS.add(clientHelper.createClientEmailDAO(clientDBModel.getEmailAddress(),AppConstant.MAIN_TYPE));
+            checkedEmailDAOS.add(clientHelpers.createClientEmailDAO(clientDBModel.getEmailAddress(),AppConstant.MAIN_TYPE));
         }
         return checkedEmailDAOS;
     }
@@ -437,7 +449,7 @@ public class UtilsHelper {
     }
 
 
-    public void removeAllClientContentsHelper(){
+    public void removeAllClientsHelper(){
 
         clientRepository.deleteAll();
         remoteAppRepository.deleteAll();
@@ -451,7 +463,7 @@ public class UtilsHelper {
         wappMessageRepository.deleteAll();
     }
 
-    public void removeAllSessionContentsHelper(){
+    public void removeAllSessionsHelper(){
 
         sessionRepository.deleteAll();
         operationRepository.deleteAll();
@@ -464,7 +476,7 @@ public class UtilsHelper {
         resetAllClientsHelper();
     }
 
-    public void removeAllOperationContentsHelper(){
+    public void removeAllOperationsHelper(){
 
         sessionRepository.deleteAll();
         operationRepository.deleteAll();
@@ -489,12 +501,12 @@ public class UtilsHelper {
     }
 
 
-    public void removeAllCampaignContentsHelper(){
+    public void removeAllCampaignsHelper(){
         campaignRepository.deleteAll();
         campaignAgentRepository.deleteAll();
     }
 
-    public void removeAllProcessContentsHelper(){
+    public void removeAllProcessesHelper(){
 
         processRepository.deleteAll();
         processEmailChannelRepository.deleteAll();
@@ -520,19 +532,19 @@ public class UtilsHelper {
         wappMessageTriggerRepository.deleteAll();
     }
 
-    public void removeAllScenarioContentsHelper(){
+    public void removeAllScenariosHelper(){
         scenarioRepository.deleteAll();
     }
 
 
-    public void removeAllUserContentsHelper(){
+    public void removeAllUsersHelper(){
 
         userRepository.deleteAll();
         userDetailsRepository.deleteAll();
         campaignAgentRepository.deleteAll();
     }
 
-    public void removeAllAgentContentsHelper(){
+    public void removeAllAgentsHelper(){
 
         List<UserDBModel> userDBModels = userRepository.findByUserType(AppConstant.AGENT_USER);
         for (UserDBModel userDBModel : userDBModels) {
@@ -542,7 +554,7 @@ public class UtilsHelper {
         }
     }
 
-    public void removeAllAssetContentsHelper(){
+    public void removeAllAssetsHelper(){
         assetRepository.deleteAll();
     }
 

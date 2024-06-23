@@ -13,7 +13,7 @@ import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.AppUtils;
-import com.faas.core.utility.helpers.manager.ManagerHelper;
+import com.faas.core.utility.helpers.manager.ManagerHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -27,7 +27,7 @@ public class MainManagerFramework {
 
 
     @Autowired
-    ManagerHelper managerHelper;
+    ManagerHelpers managerHelpers;
 
     @Autowired
     CampaignRepository campaignRepository;
@@ -48,15 +48,15 @@ public class MainManagerFramework {
     public MainManagerWSDTO getMainManagerService(long userId, int reqPage, int reqSize) {
 
         MainManagerWSDTO mainManagerWSDTO = new MainManagerWSDTO();
-        mainManagerWSDTO.setManualContent(managerHelper.getMainManagerContentWSDTO(userId,AppConstant.MANUAL_OPERATION,reqPage,reqSize));
-        mainManagerWSDTO.setInquiryContent(managerHelper.getMainManagerContentWSDTO(userId,AppConstant.INQUIRY_OPERATION,reqPage,reqSize));
-        mainManagerWSDTO.setAutomaticContent(managerHelper.getMainManagerContentWSDTO(userId,AppConstant.AUTOMATIC_OPERATION,reqPage,reqSize));
+        mainManagerWSDTO.setManualContent(managerHelpers.getMainManagerContentWSDTO(userId,AppConstant.MANUAL_OPERATION,reqPage,reqSize));
+        mainManagerWSDTO.setInquiryContent(managerHelpers.getMainManagerContentWSDTO(userId,AppConstant.INQUIRY_OPERATION,reqPage,reqSize));
+        mainManagerWSDTO.setAutomaticContent(managerHelpers.getMainManagerContentWSDTO(userId,AppConstant.AUTOMATIC_OPERATION,reqPage,reqSize));
 
         return mainManagerWSDTO;
     }
 
     public MainManagerContentWSDTO getMainManagerContentService(long userId, String category, int reqPage, int reqSize) {
-        return managerHelper.getMainManagerContentWSDTO(userId,category,reqPage,reqSize);
+        return managerHelpers.getMainManagerContentWSDTO(userId,category,reqPage,reqSize);
     }
 
 
@@ -64,7 +64,7 @@ public class MainManagerFramework {
 
         List<CampaignDBModel> campaignDBModels = campaignRepository.findByCampaignCategory(category);
         if (campaignDBModels != null){
-            return managerHelper.getCampaignManagerWSDTOS(campaignDBModels);
+            return managerHelpers.getCampaignManagerWSDTOS(campaignDBModels);
         }
         return null;
     }
@@ -73,7 +73,7 @@ public class MainManagerFramework {
 
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
         if (campaignDBModel.isPresent()){
-            return managerHelper.fillCampaignManagerWSDTO(campaignDBModel.get());
+            return managerHelpers.fillCampaignManagerWSDTO(campaignDBModel.get());
         }
         return null;
     }
@@ -81,19 +81,19 @@ public class MainManagerFramework {
 
     public OperationManagerWSDTO getMainManagerOperationsService(long userId, String category, int reqPage, int reqSize) {
 
-        return managerHelper.getOperationManagerWSDTOByOperationModel(operationRepository.findAllByOperationType(category,PageRequest.of(reqPage,reqSize)));
+        return managerHelpers.getOperationManagerWSDTOByOperationModel(operationRepository.findAllByOperationType(category,PageRequest.of(reqPage,reqSize)));
     }
 
     public OperationManagerWSDTO getMainManagerOperationsByStateService(long userId,String category,String operationState,int reqPage,int reqSize) {
 
-        return managerHelper.getOperationManagerWSDTOByOperationModel(operationRepository.findAllByOperationStateAndOperationType(operationState,category,PageRequest.of(reqPage,reqSize)));
+        return managerHelpers.getOperationManagerWSDTOByOperationModel(operationRepository.findAllByOperationStateAndOperationType(operationState,category,PageRequest.of(reqPage,reqSize)));
     }
 
     public OperationWSDTO getMainManagerOperationService(long userId, long sessionId) {
 
         Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
         if (sessionDBModel.isPresent()){
-            return managerHelper.fillManagerOperationWSDTOBySessionModel(sessionDBModel.get());
+            return managerHelpers.fillManagerOperationWSDTOBySessionModel(sessionDBModel.get());
         }
         return null;
     }
@@ -102,8 +102,8 @@ public class MainManagerFramework {
 
         Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
         if (sessionDBModel.isPresent()){
-            OperationWSDTO operationWSDTO = managerHelper.fillManagerOperationWSDTOBySessionModel(sessionDBModel.get());
-            managerHelper.removeOperationManager(sessionDBModel.get());
+            OperationWSDTO operationWSDTO = managerHelpers.fillManagerOperationWSDTOBySessionModel(sessionDBModel.get());
+            managerHelpers.removeOperationManager(sessionDBModel.get());
             return operationWSDTO;
         }
         return null;

@@ -28,7 +28,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
-public class ManagerHelper {
+public class ManagerHelpers {
 
 
     @Autowired

@@ -48,7 +48,7 @@ import java.util.List;
 
 
 @Component
-public class ProcessHelper {
+public class ProcessHelpers {
 
     @Autowired
     ScenarioRepository scenarioRepository;

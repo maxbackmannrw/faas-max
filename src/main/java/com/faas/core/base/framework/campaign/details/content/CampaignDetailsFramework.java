@@ -14,7 +14,7 @@ import com.faas.core.base.repo.process.details.scenario.ProcessScenarioRepositor
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.base.repo.utils.DataTypeRepository;
 import com.faas.core.utility.config.AppUtils;
-import com.faas.core.utility.helpers.campaign.CampaignHelper;
+import com.faas.core.utility.helpers.campaign.CampaignHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +28,7 @@ public class CampaignDetailsFramework {
 
 
     @Autowired
-    CampaignHelper campaignHelper;
+    CampaignHelpers campaignHelpers;
 
     @Autowired
     CampaignRepository campaignRepository;
@@ -60,9 +60,9 @@ public class CampaignDetailsFramework {
             campaignDetailsWSDTO.setCampaign(campaignDBModel.get());
             Optional<ProcessDBModel> processDBModel = processRepository.findById(campaignDBModel.get().getProcessId());
             if (processDBModel.isPresent()) {
-                campaignDetailsWSDTO.setCampaignProcess(campaignHelper.mapCampaignProcessWSDTO(processDBModel.get()));
+                campaignDetailsWSDTO.setCampaignProcess(campaignHelpers.mapCampaignProcessWSDTO(processDBModel.get()));
             }
-            campaignDetailsWSDTO.setCampaignAgents(campaignHelper.mapCampaignAgentWSDTOS(campaignAgentRepository.findByCampaignId(campaignId)));
+            campaignDetailsWSDTO.setCampaignAgents(campaignHelpers.mapCampaignAgentWSDTOS(campaignAgentRepository.findByCampaignId(campaignId)));
             return campaignDetailsWSDTO;
         }
         return null;
@@ -75,7 +75,7 @@ public class CampaignDetailsFramework {
         if (campaignDBModel.isPresent()) {
             Optional<ProcessDBModel> processDBModel = processRepository.findById(campaignDBModel.get().getProcessId());
             if (processDBModel.isPresent()) {
-                return campaignHelper.mapCampaignProcessWSDTO(processDBModel.get());
+                return campaignHelpers.mapCampaignProcessWSDTO(processDBModel.get());
             }
         }
         return null;

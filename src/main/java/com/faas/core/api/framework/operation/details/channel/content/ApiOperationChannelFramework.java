@@ -9,8 +9,8 @@ import com.faas.core.base.repo.client.details.ClientDetailsRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utility.config.AppUtils;
-import com.faas.core.utility.helpers.channel.ChannelHelper;
-import com.faas.core.utility.helpers.operation.OperationHelper;
+import com.faas.core.utility.helpers.channel.ChannelHelpers;
+import com.faas.core.utility.helpers.operation.OperationHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -20,10 +20,10 @@ import java.util.List;
 public class ApiOperationChannelFramework {
 
     @Autowired
-    ChannelHelper channelHelper;
+    ChannelHelpers channelHelpers;
 
     @Autowired
-    OperationHelper operationHelper;
+    OperationHelpers operationHelpers;
 
     @Autowired
     SessionRepository sessionRepository;
@@ -47,7 +47,7 @@ public class ApiOperationChannelFramework {
         if (!operationDBModels.isEmpty()){
             List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(operationDBModels.get(0).getClientId());
             if (!clientDetailsDBModels.isEmpty()){
-                return operationHelper.getApiOperationCallChannelWSDTO(operationDBModels.get(0),clientDetailsDBModels.get(0));
+                return operationHelpers.getApiOperationCallChannelWSDTO(operationDBModels.get(0),clientDetailsDBModels.get(0));
             }
         }
         return null;
@@ -60,7 +60,7 @@ public class ApiOperationChannelFramework {
         if (!operationDBModels.isEmpty()){
             List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(operationDBModels.get(0).getClientId());
             if (!clientDetailsDBModels.isEmpty()){
-                return operationHelper.getApiOperationMessageChannelWSDTO(operationDBModels.get(0),clientDetailsDBModels.get(0));
+                return operationHelpers.getApiOperationMessageChannelWSDTO(operationDBModels.get(0),clientDetailsDBModels.get(0));
             }
         }
         return null;

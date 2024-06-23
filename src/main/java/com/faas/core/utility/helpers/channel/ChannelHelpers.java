@@ -49,7 +49,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class ChannelHelper {
+public class ChannelHelpers {
 
     @Autowired
     SipChannelHandler sipChannelHandler;

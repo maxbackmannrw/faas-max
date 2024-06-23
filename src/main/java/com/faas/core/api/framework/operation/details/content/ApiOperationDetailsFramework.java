@@ -14,7 +14,7 @@ import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.AppUtils;
-import com.faas.core.utility.helpers.operation.OperationHelper;
+import com.faas.core.utility.helpers.operation.OperationHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -27,7 +27,7 @@ import java.util.Optional;
 public class ApiOperationDetailsFramework {
 
     @Autowired
-    OperationHelper operationHelper;
+    OperationHelpers operationHelpers;
 
     @Autowired
     ClientRepository clientRepository;
@@ -52,7 +52,7 @@ public class ApiOperationDetailsFramework {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
         if (!operationDBModels.isEmpty()){
-            return operationHelper.getApiOperationDetailsWSDTO(operationDBModels.get(0));
+            return operationHelpers.getApiOperationDetailsWSDTO(operationDBModels.get(0));
         }
         return null;
     }
@@ -65,21 +65,21 @@ public class ApiOperationDetailsFramework {
 
             if (operationDBModels.get(0).getOperationType().equalsIgnoreCase(AppConstant.MANUAL_OPERATION)){
                 if (operationDBModels.get(0).getOperationState().equalsIgnoreCase(AppConstant.READY_STATE)){
-                    return operationHelper.startManualOperationHelper(sessionDBModels.get(0),operationDBModels.get(0));
+                    return operationHelpers.startManualOperationHelper(sessionDBModels.get(0),operationDBModels.get(0));
                 }
             }
 
             if (operationDBModels.get(0).getOperationType().equalsIgnoreCase(AppConstant.INQUIRY_OPERATION)){
                 if (operationDBModels.get(0).getOperationState().equalsIgnoreCase(AppConstant.READY_STATE)
                         && operationDBModels.get(0).getOperationInquiryState().equalsIgnoreCase(AppConstant.READY_STATE)){
-                    return operationHelper.startInquiryOperationHelper(sessionDBModels.get(0),operationDBModels.get(0));
+                    return operationHelpers.startInquiryOperationHelper(sessionDBModels.get(0),operationDBModels.get(0));
                 }
             }
 
             if (operationDBModels.get(0).getOperationType().equalsIgnoreCase(AppConstant.AUTOMATIC_OPERATION)){
                 if (operationDBModels.get(0).getOperationState().equalsIgnoreCase(AppConstant.READY_STATE)
                         && operationDBModels.get(0).getOperationFlowState().equalsIgnoreCase(AppConstant.READY_STATE)){
-                    return operationHelper.startAutomaticOperationHelper(sessionDBModels.get(0),operationDBModels.get(0));
+                    return operationHelpers.startAutomaticOperationHelper(sessionDBModels.get(0),operationDBModels.get(0));
                 }
             }
         }
@@ -120,7 +120,7 @@ public class ApiOperationDetailsFramework {
         List<OperationDBModel> operationDBModels = operationRepository.findByAgentIdAndOperationState(agentId,AppConstant.ACTIVE_STATE);
         for (OperationDBModel operationDBModel : operationDBModels) {
             if (!operationDBModel.getId().equalsIgnoreCase(operationId)) {
-                operationWSDTOS.add(operationHelper.getApiOperationWSDTO(operationDBModel));
+                operationWSDTOS.add(operationHelpers.getApiOperationWSDTO(operationDBModel));
             }
         }
         return operationWSDTOS;
@@ -131,7 +131,7 @@ public class ApiOperationDetailsFramework {
         List<OperationDBModel> currentOperations = operationRepository.findByIdAndAgentId(operationId,agentId);
         List<OperationDBModel> selectedOperations = operationRepository.findByIdAndAgentId(selectedId,agentId);
         if (!currentOperations.isEmpty() && !selectedOperations.isEmpty() && selectedOperations.get(0).getOperationState().equalsIgnoreCase(AppConstant.ACTIVE_STATE)){
-            return operationHelper.getApiOperationWSDTO(selectedOperations.get(0));
+            return operationHelpers.getApiOperationWSDTO(selectedOperations.get(0));
         }
         return null;
     }

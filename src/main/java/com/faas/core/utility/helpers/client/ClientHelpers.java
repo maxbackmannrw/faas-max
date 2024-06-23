@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class ClientHelper {
+public class ClientHelpers {
 
     @Autowired
     SessionRepository sessionRepository;

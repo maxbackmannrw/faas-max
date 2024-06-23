@@ -15,7 +15,7 @@ import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.base.repo.user.content.UserRepository;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.AppUtils;
-import com.faas.core.utility.helpers.operation.OperationHelper;
+import com.faas.core.utility.helpers.operation.OperationHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
@@ -28,7 +28,7 @@ import java.util.Optional;
 public class ApiOperationFramework {
 
     @Autowired
-    OperationHelper operationHelper;
+    OperationHelpers operationHelpers;
 
     @Autowired
     UserRepository userRepository;
@@ -55,10 +55,10 @@ public class ApiOperationFramework {
     public ApiAgentOperationWSDTO apiGetAgentOperationsService(long agentId, int reqPage, int reqSize) {
 
         ApiAgentOperationWSDTO agentOperationWSDTO = new ApiAgentOperationWSDTO();
-        agentOperationWSDTO.setReadyManualOperation(operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationTypeAndOperationState(agentId,AppConstant.MANUAL_OPERATION, AppConstant.READY_STATE, PageRequest.of(reqPage,reqSize))));
-        agentOperationWSDTO.setActiveManualOperation(operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationTypeAndOperationState(agentId,AppConstant.MANUAL_OPERATION, AppConstant.ACTIVE_STATE, PageRequest.of(reqPage,reqSize))));
-        agentOperationWSDTO.setReadyInquiryOperation(operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationTypeAndOperationStateAndOperationInquiryState(agentId,AppConstant.INQUIRY_OPERATION, AppConstant.READY_STATE,AppConstant.NEW_STATE, PageRequest.of(reqPage,reqSize))));
-        agentOperationWSDTO.setActiveInquiryOperation(operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationTypeAndOperationState(agentId,AppConstant.INQUIRY_OPERATION, AppConstant.ACTIVE_STATE, PageRequest.of(reqPage,reqSize))));
+        agentOperationWSDTO.setReadyManualOperation(operationHelpers.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationTypeAndOperationState(agentId,AppConstant.MANUAL_OPERATION, AppConstant.READY_STATE, PageRequest.of(reqPage,reqSize))));
+        agentOperationWSDTO.setActiveManualOperation(operationHelpers.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationTypeAndOperationState(agentId,AppConstant.MANUAL_OPERATION, AppConstant.ACTIVE_STATE, PageRequest.of(reqPage,reqSize))));
+        agentOperationWSDTO.setReadyInquiryOperation(operationHelpers.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationTypeAndOperationStateAndOperationInquiryState(agentId,AppConstant.INQUIRY_OPERATION, AppConstant.READY_STATE,AppConstant.NEW_STATE, PageRequest.of(reqPage,reqSize))));
+        agentOperationWSDTO.setActiveInquiryOperation(operationHelpers.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationTypeAndOperationState(agentId,AppConstant.INQUIRY_OPERATION, AppConstant.ACTIVE_STATE, PageRequest.of(reqPage,reqSize))));
 
         return agentOperationWSDTO;
     }
@@ -66,14 +66,14 @@ public class ApiOperationFramework {
 
     public ApiOperationListWSDTO apiGetOperationsService(long agentId,String operationType,String operationState,String operationInquiryState,String operationFlowState,int reqPage,int reqSize) {
 
-        return operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationTypeAndOperationStateAndOperationInquiryStateAndOperationFlowState(agentId,operationType,operationState,operationInquiryState,operationFlowState,PageRequest.of(reqPage,reqSize)));
+        return operationHelpers.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationTypeAndOperationStateAndOperationInquiryStateAndOperationFlowState(agentId,operationType,operationState,operationInquiryState,operationFlowState,PageRequest.of(reqPage,reqSize)));
     }
 
     public ApiOperationWSDTO apiGetOperationService(long agentId, String operationId) {
 
         Optional<OperationDBModel> operationDBModel = operationRepository.findById(operationId);
         if (operationDBModel.isPresent()){
-            return operationHelper.getApiOperationWSDTO(operationDBModel.get());
+            return operationHelpers.getApiOperationWSDTO(operationDBModel.get());
         }
         return null;
     }
@@ -94,7 +94,7 @@ public class ApiOperationFramework {
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
         if (userDBModel.isPresent() && !operationDBModels.isEmpty()){
             userDBModel.get().setPassword("");
-            return operationHelper.operationValidateHelper(userDBModel.get(),operationDBModels.get(0));
+            return operationHelpers.operationValidateHelper(userDBModel.get(),operationDBModels.get(0));
         }
         return null;
     }
@@ -102,7 +102,7 @@ public class ApiOperationFramework {
 
 
     public List<ApiSummaryWSDTO> apiGetOperationSummaryService(long agentId) {
-        return operationHelper.apiGetOperationSummaryHelper(agentId);
+        return operationHelpers.apiGetOperationSummaryHelper(agentId);
     }
 
 

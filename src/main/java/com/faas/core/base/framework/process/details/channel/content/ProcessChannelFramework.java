@@ -11,7 +11,7 @@ import com.faas.core.base.repo.channel.account.PushAccountRepository;
 import com.faas.core.base.repo.channel.account.SmsAccountRepository;
 import com.faas.core.base.repo.process.details.channel.content.*;
 import com.faas.core.utility.config.AppUtils;
-import com.faas.core.utility.helpers.channel.ChannelHelper;
+import com.faas.core.utility.helpers.channel.ChannelHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +24,7 @@ public class ProcessChannelFramework {
 
 
     @Autowired
-    ChannelHelper channelHelper;
+    ChannelHelpers channelHelpers;
 
     @Autowired
     ProcessSipChannelRepository processSipChannelRepository;
@@ -143,7 +143,7 @@ public class ProcessChannelFramework {
         if (smsAccountDBModel.isEmpty()) {
             return null;
         }
-        ProcessSmsAccountDAO processSmsAccountDAO = channelHelper.mapProcessSmsAccountDAO(smsAccountDBModel.get());
+        ProcessSmsAccountDAO processSmsAccountDAO = channelHelpers.mapProcessSmsAccountDAO(smsAccountDBModel.get());
         if (processSmsAccountDAO != null) {
             List<ProcessSmsChannelDBModel> existedSmsChannel = processSmsChannelRepository.findByProcessId(processId);
             if (!existedSmsChannel.isEmpty()) {
@@ -243,7 +243,7 @@ public class ProcessChannelFramework {
             List<ProcessEmailChannelDBModel> existedEmailChannel = processEmailChannelRepository.findByProcessId(processId);
             if (!existedEmailChannel.isEmpty()) {
 
-                existedEmailChannel.get(0).setEmailAccount(channelHelper.mapProcessEmailAccountDAO(emailAccountDBModel.get()));
+                existedEmailChannel.get(0).setEmailAccount(channelHelpers.mapProcessEmailAccountDAO(emailAccountDBModel.get()));
                 existedEmailChannel.get(0).setChannelState(channelState);
                 existedEmailChannel.get(0).setuDate(appUtils.getCurrentTimeStamp());
 
@@ -252,7 +252,7 @@ public class ProcessChannelFramework {
 
                 ProcessEmailChannelDBModel processEmailChannelDBModel = new ProcessEmailChannelDBModel();
                 processEmailChannelDBModel.setProcessId(processId);
-                processEmailChannelDBModel.setEmailAccount(channelHelper.mapProcessEmailAccountDAO(emailAccountDBModel.get()));
+                processEmailChannelDBModel.setEmailAccount(channelHelpers.mapProcessEmailAccountDAO(emailAccountDBModel.get()));
                 processEmailChannelDBModel.setChannelState(channelState);
                 processEmailChannelDBModel.setuDate(appUtils.getCurrentTimeStamp());
                 processEmailChannelDBModel.setcDate(appUtils.getCurrentTimeStamp());
@@ -293,7 +293,7 @@ public class ProcessChannelFramework {
             List<ProcessPushChannelDBModel> existedPushChannel = processPushChannelRepository.findByProcessId(processId);
             if (!existedPushChannel.isEmpty()) {
 
-                existedPushChannel.get(0).setPushAccount(channelHelper.mapProcessPushAccountDAO(pushAccountDBModel.get()));
+                existedPushChannel.get(0).setPushAccount(channelHelpers.mapProcessPushAccountDAO(pushAccountDBModel.get()));
                 existedPushChannel.get(0).setChannelState(channelState);
                 existedPushChannel.get(0).setuDate(appUtils.getCurrentTimeStamp());
 
@@ -302,7 +302,7 @@ public class ProcessChannelFramework {
 
                 ProcessPushChannelDBModel processPushChannelDBModel = new ProcessPushChannelDBModel();
                 processPushChannelDBModel.setProcessId(processId);
-                processPushChannelDBModel.setPushAccount(channelHelper.mapProcessPushAccountDAO(pushAccountDBModel.get()));
+                processPushChannelDBModel.setPushAccount(channelHelpers.mapProcessPushAccountDAO(pushAccountDBModel.get()));
                 processPushChannelDBModel.setChannelState(channelState);
                 processPushChannelDBModel.setuDate(appUtils.getCurrentTimeStamp());
                 processPushChannelDBModel.setcDate(appUtils.getCurrentTimeStamp());

@@ -8,7 +8,7 @@ import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.operation.details.channel.*;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utility.config.AppUtils;
-import com.faas.core.utility.helpers.manager.ManagerHelper;
+import com.faas.core.utility.helpers.manager.ManagerHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -22,7 +22,7 @@ import java.util.Optional;
 public class OperationManagerFramework {
 
     @Autowired
-    ManagerHelper managerHelper;
+    ManagerHelpers managerHelpers;
 
     @Autowired
     SessionRepository sessionRepository;
@@ -56,7 +56,7 @@ public class OperationManagerFramework {
 
         Page<OperationDBModel> operationModelPage = operationRepository.findAllByStatus(1, PageRequest.of(reqPage,reqSize));
         if (operationModelPage != null){
-            return managerHelper.getOperationManagerWSDTOByOperationModel(operationModelPage);
+            return managerHelpers.getOperationManagerWSDTOByOperationModel(operationModelPage);
         }
         return null;
     }
@@ -66,7 +66,7 @@ public class OperationManagerFramework {
 
         Page<SessionDBModel> sessionModelPage = sessionRepository.findAllBySessionType(sessionType, PageRequest.of(reqPage,reqSize));
         if (sessionModelPage != null){
-            return managerHelper.getOperationManagerWSDTOBySessionModel(sessionModelPage);
+            return managerHelpers.getOperationManagerWSDTOBySessionModel(sessionModelPage);
         }
         return null;
     }
@@ -75,7 +75,7 @@ public class OperationManagerFramework {
 
         Page<OperationDBModel> operationModelPage = operationRepository.findAllByOperationState(operationState, PageRequest.of(reqPage,reqSize));
         if (operationModelPage != null){
-            return managerHelper.getOperationManagerWSDTOByOperationModel(operationModelPage);
+            return managerHelpers.getOperationManagerWSDTOByOperationModel(operationModelPage);
         }
         return null;
     }
@@ -84,7 +84,7 @@ public class OperationManagerFramework {
 
         List<OperationDBModel> operationDBModels = operationRepository.findBySessionId(sessionId);
         if (!operationDBModels.isEmpty()){
-            return managerHelper.fillManagerOperationWSDTOByOperationModel(operationDBModels.get(0));
+            return managerHelpers.fillManagerOperationWSDTOByOperationModel(operationDBModels.get(0));
         }
         return null;
     }
@@ -98,8 +98,8 @@ public class OperationManagerFramework {
 
         Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
         if (sessionDBModel.isPresent()){
-            OperationWSDTO operationWSDTO = managerHelper.fillManagerOperationWSDTOBySessionModel(sessionDBModel.get());
-            managerHelper.removeOperationManager(sessionDBModel.get());
+            OperationWSDTO operationWSDTO = managerHelpers.fillManagerOperationWSDTOBySessionModel(sessionDBModel.get());
+            managerHelpers.removeOperationManager(sessionDBModel.get());
             return operationWSDTO;
         }
         return null;

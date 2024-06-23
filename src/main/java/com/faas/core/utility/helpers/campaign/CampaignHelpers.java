@@ -30,7 +30,7 @@ import java.util.Optional;
 
 
 @Component
-public class CampaignHelper {
+public class CampaignHelpers {
 
 
     @Autowired

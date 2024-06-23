@@ -9,15 +9,11 @@ public class AppConstant {
     public static final String GENERAL_SUCCESS_STATUS = "SUCCESS";
     public static final String GENERAL_FAIL_STATUS = "FAIL";
 
+    public static final String NONE = "NONE";
 
     public static final String MANAGER_USER = "MANAGER_USER";
     public static final String BASIC_MANAGER = "BASIC_MANAGER";
     public static final String SUPER_MANAGER = "SUPER_MANAGER";
-
-    public static final String DEFAULT_MANAGER_NAME = "manager";
-    public static final String DEFAULT_MANAGER_EMAIL = "manager";
-    public static final String DEFAULT_MANAGER_PASSWORD = "45781296";
-
 
     public static final String AGENT_USER = "AGENT_USER";
     public static final String BASIC_AGENT = "BASIC_AGENT";
@@ -25,17 +21,23 @@ public class AppConstant {
     public static final String AUTO_AGENT = "AUTO_AGENT";
 
 
-    public static final long BASIC_AGENT_OPERATION_LIMIT = 5;
-    public static final long SUPER_AGENT_OPERATION_LIMIT = 20;
+    public static final String DEFAULT_MANAGER_NAME = "manager";
+    public static final String DEFAULT_MANAGER_EMAIL = "manager";
+    public static final String DEFAULT_MANAGER_PASSWORD = "45781296";
 
-    public static final String NONE = "NONE";
+    public static final String DEFAULT_AGENT_NAME = "sagent";
+    public static final String DEFAULT_AGENT_EMAIL = "sagent";
+    public static final String DEFAULT_AGENT_PASSWORD = "45781296";
+
+    public static final int BASIC_MANAGER_OPERATION_LIMIT = 25;
+    public static final int SUPER_MANAGER_OPERATION_LIMIT = 25;
+    public static final int BASIC_AGENT_OPERATION_LIMIT = 5;
+    public static final int SUPER_AGENT_OPERATION_LIMIT = 25;
+
+
 
     public static final String MAIN_TYPE = "MAIN_TYPE";
     public static final String SUB_TYPE = "SUB_TYPE";
-
-
-    public static final String PROCESS_DATA_TYPE = "PROCESS";
-
 
     public static final String MANUAL_SESSION = "MANUAL";
     public static final String INQUIRY_SESSION = "INQUIRY";
@@ -63,8 +65,6 @@ public class AppConstant {
     public static final String BUSY_CLIENT = "BUSY_CLIENT";
 
 
-    public static final String NO_VALUE = "NO_VALUE";
-
     public static final String NO_STATE = "NO_STATE";
     public static final String NEW_STATE = "NEW_STATE";
     public static final String READY_STATE = "READY_STATE";
@@ -73,8 +73,6 @@ public class AppConstant {
     public static final String COMPLETED_STATE = "COMPLETED_STATE";
 
     public static final String ALL_STATES = "ALL_STATES";
-
-
 
 
     public static final String OPERATION_SUCCESS = "OPERATION_SUCCESS";
@@ -113,8 +111,6 @@ public class AppConstant {
     public static final String AGENT_ALL_CAMPAIGNS_SUMMARY = "AGENT_ALL_CAMPAIGNS_SUMMARY";
 
 
-
-
     public static final String USER_TYPE= "USER_TYPE";
     public static final String CLIENT_TYPE = "CLIENT_TYPE";
 
@@ -136,7 +132,6 @@ public class AppConstant {
     public static final String SMS_PROVIDER_API_URL = "https://api.1s2u.io/bulksms";
     public static final String SMS_PROVIDER_USER_NAME = "wrwrozengint023";
     public static final String SMS_PROVIDER_PASSWORD = "web97898";
-
 
 
     public static final String PWA_REMOTE = "PWA_REMOTE";
@@ -171,11 +166,9 @@ public class AppConstant {
     public static final String UPDATE_URL = "UPDATE_URL";
 
 
-
     public static final String CLIENT_NAME_TAG = "[clientName]";
     public static final String REMOTE_URL_TAG = "[remoteUrl]";
     public static final String TEMP_URL_TAG = "[tempUrl]";
-
 
 
     public static final String FIRST_TIME_INIT = "FIRST_TIME_INIT";

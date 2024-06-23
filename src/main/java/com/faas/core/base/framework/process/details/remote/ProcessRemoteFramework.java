@@ -9,8 +9,8 @@ import com.faas.core.base.repo.process.details.remote.ProcessRemoteRepository;
 import com.faas.core.base.repo.remote.content.RemoteRepository;
 import com.faas.core.base.repo.utils.UrlRepository;
 import com.faas.core.utility.config.AppUtils;
-import com.faas.core.utility.helpers.process.ProcessHelper;
-import com.faas.core.utility.helpers.remote.RemoteHelper;
+import com.faas.core.utility.helpers.process.ProcessHelpers;
+import com.faas.core.utility.helpers.remote.RemoteHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,10 +22,10 @@ import java.util.Optional;
 public class ProcessRemoteFramework {
 
     @Autowired
-    ProcessHelper processHelper;
+    ProcessHelpers processHelpers;
 
     @Autowired
-    RemoteHelper remoteHelper;
+    RemoteHelpers remoteHelpers;
 
     @Autowired
     ProcessRepository processRepository;
@@ -48,7 +48,7 @@ public class ProcessRemoteFramework {
         List<ProcessRemoteWSDTO> processRemoteWSDTOS = new ArrayList<>();
         List<ProcessRemoteDBModel> processRemoteDBModels = processRemoteRepository.findByProcessId(processId);
         for (ProcessRemoteDBModel processRemoteDBModel : processRemoteDBModels) {
-            processRemoteWSDTOS.add(processHelper.mapProcessRemoteWSDTO(processRemoteDBModel));
+            processRemoteWSDTOS.add(processHelpers.mapProcessRemoteWSDTO(processRemoteDBModel));
         }
         return processRemoteWSDTOS;
     }
@@ -58,7 +58,7 @@ public class ProcessRemoteFramework {
         List<ProcessRemoteWSDTO> processRemoteWSDTOS = new ArrayList<>();
         List<ProcessRemoteDBModel> processRemoteDBModels = processRemoteRepository.findByProcessIdAndRemoteCategory(processId,remoteCategory);
         for (ProcessRemoteDBModel processRemoteDBModel : processRemoteDBModels) {
-            processRemoteWSDTOS.add(processHelper.mapProcessRemoteWSDTO(processRemoteDBModel));
+            processRemoteWSDTOS.add(processHelpers.mapProcessRemoteWSDTO(processRemoteDBModel));
         }
         return processRemoteWSDTOS;
     }
@@ -67,7 +67,7 @@ public class ProcessRemoteFramework {
 
         List<ProcessRemoteDBModel> processRemoteDBModels = processRemoteRepository.findByIdAndProcessId(processRemoteId,processId);
         if (!processRemoteDBModels.isEmpty()) {
-            return processHelper.mapProcessRemoteWSDTO(processRemoteDBModels.get(0));
+            return processHelpers.mapProcessRemoteWSDTO(processRemoteDBModels.get(0));
         }
         return null;
     }
@@ -77,7 +77,7 @@ public class ProcessRemoteFramework {
         Optional<ProcessDBModel> processDBModel = processRepository.findById(processId);
         Optional<RemoteDBModel> remoteDBModel = remoteRepository.findById(remoteId);
         if (processDBModel.isPresent() && remoteDBModel.isPresent()) {
-            return processHelper.mapProcessRemoteWSDTO(remoteHelper.createProcessRemoteDBModel(processDBModel.get(),remoteDBModel.get(),remoteCategory));
+            return processHelpers.mapProcessRemoteWSDTO(remoteHelpers.createProcessRemoteDBModel(processDBModel.get(),remoteDBModel.get(),remoteCategory));
         }
         return null;
     }
@@ -87,7 +87,7 @@ public class ProcessRemoteFramework {
         List<ProcessRemoteDBModel> processRemoteDBModels = processRemoteRepository.findByIdAndProcessId(processRemoteId,processId);
         if (!processRemoteDBModels.isEmpty()) {
             processRemoteRepository.delete(processRemoteDBModels.get(0));
-            return processHelper.mapProcessRemoteWSDTO(processRemoteDBModels.get(0));
+            return processHelpers.mapProcessRemoteWSDTO(processRemoteDBModels.get(0));
         }
         return null;
     }

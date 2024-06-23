@@ -18,8 +18,8 @@ import com.faas.core.base.repo.process.details.channel.content.ProcessPushChanne
 import com.faas.core.base.repo.process.details.channel.temp.PushTempRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utility.config.AppUtils;
-import com.faas.core.utility.helpers.channel.ChannelHelper;
-import com.faas.core.utility.helpers.operation.OperationHelper;
+import com.faas.core.utility.helpers.channel.ChannelHelpers;
+import com.faas.core.utility.helpers.operation.OperationHelpers;
 import com.faas.core.utility.handler.channel.push.PushChannelHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -32,10 +32,10 @@ public class ApiOperationPushFramework {
 
 
     @Autowired
-    OperationHelper operationHelper;
+    OperationHelpers operationHelpers;
 
     @Autowired
-    ChannelHelper channelHelper;
+    ChannelHelpers channelHelpers;
 
     @Autowired
     PushChannelHandler pushChannelHandler;
@@ -71,7 +71,7 @@ public class ApiOperationPushFramework {
         if (!operationDBModels.isEmpty()){
             List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(operationDBModels.get(0).getClientId());
             if (!clientDetailsDBModels.isEmpty()){
-                return operationHelper.getApiOperationPushChannelWSDTO(operationDBModels.get(0),clientDetailsDBModels.get(0));
+                return operationHelpers.getApiOperationPushChannelWSDTO(operationDBModels.get(0),clientDetailsDBModels.get(0));
             }
         }
         return null;
@@ -82,7 +82,7 @@ public class ApiOperationPushFramework {
 
         List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
         if (!sessionDBModels.isEmpty()){
-            return channelHelper.getApiPushAccountWSDTO(sessionDBModels.get(0).getProcessId());
+            return channelHelpers.getApiPushAccountWSDTO(sessionDBModels.get(0).getProcessId());
         }
         return null;
     }
@@ -94,7 +94,7 @@ public class ApiOperationPushFramework {
         if (!sessionDBModels.isEmpty()){
 
             ApiOperationPushTempWSDTO pushTempWSDTO = new ApiOperationPushTempWSDTO();
-            pushTempWSDTO.setPushAccount(channelHelper.getApiPushAccountWSDTO(sessionDBModels.get(0).getProcessId()));
+            pushTempWSDTO.setPushAccount(channelHelpers.getApiPushAccountWSDTO(sessionDBModels.get(0).getProcessId()));
             pushTempWSDTO.setOperationPushTemps(pushTempRepository.findByProcessId(sessionDBModels.get(0).getProcessId()));
             return pushTempWSDTO;
         }
@@ -107,7 +107,7 @@ public class ApiOperationPushFramework {
         if (!sessionDBModels.isEmpty()){
 
             ApiOperationPushTempWSDTO pushTempWSDTO = new ApiOperationPushTempWSDTO();
-            pushTempWSDTO.setPushAccount(channelHelper.getApiPushAccountWSDTO(sessionDBModels.get(0).getProcessId()));
+            pushTempWSDTO.setPushAccount(channelHelpers.getApiPushAccountWSDTO(sessionDBModels.get(0).getProcessId()));
             pushTempWSDTO.setOperationPushTemps(pushTempRepository.findByIdAndProcessId(tempId,sessionDBModels.get(0).getProcessId()));
             return pushTempWSDTO;
         }
@@ -144,7 +144,7 @@ public class ApiOperationPushFramework {
             List<ProcessPushChannelDBModel> pushChannelDBModels = processPushChannelRepository.findByProcessId(sessionDBModels.get(0).getProcessId());
             if (!pushTempDBModels.isEmpty() && !pushChannelDBModels.isEmpty() ){
 
-                OperationPushDBModel operationPushDBModel = channelHelper.createOperationPushDBModel(sessionDBModels.get(0));
+                OperationPushDBModel operationPushDBModel = channelHelpers.createOperationPushDBModel(sessionDBModels.get(0));
                 return new ApiOperationPushWSDTO(operationPushDBModel);
             }
         }

@@ -14,7 +14,7 @@ import com.faas.core.base.repo.process.details.trigger.*;
 import com.faas.core.base.repo.process.settings.ProcessTypeRepository;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.AppUtils;
-import com.faas.core.utility.helpers.process.ProcessHelper;
+import com.faas.core.utility.helpers.process.ProcessHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +26,7 @@ import java.util.Optional;
 public class ProcessFramework {
 
     @Autowired
-    ProcessHelper processHelper;
+    ProcessHelpers processHelpers;
 
     @Autowired
     ProcessRepository processRepository;
@@ -91,7 +91,7 @@ public class ProcessFramework {
         List<ProcessWSDTO>processWSDTOS = new ArrayList<>();
         List<ProcessDBModel> processDBModels = processRepository.findByStatus(1);
         for (ProcessDBModel processDBModel : processDBModels) {
-            processWSDTOS.add(processHelper.getProcessWSDTO(processDBModel));
+            processWSDTOS.add(processHelpers.getProcessWSDTO(processDBModel));
         }
         return processWSDTOS;
     }
@@ -102,7 +102,7 @@ public class ProcessFramework {
         List<ProcessWSDTO>processWSDTOS = new ArrayList<>();
         List<ProcessDBModel> processDBModels = processRepository.findByProcessCategory(processCategory);
         for (ProcessDBModel processDBModel : processDBModels) {
-            processWSDTOS.add(processHelper.getProcessWSDTO(processDBModel));
+            processWSDTOS.add(processHelpers.getProcessWSDTO(processDBModel));
         }
         return processWSDTOS;
     }
@@ -112,7 +112,7 @@ public class ProcessFramework {
 
         Optional<ProcessDBModel> processDBModel = processRepository.findById(processId);
         if (processDBModel.isPresent()){
-            return processHelper.getProcessWSDTO(processDBModel.get());
+            return processHelpers.getProcessWSDTO(processDBModel.get());
         }
         return null;
     }
@@ -130,10 +130,10 @@ public class ProcessFramework {
             processDBModel.setProcessType(processTypeDBModel.get().getProcessType());
             processDBModel.setProcessCategory(processCategory);
             if (processCategory.equalsIgnoreCase(AppConstant.INQUIRY_PROCESS)){
-                processDBModel.setProcessInquiry(processHelper.createProcessInquiryHelper(process));
+                processDBModel.setProcessInquiry(processHelpers.createProcessInquiryHelper(process));
             }
             if (processCategory.equalsIgnoreCase(AppConstant.AUTOMATIC_PROCESS)){
-                processDBModel.setProcessFlow(processHelper.createProcessFlowHelper(process));;
+                processDBModel.setProcessFlow(processHelpers.createProcessFlowHelper(process));;
             }
             processDBModel.setProcessAssets(new ArrayList<>());
             processDBModel.setProcessScripts(new ArrayList<>());
@@ -160,7 +160,7 @@ public class ProcessFramework {
             processDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
             processDBModel.get().setStatus(1);
 
-            return processHelper.getProcessWSDTO(processRepository.save(processDBModel.get()));
+            return processHelpers.getProcessWSDTO(processRepository.save(processDBModel.get()));
         }
        return null;
     }
@@ -171,7 +171,7 @@ public class ProcessFramework {
         Optional<ProcessDBModel> process = processRepository.findById(processId);
         if (process.isPresent()) {
 
-            ProcessWSDTO processWSDTO = processHelper.getProcessWSDTO(process.get());
+            ProcessWSDTO processWSDTO = processHelpers.getProcessWSDTO(process.get());
 
             processRepository.delete(process.get());
             processScenarioRepository.deleteAll(processScenarioRepository.findByProcessId(processId));

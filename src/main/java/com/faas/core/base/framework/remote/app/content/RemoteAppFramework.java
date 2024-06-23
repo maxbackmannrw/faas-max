@@ -13,7 +13,7 @@ import com.faas.core.base.repo.remote.app.RemoteAppRepository;
 import com.faas.core.base.repo.remote.content.RemoteRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utility.config.AppUtils;
-import com.faas.core.utility.helpers.remote.RemoteClientHelper;
+import com.faas.core.utility.helpers.remote.RemoteAppHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -27,7 +27,7 @@ import java.util.Optional;
 public class RemoteAppFramework {
 
     @Autowired
-    RemoteClientHelper remoteClientHelper;
+    RemoteAppHelpers remoteAppHelpers;
 
     @Autowired
     ClientRepository clientRepository;
@@ -59,9 +59,9 @@ public class RemoteAppFramework {
             RemoteClientListWSDTO remoteClientListWSDTO = new RemoteClientListWSDTO();
             List<RemoteClientWSDTO> remoteClientWSDTOS = new ArrayList<>();
             for (int i=0;i<clientRemoteModelPage.getContent().size();i++){
-                remoteClientWSDTOS.add(remoteClientHelper.createClientRemoteWSDTO(clientRemoteModelPage.getContent().get(i)));
+                remoteClientWSDTOS.add(remoteAppHelpers.createClientRemoteWSDTO(clientRemoteModelPage.getContent().get(i)));
             }
-            remoteClientListWSDTO.setPagination(remoteClientHelper.createClientRemotePagination(clientRemoteModelPage));
+            remoteClientListWSDTO.setPagination(remoteAppHelpers.createClientRemotePagination(clientRemoteModelPage));
             remoteClientListWSDTO.setClientRemotes(remoteClientWSDTOS);
             return remoteClientListWSDTO;
         }
@@ -79,7 +79,7 @@ public class RemoteAppFramework {
 
         Optional<RemoteAppDBModel> clientRemoteDBModel = remoteAppRepository.findById(clientRemoteId);
         if (clientRemoteDBModel.isPresent()){
-            return remoteClientHelper.createClientRemoteWSDTO(clientRemoteDBModel.get());
+            return remoteAppHelpers.createClientRemoteWSDTO(clientRemoteDBModel.get());
         }
         return null;
     }
@@ -90,7 +90,7 @@ public class RemoteAppFramework {
         List<SessionDBModel> sessionDBModels = sessionRepository.findByOperationId(operationId);
         Optional<RemoteDBModel> remoteDBModel = remoteRepository.findById(remoteId);
         if (!sessionDBModels.isEmpty() && operationDBModel.isPresent() && remoteDBModel.isPresent()){
-            return remoteClientHelper.createClientRemoteWSDTO(remoteAppRepository.save(remoteClientHelper.createClientRemoteDBModel(sessionDBModels.get(0),operationDBModel.get(),remoteDBModel.get())));
+            return remoteAppHelpers.createClientRemoteWSDTO(remoteAppRepository.save(remoteAppHelpers.createClientRemoteDBModel(sessionDBModels.get(0),operationDBModel.get(),remoteDBModel.get())));
         }
         return null;
     }
@@ -101,7 +101,7 @@ public class RemoteAppFramework {
         if (clientRemoteDBModel.isPresent()){
             clientRemoteDBModel.get().setRemoteState(remoteState);
             clientRemoteDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
-            return remoteClientHelper.createClientRemoteWSDTO(remoteAppRepository.save(clientRemoteDBModel.get()));
+            return remoteAppHelpers.createClientRemoteWSDTO(remoteAppRepository.save(clientRemoteDBModel.get()));
         }
         return null;
     }
@@ -111,7 +111,7 @@ public class RemoteAppFramework {
         Optional<RemoteAppDBModel> clientRemoteDBModel = remoteAppRepository.findById(clientRemoteId);
         if (clientRemoteDBModel.isPresent()){
             remoteAppRepository.delete(clientRemoteDBModel.get());
-            return remoteClientHelper.createClientRemoteWSDTO(clientRemoteDBModel.get());
+            return remoteAppHelpers.createClientRemoteWSDTO(clientRemoteDBModel.get());
         }
         return null;
     }

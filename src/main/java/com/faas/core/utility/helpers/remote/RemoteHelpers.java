@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 
 @Component
-public class RemoteHelper {
+public class RemoteHelpers {
 
 
     @Autowired
@@ -34,6 +34,7 @@ public class RemoteHelper {
         RemoteWSDTO remoteWSDTO = new RemoteWSDTO();
         remoteWSDTO.setRemote(remoteDBModel);
         remoteWSDTO.setRemoteUrls(urlRepository.findByBaseTypeAndOwnerId(AppConstant.REMOTE_URL,remoteDBModel.getId()));
+
         return remoteWSDTO;
     }
 
@@ -76,7 +77,6 @@ public class RemoteHelper {
 
         return remoteDataDAO;
     }
-
 
 
     public UrlDBModel createRemoteUrlHelper(String remoteId,String remoteUrl, String urlType,String baseType) {

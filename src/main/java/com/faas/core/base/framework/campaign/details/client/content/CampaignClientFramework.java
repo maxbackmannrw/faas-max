@@ -7,7 +7,7 @@ import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utility.config.AppUtils;
-import com.faas.core.utility.helpers.client.ClientHelper;
+import com.faas.core.utility.helpers.client.ClientHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -19,7 +19,7 @@ import java.util.Optional;
 public class CampaignClientFramework {
 
     @Autowired
-    ClientHelper clientHelper;
+    ClientHelpers clientHelpers;
 
     @Autowired
     ClientRepository clientRepository;
@@ -37,13 +37,13 @@ public class CampaignClientFramework {
     public CampaignClientWSDTO searchCampaignClientsService(String city,String country,String clientState,int reqPage,int reqSize) {
 
         if (country.equalsIgnoreCase("")){
-            return clientHelper.mapCampaignClientWSDTO(clientRepository.findAllByClientState(clientState,PageRequest.of(reqPage,reqSize)));
+            return clientHelpers.mapCampaignClientWSDTO(clientRepository.findAllByClientState(clientState,PageRequest.of(reqPage,reqSize)));
         }
         if (city.equalsIgnoreCase("") && !country.equalsIgnoreCase("")){
-            return clientHelper.mapCampaignClientWSDTO(clientRepository.findAllByClientCountryAndClientState(country,clientState,PageRequest.of(reqPage,reqSize)));
+            return clientHelpers.mapCampaignClientWSDTO(clientRepository.findAllByClientCountryAndClientState(country,clientState,PageRequest.of(reqPage,reqSize)));
         }
         if (!city.equalsIgnoreCase("") && !country.equalsIgnoreCase("")){
-            return clientHelper.mapCampaignClientWSDTO(clientRepository.findAllByClientCountryAndClientCityContainingIgnoreCaseAndClientState(country,city,clientState,PageRequest.of(reqPage,reqSize)));
+            return clientHelpers.mapCampaignClientWSDTO(clientRepository.findAllByClientCountryAndClientCityContainingIgnoreCaseAndClientState(country,city,clientState,PageRequest.of(reqPage,reqSize)));
         }
         return null;
     }

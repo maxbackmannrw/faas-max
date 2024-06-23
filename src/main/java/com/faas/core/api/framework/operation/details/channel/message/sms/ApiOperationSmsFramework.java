@@ -20,8 +20,8 @@ import com.faas.core.base.repo.process.details.channel.temp.SmsTempRepository;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utility.handler.channel.sms.SmsChannelHandler;
 import com.faas.core.utility.config.AppUtils;
-import com.faas.core.utility.helpers.channel.ChannelHelper;
-import com.faas.core.utility.helpers.operation.OperationHelper;
+import com.faas.core.utility.helpers.channel.ChannelHelpers;
+import com.faas.core.utility.helpers.operation.OperationHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -34,10 +34,10 @@ import java.util.List;
 public class ApiOperationSmsFramework {
 
     @Autowired
-    OperationHelper operationHelper;
+    OperationHelpers operationHelpers;
 
     @Autowired
-    ChannelHelper channelHelper;
+    ChannelHelpers channelHelpers;
 
     @Autowired
     SmsChannelHandler smsChannelHandler;
@@ -73,7 +73,7 @@ public class ApiOperationSmsFramework {
         if (!operationDBModels.isEmpty()){
             List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(operationDBModels.get(0).getClientId());
             if (!clientDetailsDBModels.isEmpty()){
-                return operationHelper.getApiOperationSmsChannelWSDTO(operationDBModels.get(0),clientDetailsDBModels.get(0));
+                return operationHelpers.getApiOperationSmsChannelWSDTO(operationDBModels.get(0),clientDetailsDBModels.get(0));
             }
         }
         return null;
@@ -84,7 +84,7 @@ public class ApiOperationSmsFramework {
 
         List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
         if (!sessionDBModels.isEmpty()){
-            return channelHelper.getApiOperationSmsAccountWSDTO(sessionDBModels.get(0).getProcessId());
+            return channelHelpers.getApiOperationSmsAccountWSDTO(sessionDBModels.get(0).getProcessId());
         }
         return null;
     }
@@ -94,7 +94,7 @@ public class ApiOperationSmsFramework {
         List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
         if (!sessionDBModels.isEmpty()){
             ApiOperationSmsTempWSDTO smsTempWSDTO = new ApiOperationSmsTempWSDTO();
-            smsTempWSDTO.setSmsAccount(channelHelper.getApiOperationSmsAccountWSDTO(sessionDBModels.get(0).getProcessId()));
+            smsTempWSDTO.setSmsAccount(channelHelpers.getApiOperationSmsAccountWSDTO(sessionDBModels.get(0).getProcessId()));
             List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(sessionDBModels.get(0).getClientId());
             if (!clientDetailsDBModels.isEmpty() && clientDetailsDBModels.get(0).getClientPhones() != null){
                 smsTempWSDTO.setClientPhones(clientDetailsDBModels.get(0).getClientPhones());
@@ -112,7 +112,7 @@ public class ApiOperationSmsFramework {
         List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
         if (!sessionDBModels.isEmpty()){
             ApiOperationSmsTempWSDTO smsTempWSDTO = new ApiOperationSmsTempWSDTO();
-            smsTempWSDTO.setSmsAccount(channelHelper.getApiOperationSmsAccountWSDTO(sessionDBModels.get(0).getProcessId()));
+            smsTempWSDTO.setSmsAccount(channelHelpers.getApiOperationSmsAccountWSDTO(sessionDBModels.get(0).getProcessId()));
             List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(sessionDBModels.get(0).getClientId());
             if (!clientDetailsDBModels.isEmpty() && clientDetailsDBModels.get(0).getClientPhones() != null){
                 smsTempWSDTO.setClientPhones(clientDetailsDBModels.get(0).getClientPhones());
@@ -148,11 +148,11 @@ public class ApiOperationSmsFramework {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
         if (!operationDBModels.isEmpty()){
-            ClientPhoneDAO clientPhoneDAO = channelHelper.fetchClientPhoneDAO(operationDBModels.get(0).getClientId(),numberId);
+            ClientPhoneDAO clientPhoneDAO = channelHelpers.fetchClientPhoneDAO(operationDBModels.get(0).getClientId(),numberId);
             List<SmsTempDBModel> smsTempDBModels = smsTempRepository.findByIdAndProcessId(tempId,operationDBModels.get(0).getProcessId());
             List<ProcessSmsChannelDBModel> smsChannelDBModels = processSmsChannelRepository.findByProcessId(operationDBModels.get(0).getProcessId());
             if (clientPhoneDAO != null && !smsTempDBModels.isEmpty() && !smsChannelDBModels.isEmpty()){
-                OperationSmsDBModel operationSmsDBModel = channelHelper.createOperationSmsModel(operationDBModels.get(0),clientPhoneDAO,smsTempDBModels.get(0),smsChannelDBModels.get(0));
+                OperationSmsDBModel operationSmsDBModel = channelHelpers.createOperationSmsModel(operationDBModels.get(0),clientPhoneDAO,smsTempDBModels.get(0),smsChannelDBModels.get(0));
                 if (operationSmsDBModel != null){
                     smsChannelHandler.sendAsyncSmsHandler(operationDBModels.get(0), operationSmsDBModel);
                 }

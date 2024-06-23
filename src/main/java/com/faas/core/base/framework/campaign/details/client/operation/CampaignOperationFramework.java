@@ -17,8 +17,8 @@ import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.user.content.UserRepository;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.AppUtils;
-import com.faas.core.utility.helpers.activity.ActivityHelper;
-import com.faas.core.utility.helpers.operation.OperationHelper;
+import com.faas.core.utility.helpers.activity.ActivityHelpers;
+import com.faas.core.utility.helpers.operation.OperationHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -34,10 +34,10 @@ public class CampaignOperationFramework {
 
 
     @Autowired
-    ActivityHelper activityHelper;
+    ActivityHelpers activityHelpers;
 
     @Autowired
-    OperationHelper operationHelper;
+    OperationHelpers operationHelpers;
 
     @Autowired
     SessionRepository sessionRepository;
@@ -66,8 +66,8 @@ public class CampaignOperationFramework {
         Page<SessionDBModel> sessionModelPage = sessionRepository.findAllByCampaignIdAndClientCityAndClientCountry(campaignId,city,country, PageRequest.of(reqPage,reqSize));
         if (sessionModelPage != null){
             CampaignOperationWSDTO campaignOperationWSDTO = new CampaignOperationWSDTO();
-            campaignOperationWSDTO.setOperations(operationHelper.getOperationWSDTOSBySessionModels(sessionModelPage.getContent()));
-            campaignOperationWSDTO.setPagination(operationHelper.mapSessionModelPagination(sessionModelPage));
+            campaignOperationWSDTO.setOperations(operationHelpers.getOperationWSDTOSBySessionModels(sessionModelPage.getContent()));
+            campaignOperationWSDTO.setPagination(operationHelpers.mapSessionModelPagination(sessionModelPage));
 
             return campaignOperationWSDTO;
         }
@@ -81,8 +81,8 @@ public class CampaignOperationFramework {
         if (sessionModelPage != null){
 
             CampaignOperationWSDTO campaignOperationWSDTO = new CampaignOperationWSDTO();
-            campaignOperationWSDTO.setOperations(operationHelper.getOperationWSDTOSBySessionModels(sessionModelPage.getContent()));
-            campaignOperationWSDTO.setPagination(operationHelper.mapSessionModelPagination(sessionModelPage));
+            campaignOperationWSDTO.setOperations(operationHelpers.getOperationWSDTOSBySessionModels(sessionModelPage.getContent()));
+            campaignOperationWSDTO.setPagination(operationHelpers.mapSessionModelPagination(sessionModelPage));
 
             return campaignOperationWSDTO;
         }
@@ -95,7 +95,7 @@ public class CampaignOperationFramework {
         List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndCampaignId(sessionId,campaignId);
         List<OperationDBModel> operationDBModels = operationRepository.findBySessionId(sessionId);
         if (!sessionDBModels.isEmpty() && !operationDBModels.isEmpty()){
-            return operationHelper.getOperationWSDTO(operationDBModels.get(0),sessionDBModels.get(0));
+            return operationHelpers.getOperationWSDTO(operationDBModels.get(0),sessionDBModels.get(0));
         }
         return null;
     }
@@ -125,14 +125,14 @@ public class CampaignOperationFramework {
             clientDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
             ClientDBModel clientDBModel = clientRepository.save(clientDBModels.get(0));
 
-            SessionDBModel sessionDBModel =sessionRepository.save(operationHelper.createSessionDBModel(clientDBModel,agentDBModel.get(),campaignDBModel.get()));
-            OperationDBModel operationDBModel = operationRepository.save(operationHelper.createOperationDBModel(sessionDBModel));
+            SessionDBModel sessionDBModel =sessionRepository.save(operationHelpers.createSessionDBModel(clientDBModel,agentDBModel.get(),campaignDBModel.get()));
+            OperationDBModel operationDBModel = operationRepository.save(operationHelpers.createOperationDBModel(sessionDBModel));
 
             sessionDBModel.setOperationId(operationDBModel.getId());
             sessionDBModel.setuDate(appUtils.getCurrentTimeStamp());
             sessionDBModel = sessionRepository.save(sessionDBModel);
 
-            activityHelper.createOperationActivity(sessionDBModel,operationDBModel);
+            activityHelpers.createOperationActivity(sessionDBModel,operationDBModel);
 
             return new OperationWSDTO(operationDBModel,sessionDBModel);
         }
@@ -157,8 +157,8 @@ public class CampaignOperationFramework {
         List<SessionDBModel> sessionDBModels = sessionRepository.findByIdAndCampaignId(sessionId,campaignId);
         List<OperationDBModel> operationDBModels = operationRepository.findBySessionId(sessionId);
         if (!sessionDBModels.isEmpty() && !operationDBModels.isEmpty()) {
-            OperationWSDTO operationWSDTO = operationHelper.getOperationWSDTO(operationDBModels.get(0), sessionDBModels.get(0));
-            operationHelper.removeOperationHelper(sessionId);
+            OperationWSDTO operationWSDTO = operationHelpers.getOperationWSDTO(operationDBModels.get(0), sessionDBModels.get(0));
+            operationHelpers.removeOperationHelper(sessionId);
             return operationWSDTO;
         }
         return null;

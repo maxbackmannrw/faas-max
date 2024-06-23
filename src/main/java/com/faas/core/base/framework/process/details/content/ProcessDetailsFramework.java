@@ -9,8 +9,8 @@ import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.remote.content.RemoteRepository;
 import com.faas.core.base.repo.utils.DataTypeRepository;
 import com.faas.core.utility.config.AppUtils;
-import com.faas.core.utility.helpers.process.ProcessHelper;
-import com.faas.core.utility.helpers.remote.RemoteHelper;
+import com.faas.core.utility.helpers.process.ProcessHelpers;
+import com.faas.core.utility.helpers.remote.RemoteHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,10 +20,10 @@ import java.util.Optional;
 public class ProcessDetailsFramework {
 
     @Autowired
-    ProcessHelper processHelper;
+    ProcessHelpers processHelpers;
 
     @Autowired
-    RemoteHelper remoteHelper;
+    RemoteHelpers remoteHelpers;
 
     @Autowired
     ProcessRepository processRepository;
@@ -40,7 +40,7 @@ public class ProcessDetailsFramework {
 
     public ProcessDetailsWSDTO getProcessDetailsService(String processId) {
         Optional<ProcessDBModel> processDBModel = processRepository.findById(processId);
-        return processDBModel.map(dbModel -> processHelper.createProcessDetailsWSDTO(dbModel)).orElse(null);
+        return processDBModel.map(dbModel -> processHelpers.createProcessDetailsWSDTO(dbModel)).orElse(null);
     }
 
 

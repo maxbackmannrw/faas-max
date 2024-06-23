@@ -5,7 +5,7 @@ import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
 import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.utility.config.AppUtils;
-import com.faas.core.utility.helpers.operation.OperationHelper;
+import com.faas.core.utility.helpers.operation.OperationHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ public class OperationFramework {
 
 
     @Autowired
-    OperationHelper operationHelper;
+    OperationHelpers operationHelpers;
 
     @Autowired
     SessionRepository sessionRepository;
@@ -31,7 +31,7 @@ public class OperationFramework {
 
     public OperationListWSDTO getOperationsService(long userId, String sessionType,String sessionState,int reqPage,int reqSize) {
 
-        return operationHelper.getOperationListWSDTO(sessionRepository.findAllBySessionTypeAndSessionState(sessionType,sessionState,PageRequest.of(reqPage,reqSize)));
+        return operationHelpers.getOperationListWSDTO(sessionRepository.findAllBySessionTypeAndSessionState(sessionType,sessionState,PageRequest.of(reqPage,reqSize)));
     }
 
 

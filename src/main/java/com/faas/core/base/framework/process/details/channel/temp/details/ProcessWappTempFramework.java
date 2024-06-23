@@ -6,7 +6,7 @@ import com.faas.core.base.model.ws.process.details.channel.temp.dto.ProcessWappM
 import com.faas.core.base.repo.channel.settings.MessageTypeRepository;
 import com.faas.core.base.repo.process.details.channel.temp.WappMessageTempRepository;
 import com.faas.core.utility.config.AppUtils;
-import com.faas.core.utility.helpers.process.ProcessHelper;
+import com.faas.core.utility.helpers.process.ProcessHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +20,7 @@ public class ProcessWappTempFramework {
 
 
     @Autowired
-    ProcessHelper processHelper;
+    ProcessHelpers processHelpers;
 
     @Autowired
     WappMessageTempRepository wappMessageTempRepository;

@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 
 @Component
-public class ActivityHelper {
+public class ActivityHelpers {
 
 
     @Autowired

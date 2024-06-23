@@ -10,8 +10,8 @@ import com.faas.core.base.repo.client.details.ClientDetailsRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.operation.details.channel.WappCallRepository;
 import com.faas.core.utility.config.AppUtils;
-import com.faas.core.utility.helpers.channel.ChannelHelper;
-import com.faas.core.utility.helpers.operation.OperationHelper;
+import com.faas.core.utility.helpers.channel.ChannelHelpers;
+import com.faas.core.utility.helpers.operation.OperationHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -23,10 +23,10 @@ public class ApiOperationWappCallFramework {
 
 
     @Autowired
-    OperationHelper operationHelper;
+    OperationHelpers operationHelpers;
 
     @Autowired
-    ChannelHelper channelHelper;
+    ChannelHelpers channelHelpers;
 
     @Autowired
     ClientDetailsRepository clientDetailsRepository;
@@ -47,7 +47,7 @@ public class ApiOperationWappCallFramework {
         if (!operationDBModels.isEmpty()){
             List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(operationDBModels.get(0).getClientId());
             if (!clientDetailsDBModels.isEmpty()){
-                return operationHelper.getApiOperationWappCallChannelWSDTO(operationDBModels.get(0),clientDetailsDBModels.get(0));
+                return operationHelpers.getApiOperationWappCallChannelWSDTO(operationDBModels.get(0),clientDetailsDBModels.get(0));
             }
         }
         return null;
@@ -57,7 +57,7 @@ public class ApiOperationWappCallFramework {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
         if (!operationDBModels.isEmpty()){
-            return channelHelper.getApiOperationWappCallAccountWSDTO(agentId,operationDBModels.get(0).getProcessId());
+            return channelHelpers.getApiOperationWappCallAccountWSDTO(agentId,operationDBModels.get(0).getProcessId());
         }
         return null;
     }
@@ -86,7 +86,7 @@ public class ApiOperationWappCallFramework {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
         if (!operationDBModels.isEmpty()){
-            return channelHelper.createOperationWappCallHelper(operationDBModels.get(0),numberId);
+            return channelHelpers.createOperationWappCallHelper(operationDBModels.get(0),numberId);
         }
         return null;
     }
@@ -95,7 +95,7 @@ public class ApiOperationWappCallFramework {
 
         List<OperationWappCallDBModel> operationWappCallDBModels = wappCallRepository.findByIdAndOperationIdAndAgentId(callId,operationId,agentId);
         if (!operationWappCallDBModels.isEmpty()) {
-            return channelHelper.startOperationWappCallHelper(operationWappCallDBModels.get(0));
+            return channelHelpers.startOperationWappCallHelper(operationWappCallDBModels.get(0));
         }
         return null;
     }
@@ -104,7 +104,7 @@ public class ApiOperationWappCallFramework {
 
         List<OperationWappCallDBModel> operationWappCallDBModels = wappCallRepository.findByIdAndOperationIdAndAgentId(callId,operationId,agentId);
         if (!operationWappCallDBModels.isEmpty()) {
-            return channelHelper.cancelOperationWappCallHelper(operationWappCallDBModels.get(0));
+            return channelHelpers.cancelOperationWappCallHelper(operationWappCallDBModels.get(0));
         }
         return null;
     }
@@ -113,7 +113,7 @@ public class ApiOperationWappCallFramework {
 
         List<OperationWappCallDBModel> operationWappCallDBModels = wappCallRepository.findByIdAndOperationIdAndAgentId(callId,operationId,agentId);
         if (!operationWappCallDBModels.isEmpty()) {
-            return channelHelper.hangUpOperationWappCallHelper(operationWappCallDBModels.get(0));
+            return channelHelpers.hangUpOperationWappCallHelper(operationWappCallDBModels.get(0));
         }
         return null;
     }
