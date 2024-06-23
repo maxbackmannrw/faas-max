@@ -59,6 +59,35 @@ public class UserFramework {
     }
 
 
+    public List<UserWSDTO> getAllUsersService(long userId) {
+
+        List<UserWSDTO> userWSDTOS = new ArrayList<>();
+        List<UserDBModel> userDBModels = userRepository.findByStatus(1);
+        for (UserDBModel userDBModel : userDBModels) {
+            userWSDTOS.add(fillUserWSDTO(userDBModel));
+        }
+        return userWSDTOS;
+    }
+
+    public List<UserWSDTO> getUsersByTypeService(long userId, String userType) {
+
+        List<UserWSDTO> userWSDTOS = new ArrayList<>();
+        List<UserDBModel> userDBModels = userRepository.findByUserTypeAndStatus(userType,1 );
+        for (UserDBModel userDBModel : userDBModels) {
+            userWSDTOS.add(fillUserWSDTO(userDBModel));
+        }
+        return userWSDTOS;
+    }
+
+    public UserWSDTO getUserService(long userId, long selectedId) {
+
+        Optional<UserDBModel> userDBModel = userRepository.findById(selectedId);
+        if (userDBModel.isPresent()) {
+            return fillUserWSDTO(userDBModel.get());
+        }
+        return null;
+    }
+
     public UserWSDTO createUserService(String userName, String userEmail, String password, long roleId, int operationLimit) {
 
         Optional<UserRoleDBModel> userRoles = userRoleRepository.findById(roleId);

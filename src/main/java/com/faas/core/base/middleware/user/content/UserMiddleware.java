@@ -50,19 +50,16 @@ public class UserMiddleware {
         return response;
     }
 
-
     public UserWSModel getAllUsers(long userId) {
 
         UserWSModel response = new UserWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<UserWSDTO> userWSDTOS = new ArrayList<>();
 
-        List<UserDBModel> userDBModels = userRepository.findByStatus(1);
-        for (UserDBModel userDBModel : userDBModels) {
-            userWSDTOS.add(userFramework.fillUserWSDTO(userDBModel));
+        List<UserWSDTO> userWSDTOS = userFramework.getAllUsersService(userId);
+        if (userWSDTOS != null){
+            response.setUsers(userWSDTOS);
         }
 
-        response.setUsers(userWSDTOS);
         general.setOperation("getAllUsers");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -72,19 +69,16 @@ public class UserMiddleware {
         return response;
     }
 
-
     public UserWSModel getUsersByType(long userId, String userType) {
 
         UserWSModel response = new UserWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<UserWSDTO> userWSDTOS = new ArrayList<>();
 
-        List<UserDBModel> userDBModels = userRepository.findByUserTypeAndStatus(userType, 1);
-        for (UserDBModel userDBModel : userDBModels) {
-            userWSDTOS.add(userFramework.fillUserWSDTO(userDBModel));
+        List<UserWSDTO> userWSDTOS = userFramework.getUsersByTypeService(userId,userType);
+        if (userWSDTOS != null){
+            response.setUsers(userWSDTOS);
         }
 
-        response.setUsers(userWSDTOS);
         general.setOperation("getUsersByType");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -94,15 +88,16 @@ public class UserMiddleware {
         return response;
     }
 
-
     public UserWSModel getUser(long userId, long selectedId) {
 
         UserWSModel response = new UserWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<UserWSDTO> userWSDTOS = new ArrayList<>();
 
-        Optional<UserDBModel> userDBModel = userRepository.findById(selectedId);
-        userDBModel.ifPresent(dbModel -> userWSDTOS.add(userFramework.fillUserWSDTO(dbModel)));
+        UserWSDTO userWSDTO = userFramework.getUserService(userId,selectedId);
+        if (userWSDTOS != null){
+            userWSDTOS.add(userWSDTO);
+        }
 
         response.setUsers(userWSDTOS);
         general.setOperation("getUser");
@@ -113,7 +108,6 @@ public class UserMiddleware {
 
         return response;
     }
-
 
     public UserWSModel createUser(long userId, String userName, String userEmail, String password,long roleId,int operationLimit) {
 
@@ -136,7 +130,6 @@ public class UserMiddleware {
         return response;
     }
 
-
     public UserWSModel updateUser(long userId, long selectedId, String userName, String userEmail, String password, long roleId, int operationLimit, boolean validUser) {
 
         UserWSModel response = new UserWSModel();
@@ -157,7 +150,6 @@ public class UserMiddleware {
 
         return response;
     }
-
 
     public UserWSModel removeUser(long userId, long selectedId) {
 

@@ -34,7 +34,6 @@ public class UserController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.GET_ALL_USERS, method = RequestMethod.POST)
     public ResponseEntity<?> getAllUsers(@RequestParam long userId) {
 
@@ -45,7 +44,6 @@ public class UserController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.GET_USERS_BY_TYPE, method = RequestMethod.POST)
     public ResponseEntity<?> getUsersByType(@RequestParam long userId,
@@ -59,7 +57,6 @@ public class UserController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.GET_USER, method = RequestMethod.POST)
     public ResponseEntity<?> getUser(@RequestParam long userId,
                                      @RequestParam long selectedId) {
@@ -71,7 +68,6 @@ public class UserController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.CREATE_USER, method = RequestMethod.POST)
     public ResponseEntity<?> createUser(@RequestParam long userId,
@@ -88,7 +84,6 @@ public class UserController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.UPDATE_USER, method = RequestMethod.POST)
     public ResponseEntity<?> updateUser(@RequestParam long userId,
@@ -107,7 +102,6 @@ public class UserController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.REMOVE_USER, method = RequestMethod.POST)
     public ResponseEntity<?> removeUser(@RequestParam long userId,
