@@ -1,7 +1,7 @@
 package com.faas.core.base.endpoint.controller.process.details.trigger.details;
 
 import com.faas.core.base.middleware.process.details.trigger.details.ProcessEmailTriggerMiddleware;
-import com.faas.core.base.model.ws.process.details.trigger.details.ProcessEmailTriggerWSModel;
+import com.faas.core.base.model.ws.process.details.trigger.ProcessEmailTriggerWSModel;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;

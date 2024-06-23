@@ -31,22 +31,22 @@ public class OperationManagerFramework {
     OperationRepository operationRepository;
 
     @Autowired
-    OperationSmsRepository operationSmsRepository;
+    SmsRepository SmsRepository;
 
     @Autowired
-    OperationEmailRepository operationEmailRepository;
+    EmailRepository emailRepository;
 
     @Autowired
-    OperationSipCallRepository operationSipCallRepository;
+    SipCallRepository sipCallRepository;
 
     @Autowired
-    OperationWappCallRepository operationWappCallRepository;
+    WappCallRepository wappCallRepository;
 
     @Autowired
-    OperationWappMessageRepository operationWappMessageRepository;
+    WappMessageRepository wappMessageRepository;
 
     @Autowired
-    OperationPushRepository operationPushRepository;
+    PushRepository pushRepository;
 
     @Autowired
     AppUtils appUtils;

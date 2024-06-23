@@ -2,8 +2,8 @@ package com.faas.core.base.framework.client.content;
 
 import com.faas.core.base.model.db.client.content.ClientDBModel;
 import com.faas.core.base.model.db.client.settings.ClientTypeDBModel;
-import com.faas.core.base.model.db.utils.config.CityDBModel;
-import com.faas.core.base.model.db.utils.config.CountryDBModel;
+import com.faas.core.base.model.db.utils.CityDBModel;
+import com.faas.core.base.model.db.utils.CountryDBModel;
 import com.faas.core.base.model.ws.client.content.dto.AllClientWSDTO;
 import com.faas.core.base.model.ws.client.content.dto.ClientListWSDTO;
 import com.faas.core.base.model.ws.client.content.dto.ClientWSDTO;
@@ -14,8 +14,8 @@ import com.faas.core.base.repo.client.settings.ClientTypeRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.operation.details.channel.*;
 import com.faas.core.base.repo.session.SessionRepository;
-import com.faas.core.base.repo.utils.config.CityRepository;
-import com.faas.core.base.repo.utils.config.CountryRepository;
+import com.faas.core.base.repo.utils.CityRepository;
+import com.faas.core.base.repo.utils.CountryRepository;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.AppUtils;
 import com.faas.core.utility.helpers.client.ClientHelper;
@@ -52,22 +52,22 @@ public class ClientFramework {
     OperationRepository operationRepository;
 
     @Autowired
-    OperationEmailRepository operationEmailRepository;
+    EmailRepository emailRepository;
 
     @Autowired
-    OperationPushRepository operationPushRepository;
+    PushRepository pushRepository;
 
     @Autowired
-    OperationSipCallRepository operationSipCallRepository;
+    SipCallRepository sipCallRepository;
 
     @Autowired
-    OperationSmsRepository operationSmsRepository;
+    SmsRepository SmsRepository;
 
     @Autowired
-    OperationWappCallRepository operationWappCallRepository;
+    WappCallRepository wappCallRepository;
 
     @Autowired
-    OperationWappMessageRepository operationWappMessageRepository;
+    WappMessageRepository wappMessageRepository;
 
     @Autowired
     CityRepository cityRepository;

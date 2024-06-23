@@ -14,7 +14,7 @@ public class SipChannelRestCall {
     AppUtils appUtils;
 
 
-    public void startSipCallIntegration(OperationSipCallDBModel sipCallDBModel) {
+    public void startSipCallIntegration(OperationSipCallDBModel operationSipCallDBModel) {
 
 
     }

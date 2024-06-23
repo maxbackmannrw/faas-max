@@ -5,7 +5,7 @@ import com.faas.core.base.model.db.operation.details.channel.OperationWappMessag
 import com.faas.core.base.model.db.process.content.ProcessDBModel;
 import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.repo.channel.account.WappAccountRepository;
-import com.faas.core.base.repo.operation.details.channel.OperationWappMessageRepository;
+import com.faas.core.base.repo.operation.details.channel.WappMessageRepository;
 import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.utility.rest.channel.wapp.WappChannelRestCall;
 import com.faas.core.utility.rest.utility.CommonRestCall;
@@ -34,7 +34,7 @@ public class WappChannelHandler {
     WappAccountRepository wappAccountRepository;
 
     @Autowired
-    OperationWappMessageRepository operationWappMessageRepository;
+    WappMessageRepository wappMessageRepository;
 
     @Autowired
     AppUtils appUtils;
@@ -48,7 +48,7 @@ public class WappChannelHandler {
     }
 
     @Async
-    public void sendAsyncWappMessageHandler(OperationWappMessageDBModel wappMessageDBModel) throws IOException {
+    public void sendAsyncWappMessageHandler(OperationWappMessageDBModel operationWappMessageDBModel) throws IOException {
 
         /*
         Optional<WappAccountDBModel> wappAccountDBModel = wappAccountRepository.findById(operationWappMessageDBModel.getWappMessage().getAccountId());
@@ -103,7 +103,7 @@ public class WappChannelHandler {
         operationWappMessageDBModel.setMessageState(AppConstant.MESSAGE_SENDING);
         operationWappMessageDBModel.setuDate(appUtils.getCurrentTimeStamp());
 
-        return operationWappMessageRepository.save(operationWappMessageDBModel);
+        return wappMessageRepository.save(operationWappMessageDBModel);
     }
 
 

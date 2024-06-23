@@ -2,7 +2,7 @@ package com.faas.core.base.framework.process.details.channel.temp.details;
 
 import com.faas.core.base.model.db.channel.settings.PushTypeDBModel;
 import com.faas.core.base.model.db.process.details.channel.temp.PushTempDBModel;
-import com.faas.core.base.model.ws.process.details.channel.temp.details.dto.ProcessPushTempWSDTO;
+import com.faas.core.base.model.ws.process.details.channel.temp.dto.ProcessPushTempWSDTO;
 import com.faas.core.base.repo.channel.settings.PushTypeRepository;
 import com.faas.core.base.repo.process.details.channel.temp.PushTempRepository;
 import com.faas.core.utility.config.AppUtils;

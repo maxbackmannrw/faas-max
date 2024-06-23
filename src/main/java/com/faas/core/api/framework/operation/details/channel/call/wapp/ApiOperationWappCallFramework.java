@@ -8,7 +8,7 @@ import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationWappCallDBModel;
 import com.faas.core.base.repo.client.details.ClientDetailsRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
-import com.faas.core.base.repo.operation.details.channel.OperationWappCallRepository;
+import com.faas.core.base.repo.operation.details.channel.WappCallRepository;
 import com.faas.core.utility.config.AppUtils;
 import com.faas.core.utility.helpers.channel.ChannelHelper;
 import com.faas.core.utility.helpers.operation.OperationHelper;
@@ -35,7 +35,7 @@ public class ApiOperationWappCallFramework {
     OperationRepository operationRepository;
 
     @Autowired
-    OperationWappCallRepository operationWappCallRepository;
+    WappCallRepository wappCallRepository;
 
     @Autowired
     AppUtils appUtils;
@@ -66,7 +66,7 @@ public class ApiOperationWappCallFramework {
     public List<ApiOperationWappCallWSDTO> apiGetOperationWappCallsService(long agentId, String operationId) {
 
         List<ApiOperationWappCallWSDTO> operationWappCallWSDTOS = new ArrayList<>();
-        List<OperationWappCallDBModel> operationWappCallDBModels = operationWappCallRepository.findByOperationIdAndAgentId(operationId,agentId);
+        List<OperationWappCallDBModel> operationWappCallDBModels = wappCallRepository.findByOperationIdAndAgentId(operationId,agentId);
         for (OperationWappCallDBModel operationWappCallDBModel : operationWappCallDBModels) {
             operationWappCallWSDTOS.add(new ApiOperationWappCallWSDTO(operationWappCallDBModel));
         }
@@ -75,7 +75,7 @@ public class ApiOperationWappCallFramework {
 
     public ApiOperationWappCallWSDTO apiGetOperationWappCallService(long agentId,String operationId,String callId) {
 
-        List<OperationWappCallDBModel> operationWappCallDBModels = operationWappCallRepository.findByIdAndOperationIdAndAgentId(callId,operationId,agentId);
+        List<OperationWappCallDBModel> operationWappCallDBModels = wappCallRepository.findByIdAndOperationIdAndAgentId(callId,operationId,agentId);
         if (!operationWappCallDBModels.isEmpty()) {
             return new ApiOperationWappCallWSDTO(operationWappCallDBModels.get(0));
         }
@@ -93,7 +93,7 @@ public class ApiOperationWappCallFramework {
 
     public ApiOperationWappCallWSDTO apiStartOperationWappCallService(long agentId,String operationId,String callId) {
 
-        List<OperationWappCallDBModel> operationWappCallDBModels = operationWappCallRepository.findByIdAndOperationIdAndAgentId(callId,operationId,agentId);
+        List<OperationWappCallDBModel> operationWappCallDBModels = wappCallRepository.findByIdAndOperationIdAndAgentId(callId,operationId,agentId);
         if (!operationWappCallDBModels.isEmpty()) {
             return channelHelper.startOperationWappCallHelper(operationWappCallDBModels.get(0));
         }
@@ -102,7 +102,7 @@ public class ApiOperationWappCallFramework {
 
     public ApiOperationWappCallWSDTO apiCancelOperationWappCallService(long agentId,String operationId,String callId) {
 
-        List<OperationWappCallDBModel> operationWappCallDBModels = operationWappCallRepository.findByIdAndOperationIdAndAgentId(callId,operationId,agentId);
+        List<OperationWappCallDBModel> operationWappCallDBModels = wappCallRepository.findByIdAndOperationIdAndAgentId(callId,operationId,agentId);
         if (!operationWappCallDBModels.isEmpty()) {
             return channelHelper.cancelOperationWappCallHelper(operationWappCallDBModels.get(0));
         }
@@ -111,7 +111,7 @@ public class ApiOperationWappCallFramework {
 
     public ApiOperationWappCallWSDTO apiHangUpOperationWappCallService(long agentId,String operationId,String callId) {
 
-        List<OperationWappCallDBModel> operationWappCallDBModels = operationWappCallRepository.findByIdAndOperationIdAndAgentId(callId,operationId,agentId);
+        List<OperationWappCallDBModel> operationWappCallDBModels = wappCallRepository.findByIdAndOperationIdAndAgentId(callId,operationId,agentId);
         if (!operationWappCallDBModels.isEmpty()) {
             return channelHelper.hangUpOperationWappCallHelper(operationWappCallDBModels.get(0));
         }
@@ -120,20 +120,20 @@ public class ApiOperationWappCallFramework {
 
     public ApiOperationWappCallWSDTO apiUpdateOperationWappCallService(long agentId,String operationId,String callId,String callState) {
 
-        List<OperationWappCallDBModel> operationWappCallDBModels = operationWappCallRepository.findByIdAndOperationIdAndAgentId(callId,operationId,agentId);
+        List<OperationWappCallDBModel> operationWappCallDBModels = wappCallRepository.findByIdAndOperationIdAndAgentId(callId,operationId,agentId);
         if (!operationWappCallDBModels.isEmpty()) {
             operationWappCallDBModels.get(0).setCallState(callState);
             operationWappCallDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
-            return new ApiOperationWappCallWSDTO(operationWappCallRepository.save(operationWappCallDBModels.get(0)));
+            return new ApiOperationWappCallWSDTO(wappCallRepository.save(operationWappCallDBModels.get(0)));
         }
         return null;
     }
 
     public ApiOperationWappCallWSDTO apiRemoveOperationWappCallService(long agentId,String operationId,String callId) {
 
-        List<OperationWappCallDBModel> operationWappCallDBModels = operationWappCallRepository.findByIdAndOperationIdAndAgentId(callId,operationId,agentId);
+        List<OperationWappCallDBModel> operationWappCallDBModels = wappCallRepository.findByIdAndOperationIdAndAgentId(callId,operationId,agentId);
         if (!operationWappCallDBModels.isEmpty()) {
-            operationWappCallRepository.delete(operationWappCallDBModels.get(0));
+            wappCallRepository.delete(operationWappCallDBModels.get(0));
             return new ApiOperationWappCallWSDTO(operationWappCallDBModels.get(0));
         }
         return null;

@@ -18,17 +18,17 @@ public class RemoteAppDetailsMiddleware {
     RemoteAppDetailsFramework remoteAppDetailsFramework;
 
 
-    public RemoteClientDetailsWSModel getRemoteClientDetails(long userId, String clientRemoteId) {
+    public RemoteClientDetailsWSModel getRemoteAppDetails(long userId, String clientRemoteId) {
 
         RemoteClientDetailsWSModel response = new RemoteClientDetailsWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        RemoteClientDetailsWSDTO remoteClientDetailsWSDTO = remoteAppDetailsFramework.getRemoteClientDetailsService(userId,clientRemoteId);
+        RemoteClientDetailsWSDTO remoteClientDetailsWSDTO = remoteAppDetailsFramework.getRemoteAppDetailsService(userId,clientRemoteId);
         if (remoteClientDetailsWSDTO != null){
             response.setClientRemoteDetails(remoteClientDetailsWSDTO);
         }
 
-        general.setOperation("getRemoteClientDetails");
+        general.setOperation("getRemoteAppDetails");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -37,17 +37,17 @@ public class RemoteAppDetailsMiddleware {
         return response;
     }
 
-    public RemoteClientSummaryWSModel getRemoteClientSummary(long userId) {
+    public RemoteClientSummaryWSModel getRemoteAppsSummary(long userId) {
 
         RemoteClientSummaryWSModel response = new RemoteClientSummaryWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        RemoteClientSummaryWSDTO remoteClientSummaryWSDTO = remoteAppDetailsFramework.getClientRemoteSummaryService(userId);
+        RemoteClientSummaryWSDTO remoteClientSummaryWSDTO = remoteAppDetailsFramework.getRemoteAppsSummaryService(userId);
         if (remoteClientSummaryWSDTO != null){
             response.setClientRemoteSummary(remoteClientSummaryWSDTO);
         }
 
-        general.setOperation("getRemoteClientSummary");
+        general.setOperation("getRemoteAppsSummary");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

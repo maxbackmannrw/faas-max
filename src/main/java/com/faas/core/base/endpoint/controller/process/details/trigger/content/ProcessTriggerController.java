@@ -1,7 +1,7 @@
 package com.faas.core.base.endpoint.controller.process.details.trigger.content;
 
 import com.faas.core.base.middleware.process.details.trigger.content.ProcessTriggerMiddleware;
-import com.faas.core.base.model.ws.process.details.trigger.content.ProcessTriggerWSModel;
+import com.faas.core.base.model.ws.process.details.trigger.ProcessTriggerWSModel;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;

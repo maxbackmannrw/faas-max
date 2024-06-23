@@ -3,7 +3,7 @@ package com.faas.core.base.framework.process.details.trigger.details;
 import com.faas.core.base.model.db.channel.account.SmsAccountDBModel;
 import com.faas.core.base.model.db.process.details.trigger.*;
 import com.faas.core.base.model.db.process.settings.TriggerTypeDBModel;
-import com.faas.core.base.model.ws.process.details.trigger.details.dto.ProcessSmsTriggerWSDTO;
+import com.faas.core.base.model.ws.process.details.trigger.dto.ProcessSmsTriggerWSDTO;
 import com.faas.core.base.repo.channel.account.SmsAccountRepository;
 import com.faas.core.base.repo.channel.settings.MessageTypeRepository;
 import com.faas.core.base.repo.process.details.trigger.*;

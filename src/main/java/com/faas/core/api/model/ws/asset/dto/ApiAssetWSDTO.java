@@ -1,6 +1,6 @@
 package com.faas.core.api.model.ws.asset.dto;
 
-import com.faas.core.base.model.db.utils.asset.content.AssetDBModel;
+import com.faas.core.base.model.db.asset.content.AssetDBModel;
 
 public class ApiAssetWSDTO {
 

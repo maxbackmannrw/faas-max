@@ -1,6 +1,6 @@
 package com.faas.core.base.model.ws.utils.config.dto;
 
-import com.faas.core.base.model.db.utils.config.CountryDBModel;
+import com.faas.core.base.model.db.utils.CountryDBModel;
 
 public class CountryWSDTO {
 

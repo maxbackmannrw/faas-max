@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping(value = AppConstant.API_VERSION + "/base/remote/client/details/")
+@RequestMapping(value = AppConstant.API_VERSION + "/base/remote/app/details/")
 public class RemoteAppDetailsController {
 
 
@@ -22,11 +22,11 @@ public class RemoteAppDetailsController {
     RemoteAppDetailsMiddleware remoteAppDetailsMiddleware;
 
 
-    @RequestMapping(value = BaseRoute.GET_REMOTE_CLIENT_DETAILS, method = RequestMethod.POST)
-    public ResponseEntity<?> getRemoteClientDetails(@RequestParam long userId,
+    @RequestMapping(value = BaseRoute.GET_REMOTE_APP_DETAILS, method = RequestMethod.POST)
+    public ResponseEntity<?> getRemoteAppDetails(@RequestParam long userId,
                                                     @RequestParam String clientRemoteId) {
 
-        RemoteClientDetailsWSModel response = remoteAppDetailsMiddleware.getRemoteClientDetails(userId,clientRemoteId);
+        RemoteClientDetailsWSModel response = remoteAppDetailsMiddleware.getRemoteAppDetails(userId,clientRemoteId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -34,10 +34,10 @@ public class RemoteAppDetailsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-    @RequestMapping(value = BaseRoute.GET_REMOTE_CLIENT_SUMMARY, method = RequestMethod.POST)
-    public ResponseEntity<?> getRemoteClientSummary(@RequestParam long userId) {
+    @RequestMapping(value = BaseRoute.GET_REMOTE_APPS_SUMMARY, method = RequestMethod.POST)
+    public ResponseEntity<?> getRemoteAppsSummary(@RequestParam long userId) {
 
-        RemoteClientSummaryWSModel response = remoteAppDetailsMiddleware.getRemoteClientSummary(userId);
+        RemoteClientSummaryWSModel response = remoteAppDetailsMiddleware.getRemoteAppsSummary(userId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

@@ -15,7 +15,7 @@ import com.faas.core.base.repo.user.content.UserRepository;
 import com.faas.core.base.repo.user.details.UserDetailsRepository;
 import com.faas.core.base.repo.channel.account.SipAccountRepository;
 import com.faas.core.base.repo.channel.account.WappAccountRepository;
-import com.faas.core.base.repo.utils.config.DataTypeRepository;
+import com.faas.core.base.repo.utils.DataTypeRepository;
 import com.faas.core.utility.config.AppUtils;
 import com.faas.core.utility.helpers.user.UserHelper;
 import org.springframework.beans.factory.annotation.Autowired;

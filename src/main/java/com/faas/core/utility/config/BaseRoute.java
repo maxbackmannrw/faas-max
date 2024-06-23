@@ -159,17 +159,15 @@ public class BaseRoute {
 
 
 
-    public static final String GET_REMOTE_CLIENTS = "getremoteclients";
-    public static final String GET_REMOTE_CLIENTS_BY_STATE = "getremoteclientsbystate";
-    public static final String GET_REMOTE_CLIENTS_BY_BASE_TYPE = "getremoteclientsbybasetype";
-    public static final String GET_CLIENT_REMOTE_CLIENTS = "getclientremoteclients";
-    public static final String GET_REMOTE_CLIENT = "getremoteclient";
-    public static final String CREATE_REMOTE_CLIENT = "createremoteclient";
-    public static final String UPDATE_REMOTE_CLIENT = "updateremoteclient";
-    public static final String REMOVE_REMOTE_CLIENT = "removeremoteclient";
+    public static final String GET_REMOTE_APPS = "getremoteapps";
+    public static final String GET_CLIENT_REMOTE_APPS = "getclientremoteapps";
+    public static final String GET_REMOTE_APP = "getremoteapp";
+    public static final String CREATE_REMOTE_APP = "createremoteapp";
+    public static final String UPDATE_REMOTE_APP = "updateremoteapp";
+    public static final String REMOVE_REMOTE_APP = "removeremoteapp";
 
-    public static final String GET_REMOTE_CLIENT_DETAILS = "getremoteclientdetails";
-    public static final String GET_REMOTE_CLIENT_SUMMARY = "getremoteclientsummary";
+    public static final String GET_REMOTE_APP_DETAILS = "getremoteappdetails";
+    public static final String GET_REMOTE_APPS_SUMMARY = "getremoteappsummary";
 
 
 

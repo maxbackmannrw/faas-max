@@ -1,7 +1,7 @@
 package com.faas.core.base.model.ws.operation.details.content;
 
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.operation.details.dto.OperationDetailsWSDTO;
+import com.faas.core.base.model.ws.operation.details.content.dto.OperationDetailsWSDTO;
 
 public class OperationDetailsWSModel {
 

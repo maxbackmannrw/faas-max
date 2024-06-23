@@ -1,8 +1,8 @@
 package com.faas.core.base.endpoint.controller.process.details.trigger.details;
 
 import com.faas.core.base.middleware.process.details.trigger.details.ProcessWappTriggerMiddleware;
-import com.faas.core.base.model.ws.process.details.trigger.details.ProcessWappCallTriggerWSModel;
-import com.faas.core.base.model.ws.process.details.trigger.details.ProcessWappMessageTriggerWSModel;
+import com.faas.core.base.model.ws.process.details.trigger.ProcessWappCallTriggerWSModel;
+import com.faas.core.base.model.ws.process.details.trigger.ProcessWappMessageTriggerWSModel;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;

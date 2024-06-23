@@ -51,24 +51,8 @@ public class RemoteAppFramework {
     AppUtils appUtils;
 
 
-    public RemoteClientListWSDTO getRemoteClientsService(long userId, String remoteState, int reqPage, int reqSize) {
 
-        Page<RemoteAppDBModel> clientRemoteModelPage = remoteAppRepository.findAllByRemoteState(remoteState,PageRequest.of(reqPage,reqSize));
-        if (clientRemoteModelPage != null){
-            RemoteClientListWSDTO remoteClientListWSDTO = new RemoteClientListWSDTO();
-            List<RemoteClientWSDTO> remoteClientWSDTOS = new ArrayList<>();
-            for (int i=0;i<clientRemoteModelPage.getContent().size();i++){
-                remoteClientWSDTOS.add(remoteClientHelper.createClientRemoteWSDTO(clientRemoteModelPage.getContent().get(i)));
-            }
-            remoteClientListWSDTO.setClientRemotes(remoteClientWSDTOS);
-            remoteClientListWSDTO.setPagination(remoteClientHelper.createClientRemotePagination(clientRemoteModelPage));
-
-            return remoteClientListWSDTO;
-        }
-        return null;
-    }
-
-    public RemoteClientListWSDTO getRemoteClientsByStateService(long userId, String remoteState, String baseType, int reqPage, int reqSize) {
+    public RemoteClientListWSDTO getRemoteAppsService(long userId,String remoteState,String baseType, int reqPage, int reqSize) {
 
         Page<RemoteAppDBModel> clientRemoteModelPage = remoteAppRepository.findAllByRemoteStateAndBaseType(remoteState,baseType,PageRequest.of(reqPage,reqSize));
         if (clientRemoteModelPage != null){
@@ -84,33 +68,14 @@ public class RemoteAppFramework {
         return null;
     }
 
-    public RemoteClientListWSDTO getClientRemoteClientsService(long userId, String remoteState, String baseType, int reqPage, int reqSize) {
+    public RemoteClientListWSDTO getClientRemoteAppsService(long userId, long clientId) {
 
-        Page<RemoteAppDBModel> clientRemoteModelPage = remoteAppRepository.findAllByRemoteStateAndBaseType(remoteState,baseType,PageRequest.of(reqPage,reqSize));
-        if (clientRemoteModelPage != null){
-            RemoteClientListWSDTO remoteClientListWSDTO = new RemoteClientListWSDTO();
-            List<RemoteClientWSDTO> remoteClientWSDTOS = new ArrayList<>();
-            for (int i=0;i<clientRemoteModelPage.getContent().size();i++){
-                remoteClientWSDTOS.add(remoteClientHelper.createClientRemoteWSDTO(clientRemoteModelPage.getContent().get(i)));
-            }
-            remoteClientListWSDTO.setPagination(remoteClientHelper.createClientRemotePagination(clientRemoteModelPage));
-            remoteClientListWSDTO.setClientRemotes(remoteClientWSDTOS);
-            return remoteClientListWSDTO;
-        }
+        List<RemoteAppDBModel> clientRemoteModelPage = remoteAppRepository.findByClientId(clientId);
+
         return null;
     }
 
-    public List<RemoteClientWSDTO> getClientRemotesService(long userId, long clientId) {
-
-        List<RemoteClientWSDTO> remoteClientWSDTOS = new ArrayList<>();
-        List<RemoteAppDBModel> remoteAppDBModels = remoteAppRepository.findByClientId(clientId);
-        for (RemoteAppDBModel remoteAppDBModel : remoteAppDBModels) {
-            remoteClientWSDTOS.add(remoteClientHelper.createClientRemoteWSDTO(remoteAppDBModel));
-        }
-        return remoteClientWSDTOS;
-    }
-
-    public RemoteClientWSDTO getRemoteClientService(long userId, String clientRemoteId) {
+    public RemoteClientWSDTO getRemoteAppService(long userId, String clientRemoteId) {
 
         Optional<RemoteAppDBModel> clientRemoteDBModel = remoteAppRepository.findById(clientRemoteId);
         if (clientRemoteDBModel.isPresent()){
@@ -119,7 +84,7 @@ public class RemoteAppFramework {
         return null;
     }
 
-    public RemoteClientWSDTO createRemoteClientService(long userId, String operationId, String remoteId) {
+    public RemoteClientWSDTO createRemoteAppService(long userId, String operationId, String remoteId) {
 
         Optional<OperationDBModel> operationDBModel = operationRepository.findById(operationId);
         List<SessionDBModel> sessionDBModels = sessionRepository.findByOperationId(operationId);
@@ -130,7 +95,7 @@ public class RemoteAppFramework {
         return null;
     }
 
-    public RemoteClientWSDTO updateRemoteClientService(long userId, String clientRemoteId, String remoteState) {
+    public RemoteClientWSDTO updateRemoteAppService(long userId, String clientRemoteId, String remoteState) {
 
         Optional<RemoteAppDBModel>clientRemoteDBModel = remoteAppRepository.findById(clientRemoteId);
         if (clientRemoteDBModel.isPresent()){
@@ -141,7 +106,7 @@ public class RemoteAppFramework {
         return null;
     }
 
-    public RemoteClientWSDTO removeClientRemoteService(long userId, String clientRemoteId) {
+    public RemoteClientWSDTO removeRemoteAppService(long userId, String clientRemoteId) {
 
         Optional<RemoteAppDBModel> clientRemoteDBModel = remoteAppRepository.findById(clientRemoteId);
         if (clientRemoteDBModel.isPresent()){

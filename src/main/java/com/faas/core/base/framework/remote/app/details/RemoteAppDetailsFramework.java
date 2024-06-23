@@ -16,27 +16,27 @@ public class RemoteAppDetailsFramework {
 
 
     @Autowired
-    ClientRepository clientRepository;
-
-    @Autowired
-    RemoteAppRepository remoteAppRepository;
-
-    @Autowired
     SessionRepository sessionRepository;
+
+    @Autowired
+    ClientRepository clientRepository;
 
     @Autowired
     OperationRepository operationRepository;
 
     @Autowired
+    RemoteAppRepository remoteAppRepository;
+
+    @Autowired
     AppUtils appUtils;
 
 
-    public RemoteClientDetailsWSDTO getRemoteClientDetailsService(long userId, String clientRemoteId) {
+    public RemoteClientDetailsWSDTO getRemoteAppDetailsService(long userId, String clientRemoteId) {
 
         return null;
     }
 
-    public RemoteClientSummaryWSDTO getClientRemoteSummaryService(long userId) {
+    public RemoteClientSummaryWSDTO getRemoteAppsSummaryService(long userId) {
 
         RemoteClientSummaryWSDTO remoteClientSummaryWSDTO = new RemoteClientSummaryWSDTO();
         remoteClientSummaryWSDTO.setNewClientRemotes(remoteAppRepository.countByRemoteState(AppConstant.NEW_REMOTE));

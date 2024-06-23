@@ -13,7 +13,7 @@ import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.client.details.ClientDetailsRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
-import com.faas.core.base.repo.operation.details.channel.OperationPushRepository;
+import com.faas.core.base.repo.operation.details.channel.PushRepository;
 import com.faas.core.base.repo.process.details.channel.content.ProcessPushChannelRepository;
 import com.faas.core.base.repo.process.details.channel.temp.PushTempRepository;
 import com.faas.core.base.repo.session.SessionRepository;
@@ -59,7 +59,7 @@ public class ApiOperationPushFramework {
     ProcessPushChannelRepository processPushChannelRepository;
 
     @Autowired
-    OperationPushRepository operationPushRepository;
+    PushRepository pushRepository;
 
     @Autowired
     AppUtils appUtils;
@@ -118,7 +118,7 @@ public class ApiOperationPushFramework {
     public List<ApiOperationPushWSDTO> apiGetOperationPushesService(long agentId,String operationId) {
 
         List<ApiOperationPushWSDTO> operationPushWSDTOS = new ArrayList<>();
-        List<OperationPushDBModel> operationPushDBModels = operationPushRepository.findByOperationIdAndAgentId(operationId,agentId);
+        List<OperationPushDBModel> operationPushDBModels = pushRepository.findByOperationIdAndAgentId(operationId,agentId);
         for (OperationPushDBModel operationPushDBModel : operationPushDBModels) {
             operationPushWSDTOS.add(new ApiOperationPushWSDTO(operationPushDBModel));
         }
@@ -127,7 +127,7 @@ public class ApiOperationPushFramework {
 
     public ApiOperationPushWSDTO apiGetOperationPushService(long agentId,String operationId,String pushId) {
 
-        List<OperationPushDBModel> operationPushDBModels = operationPushRepository.findByIdAndOperationId(pushId,operationId);
+        List<OperationPushDBModel> operationPushDBModels = pushRepository.findByIdAndOperationId(pushId,operationId);
         if (!operationPushDBModels.isEmpty()){
 
             return new ApiOperationPushWSDTO(operationPushDBModels.get(0));
@@ -153,22 +153,22 @@ public class ApiOperationPushFramework {
 
     public ApiOperationPushWSDTO apiUpdateOperationPushService(long agentId,String operationId,String pushId,String pushState) {
 
-        List<OperationPushDBModel> operationPushDBModels = operationPushRepository.findByIdAndOperationId(pushId,operationId);
+        List<OperationPushDBModel> operationPushDBModels = pushRepository.findByIdAndOperationId(pushId,operationId);
         if (!operationPushDBModels.isEmpty()){
 
             operationPushDBModels.get(0).setPushState(pushState);
             operationPushDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
-            return new ApiOperationPushWSDTO(operationPushRepository.save(operationPushDBModels.get(0)));
+            return new ApiOperationPushWSDTO(pushRepository.save(operationPushDBModels.get(0)));
         }
         return null;
     }
 
     public ApiOperationPushWSDTO apiRemoveOperationPushService(long agentId,String operationId,String pushId) {
 
-        List<OperationPushDBModel> operationPushDBModels = operationPushRepository.findByIdAndOperationId(pushId,operationId);
+        List<OperationPushDBModel> operationPushDBModels = pushRepository.findByIdAndOperationId(pushId,operationId);
         if (!operationPushDBModels.isEmpty()){
 
-            operationPushRepository.delete(operationPushDBModels.get(0));
+            pushRepository.delete(operationPushDBModels.get(0));
             return new ApiOperationPushWSDTO(operationPushDBModels.get(0));
         }
         return null;

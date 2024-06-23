@@ -14,7 +14,7 @@ public class IOSRemoteRestCall {
     AppUtils appUtils;
 
 
-    public void startSipCallIntegration(OperationSipCallDBModel sipCallDBModel) {
+    public void startSipCallIntegration(OperationSipCallDBModel operationSipCallDBModel) {
 
 
     }

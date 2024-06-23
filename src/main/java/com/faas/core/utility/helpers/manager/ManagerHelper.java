@@ -41,22 +41,22 @@ public class ManagerHelper {
     OperationRepository operationRepository;
 
     @Autowired
-    OperationEmailRepository operationEmailRepository;
+    EmailRepository emailRepository;
 
     @Autowired
-    OperationPushRepository operationPushRepository;
+    PushRepository pushRepository;
 
     @Autowired
-    OperationSipCallRepository operationSipCallRepository;
+    SipCallRepository sipCallRepository;
 
     @Autowired
-    OperationSmsRepository operationSmsRepository;
+    SmsRepository SmsRepository;
 
     @Autowired
-    OperationWappCallRepository operationWappCallRepository;
+    WappCallRepository wappCallRepository;
 
     @Autowired
-    OperationWappMessageRepository operationWappMessageRepository;
+    WappMessageRepository wappMessageRepository;
 
     @Autowired
     CampaignRepository campaignRepository;
@@ -200,12 +200,12 @@ public class ManagerHelper {
             }
             sessionRepository.delete(sessionDBModel);
             operationRepository.deleteAll(operationRepository.findBySessionId(sessionDBModel.getId()));
-            operationEmailRepository.deleteAll(operationEmailRepository.findBySessionId(sessionDBModel.getId()));
-            operationPushRepository.deleteAll(operationPushRepository.findBySessionId(sessionDBModel.getId()));
-            operationSipCallRepository.deleteAll(operationSipCallRepository.findBySessionId(sessionDBModel.getId()));
-            operationSmsRepository.deleteAll(operationSmsRepository.findBySessionId(sessionDBModel.getId()));
-            operationWappCallRepository.deleteAll(operationWappCallRepository.findBySessionId(sessionDBModel.getId()));
-            operationWappMessageRepository.deleteAll(operationWappMessageRepository.findBySessionId(sessionDBModel.getId()));
+            emailRepository.deleteAll(emailRepository.findBySessionId(sessionDBModel.getId()));
+            pushRepository.deleteAll(pushRepository.findBySessionId(sessionDBModel.getId()));
+            sipCallRepository.deleteAll(sipCallRepository.findBySessionId(sessionDBModel.getId()));
+            SmsRepository.deleteAll(SmsRepository.findBySessionId(sessionDBModel.getId()));
+            wappCallRepository.deleteAll(wappCallRepository.findBySessionId(sessionDBModel.getId()));
+            wappMessageRepository.deleteAll(wappMessageRepository.findBySessionId(sessionDBModel.getId()));
 
         }
 

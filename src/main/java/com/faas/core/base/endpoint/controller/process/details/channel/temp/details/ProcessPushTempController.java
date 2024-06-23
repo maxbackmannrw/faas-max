@@ -1,7 +1,7 @@
 package com.faas.core.base.endpoint.controller.process.details.channel.temp.details;
 
 import com.faas.core.base.middleware.process.details.channel.temp.details.ProcessPushTempMiddleware;
-import com.faas.core.base.model.ws.process.details.channel.temp.details.ProcessPushTempWSModel;
+import com.faas.core.base.model.ws.process.details.channel.temp.ProcessPushTempWSModel;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -2,7 +2,7 @@ package com.faas.core.base.framework.process.details.trigger.details;
 
 import com.faas.core.base.model.db.process.details.trigger.*;
 import com.faas.core.base.model.db.process.settings.TriggerTypeDBModel;
-import com.faas.core.base.model.ws.process.details.trigger.details.dto.ProcessAITriggerWSDTO;
+import com.faas.core.base.model.ws.process.details.trigger.dto.ProcessAITriggerWSDTO;
 import com.faas.core.base.repo.process.details.trigger.*;
 import com.faas.core.base.repo.process.settings.TriggerTypeRepository;
 import com.faas.core.utility.config.AppConstant;

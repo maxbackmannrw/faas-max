@@ -3,7 +3,7 @@ package com.faas.core.base.framework.process.details.trigger.details;
 import com.faas.core.base.model.db.channel.account.EmailAccountDBModel;
 import com.faas.core.base.model.db.process.details.trigger.*;
 import com.faas.core.base.model.db.process.settings.TriggerTypeDBModel;
-import com.faas.core.base.model.ws.process.details.trigger.details.dto.ProcessEmailTriggerWSDTO;
+import com.faas.core.base.model.ws.process.details.trigger.dto.ProcessEmailTriggerWSDTO;
 import com.faas.core.base.repo.channel.account.EmailAccountRepository;
 import com.faas.core.base.repo.process.details.trigger.*;
 import com.faas.core.base.repo.process.settings.TriggerTypeRepository;

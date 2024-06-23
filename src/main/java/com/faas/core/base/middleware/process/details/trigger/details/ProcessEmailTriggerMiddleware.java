@@ -2,8 +2,8 @@ package com.faas.core.base.middleware.process.details.trigger.details;
 
 import com.faas.core.base.framework.process.details.trigger.details.ProcessEmailTriggerFramework;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.process.details.trigger.details.ProcessEmailTriggerWSModel;
-import com.faas.core.base.model.ws.process.details.trigger.details.dto.ProcessEmailTriggerWSDTO;
+import com.faas.core.base.model.ws.process.details.trigger.ProcessEmailTriggerWSModel;
+import com.faas.core.base.model.ws.process.details.trigger.dto.ProcessEmailTriggerWSDTO;
 import com.faas.core.utility.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

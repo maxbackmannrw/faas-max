@@ -2,7 +2,7 @@ package com.faas.core.base.framework.utils.content;
 
 import com.faas.core.base.model.ws.utils.content.dto.SystemInitWSDTO;
 import com.faas.core.base.model.ws.utils.content.dto.SystemContentWSDTO;
-import com.faas.core.base.repo.utils.asset.content.AssetRepository;
+import com.faas.core.base.repo.asset.content.AssetRepository;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;
@@ -48,22 +48,22 @@ public class SystemContentFramework {
     OperationRepository operationRepository;
 
     @Autowired
-    OperationEmailRepository operationEmailRepository;
+    EmailRepository emailRepository;
 
     @Autowired
-    OperationPushRepository operationPushRepository;
+    PushRepository pushRepository;
 
     @Autowired
-    OperationSipCallRepository operationSipCallRepository;
+    SipCallRepository sipCallRepository;
 
     @Autowired
-    OperationSmsRepository operationSmsRepository;
+    SmsRepository SmsRepository;
 
     @Autowired
-    OperationWappCallRepository operationWappCallRepository;
+    WappCallRepository wappCallRepository;
 
     @Autowired
-    OperationWappMessageRepository operationWappMessageRepository;
+    WappMessageRepository wappMessageRepository;
 
     @Autowired
     CampaignRepository campaignRepository;
