@@ -21,6 +21,7 @@ public class CampaignManagerController {
     CampaignManagerMiddleware campaignManagerMiddleware;
 
 
+
     @RequestMapping(value = BaseRoute.GET_CAMPAIGN_MANAGERS, method = RequestMethod.POST)
     public ResponseEntity<?> getCampaignManagers(@RequestParam long userId) {
 
