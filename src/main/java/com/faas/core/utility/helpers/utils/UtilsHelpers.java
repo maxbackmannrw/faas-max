@@ -158,35 +158,31 @@ public class UtilsHelpers {
     AppUtils appUtils;
 
 
-    public SystemInitWSDTO initSystemContentHelper(String initType) {
+    public SystemInitWSDTO initSystemContentHelper() {
 
-        if (initType.equalsIgnoreCase(AppConstant.FIRST_TIME_INIT)){
             deleteUserRolesHelper();
             createUserRolesHelper();
             deleteUsersHelper();
             createUsersHelper();
-
             return new SystemInitWSDTO(AppConstant.FIRST_TIME_INIT,AppConstant.FIRST_TIME_INIT,true);
-        }
-        return null;
     }
 
 
     public void deleteUserRolesHelper(){
 
-        userRoleRepository.deleteAll();
+        userRoleRepository.deleteAll(userRoleRepository.findAll());
     }
 
     public void createUserRolesHelper(){
 
-        createUserRoleDBModel(AppConstant.SUPER_MANAGER,AppConstant.MANAGER_USER);
-        createUserRoleDBModel(AppConstant.BASIC_MANAGER,AppConstant.MANAGER_USER);
-        createUserRoleDBModel(AppConstant.BASIC_AGENT,AppConstant.AGENT_USER);
-        createUserRoleDBModel(AppConstant.SUPER_AGENT,AppConstant.AGENT_USER);
-        createUserRoleDBModel(AppConstant.AUTO_AGENT,AppConstant.AGENT_USER);
+        userRoleRepository.save(createUserRoleDBModel(AppConstant.SUPER_MANAGER,AppConstant.MANAGER_USER));
+        userRoleRepository.save(createUserRoleDBModel(AppConstant.BASIC_MANAGER,AppConstant.MANAGER_USER));
+        userRoleRepository.save(createUserRoleDBModel(AppConstant.BASIC_AGENT,AppConstant.AGENT_USER));
+        userRoleRepository.save(createUserRoleDBModel(AppConstant.SUPER_AGENT,AppConstant.AGENT_USER));
+        userRoleRepository.save(createUserRoleDBModel(AppConstant.AUTO_AGENT,AppConstant.AGENT_USER));
     }
 
-    public void createUserRoleDBModel(String userRole,String userType){
+    public UserRoleDBModel createUserRoleDBModel(String userRole,String userType){
 
         UserRoleDBModel userRoleDBModel = new UserRoleDBModel();
         userRoleDBModel.setUserRole(userRole);
@@ -195,23 +191,28 @@ public class UtilsHelpers {
         userRoleDBModel.setcDate(appUtils.getCurrentTimeStamp());
         userRoleDBModel.setStatus(1);
 
-        userRoleRepository.save(userRoleDBModel);
+        return userRoleDBModel;
     }
 
 
     public void deleteUsersHelper(){
 
-        userRepository.deleteAll();
-        userDetailsRepository.deleteAll();
+        userRepository.deleteAll(userRepository.findAll());
+        userDetailsRepository.deleteAll(userDetailsRepository.findAll());
     }
 
     public void createUsersHelper(){
-
-        createUserDBModel(AppConstant.DEFAULT_MANAGER_NAME, AppConstant.DEFAULT_MANAGER_EMAIL, AppConstant.DEFAULT_MANAGER_PASSWORD,AppConstant.SUPER_MANAGER );
-        createUserDBModel(AppConstant.DEFAULT_AGENT_NAME, AppConstant.DEFAULT_AGENT_EMAIL, AppConstant.DEFAULT_AGENT_PASSWORD,AppConstant.SUPER_AGENT );
+        UserDBModel managerUser = createUserDBModel(AppConstant.DEFAULT_MANAGER_NAME, AppConstant.DEFAULT_MANAGER_EMAIL, AppConstant.DEFAULT_MANAGER_PASSWORD,AppConstant.SUPER_MANAGER);
+        if (managerUser != null) {
+            userDetailsRepository.save(createUserDetailsDBModel(userRepository.save(managerUser)));
+        }
+        UserDBModel agentUser = createUserDBModel(AppConstant.DEFAULT_AGENT_NAME, AppConstant.DEFAULT_AGENT_EMAIL, AppConstant.DEFAULT_AGENT_PASSWORD,AppConstant.SUPER_AGENT);
+        if (agentUser != null) {
+            userDetailsRepository.save(createUserDetailsDBModel(userRepository.save(agentUser)));
+        }
     }
 
-    public void createUserDBModel(String userName,String userEmail,String password,String userRole){
+    public UserDBModel createUserDBModel(String userName,String userEmail,String password,String userRole){
 
         List<UserRoleDBModel> userRoleDBModels = userRoleRepository.findByUserRole(userRole);
         if (!userRoleDBModels.isEmpty()){
@@ -228,33 +229,35 @@ public class UtilsHelpers {
             userDBModel.setcDate(appUtils.getCurrentTimeStamp());
             userDBModel.setStatus(1);
 
-            createUserDetailsDBModel(userRepository.save(userDBModel));
+            return userDBModel;
         }
+        return null;
     }
 
-    public void createUserDetailsDBModel(UserDBModel userDBModel){
+    public UserDetailsDBModel createUserDetailsDBModel(UserDBModel userDBModel){
 
         UserDetailsDBModel userDetailsDBModel = new UserDetailsDBModel();
         userDetailsDBModel.setUserId(userDBModel.getId());
         userDetailsDBModel.setUserDatas(new ArrayList<>());
-        if (userDBModel.getUserRole().equals(AppConstant.BASIC_AGENT)){
+        if (userDBModel.getUserRole().equalsIgnoreCase(AppConstant.BASIC_AGENT)){
             userDetailsDBModel.setOperationLimit(AppConstant.BASIC_AGENT_OPERATION_LIMIT);
         }
-        if (userDBModel.getUserRole().equals(AppConstant.SUPER_AGENT)){
+        if (userDBModel.getUserRole().equalsIgnoreCase(AppConstant.SUPER_AGENT)){
             userDetailsDBModel.setOperationLimit(AppConstant.SUPER_AGENT_OPERATION_LIMIT);
         }
-        if (userDBModel.getUserRole().equals(AppConstant.BASIC_MANAGER)){
+        if (userDBModel.getUserRole().equalsIgnoreCase(AppConstant.BASIC_MANAGER)){
             userDetailsDBModel.setOperationLimit(AppConstant.BASIC_MANAGER_OPERATION_LIMIT);
         }
-        if (userDBModel.getUserRole().equals(AppConstant.SUPER_MANAGER)){
+        if (userDBModel.getUserRole().equalsIgnoreCase(AppConstant.SUPER_MANAGER)){
             userDetailsDBModel.setOperationLimit(AppConstant.SUPER_MANAGER_OPERATION_LIMIT);
         }
         userDetailsDBModel.setuDate(appUtils.getCurrentTimeStamp());
         userDetailsDBModel.setcDate(appUtils.getCurrentTimeStamp());
         userDetailsDBModel.setStatus(1);
 
-        userDetailsRepository.save(userDetailsDBModel);
+        return userDetailsDBModel;
     }
+
 
 
     public List<SystemContentWSDTO> getSystemContentsHelper(long userId){

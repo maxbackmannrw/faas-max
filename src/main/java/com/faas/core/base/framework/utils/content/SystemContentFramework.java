@@ -140,7 +140,10 @@ public class SystemContentFramework {
 
     public SystemInitWSDTO initSystemContentService(String initType) {
 
-        return utilsHelpers.initSystemContentHelper(initType);
+        if (initType.equalsIgnoreCase(AppConstant.FIRST_TIME_INIT)){
+            return utilsHelpers.initSystemContentHelper();
+        }
+        return null;
     }
 
     public List<SystemContentWSDTO> getSystemContentsService(long userId) {
