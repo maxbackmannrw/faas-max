@@ -9,15 +9,9 @@ import java.util.List;
 @Repository
 public interface WappMessageRepository extends MongoRepository<OperationWappMessageDBModel, String> {
 
-    List<OperationWappMessageDBModel>findBySessionId(long sessionId);
     List<OperationWappMessageDBModel>findByOperationId(String operationId);
     List<OperationWappMessageDBModel>findByOperationIdAndAgentId(String operationId, long agentId);
-    List<OperationWappMessageDBModel>findByIdAndSessionId(String messageId, long sessionId);
     List<OperationWappMessageDBModel>findByIdAndOperationId(String messageId, String operationId);
-    List<OperationWappMessageDBModel>findBySessionIdAndClientIdAndProcessId(long sessionId, long clientId, String processId);
-    List<OperationWappMessageDBModel>findByIdAndSessionIdAndClientIdAndProcessId(String messageId, long sessionId, long clientId, String processId);
-    List<OperationWappMessageDBModel>findBySessionIdAndCampaignIdAndProcessId(long sessionId, String campaignId, String processId);
-    List<OperationWappMessageDBModel>findByIdAndSessionIdAndCampaignIdAndProcessId(String messageId, long sessionId, String campaignId, String processId);
     List<OperationWappMessageDBModel>findByClientId(long clientId);
 
 }

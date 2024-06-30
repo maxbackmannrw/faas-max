@@ -9,16 +9,8 @@ import java.util.List;
 @Repository
 public interface SmsRepository extends MongoRepository<OperationSmsDBModel, String> {
 
-    List<OperationSmsDBModel>findBySessionId(long sessionId);
     List<OperationSmsDBModel>findByOperationId(String operationId);
     List<OperationSmsDBModel>findByOperationIdAndAgentId(String operationId, long agentId);
-    List<OperationSmsDBModel>findBySessionIdAndClientIdAndProcessId(long sessionId, long clientId, String processId);
-    List<OperationSmsDBModel>findBySessionIdAndCampaignIdAndProcessId(long sessionId, String campaignId, String processId);
-    List<OperationSmsDBModel>findByIdAndSessionIdAndClientIdAndProcessId(String smsId, long sessionId, long clientId, String processId);
-    List<OperationSmsDBModel>findByIdAndSessionIdAndClientIdAndCampaignIdAndProcessId(String smsId, long sessionId, long clientId, String campaignId, String processId);
-    List<OperationSmsDBModel>findBySessionIdAndClientIdAndCampaignIdAndProcessId(long sessionId, long clientId, String campaignId, String processId);
-    List<OperationSmsDBModel>findByIdAndSessionId(String smsId, long sessionId);
     List<OperationSmsDBModel>findByIdAndOperationId(String smsId, String operationId);
-    List<OperationSmsDBModel>findByIdAndSessionIdAndCampaignIdAndProcessId(String smsId, long sessionId, String campaignId, String processId);
     List<OperationSmsDBModel>findByClientId(long clientId);
 }

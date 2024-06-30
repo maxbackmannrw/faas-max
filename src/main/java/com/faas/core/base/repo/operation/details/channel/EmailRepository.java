@@ -9,11 +9,9 @@ import java.util.List;
 @Repository
 public interface EmailRepository extends MongoRepository<OperationEmailDBModel, String> {
 
-    List<OperationEmailDBModel>findBySessionId(long sessionId);
     List<OperationEmailDBModel>findByOperationId(String operationId);
     List<OperationEmailDBModel>findByOperationIdAndAgentId(String operationId, long agentId);
     List<OperationEmailDBModel>findByClientId(long clientId);
-    List<OperationEmailDBModel>findByIdAndSessionId(String emailId, long sessionId);
     List<OperationEmailDBModel>findByIdAndOperationId(String emailId, String operationId);
 
 

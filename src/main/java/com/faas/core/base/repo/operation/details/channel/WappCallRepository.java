@@ -10,17 +10,12 @@ import java.util.List;
 public interface WappCallRepository extends MongoRepository<OperationWappCallDBModel, String> {
 
     boolean existsByIdAndCallState(String callId,String callState);
-    boolean existsBySessionIdAndCallState(long sessionId,String callState);
     boolean existsByOperationIdAndCallState(String operationId,String callState);
-    List<OperationWappCallDBModel>findBySessionId(long sessionId);
     List<OperationWappCallDBModel>findByOperationId(String operationId);
     List<OperationWappCallDBModel>findByOperationIdAndAgentId(String operationId, long agentId);
     List<OperationWappCallDBModel>findByOperationIdAndAgentIdAndCallState(String operationId, long agentId, String callState);
-    List<OperationWappCallDBModel>findBySessionIdAndCallState(long sessionId, String callState);
     List<OperationWappCallDBModel>findByOperationIdAndCallState(String operationId, String callState);
-    List<OperationWappCallDBModel>findByIdAndSessionId(String callId, long sessionId);
     List<OperationWappCallDBModel>findByIdAndOperationId(String callId, String operationId);
     List<OperationWappCallDBModel>findByIdAndOperationIdAndAgentId(String callId, String operationId, long agentId);
     List<OperationWappCallDBModel>findByClientId(long clientId);
-    List<OperationWappCallDBModel>findBySessionIdAndClientId(long sessionId, long clientId);
 }

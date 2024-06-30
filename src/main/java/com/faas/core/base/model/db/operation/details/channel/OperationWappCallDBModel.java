@@ -11,11 +11,9 @@ public class OperationWappCallDBModel {
     @Id
     private String id;
     private long clientId;
-    private long sessionId;
     private String operationId;
     private long agentId;
     private String campaignId;
-    private String processId;
     private OperationWappCallDAO wappCall;
     private String callConnId;
     private String callState;
@@ -26,14 +24,12 @@ public class OperationWappCallDBModel {
     public OperationWappCallDBModel() {
     }
 
-    public OperationWappCallDBModel(String id, long clientId, long sessionId, String operationId, long agentId, String campaignId, String processId, OperationWappCallDAO wappCall, String callConnId, String callState, long uDate, long cDate, int status) {
+    public OperationWappCallDBModel(String id, long clientId, String operationId, long agentId, String campaignId, OperationWappCallDAO wappCall, String callConnId, String callState, long uDate, long cDate, int status) {
         this.id = id;
         this.clientId = clientId;
-        this.sessionId = sessionId;
         this.operationId = operationId;
         this.agentId = agentId;
         this.campaignId = campaignId;
-        this.processId = processId;
         this.wappCall = wappCall;
         this.callConnId = callConnId;
         this.callState = callState;
@@ -58,14 +54,6 @@ public class OperationWappCallDBModel {
         this.clientId = clientId;
     }
 
-    public long getSessionId() {
-        return sessionId;
-    }
-
-    public void setSessionId(long sessionId) {
-        this.sessionId = sessionId;
-    }
-
     public String getOperationId() {
         return operationId;
     }
@@ -88,14 +76,6 @@ public class OperationWappCallDBModel {
 
     public void setCampaignId(String campaignId) {
         this.campaignId = campaignId;
-    }
-
-    public String getProcessId() {
-        return processId;
-    }
-
-    public void setProcessId(String processId) {
-        this.processId = processId;
     }
 
     public OperationWappCallDAO getWappCall() {

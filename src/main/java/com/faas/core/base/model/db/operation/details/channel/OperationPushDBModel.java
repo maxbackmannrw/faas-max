@@ -11,11 +11,9 @@ public class OperationPushDBModel {
     @Id
     private String id;
     private long clientId;
-    private long sessionId;
     private String operationId;
     private long agentId;
     private String campaignId;
-    private String processId;
     private OperationPushDAO pushMessage;
     private String pushSentId;
     private String pushState;
@@ -26,14 +24,12 @@ public class OperationPushDBModel {
     public OperationPushDBModel() {
     }
 
-    public OperationPushDBModel(String id, long clientId, long sessionId, String operationId, long agentId, String campaignId, String processId, OperationPushDAO pushMessage, String pushSentId, String pushState, long uDate, long cDate, int status) {
+    public OperationPushDBModel(String id, long clientId, String operationId, long agentId, String campaignId, OperationPushDAO pushMessage, String pushSentId, String pushState, long uDate, long cDate, int status) {
         this.id = id;
         this.clientId = clientId;
-        this.sessionId = sessionId;
         this.operationId = operationId;
         this.agentId = agentId;
         this.campaignId = campaignId;
-        this.processId = processId;
         this.pushMessage = pushMessage;
         this.pushSentId = pushSentId;
         this.pushState = pushState;
@@ -58,14 +54,6 @@ public class OperationPushDBModel {
         this.clientId = clientId;
     }
 
-    public long getSessionId() {
-        return sessionId;
-    }
-
-    public void setSessionId(long sessionId) {
-        this.sessionId = sessionId;
-    }
-
     public String getOperationId() {
         return operationId;
     }
@@ -88,14 +76,6 @@ public class OperationPushDBModel {
 
     public void setCampaignId(String campaignId) {
         this.campaignId = campaignId;
-    }
-
-    public String getProcessId() {
-        return processId;
-    }
-
-    public void setProcessId(String processId) {
-        this.processId = processId;
     }
 
     public OperationPushDAO getPushMessage() {

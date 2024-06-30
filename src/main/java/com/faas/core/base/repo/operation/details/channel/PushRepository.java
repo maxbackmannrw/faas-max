@@ -9,10 +9,8 @@ import java.util.List;
 @Repository
 public interface PushRepository extends MongoRepository<OperationPushDBModel, String> {
 
-    List<OperationPushDBModel>findBySessionId(long sessionId);
     List<OperationPushDBModel>findByOperationId(String operationId);
     List<OperationPushDBModel>findByOperationIdAndAgentId(String operationId, long agentId);
     List<OperationPushDBModel>findByClientId(long clientId);
-    List<OperationPushDBModel>findByIdAndSessionId(String pushId, long sessionId);
     List<OperationPushDBModel>findByIdAndOperationId(String pushId, String operationId);
 }
