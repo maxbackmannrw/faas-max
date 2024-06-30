@@ -57,7 +57,7 @@ public class ApiOperationWappCallFramework {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
         if (!operationDBModels.isEmpty()){
-            return channelHelpers.getApiOperationWappCallAccountWSDTO(agentId,operationDBModels.get(0).getProcessId());
+            return channelHelpers.getApiOperationWappCallAccountWSDTO(agentId,operationDBModels.get(0).getCampaignId());
         }
         return null;
     }

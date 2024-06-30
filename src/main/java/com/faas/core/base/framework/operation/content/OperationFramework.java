@@ -2,7 +2,6 @@ package com.faas.core.base.framework.operation.content;
 
 import com.faas.core.base.model.ws.operation.content.dto.OperationListWSDTO;
 import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
-import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.utility.config.AppUtils;
 import com.faas.core.utility.helpers.operation.OperationHelpers;
@@ -19,9 +18,6 @@ public class OperationFramework {
     OperationHelpers operationHelpers;
 
     @Autowired
-    SessionRepository sessionRepository;
-
-    @Autowired
     OperationRepository operationRepository;
 
     @Autowired
@@ -31,7 +27,7 @@ public class OperationFramework {
 
     public OperationListWSDTO getOperationsService(long userId, String sessionType,String sessionState,int reqPage,int reqSize) {
 
-        return operationHelpers.getOperationListWSDTO(sessionRepository.findAllBySessionTypeAndSessionState(sessionType,sessionState,PageRequest.of(reqPage,reqSize)));
+        return null;
     }
 
 

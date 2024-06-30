@@ -57,7 +57,7 @@ public class ApiOperationSipFramework {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
         if (!operationDBModels.isEmpty()){
-            return channelHelpers.getApiOperationSipAccountWSDTO(agentId,operationDBModels.get(0).getProcessId());
+            return channelHelpers.getApiOperationSipAccountWSDTO(agentId,operationDBModels.get(0).getCampaignId());
         }
         return null;
     }

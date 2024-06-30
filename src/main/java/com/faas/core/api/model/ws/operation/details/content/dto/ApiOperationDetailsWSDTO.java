@@ -4,12 +4,10 @@ import com.faas.core.api.model.ws.operation.client.content.dto.ApiOperationClien
 import com.faas.core.api.model.ws.operation.details.channel.content.dto.ApiOperationCallChannelWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.content.dto.ApiOperationMessageChannelWSDTO;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
-import com.faas.core.base.model.db.session.SessionDBModel;
 
 public class ApiOperationDetailsWSDTO {
 
     private OperationDBModel operation;
-    private SessionDBModel operationSession;
     private ApiOperationClientWSDTO operationClient;
     private ApiOperationCampaignWSDTO operationCampaign;
     private ApiOperationCallChannelWSDTO operationCallChannel;
@@ -18,9 +16,8 @@ public class ApiOperationDetailsWSDTO {
     public ApiOperationDetailsWSDTO() {
     }
 
-    public ApiOperationDetailsWSDTO(OperationDBModel operation, SessionDBModel operationSession, ApiOperationClientWSDTO operationClient, ApiOperationCampaignWSDTO operationCampaign, ApiOperationCallChannelWSDTO operationCallChannel, ApiOperationMessageChannelWSDTO operationMessageChannel) {
+    public ApiOperationDetailsWSDTO(OperationDBModel operation, ApiOperationClientWSDTO operationClient, ApiOperationCampaignWSDTO operationCampaign, ApiOperationCallChannelWSDTO operationCallChannel, ApiOperationMessageChannelWSDTO operationMessageChannel) {
         this.operation = operation;
-        this.operationSession = operationSession;
         this.operationClient = operationClient;
         this.operationCampaign = operationCampaign;
         this.operationCallChannel = operationCallChannel;
@@ -33,14 +30,6 @@ public class ApiOperationDetailsWSDTO {
 
     public void setOperation(OperationDBModel operation) {
         this.operation = operation;
-    }
-
-    public SessionDBModel getOperationSession() {
-        return operationSession;
-    }
-
-    public void setOperationSession(SessionDBModel operationSession) {
-        this.operationSession = operationSession;
     }
 
     public ApiOperationClientWSDTO getOperationClient() {

@@ -7,10 +7,9 @@ import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.user.content.UserDBModel;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
-import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
+import com.faas.core.base.repo.campaign.details.agent.CampaignAgentRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
-import com.faas.core.base.repo.process.content.ProcessRepository;
-import com.faas.core.base.repo.process.details.scenario.ProcessScenarioRepository;
+import com.faas.core.base.repo.campaign.details.scenario.CampaignScenarioRepository;
 import com.faas.core.base.repo.user.content.UserRepository;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.AppUtils;
@@ -41,11 +40,9 @@ public class ApiCampaignOperationFramework {
     @Autowired
     CampaignRepository campaignRepository;
 
-    @Autowired
-    ProcessRepository processRepository;
 
     @Autowired
-    ProcessScenarioRepository processScenarioRepository;
+    CampaignScenarioRepository campaignScenarioRepository;
 
     @Autowired
     AppUtils appUtils;
@@ -60,10 +57,8 @@ public class ApiCampaignOperationFramework {
                     return operationHelpers.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndCampaignIdAndOperationState(agentId,campaignId,operationState, PageRequest.of(reqPage,reqSize)));
                 }
                 if (campaignDBModel.get().getCampaignCategory().equalsIgnoreCase(AppConstant.INQUIRY_CAMPAIGN)){
-                    return operationHelpers.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndCampaignIdAndOperationStateAndOperationInquiryState(agentId,campaignId,operationState,AppConstant.NEW_STATE,PageRequest.of(reqPage,reqSize)));
                 }
                 if (campaignDBModel.get().getCampaignCategory().equalsIgnoreCase(AppConstant.AUTOMATIC_CAMPAIGN)){
-                    return operationHelpers.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndCampaignIdAndOperationStateAndOperationFlowState(agentId,campaignId,operationState,AppConstant.NEW_STATE,PageRequest.of(reqPage,reqSize)));
                 }
             }
             if (operationState.equalsIgnoreCase(AppConstant.ACTIVE_STATE)){

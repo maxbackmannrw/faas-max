@@ -1,15 +1,14 @@
 package com.faas.core.base.framework.campaign.details.agent;
 
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
-import com.faas.core.base.model.db.campaign.details.CampaignAgentDBModel;
+import com.faas.core.base.model.db.campaign.details.agent.CampaignAgentDBModel;
 import com.faas.core.base.model.db.user.content.UserDBModel;
 import com.faas.core.base.model.ws.campaign.details.agent.dto.CampaignAgentWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
-import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
+import com.faas.core.base.repo.campaign.details.agent.CampaignAgentRepository;
 import com.faas.core.base.repo.user.content.UserRepository;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.AppUtils;
-import com.faas.core.utility.helpers.campaign.CampaignHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,9 +19,6 @@ import java.util.Optional;
 
 @Service
 public class CampaignAgentFramework {
-
-    @Autowired
-    CampaignHelpers campaignHelpers;
 
     @Autowired
     UserRepository userRepository;
@@ -42,7 +38,7 @@ public class CampaignAgentFramework {
         Optional<UserDBModel> agentDBModel = userRepository.findById(campaignAgentDBModel.getAgentId());
         if (agentDBModel.isPresent()) {
             agentDBModel.get().setPassword("");
-            return campaignHelpers.mapCampaignAgentWSDTO(agentDBModel.get());
+
         }
         return null;
     }

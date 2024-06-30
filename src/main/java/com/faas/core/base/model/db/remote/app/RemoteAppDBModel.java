@@ -12,16 +12,11 @@ public class RemoteAppDBModel {
     @Id
     private String id;
     private long clientId;
-    private long sessionId;
     private String operationId;
     private String campaignId;
     private String campaign;
     private String campaignType;
     private String campaignCategory;
-    private String processId;
-    private String process;
-    private String processType;
-    private String processCategory;
     private String remoteId;
     private String remote;
     private String remoteDesc;
@@ -38,19 +33,14 @@ public class RemoteAppDBModel {
     public RemoteAppDBModel() {
     }
 
-    public RemoteAppDBModel(String id, long clientId, long sessionId, String operationId, String campaignId, String campaign, String campaignType, String campaignCategory, String processId, String process, String processType, String processCategory, String remoteId, String remote, String remoteDesc, String version, List<RemoteDataDAO> remoteDatas, long typeId, String remoteType, String baseType, String remoteState, long uDate, long cDate, int status) {
+    public RemoteAppDBModel(String id, long clientId, String operationId, String campaignId, String campaign, String campaignType, String campaignCategory, String remoteId, String remote, String remoteDesc, String version, List<RemoteDataDAO> remoteDatas, long typeId, String remoteType, String baseType, String remoteState, long uDate, long cDate, int status) {
         this.id = id;
         this.clientId = clientId;
-        this.sessionId = sessionId;
         this.operationId = operationId;
         this.campaignId = campaignId;
         this.campaign = campaign;
         this.campaignType = campaignType;
         this.campaignCategory = campaignCategory;
-        this.processId = processId;
-        this.process = process;
-        this.processType = processType;
-        this.processCategory = processCategory;
         this.remoteId = remoteId;
         this.remote = remote;
         this.remoteDesc = remoteDesc;
@@ -79,14 +69,6 @@ public class RemoteAppDBModel {
 
     public void setClientId(long clientId) {
         this.clientId = clientId;
-    }
-
-    public long getSessionId() {
-        return sessionId;
-    }
-
-    public void setSessionId(long sessionId) {
-        this.sessionId = sessionId;
     }
 
     public String getOperationId() {
@@ -127,38 +109,6 @@ public class RemoteAppDBModel {
 
     public void setCampaignCategory(String campaignCategory) {
         this.campaignCategory = campaignCategory;
-    }
-
-    public String getProcessId() {
-        return processId;
-    }
-
-    public void setProcessId(String processId) {
-        this.processId = processId;
-    }
-
-    public String getProcess() {
-        return process;
-    }
-
-    public void setProcess(String process) {
-        this.process = process;
-    }
-
-    public String getProcessType() {
-        return processType;
-    }
-
-    public void setProcessType(String processType) {
-        this.processType = processType;
-    }
-
-    public String getProcessCategory() {
-        return processCategory;
-    }
-
-    public void setProcessCategory(String processCategory) {
-        this.processCategory = processCategory;
     }
 
     public String getRemoteId() {

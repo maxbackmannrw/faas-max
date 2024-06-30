@@ -2,7 +2,6 @@ package com.faas.core.base.framework.operation.details;
 
 import com.faas.core.base.model.ws.operation.content.dto.OperationListWSDTO;
 import com.faas.core.base.repo.operation.content.OperationRepository;
-import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utility.config.AppUtils;
 import com.faas.core.utility.helpers.operation.OperationHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +14,6 @@ public class OperationDetailsFramework {
 
     @Autowired
     OperationHelpers operationHelpers;
-
-    @Autowired
-    SessionRepository sessionRepository;
 
     @Autowired
     OperationRepository operationRepository;

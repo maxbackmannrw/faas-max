@@ -10,8 +10,6 @@ import com.faas.core.base.model.db.user.content.UserDBModel;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
-import com.faas.core.base.repo.process.content.ProcessRepository;
-import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.base.repo.user.content.UserRepository;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.AppUtils;
@@ -37,13 +35,7 @@ public class ApiOperationFramework {
     CampaignRepository campaignRepository;
 
     @Autowired
-    ProcessRepository processRepository;
-
-    @Autowired
     OperationRepository operationRepository;
-
-    @Autowired
-    SessionRepository sessionRepository;
 
     @Autowired
     ClientRepository clientRepository;
@@ -57,7 +49,6 @@ public class ApiOperationFramework {
         ApiAgentOperationWSDTO agentOperationWSDTO = new ApiAgentOperationWSDTO();
         agentOperationWSDTO.setReadyManualOperation(operationHelpers.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationTypeAndOperationState(agentId,AppConstant.MANUAL_OPERATION, AppConstant.READY_STATE, PageRequest.of(reqPage,reqSize))));
         agentOperationWSDTO.setActiveManualOperation(operationHelpers.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationTypeAndOperationState(agentId,AppConstant.MANUAL_OPERATION, AppConstant.ACTIVE_STATE, PageRequest.of(reqPage,reqSize))));
-        agentOperationWSDTO.setReadyInquiryOperation(operationHelpers.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationTypeAndOperationStateAndOperationInquiryState(agentId,AppConstant.INQUIRY_OPERATION, AppConstant.READY_STATE,AppConstant.NEW_STATE, PageRequest.of(reqPage,reqSize))));
         agentOperationWSDTO.setActiveInquiryOperation(operationHelpers.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationTypeAndOperationState(agentId,AppConstant.INQUIRY_OPERATION, AppConstant.ACTIVE_STATE, PageRequest.of(reqPage,reqSize))));
 
         return agentOperationWSDTO;
@@ -66,7 +57,7 @@ public class ApiOperationFramework {
 
     public ApiOperationListWSDTO apiGetOperationsService(long agentId,String operationType,String operationState,String operationInquiryState,String operationFlowState,int reqPage,int reqSize) {
 
-        return operationHelpers.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationTypeAndOperationStateAndOperationInquiryStateAndOperationFlowState(agentId,operationType,operationState,operationInquiryState,operationFlowState,PageRequest.of(reqPage,reqSize)));
+        return null;
     }
 
     public ApiOperationWSDTO apiGetOperationService(long agentId, String operationId) {

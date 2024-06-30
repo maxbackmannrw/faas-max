@@ -5,18 +5,16 @@ import com.faas.core.base.model.db.client.details.ClientDetailsDBModel;
 import com.faas.core.base.model.db.client.details.dao.ClientAddressDAO;
 import com.faas.core.base.model.db.client.details.dao.ClientEmailDAO;
 import com.faas.core.base.model.db.client.details.dao.ClientPhoneDAO;
-import com.faas.core.base.model.ws.campaign.details.client.content.dto.CampaignClientWSDTO;
+import com.faas.core.base.model.ws.campaign.details.client.dto.CampaignClientWSDTO;
 import com.faas.core.base.model.ws.client.content.dto.ClientWSDTO;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
-import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
+import com.faas.core.base.repo.campaign.details.agent.CampaignAgentRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.client.details.ClientDetailsRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.operation.details.channel.*;
-import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.base.repo.remote.app.RemoteAppRepository;
-import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,10 +28,7 @@ import java.util.List;
 public class ClientHelpers {
 
     @Autowired
-    SessionRepository sessionRepository;
-
-    @Autowired
-    ProcessRepository processRepository;
+    CampaignRepository campaignRepository;
 
     @Autowired
     ClientRepository clientRepository;
@@ -46,9 +41,6 @@ public class ClientHelpers {
 
     @Autowired
     RemoteAppRepository remoteAppRepository;
-
-    @Autowired
-    CampaignRepository campaignRepository;
 
     @Autowired
     OperationRepository operationRepository;
@@ -163,7 +155,6 @@ public class ClientHelpers {
 
     public ClientDBModel deleteClient(ClientDBModel clientDBModel){
 
-        sessionRepository.deleteAll(sessionRepository.findByClientId(clientDBModel.getId()));
         operationRepository.deleteAll(operationRepository.findByClientId(clientDBModel.getId()));
         emailRepository.deleteAll(emailRepository.findByClientId(clientDBModel.getId()));
         pushRepository.deleteAll(pushRepository.findByClientId(clientDBModel.getId()));

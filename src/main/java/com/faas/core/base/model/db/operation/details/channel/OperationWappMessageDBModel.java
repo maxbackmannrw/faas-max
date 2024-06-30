@@ -11,11 +11,9 @@ public class OperationWappMessageDBModel {
     @Id
     private String id;
     private long clientId;
-    private long sessionId;
     private String operationId;
     private long agentId;
     private String campaignId;
-    private String processId;
     private ClientPhoneDAO clientPhone;
     private OperationWappMessageDAO operationWappMessage;
     private String messageSentId;
@@ -27,14 +25,12 @@ public class OperationWappMessageDBModel {
     public OperationWappMessageDBModel() {
     }
 
-    public OperationWappMessageDBModel(String id, long clientId, long sessionId, String operationId, long agentId, String campaignId, String processId, ClientPhoneDAO clientPhone, OperationWappMessageDAO operationWappMessage, String messageSentId, String messageState, long uDate, long cDate, int status) {
+    public OperationWappMessageDBModel(String id, long clientId, String operationId, long agentId, String campaignId, ClientPhoneDAO clientPhone, OperationWappMessageDAO operationWappMessage, String messageSentId, String messageState, long uDate, long cDate, int status) {
         this.id = id;
         this.clientId = clientId;
-        this.sessionId = sessionId;
         this.operationId = operationId;
         this.agentId = agentId;
         this.campaignId = campaignId;
-        this.processId = processId;
         this.clientPhone = clientPhone;
         this.operationWappMessage = operationWappMessage;
         this.messageSentId = messageSentId;
@@ -60,14 +56,6 @@ public class OperationWappMessageDBModel {
         this.clientId = clientId;
     }
 
-    public long getSessionId() {
-        return sessionId;
-    }
-
-    public void setSessionId(long sessionId) {
-        this.sessionId = sessionId;
-    }
-
     public String getOperationId() {
         return operationId;
     }
@@ -90,14 +78,6 @@ public class OperationWappMessageDBModel {
 
     public void setCampaignId(String campaignId) {
         this.campaignId = campaignId;
-    }
-
-    public String getProcessId() {
-        return processId;
-    }
-
-    public void setProcessId(String processId) {
-        this.processId = processId;
     }
 
     public ClientPhoneDAO getClientPhone() {

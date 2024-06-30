@@ -12,7 +12,6 @@ public class OperationEmailDBModel {
     @Id
     private String id;
     private long clientId;
-    private long sessionId;
     private String operationId;
     private long agentId;
     private String campaignId;
@@ -28,10 +27,9 @@ public class OperationEmailDBModel {
     public OperationEmailDBModel() {
     }
 
-    public OperationEmailDBModel(String id, long clientId, long sessionId, String operationId, long agentId, String campaignId, String processId, ClientEmailDAO clientEmail, OperationEmailDAO emailMessage, String emailSentId, String emailState, long uDate, long cDate, int status) {
+    public OperationEmailDBModel(String id, long clientId, String operationId, long agentId, String campaignId, String processId, ClientEmailDAO clientEmail, OperationEmailDAO emailMessage, String emailSentId, String emailState, long uDate, long cDate, int status) {
         this.id = id;
         this.clientId = clientId;
-        this.sessionId = sessionId;
         this.operationId = operationId;
         this.agentId = agentId;
         this.campaignId = campaignId;
@@ -59,14 +57,6 @@ public class OperationEmailDBModel {
 
     public void setClientId(long clientId) {
         this.clientId = clientId;
-    }
-
-    public long getSessionId() {
-        return sessionId;
-    }
-
-    public void setSessionId(long sessionId) {
-        this.sessionId = sessionId;
     }
 
     public String getOperationId() {

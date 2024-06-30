@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+
 @Controller
 @RequestMapping(value = AppConstant.API_VERSION + "/base/manager/campaign/")
 public class CampaignManagerController {
@@ -19,7 +20,6 @@ public class CampaignManagerController {
 
     @Autowired
     CampaignManagerMiddleware campaignManagerMiddleware;
-
 
 
     @RequestMapping(value = BaseRoute.GET_CAMPAIGN_MANAGERS, method = RequestMethod.POST)

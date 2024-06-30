@@ -2,7 +2,6 @@ package com.faas.core.base.framework.manager.remote.details;
 
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
-import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utility.config.AppUtils;
 import com.faas.core.utility.helpers.manager.ManagerHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +17,6 @@ public class ClientRemoteManagerDetailsFramework {
 
     @Autowired
     CampaignRepository campaignRepository;
-
-    @Autowired
-    SessionRepository sessionRepository;
 
     @Autowired
     OperationRepository operationRepository;

@@ -8,6 +8,7 @@ import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.Ap
 import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiOperationSmsAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.ApiOperationWappMessageAccountWSDTO;
+import com.faas.core.base.model.db.campaign.details.channel.content.dao.*;
 import com.faas.core.base.model.db.channel.account.EmailAccountDBModel;
 import com.faas.core.base.model.db.channel.account.PushAccountDBModel;
 import com.faas.core.base.model.db.channel.account.SmsAccountDBModel;
@@ -17,23 +18,18 @@ import com.faas.core.base.model.db.client.details.dao.ClientPhoneDAO;
 import com.faas.core.base.model.db.operation.details.channel.*;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.operation.details.channel.dao.*;
-import com.faas.core.base.model.db.process.details.channel.content.*;
-import com.faas.core.base.model.db.process.details.channel.content.dao.ProcessEmailAccountDAO;
-import com.faas.core.base.model.db.process.details.channel.content.dao.ProcessPushAccountDAO;
-import com.faas.core.base.model.db.process.details.channel.content.dao.ProcessSmsAccountDAO;
-import com.faas.core.base.model.db.process.details.channel.temp.EmailTempDBModel;
-import com.faas.core.base.model.db.process.details.channel.temp.SmsTempDBModel;
-import com.faas.core.base.model.db.process.details.channel.temp.WappMessageTempDBModel;
-import com.faas.core.base.model.db.session.SessionDBModel;
+import com.faas.core.base.model.db.campaign.details.channel.temp.EmailTempDBModel;
+import com.faas.core.base.model.db.campaign.details.channel.temp.SmsTempDBModel;
+import com.faas.core.base.model.db.campaign.details.channel.temp.WappMessageTempDBModel;
 import com.faas.core.base.model.db.user.details.UserDetailsDBModel;
+import com.faas.core.base.repo.campaign.details.channel.content.CampaignChannelRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.client.details.ClientDetailsRepository;
 import com.faas.core.base.repo.operation.details.channel.*;
-import com.faas.core.base.repo.process.details.channel.content.*;
-import com.faas.core.base.repo.process.details.channel.temp.EmailTempRepository;
-import com.faas.core.base.repo.process.details.channel.temp.PushTempRepository;
-import com.faas.core.base.repo.process.details.channel.temp.SmsTempRepository;
-import com.faas.core.base.repo.process.details.channel.temp.WappMessageTempRepository;
+import com.faas.core.base.repo.campaign.details.channel.temp.EmailTempRepository;
+import com.faas.core.base.repo.campaign.details.channel.temp.PushTempRepository;
+import com.faas.core.base.repo.campaign.details.channel.temp.SmsTempRepository;
+import com.faas.core.base.repo.campaign.details.channel.temp.WappMessageTempRepository;
 import com.faas.core.base.repo.user.details.UserDetailsRepository;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.AppUtils;
@@ -50,6 +46,7 @@ import java.util.List;
 
 @Component
 public class ChannelHelpers {
+
 
     @Autowired
     SipChannelHandler sipChannelHandler;
@@ -76,25 +73,19 @@ public class ChannelHelpers {
     UserDetailsRepository userDetailsRepository;
 
     @Autowired
+    CampaignChannelRepository campaignChannelRepository;
+
+    @Autowired
     SipCallRepository sipCallRepository;
 
     @Autowired
-    ProcessSipChannelRepository processSipChannelRepository;
-
-    @Autowired
     WappCallRepository wappCallRepository;
-
-    @Autowired
-    ProcessWappChannelRepository processWappChannelRepository;
 
     @Autowired
     WappMessageRepository wappMessageRepository;
 
     @Autowired
     WappMessageTempRepository wappMessageTempRepository;
-
-    @Autowired
-    ProcessEmailChannelRepository processEmailChannelRepository;
 
     @Autowired
     EmailRepository emailRepository;
@@ -109,16 +100,10 @@ public class ChannelHelpers {
     PushTempRepository pushTempRepository;
 
     @Autowired
-    ProcessPushChannelRepository processPushChannelRepository;
-
-    @Autowired
     SmsRepository SmsRepository;
 
     @Autowired
     SmsTempRepository smsTempRepository;
-
-    @Autowired
-    ProcessSmsChannelRepository processSmsChannelRepository;
 
     @Autowired
     AppUtils appUtils;
@@ -126,26 +111,7 @@ public class ChannelHelpers {
 
     public ApiOperationSipAccountWSDTO getApiOperationSipAccountWSDTO(long agentId, String processId) {
 
-        List<ProcessSipChannelDBModel> sipChannelDBModels = processSipChannelRepository.findByProcessId(processId);
-        List<UserDetailsDBModel> agentDetails = userDetailsRepository.findByUserId(agentId);
-        if (!sipChannelDBModels.isEmpty() && !agentDetails.isEmpty() && agentDetails.get(0).getSipChannel() != null) {
 
-            ApiOperationSipAccountWSDTO operationSipAccountWSDTO = new ApiOperationSipAccountWSDTO();
-            operationSipAccountWSDTO.setAccountId(agentDetails.get(0).getSipChannel().getAccountId());
-            operationSipAccountWSDTO.setAccount(agentDetails.get(0).getSipChannel().getAccount());
-            operationSipAccountWSDTO.setUserName(agentDetails.get(0).getSipChannel().getUserName());
-            operationSipAccountWSDTO.setAuthUser(agentDetails.get(0).getSipChannel().getAuthUser());
-            operationSipAccountWSDTO.setPassword(agentDetails.get(0).getSipChannel().getPassword());
-            operationSipAccountWSDTO.setSipUrl(agentDetails.get(0).getSipChannel().getSipUrl());
-            operationSipAccountWSDTO.setAccountDatas(agentDetails.get(0).getSipChannel().getAccountDatas());
-            operationSipAccountWSDTO.setProvider(agentDetails.get(0).getSipChannel().getProvider());
-            operationSipAccountWSDTO.setCallerId(sipChannelDBModels.get(0).getCallerId());
-            operationSipAccountWSDTO.setChannelState(sipChannelDBModels.get(0).getChannelState());
-            operationSipAccountWSDTO.setcDate(sipChannelDBModels.get(0).getcDate());
-            operationSipAccountWSDTO.setStatus(sipChannelDBModels.get(0).getStatus());
-
-            return operationSipAccountWSDTO;
-        }
         return null;
     }
 
@@ -157,11 +123,9 @@ public class ChannelHelpers {
 
             OperationSipCallDBModel operationSipCallDBModel = new OperationSipCallDBModel();
             operationSipCallDBModel.setClientId(operationDBModel.getClientId());
-            operationSipCallDBModel.setSessionId(operationDBModel.getSessionId());
             operationSipCallDBModel.setOperationId(operationDBModel.getId());
             operationSipCallDBModel.setAgentId(operationDBModel.getAgentId());
             operationSipCallDBModel.setCampaignId(operationDBModel.getCampaignId());
-            operationSipCallDBModel.setProcessId(operationDBModel.getProcessId());
             operationSipCallDBModel.setSipCall(operationSipCallDAO);
             operationSipCallDBModel.setCallConnId(AppConstant.NONE);
             operationSipCallDBModel.setCallState(AppConstant.READY_CALL);
@@ -178,7 +142,6 @@ public class ChannelHelpers {
 
         ClientPhoneDAO clientPhoneDAO = fetchClientPhoneDAO(operationDBModel.getClientId(),numberId);
         List<UserDetailsDBModel> agentDetails = userDetailsRepository.findByUserId(operationDBModel.getAgentId());
-        List<ProcessSipChannelDBModel> operationSipChannels = processSipChannelRepository.findByProcessIdAndChannelState(operationDBModel.getProcessId(),AppConstant.ACTIVE_STATE);
 
         if (clientPhoneDAO != null && !agentDetails.isEmpty() && agentDetails.get(0).getSipChannel() != null ){
 
@@ -189,11 +152,7 @@ public class ChannelHelpers {
             operationSipCallDAO.setPhoneType(clientPhoneDAO.getPhoneType());
             operationSipCallDAO.setAccountId(agentDetails.get(0).getSipChannel().getAccountId());
 
-            if (operationSipChannels.get(0).getCallerId() != null){
-                operationSipCallDAO.setCallerId(operationSipChannels.get(0).getCallerId());
-            }else {
-                operationSipCallDAO.setCallerId(AppConstant.NONE);
-            }
+
 
             operationSipCallDAO.setsDate(appUtils.getCurrentTimeStamp());
             operationSipCallDAO.setfDate(appUtils.getCurrentTimeStamp());
@@ -260,8 +219,7 @@ public class ChannelHelpers {
     public ApiOperationWappCallAccountWSDTO getApiOperationWappCallAccountWSDTO(long agentId, String processId) {
 
         List<UserDetailsDBModel> agentDetails = userDetailsRepository.findByUserId(agentId);
-        List<ProcessWappChannelDBModel> wappChannels = processWappChannelRepository.findByProcessId(processId);
-        if (!agentDetails.isEmpty() && agentDetails.get(0).getWappChannel() != null && agentDetails.get(0).getWappChannel().getAccountId() != null && !wappChannels.isEmpty()) {
+        if (!agentDetails.isEmpty() && agentDetails.get(0).getWappChannel() != null && agentDetails.get(0).getWappChannel().getAccountId() != null) {
 
             ApiOperationWappCallAccountWSDTO wappAccountWSDTO = new ApiOperationWappCallAccountWSDTO();
             wappAccountWSDTO.setAccountId(agentDetails.get(0).getWappChannel().getAccountId());
@@ -270,10 +228,6 @@ public class ChannelHelpers {
             wappAccountWSDTO.setPhoneNumber(agentDetails.get(0).getWappChannel().getPhoneNumber());
             wappAccountWSDTO.setServerUrl(agentDetails.get(0).getWappChannel().getServerUrl());
             wappAccountWSDTO.setAccountDatas(agentDetails.get(0).getWappChannel().getAccountDatas());
-            wappAccountWSDTO.setCallState(wappChannels.get(0).getCallState());
-            wappAccountWSDTO.setMessageState(wappChannels.get(0).getMessageState());
-            wappAccountWSDTO.setcDate(wappChannels.get(0).getcDate());
-            wappAccountWSDTO.setStatus(wappChannels.get(0).getStatus());
 
             return wappAccountWSDTO;
         }
@@ -288,11 +242,9 @@ public class ChannelHelpers {
 
             OperationWappCallDBModel operationWappCallDBModel = new OperationWappCallDBModel();
             operationWappCallDBModel.setClientId(operationDBModel.getClientId());
-            operationWappCallDBModel.setSessionId(operationDBModel.getSessionId());
             operationWappCallDBModel.setOperationId(operationDBModel.getId());
             operationWappCallDBModel.setAgentId(operationDBModel.getAgentId());
             operationWappCallDBModel.setCampaignId(operationDBModel.getCampaignId());
-            operationWappCallDBModel.setProcessId(operationDBModel.getProcessId());
             operationWappCallDBModel.setWappCall(operationWappCallDAO);
             operationWappCallDBModel.setCallConnId(AppConstant.NONE);
             operationWappCallDBModel.setCallState(AppConstant.READY_CALL);
@@ -381,57 +333,18 @@ public class ChannelHelpers {
 
     public ApiOperationSmsAccountWSDTO getApiOperationSmsAccountWSDTO(String processId) {
 
-        List<ProcessSmsChannelDBModel>smsChannelDBModels = processSmsChannelRepository.findByProcessId(processId);
-        if (!smsChannelDBModels.isEmpty() && smsChannelDBModels.get(0).getSmsAccount() != null) {
-
-            ApiOperationSmsAccountWSDTO smsAccountWSDTO = new ApiOperationSmsAccountWSDTO();
-            smsAccountWSDTO.setAccountId(smsChannelDBModels.get(0).getSmsAccount().getAccountId());
-            smsAccountWSDTO.setAccount(smsChannelDBModels.get(0).getSmsAccount().getAccount());
-            smsAccountWSDTO.setUserName(smsChannelDBModels.get(0).getSmsAccount().getUserName());
-            smsAccountWSDTO.setPassword(smsChannelDBModels.get(0).getSmsAccount().getPassword());
-            smsAccountWSDTO.setApiToken(smsChannelDBModels.get(0).getSmsAccount().getApiToken());
-            smsAccountWSDTO.setApiUrl(smsChannelDBModels.get(0).getSmsAccount().getApiUrl());
-            smsAccountWSDTO.setAccountDatas(smsChannelDBModels.get(0).getSmsAccount().getAccountDatas());
-            smsAccountWSDTO.setProvider(smsChannelDBModels.get(0).getSmsAccount().getProvider());
-            smsAccountWSDTO.setChannelState(smsChannelDBModels.get(0).getChannelState());
-            smsAccountWSDTO.setcDate(smsChannelDBModels.get(0).getcDate());
-            smsAccountWSDTO.setStatus(smsChannelDBModels.get(0).getStatus());
-
-            return smsAccountWSDTO;
-        }
         return null;
     }
 
-    public ProcessSmsAccountDAO mapProcessSmsAccountDAO(SmsAccountDBModel smsAccountDBModel) {
 
-        ProcessSmsAccountDAO processSmsAccountDAO = new ProcessSmsAccountDAO();
-        processSmsAccountDAO.setAccountId(smsAccountDBModel.getId());
-        processSmsAccountDAO.setAccount(smsAccountDBModel.getAccount());
-        processSmsAccountDAO.setUserName(smsAccountDBModel.getUserName());
-        processSmsAccountDAO.setPassword(smsAccountDBModel.getPassword());
-        processSmsAccountDAO.setApiToken(smsAccountDBModel.getApiToken());
-        processSmsAccountDAO.setApiUrl(smsAccountDBModel.getApiUrl());
-        if (smsAccountDBModel.getAccountDatas() !=null){
-            processSmsAccountDAO.setAccountDatas(smsAccountDBModel.getAccountDatas());
-        }else{
-            processSmsAccountDAO.setAccountDatas(new ArrayList<>());
-        }
-        processSmsAccountDAO.setProvider(smsAccountDBModel.getProvider());
-        processSmsAccountDAO.setcDate(appUtils.getCurrentTimeStamp());
-        processSmsAccountDAO.setStatus(1);
 
-        return processSmsAccountDAO;
-    }
-
-    public OperationSmsDBModel createOperationSmsModel(OperationDBModel operationDBModel, ClientPhoneDAO clientPhoneDAO, SmsTempDBModel smsTempDBModel, ProcessSmsChannelDBModel smsChannelDBModel){
+    public OperationSmsDBModel createOperationSmsModel(OperationDBModel operationDBModel, ClientPhoneDAO clientPhoneDAO, SmsTempDBModel smsTempDBModel, CampaignSmsChannelDAO smsChannelDBModel){
 
         OperationSmsDBModel operationSmsDBModel = new OperationSmsDBModel();
         operationSmsDBModel.setClientId(operationDBModel.getClientId());
-        operationSmsDBModel.setSessionId(operationDBModel.getSessionId());
         operationSmsDBModel.setOperationId(operationDBModel.getId());
         operationSmsDBModel.setAgentId(operationDBModel.getAgentId());
         operationSmsDBModel.setCampaignId(operationDBModel.getCampaignId());
-        operationSmsDBModel.setProcessId(operationDBModel.getProcessId());
         operationSmsDBModel.setClientPhone(clientPhoneDAO);
         operationSmsDBModel.setOperationSms(createOperationSmsDAO(smsTempDBModel,smsChannelDBModel));
         operationSmsDBModel.setSmsSentId(AppConstant.NONE);
@@ -443,10 +356,9 @@ public class ChannelHelpers {
         return SmsRepository.save(operationSmsDBModel);
     }
 
-    public OperationSmsDAO createOperationSmsDAO(SmsTempDBModel smsTempDBModel, ProcessSmsChannelDBModel smsChannelDBModel){
+    public OperationSmsDAO createOperationSmsDAO(SmsTempDBModel smsTempDBModel, CampaignSmsChannelDAO smsChannelDBModel){
 
         OperationSmsDAO operationSmsDAO = new OperationSmsDAO();
-        operationSmsDAO.setAccountId(smsChannelDBModel.getSmsAccount().getAccountId());
         operationSmsDAO.setTempId(smsTempDBModel.getId());
         operationSmsDAO.setSmsTitle(smsTempDBModel.getSmsTitle());
         operationSmsDAO.setSmsBody(smsTempDBModel.getSmsBody());
@@ -462,8 +374,7 @@ public class ChannelHelpers {
     public ApiOperationWappMessageAccountWSDTO getApiWappMessageAccountWSDTO(long agentId, String processId) {
 
         List<UserDetailsDBModel> agentDetails = userDetailsRepository.findByUserId(agentId);
-        List<ProcessWappChannelDBModel> wappChannels = processWappChannelRepository.findByProcessId(processId);
-        if (!agentDetails.isEmpty() && agentDetails.get(0).getWappChannel() != null && agentDetails.get(0).getWappChannel().getAccountId() != null && !wappChannels.isEmpty()) {
+        if (!agentDetails.isEmpty() && agentDetails.get(0).getWappChannel() != null && agentDetails.get(0).getWappChannel().getAccountId() != null) {
 
             ApiOperationWappMessageAccountWSDTO wappAccountWSDTO = new ApiOperationWappMessageAccountWSDTO();
             wappAccountWSDTO.setAccountId(agentDetails.get(0).getWappChannel().getAccountId());
@@ -472,10 +383,6 @@ public class ChannelHelpers {
             wappAccountWSDTO.setPhoneNumber(agentDetails.get(0).getWappChannel().getPhoneNumber());
             wappAccountWSDTO.setServerUrl(agentDetails.get(0).getWappChannel().getServerUrl());
             wappAccountWSDTO.setAccountDatas(agentDetails.get(0).getWappChannel().getAccountDatas());
-            wappAccountWSDTO.setCallState(wappChannels.get(0).getCallState());
-            wappAccountWSDTO.setMessageState(wappChannels.get(0).getMessageState());
-            wappAccountWSDTO.setcDate(wappChannels.get(0).getcDate());
-            wappAccountWSDTO.setStatus(wappChannels.get(0).getStatus());
 
             return wappAccountWSDTO;
         }
@@ -486,11 +393,9 @@ public class ChannelHelpers {
 
         OperationWappMessageDBModel operationWappMessageDBModel = new OperationWappMessageDBModel();
         operationWappMessageDBModel.setClientId(operationModel.getClientId());
-        operationWappMessageDBModel.setSessionId(operationModel.getSessionId());
         operationWappMessageDBModel.setOperationId(operationModel.getId());
         operationWappMessageDBModel.setAgentId(operationModel.getAgentId());
         operationWappMessageDBModel.setCampaignId(operationModel.getCampaignId());
-        operationWappMessageDBModel.setProcessId(operationModel.getProcessId());
         operationWappMessageDBModel.setClientPhone(clientPhoneDAO);
         operationWappMessageDBModel.setOperationWappMessage(createOperationWappMessageDAO(agentDetails,wappMessageTempModel));
         operationWappMessageDBModel.setMessageSentId(AppConstant.NONE);
@@ -533,47 +438,16 @@ public class ChannelHelpers {
 
     public ApiOperationEmailAccountWSDTO getApiEmailAccountWSDTO(String processId) {
 
-        List<ProcessEmailChannelDBModel>emailChannelDBModels = processEmailChannelRepository.findByProcessId(processId);
-        if (!emailChannelDBModels.isEmpty() && emailChannelDBModels.get(0).getEmailAccount() != null) {
-
-            ApiOperationEmailAccountWSDTO emailAccountWSDTO = new ApiOperationEmailAccountWSDTO();
-            emailAccountWSDTO.setAccountId(emailChannelDBModels.get(0).getEmailAccount().getAccountId());
-            emailAccountWSDTO.setAccount(emailChannelDBModels.get(0).getEmailAccount().getAccount());
-            emailAccountWSDTO.setAccountDatas(emailChannelDBModels.get(0).getEmailAccount().getAccountDatas());
-            emailAccountWSDTO.setProvider(emailChannelDBModels.get(0).getEmailAccount().getProvider());
-            emailAccountWSDTO.setChannelState(emailChannelDBModels.get(0).getChannelState());
-            emailAccountWSDTO.setcDate(emailChannelDBModels.get(0).getcDate());
-            emailAccountWSDTO.setStatus(emailChannelDBModels.get(0).getStatus());
-
-            return emailAccountWSDTO;
-        }
         return null;
     }
-    public ProcessEmailAccountDAO mapProcessEmailAccountDAO(EmailAccountDBModel emailAccountDBModel) {
 
-        ProcessEmailAccountDAO processEmailAccountDAO = new ProcessEmailAccountDAO();
-        processEmailAccountDAO.setAccountId(emailAccountDBModel.getId());
-        processEmailAccountDAO.setAccount(emailAccountDBModel.getAccount());
-        if (emailAccountDBModel.getAccountDatas() != null){
-            processEmailAccountDAO.setAccountDatas(emailAccountDBModel.getAccountDatas());
-        }else {
-            processEmailAccountDAO.setAccountDatas(new ArrayList<>());
-        }
-        processEmailAccountDAO.setProvider(emailAccountDBModel.getProvider());
-        processEmailAccountDAO.setcDate(appUtils.getCurrentTimeStamp());
-        processEmailAccountDAO.setStatus(1);
-
-        return processEmailAccountDAO;
-    }
-    public OperationEmailDBModel createOperationEmailDBModel(SessionDBModel sessionDBModel, ClientEmailDAO clientEmailDAO, EmailTempDBModel emailTempDBModel, ProcessEmailChannelDBModel emailChannelDBModel){
+    public OperationEmailDBModel createOperationEmailDBModel(OperationDBModel operationDBModel, ClientEmailDAO clientEmailDAO, EmailTempDBModel emailTempDBModel, CampaignEmailChannelDAO emailChannelDBModel){
 
         OperationEmailDBModel operationEmailDBModel = new OperationEmailDBModel();
-        operationEmailDBModel.setClientId(sessionDBModel.getClientId());
-        operationEmailDBModel.setSessionId(sessionDBModel.getId());
-        operationEmailDBModel.setOperationId(sessionDBModel.getOperationId());
-        operationEmailDBModel.setAgentId(sessionDBModel.getAgentId());
-        operationEmailDBModel.setCampaignId(sessionDBModel.getCampaignId());
-        operationEmailDBModel.setProcessId(sessionDBModel.getProcessId());
+        operationEmailDBModel.setClientId(operationDBModel.getClientId());
+        operationEmailDBModel.setOperationId(operationDBModel.getId());
+        operationEmailDBModel.setAgentId(operationDBModel.getAgentId());
+        operationEmailDBModel.setCampaignId(operationDBModel.getCampaignId());
         operationEmailDBModel.setClientEmail(clientEmailDAO);
         operationEmailDBModel.setEmailMessage(createOperationEmailDAO(emailChannelDBModel,emailTempDBModel));
         operationEmailDBModel.setEmailSentId(AppConstant.NONE);
@@ -585,10 +459,9 @@ public class ChannelHelpers {
         return emailRepository.save(operationEmailDBModel);
     }
 
-    public OperationEmailDAO createOperationEmailDAO(ProcessEmailChannelDBModel emailChannelDBModel, EmailTempDBModel emailTempDBModel){
+    public OperationEmailDAO createOperationEmailDAO(CampaignEmailChannelDAO emailChannelDBModel, EmailTempDBModel emailTempDBModel){
 
         OperationEmailDAO operationEmailDAO = new OperationEmailDAO();
-        operationEmailDAO.setAccountId(emailChannelDBModel.getEmailAccount().getAccountId());
         operationEmailDAO.setTempId(emailTempDBModel.getId());
         operationEmailDAO.setEmailSubject(emailTempDBModel.getEmailSubject());
         operationEmailDAO.setEmailBody(emailTempDBModel.getEmailBody());
@@ -613,58 +486,93 @@ public class ChannelHelpers {
         return null;
     }
 
-
-
     public ApiOperationPushAccountWSDTO getApiPushAccountWSDTO(String processId) {
 
-        List<ProcessPushChannelDBModel>pushChannelDBModels = processPushChannelRepository.findByProcessId(processId);
-        if (!pushChannelDBModels.isEmpty() && pushChannelDBModels.get(0).getPushAccount() != null) {
 
-            ApiOperationPushAccountWSDTO pushAccountWSDTO = new ApiOperationPushAccountWSDTO();
-            pushAccountWSDTO.setAccountId(pushChannelDBModels.get(0).getPushAccount().getAccountId());
-            pushAccountWSDTO.setAccount(pushChannelDBModels.get(0).getPushAccount().getAccount());
-            pushAccountWSDTO.setAccountDatas(pushChannelDBModels.get(0).getPushAccount().getAccountDatas());
-            pushAccountWSDTO.setProvider(pushChannelDBModels.get(0).getPushAccount().getProvider());
-            pushAccountWSDTO.setChannelState(pushChannelDBModels.get(0).getChannelState());
-            pushAccountWSDTO.setcDate(pushChannelDBModels.get(0).getcDate());
-            pushAccountWSDTO.setStatus(pushChannelDBModels.get(0).getStatus());
-
-            return pushAccountWSDTO;
-        }
         return null;
     }
 
-    public ProcessPushAccountDAO mapProcessPushAccountDAO(PushAccountDBModel pushAccountDBModel) {
 
-        ProcessPushAccountDAO processPushAccountDAO = new ProcessPushAccountDAO();
-        processPushAccountDAO.setAccountId(pushAccountDBModel.getId());
-        processPushAccountDAO.setAccount(pushAccountDBModel.getAccount());
-        if (pushAccountDBModel.getAccountDatas() != null){
-            processPushAccountDAO.setAccountDatas(pushAccountDBModel.getAccountDatas());
-        }else {
-            processPushAccountDAO.setAccountDatas(new ArrayList<>());
-        }
-        processPushAccountDAO.setProvider(pushAccountDBModel.getProvider());
-        processPushAccountDAO.setcDate(appUtils.getCurrentTimeStamp());
-        processPushAccountDAO.setStatus(1);
-
-        return processPushAccountDAO;
-    }
-
-    public OperationPushDBModel createOperationPushDBModel(SessionDBModel sessionDBModel){
+    public OperationPushDBModel createOperationPushDBModel(){
 
         OperationPushDBModel operationPushDBModel = new OperationPushDBModel();
-        operationPushDBModel.setClientId(sessionDBModel.getClientId());
 
         return pushRepository.save(operationPushDBModel);
     }
 
-    public OperationPushDAO createOperationPushDAO(ProcessPushChannelDBModel pushChannelDBModel){
+    public OperationPushDAO createOperationPushDAO(CampaignPushChannelDAO pushChannelDBModel){
 
         OperationPushDAO operationPushDAO = new OperationPushDAO();
 
         return operationPushDAO;
     }
+
+
+
+    public CampaignSmsChannelDAO createCampaignSmsChannelDAO(SmsAccountDBModel smsAccountDBModel,String state) {
+
+        CampaignSmsChannelDAO campaignSmsChannelDAO = new CampaignSmsChannelDAO();
+        campaignSmsChannelDAO.setId(appUtils.generateUUID());
+        campaignSmsChannelDAO.setAccountId(smsAccountDBModel.getId());
+        campaignSmsChannelDAO.setAccount(smsAccountDBModel.getAccount());
+        campaignSmsChannelDAO.setUserName(smsAccountDBModel.getUserName());
+        campaignSmsChannelDAO.setPassword(smsAccountDBModel.getPassword());
+        campaignSmsChannelDAO.setApiToken(smsAccountDBModel.getApiToken());
+        campaignSmsChannelDAO.setApiUrl(smsAccountDBModel.getApiUrl());
+        if (smsAccountDBModel.getAccountDatas() != null) {
+            campaignSmsChannelDAO.setAccountDatas(smsAccountDBModel.getAccountDatas());
+        }else{
+            campaignSmsChannelDAO.setAccountDatas(new ArrayList<>());
+        }
+        campaignSmsChannelDAO.setProvider(smsAccountDBModel.getProvider());
+        campaignSmsChannelDAO.setState(state);
+        campaignSmsChannelDAO.setuDate(appUtils.getCurrentTimeStamp());
+        campaignSmsChannelDAO.setcDate(appUtils.getCurrentTimeStamp());
+        campaignSmsChannelDAO.setStatus(1);
+
+        return campaignSmsChannelDAO;
+    }
+
+    public CampaignEmailChannelDAO createCampaignEmailChannelDAO(EmailAccountDBModel emailAccountDBModel,String state) {
+
+        CampaignEmailChannelDAO campaignEmailChannelDAO = new CampaignEmailChannelDAO();
+        campaignEmailChannelDAO.setId(appUtils.generateUUID());
+        campaignEmailChannelDAO.setAccountId(emailAccountDBModel.getId());
+        campaignEmailChannelDAO.setAccount(emailAccountDBModel.getAccount());
+        if (emailAccountDBModel.getAccountDatas() != null) {
+            campaignEmailChannelDAO.setAccountDatas(emailAccountDBModel.getAccountDatas());
+        }else{
+            campaignEmailChannelDAO.setAccountDatas(new ArrayList<>());
+        }
+        campaignEmailChannelDAO.setProvider(emailAccountDBModel.getProvider());
+        campaignEmailChannelDAO.setState(state);
+        campaignEmailChannelDAO.setuDate(appUtils.getCurrentTimeStamp());
+        campaignEmailChannelDAO.setcDate(appUtils.getCurrentTimeStamp());
+        campaignEmailChannelDAO.setStatus(1);
+
+        return campaignEmailChannelDAO;
+    }
+
+    public CampaignPushChannelDAO createCampaignPushChannelDAO(PushAccountDBModel pushAccountDBModel,String state) {
+
+        CampaignPushChannelDAO campaignPushChannelDAO = new CampaignPushChannelDAO();
+        campaignPushChannelDAO.setId(appUtils.generateUUID());
+        campaignPushChannelDAO.setAccountId(pushAccountDBModel.getId());
+        campaignPushChannelDAO.setAccount(pushAccountDBModel.getAccount());
+        if (pushAccountDBModel.getAccountDatas() != null) {
+            campaignPushChannelDAO.setAccountDatas(pushAccountDBModel.getAccountDatas());
+        }else{
+            campaignPushChannelDAO.setAccountDatas(new ArrayList<>());
+        }
+        campaignPushChannelDAO.setProvider(pushAccountDBModel.getProvider());
+        campaignPushChannelDAO.setState(state);
+        campaignPushChannelDAO.setuDate(appUtils.getCurrentTimeStamp());
+        campaignPushChannelDAO.setcDate(appUtils.getCurrentTimeStamp());
+        campaignPushChannelDAO.setStatus(1);
+
+        return campaignPushChannelDAO;
+    }
+
 
 
 }

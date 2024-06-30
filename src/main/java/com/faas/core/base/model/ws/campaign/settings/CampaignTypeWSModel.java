@@ -1,7 +1,7 @@
 package com.faas.core.base.model.ws.campaign.settings;
 
-import com.faas.core.base.model.ws.campaign.settings.dto.CampaignTypeWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
+import com.faas.core.base.model.ws.campaign.settings.dto.CampaignTypeWSDTO;
 
 import java.util.List;
 
@@ -9,7 +9,6 @@ public class CampaignTypeWSModel {
 
     private GeneralWSModel general;
     private List<CampaignTypeWSDTO> campaignTypes;
-
 
     public CampaignTypeWSModel() {
     }

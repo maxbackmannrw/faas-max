@@ -6,7 +6,6 @@ import com.faas.core.base.model.db.operation.details.channel.OperationSmsDBModel
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.channel.account.SmsAccountRepository;
 import com.faas.core.base.repo.operation.details.channel.SmsRepository;
-import com.faas.core.base.repo.process.content.ProcessRepository;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.rest.channel.sms.SmsChannelRestCall;
 import com.faas.core.utility.rest.utility.CommonRestCall;
@@ -31,9 +30,6 @@ public class SmsChannelHandler {
 
     @Autowired
     CampaignRepository campaignRepository;
-
-    @Autowired
-    ProcessRepository processRepository;
 
     @Autowired
     SmsAccountRepository smsAccountRepository;

@@ -28,7 +28,6 @@ public class BaseRoute {
     public static final String CREATE_USER_WAPP_CHANNEL = "createuserwappchannel";
     public static final String REMOVE_USER_WAPP_CHANNEL = "removeuserwappchannel";
 
-
     public static final String GET_ALL_USER_ROLES = "getalluserroles";
     public static final String GET_USER_ROLE = "getuserrole";
     public static final String CREATE_USER_ROLE = "createuserrole";
@@ -37,34 +36,7 @@ public class BaseRoute {
 
 
 
-    public static final String GET_ALL_CAMPAIGNS = "getallcampaigns";
-    public static final String GET_CAMPAIGNS_BY_STATE = "getcampaignsbystate";
-    public static final String GET_CAMPAIGNS_BY_TYPE = "getcampaignsbytype";
-    public static final String GET_CAMPAIGNS_BY_CATEGORY = "getcampaignsbycategory";
-    public static final String GET_CAMPAIGN = "getcampaign";
-    public static final String CREATE_CAMPAIGN = "createcampaign";
-    public static final String UPDATE_CAMPAIGN = "updatecampaign";
-    public static final String REMOVE_CAMPAIGN = "removecampaign";
 
-
-    public static final String GET_CAMPAIGN_DETAILS = "getcampaigndetails";
-    public static final String GET_CAMPAIGN_PROCESS = "getcampaignprocess";
-    public static final String GET_CAMPAIGN_DATAS = "getcampaigndatas";
-    public static final String GET_CAMPAIGN_DATA = "getcampaigndata";
-    public static final String CREATE_CAMPAIGN_DATA = "createcampaigndata";
-    public static final String UPDATE_CAMPAIGN_DATA = "updatecampaigndata";
-    public static final String REMOVE_CAMPAIGN_DATA = "removecampaigndata";
-
-
-    public static final String GET_CAMPAIGN_AGENTS = "getcampaignagents";
-    public static final String GET_CAMPAIGN_AGENT = "getcampaignagent";
-    public static final String ASSIGN_CAMPAIGN_AGENT = "assigncampaignagent";
-    public static final String REMOVE_CAMPAIGN_AGENT = "removecampaignagent";
-    public static final String GET_ASSIGNABLE_AGENTS = "getassignableagents";
-
-
-    public static final String SEARCH_CAMPAIGN_CLIENTS = "searchcampaignclients";
-    public static final String GET_CAMPAIGN_CLIENT = "getcampaignclient";
 
     public static final String SEARCH_CAMPAIGN_OPERATIONS = "searchcampaignoperations";
     public static final String GET_CAMPAIGN_OPERATIONS = "getcampaignoperations";
@@ -217,12 +189,6 @@ public class BaseRoute {
 
 
 
-    public static final String GET_ALL_CAMPAIGN_TYPES = "getallcampaigntypes";
-    public static final String GET_CAMPAIGN_TYPE = "getcampaigntype";
-    public static final String CREATE_CAMPAIGN_TYPE = "createcampaigntype";
-    public static final String UPDATE_CAMPAIGN_TYPE = "updatecampaigntype";
-    public static final String REMOVE_CAMPAIGN_TYPE = "removecampaigntype";
-
 
     public static final String GET_ALL_DATA_TYPES = "getalldatatypes";
     public static final String GET_BASE_DATA_TYPES = "getbasedatatypes";
@@ -315,182 +281,187 @@ public class BaseRoute {
     public static final String REMOVE_WAPP_SERVER = "removewappserver";
 
 
-    public static final String GET_ALL_PROCESSES = "getallprocesses";
-    public static final String GET_PROCESSES_BY_CATEGORY = "getprocessesbycategory";
-    public static final String GET_PROCESS = "getprocess";
-    public static final String CREATE_PROCESS = "createprocess";
-    public static final String UPDATE_PROCESS = "updateprocess";
-    public static final String REMOVE_PROCESS = "removeprocess";
+    public static final String GET_ALL_CAMPAIGNS = "getallcampaigns";
+    public static final String GET_CAMPAIGNS_BY_CATEGORY = "getcampaignsbycategory";
+    public static final String GET_CAMPAIGNS_BY_STATE = "getcampaignsbystate";
+    public static final String GET_CAMPAIGN = "getcampaign";
+    public static final String CREATE_CAMPAIGN = "createcampaign";
+    public static final String UPDATE_CAMPAIGN = "updatecampaign";
+    public static final String REMOVE_CAMPAIGN = "removecampaign";
+
+    public static final String GET_CAMPAIGN_DETAILS = "getcampaigndetails";
+    public static final String GET_CAMPAIGN_DATAS = "getcampaigndatas";
+    public static final String GET_CAMPAIGN_DATA = "getcampaigndata";
+    public static final String CREATE_CAMPAIGN_DATA = "createcampaigndata";
+    public static final String UPDATE_CAMPAIGN_DATA = "updatecampaigndata";
+    public static final String REMOVE_CAMPAIGN_DATA = "removecampaigndata";
+
+    public static final String GET_CAMPAIGN_SCRIPTS = "getcampaignscripts";
+    public static final String GET_CAMPAIGN_SCRIPT = "getcampaignscript";
+    public static final String CREATE_CAMPAIGN_SCRIPT = "createcampaignscript";
+    public static final String UPDATE_CAMPAIGN_SCRIPT = "updatecampaignscript";
+    public static final String REMOVE_CAMPAIGN_SCRIPT = "removecampaignscript";
 
 
-    public static final String GET_PROCESS_DETAILS = "getprocessdetails";
-    public static final String GET_PROCESS_DATAS = "getprocessdatas";
-    public static final String GET_PROCESS_DATA = "getprocessdata";
-    public static final String CREATE_PROCESS_DATA = "createprocessdata";
-    public static final String UPDATE_PROCESS_DATA = "updateprocessdata";
-    public static final String REMOVE_PROCESS_DATA = "removeprocessdata";
+    public static final String GET_CAMPAIGN_AGENTS = "getcampaignagents";
+    public static final String GET_CAMPAIGN_AGENT = "getcampaignagent";
+    public static final String ASSIGN_CAMPAIGN_AGENT = "assigncampaignagent";
+    public static final String REMOVE_CAMPAIGN_AGENT = "removecampaignagent";
+    public static final String GET_ASSIGNABLE_AGENTS = "getassignableagents";
+
+    public static final String SEARCH_CAMPAIGN_CLIENTS = "searchcampaignclients";
+    public static final String GET_CAMPAIGN_CLIENT = "getcampaignclient";
 
 
-    public static final String GET_PROCESS_REMOTES = "getprocessremotes";
-    public static final String GET_PROCESS_REMOTES_BY_CATEGORY = "getprocessremotesbycategory";
-    public static final String GET_PROCESS_REMOTE = "getprocessremote";
-    public static final String CREATE_PROCESS_REMOTE = "createprocessremote";
-    public static final String REMOVE_PROCESS_REMOTE = "removeprocessremote";
+    public static final String GET_CAMPAIGN_FLOW = "getcampaignflow";
+    public static final String UPDATE_CAMPAIGN_FLOW = "updatecampaignflow";
+    public static final String GET_CAMPAIGN_FLOW_DATAS = "getcampaignflowdatas";
+    public static final String GET_CAMPAIGN_FLOW_DATA = "getcampaignflowdata";
+    public static final String CREATE_CAMPAIGN_FLOW_DATA = "createcampaignflowdata";
+    public static final String UPDATE_CAMPAIGN_FLOW_DATA = "updatecampaignflowdata";
+    public static final String REMOVE_CAMPAIGN_FLOW_DATA = "removecampaignflowdata";
+
+    public static final String GET_CAMPAIGN_INQUIRY = "getcampaigninquiry";
+    public static final String UPDATE_CAMPAIGN_INQUIRY = "updatecampaigninquiry";
+    public static final String GET_CAMPAIGN_INQUIRY_DATAS = "getcampaigninquirydatas";
+    public static final String GET_CAMPAIGN_INQUIRY_DATA = "getcampaigninquirydata";
+    public static final String CREATE_CAMPAIGN_INQUIRY_DATA = "createcampaigninquirydata";
+    public static final String UPDATE_CAMPAIGN_INQUIRY_DATA = "updatecampaigninquirydata";
+    public static final String REMOVE_CAMPAIGN_INQUIRY_DATA = "removecampaigninquirydata";
 
 
-
-    public static final String GET_PROCESS_SCRIPTS = "getprocessscripts";
-    public static final String GET_PROCESS_SCRIPT = "getprocessscript";
-    public static final String CREATE_PROCESS_SCRIPT = "createprocessscript";
-    public static final String UPDATE_PROCESS_SCRIPT = "updateprocessscript";
-    public static final String REMOVE_PROCESS_SCRIPT = "removeprocessscript";
-
+    public static final String GET_CAMPAIGN_REMOTES = "getcampaignremotes";
+    public static final String GET_CAMPAIGN_REMOTES_BY_CATEGORY = "getcampaignremotesbycategory";
+    public static final String GET_CAMPAIGN_REMOTE = "getcampaignremote";
+    public static final String CREATE_CAMPAIGN_REMOTE = "createcampaignremote";
+    public static final String REMOVE_CAMPAIGN_REMOTE = "removecampaignremote";
 
 
-    public static final String GET_PROCESS_INQUIRY = "getprocessinquiry";
-    public static final String UPDATE_PROCESS_INQUIRY = "updateprocessinquiry";
+    public static final String GET_CAMPAIGN_SCENARIOS = "getcampaignscenarios";
+    public static final String GET_CAMPAIGN_SCENARIO = "getcampaignscenario";
+    public static final String CREATE_CAMPAIGN_SCENARIO = "createcampaignscenario";
+    public static final String REMOVE_CAMPAIGN_SCENARIO = "removecampaignscenario";
 
-    public static final String GET_PROCESS_INQUIRY_DATAS = "getprocessinquirydatas";
-    public static final String GET_PROCESS_INQUIRY_DATA = "getprocessinquirydata";
-    public static final String CREATE_PROCESS_INQUIRY_DATA = "createprocessinquirydata";
-    public static final String UPDATE_PROCESS_INQUIRY_DATA = "updateprocessinquirydata";
-    public static final String REMOVE_PROCESS_INQUIRY_DATA = "removeprocessinquirydata";
-
-
-    public static final String GET_PROCESS_FLOW = "getprocessflow";
-    public static final String UPDATE_PROCESS_FLOW = "updateprocessflow";
-
-    public static final String GET_PROCESS_FLOW_DATAS = "getprocessflowdatas";
-    public static final String GET_PROCESS_FLOW_DATA = "getprocessflowdata";
-    public static final String CREATE_PROCESS_FLOW_DATA = "createprocessflowdata";
-    public static final String UPDATE_PROCESS_FLOW_DATA = "updateprocessflowdata";
-    public static final String REMOVE_PROCESS_FLOW_DATA = "removeprocessflowdata";
-
-
-
-    public static final String GET_PROCESS_TRIGGERS = "getprocesstriggers";
-
-    public static final String GET_PROCESS_SMS_TRIGGERS = "getprocesssmstriggers";
-    public static final String GET_PROCESS_SMS_TRIGGER = "getprocesssmstrigger";
-    public static final String CREATE_PROCESS_SMS_TRIGGER = "createprocesssmstrigger";
-    public static final String UPDATE_PROCESS_SMS_TRIGGER = "updateprocesssmstrigger";
-    public static final String REMOVE_PROCESS_SMS_TRIGGER = "removeprocesssmstrigger";
-
-    public static final String GET_PROCESS_WAPP_MESSAGE_TRIGGERS = "getprocesswappmessagetriggers";
-    public static final String GET_PROCESS_WAPP_MESSAGE_TRIGGER = "getprocesswappmessagetrigger";
-    public static final String CREATE_PROCESS_WAPP_MESSAGE_TRIGGER = "createprocesswappmessagetrigger";
-    public static final String UPDATE_PROCESS_WAPP_MESSAGE_TRIGGER = "updateprocesswappmessagetrigger";
-    public static final String REMOVE_PROCESS_WAPP_MESSAGE_TRIGGER = "removeprocesswappmessagetrigger";
-
-    public static final String GET_PROCESS_WAPP_CALL_TRIGGERS = "getprocesswappcalltriggers";
-    public static final String GET_PROCESS_WAPP_CALL_TRIGGER = "getprocesswappcalltrigger";
-    public static final String CREATE_PROCESS_WAPP_CALL_TRIGGER = "createprocesswappcalltrigger";
-    public static final String UPDATE_PROCESS_WAPP_CALL_TRIGGER = "updateprocesswappcalltrigger";
-    public static final String REMOVE_PROCESS_WAPP_CALL_TRIGGER = "removeprocesswappcalltrigger";
-
-    public static final String GET_PROCESS_SIP_TRIGGERS = "getprocesssiptriggers";
-    public static final String GET_PROCESS_SIP_TRIGGER = "getprocesssiptrigger";
-    public static final String CREATE_PROCESS_SIP_TRIGGER = "createprocesssiptrigger";
-    public static final String UPDATE_PROCESS_SIP_TRIGGER = "updateprocesssiptrigger";
-    public static final String REMOVE_PROCESS_SIP_TRIGGER = "removeprocesssiptrigger";
-
-    public static final String GET_PROCESS_EMAIL_TRIGGERS = "getprocessemailtriggers";
-    public static final String GET_PROCESS_EMAIL_TRIGGER = "getprocessemailtrigger";
-    public static final String CREATE_PROCESS_EMAIL_TRIGGER = "createprocessemailtrigger";
-    public static final String UPDATE_PROCESS_EMAIL_TRIGGER = "updateprocessemailtrigger";
-    public static final String REMOVE_PROCESS_EMAIL_TRIGGER = "removeprocessemailtrigger";
-
-    public static final String GET_PROCESS_AI_TRIGGERS = "getprocessaitriggers";
-    public static final String GET_PROCESS_AI_TRIGGER = "getprocessaitrigger";
-    public static final String CREATE_PROCESS_AI_TRIGGER = "createprocessaitrigger";
-    public static final String UPDATE_PROCESS_AI_TRIGGER = "updateprocessaitrigger";
-    public static final String REMOVE_PROCESS_AI_TRIGGER = "removeprocessaitrigger";
+    public static final String GET_CAMPAIGN_SCENARIO_DATAS = "getcampaignscenariodatas";
+    public static final String GET_CAMPAIGN_SCENARIO_DATA = "getcampaignscenariodata";
+    public static final String CREATE_CAMPAIGN_SCENARIO_DATA = "createcampaignscenariodata";
+    public static final String UPDATE_CAMPAIGN_SCENARIO_DATA = "updatecampaignscenariodata";
+    public static final String REMOVE_CAMPAIGN_SCENARIO_DATA = "removecampaignscenariodata";
 
 
 
-    public static final String GET_PROCESS_SCENARIOS = "getprocessscenarios";
-    public static final String GET_PROCESS_SCENARIO = "getprocessscenario";
-    public static final String CREATE_PROCESS_SCENARIO = "createprocessscenario";
-    public static final String REMOVE_PROCESS_SCENARIO = "removeprocessscenario";
+    public static final String GET_CAMPAIGN_TRIGGERS = "getcampaigntriggers";
 
-    public static final String GET_PROCESS_SCENARIO_DATAS = "getprocessscenariodatas";
-    public static final String GET_PROCESS_SCENARIO_DATA = "getprocessscenariodata";
-    public static final String CREATE_PROCESS_SCENARIO_DATA = "createprocessscenariodata";
-    public static final String UPDATE_PROCESS_SCENARIO_DATA = "updateprocessscenariodata";
-    public static final String REMOVE_PROCESS_SCENARIO_DATA = "removeprocessscenariodata";
+    public static final String GET_CAMPAIGN_SMS_TRIGGERS = "getcampaignsmstriggers";
+    public static final String GET_CAMPAIGN_SMS_TRIGGER = "getcampaignsmstrigger";
+    public static final String CREATE_CAMPAIGN_SMS_TRIGGER = "createcampaignsmstrigger";
+    public static final String UPDATE_CAMPAIGN_SMS_TRIGGER = "updatecampaignsmstrigger";
+    public static final String REMOVE_CAMPAIGN_SMS_TRIGGER = "removecampaignsmstrigger";
 
+    public static final String GET_CAMPAIGN_WAPP_MESSAGE_TRIGGERS = "getcampaignwappmessagetriggers";
+    public static final String GET_CAMPAIGN_WAPP_MESSAGE_TRIGGER = "getcampaignwappmessagetrigger";
+    public static final String CREATE_CAMPAIGN_WAPP_MESSAGE_TRIGGER = "createcampaignwappmessagetrigger";
+    public static final String UPDATE_CAMPAIGN_WAPP_MESSAGE_TRIGGER = "updatecampaignwappmessagetrigger";
+    public static final String REMOVE_CAMPAIGN_WAPP_MESSAGE_TRIGGER = "removecampaignwappmessagetrigger";
 
-    public static final String GET_PROCESS_ASSETS = "getprocessassets";
-    public static final String GET_PROCESS_ASSET = "getprocessasset";
-    public static final String CREATE_PROCESS_ASSET = "createprocessasset";
-    public static final String UPDATE_PROCESS_ASSET = "updateprocessasset";
-    public static final String REMOVE_PROCESS_ASSET = "removeprocessasset";
+    public static final String GET_CAMPAIGN_WAPP_CALL_TRIGGERS = "getcampaignwappcalltriggers";
+    public static final String GET_CAMPAIGN_WAPP_CALL_TRIGGER = "getcampaignwappcalltrigger";
+    public static final String CREATE_CAMPAIGN_WAPP_CALL_TRIGGER = "createcampaignwappcalltrigger";
+    public static final String UPDATE_CAMPAIGN_WAPP_CALL_TRIGGER = "updatecampaignwappcalltrigger";
+    public static final String REMOVE_CAMPAIGN_WAPP_CALL_TRIGGER = "removecampaignwappcalltrigger";
 
+    public static final String GET_CAMPAIGN_SIP_TRIGGERS = "getcampaignsiptriggers";
+    public static final String GET_CAMPAIGN_SIP_TRIGGER = "getcampaignsiptrigger";
+    public static final String CREATE_CAMPAIGN_SIP_TRIGGER = "createcampaignsiptrigger";
+    public static final String UPDATE_CAMPAIGN_SIP_TRIGGER = "updatecampaignsiptrigger";
+    public static final String REMOVE_CAMPAIGN_SIP_TRIGGER = "removecampaignsiptrigger";
 
-    public static final String GET_PROCESS_CHANNELS = "getprocesschannels";
+    public static final String GET_CAMPAIGN_EMAIL_TRIGGERS = "getcampaignemailtriggers";
+    public static final String GET_CAMPAIGN_EMAIL_TRIGGER = "getcampaignemailtrigger";
+    public static final String CREATE_CAMPAIGN_EMAIL_TRIGGER = "createcampaignemailtrigger";
+    public static final String UPDATE_CAMPAIGN_EMAIL_TRIGGER = "updatecampaignemailtrigger";
+    public static final String REMOVE_CAMPAIGN_EMAIL_TRIGGER = "removecampaignemailtrigger";
 
-    public static final String GET_PROCESS_SIP_CHANNEL = "getprocesssipchannel";
-    public static final String CREATE_PROCESS_SIP_CHANNEL = "createprocesssipchannel";
-    public static final String REMOVE_PROCESS_SIP_CHANNEL = "removeprocesssipchannel";
-
-    public static final String GET_PROCESS_SMS_CHANNEL = "getprocesssmschannel";
-    public static final String CREATE_PROCESS_SMS_CHANNEL = "createprocesssmschannel";
-    public static final String REMOVE_PROCESS_SMS_CHANNEL = "removeprocesssmschannel";
-
-    public static final String GET_PROCESS_WAPP_CHANNEL = "getprocesswappchannel";
-    public static final String CREATE_PROCESS_WAPP_CHANNEL = "createprocesswappchannel";
-    public static final String REMOVE_PROCESS_WAPP_CHANNEL = "removeprocesswappchannel";
-
-    public static final String GET_PROCESS_EMAIL_CHANNEL = "getprocessemailchannel";
-    public static final String CREATE_PROCESS_EMAIL_CHANNEL = "createprocessemailchannel";
-    public static final String REMOVE_PROCESS_EMAIL_CHANNEL = "removeprocessemailchannel";
-
-    public static final String GET_PROCESS_PUSH_CHANNEL = "getprocesspushchannel";
-    public static final String CREATE_PROCESS_PUSH_CHANNEL = "createprocesspushchannel";
-    public static final String REMOVE_PROCESS_PUSH_CHANNEL = "removeprocesspushchannel";
+    public static final String GET_CAMPAIGN_AI_TRIGGERS = "getcampaignaitriggers";
+    public static final String GET_CAMPAIGN_AI_TRIGGER = "getcampaignaitrigger";
+    public static final String CREATE_CAMPAIGN_AI_TRIGGER = "createcampaignaitrigger";
+    public static final String UPDATE_CAMPAIGN_AI_TRIGGER = "updatecampaignaitrigger";
+    public static final String REMOVE_CAMPAIGN_AI_TRIGGER = "removecampaignaitrigger";
 
 
 
-    public static final String GET_PROCESS_TEMP = "getprocesstemp";
-
-    public static final String GET_PROCESS_SMS_TEMPS = "getprocesssmstemps";
-    public static final String GET_PROCESS_SMS_TEMP = "getprocesssmstemp";
-    public static final String CREATE_PROCESS_SMS_TEMP = "createprocesssmstemp";
-    public static final String UPDATE_PROCESS_SMS_TEMP = "updateprocesssmstemp";
-    public static final String REMOVE_PROCESS_SMS_TEMP = "removeprocesssmstemp";
-
-    public static final String GET_PROCESS_WAPP_MESSAGE_TEMPS = "getprocesswappmessagetemps";
-    public static final String GET_PROCESS_WAPP_MESSAGE_TEMP = "getprocesswappmessagetemp";
-    public static final String CREATE_PROCESS_WAPP_MESSAGE_TEMP = "createprocesswappmessagetemp";
-    public static final String UPDATE_PROCESS_WAPP_MESSAGE_TEMP = "updateprocesswappmessagetemp";
-    public static final String REMOVE_PROCESS_WAPP_MESSAGE_TEMP = "removeprocesswappmessagetemp";
-
-    public static final String GET_PROCESS_EMAIL_TEMPS = "getprocessemailtemps";
-    public static final String GET_PROCESS_EMAIL_TEMP = "getprocessemailtemp";
-    public static final String CREATE_PROCESS_EMAIL_TEMP = "createprocessemailtemp";
-    public static final String UPDATE_PROCESS_EMAIL_TEMP = "updateprocessemailtemp";
-    public static final String REMOVE_PROCESS_EMAIL_TEMP = "removeprocessemailtemp";
-
-    public static final String GET_PROCESS_PUSH_TEMPS = "getprocesspushtemps";
-    public static final String GET_PROCESS_PUSH_TEMP = "getprocesspushtemp";
-    public static final String CREATE_PROCESS_PUSH_TEMP = "createprocesspushtemp";
-    public static final String UPDATE_PROCESS_PUSH_TEMP = "updateprocesspushtemp";
-    public static final String REMOVE_PROCESS_PUSH_TEMP = "removeprocesspushtemp";
+    public static final String GET_CAMPAIGN_ASSETS = "getcampaignassets";
+    public static final String GET_CAMPAIGN_ASSET = "getcampaignasset";
+    public static final String CREATE_CAMPAIGN_ASSET = "createcampaignasset";
+    public static final String UPDATE_CAMPAIGN_ASSET = "updatecampaignasset";
+    public static final String REMOVE_CAMPAIGN_ASSET = "removecampaignasset";
 
 
+    public static final String GET_CAMPAIGN_CHANNELS = "getcampaignchannels";
 
-    public static final String GET_ALL_PROCESS_TYPES = "getallprocesstypes";
-    public static final String GET_PROCESS_TYPE = "getprocesstype";
-    public static final String CREATE_PROCESS_TYPE = "createprocesstype";
-    public static final String UPDATE_PROCESS_TYPE = "updateprocesstype";
-    public static final String REMOVE_PROCESS_TYPE = "removeprocesstype";
+    public static final String GET_CAMPAIGN_SIP_CHANNEL = "getcampaignsipchannel";
+    public static final String CREATE_CAMPAIGN_SIP_CHANNEL = "createcampaignsipchannel";
+    public static final String REMOVE_CAMPAIGN_SIP_CHANNEL = "removecampaignsipchannel";
 
-    public static final String GET_ALL_TRIGGER_TYPES = "getalltriggertypes";
+    public static final String GET_CAMPAIGN_SMS_CHANNEL = "getcampaignsmschannel";
+    public static final String CREATE_CAMPAIGN_SMS_CHANNEL = "createcampaignsmschannel";
+    public static final String REMOVE_CAMPAIGN_SMS_CHANNEL = "removecampaignsmschannel";
+
+    public static final String GET_CAMPAIGN_WAPP_CHANNEL = "getcampaignwappchannel";
+    public static final String CREATE_CAMPAIGN_WAPP_CHANNEL = "createcampaignwappchannel";
+    public static final String REMOVE_CAMPAIGN_WAPP_CHANNEL = "removecampaignwappchannel";
+
+    public static final String GET_CAMPAIGN_EMAIL_CHANNEL = "getcampaignemailchannel";
+    public static final String CREATE_CAMPAIGN_EMAIL_CHANNEL = "createcampaignemailchannel";
+    public static final String REMOVE_CAMPAIGN_EMAIL_CHANNEL = "removecampaignemailchannel";
+
+    public static final String GET_CAMPAIGN_PUSH_CHANNEL = "getcampaignpushchannel";
+    public static final String CREATE_CAMPAIGN_PUSH_CHANNEL = "createcampaignpushchannel";
+    public static final String REMOVE_CAMPAIGN_PUSH_CHANNEL = "removecampaignpushchannel";
+
+
+
+    public static final String GET_CAMPAIGN_TEMPS = "getcampaigntemps";
+
+    public static final String GET_CAMPAIGN_SMS_TEMPS = "getcampaignsmstemps";
+    public static final String GET_CAMPAIGN_SMS_TEMP = "getcampaignsmstemp";
+    public static final String CREATE_CAMPAIGN_SMS_TEMP = "createcampaignsmstemp";
+    public static final String UPDATE_CAMPAIGN_SMS_TEMP = "updatecampaignsmstemp";
+    public static final String REMOVE_CAMPAIGN_SMS_TEMP = "removecampaignsmstemp";
+
+    public static final String GET_CAMPAIGN_WAPP_MESSAGE_TEMPS = "getcampaignwappmessagetemps";
+    public static final String GET_CAMPAIGN_WAPP_MESSAGE_TEMP = "getcampaignwappmessagetemp";
+    public static final String CREATE_CAMPAIGN_WAPP_MESSAGE_TEMP = "createcampaignwappmessagetemp";
+    public static final String UPDATE_CAMPAIGN_WAPP_MESSAGE_TEMP = "updatecampaignwappmessagetemp";
+    public static final String REMOVE_CAMPAIGN_WAPP_MESSAGE_TEMP = "removecampaignwappmessagetemp";
+
+    public static final String GET_CAMPAIGN_EMAIL_TEMPS = "getcampaignemailtemps";
+    public static final String GET_CAMPAIGN_EMAIL_TEMP = "getcampaignemailtemp";
+    public static final String CREATE_CAMPAIGN_EMAIL_TEMP = "createcampaignemailtemp";
+    public static final String UPDATE_CAMPAIGN_EMAIL_TEMP = "updatecampaignemailtemp";
+    public static final String REMOVE_CAMPAIGN_EMAIL_TEMP = "removecampaignemailtemp";
+
+    public static final String GET_CAMPAIGN_PUSH_TEMPS = "getcampaignpushtemps";
+    public static final String GET_CAMPAIGN_PUSH_TEMP = "getcampaignpushtemp";
+    public static final String CREATE_CAMPAIGN_PUSH_TEMP = "createcampaignpushtemp";
+    public static final String UPDATE_CAMPAIGN_PUSH_TEMP = "updatecampaignpushtemp";
+    public static final String REMOVE_CAMPAIGN_PUSH_TEMP = "removecampaignpushtemp";
+
+
+    public static final String GET_CAMPAIGN_TYPES = "getcampaigntypes";
+    public static final String GET_CAMPAIGN_TYPE = "getcampaigntype";
+    public static final String CREATE_CAMPAIGN_TYPE = "createcampaigntype";
+    public static final String UPDATE_CAMPAIGN_TYPE = "updatecampaigntype";
+    public static final String REMOVE_CAMPAIGN_TYPE = "removecampaigntype";
+
+    public static final String GET_TRIGGER_TYPES = "gettriggertypes";
     public static final String GET_TRIGGER_TYPES_BY_BASE = "gettriggertypesbybase";
     public static final String GET_TRIGGER_TYPE = "gettriggertype";
     public static final String CREATE_TRIGGER_TYPE = "createtriggertype";
     public static final String UPDATE_TRIGGER_TYPE = "updatetriggertype";
     public static final String REMOVE_TRIGGER_TYPE = "removetriggertype";
+
+
 
 
     public static final String GET_SCENARIOS = "getscenarios";

@@ -1,19 +1,16 @@
 package com.faas.core.base.model.ws.operation.content.dto;
 
-import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 
 public class OperationWSDTO {
 
     private OperationDBModel operation;
-    private SessionDBModel operationSession;
 
     public OperationWSDTO() {
     }
 
-    public OperationWSDTO(OperationDBModel operation, SessionDBModel operationSession) {
+    public OperationWSDTO(OperationDBModel operation) {
         this.operation = operation;
-        this.operationSession = operationSession;
     }
 
     public OperationDBModel getOperation() {
@@ -22,13 +19,5 @@ public class OperationWSDTO {
 
     public void setOperation(OperationDBModel operation) {
         this.operation = operation;
-    }
-
-    public SessionDBModel getOperationSession() {
-        return operationSession;
-    }
-
-    public void setOperationSession(SessionDBModel operationSession) {
-        this.operationSession = operationSession;
     }
 }

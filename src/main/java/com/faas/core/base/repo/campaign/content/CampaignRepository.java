@@ -9,25 +9,17 @@ import java.util.List;
 @Repository
 public interface CampaignRepository extends MongoRepository<CampaignDBModel, String> {
 
-    boolean existsById(String campaignId);
-    boolean existsByIdAndCampaignState(String campaignId,String campaignState);
+    List<CampaignDBModel>findByIdAndCampaignState(String campaignId, String campaignState);
 
-    long countByCampaignCategory(String category);
+    List<CampaignDBModel>findByCampaignState(String campaignState);
 
     List<CampaignDBModel> findByStatus(int status);
 
-    List<CampaignDBModel> findByIdAndStatus(String campaignId,int status);
+    List<CampaignDBModel>findByIdAndStatus(String campaignId, int status);
 
     List<CampaignDBModel> findByCampaignType(String campaignType);
 
     List<CampaignDBModel>findByCampaignCategory(String campaignCategory);
 
-    List<CampaignDBModel> findByCampaignState(String campaignState);
-
-    List<CampaignDBModel>findByIdAndCampaignState(String campaignId,String campaignState);
-
-    List<CampaignDBModel>findByIdAndProcessId(String campaignId,String processId);
-
-    List<CampaignDBModel>findByCampaignCategoryAndCampaignState(String campaignCategory,String campaignState);
-
 }
+

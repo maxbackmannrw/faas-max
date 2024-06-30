@@ -4,15 +4,12 @@ import com.faas.core.api.model.ws.operation.details.scenario.dto.ApiOperationSce
 import com.faas.core.api.model.ws.operation.details.scenario.dto.ApiProcessScenarioWSDTO;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.operation.content.dao.OperationScenarioDAO;
-import com.faas.core.base.model.db.process.details.scenario.ProcessScenarioDBModel;
-import com.faas.core.base.model.db.session.SessionDBModel;
+import com.faas.core.base.model.db.campaign.details.scenario.CampaignScenarioDBModel;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
-import com.faas.core.base.repo.process.content.ProcessRepository;
-import com.faas.core.base.repo.process.details.scenario.ProcessScenarioRepository;
+import com.faas.core.base.repo.campaign.details.scenario.CampaignScenarioRepository;
 import com.faas.core.base.repo.scenario.content.ScenarioRepository;
-import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.base.repo.user.content.UserRepository;
 import com.faas.core.utility.config.AppUtils;
 import com.faas.core.utility.helpers.scenario.ScenarioHelpers;
@@ -30,9 +27,6 @@ public class ApiOperationScenarioFramework {
     ScenarioHelpers scenarioHelpers;
 
     @Autowired
-    SessionRepository sessionRepository;
-
-    @Autowired
     OperationRepository operationRepository;
 
     @Autowired
@@ -45,13 +39,10 @@ public class ApiOperationScenarioFramework {
     CampaignRepository campaignRepository;
 
     @Autowired
-    ProcessRepository processRepository;
-
-    @Autowired
     ScenarioRepository scenarioRepository;
 
     @Autowired
-    ProcessScenarioRepository processScenarioRepository;
+    CampaignScenarioRepository campaignScenarioRepository;
 
     @Autowired
     AppUtils appUtils;
@@ -61,11 +52,7 @@ public class ApiOperationScenarioFramework {
 
         List<ApiOperationScenarioWSDTO> operationScenarioWSDTOS = new ArrayList<>();
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
-        if (!operationDBModels.isEmpty() && operationDBModels.get(0).getOperationScenarios() != null){
-            for (int i=0;i<operationDBModels.get(0).getOperationScenarios().size();i++){
-                operationScenarioWSDTOS.add(new ApiOperationScenarioWSDTO(operationDBModels.get(0).getOperationScenarios().get(i)));
-            }
-        }
+
         return operationScenarioWSDTOS;
     }
 
@@ -73,13 +60,6 @@ public class ApiOperationScenarioFramework {
     public ApiOperationScenarioWSDTO apiGetOperationScenarioService(long agentId,String operationId,String executeId) {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
-        if (!operationDBModels.isEmpty() && operationDBModels.get(0).getOperationScenarios() != null){
-            for (int i=0;i<operationDBModels.get(0).getOperationScenarios().size();i++){
-                if (operationDBModels.get(0).getOperationScenarios().get(i).getId().equalsIgnoreCase(executeId)){
-                    return new ApiOperationScenarioWSDTO(operationDBModels.get(0).getOperationScenarios().get(i));
-                }
-            }
-        }
         return null;
     }
 
@@ -88,10 +68,7 @@ public class ApiOperationScenarioFramework {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
         if (!operationDBModels.isEmpty()){
-            List<ProcessScenarioDBModel> processScenarioDBModels = processScenarioRepository.findByProcessIdAndScenarioId(operationDBModels.get(0).getProcessId(),scenarioId);
-            if (!processScenarioDBModels.isEmpty()){
-                return new ApiOperationScenarioWSDTO(scenarioHelpers.executeOperationScenarioHelper(operationDBModels.get(0),processScenarioDBModels.get(0)));
-            }
+
         }
         return null;
     }
@@ -100,13 +77,7 @@ public class ApiOperationScenarioFramework {
     public ApiOperationScenarioWSDTO apiUpdateOperationScenarioService(long agentId,String operationId,String executeId) {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
-        if (!operationDBModels.isEmpty() && operationDBModels.get(0).getOperationScenarios() != null){
-            for (int i=0;i<operationDBModels.get(0).getOperationScenarios().size();i++){
-                if (operationDBModels.get(0).getOperationScenarios().get(i).getId().equalsIgnoreCase(executeId)){
-                    return new ApiOperationScenarioWSDTO(operationDBModels.get(0).getOperationScenarios().get(i));
-                }
-            }
-        }
+
         return null;
     }
 
@@ -114,19 +85,7 @@ public class ApiOperationScenarioFramework {
     public ApiOperationScenarioWSDTO apiRemoveOperationScenarioService(long agentId,String operationId,String executeId) {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
-        if (!operationDBModels.isEmpty() && operationDBModels.get(0).getOperationScenarios() != null){
-            for (int i=0;i<operationDBModels.get(0).getOperationScenarios().size();i++){
-                if (operationDBModels.get(0).getOperationScenarios().get(i).getId().equalsIgnoreCase(executeId)){
 
-                    OperationScenarioDAO operationScenarioDAO = operationDBModels.get(0).getOperationScenarios().get(i);
-                    operationDBModels.get(0).getOperationScenarios().remove(operationScenarioDAO);
-                    operationDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
-                    operationRepository.save(operationDBModels.get(0));
-
-                    return new ApiOperationScenarioWSDTO(operationScenarioDAO);
-                }
-            }
-        }
         return null;
     }
 
@@ -134,25 +93,13 @@ public class ApiOperationScenarioFramework {
     public List<ApiProcessScenarioWSDTO> apiGetOperationProcessScenariosService(long agentId,String operationId) {
 
         List<ApiProcessScenarioWSDTO>processScenarioWSDTOS = new ArrayList<>();
-        List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
-        if (!sessionDBModels.isEmpty()){
-            List<ProcessScenarioDBModel> processScenarioDBModels = processScenarioRepository.findByProcessId(sessionDBModels.get(0).getProcessId());
-            for (ProcessScenarioDBModel processScenarioDBModel : processScenarioDBModels) {
-                processScenarioWSDTOS.add(new ApiProcessScenarioWSDTO(processScenarioDBModel));
-            }
-        }
+
         return processScenarioWSDTOS;
     }
 
     public ApiProcessScenarioWSDTO apiGetOperationProcessScenarioService(long agentId,String operationId,String scenarioId) {
 
-        List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
-        if (!sessionDBModels.isEmpty()){
-            List<ProcessScenarioDBModel> processScenarioDBModels = processScenarioRepository.findByProcessIdAndScenarioId(sessionDBModels.get(0).getProcessId(),scenarioId);
-            if (!processScenarioDBModels.isEmpty()){
-                return new ApiProcessScenarioWSDTO(processScenarioDBModels.get(0));
-            }
-        }
+
         return null;
     }
 

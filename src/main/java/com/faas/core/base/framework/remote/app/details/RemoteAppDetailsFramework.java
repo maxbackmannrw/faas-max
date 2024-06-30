@@ -5,7 +5,6 @@ import com.faas.core.base.model.ws.remote.app.details.dto.RemoteClientDetailsWSD
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.remote.app.RemoteAppRepository;
-import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +13,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class RemoteAppDetailsFramework {
 
-
-    @Autowired
-    SessionRepository sessionRepository;
 
     @Autowired
     ClientRepository clientRepository;

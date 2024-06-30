@@ -11,11 +11,9 @@ public class OperationSmsDBModel {
     @Id
     private String id;
     private long clientId;
-    private long sessionId;
     private String operationId;
     private long agentId;
     private String campaignId;
-    private String processId;
     private ClientPhoneDAO clientPhone;
     private OperationSmsDAO operationSms;
     private String smsSentId;
@@ -27,14 +25,12 @@ public class OperationSmsDBModel {
     public OperationSmsDBModel() {
     }
 
-    public OperationSmsDBModel(String id, long clientId, long sessionId, String operationId, long agentId, String campaignId, String processId, ClientPhoneDAO clientPhone, OperationSmsDAO operationSms, String smsSentId, String smsState, long uDate, long cDate, int status) {
+    public OperationSmsDBModel(String id, long clientId, String operationId, long agentId, String campaignId, ClientPhoneDAO clientPhone, OperationSmsDAO operationSms, String smsSentId, String smsState, long uDate, long cDate, int status) {
         this.id = id;
         this.clientId = clientId;
-        this.sessionId = sessionId;
         this.operationId = operationId;
         this.agentId = agentId;
         this.campaignId = campaignId;
-        this.processId = processId;
         this.clientPhone = clientPhone;
         this.operationSms = operationSms;
         this.smsSentId = smsSentId;
@@ -60,14 +56,6 @@ public class OperationSmsDBModel {
         this.clientId = clientId;
     }
 
-    public long getSessionId() {
-        return sessionId;
-    }
-
-    public void setSessionId(long sessionId) {
-        this.sessionId = sessionId;
-    }
-
     public String getOperationId() {
         return operationId;
     }
@@ -90,14 +78,6 @@ public class OperationSmsDBModel {
 
     public void setCampaignId(String campaignId) {
         this.campaignId = campaignId;
-    }
-
-    public String getProcessId() {
-        return processId;
-    }
-
-    public void setProcessId(String processId) {
-        this.processId = processId;
     }
 
     public ClientPhoneDAO getClientPhone() {

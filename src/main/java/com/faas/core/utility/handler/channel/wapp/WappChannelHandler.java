@@ -1,12 +1,12 @@
 package com.faas.core.utility.handler.channel.wapp;
 
 import com.faas.core.base.model.db.channel.account.WappAccountDBModel;
+import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationWappMessageDBModel;
-import com.faas.core.base.model.db.process.content.ProcessDBModel;
-import com.faas.core.base.model.db.session.SessionDBModel;
+import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.repo.channel.account.WappAccountRepository;
 import com.faas.core.base.repo.operation.details.channel.WappMessageRepository;
-import com.faas.core.base.repo.process.content.ProcessRepository;
+import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.utility.rest.channel.wapp.WappChannelRestCall;
 import com.faas.core.utility.rest.utility.CommonRestCall;
 import com.faas.core.utility.config.AppConstant;
@@ -28,7 +28,7 @@ public class WappChannelHandler {
     WappChannelRestCall wappChannelRestCall;
 
     @Autowired
-    ProcessRepository processRepository;
+    CampaignRepository campaignRepository;
 
     @Autowired
     WappAccountRepository wappAccountRepository;
@@ -71,11 +71,11 @@ public class WappChannelHandler {
          */
     }
 
-    public OperationWappMessageDBModel prepareWappMessageHandler(SessionDBModel sessionDBModel, OperationWappMessageDBModel operationWappMessageDBModel, WappAccountDBModel wappAccountDBModel, ProcessDBModel processDBModel) throws IOException {
+    public OperationWappMessageDBModel prepareWappMessageHandler(OperationDBModel operationDBModel, OperationWappMessageDBModel operationWappMessageDBModel, WappAccountDBModel wappAccountDBModel, CampaignDBModel campaignDBModel) throws IOException {
 
         String wappMessageBody = operationWappMessageDBModel.getOperationWappMessage().getWappBody();
         if (wappMessageBody.contains(AppConstant.CLIENT_NAME_TAG)) {
-            wappMessageBody = wappMessageBody.replace(AppConstant.CLIENT_NAME_TAG, sessionDBModel.getClientName());
+            wappMessageBody = wappMessageBody.replace(AppConstant.CLIENT_NAME_TAG, operationDBModel.getClientName());
         }
         /*
         if (wappMessageBody.contains(AppConstant.PWA_URL_TAG)) {

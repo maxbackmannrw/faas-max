@@ -1,7 +1,5 @@
 package com.faas.core.base.framework.manager.main;
 
-import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
-import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.ws.manager.main.dto.MainManagerContentWSDTO;
 import com.faas.core.base.model.ws.manager.main.dto.MainManagerWSDTO;
 import com.faas.core.base.model.ws.manager.campaign.content.dto.CampaignManagerWSDTO;
@@ -9,8 +7,6 @@ import com.faas.core.base.model.ws.operation.manager.content.dto.OperationManage
 import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
-import com.faas.core.base.repo.process.content.ProcessRepository;
-import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.AppUtils;
 import com.faas.core.utility.helpers.manager.ManagerHelpers;
@@ -19,7 +15,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 
 @Service
@@ -31,12 +26,6 @@ public class MainManagerFramework {
 
     @Autowired
     CampaignRepository campaignRepository;
-
-    @Autowired
-    ProcessRepository processRepository;
-
-    @Autowired
-    SessionRepository sessionRepository;
 
     @Autowired
     OperationRepository operationRepository;
@@ -62,19 +51,12 @@ public class MainManagerFramework {
 
     public List<CampaignManagerWSDTO> getMainManagerCampaignsService(long userId, String category) {
 
-        List<CampaignDBModel> campaignDBModels = campaignRepository.findByCampaignCategory(category);
-        if (campaignDBModels != null){
-            return managerHelpers.getCampaignManagerWSDTOS(campaignDBModels);
-        }
         return null;
     }
 
     public CampaignManagerWSDTO getMainManagerCampaignService(long userId,String campaignId) {
 
-        Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
-        if (campaignDBModel.isPresent()){
-            return managerHelpers.fillCampaignManagerWSDTO(campaignDBModel.get());
-        }
+
         return null;
     }
 
@@ -91,21 +73,12 @@ public class MainManagerFramework {
 
     public OperationWSDTO getMainManagerOperationService(long userId, long sessionId) {
 
-        Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
-        if (sessionDBModel.isPresent()){
-            return managerHelpers.fillManagerOperationWSDTOBySessionModel(sessionDBModel.get());
-        }
         return null;
     }
 
     public OperationWSDTO removeMainManagerOperationService(long userId, long sessionId) {
 
-        Optional<SessionDBModel> sessionDBModel = sessionRepository.findById(sessionId);
-        if (sessionDBModel.isPresent()){
-            OperationWSDTO operationWSDTO = managerHelpers.fillManagerOperationWSDTOBySessionModel(sessionDBModel.get());
-            managerHelpers.removeOperationManager(sessionDBModel.get());
-            return operationWSDTO;
-        }
+
         return null;
     }
 

@@ -55,11 +55,6 @@ public class AppConstant {
     public static final String ALL_CAMPAIGNS = "ALL";
 
 
-    public static final String MANUAL_PROCESS = "MANUAL";
-    public static final String INQUIRY_PROCESS = "INQUIRY";
-    public static final String AUTOMATIC_PROCESS = "AUTOMATIC";
-
-
     public static final String CLIENTS = "CLIENTS";
     public static final String READY_CLIENT = "READY_CLIENT";
     public static final String BUSY_CLIENT = "BUSY_CLIENT";
@@ -73,6 +68,12 @@ public class AppConstant {
     public static final String COMPLETED_STATE = "COMPLETED_STATE";
 
     public static final String ALL_STATES = "ALL_STATES";
+
+
+    public static final String READY_CAMPAIGN = "READY_CAMPAIGN";
+    public static final String ACTIVE_CAMPAIGN = "ACTIVE_CAMPAIGN";
+    public static final String PASSIVE_CAMPAIGN = "PASSIVE_CAMPAIGN";
+
 
 
     public static final String OPERATION_SUCCESS = "OPERATION_SUCCESS";

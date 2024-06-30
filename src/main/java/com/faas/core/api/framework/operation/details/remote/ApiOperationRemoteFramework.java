@@ -6,7 +6,6 @@ import com.faas.core.base.model.db.remote.app.RemoteAppDBModel;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.remote.app.RemoteAppRepository;
-import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utility.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,9 +18,6 @@ public class ApiOperationRemoteFramework {
 
     @Autowired
     ClientRepository clientRepository;
-
-    @Autowired
-    SessionRepository sessionRepository;
 
     @Autowired
     OperationRepository operationRepository;

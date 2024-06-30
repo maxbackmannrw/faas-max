@@ -4,12 +4,10 @@ import com.faas.core.api.model.ws.campaign.content.dto.ApiAgentCampaignWSDTO;
 import com.faas.core.api.model.ws.campaign.content.dto.ApiCampaignWSDTO;
 import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
-import com.faas.core.base.model.db.campaign.details.CampaignAgentDBModel;
+import com.faas.core.base.model.db.campaign.details.agent.CampaignAgentDBModel;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
-import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
+import com.faas.core.base.repo.campaign.details.agent.CampaignAgentRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
-import com.faas.core.base.repo.process.content.ProcessRepository;
-import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.AppUtils;
 import com.faas.core.utility.helpers.campaign.CampaignHelpers;
@@ -24,20 +22,15 @@ import java.util.Optional;
 @Component
 public class ApiCampaignFramework {
 
-    @Autowired
-    CampaignHelpers campaignHelpers;
 
     @Autowired
-    SessionRepository sessionRepository;
+    CampaignHelpers campaignHelpers;
 
     @Autowired
     OperationRepository operationRepository;
 
     @Autowired
     CampaignRepository campaignRepository;
-
-    @Autowired
-    ProcessRepository processRepository;
 
     @Autowired
     CampaignAgentRepository campaignAgentRepository;
@@ -56,10 +49,8 @@ public class ApiCampaignFramework {
         for (CampaignAgentDBModel campaignAgent : campaignAgents) {
             Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignAgent.getCampaignId());
             if (campaignDBModel.isPresent() && campaignDBModel.get().getCampaignCategory().equalsIgnoreCase(AppConstant.MANUAL_CAMPAIGN)) {
-                manualCampaigns.add(campaignHelpers.getApiCampaignWSDTO(agentId,campaignDBModel.get()));
             }
             if (campaignDBModel.isPresent() && campaignDBModel.get().getCampaignCategory().equalsIgnoreCase(AppConstant.INQUIRY_CAMPAIGN)) {
-                inquiryCampaigns.add(campaignHelpers.getApiCampaignWSDTO(agentId,campaignDBModel.get()));
             }
         }
         agentCampaignWSDTO.setManualCampaigns(manualCampaigns);

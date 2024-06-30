@@ -11,4 +11,5 @@ public interface CampaignTypeRepository extends PagingAndSortingRepository<Campa
 
     List<CampaignTypeDBModel> findByStatus(int status);
 
+
 }

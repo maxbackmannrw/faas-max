@@ -1,12 +1,12 @@
 package com.faas.core.utility.helpers.remote;
 
-import com.faas.core.base.model.db.process.content.ProcessDBModel;
-import com.faas.core.base.model.db.process.details.remote.ProcessRemoteDBModel;
+import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
+import com.faas.core.base.model.db.campaign.details.remote.CampaignRemoteDBModel;
 import com.faas.core.base.model.db.remote.content.RemoteDBModel;
 import com.faas.core.base.model.db.remote.content.dao.RemoteDataDAO;
 import com.faas.core.base.model.db.utils.UrlDBModel;
 import com.faas.core.base.model.ws.remote.content.dto.RemoteWSDTO;
-import com.faas.core.base.repo.process.details.remote.ProcessRemoteRepository;
+import com.faas.core.base.repo.campaign.details.remote.CampaignRemoteRepository;
 import com.faas.core.base.repo.utils.UrlRepository;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.AppUtils;
@@ -20,7 +20,7 @@ public class RemoteHelpers {
 
 
     @Autowired
-    ProcessRemoteRepository processRemoteRepository;
+    CampaignRemoteRepository campaignRemoteRepository;
 
     @Autowired
     UrlRepository urlRepository;
@@ -39,30 +39,28 @@ public class RemoteHelpers {
     }
 
 
-    public ProcessRemoteDBModel createProcessRemoteDBModel(ProcessDBModel processDBModel, RemoteDBModel remoteDBModel,String remoteCategory){
+    public CampaignRemoteDBModel createCampaignRemoteDBModel(CampaignDBModel campaignDBModel, RemoteDBModel remoteDBModel, String remoteCategory){
 
-        ProcessRemoteDBModel processRemoteDBModel = new ProcessRemoteDBModel();
-
-        processRemoteDBModel.setProcessId(processDBModel.getId());
-        processRemoteDBModel.setProcess(processDBModel.getProcess());
-        processRemoteDBModel.setRemoteId(remoteDBModel.getId());
-        processRemoteDBModel.setRemote(remoteDBModel.getRemote());
-        processRemoteDBModel.setRemoteDesc(remoteDBModel.getRemoteDesc());
-        processRemoteDBModel.setVersion(remoteDBModel.getVersion());
+        CampaignRemoteDBModel campaignRemoteDBModel = new CampaignRemoteDBModel();
+        campaignRemoteDBModel.setCampaignId(campaignDBModel.getId());
+        campaignRemoteDBModel.setRemoteId(remoteDBModel.getId());
+        campaignRemoteDBModel.setRemote(remoteDBModel.getRemote());
+        campaignRemoteDBModel.setRemoteDesc(remoteDBModel.getRemoteDesc());
+        campaignRemoteDBModel.setVersion(remoteDBModel.getVersion());
         if (remoteDBModel.getRemoteDatas() != null) {
-            processRemoteDBModel.setRemoteDatas(remoteDBModel.getRemoteDatas());
+            campaignRemoteDBModel.setRemoteDatas(remoteDBModel.getRemoteDatas());
         }else {
-            processRemoteDBModel.setRemoteDatas(new ArrayList<>());
+            campaignRemoteDBModel.setRemoteDatas(new ArrayList<>());
         }
-        processRemoteDBModel.setRemoteCategory(remoteCategory);
-        processRemoteDBModel.setTypeId(remoteDBModel.getTypeId());
-        processRemoteDBModel.setRemoteType(remoteDBModel.getRemoteType());
-        processRemoteDBModel.setBaseType(remoteDBModel.getBaseType());
-        processRemoteDBModel.setuDate(appUtils.getCurrentTimeStamp());
-        processRemoteDBModel.setcDate(appUtils.getCurrentTimeStamp());
-        processRemoteDBModel.setStatus(1);
+        campaignRemoteDBModel.setRemoteCategory(remoteCategory);
+        campaignRemoteDBModel.setTypeId(remoteDBModel.getTypeId());
+        campaignRemoteDBModel.setRemoteType(remoteDBModel.getRemoteType());
+        campaignRemoteDBModel.setBaseType(remoteDBModel.getBaseType());
+        campaignRemoteDBModel.setuDate(appUtils.getCurrentTimeStamp());
+        campaignRemoteDBModel.setcDate(appUtils.getCurrentTimeStamp());
+        campaignRemoteDBModel.setStatus(1);
 
-        return processRemoteRepository.save(processRemoteDBModel);
+        return campaignRemoteRepository.save(campaignRemoteDBModel);
     }
 
 

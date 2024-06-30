@@ -4,7 +4,6 @@ import com.faas.core.api.model.ws.agent.content.dto.ApiAgentWSDTO;
 import com.faas.core.base.model.db.user.content.UserDBModel;
 import com.faas.core.base.model.db.user.details.UserDetailsDBModel;
 import com.faas.core.base.repo.channel.account.SipAccountRepository;
-import com.faas.core.base.repo.process.details.channel.content.ProcessSipChannelRepository;
 import com.faas.core.base.repo.user.content.UserRepository;
 import com.faas.core.base.repo.user.details.UserDetailsRepository;
 import com.faas.core.base.repo.user.settings.UserRoleRepository;
@@ -28,9 +27,6 @@ public class ApiAgentFramework {
 
     @Autowired
     UserRoleRepository userRoleRepository;
-
-    @Autowired
-    ProcessSipChannelRepository processSipChannelRepository;
 
     @Autowired
     SipAccountRepository sipAccountRepository;

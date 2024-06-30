@@ -3,7 +3,7 @@ package com.faas.core.utility.helpers.scenario;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.operation.content.dao.OperationScenarioDAO;
 import com.faas.core.base.model.db.operation.content.dao.OperationScenarioDataDAO;
-import com.faas.core.base.model.db.process.details.scenario.ProcessScenarioDBModel;
+import com.faas.core.base.model.db.campaign.details.scenario.CampaignScenarioDBModel;
 import com.faas.core.base.model.db.scenario.content.dao.ScenarioDataDAO;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.utility.config.AppConstant;
@@ -24,21 +24,21 @@ public class ScenarioHelpers {
     AppUtils appUtils;
 
 
-    public OperationScenarioDAO executeOperationScenarioHelper(OperationDBModel operationDBModel, ProcessScenarioDBModel processScenarioDBModel) {
+    public OperationScenarioDAO executeOperationScenarioHelper(OperationDBModel operationDBModel, CampaignScenarioDBModel campaignScenarioDBModel) {
 
         OperationScenarioDAO operationScenarioDAO = new OperationScenarioDAO();
         operationScenarioDAO.setId(appUtils.generateUUID());
-        operationScenarioDAO.setScenarioId(processScenarioDBModel.getScenarioId());
-        operationScenarioDAO.setScenario(processScenarioDBModel.getScenario());
-        operationScenarioDAO.setScenarioDesc(processScenarioDBModel.getScenarioDesc());
-        operationScenarioDAO.setTypeId(processScenarioDBModel.getTypeId());
-        operationScenarioDAO.setScenarioType(processScenarioDBModel.getScenarioType());
-        operationScenarioDAO.setBaseType(processScenarioDBModel.getBaseType());
+        operationScenarioDAO.setScenarioId(campaignScenarioDBModel.getScenarioId());
+        operationScenarioDAO.setScenario(campaignScenarioDBModel.getScenario());
+        operationScenarioDAO.setScenarioDesc(campaignScenarioDBModel.getScenarioDesc());
+        operationScenarioDAO.setTypeId(campaignScenarioDBModel.getTypeId());
+        operationScenarioDAO.setScenarioType(campaignScenarioDBModel.getScenarioType());
+        operationScenarioDAO.setBaseType(campaignScenarioDBModel.getBaseType());
 
         List<OperationScenarioDataDAO> operationScenarioDatas = new ArrayList<>();
-        if (processScenarioDBModel.getScenarioDatas() != null){
-            for (int i=0;i<processScenarioDBModel.getScenarioDatas().size();i++){
-                operationScenarioDatas.add(convert2OperationScenarioData(processScenarioDBModel.getScenarioDatas().get(i)));
+        if (campaignScenarioDBModel.getScenarioDatas() != null){
+            for (int i = 0; i< campaignScenarioDBModel.getScenarioDatas().size(); i++){
+                operationScenarioDatas.add(convert2OperationScenarioData(campaignScenarioDBModel.getScenarioDatas().get(i)));
             }
         }
         operationScenarioDAO.setScenarioDatas(operationScenarioDatas);

@@ -3,15 +3,13 @@ package com.faas.core.base.framework.remote.app.content;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.remote.app.RemoteAppDBModel;
 import com.faas.core.base.model.db.remote.content.RemoteDBModel;
-import com.faas.core.base.model.db.session.SessionDBModel;
 import com.faas.core.base.model.ws.remote.app.content.dto.RemoteClientListWSDTO;
 import com.faas.core.base.model.ws.remote.app.content.dto.RemoteClientWSDTO;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
-import com.faas.core.base.repo.process.content.ProcessRepository;
+import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.remote.app.RemoteAppRepository;
 import com.faas.core.base.repo.remote.content.RemoteRepository;
-import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utility.config.AppUtils;
 import com.faas.core.utility.helpers.remote.RemoteAppHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,23 +31,19 @@ public class RemoteAppFramework {
     ClientRepository clientRepository;
 
     @Autowired
-    SessionRepository sessionRepository;
-
-    @Autowired
     OperationRepository operationRepository;
 
     @Autowired
     RemoteAppRepository remoteAppRepository;
 
     @Autowired
-    ProcessRepository processRepository;
+    CampaignRepository campaignRepository;
 
     @Autowired
     RemoteRepository remoteRepository;
 
     @Autowired
     AppUtils appUtils;
-
 
 
     public RemoteClientListWSDTO getRemoteAppsService(long userId,String remoteState,String baseType, int reqPage, int reqSize) {
@@ -87,11 +81,8 @@ public class RemoteAppFramework {
     public RemoteClientWSDTO createRemoteAppService(long userId, String operationId, String remoteId) {
 
         Optional<OperationDBModel> operationDBModel = operationRepository.findById(operationId);
-        List<SessionDBModel> sessionDBModels = sessionRepository.findByOperationId(operationId);
         Optional<RemoteDBModel> remoteDBModel = remoteRepository.findById(remoteId);
-        if (!sessionDBModels.isEmpty() && operationDBModel.isPresent() && remoteDBModel.isPresent()){
-            return remoteAppHelpers.createClientRemoteWSDTO(remoteAppRepository.save(remoteAppHelpers.createClientRemoteDBModel(sessionDBModels.get(0),operationDBModel.get(),remoteDBModel.get())));
-        }
+
         return null;
     }
 

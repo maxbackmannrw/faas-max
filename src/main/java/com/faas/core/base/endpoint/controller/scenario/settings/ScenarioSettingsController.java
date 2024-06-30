@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping(value = AppConstant.API_VERSION + "/base/scenario/settings/")
 public class ScenarioSettingsController {
 
+
     @Autowired
     ScenarioSettingsMiddleware scenarioSettingsMiddleware;
 

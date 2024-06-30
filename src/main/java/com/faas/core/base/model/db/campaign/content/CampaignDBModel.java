@@ -1,12 +1,12 @@
 package com.faas.core.base.model.db.campaign.content;
 
-import com.faas.core.base.model.db.campaign.content.dao.CampaignDataDAO;
+import com.faas.core.base.model.db.campaign.content.dao.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
-@Document(collection = "campaigns_table")
+@Document(collection = "campaign_table")
 public class CampaignDBModel {
 
     @Id
@@ -16,10 +16,10 @@ public class CampaignDBModel {
     private long campaignTypeId;
     private String campaignType;
     private String campaignCategory;
-    private String processId;
-    private String process;
-    private String processType;
-    private String processCategory;
+    private CampaignFlowDAO campaignFlow;
+    private CampaignInquiryDAO campaignInquiry;
+    private List<CampaignAssetDAO>campaignAssets;
+    private List<CampaignScriptDAO>campaignScripts;
     private List<CampaignDataDAO>campaignDatas;
     private String campaignState;
     private long uDate;
@@ -29,17 +29,17 @@ public class CampaignDBModel {
     public CampaignDBModel() {
     }
 
-    public CampaignDBModel(String id, String campaign, String campaignDesc, long campaignTypeId, String campaignType, String campaignCategory, String processId, String process, String processType, String processCategory, List<CampaignDataDAO> campaignDatas, String campaignState, long uDate, long cDate, int status) {
+    public CampaignDBModel(String id, String campaign, String campaignDesc, long campaignTypeId, String campaignType, String campaignCategory, CampaignFlowDAO campaignFlow, CampaignInquiryDAO campaignInquiry, List<CampaignAssetDAO> campaignAssets, List<CampaignScriptDAO> campaignScripts, List<CampaignDataDAO> campaignDatas, String campaignState, long uDate, long cDate, int status) {
         this.id = id;
         this.campaign = campaign;
         this.campaignDesc = campaignDesc;
         this.campaignTypeId = campaignTypeId;
         this.campaignType = campaignType;
         this.campaignCategory = campaignCategory;
-        this.processId = processId;
-        this.process = process;
-        this.processType = processType;
-        this.processCategory = processCategory;
+        this.campaignFlow = campaignFlow;
+        this.campaignInquiry = campaignInquiry;
+        this.campaignAssets = campaignAssets;
+        this.campaignScripts = campaignScripts;
         this.campaignDatas = campaignDatas;
         this.campaignState = campaignState;
         this.uDate = uDate;
@@ -95,36 +95,36 @@ public class CampaignDBModel {
         this.campaignCategory = campaignCategory;
     }
 
-    public String getProcessId() {
-        return processId;
+    public CampaignFlowDAO getCampaignFlow() {
+        return campaignFlow;
     }
 
-    public void setProcessId(String processId) {
-        this.processId = processId;
+    public void setCampaignFlow(CampaignFlowDAO campaignFlow) {
+        this.campaignFlow = campaignFlow;
     }
 
-    public String getProcess() {
-        return process;
+    public CampaignInquiryDAO getCampaignInquiry() {
+        return campaignInquiry;
     }
 
-    public void setProcess(String process) {
-        this.process = process;
+    public void setCampaignInquiry(CampaignInquiryDAO campaignInquiry) {
+        this.campaignInquiry = campaignInquiry;
     }
 
-    public String getProcessType() {
-        return processType;
+    public List<CampaignAssetDAO> getCampaignAssets() {
+        return campaignAssets;
     }
 
-    public void setProcessType(String processType) {
-        this.processType = processType;
+    public void setCampaignAssets(List<CampaignAssetDAO> campaignAssets) {
+        this.campaignAssets = campaignAssets;
     }
 
-    public String getProcessCategory() {
-        return processCategory;
+    public List<CampaignScriptDAO> getCampaignScripts() {
+        return campaignScripts;
     }
 
-    public void setProcessCategory(String processCategory) {
-        this.processCategory = processCategory;
+    public void setCampaignScripts(List<CampaignScriptDAO> campaignScripts) {
+        this.campaignScripts = campaignScripts;
     }
 
     public List<CampaignDataDAO> getCampaignDatas() {

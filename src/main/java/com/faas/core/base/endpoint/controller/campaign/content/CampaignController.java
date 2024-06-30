@@ -23,33 +23,9 @@ public class CampaignController {
 
 
     @RequestMapping(value = BaseRoute.GET_ALL_CAMPAIGNS, method = RequestMethod.POST)
-    public ResponseEntity<?> getAllCampaigns(@RequestParam long userId) {
+    public ResponseEntity<?> getCampaigns(@RequestParam long userId) {
 
-        CampaignWSModel response = campaignMiddleware.getAllCampaigns(userId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-    @RequestMapping(value = BaseRoute.GET_CAMPAIGNS_BY_STATE, method = RequestMethod.POST)
-    public ResponseEntity<?> getCampaignsByState(@RequestParam long userId,
-                                                 @RequestParam String campaignState) {
-
-        CampaignWSModel response = campaignMiddleware.getCampaignsByState(userId,campaignState);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-    @RequestMapping(value = BaseRoute.GET_CAMPAIGNS_BY_TYPE, method = RequestMethod.POST)
-    public ResponseEntity<?> getCampaignsByType(@RequestParam long userId,
-                                                @RequestParam String campaignType) {
-
-        CampaignWSModel response = campaignMiddleware.getCampaignsByType(userId,campaignType);
+        CampaignWSModel response = campaignMiddleware.getCampaigns(userId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -69,6 +45,18 @@ public class CampaignController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+    @RequestMapping(value = BaseRoute.GET_CAMPAIGNS_BY_STATE, method = RequestMethod.POST)
+    public ResponseEntity<?> getCampaignsByState(@RequestParam long userId,
+                                                 @RequestParam String campaignState) {
+
+        CampaignWSModel response = campaignMiddleware.getCampaignsByState(userId,campaignState);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+    
     @RequestMapping(value = BaseRoute.GET_CAMPAIGN, method = RequestMethod.POST)
     public ResponseEntity<?> getCampaign(@RequestParam long userId,
                                          @RequestParam String campaignId) {
@@ -85,11 +73,10 @@ public class CampaignController {
     public ResponseEntity<?> createCampaign(@RequestParam long userId,
                                             @RequestParam String campaign,
                                             @RequestParam String campaignDesc,
-                                            @RequestParam String category,
-                                            @RequestParam long typeId,
-                                            @RequestParam String processId) {
+                                            @RequestParam long campaignTypeId,
+                                            @RequestParam String campaignCategory) {
 
-        CampaignWSModel response = campaignMiddleware.createCampaign(userId,campaign,campaignDesc,category,typeId,processId);
+        CampaignWSModel response = campaignMiddleware.createCampaign(userId,campaign,campaignDesc,campaignTypeId,campaignCategory);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -123,7 +110,6 @@ public class CampaignController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
 
 }

@@ -13,7 +13,6 @@ import com.faas.core.base.repo.client.details.ClientDetailsRepository;
 import com.faas.core.base.repo.client.settings.ClientTypeRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.operation.details.channel.*;
-import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.base.repo.utils.CityRepository;
 import com.faas.core.base.repo.utils.CountryRepository;
 import com.faas.core.utility.config.AppConstant;
@@ -46,9 +45,6 @@ public class ClientFramework {
     ClientTypeRepository clientTypeRepository;
 
     @Autowired
-    SessionRepository sessionRepository;
-
-    @Autowired
     OperationRepository operationRepository;
 
     @Autowired
@@ -77,6 +73,7 @@ public class ClientFramework {
 
     @Autowired
     AppUtils appUtils;
+
 
     public ClientWSDTO fillClientWSDTO(ClientDBModel clientDBModel) {
 

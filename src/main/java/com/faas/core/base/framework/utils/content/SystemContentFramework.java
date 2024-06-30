@@ -4,21 +4,19 @@ import com.faas.core.base.model.ws.utils.content.dto.SystemInitWSDTO;
 import com.faas.core.base.model.ws.utils.content.dto.SystemContentWSDTO;
 import com.faas.core.base.repo.asset.content.AssetRepository;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
-import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
+import com.faas.core.base.repo.campaign.details.agent.CampaignAgentRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.operation.details.channel.*;
-import com.faas.core.base.repo.process.content.ProcessRepository;
-import com.faas.core.base.repo.process.details.channel.content.*;
-import com.faas.core.base.repo.process.details.channel.temp.EmailTempRepository;
-import com.faas.core.base.repo.process.details.channel.temp.PushTempRepository;
-import com.faas.core.base.repo.process.details.channel.temp.SmsTempRepository;
-import com.faas.core.base.repo.process.details.channel.temp.WappMessageTempRepository;
-import com.faas.core.base.repo.process.details.scenario.ProcessScenarioRepository;
-import com.faas.core.base.repo.process.details.trigger.*;
+import com.faas.core.base.repo.campaign.details.channel.content.*;
+import com.faas.core.base.repo.campaign.details.channel.temp.EmailTempRepository;
+import com.faas.core.base.repo.campaign.details.channel.temp.PushTempRepository;
+import com.faas.core.base.repo.campaign.details.channel.temp.SmsTempRepository;
+import com.faas.core.base.repo.campaign.details.channel.temp.WappMessageTempRepository;
+import com.faas.core.base.repo.campaign.details.scenario.CampaignScenarioRepository;
+import com.faas.core.base.repo.campaign.details.trigger.*;
 import com.faas.core.base.repo.remote.app.RemoteAppRepository;
 import com.faas.core.base.repo.scenario.content.ScenarioRepository;
-import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.base.repo.user.content.UserRepository;
 import com.faas.core.base.repo.user.details.UserDetailsRepository;
 import com.faas.core.utility.config.AppConstant;
@@ -40,9 +38,6 @@ public class SystemContentFramework {
 
     @Autowired
     RemoteAppRepository remoteAppRepository;
-
-    @Autowired
-    SessionRepository sessionRepository;
 
     @Autowired
     OperationRepository operationRepository;
@@ -72,24 +67,6 @@ public class SystemContentFramework {
     CampaignAgentRepository campaignAgentRepository;
 
     @Autowired
-    ProcessRepository processRepository;
-
-    @Autowired
-    ProcessEmailChannelRepository processEmailChannelRepository;
-
-    @Autowired
-    ProcessPushChannelRepository processPushChannelRepository;
-
-    @Autowired
-    ProcessSipChannelRepository processSipChannelRepository;
-
-    @Autowired
-    ProcessSmsChannelRepository processSmsChannelRepository;
-
-    @Autowired
-    ProcessWappChannelRepository processWappChannelRepository;
-
-    @Autowired
     EmailTempRepository emailTempRepository;
 
     @Autowired
@@ -102,7 +79,7 @@ public class SystemContentFramework {
     WappMessageTempRepository wappMessageTempRepository;
 
     @Autowired
-    ProcessScenarioRepository processScenarioRepository;
+    CampaignScenarioRepository campaignScenarioRepository;
 
     @Autowired
     ScenarioRepository scenarioRepository;

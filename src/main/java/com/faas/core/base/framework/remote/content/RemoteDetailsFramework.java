@@ -141,7 +141,6 @@ public class RemoteDetailsFramework {
     }
 
 
-
     public List<RemoteUrlWSDTO> getRemoteUrlsService(long userId, String remoteId) {
 
         List<RemoteUrlWSDTO> remoteUrlWSDTOS = new ArrayList<>();

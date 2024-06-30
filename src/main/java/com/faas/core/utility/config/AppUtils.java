@@ -1,7 +1,5 @@
 package com.faas.core.utility.config;
 
-import com.faas.core.base.model.db.process.content.ProcessDBModel;
-import com.faas.core.base.model.db.session.SessionDBModel;
 import org.springframework.stereotype.Component;
 
 import java.util.Base64;
@@ -35,13 +33,10 @@ public class AppUtils {
         return date.getTime();
     }
 
-
     public String generateUUID(){
         UUID uuid = UUID.randomUUID();
         return uuid.toString();
     }
-
-
 
     public String convertSmsType(String smsType){
         if (smsType.equalsIgnoreCase(AppConstant.FLASH_MESSAGE)){
@@ -52,14 +47,6 @@ public class AppUtils {
         }
         return "";
     }
-
-
-    public String getSelectedUrl(SessionDBModel sessionDBModel, ProcessDBModel processDBModel, String urlType){
-
-
-        return null;
-    }
-
 
     public String getValueFromMap(Map<String,String> stringMap,String key){
 

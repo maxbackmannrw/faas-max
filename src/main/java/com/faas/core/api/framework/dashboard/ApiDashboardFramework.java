@@ -6,19 +6,15 @@ import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationListWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationValidateWSDTO;
-import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
-import com.faas.core.base.model.db.campaign.details.CampaignAgentDBModel;
+import com.faas.core.base.model.db.campaign.details.agent.CampaignAgentDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.user.content.UserDBModel;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
-import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
+import com.faas.core.base.repo.campaign.details.agent.CampaignAgentRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
-import com.faas.core.base.repo.process.content.ProcessRepository;
-import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.base.repo.user.content.UserRepository;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.AppUtils;
-import com.faas.core.utility.helpers.campaign.CampaignHelpers;
 import com.faas.core.utility.helpers.operation.OperationHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -36,19 +32,10 @@ public class ApiDashboardFramework {
     OperationHelpers operationHelpers;
 
     @Autowired
-    CampaignHelpers campaignHelpers;
-
-    @Autowired
-    SessionRepository sessionRepository;
-
-    @Autowired
     OperationRepository operationRepository;
 
     @Autowired
     CampaignRepository campaignRepository;
-
-    @Autowired
-    ProcessRepository processRepository;
 
     @Autowired
     CampaignAgentRepository campaignAgentRepository;
@@ -64,7 +51,6 @@ public class ApiDashboardFramework {
 
         ApiDashboardWSDTO dashboardWSDTO = new ApiDashboardWSDTO();
         dashboardWSDTO.setReadyManualOperation(operationHelpers.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationTypeAndOperationState(agentId,AppConstant.MANUAL_OPERATION,AppConstant.READY_STATE, PageRequest.of(reqPage,reqSize))));
-        dashboardWSDTO.setReadyInquiryOperation(operationHelpers.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationTypeAndOperationStateAndOperationInquiryState(agentId,AppConstant.INQUIRY_OPERATION,AppConstant.READY_STATE,AppConstant.NEW_STATE, PageRequest.of(reqPage,reqSize))));
         dashboardWSDTO.setActiveOperation(operationHelpers.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationState(agentId, AppConstant.ACTIVE_STATE, PageRequest.of(reqPage,reqSize))));
         dashboardWSDTO.setDashboardCampaigns(apiGetDashboardCampaignsService(agentId));
 
@@ -77,8 +63,8 @@ public class ApiDashboardFramework {
         if (operationType.equalsIgnoreCase(AppConstant.ALL_OPERATIONS)){
             return operationHelpers.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationState(agentId,operationState,PageRequest.of(reqPage,reqSize)));
         }else {
-            return operationHelpers.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationTypeAndOperationStateAndOperationInquiryStateAndOperationFlowState(agentId,operationType,operationState,operationInquiryState,operationFlowState,PageRequest.of(reqPage,reqSize)));
         }
+        return null;
     }
 
 
@@ -109,10 +95,7 @@ public class ApiDashboardFramework {
         List<ApiCampaignWSDTO> campaignWSDTOS = new ArrayList<>();
         List<CampaignAgentDBModel> campaignAgentDBModels = campaignAgentRepository.findByAgentId(agentId);
         for (CampaignAgentDBModel campaignAgentDBModel : campaignAgentDBModels) {
-            Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignAgentDBModel.getCampaignId());
-            if (campaignDBModel.isPresent()) {
-                campaignWSDTOS.add(campaignHelpers.getApiCampaignWSDTO(agentId,campaignDBModel.get()));
-            }
+
         }
         return campaignWSDTOS;
     }

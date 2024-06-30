@@ -2,7 +2,6 @@ package com.faas.core.api.endpoint.controller.campaign.details.content;
 
 import com.faas.core.api.middleware.campaign.details.content.ApiCampaignDetailsMiddleware;
 import com.faas.core.api.model.ws.campaign.details.ApiCampaignDetailsWSModel;
-import com.faas.core.api.model.ws.campaign.details.ApiCampaignProcessWSModel;
 import com.faas.core.api.model.ws.general.ApiSummaryWSModel;
 import com.faas.core.utility.config.ApiRoute;
 import com.faas.core.utility.config.AppConstant;
@@ -52,17 +51,7 @@ public class ApiCampaignDetailsController {
     }
 
 
-    @RequestMapping(value = ApiRoute.API_GET_CAMPAIGN_PROCESS, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetCampaignProcess(@RequestParam long agentId,
-                                                   @RequestParam String campaignId) {
 
-        ApiCampaignProcessWSModel response = apiCampaignDetailsMiddleware.apiGetCampaignProcess(agentId,campaignId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
 
 
 }

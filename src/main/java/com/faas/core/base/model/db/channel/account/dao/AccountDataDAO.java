@@ -1,6 +1,5 @@
 package com.faas.core.base.model.db.channel.account.dao;
 
-
 public class AccountDataDAO {
 
     private String dataId;

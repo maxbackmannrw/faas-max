@@ -7,7 +7,6 @@ import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.client.details.ClientDetailsRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
-import com.faas.core.base.repo.session.SessionRepository;
 import com.faas.core.utility.config.AppUtils;
 import com.faas.core.utility.helpers.channel.ChannelHelpers;
 import com.faas.core.utility.helpers.operation.OperationHelpers;
@@ -24,9 +23,6 @@ public class ApiOperationChannelFramework {
 
     @Autowired
     OperationHelpers operationHelpers;
-
-    @Autowired
-    SessionRepository sessionRepository;
 
     @Autowired
     OperationRepository operationRepository;

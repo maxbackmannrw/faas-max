@@ -1,23 +1,20 @@
 package com.faas.core.api.model.ws.operation.details.content.dto;
 
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
-import com.faas.core.base.model.db.process.content.ProcessDBModel;
-import com.faas.core.base.model.db.process.details.scenario.ProcessScenarioDBModel;
+import com.faas.core.base.model.db.campaign.details.scenario.CampaignScenarioDBModel;
 
 import java.util.List;
 
 public class ApiOperationCampaignWSDTO {
 
     private CampaignDBModel operationCampaign;
-    private ProcessDBModel operationProcess;
-    private List<ProcessScenarioDBModel> processScenarios;
+    private List<CampaignScenarioDBModel> processScenarios;
 
     public ApiOperationCampaignWSDTO() {
     }
 
-    public ApiOperationCampaignWSDTO(CampaignDBModel operationCampaign, ProcessDBModel operationProcess, List<ProcessScenarioDBModel> processScenarios) {
+    public ApiOperationCampaignWSDTO(CampaignDBModel operationCampaign, List<CampaignScenarioDBModel> processScenarios) {
         this.operationCampaign = operationCampaign;
-        this.operationProcess = operationProcess;
         this.processScenarios = processScenarios;
     }
 
@@ -29,19 +26,11 @@ public class ApiOperationCampaignWSDTO {
         this.operationCampaign = operationCampaign;
     }
 
-    public ProcessDBModel getOperationProcess() {
-        return operationProcess;
-    }
-
-    public void setOperationProcess(ProcessDBModel operationProcess) {
-        this.operationProcess = operationProcess;
-    }
-
-    public List<ProcessScenarioDBModel> getProcessScenarios() {
+    public List<CampaignScenarioDBModel> getProcessScenarios() {
         return processScenarios;
     }
 
-    public void setProcessScenarios(List<ProcessScenarioDBModel> processScenarios) {
+    public void setProcessScenarios(List<CampaignScenarioDBModel> processScenarios) {
         this.processScenarios = processScenarios;
     }
 }

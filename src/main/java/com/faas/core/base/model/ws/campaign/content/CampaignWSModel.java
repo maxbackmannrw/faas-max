@@ -1,7 +1,7 @@
 package com.faas.core.base.model.ws.campaign.content;
 
-import com.faas.core.base.model.ws.campaign.content.dto.CampaignWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
+import com.faas.core.base.model.ws.campaign.content.dto.CampaignWSDTO;
 
 import java.util.List;
 
@@ -17,7 +17,6 @@ public class CampaignWSModel {
         this.general = general;
         this.campaigns = campaigns;
     }
-
 
     public GeneralWSModel getGeneral() {
         return general;

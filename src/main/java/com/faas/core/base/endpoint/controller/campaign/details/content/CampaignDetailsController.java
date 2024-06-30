@@ -3,7 +3,7 @@ package com.faas.core.base.endpoint.controller.campaign.details.content;
 import com.faas.core.base.middleware.campaign.details.content.CampaignDetailsMiddleware;
 import com.faas.core.base.model.ws.campaign.details.content.CampaignDataWSModel;
 import com.faas.core.base.model.ws.campaign.details.content.CampaignDetailsWSModel;
-import com.faas.core.base.model.ws.campaign.details.content.CampaignProcessWSModel;
+import com.faas.core.base.model.ws.campaign.details.content.CampaignScriptWSModel;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,19 +37,6 @@ public class CampaignDetailsController {
     }
 
 
-    @RequestMapping(value = BaseRoute.GET_CAMPAIGN_PROCESS, method = RequestMethod.POST)
-    public ResponseEntity<?> getCampaignProcess(@RequestParam long userId,
-                                                @RequestParam String campaignId) {
-
-        CampaignProcessWSModel response = campaignDetailsMiddleware.getCampaignProcess(userId,campaignId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-
     @RequestMapping(value = BaseRoute.GET_CAMPAIGN_DATAS, method = RequestMethod.POST)
     public ResponseEntity<?> getCampaignDatas(@RequestParam long userId,
                                               @RequestParam String campaignId) {
@@ -62,58 +49,124 @@ public class CampaignDetailsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.GET_CAMPAIGN_DATA, method = RequestMethod.POST)
     public ResponseEntity<?> getCampaignData(@RequestParam long userId,
                                              @RequestParam String campaignId,
                                              @RequestParam String dataId) {
 
-        CampaignDataWSModel response = campaignDetailsMiddleware.getCampaignData(userId,campaignId,dataId);
+        CampaignDataWSModel response = campaignDetailsMiddleware.getCampaignData(userId, campaignId, dataId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.CREATE_CAMPAIGN_DATA, method = RequestMethod.POST)
     public ResponseEntity<?> createCampaignData(@RequestParam long userId,
                                                 @RequestParam String campaignId,
-                                                @RequestParam long dataTypeId,
+                                                @RequestParam long typeId,
                                                 @RequestParam String value) {
 
-        CampaignDataWSModel response = campaignDetailsMiddleware.createCampaignData(userId,campaignId,dataTypeId,value);
+        CampaignDataWSModel response = campaignDetailsMiddleware.createCampaignData(userId,campaignId,typeId,value);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.UPDATE_CAMPAIGN_DATA, method = RequestMethod.POST)
     public ResponseEntity<?> updateCampaignData(@RequestParam long userId,
                                                 @RequestParam String campaignId,
                                                 @RequestParam String dataId,
-                                                @RequestParam long dataTypeId,
+                                                @RequestParam long typeId,
                                                 @RequestParam String value) {
 
-        CampaignDataWSModel response = campaignDetailsMiddleware.updateCampaignData(userId,campaignId,dataId,dataTypeId,value);
+        CampaignDataWSModel response = campaignDetailsMiddleware.updateCampaignData(userId,campaignId,dataId,typeId,value);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.REMOVE_CAMPAIGN_DATA, method = RequestMethod.POST)
     public ResponseEntity<?> removeCampaignData(@RequestParam long userId,
                                                 @RequestParam String campaignId,
                                                 @RequestParam String dataId) {
 
-        CampaignDataWSModel response = campaignDetailsMiddleware.removeCampaignData(userId,campaignId,dataId);
+        CampaignDataWSModel response = campaignDetailsMiddleware.removeCampaignData(userId, campaignId, dataId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = BaseRoute.GET_CAMPAIGN_SCRIPTS, method = RequestMethod.POST)
+    public ResponseEntity<?> getCampaignScripts(@RequestParam long userId,
+                                                @RequestParam String campaignId) {
+
+        CampaignScriptWSModel response = campaignDetailsMiddleware.getCampaignScripts(userId,campaignId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+    @RequestMapping(value = BaseRoute.GET_CAMPAIGN_SCRIPT, method = RequestMethod.POST)
+    public ResponseEntity<?> getCampaignScript(@RequestParam long userId,
+                                               @RequestParam String campaignId,
+                                               @RequestParam String scriptId) {
+
+        CampaignScriptWSModel response = campaignDetailsMiddleware.getCampaignScript(userId,campaignId,scriptId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+    @RequestMapping(value = BaseRoute.CREATE_CAMPAIGN_SCRIPT, method = RequestMethod.POST)
+    public ResponseEntity<?> createCampaignScript(@RequestParam long userId,
+                                                  @RequestParam String campaignId,
+                                                  @RequestParam String scriptTitle,
+                                                  @RequestParam String scriptBody,
+                                                  @RequestParam int scriptOrder) {
+
+        CampaignScriptWSModel response = campaignDetailsMiddleware.createCampaignScript(userId,campaignId,scriptTitle,scriptBody,scriptOrder);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+    @RequestMapping(value = BaseRoute.UPDATE_CAMPAIGN_SCRIPT, method = RequestMethod.POST)
+    public ResponseEntity<?> updateCampaignScript(@RequestParam long userId,
+                                                  @RequestParam String campaignId,
+                                                  @RequestParam String scriptId,
+                                                  @RequestParam String scriptTitle,
+                                                  @RequestParam String scriptBody,
+                                                  @RequestParam int scriptOrder) {
+
+        CampaignScriptWSModel response = campaignDetailsMiddleware.updateCampaignScript(userId,campaignId,scriptId,scriptTitle,scriptBody,scriptOrder);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+    @RequestMapping(value = BaseRoute.REMOVE_CAMPAIGN_SCRIPT, method = RequestMethod.POST)
+    public ResponseEntity<?> removeCampaignScript(@RequestParam long userId,
+                                                  @RequestParam String campaignId,
+                                                  @RequestParam String scriptId) {
+
+        CampaignScriptWSModel response = campaignDetailsMiddleware.removeCampaignScript(userId,campaignId,scriptId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

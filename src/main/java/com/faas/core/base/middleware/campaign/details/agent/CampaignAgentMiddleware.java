@@ -2,11 +2,11 @@ package com.faas.core.base.middleware.campaign.details.agent;
 
 import com.faas.core.base.framework.campaign.details.agent.CampaignAgentFramework;
 import com.faas.core.base.framework.user.content.UserFramework;
-import com.faas.core.base.model.db.campaign.details.CampaignAgentDBModel;
+import com.faas.core.base.model.db.campaign.details.agent.CampaignAgentDBModel;
 import com.faas.core.base.model.ws.campaign.details.agent.CampaignAgentWSModel;
 import com.faas.core.base.model.ws.campaign.details.agent.dto.CampaignAgentWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.repo.campaign.details.CampaignAgentRepository;
+import com.faas.core.base.repo.campaign.details.agent.CampaignAgentRepository;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;

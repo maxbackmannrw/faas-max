@@ -8,16 +8,13 @@ import com.faas.core.base.model.db.client.details.ClientDetailsDBModel;
 import com.faas.core.base.model.db.client.details.dao.ClientPhoneDAO;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationSmsDBModel;
-import com.faas.core.base.model.db.process.details.channel.content.ProcessSmsChannelDBModel;
-import com.faas.core.base.model.db.process.details.channel.temp.SmsTempDBModel;
-import com.faas.core.base.model.db.session.SessionDBModel;
+import com.faas.core.base.model.db.campaign.details.channel.content.dao.CampaignSmsChannelDAO;
+import com.faas.core.base.model.db.campaign.details.channel.temp.SmsTempDBModel;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.client.details.ClientDetailsRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.operation.details.channel.SmsRepository;
-import com.faas.core.base.repo.process.details.channel.content.ProcessSmsChannelRepository;
-import com.faas.core.base.repo.process.details.channel.temp.SmsTempRepository;
-import com.faas.core.base.repo.session.SessionRepository;
+import com.faas.core.base.repo.campaign.details.channel.temp.SmsTempRepository;
 import com.faas.core.utility.handler.channel.sms.SmsChannelHandler;
 import com.faas.core.utility.config.AppUtils;
 import com.faas.core.utility.helpers.channel.ChannelHelpers;
@@ -48,14 +45,9 @@ public class ApiOperationSmsFramework {
     @Autowired
     ClientDetailsRepository clientDetailsRepository;
 
-    @Autowired
-    SessionRepository sessionRepository;
 
     @Autowired
     OperationRepository operationRepository;
-
-    @Autowired
-    ProcessSmsChannelRepository processSmsChannelRepository;
 
     @Autowired
     SmsRepository SmsRepository;
@@ -82,45 +74,20 @@ public class ApiOperationSmsFramework {
 
     public ApiOperationSmsAccountWSDTO apiGetOperationSmsAccountService(long agentId, String operationId) {
 
-        List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
-        if (!sessionDBModels.isEmpty()){
-            return channelHelpers.getApiOperationSmsAccountWSDTO(sessionDBModels.get(0).getProcessId());
-        }
+
         return null;
     }
 
     public ApiOperationSmsTempWSDTO apiGetOperationSmsTempsService(long agentId,String operationId) {
 
-        List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
-        if (!sessionDBModels.isEmpty()){
-            ApiOperationSmsTempWSDTO smsTempWSDTO = new ApiOperationSmsTempWSDTO();
-            smsTempWSDTO.setSmsAccount(channelHelpers.getApiOperationSmsAccountWSDTO(sessionDBModels.get(0).getProcessId()));
-            List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(sessionDBModels.get(0).getClientId());
-            if (!clientDetailsDBModels.isEmpty() && clientDetailsDBModels.get(0).getClientPhones() != null){
-                smsTempWSDTO.setClientPhones(clientDetailsDBModels.get(0).getClientPhones());
-            }
-            smsTempWSDTO.setOperationSmsTemps(smsTempRepository.findByProcessId(sessionDBModels.get(0).getProcessId()));
 
-            return smsTempWSDTO;
-        }
         return null;
     }
 
 
     public ApiOperationSmsTempWSDTO apiGetOperationSmsTempService(long agentId,String operationId,String tempId) {
 
-        List<SessionDBModel> sessionDBModels = sessionRepository.findByAgentIdAndOperationId(agentId,operationId);
-        if (!sessionDBModels.isEmpty()){
-            ApiOperationSmsTempWSDTO smsTempWSDTO = new ApiOperationSmsTempWSDTO();
-            smsTempWSDTO.setSmsAccount(channelHelpers.getApiOperationSmsAccountWSDTO(sessionDBModels.get(0).getProcessId()));
-            List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(sessionDBModels.get(0).getClientId());
-            if (!clientDetailsDBModels.isEmpty() && clientDetailsDBModels.get(0).getClientPhones() != null){
-                smsTempWSDTO.setClientPhones(clientDetailsDBModels.get(0).getClientPhones());
-            }
-            smsTempWSDTO.setOperationSmsTemps(smsTempRepository.findByIdAndProcessId(tempId,sessionDBModels.get(0).getProcessId()));
 
-            return smsTempWSDTO;
-        }
         return null;
     }
 
@@ -149,15 +116,7 @@ public class ApiOperationSmsFramework {
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
         if (!operationDBModels.isEmpty()){
             ClientPhoneDAO clientPhoneDAO = channelHelpers.fetchClientPhoneDAO(operationDBModels.get(0).getClientId(),numberId);
-            List<SmsTempDBModel> smsTempDBModels = smsTempRepository.findByIdAndProcessId(tempId,operationDBModels.get(0).getProcessId());
-            List<ProcessSmsChannelDBModel> smsChannelDBModels = processSmsChannelRepository.findByProcessId(operationDBModels.get(0).getProcessId());
-            if (clientPhoneDAO != null && !smsTempDBModels.isEmpty() && !smsChannelDBModels.isEmpty()){
-                OperationSmsDBModel operationSmsDBModel = channelHelpers.createOperationSmsModel(operationDBModels.get(0),clientPhoneDAO,smsTempDBModels.get(0),smsChannelDBModels.get(0));
-                if (operationSmsDBModel != null){
-                    smsChannelHandler.sendAsyncSmsHandler(operationDBModels.get(0), operationSmsDBModel);
-                }
-                return new ApiOperationSmsWSDTO(operationSmsDBModel);
-            }
+
         }
         return null;
     }
