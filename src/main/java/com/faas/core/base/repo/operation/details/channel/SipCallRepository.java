@@ -10,22 +10,13 @@ import java.util.List;
 public interface SipCallRepository extends MongoRepository<OperationSipCallDBModel, String> {
 
     boolean existsByIdAndCallState(String callId,String callState);
-    boolean existsBySessionIdAndCallState(long sessionId,String callState);
     boolean existsByOperationIdAndCallState(String operationId,String callState);
-    List<OperationSipCallDBModel>findBySessionId(long sessionId);
     List<OperationSipCallDBModel>findByOperationId(String operationId);
-    List<OperationSipCallDBModel>findByIdAndSessionId(String callId, long sessionId);
     List<OperationSipCallDBModel>findByIdAndOperationId(String callId, String operationId);
     List<OperationSipCallDBModel>findByIdAndOperationIdAndAgentId(String callId, String operationId, long agentId);
     List<OperationSipCallDBModel>findByOperationIdAndAgentId(String operationId, long agentId);
 
-    List<OperationSipCallDBModel>findByIdAndSessionIdAndAgentIdAndClientId(String callId, long sessionId, long agentId, long clientId);
-    List<OperationSipCallDBModel>findBySessionIdAndCampaignIdAndProcessId(long sessionId, String campaignId, String processId);
-    List<OperationSipCallDBModel>findBySessionIdAndCampaignId(long sessionId, String campaignId);
-    List<OperationSipCallDBModel>findByIdAndSessionIdAndCampaignIdAndProcessId(String callId, long sessionId, String campaignId, String processId);
-    List<OperationSipCallDBModel>findBySessionIdAndCallState(long sessionId, String callState);
     List<OperationSipCallDBModel>findByOperationIdAndCallState(String operationId, String callState);
     List<OperationSipCallDBModel>findByOperationIdAndAgentIdAndCallState(String operationId, long agentId, String callState);
     List<OperationSipCallDBModel>findByClientId(long clientId);
-    List<OperationSipCallDBModel>findBySessionIdAndClientId(long sessionId, long clientId);
 }

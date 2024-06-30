@@ -47,7 +47,6 @@ import java.util.List;
 @Component
 public class ChannelHelpers {
 
-
     @Autowired
     SipChannelHandler sipChannelHandler;
 
