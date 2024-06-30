@@ -12,8 +12,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 
 @Service
 public class OperationManagerFramework {
@@ -25,22 +23,22 @@ public class OperationManagerFramework {
     OperationRepository operationRepository;
 
     @Autowired
-    SmsRepository SmsRepository;
+    OperationSmsRepository OperationSmsRepository;
 
     @Autowired
-    EmailRepository emailRepository;
+    OperationEmailRepository operationEmailRepository;
 
     @Autowired
-    SipCallRepository sipCallRepository;
+    OperationSipCallRepository operationSipCallRepository;
 
     @Autowired
-    WappCallRepository wappCallRepository;
+    OperationWappCallRepository wappCallRepository;
 
     @Autowired
-    WappMessageRepository wappMessageRepository;
+    OperationWappMessageRepository operationWappMessageRepository;
 
     @Autowired
-    PushRepository pushRepository;
+    OperationPushRepository operationPushRepository;
 
     @Autowired
     AppUtils appUtils;

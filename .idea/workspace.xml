@@ -7,9 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/campaign/content/CampaignFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/campaign/content/CampaignFramework.java" afterDir="false" />
-    </list>
+    <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -1086,23 +1084,7 @@
       <workItem from="1719601821330" duration="4094000" />
       <workItem from="1719660682053" duration="10494000" />
       <workItem from="1719686021396" duration="7173000" />
-      <workItem from="1719769697423" duration="7304000" />
-    </task>
-    <task id="LOCAL-00882" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1716493886783</created>
-      <option name="number" value="00882" />
-      <option name="presentableId" value="LOCAL-00882" />
-      <option name="project" value="LOCAL" />
-      <updated>1716493886783</updated>
-    </task>
-    <task id="LOCAL-00883" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1716498375106</created>
-      <option name="number" value="00883" />
-      <option name="presentableId" value="LOCAL-00883" />
-      <option name="project" value="LOCAL" />
-      <updated>1716498375106</updated>
+      <workItem from="1719769697423" duration="7624000" />
     </task>
     <task id="LOCAL-00884" summary="almost finish">
       <option name="closed" value="true" />
@@ -1480,7 +1462,23 @@
       <option name="project" value="LOCAL" />
       <updated>1719777539095</updated>
     </task>
-    <option name="localTasksCounter" value="931" />
+    <task id="LOCAL-00931" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1719777851922</created>
+      <option name="number" value="00931" />
+      <option name="presentableId" value="LOCAL-00931" />
+      <option name="project" value="LOCAL" />
+      <updated>1719777851922</updated>
+    </task>
+    <task id="LOCAL-00932" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1719778029527</created>
+      <option name="number" value="00932" />
+      <option name="presentableId" value="LOCAL-00932" />
+      <option name="project" value="LOCAL" />
+      <updated>1719778029527</updated>
+    </task>
+    <option name="localTasksCounter" value="933" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1559,12 +1557,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/faas/core/utility/helpers/channel/ChannelHelpers.java</url>
-          <line>472</line>
+          <line>471</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/faas/core/utility/helpers/channel/ChannelHelpers.java</url>
-          <line>463</line>
+          <line>462</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>

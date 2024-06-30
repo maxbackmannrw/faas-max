@@ -2,7 +2,7 @@ package com.faas.core.utility.rest.channel.sms;
 
 import com.faas.core.base.model.db.channel.account.SmsAccountDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationSmsDBModel;
-import com.faas.core.base.repo.operation.details.channel.SmsRepository;
+import com.faas.core.base.repo.operation.details.channel.OperationSmsRepository;
 import com.faas.core.utility.rest.utility.RestCallTemplate;
 import com.faas.core.utility.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ public class SmsChannelRestCall {
     RestCallTemplate restCallTemplate;
 
     @Autowired
-    SmsRepository SmsRepository;
+    OperationSmsRepository OperationSmsRepository;
 
     @Autowired
     AppUtils appUtils;

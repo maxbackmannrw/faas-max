@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface SmsRepository extends MongoRepository<OperationSmsDBModel, String> {
+public interface OperationSmsRepository extends MongoRepository<OperationSmsDBModel, String> {
 
     List<OperationSmsDBModel>findByOperationId(String operationId);
     List<OperationSmsDBModel>findByOperationIdAndAgentId(String operationId, long agentId);

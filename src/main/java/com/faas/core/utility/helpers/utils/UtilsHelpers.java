@@ -18,7 +18,6 @@ import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.client.details.ClientDetailsRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.operation.details.channel.*;
-import com.faas.core.base.repo.campaign.details.channel.content.*;
 import com.faas.core.base.repo.campaign.details.channel.temp.EmailTempRepository;
 import com.faas.core.base.repo.campaign.details.channel.temp.PushTempRepository;
 import com.faas.core.base.repo.campaign.details.channel.temp.SmsTempRepository;
@@ -60,22 +59,22 @@ public class UtilsHelpers {
     OperationRepository operationRepository;
 
     @Autowired
-    EmailRepository emailRepository;
+    OperationEmailRepository operationEmailRepository;
 
     @Autowired
-    PushRepository pushRepository;
+    OperationPushRepository operationPushRepository;
 
     @Autowired
-    SipCallRepository sipCallRepository;
+    OperationSipCallRepository operationSipCallRepository;
 
     @Autowired
-    SmsRepository SmsRepository;
+    OperationSmsRepository OperationSmsRepository;
 
     @Autowired
-    WappCallRepository wappCallRepository;
+    OperationWappCallRepository wappCallRepository;
 
     @Autowired
-    WappMessageRepository wappMessageRepository;
+    OperationWappMessageRepository operationWappMessageRepository;
 
     @Autowired
     CampaignRepository campaignRepository;
@@ -431,35 +430,35 @@ public class UtilsHelpers {
         clientRepository.deleteAll();
         remoteAppRepository.deleteAll();
         operationRepository.deleteAll();
-        emailRepository.deleteAll();
-        pushRepository.deleteAll();
-        sipCallRepository.deleteAll();
-        SmsRepository.deleteAll();
+        operationEmailRepository.deleteAll();
+        operationPushRepository.deleteAll();
+        operationSipCallRepository.deleteAll();
+        OperationSmsRepository.deleteAll();
         wappCallRepository.deleteAll();
-        wappMessageRepository.deleteAll();
+        operationWappMessageRepository.deleteAll();
     }
 
     public void removeAllSessionsHelper(){
 
         operationRepository.deleteAll();
-        emailRepository.deleteAll();
-        pushRepository.deleteAll();
-        sipCallRepository.deleteAll();
-        SmsRepository.deleteAll();
+        operationEmailRepository.deleteAll();
+        operationPushRepository.deleteAll();
+        operationSipCallRepository.deleteAll();
+        OperationSmsRepository.deleteAll();
         wappCallRepository.deleteAll();
-        wappMessageRepository.deleteAll();
+        operationWappMessageRepository.deleteAll();
         resetAllClientsHelper();
     }
 
     public void removeAllOperationsHelper(){
 
         operationRepository.deleteAll();
-        emailRepository.deleteAll();
-        pushRepository.deleteAll();
-        sipCallRepository.deleteAll();
-        SmsRepository.deleteAll();
+        operationEmailRepository.deleteAll();
+        operationPushRepository.deleteAll();
+        operationSipCallRepository.deleteAll();
+        OperationSmsRepository.deleteAll();
         wappCallRepository.deleteAll();
-        wappMessageRepository.deleteAll();
+        operationWappMessageRepository.deleteAll();
         resetAllClientsHelper();
     }
 

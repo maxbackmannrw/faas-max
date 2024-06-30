@@ -48,22 +48,22 @@ public class ClientFramework {
     OperationRepository operationRepository;
 
     @Autowired
-    EmailRepository emailRepository;
+    OperationEmailRepository operationEmailRepository;
 
     @Autowired
-    PushRepository pushRepository;
+    OperationPushRepository operationPushRepository;
 
     @Autowired
-    SipCallRepository sipCallRepository;
+    OperationSipCallRepository operationSipCallRepository;
 
     @Autowired
-    SmsRepository SmsRepository;
+    OperationSmsRepository OperationSmsRepository;
 
     @Autowired
-    WappCallRepository wappCallRepository;
+    OperationWappCallRepository wappCallRepository;
 
     @Autowired
-    WappMessageRepository wappMessageRepository;
+    OperationWappMessageRepository operationWappMessageRepository;
 
     @Autowired
     CityRepository cityRepository;

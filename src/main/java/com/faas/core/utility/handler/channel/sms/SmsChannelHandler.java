@@ -5,7 +5,7 @@ import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationSmsDBModel;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.channel.account.SmsAccountRepository;
-import com.faas.core.base.repo.operation.details.channel.SmsRepository;
+import com.faas.core.base.repo.operation.details.channel.OperationSmsRepository;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.rest.channel.sms.SmsChannelRestCall;
 import com.faas.core.utility.rest.utility.CommonRestCall;
@@ -35,7 +35,7 @@ public class SmsChannelHandler {
     SmsAccountRepository smsAccountRepository;
 
     @Autowired
-    SmsRepository SmsRepository;
+    OperationSmsRepository OperationSmsRepository;
 
     @Autowired
     AppUtils appUtils;
@@ -48,7 +48,7 @@ public class SmsChannelHandler {
         if (smsAccountModel.isPresent() && operationSmsModel.getOperationSms() != null && operationSmsModel.getOperationSms().getSmsBody() != null) {
             operationSmsModel = smsChannelRestCall.sendSmsRestCall(prepareOperationSmsHandler(operationModel, operationSmsModel),smsAccountModel.get());
             if (operationSmsModel != null){
-                SmsRepository.save(operationSmsModel);
+                OperationSmsRepository.save(operationSmsModel);
             }
         }
     }
@@ -90,7 +90,7 @@ public class SmsChannelHandler {
         operationSmsModel.setSmsState(AppConstant.MESSAGE_SENDING);
         operationSmsModel.setuDate(appUtils.getCurrentTimeStamp());
 
-        return SmsRepository.save(operationSmsModel);
+        return OperationSmsRepository.save(operationSmsModel);
     }
 
     public OperationSmsDBModel replaceSmsClientNameTag(OperationDBModel operationModel, OperationSmsDBModel operationSmsModel) {

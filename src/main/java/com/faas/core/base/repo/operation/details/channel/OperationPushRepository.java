@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface PushRepository extends MongoRepository<OperationPushDBModel, String> {
+public interface OperationPushRepository extends MongoRepository<OperationPushDBModel, String> {
 
     List<OperationPushDBModel>findByOperationId(String operationId);
     List<OperationPushDBModel>findByOperationIdAndAgentId(String operationId, long agentId);

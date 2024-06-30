@@ -1,6 +1,5 @@
 package com.faas.core.utility.helpers.manager;
 
-import com.faas.core.base.model.db.client.content.ClientDBModel;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
@@ -32,22 +31,22 @@ public class ManagerHelpers {
     OperationRepository operationRepository;
 
     @Autowired
-    EmailRepository emailRepository;
+    OperationEmailRepository operationEmailRepository;
 
     @Autowired
-    PushRepository pushRepository;
+    OperationPushRepository operationPushRepository;
 
     @Autowired
-    SipCallRepository sipCallRepository;
+    OperationSipCallRepository operationSipCallRepository;
 
     @Autowired
-    SmsRepository SmsRepository;
+    OperationSmsRepository OperationSmsRepository;
 
     @Autowired
-    WappCallRepository wappCallRepository;
+    OperationWappCallRepository wappCallRepository;
 
     @Autowired
-    WappMessageRepository wappMessageRepository;
+    OperationWappMessageRepository operationWappMessageRepository;
 
     @Autowired
     CampaignRepository campaignRepository;

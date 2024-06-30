@@ -8,7 +8,6 @@ import com.faas.core.base.repo.campaign.details.agent.CampaignAgentRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.operation.details.channel.*;
-import com.faas.core.base.repo.campaign.details.channel.content.*;
 import com.faas.core.base.repo.campaign.details.channel.temp.EmailTempRepository;
 import com.faas.core.base.repo.campaign.details.channel.temp.PushTempRepository;
 import com.faas.core.base.repo.campaign.details.channel.temp.SmsTempRepository;
@@ -43,22 +42,22 @@ public class SystemContentFramework {
     OperationRepository operationRepository;
 
     @Autowired
-    EmailRepository emailRepository;
+    OperationEmailRepository operationEmailRepository;
 
     @Autowired
-    PushRepository pushRepository;
+    OperationPushRepository operationPushRepository;
 
     @Autowired
-    SipCallRepository sipCallRepository;
+    OperationSipCallRepository operationSipCallRepository;
 
     @Autowired
-    SmsRepository SmsRepository;
+    OperationSmsRepository OperationSmsRepository;
 
     @Autowired
-    WappCallRepository wappCallRepository;
+    OperationWappCallRepository wappCallRepository;
 
     @Autowired
-    WappMessageRepository wappMessageRepository;
+    OperationWappMessageRepository operationWappMessageRepository;
 
     @Autowired
     CampaignRepository campaignRepository;

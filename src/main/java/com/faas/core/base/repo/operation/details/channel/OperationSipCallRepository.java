@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface SipCallRepository extends MongoRepository<OperationSipCallDBModel, String> {
+public interface OperationSipCallRepository extends MongoRepository<OperationSipCallDBModel, String> {
 
     boolean existsByIdAndCallState(String callId,String callState);
     boolean existsByOperationIdAndCallState(String operationId,String callState);

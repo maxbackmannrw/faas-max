@@ -2,7 +2,7 @@ package com.faas.core.utility.rest.channel.wapp;
 
 import com.faas.core.base.model.db.channel.account.WappAccountDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationWappMessageDBModel;
-import com.faas.core.base.repo.operation.details.channel.WappMessageRepository;
+import com.faas.core.base.repo.operation.details.channel.OperationWappMessageRepository;
 import com.faas.core.utility.rest.utility.RestCallTemplate;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.AppUtils;
@@ -25,7 +25,7 @@ public class WappChannelRestCall {
     RestCallTemplate restCallTemplate;
 
     @Autowired
-    WappMessageRepository wappMessageRepository;
+    OperationWappMessageRepository operationWappMessageRepository;
 
     @Autowired
     AppUtils appUtils;
@@ -157,7 +157,7 @@ public class WappChannelRestCall {
             operationWappMessageDBModel.setMessageState(AppConstant.MESSAGE_FAILED);
         }
         operationWappMessageDBModel.setuDate(appUtils.getCurrentTimeStamp());
-        wappMessageRepository.save(operationWappMessageDBModel);
+        operationWappMessageRepository.save(operationWappMessageDBModel);
     }
 
 

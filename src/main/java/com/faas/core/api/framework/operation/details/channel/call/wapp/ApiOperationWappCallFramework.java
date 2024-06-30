@@ -8,7 +8,7 @@ import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationWappCallDBModel;
 import com.faas.core.base.repo.client.details.ClientDetailsRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
-import com.faas.core.base.repo.operation.details.channel.WappCallRepository;
+import com.faas.core.base.repo.operation.details.channel.OperationWappCallRepository;
 import com.faas.core.utility.config.AppUtils;
 import com.faas.core.utility.helpers.channel.ChannelHelpers;
 import com.faas.core.utility.helpers.operation.OperationHelpers;
@@ -35,7 +35,7 @@ public class ApiOperationWappCallFramework {
     OperationRepository operationRepository;
 
     @Autowired
-    WappCallRepository wappCallRepository;
+    OperationWappCallRepository wappCallRepository;
 
     @Autowired
     AppUtils appUtils;

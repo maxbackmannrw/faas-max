@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface WappCallRepository extends MongoRepository<OperationWappCallDBModel, String> {
+public interface OperationWappCallRepository extends MongoRepository<OperationWappCallDBModel, String> {
 
     boolean existsByIdAndCallState(String callId,String callState);
     boolean existsByOperationIdAndCallState(String operationId,String callState);

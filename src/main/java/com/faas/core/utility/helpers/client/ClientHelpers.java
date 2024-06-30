@@ -46,22 +46,22 @@ public class ClientHelpers {
     OperationRepository operationRepository;
 
     @Autowired
-    EmailRepository emailRepository;
+    OperationEmailRepository operationEmailRepository;
 
     @Autowired
-    PushRepository pushRepository;
+    OperationPushRepository operationPushRepository;
 
     @Autowired
-    SipCallRepository sipCallRepository;
+    OperationSipCallRepository operationSipCallRepository;
 
     @Autowired
-    SmsRepository SmsRepository;
+    OperationSmsRepository OperationSmsRepository;
 
     @Autowired
-    WappCallRepository wappCallRepository;
+    OperationWappCallRepository wappCallRepository;
 
     @Autowired
-    WappMessageRepository wappMessageRepository;
+    OperationWappMessageRepository operationWappMessageRepository;
 
     @Autowired
     AppUtils appUtils;
@@ -156,12 +156,12 @@ public class ClientHelpers {
     public ClientDBModel deleteClient(ClientDBModel clientDBModel){
 
         operationRepository.deleteAll(operationRepository.findByClientId(clientDBModel.getId()));
-        emailRepository.deleteAll(emailRepository.findByClientId(clientDBModel.getId()));
-        pushRepository.deleteAll(pushRepository.findByClientId(clientDBModel.getId()));
-        sipCallRepository.deleteAll(sipCallRepository.findByClientId(clientDBModel.getId()));
-        SmsRepository.deleteAll(SmsRepository.findByClientId(clientDBModel.getId()));
+        operationEmailRepository.deleteAll(operationEmailRepository.findByClientId(clientDBModel.getId()));
+        operationPushRepository.deleteAll(operationPushRepository.findByClientId(clientDBModel.getId()));
+        operationSipCallRepository.deleteAll(operationSipCallRepository.findByClientId(clientDBModel.getId()));
+        OperationSmsRepository.deleteAll(OperationSmsRepository.findByClientId(clientDBModel.getId()));
         wappCallRepository.deleteAll(wappCallRepository.findByClientId(clientDBModel.getId()));
-        wappMessageRepository.deleteAll(wappMessageRepository.findByClientId(clientDBModel.getId()));
+        operationWappMessageRepository.deleteAll(operationWappMessageRepository.findByClientId(clientDBModel.getId()));
         remoteAppRepository.deleteAll(remoteAppRepository.findByClientId(clientDBModel.getId()));
         clientDetailsRepository.deleteAll(clientDetailsRepository.findByClientId(clientDBModel.getId()));
         clientRepository.delete(clientDBModel);

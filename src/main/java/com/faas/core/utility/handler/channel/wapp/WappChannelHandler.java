@@ -5,7 +5,7 @@ import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.operation.details.channel.OperationWappMessageDBModel;
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.repo.channel.account.WappAccountRepository;
-import com.faas.core.base.repo.operation.details.channel.WappMessageRepository;
+import com.faas.core.base.repo.operation.details.channel.OperationWappMessageRepository;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.utility.rest.channel.wapp.WappChannelRestCall;
 import com.faas.core.utility.rest.utility.CommonRestCall;
@@ -34,7 +34,7 @@ public class WappChannelHandler {
     WappAccountRepository wappAccountRepository;
 
     @Autowired
-    WappMessageRepository wappMessageRepository;
+    OperationWappMessageRepository operationWappMessageRepository;
 
     @Autowired
     AppUtils appUtils;
@@ -103,7 +103,7 @@ public class WappChannelHandler {
         operationWappMessageDBModel.setMessageState(AppConstant.MESSAGE_SENDING);
         operationWappMessageDBModel.setuDate(appUtils.getCurrentTimeStamp());
 
-        return wappMessageRepository.save(operationWappMessageDBModel);
+        return operationWappMessageRepository.save(operationWappMessageDBModel);
     }
 
 

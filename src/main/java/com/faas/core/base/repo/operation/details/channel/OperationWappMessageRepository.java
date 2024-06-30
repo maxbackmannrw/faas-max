@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface WappMessageRepository extends MongoRepository<OperationWappMessageDBModel, String> {
+public interface OperationWappMessageRepository extends MongoRepository<OperationWappMessageDBModel, String> {
 
     List<OperationWappMessageDBModel>findByOperationId(String operationId);
     List<OperationWappMessageDBModel>findByOperationIdAndAgentId(String operationId, long agentId);
