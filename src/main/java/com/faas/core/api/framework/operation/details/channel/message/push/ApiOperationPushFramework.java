@@ -11,7 +11,7 @@ import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.client.details.ClientDetailsRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.operation.details.channel.OperationPushRepository;
-import com.faas.core.base.repo.campaign.details.channel.temp.PushTempRepository;
+import com.faas.core.base.repo.campaign.details.temp.PushTempRepository;
 import com.faas.core.utility.config.AppUtils;
 import com.faas.core.utility.helpers.channel.ChannelHelpers;
 import com.faas.core.utility.helpers.operation.OperationHelpers;

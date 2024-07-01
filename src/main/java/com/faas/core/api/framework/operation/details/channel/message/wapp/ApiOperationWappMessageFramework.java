@@ -13,7 +13,7 @@ import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.client.details.ClientDetailsRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.operation.details.channel.OperationWappMessageRepository;
-import com.faas.core.base.repo.campaign.details.channel.temp.WappMessageTempRepository;
+import com.faas.core.base.repo.campaign.details.temp.WappMessageTempRepository;
 import com.faas.core.base.repo.user.content.UserRepository;
 import com.faas.core.base.repo.user.details.UserDetailsRepository;
 import com.faas.core.utility.config.AppUtils;

@@ -1,8 +1,8 @@
 package com.faas.core.base.model.ws.campaign.details.content.dto;
 
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
-import com.faas.core.base.model.ws.campaign.details.channel.content.dto.CampaignChannelWSDTO;
-import com.faas.core.base.model.ws.campaign.details.channel.temp.dto.CampaignTempWSDTO;
+import com.faas.core.base.model.ws.campaign.details.channel.dto.CampaignChannelWSDTO;
+import com.faas.core.base.model.ws.campaign.details.temp.content.dto.CampaignTempWSDTO;
 import com.faas.core.base.model.ws.campaign.details.remote.dto.CampaignRemoteWSDTO;
 import com.faas.core.base.model.ws.campaign.details.scenario.dto.CampaignScenarioWSDTO;
 import com.faas.core.base.model.ws.campaign.details.trigger.dto.CampaignTriggerWSDTO;
