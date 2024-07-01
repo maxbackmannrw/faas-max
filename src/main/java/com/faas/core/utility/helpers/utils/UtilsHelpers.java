@@ -71,7 +71,7 @@ public class UtilsHelpers {
     OperationSmsRepository OperationSmsRepository;
 
     @Autowired
-    OperationWappCallRepository wappCallRepository;
+    OperationWappCallRepository operationWappCallRepository;
 
     @Autowired
     OperationWappMessageRepository operationWappMessageRepository;
@@ -434,7 +434,7 @@ public class UtilsHelpers {
         operationPushRepository.deleteAll();
         operationSipCallRepository.deleteAll();
         OperationSmsRepository.deleteAll();
-        wappCallRepository.deleteAll();
+        operationWappCallRepository.deleteAll();
         operationWappMessageRepository.deleteAll();
     }
 
@@ -445,7 +445,7 @@ public class UtilsHelpers {
         operationPushRepository.deleteAll();
         operationSipCallRepository.deleteAll();
         OperationSmsRepository.deleteAll();
-        wappCallRepository.deleteAll();
+        operationWappCallRepository.deleteAll();
         operationWappMessageRepository.deleteAll();
         resetAllClientsHelper();
     }
@@ -457,7 +457,7 @@ public class UtilsHelpers {
         operationPushRepository.deleteAll();
         operationSipCallRepository.deleteAll();
         OperationSmsRepository.deleteAll();
-        wappCallRepository.deleteAll();
+        operationWappCallRepository.deleteAll();
         operationWappMessageRepository.deleteAll();
         resetAllClientsHelper();
     }

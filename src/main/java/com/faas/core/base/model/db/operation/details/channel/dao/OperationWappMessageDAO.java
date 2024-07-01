@@ -8,14 +8,14 @@ public class OperationWappMessageDAO {
     private String tempId;
     private String wappTitle;
     private String wappBody;
-    private List<OperationChannelDataDAO>messageDatas;
+    private List<ChannelDataDAO>messageDatas;
     private String messageType;
     private int status;
 
     public OperationWappMessageDAO() {
     }
 
-    public OperationWappMessageDAO(String accountId, String tempId, String wappTitle, String wappBody, List<OperationChannelDataDAO> messageDatas, String messageType, int status) {
+    public OperationWappMessageDAO(String accountId, String tempId, String wappTitle, String wappBody, List<ChannelDataDAO> messageDatas, String messageType, int status) {
         this.accountId = accountId;
         this.tempId = tempId;
         this.wappTitle = wappTitle;
@@ -57,11 +57,11 @@ public class OperationWappMessageDAO {
         this.wappBody = wappBody;
     }
 
-    public List<OperationChannelDataDAO> getMessageDatas() {
+    public List<ChannelDataDAO> getMessageDatas() {
         return messageDatas;
     }
 
-    public void setMessageDatas(List<OperationChannelDataDAO> messageDatas) {
+    public void setMessageDatas(List<ChannelDataDAO> messageDatas) {
         this.messageDatas = messageDatas;
     }
 

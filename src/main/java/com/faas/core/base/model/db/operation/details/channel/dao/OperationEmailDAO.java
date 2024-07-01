@@ -9,14 +9,14 @@ public class OperationEmailDAO {
     private String emailSubject;
     private String emailBody;
     private String emailSender;
-    private List<OperationChannelDataDAO> emailDatas;
+    private List<ChannelDataDAO> emailDatas;
     private String emailType;
     private int status;
 
     public OperationEmailDAO() {
     }
 
-    public OperationEmailDAO(String accountId, String tempId, String emailSubject, String emailBody, String emailSender, List<OperationChannelDataDAO> emailDatas, String emailType, int status) {
+    public OperationEmailDAO(String accountId, String tempId, String emailSubject, String emailBody, String emailSender, List<ChannelDataDAO> emailDatas, String emailType, int status) {
         this.accountId = accountId;
         this.tempId = tempId;
         this.emailSubject = emailSubject;
@@ -67,11 +67,11 @@ public class OperationEmailDAO {
         this.emailSender = emailSender;
     }
 
-    public List<OperationChannelDataDAO> getEmailDatas() {
+    public List<ChannelDataDAO> getEmailDatas() {
         return emailDatas;
     }
 
-    public void setEmailDatas(List<OperationChannelDataDAO> emailDatas) {
+    public void setEmailDatas(List<ChannelDataDAO> emailDatas) {
         this.emailDatas = emailDatas;
     }
 

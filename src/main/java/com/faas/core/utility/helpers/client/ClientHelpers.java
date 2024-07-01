@@ -58,7 +58,7 @@ public class ClientHelpers {
     OperationSmsRepository OperationSmsRepository;
 
     @Autowired
-    OperationWappCallRepository wappCallRepository;
+    OperationWappCallRepository operationWappCallRepository;
 
     @Autowired
     OperationWappMessageRepository operationWappMessageRepository;
@@ -160,7 +160,7 @@ public class ClientHelpers {
         operationPushRepository.deleteAll(operationPushRepository.findByClientId(clientDBModel.getId()));
         operationSipCallRepository.deleteAll(operationSipCallRepository.findByClientId(clientDBModel.getId()));
         OperationSmsRepository.deleteAll(OperationSmsRepository.findByClientId(clientDBModel.getId()));
-        wappCallRepository.deleteAll(wappCallRepository.findByClientId(clientDBModel.getId()));
+        operationWappCallRepository.deleteAll(operationWappCallRepository.findByClientId(clientDBModel.getId()));
         operationWappMessageRepository.deleteAll(operationWappMessageRepository.findByClientId(clientDBModel.getId()));
         remoteAppRepository.deleteAll(remoteAppRepository.findByClientId(clientDBModel.getId()));
         clientDetailsRepository.deleteAll(clientDetailsRepository.findByClientId(clientDBModel.getId()));

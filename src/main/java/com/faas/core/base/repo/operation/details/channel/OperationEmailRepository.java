@@ -14,5 +14,4 @@ public interface OperationEmailRepository extends MongoRepository<OperationEmail
     List<OperationEmailDBModel>findByClientId(long clientId);
     List<OperationEmailDBModel>findByIdAndOperationId(String emailId, String operationId);
 
-
 }

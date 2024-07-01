@@ -54,7 +54,7 @@ public class SystemContentFramework {
     OperationSmsRepository OperationSmsRepository;
 
     @Autowired
-    OperationWappCallRepository wappCallRepository;
+    OperationWappCallRepository operationWappCallRepository;
 
     @Autowired
     OperationWappMessageRepository operationWappMessageRepository;

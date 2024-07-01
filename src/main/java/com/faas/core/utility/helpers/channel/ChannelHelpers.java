@@ -78,7 +78,7 @@ public class ChannelHelpers {
     OperationSipCallRepository operationSipCallRepository;
 
     @Autowired
-    OperationWappCallRepository wappCallRepository;
+    OperationWappCallRepository operationWappCallRepository;
 
     @Autowired
     OperationWappMessageRepository operationWappMessageRepository;
@@ -237,7 +237,7 @@ public class ChannelHelpers {
     public ApiOperationWappCallWSDTO createOperationWappCallHelper(OperationDBModel operationDBModel, String numberId){
 
         OperationWappCallDAO operationWappCallDAO = createOperationWappCallDAO(operationDBModel,numberId);
-        if (operationWappCallDAO != null && !wappCallRepository.existsByOperationIdAndCallState(operationDBModel.getId(),AppConstant.READY_CALL) && !operationSipCallRepository.existsByOperationIdAndCallState(operationDBModel.getId(),AppConstant.ACTIVE_CALL)){
+        if (operationWappCallDAO != null && !operationWappCallRepository.existsByOperationIdAndCallState(operationDBModel.getId(),AppConstant.READY_CALL) && !operationSipCallRepository.existsByOperationIdAndCallState(operationDBModel.getId(),AppConstant.ACTIVE_CALL)){
 
             OperationWappCallDBModel operationWappCallDBModel = new OperationWappCallDBModel();
             operationWappCallDBModel.setClientId(operationDBModel.getClientId());
@@ -251,7 +251,7 @@ public class ChannelHelpers {
             operationWappCallDBModel.setcDate(appUtils.getCurrentTimeStamp());
             operationWappCallDBModel.setStatus(1);
 
-            return new ApiOperationWappCallWSDTO(wappCallRepository.save(operationWappCallDBModel));
+            return new ApiOperationWappCallWSDTO(operationWappCallRepository.save(operationWappCallDBModel));
         }
         return null;
     }
@@ -295,7 +295,7 @@ public class ChannelHelpers {
             operationWappCallDBModel.setCallState(AppConstant.ACTIVE_CALL);
             operationWappCallDBModel.setuDate(appUtils.getCurrentTimeStamp());
 
-            return new ApiOperationWappCallWSDTO(wappCallRepository.save(operationWappCallDBModel));
+            return new ApiOperationWappCallWSDTO(operationWappCallRepository.save(operationWappCallDBModel));
         }
         return null;
     }
@@ -308,7 +308,7 @@ public class ChannelHelpers {
             operationWappCallDBModel.setCallState(AppConstant.FINISHED_CALL);
             operationWappCallDBModel.setuDate(appUtils.getCurrentTimeStamp());
 
-            return new ApiOperationWappCallWSDTO(wappCallRepository.save(operationWappCallDBModel));
+            return new ApiOperationWappCallWSDTO(operationWappCallRepository.save(operationWappCallDBModel));
         }
         return null;
     }
@@ -317,13 +317,13 @@ public class ChannelHelpers {
 
         if (operationWappCallDBModel.getWappCall() != null ){
             if (operationWappCallDBModel.getCallState().equalsIgnoreCase(AppConstant.READY_CALL)){
-                wappCallRepository.delete(operationWappCallDBModel);
+                operationWappCallRepository.delete(operationWappCallDBModel);
             }
             if (operationWappCallDBModel.getCallState().equalsIgnoreCase(AppConstant.ACTIVE_CALL)){
                 operationWappCallDBModel.getWappCall().setfDate(appUtils.getCurrentTimeStamp());
                 operationWappCallDBModel.setCallState(AppConstant.FINISHED_CALL);
                 operationWappCallDBModel.setuDate(appUtils.getCurrentTimeStamp());
-                operationWappCallDBModel = wappCallRepository.save(operationWappCallDBModel);
+                operationWappCallDBModel = operationWappCallRepository.save(operationWappCallDBModel);
             }
         }
         return new ApiOperationWappCallWSDTO(operationWappCallDBModel);

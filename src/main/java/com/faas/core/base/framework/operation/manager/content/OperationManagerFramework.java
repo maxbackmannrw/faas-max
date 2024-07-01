@@ -32,7 +32,7 @@ public class OperationManagerFramework {
     OperationSipCallRepository operationSipCallRepository;
 
     @Autowired
-    OperationWappCallRepository wappCallRepository;
+    OperationWappCallRepository operationWappCallRepository;
 
     @Autowired
     OperationWappMessageRepository operationWappMessageRepository;

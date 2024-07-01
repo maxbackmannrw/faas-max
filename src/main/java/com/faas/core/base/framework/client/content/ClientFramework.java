@@ -60,7 +60,7 @@ public class ClientFramework {
     OperationSmsRepository OperationSmsRepository;
 
     @Autowired
-    OperationWappCallRepository wappCallRepository;
+    OperationWappCallRepository operationWappCallRepository;
 
     @Autowired
     OperationWappMessageRepository operationWappMessageRepository;

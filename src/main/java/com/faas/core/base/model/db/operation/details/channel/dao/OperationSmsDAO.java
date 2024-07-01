@@ -9,14 +9,14 @@ public class OperationSmsDAO {
     private String smsTitle;
     private String smsBody;
     private String senderId;
-    private List<OperationChannelDataDAO>smsDatas;
+    private List<ChannelDataDAO>smsDatas;
     private String smsType;
     private int status;
 
     public OperationSmsDAO() {
     }
 
-    public OperationSmsDAO(String accountId, String tempId, String smsTitle, String smsBody, String senderId, List<OperationChannelDataDAO> smsDatas, String smsType, int status) {
+    public OperationSmsDAO(String accountId, String tempId, String smsTitle, String smsBody, String senderId, List<ChannelDataDAO> smsDatas, String smsType, int status) {
         this.accountId = accountId;
         this.tempId = tempId;
         this.smsTitle = smsTitle;
@@ -67,11 +67,11 @@ public class OperationSmsDAO {
         this.senderId = senderId;
     }
 
-    public List<OperationChannelDataDAO> getSmsDatas() {
+    public List<ChannelDataDAO> getSmsDatas() {
         return smsDatas;
     }
 
-    public void setSmsDatas(List<OperationChannelDataDAO> smsDatas) {
+    public void setSmsDatas(List<ChannelDataDAO> smsDatas) {
         this.smsDatas = smsDatas;
     }
 

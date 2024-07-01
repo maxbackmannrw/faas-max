@@ -84,7 +84,7 @@ public class OperationHelpers {
     ScenarioRepository scenarioRepository;
 
     @Autowired
-    OperationWappCallRepository wappCallRepository;
+    OperationWappCallRepository operationWappCallRepository;
 
     @Autowired
     OperationSmsRepository OperationSmsRepository;
@@ -304,7 +304,7 @@ public class OperationHelpers {
             ApiOperationWappCallChannelWSDTO wappCallChannelWSDTO = new ApiOperationWappCallChannelWSDTO();
             wappCallChannelWSDTO.setWappAccount(wappAccountWSDTO);
             wappCallChannelWSDTO.setClientPhones(clientDetails.getClientPhones());
-            List<OperationWappCallDBModel> operationWappCallDBModels = wappCallRepository.findByOperationId(operationDBModel.getId());
+            List<OperationWappCallDBModel> operationWappCallDBModels = operationWappCallRepository.findByOperationId(operationDBModel.getId());
             OperationWappCallDBModel activeWappCall = channelHelpers.getApiOperationActiveWappCallHelper(operationWappCallDBModels);
             if (activeWappCall != null){
                 wappCallChannelWSDTO.setActiveWappCall(activeWappCall);

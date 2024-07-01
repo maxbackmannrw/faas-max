@@ -9,7 +9,7 @@ public class OperationPushDAO {
     private String header;
     private String body;
     private String footer;
-    private List<OperationChannelDataDAO> pushDatas;
+    private List<ChannelDataDAO> pushDatas;
     private String pushType;
     private String mainType;
     private int status;
@@ -17,7 +17,7 @@ public class OperationPushDAO {
     public OperationPushDAO() {
     }
 
-    public OperationPushDAO(String tempId, String header, String body, String footer, List<OperationChannelDataDAO> pushDatas, String pushType, String mainType, int status) {
+    public OperationPushDAO(String tempId, String header, String body, String footer, List<ChannelDataDAO> pushDatas, String pushType, String mainType, int status) {
         this.tempId = tempId;
         this.header = header;
         this.body = body;
@@ -60,11 +60,11 @@ public class OperationPushDAO {
         this.footer = footer;
     }
 
-    public List<OperationChannelDataDAO> getPushDatas() {
+    public List<ChannelDataDAO> getPushDatas() {
         return pushDatas;
     }
 
-    public void setPushDatas(List<OperationChannelDataDAO> pushDatas) {
+    public void setPushDatas(List<ChannelDataDAO> pushDatas) {
         this.pushDatas = pushDatas;
     }
 

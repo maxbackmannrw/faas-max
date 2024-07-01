@@ -463,7 +463,6 @@ public class BaseRoute {
 
 
 
-
     public static final String GET_SCENARIOS = "getscenarios";
     public static final String GET_SCENARIOS_BY_BASE_TYPE = "getscenariosbybasetype";
     public static final String GET_SCENARIO = "getscenario";

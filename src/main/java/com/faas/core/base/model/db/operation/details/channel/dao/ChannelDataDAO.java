@@ -1,6 +1,6 @@
 package com.faas.core.base.model.db.operation.details.channel.dao;
 
-public class OperationChannelDataDAO {
+public class ChannelDataDAO {
 
     private String dataId;
     private String dataType;
@@ -8,10 +8,10 @@ public class OperationChannelDataDAO {
     private long cDate;
     private int status;
 
-    public OperationChannelDataDAO() {
+    public ChannelDataDAO() {
     }
 
-    public OperationChannelDataDAO(String dataId, String dataType, String value, long cDate, int status) {
+    public ChannelDataDAO(String dataId, String dataType, String value, long cDate, int status) {
         this.dataId = dataId;
         this.dataType = dataType;
         this.value = value;
