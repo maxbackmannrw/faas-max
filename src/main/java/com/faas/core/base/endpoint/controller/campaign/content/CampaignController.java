@@ -22,7 +22,7 @@ public class CampaignController {
     CampaignMiddleware campaignMiddleware;
 
 
-    @RequestMapping(value = BaseRoute.GET_ALL_CAMPAIGNS, method = RequestMethod.POST)
+    @RequestMapping(value = BaseRoute.GET_CAMPAIGNS, method = RequestMethod.POST)
     public ResponseEntity<?> getCampaigns(@RequestParam long userId) {
 
         CampaignWSModel response = campaignMiddleware.getCampaigns(userId);

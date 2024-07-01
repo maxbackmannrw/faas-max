@@ -281,7 +281,7 @@ public class BaseRoute {
     public static final String REMOVE_WAPP_SERVER = "removewappserver";
 
 
-    public static final String GET_ALL_CAMPAIGNS = "getallcampaigns";
+    public static final String GET_CAMPAIGNS = "getcampaigns";
     public static final String GET_CAMPAIGNS_BY_CATEGORY = "getcampaignsbycategory";
     public static final String GET_CAMPAIGNS_BY_STATE = "getcampaignsbystate";
     public static final String GET_CAMPAIGN = "getcampaign";
