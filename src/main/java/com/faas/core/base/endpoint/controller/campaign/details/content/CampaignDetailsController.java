@@ -36,7 +36,6 @@ public class CampaignDetailsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.GET_CAMPAIGN_DATAS, method = RequestMethod.POST)
     public ResponseEntity<?> getCampaignDatas(@RequestParam long userId,
                                               @RequestParam String campaignId) {

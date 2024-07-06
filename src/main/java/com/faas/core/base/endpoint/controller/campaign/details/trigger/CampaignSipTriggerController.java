@@ -22,7 +22,7 @@ public class CampaignSipTriggerController {
     CampaignSipTriggerMiddleware campaignSipTriggerMiddleware;
 
 
-    @RequestMapping(value = BaseRoute.GET_CAMPAIGN_SMS_TRIGGERS, method = RequestMethod.POST)
+    @RequestMapping(value = BaseRoute.GET_CAMPAIGN_SIP_TRIGGERS, method = RequestMethod.POST)
     public ResponseEntity<?> getCampaignSipTriggers(@RequestParam long userId,
                                                     @RequestParam String campaignId){
 

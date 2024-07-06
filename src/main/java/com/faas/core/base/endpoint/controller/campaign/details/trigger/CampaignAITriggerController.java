@@ -1,6 +1,6 @@
 package com.faas.core.base.endpoint.controller.campaign.details.trigger;
 
-import com.faas.core.base.middleware.campaign.details.trigger.CampaignAiTriggerMiddleware;
+import com.faas.core.base.middleware.campaign.details.trigger.CampaignAITriggerMiddleware;
 import com.faas.core.base.model.ws.campaign.details.trigger.CampaignAITriggerWSModel;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.BaseRoute;
@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping(value = AppConstant.API_VERSION + "/base/campaign/details/trigger/ai/")
-public class CampaignAiTriggerController {
+public class CampaignAITriggerController {
 
 
     @Autowired
-    CampaignAiTriggerMiddleware campaignAiTriggerMiddleware;
+    CampaignAITriggerMiddleware campaignAiTriggerMiddleware;
 
 
     @RequestMapping(value = BaseRoute.GET_CAMPAIGN_AI_TRIGGERS, method = RequestMethod.POST)

@@ -1,4 +1,4 @@
-package com.faas.core.base.model.ws.campaign.details.content.dto;
+package com.faas.core.base.model.ws.campaign.details.inquiry.dto;
 
 import com.faas.core.base.model.db.campaign.content.dao.CampaignInquiryDAO;
 

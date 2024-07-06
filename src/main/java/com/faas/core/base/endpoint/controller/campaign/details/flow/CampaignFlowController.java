@@ -1,8 +1,8 @@
-package com.faas.core.base.endpoint.controller.campaign.details.content;
+package com.faas.core.base.endpoint.controller.campaign.details.flow;
 
-import com.faas.core.base.middleware.campaign.details.content.CampaignFlowMiddleware;
+import com.faas.core.base.middleware.campaign.details.flow.CampaignFlowMiddleware;
 import com.faas.core.base.model.ws.campaign.details.content.CampaignDataWSModel;
-import com.faas.core.base.model.ws.campaign.details.content.CampaignFlowWSModel;
+import com.faas.core.base.model.ws.campaign.details.flow.CampaignFlowWSModel;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CampaignAiTriggerFramework {
+public class CampaignAITriggerFramework {
 
 
     @Autowired

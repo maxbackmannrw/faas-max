@@ -302,7 +302,6 @@ public class BaseRoute {
     public static final String UPDATE_CAMPAIGN_SCRIPT = "updatecampaignscript";
     public static final String REMOVE_CAMPAIGN_SCRIPT = "removecampaignscript";
 
-
     public static final String GET_CAMPAIGN_AGENTS = "getcampaignagents";
     public static final String GET_CAMPAIGN_AGENT = "getcampaignagent";
     public static final String ASSIGN_CAMPAIGN_AGENT = "assigncampaignagent";
@@ -329,13 +328,11 @@ public class BaseRoute {
     public static final String UPDATE_CAMPAIGN_INQUIRY_DATA = "updatecampaigninquirydata";
     public static final String REMOVE_CAMPAIGN_INQUIRY_DATA = "removecampaigninquirydata";
 
-
     public static final String GET_CAMPAIGN_REMOTES = "getcampaignremotes";
     public static final String GET_CAMPAIGN_REMOTES_BY_CATEGORY = "getcampaignremotesbycategory";
     public static final String GET_CAMPAIGN_REMOTE = "getcampaignremote";
     public static final String CREATE_CAMPAIGN_REMOTE = "createcampaignremote";
     public static final String REMOVE_CAMPAIGN_REMOTE = "removecampaignremote";
-
 
     public static final String GET_CAMPAIGN_SCENARIOS = "getcampaignscenarios";
     public static final String GET_CAMPAIGN_SCENARIO = "getcampaignscenario";
@@ -347,7 +344,6 @@ public class BaseRoute {
     public static final String CREATE_CAMPAIGN_SCENARIO_DATA = "createcampaignscenariodata";
     public static final String UPDATE_CAMPAIGN_SCENARIO_DATA = "updatecampaignscenariodata";
     public static final String REMOVE_CAMPAIGN_SCENARIO_DATA = "removecampaignscenariodata";
-
 
 
     public static final String GET_CAMPAIGN_TRIGGERS = "getcampaigntriggers";

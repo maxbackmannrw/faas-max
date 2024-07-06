@@ -75,7 +75,6 @@ public class AppConstant {
     public static final String PASSIVE_CAMPAIGN = "PASSIVE_CAMPAIGN";
 
 
-
     public static final String OPERATION_SUCCESS = "OPERATION_SUCCESS";
     public static final String OPERATION_REJECTED = "OPERATION_REJECTED";
     public static final String OPERATION_NO_RESPONSE = "OPERATION_NO_RESPONSE";
@@ -144,9 +143,11 @@ public class AppConstant {
     public static final String INQUIRY_REMOTE = "INQUIRY_REMOTE";
     public static final String FLOW_REMOTE = "FLOW_REMOTE";
 
+
     public static final String NEW_REMOTE = "NEW_REMOTE";
     public static final String READY_REMOTE = "READY_REMOTE";
     public static final String FAILED_REMOTE = "FAILED_REMOTE";
+
 
 
     public static final String REMOTE_URL = "REMOTE_URL";

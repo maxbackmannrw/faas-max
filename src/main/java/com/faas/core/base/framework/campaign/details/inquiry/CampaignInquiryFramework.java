@@ -1,10 +1,10 @@
-package com.faas.core.base.framework.campaign.details.content;
+package com.faas.core.base.framework.campaign.details.inquiry;
 
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.campaign.content.dao.CampaignDataDAO;
 import com.faas.core.base.model.db.utils.DataTypeDBModel;
 import com.faas.core.base.model.ws.campaign.details.content.dto.CampaignDataWSDTO;
-import com.faas.core.base.model.ws.campaign.details.content.dto.CampaignInquiryWSDTO;
+import com.faas.core.base.model.ws.campaign.details.inquiry.dto.CampaignInquiryWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.remote.content.RemoteRepository;
 import com.faas.core.base.repo.utils.DataTypeRepository;

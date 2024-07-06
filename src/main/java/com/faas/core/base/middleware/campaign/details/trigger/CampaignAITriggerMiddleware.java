@@ -1,6 +1,6 @@
 package com.faas.core.base.middleware.campaign.details.trigger;
 
-import com.faas.core.base.framework.campaign.details.trigger.CampaignAiTriggerFramework;
+import com.faas.core.base.framework.campaign.details.trigger.CampaignAITriggerFramework;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.model.ws.campaign.details.trigger.CampaignAITriggerWSModel;
 import com.faas.core.base.model.ws.campaign.details.trigger.dto.CampaignAITriggerWSDTO;
@@ -13,11 +13,11 @@ import java.util.List;
 
 
 @Component
-public class CampaignAiTriggerMiddleware {
+public class CampaignAITriggerMiddleware {
 
 
     @Autowired
-    CampaignAiTriggerFramework campaignAiTriggerFramework;
+    CampaignAITriggerFramework campaignAiTriggerFramework;
 
 
     public CampaignAITriggerWSModel getCampaignAITriggers(long userId, String campaignId) {
