@@ -154,7 +154,7 @@ public class CampaignFramework {
 
             campaignDBModel.get().setCampaign(campaign);
             campaignDBModel.get().setCampaignDesc(campaignDesc);
-            campaignDBModel.get().setCampaignDesc(campaignState);
+            campaignDBModel.get().setCampaignState(campaignState);
             campaignDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
             campaignDBModel.get().setStatus(1);
 
