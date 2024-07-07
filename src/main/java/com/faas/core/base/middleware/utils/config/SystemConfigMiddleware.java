@@ -45,17 +45,17 @@ public class SystemConfigMiddleware {
         return response;
     }
 
-    public DataTypeWSModel getDataTypesByBaseType(long userId, String baseType) {
+    public DataTypeWSModel getBaseDataTypes(long userId, String baseType) {
 
         DataTypeWSModel response = new DataTypeWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<DataTypeWSDTO> dataTypeWSDTOS = systemConfigFramework.getDataTypesByBaseTypeService(baseType);
+        List<DataTypeWSDTO> dataTypeWSDTOS = systemConfigFramework.getBaseDataTypesService(baseType);
         if (dataTypeWSDTOS != null){
             response.setDataTypes(dataTypeWSDTOS);
         }
 
-        general.setOperation("getDataTypesByBaseType");
+        general.setOperation("getBaseDataTypes");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
