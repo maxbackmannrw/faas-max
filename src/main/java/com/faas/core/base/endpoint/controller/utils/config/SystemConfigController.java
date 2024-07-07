@@ -36,7 +36,7 @@ public class SystemConfigController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-    @RequestMapping(value = BaseRoute.GET_DATA_TYPES_BASE, method = RequestMethod.POST)
+    @RequestMapping(value = BaseRoute.GET_DATA_TYPES_BY_BASE, method = RequestMethod.POST)
     public ResponseEntity<?> getDataTypesByBase(@RequestParam long userId,
                                                 @RequestParam String baseType) {
 
