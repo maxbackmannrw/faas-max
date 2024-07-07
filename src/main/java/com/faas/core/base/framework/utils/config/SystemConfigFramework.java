@@ -60,7 +60,7 @@ public class SystemConfigFramework {
     }
 
 
-    public List<DataTypeWSDTO> getBaseDataTypesService(String baseType) {
+    public List<DataTypeWSDTO> getDataTypesByBaseService(String baseType) {
 
         List<DataTypeWSDTO> dataTypeWSDTOS = new ArrayList<>();
         List<DataTypeDBModel> dataTypeDBModels = dataTypeRepository.findByBaseType(baseType);

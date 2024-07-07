@@ -36,11 +36,11 @@ public class SystemConfigController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-    @RequestMapping(value = BaseRoute.GET_BASE_DATA_TYPES, method = RequestMethod.POST)
-    public ResponseEntity<?> getBaseDataTypes(@RequestParam long userId,
-                                              @RequestParam String baseType) {
+    @RequestMapping(value = BaseRoute.GET_DATA_TYPES_BASE, method = RequestMethod.POST)
+    public ResponseEntity<?> getDataTypesByBase(@RequestParam long userId,
+                                                @RequestParam String baseType) {
 
-        DataTypeWSModel response = systemConfigMiddleware.getBaseDataTypes(userId, baseType);
+        DataTypeWSModel response = systemConfigMiddleware.getDataTypesByBase(userId, baseType);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

@@ -188,10 +188,8 @@ public class BaseRoute {
 
 
 
-
-
     public static final String GET_ALL_DATA_TYPES = "getalldatatypes";
-    public static final String GET_BASE_DATA_TYPES = "getbasedatatypes";
+    public static final String GET_DATA_TYPES_BASE = "getdatatypesbybase";
     public static final String GET_DATA_TYPE = "getdatatype";
     public static final String CREATE_DATA_TYPE = "createdatatype";
     public static final String UPDATE_DATA_TYPE = "updatedatatype";
