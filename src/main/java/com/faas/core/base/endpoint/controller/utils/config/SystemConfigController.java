@@ -36,11 +36,11 @@ public class SystemConfigController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-    @RequestMapping(value = BaseRoute.GET_DATA_TYPES_BY_BASE, method = RequestMethod.POST)
-    public ResponseEntity<?> getDataTypesByBase(@RequestParam long userId,
-                                                @RequestParam String baseType) {
+    @RequestMapping(value = BaseRoute.GET_DATA_TYPES_BY_BASE_TYPE, method = RequestMethod.POST)
+    public ResponseEntity<?> getDataTypesByBaseType(@RequestParam long userId,
+                                                    @RequestParam String baseType) {
 
-        DataTypeWSModel response = systemConfigMiddleware.getDataTypesByBase(userId, baseType);
+        DataTypeWSModel response = systemConfigMiddleware.getDataTypesByBaseType(userId, baseType);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -87,7 +87,6 @@ public class SystemConfigController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.REMOVE_DATA_TYPE, method = RequestMethod.POST)
     public ResponseEntity<?> removeDataType(@RequestParam long userId,
                                             @RequestParam long typeId) {
@@ -99,6 +98,7 @@ public class SystemConfigController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
+
 
 
     @RequestMapping(value = BaseRoute.GET_ALL_CITIES, method = RequestMethod.POST)
@@ -164,6 +164,7 @@ public class SystemConfigController {
     }
 
 
+
     @RequestMapping(value = BaseRoute.GET_ALL_COUNTRIES, method = RequestMethod.POST)
     public ResponseEntity<?> getAllCountries(@RequestParam long userId) {
 
@@ -223,6 +224,7 @@ public class SystemConfigController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
+
 
 
     @RequestMapping(value = BaseRoute.GET_ALL_URLS, method = RequestMethod.POST)
