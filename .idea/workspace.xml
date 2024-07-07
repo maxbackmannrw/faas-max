@@ -8,11 +8,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/utils/config/SystemConfigController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/utils/config/SystemConfigController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/utils/config/SystemConfigFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/utils/config/SystemConfigFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/utils/config/SystemConfigMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/utils/config/SystemConfigMiddleware.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utility/config/BaseRoute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utility/config/BaseRoute.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/channel/settings/ChannelSettingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/channel/settings/ChannelSettingsController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -1104,15 +1100,7 @@
       <workItem from="1720205102228" duration="344000" />
       <workItem from="1720274575281" duration="3766000" />
       <workItem from="1720357441960" duration="1685000" />
-      <workItem from="1720361220124" duration="1028000" />
-    </task>
-    <task id="LOCAL-00896" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1717531339068</created>
-      <option name="number" value="00896" />
-      <option name="presentableId" value="LOCAL-00896" />
-      <option name="project" value="LOCAL" />
-      <updated>1717531339068</updated>
+      <workItem from="1720361220124" duration="1330000" />
     </task>
     <task id="LOCAL-00897" summary="almost finish">
       <option name="closed" value="true" />
@@ -1498,7 +1486,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720361853705</updated>
     </task>
-    <option name="localTasksCounter" value="945" />
+    <task id="LOCAL-00945" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1720362292538</created>
+      <option name="number" value="00945" />
+      <option name="presentableId" value="LOCAL-00945" />
+      <option name="project" value="LOCAL" />
+      <updated>1720362292538</updated>
+    </task>
+    <option name="localTasksCounter" value="946" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
