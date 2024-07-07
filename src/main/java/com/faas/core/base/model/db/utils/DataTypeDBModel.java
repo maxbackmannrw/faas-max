@@ -6,7 +6,6 @@ import javax.persistence.*;
 @Table(name = "data_type_table")
 public class DataTypeDBModel {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
