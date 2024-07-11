@@ -1,11 +1,11 @@
-package com.faas.core.base.framework.remote.content;
+package com.faas.core.base.framework.remote.details;
 
 import com.faas.core.base.model.db.remote.content.RemoteDBModel;
 import com.faas.core.base.model.db.remote.content.dao.RemoteDataDAO;
 import com.faas.core.base.model.db.utils.DataTypeDBModel;
 import com.faas.core.base.model.db.utils.UrlDBModel;
 import com.faas.core.base.model.ws.remote.content.dto.RemoteDataWSDTO;
-import com.faas.core.base.model.ws.remote.content.dto.RemoteDetailsWSDTO;
+import com.faas.core.base.model.ws.remote.details.dto.RemoteDetailsWSDTO;
 import com.faas.core.base.model.ws.remote.content.dto.RemoteUrlWSDTO;
 import com.faas.core.base.repo.remote.content.RemoteRepository;
 import com.faas.core.base.repo.utils.DataTypeRepository;

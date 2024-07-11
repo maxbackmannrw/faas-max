@@ -1,4 +1,4 @@
-package com.faas.core.base.model.ws.remote.content.dto;
+package com.faas.core.base.model.ws.remote.details.dto;
 
 import com.faas.core.base.model.db.remote.content.RemoteDBModel;
 

@@ -1,8 +1,8 @@
-package com.faas.core.base.endpoint.controller.remote.content;
+package com.faas.core.base.endpoint.controller.remote.details;
 
-import com.faas.core.base.middleware.remote.content.RemoteDetailsMiddleware;
+import com.faas.core.base.middleware.remote.details.RemoteDetailsMiddleware;
 import com.faas.core.base.model.ws.remote.content.RemoteDataWSModel;
-import com.faas.core.base.model.ws.remote.content.RemoteDetailsWSModel;
+import com.faas.core.base.model.ws.remote.details.RemoteDetailsWSModel;
 import com.faas.core.base.model.ws.remote.content.RemoteUrlWSModel;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.BaseRoute;
