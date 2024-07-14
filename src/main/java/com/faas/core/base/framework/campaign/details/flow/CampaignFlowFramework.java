@@ -107,7 +107,7 @@ public class CampaignFlowFramework {
             }else {
                 campaignDBModel.get().getCampaignFlow().getFlowDatas().add(campaignDataDAO);
             }
-            campaignDBModel.get().getCampaignFlow().getFlowDatas().add(campaignDataDAO);
+
             campaignDBModel.get().getCampaignFlow().setuDate(appUtils.getCurrentTimeStamp());
             campaignDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
             campaignRepository.save(campaignDBModel.get());
