@@ -239,21 +239,11 @@ public class CampaignHelpers {
         List<CampaignScenarioWSDTO> campaignScenarioWSDTOS = new ArrayList<>();
         List<CampaignScenarioDBModel> campaignScenarioDBModels = campaignScenarioRepository.findByCampaignId(campaignDBModel.getId());
         for (CampaignScenarioDBModel campaignScenarioDBModel : campaignScenarioDBModels) {
-            CampaignScenarioWSDTO campaignScenarioWSDTO = mapProcessScenarioWSDTO(campaignScenarioDBModel);
-            if (campaignScenarioWSDTO != null){
-                campaignScenarioWSDTOS.add(campaignScenarioWSDTO);
-            }
+            campaignScenarioWSDTOS.add(new CampaignScenarioWSDTO(campaignScenarioDBModel));
         }
         return campaignScenarioWSDTOS;
     }
 
-
-    public CampaignScenarioWSDTO mapProcessScenarioWSDTO(CampaignScenarioDBModel campaignScenarioDBModel){
-
-        CampaignScenarioWSDTO campaignScenarioWSDTO = new CampaignScenarioWSDTO();
-        campaignScenarioWSDTO.setCampaignScenario(campaignScenarioDBModel);
-        return campaignScenarioWSDTO;
-    }
 
     public List<CampaignRemoteWSDTO> createCampaignRemoteWSDTOS(CampaignDBModel campaignDBModel){
 
