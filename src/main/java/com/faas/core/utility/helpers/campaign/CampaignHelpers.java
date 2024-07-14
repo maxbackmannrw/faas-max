@@ -251,6 +251,7 @@ public class CampaignHelpers {
     public CampaignScenarioWSDTO mapProcessScenarioWSDTO(CampaignScenarioDBModel campaignScenarioDBModel){
 
         CampaignScenarioWSDTO campaignScenarioWSDTO = new CampaignScenarioWSDTO();
+        campaignScenarioWSDTO.setCampaignScenario(campaignScenarioDBModel);
         return campaignScenarioWSDTO;
     }
 
