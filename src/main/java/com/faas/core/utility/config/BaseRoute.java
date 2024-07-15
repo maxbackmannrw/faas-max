@@ -384,11 +384,6 @@ public class BaseRoute {
 
 
 
-    public static final String GET_CAMPAIGN_ASSETS = "getcampaignassets";
-    public static final String GET_CAMPAIGN_ASSET = "getcampaignasset";
-    public static final String CREATE_CAMPAIGN_ASSET = "createcampaignasset";
-    public static final String UPDATE_CAMPAIGN_ASSET = "updatecampaignasset";
-    public static final String REMOVE_CAMPAIGN_ASSET = "removecampaignasset";
 
 
     public static final String GET_CAMPAIGN_CHANNELS = "getcampaignchannels";

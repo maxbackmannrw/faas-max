@@ -131,7 +131,6 @@ public class CampaignFramework {
             if (campaignCategory.equalsIgnoreCase(AppConstant.AUTOMATIC_CAMPAIGN)){
                 campaignDBModel.setCampaignFlow(campaignHelpers.createCampaignFlowDAO(campaign));;
             }
-            campaignDBModel.setCampaignAssets(new ArrayList<>());
             campaignDBModel.setCampaignScripts(new ArrayList<>());
             campaignDBModel.setCampaignDatas(new ArrayList<>());
             campaignDBModel.setCampaignState(AppConstant.READY_CAMPAIGN);

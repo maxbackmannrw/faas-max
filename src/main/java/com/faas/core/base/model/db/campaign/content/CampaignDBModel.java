@@ -18,7 +18,6 @@ public class CampaignDBModel {
     private String campaignCategory;
     private CampaignFlowDAO campaignFlow;
     private CampaignInquiryDAO campaignInquiry;
-    private List<CampaignAssetDAO>campaignAssets;
     private List<CampaignScriptDAO>campaignScripts;
     private List<CampaignDataDAO>campaignDatas;
     private String campaignState;
@@ -29,7 +28,7 @@ public class CampaignDBModel {
     public CampaignDBModel() {
     }
 
-    public CampaignDBModel(String id, String campaign, String campaignDesc, long campaignTypeId, String campaignType, String campaignCategory, CampaignFlowDAO campaignFlow, CampaignInquiryDAO campaignInquiry, List<CampaignAssetDAO> campaignAssets, List<CampaignScriptDAO> campaignScripts, List<CampaignDataDAO> campaignDatas, String campaignState, long uDate, long cDate, int status) {
+    public CampaignDBModel(String id, String campaign, String campaignDesc, long campaignTypeId, String campaignType, String campaignCategory, CampaignFlowDAO campaignFlow, CampaignInquiryDAO campaignInquiry, List<CampaignScriptDAO> campaignScripts, List<CampaignDataDAO> campaignDatas, String campaignState, long uDate, long cDate, int status) {
         this.id = id;
         this.campaign = campaign;
         this.campaignDesc = campaignDesc;
@@ -38,7 +37,6 @@ public class CampaignDBModel {
         this.campaignCategory = campaignCategory;
         this.campaignFlow = campaignFlow;
         this.campaignInquiry = campaignInquiry;
-        this.campaignAssets = campaignAssets;
         this.campaignScripts = campaignScripts;
         this.campaignDatas = campaignDatas;
         this.campaignState = campaignState;
@@ -109,14 +107,6 @@ public class CampaignDBModel {
 
     public void setCampaignInquiry(CampaignInquiryDAO campaignInquiry) {
         this.campaignInquiry = campaignInquiry;
-    }
-
-    public List<CampaignAssetDAO> getCampaignAssets() {
-        return campaignAssets;
-    }
-
-    public void setCampaignAssets(List<CampaignAssetDAO> campaignAssets) {
-        this.campaignAssets = campaignAssets;
     }
 
     public List<CampaignScriptDAO> getCampaignScripts() {
