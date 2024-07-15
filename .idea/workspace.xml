@@ -9,16 +9,6 @@
   <component name="ChangeListManager">
     <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/campaign/details/asset/CampaignAssetController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/campaign/details/content/CampaignDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/campaign/details/content/CampaignDetailsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/campaign/content/CampaignFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/campaign/content/CampaignFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/campaign/details/asset/CampaignAssetFramework.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/campaign/details/asset/CampaignAssetMiddleware.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/campaign/content/CampaignDBModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/campaign/content/CampaignDBModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/campaign/content/dao/CampaignAssetDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/details/assets/CampaignAssetWSModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/details/assets/dto/CampaignAssetWSDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utility/config/BaseRoute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utility/config/BaseRoute.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -1121,15 +1111,8 @@
       <workItem from="1720958284316" duration="2548000" />
       <workItem from="1720981307668" duration="1031000" />
       <workItem from="1720993036380" duration="1023000" />
-      <workItem from="1721002547340" duration="494000" />
-    </task>
-    <task id="LOCAL-00902" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1717891948201</created>
-      <option name="number" value="00902" />
-      <option name="presentableId" value="LOCAL-00902" />
-      <option name="project" value="LOCAL" />
-      <updated>1717891948201</updated>
+      <workItem from="1721002547340" duration="972000" />
+      <workItem from="1721053905730" duration="1394000" />
     </task>
     <task id="LOCAL-00903" summary="almost finish">
       <option name="closed" value="true" />
@@ -1515,7 +1498,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720961154096</updated>
     </task>
-    <option name="localTasksCounter" value="951" />
+    <task id="LOCAL-00951" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1721003732994</created>
+      <option name="number" value="00951" />
+      <option name="presentableId" value="LOCAL-00951" />
+      <option name="project" value="LOCAL" />
+      <updated>1721003732994</updated>
+    </task>
+    <option name="localTasksCounter" value="952" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

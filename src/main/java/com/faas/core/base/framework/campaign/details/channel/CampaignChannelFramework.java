@@ -46,7 +46,6 @@ public class CampaignChannelFramework {
 
         List<CampaignChannelDBModel> campaignChannelDBModels = campaignChannelRepository.findByCampaignId(campaignId);
         if (!campaignChannelDBModels.isEmpty()){
-
             CampaignChannelWSDTO campaignChannelWSDTO = new CampaignChannelWSDTO();
             if (campaignChannelDBModels.get(0).getWappChannel() != null) {
                 campaignChannelWSDTO.setWappChannel(new CampaignWappChannelWSDTO(campaignChannelDBModels.get(0).getWappChannel()));
@@ -63,7 +62,6 @@ public class CampaignChannelFramework {
             if (campaignChannelDBModels.get(0).getPushChannel() != null) {
                 campaignChannelWSDTO.setPushChannel(new CampaignPushChannelWSDTO(campaignChannelDBModels.get(0).getPushChannel()));
             }
-
             return campaignChannelWSDTO;
         }
         return null;

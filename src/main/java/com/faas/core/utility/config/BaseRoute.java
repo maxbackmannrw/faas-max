@@ -383,9 +383,6 @@ public class BaseRoute {
     public static final String REMOVE_CAMPAIGN_AI_TRIGGER = "removecampaignaitrigger";
 
 
-
-
-
     public static final String GET_CAMPAIGN_CHANNELS = "getcampaignchannels";
 
     public static final String GET_CAMPAIGN_SIP_CHANNEL = "getcampaignsipchannel";
@@ -407,7 +404,6 @@ public class BaseRoute {
     public static final String GET_CAMPAIGN_PUSH_CHANNEL = "getcampaignpushchannel";
     public static final String CREATE_CAMPAIGN_PUSH_CHANNEL = "createcampaignpushchannel";
     public static final String REMOVE_CAMPAIGN_PUSH_CHANNEL = "removecampaignpushchannel";
-
 
 
     public static final String GET_CAMPAIGN_TEMPS = "getcampaigntemps";
