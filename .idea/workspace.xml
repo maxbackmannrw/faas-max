@@ -9,41 +9,6 @@
   <component name="ChangeListManager">
     <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/campaign/details/temp/content/CampaignTempController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/campaign/details/temp/content/CampaignTempController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/campaign/details/trigger/CampaignAITriggerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/campaign/details/trigger/details/CampaignAITriggerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/campaign/details/trigger/CampaignEmailTriggerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/campaign/details/trigger/details/CampaignEmailTriggerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/campaign/details/trigger/CampaignSipTriggerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/campaign/details/trigger/details/CampaignSipTriggerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/campaign/details/trigger/CampaignSmsTriggerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/campaign/details/trigger/details/CampaignSmsTriggerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/campaign/details/trigger/CampaignTriggerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/campaign/details/trigger/content/CampaignTriggerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/campaign/details/trigger/CampaignWappTriggerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/campaign/details/trigger/details/CampaignWappTriggerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/campaign/details/trigger/CampaignAITriggerFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/campaign/details/trigger/details/CampaignAITriggerFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/campaign/details/trigger/CampaignEmailTriggerFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/campaign/details/trigger/details/CampaignEmailTriggerFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/campaign/details/trigger/CampaignSipTriggerFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/campaign/details/trigger/details/CampaignSipTriggerFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/campaign/details/trigger/CampaignSmsTriggerFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/campaign/details/trigger/details/CampaignSmsTriggerFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/campaign/details/trigger/CampaignTriggerFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/campaign/details/trigger/content/CampaignTriggerFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/campaign/details/trigger/CampaignWappTriggerFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/campaign/details/trigger/details/CampaignWappTriggerFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/campaign/details/trigger/CampaignAITriggerMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/campaign/details/trigger/details/CampaignAITriggerMiddleware.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/campaign/details/trigger/CampaignEmailTriggerMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/campaign/details/trigger/details/CampaignEmailTriggerMiddleware.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/campaign/details/trigger/CampaignSipTriggerMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/campaign/details/trigger/details/CampaignSipTriggerMiddleware.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/campaign/details/trigger/CampaignSmsTriggerMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/campaign/details/trigger/details/CampaignSmsTriggerMiddleware.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/campaign/details/trigger/CampaignTriggerMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/campaign/details/trigger/content/CampaignTriggerMiddleware.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/campaign/details/trigger/CampaignWappTriggerMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/campaign/details/trigger/details/CampaignWappTriggerMiddleware.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/details/content/dto/CampaignDetailsWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/details/content/dto/CampaignDetailsWSDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/details/trigger/CampaignAITriggerWSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/details/trigger/details/CampaignAITriggerWSModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/details/trigger/CampaignEmailTriggerWSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/details/trigger/details/CampaignEmailTriggerWSModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/details/trigger/CampaignSipTriggerWSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/details/trigger/details/CampaignSipTriggerWSModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/details/trigger/CampaignSmsTriggerWSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/details/trigger/details/CampaignSmsTriggerWSModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/details/trigger/CampaignTriggerWSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/details/trigger/content/CampaignTriggerWSModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/details/trigger/CampaignWappCallTriggerWSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/details/trigger/details/CampaignWappCallTriggerWSModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/details/trigger/CampaignWappMessageTriggerWSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/details/trigger/details/CampaignWappMessageTriggerWSModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/details/trigger/dto/CampaignAITriggerWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/details/trigger/details/dto/CampaignAITriggerWSDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/details/trigger/dto/CampaignEmailTriggerWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/details/trigger/details/dto/CampaignEmailTriggerWSDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/details/trigger/dto/CampaignSipTriggerWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/details/trigger/details/dto/CampaignSipTriggerWSDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/details/trigger/dto/CampaignSmsTriggerWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/details/trigger/details/dto/CampaignSmsTriggerWSDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/details/trigger/dto/CampaignTriggerWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/details/trigger/content/dto/CampaignTriggerWSDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/details/trigger/dto/CampaignWappCallTriggerWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/details/trigger/details/dto/CampaignWappCallTriggerWSDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/details/trigger/dto/CampaignWappMessageTriggerWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/details/trigger/details/dto/CampaignWappMessageTriggerWSDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utility/helpers/campaign/CampaignHelpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utility/helpers/campaign/CampaignHelpers.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,11 +117,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/details/trigger" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/campaign/details/trigger" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/campaign/details/trigger" />
       <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/remote" />
       <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/remote" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/remote" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/details/inquiry" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/details" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/scenario/content/dto" />
@@ -1158,15 +1123,7 @@
       <workItem from="1721241358311" duration="205000" />
       <workItem from="1721333216218" duration="2573000" />
       <workItem from="1721344802283" duration="143000" />
-      <workItem from="1721372335720" duration="1939000" />
-    </task>
-    <task id="LOCAL-00904" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1717893437528</created>
-      <option name="number" value="00904" />
-      <option name="presentableId" value="LOCAL-00904" />
-      <option name="project" value="LOCAL" />
-      <updated>1717893437528</updated>
+      <workItem from="1721372335720" duration="3081000" />
     </task>
     <task id="LOCAL-00905" summary="almost finish">
       <option name="closed" value="true" />
@@ -1552,7 +1509,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721059020576</updated>
     </task>
-    <option name="localTasksCounter" value="953" />
+    <task id="LOCAL-00953" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1721376747002</created>
+      <option name="number" value="00953" />
+      <option name="presentableId" value="LOCAL-00953" />
+      <option name="project" value="LOCAL" />
+      <updated>1721376747002</updated>
+    </task>
+    <option name="localTasksCounter" value="954" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
