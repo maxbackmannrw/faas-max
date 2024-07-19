@@ -6,7 +6,6 @@ import java.util.List;
 
 public class CampaignTriggerWSDTO {
 
-    private List<CampaignAITriggerWSDTO> campaignAITriggers;
     private List<CampaignEmailTriggerWSDTO>campaignEmailTriggers;
     private List<CampaignSipTriggerWSDTO>campaignSipTriggers;
     private List<CampaignSmsTriggerWSDTO>campaignSmsTriggers;
@@ -16,21 +15,12 @@ public class CampaignTriggerWSDTO {
     public CampaignTriggerWSDTO() {
     }
 
-    public CampaignTriggerWSDTO(List<CampaignAITriggerWSDTO> campaignAITriggers, List<CampaignEmailTriggerWSDTO> campaignEmailTriggers, List<CampaignSipTriggerWSDTO> campaignSipTriggers, List<CampaignSmsTriggerWSDTO> campaignSmsTriggers, List<CampaignWappCallTriggerWSDTO> campaignWappCallTriggers, List<CampaignWappMessageTriggerWSDTO> campaignWappMessageTriggers) {
-        this.campaignAITriggers = campaignAITriggers;
+    public CampaignTriggerWSDTO(List<CampaignEmailTriggerWSDTO> campaignEmailTriggers, List<CampaignSipTriggerWSDTO> campaignSipTriggers, List<CampaignSmsTriggerWSDTO> campaignSmsTriggers, List<CampaignWappCallTriggerWSDTO> campaignWappCallTriggers, List<CampaignWappMessageTriggerWSDTO> campaignWappMessageTriggers) {
         this.campaignEmailTriggers = campaignEmailTriggers;
         this.campaignSipTriggers = campaignSipTriggers;
         this.campaignSmsTriggers = campaignSmsTriggers;
         this.campaignWappCallTriggers = campaignWappCallTriggers;
         this.campaignWappMessageTriggers = campaignWappMessageTriggers;
-    }
-
-    public List<CampaignAITriggerWSDTO> getCampaignAITriggers() {
-        return campaignAITriggers;
-    }
-
-    public void setCampaignAITriggers(List<CampaignAITriggerWSDTO> campaignAITriggers) {
-        this.campaignAITriggers = campaignAITriggers;
     }
 
     public List<CampaignEmailTriggerWSDTO> getCampaignEmailTriggers() {

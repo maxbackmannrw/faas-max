@@ -54,9 +54,6 @@ public class CampaignFramework {
     CampaignScenarioRepository campaignScenarioRepository;
 
     @Autowired
-    AITriggerRepository aiTriggerRepository;
-
-    @Autowired
     EmailTriggerRepository emailTriggerRepository;
 
     @Autowired
@@ -178,7 +175,6 @@ public class CampaignFramework {
             smsTempRepository.deleteAll(smsTempRepository.findByCampaignId(campaignId));
             wappMessageTempRepository.deleteAll(wappMessageTempRepository.findByCampaignId(campaignId));
 
-            aiTriggerRepository.deleteAll(aiTriggerRepository.findByCampaignId(campaignId));
             emailTriggerRepository.deleteAll(emailTriggerRepository.findByCampaignId(campaignId));
             sipTriggerRepository.deleteAll(sipTriggerRepository.findByCampaignId(campaignId));
             smsTriggerRepository.deleteAll(smsTriggerRepository.findByCampaignId(campaignId));

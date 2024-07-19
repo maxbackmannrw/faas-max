@@ -376,11 +376,6 @@ public class BaseRoute {
     public static final String UPDATE_CAMPAIGN_EMAIL_TRIGGER = "updatecampaignemailtrigger";
     public static final String REMOVE_CAMPAIGN_EMAIL_TRIGGER = "removecampaignemailtrigger";
 
-    public static final String GET_CAMPAIGN_AI_TRIGGERS = "getcampaignaitriggers";
-    public static final String GET_CAMPAIGN_AI_TRIGGER = "getcampaignaitrigger";
-    public static final String CREATE_CAMPAIGN_AI_TRIGGER = "createcampaignaitrigger";
-    public static final String UPDATE_CAMPAIGN_AI_TRIGGER = "updatecampaignaitrigger";
-    public static final String REMOVE_CAMPAIGN_AI_TRIGGER = "removecampaignaitrigger";
 
 
     public static final String GET_CAMPAIGN_CHANNELS = "getcampaignchannels";

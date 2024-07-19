@@ -27,7 +27,6 @@ import com.faas.core.base.model.ws.campaign.details.content.dto.CampaignDetailsW
 import com.faas.core.base.model.ws.campaign.details.remote.dto.CampaignRemoteWSDTO;
 import com.faas.core.base.model.ws.campaign.details.scenario.dto.CampaignScenarioWSDTO;
 import com.faas.core.base.model.ws.campaign.details.trigger.content.dto.CampaignTriggerWSDTO;
-import com.faas.core.base.model.ws.campaign.details.trigger.details.dto.CampaignAITriggerWSDTO;
 import com.faas.core.base.model.ws.campaign.details.trigger.details.dto.CampaignEmailTriggerWSDTO;
 import com.faas.core.base.model.ws.campaign.details.trigger.details.dto.CampaignSipTriggerWSDTO;
 import com.faas.core.base.model.ws.campaign.details.trigger.details.dto.CampaignSmsTriggerWSDTO;
@@ -84,9 +83,6 @@ public class CampaignHelpers {
 
     @Autowired
     CampaignScenarioRepository campaignScenarioRepository;
-
-    @Autowired
-    AITriggerRepository aiTriggerRepository;
 
     @Autowired
     EmailTriggerRepository emailTriggerRepository;
@@ -162,7 +158,6 @@ public class CampaignHelpers {
     public CampaignTriggerWSDTO createCampaignTriggerWSDTO(String campaignId){
 
         CampaignTriggerWSDTO campaignTriggerWSDTO = new CampaignTriggerWSDTO();
-        campaignTriggerWSDTO.setCampaignAITriggers(createCampaignAITriggerWSDTOS(campaignId));
         campaignTriggerWSDTO.setCampaignEmailTriggers(createCampaignEmailTriggerWSDTOS(campaignId));
         campaignTriggerWSDTO.setCampaignSipTriggers(createCampaignSipTriggerWSDTOS(campaignId));
         campaignTriggerWSDTO.setCampaignSmsTriggers(createCampaignSmsTriggerWSDTOS(campaignId));
@@ -172,15 +167,6 @@ public class CampaignHelpers {
         return campaignTriggerWSDTO;
     }
 
-    public List<CampaignAITriggerWSDTO> createCampaignAITriggerWSDTOS(String campaignId) {
-
-        List<CampaignAITriggerWSDTO> campaignAITriggerWSDTOS = new ArrayList<>();
-        List<AITriggerDBModel> aiTriggerDBModels = aiTriggerRepository.findByCampaignId(campaignId);
-        for (AITriggerDBModel aiTriggerDBModel : aiTriggerDBModels) {
-            campaignAITriggerWSDTOS.add(new CampaignAITriggerWSDTO(aiTriggerDBModel));
-        }
-        return campaignAITriggerWSDTOS;
-    }
 
     public List<CampaignEmailTriggerWSDTO> createCampaignEmailTriggerWSDTOS(String campaignId) {
 

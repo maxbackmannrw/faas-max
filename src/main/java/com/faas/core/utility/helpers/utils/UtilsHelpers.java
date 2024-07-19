@@ -113,9 +113,6 @@ public class UtilsHelpers {
     UserRoleRepository userRoleRepository;
 
     @Autowired
-    AITriggerRepository AITriggerRepository;
-
-    @Autowired
     EmailTriggerRepository emailTriggerRepository;
 
     @Autowired
@@ -487,18 +484,9 @@ public class UtilsHelpers {
         smsTempRepository.deleteAll();
         wappMessageTempRepository.deleteAll();
         campaignScenarioRepository.deleteAll();
-        removeAllTriggersHelper();
     }
 
-    public void removeAllTriggersHelper(){
 
-        AITriggerRepository.deleteAll();
-        emailTriggerRepository.deleteAll();
-        sipTriggerRepository.deleteAll();
-        smsTriggerRepository.deleteAll();
-        wappCallTriggerRepository.deleteAll();
-        wappMessageTriggerRepository.deleteAll();
-    }
 
     public void removeAllScenariosHelper(){
         scenarioRepository.deleteAll();

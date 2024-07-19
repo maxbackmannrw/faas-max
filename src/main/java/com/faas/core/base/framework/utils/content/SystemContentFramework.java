@@ -93,9 +93,6 @@ public class SystemContentFramework {
     UserDetailsRepository userDetailsRepository;
 
     @Autowired
-    AITriggerRepository AITriggerRepository;
-
-    @Autowired
     EmailTriggerRepository emailTriggerRepository;
 
     @Autowired
