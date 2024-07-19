@@ -21,7 +21,6 @@ public class CampaignTempController {
     @Autowired
     CampaignTempMiddleware campaignTempMiddleware;
 
-
     @RequestMapping(value = BaseRoute.GET_CAMPAIGN_TEMPS, method = RequestMethod.POST)
     public ResponseEntity<?> getCampaignTemps(@RequestParam long userId,
                                               @RequestParam String campaignId) {
