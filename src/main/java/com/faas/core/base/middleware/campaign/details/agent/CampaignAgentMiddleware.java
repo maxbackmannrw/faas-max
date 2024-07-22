@@ -22,31 +22,17 @@ public class CampaignAgentMiddleware {
     @Autowired
     CampaignAgentFramework campaignAgentFramework;
 
-    @Autowired
-    CampaignAgentRepository campaignAgentRepository;
-
-    @Autowired
-    UserFramework userFramework;
-
-    @Autowired
-    AppUtils appUtils;
-
 
     public CampaignAgentWSModel getCampaignAgents(long userId, String campaignId) {
 
         CampaignAgentWSModel response = new CampaignAgentWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<CampaignAgentWSDTO> campaignAgentWSDTOS = new ArrayList<>();
 
-        List<CampaignAgentDBModel> campaignAgentDBModels = campaignAgentRepository.findByCampaignId(campaignId);
-        for (CampaignAgentDBModel campaignAgentDBModel : campaignAgentDBModels) {
-            CampaignAgentWSDTO campaignAgentWSDTO = campaignAgentFramework.fillCampaignAgentWSDTO(campaignAgentDBModel);
-            if (campaignAgentWSDTO != null){
-                campaignAgentWSDTOS.add(campaignAgentWSDTO);
-            }
+        List<CampaignAgentWSDTO> campaignAgentWSDTOS = campaignAgentFramework.getCampaignAgentsService(campaignId);
+        if (campaignAgentWSDTOS != null){
+            response.setCampaignAgents(campaignAgentWSDTOS);
         }
 
-        response.setCampaignAgents(campaignAgentWSDTOS);
         general.setOperation("getCampaignAgents");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -63,12 +49,9 @@ public class CampaignAgentMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignAgentWSDTO> campaignAgentWSDTOS = new ArrayList<>();
 
-        List<CampaignAgentDBModel> campaignAgentDBModels = campaignAgentRepository.findByCampaignIdAndAgentId(campaignId,agentId);
-        if (campaignAgentDBModels.size()>0){
-            CampaignAgentWSDTO campaignAgentWSDTO = campaignAgentFramework.fillCampaignAgentWSDTO(campaignAgentDBModels.get(0));
-            if (campaignAgentWSDTO != null){
-                campaignAgentWSDTOS.add(campaignAgentWSDTO);
-            }
+        CampaignAgentWSDTO campaignAgentWSDTO = campaignAgentFramework.getCampaignAgentService(campaignId,agentId);
+        if (campaignAgentWSDTO != null){
+            campaignAgentWSDTOS.add(campaignAgentWSDTO);
         }
 
         response.setCampaignAgents(campaignAgentWSDTOS);
@@ -104,19 +87,15 @@ public class CampaignAgentMiddleware {
     }
 
 
-
     public CampaignAgentWSModel removeCampaignAgent(long userId, String campaignId, long agentId) {
 
         CampaignAgentWSModel response = new CampaignAgentWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignAgentWSDTO> campaignAgentWSDTOS = new ArrayList<>();
 
-        CampaignAgentDBModel campaignAgentDBModel = campaignAgentFramework.removeCampaignAgentService(campaignId, agentId);
-        if (campaignAgentDBModel != null) {
-            CampaignAgentWSDTO campaignAgentWSDTO = campaignAgentFramework.fillCampaignAgentWSDTO(campaignAgentDBModel);
+        CampaignAgentWSDTO campaignAgentWSDTO = campaignAgentFramework.removeCampaignAgentService(campaignId, agentId);
             if (campaignAgentWSDTO != null){
                 campaignAgentWSDTOS.add(campaignAgentWSDTO);
-            }
         }
 
         response.setCampaignAgents(campaignAgentWSDTOS);

@@ -38,7 +38,30 @@ public class CampaignAgentFramework {
         Optional<UserDBModel> agentDBModel = userRepository.findById(campaignAgentDBModel.getAgentId());
         if (agentDBModel.isPresent()) {
             agentDBModel.get().setPassword("");
+            return new CampaignAgentWSDTO(agentDBModel.get());
+        }
+        return null;
+    }
 
+    public List<CampaignAgentWSDTO> getCampaignAgentsService(String campaignId) {
+
+        List<CampaignAgentWSDTO>campaignAgentWSDTOS = new ArrayList<>();
+        List<CampaignAgentDBModel> campaignAgentDBModels = campaignAgentRepository.findByCampaignId(campaignId);
+        for (CampaignAgentDBModel campaignAgentDBModel : campaignAgentDBModels) {
+            CampaignAgentWSDTO campaignAgentWSDTO = fillCampaignAgentWSDTO(campaignAgentDBModel);
+            if (campaignAgentWSDTO != null) {
+                campaignAgentWSDTOS.add(campaignAgentWSDTO);
+            }
+        }
+        return campaignAgentWSDTOS;
+    }
+
+
+    public CampaignAgentWSDTO getCampaignAgentService(String campaignId,long agentId) {
+
+        List<CampaignAgentDBModel> campaignAgentDBModels = campaignAgentRepository.findByCampaignIdAndAgentId(campaignId,agentId);
+        if (!campaignAgentDBModels.isEmpty()) {
+            return fillCampaignAgentWSDTO(campaignAgentDBModels.get(0));
         }
         return null;
     }
@@ -62,12 +85,12 @@ public class CampaignAgentFramework {
     }
 
 
-    public CampaignAgentDBModel removeCampaignAgentService(String campaignId, long agentId) {
+    public CampaignAgentWSDTO removeCampaignAgentService(String campaignId, long agentId) {
 
         List<CampaignAgentDBModel> campaignAgents = campaignAgentRepository.findByCampaignIdAndAgentId(campaignId, agentId);
         if (!campaignAgents.isEmpty()) {
             campaignAgentRepository.deleteAll(campaignAgents);
-            return campaignAgents.get(0);
+            return fillCampaignAgentWSDTO(campaignAgents.get(0));
         }
         return null;
     }
