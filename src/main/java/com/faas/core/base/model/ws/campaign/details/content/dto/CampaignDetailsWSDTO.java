@@ -1,6 +1,7 @@
 package com.faas.core.base.model.ws.campaign.details.content.dto;
 
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
+import com.faas.core.base.model.ws.campaign.details.agent.dto.CampaignAgentWSDTO;
 import com.faas.core.base.model.ws.campaign.details.channel.dto.CampaignChannelWSDTO;
 import com.faas.core.base.model.ws.campaign.details.temp.content.dto.CampaignTempWSDTO;
 import com.faas.core.base.model.ws.campaign.details.remote.dto.CampaignRemoteWSDTO;
@@ -12,6 +13,7 @@ import java.util.List;
 public class CampaignDetailsWSDTO {
 
     private CampaignDBModel campaign;
+    private List<CampaignAgentWSDTO> campaignAgents;
     private CampaignTempWSDTO campaignTemp;
     private CampaignChannelWSDTO campaignChannel;
     private CampaignTriggerWSDTO campaignTrigger;
@@ -21,8 +23,9 @@ public class CampaignDetailsWSDTO {
     public CampaignDetailsWSDTO() {
     }
 
-    public CampaignDetailsWSDTO(CampaignDBModel campaign, CampaignTempWSDTO campaignTemp, CampaignChannelWSDTO campaignChannel, CampaignTriggerWSDTO campaignTrigger, List<CampaignScenarioWSDTO> campaignScenarios, List<CampaignRemoteWSDTO> campaignRemotes) {
+    public CampaignDetailsWSDTO(CampaignDBModel campaign, List<CampaignAgentWSDTO> campaignAgents, CampaignTempWSDTO campaignTemp, CampaignChannelWSDTO campaignChannel, CampaignTriggerWSDTO campaignTrigger, List<CampaignScenarioWSDTO> campaignScenarios, List<CampaignRemoteWSDTO> campaignRemotes) {
         this.campaign = campaign;
+        this.campaignAgents = campaignAgents;
         this.campaignTemp = campaignTemp;
         this.campaignChannel = campaignChannel;
         this.campaignTrigger = campaignTrigger;
@@ -36,6 +39,14 @@ public class CampaignDetailsWSDTO {
 
     public void setCampaign(CampaignDBModel campaign) {
         this.campaign = campaign;
+    }
+
+    public List<CampaignAgentWSDTO> getCampaignAgents() {
+        return campaignAgents;
+    }
+
+    public void setCampaignAgents(List<CampaignAgentWSDTO> campaignAgents) {
+        this.campaignAgents = campaignAgents;
     }
 
     public CampaignTempWSDTO getCampaignTemp() {

@@ -14,7 +14,7 @@ import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.client.details.ClientDetailsRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.operation.details.channel.*;
-import com.faas.core.base.repo.remote.app.RemoteAppRepository;
+import com.faas.core.base.repo.remoteapp.RemoteAppRepository;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;

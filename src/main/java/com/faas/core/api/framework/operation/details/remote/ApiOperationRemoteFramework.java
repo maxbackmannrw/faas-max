@@ -2,10 +2,10 @@ package com.faas.core.api.framework.operation.details.remote;
 
 import com.faas.core.api.model.ws.operation.details.remote.dto.ApiOperationClientRemoteWSDTO;
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
-import com.faas.core.base.model.db.remote.app.RemoteAppDBModel;
+import com.faas.core.base.model.db.remoteapp.RemoteAppDBModel;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
-import com.faas.core.base.repo.remote.app.RemoteAppRepository;
+import com.faas.core.base.repo.remoteapp.RemoteAppRepository;
 import com.faas.core.utility.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

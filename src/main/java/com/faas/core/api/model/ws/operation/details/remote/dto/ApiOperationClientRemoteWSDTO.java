@@ -1,6 +1,6 @@
 package com.faas.core.api.model.ws.operation.details.remote.dto;
 
-import com.faas.core.base.model.db.remote.app.RemoteAppDBModel;
+import com.faas.core.base.model.db.remoteapp.RemoteAppDBModel;
 
 public class ApiOperationClientRemoteWSDTO {
 

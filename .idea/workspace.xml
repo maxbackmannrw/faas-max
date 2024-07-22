@@ -9,15 +9,33 @@
   <component name="ChangeListManager">
     <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/campaign/details/trigger/details/CampaignAITriggerController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/campaign/details/trigger/details/CampaignAITriggerFramework.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/campaign/details/trigger/details/CampaignAITriggerMiddleware.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/campaign/details/trigger/AITriggerDBModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/details/trigger/content/dto/CampaignTriggerWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/details/trigger/content/dto/CampaignTriggerWSDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/details/trigger/details/CampaignAITriggerWSModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/details/trigger/details/dto/CampaignAITriggerWSDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/repo/campaign/details/trigger/AITriggerRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/remote/ApiOperationRemoteFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/details/remote/ApiOperationRemoteFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/details/remote/dto/ApiOperationClientRemoteWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/details/remote/dto/ApiOperationClientRemoteWSDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/remote/app/content/RemoteAppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/remoteapp/content/RemoteAppController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/remote/app/details/RemoteAppDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/remoteapp/details/RemoteAppDetailsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/client/details/content/ClientDetailsFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/client/details/content/ClientDetailsFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/remote/app/content/RemoteAppFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/remoteapp/content/RemoteAppFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/remote/app/details/RemoteAppDetailsFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/remoteapp/details/RemoteAppDetailsFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/utils/content/SystemContentFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/utils/content/SystemContentFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/campaign/details/agent/CampaignAgentMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/campaign/details/agent/CampaignAgentMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/remote/app/content/RemoteAppMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/remoteapp/content/RemoteAppMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/remote/app/details/RemoteAppDetailsMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/remoteapp/details/RemoteAppDetailsMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/remote/app/RemoteAppDBModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/remoteapp/RemoteAppDBModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/details/content/dto/CampaignDetailsWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/details/content/dto/CampaignDetailsWSDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/remote/app/content/RemoteClientListWSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/remoteapp/content/RemoteClientListWSModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/remote/app/content/RemoteClientSummaryWSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/remoteapp/content/RemoteClientSummaryWSModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/remote/app/content/RemoteClientWSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/remoteapp/content/RemoteClientWSModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/remote/app/content/dto/RemoteClientListWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/remoteapp/content/dto/RemoteClientListWSDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/remote/app/content/dto/RemoteClientSummaryWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/remoteapp/content/dto/RemoteClientSummaryWSDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/remote/app/content/dto/RemoteClientWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/remoteapp/content/dto/RemoteClientWSDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/remote/app/details/RemoteClientDetailsWSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/remoteapp/details/RemoteClientDetailsWSModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/remote/app/details/dto/RemoteClientDetailsWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/remoteapp/details/dto/RemoteClientDetailsWSDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/repo/remote/app/RemoteAppRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/repo/remoteapp/RemoteAppRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utility/config/BaseRoute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utility/config/BaseRoute.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utility/helpers/campaign/CampaignHelpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utility/helpers/campaign/CampaignHelpers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utility/helpers/client/ClientHelpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utility/helpers/client/ClientHelpers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utility/helpers/remote/RemoteAppHelpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utility/helpers/remote/RemoteAppHelpers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utility/helpers/utils/UtilsHelpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utility/helpers/utils/UtilsHelpers.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +125,7 @@
     "dart.analysis.tool.window.visible": "false",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Applications/MAMP/htdocs/faas/backend/faas-core-server/src/main/java/com/faas/core/base/model/ws/campaign/details/trigger",
+    "last_opened_file_path": "/Applications/MAMP/htdocs/faas/backend/faas-core-server/src/main/java/com/faas/core/base/repo",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -126,11 +144,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/details/trigger" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/campaign/details/trigger" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/campaign/details/trigger" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/remote" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/remote" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/base/repo" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/scenario/content/dto" />
@@ -1132,15 +1150,14 @@
       <workItem from="1721241358311" duration="205000" />
       <workItem from="1721333216218" duration="2573000" />
       <workItem from="1721344802283" duration="143000" />
-      <workItem from="1721372335720" duration="5896000" />
-    </task>
-    <task id="LOCAL-00906" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1718110859722</created>
-      <option name="number" value="00906" />
-      <option name="presentableId" value="LOCAL-00906" />
-      <option name="project" value="LOCAL" />
-      <updated>1718110859723</updated>
+      <workItem from="1721372335720" duration="8471000" />
+      <workItem from="1721422272153" duration="2632000" />
+      <workItem from="1721488457217" duration="1990000" />
+      <workItem from="1721510586346" duration="1453000" />
+      <workItem from="1721561580416" duration="292000" />
+      <workItem from="1721571822144" duration="296000" />
+      <workItem from="1721604581511" duration="1390000" />
+      <workItem from="1721617234049" duration="5407000" />
     </task>
     <task id="LOCAL-00907" summary="almost finish">
       <option name="closed" value="true" />
@@ -1526,7 +1543,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721378189541</updated>
     </task>
-    <option name="localTasksCounter" value="955" />
+    <task id="LOCAL-00955" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1721388299274</created>
+      <option name="number" value="00955" />
+      <option name="presentableId" value="LOCAL-00955" />
+      <option name="project" value="LOCAL" />
+      <updated>1721388299274</updated>
+    </task>
+    <option name="localTasksCounter" value="956" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -24,7 +24,7 @@ import com.faas.core.base.repo.campaign.details.temp.SmsTempRepository;
 import com.faas.core.base.repo.campaign.details.temp.WappMessageTempRepository;
 import com.faas.core.base.repo.campaign.details.scenario.CampaignScenarioRepository;
 import com.faas.core.base.repo.campaign.details.trigger.*;
-import com.faas.core.base.repo.remote.app.RemoteAppRepository;
+import com.faas.core.base.repo.remoteapp.RemoteAppRepository;
 import com.faas.core.base.repo.scenario.content.ScenarioRepository;
 import com.faas.core.base.repo.user.content.UserRepository;
 import com.faas.core.base.repo.user.details.UserDetailsRepository;

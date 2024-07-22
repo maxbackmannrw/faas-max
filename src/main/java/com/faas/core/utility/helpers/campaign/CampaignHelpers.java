@@ -32,6 +32,7 @@ import com.faas.core.base.model.ws.campaign.details.trigger.details.dto.Campaign
 import com.faas.core.base.model.ws.campaign.details.trigger.details.dto.CampaignSmsTriggerWSDTO;
 import com.faas.core.base.model.ws.campaign.details.trigger.details.dto.CampaignWappCallTriggerWSDTO;
 import com.faas.core.base.model.ws.campaign.details.trigger.details.dto.CampaignWappMessageTriggerWSDTO;
+import com.faas.core.base.repo.campaign.details.agent.CampaignAgentRepository;
 import com.faas.core.base.repo.campaign.details.channel.CampaignChannelRepository;
 import com.faas.core.base.repo.campaign.details.temp.EmailTempRepository;
 import com.faas.core.base.repo.campaign.details.temp.PushTempRepository;
@@ -68,6 +69,9 @@ public class CampaignHelpers {
 
     @Autowired
     CampaignChannelRepository campaignChannelRepository;
+
+    @Autowired
+    CampaignAgentRepository campaignAgentRepository;
 
     @Autowired
     EmailTempRepository emailTempRepository;
@@ -118,6 +122,7 @@ public class CampaignHelpers {
 
         CampaignDetailsWSDTO campaignDetailsWSDTO = new CampaignDetailsWSDTO();
         campaignDetailsWSDTO.setCampaign(campaignDBModel);
+        campaignDetailsWSDTO.setCampaignAgents(createCampaignAgentWSDTOS(campaignDBModel.getId()));
         campaignDetailsWSDTO.setCampaignTemp(createCampaignTempWSDTO(campaignDBModel.getId()));
         campaignDetailsWSDTO.setCampaignChannel(createCampaignChannelWSDTO(campaignDBModel.getId()));
         campaignDetailsWSDTO.setCampaignTrigger(createCampaignTriggerWSDTO(campaignDBModel.getId()));
@@ -248,6 +253,20 @@ public class CampaignHelpers {
         campaignRemoteWSDTO.setRemoteUrls(urlRepository.findByBaseTypeAndOwnerId(AppConstant.REMOTE_URL, campaignRemoteDBModel.getRemoteId()));
 
         return campaignRemoteWSDTO;
+    }
+
+
+    public List<CampaignAgentWSDTO> createCampaignAgentWSDTOS(String campaignId){
+
+        List<CampaignAgentWSDTO> campaignAgentWSDTOS = new ArrayList<>();
+        List<CampaignAgentDBModel> campaignAgentDBModels = campaignAgentRepository.findByCampaignId(campaignId);
+        for (CampaignAgentDBModel campaignAgentDBModel : campaignAgentDBModels) {
+            Optional<UserDBModel> userDBModel = userRepository.findById(campaignAgentDBModel.getAgentId());
+            if (userDBModel.isPresent()){
+                campaignAgentWSDTOS.add(new CampaignAgentWSDTO(userDBModel.get()));
+            }
+        }
+        return campaignAgentWSDTOS;
     }
 
 

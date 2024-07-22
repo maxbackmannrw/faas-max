@@ -10,7 +10,7 @@ import com.faas.core.base.model.db.utils.DataTypeDBModel;
 import com.faas.core.base.model.ws.client.details.content.dto.*;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.client.details.*;
-import com.faas.core.base.repo.remote.app.RemoteAppRepository;
+import com.faas.core.base.repo.remoteapp.RemoteAppRepository;
 import com.faas.core.base.repo.utils.DataTypeRepository;
 import com.faas.core.utility.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;

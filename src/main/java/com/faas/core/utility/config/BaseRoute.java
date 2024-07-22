@@ -11,7 +11,6 @@ public class BaseRoute {
     public static final String UPDATE_USER = "updateuser";
     public static final String REMOVE_USER = "removeuser";
 
-
     public static final String GET_USER_DETAILS = "getuserdetails";
 
     public static final String GET_USER_DATAS = "getuserdatas";
@@ -139,7 +138,7 @@ public class BaseRoute {
     public static final String REMOVE_REMOTE_APP = "removeremoteapp";
 
     public static final String GET_REMOTE_APP_DETAILS = "getremoteappdetails";
-    public static final String GET_REMOTE_APPS_SUMMARY = "getremoteappsummary";
+    public static final String GET_REMOTE_APPS_SUMMARY = "getremoteappssummary";
 
 
 
