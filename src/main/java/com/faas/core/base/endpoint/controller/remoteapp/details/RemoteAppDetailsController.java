@@ -1,8 +1,8 @@
 package com.faas.core.base.endpoint.controller.remoteapp.details;
 
 import com.faas.core.base.middleware.remoteapp.details.RemoteAppDetailsMiddleware;
-import com.faas.core.base.model.ws.remoteapp.content.RemoteClientSummaryWSModel;
-import com.faas.core.base.model.ws.remoteapp.details.RemoteClientDetailsWSModel;
+import com.faas.core.base.model.ws.remoteapp.content.RemoteAppSummaryWSModel;
+import com.faas.core.base.model.ws.remoteapp.details.RemoteAppDetailsWSModel;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +27,7 @@ public class RemoteAppDetailsController {
     public ResponseEntity<?> getRemoteAppDetails(@RequestParam long userId,
                                                     @RequestParam String clientRemoteId) {
 
-        RemoteClientDetailsWSModel response = remoteAppDetailsMiddleware.getRemoteAppDetails(userId,clientRemoteId);
+        RemoteAppDetailsWSModel response = remoteAppDetailsMiddleware.getRemoteAppDetails(userId,clientRemoteId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -38,7 +38,7 @@ public class RemoteAppDetailsController {
     @RequestMapping(value = BaseRoute.GET_REMOTE_APPS_SUMMARY, method = RequestMethod.POST)
     public ResponseEntity<?> getRemoteAppsSummary(@RequestParam long userId) {
 
-        RemoteClientSummaryWSModel response = remoteAppDetailsMiddleware.getRemoteAppsSummary(userId);
+        RemoteAppSummaryWSModel response = remoteAppDetailsMiddleware.getRemoteAppsSummary(userId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

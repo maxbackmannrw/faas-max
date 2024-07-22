@@ -4,24 +4,24 @@ import com.faas.core.base.model.ws.general.PaginationWSDTO;
 
 import java.util.List;
 
-public class RemoteClientListWSDTO {
+public class RemoteAppListWSDTO {
 
-    private List<RemoteClientWSDTO> clientRemotes;
+    private List<RemoteAppWSDTO> clientRemotes;
     public PaginationWSDTO pagination;
 
-    public RemoteClientListWSDTO() {
+    public RemoteAppListWSDTO() {
     }
 
-    public RemoteClientListWSDTO(List<RemoteClientWSDTO> clientRemotes, PaginationWSDTO pagination) {
+    public RemoteAppListWSDTO(List<RemoteAppWSDTO> clientRemotes, PaginationWSDTO pagination) {
         this.clientRemotes = clientRemotes;
         this.pagination = pagination;
     }
 
-    public List<RemoteClientWSDTO> getClientRemotes() {
+    public List<RemoteAppWSDTO> getClientRemotes() {
         return clientRemotes;
     }
 
-    public void setClientRemotes(List<RemoteClientWSDTO> clientRemotes) {
+    public void setClientRemotes(List<RemoteAppWSDTO> clientRemotes) {
         this.clientRemotes = clientRemotes;
     }
 

@@ -2,10 +2,10 @@ package com.faas.core.base.middleware.remoteapp.content;
 
 import com.faas.core.base.framework.remoteapp.content.RemoteAppFramework;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.remoteapp.content.RemoteClientListWSModel;
-import com.faas.core.base.model.ws.remoteapp.content.RemoteClientWSModel;
-import com.faas.core.base.model.ws.remoteapp.content.dto.RemoteClientListWSDTO;
-import com.faas.core.base.model.ws.remoteapp.content.dto.RemoteClientWSDTO;
+import com.faas.core.base.model.ws.remoteapp.content.RemoteAppListWSModel;
+import com.faas.core.base.model.ws.remoteapp.content.RemoteAppWSModel;
+import com.faas.core.base.model.ws.remoteapp.content.dto.RemoteAppListWSDTO;
+import com.faas.core.base.model.ws.remoteapp.content.dto.RemoteAppWSDTO;
 import com.faas.core.utility.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -21,14 +21,14 @@ public class RemoteAppMiddleware {
     RemoteAppFramework remoteAppFramework;
 
 
-    public RemoteClientListWSModel getRemoteApps(long userId,String remoteState,String baseType, int reqPage, int reqSize) {
+    public RemoteAppListWSModel getRemoteApps(long userId, String appState, String baseType, int reqPage, int reqSize) {
 
-        RemoteClientListWSModel response = new RemoteClientListWSModel();
+        RemoteAppListWSModel response = new RemoteAppListWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        RemoteClientListWSDTO remoteClientListWSDTO = remoteAppFramework.getRemoteAppsService(userId,remoteState,baseType,reqPage,reqSize);
-        if (remoteClientListWSDTO != null){
-            response.setRemoteClientList(remoteClientListWSDTO);
+        RemoteAppListWSDTO remoteAppListWSDTO = remoteAppFramework.getRemoteAppsService(userId,appState,baseType,reqPage,reqSize);
+        if (remoteAppListWSDTO != null){
+            response.setRemoteAppList(remoteAppListWSDTO);
         }
 
         general.setOperation("getRemoteApps");
@@ -40,14 +40,14 @@ public class RemoteAppMiddleware {
         return response;
     }
 
-    public RemoteClientListWSModel getClientRemoteApps(long userId, long clientId) {
+    public RemoteAppListWSModel getClientRemoteApps(long userId, long clientId) {
 
-        RemoteClientListWSModel response = new RemoteClientListWSModel();
+        RemoteAppListWSModel response = new RemoteAppListWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        RemoteClientListWSDTO remoteClientListWSDTO = remoteAppFramework.getClientRemoteAppsService(userId,clientId);
-        if (remoteClientListWSDTO != null){
-            response.setRemoteClientList(remoteClientListWSDTO);
+        RemoteAppListWSDTO remoteAppListWSDTO = remoteAppFramework.getClientRemoteAppsService(userId,clientId);
+        if (remoteAppListWSDTO != null){
+            response.setRemoteAppList(remoteAppListWSDTO);
         }
 
         general.setOperation("getClientRemoteApps");
@@ -59,18 +59,18 @@ public class RemoteAppMiddleware {
         return response;
     }
 
-    public RemoteClientWSModel getRemoteApp(long userId, String clientRemoteId) {
+    public RemoteAppWSModel getRemoteApp(long userId, String clientRemoteId) {
 
-        RemoteClientWSModel response = new RemoteClientWSModel();
+        RemoteAppWSModel response = new RemoteAppWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<RemoteClientWSDTO> remoteClientWSDTOS = new ArrayList<>();
+        List<RemoteAppWSDTO> remoteAppWSDTOS = new ArrayList<>();
 
-        RemoteClientWSDTO remoteClientWSDTO = remoteAppFramework.getRemoteAppService(userId,clientRemoteId);
-        if (remoteClientWSDTO != null){
-            remoteClientWSDTOS.add(remoteClientWSDTO);
+        RemoteAppWSDTO remoteAppWSDTO = remoteAppFramework.getRemoteAppService(userId,clientRemoteId);
+        if (remoteAppWSDTO != null){
+            remoteAppWSDTOS.add(remoteAppWSDTO);
         }
 
-        response.setRemoteClients(remoteClientWSDTOS);
+        response.setRemoteApps(remoteAppWSDTOS);
         general.setOperation("getRemoteApp");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -80,18 +80,18 @@ public class RemoteAppMiddleware {
         return response;
     }
 
-    public RemoteClientWSModel createRemoteApp(long userId, String operationId, String remoteId) {
+    public RemoteAppWSModel createRemoteApp(long userId, String operationId, String remoteId) {
 
-        RemoteClientWSModel response = new RemoteClientWSModel();
+        RemoteAppWSModel response = new RemoteAppWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<RemoteClientWSDTO> remoteClientWSDTOS = new ArrayList<>();
+        List<RemoteAppWSDTO> remoteAppWSDTOS = new ArrayList<>();
 
-        RemoteClientWSDTO remoteClientWSDTO = remoteAppFramework.createRemoteAppService(userId,operationId,remoteId);
-        if (remoteClientWSDTO != null){
-            remoteClientWSDTOS.add(remoteClientWSDTO);
+        RemoteAppWSDTO remoteAppWSDTO = remoteAppFramework.createRemoteAppService(userId,operationId,remoteId);
+        if (remoteAppWSDTO != null){
+            remoteAppWSDTOS.add(remoteAppWSDTO);
         }
 
-        response.setRemoteClients(remoteClientWSDTOS);
+        response.setRemoteApps(remoteAppWSDTOS);
         general.setOperation("createRemoteApp");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -101,18 +101,18 @@ public class RemoteAppMiddleware {
         return response;
     }
 
-    public RemoteClientWSModel updateRemoteApp(long userId, String clientRemoteId, String remoteState) {
+    public RemoteAppWSModel updateRemoteApp(long userId, String clientRemoteId, String remoteState) {
 
-        RemoteClientWSModel response = new RemoteClientWSModel();
+        RemoteAppWSModel response = new RemoteAppWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<RemoteClientWSDTO> remoteClientWSDTOS = new ArrayList<>();
+        List<RemoteAppWSDTO> remoteAppWSDTOS = new ArrayList<>();
 
-        RemoteClientWSDTO remoteClientWSDTO = remoteAppFramework.updateRemoteAppService(userId,clientRemoteId,remoteState);
-        if (remoteClientWSDTO != null){
-            remoteClientWSDTOS.add(remoteClientWSDTO);
+        RemoteAppWSDTO remoteAppWSDTO = remoteAppFramework.updateRemoteAppService(userId,clientRemoteId,remoteState);
+        if (remoteAppWSDTO != null){
+            remoteAppWSDTOS.add(remoteAppWSDTO);
         }
 
-        response.setRemoteClients(remoteClientWSDTOS);
+        response.setRemoteApps(remoteAppWSDTOS);
         general.setOperation("updateRemoteApp");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -122,18 +122,18 @@ public class RemoteAppMiddleware {
         return response;
     }
 
-    public RemoteClientWSModel removeRemoteApp(long userId, String clientRemoteId) {
+    public RemoteAppWSModel removeRemoteApp(long userId, String clientRemoteId) {
 
-        RemoteClientWSModel response = new RemoteClientWSModel();
+        RemoteAppWSModel response = new RemoteAppWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<RemoteClientWSDTO> remoteClientWSDTOS = new ArrayList<>();
+        List<RemoteAppWSDTO> remoteAppWSDTOS = new ArrayList<>();
 
-        RemoteClientWSDTO remoteClientWSDTO = remoteAppFramework.removeRemoteAppService(userId,clientRemoteId);
-        if (remoteClientWSDTO != null){
-            remoteClientWSDTOS.add(remoteClientWSDTO);
+        RemoteAppWSDTO remoteAppWSDTO = remoteAppFramework.removeRemoteAppService(userId,clientRemoteId);
+        if (remoteAppWSDTO != null){
+            remoteAppWSDTOS.add(remoteAppWSDTO);
         }
 
-        response.setRemoteClients(remoteClientWSDTOS);
+        response.setRemoteApps(remoteAppWSDTOS);
         general.setOperation("removeRemoteApp");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);

@@ -5,7 +5,7 @@ import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.remoteapp.RemoteAppDBModel;
 import com.faas.core.base.model.db.remote.content.RemoteDBModel;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
-import com.faas.core.base.model.ws.remoteapp.content.dto.RemoteClientWSDTO;
+import com.faas.core.base.model.ws.remoteapp.content.dto.RemoteAppWSDTO;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
@@ -33,24 +33,24 @@ public class RemoteAppHelpers {
     @Autowired
     AppUtils appUtils;
 
-    public RemoteClientWSDTO createClientRemoteWSDTO(RemoteAppDBModel remoteAppDBModel){
+    public RemoteAppWSDTO createRemoteAppWSDTO(RemoteAppDBModel remoteAppDBModel){
 
         Optional<ClientDBModel> clientDBModel = clientRepository.findById(remoteAppDBModel.getClientId());
         if (clientDBModel.isPresent()){
 
-            RemoteClientWSDTO remoteClientWSDTO = new RemoteClientWSDTO();
-            remoteClientWSDTO.setRemoteClient(remoteAppDBModel);
-            remoteClientWSDTO.setClient(clientDBModel.get());
+            RemoteAppWSDTO remoteAppWSDTO = new RemoteAppWSDTO();
+            remoteAppWSDTO.setRemoteClient(remoteAppDBModel);
+            remoteAppWSDTO.setClient(clientDBModel.get());
             Optional<OperationDBModel> operationDBModel = operationRepository.findById(remoteAppDBModel.getOperationId());
-            operationDBModel.ifPresent(remoteClientWSDTO::setOperation);
+            operationDBModel.ifPresent(remoteAppWSDTO::setOperation);
 
-            return remoteClientWSDTO;
+            return remoteAppWSDTO;
         }
         return null;
     }
 
 
-    public RemoteAppDBModel createClientRemoteDBModel(OperationDBModel operationDBModel, RemoteDBModel remoteDBModel){
+    public RemoteAppDBModel createRemoteAppDBModel(OperationDBModel operationDBModel, RemoteDBModel remoteDBModel){
 
         RemoteAppDBModel remoteAppDBModel = new RemoteAppDBModel();
         remoteAppDBModel.setClientId(operationDBModel.getClientId());
@@ -67,7 +67,7 @@ public class RemoteAppHelpers {
         remoteAppDBModel.setTypeId(remoteDBModel.getTypeId());
         remoteAppDBModel.setRemoteType(remoteDBModel.getRemoteType());
         remoteAppDBModel.setBaseType(remoteDBModel.getBaseType());
-        remoteAppDBModel.setRemoteState(AppConstant.NEW_REMOTE);
+        remoteAppDBModel.setAppState(AppConstant.NEW_REMOTE);
         remoteAppDBModel.setuDate(appUtils.getCurrentTimeStamp());
         remoteAppDBModel.setcDate(appUtils.getCurrentTimeStamp());
         remoteAppDBModel.setStatus(1);

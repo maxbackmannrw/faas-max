@@ -2,10 +2,10 @@ package com.faas.core.base.middleware.remoteapp.details;
 
 import com.faas.core.base.framework.remoteapp.details.RemoteAppDetailsFramework;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.remoteapp.content.RemoteClientSummaryWSModel;
-import com.faas.core.base.model.ws.remoteapp.content.dto.RemoteClientSummaryWSDTO;
-import com.faas.core.base.model.ws.remoteapp.details.RemoteClientDetailsWSModel;
-import com.faas.core.base.model.ws.remoteapp.details.dto.RemoteClientDetailsWSDTO;
+import com.faas.core.base.model.ws.remoteapp.content.RemoteAppSummaryWSModel;
+import com.faas.core.base.model.ws.remoteapp.content.dto.RemoteAppSummaryWSDTO;
+import com.faas.core.base.model.ws.remoteapp.details.RemoteAppDetailsWSModel;
+import com.faas.core.base.model.ws.remoteapp.details.dto.RemoteAppDetailsWSDTO;
 import com.faas.core.utility.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -18,14 +18,14 @@ public class RemoteAppDetailsMiddleware {
     RemoteAppDetailsFramework remoteAppDetailsFramework;
 
 
-    public RemoteClientDetailsWSModel getRemoteAppDetails(long userId, String clientRemoteId) {
+    public RemoteAppDetailsWSModel getRemoteAppDetails(long userId, String clientRemoteId) {
 
-        RemoteClientDetailsWSModel response = new RemoteClientDetailsWSModel();
+        RemoteAppDetailsWSModel response = new RemoteAppDetailsWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        RemoteClientDetailsWSDTO remoteClientDetailsWSDTO = remoteAppDetailsFramework.getRemoteAppDetailsService(userId,clientRemoteId);
-        if (remoteClientDetailsWSDTO != null){
-            response.setClientRemoteDetails(remoteClientDetailsWSDTO);
+        RemoteAppDetailsWSDTO remoteAppDetailsWSDTO = remoteAppDetailsFramework.getRemoteAppDetailsService(userId,clientRemoteId);
+        if (remoteAppDetailsWSDTO != null){
+            response.setRemoteAppDetails(remoteAppDetailsWSDTO);
         }
 
         general.setOperation("getRemoteAppDetails");
@@ -37,14 +37,14 @@ public class RemoteAppDetailsMiddleware {
         return response;
     }
 
-    public RemoteClientSummaryWSModel getRemoteAppsSummary(long userId) {
+    public RemoteAppSummaryWSModel getRemoteAppsSummary(long userId) {
 
-        RemoteClientSummaryWSModel response = new RemoteClientSummaryWSModel();
+        RemoteAppSummaryWSModel response = new RemoteAppSummaryWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        RemoteClientSummaryWSDTO remoteClientSummaryWSDTO = remoteAppDetailsFramework.getRemoteAppsSummaryService(userId);
-        if (remoteClientSummaryWSDTO != null){
-            response.setClientRemoteSummary(remoteClientSummaryWSDTO);
+        RemoteAppSummaryWSDTO remoteAppSummaryWSDTO = remoteAppDetailsFramework.getRemoteAppsSummaryService(userId);
+        if (remoteAppSummaryWSDTO != null){
+            response.setRemoteAppSummary(remoteAppSummaryWSDTO);
         }
 
         general.setOperation("getRemoteAppsSummary");

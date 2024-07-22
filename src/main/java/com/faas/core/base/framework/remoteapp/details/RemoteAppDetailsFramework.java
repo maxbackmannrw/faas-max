@@ -1,7 +1,7 @@
 package com.faas.core.base.framework.remoteapp.details;
 
-import com.faas.core.base.model.ws.remoteapp.content.dto.RemoteClientSummaryWSDTO;
-import com.faas.core.base.model.ws.remoteapp.details.dto.RemoteClientDetailsWSDTO;
+import com.faas.core.base.model.ws.remoteapp.content.dto.RemoteAppSummaryWSDTO;
+import com.faas.core.base.model.ws.remoteapp.details.dto.RemoteAppDetailsWSDTO;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.remoteapp.RemoteAppRepository;
@@ -27,20 +27,20 @@ public class RemoteAppDetailsFramework {
     AppUtils appUtils;
 
 
-    public RemoteClientDetailsWSDTO getRemoteAppDetailsService(long userId, String clientRemoteId) {
+    public RemoteAppDetailsWSDTO getRemoteAppDetailsService(long userId, String clientRemoteId) {
 
         return null;
     }
 
-    public RemoteClientSummaryWSDTO getRemoteAppsSummaryService(long userId) {
+    public RemoteAppSummaryWSDTO getRemoteAppsSummaryService(long userId) {
 
-        RemoteClientSummaryWSDTO remoteClientSummaryWSDTO = new RemoteClientSummaryWSDTO();
-        remoteClientSummaryWSDTO.setNewClientRemotes(remoteAppRepository.countByRemoteState(AppConstant.NEW_REMOTE));
-        remoteClientSummaryWSDTO.setReadyClientRemotes(remoteAppRepository.countByRemoteState(AppConstant.READY_REMOTE));
-        remoteClientSummaryWSDTO.setFailedClientRemotes(remoteAppRepository.countByRemoteState(AppConstant.FAILED_REMOTE));
-        remoteClientSummaryWSDTO.setTotalClientRemotes(remoteAppRepository.count());
+        RemoteAppSummaryWSDTO remoteAppSummaryWSDTO = new RemoteAppSummaryWSDTO();
+        remoteAppSummaryWSDTO.setNewClientRemotes(remoteAppRepository.countByRemoteState(AppConstant.NEW_REMOTE));
+        remoteAppSummaryWSDTO.setReadyClientRemotes(remoteAppRepository.countByRemoteState(AppConstant.READY_REMOTE));
+        remoteAppSummaryWSDTO.setFailedClientRemotes(remoteAppRepository.countByRemoteState(AppConstant.FAILED_REMOTE));
+        remoteAppSummaryWSDTO.setTotalClientRemotes(remoteAppRepository.count());
 
-        return remoteClientSummaryWSDTO;
+        return remoteAppSummaryWSDTO;
     }
 
 }

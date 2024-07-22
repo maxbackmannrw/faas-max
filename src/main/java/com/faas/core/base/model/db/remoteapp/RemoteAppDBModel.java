@@ -25,7 +25,7 @@ public class RemoteAppDBModel {
     private long typeId;
     private String remoteType;
     private String baseType;
-    private String remoteState;
+    private String appState;
     private long uDate;
     private long cDate;
     private int status;
@@ -33,7 +33,7 @@ public class RemoteAppDBModel {
     public RemoteAppDBModel() {
     }
 
-    public RemoteAppDBModel(String id, long clientId, String operationId, String campaignId, String campaign, String campaignType, String campaignCategory, String remoteId, String remote, String remoteDesc, String version, List<RemoteDataDAO> remoteDatas, long typeId, String remoteType, String baseType, String remoteState, long uDate, long cDate, int status) {
+    public RemoteAppDBModel(String id, long clientId, String operationId, String campaignId, String campaign, String campaignType, String campaignCategory, String remoteId, String remote, String remoteDesc, String version, List<RemoteDataDAO> remoteDatas, long typeId, String remoteType, String baseType, String appState, long uDate, long cDate, int status) {
         this.id = id;
         this.clientId = clientId;
         this.operationId = operationId;
@@ -49,7 +49,7 @@ public class RemoteAppDBModel {
         this.typeId = typeId;
         this.remoteType = remoteType;
         this.baseType = baseType;
-        this.remoteState = remoteState;
+        this.appState = appState;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
@@ -175,12 +175,12 @@ public class RemoteAppDBModel {
         this.baseType = baseType;
     }
 
-    public String getRemoteState() {
-        return remoteState;
+    public String getAppState() {
+        return appState;
     }
 
-    public void setRemoteState(String remoteState) {
-        this.remoteState = remoteState;
+    public void setAppState(String appState) {
+        this.appState = appState;
     }
 
     public long getuDate() {
