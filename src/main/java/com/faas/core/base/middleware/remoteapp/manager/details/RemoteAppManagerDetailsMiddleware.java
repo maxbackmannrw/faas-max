@@ -16,13 +16,13 @@ public class RemoteAppManagerDetailsMiddleware {
     RemoteAppManagerDetailsFramework remoteAppManagerDetailsFramework;
 
 
-    public RemoteAppListWSModel getRemoteApps(long userId, String appState, String baseType, int reqPage, int reqSize) {
+    public RemoteAppListWSModel getRemoteAppManagerDetails(long userId, String appState, String baseType, int reqPage, int reqSize) {
 
         RemoteAppListWSModel response = new RemoteAppListWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
 
-        general.setOperation("getRemoteApps");
+        general.setOperation("getRemoteAppManagerDetails");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

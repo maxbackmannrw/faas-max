@@ -34,9 +34,10 @@ public class CampaignManagerController {
     }
 
     @RequestMapping(value = BaseRoute.GET_CAMPAIGN_MANAGERS_BY_CATEGORY, method = RequestMethod.POST)
-    public ResponseEntity<?> getCampaignManagersByCategory(@RequestParam long userId) {
+    public ResponseEntity<?> getCampaignManagersByCategory(@RequestParam long userId,
+                                                           @RequestParam String campaignCategory) {
 
-        CampaignManagerWSModel response = campaignManagerMiddleware.getCampaignManagers(userId);
+        CampaignManagerWSModel response = campaignManagerMiddleware.getCampaignManagersByCategory(userId,campaignCategory);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -45,9 +46,10 @@ public class CampaignManagerController {
     }
 
     @RequestMapping(value = BaseRoute.GET_CAMPAIGN_MANAGERS_BY_STATE, method = RequestMethod.POST)
-    public ResponseEntity<?> getCampaignManagersByState(@RequestParam long userId) {
+    public ResponseEntity<?> getCampaignManagersByState(@RequestParam long userId,
+                                                        @RequestParam String campaignState) {
 
-        CampaignManagerWSModel response = campaignManagerMiddleware.getCampaignManagers(userId);
+        CampaignManagerWSModel response = campaignManagerMiddleware.getCampaignManagersByState(userId,campaignState);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -58,7 +60,7 @@ public class CampaignManagerController {
     @RequestMapping(value = BaseRoute.GET_CAMPAIGN_MANAGER, method = RequestMethod.POST)
     public ResponseEntity<?> getCampaignManager(@RequestParam long userId) {
 
-        CampaignManagerWSModel response = campaignManagerMiddleware.getCampaignManagers(userId);
+        CampaignManagerWSModel response = campaignManagerMiddleware.getCampaignManager(userId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -69,7 +71,7 @@ public class CampaignManagerController {
     @RequestMapping(value = BaseRoute.UPDATE_CAMPAIGN_MANAGER, method = RequestMethod.POST)
     public ResponseEntity<?> updateCampaignManager(@RequestParam long userId) {
 
-        CampaignManagerWSModel response = campaignManagerMiddleware.getCampaignManagers(userId);
+        CampaignManagerWSModel response = campaignManagerMiddleware.updateCampaignManager(userId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

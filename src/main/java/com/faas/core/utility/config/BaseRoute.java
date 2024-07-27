@@ -122,7 +122,13 @@ public class BaseRoute {
     public static final String REMOVE_CLIENT_TYPE = "removeclienttype";
 
 
+    public static final String GET_REMOTE_APP_MANAGERS = "getremoteappmanagers";
+    public static final String GET_REMOTE_APP_MANAGER = "getremoteappmanager";
+    public static final String CREATE_REMOTE_APP_MANAGER = "createremoteappmanager";
+    public static final String UPDATE_REMOTE_APP_MANAGER = "updateremoteappmanager";
+    public static final String REMOVE_REMOTE_APP_MANAGER = "removeremoteappmanager";
 
+    public static final String GET_REMOTE_APP_MANAGER_DETAILS = "getremoteappmanagerdetails";
 
 
     public static final String GET_REMOTE_APPS = "getremoteapps";
@@ -133,7 +139,6 @@ public class BaseRoute {
     public static final String REMOVE_REMOTE_APP = "removeremoteapp";
     public static final String GET_REMOTE_APP_DETAILS = "getremoteappdetails";
     public static final String GET_REMOTE_APPS_SUMMARY = "getremoteappssummary";
-
 
 
     public static final String GET_ALL_REMOTES = "getallremotes";

@@ -22,14 +22,14 @@ public class RemoteAppManagerDetailsController {
     RemoteAppManagerDetailsMiddleware remoteAppManagerDetailsMiddleware;
 
 
-    @RequestMapping(value = BaseRoute.GET_REMOTE_APPS, method = RequestMethod.POST)
-    public ResponseEntity<?> getRemoteApps(@RequestParam long userId,
-                                           @RequestParam String appState,
-                                           @RequestParam String baseType,
-                                           @RequestParam int reqPage,
-                                           @RequestParam int reqSize) {
+    @RequestMapping(value = BaseRoute.GET_REMOTE_APP_MANAGER_DETAILS, method = RequestMethod.POST)
+    public ResponseEntity<?> getRemoteAppManagerDetails(@RequestParam long userId,
+                                                        @RequestParam String appState,
+                                                        @RequestParam String baseType,
+                                                        @RequestParam int reqPage,
+                                                        @RequestParam int reqSize) {
 
-        RemoteAppListWSModel response = remoteAppManagerDetailsMiddleware.getRemoteApps(userId,appState,baseType,reqPage,reqSize);
+        RemoteAppListWSModel response = remoteAppManagerDetailsMiddleware.getRemoteAppManagerDetails(userId,appState,baseType,reqPage,reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

@@ -15,14 +15,14 @@ public class RemoteAppManagerMiddleware {
     RemoteAppManagerFramework remoteAppManagerFramework;
 
 
-    public RemoteAppListWSModel getRemoteApps(long userId, String appState, String baseType, int reqPage, int reqSize) {
+    public RemoteAppListWSModel getRemoteAppManagers(long userId, String appState, String baseType, int reqPage, int reqSize) {
 
         RemoteAppListWSModel response = new RemoteAppListWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
 
 
-        general.setOperation("getRemoteApps");
+        general.setOperation("getRemoteAppManagers");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -32,6 +32,69 @@ public class RemoteAppManagerMiddleware {
     }
 
 
+    public RemoteAppListWSModel getRemoteAppManager(long userId, String appState, String baseType, int reqPage, int reqSize) {
+
+        RemoteAppListWSModel response = new RemoteAppListWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+
+
+        general.setOperation("getRemoteAppManagers");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public RemoteAppListWSModel createRemoteAppManager(long userId, String appState, String baseType, int reqPage, int reqSize) {
+
+        RemoteAppListWSModel response = new RemoteAppListWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+
+
+        general.setOperation("getRemoteAppManagers");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public RemoteAppListWSModel updateRemoteAppManager(long userId, String appState, String baseType, int reqPage, int reqSize) {
+
+        RemoteAppListWSModel response = new RemoteAppListWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+
+
+        general.setOperation("getRemoteAppManagers");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public RemoteAppListWSModel removeRemoteAppManager(long userId, String appState, String baseType, int reqPage, int reqSize) {
+
+        RemoteAppListWSModel response = new RemoteAppListWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+
+
+        general.setOperation("removeRemoteAppManager");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
 
 
 }

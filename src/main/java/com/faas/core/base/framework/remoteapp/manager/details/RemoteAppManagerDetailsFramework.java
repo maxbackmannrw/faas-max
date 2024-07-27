@@ -47,15 +47,10 @@ public class RemoteAppManagerDetailsFramework {
     AppUtils appUtils;
 
 
-    public RemoteAppListWSDTO getRemoteAppsService(long userId, String appState, String baseType, int reqPage, int reqSize) {
+    public RemoteAppListWSDTO getRemoteAppManagerDetailsService(long userId, String appState, String baseType, int reqPage, int reqSize) {
 
         Page<RemoteAppDBModel> remoteAppDBModelPage = remoteAppRepository.findAllByAppStateAndBaseType(appState,baseType,PageRequest.of(reqPage,reqSize));
-        if (remoteAppDBModelPage != null){
-            RemoteAppListWSDTO remoteAppListWSDTO = new RemoteAppListWSDTO();
-            List<RemoteAppWSDTO> remoteAppWSDTOS = new ArrayList<>();
 
-
-        }
         return null;
     }
 

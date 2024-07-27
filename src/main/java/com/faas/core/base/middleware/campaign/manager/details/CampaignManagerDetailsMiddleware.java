@@ -1,7 +1,6 @@
 package com.faas.core.base.middleware.campaign.manager.details;
 
 import com.faas.core.base.framework.campaign.manager.details.CampaignManagerDetailsFramework;
-import com.faas.core.base.model.ws.campaign.content.CampaignWSModel;
 import com.faas.core.base.model.ws.campaign.manager.details.CampaignManagerDetailsWSModel;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.utility.config.AppConstant;

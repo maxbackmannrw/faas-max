@@ -31,6 +31,67 @@ public class CampaignManagerMiddleware {
         return response;
     }
 
+    public CampaignManagerWSModel getCampaignManagersByCategory(long userId,String campaignCategory) {
+
+        CampaignManagerWSModel response = new CampaignManagerWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+
+        general.setOperation("getCampaignManagersByCategory");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public CampaignManagerWSModel getCampaignManagersByState(long userId,String campaignState) {
+
+        CampaignManagerWSModel response = new CampaignManagerWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+
+        general.setOperation("getCampaignManagersByState");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public CampaignManagerWSModel getCampaignManager(long userId) {
+
+        CampaignManagerWSModel response = new CampaignManagerWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+
+        general.setOperation("getCampaignManagers");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+
+    public CampaignManagerWSModel updateCampaignManager(long userId) {
+
+        CampaignManagerWSModel response = new CampaignManagerWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+
+        general.setOperation("getCampaignManagers");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
 
 
 }
