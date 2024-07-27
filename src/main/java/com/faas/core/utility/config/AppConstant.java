@@ -81,6 +81,7 @@ public class AppConstant {
     public static final String OPERATION_FALSE_CONTENT = "OPERATION_FALSE_CONTENT";
 
 
+
     public static final String FLASH_MESSAGE = "FLASH_MESSAGE";
     public static final String TEXT_MESSAGE = "TEXT_MESSAGE";
     public static final String IMAGE_MESSAGE = "IMAGE_MESSAGE";
