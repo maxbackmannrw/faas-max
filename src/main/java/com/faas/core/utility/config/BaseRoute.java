@@ -55,13 +55,7 @@ public class BaseRoute {
     public static final String REMOVE_MAIN_MANAGER_OPERATION = "removemainmanageroperation";
 
 
-    public static final String GET_CAMPAIGN_MANAGERS = "getcampaignmanagers";
-    public static final String GET_CAMPAIGN_MANAGERS_BY_CATEGORY = "getcampaignmanagersbycategory";
-    public static final String GET_CAMPAIGN_MANAGER = "getcampaignmanager";
-    public static final String UPDATE_CAMPAIGN_MANAGER = "updatecampaignmanager";
-    public static final String REMOVE_CAMPAIGN_MANAGER = "removecampaignmanager";
 
-    public static final String GET_CAMPAIGN_MANAGER_DETAILS = "getcampaignmanagerdetails";
 
 
     public static final String GET_OPERATION_MANAGERS = "getoperationmanagers";
@@ -129,13 +123,14 @@ public class BaseRoute {
 
 
 
+
+
     public static final String GET_REMOTE_APPS = "getremoteapps";
     public static final String GET_CLIENT_REMOTE_APPS = "getclientremoteapps";
     public static final String GET_REMOTE_APP = "getremoteapp";
     public static final String CREATE_REMOTE_APP = "createremoteapp";
     public static final String UPDATE_REMOTE_APP = "updateremoteapp";
     public static final String REMOVE_REMOTE_APP = "removeremoteapp";
-
     public static final String GET_REMOTE_APP_DETAILS = "getremoteappdetails";
     public static final String GET_REMOTE_APPS_SUMMARY = "getremoteappssummary";
 
@@ -275,6 +270,18 @@ public class BaseRoute {
     public static final String CREATE_WAPP_SERVER = "createwappserver";
     public static final String UPDATE_WAPP_SERVER = "updatewappserver";
     public static final String REMOVE_WAPP_SERVER = "removewappserver";
+
+
+
+    public static final String GET_CAMPAIGN_MANAGERS = "getcampaignmanagers";
+    public static final String GET_CAMPAIGN_MANAGERS_BY_CATEGORY = "getcampaignmanagersbycategory";
+    public static final String GET_CAMPAIGN_MANAGERS_BY_STATE = "getcampaignmanagersbystate";
+    public static final String GET_CAMPAIGN_MANAGER = "getcampaignmanager";
+    public static final String UPDATE_CAMPAIGN_MANAGER = "updatecampaignmanager";
+
+    public static final String GET_CAMPAIGN_MANAGER_DETAILS = "getcampaignmanagerdetails";
+
+
 
 
     public static final String GET_CAMPAIGNS = "getcampaigns";
