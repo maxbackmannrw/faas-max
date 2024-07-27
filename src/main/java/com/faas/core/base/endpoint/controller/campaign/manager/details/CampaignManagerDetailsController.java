@@ -24,9 +24,10 @@ public class CampaignManagerDetailsController {
 
 
     @RequestMapping(value = BaseRoute.GET_CAMPAIGN_MANAGER_DETAILS, method = RequestMethod.POST)
-    public ResponseEntity<?> getCampaignManagerDetails(@RequestParam long userId) {
+    public ResponseEntity<?> getCampaignManagerDetails(@RequestParam long userId,
+                                                       @RequestParam String campaignId) {
 
-        CampaignManagerDetailsWSModel response = campaignManagerDetailsMiddleware.getCampaignManagerDetails(userId);
+        CampaignManagerDetailsWSModel response = campaignManagerDetailsMiddleware.getCampaignManagerDetails(userId,campaignId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

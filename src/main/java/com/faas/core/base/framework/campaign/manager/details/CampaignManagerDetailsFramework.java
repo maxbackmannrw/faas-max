@@ -17,7 +17,7 @@ public class CampaignManagerDetailsFramework {
     AppUtils appUtils;
 
 
-    public CampaignManagerDetailsWSDTO getCampaignManagerDetailsService(long userId) {
+    public CampaignManagerDetailsWSDTO getCampaignManagerDetailsService(long userId,String campaignId) {
 
         CampaignManagerDetailsWSDTO campaignManagerDetailsWSDTO = new CampaignManagerDetailsWSDTO();
 
