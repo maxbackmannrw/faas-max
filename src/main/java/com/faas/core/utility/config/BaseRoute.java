@@ -277,7 +277,6 @@ public class BaseRoute {
     public static final String REMOVE_WAPP_SERVER = "removewappserver";
 
 
-
     public static final String GET_CAMPAIGN_MANAGERS = "getcampaignmanagers";
     public static final String GET_CAMPAIGN_MANAGERS_BY_CATEGORY = "getcampaignmanagersbycategory";
     public static final String GET_CAMPAIGN_MANAGERS_BY_STATE = "getcampaignmanagersbystate";
@@ -285,9 +284,6 @@ public class BaseRoute {
     public static final String UPDATE_CAMPAIGN_MANAGER = "updatecampaignmanager";
 
     public static final String GET_CAMPAIGN_MANAGER_DETAILS = "getcampaignmanagerdetails";
-
-
-
 
     public static final String GET_CAMPAIGNS = "getcampaigns";
     public static final String GET_CAMPAIGNS_BY_CATEGORY = "getcampaignsbycategory";
