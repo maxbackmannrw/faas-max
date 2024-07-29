@@ -23,7 +23,7 @@ public class CampaignManagerDetailsMiddleware {
         GeneralWSModel general = new GeneralWSModel();
 
         CampaignManagerDetailsWSDTO campaignManagerDetailsWSDTO = campaignManagerDetailsFramework.getCampaignManagerDetailsService(userId,campaignId);
-        if(campaignManagerDetailsWSDTO!=null){
+        if(campaignManagerDetailsWSDTO != null){
             response.setCampaignManagerDetails(campaignManagerDetailsWSDTO);
         }
 
@@ -35,5 +35,6 @@ public class CampaignManagerDetailsMiddleware {
 
         return response;
     }
+
 
 }

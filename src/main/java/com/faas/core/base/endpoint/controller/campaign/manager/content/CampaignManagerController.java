@@ -69,19 +69,6 @@ public class CampaignManagerController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-    @RequestMapping(value = BaseRoute.UPDATE_CAMPAIGN_MANAGER, method = RequestMethod.POST)
-    public ResponseEntity<?> updateCampaignManager(@RequestParam long userId,
-                                                   @RequestParam String campaignId) {
-
-        CampaignManagerWSModel response = campaignManagerMiddleware.updateCampaignManager(userId,campaignId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-
 
 
 }

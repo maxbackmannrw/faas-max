@@ -9,6 +9,14 @@
   <component name="ChangeListManager">
     <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/campaign/manager/content/CampaignManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/campaign/manager/content/CampaignManagerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/campaign/manager/details/CampaignManagerDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/campaign/manager/details/CampaignManagerDetailsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/campaign/manager/content/CampaignManagerFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/campaign/manager/content/CampaignManagerFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/campaign/manager/details/CampaignManagerDetailsFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/campaign/manager/details/CampaignManagerDetailsFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/campaign/manager/content/CampaignManagerMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/campaign/manager/content/CampaignManagerMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/campaign/manager/details/CampaignManagerDetailsMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/campaign/manager/details/CampaignManagerDetailsMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/manager/details/dto/CampaignManagerDetailsWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/manager/details/dto/CampaignManagerDetailsWSDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utility/helpers/campaign/CampaignHelpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utility/helpers/campaign/CampaignHelpers.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -1152,15 +1160,11 @@
       <workItem from="1722096433545" duration="2728000" />
       <workItem from="1722106566393" duration="350000" />
       <workItem from="1722112167980" duration="2691000" />
-      <workItem from="1722115356602" duration="1219000" />
-    </task>
-    <task id="LOCAL-00919" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1719111533768</created>
-      <option name="number" value="00919" />
-      <option name="presentableId" value="LOCAL-00919" />
-      <option name="project" value="LOCAL" />
-      <updated>1719111533768</updated>
+      <workItem from="1722115356602" duration="1967000" />
+      <workItem from="1722186554866" duration="1092000" />
+      <workItem from="1722194663475" duration="1283000" />
+      <workItem from="1722257639935" duration="1928000" />
+      <workItem from="1722270034664" duration="1277000" />
     </task>
     <task id="LOCAL-00920" summary="almost finish">
       <option name="closed" value="true" />
@@ -1546,7 +1550,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722115225497</updated>
     </task>
-    <option name="localTasksCounter" value="968" />
+    <task id="LOCAL-00968" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1722117050635</created>
+      <option name="number" value="00968" />
+      <option name="presentableId" value="LOCAL-00968" />
+      <option name="project" value="LOCAL" />
+      <updated>1722117050636</updated>
+    </task>
+    <option name="localTasksCounter" value="969" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

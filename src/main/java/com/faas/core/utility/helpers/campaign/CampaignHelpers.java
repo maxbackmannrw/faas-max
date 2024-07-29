@@ -32,6 +32,7 @@ import com.faas.core.base.model.ws.campaign.details.trigger.details.dto.Campaign
 import com.faas.core.base.model.ws.campaign.details.trigger.details.dto.CampaignSmsTriggerWSDTO;
 import com.faas.core.base.model.ws.campaign.details.trigger.details.dto.CampaignWappCallTriggerWSDTO;
 import com.faas.core.base.model.ws.campaign.details.trigger.details.dto.CampaignWappMessageTriggerWSDTO;
+import com.faas.core.base.model.ws.campaign.manager.details.dto.CampaignManagerDetailsWSDTO;
 import com.faas.core.base.repo.campaign.details.agent.CampaignAgentRepository;
 import com.faas.core.base.repo.campaign.details.channel.CampaignChannelRepository;
 import com.faas.core.base.repo.campaign.details.temp.EmailTempRepository;
@@ -395,6 +396,15 @@ public class CampaignHelpers {
         campaignChannelDBModel.setStatus(1);
 
         return campaignChannelRepository.save(campaignChannelDBModel);
+    }
+
+
+    public CampaignManagerDetailsWSDTO getCampaignManagerDetailsWSDTO(CampaignDBModel campaignDBModel){
+
+        CampaignManagerDetailsWSDTO campaignManagerDetailsWSDTO = new CampaignManagerDetailsWSDTO();
+        campaignManagerDetailsWSDTO.setCampaign(campaignDBModel);
+
+        return campaignManagerDetailsWSDTO;
     }
 
 

@@ -62,13 +62,6 @@ public class CampaignManagerFramework {
         return campaignManagerWSDTO;
     }
 
-    public CampaignManagerWSDTO updateCampaignManagerService(long userId,String campaignId) {
-
-        CampaignManagerWSDTO campaignManagerWSDTO = new CampaignManagerWSDTO();
-
-        return campaignManagerWSDTO;
-    }
-
 
 
 }
