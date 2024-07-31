@@ -1,7 +1,6 @@
 package com.faas.core.base.framework.campaign.manager.content;
 
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
-import com.faas.core.base.model.ws.campaign.content.dto.CampaignWSDTO;
 import com.faas.core.base.model.ws.campaign.manager.content.dto.CampaignManagerWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.utility.config.AppUtils;
@@ -11,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CampaignManagerFramework {
@@ -20,9 +20,10 @@ public class CampaignManagerFramework {
     CampaignHelpers campaignHelpers;
 
     @Autowired
-    AppUtils appUtils;
-    @Autowired
     private CampaignRepository campaignRepository;
+
+    @Autowired
+    AppUtils appUtils;
 
 
     public List<CampaignManagerWSDTO> getCampaignManagersService(long userId) {
@@ -30,7 +31,7 @@ public class CampaignManagerFramework {
         List<CampaignManagerWSDTO> campaignManagerWSDTOS = new ArrayList<>();
         List<CampaignDBModel> campaignDBModels = campaignRepository.findByStatus(1);
         for (CampaignDBModel campaignDBModel : campaignDBModels) {
-            campaignManagerWSDTOS.add(new CampaignManagerWSDTO(campaignDBModel));
+            campaignManagerWSDTOS.add(campaignHelpers.getCampaignManagerWSDTO(campaignDBModel));
         }
         return campaignManagerWSDTOS;
     }
@@ -40,7 +41,7 @@ public class CampaignManagerFramework {
         List<CampaignManagerWSDTO> campaignManagerWSDTOS = new ArrayList<>();
         List<CampaignDBModel> campaignDBModels = campaignRepository.findByCampaignCategory(campaignCategory);
         for (CampaignDBModel campaignDBModel : campaignDBModels) {
-            campaignManagerWSDTOS.add(new CampaignManagerWSDTO(campaignDBModel));
+            campaignManagerWSDTOS.add(campaignHelpers.getCampaignManagerWSDTO(campaignDBModel));
         }
         return campaignManagerWSDTOS;
     }
@@ -50,16 +51,18 @@ public class CampaignManagerFramework {
         List<CampaignManagerWSDTO> campaignManagerWSDTOS = new ArrayList<>();
         List<CampaignDBModel> campaignDBModels = campaignRepository.findByCampaignState(campaignState);
         for (CampaignDBModel campaignDBModel : campaignDBModels) {
-            campaignManagerWSDTOS.add(new CampaignManagerWSDTO(campaignDBModel));
+            campaignManagerWSDTOS.add(campaignHelpers.getCampaignManagerWSDTO(campaignDBModel));
         }
         return campaignManagerWSDTOS;
     }
 
     public CampaignManagerWSDTO getCampaignManagerService(long userId,String campaignId) {
 
-        CampaignManagerWSDTO campaignManagerWSDTO = new CampaignManagerWSDTO();
-
-        return campaignManagerWSDTO;
+        Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
+        if(campaignDBModel.isPresent()) {
+            return campaignHelpers.getCampaignManagerWSDTO(campaignDBModel.get());
+        }
+        return null;
     }
 
 

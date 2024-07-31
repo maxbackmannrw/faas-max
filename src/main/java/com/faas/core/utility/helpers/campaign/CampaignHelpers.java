@@ -32,6 +32,8 @@ import com.faas.core.base.model.ws.campaign.details.trigger.details.dto.Campaign
 import com.faas.core.base.model.ws.campaign.details.trigger.details.dto.CampaignSmsTriggerWSDTO;
 import com.faas.core.base.model.ws.campaign.details.trigger.details.dto.CampaignWappCallTriggerWSDTO;
 import com.faas.core.base.model.ws.campaign.details.trigger.details.dto.CampaignWappMessageTriggerWSDTO;
+import com.faas.core.base.model.ws.campaign.manager.content.dto.CampaignSummaryWSDTO;
+import com.faas.core.base.model.ws.campaign.manager.content.dto.CampaignManagerWSDTO;
 import com.faas.core.base.model.ws.campaign.manager.details.dto.CampaignManagerDetailsWSDTO;
 import com.faas.core.base.repo.campaign.details.agent.CampaignAgentRepository;
 import com.faas.core.base.repo.campaign.details.channel.CampaignChannelRepository;
@@ -42,6 +44,7 @@ import com.faas.core.base.repo.campaign.details.temp.WappMessageTempRepository;
 import com.faas.core.base.repo.campaign.details.remote.CampaignRemoteRepository;
 import com.faas.core.base.repo.campaign.details.scenario.CampaignScenarioRepository;
 import com.faas.core.base.repo.campaign.details.trigger.*;
+import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.scenario.content.ScenarioRepository;
 import com.faas.core.base.repo.user.content.UserRepository;
 import com.faas.core.base.repo.utils.UrlRepository;
@@ -61,6 +64,9 @@ public class CampaignHelpers {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    OperationRepository operationRepository;
 
     @Autowired
     ScenarioRepository scenarioRepository;
@@ -363,9 +369,6 @@ public class CampaignHelpers {
     }
 
 
-
-
-
     public ApiCampaignWSDTO getApiCampaignWSDTO(long agentId, CampaignDBModel campaignDBModel){
 
         ApiCampaignWSDTO campaignWSDTO = new ApiCampaignWSDTO();
@@ -399,10 +402,32 @@ public class CampaignHelpers {
     }
 
 
+    public CampaignManagerWSDTO getCampaignManagerWSDTO(CampaignDBModel campaignDBModel){
+
+        CampaignManagerWSDTO campaignManagerWSDTO = new CampaignManagerWSDTO();
+        campaignManagerWSDTO.setCampaign(campaignDBModel);
+        campaignManagerWSDTO.setCampaignSummary(getCampaignSummaryWSDTO(campaignDBModel.getId()));
+        return campaignManagerWSDTO;
+    }
+
+
+    public CampaignSummaryWSDTO getCampaignSummaryWSDTO(String campaignId){
+
+        CampaignSummaryWSDTO campaignSummaryWSDTO = new CampaignSummaryWSDTO() ;
+        campaignSummaryWSDTO.setReadyOperationCount(operationRepository.countByCampaignIdAndOperationState(campaignId,AppConstant.READY_STATE));
+        campaignSummaryWSDTO.setActiveOperationCount(operationRepository.countByCampaignIdAndOperationState(campaignId,AppConstant.ACTIVE_STATE));
+        campaignSummaryWSDTO.setTotalOperationCount(operationRepository.countByCampaignId(campaignId));
+        campaignSummaryWSDTO.setTotalAgentCount(campaignAgentRepository.countByCampaignId(campaignId));
+
+        return campaignSummaryWSDTO;
+    }
+
+
     public CampaignManagerDetailsWSDTO getCampaignManagerDetailsWSDTO(CampaignDBModel campaignDBModel){
 
         CampaignManagerDetailsWSDTO campaignManagerDetailsWSDTO = new CampaignManagerDetailsWSDTO();
         campaignManagerDetailsWSDTO.setCampaign(campaignDBModel);
+        campaignManagerDetailsWSDTO.setCampaignSummary(getCampaignSummaryWSDTO(campaignDBModel.getId()));
 
         return campaignManagerDetailsWSDTO;
     }
