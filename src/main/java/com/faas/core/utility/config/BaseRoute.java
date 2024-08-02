@@ -281,7 +281,7 @@ public class BaseRoute {
     public static final String GET_CAMPAIGN_MANAGERS_BY_CATEGORY = "getcampaignmanagersbycategory";
     public static final String GET_CAMPAIGN_MANAGERS_BY_STATE = "getcampaignmanagersbystate";
     public static final String GET_CAMPAIGN_MANAGER = "getcampaignmanager";
-    public static final String UPDATE_CAMPAIGN_MANAGER = "updatecampaignmanager";
+    public static final String UPDATE_CAMPAIGN_STATE = "updatecampaignstate";
 
     public static final String GET_CAMPAIGN_MANAGER_DETAILS = "getcampaignmanagerdetails";
 

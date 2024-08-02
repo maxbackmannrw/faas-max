@@ -65,6 +65,16 @@ public class CampaignManagerFramework {
         return null;
     }
 
+    public CampaignManagerWSDTO updateCampaignStateService(long userId,String campaignId,String campaignState) {
+
+        Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
+        if(campaignDBModel.isPresent()) {
+            campaignDBModel.get().setCampaignState(campaignState);
+            campaignDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
+            return campaignHelpers.getCampaignManagerWSDTO(campaignRepository.save(campaignDBModel.get()));
+        }
+        return null;
+    }
 
 
 }
