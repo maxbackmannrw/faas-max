@@ -1,6 +1,7 @@
 package com.faas.core.base.model.ws.campaign.manager.content.dto;
 
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
+import com.faas.core.base.model.ws.campaign.manager.details.dto.CampaignSummaryWSDTO;
 
 public class CampaignManagerWSDTO {
 

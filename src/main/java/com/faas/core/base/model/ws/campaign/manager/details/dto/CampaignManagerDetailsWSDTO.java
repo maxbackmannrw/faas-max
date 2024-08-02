@@ -7,7 +7,6 @@ import com.faas.core.base.model.ws.campaign.details.remote.dto.CampaignRemoteWSD
 import com.faas.core.base.model.ws.campaign.details.scenario.dto.CampaignScenarioWSDTO;
 import com.faas.core.base.model.ws.campaign.details.temp.content.dto.CampaignTempWSDTO;
 import com.faas.core.base.model.ws.campaign.details.trigger.content.dto.CampaignTriggerWSDTO;
-import com.faas.core.base.model.ws.campaign.manager.content.dto.CampaignSummaryWSDTO;
 
 import java.util.List;
 
