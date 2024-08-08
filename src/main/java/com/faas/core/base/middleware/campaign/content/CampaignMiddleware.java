@@ -1,6 +1,8 @@
 package com.faas.core.base.middleware.campaign.content;
 
 import com.faas.core.base.framework.campaign.content.CampaignFramework;
+import com.faas.core.base.model.ws.campaign.manager.content.CampaignManagerWSModel;
+import com.faas.core.base.model.ws.campaign.manager.content.dto.CampaignManagerWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.model.ws.campaign.content.CampaignWSModel;
 import com.faas.core.base.model.ws.campaign.content.dto.CampaignWSDTO;
@@ -132,6 +134,27 @@ public class CampaignMiddleware {
 
         response.setCampaigns(campaignWSDTOS);
         general.setOperation("updateCampaign");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public CampaignManagerWSModel updateCampaignState(long userId, String campaignId, String campaignState) {
+
+        CampaignManagerWSModel response = new CampaignManagerWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+        List<CampaignManagerWSDTO> campaignManagerWSDTOS = new ArrayList<>();
+
+        CampaignManagerWSDTO campaignManagerWSDTO = campaignFramework.updateCampaignStateService(userId,campaignId,campaignState);
+        if (campaignManagerWSDTO != null){
+            campaignManagerWSDTOS.add(campaignManagerWSDTO);
+        }
+
+        response.setCampaignManagers(campaignManagerWSDTOS);
+        general.setOperation("updateCampaignState");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

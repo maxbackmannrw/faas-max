@@ -2,6 +2,7 @@ package com.faas.core.base.endpoint.controller.campaign.content;
 
 import com.faas.core.base.middleware.campaign.content.CampaignMiddleware;
 import com.faas.core.base.model.ws.campaign.content.CampaignWSModel;
+import com.faas.core.base.model.ws.campaign.manager.content.CampaignManagerWSModel;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -92,6 +93,19 @@ public class CampaignController {
                                             @RequestParam String campaignState) {
 
         CampaignWSModel response = campaignMiddleware.updateCampaign(userId,campaignId,campaign,campaignDesc,campaignState);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+    @RequestMapping(value = BaseRoute.UPDATE_CAMPAIGN_STATE, method = RequestMethod.POST)
+    public ResponseEntity<?> updateCampaignState(@RequestParam long userId,
+                                                 @RequestParam String campaignId,
+                                                 @RequestParam String campaignState) {
+
+        CampaignManagerWSModel response = campaignMiddleware.updateCampaignState(userId,campaignId,campaignState);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

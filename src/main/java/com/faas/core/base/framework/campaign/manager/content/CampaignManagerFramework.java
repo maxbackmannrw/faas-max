@@ -2,6 +2,7 @@ package com.faas.core.base.framework.campaign.manager.content;
 
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.ws.campaign.manager.content.dto.CampaignManagerWSDTO;
+import com.faas.core.base.model.ws.campaign.manager.content.dto.CampaignManagerDetailsWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.utility.config.AppUtils;
 import com.faas.core.utility.helpers.campaign.CampaignHelpers;
@@ -20,7 +21,7 @@ public class CampaignManagerFramework {
     CampaignHelpers campaignHelpers;
 
     @Autowired
-    private CampaignRepository campaignRepository;
+    CampaignRepository campaignRepository;
 
     @Autowired
     AppUtils appUtils;
@@ -65,16 +66,15 @@ public class CampaignManagerFramework {
         return null;
     }
 
-    public CampaignManagerWSDTO updateCampaignStateService(long userId,String campaignId,String campaignState) {
+    public CampaignManagerDetailsWSDTO getCampaignManagerDetailsService(long userId, String campaignId) {
 
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
-        if(campaignDBModel.isPresent()) {
-            campaignDBModel.get().setCampaignState(campaignState);
-            campaignDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
-            return campaignHelpers.getCampaignManagerWSDTO(campaignRepository.save(campaignDBModel.get()));
+        if (campaignDBModel.isPresent()){
+            return campaignHelpers.getCampaignManagerDetailsWSDTO(campaignDBModel.get());
         }
         return null;
     }
+
 
 
 }

@@ -1,11 +1,11 @@
-package com.faas.core.base.framework.campaign.details.operation;
+package com.faas.core.base.framework.campaign.manager.operation;
 
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.client.content.ClientDBModel;
 import com.faas.core.base.model.db.user.content.UserDBModel;
-import com.faas.core.base.model.ws.campaign.details.operation.CampaignOperationRequest;
-import com.faas.core.base.model.ws.campaign.details.operation.dto.CampaignOperationRequestDTO;
-import com.faas.core.base.model.ws.campaign.details.operation.dto.CampaignOperationWSDTO;
+import com.faas.core.base.model.ws.campaign.manager.operation.CampaignOperationRequest;
+import com.faas.core.base.model.ws.campaign.manager.operation.dto.CampaignOperationRequestDTO;
+import com.faas.core.base.model.ws.campaign.manager.operation.dto.CampaignOperationWSDTO;
 import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;

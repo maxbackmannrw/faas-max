@@ -3,6 +3,7 @@ package com.faas.core.base.framework.campaign.content;
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.campaign.settings.CampaignTypeDBModel;
 import com.faas.core.base.model.ws.campaign.content.dto.CampaignWSDTO;
+import com.faas.core.base.model.ws.campaign.manager.content.dto.CampaignManagerWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.campaign.details.channel.CampaignChannelRepository;
 import com.faas.core.base.repo.campaign.details.temp.EmailTempRepository;
@@ -157,6 +158,19 @@ public class CampaignFramework {
             return campaignHelpers.getCampaignWSDTO(campaignRepository.save(campaignDBModel.get()));
         }
        return null;
+    }
+
+    public CampaignManagerWSDTO updateCampaignStateService(long userId, String campaignId, String campaignState) {
+
+        Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
+        if(campaignDBModel.isPresent()) {
+
+            campaignDBModel.get().setCampaignState(campaignState);
+            campaignDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
+
+            return campaignHelpers.getCampaignManagerWSDTO(campaignRepository.save(campaignDBModel.get()));
+        }
+        return null;
     }
 
     public CampaignWSDTO removeCampaignService(String campaignId) {

@@ -1,8 +1,8 @@
-package com.faas.core.base.middleware.campaign.details.client;
+package com.faas.core.base.middleware.campaign.manager.client;
 
-import com.faas.core.base.framework.campaign.details.client.CampaignClientFramework;
-import com.faas.core.base.model.ws.campaign.details.client.CampaignClientWSModel;
-import com.faas.core.base.model.ws.campaign.details.client.dto.CampaignClientWSDTO;
+import com.faas.core.base.framework.campaign.manager.client.CampaignClientFramework;
+import com.faas.core.base.model.ws.campaign.manager.client.CampaignClientWSModel;
+import com.faas.core.base.model.ws.campaign.manager.client.dto.CampaignClientWSDTO;
 import com.faas.core.base.model.ws.client.content.ClientWSModel;
 import com.faas.core.base.model.ws.client.content.dto.ClientWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;

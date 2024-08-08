@@ -1,8 +1,8 @@
-package com.faas.core.base.endpoint.controller.campaign.details.operation;
+package com.faas.core.base.endpoint.controller.campaign.manager.operation;
 
-import com.faas.core.base.middleware.campaign.details.operation.CampaignOperationMiddleware;
-import com.faas.core.base.model.ws.campaign.details.operation.CampaignOperationRequest;
-import com.faas.core.base.model.ws.campaign.details.operation.CampaignOperationWSModel;
+import com.faas.core.base.middleware.campaign.manager.operation.CampaignOperationMiddleware;
+import com.faas.core.base.model.ws.campaign.manager.operation.CampaignOperationRequest;
+import com.faas.core.base.model.ws.campaign.manager.operation.CampaignOperationWSModel;
 import com.faas.core.base.model.ws.operation.content.OperationWSModel;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.BaseRoute;

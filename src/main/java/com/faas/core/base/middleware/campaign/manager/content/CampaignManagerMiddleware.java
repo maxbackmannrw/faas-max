@@ -2,6 +2,8 @@ package com.faas.core.base.middleware.campaign.manager.content;
 
 import com.faas.core.base.framework.campaign.manager.content.CampaignManagerFramework;
 import com.faas.core.base.model.ws.campaign.manager.content.dto.CampaignManagerWSDTO;
+import com.faas.core.base.model.ws.campaign.manager.content.CampaignManagerDetailsWSModel;
+import com.faas.core.base.model.ws.campaign.manager.content.dto.CampaignManagerDetailsWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.model.ws.campaign.manager.content.CampaignManagerWSModel;
 import com.faas.core.utility.config.AppConstant;
@@ -98,19 +100,17 @@ public class CampaignManagerMiddleware {
         return response;
     }
 
-    public CampaignManagerWSModel updateCampaignState(long userId,String campaignId,String campaignState) {
+    public CampaignManagerDetailsWSModel getCampaignManagerDetails(long userId,String campaignId) {
 
-        CampaignManagerWSModel response = new CampaignManagerWSModel();
+        CampaignManagerDetailsWSModel response = new CampaignManagerDetailsWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<CampaignManagerWSDTO> campaignManagerWSDTOS = new ArrayList<>();
 
-        CampaignManagerWSDTO campaignManagerWSDTO = campaignManagerFramework.updateCampaignStateService(userId,campaignId,campaignState);
-        if (campaignManagerWSDTO != null){
-            campaignManagerWSDTOS.add(campaignManagerWSDTO);
+        CampaignManagerDetailsWSDTO campaignManagerDetailsWSDTO = campaignManagerFramework.getCampaignManagerDetailsService(userId,campaignId);
+        if(campaignManagerDetailsWSDTO != null){
+            response.setCampaignManagerDetails(campaignManagerDetailsWSDTO);
         }
 
-        response.setCampaignManagers(campaignManagerWSDTOS);
-        general.setOperation("updateCampaignState");
+        general.setOperation("getCampaignManagerDetails");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -118,7 +118,6 @@ public class CampaignManagerMiddleware {
 
         return response;
     }
-
 
 
 }

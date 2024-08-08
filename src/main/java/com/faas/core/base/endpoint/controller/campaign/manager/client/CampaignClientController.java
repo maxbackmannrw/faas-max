@@ -1,7 +1,7 @@
-package com.faas.core.base.endpoint.controller.campaign.details.client;
+package com.faas.core.base.endpoint.controller.campaign.manager.client;
 
-import com.faas.core.base.middleware.campaign.details.client.CampaignClientMiddleware;
-import com.faas.core.base.model.ws.campaign.details.client.CampaignClientWSModel;
+import com.faas.core.base.middleware.campaign.manager.client.CampaignClientMiddleware;
+import com.faas.core.base.model.ws.campaign.manager.client.CampaignClientWSModel;
 import com.faas.core.base.model.ws.client.content.ClientWSModel;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.BaseRoute;

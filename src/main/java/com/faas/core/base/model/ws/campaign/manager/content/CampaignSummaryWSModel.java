@@ -1,6 +1,6 @@
-package com.faas.core.base.model.ws.campaign.manager.details;
+package com.faas.core.base.model.ws.campaign.manager.content;
 
-import com.faas.core.base.model.ws.campaign.manager.details.dto.CampaignSummaryWSDTO;
+import com.faas.core.base.model.ws.campaign.manager.content.dto.CampaignSummaryWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 
 public class CampaignSummaryWSModel {
