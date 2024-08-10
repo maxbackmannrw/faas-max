@@ -1,6 +1,6 @@
-package com.faas.core.base.model.ws.campaign.manager.operation;
+package com.faas.core.base.model.ws.campaign.manager.details.operation;
 
-import com.faas.core.base.model.ws.campaign.manager.operation.dto.CampaignOperationRequestDTO;
+import com.faas.core.base.model.ws.campaign.manager.details.operation.dto.CampaignOperationRequestDTO;
 
 import java.util.List;
 

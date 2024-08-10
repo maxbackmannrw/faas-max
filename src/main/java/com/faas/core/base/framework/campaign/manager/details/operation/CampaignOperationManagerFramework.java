@@ -1,11 +1,11 @@
-package com.faas.core.base.framework.campaign.operation;
+package com.faas.core.base.framework.campaign.manager.details.operation;
 
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.client.content.ClientDBModel;
 import com.faas.core.base.model.db.user.content.UserDBModel;
-import com.faas.core.base.model.ws.campaign.manager.operation.CampaignOperationRequest;
-import com.faas.core.base.model.ws.campaign.manager.operation.dto.CampaignOperationRequestDTO;
-import com.faas.core.base.model.ws.campaign.manager.operation.dto.CampaignOperationWSDTO;
+import com.faas.core.base.model.ws.campaign.manager.details.operation.CampaignOperationRequest;
+import com.faas.core.base.model.ws.campaign.manager.details.operation.dto.CampaignOperationRequestDTO;
+import com.faas.core.base.model.ws.campaign.manager.details.operation.dto.CampaignOperationWSDTO;
 import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;
@@ -21,7 +21,7 @@ import java.util.Optional;
 
 
 @Service
-public class CampaignOperationFramework {
+public class CampaignOperationManagerFramework {
 
 
     @Autowired
@@ -43,13 +43,11 @@ public class CampaignOperationFramework {
         return null;
     }
 
-
     public CampaignOperationWSDTO getCampaignOperationsService(long userId, String campaignId, int reqPage, int reqSize) {
 
 
         return null;
     }
-
 
      public OperationWSDTO getCampaignOperationService(long userId,long sessionId,String campaignId) {
 
@@ -86,13 +84,10 @@ public class CampaignOperationFramework {
 
     public OperationWSDTO updateCampaignOperationService(long userId,long sessionId,long agentId, String operationState) {
 
-
         return null;
     }
 
-
     public OperationWSDTO removeCampaignOperationService(long userId,long sessionId,String campaignId) {
-
 
         return null;
     }

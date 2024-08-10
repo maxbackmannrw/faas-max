@@ -1,7 +1,7 @@
-package com.faas.core.base.endpoint.controller.campaign.manager.details;
+package com.faas.core.base.endpoint.controller.campaign.manager.details.content;
 
-import com.faas.core.base.middleware.campaign.manager.details.CampaignManagerDetailsMiddleware;
-import com.faas.core.base.model.ws.campaign.manager.details.CampaignManagerDetailsWSModel;
+import com.faas.core.base.middleware.campaign.manager.details.content.CampaignManagerDetailsMiddleware;
+import com.faas.core.base.model.ws.campaign.manager.details.content.CampaignManagerDetailsWSModel;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;

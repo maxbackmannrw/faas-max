@@ -1,4 +1,4 @@
-package com.faas.core.base.model.ws.campaign.manager.operation.dto;
+package com.faas.core.base.model.ws.campaign.manager.details.operation.dto;
 
 public class CampaignOperationRequestDTO {
 
