@@ -1,4 +1,4 @@
-package com.faas.core.base.framework.campaign.manager.client;
+package com.faas.core.base.framework.campaign.client;
 
 import com.faas.core.base.model.db.client.content.ClientDBModel;
 import com.faas.core.base.model.ws.campaign.manager.client.dto.CampaignClientWSDTO;
@@ -15,7 +15,7 @@ import java.util.Optional;
 
 
 @Service
-public class CampaignClientManagerFramework {
+public class CampaignClientFramework {
 
     @Autowired
     ClientHelpers clientHelpers;

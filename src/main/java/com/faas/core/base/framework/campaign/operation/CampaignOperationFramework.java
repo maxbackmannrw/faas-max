@@ -1,4 +1,4 @@
-package com.faas.core.base.framework.campaign.manager.operation;
+package com.faas.core.base.framework.campaign.operation;
 
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.client.content.ClientDBModel;
@@ -9,12 +9,9 @@ import com.faas.core.base.model.ws.campaign.manager.operation.dto.CampaignOperat
 import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;
-import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.user.content.UserRepository;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.AppUtils;
-import com.faas.core.utility.helpers.activity.ActivityHelpers;
-import com.faas.core.utility.helpers.operation.OperationHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,17 +21,8 @@ import java.util.Optional;
 
 
 @Service
-public class CampaignOperationManagerFramework {
+public class CampaignOperationFramework {
 
-
-    @Autowired
-    ActivityHelpers activityHelpers;
-
-    @Autowired
-    OperationHelpers operationHelpers;
-
-    @Autowired
-    OperationRepository operationRepository;
 
     @Autowired
     ClientRepository clientRepository;
@@ -69,7 +57,6 @@ public class CampaignOperationManagerFramework {
         return null;
     }
 
-
     public List<OperationWSDTO> createCampaignOperationService(CampaignOperationRequest operationRequest) {
 
         List<OperationWSDTO> operationWSDTOS = new ArrayList<>();
@@ -81,7 +68,6 @@ public class CampaignOperationManagerFramework {
         }
         return operationWSDTOS;
     }
-
 
     public OperationWSDTO createCampaignOperation(CampaignOperationRequestDTO operationRequestDTO) {
 
@@ -97,7 +83,6 @@ public class CampaignOperationManagerFramework {
         }
         return null;
     }
-
 
     public OperationWSDTO updateCampaignOperationService(long userId,long sessionId,long agentId, String operationState) {
 

@@ -7,7 +7,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish" />
+    <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/campaign/manager/client/CampaignClientManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/campaign/client/CampaignClientController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/campaign/manager/operation/CampaignOperationManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/campaign/operation/CampaignOperationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/campaign/manager/client/CampaignClientManagerFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/campaign/client/CampaignClientFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/campaign/manager/operation/CampaignOperationManagerFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/campaign/operation/CampaignOperationFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/campaign/manager/client/CampaignClientManagerMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/campaign/client/CampaignClientMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/campaign/manager/operation/CampaignOperationManagerMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/campaign/operation/CampaignOperationMiddleware.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -1164,15 +1171,7 @@
       <workItem from="1723226692919" duration="943000" />
       <workItem from="1723232895790" duration="2465000" />
       <workItem from="1723246780133" duration="2140000" />
-      <workItem from="1723271182209" duration="788000" />
-    </task>
-    <task id="LOCAL-00927" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1719189361192</created>
-      <option name="number" value="00927" />
-      <option name="presentableId" value="LOCAL-00927" />
-      <option name="project" value="LOCAL" />
-      <updated>1719189361193</updated>
+      <workItem from="1723271182209" duration="1166000" />
     </task>
     <task id="LOCAL-00928" summary="almost finish">
       <option name="closed" value="true" />
@@ -1558,7 +1557,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723271563665</updated>
     </task>
-    <option name="localTasksCounter" value="976" />
+    <task id="LOCAL-00976" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1723274979236</created>
+      <option name="number" value="00976" />
+      <option name="presentableId" value="LOCAL-00976" />
+      <option name="project" value="LOCAL" />
+      <updated>1723274979237</updated>
+    </task>
+    <option name="localTasksCounter" value="977" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1627,9 +1634,9 @@
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/campaign/manager/client/CampaignClientManagerFramework.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/campaign/client/CampaignClientFramework.java</url>
           <line>32</line>
-          <properties class="com.faas.core.base.framework.campaign.manager.client.CampaignClientManagerFramework" method="searchCampaignClientsService">
+          <properties class="com.faas.core.base.framework.campaign.client.CampaignClientFramework" method="searchCampaignClientsService">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>

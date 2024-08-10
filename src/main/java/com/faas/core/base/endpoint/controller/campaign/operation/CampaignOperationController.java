@@ -1,6 +1,6 @@
-package com.faas.core.base.endpoint.controller.campaign.manager.operation;
+package com.faas.core.base.endpoint.controller.campaign.operation;
 
-import com.faas.core.base.middleware.campaign.manager.operation.CampaignOperationManagerMiddleware;
+import com.faas.core.base.middleware.campaign.operation.CampaignOperationMiddleware;
 import com.faas.core.base.model.ws.campaign.manager.operation.CampaignOperationRequest;
 import com.faas.core.base.model.ws.campaign.manager.operation.CampaignOperationWSModel;
 import com.faas.core.base.model.ws.operation.content.OperationWSModel;
@@ -17,12 +17,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-@RequestMapping(value = AppConstant.API_VERSION + "/base/campaign/details/client/operation/")
-public class CampaignOperationManagerController {
+@RequestMapping(value = AppConstant.API_VERSION + "/base/campaign/operation/")
+public class CampaignOperationController {
 
 
     @Autowired
-    CampaignOperationManagerMiddleware campaignOperationManagerMiddleware;
+    CampaignOperationMiddleware campaignOperationMiddleware;
 
 
     @RequestMapping(value = BaseRoute.SEARCH_CAMPAIGN_OPERATIONS, method = RequestMethod.POST)
@@ -33,7 +33,7 @@ public class CampaignOperationManagerController {
                                                       @RequestParam int reqPage,
                                                       @RequestParam int reqSize) {
 
-        CampaignOperationWSModel response = campaignOperationManagerMiddleware.searchCampaignOperations(userId,campaignId,city,country,reqPage,reqSize);
+        CampaignOperationWSModel response = campaignOperationMiddleware.searchCampaignOperations(userId,campaignId,city,country,reqPage,reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -47,7 +47,7 @@ public class CampaignOperationManagerController {
                                                    @RequestParam int reqPage,
                                                    @RequestParam int reqSize) {
 
-        CampaignOperationWSModel response = campaignOperationManagerMiddleware.getCampaignOperations(userId,campaignId,reqPage,reqSize);
+        CampaignOperationWSModel response = campaignOperationMiddleware.getCampaignOperations(userId,campaignId,reqPage,reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -60,7 +60,7 @@ public class CampaignOperationManagerController {
                                                   @RequestParam long sessionId,
                                                   @RequestParam String campaignId) {
 
-        OperationWSModel response = campaignOperationManagerMiddleware.getCampaignOperation(userId,sessionId,campaignId);
+        OperationWSModel response = campaignOperationMiddleware.getCampaignOperation(userId,sessionId,campaignId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -71,7 +71,7 @@ public class CampaignOperationManagerController {
     @RequestMapping(value = BaseRoute.CREATE_CAMPAIGN_OPERATION, method = RequestMethod.POST)
     public ResponseEntity<?> createCampaignOperation(@RequestBody CampaignOperationRequest operationRequest) {
 
-        OperationWSModel response = campaignOperationManagerMiddleware.createCampaignOperation(operationRequest);
+        OperationWSModel response = campaignOperationMiddleware.createCampaignOperation(operationRequest);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -85,7 +85,7 @@ public class CampaignOperationManagerController {
                                                      @RequestParam long agentId,
                                                      @RequestParam String operationState) {
 
-        OperationWSModel response = campaignOperationManagerMiddleware.updateCampaignOperation(userId,sessionId,agentId,operationState);
+        OperationWSModel response = campaignOperationMiddleware.updateCampaignOperation(userId,sessionId,agentId,operationState);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -98,7 +98,7 @@ public class CampaignOperationManagerController {
                                                      @RequestParam long sessionId,
                                                      @RequestParam String campaignId) {
 
-        OperationWSModel response = campaignOperationManagerMiddleware.removeCampaignOperation(userId,sessionId,campaignId);
+        OperationWSModel response = campaignOperationMiddleware.removeCampaignOperation(userId,sessionId,campaignId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
