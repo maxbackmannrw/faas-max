@@ -1,6 +1,6 @@
 package com.faas.core.base.middleware.campaign.manager.client;
 
-import com.faas.core.base.framework.campaign.manager.client.CampaignClientFramework;
+import com.faas.core.base.framework.campaign.manager.client.CampaignClientManagerFramework;
 import com.faas.core.base.model.ws.campaign.manager.client.CampaignClientWSModel;
 import com.faas.core.base.model.ws.campaign.manager.client.dto.CampaignClientWSDTO;
 import com.faas.core.base.model.ws.client.content.ClientWSModel;
@@ -14,11 +14,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class CampaignClientMiddleware {
+public class CampaignClientManagerMiddleware {
 
 
     @Autowired
-    CampaignClientFramework campaignClientFramework;
+    CampaignClientManagerFramework campaignClientManagerFramework;
 
 
     public CampaignClientWSModel searchCampaignClients(long userId,String city, String country, String clientState, int reqPage, int reqSize) {
@@ -26,7 +26,7 @@ public class CampaignClientMiddleware {
         CampaignClientWSModel response = new CampaignClientWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        CampaignClientWSDTO campaignClientWSDTO = campaignClientFramework.searchCampaignClientsService(city,country,clientState,reqPage,reqSize);
+        CampaignClientWSDTO campaignClientWSDTO = campaignClientManagerFramework.searchCampaignClientsService(city,country,clientState,reqPage,reqSize);
         if (campaignClientWSDTO != null){
             response.setCampaignClient(campaignClientWSDTO);
         }
@@ -47,7 +47,7 @@ public class CampaignClientMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ClientWSDTO>clientWSDTOS = new ArrayList<>();
 
-        ClientWSDTO clientWSDTO = campaignClientFramework.getCampaignClientService(userId,clientId,campaignId);
+        ClientWSDTO clientWSDTO = campaignClientManagerFramework.getCampaignClientService(userId,clientId,campaignId);
         if (clientWSDTO != null){
             clientWSDTOS.add(clientWSDTO);
         }

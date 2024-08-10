@@ -15,7 +15,7 @@ import java.util.Optional;
 
 
 @Service
-public class CampaignClientFramework {
+public class CampaignClientManagerFramework {
 
     @Autowired
     ClientHelpers clientHelpers;

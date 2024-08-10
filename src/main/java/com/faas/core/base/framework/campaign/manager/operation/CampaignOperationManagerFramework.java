@@ -24,7 +24,7 @@ import java.util.Optional;
 
 
 @Service
-public class CampaignOperationFramework {
+public class CampaignOperationManagerFramework {
 
 
     @Autowired
@@ -94,8 +94,6 @@ public class CampaignOperationFramework {
             clientDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
             ClientDBModel clientDBModel = clientRepository.save(clientDBModels.get(0));
 
-
-
         }
         return null;
     }
@@ -113,6 +111,7 @@ public class CampaignOperationFramework {
 
         return null;
     }
+
 
 
 }
