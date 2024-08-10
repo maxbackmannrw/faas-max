@@ -1,4 +1,4 @@
-package com.faas.core.base.model.ws.campaign.manager.details.client.dto;
+package com.faas.core.base.model.ws.campaign.manager.client.dto;
 
 import com.faas.core.base.model.ws.client.content.dto.ClientWSDTO;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;

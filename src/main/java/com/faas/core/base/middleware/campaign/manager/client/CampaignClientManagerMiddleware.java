@@ -1,8 +1,8 @@
-package com.faas.core.base.middleware.campaign.manager.details.client;
+package com.faas.core.base.middleware.campaign.manager.client;
 
-import com.faas.core.base.framework.campaign.manager.details.client.CampaignClientManagerFramework;
-import com.faas.core.base.model.ws.campaign.manager.details.client.CampaignClientWSModel;
-import com.faas.core.base.model.ws.campaign.manager.details.client.dto.CampaignClientWSDTO;
+import com.faas.core.base.framework.campaign.manager.client.CampaignClientManagerFramework;
+import com.faas.core.base.model.ws.campaign.manager.client.CampaignClientWSModel;
+import com.faas.core.base.model.ws.campaign.manager.client.dto.CampaignClientWSDTO;
 import com.faas.core.base.model.ws.client.content.ClientWSModel;
 import com.faas.core.base.model.ws.client.content.dto.ClientWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
@@ -40,7 +40,6 @@ public class CampaignClientManagerMiddleware {
         return response;
     }
 
-
     public ClientWSModel getCampaignClient(long userId,long clientId,String campaignId) {
 
         ClientWSModel response = new ClientWSModel();
@@ -61,9 +60,6 @@ public class CampaignClientManagerMiddleware {
 
         return response;
     }
-
-
-
 
 
 

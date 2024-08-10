@@ -1,7 +1,7 @@
-package com.faas.core.base.endpoint.controller.campaign.manager.details.client;
+package com.faas.core.base.endpoint.controller.campaign.manager.client;
 
-import com.faas.core.base.middleware.campaign.manager.details.client.CampaignClientManagerMiddleware;
-import com.faas.core.base.model.ws.campaign.manager.details.client.CampaignClientWSModel;
+import com.faas.core.base.middleware.campaign.manager.client.CampaignClientManagerMiddleware;
+import com.faas.core.base.model.ws.campaign.manager.client.CampaignClientWSModel;
 import com.faas.core.base.model.ws.client.content.ClientWSModel;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.BaseRoute;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-@RequestMapping(value = AppConstant.API_VERSION + "/base/campaign/manager/details/client/")
+@RequestMapping(value = AppConstant.API_VERSION + "/base/campaign/manager/client/")
 public class CampaignClientManagerController {
 
 

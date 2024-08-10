@@ -1,8 +1,8 @@
-package com.faas.core.base.endpoint.controller.campaign.manager.details.operation;
+package com.faas.core.base.endpoint.controller.campaign.manager.operation;
 
-import com.faas.core.base.middleware.campaign.manager.details.operation.CampaignOperationManagerMiddleware;
-import com.faas.core.base.model.ws.campaign.manager.details.operation.CampaignOperationRequest;
-import com.faas.core.base.model.ws.campaign.manager.details.operation.CampaignOperationWSModel;
+import com.faas.core.base.middleware.campaign.manager.operation.CampaignOperationManagerMiddleware;
+import com.faas.core.base.model.ws.campaign.manager.operation.CampaignOperationRequest;
+import com.faas.core.base.model.ws.campaign.manager.operation.CampaignOperationWSModel;
 import com.faas.core.base.model.ws.operation.content.OperationWSModel;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.BaseRoute;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-@RequestMapping(value = AppConstant.API_VERSION + "/base/campaign/manager/details/operation/")
+@RequestMapping(value = AppConstant.API_VERSION + "/base/campaign/manager/operation/")
 public class CampaignOperationManagerController {
 
 
@@ -105,5 +105,6 @@ public class CampaignOperationManagerController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
+
 
 }

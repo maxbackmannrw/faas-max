@@ -1,9 +1,9 @@
-package com.faas.core.base.middleware.campaign.manager.details.operation;
+package com.faas.core.base.middleware.campaign.manager.operation;
 
-import com.faas.core.base.framework.campaign.manager.details.operation.CampaignOperationManagerFramework;
-import com.faas.core.base.model.ws.campaign.manager.details.operation.CampaignOperationRequest;
-import com.faas.core.base.model.ws.campaign.manager.details.operation.CampaignOperationWSModel;
-import com.faas.core.base.model.ws.campaign.manager.details.operation.dto.CampaignOperationWSDTO;
+import com.faas.core.base.framework.campaign.manager.operation.CampaignOperationManagerFramework;
+import com.faas.core.base.model.ws.campaign.manager.operation.CampaignOperationRequest;
+import com.faas.core.base.model.ws.campaign.manager.operation.CampaignOperationWSModel;
+import com.faas.core.base.model.ws.campaign.manager.operation.dto.CampaignOperationWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.model.ws.operation.content.OperationWSModel;
 import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
