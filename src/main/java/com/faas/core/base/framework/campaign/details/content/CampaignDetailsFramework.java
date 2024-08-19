@@ -46,7 +46,7 @@ public class CampaignDetailsFramework {
 
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
         if (campaignDBModel.isPresent()){
-            return campaignHelpers.createCampaignDetailsWSDTO(campaignDBModel.get());
+            return campaignHelpers.getCampaignDetailsWSDTO(campaignDBModel.get());
         }
         return null;
     }

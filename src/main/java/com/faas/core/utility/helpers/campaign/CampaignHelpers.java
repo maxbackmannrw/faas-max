@@ -69,9 +69,6 @@ public class CampaignHelpers {
     OperationRepository operationRepository;
 
     @Autowired
-    ScenarioRepository scenarioRepository;
-
-    @Autowired
     CampaignRemoteRepository campaignRemoteRepository;
 
     @Autowired
@@ -121,20 +118,21 @@ public class CampaignHelpers {
 
         CampaignWSDTO campaignWSDTO = new CampaignWSDTO();
         campaignWSDTO.setCampaign(campaignDBModel);
+
         return campaignWSDTO;
     }
 
 
-    public CampaignDetailsWSDTO createCampaignDetailsWSDTO(CampaignDBModel campaignDBModel) {
+    public CampaignDetailsWSDTO getCampaignDetailsWSDTO(CampaignDBModel campaignDBModel) {
 
         CampaignDetailsWSDTO campaignDetailsWSDTO = new CampaignDetailsWSDTO();
         campaignDetailsWSDTO.setCampaign(campaignDBModel);
-        campaignDetailsWSDTO.setCampaignAgents(createCampaignAgentWSDTOS(campaignDBModel.getId()));
-        campaignDetailsWSDTO.setCampaignTemp(createCampaignTempWSDTO(campaignDBModel.getId()));
-        campaignDetailsWSDTO.setCampaignChannel(createCampaignChannelWSDTO(campaignDBModel.getId()));
-        campaignDetailsWSDTO.setCampaignTrigger(createCampaignTriggerWSDTO(campaignDBModel.getId()));
-        campaignDetailsWSDTO.setCampaignScenarios(createCampaignScenarioWSDTOS(campaignDBModel));
-        campaignDetailsWSDTO.setCampaignRemotes(createCampaignRemoteWSDTOS(campaignDBModel));
+        campaignDetailsWSDTO.setCampaignAgents(getCampaignAgentWSDTOS(campaignDBModel.getId()));
+        campaignDetailsWSDTO.setCampaignTemp(getCampaignTempWSDTO(campaignDBModel.getId()));
+        campaignDetailsWSDTO.setCampaignChannel(getCampaignChannelWSDTO(campaignDBModel.getId()));
+        campaignDetailsWSDTO.setCampaignTrigger(getCampaignTriggerWSDTO(campaignDBModel.getId()));
+        campaignDetailsWSDTO.setCampaignScenarios(getCampaignScenarioWSDTOS(campaignDBModel));
+        campaignDetailsWSDTO.setCampaignRemotes(getCampaignRemoteWSDTOS(campaignDBModel));
 
         return campaignDetailsWSDTO;
     }
@@ -146,6 +144,7 @@ public class CampaignHelpers {
         campaignInquiryDAO.setInquiryId(appUtils.generateUUID());
         campaignInquiryDAO.setCampaignInquiry(campaignInquiry);
         campaignInquiryDAO.setInquiryDatas(new ArrayList<>());
+        campaignInquiryDAO.setInquiryState(AppConstant.PASSIVE_STATE);
         campaignInquiryDAO.setuDate(appUtils.getCurrentTimeStamp());
         campaignInquiryDAO.setcDate(appUtils.getCurrentTimeStamp());
         campaignInquiryDAO.setStatus(1);
@@ -159,6 +158,7 @@ public class CampaignHelpers {
         campaignFlowDAO.setFlowId(appUtils.generateUUID());
         campaignFlowDAO.setCampaignFlow(campaignFlow);
         campaignFlowDAO.setFlowDatas(new ArrayList<>());
+        campaignFlowDAO.setFlowState(AppConstant.PASSIVE_STATE);
         campaignFlowDAO.setuDate(appUtils.getCurrentTimeStamp());
         campaignFlowDAO.setcDate(appUtils.getCurrentTimeStamp());
         campaignFlowDAO.setStatus(1);
@@ -167,20 +167,20 @@ public class CampaignHelpers {
     }
 
 
-    public CampaignTriggerWSDTO createCampaignTriggerWSDTO(String campaignId){
+    public CampaignTriggerWSDTO getCampaignTriggerWSDTO(String campaignId){
 
         CampaignTriggerWSDTO campaignTriggerWSDTO = new CampaignTriggerWSDTO();
-        campaignTriggerWSDTO.setCampaignEmailTriggers(createCampaignEmailTriggerWSDTOS(campaignId));
-        campaignTriggerWSDTO.setCampaignSipTriggers(createCampaignSipTriggerWSDTOS(campaignId));
-        campaignTriggerWSDTO.setCampaignSmsTriggers(createCampaignSmsTriggerWSDTOS(campaignId));
-        campaignTriggerWSDTO.setCampaignWappCallTriggers(createCampaignWappCallTriggerWSDTOS(campaignId));
-        campaignTriggerWSDTO.setCampaignWappMessageTriggers(createCampaignWappMessageTriggerWSDTOS(campaignId));
+        campaignTriggerWSDTO.setCampaignEmailTriggers(getCampaignEmailTriggerWSDTOS(campaignId));
+        campaignTriggerWSDTO.setCampaignSipTriggers(getCampaignSipTriggerWSDTOS(campaignId));
+        campaignTriggerWSDTO.setCampaignSmsTriggers(getCampaignSmsTriggerWSDTOS(campaignId));
+        campaignTriggerWSDTO.setCampaignWappCallTriggers(getCampaignWappCallTriggerWSDTOS(campaignId));
+        campaignTriggerWSDTO.setCampaignWappMessageTriggers(getCampaignWappMessageTriggerWSDTOS(campaignId));
 
         return campaignTriggerWSDTO;
     }
 
 
-    public List<CampaignEmailTriggerWSDTO> createCampaignEmailTriggerWSDTOS(String campaignId) {
+    public List<CampaignEmailTriggerWSDTO> getCampaignEmailTriggerWSDTOS(String campaignId) {
 
         List<CampaignEmailTriggerWSDTO> campaignEmailTriggerWSDTOS = new ArrayList<>();
         List<EmailTriggerDBModel> emailTriggerDBModels = emailTriggerRepository.findByCampaignId(campaignId);
@@ -190,7 +190,7 @@ public class CampaignHelpers {
         return campaignEmailTriggerWSDTOS;
     }
 
-    public List<CampaignSipTriggerWSDTO> createCampaignSipTriggerWSDTOS(String campaignId) {
+    public List<CampaignSipTriggerWSDTO> getCampaignSipTriggerWSDTOS(String campaignId) {
 
         List<CampaignSipTriggerWSDTO> campaignSipTriggerWSDTOS = new ArrayList<>();
         List<SipTriggerDBModel> sipTriggerDBModels = sipTriggerRepository.findByCampaignId(campaignId);
@@ -200,7 +200,7 @@ public class CampaignHelpers {
         return campaignSipTriggerWSDTOS;
     }
 
-    public List<CampaignSmsTriggerWSDTO> createCampaignSmsTriggerWSDTOS(String campaignId) {
+    public List<CampaignSmsTriggerWSDTO> getCampaignSmsTriggerWSDTOS(String campaignId) {
 
         List<CampaignSmsTriggerWSDTO> campaignSmsTriggerWSDTOS = new ArrayList<>();
         List<SmsTriggerDBModel> smsTriggerDBModels = smsTriggerRepository.findByCampaignId(campaignId);
@@ -210,7 +210,7 @@ public class CampaignHelpers {
         return campaignSmsTriggerWSDTOS;
     }
 
-    public List<CampaignWappCallTriggerWSDTO> createCampaignWappCallTriggerWSDTOS(String campaignId) {
+    public List<CampaignWappCallTriggerWSDTO> getCampaignWappCallTriggerWSDTOS(String campaignId) {
 
         List<CampaignWappCallTriggerWSDTO> campaignWappCallTriggerWSDTOS = new ArrayList<>();
         List<WappCallTriggerDBModel> wappCallTriggerDBModels = wappCallTriggerRepository.findByCampaignId(campaignId);
@@ -220,7 +220,7 @@ public class CampaignHelpers {
         return campaignWappCallTriggerWSDTOS;
     }
 
-    public List<CampaignWappMessageTriggerWSDTO> createCampaignWappMessageTriggerWSDTOS(String campaignId) {
+    public List<CampaignWappMessageTriggerWSDTO> getCampaignWappMessageTriggerWSDTOS(String campaignId) {
 
         List<CampaignWappMessageTriggerWSDTO> campaignWappMessageTriggerWSDTOS = new ArrayList<>();
         List<WappMessageTriggerDBModel> wappMessageTriggerDBModels = wappMessageTriggerRepository.findByCampaignId(campaignId);
@@ -231,8 +231,7 @@ public class CampaignHelpers {
     }
 
 
-
-    public List<CampaignScenarioWSDTO> createCampaignScenarioWSDTOS(CampaignDBModel campaignDBModel){
+    public List<CampaignScenarioWSDTO> getCampaignScenarioWSDTOS(CampaignDBModel campaignDBModel){
 
         List<CampaignScenarioWSDTO> campaignScenarioWSDTOS = new ArrayList<>();
         List<CampaignScenarioDBModel> campaignScenarioDBModels = campaignScenarioRepository.findByCampaignId(campaignDBModel.getId());
@@ -243,7 +242,7 @@ public class CampaignHelpers {
     }
 
 
-    public List<CampaignRemoteWSDTO> createCampaignRemoteWSDTOS(CampaignDBModel campaignDBModel){
+    public List<CampaignRemoteWSDTO> getCampaignRemoteWSDTOS(CampaignDBModel campaignDBModel){
 
         List<CampaignRemoteWSDTO> campaignRemoteWSDTOS = new ArrayList<>();
         List<CampaignRemoteDBModel> campaignRemoteDBModels = campaignRemoteRepository.findByCampaignId(campaignDBModel.getId());
@@ -263,7 +262,7 @@ public class CampaignHelpers {
     }
 
 
-    public List<CampaignAgentWSDTO> createCampaignAgentWSDTOS(String campaignId){
+    public List<CampaignAgentWSDTO> getCampaignAgentWSDTOS(String campaignId){
 
         List<CampaignAgentWSDTO> campaignAgentWSDTOS = new ArrayList<>();
         List<CampaignAgentDBModel> campaignAgentDBModels = campaignAgentRepository.findByCampaignId(campaignId);
@@ -278,7 +277,7 @@ public class CampaignHelpers {
     }
 
 
-    public CampaignTempWSDTO createCampaignTempWSDTO(String campaignId){
+    public CampaignTempWSDTO getCampaignTempWSDTO(String campaignId){
 
         CampaignTempWSDTO campaignTempWSDTO = new CampaignTempWSDTO();
 
@@ -314,7 +313,7 @@ public class CampaignHelpers {
     }
 
 
-    public CampaignChannelWSDTO createCampaignChannelWSDTO(String campaignId){
+    public CampaignChannelWSDTO getCampaignChannelWSDTO(String campaignId){
 
         CampaignChannelWSDTO campaignChannelWSDTO = new CampaignChannelWSDTO();
         List<CampaignChannelDBModel> campaignChannelDBModels = campaignChannelRepository.findByCampaignId(campaignId);
@@ -336,36 +335,6 @@ public class CampaignHelpers {
             }
         }
         return campaignChannelWSDTO;
-    }
-
-
-    public List<CampaignAgentWSDTO> mapCampaignAgentWSDTOS(List<CampaignAgentDBModel> agentDBModels) {
-
-        List<CampaignAgentWSDTO>campaignAgentWSDTOS = new ArrayList<>();
-        for (CampaignAgentDBModel agentDBModel : agentDBModels) {
-            CampaignAgentWSDTO campaignAgentWSDTO = mapCampaignAgentWSDTO(agentDBModel);
-            if (campaignAgentWSDTO != null) {
-                campaignAgentWSDTOS.add(campaignAgentWSDTO);
-            }
-        }
-        return campaignAgentWSDTOS;
-    }
-
-    public CampaignAgentWSDTO mapCampaignAgentWSDTO(UserDBModel agentDBModel) {
-
-        CampaignAgentWSDTO campaignAgentWSDTO = new CampaignAgentWSDTO();
-        campaignAgentWSDTO.setCampaignAgent(agentDBModel);
-        return campaignAgentWSDTO;
-    }
-
-
-    public CampaignAgentWSDTO mapCampaignAgentWSDTO(CampaignAgentDBModel agentDBModels) {
-
-        Optional<UserDBModel> agentDBModel = userRepository.findById(agentDBModels.getAgentId());
-        if (agentDBModel.isPresent()){
-            agentDBModel.get().setPassword("");
-        }
-        return null;
     }
 
 
@@ -391,7 +360,6 @@ public class CampaignHelpers {
         if (!campaignChannelDBModels.isEmpty()){
             campaignChannelRepository.deleteAll(campaignChannelDBModels);
         }
-
         CampaignChannelDBModel campaignChannelDBModel = new CampaignChannelDBModel();
         campaignChannelDBModel.setCampaignId(campaignDBModel.getId());
         campaignChannelDBModel.setuDate(appUtils.getCurrentTimeStamp());
@@ -406,7 +374,8 @@ public class CampaignHelpers {
 
         CampaignManagerWSDTO campaignManagerWSDTO = new CampaignManagerWSDTO();
         campaignManagerWSDTO.setCampaign(campaignDBModel);
-        campaignManagerWSDTO.setCampaignSummary(createCampaignSummaryWSDTO(campaignDBModel.getId()));
+        campaignManagerWSDTO.setCampaignSummary(getCampaignSummaryWSDTO(campaignDBModel.getId()));
+
         return campaignManagerWSDTO;
     }
 
@@ -414,18 +383,18 @@ public class CampaignHelpers {
 
         CampaignManagerDetailsWSDTO campaignManagerDetailsWSDTO = new CampaignManagerDetailsWSDTO();
         campaignManagerDetailsWSDTO.setCampaign(campaignDBModel);
-        campaignManagerDetailsWSDTO.setCampaignSummary(createCampaignSummaryWSDTO(campaignDBModel.getId()));
-        campaignManagerDetailsWSDTO.setCampaignAgents(createCampaignAgentWSDTOS(campaignDBModel.getId()));
-        campaignManagerDetailsWSDTO.setCampaignTemp(createCampaignTempWSDTO(campaignDBModel.getId()));
-        campaignManagerDetailsWSDTO.setCampaignChannel(createCampaignChannelWSDTO(campaignDBModel.getId()));
-        campaignManagerDetailsWSDTO.setCampaignTrigger(createCampaignTriggerWSDTO(campaignDBModel.getId()));
-        campaignManagerDetailsWSDTO.setCampaignScenarios(createCampaignScenarioWSDTOS(campaignDBModel));
-        campaignManagerDetailsWSDTO.setCampaignRemotes(createCampaignRemoteWSDTOS(campaignDBModel));
+        campaignManagerDetailsWSDTO.setCampaignSummary(getCampaignSummaryWSDTO(campaignDBModel.getId()));
+        campaignManagerDetailsWSDTO.setCampaignAgents(getCampaignAgentWSDTOS(campaignDBModel.getId()));
+        campaignManagerDetailsWSDTO.setCampaignTemp(getCampaignTempWSDTO(campaignDBModel.getId()));
+        campaignManagerDetailsWSDTO.setCampaignChannel(getCampaignChannelWSDTO(campaignDBModel.getId()));
+        campaignManagerDetailsWSDTO.setCampaignTrigger(getCampaignTriggerWSDTO(campaignDBModel.getId()));
+        campaignManagerDetailsWSDTO.setCampaignScenarios(getCampaignScenarioWSDTOS(campaignDBModel));
+        campaignManagerDetailsWSDTO.setCampaignRemotes(getCampaignRemoteWSDTOS(campaignDBModel));
 
         return campaignManagerDetailsWSDTO;
     }
 
-    public CampaignSummaryWSDTO createCampaignSummaryWSDTO(String campaignId){
+    public CampaignSummaryWSDTO getCampaignSummaryWSDTO(String campaignId){
 
         CampaignSummaryWSDTO campaignSummaryWSDTO = new CampaignSummaryWSDTO() ;
         campaignSummaryWSDTO.setReadyOperationCount(operationRepository.countByCampaignIdAndOperationState(campaignId,AppConstant.READY_STATE));

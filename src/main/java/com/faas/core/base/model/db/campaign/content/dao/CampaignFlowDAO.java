@@ -7,6 +7,7 @@ public class CampaignFlowDAO {
     private String flowId;
     private String campaignFlow;
     private List<CampaignDataDAO> flowDatas;
+    private String flowState;
     private long uDate;
     private long cDate;
     private int status;
@@ -14,10 +15,11 @@ public class CampaignFlowDAO {
     public CampaignFlowDAO() {
     }
 
-    public CampaignFlowDAO(String flowId, String campaignFlow, List<CampaignDataDAO> flowDatas, long uDate, long cDate, int status) {
+    public CampaignFlowDAO(String flowId, String campaignFlow, List<CampaignDataDAO> flowDatas, String flowState, long uDate, long cDate, int status) {
         this.flowId = flowId;
         this.campaignFlow = campaignFlow;
         this.flowDatas = flowDatas;
+        this.flowState = flowState;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
@@ -45,6 +47,14 @@ public class CampaignFlowDAO {
 
     public void setFlowDatas(List<CampaignDataDAO> flowDatas) {
         this.flowDatas = flowDatas;
+    }
+
+    public String getFlowState() {
+        return flowState;
+    }
+
+    public void setFlowState(String flowState) {
+        this.flowState = flowState;
     }
 
     public long getuDate() {

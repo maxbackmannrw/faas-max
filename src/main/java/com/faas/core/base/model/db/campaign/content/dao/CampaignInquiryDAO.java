@@ -7,6 +7,7 @@ public class CampaignInquiryDAO {
     private String inquiryId;
     private String campaignInquiry;
     private List<CampaignDataDAO> inquiryDatas;
+    private String inquiryState;
     private long uDate;
     private long cDate;
     private int status;
@@ -14,10 +15,11 @@ public class CampaignInquiryDAO {
     public CampaignInquiryDAO() {
     }
 
-    public CampaignInquiryDAO(String inquiryId, String campaignInquiry, List<CampaignDataDAO> inquiryDatas, long uDate, long cDate, int status) {
+    public CampaignInquiryDAO(String inquiryId, String campaignInquiry, List<CampaignDataDAO> inquiryDatas, String inquiryState, long uDate, long cDate, int status) {
         this.inquiryId = inquiryId;
         this.campaignInquiry = campaignInquiry;
         this.inquiryDatas = inquiryDatas;
+        this.inquiryState = inquiryState;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
@@ -45,6 +47,14 @@ public class CampaignInquiryDAO {
 
     public void setInquiryDatas(List<CampaignDataDAO> inquiryDatas) {
         this.inquiryDatas = inquiryDatas;
+    }
+
+    public String getInquiryState() {
+        return inquiryState;
+    }
+
+    public void setInquiryState(String inquiryState) {
+        this.inquiryState = inquiryState;
     }
 
     public long getuDate() {
