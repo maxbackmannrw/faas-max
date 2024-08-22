@@ -137,7 +137,7 @@ public class CampaignFramework {
             campaignDBModel.setStatus(1);
 
             campaignDBModel = campaignRepository.save(campaignDBModel);
-            campaignHelpers.createCampaignChannelDBModel(campaignDBModel);
+            campaignHelpers.generateCampaignChannelDBModel(campaignDBModel);
 
             return campaignHelpers.getCampaignWSDTO(campaignDBModel);
         }
@@ -158,19 +158,6 @@ public class CampaignFramework {
             return campaignHelpers.getCampaignWSDTO(campaignRepository.save(campaignDBModel.get()));
         }
        return null;
-    }
-
-    public CampaignManagerWSDTO updateCampaignStateService(long userId, String campaignId, String campaignState) {
-
-        Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
-        if(campaignDBModel.isPresent()) {
-
-            campaignDBModel.get().setCampaignState(campaignState);
-            campaignDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
-
-            return campaignHelpers.getCampaignManagerWSDTO(campaignRepository.save(campaignDBModel.get()));
-        }
-        return null;
     }
 
     public CampaignWSDTO removeCampaignService(String campaignId) {
@@ -199,7 +186,6 @@ public class CampaignFramework {
         }
         return null;
     }
-
 
 
 }

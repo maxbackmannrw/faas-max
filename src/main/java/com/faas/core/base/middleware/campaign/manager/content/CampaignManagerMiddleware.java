@@ -2,6 +2,8 @@ package com.faas.core.base.middleware.campaign.manager.content;
 
 import com.faas.core.base.framework.campaign.manager.content.CampaignManagerFramework;
 import com.faas.core.base.model.ws.campaign.manager.content.dto.CampaignManagerWSDTO;
+import com.faas.core.base.model.ws.campaign.manager.details.CampaignManagerDetailsWSModel;
+import com.faas.core.base.model.ws.campaign.manager.details.dto.CampaignManagerDetailsWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.model.ws.campaign.manager.content.CampaignManagerWSModel;
 import com.faas.core.utility.config.AppConstant;
@@ -98,6 +100,45 @@ public class CampaignManagerMiddleware {
         return response;
     }
 
+    public CampaignManagerWSModel updateCampaignManagerState(long userId, String campaignId, String campaignState) {
+
+        CampaignManagerWSModel response = new CampaignManagerWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+        List<CampaignManagerWSDTO> campaignManagerWSDTOS = new ArrayList<>();
+
+        CampaignManagerWSDTO campaignManagerWSDTO = campaignManagerFramework.updateCampaignManagerStateService(userId,campaignId,campaignState);
+        if (campaignManagerWSDTO != null){
+            campaignManagerWSDTOS.add(campaignManagerWSDTO);
+        }
+
+        response.setCampaignManagers(campaignManagerWSDTOS);
+        general.setOperation("updateCampaignManagerState");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public CampaignManagerDetailsWSModel getCampaignManagerDetails(long userId, String campaignId) {
+
+        CampaignManagerDetailsWSModel response = new CampaignManagerDetailsWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        CampaignManagerDetailsWSDTO campaignManagerDetailsWSDTO = campaignManagerFramework.getCampaignManagerDetailsService(userId,campaignId);
+        if(campaignManagerDetailsWSDTO != null){
+            response.setCampaignManagerDetails(campaignManagerDetailsWSDTO);
+        }
+
+        general.setOperation("getCampaignManagerDetails");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
 
 
 }

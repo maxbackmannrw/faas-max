@@ -354,7 +354,7 @@ public class CampaignHelpers {
         return agentCampaignSummary;
     }
 
-    public CampaignChannelDBModel createCampaignChannelDBModel(CampaignDBModel campaignDBModel){
+    public CampaignChannelDBModel generateCampaignChannelDBModel(CampaignDBModel campaignDBModel){
 
         List<CampaignChannelDBModel> campaignChannelDBModels = campaignChannelRepository.findByCampaignId(campaignDBModel.getId());
         if (!campaignChannelDBModels.isEmpty()){

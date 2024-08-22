@@ -142,27 +142,6 @@ public class CampaignMiddleware {
         return response;
     }
 
-    public CampaignManagerWSModel updateCampaignState(long userId, String campaignId, String campaignState) {
-
-        CampaignManagerWSModel response = new CampaignManagerWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-        List<CampaignManagerWSDTO> campaignManagerWSDTOS = new ArrayList<>();
-
-        CampaignManagerWSDTO campaignManagerWSDTO = campaignFramework.updateCampaignStateService(userId,campaignId,campaignState);
-        if (campaignManagerWSDTO != null){
-            campaignManagerWSDTOS.add(campaignManagerWSDTO);
-        }
-
-        response.setCampaignManagers(campaignManagerWSDTOS);
-        general.setOperation("updateCampaignState");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
     public CampaignWSModel removeCampaign(long userId, String campaignId) {
 
         CampaignWSModel response = new CampaignWSModel();

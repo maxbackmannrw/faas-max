@@ -2,6 +2,7 @@ package com.faas.core.base.endpoint.controller.campaign.manager.content;
 
 import com.faas.core.base.middleware.campaign.manager.content.CampaignManagerMiddleware;
 import com.faas.core.base.model.ws.campaign.manager.content.CampaignManagerWSModel;
+import com.faas.core.base.model.ws.campaign.manager.details.CampaignManagerDetailsWSModel;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,6 +63,31 @@ public class CampaignManagerController {
                                                 @RequestParam String campaignId) {
 
         CampaignManagerWSModel response = campaignManagerMiddleware.getCampaignManager(userId,campaignId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+    @RequestMapping(value = BaseRoute.UPDATE_CAMPAIGN_MANAGER_STATE, method = RequestMethod.POST)
+    public ResponseEntity<?> updateCampaignManagerState(@RequestParam long userId,
+                                                        @RequestParam String campaignId,
+                                                        @RequestParam String campaignState) {
+
+        CampaignManagerWSModel response = campaignManagerMiddleware.updateCampaignManagerState(userId,campaignId,campaignState);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+    @RequestMapping(value = BaseRoute.GET_CAMPAIGN_MANAGER_DETAILS, method = RequestMethod.POST)
+    public ResponseEntity<?> getCampaignManagerDetails(@RequestParam long userId,
+                                                       @RequestParam String campaignId) {
+
+        CampaignManagerDetailsWSModel response = campaignManagerMiddleware.getCampaignManagerDetails(userId,campaignId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

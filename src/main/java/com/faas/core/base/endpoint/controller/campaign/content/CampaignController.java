@@ -100,19 +100,6 @@ public class CampaignController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-    @RequestMapping(value = BaseRoute.UPDATE_CAMPAIGN_STATE, method = RequestMethod.POST)
-    public ResponseEntity<?> updateCampaignState(@RequestParam long userId,
-                                                 @RequestParam String campaignId,
-                                                 @RequestParam String campaignState) {
-
-        CampaignManagerWSModel response = campaignMiddleware.updateCampaignState(userId,campaignId,campaignState);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
     @RequestMapping(value = BaseRoute.REMOVE_CAMPAIGN, method = RequestMethod.POST)
     public ResponseEntity<?> removeCampaign(@RequestParam long userId,
                                             @RequestParam String campaignId) {
