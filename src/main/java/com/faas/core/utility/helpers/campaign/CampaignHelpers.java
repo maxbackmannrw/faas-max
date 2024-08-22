@@ -406,4 +406,23 @@ public class CampaignHelpers {
     }
 
 
+    public CampaignDBModel updateCampaignManagerStateHelper(CampaignDBModel campaignDBModel, String campaignState) {
+
+        if (campaignState.equalsIgnoreCase(AppConstant.PASSIVE_CAMPAIGN)) {
+            if (campaignDBModel.getCampaignCategory().equalsIgnoreCase(AppConstant.INQUIRY_CAMPAIGN)) {
+                campaignDBModel.getCampaignInquiry().setInquiryState(AppConstant.PASSIVE_STATE);
+                campaignDBModel.getCampaignInquiry().setuDate(appUtils.getCurrentTimeStamp());
+            }
+            if (campaignDBModel.getCampaignCategory().equalsIgnoreCase(AppConstant.AUTOMATIC_CAMPAIGN)) {
+                campaignDBModel.getCampaignFlow().setFlowState(AppConstant.PASSIVE_STATE);
+                campaignDBModel.getCampaignFlow().setuDate(appUtils.getCurrentTimeStamp());
+            }
+        }
+        campaignDBModel.setCampaignState(campaignState);
+        campaignDBModel.setuDate(appUtils.getCurrentTimeStamp());
+
+        return campaignDBModel;
+    }
+
+
 }

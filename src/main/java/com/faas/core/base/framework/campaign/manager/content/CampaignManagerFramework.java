@@ -4,6 +4,7 @@ import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.ws.campaign.manager.content.dto.CampaignManagerWSDTO;
 import com.faas.core.base.model.ws.campaign.manager.details.dto.CampaignManagerDetailsWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
+import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.AppUtils;
 import com.faas.core.utility.helpers.campaign.CampaignHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,11 +71,10 @@ public class CampaignManagerFramework {
 
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
         if(campaignDBModel.isPresent()) {
-
-            campaignDBModel.get().setCampaignState(campaignState);
-            campaignDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
-
-            return campaignHelpers.getCampaignManagerWSDTO(campaignRepository.save(campaignDBModel.get()));
+            CampaignDBModel updatedCampaign  = campaignHelpers.updateCampaignManagerStateHelper(campaignDBModel.get(),campaignState);
+            if (updatedCampaign != null){
+                return campaignHelpers.getCampaignManagerWSDTO(campaignRepository.save(updatedCampaign));
+            }
         }
         return null;
     }
@@ -88,5 +88,5 @@ public class CampaignManagerFramework {
         return null;
     }
 
-    
+
 }
