@@ -4,8 +4,6 @@ import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.ws.campaign.manager.content.dto.CampaignManagerWSDTO;
 import com.faas.core.base.model.ws.campaign.manager.details.dto.CampaignManagerDetailsWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
-import com.faas.core.utility.config.AppConstant;
-import com.faas.core.utility.config.AppUtils;
 import com.faas.core.utility.helpers.campaign.CampaignHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,9 +21,6 @@ public class CampaignManagerFramework {
 
     @Autowired
     CampaignRepository campaignRepository;
-
-    @Autowired
-    AppUtils appUtils;
 
 
     public List<CampaignManagerWSDTO> getCampaignManagersService(long userId) {

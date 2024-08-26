@@ -1,6 +1,6 @@
 package com.faas.core.base.middleware.campaign.manager.operation;
 
-import com.faas.core.base.framework.campaign.manager.operation.CampaignOperationManagerFramework;
+import com.faas.core.base.framework.campaign.manager.operation.CampaignManagerOperationFramework;
 import com.faas.core.base.model.ws.campaign.manager.operation.CampaignOperationRequest;
 import com.faas.core.base.model.ws.campaign.manager.operation.CampaignOperationWSModel;
 import com.faas.core.base.model.ws.campaign.manager.operation.dto.CampaignOperationWSDTO;
@@ -15,10 +15,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class CampaignOperationManagerMiddleware {
+public class CampaignManagerOperationMiddleware {
+
 
     @Autowired
-    CampaignOperationManagerFramework campaignOperationManagerFramework;
+    CampaignManagerOperationFramework campaignManagerOperationFramework;
 
 
     public CampaignOperationWSModel searchCampaignOperations(long userId, String campaignId,String city,String country,int reqPage,int reqSize) {
@@ -26,7 +27,7 @@ public class CampaignOperationManagerMiddleware {
         CampaignOperationWSModel response = new CampaignOperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        CampaignOperationWSDTO campaignOperationWSDTO = campaignOperationManagerFramework.searchCampaignOperationsService(userId,campaignId,city,country,reqPage,reqSize);
+        CampaignOperationWSDTO campaignOperationWSDTO = campaignManagerOperationFramework.searchCampaignOperationsService(userId,campaignId,city,country,reqPage,reqSize);
         if (campaignOperationWSDTO != null){
             response.setCampaignOperation(campaignOperationWSDTO);
         }
@@ -46,7 +47,7 @@ public class CampaignOperationManagerMiddleware {
         CampaignOperationWSModel response = new CampaignOperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        CampaignOperationWSDTO campaignOperationWSDTO = campaignOperationManagerFramework.getCampaignOperationsService(userId,campaignId,reqPage,reqSize);
+        CampaignOperationWSDTO campaignOperationWSDTO = campaignManagerOperationFramework.getCampaignOperationsService(userId,campaignId,reqPage,reqSize);
         if (campaignOperationWSDTO != null){
             response.setCampaignOperation(campaignOperationWSDTO);
         }
@@ -67,7 +68,7 @@ public class CampaignOperationManagerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<OperationWSDTO> operationWSDTOS = new ArrayList<>();
 
-        OperationWSDTO operationWSDTO = campaignOperationManagerFramework.getCampaignOperationService(userId,sessionId,campaignId);
+        OperationWSDTO operationWSDTO = campaignManagerOperationFramework.getCampaignOperationService(userId,sessionId,campaignId);
         if (operationWSDTO != null){
             operationWSDTOS.add(operationWSDTO);
         }
@@ -88,7 +89,7 @@ public class CampaignOperationManagerMiddleware {
         OperationWSModel response = new OperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<OperationWSDTO> operationWSDTOS = campaignOperationManagerFramework.createCampaignOperationService(operationRequest);
+        List<OperationWSDTO> operationWSDTOS = campaignManagerOperationFramework.createCampaignOperationService(operationRequest);
         if (operationWSDTOS != null){
             response.setOperations(operationWSDTOS);
         }
@@ -109,7 +110,7 @@ public class CampaignOperationManagerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<OperationWSDTO> operationWSDTOS = new ArrayList<>();
 
-        OperationWSDTO operationWSDTO = campaignOperationManagerFramework.updateCampaignOperationService(userId,sessionId,agentId,operationState);
+        OperationWSDTO operationWSDTO = campaignManagerOperationFramework.updateCampaignOperationService(userId,sessionId,agentId,operationState);
         if (operationWSDTO != null){
             operationWSDTOS.add(operationWSDTO);
         }
@@ -131,7 +132,7 @@ public class CampaignOperationManagerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<OperationWSDTO>operationWSDTOS = new ArrayList<>();
 
-        OperationWSDTO operationWSDTO = campaignOperationManagerFramework.removeCampaignOperationService(userId,sessionId,campaignId);
+        OperationWSDTO operationWSDTO = campaignManagerOperationFramework.removeCampaignOperationService(userId,sessionId,campaignId);
         if (operationWSDTO != null){
             operationWSDTOS.add(operationWSDTO);
         }

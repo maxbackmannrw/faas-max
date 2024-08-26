@@ -8,7 +8,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/campaign/manager/client/CampaignManagerClientController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/campaign/manager/client/CampaignClientManagerController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/campaign/manager/operation/CampaignOperationManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/campaign/manager/operation/CampaignManagerOperationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/campaign/manager/client/CampaignClientManagerFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/campaign/manager/client/CampaignManagerClientFramework.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/campaign/manager/content/CampaignManagerFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/campaign/manager/content/CampaignManagerFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/campaign/manager/operation/CampaignOperationManagerFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/campaign/manager/operation/CampaignManagerOperationFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/campaign/manager/client/CampaignClientManagerMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/campaign/manager/client/CampaignManagerClientMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/campaign/manager/operation/CampaignOperationManagerMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/campaign/manager/operation/CampaignManagerOperationMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/campaign/details/scenario/CampaignScenarioDBModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/campaign/details/scenario/CampaignScenarioDBModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utility/helpers/campaign/CampaignHelpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utility/helpers/campaign/CampaignHelpers.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -141,12 +150,106 @@
     </key>
   </component>
   <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="Python.FlaskServer">
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <method v="2" />
+    </configuration>
     <configuration name="ServerCoreApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="core" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.faas.core.ServerCoreApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration default="true" type="Tox" factoryName="Tox">
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docs" factoryName="Docutils task">
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <option name="docutils_input_file" value="" />
+      <option name="docutils_output_file" value="" />
+      <option name="docutils_params" value="" />
+      <option name="docutils_task" value="" />
+      <option name="docutils_open_in_browser" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docs" factoryName="Sphinx task">
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <option name="docutils_input_file" value="" />
+      <option name="docutils_output_file" value="" />
+      <option name="docutils_params" value="" />
+      <option name="docutils_task" value="" />
+      <option name="docutils_open_in_browser" value="false" />
+      <method v="2" />
     </configuration>
   </component>
   <component name="SharedIndexes">
@@ -1187,15 +1290,19 @@
       <workItem from="1724156595137" duration="1934000" />
       <workItem from="1724176027792" duration="3573000" />
       <workItem from="1724233002713" duration="1496000" />
-      <workItem from="1724250866092" duration="6707000" />
-    </task>
-    <task id="LOCAL-00936" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1719834481958</created>
-      <option name="number" value="00936" />
-      <option name="presentableId" value="LOCAL-00936" />
-      <option name="project" value="LOCAL" />
-      <updated>1719834481958</updated>
+      <workItem from="1724250866092" duration="9832000" />
+      <workItem from="1724360587022" duration="100000" />
+      <workItem from="1724424076331" duration="234000" />
+      <workItem from="1724425318308" duration="10729000" />
+      <workItem from="1724526513524" duration="52000" />
+      <workItem from="1724526666850" duration="5898000" />
+      <workItem from="1724573185649" duration="39000" />
+      <workItem from="1724573247492" duration="603000" />
+      <workItem from="1724575201647" duration="479000" />
+      <workItem from="1724575694676" duration="25000" />
+      <workItem from="1724575733453" duration="2015000" />
+      <workItem from="1724590184110" duration="3243000" />
+      <workItem from="1724666856937" duration="6098000" />
     </task>
     <task id="LOCAL-00937" summary="almost finish">
       <option name="closed" value="true" />
@@ -1581,7 +1688,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724318724520</updated>
     </task>
-    <option name="localTasksCounter" value="985" />
+    <task id="LOCAL-00985" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1724319989906</created>
+      <option name="number" value="00985" />
+      <option name="presentableId" value="LOCAL-00985" />
+      <option name="project" value="LOCAL" />
+      <updated>1724319989907</updated>
+    </task>
+    <option name="localTasksCounter" value="986" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1650,9 +1765,9 @@
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/campaign/manager/client/CampaignClientManagerFramework.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/campaign/manager/client/CampaignManagerClientFramework.java</url>
           <line>32</line>
-          <properties class="com.faas.core.base.framework.campaign.manager.client.CampaignClientManagerFramework" method="searchCampaignClientsService">
+          <properties class="com.faas.core.base.framework.campaign.manager.client.CampaignManagerClientFramework" method="searchCampaignClientsService">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>

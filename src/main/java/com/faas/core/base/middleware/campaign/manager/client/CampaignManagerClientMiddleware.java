@@ -1,6 +1,6 @@
 package com.faas.core.base.middleware.campaign.manager.client;
 
-import com.faas.core.base.framework.campaign.manager.client.CampaignClientManagerFramework;
+import com.faas.core.base.framework.campaign.manager.client.CampaignManagerClientFramework;
 import com.faas.core.base.model.ws.campaign.manager.client.CampaignClientWSModel;
 import com.faas.core.base.model.ws.campaign.manager.client.dto.CampaignClientWSDTO;
 import com.faas.core.base.model.ws.client.content.ClientWSModel;
@@ -14,11 +14,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class CampaignClientManagerMiddleware {
+public class CampaignManagerClientMiddleware {
 
 
     @Autowired
-    CampaignClientManagerFramework campaignClientManagerFramework;
+    CampaignManagerClientFramework campaignManagerClientFramework;
 
 
     public CampaignClientWSModel searchCampaignClients(long userId,String city, String country, String clientState, int reqPage, int reqSize) {
@@ -26,7 +26,7 @@ public class CampaignClientManagerMiddleware {
         CampaignClientWSModel response = new CampaignClientWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        CampaignClientWSDTO campaignClientWSDTO = campaignClientManagerFramework.searchCampaignClientsService(city,country,clientState,reqPage,reqSize);
+        CampaignClientWSDTO campaignClientWSDTO = campaignManagerClientFramework.searchCampaignClientsService(city,country,clientState,reqPage,reqSize);
         if (campaignClientWSDTO != null){
             response.setCampaignClient(campaignClientWSDTO);
         }
@@ -46,7 +46,7 @@ public class CampaignClientManagerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ClientWSDTO>clientWSDTOS = new ArrayList<>();
 
-        ClientWSDTO clientWSDTO = campaignClientManagerFramework.getCampaignClientService(userId,clientId,campaignId);
+        ClientWSDTO clientWSDTO = campaignManagerClientFramework.getCampaignClientService(userId,clientId,campaignId);
         if (clientWSDTO != null){
             clientWSDTOS.add(clientWSDTO);
         }

@@ -405,7 +405,6 @@ public class CampaignHelpers {
         return campaignSummaryWSDTO;
     }
 
-
     public CampaignDBModel updateCampaignManagerStateHelper(CampaignDBModel campaignDBModel, String campaignState) {
 
         if (campaignState.equalsIgnoreCase(AppConstant.PASSIVE_CAMPAIGN)) {

@@ -19,9 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-
 @Service
-public class CampaignOperationManagerFramework {
+public class CampaignManagerOperationFramework {
 
 
     @Autowired
@@ -39,12 +38,10 @@ public class CampaignOperationManagerFramework {
 
     public CampaignOperationWSDTO searchCampaignOperationsService(long userId, String campaignId, String city, String country, int reqPage, int reqSize) {
 
-
         return null;
     }
 
     public CampaignOperationWSDTO getCampaignOperationsService(long userId, String campaignId, int reqPage, int reqSize) {
-
 
         return null;
     }

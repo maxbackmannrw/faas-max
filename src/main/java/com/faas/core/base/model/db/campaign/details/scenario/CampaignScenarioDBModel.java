@@ -6,7 +6,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
-
 @Document(collection = "campaign_scenario_table")
 public class CampaignScenarioDBModel {
 

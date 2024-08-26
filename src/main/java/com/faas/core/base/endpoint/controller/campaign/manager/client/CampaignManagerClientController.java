@@ -1,6 +1,6 @@
 package com.faas.core.base.endpoint.controller.campaign.manager.client;
 
-import com.faas.core.base.middleware.campaign.manager.client.CampaignClientManagerMiddleware;
+import com.faas.core.base.middleware.campaign.manager.client.CampaignManagerClientMiddleware;
 import com.faas.core.base.model.ws.campaign.manager.client.CampaignClientWSModel;
 import com.faas.core.base.model.ws.client.content.ClientWSModel;
 import com.faas.core.utility.config.AppConstant;
@@ -16,11 +16,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping(value = AppConstant.API_VERSION + "/base/campaign/manager/client/")
-public class CampaignClientManagerController {
+public class CampaignManagerClientController {
 
 
     @Autowired
-    CampaignClientManagerMiddleware campaignClientManagerMiddleware;
+    CampaignManagerClientMiddleware campaignManagerClientMiddleware;
 
 
     @RequestMapping(value = BaseRoute.SEARCH_CAMPAIGN_CLIENTS, method = RequestMethod.POST)
@@ -31,7 +31,7 @@ public class CampaignClientManagerController {
                                                    @RequestParam int reqPage,
                                                    @RequestParam int reqSize) {
 
-        CampaignClientWSModel response = campaignClientManagerMiddleware.searchCampaignClients(userId,city,country,clientState,reqPage,reqSize);
+        CampaignClientWSModel response = campaignManagerClientMiddleware.searchCampaignClients(userId,city,country,clientState,reqPage,reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -44,7 +44,7 @@ public class CampaignClientManagerController {
                                                @RequestParam long clientId,
                                                @RequestParam String campaignId) {
 
-        ClientWSModel response = campaignClientManagerMiddleware.getCampaignClient(userId,clientId,campaignId);
+        ClientWSModel response = campaignManagerClientMiddleware.getCampaignClient(userId,clientId,campaignId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
