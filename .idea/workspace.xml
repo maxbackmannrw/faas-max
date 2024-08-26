@@ -7,7 +7,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish" />
+    <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -1290,15 +1292,7 @@
       <workItem from="1724575694676" duration="25000" />
       <workItem from="1724575733453" duration="2015000" />
       <workItem from="1724590184110" duration="3243000" />
-      <workItem from="1724666856937" duration="6552000" />
-    </task>
-    <task id="LOCAL-00938" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1720277336710</created>
-      <option name="number" value="00938" />
-      <option name="presentableId" value="LOCAL-00938" />
-      <option name="project" value="LOCAL" />
-      <updated>1720277336710</updated>
+      <workItem from="1724666856937" duration="6913000" />
     </task>
     <task id="LOCAL-00939" summary="almost finish">
       <option name="closed" value="true" />
@@ -1684,7 +1678,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724676350730</updated>
     </task>
-    <option name="localTasksCounter" value="987" />
+    <task id="LOCAL-00987" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1724677112739</created>
+      <option name="number" value="00987" />
+      <option name="presentableId" value="LOCAL-00987" />
+      <option name="project" value="LOCAL" />
+      <updated>1724677112739</updated>
+    </task>
+    <option name="localTasksCounter" value="988" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
