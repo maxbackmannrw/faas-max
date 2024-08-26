@@ -1292,23 +1292,7 @@
       <workItem from="1724575694676" duration="25000" />
       <workItem from="1724575733453" duration="2015000" />
       <workItem from="1724590184110" duration="3243000" />
-      <workItem from="1724666856937" duration="6913000" />
-    </task>
-    <task id="LOCAL-00939" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1720278486522</created>
-      <option name="number" value="00939" />
-      <option name="presentableId" value="LOCAL-00939" />
-      <option name="project" value="LOCAL" />
-      <updated>1720278486522</updated>
-    </task>
-    <task id="LOCAL-00940" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1720279241997</created>
-      <option name="number" value="00940" />
-      <option name="presentableId" value="LOCAL-00940" />
-      <option name="project" value="LOCAL" />
-      <updated>1720279241997</updated>
+      <workItem from="1724666856937" duration="7194000" />
     </task>
     <task id="LOCAL-00941" summary="almost finish">
       <option name="closed" value="true" />
@@ -1686,7 +1670,23 @@
       <option name="project" value="LOCAL" />
       <updated>1724677112739</updated>
     </task>
-    <option name="localTasksCounter" value="988" />
+    <task id="LOCAL-00988" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1724677269961</created>
+      <option name="number" value="00988" />
+      <option name="presentableId" value="LOCAL-00988" />
+      <option name="project" value="LOCAL" />
+      <updated>1724677269961</updated>
+    </task>
+    <task id="LOCAL-00989" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1724677315114</created>
+      <option name="number" value="00989" />
+      <option name="presentableId" value="LOCAL-00989" />
+      <option name="project" value="LOCAL" />
+      <updated>1724677315114</updated>
+    </task>
+    <option name="localTasksCounter" value="990" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
