@@ -433,6 +433,7 @@ public class CampaignHelpers {
             campaignDBModel.getCampaignInquiry().setuDate(appUtils.getCurrentTimeStamp());
         }
         campaignDBModel.setuDate(appUtils.getCurrentTimeStamp());
+
         return campaignDBModel;
     }
 
@@ -446,6 +447,7 @@ public class CampaignHelpers {
             campaignDBModel.getCampaignFlow().setuDate(appUtils.getCurrentTimeStamp());
         }
         campaignDBModel.setuDate(appUtils.getCurrentTimeStamp());
+
         return campaignDBModel;
     }
 
