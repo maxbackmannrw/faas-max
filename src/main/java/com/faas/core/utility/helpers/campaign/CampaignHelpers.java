@@ -425,23 +425,27 @@ public class CampaignHelpers {
 
     public CampaignDBModel updateCampaignManagerInquiryStateHelper(CampaignDBModel campaignDBModel, String inquiryState) {
 
-        if (campaignDBModel.getCampaignCategory().equalsIgnoreCase(AppConstant.INQUIRY_CAMPAIGN)){
+        if (campaignDBModel.getCampaignState().equalsIgnoreCase(AppConstant.ACTIVE_CAMPAIGN)){
             campaignDBModel.getCampaignInquiry().setInquiryState(inquiryState);
+            campaignDBModel.getCampaignInquiry().setuDate(appUtils.getCurrentTimeStamp());
+        }else{
+            campaignDBModel.getCampaignInquiry().setInquiryState(AppConstant.PASSIVE_STATE);
             campaignDBModel.getCampaignInquiry().setuDate(appUtils.getCurrentTimeStamp());
         }
         campaignDBModel.setuDate(appUtils.getCurrentTimeStamp());
-
         return campaignDBModel;
     }
 
     public CampaignDBModel updateCampaignManagerFlowStateHelper(CampaignDBModel campaignDBModel, String flowState) {
 
-        if (campaignDBModel.getCampaignCategory().equalsIgnoreCase(AppConstant.AUTOMATIC_CAMPAIGN)){
+        if (campaignDBModel.getCampaignState().equalsIgnoreCase(AppConstant.ACTIVE_CAMPAIGN)){
             campaignDBModel.getCampaignFlow().setFlowState(flowState);
+            campaignDBModel.getCampaignFlow().setuDate(appUtils.getCurrentTimeStamp());
+        }else {
+            campaignDBModel.getCampaignFlow().setFlowState(AppConstant.PASSIVE_STATE);
             campaignDBModel.getCampaignFlow().setuDate(appUtils.getCurrentTimeStamp());
         }
         campaignDBModel.setuDate(appUtils.getCurrentTimeStamp());
-
         return campaignDBModel;
     }
 
