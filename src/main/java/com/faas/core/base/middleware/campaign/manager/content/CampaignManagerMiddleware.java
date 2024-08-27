@@ -121,6 +121,48 @@ public class CampaignManagerMiddleware {
         return response;
     }
 
+    public CampaignManagerWSModel updateCampaignManagerInquiryState(long userId, String campaignId, String inquiryState) {
+
+        CampaignManagerWSModel response = new CampaignManagerWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+        List<CampaignManagerWSDTO> campaignManagerWSDTOS = new ArrayList<>();
+
+        CampaignManagerWSDTO campaignManagerWSDTO = campaignManagerFramework.updateCampaignManagerInquiryStateService(userId,campaignId,inquiryState);
+        if (campaignManagerWSDTO != null){
+            campaignManagerWSDTOS.add(campaignManagerWSDTO);
+        }
+
+        response.setCampaignManagers(campaignManagerWSDTOS);
+        general.setOperation("updateCampaignManagerInquiryState");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public CampaignManagerWSModel updateCampaignManagerFlowState(long userId, String campaignId, String flowState) {
+
+        CampaignManagerWSModel response = new CampaignManagerWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+        List<CampaignManagerWSDTO> campaignManagerWSDTOS = new ArrayList<>();
+
+        CampaignManagerWSDTO campaignManagerWSDTO = campaignManagerFramework.updateCampaignManagerFlowStateService(userId,campaignId,flowState);
+        if (campaignManagerWSDTO != null){
+            campaignManagerWSDTOS.add(campaignManagerWSDTO);
+        }
+
+        response.setCampaignManagers(campaignManagerWSDTOS);
+        general.setOperation("updateCampaignManagerFlowState");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
     public CampaignManagerDetailsWSModel getCampaignManagerDetails(long userId, String campaignId) {
 
         CampaignManagerDetailsWSModel response = new CampaignManagerDetailsWSModel();

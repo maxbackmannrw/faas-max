@@ -83,6 +83,32 @@ public class CampaignManagerController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+    @RequestMapping(value = BaseRoute.UPDATE_CAMPAIGN_MANAGER_INQUIRY_STATE, method = RequestMethod.POST)
+    public ResponseEntity<?> updateCampaignManagerInquiryState(@RequestParam long userId,
+                                                               @RequestParam String campaignId,
+                                                               @RequestParam String inquiryState) {
+
+        CampaignManagerWSModel response = campaignManagerMiddleware.updateCampaignManagerInquiryState(userId,campaignId,inquiryState);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+    @RequestMapping(value = BaseRoute.UPDATE_CAMPAIGN_MANAGER_FLOW_STATE, method = RequestMethod.POST)
+    public ResponseEntity<?> updateCampaignManagerFlowState(@RequestParam long userId,
+                                                            @RequestParam String campaignId,
+                                                            @RequestParam String flowState) {
+
+        CampaignManagerWSModel response = campaignManagerMiddleware.updateCampaignManagerFlowState(userId,campaignId,flowState);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
     @RequestMapping(value = BaseRoute.GET_CAMPAIGN_MANAGER_DETAILS, method = RequestMethod.POST)
     public ResponseEntity<?> getCampaignManagerDetails(@RequestParam long userId,
                                                        @RequestParam String campaignId) {

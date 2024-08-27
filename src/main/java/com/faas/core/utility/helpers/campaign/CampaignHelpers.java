@@ -423,5 +423,27 @@ public class CampaignHelpers {
         return campaignDBModel;
     }
 
+    public CampaignDBModel updateCampaignManagerInquiryStateHelper(CampaignDBModel campaignDBModel, String inquiryState) {
+
+        if (campaignDBModel.getCampaignCategory().equalsIgnoreCase(AppConstant.INQUIRY_CAMPAIGN)){
+            campaignDBModel.getCampaignInquiry().setInquiryState(inquiryState);
+            campaignDBModel.getCampaignInquiry().setuDate(appUtils.getCurrentTimeStamp());
+        }
+        campaignDBModel.setuDate(appUtils.getCurrentTimeStamp());
+
+        return campaignDBModel;
+    }
+
+    public CampaignDBModel updateCampaignManagerFlowStateHelper(CampaignDBModel campaignDBModel, String flowState) {
+
+        if (campaignDBModel.getCampaignCategory().equalsIgnoreCase(AppConstant.AUTOMATIC_CAMPAIGN)){
+            campaignDBModel.getCampaignFlow().setFlowState(flowState);
+            campaignDBModel.getCampaignFlow().setuDate(appUtils.getCurrentTimeStamp());
+        }
+        campaignDBModel.setuDate(appUtils.getCurrentTimeStamp());
+
+        return campaignDBModel;
+    }
+
 
 }

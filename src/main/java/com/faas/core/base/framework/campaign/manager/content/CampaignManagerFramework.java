@@ -74,6 +74,30 @@ public class CampaignManagerFramework {
         return null;
     }
 
+    public CampaignManagerWSDTO updateCampaignManagerInquiryStateService(long userId, String campaignId, String inquiryState) {
+
+        Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
+        if(campaignDBModel.isPresent()) {
+            CampaignDBModel updatedCampaign  = campaignHelpers.updateCampaignManagerInquiryStateHelper(campaignDBModel.get(),inquiryState);
+            if (updatedCampaign != null){
+                return campaignHelpers.getCampaignManagerWSDTO(campaignRepository.save(updatedCampaign));
+            }
+        }
+        return null;
+    }
+
+    public CampaignManagerWSDTO updateCampaignManagerFlowStateService(long userId, String campaignId, String flowState) {
+
+        Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
+        if(campaignDBModel.isPresent()) {
+            CampaignDBModel updatedCampaign  = campaignHelpers.updateCampaignManagerFlowStateHelper(campaignDBModel.get(),flowState);
+            if (updatedCampaign != null){
+                return campaignHelpers.getCampaignManagerWSDTO(campaignRepository.save(updatedCampaign));
+            }
+        }
+        return null;
+    }
+
     public CampaignManagerDetailsWSDTO getCampaignManagerDetailsService(long userId, String campaignId) {
 
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
