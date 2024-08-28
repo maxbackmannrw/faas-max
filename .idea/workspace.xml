@@ -7,9 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/campaign/details/agent/CampaignAgentFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/campaign/details/agent/CampaignAgentFramework.java" afterDir="false" />
-    </list>
+    <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -1297,15 +1295,7 @@
       <workItem from="1724779657544" duration="152000" />
       <workItem from="1724779867616" duration="716000" />
       <workItem from="1724796046836" duration="400000" />
-      <workItem from="1724832977253" duration="4053000" />
-    </task>
-    <task id="LOCAL-00947" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1720725071072</created>
-      <option name="number" value="00947" />
-      <option name="presentableId" value="LOCAL-00947" />
-      <option name="project" value="LOCAL" />
-      <updated>1720725071072</updated>
+      <workItem from="1724832977253" duration="4497000" />
     </task>
     <task id="LOCAL-00948" summary="almost finish">
       <option name="closed" value="true" />
@@ -1691,7 +1681,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724849346276</updated>
     </task>
-    <option name="localTasksCounter" value="996" />
+    <task id="LOCAL-00996" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1724849730814</created>
+      <option name="number" value="00996" />
+      <option name="presentableId" value="LOCAL-00996" />
+      <option name="project" value="LOCAL" />
+      <updated>1724849730814</updated>
+    </task>
+    <option name="localTasksCounter" value="997" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

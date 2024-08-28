@@ -271,7 +271,6 @@ public class CampaignHelpers {
             if (agentDBModel.isPresent()){
 
                 agentDBModel.get().setPassword("");
-
                 CampaignAgentWSDTO campaignAgentWSDTO = new CampaignAgentWSDTO();
                 campaignAgentWSDTO.setAgentUser(agentDBModel.get());
                 campaignAgentWSDTO.setCampaignAgent(campaignAgentDBModel);
