@@ -267,10 +267,16 @@ public class CampaignHelpers {
         List<CampaignAgentWSDTO> campaignAgentWSDTOS = new ArrayList<>();
         List<CampaignAgentDBModel> campaignAgentDBModels = campaignAgentRepository.findByCampaignId(campaignId);
         for (CampaignAgentDBModel campaignAgentDBModel : campaignAgentDBModels) {
-            Optional<UserDBModel> userDBModel = userRepository.findById(campaignAgentDBModel.getAgentId());
-            if (userDBModel.isPresent()){
-                userDBModel.get().setPassword("");
-                campaignAgentWSDTOS.add(new CampaignAgentWSDTO(userDBModel.get()));
+            Optional<UserDBModel> agentDBModel = userRepository.findById(campaignAgentDBModel.getAgentId());
+            if (agentDBModel.isPresent()){
+
+                agentDBModel.get().setPassword("");
+
+                CampaignAgentWSDTO campaignAgentWSDTO = new CampaignAgentWSDTO();
+                campaignAgentWSDTO.setAgentUser(agentDBModel.get());
+                campaignAgentWSDTO.setCampaignAgent(campaignAgentDBModel);
+
+                campaignAgentWSDTOS.add(campaignAgentWSDTO);
             }
         }
         return campaignAgentWSDTOS;
