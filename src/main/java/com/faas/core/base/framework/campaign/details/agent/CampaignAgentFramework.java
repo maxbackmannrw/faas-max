@@ -9,6 +9,7 @@ import com.faas.core.base.repo.campaign.details.agent.CampaignAgentRepository;
 import com.faas.core.base.repo.user.content.UserRepository;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.AppUtils;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -135,7 +136,9 @@ public class CampaignAgentFramework {
         List<CampaignAgentWSDTO> campaignAgentWSDTOS = new ArrayList<>();
         for (UserDBModel agentDBModel : agentDBModels) {
             if (campaignAgentRepository.findByCampaignIdAndAgentId(campaignId, agentDBModel.getId()).isEmpty()) {
-                campaignAgentWSDTOS.add(new CampaignAgentWSDTO(agentDBModel));
+                CampaignAgentWSDTO campaignAgentWSDTO = new CampaignAgentWSDTO();
+                campaignAgentWSDTO.setAgentUser(agentDBModel);
+                campaignAgentWSDTOS.add(campaignAgentWSDTO);
             }
         }
         return campaignAgentWSDTOS;
