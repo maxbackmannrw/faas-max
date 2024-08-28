@@ -32,13 +32,17 @@ public class CampaignAgentFramework {
     @Autowired
     AppUtils appUtils;
 
-
     public CampaignAgentWSDTO fillCampaignAgentWSDTO(CampaignAgentDBModel campaignAgentDBModel) {
 
         Optional<UserDBModel> agentDBModel = userRepository.findById(campaignAgentDBModel.getAgentId());
         if (agentDBModel.isPresent()) {
+
             agentDBModel.get().setPassword("");
-            return new CampaignAgentWSDTO(agentDBModel.get());
+            CampaignAgentWSDTO campaignAgentWSDTO = new CampaignAgentWSDTO();
+            campaignAgentWSDTO.setAgentUser(agentDBModel.get());
+            campaignAgentWSDTO.setCampaignAgent(campaignAgentDBModel);
+
+            return campaignAgentWSDTO;
         }
         return null;
     }
@@ -56,7 +60,6 @@ public class CampaignAgentFramework {
         return campaignAgentWSDTOS;
     }
 
-
     public CampaignAgentWSDTO getCampaignAgentService(String campaignId,long agentId) {
 
         List<CampaignAgentDBModel> campaignAgentDBModels = campaignAgentRepository.findByCampaignIdAndAgentId(campaignId,agentId);
@@ -66,8 +69,7 @@ public class CampaignAgentFramework {
         return null;
     }
 
-
-    public CampaignAgentWSDTO assignCampaignAgentService(String campaignId, long agentId) {
+    public CampaignAgentWSDTO assignCampaignAgentService(long userId, String campaignId, long agentId) {
 
         if (campaignAgentRepository.findByCampaignIdAndAgentId(campaignId, agentId).isEmpty()
                 && campaignRepository.findById(campaignId).isPresent() && userRepository.findById(agentId).isPresent()) {
@@ -75,6 +77,7 @@ public class CampaignAgentFramework {
             CampaignAgentDBModel campaignAgentDBModel = new CampaignAgentDBModel();
             campaignAgentDBModel.setCampaignId(campaignId);
             campaignAgentDBModel.setAgentId(agentId);
+            campaignAgentDBModel.setAgentState(AppConstant.ACTIVE_STATE);
             campaignAgentDBModel.setuDate(appUtils.getCurrentTimeStamp());
             campaignAgentDBModel.setcDate(appUtils.getCurrentTimeStamp());
             campaignAgentDBModel.setStatus(1);
@@ -84,6 +87,23 @@ public class CampaignAgentFramework {
         return null;
     }
 
+    public CampaignAgentWSDTO updateCampaignAgentStateService(long userId, String campaignId,long agentId, String agentState) {
+
+        if (campaignAgentRepository.findByCampaignIdAndAgentId(campaignId, agentId).isEmpty()
+                && campaignRepository.findById(campaignId).isPresent() && userRepository.findById(agentId).isPresent()) {
+
+            CampaignAgentDBModel campaignAgentDBModel = new CampaignAgentDBModel();
+            campaignAgentDBModel.setCampaignId(campaignId);
+            campaignAgentDBModel.setAgentId(agentId);
+            campaignAgentDBModel.setAgentState(AppConstant.ACTIVE_STATE);
+            campaignAgentDBModel.setuDate(appUtils.getCurrentTimeStamp());
+            campaignAgentDBModel.setcDate(appUtils.getCurrentTimeStamp());
+            campaignAgentDBModel.setStatus(1);
+
+            return fillCampaignAgentWSDTO(campaignAgentRepository.save(campaignAgentDBModel));
+        }
+        return null;
+    }
 
     public CampaignAgentWSDTO removeCampaignAgentService(String campaignId, long agentId) {
 
@@ -94,7 +114,6 @@ public class CampaignAgentFramework {
         }
         return null;
     }
-
 
     public List<CampaignAgentWSDTO> getAssignableAgentsService(String campaignId) {
 

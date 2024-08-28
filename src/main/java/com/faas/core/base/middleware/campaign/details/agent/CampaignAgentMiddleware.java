@@ -1,14 +1,10 @@
 package com.faas.core.base.middleware.campaign.details.agent;
 
 import com.faas.core.base.framework.campaign.details.agent.CampaignAgentFramework;
-import com.faas.core.base.framework.user.content.UserFramework;
-import com.faas.core.base.model.db.campaign.details.agent.CampaignAgentDBModel;
 import com.faas.core.base.model.ws.campaign.details.agent.CampaignAgentWSModel;
 import com.faas.core.base.model.ws.campaign.details.agent.dto.CampaignAgentWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.repo.campaign.details.agent.CampaignAgentRepository;
 import com.faas.core.utility.config.AppConstant;
-import com.faas.core.utility.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -42,7 +38,6 @@ public class CampaignAgentMiddleware {
         return response;
     }
 
-
     public CampaignAgentWSModel getCampaignAgent(long userId,String campaignId,long agentId) {
 
         CampaignAgentWSModel response = new CampaignAgentWSModel();
@@ -64,14 +59,13 @@ public class CampaignAgentMiddleware {
         return response;
     }
 
-
     public CampaignAgentWSModel assignCampaignAgent(long userId, String campaignId,long agentId) {
 
         CampaignAgentWSModel response = new CampaignAgentWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignAgentWSDTO> campaignAgentWSDTOS = new ArrayList<>();
 
-        CampaignAgentWSDTO campaignAgentWSDTO = campaignAgentFramework.assignCampaignAgentService(campaignId, agentId);
+        CampaignAgentWSDTO campaignAgentWSDTO = campaignAgentFramework.assignCampaignAgentService(userId ,campaignId, agentId);
         if (campaignAgentWSDTO != null) {
             campaignAgentWSDTOS.add(campaignAgentWSDTO);
         }
@@ -86,6 +80,26 @@ public class CampaignAgentMiddleware {
         return response;
     }
 
+    public CampaignAgentWSModel updateCampaignAgentState(long userId, String campaignId,long agentId, String agentState) {
+
+        CampaignAgentWSModel response = new CampaignAgentWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+        List<CampaignAgentWSDTO> campaignAgentWSDTOS = new ArrayList<>();
+
+        CampaignAgentWSDTO campaignAgentWSDTO = campaignAgentFramework.updateCampaignAgentStateService(userId, campaignId, agentId, agentState);
+        if (campaignAgentWSDTO != null) {
+            campaignAgentWSDTOS.add(campaignAgentWSDTO);
+        }
+
+        response.setCampaignAgents(campaignAgentWSDTOS);
+        general.setOperation("assignCampaignAgent");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
 
     public CampaignAgentWSModel removeCampaignAgent(long userId, String campaignId, long agentId) {
 
@@ -107,7 +121,6 @@ public class CampaignAgentMiddleware {
 
         return response;
     }
-
 
     public CampaignAgentWSModel getAssignableAgents(long userId,String campaignId) {
 

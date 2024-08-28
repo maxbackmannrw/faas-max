@@ -34,7 +34,6 @@ public class CampaignAgentController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = BaseRoute.GET_CAMPAIGN_AGENT, method = RequestMethod.POST)
     public ResponseEntity<?> getCampaignAgent(@RequestParam long userId,
                                               @RequestParam String campaignId,
@@ -47,7 +46,6 @@ public class CampaignAgentController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.ASSIGN_CAMPAIGN_AGENT, method = RequestMethod.POST)
     public ResponseEntity<?> assignCampaignAgent(@RequestParam long userId,
@@ -62,6 +60,19 @@ public class CampaignAgentController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+    @RequestMapping(value = BaseRoute.UPDATE_CAMPAIGN_AGENT_STATE, method = RequestMethod.POST)
+    public ResponseEntity<?> updateCampaignAgentState(@RequestParam long userId,
+                                                      @RequestParam String campaignId,
+                                                      @RequestParam long agentId,
+                                                      @RequestParam String agentState) {
+
+        CampaignAgentWSModel response = campaignAgentMiddleware.updateCampaignAgentState(userId, campaignId, agentId, agentState);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
 
     @RequestMapping(value = BaseRoute.REMOVE_CAMPAIGN_AGENT, method = RequestMethod.POST)
     public ResponseEntity<?> removeCampaignAgent(@RequestParam long userId,
@@ -75,7 +86,6 @@ public class CampaignAgentController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = BaseRoute.GET_ASSIGNABLE_AGENTS, method = RequestMethod.POST)
     public ResponseEntity<?> getAssignableAgents(@RequestParam long userId,

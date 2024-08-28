@@ -9,7 +9,12 @@
   <component name="ChangeListManager">
     <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utility/helpers/campaign/CampaignHelpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utility/helpers/campaign/CampaignHelpers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/campaign/details/agent/CampaignAgentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/endpoint/controller/campaign/details/agent/CampaignAgentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/campaign/details/agent/CampaignAgentFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/framework/campaign/details/agent/CampaignAgentFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/campaign/details/agent/CampaignAgentMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/middleware/campaign/details/agent/CampaignAgentMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/campaign/details/agent/CampaignAgentDBModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/db/campaign/details/agent/CampaignAgentDBModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/details/agent/dto/CampaignAgentWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/base/model/ws/campaign/details/agent/dto/CampaignAgentWSDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/utility/config/BaseRoute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/utility/config/BaseRoute.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -1293,15 +1298,12 @@
       <workItem from="1724575694676" duration="25000" />
       <workItem from="1724575733453" duration="2015000" />
       <workItem from="1724590184110" duration="3243000" />
-      <workItem from="1724666856937" duration="14613000" />
-    </task>
-    <task id="LOCAL-00944" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1720361853704</created>
-      <option name="number" value="00944" />
-      <option name="presentableId" value="LOCAL-00944" />
-      <option name="project" value="LOCAL" />
-      <updated>1720361853705</updated>
+      <workItem from="1724666856937" duration="14869000" />
+      <workItem from="1724779359958" duration="271000" />
+      <workItem from="1724779657544" duration="152000" />
+      <workItem from="1724779867616" duration="716000" />
+      <workItem from="1724796046836" duration="400000" />
+      <workItem from="1724832977253" duration="3187000" />
     </task>
     <task id="LOCAL-00945" summary="almost finish">
       <option name="closed" value="true" />
@@ -1687,7 +1689,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724752599573</updated>
     </task>
-    <option name="localTasksCounter" value="993" />
+    <task id="LOCAL-00993" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1724753040415</created>
+      <option name="number" value="00993" />
+      <option name="presentableId" value="LOCAL-00993" />
+      <option name="project" value="LOCAL" />
+      <updated>1724753040415</updated>
+    </task>
+    <option name="localTasksCounter" value="994" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

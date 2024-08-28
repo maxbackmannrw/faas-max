@@ -17,6 +17,9 @@ public class CampaignAgentDBModel {
     @Column(name = "agent_id")
     private long agentId;
 
+    @Column(name = "agent_state")
+    private String agentState;
+
     @Column(name = "u_date")
     private long uDate;
 
@@ -30,10 +33,11 @@ public class CampaignAgentDBModel {
     public CampaignAgentDBModel() {
     }
 
-    public CampaignAgentDBModel(long id, String campaignId, long agentId, long uDate, long cDate, int status) {
+    public CampaignAgentDBModel(long id, String campaignId, long agentId, String agentState, long uDate, long cDate, int status) {
         this.id = id;
         this.campaignId = campaignId;
         this.agentId = agentId;
+        this.agentState = agentState;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
@@ -61,6 +65,14 @@ public class CampaignAgentDBModel {
 
     public void setAgentId(long agentId) {
         this.agentId = agentId;
+    }
+
+    public String getAgentState() {
+        return agentState;
+    }
+
+    public void setAgentState(String agentState) {
+        this.agentState = agentState;
     }
 
     public long getuDate() {

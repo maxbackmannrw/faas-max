@@ -1,23 +1,34 @@
 package com.faas.core.base.model.ws.campaign.details.agent.dto;
 
+import com.faas.core.base.model.db.campaign.details.agent.CampaignAgentDBModel;
 import com.faas.core.base.model.db.user.content.UserDBModel;
 
 public class CampaignAgentWSDTO {
 
-    private UserDBModel campaignAgent;
+    private UserDBModel agentUser;
+    private CampaignAgentDBModel campaignAgent;
 
     public CampaignAgentWSDTO() {
     }
 
-    public CampaignAgentWSDTO(UserDBModel campaignAgent) {
+    public CampaignAgentWSDTO(UserDBModel agentUser, CampaignAgentDBModel campaignAgent) {
+        this.agentUser = agentUser;
         this.campaignAgent = campaignAgent;
     }
 
-    public UserDBModel getCampaignAgent() {
+    public UserDBModel getAgentUser() {
+        return agentUser;
+    }
+
+    public void setAgentUser(UserDBModel agentUser) {
+        this.agentUser = agentUser;
+    }
+
+    public CampaignAgentDBModel getCampaignAgent() {
         return campaignAgent;
     }
 
-    public void setCampaignAgent(UserDBModel campaignAgent) {
+    public void setCampaignAgent(CampaignAgentDBModel campaignAgent) {
         this.campaignAgent = campaignAgent;
     }
 }
