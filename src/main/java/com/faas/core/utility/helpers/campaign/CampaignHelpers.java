@@ -34,7 +34,7 @@ import com.faas.core.base.model.ws.campaign.details.trigger.details.dto.Campaign
 import com.faas.core.base.model.ws.campaign.details.trigger.details.dto.CampaignWappMessageTriggerWSDTO;
 import com.faas.core.base.model.ws.campaign.manager.content.dto.CampaignSummaryWSDTO;
 import com.faas.core.base.model.ws.campaign.manager.content.dto.CampaignManagerWSDTO;
-import com.faas.core.base.model.ws.campaign.manager.details.dto.CampaignManagerDetailsWSDTO;
+import com.faas.core.base.model.ws.campaign.manager.content.dto.CampaignManagerDetailsWSDTO;
 import com.faas.core.base.repo.campaign.details.agent.CampaignAgentRepository;
 import com.faas.core.base.repo.campaign.details.channel.CampaignChannelRepository;
 import com.faas.core.base.repo.campaign.details.temp.EmailTempRepository;
@@ -45,7 +45,6 @@ import com.faas.core.base.repo.campaign.details.remote.CampaignRemoteRepository;
 import com.faas.core.base.repo.campaign.details.scenario.CampaignScenarioRepository;
 import com.faas.core.base.repo.campaign.details.trigger.*;
 import com.faas.core.base.repo.operation.content.OperationRepository;
-import com.faas.core.base.repo.scenario.content.ScenarioRepository;
 import com.faas.core.base.repo.user.content.UserRepository;
 import com.faas.core.base.repo.utils.UrlRepository;
 import com.faas.core.utility.config.AppConstant;

@@ -2,8 +2,8 @@ package com.faas.core.base.middleware.campaign.manager.content;
 
 import com.faas.core.base.framework.campaign.manager.content.CampaignManagerFramework;
 import com.faas.core.base.model.ws.campaign.manager.content.dto.CampaignManagerWSDTO;
-import com.faas.core.base.model.ws.campaign.manager.details.CampaignManagerDetailsWSModel;
-import com.faas.core.base.model.ws.campaign.manager.details.dto.CampaignManagerDetailsWSDTO;
+import com.faas.core.base.model.ws.campaign.manager.content.CampaignManagerDetailsWSModel;
+import com.faas.core.base.model.ws.campaign.manager.content.dto.CampaignManagerDetailsWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.model.ws.campaign.manager.content.CampaignManagerWSModel;
 import com.faas.core.utility.config.AppConstant;
