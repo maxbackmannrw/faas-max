@@ -1,8 +1,10 @@
 package com.faas.core.base.middleware.campaign.manager.client;
 
 import com.faas.core.base.framework.campaign.manager.client.CampaignManagerClientFramework;
+import com.faas.core.base.model.ws.campaign.manager.client.CampaignClientRequest;
 import com.faas.core.base.model.ws.campaign.manager.client.CampaignClientWSModel;
 import com.faas.core.base.model.ws.campaign.manager.client.dto.CampaignClientWSDTO;
+import com.faas.core.base.model.ws.campaign.manager.operation.CampaignOperationRequest;
 import com.faas.core.base.model.ws.client.content.ClientWSModel;
 import com.faas.core.base.model.ws.client.content.dto.ClientWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
@@ -40,6 +42,25 @@ public class CampaignManagerClientMiddleware {
         return response;
     }
 
+    public ClientWSModel getSelectedCampaignClients(CampaignClientRequest clientRequest) {
+
+        ClientWSModel response = new ClientWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        List<ClientWSDTO> clientWSDTOS = campaignManagerClientFramework.getSelectedCampaignClients(clientRequest);
+        if (clientWSDTOS != null){
+            response.setClients(clientWSDTOS);
+        }
+
+        general.setOperation("getSelectedCampaignClients");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
     public ClientWSModel getCampaignClient(long userId,long clientId,String campaignId) {
 
         ClientWSModel response = new ClientWSModel();
@@ -60,7 +81,6 @@ public class CampaignManagerClientMiddleware {
 
         return response;
     }
-
 
 
 }

@@ -317,6 +317,7 @@ public class BaseRoute {
     public static final String GET_ASSIGNABLE_AGENTS = "getassignableagents";
 
     public static final String SEARCH_CAMPAIGN_CLIENTS = "searchcampaignclients";
+    public static final String GET_SELECTED_CAMPAIGN_CLIENTS = "getselectedcampaignclients";
     public static final String GET_CAMPAIGN_CLIENT = "getcampaignclient";
 
 

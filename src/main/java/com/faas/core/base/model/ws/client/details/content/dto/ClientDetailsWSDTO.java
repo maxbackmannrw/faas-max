@@ -3,7 +3,6 @@ package com.faas.core.base.model.ws.client.details.content.dto;
 import com.faas.core.base.model.db.client.content.ClientDBModel;
 import com.faas.core.base.model.db.client.details.ClientDetailsDBModel;
 
-
 public class ClientDetailsWSDTO {
 
     private ClientDBModel client;

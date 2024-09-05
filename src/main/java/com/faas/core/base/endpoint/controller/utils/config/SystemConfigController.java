@@ -100,7 +100,6 @@ public class SystemConfigController {
     }
 
 
-
     @RequestMapping(value = BaseRoute.GET_ALL_CITIES, method = RequestMethod.POST)
     public ResponseEntity<?> getAllCities(@RequestParam long userId) {
 
