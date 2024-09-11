@@ -11,11 +11,14 @@ import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.client.details.ClientDetailsRepository;
+import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.user.content.UserRepository;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.AppUtils;
 import com.faas.core.utility.helpers.operation.OperationHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -27,6 +30,9 @@ public class CampaignManagerOperationFramework {
 
     @Autowired
     OperationHelpers operationHelpers;
+
+    @Autowired
+    OperationRepository operationRepository;
 
     @Autowired
     ClientRepository clientRepository;
@@ -49,8 +55,12 @@ public class CampaignManagerOperationFramework {
         return null;
     }
 
-    public CampaignOperationWSDTO getCampaignOperationsService(long userId, String campaignId, int reqPage, int reqSize) {
+    public CampaignOperationWSDTO getCampaignOperationsService(long userId, String campaignId,String operationState, int reqPage, int reqSize) {
 
+        Page<OperationDBModel> operationDBModelPage = operationRepository.findAllByCampaignIdAndOperationState(campaignId,operationState, PageRequest.of(reqPage,reqSize));
+        if (operationDBModelPage != null){
+            return operationHelpers.mapCampaignOperationWSDTO(operationDBModelPage);
+        }
         return null;
     }
 

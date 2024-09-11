@@ -452,7 +452,7 @@ public class ChannelHelpers {
         operationEmailDBModel.setClientEmail(clientEmailDAO);
         operationEmailDBModel.setEmailMessage(createOperationEmailDAO(emailChannelDBModel,emailTempDBModel));
         operationEmailDBModel.setEmailSentId(AppConstant.NONE);
-        operationEmailDBModel.setEmailState(AppConstant.NEW_STATE);
+        operationEmailDBModel.setEmailState(AppConstant.READY_STATE);
         operationEmailDBModel.setuDate(appUtils.getCurrentTimeStamp());
         operationEmailDBModel.setcDate(appUtils.getCurrentTimeStamp());
         operationEmailDBModel.setStatus(1);

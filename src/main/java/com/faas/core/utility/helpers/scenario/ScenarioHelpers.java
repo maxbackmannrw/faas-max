@@ -43,7 +43,7 @@ public class ScenarioHelpers {
         }
         operationScenarioDAO.setScenarioDatas(operationScenarioDatas);
         operationScenarioDAO.setScenarioResults(new ArrayList<>());
-        operationScenarioDAO.setScenarioState(AppConstant.NEW_STATE);
+        operationScenarioDAO.setScenarioState(AppConstant.READY_STATE);
         operationScenarioDAO.setuDate(appUtils.getCurrentTimeStamp());
         operationScenarioDAO.setcDate(appUtils.getCurrentTimeStamp());
         operationScenarioDAO.setStatus(1);

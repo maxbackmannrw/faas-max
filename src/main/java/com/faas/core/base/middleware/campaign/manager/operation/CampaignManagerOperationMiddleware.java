@@ -41,12 +41,12 @@ public class CampaignManagerOperationMiddleware {
         return response;
     }
 
-    public CampaignOperationWSModel getCampaignOperations(long userId, String campaignId, int reqPage, int reqSize) {
+    public CampaignOperationWSModel getCampaignOperations(long userId, String campaignId,String operationState, int reqPage, int reqSize) {
 
         CampaignOperationWSModel response = new CampaignOperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        CampaignOperationWSDTO campaignOperationWSDTO = campaignManagerOperationFramework.getCampaignOperationsService(userId,campaignId,reqPage,reqSize);
+        CampaignOperationWSDTO campaignOperationWSDTO = campaignManagerOperationFramework.getCampaignOperationsService(userId,campaignId,operationState ,reqPage,reqSize);
         if (campaignOperationWSDTO != null){
             response.setCampaignOperation(campaignOperationWSDTO);
         }

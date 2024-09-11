@@ -61,7 +61,6 @@ public class AppConstant {
 
 
     public static final String NO_STATE = "NO_STATE";
-    public static final String NEW_STATE = "NEW_STATE";
     public static final String READY_STATE = "READY_STATE";
     public static final String ACTIVE_STATE = "ACTIVE_STATE";
     public static final String PASSIVE_STATE = "PASSIVE_STATE";

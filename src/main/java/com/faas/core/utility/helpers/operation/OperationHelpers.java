@@ -26,6 +26,9 @@ import com.faas.core.base.model.db.operation.details.channel.OperationSipCallDBM
 import com.faas.core.base.model.db.operation.details.channel.OperationWappCallDBModel;
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.user.content.UserDBModel;
+import com.faas.core.base.model.ws.campaign.manager.client.dto.CampaignClientWSDTO;
+import com.faas.core.base.model.ws.campaign.manager.operation.dto.CampaignOperationWSDTO;
+import com.faas.core.base.model.ws.client.content.dto.ClientWSDTO;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
 import com.faas.core.base.model.ws.operation.content.dto.OperationListWSDTO;
 import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
@@ -206,17 +209,21 @@ public class OperationHelpers {
         return operationWSDTO;
     }
 
-    public OperationListWSDTO getOperationListWSDTO(){
+    public CampaignOperationWSDTO mapCampaignOperationWSDTO(Page<OperationDBModel> operationModelPage){
 
-        OperationListWSDTO operationListWSDTO = new OperationListWSDTO();
-        List<OperationWSDTO> operationWSDTOS = new ArrayList<>();
+        CampaignOperationWSDTO campaignOperationWSDTO = new CampaignOperationWSDTO();
+        List<OperationWSDTO>operationWSDTOS = new ArrayList<>();
+        List<OperationDBModel> operationDBModels = operationModelPage.getContent();
+        for (OperationDBModel operationDBModel : operationDBModels) {
+            operationWSDTOS.add(getOperationWSDTO(operationDBModel));
+        }
+        campaignOperationWSDTO.setOperations(operationWSDTOS);
+        campaignOperationWSDTO.setPagination(mapOperationPaginationWSDTO(operationModelPage));
 
-        return operationListWSDTO;
+        return campaignOperationWSDTO;
     }
 
-
-
-    public void removeOperationHelper(){
+    public void removeCampaignOperationHelper(){
 
     }
 
@@ -236,16 +243,6 @@ public class OperationHelpers {
 
         return operationSummary;
     }
-
-
-    public ApiOperationWSDTO startManualOperationHelper(){
-
-        return null;
-    }
-
-
-
-
 
 
     public ApiOperationValidateWSDTO operationValidateHelper(UserDBModel agentDBModel,OperationDBModel operationDBModel){
@@ -277,7 +274,7 @@ public class OperationHelpers {
             }
         }
         operationListWSDTO.setOperations(operationWSDTOS);
-        operationListWSDTO.setPagination(mapOperationPagination(operationModelPage));
+        operationListWSDTO.setPagination(mapOperationPaginationWSDTO(operationModelPage));
 
         return operationListWSDTO;
     }
@@ -417,7 +414,7 @@ public class OperationHelpers {
     }
 
 
-    public PaginationWSDTO mapOperationPagination(Page<OperationDBModel> operationModelPage){
+    public PaginationWSDTO mapOperationPaginationWSDTO(Page<OperationDBModel> operationModelPage){
 
         PaginationWSDTO operationPagination = new PaginationWSDTO();
         operationPagination.setPageSize(operationModelPage.getPageable().getPageSize());

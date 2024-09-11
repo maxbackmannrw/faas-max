@@ -91,7 +91,7 @@ public class ClientFramework {
             clientWSDTOS.add(fillClientWSDTO(clientDBModelPage.getContent().get(i)));
         }
         clientListWSDTO.setClients(clientWSDTOS);
-        clientListWSDTO.setPagination(clientHelpers.createClientPaginationWSDTO(clientDBModelPage));
+        clientListWSDTO.setPagination(clientHelpers.mapClientPaginationWSDTO(clientDBModelPage));
 
         return clientListWSDTO;
     }

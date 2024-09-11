@@ -44,10 +44,11 @@ public class CampaignManagerOperationController {
     @RequestMapping(value = BaseRoute.GET_CAMPAIGN_OPERATIONS, method = RequestMethod.POST)
     public ResponseEntity<?> getCampaignOperations(@RequestParam long userId,
                                                    @RequestParam String campaignId,
+                                                   @RequestParam String operationState,
                                                    @RequestParam int reqPage,
                                                    @RequestParam int reqSize) {
 
-        CampaignOperationWSModel response = campaignManagerOperationMiddleware.getCampaignOperations(userId,campaignId,reqPage,reqSize);
+        CampaignOperationWSModel response = campaignManagerOperationMiddleware.getCampaignOperations(userId,campaignId,operationState,reqPage,reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

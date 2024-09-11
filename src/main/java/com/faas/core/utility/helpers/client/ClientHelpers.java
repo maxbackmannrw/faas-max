@@ -179,13 +179,13 @@ public class ClientHelpers {
             clientWSDTOS.add(new ClientWSDTO(clientDBModel));
         }
         campaignClientWSDTO.setClients(clientWSDTOS);
-        campaignClientWSDTO.setPagination(createClientPaginationWSDTO(clientPageModels));
+        campaignClientWSDTO.setPagination(mapClientPaginationWSDTO(clientPageModels));
 
         return campaignClientWSDTO;
     }
 
 
-    public PaginationWSDTO createClientPaginationWSDTO(Page<ClientDBModel> clientPage){
+    public PaginationWSDTO mapClientPaginationWSDTO(Page<ClientDBModel> clientPage){
 
         PaginationWSDTO paginationWSDTO = new PaginationWSDTO();
         paginationWSDTO.setPageSize(clientPage.getPageable().getPageSize());
