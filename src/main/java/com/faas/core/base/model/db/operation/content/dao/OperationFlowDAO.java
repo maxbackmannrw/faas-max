@@ -4,9 +4,10 @@ import java.util.List;
 
 public class OperationFlowDAO {
 
-    private String id;
+    private String flowId;
     private String operationFlow;
     private List<OperationDataDAO> operationFlowDatas;
+    private String operationFlowState;
     private long uDate;
     private long cDate;
     private int status;
@@ -14,21 +15,22 @@ public class OperationFlowDAO {
     public OperationFlowDAO() {
     }
 
-    public OperationFlowDAO(String id, String operationFlow, List<OperationDataDAO> operationFlowDatas, long uDate, long cDate, int status) {
-        this.id = id;
+    public OperationFlowDAO(String flowId, String operationFlow, List<OperationDataDAO> operationFlowDatas, String operationFlowState, long uDate, long cDate, int status) {
+        this.flowId = flowId;
         this.operationFlow = operationFlow;
         this.operationFlowDatas = operationFlowDatas;
+        this.operationFlowState = operationFlowState;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
     }
 
-    public String getId() {
-        return id;
+    public String getFlowId() {
+        return flowId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setFlowId(String flowId) {
+        this.flowId = flowId;
     }
 
     public String getOperationFlow() {
@@ -45,6 +47,14 @@ public class OperationFlowDAO {
 
     public void setOperationFlowDatas(List<OperationDataDAO> operationFlowDatas) {
         this.operationFlowDatas = operationFlowDatas;
+    }
+
+    public String getOperationFlowState() {
+        return operationFlowState;
+    }
+
+    public void setOperationFlowState(String operationFlowState) {
+        this.operationFlowState = operationFlowState;
     }
 
     public long getuDate() {

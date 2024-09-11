@@ -34,28 +34,13 @@ public class BaseRoute {
     public static final String REMOVE_USER_ROLE = "removeuserrole";
 
 
-
-
-
     public static final String SEARCH_CAMPAIGN_OPERATIONS = "searchcampaignoperations";
     public static final String GET_CAMPAIGN_OPERATIONS = "getcampaignoperations";
     public static final String GET_CAMPAIGN_OPERATION = "getcampaignoperation";
+    public static final String CREATE_CAMPAIGN_OPERATIONS = "createcampaignoperations";
     public static final String CREATE_CAMPAIGN_OPERATION = "createcampaignoperation";
     public static final String UPDATE_CAMPAIGN_OPERATION = "updatecampaignoperation";
     public static final String REMOVE_CAMPAIGN_OPERATION = "removecampaignoperation";
-
-
-    public static final String GET_MAIN_MANAGER = "getmainmanager";
-    public static final String GET_MAIN_MANAGER_CONTENT = "getmainmanagercontent";
-    public static final String GET_MAIN_MANAGER_CAMPAIGNS = "getmainmanagercampaigns";
-    public static final String GET_MAIN_MANAGER_CAMPAIGN = "getmainmanagercampaign";
-    public static final String GET_MAIN_MANAGER_OPERATIONS = "getmainmanageroperations";
-    public static final String GET_MAIN_MANAGER_OPERATIONS_BY_STATE = "getmainmanageroperationsbystate";
-    public static final String GET_MAIN_MANAGER_OPERATION = "getmainmanageroperation";
-    public static final String REMOVE_MAIN_MANAGER_OPERATION = "removemainmanageroperation";
-
-
-
 
 
     public static final String GET_OPERATION_MANAGERS = "getoperationmanagers";

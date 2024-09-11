@@ -41,7 +41,6 @@ public class CampaignManagerOperationMiddleware {
         return response;
     }
 
-
     public CampaignOperationWSModel getCampaignOperations(long userId, String campaignId, int reqPage, int reqSize) {
 
         CampaignOperationWSModel response = new CampaignOperationWSModel();
@@ -61,14 +60,13 @@ public class CampaignManagerOperationMiddleware {
         return response;
     }
 
-
-    public OperationWSModel getCampaignOperation(long userId,long sessionId,String campaignId) {
+    public OperationWSModel getCampaignOperation(long userId,String operationId) {
 
         OperationWSModel response = new OperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<OperationWSDTO> operationWSDTOS = new ArrayList<>();
 
-        OperationWSDTO operationWSDTO = campaignManagerOperationFramework.getCampaignOperationService(userId,sessionId,campaignId);
+        OperationWSDTO operationWSDTO = campaignManagerOperationFramework.getCampaignOperationService(userId,operationId);
         if (operationWSDTO != null){
             operationWSDTOS.add(operationWSDTO);
         }
@@ -83,14 +81,33 @@ public class CampaignManagerOperationMiddleware {
         return response;
     }
 
-
-    public OperationWSModel createCampaignOperation(CampaignOperationRequest operationRequest) {
+    public OperationWSModel createCampaignOperations(CampaignOperationRequest operationRequest) {
 
         OperationWSModel response = new OperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<OperationWSDTO> operationWSDTOS = campaignManagerOperationFramework.createCampaignOperationService(operationRequest);
+        List<OperationWSDTO> operationWSDTOS = campaignManagerOperationFramework.createCampaignOperationsService(operationRequest);
         if (operationWSDTOS != null){
+            response.setOperations(operationWSDTOS);
+        }
+
+        general.setOperation("createCampaignOperations");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public OperationWSModel createCampaignOperation(long userId,long agentId,String campaignId,long clientId) {
+
+        OperationWSModel response = new OperationWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+        List<OperationWSDTO> operationWSDTOS = new ArrayList<>();
+
+        OperationWSDTO operationWSDTO = campaignManagerOperationFramework.createCampaignOperationService(userId,agentId,campaignId,clientId);
+        if (operationWSDTO != null){
             response.setOperations(operationWSDTOS);
         }
 
@@ -102,7 +119,6 @@ public class CampaignManagerOperationMiddleware {
 
         return response;
     }
-
 
     public OperationWSModel updateCampaignOperation(long userId,long sessionId,long agentId,String operationState) {
 

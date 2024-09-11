@@ -57,10 +57,20 @@ public class CampaignManagerOperationController {
 
     @RequestMapping(value = BaseRoute.GET_CAMPAIGN_OPERATION, method = RequestMethod.POST)
     public ResponseEntity<?> getCampaignOperation(@RequestParam long userId,
-                                                  @RequestParam long sessionId,
-                                                  @RequestParam String campaignId) {
+                                                  @RequestParam String operationId) {
 
-        OperationWSModel response = campaignManagerOperationMiddleware.getCampaignOperation(userId,sessionId,campaignId);
+        OperationWSModel response = campaignManagerOperationMiddleware.getCampaignOperation(userId,operationId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+    @RequestMapping(value = BaseRoute.CREATE_CAMPAIGN_OPERATIONS, method = RequestMethod.POST)
+    public ResponseEntity<?> createCampaignOperations(@RequestBody CampaignOperationRequest operationRequest) {
+
+        OperationWSModel response = campaignManagerOperationMiddleware.createCampaignOperations(operationRequest);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -69,9 +79,12 @@ public class CampaignManagerOperationController {
     }
 
     @RequestMapping(value = BaseRoute.CREATE_CAMPAIGN_OPERATION, method = RequestMethod.POST)
-    public ResponseEntity<?> createCampaignOperation(@RequestBody CampaignOperationRequest operationRequest) {
+    public ResponseEntity<?> createCampaignOperation(@RequestParam long userId,
+                                                     @RequestParam long agentId,
+                                                     @RequestParam String campaignId,
+                                                     @RequestParam long clientId) {
 
-        OperationWSModel response = campaignManagerOperationMiddleware.createCampaignOperation(operationRequest);
+        OperationWSModel response = campaignManagerOperationMiddleware.createCampaignOperation(userId,agentId,campaignId,clientId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

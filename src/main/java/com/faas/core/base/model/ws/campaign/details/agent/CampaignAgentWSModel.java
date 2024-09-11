@@ -10,7 +10,6 @@ public class CampaignAgentWSModel {
     private GeneralWSModel general;
     private List<CampaignAgentWSDTO> campaignAgents;
 
-
     public CampaignAgentWSModel() {
     }
 

@@ -3,18 +3,18 @@ package com.faas.core.base.model.ws.campaign.manager.operation.dto;
 public class CampaignOperationRequestDTO {
 
     private long userId;
+    private long agentId;
     private String campaignId;
     private long clientId;
-    private long agentId;
 
     public CampaignOperationRequestDTO() {
     }
 
-    public CampaignOperationRequestDTO(long userId, String campaignId, long clientId, long agentId) {
+    public CampaignOperationRequestDTO(long userId, long agentId, String campaignId, long clientId) {
         this.userId = userId;
+        this.agentId = agentId;
         this.campaignId = campaignId;
         this.clientId = clientId;
-        this.agentId = agentId;
     }
 
     public long getUserId() {
@@ -23,6 +23,14 @@ public class CampaignOperationRequestDTO {
 
     public void setUserId(long userId) {
         this.userId = userId;
+    }
+
+    public long getAgentId() {
+        return agentId;
+    }
+
+    public void setAgentId(long agentId) {
+        this.agentId = agentId;
     }
 
     public String getCampaignId() {
@@ -39,13 +47,5 @@ public class CampaignOperationRequestDTO {
 
     public void setClientId(long clientId) {
         this.clientId = clientId;
-    }
-
-    public long getAgentId() {
-        return agentId;
-    }
-
-    public void setAgentId(long agentId) {
-        this.agentId = agentId;
     }
 }

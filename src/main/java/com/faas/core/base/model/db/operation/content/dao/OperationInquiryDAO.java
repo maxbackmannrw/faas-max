@@ -4,9 +4,10 @@ import java.util.List;
 
 public class OperationInquiryDAO {
 
-    private String id;
+    private String inquiryId;
     private String operationInquiry;
     private List<OperationDataDAO> operationInquiryDatas;
+    private String operationInquiryState;
     private long uDate;
     private long cDate;
     private int status;
@@ -14,21 +15,22 @@ public class OperationInquiryDAO {
     public OperationInquiryDAO() {
     }
 
-    public OperationInquiryDAO(String id, String operationInquiry, List<OperationDataDAO> operationInquiryDatas, long uDate, long cDate, int status) {
-        this.id = id;
+    public OperationInquiryDAO(String inquiryId, String operationInquiry, List<OperationDataDAO> operationInquiryDatas, String operationInquiryState, long uDate, long cDate, int status) {
+        this.inquiryId = inquiryId;
         this.operationInquiry = operationInquiry;
         this.operationInquiryDatas = operationInquiryDatas;
+        this.operationInquiryState = operationInquiryState;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
     }
 
-    public String getId() {
-        return id;
+    public String getInquiryId() {
+        return inquiryId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setInquiryId(String inquiryId) {
+        this.inquiryId = inquiryId;
     }
 
     public String getOperationInquiry() {
@@ -45,6 +47,14 @@ public class OperationInquiryDAO {
 
     public void setOperationInquiryDatas(List<OperationDataDAO> operationInquiryDatas) {
         this.operationInquiryDatas = operationInquiryDatas;
+    }
+
+    public String getOperationInquiryState() {
+        return operationInquiryState;
+    }
+
+    public void setOperationInquiryState(String operationInquiryState) {
+        this.operationInquiryState = operationInquiryState;
     }
 
     public long getuDate() {

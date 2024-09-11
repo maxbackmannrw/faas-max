@@ -2,16 +2,19 @@ package com.faas.core.base.framework.campaign.manager.operation;
 
 import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.client.content.ClientDBModel;
+import com.faas.core.base.model.db.client.details.ClientDetailsDBModel;
+import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.user.content.UserDBModel;
 import com.faas.core.base.model.ws.campaign.manager.operation.CampaignOperationRequest;
-import com.faas.core.base.model.ws.campaign.manager.operation.dto.CampaignOperationRequestDTO;
 import com.faas.core.base.model.ws.campaign.manager.operation.dto.CampaignOperationWSDTO;
 import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.client.content.ClientRepository;
+import com.faas.core.base.repo.client.details.ClientDetailsRepository;
 import com.faas.core.base.repo.user.content.UserRepository;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.AppUtils;
+import com.faas.core.utility.helpers.operation.OperationHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,9 +25,14 @@ import java.util.Optional;
 @Service
 public class CampaignManagerOperationFramework {
 
+    @Autowired
+    OperationHelpers operationHelpers;
 
     @Autowired
     ClientRepository clientRepository;
+
+    @Autowired
+    ClientDetailsRepository clientDetailsRepository;
 
     @Autowired
     UserRepository userRepository;
@@ -46,36 +54,45 @@ public class CampaignManagerOperationFramework {
         return null;
     }
 
-     public OperationWSDTO getCampaignOperationService(long userId,long sessionId,String campaignId) {
-
+     public OperationWSDTO getCampaignOperationService(long userId,String operationId) {
 
         return null;
     }
 
-    public List<OperationWSDTO> createCampaignOperationService(CampaignOperationRequest operationRequest) {
+    public List<OperationWSDTO> createCampaignOperationsService(CampaignOperationRequest operationRequest) {
 
         List<OperationWSDTO> operationWSDTOS = new ArrayList<>();
-        for (int i = 0; i< operationRequest.getOperationRequests().size(); i++){
-            OperationWSDTO operationWSDTO = createCampaignOperation(operationRequest.getOperationRequests().get(i));
-            if (operationWSDTO != null){
-                operationWSDTOS.add(operationWSDTO);
+        Optional<UserDBModel> agentDBModel = userRepository.findById(operationRequest.getAgentId());
+        Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(operationRequest.getCampaignId());
+        if (agentDBModel.isPresent() && campaignDBModel.isPresent() && operationRequest.getClientIds() != null && !operationRequest.getClientIds().isEmpty()){
+            for (int i = 0; i< operationRequest.getClientIds().size(); i++){
+                List<ClientDBModel> clientDBModels = clientRepository.findByIdAndClientState(operationRequest.getClientIds().get(i),AppConstant.READY_CLIENT);
+                List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(operationRequest.getClientIds().get(i));
+                if (!clientDBModels.isEmpty() && !clientDetailsDBModels.isEmpty()){
+                    OperationWSDTO operationWSDTO = createCampaignOperation(agentDBModel.get(),campaignDBModel.get(),clientDBModels.get(0),clientDetailsDBModels.get(0));
+                    if (operationWSDTO != null){
+                        operationWSDTOS.add(operationWSDTO);
+                    }
+                }
             }
         }
         return operationWSDTOS;
     }
 
-    public OperationWSDTO createCampaignOperation(CampaignOperationRequestDTO operationRequestDTO) {
+    public OperationWSDTO createCampaignOperation(UserDBModel userDBModel,CampaignDBModel campaignDBModel,ClientDBModel clientDBModel,ClientDetailsDBModel clientDetailsDBModel) {
 
-        List<ClientDBModel> clientDBModels = clientRepository.findByIdAndClientState(operationRequestDTO.getClientId(),AppConstant.READY_CLIENT);
-        Optional<UserDBModel> agentDBModel = userRepository.findById(operationRequestDTO.getAgentId());
-        Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(operationRequestDTO.getCampaignId());
-        if (!clientDBModels.isEmpty() && agentDBModel.isPresent() && campaignDBModel.isPresent()){
-
-            clientDBModels.get(0).setClientState(AppConstant.BUSY_CLIENT);
-            clientDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
-            ClientDBModel clientDBModel = clientRepository.save(clientDBModels.get(0));
-
+        clientDBModel.setClientState(AppConstant.BUSY_CLIENT);
+        clientDBModel.setuDate(appUtils.getCurrentTimeStamp());
+        clientDBModel =  clientRepository.save(clientDBModel);
+        OperationDBModel operationDBModel = operationHelpers.createOperationDBModel(userDBModel,campaignDBModel,clientDBModel,clientDetailsDBModel);
+        if (operationDBModel != null){
+            return operationHelpers.getOperationWSDTO(operationDBModel);
         }
+        return null;
+    }
+
+    public OperationWSDTO createCampaignOperationService(long userId,long agentId,String campaignId,long clientId) {
+
         return null;
     }
 
@@ -88,7 +105,5 @@ public class CampaignManagerOperationFramework {
 
         return null;
     }
-
-
 
 }

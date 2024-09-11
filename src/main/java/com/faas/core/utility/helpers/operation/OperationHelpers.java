@@ -118,21 +118,83 @@ public class OperationHelpers {
 
 
 
-    public OperationDBModel createOperationDBModel() {
+    public OperationDBModel createOperationDBModel(UserDBModel userDBModel,CampaignDBModel campaignDBModel,ClientDBModel clientDBModel,ClientDetailsDBModel clientDetailsDBModel) {
 
-        return null;
+        OperationDBModel operationDBModel = new OperationDBModel();
+        operationDBModel.setClientId(clientDBModel.getId());
+        operationDBModel.setClientName(clientDBModel.getClientName());
+        operationDBModel.setNationalId(clientDBModel.getNationalId());
+        operationDBModel.setPhoneNumber(clientDBModel.getPhoneNumber());
+        operationDBModel.setEmailAddress(clientDBModel.getEmailAddress());
+        operationDBModel.setClientCity(clientDBModel.getClientCity());
+        operationDBModel.setClientCountry(clientDBModel.getClientCountry());
+        operationDBModel.setClientType(clientDBModel.getClientType());
+        if (clientDetailsDBModel.getClientPhones() != null) {
+            operationDBModel.setClientPhones(clientDetailsDBModel.getClientPhones());
+        }
+        if (clientDetailsDBModel.getClientEmails() != null) {
+            operationDBModel.setClientEmails(clientDetailsDBModel.getClientEmails());
+        }
+        if (clientDetailsDBModel.getClientAddresses() != null) {
+            operationDBModel.setClientAddresses(clientDetailsDBModel.getClientAddresses());
+        }
+        if (clientDetailsDBModel.getClientNotes() != null) {
+            operationDBModel.setClientNotes(clientDetailsDBModel.getClientNotes());
+        }
+        if (clientDetailsDBModel.getClientDatas() != null) {
+            operationDBModel.setClientDatas(clientDetailsDBModel.getClientDatas());
+        }
+        operationDBModel.setAgentId(userDBModel.getId());
+        operationDBModel.setAgentName(userDBModel.getUserName());
+        operationDBModel.setCampaignId(campaignDBModel.getId());
+        operationDBModel.setCampaign(campaignDBModel.getCampaign());
+        operationDBModel.setCampaignType(campaignDBModel.getCampaignType());
+        operationDBModel.setCampaignCategory(campaignDBModel.getCampaignCategory());
+        if (campaignDBModel.getCampaignCategory().equalsIgnoreCase(AppConstant.INQUIRY_CAMPAIGN)){
+            operationDBModel.setOperationInquiry(createOperationInquiryDAO(campaignDBModel));
+        }
+        if (campaignDBModel.getCampaignCategory().equalsIgnoreCase(AppConstant.AUTOMATIC_CAMPAIGN)){
+            operationDBModel.setOperationFlow(createOperationFlowDAO(campaignDBModel));
+        }
+        operationDBModel.setOperationActivities(new ArrayList<>());
+        operationDBModel.setOperationScenarios(new ArrayList<>());
+        operationDBModel.setOperationDatas(new ArrayList<>());
+        operationDBModel.setOperationCategory(campaignDBModel.getCampaignCategory());
+        operationDBModel.setOperationResult(AppConstant.NONE);
+        operationDBModel.setOperationState(AppConstant.READY_STATE);
+        operationDBModel.setuDate(appUtils.getCurrentTimeStamp());
+        operationDBModel.setcDate(appUtils.getCurrentTimeStamp());
+        operationDBModel.setStatus(1);
+
+        return operationRepository.save(operationDBModel);
     }
 
-    public OperationInquiryDAO createOperationInquiryDAO() {
+    public OperationInquiryDAO createOperationInquiryDAO(CampaignDBModel campaignDBModel) {
 
+        OperationInquiryDAO operationInquiryDAO = new OperationInquiryDAO();
+        operationInquiryDAO.setInquiryId(appUtils.generateUUID());
+        operationInquiryDAO.setOperationInquiry(campaignDBModel.getCampaignInquiry().getCampaignInquiry());
+        operationInquiryDAO.setOperationInquiryDatas(new ArrayList<>());
+        operationInquiryDAO.setOperationInquiryState(AppConstant.READY_STATE);
+        operationInquiryDAO.setuDate(appUtils.getCurrentTimeStamp());
+        operationInquiryDAO.setcDate(appUtils.getCurrentTimeStamp());
+        operationInquiryDAO.setStatus(1);
 
-        return null;
+        return operationInquiryDAO;
     }
 
-    public OperationFlowDAO createOperationFlowDAO() {
+    public OperationFlowDAO createOperationFlowDAO(CampaignDBModel campaignDBModel) {
 
+        OperationFlowDAO operationFlowDAO = new OperationFlowDAO();
+        operationFlowDAO.setFlowId(appUtils.generateUUID());
+        operationFlowDAO.setOperationFlow(campaignDBModel.getCampaignFlow().getCampaignFlow());
+        operationFlowDAO.setOperationFlowDatas(new ArrayList<>());
+        operationFlowDAO.setOperationFlowState(AppConstant.READY_STATE);
+        operationFlowDAO.setuDate(appUtils.getCurrentTimeStamp());
+        operationFlowDAO.setcDate(appUtils.getCurrentTimeStamp());
+        operationFlowDAO.setStatus(1);
 
-        return null;
+        return operationFlowDAO;
     }
 
 
