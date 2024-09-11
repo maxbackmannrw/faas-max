@@ -48,13 +48,7 @@ public class ScenarioHelpers {
         operationScenarioDAO.setcDate(appUtils.getCurrentTimeStamp());
         operationScenarioDAO.setStatus(1);
 
-        if (operationDBModel.getScenarios() != null){
-            operationDBModel.getScenarios().add(operationScenarioDAO);
-        }else {
-            List<OperationScenarioDAO> operationScenarioDAOS = new ArrayList<>();
-            operationScenarioDAOS.add(operationScenarioDAO);
-            operationDBModel.setScenarios(operationScenarioDAOS);
-        }
+
         operationDBModel.setuDate(appUtils.getCurrentTimeStamp());
         operationRepository.save(operationDBModel);
 
