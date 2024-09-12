@@ -204,7 +204,7 @@ public class OperationHelpers {
 
         Optional<ClientDBModel> clientDBModel = clientRepository.findById(operationDBModel.getClientId());
         if (clientDBModel.isPresent()){
-            clientDBModel.get().setClientState(AppConstant.READY_STATE);
+            clientDBModel.get().setClientState(AppConstant.READY_CLIENT);
             clientDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
             clientRepository.save(clientDBModel.get());
         }
