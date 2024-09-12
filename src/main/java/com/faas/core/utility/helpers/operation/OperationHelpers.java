@@ -88,7 +88,14 @@ public class OperationHelpers {
 
     @Autowired
     AppUtils appUtils;
-
+    @Autowired
+    private OperationEmailRepository operationEmailRepository;
+    @Autowired
+    private OperationSmsRepository operationSmsRepository;
+    @Autowired
+    private OperationWappMessageRepository operationWappMessageRepository;
+    @Autowired
+    private OperationPushRepository operationPushRepository;
 
 
     public OperationDBModel createOperationDBModel(UserDBModel userDBModel,CampaignDBModel campaignDBModel,ClientDBModel clientDBModel,ClientDetailsDBModel clientDetailsDBModel) {
@@ -193,8 +200,23 @@ public class OperationHelpers {
         return campaignOperationWSDTO;
     }
 
-    public void removeCampaignOperationHelper(){
+    public OperationDBModel removeOperationHelper(OperationDBModel operationDBModel){
 
+        Optional<ClientDBModel> clientDBModel = clientRepository.findById(operationDBModel.getClientId());
+        if (clientDBModel.isPresent()){
+            clientDBModel.get().setClientState(AppConstant.READY_STATE);
+            clientDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
+            clientRepository.save(clientDBModel.get());
+        }
+        operationSipCallRepository.deleteAll(operationSipCallRepository.findByOperationId(operationDBModel.getId()));
+        operationSmsRepository.deleteAll(operationSmsRepository.findByOperationId(operationDBModel.getId()));
+        operationWappMessageRepository.deleteAll(operationWappMessageRepository.findByOperationId(operationDBModel.getId()));
+        operationWappCallRepository.deleteAll(operationWappCallRepository.findByOperationId(operationDBModel.getId()));
+        operationEmailRepository.deleteAll(operationEmailRepository.findByOperationId(operationDBModel.getId()));
+        operationPushRepository.deleteAll(operationPushRepository.findByOperationId(operationDBModel.getId()));
+        operationRepository.delete(operationDBModel);
+
+        return operationDBModel;
     }
 
 
@@ -202,7 +224,6 @@ public class OperationHelpers {
 
         return null;
     }
-
 
     public List<ApiSummaryWSDTO> apiGetOperationSummaryHelper(long agentId) {
 
@@ -213,7 +234,6 @@ public class OperationHelpers {
 
         return operationSummary;
     }
-
 
     public ApiOperationValidateWSDTO operationValidateHelper(UserDBModel agentDBModel,OperationDBModel operationDBModel){
 
@@ -231,8 +251,6 @@ public class OperationHelpers {
         return operationValidateWSDTO;
     }
 
-
-
     public ApiOperationListWSDTO getApiOperationListWSDTO(Page<OperationDBModel> operationModelPage){
 
         ApiOperationListWSDTO operationListWSDTO = new ApiOperationListWSDTO();
@@ -248,7 +266,6 @@ public class OperationHelpers {
 
         return operationListWSDTO;
     }
-
 
     public ApiOperationDetailsWSDTO getApiOperationDetailsWSDTO(OperationDBModel operationDBModel) {
 

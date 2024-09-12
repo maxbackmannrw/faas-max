@@ -89,6 +89,11 @@ public class CampaignManagerOperationFramework {
         return operationWSDTOS;
     }
 
+    public OperationWSDTO createCampaignOperationService(long userId,long clientId,String campaignId,long agentId) {
+
+        return null;
+    }
+
     public OperationWSDTO createCampaignOperation(UserDBModel userDBModel,CampaignDBModel campaignDBModel,ClientDBModel clientDBModel,ClientDetailsDBModel clientDetailsDBModel) {
 
         clientDBModel.setClientState(AppConstant.BUSY_CLIENT);
@@ -101,19 +106,19 @@ public class CampaignManagerOperationFramework {
         return null;
     }
 
-    public OperationWSDTO createCampaignOperationService(long userId,long agentId,String campaignId,long clientId) {
+    public OperationWSDTO updateCampaignOperationService(long userId,String operationId,String operationState) {
 
         return null;
     }
 
-    public OperationWSDTO updateCampaignOperationService(long userId,long sessionId,long agentId, String operationState) {
+    public OperationWSDTO removeCampaignOperationService(long userId,String operationId) {
 
+        Optional<OperationDBModel> operationDBModel = operationRepository.findById(operationId);
+        if (operationDBModel.isPresent()){
+            return operationHelpers.getOperationWSDTO(operationHelpers.removeOperationHelper(operationDBModel.get()));
+        }
         return null;
     }
 
-    public OperationWSDTO removeCampaignOperationService(long userId,long sessionId,String campaignId) {
-
-        return null;
-    }
 
 }

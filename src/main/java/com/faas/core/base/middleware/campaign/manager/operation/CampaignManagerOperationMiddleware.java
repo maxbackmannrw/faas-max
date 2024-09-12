@@ -100,13 +100,13 @@ public class CampaignManagerOperationMiddleware {
         return response;
     }
 
-    public OperationWSModel createCampaignOperation(long userId,long agentId,String campaignId,long clientId) {
+    public OperationWSModel createCampaignOperation(long userId,long clientId,String campaignId,long agentId) {
 
         OperationWSModel response = new OperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<OperationWSDTO> operationWSDTOS = new ArrayList<>();
 
-        OperationWSDTO operationWSDTO = campaignManagerOperationFramework.createCampaignOperationService(userId,agentId,campaignId,clientId);
+        OperationWSDTO operationWSDTO = campaignManagerOperationFramework.createCampaignOperationService(userId,clientId,campaignId,agentId);
         if (operationWSDTO != null){
             response.setOperations(operationWSDTOS);
         }
@@ -120,13 +120,13 @@ public class CampaignManagerOperationMiddleware {
         return response;
     }
 
-    public OperationWSModel updateCampaignOperation(long userId,long sessionId,long agentId,String operationState) {
+    public OperationWSModel updateCampaignOperation(long userId,String operationId,String operationState) {
 
         OperationWSModel response = new OperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<OperationWSDTO> operationWSDTOS = new ArrayList<>();
 
-        OperationWSDTO operationWSDTO = campaignManagerOperationFramework.updateCampaignOperationService(userId,sessionId,agentId,operationState);
+        OperationWSDTO operationWSDTO = campaignManagerOperationFramework.updateCampaignOperationService(userId,operationId,operationState);
         if (operationWSDTO != null){
             operationWSDTOS.add(operationWSDTO);
         }
@@ -142,13 +142,13 @@ public class CampaignManagerOperationMiddleware {
     }
 
 
-    public OperationWSModel removeCampaignOperation(long userId,long sessionId,String campaignId) {
+    public OperationWSModel removeCampaignOperation(long userId,String operationId) {
 
         OperationWSModel response = new OperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<OperationWSDTO>operationWSDTOS = new ArrayList<>();
 
-        OperationWSDTO operationWSDTO = campaignManagerOperationFramework.removeCampaignOperationService(userId,sessionId,campaignId);
+        OperationWSDTO operationWSDTO = campaignManagerOperationFramework.removeCampaignOperationService(userId,operationId);
         if (operationWSDTO != null){
             operationWSDTOS.add(operationWSDTO);
         }
