@@ -126,6 +126,16 @@ public class SystemConfigFramework {
         return cityWSDTOS;
     }
 
+    public List<CityWSDTO> getCitiesByCountryService(long userId,String country) {
+
+        List<CityWSDTO> cityWSDTOS = new ArrayList<>();
+        List<CityDBModel> cityDBModels = cityRepository.findByCountry(country);
+        for (CityDBModel cityDBModel : cityDBModels) {
+            cityWSDTOS.add(new CityWSDTO(cityDBModel));
+        }
+        return cityWSDTOS;
+    }
+
     public CityWSDTO getCityService(long cityId) {
 
         Optional<CityDBModel> cityDBModel = cityRepository.findById(cityId);

@@ -111,6 +111,18 @@ public class SystemConfigController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+    @RequestMapping(value = BaseRoute.GET_CITIES_BY_COUNTRY, method = RequestMethod.POST)
+    public ResponseEntity<?> getCitiesByCountry(@RequestParam long userId,
+                                                @RequestParam String country) {
+
+        CityWSModel response = systemConfigMiddleware.getCitiesByCountry(userId,country);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
     @RequestMapping(value = BaseRoute.GET_CITY, method = RequestMethod.POST)
     public ResponseEntity<?> getCity(@RequestParam long userId,
                                      @RequestParam long cityId) {
@@ -161,8 +173,6 @@ public class SystemConfigController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
-
 
     @RequestMapping(value = BaseRoute.GET_ALL_COUNTRIES, method = RequestMethod.POST)
     public ResponseEntity<?> getAllCountries(@RequestParam long userId) {

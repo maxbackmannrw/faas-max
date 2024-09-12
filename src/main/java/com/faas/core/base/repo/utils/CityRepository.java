@@ -10,6 +10,7 @@ import java.util.List;
 public interface CityRepository extends PagingAndSortingRepository<CityDBModel, Long> {
 
     List<CityDBModel> findByStatus(int status);
+    List<CityDBModel>findByCountry(String country);
     List<CityDBModel>findByCityAndCountry(String city,String country);
     boolean existsByCityAndCountry(String city,String country);
 

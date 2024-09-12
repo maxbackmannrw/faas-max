@@ -168,6 +168,25 @@ public class SystemConfigMiddleware {
         return response;
     }
 
+    public CityWSModel getCitiesByCountry(long userId,String country) {
+
+        CityWSModel response = new CityWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        List<CityWSDTO> cityWSDTOS = systemConfigFramework.getCitiesByCountryService(userId,country);
+        if (cityWSDTOS != null){
+            response.setCities(cityWSDTOS);
+        }
+
+        general.setOperation("getCitiesByCountry");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
     public CityWSModel getCity(long userId, long cityId) {
 
         CityWSModel response = new CityWSModel();

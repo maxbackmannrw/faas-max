@@ -72,9 +72,6 @@ public class OperationHelpers {
     OperationRepository operationRepository;
 
     @Autowired
-    UserDetailsRepository userDetailsRepository;
-
-    @Autowired
     CampaignAgentRepository campaignAgentRepository;
 
     @Autowired
@@ -84,37 +81,10 @@ public class OperationHelpers {
     CampaignScenarioRepository campaignScenarioRepository;
 
     @Autowired
-    ScenarioRepository scenarioRepository;
-
-    @Autowired
     OperationWappCallRepository operationWappCallRepository;
 
     @Autowired
-    OperationSmsRepository OperationSmsRepository;
-
-    @Autowired
     OperationSipCallRepository operationSipCallRepository;
-
-    @Autowired
-    OperationEmailRepository operationEmailRepository;
-
-    @Autowired
-    EmailTempRepository emailTempRepository;
-
-    @Autowired
-    OperationPushRepository operationPushRepository;
-
-    @Autowired
-    PushTempRepository pushTempRepository;
-
-    @Autowired
-    SmsTempRepository smsTempRepository;
-
-    @Autowired
-    OperationWappMessageRepository operationWappMessageRepository;
-
-    @Autowired
-    WappMessageTempRepository wappMessageTempRepository;
 
     @Autowired
     AppUtils appUtils;

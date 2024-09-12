@@ -180,6 +180,7 @@ public class BaseRoute {
 
 
     public static final String GET_ALL_CITIES = "getallcities";
+    public static final String GET_CITIES_BY_COUNTRY = "getcitiesbycountry";
     public static final String GET_CITY = "getcity";
     public static final String CREATE_CITY = "createcity";
     public static final String UPDATE_CITY = "updatecity";
