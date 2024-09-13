@@ -1,11 +1,14 @@
 package com.faas.core.base.framework.operation.content;
 
+import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.ws.operation.content.dto.OperationListWSDTO;
 import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.utility.config.AppUtils;
 import com.faas.core.utility.helpers.operation.OperationHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 
@@ -25,11 +28,19 @@ public class OperationFramework {
 
     public OperationListWSDTO getOperationsService(long userId, String operationState,int reqPage,int reqSize) {
 
+        Page<OperationDBModel> operationModelPage = operationRepository.findAllByOperationState(operationState, PageRequest.of(reqPage,reqSize));
+        if (operationModelPage != null){
+            return operationHelpers.getOperationListWSDTO(operationModelPage);
+        }
         return null;
     }
 
     public OperationListWSDTO getOperationsByCategoryService(long userId, String operationCategory, String operationState,int reqPage,int reqSize) {
 
+        Page<OperationDBModel> operationModelPage = operationRepository.findAllByOperationCategoryAndOperationState(operationCategory,operationState, PageRequest.of(reqPage,reqSize));
+        if (operationModelPage != null){
+            return operationHelpers.getOperationListWSDTO(operationModelPage);
+        }
         return null;
     }
 

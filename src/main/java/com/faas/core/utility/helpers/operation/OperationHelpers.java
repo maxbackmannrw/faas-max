@@ -219,6 +219,21 @@ public class OperationHelpers {
         return operationDBModel;
     }
 
+    public OperationListWSDTO getOperationListWSDTO(Page<OperationDBModel> operationModelPage){
+
+        OperationListWSDTO operationListWSDTO = new OperationListWSDTO();
+        List<OperationWSDTO>operationWSDTOS = new ArrayList<>();
+        List<OperationDBModel> operationDBModels = operationModelPage.getContent();
+        for (OperationDBModel operationDBModel : operationDBModels) {
+            operationWSDTOS.add(getOperationWSDTO(operationDBModel));
+        }
+        operationListWSDTO.setOperations(operationWSDTOS);
+        operationListWSDTO.setPagination(mapOperationPaginationWSDTO(operationModelPage));
+
+        return operationListWSDTO;
+    }
+
+
 
     public ApiOperationWSDTO getApiOperationWSDTO(OperationDBModel operationDBModel) {
 
