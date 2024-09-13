@@ -1,19 +1,19 @@
 package com.faas.core.base.model.ws.remote.content.dto;
 
 import com.faas.core.base.model.db.remote.content.RemoteDBModel;
-import com.faas.core.base.model.db.utils.UrlDBModel;
+import com.faas.core.base.model.db.remote.details.RemoteUrlDBModel;
 
 import java.util.List;
 
 public class RemoteWSDTO {
 
     private RemoteDBModel remote;
-    private List<UrlDBModel> remoteUrls;
+    private List<RemoteUrlDBModel> remoteUrls;
 
     public RemoteWSDTO() {
     }
 
-    public RemoteWSDTO(RemoteDBModel remote, List<UrlDBModel> remoteUrls) {
+    public RemoteWSDTO(RemoteDBModel remote, List<RemoteUrlDBModel> remoteUrls) {
         this.remote = remote;
         this.remoteUrls = remoteUrls;
     }
@@ -26,11 +26,11 @@ public class RemoteWSDTO {
         this.remote = remote;
     }
 
-    public List<UrlDBModel> getRemoteUrls() {
+    public List<RemoteUrlDBModel> getRemoteUrls() {
         return remoteUrls;
     }
 
-    public void setRemoteUrls(List<UrlDBModel> remoteUrls) {
+    public void setRemoteUrls(List<RemoteUrlDBModel> remoteUrls) {
         this.remoteUrls = remoteUrls;
     }
 }

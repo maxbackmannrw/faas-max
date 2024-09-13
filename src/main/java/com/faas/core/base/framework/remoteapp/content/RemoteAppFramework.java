@@ -4,12 +4,15 @@ import com.faas.core.base.model.db.operation.content.OperationDBModel;
 import com.faas.core.base.model.db.remoteapp.RemoteAppDBModel;
 import com.faas.core.base.model.db.remote.content.RemoteDBModel;
 import com.faas.core.base.model.ws.remoteapp.content.dto.RemoteAppListWSDTO;
+import com.faas.core.base.model.ws.remoteapp.content.dto.RemoteAppSummaryWSDTO;
 import com.faas.core.base.model.ws.remoteapp.content.dto.RemoteAppWSDTO;
+import com.faas.core.base.model.ws.remoteapp.details.dto.RemoteAppDetailsWSDTO;
 import com.faas.core.base.repo.client.content.ClientRepository;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.remoteapp.RemoteAppRepository;
 import com.faas.core.base.repo.remote.content.RemoteRepository;
+import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.AppUtils;
 import com.faas.core.utility.helpers.remote.RemoteAppHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,8 +56,6 @@ public class RemoteAppFramework {
         if (remoteAppDBModelPage != null){
             RemoteAppListWSDTO remoteAppListWSDTO = new RemoteAppListWSDTO();
             List<RemoteAppWSDTO> remoteAppWSDTOS = new ArrayList<>();
-
-
         }
         return null;
     }
@@ -103,5 +104,20 @@ public class RemoteAppFramework {
         return null;
     }
 
+    public RemoteAppDetailsWSDTO getRemoteAppDetailsService(long userId, String clientRemoteId) {
+
+        return null;
+    }
+
+    public RemoteAppSummaryWSDTO getRemoteAppsSummaryService(long userId) {
+
+        RemoteAppSummaryWSDTO remoteAppSummaryWSDTO = new RemoteAppSummaryWSDTO();
+        remoteAppSummaryWSDTO.setNewClientRemotes(remoteAppRepository.countByAppState(AppConstant.NEW_REMOTE));
+        remoteAppSummaryWSDTO.setReadyClientRemotes(remoteAppRepository.countByAppState(AppConstant.READY_REMOTE));
+        remoteAppSummaryWSDTO.setFailedClientRemotes(remoteAppRepository.countByAppState(AppConstant.FAILED_REMOTE));
+        remoteAppSummaryWSDTO.setTotalClientRemotes(remoteAppRepository.count());
+
+        return remoteAppSummaryWSDTO;
+    }
 
 }

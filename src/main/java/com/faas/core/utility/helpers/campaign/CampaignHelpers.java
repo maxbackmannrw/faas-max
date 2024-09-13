@@ -46,7 +46,7 @@ import com.faas.core.base.repo.campaign.details.scenario.CampaignScenarioReposit
 import com.faas.core.base.repo.campaign.details.trigger.*;
 import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.base.repo.user.content.UserRepository;
-import com.faas.core.base.repo.utils.UrlRepository;
+import com.faas.core.base.repo.remote.details.RemoteUrlRepository;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -107,7 +107,7 @@ public class CampaignHelpers {
     WappMessageTriggerRepository wappMessageTriggerRepository;
 
     @Autowired
-    UrlRepository urlRepository;
+    RemoteUrlRepository remoteUrlRepository;
 
     @Autowired
     AppUtils appUtils;
@@ -255,7 +255,7 @@ public class CampaignHelpers {
 
         CampaignRemoteWSDTO campaignRemoteWSDTO = new CampaignRemoteWSDTO();
         campaignRemoteWSDTO.setCampaignRemote(campaignRemoteDBModel);
-        campaignRemoteWSDTO.setRemoteUrls(urlRepository.findByBaseTypeAndOwnerId(AppConstant.REMOTE_URL, campaignRemoteDBModel.getRemoteId()));
+        campaignRemoteWSDTO.setRemoteUrls(remoteUrlRepository.findByRemoteId(campaignRemoteDBModel.getRemoteId()));
 
         return campaignRemoteWSDTO;
     }

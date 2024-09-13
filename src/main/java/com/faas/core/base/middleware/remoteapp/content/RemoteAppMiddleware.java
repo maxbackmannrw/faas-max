@@ -3,9 +3,13 @@ package com.faas.core.base.middleware.remoteapp.content;
 import com.faas.core.base.framework.remoteapp.content.RemoteAppFramework;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.model.ws.remoteapp.content.RemoteAppListWSModel;
+import com.faas.core.base.model.ws.remoteapp.content.RemoteAppSummaryWSModel;
 import com.faas.core.base.model.ws.remoteapp.content.RemoteAppWSModel;
 import com.faas.core.base.model.ws.remoteapp.content.dto.RemoteAppListWSDTO;
+import com.faas.core.base.model.ws.remoteapp.content.dto.RemoteAppSummaryWSDTO;
 import com.faas.core.base.model.ws.remoteapp.content.dto.RemoteAppWSDTO;
+import com.faas.core.base.model.ws.remoteapp.details.RemoteAppDetailsWSModel;
+import com.faas.core.base.model.ws.remoteapp.details.dto.RemoteAppDetailsWSDTO;
 import com.faas.core.utility.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -135,6 +139,44 @@ public class RemoteAppMiddleware {
 
         response.setRemoteApps(remoteAppWSDTOS);
         general.setOperation("removeRemoteApp");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public RemoteAppDetailsWSModel getRemoteAppDetails(long userId, String clientRemoteId) {
+
+        RemoteAppDetailsWSModel response = new RemoteAppDetailsWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        RemoteAppDetailsWSDTO remoteAppDetailsWSDTO = remoteAppFramework.getRemoteAppDetailsService(userId,clientRemoteId);
+        if (remoteAppDetailsWSDTO != null){
+            response.setRemoteAppDetails(remoteAppDetailsWSDTO);
+        }
+
+        general.setOperation("getRemoteAppDetails");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public RemoteAppSummaryWSModel getRemoteAppsSummary(long userId) {
+
+        RemoteAppSummaryWSModel response = new RemoteAppSummaryWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        RemoteAppSummaryWSDTO remoteAppSummaryWSDTO = remoteAppFramework.getRemoteAppsSummaryService(userId);
+        if (remoteAppSummaryWSDTO != null){
+            response.setRemoteAppSummary(remoteAppSummaryWSDTO);
+        }
+
+        general.setOperation("getRemoteAppsSummary");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

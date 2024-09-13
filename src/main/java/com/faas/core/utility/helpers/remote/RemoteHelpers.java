@@ -4,10 +4,10 @@ import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.db.campaign.details.remote.CampaignRemoteDBModel;
 import com.faas.core.base.model.db.remote.content.RemoteDBModel;
 import com.faas.core.base.model.db.remote.content.dao.RemoteDataDAO;
-import com.faas.core.base.model.db.utils.UrlDBModel;
+import com.faas.core.base.model.db.remote.details.RemoteUrlDBModel;
 import com.faas.core.base.model.ws.remote.content.dto.RemoteWSDTO;
 import com.faas.core.base.repo.campaign.details.remote.CampaignRemoteRepository;
-import com.faas.core.base.repo.utils.UrlRepository;
+import com.faas.core.base.repo.remote.details.RemoteUrlRepository;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ public class RemoteHelpers {
     CampaignRemoteRepository campaignRemoteRepository;
 
     @Autowired
-    UrlRepository urlRepository;
+    RemoteUrlRepository remoteUrlRepository;
 
     @Autowired
     AppUtils appUtils;
@@ -33,7 +33,7 @@ public class RemoteHelpers {
 
         RemoteWSDTO remoteWSDTO = new RemoteWSDTO();
         remoteWSDTO.setRemote(remoteDBModel);
-        remoteWSDTO.setRemoteUrls(urlRepository.findByBaseTypeAndOwnerId(AppConstant.REMOTE_URL,remoteDBModel.getId()));
+        remoteWSDTO.setRemoteUrls(remoteUrlRepository.findByRemoteId(remoteDBModel.getId()));
 
         return remoteWSDTO;
     }
@@ -77,13 +77,12 @@ public class RemoteHelpers {
     }
 
 
-    public UrlDBModel createRemoteUrlHelper(String remoteId,String remoteUrl, String urlType,String baseType) {
+    public RemoteUrlDBModel createRemoteUrlHelper(String remoteId, String remoteUrl, String urlType) {
 
-        UrlDBModel remoteUrlDBModel = new UrlDBModel();
-        remoteUrlDBModel.setUrl(remoteUrl);
+        RemoteUrlDBModel remoteUrlDBModel = new RemoteUrlDBModel();
+        remoteUrlDBModel.setRemoteId(remoteId);
+        remoteUrlDBModel.setRemoteUrl(remoteUrl);
         remoteUrlDBModel.setUrlType(urlType);
-        remoteUrlDBModel.setBaseType(baseType);
-        remoteUrlDBModel.setOwnerId(remoteId);
         remoteUrlDBModel.setuDate(appUtils.getCurrentTimeStamp());
         remoteUrlDBModel.setcDate(appUtils.getCurrentTimeStamp());
         remoteUrlDBModel.setStatus(1);

@@ -141,12 +141,13 @@ public class BaseRoute {
     public static final String UPDATE_REMOTE_DATA = "updateremotedata";
     public static final String REMOVE_REMOTE_DATA = "removeremotedata";
 
+
+    public static final String GET_ALL_REMOTE_URLS = "getallremoteurls";
     public static final String GET_REMOTE_URLS = "getremoteurls";
     public static final String GET_REMOTE_URL = "getremoteurl";
     public static final String CREATE_REMOTE_URL = "createremoteurl";
     public static final String UPDATE_REMOTE_URL = "updateremoteurl";
     public static final String REMOVE_REMOTE_URL = "removeremoteurl";
-
 
 
     public static final String GET_ALL_REMOTE_TYPES = "getallremotetypes";
@@ -194,13 +195,6 @@ public class BaseRoute {
     public static final String REMOVE_COUNTRY = "removecountry";
 
 
-    public static final String GET_ALL_URLS = "getallurls";
-    public static final String GET_URLS_BY_BASE_TYPE = "geturlsbybasetype";
-    public static final String GET_URLS_BY_OWNER_ID = "geturlsbyownerid";
-    public static final String GET_URL = "geturl";
-    public static final String CREATE_URL = "createurl";
-    public static final String UPDATE_URL = "updateurl";
-    public static final String REMOVE_URL = "removeurl";
 
 
     public static final String GET_ALL_CHANNEL_ACCOUNTS = "getallchannelaccounts";

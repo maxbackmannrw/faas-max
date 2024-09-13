@@ -2,15 +2,11 @@ package com.faas.core.base.framework.remote.details;
 
 import com.faas.core.base.model.db.remote.content.RemoteDBModel;
 import com.faas.core.base.model.db.remote.content.dao.RemoteDataDAO;
-import com.faas.core.base.model.db.utils.DataTypeDBModel;
-import com.faas.core.base.model.db.utils.UrlDBModel;
+import com.faas.core.base.model.db.utilz.DataTypeDBModel;
 import com.faas.core.base.model.ws.remote.content.dto.RemoteDataWSDTO;
 import com.faas.core.base.model.ws.remote.details.dto.RemoteDetailsWSDTO;
-import com.faas.core.base.model.ws.remote.content.dto.RemoteUrlWSDTO;
 import com.faas.core.base.repo.remote.content.RemoteRepository;
-import com.faas.core.base.repo.utils.DataTypeRepository;
-import com.faas.core.base.repo.utils.UrlRepository;
-import com.faas.core.utility.config.AppConstant;
+import com.faas.core.base.repo.utilz.DataTypeRepository;
 import com.faas.core.utility.config.AppUtils;
 import com.faas.core.utility.helpers.remote.RemoteHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,10 +30,8 @@ public class RemoteDetailsFramework {
     DataTypeRepository dataTypeRepository;
 
     @Autowired
-    UrlRepository urlRepository;
-
-    @Autowired
     AppUtils appUtils;
+
 
     public RemoteDetailsWSDTO getRemoteDetailsService(long userId, String remoteId) {
 
@@ -49,7 +43,6 @@ public class RemoteDetailsFramework {
         }
         return null;
     }
-
 
     public List<RemoteDataWSDTO> getRemoteDatasService(long userId, String remoteId) {
 
@@ -136,67 +129,6 @@ public class RemoteDetailsFramework {
                 }
             }
             return new RemoteDataWSDTO();
-        }
-        return null;
-    }
-
-
-    public List<RemoteUrlWSDTO> getRemoteUrlsService(long userId, String remoteId) {
-
-        List<RemoteUrlWSDTO> remoteUrlWSDTOS = new ArrayList<>();
-        List<UrlDBModel> urlDBModels = urlRepository.findByBaseTypeAndOwnerId(AppConstant.REMOTE_URL,remoteId);
-        for (UrlDBModel urlDBModel : urlDBModels) {
-            remoteUrlWSDTOS.add(new RemoteUrlWSDTO(urlDBModel));
-        }
-        return remoteUrlWSDTOS;
-    }
-
-    public RemoteUrlWSDTO getRemoteUrlService(long userId, long urlId) {
-
-        Optional<UrlDBModel> urlDBModel = urlRepository.findById(urlId);
-        if (urlDBModel.isPresent()) {
-            return new RemoteUrlWSDTO(urlDBModel.get());
-        }
-        return null;
-    }
-
-    public RemoteUrlWSDTO createRemoteUrlService(long userId,String remoteId,String remoteUrl,String urlType) {
-
-        UrlDBModel urlDBModel = new UrlDBModel();
-
-        urlDBModel.setUrl(remoteUrl);
-        urlDBModel.setUrlType(urlType);
-        urlDBModel.setBaseType(AppConstant.REMOTE_URL);
-        urlDBModel.setOwnerId(remoteId);
-        urlDBModel.setuDate(appUtils.getCurrentTimeStamp());
-        urlDBModel.setcDate(appUtils.getCurrentTimeStamp());
-        urlDBModel.setStatus(1);
-
-        return new RemoteUrlWSDTO(urlRepository.save(urlDBModel));
-    }
-
-    public RemoteUrlWSDTO updateRemoteUrlService(long userId,long urlId,String remoteId,String remoteUrl,String urlType) {
-
-        Optional<UrlDBModel> urlDBModel = urlRepository.findById(urlId);
-        if (urlDBModel.isPresent()){
-
-            urlDBModel.get().setUrl(remoteUrl);
-            urlDBModel.get().setUrlType(urlType);
-            urlDBModel.get().setOwnerId(remoteId);
-            urlDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
-            urlDBModel.get().setStatus(1);
-
-            return new RemoteUrlWSDTO(urlRepository.save(urlDBModel.get()));
-        }
-        return null;
-    }
-
-    public RemoteUrlWSDTO removeRemoteUrlService(long userId,long urlId) {
-
-        Optional<UrlDBModel> urlDBModel = urlRepository.findById(urlId);
-        if (urlDBModel.isPresent()) {
-            urlRepository.delete(urlDBModel.get());
-            return new RemoteUrlWSDTO(urlDBModel.get());
         }
         return null;
     }

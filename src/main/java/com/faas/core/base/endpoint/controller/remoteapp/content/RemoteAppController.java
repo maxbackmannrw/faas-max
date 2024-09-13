@@ -2,7 +2,9 @@ package com.faas.core.base.endpoint.controller.remoteapp.content;
 
 import com.faas.core.base.middleware.remoteapp.content.RemoteAppMiddleware;
 import com.faas.core.base.model.ws.remoteapp.content.RemoteAppListWSModel;
+import com.faas.core.base.model.ws.remoteapp.content.RemoteAppSummaryWSModel;
 import com.faas.core.base.model.ws.remoteapp.content.RemoteAppWSModel;
+import com.faas.core.base.model.ws.remoteapp.details.RemoteAppDetailsWSModel;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -93,6 +95,29 @@ public class RemoteAppController {
                                                 @RequestParam String clientRemoteId) {
 
         RemoteAppWSModel response = remoteAppMiddleware.removeRemoteApp(userId,clientRemoteId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+    @RequestMapping(value = BaseRoute.GET_REMOTE_APP_DETAILS, method = RequestMethod.POST)
+    public ResponseEntity<?> getRemoteAppDetails(@RequestParam long userId,
+                                                 @RequestParam String clientRemoteId) {
+
+        RemoteAppDetailsWSModel response = remoteAppMiddleware.getRemoteAppDetails(userId,clientRemoteId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+    @RequestMapping(value = BaseRoute.GET_REMOTE_APPS_SUMMARY, method = RequestMethod.POST)
+    public ResponseEntity<?> getRemoteAppsSummary(@RequestParam long userId) {
+
+        RemoteAppSummaryWSModel response = remoteAppMiddleware.getRemoteAppsSummary(userId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

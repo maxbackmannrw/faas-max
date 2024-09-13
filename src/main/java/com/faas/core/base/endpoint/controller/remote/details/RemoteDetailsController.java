@@ -3,7 +3,6 @@ package com.faas.core.base.endpoint.controller.remote.details;
 import com.faas.core.base.middleware.remote.details.RemoteDetailsMiddleware;
 import com.faas.core.base.model.ws.remote.content.RemoteDataWSModel;
 import com.faas.core.base.model.ws.remote.details.RemoteDetailsWSModel;
-import com.faas.core.base.model.ws.remote.content.RemoteUrlWSModel;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -103,72 +102,6 @@ public class RemoteDetailsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
-
-    @RequestMapping(value = BaseRoute.GET_REMOTE_URLS, method = RequestMethod.POST)
-    public ResponseEntity<?> getRemoteUrls(@RequestParam long userId,
-                                           @RequestParam String remoteId) {
-
-        RemoteUrlWSModel response = remoteAppDetailsMiddleware.getRemoteUrls(userId,remoteId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-    @RequestMapping(value = BaseRoute.GET_REMOTE_URL, method = RequestMethod.POST)
-    public ResponseEntity<?> getRemoteUrl(@RequestParam long userId,
-                                          @RequestParam long urlId) {
-
-        RemoteUrlWSModel response = remoteAppDetailsMiddleware.getRemoteUrl(userId,urlId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-    @RequestMapping(value = BaseRoute.CREATE_REMOTE_URL, method = RequestMethod.POST)
-    public ResponseEntity<?> createRemoteUrl(@RequestParam long userId,
-                                             @RequestParam String remoteId,
-                                             @RequestParam String remoteUrl,
-                                             @RequestParam String urlType) {
-
-        RemoteUrlWSModel response = remoteAppDetailsMiddleware.createRemoteUrl(userId,remoteId,remoteUrl,urlType);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-    @RequestMapping(value = BaseRoute.UPDATE_REMOTE_URL, method = RequestMethod.POST)
-    public ResponseEntity<?> updateRemoteUrl(@RequestParam long userId,
-                                             @RequestParam long urlId,
-                                             @RequestParam String remoteId,
-                                             @RequestParam String remoteUrl,
-                                             @RequestParam String urlType) {
-
-        RemoteUrlWSModel response = remoteAppDetailsMiddleware.updateRemoteUrl(userId,urlId,remoteId,remoteUrl,urlType);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-    @RequestMapping(value = BaseRoute.REMOVE_REMOTE_URL, method = RequestMethod.POST)
-    public ResponseEntity<?> removeRemoteUrl(@RequestParam long userId,
-                                             @RequestParam long urlId) {
-
-        RemoteUrlWSModel response = remoteAppDetailsMiddleware.removeRemoteUrl(userId,urlId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
 
 
 }

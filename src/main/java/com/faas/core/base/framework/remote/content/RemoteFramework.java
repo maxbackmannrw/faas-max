@@ -5,7 +5,7 @@ import com.faas.core.base.model.db.remote.settings.RemoteTypeDBModel;
 import com.faas.core.base.model.ws.remote.content.dto.RemoteWSDTO;
 import com.faas.core.base.repo.remote.content.RemoteRepository;
 import com.faas.core.base.repo.remote.settings.RemoteTypeRepository;
-import com.faas.core.base.repo.utils.UrlRepository;
+import com.faas.core.base.repo.remote.details.RemoteUrlRepository;
 import com.faas.core.utility.config.AppConstant;
 import com.faas.core.utility.config.AppUtils;
 import com.faas.core.utility.helpers.remote.RemoteHelpers;
@@ -30,7 +30,7 @@ public class RemoteFramework {
     RemoteTypeRepository remoteTypeRepository;
 
     @Autowired
-    UrlRepository urlRepository;
+    RemoteUrlRepository remoteUrlRepository;
 
     @Autowired
     AppUtils appUtils;
@@ -94,7 +94,7 @@ public class RemoteFramework {
 
             remoteDBModel = remoteRepository.save(remoteDBModel);
             if (sourceUrl != null){
-                urlRepository.save(remoteHelpers.createRemoteUrlHelper(remoteDBModel.getId(),sourceUrl, AppConstant.SOURCE_URL,AppConstant.REMOTE_URL));
+                remoteUrlRepository.save(remoteHelpers.createRemoteUrlHelper(remoteDBModel.getId(),sourceUrl, AppConstant.SOURCE_URL));
             }
             return remoteHelpers.mapRemoteWSDTOHelper(remoteDBModel);
         }

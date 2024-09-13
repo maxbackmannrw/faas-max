@@ -1,19 +1,19 @@
 package com.faas.core.base.model.ws.campaign.details.remote.dto;
 
 import com.faas.core.base.model.db.campaign.details.remote.CampaignRemoteDBModel;
-import com.faas.core.base.model.db.utils.UrlDBModel;
+import com.faas.core.base.model.db.remote.details.RemoteUrlDBModel;
 
 import java.util.List;
 
 public class CampaignRemoteWSDTO {
 
     private CampaignRemoteDBModel campaignRemote;
-    private List<UrlDBModel> remoteUrls;
+    private List<RemoteUrlDBModel> remoteUrls;
 
     public CampaignRemoteWSDTO() {
     }
 
-    public CampaignRemoteWSDTO(CampaignRemoteDBModel campaignRemote, List<UrlDBModel> remoteUrls) {
+    public CampaignRemoteWSDTO(CampaignRemoteDBModel campaignRemote, List<RemoteUrlDBModel> remoteUrls) {
         this.campaignRemote = campaignRemote;
         this.remoteUrls = remoteUrls;
     }
@@ -26,11 +26,11 @@ public class CampaignRemoteWSDTO {
         this.campaignRemote = campaignRemote;
     }
 
-    public List<UrlDBModel> getRemoteUrls() {
+    public List<RemoteUrlDBModel> getRemoteUrls() {
         return remoteUrls;
     }
 
-    public void setRemoteUrls(List<UrlDBModel> remoteUrls) {
+    public void setRemoteUrls(List<RemoteUrlDBModel> remoteUrls) {
         this.remoteUrls = remoteUrls;
     }
 }
