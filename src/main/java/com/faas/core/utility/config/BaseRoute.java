@@ -54,12 +54,13 @@ public class BaseRoute {
 
 
     public static final String GET_OPERATIONS = "getoperations";
+    public static final String GET_OPERATIONS_BY_CATEGORY = "getoperationsbycategory";
     public static final String GET_OPERATION = "getoperation";
     public static final String CREATE_OPERATION = "createoperation";
     public static final String UPDATE_OPERATION = "updateoperation";
     public static final String REMOVE_OPERATION = "removeoperation";
-
     public static final String GET_OPERATION_DETAILS = "getoperationdetails";
+
 
 
     public static final String GET_ALL_CLIENTS = "getallclients";
@@ -72,7 +73,6 @@ public class BaseRoute {
 
 
     public static final String GET_CLIENT_OS_INTS = "getclientosints";
-
 
     public static final String GET_CLIENT_DETAILS = "getclientdetails";
 

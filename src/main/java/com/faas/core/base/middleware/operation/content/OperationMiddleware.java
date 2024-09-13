@@ -21,12 +21,12 @@ public class OperationMiddleware {
     OperationFramework operationFramework;
 
 
-    public OperationListWSModel getOperations(long userId, String sessionType,String sessionState,int reqPage,int reqSize) {
+    public OperationListWSModel getOperations(long userId, String operationState,int reqPage,int reqSize) {
 
         OperationListWSModel response = new OperationListWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        OperationListWSDTO operationListWSDTO = operationFramework.getOperationsService(userId,sessionType,sessionState,reqPage,reqSize);
+        OperationListWSDTO operationListWSDTO = operationFramework.getOperationsService(userId,operationState,reqPage,reqSize);
         if (operationListWSDTO != null){
             response.setOperationList(operationListWSDTO);
         }
@@ -40,14 +40,32 @@ public class OperationMiddleware {
         return response;
     }
 
+    public OperationListWSModel getOperationsByCategory(long userId, String operationCategory, String operationState,int reqPage,int reqSize) {
 
-    public OperationWSModel getOperation(long userId, long sessionId) {
+        OperationListWSModel response = new OperationListWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        OperationListWSDTO operationListWSDTO = operationFramework.getOperationsByCategoryService(userId,operationCategory,operationState,reqPage,reqSize);
+        if (operationListWSDTO != null){
+            response.setOperationList(operationListWSDTO);
+        }
+
+        general.setOperation("getOperationsByCategory");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public OperationWSModel getOperation(long userId, String operationId) {
 
         OperationWSModel response = new OperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<OperationWSDTO> operationWSDTOS = new ArrayList<>();
 
-        OperationWSDTO operationWSDTO = operationFramework.getOperationService(userId,sessionId);
+        OperationWSDTO operationWSDTO = operationFramework.getOperationService(userId,operationId);
         if (operationWSDTO != null){
             operationWSDTOS.add(operationWSDTO);
         }
@@ -83,13 +101,13 @@ public class OperationMiddleware {
         return response;
     }
 
-    public OperationWSModel updateOperation(long userId,long sessionId) {
+    public OperationWSModel updateOperation(long userId,String operationId) {
 
         OperationWSModel response = new OperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<OperationWSDTO> operationWSDTOS = new ArrayList<>();
 
-        OperationWSDTO operationWSDTO = operationFramework.updateOperationService(userId,sessionId);
+        OperationWSDTO operationWSDTO = operationFramework.updateOperationService(userId,operationId);
         if (operationWSDTO != null){
             operationWSDTOS.add(operationWSDTO);
         }
@@ -104,13 +122,13 @@ public class OperationMiddleware {
         return response;
     }
 
-    public OperationWSModel removeOperation(long userId, long sessionId) {
+    public OperationWSModel removeOperation(long userId, String operationId) {
 
         OperationWSModel response = new OperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<OperationWSDTO> operationWSDTOS = new ArrayList<>();
 
-        OperationWSDTO operationWSDTO = operationFramework.removeOperationService(userId,sessionId);
+        OperationWSDTO operationWSDTO = operationFramework.removeOperationService(userId,operationId);
         if (operationWSDTO != null){
             operationWSDTOS.add(operationWSDTO);
         }
@@ -125,5 +143,20 @@ public class OperationMiddleware {
         return response;
     }
 
+
+    public OperationListWSModel getOperationDetails(long userId, long sessionId) {
+
+        OperationListWSModel response = new OperationListWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+
+        general.setOperation("getOperationDetails");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
 
 }

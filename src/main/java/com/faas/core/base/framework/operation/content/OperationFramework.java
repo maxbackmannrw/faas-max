@@ -6,7 +6,6 @@ import com.faas.core.base.repo.operation.content.OperationRepository;
 import com.faas.core.utility.config.AppUtils;
 import com.faas.core.utility.helpers.operation.OperationHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 
@@ -24,14 +23,17 @@ public class OperationFramework {
     AppUtils appUtils;
 
 
-
-    public OperationListWSDTO getOperationsService(long userId, String sessionType,String sessionState,int reqPage,int reqSize) {
+    public OperationListWSDTO getOperationsService(long userId, String operationState,int reqPage,int reqSize) {
 
         return null;
     }
 
+    public OperationListWSDTO getOperationsByCategoryService(long userId, String operationCategory, String operationState,int reqPage,int reqSize) {
 
-    public OperationWSDTO getOperationService(long userId, long sessionId) {
+        return null;
+    }
+
+    public OperationWSDTO getOperationService(long userId, String operationId) {
 
         return null;
     }
@@ -43,13 +45,19 @@ public class OperationFramework {
     }
 
 
-    public OperationWSDTO updateOperationService(long userId,long sessionId) {
+    public OperationWSDTO updateOperationService(long userId,String operationId) {
 
         return null;
     }
 
 
-    public OperationWSDTO removeOperationService(long userId, long sessionId) {
+    public OperationWSDTO removeOperationService(long userId, String operationId) {
+
+        return null;
+    }
+
+
+    public OperationListWSDTO getOperationDetailsService(long userId, String sessionType,String sessionState,int reqPage,int reqSize) {
 
         return null;
     }
