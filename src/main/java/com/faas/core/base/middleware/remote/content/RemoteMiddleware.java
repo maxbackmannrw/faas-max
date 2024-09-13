@@ -98,13 +98,13 @@ public class RemoteMiddleware {
         return response;
     }
 
-    public RemoteWSModel createRemote(long userId, String remote, String remoteDesc, String version, String sourceUrl, long typeId) {
+    public RemoteWSModel createRemote(long userId, String remote, String remoteDesc, String version, String baseUrl, long typeId) {
 
         RemoteWSModel response = new RemoteWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<RemoteWSDTO>remoteWSDTOS = new ArrayList<>();
 
-        RemoteWSDTO remoteWSDTO = remoteFramework.createRemoteService(userId,remote,remoteDesc,version,sourceUrl,typeId);
+        RemoteWSDTO remoteWSDTO = remoteFramework.createRemoteService(userId,remote,remoteDesc,version,baseUrl,typeId);
         if (remoteWSDTO != null){
             remoteWSDTOS.add(remoteWSDTO);
         }

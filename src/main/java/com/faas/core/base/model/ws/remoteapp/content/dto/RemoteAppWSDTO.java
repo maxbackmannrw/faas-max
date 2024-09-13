@@ -7,15 +7,15 @@ import com.faas.core.base.model.db.remoteapp.RemoteAppDBModel;
 public class RemoteAppWSDTO {
 
     private ClientDBModel client;
-    private RemoteAppDBModel remoteClient;
+    private RemoteAppDBModel remoteApp;
     private OperationDBModel operation;
 
     public RemoteAppWSDTO() {
     }
 
-    public RemoteAppWSDTO(ClientDBModel client, RemoteAppDBModel remoteClient, OperationDBModel operation) {
+    public RemoteAppWSDTO(ClientDBModel client, RemoteAppDBModel remoteApp, OperationDBModel operation) {
         this.client = client;
-        this.remoteClient = remoteClient;
+        this.remoteApp = remoteApp;
         this.operation = operation;
     }
 
@@ -27,12 +27,12 @@ public class RemoteAppWSDTO {
         this.client = client;
     }
 
-    public RemoteAppDBModel getRemoteClient() {
-        return remoteClient;
+    public RemoteAppDBModel getRemoteApp() {
+        return remoteApp;
     }
 
-    public void setRemoteClient(RemoteAppDBModel remoteClient) {
-        this.remoteClient = remoteClient;
+    public void setRemoteApp(RemoteAppDBModel remoteApp) {
+        this.remoteApp = remoteApp;
     }
 
     public OperationDBModel getOperation() {

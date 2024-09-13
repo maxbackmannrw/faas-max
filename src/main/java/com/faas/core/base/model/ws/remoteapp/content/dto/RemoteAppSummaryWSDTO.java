@@ -2,51 +2,51 @@ package com.faas.core.base.model.ws.remoteapp.content.dto;
 
 public class RemoteAppSummaryWSDTO {
 
-    private long totalClientRemotes;
-    private long newClientRemotes;
-    private long readyClientRemotes;
-    private long failedClientRemotes;
+    private long totalConnCount;
+    private long waitingConnCount;
+    private long activeConnCount;
+    private long failedConnCount;
 
     public RemoteAppSummaryWSDTO() {
     }
 
-    public RemoteAppSummaryWSDTO(long totalClientRemotes, long newClientRemotes, long readyClientRemotes, long failedClientRemotes) {
-        this.totalClientRemotes = totalClientRemotes;
-        this.newClientRemotes = newClientRemotes;
-        this.readyClientRemotes = readyClientRemotes;
-        this.failedClientRemotes = failedClientRemotes;
+    public RemoteAppSummaryWSDTO(long totalConnCount, long waitingConnCount, long activeConnCount, long failedConnCount) {
+        this.totalConnCount = totalConnCount;
+        this.waitingConnCount = waitingConnCount;
+        this.activeConnCount = activeConnCount;
+        this.failedConnCount = failedConnCount;
     }
 
-    public long getTotalClientRemotes() {
-        return totalClientRemotes;
+    public long getTotalConnCount() {
+        return totalConnCount;
     }
 
-    public void setTotalClientRemotes(long totalClientRemotes) {
-        this.totalClientRemotes = totalClientRemotes;
+    public void setTotalConnCount(long totalConnCount) {
+        this.totalConnCount = totalConnCount;
     }
 
-    public long getNewClientRemotes() {
-        return newClientRemotes;
+    public long getWaitingConnCount() {
+        return waitingConnCount;
     }
 
-    public void setNewClientRemotes(long newClientRemotes) {
-        this.newClientRemotes = newClientRemotes;
+    public void setWaitingConnCount(long waitingConnCount) {
+        this.waitingConnCount = waitingConnCount;
     }
 
-    public long getReadyClientRemotes() {
-        return readyClientRemotes;
+    public long getActiveConnCount() {
+        return activeConnCount;
     }
 
-    public void setReadyClientRemotes(long readyClientRemotes) {
-        this.readyClientRemotes = readyClientRemotes;
+    public void setActiveConnCount(long activeConnCount) {
+        this.activeConnCount = activeConnCount;
     }
 
-    public long getFailedClientRemotes() {
-        return failedClientRemotes;
+    public long getFailedConnCount() {
+        return failedConnCount;
     }
 
-    public void setFailedClientRemotes(long failedClientRemotes) {
-        this.failedClientRemotes = failedClientRemotes;
+    public void setFailedConnCount(long failedConnCount) {
+        this.failedConnCount = failedConnCount;
     }
 }
 

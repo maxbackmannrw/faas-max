@@ -33,7 +33,6 @@ public class ScenarioSettingsFramework {
         return scenarioTypeWSDTOS;
     }
 
-
     public List<ScenarioTypeWSDTO> getScenarioTypesByBaseTypeService(long userId,String baseType) {
 
         List<ScenarioTypeWSDTO>scenarioTypeWSDTOS = new ArrayList<>();
@@ -44,7 +43,6 @@ public class ScenarioSettingsFramework {
         return scenarioTypeWSDTOS;
     }
 
-
     public ScenarioTypeWSDTO getScenarioTypeService(long userId,long scenarioTypeId) {
 
         Optional<ScenarioTypeDBModel> scenarioTypeDBModel = scenarioTypeRepository.findById(scenarioTypeId);
@@ -53,7 +51,6 @@ public class ScenarioSettingsFramework {
         }
         return null;
     }
-
 
     public ScenarioTypeWSDTO createScenarioTypeService(long userId,String scenarioType,String baseType) {
 
@@ -66,7 +63,6 @@ public class ScenarioSettingsFramework {
 
         return new ScenarioTypeWSDTO(scenarioTypeRepository.save(scenarioTypeDBModel));
     }
-
 
     public ScenarioTypeWSDTO updateScenarioTypeService(long userId,long scenarioTypeId,String scenarioType,String baseType) {
 

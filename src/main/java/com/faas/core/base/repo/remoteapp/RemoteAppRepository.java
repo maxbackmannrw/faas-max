@@ -11,13 +11,13 @@ import java.util.List;
 @Repository
 public interface RemoteAppRepository extends MongoRepository<RemoteAppDBModel, String> {
 
-    long countByAppState(String remoteState);
+    long countByConnState(String remoteState);
     List<RemoteAppDBModel>findByStatus(int status);
     List<RemoteAppDBModel>findByClientId(long clientId);
     List<RemoteAppDBModel>findByIdAndClientId(String clientRemoteId, long clientId);
     Page<RemoteAppDBModel>findAllByStatus(int status, Pageable pageable);
-    Page<RemoteAppDBModel>findAllByAppState(String appState, Pageable pageable);
-    Page<RemoteAppDBModel>findAllByAppStateAndBaseType(String appState, String baseType, Pageable pageable);
+    Page<RemoteAppDBModel>findAllByConnState(String appState, Pageable pageable);
+    Page<RemoteAppDBModel>findAllByConnStateAndBaseType(String appState, String baseType, Pageable pageable);
 
 
 

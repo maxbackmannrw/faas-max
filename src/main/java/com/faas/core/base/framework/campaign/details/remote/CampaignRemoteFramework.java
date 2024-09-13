@@ -7,8 +7,6 @@ import com.faas.core.base.model.ws.campaign.details.remote.dto.CampaignRemoteWSD
 import com.faas.core.base.repo.campaign.content.CampaignRepository;
 import com.faas.core.base.repo.campaign.details.remote.CampaignRemoteRepository;
 import com.faas.core.base.repo.remote.content.RemoteRepository;
-import com.faas.core.base.repo.remote.details.RemoteUrlRepository;
-import com.faas.core.utility.config.AppUtils;
 import com.faas.core.utility.helpers.campaign.CampaignHelpers;
 import com.faas.core.utility.helpers.remote.RemoteHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,12 +33,6 @@ public class CampaignRemoteFramework {
 
     @Autowired
     RemoteRepository remoteRepository;
-
-    @Autowired
-    RemoteUrlRepository remoteUrlRepository;
-
-    @Autowired
-    AppUtils appUtils;
 
 
     public List<CampaignRemoteWSDTO> getCampaignRemotesService(long userId, String campaignId) {

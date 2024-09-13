@@ -100,13 +100,13 @@ public class RemoteUrlMiddleware {
         return response;
     }
 
-    public RemoteUrlWSModel updateRemoteUrl(long userId, long urlId, String remoteId, String remoteUrl, String urlType) {
+    public RemoteUrlWSModel updateRemoteUrl(long userId, long urlId, String remoteUrl, String urlType) {
 
         RemoteUrlWSModel response = new RemoteUrlWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<RemoteUrlWSDTO> remoteUrlWSDTOS = new ArrayList<>();
 
-        RemoteUrlWSDTO remoteUrlWSDTO = remoteUrlFramework.updateRemoteUrlService(userId,urlId,remoteId,remoteUrl,urlType);
+        RemoteUrlWSDTO remoteUrlWSDTO = remoteUrlFramework.updateRemoteUrlService(userId,urlId,remoteUrl,urlType);
         if (remoteUrlWSDTO != null){
             remoteUrlWSDTOS.add(remoteUrlWSDTO);
         }

@@ -75,7 +75,7 @@ public class RemoteFramework {
         return null;
     }
 
-    public RemoteWSDTO createRemoteService(long userId, String remote, String remoteDesc, String version, String sourceUrl, long typeId) {
+    public RemoteWSDTO createRemoteService(long userId, String remote, String remoteDesc, String version, String baseUrl, long typeId) {
 
         Optional<RemoteTypeDBModel> remoteTypeDBModel = remoteTypeRepository.findById(typeId);
         if (remoteTypeDBModel.isPresent()) {
@@ -93,8 +93,8 @@ public class RemoteFramework {
             remoteDBModel.setStatus(1);
 
             remoteDBModel = remoteRepository.save(remoteDBModel);
-            if (sourceUrl != null){
-                remoteUrlRepository.save(remoteHelpers.createRemoteUrlHelper(remoteDBModel.getId(),sourceUrl, AppConstant.SOURCE_URL));
+            if (baseUrl != null){
+                remoteUrlRepository.save(remoteHelpers.createRemoteUrlHelper(remoteDBModel.getId(),baseUrl, AppConstant.BASE_URL));
             }
             return remoteHelpers.mapRemoteWSDTOHelper(remoteDBModel);
         }
@@ -125,7 +125,6 @@ public class RemoteFramework {
         }
         return null;
     }
-
 
 
 }

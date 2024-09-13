@@ -117,11 +117,13 @@ public class BaseRoute {
 
 
     public static final String GET_REMOTE_APPS = "getremoteapps";
+    public static final String GET_REMOTE_APPS_BY_BASE_TYPE = "getremoteappsbybasetype";
     public static final String GET_CLIENT_REMOTE_APPS = "getclientremoteapps";
     public static final String GET_REMOTE_APP = "getremoteapp";
     public static final String CREATE_REMOTE_APP = "createremoteapp";
     public static final String UPDATE_REMOTE_APP = "updateremoteapp";
     public static final String REMOVE_REMOTE_APP = "removeremoteapp";
+
     public static final String GET_REMOTE_APP_DETAILS = "getremoteappdetails";
     public static final String GET_REMOTE_APPS_SUMMARY = "getremoteappssummary";
 

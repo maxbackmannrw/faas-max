@@ -65,12 +65,11 @@ public class RemoteUrlFramework {
         return new RemoteUrlWSDTO(remoteUrlRepository.save(remoteUrlDBModel));
     }
 
-    public RemoteUrlWSDTO updateRemoteUrlService(long userId, long urlId, String remoteId, String remoteUrl, String urlType) {
+    public RemoteUrlWSDTO updateRemoteUrlService(long userId, long urlId, String remoteUrl, String urlType) {
 
         Optional<RemoteUrlDBModel> remoteUrlDBModel = remoteUrlRepository.findById(urlId);
         if (remoteUrlDBModel.isPresent()){
 
-            remoteUrlDBModel.get().setRemoteId(remoteId);
             remoteUrlDBModel.get().setRemoteUrl(remoteUrl);
             remoteUrlDBModel.get().setUrlType(urlType);
             remoteUrlDBModel.get().setuDate(appUtils.getCurrentTimeStamp());

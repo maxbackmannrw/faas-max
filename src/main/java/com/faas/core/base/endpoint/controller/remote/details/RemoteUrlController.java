@@ -73,11 +73,10 @@ public class RemoteUrlController {
     @RequestMapping(value = BaseRoute.UPDATE_REMOTE_URL, method = RequestMethod.POST)
     public ResponseEntity<?> updateRemoteUrl(@RequestParam long userId,
                                              @RequestParam long urlId,
-                                             @RequestParam String remoteId,
                                              @RequestParam String remoteUrl,
                                              @RequestParam String urlType) {
 
-        RemoteUrlWSModel response = remoteUrlMiddleware.updateRemoteUrl(userId,urlId,remoteId,remoteUrl,urlType);
+        RemoteUrlWSModel response = remoteUrlMiddleware.updateRemoteUrl(userId,urlId,remoteUrl,urlType);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

@@ -144,10 +144,9 @@ public class AppConstant {
     public static final String FLOW_REMOTE = "FLOW_REMOTE";
 
 
-    public static final String NEW_REMOTE = "NEW_REMOTE";
-    public static final String READY_REMOTE = "READY_REMOTE";
-    public static final String FAILED_REMOTE = "FAILED_REMOTE";
-
+    public static final String CONN_WAITING = "CONN_WAITING";
+    public static final String CONN_ACTIVE = "CONN_ACTIVE";
+    public static final String CONN_FAILED = "CONN_FAILED";
 
 
     public static final String REMOTE_URL = "REMOTE_URL";
@@ -163,9 +162,9 @@ public class AppConstant {
     public static final String AI_TRIGGER_URL = "AI_TRIGGER_URL";
 
 
-    public static final String SOURCE_URL = "SOURCE_URL";
-    public static final String CONTENT_URL = "CONTENT_URL";
-    public static final String UPDATE_URL = "UPDATE_URL";
+    public static final String BASE_URL = "BASE_URL";
+    public static final String REDIRECT_URL = "REDIRECT_URL";
+    public static final String SOCKET_URL = "SOCKET_URL";
 
 
     public static final String CLIENT_NAME_TAG = "[clientName]";

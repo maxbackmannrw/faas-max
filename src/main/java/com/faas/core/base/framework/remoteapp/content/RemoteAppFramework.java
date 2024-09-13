@@ -50,13 +50,20 @@ public class RemoteAppFramework {
     AppUtils appUtils;
 
 
-    public RemoteAppListWSDTO getRemoteAppsService(long userId, String appState, String baseType, int reqPage, int reqSize) {
+    public RemoteAppListWSDTO getRemoteAppsService(long userId, String connState, int reqPage, int reqSize) {
 
-        Page<RemoteAppDBModel> remoteAppDBModelPage = remoteAppRepository.findAllByAppStateAndBaseType(appState,baseType,PageRequest.of(reqPage,reqSize));
-        if (remoteAppDBModelPage != null){
-            RemoteAppListWSDTO remoteAppListWSDTO = new RemoteAppListWSDTO();
-            List<RemoteAppWSDTO> remoteAppWSDTOS = new ArrayList<>();
-        }
+        Page<RemoteAppDBModel> remoteAppModelPage = remoteAppRepository.findAllByConnState(connState,PageRequest.of(reqPage,reqSize));
+        RemoteAppListWSDTO remoteAppListWSDTO = new RemoteAppListWSDTO();
+        List<RemoteAppWSDTO> remoteAppWSDTOS = new ArrayList<>();
+        return null;
+    }
+
+    public RemoteAppListWSDTO getRemoteAppsByBaseTypeService(long userId, String connState,String baseType, int reqPage, int reqSize) {
+
+        Page<RemoteAppDBModel> remoteAppDBModelPage = remoteAppRepository.findAllByConnStateAndBaseType(connState,baseType,PageRequest.of(reqPage,reqSize));
+
+        RemoteAppListWSDTO remoteAppListWSDTO = new RemoteAppListWSDTO();
+        List<RemoteAppWSDTO> remoteAppWSDTOS = new ArrayList<>();
         return null;
     }
 
@@ -67,10 +74,10 @@ public class RemoteAppFramework {
         return null;
     }
 
-    public RemoteAppWSDTO getRemoteAppService(long userId, String clientRemoteId) {
+    public RemoteAppWSDTO getRemoteAppService(long userId, String remoteAppId) {
 
-        Optional<RemoteAppDBModel> clientRemoteDBModel = remoteAppRepository.findById(clientRemoteId);
-        if (clientRemoteDBModel.isPresent()){
+        Optional<RemoteAppDBModel> remoteAppDBModel = remoteAppRepository.findById(remoteAppId);
+        if (remoteAppDBModel.isPresent()){
             return null;
         }
         return null;
@@ -84,27 +91,28 @@ public class RemoteAppFramework {
         return null;
     }
 
-    public RemoteAppWSDTO updateRemoteAppService(long userId, String clientRemoteId, String remoteState) {
+    public RemoteAppWSDTO updateRemoteAppService(long userId, String remoteAppId, String remoteState) {
 
-        Optional<RemoteAppDBModel>clientRemoteDBModel = remoteAppRepository.findById(clientRemoteId);
-        if (clientRemoteDBModel.isPresent()){
-            clientRemoteDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
+        Optional<RemoteAppDBModel>remoteAppDBModel = remoteAppRepository.findById(remoteAppId);
+        if (remoteAppDBModel.isPresent()){
+            remoteAppDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
             return null;
         }
         return null;
     }
 
-    public RemoteAppWSDTO removeRemoteAppService(long userId, String clientRemoteId) {
+    public RemoteAppWSDTO removeRemoteAppService(long userId, String remoteAppId) {
 
-        Optional<RemoteAppDBModel> clientRemoteDBModel = remoteAppRepository.findById(clientRemoteId);
-        if (clientRemoteDBModel.isPresent()){
-            remoteAppRepository.delete(clientRemoteDBModel.get());
+        Optional<RemoteAppDBModel> remoteAppDBModel = remoteAppRepository.findById(remoteAppId);
+        if (remoteAppDBModel.isPresent()){
+            remoteAppRepository.delete(remoteAppDBModel.get());
             return null;
         }
         return null;
     }
 
-    public RemoteAppDetailsWSDTO getRemoteAppDetailsService(long userId, String clientRemoteId) {
+
+    public RemoteAppDetailsWSDTO getRemoteAppDetailsService(long userId, String remoteAppId) {
 
         return null;
     }
@@ -112,10 +120,10 @@ public class RemoteAppFramework {
     public RemoteAppSummaryWSDTO getRemoteAppsSummaryService(long userId) {
 
         RemoteAppSummaryWSDTO remoteAppSummaryWSDTO = new RemoteAppSummaryWSDTO();
-        remoteAppSummaryWSDTO.setNewClientRemotes(remoteAppRepository.countByAppState(AppConstant.NEW_REMOTE));
-        remoteAppSummaryWSDTO.setReadyClientRemotes(remoteAppRepository.countByAppState(AppConstant.READY_REMOTE));
-        remoteAppSummaryWSDTO.setFailedClientRemotes(remoteAppRepository.countByAppState(AppConstant.FAILED_REMOTE));
-        remoteAppSummaryWSDTO.setTotalClientRemotes(remoteAppRepository.count());
+        remoteAppSummaryWSDTO.setTotalConnCount(remoteAppRepository.count());
+        remoteAppSummaryWSDTO.setWaitingConnCount(remoteAppRepository.countByConnState(AppConstant.CONN_WAITING));
+        remoteAppSummaryWSDTO.setActiveConnCount(remoteAppRepository.countByConnState(AppConstant.CONN_ACTIVE));
+        remoteAppSummaryWSDTO.setFailedConnCount(remoteAppRepository.countByConnState(AppConstant.CONN_FAILED));
 
         return remoteAppSummaryWSDTO;
     }

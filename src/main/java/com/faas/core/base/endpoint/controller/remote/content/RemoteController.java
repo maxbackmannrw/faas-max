@@ -74,10 +74,10 @@ public class RemoteController {
                                           @RequestParam String remote,
                                           @RequestParam String remoteDesc,
                                           @RequestParam String version,
-                                          @RequestParam String sourceUrl,
+                                          @RequestParam String baseUrl,
                                           @RequestParam long typeId) {
 
-        RemoteWSModel response = remoteMiddleware.createRemote(userId,remote,remoteDesc,version,sourceUrl,typeId);
+        RemoteWSModel response = remoteMiddleware.createRemote(userId,remote,remoteDesc,version,baseUrl,typeId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
