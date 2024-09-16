@@ -1,6 +1,7 @@
 package com.faas.core.base.framework.operation.content;
 
 import com.faas.core.base.model.db.operation.content.OperationDBModel;
+import com.faas.core.base.model.ws.operation.content.OperationListWSModel;
 import com.faas.core.base.model.ws.operation.content.dto.OperationListWSDTO;
 import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
 import com.faas.core.base.repo.operation.content.OperationRepository;
@@ -10,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 
 @Service
@@ -46,6 +49,10 @@ public class OperationFramework {
 
     public OperationWSDTO getOperationService(long userId, String operationId) {
 
+        Optional<OperationDBModel> operationDBModel = operationRepository.findById(operationId);
+        if (operationDBModel.isPresent()){
+            return operationHelpers.getOperationWSDTO(operationDBModel.get());
+        }
         return null;
     }
 
