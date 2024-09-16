@@ -68,9 +68,13 @@ public class OperationFramework {
         return null;
     }
 
-
     public OperationWSDTO removeOperationService(long userId, String operationId) {
 
+        Optional<OperationDBModel> operationDBModel = operationRepository.findById(operationId);
+        if (operationDBModel.isPresent()){
+            operationHelpers.removeOperationHelper(operationDBModel.get());
+            return operationHelpers.getOperationWSDTO(operationDBModel.get());
+        }
         return null;
     }
 
