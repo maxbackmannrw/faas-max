@@ -10,7 +10,7 @@ import com.faas.core.data.repo.campaign.details.agent.CampaignAgentRepository;
 import com.faas.core.data.repo.operation.content.OperationRepository;
 import com.faas.core.misc.config.AppConstant;
 import com.faas.core.misc.config.AppUtils;
-import com.faas.core.misc.helpers.campaign.CampaignHelpers;
+import com.faas.core.misc.helpers.campaign.CampaignHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -24,7 +24,7 @@ public class ApiCampaignFramework {
 
 
     @Autowired
-    CampaignHelpers campaignHelpers;
+    CampaignHelper campaignHelper;
 
     @Autowired
     OperationRepository operationRepository;
@@ -67,7 +67,7 @@ public class ApiCampaignFramework {
             Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignAgent.getCampaignId());
             if (campaignDBModel.isPresent()) {
                 if (campaignDBModel.get().getCampaignCategory().equalsIgnoreCase(campaignCategory) || campaignCategory.equalsIgnoreCase(AppConstant.ALL_CAMPAIGNS)) {
-                    campaignWSDTOS.add(campaignHelpers.getApiCampaignWSDTO(agentId, campaignDBModel.get()));
+                    campaignWSDTOS.add(campaignHelper.getApiCampaignWSDTO(agentId, campaignDBModel.get()));
                 }
             }
         }
@@ -78,7 +78,7 @@ public class ApiCampaignFramework {
 
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
         if (campaignDBModel.isPresent()) {
-            return campaignHelpers.getApiCampaignWSDTO(agentId, campaignDBModel.get());
+            return campaignHelper.getApiCampaignWSDTO(agentId, campaignDBModel.get());
         }
         return null;
     }

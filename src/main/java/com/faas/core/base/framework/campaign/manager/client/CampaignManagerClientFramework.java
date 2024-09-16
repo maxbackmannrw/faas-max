@@ -6,7 +6,7 @@ import com.faas.core.data.ws.base.campaign.manager.client.dto.CampaignClientWSDT
 import com.faas.core.data.ws.base.client.content.dto.ClientWSDTO;
 import com.faas.core.data.repo.client.content.ClientRepository;
 import com.faas.core.misc.config.AppConstant;
-import com.faas.core.misc.helpers.client.ClientHelpers;
+import com.faas.core.misc.helpers.client.ClientHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -21,7 +21,7 @@ public class CampaignManagerClientFramework {
 
 
     @Autowired
-    ClientHelpers clientHelpers;
+    ClientHelper clientHelper;
 
     @Autowired
     ClientRepository clientRepository;
@@ -30,9 +30,9 @@ public class CampaignManagerClientFramework {
     public CampaignClientWSDTO searchCampaignClientsService(String city, String clientState, int reqPage, int reqSize) {
 
         if (city.equalsIgnoreCase(AppConstant.NONE)) {
-            return clientHelpers.mapCampaignClientWSDTO(clientRepository.findAllByClientState(clientState, PageRequest.of(reqPage, reqSize)));
+            return clientHelper.mapCampaignClientWSDTO(clientRepository.findAllByClientState(clientState, PageRequest.of(reqPage, reqSize)));
         } else {
-            return clientHelpers.mapCampaignClientWSDTO(clientRepository.findAllByClientCityAndClientState(city, clientState, PageRequest.of(reqPage, reqSize)));
+            return clientHelper.mapCampaignClientWSDTO(clientRepository.findAllByClientCityAndClientState(city, clientState, PageRequest.of(reqPage, reqSize)));
         }
     }
 

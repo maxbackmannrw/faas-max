@@ -10,8 +10,8 @@ import com.faas.core.data.repo.client.details.ClientDetailsRepository;
 import com.faas.core.data.repo.operation.content.OperationRepository;
 import com.faas.core.data.repo.operation.details.channel.OperationSipCallRepository;
 import com.faas.core.misc.config.AppUtils;
-import com.faas.core.misc.helpers.channel.ChannelHelpers;
-import com.faas.core.misc.helpers.operation.OperationHelpers;
+import com.faas.core.misc.helpers.channel.ChannelHelper;
+import com.faas.core.misc.helpers.operation.OperationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -23,10 +23,10 @@ public class ApiOperationSipFramework {
 
 
     @Autowired
-    OperationHelpers operationHelpers;
+    OperationHelper operationHelper;
 
     @Autowired
-    ChannelHelpers channelHelpers;
+    ChannelHelper channelHelper;
 
     @Autowired
     ClientDetailsRepository clientDetailsRepository;
@@ -47,7 +47,7 @@ public class ApiOperationSipFramework {
         if (!operationDBModels.isEmpty()) {
             List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(operationDBModels.get(0).getClientId());
             if (!clientDetailsDBModels.isEmpty()) {
-                return operationHelpers.getApiOperationSipChannelWSDTO(operationDBModels.get(0), clientDetailsDBModels.get(0));
+                return operationHelper.getApiOperationSipChannelWSDTO(operationDBModels.get(0), clientDetailsDBModels.get(0));
             }
         }
         return null;
@@ -57,7 +57,7 @@ public class ApiOperationSipFramework {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
         if (!operationDBModels.isEmpty()) {
-            return channelHelpers.getApiOperationSipAccountWSDTO(agentId, operationDBModels.get(0).getCampaignId());
+            return channelHelper.getApiOperationSipAccountWSDTO(agentId, operationDBModels.get(0).getCampaignId());
         }
         return null;
     }
@@ -86,7 +86,7 @@ public class ApiOperationSipFramework {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
         if (!operationDBModels.isEmpty()) {
-            return channelHelpers.createOperationSipCallHelper(operationDBModels.get(0), numberId);
+            return channelHelper.createOperationSipCallHelper(operationDBModels.get(0), numberId);
         }
         return null;
     }
@@ -95,7 +95,7 @@ public class ApiOperationSipFramework {
 
         List<OperationSipCallDBModel> operationSipCallDBModels = operationSipCallRepository.findByIdAndOperationIdAndAgentId(callId, operationId, agentId);
         if (!operationSipCallDBModels.isEmpty()) {
-            return channelHelpers.startOperationSipCallHelper(operationSipCallDBModels.get(0));
+            return channelHelper.startOperationSipCallHelper(operationSipCallDBModels.get(0));
         }
         return null;
     }
@@ -104,7 +104,7 @@ public class ApiOperationSipFramework {
 
         List<OperationSipCallDBModel> operationSipCallDBModels = operationSipCallRepository.findByIdAndOperationIdAndAgentId(callId, operationId, agentId);
         if (!operationSipCallDBModels.isEmpty()) {
-            return channelHelpers.cancelOperationSipCallHelper(operationSipCallDBModels.get(0));
+            return channelHelper.cancelOperationSipCallHelper(operationSipCallDBModels.get(0));
         }
         return null;
     }
@@ -113,7 +113,7 @@ public class ApiOperationSipFramework {
 
         List<OperationSipCallDBModel> operationSipCallDBModels = operationSipCallRepository.findByIdAndOperationIdAndAgentId(callId, operationId, agentId);
         if (!operationSipCallDBModels.isEmpty()) {
-            return channelHelpers.hangUpOperationSipCallHelper(operationSipCallDBModels.get(0));
+            return channelHelper.hangUpOperationSipCallHelper(operationSipCallDBModels.get(0));
         }
         return null;
     }

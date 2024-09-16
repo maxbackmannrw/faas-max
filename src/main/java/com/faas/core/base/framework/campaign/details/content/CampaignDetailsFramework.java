@@ -11,8 +11,8 @@ import com.faas.core.data.repo.campaign.content.CampaignRepository;
 import com.faas.core.data.repo.remote.content.RemoteRepository;
 import com.faas.core.data.repo.utilz.DataTypeRepository;
 import com.faas.core.misc.config.AppUtils;
-import com.faas.core.misc.helpers.campaign.CampaignHelpers;
-import com.faas.core.misc.helpers.remote.RemoteHelpers;
+import com.faas.core.misc.helpers.campaign.CampaignHelper;
+import com.faas.core.misc.helpers.remote.RemoteHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,10 +24,10 @@ import java.util.Optional;
 public class CampaignDetailsFramework {
 
     @Autowired
-    CampaignHelpers campaignHelpers;
+    CampaignHelper campaignHelper;
 
     @Autowired
-    RemoteHelpers remoteHelpers;
+    RemoteHelper remoteHelper;
 
     @Autowired
     CampaignRepository campaignRepository;
@@ -46,7 +46,7 @@ public class CampaignDetailsFramework {
 
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
         if (campaignDBModel.isPresent()) {
-            return campaignHelpers.getCampaignDetailsWSDTO(campaignDBModel.get());
+            return campaignHelper.getCampaignDetailsWSDTO(campaignDBModel.get());
         }
         return null;
     }

@@ -7,7 +7,7 @@ import com.faas.core.data.repo.operation.content.OperationRepository;
 import com.faas.core.data.repo.remote.content.RemoteRepository;
 import com.faas.core.data.repo.remoteapp.RemoteAppRepository;
 import com.faas.core.misc.config.AppUtils;
-import com.faas.core.misc.helpers.remote.RemoteAppHelpers;
+import com.faas.core.misc.helpers.remoteapp.RemoteAppHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +16,7 @@ public class RemoteAppManagerDetailsFramework {
 
 
     @Autowired
-    RemoteAppHelpers remoteAppHelpers;
+    RemoteAppHelper remoteAppHelper;
 
     @Autowired
     ClientRepository clientRepository;

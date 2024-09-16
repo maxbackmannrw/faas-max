@@ -54,7 +54,7 @@ import java.util.Optional;
 
 
 @Component
-public class CampaignHelpers {
+public class CampaignHelper {
 
 
     @Autowired

@@ -1,4 +1,4 @@
-package com.faas.core.data.websocket.base.user.response;
+package com.faas.core.data.socket.base.user.response;
 
 
 public class UserResponseSocketModel {

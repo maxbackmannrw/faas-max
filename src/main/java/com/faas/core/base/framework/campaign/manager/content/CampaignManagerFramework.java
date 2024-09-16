@@ -4,7 +4,7 @@ import com.faas.core.data.db.campaign.content.CampaignDBModel;
 import com.faas.core.data.ws.base.campaign.manager.content.dto.CampaignManagerDetailsWSDTO;
 import com.faas.core.data.ws.base.campaign.manager.content.dto.CampaignManagerWSDTO;
 import com.faas.core.data.repo.campaign.content.CampaignRepository;
-import com.faas.core.misc.helpers.campaign.CampaignHelpers;
+import com.faas.core.misc.helpers.campaign.CampaignHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +17,7 @@ public class CampaignManagerFramework {
 
 
     @Autowired
-    CampaignHelpers campaignHelpers;
+    CampaignHelper campaignHelper;
 
     @Autowired
     CampaignRepository campaignRepository;
@@ -28,7 +28,7 @@ public class CampaignManagerFramework {
         List<CampaignManagerWSDTO> campaignManagerWSDTOS = new ArrayList<>();
         List<CampaignDBModel> campaignDBModels = campaignRepository.findByStatus(1);
         for (CampaignDBModel campaignDBModel : campaignDBModels) {
-            campaignManagerWSDTOS.add(campaignHelpers.getCampaignManagerWSDTO(campaignDBModel));
+            campaignManagerWSDTOS.add(campaignHelper.getCampaignManagerWSDTO(campaignDBModel));
         }
         return campaignManagerWSDTOS;
     }
@@ -38,7 +38,7 @@ public class CampaignManagerFramework {
         List<CampaignManagerWSDTO> campaignManagerWSDTOS = new ArrayList<>();
         List<CampaignDBModel> campaignDBModels = campaignRepository.findByCampaignCategory(campaignCategory);
         for (CampaignDBModel campaignDBModel : campaignDBModels) {
-            campaignManagerWSDTOS.add(campaignHelpers.getCampaignManagerWSDTO(campaignDBModel));
+            campaignManagerWSDTOS.add(campaignHelper.getCampaignManagerWSDTO(campaignDBModel));
         }
         return campaignManagerWSDTOS;
     }
@@ -48,7 +48,7 @@ public class CampaignManagerFramework {
         List<CampaignManagerWSDTO> campaignManagerWSDTOS = new ArrayList<>();
         List<CampaignDBModel> campaignDBModels = campaignRepository.findByCampaignState(campaignState);
         for (CampaignDBModel campaignDBModel : campaignDBModels) {
-            campaignManagerWSDTOS.add(campaignHelpers.getCampaignManagerWSDTO(campaignDBModel));
+            campaignManagerWSDTOS.add(campaignHelper.getCampaignManagerWSDTO(campaignDBModel));
         }
         return campaignManagerWSDTOS;
     }
@@ -57,7 +57,7 @@ public class CampaignManagerFramework {
 
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
         if (campaignDBModel.isPresent()) {
-            return campaignHelpers.getCampaignManagerWSDTO(campaignDBModel.get());
+            return campaignHelper.getCampaignManagerWSDTO(campaignDBModel.get());
         }
         return null;
     }
@@ -66,9 +66,9 @@ public class CampaignManagerFramework {
 
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
         if (campaignDBModel.isPresent()) {
-            CampaignDBModel updatedCampaign = campaignHelpers.updateCampaignManagerStateHelper(campaignDBModel.get(), campaignState);
+            CampaignDBModel updatedCampaign = campaignHelper.updateCampaignManagerStateHelper(campaignDBModel.get(), campaignState);
             if (updatedCampaign != null) {
-                return campaignHelpers.getCampaignManagerWSDTO(campaignRepository.save(updatedCampaign));
+                return campaignHelper.getCampaignManagerWSDTO(campaignRepository.save(updatedCampaign));
             }
         }
         return null;
@@ -78,9 +78,9 @@ public class CampaignManagerFramework {
 
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
         if (campaignDBModel.isPresent()) {
-            CampaignDBModel updatedCampaign = campaignHelpers.updateCampaignManagerInquiryStateHelper(campaignDBModel.get(), inquiryState);
+            CampaignDBModel updatedCampaign = campaignHelper.updateCampaignManagerInquiryStateHelper(campaignDBModel.get(), inquiryState);
             if (updatedCampaign != null) {
-                return campaignHelpers.getCampaignManagerWSDTO(campaignRepository.save(updatedCampaign));
+                return campaignHelper.getCampaignManagerWSDTO(campaignRepository.save(updatedCampaign));
             }
         }
         return null;
@@ -90,9 +90,9 @@ public class CampaignManagerFramework {
 
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
         if (campaignDBModel.isPresent()) {
-            CampaignDBModel updatedCampaign = campaignHelpers.updateCampaignManagerFlowStateHelper(campaignDBModel.get(), flowState);
+            CampaignDBModel updatedCampaign = campaignHelper.updateCampaignManagerFlowStateHelper(campaignDBModel.get(), flowState);
             if (updatedCampaign != null) {
-                return campaignHelpers.getCampaignManagerWSDTO(campaignRepository.save(updatedCampaign));
+                return campaignHelper.getCampaignManagerWSDTO(campaignRepository.save(updatedCampaign));
             }
         }
         return null;
@@ -102,7 +102,7 @@ public class CampaignManagerFramework {
 
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
         if (campaignDBModel.isPresent()) {
-            return campaignHelpers.getCampaignManagerDetailsWSDTO(campaignDBModel.get());
+            return campaignHelper.getCampaignManagerDetailsWSDTO(campaignDBModel.get());
         }
         return null;
     }

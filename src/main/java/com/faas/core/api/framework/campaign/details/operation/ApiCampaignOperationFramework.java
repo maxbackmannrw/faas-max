@@ -13,7 +13,7 @@ import com.faas.core.data.repo.operation.content.OperationRepository;
 import com.faas.core.data.repo.user.content.UserRepository;
 import com.faas.core.misc.config.AppConstant;
 import com.faas.core.misc.config.AppUtils;
-import com.faas.core.misc.helpers.operation.OperationHelpers;
+import com.faas.core.misc.helpers.operation.OperationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
@@ -26,7 +26,7 @@ import java.util.Optional;
 public class ApiCampaignOperationFramework {
 
     @Autowired
-    OperationHelpers operationHelpers;
+    OperationHelper operationHelper;
 
     @Autowired
     UserRepository userRepository;
@@ -54,7 +54,7 @@ public class ApiCampaignOperationFramework {
         if (campaignDBModel.isPresent()) {
             if (operationState.equalsIgnoreCase(AppConstant.READY_STATE)) {
                 if (campaignDBModel.get().getCampaignCategory().equalsIgnoreCase(AppConstant.MANUAL_CAMPAIGN)) {
-                    return operationHelpers.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndCampaignIdAndOperationState(agentId, campaignId, operationState, PageRequest.of(reqPage, reqSize)));
+                    return operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndCampaignIdAndOperationState(agentId, campaignId, operationState, PageRequest.of(reqPage, reqSize)));
                 }
                 if (campaignDBModel.get().getCampaignCategory().equalsIgnoreCase(AppConstant.INQUIRY_CAMPAIGN)) {
                 }
@@ -62,7 +62,7 @@ public class ApiCampaignOperationFramework {
                 }
             }
             if (operationState.equalsIgnoreCase(AppConstant.ACTIVE_STATE)) {
-                return operationHelpers.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndCampaignIdAndOperationState(agentId, campaignId, operationState, PageRequest.of(reqPage, reqSize)));
+                return operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndCampaignIdAndOperationState(agentId, campaignId, operationState, PageRequest.of(reqPage, reqSize)));
             }
         }
         return null;
@@ -73,7 +73,7 @@ public class ApiCampaignOperationFramework {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
         if (!operationDBModels.isEmpty()) {
-            return operationHelpers.getApiOperationWSDTO(operationDBModels.get(0));
+            return operationHelper.getApiOperationWSDTO(operationDBModels.get(0));
         }
         return null;
     }
@@ -85,7 +85,7 @@ public class ApiCampaignOperationFramework {
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
         if (userDBModel.isPresent() && !operationDBModels.isEmpty()) {
             userDBModel.get().setPassword("");
-            return operationHelpers.operationValidateHelper(userDBModel.get(), operationDBModels.get(0));
+            return operationHelper.operationValidateHelper(userDBModel.get(), operationDBModels.get(0));
         }
         return null;
     }

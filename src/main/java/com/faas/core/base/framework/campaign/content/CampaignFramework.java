@@ -14,7 +14,7 @@ import com.faas.core.data.repo.campaign.details.trigger.*;
 import com.faas.core.data.repo.campaign.settings.CampaignTypeRepository;
 import com.faas.core.misc.config.AppConstant;
 import com.faas.core.misc.config.AppUtils;
-import com.faas.core.misc.helpers.campaign.CampaignHelpers;
+import com.faas.core.misc.helpers.campaign.CampaignHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +27,7 @@ public class CampaignFramework {
 
 
     @Autowired
-    CampaignHelpers campaignHelpers;
+    CampaignHelper campaignHelper;
 
     @Autowired
     CampaignRepository campaignRepository;
@@ -77,7 +77,7 @@ public class CampaignFramework {
         List<CampaignWSDTO> campaignWSDTOS = new ArrayList<>();
         List<CampaignDBModel> campaignDBModels = campaignRepository.findByStatus(1);
         for (CampaignDBModel campaignDBModel : campaignDBModels) {
-            campaignWSDTOS.add(campaignHelpers.getCampaignWSDTO(campaignDBModel));
+            campaignWSDTOS.add(campaignHelper.getCampaignWSDTO(campaignDBModel));
         }
         return campaignWSDTOS;
     }
@@ -87,7 +87,7 @@ public class CampaignFramework {
         List<CampaignWSDTO> campaignWSDTOS = new ArrayList<>();
         List<CampaignDBModel> campaignDBModels = campaignRepository.findByCampaignCategory(campaignCategory);
         for (CampaignDBModel campaignDBModel : campaignDBModels) {
-            campaignWSDTOS.add(campaignHelpers.getCampaignWSDTO(campaignDBModel));
+            campaignWSDTOS.add(campaignHelper.getCampaignWSDTO(campaignDBModel));
         }
         return campaignWSDTOS;
     }
@@ -97,7 +97,7 @@ public class CampaignFramework {
         List<CampaignWSDTO> campaignWSDTOS = new ArrayList<>();
         List<CampaignDBModel> campaignDBModels = campaignRepository.findByCampaignState(campaignState);
         for (CampaignDBModel campaignDBModel : campaignDBModels) {
-            campaignWSDTOS.add(campaignHelpers.getCampaignWSDTO(campaignDBModel));
+            campaignWSDTOS.add(campaignHelper.getCampaignWSDTO(campaignDBModel));
         }
         return campaignWSDTOS;
     }
@@ -106,7 +106,7 @@ public class CampaignFramework {
 
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
         if (campaignDBModel.isPresent()) {
-            return campaignHelpers.getCampaignWSDTO(campaignDBModel.get());
+            return campaignHelper.getCampaignWSDTO(campaignDBModel.get());
         }
         return null;
     }
@@ -123,10 +123,10 @@ public class CampaignFramework {
             campaignDBModel.setCampaignType(campaignTypeDBModel.get().getCampaignType());
             campaignDBModel.setCampaignCategory(campaignCategory);
             if (campaignCategory.equalsIgnoreCase(AppConstant.INQUIRY_CAMPAIGN)) {
-                campaignDBModel.setCampaignInquiry(campaignHelpers.createCampaignInquiryDAO(campaign));
+                campaignDBModel.setCampaignInquiry(campaignHelper.createCampaignInquiryDAO(campaign));
             }
             if (campaignCategory.equalsIgnoreCase(AppConstant.AUTOMATIC_CAMPAIGN)) {
-                campaignDBModel.setCampaignFlow(campaignHelpers.createCampaignFlowDAO(campaign));
+                campaignDBModel.setCampaignFlow(campaignHelper.createCampaignFlowDAO(campaign));
             }
             campaignDBModel.setCampaignScripts(new ArrayList<>());
             campaignDBModel.setCampaignDatas(new ArrayList<>());
@@ -136,9 +136,9 @@ public class CampaignFramework {
             campaignDBModel.setStatus(1);
 
             campaignDBModel = campaignRepository.save(campaignDBModel);
-            campaignHelpers.generateCampaignChannelDBModel(campaignDBModel);
+            campaignHelper.generateCampaignChannelDBModel(campaignDBModel);
 
-            return campaignHelpers.getCampaignWSDTO(campaignDBModel);
+            return campaignHelper.getCampaignWSDTO(campaignDBModel);
         }
         return null;
     }
@@ -154,7 +154,7 @@ public class CampaignFramework {
             campaignDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
             campaignDBModel.get().setStatus(1);
 
-            return campaignHelpers.getCampaignWSDTO(campaignRepository.save(campaignDBModel.get()));
+            return campaignHelper.getCampaignWSDTO(campaignRepository.save(campaignDBModel.get()));
         }
         return null;
     }
@@ -164,7 +164,7 @@ public class CampaignFramework {
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
         if (campaignDBModel.isPresent()) {
 
-            CampaignWSDTO campaignWSDTO = campaignHelpers.getCampaignWSDTO(campaignDBModel.get());
+            CampaignWSDTO campaignWSDTO = campaignHelper.getCampaignWSDTO(campaignDBModel.get());
 
             campaignRepository.delete(campaignDBModel.get());
             campaignScenarioRepository.deleteAll(campaignScenarioRepository.findByCampaignId(campaignId));

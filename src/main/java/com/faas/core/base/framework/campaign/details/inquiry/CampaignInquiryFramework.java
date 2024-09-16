@@ -9,7 +9,7 @@ import com.faas.core.data.repo.campaign.content.CampaignRepository;
 import com.faas.core.data.repo.remote.content.RemoteRepository;
 import com.faas.core.data.repo.utilz.DataTypeRepository;
 import com.faas.core.misc.config.AppUtils;
-import com.faas.core.misc.helpers.remote.RemoteHelpers;
+import com.faas.core.misc.helpers.remote.RemoteHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +21,7 @@ import java.util.Optional;
 public class CampaignInquiryFramework {
 
     @Autowired
-    RemoteHelpers remoteHelpers;
+    RemoteHelper remoteHelper;
 
     @Autowired
     CampaignRepository campaignRepository;

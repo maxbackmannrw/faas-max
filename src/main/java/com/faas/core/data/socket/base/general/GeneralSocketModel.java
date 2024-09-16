@@ -1,4 +1,4 @@
-package com.faas.core.data.websocket.base.general;
+package com.faas.core.data.socket.base.general;
 
 public class GeneralSocketModel {
 

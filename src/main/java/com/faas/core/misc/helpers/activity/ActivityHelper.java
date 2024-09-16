@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 
 @Component
-public class ActivityHelpers {
+public class ActivityHelper {
 
 
     @Autowired

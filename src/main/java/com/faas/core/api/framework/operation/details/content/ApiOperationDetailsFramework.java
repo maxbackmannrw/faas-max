@@ -10,7 +10,7 @@ import com.faas.core.data.repo.client.content.ClientRepository;
 import com.faas.core.data.repo.operation.content.OperationRepository;
 import com.faas.core.misc.config.AppConstant;
 import com.faas.core.misc.config.AppUtils;
-import com.faas.core.misc.helpers.operation.OperationHelpers;
+import com.faas.core.misc.helpers.operation.OperationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -22,7 +22,7 @@ import java.util.List;
 public class ApiOperationDetailsFramework {
 
     @Autowired
-    OperationHelpers operationHelpers;
+    OperationHelper operationHelper;
 
     @Autowired
     ClientRepository clientRepository;
@@ -41,7 +41,7 @@ public class ApiOperationDetailsFramework {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
         if (!operationDBModels.isEmpty()) {
-            return operationHelpers.getApiOperationDetailsWSDTO(operationDBModels.get(0));
+            return operationHelper.getApiOperationDetailsWSDTO(operationDBModels.get(0));
         }
         return null;
     }
@@ -65,7 +65,7 @@ public class ApiOperationDetailsFramework {
         List<OperationDBModel> operationDBModels = operationRepository.findByAgentIdAndOperationState(agentId, AppConstant.ACTIVE_STATE);
         for (OperationDBModel operationDBModel : operationDBModels) {
             if (!operationDBModel.getId().equalsIgnoreCase(operationId)) {
-                operationWSDTOS.add(operationHelpers.getApiOperationWSDTO(operationDBModel));
+                operationWSDTOS.add(operationHelper.getApiOperationWSDTO(operationDBModel));
             }
         }
         return operationWSDTOS;
@@ -76,7 +76,7 @@ public class ApiOperationDetailsFramework {
         List<OperationDBModel> currentOperations = operationRepository.findByIdAndAgentId(operationId, agentId);
         List<OperationDBModel> selectedOperations = operationRepository.findByIdAndAgentId(selectedId, agentId);
         if (!currentOperations.isEmpty() && !selectedOperations.isEmpty() && selectedOperations.get(0).getOperationState().equalsIgnoreCase(AppConstant.ACTIVE_STATE)) {
-            return operationHelpers.getApiOperationWSDTO(selectedOperations.get(0));
+            return operationHelper.getApiOperationWSDTO(selectedOperations.get(0));
         }
         return null;
     }

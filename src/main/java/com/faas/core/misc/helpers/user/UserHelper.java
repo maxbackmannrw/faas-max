@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 import java.util.Optional;
 
 @Component
-public class UserHelpers {
+public class UserHelper {
 
     @Autowired
     UserDetailsRepository userDetailsRepository;

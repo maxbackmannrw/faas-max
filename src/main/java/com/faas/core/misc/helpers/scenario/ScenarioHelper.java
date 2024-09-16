@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class ScenarioHelpers {
+public class ScenarioHelper {
 
     @Autowired
     OperationRepository operationRepository;

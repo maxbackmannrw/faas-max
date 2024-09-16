@@ -1,7 +1,7 @@
-package com.faas.core.data.websocket.base.customer.request;
+package com.faas.core.data.socket.base.user.request;
 
 
-public class CustomerRequestSocketModel {
+public class UserRequestSocketModel {
 
     private String operation;
     private String process;
@@ -11,7 +11,7 @@ public class CustomerRequestSocketModel {
     private String sessionId;
 
 
-    public CustomerRequestSocketModel() {
+    public UserRequestSocketModel() {
     }
 
 

@@ -9,7 +9,7 @@ import com.faas.core.data.repo.user.details.UserDetailsRepository;
 import com.faas.core.data.repo.user.settings.UserRoleRepository;
 import com.faas.core.misc.config.AppConstant;
 import com.faas.core.misc.config.AppUtils;
-import com.faas.core.misc.helpers.user.UserHelpers;
+import com.faas.core.misc.helpers.user.UserHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +22,7 @@ public class UserFramework {
 
 
     @Autowired
-    UserHelpers userHelpers;
+    UserHelper userHelper;
 
     @Autowired
     UserRepository userRepository;

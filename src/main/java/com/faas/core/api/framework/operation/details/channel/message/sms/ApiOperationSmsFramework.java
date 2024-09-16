@@ -15,8 +15,8 @@ import com.faas.core.data.repo.operation.content.OperationRepository;
 import com.faas.core.data.repo.operation.details.channel.OperationSmsRepository;
 import com.faas.core.misc.config.AppUtils;
 import com.faas.core.misc.handler.channel.sms.SmsChannelHandler;
-import com.faas.core.misc.helpers.channel.ChannelHelpers;
-import com.faas.core.misc.helpers.operation.OperationHelpers;
+import com.faas.core.misc.helpers.channel.ChannelHelper;
+import com.faas.core.misc.helpers.operation.OperationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -29,10 +29,10 @@ import java.util.List;
 public class ApiOperationSmsFramework {
 
     @Autowired
-    OperationHelpers operationHelpers;
+    OperationHelper operationHelper;
 
     @Autowired
-    ChannelHelpers channelHelpers;
+    ChannelHelper channelHelper;
 
     @Autowired
     SmsChannelHandler smsChannelHandler;
@@ -63,7 +63,7 @@ public class ApiOperationSmsFramework {
         if (!operationDBModels.isEmpty()) {
             List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(operationDBModels.get(0).getClientId());
             if (!clientDetailsDBModels.isEmpty()) {
-                return operationHelpers.getApiOperationSmsChannelWSDTO(operationDBModels.get(0), clientDetailsDBModels.get(0));
+                return operationHelper.getApiOperationSmsChannelWSDTO(operationDBModels.get(0), clientDetailsDBModels.get(0));
             }
         }
         return null;
@@ -113,7 +113,7 @@ public class ApiOperationSmsFramework {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
         if (!operationDBModels.isEmpty()) {
-            ClientPhoneDAO clientPhoneDAO = channelHelpers.fetchClientPhoneDAO(operationDBModels.get(0).getClientId(), numberId);
+            ClientPhoneDAO clientPhoneDAO = channelHelper.fetchClientPhoneDAO(operationDBModels.get(0).getClientId(), numberId);
 
         }
         return null;

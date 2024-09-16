@@ -18,8 +18,8 @@ import com.faas.core.data.repo.user.content.UserRepository;
 import com.faas.core.data.repo.user.details.UserDetailsRepository;
 import com.faas.core.misc.config.AppUtils;
 import com.faas.core.misc.handler.channel.wapp.WappChannelHandler;
-import com.faas.core.misc.helpers.channel.ChannelHelpers;
-import com.faas.core.misc.helpers.operation.OperationHelpers;
+import com.faas.core.misc.helpers.channel.ChannelHelper;
+import com.faas.core.misc.helpers.operation.OperationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -32,10 +32,10 @@ public class ApiOperationWappMessageFramework {
 
 
     @Autowired
-    OperationHelpers operationHelpers;
+    OperationHelper operationHelper;
 
     @Autowired
-    ChannelHelpers channelHelpers;
+    ChannelHelper channelHelper;
 
     @Autowired
     WappChannelHandler wappChannelHandler;
@@ -71,7 +71,7 @@ public class ApiOperationWappMessageFramework {
         if (!operationDBModels.isEmpty()) {
             List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(operationDBModels.get(0).getClientId());
             if (!clientDetailsDBModels.isEmpty()) {
-                return operationHelpers.getApiOperationWappMessageChannelWSDTO(operationDBModels.get(0), clientDetailsDBModels.get(0));
+                return operationHelper.getApiOperationWappMessageChannelWSDTO(operationDBModels.get(0), clientDetailsDBModels.get(0));
             }
         }
         return null;
@@ -123,7 +123,7 @@ public class ApiOperationWappMessageFramework {
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
         if (!operationDBModels.isEmpty()) {
             List<UserDetailsDBModel> agentDetails = userDetailsRepository.findByUserId(agentId);
-            ClientPhoneDAO clientPhoneDAO = channelHelpers.fetchClientPhoneDAO(operationDBModels.get(0).getClientId(), numberId);
+            ClientPhoneDAO clientPhoneDAO = channelHelper.fetchClientPhoneDAO(operationDBModels.get(0).getClientId(), numberId);
 
         }
         return null;

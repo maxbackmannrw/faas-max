@@ -14,8 +14,8 @@ import com.faas.core.data.repo.operation.content.OperationRepository;
 import com.faas.core.data.repo.operation.details.channel.OperationEmailRepository;
 import com.faas.core.misc.config.AppUtils;
 import com.faas.core.misc.handler.channel.email.EmailChannelHandler;
-import com.faas.core.misc.helpers.channel.ChannelHelpers;
-import com.faas.core.misc.helpers.operation.OperationHelpers;
+import com.faas.core.misc.helpers.channel.ChannelHelper;
+import com.faas.core.misc.helpers.operation.OperationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -29,10 +29,10 @@ public class ApiOperationEmailFramework {
 
 
     @Autowired
-    OperationHelpers operationHelpers;
+    OperationHelper operationHelper;
 
     @Autowired
-    ChannelHelpers channelHelpers;
+    ChannelHelper channelHelper;
 
     @Autowired
     ClientRepository clientRepository;
@@ -63,7 +63,7 @@ public class ApiOperationEmailFramework {
 
             List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(operationDBModels.get(0).getClientId());
             if (!clientDetailsDBModels.isEmpty()) {
-                return operationHelpers.getApiOperationEmailChannelWSDTO(operationDBModels.get(0), clientDetailsDBModels.get(0));
+                return operationHelper.getApiOperationEmailChannelWSDTO(operationDBModels.get(0), clientDetailsDBModels.get(0));
             }
         }
         return null;

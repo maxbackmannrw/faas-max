@@ -11,7 +11,7 @@ import com.faas.core.data.repo.channel.account.EmailAccountRepository;
 import com.faas.core.data.repo.channel.account.PushAccountRepository;
 import com.faas.core.data.repo.channel.account.SmsAccountRepository;
 import com.faas.core.misc.config.AppUtils;
-import com.faas.core.misc.helpers.channel.ChannelHelpers;
+import com.faas.core.misc.helpers.channel.ChannelHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +24,7 @@ public class CampaignChannelFramework {
 
 
     @Autowired
-    ChannelHelpers channelHelpers;
+    ChannelHelper channelHelper;
 
     @Autowired
     CampaignChannelRepository campaignChannelRepository;
@@ -130,7 +130,7 @@ public class CampaignChannelFramework {
         List<CampaignChannelDBModel> campaignChannelDBModels = campaignChannelRepository.findByCampaignId(campaignId);
         if (smsAccountDBModel.isPresent() && !campaignChannelDBModels.isEmpty()) {
 
-            campaignChannelDBModels.get(0).setSmsChannel(channelHelpers.createCampaignSmsChannelDAO(smsAccountDBModel.get(), state));
+            campaignChannelDBModels.get(0).setSmsChannel(channelHelper.createCampaignSmsChannelDAO(smsAccountDBModel.get(), state));
             campaignChannelDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
             campaignChannelRepository.save(campaignChannelDBModels.get(0));
 
@@ -217,7 +217,7 @@ public class CampaignChannelFramework {
         List<CampaignChannelDBModel> campaignChannelDBModels = campaignChannelRepository.findByCampaignId(campaignId);
         if (emailAccountDBModel.isPresent() && !campaignChannelDBModels.isEmpty()) {
 
-            campaignChannelDBModels.get(0).setEmailChannel(channelHelpers.createCampaignEmailChannelDAO(emailAccountDBModel.get(), state));
+            campaignChannelDBModels.get(0).setEmailChannel(channelHelper.createCampaignEmailChannelDAO(emailAccountDBModel.get(), state));
             campaignChannelDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
             campaignChannelRepository.save(campaignChannelDBModels.get(0));
 
@@ -257,7 +257,7 @@ public class CampaignChannelFramework {
         List<CampaignChannelDBModel> campaignChannelDBModels = campaignChannelRepository.findByCampaignId(campaignId);
         if (pushAccountDBModel.isPresent() && !campaignChannelDBModels.isEmpty()) {
 
-            campaignChannelDBModels.get(0).setPushChannel(channelHelpers.createCampaignPushChannelDAO(pushAccountDBModel.get(), state));
+            campaignChannelDBModels.get(0).setPushChannel(channelHelper.createCampaignPushChannelDAO(pushAccountDBModel.get(), state));
             campaignChannelDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
             campaignChannelRepository.save(campaignChannelDBModels.get(0));
 

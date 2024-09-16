@@ -10,8 +10,8 @@ import com.faas.core.data.repo.client.details.ClientDetailsRepository;
 import com.faas.core.data.repo.operation.content.OperationRepository;
 import com.faas.core.data.repo.operation.details.channel.OperationWappCallRepository;
 import com.faas.core.misc.config.AppUtils;
-import com.faas.core.misc.helpers.channel.ChannelHelpers;
-import com.faas.core.misc.helpers.operation.OperationHelpers;
+import com.faas.core.misc.helpers.channel.ChannelHelper;
+import com.faas.core.misc.helpers.operation.OperationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -23,10 +23,10 @@ public class ApiOperationWappCallFramework {
 
 
     @Autowired
-    OperationHelpers operationHelpers;
+    OperationHelper operationHelper;
 
     @Autowired
-    ChannelHelpers channelHelpers;
+    ChannelHelper channelHelper;
 
     @Autowired
     ClientDetailsRepository clientDetailsRepository;
@@ -47,7 +47,7 @@ public class ApiOperationWappCallFramework {
         if (!operationDBModels.isEmpty()) {
             List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(operationDBModels.get(0).getClientId());
             if (!clientDetailsDBModels.isEmpty()) {
-                return operationHelpers.getApiOperationWappCallChannelWSDTO(operationDBModels.get(0), clientDetailsDBModels.get(0));
+                return operationHelper.getApiOperationWappCallChannelWSDTO(operationDBModels.get(0), clientDetailsDBModels.get(0));
             }
         }
         return null;
@@ -57,7 +57,7 @@ public class ApiOperationWappCallFramework {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
         if (!operationDBModels.isEmpty()) {
-            return channelHelpers.getApiOperationWappCallAccountWSDTO(agentId, operationDBModels.get(0).getCampaignId());
+            return channelHelper.getApiOperationWappCallAccountWSDTO(agentId, operationDBModels.get(0).getCampaignId());
         }
         return null;
     }
@@ -86,7 +86,7 @@ public class ApiOperationWappCallFramework {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
         if (!operationDBModels.isEmpty()) {
-            return channelHelpers.createOperationWappCallHelper(operationDBModels.get(0), numberId);
+            return channelHelper.createOperationWappCallHelper(operationDBModels.get(0), numberId);
         }
         return null;
     }
@@ -95,7 +95,7 @@ public class ApiOperationWappCallFramework {
 
         List<OperationWappCallDBModel> operationWappCallDBModels = operationWappCallRepository.findByIdAndOperationIdAndAgentId(callId, operationId, agentId);
         if (!operationWappCallDBModels.isEmpty()) {
-            return channelHelpers.startOperationWappCallHelper(operationWappCallDBModels.get(0));
+            return channelHelper.startOperationWappCallHelper(operationWappCallDBModels.get(0));
         }
         return null;
     }
@@ -104,7 +104,7 @@ public class ApiOperationWappCallFramework {
 
         List<OperationWappCallDBModel> operationWappCallDBModels = operationWappCallRepository.findByIdAndOperationIdAndAgentId(callId, operationId, agentId);
         if (!operationWappCallDBModels.isEmpty()) {
-            return channelHelpers.cancelOperationWappCallHelper(operationWappCallDBModels.get(0));
+            return channelHelper.cancelOperationWappCallHelper(operationWappCallDBModels.get(0));
         }
         return null;
     }
@@ -113,7 +113,7 @@ public class ApiOperationWappCallFramework {
 
         List<OperationWappCallDBModel> operationWappCallDBModels = operationWappCallRepository.findByIdAndOperationIdAndAgentId(callId, operationId, agentId);
         if (!operationWappCallDBModels.isEmpty()) {
-            return channelHelpers.hangUpOperationWappCallHelper(operationWappCallDBModels.get(0));
+            return channelHelper.hangUpOperationWappCallHelper(operationWappCallDBModels.get(0));
         }
         return null;
     }

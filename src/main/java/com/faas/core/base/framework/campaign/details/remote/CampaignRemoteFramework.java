@@ -7,8 +7,8 @@ import com.faas.core.data.ws.base.campaign.details.remote.dto.CampaignRemoteWSDT
 import com.faas.core.data.repo.campaign.content.CampaignRepository;
 import com.faas.core.data.repo.campaign.details.remote.CampaignRemoteRepository;
 import com.faas.core.data.repo.remote.content.RemoteRepository;
-import com.faas.core.misc.helpers.campaign.CampaignHelpers;
-import com.faas.core.misc.helpers.remote.RemoteHelpers;
+import com.faas.core.misc.helpers.campaign.CampaignHelper;
+import com.faas.core.misc.helpers.remote.RemoteHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,10 +20,10 @@ import java.util.Optional;
 public class CampaignRemoteFramework {
 
     @Autowired
-    CampaignHelpers campaignHelpers;
+    CampaignHelper campaignHelper;
 
     @Autowired
-    RemoteHelpers remoteHelpers;
+    RemoteHelper remoteHelper;
 
     @Autowired
     CampaignRepository campaignRepository;
@@ -40,7 +40,7 @@ public class CampaignRemoteFramework {
         List<CampaignRemoteWSDTO> campaignRemoteWSDTOS = new ArrayList<>();
         List<CampaignRemoteDBModel> campaignRemoteDBModels = campaignRemoteRepository.findByCampaignId(campaignId);
         for (CampaignRemoteDBModel campaignRemoteDBModel : campaignRemoteDBModels) {
-            campaignRemoteWSDTOS.add(campaignHelpers.createCampaignRemoteWSDTO(campaignRemoteDBModel));
+            campaignRemoteWSDTOS.add(campaignHelper.createCampaignRemoteWSDTO(campaignRemoteDBModel));
         }
         return campaignRemoteWSDTOS;
     }
@@ -50,7 +50,7 @@ public class CampaignRemoteFramework {
         List<CampaignRemoteWSDTO> campaignRemoteWSDTOS = new ArrayList<>();
         List<CampaignRemoteDBModel> campaignRemoteDBModels = campaignRemoteRepository.findByCampaignIdAndRemoteCategory(campaignId, remoteCategory);
         for (CampaignRemoteDBModel campaignRemoteDBModel : campaignRemoteDBModels) {
-            campaignRemoteWSDTOS.add(campaignHelpers.createCampaignRemoteWSDTO(campaignRemoteDBModel));
+            campaignRemoteWSDTOS.add(campaignHelper.createCampaignRemoteWSDTO(campaignRemoteDBModel));
         }
         return campaignRemoteWSDTOS;
     }
@@ -59,7 +59,7 @@ public class CampaignRemoteFramework {
 
         Optional<CampaignRemoteDBModel> campaignRemoteDBModel = campaignRemoteRepository.findById(campaignRemoteId);
         if (!campaignRemoteDBModel.isEmpty()) {
-            return campaignHelpers.createCampaignRemoteWSDTO(campaignRemoteDBModel.get());
+            return campaignHelper.createCampaignRemoteWSDTO(campaignRemoteDBModel.get());
         }
         return null;
     }
@@ -69,7 +69,7 @@ public class CampaignRemoteFramework {
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
         Optional<RemoteDBModel> remoteDBModel = remoteRepository.findById(remoteId);
         if (campaignDBModel.isPresent() && remoteDBModel.isPresent()) {
-            return campaignHelpers.createCampaignRemoteWSDTO(remoteHelpers.createCampaignRemoteDBModel(campaignDBModel.get(), remoteDBModel.get(), remoteCategory));
+            return campaignHelper.createCampaignRemoteWSDTO(remoteHelper.createCampaignRemoteDBModel(campaignDBModel.get(), remoteDBModel.get(), remoteCategory));
         }
         return null;
     }
@@ -79,7 +79,7 @@ public class CampaignRemoteFramework {
         Optional<CampaignRemoteDBModel> campaignRemoteDBModel = campaignRemoteRepository.findById(campaignRemoteId);
         if (campaignRemoteDBModel.isPresent()) {
             campaignRemoteRepository.delete(campaignRemoteDBModel.get());
-            return campaignHelpers.createCampaignRemoteWSDTO(campaignRemoteDBModel.get());
+            return campaignHelper.createCampaignRemoteWSDTO(campaignRemoteDBModel.get());
         }
         return null;
     }

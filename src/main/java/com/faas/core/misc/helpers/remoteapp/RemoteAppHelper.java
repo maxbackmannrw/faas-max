@@ -1,4 +1,4 @@
-package com.faas.core.misc.helpers.remote;
+package com.faas.core.misc.helpers.remoteapp;
 
 import com.faas.core.data.db.client.content.ClientDBModel;
 import com.faas.core.data.db.operation.content.OperationDBModel;
@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
 import java.util.Optional;
 
 @Component
-public class RemoteAppHelpers {
+public class RemoteAppHelper {
 
 
     @Autowired

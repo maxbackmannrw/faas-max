@@ -17,7 +17,7 @@ import com.faas.core.data.repo.utilz.CityRepository;
 import com.faas.core.data.repo.utilz.CountryRepository;
 import com.faas.core.misc.config.AppConstant;
 import com.faas.core.misc.config.AppUtils;
-import com.faas.core.misc.helpers.client.ClientHelpers;
+import com.faas.core.misc.helpers.client.ClientHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -33,7 +33,7 @@ public class ClientFramework {
 
 
     @Autowired
-    ClientHelpers clientHelpers;
+    ClientHelper clientHelper;
 
     @Autowired
     ClientRepository clientRepository;
@@ -91,7 +91,7 @@ public class ClientFramework {
             clientWSDTOS.add(fillClientWSDTO(clientDBModelPage.getContent().get(i)));
         }
         clientListWSDTO.setClients(clientWSDTOS);
-        clientListWSDTO.setPagination(clientHelpers.mapClientPaginationWSDTO(clientDBModelPage));
+        clientListWSDTO.setPagination(clientHelper.mapClientPaginationWSDTO(clientDBModelPage));
 
         return clientListWSDTO;
     }
@@ -153,7 +153,7 @@ public class ClientFramework {
             clientDBModel.setStatus(1);
 
             clientDBModel = clientRepository.save(clientDBModel);
-            clientHelpers.createClientDetails(clientDBModel);
+            clientHelper.createClientDetails(clientDBModel);
             checkAndInsertCityAndCountry(clientDBModel);
 
             return fillClientWSDTO(clientDBModel);
@@ -183,7 +183,7 @@ public class ClientFramework {
                 clientDBModel.setStatus(1);
 
                 clientDBModel = clientRepository.save(clientDBModel);
-                clientHelpers.createClientDetails(clientDBModel);
+                clientHelper.createClientDetails(clientDBModel);
                 checkAndInsertCityAndCountry(clientDBModel);
 
                 clientWSDTOS.add(fillClientWSDTO(clientDBModel));
@@ -248,7 +248,7 @@ public class ClientFramework {
 
         Optional<ClientDBModel> clientDBModel = clientRepository.findById(clientId);
         if (clientDBModel.isPresent()) {
-            return fillClientWSDTO(clientHelpers.deleteClient(clientDBModel.get()));
+            return fillClientWSDTO(clientHelper.deleteClient(clientDBModel.get()));
         }
         return null;
     }

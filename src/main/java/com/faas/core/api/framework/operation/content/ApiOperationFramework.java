@@ -12,7 +12,7 @@ import com.faas.core.data.repo.client.content.ClientRepository;
 import com.faas.core.data.repo.operation.content.OperationRepository;
 import com.faas.core.data.repo.user.content.UserRepository;
 import com.faas.core.misc.config.AppUtils;
-import com.faas.core.misc.helpers.operation.OperationHelpers;
+import com.faas.core.misc.helpers.operation.OperationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -24,7 +24,7 @@ import java.util.Optional;
 public class ApiOperationFramework {
 
     @Autowired
-    OperationHelpers operationHelpers;
+    OperationHelper operationHelper;
 
     @Autowired
     UserRepository userRepository;
@@ -59,7 +59,7 @@ public class ApiOperationFramework {
 
         Optional<OperationDBModel> operationDBModel = operationRepository.findById(operationId);
         if (operationDBModel.isPresent()) {
-            return operationHelpers.getApiOperationWSDTO(operationDBModel.get());
+            return operationHelper.getApiOperationWSDTO(operationDBModel.get());
         }
         return null;
     }
@@ -80,14 +80,14 @@ public class ApiOperationFramework {
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
         if (userDBModel.isPresent() && !operationDBModels.isEmpty()) {
             userDBModel.get().setPassword("");
-            return operationHelpers.operationValidateHelper(userDBModel.get(), operationDBModels.get(0));
+            return operationHelper.operationValidateHelper(userDBModel.get(), operationDBModels.get(0));
         }
         return null;
     }
 
 
     public List<ApiSummaryWSDTO> apiGetOperationSummaryService(long agentId) {
-        return operationHelpers.apiGetOperationSummaryHelper(agentId);
+        return operationHelper.apiGetOperationSummaryHelper(agentId);
     }
 
 

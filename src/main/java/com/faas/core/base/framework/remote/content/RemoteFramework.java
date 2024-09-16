@@ -8,7 +8,7 @@ import com.faas.core.data.repo.remote.details.RemoteUrlRepository;
 import com.faas.core.data.repo.remote.settings.RemoteTypeRepository;
 import com.faas.core.misc.config.AppConstant;
 import com.faas.core.misc.config.AppUtils;
-import com.faas.core.misc.helpers.remote.RemoteHelpers;
+import com.faas.core.misc.helpers.remote.RemoteHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +21,7 @@ import java.util.Optional;
 public class RemoteFramework {
 
     @Autowired
-    RemoteHelpers remoteHelpers;
+    RemoteHelper remoteHelper;
 
     @Autowired
     RemoteRepository remoteRepository;
@@ -41,7 +41,7 @@ public class RemoteFramework {
         List<RemoteWSDTO> remoteWSDTOS = new ArrayList<>();
         List<RemoteDBModel> remoteDBModels = remoteRepository.findByStatus(1);
         for (RemoteDBModel remoteDBModel : remoteDBModels) {
-            remoteWSDTOS.add(remoteHelpers.mapRemoteWSDTOHelper(remoteDBModel));
+            remoteWSDTOS.add(remoteHelper.mapRemoteWSDTOHelper(remoteDBModel));
         }
         return remoteWSDTOS;
     }
@@ -51,7 +51,7 @@ public class RemoteFramework {
         List<RemoteWSDTO> remoteWSDTOS = new ArrayList<>();
         List<RemoteDBModel> remoteDBModels = remoteRepository.findByBaseType(baseType);
         for (RemoteDBModel remoteDBModel : remoteDBModels) {
-            remoteWSDTOS.add(remoteHelpers.mapRemoteWSDTOHelper(remoteDBModel));
+            remoteWSDTOS.add(remoteHelper.mapRemoteWSDTOHelper(remoteDBModel));
         }
         return remoteWSDTOS;
     }
@@ -61,7 +61,7 @@ public class RemoteFramework {
         List<RemoteWSDTO> remoteWSDTOS = new ArrayList<>();
         List<RemoteDBModel> remoteDBModels = remoteRepository.findByRemoteType(remoteType);
         for (RemoteDBModel remoteDBModel : remoteDBModels) {
-            remoteWSDTOS.add(remoteHelpers.mapRemoteWSDTOHelper(remoteDBModel));
+            remoteWSDTOS.add(remoteHelper.mapRemoteWSDTOHelper(remoteDBModel));
         }
         return remoteWSDTOS;
     }
@@ -70,7 +70,7 @@ public class RemoteFramework {
 
         Optional<RemoteDBModel> remoteDBModel = remoteRepository.findById(remoteId);
         if (remoteDBModel.isPresent()) {
-            return remoteHelpers.mapRemoteWSDTOHelper(remoteDBModel.get());
+            return remoteHelper.mapRemoteWSDTOHelper(remoteDBModel.get());
         }
         return null;
     }
@@ -94,9 +94,9 @@ public class RemoteFramework {
 
             remoteDBModel = remoteRepository.save(remoteDBModel);
             if (baseUrl != null) {
-                remoteUrlRepository.save(remoteHelpers.createRemoteUrlHelper(remoteDBModel.getId(), baseUrl, AppConstant.BASE_URL));
+                remoteUrlRepository.save(remoteHelper.createRemoteUrlHelper(remoteDBModel.getId(), baseUrl, AppConstant.BASE_URL));
             }
-            return remoteHelpers.mapRemoteWSDTOHelper(remoteDBModel);
+            return remoteHelper.mapRemoteWSDTOHelper(remoteDBModel);
         }
         return null;
     }
@@ -111,7 +111,7 @@ public class RemoteFramework {
             remoteDBModel.get().setVersion(version);
             remoteDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
 
-            return remoteHelpers.mapRemoteWSDTOHelper(remoteRepository.save(remoteDBModel.get()));
+            return remoteHelper.mapRemoteWSDTOHelper(remoteRepository.save(remoteDBModel.get()));
         }
         return null;
     }
@@ -121,7 +121,7 @@ public class RemoteFramework {
         Optional<RemoteDBModel> remoteDBModel = remoteRepository.findById(remoteId);
         if (remoteDBModel.isPresent()) {
             remoteRepository.delete(remoteDBModel.get());
-            return remoteHelpers.mapRemoteWSDTOHelper(remoteDBModel.get());
+            return remoteHelper.mapRemoteWSDTOHelper(remoteDBModel.get());
         }
         return null;
     }

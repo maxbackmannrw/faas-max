@@ -8,7 +8,7 @@ import com.faas.core.data.ws.base.remote.details.dto.RemoteDetailsWSDTO;
 import com.faas.core.data.repo.remote.content.RemoteRepository;
 import com.faas.core.data.repo.utilz.DataTypeRepository;
 import com.faas.core.misc.config.AppUtils;
-import com.faas.core.misc.helpers.remote.RemoteHelpers;
+import com.faas.core.misc.helpers.remote.RemoteHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +21,7 @@ import java.util.Optional;
 public class RemoteDetailsFramework {
 
     @Autowired
-    RemoteHelpers remoteHelpers;
+    RemoteHelper remoteHelper;
 
     @Autowired
     RemoteRepository remoteRepository;
@@ -74,7 +74,7 @@ public class RemoteDetailsFramework {
         Optional<RemoteDBModel> remoteDBModel = remoteRepository.findById(remoteId);
         Optional<DataTypeDBModel> dataTypeDBModel = dataTypeRepository.findById(typeId);
         if (remoteDBModel.isPresent() && dataTypeDBModel.isPresent()) {
-            RemoteDataDAO remoteDataDAO = remoteHelpers.createRemoteDataDAO(appUtils.generateUUID(), dataTypeDBModel.get().getDataType(), value);
+            RemoteDataDAO remoteDataDAO = remoteHelper.createRemoteDataDAO(appUtils.generateUUID(), dataTypeDBModel.get().getDataType(), value);
             if (remoteDBModel.get().getRemoteDatas() == null) {
                 List<RemoteDataDAO> remoteDataDAOS = new ArrayList<>();
                 remoteDataDAOS.add(remoteDataDAO);

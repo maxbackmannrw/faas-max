@@ -10,7 +10,7 @@ import com.faas.core.data.repo.operation.content.OperationRepository;
 import com.faas.core.data.repo.scenario.content.ScenarioRepository;
 import com.faas.core.data.repo.user.content.UserRepository;
 import com.faas.core.misc.config.AppUtils;
-import com.faas.core.misc.helpers.scenario.ScenarioHelpers;
+import com.faas.core.misc.helpers.scenario.ScenarioHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -22,7 +22,7 @@ import java.util.List;
 public class ApiOperationScenarioFramework {
 
     @Autowired
-    ScenarioHelpers scenarioHelpers;
+    ScenarioHelper scenarioHelper;
 
     @Autowired
     OperationRepository operationRepository;

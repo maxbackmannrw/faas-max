@@ -1,4 +1,4 @@
-package com.faas.core.misc.helpers.utils;
+package com.faas.core.misc.helpers.utilz;
 
 import com.faas.core.data.db.campaign.details.agent.CampaignAgentDBModel;
 import com.faas.core.data.db.client.content.ClientDBModel;
@@ -31,7 +31,7 @@ import com.faas.core.data.repo.user.details.UserDetailsRepository;
 import com.faas.core.data.repo.user.settings.UserRoleRepository;
 import com.faas.core.misc.config.AppConstant;
 import com.faas.core.misc.config.AppUtils;
-import com.faas.core.misc.helpers.client.ClientHelpers;
+import com.faas.core.misc.helpers.client.ClientHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -40,11 +40,11 @@ import java.util.List;
 
 
 @Component
-public class UtilsHelpers {
+public class UtilzHelper {
 
 
     @Autowired
-    ClientHelpers clientHelpers;
+    ClientHelper clientHelper;
 
     @Autowired
     ClientRepository clientRepository;
@@ -139,7 +139,6 @@ public class UtilsHelpers {
         createUsersHelper();
         return new SystemInitWSDTO(AppConstant.FIRST_TIME_INIT, AppConstant.FIRST_TIME_INIT, true);
     }
-
 
     public void deleteUserRolesHelper() {
 
@@ -366,7 +365,7 @@ public class UtilsHelpers {
             }
         }
         if (clientDBModel.getClientCity() != null && !"".equalsIgnoreCase(clientDBModel.getClientCity()) && clientDBModel.getClientCountry() != null && !"".equalsIgnoreCase(clientDBModel.getClientCountry())) {
-            checkedAddressDAOS.add(clientHelpers.createClientAddressDAO(AppConstant.NONE, clientDBModel.getClientCity(), AppConstant.NONE, AppConstant.NONE, clientDBModel.getClientCountry(), AppConstant.MAIN_TYPE));
+            checkedAddressDAOS.add(clientHelper.createClientAddressDAO(AppConstant.NONE, clientDBModel.getClientCity(), AppConstant.NONE, AppConstant.NONE, clientDBModel.getClientCountry(), AppConstant.MAIN_TYPE));
         }
         return checkedAddressDAOS;
     }
@@ -380,7 +379,7 @@ public class UtilsHelpers {
             }
         }
         if (clientDBModel.getPhoneNumber() != null && !"".equalsIgnoreCase(clientDBModel.getPhoneNumber())) {
-            checkedPhoneDAOS.add(clientHelpers.createClientPhoneDAO(clientDBModel.getPhoneNumber(), AppConstant.NONE, AppConstant.MAIN_TYPE));
+            checkedPhoneDAOS.add(clientHelper.createClientPhoneDAO(clientDBModel.getPhoneNumber(), AppConstant.NONE, AppConstant.MAIN_TYPE));
         }
         return checkedPhoneDAOS;
     }
@@ -394,7 +393,7 @@ public class UtilsHelpers {
             }
         }
         if (clientDBModel.getEmailAddress() != null && !"".equalsIgnoreCase(clientDBModel.getEmailAddress())) {
-            checkedEmailDAOS.add(clientHelpers.createClientEmailDAO(clientDBModel.getEmailAddress(), AppConstant.MAIN_TYPE));
+            checkedEmailDAOS.add(clientHelper.createClientEmailDAO(clientDBModel.getEmailAddress(), AppConstant.MAIN_TYPE));
         }
         return checkedEmailDAOS;
     }

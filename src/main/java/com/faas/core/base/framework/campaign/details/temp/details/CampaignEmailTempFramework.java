@@ -6,7 +6,7 @@ import com.faas.core.data.ws.base.campaign.details.temp.details.dto.CampaignEmai
 import com.faas.core.data.repo.campaign.details.temp.EmailTempRepository;
 import com.faas.core.data.repo.channel.settings.EmailTypeRepository;
 import com.faas.core.misc.config.AppUtils;
-import com.faas.core.misc.helpers.campaign.CampaignHelpers;
+import com.faas.core.misc.helpers.campaign.CampaignHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +20,7 @@ public class CampaignEmailTempFramework {
 
 
     @Autowired
-    CampaignHelpers campaignHelpers;
+    CampaignHelper campaignHelper;
 
     @Autowired
     EmailTempRepository emailTempRepository;

@@ -5,7 +5,7 @@ import com.faas.core.data.ws.base.operation.content.dto.OperationListWSDTO;
 import com.faas.core.data.ws.base.operation.content.dto.OperationWSDTO;
 import com.faas.core.data.repo.operation.content.OperationRepository;
 import com.faas.core.misc.config.AppUtils;
-import com.faas.core.misc.helpers.operation.OperationHelpers;
+import com.faas.core.misc.helpers.operation.OperationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -19,7 +19,7 @@ public class OperationFramework {
 
 
     @Autowired
-    OperationHelpers operationHelpers;
+    OperationHelper operationHelper;
 
     @Autowired
     OperationRepository operationRepository;
@@ -32,7 +32,7 @@ public class OperationFramework {
 
         Page<OperationDBModel> operationModelPage = operationRepository.findAllByOperationState(operationState, PageRequest.of(reqPage, reqSize));
         if (operationModelPage != null) {
-            return operationHelpers.getOperationListWSDTO(operationModelPage);
+            return operationHelper.getOperationListWSDTO(operationModelPage);
         }
         return null;
     }
@@ -41,7 +41,7 @@ public class OperationFramework {
 
         Page<OperationDBModel> operationModelPage = operationRepository.findAllByOperationCategoryAndOperationState(operationCategory, operationState, PageRequest.of(reqPage, reqSize));
         if (operationModelPage != null) {
-            return operationHelpers.getOperationListWSDTO(operationModelPage);
+            return operationHelper.getOperationListWSDTO(operationModelPage);
         }
         return null;
     }
@@ -50,7 +50,7 @@ public class OperationFramework {
 
         Optional<OperationDBModel> operationDBModel = operationRepository.findById(operationId);
         if (operationDBModel.isPresent()) {
-            return operationHelpers.getOperationWSDTO(operationDBModel.get());
+            return operationHelper.getOperationWSDTO(operationDBModel.get());
         }
         return null;
     }
@@ -71,8 +71,8 @@ public class OperationFramework {
 
         Optional<OperationDBModel> operationDBModel = operationRepository.findById(operationId);
         if (operationDBModel.isPresent()) {
-            operationHelpers.removeOperationHelper(operationDBModel.get());
-            return operationHelpers.getOperationWSDTO(operationDBModel.get());
+            operationHelper.removeOperationHelper(operationDBModel.get());
+            return operationHelper.getOperationWSDTO(operationDBModel.get());
         }
         return null;
     }

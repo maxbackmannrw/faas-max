@@ -15,7 +15,7 @@ import com.faas.core.data.repo.operation.content.OperationRepository;
 import com.faas.core.data.repo.user.content.UserRepository;
 import com.faas.core.misc.config.AppConstant;
 import com.faas.core.misc.config.AppUtils;
-import com.faas.core.misc.helpers.operation.OperationHelpers;
+import com.faas.core.misc.helpers.operation.OperationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -29,7 +29,7 @@ import java.util.Optional;
 public class CampaignManagerOperationFramework {
 
     @Autowired
-    OperationHelpers operationHelpers;
+    OperationHelper operationHelper;
 
     @Autowired
     OperationRepository operationRepository;
@@ -59,7 +59,7 @@ public class CampaignManagerOperationFramework {
 
         Page<OperationDBModel> operationDBModelPage = operationRepository.findAllByCampaignIdAndOperationState(campaignId, operationState, PageRequest.of(reqPage, reqSize));
         if (operationDBModelPage != null) {
-            return operationHelpers.mapCampaignOperationWSDTO(operationDBModelPage);
+            return operationHelper.mapCampaignOperationWSDTO(operationDBModelPage);
         }
         return null;
     }
@@ -99,9 +99,9 @@ public class CampaignManagerOperationFramework {
         clientDBModel.setClientState(AppConstant.BUSY_CLIENT);
         clientDBModel.setuDate(appUtils.getCurrentTimeStamp());
         clientDBModel = clientRepository.save(clientDBModel);
-        OperationDBModel operationDBModel = operationHelpers.createOperationDBModel(userDBModel, campaignDBModel, clientDBModel, clientDetailsDBModel);
+        OperationDBModel operationDBModel = operationHelper.createOperationDBModel(userDBModel, campaignDBModel, clientDBModel, clientDetailsDBModel);
         if (operationDBModel != null) {
-            return operationHelpers.getOperationWSDTO(operationDBModel);
+            return operationHelper.getOperationWSDTO(operationDBModel);
         }
         return null;
     }
@@ -115,7 +115,7 @@ public class CampaignManagerOperationFramework {
 
         Optional<OperationDBModel> operationDBModel = operationRepository.findById(operationId);
         if (operationDBModel.isPresent()) {
-            return operationHelpers.getOperationWSDTO(operationHelpers.removeOperationHelper(operationDBModel.get()));
+            return operationHelper.getOperationWSDTO(operationHelper.removeOperationHelper(operationDBModel.get()));
         }
         return null;
     }

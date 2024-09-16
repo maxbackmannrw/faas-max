@@ -15,7 +15,7 @@ import com.faas.core.data.repo.operation.content.OperationRepository;
 import com.faas.core.data.repo.user.content.UserRepository;
 import com.faas.core.misc.config.AppConstant;
 import com.faas.core.misc.config.AppUtils;
-import com.faas.core.misc.helpers.operation.OperationHelpers;
+import com.faas.core.misc.helpers.operation.OperationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
@@ -29,7 +29,7 @@ import java.util.Optional;
 public class ApiDashboardFramework {
 
     @Autowired
-    OperationHelpers operationHelpers;
+    OperationHelper operationHelper;
 
     @Autowired
     OperationRepository operationRepository;
@@ -50,7 +50,7 @@ public class ApiDashboardFramework {
     public ApiDashboardWSDTO apiGetDashboardService(long agentId, int reqPage, int reqSize) {
 
         ApiDashboardWSDTO dashboardWSDTO = new ApiDashboardWSDTO();
-        dashboardWSDTO.setActiveOperation(operationHelpers.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationState(agentId, AppConstant.ACTIVE_STATE, PageRequest.of(reqPage, reqSize))));
+        dashboardWSDTO.setActiveOperation(operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationState(agentId, AppConstant.ACTIVE_STATE, PageRequest.of(reqPage, reqSize))));
         dashboardWSDTO.setDashboardCampaigns(apiGetDashboardCampaignsService(agentId));
 
         return dashboardWSDTO;
@@ -60,7 +60,7 @@ public class ApiDashboardFramework {
     public ApiOperationListWSDTO apiGetDashboardOperationsService(long agentId, String operationType, String operationState, String operationInquiryState, String operationFlowState, int reqPage, int reqSize) {
 
         if (operationType.equalsIgnoreCase(AppConstant.ALL_OPERATIONS)) {
-            return operationHelpers.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationState(agentId, operationState, PageRequest.of(reqPage, reqSize)));
+            return operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationState(agentId, operationState, PageRequest.of(reqPage, reqSize)));
         } else {
         }
         return null;
@@ -71,7 +71,7 @@ public class ApiDashboardFramework {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
         if (!operationDBModels.isEmpty()) {
-            return operationHelpers.getApiOperationWSDTO(operationDBModels.get(0));
+            return operationHelper.getApiOperationWSDTO(operationDBModels.get(0));
         }
         return null;
     }
@@ -83,7 +83,7 @@ public class ApiDashboardFramework {
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
         if (userDBModel.isPresent() && !operationDBModels.isEmpty()) {
             userDBModel.get().setPassword("");
-            return operationHelpers.operationValidateHelper(userDBModel.get(), operationDBModels.get(0));
+            return operationHelper.operationValidateHelper(userDBModel.get(), operationDBModels.get(0));
         }
         return null;
     }
