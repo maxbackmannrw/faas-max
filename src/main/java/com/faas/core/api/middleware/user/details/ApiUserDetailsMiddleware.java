@@ -1,6 +1,6 @@
-package com.faas.core.api.middleware.agent.details;
+package com.faas.core.api.middleware.user.details;
 
-import com.faas.core.api.framework.agent.details.ApiAgentDetailsFramework;
+import com.faas.core.api.framework.user.details.ApiUserDetailsFramework;
 import com.faas.core.data.ws.api.agent.details.ApiAgentDetailsWSModel;
 import com.faas.core.data.ws.api.agent.details.ApiAgentInfoWSModel;
 import com.faas.core.data.ws.api.agent.details.ApiAgentSipAccountWSModel;
@@ -16,11 +16,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class ApiAgentDetailsMiddleware {
+public class ApiUserDetailsMiddleware {
 
 
     @Autowired
-    ApiAgentDetailsFramework apiAgentDetailsFramework;
+    ApiUserDetailsFramework apiUserDetailsFramework;
 
 
     public ApiAgentDetailsWSModel apiGetAgentDetails(long agentId) {
@@ -28,7 +28,7 @@ public class ApiAgentDetailsMiddleware {
         ApiAgentDetailsWSModel response = new ApiAgentDetailsWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiAgentDetailsWSDTO agentDetailsWSDTO = apiAgentDetailsFramework.apiGetAgentDetailsService(agentId);
+        ApiAgentDetailsWSDTO agentDetailsWSDTO = apiUserDetailsFramework.apiGetAgentDetailsService(agentId);
         if (agentDetailsWSDTO != null) {
             response.setApiAgentDetails(agentDetailsWSDTO);
         }
@@ -48,7 +48,7 @@ public class ApiAgentDetailsMiddleware {
         ApiAgentSipAccountWSModel response = new ApiAgentSipAccountWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiAgentSipAccountWSDTO agentSipAccountWSDTO = apiAgentDetailsFramework.apiGetAgentSipAccountService(agentId, processId);
+        ApiAgentSipAccountWSDTO agentSipAccountWSDTO = apiUserDetailsFramework.apiGetAgentSipAccountService(agentId, processId);
         if (agentSipAccountWSDTO != null) {
             response.setAgentSipAccount(agentSipAccountWSDTO);
         }
@@ -69,7 +69,7 @@ public class ApiAgentDetailsMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ApiAgentInfoWSDTO> apiAgentInfoWSDTOS = new ArrayList<>();
 
-        ApiAgentInfoWSDTO agentInfoWSDTO = apiAgentDetailsFramework.apiGetAgentInfoService(agentId);
+        ApiAgentInfoWSDTO agentInfoWSDTO = apiUserDetailsFramework.apiGetAgentInfoService(agentId);
         if (agentInfoWSDTO != null) {
             apiAgentInfoWSDTOS.add(agentInfoWSDTO);
         }

@@ -1,6 +1,6 @@
-package com.faas.core.api.middleware.agent.content;
+package com.faas.core.api.middleware.user.content;
 
-import com.faas.core.api.framework.agent.content.ApiAgentFramework;
+import com.faas.core.api.framework.user.content.ApiUserFramework;
 import com.faas.core.data.ws.api.agent.content.ApiAgentWSModel;
 import com.faas.core.data.ws.api.agent.content.dto.ApiAgentWSDTO;
 import com.faas.core.data.ws.base.general.GeneralWSModel;
@@ -13,11 +13,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class ApiAgentMiddleware {
+public class ApiUserMiddleware {
 
 
     @Autowired
-    ApiAgentFramework apiAgentFramework;
+    ApiUserFramework apiUserFramework;
 
     @Autowired
     AppUtils appUtils;
@@ -29,7 +29,7 @@ public class ApiAgentMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ApiAgentWSDTO> apiAgentWSDTOS = new ArrayList<>();
 
-        ApiAgentWSDTO apiAgentWSDTO = apiAgentFramework.apiAgentLoginService(userEmail, password);
+        ApiAgentWSDTO apiAgentWSDTO = apiUserFramework.apiAgentLoginService(userEmail, password);
         if (apiAgentWSDTO != null) {
             apiAgentWSDTOS.add(apiAgentWSDTO);
         }

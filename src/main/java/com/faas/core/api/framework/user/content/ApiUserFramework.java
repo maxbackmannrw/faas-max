@@ -1,4 +1,4 @@
-package com.faas.core.api.framework.agent.content;
+package com.faas.core.api.framework.user.content;
 
 import com.faas.core.data.ws.api.agent.content.dto.ApiAgentWSDTO;
 import com.faas.core.data.db.user.content.UserDBModel;
@@ -16,7 +16,7 @@ import java.util.List;
 
 
 @Component
-public class ApiAgentFramework {
+public class ApiUserFramework {
 
 
     @Autowired

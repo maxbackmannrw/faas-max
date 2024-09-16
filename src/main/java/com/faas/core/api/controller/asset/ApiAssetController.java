@@ -1,4 +1,4 @@
-package com.faas.core.api.controller.assets;
+package com.faas.core.api.controller.asset;
 
 import com.faas.core.api.middleware.asset.ApiAssetMiddleware;
 import com.faas.core.data.ws.api.asset.ApiAssetWSModel;
