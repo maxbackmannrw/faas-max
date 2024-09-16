@@ -1,12 +1,12 @@
 package com.faas.core.base.framework.scenario.content;
 
-import com.faas.core.base.model.db.scenario.content.ScenarioDBModel;
-import com.faas.core.base.model.db.scenario.settings.ScenarioTypeDBModel;
-import com.faas.core.base.model.ws.scenario.content.dto.ScenarioWSDTO;
-import com.faas.core.base.repo.scenario.content.ScenarioRepository;
-import com.faas.core.base.repo.scenario.settings.ScenarioTypeRepository;
-import com.faas.core.base.repo.utilz.DataTypeRepository;
-import com.faas.core.utility.config.AppUtils;
+import com.faas.core.data.db.scenario.content.ScenarioDBModel;
+import com.faas.core.data.db.scenario.settings.ScenarioTypeDBModel;
+import com.faas.core.data.ws.base.scenario.content.dto.ScenarioWSDTO;
+import com.faas.core.data.repo.scenario.content.ScenarioRepository;
+import com.faas.core.data.repo.scenario.settings.ScenarioTypeRepository;
+import com.faas.core.data.repo.utilz.DataTypeRepository;
+import com.faas.core.misc.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,7 +42,7 @@ public class ScenarioFramework {
         return scenarioWSDTOS;
     }
 
-    public List<ScenarioWSDTO> getScenariosByBaseTypeService(long userId,String baseType) {
+    public List<ScenarioWSDTO> getScenariosByBaseTypeService(long userId, String baseType) {
 
         List<ScenarioWSDTO> scenarioWSDTOS = new ArrayList<>();
         List<ScenarioDBModel> scenarioDBModels = scenarioRepository.findByBaseType(baseType);
@@ -52,7 +52,7 @@ public class ScenarioFramework {
         return scenarioWSDTOS;
     }
 
-    public ScenarioWSDTO getScenarioService(long userId,String scenarioId) {
+    public ScenarioWSDTO getScenarioService(long userId, String scenarioId) {
 
         Optional<ScenarioDBModel> scenarioDBModel = scenarioRepository.findById(scenarioId);
         if (scenarioDBModel.isPresent()) {
@@ -61,7 +61,7 @@ public class ScenarioFramework {
         return null;
     }
 
-    public ScenarioWSDTO createScenarioService(long userId,String scenario,String scenarioDesc,long typeId) {
+    public ScenarioWSDTO createScenarioService(long userId, String scenario, String scenarioDesc, long typeId) {
 
         Optional<ScenarioTypeDBModel> scenarioTypeDBModel = scenarioTypeRepository.findById(typeId);
         if (scenarioTypeDBModel.isPresent()) {
@@ -82,7 +82,7 @@ public class ScenarioFramework {
         return null;
     }
 
-    public ScenarioWSDTO updateScenarioService(long userId,String scenarioId,String scenarioDesc,String scenario,long typeId) {
+    public ScenarioWSDTO updateScenarioService(long userId, String scenarioId, String scenarioDesc, String scenario, long typeId) {
 
         Optional<ScenarioDBModel> scenarioDBModel = scenarioRepository.findById(scenarioId);
         Optional<ScenarioTypeDBModel> scenarioTypeDBModel = scenarioTypeRepository.findById(typeId);

@@ -1,7 +1,7 @@
 package com.faas.core.api.framework.asset;
 
-import com.faas.core.api.model.ws.asset.dto.ApiAssetWSDTO;
-import com.faas.core.utility.config.AppUtils;
+import com.faas.core.data.ws.api.asset.dto.ApiAssetWSDTO;
+import com.faas.core.misc.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -1,21 +1,19 @@
 package com.faas.core.api.framework.operation.content;
 
-import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
-import com.faas.core.api.model.ws.operation.content.dto.ApiAgentOperationWSDTO;
-import com.faas.core.api.model.ws.operation.content.dto.ApiOperationListWSDTO;
-import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
-import com.faas.core.api.model.ws.operation.content.dto.ApiOperationValidateWSDTO;
-import com.faas.core.base.model.db.operation.content.OperationDBModel;
-import com.faas.core.base.model.db.user.content.UserDBModel;
-import com.faas.core.base.repo.campaign.content.CampaignRepository;
-import com.faas.core.base.repo.client.content.ClientRepository;
-import com.faas.core.base.repo.operation.content.OperationRepository;
-import com.faas.core.base.repo.user.content.UserRepository;
-import com.faas.core.utility.config.AppConstant;
-import com.faas.core.utility.config.AppUtils;
-import com.faas.core.utility.helpers.operation.OperationHelpers;
+import com.faas.core.data.ws.api.general.ApiSummaryWSDTO;
+import com.faas.core.data.ws.api.operation.content.dto.ApiAgentOperationWSDTO;
+import com.faas.core.data.ws.api.operation.content.dto.ApiOperationListWSDTO;
+import com.faas.core.data.ws.api.operation.content.dto.ApiOperationValidateWSDTO;
+import com.faas.core.data.ws.api.operation.content.dto.ApiOperationWSDTO;
+import com.faas.core.data.db.operation.content.OperationDBModel;
+import com.faas.core.data.db.user.content.UserDBModel;
+import com.faas.core.data.repo.campaign.content.CampaignRepository;
+import com.faas.core.data.repo.client.content.ClientRepository;
+import com.faas.core.data.repo.operation.content.OperationRepository;
+import com.faas.core.data.repo.user.content.UserRepository;
+import com.faas.core.misc.config.AppUtils;
+import com.faas.core.misc.helpers.operation.OperationHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -52,7 +50,7 @@ public class ApiOperationFramework {
     }
 
 
-    public ApiOperationListWSDTO apiGetOperationsService(long agentId,String operationType,String operationState,String operationInquiryState,String operationFlowState,int reqPage,int reqSize) {
+    public ApiOperationListWSDTO apiGetOperationsService(long agentId, String operationType, String operationState, String operationInquiryState, String operationFlowState, int reqPage, int reqSize) {
 
         return null;
     }
@@ -60,33 +58,32 @@ public class ApiOperationFramework {
     public ApiOperationWSDTO apiGetOperationService(long agentId, String operationId) {
 
         Optional<OperationDBModel> operationDBModel = operationRepository.findById(operationId);
-        if (operationDBModel.isPresent()){
+        if (operationDBModel.isPresent()) {
             return operationHelpers.getApiOperationWSDTO(operationDBModel.get());
         }
         return null;
     }
 
-    public ApiOperationWSDTO apiUpdateOperationService(long agentId,String operationId,String operationState) {
+    public ApiOperationWSDTO apiUpdateOperationService(long agentId, String operationId, String operationState) {
 
         return null;
     }
 
-    public ApiOperationWSDTO apiRemoveOperationService(long agentId,String operationId) {
+    public ApiOperationWSDTO apiRemoveOperationService(long agentId, String operationId) {
 
         return null;
     }
 
-    public ApiOperationValidateWSDTO apiOperationValidateService(long agentId,String operationId) {
+    public ApiOperationValidateWSDTO apiOperationValidateService(long agentId, String operationId) {
 
         Optional<UserDBModel> userDBModel = userRepository.findById(agentId);
-        List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
-        if (userDBModel.isPresent() && !operationDBModels.isEmpty()){
+        List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
+        if (userDBModel.isPresent() && !operationDBModels.isEmpty()) {
             userDBModel.get().setPassword("");
-            return operationHelpers.operationValidateHelper(userDBModel.get(),operationDBModels.get(0));
+            return operationHelpers.operationValidateHelper(userDBModel.get(), operationDBModels.get(0));
         }
         return null;
     }
-
 
 
     public List<ApiSummaryWSDTO> apiGetOperationSummaryService(long agentId) {

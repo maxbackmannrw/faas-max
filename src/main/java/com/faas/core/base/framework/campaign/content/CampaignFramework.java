@@ -1,21 +1,20 @@
 package com.faas.core.base.framework.campaign.content;
 
-import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
-import com.faas.core.base.model.db.campaign.settings.CampaignTypeDBModel;
-import com.faas.core.base.model.ws.campaign.content.dto.CampaignWSDTO;
-import com.faas.core.base.model.ws.campaign.manager.content.dto.CampaignManagerWSDTO;
-import com.faas.core.base.repo.campaign.content.CampaignRepository;
-import com.faas.core.base.repo.campaign.details.channel.CampaignChannelRepository;
-import com.faas.core.base.repo.campaign.details.temp.EmailTempRepository;
-import com.faas.core.base.repo.campaign.details.temp.SmsTempRepository;
-import com.faas.core.base.repo.campaign.details.temp.PushTempRepository;
-import com.faas.core.base.repo.campaign.details.temp.WappMessageTempRepository;
-import com.faas.core.base.repo.campaign.details.scenario.CampaignScenarioRepository;
-import com.faas.core.base.repo.campaign.details.trigger.*;
-import com.faas.core.base.repo.campaign.settings.CampaignTypeRepository;
-import com.faas.core.utility.config.AppConstant;
-import com.faas.core.utility.config.AppUtils;
-import com.faas.core.utility.helpers.campaign.CampaignHelpers;
+import com.faas.core.data.db.campaign.content.CampaignDBModel;
+import com.faas.core.data.db.campaign.settings.CampaignTypeDBModel;
+import com.faas.core.data.ws.base.campaign.content.dto.CampaignWSDTO;
+import com.faas.core.data.repo.campaign.content.CampaignRepository;
+import com.faas.core.data.repo.campaign.details.channel.CampaignChannelRepository;
+import com.faas.core.data.repo.campaign.details.scenario.CampaignScenarioRepository;
+import com.faas.core.data.repo.campaign.details.temp.EmailTempRepository;
+import com.faas.core.data.repo.campaign.details.temp.PushTempRepository;
+import com.faas.core.data.repo.campaign.details.temp.SmsTempRepository;
+import com.faas.core.data.repo.campaign.details.temp.WappMessageTempRepository;
+import com.faas.core.data.repo.campaign.details.trigger.*;
+import com.faas.core.data.repo.campaign.settings.CampaignTypeRepository;
+import com.faas.core.misc.config.AppConstant;
+import com.faas.core.misc.config.AppUtils;
+import com.faas.core.misc.helpers.campaign.CampaignHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -106,16 +105,16 @@ public class CampaignFramework {
     public CampaignWSDTO getCampaignService(long userId, String campaignId) {
 
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
-        if (campaignDBModel.isPresent()){
+        if (campaignDBModel.isPresent()) {
             return campaignHelpers.getCampaignWSDTO(campaignDBModel.get());
         }
         return null;
     }
 
-    public CampaignWSDTO createCampaignService(long userId, String campaign,String campaignDesc,long campaignTypeId,String campaignCategory) {
+    public CampaignWSDTO createCampaignService(long userId, String campaign, String campaignDesc, long campaignTypeId, String campaignCategory) {
 
         Optional<CampaignTypeDBModel> campaignTypeDBModel = campaignTypeRepository.findById(campaignTypeId);
-        if (campaignTypeDBModel.isPresent()){
+        if (campaignTypeDBModel.isPresent()) {
 
             CampaignDBModel campaignDBModel = new CampaignDBModel();
             campaignDBModel.setCampaign(campaign);
@@ -123,11 +122,11 @@ public class CampaignFramework {
             campaignDBModel.setCampaignTypeId(campaignTypeId);
             campaignDBModel.setCampaignType(campaignTypeDBModel.get().getCampaignType());
             campaignDBModel.setCampaignCategory(campaignCategory);
-            if (campaignCategory.equalsIgnoreCase(AppConstant.INQUIRY_CAMPAIGN)){
+            if (campaignCategory.equalsIgnoreCase(AppConstant.INQUIRY_CAMPAIGN)) {
                 campaignDBModel.setCampaignInquiry(campaignHelpers.createCampaignInquiryDAO(campaign));
             }
-            if (campaignCategory.equalsIgnoreCase(AppConstant.AUTOMATIC_CAMPAIGN)){
-                campaignDBModel.setCampaignFlow(campaignHelpers.createCampaignFlowDAO(campaign));;
+            if (campaignCategory.equalsIgnoreCase(AppConstant.AUTOMATIC_CAMPAIGN)) {
+                campaignDBModel.setCampaignFlow(campaignHelpers.createCampaignFlowDAO(campaign));
             }
             campaignDBModel.setCampaignScripts(new ArrayList<>());
             campaignDBModel.setCampaignDatas(new ArrayList<>());
@@ -147,7 +146,7 @@ public class CampaignFramework {
     public CampaignWSDTO updateCampaignService(long userId, String campaignId, String campaign, String campaignDesc, String campaignState) {
 
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
-        if (campaignDBModel.isPresent()){
+        if (campaignDBModel.isPresent()) {
 
             campaignDBModel.get().setCampaign(campaign);
             campaignDBModel.get().setCampaignDesc(campaignDesc);
@@ -157,7 +156,7 @@ public class CampaignFramework {
 
             return campaignHelpers.getCampaignWSDTO(campaignRepository.save(campaignDBModel.get()));
         }
-       return null;
+        return null;
     }
 
     public CampaignWSDTO removeCampaignService(String campaignId) {
@@ -169,7 +168,7 @@ public class CampaignFramework {
 
             campaignRepository.delete(campaignDBModel.get());
             campaignScenarioRepository.deleteAll(campaignScenarioRepository.findByCampaignId(campaignId));
-            campaignChannelRepository.deleteAll(campaignChannelRepository.findByCampaignId(campaignId));;
+            campaignChannelRepository.deleteAll(campaignChannelRepository.findByCampaignId(campaignId));
 
             emailTempRepository.deleteAll(emailTempRepository.findByCampaignId(campaignId));
             pushTempRepository.deleteAll(pushTempRepository.findByCampaignId(campaignId));

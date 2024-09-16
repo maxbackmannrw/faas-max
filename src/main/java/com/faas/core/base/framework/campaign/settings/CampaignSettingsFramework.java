@@ -1,13 +1,13 @@
 package com.faas.core.base.framework.campaign.settings;
 
-import com.faas.core.base.model.db.campaign.settings.CampaignTypeDBModel;
-import com.faas.core.base.model.db.campaign.settings.TriggerTypeDBModel;
-import com.faas.core.base.model.ws.campaign.settings.dto.CampaignTypeWSDTO;
-import com.faas.core.base.model.ws.campaign.settings.dto.TriggerTypeWSDTO;
-import com.faas.core.base.repo.campaign.settings.CampaignTypeRepository;
-import com.faas.core.base.repo.campaign.settings.TriggerTypeRepository;
-import com.faas.core.base.repo.scenario.settings.ScenarioTypeRepository;
-import com.faas.core.utility.config.AppUtils;
+import com.faas.core.data.db.campaign.settings.CampaignTypeDBModel;
+import com.faas.core.data.db.campaign.settings.TriggerTypeDBModel;
+import com.faas.core.data.ws.base.campaign.settings.dto.CampaignTypeWSDTO;
+import com.faas.core.data.ws.base.campaign.settings.dto.TriggerTypeWSDTO;
+import com.faas.core.data.repo.campaign.settings.CampaignTypeRepository;
+import com.faas.core.data.repo.campaign.settings.TriggerTypeRepository;
+import com.faas.core.data.repo.scenario.settings.ScenarioTypeRepository;
+import com.faas.core.misc.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -46,7 +46,7 @@ public class CampaignSettingsFramework {
     public CampaignTypeWSDTO getCampaignTypeService(long userId, long typeId) {
 
         Optional<CampaignTypeDBModel> campaignTypeDBModel = campaignTypeRepository.findById(typeId);
-        if (campaignTypeDBModel.isPresent()){
+        if (campaignTypeDBModel.isPresent()) {
             return new CampaignTypeWSDTO(campaignTypeDBModel.get());
         }
         return null;
@@ -97,7 +97,7 @@ public class CampaignSettingsFramework {
         return triggerTypeWSDTOS;
     }
 
-    public List<TriggerTypeWSDTO> getTriggerTypesByBaseService(long userId,String baseType) {
+    public List<TriggerTypeWSDTO> getTriggerTypesByBaseService(long userId, String baseType) {
 
         List<TriggerTypeWSDTO> triggerTypeWSDTOS = new ArrayList<>();
         List<TriggerTypeDBModel> triggerTypeDBModels = triggerTypeRepository.findByBaseType(baseType);
@@ -107,7 +107,7 @@ public class CampaignSettingsFramework {
         return triggerTypeWSDTOS;
     }
 
-    public TriggerTypeWSDTO getTriggerTypeService(long userId,long typeId) {
+    public TriggerTypeWSDTO getTriggerTypeService(long userId, long typeId) {
 
         Optional<TriggerTypeDBModel> triggerTypeDBModel = triggerTypeRepository.findById(typeId);
         if (triggerTypeDBModel.isPresent()) {
@@ -116,7 +116,7 @@ public class CampaignSettingsFramework {
         return null;
     }
 
-    public TriggerTypeWSDTO createTriggerTypeService(long userId,String triggerType,String baseType) {
+    public TriggerTypeWSDTO createTriggerTypeService(long userId, String triggerType, String baseType) {
 
         TriggerTypeDBModel triggerTypeDBModel = new TriggerTypeDBModel();
         triggerTypeDBModel.setTriggerType(triggerType);
@@ -128,10 +128,10 @@ public class CampaignSettingsFramework {
         return new TriggerTypeWSDTO(triggerTypeRepository.save(triggerTypeDBModel));
     }
 
-    public TriggerTypeWSDTO updateTriggerTypeService(long userId,long typeId,String triggerType,String baseType) {
+    public TriggerTypeWSDTO updateTriggerTypeService(long userId, long typeId, String triggerType, String baseType) {
 
         Optional<TriggerTypeDBModel> triggerTypeDBModel = triggerTypeRepository.findById(typeId);
-        if (triggerTypeDBModel.isPresent()){
+        if (triggerTypeDBModel.isPresent()) {
 
             triggerTypeDBModel.get().setTriggerType(triggerType);
             triggerTypeDBModel.get().setBaseType(baseType);
@@ -142,16 +142,15 @@ public class CampaignSettingsFramework {
         return null;
     }
 
-    public TriggerTypeWSDTO removeTriggerTypeService(long userId,long typeId) {
+    public TriggerTypeWSDTO removeTriggerTypeService(long userId, long typeId) {
 
         Optional<TriggerTypeDBModel> triggerTypeDBModel = triggerTypeRepository.findById(typeId);
-        if (triggerTypeDBModel.isPresent()){
+        if (triggerTypeDBModel.isPresent()) {
             triggerTypeRepository.delete(triggerTypeDBModel.get());
             return new TriggerTypeWSDTO(triggerTypeDBModel.get());
         }
         return null;
     }
-
 
 
 }

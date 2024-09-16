@@ -1,15 +1,15 @@
 package com.faas.core.api.framework.operation.details.channel.content;
 
-import com.faas.core.api.model.ws.operation.details.channel.content.dto.ApiOperationCallChannelWSDTO;
-import com.faas.core.api.model.ws.operation.details.channel.content.dto.ApiOperationMessageChannelWSDTO;
-import com.faas.core.base.model.db.client.details.ClientDetailsDBModel;
-import com.faas.core.base.model.db.operation.content.OperationDBModel;
-import com.faas.core.base.repo.client.content.ClientRepository;
-import com.faas.core.base.repo.client.details.ClientDetailsRepository;
-import com.faas.core.base.repo.operation.content.OperationRepository;
-import com.faas.core.utility.config.AppUtils;
-import com.faas.core.utility.helpers.channel.ChannelHelpers;
-import com.faas.core.utility.helpers.operation.OperationHelpers;
+import com.faas.core.data.ws.api.operation.details.channel.content.dto.ApiOperationCallChannelWSDTO;
+import com.faas.core.data.ws.api.operation.details.channel.content.dto.ApiOperationMessageChannelWSDTO;
+import com.faas.core.data.db.client.details.ClientDetailsDBModel;
+import com.faas.core.data.db.operation.content.OperationDBModel;
+import com.faas.core.data.repo.client.content.ClientRepository;
+import com.faas.core.data.repo.client.details.ClientDetailsRepository;
+import com.faas.core.data.repo.operation.content.OperationRepository;
+import com.faas.core.misc.config.AppUtils;
+import com.faas.core.misc.helpers.channel.ChannelHelpers;
+import com.faas.core.misc.helpers.operation.OperationHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -39,11 +39,11 @@ public class ApiOperationChannelFramework {
 
     public ApiOperationCallChannelWSDTO apiGetOperationCallChannelService(long agentId, String operationId) {
 
-        List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
-        if (!operationDBModels.isEmpty()){
+        List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
+        if (!operationDBModels.isEmpty()) {
             List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(operationDBModels.get(0).getClientId());
-            if (!clientDetailsDBModels.isEmpty()){
-                return operationHelpers.getApiOperationCallChannelWSDTO(operationDBModels.get(0),clientDetailsDBModels.get(0));
+            if (!clientDetailsDBModels.isEmpty()) {
+                return operationHelpers.getApiOperationCallChannelWSDTO(operationDBModels.get(0), clientDetailsDBModels.get(0));
             }
         }
         return null;
@@ -52,16 +52,15 @@ public class ApiOperationChannelFramework {
 
     public ApiOperationMessageChannelWSDTO apiGetOperationMessageChannelService(long agentId, String operationId) {
 
-        List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
-        if (!operationDBModels.isEmpty()){
+        List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
+        if (!operationDBModels.isEmpty()) {
             List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(operationDBModels.get(0).getClientId());
-            if (!clientDetailsDBModels.isEmpty()){
-                return operationHelpers.getApiOperationMessageChannelWSDTO(operationDBModels.get(0),clientDetailsDBModels.get(0));
+            if (!clientDetailsDBModels.isEmpty()) {
+                return operationHelpers.getApiOperationMessageChannelWSDTO(operationDBModels.get(0), clientDetailsDBModels.get(0));
             }
         }
         return null;
     }
-
 
 
 }

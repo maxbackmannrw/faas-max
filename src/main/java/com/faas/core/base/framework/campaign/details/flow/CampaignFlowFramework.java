@@ -1,15 +1,15 @@
 package com.faas.core.base.framework.campaign.details.flow;
 
-import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
-import com.faas.core.base.model.db.campaign.content.dao.CampaignDataDAO;
-import com.faas.core.base.model.db.utilz.DataTypeDBModel;
-import com.faas.core.base.model.ws.campaign.details.content.dto.CampaignDataWSDTO;
-import com.faas.core.base.model.ws.campaign.details.flow.dto.CampaignFlowWSDTO;
-import com.faas.core.base.repo.campaign.content.CampaignRepository;
-import com.faas.core.base.repo.remote.content.RemoteRepository;
-import com.faas.core.base.repo.utilz.DataTypeRepository;
-import com.faas.core.utility.config.AppUtils;
-import com.faas.core.utility.helpers.remote.RemoteHelpers;
+import com.faas.core.data.db.campaign.content.CampaignDBModel;
+import com.faas.core.data.db.campaign.content.dao.CampaignDataDAO;
+import com.faas.core.data.db.utilz.DataTypeDBModel;
+import com.faas.core.data.ws.base.campaign.details.content.dto.CampaignDataWSDTO;
+import com.faas.core.data.ws.base.campaign.details.flow.dto.CampaignFlowWSDTO;
+import com.faas.core.data.repo.campaign.content.CampaignRepository;
+import com.faas.core.data.repo.remote.content.RemoteRepository;
+import com.faas.core.data.repo.utilz.DataTypeRepository;
+import com.faas.core.misc.config.AppUtils;
+import com.faas.core.misc.helpers.remote.RemoteHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,8 +38,8 @@ public class CampaignFlowFramework {
 
     public CampaignFlowWSDTO getCampaignFlowService(long userId, String campaignId) {
 
-        Optional<CampaignDBModel>campaignDBModel = campaignRepository.findById(campaignId);
-        if (campaignDBModel.isPresent() && campaignDBModel.get().getCampaignFlow() != null){
+        Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
+        if (campaignDBModel.isPresent() && campaignDBModel.get().getCampaignFlow() != null) {
             return new CampaignFlowWSDTO(campaignDBModel.get().getCampaignFlow());
         }
         return null;
@@ -47,8 +47,8 @@ public class CampaignFlowFramework {
 
     public CampaignFlowWSDTO updateCampaignFlowService(long userId, String campaignId, String campaignFlow) {
 
-        Optional<CampaignDBModel>campaignDBModel = campaignRepository.findById(campaignId);
-        if (campaignDBModel.isPresent() && campaignDBModel.get().getCampaignFlow() != null){
+        Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
+        if (campaignDBModel.isPresent() && campaignDBModel.get().getCampaignFlow() != null) {
 
             campaignDBModel.get().getCampaignFlow().setCampaignFlow(campaignFlow);
             campaignDBModel.get().getCampaignFlow().setuDate(appUtils.getCurrentTimeStamp());
@@ -65,9 +65,9 @@ public class CampaignFlowFramework {
     public List<CampaignDataWSDTO> getCampaignFlowDatasService(long userId, String campaignId) {
 
         List<CampaignDataWSDTO> campaignDataWSDTOS = new ArrayList<>();
-        Optional<CampaignDBModel>campaignDBModel = campaignRepository.findById(campaignId);
-        if (campaignDBModel.isPresent() && campaignDBModel.get().getCampaignFlow() != null && campaignDBModel.get().getCampaignFlow().getFlowDatas() != null){
-            for (int i=0;i<campaignDBModel.get().getCampaignFlow().getFlowDatas().size();i++){
+        Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
+        if (campaignDBModel.isPresent() && campaignDBModel.get().getCampaignFlow() != null && campaignDBModel.get().getCampaignFlow().getFlowDatas() != null) {
+            for (int i = 0; i < campaignDBModel.get().getCampaignFlow().getFlowDatas().size(); i++) {
                 campaignDataWSDTOS.add(new CampaignDataWSDTO(campaignDBModel.get().getCampaignFlow().getFlowDatas().get(i)));
             }
         }
@@ -76,10 +76,10 @@ public class CampaignFlowFramework {
 
     public CampaignDataWSDTO getCampaignFlowDataService(long userId, String campaignId, String dataId) {
 
-        Optional<CampaignDBModel>campaignDBModel = campaignRepository.findById(campaignId);
-        if (campaignDBModel.isPresent() && campaignDBModel.get().getCampaignFlow() != null && campaignDBModel.get().getCampaignFlow().getFlowDatas() != null){
-            for (int i=0;i<campaignDBModel.get().getCampaignFlow().getFlowDatas().size();i++){
-                if (campaignDBModel.get().getCampaignFlow().getFlowDatas().get(i).getDataId().equals(dataId)){
+        Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
+        if (campaignDBModel.isPresent() && campaignDBModel.get().getCampaignFlow() != null && campaignDBModel.get().getCampaignFlow().getFlowDatas() != null) {
+            for (int i = 0; i < campaignDBModel.get().getCampaignFlow().getFlowDatas().size(); i++) {
+                if (campaignDBModel.get().getCampaignFlow().getFlowDatas().get(i).getDataId().equals(dataId)) {
                     return new CampaignDataWSDTO(campaignDBModel.get().getCampaignFlow().getFlowDatas().get(i));
                 }
             }
@@ -89,7 +89,7 @@ public class CampaignFlowFramework {
 
     public CampaignDataWSDTO createCampaignFlowDataService(long userId, String campaignId, long typeId, String value) {
 
-        Optional<CampaignDBModel>campaignDBModel = campaignRepository.findById(campaignId);
+        Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
         Optional<DataTypeDBModel> dataTypeDBModel = dataTypeRepository.findById(typeId);
         if (campaignDBModel.isPresent() && campaignDBModel.get().getCampaignFlow() != null && dataTypeDBModel.isPresent()) {
 
@@ -100,11 +100,11 @@ public class CampaignFlowFramework {
             campaignDataDAO.setcDate(appUtils.getCurrentTimeStamp());
             campaignDataDAO.setStatus(1);
 
-            if (campaignDBModel.get().getCampaignFlow().getFlowDatas() == null){
+            if (campaignDBModel.get().getCampaignFlow().getFlowDatas() == null) {
                 List<CampaignDataDAO> campaignDataDAOS = new ArrayList<>();
                 campaignDataDAOS.add(campaignDataDAO);
                 campaignDBModel.get().getCampaignFlow().setFlowDatas(campaignDataDAOS);
-            }else {
+            } else {
                 campaignDBModel.get().getCampaignFlow().getFlowDatas().add(campaignDataDAO);
             }
 
@@ -112,18 +112,18 @@ public class CampaignFlowFramework {
             campaignDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
             campaignRepository.save(campaignDBModel.get());
 
-            return  new CampaignDataWSDTO(campaignDataDAO);
+            return new CampaignDataWSDTO(campaignDataDAO);
         }
         return null;
     }
 
     public CampaignDataWSDTO updateCampaignFlowDataService(long userId, String campaignId, String dataId, long typeId, String value) {
 
-        Optional<CampaignDBModel>campaignDBModel = campaignRepository.findById(campaignId);
+        Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
         Optional<DataTypeDBModel> dataTypeDBModel = dataTypeRepository.findById(typeId);
-        if (campaignDBModel.isPresent() && campaignDBModel.get().getCampaignFlow() != null && campaignDBModel.get().getCampaignFlow().getFlowDatas() != null && dataTypeDBModel.isPresent()){
-            for (int i=0;i<campaignDBModel.get().getCampaignFlow().getFlowDatas().size();i++){
-                if (campaignDBModel.get().getCampaignFlow().getFlowDatas().get(i).getDataId().equals(dataId)){
+        if (campaignDBModel.isPresent() && campaignDBModel.get().getCampaignFlow() != null && campaignDBModel.get().getCampaignFlow().getFlowDatas() != null && dataTypeDBModel.isPresent()) {
+            for (int i = 0; i < campaignDBModel.get().getCampaignFlow().getFlowDatas().size(); i++) {
+                if (campaignDBModel.get().getCampaignFlow().getFlowDatas().get(i).getDataId().equals(dataId)) {
 
                     campaignDBModel.get().getCampaignFlow().getFlowDatas().get(i).setDataType(dataTypeDBModel.get().getDataType());
                     campaignDBModel.get().getCampaignFlow().getFlowDatas().get(i).setValue(value);
@@ -142,10 +142,10 @@ public class CampaignFlowFramework {
 
     public CampaignDataWSDTO removeCampaignFlowDataService(long userId, String campaignId, String dataId) {
 
-        Optional<CampaignDBModel>campaignDBModel = campaignRepository.findById(campaignId);
-        if (campaignDBModel.isPresent() && campaignDBModel.get().getCampaignFlow() != null && campaignDBModel.get().getCampaignFlow().getFlowDatas() != null){
-            for (int i=0;i<campaignDBModel.get().getCampaignFlow().getFlowDatas().size();i++){
-                if (campaignDBModel.get().getCampaignFlow().getFlowDatas().get(i).getDataId().equals(dataId)){
+        Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
+        if (campaignDBModel.isPresent() && campaignDBModel.get().getCampaignFlow() != null && campaignDBModel.get().getCampaignFlow().getFlowDatas() != null) {
+            for (int i = 0; i < campaignDBModel.get().getCampaignFlow().getFlowDatas().size(); i++) {
+                if (campaignDBModel.get().getCampaignFlow().getFlowDatas().get(i).getDataId().equals(dataId)) {
 
                     CampaignDataDAO campaignDataDAO = campaignDBModel.get().getCampaignFlow().getFlowDatas().get(i);
                     campaignDBModel.get().getCampaignFlow().getFlowDatas().remove(i);
@@ -159,7 +159,6 @@ public class CampaignFlowFramework {
         }
         return null;
     }
-
 
 
 }

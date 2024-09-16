@@ -1,9 +1,9 @@
 package com.faas.core.base.framework.remote.settings;
 
-import com.faas.core.base.model.db.remote.settings.RemoteTypeDBModel;
-import com.faas.core.base.model.ws.remote.settings.dto.RemoteTypeWSDTO;
-import com.faas.core.base.repo.remote.settings.RemoteTypeRepository;
-import com.faas.core.utility.config.AppUtils;
+import com.faas.core.data.db.remote.settings.RemoteTypeDBModel;
+import com.faas.core.data.ws.base.remote.settings.dto.RemoteTypeWSDTO;
+import com.faas.core.data.repo.remote.settings.RemoteTypeRepository;
+import com.faas.core.misc.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,7 +33,7 @@ public class RemoteSettingsFramework {
         return remoteTypeWSDTOS;
     }
 
-    public List<RemoteTypeWSDTO> getRemoteTypesByBaseTypeService(long userId,String baseType) {
+    public List<RemoteTypeWSDTO> getRemoteTypesByBaseTypeService(long userId, String baseType) {
 
         List<RemoteTypeWSDTO> remoteTypeWSDTOS = new ArrayList<>();
         List<RemoteTypeDBModel> remoteTypeDBModels = remoteTypeRepository.findByBaseType(baseType);
@@ -43,7 +43,7 @@ public class RemoteSettingsFramework {
         return remoteTypeWSDTOS;
     }
 
-    public RemoteTypeWSDTO getRemoteTypeService(long userId,long remoteTypeId) {
+    public RemoteTypeWSDTO getRemoteTypeService(long userId, long remoteTypeId) {
 
         Optional<RemoteTypeDBModel> remoteTypeDBModel = remoteTypeRepository.findById(remoteTypeId);
         if (remoteTypeDBModel.isPresent()) {
@@ -52,7 +52,7 @@ public class RemoteSettingsFramework {
         return null;
     }
 
-    public RemoteTypeWSDTO createRemoteTypeService(long userId,String remoteType,String baseType) {
+    public RemoteTypeWSDTO createRemoteTypeService(long userId, String remoteType, String baseType) {
 
         RemoteTypeDBModel remoteTypeDBModel = new RemoteTypeDBModel();
         remoteTypeDBModel.setRemoteType(remoteType);
@@ -64,7 +64,7 @@ public class RemoteSettingsFramework {
         return new RemoteTypeWSDTO(remoteTypeRepository.save(remoteTypeDBModel));
     }
 
-    public RemoteTypeWSDTO updateRemoteTypeService(long userId,long remoteTypeId,String remoteType,String baseType) {
+    public RemoteTypeWSDTO updateRemoteTypeService(long userId, long remoteTypeId, String remoteType, String baseType) {
 
         Optional<RemoteTypeDBModel> remoteTypeDBModel = remoteTypeRepository.findById(remoteTypeId);
         if (remoteTypeDBModel.isPresent()) {
@@ -78,7 +78,7 @@ public class RemoteSettingsFramework {
         return null;
     }
 
-    public RemoteTypeWSDTO removeRemoteTypeService(long userId,long remoteTypeId) {
+    public RemoteTypeWSDTO removeRemoteTypeService(long userId, long remoteTypeId) {
 
         Optional<RemoteTypeDBModel> remoteTypeDBModel = remoteTypeRepository.findById(remoteTypeId);
         if (remoteTypeDBModel.isPresent()) {

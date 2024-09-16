@@ -1,15 +1,15 @@
 package com.faas.core.base.middleware.campaign.settings;
 
 import com.faas.core.base.framework.campaign.settings.CampaignSettingsFramework;
-import com.faas.core.base.model.ws.campaign.settings.TriggerTypeWSModel;
-import com.faas.core.base.model.ws.campaign.settings.dto.TriggerTypeWSDTO;
-import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.campaign.settings.CampaignTypeWSModel;
-import com.faas.core.base.model.ws.campaign.settings.dto.CampaignTypeWSDTO;
-import com.faas.core.base.repo.campaign.settings.CampaignTypeRepository;
-import com.faas.core.base.repo.scenario.settings.ScenarioTypeRepository;
-import com.faas.core.utility.config.AppConstant;
-import com.faas.core.utility.config.AppUtils;
+import com.faas.core.data.ws.base.campaign.settings.CampaignTypeWSModel;
+import com.faas.core.data.ws.base.campaign.settings.TriggerTypeWSModel;
+import com.faas.core.data.ws.base.campaign.settings.dto.CampaignTypeWSDTO;
+import com.faas.core.data.ws.base.campaign.settings.dto.TriggerTypeWSDTO;
+import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.data.repo.campaign.settings.CampaignTypeRepository;
+import com.faas.core.data.repo.scenario.settings.ScenarioTypeRepository;
+import com.faas.core.misc.config.AppConstant;
+import com.faas.core.misc.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -40,7 +40,7 @@ public class CampaignSettingsMiddleware {
         GeneralWSModel general = new GeneralWSModel();
 
         List<CampaignTypeWSDTO> campaignTypeWSDTOS = campaignSettingsFramework.getCampaignTypesService(userId);
-        if (campaignTypeWSDTOS != null){
+        if (campaignTypeWSDTOS != null) {
             response.setCampaignTypes(campaignTypeWSDTOS);
         }
 
@@ -59,8 +59,8 @@ public class CampaignSettingsMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignTypeWSDTO> campaignTypeWSDTOS = new ArrayList<>();
 
-        CampaignTypeWSDTO campaignTypeWSDTO = campaignSettingsFramework.getCampaignTypeService(userId,typeId);
-        if (campaignTypeWSDTO != null){
+        CampaignTypeWSDTO campaignTypeWSDTO = campaignSettingsFramework.getCampaignTypeService(userId, typeId);
+        if (campaignTypeWSDTO != null) {
             campaignTypeWSDTOS.add(campaignTypeWSDTO);
         }
 
@@ -101,7 +101,7 @@ public class CampaignSettingsMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignTypeWSDTO> campaignTypeWSDTOS = new ArrayList<>();
 
-        CampaignTypeWSDTO campaignTypeWSDTO = campaignSettingsFramework.updateCampaignTypeService(typeId,campaignType);
+        CampaignTypeWSDTO campaignTypeWSDTO = campaignSettingsFramework.updateCampaignTypeService(typeId, campaignType);
         if (campaignTypeWSDTO != null) {
             campaignTypeWSDTOS.add(campaignTypeWSDTO);
         }
@@ -144,7 +144,7 @@ public class CampaignSettingsMiddleware {
         GeneralWSModel general = new GeneralWSModel();
 
         List<TriggerTypeWSDTO> triggerTypeWSDTOS = campaignSettingsFramework.getTriggerTypesService(userId);
-        if (triggerTypeWSDTOS != null){
+        if (triggerTypeWSDTOS != null) {
             response.setTriggerTypes(triggerTypeWSDTOS);
         }
 
@@ -157,13 +157,13 @@ public class CampaignSettingsMiddleware {
         return response;
     }
 
-    public TriggerTypeWSModel getTriggerTypesByBase(long userId,String baseType) {
+    public TriggerTypeWSModel getTriggerTypesByBase(long userId, String baseType) {
 
         TriggerTypeWSModel response = new TriggerTypeWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<TriggerTypeWSDTO> triggerTypeWSDTOS = campaignSettingsFramework.getTriggerTypesByBaseService(userId,baseType);
-        if (triggerTypeWSDTOS != null){
+        List<TriggerTypeWSDTO> triggerTypeWSDTOS = campaignSettingsFramework.getTriggerTypesByBaseService(userId, baseType);
+        if (triggerTypeWSDTOS != null) {
             response.setTriggerTypes(triggerTypeWSDTOS);
         }
 
@@ -182,8 +182,8 @@ public class CampaignSettingsMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<TriggerTypeWSDTO> triggerTypeWSDTOS = new ArrayList<>();
 
-        TriggerTypeWSDTO triggerTypeWSDTO = campaignSettingsFramework.getTriggerTypeService(userId,typeId);
-        if (triggerTypeWSDTO != null){
+        TriggerTypeWSDTO triggerTypeWSDTO = campaignSettingsFramework.getTriggerTypeService(userId, typeId);
+        if (triggerTypeWSDTO != null) {
             triggerTypeWSDTOS.add(triggerTypeWSDTO);
         }
 
@@ -197,14 +197,14 @@ public class CampaignSettingsMiddleware {
         return response;
     }
 
-    public TriggerTypeWSModel createTriggerType(long userId, String triggerType,String baseType) {
+    public TriggerTypeWSModel createTriggerType(long userId, String triggerType, String baseType) {
 
         TriggerTypeWSModel response = new TriggerTypeWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<TriggerTypeWSDTO> triggerTypeWSDTOS = new ArrayList<>();
 
-        TriggerTypeWSDTO triggerTypeWSDTO = campaignSettingsFramework.createTriggerTypeService(userId,triggerType,baseType);
-        if (triggerTypeWSDTO != null){
+        TriggerTypeWSDTO triggerTypeWSDTO = campaignSettingsFramework.createTriggerTypeService(userId, triggerType, baseType);
+        if (triggerTypeWSDTO != null) {
             triggerTypeWSDTOS.add(triggerTypeWSDTO);
         }
 
@@ -218,14 +218,14 @@ public class CampaignSettingsMiddleware {
         return response;
     }
 
-    public TriggerTypeWSModel updateTriggerType(long userId, long typeId,String triggerType,String baseType) {
+    public TriggerTypeWSModel updateTriggerType(long userId, long typeId, String triggerType, String baseType) {
 
         TriggerTypeWSModel response = new TriggerTypeWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<TriggerTypeWSDTO> triggerTypeWSDTOS = new ArrayList<>();
 
-        TriggerTypeWSDTO triggerTypeWSDTO = campaignSettingsFramework.updateTriggerTypeService(userId,typeId,triggerType,baseType);
-        if (triggerTypeWSDTO != null){
+        TriggerTypeWSDTO triggerTypeWSDTO = campaignSettingsFramework.updateTriggerTypeService(userId, typeId, triggerType, baseType);
+        if (triggerTypeWSDTO != null) {
             triggerTypeWSDTOS.add(triggerTypeWSDTO);
         }
 
@@ -239,14 +239,14 @@ public class CampaignSettingsMiddleware {
         return response;
     }
 
-    public TriggerTypeWSModel removeTriggerType(long userId,long typeId) {
+    public TriggerTypeWSModel removeTriggerType(long userId, long typeId) {
 
         TriggerTypeWSModel response = new TriggerTypeWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<TriggerTypeWSDTO> triggerTypeWSDTOS = new ArrayList<>();
 
-        TriggerTypeWSDTO triggerTypeWSDTO = campaignSettingsFramework.removeTriggerTypeService(userId,typeId);
-        if (triggerTypeWSDTO != null){
+        TriggerTypeWSDTO triggerTypeWSDTO = campaignSettingsFramework.removeTriggerTypeService(userId, typeId);
+        if (triggerTypeWSDTO != null) {
             triggerTypeWSDTOS.add(triggerTypeWSDTO);
         }
 

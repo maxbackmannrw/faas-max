@@ -1,12 +1,12 @@
 package com.faas.core.base.middleware.operation.manager.content;
 
 import com.faas.core.base.framework.operation.manager.content.OperationManagerFramework;
-import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.operation.manager.content.OperationManagerWSModel;
-import com.faas.core.base.model.ws.operation.manager.content.dto.OperationManagerWSDTO;
-import com.faas.core.base.model.ws.operation.content.OperationWSModel;
-import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
-import com.faas.core.utility.config.AppConstant;
+import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.data.ws.base.operation.content.OperationWSModel;
+import com.faas.core.data.ws.base.operation.content.dto.OperationWSDTO;
+import com.faas.core.data.ws.base.operation.manager.content.OperationManagerWSModel;
+import com.faas.core.data.ws.base.operation.manager.content.dto.OperationManagerWSDTO;
+import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -22,13 +22,13 @@ public class OperationManagerMiddleware {
     OperationManagerFramework operationManagerFramework;
 
 
-    public OperationManagerWSModel getOperationManagers(long userId,int reqPage,int reqSize) {
+    public OperationManagerWSModel getOperationManagers(long userId, int reqPage, int reqSize) {
 
         OperationManagerWSModel response = new OperationManagerWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        OperationManagerWSDTO operationManagerWSDTO = operationManagerFramework.getOperationManagersService(userId,reqPage,reqSize);
-        if (operationManagerWSDTO != null){
+        OperationManagerWSDTO operationManagerWSDTO = operationManagerFramework.getOperationManagersService(userId, reqPage, reqSize);
+        if (operationManagerWSDTO != null) {
             response.setOperationManager(operationManagerWSDTO);
         }
 
@@ -41,13 +41,13 @@ public class OperationManagerMiddleware {
         return response;
     }
 
-    public OperationManagerWSModel getOperationManagersByType(long userId,String sessionType,int reqPage,int reqSize) {
+    public OperationManagerWSModel getOperationManagersByType(long userId, String sessionType, int reqPage, int reqSize) {
 
         OperationManagerWSModel response = new OperationManagerWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        OperationManagerWSDTO operationManagerWSDTO = operationManagerFramework.getOperationManagersByTypeService(userId,sessionType,reqPage,reqSize);
-        if (operationManagerWSDTO != null){
+        OperationManagerWSDTO operationManagerWSDTO = operationManagerFramework.getOperationManagersByTypeService(userId, sessionType, reqPage, reqSize);
+        if (operationManagerWSDTO != null) {
             response.setOperationManager(operationManagerWSDTO);
         }
 
@@ -60,13 +60,13 @@ public class OperationManagerMiddleware {
         return response;
     }
 
-    public OperationManagerWSModel getOperationManagersByState(long userId,String operationState,int reqPage,int reqSize) {
+    public OperationManagerWSModel getOperationManagersByState(long userId, String operationState, int reqPage, int reqSize) {
 
         OperationManagerWSModel response = new OperationManagerWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        OperationManagerWSDTO operationManagerWSDTO = operationManagerFramework.getOperationManagersByStateService(userId,operationState,reqPage,reqSize);
-        if (operationManagerWSDTO != null){
+        OperationManagerWSDTO operationManagerWSDTO = operationManagerFramework.getOperationManagersByStateService(userId, operationState, reqPage, reqSize);
+        if (operationManagerWSDTO != null) {
             response.setOperationManager(operationManagerWSDTO);
         }
 
@@ -79,14 +79,14 @@ public class OperationManagerMiddleware {
         return response;
     }
 
-    public OperationWSModel getOperationManager(long userId,long sessionId) {
+    public OperationWSModel getOperationManager(long userId, long sessionId) {
 
         OperationWSModel response = new OperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<OperationWSDTO>operationWSDTOS = new ArrayList<>();
+        List<OperationWSDTO> operationWSDTOS = new ArrayList<>();
 
-        OperationWSDTO operationWSDTO = operationManagerFramework.getOperationManagerService(userId,sessionId);
-        if (operationWSDTO != null){
+        OperationWSDTO operationWSDTO = operationManagerFramework.getOperationManagerService(userId, sessionId);
+        if (operationWSDTO != null) {
             operationWSDTOS.add(operationWSDTO);
         }
 
@@ -100,14 +100,14 @@ public class OperationManagerMiddleware {
         return response;
     }
 
-    public OperationWSModel updateOperationManager(long userId,long sessionId) {
+    public OperationWSModel updateOperationManager(long userId, long sessionId) {
 
         OperationWSModel response = new OperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<OperationWSDTO>operationWSDTOS = new ArrayList<>();
+        List<OperationWSDTO> operationWSDTOS = new ArrayList<>();
 
-        OperationWSDTO operationWSDTO = operationManagerFramework.updateOperationManagerService(userId,sessionId);
-        if (operationWSDTO != null){
+        OperationWSDTO operationWSDTO = operationManagerFramework.updateOperationManagerService(userId, sessionId);
+        if (operationWSDTO != null) {
             operationWSDTOS.add(operationWSDTO);
         }
 
@@ -121,14 +121,14 @@ public class OperationManagerMiddleware {
         return response;
     }
 
-    public OperationWSModel removeOperationManager(long userId,long sessionId) {
+    public OperationWSModel removeOperationManager(long userId, long sessionId) {
 
         OperationWSModel response = new OperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<OperationWSDTO>operationWSDTOS = new ArrayList<>();
+        List<OperationWSDTO> operationWSDTOS = new ArrayList<>();
 
-        OperationWSDTO operationWSDTO = operationManagerFramework.removeOperationManagerService(userId,sessionId);
-        if (operationWSDTO != null){
+        OperationWSDTO operationWSDTO = operationManagerFramework.removeOperationManagerService(userId, sessionId);
+        if (operationWSDTO != null) {
             operationWSDTOS.add(operationWSDTO);
         }
 

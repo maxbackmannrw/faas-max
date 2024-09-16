@@ -1,14 +1,13 @@
 package com.faas.core.base.middleware.campaign.manager.client;
 
 import com.faas.core.base.framework.campaign.manager.client.CampaignManagerClientFramework;
-import com.faas.core.base.model.ws.campaign.manager.client.CampaignClientRequest;
-import com.faas.core.base.model.ws.campaign.manager.client.CampaignClientWSModel;
-import com.faas.core.base.model.ws.campaign.manager.client.dto.CampaignClientWSDTO;
-import com.faas.core.base.model.ws.campaign.manager.operation.CampaignOperationRequest;
-import com.faas.core.base.model.ws.client.content.ClientWSModel;
-import com.faas.core.base.model.ws.client.content.dto.ClientWSDTO;
-import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.utility.config.AppConstant;
+import com.faas.core.data.ws.base.campaign.manager.client.CampaignClientRequest;
+import com.faas.core.data.ws.base.campaign.manager.client.CampaignClientWSModel;
+import com.faas.core.data.ws.base.campaign.manager.client.dto.CampaignClientWSDTO;
+import com.faas.core.data.ws.base.client.content.ClientWSModel;
+import com.faas.core.data.ws.base.client.content.dto.ClientWSDTO;
+import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -23,13 +22,13 @@ public class CampaignManagerClientMiddleware {
     CampaignManagerClientFramework campaignManagerClientFramework;
 
 
-    public CampaignClientWSModel searchCampaignClients(long userId,String city, String clientState, int reqPage, int reqSize) {
+    public CampaignClientWSModel searchCampaignClients(long userId, String city, String clientState, int reqPage, int reqSize) {
 
         CampaignClientWSModel response = new CampaignClientWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        CampaignClientWSDTO campaignClientWSDTO = campaignManagerClientFramework.searchCampaignClientsService(city,clientState,reqPage,reqSize);
-        if (campaignClientWSDTO != null){
+        CampaignClientWSDTO campaignClientWSDTO = campaignManagerClientFramework.searchCampaignClientsService(city, clientState, reqPage, reqSize);
+        if (campaignClientWSDTO != null) {
             response.setCampaignClient(campaignClientWSDTO);
         }
 
@@ -48,7 +47,7 @@ public class CampaignManagerClientMiddleware {
         GeneralWSModel general = new GeneralWSModel();
 
         List<ClientWSDTO> clientWSDTOS = campaignManagerClientFramework.getSelectedCampaignClients(clientRequest);
-        if (clientWSDTOS != null){
+        if (clientWSDTOS != null) {
             response.setClients(clientWSDTOS);
         }
 
@@ -61,14 +60,14 @@ public class CampaignManagerClientMiddleware {
         return response;
     }
 
-    public ClientWSModel getCampaignClient(long userId,long clientId,String campaignId) {
+    public ClientWSModel getCampaignClient(long userId, long clientId, String campaignId) {
 
         ClientWSModel response = new ClientWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ClientWSDTO>clientWSDTOS = new ArrayList<>();
+        List<ClientWSDTO> clientWSDTOS = new ArrayList<>();
 
-        ClientWSDTO clientWSDTO = campaignManagerClientFramework.getCampaignClientService(userId,clientId,campaignId);
-        if (clientWSDTO != null){
+        ClientWSDTO clientWSDTO = campaignManagerClientFramework.getCampaignClientService(userId, clientId, campaignId);
+        if (clientWSDTO != null) {
             clientWSDTOS.add(clientWSDTO);
         }
 

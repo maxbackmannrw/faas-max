@@ -1,12 +1,12 @@
 package com.faas.core.base.middleware.campaign.details.scenario;
 
 import com.faas.core.base.framework.campaign.details.scenario.CampaignScenarioFramework;
-import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.campaign.details.scenario.CampaignScenarioDataWSModel;
-import com.faas.core.base.model.ws.campaign.details.scenario.CampaignScenarioWSModel;
-import com.faas.core.base.model.ws.campaign.details.scenario.dto.ProcessScenarioDataWSDTO;
-import com.faas.core.base.model.ws.campaign.details.scenario.dto.CampaignScenarioWSDTO;
-import com.faas.core.utility.config.AppConstant;
+import com.faas.core.data.ws.base.campaign.details.scenario.CampaignScenarioDataWSModel;
+import com.faas.core.data.ws.base.campaign.details.scenario.CampaignScenarioWSModel;
+import com.faas.core.data.ws.base.campaign.details.scenario.dto.CampaignScenarioWSDTO;
+import com.faas.core.data.ws.base.campaign.details.scenario.dto.ProcessScenarioDataWSDTO;
+import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -28,7 +28,7 @@ public class CampaignScenarioMiddleware {
         GeneralWSModel general = new GeneralWSModel();
 
         List<CampaignScenarioWSDTO> campaignScenarioWSDTOS = campaignScenarioFramework.getCampaignScenariosService(userId, campaignId);
-        if (campaignScenarioWSDTOS != null){
+        if (campaignScenarioWSDTOS != null) {
             response.setCampaignScenarios(campaignScenarioWSDTOS);
         }
 
@@ -48,7 +48,7 @@ public class CampaignScenarioMiddleware {
         List<CampaignScenarioWSDTO> campaignScenarioWSDTOS = new ArrayList<>();
 
         CampaignScenarioWSDTO campaignScenarioWSDTO = campaignScenarioFramework.getCampaignScenarioService(userId, campaignId, scenarioId);
-        if (campaignScenarioWSDTO != null){
+        if (campaignScenarioWSDTO != null) {
             campaignScenarioWSDTOS.add(campaignScenarioWSDTO);
         }
 
@@ -69,7 +69,7 @@ public class CampaignScenarioMiddleware {
         List<CampaignScenarioWSDTO> campaignScenarioWSDTOS = new ArrayList<>();
 
         CampaignScenarioWSDTO campaignScenarioWSDTO = campaignScenarioFramework.createCampaignScenarioService(userId, campaignId, scenarioId);
-        if (campaignScenarioWSDTO != null){
+        if (campaignScenarioWSDTO != null) {
             campaignScenarioWSDTOS.add(campaignScenarioWSDTO);
         }
 
@@ -89,8 +89,8 @@ public class CampaignScenarioMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignScenarioWSDTO> campaignScenarioWSDTOS = new ArrayList<>();
 
-        CampaignScenarioWSDTO campaignScenarioWSDTO = campaignScenarioFramework.removeCampaignScenarioService(userId,campaignId,scenarioId);
-        if (campaignScenarioWSDTO != null){
+        CampaignScenarioWSDTO campaignScenarioWSDTO = campaignScenarioFramework.removeCampaignScenarioService(userId, campaignId, scenarioId);
+        if (campaignScenarioWSDTO != null) {
             campaignScenarioWSDTOS.add(campaignScenarioWSDTO);
         }
 
@@ -110,8 +110,8 @@ public class CampaignScenarioMiddleware {
         CampaignScenarioDataWSModel response = new CampaignScenarioDataWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ProcessScenarioDataWSDTO> scenarioDataWSDTOS = campaignScenarioFramework.getCampaignScenarioDatasService(userId,campaignId,scenarioId);
-        if (scenarioDataWSDTOS != null){
+        List<ProcessScenarioDataWSDTO> scenarioDataWSDTOS = campaignScenarioFramework.getCampaignScenarioDatasService(userId, campaignId, scenarioId);
+        if (scenarioDataWSDTOS != null) {
             response.setScenarioDatas(scenarioDataWSDTOS);
         }
 
@@ -130,8 +130,8 @@ public class CampaignScenarioMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessScenarioDataWSDTO> scenarioDataWSDTOS = new ArrayList<>();
 
-        ProcessScenarioDataWSDTO scenarioDataWSDTO = campaignScenarioFramework.getCampaignScenarioDataService(userId,campaignId,scenarioId,dataId);
-        if (scenarioDataWSDTO != null){
+        ProcessScenarioDataWSDTO scenarioDataWSDTO = campaignScenarioFramework.getCampaignScenarioDataService(userId, campaignId, scenarioId, dataId);
+        if (scenarioDataWSDTO != null) {
             scenarioDataWSDTOS.add(scenarioDataWSDTO);
         }
 
@@ -151,8 +151,8 @@ public class CampaignScenarioMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessScenarioDataWSDTO> scenarioDataWSDTOS = new ArrayList<>();
 
-        ProcessScenarioDataWSDTO scenarioDataWSDTO = campaignScenarioFramework.createCampaignScenarioDataService(userId, campaignId,scenarioId,typeId,value);
-        if (scenarioDataWSDTO != null){
+        ProcessScenarioDataWSDTO scenarioDataWSDTO = campaignScenarioFramework.createCampaignScenarioDataService(userId, campaignId, scenarioId, typeId, value);
+        if (scenarioDataWSDTO != null) {
             scenarioDataWSDTOS.add(scenarioDataWSDTO);
         }
 
@@ -172,8 +172,8 @@ public class CampaignScenarioMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessScenarioDataWSDTO> scenarioDataWSDTOS = new ArrayList<>();
 
-        ProcessScenarioDataWSDTO scenarioDataWSDTO = campaignScenarioFramework.updateCampaignScenarioDataService(userId, campaignId,scenarioId,dataId,typeId,value);
-        if (scenarioDataWSDTO != null){
+        ProcessScenarioDataWSDTO scenarioDataWSDTO = campaignScenarioFramework.updateCampaignScenarioDataService(userId, campaignId, scenarioId, dataId, typeId, value);
+        if (scenarioDataWSDTO != null) {
             scenarioDataWSDTOS.add(scenarioDataWSDTO);
         }
 
@@ -193,8 +193,8 @@ public class CampaignScenarioMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ProcessScenarioDataWSDTO> scenarioDataWSDTOS = new ArrayList<>();
 
-        ProcessScenarioDataWSDTO scenarioDataWSDTO = campaignScenarioFramework.removeCampaignScenarioDataService(userId, campaignId,scenarioId,dataId);
-        if (scenarioDataWSDTO != null){
+        ProcessScenarioDataWSDTO scenarioDataWSDTO = campaignScenarioFramework.removeCampaignScenarioDataService(userId, campaignId, scenarioId, dataId);
+        if (scenarioDataWSDTO != null) {
             scenarioDataWSDTOS.add(scenarioDataWSDTO);
         }
 

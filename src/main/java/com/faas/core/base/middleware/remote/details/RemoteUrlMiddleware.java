@@ -1,10 +1,10 @@
 package com.faas.core.base.middleware.remote.details;
 
 import com.faas.core.base.framework.remote.details.RemoteUrlFramework;
-import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.remote.details.RemoteUrlWSModel;
-import com.faas.core.base.model.ws.remote.details.dto.RemoteUrlWSDTO;
-import com.faas.core.utility.config.AppConstant;
+import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.data.ws.base.remote.details.RemoteUrlWSModel;
+import com.faas.core.data.ws.base.remote.details.dto.RemoteUrlWSDTO;
+import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -26,7 +26,7 @@ public class RemoteUrlMiddleware {
         GeneralWSModel general = new GeneralWSModel();
 
         List<RemoteUrlWSDTO> remoteUrlWSDTOS = remoteUrlFramework.getAllRemoteUrlsService(userId);
-        if (remoteUrlWSDTOS != null){
+        if (remoteUrlWSDTOS != null) {
             response.setRemoteUrls(remoteUrlWSDTOS);
         }
 
@@ -44,8 +44,8 @@ public class RemoteUrlMiddleware {
         RemoteUrlWSModel response = new RemoteUrlWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<RemoteUrlWSDTO> remoteUrlWSDTOS = remoteUrlFramework.getRemoteUrlsService(userId,remoteId);
-        if (remoteUrlWSDTOS != null){
+        List<RemoteUrlWSDTO> remoteUrlWSDTOS = remoteUrlFramework.getRemoteUrlsService(userId, remoteId);
+        if (remoteUrlWSDTOS != null) {
             response.setRemoteUrls(remoteUrlWSDTOS);
         }
 
@@ -64,8 +64,8 @@ public class RemoteUrlMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<RemoteUrlWSDTO> remoteUrlWSDTOS = new ArrayList<>();
 
-        RemoteUrlWSDTO remoteUrlWSDTO = remoteUrlFramework.getRemoteUrlService(userId,urlId);
-        if (remoteUrlWSDTO != null){
+        RemoteUrlWSDTO remoteUrlWSDTO = remoteUrlFramework.getRemoteUrlService(userId, urlId);
+        if (remoteUrlWSDTO != null) {
             remoteUrlWSDTOS.add(remoteUrlWSDTO);
         }
 
@@ -85,8 +85,8 @@ public class RemoteUrlMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<RemoteUrlWSDTO> remoteUrlWSDTOS = new ArrayList<>();
 
-        RemoteUrlWSDTO remoteUrlWSDTO = remoteUrlFramework.createRemoteUrlService(userId,remoteId,remoteUrl,urlType);
-        if (remoteUrlWSDTO != null){
+        RemoteUrlWSDTO remoteUrlWSDTO = remoteUrlFramework.createRemoteUrlService(userId, remoteId, remoteUrl, urlType);
+        if (remoteUrlWSDTO != null) {
             remoteUrlWSDTOS.add(remoteUrlWSDTO);
         }
 
@@ -106,8 +106,8 @@ public class RemoteUrlMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<RemoteUrlWSDTO> remoteUrlWSDTOS = new ArrayList<>();
 
-        RemoteUrlWSDTO remoteUrlWSDTO = remoteUrlFramework.updateRemoteUrlService(userId,urlId,remoteUrl,urlType);
-        if (remoteUrlWSDTO != null){
+        RemoteUrlWSDTO remoteUrlWSDTO = remoteUrlFramework.updateRemoteUrlService(userId, urlId, remoteUrl, urlType);
+        if (remoteUrlWSDTO != null) {
             remoteUrlWSDTOS.add(remoteUrlWSDTO);
         }
 
@@ -127,8 +127,8 @@ public class RemoteUrlMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<RemoteUrlWSDTO> remoteUrlWSDTOS = new ArrayList<>();
 
-        RemoteUrlWSDTO remoteUrlWSDTO = remoteUrlFramework.removeRemoteUrlService(userId,urlId);
-        if (remoteUrlWSDTO != null){
+        RemoteUrlWSDTO remoteUrlWSDTO = remoteUrlFramework.removeRemoteUrlService(userId, urlId);
+        if (remoteUrlWSDTO != null) {
             remoteUrlWSDTOS.add(remoteUrlWSDTO);
         }
 
@@ -141,8 +141,6 @@ public class RemoteUrlMiddleware {
 
         return response;
     }
-
-
 
 
 }

@@ -1,18 +1,18 @@
 package com.faas.core.base.framework.channel.settings;
 
-import com.faas.core.base.model.db.channel.settings.EmailTypeDBModel;
-import com.faas.core.base.model.db.channel.settings.MessageTypeDBModel;
-import com.faas.core.base.model.db.channel.settings.PushTypeDBModel;
-import com.faas.core.base.model.db.channel.settings.WappServerDBModel;
-import com.faas.core.base.model.ws.channel.settings.dto.EmailTypeWSDTO;
-import com.faas.core.base.model.ws.channel.settings.dto.MessageTypeWSDTO;
-import com.faas.core.base.model.ws.channel.settings.dto.PushTypeWSDTO;
-import com.faas.core.base.model.ws.channel.settings.dto.WappServerWSDTO;
-import com.faas.core.base.repo.channel.settings.EmailTypeRepository;
-import com.faas.core.base.repo.channel.settings.MessageTypeRepository;
-import com.faas.core.base.repo.channel.settings.PushTypeRepository;
-import com.faas.core.base.repo.channel.settings.WappServerRepository;
-import com.faas.core.utility.config.AppUtils;
+import com.faas.core.data.db.channel.settings.EmailTypeDBModel;
+import com.faas.core.data.db.channel.settings.MessageTypeDBModel;
+import com.faas.core.data.db.channel.settings.PushTypeDBModel;
+import com.faas.core.data.db.channel.settings.WappServerDBModel;
+import com.faas.core.data.ws.base.channel.settings.dto.EmailTypeWSDTO;
+import com.faas.core.data.ws.base.channel.settings.dto.MessageTypeWSDTO;
+import com.faas.core.data.ws.base.channel.settings.dto.PushTypeWSDTO;
+import com.faas.core.data.ws.base.channel.settings.dto.WappServerWSDTO;
+import com.faas.core.data.repo.channel.settings.EmailTypeRepository;
+import com.faas.core.data.repo.channel.settings.MessageTypeRepository;
+import com.faas.core.data.repo.channel.settings.PushTypeRepository;
+import com.faas.core.data.repo.channel.settings.WappServerRepository;
+import com.faas.core.misc.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -60,10 +60,10 @@ public class ChannelSettingsFramework {
         return emailTypeRepository.save(emailTypeDBModel);
     }
 
-    public EmailTypeDBModel updateEmailTypeService(long typeId,String emailType) {
+    public EmailTypeDBModel updateEmailTypeService(long typeId, String emailType) {
 
         Optional<EmailTypeDBModel> emailTypeDBModel = emailTypeRepository.findById(typeId);
-        if (emailTypeDBModel.isPresent()){
+        if (emailTypeDBModel.isPresent()) {
 
             emailTypeDBModel.get().setEmailType(emailType);
             emailTypeDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
@@ -77,13 +77,12 @@ public class ChannelSettingsFramework {
     public EmailTypeDBModel removeEmailTypeService(long typeId) {
 
         Optional<EmailTypeDBModel> emailTypeDBModel = emailTypeRepository.findById(typeId);
-        if (emailTypeDBModel.isPresent()){
+        if (emailTypeDBModel.isPresent()) {
             emailTypeRepository.delete(emailTypeDBModel.get());
             return emailTypeDBModel.get();
         }
         return null;
     }
-
 
 
     public PushTypeWSDTO fillPushTypeWSDTO(PushTypeDBModel pushTypeDBModel) {
@@ -108,7 +107,7 @@ public class ChannelSettingsFramework {
     public PushTypeDBModel updatePushTypeService(long typeId, String pushType, String mainType) {
 
         Optional<PushTypeDBModel> pushTypeDBModel = pushTypeRepository.findById(typeId);
-        if (pushTypeDBModel.isPresent()){
+        if (pushTypeDBModel.isPresent()) {
             pushTypeDBModel.get().setPushType(pushType);
             pushTypeDBModel.get().setMainType(mainType);
             pushTypeDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
@@ -122,7 +121,7 @@ public class ChannelSettingsFramework {
     public PushTypeDBModel removePushTypeService(long typeId) {
 
         Optional<PushTypeDBModel> pushTypeDBModel = pushTypeRepository.findById(typeId);
-        if (pushTypeDBModel.isPresent()){
+        if (pushTypeDBModel.isPresent()) {
             pushTypeRepository.delete(pushTypeDBModel.get());
             return pushTypeDBModel.get();
         }
@@ -137,7 +136,7 @@ public class ChannelSettingsFramework {
         return messageTypeWSDTO;
     }
 
-    public MessageTypeDBModel createMessageTypeService(String messageType,String mainType) {
+    public MessageTypeDBModel createMessageTypeService(String messageType, String mainType) {
 
         MessageTypeDBModel messageTypeDBModel = new MessageTypeDBModel();
 
@@ -150,7 +149,7 @@ public class ChannelSettingsFramework {
         return messageTypeRepository.save(messageTypeDBModel);
     }
 
-    public MessageTypeDBModel updateMessageTypeService(long typeId,String messageType,String mainType) {
+    public MessageTypeDBModel updateMessageTypeService(long typeId, String messageType, String mainType) {
 
         Optional<MessageTypeDBModel> connectionTypeDBModel = messageTypeRepository.findById(typeId);
         if (connectionTypeDBModel.isPresent()) {
@@ -175,10 +174,9 @@ public class ChannelSettingsFramework {
     }
 
 
-
     public List<WappServerWSDTO> getWappServersService(long userId) {
 
-        List<WappServerWSDTO>wappServerWSDTOS = new ArrayList<>();
+        List<WappServerWSDTO> wappServerWSDTOS = new ArrayList<>();
         List<WappServerDBModel> wappServerDBModels = wappServerRepository.findByStatus(1);
         for (WappServerDBModel wappServerDBModel : wappServerDBModels) {
             wappServerWSDTOS.add(new WappServerWSDTO(wappServerDBModel));
@@ -186,16 +184,16 @@ public class ChannelSettingsFramework {
         return wappServerWSDTOS;
     }
 
-    public WappServerWSDTO getWappServerService(long userId,long serverId) {
+    public WappServerWSDTO getWappServerService(long userId, long serverId) {
 
-        Optional<WappServerDBModel>wappServerDBModel = wappServerRepository.findById(serverId);
+        Optional<WappServerDBModel> wappServerDBModel = wappServerRepository.findById(serverId);
         if (wappServerDBModel.isPresent()) {
             return new WappServerWSDTO(wappServerDBModel.get());
         }
         return null;
     }
 
-    public WappServerWSDTO createWappServerService(long userId,String serverName,String serverUrl,String serverType) {
+    public WappServerWSDTO createWappServerService(long userId, String serverName, String serverUrl, String serverType) {
 
         WappServerDBModel wappServerDBModel = new WappServerDBModel();
         wappServerDBModel.setServerName(serverName);
@@ -208,10 +206,10 @@ public class ChannelSettingsFramework {
         return new WappServerWSDTO(wappServerRepository.save(wappServerDBModel));
     }
 
-    public WappServerWSDTO updateWappServerService(long userId,long serverId,String serverName,String serverUrl,String serverType) {
+    public WappServerWSDTO updateWappServerService(long userId, long serverId, String serverName, String serverUrl, String serverType) {
 
         Optional<WappServerDBModel> wappServerDBModel = wappServerRepository.findById(serverId);
-        if (wappServerDBModel.isPresent()){
+        if (wappServerDBModel.isPresent()) {
 
             wappServerDBModel.get().setServerName(serverName);
             wappServerDBModel.get().setServerUrl(serverUrl);
@@ -223,10 +221,10 @@ public class ChannelSettingsFramework {
         return null;
     }
 
-    public WappServerWSDTO removeWappServerService(long userId,long serverId) {
+    public WappServerWSDTO removeWappServerService(long userId, long serverId) {
 
         Optional<WappServerDBModel> wappServerDBModel = wappServerRepository.findById(serverId);
-        if (wappServerDBModel.isPresent()){
+        if (wappServerDBModel.isPresent()) {
 
             wappServerRepository.delete(wappServerDBModel.get());
             return new WappServerWSDTO(wappServerDBModel.get());

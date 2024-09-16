@@ -1,10 +1,10 @@
 package com.faas.core.base.middleware.campaign.details.temp.details;
 
 import com.faas.core.base.framework.campaign.details.temp.details.CampaignPushTempFramework;
-import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.campaign.details.temp.details.CampaignPushTempWSModel;
-import com.faas.core.base.model.ws.campaign.details.temp.details.dto.CampaignPushTempWSDTO;
-import com.faas.core.utility.config.AppConstant;
+import com.faas.core.data.ws.base.campaign.details.temp.details.CampaignPushTempWSModel;
+import com.faas.core.data.ws.base.campaign.details.temp.details.dto.CampaignPushTempWSDTO;
+import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -24,7 +24,7 @@ public class CampaignPushTempMiddleware {
         CampaignPushTempWSModel response = new CampaignPushTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<CampaignPushTempWSDTO> campaignPushTempWSDTOS = campaignPushTempFramework.getCampaignPushTempsService(userId,campaignId);
+        List<CampaignPushTempWSDTO> campaignPushTempWSDTOS = campaignPushTempFramework.getCampaignPushTempsService(userId, campaignId);
         if (campaignPushTempWSDTOS != null) {
             response.setCampaignPushTemps(campaignPushTempWSDTOS);
         }
@@ -44,7 +44,7 @@ public class CampaignPushTempMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignPushTempWSDTO> campaignPushTempWSDTOS = new ArrayList<>();
 
-        CampaignPushTempWSDTO campaignPushTempWSDTO = campaignPushTempFramework.getCampaignPushTempService(userId,tempId);
+        CampaignPushTempWSDTO campaignPushTempWSDTO = campaignPushTempFramework.getCampaignPushTempService(userId, tempId);
         if (campaignPushTempWSDTO != null) {
             campaignPushTempWSDTOS.add(campaignPushTempWSDTO);
         }
@@ -65,7 +65,7 @@ public class CampaignPushTempMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignPushTempWSDTO> campaignPushTempWSDTOS = new ArrayList<>();
 
-        CampaignPushTempWSDTO campaignPushTempWSDTO = campaignPushTempFramework.createCampaignPushTempService(userId,campaignId,pushHeader,pushBody,pushSender,typeId);
+        CampaignPushTempWSDTO campaignPushTempWSDTO = campaignPushTempFramework.createCampaignPushTempService(userId, campaignId, pushHeader, pushBody, pushSender, typeId);
         if (campaignPushTempWSDTO != null) {
             campaignPushTempWSDTOS.add(campaignPushTempWSDTO);
         }
@@ -86,7 +86,7 @@ public class CampaignPushTempMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignPushTempWSDTO> campaignPushTempWSDTOS = new ArrayList<>();
 
-        CampaignPushTempWSDTO campaignPushTempWSDTO = campaignPushTempFramework.updateCampaignPushTempService(userId,tempId,pushHeader,pushBody,pushSender,typeId);
+        CampaignPushTempWSDTO campaignPushTempWSDTO = campaignPushTempFramework.updateCampaignPushTempService(userId, tempId, pushHeader, pushBody, pushSender, typeId);
         if (campaignPushTempWSDTO != null) {
             campaignPushTempWSDTOS.add(campaignPushTempWSDTO);
         }

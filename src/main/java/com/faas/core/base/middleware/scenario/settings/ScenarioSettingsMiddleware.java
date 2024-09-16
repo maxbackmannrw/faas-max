@@ -1,10 +1,10 @@
 package com.faas.core.base.middleware.scenario.settings;
 
 import com.faas.core.base.framework.scenario.settings.ScenarioSettingsFramework;
-import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.scenario.settings.ScenarioTypeWSModel;
-import com.faas.core.base.model.ws.scenario.settings.dto.ScenarioTypeWSDTO;
-import com.faas.core.utility.config.AppConstant;
+import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.data.ws.base.scenario.settings.ScenarioTypeWSModel;
+import com.faas.core.data.ws.base.scenario.settings.dto.ScenarioTypeWSDTO;
+import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -26,7 +26,7 @@ public class ScenarioSettingsMiddleware {
         GeneralWSModel general = new GeneralWSModel();
 
         List<ScenarioTypeWSDTO> scenarioTypeWSDTOS = scenarioSettingsFramework.getScenarioTypesService(userId);
-        if (scenarioTypeWSDTOS != null){
+        if (scenarioTypeWSDTOS != null) {
             response.setScenarioTypes(scenarioTypeWSDTOS);
         }
 
@@ -40,13 +40,13 @@ public class ScenarioSettingsMiddleware {
     }
 
 
-    public ScenarioTypeWSModel getScenarioTypesByBaseType(long userId,String baseType) {
+    public ScenarioTypeWSModel getScenarioTypesByBaseType(long userId, String baseType) {
 
         ScenarioTypeWSModel response = new ScenarioTypeWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ScenarioTypeWSDTO> scenarioTypeWSDTOS = scenarioSettingsFramework.getScenarioTypesByBaseTypeService(userId,baseType);
-        if (scenarioTypeWSDTOS != null){
+        List<ScenarioTypeWSDTO> scenarioTypeWSDTOS = scenarioSettingsFramework.getScenarioTypesByBaseTypeService(userId, baseType);
+        if (scenarioTypeWSDTOS != null) {
             response.setScenarioTypes(scenarioTypeWSDTOS);
         }
 
@@ -60,14 +60,14 @@ public class ScenarioSettingsMiddleware {
     }
 
 
-    public ScenarioTypeWSModel getScenarioType(long userId,long scenarioTypeId) {
+    public ScenarioTypeWSModel getScenarioType(long userId, long scenarioTypeId) {
 
         ScenarioTypeWSModel response = new ScenarioTypeWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ScenarioTypeWSDTO>scenarioTypeWSDTOS = new ArrayList<>();
+        List<ScenarioTypeWSDTO> scenarioTypeWSDTOS = new ArrayList<>();
 
-        ScenarioTypeWSDTO scenarioTypeWSDTO = scenarioSettingsFramework.getScenarioTypeService(userId,scenarioTypeId);
-        if (scenarioTypeWSDTO != null){
+        ScenarioTypeWSDTO scenarioTypeWSDTO = scenarioSettingsFramework.getScenarioTypeService(userId, scenarioTypeId);
+        if (scenarioTypeWSDTO != null) {
             scenarioTypeWSDTOS.add(scenarioTypeWSDTO);
         }
 
@@ -82,14 +82,14 @@ public class ScenarioSettingsMiddleware {
     }
 
 
-    public ScenarioTypeWSModel createScenarioType(long userId,String scenarioType,String baseType) {
+    public ScenarioTypeWSModel createScenarioType(long userId, String scenarioType, String baseType) {
 
         ScenarioTypeWSModel response = new ScenarioTypeWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ScenarioTypeWSDTO>scenarioTypeWSDTOS = new ArrayList<>();
+        List<ScenarioTypeWSDTO> scenarioTypeWSDTOS = new ArrayList<>();
 
-        ScenarioTypeWSDTO scenarioTypeWSDTO = scenarioSettingsFramework.createScenarioTypeService(userId,scenarioType,baseType);
-        if (scenarioTypeWSDTO != null){
+        ScenarioTypeWSDTO scenarioTypeWSDTO = scenarioSettingsFramework.createScenarioTypeService(userId, scenarioType, baseType);
+        if (scenarioTypeWSDTO != null) {
             scenarioTypeWSDTOS.add(scenarioTypeWSDTO);
         }
 
@@ -104,14 +104,14 @@ public class ScenarioSettingsMiddleware {
     }
 
 
-    public ScenarioTypeWSModel updateScenarioType(long userId,long scenarioTypeId,String scenarioType,String baseType) {
+    public ScenarioTypeWSModel updateScenarioType(long userId, long scenarioTypeId, String scenarioType, String baseType) {
 
         ScenarioTypeWSModel response = new ScenarioTypeWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ScenarioTypeWSDTO>scenarioTypeWSDTOS = new ArrayList<>();
+        List<ScenarioTypeWSDTO> scenarioTypeWSDTOS = new ArrayList<>();
 
-        ScenarioTypeWSDTO scenarioTypeWSDTO = scenarioSettingsFramework.updateScenarioTypeService(userId,scenarioTypeId,scenarioType,baseType);
-        if (scenarioTypeWSDTO != null){
+        ScenarioTypeWSDTO scenarioTypeWSDTO = scenarioSettingsFramework.updateScenarioTypeService(userId, scenarioTypeId, scenarioType, baseType);
+        if (scenarioTypeWSDTO != null) {
             scenarioTypeWSDTOS.add(scenarioTypeWSDTO);
         }
 
@@ -126,14 +126,14 @@ public class ScenarioSettingsMiddleware {
     }
 
 
-    public ScenarioTypeWSModel removeScenarioType(long userId,long scenarioTypeId) {
+    public ScenarioTypeWSModel removeScenarioType(long userId, long scenarioTypeId) {
 
         ScenarioTypeWSModel response = new ScenarioTypeWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ScenarioTypeWSDTO>scenarioTypeWSDTOS = new ArrayList<>();
+        List<ScenarioTypeWSDTO> scenarioTypeWSDTOS = new ArrayList<>();
 
-        ScenarioTypeWSDTO scenarioTypeWSDTO = scenarioSettingsFramework.removeScenarioTypeService(userId,scenarioTypeId);
-        if (scenarioTypeWSDTO != null){
+        ScenarioTypeWSDTO scenarioTypeWSDTO = scenarioSettingsFramework.removeScenarioTypeService(userId, scenarioTypeId);
+        if (scenarioTypeWSDTO != null) {
             scenarioTypeWSDTOS.add(scenarioTypeWSDTO);
         }
 

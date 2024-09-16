@@ -1,12 +1,12 @@
 package com.faas.core.base.middleware.remote.details;
 
 import com.faas.core.base.framework.remote.details.RemoteDetailsFramework;
-import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.remote.content.RemoteDataWSModel;
-import com.faas.core.base.model.ws.remote.details.RemoteDetailsWSModel;
-import com.faas.core.base.model.ws.remote.content.dto.RemoteDataWSDTO;
-import com.faas.core.base.model.ws.remote.details.dto.RemoteDetailsWSDTO;
-import com.faas.core.utility.config.AppConstant;
+import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.data.ws.base.remote.content.RemoteDataWSModel;
+import com.faas.core.data.ws.base.remote.content.dto.RemoteDataWSDTO;
+import com.faas.core.data.ws.base.remote.details.RemoteDetailsWSModel;
+import com.faas.core.data.ws.base.remote.details.dto.RemoteDetailsWSDTO;
+import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -26,10 +26,10 @@ public class RemoteDetailsMiddleware {
 
         RemoteDetailsWSModel response = new RemoteDetailsWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<RemoteDetailsWSDTO>remoteDetailsWSDTOS = new ArrayList<>();
+        List<RemoteDetailsWSDTO> remoteDetailsWSDTOS = new ArrayList<>();
 
-        RemoteDetailsWSDTO remoteDetailsWSDTO = remoteDetailsFramework.getRemoteDetailsService(userId,remoteId);
-        if (remoteDetailsWSDTO != null){
+        RemoteDetailsWSDTO remoteDetailsWSDTO = remoteDetailsFramework.getRemoteDetailsService(userId, remoteId);
+        if (remoteDetailsWSDTO != null) {
             remoteDetailsWSDTOS.add(remoteDetailsWSDTO);
         }
 
@@ -49,8 +49,8 @@ public class RemoteDetailsMiddleware {
         RemoteDataWSModel response = new RemoteDataWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<RemoteDataWSDTO> remoteDataWSDTOS = remoteDetailsFramework.getRemoteDatasService(userId,remoteId);
-        if (remoteDataWSDTOS != null){
+        List<RemoteDataWSDTO> remoteDataWSDTOS = remoteDetailsFramework.getRemoteDatasService(userId, remoteId);
+        if (remoteDataWSDTOS != null) {
             response.setRemoteDatas(remoteDataWSDTOS);
         }
 
@@ -69,8 +69,8 @@ public class RemoteDetailsMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<RemoteDataWSDTO> remoteDataWSDTOS = new ArrayList<>();
 
-        RemoteDataWSDTO remoteDataWSDTO = remoteDetailsFramework.getRemoteDataService(userId,remoteId,dataId);
-        if (remoteDataWSDTO != null){
+        RemoteDataWSDTO remoteDataWSDTO = remoteDetailsFramework.getRemoteDataService(userId, remoteId, dataId);
+        if (remoteDataWSDTO != null) {
             remoteDataWSDTOS.add(remoteDataWSDTO);
         }
 
@@ -90,8 +90,8 @@ public class RemoteDetailsMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<RemoteDataWSDTO> remoteDataWSDTOS = new ArrayList<>();
 
-        RemoteDataWSDTO remoteDataWSDTO = remoteDetailsFramework.createRemoteDataService(userId,remoteId,typeId,value);
-        if (remoteDataWSDTO != null){
+        RemoteDataWSDTO remoteDataWSDTO = remoteDetailsFramework.createRemoteDataService(userId, remoteId, typeId, value);
+        if (remoteDataWSDTO != null) {
             remoteDataWSDTOS.add(remoteDataWSDTO);
         }
 
@@ -111,8 +111,8 @@ public class RemoteDetailsMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<RemoteDataWSDTO> remoteDataWSDTOS = new ArrayList<>();
 
-        RemoteDataWSDTO remoteDataWSDTO = remoteDetailsFramework.updateRemoteDataService(userId,remoteId,dataId,typeId,value);
-        if (remoteDataWSDTO != null){
+        RemoteDataWSDTO remoteDataWSDTO = remoteDetailsFramework.updateRemoteDataService(userId, remoteId, dataId, typeId, value);
+        if (remoteDataWSDTO != null) {
             remoteDataWSDTOS.add(remoteDataWSDTO);
         }
 
@@ -132,8 +132,8 @@ public class RemoteDetailsMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<RemoteDataWSDTO> remoteDataWSDTOS = new ArrayList<>();
 
-        RemoteDataWSDTO remoteDataWSDTO = remoteDetailsFramework.removeRemoteDataService(userId,remoteId,dataId);
-        if (remoteDataWSDTO != null){
+        RemoteDataWSDTO remoteDataWSDTO = remoteDetailsFramework.removeRemoteDataService(userId, remoteId, dataId);
+        if (remoteDataWSDTO != null) {
             remoteDataWSDTOS.add(remoteDataWSDTO);
         }
 
@@ -146,9 +146,6 @@ public class RemoteDetailsMiddleware {
 
         return response;
     }
-
-
-
 
 
 }

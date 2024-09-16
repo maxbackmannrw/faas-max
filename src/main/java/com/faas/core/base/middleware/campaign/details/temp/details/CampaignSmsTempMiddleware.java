@@ -1,10 +1,10 @@
 package com.faas.core.base.middleware.campaign.details.temp.details;
 
 import com.faas.core.base.framework.campaign.details.temp.details.CampaignSmsTempFramework;
-import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.campaign.details.temp.details.CampaignSmsTempWSModel;
-import com.faas.core.base.model.ws.campaign.details.temp.details.dto.CampaignSmsTempWSDTO;
-import com.faas.core.utility.config.AppConstant;
+import com.faas.core.data.ws.base.campaign.details.temp.details.CampaignSmsTempWSModel;
+import com.faas.core.data.ws.base.campaign.details.temp.details.dto.CampaignSmsTempWSDTO;
+import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -24,8 +24,8 @@ public class CampaignSmsTempMiddleware {
         CampaignSmsTempWSModel response = new CampaignSmsTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<CampaignSmsTempWSDTO> campaignSmsTempWSDTOS = campaignSmsTempFramework.getCampaignSmsTempsService(userId,campaignId);
-        if (campaignSmsTempWSDTOS != null){
+        List<CampaignSmsTempWSDTO> campaignSmsTempWSDTOS = campaignSmsTempFramework.getCampaignSmsTempsService(userId, campaignId);
+        if (campaignSmsTempWSDTOS != null) {
             response.setCampaignSmsTemps(campaignSmsTempWSDTOS);
         }
 
@@ -44,8 +44,8 @@ public class CampaignSmsTempMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignSmsTempWSDTO> campaignSmsTempWSDTOS = new ArrayList<>();
 
-        CampaignSmsTempWSDTO campaignSmsTempWSDTO = campaignSmsTempFramework.getCampaignSmsTempService(userId,tempId);
-        if (campaignSmsTempWSDTO != null){
+        CampaignSmsTempWSDTO campaignSmsTempWSDTO = campaignSmsTempFramework.getCampaignSmsTempService(userId, tempId);
+        if (campaignSmsTempWSDTO != null) {
             campaignSmsTempWSDTOS.add(campaignSmsTempWSDTO);
         }
 
@@ -65,7 +65,7 @@ public class CampaignSmsTempMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignSmsTempWSDTO> campaignSmsTempWSDTOS = new ArrayList<>();
 
-        CampaignSmsTempWSDTO campaignSmsTempWSDTO = campaignSmsTempFramework.createCampaignSmsTempService(userId,campaignId,smsTitle,smsBody,senderId,typeId);
+        CampaignSmsTempWSDTO campaignSmsTempWSDTO = campaignSmsTempFramework.createCampaignSmsTempService(userId, campaignId, smsTitle, smsBody, senderId, typeId);
         if (campaignSmsTempWSDTO != null) {
             campaignSmsTempWSDTOS.add(campaignSmsTempWSDTO);
         }
@@ -86,7 +86,7 @@ public class CampaignSmsTempMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignSmsTempWSDTO> campaignSmsTempWSDTOS = new ArrayList<>();
 
-        CampaignSmsTempWSDTO campaignSmsTempWSDTO = campaignSmsTempFramework.updateCampaignSmsTempService(userId,tempId,smsTitle,smsBody,senderId,typeId);
+        CampaignSmsTempWSDTO campaignSmsTempWSDTO = campaignSmsTempFramework.updateCampaignSmsTempService(userId, tempId, smsTitle, smsBody, senderId, typeId);
         if (campaignSmsTempWSDTO != null) {
             campaignSmsTempWSDTOS.add(campaignSmsTempWSDTO);
         }
@@ -107,7 +107,7 @@ public class CampaignSmsTempMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignSmsTempWSDTO> campaignSmsTempWSDTOS = new ArrayList<>();
 
-        CampaignSmsTempWSDTO campaignSmsTempWSDTO = campaignSmsTempFramework.removeCampaignSmsTempService(userId,tempId);
+        CampaignSmsTempWSDTO campaignSmsTempWSDTO = campaignSmsTempFramework.removeCampaignSmsTempService(userId, tempId);
         if (campaignSmsTempWSDTO != null) {
             campaignSmsTempWSDTOS.add(campaignSmsTempWSDTO);
         }

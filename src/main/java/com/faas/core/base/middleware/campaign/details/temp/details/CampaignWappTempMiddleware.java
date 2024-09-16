@@ -1,10 +1,10 @@
 package com.faas.core.base.middleware.campaign.details.temp.details;
 
 import com.faas.core.base.framework.campaign.details.temp.details.CampaignWappTempFramework;
-import com.faas.core.base.model.ws.campaign.details.temp.details.CampaignWappMessageTempWSModel;
-import com.faas.core.base.model.ws.campaign.details.temp.details.dto.CampaignWappMessageTempWSDTO;
-import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.utility.config.AppConstant;
+import com.faas.core.data.ws.base.campaign.details.temp.details.CampaignWappMessageTempWSModel;
+import com.faas.core.data.ws.base.campaign.details.temp.details.dto.CampaignWappMessageTempWSDTO;
+import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -24,8 +24,8 @@ public class CampaignWappTempMiddleware {
         CampaignWappMessageTempWSModel response = new CampaignWappMessageTempWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<CampaignWappMessageTempWSDTO> campaignWappMessageTempWSDTOS = campaignWappTempFramework.getCampaignWappMessageTempsService(userId,campaignId);
-        if (campaignWappMessageTempWSDTOS != null){
+        List<CampaignWappMessageTempWSDTO> campaignWappMessageTempWSDTOS = campaignWappTempFramework.getCampaignWappMessageTempsService(userId, campaignId);
+        if (campaignWappMessageTempWSDTOS != null) {
             response.setCampaignWappMessageTemps(campaignWappMessageTempWSDTOS);
         }
 
@@ -44,8 +44,8 @@ public class CampaignWappTempMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignWappMessageTempWSDTO> campaignWappMessageTempWSDTOS = new ArrayList<>();
 
-        CampaignWappMessageTempWSDTO campaignWappMessageTempWSDTO = campaignWappTempFramework.getCampaignWappMessageTempService(userId,tempId);
-        if (campaignWappMessageTempWSDTO != null){
+        CampaignWappMessageTempWSDTO campaignWappMessageTempWSDTO = campaignWappTempFramework.getCampaignWappMessageTempService(userId, tempId);
+        if (campaignWappMessageTempWSDTO != null) {
             campaignWappMessageTempWSDTOS.add(campaignWappMessageTempWSDTO);
         }
 
@@ -65,7 +65,7 @@ public class CampaignWappTempMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignWappMessageTempWSDTO> campaignWappMessageTempWSDTOS = new ArrayList<>();
 
-        CampaignWappMessageTempWSDTO campaignWappMessageTempWSDTO = campaignWappTempFramework.createCampaignWappMessageTempService(userId,campaignId,wappTitle,wappBody,typeId);
+        CampaignWappMessageTempWSDTO campaignWappMessageTempWSDTO = campaignWappTempFramework.createCampaignWappMessageTempService(userId, campaignId, wappTitle, wappBody, typeId);
         if (campaignWappMessageTempWSDTO != null) {
             campaignWappMessageTempWSDTOS.add(campaignWappMessageTempWSDTO);
         }
@@ -86,7 +86,7 @@ public class CampaignWappTempMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignWappMessageTempWSDTO> campaignWappMessageTempWSDTOS = new ArrayList<>();
 
-        CampaignWappMessageTempWSDTO campaignWappMessageTempWSDTO = campaignWappTempFramework.updateCampaignWappMessageTempService(userId,tempId,wappTitle,wappBody,typeId);
+        CampaignWappMessageTempWSDTO campaignWappMessageTempWSDTO = campaignWappTempFramework.updateCampaignWappMessageTempService(userId, tempId, wappTitle, wappBody, typeId);
         if (campaignWappMessageTempWSDTO != null) {
             campaignWappMessageTempWSDTOS.add(campaignWappMessageTempWSDTO);
         }

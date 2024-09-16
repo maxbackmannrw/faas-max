@@ -1,12 +1,12 @@
 package com.faas.core.base.framework.campaign.details.temp.details;
 
-import com.faas.core.base.model.db.channel.settings.PushTypeDBModel;
-import com.faas.core.base.model.db.campaign.details.temp.PushTempDBModel;
-import com.faas.core.base.model.ws.campaign.details.temp.details.dto.CampaignPushTempWSDTO;
-import com.faas.core.base.repo.channel.settings.PushTypeRepository;
-import com.faas.core.base.repo.campaign.details.temp.PushTempRepository;
-import com.faas.core.utility.config.AppUtils;
-import com.faas.core.utility.helpers.campaign.CampaignHelpers;
+import com.faas.core.data.db.campaign.details.temp.PushTempDBModel;
+import com.faas.core.data.db.channel.settings.PushTypeDBModel;
+import com.faas.core.data.ws.base.campaign.details.temp.details.dto.CampaignPushTempWSDTO;
+import com.faas.core.data.repo.campaign.details.temp.PushTempRepository;
+import com.faas.core.data.repo.channel.settings.PushTypeRepository;
+import com.faas.core.misc.config.AppUtils;
+import com.faas.core.misc.helpers.campaign.CampaignHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,7 +45,7 @@ public class CampaignPushTempFramework {
     public CampaignPushTempWSDTO getCampaignPushTempService(long userId, String tempId) {
 
         Optional<PushTempDBModel> pushTempDBModel = pushTempRepository.findById(tempId);
-        if (pushTempDBModel.isPresent()){
+        if (pushTempDBModel.isPresent()) {
             return new CampaignPushTempWSDTO(pushTempDBModel.get());
         }
         return null;
@@ -54,7 +54,7 @@ public class CampaignPushTempFramework {
     public CampaignPushTempWSDTO createCampaignPushTempService(long userId, String campaignId, String pushHeader, String pushBody, String pushSender, long typeId) {
 
         Optional<PushTypeDBModel> pushTypeDBModel = pushTypeRepository.findById(typeId);
-        if (pushTypeDBModel.isPresent()){
+        if (pushTypeDBModel.isPresent()) {
 
             PushTempDBModel pushTempDBModel = new PushTempDBModel();
             pushTempDBModel.setCampaignId(campaignId);
@@ -78,7 +78,7 @@ public class CampaignPushTempFramework {
 
         Optional<PushTempDBModel> pushTempDBModel = pushTempRepository.findById(tempId);
         Optional<PushTypeDBModel> pushTypeDBModel = pushTypeRepository.findById(typeId);
-        if (pushTempDBModel.isPresent() && pushTypeDBModel.isPresent()){
+        if (pushTempDBModel.isPresent() && pushTypeDBModel.isPresent()) {
 
             pushTempDBModel.get().setPushHeader(pushHeader);
             pushTempDBModel.get().setPushBody(pushBody);
@@ -96,7 +96,7 @@ public class CampaignPushTempFramework {
     public CampaignPushTempWSDTO removeCampaignPushTempService(String tempId) {
 
         Optional<PushTempDBModel> pushTempDBModel = pushTempRepository.findById(tempId);
-        if (pushTempDBModel.isPresent()){
+        if (pushTempDBModel.isPresent()) {
             pushTempRepository.delete(pushTempDBModel.get());
             return new CampaignPushTempWSDTO(pushTempDBModel.get());
         }

@@ -1,13 +1,13 @@
 package com.faas.core.base.framework.remoteapp.manager.details;
 
-import com.faas.core.base.model.ws.remoteapp.content.dto.RemoteAppListWSDTO;
-import com.faas.core.base.repo.campaign.content.CampaignRepository;
-import com.faas.core.base.repo.client.content.ClientRepository;
-import com.faas.core.base.repo.operation.content.OperationRepository;
-import com.faas.core.base.repo.remote.content.RemoteRepository;
-import com.faas.core.base.repo.remoteapp.RemoteAppRepository;
-import com.faas.core.utility.config.AppUtils;
-import com.faas.core.utility.helpers.remote.RemoteAppHelpers;
+import com.faas.core.data.ws.base.remoteapp.content.dto.RemoteAppListWSDTO;
+import com.faas.core.data.repo.campaign.content.CampaignRepository;
+import com.faas.core.data.repo.client.content.ClientRepository;
+import com.faas.core.data.repo.operation.content.OperationRepository;
+import com.faas.core.data.repo.remote.content.RemoteRepository;
+import com.faas.core.data.repo.remoteapp.RemoteAppRepository;
+import com.faas.core.misc.config.AppUtils;
+import com.faas.core.misc.helpers.remote.RemoteAppHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,7 +42,6 @@ public class RemoteAppManagerDetailsFramework {
 
         return null;
     }
-
 
 
 }

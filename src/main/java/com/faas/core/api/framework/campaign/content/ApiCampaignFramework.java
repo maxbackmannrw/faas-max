@@ -1,16 +1,16 @@
 package com.faas.core.api.framework.campaign.content;
 
-import com.faas.core.api.model.ws.campaign.content.dto.ApiAgentCampaignWSDTO;
-import com.faas.core.api.model.ws.campaign.content.dto.ApiCampaignWSDTO;
-import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
-import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
-import com.faas.core.base.model.db.campaign.details.agent.CampaignAgentDBModel;
-import com.faas.core.base.repo.campaign.content.CampaignRepository;
-import com.faas.core.base.repo.campaign.details.agent.CampaignAgentRepository;
-import com.faas.core.base.repo.operation.content.OperationRepository;
-import com.faas.core.utility.config.AppConstant;
-import com.faas.core.utility.config.AppUtils;
-import com.faas.core.utility.helpers.campaign.CampaignHelpers;
+import com.faas.core.data.ws.api.campaign.content.dto.ApiAgentCampaignWSDTO;
+import com.faas.core.data.ws.api.campaign.content.dto.ApiCampaignWSDTO;
+import com.faas.core.data.ws.api.general.ApiSummaryWSDTO;
+import com.faas.core.data.db.campaign.content.CampaignDBModel;
+import com.faas.core.data.db.campaign.details.agent.CampaignAgentDBModel;
+import com.faas.core.data.repo.campaign.content.CampaignRepository;
+import com.faas.core.data.repo.campaign.details.agent.CampaignAgentRepository;
+import com.faas.core.data.repo.operation.content.OperationRepository;
+import com.faas.core.misc.config.AppConstant;
+import com.faas.core.misc.config.AppUtils;
+import com.faas.core.misc.helpers.campaign.CampaignHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -67,7 +67,7 @@ public class ApiCampaignFramework {
             Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignAgent.getCampaignId());
             if (campaignDBModel.isPresent()) {
                 if (campaignDBModel.get().getCampaignCategory().equalsIgnoreCase(campaignCategory) || campaignCategory.equalsIgnoreCase(AppConstant.ALL_CAMPAIGNS)) {
-                    campaignWSDTOS.add(campaignHelpers.getApiCampaignWSDTO(agentId,campaignDBModel.get()));
+                    campaignWSDTOS.add(campaignHelpers.getApiCampaignWSDTO(agentId, campaignDBModel.get()));
                 }
             }
         }
@@ -78,7 +78,7 @@ public class ApiCampaignFramework {
 
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
         if (campaignDBModel.isPresent()) {
-            return campaignHelpers.getApiCampaignWSDTO(agentId,campaignDBModel.get());
+            return campaignHelpers.getApiCampaignWSDTO(agentId, campaignDBModel.get());
         }
         return null;
     }
@@ -86,9 +86,9 @@ public class ApiCampaignFramework {
     public List<ApiSummaryWSDTO> apiGetCampaignsSummaryService(long agentId) {
 
         List<ApiSummaryWSDTO> agentCampaignSummary = new ArrayList<>();
-        agentCampaignSummary.add(new ApiSummaryWSDTO(AppConstant.AGENT_ALL_CAMPAIGNS_SUMMARY,String.valueOf(campaignAgentRepository.countByAgentId(agentId))));
-        agentCampaignSummary.add(new ApiSummaryWSDTO(AppConstant.AGENT_ACTIVE_OPERATIONS_SUMMARY, String.valueOf(operationRepository.countByAgentIdAndOperationState(agentId,AppConstant.ACTIVE_STATE))));
-        agentCampaignSummary.add(new ApiSummaryWSDTO(AppConstant.AGENT_READY_OPERATIONS_SUMMARY, String.valueOf(operationRepository.countByAgentIdAndOperationState(agentId,AppConstant.READY_STATE))));
+        agentCampaignSummary.add(new ApiSummaryWSDTO(AppConstant.AGENT_ALL_CAMPAIGNS_SUMMARY, String.valueOf(campaignAgentRepository.countByAgentId(agentId))));
+        agentCampaignSummary.add(new ApiSummaryWSDTO(AppConstant.AGENT_ACTIVE_OPERATIONS_SUMMARY, String.valueOf(operationRepository.countByAgentIdAndOperationState(agentId, AppConstant.ACTIVE_STATE))));
+        agentCampaignSummary.add(new ApiSummaryWSDTO(AppConstant.AGENT_READY_OPERATIONS_SUMMARY, String.valueOf(operationRepository.countByAgentIdAndOperationState(agentId, AppConstant.READY_STATE))));
 
         return agentCampaignSummary;
     }

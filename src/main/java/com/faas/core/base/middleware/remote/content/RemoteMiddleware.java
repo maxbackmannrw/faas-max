@@ -1,10 +1,10 @@
 package com.faas.core.base.middleware.remote.content;
 
 import com.faas.core.base.framework.remote.content.RemoteFramework;
-import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.remote.content.RemoteWSModel;
-import com.faas.core.base.model.ws.remote.content.dto.RemoteWSDTO;
-import com.faas.core.utility.config.AppConstant;
+import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.data.ws.base.remote.content.RemoteWSModel;
+import com.faas.core.data.ws.base.remote.content.dto.RemoteWSDTO;
+import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -26,7 +26,7 @@ public class RemoteMiddleware {
         GeneralWSModel general = new GeneralWSModel();
 
         List<RemoteWSDTO> remoteWSDTOS = remoteFramework.getAllRemotesService(userId);
-        if (remoteWSDTOS != null){
+        if (remoteWSDTOS != null) {
             response.setRemotes(remoteWSDTOS);
         }
 
@@ -44,8 +44,8 @@ public class RemoteMiddleware {
         RemoteWSModel response = new RemoteWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<RemoteWSDTO> remoteWSDTOS = remoteFramework.getRemotesByBaseTypeService(userId,baseType);
-        if (remoteWSDTOS != null){
+        List<RemoteWSDTO> remoteWSDTOS = remoteFramework.getRemotesByBaseTypeService(userId, baseType);
+        if (remoteWSDTOS != null) {
             response.setRemotes(remoteWSDTOS);
         }
 
@@ -63,8 +63,8 @@ public class RemoteMiddleware {
         RemoteWSModel response = new RemoteWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<RemoteWSDTO> remoteWSDTOS = remoteFramework.getRemotesByTypeService(userId,remoteType);
-        if (remoteWSDTOS != null){
+        List<RemoteWSDTO> remoteWSDTOS = remoteFramework.getRemotesByTypeService(userId, remoteType);
+        if (remoteWSDTOS != null) {
             response.setRemotes(remoteWSDTOS);
         }
 
@@ -81,10 +81,10 @@ public class RemoteMiddleware {
 
         RemoteWSModel response = new RemoteWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<RemoteWSDTO>remoteWSDTOS = new ArrayList<>();
+        List<RemoteWSDTO> remoteWSDTOS = new ArrayList<>();
 
-        RemoteWSDTO remoteWSDTO = remoteFramework.getRemoteService(userId,remoteId);
-        if (remoteWSDTO != null){
+        RemoteWSDTO remoteWSDTO = remoteFramework.getRemoteService(userId, remoteId);
+        if (remoteWSDTO != null) {
             remoteWSDTOS.add(remoteWSDTO);
         }
 
@@ -102,10 +102,10 @@ public class RemoteMiddleware {
 
         RemoteWSModel response = new RemoteWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<RemoteWSDTO>remoteWSDTOS = new ArrayList<>();
+        List<RemoteWSDTO> remoteWSDTOS = new ArrayList<>();
 
-        RemoteWSDTO remoteWSDTO = remoteFramework.createRemoteService(userId,remote,remoteDesc,version,baseUrl,typeId);
-        if (remoteWSDTO != null){
+        RemoteWSDTO remoteWSDTO = remoteFramework.createRemoteService(userId, remote, remoteDesc, version, baseUrl, typeId);
+        if (remoteWSDTO != null) {
             remoteWSDTOS.add(remoteWSDTO);
         }
 
@@ -119,14 +119,14 @@ public class RemoteMiddleware {
         return response;
     }
 
-    public RemoteWSModel updateRemote(long userId, String remoteId, String remote, String remoteDesc,String version) {
+    public RemoteWSModel updateRemote(long userId, String remoteId, String remote, String remoteDesc, String version) {
 
         RemoteWSModel response = new RemoteWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<RemoteWSDTO>remoteWSDTOS = new ArrayList<>();
+        List<RemoteWSDTO> remoteWSDTOS = new ArrayList<>();
 
-        RemoteWSDTO remoteWSDTO = remoteFramework.updateRemoteService(userId,remoteId,remote,remoteDesc,version);
-        if (remoteWSDTO != null){
+        RemoteWSDTO remoteWSDTO = remoteFramework.updateRemoteService(userId, remoteId, remote, remoteDesc, version);
+        if (remoteWSDTO != null) {
             remoteWSDTOS.add(remoteWSDTO);
         }
 
@@ -144,10 +144,10 @@ public class RemoteMiddleware {
 
         RemoteWSModel response = new RemoteWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<RemoteWSDTO>remoteWSDTOS = new ArrayList<>();
+        List<RemoteWSDTO> remoteWSDTOS = new ArrayList<>();
 
-        RemoteWSDTO remoteWSDTO = remoteFramework.removeRemoteService(userId,remoteId);
-        if (remoteWSDTO != null){
+        RemoteWSDTO remoteWSDTO = remoteFramework.removeRemoteService(userId, remoteId);
+        if (remoteWSDTO != null) {
             remoteWSDTOS.add(remoteWSDTO);
         }
 
@@ -160,7 +160,6 @@ public class RemoteMiddleware {
 
         return response;
     }
-
 
 
 }

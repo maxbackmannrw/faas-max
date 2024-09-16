@@ -1,15 +1,14 @@
 package com.faas.core.base.framework.campaign.details.agent;
 
-import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
-import com.faas.core.base.model.db.campaign.details.agent.CampaignAgentDBModel;
-import com.faas.core.base.model.db.user.content.UserDBModel;
-import com.faas.core.base.model.ws.campaign.details.agent.dto.CampaignAgentWSDTO;
-import com.faas.core.base.repo.campaign.content.CampaignRepository;
-import com.faas.core.base.repo.campaign.details.agent.CampaignAgentRepository;
-import com.faas.core.base.repo.user.content.UserRepository;
-import com.faas.core.utility.config.AppConstant;
-import com.faas.core.utility.config.AppUtils;
-import org.apache.catalina.User;
+import com.faas.core.data.db.campaign.content.CampaignDBModel;
+import com.faas.core.data.db.campaign.details.agent.CampaignAgentDBModel;
+import com.faas.core.data.db.user.content.UserDBModel;
+import com.faas.core.data.ws.base.campaign.details.agent.dto.CampaignAgentWSDTO;
+import com.faas.core.data.repo.campaign.content.CampaignRepository;
+import com.faas.core.data.repo.campaign.details.agent.CampaignAgentRepository;
+import com.faas.core.data.repo.user.content.UserRepository;
+import com.faas.core.misc.config.AppConstant;
+import com.faas.core.misc.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -50,7 +49,7 @@ public class CampaignAgentFramework {
 
     public List<CampaignAgentWSDTO> getCampaignAgentsService(String campaignId) {
 
-        List<CampaignAgentWSDTO>campaignAgentWSDTOS = new ArrayList<>();
+        List<CampaignAgentWSDTO> campaignAgentWSDTOS = new ArrayList<>();
         List<CampaignAgentDBModel> campaignAgentDBModels = campaignAgentRepository.findByCampaignId(campaignId);
         for (CampaignAgentDBModel campaignAgentDBModel : campaignAgentDBModels) {
             CampaignAgentWSDTO campaignAgentWSDTO = fillCampaignAgentWSDTO(campaignAgentDBModel);
@@ -61,9 +60,9 @@ public class CampaignAgentFramework {
         return campaignAgentWSDTOS;
     }
 
-    public CampaignAgentWSDTO getCampaignAgentService(String campaignId,long agentId) {
+    public CampaignAgentWSDTO getCampaignAgentService(String campaignId, long agentId) {
 
-        List<CampaignAgentDBModel> campaignAgentDBModels = campaignAgentRepository.findByCampaignIdAndAgentId(campaignId,agentId);
+        List<CampaignAgentDBModel> campaignAgentDBModels = campaignAgentRepository.findByCampaignIdAndAgentId(campaignId, agentId);
         if (!campaignAgentDBModels.isEmpty()) {
             return fillCampaignAgentWSDTO(campaignAgentDBModels.get(0));
         }
@@ -88,7 +87,7 @@ public class CampaignAgentFramework {
         return null;
     }
 
-    public CampaignAgentWSDTO updateCampaignAgentStateService(long userId, String campaignId,long agentId, String agentState) {
+    public CampaignAgentWSDTO updateCampaignAgentStateService(long userId, String campaignId, long agentId, String agentState) {
 
         if (campaignAgentRepository.findByCampaignIdAndAgentId(campaignId, agentId).isEmpty()
                 && campaignRepository.findById(campaignId).isPresent() && userRepository.findById(agentId).isPresent()) {

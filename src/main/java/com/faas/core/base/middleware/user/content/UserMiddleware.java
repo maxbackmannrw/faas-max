@@ -1,19 +1,17 @@
 package com.faas.core.base.middleware.user.content;
 
 import com.faas.core.base.framework.user.content.UserFramework;
-import com.faas.core.base.model.db.user.content.UserDBModel;
-import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.user.content.UserWSModel;
-import com.faas.core.base.model.ws.user.content.dto.UserWSDTO;
-import com.faas.core.base.repo.user.content.UserRepository;
-import com.faas.core.utility.config.AppConstant;
-import com.faas.core.utility.config.AppUtils;
+import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.data.ws.base.user.content.UserWSModel;
+import com.faas.core.data.ws.base.user.content.dto.UserWSDTO;
+import com.faas.core.data.repo.user.content.UserRepository;
+import com.faas.core.misc.config.AppConstant;
+import com.faas.core.misc.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Component
 public class UserMiddleware {
@@ -56,7 +54,7 @@ public class UserMiddleware {
         GeneralWSModel general = new GeneralWSModel();
 
         List<UserWSDTO> userWSDTOS = userFramework.getAllUsersService(userId);
-        if (userWSDTOS != null){
+        if (userWSDTOS != null) {
             response.setUsers(userWSDTOS);
         }
 
@@ -74,8 +72,8 @@ public class UserMiddleware {
         UserWSModel response = new UserWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<UserWSDTO> userWSDTOS = userFramework.getUsersByTypeService(userId,userType);
-        if (userWSDTOS != null){
+        List<UserWSDTO> userWSDTOS = userFramework.getUsersByTypeService(userId, userType);
+        if (userWSDTOS != null) {
             response.setUsers(userWSDTOS);
         }
 
@@ -94,8 +92,8 @@ public class UserMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<UserWSDTO> userWSDTOS = new ArrayList<>();
 
-        UserWSDTO userWSDTO = userFramework.getUserService(userId,selectedId);
-        if (userWSDTOS != null){
+        UserWSDTO userWSDTO = userFramework.getUserService(userId, selectedId);
+        if (userWSDTOS != null) {
             userWSDTOS.add(userWSDTO);
         }
 
@@ -109,7 +107,7 @@ public class UserMiddleware {
         return response;
     }
 
-    public UserWSModel createUser(long userId, String userName, String userEmail, String password,long roleId,int operationLimit) {
+    public UserWSModel createUser(long userId, String userName, String userEmail, String password, long roleId, int operationLimit) {
 
         UserWSModel response = new UserWSModel();
         GeneralWSModel general = new GeneralWSModel();

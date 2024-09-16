@@ -1,14 +1,14 @@
 package com.faas.core.base.middleware.utilz.config;
 
 import com.faas.core.base.framework.utilz.config.SystemConfigFramework;
-import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.utilz.config.CityWSModel;
-import com.faas.core.base.model.ws.utilz.config.CountryWSModel;
-import com.faas.core.base.model.ws.utilz.config.DataTypeWSModel;
-import com.faas.core.base.model.ws.utilz.config.dto.CityWSDTO;
-import com.faas.core.base.model.ws.utilz.config.dto.CountryWSDTO;
-import com.faas.core.base.model.ws.utilz.config.dto.DataTypeWSDTO;
-import com.faas.core.utility.config.AppConstant;
+import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.data.ws.base.utilz.config.CityWSModel;
+import com.faas.core.data.ws.base.utilz.config.CountryWSModel;
+import com.faas.core.data.ws.base.utilz.config.DataTypeWSModel;
+import com.faas.core.data.ws.base.utilz.config.dto.CityWSDTO;
+import com.faas.core.data.ws.base.utilz.config.dto.CountryWSDTO;
+import com.faas.core.data.ws.base.utilz.config.dto.DataTypeWSDTO;
+import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -30,7 +30,7 @@ public class SystemConfigMiddleware {
         GeneralWSModel general = new GeneralWSModel();
 
         List<DataTypeWSDTO> dataTypeWSDTOS = systemConfigFramework.getAllDataTypesService(userId);
-        if (dataTypeWSDTOS != null){
+        if (dataTypeWSDTOS != null) {
             response.setDataTypes(dataTypeWSDTOS);
         }
 
@@ -49,7 +49,7 @@ public class SystemConfigMiddleware {
         GeneralWSModel general = new GeneralWSModel();
 
         List<DataTypeWSDTO> dataTypeWSDTOS = systemConfigFramework.getBaseDataTypesService(baseType);
-        if (dataTypeWSDTOS != null){
+        if (dataTypeWSDTOS != null) {
             response.setDataTypes(dataTypeWSDTOS);
         }
 
@@ -69,7 +69,7 @@ public class SystemConfigMiddleware {
         List<DataTypeWSDTO> dataTypeWSDTOS = new ArrayList<>();
 
         DataTypeWSDTO dataTypeWSDTO = systemConfigFramework.getDataTypeService(typeId);
-        if (dataTypeWSDTO != null){
+        if (dataTypeWSDTO != null) {
             dataTypeWSDTOS.add(dataTypeWSDTO);
         }
 
@@ -83,13 +83,13 @@ public class SystemConfigMiddleware {
         return response;
     }
 
-    public DataTypeWSModel createDataType(long userId,String dataType,String baseType) {
+    public DataTypeWSModel createDataType(long userId, String dataType, String baseType) {
 
         DataTypeWSModel response = new DataTypeWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<DataTypeWSDTO> dataTypeWSDTOS = new ArrayList<>();
 
-        DataTypeWSDTO dataTypeWSDTO = systemConfigFramework.createDataTypeService(dataType,baseType);
+        DataTypeWSDTO dataTypeWSDTO = systemConfigFramework.createDataTypeService(dataType, baseType);
         if (dataTypeWSDTO != null) {
             dataTypeWSDTOS.add(dataTypeWSDTO);
         }
@@ -104,13 +104,13 @@ public class SystemConfigMiddleware {
         return response;
     }
 
-    public DataTypeWSModel updateDataType(long userId,long typeId,String dataType,String baseType) {
+    public DataTypeWSModel updateDataType(long userId, long typeId, String dataType, String baseType) {
 
         DataTypeWSModel response = new DataTypeWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<DataTypeWSDTO> dataTypeWSDTOS = new ArrayList<>();
 
-        DataTypeWSDTO dataTypeWSDTO = systemConfigFramework.updateDataTypeService(typeId,dataType,baseType);
+        DataTypeWSDTO dataTypeWSDTO = systemConfigFramework.updateDataTypeService(typeId, dataType, baseType);
         if (dataTypeWSDTO != null) {
             dataTypeWSDTOS.add(dataTypeWSDTO);
         }
@@ -125,7 +125,7 @@ public class SystemConfigMiddleware {
         return response;
     }
 
-    public DataTypeWSModel removeDataType(long userId,long typeId) {
+    public DataTypeWSModel removeDataType(long userId, long typeId) {
 
         DataTypeWSModel response = new DataTypeWSModel();
         GeneralWSModel general = new GeneralWSModel();
@@ -153,7 +153,7 @@ public class SystemConfigMiddleware {
         GeneralWSModel general = new GeneralWSModel();
 
         List<CityWSDTO> cityWSDTOS = systemConfigFramework.getAllCitiesService(userId);
-        if (cityWSDTOS != null){
+        if (cityWSDTOS != null) {
             response.setCities(cityWSDTOS);
         }
 
@@ -166,13 +166,13 @@ public class SystemConfigMiddleware {
         return response;
     }
 
-    public CityWSModel getCitiesByCountry(long userId,String country) {
+    public CityWSModel getCitiesByCountry(long userId, String country) {
 
         CityWSModel response = new CityWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<CityWSDTO> cityWSDTOS = systemConfigFramework.getCitiesByCountryService(userId,country);
-        if (cityWSDTOS != null){
+        List<CityWSDTO> cityWSDTOS = systemConfigFramework.getCitiesByCountryService(userId, country);
+        if (cityWSDTOS != null) {
             response.setCities(cityWSDTOS);
         }
 
@@ -189,10 +189,10 @@ public class SystemConfigMiddleware {
 
         CityWSModel response = new CityWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<CityWSDTO>cityWSDTOS = new ArrayList<>();
+        List<CityWSDTO> cityWSDTOS = new ArrayList<>();
 
         CityWSDTO cityWSDTO = systemConfigFramework.getCityService(cityId);
-        if (cityWSDTO != null){
+        if (cityWSDTO != null) {
             cityWSDTOS.add(cityWSDTO);
         }
 
@@ -206,14 +206,14 @@ public class SystemConfigMiddleware {
         return response;
     }
 
-    public CityWSModel createCity(long userId,String city,String country) {
+    public CityWSModel createCity(long userId, String city, String country) {
 
         CityWSModel response = new CityWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<CityWSDTO>cityWSDTOS = new ArrayList<>();
+        List<CityWSDTO> cityWSDTOS = new ArrayList<>();
 
-        CityWSDTO cityWSDTO = systemConfigFramework.createCityService(city,country);
-        if (cityWSDTO != null){
+        CityWSDTO cityWSDTO = systemConfigFramework.createCityService(city, country);
+        if (cityWSDTO != null) {
             cityWSDTOS.add(cityWSDTO);
         }
 
@@ -227,14 +227,14 @@ public class SystemConfigMiddleware {
         return response;
     }
 
-    public CityWSModel updateCity(long userId,long cityId,String city,String country) {
+    public CityWSModel updateCity(long userId, long cityId, String city, String country) {
 
         CityWSModel response = new CityWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<CityWSDTO>cityWSDTOS = new ArrayList<>();
+        List<CityWSDTO> cityWSDTOS = new ArrayList<>();
 
-        CityWSDTO cityWSDTO = systemConfigFramework.updateCityService(cityId,city,country);
-        if (cityWSDTO != null){
+        CityWSDTO cityWSDTO = systemConfigFramework.updateCityService(cityId, city, country);
+        if (cityWSDTO != null) {
             cityWSDTOS.add(cityWSDTO);
         }
 
@@ -252,10 +252,10 @@ public class SystemConfigMiddleware {
 
         CityWSModel response = new CityWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<CityWSDTO>cityWSDTOS = new ArrayList<>();
+        List<CityWSDTO> cityWSDTOS = new ArrayList<>();
 
         CityWSDTO cityWSDTO = systemConfigFramework.removeCityService(cityId);
-        if (cityWSDTO != null){
+        if (cityWSDTO != null) {
             cityWSDTOS.add(cityWSDTO);
         }
 
@@ -276,7 +276,7 @@ public class SystemConfigMiddleware {
         GeneralWSModel general = new GeneralWSModel();
 
         List<CountryWSDTO> countryWSDTOS = systemConfigFramework.getAllCountriesService(userId);
-        if (countryWSDTOS != null){
+        if (countryWSDTOS != null) {
             response.setCountries(countryWSDTOS);
         }
 
@@ -296,7 +296,7 @@ public class SystemConfigMiddleware {
         List<CountryWSDTO> countryWSDTOS = new ArrayList<>();
 
         CountryWSDTO countryWSDTO = systemConfigFramework.getCountryService(countryId);
-        if (countryWSDTO != null){
+        if (countryWSDTO != null) {
             countryWSDTOS.add(countryWSDTO);
         }
 
@@ -310,14 +310,14 @@ public class SystemConfigMiddleware {
         return response;
     }
 
-    public CountryWSModel createCountry(long userId,String country) {
+    public CountryWSModel createCountry(long userId, String country) {
 
         CountryWSModel response = new CountryWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<CountryWSDTO> countryWSDTOS = new ArrayList<>();
 
         CountryWSDTO countryWSDTO = systemConfigFramework.createCountryService(country);
-        if (countryWSDTO != null){
+        if (countryWSDTO != null) {
             countryWSDTOS.add(countryWSDTO);
         }
 
@@ -331,14 +331,14 @@ public class SystemConfigMiddleware {
         return response;
     }
 
-    public CountryWSModel updateCountry(long userId,long countryId,String country) {
+    public CountryWSModel updateCountry(long userId, long countryId, String country) {
 
         CountryWSModel response = new CountryWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<CountryWSDTO> countryWSDTOS = new ArrayList<>();
 
-        CountryWSDTO countryWSDTO = systemConfigFramework.updateCountryService(countryId,country);
-        if (countryWSDTO != null){
+        CountryWSDTO countryWSDTO = systemConfigFramework.updateCountryService(countryId, country);
+        if (countryWSDTO != null) {
             countryWSDTOS.add(countryWSDTO);
         }
 
@@ -352,14 +352,14 @@ public class SystemConfigMiddleware {
         return response;
     }
 
-    public CountryWSModel removeCountry(long userId,long countryId) {
+    public CountryWSModel removeCountry(long userId, long countryId) {
 
         CountryWSModel response = new CountryWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<CountryWSDTO> countryWSDTOS = new ArrayList<>();
 
         CountryWSDTO countryWSDTO = systemConfigFramework.removeCountryService(countryId);
-        if (countryWSDTO != null){
+        if (countryWSDTO != null) {
             countryWSDTOS.add(countryWSDTO);
         }
 

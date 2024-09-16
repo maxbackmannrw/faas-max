@@ -1,12 +1,12 @@
 package com.faas.core.base.middleware.campaign.manager.content;
 
 import com.faas.core.base.framework.campaign.manager.content.CampaignManagerFramework;
-import com.faas.core.base.model.ws.campaign.manager.content.dto.CampaignManagerWSDTO;
-import com.faas.core.base.model.ws.campaign.manager.content.CampaignManagerDetailsWSModel;
-import com.faas.core.base.model.ws.campaign.manager.content.dto.CampaignManagerDetailsWSDTO;
-import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.campaign.manager.content.CampaignManagerWSModel;
-import com.faas.core.utility.config.AppConstant;
+import com.faas.core.data.ws.base.campaign.manager.content.CampaignManagerDetailsWSModel;
+import com.faas.core.data.ws.base.campaign.manager.content.CampaignManagerWSModel;
+import com.faas.core.data.ws.base.campaign.manager.content.dto.CampaignManagerDetailsWSDTO;
+import com.faas.core.data.ws.base.campaign.manager.content.dto.CampaignManagerWSDTO;
+import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -28,7 +28,7 @@ public class CampaignManagerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
 
         List<CampaignManagerWSDTO> campaignManagerWSDTOS = campaignManagerFramework.getCampaignManagersService(userId);
-        if (campaignManagerWSDTOS != null){
+        if (campaignManagerWSDTOS != null) {
             response.setCampaignManagers(campaignManagerWSDTOS);
         }
 
@@ -41,13 +41,13 @@ public class CampaignManagerMiddleware {
         return response;
     }
 
-    public CampaignManagerWSModel getCampaignManagersByCategory(long userId,String campaignCategory) {
+    public CampaignManagerWSModel getCampaignManagersByCategory(long userId, String campaignCategory) {
 
         CampaignManagerWSModel response = new CampaignManagerWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<CampaignManagerWSDTO> campaignManagerWSDTOS = campaignManagerFramework.getCampaignManagersByCategoryService(userId,campaignCategory);
-        if (campaignManagerWSDTOS != null){
+        List<CampaignManagerWSDTO> campaignManagerWSDTOS = campaignManagerFramework.getCampaignManagersByCategoryService(userId, campaignCategory);
+        if (campaignManagerWSDTOS != null) {
             response.setCampaignManagers(campaignManagerWSDTOS);
         }
 
@@ -60,13 +60,13 @@ public class CampaignManagerMiddleware {
         return response;
     }
 
-    public CampaignManagerWSModel getCampaignManagersByState(long userId,String campaignState) {
+    public CampaignManagerWSModel getCampaignManagersByState(long userId, String campaignState) {
 
         CampaignManagerWSModel response = new CampaignManagerWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<CampaignManagerWSDTO> campaignManagerWSDTOS = campaignManagerFramework.getCampaignManagersByStateService(userId,campaignState);
-        if (campaignManagerWSDTOS != null){
+        List<CampaignManagerWSDTO> campaignManagerWSDTOS = campaignManagerFramework.getCampaignManagersByStateService(userId, campaignState);
+        if (campaignManagerWSDTOS != null) {
             response.setCampaignManagers(campaignManagerWSDTOS);
         }
 
@@ -79,14 +79,14 @@ public class CampaignManagerMiddleware {
         return response;
     }
 
-    public CampaignManagerWSModel getCampaignManager(long userId,String campaignId) {
+    public CampaignManagerWSModel getCampaignManager(long userId, String campaignId) {
 
         CampaignManagerWSModel response = new CampaignManagerWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignManagerWSDTO> campaignManagerWSDTOS = new ArrayList<>();
 
-        CampaignManagerWSDTO campaignManagerWSDTO = campaignManagerFramework.getCampaignManagerService(userId,campaignId);
-        if (campaignManagerWSDTO != null){
+        CampaignManagerWSDTO campaignManagerWSDTO = campaignManagerFramework.getCampaignManagerService(userId, campaignId);
+        if (campaignManagerWSDTO != null) {
             campaignManagerWSDTOS.add(campaignManagerWSDTO);
         }
 
@@ -106,8 +106,8 @@ public class CampaignManagerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignManagerWSDTO> campaignManagerWSDTOS = new ArrayList<>();
 
-        CampaignManagerWSDTO campaignManagerWSDTO = campaignManagerFramework.updateCampaignManagerStateService(userId,campaignId,campaignState);
-        if (campaignManagerWSDTO != null){
+        CampaignManagerWSDTO campaignManagerWSDTO = campaignManagerFramework.updateCampaignManagerStateService(userId, campaignId, campaignState);
+        if (campaignManagerWSDTO != null) {
             campaignManagerWSDTOS.add(campaignManagerWSDTO);
         }
 
@@ -127,8 +127,8 @@ public class CampaignManagerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignManagerWSDTO> campaignManagerWSDTOS = new ArrayList<>();
 
-        CampaignManagerWSDTO campaignManagerWSDTO = campaignManagerFramework.updateCampaignManagerInquiryStateService(userId,campaignId,inquiryState);
-        if (campaignManagerWSDTO != null){
+        CampaignManagerWSDTO campaignManagerWSDTO = campaignManagerFramework.updateCampaignManagerInquiryStateService(userId, campaignId, inquiryState);
+        if (campaignManagerWSDTO != null) {
             campaignManagerWSDTOS.add(campaignManagerWSDTO);
         }
 
@@ -148,8 +148,8 @@ public class CampaignManagerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignManagerWSDTO> campaignManagerWSDTOS = new ArrayList<>();
 
-        CampaignManagerWSDTO campaignManagerWSDTO = campaignManagerFramework.updateCampaignManagerFlowStateService(userId,campaignId,flowState);
-        if (campaignManagerWSDTO != null){
+        CampaignManagerWSDTO campaignManagerWSDTO = campaignManagerFramework.updateCampaignManagerFlowStateService(userId, campaignId, flowState);
+        if (campaignManagerWSDTO != null) {
             campaignManagerWSDTOS.add(campaignManagerWSDTO);
         }
 
@@ -168,8 +168,8 @@ public class CampaignManagerMiddleware {
         CampaignManagerDetailsWSModel response = new CampaignManagerDetailsWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        CampaignManagerDetailsWSDTO campaignManagerDetailsWSDTO = campaignManagerFramework.getCampaignManagerDetailsService(userId,campaignId);
-        if(campaignManagerDetailsWSDTO != null){
+        CampaignManagerDetailsWSDTO campaignManagerDetailsWSDTO = campaignManagerFramework.getCampaignManagerDetailsService(userId, campaignId);
+        if (campaignManagerDetailsWSDTO != null) {
             response.setCampaignManagerDetails(campaignManagerDetailsWSDTO);
         }
 

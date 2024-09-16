@@ -1,14 +1,14 @@
 package com.faas.core.api.middleware.operation.details.channel.call.wapp;
 
 import com.faas.core.api.framework.operation.details.channel.call.wapp.ApiOperationWappCallFramework;
-import com.faas.core.api.model.ws.operation.details.channel.call.wapp.ApiOperationWappCallAccountWSModel;
-import com.faas.core.api.model.ws.operation.details.channel.call.wapp.ApiOperationWappCallChannelWSModel;
-import com.faas.core.api.model.ws.operation.details.channel.call.wapp.ApiOperationWappCallWSModel;
-import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiOperationWappCallAccountWSDTO;
-import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiOperationWappCallChannelWSDTO;
-import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiOperationWappCallWSDTO;
-import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.utility.config.AppConstant;
+import com.faas.core.data.ws.api.operation.details.channel.call.wapp.ApiOperationWappCallAccountWSModel;
+import com.faas.core.data.ws.api.operation.details.channel.call.wapp.ApiOperationWappCallChannelWSModel;
+import com.faas.core.data.ws.api.operation.details.channel.call.wapp.ApiOperationWappCallWSModel;
+import com.faas.core.data.ws.api.operation.details.channel.call.wapp.dto.ApiOperationWappCallAccountWSDTO;
+import com.faas.core.data.ws.api.operation.details.channel.call.wapp.dto.ApiOperationWappCallChannelWSDTO;
+import com.faas.core.data.ws.api.operation.details.channel.call.wapp.dto.ApiOperationWappCallWSDTO;
+import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -28,8 +28,8 @@ public class ApiOperationWappCallMiddleware {
         ApiOperationWappCallChannelWSModel response = new ApiOperationWappCallChannelWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiOperationWappCallChannelWSDTO operationWappCallChannelWSDTO = apiOperationWappCallFramework.apiGetOperationWappCallChannelService(agentId,operationId);
-        if (operationWappCallChannelWSDTO != null){
+        ApiOperationWappCallChannelWSDTO operationWappCallChannelWSDTO = apiOperationWappCallFramework.apiGetOperationWappCallChannelService(agentId, operationId);
+        if (operationWappCallChannelWSDTO != null) {
             response.setOperationWappCallChannel(operationWappCallChannelWSDTO);
         }
 
@@ -47,8 +47,8 @@ public class ApiOperationWappCallMiddleware {
         ApiOperationWappCallAccountWSModel response = new ApiOperationWappCallAccountWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiOperationWappCallAccountWSDTO operationWappCallAccountWSDTO = apiOperationWappCallFramework.apiGetOperationWappCallAccountService(agentId,operationId);
-        if (operationWappCallAccountWSDTO != null){
+        ApiOperationWappCallAccountWSDTO operationWappCallAccountWSDTO = apiOperationWappCallFramework.apiGetOperationWappCallAccountService(agentId, operationId);
+        if (operationWappCallAccountWSDTO != null) {
             response.setWappCallAccount(operationWappCallAccountWSDTO);
         }
 
@@ -62,13 +62,13 @@ public class ApiOperationWappCallMiddleware {
     }
 
 
-    public ApiOperationWappCallWSModel apiGetOperationWappCalls(long agentId,String operationId) {
+    public ApiOperationWappCallWSModel apiGetOperationWappCalls(long agentId, String operationId) {
 
         ApiOperationWappCallWSModel response = new ApiOperationWappCallWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ApiOperationWappCallWSDTO> operationWappCallWSDTOS =  apiOperationWappCallFramework.apiGetOperationWappCallsService(agentId,operationId);
-        if (operationWappCallWSDTOS != null){
+        List<ApiOperationWappCallWSDTO> operationWappCallWSDTOS = apiOperationWappCallFramework.apiGetOperationWappCallsService(agentId, operationId);
+        if (operationWappCallWSDTOS != null) {
             response.setOperationWappCalls(operationWappCallWSDTOS);
         }
 
@@ -81,14 +81,14 @@ public class ApiOperationWappCallMiddleware {
         return response;
     }
 
-    public ApiOperationWappCallWSModel apiGetOperationWappCall(long agentId,String operationId,String callId) {
+    public ApiOperationWappCallWSModel apiGetOperationWappCall(long agentId, String operationId, String callId) {
 
         ApiOperationWappCallWSModel response = new ApiOperationWappCallWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ApiOperationWappCallWSDTO> operationWappCallWSDTOS = new ArrayList<>();
 
-        ApiOperationWappCallWSDTO operationWappCallWSDTO =  apiOperationWappCallFramework.apiGetOperationWappCallService(agentId,operationId,callId);
-        if (operationWappCallWSDTO != null){
+        ApiOperationWappCallWSDTO operationWappCallWSDTO = apiOperationWappCallFramework.apiGetOperationWappCallService(agentId, operationId, callId);
+        if (operationWappCallWSDTO != null) {
             operationWappCallWSDTOS.add(operationWappCallWSDTO);
         }
 
@@ -102,14 +102,14 @@ public class ApiOperationWappCallMiddleware {
         return response;
     }
 
-    public ApiOperationWappCallWSModel apiCreateOperationWappCall(long agentId,String operationId,String numberId) {
+    public ApiOperationWappCallWSModel apiCreateOperationWappCall(long agentId, String operationId, String numberId) {
 
         ApiOperationWappCallWSModel response = new ApiOperationWappCallWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ApiOperationWappCallWSDTO> operationWappCallWSDTOS = new ArrayList<>();
 
-        ApiOperationWappCallWSDTO operationWappCallWSDTO =  apiOperationWappCallFramework.apiCreateOperationWappCallService(agentId,operationId,numberId);
-        if (operationWappCallWSDTO != null){
+        ApiOperationWappCallWSDTO operationWappCallWSDTO = apiOperationWappCallFramework.apiCreateOperationWappCallService(agentId, operationId, numberId);
+        if (operationWappCallWSDTO != null) {
             operationWappCallWSDTOS.add(operationWappCallWSDTO);
         }
 
@@ -123,14 +123,14 @@ public class ApiOperationWappCallMiddleware {
         return response;
     }
 
-    public ApiOperationWappCallWSModel apiStartOperationWappCall(long agentId,String operationId,String callId) {
+    public ApiOperationWappCallWSModel apiStartOperationWappCall(long agentId, String operationId, String callId) {
 
         ApiOperationWappCallWSModel response = new ApiOperationWappCallWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ApiOperationWappCallWSDTO> operationWappCallWSDTOS = new ArrayList<>();
 
-        ApiOperationWappCallWSDTO operationWappCallWSDTO =  apiOperationWappCallFramework.apiStartOperationWappCallService(agentId,operationId,callId);
-        if (operationWappCallWSDTO != null){
+        ApiOperationWappCallWSDTO operationWappCallWSDTO = apiOperationWappCallFramework.apiStartOperationWappCallService(agentId, operationId, callId);
+        if (operationWappCallWSDTO != null) {
             operationWappCallWSDTOS.add(operationWappCallWSDTO);
         }
 
@@ -145,14 +145,14 @@ public class ApiOperationWappCallMiddleware {
     }
 
 
-    public ApiOperationWappCallWSModel apiCancelOperationWappCall(long agentId,String operationId,String callId) {
+    public ApiOperationWappCallWSModel apiCancelOperationWappCall(long agentId, String operationId, String callId) {
 
         ApiOperationWappCallWSModel response = new ApiOperationWappCallWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ApiOperationWappCallWSDTO> operationWappCallWSDTOS = new ArrayList<>();
 
-        ApiOperationWappCallWSDTO operationWappCallWSDTO =  apiOperationWappCallFramework.apiCancelOperationWappCallService(agentId,operationId,callId);
-        if (operationWappCallWSDTO != null){
+        ApiOperationWappCallWSDTO operationWappCallWSDTO = apiOperationWappCallFramework.apiCancelOperationWappCallService(agentId, operationId, callId);
+        if (operationWappCallWSDTO != null) {
             operationWappCallWSDTOS.add(operationWappCallWSDTO);
         }
 
@@ -167,14 +167,14 @@ public class ApiOperationWappCallMiddleware {
     }
 
 
-    public ApiOperationWappCallWSModel apiHangUpOperationWappCall(long agentId,String operationId,String callId) {
+    public ApiOperationWappCallWSModel apiHangUpOperationWappCall(long agentId, String operationId, String callId) {
 
         ApiOperationWappCallWSModel response = new ApiOperationWappCallWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ApiOperationWappCallWSDTO> operationWappCallWSDTOS = new ArrayList<>();
 
-        ApiOperationWappCallWSDTO operationWappCallWSDTO =  apiOperationWappCallFramework.apiHangUpOperationWappCallService(agentId,operationId,callId);
-        if (operationWappCallWSDTO != null){
+        ApiOperationWappCallWSDTO operationWappCallWSDTO = apiOperationWappCallFramework.apiHangUpOperationWappCallService(agentId, operationId, callId);
+        if (operationWappCallWSDTO != null) {
             operationWappCallWSDTOS.add(operationWappCallWSDTO);
         }
 
@@ -188,14 +188,14 @@ public class ApiOperationWappCallMiddleware {
         return response;
     }
 
-    public ApiOperationWappCallWSModel apiUpdateOperationWappCall(long agentId,String operationId,String callId,String callState) {
+    public ApiOperationWappCallWSModel apiUpdateOperationWappCall(long agentId, String operationId, String callId, String callState) {
 
         ApiOperationWappCallWSModel response = new ApiOperationWappCallWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ApiOperationWappCallWSDTO> operationWappCallWSDTOS = new ArrayList<>();
 
-        ApiOperationWappCallWSDTO operationWappCallWSDTO =  apiOperationWappCallFramework.apiUpdateOperationWappCallService(agentId,operationId,callId,callState);
-        if (operationWappCallWSDTO != null){
+        ApiOperationWappCallWSDTO operationWappCallWSDTO = apiOperationWappCallFramework.apiUpdateOperationWappCallService(agentId, operationId, callId, callState);
+        if (operationWappCallWSDTO != null) {
             operationWappCallWSDTOS.add(operationWappCallWSDTO);
         }
 
@@ -209,14 +209,14 @@ public class ApiOperationWappCallMiddleware {
         return response;
     }
 
-    public ApiOperationWappCallWSModel apiRemoveOperationWappCall(long agentId,String operationId,String callId) {
+    public ApiOperationWappCallWSModel apiRemoveOperationWappCall(long agentId, String operationId, String callId) {
 
         ApiOperationWappCallWSModel response = new ApiOperationWappCallWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ApiOperationWappCallWSDTO> operationWappCallWSDTOS = new ArrayList<>();
 
-        ApiOperationWappCallWSDTO operationWappCallWSDTO =  apiOperationWappCallFramework.apiRemoveOperationWappCallService(agentId,operationId,callId);
-        if (operationWappCallWSDTO != null){
+        ApiOperationWappCallWSDTO operationWappCallWSDTO = apiOperationWappCallFramework.apiRemoveOperationWappCallService(agentId, operationId, callId);
+        if (operationWappCallWSDTO != null) {
             operationWappCallWSDTOS.add(operationWappCallWSDTO);
         }
 
@@ -229,7 +229,6 @@ public class ApiOperationWappCallMiddleware {
 
         return response;
     }
-
 
 
 }

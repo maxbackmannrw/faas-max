@@ -1,15 +1,15 @@
 package com.faas.core.base.framework.user.content;
 
-import com.faas.core.base.model.db.user.content.UserDBModel;
-import com.faas.core.base.model.db.user.details.UserDetailsDBModel;
-import com.faas.core.base.model.db.user.settings.UserRoleDBModel;
-import com.faas.core.base.model.ws.user.content.dto.UserWSDTO;
-import com.faas.core.base.repo.user.content.UserRepository;
-import com.faas.core.base.repo.user.details.UserDetailsRepository;
-import com.faas.core.base.repo.user.settings.UserRoleRepository;
-import com.faas.core.utility.config.AppConstant;
-import com.faas.core.utility.config.AppUtils;
-import com.faas.core.utility.helpers.user.UserHelpers;
+import com.faas.core.data.db.user.content.UserDBModel;
+import com.faas.core.data.db.user.details.UserDetailsDBModel;
+import com.faas.core.data.db.user.settings.UserRoleDBModel;
+import com.faas.core.data.ws.base.user.content.dto.UserWSDTO;
+import com.faas.core.data.repo.user.content.UserRepository;
+import com.faas.core.data.repo.user.details.UserDetailsRepository;
+import com.faas.core.data.repo.user.settings.UserRoleRepository;
+import com.faas.core.misc.config.AppConstant;
+import com.faas.core.misc.config.AppUtils;
+import com.faas.core.misc.helpers.user.UserHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,7 +42,7 @@ public class UserFramework {
         UserWSDTO userWSDTO = new UserWSDTO();
         userWSDTO.setUser(userDBModel);
         List<UserDetailsDBModel> userDetailsDBModels = userDetailsRepository.findByUserId(userDBModel.getId());
-        if (userDetailsDBModels.size()>0){
+        if (userDetailsDBModels.size() > 0) {
             userWSDTO.setUserDetails(userDetailsDBModels.get(0));
         }
         return userWSDTO;
@@ -72,7 +72,7 @@ public class UserFramework {
     public List<UserWSDTO> getUsersByTypeService(long userId, String userType) {
 
         List<UserWSDTO> userWSDTOS = new ArrayList<>();
-        List<UserDBModel> userDBModels = userRepository.findByUserTypeAndStatus(userType,1 );
+        List<UserDBModel> userDBModels = userRepository.findByUserTypeAndStatus(userType, 1);
         for (UserDBModel userDBModel : userDBModels) {
             userWSDTOS.add(fillUserWSDTO(userDBModel));
         }
@@ -106,7 +106,7 @@ public class UserFramework {
             userDBModel.setStatus(1);
 
             UserDBModel createdUser = userRepository.save(userDBModel);
-            createUserDetailsService(createdUser,operationLimit);
+            createUserDetailsService(createdUser, operationLimit);
 
             return fillUserWSDTO(createdUser);
         }
@@ -114,7 +114,7 @@ public class UserFramework {
     }
 
 
-    public void createUserDetailsService(UserDBModel userDBModel,int operationLimit){
+    public void createUserDetailsService(UserDBModel userDBModel, int operationLimit) {
 
         UserDetailsDBModel userDetailsDBModel = new UserDetailsDBModel();
         userDetailsDBModel.setUserId(userDBModel.getId());
@@ -126,7 +126,6 @@ public class UserFramework {
 
         userDetailsRepository.save(userDetailsDBModel);
     }
-
 
 
     public UserWSDTO updateUserService(long selectedId, String userName, String userEmail, String password, long roleId, int operationLimit, boolean validUser) {

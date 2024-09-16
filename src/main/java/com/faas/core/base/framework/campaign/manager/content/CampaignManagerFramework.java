@@ -1,10 +1,10 @@
 package com.faas.core.base.framework.campaign.manager.content;
 
-import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
-import com.faas.core.base.model.ws.campaign.manager.content.dto.CampaignManagerWSDTO;
-import com.faas.core.base.model.ws.campaign.manager.content.dto.CampaignManagerDetailsWSDTO;
-import com.faas.core.base.repo.campaign.content.CampaignRepository;
-import com.faas.core.utility.helpers.campaign.CampaignHelpers;
+import com.faas.core.data.db.campaign.content.CampaignDBModel;
+import com.faas.core.data.ws.base.campaign.manager.content.dto.CampaignManagerDetailsWSDTO;
+import com.faas.core.data.ws.base.campaign.manager.content.dto.CampaignManagerWSDTO;
+import com.faas.core.data.repo.campaign.content.CampaignRepository;
+import com.faas.core.misc.helpers.campaign.CampaignHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,7 +33,7 @@ public class CampaignManagerFramework {
         return campaignManagerWSDTOS;
     }
 
-    public List<CampaignManagerWSDTO> getCampaignManagersByCategoryService(long userId,String campaignCategory) {
+    public List<CampaignManagerWSDTO> getCampaignManagersByCategoryService(long userId, String campaignCategory) {
 
         List<CampaignManagerWSDTO> campaignManagerWSDTOS = new ArrayList<>();
         List<CampaignDBModel> campaignDBModels = campaignRepository.findByCampaignCategory(campaignCategory);
@@ -43,7 +43,7 @@ public class CampaignManagerFramework {
         return campaignManagerWSDTOS;
     }
 
-    public List<CampaignManagerWSDTO> getCampaignManagersByStateService(long userId,String campaignState) {
+    public List<CampaignManagerWSDTO> getCampaignManagersByStateService(long userId, String campaignState) {
 
         List<CampaignManagerWSDTO> campaignManagerWSDTOS = new ArrayList<>();
         List<CampaignDBModel> campaignDBModels = campaignRepository.findByCampaignState(campaignState);
@@ -53,10 +53,10 @@ public class CampaignManagerFramework {
         return campaignManagerWSDTOS;
     }
 
-    public CampaignManagerWSDTO getCampaignManagerService(long userId,String campaignId) {
+    public CampaignManagerWSDTO getCampaignManagerService(long userId, String campaignId) {
 
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
-        if(campaignDBModel.isPresent()) {
+        if (campaignDBModel.isPresent()) {
             return campaignHelpers.getCampaignManagerWSDTO(campaignDBModel.get());
         }
         return null;
@@ -65,9 +65,9 @@ public class CampaignManagerFramework {
     public CampaignManagerWSDTO updateCampaignManagerStateService(long userId, String campaignId, String campaignState) {
 
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
-        if(campaignDBModel.isPresent()) {
-            CampaignDBModel updatedCampaign  = campaignHelpers.updateCampaignManagerStateHelper(campaignDBModel.get(),campaignState);
-            if (updatedCampaign != null){
+        if (campaignDBModel.isPresent()) {
+            CampaignDBModel updatedCampaign = campaignHelpers.updateCampaignManagerStateHelper(campaignDBModel.get(), campaignState);
+            if (updatedCampaign != null) {
                 return campaignHelpers.getCampaignManagerWSDTO(campaignRepository.save(updatedCampaign));
             }
         }
@@ -77,9 +77,9 @@ public class CampaignManagerFramework {
     public CampaignManagerWSDTO updateCampaignManagerInquiryStateService(long userId, String campaignId, String inquiryState) {
 
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
-        if(campaignDBModel.isPresent()) {
-            CampaignDBModel updatedCampaign  = campaignHelpers.updateCampaignManagerInquiryStateHelper(campaignDBModel.get(),inquiryState);
-            if (updatedCampaign != null){
+        if (campaignDBModel.isPresent()) {
+            CampaignDBModel updatedCampaign = campaignHelpers.updateCampaignManagerInquiryStateHelper(campaignDBModel.get(), inquiryState);
+            if (updatedCampaign != null) {
                 return campaignHelpers.getCampaignManagerWSDTO(campaignRepository.save(updatedCampaign));
             }
         }
@@ -89,9 +89,9 @@ public class CampaignManagerFramework {
     public CampaignManagerWSDTO updateCampaignManagerFlowStateService(long userId, String campaignId, String flowState) {
 
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
-        if(campaignDBModel.isPresent()) {
-            CampaignDBModel updatedCampaign  = campaignHelpers.updateCampaignManagerFlowStateHelper(campaignDBModel.get(),flowState);
-            if (updatedCampaign != null){
+        if (campaignDBModel.isPresent()) {
+            CampaignDBModel updatedCampaign = campaignHelpers.updateCampaignManagerFlowStateHelper(campaignDBModel.get(), flowState);
+            if (updatedCampaign != null) {
                 return campaignHelpers.getCampaignManagerWSDTO(campaignRepository.save(updatedCampaign));
             }
         }
@@ -101,7 +101,7 @@ public class CampaignManagerFramework {
     public CampaignManagerDetailsWSDTO getCampaignManagerDetailsService(long userId, String campaignId) {
 
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
-        if (campaignDBModel.isPresent()){
+        if (campaignDBModel.isPresent()) {
             return campaignHelpers.getCampaignManagerDetailsWSDTO(campaignDBModel.get());
         }
         return null;

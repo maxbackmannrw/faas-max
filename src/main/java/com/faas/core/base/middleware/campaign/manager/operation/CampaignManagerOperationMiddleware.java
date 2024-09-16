@@ -1,13 +1,13 @@
 package com.faas.core.base.middleware.campaign.manager.operation;
 
 import com.faas.core.base.framework.campaign.manager.operation.CampaignManagerOperationFramework;
-import com.faas.core.base.model.ws.campaign.manager.operation.CampaignOperationRequest;
-import com.faas.core.base.model.ws.campaign.manager.operation.CampaignOperationWSModel;
-import com.faas.core.base.model.ws.campaign.manager.operation.dto.CampaignOperationWSDTO;
-import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.operation.content.OperationWSModel;
-import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
-import com.faas.core.utility.config.AppConstant;
+import com.faas.core.data.ws.base.campaign.manager.operation.CampaignOperationRequest;
+import com.faas.core.data.ws.base.campaign.manager.operation.CampaignOperationWSModel;
+import com.faas.core.data.ws.base.campaign.manager.operation.dto.CampaignOperationWSDTO;
+import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.data.ws.base.operation.content.OperationWSModel;
+import com.faas.core.data.ws.base.operation.content.dto.OperationWSDTO;
+import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -22,13 +22,13 @@ public class CampaignManagerOperationMiddleware {
     CampaignManagerOperationFramework campaignManagerOperationFramework;
 
 
-    public CampaignOperationWSModel searchCampaignOperations(long userId, String campaignId,String city,String country,int reqPage,int reqSize) {
+    public CampaignOperationWSModel searchCampaignOperations(long userId, String campaignId, String city, String country, int reqPage, int reqSize) {
 
         CampaignOperationWSModel response = new CampaignOperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        CampaignOperationWSDTO campaignOperationWSDTO = campaignManagerOperationFramework.searchCampaignOperationsService(userId,campaignId,city,country,reqPage,reqSize);
-        if (campaignOperationWSDTO != null){
+        CampaignOperationWSDTO campaignOperationWSDTO = campaignManagerOperationFramework.searchCampaignOperationsService(userId, campaignId, city, country, reqPage, reqSize);
+        if (campaignOperationWSDTO != null) {
             response.setCampaignOperation(campaignOperationWSDTO);
         }
 
@@ -41,13 +41,13 @@ public class CampaignManagerOperationMiddleware {
         return response;
     }
 
-    public CampaignOperationWSModel getCampaignOperations(long userId, String campaignId,String operationState, int reqPage, int reqSize) {
+    public CampaignOperationWSModel getCampaignOperations(long userId, String campaignId, String operationState, int reqPage, int reqSize) {
 
         CampaignOperationWSModel response = new CampaignOperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        CampaignOperationWSDTO campaignOperationWSDTO = campaignManagerOperationFramework.getCampaignOperationsService(userId,campaignId,operationState ,reqPage,reqSize);
-        if (campaignOperationWSDTO != null){
+        CampaignOperationWSDTO campaignOperationWSDTO = campaignManagerOperationFramework.getCampaignOperationsService(userId, campaignId, operationState, reqPage, reqSize);
+        if (campaignOperationWSDTO != null) {
             response.setCampaignOperation(campaignOperationWSDTO);
         }
 
@@ -60,14 +60,14 @@ public class CampaignManagerOperationMiddleware {
         return response;
     }
 
-    public OperationWSModel getCampaignOperation(long userId,String operationId) {
+    public OperationWSModel getCampaignOperation(long userId, String operationId) {
 
         OperationWSModel response = new OperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<OperationWSDTO> operationWSDTOS = new ArrayList<>();
 
-        OperationWSDTO operationWSDTO = campaignManagerOperationFramework.getCampaignOperationService(userId,operationId);
-        if (operationWSDTO != null){
+        OperationWSDTO operationWSDTO = campaignManagerOperationFramework.getCampaignOperationService(userId, operationId);
+        if (operationWSDTO != null) {
             operationWSDTOS.add(operationWSDTO);
         }
 
@@ -87,7 +87,7 @@ public class CampaignManagerOperationMiddleware {
         GeneralWSModel general = new GeneralWSModel();
 
         List<OperationWSDTO> operationWSDTOS = campaignManagerOperationFramework.createCampaignOperationsService(operationRequest);
-        if (operationWSDTOS != null){
+        if (operationWSDTOS != null) {
             response.setOperations(operationWSDTOS);
         }
 
@@ -100,14 +100,14 @@ public class CampaignManagerOperationMiddleware {
         return response;
     }
 
-    public OperationWSModel createCampaignOperation(long userId,long clientId,String campaignId,long agentId) {
+    public OperationWSModel createCampaignOperation(long userId, long clientId, String campaignId, long agentId) {
 
         OperationWSModel response = new OperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<OperationWSDTO> operationWSDTOS = new ArrayList<>();
 
-        OperationWSDTO operationWSDTO = campaignManagerOperationFramework.createCampaignOperationService(userId,clientId,campaignId,agentId);
-        if (operationWSDTO != null){
+        OperationWSDTO operationWSDTO = campaignManagerOperationFramework.createCampaignOperationService(userId, clientId, campaignId, agentId);
+        if (operationWSDTO != null) {
             response.setOperations(operationWSDTOS);
         }
 
@@ -120,14 +120,14 @@ public class CampaignManagerOperationMiddleware {
         return response;
     }
 
-    public OperationWSModel updateCampaignOperation(long userId,String operationId,String operationState) {
+    public OperationWSModel updateCampaignOperation(long userId, String operationId, String operationState) {
 
         OperationWSModel response = new OperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<OperationWSDTO> operationWSDTOS = new ArrayList<>();
 
-        OperationWSDTO operationWSDTO = campaignManagerOperationFramework.updateCampaignOperationService(userId,operationId,operationState);
-        if (operationWSDTO != null){
+        OperationWSDTO operationWSDTO = campaignManagerOperationFramework.updateCampaignOperationService(userId, operationId, operationState);
+        if (operationWSDTO != null) {
             operationWSDTOS.add(operationWSDTO);
         }
 
@@ -142,14 +142,14 @@ public class CampaignManagerOperationMiddleware {
     }
 
 
-    public OperationWSModel removeCampaignOperation(long userId,String operationId) {
+    public OperationWSModel removeCampaignOperation(long userId, String operationId) {
 
         OperationWSModel response = new OperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<OperationWSDTO>operationWSDTOS = new ArrayList<>();
+        List<OperationWSDTO> operationWSDTOS = new ArrayList<>();
 
-        OperationWSDTO operationWSDTO = campaignManagerOperationFramework.removeCampaignOperationService(userId,operationId);
-        if (operationWSDTO != null){
+        OperationWSDTO operationWSDTO = campaignManagerOperationFramework.removeCampaignOperationService(userId, operationId);
+        if (operationWSDTO != null) {
             operationWSDTOS.add(operationWSDTO);
         }
 

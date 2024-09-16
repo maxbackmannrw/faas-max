@@ -1,10 +1,9 @@
 package com.faas.core.base.framework.remote.details;
 
-import com.faas.core.base.model.db.remote.details.RemoteUrlDBModel;
-import com.faas.core.base.model.ws.remote.details.dto.RemoteUrlWSDTO;
-import com.faas.core.base.repo.remote.details.RemoteUrlRepository;
-import com.faas.core.utility.config.AppConstant;
-import com.faas.core.utility.config.AppUtils;
+import com.faas.core.data.db.remote.details.RemoteUrlDBModel;
+import com.faas.core.data.ws.base.remote.details.dto.RemoteUrlWSDTO;
+import com.faas.core.data.repo.remote.details.RemoteUrlRepository;
+import com.faas.core.misc.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -68,7 +67,7 @@ public class RemoteUrlFramework {
     public RemoteUrlWSDTO updateRemoteUrlService(long userId, long urlId, String remoteUrl, String urlType) {
 
         Optional<RemoteUrlDBModel> remoteUrlDBModel = remoteUrlRepository.findById(urlId);
-        if (remoteUrlDBModel.isPresent()){
+        if (remoteUrlDBModel.isPresent()) {
 
             remoteUrlDBModel.get().setRemoteUrl(remoteUrl);
             remoteUrlDBModel.get().setUrlType(urlType);

@@ -1,20 +1,20 @@
 package com.faas.core.base.framework.remoteapp.content;
 
-import com.faas.core.base.model.db.operation.content.OperationDBModel;
-import com.faas.core.base.model.db.remoteapp.RemoteAppDBModel;
-import com.faas.core.base.model.db.remote.content.RemoteDBModel;
-import com.faas.core.base.model.ws.remoteapp.content.dto.RemoteAppListWSDTO;
-import com.faas.core.base.model.ws.remoteapp.content.dto.RemoteAppSummaryWSDTO;
-import com.faas.core.base.model.ws.remoteapp.content.dto.RemoteAppWSDTO;
-import com.faas.core.base.model.ws.remoteapp.details.dto.RemoteAppDetailsWSDTO;
-import com.faas.core.base.repo.client.content.ClientRepository;
-import com.faas.core.base.repo.operation.content.OperationRepository;
-import com.faas.core.base.repo.campaign.content.CampaignRepository;
-import com.faas.core.base.repo.remoteapp.RemoteAppRepository;
-import com.faas.core.base.repo.remote.content.RemoteRepository;
-import com.faas.core.utility.config.AppConstant;
-import com.faas.core.utility.config.AppUtils;
-import com.faas.core.utility.helpers.remote.RemoteAppHelpers;
+import com.faas.core.data.db.operation.content.OperationDBModel;
+import com.faas.core.data.db.remote.content.RemoteDBModel;
+import com.faas.core.data.db.remoteapp.RemoteAppDBModel;
+import com.faas.core.data.ws.base.remoteapp.content.dto.RemoteAppListWSDTO;
+import com.faas.core.data.ws.base.remoteapp.content.dto.RemoteAppSummaryWSDTO;
+import com.faas.core.data.ws.base.remoteapp.content.dto.RemoteAppWSDTO;
+import com.faas.core.data.ws.base.remoteapp.details.dto.RemoteAppDetailsWSDTO;
+import com.faas.core.data.repo.campaign.content.CampaignRepository;
+import com.faas.core.data.repo.client.content.ClientRepository;
+import com.faas.core.data.repo.operation.content.OperationRepository;
+import com.faas.core.data.repo.remote.content.RemoteRepository;
+import com.faas.core.data.repo.remoteapp.RemoteAppRepository;
+import com.faas.core.misc.config.AppConstant;
+import com.faas.core.misc.config.AppUtils;
+import com.faas.core.misc.helpers.remote.RemoteAppHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -52,15 +52,15 @@ public class RemoteAppFramework {
 
     public RemoteAppListWSDTO getRemoteAppsService(long userId, String connState, int reqPage, int reqSize) {
 
-        Page<RemoteAppDBModel> remoteAppModelPage = remoteAppRepository.findAllByConnState(connState,PageRequest.of(reqPage,reqSize));
+        Page<RemoteAppDBModel> remoteAppModelPage = remoteAppRepository.findAllByConnState(connState, PageRequest.of(reqPage, reqSize));
         RemoteAppListWSDTO remoteAppListWSDTO = new RemoteAppListWSDTO();
         List<RemoteAppWSDTO> remoteAppWSDTOS = new ArrayList<>();
         return null;
     }
 
-    public RemoteAppListWSDTO getRemoteAppsByBaseTypeService(long userId, String connState,String baseType, int reqPage, int reqSize) {
+    public RemoteAppListWSDTO getRemoteAppsByBaseTypeService(long userId, String connState, String baseType, int reqPage, int reqSize) {
 
-        Page<RemoteAppDBModel> remoteAppDBModelPage = remoteAppRepository.findAllByConnStateAndBaseType(connState,baseType,PageRequest.of(reqPage,reqSize));
+        Page<RemoteAppDBModel> remoteAppDBModelPage = remoteAppRepository.findAllByConnStateAndBaseType(connState, baseType, PageRequest.of(reqPage, reqSize));
 
         RemoteAppListWSDTO remoteAppListWSDTO = new RemoteAppListWSDTO();
         List<RemoteAppWSDTO> remoteAppWSDTOS = new ArrayList<>();
@@ -77,7 +77,7 @@ public class RemoteAppFramework {
     public RemoteAppWSDTO getRemoteAppService(long userId, String remoteAppId) {
 
         Optional<RemoteAppDBModel> remoteAppDBModel = remoteAppRepository.findById(remoteAppId);
-        if (remoteAppDBModel.isPresent()){
+        if (remoteAppDBModel.isPresent()) {
             return null;
         }
         return null;
@@ -93,8 +93,8 @@ public class RemoteAppFramework {
 
     public RemoteAppWSDTO updateRemoteAppService(long userId, String remoteAppId, String remoteState) {
 
-        Optional<RemoteAppDBModel>remoteAppDBModel = remoteAppRepository.findById(remoteAppId);
-        if (remoteAppDBModel.isPresent()){
+        Optional<RemoteAppDBModel> remoteAppDBModel = remoteAppRepository.findById(remoteAppId);
+        if (remoteAppDBModel.isPresent()) {
             remoteAppDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
             return null;
         }
@@ -104,7 +104,7 @@ public class RemoteAppFramework {
     public RemoteAppWSDTO removeRemoteAppService(long userId, String remoteAppId) {
 
         Optional<RemoteAppDBModel> remoteAppDBModel = remoteAppRepository.findById(remoteAppId);
-        if (remoteAppDBModel.isPresent()){
+        if (remoteAppDBModel.isPresent()) {
             remoteAppRepository.delete(remoteAppDBModel.get());
             return null;
         }

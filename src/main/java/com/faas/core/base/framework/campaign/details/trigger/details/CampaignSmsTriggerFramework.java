@@ -1,14 +1,14 @@
 package com.faas.core.base.framework.campaign.details.trigger.details;
 
-import com.faas.core.base.model.db.channel.account.SmsAccountDBModel;
-import com.faas.core.base.model.db.campaign.details.trigger.*;
-import com.faas.core.base.model.db.campaign.settings.TriggerTypeDBModel;
-import com.faas.core.base.model.ws.campaign.details.trigger.details.dto.CampaignSmsTriggerWSDTO;
-import com.faas.core.base.repo.channel.account.SmsAccountRepository;
-import com.faas.core.base.repo.channel.settings.MessageTypeRepository;
-import com.faas.core.base.repo.campaign.details.trigger.*;
-import com.faas.core.base.repo.campaign.settings.TriggerTypeRepository;
-import com.faas.core.utility.config.AppUtils;
+import com.faas.core.data.db.campaign.details.trigger.SmsTriggerDBModel;
+import com.faas.core.data.db.campaign.settings.TriggerTypeDBModel;
+import com.faas.core.data.db.channel.account.SmsAccountDBModel;
+import com.faas.core.data.ws.base.campaign.details.trigger.details.dto.CampaignSmsTriggerWSDTO;
+import com.faas.core.data.repo.campaign.details.trigger.SmsTriggerRepository;
+import com.faas.core.data.repo.campaign.settings.TriggerTypeRepository;
+import com.faas.core.data.repo.channel.account.SmsAccountRepository;
+import com.faas.core.data.repo.channel.settings.MessageTypeRepository;
+import com.faas.core.misc.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -49,7 +49,7 @@ public class CampaignSmsTriggerFramework {
     public CampaignSmsTriggerWSDTO getCampaignSmsTriggerService(long userId, String triggerId) {
 
         Optional<SmsTriggerDBModel> smsTriggerDBModel = smsTriggerRepository.findById(triggerId);
-        if (smsTriggerDBModel.isPresent()){
+        if (smsTriggerDBModel.isPresent()) {
             return new CampaignSmsTriggerWSDTO(smsTriggerDBModel.get());
         }
         return null;
@@ -59,7 +59,7 @@ public class CampaignSmsTriggerFramework {
 
         Optional<SmsAccountDBModel> smsAccountDBModel = smsAccountRepository.findById(accountId);
         Optional<TriggerTypeDBModel> triggerTypeDBModel = triggerTypeRepository.findById(typeId);
-        if (smsAccountDBModel.isPresent() && triggerTypeDBModel.isPresent()){
+        if (smsAccountDBModel.isPresent() && triggerTypeDBModel.isPresent()) {
 
             SmsTriggerDBModel smsTriggerDBModel = new SmsTriggerDBModel();
             smsTriggerDBModel.setCampaignId(campaignId);
@@ -85,7 +85,7 @@ public class CampaignSmsTriggerFramework {
 
         Optional<SmsTriggerDBModel> smsTriggerDBModel = smsTriggerRepository.findById(triggerId);
         Optional<SmsAccountDBModel> smsAccountDBModel = smsAccountRepository.findById(accountId);
-        if (smsTriggerDBModel.isPresent() && smsAccountDBModel.isPresent()){
+        if (smsTriggerDBModel.isPresent() && smsAccountDBModel.isPresent()) {
 
             smsTriggerDBModel.get().setTrigger(trigger);
             smsTriggerDBModel.get().setAccountId(accountId);
@@ -104,13 +104,12 @@ public class CampaignSmsTriggerFramework {
     public CampaignSmsTriggerWSDTO removeCampaignSmsTriggerService(long userId, String triggerId) {
 
         Optional<SmsTriggerDBModel> smsTriggerDBModel = smsTriggerRepository.findById(triggerId);
-        if (smsTriggerDBModel.isPresent()){
+        if (smsTriggerDBModel.isPresent()) {
             smsTriggerRepository.delete(smsTriggerDBModel.get());
             return new CampaignSmsTriggerWSDTO(smsTriggerDBModel.get());
         }
         return null;
     }
-
 
 
 }

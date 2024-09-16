@@ -1,16 +1,16 @@
 package com.faas.core.base.framework.utilz.config;
 
-import com.faas.core.base.model.db.utilz.CityDBModel;
-import com.faas.core.base.model.db.utilz.CountryDBModel;
-import com.faas.core.base.model.db.utilz.DataTypeDBModel;
-import com.faas.core.base.model.ws.utilz.config.dto.CityWSDTO;
-import com.faas.core.base.model.ws.utilz.config.dto.CountryWSDTO;
-import com.faas.core.base.model.ws.utilz.config.dto.DataTypeWSDTO;
-import com.faas.core.base.repo.utilz.CityRepository;
-import com.faas.core.base.repo.utilz.CountryRepository;
-import com.faas.core.base.repo.utilz.DataTypeRepository;
-import com.faas.core.base.repo.remote.details.RemoteUrlRepository;
-import com.faas.core.utility.config.AppUtils;
+import com.faas.core.data.db.utilz.CityDBModel;
+import com.faas.core.data.db.utilz.CountryDBModel;
+import com.faas.core.data.db.utilz.DataTypeDBModel;
+import com.faas.core.data.ws.base.utilz.config.dto.CityWSDTO;
+import com.faas.core.data.ws.base.utilz.config.dto.CountryWSDTO;
+import com.faas.core.data.ws.base.utilz.config.dto.DataTypeWSDTO;
+import com.faas.core.data.repo.remote.details.RemoteUrlRepository;
+import com.faas.core.data.repo.utilz.CityRepository;
+import com.faas.core.data.repo.utilz.CountryRepository;
+import com.faas.core.data.repo.utilz.DataTypeRepository;
+import com.faas.core.misc.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -71,13 +71,13 @@ public class SystemConfigFramework {
     public DataTypeWSDTO getDataTypeService(long typeId) {
 
         Optional<DataTypeDBModel> dataTypeDBModel = dataTypeRepository.findById(typeId);
-        if (dataTypeDBModel.isPresent()){
+        if (dataTypeDBModel.isPresent()) {
             return fillDataTypeWSDTO(dataTypeDBModel.get());
         }
         return null;
     }
 
-    public DataTypeWSDTO createDataTypeService(String dataType,String baseType) {
+    public DataTypeWSDTO createDataTypeService(String dataType, String baseType) {
 
         DataTypeDBModel dataTypeDBModel = new DataTypeDBModel();
         dataTypeDBModel.setDataType(dataType);
@@ -89,7 +89,7 @@ public class SystemConfigFramework {
         return fillDataTypeWSDTO(dataTypeRepository.save(dataTypeDBModel));
     }
 
-    public DataTypeWSDTO updateDataTypeService(long typeId,String dataType,String baseType) {
+    public DataTypeWSDTO updateDataTypeService(long typeId, String dataType, String baseType) {
 
         Optional<DataTypeDBModel> dataTypeDBModel = dataTypeRepository.findById(typeId);
         if (dataTypeDBModel.isPresent()) {
@@ -124,7 +124,7 @@ public class SystemConfigFramework {
         return cityWSDTOS;
     }
 
-    public List<CityWSDTO> getCitiesByCountryService(long userId,String country) {
+    public List<CityWSDTO> getCitiesByCountryService(long userId, String country) {
 
         List<CityWSDTO> cityWSDTOS = new ArrayList<>();
         List<CityDBModel> cityDBModels = cityRepository.findByCountry(country);

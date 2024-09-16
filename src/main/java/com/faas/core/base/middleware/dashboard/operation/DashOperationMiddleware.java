@@ -1,9 +1,9 @@
 package com.faas.core.base.middleware.dashboard.operation;
 
 import com.faas.core.base.framework.dashboard.operation.DashOperationFramework;
-import com.faas.core.base.model.ws.dashboard.operation.DashboardOperationWSModel;
-import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.utility.config.AppConstant;
+import com.faas.core.data.ws.base.dashboard.operation.DashboardOperationWSModel;
+import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -30,7 +30,6 @@ public class DashOperationMiddleware {
 
         return response;
     }
-
 
 
 }

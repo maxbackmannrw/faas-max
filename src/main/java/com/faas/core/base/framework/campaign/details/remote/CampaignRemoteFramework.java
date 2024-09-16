@@ -1,14 +1,14 @@
 package com.faas.core.base.framework.campaign.details.remote;
 
-import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
-import com.faas.core.base.model.db.campaign.details.remote.CampaignRemoteDBModel;
-import com.faas.core.base.model.db.remote.content.RemoteDBModel;
-import com.faas.core.base.model.ws.campaign.details.remote.dto.CampaignRemoteWSDTO;
-import com.faas.core.base.repo.campaign.content.CampaignRepository;
-import com.faas.core.base.repo.campaign.details.remote.CampaignRemoteRepository;
-import com.faas.core.base.repo.remote.content.RemoteRepository;
-import com.faas.core.utility.helpers.campaign.CampaignHelpers;
-import com.faas.core.utility.helpers.remote.RemoteHelpers;
+import com.faas.core.data.db.campaign.content.CampaignDBModel;
+import com.faas.core.data.db.campaign.details.remote.CampaignRemoteDBModel;
+import com.faas.core.data.db.remote.content.RemoteDBModel;
+import com.faas.core.data.ws.base.campaign.details.remote.dto.CampaignRemoteWSDTO;
+import com.faas.core.data.repo.campaign.content.CampaignRepository;
+import com.faas.core.data.repo.campaign.details.remote.CampaignRemoteRepository;
+import com.faas.core.data.repo.remote.content.RemoteRepository;
+import com.faas.core.misc.helpers.campaign.CampaignHelpers;
+import com.faas.core.misc.helpers.remote.RemoteHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -69,7 +69,7 @@ public class CampaignRemoteFramework {
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
         Optional<RemoteDBModel> remoteDBModel = remoteRepository.findById(remoteId);
         if (campaignDBModel.isPresent() && remoteDBModel.isPresent()) {
-            return campaignHelpers.createCampaignRemoteWSDTO(remoteHelpers.createCampaignRemoteDBModel(campaignDBModel.get(),remoteDBModel.get(),remoteCategory));
+            return campaignHelpers.createCampaignRemoteWSDTO(remoteHelpers.createCampaignRemoteDBModel(campaignDBModel.get(), remoteDBModel.get(), remoteCategory));
         }
         return null;
     }
@@ -83,7 +83,6 @@ public class CampaignRemoteFramework {
         }
         return null;
     }
-
 
 
 }

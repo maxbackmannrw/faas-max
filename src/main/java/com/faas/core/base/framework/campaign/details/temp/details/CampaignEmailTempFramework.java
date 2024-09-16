@@ -1,12 +1,12 @@
 package com.faas.core.base.framework.campaign.details.temp.details;
 
-import com.faas.core.base.model.db.channel.settings.EmailTypeDBModel;
-import com.faas.core.base.model.db.campaign.details.temp.EmailTempDBModel;
-import com.faas.core.base.model.ws.campaign.details.temp.details.dto.CampaignEmailTempWSDTO;
-import com.faas.core.base.repo.channel.settings.EmailTypeRepository;
-import com.faas.core.base.repo.campaign.details.temp.EmailTempRepository;
-import com.faas.core.utility.config.AppUtils;
-import com.faas.core.utility.helpers.campaign.CampaignHelpers;
+import com.faas.core.data.db.campaign.details.temp.EmailTempDBModel;
+import com.faas.core.data.db.channel.settings.EmailTypeDBModel;
+import com.faas.core.data.ws.base.campaign.details.temp.details.dto.CampaignEmailTempWSDTO;
+import com.faas.core.data.repo.campaign.details.temp.EmailTempRepository;
+import com.faas.core.data.repo.channel.settings.EmailTypeRepository;
+import com.faas.core.misc.config.AppUtils;
+import com.faas.core.misc.helpers.campaign.CampaignHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -54,7 +54,7 @@ public class CampaignEmailTempFramework {
     public CampaignEmailTempWSDTO createCampaignEmailTempService(long userId, String campaignId, String emailSubject, String emailBody, String emailSender, long typeId) {
 
         Optional<EmailTypeDBModel> emailTypeDBModel = emailTypeRepository.findById(typeId);
-        if (emailTypeDBModel.isPresent()){
+        if (emailTypeDBModel.isPresent()) {
 
             EmailTempDBModel emailTempDBModel = new EmailTempDBModel();
             emailTempDBModel.setCampaignId(campaignId);
@@ -78,7 +78,7 @@ public class CampaignEmailTempFramework {
 
         Optional<EmailTempDBModel> emailTempDBModel = emailTempRepository.findById(tempId);
         Optional<EmailTypeDBModel> emailTypeDBModel = emailTypeRepository.findById(typeId);
-        if (emailTempDBModel.isPresent() && emailTypeDBModel.isPresent()){
+        if (emailTempDBModel.isPresent() && emailTypeDBModel.isPresent()) {
 
             emailTempDBModel.get().setEmailSubject(emailSubject);
             emailTempDBModel.get().setEmailBody(emailBody);
@@ -96,7 +96,7 @@ public class CampaignEmailTempFramework {
     public CampaignEmailTempWSDTO removeCampaignEmailTempService(String tempId) {
 
         Optional<EmailTempDBModel> emailTempDBModel = emailTempRepository.findById(tempId);
-        if (emailTempDBModel.isPresent()){
+        if (emailTempDBModel.isPresent()) {
             emailTempRepository.delete(emailTempDBModel.get());
             return new CampaignEmailTempWSDTO(emailTempDBModel.get());
         }

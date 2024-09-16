@@ -1,12 +1,12 @@
 package com.faas.core.base.framework.scenario.details;
 
-import com.faas.core.base.model.db.scenario.content.ScenarioDBModel;
-import com.faas.core.base.model.db.scenario.content.dao.ScenarioDataDAO;
-import com.faas.core.base.model.db.utilz.DataTypeDBModel;
-import com.faas.core.base.model.ws.scenario.details.dto.ScenarioDataWSDTO;
-import com.faas.core.base.repo.scenario.content.ScenarioRepository;
-import com.faas.core.base.repo.utilz.DataTypeRepository;
-import com.faas.core.utility.config.AppUtils;
+import com.faas.core.data.db.scenario.content.ScenarioDBModel;
+import com.faas.core.data.db.scenario.content.dao.ScenarioDataDAO;
+import com.faas.core.data.db.utilz.DataTypeDBModel;
+import com.faas.core.data.ws.base.scenario.details.dto.ScenarioDataWSDTO;
+import com.faas.core.data.repo.scenario.content.ScenarioRepository;
+import com.faas.core.data.repo.utilz.DataTypeRepository;
+import com.faas.core.misc.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,8 +40,8 @@ public class ScenarioDetailsFramework {
 
         List<ScenarioDataWSDTO> scenarioDataWSDTOS = new ArrayList<>();
         Optional<ScenarioDBModel> scenarioDBModel = scenarioRepository.findById(scenarioId);
-        if (scenarioDBModel.isPresent() && scenarioDBModel.get().getScenarioDatas() != null){
-            for (int i=0;i<scenarioDBModel.get().getScenarioDatas().size();i++){
+        if (scenarioDBModel.isPresent() && scenarioDBModel.get().getScenarioDatas() != null) {
+            for (int i = 0; i < scenarioDBModel.get().getScenarioDatas().size(); i++) {
                 scenarioDataWSDTOS.add(fillScenarioDataWSDTO(scenarioDBModel.get().getScenarioDatas().get(i)));
             }
         }
@@ -51,9 +51,9 @@ public class ScenarioDetailsFramework {
     public ScenarioDataWSDTO getScenarioDataService(String scenarioId, String dataId) {
 
         Optional<ScenarioDBModel> scenarioDBModel = scenarioRepository.findById(scenarioId);
-        if (scenarioDBModel.isPresent() && scenarioDBModel.get().getScenarioDatas() != null){
-            for (int i=0;i<scenarioDBModel.get().getScenarioDatas().size();i++){
-                if (scenarioDBModel.get().getScenarioDatas().get(i).getDataId().equalsIgnoreCase(dataId)){
+        if (scenarioDBModel.isPresent() && scenarioDBModel.get().getScenarioDatas() != null) {
+            for (int i = 0; i < scenarioDBModel.get().getScenarioDatas().size(); i++) {
+                if (scenarioDBModel.get().getScenarioDatas().get(i).getDataId().equalsIgnoreCase(dataId)) {
                     return fillScenarioDataWSDTO(scenarioDBModel.get().getScenarioDatas().get(i));
                 }
             }
@@ -61,11 +61,11 @@ public class ScenarioDetailsFramework {
         return null;
     }
 
-    public ScenarioDataWSDTO createScenarioDataService(String scenarioId,long typeId, String value) {
+    public ScenarioDataWSDTO createScenarioDataService(String scenarioId, long typeId, String value) {
 
         Optional<ScenarioDBModel> scenarioDBModel = scenarioRepository.findById(scenarioId);
         Optional<DataTypeDBModel> dataTypeDBModel = dataTypeRepository.findById(typeId);
-        if (scenarioDBModel.isPresent() && dataTypeDBModel.isPresent()){
+        if (scenarioDBModel.isPresent() && dataTypeDBModel.isPresent()) {
 
             ScenarioDataDAO scenarioDataDAO = new ScenarioDataDAO();
             scenarioDataDAO.setDataId(appUtils.generateUUID());
@@ -74,11 +74,11 @@ public class ScenarioDetailsFramework {
             scenarioDataDAO.setcDate(appUtils.getCurrentTimeStamp());
             scenarioDataDAO.setStatus(1);
 
-            if (scenarioDBModel.get().getScenarioDatas() == null){
+            if (scenarioDBModel.get().getScenarioDatas() == null) {
                 List<ScenarioDataDAO> scenarioDataDAOS = new ArrayList<>();
                 scenarioDataDAOS.add(scenarioDataDAO);
                 scenarioDBModel.get().setScenarioDatas(scenarioDataDAOS);
-            }else {
+            } else {
                 scenarioDBModel.get().getScenarioDatas().add(scenarioDataDAO);
             }
             scenarioDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
@@ -89,13 +89,13 @@ public class ScenarioDetailsFramework {
         return null;
     }
 
-    public ScenarioDataWSDTO updateScenarioDataService(String scenarioId,String dataId,long typeId,String value) {
+    public ScenarioDataWSDTO updateScenarioDataService(String scenarioId, String dataId, long typeId, String value) {
 
         Optional<ScenarioDBModel> scenarioDBModel = scenarioRepository.findById(scenarioId);
         Optional<DataTypeDBModel> dataTypeDBModel = dataTypeRepository.findById(typeId);
-        if (scenarioDBModel.isPresent() && scenarioDBModel.get().getScenarioDatas() != null && dataTypeDBModel.isPresent()){
-            for (int i=0;i<scenarioDBModel.get().getScenarioDatas().size();i++){
-                if (scenarioDBModel.get().getScenarioDatas().get(i).getDataId().equalsIgnoreCase(dataId)){
+        if (scenarioDBModel.isPresent() && scenarioDBModel.get().getScenarioDatas() != null && dataTypeDBModel.isPresent()) {
+            for (int i = 0; i < scenarioDBModel.get().getScenarioDatas().size(); i++) {
+                if (scenarioDBModel.get().getScenarioDatas().get(i).getDataId().equalsIgnoreCase(dataId)) {
 
                     scenarioDBModel.get().getScenarioDatas().get(i).setDataType(dataTypeDBModel.get().getDataType());
                     scenarioDBModel.get().getScenarioDatas().get(i).setValue(value);
@@ -114,9 +114,9 @@ public class ScenarioDetailsFramework {
     public ScenarioDataWSDTO removeScenarioDataService(String scenarioId, String dataId) {
 
         Optional<ScenarioDBModel> scenarioDBModel = scenarioRepository.findById(scenarioId);
-        if (scenarioDBModel.isPresent() && scenarioDBModel.get().getScenarioDatas() != null){
-            for (int i=0;i<scenarioDBModel.get().getScenarioDatas().size();i++){
-                if (scenarioDBModel.get().getScenarioDatas().get(i).getDataId().equalsIgnoreCase(dataId)){
+        if (scenarioDBModel.isPresent() && scenarioDBModel.get().getScenarioDatas() != null) {
+            for (int i = 0; i < scenarioDBModel.get().getScenarioDatas().size(); i++) {
+                if (scenarioDBModel.get().getScenarioDatas().get(i).getDataId().equalsIgnoreCase(dataId)) {
 
                     ScenarioDataDAO scenarioDataDAO = scenarioDBModel.get().getScenarioDatas().get(i);
                     scenarioDBModel.get().getScenarioDatas().remove(scenarioDataDAO);

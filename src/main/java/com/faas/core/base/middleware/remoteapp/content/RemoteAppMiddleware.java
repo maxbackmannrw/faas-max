@@ -1,16 +1,16 @@
 package com.faas.core.base.middleware.remoteapp.content;
 
 import com.faas.core.base.framework.remoteapp.content.RemoteAppFramework;
-import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.remoteapp.content.RemoteAppListWSModel;
-import com.faas.core.base.model.ws.remoteapp.content.RemoteAppSummaryWSModel;
-import com.faas.core.base.model.ws.remoteapp.content.RemoteAppWSModel;
-import com.faas.core.base.model.ws.remoteapp.content.dto.RemoteAppListWSDTO;
-import com.faas.core.base.model.ws.remoteapp.content.dto.RemoteAppSummaryWSDTO;
-import com.faas.core.base.model.ws.remoteapp.content.dto.RemoteAppWSDTO;
-import com.faas.core.base.model.ws.remoteapp.details.RemoteAppDetailsWSModel;
-import com.faas.core.base.model.ws.remoteapp.details.dto.RemoteAppDetailsWSDTO;
-import com.faas.core.utility.config.AppConstant;
+import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.data.ws.base.remoteapp.content.RemoteAppListWSModel;
+import com.faas.core.data.ws.base.remoteapp.content.RemoteAppSummaryWSModel;
+import com.faas.core.data.ws.base.remoteapp.content.RemoteAppWSModel;
+import com.faas.core.data.ws.base.remoteapp.content.dto.RemoteAppListWSDTO;
+import com.faas.core.data.ws.base.remoteapp.content.dto.RemoteAppSummaryWSDTO;
+import com.faas.core.data.ws.base.remoteapp.content.dto.RemoteAppWSDTO;
+import com.faas.core.data.ws.base.remoteapp.details.RemoteAppDetailsWSModel;
+import com.faas.core.data.ws.base.remoteapp.details.dto.RemoteAppDetailsWSDTO;
+import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -30,8 +30,8 @@ public class RemoteAppMiddleware {
         RemoteAppListWSModel response = new RemoteAppListWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        RemoteAppListWSDTO remoteAppListWSDTO = remoteAppFramework.getRemoteAppsService(userId,connState,reqPage,reqSize);
-        if (remoteAppListWSDTO != null){
+        RemoteAppListWSDTO remoteAppListWSDTO = remoteAppFramework.getRemoteAppsService(userId, connState, reqPage, reqSize);
+        if (remoteAppListWSDTO != null) {
             response.setRemoteAppList(remoteAppListWSDTO);
         }
 
@@ -44,13 +44,13 @@ public class RemoteAppMiddleware {
         return response;
     }
 
-    public RemoteAppListWSModel getRemoteAppsByBaseType(long userId, String connState,String baseType, int reqPage, int reqSize) {
+    public RemoteAppListWSModel getRemoteAppsByBaseType(long userId, String connState, String baseType, int reqPage, int reqSize) {
 
         RemoteAppListWSModel response = new RemoteAppListWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        RemoteAppListWSDTO remoteAppListWSDTO = remoteAppFramework.getRemoteAppsByBaseTypeService(userId,connState,baseType,reqPage,reqSize);
-        if (remoteAppListWSDTO != null){
+        RemoteAppListWSDTO remoteAppListWSDTO = remoteAppFramework.getRemoteAppsByBaseTypeService(userId, connState, baseType, reqPage, reqSize);
+        if (remoteAppListWSDTO != null) {
             response.setRemoteAppList(remoteAppListWSDTO);
         }
 
@@ -68,8 +68,8 @@ public class RemoteAppMiddleware {
         RemoteAppListWSModel response = new RemoteAppListWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        RemoteAppListWSDTO remoteAppListWSDTO = remoteAppFramework.getClientRemoteAppsService(userId,clientId);
-        if (remoteAppListWSDTO != null){
+        RemoteAppListWSDTO remoteAppListWSDTO = remoteAppFramework.getClientRemoteAppsService(userId, clientId);
+        if (remoteAppListWSDTO != null) {
             response.setRemoteAppList(remoteAppListWSDTO);
         }
 
@@ -88,8 +88,8 @@ public class RemoteAppMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<RemoteAppWSDTO> remoteAppWSDTOS = new ArrayList<>();
 
-        RemoteAppWSDTO remoteAppWSDTO = remoteAppFramework.getRemoteAppService(userId,remoteAppId);
-        if (remoteAppWSDTO != null){
+        RemoteAppWSDTO remoteAppWSDTO = remoteAppFramework.getRemoteAppService(userId, remoteAppId);
+        if (remoteAppWSDTO != null) {
             remoteAppWSDTOS.add(remoteAppWSDTO);
         }
 
@@ -109,8 +109,8 @@ public class RemoteAppMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<RemoteAppWSDTO> remoteAppWSDTOS = new ArrayList<>();
 
-        RemoteAppWSDTO remoteAppWSDTO = remoteAppFramework.createRemoteAppService(userId,operationId,remoteId);
-        if (remoteAppWSDTO != null){
+        RemoteAppWSDTO remoteAppWSDTO = remoteAppFramework.createRemoteAppService(userId, operationId, remoteId);
+        if (remoteAppWSDTO != null) {
             remoteAppWSDTOS.add(remoteAppWSDTO);
         }
 
@@ -130,8 +130,8 @@ public class RemoteAppMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<RemoteAppWSDTO> remoteAppWSDTOS = new ArrayList<>();
 
-        RemoteAppWSDTO remoteAppWSDTO = remoteAppFramework.updateRemoteAppService(userId,remoteAppId,remoteState);
-        if (remoteAppWSDTO != null){
+        RemoteAppWSDTO remoteAppWSDTO = remoteAppFramework.updateRemoteAppService(userId, remoteAppId, remoteState);
+        if (remoteAppWSDTO != null) {
             remoteAppWSDTOS.add(remoteAppWSDTO);
         }
 
@@ -151,8 +151,8 @@ public class RemoteAppMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<RemoteAppWSDTO> remoteAppWSDTOS = new ArrayList<>();
 
-        RemoteAppWSDTO remoteAppWSDTO = remoteAppFramework.removeRemoteAppService(userId,remoteAppId);
-        if (remoteAppWSDTO != null){
+        RemoteAppWSDTO remoteAppWSDTO = remoteAppFramework.removeRemoteAppService(userId, remoteAppId);
+        if (remoteAppWSDTO != null) {
             remoteAppWSDTOS.add(remoteAppWSDTO);
         }
 
@@ -171,8 +171,8 @@ public class RemoteAppMiddleware {
         RemoteAppDetailsWSModel response = new RemoteAppDetailsWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        RemoteAppDetailsWSDTO remoteAppDetailsWSDTO = remoteAppFramework.getRemoteAppDetailsService(userId,remoteAppId);
-        if (remoteAppDetailsWSDTO != null){
+        RemoteAppDetailsWSDTO remoteAppDetailsWSDTO = remoteAppFramework.getRemoteAppDetailsService(userId, remoteAppId);
+        if (remoteAppDetailsWSDTO != null) {
             response.setRemoteAppDetails(remoteAppDetailsWSDTO);
         }
 
@@ -191,7 +191,7 @@ public class RemoteAppMiddleware {
         GeneralWSModel general = new GeneralWSModel();
 
         RemoteAppSummaryWSDTO remoteAppSummaryWSDTO = remoteAppFramework.getRemoteAppsSummaryService(userId);
-        if (remoteAppSummaryWSDTO != null){
+        if (remoteAppSummaryWSDTO != null) {
             response.setRemoteAppSummary(remoteAppSummaryWSDTO);
         }
 

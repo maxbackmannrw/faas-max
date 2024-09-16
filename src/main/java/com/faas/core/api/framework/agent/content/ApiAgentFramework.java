@@ -1,14 +1,14 @@
 package com.faas.core.api.framework.agent.content;
 
-import com.faas.core.api.model.ws.agent.content.dto.ApiAgentWSDTO;
-import com.faas.core.base.model.db.user.content.UserDBModel;
-import com.faas.core.base.model.db.user.details.UserDetailsDBModel;
-import com.faas.core.base.repo.channel.account.SipAccountRepository;
-import com.faas.core.base.repo.user.content.UserRepository;
-import com.faas.core.base.repo.user.details.UserDetailsRepository;
-import com.faas.core.base.repo.user.settings.UserRoleRepository;
-import com.faas.core.utility.config.AppConstant;
-import com.faas.core.utility.config.AppUtils;
+import com.faas.core.data.ws.api.agent.content.dto.ApiAgentWSDTO;
+import com.faas.core.data.db.user.content.UserDBModel;
+import com.faas.core.data.db.user.details.UserDetailsDBModel;
+import com.faas.core.data.repo.channel.account.SipAccountRepository;
+import com.faas.core.data.repo.user.content.UserRepository;
+import com.faas.core.data.repo.user.details.UserDetailsRepository;
+import com.faas.core.data.repo.user.settings.UserRoleRepository;
+import com.faas.core.misc.config.AppConstant;
+import com.faas.core.misc.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -41,7 +41,7 @@ public class ApiAgentFramework {
         userDBModel.setPassword("");
         apiAgentWSDTO.setAgent(userDBModel);
         List<UserDetailsDBModel> agentDetails = userDetailsRepository.findByUserId(userDBModel.getId());
-        if (!agentDetails.isEmpty()){
+        if (!agentDetails.isEmpty()) {
             apiAgentWSDTO.setAgentDetails(agentDetails.get(0));
         }
 

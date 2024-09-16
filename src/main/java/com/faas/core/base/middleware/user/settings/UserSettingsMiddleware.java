@@ -1,13 +1,13 @@
 package com.faas.core.base.middleware.user.settings;
 
 import com.faas.core.base.framework.user.settings.UserSettingsFramework;
-import com.faas.core.base.model.db.user.settings.UserRoleDBModel;
-import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.user.settings.UserRoleWSModel;
-import com.faas.core.base.model.ws.user.settings.dto.UserRoleWSDTO;
-import com.faas.core.base.repo.user.settings.UserRoleRepository;
-import com.faas.core.utility.config.AppConstant;
-import com.faas.core.utility.config.AppUtils;
+import com.faas.core.data.db.user.settings.UserRoleDBModel;
+import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.data.ws.base.user.settings.UserRoleWSModel;
+import com.faas.core.data.ws.base.user.settings.dto.UserRoleWSDTO;
+import com.faas.core.data.repo.user.settings.UserRoleRepository;
+import com.faas.core.misc.config.AppConstant;
+import com.faas.core.misc.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

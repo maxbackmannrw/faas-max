@@ -1,10 +1,10 @@
 package com.faas.core.base.middleware.client.details.osint;
 
 import com.faas.core.base.framework.client.details.osint.ClientOSINTFramework;
-import com.faas.core.base.model.ws.client.details.osint.ClientOSINTWSModel;
-import com.faas.core.base.model.ws.client.details.osint.dto.ClientOSINTWSDTO;
-import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.utility.config.AppConstant;
+import com.faas.core.data.ws.base.client.details.osint.ClientOSINTWSModel;
+import com.faas.core.data.ws.base.client.details.osint.dto.ClientOSINTWSDTO;
+import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,13 +18,13 @@ public class ClientOSINTMiddleware {
     ClientOSINTFramework clientOSIntFramework;
 
 
-    public ClientOSINTWSModel getClientOSINTS(long userId,long clientId) {
+    public ClientOSINTWSModel getClientOSINTS(long userId, long clientId) {
 
         ClientOSINTWSModel response = new ClientOSINTWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ClientOSINTWSDTO> clientOSINTWSDTOS = clientOSIntFramework.getClientOSINTSService(userId,clientId);
-        if (clientOSINTWSDTOS != null){
+        List<ClientOSINTWSDTO> clientOSINTWSDTOS = clientOSIntFramework.getClientOSINTSService(userId, clientId);
+        if (clientOSINTWSDTOS != null) {
             response.setClientOSINTs(clientOSINTWSDTOS);
         }
 
@@ -36,9 +36,6 @@ public class ClientOSINTMiddleware {
 
         return response;
     }
-
-
-
 
 
 }

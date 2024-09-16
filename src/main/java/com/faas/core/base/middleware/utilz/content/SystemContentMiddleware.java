@@ -1,12 +1,12 @@
 package com.faas.core.base.middleware.utilz.content;
 
 import com.faas.core.base.framework.utilz.content.SystemContentFramework;
-import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.utilz.content.SystemContentWSModel;
-import com.faas.core.base.model.ws.utilz.content.SystemInitWSModel;
-import com.faas.core.base.model.ws.utilz.content.dto.SystemContentWSDTO;
-import com.faas.core.base.model.ws.utilz.content.dto.SystemInitWSDTO;
-import com.faas.core.utility.config.AppConstant;
+import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.data.ws.base.utilz.content.SystemContentWSModel;
+import com.faas.core.data.ws.base.utilz.content.SystemInitWSModel;
+import com.faas.core.data.ws.base.utilz.content.dto.SystemContentWSDTO;
+import com.faas.core.data.ws.base.utilz.content.dto.SystemInitWSDTO;
+import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -27,7 +27,7 @@ public class SystemContentMiddleware {
         GeneralWSModel general = new GeneralWSModel();
 
         SystemInitWSDTO systemInitWSDTO = systemContentFramework.initSystemContentService(initType);
-        if (systemInitWSDTO != null){
+        if (systemInitWSDTO != null) {
             response.setSystemInit(systemInitWSDTO);
         }
 
@@ -46,7 +46,7 @@ public class SystemContentMiddleware {
         GeneralWSModel general = new GeneralWSModel();
 
         List<SystemContentWSDTO> systemContentWSDTOS = systemContentFramework.getSystemContentsService(userId);
-        if (systemContentWSDTOS != null){
+        if (systemContentWSDTOS != null) {
             response.setSystemContents(systemContentWSDTOS);
         }
 
@@ -65,8 +65,8 @@ public class SystemContentMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<SystemContentWSDTO> systemContentWSDTOS = new ArrayList<>();
 
-        SystemContentWSDTO systemContentWSDTO = systemContentFramework.recoverSystemContentService(userId,contentType);
-        if (systemContentWSDTO != null){
+        SystemContentWSDTO systemContentWSDTO = systemContentFramework.recoverSystemContentService(userId, contentType);
+        if (systemContentWSDTO != null) {
             systemContentWSDTOS.add(systemContentWSDTO);
         }
 
@@ -86,8 +86,8 @@ public class SystemContentMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<SystemContentWSDTO> systemContentWSDTOS = new ArrayList<>();
 
-        SystemContentWSDTO systemContentWSDTO = systemContentFramework.removeSystemContentService(userId,contentType);
-        if (systemContentWSDTO != null){
+        SystemContentWSDTO systemContentWSDTO = systemContentFramework.removeSystemContentService(userId, contentType);
+        if (systemContentWSDTO != null) {
             systemContentWSDTOS.add(systemContentWSDTO);
         }
 

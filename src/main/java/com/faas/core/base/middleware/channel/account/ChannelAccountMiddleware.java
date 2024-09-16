@@ -1,13 +1,13 @@
 package com.faas.core.base.middleware.channel.account;
 
 import com.faas.core.base.framework.channel.account.ChannelAccountFramework;
-import com.faas.core.base.model.db.channel.account.*;
-import com.faas.core.base.model.ws.channel.account.*;
-import com.faas.core.base.model.ws.channel.account.dto.*;
-import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.repo.channel.account.*;
-import com.faas.core.utility.config.AppConstant;
-import com.faas.core.utility.config.AppUtils;
+import com.faas.core.data.db.channel.account.*;
+import com.faas.core.data.ws.base.channel.account.*;
+import com.faas.core.data.ws.base.channel.account.dto.*;
+import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.data.repo.channel.account.*;
+import com.faas.core.misc.config.AppConstant;
+import com.faas.core.misc.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -47,7 +47,7 @@ public class ChannelAccountMiddleware {
         GeneralWSModel general = new GeneralWSModel();
 
         ChannelAccountWSDTO channelAccountWSDTO = channelAccountFramework.getAllChannelAccountsService(userId);
-        if (channelAccountWSDTO != null){
+        if (channelAccountWSDTO != null) {
             response.setChannelAccounts(channelAccountWSDTO);
         }
 
@@ -82,14 +82,14 @@ public class ChannelAccountMiddleware {
         return response;
     }
 
-    public SipAccountWSModel getSipAccount(long userId,String accountId) {
+    public SipAccountWSModel getSipAccount(long userId, String accountId) {
 
         SipAccountWSModel response = new SipAccountWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<SipAccountWSDTO> sipAccountWSDTOS = new ArrayList<>();
 
         Optional<SipAccountDBModel> sipAccountDBModel = sipAccountRepository.findById(accountId);
-        if (sipAccountDBModel.isPresent()){
+        if (sipAccountDBModel.isPresent()) {
             sipAccountWSDTOS.add(channelAccountFramework.fillSipAccountWSDTO(sipAccountDBModel.get()));
         }
 
@@ -103,14 +103,14 @@ public class ChannelAccountMiddleware {
         return response;
     }
 
-    public SipAccountWSModel createSipAccount(long userId,String account,String userName,String authUser,String password,String sipUrl,String provider) {
+    public SipAccountWSModel createSipAccount(long userId, String account, String userName, String authUser, String password, String sipUrl, String provider) {
 
         SipAccountWSModel response = new SipAccountWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<SipAccountWSDTO> sipAccountWSDTOS = new ArrayList<>();
 
-        SipAccountDBModel sipAccountDBModel = channelAccountFramework.createSipAccountService(account,userName,authUser,password,sipUrl,provider);
-        if (sipAccountDBModel != null){
+        SipAccountDBModel sipAccountDBModel = channelAccountFramework.createSipAccountService(account, userName, authUser, password, sipUrl, provider);
+        if (sipAccountDBModel != null) {
             sipAccountWSDTOS.add(channelAccountFramework.fillSipAccountWSDTO(sipAccountDBModel));
         }
 
@@ -124,14 +124,14 @@ public class ChannelAccountMiddleware {
         return response;
     }
 
-    public SipAccountWSModel updateSipAccount(long userId,String accountId,String account,String userName,String authUser,String password,String sipUrl,String provider) {
+    public SipAccountWSModel updateSipAccount(long userId, String accountId, String account, String userName, String authUser, String password, String sipUrl, String provider) {
 
         SipAccountWSModel response = new SipAccountWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<SipAccountWSDTO> sipAccountWSDTOS = new ArrayList<>();
 
-        SipAccountDBModel sipAccountDBModel = channelAccountFramework.updateSipAccountService(accountId,account,userName,authUser,password,sipUrl,provider);
-        if (sipAccountDBModel != null){
+        SipAccountDBModel sipAccountDBModel = channelAccountFramework.updateSipAccountService(accountId, account, userName, authUser, password, sipUrl, provider);
+        if (sipAccountDBModel != null) {
             sipAccountWSDTOS.add(channelAccountFramework.fillSipAccountWSDTO(sipAccountDBModel));
         }
 
@@ -145,14 +145,14 @@ public class ChannelAccountMiddleware {
         return response;
     }
 
-    public SipAccountWSModel removeSipAccount(long userId,String accountId) {
+    public SipAccountWSModel removeSipAccount(long userId, String accountId) {
 
         SipAccountWSModel response = new SipAccountWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<SipAccountWSDTO> sipAccountWSDTOS = new ArrayList<>();
 
         SipAccountDBModel sipAccountDBModel = channelAccountFramework.removeSipAccountService(accountId);
-        if (sipAccountDBModel != null){
+        if (sipAccountDBModel != null) {
             sipAccountWSDTOS.add(channelAccountFramework.fillSipAccountWSDTO(sipAccountDBModel));
         }
 
@@ -174,7 +174,7 @@ public class ChannelAccountMiddleware {
         List<SmsAccountWSDTO> smsAccountWSDTOS = new ArrayList<>();
 
         List<SmsAccountDBModel> smsAccountDBModels = smsAccountRepository.findByStatus(1);
-        if (smsAccountDBModels.size()>0){
+        if (smsAccountDBModels.size() > 0) {
             for (SmsAccountDBModel smsAccountDBModel : smsAccountDBModels) {
                 smsAccountWSDTOS.add(channelAccountFramework.fillSmsAccountWSDTO(smsAccountDBModel));
             }
@@ -190,14 +190,14 @@ public class ChannelAccountMiddleware {
         return response;
     }
 
-    public SmsAccountWSModel getSmsAccount(long userId,String accountId) {
+    public SmsAccountWSModel getSmsAccount(long userId, String accountId) {
 
         SmsAccountWSModel response = new SmsAccountWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<SmsAccountWSDTO> smsAccountWSDTOS = new ArrayList<>();
 
         Optional<SmsAccountDBModel> smsAccountDBModel = smsAccountRepository.findById(accountId);
-        if (smsAccountDBModel.isPresent()){
+        if (smsAccountDBModel.isPresent()) {
             smsAccountWSDTOS.add(channelAccountFramework.fillSmsAccountWSDTO(smsAccountDBModel.get()));
         }
 
@@ -211,14 +211,14 @@ public class ChannelAccountMiddleware {
         return response;
     }
 
-    public SmsAccountWSModel createSmsAccount(long userId,String account,String userName,String password,String apiToken,String apiUrl,String provider) {
+    public SmsAccountWSModel createSmsAccount(long userId, String account, String userName, String password, String apiToken, String apiUrl, String provider) {
 
         SmsAccountWSModel response = new SmsAccountWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<SmsAccountWSDTO> smsAccountWSDTOS = new ArrayList<>();
 
-        SmsAccountDBModel smsAccountDBModel = channelAccountFramework.createSmsAccountService(account,userName,password,apiToken,apiUrl,provider);
-        if (smsAccountDBModel != null){
+        SmsAccountDBModel smsAccountDBModel = channelAccountFramework.createSmsAccountService(account, userName, password, apiToken, apiUrl, provider);
+        if (smsAccountDBModel != null) {
             smsAccountWSDTOS.add(channelAccountFramework.fillSmsAccountWSDTO(smsAccountDBModel));
         }
 
@@ -232,14 +232,14 @@ public class ChannelAccountMiddleware {
         return response;
     }
 
-    public SmsAccountWSModel updateSmsAccount(long userId,String accountId,String account,String userName,String password,String apiToken,String apiUrl,String provider) {
+    public SmsAccountWSModel updateSmsAccount(long userId, String accountId, String account, String userName, String password, String apiToken, String apiUrl, String provider) {
 
         SmsAccountWSModel response = new SmsAccountWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<SmsAccountWSDTO> smsAccountWSDTOS = new ArrayList<>();
 
-        SmsAccountDBModel smsAccountDBModel = channelAccountFramework.updateSmsAccountService(accountId,account,userName,password,apiToken,apiUrl,provider);
-        if (smsAccountDBModel != null){
+        SmsAccountDBModel smsAccountDBModel = channelAccountFramework.updateSmsAccountService(accountId, account, userName, password, apiToken, apiUrl, provider);
+        if (smsAccountDBModel != null) {
             smsAccountWSDTOS.add(channelAccountFramework.fillSmsAccountWSDTO(smsAccountDBModel));
         }
 
@@ -253,14 +253,14 @@ public class ChannelAccountMiddleware {
         return response;
     }
 
-    public SmsAccountWSModel removeSmsAccount(long userId,String accountId) {
+    public SmsAccountWSModel removeSmsAccount(long userId, String accountId) {
 
         SmsAccountWSModel response = new SmsAccountWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<SmsAccountWSDTO> smsAccountWSDTOS = new ArrayList<>();
 
         SmsAccountDBModel smsAccountDBModel = channelAccountFramework.removeSmsAccountService(accountId);
-        if (smsAccountDBModel != null){
+        if (smsAccountDBModel != null) {
             smsAccountWSDTOS.add(channelAccountFramework.fillSmsAccountWSDTO(smsAccountDBModel));
         }
 
@@ -303,7 +303,7 @@ public class ChannelAccountMiddleware {
         List<WappAccountWSDTO> wappAccountWSDTOS = new ArrayList<>();
 
         Optional<WappAccountDBModel> wappAccountDBModel = wappAccountRepository.findById(accountId);
-        if (wappAccountDBModel.isPresent()){
+        if (wappAccountDBModel.isPresent()) {
             wappAccountWSDTOS.add(channelAccountFramework.fillWappAccountWSDTO(wappAccountDBModel.get()));
         }
 
@@ -323,7 +323,7 @@ public class ChannelAccountMiddleware {
         GeneralWSModel general = new GeneralWSModel();
 
         WappQRCodeWSDTO wappQRCodeWSDTO = channelAccountFramework.getWappAccountQRCodeService(accountId);
-        if (wappQRCodeWSDTO != null){
+        if (wappQRCodeWSDTO != null) {
             response.setWappQRCode(wappQRCodeWSDTO);
         }
 
@@ -336,14 +336,14 @@ public class ChannelAccountMiddleware {
         return response;
     }
 
-    public WappAccountWSModel createWappAccount(long userId,String account, String phoneNumber, long serverId) throws IOException {
+    public WappAccountWSModel createWappAccount(long userId, String account, String phoneNumber, long serverId) throws IOException {
 
         WappAccountWSModel response = new WappAccountWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<WappAccountWSDTO> wappAccountWSDTOS = new ArrayList<>();
 
-        WappAccountDBModel wappAccountDBModel = channelAccountFramework.createWappAccountService(account,phoneNumber,serverId);
-        if (wappAccountDBModel != null){
+        WappAccountDBModel wappAccountDBModel = channelAccountFramework.createWappAccountService(account, phoneNumber, serverId);
+        if (wappAccountDBModel != null) {
             wappAccountWSDTOS.add(channelAccountFramework.fillWappAccountWSDTO(wappAccountDBModel));
         }
 
@@ -357,14 +357,14 @@ public class ChannelAccountMiddleware {
         return response;
     }
 
-    public WappAccountWSModel updateWappAccount(long userId,String accountId,String account,String instanceKey,String phoneNumber,long serverId) {
+    public WappAccountWSModel updateWappAccount(long userId, String accountId, String account, String instanceKey, String phoneNumber, long serverId) {
 
         WappAccountWSModel response = new WappAccountWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<WappAccountWSDTO> wappAccountWSDTOS = new ArrayList<>();
 
-        WappAccountDBModel wappAccountDBModel = channelAccountFramework.updateWappAccountService(accountId,account,instanceKey,phoneNumber,serverId);
-        if (wappAccountDBModel != null){
+        WappAccountDBModel wappAccountDBModel = channelAccountFramework.updateWappAccountService(accountId, account, instanceKey, phoneNumber, serverId);
+        if (wappAccountDBModel != null) {
             wappAccountWSDTOS.add(channelAccountFramework.fillWappAccountWSDTO(wappAccountDBModel));
         }
 
@@ -385,7 +385,7 @@ public class ChannelAccountMiddleware {
         List<WappAccountWSDTO> wappAccountWSDTOS = new ArrayList<>();
 
         WappAccountDBModel wappAccountDBModel = channelAccountFramework.removeWappAccountService(accountId);
-        if (wappAccountDBModel != null){
+        if (wappAccountDBModel != null) {
             wappAccountWSDTOS.add(channelAccountFramework.fillWappAccountWSDTO(wappAccountDBModel));
         }
 
@@ -406,8 +406,8 @@ public class ChannelAccountMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<EmailAccountWSDTO> emailAccountWSDTOS = new ArrayList<>();
 
-        List<EmailAccountDBModel>emailAccountDBModels = emailAccountRepository.findByStatus(1);
-        if (!emailAccountDBModels.isEmpty()){
+        List<EmailAccountDBModel> emailAccountDBModels = emailAccountRepository.findByStatus(1);
+        if (!emailAccountDBModels.isEmpty()) {
             for (EmailAccountDBModel emailAccountDBModel : emailAccountDBModels) {
                 emailAccountWSDTOS.add(channelAccountFramework.fillEmailAccountWSDTO(emailAccountDBModel));
             }
@@ -423,14 +423,14 @@ public class ChannelAccountMiddleware {
         return response;
     }
 
-    public EmailAccountWSModel getEmailAccount(long userId,String accountId) {
+    public EmailAccountWSModel getEmailAccount(long userId, String accountId) {
 
         EmailAccountWSModel response = new EmailAccountWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<EmailAccountWSDTO> emailAccountWSDTOS = new ArrayList<>();
 
         Optional<EmailAccountDBModel> emailAccountDBModel = emailAccountRepository.findById(accountId);
-        if (emailAccountDBModel.isPresent()){
+        if (emailAccountDBModel.isPresent()) {
             emailAccountWSDTOS.add(channelAccountFramework.fillEmailAccountWSDTO(emailAccountDBModel.get()));
         }
 
@@ -444,14 +444,14 @@ public class ChannelAccountMiddleware {
         return response;
     }
 
-    public EmailAccountWSModel createEmailAccount(long userId,String account,String provider) {
+    public EmailAccountWSModel createEmailAccount(long userId, String account, String provider) {
 
         EmailAccountWSModel response = new EmailAccountWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<EmailAccountWSDTO> emailAccountWSDTOS = new ArrayList<>();
 
-        EmailAccountDBModel emailAccountDBModel = channelAccountFramework.createEmailAccountService(account,provider);
-        if (emailAccountDBModel != null){
+        EmailAccountDBModel emailAccountDBModel = channelAccountFramework.createEmailAccountService(account, provider);
+        if (emailAccountDBModel != null) {
             emailAccountWSDTOS.add(channelAccountFramework.fillEmailAccountWSDTO(emailAccountDBModel));
         }
 
@@ -465,14 +465,14 @@ public class ChannelAccountMiddleware {
         return response;
     }
 
-    public EmailAccountWSModel updateEmailAccount(long userId,String accountId,String account,String provider) {
+    public EmailAccountWSModel updateEmailAccount(long userId, String accountId, String account, String provider) {
 
         EmailAccountWSModel response = new EmailAccountWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<EmailAccountWSDTO> emailAccountWSDTOS = new ArrayList<>();
 
-        EmailAccountDBModel emailAccountDBModel = channelAccountFramework.updateEmailAccountService(accountId,account,provider);
-        if (emailAccountDBModel != null){
+        EmailAccountDBModel emailAccountDBModel = channelAccountFramework.updateEmailAccountService(accountId, account, provider);
+        if (emailAccountDBModel != null) {
             emailAccountWSDTOS.add(channelAccountFramework.fillEmailAccountWSDTO(emailAccountDBModel));
         }
 
@@ -486,14 +486,14 @@ public class ChannelAccountMiddleware {
         return response;
     }
 
-    public EmailAccountWSModel removeEmailAccount(long userId,String accountId) {
+    public EmailAccountWSModel removeEmailAccount(long userId, String accountId) {
 
         EmailAccountWSModel response = new EmailAccountWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<EmailAccountWSDTO> emailAccountWSDTOS = new ArrayList<>();
 
         EmailAccountDBModel emailAccountDBModel = channelAccountFramework.removeEmailAccountService(accountId);
-        if (emailAccountDBModel != null){
+        if (emailAccountDBModel != null) {
             emailAccountWSDTOS.add(channelAccountFramework.fillEmailAccountWSDTO(emailAccountDBModel));
         }
 
@@ -536,7 +536,7 @@ public class ChannelAccountMiddleware {
         List<PushAccountWSDTO> pushAccountWSDTOS = new ArrayList<>();
 
         Optional<PushAccountDBModel> pushAccountDBModel = pushAccountRepository.findById(accountId);
-        if (pushAccountDBModel.isPresent()){
+        if (pushAccountDBModel.isPresent()) {
             pushAccountWSDTOS.add(channelAccountFramework.fillPushAccountWSDTO(pushAccountDBModel.get()));
         }
 
@@ -550,14 +550,14 @@ public class ChannelAccountMiddleware {
         return response;
     }
 
-    public PushAccountWSModel createPushAccount(long userId,String account, String provider) {
+    public PushAccountWSModel createPushAccount(long userId, String account, String provider) {
 
         PushAccountWSModel response = new PushAccountWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<PushAccountWSDTO> pushAccountWSDTOS = new ArrayList<>();
 
-        PushAccountDBModel pushAccountDBModel = channelAccountFramework.createPushAccountService(account,provider);
-        if (pushAccountDBModel != null){
+        PushAccountDBModel pushAccountDBModel = channelAccountFramework.createPushAccountService(account, provider);
+        if (pushAccountDBModel != null) {
             pushAccountWSDTOS.add(channelAccountFramework.fillPushAccountWSDTO(pushAccountDBModel));
         }
 
@@ -571,14 +571,14 @@ public class ChannelAccountMiddleware {
         return response;
     }
 
-    public PushAccountWSModel updatePushAccount(long userId,String accountId, String account, String provider) {
+    public PushAccountWSModel updatePushAccount(long userId, String accountId, String account, String provider) {
 
         PushAccountWSModel response = new PushAccountWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<PushAccountWSDTO> pushAccountWSDTOS = new ArrayList<>();
 
-        PushAccountDBModel pushAccountDBModel = channelAccountFramework.updatePushAccountService(accountId,account,provider);
-        if (pushAccountDBModel != null){
+        PushAccountDBModel pushAccountDBModel = channelAccountFramework.updatePushAccountService(accountId, account, provider);
+        if (pushAccountDBModel != null) {
             pushAccountWSDTOS.add(channelAccountFramework.fillPushAccountWSDTO(pushAccountDBModel));
         }
 
@@ -599,7 +599,7 @@ public class ChannelAccountMiddleware {
         List<PushAccountWSDTO> pushAccountWSDTOS = new ArrayList<>();
 
         PushAccountDBModel pushAccountDBModel = channelAccountFramework.removePushAccountService(accountId);
-        if (pushAccountDBModel != null){
+        if (pushAccountDBModel != null) {
             pushAccountWSDTOS.add(channelAccountFramework.fillPushAccountWSDTO(pushAccountDBModel));
         }
 

@@ -1,10 +1,10 @@
 package com.faas.core.api.middleware.operation.details.osint;
 
 import com.faas.core.api.framework.operation.details.osint.ApiOperationOSINTFramework;
-import com.faas.core.api.model.ws.operation.details.osint.ApiOperationOSINTWSModel;
-import com.faas.core.api.model.ws.operation.details.osint.dto.ApiOperationOSINTWSDTO;
-import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.utility.config.AppConstant;
+import com.faas.core.data.ws.api.operation.details.osint.ApiOperationOSINTWSModel;
+import com.faas.core.data.ws.api.operation.details.osint.dto.ApiOperationOSINTWSDTO;
+import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -24,8 +24,8 @@ public class ApiOperationOSINTMiddleware {
         ApiOperationOSINTWSModel response = new ApiOperationOSINTWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ApiOperationOSINTWSDTO> operationOSINTWSDTOS = apiOperationOSINTFramework.apiGetOperationClientOSINTsService(agentId,clientId);
-        if (operationOSINTWSDTOS != null){
+        List<ApiOperationOSINTWSDTO> operationOSINTWSDTOS = apiOperationOSINTFramework.apiGetOperationClientOSINTsService(agentId, clientId);
+        if (operationOSINTWSDTOS != null) {
             response.setOperationOSINTs(operationOSINTWSDTOS);
         }
 
@@ -44,8 +44,8 @@ public class ApiOperationOSINTMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ApiOperationOSINTWSDTO> operationOSINTWSDTOS = new ArrayList<>();
 
-        ApiOperationOSINTWSDTO operationOSINTWSDTO = apiOperationOSINTFramework.apiGetOperationClientOSINTService(agentId,clientId);
-        if (operationOSINTWSDTO != null){
+        ApiOperationOSINTWSDTO operationOSINTWSDTO = apiOperationOSINTFramework.apiGetOperationClientOSINTService(agentId, clientId);
+        if (operationOSINTWSDTO != null) {
             operationOSINTWSDTOS.add(operationOSINTWSDTO);
         }
 
@@ -58,7 +58,6 @@ public class ApiOperationOSINTMiddleware {
 
         return response;
     }
-
 
 
 }

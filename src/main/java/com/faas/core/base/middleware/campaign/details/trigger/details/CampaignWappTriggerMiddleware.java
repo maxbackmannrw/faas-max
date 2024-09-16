@@ -1,12 +1,12 @@
 package com.faas.core.base.middleware.campaign.details.trigger.details;
 
 import com.faas.core.base.framework.campaign.details.trigger.details.CampaignWappTriggerFramework;
-import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.campaign.details.trigger.details.CampaignWappCallTriggerWSModel;
-import com.faas.core.base.model.ws.campaign.details.trigger.details.CampaignWappMessageTriggerWSModel;
-import com.faas.core.base.model.ws.campaign.details.trigger.details.dto.CampaignWappCallTriggerWSDTO;
-import com.faas.core.base.model.ws.campaign.details.trigger.details.dto.CampaignWappMessageTriggerWSDTO;
-import com.faas.core.utility.config.AppConstant;
+import com.faas.core.data.ws.base.campaign.details.trigger.details.CampaignWappCallTriggerWSModel;
+import com.faas.core.data.ws.base.campaign.details.trigger.details.CampaignWappMessageTriggerWSModel;
+import com.faas.core.data.ws.base.campaign.details.trigger.details.dto.CampaignWappCallTriggerWSDTO;
+import com.faas.core.data.ws.base.campaign.details.trigger.details.dto.CampaignWappMessageTriggerWSDTO;
+import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -27,8 +27,8 @@ public class CampaignWappTriggerMiddleware {
         CampaignWappMessageTriggerWSModel response = new CampaignWappMessageTriggerWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<CampaignWappMessageTriggerWSDTO> campaignWappMessageTriggerWSDTOS = campaignWappTriggerFramework.getCampaignWappMessageTriggersService(userId,campaignId);
-        if (campaignWappMessageTriggerWSDTOS != null){
+        List<CampaignWappMessageTriggerWSDTO> campaignWappMessageTriggerWSDTOS = campaignWappTriggerFramework.getCampaignWappMessageTriggersService(userId, campaignId);
+        if (campaignWappMessageTriggerWSDTOS != null) {
             response.setCampaignWappMessageTriggers(campaignWappMessageTriggerWSDTOS);
         }
 
@@ -47,8 +47,8 @@ public class CampaignWappTriggerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignWappMessageTriggerWSDTO> campaignWappMessageTriggerWSDTOS = new ArrayList<>();
 
-        CampaignWappMessageTriggerWSDTO campaignWappMessageTriggerWSDTO = campaignWappTriggerFramework.getCampaignWappMessageTriggerService(userId,triggerId);
-        if (campaignWappMessageTriggerWSDTO != null){
+        CampaignWappMessageTriggerWSDTO campaignWappMessageTriggerWSDTO = campaignWappTriggerFramework.getCampaignWappMessageTriggerService(userId, triggerId);
+        if (campaignWappMessageTriggerWSDTO != null) {
             campaignWappMessageTriggerWSDTOS.add(campaignWappMessageTriggerWSDTO);
         }
 
@@ -68,8 +68,8 @@ public class CampaignWappTriggerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignWappMessageTriggerWSDTO> campaignWappMessageTriggerWSDTOS = new ArrayList<>();
 
-        CampaignWappMessageTriggerWSDTO campaignWappMessageTriggerWSDTO = campaignWappTriggerFramework.createCampaignWappMessageTriggerService(userId,campaignId,trigger,accountId,wappTitle,wappBody,typeId);
-        if (campaignWappMessageTriggerWSDTO != null){
+        CampaignWappMessageTriggerWSDTO campaignWappMessageTriggerWSDTO = campaignWappTriggerFramework.createCampaignWappMessageTriggerService(userId, campaignId, trigger, accountId, wappTitle, wappBody, typeId);
+        if (campaignWappMessageTriggerWSDTO != null) {
             campaignWappMessageTriggerWSDTOS.add(campaignWappMessageTriggerWSDTO);
         }
 
@@ -89,8 +89,8 @@ public class CampaignWappTriggerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignWappMessageTriggerWSDTO> campaignWappMessageTriggerWSDTOS = new ArrayList<>();
 
-        CampaignWappMessageTriggerWSDTO campaignWappMessageTriggerWSDTO = campaignWappTriggerFramework.updateCampaignWappMessageTriggerService(userId,triggerId,trigger,accountId,wappTitle,wappBody);
-        if (campaignWappMessageTriggerWSDTO != null){
+        CampaignWappMessageTriggerWSDTO campaignWappMessageTriggerWSDTO = campaignWappTriggerFramework.updateCampaignWappMessageTriggerService(userId, triggerId, trigger, accountId, wappTitle, wappBody);
+        if (campaignWappMessageTriggerWSDTO != null) {
             campaignWappMessageTriggerWSDTOS.add(campaignWappMessageTriggerWSDTO);
         }
 
@@ -110,8 +110,8 @@ public class CampaignWappTriggerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignWappMessageTriggerWSDTO> campaignWappMessageTriggerWSDTOS = new ArrayList<>();
 
-        CampaignWappMessageTriggerWSDTO campaignWappMessageTriggerWSDTO = campaignWappTriggerFramework.removeCampaignWappMessageTriggerService(userId,triggerId);
-        if (campaignWappMessageTriggerWSDTO != null){
+        CampaignWappMessageTriggerWSDTO campaignWappMessageTriggerWSDTO = campaignWappTriggerFramework.removeCampaignWappMessageTriggerService(userId, triggerId);
+        if (campaignWappMessageTriggerWSDTO != null) {
             campaignWappMessageTriggerWSDTOS.add(campaignWappMessageTriggerWSDTO);
         }
 
@@ -131,8 +131,8 @@ public class CampaignWappTriggerMiddleware {
         CampaignWappCallTriggerWSModel response = new CampaignWappCallTriggerWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<CampaignWappCallTriggerWSDTO> campaignWappCallTriggerWSDTOS = campaignWappTriggerFramework.getCampaignWappCallTriggersService(userId,campaignId);
-        if (campaignWappCallTriggerWSDTOS != null){
+        List<CampaignWappCallTriggerWSDTO> campaignWappCallTriggerWSDTOS = campaignWappTriggerFramework.getCampaignWappCallTriggersService(userId, campaignId);
+        if (campaignWappCallTriggerWSDTOS != null) {
             response.setCampaignWappCallTriggers(campaignWappCallTriggerWSDTOS);
         }
 
@@ -151,8 +151,8 @@ public class CampaignWappTriggerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignWappCallTriggerWSDTO> campaignWappCallTriggerWSDTOS = new ArrayList<>();
 
-        CampaignWappCallTriggerWSDTO campaignWappCallTriggerWSDTO = campaignWappTriggerFramework.getCampaignWappCallTriggerService(userId,triggerId);
-        if (campaignWappCallTriggerWSDTO != null){
+        CampaignWappCallTriggerWSDTO campaignWappCallTriggerWSDTO = campaignWappTriggerFramework.getCampaignWappCallTriggerService(userId, triggerId);
+        if (campaignWappCallTriggerWSDTO != null) {
             campaignWappCallTriggerWSDTOS.add(campaignWappCallTriggerWSDTO);
         }
 
@@ -172,8 +172,8 @@ public class CampaignWappTriggerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignWappCallTriggerWSDTO> campaignWappCallTriggerWSDTOS = new ArrayList<>();
 
-        CampaignWappCallTriggerWSDTO campaignWappCallTriggerWSDTO = campaignWappTriggerFramework.createCampaignWappCallTriggerService(userId,campaignId,trigger,accountId,typeId);
-        if (campaignWappCallTriggerWSDTO != null){
+        CampaignWappCallTriggerWSDTO campaignWappCallTriggerWSDTO = campaignWappTriggerFramework.createCampaignWappCallTriggerService(userId, campaignId, trigger, accountId, typeId);
+        if (campaignWappCallTriggerWSDTO != null) {
             campaignWappCallTriggerWSDTOS.add(campaignWappCallTriggerWSDTO);
         }
 
@@ -193,8 +193,8 @@ public class CampaignWappTriggerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignWappCallTriggerWSDTO> campaignWappCallTriggerWSDTOS = new ArrayList<>();
 
-        CampaignWappCallTriggerWSDTO campaignWappCallTriggerWSDTO = campaignWappTriggerFramework.updateCampaignWappCallTriggerService(userId,triggerId,trigger,accountId);
-        if (campaignWappCallTriggerWSDTO != null){
+        CampaignWappCallTriggerWSDTO campaignWappCallTriggerWSDTO = campaignWappTriggerFramework.updateCampaignWappCallTriggerService(userId, triggerId, trigger, accountId);
+        if (campaignWappCallTriggerWSDTO != null) {
             campaignWappCallTriggerWSDTOS.add(campaignWappCallTriggerWSDTO);
         }
 
@@ -214,8 +214,8 @@ public class CampaignWappTriggerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignWappCallTriggerWSDTO> campaignWappCallTriggerWSDTOS = new ArrayList<>();
 
-        CampaignWappCallTriggerWSDTO campaignWappCallTriggerWSDTO = campaignWappTriggerFramework.removeCampaignWappCallTriggerService(userId,triggerId);
-        if (campaignWappCallTriggerWSDTO != null){
+        CampaignWappCallTriggerWSDTO campaignWappCallTriggerWSDTO = campaignWappTriggerFramework.removeCampaignWappCallTriggerService(userId, triggerId);
+        if (campaignWappCallTriggerWSDTO != null) {
             campaignWappCallTriggerWSDTOS.add(campaignWappCallTriggerWSDTO);
         }
 
@@ -228,7 +228,6 @@ public class CampaignWappTriggerMiddleware {
 
         return response;
     }
-
 
 
 }

@@ -1,13 +1,13 @@
 package com.faas.core.base.middleware.asset.settings;
 
 import com.faas.core.base.framework.asset.settings.AssetSettingsFramework;
-import com.faas.core.base.model.db.asset.settings.AssetTypeDBModel;
-import com.faas.core.base.model.ws.asset.settings.AssetTypeWSModel;
-import com.faas.core.base.model.ws.asset.settings.dto.AssetTypeWSDTO;
-import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.repo.asset.settings.AssetTypeRepository;
-import com.faas.core.utility.config.AppConstant;
-import com.faas.core.utility.config.AppUtils;
+import com.faas.core.data.db.asset.settings.AssetTypeDBModel;
+import com.faas.core.data.ws.base.asset.settings.AssetTypeWSModel;
+import com.faas.core.data.ws.base.asset.settings.dto.AssetTypeWSDTO;
+import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.data.repo.asset.settings.AssetTypeRepository;
+import com.faas.core.misc.config.AppConstant;
+import com.faas.core.misc.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -57,7 +57,7 @@ public class AssetSettingsMiddleware {
         List<AssetTypeWSDTO> assetTypeWSDTOS = new ArrayList<>();
 
         Optional<AssetTypeDBModel> assetTypeDBModel = assetTypeRepository.findById(typeId);
-        if (assetTypeDBModel.isPresent()){
+        if (assetTypeDBModel.isPresent()) {
             assetTypeWSDTOS.add(assetSettingsFramework.fillAssetTypeWSDTO(assetTypeDBModel.get()));
         }
 
@@ -72,13 +72,13 @@ public class AssetSettingsMiddleware {
     }
 
 
-    public AssetTypeWSModel createAssetType(long userId,String assetType,String description,String uploadUrl,String baseUrl,String baseType) {
+    public AssetTypeWSModel createAssetType(long userId, String assetType, String description, String uploadUrl, String baseUrl, String baseType) {
 
         AssetTypeWSModel response = new AssetTypeWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<AssetTypeWSDTO> assetTypeWSDTOS = new ArrayList<>();
 
-        AssetTypeDBModel assetTypeDBModel = assetSettingsFramework.createAssetTypeService(assetType,description,uploadUrl,baseUrl,baseType);
+        AssetTypeDBModel assetTypeDBModel = assetSettingsFramework.createAssetTypeService(assetType, description, uploadUrl, baseUrl, baseType);
         if (assetTypeDBModel != null) {
             assetTypeWSDTOS.add(assetSettingsFramework.fillAssetTypeWSDTO(assetTypeDBModel));
         }
@@ -94,13 +94,13 @@ public class AssetSettingsMiddleware {
     }
 
 
-    public AssetTypeWSModel updateAssetType(long userId,long typeId,String assetType,String description,String uploadUrl,String baseUrl,String baseType) {
+    public AssetTypeWSModel updateAssetType(long userId, long typeId, String assetType, String description, String uploadUrl, String baseUrl, String baseType) {
 
         AssetTypeWSModel response = new AssetTypeWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<AssetTypeWSDTO> assetTypeWSDTOS = new ArrayList<>();
 
-        AssetTypeDBModel assetTypeDBModel = assetSettingsFramework.updateAssetTypeService(typeId,assetType,description,uploadUrl,baseUrl,baseType);
+        AssetTypeDBModel assetTypeDBModel = assetSettingsFramework.updateAssetTypeService(typeId, assetType, description, uploadUrl, baseUrl, baseType);
         if (assetTypeDBModel != null) {
             assetTypeWSDTOS.add(assetSettingsFramework.fillAssetTypeWSDTO(assetTypeDBModel));
         }

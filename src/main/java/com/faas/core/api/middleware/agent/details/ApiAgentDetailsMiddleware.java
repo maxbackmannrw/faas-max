@@ -1,14 +1,14 @@
 package com.faas.core.api.middleware.agent.details;
 
 import com.faas.core.api.framework.agent.details.ApiAgentDetailsFramework;
-import com.faas.core.api.model.ws.agent.details.ApiAgentDetailsWSModel;
-import com.faas.core.api.model.ws.agent.details.ApiAgentInfoWSModel;
-import com.faas.core.api.model.ws.agent.details.ApiAgentSipAccountWSModel;
-import com.faas.core.api.model.ws.agent.details.dto.ApiAgentDetailsWSDTO;
-import com.faas.core.api.model.ws.agent.details.dto.ApiAgentInfoWSDTO;
-import com.faas.core.api.model.ws.agent.details.dto.ApiAgentSipAccountWSDTO;
-import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.utility.config.AppConstant;
+import com.faas.core.data.ws.api.agent.details.ApiAgentDetailsWSModel;
+import com.faas.core.data.ws.api.agent.details.ApiAgentInfoWSModel;
+import com.faas.core.data.ws.api.agent.details.ApiAgentSipAccountWSModel;
+import com.faas.core.data.ws.api.agent.details.dto.ApiAgentDetailsWSDTO;
+import com.faas.core.data.ws.api.agent.details.dto.ApiAgentInfoWSDTO;
+import com.faas.core.data.ws.api.agent.details.dto.ApiAgentSipAccountWSDTO;
+import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -48,8 +48,8 @@ public class ApiAgentDetailsMiddleware {
         ApiAgentSipAccountWSModel response = new ApiAgentSipAccountWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiAgentSipAccountWSDTO agentSipAccountWSDTO = apiAgentDetailsFramework.apiGetAgentSipAccountService(agentId,processId);
-        if (agentSipAccountWSDTO != null){
+        ApiAgentSipAccountWSDTO agentSipAccountWSDTO = apiAgentDetailsFramework.apiGetAgentSipAccountService(agentId, processId);
+        if (agentSipAccountWSDTO != null) {
             response.setAgentSipAccount(agentSipAccountWSDTO);
         }
 
@@ -63,12 +63,11 @@ public class ApiAgentDetailsMiddleware {
     }
 
 
-
     public ApiAgentInfoWSModel apiGetAgentInfo(long agentId) {
 
         ApiAgentInfoWSModel response = new ApiAgentInfoWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ApiAgentInfoWSDTO>apiAgentInfoWSDTOS = new ArrayList<>();
+        List<ApiAgentInfoWSDTO> apiAgentInfoWSDTOS = new ArrayList<>();
 
         ApiAgentInfoWSDTO agentInfoWSDTO = apiAgentDetailsFramework.apiGetAgentInfoService(agentId);
         if (agentInfoWSDTO != null) {
@@ -84,7 +83,6 @@ public class ApiAgentDetailsMiddleware {
 
         return response;
     }
-
 
 
 }

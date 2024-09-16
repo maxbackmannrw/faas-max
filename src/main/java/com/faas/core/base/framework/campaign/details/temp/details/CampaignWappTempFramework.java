@@ -1,12 +1,12 @@
 package com.faas.core.base.framework.campaign.details.temp.details;
 
-import com.faas.core.base.model.db.channel.settings.MessageTypeDBModel;
-import com.faas.core.base.model.db.campaign.details.temp.WappMessageTempDBModel;
-import com.faas.core.base.model.ws.campaign.details.temp.details.dto.CampaignWappMessageTempWSDTO;
-import com.faas.core.base.repo.channel.settings.MessageTypeRepository;
-import com.faas.core.base.repo.campaign.details.temp.WappMessageTempRepository;
-import com.faas.core.utility.config.AppUtils;
-import com.faas.core.utility.helpers.campaign.CampaignHelpers;
+import com.faas.core.data.db.campaign.details.temp.WappMessageTempDBModel;
+import com.faas.core.data.db.channel.settings.MessageTypeDBModel;
+import com.faas.core.data.ws.base.campaign.details.temp.details.dto.CampaignWappMessageTempWSDTO;
+import com.faas.core.data.repo.campaign.details.temp.WappMessageTempRepository;
+import com.faas.core.data.repo.channel.settings.MessageTypeRepository;
+import com.faas.core.misc.config.AppUtils;
+import com.faas.core.misc.helpers.campaign.CampaignHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,7 +45,7 @@ public class CampaignWappTempFramework {
     public CampaignWappMessageTempWSDTO getCampaignWappMessageTempService(long userId, String tempId) {
 
         Optional<WappMessageTempDBModel> wappMessageTempDBModel = wappMessageTempRepository.findById(tempId);
-        if (wappMessageTempDBModel.isPresent()){
+        if (wappMessageTempDBModel.isPresent()) {
             return new CampaignWappMessageTempWSDTO(wappMessageTempDBModel.get());
         }
         return null;
@@ -101,7 +101,6 @@ public class CampaignWappTempFramework {
         }
         return null;
     }
-
 
 
 }

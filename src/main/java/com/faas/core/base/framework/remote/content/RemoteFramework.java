@@ -1,14 +1,14 @@
 package com.faas.core.base.framework.remote.content;
 
-import com.faas.core.base.model.db.remote.content.RemoteDBModel;
-import com.faas.core.base.model.db.remote.settings.RemoteTypeDBModel;
-import com.faas.core.base.model.ws.remote.content.dto.RemoteWSDTO;
-import com.faas.core.base.repo.remote.content.RemoteRepository;
-import com.faas.core.base.repo.remote.settings.RemoteTypeRepository;
-import com.faas.core.base.repo.remote.details.RemoteUrlRepository;
-import com.faas.core.utility.config.AppConstant;
-import com.faas.core.utility.config.AppUtils;
-import com.faas.core.utility.helpers.remote.RemoteHelpers;
+import com.faas.core.data.db.remote.content.RemoteDBModel;
+import com.faas.core.data.db.remote.settings.RemoteTypeDBModel;
+import com.faas.core.data.ws.base.remote.content.dto.RemoteWSDTO;
+import com.faas.core.data.repo.remote.content.RemoteRepository;
+import com.faas.core.data.repo.remote.details.RemoteUrlRepository;
+import com.faas.core.data.repo.remote.settings.RemoteTypeRepository;
+import com.faas.core.misc.config.AppConstant;
+import com.faas.core.misc.config.AppUtils;
+import com.faas.core.misc.helpers.remote.RemoteHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,7 +38,7 @@ public class RemoteFramework {
 
     public List<RemoteWSDTO> getAllRemotesService(long userId) {
 
-        List<RemoteWSDTO>remoteWSDTOS = new ArrayList<>();
+        List<RemoteWSDTO> remoteWSDTOS = new ArrayList<>();
         List<RemoteDBModel> remoteDBModels = remoteRepository.findByStatus(1);
         for (RemoteDBModel remoteDBModel : remoteDBModels) {
             remoteWSDTOS.add(remoteHelpers.mapRemoteWSDTOHelper(remoteDBModel));
@@ -48,7 +48,7 @@ public class RemoteFramework {
 
     public List<RemoteWSDTO> getRemotesByBaseTypeService(long userId, String baseType) {
 
-        List<RemoteWSDTO>remoteWSDTOS = new ArrayList<>();
+        List<RemoteWSDTO> remoteWSDTOS = new ArrayList<>();
         List<RemoteDBModel> remoteDBModels = remoteRepository.findByBaseType(baseType);
         for (RemoteDBModel remoteDBModel : remoteDBModels) {
             remoteWSDTOS.add(remoteHelpers.mapRemoteWSDTOHelper(remoteDBModel));
@@ -58,7 +58,7 @@ public class RemoteFramework {
 
     public List<RemoteWSDTO> getRemotesByTypeService(long userId, String remoteType) {
 
-        List<RemoteWSDTO>remoteWSDTOS = new ArrayList<>();
+        List<RemoteWSDTO> remoteWSDTOS = new ArrayList<>();
         List<RemoteDBModel> remoteDBModels = remoteRepository.findByRemoteType(remoteType);
         for (RemoteDBModel remoteDBModel : remoteDBModels) {
             remoteWSDTOS.add(remoteHelpers.mapRemoteWSDTOHelper(remoteDBModel));
@@ -69,7 +69,7 @@ public class RemoteFramework {
     public RemoteWSDTO getRemoteService(long userId, String remoteId) {
 
         Optional<RemoteDBModel> remoteDBModel = remoteRepository.findById(remoteId);
-        if (remoteDBModel.isPresent()){
+        if (remoteDBModel.isPresent()) {
             return remoteHelpers.mapRemoteWSDTOHelper(remoteDBModel.get());
         }
         return null;
@@ -93,17 +93,17 @@ public class RemoteFramework {
             remoteDBModel.setStatus(1);
 
             remoteDBModel = remoteRepository.save(remoteDBModel);
-            if (baseUrl != null){
-                remoteUrlRepository.save(remoteHelpers.createRemoteUrlHelper(remoteDBModel.getId(),baseUrl, AppConstant.BASE_URL));
+            if (baseUrl != null) {
+                remoteUrlRepository.save(remoteHelpers.createRemoteUrlHelper(remoteDBModel.getId(), baseUrl, AppConstant.BASE_URL));
             }
             return remoteHelpers.mapRemoteWSDTOHelper(remoteDBModel);
         }
         return null;
     }
 
-    public RemoteWSDTO updateRemoteService(long userId, String remoteId, String remote, String remoteDesc,String version) {
+    public RemoteWSDTO updateRemoteService(long userId, String remoteId, String remote, String remoteDesc, String version) {
 
-        Optional<RemoteDBModel>remoteDBModel = remoteRepository.findById(remoteId);
+        Optional<RemoteDBModel> remoteDBModel = remoteRepository.findById(remoteId);
         if (remoteDBModel.isPresent()) {
 
             remoteDBModel.get().setRemote(remote);
@@ -116,9 +116,9 @@ public class RemoteFramework {
         return null;
     }
 
-    public RemoteWSDTO removeRemoteService(long userId,String remoteId) {
+    public RemoteWSDTO removeRemoteService(long userId, String remoteId) {
 
-        Optional<RemoteDBModel>remoteDBModel = remoteRepository.findById(remoteId);
+        Optional<RemoteDBModel> remoteDBModel = remoteRepository.findById(remoteId);
         if (remoteDBModel.isPresent()) {
             remoteRepository.delete(remoteDBModel.get());
             return remoteHelpers.mapRemoteWSDTOHelper(remoteDBModel.get());

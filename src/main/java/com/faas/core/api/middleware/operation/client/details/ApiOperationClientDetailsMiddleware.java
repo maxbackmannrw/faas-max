@@ -1,12 +1,12 @@
 package com.faas.core.api.middleware.operation.client.details;
 
 import com.faas.core.api.framework.operation.client.details.ApiOperationClientDetailsFramework;
-import com.faas.core.api.model.ws.operation.client.details.ApiOperationClientDetailsWSModel;
-import com.faas.core.api.model.ws.operation.client.details.ApiOperationClientNoteWSModel;
-import com.faas.core.api.model.ws.operation.client.details.ApiOperationClientOSINTWSModel;
-import com.faas.core.api.model.ws.operation.client.details.ApiOperationClientRemoteWSModel;
-import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.utility.config.AppConstant;
+import com.faas.core.data.ws.api.operation.client.details.ApiOperationClientDetailsWSModel;
+import com.faas.core.data.ws.api.operation.client.details.ApiOperationClientNoteWSModel;
+import com.faas.core.data.ws.api.operation.client.details.ApiOperationClientOSINTWSModel;
+import com.faas.core.data.ws.api.operation.client.details.ApiOperationClientRemoteWSModel;
+import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -139,7 +139,6 @@ public class ApiOperationClientDetailsMiddleware {
 
         return response;
     }
-
 
 
     public ApiOperationClientOSINTWSModel apiGetClientOSINTs(long agentId, long clientId) {

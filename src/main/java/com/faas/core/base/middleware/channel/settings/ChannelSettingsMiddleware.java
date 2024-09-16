@@ -1,23 +1,23 @@
 package com.faas.core.base.middleware.channel.settings;
 
 import com.faas.core.base.framework.channel.settings.ChannelSettingsFramework;
-import com.faas.core.base.model.db.channel.settings.EmailTypeDBModel;
-import com.faas.core.base.model.db.channel.settings.MessageTypeDBModel;
-import com.faas.core.base.model.db.channel.settings.PushTypeDBModel;
-import com.faas.core.base.model.ws.channel.settings.WappServerWSModel;
-import com.faas.core.base.model.ws.channel.settings.dto.WappServerWSDTO;
-import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.channel.settings.EmailTypeWSModel;
-import com.faas.core.base.model.ws.channel.settings.MessageTypeWSModel;
-import com.faas.core.base.model.ws.channel.settings.PushTypeWSModel;
-import com.faas.core.base.model.ws.channel.settings.dto.EmailTypeWSDTO;
-import com.faas.core.base.model.ws.channel.settings.dto.MessageTypeWSDTO;
-import com.faas.core.base.model.ws.channel.settings.dto.PushTypeWSDTO;
-import com.faas.core.base.repo.channel.settings.EmailTypeRepository;
-import com.faas.core.base.repo.channel.settings.MessageTypeRepository;
-import com.faas.core.base.repo.channel.settings.PushTypeRepository;
-import com.faas.core.utility.config.AppConstant;
-import com.faas.core.utility.config.AppUtils;
+import com.faas.core.data.db.channel.settings.EmailTypeDBModel;
+import com.faas.core.data.db.channel.settings.MessageTypeDBModel;
+import com.faas.core.data.db.channel.settings.PushTypeDBModel;
+import com.faas.core.data.ws.base.channel.settings.EmailTypeWSModel;
+import com.faas.core.data.ws.base.channel.settings.MessageTypeWSModel;
+import com.faas.core.data.ws.base.channel.settings.PushTypeWSModel;
+import com.faas.core.data.ws.base.channel.settings.WappServerWSModel;
+import com.faas.core.data.ws.base.channel.settings.dto.EmailTypeWSDTO;
+import com.faas.core.data.ws.base.channel.settings.dto.MessageTypeWSDTO;
+import com.faas.core.data.ws.base.channel.settings.dto.PushTypeWSDTO;
+import com.faas.core.data.ws.base.channel.settings.dto.WappServerWSDTO;
+import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.data.repo.channel.settings.EmailTypeRepository;
+import com.faas.core.data.repo.channel.settings.MessageTypeRepository;
+import com.faas.core.data.repo.channel.settings.PushTypeRepository;
+import com.faas.core.misc.config.AppConstant;
+import com.faas.core.misc.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -67,14 +67,14 @@ public class ChannelSettingsMiddleware {
         return response;
     }
 
-    public EmailTypeWSModel getEmailType(long userId,long typeId) {
+    public EmailTypeWSModel getEmailType(long userId, long typeId) {
 
         EmailTypeWSModel response = new EmailTypeWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<EmailTypeWSDTO> emailTypeWSDTOS = new ArrayList<>();
 
         Optional<EmailTypeDBModel> emailTypeDBModel = emailTypeRepository.findById(typeId);
-        if (emailTypeDBModel.isPresent()){
+        if (emailTypeDBModel.isPresent()) {
             emailTypeWSDTOS.add(channelSettingsFramework.fillEmailTypeWSDTO(emailTypeDBModel.get()));
         }
 
@@ -88,14 +88,14 @@ public class ChannelSettingsMiddleware {
         return response;
     }
 
-    public EmailTypeWSModel createEmailType(long userId,String emailType) {
+    public EmailTypeWSModel createEmailType(long userId, String emailType) {
 
         EmailTypeWSModel response = new EmailTypeWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<EmailTypeWSDTO> emailTypeWSDTOS = new ArrayList<>();
 
         EmailTypeDBModel emailTypeDBModel = channelSettingsFramework.createEmailTypeService(emailType);
-        if (emailTypeDBModel != null){
+        if (emailTypeDBModel != null) {
             emailTypeWSDTOS.add(channelSettingsFramework.fillEmailTypeWSDTO(emailTypeDBModel));
         }
 
@@ -109,14 +109,14 @@ public class ChannelSettingsMiddleware {
         return response;
     }
 
-    public EmailTypeWSModel updateEmailType(long userId,long typeId,String emailType) {
+    public EmailTypeWSModel updateEmailType(long userId, long typeId, String emailType) {
 
         EmailTypeWSModel response = new EmailTypeWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<EmailTypeWSDTO> emailTypeWSDTOS = new ArrayList<>();
 
-        EmailTypeDBModel emailTypeDBModel = channelSettingsFramework.updateEmailTypeService(typeId,emailType);
-        if (emailTypeDBModel != null){
+        EmailTypeDBModel emailTypeDBModel = channelSettingsFramework.updateEmailTypeService(typeId, emailType);
+        if (emailTypeDBModel != null) {
             emailTypeWSDTOS.add(channelSettingsFramework.fillEmailTypeWSDTO(emailTypeDBModel));
         }
 
@@ -137,7 +137,7 @@ public class ChannelSettingsMiddleware {
         List<EmailTypeWSDTO> emailTypeWSDTOS = new ArrayList<>();
 
         EmailTypeDBModel emailTypeDBModel = channelSettingsFramework.removeEmailTypeService(typeId);
-        if (emailTypeDBModel != null){
+        if (emailTypeDBModel != null) {
             emailTypeWSDTOS.add(channelSettingsFramework.fillEmailTypeWSDTO(emailTypeDBModel));
         }
 
@@ -159,7 +159,7 @@ public class ChannelSettingsMiddleware {
         List<PushTypeWSDTO> pushTypeWSDTOS = new ArrayList<>();
 
         List<PushTypeDBModel> pushTypeDBModels = pushTypeRepository.findByStatus(1);
-        if (pushTypeDBModels != null){
+        if (pushTypeDBModels != null) {
             for (PushTypeDBModel pushTypeDBModel : pushTypeDBModels) {
                 pushTypeWSDTOS.add(channelSettingsFramework.fillPushTypeWSDTO(pushTypeDBModel));
             }
@@ -182,7 +182,7 @@ public class ChannelSettingsMiddleware {
         List<PushTypeWSDTO> pushTypeWSDTOS = new ArrayList<>();
 
         List<PushTypeDBModel> pushTypeDBModels = pushTypeRepository.findByMainType(mainType);
-        if (pushTypeDBModels != null){
+        if (pushTypeDBModels != null) {
             for (PushTypeDBModel pushTypeDBModel : pushTypeDBModels) {
                 pushTypeWSDTOS.add(channelSettingsFramework.fillPushTypeWSDTO(pushTypeDBModel));
             }
@@ -205,7 +205,7 @@ public class ChannelSettingsMiddleware {
         List<PushTypeWSDTO> pushTypeWSDTOS = new ArrayList<>();
 
         Optional<PushTypeDBModel> pushTypeDBModel = pushTypeRepository.findById(typeId);
-        if (pushTypeDBModel.isPresent()){
+        if (pushTypeDBModel.isPresent()) {
             pushTypeWSDTOS.add(channelSettingsFramework.fillPushTypeWSDTO(pushTypeDBModel.get()));
         }
 
@@ -225,8 +225,8 @@ public class ChannelSettingsMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<PushTypeWSDTO> pushTypeWSDTOS = new ArrayList<>();
 
-        PushTypeDBModel pushTypeDBModel = channelSettingsFramework.createPushTypeService(pushType,mainType);
-        if (pushTypeDBModel != null){
+        PushTypeDBModel pushTypeDBModel = channelSettingsFramework.createPushTypeService(pushType, mainType);
+        if (pushTypeDBModel != null) {
             pushTypeWSDTOS.add(channelSettingsFramework.fillPushTypeWSDTO(pushTypeDBModel));
         }
 
@@ -240,14 +240,14 @@ public class ChannelSettingsMiddleware {
         return response;
     }
 
-    public PushTypeWSModel updatePushType(long userId,long typeId, String pushType, String mainType) {
+    public PushTypeWSModel updatePushType(long userId, long typeId, String pushType, String mainType) {
 
         PushTypeWSModel response = new PushTypeWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<PushTypeWSDTO> pushTypeWSDTOS = new ArrayList<>();
 
-        PushTypeDBModel pushTypeDBModel = channelSettingsFramework.updatePushTypeService(typeId,pushType,mainType);
-        if (pushTypeDBModel != null){
+        PushTypeDBModel pushTypeDBModel = channelSettingsFramework.updatePushTypeService(typeId, pushType, mainType);
+        if (pushTypeDBModel != null) {
             pushTypeWSDTOS.add(channelSettingsFramework.fillPushTypeWSDTO(pushTypeDBModel));
         }
 
@@ -268,7 +268,7 @@ public class ChannelSettingsMiddleware {
         List<PushTypeWSDTO> pushTypeWSDTOS = new ArrayList<>();
 
         PushTypeDBModel pushTypeDBModel = channelSettingsFramework.removePushTypeService(typeId);
-        if (pushTypeDBModel != null){
+        if (pushTypeDBModel != null) {
             pushTypeWSDTOS.add(channelSettingsFramework.fillPushTypeWSDTO(pushTypeDBModel));
         }
 
@@ -332,7 +332,7 @@ public class ChannelSettingsMiddleware {
         List<MessageTypeWSDTO> messageTypeWSDTOS = new ArrayList<>();
 
         Optional<MessageTypeDBModel> messageTypeDBModel = messageTypeRepository.findById(typeId);
-        if (messageTypeDBModel.isPresent()){
+        if (messageTypeDBModel.isPresent()) {
             messageTypeWSDTOS.add(channelSettingsFramework.fillMessageTypeWSDTO(messageTypeDBModel.get()));
         }
 
@@ -346,14 +346,14 @@ public class ChannelSettingsMiddleware {
         return response;
     }
 
-    public MessageTypeWSModel createMessageType(long userId,String messageType,String mainType) {
+    public MessageTypeWSModel createMessageType(long userId, String messageType, String mainType) {
 
         MessageTypeWSModel response = new MessageTypeWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<MessageTypeWSDTO> messageTypeWSDTOS = new ArrayList<>();
 
-        MessageTypeDBModel messageTypeDBModel = channelSettingsFramework.createMessageTypeService(messageType,mainType);
-        if (messageTypeDBModel != null){
+        MessageTypeDBModel messageTypeDBModel = channelSettingsFramework.createMessageTypeService(messageType, mainType);
+        if (messageTypeDBModel != null) {
             messageTypeWSDTOS.add(channelSettingsFramework.fillMessageTypeWSDTO(messageTypeDBModel));
         }
 
@@ -367,14 +367,14 @@ public class ChannelSettingsMiddleware {
         return response;
     }
 
-    public MessageTypeWSModel updateMessageType(long userId,long typeId, String messageType, String mainType) {
+    public MessageTypeWSModel updateMessageType(long userId, long typeId, String messageType, String mainType) {
 
         MessageTypeWSModel response = new MessageTypeWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<MessageTypeWSDTO> messageTypeWSDTOS = new ArrayList<>();
 
-        MessageTypeDBModel messageTypeDBModel = channelSettingsFramework.updateMessageTypeService(typeId,messageType,mainType);
-        if (messageTypeDBModel != null){
+        MessageTypeDBModel messageTypeDBModel = channelSettingsFramework.updateMessageTypeService(typeId, messageType, mainType);
+        if (messageTypeDBModel != null) {
             messageTypeWSDTOS.add(channelSettingsFramework.fillMessageTypeWSDTO(messageTypeDBModel));
         }
 
@@ -395,7 +395,7 @@ public class ChannelSettingsMiddleware {
         List<MessageTypeWSDTO> messageTypeWSDTOS = new ArrayList<>();
 
         MessageTypeDBModel messageTypeDBModel = channelSettingsFramework.removeMessageTypeService(typeId);
-        if (messageTypeDBModel != null){
+        if (messageTypeDBModel != null) {
             messageTypeWSDTOS.add(channelSettingsFramework.fillMessageTypeWSDTO(messageTypeDBModel));
         }
 
@@ -410,14 +410,13 @@ public class ChannelSettingsMiddleware {
     }
 
 
-
     public WappServerWSModel getWappServers(long userId) {
 
         WappServerWSModel response = new WappServerWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<WappServerWSDTO>wappServerWSDTOS = channelSettingsFramework.getWappServersService(userId);
-        if (wappServerWSDTOS != null){
+        List<WappServerWSDTO> wappServerWSDTOS = channelSettingsFramework.getWappServersService(userId);
+        if (wappServerWSDTOS != null) {
             response.setWappServers(wappServerWSDTOS);
         }
 
@@ -430,14 +429,14 @@ public class ChannelSettingsMiddleware {
         return response;
     }
 
-    public WappServerWSModel getWappServer(long userId,long serverId) {
+    public WappServerWSModel getWappServer(long userId, long serverId) {
 
         WappServerWSModel response = new WappServerWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<WappServerWSDTO>wappServerWSDTOS = new ArrayList<>();
+        List<WappServerWSDTO> wappServerWSDTOS = new ArrayList<>();
 
-        WappServerWSDTO wappServerWSDTO = channelSettingsFramework.getWappServerService(userId,serverId);
-        if (wappServerWSDTO != null){
+        WappServerWSDTO wappServerWSDTO = channelSettingsFramework.getWappServerService(userId, serverId);
+        if (wappServerWSDTO != null) {
             wappServerWSDTOS.add(wappServerWSDTO);
         }
 
@@ -451,14 +450,14 @@ public class ChannelSettingsMiddleware {
         return response;
     }
 
-    public WappServerWSModel createWappServer(long userId,String serverName,String serverUrl,String serverType) {
+    public WappServerWSModel createWappServer(long userId, String serverName, String serverUrl, String serverType) {
 
         WappServerWSModel response = new WappServerWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<WappServerWSDTO>wappServerWSDTOS = new ArrayList<>();
+        List<WappServerWSDTO> wappServerWSDTOS = new ArrayList<>();
 
-        WappServerWSDTO wappServerWSDTO = channelSettingsFramework.createWappServerService(userId,serverName,serverUrl,serverType);
-        if (wappServerWSDTO != null){
+        WappServerWSDTO wappServerWSDTO = channelSettingsFramework.createWappServerService(userId, serverName, serverUrl, serverType);
+        if (wappServerWSDTO != null) {
             wappServerWSDTOS.add(wappServerWSDTO);
         }
 
@@ -472,14 +471,14 @@ public class ChannelSettingsMiddleware {
         return response;
     }
 
-    public WappServerWSModel updateWappServer(long userId,long serverId,String serverName,String serverUrl,String serverType) {
+    public WappServerWSModel updateWappServer(long userId, long serverId, String serverName, String serverUrl, String serverType) {
 
         WappServerWSModel response = new WappServerWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<WappServerWSDTO>wappServerWSDTOS = new ArrayList<>();
+        List<WappServerWSDTO> wappServerWSDTOS = new ArrayList<>();
 
-        WappServerWSDTO wappServerWSDTO = channelSettingsFramework.updateWappServerService(userId,serverId,serverName,serverUrl,serverType);
-        if (wappServerWSDTO != null){
+        WappServerWSDTO wappServerWSDTO = channelSettingsFramework.updateWappServerService(userId, serverId, serverName, serverUrl, serverType);
+        if (wappServerWSDTO != null) {
             wappServerWSDTOS.add(wappServerWSDTO);
         }
 
@@ -493,14 +492,14 @@ public class ChannelSettingsMiddleware {
         return response;
     }
 
-    public WappServerWSModel removeWappServer(long userId,long serverId) {
+    public WappServerWSModel removeWappServer(long userId, long serverId) {
 
         WappServerWSModel response = new WappServerWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<WappServerWSDTO>wappServerWSDTOS = new ArrayList<>();
+        List<WappServerWSDTO> wappServerWSDTOS = new ArrayList<>();
 
-        WappServerWSDTO wappServerWSDTO = channelSettingsFramework.removeWappServerService(userId,serverId);
-        if (wappServerWSDTO != null){
+        WappServerWSDTO wappServerWSDTO = channelSettingsFramework.removeWappServerService(userId, serverId);
+        if (wappServerWSDTO != null) {
             wappServerWSDTOS.add(wappServerWSDTO);
         }
 
@@ -513,8 +512,6 @@ public class ChannelSettingsMiddleware {
 
         return response;
     }
-
-
 
 
 }

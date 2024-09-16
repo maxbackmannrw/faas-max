@@ -1,12 +1,12 @@
 package com.faas.core.base.middleware.campaign.details.flow;
 
 import com.faas.core.base.framework.campaign.details.flow.CampaignFlowFramework;
-import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.campaign.details.content.CampaignDataWSModel;
-import com.faas.core.base.model.ws.campaign.details.content.dto.CampaignDataWSDTO;
-import com.faas.core.base.model.ws.campaign.details.flow.CampaignFlowWSModel;
-import com.faas.core.base.model.ws.campaign.details.flow.dto.CampaignFlowWSDTO;
-import com.faas.core.utility.config.AppConstant;
+import com.faas.core.data.ws.base.campaign.details.content.CampaignDataWSModel;
+import com.faas.core.data.ws.base.campaign.details.content.dto.CampaignDataWSDTO;
+import com.faas.core.data.ws.base.campaign.details.flow.CampaignFlowWSModel;
+import com.faas.core.data.ws.base.campaign.details.flow.dto.CampaignFlowWSDTO;
+import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -27,8 +27,8 @@ public class CampaignFlowMiddleware {
         CampaignFlowWSModel response = new CampaignFlowWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        CampaignFlowWSDTO campaignFlowWSDTO = campaignFlowFramework.getCampaignFlowService(userId,campaignId);
-        if (campaignFlowWSDTO != null){
+        CampaignFlowWSDTO campaignFlowWSDTO = campaignFlowFramework.getCampaignFlowService(userId, campaignId);
+        if (campaignFlowWSDTO != null) {
             response.setCampaignFlow(campaignFlowWSDTO);
         }
 
@@ -46,8 +46,8 @@ public class CampaignFlowMiddleware {
         CampaignFlowWSModel response = new CampaignFlowWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        CampaignFlowWSDTO campaignFlowWSDTO = campaignFlowFramework.updateCampaignFlowService(userId,campaignId,campaignFlow);
-        if (campaignFlowWSDTO != null){
+        CampaignFlowWSDTO campaignFlowWSDTO = campaignFlowFramework.updateCampaignFlowService(userId, campaignId, campaignFlow);
+        if (campaignFlowWSDTO != null) {
             response.setCampaignFlow(campaignFlowWSDTO);
         }
 
@@ -66,8 +66,8 @@ public class CampaignFlowMiddleware {
         CampaignDataWSModel response = new CampaignDataWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<CampaignDataWSDTO> campaignDataWSDTOS = campaignFlowFramework.getCampaignFlowDatasService(userId,campaignId);
-        if (campaignDataWSDTOS != null){
+        List<CampaignDataWSDTO> campaignDataWSDTOS = campaignFlowFramework.getCampaignFlowDatasService(userId, campaignId);
+        if (campaignDataWSDTOS != null) {
             response.setCampaignDatas(campaignDataWSDTOS);
         }
 
@@ -86,8 +86,8 @@ public class CampaignFlowMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignDataWSDTO> campaignDataWSDTOS = new ArrayList<>();
 
-        CampaignDataWSDTO campaignDataWSDTO = campaignFlowFramework.getCampaignFlowDataService(userId,campaignId,dataId);
-        if (campaignDataWSDTO != null){
+        CampaignDataWSDTO campaignDataWSDTO = campaignFlowFramework.getCampaignFlowDataService(userId, campaignId, dataId);
+        if (campaignDataWSDTO != null) {
             campaignDataWSDTOS.add(campaignDataWSDTO);
         }
 
@@ -107,8 +107,8 @@ public class CampaignFlowMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignDataWSDTO> campaignDataWSDTOS = new ArrayList<>();
 
-        CampaignDataWSDTO campaignDataWSDTO = campaignFlowFramework.createCampaignFlowDataService(userId,campaignId,typeId,value);
-        if (campaignDataWSDTO != null){
+        CampaignDataWSDTO campaignDataWSDTO = campaignFlowFramework.createCampaignFlowDataService(userId, campaignId, typeId, value);
+        if (campaignDataWSDTO != null) {
             campaignDataWSDTOS.add(campaignDataWSDTO);
         }
 
@@ -128,8 +128,8 @@ public class CampaignFlowMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignDataWSDTO> campaignDataWSDTOS = new ArrayList<>();
 
-        CampaignDataWSDTO campaignDataWSDTO = campaignFlowFramework.updateCampaignFlowDataService(userId,campaignId,dataId,typeId,value);
-        if (campaignDataWSDTO != null){
+        CampaignDataWSDTO campaignDataWSDTO = campaignFlowFramework.updateCampaignFlowDataService(userId, campaignId, dataId, typeId, value);
+        if (campaignDataWSDTO != null) {
             campaignDataWSDTOS.add(campaignDataWSDTO);
         }
 
@@ -149,8 +149,8 @@ public class CampaignFlowMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignDataWSDTO> campaignDataWSDTOS = new ArrayList<>();
 
-        CampaignDataWSDTO campaignDataWSDTO = campaignFlowFramework.removeCampaignFlowDataService(userId,campaignId,dataId);
-        if (campaignDataWSDTO != null){
+        CampaignDataWSDTO campaignDataWSDTO = campaignFlowFramework.removeCampaignFlowDataService(userId, campaignId, dataId);
+        if (campaignDataWSDTO != null) {
             campaignDataWSDTOS.add(campaignDataWSDTO);
         }
 

@@ -1,13 +1,13 @@
 package com.faas.core.base.framework.campaign.details.trigger.details;
 
-import com.faas.core.base.model.db.channel.account.EmailAccountDBModel;
-import com.faas.core.base.model.db.campaign.details.trigger.*;
-import com.faas.core.base.model.db.campaign.settings.TriggerTypeDBModel;
-import com.faas.core.base.model.ws.campaign.details.trigger.details.dto.CampaignEmailTriggerWSDTO;
-import com.faas.core.base.repo.channel.account.EmailAccountRepository;
-import com.faas.core.base.repo.campaign.details.trigger.*;
-import com.faas.core.base.repo.campaign.settings.TriggerTypeRepository;
-import com.faas.core.utility.config.AppUtils;
+import com.faas.core.data.db.campaign.details.trigger.EmailTriggerDBModel;
+import com.faas.core.data.db.campaign.settings.TriggerTypeDBModel;
+import com.faas.core.data.db.channel.account.EmailAccountDBModel;
+import com.faas.core.data.ws.base.campaign.details.trigger.details.dto.CampaignEmailTriggerWSDTO;
+import com.faas.core.data.repo.campaign.details.trigger.EmailTriggerRepository;
+import com.faas.core.data.repo.campaign.settings.TriggerTypeRepository;
+import com.faas.core.data.repo.channel.account.EmailAccountRepository;
+import com.faas.core.misc.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,7 +45,7 @@ public class CampaignEmailTriggerFramework {
     public CampaignEmailTriggerWSDTO getCampaignEmailTriggerService(long userId, String triggerId) {
 
         Optional<EmailTriggerDBModel> emailTriggerDBModel = emailTriggerRepository.findById(triggerId);
-        if (emailTriggerDBModel.isPresent()){
+        if (emailTriggerDBModel.isPresent()) {
             return new CampaignEmailTriggerWSDTO(emailTriggerDBModel.get());
         }
         return null;
@@ -55,7 +55,7 @@ public class CampaignEmailTriggerFramework {
 
         Optional<TriggerTypeDBModel> triggerTypeDBModel = triggerTypeRepository.findById(typeId);
         Optional<EmailAccountDBModel> emailAccountDBModel = emailAccountRepository.findById(accountId);
-        if (triggerTypeDBModel.isPresent() && emailAccountDBModel.isPresent()){
+        if (triggerTypeDBModel.isPresent() && emailAccountDBModel.isPresent()) {
 
             EmailTriggerDBModel emailTriggerDBModel = new EmailTriggerDBModel();
             emailTriggerDBModel.setCampaignId(campaignId);
@@ -82,7 +82,7 @@ public class CampaignEmailTriggerFramework {
 
         Optional<EmailTriggerDBModel> emailTriggerDBModel = emailTriggerRepository.findById(triggerId);
         Optional<EmailAccountDBModel> emailAccountDBModel = emailAccountRepository.findById(accountId);
-        if (emailTriggerDBModel.isPresent() && emailAccountDBModel.isPresent()){
+        if (emailTriggerDBModel.isPresent() && emailAccountDBModel.isPresent()) {
 
             emailTriggerDBModel.get().setTrigger(trigger);
             emailTriggerDBModel.get().setAccountId(accountId);
@@ -102,13 +102,12 @@ public class CampaignEmailTriggerFramework {
     public CampaignEmailTriggerWSDTO removeCampaignEmailTriggerService(long userId, String triggerId) {
 
         Optional<EmailTriggerDBModel> emailTriggerDBModel = emailTriggerRepository.findById(triggerId);
-        if (emailTriggerDBModel.isPresent()){
+        if (emailTriggerDBModel.isPresent()) {
             emailTriggerRepository.delete(emailTriggerDBModel.get());
             return new CampaignEmailTriggerWSDTO(emailTriggerDBModel.get());
         }
         return null;
     }
-
 
 
 }

@@ -1,13 +1,13 @@
 package com.faas.core.base.middleware.asset.content;
 
 import com.faas.core.base.framework.asset.content.AssetFramework;
-import com.faas.core.base.model.db.asset.content.AssetDBModel;
-import com.faas.core.base.model.ws.asset.content.AssetWSModel;
-import com.faas.core.base.model.ws.asset.content.dto.AssetWSDTO;
-import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.repo.asset.content.AssetRepository;
-import com.faas.core.utility.config.AppConstant;
-import com.faas.core.utility.config.AppUtils;
+import com.faas.core.data.db.asset.content.AssetDBModel;
+import com.faas.core.data.ws.base.asset.content.AssetWSModel;
+import com.faas.core.data.ws.base.asset.content.dto.AssetWSDTO;
+import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.data.repo.asset.content.AssetRepository;
+import com.faas.core.misc.config.AppConstant;
+import com.faas.core.misc.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -1,18 +1,18 @@
 package com.faas.core.base.framework.campaign.details.content;
 
-import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
-import com.faas.core.base.model.db.campaign.content.dao.CampaignDataDAO;
-import com.faas.core.base.model.db.campaign.content.dao.CampaignScriptDAO;
-import com.faas.core.base.model.db.utilz.DataTypeDBModel;
-import com.faas.core.base.model.ws.campaign.details.content.dto.CampaignDataWSDTO;
-import com.faas.core.base.model.ws.campaign.details.content.dto.CampaignDetailsWSDTO;
-import com.faas.core.base.model.ws.campaign.details.content.dto.CampaignScriptWSDTO;
-import com.faas.core.base.repo.campaign.content.CampaignRepository;
-import com.faas.core.base.repo.remote.content.RemoteRepository;
-import com.faas.core.base.repo.utilz.DataTypeRepository;
-import com.faas.core.utility.config.AppUtils;
-import com.faas.core.utility.helpers.campaign.CampaignHelpers;
-import com.faas.core.utility.helpers.remote.RemoteHelpers;
+import com.faas.core.data.db.campaign.content.CampaignDBModel;
+import com.faas.core.data.db.campaign.content.dao.CampaignDataDAO;
+import com.faas.core.data.db.campaign.content.dao.CampaignScriptDAO;
+import com.faas.core.data.db.utilz.DataTypeDBModel;
+import com.faas.core.data.ws.base.campaign.details.content.dto.CampaignDataWSDTO;
+import com.faas.core.data.ws.base.campaign.details.content.dto.CampaignDetailsWSDTO;
+import com.faas.core.data.ws.base.campaign.details.content.dto.CampaignScriptWSDTO;
+import com.faas.core.data.repo.campaign.content.CampaignRepository;
+import com.faas.core.data.repo.remote.content.RemoteRepository;
+import com.faas.core.data.repo.utilz.DataTypeRepository;
+import com.faas.core.misc.config.AppUtils;
+import com.faas.core.misc.helpers.campaign.CampaignHelpers;
+import com.faas.core.misc.helpers.remote.RemoteHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,7 +45,7 @@ public class CampaignDetailsFramework {
     public CampaignDetailsWSDTO getCampaignDetailsService(long userId, String campaignId) {
 
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
-        if (campaignDBModel.isPresent()){
+        if (campaignDBModel.isPresent()) {
             return campaignHelpers.getCampaignDetailsWSDTO(campaignDBModel.get());
         }
         return null;
@@ -57,7 +57,7 @@ public class CampaignDetailsFramework {
         List<CampaignDataWSDTO> campaignDataWSDTOS = new ArrayList<>();
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
         if (campaignDBModel.isPresent() && campaignDBModel.get().getCampaignDatas() != null) {
-            for (int i=0;i<campaignDBModel.get().getCampaignDatas().size();i++){
+            for (int i = 0; i < campaignDBModel.get().getCampaignDatas().size(); i++) {
                 campaignDataWSDTOS.add(new CampaignDataWSDTO(campaignDBModel.get().getCampaignDatas().get(i)));
             }
         }
@@ -68,8 +68,8 @@ public class CampaignDetailsFramework {
 
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
         if (campaignDBModel.isPresent() && campaignDBModel.get().getCampaignDatas() != null) {
-            for (int i=0;i<campaignDBModel.get().getCampaignDatas().size();i++){
-                if (campaignDBModel.get().getCampaignDatas().get(i).getDataId().equalsIgnoreCase(dataId)){
+            for (int i = 0; i < campaignDBModel.get().getCampaignDatas().size(); i++) {
+                if (campaignDBModel.get().getCampaignDatas().get(i).getDataId().equalsIgnoreCase(dataId)) {
                     return new CampaignDataWSDTO(campaignDBModel.get().getCampaignDatas().get(i));
                 }
             }
@@ -94,7 +94,7 @@ public class CampaignDetailsFramework {
                 List<CampaignDataDAO> campaignDataDAOS = new ArrayList<>();
                 campaignDataDAOS.add(campaignDataDAO);
                 campaignDBModel.get().setCampaignDatas(campaignDataDAOS);
-            }else {
+            } else {
                 campaignDBModel.get().getCampaignDatas().add(campaignDataDAO);
             }
             campaignDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
@@ -110,8 +110,8 @@ public class CampaignDetailsFramework {
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
         Optional<DataTypeDBModel> dataTypeDBModel = dataTypeRepository.findById(typeId);
         if (campaignDBModel.isPresent() && campaignDBModel.get().getCampaignDatas() != null && dataTypeDBModel.isPresent()) {
-            for (int i=0;i<campaignDBModel.get().getCampaignDatas().size();i++){
-                if (campaignDBModel.get().getCampaignDatas().get(i).getDataId().equalsIgnoreCase(dataId)){
+            for (int i = 0; i < campaignDBModel.get().getCampaignDatas().size(); i++) {
+                if (campaignDBModel.get().getCampaignDatas().get(i).getDataId().equalsIgnoreCase(dataId)) {
 
                     campaignDBModel.get().getCampaignDatas().get(i).setDataType(dataTypeDBModel.get().getDataType());
                     campaignDBModel.get().getCampaignDatas().get(i).setValue(value);
@@ -131,8 +131,8 @@ public class CampaignDetailsFramework {
 
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
         if (campaignDBModel.isPresent() && campaignDBModel.get().getCampaignDatas() != null) {
-            for (int i=0;i<campaignDBModel.get().getCampaignDatas().size();i++){
-                if (campaignDBModel.get().getCampaignDatas().get(i).getDataId().equalsIgnoreCase(dataId)){
+            for (int i = 0; i < campaignDBModel.get().getCampaignDatas().size(); i++) {
+                if (campaignDBModel.get().getCampaignDatas().get(i).getDataId().equalsIgnoreCase(dataId)) {
 
                     CampaignDataDAO campaignDataDAO = campaignDBModel.get().getCampaignDatas().get(i);
                     campaignDBModel.get().getCampaignDatas().remove(campaignDBModel.get().getCampaignDatas().get(i));
@@ -152,7 +152,7 @@ public class CampaignDetailsFramework {
         List<CampaignScriptWSDTO> campaignScriptWSDTOS = new ArrayList<>();
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
         if (campaignDBModel.isPresent() && campaignDBModel.get().getCampaignScripts() != null) {
-            for (int i=0;i<campaignDBModel.get().getCampaignScripts().size();i++){
+            for (int i = 0; i < campaignDBModel.get().getCampaignScripts().size(); i++) {
                 campaignScriptWSDTOS.add(new CampaignScriptWSDTO(campaignDBModel.get().getCampaignScripts().get(i)));
             }
         }
@@ -163,8 +163,8 @@ public class CampaignDetailsFramework {
 
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
         if (campaignDBModel.isPresent() && campaignDBModel.get().getCampaignScripts() != null) {
-            for (int i=0;i<campaignDBModel.get().getCampaignScripts().size();i++){
-                if (campaignDBModel.get().getCampaignScripts().get(i).getScriptId().equalsIgnoreCase(scriptId)){
+            for (int i = 0; i < campaignDBModel.get().getCampaignScripts().size(); i++) {
+                if (campaignDBModel.get().getCampaignScripts().get(i).getScriptId().equalsIgnoreCase(scriptId)) {
                     return new CampaignScriptWSDTO(campaignDBModel.get().getCampaignScripts().get(i));
                 }
             }
@@ -185,9 +185,9 @@ public class CampaignDetailsFramework {
             campaignScriptDAO.setcDate(appUtils.getCurrentTimeStamp());
             campaignScriptDAO.setStatus(1);
 
-            if (campaignDBModel.get().getCampaignScripts() != null){
+            if (campaignDBModel.get().getCampaignScripts() != null) {
                 campaignDBModel.get().getCampaignScripts().add(campaignScriptDAO);
-            }else {
+            } else {
                 List<CampaignScriptDAO> campaignScriptDAOS = new ArrayList<>();
                 campaignScriptDAOS.add(campaignScriptDAO);
                 campaignDBModel.get().setCampaignScripts(campaignScriptDAOS);
@@ -204,8 +204,8 @@ public class CampaignDetailsFramework {
 
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
         if (campaignDBModel.isPresent() && campaignDBModel.get().getCampaignScripts() != null) {
-            for (int i=0;i<campaignDBModel.get().getCampaignScripts().size();i++){
-                if (campaignDBModel.get().getCampaignScripts().get(i).getScriptId().equalsIgnoreCase(scriptId)){
+            for (int i = 0; i < campaignDBModel.get().getCampaignScripts().size(); i++) {
+                if (campaignDBModel.get().getCampaignScripts().get(i).getScriptId().equalsIgnoreCase(scriptId)) {
 
                     campaignDBModel.get().getCampaignScripts().get(i).setScriptTitle(scriptTitle);
                     campaignDBModel.get().getCampaignScripts().get(i).setScriptBody(scriptBody);
@@ -226,8 +226,8 @@ public class CampaignDetailsFramework {
 
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
         if (campaignDBModel.isPresent() && campaignDBModel.get().getCampaignScripts() != null) {
-            for (int i=0;i<campaignDBModel.get().getCampaignScripts().size();i++){
-                if (campaignDBModel.get().getCampaignScripts().get(i).getScriptId().equalsIgnoreCase(scriptId)){
+            for (int i = 0; i < campaignDBModel.get().getCampaignScripts().size(); i++) {
+                if (campaignDBModel.get().getCampaignScripts().get(i).getScriptId().equalsIgnoreCase(scriptId)) {
 
                     CampaignScriptDAO campaignScriptDAO = campaignDBModel.get().getCampaignScripts().get(i);
                     campaignDBModel.get().getCampaignScripts().remove(campaignDBModel.get().getCampaignScripts().get(i));

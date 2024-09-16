@@ -1,17 +1,17 @@
 package com.faas.core.base.framework.campaign.details.scenario;
 
-import com.faas.core.base.model.db.campaign.content.CampaignDBModel;
-import com.faas.core.base.model.db.campaign.details.scenario.CampaignScenarioDBModel;
-import com.faas.core.base.model.db.scenario.content.ScenarioDBModel;
-import com.faas.core.base.model.db.scenario.content.dao.ScenarioDataDAO;
-import com.faas.core.base.model.db.utilz.DataTypeDBModel;
-import com.faas.core.base.model.ws.campaign.details.scenario.dto.ProcessScenarioDataWSDTO;
-import com.faas.core.base.model.ws.campaign.details.scenario.dto.CampaignScenarioWSDTO;
-import com.faas.core.base.repo.campaign.content.CampaignRepository;
-import com.faas.core.base.repo.campaign.details.scenario.CampaignScenarioRepository;
-import com.faas.core.base.repo.scenario.content.ScenarioRepository;
-import com.faas.core.base.repo.utilz.DataTypeRepository;
-import com.faas.core.utility.config.AppUtils;
+import com.faas.core.data.db.campaign.content.CampaignDBModel;
+import com.faas.core.data.db.campaign.details.scenario.CampaignScenarioDBModel;
+import com.faas.core.data.db.scenario.content.ScenarioDBModel;
+import com.faas.core.data.db.scenario.content.dao.ScenarioDataDAO;
+import com.faas.core.data.db.utilz.DataTypeDBModel;
+import com.faas.core.data.ws.base.campaign.details.scenario.dto.CampaignScenarioWSDTO;
+import com.faas.core.data.ws.base.campaign.details.scenario.dto.ProcessScenarioDataWSDTO;
+import com.faas.core.data.repo.campaign.content.CampaignRepository;
+import com.faas.core.data.repo.campaign.details.scenario.CampaignScenarioRepository;
+import com.faas.core.data.repo.scenario.content.ScenarioRepository;
+import com.faas.core.data.repo.utilz.DataTypeRepository;
+import com.faas.core.misc.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -52,7 +52,7 @@ public class CampaignScenarioFramework {
 
     public CampaignScenarioWSDTO getCampaignScenarioService(long userId, String campaignId, String scenarioId) {
 
-        List<CampaignScenarioDBModel> campaignScenarioDBModels = campaignScenarioRepository.findByCampaignIdAndScenarioId(campaignId,scenarioId);
+        List<CampaignScenarioDBModel> campaignScenarioDBModels = campaignScenarioRepository.findByCampaignIdAndScenarioId(campaignId, scenarioId);
         if (!campaignScenarioDBModels.isEmpty()) {
             return new CampaignScenarioWSDTO(campaignScenarioDBModels.get(0));
         }
@@ -63,7 +63,7 @@ public class CampaignScenarioFramework {
 
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
         Optional<ScenarioDBModel> scenarioDBModel = scenarioRepository.findById(scenarioId);
-        if (!campaignScenarioRepository.existsByCampaignIdAndScenarioId(campaignId,scenarioId) && campaignDBModel.isPresent() && scenarioDBModel.isPresent()) {
+        if (!campaignScenarioRepository.existsByCampaignIdAndScenarioId(campaignId, scenarioId) && campaignDBModel.isPresent() && scenarioDBModel.isPresent()) {
 
             CampaignScenarioDBModel campaignScenarioDBModel = new CampaignScenarioDBModel();
             campaignScenarioDBModel.setCampaignId(campaignId);
@@ -73,9 +73,9 @@ public class CampaignScenarioFramework {
             campaignScenarioDBModel.setTypeId(scenarioDBModel.get().getTypeId());
             campaignScenarioDBModel.setScenarioType(scenarioDBModel.get().getScenarioType());
             campaignScenarioDBModel.setBaseType(scenarioDBModel.get().getBaseType());
-            if (scenarioDBModel.get().getScenarioDatas() != null){
+            if (scenarioDBModel.get().getScenarioDatas() != null) {
                 campaignScenarioDBModel.setScenarioDatas(scenarioDBModel.get().getScenarioDatas());
-            }else {
+            } else {
                 campaignScenarioDBModel.setScenarioDatas(new ArrayList<>());
             }
             campaignScenarioDBModel.setuDate(appUtils.getCurrentTimeStamp());
@@ -89,7 +89,7 @@ public class CampaignScenarioFramework {
 
     public CampaignScenarioWSDTO removeCampaignScenarioService(long userId, String campaignId, String scenarioId) {
 
-        List<CampaignScenarioDBModel> campaignScenarioDBModels = campaignScenarioRepository.findByCampaignIdAndScenarioId(campaignId,scenarioId);
+        List<CampaignScenarioDBModel> campaignScenarioDBModels = campaignScenarioRepository.findByCampaignIdAndScenarioId(campaignId, scenarioId);
         if (!campaignScenarioDBModels.isEmpty()) {
             campaignScenarioRepository.deleteAll(campaignScenarioDBModels);
             return new CampaignScenarioWSDTO(campaignScenarioDBModels.get(0));
@@ -101,7 +101,7 @@ public class CampaignScenarioFramework {
     public List<ProcessScenarioDataWSDTO> getCampaignScenarioDatasService(long userId, String campaignId, String scenarioId) {
 
         List<ProcessScenarioDataWSDTO> scenarioDataWSDTOS = new ArrayList<>();
-        List<CampaignScenarioDBModel> campaignScenarioDBModels = campaignScenarioRepository.findByCampaignIdAndScenarioId(campaignId,scenarioId);
+        List<CampaignScenarioDBModel> campaignScenarioDBModels = campaignScenarioRepository.findByCampaignIdAndScenarioId(campaignId, scenarioId);
         if (!campaignScenarioDBModels.isEmpty() && campaignScenarioDBModels.get(0).getScenarioDatas() != null) {
             for (int i = 0; i < campaignScenarioDBModels.get(0).getScenarioDatas().size(); i++) {
                 scenarioDataWSDTOS.add(new ProcessScenarioDataWSDTO(campaignScenarioDBModels.get(0).getScenarioDatas().get(i)));
@@ -112,7 +112,7 @@ public class CampaignScenarioFramework {
 
     public ProcessScenarioDataWSDTO getCampaignScenarioDataService(long userId, String campaignId, String scenarioId, String dataId) {
 
-        List<CampaignScenarioDBModel> campaignScenarioDBModels = campaignScenarioRepository.findByCampaignIdAndScenarioId(campaignId,scenarioId);
+        List<CampaignScenarioDBModel> campaignScenarioDBModels = campaignScenarioRepository.findByCampaignIdAndScenarioId(campaignId, scenarioId);
         if (!campaignScenarioDBModels.isEmpty() && campaignScenarioDBModels.get(0).getScenarioDatas() != null) {
             for (int i = 0; i < campaignScenarioDBModels.get(0).getScenarioDatas().size(); i++) {
                 if (campaignScenarioDBModels.get(0).getScenarioDatas().get(i).getDataId().equalsIgnoreCase(dataId)) {
@@ -125,7 +125,7 @@ public class CampaignScenarioFramework {
 
     public ProcessScenarioDataWSDTO createCampaignScenarioDataService(long userId, String campaignId, String scenarioId, long typeId, String value) {
 
-        List<CampaignScenarioDBModel> campaignScenarioDBModels = campaignScenarioRepository.findByCampaignIdAndScenarioId(campaignId,scenarioId);
+        List<CampaignScenarioDBModel> campaignScenarioDBModels = campaignScenarioRepository.findByCampaignIdAndScenarioId(campaignId, scenarioId);
         Optional<DataTypeDBModel> dataTypeDBModel = dataTypeRepository.findById(typeId);
         if (!campaignScenarioDBModels.isEmpty() && dataTypeDBModel.isPresent()) {
 
@@ -153,7 +153,7 @@ public class CampaignScenarioFramework {
 
     public ProcessScenarioDataWSDTO updateCampaignScenarioDataService(long userId, String campaignId, String scenarioId, String dataId, long typeId, String value) {
 
-        List<CampaignScenarioDBModel> campaignScenarioDBModels = campaignScenarioRepository.findByCampaignIdAndScenarioId(campaignId,scenarioId);
+        List<CampaignScenarioDBModel> campaignScenarioDBModels = campaignScenarioRepository.findByCampaignIdAndScenarioId(campaignId, scenarioId);
         Optional<DataTypeDBModel> dataTypeDBModel = dataTypeRepository.findById(typeId);
         if (!campaignScenarioDBModels.isEmpty() && campaignScenarioDBModels.get(0).getScenarioDatas() != null && dataTypeDBModel.isPresent()) {
             for (int i = 0; i < campaignScenarioDBModels.get(0).getScenarioDatas().size(); i++) {
@@ -175,7 +175,7 @@ public class CampaignScenarioFramework {
 
     public ProcessScenarioDataWSDTO removeCampaignScenarioDataService(long userId, String campaignId, String scenarioId, String dataId) {
 
-        List<CampaignScenarioDBModel> campaignScenarioDBModels = campaignScenarioRepository.findByCampaignIdAndScenarioId(campaignId,scenarioId);
+        List<CampaignScenarioDBModel> campaignScenarioDBModels = campaignScenarioRepository.findByCampaignIdAndScenarioId(campaignId, scenarioId);
         if (!campaignScenarioDBModels.isEmpty() && campaignScenarioDBModels.get(0).getScenarioDatas() != null) {
             for (int i = 0; i < campaignScenarioDBModels.get(0).getScenarioDatas().size(); i++) {
                 if (campaignScenarioDBModels.get(0).getScenarioDatas().get(i).getDataId().equalsIgnoreCase(dataId)) {

@@ -1,10 +1,10 @@
 package com.faas.core.base.middleware.campaign.details.channel;
 
 import com.faas.core.base.framework.campaign.details.channel.CampaignChannelFramework;
-import com.faas.core.base.model.ws.campaign.details.channel.*;
-import com.faas.core.base.model.ws.campaign.details.channel.dto.*;
-import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.utility.config.AppConstant;
+import com.faas.core.data.ws.base.campaign.details.channel.*;
+import com.faas.core.data.ws.base.campaign.details.channel.dto.*;
+import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -23,7 +23,7 @@ public class CampaignChannelMiddleware {
         GeneralWSModel general = new GeneralWSModel();
 
         CampaignChannelWSDTO campaignChannelWSDTO = campaignChannelFramework.getCampaignChannelsService(userId, campaignId);
-        if (campaignChannelWSDTO != null){
+        if (campaignChannelWSDTO != null) {
             response.setCampaignChannel(campaignChannelWSDTO);
         }
 
@@ -42,8 +42,8 @@ public class CampaignChannelMiddleware {
         CampaignSipChannelWSModel response = new CampaignSipChannelWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        CampaignSipChannelWSDTO campaignSipChannelWSDTO = campaignChannelFramework.getCampaignSipChannelService(userId,campaignId);
-        if (campaignSipChannelWSDTO != null){
+        CampaignSipChannelWSDTO campaignSipChannelWSDTO = campaignChannelFramework.getCampaignSipChannelService(userId, campaignId);
+        if (campaignSipChannelWSDTO != null) {
             response.setCampaignSipChannel(campaignSipChannelWSDTO);
         }
 
@@ -61,8 +61,8 @@ public class CampaignChannelMiddleware {
         CampaignSipChannelWSModel response = new CampaignSipChannelWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        CampaignSipChannelWSDTO campaignSipChannelWSDTO = campaignChannelFramework.createCampaignSipChannelService(userId,campaignId,callerId,state);
-        if (campaignSipChannelWSDTO != null){
+        CampaignSipChannelWSDTO campaignSipChannelWSDTO = campaignChannelFramework.createCampaignSipChannelService(userId, campaignId, callerId, state);
+        if (campaignSipChannelWSDTO != null) {
             response.setCampaignSipChannel(campaignSipChannelWSDTO);
         }
 
@@ -81,7 +81,7 @@ public class CampaignChannelMiddleware {
         GeneralWSModel general = new GeneralWSModel();
 
         CampaignSipChannelWSDTO campaignSipChannelWSDTO = campaignChannelFramework.removeCampaignSipChannelService(userId, campaignId);
-        if (campaignSipChannelWSDTO != null){
+        if (campaignSipChannelWSDTO != null) {
             response.setCampaignSipChannel(campaignSipChannelWSDTO);
         }
 
@@ -101,7 +101,7 @@ public class CampaignChannelMiddleware {
         GeneralWSModel general = new GeneralWSModel();
 
         CampaignSmsChannelWSDTO campaignSmsChannelWSDTO = campaignChannelFramework.getCampaignSmsChannelService(userId, campaignId);
-        if (campaignSmsChannelWSDTO != null){
+        if (campaignSmsChannelWSDTO != null) {
             response.setCampaignSmsChannel(campaignSmsChannelWSDTO);
         }
 
@@ -119,8 +119,8 @@ public class CampaignChannelMiddleware {
         CampaignSmsChannelWSModel response = new CampaignSmsChannelWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        CampaignSmsChannelWSDTO campaignSmsChannelWSDTO = campaignChannelFramework.createCampaignSmsChannelService(userId,campaignId,accountId,state);
-        if (campaignSmsChannelWSDTO != null){
+        CampaignSmsChannelWSDTO campaignSmsChannelWSDTO = campaignChannelFramework.createCampaignSmsChannelService(userId, campaignId, accountId, state);
+        if (campaignSmsChannelWSDTO != null) {
             response.setCampaignSmsChannel(campaignSmsChannelWSDTO);
         }
 
@@ -139,7 +139,7 @@ public class CampaignChannelMiddleware {
         GeneralWSModel general = new GeneralWSModel();
 
         CampaignSmsChannelWSDTO campaignSmsChannelWSDTO = campaignChannelFramework.removeCampaignSmsChannelService(campaignId);
-        if (campaignSmsChannelWSDTO != null){
+        if (campaignSmsChannelWSDTO != null) {
             response.setCampaignSmsChannel(campaignSmsChannelWSDTO);
         }
 
@@ -159,7 +159,7 @@ public class CampaignChannelMiddleware {
         GeneralWSModel general = new GeneralWSModel();
 
         CampaignWappChannelWSDTO campaignWappChannelWSDTO = campaignChannelFramework.getCampaignWappChannelService(userId, campaignId);
-        if (campaignWappChannelWSDTO != null){
+        if (campaignWappChannelWSDTO != null) {
             response.setCampaignWappChannel(campaignWappChannelWSDTO);
         }
 
@@ -177,8 +177,8 @@ public class CampaignChannelMiddleware {
         CampaignWappChannelWSModel response = new CampaignWappChannelWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        CampaignWappChannelWSDTO campaignWappChannelWSDTO = campaignChannelFramework.createCampaignWappChannelService(userId,campaignId,callState,messageState);
-        if (campaignWappChannelWSDTO != null){
+        CampaignWappChannelWSDTO campaignWappChannelWSDTO = campaignChannelFramework.createCampaignWappChannelService(userId, campaignId, callState, messageState);
+        if (campaignWappChannelWSDTO != null) {
             response.setCampaignWappChannel(campaignWappChannelWSDTO);
         }
 
@@ -197,7 +197,7 @@ public class CampaignChannelMiddleware {
         GeneralWSModel general = new GeneralWSModel();
 
         CampaignWappChannelWSDTO campaignWappChannelWSDTO = campaignChannelFramework.removeCampaignWappChannelService(userId, campaignId);
-        if (campaignWappChannelWSDTO != null){
+        if (campaignWappChannelWSDTO != null) {
             response.setCampaignWappChannel(campaignWappChannelWSDTO);
         }
 
@@ -217,7 +217,7 @@ public class CampaignChannelMiddleware {
         GeneralWSModel general = new GeneralWSModel();
 
         CampaignEmailChannelWSDTO campaignEmailChannelWSDTO = campaignChannelFramework.getCampaignEmailChannelService(userId, campaignId);
-        if (campaignEmailChannelWSDTO != null){
+        if (campaignEmailChannelWSDTO != null) {
             response.setCampaignEmailChannel(campaignEmailChannelWSDTO);
         }
 
@@ -235,8 +235,8 @@ public class CampaignChannelMiddleware {
         CampaignEmailChannelWSModel response = new CampaignEmailChannelWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        CampaignEmailChannelWSDTO campaignEmailChannelWSDTO = campaignChannelFramework.createCampaignEmailChannelService(userId,campaignId,accountId,state);
-        if (campaignEmailChannelWSDTO != null){
+        CampaignEmailChannelWSDTO campaignEmailChannelWSDTO = campaignChannelFramework.createCampaignEmailChannelService(userId, campaignId, accountId, state);
+        if (campaignEmailChannelWSDTO != null) {
             response.setCampaignEmailChannel(campaignEmailChannelWSDTO);
         }
 
@@ -255,7 +255,7 @@ public class CampaignChannelMiddleware {
         GeneralWSModel general = new GeneralWSModel();
 
         CampaignEmailChannelWSDTO campaignEmailChannelWSDTO = campaignChannelFramework.removeCampaignEmailChannelService(userId, campaignId);
-        if (campaignEmailChannelWSDTO != null){
+        if (campaignEmailChannelWSDTO != null) {
             response.setCampaignEmailChannel(campaignEmailChannelWSDTO);
         }
 
@@ -274,8 +274,8 @@ public class CampaignChannelMiddleware {
         CampaignPushChannelWSModel response = new CampaignPushChannelWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        CampaignPushChannelWSDTO campaignPushChannelWSDTO = campaignChannelFramework.getCampaignPushChannelService(userId,campaignId);
-        if (campaignPushChannelWSDTO != null){
+        CampaignPushChannelWSDTO campaignPushChannelWSDTO = campaignChannelFramework.getCampaignPushChannelService(userId, campaignId);
+        if (campaignPushChannelWSDTO != null) {
             response.setCampaignPushChannel(campaignPushChannelWSDTO);
         }
 
@@ -293,8 +293,8 @@ public class CampaignChannelMiddleware {
         CampaignPushChannelWSModel response = new CampaignPushChannelWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        CampaignPushChannelWSDTO campaignPushChannelWSDTO = campaignChannelFramework.createCampaignPushChannelService(userId,campaignId,accountId,state);
-        if (campaignPushChannelWSDTO != null){
+        CampaignPushChannelWSDTO campaignPushChannelWSDTO = campaignChannelFramework.createCampaignPushChannelService(userId, campaignId, accountId, state);
+        if (campaignPushChannelWSDTO != null) {
             response.setCampaignPushChannel(campaignPushChannelWSDTO);
         }
 
@@ -312,8 +312,8 @@ public class CampaignChannelMiddleware {
         CampaignPushChannelWSModel response = new CampaignPushChannelWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        CampaignPushChannelWSDTO campaignPushChannelWSDTO = campaignChannelFramework.removeCampaignPushChannelService(userId,campaignId);
-        if (campaignPushChannelWSDTO != null){
+        CampaignPushChannelWSDTO campaignPushChannelWSDTO = campaignChannelFramework.removeCampaignPushChannelService(userId, campaignId);
+        if (campaignPushChannelWSDTO != null) {
             response.setCampaignPushChannel(campaignPushChannelWSDTO);
         }
 
@@ -325,7 +325,6 @@ public class CampaignChannelMiddleware {
 
         return response;
     }
-
 
 
 }

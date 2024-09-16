@@ -1,10 +1,10 @@
 package com.faas.core.base.middleware.campaign.details.trigger.details;
 
 import com.faas.core.base.framework.campaign.details.trigger.details.CampaignSipTriggerFramework;
-import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.campaign.details.trigger.details.CampaignSipTriggerWSModel;
-import com.faas.core.base.model.ws.campaign.details.trigger.details.dto.CampaignSipTriggerWSDTO;
-import com.faas.core.utility.config.AppConstant;
+import com.faas.core.data.ws.base.campaign.details.trigger.details.CampaignSipTriggerWSModel;
+import com.faas.core.data.ws.base.campaign.details.trigger.details.dto.CampaignSipTriggerWSDTO;
+import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -25,8 +25,8 @@ public class CampaignSipTriggerMiddleware {
         CampaignSipTriggerWSModel response = new CampaignSipTriggerWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<CampaignSipTriggerWSDTO> campaignSipTriggerWSDTOS = campaignSipTriggerFramework.getCampaignSipTriggersService(userId,campaignId);
-        if (campaignSipTriggerWSDTOS != null){
+        List<CampaignSipTriggerWSDTO> campaignSipTriggerWSDTOS = campaignSipTriggerFramework.getCampaignSipTriggersService(userId, campaignId);
+        if (campaignSipTriggerWSDTOS != null) {
             response.setCampaignSipTriggers(campaignSipTriggerWSDTOS);
         }
 
@@ -45,8 +45,8 @@ public class CampaignSipTriggerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignSipTriggerWSDTO> campaignSipTriggerWSDTOS = new ArrayList<>();
 
-        CampaignSipTriggerWSDTO campaignSipTriggerWSDTO = campaignSipTriggerFramework.getCampaignSipTriggerService(userId,triggerId);
-        if (campaignSipTriggerWSDTO != null){
+        CampaignSipTriggerWSDTO campaignSipTriggerWSDTO = campaignSipTriggerFramework.getCampaignSipTriggerService(userId, triggerId);
+        if (campaignSipTriggerWSDTO != null) {
             campaignSipTriggerWSDTOS.add(campaignSipTriggerWSDTO);
         }
 
@@ -66,8 +66,8 @@ public class CampaignSipTriggerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignSipTriggerWSDTO> campaignSipTriggerWSDTOS = new ArrayList<>();
 
-        CampaignSipTriggerWSDTO campaignSipTriggerWSDTO = campaignSipTriggerFramework.createCampaignSipTriggerService(userId,campaignId,trigger,accountId,callerId,typeId);
-        if (campaignSipTriggerWSDTO != null){
+        CampaignSipTriggerWSDTO campaignSipTriggerWSDTO = campaignSipTriggerFramework.createCampaignSipTriggerService(userId, campaignId, trigger, accountId, callerId, typeId);
+        if (campaignSipTriggerWSDTO != null) {
             campaignSipTriggerWSDTOS.add(campaignSipTriggerWSDTO);
         }
 
@@ -87,8 +87,8 @@ public class CampaignSipTriggerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignSipTriggerWSDTO> campaignSipTriggerWSDTOS = new ArrayList<>();
 
-        CampaignSipTriggerWSDTO campaignSipTriggerWSDTO = campaignSipTriggerFramework.updateCampaignSipTriggerService(userId,triggerId,trigger,accountId,callerId);
-        if (campaignSipTriggerWSDTO != null){
+        CampaignSipTriggerWSDTO campaignSipTriggerWSDTO = campaignSipTriggerFramework.updateCampaignSipTriggerService(userId, triggerId, trigger, accountId, callerId);
+        if (campaignSipTriggerWSDTO != null) {
             campaignSipTriggerWSDTOS.add(campaignSipTriggerWSDTO);
         }
 
@@ -108,8 +108,8 @@ public class CampaignSipTriggerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignSipTriggerWSDTO> campaignSipTriggerWSDTOS = new ArrayList<>();
 
-        CampaignSipTriggerWSDTO campaignSipTriggerWSDTO = campaignSipTriggerFramework.removeCampaignSipTriggerService(userId,triggerId);
-        if (campaignSipTriggerWSDTO != null){
+        CampaignSipTriggerWSDTO campaignSipTriggerWSDTO = campaignSipTriggerFramework.removeCampaignSipTriggerService(userId, triggerId);
+        if (campaignSipTriggerWSDTO != null) {
             campaignSipTriggerWSDTOS.add(campaignSipTriggerWSDTO);
         }
 
@@ -122,7 +122,6 @@ public class CampaignSipTriggerMiddleware {
 
         return response;
     }
-
 
 
 }

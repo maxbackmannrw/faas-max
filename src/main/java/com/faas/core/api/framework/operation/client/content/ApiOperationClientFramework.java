@@ -1,12 +1,12 @@
 package com.faas.core.api.framework.operation.client.content;
 
-import com.faas.core.api.model.ws.operation.client.content.dto.ApiOperationClientWSDTO;
-import com.faas.core.base.model.db.client.content.ClientDBModel;
-import com.faas.core.base.model.db.client.details.ClientDetailsDBModel;
-import com.faas.core.base.repo.client.content.ClientRepository;
-import com.faas.core.base.repo.client.details.ClientDetailsRepository;
-import com.faas.core.base.repo.operation.content.OperationRepository;
-import com.faas.core.utility.config.AppUtils;
+import com.faas.core.data.ws.api.operation.client.content.dto.ApiOperationClientWSDTO;
+import com.faas.core.data.db.client.content.ClientDBModel;
+import com.faas.core.data.db.client.details.ClientDetailsDBModel;
+import com.faas.core.data.repo.client.content.ClientRepository;
+import com.faas.core.data.repo.client.details.ClientDetailsRepository;
+import com.faas.core.data.repo.operation.content.OperationRepository;
+import com.faas.core.misc.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -39,10 +39,10 @@ public class ApiOperationClientFramework {
 
     public ApiOperationClientWSDTO apiGetClientService(long agentId, long clientId) {
 
-        if (operationRepository.existsByClientIdAndAgentId(clientId,agentId)){
+        if (operationRepository.existsByClientIdAndAgentId(clientId, agentId)) {
             Optional<ClientDBModel> clientDBModel = clientRepository.findById(clientId);
             List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(clientId);
-            if (clientDBModel.isPresent() && !clientDetailsDBModels.isEmpty()){
+            if (clientDBModel.isPresent() && !clientDetailsDBModels.isEmpty()) {
                 ApiOperationClientWSDTO clientWSDTO = new ApiOperationClientWSDTO();
                 clientWSDTO.setClient(clientDBModel.get());
                 clientWSDTO.setClientDetails(clientDetailsDBModels.get(0));

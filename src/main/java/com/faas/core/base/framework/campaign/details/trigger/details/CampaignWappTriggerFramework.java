@@ -1,15 +1,17 @@
 package com.faas.core.base.framework.campaign.details.trigger.details;
 
-import com.faas.core.base.model.db.channel.account.WappAccountDBModel;
-import com.faas.core.base.model.db.campaign.details.trigger.*;
-import com.faas.core.base.model.db.campaign.settings.TriggerTypeDBModel;
-import com.faas.core.base.model.ws.campaign.details.trigger.details.dto.CampaignWappCallTriggerWSDTO;
-import com.faas.core.base.model.ws.campaign.details.trigger.details.dto.CampaignWappMessageTriggerWSDTO;
-import com.faas.core.base.repo.channel.account.WappAccountRepository;
-import com.faas.core.base.repo.channel.settings.MessageTypeRepository;
-import com.faas.core.base.repo.campaign.details.trigger.*;
-import com.faas.core.base.repo.campaign.settings.TriggerTypeRepository;
-import com.faas.core.utility.config.AppUtils;
+import com.faas.core.data.db.campaign.details.trigger.WappCallTriggerDBModel;
+import com.faas.core.data.db.campaign.details.trigger.WappMessageTriggerDBModel;
+import com.faas.core.data.db.campaign.settings.TriggerTypeDBModel;
+import com.faas.core.data.db.channel.account.WappAccountDBModel;
+import com.faas.core.data.ws.base.campaign.details.trigger.details.dto.CampaignWappCallTriggerWSDTO;
+import com.faas.core.data.ws.base.campaign.details.trigger.details.dto.CampaignWappMessageTriggerWSDTO;
+import com.faas.core.data.repo.campaign.details.trigger.WappCallTriggerRepository;
+import com.faas.core.data.repo.campaign.details.trigger.WappMessageTriggerRepository;
+import com.faas.core.data.repo.campaign.settings.TriggerTypeRepository;
+import com.faas.core.data.repo.channel.account.WappAccountRepository;
+import com.faas.core.data.repo.channel.settings.MessageTypeRepository;
+import com.faas.core.misc.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,7 +42,6 @@ public class CampaignWappTriggerFramework {
     AppUtils appUtils;
 
 
-
     public List<CampaignWappMessageTriggerWSDTO> getCampaignWappMessageTriggersService(long userId, String campaignId) {
 
         List<CampaignWappMessageTriggerWSDTO> campaignWappMessageTriggerWSDTOS = new ArrayList<>();
@@ -54,7 +55,7 @@ public class CampaignWappTriggerFramework {
     public CampaignWappMessageTriggerWSDTO getCampaignWappMessageTriggerService(long userId, String triggerId) {
 
         Optional<WappMessageTriggerDBModel> wappMessageTriggerDBModel = wappMessageTriggerRepository.findById(triggerId);
-        if (wappMessageTriggerDBModel.isPresent()){
+        if (wappMessageTriggerDBModel.isPresent()) {
             return new CampaignWappMessageTriggerWSDTO(wappMessageTriggerDBModel.get());
         }
         return null;
@@ -64,7 +65,7 @@ public class CampaignWappTriggerFramework {
 
         Optional<WappAccountDBModel> wappAccountDBModel = wappAccountRepository.findById(accountId);
         Optional<TriggerTypeDBModel> triggerTypeDBModel = triggerTypeRepository.findById(typeId);
-        if (wappAccountDBModel.isPresent() && triggerTypeDBModel.isPresent()){
+        if (wappAccountDBModel.isPresent() && triggerTypeDBModel.isPresent()) {
 
             WappMessageTriggerDBModel wappMessageTriggerDBModel = new WappMessageTriggerDBModel();
             wappMessageTriggerDBModel.setCampaignId(campaignId);
@@ -89,7 +90,7 @@ public class CampaignWappTriggerFramework {
 
         Optional<WappMessageTriggerDBModel> wappMessageTriggerDBModel = wappMessageTriggerRepository.findById(triggerId);
         Optional<WappAccountDBModel> wappAccountDBModel = wappAccountRepository.findById(accountId);
-        if (wappMessageTriggerDBModel.isPresent() && wappAccountDBModel.isPresent()){
+        if (wappMessageTriggerDBModel.isPresent() && wappAccountDBModel.isPresent()) {
 
             wappMessageTriggerDBModel.get().setTrigger(trigger);
             wappMessageTriggerDBModel.get().setAccountId(accountId);
@@ -107,7 +108,7 @@ public class CampaignWappTriggerFramework {
     public CampaignWappMessageTriggerWSDTO removeCampaignWappMessageTriggerService(long userId, String triggerId) {
 
         Optional<WappMessageTriggerDBModel> wappMessageTriggerDBModel = wappMessageTriggerRepository.findById(triggerId);
-        if (wappMessageTriggerDBModel.isPresent()){
+        if (wappMessageTriggerDBModel.isPresent()) {
             wappMessageTriggerRepository.delete(wappMessageTriggerDBModel.get());
             return new CampaignWappMessageTriggerWSDTO(wappMessageTriggerDBModel.get());
         }
@@ -128,7 +129,7 @@ public class CampaignWappTriggerFramework {
     public CampaignWappCallTriggerWSDTO getCampaignWappCallTriggerService(long userId, String triggerId) {
 
         Optional<WappCallTriggerDBModel> wappCallTriggerDBModel = wappCallTriggerRepository.findById(triggerId);
-        if (wappCallTriggerDBModel.isPresent()){
+        if (wappCallTriggerDBModel.isPresent()) {
             return new CampaignWappCallTriggerWSDTO(wappCallTriggerDBModel.get());
         }
         return null;
@@ -138,7 +139,7 @@ public class CampaignWappTriggerFramework {
 
         Optional<WappAccountDBModel> wappAccountDBModel = wappAccountRepository.findById(accountId);
         Optional<TriggerTypeDBModel> triggerTypeDBModel = triggerTypeRepository.findById(typeId);
-        if (wappAccountDBModel.isPresent() && triggerTypeDBModel.isPresent()){
+        if (wappAccountDBModel.isPresent() && triggerTypeDBModel.isPresent()) {
 
             WappCallTriggerDBModel wappCallTriggerDBModel = new WappCallTriggerDBModel();
             wappCallTriggerDBModel.setCampaignId(campaignId);
@@ -161,7 +162,7 @@ public class CampaignWappTriggerFramework {
 
         Optional<WappCallTriggerDBModel> wappCallTriggerDBModel = wappCallTriggerRepository.findById(triggerId);
         Optional<WappAccountDBModel> wappAccountDBModel = wappAccountRepository.findById(accountId);
-        if (wappCallTriggerDBModel.isPresent() && wappAccountDBModel.isPresent()){
+        if (wappCallTriggerDBModel.isPresent() && wappAccountDBModel.isPresent()) {
 
             wappCallTriggerDBModel.get().setTrigger(trigger);
             wappCallTriggerDBModel.get().setAccountId(accountId);
@@ -177,7 +178,7 @@ public class CampaignWappTriggerFramework {
     public CampaignWappCallTriggerWSDTO removeCampaignWappCallTriggerService(long userId, String triggerId) {
 
         Optional<WappCallTriggerDBModel> wappCallTriggerDBModel = wappCallTriggerRepository.findById(triggerId);
-        if (wappCallTriggerDBModel.isPresent()){
+        if (wappCallTriggerDBModel.isPresent()) {
             wappCallTriggerRepository.delete(wappCallTriggerDBModel.get());
             return new CampaignWappCallTriggerWSDTO(wappCallTriggerDBModel.get());
         }

@@ -1,10 +1,10 @@
 package com.faas.core.base.middleware.campaign.details.remote;
 
 import com.faas.core.base.framework.campaign.details.remote.CampaignRemoteFramework;
-import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.campaign.details.remote.CampaignRemoteWSModel;
-import com.faas.core.base.model.ws.campaign.details.remote.dto.CampaignRemoteWSDTO;
-import com.faas.core.utility.config.AppConstant;
+import com.faas.core.data.ws.base.campaign.details.remote.CampaignRemoteWSModel;
+import com.faas.core.data.ws.base.campaign.details.remote.dto.CampaignRemoteWSDTO;
+import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -25,8 +25,8 @@ public class CampaignRemoteMiddleware {
         CampaignRemoteWSModel response = new CampaignRemoteWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<CampaignRemoteWSDTO> campaignRemoteWSDTOS = campaignRemoteFramework.getCampaignRemotesService(userId,campaignId);
-        if (campaignRemoteWSDTOS != null){
+        List<CampaignRemoteWSDTO> campaignRemoteWSDTOS = campaignRemoteFramework.getCampaignRemotesService(userId, campaignId);
+        if (campaignRemoteWSDTOS != null) {
             response.setCampaignRemotes(campaignRemoteWSDTOS);
         }
 
@@ -44,8 +44,8 @@ public class CampaignRemoteMiddleware {
         CampaignRemoteWSModel response = new CampaignRemoteWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<CampaignRemoteWSDTO> campaignRemoteWSDTOS = campaignRemoteFramework.getCampaignRemotesByCategoryService(userId,campaignId,remoteCategory);
-        if (campaignRemoteWSDTOS != null){
+        List<CampaignRemoteWSDTO> campaignRemoteWSDTOS = campaignRemoteFramework.getCampaignRemotesByCategoryService(userId, campaignId, remoteCategory);
+        if (campaignRemoteWSDTOS != null) {
             response.setCampaignRemotes(campaignRemoteWSDTOS);
         }
 
@@ -64,8 +64,8 @@ public class CampaignRemoteMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignRemoteWSDTO> campaignRemoteWSDTOS = new ArrayList<>();
 
-        CampaignRemoteWSDTO campaignRemoteWSDTO = campaignRemoteFramework.getCampaignRemoteService(userId,campaignRemoteId);
-        if (campaignRemoteWSDTO != null){
+        CampaignRemoteWSDTO campaignRemoteWSDTO = campaignRemoteFramework.getCampaignRemoteService(userId, campaignRemoteId);
+        if (campaignRemoteWSDTO != null) {
             campaignRemoteWSDTOS.add(campaignRemoteWSDTO);
         }
 
@@ -85,8 +85,8 @@ public class CampaignRemoteMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignRemoteWSDTO> campaignRemoteWSDTOS = new ArrayList<>();
 
-        CampaignRemoteWSDTO campaignRemoteWSDTO = campaignRemoteFramework.createCampaignRemoteService(userId,campaignId,remoteId,remoteCategory);
-        if (campaignRemoteWSDTO != null){
+        CampaignRemoteWSDTO campaignRemoteWSDTO = campaignRemoteFramework.createCampaignRemoteService(userId, campaignId, remoteId, remoteCategory);
+        if (campaignRemoteWSDTO != null) {
             campaignRemoteWSDTOS.add(campaignRemoteWSDTO);
         }
 
@@ -106,8 +106,8 @@ public class CampaignRemoteMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignRemoteWSDTO> campaignRemoteWSDTOS = new ArrayList<>();
 
-        CampaignRemoteWSDTO campaignRemoteWSDTO = campaignRemoteFramework.removeCampaignRemoteService(userId,campaignRemoteId);
-        if (campaignRemoteWSDTO != null){
+        CampaignRemoteWSDTO campaignRemoteWSDTO = campaignRemoteFramework.removeCampaignRemoteService(userId, campaignRemoteId);
+        if (campaignRemoteWSDTO != null) {
             campaignRemoteWSDTOS.add(campaignRemoteWSDTO);
         }
 

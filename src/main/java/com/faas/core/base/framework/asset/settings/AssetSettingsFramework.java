@@ -1,9 +1,9 @@
 package com.faas.core.base.framework.asset.settings;
 
-import com.faas.core.base.model.db.asset.settings.AssetTypeDBModel;
-import com.faas.core.base.model.ws.asset.settings.dto.AssetTypeWSDTO;
-import com.faas.core.base.repo.asset.settings.AssetTypeRepository;
-import com.faas.core.utility.config.AppUtils;
+import com.faas.core.data.db.asset.settings.AssetTypeDBModel;
+import com.faas.core.data.ws.base.asset.settings.dto.AssetTypeWSDTO;
+import com.faas.core.data.repo.asset.settings.AssetTypeRepository;
+import com.faas.core.misc.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +28,7 @@ public class AssetSettingsFramework {
     }
 
 
-    public AssetTypeDBModel createAssetTypeService(String assetType,String description,String uploadUrl,String baseUrl,String baseType) {
+    public AssetTypeDBModel createAssetTypeService(String assetType, String description, String uploadUrl, String baseUrl, String baseType) {
 
         AssetTypeDBModel assetTypeDBModel = new AssetTypeDBModel();
         assetTypeDBModel.setAssetType(assetType);
@@ -43,7 +43,7 @@ public class AssetSettingsFramework {
         return assetTypeRepository.save(assetTypeDBModel);
     }
 
-    public AssetTypeDBModel updateAssetTypeService(long typeId,String assetType,String description,String uploadUrl,String baseUrl,String baseType) {
+    public AssetTypeDBModel updateAssetTypeService(long typeId, String assetType, String description, String uploadUrl, String baseUrl, String baseType) {
 
         Optional<AssetTypeDBModel> assetTypeDBModel = assetTypeRepository.findById(typeId);
         if (assetTypeDBModel.isPresent()) {
@@ -53,7 +53,7 @@ public class AssetSettingsFramework {
             assetTypeDBModel.get().setBaseUrl(baseUrl);
             assetTypeDBModel.get().setBaseType(baseType);
             assetTypeDBModel.get().setuDate(appUtils.getCurrentTimeStamp());
-            assetTypeDBModel.get().setStatus(1);;
+            assetTypeDBModel.get().setStatus(1);
 
             return assetTypeRepository.save(assetTypeDBModel.get());
         }
@@ -70,7 +70,6 @@ public class AssetSettingsFramework {
         }
         return null;
     }
-
 
 
 }

@@ -1,10 +1,10 @@
 package com.faas.core.base.middleware.campaign.details.trigger.details;
 
 import com.faas.core.base.framework.campaign.details.trigger.details.CampaignEmailTriggerFramework;
-import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.campaign.details.trigger.details.CampaignEmailTriggerWSModel;
-import com.faas.core.base.model.ws.campaign.details.trigger.details.dto.CampaignEmailTriggerWSDTO;
-import com.faas.core.utility.config.AppConstant;
+import com.faas.core.data.ws.base.campaign.details.trigger.details.CampaignEmailTriggerWSModel;
+import com.faas.core.data.ws.base.campaign.details.trigger.details.dto.CampaignEmailTriggerWSDTO;
+import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -25,8 +25,8 @@ public class CampaignEmailTriggerMiddleware {
         CampaignEmailTriggerWSModel response = new CampaignEmailTriggerWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<CampaignEmailTriggerWSDTO> campaignEmailTriggerWSDTOS = campaignEmailTriggerFramework.getCampaignEmailTriggersService(userId,campaignId);
-        if (campaignEmailTriggerWSDTOS != null){
+        List<CampaignEmailTriggerWSDTO> campaignEmailTriggerWSDTOS = campaignEmailTriggerFramework.getCampaignEmailTriggersService(userId, campaignId);
+        if (campaignEmailTriggerWSDTOS != null) {
             response.setCampaignEmailTriggers(campaignEmailTriggerWSDTOS);
         }
 
@@ -45,8 +45,8 @@ public class CampaignEmailTriggerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignEmailTriggerWSDTO> campaignEmailTriggerWSDTOS = new ArrayList<>();
 
-        CampaignEmailTriggerWSDTO campaignEmailTriggerWSDTO = campaignEmailTriggerFramework.getCampaignEmailTriggerService(userId,triggerId);
-        if (campaignEmailTriggerWSDTO != null){
+        CampaignEmailTriggerWSDTO campaignEmailTriggerWSDTO = campaignEmailTriggerFramework.getCampaignEmailTriggerService(userId, triggerId);
+        if (campaignEmailTriggerWSDTO != null) {
             campaignEmailTriggerWSDTOS.add(campaignEmailTriggerWSDTO);
         }
 
@@ -66,8 +66,8 @@ public class CampaignEmailTriggerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignEmailTriggerWSDTO> campaignEmailTriggerWSDTOS = new ArrayList<>();
 
-        CampaignEmailTriggerWSDTO campaignEmailTriggerWSDTO = campaignEmailTriggerFramework.createCampaignEmailTriggerService(userId,campaignId,trigger,accountId,emailSubject,emailTitle,emailBody,emailSender,typeId);
-        if (campaignEmailTriggerWSDTO != null){
+        CampaignEmailTriggerWSDTO campaignEmailTriggerWSDTO = campaignEmailTriggerFramework.createCampaignEmailTriggerService(userId, campaignId, trigger, accountId, emailSubject, emailTitle, emailBody, emailSender, typeId);
+        if (campaignEmailTriggerWSDTO != null) {
             campaignEmailTriggerWSDTOS.add(campaignEmailTriggerWSDTO);
         }
 
@@ -87,8 +87,8 @@ public class CampaignEmailTriggerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignEmailTriggerWSDTO> campaignEmailTriggerWSDTOS = new ArrayList<>();
 
-        CampaignEmailTriggerWSDTO campaignEmailTriggerWSDTO = campaignEmailTriggerFramework.updateCampaignEmailTriggerService(userId,triggerId,trigger,accountId,emailSubject,emailTitle,emailBody,emailSender);
-        if (campaignEmailTriggerWSDTO != null){
+        CampaignEmailTriggerWSDTO campaignEmailTriggerWSDTO = campaignEmailTriggerFramework.updateCampaignEmailTriggerService(userId, triggerId, trigger, accountId, emailSubject, emailTitle, emailBody, emailSender);
+        if (campaignEmailTriggerWSDTO != null) {
             campaignEmailTriggerWSDTOS.add(campaignEmailTriggerWSDTO);
         }
 
@@ -108,8 +108,8 @@ public class CampaignEmailTriggerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignEmailTriggerWSDTO> campaignEmailTriggerWSDTOS = new ArrayList<>();
 
-        CampaignEmailTriggerWSDTO campaignEmailTriggerWSDTO = campaignEmailTriggerFramework.removeCampaignEmailTriggerService(userId,triggerId);
-        if (campaignEmailTriggerWSDTO != null){
+        CampaignEmailTriggerWSDTO campaignEmailTriggerWSDTO = campaignEmailTriggerFramework.removeCampaignEmailTriggerService(userId, triggerId);
+        if (campaignEmailTriggerWSDTO != null) {
             campaignEmailTriggerWSDTOS.add(campaignEmailTriggerWSDTO);
         }
 
@@ -122,7 +122,6 @@ public class CampaignEmailTriggerMiddleware {
 
         return response;
     }
-
 
 
 }

@@ -1,12 +1,12 @@
 package com.faas.core.base.middleware.campaign.details.inquiry;
 
 import com.faas.core.base.framework.campaign.details.inquiry.CampaignInquiryFramework;
-import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.campaign.details.content.CampaignDataWSModel;
-import com.faas.core.base.model.ws.campaign.details.content.dto.CampaignDataWSDTO;
-import com.faas.core.base.model.ws.campaign.details.inquiry.CampaignInquiryWSModel;
-import com.faas.core.base.model.ws.campaign.details.inquiry.dto.CampaignInquiryWSDTO;
-import com.faas.core.utility.config.AppConstant;
+import com.faas.core.data.ws.base.campaign.details.content.CampaignDataWSModel;
+import com.faas.core.data.ws.base.campaign.details.content.dto.CampaignDataWSDTO;
+import com.faas.core.data.ws.base.campaign.details.inquiry.CampaignInquiryWSModel;
+import com.faas.core.data.ws.base.campaign.details.inquiry.dto.CampaignInquiryWSDTO;
+import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -27,8 +27,8 @@ public class CampaignInquiryMiddleware {
         CampaignInquiryWSModel response = new CampaignInquiryWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        CampaignInquiryWSDTO campaignInquiryWSDTO = campaignInquiryFramework.getCampaignInquiryService(userId,campaignId);
-        if (campaignInquiryWSDTO != null){
+        CampaignInquiryWSDTO campaignInquiryWSDTO = campaignInquiryFramework.getCampaignInquiryService(userId, campaignId);
+        if (campaignInquiryWSDTO != null) {
             response.setCampaignInquiry(campaignInquiryWSDTO);
         }
 
@@ -46,8 +46,8 @@ public class CampaignInquiryMiddleware {
         CampaignInquiryWSModel response = new CampaignInquiryWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        CampaignInquiryWSDTO campaignInquiryWSDTO = campaignInquiryFramework.updateCampaignInquiryService(userId,campaignId,campaignInquiry);
-        if (campaignInquiryWSDTO != null){
+        CampaignInquiryWSDTO campaignInquiryWSDTO = campaignInquiryFramework.updateCampaignInquiryService(userId, campaignId, campaignInquiry);
+        if (campaignInquiryWSDTO != null) {
             response.setCampaignInquiry(campaignInquiryWSDTO);
         }
 
@@ -66,8 +66,8 @@ public class CampaignInquiryMiddleware {
         CampaignDataWSModel response = new CampaignDataWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<CampaignDataWSDTO> campaignDataWSDTOS = campaignInquiryFramework.getCampaignInquiryDatasService(userId,campaignId);
-        if (campaignDataWSDTOS != null){
+        List<CampaignDataWSDTO> campaignDataWSDTOS = campaignInquiryFramework.getCampaignInquiryDatasService(userId, campaignId);
+        if (campaignDataWSDTOS != null) {
             response.setCampaignDatas(campaignDataWSDTOS);
         }
 
@@ -86,8 +86,8 @@ public class CampaignInquiryMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignDataWSDTO> campaignDataWSDTOS = new ArrayList<>();
 
-        CampaignDataWSDTO campaignDataWSDTO = campaignInquiryFramework.getCampaignInquiryDataService(userId,campaignId,dataId);
-        if (campaignDataWSDTO != null){
+        CampaignDataWSDTO campaignDataWSDTO = campaignInquiryFramework.getCampaignInquiryDataService(userId, campaignId, dataId);
+        if (campaignDataWSDTO != null) {
             campaignDataWSDTOS.add(campaignDataWSDTO);
         }
 
@@ -107,8 +107,8 @@ public class CampaignInquiryMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignDataWSDTO> campaignDataWSDTOS = new ArrayList<>();
 
-        CampaignDataWSDTO campaignDataWSDTO = campaignInquiryFramework.createCampaignInquiryDataService(userId,campaignId,typeId,value);
-        if (campaignDataWSDTO != null){
+        CampaignDataWSDTO campaignDataWSDTO = campaignInquiryFramework.createCampaignInquiryDataService(userId, campaignId, typeId, value);
+        if (campaignDataWSDTO != null) {
             campaignDataWSDTOS.add(campaignDataWSDTO);
         }
 
@@ -128,8 +128,8 @@ public class CampaignInquiryMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignDataWSDTO> campaignDataWSDTOS = new ArrayList<>();
 
-        CampaignDataWSDTO campaignDataWSDTO = campaignInquiryFramework.updateCampaignInquiryDataService(userId,campaignId,dataId,typeId,value);
-        if (campaignDataWSDTO != null){
+        CampaignDataWSDTO campaignDataWSDTO = campaignInquiryFramework.updateCampaignInquiryDataService(userId, campaignId, dataId, typeId, value);
+        if (campaignDataWSDTO != null) {
             campaignDataWSDTOS.add(campaignDataWSDTO);
         }
 
@@ -149,8 +149,8 @@ public class CampaignInquiryMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<CampaignDataWSDTO> campaignDataWSDTOS = new ArrayList<>();
 
-        CampaignDataWSDTO campaignDataWSDTO = campaignInquiryFramework.removeCampaignInquiryDataService(userId,campaignId,dataId);
-        if (campaignDataWSDTO != null){
+        CampaignDataWSDTO campaignDataWSDTO = campaignInquiryFramework.removeCampaignInquiryDataService(userId, campaignId, dataId);
+        if (campaignDataWSDTO != null) {
             campaignDataWSDTOS.add(campaignDataWSDTO);
         }
 
@@ -163,7 +163,6 @@ public class CampaignInquiryMiddleware {
 
         return response;
     }
-
 
 
 }

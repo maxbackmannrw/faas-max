@@ -1,12 +1,12 @@
 package com.faas.core.base.middleware.operation.content;
 
 import com.faas.core.base.framework.operation.content.OperationFramework;
-import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.operation.content.OperationListWSModel;
-import com.faas.core.base.model.ws.operation.content.OperationWSModel;
-import com.faas.core.base.model.ws.operation.content.dto.OperationListWSDTO;
-import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
-import com.faas.core.utility.config.AppConstant;
+import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.data.ws.base.operation.content.OperationListWSModel;
+import com.faas.core.data.ws.base.operation.content.OperationWSModel;
+import com.faas.core.data.ws.base.operation.content.dto.OperationListWSDTO;
+import com.faas.core.data.ws.base.operation.content.dto.OperationWSDTO;
+import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -21,13 +21,13 @@ public class OperationMiddleware {
     OperationFramework operationFramework;
 
 
-    public OperationListWSModel getOperations(long userId, String operationState,int reqPage,int reqSize) {
+    public OperationListWSModel getOperations(long userId, String operationState, int reqPage, int reqSize) {
 
         OperationListWSModel response = new OperationListWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        OperationListWSDTO operationListWSDTO = operationFramework.getOperationsService(userId,operationState,reqPage,reqSize);
-        if (operationListWSDTO != null){
+        OperationListWSDTO operationListWSDTO = operationFramework.getOperationsService(userId, operationState, reqPage, reqSize);
+        if (operationListWSDTO != null) {
             response.setOperationList(operationListWSDTO);
         }
 
@@ -40,13 +40,13 @@ public class OperationMiddleware {
         return response;
     }
 
-    public OperationListWSModel getOperationsByCategory(long userId, String operationCategory, String operationState,int reqPage,int reqSize) {
+    public OperationListWSModel getOperationsByCategory(long userId, String operationCategory, String operationState, int reqPage, int reqSize) {
 
         OperationListWSModel response = new OperationListWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        OperationListWSDTO operationListWSDTO = operationFramework.getOperationsByCategoryService(userId,operationCategory,operationState,reqPage,reqSize);
-        if (operationListWSDTO != null){
+        OperationListWSDTO operationListWSDTO = operationFramework.getOperationsByCategoryService(userId, operationCategory, operationState, reqPage, reqSize);
+        if (operationListWSDTO != null) {
             response.setOperationList(operationListWSDTO);
         }
 
@@ -65,8 +65,8 @@ public class OperationMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<OperationWSDTO> operationWSDTOS = new ArrayList<>();
 
-        OperationWSDTO operationWSDTO = operationFramework.getOperationService(userId,operationId);
-        if (operationWSDTO != null){
+        OperationWSDTO operationWSDTO = operationFramework.getOperationService(userId, operationId);
+        if (operationWSDTO != null) {
             operationWSDTOS.add(operationWSDTO);
         }
 
@@ -87,7 +87,7 @@ public class OperationMiddleware {
         List<OperationWSDTO> operationWSDTOS = new ArrayList<>();
 
         OperationWSDTO operationWSDTO = operationFramework.createOperationService(userId);
-        if (operationWSDTO != null){
+        if (operationWSDTO != null) {
             operationWSDTOS.add(operationWSDTO);
         }
 
@@ -101,14 +101,14 @@ public class OperationMiddleware {
         return response;
     }
 
-    public OperationWSModel updateOperation(long userId,String operationId) {
+    public OperationWSModel updateOperation(long userId, String operationId) {
 
         OperationWSModel response = new OperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<OperationWSDTO> operationWSDTOS = new ArrayList<>();
 
-        OperationWSDTO operationWSDTO = operationFramework.updateOperationService(userId,operationId);
-        if (operationWSDTO != null){
+        OperationWSDTO operationWSDTO = operationFramework.updateOperationService(userId, operationId);
+        if (operationWSDTO != null) {
             operationWSDTOS.add(operationWSDTO);
         }
 
@@ -128,8 +128,8 @@ public class OperationMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<OperationWSDTO> operationWSDTOS = new ArrayList<>();
 
-        OperationWSDTO operationWSDTO = operationFramework.removeOperationService(userId,operationId);
-        if (operationWSDTO != null){
+        OperationWSDTO operationWSDTO = operationFramework.removeOperationService(userId, operationId);
+        if (operationWSDTO != null) {
             operationWSDTOS.add(operationWSDTO);
         }
 

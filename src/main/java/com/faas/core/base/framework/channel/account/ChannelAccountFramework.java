@@ -1,12 +1,12 @@
 package com.faas.core.base.framework.channel.account;
 
-import com.faas.core.base.model.db.channel.account.*;
-import com.faas.core.base.model.db.channel.settings.WappServerDBModel;
-import com.faas.core.base.model.ws.channel.account.dto.*;
-import com.faas.core.base.repo.channel.account.*;
-import com.faas.core.base.repo.channel.settings.WappServerRepository;
-import com.faas.core.utility.handler.channel.wapp.WappChannelHandler;
-import com.faas.core.utility.config.AppUtils;
+import com.faas.core.data.db.channel.account.*;
+import com.faas.core.data.db.channel.settings.WappServerDBModel;
+import com.faas.core.data.ws.base.channel.account.dto.*;
+import com.faas.core.data.repo.channel.account.*;
+import com.faas.core.data.repo.channel.settings.WappServerRepository;
+import com.faas.core.misc.config.AppUtils;
+import com.faas.core.misc.handler.channel.wapp.WappChannelHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -48,11 +48,11 @@ public class ChannelAccountFramework {
     public ChannelAccountWSDTO getAllChannelAccountsService(long userId) {
 
         ChannelAccountWSDTO channelAccountWSDTO = new ChannelAccountWSDTO();
-        List<SipAccountWSDTO>sipAccountWSDTOS = new ArrayList<>();
-        List<SmsAccountWSDTO>smsAccountWSDTOS = new ArrayList<>();
-        List<WappAccountWSDTO>wappAccountWSDTOS = new ArrayList<>();
-        List<EmailAccountWSDTO>emailAccountWSDTOS = new ArrayList<>();
-        List<PushAccountWSDTO>pushAccountWSDTOS = new ArrayList<>();
+        List<SipAccountWSDTO> sipAccountWSDTOS = new ArrayList<>();
+        List<SmsAccountWSDTO> smsAccountWSDTOS = new ArrayList<>();
+        List<WappAccountWSDTO> wappAccountWSDTOS = new ArrayList<>();
+        List<EmailAccountWSDTO> emailAccountWSDTOS = new ArrayList<>();
+        List<PushAccountWSDTO> pushAccountWSDTOS = new ArrayList<>();
 
         List<SipAccountDBModel> sipAccountDBModels = sipAccountRepository.findByStatus(1);
         for (SipAccountDBModel sipAccountDBModel : sipAccountDBModels) {
@@ -78,7 +78,7 @@ public class ChannelAccountFramework {
         }
         channelAccountWSDTO.setEmailAccounts(emailAccountWSDTOS);
 
-        List<PushAccountDBModel>pushAccountDBModels = pushAccountRepository.findByStatus(1);
+        List<PushAccountDBModel> pushAccountDBModels = pushAccountRepository.findByStatus(1);
         for (PushAccountDBModel pushAccountDBModel : pushAccountDBModels) {
             pushAccountWSDTOS.add(fillPushAccountWSDTO(pushAccountDBModel));
         }
@@ -94,7 +94,7 @@ public class ChannelAccountFramework {
         return sipAccountWSDTO;
     }
 
-    public SipAccountDBModel createSipAccountService(String account,String userName,String authUser,String password,String sipUrl,String provider) {
+    public SipAccountDBModel createSipAccountService(String account, String userName, String authUser, String password, String sipUrl, String provider) {
 
         SipAccountDBModel sipAccountDBModel = new SipAccountDBModel();
         sipAccountDBModel.setAccount(account);
@@ -111,10 +111,10 @@ public class ChannelAccountFramework {
         return sipAccountRepository.save(sipAccountDBModel);
     }
 
-    public SipAccountDBModel updateSipAccountService(String accountId,String account,String userName,String authUser,String password,String sipUrl,String provider) {
+    public SipAccountDBModel updateSipAccountService(String accountId, String account, String userName, String authUser, String password, String sipUrl, String provider) {
 
         Optional<SipAccountDBModel> sipAccountDBModel = sipAccountRepository.findById(accountId);
-        if (sipAccountDBModel.isPresent()){
+        if (sipAccountDBModel.isPresent()) {
 
             sipAccountDBModel.get().setAccount(account);
             sipAccountDBModel.get().setUserName(userName);
@@ -133,7 +133,7 @@ public class ChannelAccountFramework {
     public SipAccountDBModel removeSipAccountService(String accountId) {
 
         Optional<SipAccountDBModel> sipAccountDBModel = sipAccountRepository.findById(accountId);
-        if (sipAccountDBModel.isPresent()){
+        if (sipAccountDBModel.isPresent()) {
             sipAccountRepository.delete(sipAccountDBModel.get());
             return sipAccountDBModel.get();
         }
@@ -148,7 +148,7 @@ public class ChannelAccountFramework {
         return smsAccountWSDTO;
     }
 
-    public SmsAccountDBModel createSmsAccountService(String account,String userName,String password,String apiToken,String apiUrl,String provider) {
+    public SmsAccountDBModel createSmsAccountService(String account, String userName, String password, String apiToken, String apiUrl, String provider) {
 
         SmsAccountDBModel smsAccountDBModel = new SmsAccountDBModel();
         smsAccountDBModel.setAccount(account);
@@ -165,10 +165,10 @@ public class ChannelAccountFramework {
         return smsAccountRepository.save(smsAccountDBModel);
     }
 
-    public SmsAccountDBModel updateSmsAccountService(String accountId,String account,String userName,String password,String apiToken,String apiUrl,String provider) {
+    public SmsAccountDBModel updateSmsAccountService(String accountId, String account, String userName, String password, String apiToken, String apiUrl, String provider) {
 
         Optional<SmsAccountDBModel> smsAccountDBModel = smsAccountRepository.findById(accountId);
-        if (smsAccountDBModel.isPresent()){
+        if (smsAccountDBModel.isPresent()) {
             smsAccountDBModel.get().setAccount(account);
             smsAccountDBModel.get().setUserName(userName);
             smsAccountDBModel.get().setPassword(password);
@@ -186,7 +186,7 @@ public class ChannelAccountFramework {
     public SmsAccountDBModel removeSmsAccountService(String accountId) {
 
         Optional<SmsAccountDBModel> smsAccountDBModel = smsAccountRepository.findById(accountId);
-        if (smsAccountDBModel.isPresent()){
+        if (smsAccountDBModel.isPresent()) {
             smsAccountRepository.delete(smsAccountDBModel.get());
             return smsAccountDBModel.get();
         }
@@ -204,9 +204,9 @@ public class ChannelAccountFramework {
     public WappQRCodeWSDTO getWappAccountQRCodeService(String accountId) throws IOException {
 
         Optional<WappAccountDBModel> wappAccountDBModel = wappAccountRepository.findById(accountId);
-        if (wappAccountDBModel.isPresent()){
-            String qrCode = wappChannelHandler.getWappAccountQRCodeService(wappAccountDBModel.get().getServerUrl(),wappAccountDBModel.get().getInstanceKey());
-            if (qrCode != null){
+        if (wappAccountDBModel.isPresent()) {
+            String qrCode = wappChannelHandler.getWappAccountQRCodeService(wappAccountDBModel.get().getServerUrl(), wappAccountDBModel.get().getInstanceKey());
+            if (qrCode != null) {
                 WappQRCodeWSDTO wappQRCodeWSDTO = new WappQRCodeWSDTO();
                 wappQRCodeWSDTO.setQrcode(qrCode);
                 return wappQRCodeWSDTO;
@@ -215,12 +215,12 @@ public class ChannelAccountFramework {
         return null;
     }
 
-    public WappAccountDBModel createWappAccountService(String account,String phoneNumber, long serverId) throws IOException {
+    public WappAccountDBModel createWappAccountService(String account, String phoneNumber, long serverId) throws IOException {
 
         Optional<WappServerDBModel> wappServerDBModel = wappServerRepository.findById(serverId);
-        if (wappServerDBModel.isPresent()){
+        if (wappServerDBModel.isPresent()) {
             String instanceKey = wappChannelHandler.initWappChannelService(wappServerDBModel.get().getServerUrl());
-            if (instanceKey != null){
+            if (instanceKey != null) {
                 WappAccountDBModel wappAccountDBModel = new WappAccountDBModel();
                 wappAccountDBModel.setAccount(account);
                 wappAccountDBModel.setInstanceKey(instanceKey);
@@ -240,11 +240,11 @@ public class ChannelAccountFramework {
         return null;
     }
 
-    public WappAccountDBModel updateWappAccountService(String accountId,String account,String instanceKey,String phoneNumber,long serverId) {
+    public WappAccountDBModel updateWappAccountService(String accountId, String account, String instanceKey, String phoneNumber, long serverId) {
 
         Optional<WappAccountDBModel> wappAccountDBModel = wappAccountRepository.findById(accountId);
         Optional<WappServerDBModel> wappServerDBModel = wappServerRepository.findById(serverId);
-        if (wappAccountDBModel.isPresent() && wappServerDBModel.isPresent()){
+        if (wappAccountDBModel.isPresent() && wappServerDBModel.isPresent()) {
 
             wappAccountDBModel.get().setAccount(account);
             wappAccountDBModel.get().setInstanceKey(instanceKey);
@@ -264,7 +264,7 @@ public class ChannelAccountFramework {
     public WappAccountDBModel removeWappAccountService(String accountId) {
 
         Optional<WappAccountDBModel> wappAccountDBModel = wappAccountRepository.findById(accountId);
-        if (wappAccountDBModel.isPresent()){
+        if (wappAccountDBModel.isPresent()) {
             wappAccountRepository.delete(wappAccountDBModel.get());
             return wappAccountDBModel.get();
         }
@@ -279,7 +279,7 @@ public class ChannelAccountFramework {
         return emailAccountWSDTO;
     }
 
-    public EmailAccountDBModel createEmailAccountService(String account,String provider) {
+    public EmailAccountDBModel createEmailAccountService(String account, String provider) {
 
         EmailAccountDBModel emailAccountDBModel = new EmailAccountDBModel();
 
@@ -293,10 +293,10 @@ public class ChannelAccountFramework {
         return emailAccountRepository.save(emailAccountDBModel);
     }
 
-    public EmailAccountDBModel updateEmailAccountService(String accountId,String account,String provider) {
+    public EmailAccountDBModel updateEmailAccountService(String accountId, String account, String provider) {
 
         Optional<EmailAccountDBModel> emailAccountDBModel = emailAccountRepository.findById(accountId);
-        if (emailAccountDBModel.isPresent()){
+        if (emailAccountDBModel.isPresent()) {
 
             emailAccountDBModel.get().setAccount(account);
             emailAccountDBModel.get().setProvider(provider);
@@ -311,7 +311,7 @@ public class ChannelAccountFramework {
     public EmailAccountDBModel removeEmailAccountService(String accountId) {
 
         Optional<EmailAccountDBModel> emailAccountDBModel = emailAccountRepository.findById(accountId);
-        if (emailAccountDBModel.isPresent()){
+        if (emailAccountDBModel.isPresent()) {
             emailAccountRepository.delete(emailAccountDBModel.get());
             return emailAccountDBModel.get();
         }
@@ -328,7 +328,7 @@ public class ChannelAccountFramework {
 
     public PushAccountDBModel createPushAccountService(String account, String provider) {
 
-        PushAccountDBModel pushAccountDBModel =  new PushAccountDBModel();
+        PushAccountDBModel pushAccountDBModel = new PushAccountDBModel();
 
         pushAccountDBModel.setAccount(account);
         pushAccountDBModel.setAccountDatas(new ArrayList<>());
@@ -342,8 +342,8 @@ public class ChannelAccountFramework {
 
     public PushAccountDBModel updatePushAccountService(String accountId, String account, String provider) {
 
-        Optional<PushAccountDBModel> pushAccountDBModel =  pushAccountRepository.findById(accountId);
-        if (pushAccountDBModel.isPresent()){
+        Optional<PushAccountDBModel> pushAccountDBModel = pushAccountRepository.findById(accountId);
+        if (pushAccountDBModel.isPresent()) {
 
             pushAccountDBModel.get().setAccount(account);
             pushAccountDBModel.get().setProvider(provider);
@@ -357,8 +357,8 @@ public class ChannelAccountFramework {
 
     public PushAccountDBModel removePushAccountService(String accountId) {
 
-        Optional<PushAccountDBModel> pushAccountDBModel =  pushAccountRepository.findById(accountId);
-        if (pushAccountDBModel.isPresent()){
+        Optional<PushAccountDBModel> pushAccountDBModel = pushAccountRepository.findById(accountId);
+        if (pushAccountDBModel.isPresent()) {
             pushAccountRepository.delete(pushAccountDBModel.get());
             return pushAccountDBModel.get();
         }

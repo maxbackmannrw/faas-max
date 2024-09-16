@@ -1,12 +1,12 @@
 package com.faas.core.api.middleware.campaign.details.content;
 
 import com.faas.core.api.framework.campaign.details.content.ApiCampaignDetailsFramework;
-import com.faas.core.api.model.ws.campaign.details.ApiCampaignDetailsWSModel;
-import com.faas.core.api.model.ws.campaign.details.dto.ApiCampaignDetailsWSDTO;
-import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
-import com.faas.core.api.model.ws.general.ApiSummaryWSModel;
-import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.utility.config.AppConstant;
+import com.faas.core.data.ws.api.campaign.details.ApiCampaignDetailsWSModel;
+import com.faas.core.data.ws.api.campaign.details.dto.ApiCampaignDetailsWSDTO;
+import com.faas.core.data.ws.api.general.ApiSummaryWSDTO;
+import com.faas.core.data.ws.api.general.ApiSummaryWSModel;
+import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -20,12 +20,12 @@ public class ApiCampaignDetailsMiddleware {
     ApiCampaignDetailsFramework apiCampaignDetailsFramework;
 
 
-    public ApiCampaignDetailsWSModel apiGetCampaignDetails(long agentId,String campaignId,int reqPage,int reqSize) {
+    public ApiCampaignDetailsWSModel apiGetCampaignDetails(long agentId, String campaignId, int reqPage, int reqSize) {
 
         ApiCampaignDetailsWSModel response = new ApiCampaignDetailsWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiCampaignDetailsWSDTO campaignDetailsWSDTO = apiCampaignDetailsFramework.apiGetCampaignDetailsService(agentId,campaignId,reqPage,reqSize);
+        ApiCampaignDetailsWSDTO campaignDetailsWSDTO = apiCampaignDetailsFramework.apiGetCampaignDetailsService(agentId, campaignId, reqPage, reqSize);
         if (campaignDetailsWSDTO != null) {
             response.setCampaignDetails(campaignDetailsWSDTO);
         }
@@ -40,12 +40,12 @@ public class ApiCampaignDetailsMiddleware {
     }
 
 
-    public ApiSummaryWSModel apiGetCampaignSummary(long agentId,String campaignId) {
+    public ApiSummaryWSModel apiGetCampaignSummary(long agentId, String campaignId) {
 
         ApiSummaryWSModel response = new ApiSummaryWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ApiSummaryWSDTO> campaignDetailsSummary = apiCampaignDetailsFramework.apiGetCampaignSummaryService(agentId,campaignId);
+        List<ApiSummaryWSDTO> campaignDetailsSummary = apiCampaignDetailsFramework.apiGetCampaignSummaryService(agentId, campaignId);
         if (campaignDetailsSummary != null) {
             response.setSummaries(campaignDetailsSummary);
         }
@@ -58,12 +58,6 @@ public class ApiCampaignDetailsMiddleware {
 
         return response;
     }
-
-
-
-
-
-
 
 
 }

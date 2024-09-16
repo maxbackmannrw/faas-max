@@ -1,9 +1,9 @@
 package com.faas.core.base.middleware.remoteapp.manager.content;
 
 import com.faas.core.base.framework.remoteapp.manager.content.RemoteAppManagerFramework;
-import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.remoteapp.content.RemoteAppListWSModel;
-import com.faas.core.utility.config.AppConstant;
+import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.data.ws.base.remoteapp.content.RemoteAppListWSModel;
+import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -19,7 +19,6 @@ public class RemoteAppManagerMiddleware {
 
         RemoteAppListWSModel response = new RemoteAppListWSModel();
         GeneralWSModel general = new GeneralWSModel();
-
 
 
         general.setOperation("getRemoteAppManagers");
@@ -38,7 +37,6 @@ public class RemoteAppManagerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
 
 
-
         general.setOperation("getRemoteAppManagers");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -52,7 +50,6 @@ public class RemoteAppManagerMiddleware {
 
         RemoteAppListWSModel response = new RemoteAppListWSModel();
         GeneralWSModel general = new GeneralWSModel();
-
 
 
         general.setOperation("getRemoteAppManagers");
@@ -70,7 +67,6 @@ public class RemoteAppManagerMiddleware {
         GeneralWSModel general = new GeneralWSModel();
 
 
-
         general.setOperation("getRemoteAppManagers");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -84,7 +80,6 @@ public class RemoteAppManagerMiddleware {
 
         RemoteAppListWSModel response = new RemoteAppListWSModel();
         GeneralWSModel general = new GeneralWSModel();
-
 
 
         general.setOperation("removeRemoteAppManager");

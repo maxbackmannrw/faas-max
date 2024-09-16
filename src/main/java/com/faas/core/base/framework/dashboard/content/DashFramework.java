@@ -1,7 +1,7 @@
 package com.faas.core.base.framework.dashboard.content;
 
-import com.faas.core.base.model.ws.client.content.dto.ClientListWSDTO;
-import com.faas.core.utility.config.AppUtils;
+import com.faas.core.data.ws.base.client.content.dto.ClientListWSDTO;
+import com.faas.core.misc.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +21,6 @@ public class DashFramework {
 
         return clientListWSDTO;
     }
-
 
 
 }

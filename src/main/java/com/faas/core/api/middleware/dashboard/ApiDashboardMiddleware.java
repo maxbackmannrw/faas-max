@@ -1,20 +1,20 @@
 package com.faas.core.api.middleware.dashboard;
 
 import com.faas.core.api.framework.dashboard.ApiDashboardFramework;
-import com.faas.core.api.model.ws.campaign.content.ApiCampaignWSModel;
-import com.faas.core.api.model.ws.campaign.content.dto.ApiCampaignWSDTO;
-import com.faas.core.api.model.ws.dashboard.ApiDashboardWSModel;
-import com.faas.core.api.model.ws.dashboard.dto.ApiDashboardWSDTO;
-import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
-import com.faas.core.api.model.ws.general.ApiSummaryWSModel;
-import com.faas.core.api.model.ws.operation.content.ApiOperationListWSModel;
-import com.faas.core.api.model.ws.operation.content.ApiOperationWSModel;
-import com.faas.core.api.model.ws.operation.content.dto.ApiOperationListWSDTO;
-import com.faas.core.api.model.ws.operation.content.ApiOperationValidateWSModel;
-import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
-import com.faas.core.api.model.ws.operation.content.dto.ApiOperationValidateWSDTO;
-import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.utility.config.AppConstant;
+import com.faas.core.data.ws.api.campaign.content.ApiCampaignWSModel;
+import com.faas.core.data.ws.api.campaign.content.dto.ApiCampaignWSDTO;
+import com.faas.core.data.ws.api.dashboard.ApiDashboardWSModel;
+import com.faas.core.data.ws.api.dashboard.dto.ApiDashboardWSDTO;
+import com.faas.core.data.ws.api.general.ApiSummaryWSDTO;
+import com.faas.core.data.ws.api.general.ApiSummaryWSModel;
+import com.faas.core.data.ws.api.operation.content.ApiOperationListWSModel;
+import com.faas.core.data.ws.api.operation.content.ApiOperationValidateWSModel;
+import com.faas.core.data.ws.api.operation.content.ApiOperationWSModel;
+import com.faas.core.data.ws.api.operation.content.dto.ApiOperationListWSDTO;
+import com.faas.core.data.ws.api.operation.content.dto.ApiOperationValidateWSDTO;
+import com.faas.core.data.ws.api.operation.content.dto.ApiOperationWSDTO;
+import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -29,13 +29,13 @@ public class ApiDashboardMiddleware {
     ApiDashboardFramework apiDashboardFramework;
 
 
-    public ApiDashboardWSModel apiGetDashboard(long agentId,int reqPage,int reqSize) {
+    public ApiDashboardWSModel apiGetDashboard(long agentId, int reqPage, int reqSize) {
 
         ApiDashboardWSModel response = new ApiDashboardWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiDashboardWSDTO dashboardWSDTO = apiDashboardFramework.apiGetDashboardService(agentId,reqPage,reqSize);
-        if (dashboardWSDTO != null){
+        ApiDashboardWSDTO dashboardWSDTO = apiDashboardFramework.apiGetDashboardService(agentId, reqPage, reqSize);
+        if (dashboardWSDTO != null) {
             response.setDashboard(dashboardWSDTO);
         }
 
@@ -54,8 +54,8 @@ public class ApiDashboardMiddleware {
         ApiOperationListWSModel response = new ApiOperationListWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiOperationListWSDTO operationListWSDTO = apiDashboardFramework.apiGetDashboardOperationsService(agentId,operationType,operationState,operationInquiryState,operationFlowState,reqPage,reqSize);
-        if (operationListWSDTO != null){
+        ApiOperationListWSDTO operationListWSDTO = apiDashboardFramework.apiGetDashboardOperationsService(agentId, operationType, operationState, operationInquiryState, operationFlowState, reqPage, reqSize);
+        if (operationListWSDTO != null) {
             response.setOperationList(operationListWSDTO);
         }
 
@@ -73,10 +73,10 @@ public class ApiDashboardMiddleware {
 
         ApiOperationWSModel response = new ApiOperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ApiOperationWSDTO>operationWSDTOS = new ArrayList<>();
+        List<ApiOperationWSDTO> operationWSDTOS = new ArrayList<>();
 
-        ApiOperationWSDTO operationWSDTO = apiDashboardFramework.apiGetDashboardOperationService(agentId,operationId);
-        if (operationWSDTO != null){
+        ApiOperationWSDTO operationWSDTO = apiDashboardFramework.apiGetDashboardOperationService(agentId, operationId);
+        if (operationWSDTO != null) {
             operationWSDTOS.add(operationWSDTO);
         }
 
@@ -96,8 +96,8 @@ public class ApiDashboardMiddleware {
         ApiOperationValidateWSModel response = new ApiOperationValidateWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiOperationValidateWSDTO operationValidateWSDTO = apiDashboardFramework.apiDashboardOperationValidateService(agentId,operationId);
-        if (operationValidateWSDTO != null){
+        ApiOperationValidateWSDTO operationValidateWSDTO = apiDashboardFramework.apiDashboardOperationValidateService(agentId, operationId);
+        if (operationValidateWSDTO != null) {
             response.setOperationValidate(operationValidateWSDTO);
         }
 
@@ -117,7 +117,7 @@ public class ApiDashboardMiddleware {
         GeneralWSModel general = new GeneralWSModel();
 
         List<ApiCampaignWSDTO> campaignWSDTOS = apiDashboardFramework.apiGetDashboardCampaignsService(agentId);
-        if (campaignWSDTOS != null){
+        if (campaignWSDTOS != null) {
             response.setCampaigns(campaignWSDTOS);
         }
 
@@ -137,7 +137,7 @@ public class ApiDashboardMiddleware {
         GeneralWSModel general = new GeneralWSModel();
 
         List<ApiSummaryWSDTO> dashboardSummaries = apiDashboardFramework.apiGetDashboardSummaryService(agentId);
-        if (dashboardSummaries != null){
+        if (dashboardSummaries != null) {
             response.setSummaries(dashboardSummaries);
         }
 
@@ -149,7 +149,6 @@ public class ApiDashboardMiddleware {
 
         return response;
     }
-
 
 
 }

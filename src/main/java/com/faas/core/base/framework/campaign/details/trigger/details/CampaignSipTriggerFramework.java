@@ -1,13 +1,13 @@
 package com.faas.core.base.framework.campaign.details.trigger.details;
 
-import com.faas.core.base.model.db.channel.account.SipAccountDBModel;
-import com.faas.core.base.model.db.campaign.details.trigger.*;
-import com.faas.core.base.model.db.campaign.settings.TriggerTypeDBModel;
-import com.faas.core.base.model.ws.campaign.details.trigger.details.dto.CampaignSipTriggerWSDTO;
-import com.faas.core.base.repo.channel.account.SipAccountRepository;
-import com.faas.core.base.repo.campaign.details.trigger.*;
-import com.faas.core.base.repo.campaign.settings.TriggerTypeRepository;
-import com.faas.core.utility.config.AppUtils;
+import com.faas.core.data.db.campaign.details.trigger.SipTriggerDBModel;
+import com.faas.core.data.db.campaign.settings.TriggerTypeDBModel;
+import com.faas.core.data.db.channel.account.SipAccountDBModel;
+import com.faas.core.data.ws.base.campaign.details.trigger.details.dto.CampaignSipTriggerWSDTO;
+import com.faas.core.data.repo.campaign.details.trigger.SipTriggerRepository;
+import com.faas.core.data.repo.campaign.settings.TriggerTypeRepository;
+import com.faas.core.data.repo.channel.account.SipAccountRepository;
+import com.faas.core.misc.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,7 +45,7 @@ public class CampaignSipTriggerFramework {
     public CampaignSipTriggerWSDTO getCampaignSipTriggerService(long userId, String triggerId) {
 
         Optional<SipTriggerDBModel> sipTriggerDBModel = sipTriggerRepository.findById(triggerId);
-        if (sipTriggerDBModel.isPresent()){
+        if (sipTriggerDBModel.isPresent()) {
             return new CampaignSipTriggerWSDTO(sipTriggerDBModel.get());
         }
         return null;
@@ -55,7 +55,7 @@ public class CampaignSipTriggerFramework {
 
         Optional<TriggerTypeDBModel> triggerTypeDBModel = triggerTypeRepository.findById(typeId);
         Optional<SipAccountDBModel> sipAccountDBModel = sipAccountRepository.findById(accountId);
-        if (triggerTypeDBModel.isPresent() && sipAccountDBModel.isPresent()){
+        if (triggerTypeDBModel.isPresent() && sipAccountDBModel.isPresent()) {
 
             SipTriggerDBModel sipTriggerDBModel = new SipTriggerDBModel();
             sipTriggerDBModel.setCampaignId(campaignId);
@@ -79,7 +79,7 @@ public class CampaignSipTriggerFramework {
 
         Optional<SipTriggerDBModel> sipTriggerDBModel = sipTriggerRepository.findById(triggerId);
         Optional<SipAccountDBModel> sipAccountDBModel = sipAccountRepository.findById(accountId);
-        if (sipTriggerDBModel.isPresent() && sipAccountDBModel.isPresent()){
+        if (sipTriggerDBModel.isPresent() && sipAccountDBModel.isPresent()) {
 
             sipTriggerDBModel.get().setTrigger(trigger);
             sipTriggerDBModel.get().setAccountId(accountId);
@@ -96,7 +96,7 @@ public class CampaignSipTriggerFramework {
     public CampaignSipTriggerWSDTO removeCampaignSipTriggerService(long userId, String triggerId) {
 
         Optional<SipTriggerDBModel> sipTriggerDBModel = sipTriggerRepository.findById(triggerId);
-        if (sipTriggerDBModel.isPresent()){
+        if (sipTriggerDBModel.isPresent()) {
             sipTriggerRepository.delete(sipTriggerDBModel.get());
             return new CampaignSipTriggerWSDTO(sipTriggerDBModel.get());
         }
