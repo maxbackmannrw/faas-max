@@ -1,11 +1,11 @@
 package com.faas.core.base.middleware.campaign.details.inquiry;
 
 import com.faas.core.base.framework.campaign.details.inquiry.CampaignInquiryFramework;
-import com.faas.core.data.ws.base.campaign.details.content.CampaignDataWSModel;
-import com.faas.core.data.ws.base.campaign.details.content.dto.CampaignDataWSDTO;
-import com.faas.core.data.ws.base.campaign.details.inquiry.CampaignInquiryWSModel;
-import com.faas.core.data.ws.base.campaign.details.inquiry.dto.CampaignInquiryWSDTO;
-import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.base.model.ws.campaign.details.content.CampaignDataWSModel;
+import com.faas.core.base.model.ws.campaign.details.content.dto.CampaignDataWSDTO;
+import com.faas.core.base.model.ws.campaign.details.inquiry.CampaignInquiryWSModel;
+import com.faas.core.base.model.ws.campaign.details.inquiry.dto.CampaignInquiryWSDTO;
+import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

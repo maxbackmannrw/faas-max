@@ -1,7 +1,7 @@
 package com.faas.core.base.framework.dashboard.inquiry;
 
 import com.faas.core.data.db.client.content.ClientDBModel;
-import com.faas.core.data.ws.base.client.content.dto.ClientListWSDTO;
+import com.faas.core.base.model.ws.client.content.dto.ClientListWSDTO;
 import com.faas.core.misc.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

@@ -1,11 +1,11 @@
 package com.faas.core.base.middleware.campaign.details.scenario;
 
 import com.faas.core.base.framework.campaign.details.scenario.CampaignScenarioFramework;
-import com.faas.core.data.ws.base.campaign.details.scenario.CampaignScenarioDataWSModel;
-import com.faas.core.data.ws.base.campaign.details.scenario.CampaignScenarioWSModel;
-import com.faas.core.data.ws.base.campaign.details.scenario.dto.CampaignScenarioWSDTO;
-import com.faas.core.data.ws.base.campaign.details.scenario.dto.ProcessScenarioDataWSDTO;
-import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.base.model.ws.campaign.details.scenario.CampaignScenarioDataWSModel;
+import com.faas.core.base.model.ws.campaign.details.scenario.CampaignScenarioWSModel;
+import com.faas.core.base.model.ws.campaign.details.scenario.dto.CampaignScenarioWSDTO;
+import com.faas.core.base.model.ws.campaign.details.scenario.dto.ProcessScenarioDataWSDTO;
+import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

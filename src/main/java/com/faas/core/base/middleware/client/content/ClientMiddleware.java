@@ -1,14 +1,14 @@
 package com.faas.core.base.middleware.client.content;
 
 import com.faas.core.base.framework.client.content.ClientFramework;
-import com.faas.core.data.ws.base.client.content.AllClientWSModel;
-import com.faas.core.data.ws.base.client.content.ClientListWSModel;
-import com.faas.core.data.ws.base.client.content.ClientWSModel;
-import com.faas.core.data.ws.base.client.content.CreateClientRequest;
-import com.faas.core.data.ws.base.client.content.dto.AllClientWSDTO;
-import com.faas.core.data.ws.base.client.content.dto.ClientListWSDTO;
-import com.faas.core.data.ws.base.client.content.dto.ClientWSDTO;
-import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.base.model.ws.client.content.AllClientWSModel;
+import com.faas.core.base.model.ws.client.content.ClientListWSModel;
+import com.faas.core.base.model.ws.client.content.ClientWSModel;
+import com.faas.core.base.model.ws.client.content.CreateClientRequest;
+import com.faas.core.base.model.ws.client.content.dto.AllClientWSDTO;
+import com.faas.core.base.model.ws.client.content.dto.ClientListWSDTO;
+import com.faas.core.base.model.ws.client.content.dto.ClientWSDTO;
+import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.data.repo.client.content.ClientRepository;
 import com.faas.core.misc.config.AppConstant;
 import com.faas.core.misc.config.AppUtils;

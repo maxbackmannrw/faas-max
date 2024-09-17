@@ -1,6 +1,6 @@
 package com.faas.core.base.framework.remoteapp.manager.content;
 
-import com.faas.core.data.ws.base.remoteapp.content.dto.RemoteAppListWSDTO;
+import com.faas.core.base.model.ws.remoteapp.content.dto.RemoteAppListWSDTO;
 import com.faas.core.data.repo.campaign.content.CampaignRepository;
 import com.faas.core.data.repo.client.content.ClientRepository;
 import com.faas.core.data.repo.operation.content.OperationRepository;

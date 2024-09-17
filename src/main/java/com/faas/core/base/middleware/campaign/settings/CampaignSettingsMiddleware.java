@@ -1,11 +1,11 @@
 package com.faas.core.base.middleware.campaign.settings;
 
 import com.faas.core.base.framework.campaign.settings.CampaignSettingsFramework;
-import com.faas.core.data.ws.base.campaign.settings.CampaignTypeWSModel;
-import com.faas.core.data.ws.base.campaign.settings.TriggerTypeWSModel;
-import com.faas.core.data.ws.base.campaign.settings.dto.CampaignTypeWSDTO;
-import com.faas.core.data.ws.base.campaign.settings.dto.TriggerTypeWSDTO;
-import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.base.model.ws.campaign.settings.CampaignTypeWSModel;
+import com.faas.core.base.model.ws.campaign.settings.TriggerTypeWSModel;
+import com.faas.core.base.model.ws.campaign.settings.dto.CampaignTypeWSDTO;
+import com.faas.core.base.model.ws.campaign.settings.dto.TriggerTypeWSDTO;
+import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.data.repo.campaign.settings.CampaignTypeRepository;
 import com.faas.core.data.repo.scenario.settings.ScenarioTypeRepository;
 import com.faas.core.misc.config.AppConstant;

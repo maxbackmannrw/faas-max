@@ -1,13 +1,13 @@
 package com.faas.core.api.middleware.operation.details.channel.call.wapp;
 
 import com.faas.core.api.framework.operation.details.channel.call.wapp.ApiOperationWappCallFramework;
-import com.faas.core.data.ws.api.operation.details.channel.call.wapp.ApiOperationWappCallAccountWSModel;
-import com.faas.core.data.ws.api.operation.details.channel.call.wapp.ApiOperationWappCallChannelWSModel;
-import com.faas.core.data.ws.api.operation.details.channel.call.wapp.ApiOperationWappCallWSModel;
-import com.faas.core.data.ws.api.operation.details.channel.call.wapp.dto.ApiOperationWappCallAccountWSDTO;
-import com.faas.core.data.ws.api.operation.details.channel.call.wapp.dto.ApiOperationWappCallChannelWSDTO;
-import com.faas.core.data.ws.api.operation.details.channel.call.wapp.dto.ApiOperationWappCallWSDTO;
-import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.call.wapp.ApiOperationWappCallAccountWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.call.wapp.ApiOperationWappCallChannelWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.call.wapp.ApiOperationWappCallWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiOperationWappCallAccountWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiOperationWappCallChannelWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiOperationWappCallWSDTO;
+import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

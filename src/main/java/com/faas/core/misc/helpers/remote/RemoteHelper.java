@@ -5,7 +5,7 @@ import com.faas.core.data.db.campaign.details.remote.CampaignRemoteDBModel;
 import com.faas.core.data.db.remote.content.RemoteDBModel;
 import com.faas.core.data.db.remote.content.dao.RemoteDataDAO;
 import com.faas.core.data.db.remote.details.RemoteUrlDBModel;
-import com.faas.core.data.ws.base.remote.content.dto.RemoteWSDTO;
+import com.faas.core.base.model.ws.remote.content.dto.RemoteWSDTO;
 import com.faas.core.data.repo.campaign.details.remote.CampaignRemoteRepository;
 import com.faas.core.data.repo.remote.details.RemoteUrlRepository;
 import com.faas.core.misc.config.AppUtils;

@@ -1,11 +1,11 @@
 package com.faas.core.base.middleware.campaign.details.trigger.details;
 
 import com.faas.core.base.framework.campaign.details.trigger.details.CampaignWappTriggerFramework;
-import com.faas.core.data.ws.base.campaign.details.trigger.details.CampaignWappCallTriggerWSModel;
-import com.faas.core.data.ws.base.campaign.details.trigger.details.CampaignWappMessageTriggerWSModel;
-import com.faas.core.data.ws.base.campaign.details.trigger.details.dto.CampaignWappCallTriggerWSDTO;
-import com.faas.core.data.ws.base.campaign.details.trigger.details.dto.CampaignWappMessageTriggerWSDTO;
-import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.base.model.ws.campaign.details.trigger.details.CampaignWappCallTriggerWSModel;
+import com.faas.core.base.model.ws.campaign.details.trigger.details.CampaignWappMessageTriggerWSModel;
+import com.faas.core.base.model.ws.campaign.details.trigger.details.dto.CampaignWappCallTriggerWSDTO;
+import com.faas.core.base.model.ws.campaign.details.trigger.details.dto.CampaignWappMessageTriggerWSDTO;
+import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

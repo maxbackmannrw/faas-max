@@ -1,6 +1,6 @@
 package com.faas.core.api.framework.operation.details.note;
 
-import com.faas.core.data.ws.api.operation.details.note.dto.ApiOperationNoteWSDTO;
+import com.faas.core.api.model.ws.operation.details.note.dto.ApiOperationNoteWSDTO;
 import com.faas.core.data.db.client.details.ClientDetailsDBModel;
 import com.faas.core.data.db.client.details.dao.ClientNoteDAO;
 import com.faas.core.data.db.operation.content.OperationDBModel;

@@ -2,9 +2,9 @@ package com.faas.core.base.middleware.asset.settings;
 
 import com.faas.core.base.framework.asset.settings.AssetSettingsFramework;
 import com.faas.core.data.db.asset.settings.AssetTypeDBModel;
-import com.faas.core.data.ws.base.asset.settings.AssetTypeWSModel;
-import com.faas.core.data.ws.base.asset.settings.dto.AssetTypeWSDTO;
-import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.base.model.ws.asset.settings.AssetTypeWSModel;
+import com.faas.core.base.model.ws.asset.settings.dto.AssetTypeWSDTO;
+import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.data.repo.asset.settings.AssetTypeRepository;
 import com.faas.core.misc.config.AppConstant;
 import com.faas.core.misc.config.AppUtils;

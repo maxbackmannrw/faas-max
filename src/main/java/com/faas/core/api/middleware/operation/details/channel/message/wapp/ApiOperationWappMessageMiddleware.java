@@ -1,15 +1,15 @@
 package com.faas.core.api.middleware.operation.details.channel.message.wapp;
 
 import com.faas.core.api.framework.operation.details.channel.message.wapp.ApiOperationWappMessageFramework;
-import com.faas.core.data.ws.api.operation.details.channel.message.wapp.ApiOperationWappMessageAccountWSModel;
-import com.faas.core.data.ws.api.operation.details.channel.message.wapp.ApiOperationWappMessageChannelWSModel;
-import com.faas.core.data.ws.api.operation.details.channel.message.wapp.ApiOperationWappMessageTempWSModel;
-import com.faas.core.data.ws.api.operation.details.channel.message.wapp.ApiOperationWappMessageWSModel;
-import com.faas.core.data.ws.api.operation.details.channel.message.wapp.dto.ApiOperationWappMessageAccountWSDTO;
-import com.faas.core.data.ws.api.operation.details.channel.message.wapp.dto.ApiOperationWappMessageChannelWSDTO;
-import com.faas.core.data.ws.api.operation.details.channel.message.wapp.dto.ApiOperationWappMessageTempWSDTO;
-import com.faas.core.data.ws.api.operation.details.channel.message.wapp.dto.ApiOperationWappMessageWSDTO;
-import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.message.wapp.ApiOperationWappMessageAccountWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.message.wapp.ApiOperationWappMessageChannelWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.message.wapp.ApiOperationWappMessageTempWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.message.wapp.ApiOperationWappMessageWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.ApiOperationWappMessageAccountWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.ApiOperationWappMessageChannelWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.ApiOperationWappMessageTempWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.wapp.dto.ApiOperationWappMessageWSDTO;
+import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

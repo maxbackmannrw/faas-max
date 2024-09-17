@@ -1,7 +1,7 @@
 package com.faas.core.base.framework.asset.settings;
 
 import com.faas.core.data.db.asset.settings.AssetTypeDBModel;
-import com.faas.core.data.ws.base.asset.settings.dto.AssetTypeWSDTO;
+import com.faas.core.base.model.ws.asset.settings.dto.AssetTypeWSDTO;
 import com.faas.core.data.repo.asset.settings.AssetTypeRepository;
 import com.faas.core.misc.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;

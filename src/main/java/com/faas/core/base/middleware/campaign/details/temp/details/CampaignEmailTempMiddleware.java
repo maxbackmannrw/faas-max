@@ -1,9 +1,9 @@
 package com.faas.core.base.middleware.campaign.details.temp.details;
 
 import com.faas.core.base.framework.campaign.details.temp.details.CampaignEmailTempFramework;
-import com.faas.core.data.ws.base.campaign.details.temp.details.CampaignEmailTempWSModel;
-import com.faas.core.data.ws.base.campaign.details.temp.details.dto.CampaignEmailTempWSDTO;
-import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.base.model.ws.campaign.details.temp.details.CampaignEmailTempWSModel;
+import com.faas.core.base.model.ws.campaign.details.temp.details.dto.CampaignEmailTempWSDTO;
+import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

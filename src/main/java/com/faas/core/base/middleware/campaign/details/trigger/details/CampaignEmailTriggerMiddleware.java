@@ -1,9 +1,9 @@
 package com.faas.core.base.middleware.campaign.details.trigger.details;
 
 import com.faas.core.base.framework.campaign.details.trigger.details.CampaignEmailTriggerFramework;
-import com.faas.core.data.ws.base.campaign.details.trigger.details.CampaignEmailTriggerWSModel;
-import com.faas.core.data.ws.base.campaign.details.trigger.details.dto.CampaignEmailTriggerWSDTO;
-import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.base.model.ws.campaign.details.trigger.details.CampaignEmailTriggerWSModel;
+import com.faas.core.base.model.ws.campaign.details.trigger.details.dto.CampaignEmailTriggerWSDTO;
+import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

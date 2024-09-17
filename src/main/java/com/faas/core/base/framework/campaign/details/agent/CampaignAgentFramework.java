@@ -3,7 +3,7 @@ package com.faas.core.base.framework.campaign.details.agent;
 import com.faas.core.data.db.campaign.content.CampaignDBModel;
 import com.faas.core.data.db.campaign.details.agent.CampaignAgentDBModel;
 import com.faas.core.data.db.user.content.UserDBModel;
-import com.faas.core.data.ws.base.campaign.details.agent.dto.CampaignAgentWSDTO;
+import com.faas.core.base.model.ws.campaign.details.agent.dto.CampaignAgentWSDTO;
 import com.faas.core.data.repo.campaign.content.CampaignRepository;
 import com.faas.core.data.repo.campaign.details.agent.CampaignAgentRepository;
 import com.faas.core.data.repo.user.content.UserRepository;

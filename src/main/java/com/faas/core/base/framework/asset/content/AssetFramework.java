@@ -1,7 +1,7 @@
 package com.faas.core.base.framework.asset.content;
 
 import com.faas.core.data.db.asset.content.AssetDBModel;
-import com.faas.core.data.ws.base.asset.content.dto.AssetWSDTO;
+import com.faas.core.base.model.ws.asset.content.dto.AssetWSDTO;
 import com.faas.core.data.repo.asset.content.AssetRepository;
 import com.faas.core.data.repo.asset.settings.AssetTypeRepository;
 import com.faas.core.misc.config.AppUtils;

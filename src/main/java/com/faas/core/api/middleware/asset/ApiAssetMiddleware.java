@@ -1,8 +1,8 @@
 package com.faas.core.api.middleware.asset;
 
 import com.faas.core.api.framework.asset.ApiAssetFramework;
-import com.faas.core.data.ws.api.asset.ApiAssetWSModel;
-import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.api.model.ws.asset.ApiAssetWSModel;
+import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.misc.config.AppConstant;
 import com.faas.core.misc.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;

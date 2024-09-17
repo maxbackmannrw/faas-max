@@ -1,8 +1,8 @@
 package com.faas.core.api.framework.operation.details.channel.call.wapp;
 
-import com.faas.core.data.ws.api.operation.details.channel.call.wapp.dto.ApiOperationWappCallAccountWSDTO;
-import com.faas.core.data.ws.api.operation.details.channel.call.wapp.dto.ApiOperationWappCallChannelWSDTO;
-import com.faas.core.data.ws.api.operation.details.channel.call.wapp.dto.ApiOperationWappCallWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiOperationWappCallAccountWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiOperationWappCallChannelWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.call.wapp.dto.ApiOperationWappCallWSDTO;
 import com.faas.core.data.db.client.details.ClientDetailsDBModel;
 import com.faas.core.data.db.operation.content.OperationDBModel;
 import com.faas.core.data.db.operation.details.channel.OperationWappCallDBModel;

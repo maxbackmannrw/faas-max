@@ -1,9 +1,9 @@
 package com.faas.core.base.middleware.operation.manager.details;
 
 import com.faas.core.base.framework.operation.manager.details.OperationManagerDetailsFramework;
-import com.faas.core.data.ws.base.general.GeneralWSModel;
-import com.faas.core.data.ws.base.operation.manager.details.OperationManagerDetailsWSModel;
-import com.faas.core.data.ws.base.operation.manager.details.dto.OperationManagerDetailsWSDTO;
+import com.faas.core.base.model.ws.general.GeneralWSModel;
+import com.faas.core.base.model.ws.operation.manager.details.OperationManagerDetailsWSModel;
+import com.faas.core.base.model.ws.operation.manager.details.dto.OperationManagerDetailsWSDTO;
 import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

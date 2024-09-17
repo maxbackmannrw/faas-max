@@ -1,9 +1,9 @@
 package com.faas.core.base.middleware.scenario.details;
 
 import com.faas.core.base.framework.scenario.details.ScenarioDetailsFramework;
-import com.faas.core.data.ws.base.general.GeneralWSModel;
-import com.faas.core.data.ws.base.scenario.details.ScenarioDataWSModel;
-import com.faas.core.data.ws.base.scenario.details.dto.ScenarioDataWSDTO;
+import com.faas.core.base.model.ws.general.GeneralWSModel;
+import com.faas.core.base.model.ws.scenario.details.ScenarioDataWSModel;
+import com.faas.core.base.model.ws.scenario.details.dto.ScenarioDataWSDTO;
 import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

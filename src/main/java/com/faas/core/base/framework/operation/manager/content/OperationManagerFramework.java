@@ -1,8 +1,8 @@
 package com.faas.core.base.framework.operation.manager.content;
 
 import com.faas.core.data.db.operation.content.OperationDBModel;
-import com.faas.core.data.ws.base.operation.content.dto.OperationWSDTO;
-import com.faas.core.data.ws.base.operation.manager.content.dto.OperationManagerWSDTO;
+import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
+import com.faas.core.base.model.ws.operation.manager.content.dto.OperationManagerWSDTO;
 import com.faas.core.data.repo.operation.content.OperationRepository;
 import com.faas.core.data.repo.operation.details.channel.*;
 import com.faas.core.misc.config.AppUtils;

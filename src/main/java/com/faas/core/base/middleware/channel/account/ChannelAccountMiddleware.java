@@ -2,9 +2,9 @@ package com.faas.core.base.middleware.channel.account;
 
 import com.faas.core.base.framework.channel.account.ChannelAccountFramework;
 import com.faas.core.data.db.channel.account.*;
-import com.faas.core.data.ws.base.channel.account.*;
-import com.faas.core.data.ws.base.channel.account.dto.*;
-import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.base.model.ws.channel.account.*;
+import com.faas.core.base.model.ws.channel.account.dto.*;
+import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.data.repo.channel.account.*;
 import com.faas.core.misc.config.AppConstant;
 import com.faas.core.misc.config.AppUtils;

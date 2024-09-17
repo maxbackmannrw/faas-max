@@ -3,7 +3,7 @@ package com.faas.core.base.framework.user.content;
 import com.faas.core.data.db.user.content.UserDBModel;
 import com.faas.core.data.db.user.details.UserDetailsDBModel;
 import com.faas.core.data.db.user.settings.UserRoleDBModel;
-import com.faas.core.data.ws.base.user.content.dto.UserWSDTO;
+import com.faas.core.base.model.ws.user.content.dto.UserWSDTO;
 import com.faas.core.data.repo.user.content.UserRepository;
 import com.faas.core.data.repo.user.details.UserDetailsRepository;
 import com.faas.core.data.repo.user.settings.UserRoleRepository;

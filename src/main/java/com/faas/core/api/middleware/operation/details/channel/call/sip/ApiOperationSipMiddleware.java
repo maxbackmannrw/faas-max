@@ -1,13 +1,13 @@
 package com.faas.core.api.middleware.operation.details.channel.call.sip;
 
 import com.faas.core.api.framework.operation.details.channel.call.sip.ApiOperationSipFramework;
-import com.faas.core.data.ws.api.operation.details.channel.call.sip.ApiOperationSipAccountWSModel;
-import com.faas.core.data.ws.api.operation.details.channel.call.sip.ApiOperationSipCallWSModel;
-import com.faas.core.data.ws.api.operation.details.channel.call.sip.ApiOperationSipChannelWSModel;
-import com.faas.core.data.ws.api.operation.details.channel.call.sip.dto.ApiOperationSipAccountWSDTO;
-import com.faas.core.data.ws.api.operation.details.channel.call.sip.dto.ApiOperationSipCallWSDTO;
-import com.faas.core.data.ws.api.operation.details.channel.call.sip.dto.ApiOperationSipChannelWSDTO;
-import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.call.sip.ApiOperationSipAccountWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.call.sip.ApiOperationSipCallWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.call.sip.ApiOperationSipChannelWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationSipAccountWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationSipCallWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationSipChannelWSDTO;
+import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

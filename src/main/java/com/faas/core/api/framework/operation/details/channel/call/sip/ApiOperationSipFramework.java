@@ -1,8 +1,8 @@
 package com.faas.core.api.framework.operation.details.channel.call.sip;
 
-import com.faas.core.data.ws.api.operation.details.channel.call.sip.dto.ApiOperationSipAccountWSDTO;
-import com.faas.core.data.ws.api.operation.details.channel.call.sip.dto.ApiOperationSipCallWSDTO;
-import com.faas.core.data.ws.api.operation.details.channel.call.sip.dto.ApiOperationSipChannelWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationSipAccountWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationSipCallWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationSipChannelWSDTO;
 import com.faas.core.data.db.client.details.ClientDetailsDBModel;
 import com.faas.core.data.db.operation.content.OperationDBModel;
 import com.faas.core.data.db.operation.details.channel.OperationSipCallDBModel;

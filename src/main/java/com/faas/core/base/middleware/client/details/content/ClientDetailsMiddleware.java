@@ -1,9 +1,9 @@
 package com.faas.core.base.middleware.client.details.content;
 
 import com.faas.core.base.framework.client.details.content.ClientDetailsFramework;
-import com.faas.core.data.ws.base.client.details.content.*;
-import com.faas.core.data.ws.base.client.details.content.dto.*;
-import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.base.model.ws.client.details.content.*;
+import com.faas.core.base.model.ws.client.details.content.dto.*;
+import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

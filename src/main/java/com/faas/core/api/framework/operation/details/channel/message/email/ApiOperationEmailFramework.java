@@ -1,9 +1,9 @@
 package com.faas.core.api.framework.operation.details.channel.message.email;
 
-import com.faas.core.data.ws.api.operation.details.channel.message.email.dto.ApiOperationEmailAccountWSDTO;
-import com.faas.core.data.ws.api.operation.details.channel.message.email.dto.ApiOperationEmailChannelWSDTO;
-import com.faas.core.data.ws.api.operation.details.channel.message.email.dto.ApiOperationEmailTempWSDTO;
-import com.faas.core.data.ws.api.operation.details.channel.message.email.dto.ApiOperationEmailWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiOperationEmailAccountWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiOperationEmailChannelWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiOperationEmailTempWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiOperationEmailWSDTO;
 import com.faas.core.data.db.client.details.ClientDetailsDBModel;
 import com.faas.core.data.db.operation.content.OperationDBModel;
 import com.faas.core.data.db.operation.details.channel.OperationEmailDBModel;

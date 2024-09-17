@@ -7,7 +7,7 @@ import com.faas.core.data.db.client.details.dao.ClientDataDAO;
 import com.faas.core.data.db.client.details.dao.ClientEmailDAO;
 import com.faas.core.data.db.client.details.dao.ClientPhoneDAO;
 import com.faas.core.data.db.utilz.DataTypeDBModel;
-import com.faas.core.data.ws.base.client.details.content.dto.*;
+import com.faas.core.base.model.ws.client.details.content.dto.*;
 import com.faas.core.data.repo.client.content.ClientRepository;
 import com.faas.core.data.repo.client.details.ClientDetailsRepository;
 import com.faas.core.data.repo.remoteapp.RemoteAppRepository;

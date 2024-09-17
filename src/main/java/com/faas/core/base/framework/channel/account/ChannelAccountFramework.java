@@ -2,7 +2,7 @@ package com.faas.core.base.framework.channel.account;
 
 import com.faas.core.data.db.channel.account.*;
 import com.faas.core.data.db.channel.settings.WappServerDBModel;
-import com.faas.core.data.ws.base.channel.account.dto.*;
+import com.faas.core.base.model.ws.channel.account.dto.*;
 import com.faas.core.data.repo.channel.account.*;
 import com.faas.core.data.repo.channel.settings.WappServerRepository;
 import com.faas.core.misc.config.AppUtils;

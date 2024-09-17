@@ -1,8 +1,8 @@
 package com.faas.core.base.middleware.dashboard.flow;
 
 import com.faas.core.base.framework.dashboard.inquiry.DashInquiryFramework;
-import com.faas.core.data.ws.base.dashboard.flow.DashboardFlowWSModel;
-import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.base.model.ws.dashboard.flow.DashboardFlowWSModel;
+import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

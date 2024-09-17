@@ -2,7 +2,7 @@ package com.faas.core.base.framework.campaign.details.temp.details;
 
 import com.faas.core.data.db.campaign.details.temp.PushTempDBModel;
 import com.faas.core.data.db.channel.settings.PushTypeDBModel;
-import com.faas.core.data.ws.base.campaign.details.temp.details.dto.CampaignPushTempWSDTO;
+import com.faas.core.base.model.ws.campaign.details.temp.details.dto.CampaignPushTempWSDTO;
 import com.faas.core.data.repo.campaign.details.temp.PushTempRepository;
 import com.faas.core.data.repo.channel.settings.PushTypeRepository;
 import com.faas.core.misc.config.AppUtils;

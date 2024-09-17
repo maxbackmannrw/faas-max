@@ -1,6 +1,6 @@
 package com.faas.core.api.framework.operation.details.remote;
 
-import com.faas.core.data.ws.api.operation.details.remote.dto.ApiOperationClientRemoteWSDTO;
+import com.faas.core.api.model.ws.operation.details.remote.dto.ApiOperationClientRemoteWSDTO;
 import com.faas.core.data.db.operation.content.OperationDBModel;
 import com.faas.core.data.db.remoteapp.RemoteAppDBModel;
 import com.faas.core.data.repo.client.content.ClientRepository;

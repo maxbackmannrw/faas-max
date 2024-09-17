@@ -2,8 +2,8 @@ package com.faas.core.base.framework.campaign.settings;
 
 import com.faas.core.data.db.campaign.settings.CampaignTypeDBModel;
 import com.faas.core.data.db.campaign.settings.TriggerTypeDBModel;
-import com.faas.core.data.ws.base.campaign.settings.dto.CampaignTypeWSDTO;
-import com.faas.core.data.ws.base.campaign.settings.dto.TriggerTypeWSDTO;
+import com.faas.core.base.model.ws.campaign.settings.dto.CampaignTypeWSDTO;
+import com.faas.core.base.model.ws.campaign.settings.dto.TriggerTypeWSDTO;
 import com.faas.core.data.repo.campaign.settings.CampaignTypeRepository;
 import com.faas.core.data.repo.campaign.settings.TriggerTypeRepository;
 import com.faas.core.data.repo.scenario.settings.ScenarioTypeRepository;

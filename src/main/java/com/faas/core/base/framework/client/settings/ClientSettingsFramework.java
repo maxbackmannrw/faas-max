@@ -1,7 +1,7 @@
 package com.faas.core.base.framework.client.settings;
 
 import com.faas.core.data.db.client.settings.ClientTypeDBModel;
-import com.faas.core.data.ws.base.client.settings.dto.ClientTypeWSDTO;
+import com.faas.core.base.model.ws.client.settings.dto.ClientTypeWSDTO;
 import com.faas.core.data.repo.client.settings.ClientTypeRepository;
 import com.faas.core.misc.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;

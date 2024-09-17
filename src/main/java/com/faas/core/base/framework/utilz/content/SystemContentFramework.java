@@ -1,7 +1,7 @@
 package com.faas.core.base.framework.utilz.content;
 
-import com.faas.core.data.ws.base.utilz.content.dto.SystemContentWSDTO;
-import com.faas.core.data.ws.base.utilz.content.dto.SystemInitWSDTO;
+import com.faas.core.base.model.ws.utilz.content.dto.SystemContentWSDTO;
+import com.faas.core.base.model.ws.utilz.content.dto.SystemInitWSDTO;
 import com.faas.core.misc.config.AppConstant;
 import com.faas.core.misc.helpers.utilz.UtilzHelper;
 import org.springframework.beans.factory.annotation.Autowired;

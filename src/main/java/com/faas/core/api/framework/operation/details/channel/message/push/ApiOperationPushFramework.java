@@ -1,9 +1,9 @@
 package com.faas.core.api.framework.operation.details.channel.message.push;
 
-import com.faas.core.data.ws.api.operation.details.channel.message.push.dto.ApiOperationPushAccountWSDTO;
-import com.faas.core.data.ws.api.operation.details.channel.message.push.dto.ApiOperationPushChannelWSDTO;
-import com.faas.core.data.ws.api.operation.details.channel.message.push.dto.ApiOperationPushTempWSDTO;
-import com.faas.core.data.ws.api.operation.details.channel.message.push.dto.ApiOperationPushWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushAccountWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushChannelWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushTempWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.push.dto.ApiOperationPushWSDTO;
 import com.faas.core.data.db.client.details.ClientDetailsDBModel;
 import com.faas.core.data.db.operation.content.OperationDBModel;
 import com.faas.core.data.db.operation.details.channel.OperationPushDBModel;

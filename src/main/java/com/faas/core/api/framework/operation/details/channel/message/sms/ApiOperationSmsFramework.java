@@ -1,9 +1,9 @@
 package com.faas.core.api.framework.operation.details.channel.message.sms;
 
-import com.faas.core.data.ws.api.operation.details.channel.message.sms.dto.ApiOperationSmsAccountWSDTO;
-import com.faas.core.data.ws.api.operation.details.channel.message.sms.dto.ApiOperationSmsChannelWSDTO;
-import com.faas.core.data.ws.api.operation.details.channel.message.sms.dto.ApiOperationSmsTempWSDTO;
-import com.faas.core.data.ws.api.operation.details.channel.message.sms.dto.ApiOperationSmsWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiOperationSmsAccountWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiOperationSmsChannelWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiOperationSmsTempWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.sms.dto.ApiOperationSmsWSDTO;
 import com.faas.core.data.db.client.details.ClientDetailsDBModel;
 import com.faas.core.data.db.client.details.dao.ClientPhoneDAO;
 import com.faas.core.data.db.operation.content.OperationDBModel;

@@ -1,11 +1,11 @@
 package com.faas.core.base.middleware.operation.manager.content;
 
 import com.faas.core.base.framework.operation.manager.content.OperationManagerFramework;
-import com.faas.core.data.ws.base.general.GeneralWSModel;
-import com.faas.core.data.ws.base.operation.content.OperationWSModel;
-import com.faas.core.data.ws.base.operation.content.dto.OperationWSDTO;
-import com.faas.core.data.ws.base.operation.manager.content.OperationManagerWSModel;
-import com.faas.core.data.ws.base.operation.manager.content.dto.OperationManagerWSDTO;
+import com.faas.core.base.model.ws.general.GeneralWSModel;
+import com.faas.core.base.model.ws.operation.content.OperationWSModel;
+import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
+import com.faas.core.base.model.ws.operation.manager.content.OperationManagerWSModel;
+import com.faas.core.base.model.ws.operation.manager.content.dto.OperationManagerWSDTO;
 import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

@@ -1,6 +1,6 @@
 package com.faas.core.api.framework.operation.details.osint;
 
-import com.faas.core.data.ws.api.operation.details.osint.dto.ApiOperationOSINTWSDTO;
+import com.faas.core.api.model.ws.operation.details.osint.dto.ApiOperationOSINTWSDTO;
 import com.faas.core.data.repo.client.content.ClientRepository;
 import com.faas.core.misc.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;

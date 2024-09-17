@@ -2,7 +2,7 @@ package com.faas.core.base.framework.campaign.details.temp.details;
 
 import com.faas.core.data.db.campaign.details.temp.SmsTempDBModel;
 import com.faas.core.data.db.channel.settings.MessageTypeDBModel;
-import com.faas.core.data.ws.base.campaign.details.temp.details.dto.CampaignSmsTempWSDTO;
+import com.faas.core.base.model.ws.campaign.details.temp.details.dto.CampaignSmsTempWSDTO;
 import com.faas.core.data.repo.campaign.details.temp.SmsTempRepository;
 import com.faas.core.data.repo.channel.settings.MessageTypeRepository;
 import com.faas.core.misc.config.AppUtils;

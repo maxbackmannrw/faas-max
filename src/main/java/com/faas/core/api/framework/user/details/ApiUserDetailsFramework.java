@@ -1,8 +1,8 @@
 package com.faas.core.api.framework.user.details;
 
-import com.faas.core.data.ws.api.agent.details.dto.ApiAgentDetailsWSDTO;
-import com.faas.core.data.ws.api.agent.details.dto.ApiAgentInfoWSDTO;
-import com.faas.core.data.ws.api.agent.details.dto.ApiAgentSipAccountWSDTO;
+import com.faas.core.api.model.ws.agent.details.dto.ApiAgentDetailsWSDTO;
+import com.faas.core.api.model.ws.agent.details.dto.ApiAgentInfoWSDTO;
+import com.faas.core.api.model.ws.agent.details.dto.ApiAgentSipAccountWSDTO;
 import com.faas.core.data.db.user.details.UserDetailsDBModel;
 import com.faas.core.data.repo.operation.content.OperationRepository;
 import com.faas.core.data.repo.user.content.UserRepository;

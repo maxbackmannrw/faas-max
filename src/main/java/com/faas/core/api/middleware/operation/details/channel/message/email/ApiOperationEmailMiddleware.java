@@ -1,15 +1,15 @@
 package com.faas.core.api.middleware.operation.details.channel.message.email;
 
 import com.faas.core.api.framework.operation.details.channel.message.email.ApiOperationEmailFramework;
-import com.faas.core.data.ws.api.operation.details.channel.message.email.ApiOperationEmailAccountWSModel;
-import com.faas.core.data.ws.api.operation.details.channel.message.email.ApiOperationEmailChannelWSModel;
-import com.faas.core.data.ws.api.operation.details.channel.message.email.ApiOperationEmailTempWSModel;
-import com.faas.core.data.ws.api.operation.details.channel.message.email.ApiOperationEmailWSModel;
-import com.faas.core.data.ws.api.operation.details.channel.message.email.dto.ApiOperationEmailAccountWSDTO;
-import com.faas.core.data.ws.api.operation.details.channel.message.email.dto.ApiOperationEmailChannelWSDTO;
-import com.faas.core.data.ws.api.operation.details.channel.message.email.dto.ApiOperationEmailTempWSDTO;
-import com.faas.core.data.ws.api.operation.details.channel.message.email.dto.ApiOperationEmailWSDTO;
-import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.message.email.ApiOperationEmailAccountWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.message.email.ApiOperationEmailChannelWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.message.email.ApiOperationEmailTempWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.message.email.ApiOperationEmailWSModel;
+import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiOperationEmailAccountWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiOperationEmailChannelWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiOperationEmailTempWSDTO;
+import com.faas.core.api.model.ws.operation.details.channel.message.email.dto.ApiOperationEmailWSDTO;
+import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

@@ -1,9 +1,9 @@
 package com.faas.core.base.middleware.remote.settings;
 
 import com.faas.core.base.framework.remote.settings.RemoteSettingsFramework;
-import com.faas.core.data.ws.base.general.GeneralWSModel;
-import com.faas.core.data.ws.base.remote.settings.RemoteTypeWSModel;
-import com.faas.core.data.ws.base.remote.settings.dto.RemoteTypeWSDTO;
+import com.faas.core.base.model.ws.general.GeneralWSModel;
+import com.faas.core.base.model.ws.remote.settings.RemoteTypeWSModel;
+import com.faas.core.base.model.ws.remote.settings.dto.RemoteTypeWSDTO;
 import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

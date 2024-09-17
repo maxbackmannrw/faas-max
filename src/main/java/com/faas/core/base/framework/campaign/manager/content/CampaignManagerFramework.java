@@ -1,8 +1,8 @@
 package com.faas.core.base.framework.campaign.manager.content;
 
 import com.faas.core.data.db.campaign.content.CampaignDBModel;
-import com.faas.core.data.ws.base.campaign.manager.content.dto.CampaignManagerDetailsWSDTO;
-import com.faas.core.data.ws.base.campaign.manager.content.dto.CampaignManagerWSDTO;
+import com.faas.core.base.model.ws.campaign.manager.content.dto.CampaignManagerDetailsWSDTO;
+import com.faas.core.base.model.ws.campaign.manager.content.dto.CampaignManagerWSDTO;
 import com.faas.core.data.repo.campaign.content.CampaignRepository;
 import com.faas.core.misc.helpers.campaign.CampaignHelper;
 import org.springframework.beans.factory.annotation.Autowired;

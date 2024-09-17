@@ -1,15 +1,15 @@
 package com.faas.core.api.middleware.operation.details.content;
 
 import com.faas.core.api.framework.operation.details.content.ApiOperationDetailsFramework;
-import com.faas.core.data.ws.api.campaign.details.ApiCampaignDetailsWSModel;
-import com.faas.core.data.ws.api.campaign.details.dto.ApiCampaignDetailsWSDTO;
-import com.faas.core.data.ws.api.operation.content.ApiOperationWSModel;
-import com.faas.core.data.ws.api.operation.content.dto.ApiOperationWSDTO;
-import com.faas.core.data.ws.api.operation.details.content.ApiOperationActivityWSModel;
-import com.faas.core.data.ws.api.operation.details.content.ApiOperationDetailsWSModel;
-import com.faas.core.data.ws.api.operation.details.content.dto.ApiOperationActivityWSDTO;
-import com.faas.core.data.ws.api.operation.details.content.dto.ApiOperationDetailsWSDTO;
-import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.api.model.ws.campaign.details.ApiCampaignDetailsWSModel;
+import com.faas.core.api.model.ws.campaign.details.dto.ApiCampaignDetailsWSDTO;
+import com.faas.core.api.model.ws.operation.content.ApiOperationWSModel;
+import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
+import com.faas.core.api.model.ws.operation.details.content.ApiOperationActivityWSModel;
+import com.faas.core.api.model.ws.operation.details.content.ApiOperationDetailsWSModel;
+import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationActivityWSDTO;
+import com.faas.core.api.model.ws.operation.details.content.dto.ApiOperationDetailsWSDTO;
+import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

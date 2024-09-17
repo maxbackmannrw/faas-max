@@ -3,7 +3,7 @@ package com.faas.core.base.framework.campaign.details.trigger.details;
 import com.faas.core.data.db.campaign.details.trigger.SmsTriggerDBModel;
 import com.faas.core.data.db.campaign.settings.TriggerTypeDBModel;
 import com.faas.core.data.db.channel.account.SmsAccountDBModel;
-import com.faas.core.data.ws.base.campaign.details.trigger.details.dto.CampaignSmsTriggerWSDTO;
+import com.faas.core.base.model.ws.campaign.details.trigger.details.dto.CampaignSmsTriggerWSDTO;
 import com.faas.core.data.repo.campaign.details.trigger.SmsTriggerRepository;
 import com.faas.core.data.repo.campaign.settings.TriggerTypeRepository;
 import com.faas.core.data.repo.channel.account.SmsAccountRepository;

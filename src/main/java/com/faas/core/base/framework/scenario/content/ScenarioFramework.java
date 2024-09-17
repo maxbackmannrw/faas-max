@@ -2,7 +2,7 @@ package com.faas.core.base.framework.scenario.content;
 
 import com.faas.core.data.db.scenario.content.ScenarioDBModel;
 import com.faas.core.data.db.scenario.settings.ScenarioTypeDBModel;
-import com.faas.core.data.ws.base.scenario.content.dto.ScenarioWSDTO;
+import com.faas.core.base.model.ws.scenario.content.dto.ScenarioWSDTO;
 import com.faas.core.data.repo.scenario.content.ScenarioRepository;
 import com.faas.core.data.repo.scenario.settings.ScenarioTypeRepository;
 import com.faas.core.data.repo.utilz.DataTypeRepository;

@@ -2,7 +2,7 @@ package com.faas.core.base.framework.remote.content;
 
 import com.faas.core.data.db.remote.content.RemoteDBModel;
 import com.faas.core.data.db.remote.settings.RemoteTypeDBModel;
-import com.faas.core.data.ws.base.remote.content.dto.RemoteWSDTO;
+import com.faas.core.base.model.ws.remote.content.dto.RemoteWSDTO;
 import com.faas.core.data.repo.remote.content.RemoteRepository;
 import com.faas.core.data.repo.remote.details.RemoteUrlRepository;
 import com.faas.core.data.repo.remote.settings.RemoteTypeRepository;

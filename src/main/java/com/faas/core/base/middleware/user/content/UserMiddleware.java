@@ -1,9 +1,9 @@
 package com.faas.core.base.middleware.user.content;
 
 import com.faas.core.base.framework.user.content.UserFramework;
-import com.faas.core.data.ws.base.general.GeneralWSModel;
-import com.faas.core.data.ws.base.user.content.UserWSModel;
-import com.faas.core.data.ws.base.user.content.dto.UserWSDTO;
+import com.faas.core.base.model.ws.general.GeneralWSModel;
+import com.faas.core.base.model.ws.user.content.UserWSModel;
+import com.faas.core.base.model.ws.user.content.dto.UserWSDTO;
 import com.faas.core.data.repo.user.content.UserRepository;
 import com.faas.core.misc.config.AppConstant;
 import com.faas.core.misc.config.AppUtils;

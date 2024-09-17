@@ -1,6 +1,6 @@
 package com.faas.core.base.framework.campaign.details.trigger.content;
 
-import com.faas.core.data.ws.base.campaign.details.trigger.content.dto.CampaignTriggerWSDTO;
+import com.faas.core.base.model.ws.campaign.details.trigger.content.dto.CampaignTriggerWSDTO;
 import com.faas.core.misc.helpers.campaign.CampaignHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

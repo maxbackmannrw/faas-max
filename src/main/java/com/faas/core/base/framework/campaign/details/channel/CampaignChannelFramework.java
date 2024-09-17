@@ -5,7 +5,7 @@ import com.faas.core.data.db.campaign.details.channel.dao.*;
 import com.faas.core.data.db.channel.account.EmailAccountDBModel;
 import com.faas.core.data.db.channel.account.PushAccountDBModel;
 import com.faas.core.data.db.channel.account.SmsAccountDBModel;
-import com.faas.core.data.ws.base.campaign.details.channel.dto.*;
+import com.faas.core.base.model.ws.campaign.details.channel.dto.*;
 import com.faas.core.data.repo.campaign.details.channel.CampaignChannelRepository;
 import com.faas.core.data.repo.channel.account.EmailAccountRepository;
 import com.faas.core.data.repo.channel.account.PushAccountRepository;

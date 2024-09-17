@@ -1,15 +1,15 @@
 package com.faas.core.base.middleware.remoteapp.content;
 
 import com.faas.core.base.framework.remoteapp.content.RemoteAppFramework;
-import com.faas.core.data.ws.base.general.GeneralWSModel;
-import com.faas.core.data.ws.base.remoteapp.content.RemoteAppListWSModel;
-import com.faas.core.data.ws.base.remoteapp.content.RemoteAppSummaryWSModel;
-import com.faas.core.data.ws.base.remoteapp.content.RemoteAppWSModel;
-import com.faas.core.data.ws.base.remoteapp.content.dto.RemoteAppListWSDTO;
-import com.faas.core.data.ws.base.remoteapp.content.dto.RemoteAppSummaryWSDTO;
-import com.faas.core.data.ws.base.remoteapp.content.dto.RemoteAppWSDTO;
-import com.faas.core.data.ws.base.remoteapp.details.RemoteAppDetailsWSModel;
-import com.faas.core.data.ws.base.remoteapp.details.dto.RemoteAppDetailsWSDTO;
+import com.faas.core.base.model.ws.general.GeneralWSModel;
+import com.faas.core.base.model.ws.remoteapp.content.RemoteAppListWSModel;
+import com.faas.core.base.model.ws.remoteapp.content.RemoteAppSummaryWSModel;
+import com.faas.core.base.model.ws.remoteapp.content.RemoteAppWSModel;
+import com.faas.core.base.model.ws.remoteapp.content.dto.RemoteAppListWSDTO;
+import com.faas.core.base.model.ws.remoteapp.content.dto.RemoteAppSummaryWSDTO;
+import com.faas.core.base.model.ws.remoteapp.content.dto.RemoteAppWSDTO;
+import com.faas.core.base.model.ws.remoteapp.details.RemoteAppDetailsWSModel;
+import com.faas.core.base.model.ws.remoteapp.details.dto.RemoteAppDetailsWSDTO;
 import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

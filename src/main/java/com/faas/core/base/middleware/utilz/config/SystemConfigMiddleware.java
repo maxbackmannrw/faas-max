@@ -1,13 +1,13 @@
 package com.faas.core.base.middleware.utilz.config;
 
 import com.faas.core.base.framework.utilz.config.SystemConfigFramework;
-import com.faas.core.data.ws.base.general.GeneralWSModel;
-import com.faas.core.data.ws.base.utilz.config.CityWSModel;
-import com.faas.core.data.ws.base.utilz.config.CountryWSModel;
-import com.faas.core.data.ws.base.utilz.config.DataTypeWSModel;
-import com.faas.core.data.ws.base.utilz.config.dto.CityWSDTO;
-import com.faas.core.data.ws.base.utilz.config.dto.CountryWSDTO;
-import com.faas.core.data.ws.base.utilz.config.dto.DataTypeWSDTO;
+import com.faas.core.base.model.ws.general.GeneralWSModel;
+import com.faas.core.base.model.ws.utilz.config.CityWSModel;
+import com.faas.core.base.model.ws.utilz.config.CountryWSModel;
+import com.faas.core.base.model.ws.utilz.config.DataTypeWSModel;
+import com.faas.core.base.model.ws.utilz.config.dto.CityWSDTO;
+import com.faas.core.base.model.ws.utilz.config.dto.CountryWSDTO;
+import com.faas.core.base.model.ws.utilz.config.dto.DataTypeWSDTO;
 import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

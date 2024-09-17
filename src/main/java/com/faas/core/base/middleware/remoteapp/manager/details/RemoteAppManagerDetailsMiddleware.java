@@ -1,8 +1,8 @@
 package com.faas.core.base.middleware.remoteapp.manager.details;
 
 import com.faas.core.base.framework.remoteapp.manager.details.RemoteAppManagerDetailsFramework;
-import com.faas.core.data.ws.base.general.GeneralWSModel;
-import com.faas.core.data.ws.base.remoteapp.content.RemoteAppListWSModel;
+import com.faas.core.base.model.ws.general.GeneralWSModel;
+import com.faas.core.base.model.ws.remoteapp.content.RemoteAppListWSModel;
 import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

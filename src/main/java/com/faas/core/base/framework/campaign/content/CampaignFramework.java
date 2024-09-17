@@ -2,7 +2,7 @@ package com.faas.core.base.framework.campaign.content;
 
 import com.faas.core.data.db.campaign.content.CampaignDBModel;
 import com.faas.core.data.db.campaign.settings.CampaignTypeDBModel;
-import com.faas.core.data.ws.base.campaign.content.dto.CampaignWSDTO;
+import com.faas.core.base.model.ws.campaign.content.dto.CampaignWSDTO;
 import com.faas.core.data.repo.campaign.content.CampaignRepository;
 import com.faas.core.data.repo.campaign.details.channel.CampaignChannelRepository;
 import com.faas.core.data.repo.campaign.details.scenario.CampaignScenarioRepository;

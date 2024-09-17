@@ -1,11 +1,11 @@
 package com.faas.core.api.middleware.operation.details.scenario;
 
 import com.faas.core.api.framework.operation.details.scenario.ApiOperationScenarioFramework;
-import com.faas.core.data.ws.api.operation.details.scenario.ApiOperationScenarioWSModel;
-import com.faas.core.data.ws.api.operation.details.scenario.ApiProcessScenarioWSModel;
-import com.faas.core.data.ws.api.operation.details.scenario.dto.ApiOperationScenarioWSDTO;
-import com.faas.core.data.ws.api.operation.details.scenario.dto.ApiProcessScenarioWSDTO;
-import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.api.model.ws.operation.details.scenario.ApiOperationScenarioWSModel;
+import com.faas.core.api.model.ws.operation.details.scenario.ApiProcessScenarioWSModel;
+import com.faas.core.api.model.ws.operation.details.scenario.dto.ApiOperationScenarioWSDTO;
+import com.faas.core.api.model.ws.operation.details.scenario.dto.ApiProcessScenarioWSDTO;
+import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

@@ -1,9 +1,9 @@
 package com.faas.core.api.middleware.operation.details.osint;
 
 import com.faas.core.api.framework.operation.details.osint.ApiOperationOSINTFramework;
-import com.faas.core.data.ws.api.operation.details.osint.ApiOperationOSINTWSModel;
-import com.faas.core.data.ws.api.operation.details.osint.dto.ApiOperationOSINTWSDTO;
-import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.api.model.ws.operation.details.osint.ApiOperationOSINTWSModel;
+import com.faas.core.api.model.ws.operation.details.osint.dto.ApiOperationOSINTWSDTO;
+import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

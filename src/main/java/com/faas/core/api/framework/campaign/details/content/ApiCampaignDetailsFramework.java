@@ -1,7 +1,7 @@
 package com.faas.core.api.framework.campaign.details.content;
 
-import com.faas.core.data.ws.api.campaign.details.dto.ApiCampaignDetailsWSDTO;
-import com.faas.core.data.ws.api.general.ApiSummaryWSDTO;
+import com.faas.core.api.model.ws.campaign.details.dto.ApiCampaignDetailsWSDTO;
+import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
 import com.faas.core.data.db.campaign.content.CampaignDBModel;
 import com.faas.core.data.repo.campaign.content.CampaignRepository;
 import com.faas.core.data.repo.campaign.details.agent.CampaignAgentRepository;

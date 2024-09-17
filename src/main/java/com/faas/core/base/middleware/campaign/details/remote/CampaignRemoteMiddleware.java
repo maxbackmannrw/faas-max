@@ -1,9 +1,9 @@
 package com.faas.core.base.middleware.campaign.details.remote;
 
 import com.faas.core.base.framework.campaign.details.remote.CampaignRemoteFramework;
-import com.faas.core.data.ws.base.campaign.details.remote.CampaignRemoteWSModel;
-import com.faas.core.data.ws.base.campaign.details.remote.dto.CampaignRemoteWSDTO;
-import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.base.model.ws.campaign.details.remote.CampaignRemoteWSModel;
+import com.faas.core.base.model.ws.campaign.details.remote.dto.CampaignRemoteWSDTO;
+import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

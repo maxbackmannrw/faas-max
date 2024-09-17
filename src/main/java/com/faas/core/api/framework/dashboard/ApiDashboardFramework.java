@@ -1,11 +1,11 @@
 package com.faas.core.api.framework.dashboard;
 
-import com.faas.core.data.ws.api.campaign.content.dto.ApiCampaignWSDTO;
-import com.faas.core.data.ws.api.dashboard.dto.ApiDashboardWSDTO;
-import com.faas.core.data.ws.api.general.ApiSummaryWSDTO;
-import com.faas.core.data.ws.api.operation.content.dto.ApiOperationListWSDTO;
-import com.faas.core.data.ws.api.operation.content.dto.ApiOperationValidateWSDTO;
-import com.faas.core.data.ws.api.operation.content.dto.ApiOperationWSDTO;
+import com.faas.core.api.model.ws.campaign.content.dto.ApiCampaignWSDTO;
+import com.faas.core.api.model.ws.dashboard.dto.ApiDashboardWSDTO;
+import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
+import com.faas.core.api.model.ws.operation.content.dto.ApiOperationListWSDTO;
+import com.faas.core.api.model.ws.operation.content.dto.ApiOperationValidateWSDTO;
+import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
 import com.faas.core.data.db.campaign.details.agent.CampaignAgentDBModel;
 import com.faas.core.data.db.operation.content.OperationDBModel;
 import com.faas.core.data.db.user.content.UserDBModel;

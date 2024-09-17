@@ -1,13 +1,13 @@
 package com.faas.core.api.middleware.user.details;
 
 import com.faas.core.api.framework.user.details.ApiUserDetailsFramework;
-import com.faas.core.data.ws.api.agent.details.ApiAgentDetailsWSModel;
-import com.faas.core.data.ws.api.agent.details.ApiAgentInfoWSModel;
-import com.faas.core.data.ws.api.agent.details.ApiAgentSipAccountWSModel;
-import com.faas.core.data.ws.api.agent.details.dto.ApiAgentDetailsWSDTO;
-import com.faas.core.data.ws.api.agent.details.dto.ApiAgentInfoWSDTO;
-import com.faas.core.data.ws.api.agent.details.dto.ApiAgentSipAccountWSDTO;
-import com.faas.core.data.ws.base.general.GeneralWSModel;
+import com.faas.core.api.model.ws.agent.details.ApiAgentDetailsWSModel;
+import com.faas.core.api.model.ws.agent.details.ApiAgentInfoWSModel;
+import com.faas.core.api.model.ws.agent.details.ApiAgentSipAccountWSModel;
+import com.faas.core.api.model.ws.agent.details.dto.ApiAgentDetailsWSDTO;
+import com.faas.core.api.model.ws.agent.details.dto.ApiAgentInfoWSDTO;
+import com.faas.core.api.model.ws.agent.details.dto.ApiAgentSipAccountWSDTO;
+import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

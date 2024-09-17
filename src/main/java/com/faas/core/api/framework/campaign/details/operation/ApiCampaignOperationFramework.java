@@ -1,8 +1,8 @@
 package com.faas.core.api.framework.campaign.details.operation;
 
-import com.faas.core.data.ws.api.operation.content.dto.ApiOperationListWSDTO;
-import com.faas.core.data.ws.api.operation.content.dto.ApiOperationValidateWSDTO;
-import com.faas.core.data.ws.api.operation.content.dto.ApiOperationWSDTO;
+import com.faas.core.api.model.ws.operation.content.dto.ApiOperationListWSDTO;
+import com.faas.core.api.model.ws.operation.content.dto.ApiOperationValidateWSDTO;
+import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
 import com.faas.core.data.db.campaign.content.CampaignDBModel;
 import com.faas.core.data.db.operation.content.OperationDBModel;
 import com.faas.core.data.db.user.content.UserDBModel;
