@@ -9,13 +9,6 @@
   <component name="ChangeListManager">
     <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/controller/agent/content/ApiAgentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/controller/user/content/ApiUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/controller/agent/details/ApiAgentDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/controller/user/details/ApiUserDetailsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/controller/assets/ApiAssetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/controller/asset/ApiAssetController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/agent/content/ApiAgentFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/user/content/ApiUserFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/agent/details/ApiAgentDetailsFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/user/details/ApiUserDetailsFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/agent/content/ApiAgentMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/user/content/ApiUserMiddleware.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/agent/details/ApiAgentDetailsMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/user/details/ApiUserDetailsMiddleware.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -1240,15 +1233,8 @@
       <workItem from="1726442837482" duration="115000" />
       <workItem from="1726490065180" duration="118000" />
       <workItem from="1726502447868" duration="1142000" />
-      <workItem from="1726508759144" duration="8133000" />
-    </task>
-    <task id="LOCAL-00972" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1722579111440</created>
-      <option name="number" value="00972" />
-      <option name="presentableId" value="LOCAL-00972" />
-      <option name="project" value="LOCAL" />
-      <updated>1722579111441</updated>
+      <workItem from="1726508759144" duration="10974000" />
+      <workItem from="1726584617712" duration="1534000" />
     </task>
     <task id="LOCAL-00973" summary="almost finish">
       <option name="closed" value="true" />
@@ -1634,7 +1620,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726515447798</updated>
     </task>
-    <option name="localTasksCounter" value="1021" />
+    <task id="LOCAL-01021" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1726519986010</created>
+      <option name="number" value="01021" />
+      <option name="presentableId" value="LOCAL-01021" />
+      <option name="project" value="LOCAL" />
+      <updated>1726519986010</updated>
+    </task>
+    <option name="localTasksCounter" value="1022" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
