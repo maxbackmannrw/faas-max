@@ -5,17 +5,17 @@ import com.faas.core.api.model.ws.operation.content.dto.ApiOperationListWSDTO;
 
 import java.util.List;
 
-public class ApiDashboardWSDTO {
+public class ApiDashboardContentWSDTO {
 
     private ApiOperationListWSDTO manualOperation;
     private ApiOperationListWSDTO inquiryOperation;
     private ApiOperationListWSDTO activeOperation;
     private List<ApiCampaignWSDTO> activeCampaigns;
 
-    public ApiDashboardWSDTO() {
+    public ApiDashboardContentWSDTO() {
     }
 
-    public ApiDashboardWSDTO(ApiOperationListWSDTO manualOperation, ApiOperationListWSDTO inquiryOperation, ApiOperationListWSDTO activeOperation, List<ApiCampaignWSDTO> activeCampaigns) {
+    public ApiDashboardContentWSDTO(ApiOperationListWSDTO manualOperation, ApiOperationListWSDTO inquiryOperation, ApiOperationListWSDTO activeOperation, List<ApiCampaignWSDTO> activeCampaigns) {
         this.manualOperation = manualOperation;
         this.inquiryOperation = inquiryOperation;
         this.activeOperation = activeOperation;

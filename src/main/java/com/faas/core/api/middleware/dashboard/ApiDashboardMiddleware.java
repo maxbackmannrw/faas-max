@@ -3,8 +3,8 @@ package com.faas.core.api.middleware.dashboard;
 import com.faas.core.api.framework.dashboard.ApiDashboardFramework;
 import com.faas.core.api.model.ws.campaign.content.ApiCampaignWSModel;
 import com.faas.core.api.model.ws.campaign.content.dto.ApiCampaignWSDTO;
-import com.faas.core.api.model.ws.dashboard.ApiDashboardWSModel;
-import com.faas.core.api.model.ws.dashboard.dto.ApiDashboardWSDTO;
+import com.faas.core.api.model.ws.dashboard.ApiDashboardContentWSModel;
+import com.faas.core.api.model.ws.dashboard.dto.ApiDashboardContentWSDTO;
 import com.faas.core.api.model.ws.general.dto.ApiSummaryWSDTO;
 import com.faas.core.api.model.ws.general.ApiSummaryWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiOperationListWSModel;
@@ -29,14 +29,14 @@ public class ApiDashboardMiddleware {
     ApiDashboardFramework apiDashboardFramework;
 
 
-    public ApiDashboardWSModel apiGetDashboardContents(long agentId,int reqPage,int reqSize) {
+    public ApiDashboardContentWSModel apiGetDashboardContents(long agentId, int reqPage, int reqSize) {
 
-        ApiDashboardWSModel response = new ApiDashboardWSModel();
+        ApiDashboardContentWSModel response = new ApiDashboardContentWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiDashboardWSDTO dashboardWSDTO = apiDashboardFramework.apiGetDashboardContentsService(agentId,reqPage,reqSize);
-        if (dashboardWSDTO != null) {
-            response.setDashboard(dashboardWSDTO);
+        ApiDashboardContentWSDTO dashboardContentWSDTO = apiDashboardFramework.apiGetDashboardContentsService(agentId,reqPage,reqSize);
+        if (dashboardContentWSDTO != null) {
+            response.setDashboardContent(dashboardContentWSDTO);
         }
 
         general.setOperation("apiGetDashboardContents");

@@ -2,7 +2,7 @@ package com.faas.core.api.endpoint.controller.dashboard;
 
 import com.faas.core.api.middleware.dashboard.ApiDashboardMiddleware;
 import com.faas.core.api.model.ws.campaign.content.ApiCampaignWSModel;
-import com.faas.core.api.model.ws.dashboard.ApiDashboardWSModel;
+import com.faas.core.api.model.ws.dashboard.ApiDashboardContentWSModel;
 import com.faas.core.api.model.ws.general.ApiSummaryWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiOperationListWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiOperationValidateWSModel;
@@ -32,7 +32,7 @@ public class ApiDashboardController {
                                                      @RequestParam int reqPage,
                                                      @RequestParam int reqSize) {
 
-        ApiDashboardWSModel response = apiDashboardMiddleware.apiGetDashboardContents(agentId,reqPage,reqSize);
+        ApiDashboardContentWSModel response = apiDashboardMiddleware.apiGetDashboardContents(agentId,reqPage,reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

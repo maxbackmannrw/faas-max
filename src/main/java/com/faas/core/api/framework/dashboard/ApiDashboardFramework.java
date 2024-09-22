@@ -1,7 +1,7 @@
 package com.faas.core.api.framework.dashboard;
 
 import com.faas.core.api.model.ws.campaign.content.dto.ApiCampaignWSDTO;
-import com.faas.core.api.model.ws.dashboard.dto.ApiDashboardWSDTO;
+import com.faas.core.api.model.ws.dashboard.dto.ApiDashboardContentWSDTO;
 import com.faas.core.api.model.ws.general.dto.ApiSummaryWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationListWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationValidateWSDTO;
@@ -15,7 +15,6 @@ import com.faas.core.data.repo.campaign.details.agent.CampaignAgentRepository;
 import com.faas.core.data.repo.operation.content.OperationRepository;
 import com.faas.core.data.repo.user.content.UserRepository;
 import com.faas.core.misc.config.AppConstant;
-import com.faas.core.misc.config.AppUtils;
 import com.faas.core.misc.helpers.campaign.CampaignHelper;
 import com.faas.core.misc.helpers.operation.OperationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,9 +48,9 @@ public class ApiDashboardFramework {
     UserRepository userRepository;
 
 
-    public ApiDashboardWSDTO apiGetDashboardContentsService(long agentId,int reqPage,int reqSize) {
+    public ApiDashboardContentWSDTO apiGetDashboardContentsService(long agentId, int reqPage, int reqSize) {
 
-        ApiDashboardWSDTO dashboardWSDTO = new ApiDashboardWSDTO();
+        ApiDashboardContentWSDTO dashboardWSDTO = new ApiDashboardContentWSDTO();
         dashboardWSDTO.setManualOperation(operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationCategoryAndOperationState(agentId, AppConstant.MANUAL_OPERATION,AppConstant.READY_STATE, PageRequest.of(reqPage, reqSize))));
         dashboardWSDTO.setInquiryOperation(operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationCategoryAndOperationStateAndInquiryState(agentId, AppConstant.INQUIRY_OPERATION, AppConstant.READY_STATE, AppConstant.ACTIVE_STATE, PageRequest.of(reqPage, reqSize))));
         dashboardWSDTO.setActiveOperation(operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationState(agentId, AppConstant.ACTIVE_STATE, PageRequest.of(reqPage, reqSize))));
