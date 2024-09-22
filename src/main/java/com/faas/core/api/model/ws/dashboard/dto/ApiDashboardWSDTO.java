@@ -7,35 +7,35 @@ import java.util.List;
 
 public class ApiDashboardWSDTO {
 
-    private ApiOperationListWSDTO readyManualOperation;
-    private ApiOperationListWSDTO readyInquiryOperation;
+    private ApiOperationListWSDTO manualOperation;
+    private ApiOperationListWSDTO inquiryOperation;
     private ApiOperationListWSDTO activeOperation;
-    private List<ApiCampaignWSDTO> dashboardCampaigns;
+    private List<ApiCampaignWSDTO> activeCampaigns;
 
     public ApiDashboardWSDTO() {
     }
 
-    public ApiDashboardWSDTO(ApiOperationListWSDTO readyManualOperation, ApiOperationListWSDTO readyInquiryOperation, ApiOperationListWSDTO activeOperation, List<ApiCampaignWSDTO> dashboardCampaigns) {
-        this.readyManualOperation = readyManualOperation;
-        this.readyInquiryOperation = readyInquiryOperation;
+    public ApiDashboardWSDTO(ApiOperationListWSDTO manualOperation, ApiOperationListWSDTO inquiryOperation, ApiOperationListWSDTO activeOperation, List<ApiCampaignWSDTO> activeCampaigns) {
+        this.manualOperation = manualOperation;
+        this.inquiryOperation = inquiryOperation;
         this.activeOperation = activeOperation;
-        this.dashboardCampaigns = dashboardCampaigns;
+        this.activeCampaigns = activeCampaigns;
     }
 
-    public ApiOperationListWSDTO getReadyManualOperation() {
-        return readyManualOperation;
+    public ApiOperationListWSDTO getManualOperation() {
+        return manualOperation;
     }
 
-    public void setReadyManualOperation(ApiOperationListWSDTO readyManualOperation) {
-        this.readyManualOperation = readyManualOperation;
+    public void setManualOperation(ApiOperationListWSDTO manualOperation) {
+        this.manualOperation = manualOperation;
     }
 
-    public ApiOperationListWSDTO getReadyInquiryOperation() {
-        return readyInquiryOperation;
+    public ApiOperationListWSDTO getInquiryOperation() {
+        return inquiryOperation;
     }
 
-    public void setReadyInquiryOperation(ApiOperationListWSDTO readyInquiryOperation) {
-        this.readyInquiryOperation = readyInquiryOperation;
+    public void setInquiryOperation(ApiOperationListWSDTO inquiryOperation) {
+        this.inquiryOperation = inquiryOperation;
     }
 
     public ApiOperationListWSDTO getActiveOperation() {
@@ -46,11 +46,11 @@ public class ApiDashboardWSDTO {
         this.activeOperation = activeOperation;
     }
 
-    public List<ApiCampaignWSDTO> getDashboardCampaigns() {
-        return dashboardCampaigns;
+    public List<ApiCampaignWSDTO> getActiveCampaigns() {
+        return activeCampaigns;
     }
 
-    public void setDashboardCampaigns(List<ApiCampaignWSDTO> dashboardCampaigns) {
-        this.dashboardCampaigns = dashboardCampaigns;
+    public void setActiveCampaigns(List<ApiCampaignWSDTO> activeCampaigns) {
+        this.activeCampaigns = activeCampaigns;
     }
 }

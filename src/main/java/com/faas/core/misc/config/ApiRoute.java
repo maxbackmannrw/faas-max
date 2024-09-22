@@ -10,12 +10,12 @@ public class ApiRoute {
     public static final String API_GET_AGENT_SIP_ACCOUNT = "apigetagentsipaccount";
 
 
-    public static final String API_GET_DASHBOARD = "apigetdashboard";
+    public static final String API_GET_DASHBOARD_CONTENTS = "apigetdashboardcontents";
     public static final String API_GET_DASHBOARD_OPERATIONS = "apigetdashboardoperations";
     public static final String API_GET_DASHBOARD_OPERATION = "apigetdashboardoperation";
-    public static final String API_DASHBOARD_OPERATION_VALIDATE = "apidashboardoperationvalidate";
+    public static final String API_VALIDATE_DASHBOARD_OPERATION = "apivalidatedashboardoperation";
     public static final String API_GET_DASHBOARD_CAMPAIGNS = "apigetdashboardcampaigns";
-    public static final String API_GET_DASHBOARD_SUMMARY = "apigetdashboardsummary";
+    public static final String API_GET_DASHBOARD_SUMMARIES = "apigetdashboardsummaries";
 
 
     public static final String API_GET_AGENT_CAMPAIGNS = "apigetagentcampaigns";

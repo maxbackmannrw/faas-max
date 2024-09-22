@@ -6,6 +6,9 @@ public class ApiOperationWSDTO {
 
     private OperationDBModel operation;
 
+    public ApiOperationWSDTO() {
+    }
+
     public ApiOperationWSDTO(OperationDBModel operation) {
         this.operation = operation;
     }

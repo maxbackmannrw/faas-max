@@ -38,14 +38,10 @@ public class AppConstant {
     public static final String MAIN_TYPE = "MAIN_TYPE";
     public static final String SUB_TYPE = "SUB_TYPE";
 
-    public static final String MANUAL_SESSION = "MANUAL";
-    public static final String INQUIRY_SESSION = "INQUIRY";
-    public static final String AUTOMATIC_SESSION = "AUTOMATIC";
 
     public static final String MANUAL_OPERATION = "MANUAL";
     public static final String INQUIRY_OPERATION = "INQUIRY";
     public static final String AUTOMATIC_OPERATION = "AUTOMATIC";
-    public static final String ALL_OPERATIONS = "ALL_OPERATIONS";
 
 
     public static final String MANUAL_CAMPAIGN = "MANUAL";
@@ -102,11 +98,11 @@ public class AppConstant {
     public static final String FINISHED_CALL = "FINISHED_CALL";
 
 
-    public static final String AGENT_READY_OPERATIONS_SUMMARY = "AGENT_READY_OPERATIONS_SUMMARY";
-    public static final String AGENT_ACTIVE_OPERATIONS_SUMMARY = "AGENT_ACTIVE_OPERATIONS_SUMMARY";
-    public static final String AGENT_ALL_OPERATIONS_SUMMARY = "AGENT_ALL_OPERATIONS_SUMMARY";
+    public static final String AGENT_READY_OPERATION_SUMMARY = "AGENT_READY_OPERATION_SUMMARY";
+    public static final String AGENT_ACTIVE_OPERATION_SUMMARY = "AGENT_ACTIVE_OPERATION_SUMMARY";
+    public static final String AGENT_TOTAL_OPERATION_SUMMARY = "AGENT_TOTAL_OPERATION_SUMMARY";
 
-    public static final String AGENT_ALL_CAMPAIGNS_SUMMARY = "AGENT_ALL_CAMPAIGNS_SUMMARY";
+    public static final String AGENT_TOTAL_CAMPAIGN_SUMMARY = "AGENT_TOTAL_CAMPAIGN_SUMMARY";
 
 
     public static final String USER_TYPE = "USER_TYPE";

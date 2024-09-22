@@ -5,7 +5,7 @@ import com.faas.core.api.model.ws.campaign.content.ApiCampaignWSModel;
 import com.faas.core.api.model.ws.campaign.content.dto.ApiCampaignWSDTO;
 import com.faas.core.api.model.ws.dashboard.ApiDashboardWSModel;
 import com.faas.core.api.model.ws.dashboard.dto.ApiDashboardWSDTO;
-import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
+import com.faas.core.api.model.ws.general.dto.ApiSummaryWSDTO;
 import com.faas.core.api.model.ws.general.ApiSummaryWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiOperationListWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiOperationValidateWSModel;
@@ -29,17 +29,17 @@ public class ApiDashboardMiddleware {
     ApiDashboardFramework apiDashboardFramework;
 
 
-    public ApiDashboardWSModel apiGetDashboard(long agentId, int reqPage, int reqSize) {
+    public ApiDashboardWSModel apiGetDashboardContents(long agentId,int reqPage,int reqSize) {
 
         ApiDashboardWSModel response = new ApiDashboardWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiDashboardWSDTO dashboardWSDTO = apiDashboardFramework.apiGetDashboardService(agentId, reqPage, reqSize);
+        ApiDashboardWSDTO dashboardWSDTO = apiDashboardFramework.apiGetDashboardContentsService(agentId,reqPage,reqSize);
         if (dashboardWSDTO != null) {
             response.setDashboard(dashboardWSDTO);
         }
 
-        general.setOperation("apiGetDashboard");
+        general.setOperation("apiGetDashboardContents");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -48,13 +48,12 @@ public class ApiDashboardMiddleware {
         return response;
     }
 
-
-    public ApiOperationListWSModel apiGetDashboardOperations(long agentId, String operationType, String operationState, String operationInquiryState, String operationFlowState, int reqPage, int reqSize) {
+    public ApiOperationListWSModel apiGetDashboardOperations(long agentId,String operationCategory,String operationState,int reqPage,int reqSize) {
 
         ApiOperationListWSModel response = new ApiOperationListWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiOperationListWSDTO operationListWSDTO = apiDashboardFramework.apiGetDashboardOperationsService(agentId, operationType, operationState, operationInquiryState, operationFlowState, reqPage, reqSize);
+        ApiOperationListWSDTO operationListWSDTO = apiDashboardFramework.apiGetDashboardOperationsService(agentId,operationCategory,operationState,reqPage,reqSize);
         if (operationListWSDTO != null) {
             response.setOperationList(operationListWSDTO);
         }
@@ -68,14 +67,13 @@ public class ApiDashboardMiddleware {
         return response;
     }
 
-
-    public ApiOperationWSModel apiGetDashboardOperation(long agentId, String operationId) {
+    public ApiOperationWSModel apiGetDashboardOperation(long agentId,String operationId) {
 
         ApiOperationWSModel response = new ApiOperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ApiOperationWSDTO> operationWSDTOS = new ArrayList<>();
 
-        ApiOperationWSDTO operationWSDTO = apiDashboardFramework.apiGetDashboardOperationService(agentId, operationId);
+        ApiOperationWSDTO operationWSDTO = apiDashboardFramework.apiGetDashboardOperationService(agentId,operationId);
         if (operationWSDTO != null) {
             operationWSDTOS.add(operationWSDTO);
         }
@@ -90,18 +88,17 @@ public class ApiDashboardMiddleware {
         return response;
     }
 
-
-    public ApiOperationValidateWSModel apiDashboardOperationValidate(long agentId, String operationId) {
+    public ApiOperationValidateWSModel apiValidateDashboardOperation(long agentId, String operationId) {
 
         ApiOperationValidateWSModel response = new ApiOperationValidateWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiOperationValidateWSDTO operationValidateWSDTO = apiDashboardFramework.apiDashboardOperationValidateService(agentId, operationId);
+        ApiOperationValidateWSDTO operationValidateWSDTO = apiDashboardFramework.apiValidateDashboardOperationService(agentId, operationId);
         if (operationValidateWSDTO != null) {
             response.setOperationValidate(operationValidateWSDTO);
         }
 
-        general.setOperation("apiDashboardOperationValidate");
+        general.setOperation("apiValidateDashboardOperation");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -110,13 +107,12 @@ public class ApiDashboardMiddleware {
         return response;
     }
 
-
-    public ApiCampaignWSModel apiGetDashboardCampaigns(long agentId) {
+    public ApiCampaignWSModel apiGetDashboardCampaigns(long agentId,String campaignState) {
 
         ApiCampaignWSModel response = new ApiCampaignWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ApiCampaignWSDTO> campaignWSDTOS = apiDashboardFramework.apiGetDashboardCampaignsService(agentId);
+        List<ApiCampaignWSDTO> campaignWSDTOS = apiDashboardFramework.apiGetDashboardCampaignsService(agentId, campaignState);
         if (campaignWSDTOS != null) {
             response.setCampaigns(campaignWSDTOS);
         }
@@ -130,18 +126,17 @@ public class ApiDashboardMiddleware {
         return response;
     }
 
-
-    public ApiSummaryWSModel apiGetDashboardSummary(long agentId) {
+    public ApiSummaryWSModel apiGetDashboardSummaries(long agentId) {
 
         ApiSummaryWSModel response = new ApiSummaryWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ApiSummaryWSDTO> dashboardSummaries = apiDashboardFramework.apiGetDashboardSummaryService(agentId);
+        List<ApiSummaryWSDTO> dashboardSummaries = apiDashboardFramework.apiGetDashboardSummariesService(agentId);
         if (dashboardSummaries != null) {
             response.setSummaries(dashboardSummaries);
         }
 
-        general.setOperation("apiGetDashboardSummary");
+        general.setOperation("apiGetDashboardSummaries");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

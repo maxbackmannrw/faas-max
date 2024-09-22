@@ -117,7 +117,6 @@ public class CampaignHelper {
         return campaignWSDTO;
     }
 
-
     public CampaignDetailsWSDTO getCampaignDetailsWSDTO(CampaignDBModel campaignDBModel) {
 
         CampaignDetailsWSDTO campaignDetailsWSDTO = new CampaignDetailsWSDTO();
@@ -343,18 +342,19 @@ public class CampaignHelper {
         ApiCampaignWSDTO campaignWSDTO = new ApiCampaignWSDTO();
         campaignWSDTO.setCampaign(campaignDBModel);
         campaignWSDTO.setCampaignSummary(getApiAgentCampaignSummary(agentId, campaignDBModel.getId()));
-
         return campaignWSDTO;
     }
 
     public ApiAgentCampaignSummary getApiAgentCampaignSummary(long agentId, String campaignId) {
 
         ApiAgentCampaignSummary agentCampaignSummary = new ApiAgentCampaignSummary();
-
+        agentCampaignSummary.setReadyOperationCount(operationRepository.countByAgentIdAndCampaignIdAndOperationState(agentId,campaignId,AppConstant.READY_STATE));
+        agentCampaignSummary.setActiveOperationCount(operationRepository.countByAgentIdAndCampaignIdAndOperationState(agentId,campaignId,AppConstant.ACTIVE_STATE));
+        agentCampaignSummary.setTotalOperationCount(operationRepository.countByAgentIdAndCampaignId(agentId,campaignId));
         return agentCampaignSummary;
     }
 
-    public CampaignChannelDBModel generateCampaignChannelDBModel(CampaignDBModel campaignDBModel) {
+    public CampaignChannelDBModel createCampaignChannelDBModel(CampaignDBModel campaignDBModel) {
 
         List<CampaignChannelDBModel> campaignChannelDBModels = campaignChannelRepository.findByCampaignId(campaignDBModel.getId());
         if (!campaignChannelDBModels.isEmpty()) {

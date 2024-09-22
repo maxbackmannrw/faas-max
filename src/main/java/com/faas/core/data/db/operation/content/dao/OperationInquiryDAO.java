@@ -6,22 +6,18 @@ public class OperationInquiryDAO {
 
     private String inquiryId;
     private String operationInquiry;
-    private List<OperationDataDAO> operationInquiryDatas;
-    private String operationInquiryState;
+    private List<OperationDataDAO> inquiryDatas;
     private long uDate;
-    private long cDate;
     private int status;
 
     public OperationInquiryDAO() {
     }
 
-    public OperationInquiryDAO(String inquiryId, String operationInquiry, List<OperationDataDAO> operationInquiryDatas, String operationInquiryState, long uDate, long cDate, int status) {
+    public OperationInquiryDAO(String inquiryId, String operationInquiry, List<OperationDataDAO> inquiryDatas, long uDate, int status) {
         this.inquiryId = inquiryId;
         this.operationInquiry = operationInquiry;
-        this.operationInquiryDatas = operationInquiryDatas;
-        this.operationInquiryState = operationInquiryState;
+        this.inquiryDatas = inquiryDatas;
         this.uDate = uDate;
-        this.cDate = cDate;
         this.status = status;
     }
 
@@ -41,20 +37,12 @@ public class OperationInquiryDAO {
         this.operationInquiry = operationInquiry;
     }
 
-    public List<OperationDataDAO> getOperationInquiryDatas() {
-        return operationInquiryDatas;
+    public List<OperationDataDAO> getInquiryDatas() {
+        return inquiryDatas;
     }
 
-    public void setOperationInquiryDatas(List<OperationDataDAO> operationInquiryDatas) {
-        this.operationInquiryDatas = operationInquiryDatas;
-    }
-
-    public String getOperationInquiryState() {
-        return operationInquiryState;
-    }
-
-    public void setOperationInquiryState(String operationInquiryState) {
-        this.operationInquiryState = operationInquiryState;
+    public void setInquiryDatas(List<OperationDataDAO> inquiryDatas) {
+        this.inquiryDatas = inquiryDatas;
     }
 
     public long getuDate() {
@@ -63,14 +51,6 @@ public class OperationInquiryDAO {
 
     public void setuDate(long uDate) {
         this.uDate = uDate;
-    }
-
-    public long getcDate() {
-        return cDate;
-    }
-
-    public void setcDate(long cDate) {
-        this.cDate = cDate;
     }
 
     public int getStatus() {

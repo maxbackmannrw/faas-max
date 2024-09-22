@@ -5,7 +5,7 @@ import com.faas.core.api.model.ws.campaign.content.ApiAgentCampaignWSModel;
 import com.faas.core.api.model.ws.campaign.content.ApiCampaignWSModel;
 import com.faas.core.api.model.ws.campaign.content.dto.ApiAgentCampaignWSDTO;
 import com.faas.core.api.model.ws.campaign.content.dto.ApiCampaignWSDTO;
-import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
+import com.faas.core.api.model.ws.general.dto.ApiSummaryWSDTO;
 import com.faas.core.api.model.ws.general.ApiSummaryWSModel;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.misc.config.AppConstant;

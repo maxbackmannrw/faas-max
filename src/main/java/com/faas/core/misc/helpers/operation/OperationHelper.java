@@ -1,6 +1,6 @@
 package com.faas.core.misc.helpers.operation;
 
-import com.faas.core.api.model.ws.general.ApiSummaryWSDTO;
+import com.faas.core.api.model.ws.general.dto.ApiSummaryWSDTO;
 import com.faas.core.api.model.ws.operation.client.content.dto.ApiOperationClientWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationListWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationValidateWSDTO;
@@ -122,15 +122,19 @@ public class OperationHelper {
         operationDBModel.setCampaign(campaignDBModel.getCampaign());
         operationDBModel.setCampaignType(campaignDBModel.getCampaignType());
         operationDBModel.setCampaignCategory(campaignDBModel.getCampaignCategory());
+        operationDBModel.setInquiryState(AppConstant.NONE);
+        operationDBModel.setFlowState(AppConstant.NONE);
         if (campaignDBModel.getCampaignCategory().equalsIgnoreCase(AppConstant.INQUIRY_CAMPAIGN)) {
             operationDBModel.setOperationInquiry(createOperationInquiryDAO(campaignDBModel));
+            operationDBModel.setInquiryState(AppConstant.READY_STATE);
         }
         if (campaignDBModel.getCampaignCategory().equalsIgnoreCase(AppConstant.AUTOMATIC_CAMPAIGN)) {
             operationDBModel.setOperationFlow(createOperationFlowDAO(campaignDBModel));
+            operationDBModel.setFlowState(AppConstant.READY_STATE);
         }
-        operationDBModel.setOperationActivities(new ArrayList<>());
-        operationDBModel.setOperationScenarios(new ArrayList<>());
-        operationDBModel.setOperationDatas(new ArrayList<>());
+        operationDBModel.setActivities(new ArrayList<>());
+        operationDBModel.setScenarios(new ArrayList<>());
+        operationDBModel.setDatas(new ArrayList<>());
         operationDBModel.setOperationCategory(campaignDBModel.getCampaignCategory());
         operationDBModel.setOperationResult(AppConstant.NONE);
         operationDBModel.setOperationState(AppConstant.READY_STATE);
@@ -146,10 +150,8 @@ public class OperationHelper {
         OperationInquiryDAO operationInquiryDAO = new OperationInquiryDAO();
         operationInquiryDAO.setInquiryId(appUtils.generateUUID());
         operationInquiryDAO.setOperationInquiry(campaignDBModel.getCampaignInquiry().getCampaignInquiry());
-        operationInquiryDAO.setOperationInquiryDatas(new ArrayList<>());
-        operationInquiryDAO.setOperationInquiryState(AppConstant.READY_STATE);
+        operationInquiryDAO.setInquiryDatas(new ArrayList<>());
         operationInquiryDAO.setuDate(appUtils.getCurrentTimeStamp());
-        operationInquiryDAO.setcDate(appUtils.getCurrentTimeStamp());
         operationInquiryDAO.setStatus(1);
 
         return operationInquiryDAO;
@@ -160,10 +162,8 @@ public class OperationHelper {
         OperationFlowDAO operationFlowDAO = new OperationFlowDAO();
         operationFlowDAO.setFlowId(appUtils.generateUUID());
         operationFlowDAO.setOperationFlow(campaignDBModel.getCampaignFlow().getCampaignFlow());
-        operationFlowDAO.setOperationFlowDatas(new ArrayList<>());
-        operationFlowDAO.setOperationFlowState(AppConstant.READY_STATE);
+        operationFlowDAO.setFlowDatas(new ArrayList<>());
         operationFlowDAO.setuDate(appUtils.getCurrentTimeStamp());
-        operationFlowDAO.setcDate(appUtils.getCurrentTimeStamp());
         operationFlowDAO.setStatus(1);
 
         return operationFlowDAO;
@@ -228,15 +228,17 @@ public class OperationHelper {
 
     public ApiOperationWSDTO getApiOperationWSDTO(OperationDBModel operationDBModel) {
 
-        return null;
+        ApiOperationWSDTO operationWSDTO = new ApiOperationWSDTO();
+        operationWSDTO.setOperation(operationDBModel);
+        return operationWSDTO;
     }
 
     public List<ApiSummaryWSDTO> apiGetOperationSummaryHelper(long agentId) {
 
         List<ApiSummaryWSDTO> operationSummary = new ArrayList<>();
-        operationSummary.add(new ApiSummaryWSDTO(AppConstant.AGENT_ACTIVE_OPERATIONS_SUMMARY, String.valueOf(operationRepository.countByAgentIdAndOperationState(agentId, AppConstant.ACTIVE_STATE))));
-        operationSummary.add(new ApiSummaryWSDTO(AppConstant.AGENT_READY_OPERATIONS_SUMMARY, String.valueOf(operationRepository.countByAgentIdAndOperationState(agentId, AppConstant.READY_STATE))));
-        operationSummary.add(new ApiSummaryWSDTO(AppConstant.AGENT_ALL_CAMPAIGNS_SUMMARY, String.valueOf(campaignAgentRepository.countByAgentId(agentId))));
+        operationSummary.add(new ApiSummaryWSDTO(AppConstant.AGENT_ACTIVE_OPERATION_SUMMARY, String.valueOf(operationRepository.countByAgentIdAndOperationState(agentId, AppConstant.ACTIVE_STATE))));
+        operationSummary.add(new ApiSummaryWSDTO(AppConstant.AGENT_READY_OPERATION_SUMMARY, String.valueOf(operationRepository.countByAgentIdAndOperationState(agentId, AppConstant.READY_STATE))));
+        operationSummary.add(new ApiSummaryWSDTO(AppConstant.AGENT_TOTAL_CAMPAIGN_SUMMARY, String.valueOf(campaignAgentRepository.countByAgentId(agentId))));
 
         return operationSummary;
     }

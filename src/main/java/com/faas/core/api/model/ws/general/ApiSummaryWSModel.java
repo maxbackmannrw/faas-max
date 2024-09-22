@@ -1,5 +1,6 @@
 package com.faas.core.api.model.ws.general;
 
+import com.faas.core.api.model.ws.general.dto.ApiSummaryWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 
 import java.util.List;

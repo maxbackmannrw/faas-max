@@ -1,4 +1,4 @@
-package com.faas.core.api.model.ws.general;
+package com.faas.core.api.model.ws.general.dto;
 
 public class ApiSummaryWSDTO {
 

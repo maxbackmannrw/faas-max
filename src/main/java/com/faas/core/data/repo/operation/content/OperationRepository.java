@@ -51,6 +51,12 @@ public interface OperationRepository extends MongoRepository<OperationDBModel, S
 
     Page<OperationDBModel> findAllByAgentIdAndOperationState(long agentId, String operationState, Pageable pageable);
 
+    Page<OperationDBModel> findAllByAgentIdAndOperationCategoryAndOperationState(long agentId, String operationCategory,String operationState, Pageable pageable);
+
+    Page<OperationDBModel> findAllByAgentIdAndOperationCategoryAndOperationStateAndInquiryState(long agentId, String operationCategory,String operationState, String inquiryState, Pageable pageable);
+
+    Page<OperationDBModel> findAllByAgentIdAndOperationCategoryAndOperationStateAndFlowState(long agentId, String operationCategory,String operationState, String flowState, Pageable pageable);
+
     Page<OperationDBModel> findAllByAgentIdAndCampaignIdAndOperationState(long agentId, String campaignId, String operationState, Pageable pageable);
 
 }

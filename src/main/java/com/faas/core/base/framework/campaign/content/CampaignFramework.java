@@ -136,7 +136,7 @@ public class CampaignFramework {
             campaignDBModel.setStatus(1);
 
             campaignDBModel = campaignRepository.save(campaignDBModel);
-            campaignHelper.generateCampaignChannelDBModel(campaignDBModel);
+            campaignHelper.createCampaignChannelDBModel(campaignDBModel);
 
             return campaignHelper.getCampaignWSDTO(campaignDBModel);
         }

@@ -9,6 +9,7 @@ import com.faas.core.data.repo.campaign.details.agent.CampaignAgentRepository;
 import com.faas.core.data.repo.user.content.UserRepository;
 import com.faas.core.misc.config.AppConstant;
 import com.faas.core.misc.config.AppUtils;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -71,8 +72,7 @@ public class CampaignAgentFramework {
 
     public CampaignAgentWSDTO assignCampaignAgentService(long userId, String campaignId, long agentId) {
 
-        if (campaignAgentRepository.findByCampaignIdAndAgentId(campaignId, agentId).isEmpty()
-                && campaignRepository.findById(campaignId).isPresent() && userRepository.findById(agentId).isPresent()) {
+        if (campaignAgentRepository.existsByAgentIdAndCampaignId(agentId, campaignId) && campaignRepository.existsById(campaignId) && userRepository.existsById(agentId)) {
 
             CampaignAgentDBModel campaignAgentDBModel = new CampaignAgentDBModel();
             campaignAgentDBModel.setCampaignId(campaignId);
@@ -89,18 +89,15 @@ public class CampaignAgentFramework {
 
     public CampaignAgentWSDTO updateCampaignAgentStateService(long userId, String campaignId, long agentId, String agentState) {
 
-        if (campaignAgentRepository.findByCampaignIdAndAgentId(campaignId, agentId).isEmpty()
-                && campaignRepository.findById(campaignId).isPresent() && userRepository.findById(agentId).isPresent()) {
+        Optional<CampaignDBModel>campaignDBModel = campaignRepository.findById(campaignId);
+        List<CampaignAgentDBModel> campaignAgentDBModels = campaignAgentRepository.findByCampaignIdAndAgentId(campaignId,agentId);
+        Optional<UserDBModel> agentDBModel = userRepository.findById(agentId);
+        if (!campaignAgentDBModels.isEmpty() && agentDBModel.isPresent() && campaignDBModel.isPresent()) {
+            campaignAgentDBModels.get(0).setAgentState(agentState);
+            campaignAgentDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
+            campaignAgentDBModels.get(0).setStatus(1);
 
-            CampaignAgentDBModel campaignAgentDBModel = new CampaignAgentDBModel();
-            campaignAgentDBModel.setCampaignId(campaignId);
-            campaignAgentDBModel.setAgentId(agentId);
-            campaignAgentDBModel.setAgentState(AppConstant.ACTIVE_STATE);
-            campaignAgentDBModel.setuDate(appUtils.getCurrentTimeStamp());
-            campaignAgentDBModel.setcDate(appUtils.getCurrentTimeStamp());
-            campaignAgentDBModel.setStatus(1);
-
-            return fillCampaignAgentWSDTO(campaignAgentRepository.save(campaignAgentDBModel));
+            return fillCampaignAgentWSDTO(campaignAgentRepository.save(campaignAgentDBModels.get(0)));
         }
         return null;
     }

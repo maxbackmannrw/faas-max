@@ -27,12 +27,12 @@ public class ApiDashboardController {
     ApiDashboardMiddleware apiDashboardMiddleware;
 
 
-    @RequestMapping(value = ApiRoute.API_GET_DASHBOARD, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetDashboard(@RequestParam long agentId,
-                                             @RequestParam int reqPage,
-                                             @RequestParam int reqSize) {
+    @RequestMapping(value = ApiRoute.API_GET_DASHBOARD_CONTENTS, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetDashboardContents(@RequestParam long agentId,
+                                                     @RequestParam int reqPage,
+                                                     @RequestParam int reqSize) {
 
-        ApiDashboardWSModel response = apiDashboardMiddleware.apiGetDashboard(agentId, reqPage, reqSize);
+        ApiDashboardWSModel response = apiDashboardMiddleware.apiGetDashboardContents(agentId,reqPage,reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -42,14 +42,12 @@ public class ApiDashboardController {
 
     @RequestMapping(value = ApiRoute.API_GET_DASHBOARD_OPERATIONS, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetDashboardOperations(@RequestParam long agentId,
-                                                       @RequestParam String operationType,
+                                                       @RequestParam String operationCategory,
                                                        @RequestParam String operationState,
-                                                       @RequestParam String operationInquiryState,
-                                                       @RequestParam String operationFlowState,
                                                        @RequestParam int reqPage,
                                                        @RequestParam int reqSize) {
 
-        ApiOperationListWSModel response = apiDashboardMiddleware.apiGetDashboardOperations(agentId, operationType, operationState, operationInquiryState, operationFlowState, reqPage, reqSize);
+        ApiOperationListWSModel response = apiDashboardMiddleware.apiGetDashboardOperations(agentId,operationCategory,operationState,reqPage,reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -61,7 +59,7 @@ public class ApiDashboardController {
     public ResponseEntity<?> apiGetDashboardOperation(@RequestParam long agentId,
                                                       @RequestParam String operationId) {
 
-        ApiOperationWSModel response = apiDashboardMiddleware.apiGetDashboardOperation(agentId, operationId);
+        ApiOperationWSModel response = apiDashboardMiddleware.apiGetDashboardOperation(agentId,operationId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -69,23 +67,23 @@ public class ApiDashboardController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-    @RequestMapping(value = ApiRoute.API_DASHBOARD_OPERATION_VALIDATE, method = RequestMethod.POST)
-    public ResponseEntity<?> apiDashboardOperationValidate(@RequestParam long agentId,
+    @RequestMapping(value = ApiRoute.API_VALIDATE_DASHBOARD_OPERATION, method = RequestMethod.POST)
+    public ResponseEntity<?> apiValidateDashboardOperation(@RequestParam long agentId,
                                                            @RequestParam String operationId) {
 
-        ApiOperationValidateWSModel response = apiDashboardMiddleware.apiDashboardOperationValidate(agentId, operationId);
+        ApiOperationValidateWSModel response = apiDashboardMiddleware.apiValidateDashboardOperation(agentId, operationId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = ApiRoute.API_GET_DASHBOARD_CAMPAIGNS, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetDashboardCampaigns(@RequestParam long agentId) {
+    public ResponseEntity<?> apiGetDashboardCampaigns(@RequestParam long agentId,
+                                                      @RequestParam String campaignState) {
 
-        ApiCampaignWSModel response = apiDashboardMiddleware.apiGetDashboardCampaigns(agentId);
+        ApiCampaignWSModel response = apiDashboardMiddleware.apiGetDashboardCampaigns(agentId,campaignState);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -93,10 +91,10 @@ public class ApiDashboardController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-    @RequestMapping(value = ApiRoute.API_GET_DASHBOARD_SUMMARY, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetDashboardSummary(@RequestParam long agentId) {
+    @RequestMapping(value = ApiRoute.API_GET_DASHBOARD_SUMMARIES, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetDashboardSummaries(@RequestParam long agentId) {
 
-        ApiSummaryWSModel response = apiDashboardMiddleware.apiGetDashboardSummary(agentId);
+        ApiSummaryWSModel response = apiDashboardMiddleware.apiGetDashboardSummaries(agentId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

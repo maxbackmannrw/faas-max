@@ -99,6 +99,7 @@ public class CampaignManagerOperationFramework {
         clientDBModel.setClientState(AppConstant.BUSY_CLIENT);
         clientDBModel.setuDate(appUtils.getCurrentTimeStamp());
         clientDBModel = clientRepository.save(clientDBModel);
+
         OperationDBModel operationDBModel = operationHelper.createOperationDBModel(userDBModel, campaignDBModel, clientDBModel, clientDetailsDBModel);
         if (operationDBModel != null) {
             return operationHelper.getOperationWSDTO(operationDBModel);

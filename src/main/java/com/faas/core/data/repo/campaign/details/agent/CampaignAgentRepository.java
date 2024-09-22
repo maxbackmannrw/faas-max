@@ -13,6 +13,8 @@ public interface CampaignAgentRepository extends PagingAndSortingRepository<Camp
 
     long countByAgentId(long agentId);
 
+    long countByAgentIdAndAgentState(long agentId, String agentState);
+
     long countByCampaignId(String campaignId);
 
     List<CampaignAgentDBModel> findByAgentId(long agentId);

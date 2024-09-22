@@ -6,22 +6,18 @@ public class OperationFlowDAO {
 
     private String flowId;
     private String operationFlow;
-    private List<OperationDataDAO> operationFlowDatas;
-    private String operationFlowState;
+    private List<OperationDataDAO> flowDatas;
     private long uDate;
-    private long cDate;
     private int status;
 
     public OperationFlowDAO() {
     }
 
-    public OperationFlowDAO(String flowId, String operationFlow, List<OperationDataDAO> operationFlowDatas, String operationFlowState, long uDate, long cDate, int status) {
+    public OperationFlowDAO(String flowId, String operationFlow, List<OperationDataDAO> flowDatas, long uDate, int status) {
         this.flowId = flowId;
         this.operationFlow = operationFlow;
-        this.operationFlowDatas = operationFlowDatas;
-        this.operationFlowState = operationFlowState;
+        this.flowDatas = flowDatas;
         this.uDate = uDate;
-        this.cDate = cDate;
         this.status = status;
     }
 
@@ -41,20 +37,12 @@ public class OperationFlowDAO {
         this.operationFlow = operationFlow;
     }
 
-    public List<OperationDataDAO> getOperationFlowDatas() {
-        return operationFlowDatas;
+    public List<OperationDataDAO> getFlowDatas() {
+        return flowDatas;
     }
 
-    public void setOperationFlowDatas(List<OperationDataDAO> operationFlowDatas) {
-        this.operationFlowDatas = operationFlowDatas;
-    }
-
-    public String getOperationFlowState() {
-        return operationFlowState;
-    }
-
-    public void setOperationFlowState(String operationFlowState) {
-        this.operationFlowState = operationFlowState;
+    public void setFlowDatas(List<OperationDataDAO> flowDatas) {
+        this.flowDatas = flowDatas;
     }
 
     public long getuDate() {
@@ -63,14 +51,6 @@ public class OperationFlowDAO {
 
     public void setuDate(long uDate) {
         this.uDate = uDate;
-    }
-
-    public long getcDate() {
-        return cDate;
-    }
-
-    public void setcDate(long cDate) {
-        this.cDate = cDate;
     }
 
     public int getStatus() {
