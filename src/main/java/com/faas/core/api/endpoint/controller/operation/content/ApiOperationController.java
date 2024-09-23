@@ -4,7 +4,7 @@ import com.faas.core.api.middleware.operation.content.ApiOperationMiddleware;
 import com.faas.core.api.model.ws.general.ApiSummaryWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiAgentOperationWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiOperationListWSModel;
-import com.faas.core.api.model.ws.operation.content.ApiOperationValidateWSModel;
+import com.faas.core.api.model.ws.operation.content.ApiValidateOperationWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiOperationWSModel;
 import com.faas.core.misc.config.ApiRoute;
 import com.faas.core.misc.config.AppConstant;
@@ -102,7 +102,7 @@ public class ApiOperationController {
     public ResponseEntity<?> apiOperationValidate(@RequestParam long agentId,
                                                   @RequestParam String operationId) {
 
-        ApiOperationValidateWSModel response = apiOperationMiddleware.apiOperationValidate(agentId, operationId);
+        ApiValidateOperationWSModel response = apiOperationMiddleware.apiOperationValidate(agentId, operationId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

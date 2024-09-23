@@ -2,10 +2,10 @@ package com.faas.core.api.middleware.campaign.details.operation;
 
 import com.faas.core.api.framework.campaign.details.operation.ApiCampaignOperationFramework;
 import com.faas.core.api.model.ws.operation.content.ApiOperationListWSModel;
-import com.faas.core.api.model.ws.operation.content.ApiOperationValidateWSModel;
+import com.faas.core.api.model.ws.operation.content.ApiValidateOperationWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiOperationWSModel;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationListWSDTO;
-import com.faas.core.api.model.ws.operation.content.dto.ApiOperationValidateWSDTO;
+import com.faas.core.api.model.ws.operation.content.dto.ApiValidateOperationWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.misc.config.AppConstant;
@@ -65,14 +65,14 @@ public class ApiCampaignOperationMiddleware {
     }
 
 
-    public ApiOperationValidateWSModel apiCampaignOperationValidate(long agentId, String operationId) {
+    public ApiValidateOperationWSModel apiCampaignOperationValidate(long agentId, String operationId) {
 
-        ApiOperationValidateWSModel response = new ApiOperationValidateWSModel();
+        ApiValidateOperationWSModel response = new ApiValidateOperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiOperationValidateWSDTO operationValidateWSDTO = apiCampaignOperationFramework.apiCampaignOperationValidateService(agentId, operationId);
-        if (operationValidateWSDTO != null) {
-            response.setOperationValidate(operationValidateWSDTO);
+        ApiValidateOperationWSDTO validateOperationWSDTO = apiCampaignOperationFramework.apiCampaignOperationValidateService(agentId, operationId);
+        if (validateOperationWSDTO != null) {
+            response.setValidateOperation(validateOperationWSDTO);
         }
 
         general.setOperation("apiCampaignOperationValidate");

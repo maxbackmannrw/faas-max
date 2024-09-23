@@ -5,7 +5,7 @@ import com.faas.core.api.model.ws.campaign.content.ApiCampaignWSModel;
 import com.faas.core.api.model.ws.dashboard.ApiDashboardContentWSModel;
 import com.faas.core.api.model.ws.general.ApiSummaryWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiOperationListWSModel;
-import com.faas.core.api.model.ws.operation.content.ApiOperationValidateWSModel;
+import com.faas.core.api.model.ws.operation.content.ApiValidateOperationWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiOperationWSModel;
 import com.faas.core.misc.config.ApiRoute;
 import com.faas.core.misc.config.AppConstant;
@@ -71,7 +71,7 @@ public class ApiDashboardController {
     public ResponseEntity<?> apiValidateDashboardOperation(@RequestParam long agentId,
                                                            @RequestParam String operationId) {
 
-        ApiOperationValidateWSModel response = apiDashboardMiddleware.apiValidateDashboardOperation(agentId, operationId);
+        ApiValidateOperationWSModel response = apiDashboardMiddleware.apiValidateDashboardOperation(agentId, operationId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

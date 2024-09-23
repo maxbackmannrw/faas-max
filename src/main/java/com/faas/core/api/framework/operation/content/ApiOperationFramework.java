@@ -3,7 +3,7 @@ package com.faas.core.api.framework.operation.content;
 import com.faas.core.api.model.ws.general.dto.ApiSummaryWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiAgentOperationWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationListWSDTO;
-import com.faas.core.api.model.ws.operation.content.dto.ApiOperationValidateWSDTO;
+import com.faas.core.api.model.ws.operation.content.dto.ApiValidateOperationWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
 import com.faas.core.data.db.operation.content.OperationDBModel;
 import com.faas.core.data.db.user.content.UserDBModel;
@@ -74,13 +74,13 @@ public class ApiOperationFramework {
         return null;
     }
 
-    public ApiOperationValidateWSDTO apiOperationValidateService(long agentId, String operationId) {
+    public ApiValidateOperationWSDTO apiOperationValidateService(long agentId, String operationId) {
 
         Optional<UserDBModel> userDBModel = userRepository.findById(agentId);
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
         if (userDBModel.isPresent() && !operationDBModels.isEmpty()) {
             userDBModel.get().setPassword("");
-            return operationHelper.operationValidateHelper(userDBModel.get(), operationDBModels.get(0));
+            return operationHelper.validateOperationHelper(userDBModel.get(), operationDBModels.get(0));
         }
         return null;
     }

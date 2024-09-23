@@ -5,11 +5,11 @@ import com.faas.core.api.model.ws.general.dto.ApiSummaryWSDTO;
 import com.faas.core.api.model.ws.general.ApiSummaryWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiAgentOperationWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiOperationListWSModel;
-import com.faas.core.api.model.ws.operation.content.ApiOperationValidateWSModel;
+import com.faas.core.api.model.ws.operation.content.ApiValidateOperationWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiOperationWSModel;
 import com.faas.core.api.model.ws.operation.content.dto.ApiAgentOperationWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationListWSDTO;
-import com.faas.core.api.model.ws.operation.content.dto.ApiOperationValidateWSDTO;
+import com.faas.core.api.model.ws.operation.content.dto.ApiValidateOperationWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.misc.config.AppConstant;
@@ -129,14 +129,14 @@ public class ApiOperationMiddleware {
     }
 
 
-    public ApiOperationValidateWSModel apiOperationValidate(long agentId, String operationId) {
+    public ApiValidateOperationWSModel apiOperationValidate(long agentId, String operationId) {
 
-        ApiOperationValidateWSModel response = new ApiOperationValidateWSModel();
+        ApiValidateOperationWSModel response = new ApiValidateOperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiOperationValidateWSDTO operationValidateWSDTO = apiOperationFramework.apiOperationValidateService(agentId, operationId);
-        if (operationValidateWSDTO != null) {
-            response.setOperationValidate(operationValidateWSDTO);
+        ApiValidateOperationWSDTO validateOperationWSDTO = apiOperationFramework.apiOperationValidateService(agentId, operationId);
+        if (validateOperationWSDTO != null) {
+            response.setValidateOperation(validateOperationWSDTO);
         }
 
         general.setOperation("apiOperationValidate");

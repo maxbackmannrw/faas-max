@@ -3,21 +3,21 @@ package com.faas.core.api.model.ws.operation.content.dto;
 import com.faas.core.data.db.operation.content.OperationDBModel;
 import com.faas.core.data.db.user.content.UserDBModel;
 
-public class ApiOperationValidateWSDTO {
+public class ApiValidateOperationWSDTO {
 
     private UserDBModel agent;
-    private OperationDBModel operation;
     private long operationCount;
     private long operationLimit;
+    private OperationDBModel operation;
 
-    public ApiOperationValidateWSDTO() {
+    public ApiValidateOperationWSDTO() {
     }
 
-    public ApiOperationValidateWSDTO(UserDBModel agent, OperationDBModel operation, long operationCount, long operationLimit) {
+    public ApiValidateOperationWSDTO(UserDBModel agent, long operationCount, long operationLimit, OperationDBModel operation) {
         this.agent = agent;
-        this.operation = operation;
         this.operationCount = operationCount;
         this.operationLimit = operationLimit;
+        this.operation = operation;
     }
 
     public UserDBModel getAgent() {
@@ -26,14 +26,6 @@ public class ApiOperationValidateWSDTO {
 
     public void setAgent(UserDBModel agent) {
         this.agent = agent;
-    }
-
-    public OperationDBModel getOperation() {
-        return operation;
-    }
-
-    public void setOperation(OperationDBModel operation) {
-        this.operation = operation;
     }
 
     public long getOperationCount() {
@@ -50,5 +42,13 @@ public class ApiOperationValidateWSDTO {
 
     public void setOperationLimit(long operationLimit) {
         this.operationLimit = operationLimit;
+    }
+
+    public OperationDBModel getOperation() {
+        return operation;
+    }
+
+    public void setOperation(OperationDBModel operation) {
+        this.operation = operation;
     }
 }

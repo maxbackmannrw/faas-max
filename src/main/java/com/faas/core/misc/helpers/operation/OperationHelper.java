@@ -3,7 +3,7 @@ package com.faas.core.misc.helpers.operation;
 import com.faas.core.api.model.ws.general.dto.ApiSummaryWSDTO;
 import com.faas.core.api.model.ws.operation.client.content.dto.ApiOperationClientWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationListWSDTO;
-import com.faas.core.api.model.ws.operation.content.dto.ApiOperationValidateWSDTO;
+import com.faas.core.api.model.ws.operation.content.dto.ApiValidateOperationWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationSipAccountWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.call.sip.dto.ApiOperationSipChannelWSDTO;
@@ -243,13 +243,12 @@ public class OperationHelper {
         return operationSummary;
     }
 
-    public ApiOperationValidateWSDTO operationValidateHelper(UserDBModel agentDBModel, OperationDBModel operationDBModel) {
+    public ApiValidateOperationWSDTO validateOperationHelper(UserDBModel agentDBModel, OperationDBModel operationDBModel) {
 
-        ApiOperationValidateWSDTO operationValidateWSDTO = new ApiOperationValidateWSDTO();
+        ApiValidateOperationWSDTO operationValidateWSDTO = new ApiValidateOperationWSDTO();
         operationValidateWSDTO.setAgent(agentDBModel);
         operationValidateWSDTO.setOperation(operationDBModel);
         operationValidateWSDTO.setOperationCount(operationRepository.countByAgentIdAndOperationState(agentDBModel.getId(), AppConstant.ACTIVE_STATE));
-
         if (agentDBModel.getUserRole().equalsIgnoreCase(AppConstant.BASIC_AGENT)) {
             operationValidateWSDTO.setOperationLimit(AppConstant.BASIC_AGENT_OPERATION_LIMIT);
         }

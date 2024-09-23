@@ -4,7 +4,7 @@ import com.faas.core.api.model.ws.campaign.content.dto.ApiCampaignWSDTO;
 import com.faas.core.api.model.ws.dashboard.dto.ApiDashboardContentWSDTO;
 import com.faas.core.api.model.ws.general.dto.ApiSummaryWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationListWSDTO;
-import com.faas.core.api.model.ws.operation.content.dto.ApiOperationValidateWSDTO;
+import com.faas.core.api.model.ws.operation.content.dto.ApiValidateOperationWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
 import com.faas.core.data.db.campaign.content.CampaignDBModel;
 import com.faas.core.data.db.campaign.details.agent.CampaignAgentDBModel;
@@ -73,13 +73,13 @@ public class ApiDashboardFramework {
         return null;
     }
 
-    public ApiOperationValidateWSDTO apiValidateDashboardOperationService(long agentId,String operationId) {
+    public ApiValidateOperationWSDTO apiValidateDashboardOperationService(long agentId, String operationId) {
 
-        Optional<UserDBModel> userDBModel = userRepository.findById(agentId);
+        Optional<UserDBModel> agentDBModel = userRepository.findById(agentId);
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
-        if (userDBModel.isPresent() && !operationDBModels.isEmpty()) {
-            userDBModel.get().setPassword("");
-            return operationHelper.operationValidateHelper(userDBModel.get(), operationDBModels.get(0));
+        if (agentDBModel.isPresent() && !operationDBModels.isEmpty()) {
+            agentDBModel.get().setPassword("");
+            return operationHelper.validateOperationHelper(agentDBModel.get(), operationDBModels.get(0));
         }
         return null;
     }
