@@ -16,6 +16,7 @@ import com.faas.core.misc.helpers.operation.OperationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,20 +43,21 @@ public class ApiOperationFramework {
     AppUtils appUtils;
 
 
-    public ApiAgentOperationWSDTO apiGetAgentOperationsService(long agentId, int reqPage, int reqSize) {
+    public ApiAgentOperationWSDTO apiGetAgentOperationListsService(long agentId, int reqPage, int reqSize) {
 
         ApiAgentOperationWSDTO agentOperationWSDTO = new ApiAgentOperationWSDTO();
 
         return agentOperationWSDTO;
     }
 
+    public List<ApiOperationWSDTO> apiGetAgentOperationsService(long agentId, String operationCategory, String operationState, int reqPage, int reqSize) {
 
-    public ApiOperationListWSDTO apiGetOperationsService(long agentId, String operationType, String operationState, String operationInquiryState, String operationFlowState, int reqPage, int reqSize) {
+        List<ApiOperationWSDTO> operationWSDTOS = new ArrayList<>();
 
-        return null;
+        return operationWSDTOS;
     }
 
-    public ApiOperationWSDTO apiGetOperationService(long agentId, String operationId) {
+    public ApiOperationWSDTO apiGetAgentOperationService(long agentId, String operationId) {
 
         Optional<OperationDBModel> operationDBModel = operationRepository.findById(operationId);
         if (operationDBModel.isPresent()) {
@@ -64,17 +66,17 @@ public class ApiOperationFramework {
         return null;
     }
 
-    public ApiOperationWSDTO apiUpdateOperationService(long agentId, String operationId, String operationState) {
+    public ApiOperationWSDTO apiUpdateAgentOperationService(long agentId, String operationId, String operationState) {
 
         return null;
     }
 
-    public ApiOperationWSDTO apiRemoveOperationService(long agentId, String operationId) {
+    public ApiOperationWSDTO apiRemoveAgentOperationService(long agentId, String operationId) {
 
         return null;
     }
 
-    public ApiValidateOperationWSDTO apiOperationValidateService(long agentId, String operationId) {
+    public ApiValidateOperationWSDTO apiValidateAgentOperationService(long agentId, String operationId) {
 
         Optional<UserDBModel> userDBModel = userRepository.findById(agentId);
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
@@ -85,7 +87,7 @@ public class ApiOperationFramework {
         return null;
     }
 
-    public List<ApiSummaryWSDTO> apiGetOperationSummaryService(long agentId) {
+    public List<ApiSummaryWSDTO> apiGetAgentOperationsSummaryService(long agentId) {
         return operationHelper.apiGetOperationSummaryHelper(agentId);
     }
 

@@ -21,25 +21,6 @@ public class ApiOperationClientMiddleware {
     ApiOperationClientFramework apiOperationClientFramework;
 
 
-    public ApiOperationClientWSModel apiAgentGetClients(long agentId, int reqPage, int reqSize) {
-
-        ApiOperationClientWSModel response = new ApiOperationClientWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-        ApiOperationClientWSDTO clientWSDTO = apiOperationClientFramework.apiAgentGetClientsService(agentId, reqPage, reqSize);
-        if (clientWSDTO != null) {
-            response.setClient(clientWSDTO);
-        }
-
-        general.setOperation("apiGetClient");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
     public ApiOperationClientWSModel apiGetClient(long agentId, long clientId) {
 
         ApiOperationClientWSModel response = new ApiOperationClientWSModel();

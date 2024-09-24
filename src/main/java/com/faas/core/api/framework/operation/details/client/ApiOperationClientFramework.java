@@ -27,16 +27,6 @@ public class ApiOperationClientFramework {
     @Autowired
     OperationRepository operationRepository;
 
-    @Autowired
-    AppUtils appUtils;
-
-
-    public ApiOperationClientWSDTO apiAgentGetClientsService(long agentId, int reqPage, int reqSize) {
-
-
-        return null;
-    }
-
 
     public ApiOperationClientWSDTO apiGetClientService(long agentId, long clientId) {
 

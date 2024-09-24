@@ -26,20 +26,6 @@ public class ApiOperationClientController {
     ApiOperationClientMiddleware apiOperationClientMiddleware;
 
 
-    @RequestMapping(value = ApiRoute.API_GET_AGENT_CLIENTS, method = RequestMethod.POST)
-    public ResponseEntity<?> apiAgentGetClients(@RequestParam long agentId,
-                                                @RequestParam int reqPage,
-                                                @RequestParam int reqSize) {
-
-        ApiOperationClientWSModel response = apiOperationClientMiddleware.apiAgentGetClients(agentId, reqPage, reqSize);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-
     @RequestMapping(value = ApiRoute.API_GET_CLIENT, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetClient(@RequestParam long agentId,
                                           @RequestParam long clientId) {
@@ -124,7 +110,6 @@ public class ApiOperationClientController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = ApiRoute.API_GET_CLIENT_REMOTES, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetClientRemotes(@RequestParam long agentId,

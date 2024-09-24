@@ -31,36 +31,20 @@ public class ApiRoute {
 
 
 
-    public static final String API_GET_AGENT_CLIENTS = "apigetagentclients";
-    public static final String API_GET_CLIENT = "apigetclient";
-
-    public static final String API_GET_CLIENT_DETAILS = "apigetclientdetails";
-    public static final String API_GET_CLIENT_NOTES = "apigetclientnotes";
-    public static final String API_GET_CLIENT_NOTE = "apigetclientnote";
-    public static final String API_CREATE_CLIENT_NOTE = "apicreateclientnote";
-    public static final String API_UPDATE_CLIENT_NOTE = "apiupdateclientnote";
-    public static final String API_REMOVE_CLIENT_NOTE = "apiremoveclientnote";
-
-    public static final String API_GET_CLIENT_REMOTES = "apigetclientremotes";
-    public static final String API_GET_CLIENT_REMOTE = "apigetclientremote";
-
-    public static final String API_GET_CLIENT_OS_INTS = "apigetclientosints";
-    public static final String API_GET_CLIENT_OS_INT = "apigetclientosint";
-
-
     public static final String API_GET_AGENT_ASSETS = "apigetagentassets";
     public static final String API_GET_AGENT_ASSET = "apigetagentasset";
     public static final String API_GET_CAMPAIGN_ASSETS = "apigetcampaignassets";
     public static final String API_GET_CAMPAIGN_ASSET = "apigetcampaignasset";
 
 
+
+    public static final String API_GET_AGENT_OPERATION_LISTS = "apigetagentoperationlists";
     public static final String API_GET_AGENT_OPERATIONS = "apigetagentoperations";
-    public static final String API_GET_OPERATIONS = "apigetoperations";
-    public static final String API_GET_OPERATION = "apigetoperation";
-    public static final String API_UPDATE_OPERATION = "apiupdateoperation";
-    public static final String API_REMOVE_OPERATION = "apiremoveoperation";
-    public static final String API_OPERATION_VALIDATE = "apioperationvalidate";
-    public static final String API_GET_OPERATION_SUMMARY = "apigetoperationsummary";
+    public static final String API_GET_AGENT_OPERATION = "apigetagentoperation";
+    public static final String API_UPDATE_AGENT_OPERATION = "apiupdateagentoperation";
+    public static final String API_REMOVE_AGENT_OPERATION = "apiremoveagentoperation";
+    public static final String API_VALIDATE_AGENT_OPERATION = "apivalidateagentoperation";
+    public static final String API_GET_AGENT_OPERATIONS_SUMMARY = "apigetagentoperationssummary";
 
 
     public static final String API_GET_OPERATION_DETAILS = "apigetoperationdetails";
@@ -86,6 +70,18 @@ public class ApiRoute {
 
     public static final String API_GET_OPERATION_CLIENT_REMOTES = "apigetoperationclientremotes";
     public static final String API_GET_OPERATION_CLIENT_REMOTE = "apigetoperationclientremote";
+
+    public static final String API_GET_CLIENT = "apigetclient";
+    public static final String API_GET_CLIENT_DETAILS = "apigetclientdetails";
+    public static final String API_GET_CLIENT_NOTES = "apigetclientnotes";
+    public static final String API_GET_CLIENT_NOTE = "apigetclientnote";
+    public static final String API_CREATE_CLIENT_NOTE = "apicreateclientnote";
+    public static final String API_UPDATE_CLIENT_NOTE = "apiupdateclientnote";
+    public static final String API_REMOVE_CLIENT_NOTE = "apiremoveclientnote";
+    public static final String API_GET_CLIENT_REMOTES = "apigetclientremotes";
+    public static final String API_GET_CLIENT_REMOTE = "apigetclientremote";
+    public static final String API_GET_CLIENT_OS_INTS = "apigetclientosints";
+    public static final String API_GET_CLIENT_OS_INT = "apigetclientosint";
 
 
     public static final String API_GET_OPERATION_SCENARIOS = "apigetoperationscenarios";
