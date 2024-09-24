@@ -66,7 +66,7 @@ public class ApiCampaignFramework {
         List<CampaignAgentDBModel> campaignAgents = campaignAgentRepository.findByAgentIdAndAgentState(agentId,AppConstant.ACTIVE_STATE);
         for (CampaignAgentDBModel campaignAgent : campaignAgents) {
             List<CampaignDBModel> campaignDBModels = campaignRepository.findByIdAndCampaignCategoryAndCampaignState(campaignAgent.getCampaignId(),campaignCategory,AppConstant.ACTIVE_CAMPAIGN);
-            if (!campaignDBModels.isEmpty() && campaignDBModels.get(0).getCampaignState().equalsIgnoreCase(AppConstant.ACTIVE_STATE)){
+            if (!campaignDBModels.isEmpty()){
                 agentCampaigns.add(campaignHelper.getApiCampaignWSDTO(agentId,campaignDBModels.get(0)));
             }
         }
