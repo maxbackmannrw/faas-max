@@ -11,6 +11,8 @@ import com.faas.core.data.db.operation.content.OperationDBModel;
 import com.faas.core.data.db.user.content.UserDBModel;
 import com.faas.core.data.repo.campaign.content.CampaignRepository;
 import com.faas.core.data.repo.campaign.details.agent.CampaignAgentRepository;
+import com.faas.core.data.repo.campaign.details.remote.CampaignRemoteRepository;
+import com.faas.core.data.repo.campaign.details.scenario.CampaignScenarioRepository;
 import com.faas.core.data.repo.operation.content.OperationRepository;
 import com.faas.core.data.repo.user.content.UserRepository;
 import com.faas.core.misc.config.AppConstant;
@@ -47,6 +49,12 @@ public class ApiCampaignDetailsFramework {
     @Autowired
     CampaignAgentRepository campaignAgentRepository;
 
+    @Autowired
+    CampaignScenarioRepository campaignScenarioRepository;
+
+    @Autowired
+    CampaignRemoteRepository campaignRemoteRepository;
+
 
     public ApiCampaignDetailsWSDTO apiGetAgentCampaignDetailsService(long agentId, String campaignId) {
 
@@ -56,6 +64,8 @@ public class ApiCampaignDetailsFramework {
 
             ApiCampaignDetailsWSDTO agentCampaignDetails = new ApiCampaignDetailsWSDTO();
             agentCampaignDetails.setCampaign(campaignHelper.getApiCampaignWSDTO(agentId,campaignDBModels.get(0)));
+            agentCampaignDetails.setCampaignScenarios(campaignScenarioRepository.findByCampaignId(campaignId));
+            agentCampaignDetails.setCampaignRemotes(campaignRemoteRepository.findByCampaignId(campaignId));
             agentCampaignDetails.setReadyOperation(operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndCampaignIdAndOperationState(agentId,campaignId,AppConstant.READY_STATE, PageRequest.of(0,20 ))));
             agentCampaignDetails.setActiveOperation(operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndCampaignIdAndOperationState(agentId,campaignId,AppConstant.ACTIVE_STATE, PageRequest.of(0,20 ))));
 
