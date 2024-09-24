@@ -342,6 +342,7 @@ public class CampaignHelper {
         ApiCampaignWSDTO campaignWSDTO = new ApiCampaignWSDTO();
         campaignWSDTO.setCampaign(campaignDBModel);
         campaignWSDTO.setCampaignSummary(getApiCampaignSummary(agentId, campaignDBModel.getId()));
+
         return campaignWSDTO;
     }
 

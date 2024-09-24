@@ -6,14 +6,18 @@ import com.faas.core.api.model.ws.operation.content.dto.ApiOperationListWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiValidateOperationWSDTO;
 import com.faas.core.data.db.campaign.content.CampaignDBModel;
+import com.faas.core.data.db.campaign.details.agent.CampaignAgentDBModel;
 import com.faas.core.data.db.operation.content.OperationDBModel;
 import com.faas.core.data.db.user.content.UserDBModel;
 import com.faas.core.data.repo.campaign.content.CampaignRepository;
+import com.faas.core.data.repo.campaign.details.agent.CampaignAgentRepository;
 import com.faas.core.data.repo.operation.content.OperationRepository;
 import com.faas.core.data.repo.user.content.UserRepository;
 import com.faas.core.misc.config.AppConstant;
+import com.faas.core.misc.helpers.campaign.CampaignHelper;
 import com.faas.core.misc.helpers.operation.OperationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
@@ -29,38 +33,43 @@ public class ApiCampaignDetailsFramework {
     OperationHelper operationHelper;
 
     @Autowired
-    OperationRepository operationRepository;
+    CampaignHelper campaignHelper;
 
     @Autowired
     UserRepository userRepository;
 
     @Autowired
+    OperationRepository operationRepository;
+
+    @Autowired
     CampaignRepository campaignRepository;
+
+    @Autowired
+    CampaignAgentRepository campaignAgentRepository;
 
 
     public ApiCampaignDetailsWSDTO apiGetAgentCampaignDetailsService(long agentId, String campaignId) {
 
-        Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
+        List<CampaignDBModel> campaignDBModels = campaignRepository.findByIdAndCampaignState(campaignId,AppConstant.ACTIVE_CAMPAIGN);
+        List<CampaignAgentDBModel> campaignAgentDBModels = campaignAgentRepository.findByCampaignIdAndAgentIdAndAgentState(campaignId,agentId,AppConstant.ACTIVE_STATE);
+        if (!campaignDBModels.isEmpty() && !campaignAgentDBModels.isEmpty()){
 
+            ApiCampaignDetailsWSDTO agentCampaignDetails = new ApiCampaignDetailsWSDTO();
+            agentCampaignDetails.setCampaign(campaignHelper.getApiCampaignWSDTO(agentId,campaignDBModels.get(0)));
+            agentCampaignDetails.setReadyOperation(operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndCampaignIdAndOperationState(agentId,campaignId,AppConstant.READY_STATE, PageRequest.of(0,20 ))));
+            agentCampaignDetails.setActiveOperation(operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndCampaignIdAndOperationState(agentId,campaignId,AppConstant.ACTIVE_STATE, PageRequest.of(0,20 ))));
+
+            return agentCampaignDetails;
+        }
         return null;
     }
 
     public ApiOperationListWSDTO apiGetAgentCampaignOperationsService(long agentId, String campaignId, String operationState, int reqPage, int reqSize) {
 
-        Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
-        if (campaignDBModel.isPresent()) {
-            if (operationState.equalsIgnoreCase(AppConstant.READY_STATE)) {
-                if (campaignDBModel.get().getCampaignCategory().equalsIgnoreCase(AppConstant.MANUAL_CAMPAIGN)) {
-                    return operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndCampaignIdAndOperationState(agentId, campaignId, operationState, PageRequest.of(reqPage, reqSize)));
-                }
-                if (campaignDBModel.get().getCampaignCategory().equalsIgnoreCase(AppConstant.INQUIRY_CAMPAIGN)) {
-                }
-                if (campaignDBModel.get().getCampaignCategory().equalsIgnoreCase(AppConstant.AUTOMATIC_CAMPAIGN)) {
-                }
-            }
-            if (operationState.equalsIgnoreCase(AppConstant.ACTIVE_STATE)) {
-                return operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndCampaignIdAndOperationState(agentId, campaignId, operationState, PageRequest.of(reqPage, reqSize)));
-            }
+        List<CampaignDBModel> campaignDBModels = campaignRepository.findByIdAndCampaignState(campaignId,AppConstant.ACTIVE_CAMPAIGN);
+        List<CampaignAgentDBModel> campaignAgentDBModels = campaignAgentRepository.findByCampaignIdAndAgentIdAndAgentState(campaignId,agentId,AppConstant.ACTIVE_STATE);
+        if (!campaignDBModels.isEmpty() && !campaignAgentDBModels.isEmpty()){
+            return operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndCampaignIdAndOperationState(agentId,campaignId,operationState, PageRequest.of(reqPage,reqSize)));
         }
         return null;
     }
@@ -88,7 +97,6 @@ public class ApiCampaignDetailsFramework {
     public List<ApiSummaryWSDTO> apiGetAgentCampaignDetailsSummaryService(long agentId, String campaignId) {
 
         List<ApiSummaryWSDTO> agentCampaignDetailsSummary = new ArrayList<>();
-
         agentCampaignDetailsSummary.add(new ApiSummaryWSDTO(AppConstant.AGENT_ACTIVE_OPERATION_SUMMARY, String.valueOf(operationRepository.countByAgentIdAndCampaignIdAndOperationState(agentId, campaignId, AppConstant.ACTIVE_STATE))));
         agentCampaignDetailsSummary.add(new ApiSummaryWSDTO(AppConstant.AGENT_READY_OPERATION_SUMMARY, String.valueOf(operationRepository.countByAgentIdAndCampaignIdAndOperationState(agentId, campaignId, AppConstant.READY_STATE))));
         agentCampaignDetailsSummary.add(new ApiSummaryWSDTO(AppConstant.AGENT_TOTAL_OPERATION_SUMMARY, String.valueOf(operationRepository.countByAgentIdAndCampaignId(agentId, campaignId))));
