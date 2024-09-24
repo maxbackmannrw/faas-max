@@ -9,12 +9,9 @@ import com.faas.core.data.db.campaign.content.CampaignDBModel;
 import com.faas.core.data.db.operation.content.OperationDBModel;
 import com.faas.core.data.db.user.content.UserDBModel;
 import com.faas.core.data.repo.campaign.content.CampaignRepository;
-import com.faas.core.data.repo.campaign.details.agent.CampaignAgentRepository;
-import com.faas.core.data.repo.campaign.details.scenario.CampaignScenarioRepository;
 import com.faas.core.data.repo.operation.content.OperationRepository;
 import com.faas.core.data.repo.user.content.UserRepository;
 import com.faas.core.misc.config.AppConstant;
-import com.faas.core.misc.config.AppUtils;
 import com.faas.core.misc.helpers.operation.OperationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -48,16 +45,6 @@ public class ApiCampaignDetailsFramework {
         return null;
     }
 
-    public List<ApiSummaryWSDTO> apiGetAgentCampaignDetailsSummaryService(long agentId, String campaignId) {
-
-        List<ApiSummaryWSDTO> campaignSummaries = new ArrayList<>();
-        campaignSummaries.add(new ApiSummaryWSDTO(AppConstant.AGENT_ACTIVE_OPERATION_SUMMARY, String.valueOf(operationRepository.countByAgentIdAndCampaignIdAndOperationState(agentId, campaignId, AppConstant.ACTIVE_STATE))));
-        campaignSummaries.add(new ApiSummaryWSDTO(AppConstant.AGENT_READY_OPERATION_SUMMARY, String.valueOf(operationRepository.countByAgentIdAndCampaignIdAndOperationState(agentId, campaignId, AppConstant.READY_STATE))));
-        campaignSummaries.add(new ApiSummaryWSDTO(AppConstant.AGENT_TOTAL_OPERATION_SUMMARY, String.valueOf(operationRepository.countByAgentIdAndCampaignId(agentId, campaignId))));
-
-        return campaignSummaries;
-    }
-
     public ApiOperationListWSDTO apiGetAgentCampaignOperationsService(long agentId, String campaignId, String operationState, int reqPage, int reqSize) {
 
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
@@ -78,7 +65,6 @@ public class ApiCampaignDetailsFramework {
         return null;
     }
 
-
     public ApiOperationWSDTO apiGetAgentCampaignOperationService(long agentId, String operationId) {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
@@ -87,7 +73,6 @@ public class ApiCampaignDetailsFramework {
         }
         return null;
     }
-
 
     public ApiValidateOperationWSDTO apiValidateAgentCampaignOperationService(long agentId, String operationId) {
 
@@ -98,6 +83,17 @@ public class ApiCampaignDetailsFramework {
             return operationHelper.validateOperationHelper(userDBModel.get(), operationDBModels.get(0));
         }
         return null;
+    }
+
+    public List<ApiSummaryWSDTO> apiGetAgentCampaignDetailsSummaryService(long agentId, String campaignId) {
+
+        List<ApiSummaryWSDTO> agentCampaignDetailsSummary = new ArrayList<>();
+
+        agentCampaignDetailsSummary.add(new ApiSummaryWSDTO(AppConstant.AGENT_ACTIVE_OPERATION_SUMMARY, String.valueOf(operationRepository.countByAgentIdAndCampaignIdAndOperationState(agentId, campaignId, AppConstant.ACTIVE_STATE))));
+        agentCampaignDetailsSummary.add(new ApiSummaryWSDTO(AppConstant.AGENT_READY_OPERATION_SUMMARY, String.valueOf(operationRepository.countByAgentIdAndCampaignIdAndOperationState(agentId, campaignId, AppConstant.READY_STATE))));
+        agentCampaignDetailsSummary.add(new ApiSummaryWSDTO(AppConstant.AGENT_TOTAL_OPERATION_SUMMARY, String.valueOf(operationRepository.countByAgentIdAndCampaignId(agentId, campaignId))));
+
+        return agentCampaignDetailsSummary;
     }
 
 

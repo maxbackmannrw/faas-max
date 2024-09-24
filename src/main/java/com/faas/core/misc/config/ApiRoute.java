@@ -23,10 +23,10 @@ public class ApiRoute {
     public static final String API_GET_AGENT_CAMPAIGN = "apigetagentcampaign";
     public static final String API_GET_AGENT_CAMPAIGNS_SUMMARY = "apigetagentcampaignssummary";
     public static final String API_GET_AGENT_CAMPAIGN_DETAILS = "apigetagentcampaigndetails";
-    public static final String API_GET_AGENT_CAMPAIGN_DETAILS_SUMMARY = "apigetagentcampaigndetailssummary";
     public static final String API_GET_AGENT_CAMPAIGN_OPERATIONS = "apigetagentcampaignoperations";
     public static final String API_GET_AGENT_CAMPAIGN_OPERATION = "apigetagentcampaignoperation";
     public static final String API_VALIDATE_AGENT_CAMPAIGN_OPERATION = "apivalidateagentcampaignoperation";
+    public static final String API_GET_AGENT_CAMPAIGN_DETAILS_SUMMARY = "apigetagentcampaigndetailssummary";
 
 
 

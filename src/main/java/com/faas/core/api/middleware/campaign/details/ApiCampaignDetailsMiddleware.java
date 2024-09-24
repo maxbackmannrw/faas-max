@@ -46,25 +46,6 @@ public class ApiCampaignDetailsMiddleware {
         return response;
     }
 
-    public ApiSummaryWSModel apiGetAgentCampaignDetailsSummary(long agentId, String campaignId) {
-
-        ApiSummaryWSModel response = new ApiSummaryWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-        List<ApiSummaryWSDTO> campaignDetailsSummary = apiCampaignDetailsFramework.apiGetAgentCampaignDetailsSummaryService(agentId, campaignId);
-        if (campaignDetailsSummary != null) {
-            response.setSummaries(campaignDetailsSummary);
-        }
-
-        general.setOperation("apiGetAgentCampaignDetailsSummary");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
     public ApiOperationListWSModel apiGetAgentCampaignOperations(long agentId, String campaignId, String operationState, int reqPage, int reqSize) {
 
         ApiOperationListWSModel response = new ApiOperationListWSModel();
@@ -83,7 +64,6 @@ public class ApiCampaignDetailsMiddleware {
 
         return response;
     }
-
 
     public ApiOperationWSModel apiGetAgentCampaignOperation(long agentId, String operationId) {
 
@@ -106,7 +86,6 @@ public class ApiCampaignDetailsMiddleware {
         return response;
     }
 
-
     public ApiValidateOperationWSModel apiValidateAgentCampaignOperation(long agentId, String operationId) {
 
         ApiValidateOperationWSModel response = new ApiValidateOperationWSModel();
@@ -118,6 +97,25 @@ public class ApiCampaignDetailsMiddleware {
         }
 
         general.setOperation("apiValidateAgentCampaignOperation");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public ApiSummaryWSModel apiGetAgentCampaignDetailsSummary(long agentId, String campaignId) {
+
+        ApiSummaryWSModel response = new ApiSummaryWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        List<ApiSummaryWSDTO> campaignDetailsSummary = apiCampaignDetailsFramework.apiGetAgentCampaignDetailsSummaryService(agentId, campaignId);
+        if (campaignDetailsSummary != null) {
+            response.setSummaries(campaignDetailsSummary);
+        }
+
+        general.setOperation("apiGetAgentCampaignDetailsSummary");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
