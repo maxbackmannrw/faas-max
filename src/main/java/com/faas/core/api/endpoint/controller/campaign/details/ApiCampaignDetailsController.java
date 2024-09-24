@@ -66,7 +66,6 @@ public class ApiCampaignDetailsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
     @RequestMapping(value = ApiRoute.API_VALIDATE_AGENT_CAMPAIGN_OPERATION, method = RequestMethod.POST)
     public ResponseEntity<?> apiValidateAgentCampaignOperation(@RequestParam long agentId,
                                                                @RequestParam String operationId) {

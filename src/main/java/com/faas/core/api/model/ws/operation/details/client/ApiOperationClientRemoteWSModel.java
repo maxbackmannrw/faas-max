@@ -1,6 +1,6 @@
-package com.faas.core.api.model.ws.operation.client.details;
+package com.faas.core.api.model.ws.operation.details.client;
 
-import com.faas.core.api.model.ws.operation.client.details.dto.ApiOperationClientRemoteWSDTO;
+import com.faas.core.api.model.ws.operation.details.client.dto.ApiOperationClientRemoteWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 
 import java.util.List;

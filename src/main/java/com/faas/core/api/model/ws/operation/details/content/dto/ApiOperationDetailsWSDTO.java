@@ -1,6 +1,6 @@
 package com.faas.core.api.model.ws.operation.details.content.dto;
 
-import com.faas.core.api.model.ws.operation.client.content.dto.ApiOperationClientWSDTO;
+import com.faas.core.api.model.ws.operation.details.client.dto.ApiOperationClientWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.content.dto.ApiOperationCallChannelWSDTO;
 import com.faas.core.api.model.ws.operation.details.channel.content.dto.ApiOperationMessageChannelWSDTO;
 import com.faas.core.data.db.operation.content.OperationDBModel;

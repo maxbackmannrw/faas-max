@@ -1,22 +1,63 @@
-package com.faas.core.api.middleware.operation.client.details;
+package com.faas.core.api.middleware.operation.details.client;
 
-import com.faas.core.api.framework.operation.client.details.ApiOperationClientDetailsFramework;
-import com.faas.core.api.model.ws.operation.client.details.ApiOperationClientDetailsWSModel;
-import com.faas.core.api.model.ws.operation.client.details.ApiOperationClientNoteWSModel;
-import com.faas.core.api.model.ws.operation.client.details.ApiOperationClientOSINTWSModel;
-import com.faas.core.api.model.ws.operation.client.details.ApiOperationClientRemoteWSModel;
+import com.faas.core.api.framework.operation.details.client.ApiOperationClientFramework;
+import com.faas.core.api.model.ws.operation.details.client.ApiOperationClientWSModel;
+import com.faas.core.api.model.ws.operation.details.client.dto.ApiOperationClientWSDTO;
+import com.faas.core.api.model.ws.operation.details.client.ApiOperationClientDetailsWSModel;
+import com.faas.core.api.model.ws.operation.details.client.ApiOperationClientNoteWSModel;
+import com.faas.core.api.model.ws.operation.details.client.ApiOperationClientOSINTWSModel;
+import com.faas.core.api.model.ws.operation.details.client.ApiOperationClientRemoteWSModel;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+
 @Component
-public class ApiOperationClientDetailsMiddleware {
+public class ApiOperationClientMiddleware {
 
 
     @Autowired
-    ApiOperationClientDetailsFramework apiOperationClientDetailsFramework;
+    ApiOperationClientFramework apiOperationClientFramework;
 
+
+    public ApiOperationClientWSModel apiAgentGetClients(long agentId, int reqPage, int reqSize) {
+
+        ApiOperationClientWSModel response = new ApiOperationClientWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        ApiOperationClientWSDTO clientWSDTO = apiOperationClientFramework.apiAgentGetClientsService(agentId, reqPage, reqSize);
+        if (clientWSDTO != null) {
+            response.setClient(clientWSDTO);
+        }
+
+        general.setOperation("apiGetClient");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public ApiOperationClientWSModel apiGetClient(long agentId, long clientId) {
+
+        ApiOperationClientWSModel response = new ApiOperationClientWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        ApiOperationClientWSDTO clientWSDTO = apiOperationClientFramework.apiGetClientService(agentId, clientId);
+        if (clientWSDTO != null) {
+            response.setClient(clientWSDTO);
+        }
+
+        general.setOperation("apiGetClient");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
 
     public ApiOperationClientDetailsWSModel apiGetClientDetails(long agentId, long clientId) {
 
