@@ -97,7 +97,7 @@ public class ApiDashboardFramework {
         return campaignWSDTOS;
     }
 
-    public List<ApiSummaryWSDTO> apiGetDashboardSummariesService(long agentId) {
+    public List<ApiSummaryWSDTO> apiGetDashboardContentSummaryService(long agentId) {
 
         List<ApiSummaryWSDTO> apiDashboardSummary = new ArrayList<>();
         apiDashboardSummary.add(new ApiSummaryWSDTO(AppConstant.AGENT_TOTAL_CAMPAIGN_SUMMARY, String.valueOf(campaignAgentRepository.countByAgentIdAndAgentState(agentId,AppConstant.ACTIVE_STATE))));

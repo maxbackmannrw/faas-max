@@ -1,4 +1,4 @@
-package com.faas.core.api.model.ws.agent.details.dto;
+package com.faas.core.api.model.ws.user.details.dto;
 
 public class ApiAgentInfoWSDTO {
 

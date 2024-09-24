@@ -1,9 +1,10 @@
-package com.faas.core.api.endpoint.controller.user.details;
+package com.faas.core.api.endpoint.controller.user;
 
-import com.faas.core.api.middleware.user.details.ApiUserDetailsMiddleware;
-import com.faas.core.api.model.ws.agent.details.ApiAgentDetailsWSModel;
-import com.faas.core.api.model.ws.agent.details.ApiAgentInfoWSModel;
-import com.faas.core.api.model.ws.agent.details.ApiAgentSipAccountWSModel;
+import com.faas.core.api.middleware.user.ApiUserMiddleware;
+import com.faas.core.api.model.ws.user.content.ApiAgentWSModel;
+import com.faas.core.api.model.ws.user.details.ApiAgentDetailsWSModel;
+import com.faas.core.api.model.ws.user.details.ApiAgentInfoWSModel;
+import com.faas.core.api.model.ws.user.details.ApiAgentSipAccountWSModel;
 import com.faas.core.misc.config.ApiRoute;
 import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,17 +17,30 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-@RequestMapping(value = AppConstant.API_VERSION + "/api/user/details/")
-public class ApiUserDetailsController {
+@RequestMapping(value = AppConstant.API_VERSION + "/api/user/")
+public class ApiUserController {
 
 
     @Autowired
-    ApiUserDetailsMiddleware apiUserDetailsMiddleware;
+    ApiUserMiddleware apiUserMiddleware;
+
+
+    @RequestMapping(value = ApiRoute.API_AGENT_LOGIN, method = RequestMethod.POST)
+    public ResponseEntity<?> apiAgentLogin(@RequestParam String userEmail,
+                                           @RequestParam String password) {
+
+        ApiAgentWSModel response = apiUserMiddleware.apiAgentLogin(userEmail, password);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
 
     @RequestMapping(value = ApiRoute.API_GET_AGENT_DETAILS, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetAgentDetails(@RequestParam long agentId) {
 
-        ApiAgentDetailsWSModel response = apiUserDetailsMiddleware.apiGetAgentDetails(agentId);
+        ApiAgentDetailsWSModel response = apiUserMiddleware.apiGetAgentDetails(agentId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -38,7 +52,7 @@ public class ApiUserDetailsController {
     public ResponseEntity<?> apiGetAgentSipAccount(@RequestParam long agentId,
                                                    @RequestParam String processId) {
 
-        ApiAgentSipAccountWSModel response = apiUserDetailsMiddleware.apiGetAgentSipAccount(agentId, processId);
+        ApiAgentSipAccountWSModel response = apiUserMiddleware.apiGetAgentSipAccount(agentId, processId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -49,7 +63,7 @@ public class ApiUserDetailsController {
     @RequestMapping(value = ApiRoute.API_GET_AGENT_INFO, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetAgentInfo(@RequestParam long agentId) {
 
-        ApiAgentInfoWSModel response = apiUserDetailsMiddleware.apiGetAgentInfo(agentId);
+        ApiAgentInfoWSModel response = apiUserMiddleware.apiGetAgentInfo(agentId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

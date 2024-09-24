@@ -5,12 +5,12 @@ import com.faas.core.data.db.campaign.content.CampaignDBModel;
 public class ApiCampaignWSDTO {
 
     private CampaignDBModel campaign;
-    private ApiAgentCampaignSummary campaignSummary;
+    private ApiCampaignSummary campaignSummary;
 
     public ApiCampaignWSDTO() {
     }
 
-    public ApiCampaignWSDTO(CampaignDBModel campaign, ApiAgentCampaignSummary campaignSummary) {
+    public ApiCampaignWSDTO(CampaignDBModel campaign, ApiCampaignSummary campaignSummary) {
         this.campaign = campaign;
         this.campaignSummary = campaignSummary;
     }
@@ -23,11 +23,11 @@ public class ApiCampaignWSDTO {
         this.campaign = campaign;
     }
 
-    public ApiAgentCampaignSummary getCampaignSummary() {
+    public ApiCampaignSummary getCampaignSummary() {
         return campaignSummary;
     }
 
-    public void setCampaignSummary(ApiAgentCampaignSummary campaignSummary) {
+    public void setCampaignSummary(ApiCampaignSummary campaignSummary) {
         this.campaignSummary = campaignSummary;
     }
 }

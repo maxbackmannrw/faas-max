@@ -1,6 +1,6 @@
-package com.faas.core.api.model.ws.agent.content;
+package com.faas.core.api.model.ws.user.content;
 
-import com.faas.core.api.model.ws.agent.content.dto.ApiAgentWSDTO;
+import com.faas.core.api.model.ws.user.content.dto.ApiAgentWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 
 import java.util.List;

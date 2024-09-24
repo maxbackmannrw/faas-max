@@ -1,4 +1,4 @@
-package com.faas.core.api.model.ws.agent.content.dto;
+package com.faas.core.api.model.ws.user.content.dto;
 
 import com.faas.core.data.db.user.content.UserDBModel;
 import com.faas.core.data.db.user.details.UserDetailsDBModel;

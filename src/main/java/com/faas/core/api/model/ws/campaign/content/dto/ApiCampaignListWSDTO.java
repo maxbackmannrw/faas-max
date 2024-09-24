@@ -2,15 +2,15 @@ package com.faas.core.api.model.ws.campaign.content.dto;
 
 import java.util.List;
 
-public class ApiAgentCampaignWSDTO {
+public class ApiCampaignListWSDTO {
 
     private List<ApiCampaignWSDTO> manualCampaigns;
     private List<ApiCampaignWSDTO> inquiryCampaigns;
 
-    public ApiAgentCampaignWSDTO() {
+    public ApiCampaignListWSDTO() {
     }
 
-    public ApiAgentCampaignWSDTO(List<ApiCampaignWSDTO> manualCampaigns, List<ApiCampaignWSDTO> inquiryCampaigns) {
+    public ApiCampaignListWSDTO(List<ApiCampaignWSDTO> manualCampaigns, List<ApiCampaignWSDTO> inquiryCampaigns) {
         this.manualCampaigns = manualCampaigns;
         this.inquiryCampaigns = inquiryCampaigns;
     }

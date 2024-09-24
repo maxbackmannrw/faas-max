@@ -6,8 +6,8 @@ public class ApiRoute {
     public static final String API_AGENT_LOGIN = "apiagentlogin";
 
     public static final String API_GET_AGENT_DETAILS = "apigetagentdetails";
-    public static final String API_GET_AGENT_INFO = "apigetagentinfo";
     public static final String API_GET_AGENT_SIP_ACCOUNT = "apigetagentsipaccount";
+    public static final String API_GET_AGENT_INFO = "apigetagentinfo";
 
 
     public static final String API_GET_DASHBOARD_CONTENTS = "apigetdashboardcontents";
@@ -15,20 +15,19 @@ public class ApiRoute {
     public static final String API_GET_DASHBOARD_OPERATION = "apigetdashboardoperation";
     public static final String API_VALIDATE_DASHBOARD_OPERATION = "apivalidatedashboardoperation";
     public static final String API_GET_DASHBOARD_CAMPAIGNS = "apigetdashboardcampaigns";
-    public static final String API_GET_DASHBOARD_SUMMARIES = "apigetdashboardsummaries";
+    public static final String API_GET_DASHBOARD_CONTENT_SUMMARY = "apigetdashboardcontentsummary";
 
 
+    public static final String API_GET_AGENT_CAMPAIGN_LIST = "apigetagentcampaignlist";
     public static final String API_GET_AGENT_CAMPAIGNS = "apigetagentcampaigns";
-    public static final String API_GET_CAMPAIGNS = "apigetcampaigns";
-    public static final String API_GET_CAMPAIGN = "apigetcampaign";
-    public static final String API_GET_CAMPAIGNS_SUMMARY = "apigetcampaignssummary";
+    public static final String API_GET_AGENT_CAMPAIGN = "apigetagentcampaign";
+    public static final String API_GET_AGENT_CAMPAIGNS_SUMMARY = "apigetagentcampaignssummary";
+    public static final String API_GET_AGENT_CAMPAIGN_DETAILS = "apigetagentcampaigndetails";
+    public static final String API_GET_AGENT_CAMPAIGN_DETAILS_SUMMARY = "apigetagentcampaigndetailssummary";
+    public static final String API_GET_AGENT_CAMPAIGN_OPERATIONS = "apigetagentcampaignoperations";
+    public static final String API_GET_AGENT_CAMPAIGN_OPERATION = "apigetagentcampaignoperation";
+    public static final String API_VALIDATE_AGENT_CAMPAIGN_OPERATION = "apivalidateagentcampaignoperation";
 
-    public static final String API_GET_CAMPAIGN_DETAILS = "apigetcampaigndetails";
-    public static final String API_GET_CAMPAIGN_SUMMARY = "apigetcampaigndetailssummary";
-
-    public static final String API_GET_CAMPAIGN_OPERATIONS = "apigetcampaignoperations";
-    public static final String API_GET_CAMPAIGN_OPERATION = "apigetcampaignoperation";
-    public static final String API_CAMPAIGN_OPERATION_VALIDATE = "apicampaignoperationvalidate";
 
 
     public static final String API_GET_AGENT_CLIENTS = "apigetagentclients";

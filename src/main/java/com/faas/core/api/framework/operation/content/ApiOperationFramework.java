@@ -85,7 +85,6 @@ public class ApiOperationFramework {
         return null;
     }
 
-
     public List<ApiSummaryWSDTO> apiGetOperationSummaryService(long agentId) {
         return operationHelper.apiGetOperationSummaryHelper(agentId);
     }

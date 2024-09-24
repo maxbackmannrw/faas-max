@@ -1,4 +1,4 @@
-package com.faas.core.api.model.ws.agent.details.dto;
+package com.faas.core.api.model.ws.user.details.dto;
 
 import com.faas.core.data.db.campaign.details.channel.dao.CampaignSipChannelDAO;
 import com.faas.core.data.db.user.details.dao.UserSipChannelDAO;

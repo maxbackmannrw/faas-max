@@ -1,16 +1,16 @@
 package com.faas.core.api.model.ws.campaign.content.dto;
 
 
-public class ApiAgentCampaignSummary {
+public class ApiCampaignSummary {
 
     private long readyOperationCount;
     private long activeOperationCount;
     private long totalOperationCount;
 
-    public ApiAgentCampaignSummary() {
+    public ApiCampaignSummary() {
     }
 
-    public ApiAgentCampaignSummary(long readyOperationCount, long activeOperationCount, long totalOperationCount) {
+    public ApiCampaignSummary(long readyOperationCount, long activeOperationCount, long totalOperationCount) {
         this.readyOperationCount = readyOperationCount;
         this.activeOperationCount = activeOperationCount;
         this.totalOperationCount = totalOperationCount;

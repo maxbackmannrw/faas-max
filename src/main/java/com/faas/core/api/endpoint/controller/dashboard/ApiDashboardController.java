@@ -91,10 +91,10 @@ public class ApiDashboardController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-    @RequestMapping(value = ApiRoute.API_GET_DASHBOARD_SUMMARIES, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetDashboardSummaries(@RequestParam long agentId) {
+    @RequestMapping(value = ApiRoute.API_GET_DASHBOARD_CONTENT_SUMMARY, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetDashboardContentSummary(@RequestParam long agentId) {
 
-        ApiSummaryWSModel response = apiDashboardMiddleware.apiGetDashboardSummaries(agentId);
+        ApiSummaryWSModel response = apiDashboardMiddleware.apiGetDashboardContentSummary(agentId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

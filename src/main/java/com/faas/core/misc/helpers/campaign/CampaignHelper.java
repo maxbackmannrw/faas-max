@@ -1,6 +1,6 @@
 package com.faas.core.misc.helpers.campaign;
 
-import com.faas.core.api.model.ws.campaign.content.dto.ApiAgentCampaignSummary;
+import com.faas.core.api.model.ws.campaign.content.dto.ApiCampaignSummary;
 import com.faas.core.api.model.ws.campaign.content.dto.ApiCampaignWSDTO;
 import com.faas.core.data.db.campaign.content.CampaignDBModel;
 import com.faas.core.data.db.campaign.content.dao.CampaignFlowDAO;
@@ -341,18 +341,20 @@ public class CampaignHelper {
 
         ApiCampaignWSDTO campaignWSDTO = new ApiCampaignWSDTO();
         campaignWSDTO.setCampaign(campaignDBModel);
-        campaignWSDTO.setCampaignSummary(getApiAgentCampaignSummary(agentId, campaignDBModel.getId()));
+        campaignWSDTO.setCampaignSummary(getApiCampaignSummary(agentId, campaignDBModel.getId()));
         return campaignWSDTO;
     }
 
-    public ApiAgentCampaignSummary getApiAgentCampaignSummary(long agentId, String campaignId) {
+    public ApiCampaignSummary getApiCampaignSummary(long agentId, String campaignId) {
 
-        ApiAgentCampaignSummary agentCampaignSummary = new ApiAgentCampaignSummary();
-        agentCampaignSummary.setReadyOperationCount(operationRepository.countByAgentIdAndCampaignIdAndOperationState(agentId,campaignId,AppConstant.READY_STATE));
-        agentCampaignSummary.setActiveOperationCount(operationRepository.countByAgentIdAndCampaignIdAndOperationState(agentId,campaignId,AppConstant.ACTIVE_STATE));
-        agentCampaignSummary.setTotalOperationCount(operationRepository.countByAgentIdAndCampaignId(agentId,campaignId));
-        return agentCampaignSummary;
+        ApiCampaignSummary campaignSummary = new ApiCampaignSummary();
+        campaignSummary.setReadyOperationCount(operationRepository.countByAgentIdAndCampaignIdAndOperationState(agentId,campaignId,AppConstant.READY_STATE));
+        campaignSummary.setActiveOperationCount(operationRepository.countByAgentIdAndCampaignIdAndOperationState(agentId,campaignId,AppConstant.ACTIVE_STATE));
+        campaignSummary.setTotalOperationCount(operationRepository.countByAgentIdAndCampaignId(agentId,campaignId));
+
+        return campaignSummary;
     }
+
 
     public CampaignChannelDBModel createCampaignChannelDBModel(CampaignDBModel campaignDBModel) {
 

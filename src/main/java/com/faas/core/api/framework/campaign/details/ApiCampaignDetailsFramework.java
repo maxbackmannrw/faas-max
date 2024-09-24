@@ -1,8 +1,10 @@
-package com.faas.core.api.framework.campaign.details.operation;
+package com.faas.core.api.framework.campaign.details;
 
+import com.faas.core.api.model.ws.campaign.details.dto.ApiCampaignDetailsWSDTO;
+import com.faas.core.api.model.ws.general.dto.ApiSummaryWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationListWSDTO;
-import com.faas.core.api.model.ws.operation.content.dto.ApiValidateOperationWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
+import com.faas.core.api.model.ws.operation.content.dto.ApiValidateOperationWSDTO;
 import com.faas.core.data.db.campaign.content.CampaignDBModel;
 import com.faas.core.data.db.operation.content.OperationDBModel;
 import com.faas.core.data.db.user.content.UserDBModel;
@@ -18,37 +20,45 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 
 @Component
-public class ApiCampaignOperationFramework {
+public class ApiCampaignDetailsFramework {
 
     @Autowired
     OperationHelper operationHelper;
 
     @Autowired
-    UserRepository userRepository;
-
-    @Autowired
     OperationRepository operationRepository;
 
     @Autowired
-    CampaignAgentRepository campaignAgentRepository;
+    UserRepository userRepository;
 
     @Autowired
     CampaignRepository campaignRepository;
 
 
-    @Autowired
-    CampaignScenarioRepository campaignScenarioRepository;
+    public ApiCampaignDetailsWSDTO apiGetAgentCampaignDetailsService(long agentId, String campaignId) {
 
-    @Autowired
-    AppUtils appUtils;
+        Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
 
+        return null;
+    }
 
-    public ApiOperationListWSDTO apiGetCampaignOperationsService(long agentId, String campaignId, String operationState, int reqPage, int reqSize) {
+    public List<ApiSummaryWSDTO> apiGetAgentCampaignDetailsSummaryService(long agentId, String campaignId) {
+
+        List<ApiSummaryWSDTO> campaignSummaries = new ArrayList<>();
+        campaignSummaries.add(new ApiSummaryWSDTO(AppConstant.AGENT_ACTIVE_OPERATION_SUMMARY, String.valueOf(operationRepository.countByAgentIdAndCampaignIdAndOperationState(agentId, campaignId, AppConstant.ACTIVE_STATE))));
+        campaignSummaries.add(new ApiSummaryWSDTO(AppConstant.AGENT_READY_OPERATION_SUMMARY, String.valueOf(operationRepository.countByAgentIdAndCampaignIdAndOperationState(agentId, campaignId, AppConstant.READY_STATE))));
+        campaignSummaries.add(new ApiSummaryWSDTO(AppConstant.AGENT_TOTAL_OPERATION_SUMMARY, String.valueOf(operationRepository.countByAgentIdAndCampaignId(agentId, campaignId))));
+
+        return campaignSummaries;
+    }
+
+    public ApiOperationListWSDTO apiGetAgentCampaignOperationsService(long agentId, String campaignId, String operationState, int reqPage, int reqSize) {
 
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
         if (campaignDBModel.isPresent()) {
@@ -69,7 +79,7 @@ public class ApiCampaignOperationFramework {
     }
 
 
-    public ApiOperationWSDTO apiGetCampaignOperationService(long agentId, String operationId) {
+    public ApiOperationWSDTO apiGetAgentCampaignOperationService(long agentId, String operationId) {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
         if (!operationDBModels.isEmpty()) {
@@ -79,7 +89,7 @@ public class ApiCampaignOperationFramework {
     }
 
 
-    public ApiValidateOperationWSDTO apiCampaignOperationValidateService(long agentId, String operationId) {
+    public ApiValidateOperationWSDTO apiValidateAgentCampaignOperationService(long agentId, String operationId) {
 
         Optional<UserDBModel> userDBModel = userRepository.findById(agentId);
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
