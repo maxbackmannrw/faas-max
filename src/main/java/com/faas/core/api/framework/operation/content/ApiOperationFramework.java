@@ -12,6 +12,7 @@ import com.faas.core.data.repo.user.content.UserRepository;
 import com.faas.core.misc.config.AppConstant;
 import com.faas.core.misc.helpers.operation.OperationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
@@ -42,16 +43,11 @@ public class ApiOperationFramework {
         return agentOperationWSDTO;
     }
 
-    public ApiOperationListWSDTO apiGetAgentOperationsService(long agentId, String operationCategory, String operationState, String inquiryState, String flowState, int reqPage, int reqSize) {
+    public ApiOperationListWSDTO apiGetAgentOperationsService(long agentId, String operationCategory, String operationState, int reqPage, int reqSize) {
 
-        if (operationCategory.equalsIgnoreCase(AppConstant.MANUAL_OPERATION)){
-            return operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationCategoryAndOperationState(agentId, AppConstant.MANUAL_OPERATION,operationState,PageRequest.of(reqPage,reqSize)));
-        }
-        if (operationCategory.equalsIgnoreCase(AppConstant.INQUIRY_OPERATION)){
-            return operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationCategoryAndOperationStateAndInquiryState(agentId, AppConstant.INQUIRY_OPERATION,operationState,inquiryState,PageRequest.of(reqPage,reqSize)));
-        }
-        if (operationCategory.equalsIgnoreCase(AppConstant.AUTOMATIC_OPERATION)){
-            return operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationCategoryAndOperationStateAndFlowState(agentId, AppConstant.INQUIRY_OPERATION,operationState,flowState,PageRequest.of(reqPage,reqSize)));
+        Page<OperationDBModel> agentOperationPageModel = operationRepository.findAllByAgentIdAndOperationCategoryAndOperationState(agentId, operationCategory,operationState,PageRequest.of(reqPage,reqSize));
+        if (agentOperationPageModel != null) {
+            return operationHelper.getApiOperationListWSDTO(agentOperationPageModel);
         }
         return null;
     }
