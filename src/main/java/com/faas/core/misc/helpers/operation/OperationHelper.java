@@ -233,15 +233,6 @@ public class OperationHelper {
         return operationWSDTO;
     }
 
-    public List<ApiSummaryWSDTO> apiGetOperationSummaryHelper(long agentId) {
-
-        List<ApiSummaryWSDTO> operationSummary = new ArrayList<>();
-        operationSummary.add(new ApiSummaryWSDTO(AppConstant.AGENT_ACTIVE_OPERATION_SUMMARY, String.valueOf(operationRepository.countByAgentIdAndOperationState(agentId, AppConstant.ACTIVE_STATE))));
-        operationSummary.add(new ApiSummaryWSDTO(AppConstant.AGENT_READY_OPERATION_SUMMARY, String.valueOf(operationRepository.countByAgentIdAndOperationState(agentId, AppConstant.READY_STATE))));
-        operationSummary.add(new ApiSummaryWSDTO(AppConstant.AGENT_TOTAL_CAMPAIGN_SUMMARY, String.valueOf(campaignAgentRepository.countByAgentId(agentId))));
-
-        return operationSummary;
-    }
 
     public ApiValidateOperationWSDTO validateOperationHelper(UserDBModel agentDBModel, OperationDBModel operationDBModel) {
 

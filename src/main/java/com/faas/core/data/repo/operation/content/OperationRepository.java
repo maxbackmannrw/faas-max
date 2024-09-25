@@ -19,6 +19,8 @@ public interface OperationRepository extends MongoRepository<OperationDBModel, S
 
     long countByCampaignIdAndOperationState(String campaignId, String operationState);
 
+    long countByAgentId(long agentId);
+
     long countByAgentIdAndOperationState(long agentId, String operationState);
 
     long countByAgentIdAndCampaignIdAndOperationState(long agentId, String campaignId, String operationState);

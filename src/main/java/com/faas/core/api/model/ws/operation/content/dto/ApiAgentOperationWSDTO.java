@@ -1,33 +1,31 @@
 package com.faas.core.api.model.ws.operation.content.dto;
 
-import java.util.List;
-
 public class ApiAgentOperationWSDTO {
 
-    private List<ApiOperationWSDTO> manualOperations;
-    private List<ApiOperationWSDTO> inquiryOperations;
+    private ApiOperationListWSDTO inquiryOperation;
+    private ApiOperationListWSDTO manualOperation;
 
     public ApiAgentOperationWSDTO() {
     }
 
-    public ApiAgentOperationWSDTO(List<ApiOperationWSDTO> manualOperations, List<ApiOperationWSDTO> inquiryOperations) {
-        this.manualOperations = manualOperations;
-        this.inquiryOperations = inquiryOperations;
+    public ApiAgentOperationWSDTO(ApiOperationListWSDTO inquiryOperation, ApiOperationListWSDTO manualOperation) {
+        this.inquiryOperation = inquiryOperation;
+        this.manualOperation = manualOperation;
     }
 
-    public List<ApiOperationWSDTO> getManualOperations() {
-        return manualOperations;
+    public ApiOperationListWSDTO getInquiryOperation() {
+        return inquiryOperation;
     }
 
-    public void setManualOperations(List<ApiOperationWSDTO> manualOperations) {
-        this.manualOperations = manualOperations;
+    public void setInquiryOperation(ApiOperationListWSDTO inquiryOperation) {
+        this.inquiryOperation = inquiryOperation;
     }
 
-    public List<ApiOperationWSDTO> getInquiryOperations() {
-        return inquiryOperations;
+    public ApiOperationListWSDTO getManualOperation() {
+        return manualOperation;
     }
 
-    public void setInquiryOperations(List<ApiOperationWSDTO> inquiryOperations) {
-        this.inquiryOperations = inquiryOperations;
+    public void setManualOperation(ApiOperationListWSDTO manualOperation) {
+        this.manualOperation = manualOperation;
     }
 }

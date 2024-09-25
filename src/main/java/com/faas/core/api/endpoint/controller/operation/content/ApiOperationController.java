@@ -3,6 +3,7 @@ package com.faas.core.api.endpoint.controller.operation.content;
 import com.faas.core.api.middleware.operation.content.ApiOperationMiddleware;
 import com.faas.core.api.model.ws.general.ApiSummaryWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiAgentOperationWSModel;
+import com.faas.core.api.model.ws.operation.content.ApiOperationListWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiValidateOperationWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiOperationWSModel;
 import com.faas.core.misc.config.ApiRoute;
@@ -25,12 +26,12 @@ public class ApiOperationController {
     ApiOperationMiddleware apiOperationMiddleware;
 
 
-    @RequestMapping(value = ApiRoute.API_GET_AGENT_OPERATION_LISTS, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetAgentOperationLists(@RequestParam long agentId,
-                                                       @RequestParam int reqPage,
-                                                       @RequestParam int reqSize) {
+    @RequestMapping(value = ApiRoute.API_GET_AGENT_OPERATION_LIST, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetAgentOperationList(@RequestParam long agentId,
+                                                      @RequestParam int reqPage,
+                                                      @RequestParam int reqSize) {
 
-        ApiAgentOperationWSModel response = apiOperationMiddleware.apiGetAgentOperationLists(agentId, reqPage, reqSize);
+        ApiAgentOperationWSModel response = apiOperationMiddleware.apiGetAgentOperationList(agentId, reqPage, reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -42,10 +43,12 @@ public class ApiOperationController {
     public ResponseEntity<?> apiGetAgentOperations(@RequestParam long agentId,
                                                    @RequestParam String operationState,
                                                    @RequestParam String operationCategory,
+                                                   @RequestParam String inquiryState,
+                                                   @RequestParam String flowState,
                                                    @RequestParam int reqPage,
                                                    @RequestParam int reqSize) {
 
-        ApiOperationWSModel response = apiOperationMiddleware.apiGetAgentOperations(agentId, operationCategory, operationState, reqPage, reqSize);
+        ApiOperationListWSModel response = apiOperationMiddleware.apiGetAgentOperations(agentId, operationCategory, operationState,inquiryState,flowState, reqPage, reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

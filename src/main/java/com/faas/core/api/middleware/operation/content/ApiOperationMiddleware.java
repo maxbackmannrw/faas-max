@@ -27,17 +27,17 @@ public class ApiOperationMiddleware {
     ApiOperationFramework apiOperationFramework;
 
 
-    public ApiAgentOperationWSModel apiGetAgentOperationLists(long agentId, int reqPage, int reqSize) {
+    public ApiAgentOperationWSModel apiGetAgentOperationList(long agentId, int reqPage, int reqSize) {
 
         ApiAgentOperationWSModel response = new ApiAgentOperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiAgentOperationWSDTO agentOperationWSDTO = apiOperationFramework.apiGetAgentOperationListsService(agentId, reqPage, reqSize);
+        ApiAgentOperationWSDTO agentOperationWSDTO = apiOperationFramework.apiGetAgentOperationListService(agentId, reqPage, reqSize);
         if (agentOperationWSDTO != null) {
             response.setAgentOperation(agentOperationWSDTO);
         }
 
-        general.setOperation("apiGetAgentOperationLists");
+        general.setOperation("apiGetAgentOperationList");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -46,14 +46,14 @@ public class ApiOperationMiddleware {
         return response;
     }
 
-    public ApiOperationWSModel apiGetAgentOperations(long agentId, String operationCategory, String operationState, int reqPage, int reqSize) {
+    public ApiOperationListWSModel apiGetAgentOperations(long agentId, String operationCategory, String operationState, String inquiryState, String flowState, int reqPage, int reqSize) {
 
-        ApiOperationWSModel response = new ApiOperationWSModel();
+        ApiOperationListWSModel response = new ApiOperationListWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ApiOperationWSDTO> agentOperationWSDTOS = apiOperationFramework.apiGetAgentOperationsService(agentId, operationCategory, operationState, reqPage, reqSize);
-        if (agentOperationWSDTOS != null) {
-            response.setOperations(agentOperationWSDTOS);
+        ApiOperationListWSDTO operationListWSDTO = apiOperationFramework.apiGetAgentOperationsService(agentId, operationCategory, operationState, inquiryState, flowState, reqPage, reqSize);
+        if (operationListWSDTO != null) {
+            response.setOperationList(operationListWSDTO);
         }
 
         general.setOperation("apiGetAgentOperations");

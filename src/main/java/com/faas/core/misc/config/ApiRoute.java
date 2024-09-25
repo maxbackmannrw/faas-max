@@ -38,7 +38,7 @@ public class ApiRoute {
 
 
 
-    public static final String API_GET_AGENT_OPERATION_LISTS = "apigetagentoperationlists";
+    public static final String API_GET_AGENT_OPERATION_LIST = "apigetagentoperationlist";
     public static final String API_GET_AGENT_OPERATIONS = "apigetagentoperations";
     public static final String API_GET_AGENT_OPERATION = "apigetagentoperation";
     public static final String API_UPDATE_AGENT_OPERATION = "apiupdateagentoperation";
