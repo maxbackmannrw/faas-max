@@ -43,7 +43,7 @@ public class ApiOperationFramework {
         return agentOperationWSDTO;
     }
 
-    public ApiOperationListWSDTO apiGetAgentOperationsService(long agentId, String operationCategory, String operationState, int reqPage, int reqSize) {
+    public ApiOperationListWSDTO apiGetAgentOperationsService(long agentId, String operationState, String operationCategory, int reqPage, int reqSize) {
 
         Page<OperationDBModel> agentOperationPageModel = operationRepository.findAllByAgentIdAndOperationCategoryAndOperationState(agentId, operationCategory,operationState,PageRequest.of(reqPage,reqSize));
         if (agentOperationPageModel != null) {

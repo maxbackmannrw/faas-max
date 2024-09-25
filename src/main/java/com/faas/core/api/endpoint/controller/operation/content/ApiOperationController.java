@@ -41,12 +41,12 @@ public class ApiOperationController {
 
     @RequestMapping(value = ApiRoute.API_GET_AGENT_OPERATIONS, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetAgentOperations(@RequestParam long agentId,
-                                                   @RequestParam String operationState,
                                                    @RequestParam String operationCategory,
+                                                   @RequestParam String operationState,
                                                    @RequestParam int reqPage,
                                                    @RequestParam int reqSize) {
 
-        ApiOperationListWSModel response = apiOperationMiddleware.apiGetAgentOperations(agentId, operationCategory, operationState, reqPage, reqSize);
+        ApiOperationListWSModel response = apiOperationMiddleware.apiGetAgentOperations(agentId, operationState, operationCategory, reqPage, reqSize);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
