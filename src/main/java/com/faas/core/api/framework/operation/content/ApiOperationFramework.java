@@ -37,7 +37,7 @@ public class ApiOperationFramework {
     public ApiAgentOperationWSDTO apiGetAgentOperationListService(long agentId, int reqPage, int reqSize) {
 
         ApiAgentOperationWSDTO agentOperationWSDTO = new ApiAgentOperationWSDTO();
-        agentOperationWSDTO.setInquiryOperation(operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationCategoryAndOperationStateAndInquiryState(agentId, AppConstant.INQUIRY_OPERATION,AppConstant.READY_STATE, AppConstant.ACTIVE_STATE,PageRequest.of(reqPage,reqSize))));
+        agentOperationWSDTO.setInquiryOperation(operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationCategoryAndOperationState(agentId, AppConstant.INQUIRY_OPERATION,AppConstant.READY_STATE, PageRequest.of(reqPage,reqSize))));
         agentOperationWSDTO.setManualOperation(operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationCategoryAndOperationState(agentId, AppConstant.MANUAL_OPERATION,AppConstant.READY_STATE, PageRequest.of(reqPage,reqSize))));
 
         return agentOperationWSDTO;
