@@ -72,7 +72,8 @@ public class CampaignAgentFramework {
 
     public CampaignAgentWSDTO assignCampaignAgentService(long userId, String campaignId, long agentId) {
 
-        if (campaignAgentRepository.existsByAgentIdAndCampaignId(agentId, campaignId) && campaignRepository.existsById(campaignId) && userRepository.existsById(agentId)) {
+        if (!campaignAgentRepository.existsByAgentIdAndCampaignId(agentId, campaignId)
+                && campaignRepository.existsById(campaignId) && userRepository.existsById(agentId)) {
 
             CampaignAgentDBModel campaignAgentDBModel = new CampaignAgentDBModel();
             campaignAgentDBModel.setCampaignId(campaignId);

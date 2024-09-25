@@ -263,12 +263,10 @@ public class CampaignHelper {
         for (CampaignAgentDBModel campaignAgentDBModel : campaignAgentDBModels) {
             Optional<UserDBModel> agentDBModel = userRepository.findById(campaignAgentDBModel.getAgentId());
             if (agentDBModel.isPresent()) {
-
                 agentDBModel.get().setPassword("");
                 CampaignAgentWSDTO campaignAgentWSDTO = new CampaignAgentWSDTO();
                 campaignAgentWSDTO.setAgentUser(agentDBModel.get());
                 campaignAgentWSDTO.setCampaignAgent(campaignAgentDBModel);
-
                 campaignAgentWSDTOS.add(campaignAgentWSDTO);
             }
         }
