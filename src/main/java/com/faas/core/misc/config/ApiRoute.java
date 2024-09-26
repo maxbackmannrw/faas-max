@@ -56,32 +56,21 @@ public class ApiRoute {
     public static final String API_GET_OPERATION_ACTIVITIES = "apigetoperationactivities";
     public static final String API_GET_OPERATION_ACTIVITY = "apigetoperationactivity";
 
+
+
+
+    public static final String API_GET_OPERATION_CLIENT = "apigetoperationclient";
+
     public static final String API_GET_OPERATION_NOTES = "apigetoperationnotes";
     public static final String API_GET_OPERATION_NOTE = "apigetoperationnote";
     public static final String API_CREATE_OPERATION_NOTE = "apicreateoperationnote";
     public static final String API_UPDATE_OPERATION_NOTE = "apiupdateoperationnote";
     public static final String API_REMOVE_OPERATION_NOTE = "apiremoveoperationnote";
 
-
-    public static final String API_GET_OPERATION_CLIENT = "apigetoperationclient";
-
     public static final String API_GET_OPERATION_CLIENT_OS_INTS = "apigetoperationclientosints";
     public static final String API_GET_OPERATION_CLIENT_OS_INT = "apigetoperationclientosint";
 
-    public static final String API_GET_OPERATION_CLIENT_REMOTES = "apigetoperationclientremotes";
-    public static final String API_GET_OPERATION_CLIENT_REMOTE = "apigetoperationclientremote";
 
-    public static final String API_GET_CLIENT = "apigetclient";
-    public static final String API_GET_CLIENT_DETAILS = "apigetclientdetails";
-    public static final String API_GET_CLIENT_NOTES = "apigetclientnotes";
-    public static final String API_GET_CLIENT_NOTE = "apigetclientnote";
-    public static final String API_CREATE_CLIENT_NOTE = "apicreateclientnote";
-    public static final String API_UPDATE_CLIENT_NOTE = "apiupdateclientnote";
-    public static final String API_REMOVE_CLIENT_NOTE = "apiremoveclientnote";
-    public static final String API_GET_CLIENT_REMOTES = "apigetclientremotes";
-    public static final String API_GET_CLIENT_REMOTE = "apigetclientremote";
-    public static final String API_GET_CLIENT_OS_INTS = "apigetclientosints";
-    public static final String API_GET_CLIENT_OS_INT = "apigetclientosint";
 
 
     public static final String API_GET_OPERATION_SCENARIOS = "apigetoperationscenarios";
@@ -92,6 +81,10 @@ public class ApiRoute {
 
     public static final String API_GET_OPERATION_PROCESS_SCENARIOS = "apigetoperationprocessscenarios";
     public static final String API_GET_OPERATION_PROCESS_SCENARIO = "apigetoperationprocessscenario";
+
+    public static final String API_GET_OPERATION_CLIENT_REMOTES = "apigetoperationclientremotes";
+    public static final String API_GET_OPERATION_CLIENT_REMOTE = "apigetoperationclientremote";
+
 
 
     public static final String API_GET_OPERATION_CALL_CHANNEL = "apigetoperationcallchannel";
