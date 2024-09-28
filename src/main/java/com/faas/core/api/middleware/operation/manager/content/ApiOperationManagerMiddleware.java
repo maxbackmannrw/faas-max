@@ -6,9 +6,9 @@ import com.faas.core.api.model.ws.campaign.details.dto.ApiCampaignDetailsWSDTO;
 import com.faas.core.api.model.ws.operation.content.ApiOperationWSModel;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
 import com.faas.core.api.model.ws.operation.manager.content.ApiOperationActivityWSModel;
-import com.faas.core.api.model.ws.operation.manager.content.ApiOperationDetailsWSModel;
+import com.faas.core.api.model.ws.operation.manager.content.ApiOperationManagerWSModel;
 import com.faas.core.api.model.ws.operation.manager.content.dto.ApiOperationActivityWSDTO;
-import com.faas.core.api.model.ws.operation.manager.content.dto.ApiOperationDetailsWSDTO;
+import com.faas.core.api.model.ws.operation.manager.content.dto.ApiOperationManagerWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,17 +26,17 @@ public class ApiOperationManagerMiddleware {
     ApiOperationManagerFramework apiOperationManagerFramework;
 
 
-    public ApiOperationDetailsWSModel apiGetOperationDetails(long agentId, String operationId) {
+    public ApiOperationManagerWSModel apiGetOperationManager(long agentId, String operationId) {
 
-        ApiOperationDetailsWSModel response = new ApiOperationDetailsWSModel();
+        ApiOperationManagerWSModel response = new ApiOperationManagerWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiOperationDetailsWSDTO operationDetailsWSDTO = apiOperationManagerFramework.apiGetOperationDetailsService(agentId, operationId);
-        if (operationDetailsWSDTO != null) {
-            response.setOperationDetails(operationDetailsWSDTO);
+        ApiOperationManagerWSDTO operationManagerWSDTO = apiOperationManagerFramework.apiGetOperationManagerService(agentId, operationId);
+        if (operationManagerWSDTO != null) {
+            response.setOperationManager(operationManagerWSDTO);
         }
 
-        general.setOperation("apiGetOperationDetails");
+        general.setOperation("apiGetOperationManager");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -44,6 +44,7 @@ public class ApiOperationManagerMiddleware {
 
         return response;
     }
+
 
     public ApiOperationWSModel apiStartOperation(long agentId, String operationId) {
 
@@ -179,6 +180,27 @@ public class ApiOperationManagerMiddleware {
 
         response.setOperationActivities(operationActivityWSDTOS);
         general.setOperation("apiGetOperationActivity");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public ApiOperationActivityWSModel apiValidateOperationManager(long agentId, String operationId) {
+
+        ApiOperationActivityWSModel response = new ApiOperationActivityWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+        List<ApiOperationActivityWSDTO> operationActivityWSDTOS = new ArrayList<>();
+
+        ApiOperationActivityWSDTO operationActivityWSDTO = apiOperationManagerFramework.apiValidateOperationManagerService(agentId, operationId);
+        if (operationActivityWSDTO != null) {
+            operationActivityWSDTOS.add(operationActivityWSDTO);
+        }
+
+        response.setOperationActivities(operationActivityWSDTOS);
+        general.setOperation("apiValidateOperationManager");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

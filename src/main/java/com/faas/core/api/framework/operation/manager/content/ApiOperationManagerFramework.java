@@ -3,7 +3,7 @@ package com.faas.core.api.framework.operation.manager.content;
 import com.faas.core.api.model.ws.campaign.details.dto.ApiCampaignDetailsWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
 import com.faas.core.api.model.ws.operation.manager.content.dto.ApiOperationActivityWSDTO;
-import com.faas.core.api.model.ws.operation.manager.content.dto.ApiOperationDetailsWSDTO;
+import com.faas.core.api.model.ws.operation.manager.content.dto.ApiOperationManagerWSDTO;
 import com.faas.core.data.db.operation.content.OperationDBModel;
 import com.faas.core.data.repo.campaign.content.CampaignRepository;
 import com.faas.core.data.repo.client.content.ClientRepository;
@@ -37,11 +37,11 @@ public class ApiOperationManagerFramework {
     AppUtils appUtils;
 
 
-    public ApiOperationDetailsWSDTO apiGetOperationDetailsService(long agentId, String operationId) {
+    public ApiOperationManagerWSDTO apiGetOperationManagerService(long agentId, String operationId) {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
         if (!operationDBModels.isEmpty()) {
-            return operationHelper.getApiOperationDetailsWSDTO(operationDBModels.get(0));
+            return operationHelper.getApiOperationManagerWSDTO(operationDBModels.get(0));
         }
         return null;
     }
@@ -97,6 +97,12 @@ public class ApiOperationManagerFramework {
     public ApiOperationActivityWSDTO apiGetOperationActivityService(long agentId, String operationId, String activityId) {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
+
+        return null;
+    }
+
+    public ApiOperationActivityWSDTO apiValidateOperationManagerService(long agentId, String operationId) {
+
 
         return null;
     }

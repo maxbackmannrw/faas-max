@@ -5,7 +5,7 @@ import com.faas.core.api.model.ws.operation.manager.channel.content.dto.ApiOpera
 import com.faas.core.api.model.ws.operation.manager.channel.content.dto.ApiOperationMessageChannelWSDTO;
 import com.faas.core.data.db.operation.content.OperationDBModel;
 
-public class ApiOperationDetailsWSDTO {
+public class ApiOperationManagerWSDTO {
 
     private OperationDBModel operation;
     private ApiOperationClientWSDTO operationClient;
@@ -13,10 +13,10 @@ public class ApiOperationDetailsWSDTO {
     private ApiOperationCallChannelWSDTO operationCallChannel;
     private ApiOperationMessageChannelWSDTO operationMessageChannel;
 
-    public ApiOperationDetailsWSDTO() {
+    public ApiOperationManagerWSDTO() {
     }
 
-    public ApiOperationDetailsWSDTO(OperationDBModel operation, ApiOperationClientWSDTO operationClient, ApiOperationCampaignWSDTO operationCampaign, ApiOperationCallChannelWSDTO operationCallChannel, ApiOperationMessageChannelWSDTO operationMessageChannel) {
+    public ApiOperationManagerWSDTO(OperationDBModel operation, ApiOperationClientWSDTO operationClient, ApiOperationCampaignWSDTO operationCampaign, ApiOperationCallChannelWSDTO operationCallChannel, ApiOperationMessageChannelWSDTO operationMessageChannel) {
         this.operation = operation;
         this.operationClient = operationClient;
         this.operationCampaign = operationCampaign;

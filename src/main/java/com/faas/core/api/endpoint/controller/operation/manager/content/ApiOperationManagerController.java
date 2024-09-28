@@ -4,7 +4,7 @@ import com.faas.core.api.middleware.operation.manager.content.ApiOperationManage
 import com.faas.core.api.model.ws.campaign.details.ApiCampaignDetailsWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiOperationWSModel;
 import com.faas.core.api.model.ws.operation.manager.content.ApiOperationActivityWSModel;
-import com.faas.core.api.model.ws.operation.manager.content.ApiOperationDetailsWSModel;
+import com.faas.core.api.model.ws.operation.manager.content.ApiOperationManagerWSModel;
 import com.faas.core.misc.config.ApiRoute;
 import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,11 +25,11 @@ public class ApiOperationManagerController {
     ApiOperationManagerMiddleware apiOperationDetailsMiddleware;
 
 
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION_DETAILS, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperationDetails(@RequestParam long agentId,
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_MANAGER, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationManager(@RequestParam long agentId,
                                                     @RequestParam String operationId) {
 
-        ApiOperationDetailsWSModel response = apiOperationDetailsMiddleware.apiGetOperationDetails(agentId, operationId);
+        ApiOperationManagerWSModel response = apiOperationDetailsMiddleware.apiGetOperationManager(agentId, operationId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -124,5 +124,16 @@ public class ApiOperationManagerController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+    @RequestMapping(value = ApiRoute.API_VALIDATE_OPERATION_MANAGER, method = RequestMethod.POST)
+    public ResponseEntity<?> apiValidateOperationManager(@RequestParam long agentId,
+                                                         @RequestParam String operationId) {
+
+        ApiOperationActivityWSModel response = apiOperationDetailsMiddleware.apiValidateOperationManager(agentId, operationId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
 
 }

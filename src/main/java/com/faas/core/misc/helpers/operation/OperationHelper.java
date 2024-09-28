@@ -15,7 +15,7 @@ import com.faas.core.api.model.ws.operation.manager.channel.message.dto.ApiOpera
 import com.faas.core.api.model.ws.operation.manager.channel.message.dto.ApiOperationSmsChannelWSDTO;
 import com.faas.core.api.model.ws.operation.manager.channel.message.dto.ApiOperationWappMessageChannelWSDTO;
 import com.faas.core.api.model.ws.operation.manager.content.dto.ApiOperationCampaignWSDTO;
-import com.faas.core.api.model.ws.operation.manager.content.dto.ApiOperationDetailsWSDTO;
+import com.faas.core.api.model.ws.operation.manager.content.dto.ApiOperationManagerWSDTO;
 import com.faas.core.data.db.campaign.content.CampaignDBModel;
 import com.faas.core.data.db.client.content.ClientDBModel;
 import com.faas.core.data.db.client.details.ClientDetailsDBModel;
@@ -264,14 +264,14 @@ public class OperationHelper {
         return operationListWSDTO;
     }
 
-    public ApiOperationDetailsWSDTO getApiOperationDetailsWSDTO(OperationDBModel operationDBModel) {
+    public ApiOperationManagerWSDTO getApiOperationManagerWSDTO(OperationDBModel operationDBModel) {
 
         Optional<ClientDBModel> clientDBModel = clientRepository.findById(operationDBModel.getClientId());
         List<ClientDetailsDBModel> clientDetails = clientDetailsRepository.findByClientId(operationDBModel.getClientId());
 
         if (clientDBModel.isPresent() && !clientDetails.isEmpty()) {
 
-            ApiOperationDetailsWSDTO operationDetailsWSDTO = new ApiOperationDetailsWSDTO();
+            ApiOperationManagerWSDTO operationDetailsWSDTO = new ApiOperationManagerWSDTO();
             operationDetailsWSDTO.setOperation(operationDBModel);
             operationDetailsWSDTO.setOperationClient(getApiOperationClientWSDTO(clientDBModel.get()));
             operationDetailsWSDTO.setOperationCampaign(getApiOperationCampaignWSDTO(operationDBModel.getCampaignId(), operationDBModel.getCampaignId()));

@@ -47,7 +47,8 @@ public class ApiRoute {
     public static final String API_GET_AGENT_OPERATIONS_SUMMARY = "apigetagentoperationssummary";
 
 
-    public static final String API_GET_OPERATION_DETAILS = "apigetoperationdetails";
+
+    public static final String API_GET_OPERATION_MANAGER = "apigetoperationmanager";
     public static final String API_START_OPERATION = "apistartoperation";
     public static final String API_COMPLETE_OPERATION = "apicompleteoperation";
     public static final String API_GET_SWITCH_OPERATIONS = "apigetswitchoperations";
@@ -55,8 +56,7 @@ public class ApiRoute {
     public static final String API_GET_OPERATION_CAMPAIGN = "apigetoperationcampaign";
     public static final String API_GET_OPERATION_ACTIVITIES = "apigetoperationactivities";
     public static final String API_GET_OPERATION_ACTIVITY = "apigetoperationactivity";
-
-
+    public static final String API_VALIDATE_OPERATION_MANAGER = "apivalidateoperationmanager";
 
 
     public static final String API_GET_OPERATION_CLIENT = "apigetoperationclient";
