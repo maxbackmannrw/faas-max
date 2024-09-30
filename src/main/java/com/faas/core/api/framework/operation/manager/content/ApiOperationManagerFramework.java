@@ -6,7 +6,9 @@ import com.faas.core.api.model.ws.operation.content.dto.ApiValidateOperationWSDT
 import com.faas.core.api.model.ws.operation.manager.content.dto.ApiOperationActivityWSDTO;
 import com.faas.core.api.model.ws.operation.manager.content.dto.ApiOperationManagerWSDTO;
 import com.faas.core.data.db.operation.content.OperationDBModel;
+import com.faas.core.data.db.user.content.UserDBModel;
 import com.faas.core.data.repo.operation.content.OperationRepository;
+import com.faas.core.data.repo.user.content.UserRepository;
 import com.faas.core.misc.config.AppConstant;
 import com.faas.core.misc.helpers.operation.OperationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 @Component
@@ -24,12 +27,20 @@ public class ApiOperationManagerFramework {
     OperationHelper operationHelper;
 
     @Autowired
+    UserRepository userRepository;
+
+    @Autowired
     OperationRepository operationRepository;
 
 
     public ApiValidateOperationWSDTO apiValidateOperationManagerService(long agentId, String operationId) {
 
-
+        Optional<UserDBModel> agentDBModel = userRepository.findById(agentId);
+        List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
+        if (agentDBModel.isPresent() && !operationDBModels.isEmpty()) {
+            agentDBModel.get().setPassword("");
+            return operationHelper.validateOperationHelper(agentDBModel.get(), operationDBModels.get(0));
+        }
         return null;
     }
 
