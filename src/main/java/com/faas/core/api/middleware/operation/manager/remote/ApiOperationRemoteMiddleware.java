@@ -1,8 +1,8 @@
 package com.faas.core.api.middleware.operation.manager.remote;
 
 import com.faas.core.api.framework.operation.manager.remote.ApiOperationRemoteFramework;
-import com.faas.core.api.model.ws.operation.manager.remote.ApiOperationClientRemoteWSModel;
-import com.faas.core.api.model.ws.operation.manager.remote.dto.ApiOperationClientRemoteWSDTO;
+import com.faas.core.api.model.ws.operation.manager.remote.ApiOperationRemoteAppWSModel;
+import com.faas.core.api.model.ws.operation.manager.remote.dto.ApiOperationRemoteAppWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,17 +20,17 @@ public class ApiOperationRemoteMiddleware {
     ApiOperationRemoteFramework apiOperationRemoteFramework;
 
 
-    public ApiOperationClientRemoteWSModel apiGetOperationClientRemotes(long agentId, String operationId) {
+    public ApiOperationRemoteAppWSModel apiGetOperationRemoteApps(long agentId, String operationId) {
 
-        ApiOperationClientRemoteWSModel response = new ApiOperationClientRemoteWSModel();
+        ApiOperationRemoteAppWSModel response = new ApiOperationRemoteAppWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ApiOperationClientRemoteWSDTO> operationClientRemoteWSDTOS = apiOperationRemoteFramework.apiGetOperationClientRemotesService(agentId, operationId);
-        if (operationClientRemoteWSDTOS != null) {
-            response.setClientRemotes(operationClientRemoteWSDTOS);
+        List<ApiOperationRemoteAppWSDTO> operationRemoteAppWSDTOS = apiOperationRemoteFramework.apiGetOperationClientRemotesService(agentId, operationId);
+        if (operationRemoteAppWSDTOS != null) {
+            response.setOperationRemoteApps(operationRemoteAppWSDTOS);
         }
 
-        general.setOperation("apiGetOperationClientRemotes");
+        general.setOperation("apiGetOperationRemoteApps");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -39,18 +39,18 @@ public class ApiOperationRemoteMiddleware {
         return response;
     }
 
-    public ApiOperationClientRemoteWSModel apiGetOperationClientRemote(long agentId, String operationId, String clientRemoteId) {
+    public ApiOperationRemoteAppWSModel apiGetOperationRemoteApp(long agentId, String operationId, String clientRemoteId) {
 
-        ApiOperationClientRemoteWSModel response = new ApiOperationClientRemoteWSModel();
+        ApiOperationRemoteAppWSModel response = new ApiOperationRemoteAppWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ApiOperationClientRemoteWSDTO> operationClientRemoteWSDTOS = new ArrayList<>();
+        List<ApiOperationRemoteAppWSDTO> operationRemoteAppWSDTOS = new ArrayList<>();
 
-        ApiOperationClientRemoteWSDTO operationClientRemoteWSDTO = apiOperationRemoteFramework.apiGetOperationClientRemoteService(agentId, operationId, clientRemoteId);
-        if (operationClientRemoteWSDTO != null) {
-            operationClientRemoteWSDTOS.add(operationClientRemoteWSDTO);
+        ApiOperationRemoteAppWSDTO operationRemoteAppWSDTO = apiOperationRemoteFramework.apiGetOperationClientRemoteService(agentId, operationId, clientRemoteId);
+        if (operationRemoteAppWSDTO != null) {
+            operationRemoteAppWSDTOS.add(operationRemoteAppWSDTO);
         }
 
-        response.setClientRemotes(operationClientRemoteWSDTOS);
+        response.setOperationRemoteApps(operationRemoteAppWSDTOS);
         general.setOperation("apiGetOperationClientRemote");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);

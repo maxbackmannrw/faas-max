@@ -1,7 +1,6 @@
 package com.faas.core.api.framework.operation.manager.scenario;
 
 import com.faas.core.api.model.ws.operation.manager.scenario.dto.ApiOperationScenarioWSDTO;
-import com.faas.core.api.model.ws.operation.manager.scenario.dto.ApiProcessScenarioWSDTO;
 import com.faas.core.data.db.operation.content.OperationDBModel;
 import com.faas.core.data.repo.campaign.content.CampaignRepository;
 import com.faas.core.data.repo.campaign.details.scenario.CampaignScenarioRepository;
@@ -88,18 +87,6 @@ public class ApiOperationScenarioFramework {
     }
 
 
-    public List<ApiProcessScenarioWSDTO> apiGetOperationProcessScenariosService(long agentId, String operationId) {
-
-        List<ApiProcessScenarioWSDTO> processScenarioWSDTOS = new ArrayList<>();
-
-        return processScenarioWSDTOS;
-    }
-
-    public ApiProcessScenarioWSDTO apiGetOperationProcessScenarioService(long agentId, String operationId, String scenarioId) {
-
-
-        return null;
-    }
 
 
 }

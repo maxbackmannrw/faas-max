@@ -2,9 +2,7 @@ package com.faas.core.api.middleware.operation.manager.scenario;
 
 import com.faas.core.api.framework.operation.manager.scenario.ApiOperationScenarioFramework;
 import com.faas.core.api.model.ws.operation.manager.scenario.ApiOperationScenarioWSModel;
-import com.faas.core.api.model.ws.operation.manager.scenario.ApiProcessScenarioWSModel;
 import com.faas.core.api.model.ws.operation.manager.scenario.dto.ApiOperationScenarioWSDTO;
-import com.faas.core.api.model.ws.operation.manager.scenario.dto.ApiProcessScenarioWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -128,46 +126,6 @@ public class ApiOperationScenarioMiddleware {
         return response;
     }
 
-
-    public ApiProcessScenarioWSModel apiGetOperationProcessScenarios(long agentId, String operationId) {
-
-        ApiProcessScenarioWSModel response = new ApiProcessScenarioWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-        List<ApiProcessScenarioWSDTO> processScenarioWSDTOS = apiOperationScenarioFramework.apiGetOperationProcessScenariosService(agentId, operationId);
-        if (processScenarioWSDTOS != null) {
-            response.setProcessScenarios(processScenarioWSDTOS);
-        }
-
-        general.setOperation("apiGetOperationProcessScenarios");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-    public ApiProcessScenarioWSModel apiGetOperationProcessScenario(long agentId, String operationId, String scenarioId) {
-
-        ApiProcessScenarioWSModel response = new ApiProcessScenarioWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-        List<ApiProcessScenarioWSDTO> processScenarioWSDTOS = new ArrayList<>();
-
-        ApiProcessScenarioWSDTO processScenarioWSDTO = apiOperationScenarioFramework.apiGetOperationProcessScenarioService(agentId, operationId, scenarioId);
-        if (processScenarioWSDTO != null) {
-            processScenarioWSDTOS.add(processScenarioWSDTO);
-        }
-
-        response.setProcessScenarios(processScenarioWSDTOS);
-        general.setOperation("apiGetOperationProcessScenario");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
 
 
 }

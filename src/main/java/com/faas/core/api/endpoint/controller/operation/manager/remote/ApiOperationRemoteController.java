@@ -1,7 +1,7 @@
 package com.faas.core.api.endpoint.controller.operation.manager.remote;
 
 import com.faas.core.api.middleware.operation.manager.remote.ApiOperationRemoteMiddleware;
-import com.faas.core.api.model.ws.operation.manager.remote.ApiOperationClientRemoteWSModel;
+import com.faas.core.api.model.ws.operation.manager.remote.ApiOperationRemoteAppWSModel;
 import com.faas.core.misc.config.ApiRoute;
 import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +22,11 @@ public class ApiOperationRemoteController {
     ApiOperationRemoteMiddleware apiOperationRemoteMiddleware;
 
 
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION_CLIENT_REMOTES, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperationClientRemotes(@RequestParam long agentId,
-                                                          @RequestParam String operationId) {
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_REMOTE_APPS, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationRemoteApps(@RequestParam long agentId,
+                                                       @RequestParam String operationId) {
 
-        ApiOperationClientRemoteWSModel response = apiOperationRemoteMiddleware.apiGetOperationClientRemotes(agentId, operationId);
+        ApiOperationRemoteAppWSModel response = apiOperationRemoteMiddleware.apiGetOperationRemoteApps(agentId, operationId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -34,12 +34,12 @@ public class ApiOperationRemoteController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION_CLIENT_REMOTE, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperationClientRemote(@RequestParam long agentId,
-                                                         @RequestParam String operationId,
-                                                         @RequestParam String clientRemoteId) {
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_REMOTE_APP, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationRemoteApp(@RequestParam long agentId,
+                                                      @RequestParam String operationId,
+                                                      @RequestParam String clientRemoteId) {
 
-        ApiOperationClientRemoteWSModel response = apiOperationRemoteMiddleware.apiGetOperationClientRemote(agentId, operationId, clientRemoteId);
+        ApiOperationRemoteAppWSModel response = apiOperationRemoteMiddleware.apiGetOperationRemoteApp(agentId, operationId, clientRemoteId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
