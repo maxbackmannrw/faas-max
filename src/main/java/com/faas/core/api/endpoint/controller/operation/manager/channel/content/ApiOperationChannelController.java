@@ -20,14 +20,14 @@ public class ApiOperationChannelController {
 
 
     @Autowired
-    ApiOperationChannelMiddleware apiOperationChannelMiddleware;
+    ApiOperationChannelMiddleware apiGetOperationCallChannel;
 
 
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_CALL_CHANNEL, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationCallChannel(@RequestParam long agentId,
                                                         @RequestParam String operationId) {
 
-        ApiOperationCallChannelWSModel response = apiOperationChannelMiddleware.apiGetOperationCallChannel(agentId, operationId);
+        ApiOperationCallChannelWSModel response = apiGetOperationCallChannel.apiGetOperationCallChannel(agentId, operationId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -40,7 +40,7 @@ public class ApiOperationChannelController {
     public ResponseEntity<?> apiGetOperationMessageChannel(@RequestParam long agentId,
                                                            @RequestParam String operationId) {
 
-        ApiOperationMessageChannelWSModel response = apiOperationChannelMiddleware.apiGetOperationMessageChannel(agentId, operationId);
+        ApiOperationMessageChannelWSModel response = apiGetOperationCallChannel.apiGetOperationMessageChannel(agentId, operationId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

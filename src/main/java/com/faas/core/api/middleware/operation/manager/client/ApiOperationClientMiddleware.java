@@ -3,10 +3,8 @@ package com.faas.core.api.middleware.operation.manager.client;
 import com.faas.core.api.framework.operation.manager.client.ApiOperationClientFramework;
 import com.faas.core.api.model.ws.operation.manager.client.ApiOperationClientWSModel;
 import com.faas.core.api.model.ws.operation.manager.client.dto.ApiOperationClientWSDTO;
-import com.faas.core.api.model.ws.operation.manager.note.ApiOperationNoteWSModel;
-import com.faas.core.api.model.ws.operation.manager.note.dto.ApiOperationNoteWSDTO;
-import com.faas.core.api.model.ws.operation.manager.osint.ApiOperationOSINTWSModel;
-import com.faas.core.api.model.ws.operation.manager.osint.dto.ApiOperationOSINTWSDTO;
+import com.faas.core.api.model.ws.operation.manager.client.ApiOperationNoteWSModel;
+import com.faas.core.api.model.ws.operation.manager.client.dto.ApiOperationNoteWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -147,45 +145,6 @@ public class ApiOperationClientMiddleware {
     }
 
 
-    public ApiOperationOSINTWSModel apiGetOperationClientOSINTs(long agentId, long clientId) {
-
-        ApiOperationOSINTWSModel response = new ApiOperationOSINTWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-        List<ApiOperationOSINTWSDTO> operationOSINTWSDTOS = apiOperationClientFramework.apiGetOperationClientOSINTsService(agentId, clientId);
-        if (operationOSINTWSDTOS != null) {
-            response.setOperationOSINTs(operationOSINTWSDTOS);
-        }
-
-        general.setOperation("apiGetOperationClientOSINTs");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-    public ApiOperationOSINTWSModel apiGetOperationClientOSINT(long agentId, long clientId) {
-
-        ApiOperationOSINTWSModel response = new ApiOperationOSINTWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-        List<ApiOperationOSINTWSDTO> operationOSINTWSDTOS = new ArrayList<>();
-
-        ApiOperationOSINTWSDTO operationOSINTWSDTO = apiOperationClientFramework.apiGetOperationClientOSINTService(agentId, clientId);
-        if (operationOSINTWSDTO != null) {
-            operationOSINTWSDTOS.add(operationOSINTWSDTO);
-        }
-
-        response.setOperationOSINTs(operationOSINTWSDTOS);
-        general.setOperation("apiGetOperationClientOSINT");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
 
 
 }

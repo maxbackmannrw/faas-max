@@ -1,9 +1,9 @@
 package com.faas.core.api.model.ws.operation.manager.channel.content.dto;
 
-import com.faas.core.api.model.ws.operation.manager.channel.message.dto.ApiOperationEmailChannelWSDTO;
-import com.faas.core.api.model.ws.operation.manager.channel.message.dto.ApiOperationPushChannelWSDTO;
-import com.faas.core.api.model.ws.operation.manager.channel.message.dto.ApiOperationSmsChannelWSDTO;
-import com.faas.core.api.model.ws.operation.manager.channel.message.dto.ApiOperationWappMessageChannelWSDTO;
+import com.faas.core.api.model.ws.operation.manager.channel.message.email.dto.ApiOperationEmailChannelWSDTO;
+import com.faas.core.api.model.ws.operation.manager.channel.message.push.dto.ApiOperationPushChannelWSDTO;
+import com.faas.core.api.model.ws.operation.manager.channel.message.sms.dto.ApiOperationSmsChannelWSDTO;
+import com.faas.core.api.model.ws.operation.manager.channel.message.wapp.dto.ApiOperationWappMessageChannelWSDTO;
 
 public class ApiOperationMessageChannelWSDTO {
 

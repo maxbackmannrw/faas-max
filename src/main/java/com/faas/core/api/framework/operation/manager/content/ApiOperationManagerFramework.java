@@ -5,11 +5,8 @@ import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
 import com.faas.core.api.model.ws.operation.manager.content.dto.ApiOperationActivityWSDTO;
 import com.faas.core.api.model.ws.operation.manager.content.dto.ApiOperationManagerWSDTO;
 import com.faas.core.data.db.operation.content.OperationDBModel;
-import com.faas.core.data.repo.campaign.content.CampaignRepository;
-import com.faas.core.data.repo.client.content.ClientRepository;
 import com.faas.core.data.repo.operation.content.OperationRepository;
 import com.faas.core.misc.config.AppConstant;
-import com.faas.core.misc.config.AppUtils;
 import com.faas.core.misc.helpers.operation.OperationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -21,20 +18,12 @@ import java.util.List;
 @Component
 public class ApiOperationManagerFramework {
 
+
     @Autowired
     OperationHelper operationHelper;
 
     @Autowired
-    ClientRepository clientRepository;
-
-    @Autowired
     OperationRepository operationRepository;
-
-    @Autowired
-    CampaignRepository campaignRepository;
-
-    @Autowired
-    AppUtils appUtils;
 
 
     public ApiOperationManagerWSDTO apiGetOperationManagerService(long agentId, String operationId) {
@@ -81,11 +70,16 @@ public class ApiOperationManagerFramework {
         return null;
     }
 
-    public ApiCampaignDetailsWSDTO apiGetOperationCampaignService(long agentId, String operationId) {
+    public ApiOperationActivityWSDTO apiValidateOperationManagerService(long agentId, String operationId) {
+
 
         return null;
     }
 
+    public ApiCampaignDetailsWSDTO apiGetOperationCampaignService(long agentId, String operationId) {
+
+        return null;
+    }
 
     public List<ApiOperationActivityWSDTO> apiGetOperationActivitiesService(long agentId, String operationId) {
 
@@ -97,12 +91,6 @@ public class ApiOperationManagerFramework {
     public ApiOperationActivityWSDTO apiGetOperationActivityService(long agentId, String operationId, String activityId) {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
-
-        return null;
-    }
-
-    public ApiOperationActivityWSDTO apiValidateOperationManagerService(long agentId, String operationId) {
-
 
         return null;
     }

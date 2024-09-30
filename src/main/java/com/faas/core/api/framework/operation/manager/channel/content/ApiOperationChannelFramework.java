@@ -4,22 +4,18 @@ import com.faas.core.api.model.ws.operation.manager.channel.content.dto.ApiOpera
 import com.faas.core.api.model.ws.operation.manager.channel.content.dto.ApiOperationMessageChannelWSDTO;
 import com.faas.core.data.db.client.details.ClientDetailsDBModel;
 import com.faas.core.data.db.operation.content.OperationDBModel;
-import com.faas.core.data.repo.client.content.ClientRepository;
 import com.faas.core.data.repo.client.details.ClientDetailsRepository;
 import com.faas.core.data.repo.operation.content.OperationRepository;
-import com.faas.core.misc.config.AppUtils;
-import com.faas.core.misc.helpers.channel.ChannelHelper;
 import com.faas.core.misc.helpers.operation.OperationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+
 @Component
 public class ApiOperationChannelFramework {
 
-    @Autowired
-    ChannelHelper channelHelper;
 
     @Autowired
     OperationHelper operationHelper;
@@ -28,14 +24,8 @@ public class ApiOperationChannelFramework {
     OperationRepository operationRepository;
 
     @Autowired
-    ClientRepository clientRepository;
-
-    @Autowired
     ClientDetailsRepository clientDetailsRepository;
-
-    @Autowired
-    AppUtils appUtils;
-
+    
 
     public ApiOperationCallChannelWSDTO apiGetOperationCallChannelService(long agentId, String operationId) {
 
@@ -48,7 +38,6 @@ public class ApiOperationChannelFramework {
         }
         return null;
     }
-
 
     public ApiOperationMessageChannelWSDTO apiGetOperationMessageChannelService(long agentId, String operationId) {
 

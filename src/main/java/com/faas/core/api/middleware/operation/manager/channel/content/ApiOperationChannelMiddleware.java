@@ -1,6 +1,8 @@
+
 package com.faas.core.api.middleware.operation.manager.channel.content;
 
 import com.faas.core.api.framework.operation.manager.channel.content.ApiOperationChannelFramework;
+import com.faas.core.api.framework.operation.manager.content.ApiOperationManagerFramework;
 import com.faas.core.api.model.ws.operation.manager.channel.content.ApiOperationCallChannelWSModel;
 import com.faas.core.api.model.ws.operation.manager.channel.content.ApiOperationMessageChannelWSModel;
 import com.faas.core.api.model.ws.operation.manager.channel.content.dto.ApiOperationCallChannelWSDTO;
@@ -9,6 +11,7 @@ import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 
 @Component
 public class ApiOperationChannelMiddleware {
@@ -36,7 +39,6 @@ public class ApiOperationChannelMiddleware {
 
         return response;
     }
-
 
     public ApiOperationMessageChannelWSModel apiGetOperationMessageChannel(long agentId, String operationId) {
 
