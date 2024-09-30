@@ -3,6 +3,7 @@ package com.faas.core.api.endpoint.controller.operation.manager.content;
 import com.faas.core.api.middleware.operation.manager.content.ApiOperationManagerMiddleware;
 import com.faas.core.api.model.ws.campaign.details.ApiCampaignDetailsWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiOperationWSModel;
+import com.faas.core.api.model.ws.operation.content.ApiValidateOperationWSModel;
 import com.faas.core.api.model.ws.operation.manager.content.ApiOperationActivityWSModel;
 import com.faas.core.api.model.ws.operation.manager.content.ApiOperationManagerWSModel;
 import com.faas.core.misc.config.ApiRoute;
@@ -25,6 +26,18 @@ public class ApiOperationManagerController {
     ApiOperationManagerMiddleware apiOperationDetailsMiddleware;
 
 
+    @RequestMapping(value = ApiRoute.API_VALIDATE_OPERATION_MANAGER, method = RequestMethod.POST)
+    public ResponseEntity<?> apiValidateOperationManager(@RequestParam long agentId,
+                                                         @RequestParam String operationId) {
+
+        ApiValidateOperationWSModel response = apiOperationDetailsMiddleware.apiValidateOperationManager(agentId, operationId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_MANAGER, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationManager(@RequestParam long agentId,
                                                     @RequestParam String operationId) {
@@ -37,24 +50,11 @@ public class ApiOperationManagerController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-    @RequestMapping(value = ApiRoute.API_START_OPERATION, method = RequestMethod.POST)
-    public ResponseEntity<?> apiStartOperation(@RequestParam long agentId,
-                                               @RequestParam String operationId) {
+    @RequestMapping(value = ApiRoute.API_START_AGENT_OPERATION, method = RequestMethod.POST)
+    public ResponseEntity<?> apiStartAgentOperation(@RequestParam long agentId,
+                                                      @RequestParam String operationId) {
 
-        ApiOperationWSModel response = apiOperationDetailsMiddleware.apiStartOperation(agentId, operationId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-    @RequestMapping(value = ApiRoute.API_COMPLETE_OPERATION, method = RequestMethod.POST)
-    public ResponseEntity<?> apiCompleteOperation(@RequestParam long agentId,
-                                                  @RequestParam String operationId,
-                                                  @RequestParam String operationResult) {
-
-        ApiOperationWSModel response = apiOperationDetailsMiddleware.apiCompleteOperation(agentId, operationId, operationResult);
+        ApiOperationWSModel response = apiOperationDetailsMiddleware.apiStartOperationManager(agentId, operationId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -62,24 +62,12 @@ public class ApiOperationManagerController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-    @RequestMapping(value = ApiRoute.API_GET_SWITCH_OPERATIONS, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetSwitchOperations(@RequestParam long agentId,
-                                                    @RequestParam String operationId) {
+    @RequestMapping(value = ApiRoute.API_COMPLETE_AGENT_OPERATION, method = RequestMethod.POST)
+    public ResponseEntity<?> apiCompleteAgentOperation(@RequestParam long agentId,
+                                                         @RequestParam String operationId,
+                                                         @RequestParam String operationResult) {
 
-        ApiOperationWSModel response = apiOperationDetailsMiddleware.apiGetSwitchOperations(agentId, operationId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-    @RequestMapping(value = ApiRoute.API_SWITCH_OPERATION, method = RequestMethod.POST)
-    public ResponseEntity<?> apiSwitchOperation(@RequestParam long agentId,
-                                                @RequestParam String operationId,
-                                                @RequestParam String selectedId) {
-
-        ApiOperationWSModel response = apiOperationDetailsMiddleware.apiSwitchOperation(agentId, operationId, selectedId);
+        ApiOperationWSModel response = apiOperationDetailsMiddleware.apiCompleteOperationManager(agentId, operationId, operationResult);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -87,11 +75,11 @@ public class ApiOperationManagerController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-    @RequestMapping(value = ApiRoute.API_VALIDATE_OPERATION_MANAGER, method = RequestMethod.POST)
-    public ResponseEntity<?> apiValidateOperationManager(@RequestParam long agentId,
-                                                         @RequestParam String operationId) {
+    @RequestMapping(value = ApiRoute.API_GET_AGENT_SWITCHABLE_OPERATIONS, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetAgentSwitchableOperations(@RequestParam long agentId,
+                                                             @RequestParam String operationId) {
 
-        ApiOperationActivityWSModel response = apiOperationDetailsMiddleware.apiValidateOperationManager(agentId, operationId);
+        ApiOperationWSModel response = apiOperationDetailsMiddleware.apiGetSwitchOperationManagers(agentId, operationId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -99,12 +87,24 @@ public class ApiOperationManagerController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+    @RequestMapping(value = ApiRoute.API_SWITCH_AGENT_OPERATION, method = RequestMethod.POST)
+    public ResponseEntity<?> apiSwitchAgentOperation(@RequestParam long agentId,
+                                                       @RequestParam String operationId,
+                                                       @RequestParam String selectedId) {
+
+        ApiOperationWSModel response = apiOperationDetailsMiddleware.apiSwitchOperationManager(agentId, operationId, selectedId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
 
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_CAMPAIGN, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationCampaign(@RequestParam long agentId,
-                                                     @RequestParam String operationId) {
+                                                            @RequestParam String operationId) {
 
-        ApiCampaignDetailsWSModel response = apiOperationDetailsMiddleware.apiGetOperationCampaign(agentId, operationId);
+        ApiCampaignDetailsWSModel response = apiOperationDetailsMiddleware.apiGetOperationManagerCampaign(agentId, operationId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -114,9 +114,9 @@ public class ApiOperationManagerController {
 
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_ACTIVITIES, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationActivities(@RequestParam long agentId,
-                                                       @RequestParam String operationId) {
+                                                              @RequestParam String operationId) {
 
-        ApiOperationActivityWSModel response = apiOperationDetailsMiddleware.apiGetOperationActivities(agentId, operationId);
+        ApiOperationActivityWSModel response = apiOperationDetailsMiddleware.apiGetOperationManagerActivities(agentId, operationId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -126,10 +126,10 @@ public class ApiOperationManagerController {
 
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_ACTIVITY, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationActivity(@RequestParam long agentId,
-                                                     @RequestParam String operationId,
-                                                     @RequestParam String activityId) {
+                                                            @RequestParam String operationId,
+                                                            @RequestParam String activityId) {
 
-        ApiOperationActivityWSModel response = apiOperationDetailsMiddleware.apiGetOperationActivity(agentId, operationId, activityId);
+        ApiOperationActivityWSModel response = apiOperationDetailsMiddleware.apiGetOperationManagerActivity(agentId, operationId, activityId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

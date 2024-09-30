@@ -2,6 +2,7 @@ package com.faas.core.api.framework.operation.manager.content;
 
 import com.faas.core.api.model.ws.campaign.details.dto.ApiCampaignDetailsWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
+import com.faas.core.api.model.ws.operation.content.dto.ApiValidateOperationWSDTO;
 import com.faas.core.api.model.ws.operation.manager.content.dto.ApiOperationActivityWSDTO;
 import com.faas.core.api.model.ws.operation.manager.content.dto.ApiOperationManagerWSDTO;
 import com.faas.core.data.db.operation.content.OperationDBModel;
@@ -26,6 +27,12 @@ public class ApiOperationManagerFramework {
     OperationRepository operationRepository;
 
 
+    public ApiValidateOperationWSDTO apiValidateOperationManagerService(long agentId, String operationId) {
+
+
+        return null;
+    }
+
     public ApiOperationManagerWSDTO apiGetOperationManagerService(long agentId, String operationId) {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
@@ -35,20 +42,20 @@ public class ApiOperationManagerFramework {
         return null;
     }
 
-    public ApiOperationWSDTO apiStartOperationService(long agentId, String operationId) {
+    public ApiOperationWSDTO apiStartOperationManagerService(long agentId, String operationId) {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
 
         return null;
     }
 
-    public ApiOperationWSDTO apiCompleteOperationService(long agentId, String operationId, String operationResult) {
+    public ApiOperationWSDTO apiCompleteOperationManagerService(long agentId, String operationId, String operationResult) {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentIdAndOperationState(operationId, agentId, AppConstant.ACTIVE_STATE);
         return null;
     }
 
-    public List<ApiOperationWSDTO> apiGetSwitchOperationsService(long agentId, String operationId) {
+    public List<ApiOperationWSDTO> apiGetSwitchOperationManagersService(long agentId, String operationId) {
 
         List<ApiOperationWSDTO> operationWSDTOS = new ArrayList<>();
         List<OperationDBModel> operationDBModels = operationRepository.findByAgentIdAndOperationState(agentId, AppConstant.ACTIVE_STATE);
@@ -60,7 +67,7 @@ public class ApiOperationManagerFramework {
         return operationWSDTOS;
     }
 
-    public ApiOperationWSDTO apiSwitchOperationService(long agentId, String operationId, String selectedId) {
+    public ApiOperationWSDTO apiSwitchOperationManagerService(long agentId, String operationId, String selectedId) {
 
         List<OperationDBModel> currentOperations = operationRepository.findByIdAndAgentId(operationId, agentId);
         List<OperationDBModel> selectedOperations = operationRepository.findByIdAndAgentId(selectedId, agentId);
@@ -70,25 +77,19 @@ public class ApiOperationManagerFramework {
         return null;
     }
 
-    public ApiOperationActivityWSDTO apiValidateOperationManagerService(long agentId, String operationId) {
-
-
-        return null;
-    }
-
-    public ApiCampaignDetailsWSDTO apiGetOperationCampaignService(long agentId, String operationId) {
+    public ApiCampaignDetailsWSDTO apiGetOperationManagerCampaignService(long agentId, String operationId) {
 
         return null;
     }
 
-    public List<ApiOperationActivityWSDTO> apiGetOperationActivitiesService(long agentId, String operationId) {
+    public List<ApiOperationActivityWSDTO> apiGetOperationManagerActivitiesService(long agentId, String operationId) {
 
         List<ApiOperationActivityWSDTO> operationActivityWSDTOS = new ArrayList<>();
 
         return operationActivityWSDTOS;
     }
 
-    public ApiOperationActivityWSDTO apiGetOperationActivityService(long agentId, String operationId, String activityId) {
+    public ApiOperationActivityWSDTO apiGetOperationManagerActivityService(long agentId, String operationId, String activityId) {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
 

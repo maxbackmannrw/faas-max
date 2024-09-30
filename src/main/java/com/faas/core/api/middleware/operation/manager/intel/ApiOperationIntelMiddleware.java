@@ -20,7 +20,7 @@ public class ApiOperationIntelMiddleware {
     ApiOperationIntelFramework apiOperationIntelFramework;
 
 
-    public ApiOperationOSINTWSModel apiGetOperationClientOSINTs(long agentId, long clientId) {
+    public ApiOperationOSINTWSModel apiGetOperationIntels(long agentId, long clientId) {
 
         ApiOperationOSINTWSModel response = new ApiOperationOSINTWSModel();
         GeneralWSModel general = new GeneralWSModel();
@@ -30,7 +30,7 @@ public class ApiOperationIntelMiddleware {
             response.setOperationOSINTs(operationOSINTWSDTOS);
         }
 
-        general.setOperation("apiGetOperationClientOSINTs");
+        general.setOperation("apiGetOperationIntels");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -39,7 +39,7 @@ public class ApiOperationIntelMiddleware {
         return response;
     }
 
-    public ApiOperationOSINTWSModel apiGetOperationClientOSINT(long agentId, long clientId) {
+    public ApiOperationOSINTWSModel apiGetOperationIntel(long agentId, long clientId) {
 
         ApiOperationOSINTWSModel response = new ApiOperationOSINTWSModel();
         GeneralWSModel general = new GeneralWSModel();
@@ -51,7 +51,7 @@ public class ApiOperationIntelMiddleware {
         }
 
         response.setOperationOSINTs(operationOSINTWSDTOS);
-        general.setOperation("apiGetOperationClientOSINT");
+        general.setOperation("apiGetOperationIntel");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

@@ -22,11 +22,11 @@ public class ApiOperationIntelController {
     ApiOperationIntelMiddleware apiOperationIntelMiddleware;
 
 
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION_CLIENT_OS_INTS, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperationClientOSINTs(@RequestParam long agentId,
-                                                         @RequestParam long clientId) {
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_INTELS, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationIntels(@RequestParam long agentId,
+                                                   @RequestParam long clientId) {
 
-        ApiOperationOSINTWSModel response = apiOperationIntelMiddleware.apiGetOperationClientOSINTs(agentId, clientId);
+        ApiOperationOSINTWSModel response = apiOperationIntelMiddleware.apiGetOperationIntels(agentId, clientId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -34,11 +34,11 @@ public class ApiOperationIntelController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION_CLIENT_OS_INT, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperationClientOSINT(@RequestParam long agentId,
-                                                        @RequestParam long clientId) {
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_INTEL, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationIntel(@RequestParam long agentId,
+                                                  @RequestParam long clientId) {
 
-        ApiOperationOSINTWSModel response = apiOperationIntelMiddleware.apiGetOperationClientOSINT(agentId, clientId);
+        ApiOperationOSINTWSModel response = apiOperationIntelMiddleware.apiGetOperationIntel(agentId, clientId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
