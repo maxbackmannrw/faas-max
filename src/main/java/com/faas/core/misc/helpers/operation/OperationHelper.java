@@ -280,6 +280,7 @@ public class OperationHelper {
         List<UserDetailsDBModel> agentDetailsModels = userDetailsRepository.findByUserId(operationDBModel.getAgentId());
         Optional<ClientDBModel> clientDBModel = clientRepository.findById(operationDBModel.getClientId());
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(operationDBModel.getCampaignId());
+
         if (agentDBModel.isPresent() && !agentDetailsModels.isEmpty() && clientDBModel.isPresent() && campaignDBModel.isPresent()) {
 
             ApiOperationManagerWSDTO operationManagerWSDTO = new ApiOperationManagerWSDTO();
