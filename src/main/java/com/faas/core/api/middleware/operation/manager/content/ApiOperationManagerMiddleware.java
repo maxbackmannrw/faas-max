@@ -4,13 +4,9 @@ import com.faas.core.api.framework.operation.manager.content.ApiOperationManager
 import com.faas.core.api.model.ws.campaign.details.ApiCampaignDetailsWSModel;
 import com.faas.core.api.model.ws.campaign.details.dto.ApiCampaignDetailsWSDTO;
 import com.faas.core.api.model.ws.operation.content.ApiOperationWSModel;
-import com.faas.core.api.model.ws.operation.content.ApiValidateOperationWSModel;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
-import com.faas.core.api.model.ws.operation.content.dto.ApiValidateOperationWSDTO;
-import com.faas.core.api.model.ws.operation.manager.content.ApiCheckAgentOperationWSModel;
 import com.faas.core.api.model.ws.operation.manager.content.ApiOperationActivityWSModel;
 import com.faas.core.api.model.ws.operation.manager.content.ApiOperationManagerWSModel;
-import com.faas.core.api.model.ws.operation.manager.content.dto.ApiCheckAgentOperationWSDTO;
 import com.faas.core.api.model.ws.operation.manager.content.dto.ApiOperationActivityWSDTO;
 import com.faas.core.api.model.ws.operation.manager.content.dto.ApiOperationManagerWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
@@ -29,25 +25,6 @@ public class ApiOperationManagerMiddleware {
     @Autowired
     ApiOperationManagerFramework apiOperationManagerFramework;
 
-
-    public ApiCheckAgentOperationWSModel apiCheckAgentOperation(long agentId, String operationId) {
-
-        ApiCheckAgentOperationWSModel response = new ApiCheckAgentOperationWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-        ApiCheckAgentOperationWSDTO checkAgentOperationWSDTO = apiOperationManagerFramework.apiCheckAgentOperationService(agentId, operationId);
-        if (checkAgentOperationWSDTO != null) {
-            response.setCheckAgentOperation(checkAgentOperationWSDTO);
-        }
-
-        general.setOperation("apiCheckAgentOperation");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
 
     public ApiOperationManagerWSModel apiGetOperationManager(long agentId, String operationId) {
 

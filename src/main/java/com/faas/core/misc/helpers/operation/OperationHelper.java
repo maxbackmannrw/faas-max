@@ -16,7 +16,9 @@ import com.faas.core.api.model.ws.operation.manager.channel.message.sms.dto.ApiO
 import com.faas.core.api.model.ws.operation.manager.channel.message.wapp.dto.ApiOperationWappMessageChannelWSDTO;
 import com.faas.core.api.model.ws.operation.manager.content.dto.ApiOperationCampaignWSDTO;
 import com.faas.core.api.model.ws.operation.manager.content.dto.ApiOperationManagerWSDTO;
+import com.faas.core.api.model.ws.user.details.dto.ApiAgentDetailsWSDTO;
 import com.faas.core.data.db.campaign.content.CampaignDBModel;
+import com.faas.core.data.db.campaign.details.scenario.CampaignScenarioDBModel;
 import com.faas.core.data.db.client.content.ClientDBModel;
 import com.faas.core.data.db.client.details.ClientDetailsDBModel;
 import com.faas.core.data.db.operation.content.OperationDBModel;
@@ -29,6 +31,7 @@ import com.faas.core.base.model.ws.campaign.manager.operation.dto.CampaignOperat
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
 import com.faas.core.base.model.ws.operation.content.dto.OperationListWSDTO;
 import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
+import com.faas.core.data.db.user.details.UserDetailsDBModel;
 import com.faas.core.data.repo.campaign.content.CampaignRepository;
 import com.faas.core.data.repo.campaign.details.agent.CampaignAgentRepository;
 import com.faas.core.data.repo.campaign.details.scenario.CampaignScenarioRepository;
@@ -36,6 +39,8 @@ import com.faas.core.data.repo.client.content.ClientRepository;
 import com.faas.core.data.repo.client.details.ClientDetailsRepository;
 import com.faas.core.data.repo.operation.content.OperationRepository;
 import com.faas.core.data.repo.operation.details.channel.*;
+import com.faas.core.data.repo.user.content.UserRepository;
+import com.faas.core.data.repo.user.details.UserDetailsRepository;
 import com.faas.core.misc.config.AppConstant;
 import com.faas.core.misc.config.AppUtils;
 import com.faas.core.misc.helpers.channel.ChannelHelper;
@@ -87,6 +92,10 @@ public class OperationHelper {
     private OperationWappMessageRepository operationWappMessageRepository;
     @Autowired
     private OperationPushRepository operationPushRepository;
+    @Autowired
+    private UserRepository userRepository;
+    @Autowired
+    private UserDetailsRepository userDetailsRepository;
 
 
     public OperationDBModel createOperationDBModel(UserDBModel userDBModel, CampaignDBModel campaignDBModel, ClientDBModel clientDBModel, ClientDetailsDBModel clientDetailsDBModel) {
@@ -266,21 +275,32 @@ public class OperationHelper {
 
     public ApiOperationManagerWSDTO getApiOperationManagerWSDTO(OperationDBModel operationDBModel) {
 
+        Optional<UserDBModel> agentDBModel = userRepository.findById(operationDBModel.getAgentId());
         Optional<ClientDBModel> clientDBModel = clientRepository.findById(operationDBModel.getClientId());
-        List<ClientDetailsDBModel> clientDetails = clientDetailsRepository.findByClientId(operationDBModel.getClientId());
+        Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(operationDBModel.getCampaignId());
 
-        if (clientDBModel.isPresent() && !clientDetails.isEmpty()) {
+        if (agentDBModel.isPresent() && clientDBModel.isPresent() && campaignDBModel.isPresent()) {
 
-            ApiOperationManagerWSDTO operationDetailsWSDTO = new ApiOperationManagerWSDTO();
-            operationDetailsWSDTO.setOperation(operationDBModel);
-            operationDetailsWSDTO.setOperationClient(getApiOperationClientWSDTO(clientDBModel.get()));
-            operationDetailsWSDTO.setOperationCampaign(getApiOperationCampaignWSDTO(operationDBModel.getCampaignId(), operationDBModel.getCampaignId()));
-            operationDetailsWSDTO.setOperationCallChannel(getApiOperationCallChannelWSDTO(operationDBModel, clientDetails.get(0)));
-            operationDetailsWSDTO.setOperationMessageChannel(getApiOperationMessageChannelWSDTO(operationDBModel, clientDetails.get(0)));
+            ApiOperationManagerWSDTO operationManagerWSDTO = new ApiOperationManagerWSDTO();
+            operationManagerWSDTO.setOperation(operationDBModel);
+            operationManagerWSDTO.setOperationAgent(getOperationAgent(agentDBModel.get()));
+            operationManagerWSDTO.setOperationClient(getApiOperationClientWSDTO(clientDBModel.get()));
+            operationManagerWSDTO.setOperationCampaign(getApiOperationCampaignWSDTO(campaignDBModel.get()));
 
-            return operationDetailsWSDTO;
+            return operationManagerWSDTO;
         }
         return null;
+    }
+
+    public ApiAgentDetailsWSDTO getOperationAgent(UserDBModel agentDBModel) {
+
+        ApiAgentDetailsWSDTO apiAgentDetailsWSDTO = new ApiAgentDetailsWSDTO();
+        apiAgentDetailsWSDTO.setAgent(agentDBModel);
+        List<UserDetailsDBModel> agentDetailsDBModels = userDetailsRepository.findByUserId(agentDBModel.getId());
+        if (!agentDetailsDBModels.isEmpty()) {
+            apiAgentDetailsWSDTO.setAgentDetails(agentDetailsDBModels.get(0));
+        }
+        return apiAgentDetailsWSDTO;
     }
 
     public ApiOperationClientWSDTO getApiOperationClientWSDTO(ClientDBModel clientDBModel) {
@@ -294,19 +314,15 @@ public class OperationHelper {
         return operationClientWSDTO;
     }
 
-    public ApiOperationCampaignWSDTO getApiOperationCampaignWSDTO(String campaignId, String processId) {
+    public ApiOperationCampaignWSDTO getApiOperationCampaignWSDTO(CampaignDBModel campaignDBModel) {
 
-        Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
-        Optional<CampaignDBModel> processDBModel = campaignRepository.findById(processId);
-        if (campaignDBModel.isPresent() && processDBModel.isPresent()) {
-
-            ApiOperationCampaignWSDTO operationCampaignWSDTO = new ApiOperationCampaignWSDTO();
-            operationCampaignWSDTO.setOperationCampaign(campaignDBModel.get());
-            operationCampaignWSDTO.setProcessScenarios(campaignScenarioRepository.findByCampaignId(processId));
-
-            return operationCampaignWSDTO;
+        ApiOperationCampaignWSDTO operationCampaignWSDTO = new ApiOperationCampaignWSDTO();
+        operationCampaignWSDTO.setCampaign(campaignDBModel);
+        List<CampaignScenarioDBModel> campaignScenarios = campaignScenarioRepository.findByCampaignId(campaignDBModel.getId());
+        if (!campaignScenarios.isEmpty()) {
+            operationCampaignWSDTO.setCampaignScenarios(campaignScenarios);
         }
-        return null;
+        return operationCampaignWSDTO;
     }
 
 

@@ -2,13 +2,9 @@ package com.faas.core.api.framework.operation.manager.content;
 
 import com.faas.core.api.model.ws.campaign.details.dto.ApiCampaignDetailsWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
-import com.faas.core.api.model.ws.operation.content.dto.ApiValidateOperationWSDTO;
-import com.faas.core.api.model.ws.operation.manager.content.dto.ApiCheckAgentOperationWSDTO;
 import com.faas.core.api.model.ws.operation.manager.content.dto.ApiOperationActivityWSDTO;
 import com.faas.core.api.model.ws.operation.manager.content.dto.ApiOperationManagerWSDTO;
 import com.faas.core.data.db.operation.content.OperationDBModel;
-import com.faas.core.data.db.user.content.UserDBModel;
-import com.faas.core.data.db.user.details.UserDetailsDBModel;
 import com.faas.core.data.repo.operation.content.OperationRepository;
 import com.faas.core.data.repo.user.content.UserRepository;
 import com.faas.core.data.repo.user.details.UserDetailsRepository;
@@ -19,7 +15,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 
 @Component
@@ -38,25 +33,6 @@ public class ApiOperationManagerFramework {
     @Autowired
     OperationRepository operationRepository;
 
-
-    public ApiCheckAgentOperationWSDTO apiCheckAgentOperationService(long agentId, String operationId) {
-
-        Optional<UserDBModel> agentDBModel = userRepository.findById(agentId);
-        List<UserDetailsDBModel> agentDetails = userDetailsRepository.findByUserId(agentId);
-        List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
-        if (agentDBModel.isPresent() && !agentDetails.isEmpty() && !operationDBModels.isEmpty()) {
-
-            agentDBModel.get().setPassword("");
-            ApiCheckAgentOperationWSDTO checkAgentOperationWSDTO = new ApiCheckAgentOperationWSDTO();
-            checkAgentOperationWSDTO.setAgent(agentDBModel.get());
-            checkAgentOperationWSDTO.setOperation(operationDBModels.get(0));
-            checkAgentOperationWSDTO.setActiveOperation(operationRepository.countByAgentIdAndOperationState(agentId,AppConstant.ACTIVE_STATE));
-            checkAgentOperationWSDTO.setOperationLimit(agentDetails.get(0).getOperationLimit());
-
-            return checkAgentOperationWSDTO;
-        }
-        return null;
-    }
 
     public ApiOperationManagerWSDTO apiGetOperationManagerService(long agentId, String operationId) {
 

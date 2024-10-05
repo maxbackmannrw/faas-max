@@ -7,30 +7,30 @@ import java.util.List;
 
 public class ApiOperationCampaignWSDTO {
 
-    private CampaignDBModel operationCampaign;
-    private List<CampaignScenarioDBModel> processScenarios;
+    private CampaignDBModel campaign;
+    private List<CampaignScenarioDBModel> campaignScenarios;
 
     public ApiOperationCampaignWSDTO() {
     }
 
-    public ApiOperationCampaignWSDTO(CampaignDBModel operationCampaign, List<CampaignScenarioDBModel> processScenarios) {
-        this.operationCampaign = operationCampaign;
-        this.processScenarios = processScenarios;
+    public ApiOperationCampaignWSDTO(CampaignDBModel campaign, List<CampaignScenarioDBModel> campaignScenarios) {
+        this.campaign = campaign;
+        this.campaignScenarios = campaignScenarios;
     }
 
-    public CampaignDBModel getOperationCampaign() {
-        return operationCampaign;
+    public CampaignDBModel getCampaign() {
+        return campaign;
     }
 
-    public void setOperationCampaign(CampaignDBModel operationCampaign) {
-        this.operationCampaign = operationCampaign;
+    public void setCampaign(CampaignDBModel campaign) {
+        this.campaign = campaign;
     }
 
-    public List<CampaignScenarioDBModel> getProcessScenarios() {
-        return processScenarios;
+    public List<CampaignScenarioDBModel> getCampaignScenarios() {
+        return campaignScenarios;
     }
 
-    public void setProcessScenarios(List<CampaignScenarioDBModel> processScenarios) {
-        this.processScenarios = processScenarios;
+    public void setCampaignScenarios(List<CampaignScenarioDBModel> campaignScenarios) {
+        this.campaignScenarios = campaignScenarios;
     }
 }

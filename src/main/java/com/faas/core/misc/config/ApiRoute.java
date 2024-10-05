@@ -48,7 +48,6 @@ public class ApiRoute {
 
 
 
-    public static final String API_CHECK_AGENT_OPERATION = "apicheckagentoperation";
     public static final String API_GET_OPERATION_MANAGER = "apigetoperationmanager";
     public static final String API_START_AGENT_OPERATION = "apistartagentoperation";
     public static final String API_COMPLETE_AGENT_OPERATION = "apicompleteagentoperation";

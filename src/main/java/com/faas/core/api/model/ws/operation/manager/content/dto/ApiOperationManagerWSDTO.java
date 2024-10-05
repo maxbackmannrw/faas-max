@@ -1,27 +1,24 @@
 package com.faas.core.api.model.ws.operation.manager.content.dto;
 
-import com.faas.core.api.model.ws.operation.manager.channel.content.dto.ApiOperationCallChannelWSDTO;
 import com.faas.core.api.model.ws.operation.manager.client.dto.ApiOperationClientWSDTO;
-import com.faas.core.api.model.ws.operation.manager.channel.content.dto.ApiOperationMessageChannelWSDTO;
+import com.faas.core.api.model.ws.user.details.dto.ApiAgentDetailsWSDTO;
 import com.faas.core.data.db.operation.content.OperationDBModel;
 
 public class ApiOperationManagerWSDTO {
 
     private OperationDBModel operation;
+    private ApiAgentDetailsWSDTO operationAgent;
     private ApiOperationClientWSDTO operationClient;
     private ApiOperationCampaignWSDTO operationCampaign;
-    private ApiOperationCallChannelWSDTO operationCallChannel;
-    private ApiOperationMessageChannelWSDTO operationMessageChannel;
 
     public ApiOperationManagerWSDTO() {
     }
 
-    public ApiOperationManagerWSDTO(OperationDBModel operation, ApiOperationClientWSDTO operationClient, ApiOperationCampaignWSDTO operationCampaign, ApiOperationCallChannelWSDTO operationCallChannel, ApiOperationMessageChannelWSDTO operationMessageChannel) {
+    public ApiOperationManagerWSDTO(OperationDBModel operation, ApiAgentDetailsWSDTO operationAgent, ApiOperationClientWSDTO operationClient, ApiOperationCampaignWSDTO operationCampaign) {
         this.operation = operation;
+        this.operationAgent = operationAgent;
         this.operationClient = operationClient;
         this.operationCampaign = operationCampaign;
-        this.operationCallChannel = operationCallChannel;
-        this.operationMessageChannel = operationMessageChannel;
     }
 
     public OperationDBModel getOperation() {
@@ -30,6 +27,14 @@ public class ApiOperationManagerWSDTO {
 
     public void setOperation(OperationDBModel operation) {
         this.operation = operation;
+    }
+
+    public ApiAgentDetailsWSDTO getOperationAgent() {
+        return operationAgent;
+    }
+
+    public void setOperationAgent(ApiAgentDetailsWSDTO operationAgent) {
+        this.operationAgent = operationAgent;
     }
 
     public ApiOperationClientWSDTO getOperationClient() {
@@ -46,21 +51,5 @@ public class ApiOperationManagerWSDTO {
 
     public void setOperationCampaign(ApiOperationCampaignWSDTO operationCampaign) {
         this.operationCampaign = operationCampaign;
-    }
-
-    public ApiOperationCallChannelWSDTO getOperationCallChannel() {
-        return operationCallChannel;
-    }
-
-    public void setOperationCallChannel(ApiOperationCallChannelWSDTO operationCallChannel) {
-        this.operationCallChannel = operationCallChannel;
-    }
-
-    public ApiOperationMessageChannelWSDTO getOperationMessageChannel() {
-        return operationMessageChannel;
-    }
-
-    public void setOperationMessageChannel(ApiOperationMessageChannelWSDTO operationMessageChannel) {
-        this.operationMessageChannel = operationMessageChannel;
     }
 }

@@ -10,7 +10,6 @@ public class ApiAgentWSModel {
     private GeneralWSModel general;
     private List<ApiAgentWSDTO> agents;
 
-
     public ApiAgentWSModel() {
     }
 
