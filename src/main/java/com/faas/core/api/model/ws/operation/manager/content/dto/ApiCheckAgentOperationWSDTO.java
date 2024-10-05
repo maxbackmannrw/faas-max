@@ -2,7 +2,6 @@ package com.faas.core.api.model.ws.operation.manager.content.dto;
 
 import com.faas.core.data.db.operation.content.OperationDBModel;
 import com.faas.core.data.db.user.content.UserDBModel;
-import com.faas.core.data.db.user.details.UserDetailsDBModel;
 
 public class ApiCheckAgentOperationWSDTO {
 
