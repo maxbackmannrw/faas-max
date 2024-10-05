@@ -49,9 +49,9 @@ public class ApiOperationManagerFramework {
             agentDBModel.get().setPassword("");
             ApiCheckAgentOperationWSDTO checkAgentOperationWSDTO = new ApiCheckAgentOperationWSDTO();
             checkAgentOperationWSDTO.setAgent(agentDBModel.get());
-            checkAgentOperationWSDTO.setAgentDetails(agentDetails.get(0));
+            checkAgentOperationWSDTO.setOperation(operationDBModels.get(0));
             checkAgentOperationWSDTO.setActiveOperation(operationRepository.countByAgentIdAndOperationState(agentId,AppConstant.ACTIVE_STATE));
-            checkAgentOperationWSDTO.setAgentOperation(operationDBModels.get(0));
+            checkAgentOperationWSDTO.setOperationLimit(agentDetails.get(0).getOperationLimit());
 
             return checkAgentOperationWSDTO;
         }

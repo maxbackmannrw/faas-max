@@ -7,18 +7,18 @@ import com.faas.core.data.db.user.details.UserDetailsDBModel;
 public class ApiCheckAgentOperationWSDTO {
 
     private UserDBModel agent;
-    private UserDetailsDBModel agentDetails;
+    private OperationDBModel operation;
     private long activeOperation;
-    private OperationDBModel agentOperation;
+    private long operationLimit;
 
     public ApiCheckAgentOperationWSDTO() {
     }
 
-    public ApiCheckAgentOperationWSDTO(UserDBModel agent, UserDetailsDBModel agentDetails, long activeOperation, OperationDBModel agentOperation) {
+    public ApiCheckAgentOperationWSDTO(UserDBModel agent, OperationDBModel operation, long activeOperation, long operationLimit) {
         this.agent = agent;
-        this.agentDetails = agentDetails;
+        this.operation = operation;
         this.activeOperation = activeOperation;
-        this.agentOperation = agentOperation;
+        this.operationLimit = operationLimit;
     }
 
     public UserDBModel getAgent() {
@@ -29,12 +29,12 @@ public class ApiCheckAgentOperationWSDTO {
         this.agent = agent;
     }
 
-    public UserDetailsDBModel getAgentDetails() {
-        return agentDetails;
+    public OperationDBModel getOperation() {
+        return operation;
     }
 
-    public void setAgentDetails(UserDetailsDBModel agentDetails) {
-        this.agentDetails = agentDetails;
+    public void setOperation(OperationDBModel operation) {
+        this.operation = operation;
     }
 
     public long getActiveOperation() {
@@ -45,11 +45,11 @@ public class ApiCheckAgentOperationWSDTO {
         this.activeOperation = activeOperation;
     }
 
-    public OperationDBModel getAgentOperation() {
-        return agentOperation;
+    public long getOperationLimit() {
+        return operationLimit;
     }
 
-    public void setAgentOperation(OperationDBModel agentOperation) {
-        this.agentOperation = agentOperation;
+    public void setOperationLimit(long operationLimit) {
+        this.operationLimit = operationLimit;
     }
 }
