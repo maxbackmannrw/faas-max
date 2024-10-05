@@ -7,8 +7,10 @@ import com.faas.core.api.model.ws.operation.content.ApiOperationWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiValidateOperationWSModel;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiValidateOperationWSDTO;
+import com.faas.core.api.model.ws.operation.manager.content.ApiCheckAgentOperationWSModel;
 import com.faas.core.api.model.ws.operation.manager.content.ApiOperationActivityWSModel;
 import com.faas.core.api.model.ws.operation.manager.content.ApiOperationManagerWSModel;
+import com.faas.core.api.model.ws.operation.manager.content.dto.ApiCheckAgentOperationWSDTO;
 import com.faas.core.api.model.ws.operation.manager.content.dto.ApiOperationActivityWSDTO;
 import com.faas.core.api.model.ws.operation.manager.content.dto.ApiOperationManagerWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
@@ -28,17 +30,17 @@ public class ApiOperationManagerMiddleware {
     ApiOperationManagerFramework apiOperationManagerFramework;
 
 
-    public ApiValidateOperationWSModel apiValidateOperationManager(long agentId, String operationId) {
+    public ApiCheckAgentOperationWSModel apiCheckAgentOperation(long agentId, String operationId) {
 
-        ApiValidateOperationWSModel response = new ApiValidateOperationWSModel();
+        ApiCheckAgentOperationWSModel response = new ApiCheckAgentOperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiValidateOperationWSDTO validateOperationWSDTO = apiOperationManagerFramework.apiValidateOperationManagerService(agentId, operationId);
-        if (validateOperationWSDTO != null) {
-            response.setValidateOperation(validateOperationWSDTO);
+        ApiCheckAgentOperationWSDTO checkAgentOperationWSDTO = apiOperationManagerFramework.apiCheckAgentOperationService(agentId, operationId);
+        if (checkAgentOperationWSDTO != null) {
+            response.setCheckAgentOperation(checkAgentOperationWSDTO);
         }
 
-        general.setOperation("apiValidateOperationManager");
+        general.setOperation("apiCheckAgentOperation");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

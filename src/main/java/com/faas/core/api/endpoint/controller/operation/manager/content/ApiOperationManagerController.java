@@ -4,6 +4,7 @@ import com.faas.core.api.middleware.operation.manager.content.ApiOperationManage
 import com.faas.core.api.model.ws.campaign.details.ApiCampaignDetailsWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiOperationWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiValidateOperationWSModel;
+import com.faas.core.api.model.ws.operation.manager.content.ApiCheckAgentOperationWSModel;
 import com.faas.core.api.model.ws.operation.manager.content.ApiOperationActivityWSModel;
 import com.faas.core.api.model.ws.operation.manager.content.ApiOperationManagerWSModel;
 import com.faas.core.misc.config.ApiRoute;
@@ -26,11 +27,11 @@ public class ApiOperationManagerController {
     ApiOperationManagerMiddleware apiOperationDetailsMiddleware;
 
 
-    @RequestMapping(value = ApiRoute.API_VALIDATE_OPERATION_MANAGER, method = RequestMethod.POST)
-    public ResponseEntity<?> apiValidateOperationManager(@RequestParam long agentId,
-                                                         @RequestParam String operationId) {
+    @RequestMapping(value = ApiRoute.API_CHECK_AGENT_OPERATION, method = RequestMethod.POST)
+    public ResponseEntity<?> apiCheckAgentOperation(@RequestParam long agentId,
+                                                    @RequestParam String operationId) {
 
-        ApiValidateOperationWSModel response = apiOperationDetailsMiddleware.apiValidateOperationManager(agentId, operationId);
+        ApiCheckAgentOperationWSModel response = apiOperationDetailsMiddleware.apiCheckAgentOperation(agentId, operationId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
