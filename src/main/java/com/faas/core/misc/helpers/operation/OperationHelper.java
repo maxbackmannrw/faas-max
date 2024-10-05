@@ -14,6 +14,7 @@ import com.faas.core.api.model.ws.operation.manager.channel.message.email.dto.Ap
 import com.faas.core.api.model.ws.operation.manager.channel.message.push.dto.ApiOperationPushChannelWSDTO;
 import com.faas.core.api.model.ws.operation.manager.channel.message.sms.dto.ApiOperationSmsChannelWSDTO;
 import com.faas.core.api.model.ws.operation.manager.channel.message.wapp.dto.ApiOperationWappMessageChannelWSDTO;
+import com.faas.core.api.model.ws.operation.manager.content.dto.ApiOperationAgentWSDTO;
 import com.faas.core.api.model.ws.operation.manager.content.dto.ApiOperationCampaignWSDTO;
 import com.faas.core.api.model.ws.operation.manager.content.dto.ApiOperationManagerWSDTO;
 import com.faas.core.api.model.ws.user.details.dto.ApiAgentDetailsWSDTO;
@@ -276,14 +277,14 @@ public class OperationHelper {
     public ApiOperationManagerWSDTO getApiOperationManagerWSDTO(OperationDBModel operationDBModel) {
 
         Optional<UserDBModel> agentDBModel = userRepository.findById(operationDBModel.getAgentId());
+        List<UserDetailsDBModel> agentDetailsModels = userDetailsRepository.findByUserId(operationDBModel.getAgentId());
         Optional<ClientDBModel> clientDBModel = clientRepository.findById(operationDBModel.getClientId());
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(operationDBModel.getCampaignId());
-
-        if (agentDBModel.isPresent() && clientDBModel.isPresent() && campaignDBModel.isPresent()) {
+        if (agentDBModel.isPresent() && !agentDetailsModels.isEmpty() && clientDBModel.isPresent() && campaignDBModel.isPresent()) {
 
             ApiOperationManagerWSDTO operationManagerWSDTO = new ApiOperationManagerWSDTO();
             operationManagerWSDTO.setOperation(operationDBModel);
-            operationManagerWSDTO.setOperationAgent(getOperationAgent(agentDBModel.get()));
+            operationManagerWSDTO.setOperationAgent(getApiOperationAgentWSDTO(agentDBModel.get(),agentDetailsModels.get(0)));
             operationManagerWSDTO.setOperationClient(getApiOperationClientWSDTO(clientDBModel.get()));
             operationManagerWSDTO.setOperationCampaign(getApiOperationCampaignWSDTO(campaignDBModel.get()));
 
@@ -292,15 +293,15 @@ public class OperationHelper {
         return null;
     }
 
-    public ApiAgentDetailsWSDTO getOperationAgent(UserDBModel agentDBModel) {
+    public ApiOperationAgentWSDTO getApiOperationAgentWSDTO(UserDBModel agentDBModel,UserDetailsDBModel agentDetailsDBModels) {
 
-        ApiAgentDetailsWSDTO apiAgentDetailsWSDTO = new ApiAgentDetailsWSDTO();
-        apiAgentDetailsWSDTO.setAgent(agentDBModel);
-        List<UserDetailsDBModel> agentDetailsDBModels = userDetailsRepository.findByUserId(agentDBModel.getId());
-        if (!agentDetailsDBModels.isEmpty()) {
-            apiAgentDetailsWSDTO.setAgentDetails(agentDetailsDBModels.get(0));
-        }
-        return apiAgentDetailsWSDTO;
+        ApiOperationAgentWSDTO operationAgentWSDTO = new ApiOperationAgentWSDTO();
+        operationAgentWSDTO.setAgent(agentDBModel);
+        operationAgentWSDTO.setAgentDetails(agentDetailsDBModels);
+        operationAgentWSDTO.setOperationLimit(agentDetailsDBModels.getOperationLimit());
+        operationAgentWSDTO.setActiveOperation(operationRepository.countByAgentIdAndOperationState(agentDBModel.getId(),AppConstant.ACTIVE_STATE));
+
+        return operationAgentWSDTO;
     }
 
     public ApiOperationClientWSDTO getApiOperationClientWSDTO(ClientDBModel clientDBModel) {

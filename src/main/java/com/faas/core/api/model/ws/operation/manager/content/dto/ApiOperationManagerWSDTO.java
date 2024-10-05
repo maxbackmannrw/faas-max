@@ -1,20 +1,19 @@
 package com.faas.core.api.model.ws.operation.manager.content.dto;
 
 import com.faas.core.api.model.ws.operation.manager.client.dto.ApiOperationClientWSDTO;
-import com.faas.core.api.model.ws.user.details.dto.ApiAgentDetailsWSDTO;
 import com.faas.core.data.db.operation.content.OperationDBModel;
 
 public class ApiOperationManagerWSDTO {
 
     private OperationDBModel operation;
-    private ApiAgentDetailsWSDTO operationAgent;
+    private ApiOperationAgentWSDTO operationAgent;
     private ApiOperationClientWSDTO operationClient;
     private ApiOperationCampaignWSDTO operationCampaign;
 
     public ApiOperationManagerWSDTO() {
     }
 
-    public ApiOperationManagerWSDTO(OperationDBModel operation, ApiAgentDetailsWSDTO operationAgent, ApiOperationClientWSDTO operationClient, ApiOperationCampaignWSDTO operationCampaign) {
+    public ApiOperationManagerWSDTO(OperationDBModel operation, ApiOperationAgentWSDTO operationAgent, ApiOperationClientWSDTO operationClient, ApiOperationCampaignWSDTO operationCampaign) {
         this.operation = operation;
         this.operationAgent = operationAgent;
         this.operationClient = operationClient;
@@ -29,11 +28,11 @@ public class ApiOperationManagerWSDTO {
         this.operation = operation;
     }
 
-    public ApiAgentDetailsWSDTO getOperationAgent() {
+    public ApiOperationAgentWSDTO getOperationAgent() {
         return operationAgent;
     }
 
-    public void setOperationAgent(ApiAgentDetailsWSDTO operationAgent) {
+    public void setOperationAgent(ApiOperationAgentWSDTO operationAgent) {
         this.operationAgent = operationAgent;
     }
 

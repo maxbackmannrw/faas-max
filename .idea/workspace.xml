@@ -8,15 +8,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/manager/content/ApiOperationManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/manager/content/ApiOperationManagerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/manager/content/ApiOperationManagerFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/manager/content/ApiOperationManagerFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/manager/content/ApiOperationManagerMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/manager/content/ApiOperationManagerMiddleware.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/manager/content/ApiCheckAgentOperationWSModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/manager/content/dto/ApiCheckAgentOperationWSDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/manager/content/dto/ApiOperationCampaignWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/manager/content/dto/ApiOperationCampaignWSDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/manager/content/ApiOperationAgentWSModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/manager/content/dto/ApiOperationAgentWSDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/manager/content/dto/ApiOperationManagerWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/manager/content/dto/ApiOperationManagerWSDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/user/content/ApiAgentWSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/user/content/ApiAgentWSModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/misc/config/ApiRoute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/misc/config/ApiRoute.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/misc/helpers/operation/OperationHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/misc/helpers/operation/OperationHelper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -141,8 +135,8 @@
       <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/scenario/content" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.faas.core.api.model.ws.operation.manager.content.dto" />
       <recent name="com.faas.core.api.model.ws.operation.manager.content" />
+      <recent name="com.faas.core.api.model.ws.operation.manager.content.dto" />
       <recent name="com.faas.core.api.middleware.operation.manager.remote" />
       <recent name="com.faas.core.api.framework.operation.manager.remote" />
       <recent name="com.faas.core.api.endpoint.controller.operation.manager.remote" />
@@ -1279,15 +1273,7 @@
       <workItem from="1727979856133" duration="247000" />
       <workItem from="1727998607138" duration="729000" />
       <workItem from="1728062803898" duration="248000" />
-      <workItem from="1728071246489" duration="6178000" />
-    </task>
-    <task id="LOCAL-01003" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1726064083921</created>
-      <option name="number" value="01003" />
-      <option name="presentableId" value="LOCAL-01003" />
-      <option name="project" value="LOCAL" />
-      <updated>1726064083921</updated>
+      <workItem from="1728071246489" duration="7229000" />
     </task>
     <task id="LOCAL-01004" summary="almost finish">
       <option name="closed" value="true" />
@@ -1673,7 +1659,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728087795622</updated>
     </task>
-    <option name="localTasksCounter" value="1052" />
+    <task id="LOCAL-01052" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1728089607059</created>
+      <option name="number" value="01052" />
+      <option name="presentableId" value="LOCAL-01052" />
+      <option name="project" value="LOCAL" />
+      <updated>1728089607059</updated>
+    </task>
+    <option name="localTasksCounter" value="1053" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
