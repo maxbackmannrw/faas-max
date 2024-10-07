@@ -1,6 +1,6 @@
-package com.faas.core.base.model.ws.client.details.content;
+package com.faas.core.base.model.ws.client.details;
 
-import com.faas.core.base.model.ws.client.details.content.dto.ClientAddressWSDTO;
+import com.faas.core.base.model.ws.client.details.dto.ClientAddressWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 
 import java.util.List;

@@ -149,8 +149,7 @@ public class ChannelHelper {
             OperationSipCallDAO operationSipCallDAO = new OperationSipCallDAO();
             operationSipCallDAO.setNumberId(numberId);
             operationSipCallDAO.setPhoneNumber(clientPhoneDAO.getPhoneNumber());
-            operationSipCallDAO.setPhoneCarrier(clientPhoneDAO.getPhoneCarrier());
-            operationSipCallDAO.setPhoneType(clientPhoneDAO.getPhoneType());
+            operationSipCallDAO.setNumberType(clientPhoneDAO.getNumberType());
             operationSipCallDAO.setAccountId(agentDetails.get(0).getSipChannel().getAccountId());
 
 
@@ -266,8 +265,7 @@ public class ChannelHelper {
             OperationWappCallDAO operationWappCallDAO = new OperationWappCallDAO();
             operationWappCallDAO.setNumberId(numberId);
             operationWappCallDAO.setPhoneNumber(clientPhoneDAO.getPhoneNumber());
-            operationWappCallDAO.setPhoneCarrier(clientPhoneDAO.getPhoneCarrier());
-            operationWappCallDAO.setPhoneType(clientPhoneDAO.getPhoneType());
+            operationWappCallDAO.setNumberType(clientPhoneDAO.getNumberType());
             operationWappCallDAO.setAccountId(agentDetails.get(0).getSipChannel().getAccountId());
             operationWappCallDAO.setsDate(appUtils.getCurrentTimeStamp());
             operationWappCallDAO.setfDate(appUtils.getCurrentTimeStamp());

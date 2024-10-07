@@ -1,6 +1,6 @@
-package com.faas.core.base.model.ws.client.details.content;
+package com.faas.core.base.model.ws.client.details;
 
-import com.faas.core.base.model.ws.client.details.content.dto.ClientDetailsWSDTO;
+import com.faas.core.base.model.ws.client.details.dto.ClientDetailsWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 
 

@@ -4,8 +4,7 @@ public class OperationWappCallDAO {
 
     private String numberId;
     private String phoneNumber;
-    private String phoneCarrier;
-    private String phoneType;
+    private String numberType;
     private String accountId;
     private long sDate;
     private long fDate;
@@ -14,11 +13,10 @@ public class OperationWappCallDAO {
     public OperationWappCallDAO() {
     }
 
-    public OperationWappCallDAO(String numberId, String phoneNumber, String phoneCarrier, String phoneType, String accountId, long sDate, long fDate, int status) {
+    public OperationWappCallDAO(String numberId, String phoneNumber, String numberType, String accountId, long sDate, long fDate, int status) {
         this.numberId = numberId;
         this.phoneNumber = phoneNumber;
-        this.phoneCarrier = phoneCarrier;
-        this.phoneType = phoneType;
+        this.numberType = numberType;
         this.accountId = accountId;
         this.sDate = sDate;
         this.fDate = fDate;
@@ -41,20 +39,12 @@ public class OperationWappCallDAO {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getPhoneCarrier() {
-        return phoneCarrier;
+    public String getNumberType() {
+        return numberType;
     }
 
-    public void setPhoneCarrier(String phoneCarrier) {
-        this.phoneCarrier = phoneCarrier;
-    }
-
-    public String getPhoneType() {
-        return phoneType;
-    }
-
-    public void setPhoneType(String phoneType) {
-        this.phoneType = phoneType;
+    public void setNumberType(String numberType) {
+        this.numberType = numberType;
     }
 
     public String getAccountId() {

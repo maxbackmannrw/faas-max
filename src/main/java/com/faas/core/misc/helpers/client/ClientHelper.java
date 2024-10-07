@@ -74,12 +74,13 @@ public class ClientHelper {
             ClientDetailsDBModel clientDetailsDBModel = new ClientDetailsDBModel();
             clientDetailsDBModel.setClientId(clientDBModel.getId());
             clientDetailsDBModel.setClientNotes(new ArrayList<>());
-            clientDetailsDBModel.setClientDatas(new ArrayList<>());
 
             if (clientDBModel.getPhoneNumber() != null) {
+
                 List<ClientPhoneDAO> clientPhoneDAOS = new ArrayList<>();
                 clientPhoneDAOS.add(createClientPhoneDAO(clientDBModel.getPhoneNumber(), AppConstant.NONE, AppConstant.MAIN_TYPE));
                 clientDetailsDBModel.setClientPhones(clientPhoneDAOS);
+
             } else {
                 clientDetailsDBModel.setClientPhones(new ArrayList<>());
             }
@@ -114,8 +115,6 @@ public class ClientHelper {
         ClientPhoneDAO clientPhoneDAO = new ClientPhoneDAO();
         clientPhoneDAO.setId(appUtils.generateUUID());
         clientPhoneDAO.setPhoneNumber(phoneNumber);
-        clientPhoneDAO.setPhoneCarrier(phoneCarrier);
-        clientPhoneDAO.setPhoneType(phoneType);
         clientPhoneDAO.setcDate(appUtils.getCurrentTimeStamp());
         clientPhoneDAO.setStatus(1);
 

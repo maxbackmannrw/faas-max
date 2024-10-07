@@ -1,17 +1,13 @@
-package com.faas.core.base.framework.client.details.content;
+package com.faas.core.base.framework.client.details;
 
 import com.faas.core.data.db.client.content.ClientDBModel;
 import com.faas.core.data.db.client.details.ClientDetailsDBModel;
 import com.faas.core.data.db.client.details.dao.ClientAddressDAO;
-import com.faas.core.data.db.client.details.dao.ClientDataDAO;
 import com.faas.core.data.db.client.details.dao.ClientEmailDAO;
 import com.faas.core.data.db.client.details.dao.ClientPhoneDAO;
-import com.faas.core.data.db.utilz.DataTypeDBModel;
-import com.faas.core.base.model.ws.client.details.content.dto.*;
+import com.faas.core.base.model.ws.client.details.dto.*;
 import com.faas.core.data.repo.client.content.ClientRepository;
 import com.faas.core.data.repo.client.details.ClientDetailsRepository;
-import com.faas.core.data.repo.remoteapp.RemoteAppRepository;
-import com.faas.core.data.repo.utilz.DataTypeRepository;
 import com.faas.core.misc.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,12 +28,6 @@ public class ClientDetailsFramework {
     ClientDetailsRepository clientDetailsRepository;
 
     @Autowired
-    DataTypeRepository dataTypeRepository;
-
-    @Autowired
-    RemoteAppRepository remoteAppRepository;
-
-    @Autowired
     AppUtils appUtils;
 
 
@@ -52,105 +42,6 @@ public class ClientDetailsFramework {
             clientDetailsWSDTO.setClientDetails(clientDetailsDBModels.get(0));
 
             return clientDetailsWSDTO;
-        }
-        return null;
-    }
-
-
-    public List<ClientDataWSDTO> getClientDatasService(long userId, long clientId) {
-
-        List<ClientDataWSDTO> clientDataWSDTOS = new ArrayList<>();
-        List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(clientId);
-        if (!clientDetailsDBModels.isEmpty() && clientDetailsDBModels.get(0).getClientDatas() != null) {
-            for (int i = 0; i < clientDetailsDBModels.get(0).getClientDatas().size(); i++) {
-                clientDataWSDTOS.add(new ClientDataWSDTO(clientDetailsDBModels.get(0).getClientDatas().get(i)));
-            }
-        }
-        return clientDataWSDTOS;
-    }
-
-
-    public ClientDataWSDTO getClientDataService(long userId, long clientId, String dataId) {
-
-        List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(clientId);
-        if (!clientDetailsDBModels.isEmpty() && clientDetailsDBModels.get(0).getClientDatas() != null) {
-            for (int i = 0; i < clientDetailsDBModels.get(0).getClientDatas().size(); i++) {
-                if (clientDetailsDBModels.get(0).getClientDatas().get(i).getDataId().equalsIgnoreCase(dataId)) {
-                    return new ClientDataWSDTO(clientDetailsDBModels.get(0).getClientDatas().get(i));
-                }
-            }
-        }
-        return null;
-    }
-
-
-    public ClientDataWSDTO createClientDataService(long userId, long clientId, long typeId, String value) {
-
-        Optional<DataTypeDBModel> dataTypeDBModel = dataTypeRepository.findById(typeId);
-        List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(clientId);
-        if (dataTypeDBModel.isPresent() && !clientDetailsDBModels.isEmpty()) {
-
-            ClientDataDAO clientDataDAO = new ClientDataDAO();
-            clientDataDAO.setDataId(appUtils.generateUUID());
-            clientDataDAO.setDataType(dataTypeDBModel.get().getDataType());
-            clientDataDAO.setValue(value);
-            clientDataDAO.setcDate(appUtils.getCurrentTimeStamp());
-            clientDataDAO.setStatus(1);
-
-            if (clientDetailsDBModels.get(0).getClientDatas() == null) {
-                List<ClientDataDAO> clientDataDAOS = new ArrayList<>();
-                clientDataDAOS.add(clientDataDAO);
-                clientDetailsDBModels.get(0).setClientDatas(clientDataDAOS);
-            } else {
-                clientDetailsDBModels.get(0).getClientDatas().add(clientDataDAO);
-            }
-            clientDetailsDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
-            clientDetailsRepository.save(clientDetailsDBModels.get(0));
-
-            return new ClientDataWSDTO(clientDataDAO);
-        }
-        return null;
-    }
-
-
-    public ClientDataWSDTO updateClientDataService(long userId, long clientId, String dataId, long typeId, String value) {
-
-        List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(clientId);
-        Optional<DataTypeDBModel> dataTypeDBModel = dataTypeRepository.findById(typeId);
-        if (!clientDetailsDBModels.isEmpty() && clientDetailsDBModels.get(0).getClientDatas() != null && dataTypeDBModel.isPresent()) {
-            for (int i = 0; i < clientDetailsDBModels.get(0).getClientDatas().size(); i++) {
-                if (clientDetailsDBModels.get(0).getClientDatas().get(i).getDataId().equalsIgnoreCase(dataId)) {
-
-                    clientDetailsDBModels.get(0).getClientDatas().get(i).setDataType(dataTypeDBModel.get().getDataType());
-                    clientDetailsDBModels.get(0).getClientDatas().get(i).setValue(value);
-                    clientDetailsDBModels.get(0).getClientDatas().get(i).setcDate(appUtils.getCurrentTimeStamp());
-                    clientDetailsDBModels.get(0).getClientDatas().get(i).setStatus(1);
-                    clientDetailsDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
-                    clientDetailsRepository.save(clientDetailsDBModels.get(0));
-
-                    return new ClientDataWSDTO(clientDetailsDBModels.get(0).getClientDatas().get(i));
-                }
-            }
-        }
-        return null;
-    }
-
-
-    public ClientDataWSDTO removeClientDataService(long userId, long clientId, String dataId) {
-
-        List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(clientId);
-        if (!clientDetailsDBModels.isEmpty() && clientDetailsDBModels.get(0).getClientDatas() != null) {
-            for (int i = 0; i < clientDetailsDBModels.get(0).getClientDatas().size(); i++) {
-                if (clientDetailsDBModels.get(0).getClientDatas().get(i).getDataId().equalsIgnoreCase(dataId)) {
-
-                    ClientDataDAO clientDataDAO = clientDetailsDBModels.get(0).getClientDatas().get(i);
-                    clientDetailsDBModels.get(0).getClientDatas().remove(clientDataDAO);
-                    clientDetailsDBModels.remove(0).setuDate(appUtils.getCurrentTimeStamp());
-                    clientDetailsRepository.save(clientDetailsDBModels.get(0));
-
-                    return new ClientDataWSDTO(clientDataDAO);
-                }
-            }
         }
         return null;
     }

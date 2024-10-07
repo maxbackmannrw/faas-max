@@ -9,14 +9,12 @@ import com.faas.core.data.repo.campaign.content.CampaignRepository;
 import com.faas.core.data.repo.campaign.details.agent.CampaignAgentRepository;
 import com.faas.core.data.repo.operation.content.OperationRepository;
 import com.faas.core.misc.config.AppConstant;
-import com.faas.core.misc.config.AppUtils;
 import com.faas.core.misc.helpers.campaign.CampaignHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 
 @Component

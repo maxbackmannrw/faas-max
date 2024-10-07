@@ -2,7 +2,6 @@ package com.faas.core.api.framework.operation.manager.client;
 
 import com.faas.core.api.model.ws.operation.manager.client.dto.ApiOperationClientWSDTO;
 import com.faas.core.api.model.ws.operation.manager.client.dto.ApiOperationNoteWSDTO;
-import com.faas.core.api.model.ws.operation.manager.intel.dto.ApiOperationOSINTWSDTO;
 import com.faas.core.data.db.client.content.ClientDBModel;
 import com.faas.core.data.db.client.details.ClientDetailsDBModel;
 import com.faas.core.data.db.client.details.dao.ClientNoteDAO;

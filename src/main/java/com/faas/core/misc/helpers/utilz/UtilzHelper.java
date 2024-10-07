@@ -374,9 +374,7 @@ public class UtilzHelper {
 
         List<ClientPhoneDAO> checkedPhoneDAOS = new ArrayList<>();
         for (ClientPhoneDAO clientPhoneDAO : clientPhoneDAOS) {
-            if (clientPhoneDAO.getPhoneType() != null && clientPhoneDAO.getPhoneType().equalsIgnoreCase(AppConstant.SUB_TYPE)) {
-                checkedPhoneDAOS.add(clientPhoneDAO);
-            }
+
         }
         if (clientDBModel.getPhoneNumber() != null && !"".equalsIgnoreCase(clientDBModel.getPhoneNumber())) {
             checkedPhoneDAOS.add(clientHelper.createClientPhoneDAO(clientDBModel.getPhoneNumber(), AppConstant.NONE, AppConstant.MAIN_TYPE));

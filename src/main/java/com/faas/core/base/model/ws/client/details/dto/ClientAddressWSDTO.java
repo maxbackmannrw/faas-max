@@ -1,4 +1,4 @@
-package com.faas.core.base.model.ws.client.details.content.dto;
+package com.faas.core.base.model.ws.client.details.dto;
 
 import com.faas.core.data.db.client.details.dao.ClientAddressDAO;
 

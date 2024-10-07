@@ -71,15 +71,14 @@ public class BaseRoute {
     public static final String REMOVE_CLIENT = "removeclient";
 
 
-    public static final String GET_CLIENT_OS_INTS = "getclientosints";
 
     public static final String GET_CLIENT_DETAILS = "getclientdetails";
 
-    public static final String GET_CLIENT_DATAS = "getclientdatas";
-    public static final String GET_CLIENT_DATA = "getclientdata";
-    public static final String CREATE_CLIENT_DATA = "createclientdata";
-    public static final String UPDATE_CLIENT_DATA = "updateclientdata";
-    public static final String REMOVE_CLIENT_DATA = "removeclientdata";
+    public static final String GET_CLIENT_INTELS = "getclientintels";
+    public static final String GET_CLIENT_INTEL = "getclientintel";
+    public static final String CREATE_CLIENT_INTEL = "createclientintel";
+    public static final String UPDATE_CLIENT_INTEL = "updateclientintel";
+    public static final String REMOVE_CLIENT_INTEL = "removeclientintel";
 
     public static final String GET_CLIENT_ADDRESSES = "getclientaddresses";
     public static final String GET_CLIENT_ADDRESS = "getclientaddress";

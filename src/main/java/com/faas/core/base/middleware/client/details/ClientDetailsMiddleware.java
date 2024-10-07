@@ -1,8 +1,11 @@
-package com.faas.core.base.middleware.client.details.content;
+package com.faas.core.base.middleware.client.details;
 
-import com.faas.core.base.framework.client.details.content.ClientDetailsFramework;
-import com.faas.core.base.model.ws.client.details.content.*;
-import com.faas.core.base.model.ws.client.details.content.dto.*;
+import com.faas.core.base.framework.client.details.ClientDetailsFramework;
+import com.faas.core.base.model.ws.client.details.ClientAddressWSModel;
+import com.faas.core.base.model.ws.client.details.ClientDetailsWSModel;
+import com.faas.core.base.model.ws.client.details.ClientEmailWSModel;
+import com.faas.core.base.model.ws.client.details.ClientPhoneWSModel;
+import com.faas.core.base.model.ws.client.details.dto.*;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,115 +40,6 @@ public class ClientDetailsMiddleware {
 
         return response;
     }
-
-
-    public ClientDataWSModel getClientDatas(long userId, long clientId) {
-
-        ClientDataWSModel response = new ClientDataWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-        List<ClientDataWSDTO> clientDataWSDTOS = clientDetailsFramework.getClientDatasService(userId, clientId);
-        if (clientDataWSDTOS != null) {
-            response.setClientDatas(clientDataWSDTOS);
-        }
-
-        general.setOperation("getClientDatas");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-
-    public ClientDataWSModel getClientData(long userId, long clientId, String dataId) {
-
-        ClientDataWSModel response = new ClientDataWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-        List<ClientDataWSDTO> clientDataWSDTOS = new ArrayList<>();
-
-        ClientDataWSDTO clientDataWSDTO = clientDetailsFramework.getClientDataService(userId, clientId, dataId);
-        if (clientDataWSDTO != null) {
-            clientDataWSDTOS.add(clientDataWSDTO);
-        }
-
-        response.setClientDatas(clientDataWSDTOS);
-        general.setOperation("getClientData");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-
-    public ClientDataWSModel createClientData(long userId, long clientId, long typeId, String value) {
-
-        ClientDataWSModel response = new ClientDataWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-        List<ClientDataWSDTO> clientDataWSDTOS = new ArrayList<>();
-
-        ClientDataWSDTO clientDataWSDTO = clientDetailsFramework.createClientDataService(userId, clientId, typeId, value);
-        if (clientDataWSDTO != null) {
-            clientDataWSDTOS.add(clientDataWSDTO);
-        }
-
-        response.setClientDatas(clientDataWSDTOS);
-        general.setOperation("createClientData");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-
-    public ClientDataWSModel updateClientData(long userId, long clientId, String dataId, long typeId, String value) {
-
-        ClientDataWSModel response = new ClientDataWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-        List<ClientDataWSDTO> clientDataWSDTOS = new ArrayList<>();
-
-        ClientDataWSDTO clientDataWSDTO = clientDetailsFramework.updateClientDataService(userId, clientId, dataId, typeId, value);
-        if (clientDataWSDTO != null) {
-            clientDataWSDTOS.add(clientDataWSDTO);
-        }
-
-        response.setClientDatas(clientDataWSDTOS);
-        general.setOperation("updateClientData");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-
-    public ClientDataWSModel removeClientData(long userId, long clientId, String dataId) {
-
-        ClientDataWSModel response = new ClientDataWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-        List<ClientDataWSDTO> clientDataWSDTOS = new ArrayList<>();
-
-        ClientDataWSDTO clientDataWSDTO = clientDetailsFramework.removeClientDataService(userId, clientId, dataId);
-        if (clientDataWSDTO != null) {
-            clientDataWSDTOS.add(clientDataWSDTO);
-        }
-
-        response.setClientDatas(clientDataWSDTOS);
-        general.setOperation("removeClientData");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
 
     public ClientAddressWSModel getClientAddresses(long userId, long clientId) {
 

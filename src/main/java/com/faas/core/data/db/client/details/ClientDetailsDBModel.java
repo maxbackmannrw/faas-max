@@ -16,7 +16,6 @@ public class ClientDetailsDBModel {
     private List<ClientEmailDAO> clientEmails;
     private List<ClientAddressDAO> clientAddresses;
     private List<ClientNoteDAO> clientNotes;
-    private List<ClientDataDAO> clientDatas;
     private long uDate;
     private long cDate;
     private int status;
@@ -24,14 +23,13 @@ public class ClientDetailsDBModel {
     public ClientDetailsDBModel() {
     }
 
-    public ClientDetailsDBModel(String id, long clientId, List<ClientPhoneDAO> clientPhones, List<ClientEmailDAO> clientEmails, List<ClientAddressDAO> clientAddresses, List<ClientNoteDAO> clientNotes, List<ClientDataDAO> clientDatas, long uDate, long cDate, int status) {
+    public ClientDetailsDBModel(String id, long clientId, List<ClientPhoneDAO> clientPhones, List<ClientEmailDAO> clientEmails, List<ClientAddressDAO> clientAddresses, List<ClientNoteDAO> clientNotes, long uDate, long cDate, int status) {
         this.id = id;
         this.clientId = clientId;
         this.clientPhones = clientPhones;
         this.clientEmails = clientEmails;
         this.clientAddresses = clientAddresses;
         this.clientNotes = clientNotes;
-        this.clientDatas = clientDatas;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
@@ -83,14 +81,6 @@ public class ClientDetailsDBModel {
 
     public void setClientNotes(List<ClientNoteDAO> clientNotes) {
         this.clientNotes = clientNotes;
-    }
-
-    public List<ClientDataDAO> getClientDatas() {
-        return clientDatas;
-    }
-
-    public void setClientDatas(List<ClientDataDAO> clientDatas) {
-        this.clientDatas = clientDatas;
     }
 
     public long getuDate() {

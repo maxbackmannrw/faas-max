@@ -5,7 +5,7 @@ public class OperationSipCallDAO {
     private String numberId;
     private String phoneNumber;
     private String phoneCarrier;
-    private String phoneType;
+    private String numberType;
     private String accountId;
     private String callerId;
     private long sDate;
@@ -15,11 +15,10 @@ public class OperationSipCallDAO {
     public OperationSipCallDAO() {
     }
 
-    public OperationSipCallDAO(String numberId, String phoneNumber, String phoneCarrier, String phoneType, String accountId, String callerId, long sDate, long fDate, int status) {
+    public OperationSipCallDAO(String numberId, String phoneNumber, String numberType, String accountId, String callerId, long sDate, long fDate, int status) {
         this.numberId = numberId;
         this.phoneNumber = phoneNumber;
-        this.phoneCarrier = phoneCarrier;
-        this.phoneType = phoneType;
+        this.numberType = numberType;
         this.accountId = accountId;
         this.callerId = callerId;
         this.sDate = sDate;
@@ -43,20 +42,12 @@ public class OperationSipCallDAO {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getPhoneCarrier() {
-        return phoneCarrier;
+    public String getNumberType() {
+        return numberType;
     }
 
-    public void setPhoneCarrier(String phoneCarrier) {
-        this.phoneCarrier = phoneCarrier;
-    }
-
-    public String getPhoneType() {
-        return phoneType;
-    }
-
-    public void setPhoneType(String phoneType) {
-        this.phoneType = phoneType;
+    public void setNumberType(String numberType) {
+        this.numberType = numberType;
     }
 
     public String getAccountId() {

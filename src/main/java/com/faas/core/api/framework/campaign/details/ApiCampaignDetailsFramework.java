@@ -19,7 +19,6 @@ import com.faas.core.misc.config.AppConstant;
 import com.faas.core.misc.helpers.campaign.CampaignHelper;
 import com.faas.core.misc.helpers.operation.OperationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 

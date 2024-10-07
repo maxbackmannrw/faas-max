@@ -1,7 +1,10 @@
-package com.faas.core.base.endoint.controller.client.details.content;
+package com.faas.core.base.endoint.controller.client.details;
 
-import com.faas.core.base.middleware.client.details.content.ClientDetailsMiddleware;
-import com.faas.core.base.model.ws.client.details.content.*;
+import com.faas.core.base.middleware.client.details.ClientDetailsMiddleware;
+import com.faas.core.base.model.ws.client.details.ClientAddressWSModel;
+import com.faas.core.base.model.ws.client.details.ClientDetailsWSModel;
+import com.faas.core.base.model.ws.client.details.ClientEmailWSModel;
+import com.faas.core.base.model.ws.client.details.ClientPhoneWSModel;
 import com.faas.core.misc.config.AppConstant;
 import com.faas.core.misc.config.BaseRoute;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,79 +36,6 @@ public class ClientDetailsController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
-
-    @RequestMapping(value = BaseRoute.GET_CLIENT_DATAS, method = RequestMethod.POST)
-    public ResponseEntity<?> getClientDatas(@RequestParam long userId,
-                                            @RequestParam long clientId) {
-
-        ClientDataWSModel response = clientDetailsMiddleware.getClientDatas(userId, clientId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-
-    @RequestMapping(value = BaseRoute.GET_CLIENT_DATA, method = RequestMethod.POST)
-    public ResponseEntity<?> getClientData(@RequestParam long userId,
-                                           @RequestParam long clientId,
-                                           @RequestParam String dataId) {
-
-        ClientDataWSModel response = clientDetailsMiddleware.getClientData(userId, clientId, dataId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-
-    @RequestMapping(value = BaseRoute.CREATE_CLIENT_DATA, method = RequestMethod.POST)
-    public ResponseEntity<?> createClientData(@RequestParam long userId,
-                                              @RequestParam long clientId,
-                                              @RequestParam long typeId,
-                                              @RequestParam String value) {
-
-        ClientDataWSModel response = clientDetailsMiddleware.createClientData(userId, clientId, typeId, value);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-
-    @RequestMapping(value = BaseRoute.UPDATE_CLIENT_DATA, method = RequestMethod.POST)
-    public ResponseEntity<?> updateClientData(@RequestParam long userId,
-                                              @RequestParam long clientId,
-                                              @RequestParam String dataId,
-                                              @RequestParam long typeId,
-                                              @RequestParam String value) {
-
-        ClientDataWSModel response = clientDetailsMiddleware.updateClientData(userId, clientId, dataId, typeId, value);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-
-    @RequestMapping(value = BaseRoute.REMOVE_CLIENT_DATA, method = RequestMethod.POST)
-    public ResponseEntity<?> removeClientData(@RequestParam long userId,
-                                              @RequestParam long clientId,
-                                              @RequestParam String dataId) {
-
-        ClientDataWSModel response = clientDetailsMiddleware.removeClientData(userId, clientId, dataId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
 
     @RequestMapping(value = BaseRoute.GET_CLIENT_ADDRESSES, method = RequestMethod.POST)
     public ResponseEntity<?> getClientAddresses(@RequestParam long userId,

@@ -17,7 +17,6 @@ import com.faas.core.api.model.ws.operation.manager.channel.message.wapp.dto.Api
 import com.faas.core.api.model.ws.operation.manager.content.dto.ApiOperationAgentWSDTO;
 import com.faas.core.api.model.ws.operation.manager.content.dto.ApiOperationCampaignWSDTO;
 import com.faas.core.api.model.ws.operation.manager.content.dto.ApiOperationManagerWSDTO;
-import com.faas.core.api.model.ws.user.details.dto.ApiAgentDetailsWSDTO;
 import com.faas.core.data.db.campaign.content.CampaignDBModel;
 import com.faas.core.data.db.campaign.details.scenario.CampaignScenarioDBModel;
 import com.faas.core.data.db.client.content.ClientDBModel;
@@ -121,9 +120,6 @@ public class OperationHelper {
         }
         if (clientDetailsDBModel.getClientNotes() != null) {
             operationDBModel.setClientNotes(clientDetailsDBModel.getClientNotes());
-        }
-        if (clientDetailsDBModel.getClientDatas() != null) {
-            operationDBModel.setClientDatas(clientDetailsDBModel.getClientDatas());
         }
         operationDBModel.setAgentId(userDBModel.getId());
         operationDBModel.setAgentName(userDBModel.getUserName());

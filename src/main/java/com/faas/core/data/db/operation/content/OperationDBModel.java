@@ -23,7 +23,6 @@ public class OperationDBModel {
     private List<ClientPhoneDAO> clientPhones;
     private List<ClientEmailDAO> clientEmails;
     private List<ClientAddressDAO> clientAddresses;
-    private List<ClientDataDAO> clientDatas;
     private List<ClientNoteDAO> clientNotes;
     private long agentId;
     private String agentName;
@@ -48,7 +47,7 @@ public class OperationDBModel {
     public OperationDBModel() {
     }
 
-    public OperationDBModel(String id, long clientId, String clientName, String nationalId, String phoneNumber, String emailAddress, String clientCity, String clientCountry, String clientType, List<ClientPhoneDAO> clientPhones, List<ClientEmailDAO> clientEmails, List<ClientAddressDAO> clientAddresses, List<ClientDataDAO> clientDatas, List<ClientNoteDAO> clientNotes, long agentId, String agentName, String campaignId, String campaign, String campaignType, String campaignCategory, OperationInquiryDAO operationInquiry, String inquiryState, OperationFlowDAO operationFlow, String flowState, List<OperationActivityDAO> activities, List<OperationScenarioDAO> scenarios, List<OperationDataDAO> datas, String operationCategory, String operationResult, String operationState, long uDate, long cDate, int status) {
+    public OperationDBModel(String id, long clientId, String clientName, String nationalId, String phoneNumber, String emailAddress, String clientCity, String clientCountry, String clientType, List<ClientPhoneDAO> clientPhones, List<ClientEmailDAO> clientEmails, List<ClientAddressDAO> clientAddresses, List<ClientNoteDAO> clientNotes, long agentId, String agentName, String campaignId, String campaign, String campaignType, String campaignCategory, OperationInquiryDAO operationInquiry, String inquiryState, OperationFlowDAO operationFlow, String flowState, List<OperationActivityDAO> activities, List<OperationScenarioDAO> scenarios, List<OperationDataDAO> datas, String operationCategory, String operationResult, String operationState, long uDate, long cDate, int status) {
         this.id = id;
         this.clientId = clientId;
         this.clientName = clientName;
@@ -61,7 +60,6 @@ public class OperationDBModel {
         this.clientPhones = clientPhones;
         this.clientEmails = clientEmails;
         this.clientAddresses = clientAddresses;
-        this.clientDatas = clientDatas;
         this.clientNotes = clientNotes;
         this.agentId = agentId;
         this.agentName = agentName;
@@ -178,14 +176,6 @@ public class OperationDBModel {
 
     public void setClientAddresses(List<ClientAddressDAO> clientAddresses) {
         this.clientAddresses = clientAddresses;
-    }
-
-    public List<ClientDataDAO> getClientDatas() {
-        return clientDatas;
-    }
-
-    public void setClientDatas(List<ClientDataDAO> clientDatas) {
-        this.clientDatas = clientDatas;
     }
 
     public List<ClientNoteDAO> getClientNotes() {
