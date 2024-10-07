@@ -1,6 +1,6 @@
-package com.faas.core.api.framework.operation.manager.remote;
+package com.faas.core.api.framework.operation.manager.remoteapp;
 
-import com.faas.core.api.model.ws.operation.manager.remote.dto.ApiOperationRemoteAppWSDTO;
+import com.faas.core.api.model.ws.operation.manager.remoteapp.dto.ApiOperationRemoteAppWSDTO;
 import com.faas.core.data.db.operation.content.OperationDBModel;
 import com.faas.core.data.db.remoteapp.RemoteAppDBModel;
 import com.faas.core.data.repo.campaign.content.CampaignRepository;
@@ -18,7 +18,7 @@ import java.util.List;
 
 
 @Component
-public class ApiOperationRemoteFramework {
+public class ApiOperationRemoteAppFramework {
 
 
     @Autowired

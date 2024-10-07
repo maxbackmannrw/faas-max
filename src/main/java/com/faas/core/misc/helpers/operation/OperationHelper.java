@@ -15,12 +15,13 @@ import com.faas.core.api.model.ws.operation.manager.channel.message.push.dto.Api
 import com.faas.core.api.model.ws.operation.manager.channel.message.sms.dto.ApiOperationSmsChannelWSDTO;
 import com.faas.core.api.model.ws.operation.manager.channel.message.wapp.dto.ApiOperationWappMessageChannelWSDTO;
 import com.faas.core.api.model.ws.operation.manager.content.dto.ApiOperationAgentWSDTO;
-import com.faas.core.api.model.ws.operation.manager.content.dto.ApiOperationCampaignWSDTO;
+import com.faas.core.api.model.ws.operation.manager.details.dto.ApiOperationCampaignWSDTO;
 import com.faas.core.api.model.ws.operation.manager.content.dto.ApiOperationManagerWSDTO;
 import com.faas.core.data.db.campaign.content.CampaignDBModel;
 import com.faas.core.data.db.campaign.details.scenario.CampaignScenarioDBModel;
 import com.faas.core.data.db.client.content.ClientDBModel;
 import com.faas.core.data.db.client.details.ClientDetailsDBModel;
+import com.faas.core.data.db.client.intel.ClientIntelDBModel;
 import com.faas.core.data.db.operation.content.OperationDBModel;
 import com.faas.core.data.db.operation.content.dao.OperationFlowDAO;
 import com.faas.core.data.db.operation.content.dao.OperationInquiryDAO;
@@ -37,6 +38,7 @@ import com.faas.core.data.repo.campaign.details.agent.CampaignAgentRepository;
 import com.faas.core.data.repo.campaign.details.scenario.CampaignScenarioRepository;
 import com.faas.core.data.repo.client.content.ClientRepository;
 import com.faas.core.data.repo.client.details.ClientDetailsRepository;
+import com.faas.core.data.repo.client.intel.ClientIntelRepository;
 import com.faas.core.data.repo.operation.content.OperationRepository;
 import com.faas.core.data.repo.operation.details.channel.*;
 import com.faas.core.data.repo.user.content.UserRepository;
@@ -65,10 +67,10 @@ public class OperationHelper {
     ClientDetailsRepository clientDetailsRepository;
 
     @Autowired
-    OperationRepository operationRepository;
+    ClientIntelRepository clientIntelRepository;
 
     @Autowired
-    CampaignAgentRepository campaignAgentRepository;
+    OperationRepository operationRepository;
 
     @Autowired
     CampaignRepository campaignRepository;
@@ -283,6 +285,7 @@ public class OperationHelper {
             operationManagerWSDTO.setOperation(operationDBModel);
             operationManagerWSDTO.setOperationAgent(getApiOperationAgentWSDTO(agentDBModel.get(),agentDetailsModels.get(0)));
             operationManagerWSDTO.setOperationClient(getApiOperationClientWSDTO(clientDBModel.get()));
+            operationManagerWSDTO.setOperationClientIntels(getOperationClientIntels(clientDBModel.get()));
             operationManagerWSDTO.setOperationCampaign(getApiOperationCampaignWSDTO(campaignDBModel.get()));
 
             return operationManagerWSDTO;
@@ -310,6 +313,11 @@ public class OperationHelper {
             operationClientWSDTO.setClientDetails(clientDetailsDBModels.get(0));
         }
         return operationClientWSDTO;
+    }
+
+    public List<ClientIntelDBModel> getOperationClientIntels(ClientDBModel clientDBModel) {
+
+        return clientIntelRepository.findByClientId(clientDBModel.getId());
     }
 
     public ApiOperationCampaignWSDTO getApiOperationCampaignWSDTO(CampaignDBModel campaignDBModel) {

@@ -1,22 +1,28 @@
 package com.faas.core.api.model.ws.operation.manager.content.dto;
 
 import com.faas.core.api.model.ws.operation.manager.client.dto.ApiOperationClientWSDTO;
+import com.faas.core.api.model.ws.operation.manager.details.dto.ApiOperationCampaignWSDTO;
+import com.faas.core.data.db.client.intel.ClientIntelDBModel;
 import com.faas.core.data.db.operation.content.OperationDBModel;
+
+import java.util.List;
 
 public class ApiOperationManagerWSDTO {
 
     private OperationDBModel operation;
     private ApiOperationAgentWSDTO operationAgent;
     private ApiOperationClientWSDTO operationClient;
+    private List<ClientIntelDBModel> operationClientIntels;
     private ApiOperationCampaignWSDTO operationCampaign;
 
     public ApiOperationManagerWSDTO() {
     }
 
-    public ApiOperationManagerWSDTO(OperationDBModel operation, ApiOperationAgentWSDTO operationAgent, ApiOperationClientWSDTO operationClient, ApiOperationCampaignWSDTO operationCampaign) {
+    public ApiOperationManagerWSDTO(OperationDBModel operation, ApiOperationAgentWSDTO operationAgent, ApiOperationClientWSDTO operationClient, List<ClientIntelDBModel> operationClientIntels, ApiOperationCampaignWSDTO operationCampaign) {
         this.operation = operation;
         this.operationAgent = operationAgent;
         this.operationClient = operationClient;
+        this.operationClientIntels = operationClientIntels;
         this.operationCampaign = operationCampaign;
     }
 
@@ -42,6 +48,14 @@ public class ApiOperationManagerWSDTO {
 
     public void setOperationClient(ApiOperationClientWSDTO operationClient) {
         this.operationClient = operationClient;
+    }
+
+    public List<ClientIntelDBModel> getOperationClientIntels() {
+        return operationClientIntels;
+    }
+
+    public void setOperationClientIntels(List<ClientIntelDBModel> operationClientIntels) {
+        this.operationClientIntels = operationClientIntels;
     }
 
     public ApiOperationCampaignWSDTO getOperationCampaign() {

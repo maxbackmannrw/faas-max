@@ -1,4 +1,4 @@
-package com.faas.core.api.model.ws.operation.manager.remote.dto;
+package com.faas.core.api.model.ws.operation.manager.remoteapp.dto;
 
 import com.faas.core.data.db.remoteapp.RemoteAppDBModel;
 

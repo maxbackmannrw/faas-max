@@ -1,8 +1,8 @@
-package com.faas.core.api.middleware.operation.manager.remote;
+package com.faas.core.api.middleware.operation.manager.remoteapp;
 
-import com.faas.core.api.framework.operation.manager.remote.ApiOperationRemoteFramework;
-import com.faas.core.api.model.ws.operation.manager.remote.ApiOperationRemoteAppWSModel;
-import com.faas.core.api.model.ws.operation.manager.remote.dto.ApiOperationRemoteAppWSDTO;
+import com.faas.core.api.framework.operation.manager.remoteapp.ApiOperationRemoteAppFramework;
+import com.faas.core.api.model.ws.operation.manager.remoteapp.ApiOperationRemoteAppWSModel;
+import com.faas.core.api.model.ws.operation.manager.remoteapp.dto.ApiOperationRemoteAppWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +13,11 @@ import java.util.List;
 
 
 @Component
-public class ApiOperationRemoteMiddleware {
+public class ApiOperationRemoteAppMiddleware {
 
 
     @Autowired
-    ApiOperationRemoteFramework apiOperationRemoteFramework;
+    ApiOperationRemoteAppFramework apiOperationRemoteAppFramework;
 
 
     public ApiOperationRemoteAppWSModel apiGetOperationRemoteApps(long agentId, String operationId) {
@@ -25,7 +25,7 @@ public class ApiOperationRemoteMiddleware {
         ApiOperationRemoteAppWSModel response = new ApiOperationRemoteAppWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ApiOperationRemoteAppWSDTO> operationRemoteAppWSDTOS = apiOperationRemoteFramework.apiGetOperationClientRemotesService(agentId, operationId);
+        List<ApiOperationRemoteAppWSDTO> operationRemoteAppWSDTOS = apiOperationRemoteAppFramework.apiGetOperationClientRemotesService(agentId, operationId);
         if (operationRemoteAppWSDTOS != null) {
             response.setOperationRemoteApps(operationRemoteAppWSDTOS);
         }
@@ -45,7 +45,7 @@ public class ApiOperationRemoteMiddleware {
         GeneralWSModel general = new GeneralWSModel();
         List<ApiOperationRemoteAppWSDTO> operationRemoteAppWSDTOS = new ArrayList<>();
 
-        ApiOperationRemoteAppWSDTO operationRemoteAppWSDTO = apiOperationRemoteFramework.apiGetOperationClientRemoteService(agentId, operationId, clientRemoteId);
+        ApiOperationRemoteAppWSDTO operationRemoteAppWSDTO = apiOperationRemoteAppFramework.apiGetOperationClientRemoteService(agentId, operationId, clientRemoteId);
         if (operationRemoteAppWSDTO != null) {
             operationRemoteAppWSDTOS.add(operationRemoteAppWSDTO);
         }
