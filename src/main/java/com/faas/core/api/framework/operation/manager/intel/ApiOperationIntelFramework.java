@@ -1,6 +1,6 @@
 package com.faas.core.api.framework.operation.manager.intel;
 
-import com.faas.core.api.model.ws.operation.manager.intel.dto.ApiOperationOSINTWSDTO;
+import com.faas.core.api.model.ws.operation.manager.intel.dto.ApiOperationIntelWSDTO;
 import com.faas.core.misc.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -15,12 +15,12 @@ public class ApiOperationIntelFramework {
     AppUtils appUtils;
 
 
-    public List<ApiOperationOSINTWSDTO> apiGetOperationClientOSINTsService(long agentId, long clientId) {
+    public List<ApiOperationIntelWSDTO> apiGetOperationIntelsService(long agentId, long clientId) {
 
         return null;
     }
 
-    public ApiOperationOSINTWSDTO apiGetOperationClientOSINTService(long agentId, long clientId) {
+    public ApiOperationIntelWSDTO apiGetOperationIntelService(long agentId, long clientId) {
 
         return null;
     }

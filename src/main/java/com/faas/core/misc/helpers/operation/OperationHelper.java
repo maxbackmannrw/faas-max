@@ -137,9 +137,9 @@ public class OperationHelper {
             operationDBModel.setOperationFlow(createOperationFlowDAO(campaignDBModel));
             operationDBModel.setFlowState(AppConstant.READY_STATE);
         }
-        operationDBModel.setActivities(new ArrayList<>());
-        operationDBModel.setScenarios(new ArrayList<>());
-        operationDBModel.setDatas(new ArrayList<>());
+        operationDBModel.setOperationScenarios(new ArrayList<>());
+        operationDBModel.setOperationScenarios(new ArrayList<>());
+        operationDBModel.setOperationDatas(new ArrayList<>());
         operationDBModel.setOperationCategory(campaignDBModel.getCampaignCategory());
         operationDBModel.setOperationResult(AppConstant.NONE);
         operationDBModel.setOperationState(AppConstant.READY_STATE);

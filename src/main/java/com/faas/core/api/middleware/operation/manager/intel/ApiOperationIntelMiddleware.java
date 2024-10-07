@@ -1,8 +1,8 @@
 package com.faas.core.api.middleware.operation.manager.intel;
 
 import com.faas.core.api.framework.operation.manager.intel.ApiOperationIntelFramework;
-import com.faas.core.api.model.ws.operation.manager.intel.ApiOperationOSINTWSModel;
-import com.faas.core.api.model.ws.operation.manager.intel.dto.ApiOperationOSINTWSDTO;
+import com.faas.core.api.model.ws.operation.manager.intel.ApiOperationIntelWSModel;
+import com.faas.core.api.model.ws.operation.manager.intel.dto.ApiOperationIntelWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,14 +20,14 @@ public class ApiOperationIntelMiddleware {
     ApiOperationIntelFramework apiOperationIntelFramework;
 
 
-    public ApiOperationOSINTWSModel apiGetOperationIntels(long agentId, long clientId) {
+    public ApiOperationIntelWSModel apiGetOperationIntels(long agentId, long clientId) {
 
-        ApiOperationOSINTWSModel response = new ApiOperationOSINTWSModel();
+        ApiOperationIntelWSModel response = new ApiOperationIntelWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ApiOperationOSINTWSDTO> operationOSINTWSDTOS = apiOperationIntelFramework.apiGetOperationClientOSINTsService(agentId, clientId);
-        if (operationOSINTWSDTOS != null) {
-            response.setOperationOSINTs(operationOSINTWSDTOS);
+        List<ApiOperationIntelWSDTO> operationIntelWSDTOS = apiOperationIntelFramework.apiGetOperationIntelsService(agentId, clientId);
+        if (operationIntelWSDTOS != null) {
+            response.setOperationIntels(operationIntelWSDTOS);
         }
 
         general.setOperation("apiGetOperationIntels");
@@ -39,18 +39,18 @@ public class ApiOperationIntelMiddleware {
         return response;
     }
 
-    public ApiOperationOSINTWSModel apiGetOperationIntel(long agentId, long clientId) {
+    public ApiOperationIntelWSModel apiGetOperationIntel(long agentId, long clientId) {
 
-        ApiOperationOSINTWSModel response = new ApiOperationOSINTWSModel();
+        ApiOperationIntelWSModel response = new ApiOperationIntelWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ApiOperationOSINTWSDTO> operationOSINTWSDTOS = new ArrayList<>();
+        List<ApiOperationIntelWSDTO> operationIntelWSDTOS = new ArrayList<>();
 
-        ApiOperationOSINTWSDTO operationOSINTWSDTO = apiOperationIntelFramework.apiGetOperationClientOSINTService(agentId, clientId);
-        if (operationOSINTWSDTO != null) {
-            operationOSINTWSDTOS.add(operationOSINTWSDTO);
+        ApiOperationIntelWSDTO operationIntelWSDTO = apiOperationIntelFramework.apiGetOperationIntelService(agentId, clientId);
+        if (operationIntelWSDTO != null) {
+            operationIntelWSDTOS.add(operationIntelWSDTO);
         }
 
-        response.setOperationOSINTs(operationOSINTWSDTOS);
+        response.setOperationIntels(operationIntelWSDTOS);
         general.setOperation("apiGetOperationIntel");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);

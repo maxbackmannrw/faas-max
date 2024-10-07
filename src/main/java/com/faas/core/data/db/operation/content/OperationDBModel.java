@@ -34,9 +34,9 @@ public class OperationDBModel {
     private String inquiryState;
     private OperationFlowDAO operationFlow;
     private String flowState;
-    private List<OperationActivityDAO> activities;
-    private List<OperationScenarioDAO> scenarios;
-    private List<OperationDataDAO> datas;
+    private List<OperationActivityDAO> operationActivities;
+    private List<OperationScenarioDAO> operationScenarios;
+    private List<OperationDataDAO> operationDatas;
     private String operationCategory;
     private String operationResult;
     private String operationState;
@@ -47,7 +47,7 @@ public class OperationDBModel {
     public OperationDBModel() {
     }
 
-    public OperationDBModel(String id, long clientId, String clientName, String nationalId, String phoneNumber, String emailAddress, String clientCity, String clientCountry, String clientType, List<ClientPhoneDAO> clientPhones, List<ClientEmailDAO> clientEmails, List<ClientAddressDAO> clientAddresses, List<ClientNoteDAO> clientNotes, long agentId, String agentName, String campaignId, String campaign, String campaignType, String campaignCategory, OperationInquiryDAO operationInquiry, String inquiryState, OperationFlowDAO operationFlow, String flowState, List<OperationActivityDAO> activities, List<OperationScenarioDAO> scenarios, List<OperationDataDAO> datas, String operationCategory, String operationResult, String operationState, long uDate, long cDate, int status) {
+    public OperationDBModel(String id, long clientId, String clientName, String nationalId, String phoneNumber, String emailAddress, String clientCity, String clientCountry, String clientType, List<ClientPhoneDAO> clientPhones, List<ClientEmailDAO> clientEmails, List<ClientAddressDAO> clientAddresses, List<ClientNoteDAO> clientNotes, long agentId, String agentName, String campaignId, String campaign, String campaignType, String campaignCategory, OperationInquiryDAO operationInquiry, String inquiryState, OperationFlowDAO operationFlow, String flowState, List<OperationActivityDAO> operationActivities, List<OperationScenarioDAO> operationScenarios, List<OperationDataDAO> operationDatas, String operationCategory, String operationResult, String operationState, long uDate, long cDate, int status) {
         this.id = id;
         this.clientId = clientId;
         this.clientName = clientName;
@@ -71,9 +71,9 @@ public class OperationDBModel {
         this.inquiryState = inquiryState;
         this.operationFlow = operationFlow;
         this.flowState = flowState;
-        this.activities = activities;
-        this.scenarios = scenarios;
-        this.datas = datas;
+        this.operationActivities = operationActivities;
+        this.operationScenarios = operationScenarios;
+        this.operationDatas = operationDatas;
         this.operationCategory = operationCategory;
         this.operationResult = operationResult;
         this.operationState = operationState;
@@ -266,28 +266,28 @@ public class OperationDBModel {
         this.flowState = flowState;
     }
 
-    public List<OperationActivityDAO> getActivities() {
-        return activities;
+    public List<OperationActivityDAO> getOperationActivities() {
+        return operationActivities;
     }
 
-    public void setActivities(List<OperationActivityDAO> activities) {
-        this.activities = activities;
+    public void setOperationActivities(List<OperationActivityDAO> operationActivities) {
+        this.operationActivities = operationActivities;
     }
 
-    public List<OperationScenarioDAO> getScenarios() {
-        return scenarios;
+    public List<OperationScenarioDAO> getOperationScenarios() {
+        return operationScenarios;
     }
 
-    public void setScenarios(List<OperationScenarioDAO> scenarios) {
-        this.scenarios = scenarios;
+    public void setOperationScenarios(List<OperationScenarioDAO> operationScenarios) {
+        this.operationScenarios = operationScenarios;
     }
 
-    public List<OperationDataDAO> getDatas() {
-        return datas;
+    public List<OperationDataDAO> getOperationDatas() {
+        return operationDatas;
     }
 
-    public void setDatas(List<OperationDataDAO> datas) {
-        this.datas = datas;
+    public void setOperationDatas(List<OperationDataDAO> operationDatas) {
+        this.operationDatas = operationDatas;
     }
 
     public String getOperationCategory() {
