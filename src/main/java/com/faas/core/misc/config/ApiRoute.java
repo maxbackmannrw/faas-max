@@ -49,13 +49,14 @@ public class ApiRoute {
 
 
     public static final String API_GET_OPERATION_MANAGER = "apigetoperationmanager";
-    public static final String API_START_AGENT_OPERATION = "apistartagentoperation";
-    public static final String API_COMPLETE_AGENT_OPERATION = "apicompleteagentoperation";
-    public static final String API_GET_AGENT_SWITCHABLE_OPERATIONS = "apigetagentswitchableoperations";
-    public static final String API_SWITCH_AGENT_OPERATION = "apiswitchagentoperation";
     public static final String API_GET_OPERATION_CAMPAIGN = "apigetoperationcampaign";
     public static final String API_GET_OPERATION_ACTIVITIES = "apigetoperationactivities";
     public static final String API_GET_OPERATION_ACTIVITY = "apigetoperationactivity";
+
+    public static final String API_START_OPERATION_MANAGER = "apistartoperationmanager";
+    public static final String API_COMPLETE_OPERATION_MANAGER = "apicompleteoperationmanager";
+    public static final String API_GET_SWITCH_OPERATION_MANAGERS = "apigetswitchoperationmanagers";
+    public static final String API_SWITCH_OPERATION_MANAGER = "apiswitchoperationmanager";
 
 
 

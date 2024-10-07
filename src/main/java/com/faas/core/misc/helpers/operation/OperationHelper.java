@@ -285,7 +285,7 @@ public class OperationHelper {
             operationManagerWSDTO.setOperation(operationDBModel);
             operationManagerWSDTO.setOperationAgent(getApiOperationAgentWSDTO(agentDBModel.get(),agentDetailsModels.get(0)));
             operationManagerWSDTO.setOperationClient(getApiOperationClientWSDTO(clientDBModel.get()));
-            operationManagerWSDTO.setOperationClientIntels(getOperationClientIntels(clientDBModel.get()));
+            operationManagerWSDTO.setOperationIntels(getOperationIntels(clientDBModel.get()));
             operationManagerWSDTO.setOperationCampaign(getApiOperationCampaignWSDTO(campaignDBModel.get()));
 
             return operationManagerWSDTO;
@@ -315,7 +315,7 @@ public class OperationHelper {
         return operationClientWSDTO;
     }
 
-    public List<ClientIntelDBModel> getOperationClientIntels(ClientDBModel clientDBModel) {
+    public List<ClientIntelDBModel> getOperationIntels(ClientDBModel clientDBModel) {
 
         return clientIntelRepository.findByClientId(clientDBModel.getId());
     }

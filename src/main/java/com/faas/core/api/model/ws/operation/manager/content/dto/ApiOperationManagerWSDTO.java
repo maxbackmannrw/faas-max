@@ -12,17 +12,17 @@ public class ApiOperationManagerWSDTO {
     private OperationDBModel operation;
     private ApiOperationAgentWSDTO operationAgent;
     private ApiOperationClientWSDTO operationClient;
-    private List<ClientIntelDBModel> operationClientIntels;
+    private List<ClientIntelDBModel> operationIntels;
     private ApiOperationCampaignWSDTO operationCampaign;
 
     public ApiOperationManagerWSDTO() {
     }
 
-    public ApiOperationManagerWSDTO(OperationDBModel operation, ApiOperationAgentWSDTO operationAgent, ApiOperationClientWSDTO operationClient, List<ClientIntelDBModel> operationClientIntels, ApiOperationCampaignWSDTO operationCampaign) {
+    public ApiOperationManagerWSDTO(OperationDBModel operation, ApiOperationAgentWSDTO operationAgent, ApiOperationClientWSDTO operationClient, List<ClientIntelDBModel> operationIntels, ApiOperationCampaignWSDTO operationCampaign) {
         this.operation = operation;
         this.operationAgent = operationAgent;
         this.operationClient = operationClient;
-        this.operationClientIntels = operationClientIntels;
+        this.operationIntels = operationIntels;
         this.operationCampaign = operationCampaign;
     }
 
@@ -50,12 +50,12 @@ public class ApiOperationManagerWSDTO {
         this.operationClient = operationClient;
     }
 
-    public List<ClientIntelDBModel> getOperationClientIntels() {
-        return operationClientIntels;
+    public List<ClientIntelDBModel> getOperationIntels() {
+        return operationIntels;
     }
 
-    public void setOperationClientIntels(List<ClientIntelDBModel> operationClientIntels) {
-        this.operationClientIntels = operationClientIntels;
+    public void setOperationIntels(List<ClientIntelDBModel> operationIntels) {
+        this.operationIntels = operationIntels;
     }
 
     public ApiOperationCampaignWSDTO getOperationCampaign() {

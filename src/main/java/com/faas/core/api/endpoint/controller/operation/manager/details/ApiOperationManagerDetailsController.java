@@ -22,9 +22,9 @@ public class ApiOperationManagerDetailsController {
     ApiOperationManagerDetailsMiddleware apiOperationManagerDetailsMiddleware;
 
 
-    @RequestMapping(value = ApiRoute.API_START_AGENT_OPERATION, method = RequestMethod.POST)
-    public ResponseEntity<?> apiStartAgentOperation(@RequestParam long agentId,
-                                                    @RequestParam String operationId) {
+    @RequestMapping(value = ApiRoute.API_START_OPERATION_MANAGER, method = RequestMethod.POST)
+    public ResponseEntity<?> apiStartOperationManager(@RequestParam long agentId,
+                                                      @RequestParam String operationId) {
 
         ApiOperationWSModel response = apiOperationManagerDetailsMiddleware.apiStartOperationManager(agentId, operationId);
 
@@ -34,10 +34,10 @@ public class ApiOperationManagerDetailsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-    @RequestMapping(value = ApiRoute.API_COMPLETE_AGENT_OPERATION, method = RequestMethod.POST)
-    public ResponseEntity<?> apiCompleteAgentOperation(@RequestParam long agentId,
-                                                       @RequestParam String operationId,
-                                                       @RequestParam String operationResult) {
+    @RequestMapping(value = ApiRoute.API_COMPLETE_OPERATION_MANAGER, method = RequestMethod.POST)
+    public ResponseEntity<?> apiCompleteOperationManager(@RequestParam long agentId,
+                                                         @RequestParam String operationId,
+                                                         @RequestParam String operationResult) {
 
         ApiOperationWSModel response = apiOperationManagerDetailsMiddleware.apiCompleteOperationManager(agentId, operationId, operationResult);
 
@@ -47,9 +47,9 @@ public class ApiOperationManagerDetailsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-    @RequestMapping(value = ApiRoute.API_GET_AGENT_SWITCHABLE_OPERATIONS, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetAgentSwitchableOperations(@RequestParam long agentId,
-                                                             @RequestParam String operationId) {
+    @RequestMapping(value = ApiRoute.API_GET_SWITCH_OPERATION_MANAGERS, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetSwitchOperationManagers(@RequestParam long agentId,
+                                                           @RequestParam String operationId) {
 
         ApiOperationWSModel response = apiOperationManagerDetailsMiddleware.apiGetSwitchOperationManagers(agentId, operationId);
 
@@ -59,10 +59,10 @@ public class ApiOperationManagerDetailsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-    @RequestMapping(value = ApiRoute.API_SWITCH_AGENT_OPERATION, method = RequestMethod.POST)
-    public ResponseEntity<?> apiSwitchAgentOperation(@RequestParam long agentId,
-                                                     @RequestParam String operationId,
-                                                     @RequestParam String selectedId) {
+    @RequestMapping(value = ApiRoute.API_SWITCH_OPERATION_MANAGER, method = RequestMethod.POST)
+    public ResponseEntity<?> apiSwitchOperationManager(@RequestParam long agentId,
+                                                       @RequestParam String operationId,
+                                                       @RequestParam String selectedId) {
 
         ApiOperationWSModel response = apiOperationManagerDetailsMiddleware.apiSwitchOperationManager(agentId, operationId, selectedId);
 
