@@ -37,6 +37,7 @@ public class ApiOperationFramework {
     public ApiAgentOperationWSDTO apiGetAgentOperationListService(long agentId, int reqPage, int reqSize) {
 
         ApiAgentOperationWSDTO agentOperationWSDTO = new ApiAgentOperationWSDTO();
+        agentOperationWSDTO.setActiveOperation(operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationState(agentId,AppConstant.ACTIVE_STATE, PageRequest.of(reqPage,reqSize))));
         agentOperationWSDTO.setInquiryOperation(operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationCategoryAndOperationState(agentId, AppConstant.INQUIRY_OPERATION,AppConstant.READY_STATE, PageRequest.of(reqPage,reqSize))));
         agentOperationWSDTO.setManualOperation(operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationCategoryAndOperationState(agentId, AppConstant.MANUAL_OPERATION,AppConstant.READY_STATE, PageRequest.of(reqPage,reqSize))));
 
@@ -45,11 +46,11 @@ public class ApiOperationFramework {
 
     public ApiOperationListWSDTO apiGetAgentOperationsService(long agentId, String operationState, String operationCategory, int reqPage, int reqSize) {
 
-        Page<OperationDBModel> agentOperationPageModel = operationRepository.findAllByAgentIdAndOperationCategoryAndOperationState(agentId, operationCategory,operationState,PageRequest.of(reqPage,reqSize));
-        if (agentOperationPageModel != null) {
-            return operationHelper.getApiOperationListWSDTO(agentOperationPageModel);
+        if (operationCategory.equalsIgnoreCase(AppConstant.NONE)){
+            return operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationState(agentId,operationState,PageRequest.of(reqPage,reqSize)));
+        }else {
+            return operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationCategoryAndOperationState(agentId, operationCategory,operationState,PageRequest.of(reqPage,reqSize)));
         }
-        return null;
     }
 
     public ApiOperationWSDTO apiGetAgentOperationService(long agentId, String operationId) {
