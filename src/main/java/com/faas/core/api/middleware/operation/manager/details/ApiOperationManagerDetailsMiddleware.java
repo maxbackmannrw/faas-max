@@ -3,8 +3,6 @@ package com.faas.core.api.middleware.operation.manager.details;
 import com.faas.core.api.framework.operation.manager.details.ApiOperationManagerDetailsFramework;
 import com.faas.core.api.model.ws.campaign.details.ApiCampaignDetailsWSModel;
 import com.faas.core.api.model.ws.campaign.details.dto.ApiCampaignDetailsWSDTO;
-import com.faas.core.api.model.ws.operation.content.ApiOperationWSModel;
-import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
 import com.faas.core.api.model.ws.operation.manager.content.ApiOperationActivityWSModel;
 import com.faas.core.api.model.ws.operation.manager.content.dto.ApiOperationActivityWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
@@ -24,19 +22,17 @@ public class ApiOperationManagerDetailsMiddleware {
     ApiOperationManagerDetailsFramework apiOperationManagerDetailsFramework;
 
 
-    public ApiOperationWSModel apiStartOperationManager(long agentId, String operationId) {
+    public ApiCampaignDetailsWSModel apiGetOperationManagerCampaign(long agentId, String operationId) {
 
-        ApiOperationWSModel response = new ApiOperationWSModel();
+        ApiCampaignDetailsWSModel response = new ApiCampaignDetailsWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ApiOperationWSDTO> operationWSDTOS = new ArrayList<>();
 
-        ApiOperationWSDTO operationWSDTO = apiOperationManagerDetailsFramework.apiStartOperationManagerService(agentId, operationId);
-        if (operationWSDTO != null) {
-            operationWSDTOS.add(operationWSDTO);
+        ApiCampaignDetailsWSDTO operationCampaign = apiOperationManagerDetailsFramework.apiGetOperationManagerCampaignService(agentId, operationId);
+        if (operationCampaign != null) {
+            response.setCampaignDetails(operationCampaign);
         }
 
-        response.setOperations(operationWSDTOS);
-        general.setOperation("apiStartOperationManager");
+        general.setOperation("apiGetOperationManagerCampaign");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -45,19 +41,17 @@ public class ApiOperationManagerDetailsMiddleware {
         return response;
     }
 
-    public ApiOperationWSModel apiCompleteOperationManager(long agentId, String operationId, String operationResult) {
+    public ApiOperationActivityWSModel apiGetOperationActivities(long agentId, String operationId) {
 
-        ApiOperationWSModel response = new ApiOperationWSModel();
+        ApiOperationActivityWSModel response = new ApiOperationActivityWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ApiOperationWSDTO> operationWSDTOS = new ArrayList<>();
 
-        ApiOperationWSDTO operationWSDTO = apiOperationManagerDetailsFramework.apiCompleteOperationManagerService(agentId, operationId, operationResult);
-        if (operationWSDTO != null) {
-            operationWSDTOS.add(operationWSDTO);
+        List<ApiOperationActivityWSDTO> operationActivityWSDTOS = apiOperationManagerDetailsFramework.apiGetOperationActivitiesService(agentId, operationId);
+        if (operationActivityWSDTOS != null) {
+            response.setOperationActivities(operationActivityWSDTOS);
         }
 
-        response.setOperations(operationWSDTOS);
-        general.setOperation("apiCompleteOperationManager");
+        general.setOperation("apiGetOperationActivities");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -66,17 +60,19 @@ public class ApiOperationManagerDetailsMiddleware {
         return response;
     }
 
-    public ApiOperationWSModel apiGetSwitchOperationManagers(long agentId, String operationId) {
+    public ApiOperationActivityWSModel apiGetOperationActivity(long agentId, String operationId, String activityId) {
 
-        ApiOperationWSModel response = new ApiOperationWSModel();
+        ApiOperationActivityWSModel response = new ApiOperationActivityWSModel();
         GeneralWSModel general = new GeneralWSModel();
+        List<ApiOperationActivityWSDTO> operationActivityWSDTOS = new ArrayList<>();
 
-        List<ApiOperationWSDTO> operationWSDTOS = apiOperationManagerDetailsFramework.apiGetSwitchOperationManagersService(agentId, operationId);
-        if (operationWSDTOS != null) {
-            response.setOperations(operationWSDTOS);
+        ApiOperationActivityWSDTO operationActivityWSDTO = apiOperationManagerDetailsFramework.apiGetOperationActivityService(agentId, operationId, activityId);
+        if (operationActivityWSDTO != null) {
+            operationActivityWSDTOS.add(operationActivityWSDTO);
         }
 
-        general.setOperation("apiGetSwitchOperations");
+        response.setOperationActivities(operationActivityWSDTOS);
+        general.setOperation("apiGetOperationActivity");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -84,27 +80,5 @@ public class ApiOperationManagerDetailsMiddleware {
 
         return response;
     }
-
-    public ApiOperationWSModel apiSwitchOperationManager(long agentId, String operationId, String selectedId) {
-
-        ApiOperationWSModel response = new ApiOperationWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-        List<ApiOperationWSDTO> operationWSDTOS = new ArrayList<>();
-
-        ApiOperationWSDTO operationWSDTO = apiOperationManagerDetailsFramework.apiSwitchOperationManagerService(agentId, operationId, selectedId);
-        if (operationWSDTO != null) {
-            operationWSDTOS.add(operationWSDTO);
-        }
-
-        response.setOperations(operationWSDTOS);
-        general.setOperation("apiSwitchOperationManager");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
 
 }
