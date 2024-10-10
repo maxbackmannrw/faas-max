@@ -34,7 +34,6 @@ public class OperationDBModel {
     private String inquiryState;
     private OperationFlowDAO operationFlow;
     private String flowState;
-    private List<OperationActivityDAO> operationActivities;
     private List<OperationScenarioDAO> operationScenarios;
     private List<OperationDataDAO> operationDatas;
     private String operationCategory;
@@ -47,7 +46,7 @@ public class OperationDBModel {
     public OperationDBModel() {
     }
 
-    public OperationDBModel(String id, long clientId, String clientName, String nationalId, String phoneNumber, String emailAddress, String clientCity, String clientCountry, String clientType, List<ClientPhoneDAO> clientPhones, List<ClientEmailDAO> clientEmails, List<ClientAddressDAO> clientAddresses, List<ClientNoteDAO> clientNotes, long agentId, String agentName, String campaignId, String campaign, String campaignType, String campaignCategory, OperationInquiryDAO operationInquiry, String inquiryState, OperationFlowDAO operationFlow, String flowState, List<OperationActivityDAO> operationActivities, List<OperationScenarioDAO> operationScenarios, List<OperationDataDAO> operationDatas, String operationCategory, String operationResult, String operationState, long uDate, long cDate, int status) {
+    public OperationDBModel(String id, long clientId, String clientName, String nationalId, String phoneNumber, String emailAddress, String clientCity, String clientCountry, String clientType, List<ClientPhoneDAO> clientPhones, List<ClientEmailDAO> clientEmails, List<ClientAddressDAO> clientAddresses, List<ClientNoteDAO> clientNotes, long agentId, String agentName, String campaignId, String campaign, String campaignType, String campaignCategory, OperationInquiryDAO operationInquiry, String inquiryState, OperationFlowDAO operationFlow, String flowState, List<OperationScenarioDAO> operationScenarios, List<OperationDataDAO> operationDatas, String operationCategory, String operationResult, String operationState, long uDate, long cDate, int status) {
         this.id = id;
         this.clientId = clientId;
         this.clientName = clientName;
@@ -71,7 +70,6 @@ public class OperationDBModel {
         this.inquiryState = inquiryState;
         this.operationFlow = operationFlow;
         this.flowState = flowState;
-        this.operationActivities = operationActivities;
         this.operationScenarios = operationScenarios;
         this.operationDatas = operationDatas;
         this.operationCategory = operationCategory;
@@ -264,14 +262,6 @@ public class OperationDBModel {
 
     public void setFlowState(String flowState) {
         this.flowState = flowState;
-    }
-
-    public List<OperationActivityDAO> getOperationActivities() {
-        return operationActivities;
-    }
-
-    public void setOperationActivities(List<OperationActivityDAO> operationActivities) {
-        this.operationActivities = operationActivities;
     }
 
     public List<OperationScenarioDAO> getOperationScenarios() {

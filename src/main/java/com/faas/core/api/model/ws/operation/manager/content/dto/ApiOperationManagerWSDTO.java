@@ -1,5 +1,6 @@
 package com.faas.core.api.model.ws.operation.manager.content.dto;
 
+import com.faas.core.api.model.ws.operation.manager.activity.dto.ApiOperationActivityWSDTO;
 import com.faas.core.api.model.ws.operation.manager.campaign.dto.ApiOperationCampaignWSDTO;
 import com.faas.core.api.model.ws.operation.manager.client.dto.ApiOperationClientWSDTO;
 import com.faas.core.data.db.client.intel.ClientIntelDBModel;
@@ -11,6 +12,7 @@ public class ApiOperationManagerWSDTO {
 
     private OperationDBModel operation;
     private ApiOperationAgentWSDTO operationAgent;
+    private List<ApiOperationActivityWSDTO>operationActivities;
     private ApiOperationClientWSDTO operationClient;
     private List<ClientIntelDBModel> operationIntels;
     private ApiOperationCampaignWSDTO operationCampaign;
@@ -18,9 +20,10 @@ public class ApiOperationManagerWSDTO {
     public ApiOperationManagerWSDTO() {
     }
 
-    public ApiOperationManagerWSDTO(OperationDBModel operation, ApiOperationAgentWSDTO operationAgent, ApiOperationClientWSDTO operationClient, List<ClientIntelDBModel> operationIntels, ApiOperationCampaignWSDTO operationCampaign) {
+    public ApiOperationManagerWSDTO(OperationDBModel operation, ApiOperationAgentWSDTO operationAgent, List<ApiOperationActivityWSDTO> operationActivities, ApiOperationClientWSDTO operationClient, List<ClientIntelDBModel> operationIntels, ApiOperationCampaignWSDTO operationCampaign) {
         this.operation = operation;
         this.operationAgent = operationAgent;
+        this.operationActivities = operationActivities;
         this.operationClient = operationClient;
         this.operationIntels = operationIntels;
         this.operationCampaign = operationCampaign;
@@ -40,6 +43,14 @@ public class ApiOperationManagerWSDTO {
 
     public void setOperationAgent(ApiOperationAgentWSDTO operationAgent) {
         this.operationAgent = operationAgent;
+    }
+
+    public List<ApiOperationActivityWSDTO> getOperationActivities() {
+        return operationActivities;
+    }
+
+    public void setOperationActivities(List<ApiOperationActivityWSDTO> operationActivities) {
+        this.operationActivities = operationActivities;
     }
 
     public ApiOperationClientWSDTO getOperationClient() {

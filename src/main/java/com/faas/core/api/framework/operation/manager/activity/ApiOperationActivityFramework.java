@@ -5,7 +5,7 @@ import com.faas.core.data.db.operation.content.OperationDBModel;
 import com.faas.core.data.repo.operation.content.OperationRepository;
 import com.faas.core.data.repo.user.content.UserRepository;
 import com.faas.core.misc.config.AppUtils;
-import com.faas.core.misc.helpers.operation.OperationHelper;
+import com.faas.core.misc.helpers.operation.content.OperationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -8,13 +8,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/manager/activity/ApiOperationActivityController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/manager/activity/ApiOperationActivityFramework.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/manager/activity/ApiOperationActivityMiddleware.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/manager/content/ApiOperationManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/manager/content/ApiOperationManagerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/manager/content/ApiOperationManagerFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/manager/content/ApiOperationManagerFramework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/manager/content/ApiOperationManagerMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/manager/content/ApiOperationManagerMiddleware.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/misc/config/ApiRoute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/misc/config/ApiRoute.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/data/db/operation/details/activity/OperationActivityDBModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/data/repo/operation/details/activity/OperationActivityRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/manager/activity/dto/ApiOperationActivityWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/manager/activity/dto/ApiOperationActivityWSDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/manager/content/dto/ApiOperationManagerWSDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/model/ws/operation/manager/content/dto/ApiOperationManagerWSDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/data/db/operation/content/OperationDBModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/data/db/operation/content/OperationDBModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/data/db/operation/content/dao/OperationActivityDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/data/db/operation/content/dao/OperationActivityDataDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/misc/helpers/activity/ActivityHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/misc/helpers/activity/ActivityHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/misc/helpers/operation/OperationHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/misc/helpers/operation/OperationHelper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,11 +141,11 @@
       <recent name="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/scenario/content" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.faas.core.data.repo.operation.details" />
+      <recent name="com.faas.core.data.db.operation.details" />
       <recent name="com.faas.core.api.middleware.operation.manager.activity" />
       <recent name="com.faas.core.api.framework.operation.manager.activity" />
       <recent name="com.faas.core.api.endpoint.controller.operation.manager.activity" />
-      <recent name="com.faas.core.api.middleware.operation.manager.channel.message.content" />
-      <recent name="com.faas.core.api.middleware.operation.manager.channel.call.content" />
     </key>
   </component>
   <component name="RunManager">
@@ -1287,15 +1290,7 @@
       <workItem from="1728514227117" duration="218000" />
       <workItem from="1728514471085" duration="630000" />
       <workItem from="1728515206264" duration="107000" />
-      <workItem from="1728560010696" duration="4800000" />
-    </task>
-    <task id="LOCAL-01017" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1726510800261</created>
-      <option name="number" value="01017" />
-      <option name="presentableId" value="LOCAL-01017" />
-      <option name="project" value="LOCAL" />
-      <updated>1726510800261</updated>
+      <workItem from="1728560010696" duration="5468000" />
     </task>
     <task id="LOCAL-01018" summary="almost finish">
       <option name="closed" value="true" />
@@ -1681,7 +1676,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728590313077</updated>
     </task>
-    <option name="localTasksCounter" value="1066" />
+    <task id="LOCAL-01066" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1728591499380</created>
+      <option name="number" value="01066" />
+      <option name="presentableId" value="LOCAL-01066" />
+      <option name="project" value="LOCAL" />
+      <updated>1728591499380</updated>
+    </task>
+    <option name="localTasksCounter" value="1067" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

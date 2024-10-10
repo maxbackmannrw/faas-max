@@ -10,9 +10,8 @@ import com.faas.core.data.db.user.content.UserDBModel;
 import com.faas.core.data.repo.operation.content.OperationRepository;
 import com.faas.core.data.repo.user.content.UserRepository;
 import com.faas.core.misc.config.AppConstant;
-import com.faas.core.misc.helpers.operation.OperationHelper;
+import com.faas.core.misc.helpers.operation.content.OperationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 

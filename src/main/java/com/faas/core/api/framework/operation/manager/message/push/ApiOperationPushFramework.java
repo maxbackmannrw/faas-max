@@ -15,7 +15,7 @@ import com.faas.core.data.repo.operation.details.channel.OperationPushRepository
 import com.faas.core.misc.config.AppUtils;
 import com.faas.core.misc.handler.channel.push.PushChannelHandler;
 import com.faas.core.misc.helpers.channel.ChannelHelper;
-import com.faas.core.misc.helpers.operation.OperationHelper;
+import com.faas.core.misc.helpers.operation.content.OperationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

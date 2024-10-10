@@ -1,5 +1,6 @@
-package com.faas.core.misc.helpers.operation;
+package com.faas.core.misc.helpers.operation.content;
 
+import com.faas.core.api.model.ws.operation.manager.activity.dto.ApiOperationActivityWSDTO;
 import com.faas.core.api.model.ws.operation.manager.client.dto.ApiOperationClientWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationListWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiValidateOperationWSDTO;
@@ -138,7 +139,6 @@ public class OperationHelper {
             operationDBModel.setOperationFlow(createOperationFlowDAO(campaignDBModel));
             operationDBModel.setFlowState(AppConstant.READY_STATE);
         }
-        operationDBModel.setOperationScenarios(new ArrayList<>());
         operationDBModel.setOperationScenarios(new ArrayList<>());
         operationDBModel.setOperationDatas(new ArrayList<>());
         operationDBModel.setOperationCategory(campaignDBModel.getCampaignCategory());
@@ -283,6 +283,7 @@ public class OperationHelper {
             ApiOperationManagerWSDTO operationManagerWSDTO = new ApiOperationManagerWSDTO();
             operationManagerWSDTO.setOperation(operationDBModel);
             operationManagerWSDTO.setOperationAgent(getApiOperationAgentWSDTO(agentDBModel.get(),agentDetailsModels.get(0)));
+            operationManagerWSDTO.setOperationActivities(getApiOperationActivityWSDTOS(operationDBModel));
             operationManagerWSDTO.setOperationClient(getApiOperationClientWSDTO(clientDBModel.get()));
             operationManagerWSDTO.setOperationIntels(getOperationIntels(clientDBModel.get()));
             operationManagerWSDTO.setOperationCampaign(getApiOperationCampaignWSDTO(campaignDBModel.get()));
@@ -301,6 +302,13 @@ public class OperationHelper {
         operationAgentWSDTO.setActiveOperation(operationRepository.countByAgentIdAndOperationState(agentDBModel.getId(),AppConstant.ACTIVE_STATE));
 
         return operationAgentWSDTO;
+    }
+
+    public List<ApiOperationActivityWSDTO> getApiOperationActivityWSDTOS(OperationDBModel operationDBModel) {
+
+        List<ApiOperationActivityWSDTO>operationActivityWSDTOS = new ArrayList<>();
+
+        return operationActivityWSDTOS;
     }
 
     public ApiOperationClientWSDTO getApiOperationClientWSDTO(ClientDBModel clientDBModel) {
