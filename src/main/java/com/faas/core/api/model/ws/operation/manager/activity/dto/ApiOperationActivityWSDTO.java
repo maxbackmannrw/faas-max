@@ -1,4 +1,4 @@
-package com.faas.core.api.model.ws.operation.manager.content.dto;
+package com.faas.core.api.model.ws.operation.manager.activity.dto;
 
 import com.faas.core.data.db.operation.content.dao.OperationActivityDAO;
 

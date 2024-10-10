@@ -1,6 +1,6 @@
-package com.faas.core.api.model.ws.operation.manager.content;
+package com.faas.core.api.model.ws.operation.manager.activity;
 
-import com.faas.core.api.model.ws.operation.manager.content.dto.ApiOperationActivityWSDTO;
+import com.faas.core.api.model.ws.operation.manager.activity.dto.ApiOperationActivityWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 
 import java.util.List;
