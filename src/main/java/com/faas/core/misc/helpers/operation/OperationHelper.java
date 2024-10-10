@@ -1,6 +1,6 @@
 package com.faas.core.misc.helpers.operation;
 
-import com.faas.core.api.model.ws.operation.manager.client.content.dto.ApiOperationClientWSDTO;
+import com.faas.core.api.model.ws.operation.manager.client.dto.ApiOperationClientWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationListWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiValidateOperationWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
@@ -15,7 +15,7 @@ import com.faas.core.api.model.ws.operation.manager.message.push.dto.ApiOperatio
 import com.faas.core.api.model.ws.operation.manager.message.sms.dto.ApiOperationSmsChannelWSDTO;
 import com.faas.core.api.model.ws.operation.manager.message.wapp.dto.ApiOperationWappMessageChannelWSDTO;
 import com.faas.core.api.model.ws.operation.manager.content.dto.ApiOperationAgentWSDTO;
-import com.faas.core.api.model.ws.operation.manager.content.dto.ApiOperationCampaignWSDTO;
+import com.faas.core.api.model.ws.operation.manager.campaign.dto.ApiOperationCampaignWSDTO;
 import com.faas.core.api.model.ws.operation.manager.content.dto.ApiOperationManagerWSDTO;
 import com.faas.core.data.db.campaign.content.CampaignDBModel;
 import com.faas.core.data.db.campaign.details.scenario.CampaignScenarioDBModel;

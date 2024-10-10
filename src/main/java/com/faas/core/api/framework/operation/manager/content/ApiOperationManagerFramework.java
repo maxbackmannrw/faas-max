@@ -86,10 +86,6 @@ public class ApiOperationManagerFramework {
         return null;
     }
 
-    public ApiCampaignDetailsWSDTO apiGetOperationCampaignService(long agentId, String operationId) {
-
-        return null;
-    }
 
     public List<ApiOperationActivityWSDTO> apiGetOperationActivitiesService(long agentId, String operationId) {
 
