@@ -47,5 +47,4 @@ public class ApiOperationActivityController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-
 }
