@@ -1,14 +1,17 @@
-package com.faas.core.data.db.operation.details.activity;
+package com.faas.core.data.db.utilz;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "operation_activity_table")
-public class OperationActivityDBModel {
+@Table(name = "activity_table")
+public class ActivityDBModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @Column(name = "operation_id")
+    private String operationId;
 
     @Column(name = "activity")
     private String activity;
@@ -22,14 +25,8 @@ public class OperationActivityDBModel {
     @Column(name = "object_id")
     private String objectId;
 
-    @Column(name = "operation_id")
-    private String operationId;
-
     @Column(name = "agent_id")
     private long agentId;
-
-    @Column(name = "campaign_id")
-    private String campaignId;
 
     @Column(name = "u_date")
     private long uDate;
@@ -40,18 +37,17 @@ public class OperationActivityDBModel {
     @Column(name = "status")
     private int status;
 
-    public OperationActivityDBModel() {
+    public ActivityDBModel() {
     }
 
-    public OperationActivityDBModel(long id, String activity, String activityDesc, String activityType, String objectId, String operationId, long agentId, String campaignId, long uDate, long cDate, int status) {
+    public ActivityDBModel(long id, String operationId, String activity, String activityDesc, String activityType, String objectId, long agentId, long uDate, long cDate, int status) {
         this.id = id;
+        this.operationId = operationId;
         this.activity = activity;
         this.activityDesc = activityDesc;
         this.activityType = activityType;
         this.objectId = objectId;
-        this.operationId = operationId;
         this.agentId = agentId;
-        this.campaignId = campaignId;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
@@ -63,6 +59,14 @@ public class OperationActivityDBModel {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getOperationId() {
+        return operationId;
+    }
+
+    public void setOperationId(String operationId) {
+        this.operationId = operationId;
     }
 
     public String getActivity() {
@@ -97,28 +101,12 @@ public class OperationActivityDBModel {
         this.objectId = objectId;
     }
 
-    public String getOperationId() {
-        return operationId;
-    }
-
-    public void setOperationId(String operationId) {
-        this.operationId = operationId;
-    }
-
     public long getAgentId() {
         return agentId;
     }
 
     public void setAgentId(long agentId) {
         this.agentId = agentId;
-    }
-
-    public String getCampaignId() {
-        return campaignId;
-    }
-
-    public void setCampaignId(String campaignId) {
-        this.campaignId = campaignId;
     }
 
     public long getuDate() {
