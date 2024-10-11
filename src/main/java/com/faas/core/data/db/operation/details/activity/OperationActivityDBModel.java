@@ -3,24 +3,33 @@ package com.faas.core.data.db.operation.details.activity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "client_intel_table")
+@Table(name = "operation_activity_table")
 public class OperationActivityDBModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "client_id")
-    private long clientId;
+    @Column(name = "activity")
+    private String activity;
 
-    @Column(name = "intel_type")
-    private String intelType;
+    @Column(name = "activity_desc")
+    private String activityDesc;
 
-    @Column(name = "intel_key")
-    private String intelKey;
+    @Column(name = "activity_type")
+    private String activityType;
 
-    @Column(name = "intel_value")
-    private String intelValue;
+    @Column(name = "object_id")
+    private String objectId;
+
+    @Column(name = "operation_id")
+    private String operationId;
+
+    @Column(name = "agent_id")
+    private long agentId;
+
+    @Column(name = "campaign_id")
+    private String campaignId;
 
     @Column(name = "u_date")
     private long uDate;
@@ -34,12 +43,15 @@ public class OperationActivityDBModel {
     public OperationActivityDBModel() {
     }
 
-    public OperationActivityDBModel(long id, long clientId, String intelType, String intelKey, String intelValue, long uDate, long cDate, int status) {
+    public OperationActivityDBModel(long id, String activity, String activityDesc, String activityType, String objectId, String operationId, long agentId, String campaignId, long uDate, long cDate, int status) {
         this.id = id;
-        this.clientId = clientId;
-        this.intelType = intelType;
-        this.intelKey = intelKey;
-        this.intelValue = intelValue;
+        this.activity = activity;
+        this.activityDesc = activityDesc;
+        this.activityType = activityType;
+        this.objectId = objectId;
+        this.operationId = operationId;
+        this.agentId = agentId;
+        this.campaignId = campaignId;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
@@ -53,36 +65,60 @@ public class OperationActivityDBModel {
         this.id = id;
     }
 
-    public long getClientId() {
-        return clientId;
+    public String getActivity() {
+        return activity;
     }
 
-    public void setClientId(long clientId) {
-        this.clientId = clientId;
+    public void setActivity(String activity) {
+        this.activity = activity;
     }
 
-    public String getIntelType() {
-        return intelType;
+    public String getActivityDesc() {
+        return activityDesc;
     }
 
-    public void setIntelType(String intelType) {
-        this.intelType = intelType;
+    public void setActivityDesc(String activityDesc) {
+        this.activityDesc = activityDesc;
     }
 
-    public String getIntelKey() {
-        return intelKey;
+    public String getActivityType() {
+        return activityType;
     }
 
-    public void setIntelKey(String intelKey) {
-        this.intelKey = intelKey;
+    public void setActivityType(String activityType) {
+        this.activityType = activityType;
     }
 
-    public String getIntelValue() {
-        return intelValue;
+    public String getObjectId() {
+        return objectId;
     }
 
-    public void setIntelValue(String intelValue) {
-        this.intelValue = intelValue;
+    public void setObjectId(String objectId) {
+        this.objectId = objectId;
+    }
+
+    public String getOperationId() {
+        return operationId;
+    }
+
+    public void setOperationId(String operationId) {
+        this.operationId = operationId;
+    }
+
+    public long getAgentId() {
+        return agentId;
+    }
+
+    public void setAgentId(long agentId) {
+        this.agentId = agentId;
+    }
+
+    public String getCampaignId() {
+        return campaignId;
+    }
+
+    public void setCampaignId(String campaignId) {
+        this.campaignId = campaignId;
     }
 
     public long getuDate() {
