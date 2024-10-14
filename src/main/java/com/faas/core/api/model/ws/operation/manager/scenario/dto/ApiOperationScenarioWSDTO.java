@@ -1,4 +1,4 @@
-package com.faas.core.api.model.ws.operation.manager.campaign.dto;
+package com.faas.core.api.model.ws.operation.manager.scenario.dto;
 
 import com.faas.core.data.db.operation.content.dao.OperationScenarioDAO;
 

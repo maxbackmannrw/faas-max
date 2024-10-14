@@ -1,6 +1,8 @@
 package com.faas.core.api.middleware.operation.manager.content;
 
 import com.faas.core.api.framework.operation.manager.content.ApiOperationManagerFramework;
+import com.faas.core.api.model.ws.campaign.details.ApiCampaignDetailsWSModel;
+import com.faas.core.api.model.ws.campaign.details.dto.ApiCampaignDetailsWSDTO;
 import com.faas.core.api.model.ws.operation.content.ApiOperationWSModel;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
 import com.faas.core.api.model.ws.operation.manager.call.content.ApiOperationCallChannelWSModel;
@@ -36,6 +38,25 @@ public class ApiOperationManagerMiddleware {
         }
 
         general.setOperation("apiGetOperationManager");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public ApiCampaignDetailsWSModel apiGetOperationCampaign(long agentId, String operationId) {
+
+        ApiCampaignDetailsWSModel response = new ApiCampaignDetailsWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        ApiCampaignDetailsWSDTO operationCampaign = apiOperationManagerFramework.apiGetOperationCampaignService(agentId, operationId);
+        if (operationCampaign != null) {
+            response.setCampaignDetails(operationCampaign);
+        }
+
+        general.setOperation("apiGetOperationCampaign");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

@@ -1,6 +1,6 @@
-package com.faas.core.api.model.ws.operation.manager.campaign;
+package com.faas.core.api.model.ws.operation.manager.scenario;
 
-import com.faas.core.api.model.ws.operation.manager.campaign.dto.ApiOperationScenarioWSDTO;
+import com.faas.core.api.model.ws.operation.manager.scenario.dto.ApiOperationScenarioWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 
 import java.util.List;

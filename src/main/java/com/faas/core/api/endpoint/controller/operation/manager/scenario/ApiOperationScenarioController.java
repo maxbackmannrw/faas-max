@@ -1,8 +1,7 @@
-package com.faas.core.api.endpoint.controller.operation.manager.campaign;
+package com.faas.core.api.endpoint.controller.operation.manager.scenario;
 
-import com.faas.core.api.middleware.operation.manager.campaign.ApiOperationCampaignMiddleware;
-import com.faas.core.api.model.ws.campaign.details.ApiCampaignDetailsWSModel;
-import com.faas.core.api.model.ws.operation.manager.campaign.ApiOperationScenarioWSModel;
+import com.faas.core.api.middleware.operation.manager.scenario.ApiOperationScenarioMiddleware;
+import com.faas.core.api.model.ws.operation.manager.scenario.ApiOperationScenarioWSModel;
 import com.faas.core.misc.config.ApiRoute;
 import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,31 +13,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping(value = AppConstant.API_VERSION + "/api/operation/manager/campaign/")
-public class ApiOperationCampaignController {
+@RequestMapping(value = AppConstant.API_VERSION + "/api/operation/manager/scenario/")
+public class ApiOperationScenarioController {
 
 
     @Autowired
-    ApiOperationCampaignMiddleware apiOperationCampaignMiddleware;
+    ApiOperationScenarioMiddleware apiOperationScenarioMiddleware;
 
-
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION_CAMPAIGN, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperationCampaign(@RequestParam long agentId,
-                                                     @RequestParam String operationId) {
-
-        ApiCampaignDetailsWSModel response = apiOperationCampaignMiddleware.apiGetOperationCampaign(agentId, operationId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
 
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_SCENARIOS, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationScenarios(@RequestParam long agentId,
                                                       @RequestParam String operationId) {
 
-        ApiOperationScenarioWSModel response = apiOperationCampaignMiddleware.apiGetOperationScenarios(agentId, operationId);
+        ApiOperationScenarioWSModel response = apiOperationScenarioMiddleware.apiGetOperationScenarios(agentId, operationId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -51,7 +38,7 @@ public class ApiOperationCampaignController {
                                                      @RequestParam String operationId,
                                                      @RequestParam String executeId) {
 
-        ApiOperationScenarioWSModel response = apiOperationCampaignMiddleware.apiGetOperationScenario(agentId, operationId, executeId);
+        ApiOperationScenarioWSModel response = apiOperationScenarioMiddleware.apiGetOperationScenario(agentId, operationId, executeId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -64,7 +51,7 @@ public class ApiOperationCampaignController {
                                                          @RequestParam String operationId,
                                                          @RequestParam String scenarioId) {
 
-        ApiOperationScenarioWSModel response = apiOperationCampaignMiddleware.apiOperationExecuteScenario(agentId, operationId, scenarioId);
+        ApiOperationScenarioWSModel response = apiOperationScenarioMiddleware.apiOperationExecuteScenario(agentId, operationId, scenarioId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -77,7 +64,7 @@ public class ApiOperationCampaignController {
                                                         @RequestParam String operationId,
                                                         @RequestParam String executeId) {
 
-        ApiOperationScenarioWSModel response = apiOperationCampaignMiddleware.apiUpdateOperationScenario(agentId, operationId, executeId);
+        ApiOperationScenarioWSModel response = apiOperationScenarioMiddleware.apiUpdateOperationScenario(agentId, operationId, executeId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -90,7 +77,7 @@ public class ApiOperationCampaignController {
                                                         @RequestParam String operationId,
                                                         @RequestParam String executeId) {
 
-        ApiOperationScenarioWSModel response = apiOperationCampaignMiddleware.apiRemoveOperationScenario(agentId, operationId, executeId);
+        ApiOperationScenarioWSModel response = apiOperationScenarioMiddleware.apiRemoveOperationScenario(agentId, operationId, executeId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

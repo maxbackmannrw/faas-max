@@ -1,5 +1,6 @@
 package com.faas.core.api.framework.operation.manager.content;
 
+import com.faas.core.api.model.ws.campaign.details.dto.ApiCampaignDetailsWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
 import com.faas.core.api.model.ws.operation.manager.call.content.dto.ApiOperationCallChannelWSDTO;
 import com.faas.core.api.model.ws.operation.manager.content.dto.ApiOperationManagerWSDTO;
@@ -46,6 +47,11 @@ public class ApiOperationManagerFramework {
         if (!operationDBModels.isEmpty()) {
             return operationHelper.getApiOperationManagerWSDTO(operationDBModels.get(0));
         }
+        return null;
+    }
+
+    public ApiCampaignDetailsWSDTO apiGetOperationCampaignService(long agentId, String operationId) {
+
         return null;
     }
 

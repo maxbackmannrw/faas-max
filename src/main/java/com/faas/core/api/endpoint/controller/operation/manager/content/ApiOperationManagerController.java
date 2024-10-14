@@ -1,6 +1,7 @@
 package com.faas.core.api.endpoint.controller.operation.manager.content;
 
 import com.faas.core.api.middleware.operation.manager.content.ApiOperationManagerMiddleware;
+import com.faas.core.api.model.ws.campaign.details.ApiCampaignDetailsWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiOperationWSModel;
 import com.faas.core.api.model.ws.operation.manager.call.content.ApiOperationCallChannelWSModel;
 import com.faas.core.api.model.ws.operation.manager.content.ApiOperationManagerWSModel;
@@ -29,6 +30,18 @@ public class ApiOperationManagerController {
                                                     @RequestParam String operationId) {
 
         ApiOperationManagerWSModel response = operationManagerMiddleware.apiGetOperationManager(agentId, operationId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_CAMPAIGN, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationCampaign(@RequestParam long agentId,
+                                                     @RequestParam String operationId) {
+
+        ApiCampaignDetailsWSModel response = operationManagerMiddleware.apiGetOperationCampaign(agentId, operationId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
