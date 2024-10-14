@@ -331,6 +331,7 @@ public class OperationHelper {
 
         ApiOperationCampaignWSDTO operationCampaignWSDTO = new ApiOperationCampaignWSDTO();
         operationCampaignWSDTO.setCampaign(campaignDBModel);
+        operationCampaignWSDTO.setCampaignScenarios(new ArrayList<>());
         List<CampaignScenarioDBModel> campaignScenarios = campaignScenarioRepository.findByCampaignId(campaignDBModel.getId());
         if (!campaignScenarios.isEmpty()) {
             operationCampaignWSDTO.setCampaignScenarios(campaignScenarios);
