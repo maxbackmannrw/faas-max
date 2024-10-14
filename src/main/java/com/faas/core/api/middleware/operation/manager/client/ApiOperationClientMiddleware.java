@@ -4,8 +4,8 @@ import com.faas.core.api.framework.operation.manager.client.ApiOperationClientFr
 import com.faas.core.api.model.ws.operation.manager.client.ApiOperationClientWSModel;
 import com.faas.core.api.model.ws.operation.manager.client.dto.ApiOperationClientWSDTO;
 import com.faas.core.api.model.ws.operation.manager.client.ApiOperationNoteWSModel;
-import com.faas.core.api.model.ws.operation.manager.client.dto.ApiOperationNoteWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
+import com.faas.core.data.db.client.details.dao.ClientNoteDAO;
 import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -46,9 +46,9 @@ public class ApiOperationClientMiddleware {
         ApiOperationNoteWSModel response = new ApiOperationNoteWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ApiOperationNoteWSDTO> operationNoteWSDTOS = apiOperationClientFramework.apiGetOperationNotesService(agentId, operationId);
-        if (operationNoteWSDTOS != null) {
-            response.setOperationNotes(operationNoteWSDTOS);
+        List<ClientNoteDAO> operationNotes = apiOperationClientFramework.apiGetOperationNotesService(agentId, operationId);
+        if (operationNotes != null) {
+            response.setOperationNotes(operationNotes);
         }
 
         general.setOperation("apiGetOperationNotes");
@@ -64,14 +64,14 @@ public class ApiOperationClientMiddleware {
 
         ApiOperationNoteWSModel response = new ApiOperationNoteWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ApiOperationNoteWSDTO> operationNoteWSDTOS = new ArrayList<>();
+        List<ClientNoteDAO> operationNotes = new ArrayList<>();
 
-        ApiOperationNoteWSDTO operationNoteWSDTO = apiOperationClientFramework.apiGetOperationNoteService(agentId, operationId, noteId);
-        if (operationNoteWSDTO != null) {
-            operationNoteWSDTOS.add(operationNoteWSDTO);
+        ClientNoteDAO operationNote = apiOperationClientFramework.apiGetOperationNoteService(agentId, operationId, noteId);
+        if (operationNote != null) {
+            operationNotes.add(operationNote);
         }
 
-        response.setOperationNotes(operationNoteWSDTOS);
+        response.setOperationNotes(operationNotes);
         general.setOperation("apiGetOperationNote");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -85,14 +85,14 @@ public class ApiOperationClientMiddleware {
 
         ApiOperationNoteWSModel response = new ApiOperationNoteWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ApiOperationNoteWSDTO> operationNoteWSDTOS = new ArrayList<>();
+        List<ClientNoteDAO> operationNotes = new ArrayList<>();
 
-        ApiOperationNoteWSDTO operationNoteWSDTO = apiOperationClientFramework.apiCreateOperationNoteService(agentId, operationId, noteTitle, noteBody);
-        if (operationNoteWSDTO != null) {
-            operationNoteWSDTOS.add(operationNoteWSDTO);
+        ClientNoteDAO operationNote = apiOperationClientFramework.apiCreateOperationNoteService(agentId, operationId, noteTitle, noteBody);
+        if (operationNote != null) {
+            operationNotes.add(operationNote);
         }
 
-        response.setOperationNotes(operationNoteWSDTOS);
+        response.setOperationNotes(operationNotes);
         general.setOperation("apiCreateOperationNote");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -106,14 +106,14 @@ public class ApiOperationClientMiddleware {
 
         ApiOperationNoteWSModel response = new ApiOperationNoteWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ApiOperationNoteWSDTO> operationNoteWSDTOS = new ArrayList<>();
+        List<ClientNoteDAO> operationNotes = new ArrayList<>();
 
-        ApiOperationNoteWSDTO operationNoteWSDTO = apiOperationClientFramework.apiUpdateOperationNoteService(agentId, operationId, noteId, noteTitle, noteBody);
-        if (operationNoteWSDTO != null) {
-            operationNoteWSDTOS.add(operationNoteWSDTO);
+        ClientNoteDAO operationNote = apiOperationClientFramework.apiUpdateOperationNoteService(agentId, operationId, noteId, noteTitle, noteBody);
+        if (operationNote != null) {
+            operationNotes.add(operationNote);
         }
 
-        response.setOperationNotes(operationNoteWSDTOS);
+        response.setOperationNotes(operationNotes);
         general.setOperation("apiUpdateOperationNote");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
@@ -127,14 +127,14 @@ public class ApiOperationClientMiddleware {
 
         ApiOperationNoteWSModel response = new ApiOperationNoteWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ApiOperationNoteWSDTO> operationNoteWSDTOS = new ArrayList<>();
+        List<ClientNoteDAO> operationNotes = new ArrayList<>();
 
-        ApiOperationNoteWSDTO operationNoteWSDTO = apiOperationClientFramework.apiRemoveOperationNoteService(agentId, operationId, noteId);
-        if (operationNoteWSDTO != null) {
-            operationNoteWSDTOS.add(operationNoteWSDTO);
+        ClientNoteDAO operationNote = apiOperationClientFramework.apiRemoveOperationNoteService(agentId, operationId, noteId);
+        if (operationNote != null) {
+            operationNotes.add(operationNote);
         }
 
-        response.setOperationNotes(operationNoteWSDTOS);
+        response.setOperationNotes(operationNotes);
         general.setOperation("apiRemoveOperationNote");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);

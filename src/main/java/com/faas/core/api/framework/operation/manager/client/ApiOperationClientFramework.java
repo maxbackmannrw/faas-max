@@ -1,7 +1,6 @@
 package com.faas.core.api.framework.operation.manager.client;
 
 import com.faas.core.api.model.ws.operation.manager.client.dto.ApiOperationClientWSDTO;
-import com.faas.core.api.model.ws.operation.manager.client.dto.ApiOperationNoteWSDTO;
 import com.faas.core.data.db.client.content.ClientDBModel;
 import com.faas.core.data.db.client.details.ClientDetailsDBModel;
 import com.faas.core.data.db.client.details.dao.ClientNoteDAO;
@@ -50,22 +49,22 @@ public class ApiOperationClientFramework {
         return null;
     }
 
-    public List<ApiOperationNoteWSDTO> apiGetOperationNotesService(long agentId, String operationId) {
+    public List<ClientNoteDAO> apiGetOperationNotesService(long agentId, String operationId) {
 
-        List<ApiOperationNoteWSDTO> operationNoteWSDTOS = new ArrayList<>();
+        List<ClientNoteDAO> operationNotes = new ArrayList<>();
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
         if (!operationDBModels.isEmpty()) {
             List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(operationDBModels.get(0).getClientId());
             if (!clientDetailsDBModels.isEmpty() && clientDetailsDBModels.get(0).getClientNotes() != null) {
                 for (int i = 0; i < clientDetailsDBModels.get(0).getClientNotes().size(); i++) {
-                    operationNoteWSDTOS.add(new ApiOperationNoteWSDTO(clientDetailsDBModels.get(0).getClientNotes().get(i)));
+                    operationNotes.add(clientDetailsDBModels.get(0).getClientNotes().get(i));
                 }
             }
         }
-        return operationNoteWSDTOS;
+        return operationNotes;
     }
 
-    public ApiOperationNoteWSDTO apiGetOperationNoteService(long agentId, String operationId, String noteId) {
+    public ClientNoteDAO apiGetOperationNoteService(long agentId, String operationId, String noteId) {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
         if (!operationDBModels.isEmpty()) {
@@ -73,7 +72,7 @@ public class ApiOperationClientFramework {
             if (!clientDetailsDBModels.isEmpty() && clientDetailsDBModels.get(0).getClientNotes() != null) {
                 for (int i = 0; i < clientDetailsDBModels.get(0).getClientNotes().size(); i++) {
                     if (clientDetailsDBModels.get(0).getClientNotes().get(i).getId().equalsIgnoreCase(noteId)) {
-                        return new ApiOperationNoteWSDTO(clientDetailsDBModels.get(0).getClientNotes().get(i));
+                        return clientDetailsDBModels.get(0).getClientNotes().get(i);
                     }
                 }
             }
@@ -81,7 +80,7 @@ public class ApiOperationClientFramework {
         return null;
     }
 
-    public ApiOperationNoteWSDTO apiCreateOperationNoteService(long agentId, String operationId, String noteTitle, String noteBody) {
+    public ClientNoteDAO apiCreateOperationNoteService(long agentId, String operationId, String noteTitle, String noteBody) {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
         if (!operationDBModels.isEmpty()) {
@@ -101,13 +100,13 @@ public class ApiOperationClientFramework {
                 clientDetailsDBModels.get(0).setClientNotes(clientDetailsDBModels.get(0).getClientNotes());
                 clientDetailsRepository.save(clientDetailsDBModels.get(0));
 
-                return new ApiOperationNoteWSDTO(operationNote);
+                return operationNote;
             }
         }
         return null;
     }
 
-    public ApiOperationNoteWSDTO apiUpdateOperationNoteService(long agentId, String operationId, String noteId, String noteTitle, String noteBody) {
+    public ClientNoteDAO apiUpdateOperationNoteService(long agentId, String operationId, String noteId, String noteTitle, String noteBody) {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
         if (!operationDBModels.isEmpty()) {
@@ -124,7 +123,7 @@ public class ApiOperationClientFramework {
                         clientDetailsDBModels.get(0).setClientNotes(clientDetailsDBModels.get(0).getClientNotes());
                         clientDetailsRepository.save(clientDetailsDBModels.get(0));
 
-                        return new ApiOperationNoteWSDTO(clientDetailsDBModels.get(0).getClientNotes().get(i));
+                        return clientDetailsDBModels.get(0).getClientNotes().get(i);
                     }
                 }
             }
@@ -132,7 +131,7 @@ public class ApiOperationClientFramework {
         return null;
     }
 
-    public ApiOperationNoteWSDTO apiRemoveOperationNoteService(long agentId, String operationId, String noteId) {
+    public ClientNoteDAO apiRemoveOperationNoteService(long agentId, String operationId, String noteId) {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
         if (!operationDBModels.isEmpty()) {
@@ -147,7 +146,7 @@ public class ApiOperationClientFramework {
                         clientDetailsDBModels.get(0).setuDate(appUtils.getCurrentTimeStamp());
                         clientDetailsRepository.save(clientDetailsDBModels.get(0));
 
-                        return new ApiOperationNoteWSDTO(operationNote);
+                        return operationNote;
                     }
                 }
             }
