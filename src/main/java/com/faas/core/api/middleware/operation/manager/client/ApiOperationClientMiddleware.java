@@ -22,17 +22,17 @@ public class ApiOperationClientMiddleware {
     ApiOperationClientFramework apiOperationClientFramework;
 
 
-    public ApiOperationClientWSModel apiGetClient(long agentId, long clientId) {
+    public ApiOperationClientWSModel apiGetOperationClient(long agentId, long clientId) {
 
         ApiOperationClientWSModel response = new ApiOperationClientWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiOperationClientWSDTO clientWSDTO = apiOperationClientFramework.apiGetClientService(agentId, clientId);
+        ApiOperationClientWSDTO clientWSDTO = apiOperationClientFramework.apiGetOperationClientService(agentId, clientId);
         if (clientWSDTO != null) {
             response.setClient(clientWSDTO);
         }
 
-        general.setOperation("apiGetClient");
+        general.setOperation("apiGetOperationClient");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -81,13 +81,13 @@ public class ApiOperationClientMiddleware {
         return response;
     }
 
-    public ApiOperationNoteWSModel apiCreateOperationNote(long agentId, String operationId, String noteTitle, String noteText, String noteAsset) {
+    public ApiOperationNoteWSModel apiCreateOperationNote(long agentId, String operationId, String noteTitle, String noteText) {
 
         ApiOperationNoteWSModel response = new ApiOperationNoteWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ApiOperationNoteWSDTO> operationNoteWSDTOS = new ArrayList<>();
 
-        ApiOperationNoteWSDTO operationNoteWSDTO = apiOperationClientFramework.apiCreateOperationNoteService(agentId, operationId, noteTitle, noteText, noteAsset);
+        ApiOperationNoteWSDTO operationNoteWSDTO = apiOperationClientFramework.apiCreateOperationNoteService(agentId, operationId, noteTitle, noteText);
         if (operationNoteWSDTO != null) {
             operationNoteWSDTOS.add(operationNoteWSDTO);
         }
@@ -102,13 +102,13 @@ public class ApiOperationClientMiddleware {
         return response;
     }
 
-    public ApiOperationNoteWSModel apiUpdateOperationNote(long agentId, String operationId, String noteId, String noteTitle, String noteText, String noteAsset) {
+    public ApiOperationNoteWSModel apiUpdateOperationNote(long agentId, String operationId, String noteId, String noteTitle, String noteText) {
 
         ApiOperationNoteWSModel response = new ApiOperationNoteWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ApiOperationNoteWSDTO> operationNoteWSDTOS = new ArrayList<>();
 
-        ApiOperationNoteWSDTO operationNoteWSDTO = apiOperationClientFramework.apiUpdateOperationNoteService(agentId, operationId, noteId, noteTitle, noteText, noteAsset);
+        ApiOperationNoteWSDTO operationNoteWSDTO = apiOperationClientFramework.apiUpdateOperationNoteService(agentId, operationId, noteId, noteTitle, noteText);
         if (operationNoteWSDTO != null) {
             operationNoteWSDTOS.add(operationNoteWSDTO);
         }

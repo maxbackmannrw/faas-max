@@ -34,7 +34,7 @@ public class ApiOperationClientFramework {
     AppUtils appUtils;
 
 
-    public ApiOperationClientWSDTO apiGetClientService(long agentId, long clientId) {
+    public ApiOperationClientWSDTO apiGetOperationClientService(long agentId, long clientId) {
 
         if (operationRepository.existsByClientIdAndAgentId(clientId, agentId)) {
             Optional<ClientDBModel> clientDBModel = clientRepository.findById(clientId);
@@ -81,7 +81,7 @@ public class ApiOperationClientFramework {
         return null;
     }
 
-    public ApiOperationNoteWSDTO apiCreateOperationNoteService(long agentId, String operationId, String noteTitle, String noteText, String noteAsset) {
+    public ApiOperationNoteWSDTO apiCreateOperationNoteService(long agentId, String operationId, String noteTitle, String noteText) {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
         if (!operationDBModels.isEmpty()) {
@@ -93,7 +93,6 @@ public class ApiOperationClientFramework {
                 operationNote.setCreatorId(agentId);
                 operationNote.setNoteTitle(noteTitle);
                 operationNote.setNoteText(noteText);
-                operationNote.setNoteAsset(noteAsset);
                 operationNote.setuDate(appUtils.getCurrentTimeStamp());
                 operationNote.setcDate(appUtils.getCurrentTimeStamp());
                 operationNote.setStatus(1);
@@ -108,7 +107,7 @@ public class ApiOperationClientFramework {
         return null;
     }
 
-    public ApiOperationNoteWSDTO apiUpdateOperationNoteService(long agentId, String operationId, String noteId, String noteTitle, String noteText, String noteAsset) {
+    public ApiOperationNoteWSDTO apiUpdateOperationNoteService(long agentId, String operationId, String noteId, String noteTitle, String noteText) {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
         if (!operationDBModels.isEmpty()) {
@@ -119,7 +118,7 @@ public class ApiOperationClientFramework {
 
                         clientDetailsDBModels.get(0).getClientNotes().get(i).setNoteTitle(noteTitle);
                         clientDetailsDBModels.get(0).getClientNotes().get(i).setNoteText(noteText);
-                        clientDetailsDBModels.get(0).getClientNotes().get(i).setNoteAsset(noteAsset);
+                        clientDetailsDBModels.get(0).getClientNotes().get(i).setuDate(appUtils.getCurrentTimeStamp());
 
                         clientDetailsDBModels.get(0).getClientNotes().get(i).setuDate(appUtils.getCurrentTimeStamp());
                         clientDetailsDBModels.get(0).setClientNotes(clientDetailsDBModels.get(0).getClientNotes());

@@ -2,7 +2,9 @@ package com.faas.core.api.endpoint.controller.operation.manager.content;
 
 import com.faas.core.api.middleware.operation.manager.content.ApiOperationManagerMiddleware;
 import com.faas.core.api.model.ws.operation.content.ApiOperationWSModel;
+import com.faas.core.api.model.ws.operation.manager.call.content.ApiOperationCallChannelWSModel;
 import com.faas.core.api.model.ws.operation.manager.content.ApiOperationManagerWSModel;
+import com.faas.core.api.model.ws.operation.manager.message.content.ApiOperationMessageChannelWSModel;
 import com.faas.core.misc.config.ApiRoute;
 import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,6 +85,32 @@ public class ApiOperationManagerController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
+
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_CALL_CHANNEL, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationCallChannel(@RequestParam long agentId,
+                                                        @RequestParam String operationId) {
+
+        ApiOperationCallChannelWSModel response = operationManagerMiddleware.apiGetOperationCallChannel(agentId, operationId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_MESSAGE_CHANNEL, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationMessageChannel(@RequestParam long agentId,
+                                                           @RequestParam String operationId) {
+
+        ApiOperationMessageChannelWSModel response = operationManagerMiddleware.apiGetOperationMessageChannel(agentId, operationId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
 
 
 
