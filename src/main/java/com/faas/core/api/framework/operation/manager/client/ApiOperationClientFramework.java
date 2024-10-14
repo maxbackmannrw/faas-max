@@ -81,7 +81,7 @@ public class ApiOperationClientFramework {
         return null;
     }
 
-    public ApiOperationNoteWSDTO apiCreateOperationNoteService(long agentId, String operationId, String noteTitle, String noteText) {
+    public ApiOperationNoteWSDTO apiCreateOperationNoteService(long agentId, String operationId, String noteTitle, String noteBody) {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
         if (!operationDBModels.isEmpty()) {
@@ -92,7 +92,7 @@ public class ApiOperationClientFramework {
                 operationNote.setId(appUtils.generateUUID());
                 operationNote.setCreatorId(agentId);
                 operationNote.setNoteTitle(noteTitle);
-                operationNote.setNoteText(noteText);
+                operationNote.setNoteBody(noteBody);
                 operationNote.setuDate(appUtils.getCurrentTimeStamp());
                 operationNote.setcDate(appUtils.getCurrentTimeStamp());
                 operationNote.setStatus(1);
@@ -107,7 +107,7 @@ public class ApiOperationClientFramework {
         return null;
     }
 
-    public ApiOperationNoteWSDTO apiUpdateOperationNoteService(long agentId, String operationId, String noteId, String noteTitle, String noteText) {
+    public ApiOperationNoteWSDTO apiUpdateOperationNoteService(long agentId, String operationId, String noteId, String noteTitle, String noteBody) {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
         if (!operationDBModels.isEmpty()) {
@@ -117,7 +117,7 @@ public class ApiOperationClientFramework {
                     if (clientDetailsDBModels.get(0).getClientNotes().get(i).getId().equalsIgnoreCase(noteId)) {
 
                         clientDetailsDBModels.get(0).getClientNotes().get(i).setNoteTitle(noteTitle);
-                        clientDetailsDBModels.get(0).getClientNotes().get(i).setNoteText(noteText);
+                        clientDetailsDBModels.get(0).getClientNotes().get(i).setNoteBody(noteBody);
                         clientDetailsDBModels.get(0).getClientNotes().get(i).setuDate(appUtils.getCurrentTimeStamp());
 
                         clientDetailsDBModels.get(0).getClientNotes().get(i).setuDate(appUtils.getCurrentTimeStamp());

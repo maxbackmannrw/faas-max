@@ -64,9 +64,9 @@ public class ApiOperationClientController {
     public ResponseEntity<?> apiCreateOperationNote(@RequestParam long agentId,
                                                     @RequestParam String operationId,
                                                     @RequestParam String noteTitle,
-                                                    @RequestParam String noteText) {
+                                                    @RequestParam String noteBody) {
 
-        ApiOperationNoteWSModel response = apiOperationClientMiddleware.apiCreateOperationNote(agentId, operationId, noteTitle, noteText);
+        ApiOperationNoteWSModel response = apiOperationClientMiddleware.apiCreateOperationNote(agentId, operationId, noteTitle, noteBody);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -79,9 +79,9 @@ public class ApiOperationClientController {
                                                     @RequestParam String operationId,
                                                     @RequestParam String noteId,
                                                     @RequestParam String noteTitle,
-                                                    @RequestParam String noteText) {
+                                                    @RequestParam String noteBody) {
 
-        ApiOperationNoteWSModel response = apiOperationClientMiddleware.apiUpdateOperationNote(agentId, operationId, noteId, noteTitle, noteText);
+        ApiOperationNoteWSModel response = apiOperationClientMiddleware.apiUpdateOperationNote(agentId, operationId, noteId, noteTitle, noteBody);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

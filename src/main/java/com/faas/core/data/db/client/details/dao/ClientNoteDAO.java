@@ -5,7 +5,7 @@ public class ClientNoteDAO {
     private String id;
     private long creatorId;
     private String noteTitle;
-    private String noteText;
+    private String noteBody;
     private long uDate;
     private long cDate;
     private int status;
@@ -13,11 +13,11 @@ public class ClientNoteDAO {
     public ClientNoteDAO() {
     }
 
-    public ClientNoteDAO(String id, long creatorId, String noteTitle, String noteText, long uDate, long cDate, int status) {
+    public ClientNoteDAO(String id, long creatorId, String noteTitle, String noteBody, long uDate, long cDate, int status) {
         this.id = id;
         this.creatorId = creatorId;
         this.noteTitle = noteTitle;
-        this.noteText = noteText;
+        this.noteBody = noteBody;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
@@ -47,12 +47,12 @@ public class ClientNoteDAO {
         this.noteTitle = noteTitle;
     }
 
-    public String getNoteText() {
-        return noteText;
+    public String getNoteBody() {
+        return noteBody;
     }
 
-    public void setNoteText(String noteText) {
-        this.noteText = noteText;
+    public void setNoteBody(String noteBody) {
+        this.noteBody = noteBody;
     }
 
     public long getuDate() {
