@@ -46,25 +46,6 @@ public class ApiOperationManagerMiddleware {
         return response;
     }
 
-    public ApiCampaignDetailsWSModel apiGetOperationCampaign(long agentId, String operationId) {
-
-        ApiCampaignDetailsWSModel response = new ApiCampaignDetailsWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-        ApiCampaignDetailsWSDTO operationCampaign = apiOperationManagerFramework.apiGetOperationCampaignService(agentId, operationId);
-        if (operationCampaign != null) {
-            response.setCampaignDetails(operationCampaign);
-        }
-
-        general.setOperation("apiGetOperationCampaign");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
     public ApiOperationWSModel apiStartOperation(long agentId, String operationId) {
 
         ApiOperationWSModel response = new ApiOperationWSModel();

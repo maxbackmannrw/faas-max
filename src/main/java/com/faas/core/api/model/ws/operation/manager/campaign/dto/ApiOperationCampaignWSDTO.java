@@ -1,4 +1,4 @@
-package com.faas.core.api.model.ws.operation.manager.content.dto;
+package com.faas.core.api.model.ws.operation.manager.campaign.dto;
 
 import com.faas.core.data.db.campaign.content.CampaignDBModel;
 import com.faas.core.data.db.campaign.details.scenario.CampaignScenarioDBModel;

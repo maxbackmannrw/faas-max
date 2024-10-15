@@ -50,11 +50,6 @@ public class ApiOperationManagerFramework {
         return null;
     }
 
-    public ApiCampaignDetailsWSDTO apiGetOperationCampaignService(long agentId, String operationId) {
-
-        return null;
-    }
-
     public ApiOperationWSDTO apiStartOperationService(long agentId, String operationId) {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
