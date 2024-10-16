@@ -61,7 +61,11 @@ public class ApiDashboardFramework {
 
     public ApiOperationListWSDTO apiGetDashOperationsService(long agentId,String operationCategory,String operationState,int reqPage,int reqSize) {
 
-        return operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationCategoryAndOperationState(agentId, operationCategory,operationState, PageRequest.of(reqPage, reqSize)));
+        if(operationCategory.equalsIgnoreCase(AppConstant.NONE)){
+            return operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationState(agentId,operationState, PageRequest.of(reqPage, reqSize)));
+        }else{
+            return operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationCategoryAndOperationState(agentId, operationCategory,operationState, PageRequest.of(reqPage, reqSize)));
+        }
     }
 
     public ApiOperationWSDTO apiGetDashOperationService(long agentId,String operationId) {
