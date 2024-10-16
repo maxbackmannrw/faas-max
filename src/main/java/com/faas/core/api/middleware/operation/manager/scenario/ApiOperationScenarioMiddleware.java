@@ -59,7 +59,7 @@ public class ApiOperationScenarioMiddleware {
         return response;
     }
 
-    public ApiOperationScenarioWSModel apiOperationExecuteScenario(long agentId, String operationId, String scenarioId) {
+    public ApiOperationScenarioWSModel apiCreateOperationScenario(long agentId, String operationId, String scenarioId) {
 
         ApiOperationScenarioWSModel response = new ApiOperationScenarioWSModel();
         GeneralWSModel general = new GeneralWSModel();
@@ -71,7 +71,7 @@ public class ApiOperationScenarioMiddleware {
         }
 
         response.setOperationScenarios(scenarioExecutionWSDTOS);
-        general.setOperation("apiOperationExecuteScenario");
+        general.setOperation("apiCreateOperationScenario");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

@@ -29,7 +29,6 @@ public class ApiRoute {
 
 
 
-
     public static final String API_GET_AGENT_OPERATIONS = "apigetagentoperations";
     public static final String API_GET_OPERATION_LIST = "apigetoperationlist";
     public static final String API_GET_OPERATION = "apigetoperation";
@@ -66,16 +65,14 @@ public class ApiRoute {
     public static final String API_GET_OPERATION_INTEL = "apigetoperationintel";
 
 
-
     public static final String API_GET_OPERATION_SCENARIOS = "apigetoperationscenarios";
     public static final String API_GET_OPERATION_SCENARIO = "apigetoperationscenario";
-    public static final String API_OPERATION_EXECUTE_SCENARIO = "apioperationexecutescenario";
+    public static final String API_CREATE_OPERATION_SCENARIO = "apicreateoperationscenario";
     public static final String API_UPDATE_OPERATION_SCENARIO = "apiupdateoperationscenario";
     public static final String API_REMOVE_OPERATION_SCENARIO = "apiremoveoperationscenario";
 
     public static final String API_GET_OPERATION_REMOTE_APPS = "apigetoperationremoteapps";
     public static final String API_GET_OPERATION_REMOTE_APP = "apigetoperationremoteapp";
-
 
 
     public static final String API_GET_OPERATION_CALL_CHANNEL = "apigetoperationcallchannel";

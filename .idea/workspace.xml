@@ -9,7 +9,9 @@
   <component name="ChangeListManager">
     <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/manager/content/ApiOperationManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/manager/content/ApiOperationManagerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/manager/scenario/ApiOperationScenarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/endpoint/controller/operation/manager/scenario/ApiOperationScenarioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/manager/scenario/ApiOperationScenarioMiddleware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/middleware/operation/manager/scenario/ApiOperationScenarioMiddleware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/misc/config/ApiRoute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/misc/config/ApiRoute.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -1293,15 +1295,9 @@
       <workItem from="1729005845799" duration="569000" />
       <workItem from="1729015135460" duration="2329000" />
       <workItem from="1729037896662" duration="248000" />
-      <workItem from="1729079103631" duration="9530000" />
-    </task>
-    <task id="LOCAL-01034" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1727206780805</created>
-      <option name="number" value="01034" />
-      <option name="presentableId" value="LOCAL-01034" />
-      <option name="project" value="LOCAL" />
-      <updated>1727206780805</updated>
+      <workItem from="1729079103631" duration="11766000" />
+      <workItem from="1729113693924" duration="194000" />
+      <workItem from="1729114939487" duration="284000" />
     </task>
     <task id="LOCAL-01035" summary="almost finish">
       <option name="closed" value="true" />
@@ -1687,7 +1683,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729091408882</updated>
     </task>
-    <option name="localTasksCounter" value="1083" />
+    <task id="LOCAL-01083" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1729101719846</created>
+      <option name="number" value="01083" />
+      <option name="presentableId" value="LOCAL-01083" />
+      <option name="project" value="LOCAL" />
+      <updated>1729101719846</updated>
+    </task>
+    <option name="localTasksCounter" value="1084" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
