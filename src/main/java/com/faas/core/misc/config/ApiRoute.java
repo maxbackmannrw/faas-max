@@ -38,13 +38,13 @@ public class ApiRoute {
 
 
 
-    public static final String API_GET_AGENT_OPERATION_LIST = "apigetagentoperationlist";
     public static final String API_GET_AGENT_OPERATIONS = "apigetagentoperations";
-    public static final String API_GET_AGENT_OPERATION = "apigetagentoperation";
-    public static final String API_UPDATE_AGENT_OPERATION = "apiupdateagentoperation";
-    public static final String API_REMOVE_AGENT_OPERATION = "apiremoveagentoperation";
-    public static final String API_VALIDATE_AGENT_OPERATION = "apivalidateagentoperation";
-    public static final String API_GET_AGENT_OPERATIONS_SUMMARY = "apigetagentoperationssummary";
+    public static final String API_GET_OPERATION_LIST = "apigetoperationlist";
+    public static final String API_GET_OPERATION = "apigetoperation";
+    public static final String API_UPDATE_OPERATION = "apiupdateoperation";
+    public static final String API_REMOVE_OPERATION = "apiremoveoperation";
+    public static final String API_VALIDATE_OPERATION = "apivalidateaoperation";
+    public static final String API_GET_OPERATIONS_SUMMARY = "apigetoperationssummary";
 
 
     public static final String API_GET_OPERATION_MANAGER = "apigetoperationmanager";

@@ -33,7 +33,7 @@ public class ApiOperationFramework {
     OperationRepository operationRepository;
 
 
-    public ApiAgentOperationWSDTO apiGetAgentOperationListService(long agentId, int reqPage, int reqSize) {
+    public ApiAgentOperationWSDTO apiGetAgentOperationsService(long agentId, int reqPage, int reqSize) {
 
         ApiAgentOperationWSDTO agentOperationWSDTO = new ApiAgentOperationWSDTO();
         agentOperationWSDTO.setActiveOperation(operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationState(agentId,AppConstant.ACTIVE_STATE, PageRequest.of(reqPage,reqSize))));
@@ -43,7 +43,7 @@ public class ApiOperationFramework {
         return agentOperationWSDTO;
     }
 
-    public ApiOperationListWSDTO apiGetAgentOperationsService(long agentId, String operationState, String operationCategory, int reqPage, int reqSize) {
+    public ApiOperationListWSDTO apiGetOperationListService(long agentId, String operationState, String operationCategory, int reqPage, int reqSize) {
 
         if (operationCategory.equalsIgnoreCase(AppConstant.NONE)){
             return operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndOperationState(agentId,operationState,PageRequest.of(reqPage,reqSize)));
@@ -52,7 +52,7 @@ public class ApiOperationFramework {
         }
     }
 
-    public ApiOperationWSDTO apiGetAgentOperationService(long agentId, String operationId) {
+    public ApiOperationWSDTO apiGetOperationService(long agentId, String operationId) {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId,agentId);
         if (!operationDBModels.isEmpty()) {
@@ -61,17 +61,17 @@ public class ApiOperationFramework {
         return null;
     }
 
-    public ApiOperationWSDTO apiUpdateAgentOperationService(long agentId, String operationId, String operationState) {
+    public ApiOperationWSDTO apiUpdateOperationService(long agentId, String operationId, String operationState) {
 
         return null;
     }
 
-    public ApiOperationWSDTO apiRemoveAgentOperationService(long agentId, String operationId) {
+    public ApiOperationWSDTO apiRemoveOperationService(long agentId, String operationId) {
 
         return null;
     }
 
-    public ApiValidateOperationWSDTO apiValidateAgentOperationService(long agentId, String operationId) {
+    public ApiValidateOperationWSDTO apiValidateOperationService(long agentId, String operationId) {
 
         Optional<UserDBModel> userDBModel = userRepository.findById(agentId);
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
@@ -82,7 +82,7 @@ public class ApiOperationFramework {
         return null;
     }
 
-    public List<ApiSummaryWSDTO> apiGetAgentOperationsSummaryService(long agentId) {
+    public List<ApiSummaryWSDTO> apiGetOperationsSummaryService(long agentId) {
 
         List<ApiSummaryWSDTO> agentOperationSummary = new ArrayList<>();
         agentOperationSummary.add(new ApiSummaryWSDTO(AppConstant.AGENT_ACTIVE_OPERATION_SUMMARY, String.valueOf(operationRepository.countByAgentIdAndOperationState(agentId, AppConstant.ACTIVE_STATE))));
