@@ -34,7 +34,7 @@ public class ApiCampaignFramework {
     CampaignAgentRepository campaignAgentRepository;
 
 
-    public ApiCampaignListWSDTO apiGetAgentCampaignListService(long agentId) {
+    public ApiCampaignListWSDTO apiGetCampaignListService(long agentId) {
 
         ApiCampaignListWSDTO agentCampaignList = new ApiCampaignListWSDTO();
         List<ApiCampaignWSDTO> agentManualCampaigns = new ArrayList<>();
@@ -58,7 +58,7 @@ public class ApiCampaignFramework {
         return agentCampaignList;
     }
 
-    public List<ApiCampaignWSDTO> apiGetAgentCampaignsService(long agentId,String campaignCategory) {
+    public List<ApiCampaignWSDTO> apiGetCampaignsService(long agentId,String campaignCategory) {
 
         List<ApiCampaignWSDTO> agentCampaigns = new ArrayList<>();
         List<CampaignAgentDBModel> campaignAgents = campaignAgentRepository.findByAgentIdAndAgentState(agentId,AppConstant.ACTIVE_STATE);
@@ -71,7 +71,7 @@ public class ApiCampaignFramework {
         return agentCampaigns;
     }
 
-    public ApiCampaignWSDTO apiGetAgentCampaignService(long agentId, String campaignId) {
+    public ApiCampaignWSDTO apiGetCampaignService(long agentId, String campaignId) {
 
         List<CampaignAgentDBModel> campaignAgentDBModels = campaignAgentRepository.findByCampaignIdAndAgentIdAndAgentState(campaignId,agentId,AppConstant.ACTIVE_STATE);
         List<CampaignDBModel> campaignDBModels = campaignRepository.findByIdAndCampaignState(campaignId,AppConstant.ACTIVE_CAMPAIGN);
@@ -81,7 +81,7 @@ public class ApiCampaignFramework {
         return null;
     }
 
-    public List<ApiSummaryWSDTO> apiGetAgentCampaignsSummaryService(long agentId) {
+    public List<ApiSummaryWSDTO> apiGetCampaignsSummaryService(long agentId) {
 
         List<ApiSummaryWSDTO> agentCampaignSummary = new ArrayList<>();
         agentCampaignSummary.add(new ApiSummaryWSDTO(AppConstant.AGENT_ACTIVE_OPERATION_SUMMARY, String.valueOf(operationRepository.countByAgentIdAndOperationState(agentId, AppConstant.ACTIVE_STATE))));

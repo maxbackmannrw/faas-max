@@ -23,17 +23,17 @@ public class ApiCampaignMiddleware {
     ApiCampaignFramework apiCampaignFramework;
 
 
-    public ApiCampaignListWSModel apiGetAgentCampaignList(long agentId) {
+    public ApiCampaignListWSModel apiGetCampaignList(long agentId) {
 
         ApiCampaignListWSModel response = new ApiCampaignListWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiCampaignListWSDTO agentCampaignList = apiCampaignFramework.apiGetAgentCampaignListService(agentId);
+        ApiCampaignListWSDTO agentCampaignList = apiCampaignFramework.apiGetCampaignListService(agentId);
         if (agentCampaignList != null) {
             response.setCampaignList(agentCampaignList);
         }
 
-        general.setOperation("apiGetAgentCampaignList");
+        general.setOperation("apiGetCampaignList");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -42,17 +42,17 @@ public class ApiCampaignMiddleware {
         return response;
     }
 
-    public ApiCampaignWSModel apiGetAgentCampaigns(long agentId,String campaignCategory) {
+    public ApiCampaignWSModel apiGetCampaigns(long agentId,String campaignCategory) {
 
         ApiCampaignWSModel response = new ApiCampaignWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ApiCampaignWSDTO> campaignWSDTOS = apiCampaignFramework.apiGetAgentCampaignsService(agentId,campaignCategory);
+        List<ApiCampaignWSDTO> campaignWSDTOS = apiCampaignFramework.apiGetCampaignsService(agentId,campaignCategory);
         if (campaignWSDTOS != null) {
             response.setCampaigns(campaignWSDTOS);
         }
 
-        general.setOperation("apiGetAgentCampaigns");
+        general.setOperation("apiGetCampaigns");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -61,19 +61,19 @@ public class ApiCampaignMiddleware {
         return response;
     }
 
-    public ApiCampaignWSModel apiGetAgentCampaign(long agentId, String campaignId) {
+    public ApiCampaignWSModel apiGetCampaign(long agentId, String campaignId) {
 
         ApiCampaignWSModel response = new ApiCampaignWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ApiCampaignWSDTO> campaignWSDTOS = new ArrayList<>();
 
-        ApiCampaignWSDTO campaignWSDTO = apiCampaignFramework.apiGetAgentCampaignService(agentId, campaignId);
+        ApiCampaignWSDTO campaignWSDTO = apiCampaignFramework.apiGetCampaignService(agentId, campaignId);
         if (campaignWSDTO != null) {
             campaignWSDTOS.add(campaignWSDTO);
         }
 
         response.setCampaigns(campaignWSDTOS);
-        general.setOperation("apiGetAgentCampaign");
+        general.setOperation("apiGetCampaign");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -82,17 +82,17 @@ public class ApiCampaignMiddleware {
         return response;
     }
 
-    public ApiSummaryWSModel apiGetAgentCampaignsSummary(long agentId) {
+    public ApiSummaryWSModel apiGetCampaignsSummary(long agentId) {
 
         ApiSummaryWSModel response = new ApiSummaryWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ApiSummaryWSDTO> campaignSummary = apiCampaignFramework.apiGetAgentCampaignsSummaryService(agentId);
+        List<ApiSummaryWSDTO> campaignSummary = apiCampaignFramework.apiGetCampaignsSummaryService(agentId);
         if (campaignSummary != null) {
             response.setSummaries(campaignSummary);
         }
 
-        general.setOperation("apiGetAgentCampaignsSummary");
+        general.setOperation("apiGetCampaignsSummary");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

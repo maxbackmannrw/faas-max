@@ -55,25 +55,25 @@ public class ApiCampaignDetailsFramework {
     CampaignRemoteRepository campaignRemoteRepository;
 
 
-    public ApiCampaignDetailsWSDTO apiGetAgentCampaignDetailsService(long agentId, String campaignId) {
+    public ApiCampaignDetailsWSDTO apiGetCampaignDetailsService(long agentId, String campaignId) {
 
         List<CampaignDBModel> campaignDBModels = campaignRepository.findByIdAndCampaignState(campaignId,AppConstant.ACTIVE_CAMPAIGN);
         List<CampaignAgentDBModel> campaignAgentDBModels = campaignAgentRepository.findByCampaignIdAndAgentIdAndAgentState(campaignId,agentId,AppConstant.ACTIVE_STATE);
         if (!campaignDBModels.isEmpty() && !campaignAgentDBModels.isEmpty()){
 
-            ApiCampaignDetailsWSDTO agentCampaignDetails = new ApiCampaignDetailsWSDTO();
-            agentCampaignDetails.setCampaign(campaignHelper.getApiCampaignWSDTO(agentId,campaignDBModels.get(0)));
-            agentCampaignDetails.setCampaignScenarios(campaignScenarioRepository.findByCampaignId(campaignId));
-            agentCampaignDetails.setCampaignRemotes(campaignRemoteRepository.findByCampaignId(campaignId));
-            agentCampaignDetails.setReadyOperation(operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndCampaignIdAndOperationState(agentId,campaignId,AppConstant.READY_STATE, PageRequest.of(0,20 ))));
-            agentCampaignDetails.setActiveOperation(operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndCampaignIdAndOperationState(agentId,campaignId,AppConstant.ACTIVE_STATE, PageRequest.of(0,20 ))));
+            ApiCampaignDetailsWSDTO campaignDetailsWSDTO = new ApiCampaignDetailsWSDTO();
+            campaignDetailsWSDTO.setCampaign(campaignHelper.getApiCampaignWSDTO(agentId,campaignDBModels.get(0)));
+            campaignDetailsWSDTO.setCampaignScenarios(campaignScenarioRepository.findByCampaignId(campaignId));
+            campaignDetailsWSDTO.setCampaignRemotes(campaignRemoteRepository.findByCampaignId(campaignId));
+            campaignDetailsWSDTO.setReadyOperation(operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndCampaignIdAndOperationState(agentId,campaignId,AppConstant.READY_STATE, PageRequest.of(0,20 ))));
+            campaignDetailsWSDTO.setActiveOperation(operationHelper.getApiOperationListWSDTO(operationRepository.findAllByAgentIdAndCampaignIdAndOperationState(agentId,campaignId,AppConstant.ACTIVE_STATE, PageRequest.of(0,20 ))));
 
-            return agentCampaignDetails;
+            return campaignDetailsWSDTO;
         }
         return null;
     }
 
-    public ApiOperationListWSDTO apiGetAgentCampaignOperationsService(long agentId, String campaignId, String operationState, int reqPage, int reqSize) {
+    public ApiOperationListWSDTO apiGetCampaignOperationsService(long agentId, String campaignId, String operationState, int reqPage, int reqSize) {
 
         List<CampaignDBModel> campaignDBModels = campaignRepository.findByIdAndCampaignState(campaignId,AppConstant.ACTIVE_CAMPAIGN);
         List<CampaignAgentDBModel> campaignAgentDBModels = campaignAgentRepository.findByCampaignIdAndAgentIdAndAgentState(campaignId,agentId,AppConstant.ACTIVE_STATE);
@@ -83,7 +83,7 @@ public class ApiCampaignDetailsFramework {
         return null;
     }
 
-    public ApiOperationWSDTO apiGetAgentCampaignOperationService(long agentId, String operationId) {
+    public ApiOperationWSDTO apiGetCampaignOperationService(long agentId, String operationId) {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
         if (!operationDBModels.isEmpty()) {
@@ -92,7 +92,7 @@ public class ApiCampaignDetailsFramework {
         return null;
     }
 
-    public ApiValidateOperationWSDTO apiValidateAgentCampaignOperationService(long agentId, String operationId) {
+    public ApiValidateOperationWSDTO apiValidateCampaignOperationService(long agentId, String operationId) {
 
         Optional<UserDBModel> userDBModel = userRepository.findById(agentId);
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
@@ -103,14 +103,14 @@ public class ApiCampaignDetailsFramework {
         return null;
     }
 
-    public List<ApiSummaryWSDTO> apiGetAgentCampaignDetailsSummaryService(long agentId, String campaignId) {
+    public List<ApiSummaryWSDTO> apiGetCampaignDetailsSummaryService(long agentId, String campaignId) {
 
-        List<ApiSummaryWSDTO> agentCampaignDetailsSummary = new ArrayList<>();
-        agentCampaignDetailsSummary.add(new ApiSummaryWSDTO(AppConstant.AGENT_ACTIVE_OPERATION_SUMMARY, String.valueOf(operationRepository.countByAgentIdAndCampaignIdAndOperationState(agentId, campaignId, AppConstant.ACTIVE_STATE))));
-        agentCampaignDetailsSummary.add(new ApiSummaryWSDTO(AppConstant.AGENT_READY_OPERATION_SUMMARY, String.valueOf(operationRepository.countByAgentIdAndCampaignIdAndOperationState(agentId, campaignId, AppConstant.READY_STATE))));
-        agentCampaignDetailsSummary.add(new ApiSummaryWSDTO(AppConstant.AGENT_TOTAL_OPERATION_SUMMARY, String.valueOf(operationRepository.countByAgentIdAndCampaignId(agentId, campaignId))));
+        List<ApiSummaryWSDTO> campaignDetailsSummary = new ArrayList<>();
+        campaignDetailsSummary.add(new ApiSummaryWSDTO(AppConstant.AGENT_ACTIVE_OPERATION_SUMMARY, String.valueOf(operationRepository.countByAgentIdAndCampaignIdAndOperationState(agentId, campaignId, AppConstant.ACTIVE_STATE))));
+        campaignDetailsSummary.add(new ApiSummaryWSDTO(AppConstant.AGENT_READY_OPERATION_SUMMARY, String.valueOf(operationRepository.countByAgentIdAndCampaignIdAndOperationState(agentId, campaignId, AppConstant.READY_STATE))));
+        campaignDetailsSummary.add(new ApiSummaryWSDTO(AppConstant.AGENT_TOTAL_OPERATION_SUMMARY, String.valueOf(operationRepository.countByAgentIdAndCampaignId(agentId, campaignId))));
 
-        return agentCampaignDetailsSummary;
+        return campaignDetailsSummary;
     }
 
 
