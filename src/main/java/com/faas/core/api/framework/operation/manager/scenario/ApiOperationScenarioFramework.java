@@ -12,7 +12,6 @@ import java.util.List;
 @Component
 public class ApiOperationScenarioFramework {
 
-
     @Autowired
     OperationScenarioRepository operationScenarioRepository;
 
