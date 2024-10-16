@@ -1,7 +1,7 @@
-package com.faas.core.base.model.ws.operation.details.scenario.content;
+package com.faas.core.base.model.ws.operation.details.scenario;
 
 import com.faas.core.base.model.ws.general.GeneralWSModel;
-import com.faas.core.base.model.ws.operation.details.scenario.content.dto.OperationScenarioWSDTO;
+import com.faas.core.base.model.ws.operation.details.scenario.dto.OperationScenarioWSDTO;
 
 import java.util.List;
 

@@ -1,24 +1,29 @@
 package com.faas.core.data.db.operation.details.scenario;
 
-import com.faas.core.data.db.client.details.dao.ClientEmailDAO;
-import com.faas.core.data.db.operation.details.channel.dao.OperationEmailDAO;
+import com.faas.core.data.db.operation.details.scenario.dao.OperationScenarioDataDAO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
 
 @Document(collection = "operation_scenario_table")
 public class OperationScenarioDBModel {
 
     @Id
     private String id;
-    private long clientId;
     private String operationId;
+    private long clientId;
     private long agentId;
     private String campaignId;
-    private ClientEmailDAO clientEmail;
-    private OperationEmailDAO emailMessage;
-    private String emailSentId;
-    private String emailState;
+    private String scenarioId;
+    private String scenario;
+    private String scenarioDesc;
+    private long scenarioTypeId;
+    private String scenarioType;
+    private String baseType;
+    private List<OperationScenarioDataDAO> scenarioDatas;
+    private List<OperationScenarioDataDAO> runResults;
+    private String runState;
     private long uDate;
     private long cDate;
     private int status;
@@ -26,16 +31,21 @@ public class OperationScenarioDBModel {
     public OperationScenarioDBModel() {
     }
 
-    public OperationScenarioDBModel(String id, long clientId, String operationId, long agentId, String campaignId, ClientEmailDAO clientEmail, OperationEmailDAO emailMessage, String emailSentId, String emailState, long uDate, long cDate, int status) {
+    public OperationScenarioDBModel(String id, String operationId, long clientId, long agentId, String campaignId, String scenarioId, String scenario, String scenarioDesc, long scenarioTypeId, String scenarioType, String baseType, List<OperationScenarioDataDAO> scenarioDatas, List<OperationScenarioDataDAO> runResults, String runState, long uDate, long cDate, int status) {
         this.id = id;
-        this.clientId = clientId;
         this.operationId = operationId;
+        this.clientId = clientId;
         this.agentId = agentId;
         this.campaignId = campaignId;
-        this.clientEmail = clientEmail;
-        this.emailMessage = emailMessage;
-        this.emailSentId = emailSentId;
-        this.emailState = emailState;
+        this.scenarioId = scenarioId;
+        this.scenario = scenario;
+        this.scenarioDesc = scenarioDesc;
+        this.scenarioTypeId = scenarioTypeId;
+        this.scenarioType = scenarioType;
+        this.baseType = baseType;
+        this.scenarioDatas = scenarioDatas;
+        this.runResults = runResults;
+        this.runState = runState;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
@@ -49,20 +59,20 @@ public class OperationScenarioDBModel {
         this.id = id;
     }
 
-    public long getClientId() {
-        return clientId;
-    }
-
-    public void setClientId(long clientId) {
-        this.clientId = clientId;
-    }
-
     public String getOperationId() {
         return operationId;
     }
 
     public void setOperationId(String operationId) {
         this.operationId = operationId;
+    }
+
+    public long getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(long clientId) {
+        this.clientId = clientId;
     }
 
     public long getAgentId() {
@@ -81,36 +91,76 @@ public class OperationScenarioDBModel {
         this.campaignId = campaignId;
     }
 
-    public ClientEmailDAO getClientEmail() {
-        return clientEmail;
+    public String getScenarioId() {
+        return scenarioId;
     }
 
-    public void setClientEmail(ClientEmailDAO clientEmail) {
-        this.clientEmail = clientEmail;
+    public void setScenarioId(String scenarioId) {
+        this.scenarioId = scenarioId;
     }
 
-    public OperationEmailDAO getEmailMessage() {
-        return emailMessage;
+    public String getScenario() {
+        return scenario;
     }
 
-    public void setEmailMessage(OperationEmailDAO emailMessage) {
-        this.emailMessage = emailMessage;
+    public void setScenario(String scenario) {
+        this.scenario = scenario;
     }
 
-    public String getEmailSentId() {
-        return emailSentId;
+    public String getScenarioDesc() {
+        return scenarioDesc;
     }
 
-    public void setEmailSentId(String emailSentId) {
-        this.emailSentId = emailSentId;
+    public void setScenarioDesc(String scenarioDesc) {
+        this.scenarioDesc = scenarioDesc;
     }
 
-    public String getEmailState() {
-        return emailState;
+    public long getScenarioTypeId() {
+        return scenarioTypeId;
     }
 
-    public void setEmailState(String emailState) {
-        this.emailState = emailState;
+    public void setScenarioTypeId(long scenarioTypeId) {
+        this.scenarioTypeId = scenarioTypeId;
+    }
+
+    public String getScenarioType() {
+        return scenarioType;
+    }
+
+    public void setScenarioType(String scenarioType) {
+        this.scenarioType = scenarioType;
+    }
+
+    public String getBaseType() {
+        return baseType;
+    }
+
+    public void setBaseType(String baseType) {
+        this.baseType = baseType;
+    }
+
+    public List<OperationScenarioDataDAO> getScenarioDatas() {
+        return scenarioDatas;
+    }
+
+    public void setScenarioDatas(List<OperationScenarioDataDAO> scenarioDatas) {
+        this.scenarioDatas = scenarioDatas;
+    }
+
+    public List<OperationScenarioDataDAO> getRunResults() {
+        return runResults;
+    }
+
+    public void setRunResults(List<OperationScenarioDataDAO> runResults) {
+        this.runResults = runResults;
+    }
+
+    public String getRunState() {
+        return runState;
+    }
+
+    public void setRunState(String runState) {
+        this.runState = runState;
     }
 
     public long getuDate() {

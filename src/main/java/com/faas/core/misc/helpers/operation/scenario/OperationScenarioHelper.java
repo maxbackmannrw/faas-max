@@ -1,11 +1,12 @@
-package com.faas.core.misc.helpers.scenario;
+package com.faas.core.misc.helpers.operation.scenario;
 
 import com.faas.core.data.db.campaign.details.scenario.CampaignScenarioDBModel;
 import com.faas.core.data.db.operation.content.OperationDBModel;
-import com.faas.core.data.db.operation.details.scenario.dao.OperationScenarioDAO;
+import com.faas.core.data.db.operation.details.scenario.OperationScenarioDBModel;
 import com.faas.core.data.db.operation.details.scenario.dao.OperationScenarioDataDAO;
 import com.faas.core.data.db.scenario.content.dao.ScenarioDataDAO;
 import com.faas.core.data.repo.operation.content.OperationRepository;
+import com.faas.core.data.repo.operation.details.scenario.OperationScenarioRepository;
 import com.faas.core.misc.config.AppConstant;
 import com.faas.core.misc.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,25 +16,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class ScenarioHelper {
+public class OperationScenarioHelper {
+
 
     @Autowired
     OperationRepository operationRepository;
 
     @Autowired
+    OperationScenarioRepository operationScenarioRepository;
+
+    @Autowired
     AppUtils appUtils;
 
 
-    public OperationScenarioDAO executeOperationScenarioHelper(OperationDBModel operationDBModel, CampaignScenarioDBModel campaignScenarioDBModel) {
+    public OperationScenarioDBModel runOperationScenarioHelper(OperationDBModel operationDBModel, CampaignScenarioDBModel campaignScenarioDBModel) {
 
-        OperationScenarioDAO operationScenarioDAO = new OperationScenarioDAO();
-        operationScenarioDAO.setId(appUtils.generateUUID());
-        operationScenarioDAO.setScenarioId(campaignScenarioDBModel.getScenarioId());
-        operationScenarioDAO.setScenario(campaignScenarioDBModel.getScenario());
-        operationScenarioDAO.setScenarioDesc(campaignScenarioDBModel.getScenarioDesc());
-        operationScenarioDAO.setTypeId(campaignScenarioDBModel.getTypeId());
-        operationScenarioDAO.setScenarioType(campaignScenarioDBModel.getScenarioType());
-        operationScenarioDAO.setBaseType(campaignScenarioDBModel.getBaseType());
+        OperationScenarioDBModel operationScenarioDBModel = new OperationScenarioDBModel();
+        operationScenarioDBModel.setId(appUtils.generateUUID());
+        operationScenarioDBModel.setScenarioId(campaignScenarioDBModel.getScenarioId());
+        operationScenarioDBModel.setScenario(campaignScenarioDBModel.getScenario());
+        operationScenarioDBModel.setScenarioDesc(campaignScenarioDBModel.getScenarioDesc());
+        operationScenarioDBModel.setScenarioTypeId(campaignScenarioDBModel.getTypeId());
+        operationScenarioDBModel.setScenarioType(campaignScenarioDBModel.getScenarioType());
+        operationScenarioDBModel.setBaseType(campaignScenarioDBModel.getBaseType());
 
         List<OperationScenarioDataDAO> operationScenarioDatas = new ArrayList<>();
         if (campaignScenarioDBModel.getScenarioDatas() != null) {
@@ -41,18 +46,14 @@ public class ScenarioHelper {
                 operationScenarioDatas.add(convert2OperationScenarioData(campaignScenarioDBModel.getScenarioDatas().get(i)));
             }
         }
-        operationScenarioDAO.setScenarioDatas(operationScenarioDatas);
-        operationScenarioDAO.setScenarioResults(new ArrayList<>());
-        operationScenarioDAO.setScenarioState(AppConstant.READY_STATE);
-        operationScenarioDAO.setuDate(appUtils.getCurrentTimeStamp());
-        operationScenarioDAO.setcDate(appUtils.getCurrentTimeStamp());
-        operationScenarioDAO.setStatus(1);
+        operationScenarioDBModel.setScenarioDatas(operationScenarioDatas);
+        operationScenarioDBModel.setRunResults(new ArrayList<>());
+        operationScenarioDBModel.setRunState(AppConstant.READY_STATE);
+        operationScenarioDBModel.setuDate(appUtils.getCurrentTimeStamp());
+        operationScenarioDBModel.setcDate(appUtils.getCurrentTimeStamp());
+        operationScenarioDBModel.setStatus(1);
 
-
-        operationDBModel.setuDate(appUtils.getCurrentTimeStamp());
-        operationRepository.save(operationDBModel);
-
-        return operationScenarioDAO;
+        return operationScenarioRepository.save(operationScenarioDBModel);
     }
 
 

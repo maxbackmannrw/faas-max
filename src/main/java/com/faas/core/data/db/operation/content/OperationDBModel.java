@@ -2,7 +2,6 @@ package com.faas.core.data.db.operation.content;
 
 import com.faas.core.data.db.client.details.dao.*;
 import com.faas.core.data.db.operation.content.dao.*;
-import com.faas.core.data.db.operation.details.scenario.dao.OperationScenarioDAO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
