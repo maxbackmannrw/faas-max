@@ -38,13 +38,13 @@ public class ApiOperationScenarioMiddleware {
         return response;
     }
 
-    public ApiOperationScenarioWSModel apiGetOperationScenario(long agentId, String operationId, String executeId) {
+    public ApiOperationScenarioWSModel apiGetOperationScenario(long agentId, String operationId, String runId) {
 
         ApiOperationScenarioWSModel response = new ApiOperationScenarioWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ApiOperationScenarioWSDTO> operationScenarioWSDTOS = new ArrayList<>();
 
-        ApiOperationScenarioWSDTO operationScenarioWSDTO = apiOperationScenarioFramework.apiGetOperationScenarioService(agentId, operationId, executeId);
+        ApiOperationScenarioWSDTO operationScenarioWSDTO = apiOperationScenarioFramework.apiGetOperationScenarioService(agentId,operationId,runId);
         if (operationScenarioWSDTO != null) {
             operationScenarioWSDTOS.add(operationScenarioWSDTO);
         }
@@ -59,19 +59,19 @@ public class ApiOperationScenarioMiddleware {
         return response;
     }
 
-    public ApiOperationScenarioWSModel apiCreateOperationScenario(long agentId, String operationId, String scenarioId) {
+    public ApiOperationScenarioWSModel apiRunOperationScenario(long agentId, String operationId, String scenarioId) {
 
         ApiOperationScenarioWSModel response = new ApiOperationScenarioWSModel();
         GeneralWSModel general = new GeneralWSModel();
-        List<ApiOperationScenarioWSDTO> scenarioExecutionWSDTOS = new ArrayList<>();
+        List<ApiOperationScenarioWSDTO> operationScenarioWSDTOS = new ArrayList<>();
 
-        ApiOperationScenarioWSDTO scenarioExecutionWSDTO = apiOperationScenarioFramework.apiOperationExecuteScenarioService(agentId, operationId, scenarioId);
-        if (scenarioExecutionWSDTO != null) {
-            scenarioExecutionWSDTOS.add(scenarioExecutionWSDTO);
+        ApiOperationScenarioWSDTO operationScenarioWSDTO = apiOperationScenarioFramework.apiRunOperationScenarioService(agentId, operationId, scenarioId);
+        if (operationScenarioWSDTO != null) {
+            operationScenarioWSDTOS.add(operationScenarioWSDTO);
         }
 
-        response.setOperationScenarios(scenarioExecutionWSDTOS);
-        general.setOperation("apiCreateOperationScenario");
+        response.setOperationScenarios(operationScenarioWSDTOS);
+        general.setOperation("apiRunOperationScenario");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

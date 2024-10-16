@@ -22,6 +22,8 @@ public class ApiRoute {
     public static final String API_GET_CAMPAIGNS_SUMMARY = "apigetcampaignssummary";
 
     public static final String API_GET_CAMPAIGN_DETAILS = "apigetcampaigndetails";
+    public static final String API_GET_CAMPAIGN_SCENARIOS = "apigetcampaignscenarios";
+    public static final String API_GET_CAMPAIGN_SCENARIO = "apigetcampaignscenario";
     public static final String API_GET_CAMPAIGN_OPERATIONS = "apigetcampaignoperations";
     public static final String API_GET_CAMPAIGN_OPERATION = "apigetcampaignoperation";
     public static final String API_VALIDATE_CAMPAIGN_OPERATION = "apivalidatecampaignoperation";
@@ -67,7 +69,7 @@ public class ApiRoute {
 
     public static final String API_GET_OPERATION_SCENARIOS = "apigetoperationscenarios";
     public static final String API_GET_OPERATION_SCENARIO = "apigetoperationscenario";
-    public static final String API_CREATE_OPERATION_SCENARIO = "apicreateoperationscenario";
+    public static final String API_RUN_OPERATION_SCENARIO = "apirunoperationscenario";
     public static final String API_UPDATE_OPERATION_SCENARIO = "apiupdateoperationscenario";
     public static final String API_REMOVE_OPERATION_SCENARIO = "apiremoveoperationscenario";
 

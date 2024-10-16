@@ -8,7 +8,6 @@ public class ApiOperationCampaignWSModel {
     private GeneralWSModel general;
     private ApiOperationCampaignWSDTO campaign;
 
-
     public ApiOperationCampaignWSModel() {
     }
 

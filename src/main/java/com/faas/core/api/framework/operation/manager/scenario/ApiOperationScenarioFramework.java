@@ -26,13 +26,13 @@ public class ApiOperationScenarioFramework {
         return operationScenarioWSDTOS;
     }
 
-    public ApiOperationScenarioWSDTO apiGetOperationScenarioService(long agentId, String operationId, String executeId) {
+    public ApiOperationScenarioWSDTO apiGetOperationScenarioService(long agentId, String operationId, String runId) {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
         return null;
     }
 
-    public ApiOperationScenarioWSDTO apiOperationExecuteScenarioService(long agentId, String operationId, String scenarioId) {
+    public ApiOperationScenarioWSDTO apiRunOperationScenarioService(long agentId, String operationId, String scenarioId) {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
         if (!operationDBModels.isEmpty()) {

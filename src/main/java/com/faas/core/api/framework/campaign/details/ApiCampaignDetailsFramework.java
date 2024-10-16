@@ -1,12 +1,14 @@
 package com.faas.core.api.framework.campaign.details;
 
 import com.faas.core.api.model.ws.campaign.details.dto.ApiCampaignDetailsWSDTO;
+import com.faas.core.api.model.ws.campaign.details.dto.ApiCampaignScenarioWSDTO;
 import com.faas.core.api.model.ws.general.dto.ApiSummaryWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationListWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiValidateOperationWSDTO;
 import com.faas.core.data.db.campaign.content.CampaignDBModel;
 import com.faas.core.data.db.campaign.details.agent.CampaignAgentDBModel;
+import com.faas.core.data.db.campaign.details.scenario.CampaignScenarioDBModel;
 import com.faas.core.data.db.operation.content.OperationDBModel;
 import com.faas.core.data.db.user.content.UserDBModel;
 import com.faas.core.data.repo.campaign.content.CampaignRepository;
@@ -71,6 +73,26 @@ public class ApiCampaignDetailsFramework {
             return campaignDetailsWSDTO;
         }
         return null;
+    }
+
+    public List<ApiCampaignScenarioWSDTO> apiGetCampaignScenariosService(long agentId,String campaignId) {
+
+        List<ApiCampaignScenarioWSDTO> campaignScenarioWSDTOS = new ArrayList<>();
+        List<CampaignScenarioDBModel> campaignScenarioDBModels = campaignScenarioRepository.findByCampaignId(campaignId);
+        for (CampaignScenarioDBModel campaignScenarioDBModel : campaignScenarioDBModels) {
+            campaignScenarioWSDTOS.add(new ApiCampaignScenarioWSDTO(campaignScenarioDBModel));
+        }
+        return campaignScenarioWSDTOS;
+    }
+
+    public ApiCampaignScenarioWSDTO apiGetCampaignScenarioService(long agentId,String campaignId,String scenarioId) {
+
+        ApiCampaignScenarioWSDTO campaignScenarioWSDTO = new ApiCampaignScenarioWSDTO();
+        List<CampaignScenarioDBModel> campaignScenarioDBModels =campaignScenarioRepository.findByCampaignIdAndScenarioId(campaignId,scenarioId);
+        if (!campaignScenarioDBModels.isEmpty()) {
+            campaignScenarioWSDTO.setCampaignScenario(campaignScenarioDBModels.get(0));
+        }
+        return campaignScenarioWSDTO;
     }
 
     public ApiOperationListWSDTO apiGetCampaignOperationsService(long agentId, String campaignId, String operationState, int reqPage, int reqSize) {
