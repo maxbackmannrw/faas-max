@@ -5,21 +5,21 @@ import com.faas.core.api.model.ws.operation.content.dto.ApiOperationListWSDTO;
 
 import java.util.List;
 
-public class ApiDashboardContentWSDTO {
+public class ApiDashContentWSDTO {
 
     private ApiOperationListWSDTO manualOperation;
     private ApiOperationListWSDTO inquiryOperation;
     private ApiOperationListWSDTO activeOperation;
-    private List<ApiCampaignWSDTO> activeCampaigns;
+    private List<ApiCampaignWSDTO> campaigns;
 
-    public ApiDashboardContentWSDTO() {
+    public ApiDashContentWSDTO() {
     }
 
-    public ApiDashboardContentWSDTO(ApiOperationListWSDTO manualOperation, ApiOperationListWSDTO inquiryOperation, ApiOperationListWSDTO activeOperation, List<ApiCampaignWSDTO> activeCampaigns) {
+    public ApiDashContentWSDTO(ApiOperationListWSDTO manualOperation, ApiOperationListWSDTO inquiryOperation, ApiOperationListWSDTO activeOperation, List<ApiCampaignWSDTO> campaigns) {
         this.manualOperation = manualOperation;
         this.inquiryOperation = inquiryOperation;
         this.activeOperation = activeOperation;
-        this.activeCampaigns = activeCampaigns;
+        this.campaigns = campaigns;
     }
 
     public ApiOperationListWSDTO getManualOperation() {
@@ -46,11 +46,11 @@ public class ApiDashboardContentWSDTO {
         this.activeOperation = activeOperation;
     }
 
-    public List<ApiCampaignWSDTO> getActiveCampaigns() {
-        return activeCampaigns;
+    public List<ApiCampaignWSDTO> getCampaigns() {
+        return campaigns;
     }
 
-    public void setActiveCampaigns(List<ApiCampaignWSDTO> activeCampaigns) {
-        this.activeCampaigns = activeCampaigns;
+    public void setCampaigns(List<ApiCampaignWSDTO> campaigns) {
+        this.campaigns = campaigns;
     }
 }

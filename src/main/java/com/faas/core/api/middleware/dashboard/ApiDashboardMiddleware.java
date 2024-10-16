@@ -3,8 +3,8 @@ package com.faas.core.api.middleware.dashboard;
 import com.faas.core.api.framework.dashboard.ApiDashboardFramework;
 import com.faas.core.api.model.ws.campaign.content.ApiCampaignWSModel;
 import com.faas.core.api.model.ws.campaign.content.dto.ApiCampaignWSDTO;
-import com.faas.core.api.model.ws.dashboard.ApiDashboardContentWSModel;
-import com.faas.core.api.model.ws.dashboard.dto.ApiDashboardContentWSDTO;
+import com.faas.core.api.model.ws.dashboard.ApiDashContentWSModel;
+import com.faas.core.api.model.ws.dashboard.dto.ApiDashContentWSDTO;
 import com.faas.core.api.model.ws.general.dto.ApiSummaryWSDTO;
 import com.faas.core.api.model.ws.general.ApiSummaryWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiOperationListWSModel;
@@ -29,17 +29,17 @@ public class ApiDashboardMiddleware {
     ApiDashboardFramework apiDashboardFramework;
 
 
-    public ApiDashboardContentWSModel apiGetDashboardContents(long agentId, int reqPage, int reqSize) {
+    public ApiDashContentWSModel apiGetDashContent(long agentId, int reqPage, int reqSize) {
 
-        ApiDashboardContentWSModel response = new ApiDashboardContentWSModel();
+        ApiDashContentWSModel response = new ApiDashContentWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiDashboardContentWSDTO dashboardContentWSDTO = apiDashboardFramework.apiGetDashboardContentsService(agentId,reqPage,reqSize);
-        if (dashboardContentWSDTO != null) {
-            response.setDashboardContent(dashboardContentWSDTO);
+        ApiDashContentWSDTO dashContentWSDTO = apiDashboardFramework.apiGetDashContentService(agentId,reqPage,reqSize);
+        if (dashContentWSDTO != null) {
+            response.setDashContent(dashContentWSDTO);
         }
 
-        general.setOperation("apiGetDashboardContents");
+        general.setOperation("apiGetDashContent");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -48,17 +48,17 @@ public class ApiDashboardMiddleware {
         return response;
     }
 
-    public ApiOperationListWSModel apiGetDashboardOperations(long agentId,String operationCategory,String operationState,int reqPage,int reqSize) {
+    public ApiOperationListWSModel apiGetDashOperations(long agentId,String operationCategory,String operationState,int reqPage,int reqSize) {
 
         ApiOperationListWSModel response = new ApiOperationListWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiOperationListWSDTO operationListWSDTO = apiDashboardFramework.apiGetDashboardOperationsService(agentId,operationCategory,operationState,reqPage,reqSize);
+        ApiOperationListWSDTO operationListWSDTO = apiDashboardFramework.apiGetDashOperationsService(agentId,operationCategory,operationState,reqPage,reqSize);
         if (operationListWSDTO != null) {
             response.setOperationList(operationListWSDTO);
         }
 
-        general.setOperation("apiGetDashboardOperations");
+        general.setOperation("apiGetDashOperations");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -67,19 +67,19 @@ public class ApiDashboardMiddleware {
         return response;
     }
 
-    public ApiOperationWSModel apiGetDashboardOperation(long agentId,String operationId) {
+    public ApiOperationWSModel apiGetDashOperation(long agentId,String operationId) {
 
         ApiOperationWSModel response = new ApiOperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ApiOperationWSDTO> operationWSDTOS = new ArrayList<>();
 
-        ApiOperationWSDTO operationWSDTO = apiDashboardFramework.apiGetDashboardOperationService(agentId,operationId);
+        ApiOperationWSDTO operationWSDTO = apiDashboardFramework.apiGetDashOperationService(agentId,operationId);
         if (operationWSDTO != null) {
             operationWSDTOS.add(operationWSDTO);
         }
 
         response.setOperations(operationWSDTOS);
-        general.setOperation("apiGetDashboardOperation");
+        general.setOperation("apiGetDashOperation");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -88,17 +88,17 @@ public class ApiDashboardMiddleware {
         return response;
     }
 
-    public ApiValidateOperationWSModel apiValidateDashboardOperation(long agentId, String operationId) {
+    public ApiValidateOperationWSModel apiValidateDashOperation(long agentId, String operationId) {
 
         ApiValidateOperationWSModel response = new ApiValidateOperationWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        ApiValidateOperationWSDTO validateOperationWSDTO = apiDashboardFramework.apiValidateDashboardOperationService(agentId, operationId);
+        ApiValidateOperationWSDTO validateOperationWSDTO = apiDashboardFramework.apiValidateDashOperationService(agentId, operationId);
         if (validateOperationWSDTO != null) {
             response.setValidateOperation(validateOperationWSDTO);
         }
 
-        general.setOperation("apiValidateDashboardOperation");
+        general.setOperation("apiValidateDashOperation");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -107,17 +107,17 @@ public class ApiDashboardMiddleware {
         return response;
     }
 
-    public ApiCampaignWSModel apiGetDashboardCampaigns(long agentId,String campaignState) {
+    public ApiCampaignWSModel apiGetDashCampaigns(long agentId,String campaignState) {
 
         ApiCampaignWSModel response = new ApiCampaignWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ApiCampaignWSDTO> campaignWSDTOS = apiDashboardFramework.apiGetDashboardCampaignsService(agentId, campaignState);
+        List<ApiCampaignWSDTO> campaignWSDTOS = apiDashboardFramework.apiGetDashCampaignsService(agentId, campaignState);
         if (campaignWSDTOS != null) {
             response.setCampaigns(campaignWSDTOS);
         }
 
-        general.setOperation("apiGetDashboardCampaigns");
+        general.setOperation("apiGetDashCampaigns");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -126,17 +126,17 @@ public class ApiDashboardMiddleware {
         return response;
     }
 
-    public ApiSummaryWSModel apiGetDashboardContentSummary(long agentId) {
+    public ApiSummaryWSModel apiGetDashSummary(long agentId) {
 
         ApiSummaryWSModel response = new ApiSummaryWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<ApiSummaryWSDTO> dashboardSummaries = apiDashboardFramework.apiGetDashboardContentSummaryService(agentId);
+        List<ApiSummaryWSDTO> dashboardSummaries = apiDashboardFramework.apiGetDashSummaryService(agentId);
         if (dashboardSummaries != null) {
             response.setSummaries(dashboardSummaries);
         }
 
-        general.setOperation("apiGetDashboardContentSummary");
+        general.setOperation("apiGetDashSummary");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

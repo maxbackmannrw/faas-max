@@ -10,12 +10,12 @@ public class ApiRoute {
     public static final String API_GET_AGENT_INFO = "apigetagentinfo";
 
 
-    public static final String API_GET_DASHBOARD_CONTENTS = "apigetdashboardcontents";
-    public static final String API_GET_DASHBOARD_OPERATIONS = "apigetdashboardoperations";
-    public static final String API_GET_DASHBOARD_OPERATION = "apigetdashboardoperation";
-    public static final String API_VALIDATE_DASHBOARD_OPERATION = "apivalidatedashboardoperation";
-    public static final String API_GET_DASHBOARD_CAMPAIGNS = "apigetdashboardcampaigns";
-    public static final String API_GET_DASHBOARD_CONTENT_SUMMARY = "apigetdashboardcontentsummary";
+    public static final String API_GET_DASH_CONTENT = "apigetdashcontent";
+    public static final String API_GET_DASH_OPERATIONS = "apigetdashoperations";
+    public static final String API_GET_DASH_OPERATION = "apigetdashoperation";
+    public static final String API_VALIDATE_DASH_OPERATION = "apivalidatedashoperation";
+    public static final String API_GET_DASH_CAMPAIGNS = "apigetdashcampaigns";
+    public static final String API_GET_DASH_SUMMARY = "apigetdashsummary";
 
 
     public static final String API_GET_CAMPAIGN_LIST = "apigetcampaignlist";
@@ -29,12 +29,6 @@ public class ApiRoute {
     public static final String API_VALIDATE_CAMPAIGN_OPERATION = "apivalidatecampaignoperation";
     public static final String API_GET_CAMPAIGN_DETAILS_SUMMARY = "apigetcampaigndetailssummary";
 
-
-
-    public static final String API_GET_AGENT_ASSETS = "apigetagentassets";
-    public static final String API_GET_AGENT_ASSET = "apigetagentasset";
-    public static final String API_GET_CAMPAIGN_ASSETS = "apigetcampaignassets";
-    public static final String API_GET_CAMPAIGN_ASSET = "apigetcampaignasset";
 
 
 
