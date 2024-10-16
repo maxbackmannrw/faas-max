@@ -3,7 +3,8 @@ package com.faas.core.api.model.ws.operation.manager.content.dto;
 import com.faas.core.api.model.ws.operation.manager.activity.dto.ApiOperationActivityWSDTO;
 import com.faas.core.api.model.ws.operation.manager.campaign.dto.ApiOperationCampaignWSDTO;
 import com.faas.core.api.model.ws.operation.manager.client.dto.ApiOperationClientWSDTO;
-import com.faas.core.data.db.client.intel.ClientIntelDBModel;
+import com.faas.core.api.model.ws.operation.manager.intel.dto.ApiOperationIntelWSDTO;
+import com.faas.core.api.model.ws.operation.manager.scenario.dto.ApiOperationScenarioWSDTO;
 import com.faas.core.data.db.operation.content.OperationDBModel;
 
 import java.util.List;
@@ -12,21 +13,23 @@ public class ApiOperationManagerWSDTO {
 
     private OperationDBModel operation;
     private ApiOperationAgentWSDTO operationAgent;
-    private List<ApiOperationActivityWSDTO>operationActivities;
     private ApiOperationClientWSDTO operationClient;
-    private List<ClientIntelDBModel> operationIntels;
+    private List<ApiOperationIntelWSDTO> operationIntels;
     private ApiOperationCampaignWSDTO operationCampaign;
+    private List<ApiOperationScenarioWSDTO> operationScenarios;
+    private List<ApiOperationActivityWSDTO>operationActivities;
 
     public ApiOperationManagerWSDTO() {
     }
 
-    public ApiOperationManagerWSDTO(OperationDBModel operation, ApiOperationAgentWSDTO operationAgent, List<ApiOperationActivityWSDTO> operationActivities, ApiOperationClientWSDTO operationClient, List<ClientIntelDBModel> operationIntels, ApiOperationCampaignWSDTO operationCampaign) {
+    public ApiOperationManagerWSDTO(OperationDBModel operation, ApiOperationAgentWSDTO operationAgent, ApiOperationClientWSDTO operationClient, List<ApiOperationIntelWSDTO> operationIntels, ApiOperationCampaignWSDTO operationCampaign, List<ApiOperationScenarioWSDTO> operationScenarios, List<ApiOperationActivityWSDTO> operationActivities) {
         this.operation = operation;
         this.operationAgent = operationAgent;
-        this.operationActivities = operationActivities;
         this.operationClient = operationClient;
         this.operationIntels = operationIntels;
         this.operationCampaign = operationCampaign;
+        this.operationScenarios = operationScenarios;
+        this.operationActivities = operationActivities;
     }
 
     public OperationDBModel getOperation() {
@@ -45,14 +48,6 @@ public class ApiOperationManagerWSDTO {
         this.operationAgent = operationAgent;
     }
 
-    public List<ApiOperationActivityWSDTO> getOperationActivities() {
-        return operationActivities;
-    }
-
-    public void setOperationActivities(List<ApiOperationActivityWSDTO> operationActivities) {
-        this.operationActivities = operationActivities;
-    }
-
     public ApiOperationClientWSDTO getOperationClient() {
         return operationClient;
     }
@@ -61,11 +56,11 @@ public class ApiOperationManagerWSDTO {
         this.operationClient = operationClient;
     }
 
-    public List<ClientIntelDBModel> getOperationIntels() {
+    public List<ApiOperationIntelWSDTO> getOperationIntels() {
         return operationIntels;
     }
 
-    public void setOperationIntels(List<ClientIntelDBModel> operationIntels) {
+    public void setOperationIntels(List<ApiOperationIntelWSDTO> operationIntels) {
         this.operationIntels = operationIntels;
     }
 
@@ -75,5 +70,21 @@ public class ApiOperationManagerWSDTO {
 
     public void setOperationCampaign(ApiOperationCampaignWSDTO operationCampaign) {
         this.operationCampaign = operationCampaign;
+    }
+
+    public List<ApiOperationScenarioWSDTO> getOperationScenarios() {
+        return operationScenarios;
+    }
+
+    public void setOperationScenarios(List<ApiOperationScenarioWSDTO> operationScenarios) {
+        this.operationScenarios = operationScenarios;
+    }
+
+    public List<ApiOperationActivityWSDTO> getOperationActivities() {
+        return operationActivities;
+    }
+
+    public void setOperationActivities(List<ApiOperationActivityWSDTO> operationActivities) {
+        this.operationActivities = operationActivities;
     }
 }

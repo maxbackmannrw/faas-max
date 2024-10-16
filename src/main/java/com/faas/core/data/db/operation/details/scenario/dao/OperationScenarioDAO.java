@@ -1,4 +1,4 @@
-package com.faas.core.data.db.operation.content.dao;
+package com.faas.core.data.db.operation.details.scenario.dao;
 
 import java.util.List;
 

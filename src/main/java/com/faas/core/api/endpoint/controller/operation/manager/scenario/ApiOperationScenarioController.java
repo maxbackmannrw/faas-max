@@ -25,7 +25,7 @@ public class ApiOperationScenarioController {
     public ResponseEntity<?> apiGetOperationScenarios(@RequestParam long agentId,
                                                       @RequestParam String operationId) {
 
-        ApiOperationScenarioWSModel response = apiOperationScenarioMiddleware.apiGetOperationScenarios(agentId, operationId);
+        ApiOperationScenarioWSModel response = apiOperationScenarioMiddleware.apiGetOperationScenarios(agentId,operationId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -38,7 +38,7 @@ public class ApiOperationScenarioController {
                                                      @RequestParam String operationId,
                                                      @RequestParam String runId) {
 
-        ApiOperationScenarioWSModel response = apiOperationScenarioMiddleware.apiGetOperationScenario(agentId, operationId, runId);
+        ApiOperationScenarioWSModel response = apiOperationScenarioMiddleware.apiGetOperationScenario(agentId,operationId,runId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -51,7 +51,7 @@ public class ApiOperationScenarioController {
                                                      @RequestParam String operationId,
                                                      @RequestParam String scenarioId) {
 
-        ApiOperationScenarioWSModel response = apiOperationScenarioMiddleware.apiRunOperationScenario(agentId, operationId, scenarioId);
+        ApiOperationScenarioWSModel response = apiOperationScenarioMiddleware.apiRunOperationScenario(agentId,operationId,scenarioId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -62,9 +62,9 @@ public class ApiOperationScenarioController {
     @RequestMapping(value = ApiRoute.API_UPDATE_OPERATION_SCENARIO, method = RequestMethod.POST)
     public ResponseEntity<?> apiUpdateOperationScenario(@RequestParam long agentId,
                                                         @RequestParam String operationId,
-                                                        @RequestParam String executeId) {
+                                                        @RequestParam String runId) {
 
-        ApiOperationScenarioWSModel response = apiOperationScenarioMiddleware.apiUpdateOperationScenario(agentId, operationId, executeId);
+        ApiOperationScenarioWSModel response = apiOperationScenarioMiddleware.apiUpdateOperationScenario(agentId,operationId,runId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -75,9 +75,9 @@ public class ApiOperationScenarioController {
     @RequestMapping(value = ApiRoute.API_REMOVE_OPERATION_SCENARIO, method = RequestMethod.POST)
     public ResponseEntity<?> apiRemoveOperationScenario(@RequestParam long agentId,
                                                         @RequestParam String operationId,
-                                                        @RequestParam String executeId) {
+                                                        @RequestParam String runId) {
 
-        ApiOperationScenarioWSModel response = apiOperationScenarioMiddleware.apiRemoveOperationScenario(agentId, operationId, executeId);
+        ApiOperationScenarioWSModel response = apiOperationScenarioMiddleware.apiRemoveOperationScenario(agentId,operationId,runId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

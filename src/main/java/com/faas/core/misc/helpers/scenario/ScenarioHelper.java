@@ -2,8 +2,8 @@ package com.faas.core.misc.helpers.scenario;
 
 import com.faas.core.data.db.campaign.details.scenario.CampaignScenarioDBModel;
 import com.faas.core.data.db.operation.content.OperationDBModel;
-import com.faas.core.data.db.operation.content.dao.OperationScenarioDAO;
-import com.faas.core.data.db.operation.content.dao.OperationScenarioDataDAO;
+import com.faas.core.data.db.operation.details.scenario.dao.OperationScenarioDAO;
+import com.faas.core.data.db.operation.details.scenario.dao.OperationScenarioDataDAO;
 import com.faas.core.data.db.scenario.content.dao.ScenarioDataDAO;
 import com.faas.core.data.repo.operation.content.OperationRepository;
 import com.faas.core.misc.config.AppConstant;

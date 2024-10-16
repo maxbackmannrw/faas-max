@@ -1,23 +1,23 @@
 package com.faas.core.api.model.ws.operation.manager.scenario.dto;
 
-import com.faas.core.data.db.operation.content.dao.OperationScenarioDAO;
+import com.faas.core.data.db.operation.details.scenario.OperationScenarioDBModel;
 
 public class ApiOperationScenarioWSDTO {
 
-    private OperationScenarioDAO operationScenario;
+    private OperationScenarioDBModel operationScenario;
 
     public ApiOperationScenarioWSDTO() {
     }
 
-    public ApiOperationScenarioWSDTO(OperationScenarioDAO operationScenario) {
+    public ApiOperationScenarioWSDTO(OperationScenarioDBModel operationScenario) {
         this.operationScenario = operationScenario;
     }
 
-    public OperationScenarioDAO getOperationScenario() {
+    public OperationScenarioDBModel getOperationScenario() {
         return operationScenario;
     }
 
-    public void setOperationScenario(OperationScenarioDAO operationScenario) {
+    public void setOperationScenario(OperationScenarioDBModel operationScenario) {
         this.operationScenario = operationScenario;
     }
 }

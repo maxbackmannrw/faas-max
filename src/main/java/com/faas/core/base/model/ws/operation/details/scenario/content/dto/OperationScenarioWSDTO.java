@@ -1,6 +1,6 @@
 package com.faas.core.base.model.ws.operation.details.scenario.content.dto;
 
-import com.faas.core.data.db.operation.content.dao.OperationScenarioDAO;
+import com.faas.core.data.db.operation.details.scenario.dao.OperationScenarioDAO;
 
 public class OperationScenarioWSDTO {
 

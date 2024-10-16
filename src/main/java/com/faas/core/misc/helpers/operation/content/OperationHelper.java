@@ -10,6 +10,7 @@ import com.faas.core.api.model.ws.operation.manager.call.sip.dto.ApiOperationSip
 import com.faas.core.api.model.ws.operation.manager.call.wapp.dto.ApiOperationWappCallAccountWSDTO;
 import com.faas.core.api.model.ws.operation.manager.call.wapp.dto.ApiOperationWappCallChannelWSDTO;
 import com.faas.core.api.model.ws.operation.manager.call.content.dto.ApiOperationCallChannelWSDTO;
+import com.faas.core.api.model.ws.operation.manager.intel.dto.ApiOperationIntelWSDTO;
 import com.faas.core.api.model.ws.operation.manager.message.content.dto.ApiOperationMessageChannelWSDTO;
 import com.faas.core.api.model.ws.operation.manager.message.email.dto.ApiOperationEmailChannelWSDTO;
 import com.faas.core.api.model.ws.operation.manager.message.push.dto.ApiOperationPushChannelWSDTO;
@@ -18,6 +19,7 @@ import com.faas.core.api.model.ws.operation.manager.message.wapp.dto.ApiOperatio
 import com.faas.core.api.model.ws.operation.manager.content.dto.ApiOperationAgentWSDTO;
 import com.faas.core.api.model.ws.operation.manager.campaign.dto.ApiOperationCampaignWSDTO;
 import com.faas.core.api.model.ws.operation.manager.content.dto.ApiOperationManagerWSDTO;
+import com.faas.core.api.model.ws.operation.manager.scenario.dto.ApiOperationScenarioWSDTO;
 import com.faas.core.data.db.campaign.content.CampaignDBModel;
 import com.faas.core.data.db.campaign.details.scenario.CampaignScenarioDBModel;
 import com.faas.core.data.db.client.content.ClientDBModel;
@@ -28,6 +30,7 @@ import com.faas.core.data.db.operation.content.dao.OperationFlowDAO;
 import com.faas.core.data.db.operation.content.dao.OperationInquiryDAO;
 import com.faas.core.data.db.operation.details.channel.OperationSipCallDBModel;
 import com.faas.core.data.db.operation.details.channel.OperationWappCallDBModel;
+import com.faas.core.data.db.operation.details.scenario.OperationScenarioDBModel;
 import com.faas.core.data.db.user.content.UserDBModel;
 import com.faas.core.base.model.ws.campaign.manager.operation.dto.CampaignOperationWSDTO;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
@@ -41,6 +44,7 @@ import com.faas.core.data.repo.client.details.ClientDetailsRepository;
 import com.faas.core.data.repo.client.intel.ClientIntelRepository;
 import com.faas.core.data.repo.operation.content.OperationRepository;
 import com.faas.core.data.repo.operation.details.channel.*;
+import com.faas.core.data.repo.operation.details.scenario.OperationScenarioRepository;
 import com.faas.core.data.repo.user.content.UserRepository;
 import com.faas.core.data.repo.user.details.UserDetailsRepository;
 import com.faas.core.misc.config.AppConstant;
@@ -70,13 +74,16 @@ public class OperationHelper {
     ClientIntelRepository clientIntelRepository;
 
     @Autowired
-    OperationRepository operationRepository;
-
-    @Autowired
     CampaignRepository campaignRepository;
 
     @Autowired
     CampaignScenarioRepository campaignScenarioRepository;
+
+    @Autowired
+    OperationRepository operationRepository;
+
+    @Autowired
+    OperationScenarioRepository operationScenarioRepository;
 
     @Autowired
     OperationWappCallRepository operationWappCallRepository;
@@ -85,19 +92,25 @@ public class OperationHelper {
     OperationSipCallRepository operationSipCallRepository;
 
     @Autowired
+    OperationEmailRepository operationEmailRepository;
+
+    @Autowired
+    OperationSmsRepository operationSmsRepository;
+
+    @Autowired
+    OperationWappMessageRepository operationWappMessageRepository;
+
+    @Autowired
+    OperationPushRepository operationPushRepository;
+
+    @Autowired
+    UserRepository userRepository;
+
+    @Autowired
+    UserDetailsRepository userDetailsRepository;
+
+    @Autowired
     AppUtils appUtils;
-    @Autowired
-    private OperationEmailRepository operationEmailRepository;
-    @Autowired
-    private OperationSmsRepository operationSmsRepository;
-    @Autowired
-    private OperationWappMessageRepository operationWappMessageRepository;
-    @Autowired
-    private OperationPushRepository operationPushRepository;
-    @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private UserDetailsRepository userDetailsRepository;
 
 
     public OperationDBModel createOperationDBModel(UserDBModel userDBModel, CampaignDBModel campaignDBModel, ClientDBModel clientDBModel, ClientDetailsDBModel clientDetailsDBModel) {
@@ -111,18 +124,23 @@ public class OperationHelper {
         operationDBModel.setClientCity(clientDBModel.getClientCity());
         operationDBModel.setClientCountry(clientDBModel.getClientCountry());
         operationDBModel.setClientType(clientDBModel.getClientType());
+
         if (clientDetailsDBModel.getClientPhones() != null) {
             operationDBModel.setClientPhones(clientDetailsDBModel.getClientPhones());
         }
+
         if (clientDetailsDBModel.getClientEmails() != null) {
             operationDBModel.setClientEmails(clientDetailsDBModel.getClientEmails());
         }
+
         if (clientDetailsDBModel.getClientAddresses() != null) {
             operationDBModel.setClientAddresses(clientDetailsDBModel.getClientAddresses());
         }
+
         if (clientDetailsDBModel.getClientNotes() != null) {
             operationDBModel.setClientNotes(clientDetailsDBModel.getClientNotes());
         }
+
         operationDBModel.setAgentId(userDBModel.getId());
         operationDBModel.setAgentName(userDBModel.getUserName());
         operationDBModel.setCampaignId(campaignDBModel.getId());
@@ -131,15 +149,17 @@ public class OperationHelper {
         operationDBModel.setCampaignCategory(campaignDBModel.getCampaignCategory());
         operationDBModel.setInquiryState(AppConstant.NONE);
         operationDBModel.setFlowState(AppConstant.NONE);
+
         if (campaignDBModel.getCampaignCategory().equalsIgnoreCase(AppConstant.INQUIRY_CAMPAIGN)) {
             operationDBModel.setOperationInquiry(createOperationInquiryDAO(campaignDBModel));
             operationDBModel.setInquiryState(AppConstant.READY_STATE);
         }
+
         if (campaignDBModel.getCampaignCategory().equalsIgnoreCase(AppConstant.AUTOMATIC_CAMPAIGN)) {
             operationDBModel.setOperationFlow(createOperationFlowDAO(campaignDBModel));
             operationDBModel.setFlowState(AppConstant.READY_STATE);
         }
-        operationDBModel.setOperationScenarios(new ArrayList<>());
+
         operationDBModel.setOperationDatas(new ArrayList<>());
         operationDBModel.setOperationCategory(campaignDBModel.getCampaignCategory());
         operationDBModel.setOperationResult(AppConstant.NONE);
@@ -283,10 +303,11 @@ public class OperationHelper {
             ApiOperationManagerWSDTO operationManagerWSDTO = new ApiOperationManagerWSDTO();
             operationManagerWSDTO.setOperation(operationDBModel);
             operationManagerWSDTO.setOperationAgent(getApiOperationAgentWSDTO(agentDBModel.get(),agentDetailsModels.get(0)));
-            operationManagerWSDTO.setOperationActivities(getApiOperationActivityWSDTOS(operationDBModel));
             operationManagerWSDTO.setOperationClient(getApiOperationClientWSDTO(clientDBModel.get()));
-            operationManagerWSDTO.setOperationIntels(getOperationIntels(clientDBModel.get()));
+            operationManagerWSDTO.setOperationIntels(getApiOperationIntelWSDTOS(clientDBModel.get()));
             operationManagerWSDTO.setOperationCampaign(getApiOperationCampaignWSDTO(campaignDBModel.get()));
+            operationManagerWSDTO.setOperationScenarios(getApiOperationScenarioWSDTOS(operationDBModel));
+            operationManagerWSDTO.setOperationActivities(getApiOperationActivityWSDTOS(operationDBModel));
 
             return operationManagerWSDTO;
         }
@@ -304,13 +325,6 @@ public class OperationHelper {
         return operationAgentWSDTO;
     }
 
-    public List<ApiOperationActivityWSDTO> getApiOperationActivityWSDTOS(OperationDBModel operationDBModel) {
-
-        List<ApiOperationActivityWSDTO>operationActivityWSDTOS = new ArrayList<>();
-
-        return operationActivityWSDTOS;
-    }
-
     public ApiOperationClientWSDTO getApiOperationClientWSDTO(ClientDBModel clientDBModel) {
 
         ApiOperationClientWSDTO operationClientWSDTO = new ApiOperationClientWSDTO();
@@ -322,9 +336,14 @@ public class OperationHelper {
         return operationClientWSDTO;
     }
 
-    public List<ClientIntelDBModel> getOperationIntels(ClientDBModel clientDBModel) {
+    public List<ApiOperationIntelWSDTO> getApiOperationIntelWSDTOS(ClientDBModel clientDBModel) {
 
-        return clientIntelRepository.findByClientId(clientDBModel.getId());
+        List<ApiOperationIntelWSDTO> operationIntelWSDTOS = new ArrayList<>();
+        List<ClientIntelDBModel> clientIntelDBModels = clientIntelRepository.findByClientId(clientDBModel.getId());
+        for (ClientIntelDBModel clientIntelDBModel : clientIntelDBModels) {
+            operationIntelWSDTOS.add(new ApiOperationIntelWSDTO(clientIntelDBModel));
+        }
+        return operationIntelWSDTOS;
     }
 
     public ApiOperationCampaignWSDTO getApiOperationCampaignWSDTO(CampaignDBModel campaignDBModel) {
@@ -337,6 +356,21 @@ public class OperationHelper {
             operationCampaignWSDTO.setCampaignScenarios(campaignScenarios);
         }
         return operationCampaignWSDTO;
+    }
+
+    public List<ApiOperationScenarioWSDTO> getApiOperationScenarioWSDTOS(OperationDBModel operationDBModel) {
+
+        List<ApiOperationScenarioWSDTO>operationScenarioWSDTOS = new ArrayList<>();
+
+
+        return operationScenarioWSDTOS;
+    }
+
+    public List<ApiOperationActivityWSDTO> getApiOperationActivityWSDTOS(OperationDBModel operationDBModel) {
+
+        List<ApiOperationActivityWSDTO>operationActivityWSDTOS = new ArrayList<>();
+
+        return operationActivityWSDTOS;
     }
 
 

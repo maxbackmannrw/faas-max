@@ -49,7 +49,7 @@ public class ApiCampaignController {
 
     @RequestMapping(value = ApiRoute.API_GET_CAMPAIGN, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetCampaign(@RequestParam long agentId,
-                                                 @RequestParam String campaignId) {
+                                            @RequestParam String campaignId) {
 
         ApiCampaignWSModel response = apiCampaignMiddleware.apiGetCampaign(agentId, campaignId);
 
