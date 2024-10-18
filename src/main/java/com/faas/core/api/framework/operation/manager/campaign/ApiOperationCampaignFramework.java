@@ -1,6 +1,7 @@
 package com.faas.core.api.framework.operation.manager.campaign;
 
 import com.faas.core.api.model.ws.campaign.details.dto.ApiCampaignDetailsWSDTO;
+import com.faas.core.api.model.ws.campaign.details.dto.ApiCampaignScenarioWSDTO;
 import com.faas.core.api.model.ws.operation.manager.campaign.dto.ApiOperationCampaignWSDTO;
 import com.faas.core.data.db.campaign.content.dao.CampaignScriptDAO;
 import com.faas.core.data.repo.client.details.ClientDetailsRepository;
@@ -42,5 +43,14 @@ public class ApiOperationCampaignFramework {
         return null;
     }
 
+    public List<ApiCampaignScenarioWSDTO> apiGetOperationCampaignScenariosService(long agentId, String campaignId) {
+
+        return null;
+    }
+
+    public ApiCampaignScenarioWSDTO apiGetOperationCampaignScenarioService(long agentId, String campaignId, String scenarioId) {
+
+        return null;
+    }
 
 }

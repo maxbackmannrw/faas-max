@@ -1,7 +1,6 @@
 package com.faas.core.api.endpoint.controller.operation.manager.content;
 
 import com.faas.core.api.middleware.operation.manager.content.ApiOperationManagerMiddleware;
-import com.faas.core.api.model.ws.campaign.details.ApiCampaignDetailsWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiOperationWSModel;
 import com.faas.core.api.model.ws.operation.manager.call.content.ApiOperationCallChannelWSModel;
 import com.faas.core.api.model.ws.operation.manager.content.ApiOperationManagerWSModel;
@@ -15,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 @RequestMapping(value = AppConstant.API_VERSION + "/api/operation/manager/")
@@ -98,7 +98,6 @@ public class ApiOperationManagerController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_MESSAGE_CHANNEL, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationMessageChannel(@RequestParam long agentId,
