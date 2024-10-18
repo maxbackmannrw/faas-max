@@ -59,19 +59,19 @@ public class ApiOperationScenarioMiddleware {
         return response;
     }
 
-    public ApiOperationScenarioWSModel apiExecuteOperationScenario(long agentId, String operationId, String scenarioId) {
+    public ApiOperationScenarioWSModel apiCreateOperationScenario(long agentId, String operationId, String scenarioId) {
 
         ApiOperationScenarioWSModel response = new ApiOperationScenarioWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ApiOperationScenarioWSDTO> operationScenarioWSDTOS = new ArrayList<>();
 
-        ApiOperationScenarioWSDTO operationScenarioWSDTO = apiOperationScenarioFramework.apiExecuteOperationScenarioService(agentId, operationId, scenarioId);
+        ApiOperationScenarioWSDTO operationScenarioWSDTO = apiOperationScenarioFramework.apiCreateOperationScenarioService(agentId, operationId, scenarioId);
         if (operationScenarioWSDTO != null) {
             operationScenarioWSDTOS.add(operationScenarioWSDTO);
         }
 
         response.setOperationScenarios(operationScenarioWSDTOS);
-        general.setOperation("apiExecuteOperationScenario");
+        general.setOperation("apiCreateOperationScenario");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);

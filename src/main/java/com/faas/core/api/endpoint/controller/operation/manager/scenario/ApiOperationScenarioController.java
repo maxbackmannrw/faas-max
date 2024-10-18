@@ -47,12 +47,12 @@ public class ApiOperationScenarioController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-    @RequestMapping(value = ApiRoute.API_EXECUTE_OPERATION_SCENARIO, method = RequestMethod.POST)
-    public ResponseEntity<?> apiExecuteOperationScenario(@RequestParam long agentId,
-                                                         @RequestParam String operationId,
-                                                         @RequestParam String scenarioId) {
+    @RequestMapping(value = ApiRoute.API_CREATE_OPERATION_SCENARIO, method = RequestMethod.POST)
+    public ResponseEntity<?> apiCreateOperationScenario(@RequestParam long agentId,
+                                                        @RequestParam String operationId,
+                                                        @RequestParam String scenarioId) {
 
-        ApiOperationScenarioWSModel response = apiOperationScenarioMiddleware.apiExecuteOperationScenario(agentId,operationId,scenarioId);
+        ApiOperationScenarioWSModel response = apiOperationScenarioMiddleware.apiCreateOperationScenario(agentId,operationId,scenarioId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);

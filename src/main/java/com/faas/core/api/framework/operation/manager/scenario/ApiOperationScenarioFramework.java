@@ -28,7 +28,7 @@ public class ApiOperationScenarioFramework {
         return null;
     }
 
-    public ApiOperationScenarioWSDTO apiExecuteOperationScenarioService(long agentId, String operationId, String scenarioId) {
+    public ApiOperationScenarioWSDTO apiCreateOperationScenarioService(long agentId, String operationId, String scenarioId) {
 
         return null;
     }
