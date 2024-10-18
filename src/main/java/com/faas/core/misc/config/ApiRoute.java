@@ -69,7 +69,7 @@ public class ApiRoute {
 
     public static final String API_GET_OPERATION_SCENARIOS = "apigetoperationscenarios";
     public static final String API_GET_OPERATION_SCENARIO = "apigetoperationscenario";
-    public static final String API_RUN_OPERATION_SCENARIO = "apirunoperationscenario";
+    public static final String API_EXECUTE_OPERATION_SCENARIO = "apiexecuteoperationscenario";
     public static final String API_UPDATE_OPERATION_SCENARIO = "apiupdateoperationscenario";
     public static final String API_REMOVE_OPERATION_SCENARIO = "apiremoveoperationscenario";
 

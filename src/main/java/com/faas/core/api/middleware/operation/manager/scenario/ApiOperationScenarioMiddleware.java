@@ -38,13 +38,13 @@ public class ApiOperationScenarioMiddleware {
         return response;
     }
 
-    public ApiOperationScenarioWSModel apiGetOperationScenario(long agentId, String operationId, String runId) {
+    public ApiOperationScenarioWSModel apiGetOperationScenario(long agentId, String operationId, String executionId) {
 
         ApiOperationScenarioWSModel response = new ApiOperationScenarioWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ApiOperationScenarioWSDTO> operationScenarioWSDTOS = new ArrayList<>();
 
-        ApiOperationScenarioWSDTO operationScenarioWSDTO = apiOperationScenarioFramework.apiGetOperationScenarioService(agentId,operationId,runId);
+        ApiOperationScenarioWSDTO operationScenarioWSDTO = apiOperationScenarioFramework.apiGetOperationScenarioService(agentId,operationId,executionId);
         if (operationScenarioWSDTO != null) {
             operationScenarioWSDTOS.add(operationScenarioWSDTO);
         }
@@ -59,19 +59,19 @@ public class ApiOperationScenarioMiddleware {
         return response;
     }
 
-    public ApiOperationScenarioWSModel apiRunOperationScenario(long agentId, String operationId, String scenarioId) {
+    public ApiOperationScenarioWSModel apiExecuteOperationScenario(long agentId, String operationId, String scenarioId) {
 
         ApiOperationScenarioWSModel response = new ApiOperationScenarioWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ApiOperationScenarioWSDTO> operationScenarioWSDTOS = new ArrayList<>();
 
-        ApiOperationScenarioWSDTO operationScenarioWSDTO = apiOperationScenarioFramework.apiRunOperationScenarioService(agentId, operationId, scenarioId);
+        ApiOperationScenarioWSDTO operationScenarioWSDTO = apiOperationScenarioFramework.apiExecuteOperationScenarioService(agentId, operationId, scenarioId);
         if (operationScenarioWSDTO != null) {
             operationScenarioWSDTOS.add(operationScenarioWSDTO);
         }
 
         response.setOperationScenarios(operationScenarioWSDTOS);
-        general.setOperation("apiRunOperationScenario");
+        general.setOperation("apiExecuteOperationScenario");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
@@ -80,13 +80,13 @@ public class ApiOperationScenarioMiddleware {
         return response;
     }
 
-    public ApiOperationScenarioWSModel apiUpdateOperationScenario(long agentId, String operationId, String runId) {
+    public ApiOperationScenarioWSModel apiUpdateOperationScenario(long agentId, String operationId, String executionId) {
 
         ApiOperationScenarioWSModel response = new ApiOperationScenarioWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ApiOperationScenarioWSDTO> operationScenarioWSDTOS = new ArrayList<>();
 
-        ApiOperationScenarioWSDTO operationScenarioWSDTO = apiOperationScenarioFramework.apiUpdateOperationScenarioService(agentId, operationId, runId);
+        ApiOperationScenarioWSDTO operationScenarioWSDTO = apiOperationScenarioFramework.apiUpdateOperationScenarioService(agentId, operationId, executionId);
         if (operationScenarioWSDTO != null) {
             operationScenarioWSDTOS.add(operationScenarioWSDTO);
         }
@@ -101,13 +101,13 @@ public class ApiOperationScenarioMiddleware {
         return response;
     }
 
-    public ApiOperationScenarioWSModel apiRemoveOperationScenario(long agentId, String operationId, String runId) {
+    public ApiOperationScenarioWSModel apiRemoveOperationScenario(long agentId, String operationId, String executionId) {
 
         ApiOperationScenarioWSModel response = new ApiOperationScenarioWSModel();
         GeneralWSModel general = new GeneralWSModel();
         List<ApiOperationScenarioWSDTO> operationScenarioWSDTOS = new ArrayList<>();
 
-        ApiOperationScenarioWSDTO operationScenarioWSDTO = apiOperationScenarioFramework.apiRemoveOperationScenarioService(agentId, operationId,runId);
+        ApiOperationScenarioWSDTO operationScenarioWSDTO = apiOperationScenarioFramework.apiRemoveOperationScenarioService(agentId, operationId,executionId);
         if (operationScenarioWSDTO != null) {
             operationScenarioWSDTOS.add(operationScenarioWSDTO);
         }

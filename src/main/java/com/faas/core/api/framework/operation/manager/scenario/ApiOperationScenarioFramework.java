@@ -23,22 +23,22 @@ public class ApiOperationScenarioFramework {
         return operationScenarioWSDTOS;
     }
 
-    public ApiOperationScenarioWSDTO apiGetOperationScenarioService(long agentId, String operationId, String runId) {
+    public ApiOperationScenarioWSDTO apiGetOperationScenarioService(long agentId, String operationId, String executionId) {
 
         return null;
     }
 
-    public ApiOperationScenarioWSDTO apiRunOperationScenarioService(long agentId, String operationId, String scenarioId) {
+    public ApiOperationScenarioWSDTO apiExecuteOperationScenarioService(long agentId, String operationId, String scenarioId) {
 
         return null;
     }
 
-    public ApiOperationScenarioWSDTO apiUpdateOperationScenarioService(long agentId, String operationId, String runId) {
+    public ApiOperationScenarioWSDTO apiUpdateOperationScenarioService(long agentId, String operationId, String executionId) {
 
         return null;
     }
 
-    public ApiOperationScenarioWSDTO apiRemoveOperationScenarioService(long agentId, String operationId, String runId) {
+    public ApiOperationScenarioWSDTO apiRemoveOperationScenarioService(long agentId, String operationId, String executionId) {
 
         return null;
     }
