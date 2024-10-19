@@ -83,21 +83,6 @@ public class UtilzHelper {
     CampaignAgentRepository campaignAgentRepository;
 
     @Autowired
-    EmailTempRepository emailTempRepository;
-
-    @Autowired
-    PushTempRepository pushTempRepository;
-
-    @Autowired
-    SmsTempRepository smsTempRepository;
-
-    @Autowired
-    WappMessageTempRepository wappMessageTempRepository;
-
-    @Autowired
-    CampaignScenarioRepository campaignScenarioRepository;
-
-    @Autowired
     ScenarioRepository scenarioRepository;
 
     @Autowired
