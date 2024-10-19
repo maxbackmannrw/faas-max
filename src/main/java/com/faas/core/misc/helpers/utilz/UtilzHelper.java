@@ -113,21 +113,6 @@ public class UtilzHelper {
     UserRoleRepository userRoleRepository;
 
     @Autowired
-    EmailTriggerRepository emailTriggerRepository;
-
-    @Autowired
-    SipTriggerRepository sipTriggerRepository;
-
-    @Autowired
-    SmsTriggerRepository smsTriggerRepository;
-
-    @Autowired
-    WappCallTriggerRepository wappCallTriggerRepository;
-
-    @Autowired
-    WappMessageTriggerRepository wappMessageTriggerRepository;
-
-    @Autowired
     AppUtils appUtils;
 
 
@@ -237,7 +222,6 @@ public class UtilzHelper {
         systemContents.add(getSystemClientsHelper());
         systemContents.add(getSystemOperationsHelper());
         systemContents.add(getSystemCampaignsHelper());
-        systemContents.add(getSystemProcessesHelper());
         systemContents.add(getSystemScenariosHelper());
         systemContents.add(getSystemUsersHelper());
         systemContents.add(getSystemAgentsHelper());
@@ -256,13 +240,6 @@ public class UtilzHelper {
         return systemContentWSDTO;
     }
 
-    public SystemContentWSDTO getSystemSessionsHelper() {
-
-        SystemContentWSDTO systemContentWSDTO = new SystemContentWSDTO();
-        systemContentWSDTO.setContentName(AppConstant.SESSION_CONTENTS);
-        systemContentWSDTO.setContentState(true);
-        return systemContentWSDTO;
-    }
 
     public SystemContentWSDTO getSystemOperationsHelper() {
 
@@ -282,14 +259,6 @@ public class UtilzHelper {
         return systemContentWSDTO;
     }
 
-    public SystemContentWSDTO getSystemProcessesHelper() {
-
-        SystemContentWSDTO systemContentWSDTO = new SystemContentWSDTO();
-        systemContentWSDTO.setContentName(AppConstant.PROCESS_CONTENTS);
-        systemContentWSDTO.setContentValue(String.valueOf(campaignRepository.count()));
-        systemContentWSDTO.setContentState(true);
-        return systemContentWSDTO;
-    }
 
     public SystemContentWSDTO getSystemScenariosHelper() {
 
@@ -472,15 +441,6 @@ public class UtilzHelper {
         campaignAgentRepository.deleteAll();
     }
 
-    public void removeAllProcessesHelper() {
-
-        campaignRepository.deleteAll();
-        emailTempRepository.deleteAll();
-        pushTempRepository.deleteAll();
-        smsTempRepository.deleteAll();
-        wappMessageTempRepository.deleteAll();
-        campaignScenarioRepository.deleteAll();
-    }
 
 
     public void removeAllScenariosHelper() {
