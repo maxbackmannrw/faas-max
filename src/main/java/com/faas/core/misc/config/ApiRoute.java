@@ -49,6 +49,8 @@ public class ApiRoute {
 
     public static final String API_GET_OPERATION_CAMPAIGN = "apigetoperationcampaign";
     public static final String API_GET_OPERATION_CAMPAIGN_SCRIPTS = "apigetoperationcampaignscripts";
+    public static final String API_GET_OPERATION_CAMPAIGN_SCENARIOS = "apigetoperationcampaignscenarios";
+    public static final String API_GET_OPERATION_CAMPAIGN_SCENARIO = "apigetoperationcampaignscenario";
 
 
     public static final String API_GET_OPERATION_ACTIVITIES = "apigetoperationactivities";

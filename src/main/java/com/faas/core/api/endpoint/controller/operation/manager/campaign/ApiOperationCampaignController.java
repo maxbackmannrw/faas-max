@@ -48,7 +48,7 @@ public class ApiOperationCampaignController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION_CAMPAIGN_SCRIPTS, method = RequestMethod.POST)
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_CAMPAIGN_SCENARIOS, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationCampaignScenarios(@RequestParam long agentId,
                                                               @RequestParam String campaignId) {
 
@@ -60,7 +60,7 @@ public class ApiOperationCampaignController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION_CAMPAIGN_SCRIPTS, method = RequestMethod.POST)
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_CAMPAIGN_SCENARIO, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationCampaignScenario(@RequestParam long agentId,
                                                              @RequestParam String campaignId,
                                                              @RequestParam String scenarioId) {
