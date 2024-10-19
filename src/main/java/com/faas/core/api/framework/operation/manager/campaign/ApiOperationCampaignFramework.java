@@ -63,7 +63,7 @@ public class ApiOperationCampaignFramework {
 
     public ApiCampaignScenarioWSDTO apiGetOperationCampaignScenarioService(long agentId, String campaignId, String scenarioId) {
 
-        List<CampaignScenarioDBModel> campaignScenarioDBModels = campaignScenarioRepository.findByCampaignId(campaignId);
+        List<CampaignScenarioDBModel> campaignScenarioDBModels = campaignScenarioRepository.findByCampaignIdAndScenarioId(campaignId,scenarioId);
         if (!campaignScenarioDBModels.isEmpty()) {
             return new ApiCampaignScenarioWSDTO(campaignScenarioDBModels.get(0));
         }
