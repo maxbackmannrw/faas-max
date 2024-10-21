@@ -1,9 +1,14 @@
 package com.faas.core.base.middleware.campaign.manager.operation;
 
 import com.faas.core.base.framework.campaign.manager.operation.CampaignManagerOperationFramework;
+import com.faas.core.base.model.ws.campaign.manager.client.CampaignClientRequest;
+import com.faas.core.base.model.ws.campaign.manager.client.CampaignClientWSModel;
+import com.faas.core.base.model.ws.campaign.manager.client.dto.CampaignClientWSDTO;
 import com.faas.core.base.model.ws.campaign.manager.operation.CampaignOperationRequest;
 import com.faas.core.base.model.ws.campaign.manager.operation.CampaignOperationWSModel;
 import com.faas.core.base.model.ws.campaign.manager.operation.dto.CampaignOperationWSDTO;
+import com.faas.core.base.model.ws.client.content.ClientWSModel;
+import com.faas.core.base.model.ws.client.content.dto.ClientWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.base.model.ws.operation.content.OperationWSModel;
 import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
@@ -141,7 +146,6 @@ public class CampaignManagerOperationMiddleware {
         return response;
     }
 
-
     public OperationWSModel removeCampaignOperation(long userId, String operationId) {
 
         OperationWSModel response = new OperationWSModel();
@@ -163,5 +167,64 @@ public class CampaignManagerOperationMiddleware {
         return response;
     }
 
+
+    public CampaignClientWSModel searchCampaignClients(long userId, String city, String clientState, int reqPage, int reqSize) {
+
+        CampaignClientWSModel response = new CampaignClientWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        CampaignClientWSDTO campaignClientWSDTO = campaignManagerOperationFramework.searchCampaignClientsService(city, clientState, reqPage, reqSize);
+        if (campaignClientWSDTO != null) {
+            response.setCampaignClient(campaignClientWSDTO);
+        }
+
+        general.setOperation("searchCampaignClients");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public ClientWSModel getSelectedCampaignClients(CampaignClientRequest clientRequest) {
+
+        ClientWSModel response = new ClientWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+
+        List<ClientWSDTO> clientWSDTOS = campaignManagerOperationFramework.getSelectedCampaignClients(clientRequest);
+        if (clientWSDTOS != null) {
+            response.setClients(clientWSDTOS);
+        }
+
+        general.setOperation("getSelectedCampaignClients");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
+
+    public ClientWSModel getCampaignClient(long userId, long clientId, String campaignId) {
+
+        ClientWSModel response = new ClientWSModel();
+        GeneralWSModel general = new GeneralWSModel();
+        List<ClientWSDTO> clientWSDTOS = new ArrayList<>();
+
+        ClientWSDTO clientWSDTO = campaignManagerOperationFramework.getCampaignClientService(userId, clientId, campaignId);
+        if (clientWSDTO != null) {
+            clientWSDTOS.add(clientWSDTO);
+        }
+
+        response.setClients(clientWSDTOS);
+        general.setOperation("getCampaignClient");
+        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
+        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
+        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
+        response.setGeneral(general);
+
+        return response;
+    }
 
 }

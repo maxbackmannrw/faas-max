@@ -1,8 +1,11 @@
 package com.faas.core.base.endpoint.controller.campaign.manager.operation;
 
 import com.faas.core.base.middleware.campaign.manager.operation.CampaignManagerOperationMiddleware;
+import com.faas.core.base.model.ws.campaign.manager.client.CampaignClientRequest;
+import com.faas.core.base.model.ws.campaign.manager.client.CampaignClientWSModel;
 import com.faas.core.base.model.ws.campaign.manager.operation.CampaignOperationRequest;
 import com.faas.core.base.model.ws.campaign.manager.operation.CampaignOperationWSModel;
+import com.faas.core.base.model.ws.client.content.ClientWSModel;
 import com.faas.core.base.model.ws.operation.content.OperationWSModel;
 import com.faas.core.misc.config.AppConstant;
 import com.faas.core.misc.config.BaseRoute;
@@ -118,5 +121,43 @@ public class CampaignManagerOperationController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+    @RequestMapping(value = BaseRoute.SEARCH_CAMPAIGN_CLIENTS, method = RequestMethod.POST)
+    public ResponseEntity<?> searchCampaignClients(@RequestParam long userId,
+                                                   @RequestParam String city,
+                                                   @RequestParam String clientState,
+                                                   @RequestParam int reqPage,
+                                                   @RequestParam int reqSize) {
+
+        CampaignClientWSModel response = campaignManagerOperationMiddleware.searchCampaignClients(userId, city, clientState, reqPage, reqSize);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+    @RequestMapping(value = BaseRoute.GET_SELECTED_CAMPAIGN_CLIENTS, method = RequestMethod.POST)
+    public ResponseEntity<?> getSelectedCampaignClients(@RequestBody CampaignClientRequest clientRequest) {
+
+        ClientWSModel response = campaignManagerOperationMiddleware.getSelectedCampaignClients(clientRequest);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+    @RequestMapping(value = BaseRoute.GET_CAMPAIGN_CLIENT, method = RequestMethod.POST)
+    public ResponseEntity<?> getCampaignClient(@RequestParam long userId,
+                                               @RequestParam long clientId,
+                                               @RequestParam String campaignId) {
+
+        ClientWSModel response = campaignManagerOperationMiddleware.getCampaignClient(userId, clientId, campaignId);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
 
 }

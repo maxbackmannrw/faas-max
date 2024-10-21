@@ -1,5 +1,8 @@
 package com.faas.core.base.framework.campaign.manager.operation;
 
+import com.faas.core.base.model.ws.campaign.manager.client.CampaignClientRequest;
+import com.faas.core.base.model.ws.campaign.manager.client.dto.CampaignClientWSDTO;
+import com.faas.core.base.model.ws.client.content.dto.ClientWSDTO;
 import com.faas.core.data.db.campaign.content.CampaignDBModel;
 import com.faas.core.data.db.client.content.ClientDBModel;
 import com.faas.core.data.db.client.details.ClientDetailsDBModel;
@@ -15,6 +18,7 @@ import com.faas.core.data.repo.operation.content.OperationRepository;
 import com.faas.core.data.repo.user.content.UserRepository;
 import com.faas.core.misc.config.AppConstant;
 import com.faas.core.misc.config.AppUtils;
+import com.faas.core.misc.helpers.client.ClientHelper;
 import com.faas.core.misc.helpers.operation.content.OperationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -28,8 +32,12 @@ import java.util.Optional;
 @Service
 public class CampaignManagerOperationFramework {
 
+
     @Autowired
     OperationHelper operationHelper;
+
+    @Autowired
+    ClientHelper clientHelper;
 
     @Autowired
     OperationRepository operationRepository;
@@ -117,6 +125,39 @@ public class CampaignManagerOperationFramework {
         Optional<OperationDBModel> operationDBModel = operationRepository.findById(operationId);
         if (operationDBModel.isPresent()) {
             return operationHelper.getOperationWSDTO(operationHelper.removeOperationHelper(operationDBModel.get()));
+        }
+        return null;
+    }
+
+
+    public CampaignClientWSDTO searchCampaignClientsService(String city, String clientState, int reqPage, int reqSize) {
+
+        if (city.equalsIgnoreCase(AppConstant.NONE)) {
+            return clientHelper.mapCampaignClientWSDTO(clientRepository.findAllByClientState(clientState, PageRequest.of(reqPage, reqSize)));
+        } else {
+            return clientHelper.mapCampaignClientWSDTO(clientRepository.findAllByClientCityAndClientState(city, clientState, PageRequest.of(reqPage, reqSize)));
+        }
+    }
+
+    public List<ClientWSDTO> getSelectedCampaignClients(CampaignClientRequest clientRequest) {
+
+        List<ClientWSDTO> clientWSDTOS = new ArrayList<>();
+        if (clientRequest.getClientRequests() != null) {
+            for (int i = 0; i < clientRequest.getClientRequests().size(); i++) {
+                List<ClientDBModel> clientDBModels = clientRepository.findByIdAndClientState(clientRequest.getClientRequests().get(i).getClientId(), AppConstant.READY_CLIENT);
+                if (!clientDBModels.isEmpty()) {
+                    clientWSDTOS.add(new ClientWSDTO(clientDBModels.get(0)));
+                }
+            }
+        }
+        return clientWSDTOS;
+    }
+
+    public ClientWSDTO getCampaignClientService(long userId, long clientId, String campaignId) {
+
+        Optional<ClientDBModel> clientDBModel = clientRepository.findById(clientId);
+        if (clientDBModel.isPresent()) {
+            return new ClientWSDTO(clientDBModel.get());
         }
         return null;
     }

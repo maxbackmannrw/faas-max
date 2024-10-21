@@ -42,6 +42,11 @@ public class BaseRoute {
     public static final String UPDATE_CAMPAIGN_OPERATION = "updatecampaignoperation";
     public static final String REMOVE_CAMPAIGN_OPERATION = "removecampaignoperation";
 
+    public static final String SEARCH_CAMPAIGN_CLIENTS = "searchcampaignclients";
+    public static final String GET_SELECTED_CAMPAIGN_CLIENTS = "getselectedcampaignclients";
+    public static final String GET_CAMPAIGN_CLIENT = "getcampaignclient";
+
+
 
     public static final String GET_OPERATION_MANAGERS = "getoperationmanagers";
     public static final String GET_OPERATION_MANAGERS_BY_TYPE = "getoperationmanagersbytype";
@@ -292,9 +297,6 @@ public class BaseRoute {
     public static final String REMOVE_CAMPAIGN_AGENT = "removecampaignagent";
     public static final String GET_ASSIGNABLE_AGENTS = "getassignableagents";
 
-    public static final String SEARCH_CAMPAIGN_CLIENTS = "searchcampaignclients";
-    public static final String GET_SELECTED_CAMPAIGN_CLIENTS = "getselectedcampaignclients";
-    public static final String GET_CAMPAIGN_CLIENT = "getcampaignclient";
 
 
     public static final String GET_CAMPAIGN_FLOW = "getcampaignflow";
