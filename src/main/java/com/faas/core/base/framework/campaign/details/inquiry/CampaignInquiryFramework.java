@@ -2,12 +2,12 @@ package com.faas.core.base.framework.campaign.details.inquiry;
 
 import com.faas.core.data.db.campaign.content.CampaignDBModel;
 import com.faas.core.data.db.campaign.content.dao.CampaignDataDAO;
-import com.faas.core.data.db.utilz.DataTypeDBModel;
+import com.faas.core.data.db.utils.DataTypeDBModel;
 import com.faas.core.base.model.ws.campaign.details.content.dto.CampaignDataWSDTO;
 import com.faas.core.base.model.ws.campaign.details.inquiry.dto.CampaignInquiryWSDTO;
 import com.faas.core.data.repo.campaign.content.CampaignRepository;
 import com.faas.core.data.repo.remote.content.RemoteRepository;
-import com.faas.core.data.repo.utilz.DataTypeRepository;
+import com.faas.core.data.repo.utils.DataTypeRepository;
 import com.faas.core.misc.config.AppUtils;
 import com.faas.core.misc.helpers.remote.RemoteHelper;
 import org.springframework.beans.factory.annotation.Autowired;

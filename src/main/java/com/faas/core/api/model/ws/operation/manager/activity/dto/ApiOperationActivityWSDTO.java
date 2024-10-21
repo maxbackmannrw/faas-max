@@ -1,6 +1,6 @@
 package com.faas.core.api.model.ws.operation.manager.activity.dto;
 
-import com.faas.core.data.db.utilz.ActivityDBModel;
+import com.faas.core.data.db.utils.ActivityDBModel;
 
 public class ApiOperationActivityWSDTO {
 

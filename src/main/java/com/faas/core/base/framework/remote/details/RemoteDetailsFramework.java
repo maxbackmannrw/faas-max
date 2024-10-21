@@ -2,11 +2,11 @@ package com.faas.core.base.framework.remote.details;
 
 import com.faas.core.data.db.remote.content.RemoteDBModel;
 import com.faas.core.data.db.remote.content.dao.RemoteDataDAO;
-import com.faas.core.data.db.utilz.DataTypeDBModel;
+import com.faas.core.data.db.utils.DataTypeDBModel;
 import com.faas.core.base.model.ws.remote.content.dto.RemoteDataWSDTO;
 import com.faas.core.base.model.ws.remote.details.dto.RemoteDetailsWSDTO;
 import com.faas.core.data.repo.remote.content.RemoteRepository;
-import com.faas.core.data.repo.utilz.DataTypeRepository;
+import com.faas.core.data.repo.utils.DataTypeRepository;
 import com.faas.core.misc.config.AppUtils;
 import com.faas.core.misc.helpers.remote.RemoteHelper;
 import org.springframework.beans.factory.annotation.Autowired;
