@@ -8,7 +8,6 @@ import com.faas.core.data.db.campaign.content.dao.CampaignInquiryDAO;
 import com.faas.core.data.db.campaign.details.agent.CampaignAgentDBModel;
 import com.faas.core.data.db.campaign.details.channel.CampaignChannelDBModel;
 import com.faas.core.data.db.campaign.details.remote.CampaignRemoteDBModel;
-import com.faas.core.data.db.campaign.details.scenario.CampaignScenarioDBModel;
 import com.faas.core.data.db.campaign.details.temp.EmailTempDBModel;
 import com.faas.core.data.db.campaign.details.temp.PushTempDBModel;
 import com.faas.core.data.db.campaign.details.temp.SmsTempDBModel;
@@ -20,7 +19,6 @@ import com.faas.core.base.model.ws.campaign.details.agent.dto.CampaignAgentWSDTO
 import com.faas.core.base.model.ws.campaign.details.channel.dto.*;
 import com.faas.core.base.model.ws.campaign.details.content.dto.CampaignDetailsWSDTO;
 import com.faas.core.base.model.ws.campaign.details.remote.dto.CampaignRemoteWSDTO;
-import com.faas.core.base.model.ws.campaign.details.scenario.dto.CampaignScenarioWSDTO;
 import com.faas.core.base.model.ws.campaign.details.temp.content.dto.CampaignTempWSDTO;
 import com.faas.core.base.model.ws.campaign.details.temp.details.dto.CampaignEmailTempWSDTO;
 import com.faas.core.base.model.ws.campaign.details.temp.details.dto.CampaignPushTempWSDTO;
@@ -34,7 +32,6 @@ import com.faas.core.base.model.ws.campaign.manager.content.dto.CampaignSummaryW
 import com.faas.core.data.repo.campaign.details.agent.CampaignAgentRepository;
 import com.faas.core.data.repo.campaign.details.channel.CampaignChannelRepository;
 import com.faas.core.data.repo.campaign.details.remote.CampaignRemoteRepository;
-import com.faas.core.data.repo.campaign.details.scenario.CampaignScenarioRepository;
 import com.faas.core.data.repo.campaign.details.temp.EmailTempRepository;
 import com.faas.core.data.repo.campaign.details.temp.PushTempRepository;
 import com.faas.core.data.repo.campaign.details.temp.SmsTempRepository;
@@ -85,9 +82,6 @@ public class CampaignHelper {
     WappMessageTempRepository wappMessageTempRepository;
 
     @Autowired
-    CampaignScenarioRepository campaignScenarioRepository;
-
-    @Autowired
     EmailTriggerRepository emailTriggerRepository;
 
     @Autowired
@@ -125,7 +119,6 @@ public class CampaignHelper {
         campaignDetailsWSDTO.setCampaignTemp(getCampaignTempWSDTO(campaignDBModel.getId()));
         campaignDetailsWSDTO.setCampaignChannel(getCampaignChannelWSDTO(campaignDBModel.getId()));
         campaignDetailsWSDTO.setCampaignTrigger(getCampaignTriggerWSDTO(campaignDBModel.getId()));
-        campaignDetailsWSDTO.setCampaignScenarios(getCampaignScenarioWSDTOS(campaignDBModel));
         campaignDetailsWSDTO.setCampaignRemotes(getCampaignRemoteWSDTOS(campaignDBModel));
 
         return campaignDetailsWSDTO;
@@ -224,16 +217,6 @@ public class CampaignHelper {
         return campaignWappMessageTriggerWSDTOS;
     }
 
-
-    public List<CampaignScenarioWSDTO> getCampaignScenarioWSDTOS(CampaignDBModel campaignDBModel) {
-
-        List<CampaignScenarioWSDTO> campaignScenarioWSDTOS = new ArrayList<>();
-        List<CampaignScenarioDBModel> campaignScenarioDBModels = campaignScenarioRepository.findByCampaignId(campaignDBModel.getId());
-        for (CampaignScenarioDBModel campaignScenarioDBModel : campaignScenarioDBModels) {
-            campaignScenarioWSDTOS.add(new CampaignScenarioWSDTO(campaignScenarioDBModel));
-        }
-        return campaignScenarioWSDTOS;
-    }
 
 
     public List<CampaignRemoteWSDTO> getCampaignRemoteWSDTOS(CampaignDBModel campaignDBModel) {
@@ -389,7 +372,6 @@ public class CampaignHelper {
         campaignManagerDetailsWSDTO.setCampaignTemp(getCampaignTempWSDTO(campaignDBModel.getId()));
         campaignManagerDetailsWSDTO.setCampaignChannel(getCampaignChannelWSDTO(campaignDBModel.getId()));
         campaignManagerDetailsWSDTO.setCampaignTrigger(getCampaignTriggerWSDTO(campaignDBModel.getId()));
-        campaignManagerDetailsWSDTO.setCampaignScenarios(getCampaignScenarioWSDTOS(campaignDBModel));
         campaignManagerDetailsWSDTO.setCampaignRemotes(getCampaignRemoteWSDTOS(campaignDBModel));
 
         return campaignManagerDetailsWSDTO;

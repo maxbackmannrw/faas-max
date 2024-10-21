@@ -173,10 +173,10 @@ public class AppConstant {
     public static final String OPERATION_CONTENTS = "OPERATION_CONTENTS";
 
     public static final String CAMPAIGN_CONTENTS = "CAMPAIGN_CONTENTS";
-    public static final String SCENARIO_CONTENTS = "SCENARIO_CONTENTS";
 
     public static final String USER_CONTENTS = "USER_CONTENTS";
     public static final String AGENT_CONTENTS = "AGENT_CONTENTS";
     public static final String ASSET_CONTENTS = "ASSET_CONTENTS";
 
 }
+

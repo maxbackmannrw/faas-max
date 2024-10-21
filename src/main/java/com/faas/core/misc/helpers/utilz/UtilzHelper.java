@@ -14,18 +14,12 @@ import com.faas.core.base.model.ws.utilz.content.dto.SystemInitWSDTO;
 import com.faas.core.data.repo.asset.content.AssetRepository;
 import com.faas.core.data.repo.campaign.content.CampaignRepository;
 import com.faas.core.data.repo.campaign.details.agent.CampaignAgentRepository;
-import com.faas.core.data.repo.campaign.details.scenario.CampaignScenarioRepository;
-import com.faas.core.data.repo.campaign.details.temp.EmailTempRepository;
-import com.faas.core.data.repo.campaign.details.temp.PushTempRepository;
-import com.faas.core.data.repo.campaign.details.temp.SmsTempRepository;
-import com.faas.core.data.repo.campaign.details.temp.WappMessageTempRepository;
 import com.faas.core.data.repo.campaign.details.trigger.*;
 import com.faas.core.data.repo.client.content.ClientRepository;
 import com.faas.core.data.repo.client.details.ClientDetailsRepository;
 import com.faas.core.data.repo.operation.content.OperationRepository;
 import com.faas.core.data.repo.operation.details.channel.*;
 import com.faas.core.data.repo.remoteapp.RemoteAppRepository;
-import com.faas.core.data.repo.scenario.content.ScenarioRepository;
 import com.faas.core.data.repo.user.content.UserRepository;
 import com.faas.core.data.repo.user.details.UserDetailsRepository;
 import com.faas.core.data.repo.user.settings.UserRoleRepository;
@@ -81,9 +75,6 @@ public class UtilzHelper {
 
     @Autowired
     CampaignAgentRepository campaignAgentRepository;
-
-    @Autowired
-    ScenarioRepository scenarioRepository;
 
     @Autowired
     AssetRepository assetRepository;
@@ -207,7 +198,6 @@ public class UtilzHelper {
         systemContents.add(getSystemClientsHelper());
         systemContents.add(getSystemOperationsHelper());
         systemContents.add(getSystemCampaignsHelper());
-        systemContents.add(getSystemScenariosHelper());
         systemContents.add(getSystemUsersHelper());
         systemContents.add(getSystemAgentsHelper());
         systemContents.add(getSystemAssetsHelper());
@@ -244,15 +234,6 @@ public class UtilzHelper {
         return systemContentWSDTO;
     }
 
-
-    public SystemContentWSDTO getSystemScenariosHelper() {
-
-        SystemContentWSDTO systemContentWSDTO = new SystemContentWSDTO();
-        systemContentWSDTO.setContentName(AppConstant.SCENARIO_CONTENTS);
-        systemContentWSDTO.setContentValue(String.valueOf(scenarioRepository.count()));
-        systemContentWSDTO.setContentState(true);
-        return systemContentWSDTO;
-    }
 
     public SystemContentWSDTO getSystemUsersHelper() {
 
@@ -424,12 +405,6 @@ public class UtilzHelper {
     public void removeAllCampaignsHelper() {
         campaignRepository.deleteAll();
         campaignAgentRepository.deleteAll();
-    }
-
-
-
-    public void removeAllScenariosHelper() {
-        scenarioRepository.deleteAll();
     }
 
 

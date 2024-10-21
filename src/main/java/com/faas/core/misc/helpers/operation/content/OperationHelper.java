@@ -19,9 +19,7 @@ import com.faas.core.api.model.ws.operation.manager.message.wapp.dto.ApiOperatio
 import com.faas.core.api.model.ws.operation.manager.content.dto.ApiOperationAgentWSDTO;
 import com.faas.core.api.model.ws.operation.manager.campaign.dto.ApiOperationCampaignWSDTO;
 import com.faas.core.api.model.ws.operation.manager.content.dto.ApiOperationManagerWSDTO;
-import com.faas.core.api.model.ws.operation.manager.scenario.dto.ApiOperationScenarioWSDTO;
 import com.faas.core.data.db.campaign.content.CampaignDBModel;
-import com.faas.core.data.db.campaign.details.scenario.CampaignScenarioDBModel;
 import com.faas.core.data.db.client.content.ClientDBModel;
 import com.faas.core.data.db.client.details.ClientDetailsDBModel;
 import com.faas.core.data.db.client.intel.ClientIntelDBModel;
@@ -30,7 +28,6 @@ import com.faas.core.data.db.operation.content.dao.OperationFlowDAO;
 import com.faas.core.data.db.operation.content.dao.OperationInquiryDAO;
 import com.faas.core.data.db.operation.details.channel.OperationSipCallDBModel;
 import com.faas.core.data.db.operation.details.channel.OperationWappCallDBModel;
-import com.faas.core.data.db.operation.details.scenario.OperationScenarioDBModel;
 import com.faas.core.data.db.user.content.UserDBModel;
 import com.faas.core.base.model.ws.campaign.manager.operation.dto.CampaignOperationWSDTO;
 import com.faas.core.base.model.ws.general.PaginationWSDTO;
@@ -38,13 +35,11 @@ import com.faas.core.base.model.ws.operation.content.dto.OperationListWSDTO;
 import com.faas.core.base.model.ws.operation.content.dto.OperationWSDTO;
 import com.faas.core.data.db.user.details.UserDetailsDBModel;
 import com.faas.core.data.repo.campaign.content.CampaignRepository;
-import com.faas.core.data.repo.campaign.details.scenario.CampaignScenarioRepository;
 import com.faas.core.data.repo.client.content.ClientRepository;
 import com.faas.core.data.repo.client.details.ClientDetailsRepository;
 import com.faas.core.data.repo.client.intel.ClientIntelRepository;
 import com.faas.core.data.repo.operation.content.OperationRepository;
 import com.faas.core.data.repo.operation.details.channel.*;
-import com.faas.core.data.repo.operation.details.scenario.OperationScenarioRepository;
 import com.faas.core.data.repo.user.content.UserRepository;
 import com.faas.core.data.repo.user.details.UserDetailsRepository;
 import com.faas.core.misc.config.AppConstant;
@@ -57,6 +52,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
 
 @Component
 public class OperationHelper {
@@ -77,13 +73,7 @@ public class OperationHelper {
     CampaignRepository campaignRepository;
 
     @Autowired
-    CampaignScenarioRepository campaignScenarioRepository;
-
-    @Autowired
     OperationRepository operationRepository;
-
-    @Autowired
-    OperationScenarioRepository operationScenarioRepository;
 
     @Autowired
     OperationWappCallRepository operationWappCallRepository;
@@ -306,7 +296,6 @@ public class OperationHelper {
             operationManagerWSDTO.setOperationClient(getApiOperationClientWSDTO(clientDBModel.get()));
             operationManagerWSDTO.setOperationIntels(getApiOperationIntelWSDTOS(clientDBModel.get()));
             operationManagerWSDTO.setOperationCampaign(getApiOperationCampaignWSDTO(campaignDBModel.get()));
-            operationManagerWSDTO.setOperationScenarios(getApiOperationScenarioWSDTOS(operationDBModel));
             operationManagerWSDTO.setOperationActivities(getApiOperationActivityWSDTOS(operationDBModel));
 
             return operationManagerWSDTO;
@@ -350,21 +339,9 @@ public class OperationHelper {
 
         ApiOperationCampaignWSDTO operationCampaignWSDTO = new ApiOperationCampaignWSDTO();
         operationCampaignWSDTO.setCampaign(campaignDBModel);
-        operationCampaignWSDTO.setCampaignScenarios(new ArrayList<>());
-        List<CampaignScenarioDBModel> campaignScenarios = campaignScenarioRepository.findByCampaignId(campaignDBModel.getId());
-        if (!campaignScenarios.isEmpty()) {
-            operationCampaignWSDTO.setCampaignScenarios(campaignScenarios);
-        }
         return operationCampaignWSDTO;
     }
 
-    public List<ApiOperationScenarioWSDTO> getApiOperationScenarioWSDTOS(OperationDBModel operationDBModel) {
-
-        List<ApiOperationScenarioWSDTO>operationScenarioWSDTOS = new ArrayList<>();
-
-
-        return operationScenarioWSDTOS;
-    }
 
     public List<ApiOperationActivityWSDTO> getApiOperationActivityWSDTOS(OperationDBModel operationDBModel) {
 

@@ -4,7 +4,6 @@ import com.faas.core.api.model.ws.operation.manager.activity.dto.ApiOperationAct
 import com.faas.core.api.model.ws.operation.manager.campaign.dto.ApiOperationCampaignWSDTO;
 import com.faas.core.api.model.ws.operation.manager.client.dto.ApiOperationClientWSDTO;
 import com.faas.core.api.model.ws.operation.manager.intel.dto.ApiOperationIntelWSDTO;
-import com.faas.core.api.model.ws.operation.manager.scenario.dto.ApiOperationScenarioWSDTO;
 import com.faas.core.data.db.operation.content.OperationDBModel;
 
 import java.util.List;
@@ -16,19 +15,17 @@ public class ApiOperationManagerWSDTO {
     private ApiOperationClientWSDTO operationClient;
     private List<ApiOperationIntelWSDTO> operationIntels;
     private ApiOperationCampaignWSDTO operationCampaign;
-    private List<ApiOperationScenarioWSDTO> operationScenarios;
     private List<ApiOperationActivityWSDTO>operationActivities;
 
     public ApiOperationManagerWSDTO() {
     }
 
-    public ApiOperationManagerWSDTO(OperationDBModel operation, ApiOperationAgentWSDTO operationAgent, ApiOperationClientWSDTO operationClient, List<ApiOperationIntelWSDTO> operationIntels, ApiOperationCampaignWSDTO operationCampaign, List<ApiOperationScenarioWSDTO> operationScenarios, List<ApiOperationActivityWSDTO> operationActivities) {
+    public ApiOperationManagerWSDTO(OperationDBModel operation, ApiOperationAgentWSDTO operationAgent, ApiOperationClientWSDTO operationClient, List<ApiOperationIntelWSDTO> operationIntels, ApiOperationCampaignWSDTO operationCampaign, List<ApiOperationActivityWSDTO> operationActivities) {
         this.operation = operation;
         this.operationAgent = operationAgent;
         this.operationClient = operationClient;
         this.operationIntels = operationIntels;
         this.operationCampaign = operationCampaign;
-        this.operationScenarios = operationScenarios;
         this.operationActivities = operationActivities;
     }
 
@@ -70,14 +67,6 @@ public class ApiOperationManagerWSDTO {
 
     public void setOperationCampaign(ApiOperationCampaignWSDTO operationCampaign) {
         this.operationCampaign = operationCampaign;
-    }
-
-    public List<ApiOperationScenarioWSDTO> getOperationScenarios() {
-        return operationScenarios;
-    }
-
-    public void setOperationScenarios(List<ApiOperationScenarioWSDTO> operationScenarios) {
-        this.operationScenarios = operationScenarios;
     }
 
     public List<ApiOperationActivityWSDTO> getOperationActivities() {

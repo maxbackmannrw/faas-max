@@ -2,7 +2,6 @@ package com.faas.core.api.endpoint.controller.campaign.details;
 
 import com.faas.core.api.middleware.campaign.details.ApiCampaignDetailsMiddleware;
 import com.faas.core.api.model.ws.campaign.details.ApiCampaignDetailsWSModel;
-import com.faas.core.api.model.ws.campaign.details.ApiCampaignScenarioWSModel;
 import com.faas.core.api.model.ws.general.ApiSummaryWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiOperationListWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiOperationWSModel;
@@ -39,30 +38,6 @@ public class ApiCampaignDetailsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-    @RequestMapping(value = ApiRoute.API_GET_CAMPAIGN_SCENARIOS, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetCampaignScenarios(@RequestParam long agentId,
-                                                     @RequestParam String campaignId) {
-
-        ApiCampaignScenarioWSModel response = apiCampaignDetailsMiddleware.apiGetCampaignScenarios(agentId, campaignId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-    @RequestMapping(value = ApiRoute.API_GET_CAMPAIGN_SCENARIO, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetCampaignScenario(@RequestParam long agentId,
-                                                    @RequestParam String campaignId,
-                                                    @RequestParam String scenarioId) {
-
-        ApiCampaignScenarioWSModel response = apiCampaignDetailsMiddleware.apiGetCampaignScenario(agentId,campaignId,scenarioId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
 
     @RequestMapping(value = ApiRoute.API_GET_CAMPAIGN_OPERATIONS, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetCampaignOperations(@RequestParam long agentId,

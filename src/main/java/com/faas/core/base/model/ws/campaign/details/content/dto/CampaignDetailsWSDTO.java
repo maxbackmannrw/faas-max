@@ -4,7 +4,6 @@ import com.faas.core.data.db.campaign.content.CampaignDBModel;
 import com.faas.core.base.model.ws.campaign.details.agent.dto.CampaignAgentWSDTO;
 import com.faas.core.base.model.ws.campaign.details.channel.dto.CampaignChannelWSDTO;
 import com.faas.core.base.model.ws.campaign.details.remote.dto.CampaignRemoteWSDTO;
-import com.faas.core.base.model.ws.campaign.details.scenario.dto.CampaignScenarioWSDTO;
 import com.faas.core.base.model.ws.campaign.details.temp.content.dto.CampaignTempWSDTO;
 import com.faas.core.base.model.ws.campaign.details.trigger.content.dto.CampaignTriggerWSDTO;
 
@@ -17,19 +16,17 @@ public class CampaignDetailsWSDTO {
     private CampaignTempWSDTO campaignTemp;
     private CampaignChannelWSDTO campaignChannel;
     private CampaignTriggerWSDTO campaignTrigger;
-    private List<CampaignScenarioWSDTO> campaignScenarios;
     private List<CampaignRemoteWSDTO> campaignRemotes;
 
     public CampaignDetailsWSDTO() {
     }
 
-    public CampaignDetailsWSDTO(CampaignDBModel campaign, List<CampaignAgentWSDTO> campaignAgents, CampaignTempWSDTO campaignTemp, CampaignChannelWSDTO campaignChannel, CampaignTriggerWSDTO campaignTrigger, List<CampaignScenarioWSDTO> campaignScenarios, List<CampaignRemoteWSDTO> campaignRemotes) {
+    public CampaignDetailsWSDTO(CampaignDBModel campaign, List<CampaignAgentWSDTO> campaignAgents, CampaignTempWSDTO campaignTemp, CampaignChannelWSDTO campaignChannel, CampaignTriggerWSDTO campaignTrigger, List<CampaignRemoteWSDTO> campaignRemotes) {
         this.campaign = campaign;
         this.campaignAgents = campaignAgents;
         this.campaignTemp = campaignTemp;
         this.campaignChannel = campaignChannel;
         this.campaignTrigger = campaignTrigger;
-        this.campaignScenarios = campaignScenarios;
         this.campaignRemotes = campaignRemotes;
     }
 
@@ -71,14 +68,6 @@ public class CampaignDetailsWSDTO {
 
     public void setCampaignTrigger(CampaignTriggerWSDTO campaignTrigger) {
         this.campaignTrigger = campaignTrigger;
-    }
-
-    public List<CampaignScenarioWSDTO> getCampaignScenarios() {
-        return campaignScenarios;
-    }
-
-    public void setCampaignScenarios(List<CampaignScenarioWSDTO> campaignScenarios) {
-        this.campaignScenarios = campaignScenarios;
     }
 
     public List<CampaignRemoteWSDTO> getCampaignRemotes() {

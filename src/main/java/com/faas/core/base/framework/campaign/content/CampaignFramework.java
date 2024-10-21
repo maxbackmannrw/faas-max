@@ -5,7 +5,6 @@ import com.faas.core.data.db.campaign.settings.CampaignTypeDBModel;
 import com.faas.core.base.model.ws.campaign.content.dto.CampaignWSDTO;
 import com.faas.core.data.repo.campaign.content.CampaignRepository;
 import com.faas.core.data.repo.campaign.details.channel.CampaignChannelRepository;
-import com.faas.core.data.repo.campaign.details.scenario.CampaignScenarioRepository;
 import com.faas.core.data.repo.campaign.details.temp.EmailTempRepository;
 import com.faas.core.data.repo.campaign.details.temp.PushTempRepository;
 import com.faas.core.data.repo.campaign.details.temp.SmsTempRepository;
@@ -49,9 +48,6 @@ public class CampaignFramework {
 
     @Autowired
     WappMessageTempRepository wappMessageTempRepository;
-
-    @Autowired
-    CampaignScenarioRepository campaignScenarioRepository;
 
     @Autowired
     EmailTriggerRepository emailTriggerRepository;
@@ -167,7 +163,6 @@ public class CampaignFramework {
             CampaignWSDTO campaignWSDTO = campaignHelper.getCampaignWSDTO(campaignDBModel.get());
 
             campaignRepository.delete(campaignDBModel.get());
-            campaignScenarioRepository.deleteAll(campaignScenarioRepository.findByCampaignId(campaignId));
             campaignChannelRepository.deleteAll(campaignChannelRepository.findByCampaignId(campaignId));
 
             emailTempRepository.deleteAll(emailTempRepository.findByCampaignId(campaignId));

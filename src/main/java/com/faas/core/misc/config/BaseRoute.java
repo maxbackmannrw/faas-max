@@ -319,16 +319,6 @@ public class BaseRoute {
     public static final String CREATE_CAMPAIGN_REMOTE = "createcampaignremote";
     public static final String REMOVE_CAMPAIGN_REMOTE = "removecampaignremote";
 
-    public static final String GET_CAMPAIGN_SCENARIOS = "getcampaignscenarios";
-    public static final String GET_CAMPAIGN_SCENARIO = "getcampaignscenario";
-    public static final String CREATE_CAMPAIGN_SCENARIO = "createcampaignscenario";
-    public static final String REMOVE_CAMPAIGN_SCENARIO = "removecampaignscenario";
-
-    public static final String GET_CAMPAIGN_SCENARIO_DATAS = "getcampaignscenariodatas";
-    public static final String GET_CAMPAIGN_SCENARIO_DATA = "getcampaignscenariodata";
-    public static final String CREATE_CAMPAIGN_SCENARIO_DATA = "createcampaignscenariodata";
-    public static final String UPDATE_CAMPAIGN_SCENARIO_DATA = "updatecampaignscenariodata";
-    public static final String REMOVE_CAMPAIGN_SCENARIO_DATA = "removecampaignscenariodata";
 
 
     public static final String GET_CAMPAIGN_TRIGGERS = "getcampaigntriggers";
@@ -426,27 +416,6 @@ public class BaseRoute {
     public static final String CREATE_TRIGGER_TYPE = "createtriggertype";
     public static final String UPDATE_TRIGGER_TYPE = "updatetriggertype";
     public static final String REMOVE_TRIGGER_TYPE = "removetriggertype";
-
-
-    public static final String GET_SCENARIOS = "getscenarios";
-    public static final String GET_SCENARIOS_BY_BASE_TYPE = "getscenariosbybasetype";
-    public static final String GET_SCENARIO = "getscenario";
-    public static final String CREATE_SCENARIO = "createscenario";
-    public static final String UPDATE_SCENARIO = "updatescenario";
-    public static final String REMOVE_SCENARIO = "removesscenario";
-
-    public static final String GET_SCENARIO_DATAS = "getscenariodatas";
-    public static final String GET_SCENARIO_DATA = "getscenariodata";
-    public static final String CREATE_SCENARIO_DATA = "createscenariodata";
-    public static final String UPDATE_SCENARIO_DATA = "updatescenariodata";
-    public static final String REMOVE_SCENARIO_DATA = "removescenariodata";
-
-    public static final String GET_SCENARIO_TYPES = "getscenariotypes";
-    public static final String GET_SCENARIO_TYPES_BY_BASE_TYPE = "getscenariotypesbybasetype";
-    public static final String GET_SCENARIO_TYPE = "getscenariotype";
-    public static final String CREATE_SCENARIO_TYPE = "createscenariotype";
-    public static final String UPDATE_SCENARIO_TYPE = "updatescenariotype";
-    public static final String REMOVE_SCENARIO_TYPE = "removescenariotype";
 
 
     public static final String INIT_SYSTEM_CONTENT = "initsystemcontent";

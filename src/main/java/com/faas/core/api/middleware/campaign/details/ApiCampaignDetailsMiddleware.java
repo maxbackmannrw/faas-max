@@ -2,9 +2,7 @@ package com.faas.core.api.middleware.campaign.details;
 
 import com.faas.core.api.framework.campaign.details.ApiCampaignDetailsFramework;
 import com.faas.core.api.model.ws.campaign.details.ApiCampaignDetailsWSModel;
-import com.faas.core.api.model.ws.campaign.details.ApiCampaignScenarioWSModel;
 import com.faas.core.api.model.ws.campaign.details.dto.ApiCampaignDetailsWSDTO;
-import com.faas.core.api.model.ws.campaign.details.dto.ApiCampaignScenarioWSDTO;
 import com.faas.core.api.model.ws.general.dto.ApiSummaryWSDTO;
 import com.faas.core.api.model.ws.general.ApiSummaryWSModel;
 import com.faas.core.api.model.ws.operation.content.ApiOperationListWSModel;
@@ -48,45 +46,6 @@ public class ApiCampaignDetailsMiddleware {
         return response;
     }
 
-    public ApiCampaignScenarioWSModel apiGetCampaignScenarios(long agentId, String campaignId) {
-
-        ApiCampaignScenarioWSModel response = new ApiCampaignScenarioWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-
-        List<ApiCampaignScenarioWSDTO>campaignScenarioWSDTOS = apiCampaignDetailsFramework.apiGetCampaignScenariosService(agentId, campaignId);
-        if (campaignScenarioWSDTOS != null) {
-            response.setCampaignScenarios(campaignScenarioWSDTOS);
-        }
-
-        general.setOperation("apiGetCampaignScenarios");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
-
-    public ApiCampaignScenarioWSModel apiGetCampaignScenario(long agentId,String campaignId,String scenarioId) {
-
-        ApiCampaignScenarioWSModel response = new ApiCampaignScenarioWSModel();
-        GeneralWSModel general = new GeneralWSModel();
-        List<ApiCampaignScenarioWSDTO> campaignScenarioWSDTOS = new ArrayList<>();
-
-        ApiCampaignScenarioWSDTO campaignDetailsWSDTO = apiCampaignDetailsFramework.apiGetCampaignScenarioService(agentId,campaignId,scenarioId);
-        if (campaignDetailsWSDTO != null) {
-            campaignScenarioWSDTOS.add(campaignDetailsWSDTO);
-        }
-
-        response.setCampaignScenarios(campaignScenarioWSDTOS);
-        general.setOperation("apiGetCampaignScenario");
-        general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
-        general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
-        general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
-        response.setGeneral(general);
-
-        return response;
-    }
 
     public ApiOperationListWSModel apiGetCampaignOperations(long agentId, String campaignId, String operationState, int reqPage, int reqSize) {
 

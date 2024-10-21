@@ -59,11 +59,6 @@ public class SystemContentFramework {
             utilzHelper.removeAllCampaignsHelper();
             return new SystemContentWSDTO(AppConstant.CAMPAIGN_CONTENTS, AppConstant.CAMPAIGN_CONTENTS, true);
         }
-        if (contentType.equalsIgnoreCase(AppConstant.SCENARIO_CONTENTS)) {
-            utilzHelper.removeAllScenariosHelper();
-            return new SystemContentWSDTO(AppConstant.SCENARIO_CONTENTS, AppConstant.SCENARIO_CONTENTS, true);
-        }
-
         if (contentType.equalsIgnoreCase(AppConstant.USER_CONTENTS)) {
             utilzHelper.removeAllUsersHelper();
             return new SystemContentWSDTO(AppConstant.USER_CONTENTS, AppConstant.USER_CONTENTS, true);

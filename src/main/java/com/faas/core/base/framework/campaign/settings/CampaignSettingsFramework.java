@@ -6,7 +6,6 @@ import com.faas.core.base.model.ws.campaign.settings.dto.CampaignTypeWSDTO;
 import com.faas.core.base.model.ws.campaign.settings.dto.TriggerTypeWSDTO;
 import com.faas.core.data.repo.campaign.settings.CampaignTypeRepository;
 import com.faas.core.data.repo.campaign.settings.TriggerTypeRepository;
-import com.faas.core.data.repo.scenario.settings.ScenarioTypeRepository;
 import com.faas.core.misc.config.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,11 +18,9 @@ import java.util.Optional;
 @Service
 public class CampaignSettingsFramework {
 
-    @Autowired
-    CampaignTypeRepository campaignTypeRepository;
 
     @Autowired
-    ScenarioTypeRepository scenarioTypeRepository;
+    CampaignTypeRepository campaignTypeRepository;
 
     @Autowired
     TriggerTypeRepository triggerTypeRepository;
