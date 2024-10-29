@@ -1,23 +1,23 @@
 package com.faas.core.misc.helpers.operation.content;
 
-import com.faas.core.api.model.ws.operation.manager.activity.dto.ApiOperationActivityWSDTO;
+import com.faas.core.api.model.ws.operation.manager.details.dto.ApiOperationActivityWSDTO;
 import com.faas.core.api.model.ws.operation.manager.client.dto.ApiOperationClientWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationListWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiValidateOperationWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
-import com.faas.core.api.model.ws.operation.manager.call.sip.dto.ApiOperationSipAccountWSDTO;
-import com.faas.core.api.model.ws.operation.manager.call.sip.dto.ApiOperationSipChannelWSDTO;
-import com.faas.core.api.model.ws.operation.manager.call.wapp.dto.ApiOperationWappCallAccountWSDTO;
-import com.faas.core.api.model.ws.operation.manager.call.wapp.dto.ApiOperationWappCallChannelWSDTO;
-import com.faas.core.api.model.ws.operation.manager.call.content.dto.ApiOperationCallChannelWSDTO;
-import com.faas.core.api.model.ws.operation.manager.intel.dto.ApiOperationIntelWSDTO;
-import com.faas.core.api.model.ws.operation.manager.message.content.dto.ApiOperationMessageChannelWSDTO;
-import com.faas.core.api.model.ws.operation.manager.message.email.dto.ApiOperationEmailChannelWSDTO;
-import com.faas.core.api.model.ws.operation.manager.message.push.dto.ApiOperationPushChannelWSDTO;
-import com.faas.core.api.model.ws.operation.manager.message.sms.dto.ApiOperationSmsChannelWSDTO;
-import com.faas.core.api.model.ws.operation.manager.message.wapp.dto.ApiOperationWappMessageChannelWSDTO;
+import com.faas.core.api.model.ws.operation.manager.channel.call.sip.dto.ApiOperationSipAccountWSDTO;
+import com.faas.core.api.model.ws.operation.manager.channel.call.sip.dto.ApiOperationSipChannelWSDTO;
+import com.faas.core.api.model.ws.operation.manager.channel.call.wapp.dto.ApiOperationWappCallAccountWSDTO;
+import com.faas.core.api.model.ws.operation.manager.channel.call.wapp.dto.ApiOperationWappCallChannelWSDTO;
+import com.faas.core.api.model.ws.operation.manager.channel.content.dto.ApiOperationCallChannelWSDTO;
+import com.faas.core.api.model.ws.operation.manager.client.dto.ApiOperationClientIntelWSDTO;
+import com.faas.core.api.model.ws.operation.manager.channel.content.dto.ApiOperationMessageChannelWSDTO;
+import com.faas.core.api.model.ws.operation.manager.channel.message.email.dto.ApiOperationEmailChannelWSDTO;
+import com.faas.core.api.model.ws.operation.manager.channel.message.push.dto.ApiOperationPushChannelWSDTO;
+import com.faas.core.api.model.ws.operation.manager.channel.message.sms.dto.ApiOperationSmsChannelWSDTO;
+import com.faas.core.api.model.ws.operation.manager.channel.message.wapp.dto.ApiOperationWappMessageChannelWSDTO;
 import com.faas.core.api.model.ws.operation.manager.content.dto.ApiOperationAgentWSDTO;
-import com.faas.core.api.model.ws.operation.manager.campaign.dto.ApiOperationCampaignWSDTO;
+import com.faas.core.api.model.ws.operation.manager.details.dto.ApiOperationCampaignWSDTO;
 import com.faas.core.api.model.ws.operation.manager.content.dto.ApiOperationManagerWSDTO;
 import com.faas.core.data.db.campaign.content.CampaignDBModel;
 import com.faas.core.data.db.client.content.ClientDBModel;
@@ -325,12 +325,12 @@ public class OperationHelper {
         return operationClientWSDTO;
     }
 
-    public List<ApiOperationIntelWSDTO> getApiOperationIntelWSDTOS(ClientDBModel clientDBModel) {
+    public List<ApiOperationClientIntelWSDTO> getApiOperationIntelWSDTOS(ClientDBModel clientDBModel) {
 
-        List<ApiOperationIntelWSDTO> operationIntelWSDTOS = new ArrayList<>();
+        List<ApiOperationClientIntelWSDTO> operationIntelWSDTOS = new ArrayList<>();
         List<ClientIntelDBModel> clientIntelDBModels = clientIntelRepository.findByClientId(clientDBModel.getId());
         for (ClientIntelDBModel clientIntelDBModel : clientIntelDBModels) {
-            operationIntelWSDTOS.add(new ApiOperationIntelWSDTO(clientIntelDBModel));
+            operationIntelWSDTOS.add(new ApiOperationClientIntelWSDTO(clientIntelDBModel));
         }
         return operationIntelWSDTOS;
     }

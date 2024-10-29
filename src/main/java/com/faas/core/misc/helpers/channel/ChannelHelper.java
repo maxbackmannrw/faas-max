@@ -1,13 +1,13 @@
 package com.faas.core.misc.helpers.channel;
 
-import com.faas.core.api.model.ws.operation.manager.call.sip.dto.ApiOperationSipAccountWSDTO;
-import com.faas.core.api.model.ws.operation.manager.call.sip.dto.ApiOperationSipCallWSDTO;
-import com.faas.core.api.model.ws.operation.manager.call.wapp.dto.ApiOperationWappCallAccountWSDTO;
-import com.faas.core.api.model.ws.operation.manager.call.wapp.dto.ApiOperationWappCallWSDTO;
-import com.faas.core.api.model.ws.operation.manager.message.email.dto.ApiOperationEmailAccountWSDTO;
-import com.faas.core.api.model.ws.operation.manager.message.push.dto.ApiOperationPushAccountWSDTO;
-import com.faas.core.api.model.ws.operation.manager.message.sms.dto.ApiOperationSmsAccountWSDTO;
-import com.faas.core.api.model.ws.operation.manager.message.wapp.dto.ApiOperationWappMessageAccountWSDTO;
+import com.faas.core.api.model.ws.operation.manager.channel.call.sip.dto.ApiOperationSipAccountWSDTO;
+import com.faas.core.api.model.ws.operation.manager.channel.call.sip.dto.ApiOperationSipCallWSDTO;
+import com.faas.core.api.model.ws.operation.manager.channel.call.wapp.dto.ApiOperationWappCallAccountWSDTO;
+import com.faas.core.api.model.ws.operation.manager.channel.call.wapp.dto.ApiOperationWappCallWSDTO;
+import com.faas.core.api.model.ws.operation.manager.channel.message.email.dto.ApiOperationEmailAccountWSDTO;
+import com.faas.core.api.model.ws.operation.manager.channel.message.push.dto.ApiOperationPushAccountWSDTO;
+import com.faas.core.api.model.ws.operation.manager.channel.message.sms.dto.ApiOperationSmsAccountWSDTO;
+import com.faas.core.api.model.ws.operation.manager.channel.message.wapp.dto.ApiOperationWappMessageAccountWSDTO;
 import com.faas.core.data.db.campaign.details.channel.dao.CampaignEmailChannelDAO;
 import com.faas.core.data.db.campaign.details.channel.dao.CampaignPushChannelDAO;
 import com.faas.core.data.db.campaign.details.channel.dao.CampaignSmsChannelDAO;

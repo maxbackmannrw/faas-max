@@ -1,6 +1,7 @@
 package com.faas.core.api.framework.operation.manager.client;
 
 import com.faas.core.api.model.ws.operation.manager.client.dto.ApiOperationClientWSDTO;
+import com.faas.core.api.model.ws.operation.manager.client.dto.ApiOperationClientIntelWSDTO;
 import com.faas.core.data.db.client.content.ClientDBModel;
 import com.faas.core.data.db.client.details.ClientDetailsDBModel;
 import com.faas.core.data.db.client.details.dao.ClientNoteDAO;
@@ -19,6 +20,7 @@ import java.util.Optional;
 
 @Component
 public class ApiOperationClientFramework {
+
 
     @Autowired
     ClientRepository clientRepository;
@@ -49,7 +51,7 @@ public class ApiOperationClientFramework {
         return null;
     }
 
-    public List<ClientNoteDAO> apiGetOperationNotesService(long agentId, String operationId) {
+    public List<ClientNoteDAO> apiGetOperationClientNotesService(long agentId, String operationId) {
 
         List<ClientNoteDAO> operationNotes = new ArrayList<>();
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
@@ -64,7 +66,7 @@ public class ApiOperationClientFramework {
         return operationNotes;
     }
 
-    public ClientNoteDAO apiGetOperationNoteService(long agentId, String operationId, String noteId) {
+    public ClientNoteDAO apiGetOperationClientNoteService(long agentId, String operationId, String noteId) {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
         if (!operationDBModels.isEmpty()) {
@@ -80,7 +82,7 @@ public class ApiOperationClientFramework {
         return null;
     }
 
-    public ClientNoteDAO apiCreateOperationNoteService(long agentId, String operationId, String noteTitle, String noteBody) {
+    public ClientNoteDAO apiCreateOperationClientNoteService(long agentId, String operationId, String noteTitle, String noteBody) {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
         if (!operationDBModels.isEmpty()) {
@@ -106,7 +108,7 @@ public class ApiOperationClientFramework {
         return null;
     }
 
-    public ClientNoteDAO apiUpdateOperationNoteService(long agentId, String operationId, String noteId, String noteTitle, String noteBody) {
+    public ClientNoteDAO apiUpdateOperationClientNoteService(long agentId, String operationId, String noteId, String noteTitle, String noteBody) {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
         if (!operationDBModels.isEmpty()) {
@@ -131,7 +133,7 @@ public class ApiOperationClientFramework {
         return null;
     }
 
-    public ClientNoteDAO apiRemoveOperationNoteService(long agentId, String operationId, String noteId) {
+    public ClientNoteDAO apiRemoveOperationClientNoteService(long agentId, String operationId, String noteId) {
 
         List<OperationDBModel> operationDBModels = operationRepository.findByIdAndAgentId(operationId, agentId);
         if (!operationDBModels.isEmpty()) {
@@ -153,6 +155,18 @@ public class ApiOperationClientFramework {
         }
         return null;
     }
+
+
+    public List<ApiOperationClientIntelWSDTO> apiGetOperationClientIntelsService(long agentId, long clientId) {
+
+        return null;
+    }
+
+    public ApiOperationClientIntelWSDTO apiGetOperationClientIntelService(long agentId, long clientId) {
+
+        return null;
+    }
+
 
 
 }

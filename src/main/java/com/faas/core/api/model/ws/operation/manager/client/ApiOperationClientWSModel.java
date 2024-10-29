@@ -6,14 +6,14 @@ import com.faas.core.base.model.ws.general.GeneralWSModel;
 public class ApiOperationClientWSModel {
 
     private GeneralWSModel general;
-    private ApiOperationClientWSDTO client;
+    private ApiOperationClientWSDTO operationClient;
 
     public ApiOperationClientWSModel() {
     }
 
-    public ApiOperationClientWSModel(GeneralWSModel general, ApiOperationClientWSDTO client) {
+    public ApiOperationClientWSModel(GeneralWSModel general, ApiOperationClientWSDTO operationClient) {
         this.general = general;
-        this.client = client;
+        this.operationClient = operationClient;
     }
 
     public GeneralWSModel getGeneral() {
@@ -24,11 +24,11 @@ public class ApiOperationClientWSModel {
         this.general = general;
     }
 
-    public ApiOperationClientWSDTO getClient() {
-        return client;
+    public ApiOperationClientWSDTO getOperationClient() {
+        return operationClient;
     }
 
-    public void setClient(ApiOperationClientWSDTO client) {
-        this.client = client;
+    public void setOperationClient(ApiOperationClientWSDTO operationClient) {
+        this.operationClient = operationClient;
     }
 }

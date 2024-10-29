@@ -1,9 +1,9 @@
 package com.faas.core.api.model.ws.operation.manager.content.dto;
 
-import com.faas.core.api.model.ws.operation.manager.activity.dto.ApiOperationActivityWSDTO;
-import com.faas.core.api.model.ws.operation.manager.campaign.dto.ApiOperationCampaignWSDTO;
+import com.faas.core.api.model.ws.operation.manager.details.dto.ApiOperationActivityWSDTO;
+import com.faas.core.api.model.ws.operation.manager.details.dto.ApiOperationCampaignWSDTO;
 import com.faas.core.api.model.ws.operation.manager.client.dto.ApiOperationClientWSDTO;
-import com.faas.core.api.model.ws.operation.manager.intel.dto.ApiOperationIntelWSDTO;
+import com.faas.core.api.model.ws.operation.manager.client.dto.ApiOperationClientIntelWSDTO;
 import com.faas.core.data.db.operation.content.OperationDBModel;
 
 import java.util.List;
@@ -13,14 +13,14 @@ public class ApiOperationManagerWSDTO {
     private OperationDBModel operation;
     private ApiOperationAgentWSDTO operationAgent;
     private ApiOperationClientWSDTO operationClient;
-    private List<ApiOperationIntelWSDTO> operationIntels;
+    private List<ApiOperationClientIntelWSDTO> operationIntels;
     private ApiOperationCampaignWSDTO operationCampaign;
     private List<ApiOperationActivityWSDTO>operationActivities;
 
     public ApiOperationManagerWSDTO() {
     }
 
-    public ApiOperationManagerWSDTO(OperationDBModel operation, ApiOperationAgentWSDTO operationAgent, ApiOperationClientWSDTO operationClient, List<ApiOperationIntelWSDTO> operationIntels, ApiOperationCampaignWSDTO operationCampaign, List<ApiOperationActivityWSDTO> operationActivities) {
+    public ApiOperationManagerWSDTO(OperationDBModel operation, ApiOperationAgentWSDTO operationAgent, ApiOperationClientWSDTO operationClient, List<ApiOperationClientIntelWSDTO> operationIntels, ApiOperationCampaignWSDTO operationCampaign, List<ApiOperationActivityWSDTO> operationActivities) {
         this.operation = operation;
         this.operationAgent = operationAgent;
         this.operationClient = operationClient;
@@ -53,11 +53,11 @@ public class ApiOperationManagerWSDTO {
         this.operationClient = operationClient;
     }
 
-    public List<ApiOperationIntelWSDTO> getOperationIntels() {
+    public List<ApiOperationClientIntelWSDTO> getOperationIntels() {
         return operationIntels;
     }
 
-    public void setOperationIntels(List<ApiOperationIntelWSDTO> operationIntels) {
+    public void setOperationIntels(List<ApiOperationClientIntelWSDTO> operationIntels) {
         this.operationIntels = operationIntels;
     }
 

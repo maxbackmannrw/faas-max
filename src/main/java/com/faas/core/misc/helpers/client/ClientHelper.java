@@ -86,17 +86,21 @@ public class ClientHelper {
             }
 
             if (clientDBModel.getEmailAddress() != null) {
+
                 List<ClientEmailDAO> clientEmailDAOS = new ArrayList<>();
                 clientEmailDAOS.add(createClientEmailDAO(clientDBModel.getEmailAddress(), AppConstant.MAIN_TYPE));
                 clientDetailsDBModel.setClientEmails(clientEmailDAOS);
+
             } else {
                 clientDetailsDBModel.setClientEmails(new ArrayList<>());
             }
 
             if (clientDBModel.getClientCountry() != null) {
+
                 List<ClientAddressDAO> clientAddressDAOS = new ArrayList<>();
                 clientAddressDAOS.add(createClientAddressDAO(AppConstant.NONE, clientDBModel.getClientCity(), AppConstant.NONE, AppConstant.NONE, clientDBModel.getClientCountry(), AppConstant.MAIN_TYPE));
                 clientDetailsDBModel.setClientAddresses(clientAddressDAOS);
+
             } else {
                 clientDetailsDBModel.setClientAddresses(new ArrayList<>());
             }
