@@ -2,8 +2,7 @@ package com.faas.core.api.endpoint.controller.operation.manager.client;
 
 import com.faas.core.api.middleware.operation.manager.client.ApiOperationClientMiddleware;
 import com.faas.core.api.model.ws.operation.manager.client.ApiOperationClientWSModel;
-import com.faas.core.api.model.ws.operation.manager.client.ApiOperationClientIntelWSModel;
-import com.faas.core.api.model.ws.operation.manager.client.ApiOperationClientNoteWSModel;
+import com.faas.core.api.model.ws.operation.manager.client.ApiOperationNoteWSModel;
 import com.faas.core.misc.config.ApiRoute;
 import com.faas.core.misc.config.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,24 +35,11 @@ public class ApiOperationClientController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION_CLIENT_NOTES, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperationClientNotes(@RequestParam long agentId,
-                                                        @RequestParam String operationId) {
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_NOTES, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationNotes(@RequestParam long agentId,
+                                                  @RequestParam String operationId) {
 
-        ApiOperationClientNoteWSModel response = apiOperationClientMiddleware.apiGetOperationClientNotes(agentId, operationId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION_CLIENT_NOTE, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperationClientNote(@RequestParam long agentId,
-                                                       @RequestParam String operationId,
-                                                       @RequestParam String noteId) {
-
-        ApiOperationClientNoteWSModel response = apiOperationClientMiddleware.apiGetOperationClientNote(agentId, operationId, noteId);
+        ApiOperationNoteWSModel response = apiOperationClientMiddleware.apiGetOperationNotes(agentId, operationId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -61,28 +47,12 @@ public class ApiOperationClientController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-    @RequestMapping(value = ApiRoute.API_CREATE_OPERATION_CLIENT_NOTE, method = RequestMethod.POST)
-    public ResponseEntity<?> apiCreateOperationClientNote(@RequestParam long agentId,
-                                                          @RequestParam String operationId,
-                                                          @RequestParam String noteTitle,
-                                                          @RequestParam String noteBody) {
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_NOTE, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationNote(@RequestParam long agentId,
+                                                 @RequestParam String operationId,
+                                                 @RequestParam String noteId) {
 
-        ApiOperationClientNoteWSModel response = apiOperationClientMiddleware.apiCreateOperationClientNote(agentId, operationId, noteTitle, noteBody);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-    @RequestMapping(value = ApiRoute.API_UPDATE_OPERATION_CLIENT_NOTE, method = RequestMethod.POST)
-    public ResponseEntity<?> apiUpdateOperationClientNote(@RequestParam long agentId,
-                                                          @RequestParam String operationId,
-                                                          @RequestParam String noteId,
-                                                          @RequestParam String noteTitle,
-                                                          @RequestParam String noteBody) {
-
-        ApiOperationClientNoteWSModel response = apiOperationClientMiddleware.apiUpdateOperationClientNote(agentId, operationId, noteId, noteTitle, noteBody);
+        ApiOperationNoteWSModel response = apiOperationClientMiddleware.apiGetOperationNote(agentId, operationId, noteId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -90,12 +60,41 @@ public class ApiOperationClientController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-    @RequestMapping(value = ApiRoute.API_REMOVE_OPERATION_CLIENT_NOTE, method = RequestMethod.POST)
-    public ResponseEntity<?> apiRemoveOperationClientNote(@RequestParam long agentId,
-                                                          @RequestParam String operationId,
-                                                          @RequestParam String noteId) {
+    @RequestMapping(value = ApiRoute.API_CREATE_OPERATION_NOTE, method = RequestMethod.POST)
+    public ResponseEntity<?> apiCreateOperationNote(@RequestParam long agentId,
+                                                    @RequestParam String operationId,
+                                                    @RequestParam String noteTitle,
+                                                    @RequestParam String noteBody) {
 
-        ApiOperationClientNoteWSModel response = apiOperationClientMiddleware.apiRemoveOperationClientNote(agentId, operationId, noteId);
+        ApiOperationNoteWSModel response = apiOperationClientMiddleware.apiCreateOperationNote(agentId, operationId, noteTitle, noteBody);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+    @RequestMapping(value = ApiRoute.API_UPDATE_OPERATION_NOTE, method = RequestMethod.POST)
+    public ResponseEntity<?> apiUpdateOperationNote(@RequestParam long agentId,
+                                                    @RequestParam String operationId,
+                                                    @RequestParam String noteId,
+                                                    @RequestParam String noteTitle,
+                                                    @RequestParam String noteBody) {
+
+        ApiOperationNoteWSModel response = apiOperationClientMiddleware.apiUpdateOperationNote(agentId, operationId, noteId, noteTitle, noteBody);
+
+        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+    @RequestMapping(value = ApiRoute.API_REMOVE_OPERATION_NOTE, method = RequestMethod.POST)
+    public ResponseEntity<?> apiRemoveOperationNote(@RequestParam long agentId,
+                                                    @RequestParam String operationId,
+                                                    @RequestParam String noteId) {
+
+        ApiOperationNoteWSModel response = apiOperationClientMiddleware.apiRemoveOperationNote(agentId, operationId, noteId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -104,28 +103,5 @@ public class ApiOperationClientController {
     }
 
 
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION_CLIENT_INTELS, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperationClientIntels(@RequestParam long agentId,
-                                                         @RequestParam long clientId) {
-
-        ApiOperationClientIntelWSModel response = apiOperationClientMiddleware.apiGetOperationClientIntels(agentId, clientId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
-
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION_CLIENT_INTEL, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperationClientIntel(@RequestParam long agentId,
-                                                        @RequestParam long clientId) {
-
-        ApiOperationClientIntelWSModel response = apiOperationClientMiddleware.apiGetOperationClientIntel(agentId, clientId);
-
-        if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-    }
 
 }

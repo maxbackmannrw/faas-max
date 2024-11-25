@@ -1,6 +1,6 @@
 package com.faas.core.misc.helpers.operation.content;
 
-import com.faas.core.api.model.ws.operation.manager.details.dto.ApiOperationActivityWSDTO;
+import com.faas.core.api.model.ws.operation.manager.activity.dto.ApiOperationActivityWSDTO;
 import com.faas.core.api.model.ws.operation.manager.client.dto.ApiOperationClientWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationListWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiValidateOperationWSDTO;
@@ -10,7 +10,7 @@ import com.faas.core.api.model.ws.operation.manager.channel.call.sip.dto.ApiOper
 import com.faas.core.api.model.ws.operation.manager.channel.call.wapp.dto.ApiOperationWappCallAccountWSDTO;
 import com.faas.core.api.model.ws.operation.manager.channel.call.wapp.dto.ApiOperationWappCallChannelWSDTO;
 import com.faas.core.api.model.ws.operation.manager.channel.content.dto.ApiOperationCallChannelWSDTO;
-import com.faas.core.api.model.ws.operation.manager.client.dto.ApiOperationClientIntelWSDTO;
+import com.faas.core.api.model.ws.operation.manager.intel.dto.ApiOperationIntelWSDTO;
 import com.faas.core.api.model.ws.operation.manager.channel.content.dto.ApiOperationMessageChannelWSDTO;
 import com.faas.core.api.model.ws.operation.manager.channel.message.email.dto.ApiOperationEmailChannelWSDTO;
 import com.faas.core.api.model.ws.operation.manager.channel.message.push.dto.ApiOperationPushChannelWSDTO;
@@ -325,12 +325,12 @@ public class OperationHelper {
         return operationClientWSDTO;
     }
 
-    public List<ApiOperationClientIntelWSDTO> getApiOperationIntelWSDTOS(ClientDBModel clientDBModel) {
+    public List<ApiOperationIntelWSDTO> getApiOperationIntelWSDTOS(ClientDBModel clientDBModel) {
 
-        List<ApiOperationClientIntelWSDTO> operationIntelWSDTOS = new ArrayList<>();
+        List<ApiOperationIntelWSDTO> operationIntelWSDTOS = new ArrayList<>();
         List<ClientIntelDBModel> clientIntelDBModels = clientIntelRepository.findByClientId(clientDBModel.getId());
         for (ClientIntelDBModel clientIntelDBModel : clientIntelDBModels) {
-            operationIntelWSDTOS.add(new ApiOperationClientIntelWSDTO(clientIntelDBModel));
+            operationIntelWSDTOS.add(new ApiOperationIntelWSDTO(clientIntelDBModel));
         }
         return operationIntelWSDTOS;
     }

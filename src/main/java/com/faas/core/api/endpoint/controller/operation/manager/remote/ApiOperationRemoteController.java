@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-@RequestMapping(value = AppConstant.API_VERSION + "/api/operation/manager/remoteapp/")
+@RequestMapping(value = AppConstant.API_VERSION + "/api/operation/manager/remote/")
 public class ApiOperationRemoteController {
 
 

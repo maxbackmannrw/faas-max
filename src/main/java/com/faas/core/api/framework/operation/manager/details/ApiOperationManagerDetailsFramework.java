@@ -1,6 +1,5 @@
 package com.faas.core.api.framework.operation.manager.details;
 
-import com.faas.core.api.model.ws.operation.manager.details.dto.ApiOperationActivityWSDTO;
 import com.faas.core.api.model.ws.operation.manager.details.dto.ApiOperationCampaignWSDTO;
 import com.faas.core.data.db.campaign.content.CampaignDBModel;
 import com.faas.core.data.db.campaign.content.dao.CampaignScriptDAO;
@@ -10,7 +9,6 @@ import com.faas.core.misc.helpers.operation.content.OperationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,20 +44,5 @@ public class ApiOperationManagerDetailsFramework {
         }
         return null;
     }
-
-
-    public List<ApiOperationActivityWSDTO> apiGetOperationActivitiesService(long agentId, String operationId) {
-
-        List<ApiOperationActivityWSDTO> operationActivityWSDTOS = new ArrayList<>();
-
-        return operationActivityWSDTOS;
-    }
-
-    public ApiOperationActivityWSDTO apiGetOperationActivityService(long agentId, String operationId, String activityId) {
-
-
-        return null;
-    }
-
 
 }
