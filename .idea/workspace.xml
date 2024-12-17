@@ -7,7 +7,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish" />
+    <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,7 +72,7 @@
   </component>
   <component name="ProblemsViewState">
     <option name="autoscrollToSource" value="true" />
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
   </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
@@ -107,7 +110,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
@@ -1378,23 +1381,9 @@
       <workItem from="1734295063112" duration="142000" />
       <workItem from="1734343878709" duration="1004000" />
       <workItem from="1734427662889" duration="330000" />
-      <workItem from="1734428152916" duration="2988000" />
-    </task>
-    <task id="LOCAL-01072" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1728918895759</created>
-      <option name="number" value="01072" />
-      <option name="presentableId" value="LOCAL-01072" />
-      <option name="project" value="LOCAL" />
-      <updated>1728918895759</updated>
-    </task>
-    <task id="LOCAL-01073" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1728926339482</created>
-      <option name="number" value="01073" />
-      <option name="presentableId" value="LOCAL-01073" />
-      <option name="project" value="LOCAL" />
-      <updated>1728926339482</updated>
+      <workItem from="1734428152916" duration="3958000" />
+      <workItem from="1734455446782" duration="273000" />
+      <workItem from="1734455735428" duration="1150000" />
     </task>
     <task id="LOCAL-01074" summary="almost finish">
       <option name="closed" value="true" />
@@ -1772,7 +1761,23 @@
       <option name="project" value="LOCAL" />
       <updated>1734454008110</updated>
     </task>
-    <option name="localTasksCounter" value="1121" />
+    <task id="LOCAL-01121" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1734454348621</created>
+      <option name="number" value="01121" />
+      <option name="presentableId" value="LOCAL-01121" />
+      <option name="project" value="LOCAL" />
+      <updated>1734454348622</updated>
+    </task>
+    <task id="LOCAL-01122" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1734454414459</created>
+      <option name="number" value="01122" />
+      <option name="presentableId" value="LOCAL-01122" />
+      <option name="project" value="LOCAL" />
+      <updated>1734454414459</updated>
+    </task>
+    <option name="localTasksCounter" value="1123" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
