@@ -30,12 +30,10 @@ public class ApiOperationManagerMiddleware {
         ApiOperationManagerWSModel response = new ApiOperationManagerWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-      /*
-      ApiOperationManagerWSDTO operationManagerWSDTO = apiOperationManagerFramework.apiGetOperationManagerService(agentId, operationId);
-          if (operationManagerWSDTO != null) {
-             response.setOperationManager(operationManagerWSDTO);
-         }
-       */
+        ApiOperationManagerWSDTO operationManagerWSDTO = apiOperationManagerFramework.apiGetOperationManagerService(agentId, operationId);
+        if (operationManagerWSDTO != null) {
+            response.setOperationManager(operationManagerWSDTO);
+        }
 
         general.setOperation("apiGetOperationManager");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
