@@ -1,2 +1,1 @@
 # faas-max
-# faas-max
