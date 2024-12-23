@@ -45,20 +45,20 @@ public class ApiRoute {
     public static final String API_SWITCH_OPERATION = "apiswitchoperation";
 
 
-    public static final String API_GET_OPERATION_CAMPAIGN = "apigetoperationcampaign";
-    public static final String API_GET_OPERATION_CAMPAIGN_SCRIPTS = "apigetoperationcampaignscripts";
-
 
     public static final String API_GET_OPERATION_ACTIVITIES = "apigetoperationactivities";
     public static final String API_GET_OPERATION_ACTIVITY = "apigetoperationactivity";
 
 
+    public static final String API_GET_OPERATION_DETAILS = "apigetoperationdetails";
+    public static final String API_GET_OPERATION_CAMPAIGN = "apigetoperationcampaign";
+    public static final String API_GET_OPERATION_CAMPAIGN_SCRIPTS = "apigetoperationcampaignscripts";
     public static final String API_GET_OPERATION_CLIENT = "apigetoperationclient";
-    public static final String API_GET_OPERATION_CLIENT_NOTES = "apigetoperationclientnotes";
-    public static final String API_GET_OPERATION_CLIENT_NOTE = "apigetoperationclientnote";
-    public static final String API_CREATE_OPERATION_CLIENT_NOTE = "apicreateoperationclientnote";
-    public static final String API_UPDATE_OPERATION_CLIENT_NOTE = "apiupdateoperationclientnote";
-    public static final String API_REMOVE_OPERATION_CLIENT_NOTE = "apiremoveoperationclientnote";
+    public static final String API_GET_OPERATION_NOTES = "apigetoperationnotes";
+    public static final String API_GET_OPERATION_NOTE = "apigetoperationnote";
+    public static final String API_CREATE_OPERATION_NOTE = "apicreateoperationnote";
+    public static final String API_UPDATE_OPERATION_NOTE = "apiupdateoperationnote";
+    public static final String API_REMOVE_OPERATION_NOTE = "apiremoveoperationnote";
 
 
     public static final String API_GET_OPERATION_INTELS = "apigetoperationintels";

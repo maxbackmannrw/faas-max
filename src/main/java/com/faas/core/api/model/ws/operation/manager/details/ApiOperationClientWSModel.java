@@ -1,6 +1,6 @@
-package com.faas.core.api.model.ws.operation.manager.client;
+package com.faas.core.api.model.ws.operation.manager.details;
 
-import com.faas.core.api.model.ws.operation.manager.client.dto.ApiOperationClientWSDTO;
+import com.faas.core.api.model.ws.operation.manager.details.dto.ApiOperationClientWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 
 public class ApiOperationClientWSModel {

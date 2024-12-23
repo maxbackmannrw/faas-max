@@ -1,7 +1,7 @@
 package com.faas.core.misc.helpers.operation.content;
 
 import com.faas.core.api.model.ws.operation.manager.activity.dto.ApiOperationActivityWSDTO;
-import com.faas.core.api.model.ws.operation.manager.client.dto.ApiOperationClientWSDTO;
+import com.faas.core.api.model.ws.operation.manager.details.dto.ApiOperationClientWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationListWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiValidateOperationWSDTO;
 import com.faas.core.api.model.ws.operation.content.dto.ApiOperationWSDTO;
