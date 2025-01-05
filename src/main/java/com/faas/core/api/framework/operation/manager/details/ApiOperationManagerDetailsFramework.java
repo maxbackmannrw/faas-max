@@ -62,7 +62,7 @@ public class ApiOperationManagerDetailsFramework {
         return null;
     }
 
-    public List<CampaignScriptDAO> apiGetOperationCampaignScriptsService(long agentId, String campaignId) {
+    public List<CampaignScriptDAO> apiGetOperationScriptsService(long agentId, String campaignId) {
 
         Optional<CampaignDBModel> campaignDBModel = campaignRepository.findById(campaignId);
         if (campaignDBModel.isPresent() && campaignDBModel.get().getCampaignScripts() != null) {

@@ -46,18 +46,17 @@ public class ApiOperationManagerDetailsController {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-    @RequestMapping(value = ApiRoute.API_GET_OPERATION_CAMPAIGN_SCRIPTS, method = RequestMethod.POST)
-    public ResponseEntity<?> apiGetOperationCampaignScripts(@RequestParam long agentId,
-                                                            @RequestParam String campaignId) {
+    @RequestMapping(value = ApiRoute.API_GET_OPERATION_SCRIPTS, method = RequestMethod.POST)
+    public ResponseEntity<?> apiGetOperationScripts(@RequestParam long agentId,
+                                                    @RequestParam String campaignId) {
 
-        ApiOperationScriptWSModel response = apiOperationManagerDetailsMiddleware.apiGetOperationCampaignScripts(agentId,campaignId);
+        ApiOperationScriptWSModel response = apiOperationManagerDetailsMiddleware.apiGetOperationScripts(agentId,campaignId);
 
         if (response.getGeneral().getStatus().equalsIgnoreCase(AppConstant.GENERAL_SUCCESS_STATUS)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_CLIENT, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationClient(@RequestParam long agentId,
@@ -70,7 +69,6 @@ public class ApiOperationManagerDetailsController {
         }
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
-
 
     @RequestMapping(value = ApiRoute.API_GET_OPERATION_NOTES, method = RequestMethod.POST)
     public ResponseEntity<?> apiGetOperationNotes(@RequestParam long agentId,

@@ -61,17 +61,17 @@ public class ApiOperationManagerDetailsMiddleware {
         return response;
     }
 
-    public ApiOperationScriptWSModel apiGetOperationCampaignScripts(long agentId, String campaignId) {
+    public ApiOperationScriptWSModel apiGetOperationScripts(long agentId, String campaignId) {
 
         ApiOperationScriptWSModel response = new ApiOperationScriptWSModel();
         GeneralWSModel general = new GeneralWSModel();
 
-        List<CampaignScriptDAO> operationScripts = apiOperationManagerDetailsFramework.apiGetOperationCampaignScriptsService(agentId, campaignId);
+        List<CampaignScriptDAO> operationScripts = apiOperationManagerDetailsFramework.apiGetOperationScriptsService(agentId, campaignId);
         if (operationScripts != null) {
             response.setOperationScripts(operationScripts);
         }
 
-        general.setOperation("apiGetOperationCampaignScripts");
+        general.setOperation("apiGetOperationScripts");
         general.setStatus(AppConstant.GENERAL_SUCCESS_STATUS);
         general.setStatusCode(AppConstant.GENERAL_SUCCESS_CODE);
         general.setResult(AppConstant.GENERAL_SUCCESS_STATUS);
