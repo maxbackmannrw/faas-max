@@ -50,7 +50,6 @@ public class ApiRoute {
     public static final String API_GET_OPERATION_ACTIVITY = "apigetoperationactivity";
 
 
-
     public static final String API_GET_OPERATION_DETAILS = "apigetoperationdetails";
     public static final String API_GET_OPERATION_CAMPAIGN = "apigetoperationcampaign";
     public static final String API_GET_OPERATION_SCRIPTS = "apigetoperationscripts";
