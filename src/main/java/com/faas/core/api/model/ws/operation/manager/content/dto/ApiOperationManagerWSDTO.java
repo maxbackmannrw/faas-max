@@ -1,8 +1,6 @@
 package com.faas.core.api.model.ws.operation.manager.content.dto;
 
 import com.faas.core.api.model.ws.operation.manager.activity.dto.ApiOperationActivityWSDTO;
-import com.faas.core.api.model.ws.operation.manager.details.dto.ApiOperationCampaignWSDTO;
-import com.faas.core.api.model.ws.operation.manager.details.dto.ApiOperationClientWSDTO;
 import com.faas.core.api.model.ws.operation.manager.intel.dto.ApiOperationIntelWSDTO;
 import com.faas.core.data.db.operation.content.OperationDBModel;
 

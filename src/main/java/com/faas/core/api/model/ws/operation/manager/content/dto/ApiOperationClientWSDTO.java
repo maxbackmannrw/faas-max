@@ -1,4 +1,4 @@
-package com.faas.core.api.model.ws.operation.manager.details.dto;
+package com.faas.core.api.model.ws.operation.manager.content.dto;
 
 import com.faas.core.data.db.client.content.ClientDBModel;
 import com.faas.core.data.db.client.details.ClientDetailsDBModel;

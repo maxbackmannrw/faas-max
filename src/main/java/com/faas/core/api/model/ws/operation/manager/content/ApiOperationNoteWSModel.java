@@ -1,4 +1,4 @@
-package com.faas.core.api.model.ws.operation.manager.details;
+package com.faas.core.api.model.ws.operation.manager.content;
 
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 import com.faas.core.data.db.client.details.dao.ClientNoteDAO;
