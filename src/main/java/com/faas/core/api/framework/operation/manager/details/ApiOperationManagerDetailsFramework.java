@@ -95,9 +95,7 @@ public class ApiOperationManagerDetailsFramework {
         if (!operationDBModels.isEmpty()) {
             List<ClientDetailsDBModel> clientDetailsDBModels = clientDetailsRepository.findByClientId(operationDBModels.get(0).getClientId());
             if (!clientDetailsDBModels.isEmpty() && clientDetailsDBModels.get(0).getClientNotes() != null) {
-                for (int i = 0; i < clientDetailsDBModels.get(0).getClientNotes().size(); i++) {
-                    operationNotes.add(clientDetailsDBModels.get(0).getClientNotes().get(i));
-                }
+                operationNotes.addAll(clientDetailsDBModels.get(0).getClientNotes());
             }
         }
         return operationNotes;

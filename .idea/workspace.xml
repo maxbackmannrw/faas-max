@@ -7,7 +7,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish" />
+    <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/manager/details/ApiOperationManagerDetailsFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/faas/core/api/framework/operation/manager/details/ApiOperationManagerDetailsFramework.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -111,7 +114,7 @@
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;settings.editor.splitter.proportion&quot;: &quot;0.15697268&quot;,
     &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;a74ad8dfacd4f985eb3977517615ce25&quot;,
@@ -1407,15 +1410,20 @@
       <workItem from="1735487707359" duration="1400000" />
       <workItem from="1735737714868" duration="1407000" />
       <workItem from="1735821047461" duration="1493000" />
-      <workItem from="1736069652595" duration="1744000" />
-    </task>
-    <task id="LOCAL-01147" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1734470524334</created>
-      <option name="number" value="01147" />
-      <option name="presentableId" value="LOCAL-01147" />
-      <option name="project" value="LOCAL" />
-      <updated>1734470524334</updated>
+      <workItem from="1736069652595" duration="3427000" />
+      <workItem from="1736337980792" duration="268000" />
+      <workItem from="1736506699065" duration="190000" />
+      <workItem from="1736506929364" duration="24000" />
+      <workItem from="1736507046828" duration="1342000" />
+      <workItem from="1736531128685" duration="977000" />
+      <workItem from="1736591904000" duration="237000" />
+      <workItem from="1736598873806" duration="376000" />
+      <workItem from="1736694039879" duration="390000" />
+      <workItem from="1736757524739" duration="1667000" />
+      <workItem from="1736789539718" duration="5000" />
+      <workItem from="1736789789492" duration="47000" />
+      <workItem from="1736789884164" duration="3475000" />
+      <workItem from="1736848960291" duration="2487000" />
     </task>
     <task id="LOCAL-01148" summary="almost finish">
       <option name="closed" value="true" />
@@ -1801,7 +1809,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736073805378</updated>
     </task>
-    <option name="localTasksCounter" value="1196" />
+    <task id="LOCAL-01196" summary="almost finish">
+      <option name="closed" value="true" />
+      <created>1736074183337</created>
+      <option name="number" value="01196" />
+      <option name="presentableId" value="LOCAL-01196" />
+      <option name="project" value="LOCAL" />
+      <updated>1736074183337</updated>
+    </task>
+    <option name="localTasksCounter" value="1197" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
