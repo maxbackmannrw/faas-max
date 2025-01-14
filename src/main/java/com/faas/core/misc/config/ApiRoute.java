@@ -52,7 +52,7 @@ public class ApiRoute {
     public static final String API_GET_OPERATION_CAMPAIGN = "apigetoperationcampaign";
     public static final String API_GET_OPERATION_SCRIPTS = "apigetoperationscripts";
     public static final String API_GET_OPERATION_CLIENT = "apigetoperationclient";
-    public static final String API_GET_OPERATION_NOTES = "apigetoperationnotess";
+    public static final String API_GET_OPERATION_NOTES = "apigetoperationnotes";
     public static final String API_GET_OPERATION_NOTE = "apigetoperationnote";
     public static final String API_CREATE_OPERATION_NOTE = "apicreateoperationnote";
     public static final String API_UPDATE_OPERATION_NOTE = "apiupdateoperationnote";
