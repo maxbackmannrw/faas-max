@@ -7,7 +7,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish 12" />
+    <list default="true" id="227e4a65-e6ca-4de3-879b-31fa905d1840" name="Changes" comment="almost finish 13">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -1420,15 +1422,7 @@
       <workItem from="1736789539718" duration="5000" />
       <workItem from="1736789789492" duration="47000" />
       <workItem from="1736789884164" duration="3475000" />
-      <workItem from="1736848960291" duration="5724000" />
-    </task>
-    <task id="LOCAL-01153" summary="almost finish">
-      <option name="closed" value="true" />
-      <created>1734478402487</created>
-      <option name="number" value="01153" />
-      <option name="presentableId" value="LOCAL-01153" />
-      <option name="project" value="LOCAL" />
-      <updated>1734478402487</updated>
+      <workItem from="1736848960291" duration="6414000" />
     </task>
     <task id="LOCAL-01154" summary="almost finish">
       <option name="closed" value="true" />
@@ -1814,7 +1808,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736876578996</updated>
     </task>
-    <option name="localTasksCounter" value="1202" />
+    <task id="LOCAL-01202" summary="almost finish 13">
+      <option name="closed" value="true" />
+      <created>1736877077064</created>
+      <option name="number" value="01202" />
+      <option name="presentableId" value="LOCAL-01202" />
+      <option name="project" value="LOCAL" />
+      <updated>1736877077064</updated>
+    </task>
+    <option name="localTasksCounter" value="1203" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1847,26 +1849,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="hash">
-                    <value>
-                      <list>
-                        <option value="2384971" />
-                      </list>
-                    </value>
-                  </entry>
-                  <entry key="text">
-                    <value>
-                      <list>
-                        <option value="2384971" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
@@ -1880,7 +1863,8 @@
     <MESSAGE value="almost finish" />
     <MESSAGE value="almost finish 11" />
     <MESSAGE value="almost finish 12" />
-    <option name="LAST_COMMIT_MESSAGE" value="almost finish 12" />
+    <MESSAGE value="almost finish 13" />
+    <option name="LAST_COMMIT_MESSAGE" value="almost finish 13" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
