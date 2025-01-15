@@ -37,7 +37,6 @@ public class ApiRoute {
     public static final String API_GET_OPERATIONS_SUMMARY = "apigetoperationssummary";
 
 
-
     public static final String API_GET_OPERATION_MANAGER = "apigetoperationmanager";
     public static final String API_START_OPERATION = "apistartoperation";
     public static final String API_COMPLETE_OPERATION = "apicompleteoperation";
