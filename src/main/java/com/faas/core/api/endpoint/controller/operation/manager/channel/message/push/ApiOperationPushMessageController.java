@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-@RequestMapping(value = AppConstant.API_VERSION + "/api/operation/manager/message/push/")
+@RequestMapping(value = AppConstant.API_VERSION + "/api/operation/manager/channel/message/push/")
 public class ApiOperationPushMessageController {
 
 

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-@RequestMapping(value = AppConstant.API_VERSION + "/api/operation/manager/call/sip/")
+@RequestMapping(value = AppConstant.API_VERSION + "/api/operation/manager/channel/call/sip/")
 public class ApiOperationSipCallController {
 
 

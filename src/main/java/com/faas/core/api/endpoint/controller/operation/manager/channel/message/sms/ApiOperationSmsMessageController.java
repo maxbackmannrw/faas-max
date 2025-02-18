@@ -19,7 +19,7 @@ import java.io.IOException;
 
 
 @Controller
-@RequestMapping(value = AppConstant.API_VERSION + "/api/operation/manager/message/sms/")
+@RequestMapping(value = AppConstant.API_VERSION + "/api/operation/manager/channel/message/sms/")
 public class ApiOperationSmsMessageController {
 
 

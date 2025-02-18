@@ -1,10 +1,10 @@
-package com.faas.core.data.db.utils;
+package com.faas.core.data.db.operation.details.activity;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "activity_table")
-public class ActivityDBModel {
+@Table(name = "operation_activity_table")
+public class OperationActivityDBModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,6 +12,18 @@ public class ActivityDBModel {
 
     @Column(name = "operation_id")
     private String operationId;
+
+    @Column(name = "client_id")
+    private long clientId;
+
+    @Column(name = "agent_id")
+    private long agentId;
+
+    @Column(name = "creator_id")
+    private long creatorId;
+
+    @Column(name = "outcome_id")
+    private String outcomeId;
 
     @Column(name = "activity")
     private String activity;
@@ -22,12 +34,6 @@ public class ActivityDBModel {
     @Column(name = "activity_type")
     private String activityType;
 
-    @Column(name = "object_id")
-    private String objectId;
-
-    @Column(name = "agent_id")
-    private long agentId;
-
     @Column(name = "u_date")
     private long uDate;
 
@@ -37,17 +43,19 @@ public class ActivityDBModel {
     @Column(name = "status")
     private int status;
 
-    public ActivityDBModel() {
+    public OperationActivityDBModel() {
     }
 
-    public ActivityDBModel(long id, String operationId, String activity, String activityDesc, String activityType, String objectId, long agentId, long uDate, long cDate, int status) {
+    public OperationActivityDBModel(long id, String operationId, long clientId, long agentId, long creatorId, String outcomeId, String activity, String activityDesc, String activityType, long uDate, long cDate, int status) {
         this.id = id;
         this.operationId = operationId;
+        this.clientId = clientId;
+        this.agentId = agentId;
+        this.creatorId = creatorId;
+        this.outcomeId = outcomeId;
         this.activity = activity;
         this.activityDesc = activityDesc;
         this.activityType = activityType;
-        this.objectId = objectId;
-        this.agentId = agentId;
         this.uDate = uDate;
         this.cDate = cDate;
         this.status = status;
@@ -67,6 +75,38 @@ public class ActivityDBModel {
 
     public void setOperationId(String operationId) {
         this.operationId = operationId;
+    }
+
+    public long getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(long clientId) {
+        this.clientId = clientId;
+    }
+
+    public long getAgentId() {
+        return agentId;
+    }
+
+    public void setAgentId(long agentId) {
+        this.agentId = agentId;
+    }
+
+    public long getCreatorId() {
+        return creatorId;
+    }
+
+    public void setCreatorId(long creatorId) {
+        this.creatorId = creatorId;
+    }
+
+    public String getOutcomeId() {
+        return outcomeId;
+    }
+
+    public void setOutcomeId(String outcomeId) {
+        this.outcomeId = outcomeId;
     }
 
     public String getActivity() {
@@ -91,22 +131,6 @@ public class ActivityDBModel {
 
     public void setActivityType(String activityType) {
         this.activityType = activityType;
-    }
-
-    public String getObjectId() {
-        return objectId;
-    }
-
-    public void setObjectId(String objectId) {
-        this.objectId = objectId;
-    }
-
-    public long getAgentId() {
-        return agentId;
-    }
-
-    public void setAgentId(long agentId) {
-        this.agentId = agentId;
     }
 
     public long getuDate() {

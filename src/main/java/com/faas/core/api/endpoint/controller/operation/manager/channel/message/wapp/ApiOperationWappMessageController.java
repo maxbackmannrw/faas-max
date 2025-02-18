@@ -19,7 +19,7 @@ import java.io.IOException;
 
 
 @Controller
-@RequestMapping(value = AppConstant.API_VERSION + "/api/operation/manager/message/wapp/")
+@RequestMapping(value = AppConstant.API_VERSION + "/api/operation/manager/channel/message/wapp/")
 public class ApiOperationWappMessageController {
 
 

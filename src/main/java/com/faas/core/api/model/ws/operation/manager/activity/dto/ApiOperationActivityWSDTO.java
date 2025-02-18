@@ -1,23 +1,23 @@
 package com.faas.core.api.model.ws.operation.manager.activity.dto;
 
-import com.faas.core.data.db.utils.ActivityDBModel;
+import com.faas.core.data.db.operation.details.activity.OperationActivityDBModel;
 
 public class ApiOperationActivityWSDTO {
 
-    private ActivityDBModel operationActivity;
+    private OperationActivityDBModel operationActivity;
 
     public ApiOperationActivityWSDTO() {
     }
 
-    public ApiOperationActivityWSDTO(ActivityDBModel operationActivity) {
+    public ApiOperationActivityWSDTO(OperationActivityDBModel operationActivity) {
         this.operationActivity = operationActivity;
     }
 
-    public ActivityDBModel getOperationActivity() {
+    public OperationActivityDBModel getOperationActivity() {
         return operationActivity;
     }
 
-    public void setOperationActivity(ActivityDBModel operationActivity) {
+    public void setOperationActivity(OperationActivityDBModel operationActivity) {
         this.operationActivity = operationActivity;
     }
 }

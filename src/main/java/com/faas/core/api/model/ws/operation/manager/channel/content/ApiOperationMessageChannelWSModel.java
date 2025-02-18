@@ -1,6 +1,6 @@
-package com.faas.core.api.model.ws.operation.manager.channel.message.content;
+package com.faas.core.api.model.ws.operation.manager.channel.content;
 
-import com.faas.core.api.model.ws.operation.manager.channel.message.content.dto.ApiOperationMessageChannelWSDTO;
+import com.faas.core.api.model.ws.operation.manager.channel.content.dto.ApiOperationMessageChannelWSDTO;
 import com.faas.core.base.model.ws.general.GeneralWSModel;
 
 public class ApiOperationMessageChannelWSModel {

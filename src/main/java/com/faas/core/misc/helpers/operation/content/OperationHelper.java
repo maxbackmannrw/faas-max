@@ -9,9 +9,9 @@ import com.faas.core.api.model.ws.operation.manager.channel.call.sip.dto.ApiOper
 import com.faas.core.api.model.ws.operation.manager.channel.call.sip.dto.ApiOperationSipChannelWSDTO;
 import com.faas.core.api.model.ws.operation.manager.channel.call.wapp.dto.ApiOperationWappCallAccountWSDTO;
 import com.faas.core.api.model.ws.operation.manager.channel.call.wapp.dto.ApiOperationWappCallChannelWSDTO;
-import com.faas.core.api.model.ws.operation.manager.channel.call.content.dto.ApiOperationCallChannelWSDTO;
+import com.faas.core.api.model.ws.operation.manager.channel.content.dto.ApiOperationCallChannelWSDTO;
 import com.faas.core.api.model.ws.operation.manager.intel.dto.ApiOperationIntelWSDTO;
-import com.faas.core.api.model.ws.operation.manager.channel.message.content.dto.ApiOperationMessageChannelWSDTO;
+import com.faas.core.api.model.ws.operation.manager.channel.content.dto.ApiOperationMessageChannelWSDTO;
 import com.faas.core.api.model.ws.operation.manager.channel.message.email.dto.ApiOperationEmailChannelWSDTO;
 import com.faas.core.api.model.ws.operation.manager.channel.message.push.dto.ApiOperationPushChannelWSDTO;
 import com.faas.core.api.model.ws.operation.manager.channel.message.sms.dto.ApiOperationSmsChannelWSDTO;

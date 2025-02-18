@@ -1,4 +1,4 @@
-package com.faas.core.api.model.ws.operation.manager.channel.call.content.dto;
+package com.faas.core.api.model.ws.operation.manager.channel.content.dto;
 
 import com.faas.core.api.model.ws.operation.manager.channel.call.sip.dto.ApiOperationSipChannelWSDTO;
 import com.faas.core.api.model.ws.operation.manager.channel.call.wapp.dto.ApiOperationWappCallChannelWSDTO;

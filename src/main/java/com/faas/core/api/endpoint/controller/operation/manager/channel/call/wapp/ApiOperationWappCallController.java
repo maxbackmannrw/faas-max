@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-@RequestMapping(value = AppConstant.API_VERSION + "/api/operation/manager/call/wapp/")
+@RequestMapping(value = AppConstant.API_VERSION + "/api/operation/manager/call/channel/wapp/")
 public class ApiOperationWappCallController {
 
 
